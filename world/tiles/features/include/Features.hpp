@@ -549,8 +549,8 @@ class Trap : public Feature
     void set_trigger_message_sid(const std::string& new_trigger_message_sid);
     std::string get_trigger_message_sid() const;
 
-    void set_trigger_symbol(const uchar new_trigger_symbol);
-    uchar get_trigger_symbol() const;
+    void set_trigger_symbol(const Symbol& new_trigger_symbol);
+    Symbol get_trigger_symbol() const;
 
     void set_player_damage_message_sid(const std::string& new_player_damage_message_sid);
     std::string get_player_damage_message_sid() const;
@@ -577,7 +577,7 @@ class Trap : public Feature
     bool triggered;
     std::string id;
     std::string trigger_message_sid;
-    uchar trigger_symbol;
+    Symbol trigger_symbol;
     std::string player_damage_message_sid;
     Colour colour;
     std::string item_id;

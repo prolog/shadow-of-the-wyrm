@@ -1,4 +1,9 @@
 Me:
+- Branches are no longer showing up as dark yellow. Something in the new code
+  is probably messing with the default colour...
+- convert spritesheets to unordered_map
+- Item::get_symbol returning uchar
+- Remove colour from Trap, make get_colour return the symbol colour
 - Create optional spritesheet list in ShadowOfTheWyrm.xml/xsd
   - This should be read in by the display during its startup, SDLDisplay
     should read the images, CursesDisplay should ignore, etc.

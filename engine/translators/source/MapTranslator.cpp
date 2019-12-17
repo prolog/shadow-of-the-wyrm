@@ -211,11 +211,11 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
 DisplayTile MapTranslator::create_display_tile_from_creature(const CreaturePtr& creature, const Colour override_colour)
 {
   // JCD FIXME SYMBOL SPRITESHEET
-  uchar symbol = '?';
-  
+  Symbol symbol('?', Colour::COLOUR_WHITE);
+
   if (creature != nullptr)
   {
-    symbol = creature->get_symbol().get_symbol();
+    symbol = creature->get_symbol();
   }
 
   return create_display_tile_from_symbol_and_colour(symbol, override_colour != Colour::COLOUR_UNDEFINED ? override_colour : creature->get_symbol().get_colour());
@@ -224,7 +224,6 @@ DisplayTile MapTranslator::create_display_tile_from_creature(const CreaturePtr& 
 // Create a display tile from a given tile feature
 DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& feature, const bool timewalking, const Colour override_colour, const ShimmerColours& map_shimmer_colours)
 {
-  uchar symbol = '?';
   Colour colour = Colour::COLOUR_UNDEFINED;
   ShimmerColours shimmer_colours = map_shimmer_colours;
 
@@ -241,13 +240,13 @@ DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& fe
   }
 
   Colour shimmer_colour = RNG::percent_chance(pct_chance_shimmer) ? shimmer_colours.get_shimmer_colour() : shimmer_colours.get_feature_colour();
+  Symbol s('?', Colour::COLOUR_WHITE);
 
   if (feature != nullptr)
   {
     // JCD SYMBOL SPRITESHEET FIXME
-    Symbol s = feature->get_symbol();
-    symbol = s.get_symbol();
-    colour = s.get_colour();
+    s = feature->get_symbol();
+    colour = feature->get_colour();
   }
 
   if (override_colour != Colour::COLOUR_UNDEFINED)
@@ -260,7 +259,7 @@ DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& fe
     colour = shimmer_colour;
   }
 
-  return create_display_tile_from_symbol_and_colour(symbol, colour);
+  return create_display_tile_from_symbol_and_colour(s, colour);
 }
 
 // Create a display tile from a given item
@@ -274,14 +273,15 @@ DisplayTile MapTranslator::create_display_tile_from_item(const ItemPtr& item, co
     colour = override_colour;
   }
 
-  uchar symbol = '?';
+  Symbol s('?', Colour::COLOUR_WHITE);
   
   if (item != nullptr)
   {
-    symbol = item->get_symbol();
+    s = item->get_symbol();
   }
 
-  return create_display_tile_from_symbol_and_colour(symbol, colour);
+  // JCD SYMBOL SPRITESHEET FIXME
+  return create_display_tile_from_symbol_and_colour(s, colour);
 }
 
 // Create a display tile from a given tile
@@ -333,9 +333,10 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, co
   return display_tile;
 }
 
-DisplayTile MapTranslator::create_display_tile_from_symbol_and_colour(const uchar symbol, const Colour colour)
+DisplayTile MapTranslator::create_display_tile_from_symbol_and_colour(const Symbol& symbol, const Colour colour)
 {
-  Symbol s(symbol, colour);
+  Symbol s = symbol;
+  s.set_colour(colour);
   DisplayTile display_tile(s);
   
   return display_tile;  

@@ -6370,403 +6370,405 @@
 	</Spells>
 	<Tiles>
 		<FieldTile>
-			<Text>
-				<Symbol>.</Symbol>
+			<Symbol>
+				<Char>.</Char>
 				<Colours>
 					<Spring>10</Spring>
 					<Summer>2</Summer>
 					<Autumn>3</Autumn>
 					<Winter>15</Winter>
 				</Colours>
-			</Text>
+			</Symbol>
 		</FieldTile>
 		<ScrubTile>
-			<Text>
-				<Symbol>.</Symbol>
+			<Symbol>
+				<Char>.</Char>
 				<Colours>
 					<Spring>3</Spring>
 					<Summer>3</Summer>
 					<Autumn>3</Autumn>
 					<Winter>7</Winter>
 				</Colours>
-			</Text>
+			</Symbol>
 		</ScrubTile>
 		<WheatTile>
-			<Text>
-				<Symbol>|</Symbol>
+			<Symbol>
+				<Char>|</Char>
 				<Colours>
 					<Spring>3</Spring>
 					<Summer>3</Summer>
 					<Autumn>3</Autumn>
 					<Winter>7</Winter>
 				</Colours>
-			</Text>
+			</Symbol>
 		</WheatTile>
 		<CairnTile>
-			<Text>
-				<Symbol>,</Symbol>
+			<Symbol>
+				<Char>,</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 		</CairnTile>
 		<TreeTile>
-			<Text>
-				<Symbol>T</Symbol>
+			<Symbol>
+				<Char>T</Char>
 				<Colours>
 					<Spring>13</Spring>
 					<Summer>10</Summer>
 					<Autumn>9</Autumn>
 					<Winter>3</Winter>
 				</Colours>
-			</Text>
+			</Symbol>
 		</TreeTile>
 		<DesertTile>
-			<Text>
-				<Symbol>.</Symbol>
+			<Symbol>
+				<Char>.</Char>
 				<Colours>
 					<Spring>11</Spring>
 					<Summer>11</Summer>
 					<Autumn>11</Autumn>
 					<Winter>7</Winter>
 				</Colours>
-			</Text>
+			</Symbol>
 		</DesertTile>
 		<RoadTile>
-			<Text>
-				<Symbol>.</Symbol>
+			<Symbol>
+				<Char>.</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 		</RoadTile>
 		<RiverTile>
-			<Text>
-				<Symbol>~</Symbol>
+			<Symbol>
+				<Char>~</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 		</RiverTile>
 		<SeaTile>
-			<Text>
-				<Symbol>~</Symbol>
+			<Symbol>
+				<Char>~</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 		</SeaTile>
 		<ShoalsTile>
-			<Text>
-				<Symbol>~</Symbol>
+			<Symbol>
+				<Char>~</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 		</ShoalsTile>
 		<DungeonTile>
-			<Text>
-				<Symbol>.</Symbol>
+			<Symbol>
+				<Char>.</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 		</DungeonTile>
 		<RockTile>
-			<Text>
-				<Symbol>#</Symbol>
+			<Symbol>
+				<Char>#</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 		</RockTile>
 		<GraveTile>
-			<Text>
-				<Symbol>+</Symbol>
+			<Symbol>
+				<Char>+</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 		</GraveTile>
 		<MarshTile>
-			<Text>
-				<Symbol>~</Symbol>
+			<Symbol>
+				<Char>~</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 		</MarshTile>
 		<ReedsTile>
-			<Text>
-				<Symbol>|</Symbol>
+			<Symbol>
+				<Char>|</Char>
 				<Colours>
 					<Spring>3</Spring>
 					<Summer>1</Summer>
 					<Autumn>3</Autumn>
 					<Winter>3</Winter>
 				</Colours>
-			</Text>
+			</Symbol>
 		</ReedsTile>
 		<HillsTile>
-			<Text>
-				<Symbol>^</Symbol>
+			<Symbol>
+				<Char>^</Char>
 				<Colours>
 					<Spring>3</Spring>
 					<Summer>2</Summer>
 					<Autumn>3</Autumn>
 					<Winter>15</Winter>
 				</Colours>
-			</Text>
+			</Symbol>
 		</HillsTile>
 		<MountainsTile>
-			<Text>
-				<Symbol>^</Symbol>
+			<Symbol>
+				<Char>^</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 		</MountainsTile>
 		<BeachTile>
-			<Text>
-				<Symbol>.</Symbol>
+			<Symbol>
+				<Char>.</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 		</BeachTile>
 		<BushTile>
-			<Text>
-				<Symbol>*</Symbol>
+			<Symbol>
+				<Char>*</Char>
 				<Colours>
 					<Spring>3</Spring>
 					<Summer>2</Summer>
 					<Autumn>3</Autumn>
 					<Winter>3</Winter>
 				</Colours>
-			</Text>
+			</Symbol>
 		</BushTile>
 		<WeedsTile>
-			<Text>
-				<Symbol>*</Symbol>
+			<Symbol>
+				<Char>*</Char>
 				<Colours>
 					<Spring>3</Spring>
 					<Summer>2</Summer>
 					<Autumn>3</Autumn>
 					<Winter>3</Winter>
 				</Colours>
-			</Text>
+			</Symbol>
 		</WeedsTile>
 		<SpringsTile>
-			<Text>
-				<Symbol>~</Symbol>
+			<Symbol>
+				<Char>~</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 		</SpringsTile>
 		<ForestTile>
-			<Text>
-				<Symbol>%</Symbol>
+			<Symbol>
+				<Char>%</Char>
 				<Colours>
 					<Spring>13</Spring>
 					<Summer>10</Summer>
 					<Autumn>9</Autumn>
 					<Winter>3</Winter>
 				</Colours>
-			</Text>
+			</Symbol>
 		</ForestTile>
 		<UpStaircaseTile>
-			<Text>
-				<Symbol>&lt;</Symbol>
+			<Symbol>
+				<Char>&lt;</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 		</UpStaircaseTile>
 		<DownStaircaseTile>
-			<Text>
-				<Symbol>&gt;</Symbol>
+			<Symbol>
+				<Char>&gt;</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 		</DownStaircaseTile>
 		<CavernTile>
-			<Text>
-				<Symbol>o</Symbol>
+			<Symbol>
+				<Char>o</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 		</CavernTile>
 		<VillageTile>
-			<Text>
-				<Symbol>o</Symbol>
+			<Symbol>
+				<Char>o</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 		</VillageTile>
 		<DungeonComplexTile>
-			<Text>
-				<Symbol>&gt;</Symbol>
+			<Symbol>
+				<Char>&gt;</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 		</DungeonComplexTile>
 		<BarracksTile>
-			<Text>
-				<Symbol>*</Symbol>
+			<Symbol>
+				<Char>*</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 		</BarracksTile>
 		<CastleTile>
-			<Text>
-				<Symbol>O</Symbol>
+			<Symbol>
+				<Char>O</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 		</CastleTile>
 		<ChurchTile>
-			<Text>
-				<Symbol>+</Symbol>
+			<Symbol>
+				<Char>+</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 		</ChurchTile>
 		<GraveyardTile>
-			<Text>
-				<Symbol>+</Symbol>
+			<Symbol>
+				<Char>+</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 		</GraveyardTile>
 		<KeepTile>
-			<Text>
-				<Symbol>O</Symbol>
+			<Symbol>
+				<Char>O</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 		</KeepTile>
 		<LibraryTile>
-			<Text>
-				<Symbol>"</Symbol>
+			<Symbol>
+				<Char>"</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 		</LibraryTile>
 		<SiteOfDeathTile>
-			<Text>
-				<Symbol>+</Symbol>
+			<Symbol>
+				<Char>+</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 		</SiteOfDeathTile>
 		<TempleTile>
-			<Text>
-				<Symbol>+</Symbol>
+			<Symbol>
+				<Char>+</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 		</TempleTile>
 		<DaisTile>
-			<Text>
-				<Symbol>.</Symbol>
+			<Symbol>
+				<Char>.</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 		</DaisTile>
 		<PierTile>
-			<Text>
-				<Symbol>#</Symbol>
+			<Symbol>
+				<Char>#</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 		</PierTile>
 		<BarrowTile>
-			<Text>
-				<Symbol>0</Symbol>
+			<Symbol>
+				<Char>0</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 		</BarrowTile>
 		<WildOrchardTile>
-			<Text>
-				<Symbol>%</Symbol>
+			<Symbol>
+				<Char>%</Char>
 				<Colours>
 					<Spring>13</Spring>
 					<Summer>10</Summer>
 					<Autumn>9</Autumn>
 					<Winter>3</Winter>
 				</Colours>
-			</Text>
+			</Symbol>
 		</WildOrchardTile>
 		<FruitTreeTile>
-			<Text>
-				<Symbol>T</Symbol>
+			<Symbol>
+				<Char>T</Char>
 				<Colours>
 					<Spring>13</Spring>
 					<Summer>10</Summer>
 					<Autumn>9</Autumn>
 					<Winter>3</Winter>
 				</Colours>
-			</Text>
+			</Symbol>
 		</FruitTreeTile>
 		<EvergreenTreeTile>
-			<Text>
-				<Symbol>T</Symbol>
+			<Symbol>
+				<Char>T</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 		</EvergreenTreeTile>
 		<RockyEarthTile>
-			<Text>
-				<Symbol>,</Symbol>
+			<Symbol>
+				<Char>,</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 		</RockyEarthTile>
 		<MineTile>
-			<Text>
-				<Symbol>o</Symbol>
+			<Symbol>
+				<Char>o</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 		</MineTile>
 		<WellTile>
-			<Text>
-				<Symbol>o</Symbol>
+			<Symbol>
+				<Char>o</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 		</WellTile>
 		<CryptTile>
-			<Text>
-				<Symbol>&gt;</Symbol>
+			<Symbol>
+				<Char>&gt;</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 		</CryptTile>
 		<AirTile>
-			<Text>
-				<Symbol> </Symbol>
+			<Symbol>
+				<Char> </Char>
 				<Colour>110</Colour>
-			</Text>
+			</Symbol>
 		</AirTile>
 		<EarthTile>
-			<Text>
-				<Symbol>#</Symbol>
+			<Symbol>
+				<Char>#</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 		</EarthTile>
 		<SewerComplexTile>
-			<Text>
-				<Symbol>&gt;</Symbol>
+			<Symbol>
+				<Char>&gt;</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 		</SewerComplexTile>
 		<SewerTile>
-			<Text>
-				<Symbol>.</Symbol>
+			<Symbol>
+				<Char>.</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 		</SewerTile>
 		<ShrineTile>
-			<Text>
-				<Symbol>o</Symbol>
+			<Symbol>
+				<Char>o</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 		</ShrineTile>
 		<SeabedTile>
-			<Text>
-				<Symbol>.</Symbol>
+			<Symbol>
+				<Char>.</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 		</SeabedTile>
 		<AquaticVegetationTile>
-			<Text>
-				<Symbol>*</Symbol>
+			<Symbol>
+				<Char>*</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 		</AquaticVegetationTile>
 		<FloatingTowerTile>
-			<Text>
-				<Symbol>|</Symbol>
+			<Symbol>
+				<Char>|</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 		</FloatingTowerTile>
 		<VoidTile>
-			<Text>
-				<Symbol> </Symbol>
+			<Symbol>
+				<Char> </Char>
 				<Colour>0</Colour>
-			</Text>
+			</Symbol>
 		</VoidTile>
 		<MagicalTreeTile>
-			<Text>
-				<Symbol>T</Symbol>
+			<Symbol>
+				<Char>T</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 		</MagicalTreeTile>
 	</Tiles>
 	<Traps>
 		<Trap id="fireball_trap">
 			<DescriptionSID>TRAP_FIREBALL_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_FIREBALL_TRIGGER_SID</TriggerMessageSID>
-			<TriggerSymbol>*</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_FIREBALL_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
-			<Colour>1</Colour>
+			<Trigger>
+				<Char>*</Char>
+				<Colour>1</Colour>
+			</Trigger>
 			<Item>fire_bomb</Item>
 			<Damage>
 				<NumDice>4</NumDice>
@@ -6779,9 +6781,11 @@
 		<Trap id="arrow_trap">
 			<DescriptionSID>TRAP_ARROW_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_ARROW_TRIGGER_SID</TriggerMessageSID>
-			<TriggerSymbol>/</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_ARROW_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
-			<Colour>3</Colour>
+			<Trigger>
+				<Char>/</Char>
+				<Colour>3</Colour>
+			</Trigger>
 			<Item>arrow</Item>
 			<Damage>
 				<NumDice>1</NumDice>
@@ -6794,9 +6798,11 @@
 		<Trap id="crossbow_trap">
 			<DescriptionSID>TRAP_CROSSBOW_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_CROSSBOW_TRIGGER_SID</TriggerMessageSID>
-			<TriggerSymbol>/</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_CROSSBOW_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
-			<Colour>8</Colour>
+			<Trigger>
+				<Char>/</Char>
+				<Colour>8</Colour>
+			</Trigger>
 			<Item>bolt</Item>
 			<Damage>
 				<NumDice>2</NumDice>
@@ -6809,9 +6815,11 @@
 		<Trap id="rock_trap">
 			<DescriptionSID>TRAP_ROCK_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_ROCK_TRIGGER_SID</TriggerMessageSID>
-			<TriggerSymbol>*</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_ROCK_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
-			<Colour>3</Colour>
+			<Trigger>
+				<Char>*</Char>
+				<Colour>3</Colour>
+			</Trigger>
 			<Item>_rock</Item>
 			<Damage>
 				<NumDice>1</NumDice>
@@ -6824,9 +6832,11 @@
 		<Trap id="floor_spikes">
 			<DescriptionSID>TRAP_FLOOR_SPIKES_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_FLOOR_SPIKES_TRIGGER_SID</TriggerMessageSID>
-			<TriggerSymbol>|</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_FLOOR_SPIKES_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
-			<Colour>7</Colour>
+			<Trigger>
+				<Char>|</Char>
+				<Colour>7</Colour>
+			</Trigger>
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>12</NumSides>
@@ -6837,9 +6847,11 @@
 		<Trap id="flash_trap">
 			<DescriptionSID>TRAP_FLASH_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_FLASH_TRIGGER_SID</TriggerMessageSID>
-			<TriggerSymbol>*</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_FLASH_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
-			<Colour>11</Colour>
+			<Trigger>
+				<Char>*</Char>
+				<Colour>11</Colour>
+			</Trigger>
 			<Damage piercing="1">
 				<NumDice>1</NumDice>
 				<NumSides>4</NumSides>
@@ -6854,9 +6866,11 @@
 		<Trap id="poison_dart_trap">
 			<DescriptionSID>TRAP_POISON_DART_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_POISON_DART_TRIGGER_SID</TriggerMessageSID>
-			<TriggerSymbol>-</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_POISON_DART_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
-			<Colour>2</Colour>
+			<Trigger>
+				<Char>-</Char>
+				<Colour>2</Colour>
+			</Trigger>
 			<Item>poison_dart</Item>
 			<Damage>
 				<NumDice>2</NumDice>
@@ -6872,9 +6886,11 @@
 		<Trap id="blackwater_trap">
 			<DescriptionSID>TRAP_BLACKWATER_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_BLACKWATER_TRIGGER_SID</TriggerMessageSID>
-			<TriggerSymbol>*</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_BLACKWATER_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
-			<Colour>12</Colour>
+			<Trigger>
+				<Char>*</Char>
+				<Colour>12</Colour>
+			</Trigger>
 			<Item>shadow_bomb</Item>
 			<Damage piercing="1">
 				<NumDice>3</NumDice>
@@ -6890,9 +6906,11 @@
 		<Trap id="electrical_field_trap">
 			<DescriptionSID>TRAP_ELECTRICAL_FIELD_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_ELECTRICAL_FIELD_TRIGGER_SID</TriggerMessageSID>
-			<TriggerSymbol>#</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_ELECTRICAL_FIELD_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
-			<Colour>11</Colour>
+			<Trigger>
+				<Char>#</Char>
+				<Colour>11</Colour>
+			</Trigger>
 			<Damage piercing="1">
 				<NumDice>1</NumDice>
 				<NumSides>6</NumSides>
@@ -6907,9 +6925,11 @@
 		<Trap id="monster_trap">
 			<DescriptionSID>TRAP_MONSTER_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_MONSTER_TRIGGER_SID</TriggerMessageSID>
-			<TriggerSymbol>#</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_MONSTER_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
-			<Colour>14</Colour>
+			<Trigger>
+				<Char>*</Char>
+				<Colour>10</Colour>
+			</Trigger>
 			<Damage piercing="1">
 				<NumDice>1</NumDice>
 				<NumSides>6</NumSides>
@@ -6921,9 +6941,11 @@
 		<Trap id="teleport_trap">
 			<DescriptionSID>TRAP_TELEPORT_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_TELEPORT_TRIGGER_SID</TriggerMessageSID>
-			<TriggerSymbol>*</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_TELEPORT_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
-			<Colour>10</Colour>
+			<Trigger>
+				<Char>*</Char>
+				<Colour>10</Colour>
+			</Trigger>
 			<Damage piercing="1">
 				<NumDice>1</NumDice>
 				<NumSides>1</NumSides>
@@ -6937,50 +6959,66 @@
 		<ConfigurableFeatures>
 			<ConfigurableFeature id="_rift">
 				<Material>14</Material>
-				<Symbol>^</Symbol>
-				<Colour>9</Colour>
+				<Symbol>
+					<Char>^</Char>
+					<Colour>9</Colour>
+				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_RIFT</DescriptionSID>
 			</ConfigurableFeature>
 			<ConfigurableFeature id="_dwarf_star">
 				<Material>14</Material>
-				<Symbol>o</Symbol>
-				<Colour>11</Colour>
+				<Symbol>
+					<Char>o</Char>
+					<Colour>11</Colour>
+				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_DWARF_STAR</DescriptionSID>
 			</ConfigurableFeature>
 			<ConfigurableFeature id="_spiral_arm">
 				<Material>14</Material>
-				<Symbol>;</Symbol>
-				<Colour>15</Colour>
+				<Symbol>
+					<Char>;</Char>
+					<Colour>15</Colour>
+				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_SPIRAL_ARM</DescriptionSID>
 			</ConfigurableFeature>
 			<ConfigurableFeature id="_red_giant_star">
 				<Material>14</Material>
-				<Symbol>O</Symbol>
-				<Colour>9</Colour>
+				<Symbol>
+					<Char>O</Char>
+					<Colour>9</Colour>
+				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_RED_GIANT</DescriptionSID>
 			</ConfigurableFeature>
 			<ConfigurableFeature id="_supernova">
 				<Material>14</Material>
-				<Symbol> </Symbol>
-				<Colour>80</Colour>
+				<Symbol>
+					<Char> </Char>
+					<Colour>80</Colour>
+				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_SUPERNOVA</DescriptionSID>
 			</ConfigurableFeature>
 			<ConfigurableFeature id="_black_hole">
 				<Material>14</Material>
-				<Symbol>*</Symbol>
-				<Colour>8</Colour>
+				<Symbol>
+					<Char>*</Char>
+					<Colour>8</Colour>
+				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_BLACK_HOLE</DescriptionSID>
 			</ConfigurableFeature>
 			<ConfigurableFeature id="_pulsar">
 				<Material>14</Material>
-				<Symbol>*</Symbol>
-				<Colour>15</Colour>
+				<Symbol>
+					<Char>*</Char>
+					<Colour>15</Colour>
+				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_PULSAR</DescriptionSID>
 			</ConfigurableFeature>
 			<ConfigurableFeature id="_cosmic_dust">
 				<Material>12</Material>
-				<Symbol>.</Symbol>
-				<Colour>3</Colour>
+				<Symbol>
+					<Char>.</Char>
+					<Colour>3</Colour>
+				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_COSMIC_DUST</DescriptionSID>
 			</ConfigurableFeature>
 		</ConfigurableFeatures>
@@ -7048,6 +7086,6 @@
 		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
 	</Scripts>
 	<Spritesheets>
-		<Spritesheet id="test">assets/sprites/test.png</Spritesheet>
+		<Spritesheet id="cr">assets/sprites/test.png</Spritesheet>
 	</Spritesheets>
 </ShadowOfTheWyrm>

@@ -79,6 +79,7 @@ class SDLDisplay : public Display
     virtual std::string display_screen(const Screen& current_screen) override;
 
     void set_spritesheets(const std::map<std::string, std::string>& spritesheet_details) override;
+    SDL_Texture* get_spritesheet(const std::string& spritesheet_idx);
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;

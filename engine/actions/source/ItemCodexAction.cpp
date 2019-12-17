@@ -146,7 +146,8 @@ void ItemCodexAction::add_symbol_and_description_to_codex(ItemPtr item, CodexDes
     // use the actual symbol and colour.
     if (identified)
     {
-      symbol_details = item->get_symbol();
+      // JCD SYMBOL SPRITESHEET FIXME
+      symbol_details = item->get_symbol().get_symbol();
       item_colour = item->get_colour();
     }
 

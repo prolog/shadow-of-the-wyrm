@@ -185,7 +185,8 @@ void TrapManipulator::create_and_draw_animation(TrapPtr trap, CreaturePtr creatu
     CurrentCreatureAbilities cca;
     AnimationTranslator at(game.get_display());
     MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
-    Symbol s(trap->get_trigger_symbol(), trap->get_colour());
+    // JCD SYMBOL SPRITESHEET FIXME
+    Symbol s = trap->get_trigger_symbol();
     DisplayTile display_tile(s);
     MovementPath movement_path;
 

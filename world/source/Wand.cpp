@@ -20,7 +20,7 @@ const int WandConstants::MAX_CHARGES = 7;
 Wand::Wand()
 {
   type = ItemType::ITEM_TYPE_WAND;
-  symbol ='\\';
+  symbol.set_symbol('\\');
   range = 0;
   radius = 1;
   shape = SpellShapeType::SPELL_SHAPE_BEAM;

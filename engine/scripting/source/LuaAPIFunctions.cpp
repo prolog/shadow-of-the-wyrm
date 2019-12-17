@@ -1141,7 +1141,7 @@ int add_configurable_feature_to_map(lua_State* ls)
     c = make_pair(lua_tointeger(ls, 5), lua_tointeger(ls, 6));
     map_id = lua_tostring(ls, 7);
 
-    feature = FeatureGenerator::generate_configurable_feature(material, symbol[0], colour, desc_sid);
+    feature = FeatureGenerator::generate_configurable_feature(material, Symbol(symbol[0], colour), desc_sid);
     created_feature = (feature != nullptr);
   }
   // Reference a configurable feature from the game XML.

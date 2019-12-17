@@ -36,7 +36,7 @@ class FeatureGenerator
     static FeaturePtr generate_stone_marker();
     static FeaturePtr generate_table();
     static FeaturePtr generate_configurable_feature(const std::string& configurable_feature_id);
-    static FeaturePtr generate_configurable_feature(const MaterialType mt, const uchar symbol, const Colour colour, const std::string& desc_sid);
+    static FeaturePtr generate_configurable_feature(const MaterialType mt, const Symbol& symbol, const std::string& desc_sid);
     static FeaturePtr generate_sign(const std::string& text_sid);
     static FeaturePtr generate_decorative_statue(const DecorativeStatueType statue_type);
     static PetrifiedCorpseStatuePtr generate_petrified_corpse_statue(const std::string& corpse_description_sid);

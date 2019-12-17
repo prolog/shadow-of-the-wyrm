@@ -21,7 +21,7 @@ Weapon::Weapon()
 : difficulty(0), speed(0), trained_skill(SkillType::SKILL_MELEE_EXOTIC), trained_ranged_skill(SkillType::SKILL_MELEE_EXOTIC), requires_ranged_weapon(false)
 {
   type = ItemType::ITEM_TYPE_WEAPON;
-  symbol = ')';
+  symbol.set_symbol(')');
 }
 
 bool Weapon::operator==(const Weapon& weapon) const

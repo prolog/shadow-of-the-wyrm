@@ -120,21 +120,10 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
       parse_decision_strategy(decision_strategy_node, creature);
     }
     
-    XMLNode text_node = XMLUtils::get_next_element_by_local_name(creature_node, "Text");
-    if (!text_node.is_null())
-    {
-      string symbol = XMLUtils::get_child_node_value(text_node, "Symbol");
-      
-      if (symbol.empty())
-      {
-        symbol = '?';
-      }
-      
-      Colour colour = static_cast<Colour>(XMLUtils::get_child_node_int_value(text_node, "Colour"));
-      Symbol s(symbol.at(0), colour);
-
-      creature->set_symbol(s);
-    }
+    XMLNode symbol_node = XMLUtils::get_next_element_by_local_name(creature_node, "Symbol");
+    Symbol s('?', Colour::COLOUR_WHITE);
+    parse_symbol(s, symbol_node);
+    creature->set_symbol(s);
     
     XMLNode creature_generation_node = XMLUtils::get_next_element_by_local_name(creature_node, "CreatureGeneration");
     if (!creature_generation_node.is_null())

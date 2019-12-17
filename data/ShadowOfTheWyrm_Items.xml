@@ -13,10 +13,10 @@
 				<WornLocation>1</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>13</Material>
-				<TextDetails>
-					<Symbol>#</Symbol>
+				<Symbol>
+					<Char>#</Char>
 					<Colour>4</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.10</Slash>
@@ -39,10 +39,10 @@
 				<WornLocation>1</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>13</Material>
-				<TextDetails>
-					<Symbol>#</Symbol>
+				<Symbol>
+					<Char>#</Char>
 					<Colour>4</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Arcane>0.15</Arcane>
@@ -62,10 +62,10 @@
 				<WornLocation>1</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>13</Material>
-				<TextDetails>
-					<Symbol>#</Symbol>
+				<Symbol>
+					<Char>#</Char>
 					<Colour>1</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Poison>0.20</Poison>
@@ -4500,10 +4500,10 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
+				<Symbol>
+					<Char>)</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
@@ -4764,10 +4764,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>3</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
+				<Symbol>
+					<Char>*</Char>
 					<Colour>9</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>10</DangerLevel>
 				<Properties>
 					<Property>
@@ -4798,10 +4798,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>3</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
+				<Symbol>
+					<Char>*</Char>
 					<Colour>4</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>14</DangerLevel>
 				<Properties>
 					<Property>
@@ -4831,10 +4831,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>3</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
+				<Symbol>
+					<Char>*</Char>
 					<Colour>4</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
 					<Property>
@@ -4878,10 +4878,10 @@
 				<WornLocation>10</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>7</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
+				<Symbol>
+					<Char>*</Char>
 					<Colour>7</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Skill>1009</Skill>
 				<RangedSkill>2006</RangedSkill>
@@ -4905,10 +4905,10 @@
 				<WornLocation>10</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>7</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
+				<Symbol>
+					<Char>*</Char>
 					<Colour>8</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Skill>1009</Skill>
 				<RangedSkill>2006</RangedSkill>
@@ -4932,10 +4932,10 @@
 				<!-- FIXME CHANGE THIS LATER! -->
 				<HandsRequired>2</HandsRequired>
 				<Material>7</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
+				<Symbol>
+					<Char>*</Char>
 					<Colour>8</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
 				<Skill>1009</Skill>
@@ -4960,10 +4960,10 @@
 				<WornLocation>10</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>7</Material>
-				<TextDetails>
-					<Symbol>.</Symbol>
+				<Symbol>
+					<Char>.</Char>
 					<Colour>12</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1009</Skill>
 				<RangedSkill>2006</RangedSkill>
@@ -4986,10 +4986,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>o</Symbol>
+				<Symbol>
+					<Char>o</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -5025,10 +5025,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>/</Symbol>
+				<Symbol>
+					<Char>/</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -5058,10 +5058,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>/</Symbol>
+				<Symbol>
+					<Char>/</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>15</DangerLevel>
 				<Properties>
 					<Property>
@@ -5092,10 +5092,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>/</Symbol>
+				<Symbol>
+					<Char>/</Char>
 					<Colour>10</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
@@ -5119,10 +5119,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>/</Symbol>
+				<Symbol>
+					<Char>/</Char>
 					<Colour>10</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
@@ -5150,10 +5150,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>3</Material>
-				<TextDetails>
-					<Symbol>/</Symbol>
+				<Symbol>
+					<Char>/</Char>
 					<Colour>8</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Properties>
 					<Property>
@@ -5183,10 +5183,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>3</Material>
-				<TextDetails>
-					<Symbol>/</Symbol>
+				<Symbol>
+					<Char>/</Char>
 					<Colour>8</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1009</Skill>
 				<RangedSkill>2004</RangedSkill>
@@ -5400,10 +5400,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>3</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
+				<Symbol>
+					<Char>*</Char>
 					<Colour>7</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1009</Skill>
 				<RangedSkill>2006</RangedSkill>
@@ -5533,10 +5533,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1950</Nutrition>
 				<FoodType>2</FoodType>
@@ -5552,10 +5552,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>50</Nutrition>
 				<FoodType>2</FoodType>
@@ -5572,10 +5572,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>10</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -5598,10 +5598,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>1</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>110</Nutrition>
 				<FoodType>0</FoodType>
@@ -5618,10 +5618,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>1</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -5644,10 +5644,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>11</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -5670,10 +5670,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>2</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -5696,10 +5696,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>5</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -5722,10 +5722,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -5748,10 +5748,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>11</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>25</DangerLevel>
 				<Properties>
 					<Property>
@@ -5775,10 +5775,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>25</DangerLevel>
 				<Properties>
 					<Property>
@@ -5802,10 +5802,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>10</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -5822,10 +5822,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>9</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>500</Nutrition>
 				<FoodType>0</FoodType>
@@ -5842,10 +5842,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>3</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>500</Nutrition>
 				<FoodType>0</FoodType>
@@ -5862,10 +5862,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>11</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>700</Nutrition>
 				<FoodType>0</FoodType>
@@ -5882,10 +5882,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>2</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>500</Nutrition>
 				<FoodType>0</FoodType>
@@ -5902,10 +5902,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>1</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>500</Nutrition>
 				<FoodType>0</FoodType>
@@ -5921,10 +5921,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>3</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>1440</Nutrition>
 				<FoodType>1</FoodType>
@@ -5940,10 +5940,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>3</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>1001</Nutrition>
 				<FoodType>1</FoodType>
@@ -5959,10 +5959,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>7</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>860</Nutrition>
 				<FoodType>2</FoodType>
@@ -5978,10 +5978,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>7</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>990</Nutrition>
 				<FoodType>2</FoodType>
@@ -5997,10 +5997,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>7</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>900</Nutrition>
 				<FoodType>2</FoodType>
@@ -6016,10 +6016,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>7</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>930</Nutrition>
 				<FoodType>2</FoodType>
@@ -6035,10 +6035,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>7</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>900</Nutrition>
 				<FoodType>2</FoodType>
@@ -6054,10 +6054,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>7</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>875</Nutrition>
 				<FoodType>2</FoodType>
@@ -6074,10 +6074,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>3</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>2000</Nutrition>
 				<FoodType>1</FoodType>
@@ -6094,10 +6094,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>7</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
 				<Nutrition>1440</Nutrition>	
@@ -6114,10 +6114,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>3</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1700</Nutrition>	
 				<FoodType>2</FoodType>
@@ -6134,10 +6134,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>3</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>500</Nutrition>	
 				<FoodType>0</FoodType>
@@ -6154,10 +6154,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>3</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>600</Nutrition>	
 				<FoodType>2</FoodType>
@@ -6176,10 +6176,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>200</Nutrition>
 				<FoodType>0</FoodType>
@@ -6195,10 +6195,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>2</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>205</Nutrition>
 				<FoodType>0</FoodType>
@@ -6215,10 +6215,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>7</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>200</Nutrition>
 				<FoodType>0</FoodType>
@@ -6236,10 +6236,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
+				<Symbol>
+					<Char>w</Char>
 					<Colour>5</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>30</Nutrition>
 				<FoodType>0</FoodType>
@@ -6257,10 +6257,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
+				<Symbol>
+					<Char>w</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>60</Nutrition>
 				<FoodType>0</FoodType>
@@ -6278,10 +6278,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
+				<Symbol>
+					<Char>w</Char>
 					<Colour>8</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>40</Nutrition>
 				<FoodType>0</FoodType>
@@ -6299,10 +6299,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
+				<Symbol>
+					<Char>w</Char>
 					<Colour>12</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>40</Nutrition>
 				<FoodType>0</FoodType>
@@ -6320,10 +6320,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
+				<Symbol>
+					<Char>w</Char>
 					<Colour>9</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -6340,10 +6340,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
+				<Symbol>
+					<Char>w</Char>
 					<Colour>11</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -6360,10 +6360,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
+				<Symbol>
+					<Char>w</Char>
 					<Colour>12</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -6380,10 +6380,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
+				<Symbol>
+					<Char>w</Char>
 					<Colour>13</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -6400,10 +6400,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
+				<Symbol>
+					<Char>w</Char>
 					<Colour>14</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -6420,10 +6420,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
+				<Symbol>
+					<Char>w</Char>
 					<Colour>7</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -6440,10 +6440,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>f</Symbol>
+				<Symbol>
+					<Char>f</Char>
 					<Colour>10</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -6460,10 +6460,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>f</Symbol>
+				<Symbol>
+					<Char>f</Char>
 					<Colour>2</Colour>
-				</TextDetails>	
+				</Symbol>	
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -6479,10 +6479,10 @@
 				</Weight>
 				<WornLocation>-1</WornLocation>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
+				<Symbol>
+					<Char>w</Char>
 					<Colour>15</Colour>
-				</TextDetails>	
+				</Symbol>	
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
 					<Property>
@@ -6507,10 +6507,10 @@
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>w</Symbol>
+				<Symbol>
+					<Char>w</Char>
 					<Colour>15</Colour>
-				</TextDetails>				
+				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>12000</Nutrition>
 				<FoodType>0</FoodType>
@@ -6563,10 +6563,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>7</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>0</Nutrition>
 				<StandardDrinks>1</StandardDrinks>
@@ -6582,10 +6582,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>11</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>0</Nutrition>
 				<StandardDrinks>1</StandardDrinks>
@@ -6601,10 +6601,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>0</Nutrition>
 				<StandardDrinks>1</StandardDrinks>
@@ -6620,10 +6620,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>400</Nutrition>
 				<StandardDrinks>1</StandardDrinks>
@@ -6639,10 +6639,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>400</Nutrition>
 				<StandardDrinks>1.5</StandardDrinks>
@@ -6658,10 +6658,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
 				<Nutrition>400</Nutrition>
@@ -6678,10 +6678,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
 				<Nutrition>400</Nutrition>
@@ -6700,10 +6700,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>14</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
 				<Effect>1</Effect>
@@ -6720,10 +6720,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>1</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
 				<Effect>6</Effect>
@@ -6740,10 +6740,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
 				<Effect>7</Effect>
@@ -6760,10 +6760,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>13</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
 				<Effect>8</Effect>
@@ -6780,10 +6780,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>4</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
 				<Effect>9</Effect>
@@ -6800,10 +6800,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>10</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
 				<Effect>10</Effect>
@@ -6820,10 +6820,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>10</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<Nutrition>4000</Nutrition>
 				<Effect>0</Effect>
@@ -6840,10 +6840,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>8</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
 				<Effect>11</Effect>
@@ -6861,10 +6861,10 @@
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
 				<Glow>1</Glow>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>14</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
 				<Effect>12</Effect>
@@ -6881,10 +6881,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>1</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
 				<Effect>16</Effect>
@@ -6901,10 +6901,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>1</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>15</DangerLevel>
 				<Nutrition>100</Nutrition>
 				<Effect>17</Effect>
@@ -6922,10 +6922,10 @@
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
 				<Glow>1</Glow>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>9</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
 				<Effect>0</Effect>
@@ -6947,10 +6947,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>5</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>200</Nutrition>
 				<Effect>3</Effect>
@@ -6967,10 +6967,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>9</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>300</Nutrition>
 				<Effect>4</Effect>
@@ -6987,10 +6987,10 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
-				<TextDetails>
-					<Symbol>!</Symbol>
+				<Symbol>
+					<Char>!</Char>
 					<Colour>6</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>400</Nutrition>
 				<Effect>27</Effect>
@@ -7006,10 +7006,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>?</Symbol>
+				<Symbol>
+					<Char>?</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Effect>0</Effect>
 			</Scroll>
@@ -7022,10 +7022,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>?</Symbol>
+				<Symbol>
+					<Char>?</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<Properties>
 					<Property>
@@ -7046,10 +7046,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>?</Symbol>
+				<Symbol>
+					<Char>?</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Effect>2</Effect>				
 			</Scroll>
@@ -7064,10 +7064,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>?</Symbol>
+				<Symbol>
+					<Char>?</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Effect>32</Effect>				
 			</Scroll>
@@ -7082,10 +7082,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>?</Symbol>
+				<Symbol>
+					<Char>?</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Effect>24</Effect>				
 			</Scroll>
@@ -7100,10 +7100,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>?</Symbol>
+				<Symbol>
+					<Char>?</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>8</DangerLevel>
 				<Effect>13</Effect>				
 			</Scroll>
@@ -7118,10 +7118,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>?</Symbol>
+				<Symbol>
+					<Char>?</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>10</DangerLevel>
 				<Effect>15</Effect>				
 			</Scroll>
@@ -7136,10 +7136,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>?</Symbol>
+				<Symbol>
+					<Char>?</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>5</DangerLevel>
 				<Effect>20</Effect>
 			</Scroll>
@@ -7154,10 +7154,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>?</Symbol>
+				<Symbol>
+					<Char>?</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Effect>21</Effect>
 			</Scroll>
@@ -7172,10 +7172,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>?</Symbol>
+				<Symbol>
+					<Char>?</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>5</DangerLevel>
 				<Effect>23</Effect>
 			</Scroll>
@@ -7190,10 +7190,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>?</Symbol>
+				<Symbol>
+					<Char>?</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Effect>22</Effect>
 			</Scroll>
@@ -7208,10 +7208,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>?</Symbol>
+				<Symbol>
+					<Char>?</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Effect>25</Effect>
 			</Scroll>
@@ -7226,10 +7226,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>?</Symbol>
+				<Symbol>
+					<Char>?</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Effect>30</Effect>
 			</Scroll>
@@ -7244,10 +7244,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>?</Symbol>
+				<Symbol>
+					<Char>?</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Effect>31</Effect>
 			</Scroll>
@@ -7263,10 +7263,10 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<Material>11</Material>
-				<TextDetails>
-					<Symbol>$</Symbol>
+				<Symbol>
+					<Char>$</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 			</Currency>
 		</Currencies>
@@ -7510,10 +7510,10 @@
 				</Weight>
 				<Artifact>1</Artifact>
 				<Material>7</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
+				<Symbol>
+					<Char>*</Char>
 					<Colour>11</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
 			<Tool id="heart_heaven">
@@ -7526,10 +7526,10 @@
 				</Weight>
 				<Artifact>1</Artifact>
 				<Material>7</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
+				<Symbol>
+					<Char>*</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
 			<Tool id="heart_world">
@@ -7542,10 +7542,10 @@
 				</Weight>
 				<Artifact>1</Artifact>
 				<Material>7</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
+				<Symbol>
+					<Char>*</Char>
 					<Colour>2</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
 			<Tool id="heart_world_beyond">
@@ -7558,10 +7558,10 @@
 				</Weight>
 				<Artifact>1</Artifact>
 				<Material>7</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
+				<Symbol>
+					<Char>*</Char>
 					<Colour>8</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
 			<Tool id="cosmos_stone">
@@ -7574,10 +7574,10 @@
 				</Weight>
 				<Artifact>1</Artifact>
 				<Material>7</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
+				<Symbol>
+					<Char>*</Char>
 					<Colour>8</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
 			<Tool id="black_orb">
@@ -7590,10 +7590,10 @@
 				</Weight>
 				<Artifact>1</Artifact>
 				<Material>7</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
+				<Symbol>
+					<Char>*</Char>
 					<Colour>8</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
 			<Tool id="_fishing_rod">
@@ -7789,10 +7789,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>\</Symbol>
+				<Symbol>
+					<Char>\</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Effect>0</Effect>
 				<BeamType>1</BeamType>
@@ -7810,10 +7810,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>\</Symbol>
+				<Symbol>
+					<Char>\</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<Effect>5</Effect>
 				<BeamType>1</BeamType>
@@ -7831,10 +7831,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>\</Symbol>
+				<Symbol>
+					<Char>\</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<Damage>
 					<NumDice>4</NumDice>
@@ -7856,10 +7856,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>\</Symbol>
+				<Symbol>
+					<Char>\</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Damage>
 					<NumDice>3</NumDice>
@@ -7883,10 +7883,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>\</Symbol>
+				<Symbol>
+					<Char>\</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<Damage>
 					<NumDice>5</NumDice>
@@ -7908,10 +7908,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>\</Symbol>
+				<Symbol>
+					<Char>\</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Damage>
 					<NumDice>5</NumDice>
@@ -7935,10 +7935,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>\</Symbol>
+				<Symbol>
+					<Char>\</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<Damage>
 					<NumDice>6</NumDice>
@@ -7962,10 +7962,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>\</Symbol>
+				<Symbol>
+					<Char>\</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<Damage>
 					<NumDice>4</NumDice>
@@ -7989,10 +7989,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>\</Symbol>
+				<Symbol>
+					<Char>\</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<Damage>
 					<NumDice>8</NumDice>
@@ -8016,10 +8016,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>\</Symbol>
+				<Symbol>
+					<Char>\</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>12</DangerLevel>
 				<Damage>
 					<NumDice>10</NumDice>
@@ -8042,10 +8042,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>\</Symbol>
+				<Symbol>
+					<Char>\</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<Damage>
 					<NumDice>6</NumDice>
@@ -8067,10 +8067,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>\</Symbol>
+				<Symbol>
+					<Char>\</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<Damage>
 					<NumDice>12</NumDice>
@@ -8092,10 +8092,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>\</Symbol>
+				<Symbol>
+					<Char>\</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>8</DangerLevel>
 				<Damage vorpal="1">
 					<NumDice>3</NumDice>
@@ -8117,10 +8117,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>\</Symbol>
+				<Symbol>
+					<Char>\</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Effect>26</Effect>
 				<BeamType>1</BeamType>
@@ -8138,10 +8138,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>\</Symbol>
+				<Symbol>
+					<Char>\</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Damage>
 					<NumDice>6</NumDice>
@@ -8164,10 +8164,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>8</Material>
-				<TextDetails>
-					<Symbol>\</Symbol>
+				<Symbol>
+					<Char>\</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<Damage draining="1" ethereal="1">
 					<NumDice>6</NumDice>
@@ -8190,10 +8190,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>ISEN_DUN_CHRONICLE_TEXT_SID</TextSID>
 				<SpellID/>
@@ -8208,10 +8208,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>BOOK_OF_DAYS_TEXT_SID</TextSID>
 				<SpellID/>
@@ -8226,10 +8226,10 @@
 					<Pounds>4</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>THE_NINE_TEXT_SID</TextSID>
 				<SpellID/>
@@ -8244,10 +8244,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>ON_ETERNALISM_TEXT_SID</TextSID>
 				<SpellID/>
@@ -8262,10 +8262,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>ON_FAERIE_FRAGMENTS_TEXT_SID</TextSID>
 				<SpellID/>
@@ -8280,10 +8280,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>TEL_AND_FLORIDEL_TEXT_SID</TextSID>
 				<SpellID/>
@@ -8298,10 +8298,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>STONEHEIM_HISTORY_TEXT_SID</TextSID>
 				<SpellID/>
@@ -8316,10 +8316,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>GNORDVAR_HISTORY_TEXT_SID</TextSID>
 				<SpellID/>
@@ -8334,10 +8334,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>YEW_HISTORY_TEXT_SID</TextSID>
 				<SpellID/>
@@ -8352,10 +8352,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>SHRINES_HISTORY_TEXT_SID</TextSID>
 				<SpellID/>
@@ -8370,10 +8370,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>HISTORY_KELL_EMPIRE_TEXT_SID</TextSID>
 				<SpellID/>
@@ -8390,10 +8390,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>c_01_minor_healing</SpellID>
 				<Difficulty>30</Difficulty>
@@ -8409,10 +8409,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>c_02_flame_dart</SpellID>
 				<Difficulty>30</Difficulty>
@@ -8428,10 +8428,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>c_03_steel_wind</SpellID>
 				<Difficulty>35</Difficulty>
@@ -8447,10 +8447,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>c_04_blink</SpellID>
 				<Difficulty>40</Difficulty>
@@ -8466,10 +8466,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>7</DangerLevel>
 				<SpellID>c_05_spirit_bolt</SpellID>
 				<Difficulty>50</Difficulty>
@@ -8485,10 +8485,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<SpellID>c_06_purify</SpellID>
 				<Difficulty>40</Difficulty>
@@ -8504,10 +8504,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<SpellID>c_07_antimagic_shield</SpellID>
 				<Difficulty>70</Difficulty>
@@ -8523,10 +8523,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>c_08_bravery</SpellID>
 				<Difficulty>40</Difficulty>
@@ -8542,10 +8542,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>c_09_force_bolt</SpellID>
 				<Difficulty>50</Difficulty>
@@ -8561,10 +8561,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<SpellID>c_10_cleansing</SpellID>
 				<Difficulty>40</Difficulty>
@@ -8580,10 +8580,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>c_12_mapping</SpellID>
 				<Difficulty>30</Difficulty>
@@ -8599,10 +8599,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>c_13_crumble</SpellID>
 				<Difficulty>25</Difficulty>
@@ -8618,10 +8618,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<SpellID>c_11_blast</SpellID>
 				<Difficulty>36</Difficulty>
@@ -8637,10 +8637,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>c_14_inferno</SpellID>
 				<Difficulty>60</Difficulty>
@@ -8656,10 +8656,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>25</DangerLevel>
 				<SpellID>c_15_shards</SpellID>
 				<Difficulty>50</Difficulty>
@@ -8675,10 +8675,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>c_16_electric_arc</SpellID>
 				<Difficulty>30</Difficulty>
@@ -8694,10 +8694,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>c_17_repel</SpellID>
 				<Difficulty>32</Difficulty>
@@ -8713,10 +8713,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>c_18_glow</SpellID>
 				<Difficulty>35</Difficulty>
@@ -8732,10 +8732,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<SpellID>a_01_wreath_of_fire</SpellID>
 				<Difficulty>110</Difficulty>
@@ -8751,10 +8751,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<SpellID>a_03_lightning_bolt</SpellID>
 				<Difficulty>75</Difficulty>
@@ -8770,10 +8770,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>12</DangerLevel>
 				<SpellID>a_02_dragon_breath</SpellID>
 				<Difficulty>100</Difficulty>
@@ -8789,10 +8789,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>18</DangerLevel>
 				<SpellID>a_04_shockwave</SpellID>
 				<Difficulty>115</Difficulty>
@@ -8808,10 +8808,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>30</DangerLevel>
 				<SpellID>a_05_flight</SpellID>
 				<Difficulty>100</Difficulty>
@@ -8827,10 +8827,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<SpellID>a_06_cross_of_flame</SpellID>
 				<Difficulty>125</Difficulty>
@@ -8846,10 +8846,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<SpellID>a_07_fireball</SpellID>
 				<Difficulty>125</Difficulty>
@@ -8865,10 +8865,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>8</DangerLevel>
 				<SpellID>a_08_elemental_mastery</SpellID>
 				<Difficulty>85</Difficulty>
@@ -8884,10 +8884,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<SpellID>a_09_frost_bolt</SpellID>
 				<Difficulty>70</Difficulty>
@@ -8903,10 +8903,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>16</DangerLevel>
 				<SpellID>a_10_fire_storm</SpellID>
 				<Difficulty>130</Difficulty>
@@ -8922,10 +8922,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>16</DangerLevel>
 				<SpellID>a_11_ice_storm</SpellID>
 				<Difficulty>130</Difficulty>
@@ -8941,10 +8941,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>16</DangerLevel>
 				<SpellID>a_12_lightning_storm</SpellID>
 				<Difficulty>130</Difficulty>
@@ -8960,10 +8960,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<SpellID>a_13_maelstrom</SpellID>
 				<Difficulty>135</Difficulty>
@@ -8979,10 +8979,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>10</DangerLevel>
 				<SpellID>a_14_absolute_zero</SpellID>
 				<Difficulty>150</Difficulty>
@@ -8998,10 +8998,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>8</DangerLevel>
 				<SpellID>a_15_vorpal_bolt</SpellID>
 				<Difficulty>110</Difficulty>
@@ -9017,10 +9017,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<SpellID>a_16_dig</SpellID>
 				<Difficulty>70</Difficulty>
@@ -9036,10 +9036,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>a_17_holocaust</SpellID>
 				<Difficulty>100</Difficulty>
@@ -9055,10 +9055,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>a_19_meteor</SpellID>
 				<Difficulty>155</Difficulty>
@@ -9074,10 +9074,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>a_20_teleport</SpellID>
 				<Difficulty>115</Difficulty>
@@ -9093,10 +9093,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<SpellID>a_21_warp</SpellID>
 				<Difficulty>120</Difficulty>
@@ -9112,10 +9112,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>5</DangerLevel>
 				<SpellID>d_01_healing_word</SpellID>
 				<Difficulty>70</Difficulty>
@@ -9131,10 +9131,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>d_02_smite</SpellID>
 				<Difficulty>50</Difficulty>
@@ -9150,10 +9150,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>32</DangerLevel>
 				<SpellID>d_03_holy</SpellID>
 				<Difficulty>120</Difficulty>
@@ -9169,10 +9169,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>5</DangerLevel>
 				<SpellID>d_04_divine_wind</SpellID>
 				<Difficulty>70</Difficulty>
@@ -9188,10 +9188,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>5</DangerLevel>
 				<SpellID>d_05_divine_shield</SpellID>
 				<Difficulty>75</Difficulty>
@@ -9207,10 +9207,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>d_06_cure</SpellID>
 				<Difficulty>60</Difficulty>
@@ -9226,10 +9226,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<SpellID>d_07_soften</SpellID>
 				<Difficulty>70</Difficulty>
@@ -9245,10 +9245,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>18</DangerLevel>
 				<SpellID>d_08_benediction</SpellID>
 				<Difficulty>130</Difficulty>
@@ -9264,10 +9264,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<SpellID>d_09_heavenly_hand</SpellID>
 				<Difficulty>80</Difficulty>
@@ -9283,10 +9283,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>5</DangerLevel>
 				<SpellID>d_10_radiant_beam</SpellID>
 				<Difficulty>65</Difficulty>
@@ -9302,10 +9302,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>d_11_divine_form</SpellID>
 				<Difficulty>90</Difficulty>
@@ -9321,10 +9321,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>d_12_absolution</SpellID>
 				<Difficulty>100</Difficulty>
@@ -9340,10 +9340,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>30</DangerLevel>
 				<SpellID>m_01_wraith_form</SpellID>
 				<Difficulty>130</Difficulty>
@@ -9359,10 +9359,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<SpellID>m_02_poison</SpellID>
 				<Difficulty>60</Difficulty>
@@ -9378,10 +9378,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<SpellID>m_03_blind</SpellID>
 				<Difficulty>50</Difficulty>
@@ -9397,10 +9397,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_04_mute</SpellID>
 				<Difficulty>40</Difficulty>
@@ -9416,10 +9416,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<SpellID>m_05_spellbind</SpellID>
 				<Difficulty>65</Difficulty>
@@ -9435,10 +9435,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_06_haste</SpellID>
 				<Difficulty>60</Difficulty>
@@ -9454,10 +9454,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_07_slow</SpellID>
 				<Difficulty>60</Difficulty>
@@ -9473,10 +9473,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_08_stone</SpellID>
 				<Difficulty>115</Difficulty>
@@ -9492,10 +9492,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_09_curse</SpellID>
 				<Difficulty>70</Difficulty>
@@ -9511,10 +9511,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_10_aim</SpellID>
 				<Difficulty>65</Difficulty>
@@ -9530,10 +9530,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_11_haze</SpellID>
 				<Difficulty>65</Difficulty>
@@ -9549,10 +9549,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>15</DangerLevel>
 				<SpellID>m_12_timewalk</SpellID>
 				<Difficulty>80</Difficulty>
@@ -9568,10 +9568,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>m_13_uncurse</SpellID>
 				<Difficulty>30</Difficulty>
@@ -9587,10 +9587,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_14_detect_traps</SpellID>
 				<Difficulty>50</Difficulty>
@@ -9606,10 +9606,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<SpellID>m_15_bless</SpellID>
 				<Difficulty>75</Difficulty>
@@ -9625,10 +9625,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>m_16_malediction</SpellID>
 				<Difficulty>95</Difficulty>
@@ -9644,10 +9644,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>5</Material>
-				<TextDetails>
-					<Symbol>"</Symbol>
+				<Symbol>
+					<Char>"</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_17_rage</SpellID>
 				<Difficulty>60</Difficulty>
@@ -9711,10 +9711,10 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
-				<TextDetails>
-					<Symbol>)</Symbol>
+				<Symbol>
+					<Char>)</Char>
 					<Colour>7</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -9732,10 +9732,10 @@
 					<Pounds>120</Pounds>
 				</Weight>
 				<Material>4</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>7</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 			<Item id="mummified_corpse">
@@ -9747,10 +9747,10 @@
 					<Pounds>150</Pounds>
 				</Weight>
 				<Material>4</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>7</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 			<Item id="mum_corpse_amaur_1">
@@ -9762,10 +9762,10 @@
 					<Pounds>150</Pounds>
 				</Weight>
 				<Material>4</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>7</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 			<Item id="mum_corpse_amaur_2">
@@ -9777,10 +9777,10 @@
 					<Pounds>150</Pounds>
 				</Weight>
 				<Material>4</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>7</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 			<Item id="mum_corpse_amaur_3">
@@ -9792,10 +9792,10 @@
 					<Pounds>150</Pounds>
 				</Weight>
 				<Material>4</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>7</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 			<Item id="_pile_of_bones">
@@ -9807,10 +9807,10 @@
 					<Pounds>20</Pounds>
 				</Weight>
 				<Material>12</Material>
-				<TextDetails>
-					<Symbol>%</Symbol>
+				<Symbol>
+					<Char>%</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 			<Item id="handful_gleaming_wyrm_scales">
@@ -9903,10 +9903,10 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>10</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
+				<Symbol>
+					<Char>*</Char>
 					<Colour>9</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 			<Item id="_coal">
@@ -9918,10 +9918,10 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>7</Material>
-				<TextDetails>
-					<Symbol>*</Symbol>
+				<Symbol>
+					<Char>*</Char>
 					<Colour>8</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 			<Item id="_skin">
@@ -9945,10 +9945,10 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<Material>4</Material>
-				<TextDetails>
-					<Symbol>.</Symbol>
+				<Symbol>
+					<Char>.</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
 					<Property>
@@ -9967,10 +9967,10 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<Material>4</Material>
-				<TextDetails>
-					<Symbol>.</Symbol>
+				<Symbol>
+					<Char>.</Char>
 					<Colour>1</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
 					<Property>
@@ -9989,10 +9989,10 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<Material>4</Material>
-				<TextDetails>
-					<Symbol>.</Symbol>
+				<Symbol>
+					<Char>.</Char>
 					<Colour>11</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
 					<Property>
@@ -10011,10 +10011,10 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<Material>4</Material>
-				<TextDetails>
-					<Symbol>.</Symbol>
+				<Symbol>
+					<Char>.</Char>
 					<Colour>8</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
 					<Property>
@@ -10033,10 +10033,10 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<Material>4</Material>
-				<TextDetails>
-					<Symbol>.</Symbol>
+				<Symbol>
+					<Char>.</Char>
 					<Colour>5</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
 					<Property>
@@ -10055,10 +10055,10 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<Material>4</Material>
-				<TextDetails>
-					<Symbol>.</Symbol>
+				<Symbol>
+					<Char>.</Char>
 					<Colour>3</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
 					<Property>
@@ -10077,10 +10077,10 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<Material>4</Material>
-				<TextDetails>
-					<Symbol>.</Symbol>
+				<Symbol>
+					<Char>.</Char>
 					<Colour>11</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
 					<Property>
@@ -10099,10 +10099,10 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<Material>4</Material>
-				<TextDetails>
-					<Symbol>.</Symbol>
+				<Symbol>
+					<Char>.</Char>
 					<Colour>15</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
 					<Property>
@@ -10121,10 +10121,10 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<Material>3</Material>
-				<TextDetails>
-					<Symbol>#</Symbol>
+				<Symbol>
+					<Char>#</Char>
 					<Colour>7</Colour>
-				</TextDetails>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 		</MiscItems>

@@ -1129,7 +1129,7 @@ ClassIdentifier Tannery::internal_class_identifier() const
 // Trap
 
 Trap::Trap(const Symbol& new_symbol)
-  : Feature("", MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol, 1 /* 1 use by default - will be set later */), triggered(false), trigger_symbol('?'), colour(Colour::COLOUR_WHITE), effect(EffectType::EFFECT_TYPE_NULL)
+  : Feature("", MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol, 1 /* 1 use by default - will be set later */), triggered(false), trigger_symbol(Symbol('?', Colour::COLOUR_WHITE)), colour(Colour::COLOUR_WHITE), effect(EffectType::EFFECT_TYPE_NULL)
 {
 }
 
@@ -1267,12 +1267,12 @@ string Trap::get_trigger_message_sid() const
   return trigger_message_sid;
 }
 
-void Trap::set_trigger_symbol(const uchar new_trigger_symbol)
+void Trap::set_trigger_symbol(const Symbol& new_trigger_symbol)
 {
   trigger_symbol = new_trigger_symbol;
 }
 
-uchar Trap::get_trigger_symbol() const
+Symbol Trap::get_trigger_symbol() const
 {
   return trigger_symbol;
 }
@@ -1351,7 +1351,7 @@ bool Trap::serialize(std::ostream& stream) const
   Serialize::write_bool(stream, triggered);
   Serialize::write_string(stream, id);
   Serialize::write_string(stream, trigger_message_sid);
-  Serialize::write_uchar(stream, trigger_symbol);
+  trigger_symbol.serialize(stream);
   Serialize::write_string(stream, player_damage_message_sid);
   Serialize::write_enum(stream, colour);
   Serialize::write_string(stream, item_id);
@@ -1368,7 +1368,7 @@ bool Trap::deserialize(istream& stream)
   Serialize::read_bool(stream, triggered);
   Serialize::read_string(stream, id);
   Serialize::read_string(stream, trigger_message_sid);
-  Serialize::read_uchar(stream, trigger_symbol);
+  trigger_symbol.deserialize(stream);
   Serialize::read_string(stream, player_damage_message_sid);
   Serialize::read_enum(stream, colour);
   Serialize::read_string(stream, item_id);

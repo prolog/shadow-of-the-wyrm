@@ -1051,6 +1051,16 @@ string Game::get_current_loaded_savefile() const
   return current_loaded_savefile;
 }
 
+void Game::set_spritesheets(const map<string, string>& new_spritesheets)
+{
+  spritesheets = new_spritesheets;
+}
+
+map<string, string> Game::get_spritesheets() const
+{
+  return spritesheets;
+}
+
 bool Game::serialize(ostream& stream) const
 {
   Log::instance().trace("Game::serialize - start");
@@ -1190,7 +1200,8 @@ bool Game::serialize(ostream& stream) const
   loaded_map_details.serialize(stream);
 
   Serialize::write_string(stream, current_loaded_savefile);
-    
+  Serialize::write_string_map(stream, spritesheets);
+
   Serialize::write_size_t(stream, calendar_days.size());
 
   for (const auto& cd_pair : calendar_days)
@@ -1417,6 +1428,7 @@ bool Game::deserialize(istream& stream)
   loaded_map_details.deserialize(stream);
 
   Serialize::read_string(stream, current_loaded_savefile);
+  Serialize::read_string_map(stream, spritesheets);
 
   size_t cal_size = 0;
   Serialize::read_size_t(stream, cal_size);

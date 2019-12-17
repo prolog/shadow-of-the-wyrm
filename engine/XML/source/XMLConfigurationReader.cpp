@@ -73,6 +73,13 @@ SpellMap XMLConfigurationReader::get_spells()
   return spells;
 }
 
+map<string, string> XMLConfigurationReader::get_spritesheets()
+{
+  XMLNode spritesheets_node = XMLUtils::get_next_element_by_local_name(root, "Spritesheets");
+  map<string, string> spritesheets = spritesheets_reader.get_spritesheets(spritesheets_node);
+  return spritesheets;
+}
+
 pair<ItemMap, GenerationValuesMap> XMLConfigurationReader::get_items()
 {
   XMLNode prev_config = root;

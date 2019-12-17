@@ -27,10 +27,6 @@ FeaturePtr XMLConfigurableFeatureCMReader::create(const XMLNode& cf_node) const
     {
       cf = FeatureGenerator::generate_configurable_feature(id);
     }
-    else
-    {
-      cf = FeatureGenerator::generate_configurable_feature(material, symbol, colour, desc_sid);
-    }
   }
 
   return cf;

@@ -6,7 +6,7 @@ using namespace std;
 Tool::Tool()
 {
   type = ItemType::ITEM_TYPE_TOOL;
-  symbol = '(';
+  symbol.set_symbol('(');
 }
 
 Tool::~Tool()

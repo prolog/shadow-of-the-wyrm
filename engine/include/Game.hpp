@@ -143,6 +143,9 @@ class Game : public ISerializable
     void set_current_loaded_savefile(const std::string& current_loaded_savefile);
     std::string get_current_loaded_savefile() const;
 
+    void set_spritesheets(const std::map<std::string, std::string>& new_spritesheets);
+    std::map<std::string, std::string> get_spritesheets() const;
+
     virtual void run_map_scripts();
 
     virtual bool serialize(std::ostream& stream) const override;
@@ -282,6 +285,9 @@ class Game : public ISerializable
     // The currently loaded savefile.  Tracked at the game level so that it can
     // be delete after death or quitting.
     std::string current_loaded_savefile;
+
+    // Any spritesheets associated with the configuration.
+    std::map<std::string, std::string> spritesheets;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

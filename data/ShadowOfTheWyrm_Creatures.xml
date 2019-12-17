@@ -9,10 +9,15 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
-				<Colour>15</Colour>
-			</Text>
+			<Symbol>
+				<Char>@</Char>
+				<Colour>7</Colour>
+				<SpritesheetLocation>
+					<ID>cr</ID>
+					<Row>2</Row>
+					<Col>6</Col>
+				</SpritesheetLocation>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>1</DangerLevel>
@@ -39,10 +44,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>r</Symbol>
+			<Symbol>
+				<Char>r</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>13</TileType>
@@ -80,10 +85,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>m</Symbol>
+			<Symbol>
+				<Char>m</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>13</TileType>
@@ -122,10 +127,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -169,10 +174,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>F</Symbol>
+			<Symbol>
+				<Char>F</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -235,10 +240,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>K</Symbol>
+			<Symbol>
+				<Char>K</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -283,10 +288,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>Q</Symbol>
+			<Symbol>
+				<Char>Q</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -327,10 +332,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -387,10 +392,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -434,10 +439,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -482,10 +487,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>A</Symbol>
+			<Symbol>
+				<Char>A</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -531,10 +536,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -569,10 +574,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>B</Symbol>
+			<Symbol>
+				<Char>B</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -616,10 +621,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>r</Symbol>
+			<Symbol>
+				<Char>r</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>13</TileType>
@@ -656,10 +661,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -704,10 +709,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>c</Symbol>
+			<Symbol>
+				<Char>c</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -743,10 +748,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>h</Symbol>
+			<Symbol>
+				<Char>h</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -788,10 +793,10 @@
  			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>|</Symbol>
+			<Symbol>
+				<Char>|</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -834,10 +839,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>h</Symbol>
+			<Symbol>
+				<Char>h</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -878,10 +883,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>x</Symbol>
+			<Symbol>
+				<Char>x</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>24</TileType>
@@ -914,10 +919,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>k</Symbol>
+			<Symbol>
+				<Char>k</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>24</TileType>
@@ -950,10 +955,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>m</Symbol>
+			<Symbol>
+				<Char>m</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>24</TileType>
@@ -986,10 +991,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -1032,10 +1037,10 @@
 				<Strategy>mobile</Strategy>
 				<Breeds>1</Breeds>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>b</Symbol>
+			<Symbol>
+				<Char>b</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -1078,10 +1083,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -1125,10 +1130,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>p</Symbol>
+			<Symbol>
+				<Char>p</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -1172,10 +1177,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>x</Symbol>
+			<Symbol>
+				<Char>x</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -1220,10 +1225,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -1267,10 +1272,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -1315,10 +1320,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>c</Symbol>
+			<Symbol>
+				<Char>c</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -1362,10 +1367,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>b</Symbol>
+			<Symbol>
+				<Char>b</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -1409,10 +1414,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>31</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -1461,10 +1466,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -1509,10 +1514,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -1559,10 +1564,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -1621,10 +1626,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -1680,10 +1685,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -1727,10 +1732,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -1775,10 +1780,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -1836,10 +1841,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -1894,10 +1899,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -1942,10 +1947,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -1989,10 +1994,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -2038,10 +2043,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -2085,10 +2090,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -2135,10 +2140,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -2190,10 +2195,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -2228,10 +2233,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -2277,10 +2282,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -2327,10 +2332,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>j</Symbol>
+			<Symbol>
+				<Char>j</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -2374,10 +2379,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>F</Symbol>
+			<Symbol>
+				<Char>F</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -2421,10 +2426,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>F</Symbol>
+			<Symbol>
+				<Char>F</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -2467,10 +2472,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>c</Symbol>
+			<Symbol>
+				<Char>c</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -2530,10 +2535,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -2576,10 +2581,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>k</Symbol>
+			<Symbol>
+				<Char>k</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -2626,10 +2631,10 @@
 				<Strategy>mobile</Strategy>
 				<Breeds>1</Breeds>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>j</Symbol>
+			<Symbol>
+				<Char>j</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -2672,10 +2677,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>k</Symbol>
+			<Symbol>
+				<Char>k</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -2722,10 +2727,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>n</Symbol>
+			<Symbol>
+				<Char>n</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -2767,10 +2772,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>b</Symbol>
+			<Symbol>
+				<Char>b</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -2814,10 +2819,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>B</Symbol>
+			<Symbol>
+				<Char>B</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -2858,10 +2863,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>M</Symbol>
+			<Symbol>
+				<Char>M</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -2901,10 +2906,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>j</Symbol>
+			<Symbol>
+				<Char>j</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -2948,10 +2953,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>i</Symbol>
+			<Symbol>
+				<Char>i</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>24</TileType>
@@ -2985,10 +2990,10 @@
 			<DecisionStrategy>
 				<Strategy>immobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>v</Symbol>
+			<Symbol>
+				<Char>v</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3028,10 +3033,10 @@
 			<DecisionStrategy>
 				<Strategy>immobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>v</Symbol>
+			<Symbol>
+				<Char>v</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3075,10 +3080,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>T</Symbol>
+			<Symbol>
+				<Char>T</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3119,10 +3124,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>P</Symbol>
+			<Symbol>
+				<Char>P</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3165,10 +3170,10 @@
 			<DecisionStrategy>
 				<Strategy>immobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>v</Symbol>
+			<Symbol>
+				<Char>v</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3209,10 +3214,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>D</Symbol>
+			<Symbol>
+				<Char>D</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3263,10 +3268,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>X</Symbol>
+			<Symbol>
+				<Char>X</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3309,10 +3314,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3368,10 +3373,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -3431,10 +3436,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>j</Symbol>
+			<Symbol>
+				<Char>j</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3480,10 +3485,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>X</Symbol>
+			<Symbol>
+				<Char>X</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3528,10 +3533,10 @@
 				<Strategy>mobile</Strategy>
 				<Breeds>1</Breeds>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>b</Symbol>
+			<Symbol>
+				<Char>b</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3577,10 +3582,10 @@
 				<Strategy>mobile</Strategy>
 				<Breeds>1</Breeds>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3623,10 +3628,10 @@
 				<Strategy>mobile</Strategy>
 				<Breeds>1</Breeds>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>X</Symbol>
+			<Symbol>
+				<Char>X</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3668,10 +3673,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>S</Symbol>
+			<Symbol>
+				<Char>S</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3715,10 +3720,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3760,10 +3765,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -3792,10 +3797,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -3828,10 +3833,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>*</Symbol>
+			<Symbol>
+				<Char>*</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3873,10 +3878,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>*</Symbol>
+			<Symbol>
+				<Char>*</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -3916,10 +3921,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>i</Symbol>
+			<Symbol>
+				<Char>i</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>13</TileType>
@@ -3954,10 +3959,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4005,10 +4010,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>f</Symbol>
+			<Symbol>
+				<Char>f</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -4043,10 +4048,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>f</Symbol>
+			<Symbol>
+				<Char>f</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -4075,10 +4080,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>f</Symbol>
+			<Symbol>
+				<Char>f</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -4109,10 +4114,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>f</Symbol>
+			<Symbol>
+				<Char>f</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -4142,10 +4147,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>p</Symbol>
+			<Symbol>
+				<Char>p</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4211,10 +4216,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>A</Symbol>
+			<Symbol>
+				<Char>A</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4256,10 +4261,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>T</Symbol>
+			<Symbol>
+				<Char>T</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4300,10 +4305,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>c</Symbol>
+			<Symbol>
+				<Char>c</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4345,10 +4350,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>j</Symbol>
+			<Symbol>
+				<Char>j</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4394,10 +4399,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>F</Symbol>
+			<Symbol>
+				<Char>F</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4438,10 +4443,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>F</Symbol>
+			<Symbol>
+				<Char>F</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4482,10 +4487,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>D</Symbol>
+			<Symbol>
+				<Char>D</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4525,10 +4530,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -4575,10 +4580,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>C</Symbol>
+			<Symbol>
+				<Char>C</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4618,10 +4623,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>U</Symbol>
+			<Symbol>
+				<Char>U</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4668,10 +4673,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>J</Symbol>
+			<Symbol>
+				<Char>J</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4711,10 +4716,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>L</Symbol>
+			<Symbol>
+				<Char>L</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4756,10 +4761,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>L</Symbol>
+			<Symbol>
+				<Char>L</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4803,10 +4808,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>v</Symbol>
+			<Symbol>
+				<Char>v</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4847,10 +4852,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>K</Symbol>
+			<Symbol>
+				<Char>K</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4913,10 +4918,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>m</Symbol>
+			<Symbol>
+				<Char>m</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -4963,10 +4968,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>S</Symbol>
+			<Symbol>
+				<Char>S</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>36</DangerLevel>
@@ -4993,10 +4998,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>V</Symbol>
+			<Symbol>
+				<Char>V</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5037,10 +5042,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5082,10 +5087,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>S</Symbol>
+			<Symbol>
+				<Char>S</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5130,10 +5135,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>&amp;</Symbol>
+			<Symbol>
+				<Char>&amp;</Char>
 				<Colour>118</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5178,10 +5183,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>J</Symbol>
+			<Symbol>
+				<Char>J</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5225,10 +5230,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>M</Symbol>
+			<Symbol>
+				<Char>M</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5270,10 +5275,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>D</Symbol>
+			<Symbol>
+				<Char>D</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5318,10 +5323,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>u</Symbol>
+			<Symbol>
+				<Char>u</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5365,10 +5370,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>Q</Symbol>
+			<Symbol>
+				<Char>Q</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5410,10 +5415,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>h</Symbol>
+			<Symbol>
+				<Char>h</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5454,10 +5459,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>U</Symbol>
+			<Symbol>
+				<Char>U</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5499,10 +5504,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>D</Symbol>
+			<Symbol>
+				<Char>D</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5544,10 +5549,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>P</Symbol>
+			<Symbol>
+				<Char>P</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5588,10 +5593,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>A</Symbol>
+			<Symbol>
+				<Char>A</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5634,10 +5639,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5702,10 +5707,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5747,10 +5752,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>D</Symbol>
+			<Symbol>
+				<Char>D</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5791,10 +5796,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>A</Symbol>
+			<Symbol>
+				<Char>A</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -5837,10 +5842,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -5869,10 +5874,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -5923,10 +5928,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -5968,10 +5973,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -6002,10 +6007,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>B</Symbol>
+			<Symbol>
+				<Char>B</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>36</DangerLevel>
@@ -6033,10 +6038,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>41</DangerLevel>
@@ -6064,10 +6069,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -6109,10 +6114,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>T</Symbol>
+			<Symbol>
+				<Char>T</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -6153,10 +6158,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>T</Symbol>
+			<Symbol>
+				<Char>T</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -6201,10 +6206,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -6247,10 +6252,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>X</Symbol>
+			<Symbol>
+				<Char>X</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -6297,10 +6302,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>C</Symbol>
+			<Symbol>
+				<Char>C</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -6342,10 +6347,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>T</Symbol>
+			<Symbol>
+				<Char>T</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -6387,10 +6392,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>A</Symbol>
+			<Symbol>
+				<Char>A</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -6435,10 +6440,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -6483,10 +6488,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>f</Symbol>
+			<Symbol>
+				<Char>f</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -6520,10 +6525,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>v</Symbol>
+			<Symbol>
+				<Char>v</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -6563,10 +6568,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -6595,10 +6600,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>U</Symbol>
+			<Symbol>
+				<Char>U</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -6645,10 +6650,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>J</Symbol>
+			<Symbol>
+				<Char>J</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -6693,10 +6698,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>u</Symbol>
+			<Symbol>
+				<Char>u</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>12</TileType>
@@ -6733,10 +6738,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>u</Symbol>
+			<Symbol>
+				<Char>u</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>12</TileType>
@@ -6779,10 +6784,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>u</Symbol>
+			<Symbol>
+				<Char>u</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>12</TileType>
@@ -6827,10 +6832,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>U</Symbol>
+			<Symbol>
+				<Char>U</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>12</TileType>
@@ -6868,10 +6873,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -6901,10 +6906,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>u</Symbol>
+			<Symbol>
+				<Char>u</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>12</TileType>
@@ -6942,10 +6947,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>L</Symbol>
+			<Symbol>
+				<Char>L</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>12</TileType>
@@ -6997,10 +7002,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>D</Symbol>
+			<Symbol>
+				<Char>D</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>12</TileType>
@@ -7044,10 +7049,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>U</Symbol>
+			<Symbol>
+				<Char>U</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>12</TileType>
@@ -7084,10 +7089,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>j</Symbol>
+			<Symbol>
+				<Char>j</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>13</TileType>
@@ -7124,10 +7129,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>i</Symbol>
+			<Symbol>
+				<Char>i</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -7169,10 +7174,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -7216,10 +7221,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -7275,10 +7280,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>c</Symbol>
+			<Symbol>
+				<Char>c</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -7323,10 +7328,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -7371,10 +7376,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -7420,10 +7425,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -7468,10 +7473,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -7516,10 +7521,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>M</Symbol>
+			<Symbol>
+				<Char>M</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>24</TileType>
@@ -7552,10 +7557,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>H</Symbol>
+			<Symbol>
+				<Char>H</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>13</TileType>
@@ -7589,10 +7594,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>N</Symbol>
+			<Symbol>
+				<Char>N</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -7632,10 +7637,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>j</Symbol>
+			<Symbol>
+				<Char>j</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>13</TileType>
@@ -7672,10 +7677,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>b</Symbol>
+			<Symbol>
+				<Char>b</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -7720,10 +7725,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>j</Symbol>
+			<Symbol>
+				<Char>j</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -7767,10 +7772,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -7811,10 +7816,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>&amp;</Symbol>
+			<Symbol>
+				<Char>&amp;</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -7855,10 +7860,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>&amp;</Symbol>
+			<Symbol>
+				<Char>&amp;</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -7899,10 +7904,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>U</Symbol>
+			<Symbol>
+				<Char>U</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -7937,10 +7942,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>U</Symbol>
+			<Symbol>
+				<Char>U</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -7981,10 +7986,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8028,10 +8033,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8072,10 +8077,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>M</Symbol>
+			<Symbol>
+				<Char>M</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8116,10 +8121,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>U</Symbol>
+			<Symbol>
+				<Char>U</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>12</TileType>
@@ -8163,10 +8168,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>&amp;</Symbol>
+			<Symbol>
+				<Char>&amp;</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8208,10 +8213,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>&amp;</Symbol>
+			<Symbol>
+				<Char>&amp;</Char>
 				<Colour>123</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8252,10 +8257,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>*</Symbol>
+			<Symbol>
+				<Char>*</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8296,10 +8301,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>24</TileType>
@@ -8333,10 +8338,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>T</Symbol>
+			<Symbol>
+				<Char>T</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8378,10 +8383,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8422,10 +8427,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>*</Symbol>
+			<Symbol>
+				<Char>*</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8474,10 +8479,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8517,10 +8522,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>&amp;</Symbol>
+			<Symbol>
+				<Char>&amp;</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8562,10 +8567,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>D</Symbol>
+			<Symbol>
+				<Char>D</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8607,10 +8612,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8652,10 +8657,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>112</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8698,10 +8703,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>n</Symbol>
+			<Symbol>
+				<Char>n</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8743,10 +8748,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>n</Symbol>
+			<Symbol>
+				<Char>n</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8789,10 +8794,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>h</Symbol>
+			<Symbol>
+				<Char>h</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8833,10 +8838,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>C</Symbol>
+			<Symbol>
+				<Char>C</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8878,10 +8883,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>n</Symbol>
+			<Symbol>
+				<Char>n</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -8923,10 +8928,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>p</Symbol>
+			<Symbol>
+				<Char>p</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>29</TileType>
@@ -8957,10 +8962,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>U</Symbol>
+			<Symbol>
+				<Char>U</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9003,10 +9008,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>C</Symbol>
+			<Symbol>
+				<Char>C</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9048,10 +9053,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>Q</Symbol>
+			<Symbol>
+				<Char>Q</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9092,10 +9097,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9137,10 +9142,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>T</Symbol>
+			<Symbol>
+				<Char>T</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9181,10 +9186,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9225,10 +9230,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9273,10 +9278,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -9330,10 +9335,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>S</Symbol>
+			<Symbol>
+				<Char>S</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9375,10 +9380,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>S</Symbol>
+			<Symbol>
+				<Char>S</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9419,10 +9424,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>S</Symbol>
+			<Symbol>
+				<Char>S</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9463,10 +9468,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>A</Symbol>
+			<Symbol>
+				<Char>A</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9508,10 +9513,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9568,10 +9573,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>&amp;</Symbol>
+			<Symbol>
+				<Char>&amp;</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9616,10 +9621,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>d</Symbol>
+			<Symbol>
+				<Char>d</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9661,10 +9666,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes>
@@ -9723,10 +9728,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>S</Symbol>
+			<Symbol>
+				<Char>S</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9767,10 +9772,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>F</Symbol>
+			<Symbol>
+				<Char>F</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9821,10 +9826,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>B</Symbol>
+			<Symbol>
+				<Char>B</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9865,10 +9870,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>&amp;</Symbol>
+			<Symbol>
+				<Char>&amp;</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9909,10 +9914,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9954,10 +9959,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10001,10 +10006,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10045,10 +10050,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10112,10 +10117,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10159,10 +10164,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10216,10 +10221,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10263,10 +10268,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10312,10 +10317,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10368,10 +10373,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10415,10 +10420,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -10447,10 +10452,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -10480,10 +10485,10 @@
 			<DecisionStrategy>
 				<Strategy>immobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -10519,10 +10524,10 @@
 			<DecisionStrategy>
 				<Strategy>immobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -10558,10 +10563,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>Z</Symbol>
+			<Symbol>
+				<Char>Z</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -10604,10 +10609,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>A</Symbol>
+			<Symbol>
+				<Char>A</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10649,10 +10654,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>F</Symbol>
+			<Symbol>
+				<Char>F</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10696,10 +10701,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>P</Symbol>
+			<Symbol>
+				<Char>P</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10741,10 +10746,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10787,10 +10792,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>f</Symbol>
+			<Symbol>
+				<Char>f</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10831,10 +10836,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>D</Symbol>
+			<Symbol>
+				<Char>D</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10878,10 +10883,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>A</Symbol>
+			<Symbol>
+				<Char>A</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10922,10 +10927,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -10968,10 +10973,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>B</Symbol>
+			<Symbol>
+				<Char>B</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -11013,10 +11018,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>F</Symbol>
+			<Symbol>
+				<Char>F</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -11059,10 +11064,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>d</Symbol>
+			<Symbol>
+				<Char>d</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -11106,10 +11111,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>z</Symbol>
+			<Symbol>
+				<Char>z</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -11158,10 +11163,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>33</TileType>
@@ -11194,10 +11199,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>p</Symbol>
+			<Symbol>
+				<Char>p</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>33</TileType>
@@ -11230,10 +11235,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>33</TileType>
@@ -11266,10 +11271,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>d</Symbol>
+			<Symbol>
+				<Char>d</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -11299,10 +11304,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>d</Symbol>
+			<Symbol>
+				<Char>d</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -11332,10 +11337,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>d</Symbol>
+			<Symbol>
+				<Char>d</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -11367,10 +11372,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>d</Symbol>
+			<Symbol>
+				<Char>d</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -11400,10 +11405,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>d</Symbol>
+			<Symbol>
+				<Char>d</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -11470,10 +11475,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>d</Symbol>
+			<Symbol>
+				<Char>d</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -11517,10 +11522,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>P</Symbol>
+			<Symbol>
+				<Char>P</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -11561,10 +11566,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>&amp;</Symbol>
+			<Symbol>
+				<Char>&amp;</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -11606,10 +11611,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>L</Symbol>
+			<Symbol>
+				<Char>L</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -11652,10 +11657,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>H</Symbol>
+			<Symbol>
+				<Char>H</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>49</TileType>
@@ -11687,10 +11692,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>A</Symbol>
+			<Symbol>
+				<Char>A</Char>
 				<Colour>89</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -11733,10 +11738,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>&amp;</Symbol>
+			<Symbol>
+				<Char>&amp;</Char>
 				<Colour>24</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -11777,10 +11782,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -11821,10 +11826,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -11865,10 +11870,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>b</Symbol>
+			<Symbol>
+				<Char>b</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -11911,10 +11916,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>f</Symbol>
+			<Symbol>
+				<Char>f</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -11960,10 +11965,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>f</Symbol>
+			<Symbol>
+				<Char>f</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -11993,10 +11998,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>b</Symbol>
+			<Symbol>
+				<Char>b</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12026,10 +12031,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>p</Symbol>
+			<Symbol>
+				<Char>p</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12060,10 +12065,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>j</Symbol>
+			<Symbol>
+				<Char>j</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12095,10 +12100,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12129,10 +12134,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>f</Symbol>
+			<Symbol>
+				<Char>f</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12163,10 +12168,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>m</Symbol>
+			<Symbol>
+				<Char>m</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12197,10 +12202,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>x</Symbol>
+			<Symbol>
+				<Char>x</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12241,10 +12246,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12279,10 +12284,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>m</Symbol>
+			<Symbol>
+				<Char>m</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12313,10 +12318,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>C</Symbol>
+			<Symbol>
+				<Char>C</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12347,10 +12352,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>O</Symbol>
+			<Symbol>
+				<Char>O</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12384,10 +12389,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>S</Symbol>
+			<Symbol>
+				<Char>S</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12419,10 +12424,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>j</Symbol>
+			<Symbol>
+				<Char>j</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12453,10 +12458,10 @@
 			<DecisionStrategy>
 				<Strategy>immobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>j</Symbol>
+			<Symbol>
+				<Char>j</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>50</DangerLevel>
@@ -12491,10 +12496,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>f</Symbol>
+			<Symbol>
+				<Char>f</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12526,10 +12531,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12560,10 +12565,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12594,10 +12599,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>D</Symbol>
+			<Symbol>
+				<Char>D</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12628,10 +12633,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>T</Symbol>
+			<Symbol>
+				<Char>T</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12662,10 +12667,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12696,10 +12701,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>&amp;</Symbol>
+			<Symbol>
+				<Char>&amp;</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12730,10 +12735,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>S</Symbol>
+			<Symbol>
+				<Char>S</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12764,10 +12769,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -12797,10 +12802,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>b</Symbol>
+			<Symbol>
+				<Char>b</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -12844,10 +12849,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>b</Symbol>
+			<Symbol>
+				<Char>b</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -12891,10 +12896,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>b</Symbol>
+			<Symbol>
+				<Char>b</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -12938,10 +12943,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>b</Symbol>
+			<Symbol>
+				<Char>b</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -12985,10 +12990,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -13032,10 +13037,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -13078,10 +13083,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -13124,10 +13129,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -13157,10 +13162,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -13190,10 +13195,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -13239,10 +13244,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>q</Symbol>
+			<Symbol>
+				<Char>q</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -13284,10 +13289,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -13331,10 +13336,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -13378,10 +13383,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -13411,10 +13416,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -13444,10 +13449,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -13477,10 +13482,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -13511,10 +13516,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -13550,10 +13555,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -13582,10 +13587,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -13631,10 +13636,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>13</DangerLevel>
@@ -13662,10 +13667,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>L</Symbol>
+			<Symbol>
+				<Char>L</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -13713,10 +13718,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>O</Symbol>
+			<Symbol>
+				<Char>O</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -13776,10 +13781,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>u</Symbol>
+			<Symbol>
+				<Char>u</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -13824,10 +13829,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -13872,10 +13877,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>u</Symbol>
+			<Symbol>
+				<Char>u</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -13919,10 +13924,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>&amp;</Symbol>
+			<Symbol>
+				<Char>&amp;</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -13963,10 +13968,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>b</Symbol>
+			<Symbol>
+				<Char>b</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -14008,10 +14013,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -14047,10 +14052,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -14080,10 +14085,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -14119,10 +14124,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -14157,10 +14162,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -14190,10 +14195,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -14223,10 +14228,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -14257,10 +14262,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -14289,10 +14294,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -14325,10 +14330,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -14365,10 +14370,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>f</Symbol>
+			<Symbol>
+				<Char>f</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -14412,10 +14417,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>M</Symbol>
+			<Symbol>
+				<Char>M</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>24</TileType>
@@ -14449,10 +14454,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>q</Symbol>
+			<Symbol>
+				<Char>q</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -14495,10 +14500,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>f</Symbol>
+			<Symbol>
+				<Char>f</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -14541,10 +14546,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>f</Symbol>
+			<Symbol>
+				<Char>f</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -14585,10 +14590,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>f</Symbol>
+			<Symbol>
+				<Char>f</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -14631,10 +14636,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -14676,10 +14681,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>N</Symbol>
+			<Symbol>
+				<Char>N</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -14710,10 +14715,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -14744,10 +14749,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>B</Symbol>
+			<Symbol>
+				<Char>B</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -14778,10 +14783,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>S</Symbol>
+			<Symbol>
+				<Char>S</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -14812,10 +14817,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>K</Symbol>
+			<Symbol>
+				<Char>K</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
@@ -14848,10 +14853,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>D</Symbol>
+			<Symbol>
+				<Char>D</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -14895,10 +14900,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>R</Symbol>
+			<Symbol>
+				<Char>R</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -14927,10 +14932,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>A</Symbol>
+			<Symbol>
+				<Char>A</Char>
 				<Colour>118</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -14960,10 +14965,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>H</Symbol>
+			<Symbol>
+				<Char>H</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -14993,10 +14998,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15036,10 +15041,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>L</Symbol>
+			<Symbol>
+				<Char>L</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15068,10 +15073,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>N</Symbol>
+			<Symbol>
+				<Char>N</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15106,10 +15111,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>i</Symbol>
+			<Symbol>
+				<Char>i</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15142,10 +15147,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>R</Symbol>
+			<Symbol>
+				<Char>R</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15175,10 +15180,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>r</Symbol>
+			<Symbol>
+				<Char>r</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15208,10 +15213,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>M</Symbol>
+			<Symbol>
+				<Char>M</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15242,10 +15247,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>K</Symbol>
+			<Symbol>
+				<Char>K</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15274,10 +15279,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>M</Symbol>
+			<Symbol>
+				<Char>M</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15306,10 +15311,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>L</Symbol>
+			<Symbol>
+				<Char>L</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15337,10 +15342,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>M</Symbol>
+			<Symbol>
+				<Char>M</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15380,10 +15385,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>J</Symbol>
+			<Symbol>
+				<Char>J</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15412,10 +15417,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>x</Symbol>
+			<Symbol>
+				<Char>x</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15449,10 +15454,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>x</Symbol>
+			<Symbol>
+				<Char>x</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15482,10 +15487,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>A</Symbol>
+			<Symbol>
+				<Char>A</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15513,10 +15518,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>*</Symbol>
+			<Symbol>
+				<Char>*</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15546,10 +15551,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>D</Symbol>
+			<Symbol>
+				<Char>D</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>52</TileType>
@@ -15579,10 +15584,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>123</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>200</DangerLevel>
@@ -15615,10 +15620,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>124</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>200</DangerLevel>
@@ -15652,10 +15657,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>127</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>200</DangerLevel>
@@ -15688,10 +15693,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>114</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>200</DangerLevel>
@@ -15724,10 +15729,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>113</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>200</DangerLevel>
@@ -15760,10 +15765,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>120</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>200</DangerLevel>
@@ -15797,10 +15802,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>118</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>200</DangerLevel>
@@ -15833,10 +15838,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>125</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>200</DangerLevel>
@@ -15869,10 +15874,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>112</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>200</DangerLevel>
@@ -15904,10 +15909,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>C</Symbol>
+			<Symbol>
+				<Char>C</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -15937,10 +15942,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>A</Symbol>
+			<Symbol>
+				<Char>A</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -15970,10 +15975,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>A</Symbol>
+			<Symbol>
+				<Char>A</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16019,10 +16024,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>K</Symbol>
+			<Symbol>
+				<Char>K</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16059,10 +16064,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>P</Symbol>
+			<Symbol>
+				<Char>P</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16097,10 +16102,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>D</Symbol>
+			<Symbol>
+				<Char>D</Char>
 				<Colour>79</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16130,10 +16135,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>F</Symbol>
+			<Symbol>
+				<Char>F</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16166,10 +16171,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>A</Symbol>
+			<Symbol>
+				<Char>A</Char>
 				<Colour>124</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16202,10 +16207,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>S</Symbol>
+			<Symbol>
+				<Char>S</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16238,10 +16243,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>J</Symbol>
+			<Symbol>
+				<Char>J</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16270,10 +16275,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>i</Symbol>
+			<Symbol>
+				<Char>i</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16303,10 +16308,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>B</Symbol>
+			<Symbol>
+				<Char>B</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16335,10 +16340,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>H</Symbol>
+			<Symbol>
+				<Char>H</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16368,10 +16373,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>D</Symbol>
+			<Symbol>
+				<Char>D</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16400,10 +16405,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>D</Symbol>
+			<Symbol>
+				<Char>D</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16434,10 +16439,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16480,10 +16485,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>B</Symbol>
+			<Symbol>
+				<Char>B</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16512,10 +16517,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>79</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16545,10 +16550,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>A</Symbol>
+			<Symbol>
+				<Char>A</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16577,10 +16582,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>h</Symbol>
+			<Symbol>
+				<Char>h</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16619,10 +16624,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>X</Symbol>
+			<Symbol>
+				<Char>X</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16651,10 +16656,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>O</Symbol>
+			<Symbol>
+				<Char>O</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16683,10 +16688,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>C</Symbol>
+			<Symbol>
+				<Char>C</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16715,10 +16720,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>R</Symbol>
+			<Symbol>
+				<Char>R</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16749,10 +16754,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>X</Symbol>
+			<Symbol>
+				<Char>X</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16783,10 +16788,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>B</Symbol>
+			<Symbol>
+				<Char>B</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16816,10 +16821,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>H</Symbol>
+			<Symbol>
+				<Char>H</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>53</TileType>
@@ -16850,10 +16855,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>b</Symbol>
+			<Symbol>
+				<Char>b</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -16897,10 +16902,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>B</Symbol>
+			<Symbol>
+				<Char>B</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -16942,10 +16947,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>B</Symbol>
+			<Symbol>
+				<Char>B</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -16987,10 +16992,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>n</Symbol>
+			<Symbol>
+				<Char>n</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -17031,10 +17036,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>M</Symbol>
+			<Symbol>
+				<Char>M</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -17062,10 +17067,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>i</Symbol>
+			<Symbol>
+				<Char>i</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>24</TileType>
@@ -17099,10 +17104,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>24</TileType>
@@ -17136,10 +17141,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -17198,10 +17203,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>f</Symbol>
+			<Symbol>
+				<Char>f</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -17243,10 +17248,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>a</Symbol>
+			<Symbol>
+				<Char>a</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -17289,10 +17294,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -17329,10 +17334,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -17364,10 +17369,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -17398,10 +17403,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -17432,10 +17437,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -17480,10 +17485,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -17528,10 +17533,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -17576,10 +17581,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -17611,10 +17616,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -17660,10 +17665,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -17694,10 +17699,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>i</Symbol>
+			<Symbol>
+				<Char>i</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -17739,10 +17744,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -17805,10 +17810,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>y</Symbol>
+			<Symbol>
+				<Char>y</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -17860,10 +17865,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>&amp;</Symbol>
+			<Symbol>
+				<Char>&amp;</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>24</TileType>
@@ -17898,10 +17903,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>&amp;</Symbol>
+			<Symbol>
+				<Char>&amp;</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>24</TileType>
@@ -17936,10 +17941,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -17979,10 +17984,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>A</Symbol>
+			<Symbol>
+				<Char>A</Char>
 				<Colour>95</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -18027,10 +18032,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -18064,10 +18069,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -18098,10 +18103,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -18131,10 +18136,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -18171,10 +18176,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -18211,10 +18216,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -18250,10 +18255,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -18286,10 +18291,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -18321,10 +18326,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -18361,10 +18366,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -18401,10 +18406,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -18439,10 +18444,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -18476,10 +18481,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -18515,10 +18520,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -18546,10 +18551,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -18579,10 +18584,10 @@
 				<Shopkeeper>1</Shopkeeper>
 				<ResistSwitch>1</ResistSwitch>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -18641,10 +18646,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -18676,10 +18681,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -18708,10 +18713,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -18739,10 +18744,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -18794,10 +18799,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -18831,10 +18836,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -18863,10 +18868,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -18901,10 +18906,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -18940,10 +18945,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -18974,10 +18979,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>29</TileType>
@@ -19009,10 +19014,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>29</TileType>
@@ -19043,10 +19048,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>29</TileType>
@@ -19078,10 +19083,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>29</TileType>
@@ -19112,10 +19117,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>p</Symbol>
+			<Symbol>
+				<Char>p</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>29</TileType>
@@ -19146,10 +19151,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -19179,10 +19184,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -19212,10 +19217,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -19245,10 +19250,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -19278,10 +19283,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -19313,10 +19318,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -19347,10 +19352,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -19393,10 +19398,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>a</Symbol>
+			<Symbol>
+				<Char>a</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -19466,10 +19471,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -19505,10 +19510,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -19541,10 +19546,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -19580,10 +19585,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -19625,10 +19630,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -19658,10 +19663,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>d</Symbol>
+			<Symbol>
+				<Char>d</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -19689,10 +19694,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>d</Symbol>
+			<Symbol>
+				<Char>d</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -19736,10 +19741,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>d</Symbol>
+			<Symbol>
+				<Char>d</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -19781,10 +19786,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>C</Symbol>
+			<Symbol>
+				<Char>C</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -19825,10 +19830,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>C</Symbol>
+			<Symbol>
+				<Char>C</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>13</TileType>
@@ -19862,10 +19867,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>13</TileType>
@@ -19900,10 +19905,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>d</Symbol>
+			<Symbol>
+				<Char>d</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -19931,10 +19936,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>y</Symbol>
+			<Symbol>
+				<Char>y</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>1</DangerLevel>
@@ -19971,10 +19976,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20028,10 +20033,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20085,10 +20090,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20141,10 +20146,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20187,10 +20192,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>*</Symbol>
+			<Symbol>
+				<Char>*</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20244,10 +20249,10 @@
 				<Strategy>mobile</Strategy>
 				<SuppressMagic>1</SuppressMagic>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>*</Symbol>
+			<Symbol>
+				<Char>*</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20307,10 +20312,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20354,10 +20359,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>b</Symbol>
+			<Symbol>
+				<Char>b</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20401,10 +20406,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20446,10 +20451,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20491,10 +20496,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>i</Symbol>
+			<Symbol>
+				<Char>i</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20538,10 +20543,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20584,10 +20589,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>M</Symbol>
+			<Symbol>
+				<Char>M</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20628,10 +20633,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20674,10 +20679,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20718,10 +20723,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>W</Symbol>
+			<Symbol>
+				<Char>W</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20763,10 +20768,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>O</Symbol>
+			<Symbol>
+				<Char>O</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20811,10 +20816,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>O</Symbol>
+			<Symbol>
+				<Char>O</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20858,10 +20863,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>O</Symbol>
+			<Symbol>
+				<Char>O</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20905,10 +20910,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>O</Symbol>
+			<Symbol>
+				<Char>O</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -20968,10 +20973,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>O</Symbol>
+			<Symbol>
+				<Char>O</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -21014,10 +21019,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>O</Symbol>
+			<Symbol>
+				<Char>O</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -21062,10 +21067,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>O</Symbol>
+			<Symbol>
+				<Char>O</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -21096,10 +21101,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>d</Symbol>
+			<Symbol>
+				<Char>d</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -21136,10 +21141,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>d</Symbol>
+			<Symbol>
+				<Char>d</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -21174,10 +21179,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>d</Symbol>
+			<Symbol>
+				<Char>d</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -21212,10 +21217,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -21245,10 +21250,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>d</Symbol>
+			<Symbol>
+				<Char>d</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -21278,10 +21283,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -21322,10 +21327,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>i</Symbol>
+			<Symbol>
+				<Char>i</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -21367,10 +21372,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -21412,10 +21417,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -21459,10 +21464,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>&amp;</Symbol>
+			<Symbol>
+				<Char>&amp;</Char>
 				<Colour>113</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -21502,10 +21507,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>&amp;</Symbol>
+			<Symbol>
+				<Char>&amp;</Char>
 				<Colour>120</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -21548,10 +21553,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>X</Symbol>
+			<Symbol>
+				<Char>X</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -21593,10 +21598,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>X</Symbol>
+			<Symbol>
+				<Char>X</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<DangerLevel>42</DangerLevel>
@@ -21624,10 +21629,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>L</Symbol>
+			<Symbol>
+				<Char>L</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -21699,10 +21704,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>U</Symbol>
+			<Symbol>
+				<Char>U</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -21746,10 +21751,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -21786,10 +21791,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -21826,10 +21831,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -21867,10 +21872,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -21906,10 +21911,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -21945,10 +21950,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -21982,10 +21987,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -22021,10 +22026,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>,</Symbol>
+			<Symbol>
+				<Char>,</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -22059,10 +22064,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -22098,10 +22103,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -22134,10 +22139,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -22177,10 +22182,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -22220,10 +22225,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -22252,10 +22257,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>T</Symbol>
+			<Symbol>
+				<Char>T</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -22291,10 +22296,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -22323,10 +22328,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>h</Symbol>
+			<Symbol>
+				<Char>h</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -22360,10 +22365,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>5</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -22397,10 +22402,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -22434,10 +22439,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -22471,10 +22476,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -22521,10 +22526,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -22558,10 +22563,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>O</Symbol>
+			<Symbol>
+				<Char>O</Char>
 				<Colour>6</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -22596,10 +22601,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -22633,10 +22638,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>h</Symbol>
+			<Symbol>
+				<Char>h</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -22670,10 +22675,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -22706,10 +22711,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -22743,10 +22748,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -22781,10 +22786,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -22818,10 +22823,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -22855,10 +22860,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -22903,10 +22908,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>p</Symbol>
+			<Symbol>
+				<Char>p</Char>
 				<Colour>2</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -22941,10 +22946,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -22979,10 +22984,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -23015,10 +23020,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -23049,10 +23054,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -23086,10 +23091,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>1</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -23118,10 +23123,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -23151,10 +23156,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>O</Symbol>
+			<Symbol>
+				<Char>O</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -23189,10 +23194,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -23226,10 +23231,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -23262,10 +23267,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -23300,10 +23305,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -23338,10 +23343,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -23374,10 +23379,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -23413,10 +23418,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>E</Symbol>
+			<Symbol>
+				<Char>E</Char>
 				<Colour>15</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -23453,10 +23458,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>G</Symbol>
+			<Symbol>
+				<Char>G</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -23485,10 +23490,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -23522,10 +23527,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>s</Symbol>
+			<Symbol>
+				<Char>s</Char>
 				<Colour>9</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -23554,10 +23559,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>3</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -23591,10 +23596,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>e</Symbol>
+			<Symbol>
+				<Char>e</Char>
 				<Colour>10</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -23628,10 +23633,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>4</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -23671,10 +23676,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>g</Symbol>
+			<Symbol>
+				<Char>g</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -23708,10 +23713,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -23745,10 +23750,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>@</Symbol>
+			<Symbol>
+				<Char>@</Char>
 				<Colour>11</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -23801,10 +23806,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>7</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -23842,10 +23847,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>8</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -23883,10 +23888,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>12</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -23917,10 +23922,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -23951,10 +23956,10 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>t</Symbol>
+			<Symbol>
+				<Char>t</Char>
 				<Colour>14</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>
@@ -23984,10 +23989,10 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
-			<Text>
-				<Symbol>n</Symbol>
+			<Symbol>
+				<Char>n</Char>
 				<Colour>13</Colour>
-			</Text>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>25</TileType>

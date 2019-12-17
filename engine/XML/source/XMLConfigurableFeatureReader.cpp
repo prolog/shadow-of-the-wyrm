@@ -36,19 +36,12 @@ FeaturePtr XMLConfigurableFeatureReader::get_configurable_feature(const XMLNode&
   if (!configurable_feature_node.is_null())
   {
     MaterialType mt = static_cast<MaterialType>(XMLUtils::get_child_node_int_value(configurable_feature_node, "Material"));
-
-    string symbol_s = XMLUtils::get_child_node_value(configurable_feature_node, "Symbol");
-    uchar symbol = '?';
-
-    if (!symbol_s.empty())
-    {
-      symbol = symbol_s.at(0);
-    }
-
-    Colour colour = static_cast<Colour>(XMLUtils::get_child_node_int_value(configurable_feature_node, "Colour"));
+    Symbol s('?', Colour::COLOUR_WHITE);
+    XMLNode symbol_node = XMLUtils::get_next_element_by_local_name(configurable_feature_node, "Symbol");
+    parse_symbol(s, symbol_node);
     string desc_sid = XMLUtils::get_child_node_value(configurable_feature_node, "DescriptionSID");
     
-    cf = FeatureGenerator::generate_configurable_feature(mt, symbol, colour, desc_sid);
+    cf = FeatureGenerator::generate_configurable_feature(mt, s, desc_sid);
   }
 
   return cf;

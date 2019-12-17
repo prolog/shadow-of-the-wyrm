@@ -1,10 +1,11 @@
 #pragma once
-#include "XMLDataStructures.hpp"
 #include <vector>
+#include "XMLDataStructures.hpp"
+#include "XMLReader.hpp"
 
 class DisplayTile;
 
-class XMLTilesReader
+class XMLTilesReader : public XMLReader
 {
   public:
     std::vector<DisplayTile> get_tiles(const XMLNode& xml_configuration_tiles_node);

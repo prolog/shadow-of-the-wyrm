@@ -415,9 +415,8 @@ FeaturePtr FeatureGenerator::generate_configurable_feature(const string& configu
 }
 
 // Construct and generate a configurable
-FeaturePtr FeatureGenerator::generate_configurable_feature(const MaterialType mt, const uchar symbol, const Colour colour, const std::string& desc_sid)
+FeaturePtr FeatureGenerator::generate_configurable_feature(const MaterialType mt, const Symbol& s, const std::string& desc_sid)
 {
-  Symbol s(symbol, colour);
   FeaturePtr feature = std::make_shared<ConfigurableFeature>(s, mt, desc_sid);
 
   return feature;

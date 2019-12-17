@@ -125,6 +125,7 @@ void ShadowOfTheWyrmEngine::start(const Settings& settings)
     if (display)
     {
       display->create();
+      display->set_spritesheets(game.get_spritesheets());
       display->set_title(StringTable::get(TextKeys::SW_TITLE));
       display->show();
     }
@@ -172,6 +173,10 @@ void ShadowOfTheWyrmEngine::setup_game()
   string config_file_items = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_ITEMS);
 
   XMLConfigurationReader reader(config_file, config_file_creatures, config_file_items);
+
+  // Set the spritesheets so they can be set into the display later if 
+  // we're using SDL.
+  game.set_spritesheets(reader.get_spritesheets());
 
   // Read the races, classes, and items from the configuration file.
   // Items need to be read first so that each class's default items can be loaded.
