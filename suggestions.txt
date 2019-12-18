@@ -1,6 +1,4 @@
 Me:
-- Branches are no longer showing up as dark yellow. Something in the new code
-  is probably messing with the default colour...
 - convert spritesheets to unordered_map
 - Item::get_symbol returning uchar
 - Remove colour from Trap, make get_colour return the symbol colour

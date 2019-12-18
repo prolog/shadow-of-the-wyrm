@@ -18,8 +18,12 @@ void XMLReader::parse_symbol(Symbol& symbol, const XMLNode& symbol_node) const
       symbol.set_symbol(symbol_char);
     }
 
-    Colour colour = static_cast<Colour>(XMLUtils::get_child_node_int_value(symbol_node, "Colour"));
-    symbol.set_colour(colour);
+    XMLNode colour_node = XMLUtils::get_next_element_by_local_name(symbol_node, "Colour");
+    if (!colour_node.is_null())
+    {
+      Colour colour = static_cast<Colour>(XMLUtils::get_node_int_value(colour_node, 0));
+      symbol.set_colour(colour);
+    }
 
     XMLNode ss_loc_node = XMLUtils::get_next_element_by_local_name(symbol_node, "SpritesheetLocation");
 

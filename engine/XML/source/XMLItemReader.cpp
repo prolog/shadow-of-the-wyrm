@@ -109,11 +109,6 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
 
     item->set_glowing(glow);
     
-    if (id == "_rock")
-    {
-      int x = 1;
-    }
-   
     // Overridden text details - most items will not have this, unless a very specific
     // symbol or colour is desired.
     XMLNode symbol_node = XMLUtils::get_next_element_by_local_name(item_node, "Symbol");
