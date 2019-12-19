@@ -3171,3 +3171,14 @@ in sound and source, they called her as she ducked %b
 through narrow, twisting passages, and craned %b
 to hear them as they laughed and softly called her name.
 %p
+Eventually, that creekbed widened out %b
+and brought her to chamber where her breath %b
+hung cold - and drifted upward, seemed to sprout %b
+into stalactites that pointed with all the rest %b
+at this beautiful intruder, she who walked %b
+so soundlessly among the scattered stones %b
+that her movements seemed to place her outside thought, %b
+until the voices stopped and laid her low; %b
+until they left her in that waning light, alone.
+%p
+
