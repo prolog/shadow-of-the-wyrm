@@ -12,11 +12,6 @@
 			<Symbol>
 				<Char>@</Char>
 				<Colour>7</Colour>
-				<SpritesheetLocation>
-					<ID>cr</ID>
-					<Row>2</Row>
-					<Col>6</Col>
-				</SpritesheetLocation>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>

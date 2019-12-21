@@ -1,0 +1,59 @@
+How to Add Fonts to Shadow of the Wyrm
+
+So, you want to add a font to the game?  Great!  This is fairly easy to do,
+and you can use the following instructions if you're on Windows.
+
+1. Create your font spritesheet
+
+  You can use whatever software you want, but if you have a specific font
+  installed and want to use that, consider Codehead's Bitmap Font Generator
+  (http://www.codehead.co.uk/cbfg/).
+
+  In general, SotW assumes 16 glyphs per line.  This is configurable in
+  swyrm.ini, but you may as well use that when you're creating your font.
+
+  If you're using cbfg select your font, set the font height and width
+  (this can be whatever you want, but I've typically used rectangular font
+  values such as 8x12, 16x24, and so on), set the colour to white and
+  background to black, and set the texture details.  You'll want to
+  experiment, but for 16 glyphs per line at 16x24, you'd want 256x512 for
+  the image size, cell height 24, cell width 16.
+
+  Because of how SotW determines which character ('f', '1', etc) is where
+  in the spritesheet, set the "Start Character" value to 0 in cbfg.  You
+  should see rows of 16 glyphs.  If you've done it right, the 4th row should
+  start with 0, and the 5th should start with @.
+
+2. Ensure the text is white
+
+  This needs to be white so that your text can be coloured by the engine for
+  the various creatures, features, items, and tiles.
+
+3. Ensure the background is transparent
+
+  The background needs to be transparent so that creatures with text glyphs
+  that use a non-black background colour will display properly.
+
+  You can't do this in cbfg, but you can use a program like GIMP.
+
+  - Export your file from cbfg as a .bmp
+
+  - Open it in GIMP
+
+  - Select Layer -> Transparency -> Color to alpha
+
+  - Select black (0, 0, 0 for RBG) and click "Ok"
+
+  - You should see your spritesheet as white text on a transparent 
+    background
+
+  - Export this in .png format
+
+4. Test
+
+  Drop your font spritesheet in assets/fonts, and update swyrm.ini so that
+  display_font is set to your .png and display_tile_size is also correct
+  (8x12, 8x16, etc).  Run SotW and confirm that everything looks good.
+
+5. That's it!
+

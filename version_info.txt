@@ -10,6 +10,9 @@ Shadow of the Wyrm v1.1.6 "Paganini"
   low intelligence creatures are now unable to open doors, not knowing how
   they work.
 
+- Added several new fonts in 16x24 in preparation for adding 16x24 sprites
+  later, as well as instructions on how to add font spritesheets.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

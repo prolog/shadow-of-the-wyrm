@@ -1,4 +1,5 @@
 Me:
+- convert all the fonts to have transparent backgrounds
 - convert spritesheets to unordered_map
 - Item::get_symbol returning uchar
 - Remove colour from Trap, make get_colour return the symbol colour
