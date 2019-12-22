@@ -579,7 +579,6 @@ class Trap : public Feature
     std::string trigger_message_sid;
     Symbol trigger_symbol;
     std::string player_damage_message_sid;
-    Colour colour;
     std::string item_id;
     Damage damage;
     EffectType effect;

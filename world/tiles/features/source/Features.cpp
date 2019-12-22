@@ -1129,7 +1129,7 @@ ClassIdentifier Tannery::internal_class_identifier() const
 // Trap
 
 Trap::Trap(const Symbol& new_symbol)
-  : Feature("", MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol, 1 /* 1 use by default - will be set later */), triggered(false), trigger_symbol(Symbol('?', Colour::COLOUR_WHITE)), colour(Colour::COLOUR_WHITE), effect(EffectType::EFFECT_TYPE_NULL)
+  : Feature("", MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol, 1 /* 1 use by default - will be set later */), triggered(false), trigger_symbol(Symbol('?', Colour::COLOUR_WHITE)), effect(EffectType::EFFECT_TYPE_NULL)
 {
 }
 
@@ -1141,7 +1141,6 @@ bool Trap::operator==(const Trap& trap) const
   result = result && (trigger_message_sid == trap.trigger_message_sid);
   result = result && (trigger_symbol == trap.trigger_symbol);
   result = result && (player_damage_message_sid == trap.player_damage_message_sid);
-  result = result && (colour == trap.colour);
   result = result && (item_id == trap.item_id);
   result = result && (damage == trap.damage);
   result = result && (effect == trap.effect);
@@ -1289,12 +1288,12 @@ string Trap::get_player_damage_message_sid() const
 
 void Trap::set_colour(const Colour new_colour)
 {
-  colour = new_colour;
+  symbol.set_colour(new_colour);
 }
 
 Colour Trap::get_colour() const
 {
-  return colour;
+  return symbol.get_colour();
 }
 
 void Trap::set_item_id(const std::string& new_item_id)
@@ -1353,7 +1352,6 @@ bool Trap::serialize(std::ostream& stream) const
   Serialize::write_string(stream, trigger_message_sid);
   trigger_symbol.serialize(stream);
   Serialize::write_string(stream, player_damage_message_sid);
-  Serialize::write_enum(stream, colour);
   Serialize::write_string(stream, item_id);
   damage.serialize(stream);
   Serialize::write_enum(stream, effect);
@@ -1370,7 +1368,6 @@ bool Trap::deserialize(istream& stream)
   Serialize::read_string(stream, trigger_message_sid);
   trigger_symbol.deserialize(stream);
   Serialize::read_string(stream, player_damage_message_sid);
-  Serialize::read_enum(stream, colour);
   Serialize::read_string(stream, item_id);
   damage.deserialize(stream);
   Serialize::read_enum(stream, effect);
