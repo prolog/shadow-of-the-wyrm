@@ -1314,6 +1314,8 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\tiles\include\UpStaircaseTile.hpp" />
     <ClInclude Include="world\tiles\include\VillageTile.hpp" />
     <ClInclude Include="world\tiles\include\VoidTile.hpp" />
+    <ClInclude Include="world\tiles\include\Weather.hpp" />
+    <ClInclude Include="world\tiles\include\WeatherProperties.hpp" />
     <ClInclude Include="world\tiles\include\WeedsTile.hpp" />
     <ClInclude Include="world\tiles\include\WellTile.hpp" />
     <ClInclude Include="world\tiles\include\WheatTile.hpp" />
@@ -4106,6 +4108,11 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\Weather_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\WeedsTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -4129,6 +4136,8 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\tiles\source\UpStaircaseTile.cpp" />
     <ClCompile Include="world\tiles\source\VillageTile.cpp" />
     <ClCompile Include="world\tiles\source\VoidTile.cpp" />
+    <ClCompile Include="world\tiles\source\Weather.cpp" />
+    <ClCompile Include="world\tiles\source\WeatherProperties.cpp" />
     <ClCompile Include="world\tiles\source\WeedsTile.cpp" />
     <ClCompile Include="world\tiles\source\WellTile.cpp" />
     <ClCompile Include="world\tiles\source\WheatTile.cpp" />

@@ -705,10 +705,6 @@
     <Filter Include="Source Files\engine\generators\rooms\source\unit_tests">
       <UniqueIdentifier>{58433942-77ce-4db5-8781-b1eb751b84f6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\world\tiles\Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
-    </Filter>
     <Filter Include="Header Files\engine\maps\tiles">
       <UniqueIdentifier>{20719342-1bc2-42a8-8253-fedac21969cd}</UniqueIdentifier>
     </Filter>
@@ -4250,6 +4246,12 @@
     </ClInclude>
     <ClInclude Include="engine\XML\include\XMLSpritesheetsReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\Weather.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\WeatherProperties.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -8503,6 +8505,15 @@
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLSpritesheetsReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\Weather.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\WeatherProperties.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\Weather_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

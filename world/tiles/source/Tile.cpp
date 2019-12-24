@@ -10,6 +10,7 @@
 #include "NullInventory.hpp"
 #include "Serialize.hpp"
 #include "Tile.hpp"
+#include "WeatherProperties.hpp"
 
 using namespace std;
 
@@ -561,6 +562,14 @@ float Tile::get_piety_loss_multiplier() const
   }
 
   return piety_mult;
+}
+
+Weather Tile::get_weather() const
+{
+  string wind_speed = get_additional_property(WeatherProperties::WEATHER_PROPERTIES_WIND_SPEED);
+  Weather weather(wind_speed);
+
+  return weather;
 }
 
 // Transform a tile from an original tile type.  The new tile (this object)

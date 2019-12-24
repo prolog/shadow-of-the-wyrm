@@ -1,4 +1,6 @@
 Me:
+- Weather update every hour
+- Add weather info to "T".  Update guidebook.
 - Spritesheets
 - Wind level should affect water shimmer
 - auto save - not working?
