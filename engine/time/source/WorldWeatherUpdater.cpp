@@ -1,6 +1,7 @@
 #include "WorldWeatherUpdater.hpp"
 #include "CoordUtils.hpp"
 #include "Game.hpp"
+#include "MapUtils.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -38,6 +39,24 @@ void WorldWeatherUpdater::update_world_map_weather(WorldPtr world)
           weather = update_weather_data(weather);
           tile->set_weather(weather);
         }
+      }
+    }
+  }
+}
+
+// Update the world map weather on to the new map, but only if the new map
+// is an overworld map - don't set it for cosmos, underwater, and so on.
+void WorldWeatherUpdater::update_weather_for_map(MapPtr old_map, TilePtr old_tile, MapPtr new_map)
+{
+  if (old_map != nullptr && old_tile != nullptr && new_map != nullptr)
+  {
+    if (old_map->get_map_type() == MapType::MAP_TYPE_WORLD && new_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
+    {
+      WeatherPtr weather = MapUtils::get_weather(old_map, old_tile);
+
+      if (weather != nullptr)
+      {
+        new_map->set_weather(*weather);
       }
     }
   }

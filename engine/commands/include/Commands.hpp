@@ -17,11 +17,11 @@ class VersionCommand : public Command
     ~VersionCommand();
 };
 
-class GameDateTimeCommand : public Command
+class GameDateTimeWeatherCommand : public Command
 {
   public:
-    GameDateTimeCommand(int key);
-    ~GameDateTimeCommand();
+    GameDateTimeWeatherCommand(int key);
+    ~GameDateTimeWeatherCommand();
 };
 
 class DirectionalCommand : public Command

@@ -9,7 +9,7 @@
 #include "Conversion.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "CurrencyAction.hpp"
-#include "DateTimeAction.hpp"
+#include "DateTimeWeatherAction.hpp"
 #include "DropAction.hpp"
 #include "EquipmentManager.hpp"
 #include "ExitGameAction.hpp"
@@ -81,8 +81,8 @@ ActionCost ActionManager::version(CreaturePtr creature)
 
 ActionCost ActionManager::date_and_time(CreaturePtr creature)
 {
-  DateTimeAction dt;
-  return get_action_cost(creature, dt.date_and_time());
+  DateTimeWeatherAction dtw;
+  return get_action_cost(creature, dtw.date_and_time_and_weather());
 }
 
 ActionCost ActionManager::display_character(CreaturePtr creature)

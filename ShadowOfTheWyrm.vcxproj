@@ -224,7 +224,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\actions\include\ChatAction.hpp" />
     <ClInclude Include="engine\actions\include\ConsumableAction.hpp" />
     <ClInclude Include="engine\actions\include\CurrencyAction.hpp" />
-    <ClInclude Include="engine\actions\include\DateTimeAction.hpp" />
+    <ClInclude Include="engine\actions\include\DateTimeWeatherAction.hpp" />
     <ClInclude Include="engine\actions\include\DeityActionManager.hpp" />
     <ClInclude Include="engine\actions\include\DigAction.hpp" />
     <ClInclude Include="engine\actions\include\DropAction.hpp" />
@@ -1953,7 +1953,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\actions\source\ChatAction.cpp" />
     <ClCompile Include="engine\actions\source\ConsumableAction.cpp" />
     <ClCompile Include="engine\actions\source\CurrencyAction.cpp" />
-    <ClCompile Include="engine\actions\source\DateTimeAction.cpp" />
+    <ClCompile Include="engine\actions\source\DateTimeWeatherAction.cpp" />
     <ClCompile Include="engine\actions\source\DeityActionManager.cpp" />
     <ClCompile Include="engine\actions\source\DigAction.cpp" />
     <ClCompile Include="engine\actions\source\DropAction.cpp" />

@@ -15,11 +15,11 @@ DateTextKeys::~DateTextKeys()
 {
 }
 
-const string DateTextKeys::DATE_TIME_MESSAGE = "DATE_TIME_MESSAGE";
+const string DateTextKeys::DATE_TIME_WEATHER_MESSAGE = "DATE_TIME_WEATHER_MESSAGE";
 
-string DateTextKeys::get_date_time_message(const Date& date, const string& season_sid, const PhaseOfMoonType pom)
+string DateTextKeys::get_date_time_weather_message(const Date& date, const string& season_sid, const PhaseOfMoonType pom)
 {
-  string date_time_message = StringTable::get(DateTextKeys::DATE_TIME_MESSAGE);
+  string dtw_message = StringTable::get(DateTextKeys::DATE_TIME_WEATHER_MESSAGE);
   string season = StringTable::get(season_sid);
  
   std::map<TimeOfDayType, std::string> tod_sids = { {TimeOfDayType::TIME_OF_DAY_DAWN, DateTextKeys::TIME_OF_DAY_DAWN}, {TimeOfDayType::TIME_OF_DAY_DUSK, DateTextKeys::TIME_OF_DAY_DUSK}, {TimeOfDayType::TIME_OF_DAY_DAY, DateTextKeys::TIME_OF_DAY_DAY}, {TimeOfDayType::TIME_OF_DAY_NIGHT, DateTextKeys::TIME_OF_DAY_NIGHT} };
@@ -28,16 +28,16 @@ string DateTextKeys::get_date_time_message(const Date& date, const string& seaso
   string day_of_week = StringTable::get(date.get_day_of_week_sid());
   string month = StringTable::get(date.get_month_sid());  
 
-  boost::replace_first(date_time_message, "%s", time);
-  boost::replace_first(date_time_message, "%s", day_or_night);
-  boost::replace_first(date_time_message, "%s", day_of_week);
-  boost::replace_first(date_time_message, "%s", std::to_string(date.get_day_of_month()));
-  boost::replace_first(date_time_message, "%s", month);
-  boost::replace_first(date_time_message, "%s", std::to_string(date.get_year()));
-  boost::replace_first(date_time_message, "%s", season);
-  boost::replace_first(date_time_message, "%s", StringTable::get(get_phase_of_moon_sid(pom)));
+  boost::replace_first(dtw_message, "%s", time);
+  boost::replace_first(dtw_message, "%s", day_or_night);
+  boost::replace_first(dtw_message, "%s", day_of_week);
+  boost::replace_first(dtw_message, "%s", std::to_string(date.get_day_of_month()));
+  boost::replace_first(dtw_message, "%s", month);
+  boost::replace_first(dtw_message, "%s", std::to_string(date.get_year()));
+  boost::replace_first(dtw_message, "%s", season);
+  boost::replace_first(dtw_message, "%s", StringTable::get(get_phase_of_moon_sid(pom)));
 
-  return date_time_message;
+  return dtw_message;
 }
 
 string DateTextKeys::get_time(const Date& date)

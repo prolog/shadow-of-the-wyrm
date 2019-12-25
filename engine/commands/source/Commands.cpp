@@ -25,13 +25,13 @@ VersionCommand::~VersionCommand()
 {
 }
 
-// Date/Time
-GameDateTimeCommand::GameDateTimeCommand(const int key)
-: Command(CommandKeys::GAME_DATE_TIME, key)
+// Date/Time/Weather
+GameDateTimeWeatherCommand::GameDateTimeWeatherCommand(const int key)
+: Command(CommandKeys::GAME_DATE_TIME_WEATHER, key)
 {
 }
 
-GameDateTimeCommand::~GameDateTimeCommand()
+GameDateTimeWeatherCommand::~GameDateTimeWeatherCommand()
 {
 }
 

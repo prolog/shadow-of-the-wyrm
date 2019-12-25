@@ -227,3 +227,36 @@ TEST(SW_Engine_Maps_MapUtils, get_map_exit_direction)
   EXPECT_EQ(Direction::DIRECTION_SOUTH, MapUtils::get_exit_direction(Direction::DIRECTION_SOUTH_WEST, dim, c));
   EXPECT_EQ(Direction::DIRECTION_SOUTH, MapUtils::get_exit_direction(Direction::DIRECTION_SOUTH_EAST, dim, c));
 }
+
+TEST(SW_Engine_Maps_MapUtils, get_weather)
+{
+  Weather map_weather("36");
+  Weather tile_weather("32");
+  WeatherPtr no_weather;
+
+  TilePtr tile = make_shared<FieldTile>();
+  tile->set_weather(tile_weather);
+
+  Dimensions d;
+  MapPtr world_map = std::make_shared<Map>(d);
+  world_map->set_map_type(MapType::MAP_TYPE_WORLD);
+
+  MapPtr overworld_map = std::make_shared<Map>(d);
+  overworld_map->set_map_type(MapType::MAP_TYPE_OVERWORLD);
+  overworld_map->set_weather(map_weather);
+
+  MapPtr underworld_map = std::make_shared<Map>(d);
+  underworld_map->set_map_type(MapType::MAP_TYPE_UNDERWORLD);
+
+  MapPtr underwater_map = std::make_shared<Map>(d);
+  underwater_map->set_map_type(MapType::MAP_TYPE_UNDERWATER);
+
+  MapPtr cosmos_map = std::make_shared<Map>(d);
+  cosmos_map->set_map_type(MapType::MAP_TYPE_COSMOS);
+
+  EXPECT_EQ(tile_weather, *MapUtils::get_weather(world_map, tile));
+  EXPECT_EQ(map_weather, *MapUtils::get_weather(overworld_map, tile));
+  EXPECT_EQ(no_weather, MapUtils::get_weather(underworld_map, tile));
+  EXPECT_EQ(no_weather, MapUtils::get_weather(underwater_map, tile));
+  EXPECT_EQ(no_weather, MapUtils::get_weather(cosmos_map, tile));
+}

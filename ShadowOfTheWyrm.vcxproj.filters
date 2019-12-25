@@ -2123,9 +2123,6 @@
     <ClInclude Include="engine\actions\include\CurrencyAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\actions\include\DateTimeAction.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\actions\include\DropAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
@@ -4256,6 +4253,9 @@
     <ClInclude Include="engine\time\include\WorldWeatherUpdater.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\actions\include\DateTimeWeatherAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5912,9 +5912,6 @@
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\actions\source\CurrencyAction.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\source\DateTimeAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\actions\source\DropAction.cpp">
@@ -8520,6 +8517,9 @@
     </ClCompile>
     <ClCompile Include="engine\time\source\WorldWeatherUpdater.cpp">
       <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\DateTimeWeatherAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

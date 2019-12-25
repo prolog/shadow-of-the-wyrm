@@ -355,11 +355,6 @@ void SDLDisplay::add_message(const string& to_add_message, const Colour colour, 
     msg_buffer_last_y = sdlc.get_y();
     msg_buffer_last_x = sdlc.get_x();
 
-    if (clear_prior_to_adding_message)
-    {
-      clear_messages();
-    }
-
     disable_colour(colour);
   }
 

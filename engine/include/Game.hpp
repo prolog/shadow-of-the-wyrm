@@ -157,7 +157,7 @@ class Game : public ISerializable
     friend class CreatureDeathManager;
     friend class PlayerDeathManager;
     friend class MovementAction;
-    friend class DateTimeAction;
+    friend class DateTimeWeatherAction;
     friend class ItemManager;
     friend class CommandProcessor;
     friend class EquipmentCommandProcessor;

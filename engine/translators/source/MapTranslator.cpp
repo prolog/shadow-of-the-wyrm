@@ -298,10 +298,12 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, co
   bool passable = tile && (tile->get_movement_multiplier() > 0);
   Colour shimmer_colour = Colour::COLOUR_UNDEFINED;
   int pct_chance_shimmer = shimmer_colours.get_pct_chance_shimmer();
+  int pct_chance_weathered = 0;
 
   if (timewalking)
   {
     pct_chance_shimmer = 0;
+    pct_chance_weathered = 0;
   }
 
   if (RNG::percent_chance(pct_chance_shimmer))
@@ -318,6 +320,13 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, co
     {
       shimmer_colour = shimmer_colours.get_impassable_colour();
     }
+  }
+
+  if (RNG::percent_chance(pct_chance_weathered))
+  {
+    // JCD FIXME replace this with a calc later
+    Colour weathered_colour = Colour::COLOUR_WHITE;
+    display_tile.set_all_colours(static_cast<int>(weathered_colour));
   }
 
   if (shimmer_colour != Colour::COLOUR_UNDEFINED)

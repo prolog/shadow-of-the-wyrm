@@ -102,6 +102,10 @@ class MapUtils
 
     static bool should_link_entry_point(const MapType map_type);
 
+    // Weather is per-tile on the world map, per-map on overworld maps,
+    // non-existant elsewhere.
+    static WeatherPtr get_weather(MapPtr map, TilePtr tile);
+
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
     static bool is_tile_contained_in_an_existing_component(const Coordinate&, const MapComponents& components);

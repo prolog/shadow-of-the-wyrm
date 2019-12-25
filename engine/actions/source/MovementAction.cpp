@@ -37,6 +37,7 @@
 #include "TextMessages.hpp"
 #include "TileMovementConfirmation.hpp"
 #include "TileUtils.hpp"
+#include "WorldWeatherUpdater.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
@@ -804,6 +805,18 @@ ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr cu
       MapItemGenerator mig;
       mig.generate_initial_set_items(new_map, current_tile->get_additional_properties());
     }
+
+    // Update the weather, if we're coming off the world map.
+    WorldWeatherUpdater wwu;
+    TilePtr old_tile;
+
+    if (old_map != nullptr)
+    {
+      CreaturePtr player = Game::instance().get_current_player();
+      old_tile = MapUtils::get_tile_for_creature(old_map, player);
+    }
+
+    wwu.update_weather_for_map(old_map, old_tile, new_map);
 
     move_to_new_map(current_tile, old_map, new_map, map_exit);
     acv = get_action_cost_value(nullptr);
