@@ -4253,6 +4253,9 @@
     <ClInclude Include="world\tiles\include\WeatherProperties.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\time\include\WorldWeatherUpdater.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8514,6 +8517,9 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\Weather_test.cpp">
       <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\WorldWeatherUpdater.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

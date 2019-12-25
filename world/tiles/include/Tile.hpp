@@ -148,6 +148,7 @@ class Tile : public ISerializable
 
     virtual float get_piety_loss_multiplier() const;
 
+    virtual void set_weather(const Weather& w);
     virtual Weather get_weather() const;
 
     virtual void transform_from(std::shared_ptr<Tile> original_tile);

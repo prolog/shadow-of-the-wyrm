@@ -1008,6 +1008,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\time\include\WorldTimeKeeper.hpp" />
     <ClInclude Include="engine\time\include\WorldTimeKeeperCoordinator.hpp" />
     <ClInclude Include="engine\time\include\WorldTimeObserver.hpp" />
+    <ClInclude Include="engine\time\include\WorldWeatherUpdater.hpp" />
     <ClInclude Include="engine\translators\include\AnimationTranslator.hpp" />
     <ClInclude Include="engine\translators\include\BeamSpellTranslator.hpp" />
     <ClInclude Include="engine\translators\include\CreatureTranslator.hpp" />
@@ -1889,6 +1890,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\time\source\WorldTimeObserver.cpp" />
+    <ClCompile Include="engine\time\source\WorldWeatherUpdater.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLConfigurableFeatureCMReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLDecorativeStatueReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLPulperReader.cpp" />

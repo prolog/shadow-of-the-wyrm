@@ -11,3 +11,10 @@ TEST(SW_World_Tiles_Weather, weather_creation)
   EXPECT_EQ(36, w2.get_wind_speed());
 }
 
+TEST(SW_World_Tiles_Weather, setter_getter)
+{
+  Weather w("");
+  w.set_wind_speed(46);
+
+  EXPECT_EQ(46, w.get_wind_speed());
+}

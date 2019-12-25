@@ -12,6 +12,11 @@ Weather::Weather(const string& new_wind_speed)
   }
 }
 
+void Weather::set_wind_speed(const int new_wind_speed)
+{
+  wind_speed = new_wind_speed;
+}
+
 int Weather::get_wind_speed() const
 {
   return wind_speed;

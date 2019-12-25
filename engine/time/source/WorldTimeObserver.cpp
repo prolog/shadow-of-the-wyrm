@@ -3,6 +3,7 @@
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "Serialize.hpp"
+#include "WorldWeatherUpdater.hpp"
 
 using namespace std;
 
@@ -29,9 +30,17 @@ void WorldTimeObserver::notify(const ulonglong minutes_this_tick)
     auto tod_details = TimeOfDay::get_is_transition_hour(cur_hour);
     bool update_time_of_day = tod_details.first;
 
+    WorldWeatherUpdater wwu;
+    bool update_weather = wwu.should_update_weather(cur_hour);
+
     if (update_time_of_day)
     {
       redraw_and_update_time_of_day(tod_details.second);
+    }
+
+    if (update_weather)
+    {
+      wwu.update_world_map_weather(world);
     }
   }
 }
