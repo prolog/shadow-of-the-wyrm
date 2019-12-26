@@ -8521,5 +8521,8 @@
     <ClCompile Include="engine\actions\source\DateTimeWeatherAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\strings\source\unit_tests\DateTextKeys_test.cpp">
+      <Filter>Source Files\engine\strings\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

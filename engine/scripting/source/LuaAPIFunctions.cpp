@@ -51,6 +51,7 @@
 #include "TextMessages.hpp"
 #include "TileGenerator.hpp"
 #include "Tool.hpp"
+#include "WorldWeatherUpdater.hpp"
 
 using namespace std;
 
@@ -392,6 +393,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_all_items_to_player_tile", add_all_items_to_player_tile);
   lua_register(L, "get_primordial_castings", get_primordial_castings);
   lua_register(L, "creature_exists", creature_exists);
+  lua_register(L, "set_weather", set_weather);
 }
 
 // Lua API helper functions
@@ -7832,4 +7834,34 @@ int creature_exists(lua_State* ls)
 
   lua_pushboolean(ls, creature_exists);
   return 1;
+}
+
+int set_weather(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    MapPtr map = Game::instance().get_current_map();
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+    int wind_speed = lua_tointeger(ls, 2);
+
+    if (creature != nullptr && map != nullptr)
+    {
+      TilePtr creature_tile = MapUtils::get_tile_for_creature(map, creature);
+      WeatherPtr w = MapUtils::get_weather(map, creature_tile);
+
+      if (w != nullptr)
+      {
+        w->set_wind_speed(wind_speed);
+
+        WorldWeatherUpdater wwu;
+        wwu.set_weather(map, creature_tile, *w);
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_weather");
+  }
+
+  return 0;
 }

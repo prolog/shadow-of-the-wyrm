@@ -1861,6 +1861,11 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\strings\source\InscriptionTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MusicTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\PlayerTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\unit_tests\DateTextKeys_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\strings\source\VictoryTextKeys.cpp" />
     <ClCompile Include="engine\time\source\AgeTimeObserver.cpp" />
     <ClCompile Include="engine\time\source\CreatureSkillMarkerChecker.cpp" />

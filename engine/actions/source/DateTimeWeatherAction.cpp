@@ -32,7 +32,14 @@ ActionCostValue DateTimeWeatherAction::date_and_time_and_weather()
       CreaturePtr player = game.get_current_player();
 
       WeatherPtr weather = MapUtils::get_weather(map, MapUtils::get_tile_for_creature(map, player));
-      string date_time_weather_message = DateTextKeys::get_date_time_weather_message(date, season->get_description_sid(), pomc.calculate_phase_of_moon(calendar.get_seconds()));
+      int wind_speed = 0;
+
+      if (weather != nullptr)
+      {
+        wind_speed = weather->get_wind_speed();
+      }
+
+      string date_time_weather_message = DateTextKeys::get_date_time_weather_message(date, season->get_description_sid(), pomc.calculate_phase_of_moon(calendar.get_seconds()), DateTextKeys::get_wind_sid(wind_speed));
       
       manager.add_new_message(date_time_weather_message);
       manager.send();

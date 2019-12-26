@@ -1,5 +1,5 @@
 Me:
-- Add weather info to "T".
+- Weather should have a chance to "reset" back to 0.
 - Add wind shimmer to water
 - Spritesheets
 - Wind level should affect water shimmer

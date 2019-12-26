@@ -62,6 +62,23 @@ void WorldWeatherUpdater::update_weather_for_map(MapPtr old_map, TilePtr old_til
   }
 }
 
+void WorldWeatherUpdater::set_weather(MapPtr map, TilePtr tile, const Weather& w)
+{
+  if (map != nullptr && tile != nullptr)
+  {
+    MapType mt = map->get_map_type();
+
+    if (mt == MapType::MAP_TYPE_WORLD)
+    {
+      tile->set_weather(w);
+    }
+    else if (mt == MapType::MAP_TYPE_OVERWORLD)
+    {
+      map->set_weather(w);
+    }
+  }
+}
+
 // JCD FIXME turn this into a calculator once this gets more complex.
 Weather WorldWeatherUpdater::update_weather_data(const Weather& weather)
 {
