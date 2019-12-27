@@ -4256,6 +4256,9 @@
     <ClInclude Include="engine\actions\include\DateTimeWeatherAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\WeatherCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8523,6 +8526,9 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\unit_tests\DateTextKeys_test.cpp">
       <Filter>Source Files\engine\strings\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\WeatherCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

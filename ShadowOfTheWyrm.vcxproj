@@ -388,6 +388,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\UntimedStatusCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WandCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WeaponDifficultyCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\WeatherCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WeavingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WorldMapDangerLevelCalculator.hpp" />
     <ClInclude Include="engine\combat\include\AttackTypes.hpp" />
@@ -1579,6 +1580,7 @@ mkdir $(OutDir)logs
     </ClCompile>
     <ClCompile Include="engine\calculators\source\UntimedStatusCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\WandCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\WeatherCalculator.cpp" />
     <ClCompile Include="engine\combat\source\PointsTransfer.cpp" />
     <ClCompile Include="engine\combat\source\unit_tests\PointsTransfer_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

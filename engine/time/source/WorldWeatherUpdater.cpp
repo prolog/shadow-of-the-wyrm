@@ -3,6 +3,7 @@
 #include "Game.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
+#include "WeatherCalculator.hpp"
 
 using namespace std;
 
@@ -83,18 +84,9 @@ void WorldWeatherUpdater::set_weather(MapPtr map, TilePtr tile, const Weather& w
 Weather WorldWeatherUpdater::update_weather_data(const Weather& weather)
 {
   Weather w = weather;
+  WeatherCalculator wc;
 
-  int wind_speed = weather.get_wind_speed();
-  int amount = RNG::range(0, 20);
-  bool increase = RNG::percent_chance(50);
-  if (increase == false)
-  {
-    amount = amount * -1;
-  }
-
-  int new_amount = wind_speed + amount;
-  new_amount = std::max(new_amount, 0);
-  new_amount = std::min(new_amount, 100);
+  w.set_wind_speed(wc.calculate_new_wind_speed(w.get_wind_speed()));
 
   return w;
 }
