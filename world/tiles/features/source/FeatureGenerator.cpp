@@ -14,104 +14,13 @@ FeatureGenerator::~FeatureGenerator()
 }
 
 FeatureSerializationMap FeatureGenerator::feature_map;
+FeatureSymbolMap FeatureGenerator::feature_symbol_map;
 
 Symbol FeatureGenerator::get_config_symbol(const ClassIdentifier ci)
 {
-  uchar s = '?';
-  
-  // JCD SYMBOL SPRITESHEET FIXME - refactor this later to get all the
-  // symbols out of the config data.
-  if (ci == ClassIdentifier::CLASS_ID_ALTAR || ci == ClassIdentifier::CLASS_ID_GOOD_ALTAR || ci == ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR || ci == ClassIdentifier::CLASS_ID_EVIL_ALTAR)
+  auto f_it = feature_symbol_map.find(ci);
+  if (f_it != feature_symbol_map.end())
   {
-    s = '_';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_BARREL)
-  {
-    s = 'o';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_BENCH)
-  {
-    s = '-';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_BED)
-  {
-    s = '~';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_DOOR || ci == ClassIdentifier::CLASS_ID_GATE)
-  {
-    s = '+';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_DECORATIVE_STATUE || 
-           ci == ClassIdentifier::CLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE || 
-           ci == ClassIdentifier::CLASS_ID_KING_DECORATIVE_STATUE || 
-           ci == ClassIdentifier::CLASS_ID_KNIGHT_DECORATIVE_STATUE || 
-           ci == ClassIdentifier::CLASS_ID_PETRIFIED_CORPSE_STATUE || 
-           ci == ClassIdentifier::CLASS_ID_QUEEN_DECORATIVE_STATUE || 
-           ci == ClassIdentifier::CLASS_ID_WARLORD_DECORATIVE_STATUE ||
-           ci == ClassIdentifier::CLASS_ID_REGULAR_STATUE || 
-           ci == ClassIdentifier::CLASS_ID_SORCEROR_DECORATIVE_STATUE)
-  {
-    s = 'I';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_EAST_WEST_PEW)
-  {
-    s = '|';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_FIRE_PILLAR)
-  {
-    s = 'Y';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_FORGE)
-  {
-    s = '&';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_FOUNTAIN)
-  {
-    s = '~';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH)
-  {
-    s = '&';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_PEW)
-  {
-    s = '-';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_PULPER)
-  {
-    s = ':';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_SARCOPHAGUS)
-  {
-    s = '0';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_SIGN)
-  {
-    s = '+';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_SLOT_MACHINE)
-  {
-    s = '$';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_STONE_MARKER)
-  {
-    s = '+';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_TABLE)
-  {
-    s = 'o';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_TANNERY)
-  {
-    s = ';';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_TRAP)
-  {
-    s = '^';
-  }
-  else if (ci == ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM)
-  {
-    s = ';';
   }
   else
   {
@@ -123,19 +32,13 @@ Symbol FeatureGenerator::get_config_symbol(const ClassIdentifier ci)
     BOOST_ASSERT_MSG(true, error_msg.c_str());
   }
 
-  Symbol symbol(s, Colour::COLOUR_WHITE); // colour is generally ignored - material colour used
+  Symbol symbol = f_it->second;
   return symbol;
 }
 
 FeaturePtr FeatureGenerator::create_feature(const ClassIdentifier ci)
 {
   FeaturePtr feature;
-
-  if (feature_map.empty())
-  {
-    initialize_feature_map();
-  }
-
   FeatureSerializationMap::iterator f_it = feature_map.find(ci);
 
   if (f_it != feature_map.end())
@@ -167,6 +70,8 @@ TrapPtr FeatureGenerator::create_trap()
   return trap;
 }
 
+// Before this function is called, the feature_symbol_map member should have
+// been initialized.
 void FeatureGenerator::initialize_feature_map()
 {
   feature_map.clear();
@@ -174,6 +79,8 @@ void FeatureGenerator::initialize_feature_map()
   FeaturePtr good_altar         = std::make_shared<GoodAltar>(get_config_symbol(ClassIdentifier::CLASS_ID_GOOD_ALTAR));
   FeaturePtr neutral_altar      = std::make_shared<NeutralAltar>(get_config_symbol(ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR));
   FeaturePtr evil_altar         = std::make_shared<EvilAltar>(get_config_symbol(ClassIdentifier::CLASS_ID_EVIL_ALTAR));
+  FeaturePtr generic_dec_statue = std::make_shared<KingDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_DECORATIVE_STATUE));
+  FeaturePtr generic_reg_statue = std::make_shared<KingDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_REGULAR_STATUE));
   FeaturePtr king_statue        = std::make_shared<KingDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_KING_DECORATIVE_STATUE));
   FeaturePtr queen_statue       = std::make_shared<QueenDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_QUEEN_DECORATIVE_STATUE));
   FeaturePtr warlord_statue     = std::make_shared<WarlordDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_WARLORD_DECORATIVE_STATUE));
@@ -201,11 +108,13 @@ void FeatureGenerator::initialize_feature_map()
   FeaturePtr table              = std::make_shared<Table>(get_config_symbol(ClassIdentifier::CLASS_ID_TABLE));
   FeaturePtr config_feature     = std::make_shared<ConfigurableFeature>(Symbol('?', Colour::COLOUR_WHITE));
   FeaturePtr slot_machine       = std::make_shared<SlotMachine>(get_config_symbol(ClassIdentifier::CLASS_ID_SLOT_MACHINE));
-  FeaturePtr sign               = std::make_shared<Sign>(get_config_symbol(ClassIdentifier::CLASS_ID_KING_DECORATIVE_STATUE), "fake_sid");
+  FeaturePtr sign               = std::make_shared<Sign>(get_config_symbol(ClassIdentifier::CLASS_ID_SIGN), "fake_sid");
 
   feature_map = FeatureSerializationMap{{ClassIdentifier::CLASS_ID_GOOD_ALTAR, good_altar},
                                         {ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR, neutral_altar},
                                         {ClassIdentifier::CLASS_ID_EVIL_ALTAR, evil_altar},
+                                        {ClassIdentifier::CLASS_ID_DECORATIVE_STATUE, generic_dec_statue},
+                                        {ClassIdentifier::CLASS_ID_REGULAR_STATUE, generic_reg_statue},
                                         {ClassIdentifier::CLASS_ID_KING_DECORATIVE_STATUE, king_statue},
                                         {ClassIdentifier::CLASS_ID_QUEEN_DECORATIVE_STATUE, queen_statue},
                                         {ClassIdentifier::CLASS_ID_WARLORD_DECORATIVE_STATUE, warlord_statue},
@@ -469,4 +378,15 @@ PetrifiedCorpseStatuePtr FeatureGenerator::generate_petrified_corpse_statue(cons
   statue = std::make_shared<PetrifiedCorpseStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_PETRIFIED_CORPSE_STATUE), corpse_description_sid);
   
   return statue;
+}
+
+void FeatureGenerator::set_feature_symbol_map(const FeatureSymbolMap& new_fsm)
+{
+  feature_symbol_map = new_fsm;
+  initialize_feature_map();
+}
+
+FeatureSymbolMap FeatureGenerator::get_feature_symbol_map()
+{
+  return feature_symbol_map;
 }

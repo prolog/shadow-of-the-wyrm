@@ -11,6 +11,7 @@
 #include "DeitySelectionScreen.hpp"
 #include "DisplaySettings.hpp"
 #include "DisplayTile.hpp"
+#include "FeatureGenerator.hpp"
 #include "FileConstants.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
@@ -187,6 +188,9 @@ void ShadowOfTheWyrmEngine::setup_game()
   pair<ItemMap, GenerationValuesMap> items = reader.get_items();
   game.set_items(items.first);
   game.set_item_generation_values(items.second);
+
+  FeatureSymbolMap feature_symbols = reader.get_feature_symbols();
+  FeatureGenerator::set_feature_symbol_map(feature_symbols);
 
   FeatureMap configurable_features = reader.get_configurable_features();
   game.set_configurable_features(configurable_features);

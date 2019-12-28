@@ -6956,6 +6956,40 @@
 		</Trap>
 	</Traps>
 	<AllFeatures>
+		<BaseFeatures>
+			<EvilAltar><Symbol><Char>_</Char></Symbol></EvilAltar>
+			<GoodAltar><Symbol><Char>_</Char></Symbol></GoodAltar>
+			<NeutralAltar><Symbol><Char>_</Char></Symbol></NeutralAltar>
+			<Barrel><Symbol><Char>o</Char></Symbol></Barrel>
+			<Bench><Symbol><Char>-</Char></Symbol></Bench>
+			<Bed><Symbol><Char>~</Char></Symbol></Bed>
+			<Door><Symbol><Char>+</Char></Symbol></Door>
+			<Gate><Symbol><Char>+</Char></Symbol></Gate>
+			<DecorativeStatue><Symbol><Char>I</Char></Symbol></DecorativeStatue>
+			<HighPriestDecorativeStatue><Symbol><Char>I</Char></Symbol></HighPriestDecorativeStatue>
+			<KingDecorativeStatue><Symbol><Char>I</Char></Symbol></KingDecorativeStatue>
+			<KnightDecorativeStatue><Symbol><Char>I</Char></Symbol></KnightDecorativeStatue>
+			<PetrifiedCorpseStatue><Symbol><Char>I</Char></Symbol></PetrifiedCorpseStatue>
+			<QueenDecorativeStatue><Symbol><Char>I</Char></Symbol></QueenDecorativeStatue>
+			<WarlordDecorativeStatue><Symbol><Char>I</Char></Symbol></WarlordDecorativeStatue>
+			<RegularDecorativeStatue><Symbol><Char>I</Char></Symbol></RegularDecorativeStatue>
+			<SorcerorDecorativeStatue><Symbol><Char>I</Char></Symbol></SorcerorDecorativeStatue>
+			<EastWestPew><Symbol><Char>|</Char></Symbol></EastWestPew>
+			<FirePillar><Symbol><Char>Y</Char></Symbol></FirePillar>
+			<Forge><Symbol><Char>&amp;</Char></Symbol></Forge>
+			<Fountain><Symbol><Char>~</Char></Symbol></Fountain>
+			<JewelerWorkbench><Symbol><Char>&amp;</Char></Symbol></JewelerWorkbench>
+			<Pew><Symbol><Char>-</Char></Symbol></Pew>
+			<Pulper><Symbol><Char>:</Char></Symbol></Pulper>
+			<Sarcophagus><Symbol><Char>0</Char></Symbol></Sarcophagus>
+			<Sign><Symbol><Char>+</Char></Symbol></Sign>
+			<SlotMachine><Symbol><Char>$</Char></Symbol></SlotMachine>
+			<StoneMarker><Symbol><Char>+</Char></Symbol></StoneMarker>
+			<Table><Symbol><Char>o</Char></Symbol></Table>
+			<Tannery><Symbol><Char>;</Char></Symbol></Tannery>
+			<Trap><Symbol><Char>^</Char></Symbol></Trap>
+			<WheelAndLoom><Symbol><Char>;</Char></Symbol></WheelAndLoom>
+		</BaseFeatures>
 		<ConfigurableFeatures>
 			<ConfigurableFeature id="_rift">
 				<Material>14</Material>

@@ -36,6 +36,7 @@ int add_object_to_creature(lua_State* ls);
 int add_object_to_tile(lua_State* ls); // assumes current map
 int add_key_to_player_tile(lua_State* ls);
 int add_feature_to_map(lua_State* ls);
+int add_all_base_features_to_map(lua_State* ls);
 int add_configurable_feature_to_map(lua_State* ls);
 int add_feature_to_player_tile(lua_State* ls);
 int set_feature_additional_property(lua_State* ls);

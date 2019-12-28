@@ -1054,6 +1054,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\XML\custom_maps\world\include\XMLWorldMapReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLAmuletReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLArmourReader.hpp" />
+    <ClInclude Include="engine\XML\include\XMLBaseFeatureReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLConfigurableFeatureReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLBoatReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLCalendarReader.hpp" />
@@ -1904,6 +1905,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLSignReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLSlotMachineReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLTableReader.cpp" />
+    <ClCompile Include="engine\XML\source\XMLBaseFeatureReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLConfigurableFeatureReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLCalendarReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLSpritesheetsReader.cpp" />

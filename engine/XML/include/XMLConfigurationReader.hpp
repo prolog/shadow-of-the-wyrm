@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "XMLBaseFeatureReader.hpp"
 #include "XMLConfigurableFeatureReader.hpp"
 #include "XMLCalendarReader.hpp"
 #include "XMLClassesReader.hpp"
@@ -39,6 +40,7 @@ class XMLConfigurationReader
     SpellMap get_spells();
     std::map<std::string, std::string> get_spritesheets();
     std::pair<ItemMap, GenerationValuesMap> get_items();    
+    FeatureSymbolMap get_feature_symbols();
     FeatureMap get_configurable_features();
     std::map<std::string, std::string> get_scripts();
     std::vector<DisplayTile> get_tile_info();
@@ -68,6 +70,7 @@ class XMLConfigurationReader
     XMLTilesReader tiles_reader;
     XMLTrapsReader traps_reader;
     XMLScriptsReader scripts_reader;
+    XMLBaseFeatureReader bf_reader;
     XMLConfigurableFeatureReader cf_reader;
 };
 

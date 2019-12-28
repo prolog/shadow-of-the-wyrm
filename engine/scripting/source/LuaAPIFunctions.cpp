@@ -187,6 +187,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_key_to_player_tile", add_key_to_player_tile);
   lua_register(L, "add_configurable_feature_to_map", add_configurable_feature_to_map);
   lua_register(L, "add_feature_to_map", add_feature_to_map);
+  lua_register(L, "add_all_base_features_to_map", add_all_base_features_to_map);
   lua_register(L, "add_feature_to_player_tile", add_feature_to_player_tile);
   lua_register(L, "set_feature_additional_property", set_feature_additional_property);
   lua_register(L, "mark_quest_completed", mark_quest_completed);
@@ -1293,6 +1294,59 @@ int add_feature_to_map(lua_State* ls)
   }
 
   lua_pushboolean(ls, feature_added);
+  return 1;
+}
+
+// This function isn't intended to be used in-game - it's meant for
+// mass debugging of features.
+int add_all_base_features_to_map(lua_State* ls)
+{
+  int num_added = 0;
+
+  if (lua_gettop(ls) == 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
+  {
+    int y = lua_tointeger(ls, 1);
+    int x = lua_tointeger(ls, 2);
+
+    FeatureSymbolMap fsm = FeatureGenerator::get_feature_symbol_map();
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      Dimensions d = map->size();
+      int max_y = d.get_y();
+      int max_x = d.get_x();
+
+      for (auto f_pair : fsm)
+      {
+        ClassIdentifier cid = f_pair.first;
+        FeaturePtr f = FeatureGenerator::create_feature(cid);
+
+        if (x >= max_x)
+        {
+          x = 0;
+          y++;
+        }
+
+        if (y < max_y)
+        {
+          if (f != nullptr)
+          {
+            map->at(y, x)->set_feature(f);
+
+            x++;
+            num_added++;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to add_all_base_features_to_map");
+  }
+
+  lua_pushinteger(ls, num_added);
   return 1;
 }
 // Mark a quest as completed.

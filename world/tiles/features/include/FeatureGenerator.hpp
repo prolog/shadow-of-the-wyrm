@@ -41,14 +41,17 @@ class FeatureGenerator
     static FeaturePtr generate_decorative_statue(const DecorativeStatueType statue_type);
     static PetrifiedCorpseStatuePtr generate_petrified_corpse_statue(const std::string& corpse_description_sid);
 
+    static void set_feature_symbol_map(const FeatureSymbolMap& fsm);
+    static FeatureSymbolMap get_feature_symbol_map();
+
   protected:
     static Symbol get_config_symbol(const ClassIdentifier ci);
+    static void initialize_feature_map();
 
     FeatureGenerator();
     ~FeatureGenerator();
 
-    static void initialize_feature_map();
-
+    static FeatureSymbolMap feature_symbol_map;
     static FeatureSerializationMap feature_map;
 };
 

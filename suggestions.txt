@@ -1,4 +1,5 @@
 Me:
+- Need to be able to set symbol for entrance states, spell symbols
 - Weather should have a chance to "reset" back to 0.
 - Add wind shimmer to water
 - Spritesheets

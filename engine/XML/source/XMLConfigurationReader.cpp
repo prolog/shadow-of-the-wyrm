@@ -91,6 +91,15 @@ pair<ItemMap, GenerationValuesMap> XMLConfigurationReader::get_items()
   return items;
 }
 
+FeatureSymbolMap XMLConfigurationReader::get_feature_symbols()
+{
+  XMLNode features_node = XMLUtils::get_next_element_by_local_name(root, "AllFeatures");
+  XMLNode base_features_node = XMLUtils::get_next_element_by_local_name(features_node, "BaseFeatures");
+  FeatureSymbolMap fsm = bf_reader.get_feature_symbols(base_features_node);
+
+  return fsm;
+}
+
 FeatureMap XMLConfigurationReader::get_configurable_features()
 {
   XMLNode features_node = XMLUtils::get_next_element_by_local_name(root, "AllFeatures");

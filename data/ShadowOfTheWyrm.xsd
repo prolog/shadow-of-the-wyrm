@@ -189,18 +189,50 @@
 	</xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
-			<!-- <xs:element ref="tns:Features" minOccurs="0"/> -->
+			<xs:element ref="tns:BaseFeatures" minOccurs="0"/>
 			<xs:element ref="tns:ConfigurableFeatures" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
-<!--<xs:element name="Features">
-	<xs:annotation>
-		<xs:documentation>Symbol information for non-user-defined features.</xs:documentation>
-	</xs:annotation>
-	<xs:sequence>
-	</xs:sequence>
-</xs:element> -->
+<xs:element name="BaseFeatures">
+	<xs:annotation><xs:documentation>System features can onl have their symbols set in the game XML.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="EvilAltar" type="tns:BaseFeature"/>
+			<xs:element name="GoodAltar" type="tns:BaseFeature"/>
+			<xs:element name="NeutralAltar" type="tns:BaseFeature"/>
+			<xs:element name="Barrel" type="tns:BaseFeature"/>
+			<xs:element name="Bench" type="tns:BaseFeature"/>
+			<xs:element name="Bed" type="tns:BaseFeature"/>
+			<xs:element name="Door" type="tns:BaseFeature"/>
+			<xs:element name="Gate" type="tns:BaseFeature"/>
+			<xs:element name="DecorativeStatue" type="tns:BaseFeature"/>
+			<xs:element name="HighPriestDecorativeStatue" type="tns:BaseFeature"/>
+			<xs:element name="KingDecorativeStatue" type="tns:BaseFeature"/>
+			<xs:element name="KnightDecorativeStatue" type="tns:BaseFeature"/>
+			<xs:element name="PetrifiedCorpseStatue" type="tns:BaseFeature"/>
+			<xs:element name="QueenDecorativeStatue" type="tns:BaseFeature"/>
+			<xs:element name="WarlordDecorativeStatue" type="tns:BaseFeature"/>
+			<xs:element name="RegularDecorativeStatue" type="tns:BaseFeature"/>
+			<xs:element name="SorcerorDecorativeStatue" type="tns:BaseFeature"/>
+			<xs:element name="EastWestPew" type="tns:BaseFeature"/>
+			<xs:element name="FirePillar" type="tns:BaseFeature"/>
+			<xs:element name="Forge" type="tns:BaseFeature"/>
+			<xs:element name="Fountain" type="tns:BaseFeature"/>
+			<xs:element name="JewelerWorkbench" type="tns:BaseFeature"/>
+			<xs:element name="Pew" type="tns:BaseFeature"/>
+			<xs:element name="Pulper" type="tns:BaseFeature"/>
+			<xs:element name="Sarcophagus" type="tns:BaseFeature"/>
+			<xs:element name="Sign" type="tns:BaseFeature"/>
+			<xs:element name="SlotMachine" type="tns:BaseFeature"/>
+			<xs:element name="StoneMarker" type="tns:BaseFeature"/>
+			<xs:element name="Table" type="tns:BaseFeature"/>
+			<xs:element name="Tannery" type="tns:BaseFeature"/>
+			<xs:element name="Trap" type="tns:BaseFeature"/>
+			<xs:element name="WheelAndLoom" type="tns:BaseFeature"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
 <xs:element name="ConfigurableFeatures">
 	<xs:annotation>
 		<xs:documentation>Configurable features (have XML-settable descriptions/materials but cannot be manipulated).</xs:documentation>
@@ -1195,12 +1227,10 @@
 	</xs:annotation>
 	<xs:sequence>
 		<xs:element name="Char" type="xs:string" minOccurs="1"/>
-		<xs:choice>
-			<!-- Indicates that the colour will be used regardless of the season. -->
-			<xs:element name="Colour" type="tns:ColourType"/>
-			<!-- Indicates that colours will be provided for each season. -->
-			<xs:element name="Colours" type="tns:SeasonColoursType"/>
-		</xs:choice>
+		<!-- Indicates that the colour will be used regardless of the season. -->
+		<xs:element name="Colour" type="tns:ColourType" minOccurs="0"/>
+		<!-- Indicates that colours will be provided for each season. -->
+		<xs:element name="Colours" type="tns:SeasonColoursType" minOccurs="0"/>
 		<!-- This doesn't need to be defined for pure-text implementations -->
 		<xs:element name="SpritesheetLocation" type="tns:SpritesheetLocation" minOccurs="0"/>
 	</xs:sequence>
@@ -1256,6 +1286,11 @@
 			<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="required"/>
 		</xs:extension>
 	</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="BaseFeature">
+	<xs:sequence>
+		<xs:element name="Symbol" type="tns:Symbol"/>
+	</xs:sequence>
 </xs:complexType>
 <!-- SIMPLE TYPES -->
 <xs:simpleType name="HandsType">

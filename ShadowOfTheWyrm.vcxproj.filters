@@ -4259,6 +4259,9 @@
     <ClInclude Include="engine\calculators\include\WeatherCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLBaseFeatureReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8529,6 +8532,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\WeatherCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLBaseFeatureReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
