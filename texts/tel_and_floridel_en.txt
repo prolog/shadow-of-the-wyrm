@@ -3194,8 +3194,8 @@ in her own voice, and held her spellbound in that hall.
 When she saw it, she felt as if her soul was ripping %b
 at the seams of her skin to try to get away %b
 from what stood there, regarding her, amidst %b
-the echoes of the cavern.  Her own face %b
-stared back at her.  Said nothing now.  Waited %b
+the echoes of the cavern.  Her younger face %b
+stared back at her.  The child said nothing.  Waited %b
 for Floridel's reaction.  When none came, %b
 it offered out its hand - her hand.  She braced %b
 for what might come.  But nothing did, and the shame %b
@@ -3211,4 +3211,14 @@ Her double took her hand, stepped back, and curtseyed. %b
 She laughed again.  The two of them remained %b
 deadlocked, each one deferentially %b
 waiting for what they thought the other's move would be.
+%p
+As Floridel stepped forward, it stepped in, %b
+and as they met, it turned to mist, and vanished. %b
+She stopped for just a moment.  Breathed.  And when %b
+she walked toward those columns, saw something hanging %b
+at the corner of her vision, matching pace %b
+with hers, until she saw that, once again, %b
+it had taken her form: the girl who'd lacked the grace %b
+to curtsey to a king.  It spoke her name. %b
+She stepped out into it, and watched it fade again.
 %p
