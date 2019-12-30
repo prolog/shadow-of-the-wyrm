@@ -52,7 +52,7 @@ class CursesDisplay : public Display
     void hide() override;
 	  void clear_screen() override;
 
-    void set_spritesheets(const std::map<std::string, std::string>& spritesheet_details) override;
+    void set_spritesheets(const std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>>& spritesheet_details) override;
 
     virtual Display* clone() override;
 

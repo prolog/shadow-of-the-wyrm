@@ -401,17 +401,25 @@ void SDLDisplay::draw_coordinate(const DisplayTile& current_tile, const uint ter
     Colour colour = static_cast<Colour>(current_tile.get_colour());
     Symbol s = current_tile.get_symbol();
     uchar char_symbol = s.get_symbol();
+    bool rendered = false;
 
     enable_colour(colour);
 
     if (s.get_uses_spritesheet())
     {
       SpritesheetLocation ssl = s.get_spritesheet_location();
-      Coordinate c = ssl.get_coordinate();
       SDL_Texture* spritesheet = get_spritesheet(s.get_spritesheet_location_ref().get_index());
-      render.render_glyph(screen_cursors.back(), renderer, spritesheet, screens.back(), terminal_row, terminal_col, c.first, c.second, sdld.get_fg_colour(), sdld.get_bg_colour());
+
+      if (spritesheet != nullptr)
+      {
+        Coordinate c = get_spritesheet_coordinate(ssl);
+        render.render_glyph(screen_cursors.back(), renderer, spritesheet, screens.back(), terminal_row, terminal_col, c.first, c.second, sdld.get_fg_colour(), sdld.get_bg_colour());
+        rendered = true;
+      }
     }
-    else
+    
+    // If there were issues looking up the glyph, fall back on text.
+    if (rendered == false)
     {
       render.render_text(screen_cursors.back(), renderer, spritesheets[TEXT_ID], screens.back(), terminal_row, terminal_col, char_symbol, sdld.get_fg_colour(), sdld.get_bg_colour());
     }
@@ -700,12 +708,17 @@ string SDLDisplay::display_screen(const Screen& current_screen)
   return Display::display_screen(current_screen);
 }
 
-void SDLDisplay::set_spritesheets(const map<string, string>& spritesheet_ids_and_files)
+void SDLDisplay::set_spritesheets(const map<string, pair<string, unordered_map<string, Coordinate>>>& spritesheet_ids_and_files)
 {
   for (auto ss_it : spritesheet_ids_and_files)
   {
-    SDL_Texture* spritesheet = load_texture(ss_it.second, renderer);
-    spritesheets[ss_it.first] = spritesheet;
+    string spritesheet_id = ss_it.first;
+    string filename = ss_it.second.first;
+    SDL_Texture* spritesheet = load_texture(filename, renderer);
+    spritesheets[spritesheet_id] = spritesheet;
+
+    unordered_map<string, Coordinate> refs = ss_it.second.second;
+    spritesheet_references[spritesheet_id] = refs;
   }
 }
 
@@ -720,6 +733,29 @@ SDL_Texture* SDLDisplay::get_spritesheet(const string& spritesheet_idx)
   }
 
   return ss;
+}
+
+Coordinate SDLDisplay::get_spritesheet_coordinate(const SpritesheetLocation& ssl) const
+{
+  Coordinate coords = ssl.get_coordinate();
+
+  if (ssl.uses_reference_id())
+  {
+    auto sr_it = spritesheet_references.find(ssl.get_index());
+
+    if (sr_it != spritesheet_references.end())
+    {
+      auto sr_map = sr_it->second;
+      auto srm_it = sr_map.find(ssl.get_reference_id());
+
+      if (srm_it != sr_map.end())
+      {
+        coords = srm_it->second;
+      }
+    }
+  }
+
+  return coords;
 }
 
 bool SDLDisplay::serialize(std::ostream& stream) const

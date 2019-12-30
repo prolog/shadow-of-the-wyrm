@@ -4,6 +4,30 @@
 #include "Colours.hpp"
 #include "ISerializable.hpp"
 
+class SpritesheetIndex
+{
+  public:
+    static const std::string SPRITESHEET_INDEX_SYSTEM;
+
+  protected:
+    SpritesheetIndex();
+    ~SpritesheetIndex();
+};
+
+class SpritesheetReference
+{
+  public:
+    static const std::string SPRITESHEET_REFERENCE_MAGIC_BLAST;
+    static const std::string SPRITESHEET_REFERENCE_BEAM_NWSE;
+    static const std::string SPRITESHEET_REFERENCE_BEAM_NESW;
+    static const std::string SPRITESHEET_REFERENCE_BEAM_NS;
+    static const std::string SPRITESHEET_REFERENCE_BEAM_EW;
+  
+  protected:
+    SpritesheetReference();
+    ~SpritesheetReference();
+};
+
 class SpritesheetLocation : public ISerializable
 {
   public:

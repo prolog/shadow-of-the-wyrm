@@ -7119,4 +7119,31 @@
 	<Scripts>
 		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
 	</Scripts>
+	<Spritesheets>
+		<Spritesheet id="sys">
+			<Location>assets/sprites/test.png</Location>
+			<References>
+				<Reference id="_magic_blast">
+					<Row>1</Row>
+					<Col>2</Col>
+				</Reference>
+				<Reference id="_beam_nwse">
+					<Row>1</Row>
+					<Col>3</Col>
+				</Reference>
+				<Reference id="_beam_nesw">
+					<Row>0</Row>
+					<Col>1</Col>
+				</Reference>
+				<Reference id="_beam_ns">
+					<Row>0</Row>
+					<Col>2</Col>
+				</Reference>
+				<Reference id="_beam_ew">
+					<Row>0</Row>
+					<Col>4</Col>
+				</Reference>
+			</References>
+		</Spritesheet>
+	</Spritesheets>
 </ShadowOfTheWyrm>

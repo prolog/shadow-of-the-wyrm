@@ -143,8 +143,8 @@ class Game : public ISerializable
     void set_current_loaded_savefile(const std::string& current_loaded_savefile);
     std::string get_current_loaded_savefile() const;
 
-    void set_spritesheets(const std::map<std::string, std::string>& new_spritesheets);
-    std::map<std::string, std::string> get_spritesheets() const;
+    void set_spritesheets(const std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>>& new_spritesheets);
+    std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>> get_spritesheets() const;
 
     virtual void run_map_scripts();
 
@@ -286,8 +286,8 @@ class Game : public ISerializable
     // be delete after death or quitting.
     std::string current_loaded_savefile;
 
-    // Any spritesheets associated with the configuration.
-    std::map<std::string, std::string> spritesheets;
+    // Any spritesheets and references associated with the configuration.
+    std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>> spritesheets;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

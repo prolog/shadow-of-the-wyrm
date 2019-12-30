@@ -19,7 +19,7 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> ConeShapeProcessor::get_affec
   int frontier_size = 0;
   uint spell_range = spell.get_range();
 
-  Symbol s('*', spell.get_colour());
+  Symbol s('*', spell.get_colour(), {SpritesheetIndex::SPRITESHEET_INDEX_SYSTEM, SpritesheetReference::SPRITESHEET_REFERENCE_MAGIC_BLAST});
   DisplayTile dt(s);
 
   Coordinate prev_coord = caster_coord;

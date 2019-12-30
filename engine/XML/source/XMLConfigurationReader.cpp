@@ -73,10 +73,10 @@ SpellMap XMLConfigurationReader::get_spells()
   return spells;
 }
 
-map<string, string> XMLConfigurationReader::get_spritesheets()
+map<string, pair<string, unordered_map<string, Coordinate>>> XMLConfigurationReader::get_spritesheets()
 {
   XMLNode spritesheets_node = XMLUtils::get_next_element_by_local_name(root, "Spritesheets");
-  map<string, string> spritesheets = spritesheets_reader.get_spritesheets(spritesheets_node);
+  map<string, pair<string, unordered_map<string, Coordinate>>> spritesheets = spritesheets_reader.get_spritesheets(spritesheets_node);
   return spritesheets;
 }
 

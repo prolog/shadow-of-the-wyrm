@@ -78,8 +78,10 @@ class SDLDisplay : public Display
 
     virtual std::string display_screen(const Screen& current_screen) override;
 
-    void set_spritesheets(const std::map<std::string, std::string>& spritesheet_details) override;
+    void set_spritesheets(const std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>>& spritesheet_details) override;
     SDL_Texture* get_spritesheet(const std::string& spritesheet_idx);
+
+    Coordinate get_spritesheet_coordinate(const SpritesheetLocation& ssl) const;
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
@@ -126,6 +128,7 @@ class SDLDisplay : public Display
     // The texture with the empty string key is the font spritesheet.
     // All other textures should have a string key with length > 0.
     std::unordered_map<std::string, SDL_Texture*> spritesheets;
+    std::unordered_map<std::string, unordered_map<string, Coordinate>> spritesheet_references;
 
     static const int SCREEN_ROWS;
     static const int SCREEN_COLS;

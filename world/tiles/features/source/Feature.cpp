@@ -206,7 +206,9 @@ void Feature::set_symbol(const Symbol& new_symbol)
 
 Symbol Feature::get_symbol() const
 {
-  Symbol s(symbol.get_symbol(), get_colour());
+  Symbol s = symbol;
+  s.set_colour(get_colour());
+
   return s;
 }
 

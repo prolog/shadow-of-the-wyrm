@@ -42,7 +42,8 @@ FeatureSymbolMap XMLBaseFeatureReader::get_feature_symbols(const XMLNode& base_f
   Log& log = Log::instance();
   for (auto cid_pair : class_id_names)
   {
-    XMLNode base_feature_node = XMLUtils::get_next_element_by_local_name(base_features_node, cid_pair.first);
+    string node_name = cid_pair.first;
+    XMLNode base_feature_node = XMLUtils::get_next_element_by_local_name(base_features_node, node_name);
 
     if (!base_feature_node.is_null())
     {

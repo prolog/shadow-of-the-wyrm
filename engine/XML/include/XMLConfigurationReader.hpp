@@ -38,7 +38,7 @@ class XMLConfigurationReader
     ClassMap get_classes();
     std::pair<CreatureMap, CreatureGenerationValuesMap> get_creatures();
     SpellMap get_spells();
-    std::map<std::string, std::string> get_spritesheets();
+    std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>> get_spritesheets();
     std::pair<ItemMap, GenerationValuesMap> get_items();    
     FeatureSymbolMap get_feature_symbols();
     FeatureMap get_configurable_features();

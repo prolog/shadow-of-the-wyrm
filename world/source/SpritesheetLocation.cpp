@@ -3,6 +3,33 @@
 
 using namespace std;
 
+// SpritesheetIndices
+const string SpritesheetIndex::SPRITESHEET_INDEX_SYSTEM = "sys";
+
+SpritesheetIndex::SpritesheetIndex()
+{
+}
+
+SpritesheetIndex::~SpritesheetIndex()
+{
+}
+
+// SpritesheetReference
+const string SpritesheetReference::SPRITESHEET_REFERENCE_MAGIC_BLAST = "_magic_blast";
+const string SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_NWSE = "_beam_nwse";
+const string SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_NESW = "_beam_nesw";
+const string SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_NS = "_beam_ns";
+const string SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_EW = "_beam_ew";
+
+SpritesheetReference::SpritesheetReference()
+{
+}
+
+SpritesheetReference::~SpritesheetReference()
+{
+}
+
+// SpritesheetLocation
 SpritesheetLocation::SpritesheetLocation()
 : coord(-1, -1)
 {

@@ -30,7 +30,7 @@ uint CursesDisplay::TERMINAL_MAX_COLS = 80;
 const int CURSES_NUM_BASE_COLOURS = 8;
 const int CURSES_NUM_TOTAL_COLOURS = 16;
 
-void CursesDisplay::set_spritesheets(const map<string, string>& spritesheets)
+void CursesDisplay::set_spritesheets(const map<string, pair<string, unordered_map<string, Coordinate>>>& spritesheets)
 {
   // Curses doesn't use sprites.
 }

@@ -1281,11 +1281,26 @@
 </xs:complexType>
 <xs:complexType name="Spritesheet">
 	<xs:annotation><xs:documentation>An individual spritesheet, which consists of an ID and file.  The ID is referenced by creatures/items/etc when they provide their index into the spritesheet.</xs:documentation></xs:annotation>		
-	<xs:simpleContent>
-		<xs:extension base="xs:string">
-			<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="required"/>
-		</xs:extension>
-	</xs:simpleContent>
+	<xs:sequence>
+		<xs:element name="Location" type="xs:string"/>
+		<xs:element name="References" type="tns:SpritesheetReferences" minOccurs="0"/>
+	</xs:sequence>
+	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="required"/>
+</xs:complexType>
+<xs:complexType name="SpritesheetReferences">
+	<xs:sequence>
+		<xs:element name="Reference" type="tns:SpritesheetReference" minOccurs="0" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SpritesheetReference">
+	<xs:annotation>
+		<xs:documentation>A spritesheet reference is an id, like "rock" or "dagger", that maps to a given y, x pair.  This allows entities in-game to specify a reference and not need to know the details of a spritesheet's implementation.</xs:documentation>
+	</xs:annotation>
+	<xs:sequence>
+		<xs:element name="Row" type="xs:integer"/>
+		<xs:element name="Col" type="xs:integer"/>
+	</xs:sequence>
+	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="required"/>
 </xs:complexType>
 <xs:complexType name="BaseFeature">
 	<xs:sequence>

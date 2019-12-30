@@ -1051,12 +1051,12 @@ string Game::get_current_loaded_savefile() const
   return current_loaded_savefile;
 }
 
-void Game::set_spritesheets(const map<string, string>& new_spritesheets)
+void Game::set_spritesheets(const map<string, pair<string, unordered_map<string, Coordinate>>>& new_spritesheets)
 {
   spritesheets = new_spritesheets;
 }
 
-map<string, string> Game::get_spritesheets() const
+std::map<string, pair<string, unordered_map<string, Coordinate>>> Game::get_spritesheets() const
 {
   return spritesheets;
 }
@@ -1200,7 +1200,25 @@ bool Game::serialize(ostream& stream) const
   loaded_map_details.serialize(stream);
 
   Serialize::write_string(stream, current_loaded_savefile);
-  Serialize::write_string_map(stream, spritesheets);
+  
+  Serialize::write_size_t(stream, spritesheets.size());
+  
+  for (auto ss_pair : spritesheets)
+  {
+    string ss_id = ss_pair.first;
+    pair<string, unordered_map<string, Coordinate>> fname_and_refs = ss_pair.second;
+
+    Serialize::write_string(stream, ss_id);
+    Serialize::write_string(stream, fname_and_refs.first);
+    Serialize::write_size_t(stream, fname_and_refs.second.size());
+
+    for (auto fr_pair : fname_and_refs.second)
+    {
+      Serialize::write_string(stream, fr_pair.first);
+      Serialize::write_int(stream, fr_pair.second.first);
+      Serialize::write_int(stream, fr_pair.second.second);
+    }
+  }
 
   Serialize::write_size_t(stream, calendar_days.size());
 
@@ -1428,7 +1446,38 @@ bool Game::deserialize(istream& stream)
   loaded_map_details.deserialize(stream);
 
   Serialize::read_string(stream, current_loaded_savefile);
-  Serialize::read_string_map(stream, spritesheets);
+
+  size_t ss_size = 0;
+  Serialize::read_size_t(stream, ss_size);
+
+  for (size_t i = 0; i < ss_size; i++)
+  {
+    string ss_id;
+    string ss_fname;
+
+    Serialize::read_string(stream, ss_id);
+    Serialize::read_string(stream, ss_fname);
+
+    size_t refs_sz = 0;
+    Serialize::read_size_t(stream, refs_sz);
+
+    unordered_map<string, Coordinate> refs;
+
+    for (size_t j = 0; j < refs_sz; j++)
+    {
+      string ref_id;
+      int row = 0;
+      int col = 0;
+
+      Serialize::read_string(stream, ref_id);
+      Serialize::read_int(stream, row);
+      Serialize::read_int(stream, col);
+
+      refs[ref_id] = {row, col};
+    }
+
+    spritesheets[ss_id] = {ss_fname, refs};
+  }
 
   size_t cal_size = 0;
   Serialize::read_size_t(stream, cal_size);
