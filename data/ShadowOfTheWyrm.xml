@@ -7143,6 +7143,18 @@
 					<Row>0</Row>
 					<Col>4</Col>
 				</Reference>
+				<Reference id="_entrance_destroyed">
+					<Row>4</Row>
+					<Col>1</Col>
+				</Reference>
+				<Reference id="_entrance_closed">
+					<Row>4</Row>
+					<Col>2</Col>
+				</Reference>
+				<Reference id="_entrance_open">
+					<Row>4</Row>
+					<Col>3</Col>
+				</Reference>
 			</References>
 		</Spritesheet>
 	</Spritesheets>

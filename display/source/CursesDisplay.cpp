@@ -551,11 +551,18 @@ void CursesDisplay::display_text_component(WINDOW* window, int* row, int* col, T
   if (tc != nullptr)
   {
     vector<pair<string, Colour>> current_text = tc->get_text();
+    vector<Symbol> symbols = tc->get_symbols();
 
     for (auto& text_line : current_text)
     {  
       string cur_text = text_line.first;
+
       boost::replace_all(cur_text, "%", "%%");
+
+      for (const Symbol& s : symbols)
+      {
+        boost::replace_first(cur_text, "%%s", Char::to_string(s.get_symbol()));
+      }
 
       enable_colour(static_cast<int>(text_line.second), window);
       mvwprintw(window, *row, cur_col, cur_text.c_str());

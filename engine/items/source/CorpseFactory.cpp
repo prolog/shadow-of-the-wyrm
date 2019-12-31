@@ -105,7 +105,6 @@ void CorpseFactory::set_display_details(CreaturePtr dead_creature, ItemPtr corps
 {
   if (corpse)
   {
-    // JCD SYMBOL SPRITESHEET FIXME
     // The corpse's colour should be that of the creature's.
     corpse->set_colour(dead_creature->get_symbol().get_colour());
 

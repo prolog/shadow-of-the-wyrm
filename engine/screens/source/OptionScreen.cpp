@@ -25,7 +25,7 @@ void OptionScreen::initialize()
   int i = 0;
 
   vector<ScreenComponentPtr> opt_screen;
-  add_text(opt_screen, intro_text, false, i);
+  add_text(opt_screen, intro_text, deque<Symbol>(), false, i);
 
   std::map<char, std::string> selection_map;
   OptionsComponentPtr scr_options = std::make_shared<OptionsComponent>();

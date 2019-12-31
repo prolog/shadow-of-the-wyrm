@@ -49,7 +49,7 @@ class Screen
     bool add_options_component(std::vector<ScreenComponentPtr>& current_menu, OptionsComponentPtr options, int& cnt, int& current_option_id);
     bool add_component(std::vector<ScreenComponentPtr>& current_menu, ScreenComponentPtr component, int& cnt);
     bool add_component(std::vector<ScreenComponentPtr>& current_menu, ScreenComponentPtr component, int& cnt, int& current_option_id);
-    bool add_text(std::vector<ScreenComponentPtr>& text_screen, const std::vector<TextDisplayPair>& tdp, const bool preserve_formatting, int& cnt);
+    bool add_text(std::vector<ScreenComponentPtr>& text_screen, const std::vector<TextDisplayPair>& tdp, std::deque<Symbol>& symbols, const bool preserve_formatting, int& cnt);
 
     bool can_add_component(int component_count) const;
 

@@ -22,6 +22,9 @@ class SpritesheetReference
     static const std::string SPRITESHEET_REFERENCE_BEAM_NESW;
     static const std::string SPRITESHEET_REFERENCE_BEAM_NS;
     static const std::string SPRITESHEET_REFERENCE_BEAM_EW;
+    static const std::string SPRITESHEET_ENTRANCE_OPEN;
+    static const std::string SPRITESHEET_ENTRANCE_CLOSED;
+    static const std::string SPRITESHEET_ENTRANCE_DESTROYED;
   
   protected:
     SpritesheetReference();

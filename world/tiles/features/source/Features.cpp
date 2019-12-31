@@ -430,19 +430,6 @@ bool Door::get_is_blocking() const
   return (state.get_state() == EntranceStateType::ENTRANCE_TYPE_CLOSED);
 }
 
-// Doors/gates/etc work a little differently because they need to generate
-// their symbol based on their current state, rather than a permanent
-// value.
-//
-// JCD SYMBOL SPRITESHEET FIXME
-Symbol Door::get_symbol() const
-{
-  Symbol s = state.get_symbol();
-  s.set_colour(get_colour());
-
-  return s;
-}
-
 ClassIdentifier Door::internal_class_identifier() const
 {
   return ClassIdentifier::CLASS_ID_DOOR;
@@ -485,6 +472,14 @@ EntranceState Entrance::get_state() const
 EntranceState& Entrance::get_state_ref()
 {
   return state;
+}
+
+Symbol Entrance::get_symbol() const
+{
+  Symbol s = state.get_symbol();
+  s.set_colour(get_colour());
+
+  return s;
 }
 
 void Entrance::set_maximum_size(const CreatureSize new_size)
@@ -614,15 +609,6 @@ Feature* Gate::clone()
 bool Gate::get_is_blocking() const
 {
   return (state.get_state() == EntranceStateType::ENTRANCE_TYPE_CLOSED);
-}
-
-// JCD SYMBOL SPRITESHEET FIXME
-Symbol Gate::get_symbol() const
-{
-  Symbol s = state.get_symbol();
-  s.set_colour(get_colour());
-
-  return s;
 }
 
 ClassIdentifier Gate::internal_class_identifier() const

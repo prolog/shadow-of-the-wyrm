@@ -573,18 +573,39 @@ void SDLDisplay::display_text_component(SDL_Window* window, int* row, int* col, 
     if (tc != nullptr && row != nullptr && col != nullptr)
     {
       vector<pair<string, Colour>> current_text = tc->get_text();
+      vector<Symbol> symbols = tc->get_symbols();
 
       for (auto& text_line : current_text)
       {
         string cur_text = text_line.first;
         Colour colour = text_line.second;
-        
+
         // Loop through the given string.  For each character, render it,
         // and increment the column.
-        for (const char c : cur_text)
+        size_t txt_size = cur_text.size();
+        size_t sym_size = symbols.size();
+
+        size_t cur_sym = 0;
+        size_t cur_char = 0;
+
+        while (cur_char < txt_size)
         {
-          text_renderer.render_text(screen_cursors.back(), renderer, text_spritesheet, texture, *row, *col, c, get_colour(colour), sdld.get_bg_colour());
-          *col += 1;
+          char c = cur_text[cur_char];
+
+          if (c == '%' && cur_char < txt_size - 1 && cur_text[cur_char + 1] == 's' && cur_sym < sym_size)
+          {
+            Symbol s = symbols[cur_sym];
+            DisplayTile dt(s);
+            draw_coordinate(dt, *row, *col);
+            *col += 1;
+            cur_char += 2;
+          }
+          else
+          {
+            text_renderer.render_text(screen_cursors.back(), renderer, text_spritesheet, texture, *row, *col, c, get_colour(colour), sdld.get_bg_colour());
+            *col += 1;
+            cur_char++;
+          }
         }
       }
 

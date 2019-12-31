@@ -13,6 +13,7 @@
 #include "ScreenTitleTextKeys.hpp"
 #include "TextDisplayFormatter.hpp"
 #include "TextDisplayScreen.hpp"
+#include "TextFormatSpecifiers.hpp"
 #include "TextKeys.hpp"
 
 using namespace std;
@@ -119,8 +120,9 @@ void ItemCodexAction::display_codex_item(ItemPtr item) const
     CodexDescriberPtr codex_desc = cdf.create_codex_describer(item);
     string separator;
     vector<pair<Colour, string>> codex_text;
+    deque<Symbol> symbols;
 
-    add_symbol_and_description_to_codex(item, codex_desc.get(), separator, codex_text);
+    add_symbol_and_description_to_codex(item, codex_desc.get(), separator, codex_text, symbols);
     add_synopsis_to_codex(item, codex_desc.get(), separator, codex_text);
     add_resistances_to_codex(item, codex_desc.get(), separator, codex_text);
     add_speed_details_to_codex(item, codex_desc.get(), separator, codex_text);
@@ -128,12 +130,12 @@ void ItemCodexAction::display_codex_item(ItemPtr item) const
     add_description_to_codex(item, codex_desc.get(), separator, codex_text);
 
     string codex_title_sid = ScreenTitleTextKeys::SCREEN_TITLE_ITEM_CODEX;
-    TextDisplayScreen tds(game.get_display(), codex_title_sid, codex_text);
+    TextDisplayScreen tds(game.get_display(), codex_title_sid, codex_text, false, symbols);
     tds.display();
   }
 }
 
-void ItemCodexAction::add_symbol_and_description_to_codex(ItemPtr item, CodexDescriber* codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
+void ItemCodexAction::add_symbol_and_description_to_codex(ItemPtr item, CodexDescriber* codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text, deque<Symbol>& symbols) const
 {
   if (item != nullptr && codex_desc != nullptr)
   {
@@ -146,8 +148,8 @@ void ItemCodexAction::add_symbol_and_description_to_codex(ItemPtr item, CodexDes
     // use the actual symbol and colour.
     if (identified)
     {
-      // JCD SYMBOL SPRITESHEET FIXME
-      symbol_details = item->get_symbol().get_symbol();
+      symbol_details = TextFormatSpecifiers::SYMBOL;
+      symbols.push_back(item->get_symbol());
       item_colour = item->get_colour();
     }
 

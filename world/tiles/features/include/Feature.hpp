@@ -46,7 +46,6 @@ class Feature : public ISerializable
     virtual bool apply_on_movement(std::shared_ptr<Creature> creature) const;
 
     // Display information.
-    // JCD SYMBOL SPRITESHEET FIXME
     virtual Colour get_colour() const; // by default, use the material's colour.
 
     virtual void set_shimmer_colours(const ShimmerColours& new_shimmer_colours);

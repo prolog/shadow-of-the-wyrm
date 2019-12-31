@@ -135,11 +135,6 @@ class Bench : public Feature
     ClassIdentifier internal_class_identifier() const override;
 };
 
-// JCD SYMBOL SPRITESHEET FIXME
-//
-// Once features all have their own per-instance symbol, remove most
-// of these classes...
-
 // A number of lightweight, decorative statues that can be generated
 // by the FeatureGenerator.  These all inherit from the DecorativeStatue.
 class DecorativeStatue : public Feature
@@ -226,6 +221,8 @@ class Entrance : public Feature
     virtual EntranceState get_state() const;
     virtual EntranceState& get_state_ref();
     
+    virtual Symbol get_symbol() const override;
+
     virtual void set_maximum_size(const CreatureSize new_maximum_size);
     virtual CreatureSize get_maximum_size() const;
 
@@ -263,7 +260,6 @@ class Door : public Entrance
     virtual ~Door() {};
 
     virtual bool get_is_blocking() const override;
-    virtual Symbol get_symbol()  const override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -279,7 +275,6 @@ class Gate : public Entrance
     virtual Feature* clone() override;
 
     virtual bool get_is_blocking() const override;
-    virtual Symbol get_symbol() const override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -299,7 +294,6 @@ class Pew : public Feature
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-// JCD FIXME SYMBOL SPRITESHEET
 // This can be merged with Pew when done
 class EastWestPew : public Pew
 {

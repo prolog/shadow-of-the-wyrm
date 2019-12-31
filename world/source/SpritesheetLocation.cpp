@@ -20,6 +20,9 @@ const string SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_NWSE = "_beam_nwse
 const string SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_NESW = "_beam_nesw";
 const string SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_NS = "_beam_ns";
 const string SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_EW = "_beam_ew";
+const string SpritesheetReference::SPRITESHEET_ENTRANCE_CLOSED = "_entrance_closed";
+const string SpritesheetReference::SPRITESHEET_ENTRANCE_OPEN = "_entrance_open";
+const string SpritesheetReference::SPRITESHEET_ENTRANCE_DESTROYED = "_entrance_destroyed";
 
 SpritesheetReference::SpritesheetReference()
 {

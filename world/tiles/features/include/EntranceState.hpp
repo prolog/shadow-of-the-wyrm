@@ -14,7 +14,6 @@ class EntranceState : public ISerializable
     void set_state(const EntranceStateType new_state);
     EntranceStateType get_state() const;
 
-    // JCD SYMBOL SPRITESHEET FIXME
     Symbol get_symbol() const;
 
     bool serialize(std::ostream& stream) const override;

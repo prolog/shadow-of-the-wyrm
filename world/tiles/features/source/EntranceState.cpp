@@ -34,24 +34,24 @@ EntranceStateType EntranceState::get_state() const
 
 Symbol EntranceState::get_symbol() const
 {
-  uchar symbol = '.';
+  pair<uchar, string> symbol_and_ref = {'.', SpritesheetReference::SPRITESHEET_ENTRANCE_DESTROYED};
   Colour c = Colour::COLOUR_WHITE;
 
   switch(state)
   {
     case EntranceStateType::ENTRANCE_TYPE_DESTROYED:
-      symbol = '.';
+      symbol_and_ref = {'.', SpritesheetReference::SPRITESHEET_ENTRANCE_DESTROYED};
       break;
     case EntranceStateType::ENTRANCE_TYPE_OPEN:
-      symbol = '`';
+      symbol_and_ref = {'`', SpritesheetReference::SPRITESHEET_ENTRANCE_OPEN};
       break;
     case EntranceStateType::ENTRANCE_TYPE_CLOSED:
     default:
-      symbol = '+';
+      symbol_and_ref = {'+', SpritesheetReference::SPRITESHEET_ENTRANCE_CLOSED};
       break;
   }
   
-  Symbol s(symbol, c);
+  Symbol s(symbol_and_ref.first, c, {SpritesheetIndex::SPRITESHEET_INDEX_SYSTEM, symbol_and_ref.second});
   return s;
 }
 
