@@ -1,12 +1,13 @@
+// MSXML is a POS and doesn't play nice with Xerces.
+#ifndef __MSXML_LIBRARY_DEFINED__
+#define __MSXML_LIBRARY_DEFINED__
+#endif
+
 #include <stdio.h>
 #include <iostream>
 
-// This needs to be defined first because it includes msxml.h, which
-// doesn't respect namespaces properly. Including xerces afterwards
-// (which is namespace-aware) allows everything to work as expected.
 #include "UnhandledExceptions.hpp"
 
-#undef DOMDocument
 #include <xercesc/util/PlatformUtils.hpp>
 #include <boost/archive/archive_exception.hpp>
 #include <boost/filesystem.hpp>
