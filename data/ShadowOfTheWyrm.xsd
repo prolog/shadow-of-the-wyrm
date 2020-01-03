@@ -1231,6 +1231,9 @@
 		<xs:element name="Colour" type="tns:ColourType" minOccurs="0"/>
 		<!-- Indicates that colours will be provided for each season. -->
 		<xs:element name="Colours" type="tns:SeasonColoursType" minOccurs="0"/>
+		<!-- Indicates that weather colours will be provided - high wind speed
+		     causes water shimmer, waves, etc. -->
+		<xs:element name="WeatherColours" type="tns:WeatherColoursType" minOccurs="0"/>
 		<!-- This doesn't need to be defined for pure-text implementations -->
 		<xs:element name="SpritesheetLocation" type="tns:SpritesheetLocation" minOccurs="0"/>
 	</xs:sequence>
@@ -1254,6 +1257,11 @@
 		<xs:element name="Summer" type="tns:ColourType"/>
 		<xs:element name="Autumn" type="tns:ColourType"/>
 		<xs:element name="Winter" type="tns:ColourType"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="WeatherColoursType">
+	<xs:sequence>
+		<xs:element name="WeatherColour" type="tns:ColourType" minOccurs="0" maxOccurs="unbounded"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="AgeRange">
@@ -1280,7 +1288,7 @@
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Spritesheet">
-	<xs:annotation><xs:documentation>An individual spritesheet, which consists of an ID and file.  The ID is referenced by creatures/items/etc when they provide their index into the spritesheet.</xs:documentation></xs:annotation>		
+	<xs:annotation><xs:documentation>An individual spritesheet, which consists of an ID and file.  The ID is referenced by creatures/items/etc when they provide their index into the spritesheet.  See the class SpritesheetReference/SpritesheetIndex for spritesheets that should be implemented if you want to use tiles.</xs:documentation></xs:annotation>		
 	<xs:sequence>
 		<xs:element name="Location" type="xs:string"/>
 		<xs:element name="References" type="tns:SpritesheetReferences" minOccurs="0"/>

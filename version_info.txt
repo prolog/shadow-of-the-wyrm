@@ -14,7 +14,12 @@ Shadow of the Wyrm v1.1.6 "Paganini"
   later, as well as instructions on how to add font spritesheets.
 
 - Initial weather implementation.  Weather can be checked via the "T"ime/Date/
-  Weather command.
+  Weather command.  High winds will cause colour changes for rivers, seas,
+  springs.
+
+- Full spritesheet support, though no spritesheets yet.  All creatures, tiles,
+  features, and various system-generated symbols (magical bolts/bursts, etc)
+  can now have their own sprites and colours.
 
 - Stanzas for "Tel and Floridel".
 

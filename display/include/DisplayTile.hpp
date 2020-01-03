@@ -1,5 +1,6 @@
 #pragma once
 #include <unordered_map>
+#include <vector>
 #include "common.hpp"
 #include "CalendarTypes.hpp"
 #include "Symbol.hpp"
@@ -34,10 +35,14 @@ class DisplayTile
     int  get_colour(const Season season) const;
     SeasonTileColourMap get_colours() const;
 
+    void set_weather_colours(const std::vector<Colour>& new_weather_colours);
+    std::vector<Colour> get_weather_colours() const;
+
   protected:
     Symbol symbol;
     Season current_season;
     SeasonTileColourMap colours;
+    std::vector<Colour> weather_colours;
 };
 
 

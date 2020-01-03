@@ -29,10 +29,17 @@ Symbol FeatureGenerator::get_config_symbol(const ClassIdentifier ci)
     string error_msg = ss.str();
 
     Log::instance().error(error_msg);
-    BOOST_ASSERT_MSG(true, error_msg.c_str());
   }
 
-  Symbol symbol = f_it->second;
+  // The feature map might be empty when we're running unit tests
+  // and haven't loaded game data.
+  Symbol symbol('?', Colour::COLOUR_WHITE);
+
+  if (f_it != feature_symbol_map.end())
+  {
+    symbol = f_it->second;
+  }
+
   return symbol;
 }
 

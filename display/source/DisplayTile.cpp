@@ -87,3 +87,13 @@ SeasonTileColourMap DisplayTile::get_colours() const
 {
   return colours;
 }
+
+void DisplayTile::set_weather_colours(const std::vector<Colour>& new_weather_colours)
+{
+  weather_colours = new_weather_colours;
+}
+
+std::vector<Colour> DisplayTile::get_weather_colours() const
+{
+  return weather_colours;
+}

@@ -403,7 +403,10 @@ void SDLDisplay::draw_coordinate(const DisplayTile& current_tile, const uint ter
     uchar char_symbol = s.get_symbol();
     bool rendered = false;
 
-    enable_colour(colour);
+    if (colour != Colour::COLOUR_UNDEFINED)
+    {
+      enable_colour(colour);
+    }
 
     if (s.get_uses_spritesheet())
     {
@@ -417,14 +420,17 @@ void SDLDisplay::draw_coordinate(const DisplayTile& current_tile, const uint ter
         rendered = true;
       }
     }
-    
+
     // If there were issues looking up the glyph, fall back on text.
     if (rendered == false)
     {
       render.render_text(screen_cursors.back(), renderer, spritesheets[TEXT_ID], screens.back(), terminal_row, terminal_col, char_symbol, sdld.get_fg_colour(), sdld.get_bg_colour());
     }
 
-    disable_colour(colour);
+    if (colour != Colour::COLOUR_UNDEFINED)
+    {
+      disable_colour(colour);
+    }
   }
 }
 

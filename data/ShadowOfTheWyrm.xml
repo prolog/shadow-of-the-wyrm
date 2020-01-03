@@ -6440,12 +6440,19 @@
 			<Symbol>
 				<Char>~</Char>
 				<Colour>6</Colour>
+				<WeatherColours>
+					<WeatherColour>14</WeatherColour>
+				</WeatherColours>
 			</Symbol>
 		</RiverTile>
 		<SeaTile>
 			<Symbol>
 				<Char>~</Char>
 				<Colour>4</Colour>
+				<WeatherColours>
+					<WeatherColour>12</WeatherColour>
+					<WeatherColour>15</WeatherColour>
+				</WeatherColours>
 			</Symbol>
 		</SeaTile>
 		<ShoalsTile>
@@ -6476,6 +6483,9 @@
 			<Symbol>
 				<Char>~</Char>
 				<Colour>2</Colour>
+				<WeatherColours>
+					<WeatherColour>10</WeatherColour>
+				</WeatherColours>
 			</Symbol>
 		</MarshTile>
 		<ReedsTile>
@@ -6538,6 +6548,9 @@
 			<Symbol>
 				<Char>~</Char>
 				<Colour>14</Colour>
+				<WeatherColours>
+					<WeatherColour>6</WeatherColour>
+				</WeatherColours>
 			</Symbol>
 		</SpringsTile>
 		<ForestTile>
@@ -7119,43 +7132,4 @@
 	<Scripts>
 		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
 	</Scripts>
-	<Spritesheets>
-		<Spritesheet id="sys">
-			<Location>assets/sprites/test.png</Location>
-			<References>
-				<Reference id="_magic_blast">
-					<Row>1</Row>
-					<Col>2</Col>
-				</Reference>
-				<Reference id="_beam_nwse">
-					<Row>1</Row>
-					<Col>3</Col>
-				</Reference>
-				<Reference id="_beam_nesw">
-					<Row>0</Row>
-					<Col>1</Col>
-				</Reference>
-				<Reference id="_beam_ns">
-					<Row>0</Row>
-					<Col>2</Col>
-				</Reference>
-				<Reference id="_beam_ew">
-					<Row>0</Row>
-					<Col>4</Col>
-				</Reference>
-				<Reference id="_entrance_destroyed">
-					<Row>4</Row>
-					<Col>1</Col>
-				</Reference>
-				<Reference id="_entrance_closed">
-					<Row>4</Row>
-					<Col>2</Col>
-				</Reference>
-				<Reference id="_entrance_open">
-					<Row>4</Row>
-					<Col>3</Col>
-				</Reference>
-			</References>
-		</Spritesheet>
-	</Spritesheets>
 </ShadowOfTheWyrm>

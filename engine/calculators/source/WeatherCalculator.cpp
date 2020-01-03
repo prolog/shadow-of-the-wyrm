@@ -4,6 +4,7 @@
 const int WeatherCalculator::STORM_WIND_SPEED_THRESHOLD = 75;
 const int WeatherCalculator::PCT_CHANCE_STORM_DISSIPATION = 25;
 const int WeatherCalculator::MAX_WIND_SPEED = 150;
+const int WeatherCalculator::MIN_WIND_SPEED_FOR_SHIMMER = 20;
 
 int WeatherCalculator::calculate_new_wind_speed(const int wind_speed) const
 {
@@ -31,3 +32,20 @@ int WeatherCalculator::calculate_new_wind_speed(const int wind_speed) const
 
   return new_ws;
 }
+
+int WeatherCalculator::calculate_pct_chance_shimmer(const int wind_speed) const
+{
+  int pct_chance_shimmer = 0;
+
+  if (wind_speed >= MIN_WIND_SPEED_FOR_SHIMMER)
+  {
+    pct_chance_shimmer = wind_speed / 2;
+    pct_chance_shimmer = std::min<int>(pct_chance_shimmer, 100);
+  }
+  
+  return pct_chance_shimmer;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/WeatherCalculator_test.cpp"
+#endif

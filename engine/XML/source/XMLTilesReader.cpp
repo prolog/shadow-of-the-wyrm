@@ -86,7 +86,23 @@ void XMLTilesReader::parse_tile_text_details(vector<DisplayTile>& tile_info, con
       tile_colours[Season::SEASON_WINTER] = winter_colour;
     }
 
+    XMLNode weather_colours_node = XMLUtils::get_next_element_by_local_name(symbol_node, "WeatherColours");
+    vector<Colour> weather_colours;
+
+    if (!weather_colours_node.is_null())
+    {
+      vector<XMLNode> weather_colours_nodes = XMLUtils::get_elements_by_local_name(weather_colours_node, "WeatherColour");
+
+      for (const auto& wc_node : weather_colours_nodes)
+      {
+        Colour weather_colour = static_cast<Colour>(XMLUtils::get_node_int_value(wc_node));
+        weather_colours.push_back(weather_colour);
+      }
+    }
+
     DisplayTile current_tile_info(s, tile_colours);
+    current_tile_info.set_weather_colours(weather_colours);
+
     tile_info.push_back(current_tile_info);
   }
 }

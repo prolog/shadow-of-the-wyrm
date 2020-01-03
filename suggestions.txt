@@ -1,7 +1,6 @@
 Me:
-- Add wind shimmer to water
+- double render making shimmer look weird
 - Spritesheets
-- Wind level should affect water shimmer
 - auto save - not working?
 - google screen clear not working for SDL. reported 2x.
 - 2x draw?

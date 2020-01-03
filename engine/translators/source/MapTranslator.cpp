@@ -9,8 +9,10 @@
 #include "MapDisplayArea.hpp"
 #include "MapProperties.hpp"
 #include "MapTranslator.hpp"
+#include "MapUtils.hpp"
 #include "RNG.hpp"
 #include "Setting.hpp"
+#include "WeatherCalculator.hpp"
 
 using namespace std;
 
@@ -295,7 +297,15 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, co
   bool passable = tile && (tile->get_movement_multiplier() > 0);
   Colour shimmer_colour = Colour::COLOUR_UNDEFINED;
   int pct_chance_shimmer = shimmer_colours.get_pct_chance_shimmer();
+
+  WeatherCalculator wc;
+  WeatherPtr weather = MapUtils::get_weather(game.get_current_map(), tile);
   int pct_chance_weathered = 0;
+  
+  if (weather != nullptr)
+  {
+    pct_chance_weathered = wc.calculate_pct_chance_shimmer(weather->get_wind_speed());
+  }
 
   if (timewalking)
   {
@@ -321,9 +331,12 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, co
 
   if (RNG::percent_chance(pct_chance_weathered))
   {
-    // JCD FIXME replace this with a calc later
-    Colour weathered_colour = Colour::COLOUR_WHITE;
-    display_tile.set_all_colours(static_cast<int>(weathered_colour));
+    vector<Colour> weather_colours = display_tile.get_weather_colours();
+
+    if (!weather_colours.empty())
+    {
+      shimmer_colour = weather_colours.at(RNG::range(0, weather_colours.size() - 1));
+    }
   }
 
   if (shimmer_colour != Colour::COLOUR_UNDEFINED)
