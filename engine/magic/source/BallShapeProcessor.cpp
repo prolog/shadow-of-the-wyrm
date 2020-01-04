@@ -121,7 +121,7 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BallShapeProcessor::get_af
 
         if (engine_tile != nullptr)
         {
-          dt = MapTranslator::create_display_tile(player_blind, false, tod_overrides, shimmer_colours, engine_tile, fov_tile);
+          dt = MapTranslator::create_display_tile(player_blind, false, tod_overrides, shimmer_colours, engine_tile, fov_tile, c.first, c.second);
           dt.set_season(season->get_season());
         }
       }

@@ -808,6 +808,10 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         {
           // Do a full redraw if we've changed map, or if we've just reloaded the game.
           update_display(current_creature, current_map, fov_map, reloaded_game);
+
+          // Now that we're about to process the player's action, clear the symbol
+          // cache.
+          Game::instance().get_map_registry_ref().clear_symbol_cache();
         }
 
         // strategy is used for the creature's decision strategy, so use another

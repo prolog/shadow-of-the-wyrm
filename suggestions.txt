@@ -1,5 +1,7 @@
 Me:
-- double render making shimmer look weird
+- double render making shimmer look weird. happening from the update before
+  and after for the player. how to fix this? get the shimmer colours by 
+  coordinate and minute?
 - Spritesheets
 - auto save - not working?
 - google screen clear not working for SDL. reported 2x.
@@ -248,13 +250,10 @@ Grond:
 - Can train up fae health by waiting forever
 - Torment-type spell (1/2 HP)
 - you see flickering even in areas where LOS is blocked by a wall
-- also when you move the cursor around with look, stuff flickers in LOS 
-  range around the cursor
 - cross spells affects rock tiles around you, shouldn't
 - Switching with townsfolk (in churches?) leads to weird behaviour
 - Adjacent creatures attack on load
 - Differentiate scribing and wandcraft - why use scribing?
-- "Double flicker" on torches/etc due to multiple draws.
 - Scything on ammo?
 
 Yan Zhang:

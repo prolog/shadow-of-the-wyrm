@@ -28,6 +28,14 @@ Shadow of the Wyrm v1.1.6 "Paganini"
   - Summoning traps could sometimes fail to summon creatures when the
     triggering creature's level was much lower than the map's danger level.
 
+  - The new weather-shimmer code fixes an issue in previous versions with
+    shimmer colours whereby a tile or feature could "flicker" several times
+    before the player's next turn due to multiple redraws due to other
+    creatures' turns.  There is now a symbol cache that gets cleared at the
+    start of the player's turn, and this cache is used to maintain consistent
+    tile colourings between turns, even when there are "random" colourings
+    due to weather, torchlight, etc (Grond).
+
 Shadow of the Wyrm v1.1.5.1 "Losy"
 - Version declared August 11, 2019.  Version finalized November 27, 2019.
 
