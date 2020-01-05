@@ -129,7 +129,7 @@ class SDLDisplay : public Display
     // The texture with the empty string key is the font spritesheet.
     // All other textures should have a string key with length > 0.
     std::unordered_map<std::string, SDL_Texture*> spritesheets;
-    std::unordered_map<std::string, unordered_map<string, Coordinate>> spritesheet_references;
+    std::unordered_map<std::string, std::unordered_map<std::string, Coordinate>> spritesheet_references;
 
     static const int SCREEN_ROWS;
     static const int SCREEN_COLS;
