@@ -109,16 +109,19 @@ void ShadowOfTheWyrmEngine::initialize_game_flow_map()
 void ShadowOfTheWyrmEngine::start(const Settings& settings)
 {
   Game& game = Game::instance();
+  Log& log = Log::instance();
 
   game.set_settings(settings);
   game.actions.reload_scripts_and_sids();
 
   if (state_manager.start_new_game())
   {
+    log.debug("Setting up display.");
     setup_display(settings);
 
     // Read in all the game data (there's a lot of it!), and then show the
     // display
+    log.debug("Reading game data.");
     setup_game();
 
     DisplayPtr display = game.get_display();
@@ -168,12 +171,15 @@ void ShadowOfTheWyrmEngine::setup_display(const Settings& settings)
 void ShadowOfTheWyrmEngine::setup_game()
 {
   Game& game = Game::instance();
-  
+  Log& log = Log::instance();
+
   string config_file = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_BASE);
   string config_file_creatures = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_CREATURES);
   string config_file_items = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_ITEMS);
 
   XMLConfigurationReader reader(config_file, config_file_creatures, config_file_items);
+
+  log.debug("Reading spritesheets.");
 
   // Set the spritesheets so they can be set into the display later if 
   // we're using SDL.
@@ -185,15 +191,23 @@ void ShadowOfTheWyrmEngine::setup_game()
   // and classes), and items.
   game.set_display(display);
 
+  log.debug("Reading items.");
+
   pair<ItemMap, GenerationValuesMap> items = reader.get_items();
   game.set_items(items.first);
   game.set_item_generation_values(items.second);
 
+  log.debug("Reading feature symbols.");
+
   FeatureSymbolMap feature_symbols = reader.get_feature_symbols();
   FeatureGenerator::set_feature_symbol_map(feature_symbols);
 
+  log.debug("Reading configurable features.");
+
   FeatureMap configurable_features = reader.get_configurable_features();
   game.set_configurable_features(configurable_features);
+
+  log.debug("Randomizing certain item types.");
 
   // Randomize the items after reading them!  Otherwise, if any potions, etc.,
   // are generated e.g. during custom map initialization, they will always have
@@ -202,36 +216,58 @@ void ShadowOfTheWyrmEngine::setup_game()
   ItemDescriptionRandomizer item_randomizer(item_types);
   item_randomizer.randomize(game.items);
 
+  log.debug("Reading scripts.");
+
   map<string, string> scripts = reader.get_scripts();
   game.set_scripts(scripts);
+
+  log.debug("Reading deities.");
 
   DeityMap deities = reader.get_deities();      
   game.set_deities(deities);
 
+  log.debug("Reading races.");
+
   RaceMap races = reader.get_races();
   game.set_races(races);
 
+  log.debug("Reading classes.");
+
   ClassMap classes = reader.get_classes();
   game.set_classes(classes);
+
+  log.debug("Reading creatures.");
 
   pair<CreatureMap, CreatureGenerationValuesMap> creatures = reader.get_creatures();    
   game.set_creatures(creatures.first);
   game.set_creature_generation_values(creatures.second);
 
+  log.debug("Reading spells.");
+
   SpellMap spells = reader.get_spells();
   game.set_spells(spells);
+
+  log.debug("Reading tile info.");
 
   vector<DisplayTile> tile_info = reader.get_tile_info();
   game.set_tile_display_info(tile_info);
 
+  log.debug("Reading trap info.");
+  
   vector<TrapPtr> trap_info = reader.get_trap_info();
   game.set_trap_info(trap_info);
+
+  log.debug("Reading calendar days.");
 
   map<int, CalendarDay> calendar_days = reader.get_calendar_days();
   game.set_calendar_days(calendar_days);
 
+  log.debug("Reading starting locations.");
+
   StartingLocationMap starting_locations = reader.get_starting_locations();
   game.set_starting_locations(starting_locations);
+
+  log.debug("Reading custom maps.");
 
   // This switches files/namespaces - so should be last.
   // As part of setting the custom maps, the game may run any associated
@@ -239,9 +275,13 @@ void ShadowOfTheWyrmEngine::setup_game()
   vector<MapPtr> custom_maps = reader.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, FileConstants::CUSTOM_MAPS_PATTERN);
   game.set_custom_maps(custom_maps);
 
+  log.debug("Setting message manager display.");
+
   // Set up the message manager also.
   IMessageManager& manager = MM::instance();
   manager.set_display(display);
+
+  log.debug("Done setup.");
 }
 
 // Create the player

@@ -147,6 +147,8 @@ int main(int argc, char* argv[])
         throw "error";
       }
 
+      log.debug("Created display.");
+
       if (display)
       {
         set_display_settings(display, settings);
@@ -202,6 +204,7 @@ int main(int argc, char* argv[])
 
 void run_game(DisplayPtr display, ControllerPtr controller, Settings& settings)
 {
+  Log& log = Log::instance();
   cout << "\nLoading Shadow of the Wyrm..." << endl;
 
   ShadowOfTheWyrmEngine engine;
@@ -209,6 +212,8 @@ void run_game(DisplayPtr display, ControllerPtr controller, Settings& settings)
   // set the default display into the engine
   engine.set_display(display);
   engine.set_controller(controller);
+
+  log.debug("Starting SotW.");
   engine.start(settings);
 
   display->tear_down();
