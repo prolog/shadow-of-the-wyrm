@@ -183,9 +183,17 @@ int main(int argc, char* argv[])
       }
     }
   }
+  catch(std::exception& e)
+  {
+    ostringstream ss;
+    ss << "main - Unable to run Shadow of the Wyrm: " << e.what();
+    log.error(ss.str());
+    
+    return 1;
+  }
   catch(...)
   {
-    log.error("main - Unable to run Shadow of the Wyrm!");
+    log.error("main - Unable to run Shadow of the Wyrm - unknown exception");
     return 1;
   }
 
