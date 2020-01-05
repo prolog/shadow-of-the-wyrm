@@ -9,6 +9,7 @@
 #endif
 
 #include <deque>
+#include <unordered_map>
 #include "Display.hpp"
 #include "SDLCursorLocation.hpp"
 #include "SDLDisplayParameters.hpp"
