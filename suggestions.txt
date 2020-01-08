@@ -1,4 +1,5 @@
 Me:
+- sdl_use_ascii flag
 - double render making shimmer look weird. happening from the update before
   and after for the player. how to fix this? get the shimmer colours by 
   coordinate and minute?

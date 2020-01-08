@@ -439,7 +439,7 @@ ClassIdentifier Door::internal_class_identifier() const
 
 // This constructor is only used by the serialization code
 Entrance::Entrance(const string& new_desc_sid, const Symbol& new_symbol)
-  : Feature(new_desc_sid, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, symbol)
+  : Feature(new_desc_sid, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 

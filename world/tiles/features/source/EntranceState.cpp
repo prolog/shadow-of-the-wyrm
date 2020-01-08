@@ -51,7 +51,7 @@ Symbol EntranceState::get_symbol() const
       break;
   }
   
-  Symbol s(symbol_and_ref.first, c, {SpritesheetIndex::SPRITESHEET_INDEX_SYSTEM, symbol_and_ref.second});
+  Symbol s(symbol_and_ref.first, c, SpritesheetLocation(SpritesheetIndex::SPRITESHEET_INDEX_SYSTEM, symbol_and_ref.second));
   return s;
 }
 

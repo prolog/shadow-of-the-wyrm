@@ -213,8 +213,10 @@ class SorcerorDecorativeStatue : public DecorativeStatue
 class Entrance : public Feature
 {
   public:
-    Entrance(const std::string& new_desc_sid, const Symbol& new_symbol);
-    Entrance(const std::string& new_desc_sid, const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_state);
+    explicit Entrance(const std::string& new_desc_sid, const Symbol& new_symbol);
+    explicit Entrance(const std::string& new_desc_sid, const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_state);
+    virtual ~Entrance() {};
+
     virtual bool operator==(const Entrance& door) const;
 
     virtual void set_state(const EntranceState& new_state);
@@ -253,8 +255,8 @@ class Entrance : public Feature
 class Door : public Entrance
 {
   public:
-    Door(const Symbol& new_symbol);
-    Door(const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_state);
+    explicit Door(const Symbol& new_symbol);
+    explicit Door(const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_state);
     virtual Feature* clone() override;
 
     virtual ~Door() {};
@@ -270,8 +272,8 @@ using DoorPtr = std::shared_ptr<Door>;
 class Gate : public Entrance
 {
   public:
-    Gate(const Symbol& new_symbol);
-    Gate(const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_state);
+    explicit Gate(const Symbol& new_symbol);
+    explicit Gate(const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_state);
     virtual Feature* clone() override;
 
     virtual bool get_is_blocking() const override;

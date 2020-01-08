@@ -14,7 +14,7 @@ ScatteredSettlementGenerator::ScatteredSettlementGenerator(MapPtr new_base_map)
 }
 
 ScatteredSettlementGenerator::ScatteredSettlementGenerator(MapPtr new_base_map, const int new_growth_rate)
-: BaseSettlementGenerator(new_base_map, growth_rate)
+: BaseSettlementGenerator(new_base_map, new_growth_rate)
 {
   initialize();
 }

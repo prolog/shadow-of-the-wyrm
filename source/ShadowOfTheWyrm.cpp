@@ -205,8 +205,6 @@ int main(int argc, char* argv[])
 void run_game(DisplayPtr display, ControllerPtr controller, Settings& settings)
 {
   Log& log = Log::instance();
-  cout << "\nLoading Shadow of the Wyrm..." << endl;
-
   ShadowOfTheWyrmEngine engine;
 
   // set the default display into the engine

@@ -95,11 +95,13 @@ void FeatureGenerator::initialize_feature_map()
   FeaturePtr high_priest_statue = std::make_shared<HighPriestDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE));
   FeaturePtr sorceror_statue    = std::make_shared<SorcerorDecorativeStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_SORCEROR_DECORATIVE_STATUE));
   FeaturePtr bench              = std::make_shared<Bench>(get_config_symbol(ClassIdentifier::CLASS_ID_BENCH));
+  
   FeaturePtr door               = std::make_shared<Door>(get_config_symbol(ClassIdentifier::CLASS_ID_DOOR));
   FeaturePtr ew_pew             = std::make_shared<EastWestPew>(get_config_symbol(ClassIdentifier::CLASS_ID_EAST_WEST_PEW));
   FeaturePtr fire_pillar        = std::make_shared<FirePillar>(get_config_symbol(ClassIdentifier::CLASS_ID_FIRE_PILLAR));
   FeaturePtr fountain           = std::make_shared<Fountain>(get_config_symbol(ClassIdentifier::CLASS_ID_FOUNTAIN));
   FeaturePtr gate               = std::make_shared<Gate>(get_config_symbol(ClassIdentifier::CLASS_ID_GATE));
+
   FeaturePtr pew                = std::make_shared<Pew>(get_config_symbol(ClassIdentifier::CLASS_ID_PEW));
   FeaturePtr petrified_corpse   = std::make_shared<PetrifiedCorpseStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_PETRIFIED_CORPSE_STATUE));
   FeaturePtr sarcophagus        = std::make_shared<Sarcophagus>(get_config_symbol(ClassIdentifier::CLASS_ID_SARCOPHAGUS));

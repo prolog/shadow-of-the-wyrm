@@ -41,7 +41,7 @@ DisplayTile BeamSpellTranslator::create_display_tile(const uint spell_burst_rang
     beam_symbol.second = SpritesheetReference::SPRITESHEET_REFERENCE_MAGIC_BLAST;
   }
 
-  Symbol s(beam_symbol.first, colour, {SpritesheetIndex::SPRITESHEET_INDEX_SYSTEM, beam_symbol.second});
+  Symbol s(beam_symbol.first, colour, SpritesheetLocation(SpritesheetIndex::SPRITESHEET_INDEX_SYSTEM, beam_symbol.second));
   DisplayTile dt(s);
   return dt;
 }

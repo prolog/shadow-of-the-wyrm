@@ -67,7 +67,7 @@ TEST(SW_World_Tiles_Features_Trap, saveload)
     EXPECT_TRUE(t1 == t2);
     EXPECT_TRUE(t2.get_effect() == EffectType::EFFECT_TYPE_ANTIDOTE);
   }
-  catch (std::exception e)
+  catch (std::exception& e)
   {
     cout << e.what();
   }

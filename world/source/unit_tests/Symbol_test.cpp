@@ -30,7 +30,7 @@ TEST(SW_World_Symbol, serialization_id)
 
 TEST(SW_World_Symbol, saveload)
 {
-  Symbol s('f', Colour::COLOUR_BLUE, { "abc123", make_pair(1,2) });
+  Symbol s('f', Colour::COLOUR_BLUE, SpritesheetLocation("abc123", make_pair(1,2)));
   Symbol s2;
 
   ostringstream ss;

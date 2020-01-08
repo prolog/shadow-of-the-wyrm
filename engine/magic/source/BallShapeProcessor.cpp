@@ -111,7 +111,7 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BallShapeProcessor::get_af
     vector<pair<DisplayTile, Coordinate>> frame;
     for (const Coordinate& c : current_coords)
     {
-      Symbol s('*', spell.get_colour(), { SpritesheetIndex::SPRITESHEET_INDEX_SYSTEM, SpritesheetReference::SPRITESHEET_REFERENCE_MAGIC_BLAST });
+      Symbol s('*', spell.get_colour(), SpritesheetLocation(SpritesheetIndex::SPRITESHEET_INDEX_SYSTEM, SpritesheetReference::SPRITESHEET_REFERENCE_MAGIC_BLAST ));
       DisplayTile dt(s);
 
       if (use_tile_details)
