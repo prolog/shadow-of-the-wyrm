@@ -55,12 +55,12 @@ StartingLocationMap XMLConfigurationReader::get_starting_locations()
   return sl_reader.get_starting_locations(starting_locations_node);
 }
 
-pair<CreatureMap, CreatureGenerationValuesMap> XMLConfigurationReader::get_creatures()
+pair<CreatureMap, CreatureGenerationValuesMap> XMLConfigurationReader::get_creatures(const bool force_ascii)
 {
   XMLNode prev_config = root;
   initialize_parser(creatures_filename);
   XMLNode creatures_node = XMLUtils::get_next_element_by_local_name(root, "Creatures");
-  pair<CreatureMap, CreatureGenerationValuesMap> creatures = creatures_reader.get_creatures(creatures_node);
+  pair<CreatureMap, CreatureGenerationValuesMap> creatures = creatures_reader.get_creatures(creatures_node, force_ascii);
   root = prev_config;
 
   return creatures;
@@ -80,31 +80,32 @@ map<string, pair<string, unordered_map<string, Coordinate>>> XMLConfigurationRea
   return spritesheets;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLConfigurationReader::get_items()
+pair<ItemMap, GenerationValuesMap> XMLConfigurationReader::get_items(const bool force_ascii)
 {
   XMLNode prev_config = root;
   initialize_parser(items_filename);
   XMLNode items_node = XMLUtils::get_next_element_by_local_name(root, "Items");
-  pair<ItemMap, GenerationValuesMap> items = items_reader.get_items(items_node);
+  pair<ItemMap, GenerationValuesMap> items = items_reader.get_items(items_node, force_ascii);
   root = prev_config;
 
   return items;
 }
 
-FeatureSymbolMap XMLConfigurationReader::get_feature_symbols()
+FeatureSymbolMap XMLConfigurationReader::get_feature_symbols(const bool force_ascii)
 {
   XMLNode features_node = XMLUtils::get_next_element_by_local_name(root, "AllFeatures");
   XMLNode base_features_node = XMLUtils::get_next_element_by_local_name(features_node, "BaseFeatures");
-  FeatureSymbolMap fsm = bf_reader.get_feature_symbols(base_features_node);
+  FeatureSymbolMap fsm = bf_reader.get_feature_symbols(base_features_node, force_ascii);
 
   return fsm;
 }
 
-FeatureMap XMLConfigurationReader::get_configurable_features()
+FeatureMap XMLConfigurationReader::get_configurable_features(const bool force_ascii)
 {
   XMLNode features_node = XMLUtils::get_next_element_by_local_name(root, "AllFeatures");
   XMLNode config_features_node = XMLUtils::get_next_element_by_local_name(features_node, "ConfigurableFeatures");
-  FeatureMap cfm = cf_reader.get_configurable_features(config_features_node);
+  FeatureMap cfm = cf_reader.get_configurable_features(config_features_node, force_ascii);
+
   return cfm;
 }
 
@@ -122,17 +123,17 @@ RaceMap XMLConfigurationReader::get_races()
   return races;
 }
 
-vector<DisplayTile> XMLConfigurationReader::get_tile_info()
+vector<DisplayTile> XMLConfigurationReader::get_tile_info(const bool force_ascii)
 {
   XMLNode tiles_node = XMLUtils::get_next_element_by_local_name(root, "Tiles");
-  vector<DisplayTile> tile_info = tiles_reader.get_tiles(tiles_node);
+  vector<DisplayTile> tile_info = tiles_reader.get_tiles(tiles_node, force_ascii);
   return tile_info;
 }
 
-vector<TrapPtr> XMLConfigurationReader::get_trap_info()
+vector<TrapPtr> XMLConfigurationReader::get_trap_info(const bool force_ascii)
 {
   XMLNode traps_node = XMLUtils::get_next_element_by_local_name(root, "Traps");
-  vector<TrapPtr> trap_info = traps_reader.get_traps(traps_node);
+  vector<TrapPtr> trap_info = traps_reader.get_traps(traps_node, force_ascii);
   return trap_info;
 }
 

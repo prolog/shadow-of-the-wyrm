@@ -3,7 +3,7 @@
 
 using namespace std;
 
-FeatureSymbolMap XMLBaseFeatureReader::get_feature_symbols(const XMLNode& base_features_node)
+FeatureSymbolMap XMLBaseFeatureReader::get_feature_symbols(const XMLNode& base_features_node, const bool force_ascii)
 {
   FeatureSymbolMap fsm;
   map<string, ClassIdentifier> class_id_names = { {"GoodAltar", ClassIdentifier::CLASS_ID_GOOD_ALTAR},
@@ -47,7 +47,7 @@ FeatureSymbolMap XMLBaseFeatureReader::get_feature_symbols(const XMLNode& base_f
 
     if (!base_feature_node.is_null())
     {
-      Symbol s = get_feature_symbol(base_feature_node);
+      Symbol s = get_feature_symbol(base_feature_node, force_ascii);
       fsm[cid_pair.second] = s;
     }
     else
@@ -59,14 +59,14 @@ FeatureSymbolMap XMLBaseFeatureReader::get_feature_symbols(const XMLNode& base_f
   return fsm;
 }
 
-Symbol XMLBaseFeatureReader::get_feature_symbol(const XMLNode& base_feature_node)
+Symbol XMLBaseFeatureReader::get_feature_symbol(const XMLNode& base_feature_node, const bool force_ascii)
 {
   Symbol s('?', Colour::COLOUR_WHITE);
 
   if (!base_feature_node.is_null())
   {
     XMLNode symbol_node = XMLUtils::get_next_element_by_local_name(base_feature_node, "Symbol");
-    parse_symbol(s, symbol_node);
+    parse_symbol(s, symbol_node, force_ascii);
   }
 
   return s;

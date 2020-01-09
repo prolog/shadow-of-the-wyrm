@@ -1,14 +1,18 @@
+#include <sstream>
 #include "XMLReader.hpp"
 #include "CombatConstants.hpp"
+#include "Log.hpp"
 #include "XMLScriptsReader.hpp"
 
 using namespace std;
 
 // Parse the symbol information out of an XML node
-void XMLReader::parse_symbol(Symbol& symbol, const XMLNode& symbol_node) const
+void XMLReader::parse_symbol(Symbol& symbol, const XMLNode& symbol_node, const bool force_ascii) const
 {
   if (!symbol_node.is_null())
   {
+    Log& log = Log::instance();
+
     uchar symbol_char = '?';
     string symbol_text = XMLUtils::get_child_node_value(symbol_node, "Char");
 
@@ -27,9 +31,16 @@ void XMLReader::parse_symbol(Symbol& symbol, const XMLNode& symbol_node) const
 
     XMLNode ss_loc_node = XMLUtils::get_next_element_by_local_name(symbol_node, "SpritesheetLocation");
 
-    SpritesheetLocation ssl;
-    parse_spritesheet_location(ssl, ss_loc_node);
-    symbol.set_spritesheet_location(ssl);
+    if (force_ascii)
+    {
+      log.debug("ASCII forced - ignoring spritesheet information");
+    }
+    else
+    {
+      SpritesheetLocation ssl;
+      parse_spritesheet_location(ssl, ss_loc_node);
+      symbol.set_spritesheet_location(ssl);
+    }
   }
 }
 

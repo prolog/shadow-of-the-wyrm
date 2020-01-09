@@ -8,7 +8,7 @@ class XMLRingReader : public XMLWearableReader
     XMLRingReader();
     ~XMLRingReader();
   
-    void parse(RingPtr ring, GenerationValues& igv, const XMLNode& ring_node);
+    void parse(RingPtr ring, GenerationValues& igv, const XMLNode& ring_node, const bool force_ascii);
 
 protected:
 };

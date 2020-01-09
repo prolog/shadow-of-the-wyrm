@@ -1,8 +1,4 @@
 Me:
-- sdl_use_ascii flag
-- double render making shimmer look weird. happening from the update before
-  and after for the player. how to fix this? get the shimmer colours by 
-  coordinate and minute?
 - Spritesheets
 - auto save - not working?
 - google screen clear not working for SDL. reported 2x.

@@ -176,6 +176,7 @@ void ShadowOfTheWyrmEngine::setup_game()
   string config_file = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_BASE);
   string config_file_creatures = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_CREATURES);
   string config_file_items = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_ITEMS);
+  bool display_force_ascii = game.get_settings_ref().get_setting_as_bool(Setting::DISPLAY_FORCE_ASCII);
 
   XMLConfigurationReader reader(config_file, config_file_creatures, config_file_items);
 
@@ -193,18 +194,18 @@ void ShadowOfTheWyrmEngine::setup_game()
 
   log.debug("Reading items.");
 
-  pair<ItemMap, GenerationValuesMap> items = reader.get_items();
+  pair<ItemMap, GenerationValuesMap> items = reader.get_items(display_force_ascii);
   game.set_items(items.first);
   game.set_item_generation_values(items.second);
 
   log.debug("Reading feature symbols.");
 
-  FeatureSymbolMap feature_symbols = reader.get_feature_symbols();
+  FeatureSymbolMap feature_symbols = reader.get_feature_symbols(display_force_ascii);
   FeatureGenerator::set_feature_symbol_map(feature_symbols);
 
   log.debug("Reading configurable features.");
 
-  FeatureMap configurable_features = reader.get_configurable_features();
+  FeatureMap configurable_features = reader.get_configurable_features(display_force_ascii);
   game.set_configurable_features(configurable_features);
 
   log.debug("Randomizing certain item types.");
@@ -238,7 +239,7 @@ void ShadowOfTheWyrmEngine::setup_game()
 
   log.debug("Reading creatures.");
 
-  pair<CreatureMap, CreatureGenerationValuesMap> creatures = reader.get_creatures();    
+  pair<CreatureMap, CreatureGenerationValuesMap> creatures = reader.get_creatures(display_force_ascii);    
   game.set_creatures(creatures.first);
   game.set_creature_generation_values(creatures.second);
 
@@ -249,12 +250,12 @@ void ShadowOfTheWyrmEngine::setup_game()
 
   log.debug("Reading tile info.");
 
-  vector<DisplayTile> tile_info = reader.get_tile_info();
+  vector<DisplayTile> tile_info = reader.get_tile_info(display_force_ascii);
   game.set_tile_display_info(tile_info);
 
   log.debug("Reading trap info.");
   
-  vector<TrapPtr> trap_info = reader.get_trap_info();
+  vector<TrapPtr> trap_info = reader.get_trap_info(display_force_ascii);
   game.set_trap_info(trap_info);
 
   log.debug("Reading calendar days.");
