@@ -1,4 +1,7 @@
 Me:
+- Kyzrati suggested keeping most of the SDL_PollEvent calls in the
+  controller.  With proper framerate throttling or delays could do more
+  interesting animations, etc.
 - Spritesheets
 - auto save - not working?
 - google screen clear not working for SDL. reported 2x.

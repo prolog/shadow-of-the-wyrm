@@ -21,6 +21,8 @@ Shadow of the Wyrm v1.1.6 "Paganini"
   features, and various system-generated symbols (magical bolts/bursts, etc)
   can now have their own sprites and colours.
 
+- Performance improvements for SDL input handling (JoeMaro).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
