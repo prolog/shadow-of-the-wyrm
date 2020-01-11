@@ -6,7 +6,7 @@ using namespace std;
 Ammunition::Ammunition()
 {
   type = ItemType::ITEM_TYPE_AMMUNITION;
-  symbol = '/';
+  symbol.set_symbol('/');
 }
 
 Ammunition::~Ammunition()

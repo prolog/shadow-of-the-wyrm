@@ -1615,6 +1615,28 @@ bool MapUtils::should_link_entry_point(MapType map_type)
   return true;
 }
 
+WeatherPtr MapUtils::get_weather(MapPtr map, TilePtr tile)
+{
+  WeatherPtr weather;
+
+  if (map != nullptr)
+  {
+    if (map->get_map_type() == MapType::MAP_TYPE_WORLD && tile != nullptr)
+    {
+      Weather w = tile->get_weather();
+      weather = std::make_unique<Weather>(w);
+    }
+
+    if (map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
+    {
+      Weather w = map->get_weather();
+      weather = std::make_unique<Weather>(w);
+    }
+  }
+
+  return weather;
+}
+
 // Add any messages after moving to a particular tile:
 // - Should a message be displayed about the tile automatically? (staircases, etc)
 //       If so, add it.

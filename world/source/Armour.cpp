@@ -5,7 +5,7 @@ using namespace std;
 Armour::Armour()
 {
   type = ItemType::ITEM_TYPE_ARMOUR;
-  symbol = '[';
+  symbol.set_symbol('[');
 }
 
 Armour::~Armour()

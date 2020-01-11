@@ -1,7 +1,9 @@
 #pragma once
 #include <unordered_map>
+#include <vector>
 #include "common.hpp"
 #include "CalendarTypes.hpp"
+#include "Symbol.hpp"
 
 using SeasonTileColourMap = std::unordered_map<Season, int>;
 
@@ -13,11 +15,11 @@ class DisplayTile
 {
   public:
     DisplayTile();
-    DisplayTile(const uchar symbol, const int colour); // Sets all seasons to the given colour
-    DisplayTile(const uchar symbol, const SeasonTileColourMap& new_colours);
+    DisplayTile(const Symbol& new_symbol); // Sets all seasons to the given colour
+    DisplayTile(const Symbol& new_symbol, const SeasonTileColourMap& new_colours);
 
-    void  set_symbol(const uchar new_symbol);
-    uchar get_symbol() const;
+    void  set_symbol(const Symbol& new_symbol);
+    Symbol get_symbol() const;
 
     // Set/Get the colour for the season currently set on the tile - stateful.
     void set_colour(const int new_colour);
@@ -33,10 +35,14 @@ class DisplayTile
     int  get_colour(const Season season) const;
     SeasonTileColourMap get_colours() const;
 
+    void set_weather_colours(const std::vector<Colour>& new_weather_colours);
+    std::vector<Colour> get_weather_colours() const;
+
   protected:
-    uchar symbol;
+    Symbol symbol;
     Season current_season;
     SeasonTileColourMap colours;
+    std::vector<Colour> weather_colours;
 };
 
 

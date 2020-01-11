@@ -3,7 +3,7 @@
 
 using namespace std;
 
-std::map<Direction, uchar> BeamSpellTranslator::beam_symbols;
+std::map<Direction, pair<uchar, string>> BeamSpellTranslator::beam_symbols;
 
 // On construction, initialize the static map of beam symbols if this has
 // not been done.
@@ -18,30 +18,31 @@ BeamSpellTranslator::BeamSpellTranslator()
 // Initialize the static map of beam symbols.
 void BeamSpellTranslator::initialize_beam_symbols()
 {
-  beam_symbols.clear();
-  beam_symbols = map<Direction, uchar>{{Direction::DIRECTION_NORTH_WEST, '\\'},
-                                       {Direction::DIRECTION_NORTH, '|'},
-                                       {Direction::DIRECTION_NORTH_EAST, '/'},
-                                       {Direction::DIRECTION_WEST, '-'},
-                                       {Direction::DIRECTION_NULL, '*'},
-                                       {Direction::DIRECTION_EAST, '-'},
-                                       {Direction::DIRECTION_SOUTH_WEST, '/'},
-                                       {Direction::DIRECTION_SOUTH, '|'},
-                                       {Direction::DIRECTION_SOUTH_EAST, '\\'},
-                                       {Direction::DIRECTION_UP, '<'},
-                                       {Direction::DIRECTION_DOWN, '>'}};
+  beam_symbols = map<Direction, pair<uchar, string>>{{Direction::DIRECTION_NORTH_WEST, {'\\', SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_NWSE}},
+                                                     {Direction::DIRECTION_NORTH, {'|', SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_NS}},
+                                                     {Direction::DIRECTION_NORTH_EAST, {'/', SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_NESW}},
+                                                     {Direction::DIRECTION_WEST, {'-', SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_EW}},
+                                                     {Direction::DIRECTION_NULL, {'*', SpritesheetReference::SPRITESHEET_REFERENCE_MAGIC_BLAST}},
+                                                     {Direction::DIRECTION_EAST, {'-', SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_EW}},
+                                                     {Direction::DIRECTION_SOUTH_WEST, {'/', SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_NESW}},
+                                                     {Direction::DIRECTION_SOUTH, {'|', SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_NS}},
+                                                     {Direction::DIRECTION_SOUTH_EAST, {'\\', SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_NWSE}},
+                                                     {Direction::DIRECTION_UP, {'*', SpritesheetReference::SPRITESHEET_REFERENCE_MAGIC_BLAST}},
+                                                     {Direction::DIRECTION_DOWN, {'*', SpritesheetReference::SPRITESHEET_REFERENCE_MAGIC_BLAST}}};
 }
 
 DisplayTile BeamSpellTranslator::create_display_tile(const uint spell_burst_range, const Direction beam_direction, const Colour colour)
 {
-  uchar beam_symbol = beam_symbols[beam_direction];
+  auto beam_symbol = beam_symbols[beam_direction];
 
   if (spell_burst_range <= SpellConstants::BEAM_BURST_RANGE)
   {
-    beam_symbol = SpellConstants::BEAM_BURST_SYMBOL;
+    beam_symbol.first = SpellConstants::BEAM_BURST_SYMBOL;
+    beam_symbol.second = SpritesheetReference::SPRITESHEET_REFERENCE_MAGIC_BLAST;
   }
 
-  DisplayTile dt(beam_symbol, static_cast<int>(colour));
+  Symbol s(beam_symbol.first, colour, SpritesheetLocation(SpritesheetIndex::SPRITESHEET_INDEX_SYSTEM, beam_symbol.second));
+  DisplayTile dt(s);
   return dt;
 }
 

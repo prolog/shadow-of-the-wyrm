@@ -10,11 +10,11 @@ XMLConsumableReader::~XMLConsumableReader()
 
 // Methods for parsing a Consumable based on a provided XML node
 // conformant to the "Consumable" type in the schema.
-void XMLConsumableReader::parse(ConsumablePtr consumable, GenerationValues& gv, const XMLNode& node)
+void XMLConsumableReader::parse(ConsumablePtr consumable, GenerationValues& gv, const XMLNode& node, const bool force_ascii)
 {
   if (consumable && !node.is_null())
   {
-    XMLItemReader::parse(consumable, gv, node);
+    XMLItemReader::parse(consumable, gv, node, force_ascii);
     uint nutrition = static_cast<uint>(XMLUtils::get_child_node_int_value(node, "Nutrition", 0));
     consumable->set_nutrition(nutrition);
 

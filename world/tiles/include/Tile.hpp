@@ -14,6 +14,7 @@
 #include "TileProperties.hpp"
 #include "TileTextKeys.hpp"
 #include "WaterTypes.hpp"
+#include "Weather.hpp"
 
 using TileExitMap = std::map<Direction, MapExitPtr>;
 
@@ -146,6 +147,9 @@ class Tile : public ISerializable
     virtual std::string get_danger_confirmation_sid() const;
 
     virtual float get_piety_loss_multiplier() const;
+
+    virtual void set_weather(const Weather& w);
+    virtual Weather get_weather() const;
 
     virtual void transform_from(std::shared_ptr<Tile> original_tile);
     

@@ -2,21 +2,22 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:shadow_of_the_wyrm:1.0.0" targetNamespace="urn:shadow_of_the_wyrm:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
 <!-- ELEMENTS -->
 <xs:element name="ShadowOfTheWyrm">
-	<xs:annotation><xs:documentation>The configuration root node - contains all the races, classes, and game data.</xs:documentation></xs:annotation>
+	<xs:annotation><xs:documentation>The configuration root node - contains all the races, classes, and game data.  In practice, all the elements below are required, but are made optional so that the data can be easily spread across multiple files.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element ref="tns:Deities"/>
-			<xs:element ref="tns:Races"/>
-			<xs:element ref="tns:Classes"/>
-			<xs:element ref="tns:Creatures"/>
-			<xs:element ref="tns:Spells"/>
-			<xs:element ref="tns:Tiles"/>
-			<xs:element ref="tns:Traps"/>
-			<xs:element ref="tns:Items"/>
-			<xs:element ref="tns:Features"/>
-			<xs:element ref="tns:Calendar"/>
-			<xs:element ref="tns:StartingLocations"/>
-			<xs:element ref="tns:Scripts"/>
+			<xs:element ref="tns:Deities" minOccurs="0"/>
+			<xs:element ref="tns:Races" minOccurs="0"/>
+			<xs:element ref="tns:Classes" minOccurs="0"/>
+			<xs:element ref="tns:Creatures" minOccurs="0"/>
+			<xs:element ref="tns:Spells" minOccurs="0"/>
+			<xs:element ref="tns:Tiles" minOccurs="0"/>
+			<xs:element ref="tns:Traps" minOccurs="0"/>
+			<xs:element ref="tns:Items" minOccurs="0"/>
+			<xs:element ref="tns:AllFeatures" minOccurs="0"/>
+			<xs:element ref="tns:Calendar" minOccurs="0"/>
+			<xs:element ref="tns:StartingLocations" minOccurs="0"/>
+			<xs:element ref="tns:Scripts" minOccurs="0"/>
+			<xs:element ref="tns:Spritesheets" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -182,25 +183,74 @@
 	<!-- Books -->
 	<!-- Rings -->
 </xs:element>
-<xs:element name="Features">
+<xs:element name="AllFeatures">
 	<xs:annotation>
-		<xs:documentation>Basic features (have descriptions but cannot be manipulated).</xs:documentation>
+		<xs:documentation>Contains information about regular (non-configurable) as well as configurable features.</xs:documentation>
 	</xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element ref="tns:Feature" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="tns:BaseFeatures" minOccurs="0"/>
+			<xs:element ref="tns:ConfigurableFeatures" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
-<xs:element name="Feature">
+<xs:element name="BaseFeatures">
+	<xs:annotation><xs:documentation>System features can onl have their symbols set in the game XML.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="EvilAltar" type="tns:BaseFeature"/>
+			<xs:element name="GoodAltar" type="tns:BaseFeature"/>
+			<xs:element name="NeutralAltar" type="tns:BaseFeature"/>
+			<xs:element name="Barrel" type="tns:BaseFeature"/>
+			<xs:element name="Bench" type="tns:BaseFeature"/>
+			<xs:element name="Bed" type="tns:BaseFeature"/>
+			<xs:element name="Door" type="tns:BaseFeature"/>
+			<xs:element name="Gate" type="tns:BaseFeature"/>
+			<xs:element name="DecorativeStatue" type="tns:BaseFeature"/>
+			<xs:element name="HighPriestDecorativeStatue" type="tns:BaseFeature"/>
+			<xs:element name="KingDecorativeStatue" type="tns:BaseFeature"/>
+			<xs:element name="KnightDecorativeStatue" type="tns:BaseFeature"/>
+			<xs:element name="PetrifiedCorpseStatue" type="tns:BaseFeature"/>
+			<xs:element name="QueenDecorativeStatue" type="tns:BaseFeature"/>
+			<xs:element name="WarlordDecorativeStatue" type="tns:BaseFeature"/>
+			<xs:element name="RegularDecorativeStatue" type="tns:BaseFeature"/>
+			<xs:element name="SorcerorDecorativeStatue" type="tns:BaseFeature"/>
+			<xs:element name="EastWestPew" type="tns:BaseFeature"/>
+			<xs:element name="FirePillar" type="tns:BaseFeature"/>
+			<xs:element name="Forge" type="tns:BaseFeature"/>
+			<xs:element name="Fountain" type="tns:BaseFeature"/>
+			<xs:element name="JewelerWorkbench" type="tns:BaseFeature"/>
+			<xs:element name="Pew" type="tns:BaseFeature"/>
+			<xs:element name="Pulper" type="tns:BaseFeature"/>
+			<xs:element name="Sarcophagus" type="tns:BaseFeature"/>
+			<xs:element name="Sign" type="tns:BaseFeature"/>
+			<xs:element name="SlotMachine" type="tns:BaseFeature"/>
+			<xs:element name="StoneMarker" type="tns:BaseFeature"/>
+			<xs:element name="Table" type="tns:BaseFeature"/>
+			<xs:element name="Tannery" type="tns:BaseFeature"/>
+			<xs:element name="Trap" type="tns:BaseFeature"/>
+			<xs:element name="WheelAndLoom" type="tns:BaseFeature"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="ConfigurableFeatures">
 	<xs:annotation>
-		<xs:documentation>A basic feature, consisting of a symbol, colour, and description SID.</xs:documentation>
+		<xs:documentation>Configurable features (have XML-settable descriptions/materials but cannot be manipulated).</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="tns:ConfigurableFeature" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="ConfigurableFeature">
+	<xs:annotation>
+		<xs:documentation>A configurable feature, consisting of a symbol, colour, and description SID.</xs:documentation>
 	</xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="Material" type="tns:MaterialType"/>
-			<xs:element name="Symbol" type="xs:string"/>
-			<xs:element name="Colour" type="tns:ColourType"/>
+			<xs:element name="Symbol" type="tns:Symbol"/>
 			<xs:element name="DescriptionSID" type="xs:string"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="tns:Identifier" use="required"/>
@@ -233,6 +283,14 @@
 			<!-- Run after character creation to have special effects when
 				 starting on a particular day. -->
 			<xs:element name="SpecialDaysScript" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Spritesheets">
+	<xs:annotation><xs:documentation>A list of spritesheet IDs and their associated images on disk.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Spritesheet" type="tns:Spritesheet" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -425,7 +483,7 @@
 				 - Any unaccepted value provided will map to "default" in Shadow of the Wyrm.
 			-->
 			<xs:element name="DecisionStrategy" type="tns:DecisionStrategyType" minOccurs="0"/>
-			<xs:element name="Text" type="tns:TextDetails"/>
+			<xs:element name="Symbol" type="tns:Symbol"/>
 			<xs:element ref="tns:CreatureGeneration"/>
 			<xs:element name="Level" type="tns:PrimaryStatistic"/>
 			<xs:element name="Damage" type="tns:Damage" minOccurs="0"/>
@@ -842,9 +900,8 @@
 	<xs:sequence>
 		<xs:element name="DescriptionSID" type="xs:string"/>
 		<xs:element name="TriggerMessageSID" type="xs:string"/>
-		<xs:element name="TriggerSymbol" type="xs:string"/>
 		<xs:element name="PlayerDamageMessageSID" type="xs:string"/>
-		<xs:element name="Colour" type="tns:ColourType"/>
+		<xs:element name="Trigger" type="tns:Symbol"/>
 		<!-- Item is an item id, and used if the trap has a chance of generating an item (e.g, an arrow, a rock) when triggered. -->
 		<xs:element name="Item" type="tns:Identifier" minOccurs="0"/>
 		<xs:element name="Damage" type="tns:Damage"/>
@@ -984,7 +1041,7 @@
 		<xs:element name="HandsRequired" type="tns:HandsType" minOccurs="0"/>
 		<xs:element name="Material" type="tns:MaterialType" minOccurs="0"/>
 		<xs:element name="Glow" type="xs:boolean" minOccurs="0"/>
-		<xs:element name="TextDetails" type="tns:TextDetails" minOccurs="0"/>
+		<xs:element name="Symbol" type="tns:Symbol" minOccurs="0"/>
 		<xs:element name="DangerLevel" type="xs:integer"/>
 		<xs:element name="Rarity" type="tns:Rarity" minOccurs="0" default="0"/>
 		<xs:element ref="tns:Resistances" minOccurs="0"/>
@@ -1148,7 +1205,7 @@
 <xs:complexType name="Tile">
 	<xs:annotation><xs:documentation>Contains information about a particular tile type</xs:documentation></xs:annotation>
 		<xs:sequence>
-			<xs:element name="Text" type="tns:TextDetails" minOccurs="1"/>
+			<xs:element name="Symbol" type="tns:Symbol" minOccurs="1"/>
 		</xs:sequence>
 </xs:complexType>
 <xs:complexType name="DecisionStrategyType">
@@ -1164,18 +1221,31 @@
 		<xs:element name="ResistSwitch" type="xs:boolean" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
-<xs:complexType name="TextDetails">
+<xs:complexType name="Symbol">
 	<xs:annotation>
-		<xs:documentation>Contains information about a particular tile type</xs:documentation>
+		<xs:documentation>Contains symbol information about a particular glyph</xs:documentation>
 	</xs:annotation>
 	<xs:sequence>
-		<xs:element name="Symbol" type="xs:string" minOccurs="1"/>
-		<xs:choice>
-			<!-- Indicates that the colour will be used regardless of the season. -->
-			<xs:element name="Colour" type="tns:ColourType"/>
-			<!-- Indicates that colours will be provided for each season. -->
-			<xs:element name="Colours" type="tns:SeasonColoursType"/>
-		</xs:choice>
+		<xs:element name="Char" type="xs:string" minOccurs="1"/>
+		<!-- Indicates that the colour will be used regardless of the season. -->
+		<xs:element name="Colour" type="tns:ColourType" minOccurs="0"/>
+		<!-- Indicates that colours will be provided for each season. -->
+		<xs:element name="Colours" type="tns:SeasonColoursType" minOccurs="0"/>
+		<!-- Indicates that weather colours will be provided - high wind speed
+		     causes water shimmer, waves, etc. -->
+		<xs:element name="WeatherColours" type="tns:WeatherColoursType" minOccurs="0"/>
+		<!-- This doesn't need to be defined for pure-text implementations -->
+		<xs:element name="SpritesheetLocation" type="tns:SpritesheetLocation" minOccurs="0"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SpritesheetLocation">
+	<xs:annotation>
+		<xs:documentation>Contains spritesheet info for a particular symbol.</xs:documentation>
+	</xs:annotation>
+	<xs:sequence>
+		<xs:element name="ID" type="tns:NonEmptyIdentifier"/>
+		<xs:element name="Row" type="xs:integer"/>
+		<xs:element name="Col" type="xs:integer"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="SeasonColoursType">
@@ -1187,6 +1257,11 @@
 		<xs:element name="Summer" type="tns:ColourType"/>
 		<xs:element name="Autumn" type="tns:ColourType"/>
 		<xs:element name="Winter" type="tns:ColourType"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="WeatherColoursType">
+	<xs:sequence>
+		<xs:element name="WeatherColour" type="tns:ColourType" minOccurs="0" maxOccurs="unbounded"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="AgeRange">
@@ -1210,6 +1285,34 @@
 		<xs:element name="PercentChance" type="tns:PercentageStatistic"/>
 		<xs:element name="Min" type="xs:integer" minOccurs="0"/>
 		<xs:element name="Max" type="xs:integer" minOccurs="0"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Spritesheet">
+	<xs:annotation><xs:documentation>An individual spritesheet, which consists of an ID and file.  The ID is referenced by creatures/items/etc when they provide their index into the spritesheet.  See the class SpritesheetReference/SpritesheetIndex for spritesheets that should be implemented if you want to use tiles.</xs:documentation></xs:annotation>		
+	<xs:sequence>
+		<xs:element name="Location" type="xs:string"/>
+		<xs:element name="References" type="tns:SpritesheetReferences" minOccurs="0"/>
+	</xs:sequence>
+	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="required"/>
+</xs:complexType>
+<xs:complexType name="SpritesheetReferences">
+	<xs:sequence>
+		<xs:element name="Reference" type="tns:SpritesheetReference" minOccurs="0" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SpritesheetReference">
+	<xs:annotation>
+		<xs:documentation>A spritesheet reference is an id, like "rock" or "dagger", that maps to a given y, x pair.  This allows entities in-game to specify a reference and not need to know the details of a spritesheet's implementation.</xs:documentation>
+	</xs:annotation>
+	<xs:sequence>
+		<xs:element name="Row" type="xs:integer"/>
+		<xs:element name="Col" type="xs:integer"/>
+	</xs:sequence>
+	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="required"/>
+</xs:complexType>
+<xs:complexType name="BaseFeature">
+	<xs:sequence>
+		<xs:element name="Symbol" type="tns:Symbol"/>
 	</xs:sequence>
 </xs:complexType>
 <!-- SIMPLE TYPES -->
@@ -1741,6 +1844,13 @@
 <xs:simpleType name="Identifier">
 	<xs:restriction base="xs:string">
 		<xs:pattern value="[\*a-zA-Z0-9_]*"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="NonEmptyIdentifier">
+	<xs:restriction base="xs:string">
+		<xs:pattern value="[\*a-zA-Z0-9_]*"/>
+		<xs:minLength value="1"/>
+		<xs:maxLength value="50"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="StatusAilmentType">

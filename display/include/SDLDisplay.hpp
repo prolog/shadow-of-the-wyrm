@@ -9,6 +9,7 @@
 #endif
 
 #include <deque>
+#include <unordered_map>
 #include "Display.hpp"
 #include "SDLCursorLocation.hpp"
 #include "SDLDisplayParameters.hpp"
@@ -78,6 +79,11 @@ class SDLDisplay : public Display
 
     virtual std::string display_screen(const Screen& current_screen) override;
 
+    void set_spritesheets(const std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>>& spritesheet_details) override;
+    SDL_Texture* get_spritesheet(const std::string& spritesheet_idx);
+
+    Coordinate get_spritesheet_coordinate(const SpritesheetLocation& ssl) const;
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 
@@ -97,7 +103,9 @@ class SDLDisplay : public Display
     std::pair<int, int> get_glyph_location_from_spritesheet(const char c);
     
     bool load_spritesheet_from_file(const std::string& path, SDL_Renderer* renderer);
-    void free_font_spritesheet();
+    SDL_Texture* load_texture(const std::string& path, SDL_Renderer* renderer);
+    void free_spritesheets();
+    void free_screens();
 
     virtual void redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows) override;
 
@@ -117,11 +125,16 @@ class SDLDisplay : public Display
 
     SDLDisplayParameters sdld;
     SDLPromptProcessor prompt_processor;
-    SDL_Texture* font_spritesheet;
+
+    // The texture with the empty string key is the font spritesheet.
+    // All other textures should have a string key with length > 0.
+    std::unordered_map<std::string, SDL_Texture*> spritesheets;
+    std::unordered_map<std::string, std::unordered_map<std::string, Coordinate>> spritesheet_references;
 
     static const int SCREEN_ROWS;
     static const int SCREEN_COLS;
     static const int NUM_SDL_BASE_COLOURS;
+    static const std::string TEXT_ID;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

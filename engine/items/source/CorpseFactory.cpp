@@ -106,7 +106,7 @@ void CorpseFactory::set_display_details(CreaturePtr dead_creature, ItemPtr corps
   if (corpse)
   {
     // The corpse's colour should be that of the creature's.
-    corpse->set_colour(dead_creature->get_colour());
+    corpse->set_colour(dead_creature->get_symbol().get_colour());
 
     // Set the description SID, which will be used by the appropriate
     // item describer to print something like "a chimera corpse".

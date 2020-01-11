@@ -3,6 +3,7 @@
 #include "Class.hpp"
 #include "Damage.hpp"
 #include "ScriptDetails.hpp"
+#include "Symbol.hpp"
 #include "XMLDataStructures.hpp"
 
 // Common functions useful to a number of different XMLReaders of different types (creatures, items, and so on)
@@ -10,6 +11,8 @@
 class XMLReader
 {
   public:
+    void parse_symbol(Symbol& symbol, const XMLNode& symbol_node, const bool force_ascii) const;
+    void parse_spritesheet_location(SpritesheetLocation& ssl, const XMLNode& ssloc_node) const;
     void parse_dice(Dice& dice, const XMLNode& dice_node) const;
     void parse_damage(Damage& damage, const XMLNode& damage_node) const;
     void parse_status_ailments(StatusAilments& ailments, const XMLNode& status_ailments_node) const;

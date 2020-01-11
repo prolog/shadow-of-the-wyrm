@@ -1,9 +1,11 @@
 #include <boost/algorithm/string.hpp>
+#include "global_prototypes.hpp"
 #include "Conversion.hpp"
 #include "Screen.hpp"
 #include "ScreenCommandFactory.hpp"
 #include "ScreenCommandKeys.hpp"
 #include "ScreenKeyboardCommandMap.hpp"
+#include "TextFormatSpecifiers.hpp"
 
 using namespace std;
 using namespace boost::algorithm;
@@ -184,7 +186,7 @@ bool Screen::add_component(vector<ScreenComponentPtr>& current_screen, ScreenCom
   return result;
 }
 
-bool Screen::add_text(vector<ScreenComponentPtr>& text_screen, const vector<TextDisplayPair>& text, const bool preserve_formatting, int& cnt)
+bool Screen::add_text(vector<ScreenComponentPtr>& text_screen, const vector<TextDisplayPair>& text, deque<Symbol>& symbols, const bool preserve_formatting, int& cnt)
 {
   // Set the text components.
   for (const TextDisplayPair& line_pair : text)
@@ -198,7 +200,19 @@ bool Screen::add_text(vector<ScreenComponentPtr>& text_screen, const vector<Text
       trim_right(text);
     }
 
-    TextComponentPtr current_line = std::make_shared<TextComponent>(text, colour);
+    size_t sym_count = count_substrings(text, TextFormatSpecifiers::SYMBOL);
+    vector<Symbol> tc_symbols;
+
+    for (size_t i = 0; i < sym_count; i++)
+    {
+      if (!symbols.empty())
+      {
+        tc_symbols.push_back(symbols.front());
+        symbols.pop_front();
+      }
+    }
+
+    TextComponentPtr current_line = std::make_shared<TextComponent>(text, colour, tc_symbols);
     cnt++;
 
     add_component(text_screen, current_line, cnt);

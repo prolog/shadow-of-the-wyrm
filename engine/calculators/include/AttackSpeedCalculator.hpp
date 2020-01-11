@@ -14,5 +14,5 @@ class AttackSpeedCalculator
     virtual int calculate_exotic_attack_speed_multiplier(CreaturePtr creature, const SkillType skill_type);
 };
 
-using AttackSpeedCalculatorPtr = std::shared_ptr<AttackSpeedCalculator>;
+using AttackSpeedCalculatorPtr = std::unique_ptr<AttackSpeedCalculator>;
 

@@ -13,10 +13,10 @@ Source:
 
 The following dependencies are used (environment variable in parens):
 
-- Boost 1.70 (BOOST_DIR)
+- Boost 1.72 (BOOST_DIR)
 - Google Test 1.8 (GTEST_DIR)
 - Xerces-C 3.2.1 (XERCES_DIR)
-- Zlib-1.2.11 (ZLIB_DIR)
+- zlib-1.2.11 (ZLIB_DIR)
 - pdcurses (CURSES_DIR)
 - SDL 2.0.10 (SDL_DIR)
 

@@ -32,25 +32,27 @@ EntranceStateType EntranceState::get_state() const
   return state;
 }
 
-uchar EntranceState::get_symbol() const
+Symbol EntranceState::get_symbol() const
 {
-  uchar symbol;
-  
+  pair<uchar, string> symbol_and_ref = {'.', SpritesheetReference::SPRITESHEET_ENTRANCE_DESTROYED};
+  Colour c = Colour::COLOUR_WHITE;
+
   switch(state)
   {
     case EntranceStateType::ENTRANCE_TYPE_DESTROYED:
-      symbol = '.';
+      symbol_and_ref = {'.', SpritesheetReference::SPRITESHEET_ENTRANCE_DESTROYED};
       break;
     case EntranceStateType::ENTRANCE_TYPE_OPEN:
-      symbol = '`';
+      symbol_and_ref = {'`', SpritesheetReference::SPRITESHEET_ENTRANCE_OPEN};
       break;
     case EntranceStateType::ENTRANCE_TYPE_CLOSED:
     default:
-      symbol = '+';
+      symbol_and_ref = {'+', SpritesheetReference::SPRITESHEET_ENTRANCE_CLOSED};
       break;
   }
   
-  return symbol;
+  Symbol s(symbol_and_ref.first, c, SpritesheetLocation(SpritesheetIndex::SPRITESHEET_INDEX_SYSTEM, symbol_and_ref.second));
+  return s;
 }
 
 bool EntranceState::serialize(ostream& stream) const

@@ -9,11 +9,11 @@ XMLWearableReader::~XMLWearableReader()
 {
 }
 
-void XMLWearableReader::parse(WearablePtr wearable, GenerationValues& gv, const XMLNode& wearable_node)
+void XMLWearableReader::parse(WearablePtr wearable, GenerationValues& gv, const XMLNode& wearable_node, const bool force_ascii)
 {
   if (wearable && !wearable_node.is_null())
   {
-    XMLItemReader::parse(wearable, gv, wearable_node);
+    XMLItemReader::parse(wearable, gv, wearable_node, force_ascii);
     
     int evade = XMLUtils::get_child_node_int_value(wearable_node, "Evade");
     wearable->set_evade(evade);

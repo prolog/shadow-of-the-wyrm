@@ -8,6 +8,7 @@
 #include "Material.hpp"
 #include "ISerializable.hpp"
 #include "ShimmerColours.hpp"
+#include "Symbol.hpp"
 
 class Tile;
 class Creature;
@@ -18,7 +19,7 @@ class Creature;
 class Feature : public ISerializable
 {
   public:
-    Feature(const MaterialType new_material, const AlignmentRange new_alignment_range, const int uses = -1);
+    Feature(const std::string& new_description_sid, const MaterialType new_material, const AlignmentRange new_alignment_range, const Symbol& new_symbol, const int uses = -1);
     Feature(const Feature& feature);
     Feature& operator=(const Feature& feature);
 
@@ -45,7 +46,6 @@ class Feature : public ISerializable
     virtual bool apply_on_movement(std::shared_ptr<Creature> creature) const;
 
     // Display information.
-    virtual uchar get_symbol()  const = 0;
     virtual Colour get_colour() const; // by default, use the material's colour.
 
     virtual void set_shimmer_colours(const ShimmerColours& new_shimmer_colours);
@@ -80,6 +80,9 @@ class Feature : public ISerializable
     void set_alignment_range(const AlignmentRange new_alignment_range);
     virtual AlignmentRange get_alignment_range() const;
 
+    virtual void set_symbol(const Symbol& new_symbol);
+    virtual Symbol get_symbol() const;
+
     void set_uses(const int new_uses);
     int get_uses() const;
 
@@ -96,12 +99,14 @@ class Feature : public ISerializable
     virtual bool deserialize(std::istream& stream) override;
 
   protected:
-    virtual std::string get_description_sid() const = 0;
+    virtual std::string get_description_sid() const;
 
+    std::string description_sid;
     ShimmerColours shimmer_colours;
     LockPtr lock;
     MaterialType material;
     AlignmentRange alignment_range;
+    Symbol symbol;
     int uses;
     std::map<std::string, std::string> additional_properties;
 
@@ -111,3 +116,5 @@ class Feature : public ISerializable
 
 using FeaturePtr = std::shared_ptr<Feature>;
 using FeatureMap = std::map<std::string, FeaturePtr>;
+using FeatureSymbolMap = std::map<ClassIdentifier, Symbol>;
+

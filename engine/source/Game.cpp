@@ -273,14 +273,14 @@ const ItemMap& Game::get_items_ref() const
   return items;
 }
 
-void Game::set_basic_features(const FeatureMap& game_features)
+void Game::set_configurable_features(const FeatureMap& game_features)
 {
-  basic_features = game_features;
+  configurable_features = game_features;
 }
 
-const FeatureMap& Game::get_basic_features_ref() const
+const FeatureMap& Game::get_configurable_features_ref() const
 {
-  return basic_features;
+  return configurable_features;
 }
 
 void Game::set_custom_maps(const vector<MapPtr>& custom_maps)
@@ -381,7 +381,8 @@ void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
   // any scripts called by the CustomAreaGenerator.
   set_current_map(current_world);
 
-  CustomAreaGenerator cag(FileConstants::WORLD_MAP_AREAS_FILE);
+  string world_map_areas = settings.get_setting(Setting::CONFIGURATION_FILE_WORLD_MAP_AREAS);
+  CustomAreaGenerator cag(world_map_areas);
   cag.overlay_custom_areas(current_world);
 
   MapPtr world_map = get_map_registry_ref().get_map(MapID::MAP_ID_WORLD_MAP);
@@ -807,6 +808,10 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         {
           // Do a full redraw if we've changed map, or if we've just reloaded the game.
           update_display(current_creature, current_map, fov_map, reloaded_game);
+
+          // Now that we're about to process the player's action, clear the symbol
+          // cache.
+          Game::instance().get_map_registry_ref().clear_symbol_cache();
         }
 
         // strategy is used for the creature's decision strategy, so use another
@@ -1050,6 +1055,16 @@ string Game::get_current_loaded_savefile() const
   return current_loaded_savefile;
 }
 
+void Game::set_spritesheets(const map<string, pair<string, unordered_map<string, Coordinate>>>& new_spritesheets)
+{
+  spritesheets = new_spritesheets;
+}
+
+std::map<string, pair<string, unordered_map<string, Coordinate>>> Game::get_spritesheets() const
+{
+  return spritesheets;
+}
+
 bool Game::serialize(ostream& stream) const
 {
   Log::instance().trace("Game::serialize - start");
@@ -1136,9 +1151,9 @@ bool Game::serialize(ostream& stream) const
     }
   }
 
-  Serialize::write_size_t(stream, basic_features.size());
+  Serialize::write_size_t(stream, configurable_features.size());
 
-  for (const auto& feat_pair : basic_features)
+  for (const auto& feat_pair : configurable_features)
   {
     Serialize::write_string(stream, feat_pair.first);
 
@@ -1189,7 +1204,26 @@ bool Game::serialize(ostream& stream) const
   loaded_map_details.serialize(stream);
 
   Serialize::write_string(stream, current_loaded_savefile);
-    
+  
+  Serialize::write_size_t(stream, spritesheets.size());
+  
+  for (auto ss_pair : spritesheets)
+  {
+    string ss_id = ss_pair.first;
+    pair<string, unordered_map<string, Coordinate>> fname_and_refs = ss_pair.second;
+
+    Serialize::write_string(stream, ss_id);
+    Serialize::write_string(stream, fname_and_refs.first);
+    Serialize::write_size_t(stream, fname_and_refs.second.size());
+
+    for (auto fr_pair : fname_and_refs.second)
+    {
+      Serialize::write_string(stream, fr_pair.first);
+      Serialize::write_int(stream, fr_pair.second.first);
+      Serialize::write_int(stream, fr_pair.second.second);
+    }
+  }
+
   Serialize::write_size_t(stream, calendar_days.size());
 
   for (const auto& cd_pair : calendar_days)
@@ -1353,11 +1387,11 @@ bool Game::deserialize(istream& stream)
     }
   }
 
-  basic_features.clear();
-  size_t num_basic_features = 0;
-  Serialize::read_size_t(stream, num_basic_features);
+  configurable_features.clear();
+  size_t num_config_features = 0;
+  Serialize::read_size_t(stream, num_config_features);
 
-  for (size_t i = 0; i < num_basic_features; i++)
+  for (size_t i = 0; i < num_config_features; i++)
   {
     string feature_id;
     Serialize::read_string(stream, feature_id);
@@ -1372,7 +1406,7 @@ bool Game::deserialize(istream& stream)
       if (feat != nullptr)
       {
         feat->deserialize(stream);
-        basic_features[feature_id] = feat;
+        configurable_features[feature_id] = feat;
       }
     }
   }
@@ -1416,6 +1450,38 @@ bool Game::deserialize(istream& stream)
   loaded_map_details.deserialize(stream);
 
   Serialize::read_string(stream, current_loaded_savefile);
+
+  size_t ss_size = 0;
+  Serialize::read_size_t(stream, ss_size);
+
+  for (size_t i = 0; i < ss_size; i++)
+  {
+    string ss_id;
+    string ss_fname;
+
+    Serialize::read_string(stream, ss_id);
+    Serialize::read_string(stream, ss_fname);
+
+    size_t refs_sz = 0;
+    Serialize::read_size_t(stream, refs_sz);
+
+    unordered_map<string, Coordinate> refs;
+
+    for (size_t j = 0; j < refs_sz; j++)
+    {
+      string ref_id;
+      int row = 0;
+      int col = 0;
+
+      Serialize::read_string(stream, ref_id);
+      Serialize::read_int(stream, row);
+      Serialize::read_int(stream, col);
+
+      refs[ref_id] = {row, col};
+    }
+
+    spritesheets[ss_id] = {ss_fname, refs};
+  }
 
   size_t cal_size = 0;
   Serialize::read_size_t(stream, cal_size);

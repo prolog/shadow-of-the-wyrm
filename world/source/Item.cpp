@@ -32,7 +32,7 @@ namespace ItemEnchantingSmithing
 
 Item::Item()
 : quantity(1), readable(false), worn_location(EquipmentWornLocation::EQUIPMENT_WORN_NONE), status(ItemStatus::ITEM_STATUS_UNCURSED), status_identified(false), 
-item_identified(false), auto_curse(false), artifact(false), hands_required(1), type(ItemType::ITEM_TYPE_MISC), symbol('?'), colour(Colour::COLOUR_UNDEFINED), 
+item_identified(false), auto_curse(false), artifact(false), hands_required(1), type(ItemType::ITEM_TYPE_MISC), symbol('?', Colour::COLOUR_UNDEFINED), colour(Colour::COLOUR_UNDEFINED), 
 identification_type(ItemIdentificationType::ITEM_IDENTIFY_ON_SUCCESSFUL_USE), effect(EffectType::EFFECT_TYPE_NULL), material(MaterialType::MATERIAL_TYPE_WOOD),
 glowing(false), unpaid(false)
 {
@@ -298,12 +298,12 @@ MaterialType Item::get_material_type() const
   return material;
 }
 
-void Item::set_symbol(const uchar new_symbol)
+void Item::set_symbol(const Symbol& new_symbol)
 {
   symbol = new_symbol;
 }
 
-uchar Item::get_symbol() const
+Symbol Item::get_symbol() const
 {
   return symbol;
 }
@@ -391,7 +391,7 @@ bool Item::matches(std::shared_ptr<Item> i) const
     match = match && (event_scripts         == i->event_scripts              );
     match = match && (unpaid                == i->unpaid                     );
 
-    // Originally, I didn't want to consier remaining enchantments/smithings
+    // Originally, I didn't want to consider remaining enchantments/smithings
     // for purposes of matching.  But then the additional properties were used
     // for more and more things (corpses, skins) and it made sense to have to
     // have these match as well.
@@ -876,7 +876,9 @@ bool Item::serialize(ostream& stream) const
   Serialize::write_bool(stream, artifact);
   Serialize::write_int(stream, hands_required);
   Serialize::write_enum(stream, type);
-  Serialize::write_uchar(stream, symbol);
+  
+  symbol.serialize(stream);
+
   Serialize::write_enum(stream, colour);
   Serialize::write_enum(stream, identification_type);
   Serialize::write_enum(stream, effect);
@@ -925,7 +927,9 @@ bool Item::deserialize(istream& stream)
   Serialize::read_bool(stream, artifact);
   Serialize::read_int(stream, hands_required);
   Serialize::read_enum(stream, type);
-  Serialize::read_uchar(stream, symbol);
+  
+  symbol.deserialize(stream);
+
   Serialize::read_enum(stream, colour);
   Serialize::read_enum(stream, identification_type);
   Serialize::read_enum(stream, effect);

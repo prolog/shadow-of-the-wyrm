@@ -95,6 +95,20 @@ std::string html_encode(const std::string& str)
   return replace;
 }
 
+size_t count_substrings(const string& text, const string& substr)
+{
+  size_t sym_count = 0;
+  size_t spos = text.find(substr, 0);
+
+  while (spos != string::npos)
+  {
+    spos = text.find(substr, spos + 1);
+    sym_count++;
+  }
+
+  return sym_count;
+}
+
 // Check for double equality
 bool dequal(const double double1, const double double2)
 {

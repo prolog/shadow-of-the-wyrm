@@ -21,23 +21,23 @@ AttackSpeedCalculatorPtr AttackSpeedCalculatorFactory::create_speed_calculator(c
 
   switch(attack_type)
   {
-  case AttackType::ATTACK_TYPE_MELEE_PRIMARY:
-      speed_calculator = std::make_shared<PrimaryPhysicalAttackSpeedCalculator>();
+    case AttackType::ATTACK_TYPE_MELEE_PRIMARY:
+      speed_calculator = std::make_unique<PrimaryPhysicalAttackSpeedCalculator>();
       break;
     case AttackType::ATTACK_TYPE_MELEE_SECONDARY:
-      speed_calculator = std::make_shared<SecondaryPhysicalAttackSpeedCalculator>();
+      speed_calculator = std::make_unique<SecondaryPhysicalAttackSpeedCalculator>();
       break;
     case AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
-      speed_calculator = std::make_shared<TertiaryUnarmedPhysicalAttackSpeedCalculator>();
+      speed_calculator = std::make_unique<TertiaryUnarmedPhysicalAttackSpeedCalculator>();
       break;
     case AttackType::ATTACK_TYPE_RANGED:
-      speed_calculator = std::make_shared<RangedAttackSpeedCalculator>();
+      speed_calculator = std::make_unique<RangedAttackSpeedCalculator>();
       break;
     case AttackType::ATTACK_TYPE_MAGICAL:
-      speed_calculator = std::make_shared<MagicalAttackSpeedCalculator>();
+      speed_calculator = std::make_unique<MagicalAttackSpeedCalculator>();
       break;
     default:
-      speed_calculator = std::make_shared<NullAttackSpeedCalculator>();
+      speed_calculator = std::make_unique<NullAttackSpeedCalculator>();
       break;
   }
 

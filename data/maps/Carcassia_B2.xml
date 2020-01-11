@@ -207,6 +207,18 @@
 	<Features>
 		<FeaturePlacement>
 			<Coord>
+				<Row>10</Row>
+				<Col>55</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
 				<Row>13</Row>
 				<Col>55</Col>
 			</Coord>

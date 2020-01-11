@@ -9,11 +9,11 @@ XMLFoodReader::~XMLFoodReader()
 {
 }
 
-void XMLFoodReader::parse(FoodPtr food, GenerationValues& gv, const XMLNode& food_node)
+void XMLFoodReader::parse(FoodPtr food, GenerationValues& gv, const XMLNode& food_node, const bool force_ascii)
 {
   if (food && !food_node.is_null())
   {
-    XMLConsumableReader::parse(food, gv, food_node);
+    XMLConsumableReader::parse(food, gv, food_node, force_ascii);
   }
 }
 

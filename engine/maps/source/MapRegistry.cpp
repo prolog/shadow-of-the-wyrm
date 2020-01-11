@@ -65,6 +65,29 @@ MapRegistryMap& MapRegistry::get_maps_ref()
   return map_registry;
 }
 
+void MapRegistry::add_symbol_to_cache(const string& key, const Symbol& s)
+{
+  symbol_cache[key] = s;
+}
+
+pair<bool, Symbol> MapRegistry::cache_has_symbol(const string& key) const
+{
+  pair<bool, Symbol> cache_details = {false, Symbol('?', Colour::COLOUR_WHITE)};
+
+  auto c_it = symbol_cache.find(key);
+  if (c_it != symbol_cache.end())
+  {
+    cache_details = {true, c_it->second};
+  }
+
+  return cache_details;
+}
+
+void MapRegistry::clear_symbol_cache()
+{
+  symbol_cache.clear();
+}
+
 bool MapRegistry::serialize(ostream& stream) const
 {
   Serialize::write_size_t(stream, map_registry.size());
@@ -78,6 +101,14 @@ bool MapRegistry::serialize(ostream& stream) const
 
     Serialize::write_class_id(stream, map->get_class_identifier());
     map->serialize(stream);
+  }
+
+  Serialize::write_size_t(stream, symbol_cache.size());
+
+  for (auto& scache_pair : symbol_cache)
+  {
+    Serialize::write_string(stream, scache_pair.first);
+    scache_pair.second.serialize(stream);
   }
 
   return true;
@@ -102,6 +133,20 @@ bool MapRegistry::deserialize(istream& stream)
     map->deserialize(stream);
 
     map_registry.insert(make_pair(map_guid, map));
+  }
+
+  size_t num_cached_symbols = 0;
+  Serialize::read_size_t(stream, num_cached_symbols);
+
+  for (size_t i = 0; i < num_cached_symbols; i++)
+  {
+    string key;
+    Serialize::read_string(stream, key);
+
+    Symbol s('?', Colour::COLOUR_WHITE);
+    s.deserialize(stream);
+
+    symbol_cache[key] = s;
   }
 
   return true;

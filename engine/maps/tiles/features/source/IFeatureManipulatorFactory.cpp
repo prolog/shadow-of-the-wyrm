@@ -26,68 +26,68 @@ IFeatureManipulatorPtr IFeatureManipulatorFactory::create_manipulator(FeaturePtr
 
     if (class_id == ClassIdentifier::CLASS_ID_PEW)
     {
-      manipulator = std::make_shared<PewManipulator>(feature);
+      manipulator = std::make_unique<PewManipulator>(feature);
     }
     else if (class_id == ClassIdentifier::CLASS_ID_GOOD_ALTAR)
     {
-      manipulator = std::make_shared<GoodAltarManipulator>(feature);
+      manipulator = std::make_unique<GoodAltarManipulator>(feature);
     }
     else if (class_id == ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR)
     {
-      manipulator = std::make_shared<NeutralAltarManipulator>(feature);
+      manipulator = std::make_unique<NeutralAltarManipulator>(feature);
     }
     else if (class_id == ClassIdentifier::CLASS_ID_EVIL_ALTAR)
     {
-      manipulator = std::make_shared<EvilAltarManipulator>(feature);
+      manipulator = std::make_unique<EvilAltarManipulator>(feature);
     }
     else if (class_id == ClassIdentifier::CLASS_ID_DOOR || class_id == ClassIdentifier::CLASS_ID_GATE)
     {
-      manipulator = std::make_shared<DoorGateManipulator>(feature);
+      manipulator = std::make_unique<DoorGateManipulator>(feature);
     }
     else if (class_id == ClassIdentifier::CLASS_ID_BARREL)
     {
-      manipulator = std::make_shared<BarrelManipulator>(feature);
+      manipulator = std::make_unique<BarrelManipulator>(feature);
     }
     else if (class_id == ClassIdentifier::CLASS_ID_FORGE)
     {
-      manipulator = std::make_shared<ForgeManipulator>(feature);
+      manipulator = std::make_unique<ForgeManipulator>(feature);
     }
     else if (class_id == ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH)
     {
-      manipulator = std::make_shared<JewelerWorkbenchManipulator>(feature);
+      manipulator = std::make_unique<JewelerWorkbenchManipulator>(feature);
     }
     else if (class_id == ClassIdentifier::CLASS_ID_TANNERY)
     {
-      manipulator = std::make_shared<TanneryManipulator>(feature);
+      manipulator = std::make_unique<TanneryManipulator>(feature);
     }
     else if (class_id == ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM)
     {
-      manipulator = std::make_shared<WheelAndLoomManipulator>(feature);
+      manipulator = std::make_unique<WheelAndLoomManipulator>(feature);
     }
     else if (class_id == ClassIdentifier::CLASS_ID_TRAP)
     {
-      manipulator = std::make_shared<TrapManipulator>(feature);
+      manipulator = std::make_unique<TrapManipulator>(feature);
     }
     else if (class_id == ClassIdentifier::CLASS_ID_SARCOPHAGUS)
     {
-      manipulator = std::make_shared<SarcophagusManipulator>(feature);
+      manipulator = std::make_unique<SarcophagusManipulator>(feature);
     }
     else if (class_id == ClassIdentifier::CLASS_ID_TABLE)
     {
-      manipulator = std::make_shared<TableManipulator>(feature);
+      manipulator = std::make_unique<TableManipulator>(feature);
     }
     else if (class_id == ClassIdentifier::CLASS_ID_SLOT_MACHINE)
     {
-      manipulator = std::make_shared<SlotMachineManipulator>(feature);
+      manipulator = std::make_unique<SlotMachineManipulator>(feature);
     }
     else if (class_id == ClassIdentifier::CLASS_ID_PULPER)
     {
-      manipulator = std::make_shared<PulperManipulator>(feature);
+      manipulator = std::make_unique<PulperManipulator>(feature);
     }
     // All other features
     else
     {
-      manipulator = std::make_shared<DefaultFeatureManipulator>(feature);
+      manipulator = std::make_unique<DefaultFeatureManipulator>(feature);
     }
   }
 

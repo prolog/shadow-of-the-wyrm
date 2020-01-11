@@ -8,6 +8,11 @@ Symbol::Symbol()
 {
 }
 
+Symbol::Symbol(const uchar new_symbol, const Colour new_colour)
+: symbol(new_symbol), colour(new_colour)
+{
+}
+
 Symbol::Symbol(const uchar new_symbol, const Colour new_colour, const SpritesheetLocation& new_spritesheet_location)
 : symbol(new_symbol), colour(new_colour), spritesheet_location(new_spritesheet_location)
 {

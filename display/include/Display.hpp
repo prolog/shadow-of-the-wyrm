@@ -116,6 +116,8 @@ class Display : public ISerializable
     virtual void enable_colour(const Colour colour) = 0;
     virtual void disable_colour(const Colour colour) = 0;
 
+    virtual void set_spritesheets(const std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>>& spritesheet_details) = 0;
+
     // Property methods.
     virtual void set_properties(const std::map<std::string, std::string>& new_properties);
     virtual void set_property(const std::string& property, const std::string& value);

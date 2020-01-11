@@ -1,6 +1,6 @@
 #pragma once
 #include "IFeatureManipulator.hpp"
-#include "Trap.hpp"
+#include "Features.hpp"
 
 class TrapManipulator : public IFeatureManipulator
 {

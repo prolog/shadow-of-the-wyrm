@@ -132,14 +132,16 @@ CreatureGenerationList CreatureGenerationManager::generate_ancient_beasts(const 
       ancient_beast->set_soak(danger_level);
       ancient_beast->set_arcana_points(Statistic(RNG::dice(ap_dice)));
       ancient_beast->set_hit_points(Statistic(RNG::dice(hp_dice)));
-      ancient_beast->set_colour(static_cast<Colour>(i + 1));
       ancient_beast->set_original_id(creature_id);
       ancient_beast->set_decision_strategy(ds);
       ancient_beast->set_description_sid(desc_sid);
       ancient_beast->set_short_description_sid(short_desc_sid);
       ancient_beast->set_text_details_sid(text_details_sid);
       ancient_beast->set_level(danger_level);
-      ancient_beast->set_symbol('X');
+
+      Symbol s('X', static_cast<Colour>(i + 1));
+      ancient_beast->set_symbol(s);
+
       ancient_beast->set_experience_value(xp_val);
 
       cgv.set_base_experience_value(xp_val);

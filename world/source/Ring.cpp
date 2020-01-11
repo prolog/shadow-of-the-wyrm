@@ -5,7 +5,7 @@ using namespace std;
 Ring::Ring()
 {
   type = ItemType::ITEM_TYPE_RING;
-  symbol = '=';
+  symbol.set_symbol('=');
 }
 
 Ring::~Ring()

@@ -4,7 +4,7 @@
 
 ITileManipulatorPtr TileManipulatorFactory::create_tile_manipulator(TilePtr tile)
 {
-  ITileManipulatorPtr tm = std::make_shared<DefaultTileManipulator>();
+  ITileManipulatorPtr tm = std::make_unique<DefaultTileManipulator>();
 
   if (tile != nullptr)
   {
@@ -14,7 +14,7 @@ ITileManipulatorPtr TileManipulatorFactory::create_tile_manipulator(TilePtr tile
     // deity hatred.
     if (tile_type == TileType::TILE_TYPE_GRAVE || tile_type == TileType::TILE_TYPE_BARROW)
     {
-      tm = std::make_shared<GraveTileManipulator>();
+      tm = std::make_unique<GraveTileManipulator>();
     }
   }
 

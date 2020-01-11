@@ -84,11 +84,11 @@ string SDLKeyboardController::get_line()
   SDL_Event event;
   std::ostringstream ss;
   SDL_StartTextInput();
-  SDL_PollEvent(&event);
+  SDL_WaitEvent(&event);
 
   while (event.key.keysym.sym != SDLK_RETURN)
   {
-    while (SDL_PollEvent(&event))
+    while (SDL_WaitEvent(&event))
     {
       if (event.type == SDL_TEXTINPUT)
       {
@@ -119,7 +119,7 @@ int SDLKeyboardController::read_char_as_int()
 
   while (!done)
   {
-    SDL_PollEvent(&event);
+    SDL_WaitEvent(&event);
     int key = event.key.keysym.sym;
 
     if (event.type == SDL_TEXTINPUT)

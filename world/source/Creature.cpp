@@ -21,8 +21,7 @@ Creature::Creature()
 , handedness(Handedness::RIGHT_HANDED)
 , breathes(BreatheType::BREATHE_TYPE_AIR)
 , grams_unabsorbed_alcohol(0)
-, symbol('?')
-, colour(Colour::COLOUR_WHITE)
+, symbol('?', Colour::COLOUR_WHITE)
 , experience_value(0)
 , experience_points(0)
 , skill_points(0)
@@ -105,7 +104,6 @@ Creature::Creature(const Creature& cr)
   to_hit = cr.to_hit;
   addl_damage = cr.addl_damage;
   symbol = cr.symbol;
-  colour = cr.colour;
   level = cr.level;
   
   if (cr.decision_strategy)
@@ -192,7 +190,6 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (to_hit == cr.to_hit);
   result = result && (addl_damage == cr.addl_damage);
   result = result && (symbol == cr.symbol);
-  result = result && (colour == cr.colour);
   result = result && (level == cr.level);
   result = result && ((decision_strategy && cr.decision_strategy) || (!decision_strategy && !cr.decision_strategy));
 
@@ -255,7 +252,8 @@ void Creature::set_is_player(const bool player, ControllerPtr controller)
     decision_strategy = std::make_shared<PlayerDecisionStrategy>(controller);
 
     // Players are always @s.
-    set_symbol('@');
+    Symbol s('@', Colour::COLOUR_WHITE);
+    set_symbol(s);
     
     // Players always use "player" as their ID.
     set_id(CreatureID::CREATURE_ID_PLAYER);
@@ -1018,24 +1016,19 @@ Statistic Creature::get_addl_damage() const
   return addl_damage;
 }
 
-void Creature::set_symbol(const uchar new_symbol)
+void Creature::set_symbol(const Symbol& new_symbol)
 {
   symbol = new_symbol;
 }
 
-uchar Creature::get_symbol() const
+Symbol Creature::get_symbol() const
 {
   return symbol;
 }
 
-void Creature::set_colour(const Colour new_colour)
+Symbol& Creature::get_symbol_ref()
 {
-  colour = new_colour;
-}
-
-Colour Creature::get_colour() const
-{
-  return colour;
+  return symbol;
 }
 
 void Creature::set_level(const Statistic& new_level)
@@ -1563,18 +1556,18 @@ Memberships& Creature::get_memberships_ref()
 // Ensure that I haven't missed anything in the copy constructor, IO, etc!
 void Creature::assert_size() const
 {
-  // VS 2015
+  // Visual Studio
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 1312, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1384, "Unexpected sizeof Creature.");
     #else
     // Release
-    static_assert(sizeof(*this) == 1208, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1272, "Unexpected sizeof Creature.");
     #endif
   #else // gcc toolchain
   // Works for gcc in release
-  static_assert(sizeof(*this) == 2216 || sizeof(*this) == 1720, "Unexpected sizeof Creature.");
+  static_assert(sizeof(*this) == 2304 || sizeof(*this) == 1720, "Unexpected sizeof Creature.");
   #endif
 }
 
@@ -1659,7 +1652,6 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->to_hit, cr.to_hit);
   std::swap(this->addl_damage, cr.addl_damage);
   std::swap(this->symbol, cr.symbol);
-  std::swap(this->colour, cr.colour);
   std::swap(this->level, cr.level);
   std::swap(this->decision_strategy, cr.decision_strategy);
   std::swap(this->religion, cr.religion);
@@ -1740,10 +1732,7 @@ bool Creature::serialize(ostream& stream) const
 
   to_hit.serialize(stream);
   addl_damage.serialize(stream);
-
-  Serialize::write_uchar(stream, symbol);
-  Serialize::write_enum(stream, colour);
-
+  symbol.serialize(stream);
   level.serialize(stream);
 
   if (decision_strategy)
@@ -1882,10 +1871,7 @@ bool Creature::deserialize(istream& stream)
 
   to_hit.deserialize(stream);
   addl_damage.deserialize(stream);
-
-  Serialize::read_uchar(stream, symbol);
-  Serialize::read_enum(stream, colour);
-
+  symbol.deserialize(stream);
   level.deserialize(stream);
 
   ClassIdentifier dc_clid = ClassIdentifier::CLASS_ID_NULL;

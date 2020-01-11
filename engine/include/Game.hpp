@@ -9,6 +9,7 @@
 #include "Directions.hpp"
 #include "DisplayTile.hpp"
 #include "Display.hpp"
+#include "Features.hpp"
 #include "Item.hpp"
 #include "ISerializable.hpp"
 #include "LoadedMapDetails.hpp"
@@ -20,7 +21,6 @@
 #include "Settings.hpp"
 #include "Spell.hpp"
 #include "StartingLocation.hpp"
-#include "Trap.hpp"
 #include "World.hpp"
 #include "WorldTimeKeeper.hpp"
 
@@ -78,8 +78,8 @@ class Game : public ISerializable
     void set_items(const ItemMap& game_items);
     const ItemMap& get_items_ref() const;
 
-    void set_basic_features(const FeatureMap& game_features);
-    const FeatureMap& get_basic_features_ref() const;
+    void set_configurable_features(const FeatureMap& game_features);
+    const FeatureMap& get_configurable_features_ref() const;
 
     void set_custom_maps(const std::vector<MapPtr>& custom_maps);
     // No getter - once the maps are in the registry, there's no way to determine which are custom.
@@ -143,6 +143,9 @@ class Game : public ISerializable
     void set_current_loaded_savefile(const std::string& current_loaded_savefile);
     std::string get_current_loaded_savefile() const;
 
+    void set_spritesheets(const std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>>& new_spritesheets);
+    std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>> get_spritesheets() const;
+
     virtual void run_map_scripts();
 
     virtual bool serialize(std::ostream& stream) const override;
@@ -154,7 +157,7 @@ class Game : public ISerializable
     friend class CreatureDeathManager;
     friend class PlayerDeathManager;
     friend class MovementAction;
-    friend class DateTimeAction;
+    friend class DateTimeWeatherAction;
     friend class ItemManager;
     friend class CommandProcessor;
     friend class EquipmentCommandProcessor;
@@ -211,8 +214,19 @@ class Game : public ISerializable
     CreatureGenerationValuesMap creature_generation_values;
     GenerationValuesMap item_generation_values;
     ItemMap items;
-    FeatureMap basic_features;
-    std::vector<DisplayTile> tile_info; // vector because we can get constant-time lookup by virtue of sequential tile types.
+    FeatureMap configurable_features;
+
+    // At some point in the future, you're going to look at this and ask,
+    // hey, I separated symbol details from tiles and put into the game 
+    // class to save space, why not do the same with creatures?
+    //
+    // To save you another half-hour of your life, it's because there's
+    // scripting support for dynamically manipulating a creature's symbol
+    // and colour, for things like jellyfish, shapeshifters, etc.
+    //
+    // Note that there are no shapeshifters, I'm just saying this to try
+    // to persuade you not to try this, again.
+    std::vector<DisplayTile> tile_info;
     std::vector<TrapPtr> trap_info;
     std::map<int, CalendarDay> calendar_days;
     StartingLocationMap starting_locations;
@@ -271,6 +285,9 @@ class Game : public ISerializable
     // The currently loaded savefile.  Tracked at the game level so that it can
     // be delete after death or quitting.
     std::string current_loaded_savefile;
+
+    // Any spritesheets and references associated with the configuration.
+    std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>> spritesheets;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

@@ -2,7 +2,9 @@
 
 TEST(SW_World_Tiles_Features_Barrel, pour)
 {
-  Barrel b;
+  Symbol s('o', Colour::COLOUR_WHITE);
+
+  Barrel b(s);
   b.set_tap(true);
   b.set_pour_item_id("orcish_hooch");
   b.set_drinks(15);
@@ -21,7 +23,8 @@ TEST(SW_World_Tiles_Features_Barrel, pour)
 
 TEST(SW_World_Tiles_Features_Barrel, can_pour)
 {
-  Barrel b;
+  Symbol s('o', Colour::COLOUR_WHITE);
+  Barrel b(s);
   b.set_drinks(0);
 
   EXPECT_FALSE(b.can_pour());
@@ -41,14 +44,17 @@ TEST(SW_World_Tiles_Features_Barrel, can_pour)
 
 TEST(SW_World_Tiles_Features_Barrel, serialization_id)
 {
-  Barrel barrel;
+  Symbol s('o', Colour::COLOUR_WHITE);
+  Barrel barrel(s);
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_BARREL, barrel.get_class_identifier());
 }
 
 TEST(SW_World_Tiles_Features_Barrel, saveload)
 {
-  Barrel barrel, barrel2;
+  Symbol s('o', Colour::COLOUR_WHITE);
+  Barrel barrel(s);
+  Barrel barrel2(s);
 
   barrel.set_tap(true);
   barrel.set_pour_item_id("talisker"); // A Birling Day essential.

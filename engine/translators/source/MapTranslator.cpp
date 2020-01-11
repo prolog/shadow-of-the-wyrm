@@ -6,11 +6,14 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "LineOfSightCalculator.hpp"
+#include "Log.hpp"
 #include "MapDisplayArea.hpp"
 #include "MapProperties.hpp"
 #include "MapTranslator.hpp"
+#include "MapUtils.hpp"
 #include "RNG.hpp"
 #include "Setting.hpp"
+#include "WeatherCalculator.hpp"
 
 using namespace std;
 
@@ -140,14 +143,14 @@ DisplayTile MapTranslator::translate_coordinate_into_display_tile(const bool pla
   }
 
   // Translate the map tile
-  return create_display_tile(player_blinded, timewalking, tod_overrides, shimmer_colours, map_tile, fov_map_tile);
+  return create_display_tile(player_blinded, timewalking, tod_overrides, shimmer_colours, map_tile, fov_map_tile, actual_row, actual_col);
 }
 
 // Create the tile to display, based on the tile's properties, and whether or
 // not the player's been blinded.  If the player's been blinded, the tile will
 // be black, unless it is the player's tile, in which case the player will be
 // displayed.
-DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const bool timewalking, const pair<Colour, Colour>& tod_overrides, const ShimmerColours& shimmer_colours, const TilePtr& actual_tile, const TilePtr& fov_tile)
+DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const bool timewalking, const pair<Colour, Colour>& tod_overrides, const ShimmerColours& shimmer_colours, const TilePtr& actual_tile, const TilePtr& fov_tile, const int row, const int col)
 {
   DisplayTile display_tile;
 
@@ -182,20 +185,20 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
     }
     else // Nothing else, or the player is blind - display the tile only.
     {
-      display_tile = create_display_tile_from_tile(actual_tile, timewalking, tod_overrides.first, shimmer_colours);
+      display_tile = create_display_tile_from_tile(actual_tile, timewalking, tod_overrides.first, shimmer_colours, row, col);
     }      
   }
   else
   {
     if (actual_tile && actual_tile->get_explored() && !player_blinded)
     {
-      display_tile = create_unseen_and_explored_display_tile(actual_tile, timewalking, tod_overrides, shimmer_colours);
+      display_tile = create_unseen_and_explored_display_tile(actual_tile, timewalking, tod_overrides, shimmer_colours, row, col);
     }
     else
     {
       if (actual_tile && actual_tile->get_viewed() && !player_blinded)
       {
-        display_tile = create_unseen_and_previously_viewed_display_tile(actual_tile, timewalking, tod_overrides, shimmer_colours);
+        display_tile = create_unseen_and_previously_viewed_display_tile(actual_tile, timewalking, tod_overrides, shimmer_colours, row, col);
       }
       else
       {
@@ -210,20 +213,19 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
 // Create a display tile from a given creature
 DisplayTile MapTranslator::create_display_tile_from_creature(const CreaturePtr& creature, const Colour override_colour)
 {
-  uchar symbol = '?';
-  
+  Symbol symbol('?', Colour::COLOUR_WHITE);
+
   if (creature != nullptr)
   {
     symbol = creature->get_symbol();
   }
 
-  return create_display_tile_from_symbol_and_colour(symbol, override_colour != Colour::COLOUR_UNDEFINED ? override_colour : creature->get_colour());
+  return create_display_tile_from_symbol_and_colour(symbol, override_colour != Colour::COLOUR_UNDEFINED ? override_colour : creature->get_symbol().get_colour());
 }
 
 // Create a display tile from a given tile feature
 DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& feature, const bool timewalking, const Colour override_colour, const ShimmerColours& map_shimmer_colours)
 {
-  uchar symbol = '?';
   Colour colour = Colour::COLOUR_UNDEFINED;
   ShimmerColours shimmer_colours = map_shimmer_colours;
 
@@ -240,10 +242,11 @@ DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& fe
   }
 
   Colour shimmer_colour = RNG::percent_chance(pct_chance_shimmer) ? shimmer_colours.get_shimmer_colour() : shimmer_colours.get_feature_colour();
+  Symbol s('?', Colour::COLOUR_WHITE);
 
   if (feature != nullptr)
   {
-    symbol = feature->get_symbol();
+    s = feature->get_symbol();
     colour = feature->get_colour();
   }
 
@@ -257,7 +260,7 @@ DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& fe
     colour = shimmer_colour;
   }
 
-  return create_display_tile_from_symbol_and_colour(symbol, colour);
+  return create_display_tile_from_symbol_and_colour(s, colour);
 }
 
 // Create a display tile from a given item
@@ -271,22 +274,23 @@ DisplayTile MapTranslator::create_display_tile_from_item(const ItemPtr& item, co
     colour = override_colour;
   }
 
-  uchar symbol = '?';
+  Symbol s('?', Colour::COLOUR_WHITE);
   
   if (item != nullptr)
   {
-    symbol = item->get_symbol();
+    s = item->get_symbol();
   }
 
-  return create_display_tile_from_symbol_and_colour(symbol, colour);
+  return create_display_tile_from_symbol_and_colour(s, colour);
 }
 
 // Create a display tile from a given tile
-DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, const bool timewalking, const Colour oc, const ShimmerColours& shimmer_colours)
+DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, const bool timewalking, const Colour oc, const ShimmerColours& shimmer_colours, const int row, const int col)
 {
   DisplayTile display_tile;
   Game& game = Game::instance();
   Colour override_colour = oc;
+  MapRegistry& mr = game.get_map_registry_ref();
 
   const vector<DisplayTile>& tiles_info = game.get_tile_display_info_ref();
   DisplayTile tile_info = tiles_info.at(static_cast<int>(tile->get_tile_type()));
@@ -296,9 +300,22 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, co
   Colour shimmer_colour = Colour::COLOUR_UNDEFINED;
   int pct_chance_shimmer = shimmer_colours.get_pct_chance_shimmer();
 
-  if (timewalking)
+  WeatherCalculator wc;
+  WeatherPtr weather = MapUtils::get_weather(game.get_current_map(), tile);
+  int pct_chance_weathered = 0;
+  
+  if (weather != nullptr)
+  {
+    pct_chance_weathered = wc.calculate_pct_chance_shimmer(weather->get_wind_speed());
+  }
+
+  string cache_key = MapUtils::convert_coordinate_to_map_key({row, col});
+  auto cache_details = mr.cache_has_symbol(cache_key);
+
+  if (timewalking || cache_details.first)
   {
     pct_chance_shimmer = 0;
+    pct_chance_weathered = 0;
   }
 
   if (RNG::percent_chance(pct_chance_shimmer))
@@ -317,6 +334,25 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, co
     }
   }
 
+  if (cache_details.first)
+  {
+    // If the tile is cached (e.g., it's a shimmer colour that we
+    // want to hold until the player's next turn), ensure that the
+    // shimmer colour is set so it'll take the same value as the
+    // previous redraw.
+    shimmer_colour = cache_details.second.get_colour();
+  }
+
+  if (RNG::percent_chance(pct_chance_weathered))
+  {
+    vector<Colour> weather_colours = display_tile.get_weather_colours();
+
+    if (!weather_colours.empty())
+    {
+      shimmer_colour = weather_colours.at(RNG::range(0, weather_colours.size() - 1));      
+    }
+  }
+
   if (shimmer_colour != Colour::COLOUR_UNDEFINED)
   {
     override_colour = shimmer_colour;
@@ -327,23 +363,29 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, co
     display_tile.set_all_colours(static_cast<int>(override_colour));
   }
 
+  // Update the cache for the turn
+  Symbol s = display_tile.get_symbol();
+  s.set_colour(shimmer_colour);
+  mr.add_symbol_to_cache(cache_key, s);
+
   return display_tile;
 }
 
-DisplayTile MapTranslator::create_display_tile_from_symbol_and_colour(const uchar symbol, const Colour colour)
+DisplayTile MapTranslator::create_display_tile_from_symbol_and_colour(const Symbol& symbol, const Colour colour)
 {
-  DisplayTile display_tile(symbol, static_cast<int>(colour));
+  Symbol s = symbol;
+  s.set_colour(colour);
+  DisplayTile display_tile(s);
   
   return display_tile;  
 }
 
-DisplayTile MapTranslator::create_unseen_and_previously_viewed_display_tile(const TilePtr& tile, const bool timewalking, const pair<Colour, Colour>& tod_overrides, const ShimmerColours& shimmer_colours)
+DisplayTile MapTranslator::create_unseen_and_previously_viewed_display_tile(const TilePtr& tile, const bool timewalking, const pair<Colour, Colour>& tod_overrides, const ShimmerColours& shimmer_colours, const int row, const int col)
 {
-  // JCD FIXME LATER
-  return create_unseen_and_explored_display_tile(tile, timewalking, tod_overrides, shimmer_colours);
+  return create_unseen_and_explored_display_tile(tile, timewalking, tod_overrides, shimmer_colours, row, col);
 }
 
-DisplayTile MapTranslator::create_unseen_and_explored_display_tile(const TilePtr& tile, const bool timewalking, const pair<Colour, Colour>& tod_overrides, const ShimmerColours& shimmer_colours)
+DisplayTile MapTranslator::create_unseen_and_explored_display_tile(const TilePtr& tile, const bool timewalking, const pair<Colour, Colour>& tod_overrides, const ShimmerColours& shimmer_colours, const int row, const int col)
 {
   DisplayTile display_tile;
   
@@ -354,7 +396,7 @@ DisplayTile MapTranslator::create_unseen_and_explored_display_tile(const TilePtr
   }
   else
   {
-    display_tile = create_display_tile_from_tile(tile, timewalking, tod_overrides.first, shimmer_colours);
+    display_tile = create_display_tile_from_tile(tile, timewalking, tod_overrides.first, shimmer_colours, row, col);
   }
 
   return display_tile;
@@ -365,8 +407,8 @@ DisplayTile MapTranslator::create_unseen_and_unexplored_display_tile()
 {
   DisplayTile display_tile;
   
-  display_tile.set_symbol(' ');
-  display_tile.set_colour(static_cast<int>(Colour::COLOUR_BLACK));
+  Symbol s(' ', Colour::COLOUR_BLACK);
+  display_tile.set_symbol(s);
   
   return display_tile;  
 }

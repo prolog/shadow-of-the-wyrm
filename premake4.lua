@@ -128,6 +128,7 @@ project "ShadowOfTheWyrm"
     postbuildcommands { "mkdir sotw",
                         "cp ShadowOfTheWyrm sotw/sotw",
                         "cp -R data sotw",
+			"cp -R assets sotw",
                         "mkdir sotw/docs",
                         "mkdir sotw/logs",
                         "cp docs/*.pdf sotw/docs",

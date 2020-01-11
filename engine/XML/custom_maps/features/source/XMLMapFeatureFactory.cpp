@@ -6,7 +6,7 @@
 #include "XMLAltarReader.hpp"
 #include "XMLBedReader.hpp"
 #include "XMLBarrelReader.hpp"
-#include "XMLBasicFeatureCMReader.hpp"
+#include "XMLConfigurableFeatureCMReader.hpp"
 #include "XMLDecorativeStatueReader.hpp"
 #include "XMLDoorReader.hpp"
 #include "XMLFirePillarReader.hpp"
@@ -104,9 +104,9 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
     {
       feature_creator = std::make_unique<XMLSlotMachineReader>();
     }
-    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "BasicFeature")).is_null())
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "ConfigurableFeature")).is_null())
     {
-      feature_creator = std::make_unique<XMLBasicFeatureCMReader>();
+      feature_creator = std::make_unique<XMLConfigurableFeatureCMReader>();
     }
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Sign")).is_null())
     {

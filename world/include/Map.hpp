@@ -12,6 +12,7 @@
 #include "Shop.hpp"
 #include "Tile.hpp"
 #include "TileTransform.hpp"
+#include "Weather.hpp"
 
 // Forward declarations.
 class Creature;
@@ -154,6 +155,10 @@ class Map : public ISerializable
     bool has_event_script(const std::string& event_name);
     ScriptDetails get_event_script(const std::string& event_name) const;
 
+    void set_weather(const Weather& new_weather);
+    Weather& get_weather_ref();
+    Weather get_weather() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -188,6 +193,7 @@ class Map : public ISerializable
     std::vector<Coordinate> preset_locations; // used for generating creatures onto specific locations
     std::map<std::string, Shop> shops;
     EventScriptsMap event_scripts;
+    Weather weather;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

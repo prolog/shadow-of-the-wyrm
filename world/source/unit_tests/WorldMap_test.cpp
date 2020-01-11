@@ -17,6 +17,8 @@ TEST(SW_World_Map, saveload)
   FieldGenerator field_gen("test");
   map = field_gen.generate(d);
   map2 = MapPtr(new Map(d));
+  Weather w("22");
+  map->set_weather(w);
 
   ostringstream ss;
 

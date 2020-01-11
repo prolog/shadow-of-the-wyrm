@@ -56,7 +56,7 @@ Animation AnimationTranslator::create_movement_animation(const bool player_blind
       // Guard against a range outside the FOV/map.
       if (!game_tile || !fov_tile) continue;
 
-      DisplayTile previously_displayed = MapTranslator::create_display_tile(player_blinded, false, tod_overrides, shimmer_colours, game_tile, fov_tile);
+      DisplayTile previously_displayed = MapTranslator::create_display_tile(player_blinded, false, tod_overrides, shimmer_colours, game_tile, fov_tile, c.first, c.second);
       previously_displayed.set_season(current_season);
     
       // Add the updated coordinate value to the in-frame list.

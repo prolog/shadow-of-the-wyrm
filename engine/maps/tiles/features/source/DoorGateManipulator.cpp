@@ -1,8 +1,8 @@
 #include "ActionTextKeys.hpp"
 #include "CombatManager.hpp"
 #include "DoorGateManipulator.hpp"
-#include "Door.hpp"
 #include "DoorBreakageCalculator.hpp"
+#include "Features.hpp"
 #include "Game.hpp"
 #include "HostilityManager.hpp"
 #include "MapUtils.hpp"
@@ -17,6 +17,7 @@ const int DoorGateManipulator::PCT_CHANCE_SPRAIN_LEG_BUCKLE = 4;
 const int DoorGateManipulator::PCT_CHANCE_SPRAIN_LEG_UNMOVED = 15;
 const int DoorGateManipulator::SPRAIN_DAMAGE_MIN = 2;
 const int DoorGateManipulator::SPRAIN_DAMAGE_MAX = 10;
+const int DoorGateManipulator::MIN_INTELLIGENCE_OPERATE_DOOR = 2;
 
 DoorGateManipulator::DoorGateManipulator(FeaturePtr feature)
 : IFeatureManipulator(feature)
@@ -82,40 +83,48 @@ bool DoorGateManipulator::handle(TilePtr tile, CreaturePtr creature)
   bool result = false;
 
   std::shared_ptr<Door> door = dynamic_pointer_cast<Door>(feature);
+  IMessageManager& self_mm = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
-  if (door != nullptr && tile != nullptr)
+  if (door != nullptr && tile != nullptr && creature != nullptr)
   {
-    LockPtr lock = door->get_lock();
-    EntranceState& entrance_state = door->get_state_ref();
-    EntranceStateType state = entrance_state.get_state();
-
-    // Is there something in the way?
-    bool items_block_doorway = tile->get_items()->has_items();
-
-    if (items_block_doorway)
+    if (creature->get_intelligence().get_current() < MIN_INTELLIGENCE_OPERATE_DOOR)
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DOOR_BLOCKED));
-      manager.send();
+      self_mm.add_new_message(StringTable::get(ActionTextKeys::ACTION_OPEN_DOOR_UNINTELLIGENT));
+      self_mm.send();
     }
     else
     {
-      switch (state)
+      LockPtr lock = door->get_lock();
+      EntranceState& entrance_state = door->get_state_ref();
+      EntranceStateType state = entrance_state.get_state();
+
+      // Is there something in the way?
+      bool items_block_doorway = tile->get_items()->has_items();
+
+      if (items_block_doorway)
       {
+        self_mm.add_new_message(StringTable::get(ActionTextKeys::ACTION_DOOR_BLOCKED));
+        self_mm.send();
+      }
+      else
+      {
+        switch (state)
+        {
           // If the door is smashed, nothing can be done.
-        case EntranceStateType::ENTRANCE_TYPE_DESTROYED:
-          break;
+          case EntranceStateType::ENTRANCE_TYPE_DESTROYED:
+            break;
 
-        case EntranceStateType::ENTRANCE_TYPE_OPEN:
-          result = door->close();
-          break;
+          case EntranceStateType::ENTRANCE_TYPE_OPEN:
+            result = door->close();
+            break;
 
-        case EntranceStateType::ENTRANCE_TYPE_CLOSED:
-          // If the door is closed and locked, try to unlock it.
-          // If the door is closed and unlocked, open it.
-        default:
-          result = door->open();
-          break;
+          case EntranceStateType::ENTRANCE_TYPE_CLOSED:
+            // If the door is closed and locked, try to unlock it.
+            // If the door is closed and unlocked, open it.
+          default:
+            result = door->open();
+            break;
+        }
       }
     }
   }

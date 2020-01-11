@@ -11,7 +11,7 @@
 
 using namespace std;
 
-pair<CreatureMap, CreatureGenerationValuesMap> XMLCreaturesReader::get_creatures(const XMLNode& xml_configuration_creatures_node)
+pair<CreatureMap, CreatureGenerationValuesMap> XMLCreaturesReader::get_creatures(const XMLNode& xml_configuration_creatures_node, const bool force_ascii)
 {
   pair<CreatureMap, CreatureGenerationValuesMap> creature_values;
   CreatureMap creatures;
@@ -23,7 +23,7 @@ pair<CreatureMap, CreatureGenerationValuesMap> XMLCreaturesReader::get_creatures
 
     for (const XMLNode& creature_node : creature_nodes)
     {
-      pair<CreaturePtr, CreatureGenerationValues> creature_details = parse_creature(creature_node);
+      pair<CreaturePtr, CreatureGenerationValues> creature_details = parse_creature(creature_node, force_ascii);
       CreaturePtr creature = creature_details.first;
       CreatureGenerationValues cgv = creature_details.second;
       string creature_id = creature->get_id();
@@ -44,7 +44,7 @@ pair<CreatureMap, CreatureGenerationValuesMap> XMLCreaturesReader::get_creatures
 }
 
 // Parse the details of the Creature node into a shared Creature pointer.
-pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(const XMLNode& creature_node)
+pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(const XMLNode& creature_node, const bool force_ascii)
 {
   pair<CreaturePtr, CreatureGenerationValues> creature_data;
   CreaturePtr creature;
@@ -120,19 +120,10 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
       parse_decision_strategy(decision_strategy_node, creature);
     }
     
-    XMLNode text_node = XMLUtils::get_next_element_by_local_name(creature_node, "Text");
-    if (!text_node.is_null())
-    {
-      string symbol = XMLUtils::get_child_node_value(text_node, "Symbol");
-      
-      if (!symbol.empty())
-      {
-        creature->set_symbol(symbol.at(0));
-      }
-      
-      Colour colour = static_cast<Colour>(XMLUtils::get_child_node_int_value(text_node, "Colour"));
-      creature->set_colour(colour);
-    }
+    XMLNode symbol_node = XMLUtils::get_next_element_by_local_name(creature_node, "Symbol");
+    Symbol s('?', Colour::COLOUR_WHITE);
+    parse_symbol(s, symbol_node, force_ascii);
+    creature->set_symbol(s);
     
     XMLNode creature_generation_node = XMLUtils::get_next_element_by_local_name(creature_node, "CreatureGeneration");
     if (!creature_generation_node.is_null())

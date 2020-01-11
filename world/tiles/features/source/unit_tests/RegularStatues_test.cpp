@@ -2,14 +2,17 @@
 
 TEST(SW_World_Tiles_Features_RegularStatues, serialization_ids)
 {
-  PetrifiedCorpseStatue pet;
+  Symbol s('?', Colour::COLOUR_WHITE);
+  PetrifiedCorpseStatue pet(s);
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_PETRIFIED_CORPSE_STATUE, pet.get_class_identifier());
 }
 
 TEST(SW_World_Tiles_Features_RegularStatues, saveload)
 {
-  PetrifiedCorpseStatue pcs, pcs2;
+  Symbol s('?', Colour::COLOUR_WHITE);
+  PetrifiedCorpseStatue pcs(s);
+  PetrifiedCorpseStatue pcs2(s);
 
   pcs.set_corpse_description_sid("foo");
 

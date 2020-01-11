@@ -26,9 +26,9 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_shared<VersionCommand>(key);
   }
-  else if (command_name == CommandKeys::GAME_DATE_TIME)
+  else if (command_name == CommandKeys::GAME_DATE_TIME_WEATHER)
   {
-    command = std::make_shared<GameDateTimeCommand>(key);
+    command = std::make_shared<GameDateTimeWeatherCommand>(key);
   }
   else if (command_name == CommandKeys::MOVE_NORTHEAST)
   {

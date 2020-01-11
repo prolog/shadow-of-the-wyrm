@@ -111,7 +111,8 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BallShapeProcessor::get_af
     vector<pair<DisplayTile, Coordinate>> frame;
     for (const Coordinate& c : current_coords)
     {
-      DisplayTile dt('*', static_cast<int>(spell.get_colour()));
+      Symbol s('*', spell.get_colour(), SpritesheetLocation(SpritesheetIndex::SPRITESHEET_INDEX_SYSTEM, SpritesheetReference::SPRITESHEET_REFERENCE_MAGIC_BLAST ));
+      DisplayTile dt(s);
 
       if (use_tile_details)
       {
@@ -120,7 +121,7 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BallShapeProcessor::get_af
 
         if (engine_tile != nullptr)
         {
-          dt = MapTranslator::create_display_tile(player_blind, false, tod_overrides, shimmer_colours, engine_tile, fov_tile);
+          dt = MapTranslator::create_display_tile(player_blind, false, tod_overrides, shimmer_colours, engine_tile, fov_tile, c.first, c.second);
           dt.set_season(season->get_season());
         }
       }

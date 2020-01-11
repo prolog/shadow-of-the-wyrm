@@ -15,7 +15,7 @@ XMLItemReader::~XMLItemReader()
 {
 }
 
-void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& item_node)
+void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& item_node, const bool force_ascii)
 {
   if (item && !item_node.is_null())
   {    
@@ -111,8 +111,12 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
     
     // Overridden text details - most items will not have this, unless a very specific
     // symbol or colour is desired.
-    XMLNode text_details_node = XMLUtils::get_next_element_by_local_name(item_node, "TextDetails");
-    parse_text_details(item, text_details_node);
+    XMLNode symbol_node = XMLUtils::get_next_element_by_local_name(item_node, "Symbol");
+    Symbol s = item->get_symbol();
+    parse_symbol(s, symbol_node, force_ascii);
+
+    item->set_symbol(s);
+    item->set_colour(s.get_colour());
 
     // Danger Level
     int danger_level = XMLUtils::get_child_node_int_value(item_node, "DangerLevel");
@@ -148,28 +152,6 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
     {
       parse_item_scripts(item, item_scripts_node);
     }
-  }
-}
-
-// Typically, all items of a particular type have the same symbol, with a colour based on
-// the item type.  Sometimes this needs to be overridden, which is what this function 
-// allows.
-void XMLItemReader::parse_text_details(ItemPtr item, const XMLNode& text_details_node)
-{
-  // This function will only be used in a few places - to differentiate rocks from
-  // other missiles, for example.
-  if (item && !text_details_node.is_null())
-  {
-    string symbol_s = XMLUtils::get_child_node_value(text_details_node, "Symbol");
-    
-    if (!symbol_s.empty())
-    {
-      uchar symbol = symbol_s.at(0);
-      item->set_symbol(symbol);
-    }
-    
-    Colour colour = static_cast<Colour>(XMLUtils::get_child_node_int_value(text_details_node, "Colour"));
-    item->set_colour(colour);
   }
 }
 

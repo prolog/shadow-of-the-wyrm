@@ -23,11 +23,12 @@ using namespace std;
 const int SDLDisplay::SCREEN_ROWS = 25;
 const int SDLDisplay::SCREEN_COLS = 80;
 const int SDLDisplay::NUM_SDL_BASE_COLOURS = 16;
+const string SDLDisplay::TEXT_ID = "";
+
 SDLDisplay::SDLDisplay()
 {
   window = nullptr;
   renderer = nullptr;
-  font_spritesheet = nullptr;
   message_buffer_screen = nullptr;
 
   sdld.set_screen_rows(SCREEN_ROWS);
@@ -61,12 +62,8 @@ bool SDLDisplay::create()
 
 void SDLDisplay::tear_down()
 {
-  free_font_spritesheet();
-
-  for (SDL_Texture* t : screens)
-  {
-    SDL_DestroyTexture(t);
-  }
+  free_spritesheets();
+  free_screens();
 
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
@@ -317,7 +314,7 @@ void SDLDisplay::add_message(const string& to_add_message, const Colour colour, 
           sdlc.set_yx(1, get_max_cols() - 4);
 
           disable_colour(colour);
-          render.render_text(sdlc, renderer, font_spritesheet, screen, cur_y, cur_x, "...", sdld.get_fg_colour(), sdld.get_bg_colour());
+          render.render_text(sdlc, renderer, spritesheets[TEXT_ID], screen, cur_y, cur_x, "...", sdld.get_fg_colour(), sdld.get_bg_colour());
           refresh_current_window();
 
           prompt_processor.get_prompt(window);
@@ -346,7 +343,7 @@ void SDLDisplay::add_message(const string& to_add_message, const Colour colour, 
         }
       }
 
-      render.render_text(sdlc, renderer, font_spritesheet, screen, cur_y, cur_x, current_token, sdld.get_fg_colour(), sdld.get_bg_colour());
+      render.render_text(sdlc, renderer, spritesheets[TEXT_ID], screen, cur_y, cur_x, current_token, sdld.get_fg_colour(), sdld.get_bg_colour());
 
       // After rendering text, update the message buffer position.
       msg_buffer_last_y = sdlc.get_y();
@@ -357,11 +354,6 @@ void SDLDisplay::add_message(const string& to_add_message, const Colour colour, 
     // updated, and clear messages if necessary.
     msg_buffer_last_y = sdlc.get_y();
     msg_buffer_last_x = sdlc.get_x();
-
-    if (clear_prior_to_adding_message)
-    {
-      clear_messages();
-    }
 
     disable_colour(colour);
   }
@@ -378,7 +370,7 @@ string SDLDisplay::add_message_with_prompt(const string& message, const Colour c
     SDLRender render(sdld);
 
     add_message(message, colour, clear_prior);
-    prompt_result = prompt_processor.get_user_string(sdld, screen_cursors.back(), render, renderer, font_spritesheet, screens.back(), true /* allow arbitrary non-alphanumeric characters */);
+    prompt_result = prompt_processor.get_user_string(sdld, screen_cursors.back(), render, renderer, spritesheets[TEXT_ID], screens.back(), true /* allow arbitrary non-alphanumeric characters */);
   }
   
   return prompt_result;
@@ -405,12 +397,40 @@ void SDLDisplay::draw_coordinate(const DisplayTile& current_tile, const uint ter
   if (!screens.empty() && !screen_cursors.empty())
   {
     SDLRender render(sdld);
-    int col = current_tile.get_colour();
-    Colour colour = static_cast<Colour>(col);
 
-    enable_colour(colour);
-    render.render_text(screen_cursors.back(), renderer, font_spritesheet, screens.back(), terminal_row, terminal_col, current_tile.get_symbol(), sdld.get_fg_colour(), sdld.get_bg_colour());
-    disable_colour(colour);
+    Colour colour = static_cast<Colour>(current_tile.get_colour());
+    Symbol s = current_tile.get_symbol();
+    uchar char_symbol = s.get_symbol();
+    bool rendered = false;
+
+    if (colour != Colour::COLOUR_UNDEFINED)
+    {
+      enable_colour(colour);
+    }
+
+    if (s.get_uses_spritesheet())
+    {
+      SpritesheetLocation ssl = s.get_spritesheet_location();
+      SDL_Texture* spritesheet = get_spritesheet(s.get_spritesheet_location_ref().get_index());
+
+      if (spritesheet != nullptr)
+      {
+        Coordinate c = get_spritesheet_coordinate(ssl);
+        render.render_glyph(screen_cursors.back(), renderer, spritesheet, screens.back(), terminal_row, terminal_col, c.first, c.second, sdld.get_fg_colour(), sdld.get_bg_colour());
+        rendered = true;
+      }
+    }
+
+    // If there were issues looking up the glyph, fall back on text.
+    if (rendered == false)
+    {
+      render.render_text(screen_cursors.back(), renderer, spritesheets[TEXT_ID], screens.back(), terminal_row, terminal_col, char_symbol, sdld.get_fg_colour(), sdld.get_bg_colour());
+    }
+
+    if (colour != Colour::COLOUR_UNDEFINED)
+    {
+      disable_colour(colour);
+    }
   }
 }
 
@@ -528,10 +548,10 @@ string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& men
 
     SDLRender text_renderer(sdld);
     PromptPtr prompt = screen.get_prompt();
-    prompt_processor.show_prompt(sdld, cursor_loc, text_renderer, renderer, font_spritesheet, current_screen, prompt, row, col, get_max_rows(), get_max_cols());
+    prompt_processor.show_prompt(sdld, cursor_loc, text_renderer, renderer, spritesheets[TEXT_ID], current_screen, prompt, row, col, get_max_rows(), get_max_cols());
     refresh_current_window();
 
-    prompt_val = prompt_processor.get_prompt(sdld, cursor_loc, text_renderer, renderer, font_spritesheet, current_screen, menu_wrapper, prompt);
+    prompt_val = prompt_processor.get_prompt(sdld, cursor_loc, text_renderer, renderer, spritesheets[TEXT_ID], current_screen, menu_wrapper, prompt);
   }
 
   return prompt_val;
@@ -544,7 +564,7 @@ void SDLDisplay::display_header(const string& header_text, const int row)
     SDLRender render(sdld);
 
     string full_header = TextMessages::get_full_header_text(header_text, sdld.get_screen_cols());
-    render.render_text(screen_cursors.back(), renderer, font_spritesheet, screens.back(), row, 0, full_header, sdld.get_fg_colour(), sdld.get_bg_colour());
+    render.render_text(screen_cursors.back(), renderer, spritesheets[TEXT_ID], screens.back(), row, 0, full_header, sdld.get_fg_colour(), sdld.get_bg_colour());
   }
 }
 
@@ -554,22 +574,44 @@ void SDLDisplay::display_text_component(SDL_Window* window, int* row, int* col, 
   {
     SDLRender text_renderer(sdld);
     SDL_Texture* texture = screens.back();
+    SDL_Texture* text_spritesheet = spritesheets[TEXT_ID];
 
     if (tc != nullptr && row != nullptr && col != nullptr)
     {
       vector<pair<string, Colour>> current_text = tc->get_text();
+      vector<Symbol> symbols = tc->get_symbols();
 
       for (auto& text_line : current_text)
       {
         string cur_text = text_line.first;
         Colour colour = text_line.second;
-        
+
         // Loop through the given string.  For each character, render it,
         // and increment the column.
-        for (const char c : cur_text)
+        size_t txt_size = cur_text.size();
+        size_t sym_size = symbols.size();
+
+        size_t cur_sym = 0;
+        size_t cur_char = 0;
+
+        while (cur_char < txt_size)
         {
-          text_renderer.render_text(screen_cursors.back(), renderer, font_spritesheet, texture, *row, *col, c, get_colour(colour), sdld.get_bg_colour());
-          *col += 1;
+          char c = cur_text[cur_char];
+
+          if (c == '%' && cur_char < txt_size - 1 && cur_text[cur_char + 1] == 's' && cur_sym < sym_size)
+          {
+            Symbol s = symbols[cur_sym];
+            DisplayTile dt(s);
+            draw_coordinate(dt, *row, *col);
+            *col += 1;
+            cur_char += 2;
+          }
+          else
+          {
+            text_renderer.render_text(screen_cursors.back(), renderer, text_spritesheet, texture, *row, *col, c, get_colour(colour), sdld.get_bg_colour());
+            *col += 1;
+            cur_char++;
+          }
         }
       }
 
@@ -584,7 +626,7 @@ void SDLDisplay::display_text(const int row, const int col, const string& s)
   if (!screens.empty() && !screen_cursors.empty())
   {
     SDLRender text_renderer(sdld);
-    text_renderer.render_text(screen_cursors.back(), renderer, font_spritesheet, screens.back(), row, col, s, sdld.get_fg_colour(), sdld.get_bg_colour());
+    text_renderer.render_text(screen_cursors.back(), renderer, spritesheets[TEXT_ID], screens.back(), row, col, s, sdld.get_fg_colour(), sdld.get_bg_colour());
   }
 }
 
@@ -693,6 +735,55 @@ string SDLDisplay::display_screen(const Screen& current_screen)
   return Display::display_screen(current_screen);
 }
 
+void SDLDisplay::set_spritesheets(const map<string, pair<string, unordered_map<string, Coordinate>>>& spritesheet_ids_and_files)
+{
+  for (auto ss_it : spritesheet_ids_and_files)
+  {
+    string spritesheet_id = ss_it.first;
+    string filename = ss_it.second.first;
+    SDL_Texture* spritesheet = load_texture(filename, renderer);
+    spritesheets[spritesheet_id] = spritesheet;
+
+    unordered_map<string, Coordinate> refs = ss_it.second.second;
+    spritesheet_references[spritesheet_id] = refs;
+  }
+}
+
+SDL_Texture* SDLDisplay::get_spritesheet(const string& spritesheet_idx)
+{
+  SDL_Texture* ss = nullptr;
+
+  auto ss_it = spritesheets.find(spritesheet_idx);
+  if (ss_it != spritesheets.end())
+  {
+    ss = ss_it->second;
+  }
+
+  return ss;
+}
+
+Coordinate SDLDisplay::get_spritesheet_coordinate(const SpritesheetLocation& ssl) const
+{
+  Coordinate coords = ssl.get_coordinate();
+
+  if (ssl.uses_reference_id())
+  {
+    auto sr_it = spritesheet_references.find(ssl.get_index());
+
+    if (sr_it != spritesheet_references.end())
+    {
+      auto sr_map = sr_it->second;
+      auto srm_it = sr_map.find(ssl.get_reference_id());
+
+      if (srm_it != sr_map.end())
+      {
+        coords = srm_it->second;
+      }
+    }
+  }
+
+  return coords;
+}
 
 bool SDLDisplay::serialize(std::ostream& stream) const
 {
@@ -727,14 +818,29 @@ Display* SDLDisplay::clone()
 
 bool SDLDisplay::load_spritesheet_from_file(const string& path, SDL_Renderer* renderer)
 {
-  free_font_spritesheet();
-  ostringstream ss;
+  auto ss_it = spritesheets.find("");
+
+  // If it already exists, destroy it.
+  if (ss_it != spritesheets.end())
+  {
+    SDL_DestroyTexture(ss_it->second);
+    spritesheets.erase(ss_it);
+  }
 
   if (renderer == nullptr)
   {
     return false;
   }
 
+  SDL_Texture* new_texture = load_texture(path, renderer);
+
+  spritesheets[""] = new_texture;
+  return new_texture != nullptr;
+}
+
+SDL_Texture* SDLDisplay::load_texture(const string& path, SDL_Renderer* renderer)
+{
+  ostringstream ss;
   SDL_Texture* new_texture = NULL;
 
   // Load image from path
@@ -762,16 +868,23 @@ bool SDLDisplay::load_spritesheet_from_file(const string& path, SDL_Renderer* re
     SDL_FreeSurface(surface);
   }
 
-  font_spritesheet = new_texture;
-  return font_spritesheet != nullptr;
+  return new_texture;
 }
 
-void SDLDisplay::free_font_spritesheet()
+void SDLDisplay::free_spritesheets()
 {
-  if (font_spritesheet != nullptr)
+  for (auto& texture_pair : spritesheets)
   {
-    SDL_DestroyTexture(font_spritesheet);
-    font_spritesheet = nullptr;
+    SDL_Texture* texture = texture_pair.second;
+    SDL_DestroyTexture(texture);
+  }
+}
+
+void SDLDisplay::free_screens()
+{
+  for (SDL_Texture* t : screens)
+  {
+    SDL_DestroyTexture(t);
   }
 }
 

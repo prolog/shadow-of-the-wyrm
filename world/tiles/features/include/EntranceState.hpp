@@ -2,6 +2,7 @@
 #include "common.hpp"
 #include "EntranceTypes.hpp"
 #include "ISerializable.hpp"
+#include "Symbol.hpp"
 
 class EntranceState : public ISerializable
 {
@@ -12,8 +13,8 @@ class EntranceState : public ISerializable
 
     void set_state(const EntranceStateType new_state);
     EntranceStateType get_state() const;
-    
-    uchar get_symbol() const;
+
+    Symbol get_symbol() const;
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;

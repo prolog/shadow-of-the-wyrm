@@ -1,10 +1,7 @@
 #pragma once
 #include "AlignmentEnums.hpp"
-#include "Door.hpp"
-#include "Feature.hpp"
-#include "Sarcophagus.hpp"
-#include "SlotMachine.hpp"
-#include "Trap.hpp"
+#include "StatueTypes.hpp"
+#include "Features.hpp"
 
 enum struct PewDirection
 {
@@ -21,6 +18,7 @@ class FeatureGenerator
     static LockPtr create_lock();
     static TrapPtr create_trap();
     static FeaturePtr generate_altar(const std::string& deity_id, const AlignmentRange range);
+    static FeaturePtr generate_barrel();
     static FeaturePtr generate_bed();
     static DoorPtr generate_door(const EntranceStateType et = EntranceStateType::ENTRANCE_TYPE_OPEN);
     static FeaturePtr generate_gate();
@@ -37,16 +35,23 @@ class FeatureGenerator
     static FeaturePtr generate_wheel_and_loom();
     static FeaturePtr generate_stone_marker();
     static FeaturePtr generate_table();
-    static FeaturePtr generate_basic_feature(const std::string& basic_feature_id);
-    static FeaturePtr generate_basic_feature(const MaterialType mt, const uchar symbol, const Colour colour, const std::string& desc_sid);
+    static FeaturePtr generate_configurable_feature(const std::string& configurable_feature_id);
+    static FeaturePtr generate_configurable_feature(const MaterialType mt, const Symbol& symbol, const std::string& desc_sid);
     static FeaturePtr generate_sign(const std::string& text_sid);
+    static FeaturePtr generate_decorative_statue(const DecorativeStatueType statue_type);
+    static PetrifiedCorpseStatuePtr generate_petrified_corpse_statue(const std::string& corpse_description_sid);
+
+    static void set_feature_symbol_map(const FeatureSymbolMap& fsm);
+    static FeatureSymbolMap get_feature_symbol_map();
 
   protected:
+    static Symbol get_config_symbol(const ClassIdentifier ci);
+    static void initialize_feature_map();
+
     FeatureGenerator();
     ~FeatureGenerator();
 
-    static void initialize_feature_map();
-
+    static FeatureSymbolMap feature_symbol_map;
     static FeatureSerializationMap feature_map;
 };
 

@@ -5,7 +5,7 @@ using namespace std;
 Currency::Currency()
 {
   type = ItemType::ITEM_TYPE_CURRENCY;
-  symbol = '$';
+  symbol.set_symbol('$');
   status = ItemStatus::ITEM_STATUS_UNCURSED;
   status_identified = true;
 }
