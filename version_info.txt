@@ -1,3 +1,6 @@
+Shadow of the Wyrm v1.1.7 "Sor"
+- Version declared January 11, 2020.
+
 Shadow of the Wyrm v1.1.6 "Paganini"
 - Version started November 27, 2019.  Version finalized January 11, 2020.
 
