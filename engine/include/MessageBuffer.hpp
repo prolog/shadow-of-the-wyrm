@@ -1,5 +1,6 @@
 #pragma once
 #include <deque>
+#include "Colours.hpp"
 #include "ISerializable.hpp"
 
 // Stores message history up to a particular number of messages, rather
