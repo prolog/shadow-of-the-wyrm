@@ -7,8 +7,8 @@ using namespace std;
 
 // JCD FIXME NEED COPY CONSTRUCTOR FOR LOCK PTR WHEN THIS IS COMPLETED
 
-Feature::Feature(const MaterialType new_material, const AlignmentRange new_alignment_range, const int new_uses)
-: material(new_material), alignment_range(new_alignment_range), uses(new_uses)
+Feature::Feature(const string& new_description_sid, const MaterialType new_material, const AlignmentRange new_alignment_range, const Symbol& new_symbol, const int new_uses)
+: description_sid(new_description_sid), material(new_material), alignment_range(new_alignment_range), symbol(new_symbol), uses(new_uses)
 {
 }
 
@@ -30,8 +30,10 @@ Feature& Feature::operator=(const Feature& feature)
       lock = std::make_shared<Lock>(*feature.lock);
     }
 
+    description_sid = feature.description_sid;
     material = feature.material;
     alignment_range = feature.alignment_range;
+    symbol = feature.symbol;
     uses = feature.uses;
   }
 
@@ -44,10 +46,12 @@ bool Feature::operator==(const Feature& feature) const
 
   result = result && (internal_class_identifier() == feature.internal_class_identifier());
 
+  result = result && (description_sid == feature.description_sid);
   result = result && (material == feature.material);
   result = result && (shimmer_colours == feature.shimmer_colours);
   result = result && ((!lock && !(feature.lock)) || (lock && feature.lock && (*lock == *(feature.lock))));
   result = result && (alignment_range == feature.alignment_range);
+  result = result && (symbol == feature.symbol);
   result = result && (uses == feature.uses);
 
   return result;
@@ -155,7 +159,11 @@ Colour Feature::get_colour() const
   Colour colour = Colour::COLOUR_WHITE;
   
   MaterialPtr materialp = MaterialFactory::create_material(material);
-  colour = materialp->get_colour();
+
+  if (materialp != nullptr)
+  {
+    colour = materialp->get_colour();
+  }
   
   return colour;
 }
@@ -189,6 +197,19 @@ void Feature::set_alignment_range(const AlignmentRange new_alignment_range)
 AlignmentRange Feature::get_alignment_range() const
 {
   return AlignmentRange::ALIGNMENT_RANGE_NEUTRAL;
+}
+
+void Feature::set_symbol(const Symbol& new_symbol)
+{
+  symbol = new_symbol;
+}
+
+Symbol Feature::get_symbol() const
+{
+  Symbol s = symbol;
+  s.set_colour(get_colour());
+
+  return s;
 }
 
 void Feature::set_uses(const int new_uses)
@@ -244,8 +265,14 @@ map<string, string> Feature::get_additional_properties() const
   return additional_properties;
 }
 
+string Feature::get_description_sid() const
+{
+  return description_sid;
+}
+
 bool Feature::serialize(ostream& stream) const
 {
+  Serialize::write_string(stream, description_sid);
   shimmer_colours.serialize(stream);
 
   if (lock)
@@ -260,6 +287,9 @@ bool Feature::serialize(ostream& stream) const
 
   Serialize::write_enum(stream, material);
   Serialize::write_enum(stream, alignment_range);
+  
+  symbol.serialize(stream);
+
   Serialize::write_enum(stream, uses);
   Serialize::write_string_map(stream, additional_properties);
 
@@ -268,6 +298,7 @@ bool Feature::serialize(ostream& stream) const
 
 bool Feature::deserialize(istream& stream)
 {
+  Serialize::read_string(stream, description_sid);
   shimmer_colours.deserialize(stream);
 
   ClassIdentifier lock_clid;
@@ -281,6 +312,9 @@ bool Feature::deserialize(istream& stream)
 
   Serialize::read_enum(stream, material);
   Serialize::read_enum(stream, alignment_range);
+
+  symbol.deserialize(stream);
+
   Serialize::read_int(stream, uses);
   Serialize::read_string_map(stream, additional_properties);
 

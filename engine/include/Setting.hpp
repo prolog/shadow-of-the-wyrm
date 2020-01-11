@@ -32,6 +32,7 @@ class Setting
     static const std::string DISPLAY_TILE_SIZE;
     static const std::string DISPLAY_TILE_GLYPHS_PER_LINE;
     static const std::string DISPLAY_NUM_GLYPHS;
+    static const std::string DISPLAY_FORCE_ASCII;
     static const std::string REMOVE_LOGS_DAYS_OLD;
     static const std::string SINGLE_USER_MODE;
     static const std::string SKIP_SAVEFILE_METADATA_VERIFICATION;
@@ -43,6 +44,10 @@ class Setting
     static const std::string ALLOW_CURSED_AMMUNITION_USE;
     static const std::string SKILL_SELECTION_REQUIRE_CAPITALIZATION;
     static const std::string CONFIRMATION_REQUIRE_CAPITALIZATION;
+    static const std::string CONFIGURATION_FILE_BASE;
+    static const std::string CONFIGURATION_FILE_CREATURES;
+    static const std::string CONFIGURATION_FILE_ITEMS;
+    static const std::string CONFIGURATION_FILE_WORLD_MAP_AREAS;
 
   protected:
     Setting();

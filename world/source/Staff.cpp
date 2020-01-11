@@ -5,7 +5,7 @@ using namespace std;
 Staff::Staff()
 {
   type = ItemType::ITEM_TYPE_STAFF;
-  symbol = '|';
+  symbol.set_symbol('|');
 }
 
 Staff::~Staff()

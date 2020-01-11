@@ -2,7 +2,6 @@
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
 #include "RNG.hpp"
-#include "StatueGenerator.hpp"
 
 using namespace std;
 
@@ -121,7 +120,7 @@ void RectangularShrineGenerator::generate_pillar_or_statue(MapPtr map, const vec
   }
   else
   {
-    feature = StatueGenerator::generate_decorative_statue(DecorativeStatueType::DECORATIVE_STATUE_TYPE_HIGH_PRIEST);
+    feature = FeatureGenerator::generate_decorative_statue(DecorativeStatueType::DECORATIVE_STATUE_TYPE_HIGH_PRIEST);
   }
 
   for (const Coordinate& c : coords)

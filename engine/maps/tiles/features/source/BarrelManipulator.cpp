@@ -1,6 +1,6 @@
 #include "BarrelManipulator.hpp"
 #include "ActionTextKeys.hpp"
-#include "Barrel.hpp"
+#include "Features.hpp"
 #include "ItemManager.hpp"
 #include "MessageManagerFactory.hpp"
 

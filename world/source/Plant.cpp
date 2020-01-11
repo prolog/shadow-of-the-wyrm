@@ -7,7 +7,7 @@ Plant::Plant()
 {
   type = ItemType::ITEM_TYPE_PLANT;
   food_type = FoodType::FOOD_TYPE_VEGETABLE;
-  symbol = 'w';
+  symbol.set_symbol('w');
 }
 
 Plant::Plant(const int new_nutrition)
@@ -15,7 +15,7 @@ Plant::Plant(const int new_nutrition)
 {
   type = ItemType::ITEM_TYPE_PLANT;
   food_type = FoodType::FOOD_TYPE_VEGETABLE;
-  symbol = 'w';
+  symbol.set_symbol('w');
 }
 
 Plant::~Plant()

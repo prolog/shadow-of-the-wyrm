@@ -17,7 +17,7 @@ using namespace std;
 // This will likely need to be updated to include new fields at some
 // point.
 Map::Map(const Map& new_map)
-: terrain_type(TileType::TILE_TYPE_UNDEFINED), map_type(MapType::MAP_TYPE_OVERWORLD), permanent(new_map.permanent), danger(0), allow_creature_updates(true)
+: terrain_type(TileType::TILE_TYPE_UNDEFINED), map_type(MapType::MAP_TYPE_OVERWORLD), permanent(new_map.permanent), danger(0), allow_creature_updates(true), weather(new_map.weather)
 {
   if (this != &new_map)
   {
@@ -37,7 +37,7 @@ Map::Map(const Map& new_map)
 }
 
 Map::Map(const Dimensions& new_dimensions, const Dimensions& orig_dimensions)
-: terrain_type(TileType::TILE_TYPE_UNDEFINED), map_type(MapType::MAP_TYPE_OVERWORLD), permanent(false), danger(0), allow_creature_updates(true)
+: terrain_type(TileType::TILE_TYPE_UNDEFINED), map_type(MapType::MAP_TYPE_OVERWORLD), permanent(false), danger(0), allow_creature_updates(true), weather("")
 {
   dimensions = new_dimensions;
   original_dimensions = orig_dimensions;
@@ -96,6 +96,7 @@ bool Map::operator==(const Map& map) const
   result = result && (preset_locations == map.preset_locations);
   result = result && (shops == map.shops);
   result = result && (event_scripts == map.event_scripts);
+  result = result && (weather == map.weather);
 
   return result;
 }
@@ -756,6 +757,21 @@ ScriptDetails Map::get_event_script(const string& event_name) const
   return sd;
 }
 
+void Map::set_weather(const Weather& new_weather)
+{
+  weather = new_weather;
+}
+
+Weather Map::get_weather() const
+{
+  return weather;
+}
+
+Weather& Map::get_weather_ref()
+{
+  return weather;
+}
+
 bool Map::serialize(ostream& stream) const
 {
   // creatures - not serialized.  build up after deserialization.
@@ -861,6 +877,8 @@ bool Map::serialize(ostream& stream) const
   }
 
   Serialize::write_event_scripts(stream, event_scripts);
+
+  weather.serialize(stream);
 
   return true;
 }
@@ -1032,6 +1050,8 @@ bool Map::deserialize(istream& stream)
   }
 
   Serialize::read_event_scripts(stream, event_scripts);
+  
+  weather.deserialize(stream);
 
   return true;
 }

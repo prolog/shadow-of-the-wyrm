@@ -117,7 +117,7 @@ vector<string> KeyboardCommandMap::get_remappable_commands() const
   CommandKeys::MOVE_NORTHWEST, CommandKeys::MOVE_NORTH, CommandKeys::MOVE_NORTHEAST,
   CommandKeys::MOVE_UP, CommandKeys::MOVE_DOWN, CommandKeys::AUTOMATIC_MOVEMENT,
   CommandKeys::QUIT, CommandKeys::SAVE_GAME, CommandKeys::VERSION,
-  CommandKeys::GAME_DATE_TIME, CommandKeys::CHAR_DUMP, CommandKeys::MELEE_WEAPON_INFO,
+  CommandKeys::GAME_DATE_TIME_WEATHER, CommandKeys::CHAR_DUMP, CommandKeys::MELEE_WEAPON_INFO,
   CommandKeys::RANGED_WEAPON_INFO, CommandKeys::SHOW_CONDUCTS, CommandKeys::SHOW_RESISTANCES,
   CommandKeys::SHOW_SKILLS, CommandKeys::PICK_UP_ITEM, CommandKeys::PICK_UP_ALL,
   CommandKeys::DROP_ITEM, CommandKeys::INVENTORY, CommandKeys::PRAY, CommandKeys::SELECT_TILE, 

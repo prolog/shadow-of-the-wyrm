@@ -7,8 +7,8 @@
 using namespace std;
 using namespace boost::algorithm;
 
-TextDisplayScreen::TextDisplayScreen(DisplayPtr new_display, const std::string& new_title_text_sid, const vector<TextDisplayPair>& new_text, const bool preserve_formatting)
-: Screen(new_display), text(new_text)
+TextDisplayScreen::TextDisplayScreen(DisplayPtr new_display, const std::string& new_title_text_sid, const vector<TextDisplayPair>& new_text, const bool preserve_formatting, const deque<Symbol>& rsyms)
+: Screen(new_display), text(new_text), replacement_symbols(rsyms)
 {
   // Set the line increment to 1, so that single-spacing between lines is
   // enforced.  Otherwise, things will look goofy.
@@ -25,7 +25,7 @@ void TextDisplayScreen::initialize(const string& title_sid, const bool preserve_
   vector<ScreenComponentPtr> text_screen;
   int cnt = 0;
 
-  if (add_text(text_screen, text, preserve_formatting, cnt))
+  if (add_text(text_screen, text, replacement_symbols, preserve_formatting, cnt))
   {
     add_page(text_screen);
   }

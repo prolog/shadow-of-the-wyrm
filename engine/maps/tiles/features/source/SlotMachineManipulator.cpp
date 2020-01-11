@@ -1,5 +1,6 @@
 #include "SlotMachineManipulator.hpp"
 #include "ActionTextKeys.hpp"
+#include "Features.hpp"
 #include "FeatureProperties.hpp"
 #include "Game.hpp"
 #include "ItemManager.hpp"
@@ -7,7 +8,6 @@
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
-#include "SlotMachine.hpp"
 #include "TextMessages.hpp"
 
 using namespace std;

@@ -1,4 +1,54 @@
-Shadow of the Wyrm v1.1.5 "Losy"
+Shadow of the Wyrm v1.1.6 "Paganini"
+- Version started November 27, 2019.  Version finalized January 11, 2020.
+
+- The inn in Carcassia now has a couple of beds (Troubler).
+
+- You can no longer fix the turtle races by attacking two of them and letting
+  the third one win.
+
+- Constructs, animals, birds, and jellies now start with 1 Intelligence, and 
+  low intelligence creatures are now unable to open doors, not knowing how
+  they work.
+
+- Added several new fonts in 16x24 in preparation for adding 16x24 sprites
+  later, as well as instructions on how to add font spritesheets.
+
+- Initial weather implementation.  Weather can be checked via the "T"ime/Date/
+  Weather command.  High winds will cause colour changes for rivers, seas,
+  springs.
+
+- Full spritesheet support, though no spritesheets yet.  All creatures, tiles,
+  features, and various system-generated symbols (magical bolts/bursts, etc)
+  can now have their own sprites and colours.
+
+- Performance improvements for SDL input handling (JoeMaro).
+
+- The message buffer ('M') now maintains its original message colours when
+  displayed in-game (hapro).  The character display ('@') does not, as it 
+  mirrors what gets dumped to disk.
+
+- Shopkeepers now actively dislike when you do cast spells/evoke wands
+  that might cause damage to the items in their shops.
+
+- Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - Summoning traps could sometimes fail to summon creatures when the
+    triggering creature's level was much lower than the map's danger level.
+
+  - The new weather-shimmer code fixes an issue in previous versions with
+    shimmer colours whereby a tile or feature could "flicker" several times
+    before the player's next turn due to multiple redraws due to other
+    creatures' turns.  There is now a symbol cache that gets cleared at the
+    start of the player's turn, and this cache is used to maintain consistent
+    tile colourings between turns, even when there are "random" colourings
+    due to weather, torchlight, etc (Grond).
+
+  - Weapons had a stacking bug where to-hit/damage/speed bonuses from the
+    parent Wearable class weren't being considered properly (Troubler).
+
+Shadow of the Wyrm v1.1.5.1 "Losy"
 - Version declared August 11, 2019.  Version finalized November 27, 2019.
 
 - Vigarion, the undersea guardian, now generates with an amulet of the
@@ -72,6 +122,9 @@ Shadow of the Wyrm v1.1.5 "Losy"
 
   - Random character generation wasn't respecting Not Specified for default
     sex.
+
+  - Patch bug fixes: premake link issues with SDL_image (Larzid) and Nvidia
+    screen-clearing issues with SDL (Larzid, Grond).
 
 Shadow of the Wyrm v1.1.2 "Tarrega"
 - Version declared July 16, 2019. Version finalized August 11, 2019.

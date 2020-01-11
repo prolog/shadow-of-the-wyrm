@@ -1,25 +1,29 @@
 #include "DisplayTile.hpp"
 
-DisplayTile::DisplayTile() : symbol('!'), current_season(Season::SEASON_SPRING)
+DisplayTile::DisplayTile() : current_season(Season::SEASON_SPRING)
 {
 }
 
-DisplayTile::DisplayTile(const uchar sym, const int colour) : symbol(sym), current_season(Season::SEASON_SPRING)
+DisplayTile::DisplayTile(const Symbol& new_symbol) 
+: symbol(new_symbol), current_season(Season::SEASON_SPRING)
 {
+  int icolour = static_cast<int>(symbol.get_colour());
+
   for (int i = static_cast<int>(Season::SEASON_SPRING); i < static_cast<int>(Season::SEASON_LAST); i++)
   {
     Season s = static_cast<Season>(i);
-    colours[s] = colour;
+    colours[s] = icolour;
   }
 }
 
-DisplayTile::DisplayTile(const uchar sym, const SeasonTileColourMap& new_map) : symbol(sym), current_season(Season::SEASON_SPRING), colours(new_map)
+DisplayTile::DisplayTile(const Symbol& new_symbol, const SeasonTileColourMap& new_map) 
+: symbol(new_symbol), current_season(Season::SEASON_SPRING), colours(new_map)
 {
 }
 
-void DisplayTile::set_symbol(const uchar sym)
+void DisplayTile::set_symbol(const Symbol& new_symbol)
 {
-  symbol = sym;
+  symbol = new_symbol;
 }
 
 void DisplayTile::set_colour(const int new_colour)
@@ -50,7 +54,7 @@ Season DisplayTile::get_season() const
   return current_season;
 }
 
-uchar DisplayTile::get_symbol() const
+Symbol DisplayTile::get_symbol() const
 {
   return symbol;
 }
@@ -82,4 +86,14 @@ int DisplayTile::get_colour(const Season season) const
 SeasonTileColourMap DisplayTile::get_colours() const
 {
   return colours;
+}
+
+void DisplayTile::set_weather_colours(const std::vector<Colour>& new_weather_colours)
+{
+  weather_colours = new_weather_colours;
+}
+
+std::vector<Colour> DisplayTile::get_weather_colours() const
+{
+  return weather_colours;
 }

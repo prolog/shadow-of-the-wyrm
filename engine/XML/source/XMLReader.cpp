@@ -1,8 +1,61 @@
+#include <sstream>
 #include "XMLReader.hpp"
 #include "CombatConstants.hpp"
+#include "Log.hpp"
 #include "XMLScriptsReader.hpp"
 
 using namespace std;
+
+// Parse the symbol information out of an XML node
+void XMLReader::parse_symbol(Symbol& symbol, const XMLNode& symbol_node, const bool force_ascii) const
+{
+  if (!symbol_node.is_null())
+  {
+    Log& log = Log::instance();
+
+    uchar symbol_char = '?';
+    string symbol_text = XMLUtils::get_child_node_value(symbol_node, "Char");
+
+    if (!symbol_text.empty())
+    {
+      symbol_char = symbol_text[0];
+      symbol.set_symbol(symbol_char);
+    }
+
+    XMLNode colour_node = XMLUtils::get_next_element_by_local_name(symbol_node, "Colour");
+    if (!colour_node.is_null())
+    {
+      Colour colour = static_cast<Colour>(XMLUtils::get_node_int_value(colour_node, 0));
+      symbol.set_colour(colour);
+    }
+
+    XMLNode ss_loc_node = XMLUtils::get_next_element_by_local_name(symbol_node, "SpritesheetLocation");
+
+    if (force_ascii)
+    {
+      log.debug("ASCII forced - ignoring spritesheet information");
+    }
+    else
+    {
+      SpritesheetLocation ssl;
+      parse_spritesheet_location(ssl, ss_loc_node);
+      symbol.set_spritesheet_location(ssl);
+    }
+  }
+}
+
+void XMLReader::parse_spritesheet_location(SpritesheetLocation& ssl, const XMLNode& ssl_node) const
+{
+  if (!ssl_node.is_null())
+  {
+    string id = XMLUtils::get_child_node_value(ssl_node, "ID");
+    int row = XMLUtils::get_child_node_int_value(ssl_node, "Row");
+    int col = XMLUtils::get_child_node_int_value(ssl_node, "Col");
+
+    ssl.set_index(id);
+    ssl.set_coordinate(make_pair(row, col));
+  }
+}
 
 // Parse the dice from a node according to the Dice format.
 void XMLReader::parse_dice(Dice& dice, const XMLNode& dice_node) const

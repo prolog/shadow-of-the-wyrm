@@ -1,12 +1,13 @@
+// MSXML is a POS and doesn't play nice with Xerces.
+#ifndef __MSXML_LIBRARY_DEFINED__
+#define __MSXML_LIBRARY_DEFINED__
+#endif
+
 #include <stdio.h>
 #include <iostream>
 
-// This needs to be defined first because it includes msxml.h, which
-// doesn't respect namespaces properly. Including xerces afterwards
-// (which is namespace-aware) allows everything to work as expected.
 #include "UnhandledExceptions.hpp"
 
-#undef DOMDocument
 #include <xercesc/util/PlatformUtils.hpp>
 #include <boost/archive/archive_exception.hpp>
 #include <boost/filesystem.hpp>
@@ -146,6 +147,8 @@ int main(int argc, char* argv[])
         throw "error";
       }
 
+      log.debug("Created display.");
+
       if (display)
       {
         set_display_settings(display, settings);
@@ -182,9 +185,17 @@ int main(int argc, char* argv[])
       }
     }
   }
+  catch(std::exception& e)
+  {
+    ostringstream ss;
+    ss << "main - Unable to run Shadow of the Wyrm: " << e.what();
+    log.error(ss.str());
+    
+    return 1;
+  }
   catch(...)
   {
-    log.error("main - Unable to run Shadow of the Wyrm!");
+    log.error("main - Unable to run Shadow of the Wyrm - unknown exception");
     return 1;
   }
 
@@ -193,13 +204,14 @@ int main(int argc, char* argv[])
 
 void run_game(DisplayPtr display, ControllerPtr controller, Settings& settings)
 {
-  cout << "\nLoading Shadow of the Wyrm..." << endl;
-
+  Log& log = Log::instance();
   ShadowOfTheWyrmEngine engine;
 
   // set the default display into the engine
   engine.set_display(display);
   engine.set_controller(controller);
+
+  log.debug("Starting SotW.");
   engine.start(settings);
 
   display->tear_down();

@@ -4,14 +4,15 @@
 #include <boost/regex.hpp>
 #include "CreatureGenerationValues.hpp"
 #include "DisplayTile.hpp"
+#include "Setting.hpp"
 #include "XMLMapReaders.hpp"
 #include "XMLConfigurationReader.hpp"
 
 using namespace std;
 using namespace boost::filesystem;
 
-XMLConfigurationReader::XMLConfigurationReader(const std::string& xml_filename)
-: filename(xml_filename)
+XMLConfigurationReader::XMLConfigurationReader(const string& xml_filename, const string& cr_filename, const string& it_filename)
+: filename(xml_filename), creatures_filename(cr_filename), items_filename(it_filename)
 {
   XML::initialize();
 
@@ -54,10 +55,14 @@ StartingLocationMap XMLConfigurationReader::get_starting_locations()
   return sl_reader.get_starting_locations(starting_locations_node);
 }
 
-pair<CreatureMap, CreatureGenerationValuesMap> XMLConfigurationReader::get_creatures()
+pair<CreatureMap, CreatureGenerationValuesMap> XMLConfigurationReader::get_creatures(const bool force_ascii)
 {
+  XMLNode prev_config = root;
+  initialize_parser(creatures_filename);
   XMLNode creatures_node = XMLUtils::get_next_element_by_local_name(root, "Creatures");
-  pair<CreatureMap, CreatureGenerationValuesMap> creatures = creatures_reader.get_creatures(creatures_node);
+  pair<CreatureMap, CreatureGenerationValuesMap> creatures = creatures_reader.get_creatures(creatures_node, force_ascii);
+  root = prev_config;
+
   return creatures;
 }
 
@@ -68,18 +73,40 @@ SpellMap XMLConfigurationReader::get_spells()
   return spells;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLConfigurationReader::get_items()
+map<string, pair<string, unordered_map<string, Coordinate>>> XMLConfigurationReader::get_spritesheets()
 {
+  XMLNode spritesheets_node = XMLUtils::get_next_element_by_local_name(root, "Spritesheets");
+  map<string, pair<string, unordered_map<string, Coordinate>>> spritesheets = spritesheets_reader.get_spritesheets(spritesheets_node);
+  return spritesheets;
+}
+
+pair<ItemMap, GenerationValuesMap> XMLConfigurationReader::get_items(const bool force_ascii)
+{
+  XMLNode prev_config = root;
+  initialize_parser(items_filename);
   XMLNode items_node = XMLUtils::get_next_element_by_local_name(root, "Items");
-  pair<ItemMap, GenerationValuesMap> items = items_reader.get_items(items_node);
+  pair<ItemMap, GenerationValuesMap> items = items_reader.get_items(items_node, force_ascii);
+  root = prev_config;
+
   return items;
 }
 
-FeatureMap XMLConfigurationReader::get_basic_features()
+FeatureSymbolMap XMLConfigurationReader::get_feature_symbols(const bool force_ascii)
 {
-  XMLNode basic_features_node = XMLUtils::get_next_element_by_local_name(root, "Features");
-  FeatureMap bfm = bf_reader.get_basic_features(basic_features_node);
-  return bfm;
+  XMLNode features_node = XMLUtils::get_next_element_by_local_name(root, "AllFeatures");
+  XMLNode base_features_node = XMLUtils::get_next_element_by_local_name(features_node, "BaseFeatures");
+  FeatureSymbolMap fsm = bf_reader.get_feature_symbols(base_features_node, force_ascii);
+
+  return fsm;
+}
+
+FeatureMap XMLConfigurationReader::get_configurable_features(const bool force_ascii)
+{
+  XMLNode features_node = XMLUtils::get_next_element_by_local_name(root, "AllFeatures");
+  XMLNode config_features_node = XMLUtils::get_next_element_by_local_name(features_node, "ConfigurableFeatures");
+  FeatureMap cfm = cf_reader.get_configurable_features(config_features_node, force_ascii);
+
+  return cfm;
 }
 
 map<string, string> XMLConfigurationReader::get_scripts()
@@ -96,17 +123,17 @@ RaceMap XMLConfigurationReader::get_races()
   return races;
 }
 
-vector<DisplayTile> XMLConfigurationReader::get_tile_info()
+vector<DisplayTile> XMLConfigurationReader::get_tile_info(const bool force_ascii)
 {
   XMLNode tiles_node = XMLUtils::get_next_element_by_local_name(root, "Tiles");
-  vector<DisplayTile> tile_info = tiles_reader.get_tiles(tiles_node);
+  vector<DisplayTile> tile_info = tiles_reader.get_tiles(tiles_node, force_ascii);
   return tile_info;
 }
 
-vector<TrapPtr> XMLConfigurationReader::get_trap_info()
+vector<TrapPtr> XMLConfigurationReader::get_trap_info(const bool force_ascii)
 {
   XMLNode traps_node = XMLUtils::get_next_element_by_local_name(root, "Traps");
-  vector<TrapPtr> trap_info = traps_reader.get_traps(traps_node);
+  vector<TrapPtr> trap_info = traps_reader.get_traps(traps_node, force_ascii);
   return trap_info;
 }
 

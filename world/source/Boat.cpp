@@ -5,7 +5,7 @@ using namespace std;
 Boat::Boat()
 {
   type = ItemType::ITEM_TYPE_BOAT;
-  symbol = '&';
+  symbol.set_symbol('&');
 }
 
 Boat::~Boat()

@@ -14,5 +14,5 @@ class IPillarGenerator
     virtual void generate(MapPtr map, const int y_topleft, const int x_topleft) = 0;
 };
 
-using IPillarGeneratorPtr = std::shared_ptr<IPillarGenerator>;
+using IPillarGeneratorPtr = std::unique_ptr<IPillarGenerator>;
 

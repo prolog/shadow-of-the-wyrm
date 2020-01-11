@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "FeatureGenerator.hpp"
 
 TEST(SW_Engine_Calculators_DoorBreakageCalculator, calculate_pct_chance_breakage)
 {
@@ -7,12 +8,12 @@ TEST(SW_Engine_Calculators_DoorBreakageCalculator, calculate_pct_chance_breakage
   creature->set_strength(str);
 
   DoorBreakageCalculator dbc;
-  DoorPtr wood_door = std::make_shared<Door>();
+  DoorPtr wood_door = FeatureGenerator::generate_door();
   wood_door->set_material_type(MaterialType::MATERIAL_TYPE_WOOD);
 
   EXPECT_EQ(17, dbc.calculate_pct_chance_breakage(creature, wood_door));
 
-  DoorPtr bone_door = std::make_shared<Door>();
+  DoorPtr bone_door = FeatureGenerator::generate_door();
   bone_door->set_material_type(MaterialType::MATERIAL_TYPE_BONE);
 
   EXPECT_EQ(17, dbc.calculate_pct_chance_breakage(creature, bone_door));
@@ -23,7 +24,7 @@ TEST(SW_Engine_Calculators_DoorBreakageCalculator, calculate_pct_chance_breakage
 
   EXPECT_EQ(20, dbc.calculate_pct_chance_breakage(creature, bone_door));
 
-  DoorPtr stone_door = std::make_shared<Door>();
+  DoorPtr stone_door = FeatureGenerator::generate_door();
   stone_door->set_material_type(MaterialType::MATERIAL_TYPE_STONE);
 
   EXPECT_EQ(0, dbc.calculate_pct_chance_breakage(creature, stone_door));
@@ -34,7 +35,7 @@ TEST(SW_Engine_Calculators_DoorBreakageCalculator, calculate_pct_chance_breakage
 
   EXPECT_EQ(10, dbc.calculate_pct_chance_breakage(creature, stone_door));
 
-  DoorPtr iron_door = std::make_shared<Door>();
+  DoorPtr iron_door = FeatureGenerator::generate_door();
   iron_door->set_material_type(MaterialType::MATERIAL_TYPE_IRON);
   
   EXPECT_EQ(0, dbc.calculate_pct_chance_breakage(creature, iron_door));
@@ -45,7 +46,7 @@ TEST(SW_Engine_Calculators_DoorBreakageCalculator, calculate_pct_chance_breakage
 
   EXPECT_EQ(13, dbc.calculate_pct_chance_breakage(creature, iron_door));
 
-  DoorPtr steel_door = std::make_shared<Door>();
+  DoorPtr steel_door = FeatureGenerator::generate_door();
   steel_door->set_material_type(MaterialType::MATERIAL_TYPE_STEEL);
 
   EXPECT_EQ(3, dbc.calculate_pct_chance_breakage(creature, steel_door));

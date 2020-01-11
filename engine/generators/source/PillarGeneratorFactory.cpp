@@ -11,11 +11,11 @@ IPillarGeneratorPtr PillarGeneratorFactory::create_generator(const PillarType pt
   switch(pt)
   {
     case PillarType::PILLAR_TYPE_SQUARE:
-      p_gen = std::make_shared<SquarePillarGenerator>();
+      p_gen = std::make_unique<SquarePillarGenerator>();
       break;
     case PillarType::PILLAR_TYPE_CROSS:
     default:
-      p_gen = std::make_shared<CrossPillarGenerator>();
+      p_gen = std::make_unique<CrossPillarGenerator>();
       break;
   }
 

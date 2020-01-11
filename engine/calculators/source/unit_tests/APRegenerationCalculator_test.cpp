@@ -1,12 +1,14 @@
 #include "gtest/gtest.h"
 #include "AirTile.hpp"
-#include "Bed.hpp"
+#include "Features.hpp"
 
 TEST(SW_Engine_Calculators_APRegenerationCalculator, minutes_per_ap)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   TilePtr tile = std::make_shared<AirTile>();
-  FeaturePtr bed = std::make_shared<Bed>();
+
+  Symbol bed_s('~', Colour::COLOUR_WHITE);
+  FeaturePtr bed = std::make_shared<Bed>(bed_s);
 
   Statistic will(0);
   creature->set_willpower(will);

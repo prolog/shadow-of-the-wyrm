@@ -14,7 +14,7 @@ XMLItemsReader::~XMLItemsReader()
 
 // Gets all the items of the various types and returns them in a map,
 // keyed by their ID (specified in the XML).
-pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& items_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& items_node, const bool force_ascii)
 {
   ItemMap items;
   GenerationValuesMap igv_map;
@@ -25,7 +25,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
 
     if (!amulets_node.is_null())
     {
-      pair<ItemMap, GenerationValuesMap> amulets = get_amulets(amulets_node);
+      pair<ItemMap, GenerationValuesMap> amulets = get_amulets(amulets_node, force_ascii);
       items.insert(amulets.first.begin(), amulets.first.end());
       igv_map.insert(amulets.second.begin(), amulets.second.end());
     }
@@ -34,7 +34,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
     
     if (!armours_node.is_null())
     {
-      pair<ItemMap, GenerationValuesMap> armours = get_armour(armours_node);
+      pair<ItemMap, GenerationValuesMap> armours = get_armour(armours_node, force_ascii);
       items.insert(armours.first.begin(), armours.first.end());
       igv_map.insert(armours.second.begin(), armours.second.end());
     }
@@ -43,7 +43,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
 
     if (!rings_node.is_null())
     {
-      pair<ItemMap, GenerationValuesMap> rings = get_rings(rings_node);
+      pair<ItemMap, GenerationValuesMap> rings = get_rings(rings_node, force_ascii);
       items.insert(rings.first.begin(), rings.first.end());
       igv_map.insert(rings.second.begin(), rings.second.end());
     }
@@ -52,7 +52,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
     
     if (!weapons_node.is_null())
     {
-      pair<ItemMap, GenerationValuesMap> weapons = get_weapons(weapons_node);
+      pair<ItemMap, GenerationValuesMap> weapons = get_weapons(weapons_node, force_ascii);
       items.insert(weapons.first.begin(), weapons.first.end());
       igv_map.insert(weapons.second.begin(), weapons.second.end());
     }
@@ -61,7 +61,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
     
     if (!ranged_weapons_node.is_null())
     {
-      pair<ItemMap, GenerationValuesMap> ranged_weapons = get_ranged_weapons(ranged_weapons_node);
+      pair<ItemMap, GenerationValuesMap> ranged_weapons = get_ranged_weapons(ranged_weapons_node, force_ascii);
       items.insert(ranged_weapons.first.begin(), ranged_weapons.first.end());
       igv_map.insert(ranged_weapons.second.begin(), ranged_weapons.second.end());
     }
@@ -70,7 +70,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
     
     if (!ammunition_node.is_null())
     {
-      pair<ItemMap, GenerationValuesMap> ammunition = get_ammunition(ammunition_node);
+      pair<ItemMap, GenerationValuesMap> ammunition = get_ammunition(ammunition_node, force_ascii);
       items.insert(ammunition.first.begin(), ammunition.first.end());
       igv_map.insert(ammunition.second.begin(), ammunition.second.end());
     }
@@ -79,7 +79,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
     
     if (!food_node.is_null())
     {
-      pair<ItemMap, GenerationValuesMap> food = get_food(food_node);
+      pair<ItemMap, GenerationValuesMap> food = get_food(food_node, force_ascii);
       items.insert(food.first.begin(), food.first.end());
       igv_map.insert(food.second.begin(), food.second.end());
     }
@@ -88,7 +88,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
     
     if (!plants_node.is_null())
     {
-      pair<ItemMap, GenerationValuesMap> plants = get_plants(plants_node);
+      pair<ItemMap, GenerationValuesMap> plants = get_plants(plants_node, force_ascii);
       items.insert(plants.first.begin(), plants.first.end());
       igv_map.insert(plants.second.begin(), plants.second.end());
     }
@@ -97,7 +97,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
     
     if (!boats_node.is_null())
     {
-      pair<ItemMap, GenerationValuesMap> boats = get_boats(boats_node);
+      pair<ItemMap, GenerationValuesMap> boats = get_boats(boats_node, force_ascii);
       items.insert(boats.first.begin(), boats.first.end());
       igv_map.insert(boats.second.begin(), boats.second.end());
     }
@@ -106,7 +106,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
     
     if (!potions_node.is_null())
     {
-      pair<ItemMap, GenerationValuesMap> potions = get_potions(potions_node);
+      pair<ItemMap, GenerationValuesMap> potions = get_potions(potions_node, force_ascii);
       items.insert(potions.first.begin(), potions.first.end());
       igv_map.insert(potions.second.begin(), potions.second.end());
     }
@@ -115,7 +115,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
     
     if (!scrolls_node.is_null())
     {
-      pair<ItemMap, GenerationValuesMap> scrolls = get_scrolls(scrolls_node);
+      pair<ItemMap, GenerationValuesMap> scrolls = get_scrolls(scrolls_node, force_ascii);
       items.insert(scrolls.first.begin(), scrolls.first.end());
       igv_map.insert(scrolls.second.begin(), scrolls.second.end());
     }
@@ -124,7 +124,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
     
     if (!currencies_node.is_null())
     {
-      pair<ItemMap, GenerationValuesMap> currencies = get_currencies(currencies_node);
+      pair<ItemMap, GenerationValuesMap> currencies = get_currencies(currencies_node, force_ascii);
       items.insert(currencies.first.begin(), currencies.first.end());
       igv_map.insert(currencies.second.begin(), currencies.second.end());
     }
@@ -133,7 +133,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
 
     if (!tools_node.is_null())
     {
-      pair<ItemMap, GenerationValuesMap> tools = get_tools(tools_node);
+      pair<ItemMap, GenerationValuesMap> tools = get_tools(tools_node, force_ascii);
       items.insert(tools.first.begin(), tools.first.end());
       igv_map.insert(tools.second.begin(), tools.second.end());
     }
@@ -142,7 +142,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
 
     if (!wands_node.is_null())
     {
-      pair<ItemMap, GenerationValuesMap> wands = get_wands(wands_node);
+      pair<ItemMap, GenerationValuesMap> wands = get_wands(wands_node, force_ascii);
       items.insert(wands.first.begin(), wands.first.end());
       igv_map.insert(wands.second.begin(), wands.second.end());
     }
@@ -151,7 +151,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
 
     if (!spellbooks_node.is_null())
     {
-      pair<ItemMap, GenerationValuesMap> spellbooks = get_spellbooks(spellbooks_node);
+      pair<ItemMap, GenerationValuesMap> spellbooks = get_spellbooks(spellbooks_node, force_ascii);
       items.insert(spellbooks.first.begin(), spellbooks.first.end());
       igv_map.insert(spellbooks.second.begin(), spellbooks.second.end());
     }
@@ -160,7 +160,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
     
     if (!misc_items_node.is_null())
     {
-      std::pair<ItemMap, GenerationValuesMap> misc_items = get_misc_items(misc_items_node);
+      std::pair<ItemMap, GenerationValuesMap> misc_items = get_misc_items(misc_items_node, force_ascii);
       items.insert(misc_items.first.begin(), misc_items.first.end());
       igv_map.insert(misc_items.second.begin(), misc_items.second.end());
     }
@@ -173,7 +173,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
   return item_pair;
 }
 
-std::pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_misc_items(const XMLNode& misc_items_node)
+std::pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_misc_items(const XMLNode& misc_items_node, const bool force_ascii)
 {
   ItemMap misc_items_map;
   GenerationValuesMap igv_map;
@@ -189,7 +189,7 @@ std::pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_misc_items(const XML
       {
         ItemPtr item = std::make_shared<MiscItem>();
         GenerationValues igv;
-        item_reader.parse(item, igv, node);
+        item_reader.parse(item, igv, node, force_ascii);
         misc_items_map.insert(make_pair(item->get_id(), item));  
         igv_map.insert(make_pair(item->get_id(), igv));
       }
@@ -202,7 +202,7 @@ std::pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_misc_items(const XML
   return misc_items;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_amulets(const XMLNode& amulets_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_amulets(const XMLNode& amulets_node, const bool force_ascii)
 {
   pair<ItemMap, GenerationValuesMap> amulets;
   ItemMap amulets_map;
@@ -219,7 +219,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_amulets(const XMLNode& am
         AmuletPtr amulet = std::make_shared<Amulet>();
         
         GenerationValues igv;
-        amulet_reader.parse(amulet, igv, node);
+        amulet_reader.parse(amulet, igv, node, force_ascii);
         amulets_map.insert(make_pair(amulet->get_id(), amulet));
         igv_map.insert(make_pair(amulet->get_id(), igv));
       }
@@ -231,7 +231,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_amulets(const XMLNode& am
   return amulets;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_armour(const XMLNode& armours_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_armour(const XMLNode& armours_node, const bool force_ascii)
 {
   pair<ItemMap, GenerationValuesMap> armour;
   ItemMap armour_map;
@@ -247,7 +247,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_armour(const XMLNode& arm
       {
         ArmourPtr armour = std::make_shared<Armour>();
         GenerationValues igv;
-        armour_reader.parse(armour, igv, node);
+        armour_reader.parse(armour, igv, node, force_ascii);
         armour_map.insert(make_pair(armour->get_id(), armour));
         igv_map.insert(make_pair(armour->get_id(), igv));
       }
@@ -259,7 +259,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_armour(const XMLNode& arm
   return armour;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_rings(const XMLNode& rings_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_rings(const XMLNode& rings_node, const bool force_ascii)
 {
   pair<ItemMap, GenerationValuesMap> rings;
   ItemMap rings_map;
@@ -275,7 +275,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_rings(const XMLNode& ring
       {
         RingPtr ring = std::make_shared<Ring>();
         GenerationValues igv;
-        ring_reader.parse(ring, igv, node);
+        ring_reader.parse(ring, igv, node, force_ascii);
         rings_map.insert(make_pair(ring->get_id(), ring));
         igv_map.insert(make_pair(ring->get_id(), igv));
       }
@@ -287,7 +287,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_rings(const XMLNode& ring
   return rings;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_weapons(const XMLNode& weapons_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_weapons(const XMLNode& weapons_node, const bool force_ascii)
 {
   pair<ItemMap, GenerationValuesMap> weapons;
   ItemMap weapons_map;
@@ -301,7 +301,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_weapons(const XMLNode& we
     {
       MeleeWeaponPtr weapon = std::make_shared<MeleeWeapon>();
       GenerationValues igv;
-      weapons_reader.parse(weapon, igv, node);
+      weapons_reader.parse(weapon, igv, node, force_ascii);
       weapons_map.insert(make_pair(weapon->get_id(), weapon));
       igv_map.insert(make_pair(weapon->get_id(), igv));
     }
@@ -312,7 +312,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_weapons(const XMLNode& we
   return weapons;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ranged_weapons(const XMLNode& ranged_weapons_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ranged_weapons(const XMLNode& ranged_weapons_node, const bool force_ascii)
 {
   pair<ItemMap, GenerationValuesMap> ranged_weapons;
   ItemMap weapons_map;
@@ -326,7 +326,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ranged_weapons(const XMLN
     {
       RangedWeaponPtr ranged_weapon = std::make_shared<RangedWeapon>();
       GenerationValues igv;
-      weapons_reader.parse(ranged_weapon, igv, node);
+      weapons_reader.parse(ranged_weapon, igv, node, force_ascii);
       weapons_map.insert(make_pair(ranged_weapon->get_id(), ranged_weapon));
       igv_map.insert(make_pair(ranged_weapon->get_id(), igv));
     }
@@ -337,7 +337,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ranged_weapons(const XMLN
   return ranged_weapons;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ammunition(const XMLNode& ammunition_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ammunition(const XMLNode& ammunition_node, const bool force_ascii)
 {
   pair<ItemMap, GenerationValuesMap> ammunition;
   ItemMap ammunition_map;
@@ -351,7 +351,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ammunition(const XMLNode&
     {
       WeaponPtr ammunition = std::make_shared<Ammunition>();
       GenerationValues igv;
-      ammunition_reader.parse(ammunition, igv, node);
+      ammunition_reader.parse(ammunition, igv, node, force_ascii);
       ammunition_map.insert(make_pair(ammunition->get_id(), ammunition));
       igv_map.insert(make_pair(ammunition->get_id(), igv));
     }
@@ -362,7 +362,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ammunition(const XMLNode&
   return ammunition;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_food(const XMLNode& food_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_food(const XMLNode& food_node, const bool force_ascii)
 {
   pair<ItemMap, GenerationValuesMap> food;
   ItemMap food_map;
@@ -376,7 +376,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_food(const XMLNode& food_
     {
       FoodPtr food = std::make_shared<Food>();
       GenerationValues igv;
-      food_reader.parse(food, igv, node);
+      food_reader.parse(food, igv, node, force_ascii);
       food_map.insert(make_pair(food->get_id(), food));
       igv_map.insert(make_pair(food->get_id(), igv));
     }
@@ -387,7 +387,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_food(const XMLNode& food_
   return food;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_plants(const XMLNode& plants_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_plants(const XMLNode& plants_node, const bool force_ascii)
 {
   pair<ItemMap, GenerationValuesMap> plants;
   ItemMap plants_map;
@@ -401,7 +401,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_plants(const XMLNode& pla
     {
       PlantPtr plant = std::make_shared<Plant>();
       GenerationValues gv;
-      plant_reader.parse(plant, gv, node);
+      plant_reader.parse(plant, gv, node, force_ascii);
       plants_map.insert(make_pair(plant->get_id(), plant));
       igv_map.insert(make_pair(plant->get_id(), gv));
     }
@@ -412,7 +412,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_plants(const XMLNode& pla
   return plants;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_boats(const XMLNode& boats_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_boats(const XMLNode& boats_node, const bool force_ascii)
 {
   pair<ItemMap, GenerationValuesMap> boats;
   ItemMap boats_map;
@@ -426,7 +426,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_boats(const XMLNode& boat
     {
       BoatPtr boat = std::make_shared<Boat>();
       GenerationValues igv;
-      boat_reader.parse(boat, igv, node);
+      boat_reader.parse(boat, igv, node, force_ascii);
       boats_map.insert(make_pair(boat->get_id(), boat));
       igv_map.insert(make_pair(boat->get_id(), igv));
     }
@@ -437,7 +437,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_boats(const XMLNode& boat
   return boats;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_potions(const XMLNode& potions_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_potions(const XMLNode& potions_node, const bool force_ascii)
 {
   pair<ItemMap, GenerationValuesMap> potions;
   ItemMap potions_map;
@@ -451,7 +451,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_potions(const XMLNode& po
     {
       PotionPtr potion = std::make_shared<Potion>();
       GenerationValues igv;
-      potion_reader.parse(potion, igv, node);
+      potion_reader.parse(potion, igv, node, force_ascii);
       potions_map.insert(make_pair(potion->get_id(), potion));
       igv_map.insert(make_pair(potion->get_id(), igv));
     }
@@ -462,7 +462,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_potions(const XMLNode& po
   return potions;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_scrolls(const XMLNode& scrolls_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_scrolls(const XMLNode& scrolls_node, const bool force_ascii)
 {
   pair<ItemMap, GenerationValuesMap> scrolls;
   ItemMap scrolls_map;
@@ -476,7 +476,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_scrolls(const XMLNode& sc
     {
       ScrollPtr scroll = std::make_shared<Scroll>();
       GenerationValues igv;
-      scroll_reader.parse(scroll, igv, node);
+      scroll_reader.parse(scroll, igv, node, force_ascii);
       scrolls_map.insert(make_pair(scroll->get_id(), scroll));
       igv_map.insert(make_pair(scroll->get_id(), igv));
     }
@@ -487,7 +487,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_scrolls(const XMLNode& sc
   return scrolls;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_currencies(const XMLNode& currencies_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_currencies(const XMLNode& currencies_node, const bool force_ascii)
 {
   pair<ItemMap, GenerationValuesMap> currencies;
   ItemMap currencies_map;
@@ -501,7 +501,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_currencies(const XMLNode&
     {
       CurrencyPtr currency = std::make_shared<Currency>();
       GenerationValues igv;
-      item_reader.parse(currency, igv, node);
+      item_reader.parse(currency, igv, node, force_ascii);
       currencies_map.insert(make_pair(currency->get_id(), currency));
       igv_map.insert(make_pair(currency->get_id(), igv));
     }
@@ -512,7 +512,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_currencies(const XMLNode&
   return currencies;;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_tools(const XMLNode& tools_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_tools(const XMLNode& tools_node, const bool force_ascii)
 {
   pair<ItemMap, GenerationValuesMap> tools;
   ItemMap tools_map;
@@ -526,7 +526,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_tools(const XMLNode& tool
     {
       ToolPtr tool = std::make_shared<Tool>();
       GenerationValues igv;
-      tool_reader.parse(tool, igv, node);
+      tool_reader.parse(tool, igv, node, force_ascii);
       tools_map.insert(make_pair(tool->get_id(), tool));
       igv_map.insert(make_pair(tool->get_id(), igv));
     }
@@ -537,7 +537,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_tools(const XMLNode& tool
   return tools;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_wands(const XMLNode& wands_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_wands(const XMLNode& wands_node, const bool force_ascii)
 {
   pair<ItemMap, GenerationValuesMap> wands;
   ItemMap wands_map;
@@ -551,7 +551,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_wands(const XMLNode& wand
     {
       WandPtr wand = std::make_shared<Wand>();
       GenerationValues igv;
-      wand_reader.parse(wand, igv, node);
+      wand_reader.parse(wand, igv, node, force_ascii);
       wands_map.insert(make_pair(wand->get_id(), wand));
       igv_map.insert(make_pair(wand->get_id(), igv));
     }
@@ -562,7 +562,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_wands(const XMLNode& wand
   return wands;
 }
 
-pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_spellbooks(const XMLNode& spellbooks_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_spellbooks(const XMLNode& spellbooks_node, const bool force_ascii)
 {
   pair<ItemMap, GenerationValuesMap> spellbooks;
   ItemMap spellbook_map;
@@ -576,7 +576,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_spellbooks(const XMLNode&
     {
       SpellbookPtr book = std::make_shared<Spellbook>();
       GenerationValues igv;
-      spellbook_reader.parse(book, igv, node);
+      spellbook_reader.parse(book, igv, node, force_ascii);
       spellbook_map.insert(make_pair(book->get_id(), book));
       igv_map.insert(make_pair(book->get_id(), igv));
     }

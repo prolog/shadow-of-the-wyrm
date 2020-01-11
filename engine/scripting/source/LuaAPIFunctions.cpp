@@ -51,6 +51,7 @@
 #include "TextMessages.hpp"
 #include "TileGenerator.hpp"
 #include "Tool.hpp"
+#include "WorldWeatherUpdater.hpp"
 
 using namespace std;
 
@@ -184,8 +185,9 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_object_to_creature", add_object_to_creature);
   lua_register(L, "add_object_to_tile", add_object_to_tile);
   lua_register(L, "add_key_to_player_tile", add_key_to_player_tile);
-  lua_register(L, "add_basic_feature_to_map", add_basic_feature_to_map);
+  lua_register(L, "add_configurable_feature_to_map", add_configurable_feature_to_map);
   lua_register(L, "add_feature_to_map", add_feature_to_map);
+  lua_register(L, "add_all_base_features_to_map", add_all_base_features_to_map);
   lua_register(L, "add_feature_to_player_tile", add_feature_to_player_tile);
   lua_register(L, "set_feature_additional_property", set_feature_additional_property);
   lua_register(L, "mark_quest_completed", mark_quest_completed);
@@ -226,6 +228,13 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_intrinsic_resist", set_creature_intrinsic_resist);
   lua_register(L, "set_creature_speed", set_creature_speed);
   lua_register(L, "get_creature_speed", get_creature_speed);
+  lua_register(L, "set_creature_str", set_creature_str);
+  lua_register(L, "set_creature_dex", set_creature_dex);
+  lua_register(L, "set_creature_agi", set_creature_agi);
+  lua_register(L, "set_creature_hea", set_creature_hea);
+  lua_register(L, "set_creature_int", set_creature_int);
+  lua_register(L, "set_creature_wil", set_creature_wil);
+  lua_register(L, "set_creature_cha", set_creature_cha);
   lua_register(L, "get_creature_yx", get_creature_yx);
   lua_register(L, "get_creature_id", get_creature_id);
   lua_register(L, "get_creature_ids", get_creature_ids);
@@ -297,6 +306,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_item_value", get_item_value);
   lua_register(L, "select_item", select_item);
   lua_register(L, "set_hostility", set_hostility);
+  lua_register(L, "is_creature_hostile", is_creature_hostile);
   lua_register(L, "teleport", teleport);
   lua_register(L, "get_creature_description", get_creature_description);
   lua_register(L, "get_creature_description_sids", get_creature_description_sids);
@@ -383,6 +393,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_id", set_creature_id);
   lua_register(L, "add_all_items_to_player_tile", add_all_items_to_player_tile);
   lua_register(L, "get_primordial_castings", get_primordial_castings);
+  lua_register(L, "creature_exists", creature_exists);
+  lua_register(L, "set_weather", set_weather);
 }
 
 // Lua API helper functions
@@ -1112,38 +1124,62 @@ int add_key_to_player_tile(lua_State* ls)
   return 1;
 }
 
-int add_basic_feature_to_map(lua_State* ls)
+int add_configurable_feature_to_map(lua_State* ls)
 {
   bool added = false;
+  int num_args = lua_gettop(ls);
+  Game& game = Game::instance();
+  FeaturePtr feature;
+  string map_id;
+  Coordinate c(0, 0);
+  bool created_feature = false;
 
-  if ((lua_gettop(ls) == 4) && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4))
+  // Create an ad-hoc configurable feautre
+  if (num_args == 7 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4) && lua_isnumber(ls, 5) && lua_isnumber(ls, 6) && lua_isstring(ls, 7))
   {
-    Game& game = Game::instance();
-    string basic_feature_id = lua_tostring(ls, 1);
-    Coordinate c = make_pair(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
-    string map_id = lua_tostring(ls, 4);
+    string symbol = lua_tostring(ls, 1);
+    Colour colour = static_cast<Colour>(lua_tointeger(ls, 2));
+    MaterialType material = static_cast<MaterialType>(lua_tointeger(ls, 3));
+    string desc_sid = lua_tostring(ls, 4);
+    c = make_pair(lua_tointeger(ls, 5), lua_tointeger(ls, 6));
+    map_id = lua_tostring(ls, 7);
 
+    feature = FeatureGenerator::generate_configurable_feature(material, Symbol(symbol[0], colour), desc_sid);
+    created_feature = (feature != nullptr);
+  }
+  // Reference a configurable feature from the game XML.
+  else if (num_args == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4))
+  {
+    string config_feature_id = lua_tostring(ls, 1);
+    c = make_pair(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
+    map_id = lua_tostring(ls, 4);
+
+    feature = FeatureGenerator::generate_configurable_feature(config_feature_id);
+    created_feature = (feature != nullptr);
+  }
+
+  // Create a feature if we've read a map id, coordinate, etc.
+  if (!map_id.empty())
+  {
     MapPtr map = game.get_map_registry_ref().get_map(map_id);
-
     if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
     {
-      FeaturePtr feature = FeatureGenerator::generate_basic_feature(basic_feature_id);
-
       if (feature != nullptr)
       {
-        TilePtr bf_tile = map->at(c);
+        TilePtr cf_tile = map->at(c);
 
-        if (bf_tile != nullptr)
+        if (cf_tile != nullptr)
         {
-          bf_tile->set_feature(feature);
+          cf_tile->set_feature(feature);
           added = true;
         }
       }
     }
   }
-  else
+
+  if (!created_feature)
   {
-    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_basic_feature_to_map");
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_configurable_feature_to_map or could not create feature");
   }
 
   lua_pushboolean(ls, added);
@@ -1258,6 +1294,59 @@ int add_feature_to_map(lua_State* ls)
   }
 
   lua_pushboolean(ls, feature_added);
+  return 1;
+}
+
+// This function isn't intended to be used in-game - it's meant for
+// mass debugging of features.
+int add_all_base_features_to_map(lua_State* ls)
+{
+  int num_added = 0;
+
+  if (lua_gettop(ls) == 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
+  {
+    int y = lua_tointeger(ls, 1);
+    int x = lua_tointeger(ls, 2);
+
+    FeatureSymbolMap fsm = FeatureGenerator::get_feature_symbol_map();
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      Dimensions d = map->size();
+      int max_y = d.get_y();
+      int max_x = d.get_x();
+
+      for (auto f_pair : fsm)
+      {
+        ClassIdentifier cid = f_pair.first;
+        FeaturePtr f = FeatureGenerator::create_feature(cid);
+
+        if (x >= max_x)
+        {
+          x = 0;
+          y++;
+        }
+
+        if (y < max_y)
+        {
+          if (f != nullptr)
+          {
+            map->at(y, x)->set_feature(f);
+
+            x++;
+            num_added++;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to add_all_base_features_to_map");
+  }
+
+  lua_pushinteger(ls, num_added);
   return 1;
 }
 // Mark a quest as completed.
@@ -2433,6 +2522,160 @@ int get_creature_speed(lua_State* ls)
 
   lua_pushnumber(ls, speed);
   return 1;
+}
+
+int set_creature_str(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_strength_ref().set_base_current(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_str");
+  }
+
+  return 0;
+}
+
+int set_creature_dex(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_dexterity_ref().set_base_current(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_dex");
+  }
+
+  return 0;
+}
+
+int set_creature_agi(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_agility_ref().set_base_current(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_agi");
+  }
+
+  return 0;
+}
+
+int set_creature_hea(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_health_ref().set_base_current(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_hea");
+  }
+
+  return 0;
+}
+
+int set_creature_int(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_intelligence_ref().set_base_current(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_int");
+  }
+
+  return 0;
+}
+
+int set_creature_wil(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_willpower_ref().set_base_current(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_wil");
+  }
+
+  return 0;
+}
+
+int set_creature_cha(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_charisma_ref().set_base_current(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_cha");
+  }
+
+  return 0;
 }
 
 // Return the y and x coordinates for the given creature on the current map.
@@ -4581,6 +4824,29 @@ int set_hostility(lua_State* ls)
   return 0;
 }
 
+int is_creature_hostile(lua_State* ls)
+{
+  bool is_hostile = true;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string hostile_to = lua_tostring(ls, 2);
+    CreaturePtr creature_to_check = get_creature(lua_tostring(ls, 1));
+
+    if (creature_to_check != nullptr)
+    {
+      is_hostile = creature_to_check->hostile_to(hostile_to);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to is_creature_hostile");
+  }
+
+  lua_pushboolean(ls, is_hostile);
+  return 1;
+}
+
 int teleport(lua_State* ls)
 {
   bool teleported = false;
@@ -5247,7 +5513,7 @@ int get_creature_colour(lua_State* ls)
 
     if (creature != nullptr)
     {
-      colour = static_cast<int>(creature->get_colour());
+      colour = static_cast<int>(creature->get_symbol().get_colour());
     }
   }
   else
@@ -5281,7 +5547,7 @@ int set_creature_colour(lua_State* ls)
 
       if (creature != nullptr)
       {
-        creature->set_colour(new_colour);
+        creature->get_symbol_ref().set_colour(new_colour);
       }
     }
   }
@@ -7600,4 +7866,56 @@ int get_primordial_castings(lua_State* ls)
 
   lua_pushnumber(ls, castings);
   return 1;
+}
+
+int creature_exists(lua_State* ls)
+{
+  bool creature_exists = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      creature_exists = true;
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to creature_exists");
+  }
+
+  lua_pushboolean(ls, creature_exists);
+  return 1;
+}
+
+int set_weather(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    MapPtr map = Game::instance().get_current_map();
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+    int wind_speed = lua_tointeger(ls, 2);
+
+    if (creature != nullptr && map != nullptr)
+    {
+      TilePtr creature_tile = MapUtils::get_tile_for_creature(map, creature);
+      WeatherPtr w = MapUtils::get_weather(map, creature_tile);
+
+      if (w != nullptr)
+      {
+        w->set_wind_speed(wind_speed);
+
+        WorldWeatherUpdater wwu;
+        wwu.set_weather(map, creature_tile, *w);
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_weather");
+  }
+
+  return 0;
 }

@@ -3,10 +3,11 @@
 #include "CombatManager.hpp"
 #include "CoordUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
-#include "Game.hpp"
-#include "HostilityManager.hpp"
 #include "DisplayTile.hpp"
 #include "EffectFactory.hpp"
+#include "Game.hpp"
+#include "HostilityManager.hpp"
+#include "MapUtils.hpp"
 #include "SpellShapeProcessor.hpp"
 #include "TileDamageProcessorFactory.hpp"
 
@@ -54,7 +55,7 @@ bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vect
     Coordinate coord = ct_pair.first;
     TilePtr tile = ct_pair.second;
 
-    bool damage_identified = apply_damage(caster, tile, spell, am);
+    bool damage_identified = apply_damage(caster, coord, tile, spell, am);
     bool effect_identified = apply_effect(effect, caster, coord, tile, spell, effect_status, am);
 
     if ((damage_identified || effect_identified) && !spell_identified)
@@ -67,7 +68,7 @@ bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vect
 }
 
 // Apply a spell's damage to a particular tile.
-bool SpellShapeProcessor::apply_damage(CreaturePtr caster, TilePtr tile, const Spell& spell, ActionManager * const am)
+bool SpellShapeProcessor::apply_damage(CreaturePtr caster, const Coordinate& c, TilePtr tile, const Spell& spell, ActionManager * const am)
 {
   // A spell can be identified if the creature can see its damage type.
   // So, evoking a wand of frost, for example, identifies it.  Evoking
@@ -102,12 +103,16 @@ bool SpellShapeProcessor::apply_damage(CreaturePtr caster, TilePtr tile, const S
   // Next, apply the damage to any affected items on the tile.
   if (tile && spell.get_has_damage())
   {
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+
     TileDamageProcessorFactory tdpf;
     TileDamageProcessorPtr dam_proc = tdpf.create_tile_damage_processor(spell.get_damage().get_damage_type());
 
     if (dam_proc != nullptr)
     {
       dam_proc->process(tile, caster);
+      MapUtils::anger_shopkeeper_if_necessary(c, current_map, caster);
     }
   }
 

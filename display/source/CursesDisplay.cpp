@@ -30,6 +30,11 @@ uint CursesDisplay::TERMINAL_MAX_COLS = 80;
 const int CURSES_NUM_BASE_COLOURS = 8;
 const int CURSES_NUM_TOTAL_COLOURS = 16;
 
+void CursesDisplay::set_spritesheets(const map<string, pair<string, unordered_map<string, Coordinate>>>& spritesheets)
+{
+  // Curses doesn't use sprites.
+}
+
 // Assumption: screens is empty (prototype object), and so this is safe.
 Display* CursesDisplay::clone()
 {
@@ -461,7 +466,7 @@ void CursesDisplay::draw_coordinate(const DisplayTile& display_tile, const unsig
 
   // Maps are always drawn on ncurses' stdscr.
   enable_colour(colour, stdscr);
-  mvprintw(terminal_row, terminal_col, "%c", display_tile.get_symbol());
+  mvprintw(terminal_row, terminal_col, "%c", display_tile.get_symbol().get_symbol());
   disable_colour(colour, stdscr);
 }
 
@@ -546,11 +551,18 @@ void CursesDisplay::display_text_component(WINDOW* window, int* row, int* col, T
   if (tc != nullptr)
   {
     vector<pair<string, Colour>> current_text = tc->get_text();
+    vector<Symbol> symbols = tc->get_symbols();
 
     for (auto& text_line : current_text)
     {  
       string cur_text = text_line.first;
+
       boost::replace_all(cur_text, "%", "%%");
+
+      for (const Symbol& s : symbols)
+      {
+        boost::replace_first(cur_text, "%%s", Char::to_string(s.get_symbol()));
+      }
 
       enable_colour(static_cast<int>(text_line.second), window);
       mvwprintw(window, *row, cur_col, cur_text.c_str());

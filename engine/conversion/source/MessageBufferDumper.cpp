@@ -31,7 +31,7 @@ string MessageBufferDumper::get_messages(const size_t num_to_dump) const
 
   for (size_t i = 0; i < num; i++)
   {
-    string msg = mb.get_message(i);
+    string msg = mb.get_message(i).first;
     ss << msg << endl;
   }
 

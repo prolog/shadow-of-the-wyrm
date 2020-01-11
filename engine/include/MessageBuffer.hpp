@@ -1,5 +1,6 @@
 #pragma once
 #include <deque>
+#include "Colours.hpp"
 #include "ISerializable.hpp"
 
 // Stores message history up to a particular number of messages, rather
@@ -13,8 +14,10 @@ class MessageBuffer : public ISerializable
     size_t size() const;
     size_t capacity() const;
 
-    void add_message(const std::string& new_message);
-    std::string get_message(const size_t pos) const;
+    void add_message(const std::string& new_message, const Colour colour);
+    std::pair<std::string, Colour> get_message(const size_t pos) const;
+    std::deque<std::pair<std::string, Colour>> get_messages(const size_t num_msgs) const;
+
     void clear();
 
     bool serialize(std::ostream& stream) const override;
@@ -22,7 +25,7 @@ class MessageBuffer : public ISerializable
     bool operator==(const MessageBuffer& mb) const;
 
   protected:
-    std::deque<std::string> messages;
+    std::deque<std::pair<std::string, Colour>> messages;
     size_t max_messages;
     static const size_t DEFAULT_MAX_BUFFER_SIZE;
 

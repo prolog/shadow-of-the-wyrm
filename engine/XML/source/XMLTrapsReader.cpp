@@ -1,8 +1,9 @@
 #include "XMLTrapsReader.hpp"
+#include "FeatureGenerator.hpp"
 
 using namespace std;
 
-vector<TrapPtr> XMLTrapsReader::get_traps(const XMLNode& xml_config_traps_node)
+vector<TrapPtr> XMLTrapsReader::get_traps(const XMLNode& xml_config_traps_node, const bool force_ascii)
 {
   vector<TrapPtr> traps;
 
@@ -10,10 +11,10 @@ vector<TrapPtr> XMLTrapsReader::get_traps(const XMLNode& xml_config_traps_node)
   {
     vector<XMLNode> trap_nodes = XMLUtils::get_elements_by_local_name(xml_config_traps_node, "Trap");
 
-    for (const auto& xml_tile : trap_nodes)
+    for (const auto& xml_trap : trap_nodes)
     {
-      TrapPtr trap = std::make_shared<Trap>();
-      parse_trap(xml_tile, trap);
+      TrapPtr trap = FeatureGenerator::create_trap();
+      parse_trap(xml_trap, trap, force_ascii);
 
       traps.push_back(trap);
     }
@@ -23,16 +24,14 @@ vector<TrapPtr> XMLTrapsReader::get_traps(const XMLNode& xml_config_traps_node)
 }
 
 // Takes in the "Trap" node and sets the details
-void XMLTrapsReader::parse_trap(const XMLNode& trap_node, TrapPtr trap)
+void XMLTrapsReader::parse_trap(const XMLNode& trap_node, TrapPtr trap, const bool force_ascii)
 {
   if (!trap_node.is_null() && trap != nullptr)
   {
     string trap_id = XMLUtils::get_attribute_value(trap_node, "id");
     string description_sid = XMLUtils::get_child_node_value(trap_node, "DescriptionSID");
     string trigger_message_sid = XMLUtils::get_child_node_value(trap_node, "TriggerMessageSID");
-    string trigger_char = XMLUtils::get_child_node_value(trap_node, "TriggerSymbol");
     string player_damage_message_sid = XMLUtils::get_child_node_value(trap_node, "PlayerDamageMessageSID");
-    Colour colour = static_cast<Colour>(XMLUtils::get_child_node_int_value(trap_node, "Colour"));
     string item_id = XMLUtils::get_child_node_value(trap_node, "Item");
     EffectType effect = static_cast<EffectType>(XMLUtils::get_child_node_int_value(trap_node, "Effect"));
 
@@ -51,10 +50,13 @@ void XMLTrapsReader::parse_trap(const XMLNode& trap_node, TrapPtr trap)
     trap->set_description_sid(description_sid);
     trap->set_trigger_message_sid(trigger_message_sid);
 
-    if (!trigger_char.empty())
-    {
-      trap->set_trigger_symbol(trigger_char.at(0));
-    }
+    XMLNode trigger_node = XMLUtils::get_next_element_by_local_name(trap_node, "Trigger");
+    Symbol trigger_symbol('?', Colour::COLOUR_WHITE);
+    parse_symbol(trigger_symbol, trigger_node, force_ascii);
+    trap->set_trigger_symbol(trigger_symbol);
+
+    Colour colour = static_cast<Colour>(XMLUtils::get_child_node_int_value(trigger_node, "Colour"));
+    trap->set_colour(colour);
 
     trap->set_player_damage_message_sid(player_damage_message_sid);
     trap->set_colour(colour);

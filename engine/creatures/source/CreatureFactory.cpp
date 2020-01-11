@@ -185,39 +185,38 @@ CreaturePtr CreatureFactory::create_by_creature_id
 // race/class, with all the XML-specified values as well.
 void CreatureFactory::revert_to_original_configuration_values(CreaturePtr creature, const Creature& creature_instance, DecisionStrategyPtr template_decision_strategy)
 {
-    creature->set_colour(creature_instance.get_colour());
-    creature->set_symbol(creature_instance.get_symbol());
-    creature->set_short_description_sid(creature_instance.get_short_description_sid());
-    creature->set_description_sid(creature_instance.get_description_sid());
-    creature->set_text_details_sid(creature_instance.get_text_details_sid());
-    creature->set_speech_text_sid(creature_instance.get_speech_text_sid());
-    creature->set_breathes(creature_instance.get_base_breathes());
-    creature->set_decision_strategy(template_decision_strategy);
-    creature->set_level(creature_instance.get_level());
-    creature->set_base_damage(creature_instance.get_base_damage());
-    creature->set_base_evade(creature_instance.get_base_evade());
-    creature->set_base_soak(creature_instance.get_base_soak());
-    creature->set_speed(creature_instance.get_speed());
-    creature->set_additional_properties_map(creature_instance.get_additional_properties_map());
-    creature->set_spell_knowledge(creature_instance.get_spell_knowledge());
-    creature->set_event_scripts(creature_instance.get_event_scripts());
+  creature->set_symbol(creature_instance.get_symbol());
+  creature->set_short_description_sid(creature_instance.get_short_description_sid());
+  creature->set_description_sid(creature_instance.get_description_sid());
+  creature->set_text_details_sid(creature_instance.get_text_details_sid());
+  creature->set_speech_text_sid(creature_instance.get_speech_text_sid());
+  creature->set_breathes(creature_instance.get_base_breathes());
+  creature->set_decision_strategy(template_decision_strategy);
+  creature->set_level(creature_instance.get_level());
+  creature->set_base_damage(creature_instance.get_base_damage());
+  creature->set_base_evade(creature_instance.get_base_evade());
+  creature->set_base_soak(creature_instance.get_base_soak());
+  creature->set_speed(creature_instance.get_speed());
+  creature->set_additional_properties_map(creature_instance.get_additional_properties_map());
+  creature->set_spell_knowledge(creature_instance.get_spell_knowledge());
+  creature->set_event_scripts(creature_instance.get_event_scripts());
 
-    // Merge the instance modifiers in.
-    auto instance_modifiers = creature_instance.get_modifiers();
-    auto& cr_mods = creature->get_modifiers_ref(); 
-    for (auto& im_pair : instance_modifiers)
-    {
-      cr_mods[im_pair.first] = im_pair.second;
-    }
+  // Merge the instance modifiers in.
+  auto instance_modifiers = creature_instance.get_modifiers();
+  auto& cr_mods = creature->get_modifiers_ref(); 
+  for (auto& im_pair : instance_modifiers)
+  {
+    cr_mods[im_pair.first] = im_pair.second;
+  }
 
-    // Merge the instance statuses in.  Some races will have
-    // statuses set: birds fly, spirits are incorporeal, etc.
-    auto instance_statuses = creature_instance.get_statuses();
-    auto& cr_statuses = creature->get_statuses_ref();
-    for (auto& cs_pair : cr_statuses)
-    {
-      cr_statuses[cs_pair.first] = cs_pair.second;
-    }
+  // Merge the instance statuses in.  Some races will have
+  // statuses set: birds fly, spirits are incorporeal, etc.
+  auto instance_statuses = creature_instance.get_statuses();
+  auto& cr_statuses = creature->get_statuses_ref();
+  for (auto& cs_pair : cr_statuses)
+  {
+    cr_statuses[cs_pair.first] = cs_pair.second;
+  }
 }
 
 CreaturePtr CreatureFactory::create_by_race_and_class
@@ -331,7 +330,19 @@ void CreatureFactory::setup_player(CreaturePtr player, ControllerPtr controller)
 {
   if (player != nullptr)
   {
+    const CreatureMap& creatures = Game::instance().get_creatures_ref();
+
     player->set_is_player(true, controller);
+
+    // Set this after because the above call defaults some things
+    // that need to be overwritten by the game configuration.
+    auto pl_cr_it = creatures.find(CreatureID::CREATURE_ID_PLAYER);
+
+    if (pl_cr_it != creatures.end())
+    {
+      player->set_symbol(pl_cr_it->second->get_symbol());
+    }
+
     player->set_description_sid(TextKeys::YOU);
     player->set_short_description_sid(TextKeys::YOU);
     player->set_text_details_sid(PlayerTextKeys::PLAYER_TEXT_DETAILS_SID);

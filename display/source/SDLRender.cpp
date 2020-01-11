@@ -48,10 +48,6 @@ void SDLRender::render_text(SDLCursorLocation& cursor_location, SDL_Renderer* re
 {
   char display_c = c;
 
-  SDL_Rect font_clip;
-  int glyph_height = display_params.get_glyph_height();
-  int glyph_width = display_params.get_glyph_width();
-
   // Look up the letter
   if (c < 0 || c > display_params.get_num_glyphs())
   {
@@ -59,6 +55,19 @@ void SDLRender::render_text(SDLCursorLocation& cursor_location, SDL_Renderer* re
   }
 
   std::pair<int, int> ss_coords = get_glyph_location_from_spritesheet(display_c);
+  draw_glyph(cursor_location, renderer, text_spritesheet, texture, ss_coords, col, row, fg, bg);
+}
+
+void SDLRender::render_glyph(SDLCursorLocation& cursor_location, SDL_Renderer* renderer, SDL_Texture* spritesheet, SDL_Texture* texture, const int row, const int col, const int spritesheet_y, const int spritesheet_x, const SDL_Color& fg, const SDL_Color& bg)
+{
+  draw_glyph(cursor_location, renderer, spritesheet, texture, make_pair(spritesheet_y, spritesheet_x), col, row, fg, bg);
+}
+
+void SDLRender::draw_glyph(SDLCursorLocation& cursor_location, SDL_Renderer* renderer, SDL_Texture* spritesheet, SDL_Texture* texture, const pair<int, int>& ss_coords, const int col, const int row, const SDL_Color& fg, const SDL_Color& bg)
+{
+  SDL_Rect font_clip;
+  int glyph_height = display_params.get_glyph_height();
+  int glyph_width = display_params.get_glyph_width();
 
   // Set the proper coords
   font_clip.y = ss_coords.first * glyph_height;
@@ -69,7 +78,7 @@ void SDLRender::render_text(SDLCursorLocation& cursor_location, SDL_Renderer* re
   int render_x = col * glyph_width;
   int render_y = row * glyph_height;
 
-  SDL_Rect dst_rect = {0, 0, 0, 0};
+  SDL_Rect dst_rect = { 0, 0, 0, 0 };
 
   dst_rect.y = row * glyph_height;
   dst_rect.x = col * glyph_width;
@@ -84,7 +93,7 @@ void SDLRender::render_text(SDLCursorLocation& cursor_location, SDL_Renderer* re
   cursor_location.incr();
 
   // Render the text.
-  render_spritesheet(render_y, render_x, cursor_location, renderer, text_spritesheet, texture, &font_clip, &dst_rect, fg);
+  render_spritesheet(render_y, render_x, cursor_location, renderer, spritesheet, texture, &font_clip, &dst_rect, fg);
 }
 
 void SDLRender::fill_area(SDL_Renderer* renderer, SDL_Texture* target_texture, SDL_Rect* dst_rect, const SDL_Color& colour)

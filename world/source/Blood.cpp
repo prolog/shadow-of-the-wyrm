@@ -49,8 +49,6 @@ void Blood::initialize_litres_by_size_map()
 {
   static_assert(CreatureSize::CREATURE_SIZE_LAST == CreatureSize(6), "Creature size needs to be added to map containing litres of blood by size.");
 
-  litres_by_size_map.empty();
-
   litres_by_size_map = std::unordered_map<CreatureSize, float>{ 
                        {CreatureSize::CREATURE_SIZE_TINY, 0.5f}, 
                        {CreatureSize::CREATURE_SIZE_SMALL, 2.5f}, 

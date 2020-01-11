@@ -1,13 +1,13 @@
 #include "CombatManager.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
+#include "FeatureGenerator.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "StoneCalculator.hpp"
 #include "StoneStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
-#include "StatueGenerator.hpp"
 #include "StatusTypes.hpp"
 
 using namespace std;
@@ -70,7 +70,7 @@ void StoneStatusEffect::finalize(CreaturePtr creature) const
       string description_sid = creature->get_description_sid();
 
       // Generate the statue
-      PetrifiedCorpseStatuePtr corpse_statue = StatueGenerator::generate_petrified_corpse_statue(description_sid);
+      PetrifiedCorpseStatuePtr corpse_statue = FeatureGenerator::generate_petrified_corpse_statue(description_sid);
 
       // Add it to the tile
       creature_tile->set_feature(corpse_statue);

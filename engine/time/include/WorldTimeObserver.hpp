@@ -5,6 +5,7 @@
 #include "Date.hpp"
 #include "ICreatureRegeneration.hpp"
 #include "ITimeObserver.hpp"
+#include "World.hpp"
 
 // The world time observer handles dawn/dusk transitions.
 class WorldTimeObserver : public ITimeObserver

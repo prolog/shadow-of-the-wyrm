@@ -11,11 +11,11 @@ XMLWeaponsReader::~XMLWeaponsReader()
 {
 }
 
-void XMLWeaponsReader::parse(WeaponPtr weapon, GenerationValues& gv, const XMLNode& weapon_node)
+void XMLWeaponsReader::parse(WeaponPtr weapon, GenerationValues& gv, const XMLNode& weapon_node, const bool force_ascii)
 {
   if (weapon && !weapon_node.is_null())
   {
-    XMLWearableReader::parse(weapon, gv, weapon_node);
+    XMLWearableReader::parse(weapon, gv, weapon_node, force_ascii);
     
     SkillType trained_skill = static_cast<SkillType>(XMLUtils::get_child_node_int_value(weapon_node, "Skill", static_cast<int>(SkillType::SKILL_MELEE_EXOTIC)));
     weapon->set_trained_skill(trained_skill);
@@ -50,11 +50,11 @@ XMLAmmunitionReader::~XMLAmmunitionReader()
 {
 }
 
-void XMLAmmunitionReader::parse(WeaponPtr ammunition, GenerationValues& gv, const XMLNode& missile_node)
+void XMLAmmunitionReader::parse(WeaponPtr ammunition, GenerationValues& gv, const XMLNode& missile_node, const bool force_ascii)
 {
   if (ammunition && !missile_node.is_null())
   {
-    XMLWeaponsReader::parse(ammunition, gv, missile_node);
+    XMLWeaponsReader::parse(ammunition, gv, missile_node, force_ascii);
   }
 }
 

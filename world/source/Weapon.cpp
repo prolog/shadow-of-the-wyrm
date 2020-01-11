@@ -21,7 +21,7 @@ Weapon::Weapon()
 : difficulty(0), speed(0), trained_skill(SkillType::SKILL_MELEE_EXOTIC), trained_ranged_skill(SkillType::SKILL_MELEE_EXOTIC), requires_ranged_weapon(false)
 {
   type = ItemType::ITEM_TYPE_WEAPON;
-  symbol = ')';
+  symbol.set_symbol(')');
 }
 
 bool Weapon::operator==(const Weapon& weapon) const
@@ -106,8 +106,9 @@ bool Weapon::additional_item_attributes_match(std::shared_ptr<Item> i) const
   WeaponPtr i_weap = dynamic_pointer_cast<Weapon>(i);
   
   match = (i_weap != nullptr);
+  match = Wearable::additional_item_attributes_match(i);
   
-  if (i_weap)
+  if (i_weap && match)
   {
     match = match && (difficulty           == i_weap->get_difficulty());
     match = match && (damage               == i_weap->get_damage()    );

@@ -2,14 +2,17 @@
 
 TEST(SW_World_Tiles_Features_SlotMachine, serialization_id)
 {
-  SlotMachine sm;
+  Symbol s('$', Colour::COLOUR_WHITE);
+  SlotMachine sm(s);
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SLOT_MACHINE, sm.get_class_identifier());
 }
 
 TEST(SW_World_Tiles_Features_SlotMachine, saveload)
 {
-  SlotMachine sm, sm2;
+  Symbol s('$', Colour::COLOUR_WHITE);
+  SlotMachine sm(s);
+  SlotMachine sm2(s);
 
   sm.set_cost(12);
   sm.set_pct_chance_win(30);

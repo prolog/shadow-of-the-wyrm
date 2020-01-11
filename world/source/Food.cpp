@@ -7,14 +7,14 @@ Food::Food()
 : Consumable(100,0)
 {
   type = ItemType::ITEM_TYPE_FOOD;
-  symbol = '%';
+  symbol.set_symbol('%');
 }
 
 Food::Food(const int nutr)
 : Consumable(nutr,0)
 {
   type = ItemType::ITEM_TYPE_FOOD;
-  symbol = '%';
+  symbol.set_symbol('%');
 }
 
 Food::~Food()

@@ -5,7 +5,7 @@ using namespace std;
 Amulet::Amulet()
 {
   type = ItemType::ITEM_TYPE_AMULET;
-  symbol = '#';
+  symbol.set_symbol('#');
 }
 
 Amulet::~Amulet()

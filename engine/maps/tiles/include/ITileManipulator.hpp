@@ -9,4 +9,4 @@ class ITileManipulator
     virtual bool dig(CreaturePtr creature, MapPtr map, TilePtr tile) = 0;
 };
 
-using ITileManipulatorPtr = std::shared_ptr<ITileManipulator>;
+using ITileManipulatorPtr = std::unique_ptr<ITileManipulator>;

@@ -15,5 +15,5 @@ class BeamSpellTranslator
 
   protected:
     void initialize_beam_symbols();
-    static std::map<Direction, uchar> beam_symbols;
+    static std::map<Direction, std::pair<uchar, std::string>> beam_symbols;
 };

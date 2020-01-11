@@ -35,4 +35,4 @@ class Search
     CreaturePtr perspective_creature;
 };
 
-using SearchStrategyPtr = std::shared_ptr<Search>;
+using SearchStrategyPtr = std::unique_ptr<Search>;

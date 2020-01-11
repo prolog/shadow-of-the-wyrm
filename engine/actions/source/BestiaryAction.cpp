@@ -8,6 +8,7 @@
 #include "ScreenTitleTextKeys.hpp"
 #include "RaceManager.hpp"
 #include "StringTable.hpp"
+#include "TextFormatSpecifiers.hpp"
 #include "TextKeys.hpp"
 #include "TextDisplayScreen.hpp"
 
@@ -129,7 +130,11 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
     vector<pair<Colour, string>> bestiary_text;
 
     // Display the symbol
-    bestiary_text.push_back(make_pair(creature->get_colour(), Char::to_string(creature->get_symbol())));
+    Symbol s = creature->get_symbol();
+    deque<Symbol> symbols;
+    symbols.push_back(s);
+
+    bestiary_text.push_back(make_pair(s.get_colour(), TextFormatSpecifiers::SYMBOL));
 
     // Display the creature short description
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
@@ -148,7 +153,7 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
       bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, line_of_text));
     }
 
-    TextDisplayScreen tds(game.get_display(), bestiary_title_sid, bestiary_text);
+    TextDisplayScreen tds(game.get_display(), bestiary_title_sid, bestiary_text, false, symbols);
     tds.display();
   }
 }

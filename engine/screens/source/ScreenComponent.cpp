@@ -4,12 +4,14 @@ ScreenComponent::ScreenComponent()
 {
 }
 
-ScreenComponent::ScreenComponent(const std::string& new_text)
+ScreenComponent::ScreenComponent(const std::string& new_text, const std::vector<Symbol>& new_symbols)
+: symbols(new_symbols)
 {
   text.push_back(make_pair(new_text, Colour::COLOUR_WHITE));
 }
 
-ScreenComponent::ScreenComponent(const std::string& new_text, const Colour new_colour)
+ScreenComponent::ScreenComponent(const std::string& new_text, const Colour new_colour, const std::vector<Symbol>& new_symbols)
+: symbols(new_symbols)
 {
   text.push_back(make_pair(new_text, new_colour));
 }
@@ -32,6 +34,11 @@ void ScreenComponent::add_text(const std::string& new_text, const Colour new_col
 std::vector<std::pair<std::string, Colour>> ScreenComponent::get_text() const
 {
   return text;
+}
+
+std::vector<Symbol> ScreenComponent::get_symbols() const
+{
+  return symbols;
 }
 
 void ScreenComponent::set_spacing_after(const ComponentAlignment& new_component_alignment)

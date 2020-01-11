@@ -13,6 +13,7 @@
 #include "Resistances.hpp"
 #include "ScriptDetails.hpp"
 #include "Statistic.hpp"
+#include "Symbol.hpp"
 #include "Weight.hpp"
 
 class Effect;
@@ -103,8 +104,8 @@ class Item : public ISerializable
     virtual void set_material_type(const MaterialType new_material);
     virtual MaterialType get_material_type() const;
     
-    virtual void   set_symbol(const uchar new_symbol);
-    virtual uchar  get_symbol() const;
+    virtual void   set_symbol(const Symbol& new_symbol);
+    virtual Symbol get_symbol() const;
     
     virtual void   set_colour(const Colour new_colour);
     virtual Colour get_colour() const;
@@ -233,7 +234,7 @@ class Item : public ISerializable
     bool artifact;
     int hands_required;
     ItemType type;
-    uchar symbol;
+    Symbol symbol;
     Colour colour;
     ItemIdentificationType identification_type;
     EffectType effect;

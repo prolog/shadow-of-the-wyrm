@@ -109,6 +109,10 @@ void TextDisplayFormatter::process_token(const string& current_token, vector<str
       cur_line = 0;
     }
   }
+  else if (current_token == TextFormatSpecifiers::SYMBOL)
+  {
+    // JCD FIXME
+  }
   else
   {
     if ((cur_pos + current_token.length()) > (width-1))

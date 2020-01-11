@@ -1,6 +1,6 @@
 #pragma once
+#include "Features.hpp"
 #include "Map.hpp"
-#include "Trap.hpp"
 
 class GeneratorUtils
 {

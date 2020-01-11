@@ -1,10 +1,10 @@
 Me:
+- Wind should have a chance to "carry" flames.
+- Spritesheets
 - auto save - not working?
 - google screen clear not working for SDL. reported 2x.
 - 2x draw?
 - Fairy spirit should increase max HP/AP by 1 when full
-- Linux builds for SDL. Premake, scripts, etc
-- Cantrip to set glow flag on items
 - Grond: automove improvements
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?
@@ -16,7 +16,6 @@ Me:
 - Shield punch!
 - Fruit trees should generate fruit annually.
 - Write script to check for any items without CodexDescriptionSID
-- Can fix the turtle races by attacking two of the turtles
 - Random villages should include the race in the description prior to
   generation.
 - Each version: make sure to update itch.io page!
@@ -40,8 +39,6 @@ Me:
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
 - Penalties from bloodied, exposed should also scale with level.
-- When items are destroyed in shops, their value should be be added to the
-  unpaid bill.
 - The Ybari/Asturias?
 - Add shops to dungeons.
 - Negative rings/amulets: ring of poison, spellbound amulet.
@@ -87,6 +84,7 @@ Me:
   up/down stairs.
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
+- SDL: full screen
 - Cancellation effect type
 - Special rooms: beer hall, magical workshop, armory.
 - More shops in set locations.
@@ -136,6 +134,9 @@ Kyzrati:
 - Lit FOV
 - Do something around accidentally spamming keys and training unwanted
   skills.
+- Can probably keep most of the SDL_PollEvent calls in the controller.  
+  With proper framerate throttling or delays could do more interesting 
+  animations, etc.
 
 Avagart:
 - Eventually, have automovement stop only on new items.
@@ -219,7 +220,6 @@ vedvid:
 hapro:
 - Numpad enter key does not always work same as real enter key
 - Drop multiple items at once
-- Colour to message log
 - Walking on an object/feature should put the exmaine message in the log
 - If try to sell item but price refused, stay in inventory?
 - Option to "pause" after certain triggers. When paused the game would
@@ -237,20 +237,15 @@ Rob Ayres
 
 Troubler: 
 - Doors in dungeon occasionally get spawned in a big, long line.
-- When remapping bestiary to KEY_F6, doesn't work on main screen, but works
-  on 'x', with 'B' not working.
+- First 3 values of a weapon (x,x,x) are ignored when stacking, and two
+  weapons of the same kind will stack together and share the same values.
 
 Grond:
-- Can train up fae health by waiting forever
 - Torment-type spell (1/2 HP)
 - you see flickering even in areas where LOS is blocked by a wall
-- also when you move the cursor around with look, stuff flickers in LOS 
-  range around the cursor
-- cross spells affects rock tiles around you, shouldn't
 - Switching with townsfolk (in churches?) leads to weird behaviour
 - Adjacent creatures attack on load
 - Differentiate scribing and wandcraft - why use scribing?
-- "Double flicker" on torches/etc due to multiple draws.
 - Scything on ammo?
 
 Yan Zhang:
@@ -258,3 +253,5 @@ Yan Zhang:
 - Do something interesting with flowers!
 - Climb up Telari: more NPCs
 
+Skjarl:
+- SDL resizing

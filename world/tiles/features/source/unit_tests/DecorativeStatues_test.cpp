@@ -2,12 +2,14 @@
 
 TEST(SW_World_Tiles_Features_DecorativeStatues, serialization_ids)
 {
-  KingDecorativeStatue kds;
-  QueenDecorativeStatue qds;
-  WarlordDecorativeStatue wds;
-  KnightDecorativeStatue knds;
-  HighPriestDecorativeStatue hpds;
-  SorcerorDecorativeStatue sds;
+  Symbol s('?', Colour::COLOUR_WHITE);
+
+  KingDecorativeStatue kds(s);
+  QueenDecorativeStatue qds(s);
+  WarlordDecorativeStatue wds(s);
+  KnightDecorativeStatue knds(s);
+  HighPriestDecorativeStatue hpds(s);
+  SorcerorDecorativeStatue sds(s);
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_KING_DECORATIVE_STATUE, kds.get_class_identifier());
   EXPECT_EQ(ClassIdentifier::CLASS_ID_QUEEN_DECORATIVE_STATUE, qds.get_class_identifier());

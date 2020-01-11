@@ -53,7 +53,6 @@ string SDLPromptProcessor::get_user_string(const SDLDisplayParameters& display_p
   try
   {
     bool update = false;
-    Coordinate original_yx = cursor_location.get_yx();
 
     for (char c = kc.get_char_as_int(); (c != '\n') && (c != '\r'); c = kc.get_char_as_int())
     {

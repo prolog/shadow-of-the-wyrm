@@ -2,7 +2,8 @@
 
 TEST(SW_World_Tiles_Features_Tannery, serialization_id)
 {
-  Tannery t;
+  Symbol s('&', Colour::COLOUR_WHITE);
+  Tannery t(s);
 
   EXPECT_EQ(ClassIdentifier::CLASS_ID_TANNERY, t.get_class_identifier());
 }

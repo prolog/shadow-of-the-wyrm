@@ -9,10 +9,10 @@
 class XMLCreaturesReader : public XMLReader
 {
   public:
-    std::pair<CreatureMap, CreatureGenerationValuesMap> get_creatures(const XMLNode& xml_configuration_creatures_node);
+    std::pair<CreatureMap, CreatureGenerationValuesMap> get_creatures(const XMLNode& xml_configuration_creatures_node, const bool force_ascii);
 
   protected:
-    std::pair<CreaturePtr, CreatureGenerationValues> parse_creature(const XMLNode& creature_node);
+    std::pair<CreaturePtr, CreatureGenerationValues> parse_creature(const XMLNode& creature_node, const bool force_ascii);
     CreatureGenerationValues parse_creature_generation_values(const XMLNode& creature_generation_values_node);
 
     void parse_spells(const XMLNode& spells_node, CreaturePtr creature);

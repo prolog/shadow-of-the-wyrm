@@ -20,14 +20,14 @@ ActionCostValue LatestMessagesAction::latest_messages(CreaturePtr creature)
 
   for (size_t i = 0; i < num_msgs; i++)
   {
-    string msg = mb.get_message(i);
+    pair<string, Colour> m_pair = mb.get_message(i);
 
     TextDisplayFormatter tdf;
-    vector<string> msg_formatted = tdf.format_text(msg);
+    vector<string> msg_formatted = tdf.format_text(m_pair.first);
 
     for (const string& msg_line : msg_formatted)
     {
-      TextDisplayPair msg_history_line = make_pair(Colour::COLOUR_WHITE, msg_line);
+      TextDisplayPair msg_history_line = make_pair(m_pair.second, msg_line);
       buffer_text.push_back(msg_history_line);
     }
   }
