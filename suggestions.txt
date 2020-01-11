@@ -1,7 +1,5 @@
 Me:
-- Kyzrati suggested keeping most of the SDL_PollEvent calls in the
-  controller.  With proper framerate throttling or delays could do more
-  interesting animations, etc.
+- Wind should have a chance to "carry" flames.
 - Spritesheets
 - auto save - not working?
 - google screen clear not working for SDL. reported 2x.
@@ -139,6 +137,9 @@ Kyzrati:
 - Lit FOV
 - Do something around accidentally spamming keys and training unwanted
   skills.
+- Can probably keep most of the SDL_PollEvent calls in the controller.  
+  With proper framerate throttling or delays could do more interesting 
+  animations, etc.
 
 Avagart:
 - Eventually, have automovement stop only on new items.
@@ -222,7 +223,6 @@ vedvid:
 hapro:
 - Numpad enter key does not always work same as real enter key
 - Drop multiple items at once
-- Colour to message log
 - Walking on an object/feature should put the exmaine message in the log
 - If try to sell item but price refused, stay in inventory?
 - Option to "pause" after certain triggers. When paused the game would

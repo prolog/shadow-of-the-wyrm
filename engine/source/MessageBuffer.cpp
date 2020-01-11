@@ -35,7 +35,7 @@ size_t MessageBuffer::capacity() const
   return max_messages;
 }
 
-void MessageBuffer::add_message(const string& new_message)
+void MessageBuffer::add_message(const string& new_message, const Colour c)
 {
   // If the message buffer is at less than full capacity,
   // add to the front.
@@ -46,19 +46,28 @@ void MessageBuffer::add_message(const string& new_message)
   // to page as much.
   if (messages.size() < max_messages)
   {
-    messages.push_front(new_message);
+    messages.push_front(make_pair(new_message, c));
   }
   // Otherwise, remove the oldest message, and then add the new one.
   else
   {
     messages.pop_back();
-    messages.push_front(new_message);
+    messages.push_front(make_pair(new_message, c));
   }
 }
 
-string MessageBuffer::get_message(const size_t pos) const
+pair<string, Colour> MessageBuffer::get_message(const size_t pos) const
 {
   return messages.at(pos);
+}
+
+deque<pair<string, Colour>> MessageBuffer::get_messages(const size_t num_msgs) const
+{
+  size_t msg_sz = messages.size();
+  size_t msgs = std::min<size_t>(msg_sz, num_msgs);
+
+  deque<pair<string, Colour>> msg_buf_copy(messages.begin(), messages.begin() + msgs);
+  return msg_buf_copy;
 }
 
 void MessageBuffer::clear()
@@ -70,9 +79,10 @@ bool MessageBuffer::serialize(ostream& stream) const
 {
   Serialize::write_size_t(stream, messages.size());
 
-  for (const string& message : messages)
+  for (const auto& m_pair : messages)
   {
-    Serialize::write_string(stream, message);
+    Serialize::write_string(stream, m_pair.first);
+    Serialize::write_enum(stream, m_pair.second);
   }
 
   return true;
@@ -88,7 +98,10 @@ bool MessageBuffer::deserialize(istream& stream)
     string message;
     Serialize::read_string(stream, message);
 
-    messages.push_back(message);
+    Colour c = Colour::COLOUR_UNDEFINED;
+    Serialize::read_enum(stream, c);
+
+    messages.push_back(make_pair(message, c));
   }
 
   return true;
