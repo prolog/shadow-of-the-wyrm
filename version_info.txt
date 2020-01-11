@@ -27,6 +27,9 @@ Shadow of the Wyrm v1.1.6 "Paganini"
   displayed in-game (hapro).  The character display ('@') does not, as it 
   mirrors what gets dumped to disk.
 
+- Shopkeepers now actively dislike when you do cast spells/evoke wands
+  that might cause damage to the items in their shops.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

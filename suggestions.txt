@@ -16,7 +16,6 @@ Me:
 - Shield punch!
 - Fruit trees should generate fruit annually.
 - Write script to check for any items without CodexDescriptionSID
-- Can fix the turtle races by attacking two of the turtles
 - Random villages should include the race in the description prior to
   generation.
 - Each version: make sure to update itch.io page!
@@ -40,8 +39,6 @@ Me:
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
 - Penalties from bloodied, exposed should also scale with level.
-- When items are destroyed in shops, their value should be be added to the
-  unpaid bill.
 - The Ybari/Asturias?
 - Add shops to dungeons.
 - Negative rings/amulets: ring of poison, spellbound amulet.
