@@ -391,7 +391,7 @@ bool Item::matches(std::shared_ptr<Item> i) const
     match = match && (event_scripts         == i->event_scripts              );
     match = match && (unpaid                == i->unpaid                     );
 
-    // Originally, I didn't want to consier remaining enchantments/smithings
+    // Originally, I didn't want to consider remaining enchantments/smithings
     // for purposes of matching.  But then the additional properties were used
     // for more and more things (corpses, skins) and it made sense to have to
     // have these match as well.

@@ -240,17 +240,12 @@ Rob Ayres
 
 Troubler: 
 - Doors in dungeon occasionally get spawned in a big, long line.
-- When remapping bestiary to KEY_F6, doesn't work on main screen, but works
-  on 'x', with 'B' not working.
-- Golems shouldn't be able to open doors
 - First 3 values of a weapon (x,x,x) are ignored when stacking, and two
   weapons of the same kind will stack together and share the same values.
 
 Grond:
-- Can train up fae health by waiting forever
 - Torment-type spell (1/2 HP)
 - you see flickering even in areas where LOS is blocked by a wall
-- cross spells affects rock tiles around you, shouldn't
 - Switching with townsfolk (in churches?) leads to weird behaviour
 - Adjacent creatures attack on load
 - Differentiate scribing and wandcraft - why use scribing?

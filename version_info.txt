@@ -42,6 +42,9 @@ Shadow of the Wyrm v1.1.6 "Paganini"
     tile colourings between turns, even when there are "random" colourings
     due to weather, torchlight, etc (Grond).
 
+  - Weapons had a stacking bug where to-hit/damage/speed bonuses from the
+    parent Wearable class weren't being considered properly (Troubler).
+
 Shadow of the Wyrm v1.1.5.1 "Losy"
 - Version declared August 11, 2019.  Version finalized November 27, 2019.
 

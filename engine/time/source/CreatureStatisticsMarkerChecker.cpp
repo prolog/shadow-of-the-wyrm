@@ -59,7 +59,8 @@ void CreatureStatisticsMarkerChecker::check_strength_conditions(CreaturePtr crea
 }
 
 // If a creature maintains a good level of satiation, being neither full
-// nor hungry, this will increase their overall health.
+// nor hungry, this will increase their overall health.  Up to a point -
+// otherwise, Fae would be able to get 99 Hea by just waiting around.
 void CreatureStatisticsMarkerChecker::check_health_conditions(CreaturePtr creature)
 {
   if (creature != nullptr && can_increase_passive_statistic(creature->get_health()))

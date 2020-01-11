@@ -106,8 +106,9 @@ bool Weapon::additional_item_attributes_match(std::shared_ptr<Item> i) const
   WeaponPtr i_weap = dynamic_pointer_cast<Weapon>(i);
   
   match = (i_weap != nullptr);
+  match = Wearable::additional_item_attributes_match(i);
   
-  if (i_weap)
+  if (i_weap && match)
   {
     match = match && (difficulty           == i_weap->get_difficulty());
     match = match && (damage               == i_weap->get_damage()    );
