@@ -20,7 +20,7 @@ class MapTranslator
     static DisplayTile create_display_tile_from_creature(const CreaturePtr& creature, const Colour override_colour);
     static DisplayTile create_display_tile_from_feature(const FeaturePtr& feature, const bool timewalking, const Colour override_colour, const ShimmerColours& shimmer_colours);
     static DisplayTile create_display_tile_from_item(const ItemPtr& item, const Colour override_colour);
-    static DisplayTile create_display_tile_from_tile(const TilePtr& tile, const bool timewalking, const Colour override_colour, const ShimmerColours& shimmer_colours, const int row, const int col);
+    static DisplayTile create_display_tile_from_tile(const TilePtr& tile, const bool timewalking, const std::pair<Colour, Colour> override_colours, const ShimmerColours& shimmer_colours, const int row, const int col);
     static DisplayTile create_display_tile_from_symbol_and_colour(const Symbol& symbol, const Colour colour);
 
   protected:

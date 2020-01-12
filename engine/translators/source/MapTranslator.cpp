@@ -185,7 +185,7 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
     }
     else // Nothing else, or the player is blind - display the tile only.
     {
-      display_tile = create_display_tile_from_tile(actual_tile, timewalking, tod_overrides.first, shimmer_colours, row, col);
+      display_tile = create_display_tile_from_tile(actual_tile, timewalking, tod_overrides, shimmer_colours, row, col);
     }      
   }
   else
@@ -285,11 +285,11 @@ DisplayTile MapTranslator::create_display_tile_from_item(const ItemPtr& item, co
 }
 
 // Create a display tile from a given tile
-DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, const bool timewalking, const Colour oc, const ShimmerColours& shimmer_colours, const int row, const int col)
+DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, const bool timewalking, const pair<Colour, Colour> tod_overrides, const ShimmerColours& shimmer_colours, const int row, const int col)
 {
   DisplayTile display_tile;
   Game& game = Game::instance();
-  Colour override_colour = oc;
+  Colour override_colour = tod_overrides.first;
   MapRegistry& mr = game.get_map_registry_ref();
 
   const vector<DisplayTile>& tiles_info = game.get_tile_display_info_ref();
@@ -343,13 +343,27 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, co
     shimmer_colour = cache_details.second.get_colour();
   }
 
-  if (RNG::percent_chance(pct_chance_weathered))
+  // If weather is affecting the tile:
+  //
+  // 1. Use the TOD overrides if they exist
+  // 2. Otherwise, pick one at random from the allowable values
+  vector<Colour> weather_colours = display_tile.get_weather_colours();
+  
+  if (!weather_colours.empty() && RNG::percent_chance(pct_chance_weathered))
   {
-    vector<Colour> weather_colours = display_tile.get_weather_colours();
-
-    if (!weather_colours.empty())
+    if (override_colour != Colour::COLOUR_UNDEFINED)
     {
-      shimmer_colour = weather_colours.at(RNG::range(0, weather_colours.size() - 1));      
+      if (RNG::percent_chance(50))
+      {
+        shimmer_colour = tod_overrides.first;
+      }
+      {
+        shimmer_colour = tod_overrides.second;
+      }
+    }
+    else
+    {
+      shimmer_colour = weather_colours.at(RNG::range(0, weather_colours.size() - 1));
     }
   }
 
@@ -396,7 +410,7 @@ DisplayTile MapTranslator::create_unseen_and_explored_display_tile(const TilePtr
   }
   else
   {
-    display_tile = create_display_tile_from_tile(tile, timewalking, tod_overrides.first, shimmer_colours, row, col);
+    display_tile = create_display_tile_from_tile(tile, timewalking, tod_overrides, shimmer_colours, row, col);
   }
 
   return display_tile;

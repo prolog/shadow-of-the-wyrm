@@ -1,4 +1,5 @@
 Me:
+- no-teleport for telari, zaeda
 - Wind should have a chance to "carry" flames.
 - Spritesheets
 - auto save - not working?
