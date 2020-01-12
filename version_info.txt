@@ -1,9 +1,14 @@
 Shadow of the Wyrm v1.1.7 "Sor"
 - Version declared January 11, 2020.
 
+- Teleporting is now disallowed in Telari and Zaeda's Tower (fiamma).
+
 - Bug fixes:
 
   - Weather colouring wasn't respecting time-of-day overrides (Grond).
+
+  - Falling damage wouldn't actually kill you when your current HP exceeded 
+    your max.
 
 Shadow of the Wyrm v1.1.6 "Paganini"
 - Version started November 27, 2019.  Version finalized January 11, 2020.

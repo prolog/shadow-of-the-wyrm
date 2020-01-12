@@ -18,7 +18,7 @@ void FallingMovementAccumulationChecker::check(CreaturePtr creature)
 
     CombatManager cm;
     CreaturePtr no_attacker;
-    int falling_damage = creature->get_hit_points().get_base() + 1;
+    int falling_damage = creature->get_hit_points().get_current() + 10;
     Damage falling_default;
     falling_default.set_modifier(falling_damage);
 

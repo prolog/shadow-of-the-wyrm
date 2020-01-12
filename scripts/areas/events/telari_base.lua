@@ -37,13 +37,12 @@ end
 function populate_consumables(map_id, height, width)
   local consumables = {"gain_attributes_potion", "restorative_potion", 
                        "amut_potion", "speed_potion", "ether_potion",
-                       "healing_potion", "teleport_wand", 
-                       "dragon_breath_wand", "vorpal_bolt_wand", 
-                       "enchanting_scroll"}
+                       "healing_potion", "dragon_breath_wand", 
+		       "vorpal_bolt_wand", "enchanting_scroll"}
 
   for row = 0, height-1 do
     for col = 0, width-1 do
-      if (row + col) % 3 == 0 and RNG_percent_chance(10) then
+      if (row + col) % 3 == 0 and RNG_percent_chance(8) then
         local tile_details = map_get_tile(map_id, row, col)
         local tile_type = tile_details["tile_type"]
 
@@ -82,6 +81,8 @@ local properties = {{"MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED", "1"},
                     {"-90_DEPTH_MAP_PROPERTIES_SHIMMER_COLOURS", "15,7,4"},
                     {"-95_CUSTOM_MAP_ID", "telari_top"},
                     {"TILE_PROPERTIES_DEPTH_INCREMENT", "-5"},
+		    {"MAP_PROPERTIES_CANNOT_TELEPORT", 1},
+		    {"MAP_PROPERTIES_CANNOT_TELEPORT_RECURSIVE", 1},
                     {"MAP_PROPERTIES_CANNOT_PRAY", "1"},
                     {"MAP_PROPERTIES_CANNOT_PRAY_RECURSIVE", "1"},
                     {"MAP_PROPERTIES_CANNOT_DIG", "1"},
