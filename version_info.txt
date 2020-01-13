@@ -3,6 +3,8 @@ Shadow of the Wyrm v1.1.7 "Sor"
 
 - Teleporting is now disallowed in Telari and Zaeda's Tower (fiamma).
 
+- The masters of the high tower now have an assortment of spells (fiamma).
+
 - Bug fixes:
 
   - Weather colouring wasn't respecting time-of-day overrides (Grond).

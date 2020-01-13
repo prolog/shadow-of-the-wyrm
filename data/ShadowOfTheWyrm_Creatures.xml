@@ -22720,6 +22720,10 @@
 					<NumDice>40</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>40</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>90000</Exp>
 			</CreatureGeneration>
 			<Level>40</Level>
@@ -22733,6 +22737,16 @@
 					<Script>quests/carcassia/golgoa.lua</Script>
 				</ChatScript>
 			</EventScripts>
+			<Spells>
+				<Spell>
+					<SpellID>a_06_cross_of_flame</SpellID>
+					<Castings>12</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_07_fireball</SpellID>
+					<Castings>12</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="lorelei">
 			<RaceID>02_woodelf</RaceID>
@@ -22757,6 +22771,10 @@
 					<NumDice>40</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>40</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>90000</Exp>
 			</CreatureGeneration>
 			<Level>40</Level>
@@ -22770,6 +22788,20 @@
 					<Script>quests/carcassia/lorelei.lua</Script>
 				</ChatScript>
 			</EventScripts>
+			<Spells>
+				<Spell>
+					<SpellID>a_06_cross_of_flame</SpellID>
+					<Castings>15</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_07_fireball</SpellID>
+					<Castings>7</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>c_11_blast</SpellID>
+					<Castings>15</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="okhoa">
 			<RaceID>08_ogre</RaceID>
@@ -22795,6 +22827,10 @@
 					<NumDice>40</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>40</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>90000</Exp>
 			</CreatureGeneration>
 			<Level>40</Level>
@@ -22808,6 +22844,16 @@
 					<Script>quests/carcassia/okhoa.lua</Script>
 				</ChatScript>
 			</EventScripts>
+			<Spells>
+				<Spell>
+					<SpellID>a_06_cross_of_flame</SpellID>
+					<Castings>5</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_07_fireball</SpellID>
+					<Castings>20</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="scheldt">
 			<RaceID>01_human</RaceID>
@@ -22832,6 +22878,10 @@
 					<NumDice>40</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
+				<AP>
+					<NumDice>40</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
 				<Exp>90000</Exp>
 			</CreatureGeneration>
 			<Level>40</Level>
@@ -22845,6 +22895,20 @@
 					<Script>quests/carcassia/scheldt.lua</Script>
 				</ChatScript>
 			</EventScripts>
+			<Spells>
+				<Spell>
+					<SpellID>a_02_dragon_breath</SpellID>
+					<Castings>12</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_06_cross_of_flame</SpellID>
+					<Castings>12</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_07_fireball</SpellID>
+					<Castings>5</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="lish">
 			<RaceID>01_human</RaceID>

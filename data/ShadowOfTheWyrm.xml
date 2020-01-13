@@ -5013,13 +5013,13 @@
 			<MagicCategory>3004</MagicCategory>
 			<MagicClassification>0</MagicClassification>
 			<Colour>7</Colour>
-			<APCost>10</APCost>
+			<APCost>12</APCost>
 			<Speed>1</Speed>
 			<Range>3</Range>
 			<Shape>1</Shape>
 			<Radius>2</Radius>
 			<Damage>
-				<NumDice>4</NumDice>
+				<NumDice>6</NumDice>
 				<NumSides>5</NumSides>
 				<Type>9</Type>
 			</Damage>
