@@ -1295,7 +1295,7 @@ trumpets and clarions, calls to the unarmed %b
 warriors, instructions from the war-chief.  So: %b
 as one they linked their arms, and then they leapt; %b
 the ground deformning afterward, as though %b
-an epicenter, for the tremors swept %b
+an epicentre, for the tremors swept %b
 beneath the fae and staggered them to great effect.
 %p
 This opportunity would not go to waste. %b
@@ -3241,4 +3241,14 @@ and when she threw a rock in anger, turned to air, %b
 curling like a question mark.  She slammed %b
 the ground and caused her doubts to disappear, %b
 her skin left cut and bloody, but her mind now strangely clear.
+%p
+In the centre of the pillars, Floridel %b
+could see a simple pedestel,  alone %b
+within the sea of shale.  She knew very well %b
+what called to her was on it, and was shown %b
+the truth at her approach: an opened book, %b
+its paper pages unaffected by the damp %b
+air.  She felt it fit her like a hook %b
+in an eye.  It drew her in, then arched and gasped %b
+at seeing what it wanted was now here at last.
 %p

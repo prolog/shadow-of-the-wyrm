@@ -5,6 +5,8 @@ Shadow of the Wyrm v1.1.7 "Sor"
 
 - The masters of the high tower now have an assortment of spells (fiamma).
 
+- Stanzas for "Tel and Floridel".
+
 - Bug fixes:
 
   - Weather colouring wasn't respecting time-of-day overrides (Grond).
