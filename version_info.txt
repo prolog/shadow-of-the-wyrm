@@ -5,6 +5,21 @@ Shadow of the Wyrm v1.1.7 "Sor"
 
 - The masters of the high tower now have an assortment of spells (fiamma).
 
+- Shrine creatures have been buffed a bit:
+
+  - Extra damage: golgothan.
+
+  - Piercing damage: archangel, divine avenger, shadow wyrm.
+
+  - Spells: archangel, divine avenger, dragon, shrine hag.
+
+  - Extra status effects/bonuses: unicorn, black unicorn, spectral emperor,
+    titan, mist wraith.
+
+  - Speed boost: avernal bat, mist wraith.
+
+- New spells/spellbooks: stun bolt (Mystic).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

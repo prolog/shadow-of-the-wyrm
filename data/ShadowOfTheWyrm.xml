@@ -6171,6 +6171,25 @@
 			<Shape>0</Shape>
 			<Effect>27</Effect>
 		</Spell>
+		<Spell id="m_18_stun_bolt">
+			<NameSID>STUN_BOLT_NAME_SID</NameSID>
+			<PlayerCastMessageSID>STUN_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>STUN_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3002</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>10</Colour>
+			<APCost>10</APCost>
+			<Speed>1</Speed>
+			<Range>5</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>6</NumDice>
+				<NumSides>6</NumSides>
+				<Type>2</Type>
+				<EffectBonus>100</EffectBonus>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>				
 		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
 			<PlayerCastMessageSID>SHADOW_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>

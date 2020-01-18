@@ -9652,6 +9652,25 @@
 				<SpellID>m_17_rage</SpellID>
 				<Difficulty>60</Difficulty>
 			</Spellbook>
+			<Spellbook id="stun_bolt_spellbook">
+				<DescriptionSID>STUN_BOLT_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_STUN_BOLT_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>STUN_BOLT_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_STUN_BOLT_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>STUN_BOLT_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
+				<Value>177</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<Symbol>
+					<Char>"</Char>
+					<Colour>3</Colour>
+				</Symbol>
+				<DangerLevel>4</DangerLevel>
+				<SpellID>m_18_stun_bolt</SpellID>
+				<Difficulty>65</Difficulty>
+			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
 			<Item id="_paper_pulp">
