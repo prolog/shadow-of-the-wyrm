@@ -3252,3 +3252,13 @@ air.  She felt it fit her like a hook %b
 in an eye.  It drew her in, then arched and gasped %b
 at seeing what it wanted was now here at last.
 %p
+"Hello, my little bird."  Within her mind, %b
+a voice she'd heard before appeared again. %b
+"I've waited while the world cools, confined %b
+within the slate, while up above, the same %b
+cycles play out endlessly.  The fae %b
+have never heard of me.  Their very thoughts %b
+are fancies, flights, and fripperies.  They play %b
+their games above the earth.  And they forgot %b
+that things lie deep within the rocky world, and watch."
+%p
