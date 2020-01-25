@@ -3183,16 +3183,16 @@
 					<Leadership>20</Leadership>
 					<Literacy>15</Literacy>
 					<Religion>15</Religion>
-					<Scribing>10</Scribing>
 					<Swimming>15</Swimming>
 				</GeneralSkills>
 				<WeaponSkills>
-					<ShortBlades>5</ShortBlades>
-					<LongBlades>5</LongBlades>
+					<ShortBlades>10</ShortBlades>
+					<LongBlades>10</LongBlades>
+					<Whips>15</Whips>
 				</WeaponSkills>
 				<RangedWeaponSkills>
-					<Bows>5</Bows>
-					<Crossbows>5</Crossbows>
+					<Bows>10</Bows>
+					<Crossbows>10</Crossbows>
 				</RangedWeaponSkills>				
 			</Skills>
 			<Titles>
@@ -3244,6 +3244,9 @@
 					</Quantity>
 				</Ammunition>
 				<InitialInventory>
+					<InitialItem>
+						<ID>leather_whip</ID>
+					</InitialItem>
 					<InitialItem>
 						<ID>food_ration</ID>
 						<Quantity>

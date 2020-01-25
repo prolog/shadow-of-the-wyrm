@@ -204,10 +204,6 @@ Mirza Ghalib:
 - Wide displays are causing text in e.g. the Isen Dun Chronicle to
   mess up (see the section about Gnordvar). 88x25
 
-NoCreativeNames:
-- Nobles start with scribing, but can't really use it because they don't
-  have Cantrips.  Add a quest at some point to be able to learn Cantrips.
-
 vedvid:
 - rebind '*' (vedvid)
 

@@ -5,6 +5,11 @@ Shadow of the Wyrm v1.1.7 "Sor"
 
 - The masters of the high tower now have an assortment of spells (fiamma).
 
+- Nobles no longer start with scribing, which was useless to them as they could
+  not cast any magic.  Instead, they are better at short and long blades, at
+  whips, and also start with a leather whip for keeping the peasants in line
+  (NoCreativeNames).
+
 - Shrine creatures have been buffed a bit:
 
   - Extra damage: golgothan.
