@@ -3262,3 +3262,13 @@ are fancies, flights, and fripperies.  They play %b
 their games above the earth.  And they forgot %b
 that things lie deep within the rocky world, and watch."
 %p
+The cavern held its breath.  A lengthy pause. %b
+Floridel didn't know if she was meant to speak, %b
+so didn't.  Her mind was silent.  The book was %b
+clearly content to wait as well.  She broke %b
+the standoff with a question: "Why'd you call %b
+for me?"  She pulled her cloak round tighter; its fur %b
+lining, made from ermines, felt like gauze %b
+against the cold, a thin and focused river %b
+whose undertow was tugs within the voice's whisper.
+%p

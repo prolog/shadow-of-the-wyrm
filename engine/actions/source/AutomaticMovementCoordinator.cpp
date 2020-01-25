@@ -325,7 +325,7 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::tile_allows_auto_move(C
 {
   pair<bool, vector<string>> tile_details;
 
-  tile_details.first = amf.get_ignore_tile() || (tile && !tile->has_blocking_feature());
+  tile_details.first = amf.get_ignore_tile() || (tile && !tile->get_is_blocking(creature));
 
   return tile_details;
 }

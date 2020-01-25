@@ -172,10 +172,6 @@ Esran:
   past walls.
 - Sewer/dungeons: when random, prompt for "descend to what depth (ft)?
 
-ais523:
-- Being able to read a savefile should be based on file permissions,
-  not a username check.  Keep username for highscore list.
-
 kain:
 - way to see resists on item without equipping
 - Zapped wand moves to end of inventory?
@@ -200,8 +196,6 @@ happylisk:
 
 naughtusername: 
 - Skill descriptions on shift+letter or something
-- automove can end with digging and then stop
-- weapon types in codex
 
 Timo:
 - Can kill off guards one by one, emperor doesn't care.

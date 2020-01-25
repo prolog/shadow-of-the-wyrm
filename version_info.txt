@@ -29,9 +29,11 @@ Shadow of the Wyrm v1.1.7 "Sor"
   - Falling damage wouldn't actually kill you when your current HP exceeded 
     your max.
 
-  - Bestiary wasn't showing via 'B' (opeasant).
+  - Bestiary wasn't showing via 'B' (Jay Ferro).
 
-  - Various typos (opeasant, others).
+  - Various typos (Jay Ferro, others).
+
+  - Automove wasn't properly terminating without digging (naughtyusername).
 
 Shadow of the Wyrm v1.1.6 "Paganini"
 - Version started November 27, 2019.  Version finalized January 11, 2020.
