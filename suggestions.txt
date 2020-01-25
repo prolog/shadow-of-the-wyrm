@@ -227,8 +227,6 @@ Rob Ayres
 
 Troubler: 
 - Doors in dungeon occasionally get spawned in a big, long line.
-- First 3 values of a weapon (x,x,x) are ignored when stacking, and two
-  weapons of the same kind will stack together and share the same values.
 
 Grond:
 - Torment-type spell (1/2 HP)

@@ -3257,7 +3257,7 @@
 						<ID>_currency</ID>
 						<Quantity>
 							<Random>
-								<NumDice>100</NumDice>
+								<NumDice>300</NumDice>
 								<NumSides>7</NumSides>
 							</Random>
 						</Quantity>
