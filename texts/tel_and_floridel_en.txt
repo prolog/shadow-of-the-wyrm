@@ -3302,4 +3302,13 @@ stagecraft - truth or fiction?  Why provoke %b
 me?  I'm just one person.  How could I hope to fix %b
 a growing war?  This is cruelty.  Why show me it?"
 %p
-
+The voice pushed past her misgivings, settling in %b
+a cluttered corner.  "Truth or fiction?  Both. %b
+I deal in probability, the thin %b
+veneer that hides the fact that we all owe %b
+our outcomes and our lives to sets of runs %b
+that fall a certain way.  Your lover's fate %b
+has not been set.  But beneath the midnight sun, %b
+four bodies gasp with knowledge from the lake; %b
+to save his life the dice must fall a different way."
+%p
