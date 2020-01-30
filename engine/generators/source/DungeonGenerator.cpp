@@ -13,6 +13,7 @@
 #include "MapUtils.hpp"
 #include "RoomFeatures.hpp"
 #include "RoomGeneratorFactory.hpp"
+#include "ShopGenerator.hpp"
 #include "SpringsGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "TileUtils.hpp"
@@ -223,6 +224,8 @@ bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& 
     if (cur_tile && !no_overwrite)
     {
       TilePtr floor_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
+      floor_tile->copy_entities(cur_tile);
+
       map->insert(start_row, r1_c_second, floor_tile);
     }
 
@@ -248,6 +251,8 @@ bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& 
   if (cur_tile && !cur_tile->has_additional_property(TileProperties::TILE_PROPERTY_NO_OVERWRITE))
   {
     TilePtr extra_floor_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
+    extra_floor_tile->copy_entities(cur_tile);
+
     map->insert(start_row, r1_c_second, extra_floor_tile);
   }
 
@@ -269,6 +274,8 @@ bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& 
     if (cur_tile && !cur_tile->has_additional_property(TileProperties::TILE_PROPERTY_NO_OVERWRITE))
     {
       TilePtr floor_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
+      floor_tile->copy_entities(cur_tile);
+
       map->insert(start_row, start_col, floor_tile);
     }
 
@@ -417,7 +424,7 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
 {
   vector<string> room_features;
 
-  bool generate_feature = RNG::x_in_y_chance(1, 50);
+  bool generate_feature = RNG::x_in_y_chance(1, 45);
 
   if (generate_feature)
   {
@@ -429,7 +436,8 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
                                                     {RoomFeatures::ROOM_FEATURE_GRAVE, DungeonFeatureTextKeys::DUNGEON_FEATURE_GRAVE},
                                                     {RoomFeatures::ROOM_FEATURE_SPRING, DungeonFeatureTextKeys::DUNGEON_FEATURE_SPRING},
                                                     {RoomFeatures::ROOM_FEATURE_CRAFT_ROOM, DungeonFeatureTextKeys::DUNGEON_FEATURE_CRAFT_ROOM},
-                                                    {RoomFeatures::ROOM_FEATURE_MAGIC_TREE, DungeonFeatureTextKeys::DUNGEON_FEATURE_MAGIC_TREE}};
+                                                    {RoomFeatures::ROOM_FEATURE_MAGIC_TREE, DungeonFeatureTextKeys::DUNGEON_FEATURE_MAGIC_TREE},
+                                                    {RoomFeatures::ROOM_FEATURE_SHOP, DungeonFeatureTextKeys::DUNGEON_FEATURE_SHOP}};
 
     shuffle(feature_choices.begin(), feature_choices.end(), RNG::get_engine());
 
@@ -483,6 +491,10 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
         else if (feature == RoomFeatures::ROOM_FEATURE_MAGIC_TREE)
         {
           placed_feature = generate_magic_tree(map, start_row, end_row, start_col, end_col);
+        }
+        else if (feature == RoomFeatures::ROOM_FEATURE_SHOP)
+        {
+          placed_feature = generate_shop(map, start_row, end_row, start_col, end_col);
         }
 
         if (placed_feature)
@@ -651,6 +663,24 @@ bool DungeonGenerator::generate_magic_tree(MapPtr map, const int start_row, cons
         break;
       }
     }
+  }
+
+  return generated;
+}
+
+bool DungeonGenerator::generate_shop(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+{
+  bool generated = false;
+
+  if (map != nullptr)
+  {
+    ShopGenerator sg;
+
+    // The coordinates passed in are already interior coordinates, so adjust
+    // accordingly or the shop will only take up a subset of the room.
+    Building b({start_row-1, start_col-1}, {end_row, end_col}, {start_row, start_col});
+
+    generated = sg.generate_shop(map, b);
   }
 
   return generated;

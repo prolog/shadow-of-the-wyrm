@@ -10,6 +10,8 @@ Shadow of the Wyrm v1.1.7 "Sor"
   whips, and also start with a leather whip for keeping the peasants in line
   (NoCreativeNames).
 
+- Shops can now appear in dungeons.
+
 - Shrine creatures have been buffed a bit:
 
   - Extra damage: golgothan.
@@ -39,6 +41,9 @@ Shadow of the Wyrm v1.1.7 "Sor"
   - Various typos (Jay Ferro, others).
 
   - Automove wasn't properly terminating without digging (naughtyusername).
+
+  - The dungeon room-connecting code was digging as it should, but wasn't 
+    transferring any existing items as it went.
 
 Shadow of the Wyrm v1.1.6 "Paganini"
 - Version started November 27, 2019.  Version finalized January 11, 2020.

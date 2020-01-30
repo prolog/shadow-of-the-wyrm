@@ -40,7 +40,6 @@ Me:
   that dungeons are more interesting.
 - Penalties from bloodied, exposed should also scale with level.
 - The Ybari/Asturias?
-- Add shops to dungeons.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Buildings generated in towns should automatically get inhabitants.
