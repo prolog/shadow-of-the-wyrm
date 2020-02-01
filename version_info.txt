@@ -12,9 +12,15 @@ Shadow of the Wyrm v1.1.7 "Sor"
 
 - Shops can now appear in dungeons.
 
-- Dungeons can now have beer halls.
+- Dungeons can now have beer halls.  These contain a lot of booze and
+  sometimes a few restorative-type potions as well.
+
+- Beer halls may also be generated the public and low-income residential 
+  sectors of Carcassia.
 
 - Booze symbol colours have been tweaked to be more colourful.
+
+- Unstoning potions can now occasionally be found when breaking clay pots.
 
 - Shrine creatures have been buffed a bit:
 

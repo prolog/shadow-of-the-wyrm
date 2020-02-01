@@ -1,22 +1,67 @@
 #include "BeerHallSectorFeature.hpp"
+#include "BuildingConfigFactory.hpp"
+#include "BuildingGenerationParameters.hpp"
+#include "Building.hpp"
 #include "CoordUtils.hpp"
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
 #include "ItemManager.hpp"
 #include "RNG.hpp"
+#include "SettlementGeneratorUtils.hpp"
 
 using namespace std;
+
+BeerHallSectorFeature::BeerHallSectorFeature()
+: generate_walls(false)
+{
+}
+
+BeerHallSectorFeature::BeerHallSectorFeature(const bool new_generate_walls)
+: generate_walls(new_generate_walls)
+{
+}
 
 bool BeerHallSectorFeature::generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
 {
   bool generated = false;
+  
+  Coordinate interior_start = start_coord;
+  Coordinate interior_end = end_coord;
+
+  if (generate_walls)
+  {
+    CardinalDirection door_dir = static_cast<CardinalDirection>(RNG::range(static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_NORTH), static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_WEST)));
+    BuildingConfigFactory bcf;
+    BuildingGenerationParameters bgp(start_coord.first, end_coord.first, start_coord.second, end_coord.second, door_dir, false, bcf.create_shop_features(), bcf.create_shop_creature_ids(), bcf.create_shop_item_ids());
+
+    vector<Building> buildings;
+    generated = SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, 100);
+
+    interior_start = {start_coord.first+1, start_coord.second+1};
+    interior_end = {end_coord.first-1, end_coord.second-1};
+  }
 
   if (map != nullptr)
   {
-    GeneratorUtils::fill(map, start_coord, end_coord, TileType::TILE_TYPE_DUNGEON);
+    // When we generate a building, we also generate the floor - no need to
+    // call this twice.
+    if (generate_walls == false)
+    {
+      GeneratorUtils::fill(map, interior_start, interior_end, TileType::TILE_TYPE_DUNGEON);
+    }
 
-    vector<string> booze_ids = { ItemIdKeys::ITEM_ID_DRAM_GIN, ItemIdKeys::ITEM_ID_DRAM_MEAD, ItemIdKeys::ITEM_ID_DRAM_WHISKY, ItemIdKeys::ITEM_ID_GNOMISH_STOUT, ItemIdKeys::ITEM_ID_GOBLIN_MOONSHINE, ItemIdKeys::ITEM_ID_ELVEN_BRANDY, ItemIdKeys::ITEM_ID_FORTIFIED_DWARVEN_WINE };
-    vector<Coordinate> coords = CoordUtils::get_perimeter_coordinates(start_coord, end_coord);
+    vector<string> booze_ids = { ItemIdKeys::ITEM_ID_DRAM_GIN, 
+                                 ItemIdKeys::ITEM_ID_DRAM_MEAD, 
+                                 ItemIdKeys::ITEM_ID_DRAM_WHISKY, 
+                                 ItemIdKeys::ITEM_ID_GNOMISH_STOUT, 
+                                 ItemIdKeys::ITEM_ID_GOBLIN_MOONSHINE, 
+                                 ItemIdKeys::ITEM_ID_ELVEN_BRANDY, 
+                                 ItemIdKeys::ITEM_ID_FORTIFIED_DWARVEN_WINE, 
+                                 ItemIdKeys::ITEM_ID_HEALING_POTION, 
+                                 ItemIdKeys::ITEM_ID_ETHER_POTION, 
+                                 ItemIdKeys::ITEM_ID_UNSTONING_POTION };
+
+    vector<Coordinate> coords = CoordUtils::get_perimeter_coordinates(interior_start, interior_end);
 
     // Place barrels or place booze around the perimeter.
     for (const Coordinate& c : coords)

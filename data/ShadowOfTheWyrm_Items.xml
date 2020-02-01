@@ -6688,7 +6688,7 @@
 				<StandardDrinks>4</StandardDrinks>
 				<Effect>0</Effect>
 			</Potion>
-			<Potion id="healing_potion">
+			<Potion id="_healing_potion">
 				<DescriptionSID>HEALING_POTION_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_HEALING_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>HEALING_POTION_USAGE_SID</UsageDescriptionSID>
@@ -6768,7 +6768,7 @@
 				<Nutrition>100</Nutrition>
 				<Effect>8</Effect>
 			</Potion>
-			<Potion id="unstoning_potion">
+			<Potion id="_unstoning_potion">
 				<DescriptionSID>UNSTONING_POTION_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_UNSTONING_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>UNSTONING_POTION_USAGE_SID</UsageDescriptionSID>
@@ -6935,7 +6935,7 @@
 					<Type>3</Type>
 				</Damage>
 			</Potion>			
-			<Potion id="ether_potion">
+			<Potion id="_ether_potion">
 				<DescriptionSID>ETHER_POTION_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_ETHER_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>ETHER_POTION_USAGE_SID</UsageDescriptionSID>

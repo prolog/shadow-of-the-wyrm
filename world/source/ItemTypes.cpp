@@ -71,6 +71,9 @@ const string ItemIdKeys::ITEM_ID_GNOMISH_STOUT    = "gnomish_stout";
 const string ItemIdKeys::ITEM_ID_FORTIFIED_DWARVEN_WINE = "fortified_dwarven_wine";
 const string ItemIdKeys::ITEM_ID_ELVEN_BRANDY     = "elven_brandy";
 const string ItemIdKeys::ITEM_ID_GOBLIN_MOONSHINE = "goblin_moonshine";
+const string ItemIdKeys::ITEM_ID_UNSTONING_POTION = "_unstoning_potion";
+const string ItemIdKeys::ITEM_ID_HEALING_POTION   = "_healing_potion";
+const string ItemIdKeys::ITEM_ID_ETHER_POTION     = "_ether_potion";
 
 // Item Scripts
 ItemEventScripts::ItemEventScripts()

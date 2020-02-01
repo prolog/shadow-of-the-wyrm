@@ -36,8 +36,8 @@ end
 
 function populate_consumables(map_id, height, width)
   local consumables = {"gain_attributes_potion", "restorative_potion", 
-                       "amut_potion", "speed_potion", "ether_potion",
-                       "healing_potion", "dragon_breath_wand", 
+                       "amut_potion", "speed_potion", "_ether_potion",
+                       "_healing_potion", "dragon_breath_wand", 
 		       "vorpal_bolt_wand", "enchanting_scroll"}
 
   for row = 0, height-1 do

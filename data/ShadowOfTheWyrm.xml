@@ -2421,7 +2421,7 @@
 						</Random>
 					</InitialItem>
 					<InitialItem>
-						<ID>healing_potion</ID>
+						<ID>_healing_potion</ID>
 						<Quantity>
 							<Random>
 								<NumDice>2</NumDice>
@@ -2542,7 +2542,7 @@
 						</Quantity>
 					</InitialItem>
 					<InitialItem>
-						<ID>healing_potion</ID>
+						<ID>_healing_potion</ID>
 						<Quantity>
 							<Random>
 								<NumDice>2</NumDice>

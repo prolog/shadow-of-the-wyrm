@@ -1,6 +1,5 @@
 Me:
-- Beer halls in villages/Carcassia
-- Beer halls should get a chance to generate some nice potions too
+- Beer halls in villages
 - Wind should have a chance to "carry" flames.
 - Spritesheets
 - auto save - not working?

@@ -21,7 +21,7 @@ local function kew_dungeon_completion_fn()
   add_message("KEW_DUNGEON_QUEST_COMPLETE_SID")
   add_object_to_player_tile("chain_mail")
   add_object_to_player_tile("shadow_bomb", 8)
-  add_object_to_player_tile("healing_potion", 2)
+  add_object_to_player_tile("_healing_potion", 2)
 
   return true
 end
