@@ -6622,7 +6622,7 @@
 				<Material>2</Material>
 				<Symbol>
 					<Char>!</Char>
-					<Colour>3</Colour>
+					<Colour>8</Colour>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>400</Nutrition>
@@ -6641,7 +6641,7 @@
 				<Material>2</Material>
 				<Symbol>
 					<Char>!</Char>
-					<Colour>3</Colour>
+					<Colour>1</Colour>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>400</Nutrition>
@@ -6680,7 +6680,7 @@
 				<Material>2</Material>
 				<Symbol>
 					<Char>!</Char>
-					<Colour>3</Colour>
+					<Colour>15</Colour>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>

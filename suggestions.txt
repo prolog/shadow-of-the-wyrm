@@ -1,4 +1,6 @@
 Me:
+- Beer halls in villages/Carcassia
+- Beer halls should get a chance to generate some nice potions too
 - Wind should have a chance to "carry" flames.
 - Spritesheets
 - auto save - not working?
@@ -27,7 +29,6 @@ Me:
 - Tidy up scripts/quests into subdirectories, like carcassia, and test.
   Need to remember to update env.lua!
 - More guilds/things with memberships
-- Magical orchard (should be 2-3 over the world)
 - Allow music to not only pacify but enchant (allow for ordering)
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
@@ -59,7 +60,7 @@ Me:
   poisoned: e.g., a creature is poisoned, and then puts on a poisoned
   amulet.  Should still be poisoned when either of the two wear off.
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
-  are 2.
+  and caverns are 2.
 - Allow shopkeepers to be any of the selectable races.
 - Towers/tower generators.
 - Reuse some of the sector feature generators in dungeons - tomb, etc.
@@ -85,7 +86,7 @@ Me:
   generated.
 - SDL: full screen
 - Cancellation effect type
-- Special rooms: beer hall, magical workshop, armory.
+- Special rooms: magical workshop, armory.
 - More shops in set locations.
 - Keep marking general skills as applicable when using them.
 - Scent maps/track by scent.

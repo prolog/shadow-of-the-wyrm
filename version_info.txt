@@ -12,6 +12,10 @@ Shadow of the Wyrm v1.1.7 "Sor"
 
 - Shops can now appear in dungeons.
 
+- Dungeons can now have beer halls.
+
+- Booze symbol colours have been tweaked to be more colourful.
+
 - Shrine creatures have been buffed a bit:
 
   - Extra damage: golgothan.
@@ -44,6 +48,9 @@ Shadow of the Wyrm v1.1.7 "Sor"
 
   - The dungeon room-connecting code was digging as it should, but wasn't 
     transferring any existing items as it went.
+
+  - Every time the FeatureGenerator was called to create a barrel, a bed
+    was produced instead.
 
 Shadow of the Wyrm v1.1.6 "Paganini"
 - Version started November 27, 2019.  Version finalized January 11, 2020.

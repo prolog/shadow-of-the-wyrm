@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <cmath>
+#include "BeerHallSectorFeature.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "DungeonGenerator.hpp"
@@ -8,6 +9,7 @@
 #include "FeatureGenerator.hpp"
 #include "Game.hpp"
 #include "GeneratorUtils.hpp"
+#include "ItemManager.hpp"
 #include "MapExitUtils.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
@@ -424,7 +426,7 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
 {
   vector<string> room_features;
 
-  bool generate_feature = RNG::x_in_y_chance(1, 45);
+  bool generate_feature = RNG::x_in_y_chance(1, 40);
 
   if (generate_feature)
   {
@@ -437,7 +439,8 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
                                                     {RoomFeatures::ROOM_FEATURE_SPRING, DungeonFeatureTextKeys::DUNGEON_FEATURE_SPRING},
                                                     {RoomFeatures::ROOM_FEATURE_CRAFT_ROOM, DungeonFeatureTextKeys::DUNGEON_FEATURE_CRAFT_ROOM},
                                                     {RoomFeatures::ROOM_FEATURE_MAGIC_TREE, DungeonFeatureTextKeys::DUNGEON_FEATURE_MAGIC_TREE},
-                                                    {RoomFeatures::ROOM_FEATURE_SHOP, DungeonFeatureTextKeys::DUNGEON_FEATURE_SHOP}};
+                                                    {RoomFeatures::ROOM_FEATURE_SHOP, DungeonFeatureTextKeys::DUNGEON_FEATURE_SHOP},
+                                                    {RoomFeatures::ROOM_FEATURE_BEER_HALL, DungeonFeatureTextKeys::DUNGEON_FEATURE_BEER_HALL}};
 
     shuffle(feature_choices.begin(), feature_choices.end(), RNG::get_engine());
 
@@ -495,6 +498,10 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
         else if (feature == RoomFeatures::ROOM_FEATURE_SHOP)
         {
           placed_feature = generate_shop(map, start_row, end_row, start_col, end_col);
+        }
+        else if (feature == RoomFeatures::ROOM_FEATURE_BEER_HALL)
+        {
+          placed_feature = generate_beer_hall(map, start_row, end_row, start_col, end_col);
         }
 
         if (placed_feature)
@@ -681,6 +688,19 @@ bool DungeonGenerator::generate_shop(MapPtr map, const int start_row, const int 
     Building b({start_row-1, start_col-1}, {end_row, end_col}, {start_row, start_col});
 
     generated = sg.generate_shop(map, b);
+  }
+
+  return generated;
+}
+
+bool DungeonGenerator::generate_beer_hall(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+{
+  bool generated = false;
+
+  if (map != nullptr)
+  {
+    BeerHallSectorFeature bhsf;
+    generated = bhsf.generate(map, { start_row, start_col}, { end_row-1, end_col-1});
   }
 
   return generated;

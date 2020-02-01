@@ -2,6 +2,11 @@
 #define MAP_TESTER 1
 #endif
 
+// MSXML is a POS and doesn't play nice with Xerces.
+#ifndef __MSXML_LIBRARY_DEFINED__
+#define __MSXML_LIBRARY_DEFINED__
+#endif
+
 #include <iostream>
 #include <fstream>
 #include <memory>
@@ -251,7 +256,7 @@ void tile_to_string(TilePtr tile, std::string& tile_ascii, std::string& map_s, c
     ItemPtr item = items->at(0);
     if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(item->get_colour()) + "\">";
     std::ostringstream ss;
-    ss << item->get_symbol();
+    ss << item->get_symbol().get_symbol();
     tile_ascii = html_encode(ss.str());
   }
   else if (tile->has_feature() && !has_creature)
@@ -264,7 +269,7 @@ void tile_to_string(TilePtr tile, std::string& tile_ascii, std::string& map_s, c
   else
   {
     ShimmerColours sc({ Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED });
-    DisplayTile dt = MapTranslator::create_display_tile(false /* player blinded? not in the map tester */, false /*not timewalking*/, { Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED } /* ditto for colour overrides */, sc, tile, tile);
+    DisplayTile dt = MapTranslator::create_display_tile(false /* player blinded? not in the map tester */, false /*not timewalking*/, { Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED } /* ditto for colour overrides */, sc, tile, tile, row, col);
     if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(static_cast<Colour>(dt.get_colour())) + "\">";
     std::ostringstream ss;
 
@@ -1339,6 +1344,9 @@ int main(int argc, char** argv)
   initialize_settings();
   
   // Set up the items, so that I can see what gets generated...
+  Settings settings(true);
+  Game::instance().set_settings(settings);
+
   ShadowOfTheWyrmEngine engine;
   engine.setup_game();
 

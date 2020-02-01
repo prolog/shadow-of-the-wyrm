@@ -179,7 +179,7 @@ FeaturePtr FeatureGenerator::generate_altar(const std::string& deity_id, const A
 
 FeaturePtr FeatureGenerator::generate_barrel()
 {
-  FeaturePtr barrel = std::make_shared<Bed>(get_config_symbol(ClassIdentifier::CLASS_ID_BARREL));
+  FeaturePtr barrel = std::make_shared<Barrel>(get_config_symbol(ClassIdentifier::CLASS_ID_BARREL));
   return barrel;
 }
 
