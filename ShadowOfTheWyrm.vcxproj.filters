@@ -3974,9 +3974,6 @@
     <ClInclude Include="engine\generators\settlements\include\BuildingGenerationParameters.hpp">
       <Filter>Header Files\engine\generators\settlements\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\generators\settlements\include\CityGenerator.hpp">
-      <Filter>Header Files\engine\generators\settlements\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\generators\settlements\include\HamletGenerator.hpp">
       <Filter>Header Files\engine\generators\settlements\include</Filter>
     </ClInclude>
@@ -8177,9 +8174,6 @@
       <Filter>Source Files\engine\generators\settlements\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\generators\settlements\source\BuildingGenerationParameters.cpp">
-      <Filter>Source Files\engine\generators\settlements\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\settlements\source\CityGenerator.cpp">
       <Filter>Source Files\engine\generators\settlements\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\generators\settlements\source\HamletGenerator.cpp">
