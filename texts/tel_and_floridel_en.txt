@@ -3312,3 +3312,23 @@ has not been set.  But beneath the midnight sun, %b
 four bodies gasp with knowledge from the lake; %b
 to save his life the dice must fall a different way."
 %p
+That kenning she had stumbled on, the one %b
+that felt like a thousand years ago, lit up %b
+with blinding clarity.  She stood there, stunned %b
+for a moment, as the implications jumped %b
+from her darkest worries.  Revenant-awake! %b
+She kicked herself for what she hadn't learned; %b
+she'd overthought it, revelling in the play %b
+of possibilities, her mind alert %b
+to everything but the simplest truth: the dead's return.
+%p
+Seeing that she grasped this now, the book %b
+played out a murky picture: something swam, %b
+four somethings, downward, struggling in the dark. %b
+Then it faded.  "I can see the living lands, %b
+but those only; what's beyond is lost to me." %b
+The brothers gasping.  "But I know this much - %b
+that lake is not for living men.  To be %b
+within it is to be open to the touch %b
+of those that swim the depths, and ask for them to judge."
+%p
