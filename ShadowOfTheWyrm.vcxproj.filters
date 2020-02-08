@@ -4262,6 +4262,9 @@
     <ClInclude Include="engine\generators\settlements\sector\include\BeerHallSectorFeature.hpp">
       <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\maps\tiles\include\HolyTileDamageProcessor.hpp">
+      <Filter>Header Files\engine\maps\tiles\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8538,6 +8541,9 @@
     </ClCompile>
     <ClCompile Include="engine\generators\settlements\sector\source\BeerHallSectorFeature.cpp">
       <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\source\HolyTileDamageProcessor.cpp">
+      <Filter>Source Files\engine\maps\tiles\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

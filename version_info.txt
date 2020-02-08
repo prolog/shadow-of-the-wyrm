@@ -22,6 +22,8 @@ Shadow of the Wyrm v1.1.7 "Sor"
 
 - Unstoning potions can now occasionally be found when breaking clay pots.
 
+- Holy damage from spells can now curse items on the ground.
+
 - Shrine creatures have been buffed a bit:
 
   - Extra damage: golgothan.
