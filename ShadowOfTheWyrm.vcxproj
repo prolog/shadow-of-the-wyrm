@@ -857,6 +857,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\maps\tiles\features\include\TrapManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\WheelAndLoomManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\include\AcidTileDamageProcessor.hpp" />
+    <ClInclude Include="engine\maps\tiles\include\ArcaneTileDamageProcessor.hpp" />
     <ClInclude Include="engine\maps\tiles\include\ColdTileDamageProcessor.hpp" />
     <ClInclude Include="engine\maps\tiles\include\DefaultTileManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\include\GraveTileManipulator.hpp" />
@@ -1812,6 +1813,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\source\AcidTileDamageProcessor.cpp" />
+    <ClCompile Include="engine\maps\tiles\source\ArcaneTileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\ColdTileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\HeatTileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\HolyTileDamageProcessor.cpp" />

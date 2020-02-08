@@ -76,6 +76,8 @@ class TileTextKeys
     static const std::string TILE_DAMAGE_ACID;
     static const std::string TILE_DAMAGE_POISON;
     static const std::string TILE_DAMAGE_HOLY;
+    static const std::string TILE_DAMAGE_ARCANE;
+    static const std::string TILE_DAMAGE_ARCANE_ENCHANT;
 
     static const std::string TILE_INSCRIPTION_ILLITERATE;
 

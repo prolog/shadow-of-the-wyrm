@@ -19,5 +19,5 @@ class TileDamageProcessor
     virtual std::string get_item_processed_message(ItemPtr item);
 };
 
-using TileDamageProcessorPtr = std::shared_ptr<TileDamageProcessor>;
+using TileDamageProcessorPtr = std::unique_ptr<TileDamageProcessor>;
 
