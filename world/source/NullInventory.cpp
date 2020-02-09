@@ -79,6 +79,10 @@ bool NullInventory::clear()
   return true;
 }
 
+void NullInventory::set_additional_property(const string& p, const string& v)
+{
+}
+
 bool NullInventory::has_items() const
 {
   return false;
@@ -146,6 +150,11 @@ bool NullInventory::has_item_with_property(const string& additional_property_nam
 }
 
 uint NullInventory::count_items_with_property(const string& additional_property_name) const
+{
+  return 0;
+}
+
+uint NullInventory::count_items_without_property(const string& additional_property_name) const
 {
   return 0;
 }

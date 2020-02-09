@@ -16,4 +16,4 @@ class CombatTargetNumberCalculator
     AttackType attack_type;
 };
 
-using CombatTargetNumberCalculatorPtr = std::shared_ptr<CombatTargetNumberCalculator>;
+using CombatTargetNumberCalculatorPtr = std::unique_ptr<CombatTargetNumberCalculator>;

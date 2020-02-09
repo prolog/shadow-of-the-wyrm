@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "ItemProperties.hpp"
 #include "Spellbook.hpp"
 
 TEST(SW_World_NullInventory, serialization_id)
@@ -73,4 +74,22 @@ TEST(SW_World_NullInventory, add_items)
   ItemPtr item = std::make_shared<Spellbook>();
   ni.add_items({ item });
   EXPECT_EQ(0, ni.count_items());
+}
+
+TEST(SW_World_NullInventory, set_additional_property)
+{
+  NullInventory ni;
+  ItemPtr item = std::make_shared<Spellbook>();
+  ni.add_items({ item });
+  ni.set_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED, "1");
+  EXPECT_EQ(0, ni.count_items_with_property(ItemProperties::ITEM_PROPERTIES_BRANDED));
+}
+
+TEST(SW_World_NullInventory, count_items_without_property)
+{
+  NullInventory ni;
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_additional_property("fdsa", "1");
+  ni.add_items({ item });
+  EXPECT_EQ(0, ni.count_items_without_property("abc"));
 }

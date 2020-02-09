@@ -10,6 +10,7 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
+#include "ItemProperties.hpp"
 #include "LineOfSightCalculator.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
@@ -375,6 +376,17 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
     }
     
     creatures_new_tile->set_creature(creature);
+    
+    // Mark the properties for automove if we're dealing with the player.
+    if (creatures_old_tile != nullptr && creature->get_is_player())
+    {
+      IInventoryPtr old_tile_items = creatures_old_tile->get_items();
+      if (old_tile_items != nullptr)
+      {
+        old_tile_items->set_additional_property(ItemProperties::ITEM_PROPERTIES_MARK_AUTOMOVE, to_string(true));
+      }
+    }
+
     added_location = true;
 
     // If this is a new creature, add this to the map's temporary creature list.

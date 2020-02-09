@@ -6,6 +6,7 @@
 #include "CreatureUtils.hpp"
 #include "DirectionUtils.hpp"
 #include "Game.hpp"
+#include "ItemProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MovementAction.hpp"
@@ -247,8 +248,9 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allow
 
   bool items_allow_move = false;
 
-  // Stop auto-movement when moving to a tile that has items.
-  if (amf.get_ignore_items() || (current_tile && current_tile->get_items()->empty()))
+  // Stop auto-movement when moving to a tile that has items that we haven't
+  // seen before.
+  if (amf.get_ignore_items() || (current_tile && current_tile->get_items()->count_items_without_property(ItemProperties::ITEM_PROPERTIES_MARK_AUTOMOVE) == 0))
   {
     items_allow_move = true;
   }

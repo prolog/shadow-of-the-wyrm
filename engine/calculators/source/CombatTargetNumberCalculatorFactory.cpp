@@ -22,10 +22,10 @@ CombatTargetNumberCalculatorPtr CombatTargetNumberCalculatorFactory::create_targ
     case AttackType::ATTACK_TYPE_MELEE_SECONDARY:
     case AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
     case AttackType::ATTACK_TYPE_RANGED:
-      tn_calc = std::make_shared<MeleeAndRangedCombatTargetNumberCalculator>(attack_type);
+      tn_calc = std::make_unique<MeleeAndRangedCombatTargetNumberCalculator>(attack_type);
       break;
     case AttackType::ATTACK_TYPE_MAGICAL:
-      tn_calc = std::make_shared<MagicalCombatTargetNumberCalculator>();
+      tn_calc = std::make_unique<MagicalCombatTargetNumberCalculator>();
       break;
     default:
       break;
