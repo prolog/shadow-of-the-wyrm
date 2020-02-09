@@ -29,7 +29,7 @@ Shadow of the Wyrm v1.1.7 "Sor"
 
 - Automove remembers items. The first time you move over an item, you'll
   stop.  Subsequent auto-movement over that item won't halt unless there is
-  another, new item there.
+  another, new item there (Avagart).
 
 - More name combinations.
 

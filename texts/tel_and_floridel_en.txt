@@ -3332,3 +3332,14 @@ that lake is not for living men.  To be %b
 within it is to be open to the touch %b
 of those that swim the depths, and ask for them to judge."
 %p
+"With glamour and surprise, your folk should win %b
+easily, but I can see the desperate king %b
+cut down.  So what, then, did the giants bring %b
+from the ever-sleeping lands?  Because within %b
+the roiling waters, congress of the dead %b
+creates a shared intelligence, not unlike %b
+how early in the world, the magics bred %b
+a common sense, a thought-net, casting light %b
+on unseen things and working like a second sight."
+%p
+
