@@ -32,7 +32,8 @@ Shadow of the Wyrm v1.1.7 "Sor"
   another, new item there (Avagart).
 
 - Automove should now also stop at (natural, anyway) intersections in
-  dungeons, sewers, etc (Grond).
+  dungeons, sewers, etc.  It also aborts before any movement that
+  would require a prompt (Grond).
 
 - More name combinations.
 
