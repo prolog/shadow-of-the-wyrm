@@ -241,7 +241,7 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allow
 
   bool tile_allows_move = false;
 
-  if (amf.get_ignore_tile() || tile_type_allows_auto_move(tile))
+  if (amf.get_ignore_tile() || (tile_type_allows_auto_move(tile) && surrounding_tiles_allow_auto_move(map, creature)))
   {
     tile_allows_move = true;
   }
@@ -346,6 +346,24 @@ bool AutomaticMovementCoordinator::tile_type_allows_auto_move(TilePtr tile)
 
   return tt_auto_move;
 }
+
+bool AutomaticMovementCoordinator::surrounding_tiles_allow_auto_move(MapPtr map, CreaturePtr creature)
+{
+  bool allows_auto_move = true;
+
+  if (map != nullptr && creature != nullptr)
+  {
+    Coordinate c = map->get_location(creature->get_id());
+
+    if (MapUtils::is_intersection(map, c))
+    {
+      allows_auto_move = false;
+    }
+  }
+
+  return allows_auto_move;
+}
+
 // Check to see if the creature has already visited the new coordinate.
 pair<bool, vector<string>> AutomaticMovementCoordinator::prev_visited_coords_allow_auto_move(CreaturePtr creature, const Coordinate& new_coord, const AutomaticMovementFlags& amf)
 {

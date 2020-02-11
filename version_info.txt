@@ -31,6 +31,9 @@ Shadow of the Wyrm v1.1.7 "Sor"
   stop.  Subsequent auto-movement over that item won't halt unless there is
   another, new item there (Avagart).
 
+- Automove should now also stop at (natural, anyway) intersections in
+  dungeons, sewers, etc (Grond).
+
 - More name combinations.
 
 - Shrine creatures have been buffed a bit:

@@ -31,6 +31,9 @@ class AutomaticMovementCoordinator
     // map that disallows movement (hostile creatures).
     std::pair<bool, std::vector<std::string>> fov_allows_auto_move(CreaturePtr creature, MapPtr map);
     std::pair<bool, std::vector<std::string>> tile_allows_auto_move(CreaturePtr creature, TilePtr tile, const AutomaticMovementFlags& amf);
+
+
+    bool surrounding_tiles_allow_auto_move(MapPtr map, CreaturePtr creature);
     bool tile_type_allows_auto_move(TilePtr tile);
 
     // Can the creature move to the current tile, based on the ones visited

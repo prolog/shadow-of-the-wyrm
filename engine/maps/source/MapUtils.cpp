@@ -6,6 +6,7 @@
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "DirectionUtils.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
@@ -1647,6 +1648,98 @@ WeatherPtr MapUtils::get_weather(MapPtr map, TilePtr tile)
   }
 
   return weather;
+}
+
+bool MapUtils::is_intersection(MapPtr map, const Coordinate& c)
+{
+  bool is_int = false;
+
+  if (map != nullptr)
+  {
+    // A coordinate is an intersection if:
+    // - it's a floor
+    // - at least three adjacent directions are floors
+    // - at least one one adjacent direction is impassable
+
+    TilePtr t_c = map->at(c);
+    int floor_cnt = 0;
+    int imp_cnt = 0;
+
+    if (t_c != nullptr && t_c->get_tile_type() == TileType::TILE_TYPE_DUNGEON)
+    {
+      vector<Direction> adj_cardinal = {Direction::DIRECTION_NORTH, 
+                                        Direction::DIRECTION_SOUTH, 
+                                        Direction::DIRECTION_EAST, 
+                                        Direction::DIRECTION_WEST};
+
+      for (const Direction d : adj_cardinal)
+      {
+        TilePtr tile_d = map->at(CoordUtils::get_new_coordinate(c, d));
+
+        if (tile_d != nullptr)
+        {
+          TileType tt = tile_d->get_tile_type();
+
+          // JCD FIXME: THIS DOESN'T WORK FOR SEWERS
+          if (tt == TileType::TILE_TYPE_DUNGEON || tt == TileType::TILE_TYPE_ROCKY_EARTH)
+          {
+            floor_cnt++;
+          }
+          else if (tile_d->get_movement_multiplier() == 0)
+          {
+            imp_cnt++;
+          }
+        }
+      }
+
+      vector<Direction> adj_diag = {Direction::DIRECTION_NORTH_EAST,
+                                    Direction::DIRECTION_NORTH_WEST,
+                                    Direction::DIRECTION_SOUTH_EAST,
+                                    Direction::DIRECTION_SOUTH_WEST};
+
+      for (const Direction d : adj_diag)
+      {
+        TilePtr tile_d = map->at(CoordUtils::get_new_coordinate(c, d));
+
+        if (tile_d->get_movement_multiplier() == 0)
+        {
+          imp_cnt++;
+        }
+      }
+    }
+
+    // Absolutely certain I'm going to question this later, so here's an
+    // ASCII example:
+    //
+    // Not an intersection:
+    // ####
+    //  @
+    // ####
+    //
+    // Still not:
+    // # #
+    // # ###
+    // # @
+    // #####
+    //
+    // Yes:
+    // ## ##
+    //   @
+    // ## ##
+    //
+    // Also yes:
+    // #####
+    //   @
+    // ## ##
+    // Corner of a room, not an intersection.
+    // #####
+    // # @
+    // #
+    // #
+    is_int = (floor_cnt > 2 && imp_cnt > 3);
+  }
+  
+  return is_int;
 }
 
 // Add any messages after moving to a particular tile:
