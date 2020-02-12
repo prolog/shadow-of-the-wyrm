@@ -1676,20 +1676,20 @@ bool MapUtils::is_intersection(MapPtr map, const Coordinate& c)
       {
         TilePtr tile_d = map->at(CoordUtils::get_new_coordinate(c, d));
 
-        if (tile_d->has_feature())
-        {
-          FeaturePtr feat = tile_d->get_feature();
-
-          // If it's a door or gate, consider this to be an intersection 
-          // and stop.
-          if (feat->get_is_entrance())
-          {
-            return true;
-          }
-        }
-
         if (tile_d != nullptr)
         {
+          if (tile_d->has_feature())
+          {
+            FeaturePtr feat = tile_d->get_feature();
+
+            // If it's a door or gate, consider this to be an intersection 
+            // and stop.
+            if (feat->get_is_entrance())
+            {
+              return true;
+            }
+          }
+
           int movement_mult = tile_d->get_movement_multiplier();
 
           if (movement_mult > 0)
@@ -1712,7 +1712,7 @@ bool MapUtils::is_intersection(MapPtr map, const Coordinate& c)
       {
         TilePtr tile_d = map->at(CoordUtils::get_new_coordinate(c, d));
 
-        if (tile_d->get_movement_multiplier() == 0)
+        if (tile_d != nullptr && tile_d->get_movement_multiplier() == 0)
         {
           imp_cnt++;
         }
