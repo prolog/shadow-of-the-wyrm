@@ -1,5 +1,9 @@
 Me:
-- Intersection detection isn't working for sewers
+- Grond: cosmos empty
+- Grond: tower transitions weirdness
+- A2 -> A3 crash
+- Weird lighting between Telari base and first floor
+- tile destruction, shopkeeper wrath
 - Beer halls in villages
 - Spritesheets
 - auto save - not working?

@@ -1665,7 +1665,7 @@ bool MapUtils::is_intersection(MapPtr map, const Coordinate& c)
     int floor_cnt = 0;
     int imp_cnt = 0;
 
-    if (t_c != nullptr && t_c->get_tile_type() == TileType::TILE_TYPE_DUNGEON)
+    if (t_c != nullptr)
     {
       vector<Direction> adj_cardinal = {Direction::DIRECTION_NORTH, 
                                         Direction::DIRECTION_SOUTH, 
@@ -1676,16 +1676,27 @@ bool MapUtils::is_intersection(MapPtr map, const Coordinate& c)
       {
         TilePtr tile_d = map->at(CoordUtils::get_new_coordinate(c, d));
 
+        if (tile_d->has_feature())
+        {
+          FeaturePtr feat = tile_d->get_feature();
+
+          // If it's a door or gate, consider this to be an intersection 
+          // and stop.
+          if (feat->get_is_entrance())
+          {
+            return true;
+          }
+        }
+
         if (tile_d != nullptr)
         {
-          TileType tt = tile_d->get_tile_type();
+          int movement_mult = tile_d->get_movement_multiplier();
 
-          // JCD FIXME: THIS DOESN'T WORK FOR SEWERS
-          if (tt == TileType::TILE_TYPE_DUNGEON || tt == TileType::TILE_TYPE_ROCKY_EARTH)
+          if (movement_mult > 0)
           {
             floor_cnt++;
           }
-          else if (tile_d->get_movement_multiplier() == 0)
+          else
           {
             imp_cnt++;
           }

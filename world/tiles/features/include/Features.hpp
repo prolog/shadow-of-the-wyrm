@@ -219,6 +219,8 @@ class Entrance : public Feature
 
     virtual bool operator==(const Entrance& door) const;
 
+    virtual bool get_is_entrance() const override;
+
     virtual void set_state(const EntranceState& new_state);
     virtual EntranceState get_state() const;
     virtual EntranceState& get_state_ref();
