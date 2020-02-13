@@ -1,5 +1,6 @@
 Me:
 - Grond: tower transitions weirdness
+- This seems to have been introduced in 1.1.6!
 - tile destruction, shopkeeper wrath
 - Beer halls in villages
 - Spritesheets

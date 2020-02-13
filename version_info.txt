@@ -27,6 +27,9 @@ Shadow of the Wyrm v1.1.7 "Sor"
 - Arcane damage from spells has a chance either to destroy items on the
   affected tile, or to enchant them.
 
+- Destroying or em-baddening items in a shop will now generate shopkeeper
+  wrath.
+
 - Automove remembers items. The first time you move over an item, you'll
   stop.  Subsequent auto-movement over that item won't halt unless there is
   another, new item there (Avagart).
