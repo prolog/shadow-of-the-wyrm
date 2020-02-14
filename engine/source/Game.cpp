@@ -840,7 +840,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
 
         action_cost = CommandProcessor::process(current_creature, command, display);
 
-        if (current_creature->get_is_player())
+        if (current_creature->get_is_player() && get_is_current_map(current_map))
         {
           // After everything's done we need to update the display, but
           // shouldn't need to do a full redraw, since a full redraw
@@ -960,6 +960,18 @@ void Game::set_current_map(MapPtr map)
 MapPtr Game::get_current_map() const
 {
   return map_registry.get_map(current_map_id);
+}
+
+bool Game::get_is_current_map(MapPtr map) const
+{
+  bool is_curr = false;
+
+  if (map != nullptr && map->get_map_id() == current_map_id)
+  {
+    return is_curr = true;
+  }
+
+  return is_curr;
 }
 
 ActionManager& Game::get_action_manager_ref()
