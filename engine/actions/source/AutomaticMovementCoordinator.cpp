@@ -355,7 +355,7 @@ bool AutomaticMovementCoordinator::surrounding_tiles_allow_auto_move(MapPtr map,
   {
     Coordinate c = map->get_location(creature->get_id());
 
-    if (MapUtils::is_intersection(map, c))
+    if (MapUtils::is_intersection(map, creature, c))
     {
       allows_auto_move = false;
     }

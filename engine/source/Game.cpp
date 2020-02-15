@@ -664,7 +664,7 @@ void Game::exit_on_exception(CreaturePtr player)
 
 void Game::panic_save(CreaturePtr player)
 {
-  actions.save(player, true);
+  auto val = actions.save(player, true);
 }
 
 void Game::set_check_scores(const bool new_check_scores)
@@ -692,7 +692,7 @@ void Game::update_score_file_if_necessary(CreaturePtr current_player)
 
       Game& game = Game::instance();
       HighScoreScreen hss(game.get_display(), sf.get_entries());
-      hss.display();
+      auto val = hss.display();
 
       sf.save();
     }

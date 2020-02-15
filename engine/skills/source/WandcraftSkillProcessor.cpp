@@ -200,10 +200,10 @@ void WandcraftSkillProcessor::remove_wand_components(CreaturePtr creature)
     // The creature might be doing wandcraft with a bough instead.
     if (removal_details.first == false)
     {
-      im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_BOUGH);
+      auto val = im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_BOUGH);
     }
 
-    im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_MAGICI_SHARD);
+    auto val = im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_MAGICI_SHARD);
   }
 }
 

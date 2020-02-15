@@ -1650,7 +1650,7 @@ WeatherPtr MapUtils::get_weather(MapPtr map, TilePtr tile)
   return weather;
 }
 
-bool MapUtils::is_intersection(MapPtr map, const Coordinate& c)
+bool MapUtils::is_intersection(MapPtr map, CreaturePtr creature, const Coordinate& c)
 {
   bool is_int = false;
 
@@ -1691,8 +1691,9 @@ bool MapUtils::is_intersection(MapPtr map, const Coordinate& c)
           }
 
           int movement_mult = tile_d->get_movement_multiplier();
+          int blocking_or_dangerous = tile_d->get_is_blocking_or_dangerous(creature);
 
-          if (movement_mult > 0)
+          if (movement_mult > 0 && !blocking_or_dangerous)
           {
             floor_cnt++;
           }
@@ -1712,7 +1713,8 @@ bool MapUtils::is_intersection(MapPtr map, const Coordinate& c)
       {
         TilePtr tile_d = map->at(CoordUtils::get_new_coordinate(c, d));
 
-        if (tile_d != nullptr && tile_d->get_movement_multiplier() == 0)
+        if (tile_d != nullptr && (tile_d->get_movement_multiplier() == 0 ||
+                                  tile_d->get_is_blocking_or_dangerous(creature)))
         {
           imp_cnt++;
         }

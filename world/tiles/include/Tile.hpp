@@ -77,6 +77,7 @@ class Tile : public ISerializable
     
     virtual bool get_is_staircase() const;
     virtual bool get_is_available_for_creature(std::shared_ptr<Creature> creature) const;
+    virtual bool get_is_blocking_or_dangerous(std::shared_ptr<Creature> creature) const;
     virtual bool get_is_blocking(std::shared_ptr<Creature> perspective_creature = nullptr) const;
     virtual bool get_is_blocking_ignore_present_creature(std::shared_ptr<Creature> perspective_creature) const;
     virtual bool get_is_blocking_for_item(std::shared_ptr<Item> item = nullptr) const;
