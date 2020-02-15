@@ -1,7 +1,5 @@
 Me:
-- Grond: tower transitions weirdness
-- This seems to have been introduced in 1.1.6!
-- tile destruction, shopkeeper wrath
+- Grond: Pathing at mountain intersections
 - Beer halls in villages
 - Spritesheets
 - auto save - not working?
@@ -226,6 +224,7 @@ Grond:
 - Adjacent creatures attack on load
 - Differentiate scribing and wandcraft - why use scribing?
 - Scything on ammo?
+- NPC pathing through mountains	
 
 Yan Zhang:
 - Dungeon symbol should generate that thing on the last level

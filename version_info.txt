@@ -76,6 +76,9 @@ Shadow of the Wyrm v1.1.7 "Sor"
   - Every time the FeatureGenerator was called to create a barrel, a bed
     was produced instead.
 
+  - Scribing and wandcraft weren't checking whether the Nine were still
+    present when creating a scroll/wand with a divine spell (Grond).
+
 Shadow of the Wyrm v1.1.6 "Paganini"
 - Version started November 27, 2019.  Version finalized January 11, 2020.
 

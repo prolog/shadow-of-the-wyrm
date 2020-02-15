@@ -131,6 +131,7 @@ class ActionTextKeys
     static const std::string ACTION_WEAVE_NO_WEAVING_SKILL;
     static const std::string ACTION_WEAVE_SUCCESSFUL;
     static const std::string ACTION_SQUEEZE_FAILURE;
+    static const std::string ACTION_CRAFTING_NO_DEITIES;
     static const std::string ACTION_DIG_WATER;
     static const std::string ACTION_DIG_AIR;
     static const std::string ACTION_DIG_GROUND;
