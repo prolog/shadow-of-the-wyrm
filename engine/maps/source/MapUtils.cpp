@@ -1667,6 +1667,18 @@ bool MapUtils::is_intersection(MapPtr map, CreaturePtr creature, const Coordinat
 
     if (t_c != nullptr)
     {
+      if (t_c->has_feature())
+      {
+        FeaturePtr feat = t_c->get_feature();
+
+        // If we're standing on a door or gate, consider this to be an 
+        // intersection and stop.
+        if (feat->get_is_entrance())
+        {
+          return true;
+        }
+      }
+
       vector<Direction> adj_cardinal = {Direction::DIRECTION_NORTH, 
                                         Direction::DIRECTION_SOUTH, 
                                         Direction::DIRECTION_EAST, 
@@ -1678,18 +1690,6 @@ bool MapUtils::is_intersection(MapPtr map, CreaturePtr creature, const Coordinat
 
         if (tile_d != nullptr)
         {
-          if (tile_d->has_feature())
-          {
-            FeaturePtr feat = tile_d->get_feature();
-
-            // If it's a door or gate, consider this to be an intersection 
-            // and stop.
-            if (feat->get_is_entrance())
-            {
-              return true;
-            }
-          }
-
           int movement_mult = tile_d->get_movement_multiplier();
           int blocking_or_dangerous = tile_d->get_is_blocking_or_dangerous(creature);
 
