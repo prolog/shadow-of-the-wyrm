@@ -313,7 +313,7 @@
 				<Quantity>4</Quantity>
 			</Placement>
 			<Placement>
-				<ID>unstoning_potion</ID>
+				<ID>_unstoning_potion</ID>
 				<Coord>
 					<Row>2</Row>
 					<Col>64</Col>
@@ -348,14 +348,14 @@
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>healing_potion</ID>
+				<ID>_healing_potion</ID>
 				<Coord>
 					<Row>6</Row>
 					<Col>76</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>unstoning_potion</ID>
+				<ID>_unstoning_potion</ID>
 				<Coord>
 					<Row>6</Row>
 					<Col>76</Col>

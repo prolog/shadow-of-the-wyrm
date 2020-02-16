@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "Conversion.hpp"
+#include "ItemProperties.hpp"
 #include "Spellbook.hpp"
 #include "SmithingConstants.hpp"
 #include "Tool.hpp"
@@ -78,6 +79,23 @@ TEST(SW_World_Inventory, count_items_with_property)
   EXPECT_EQ(3, inv.count_items_with_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE));
 }
 
+TEST(SW_World_Inventory, count_items_without_property)
+{
+  Inventory inv;
+  string prop = "prop";
+
+  SpellbookPtr book = std::make_shared<Spellbook>();
+  book->set_id("book");
+
+  inv.add(book);
+
+  EXPECT_EQ(1, inv.count_items_without_property(prop));
+
+  book->set_additional_property(prop, "1");
+
+  EXPECT_EQ(0, inv.count_items_without_property(prop));
+}
+
 TEST(SW_World_Inventory, count_items)
 {
   Inventory inv;
@@ -151,4 +169,14 @@ TEST(SW_World_Inventory, add_items)
   i.add_items(items);
 
   EXPECT_EQ(2, i.count_items());
+}
+
+TEST(SW_World_Inventory, set_additional_property)
+{
+  Inventory inv;
+  ItemPtr item = std::make_shared<Spellbook>();
+  ItemPtr item2 = std::make_shared<Spellbook>();
+  inv.add_items({ item, item2 });
+  inv.set_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED, "1");
+  EXPECT_EQ(2, inv.count_items_with_property(ItemProperties::ITEM_PROPERTIES_BRANDED));
 }

@@ -11,9 +11,11 @@ local function pot_smash(item_original_id, creature_original_id, row, col)
   local base_id = ""
   local quantity = 1
   if RNG_percent_chance(1) then
-    base_id = "ether_potion"
+    base_id = "_ether_potion"
   elseif RNG_percent_chance(2) then
-    base_id = "healing_potion"
+    base_id = "_healing_potion"
+  elseif RNG_percent_chance(2) then
+    base_id = "_unstoning_potion"
   else
     base_id = CURRENCY_ID
     quantity = RNG_range(2,3)

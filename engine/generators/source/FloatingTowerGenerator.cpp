@@ -31,8 +31,11 @@ MapPtr FloatingTowerGenerator::generate(const Dimensions& dimensions)
 
   // Ensure that the level isn't diggable.
   // Floating Towers are also outside the view of the divine.
+  // Teleporting is also not allowed, as it makes clearing creatures trivially
+  // easy, by sending them to their deaths.
   map->set_property(MapProperties::MAP_PROPERTIES_CANNOT_DIG, to_string(true));
   map->set_property(MapProperties::MAP_PROPERTIES_CANNOT_PRAY, to_string(true));
+  map->set_property(MapProperties::MAP_PROPERTIES_CANNOT_TELEPORT, to_string(true));
 
   return map;
 }

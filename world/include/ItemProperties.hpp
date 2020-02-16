@@ -20,6 +20,7 @@ class ItemProperties
     static const std::string ITEM_PROPERTIES_MUSIC_PERFORMANCE_FAILED;
     static const std::string ITEM_PROPERTIES_MUSIC_CHARM_RACES;
     static const std::string ITEM_PROPERTIES_LOCK_ID;
+    static const std::string ITEM_PROPERTIES_MARK_AUTOMOVE;
 
   protected:
     ItemProperties();

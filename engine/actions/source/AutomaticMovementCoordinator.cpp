@@ -6,6 +6,7 @@
 #include "CreatureUtils.hpp"
 #include "DirectionUtils.hpp"
 #include "Game.hpp"
+#include "ItemProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MovementAction.hpp"
@@ -240,15 +241,16 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allow
 
   bool tile_allows_move = false;
 
-  if (amf.get_ignore_tile() || tile_type_allows_auto_move(tile))
+  if (amf.get_ignore_tile() || (tile_type_allows_auto_move(tile) && surrounding_tiles_allow_auto_move(map, creature)))
   {
     tile_allows_move = true;
   }
 
   bool items_allow_move = false;
 
-  // Stop auto-movement when moving to a tile that has items.
-  if (amf.get_ignore_items() || (current_tile && current_tile->get_items()->empty()))
+  // Stop auto-movement when moving to a tile that has items that we haven't
+  // seen before.
+  if (amf.get_ignore_items() || (current_tile && current_tile->get_items()->count_items_without_property(ItemProperties::ITEM_PROPERTIES_MARK_AUTOMOVE) == 0))
   {
     items_allow_move = true;
   }
@@ -325,7 +327,7 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::tile_allows_auto_move(C
 {
   pair<bool, vector<string>> tile_details;
 
-  tile_details.first = amf.get_ignore_tile() || (tile && !tile->has_blocking_feature());
+  tile_details.first = amf.get_ignore_tile() || (tile && !tile->get_is_blocking(creature));
 
   return tile_details;
 }
@@ -344,6 +346,24 @@ bool AutomaticMovementCoordinator::tile_type_allows_auto_move(TilePtr tile)
 
   return tt_auto_move;
 }
+
+bool AutomaticMovementCoordinator::surrounding_tiles_allow_auto_move(MapPtr map, CreaturePtr creature)
+{
+  bool allows_auto_move = true;
+
+  if (map != nullptr && creature != nullptr)
+  {
+    Coordinate c = map->get_location(creature->get_id());
+
+    if (MapUtils::is_intersection(map, creature, c))
+    {
+      allows_auto_move = false;
+    }
+  }
+
+  return allows_auto_move;
+}
+
 // Check to see if the creature has already visited the new coordinate.
 pair<bool, vector<string>> AutomaticMovementCoordinator::prev_visited_coords_allow_auto_move(CreaturePtr creature, const Coordinate& new_coord, const AutomaticMovementFlags& amf)
 {

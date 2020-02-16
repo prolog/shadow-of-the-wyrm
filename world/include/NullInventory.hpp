@@ -22,6 +22,8 @@ class NullInventory : public IInventory
 
     bool clear() override;
 
+    void set_additional_property(const std::string& property_name, const std::string& property_value) override;
+
     bool has_items() const override;
     bool has_unpaid_items() const override;
     ItemPtr at(const uint index) override;
@@ -35,6 +37,7 @@ class NullInventory : public IInventory
     bool has_item_type(const ItemType type) const override;
     bool has_item_with_property(const std::string& additional_property_name) const override;
     uint count_items_with_property(const std::string& additional_property_name) const override;
+    uint count_items_without_property(const std::string& additional_property_name) const override;
     uint count_items(const std::string& item_base_id) const override;
     uint count_items() const override;
     uint count_currency() const override;

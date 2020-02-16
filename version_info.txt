@@ -1,3 +1,84 @@
+Shadow of the Wyrm v1.1.7 "Sor"
+- Version declared January 11, 2020.  Version finalized February 16, 2020.
+
+- Teleporting is now disallowed in Telari and Zaeda's Tower (fiamma).
+
+- The masters of the high tower now have an assortment of spells (fiamma).
+
+- Nobles no longer start with scribing, which was useless to them as they could
+  not cast any magic.  Instead, they are better at short and long blades, at
+  whips, and also start with a leather whip for keeping the peasants in line
+  (NoCreativeNames).
+
+- Shops can now appear in dungeons.
+
+- Dungeons can now have beer halls.  These contain a lot of booze and
+  sometimes a few restorative-type potions as well.
+
+- Beer halls may also be generated the public and low-income residential 
+  sectors of Carcassia.
+
+- Booze symbol colours have been tweaked to be more colourful.
+
+- Unstoning potions can now occasionally be found when breaking clay pots.
+
+- Holy damage from spells can now curse items on the ground.
+
+- Arcane damage from spells has a chance either to destroy items on the
+  affected tile, or to enchant them.
+
+- Destroying or em-baddening items in a shop will now generate shopkeeper
+  wrath.
+
+- Automove remembers items. The first time you move over an item, you'll
+  stop.  Subsequent auto-movement over that item won't halt unless there is
+  another, new item there (Avagart).
+
+- Automove should now also stop at (natural, anyway) intersections in
+  dungeons, sewers, etc.  It also aborts before any movement that
+  would require a prompt (Grond).
+
+- More name combinations.
+
+- Shrine creatures have been buffed a bit:
+
+  - Extra damage: golgothan.
+
+  - Piercing damage: archangel, divine avenger, shadow wyrm.
+
+  - Spells: archangel, divine avenger, dragon, shrine hag.
+
+  - Extra status effects/bonuses: unicorn, black unicorn, spectral emperor,
+    titan, mist wraith.
+
+  - Speed boost: avernal bat, mist wraith.
+
+- New spells/spellbooks: stun bolt (Mystic).
+
+- Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - Weather colouring wasn't respecting time-of-day overrides (Grond).
+
+  - Falling damage wouldn't actually kill you when your current HP exceeded 
+    your max.
+
+  - Bestiary wasn't showing via 'B' (Jay Ferro).
+
+  - Various typos (Jay Ferro, others).
+
+  - Automove wasn't properly terminating without digging (naughtyusername).
+
+  - The dungeon room-connecting code was digging as it should, but wasn't 
+    transferring any existing items as it went.
+
+  - Every time the FeatureGenerator was called to create a barrel, a bed
+    was produced instead.
+
+  - Scribing and wandcraft weren't checking whether the Nine were still
+    present when creating a scroll/wand with a divine spell (Grond).
+
 Shadow of the Wyrm v1.1.6 "Paganini"
 - Version started November 27, 2019.  Version finalized January 11, 2020.
 

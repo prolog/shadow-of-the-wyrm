@@ -293,7 +293,8 @@ vector<Coordinate> CoordUtils::get_corner_coordinates(const Coordinate& top_left
 
 vector<Coordinate> CoordUtils::get_perimeter_coordinates(const Coordinate& top_left, const Coordinate& bottom_right)
 {
-  vector<Coordinate> perimeter_coordinates(get_perimeter_length(top_left, bottom_right));
+  vector<Coordinate> perimeter_coordinates;
+  perimeter_coordinates.reserve(get_perimeter_length(top_left, bottom_right));
 
   // Top
   for (int col = top_left.second; col <= bottom_right.second; col++)

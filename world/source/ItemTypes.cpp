@@ -64,6 +64,16 @@ const string ItemIdKeys::ITEM_ID_BLANK_SCROLL     = "_blank_scroll";
 const string ItemIdKeys::ITEM_ID_TEMPLATE_SCROLL  = "_template_scroll";
 const string ItemIdKeys::ITEM_ID_PAPER_PULP       = "_paper_pulp";
 const string ItemIdKeys::ITEM_ID_MOLD_AND_DECKLE  = "_mold_and_deckle";
+const string ItemIdKeys::ITEM_ID_DRAM_GIN         = "dram_gin";
+const string ItemIdKeys::ITEM_ID_DRAM_MEAD        = "dram_mead";
+const string ItemIdKeys::ITEM_ID_DRAM_WHISKY      = "dram_whisky";
+const string ItemIdKeys::ITEM_ID_GNOMISH_STOUT    = "gnomish_stout";
+const string ItemIdKeys::ITEM_ID_FORTIFIED_DWARVEN_WINE = "fortified_dwarven_wine";
+const string ItemIdKeys::ITEM_ID_ELVEN_BRANDY     = "elven_brandy";
+const string ItemIdKeys::ITEM_ID_GOBLIN_MOONSHINE = "goblin_moonshine";
+const string ItemIdKeys::ITEM_ID_UNSTONING_POTION = "_unstoning_potion";
+const string ItemIdKeys::ITEM_ID_HEALING_POTION   = "_healing_potion";
+const string ItemIdKeys::ITEM_ID_ETHER_POTION     = "_ether_potion";
 
 // Item Scripts
 ItemEventScripts::ItemEventScripts()

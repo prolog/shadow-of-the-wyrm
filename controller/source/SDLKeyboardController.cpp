@@ -162,7 +162,7 @@ pair<bool, int> SDLKeyboardController::read_char_as_int_nb()
     {
       character.first = true;
       character.second = event.key.keysym.sym;
-      
+
       break;
     }
     else if (event.type == SDL_QUIT)

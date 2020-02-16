@@ -1,6 +1,7 @@
+#include "gtest/gtest.h"
 #include "Amulet.hpp"
 #include "DungeonTile.hpp"
-#include "gtest/gtest.h"
+#include "FeatureGenerator.hpp"
 #include "RockTile.hpp"
 #include "RockyEarthTile.hpp"
 #include "TileGenerator.hpp"
@@ -192,4 +193,75 @@ TEST(SW_World_Tiles_Tile, saveload)
       cout << "Failed for tile type: " << i;
     }
   }
+}
+
+TEST(SW_World_Tile, set_items)
+{
+  TileGenerator tg;
+  TilePtr tile = tg.generate(TileType::TILE_TYPE_FIELD);
+
+  IInventoryPtr items = std::make_shared<Inventory>();
+  ItemPtr i1 = std::make_shared<Amulet>();
+  ItemPtr i2 = std::make_shared<Amulet>();
+
+  items->add(i1);
+  items->add(i2);
+
+  tile->set_items(items);
+
+  items = tile->get_items();
+
+  EXPECT_EQ(2, items->count_items());
+}
+
+TEST(SW_World_Tile, add_items)
+{
+  TileGenerator tg;
+  TilePtr tile = tg.generate(TileType::TILE_TYPE_FIELD);
+
+  IInventoryPtr items = std::make_shared<Inventory>();
+  ItemPtr i1 = std::make_shared<Amulet>();
+  ItemPtr i2 = std::make_shared<Amulet>();
+
+  items->add(i1);
+  items->add(i2);
+
+  tile->set_items(items);
+
+  IInventoryPtr items2 = std::make_shared<Inventory>();
+  ItemPtr i2_1 = std::make_shared<Amulet>();
+  ItemPtr i2_2 = std::make_shared<Amulet>();
+
+  items2->add(i2_1);
+  items2->add(i2_2);
+
+  tile->add_items(items2);
+
+  EXPECT_EQ(4, items->count_items());
+}
+
+TEST(SW_World_Tile, copy_entities)
+{
+  TileGenerator tg;
+  TilePtr tile = tg.generate(TileType::TILE_TYPE_FIELD);
+
+  IInventoryPtr items = std::make_shared<Inventory>();
+  ItemPtr i1 = std::make_shared<Amulet>();
+  ItemPtr i2 = std::make_shared<Amulet>();
+  items->add(i1);
+  items->add(i2);
+  tile->set_items(items);
+
+  CreaturePtr creature = std::make_shared<Creature>();
+  tile->set_creature(creature);
+
+  FeaturePtr feature = FeatureGenerator::generate_barrel();
+  tile->set_feature(feature);
+
+  TilePtr tile2 = tg.generate(TileType::TILE_TYPE_FIELD);
+  tile2->copy_entities(tile);
+
+  EXPECT_TRUE(tile2->has_creature());
+  EXPECT_TRUE(tile2->has_feature());
+  EXPECT_EQ(2, tile2->get_items()->count_items());
 }

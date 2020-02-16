@@ -748,10 +748,12 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Map
 {
   TileMovementConfirmation tmc;
   Coordinate old_tile_coords = {0, 0};
-  
+  bool is_automoving = false;
+
   if (creature != nullptr && current_map != nullptr)
   {
     old_tile_coords = current_map->get_location(creature->get_id());
+    is_automoving = creature->get_automatic_movement_ref().get_engaged();
   }
 
   pair<bool, string> details = tmc.get_confirmation_details(creature, current_map, creatures_old_tile, old_tile_coords, creatures_new_tile, creatures_new_tile_coords);
@@ -765,7 +767,7 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Map
     Settings& settings = game.get_settings_ref();
     bool never_move_to_danger = String::to_bool(settings.get_setting(Setting::NEVER_MOVE_TO_DANGER_TILES));
 
-    if (never_move_to_danger == false)
+    if (never_move_to_danger == false && is_automoving == false)
     {
       if (creature->get_is_player())
       {

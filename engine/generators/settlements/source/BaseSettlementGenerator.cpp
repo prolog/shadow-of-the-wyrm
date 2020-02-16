@@ -3,7 +3,6 @@
 #include "BuildingConfigFactory.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
-#include "ShopGenerator.hpp"
 #include "TileGenerator.hpp"
 
 using namespace std;

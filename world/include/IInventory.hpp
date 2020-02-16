@@ -45,6 +45,9 @@ class IInventory : public ISerializable
 
     virtual bool clear() = 0;
 
+    // Set a property on all items in the inventory.
+    virtual void set_additional_property(const std::string& property_name, const std::string& property_value) = 0;
+
     virtual bool has_items() const = 0;
     virtual bool has_unpaid_items() const = 0;
     virtual ItemPtr at(const uint index) = 0;
@@ -58,6 +61,7 @@ class IInventory : public ISerializable
     virtual bool has_item_type(const ItemType type) const = 0;
     virtual bool has_item_with_property(const std::string& additional_property_name) const = 0;
     virtual uint count_items_with_property(const std::string& additional_property_name) const = 0;
+    virtual uint count_items_without_property(const std::string& additional_property_name) const = 0;
     virtual uint count_items(const std::string& item_base_id) const = 0;
     virtual uint count_items() const = 0;
     virtual uint count_currency() const = 0;

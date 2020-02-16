@@ -3974,9 +3974,6 @@
     <ClInclude Include="engine\generators\settlements\include\BuildingGenerationParameters.hpp">
       <Filter>Header Files\engine\generators\settlements\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\generators\settlements\include\CityGenerator.hpp">
-      <Filter>Header Files\engine\generators\settlements\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\generators\settlements\include\HamletGenerator.hpp">
       <Filter>Header Files\engine\generators\settlements\include</Filter>
     </ClInclude>
@@ -4261,6 +4258,15 @@
     </ClInclude>
     <ClInclude Include="engine\XML\include\XMLBaseFeatureReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\BeerHallSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\include\HolyTileDamageProcessor.hpp">
+      <Filter>Header Files\engine\maps\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\include\ArcaneTileDamageProcessor.hpp">
+      <Filter>Header Files\engine\maps\tiles\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -8176,9 +8182,6 @@
     <ClCompile Include="engine\generators\settlements\source\BuildingGenerationParameters.cpp">
       <Filter>Source Files\engine\generators\settlements\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\generators\settlements\source\CityGenerator.cpp">
-      <Filter>Source Files\engine\generators\settlements\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\generators\settlements\source\HamletGenerator.cpp">
       <Filter>Source Files\engine\generators\settlements\source</Filter>
     </ClCompile>
@@ -8538,6 +8541,15 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\WeatherCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\BeerHallSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\source\HolyTileDamageProcessor.cpp">
+      <Filter>Source Files\engine\maps\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\source\ArcaneTileDamageProcessor.cpp">
+      <Filter>Source Files\engine\maps\tiles\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
