@@ -6,10 +6,12 @@
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "DirectionUtils.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
+#include "ItemProperties.hpp"
 #include "LineOfSightCalculator.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
@@ -375,6 +377,17 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
     }
     
     creatures_new_tile->set_creature(creature);
+    
+    // Mark the properties for automove if we're dealing with the player.
+    if (creatures_old_tile != nullptr && creature->get_is_player())
+    {
+      IInventoryPtr old_tile_items = creatures_old_tile->get_items();
+      if (old_tile_items != nullptr)
+      {
+        old_tile_items->set_additional_property(ItemProperties::ITEM_PROPERTIES_MARK_AUTOMOVE, to_string(true));
+      }
+    }
+
     added_location = true;
 
     // If this is a new creature, add this to the map's temporary creature list.
@@ -1635,6 +1648,111 @@ WeatherPtr MapUtils::get_weather(MapPtr map, TilePtr tile)
   }
 
   return weather;
+}
+
+bool MapUtils::is_intersection(MapPtr map, CreaturePtr creature, const Coordinate& c)
+{
+  bool is_int = false;
+
+  if (map != nullptr)
+  {
+    // A coordinate is an intersection if:
+    // - it's a floor
+    // - at least three adjacent directions are floors
+    // - at least one one adjacent direction is impassable
+
+    TilePtr t_c = map->at(c);
+    int floor_cnt = 0;
+    int imp_cnt = 0;
+
+    if (t_c != nullptr)
+    {
+      if (t_c->has_feature())
+      {
+        FeaturePtr feat = t_c->get_feature();
+
+        // If we're standing on a door or gate, consider this to be an 
+        // intersection and stop.
+        if (feat->get_is_entrance())
+        {
+          return true;
+        }
+      }
+
+      vector<Direction> adj_cardinal = {Direction::DIRECTION_NORTH, 
+                                        Direction::DIRECTION_SOUTH, 
+                                        Direction::DIRECTION_EAST, 
+                                        Direction::DIRECTION_WEST};
+
+      for (const Direction d : adj_cardinal)
+      {
+        TilePtr tile_d = map->at(CoordUtils::get_new_coordinate(c, d));
+
+        if (tile_d != nullptr)
+        {
+          int movement_mult = tile_d->get_movement_multiplier();
+          int blocking_or_dangerous = tile_d->get_is_blocking_or_dangerous(creature);
+
+          if (movement_mult > 0 && !blocking_or_dangerous)
+          {
+            floor_cnt++;
+          }
+          else
+          {
+            imp_cnt++;
+          }
+        }
+      }
+
+      vector<Direction> adj_diag = {Direction::DIRECTION_NORTH_EAST,
+                                    Direction::DIRECTION_NORTH_WEST,
+                                    Direction::DIRECTION_SOUTH_EAST,
+                                    Direction::DIRECTION_SOUTH_WEST};
+
+      for (const Direction d : adj_diag)
+      {
+        TilePtr tile_d = map->at(CoordUtils::get_new_coordinate(c, d));
+
+        if (tile_d != nullptr && (tile_d->get_movement_multiplier() == 0 ||
+                                  tile_d->get_is_blocking_or_dangerous(creature)))
+        {
+          imp_cnt++;
+        }
+      }
+    }
+
+    // Absolutely certain I'm going to question this later, so here's an
+    // ASCII example:
+    //
+    // Not an intersection:
+    // ####
+    //  @
+    // ####
+    //
+    // Still not:
+    // # #
+    // # ###
+    // # @
+    // #####
+    //
+    // Yes:
+    // ## ##
+    //   @
+    // ## ##
+    //
+    // Also yes:
+    // #####
+    //   @
+    // ## ##
+    // Corner of a room, not an intersection.
+    // #####
+    // # @
+    // #
+    // #
+    is_int = (floor_cnt > 2 && imp_cnt > 3);
+  }
+  
+  return is_int;
 }
 
 // Add any messages after moving to a particular tile:

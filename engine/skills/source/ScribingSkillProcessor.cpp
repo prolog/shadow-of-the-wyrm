@@ -134,11 +134,20 @@ ItemPtr ScribingSkillProcessor::create_scroll(CreaturePtr creature, const string
         {
           Spell spell = s_it->second;
 
+          if (spell.get_magic_category() == SkillType::SKILL_MAGIC_DIVINE && game.get_deities_cref().empty())
+          {
+            IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+            manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_CRAFTING_NO_DEITIES));
+            manager.send();
+
+            return nullptr;
+          }
+
           // First, remove the items needed to create the scroll.
           // Quills can be reused over and over.
           ItemManager im;
-          im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_INKPOT);
-          im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_BLANK_SCROLL);
+          auto ink_rem = im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_INKPOT);
+          auto scroll_rem = im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_BLANK_SCROLL);
 
           // Next, add the necessary effects, properties, and so on.
           SpellTransfer st;

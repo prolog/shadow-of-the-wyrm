@@ -482,6 +482,11 @@ Symbol Entrance::get_symbol() const
   return s;
 }
 
+bool Entrance::get_is_entrance() const
+{
+  return true;
+}
+
 void Entrance::set_maximum_size(const CreatureSize new_size)
 {
   maximum_size = new_size;

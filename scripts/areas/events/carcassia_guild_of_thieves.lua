@@ -35,7 +35,7 @@ end
 
 local function init_tombs(map_id)
   local creature_ids = {"mummy", "golem", "corpse_fiend", "shadow_snake", "skeletal_warrior", "muck", "mire", "rock_grinder", "shade", "crone"}
-  local treasure_ids = {"gain_attributes_potion", "speed_potion", "antidote_potion", "ether_potion", "identify_scroll", "enchanting_scroll", "mapping_scroll", "recharging_scroll", "teleport_wand", "dragon_breath_wand", "digging_wand", "_golden_apple", "_silver_apple", "silverweed"}
+  local treasure_ids = {"gain_attributes_potion", "speed_potion", "antidote_potion", "_ether_potion", "identify_scroll", "enchanting_scroll", "mapping_scroll", "recharging_scroll", "teleport_wand", "dragon_breath_wand", "digging_wand", "_golden_apple", "_silver_apple", "silverweed"}
 
   local placements = dig_rectangles(map_id, 1, 1, 10, 40, 8)
   local placements2 = dig_rectangles(map_id, 1, 35, 18, 78, 8)

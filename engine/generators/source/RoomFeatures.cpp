@@ -19,5 +19,6 @@ const string RoomFeatures::ROOM_FEATURE_GRAVE = "ROOM_FEATURE_GRAVE";
 const string RoomFeatures::ROOM_FEATURE_SPRING = "ROOM_FEATURE_SPRING";
 const string RoomFeatures::ROOM_FEATURE_CRAFT_ROOM = "ROOM_FEATURE_CRAFT_ROOM";
 const string RoomFeatures::ROOM_FEATURE_MAGIC_TREE = "ROOM_FEATURE_MAGIC_TREE";
-
+const string RoomFeatures::ROOM_FEATURE_SHOP = "ROOM_FEATURE_SHOP";
+const string RoomFeatures::ROOM_FEATURE_BEER_HALL = "ROOM_FEATURE_BEER_HALL";
 

@@ -395,6 +395,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_primordial_castings", get_primordial_castings);
   lua_register(L, "creature_exists", creature_exists);
   lua_register(L, "set_weather", set_weather);
+  lua_register(L, "genocide", genocide);
 }
 
 // Lua API helper functions
@@ -7915,6 +7916,36 @@ int set_weather(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Invalid arguments to set_weather");
+  }
+
+  return 0;
+}
+
+// Clear all non-player creatures from the current map
+int genocide(lua_State* ls)
+{
+  if (lua_gettop(ls) == 0)
+  {
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      const CreatureMap creatures = map->get_creatures();
+
+      for (auto cr_pair : creatures)
+      {
+        CreaturePtr creature = cr_pair.second;
+
+        if (creature != nullptr && !creature->get_is_player())
+        {
+          MapUtils::remove_creature(map, creature);
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to genocide");
   }
 
   return 0;

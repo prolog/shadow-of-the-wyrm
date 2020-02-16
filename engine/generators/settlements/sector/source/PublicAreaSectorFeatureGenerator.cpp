@@ -1,3 +1,4 @@
+#include "BeerHallSectorFeature.hpp"
 #include "PublicAreaSectorFeatureGenerator.hpp"
 #include "GardenGeneratorFactory.hpp"
 #include "ParkSectorFeature.hpp"
@@ -12,6 +13,7 @@ PublicAreaSectorFeatureGenerator::PublicAreaSectorFeatureGenerator()
 : features({{20, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PLAZA},
             {35, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_SHOP},
             {55, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK},
+            {65, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_BEER_HALL},
             {75, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_TOMB},
             {90, PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_GARDEN}})
 {
@@ -42,6 +44,9 @@ bool PublicAreaSectorFeatureGenerator::create_feature(MapPtr map, const Coordina
       break;
     case PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_GARDEN:
       feature = GardenGeneratorFactory::create_uniform_random_garden_generator();
+      break;
+    case PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_BEER_HALL:
+      feature = std::make_shared<BeerHallSectorFeature>(true);
       break;
     case PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK:
     default:

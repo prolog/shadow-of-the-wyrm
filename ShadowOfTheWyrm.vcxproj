@@ -690,7 +690,6 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\settlements\include\Building.hpp" />
     <ClInclude Include="engine\generators\settlements\include\BuildingConfigFactory.hpp" />
     <ClInclude Include="engine\generators\settlements\include\BuildingGenerationParameters.hpp" />
-    <ClInclude Include="engine\generators\settlements\include\CityGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\HamletGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\ScatteredSettlementGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\SettlementGenerator.hpp" />
@@ -700,6 +699,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\settlements\include\SettlementTypes.hpp" />
     <ClInclude Include="engine\generators\settlements\include\ShopGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\WalledSettlementGenerator.hpp" />
+    <ClInclude Include="engine\generators\settlements\sector\include\BeerHallSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\CitySectorGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\CitySectorTypes.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\DefaultSectorFeatureGenerator.hpp" />
@@ -857,10 +857,12 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\maps\tiles\features\include\TrapManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\WheelAndLoomManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\include\AcidTileDamageProcessor.hpp" />
+    <ClInclude Include="engine\maps\tiles\include\ArcaneTileDamageProcessor.hpp" />
     <ClInclude Include="engine\maps\tiles\include\ColdTileDamageProcessor.hpp" />
     <ClInclude Include="engine\maps\tiles\include\DefaultTileManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\include\GraveTileManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\include\HeatTileDamageProcessor.hpp" />
+    <ClInclude Include="engine\maps\tiles\include\HolyTileDamageProcessor.hpp" />
     <ClInclude Include="engine\maps\tiles\include\ITileManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\include\NullTileDamageProcessor.hpp" />
     <ClInclude Include="engine\maps\tiles\include\PoisonTileDamageProcessor.hpp" />
@@ -1707,6 +1709,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\rooms\source\CaveInRoomGenerator.cpp" />
     <ClCompile Include="engine\generators\rooms\source\DankRoomGenerator.cpp" />
     <ClCompile Include="engine\generators\rooms\source\WetRoomGenerator.cpp" />
+    <ClCompile Include="engine\generators\settlements\sector\source\BeerHallSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\CitySectorGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\DefaultSectorFeatureGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\GardenGeneratorFactory.cpp" />
@@ -1734,7 +1737,6 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\settlements\source\Building.cpp" />
     <ClCompile Include="engine\generators\settlements\source\BuildingConfigFactory.cpp" />
     <ClCompile Include="engine\generators\settlements\source\BuildingGenerationParameters.cpp" />
-    <ClCompile Include="engine\generators\settlements\source\CityGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\HamletGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\ScatteredSettlementGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\source\SettlementGenerator.cpp" />
@@ -1811,8 +1813,10 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\source\AcidTileDamageProcessor.cpp" />
+    <ClCompile Include="engine\maps\tiles\source\ArcaneTileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\ColdTileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\HeatTileDamageProcessor.cpp" />
+    <ClCompile Include="engine\maps\tiles\source\HolyTileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\NullTileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\PoisonTileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\TileDamageProcessor.cpp" />

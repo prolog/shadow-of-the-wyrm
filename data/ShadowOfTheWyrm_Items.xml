@@ -6622,7 +6622,7 @@
 				<Material>2</Material>
 				<Symbol>
 					<Char>!</Char>
-					<Colour>3</Colour>
+					<Colour>8</Colour>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>400</Nutrition>
@@ -6641,7 +6641,7 @@
 				<Material>2</Material>
 				<Symbol>
 					<Char>!</Char>
-					<Colour>3</Colour>
+					<Colour>1</Colour>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>400</Nutrition>
@@ -6680,7 +6680,7 @@
 				<Material>2</Material>
 				<Symbol>
 					<Char>!</Char>
-					<Colour>3</Colour>
+					<Colour>15</Colour>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
@@ -6688,7 +6688,7 @@
 				<StandardDrinks>4</StandardDrinks>
 				<Effect>0</Effect>
 			</Potion>
-			<Potion id="healing_potion">
+			<Potion id="_healing_potion">
 				<DescriptionSID>HEALING_POTION_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_HEALING_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>HEALING_POTION_USAGE_SID</UsageDescriptionSID>
@@ -6768,7 +6768,7 @@
 				<Nutrition>100</Nutrition>
 				<Effect>8</Effect>
 			</Potion>
-			<Potion id="unstoning_potion">
+			<Potion id="_unstoning_potion">
 				<DescriptionSID>UNSTONING_POTION_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_UNSTONING_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>UNSTONING_POTION_USAGE_SID</UsageDescriptionSID>
@@ -6935,7 +6935,7 @@
 					<Type>3</Type>
 				</Damage>
 			</Potion>			
-			<Potion id="ether_potion">
+			<Potion id="_ether_potion">
 				<DescriptionSID>ETHER_POTION_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_ETHER_POTION_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>ETHER_POTION_USAGE_SID</UsageDescriptionSID>
@@ -9651,6 +9651,25 @@
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_17_rage</SpellID>
 				<Difficulty>60</Difficulty>
+			</Spellbook>
+			<Spellbook id="stun_bolt_spellbook">
+				<DescriptionSID>STUN_BOLT_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_STUN_BOLT_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>STUN_BOLT_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_STUN_BOLT_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>STUN_BOLT_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
+				<Value>177</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<Symbol>
+					<Char>"</Char>
+					<Colour>3</Colour>
+				</Symbol>
+				<DangerLevel>4</DangerLevel>
+				<SpellID>m_18_stun_bolt</SpellID>
+				<Difficulty>65</Difficulty>
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>

@@ -16,6 +16,8 @@ class RoomFeatures
     static const std::string ROOM_FEATURE_SPRING;
     static const std::string ROOM_FEATURE_CRAFT_ROOM;
     static const std::string ROOM_FEATURE_MAGIC_TREE;
+    static const std::string ROOM_FEATURE_SHOP;
+    static const std::string ROOM_FEATURE_BEER_HALL;
 
   protected:
     RoomFeatures();

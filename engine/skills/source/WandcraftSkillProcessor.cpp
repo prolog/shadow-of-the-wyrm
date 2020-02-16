@@ -40,6 +40,17 @@ ActionCostValue WandcraftSkillProcessor::process(CreaturePtr creature, MapPtr ma
         if (s_it != spells.end())
         {
           Spell spell = s_it->second;
+
+          if (spell.get_magic_category() == SkillType::SKILL_MAGIC_DIVINE && game.get_deities_cref().empty())
+          {
+            IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+            manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_CRAFTING_NO_DEITIES));
+            manager.send();
+
+            acv = get_default_skill_action_cost_value(creature);
+            return acv;
+          }
+
           WandCalculator wc;
 
           IndividualSpellKnowledge isk = creature->get_spell_knowledge_ref().get_spell_knowledge(spell_id);
@@ -189,10 +200,10 @@ void WandcraftSkillProcessor::remove_wand_components(CreaturePtr creature)
     // The creature might be doing wandcraft with a bough instead.
     if (removal_details.first == false)
     {
-      im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_BOUGH);
+      auto val = im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_BOUGH);
     }
 
-    im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_MAGICI_SHARD);
+    auto val = im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_MAGICI_SHARD);
   }
 }
 

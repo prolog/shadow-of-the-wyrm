@@ -72,6 +72,11 @@ bool Feature::get_is_dangerous() const
   return false;
 }
 
+bool Feature::get_is_entrance() const
+{
+  return false;
+}
+
 bool Feature::apply_on_movement(std::shared_ptr<Creature> creature) const
 {
   return false;

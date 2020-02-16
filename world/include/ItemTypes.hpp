@@ -131,6 +131,18 @@ class ItemIdKeys
     static const std::string ITEM_ID_PAPER_PULP;
     static const std::string ITEM_ID_MOLD_AND_DECKLE;
 
+    // Beer Halls
+    static const std::string ITEM_ID_DRAM_GIN;
+    static const std::string ITEM_ID_DRAM_MEAD;
+    static const std::string ITEM_ID_DRAM_WHISKY;
+    static const std::string ITEM_ID_GNOMISH_STOUT;
+    static const std::string ITEM_ID_FORTIFIED_DWARVEN_WINE;
+    static const std::string ITEM_ID_ELVEN_BRANDY;
+    static const std::string ITEM_ID_GOBLIN_MOONSHINE;
+    static const std::string ITEM_ID_UNSTONING_POTION;
+    static const std::string ITEM_ID_HEALING_POTION;
+    static const std::string ITEM_ID_ETHER_POTION;
+
   protected:
     ItemIdKeys();
     ~ItemIdKeys();

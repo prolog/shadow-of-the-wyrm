@@ -41,6 +41,9 @@ class Feature : public ISerializable
     // pews aren't.
     virtual bool get_is_dangerous() const;
 
+    // Is this an entrance of some kind?
+    virtual bool get_is_entrance() const;
+
     // Does the feature apply on movement?  The creature moving
     // into the tile is passed so that skills/eq can be checked, etc.
     virtual bool apply_on_movement(std::shared_ptr<Creature> creature) const;

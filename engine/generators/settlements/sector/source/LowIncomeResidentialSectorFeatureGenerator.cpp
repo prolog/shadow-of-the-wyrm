@@ -1,3 +1,4 @@
+#include "BeerHallSectorFeature.hpp"
 #include "LowIncomeResidentialSectorFeatureGenerator.hpp"
 #include "GardenGeneratorFactory.hpp"
 #include "GraveyardGeneratorFactory.hpp"
@@ -10,11 +11,12 @@
 using namespace std;
 
 LowIncomeResidentialSectorFeatureGenerator::LowIncomeResidentialSectorFeatureGenerator()
-: features({{45, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_HOUSE},
-            {55, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_WORKSHOP},
-            {65, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_GRAVES},
-            {80, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_VEGETABLE_GARDEN},
-            {90, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_SHOP},
+: features({{35, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_HOUSE},
+            {45, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_WORKSHOP},
+            {55, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_GRAVES},
+            {70, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_VEGETABLE_GARDEN},
+            {80, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_SHOP},
+            {90, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_BEER_HALL},
             {100, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_SHOP}})
 {
 }
@@ -63,6 +65,12 @@ bool LowIncomeResidentialSectorFeatureGenerator::create_feature(MapPtr map, cons
     case LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_ROCK_GARDEN:
     {
       feature = GardenGeneratorFactory::create_garden_generator(GardenType::GARDEN_TYPE_ROCK);
+      break;
+    }
+    case LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_BEER_HALL:
+    {
+      // Ensure that walls are generated for the beer hall.
+      feature = std::make_shared<BeerHallSectorFeature>(true);
       break;
     }
     case LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_SHOP:

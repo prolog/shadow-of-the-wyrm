@@ -266,6 +266,17 @@ bool Inventory::clear()
   return true;
 }
 
+void Inventory::set_additional_property(const string& property_name, const string& property_value)
+{
+  for (ItemPtr i : items)
+  {
+    if (i != nullptr)
+    {
+      i->set_additional_property(property_name, property_value);
+    }
+  }
+}
+
 bool Inventory::has_items() const
 {
   return (items.empty() == false);
@@ -402,7 +413,7 @@ bool Inventory::has_item_with_property(const string& item_property) const
 // How many items in the inventory with the given property?
 uint Inventory::count_items_with_property(const string& item_property) const
 {
-  int num_items = 0;
+  uint num_items = 0;
 
   for (ItemPtr item : items)
   {
@@ -415,9 +426,24 @@ uint Inventory::count_items_with_property(const string& item_property) const
   return num_items;
 }
 
+uint Inventory::count_items_without_property(const string& item_property) const
+{
+  uint num_items = 0;
+
+  for (ItemPtr item : items)
+  {
+    if (item && !item->has_additional_property(item_property))
+    {
+      num_items += item->get_quantity();
+    }
+  }
+
+  return num_items;
+}
+
 uint Inventory::count_items(const string& item_base_id) const
 {
-  int num_items = 0;
+  uint num_items = 0;
 
   for (ItemPtr item : items)
   {

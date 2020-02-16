@@ -392,12 +392,15 @@ bool Tile::has_blocking_feature() const
 
 void Tile::set_feature(FeaturePtr new_feature)
 {
-  // Do we need to update the dig chances from what was there previously?
-  pair<bool, DigChances> update_dig_chances = DigChancesFactory::create_feature_dig_chances(new_feature->get_class_identifier());
-
-  if (update_dig_chances.first)
+  if (new_feature != nullptr)
   {
-    dig_chances = update_dig_chances.second;
+    // Do we need to update the dig chances from what was there previously?
+    pair<bool, DigChances> update_dig_chances = DigChancesFactory::create_feature_dig_chances(new_feature->get_class_identifier());
+
+    if (update_dig_chances.first)
+    {
+      dig_chances = update_dig_chances.second;
+    }
   }
 
   feature = new_feature;
@@ -446,6 +449,22 @@ CreaturePtr Tile::get_creature() const
   return creature;
 }
 
+void Tile::add_items(IInventoryPtr new_items)
+{
+  if (items != nullptr)
+  {
+    const list<ItemPtr> new_items_raw = new_items->get_items_cref();
+
+    for (ItemPtr i : new_items_raw)
+    {
+      if (i != nullptr)
+      {
+        items->merge_or_add(i, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      }
+    }
+  }
+}
+
 void Tile::set_items(IInventoryPtr new_items)
 {
   items = new_items;
@@ -456,7 +475,25 @@ IInventoryPtr Tile::get_items()
   return items;
 }
 
+// Copy entities from the given tile to the current, but not overwriting
+// any existing creature or feature.
+void Tile::copy_entities(TilePtr tile)
+{
+  if (tile != nullptr)
+  {
+    if (creature == nullptr && tile->has_creature())
+    {
+      set_creature(tile->get_creature());
+    }
 
+    add_items(tile->get_items());
+
+    if (feature == nullptr)
+    {
+      set_feature(tile->get_feature());
+    }
+  }
+}
 TileType Tile::get_tile_type() const
 {
   return tile_type;
@@ -539,6 +576,11 @@ int Tile::get_hardness() const
 TileExitMap& Tile::get_tile_exit_map_ref()
 {
   return map_exits;
+}
+
+bool Tile::get_is_blocking_or_dangerous(CreaturePtr creature) const
+{
+  return get_dangerous(creature) || get_is_blocking(creature);
 }
 
 bool Tile::get_dangerous(CreaturePtr creature) const

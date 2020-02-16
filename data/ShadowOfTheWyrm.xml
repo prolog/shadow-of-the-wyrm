@@ -2421,7 +2421,7 @@
 						</Random>
 					</InitialItem>
 					<InitialItem>
-						<ID>healing_potion</ID>
+						<ID>_healing_potion</ID>
 						<Quantity>
 							<Random>
 								<NumDice>2</NumDice>
@@ -2542,7 +2542,7 @@
 						</Quantity>
 					</InitialItem>
 					<InitialItem>
-						<ID>healing_potion</ID>
+						<ID>_healing_potion</ID>
 						<Quantity>
 							<Random>
 								<NumDice>2</NumDice>
@@ -3183,16 +3183,16 @@
 					<Leadership>20</Leadership>
 					<Literacy>15</Literacy>
 					<Religion>15</Religion>
-					<Scribing>10</Scribing>
 					<Swimming>15</Swimming>
 				</GeneralSkills>
 				<WeaponSkills>
-					<ShortBlades>5</ShortBlades>
-					<LongBlades>5</LongBlades>
+					<ShortBlades>10</ShortBlades>
+					<LongBlades>10</LongBlades>
+					<Whips>15</Whips>
 				</WeaponSkills>
 				<RangedWeaponSkills>
-					<Bows>5</Bows>
-					<Crossbows>5</Crossbows>
+					<Bows>10</Bows>
+					<Crossbows>10</Crossbows>
 				</RangedWeaponSkills>				
 			</Skills>
 			<Titles>
@@ -3245,6 +3245,9 @@
 				</Ammunition>
 				<InitialInventory>
 					<InitialItem>
+						<ID>leather_whip</ID>
+					</InitialItem>
+					<InitialItem>
 						<ID>food_ration</ID>
 						<Quantity>
 							<Amount>3</Amount>
@@ -3254,7 +3257,7 @@
 						<ID>_currency</ID>
 						<Quantity>
 							<Random>
-								<NumDice>100</NumDice>
+								<NumDice>300</NumDice>
 								<NumSides>7</NumSides>
 							</Random>
 						</Quantity>
@@ -5013,13 +5016,13 @@
 			<MagicCategory>3004</MagicCategory>
 			<MagicClassification>0</MagicClassification>
 			<Colour>7</Colour>
-			<APCost>10</APCost>
+			<APCost>12</APCost>
 			<Speed>1</Speed>
 			<Range>3</Range>
 			<Shape>1</Shape>
 			<Radius>2</Radius>
 			<Damage>
-				<NumDice>4</NumDice>
+				<NumDice>6</NumDice>
 				<NumSides>5</NumSides>
 				<Type>9</Type>
 			</Damage>
@@ -6171,6 +6174,25 @@
 			<Shape>0</Shape>
 			<Effect>27</Effect>
 		</Spell>
+		<Spell id="m_18_stun_bolt">
+			<NameSID>STUN_BOLT_NAME_SID</NameSID>
+			<PlayerCastMessageSID>STUN_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>STUN_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3002</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>10</Colour>
+			<APCost>10</APCost>
+			<Speed>1</Speed>
+			<Range>5</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>6</NumDice>
+				<NumSides>6</NumSides>
+				<Type>2</Type>
+				<EffectBonus>100</EffectBonus>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>				
 		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
 			<PlayerCastMessageSID>SHADOW_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>

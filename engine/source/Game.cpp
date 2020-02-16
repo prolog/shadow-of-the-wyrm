@@ -664,7 +664,7 @@ void Game::exit_on_exception(CreaturePtr player)
 
 void Game::panic_save(CreaturePtr player)
 {
-  actions.save(player, true);
+  auto val = actions.save(player, true);
 }
 
 void Game::set_check_scores(const bool new_check_scores)
@@ -692,7 +692,7 @@ void Game::update_score_file_if_necessary(CreaturePtr current_player)
 
       Game& game = Game::instance();
       HighScoreScreen hss(game.get_display(), sf.get_entries());
-      hss.display();
+      auto val = hss.display();
 
       sf.save();
     }
@@ -840,7 +840,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
 
         action_cost = CommandProcessor::process(current_creature, command, display);
 
-        if (current_creature->get_is_player())
+        if (current_creature->get_is_player() && get_is_current_map(current_map))
         {
           // After everything's done we need to update the display, but
           // shouldn't need to do a full redraw, since a full redraw
@@ -960,6 +960,18 @@ void Game::set_current_map(MapPtr map)
 MapPtr Game::get_current_map() const
 {
   return map_registry.get_map(current_map_id);
+}
+
+bool Game::get_is_current_map(MapPtr map) const
+{
+  bool is_curr = false;
+
+  if (map != nullptr && map->get_map_id() == current_map_id)
+  {
+    return is_curr = true;
+  }
+
+  return is_curr;
 }
 
 ActionManager& Game::get_action_manager_ref()

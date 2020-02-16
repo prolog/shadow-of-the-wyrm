@@ -86,6 +86,7 @@ class Game : public ISerializable
     // (Realistically, nor should there need to be.)
     
     MapPtr get_current_map() const;
+    bool get_is_current_map(MapPtr map) const;
 
     void set_tile_display_info(const std::vector<DisplayTile>& game_tiles);
     const std::vector<DisplayTile>& get_tile_display_info_ref() const;

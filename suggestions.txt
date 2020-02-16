@@ -1,11 +1,11 @@
 Me:
-- Wind should have a chance to "carry" flames.
+- Grond: Pathing at mountain intersections
+- Beer halls in villages
 - Spritesheets
 - auto save - not working?
 - google screen clear not working for SDL. reported 2x.
 - 2x draw?
 - Fairy spirit should increase max HP/AP by 1 when full
-- Grond: automove improvements
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?
 - EACH VERSION: clean up the usage of some shared_ptrs.  These should be
@@ -27,7 +27,6 @@ Me:
 - Tidy up scripts/quests into subdirectories, like carcassia, and test.
   Need to remember to update env.lua!
 - More guilds/things with memberships
-- Magical orchard (should be 2-3 over the world)
 - Allow music to not only pacify but enchant (allow for ordering)
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
@@ -40,11 +39,11 @@ Me:
   that dungeons are more interesting.
 - Penalties from bloodied, exposed should also scale with level.
 - The Ybari/Asturias?
-- Add shops to dungeons.
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Buildings generated in towns should automatically get inhabitants.
 - Explore the cities Carcassia is built on top of.
+- Wind should have a chance to "carry" flames.
 - Revisit smithing.
 - Do something with the Order Ex Gladiatores
 - Revisit how values are updated after enchantment.
@@ -60,7 +59,7 @@ Me:
   poisoned: e.g., a creature is poisoned, and then puts on a poisoned
   amulet.  Should still be poisoned when either of the two wear off.
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
-  are 2.
+  and caverns are 2.
 - Allow shopkeepers to be any of the selectable races.
 - Towers/tower generators.
 - Reuse some of the sector feature generators in dungeons - tomb, etc.
@@ -69,9 +68,6 @@ Me:
   race, and the buying creature's.
 - Wilderness ruins/lairs
 - Dungeon vaults
-- Arcane damage should destroy wands, rings, potions, scrolls, texts,
-  some of the time (30%).  There should be a 10% chance of actually
-  enchanting the item, though.  Try to limit to "magic only".
 - In text display screen, p to page to a particular page.
 - Arae-of-the-Woods, the first dryad.  Very fast (speed 7?), always runs
   away from the player, hits incredibly hard when attacked.  Chatting to
@@ -86,7 +82,7 @@ Me:
   generated.
 - SDL: full screen
 - Cancellation effect type
-- Special rooms: beer hall, magical workshop, armory.
+- Special rooms: magical workshop, armory.
 - More shops in set locations.
 - Keep marking general skills as applicable when using them.
 - Scent maps/track by scent.
@@ -129,17 +125,10 @@ Kyzrati:
 - Different in-game event when inhabitants of certain places have aged,
   died, etc.
 - Group like items together (scrolls, etc) even if not exactly the same
-- Wants item-iary.  Separate screen + in inventory view.  Update lower
-  message to be [A...] Info or [A...] Select based on context.
 - Lit FOV
-- Do something around accidentally spamming keys and training unwanted
-  skills.
 - Can probably keep most of the SDL_PollEvent calls in the controller.  
   With proper framerate throttling or delays could do more interesting 
   animations, etc.
-
-Avagart:
-- Eventually, have automovement stop only on new items.
 
 AgingMinotaur:
 - The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
@@ -172,10 +161,6 @@ Esran:
   past walls.
 - Sewer/dungeons: when random, prompt for "descend to what depth (ft)?
 
-ais523:
-- Being able to read a savefile should be based on file permissions,
-  not a username check.  Keep username for highscore list.
-
 kain:
 - way to see resists on item without equipping
 - Zapped wand moves to end of inventory?
@@ -200,8 +185,6 @@ happylisk:
 
 naughtusername: 
 - Skill descriptions on shift+letter or something
-- automove can end with digging and then stop
-- weapon types in codex
 
 Timo:
 - Can kill off guards one by one, emperor doesn't care.
@@ -209,10 +192,6 @@ Timo:
 Mirza Ghalib:
 - Wide displays are causing text in e.g. the Isen Dun Chronicle to
   mess up (see the section about Gnordvar). 88x25
-
-NoCreativeNames:
-- Nobles start with scribing, but can't really use it because they don't
-  have Cantrips.  Add a quest at some point to be able to learn Cantrips.
 
 vedvid:
 - rebind '*' (vedvid)
@@ -237,8 +216,6 @@ Rob Ayres
 
 Troubler: 
 - Doors in dungeon occasionally get spawned in a big, long line.
-- First 3 values of a weapon (x,x,x) are ignored when stacking, and two
-  weapons of the same kind will stack together and share the same values.
 
 Grond:
 - Torment-type spell (1/2 HP)
@@ -247,6 +224,7 @@ Grond:
 - Adjacent creatures attack on load
 - Differentiate scribing and wandcraft - why use scribing?
 - Scything on ammo?
+- NPC pathing through mountains	
 
 Yan Zhang:
 - Dungeon symbol should generate that thing on the last level
@@ -255,3 +233,6 @@ Yan Zhang:
 
 Skjarl:
 - SDL resizing
+
+Stof:
+- mouse click pathfinding
