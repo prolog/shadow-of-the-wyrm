@@ -1,4 +1,7 @@
-Shadow of the Wyrm v1.1.7 "Sor"
+Shadow of the Wyrm v1.1.8 "Rodrigo"
+- Version declared February 16, 2020.
+
+Shadow of the Wyrm v1.1.7 "Boccherini"
 - Version declared January 11, 2020.  Version finalized February 16, 2020.
 
 - Teleporting is now disallowed in Telari and Zaeda's Tower (fiamma).
