@@ -3345,12 +3345,22 @@ on unseen things and working like a truer sight."
 Floridel, her mind made up, turned round %b
 and left the way she came.  The silent book %b
 said nothing, but now one last image found %b
-the light: an older woman, one who stood %b
-with a minor stoop, then, grim-faced, wandered through %b
-unbroken miles of uplands, under grey, %b
+the light behind her: an older woman, who stood %b
+with a minor stoop and then, grim-faced, wandered through %b
+unbroken miles of uplands under grey, %b
 unyielding sky; and if the stratus knew %b
 the reason for her loss, it wouldn't say - %b
 Floridel, the once-was queen, alone again.
 %p
 IX
+%p
+Their consciousness returned, the brothers woke %b
+along the shore: Rhone first, and as he groped %b
+about himself to get his bearings, choked %b
+on a little lake-water caught inside his throat. %b
+He wrung his hair, and with a gentle shake %b
+roused Weyg and Phole and Carne, an hour spent %b
+in silence, moving only when the lake %b
+began to roil, its meaning clear, and sent %b
+as gusts of winds that pushed them forward as they went.
 %p
