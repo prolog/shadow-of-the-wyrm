@@ -1,5 +1,5 @@
 Me:
-- Grond: Pathing at mountain intersections
+- Dungeons should check for shop before generating trap.
 - Beer halls in villages
 - Spritesheets
 - auto save - not working?
