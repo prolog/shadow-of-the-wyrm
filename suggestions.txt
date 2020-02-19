@@ -236,3 +236,6 @@ Skjarl:
 
 Stof:
 - mouse click pathfinding
+
+mission opossumable:
+- alternate tiles e.g. different grass tiles

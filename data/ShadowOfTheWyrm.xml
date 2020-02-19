@@ -6400,6 +6400,11 @@
 					<Autumn>3</Autumn>
 					<Winter>15</Winter>
 				</Colours>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>0</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</FieldTile>
 		<ScrubTile>
@@ -6439,6 +6444,11 @@
 					<Autumn>9</Autumn>
 					<Winter>3</Winter>
 				</Colours>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>1</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</TreeTile>
 		<DesertTile>
@@ -6584,6 +6594,11 @@
 					<Autumn>9</Autumn>
 					<Winter>3</Winter>
 				</Colours>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>1</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</ForestTile>
 		<UpStaircaseTile>
@@ -6702,12 +6717,22 @@
 					<Autumn>9</Autumn>
 					<Winter>3</Winter>
 				</Colours>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>1</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</FruitTreeTile>
 		<EvergreenTreeTile>
 			<Symbol>
 				<Char>T</Char>
 				<Colour>2</Colour>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>1</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</EvergreenTreeTile>
 		<RockyEarthTile>
@@ -6768,6 +6793,11 @@
 			<Symbol>
 				<Char>.</Char>
 				<Colour>4</Colour>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>2</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</SeabedTile>
 		<AquaticVegetationTile>
@@ -7157,6 +7187,9 @@
 	<Spritesheets>
 		<Spritesheet id="items">
 			<Location>assets/sprites/item_sprites.png</Location>
+		</Spritesheet>
+		<Spritesheet id="tiles">
+			<Location>assets/sprites/terrain_sprites.png</Location>
 		</Spritesheet>
 	</Spritesheets>
 </ShadowOfTheWyrm>
