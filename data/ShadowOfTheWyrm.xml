@@ -6630,12 +6630,22 @@
 			<Symbol>
 				<Char>&lt;</Char>
 				<Colour>7</Colour>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>11</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</UpStaircaseTile>
 		<DownStaircaseTile>
 			<Symbol>
 				<Char>&gt;</Char>
 				<Colour>7</Colour>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>10</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</DownStaircaseTile>
 		<CavernTile>
@@ -6654,6 +6664,11 @@
 			<Symbol>
 				<Char>&gt;</Char>
 				<Colour>3</Colour>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>10</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</DungeonComplexTile>
 		<BarracksTile>
@@ -6792,6 +6807,11 @@
 			<Symbol>
 				<Char>&gt;</Char>
 				<Colour>1</Colour>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>10</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</CryptTile>
 		<AirTile>
@@ -6816,6 +6836,11 @@
 			<Symbol>
 				<Char>&gt;</Char>
 				<Colour>2</Colour>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>10</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</SewerComplexTile>
 		<SewerTile>
