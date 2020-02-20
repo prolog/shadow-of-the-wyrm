@@ -7476,6 +7476,14 @@
 				</Weight>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>*</LockID>
 			</Tool>
@@ -7489,6 +7497,14 @@
 					<Ounces>3</Ounces>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>isen_dun_kew</LockID>
 			</Tool>
@@ -7502,6 +7518,14 @@
 					<Ounces>3</Ounces>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>isen_dun_boathouse</LockID>
 			</Tool>
@@ -7515,6 +7539,14 @@
 					<Ounces>3</Ounces>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>wintersea_tombs</LockID>
 			</Tool>
@@ -7528,6 +7560,14 @@
 					<Ounces>3</Ounces>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>wintersea_tower</LockID>
 			</Tool>
@@ -7541,6 +7581,14 @@
 					<Ounces>3</Ounces>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>wyrmeswraec_gate</LockID>
 			</Tool>
@@ -7554,6 +7602,14 @@
 					<Ounces>3</Ounces>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>eka_door</LockID>
 			</Tool>
@@ -7566,6 +7622,14 @@
 					<Pounds>2</Pounds>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>tower_library</LockID>
 			</Tool>
@@ -7578,6 +7642,14 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carc_b1_footman</LockID>
 			</Tool>
@@ -7590,6 +7662,14 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carc_b1_coalman</LockID>
 			</Tool>
@@ -7602,6 +7682,14 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carc_b1_scullerymaid</LockID>
 			</Tool>
@@ -7614,6 +7702,14 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carc_b1_cook</LockID>
 			</Tool>
@@ -7626,6 +7722,14 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carc_b1_praetor</LockID>
 			</Tool>
@@ -7638,6 +7742,14 @@
 					<Pounds>2</Pounds>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carcassia_casino</LockID>
 			</Tool>
@@ -7650,6 +7762,14 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carc_b1_armory</LockID>
 			</Tool>
@@ -7663,6 +7783,14 @@
 					<Ounces>3</Ounces>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID/>
 				<!-- Lock ID is set dynamically by the CryptGenerator -->
@@ -7677,6 +7805,14 @@
 					<Ounces>5</Ounces>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<SpritesheetLocation>
+						<ID>items</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</SpritesheetLocation>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID/>
 				<!-- Lock ID is set dynamically in script, etc -->
