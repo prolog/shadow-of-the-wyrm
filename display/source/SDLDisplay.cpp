@@ -75,7 +75,7 @@ void SDLDisplay::initialize_colours()
               /* red                  */ {1, {139,0,0,255} },
               /* green                */ {2, {0,139,0,255} },
               /* yellow               */ {3, {139,139,0,255} },
-              /* blue                 */ {4, {0,0,139,255} },
+              /* blue                 */ {4, {0,100,200,255} }, /* dark blue hard to read in SDL if 139 used like the others */
               /* magenta              */ {5, {139,0,139,255} },
               /* cyan                 */ {6, {0,139,139,255} },
               /* white                */ {7, {200,200,200,255} },

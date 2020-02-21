@@ -6400,11 +6400,11 @@
 					<Autumn>3</Autumn>
 					<Winter>15</Winter>
 				</Colours>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>0</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</FieldTile>
 		<ScrubTile>
@@ -6416,11 +6416,11 @@
 					<Autumn>3</Autumn>
 					<Winter>7</Winter>
 				</Colours>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>4</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</ScrubTile>
 		<WheatTile>
@@ -6439,11 +6439,11 @@
 			<Symbol>
 				<Char>,</Char>
 				<Colour>7</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>9</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</CairnTile>
 		<TreeTile>
@@ -6455,11 +6455,11 @@
 					<Autumn>9</Autumn>
 					<Winter>3</Winter>
 				</Colours>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>1</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</TreeTile>
 		<DesertTile>
@@ -6471,11 +6471,11 @@
 					<Autumn>11</Autumn>
 					<Winter>7</Winter>
 				</Colours>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>4</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</DesertTile>
 		<RoadTile>
@@ -6513,33 +6513,33 @@
 			<Symbol>
 				<Char>.</Char>
 				<Colour>7</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>4</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</DungeonTile>
 		<RockTile>
 			<Symbol>
 				<Char>#</Char>
 				<Colour>8</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>3</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</RockTile>
 		<GraveTile>
 			<Symbol>
 				<Char>+</Char>
 				<Colour>7</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>7</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</GraveTile>
 		<MarshTile>
@@ -6560,11 +6560,11 @@
 					<Autumn>3</Autumn>
 					<Winter>3</Winter>
 				</Colours>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>5</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</ReedsTile>
 		<HillsTile>
@@ -6600,11 +6600,11 @@
 					<Autumn>3</Autumn>
 					<Winter>3</Winter>
 				</Colours>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>6</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</BushTile>
 		<WeedsTile>
@@ -6636,44 +6636,44 @@
 					<Autumn>9</Autumn>
 					<Winter>3</Winter>
 				</Colours>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>1</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</ForestTile>
 		<UpStaircaseTile>
 			<Symbol>
 				<Char>&lt;</Char>
 				<Colour>7</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>11</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</UpStaircaseTile>
 		<DownStaircaseTile>
 			<Symbol>
 				<Char>&gt;</Char>
 				<Colour>7</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>10</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</DownStaircaseTile>
 		<CavernTile>
 			<Symbol>
 				<Char>o</Char>
 				<Colour>8</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>10</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</CavernTile>
 		<VillageTile>
@@ -6686,11 +6686,11 @@
 			<Symbol>
 				<Char>&gt;</Char>
 				<Colour>3</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>10</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</DungeonComplexTile>
 		<BarracksTile>
@@ -6716,11 +6716,11 @@
 			<Symbol>
 				<Char>+</Char>
 				<Colour>8</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>7</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</GraveyardTile>
 		<KeepTile>
@@ -6763,11 +6763,11 @@
 			<Symbol>
 				<Char>0</Char>
 				<Colour>3</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>8</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</BarrowTile>
 		<WildOrchardTile>
@@ -6779,11 +6779,11 @@
 					<Autumn>9</Autumn>
 					<Winter>3</Winter>
 				</Colours>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>12</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</WildOrchardTile>
 		<FruitTreeTile>
@@ -6795,22 +6795,22 @@
 					<Autumn>9</Autumn>
 					<Winter>3</Winter>
 				</Colours>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>12</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</FruitTreeTile>
 		<EvergreenTreeTile>
 			<Symbol>
 				<Char>T</Char>
 				<Colour>2</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>1</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</EvergreenTreeTile>
 		<RockyEarthTile>
@@ -6823,11 +6823,11 @@
 			<Symbol>
 				<Char>o</Char>
 				<Colour>11</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>10</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</MineTile>
 		<WellTile>
@@ -6840,11 +6840,11 @@
 			<Symbol>
 				<Char>&gt;</Char>
 				<Colour>1</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>10</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</CryptTile>
 		<AirTile>
@@ -6858,33 +6858,33 @@
 			<Symbol>
 				<Char>#</Char>
 				<Colour>3</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>3</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</EarthTile>
 		<SewerComplexTile>
 			<Symbol>
 				<Char>&gt;</Char>
 				<Colour>2</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>10</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</SewerComplexTile>
 		<SewerTile>
 			<Symbol>
 				<Char>.</Char>
 				<Colour>2</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>4</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</SewerTile>
 		<ShrineTile>
@@ -6897,33 +6897,33 @@
 			<Symbol>
 				<Char>.</Char>
 				<Colour>4</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>3</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</SeabedTile>
 		<AquaticVegetationTile>
 			<Symbol>
 				<Char>*</Char>
 				<Colour>2</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>2</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</AquaticVegetationTile>
 		<FloatingTowerTile>
 			<Symbol>
 				<Char>|</Char>
 				<Colour>8</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>11</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</FloatingTowerTile>
 		<VoidTile>
@@ -6937,11 +6937,11 @@
 			<Symbol>
 				<Char>T</Char>
 				<Colour>14</Colour>
-				<SpritesheetLocation>
-					<ID>tiles</ID>
+				<Sprite>
+					<ID>til</ID>
 					<Row>0</Row>
 					<Col>12</Col>
-				</SpritesheetLocation>
+				</Sprite>
 			</Symbol>
 		</MagicalTreeTile>
 	</Tiles>
@@ -7305,10 +7305,13 @@
 		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
 	</Scripts>
 	<Spritesheets>
-		<Spritesheet id="items">
+		<Spritesheet id="cr">
+			<Location>assets/sprites/creature_sprites.png</Location>
+		</Spritesheet>
+		<Spritesheet id="it">
 			<Location>assets/sprites/item_sprites.png</Location>
 		</Spritesheet>
-		<Spritesheet id="tiles">
+		<Spritesheet id="til">
 			<Location>assets/sprites/terrain_sprites.png</Location>
 		</Spritesheet>
 	</Spritesheets>

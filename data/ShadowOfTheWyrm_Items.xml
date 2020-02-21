@@ -15,11 +15,11 @@
 				<Material>13</Material>
 				<Symbol>
 					<Char>#</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>0</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -45,11 +45,11 @@
 				<Material>13</Material>
 				<Symbol>
 					<Char>#</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>0</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -72,11 +72,11 @@
 				<Material>13</Material>
 				<Symbol>
 					<Char>#</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>0</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -103,11 +103,11 @@
 				<Material>13</Material>
 				<Symbol>
 					<Char>#</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>0</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<Evade>2</Evade>
@@ -131,11 +131,11 @@
 				<Material>13</Material>
 				<Symbol>
 					<Char>#</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>0</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<Evade>0</Evade>
@@ -156,11 +156,11 @@
 				<Material>13</Material>
 				<Symbol>
 					<Char>#</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>0</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<Evade>12</Evade>
@@ -181,11 +181,11 @@
 				<Material>13</Material>
 				<Symbol>
 					<Char>#</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>0</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>8</DangerLevel>
 				<Resistances>
@@ -209,11 +209,11 @@
 				<Material>13</Material>
 				<Symbol>
 					<Char>#</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>0</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>8</DangerLevel>
 				<Resistances>
@@ -237,11 +237,11 @@
 				<Material>13</Material>
 				<Symbol>
 					<Char>#</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>0</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>8</DangerLevel>
 				<Resistances>
@@ -263,11 +263,11 @@
 				<Material>13</Material>
 				<Symbol>
 					<Char>#</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>0</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -291,11 +291,11 @@
 				<Material>13</Material>
 				<Symbol>
 					<Char>#</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>0</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
@@ -318,11 +318,11 @@
 				<Material>13</Material>
 				<Symbol>
 					<Char>#</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>0</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<Resistances>
@@ -6650,11 +6650,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>7</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>0</Nutrition>
@@ -6674,11 +6674,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>11</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>0</Nutrition>
@@ -6698,11 +6698,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>0</Nutrition>
@@ -6722,11 +6722,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>8</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>400</Nutrition>
@@ -6746,11 +6746,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>1</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>400</Nutrition>
@@ -6770,11 +6770,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
@@ -6795,11 +6795,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>15</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
@@ -6822,11 +6822,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>14</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
@@ -6847,11 +6847,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>1</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
@@ -6872,11 +6872,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>15</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
@@ -6897,11 +6897,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>13</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
@@ -6922,11 +6922,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>4</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
@@ -6947,11 +6947,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>10</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
@@ -6972,11 +6972,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>10</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<Nutrition>4000</Nutrition>
@@ -6997,11 +6997,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>8</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
@@ -7023,11 +7023,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>14</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
@@ -7048,11 +7048,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>1</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
@@ -7073,11 +7073,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>1</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>15</DangerLevel>
 				<Nutrition>100</Nutrition>
@@ -7099,11 +7099,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>9</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
@@ -7129,11 +7129,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>5</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>200</Nutrition>
@@ -7154,11 +7154,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>9</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>300</Nutrition>
@@ -7179,11 +7179,11 @@
 				<Symbol>
 					<Char>!</Char>
 					<Colour>6</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>1</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>400</Nutrition>
@@ -7478,11 +7478,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>*</LockID>
@@ -7499,11 +7499,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>isen_dun_kew</LockID>
@@ -7520,11 +7520,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>isen_dun_boathouse</LockID>
@@ -7541,11 +7541,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>wintersea_tombs</LockID>
@@ -7562,11 +7562,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>wintersea_tower</LockID>
@@ -7583,11 +7583,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>wyrmeswraec_gate</LockID>
@@ -7604,11 +7604,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>eka_door</LockID>
@@ -7624,11 +7624,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>tower_library</LockID>
@@ -7644,11 +7644,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carc_b1_footman</LockID>
@@ -7664,11 +7664,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carc_b1_coalman</LockID>
@@ -7684,11 +7684,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carc_b1_scullerymaid</LockID>
@@ -7704,11 +7704,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carc_b1_cook</LockID>
@@ -7724,11 +7724,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carc_b1_praetor</LockID>
@@ -7744,11 +7744,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carcassia_casino</LockID>
@@ -7764,11 +7764,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carc_b1_armory</LockID>
@@ -7785,11 +7785,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID/>
@@ -7807,11 +7807,11 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>3</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID/>
@@ -8122,11 +8122,11 @@
 				<Symbol>
 					<Char>\</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>2</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Effect>0</Effect>
@@ -8148,11 +8148,11 @@
 				<Symbol>
 					<Char>\</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>2</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<Effect>5</Effect>
@@ -8174,11 +8174,11 @@
 				<Symbol>
 					<Char>\</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>2</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<Damage>
@@ -8204,11 +8204,11 @@
 				<Symbol>
 					<Char>\</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>2</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Damage>
@@ -8236,11 +8236,11 @@
 				<Symbol>
 					<Char>\</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>2</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<Damage>
@@ -8266,11 +8266,11 @@
 				<Symbol>
 					<Char>\</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>2</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Damage>
@@ -8298,11 +8298,11 @@
 				<Symbol>
 					<Char>\</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>2</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<Damage>
@@ -8330,11 +8330,11 @@
 				<Symbol>
 					<Char>\</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>2</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<Damage>
@@ -8362,11 +8362,11 @@
 				<Symbol>
 					<Char>\</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>2</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<Damage>
@@ -8394,11 +8394,11 @@
 				<Symbol>
 					<Char>\</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>2</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>12</DangerLevel>
 				<Damage>
@@ -8425,11 +8425,11 @@
 				<Symbol>
 					<Char>\</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>2</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<Damage>
@@ -8455,11 +8455,11 @@
 				<Symbol>
 					<Char>\</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>2</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<Damage>
@@ -8485,11 +8485,11 @@
 				<Symbol>
 					<Char>\</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>2</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>8</DangerLevel>
 				<Damage vorpal="1">
@@ -8515,11 +8515,11 @@
 				<Symbol>
 					<Char>\</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>2</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Effect>26</Effect>
@@ -8541,11 +8541,11 @@
 				<Symbol>
 					<Char>\</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>2</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Damage>
@@ -8572,11 +8572,11 @@
 				<Symbol>
 					<Char>\</Char>
 					<Colour>3</Colour>
-					<SpritesheetLocation>
-						<ID>items</ID>
+					<Sprite>
+						<ID>it</ID>
 						<Row>0</Row>
 						<Col>2</Col>
-					</SpritesheetLocation>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<Damage draining="1" ethereal="1">

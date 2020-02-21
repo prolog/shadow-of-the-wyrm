@@ -1235,10 +1235,10 @@
 		     causes water shimmer, waves, etc. -->
 		<xs:element name="WeatherColours" type="tns:WeatherColoursType" minOccurs="0"/>
 		<!-- This doesn't need to be defined for pure-text implementations -->
-		<xs:element name="SpritesheetLocation" type="tns:SpritesheetLocation" minOccurs="0"/>
+		<xs:element name="Sprite" type="tns:Sprite" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
-<xs:complexType name="SpritesheetLocation">
+<xs:complexType name="Sprite">
 	<xs:annotation>
 		<xs:documentation>Contains spritesheet info for a particular symbol.</xs:documentation>
 	</xs:annotation>
