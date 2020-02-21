@@ -6416,9 +6416,15 @@
 					<Autumn>3</Autumn>
 					<Winter>7</Winter>
 				</Colours>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>4</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</ScrubTile>
 		<WheatTile>
+			<!-- Not currently used -->
 			<Symbol>
 				<Char>|</Char>
 				<Colours>
@@ -6433,6 +6439,11 @@
 			<Symbol>
 				<Char>,</Char>
 				<Colour>7</Colour>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>9</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</CairnTile>
 		<TreeTile>
@@ -6460,6 +6471,11 @@
 					<Autumn>11</Autumn>
 					<Winter>7</Winter>
 				</Colours>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>4</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</DesertTile>
 		<RoadTile>
@@ -6569,6 +6585,7 @@
 			</Symbol>
 		</MountainsTile>
 		<BeachTile>
+			<!-- Not currently used -->
 			<Symbol>
 				<Char>.</Char>
 				<Colour>3</Colour>
@@ -6652,6 +6669,11 @@
 			<Symbol>
 				<Char>o</Char>
 				<Colour>8</Colour>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>10</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</CavernTile>
 		<VillageTile>
@@ -6672,6 +6694,7 @@
 			</Symbol>
 		</DungeonComplexTile>
 		<BarracksTile>
+			<!-- Not currently used -->
 			<Symbol>
 				<Char>*</Char>
 				<Colour>3</Colour>
@@ -6756,6 +6779,11 @@
 					<Autumn>9</Autumn>
 					<Winter>3</Winter>
 				</Colours>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>12</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</WildOrchardTile>
 		<FruitTreeTile>
@@ -6770,7 +6798,7 @@
 				<SpritesheetLocation>
 					<ID>tiles</ID>
 					<Row>0</Row>
-					<Col>1</Col>
+					<Col>12</Col>
 				</SpritesheetLocation>
 			</Symbol>
 		</FruitTreeTile>
@@ -6795,6 +6823,11 @@
 			<Symbol>
 				<Char>o</Char>
 				<Colour>11</Colour>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>10</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</MineTile>
 		<WellTile>
@@ -6847,6 +6880,11 @@
 			<Symbol>
 				<Char>.</Char>
 				<Colour>2</Colour>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>4</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</SewerTile>
 		<ShrineTile>
@@ -6862,7 +6900,7 @@
 				<SpritesheetLocation>
 					<ID>tiles</ID>
 					<Row>0</Row>
-					<Col>2</Col>
+					<Col>3</Col>
 				</SpritesheetLocation>
 			</Symbol>
 		</SeabedTile>
@@ -6870,24 +6908,40 @@
 			<Symbol>
 				<Char>*</Char>
 				<Colour>2</Colour>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>2</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</AquaticVegetationTile>
 		<FloatingTowerTile>
 			<Symbol>
 				<Char>|</Char>
 				<Colour>8</Colour>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>11</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</FloatingTowerTile>
 		<VoidTile>
 			<Symbol>
 				<Char> </Char>
 				<Colour>0</Colour>
+				<!-- No sprite needed -->
 			</Symbol>
 		</VoidTile>
 		<MagicalTreeTile>
 			<Symbol>
 				<Char>T</Char>
 				<Colour>14</Colour>
+				<SpritesheetLocation>
+					<ID>tiles</ID>
+					<Row>0</Row>
+					<Col>12</Col>
+				</SpritesheetLocation>
 			</Symbol>
 		</MagicalTreeTile>
 	</Tiles>
