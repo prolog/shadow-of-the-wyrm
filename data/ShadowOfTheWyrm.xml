@@ -6481,7 +6481,12 @@
 		<RoadTile>
 			<Symbol>
 				<Char>.</Char>
-				<Colour>7</Colour>
+				<Colour>3</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>13</Col>
+				</Sprite>
 			</Symbol>
 		</RoadTile>
 		<RiverTile>
@@ -7146,7 +7151,16 @@
 			<GoodAltar><Symbol><Char>_</Char></Symbol></GoodAltar>
 			<NeutralAltar><Symbol><Char>_</Char></Symbol></NeutralAltar>
 			<Barrel><Symbol><Char>o</Char></Symbol></Barrel>
-			<Bench><Symbol><Char>-</Char></Symbol></Bench>
+			<Bench>
+				<Symbol>
+					<Char>-</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>0</Col>
+					</Sprite>
+				</Symbol>
+			</Bench>
 			<Bed><Symbol><Char>~</Char></Symbol></Bed>
 			<Door><Symbol><Char>+</Char></Symbol></Door>
 			<Gate><Symbol><Char>+</Char></Symbol></Gate>
@@ -7313,6 +7327,9 @@
 		</Spritesheet>
 		<Spritesheet id="til">
 			<Location>assets/sprites/terrain_sprites.png</Location>
+		</Spritesheet>
+		<Spritesheet id="fea">
+			<Location>assets/sprites/feature_sprites.png</Location>
 		</Spritesheet>
 	</Spritesheets>
 </ShadowOfTheWyrm>

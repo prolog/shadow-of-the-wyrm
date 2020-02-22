@@ -1,4 +1,5 @@
 Me:
+- Redo rock/stone tile
 - Dungeons should check for shop before generating trap.
 - Beer halls in villages
 - Spritesheets

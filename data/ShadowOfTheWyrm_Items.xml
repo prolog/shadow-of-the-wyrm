@@ -346,6 +346,14 @@
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>0</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>14</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -367,6 +375,14 @@
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>4</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>14</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Evade>2</Evade>
 				<Soak>1</Soak>
@@ -382,6 +398,14 @@
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>0</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>14</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<Properties>
 					<Property>
@@ -403,6 +427,14 @@
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>0</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>14</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<Properties>
 					<Property>
@@ -423,6 +455,14 @@
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>4</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>11</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Properties>
 					<Property>
@@ -443,6 +483,14 @@
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>11</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Properties>
 					<Property>
@@ -463,6 +511,14 @@
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>11</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<Properties>
 					<Property>
@@ -483,6 +539,14 @@
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>6</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>11</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<Properties>
 					<Property>
@@ -503,6 +567,14 @@
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>6</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>11</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>8</DangerLevel>
 				<Properties>
 					<Property>
@@ -523,6 +595,14 @@
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>1</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>11</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>14</DangerLevel>
 				<Resistances>
 					<Heat>0.10</Heat>
@@ -547,6 +627,14 @@
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>11</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>12</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Cold>0.25</Cold>
@@ -566,6 +654,14 @@
 				<AutoCurse>1</AutoCurse>
 				<Artifact>1</Artifact>
 				<Material>6</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>13</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.10</Slash>
@@ -585,6 +681,14 @@
 				<WornLocation>0</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>6</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>11</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Poison>0.15</Poison>
@@ -605,6 +709,14 @@
 				<WornLocation>0</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>6</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>11</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Holy>0.25</Holy>
@@ -3851,6 +3963,15 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>!</Char>
+					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>9</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Properties>
 					<Property>
@@ -3886,6 +4007,15 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>!</Char>
+					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>9</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>5</DangerLevel>
 				<Properties>
 					<Property>
@@ -4091,6 +4221,15 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>!</Char>
+					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>9</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.10</Slash>
@@ -4542,6 +4681,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>17</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
@@ -4563,6 +4710,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
@@ -4587,6 +4742,11 @@
 				<Symbol>
 					<Char>)</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>16</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1003</Skill>
@@ -4965,6 +5125,11 @@
 				<Symbol>
 					<Char>*</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>15</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Skill>1009</Skill>
@@ -4987,11 +5152,15 @@
 					<Ounces>12</Ounces>
 				</Weight>
 				<WornLocation>10</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>7</Material>
 				<Symbol>
 					<Char>*</Char>
 					<Colour>8</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>15</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Skill>1009</Skill>
@@ -7203,6 +7372,11 @@
 				<Symbol>
 					<Char>?</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Effect>0</Effect>
@@ -7219,6 +7393,11 @@
 				<Symbol>
 					<Char>?</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>6</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<Properties>
@@ -7243,6 +7422,11 @@
 				<Symbol>
 					<Char>?</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Effect>2</Effect>				
@@ -7261,6 +7445,11 @@
 				<Symbol>
 					<Char>?</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Effect>32</Effect>				
@@ -7279,6 +7468,11 @@
 				<Symbol>
 					<Char>?</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Effect>24</Effect>				
@@ -7297,6 +7491,11 @@
 				<Symbol>
 					<Char>?</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>8</DangerLevel>
 				<Effect>13</Effect>				
@@ -7315,6 +7514,11 @@
 				<Symbol>
 					<Char>?</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>10</DangerLevel>
 				<Effect>15</Effect>				
@@ -7333,6 +7537,11 @@
 				<Symbol>
 					<Char>?</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>5</DangerLevel>
 				<Effect>20</Effect>
@@ -7351,6 +7560,11 @@
 				<Symbol>
 					<Char>?</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Effect>21</Effect>
@@ -7369,6 +7583,11 @@
 				<Symbol>
 					<Char>?</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>5</DangerLevel>
 				<Effect>23</Effect>
@@ -7387,6 +7606,11 @@
 				<Symbol>
 					<Char>?</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Effect>22</Effect>
@@ -7405,6 +7629,11 @@
 				<Symbol>
 					<Char>?</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Effect>25</Effect>
@@ -7423,6 +7652,11 @@
 				<Symbol>
 					<Char>?</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Effect>30</Effect>
@@ -7441,6 +7675,11 @@
 				<Symbol>
 					<Char>?</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Effect>31</Effect>
@@ -7907,6 +8146,11 @@
 				<Symbol>
 					<Char>*</Char>
 					<Colour>8</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>15</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
@@ -8603,6 +8847,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>ISEN_DUN_CHRONICLE_TEXT_SID</TextSID>
@@ -8621,6 +8870,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>BOOK_OF_DAYS_TEXT_SID</TextSID>
@@ -8639,6 +8893,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>THE_NINE_TEXT_SID</TextSID>
@@ -8657,6 +8916,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>ON_ETERNALISM_TEXT_SID</TextSID>
@@ -8675,6 +8939,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>ON_FAERIE_FRAGMENTS_TEXT_SID</TextSID>
@@ -8693,6 +8962,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>TEL_AND_FLORIDEL_TEXT_SID</TextSID>
@@ -8711,6 +8985,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>STONEHEIM_HISTORY_TEXT_SID</TextSID>
@@ -8729,6 +9008,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>GNORDVAR_HISTORY_TEXT_SID</TextSID>
@@ -8747,6 +9031,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>YEW_HISTORY_TEXT_SID</TextSID>
@@ -8765,6 +9054,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>SHRINES_HISTORY_TEXT_SID</TextSID>
@@ -8783,6 +9077,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<TextSID>HISTORY_KELL_EMPIRE_TEXT_SID</TextSID>
@@ -8803,6 +9102,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>c_01_minor_healing</SpellID>
@@ -8822,6 +9126,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>c_02_flame_dart</SpellID>
@@ -8841,6 +9150,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>c_03_steel_wind</SpellID>
@@ -8860,6 +9174,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>c_04_blink</SpellID>
@@ -8879,6 +9198,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>7</DangerLevel>
 				<SpellID>c_05_spirit_bolt</SpellID>
@@ -8898,6 +9222,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<SpellID>c_06_purify</SpellID>
@@ -8917,6 +9246,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<SpellID>c_07_antimagic_shield</SpellID>
@@ -8936,6 +9270,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>c_08_bravery</SpellID>
@@ -8955,6 +9294,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>c_09_force_bolt</SpellID>
@@ -8974,6 +9318,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<SpellID>c_10_cleansing</SpellID>
@@ -8993,6 +9342,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>c_12_mapping</SpellID>
@@ -9012,6 +9366,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>c_13_crumble</SpellID>
@@ -9031,6 +9390,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<SpellID>c_11_blast</SpellID>
@@ -9050,6 +9414,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>c_14_inferno</SpellID>
@@ -9069,6 +9438,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>25</DangerLevel>
 				<SpellID>c_15_shards</SpellID>
@@ -9088,6 +9462,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>c_16_electric_arc</SpellID>
@@ -9107,6 +9486,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>c_17_repel</SpellID>
@@ -9126,6 +9510,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>c_18_glow</SpellID>
@@ -9145,6 +9534,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<SpellID>a_01_wreath_of_fire</SpellID>
@@ -9164,6 +9558,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<SpellID>a_03_lightning_bolt</SpellID>
@@ -9183,6 +9582,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>12</DangerLevel>
 				<SpellID>a_02_dragon_breath</SpellID>
@@ -9202,6 +9606,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>18</DangerLevel>
 				<SpellID>a_04_shockwave</SpellID>
@@ -9221,6 +9630,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>30</DangerLevel>
 				<SpellID>a_05_flight</SpellID>
@@ -9240,6 +9654,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<SpellID>a_06_cross_of_flame</SpellID>
@@ -9259,6 +9678,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<SpellID>a_07_fireball</SpellID>
@@ -9278,6 +9702,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>8</DangerLevel>
 				<SpellID>a_08_elemental_mastery</SpellID>
@@ -9297,6 +9726,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<SpellID>a_09_frost_bolt</SpellID>
@@ -9316,6 +9750,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>16</DangerLevel>
 				<SpellID>a_10_fire_storm</SpellID>
@@ -9335,6 +9774,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>16</DangerLevel>
 				<SpellID>a_11_ice_storm</SpellID>
@@ -9354,6 +9798,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>16</DangerLevel>
 				<SpellID>a_12_lightning_storm</SpellID>
@@ -9373,6 +9822,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<SpellID>a_13_maelstrom</SpellID>
@@ -9392,6 +9846,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>10</DangerLevel>
 				<SpellID>a_14_absolute_zero</SpellID>
@@ -9411,6 +9870,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>8</DangerLevel>
 				<SpellID>a_15_vorpal_bolt</SpellID>
@@ -9430,6 +9894,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<SpellID>a_16_dig</SpellID>
@@ -9449,6 +9918,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>a_17_holocaust</SpellID>
@@ -9468,6 +9942,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>a_19_meteor</SpellID>
@@ -9487,6 +9966,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>a_20_teleport</SpellID>
@@ -9506,6 +9990,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<SpellID>a_21_warp</SpellID>
@@ -9525,6 +10014,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>5</DangerLevel>
 				<SpellID>d_01_healing_word</SpellID>
@@ -9544,6 +10038,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>d_02_smite</SpellID>
@@ -9563,6 +10062,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>32</DangerLevel>
 				<SpellID>d_03_holy</SpellID>
@@ -9582,6 +10086,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>5</DangerLevel>
 				<SpellID>d_04_divine_wind</SpellID>
@@ -9601,6 +10110,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>5</DangerLevel>
 				<SpellID>d_05_divine_shield</SpellID>
@@ -9620,6 +10134,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>d_06_cure</SpellID>
@@ -9639,6 +10158,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<SpellID>d_07_soften</SpellID>
@@ -9658,6 +10182,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>18</DangerLevel>
 				<SpellID>d_08_benediction</SpellID>
@@ -9677,6 +10206,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<SpellID>d_09_heavenly_hand</SpellID>
@@ -9696,6 +10230,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>5</DangerLevel>
 				<SpellID>d_10_radiant_beam</SpellID>
@@ -9715,6 +10254,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>d_11_divine_form</SpellID>
@@ -9734,6 +10278,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>d_12_absolution</SpellID>
@@ -9753,6 +10302,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>30</DangerLevel>
 				<SpellID>m_01_wraith_form</SpellID>
@@ -9772,6 +10326,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<SpellID>m_02_poison</SpellID>
@@ -9791,6 +10350,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<SpellID>m_03_blind</SpellID>
@@ -9810,6 +10374,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_04_mute</SpellID>
@@ -9829,6 +10398,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<SpellID>m_05_spellbind</SpellID>
@@ -9848,6 +10422,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_06_haste</SpellID>
@@ -9867,6 +10446,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_07_slow</SpellID>
@@ -9886,6 +10470,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_08_stone</SpellID>
@@ -9905,6 +10494,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_09_curse</SpellID>
@@ -9924,6 +10518,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_10_aim</SpellID>
@@ -9943,6 +10542,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_11_haze</SpellID>
@@ -9962,6 +10566,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>15</DangerLevel>
 				<SpellID>m_12_timewalk</SpellID>
@@ -9981,6 +10590,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<SpellID>m_13_uncurse</SpellID>
@@ -10000,6 +10614,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_14_detect_traps</SpellID>
@@ -10019,6 +10638,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<SpellID>m_15_bless</SpellID>
@@ -10038,6 +10662,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<SpellID>m_16_malediction</SpellID>
@@ -10057,6 +10686,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<SpellID>m_17_rage</SpellID>
@@ -10076,6 +10710,11 @@
 				<Symbol>
 					<Char>"</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<SpellID>m_18_stun_bolt</SpellID>
@@ -10104,6 +10743,15 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<Material>0</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>7</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 			<Item id="_inkpot">
@@ -10116,6 +10764,15 @@
 					<Ounces>4</Ounces>
 				</Weight>
 				<Material>2</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Colour>12</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>8</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 			</Item>			
 			<Item id="_dirt">
@@ -10143,6 +10800,11 @@
 				<Symbol>
 					<Char>)</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>10</Col>
+					</Sprite>					
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
