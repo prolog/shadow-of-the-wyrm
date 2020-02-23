@@ -741,6 +741,16 @@ void SDLDisplay::set_spritesheets(const map<string, pair<string, unordered_map<s
   {
     string spritesheet_id = ss_it.first;
     string filename = ss_it.second.first;
+
+    // If the spritesheet already exists (we might be reloading textures),
+    // free it.
+    auto ss_texture_it = spritesheets.find(spritesheet_id);
+    if (ss_texture_it != spritesheets.end())
+    {
+      SDL_Texture* existing_texture = ss_texture_it->second;
+      SDL_DestroyTexture(existing_texture);
+    }
+
     SDL_Texture* spritesheet = load_texture(filename, renderer);
     spritesheets[spritesheet_id] = spritesheet;
 

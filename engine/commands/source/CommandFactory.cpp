@@ -154,7 +154,7 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_shared<QuestListCommand>(key);
   }
-  else if (command_name == CommandKeys::RELOAD_SCRIPTS_AND_SIDS)
+  else if (command_name == CommandKeys::RELOAD_SCRIPTS_TEXTURES_AND_SIDS)
   {
     command = std::make_shared<ReloadScriptsCommand>(key);
   }

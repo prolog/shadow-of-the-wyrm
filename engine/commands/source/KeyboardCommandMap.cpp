@@ -178,7 +178,7 @@ void KeyboardCommandMap::initialize_command_mapping(const Settings& settings)
 
   // Non-remappable commands
   command_mapping.insert(make_pair(std::to_string(KEY_F(11)), CommandKeys::RUN_SCRIPT));
-  command_mapping.insert(make_pair(std::to_string(KEY_F(12)), CommandKeys::RELOAD_SCRIPTS_AND_SIDS));
+  command_mapping.insert(make_pair(std::to_string(KEY_F(12)), CommandKeys::RELOAD_SCRIPTS_TEXTURES_AND_SIDS));
 }
 
 // Handle serialization of the keyboard/command-key map.  Any additional values added by subclasses

@@ -2505,6 +2505,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>19</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -2532,6 +2540,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>19</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Resistances>
 					<Arcane>0.20</Arcane>
@@ -2565,6 +2581,14 @@
 				<AutoCurse>1</AutoCurse>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>19</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Pierce>0.20</Pierce>
@@ -2598,6 +2622,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>19</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Pierce>0.25</Pierce>
@@ -2629,6 +2661,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>19</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Acid>0.20</Acid>
@@ -2660,6 +2700,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>18</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -2742,6 +2790,14 @@
 				<Artifact>1</Artifact>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Holy>0.20</Holy>
@@ -2768,6 +2824,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+			</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Poison>0.20</Poison>
@@ -2794,6 +2858,14 @@
 				<Artifact>1</Artifact>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.30</Slash>
@@ -2825,6 +2897,14 @@
 				<Artifact>1</Artifact>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Heat>0.20</Heat>
@@ -2852,6 +2932,14 @@
 				<Artifact>1</Artifact>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Shadow>0.30</Shadow>
@@ -2882,6 +2970,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Holy>0.10</Holy>
@@ -2911,6 +3007,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>18</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Cold>0.10</Cold>
@@ -3117,6 +3221,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>19</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Shadow>0.15</Shadow>
@@ -3144,6 +3256,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.10</Slash>
@@ -3204,6 +3324,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>18</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Holy>0.10</Holy>
@@ -3234,6 +3362,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>18</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.15</Slash>
@@ -3262,6 +3398,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Heat>0.25</Heat>
@@ -3292,6 +3436,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.20</Slash>
@@ -3318,6 +3470,14 @@
 				<Artifact>1</Artifact>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>24</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.15</Slash>
@@ -3350,6 +3510,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>18</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1001</Skill>
 				<RangedSkill>2001</RangedSkill>
@@ -3377,6 +3545,14 @@
 				<Artifact>1</Artifact>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.25</Slash>
@@ -3417,6 +3593,14 @@
 				<Artifact>1</Artifact>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.30</Slash>
@@ -3456,6 +3640,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>19</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.10</Slash>
@@ -3499,6 +3691,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.20</Slash>
@@ -3529,6 +3729,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.40</Slash>
@@ -3563,6 +3771,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>19</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Shadow>0.60</Shadow>
@@ -3592,6 +3808,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>18</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Cold>0.10</Cold>
@@ -3626,6 +3850,14 @@
 				<Artifact>1</Artifact>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>22</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Heat>0.10</Heat>
@@ -3657,6 +3889,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>7</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>22</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Pierce>0.20</Pierce>
@@ -3684,6 +3924,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>22</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Pierce>0.20</Pierce>
@@ -3742,6 +3990,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>18</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Properties>
 					<Property>
@@ -3770,6 +4026,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>18</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Properties>
 					<Property>
@@ -3797,6 +4061,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -3825,6 +4097,14 @@
 				<WornLocation>4</WornLocation>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -4052,6 +4332,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>21</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -4079,6 +4367,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>21</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -4107,6 +4403,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>21</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -4135,6 +4439,14 @@
 				<WornLocation>4</WornLocation>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>21</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -4164,6 +4476,14 @@
 				<Artifact>1</Artifact>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>21</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Slash>0.10</Slash>
@@ -4191,6 +4511,14 @@
 				<Artifact>1</Artifact>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>21</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Holy>0.20</Holy>
@@ -4262,6 +4590,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>22</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -4290,6 +4626,14 @@
 				<WornLocation>4</WornLocation>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>22</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<Properties>
 					<Property>
@@ -4318,6 +4662,14 @@
 				<WornLocation>4</WornLocation>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>24</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Properties>
 					<Property>
@@ -5466,6 +5818,14 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>22</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -5497,6 +5857,14 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>22</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Properties>
 					<Property>
@@ -5524,6 +5892,14 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>22</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<Properties>
 					<Property>
@@ -5551,6 +5927,14 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>12</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>23</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1006</Skill>
 				<RangedSkill>2008</RangedSkill>
@@ -5706,6 +6090,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>21</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1000</Skill>
 				<RangedSkill>2000</RangedSkill>
@@ -5730,6 +6122,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>18</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -5758,6 +6158,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>18</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1001</Skill>
 				<RangedSkill>2001</RangedSkill>

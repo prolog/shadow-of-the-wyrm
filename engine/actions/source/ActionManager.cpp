@@ -300,19 +300,26 @@ ActionCost ActionManager::quest_list(CreaturePtr creature)
   return get_action_cost(creature, qla.quest_list());
 }
 
-void ActionManager::reload_scripts_and_sids()
+void ActionManager::reload_scripts_textures_and_sids()
 {
   CreaturePtr nullcr;
-  reload_scripts_and_sids(nullcr);
+  reload_scripts_textures_and_sids(nullcr);
 }
 
 // Clear the Lua state so scripts can be reloaded.
 // Reload the strings.
-ActionCost ActionManager::reload_scripts_and_sids(CreaturePtr creature)
+ActionCost ActionManager::reload_scripts_textures_and_sids(CreaturePtr creature)
 {
   Game& game = Game::instance();
   ScriptEngine& se = game.get_script_engine_ref();
   se.clear_state();
+
+  DisplayPtr display = game.get_display();
+  if (display != nullptr)
+  {
+    display->set_spritesheets(game.get_spritesheets());
+    game.set_requires_redraw(true);
+  }
 
   StringTable::load(game.get_sid_ini_filename());
 

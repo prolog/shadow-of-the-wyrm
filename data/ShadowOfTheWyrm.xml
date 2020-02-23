@@ -6496,6 +6496,11 @@
 				<WeatherColours>
 					<WeatherColour>14</WeatherColour>
 				</WeatherColours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>14</Col>
+				</Sprite>
 			</Symbol>
 		</RiverTile>
 		<SeaTile>
@@ -6506,6 +6511,11 @@
 					<WeatherColour>12</WeatherColour>
 					<WeatherColour>15</WeatherColour>
 				</WeatherColours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>14</Col>
+				</Sprite>
 			</Symbol>
 		</SeaTile>
 		<ShoalsTile>
@@ -6554,6 +6564,11 @@
 				<WeatherColours>
 					<WeatherColour>10</WeatherColour>
 				</WeatherColours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>14</Col>
+				</Sprite>
 			</Symbol>
 		</MarshTile>
 		<ReedsTile>
@@ -6630,6 +6645,11 @@
 				<WeatherColours>
 					<WeatherColour>6</WeatherColour>
 				</WeatherColours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>14</Col>
+				</Sprite>
 			</Symbol>
 		</SpringsTile>
 		<ForestTile>
@@ -7147,10 +7167,46 @@
 	</Traps>
 	<AllFeatures>
 		<BaseFeatures>
-			<EvilAltar><Symbol><Char>_</Char></Symbol></EvilAltar>
-			<GoodAltar><Symbol><Char>_</Char></Symbol></GoodAltar>
-			<NeutralAltar><Symbol><Char>_</Char></Symbol></NeutralAltar>
-			<Barrel><Symbol><Char>o</Char></Symbol></Barrel>
+			<EvilAltar>
+				<Symbol>
+					<Char>_</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>1</Col>
+					</Sprite>
+				</Symbol>
+			</EvilAltar>
+			<GoodAltar>
+				<Symbol>
+					<Char>_</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>1</Col>
+					</Sprite>
+				</Symbol>
+			</GoodAltar>
+			<NeutralAltar>
+				<Symbol>
+					<Char>_</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>1</Col>
+					</Sprite>
+				</Symbol>
+			</NeutralAltar>
+			<Barrel>
+				<Symbol>
+					<Char>o</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>2</Col>
+					</Sprite>
+				</Symbol>
+			</Barrel>
 			<Bench>
 				<Symbol>
 					<Char>-</Char>
@@ -7161,7 +7217,16 @@
 					</Sprite>
 				</Symbol>
 			</Bench>
-			<Bed><Symbol><Char>~</Char></Symbol></Bed>
+			<Bed>
+				<Symbol>
+					<Char>~</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</Sprite>
+				</Symbol>
+			</Bed>
 			<Door><Symbol><Char>+</Char></Symbol></Door>
 			<Gate><Symbol><Char>+</Char></Symbol></Gate>
 			<DecorativeStatue><Symbol><Char>I</Char></Symbol></DecorativeStatue>
@@ -7174,19 +7239,64 @@
 			<RegularDecorativeStatue><Symbol><Char>I</Char></Symbol></RegularDecorativeStatue>
 			<SorcerorDecorativeStatue><Symbol><Char>I</Char></Symbol></SorcerorDecorativeStatue>
 			<EastWestPew><Symbol><Char>|</Char></Symbol></EastWestPew>
-			<FirePillar><Symbol><Char>Y</Char></Symbol></FirePillar>
+			<FirePillar>
+				<Symbol>
+					<Char>Y</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>7</Col>
+					</Sprite>
+				</Symbol>
+			</FirePillar>
 			<Forge><Symbol><Char>&amp;</Char></Symbol></Forge>
-			<Fountain><Symbol><Char>~</Char></Symbol></Fountain>
+			<Fountain>
+				<Symbol>
+					<Char>~</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>8</Col>
+					</Sprite>
+			</Symbol>
+			</Fountain>
 			<JewelerWorkbench><Symbol><Char>&amp;</Char></Symbol></JewelerWorkbench>
 			<Pew><Symbol><Char>-</Char></Symbol></Pew>
 			<Pulper><Symbol><Char>:</Char></Symbol></Pulper>
 			<Sarcophagus><Symbol><Char>0</Char></Symbol></Sarcophagus>
 			<Sign><Symbol><Char>+</Char></Symbol></Sign>
-			<SlotMachine><Symbol><Char>$</Char></Symbol></SlotMachine>
-			<StoneMarker><Symbol><Char>+</Char></Symbol></StoneMarker>
+			<SlotMachine>
+				<Symbol>
+					<Char>$</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
+				</Symbol>
+			</SlotMachine>
+			<StoneMarker>
+				<Symbol>
+					<Char>+</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>6</Col>
+					</Sprite>
+				</Symbol>
+			</StoneMarker>
 			<Table><Symbol><Char>o</Char></Symbol></Table>
 			<Tannery><Symbol><Char>;</Char></Symbol></Tannery>
-			<Trap><Symbol><Char>^</Char></Symbol></Trap>
+			<Trap>
+				<Symbol>
+					<Char>^</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
+				</Symbol>
+			</Trap>
 			<WheelAndLoom><Symbol><Char>;</Char></Symbol></WheelAndLoom>
 		</BaseFeatures>
 		<ConfigurableFeatures>
