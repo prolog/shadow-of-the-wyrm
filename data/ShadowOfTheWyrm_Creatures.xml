@@ -3762,6 +3762,11 @@
 			<Symbol>
 				<Char>G</Char>
 				<Colour>4</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>0</Row>
+					<Col>12</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -6776,6 +6781,11 @@
 			<Symbol>
 				<Char>u</Char>
 				<Colour>7</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>0</Row>
+					<Col>11</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -6816,6 +6826,11 @@
 			<Symbol>
 				<Char>u</Char>
 				<Colour>15</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>0</Row>
+					<Col>10</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -6862,6 +6877,11 @@
 			<Symbol>
 				<Char>u</Char>
 				<Colour>6</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>0</Row>
+					<Col>10</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -8145,6 +8165,11 @@
 			<Symbol>
 				<Char>G</Char>
 				<Colour>3</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>0</Row>
+					<Col>12</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -11995,6 +12020,11 @@
 			<Symbol>
 				<Char>e</Char>
 				<Colour>15</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>0</Row>
+					<Col>13</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -14046,6 +14076,11 @@
 			<Symbol>
 				<Char>u</Char>
 				<Colour>12</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>0</Row>
+					<Col>11</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -21482,6 +21517,11 @@
 			<Symbol>
 				<Char>E</Char>
 				<Colour>1</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>0</Row>
+					<Col>13</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -21571,6 +21611,11 @@
 			<Symbol>
 				<Char>G</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>0</Row>
+					<Col>12</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
