@@ -6596,12 +6596,22 @@
 					<Autumn>3</Autumn>
 					<Winter>15</Winter>
 				</Colours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>18</Col>
+				</Sprite>
 			</Symbol>
 		</HillsTile>
 		<MountainsTile>
 			<Symbol>
 				<Char>^</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>17</Col>
+				</Sprite>
 			</Symbol>
 		</MountainsTile>
 		<BeachTile>
@@ -6636,6 +6646,11 @@
 					<Autumn>3</Autumn>
 					<Winter>3</Winter>
 				</Colours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>19</Col>
+				</Sprite>
 			</Symbol>
 		</WeedsTile>
 		<SpringsTile>
@@ -6664,7 +6679,7 @@
 				<Sprite>
 					<ID>til</ID>
 					<Row>0</Row>
-					<Col>1</Col>
+					<Col>15</Col>
 				</Sprite>
 			</Symbol>
 		</ForestTile>
@@ -6752,9 +6767,15 @@
 			<Symbol>
 				<Char>O</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>20</Col>
+				</Sprite>
 			</Symbol>
 		</KeepTile>
 		<LibraryTile>
+			<!-- Currently unused -->
 			<Symbol>
 				<Char>"</Char>
 				<Colour>3</Colour>
@@ -6842,6 +6863,11 @@
 			<Symbol>
 				<Char>,</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>16</Col>
+				</Sprite>
 			</Symbol>
 		</RockyEarthTile>
 		<MineTile>

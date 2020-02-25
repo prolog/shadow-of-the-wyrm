@@ -3043,6 +3043,14 @@
 				<Artifact>1</Artifact>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>25</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Acid>0.10</Acid>
@@ -3074,6 +3082,14 @@
 				<Artifact>1</Artifact>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>25</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Heat>0.15</Heat>
@@ -3103,6 +3119,14 @@
 				<Artifact>1</Artifact>
 				<HandsRequired>2</HandsRequired>
 				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>25</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Heat>0.10</Heat>
@@ -4752,6 +4776,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>25</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -4780,6 +4812,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>8</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>25</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Pound>0.20</Pound>
@@ -4806,6 +4846,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>9</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>25</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Heat>0.15</Heat>
@@ -4838,6 +4886,14 @@
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>9</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>25</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Arcane>0.20</Arcane>
@@ -4948,6 +5004,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>25</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -4975,6 +5039,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>25</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
 					<Property>
@@ -5002,6 +5074,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>25</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Arcane>0.20</Arcane>
