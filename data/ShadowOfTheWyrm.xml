@@ -7286,7 +7286,16 @@
 					</Sprite>
 			</Symbol>
 			</Fountain>
-			<JewelerWorkbench><Symbol><Char>&amp;</Char></Symbol></JewelerWorkbench>
+			<JewelerWorkbench>
+				<Symbol>
+					<Char>&amp;</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>9</Col>
+					</Sprite>
+				</Symbol>
+			</JewelerWorkbench>
 			<Pew><Symbol><Char>-</Char></Symbol></Pew>
 			<Pulper><Symbol><Char>:</Char></Symbol></Pulper>
 			<Sarcophagus><Symbol><Char>0</Char></Symbol></Sarcophagus>
@@ -7311,7 +7320,16 @@
 					</Sprite>
 				</Symbol>
 			</StoneMarker>
-			<Table><Symbol><Char>o</Char></Symbol></Table>
+			<Table>
+				<Symbol>
+					<Char>o</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>10</Col>
+					</Sprite>
+				</Symbol>
+			</Table>
 			<Tannery><Symbol><Char>;</Char></Symbol></Tannery>
 			<Trap>
 				<Symbol>
@@ -7323,7 +7341,16 @@
 					</Sprite>
 				</Symbol>
 			</Trap>
-			<WheelAndLoom><Symbol><Char>;</Char></Symbol></WheelAndLoom>
+			<WheelAndLoom>
+				<Symbol>
+					<Char>;</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>11</Col>
+					</Sprite>
+				</Symbol>
+			</WheelAndLoom>
 		</BaseFeatures>
 		<ConfigurableFeatures>
 			<ConfigurableFeature id="_rift">
