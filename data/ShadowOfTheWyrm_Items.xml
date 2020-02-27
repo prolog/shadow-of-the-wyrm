@@ -11616,6 +11616,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>7</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
@@ -11631,6 +11636,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>8</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
@@ -11646,6 +11656,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>8</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
@@ -11661,6 +11676,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>8</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
@@ -11676,6 +11696,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>8</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
