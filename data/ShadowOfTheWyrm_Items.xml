@@ -7515,6 +7515,14 @@
 					<Pounds>30</Pounds>
 				</Weight>
 				<Material>8</Material>
+				<Symbol>
+					<Char>&amp;</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>0</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 			</Boat>
 			<Boat id="raft">
@@ -7526,6 +7534,14 @@
 					<Pounds>30</Pounds>
 				</Weight>
 				<Material>8</Material>
+				<Symbol>
+					<Char>&amp;</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>2</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>3</DangerLevel>
 			</Boat>			
 			<Boat id="rowboat">
@@ -7537,6 +7553,14 @@
 					<Pounds>50</Pounds>
 				</Weight>
 				<Material>8</Material>
+				<Symbol>
+					<Char>&amp;</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>0</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>5</DangerLevel>
 				<Rarity>1</Rarity>
 			</Boat>
@@ -8802,6 +8826,14 @@
 					<Ounces>3</Ounces>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>1</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>zaeda_tower</LockID>
 			</Tool>
@@ -8818,6 +8850,11 @@
 				<Symbol>
 					<Char>*</Char>
 					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>3</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
@@ -11467,6 +11504,15 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<Material>0</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>5</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 			<Item id="_quill">
@@ -11521,6 +11567,14 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<Material>8</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>6</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 			<Item id="shovel">
@@ -11733,6 +11787,11 @@
 				<Symbol>
 					<Char>*</Char>
 					<Colour>9</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>

@@ -6720,6 +6720,11 @@
 			<Symbol>
 				<Char>o</Char>
 				<Colour>3</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>22</Col>
+				</Sprite>
 			</Symbol>
 		</VillageTile>
 		<DungeonComplexTile>
@@ -6797,12 +6802,22 @@
 			<Symbol>
 				<Char>.</Char>
 				<Colour>15</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>23</Col>
+				</Sprite>
 			</Symbol>
 		</DaisTile>
 		<PierTile>
 			<Symbol>
 				<Char>#</Char>
 				<Colour>3</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>21</Col>
+				</Sprite>
 			</Symbol>
 		</PierTile>
 		<BarrowTile>
