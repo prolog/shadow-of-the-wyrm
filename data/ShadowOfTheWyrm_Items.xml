@@ -11716,6 +11716,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>9</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
@@ -11740,6 +11745,14 @@
 					<Pounds>14</Pounds>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>10</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
 					<Property>
