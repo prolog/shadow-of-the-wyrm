@@ -5764,6 +5764,14 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>/</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>20</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>5</DangerLevel>
 				<Skill>1004</Skill>
 				<RangedSkill>2005</RangedSkill>
@@ -5811,6 +5819,11 @@
 				<Symbol>
 					<Char>*</Char>
 					<Colour>9</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>21</Col>
+					</Sprite>					
 				</Symbol>
 				<DangerLevel>10</DangerLevel>
 				<Properties>
@@ -5845,6 +5858,11 @@
 				<Symbol>
 					<Char>*</Char>
 					<Colour>4</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>21</Col>
+					</Sprite>					
 				</Symbol>
 				<DangerLevel>14</DangerLevel>
 				<Properties>
@@ -5878,6 +5896,11 @@
 				<Symbol>
 					<Char>*</Char>
 					<Colour>4</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>21</Col>
+					</Sprite>					
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
@@ -5988,6 +6011,11 @@
 				<Symbol>
 					<Char>*</Char>
 					<Colour>8</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>22</Col>
+					</Sprite>					
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
@@ -6016,6 +6044,11 @@
 				<Symbol>
 					<Char>.</Char>
 					<Colour>12</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>23</Col>
+					</Sprite>					
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1009</Skill>
