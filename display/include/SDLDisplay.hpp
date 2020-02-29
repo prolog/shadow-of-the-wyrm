@@ -96,6 +96,8 @@ class SDLDisplay : public Display
     bool create_window_and_renderer();
     void initialize_colours();
 
+    bool check_available_screen_dimensions();
+
     // Game-related functions
     void display_text_component(SDL_Window* window, int* row, int* col, TextComponentPtr text_component, const uint line_increment);
 

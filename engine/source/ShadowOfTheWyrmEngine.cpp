@@ -113,6 +113,7 @@ void ShadowOfTheWyrmEngine::start(const Settings& settings)
 
   game.set_settings(settings);
   game.actions.reload_scripts_textures_and_sids();
+  bool disp_ok = true;
 
   if (state_manager.start_new_game())
   {
@@ -128,18 +129,31 @@ void ShadowOfTheWyrmEngine::start(const Settings& settings)
 
     if (display)
     {
-      display->create();
-      display->set_spritesheets(game.get_spritesheets());
-      display->set_title(StringTable::get(TextKeys::SW_TITLE));
-      display->show();
+      disp_ok = display->create();
+
+      if (disp_ok)
+      {
+        display->set_spritesheets(game.get_spritesheets());
+        display->set_title(StringTable::get(TextKeys::SW_TITLE));
+        display->show();
+      }
+      else
+      {
+        // If we couldn't create the display, set the appropriate engine
+        // state so we don't try to continue.
+        state_manager.set_state(EngineStateEnum::ENGINE_STATE_STOP);
+      }
     }
   }
 
-  setup_player_and_world();
+  if (disp_ok)
+  { 
+    setup_player_and_world();
 
-  if (!state_manager.exit())
-  {
-    game.go();
+    if (!state_manager.exit())
+    {
+      game.go();
+    }
   }
 }
 

@@ -46,8 +46,39 @@ bool SDLDisplay::create()
   bool init = true;
 
   init = read_dimensions_from_settings();
-  init = init && create_window_and_renderer();
-  init = init && read_font_into_texture();
+
+  if (init)
+  {
+    init = check_available_screen_dimensions();
+
+    if (init)
+    {
+      init = create_window_and_renderer();
+
+      if (init)
+      {
+        init = read_font_into_texture();
+
+        if (!init)
+        {
+          std::cerr << "Could not read font into texture" << std::endl;
+        }
+      }
+      else
+      {
+        std::cerr << "Could not read create window and renderer" << std::endl;
+      }
+    }
+    else
+    {
+      std::cerr << "Screen is smaller than required " << sdld.get_screen_width() << "x" << sdld.get_screen_height() << " - increase resolution and restart, or change to display=curses in swyrm.ini" << std::endl;
+    }
+  }
+  else
+  {
+    std::cerr << "Could not read dimensions from settings" << std::endl;
+  }
+
   
   if (init)
   {
@@ -67,6 +98,22 @@ void SDLDisplay::tear_down()
 
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
+}
+
+bool SDLDisplay::check_available_screen_dimensions()
+{
+  bool dim_ok = true;
+  SDL_DisplayMode display_mode;
+  SDL_GetCurrentDisplayMode(0, &display_mode);
+  auto avail_width = display_mode.w;
+  auto avail_height = display_mode.h;
+
+  if (avail_width < sdld.get_screen_width() || avail_height < sdld.get_screen_height())
+  {
+    dim_ok = false;
+  }
+
+  return dim_ok;
 }
 
 void SDLDisplay::initialize_colours()
