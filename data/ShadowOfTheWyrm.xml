@@ -6749,12 +6749,22 @@
 			<Symbol>
 				<Char>O</Char>
 				<Colour>15</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>24</Col>
+				</Sprite>
 			</Symbol>
 		</CastleTile>
 		<ChurchTile>
 			<Symbol>
 				<Char>+</Char>
 				<Colour>15</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>25</Col>
+				</Sprite>
 			</Symbol>
 		</ChurchTile>
 		<GraveyardTile>
@@ -6790,12 +6800,22 @@
 			<Symbol>
 				<Char>+</Char>
 				<Colour>1</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>26</Col>
+				</Sprite>
 			</Symbol>
 		</SiteOfDeathTile>
 		<TempleTile>
 			<Symbol>
 				<Char>+</Char>
 				<Colour>3</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>25</Col>
+				</Sprite>
 			</Symbol>
 		</TempleTile>
 		<DaisTile>
@@ -6900,6 +6920,11 @@
 			<Symbol>
 				<Char>o</Char>
 				<Colour>6</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>27</Col>
+				</Sprite>
 			</Symbol>
 		</WellTile>
 		<CryptTile>
@@ -6957,6 +6982,11 @@
 			<Symbol>
 				<Char>o</Char>
 				<Colour>5</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>28</Col>
+				</Sprite>
 			</Symbol>
 		</ShrineTile>
 		<SeabedTile>
@@ -7313,8 +7343,26 @@
 			</JewelerWorkbench>
 			<Pew><Symbol><Char>-</Char></Symbol></Pew>
 			<Pulper><Symbol><Char>:</Char></Symbol></Pulper>
-			<Sarcophagus><Symbol><Char>0</Char></Symbol></Sarcophagus>
-			<Sign><Symbol><Char>+</Char></Symbol></Sign>
+			<Sarcophagus>
+				<Symbol>
+					<Char>0</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>13</Col>
+					</Sprite>
+				</Symbol>
+			</Sarcophagus>
+			<Sign>
+				<Symbol>
+					<Char>+</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>12</Col>
+					</Sprite>
+				</Symbol>
+			</Sign>
 			<SlotMachine>
 				<Symbol>
 					<Char>$</Char>

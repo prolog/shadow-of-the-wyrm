@@ -26,6 +26,9 @@ class Display : public ISerializable
 	  virtual bool create() = 0;
 	  virtual void tear_down() = 0;
 
+    virtual void set_force_ascii(const bool new_force_ascii);
+    virtual bool get_force_ascii() const;
+
     // Get the screen's current width
     virtual unsigned int get_width() const = 0;
 
@@ -136,6 +139,7 @@ class Display : public ISerializable
     virtual void redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows) = 0;
     int get_cursor_mode(const CursorSettings cs) const;
 
+    bool force_ascii;
     Colour mono_colour;
     std::map<std::string, std::string> display_properties;
     const int cursor_mode;

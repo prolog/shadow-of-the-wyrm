@@ -365,6 +365,13 @@ class ItemCodexCommand : public Command
     ~ItemCodexCommand();
 };
 
+class SwitchGraphicsModeCommand : public Command
+{
+  public:
+    SwitchGraphicsModeCommand(int key);
+    ~SwitchGraphicsModeCommand();
+};
+
 // NPC-only commands:
 
 class BreedCommand : public Command

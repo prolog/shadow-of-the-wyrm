@@ -531,6 +531,16 @@ ItemCodexCommand::~ItemCodexCommand()
 {
 }
 
+// Switch between sprites and ASCII (when in SDL)
+SwitchGraphicsModeCommand::SwitchGraphicsModeCommand(int key)
+: Command(CommandKeys::SWITCH_GRAPHICS_MODE, key)
+{
+}
+
+SwitchGraphicsModeCommand::~SwitchGraphicsModeCommand()
+{
+}
+
 // NPC-only commands
 
 // Breed (create a new creature of the same ID on an adjacent tile)

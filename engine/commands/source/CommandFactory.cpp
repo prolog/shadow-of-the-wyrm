@@ -238,6 +238,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_shared<ItemCodexCommand>(key);
   }
+  else if (command_name == CommandKeys::SWITCH_GRAPHICS_MODE)
+  {
+    command = std::make_shared<SwitchGraphicsModeCommand>(key);
+  }
 
   return command;
 }

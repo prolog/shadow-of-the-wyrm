@@ -272,6 +272,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game.actions.item_codex(creature);
       }
+      else if (command_name == CommandKeys::SWITCH_GRAPHICS_MODE)
+      {
+        ac = game.actions.switch_graphics_mode(creature);
+      }
     }
   }
   

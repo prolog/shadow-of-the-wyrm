@@ -13,7 +13,8 @@
 using namespace std;
 
 Display::Display()
-: mono_colour(Colour::COLOUR_UNDEFINED)
+: force_ascii(false)
+, mono_colour(Colour::COLOUR_UNDEFINED)
 , cursor_mode(1)
 , msg_buffer_last_y(0)
 , msg_buffer_last_x(0)
@@ -24,12 +25,23 @@ bool Display::operator==(const Display& d) const
 {
   bool result = true;
 
+  result = result && (force_ascii == d.force_ascii);
   result = result && (mono_colour == d.mono_colour);
   result = result && (cursor_mode == d.cursor_mode);
   result = result && (msg_buffer_last_y == d.msg_buffer_last_y);
   result = result && (msg_buffer_last_x == d.msg_buffer_last_x);
 
   return result;
+}
+
+void Display::set_force_ascii(const bool new_force_ascii)
+{
+  force_ascii = new_force_ascii;
+}
+
+bool Display::get_force_ascii() const
+{
+  return force_ascii;
 }
 
 // Show confirmation text - use the message buffer.
@@ -360,6 +372,7 @@ int Display::get_field_space() const
 
 bool Display::serialize(ostream& stream) const
 {
+  Serialize::write_bool(stream, force_ascii);
   Serialize::write_enum(stream, mono_colour);
   Serialize::write_string_map(stream, display_properties);
   Serialize::write_uint(stream, msg_buffer_last_y);
@@ -370,6 +383,7 @@ bool Display::serialize(ostream& stream) const
 
 bool Display::deserialize(istream& stream)
 {
+  Serialize::read_bool(stream, force_ascii);
   Serialize::read_enum(stream, mono_colour);
   Serialize::read_string_map(stream, display_properties);
   Serialize::read_uint(stream, msg_buffer_last_y);

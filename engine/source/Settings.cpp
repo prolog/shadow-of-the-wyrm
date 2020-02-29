@@ -47,6 +47,11 @@ string Settings::get_setting(const string& key) const
   return setting;
 }
 
+void Settings::set_setting(const string& name, const string& val)
+{
+  settings_tree.put(name, val);
+}
+
 void Settings::set_settings(const map<string, string>& addl_settings)
 {
   for (const auto& s_pair : addl_settings)

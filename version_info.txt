@@ -1,6 +1,8 @@
 Shadow of the Wyrm v1.1.8 "Rodrigo"
 - Version declared February 16, 2020.
 
+- F10 can be used to switch between tiles and ascii when using SDL (IceBox).
+
 - F12 now also reloads existing texture references.
 
 - Stanzas for "Tel and Floridel".

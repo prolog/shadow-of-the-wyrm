@@ -9,6 +9,6 @@ class XMLPotionReader : public XMLConsumableReader
     XMLPotionReader();
     ~XMLPotionReader();
 
-    void parse(PotionPtr potion, GenerationValues& igv, const XMLNode& potion_node, const bool force_ascii);
+    void parse(PotionPtr potion, GenerationValues& igv, const XMLNode& potion_node);
 };
 

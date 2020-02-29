@@ -408,7 +408,7 @@ void SDLDisplay::draw_coordinate(const DisplayTile& current_tile, const uint ter
       enable_colour(colour);
     }
 
-    if (s.get_uses_spritesheet())
+    if (!force_ascii && s.get_uses_spritesheet())
     {
       SpritesheetLocation ssl = s.get_spritesheet_location();
       SDL_Texture* spritesheet = get_spritesheet(s.get_spritesheet_location_ref().get_index());

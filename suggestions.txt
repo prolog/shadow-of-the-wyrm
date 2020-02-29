@@ -1,5 +1,5 @@
 Me:
-- Redo rock/stone tile
+- Resolution check for SDL
 - Dungeons should check for shop before generating trap.
 - Beer halls in villages
 - Spritesheets

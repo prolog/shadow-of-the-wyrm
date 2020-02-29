@@ -8,7 +8,7 @@ class XMLAmuletReader : public XMLWearableReader
     XMLAmuletReader();
     ~XMLAmuletReader();
 
-    void parse(AmuletPtr amulet, GenerationValues& igv, const XMLNode& amulet_node, const bool force_ascii);
+    void parse(AmuletPtr amulet, GenerationValues& igv, const XMLNode& amulet_node);
 
   protected:
 };

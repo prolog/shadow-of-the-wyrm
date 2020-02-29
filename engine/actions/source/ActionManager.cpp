@@ -404,6 +404,29 @@ ActionCost ActionManager::item_codex(CreaturePtr creature, ItemPtr item)
   return get_action_cost(creature, ica.item_details(creature, item, false));
 }
 
+ActionCost ActionManager::switch_graphics_mode(CreaturePtr creature)
+{
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
+
+  // Flip the force_ascii setting
+  Game& game = Game::instance();
+  DisplayPtr display = game.get_display();
+  Settings& settings = game.get_settings_ref();
+  bool force_ascii = settings.get_setting_as_bool(Setting::DISPLAY_FORCE_ASCII);
+  bool new_force_ascii = !force_ascii;
+  settings.set_setting(Setting::DISPLAY_FORCE_ASCII, Bool::to_string(new_force_ascii));
+
+  if (display != nullptr)
+  {
+    display->set_force_ascii(new_force_ascii);
+  }
+
+  // Now force a redraw
+  game.set_requires_redraw(true);
+
+  return get_action_cost(creature, action_cost_value);
+}
+
 ActionCost ActionManager::evoke(CreaturePtr creature)
 {
   EvokeAction ea;
