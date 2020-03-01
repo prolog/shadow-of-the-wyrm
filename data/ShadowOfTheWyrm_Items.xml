@@ -6799,6 +6799,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>10</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>18</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
@@ -6825,6 +6830,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>1</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>19</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>110</Nutrition>
@@ -6845,6 +6855,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>1</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>20</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
@@ -6871,6 +6886,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>21</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
@@ -6897,6 +6917,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>2</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>22</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
@@ -6923,6 +6948,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>5</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>21</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
@@ -6949,6 +6979,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>23</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Properties>
@@ -6975,6 +7010,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>11</Colour>
+						<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>18</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>25</DangerLevel>
 				<Properties>
@@ -7002,6 +7042,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>18</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>25</DangerLevel>
 				<Properties>
@@ -7029,6 +7074,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>10</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>24</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>150</Nutrition>
@@ -7049,6 +7099,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>9</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>25</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>500</Nutrition>
@@ -7069,6 +7124,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>26</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>500</Nutrition>
@@ -7089,6 +7149,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>27</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>700</Nutrition>
@@ -7109,6 +7174,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>2</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>28</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>500</Nutrition>
@@ -7129,6 +7199,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>1</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>29</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>500</Nutrition>
@@ -7148,6 +7223,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>30</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>1440</Nutrition>
@@ -7167,7 +7247,12 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
-				</Symbol>				
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>31</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>1001</Nutrition>
 				<FoodType>1</FoodType>
@@ -7186,6 +7271,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>0</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>860</Nutrition>
@@ -7205,6 +7295,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>0</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>990</Nutrition>
@@ -7224,6 +7319,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>0</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>900</Nutrition>
@@ -7243,6 +7343,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>0</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>930</Nutrition>
@@ -7262,6 +7367,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>0</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>900</Nutrition>
@@ -7281,6 +7391,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>0</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>875</Nutrition>
@@ -7301,6 +7416,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>3</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>2000</Nutrition>
@@ -7321,6 +7441,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>1</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
@@ -7341,6 +7466,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>2</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1700</Nutrition>	
@@ -7361,6 +7491,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>5</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>500</Nutrition>	
@@ -7381,6 +7516,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>4</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>600</Nutrition>	
@@ -7403,6 +7543,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>8</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>200</Nutrition>
@@ -7422,6 +7567,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>2</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>9</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>205</Nutrition>
@@ -7442,6 +7592,11 @@
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>8</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>200</Nutrition>
@@ -7463,6 +7618,11 @@
 				<Symbol>
 					<Char>w</Char>
 					<Colour>5</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>10</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>30</Nutrition>
@@ -7484,6 +7644,11 @@
 				<Symbol>
 					<Char>w</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>11</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>60</Nutrition>
@@ -7505,6 +7670,11 @@
 				<Symbol>
 					<Char>w</Char>
 					<Colour>8</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>12</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>40</Nutrition>
@@ -7526,6 +7696,11 @@
 				<Symbol>
 					<Char>w</Char>
 					<Colour>12</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>13</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>40</Nutrition>
@@ -7547,6 +7722,11 @@
 				<Symbol>
 					<Char>w</Char>
 					<Colour>9</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>14</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
@@ -7567,6 +7747,11 @@
 				<Symbol>
 					<Char>w</Char>
 					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>14</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
@@ -7587,6 +7772,11 @@
 				<Symbol>
 					<Char>w</Char>
 					<Colour>12</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>14</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
@@ -7607,6 +7797,11 @@
 				<Symbol>
 					<Char>w</Char>
 					<Colour>13</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>14</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
@@ -7627,6 +7822,11 @@
 				<Symbol>
 					<Char>w</Char>
 					<Colour>14</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>14</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
@@ -7647,6 +7847,11 @@
 				<Symbol>
 					<Char>w</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>14</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
@@ -7667,6 +7872,11 @@
 				<Symbol>
 					<Char>f</Char>
 					<Colour>10</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>16</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>150</Nutrition>
@@ -7687,6 +7897,11 @@
 				<Symbol>
 					<Char>f</Char>
 					<Colour>2</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>17</Col>
+					</Sprite>
 				</Symbol>	
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
@@ -7706,6 +7921,11 @@
 				<Symbol>
 					<Char>w</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>14</Col>
+					</Sprite>
 				</Symbol>	
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
@@ -7734,6 +7954,11 @@
 				<Symbol>
 					<Char>w</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>15</Col>
+					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>12000</Nutrition>
@@ -11982,6 +12207,14 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<Material>1</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>5</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 			<Item id="_bog_iron">
@@ -12018,6 +12251,14 @@
 					<Pounds>10</Pounds>
 				</Weight>
 				<Material>3</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>6</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<Properties>
 					<Property>
@@ -12035,6 +12276,15 @@
 					<Pounds>10</Pounds>
 				</Weight>
 				<Material>6</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>6</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>8</DangerLevel>
 				<Properties>
 					<Property>
@@ -12053,6 +12303,14 @@
 					<Ounces>3</Ounces>
 				</Weight>
 				<Material>13</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>7</Col>
+					</Sprite>					
+				</Symbol>
 				<DangerLevel>5</DangerLevel>
 				<Properties>
 					<Property>
@@ -12093,6 +12351,11 @@
 				<Symbol>
 					<Char>*</Char>
 					<Colour>8</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>7</Col>
+					</Sprite>					
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
@@ -12105,6 +12368,14 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<Material>4</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>4</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 			<Item id="_apple_seed">
@@ -12120,6 +12391,11 @@
 				<Symbol>
 					<Char>.</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>3</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
@@ -12142,6 +12418,11 @@
 				<Symbol>
 					<Char>.</Char>
 					<Colour>1</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>3</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
@@ -12164,6 +12445,11 @@
 				<Symbol>
 					<Char>.</Char>
 					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>3</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
@@ -12186,6 +12472,11 @@
 				<Symbol>
 					<Char>.</Char>
 					<Colour>8</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>3</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
@@ -12208,6 +12499,11 @@
 				<Symbol>
 					<Char>.</Char>
 					<Colour>5</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>3</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
@@ -12230,6 +12526,11 @@
 				<Symbol>
 					<Char>.</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>3</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
@@ -12252,6 +12553,11 @@
 				<Symbol>
 					<Char>.</Char>
 					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>3</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
@@ -12274,6 +12580,11 @@
 				<Symbol>
 					<Char>.</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>3</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
@@ -12296,6 +12607,11 @@
 				<Symbol>
 					<Char>#</Char>
 					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>0</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
