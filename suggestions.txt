@@ -1,5 +1,5 @@
 Me:
-- Resolution check for SDL
+- Beam bounce code. Beams should connect!
 - Dungeons should check for shop before generating trap.
 - Beer halls in villages
 - Spritesheets

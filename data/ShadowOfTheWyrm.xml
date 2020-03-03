@@ -7557,5 +7557,42 @@
 		<Spritesheet id="fea">
 			<Location>assets/sprites/feature_sprites.png</Location>
 		</Spritesheet>
+		<Spritesheet id="sys">
+			<Location>assets/sprites/sys_sprites.png</Location>
+			<References>
+				<Reference id="_beam_nwse">
+					<Row>0</Row>
+					<Col>0</Col>
+				</Reference>
+				<Reference id="_beam_nesw">
+					<Row>0</Row>
+					<Col>1</Col>
+				</Reference>
+				<Reference id="_beam_ns">
+					<Row>0</Row>
+					<Col>2</Col>
+				</Reference>
+				<Reference id="_beam_ew">
+					<Row>0</Row>
+					<Col>3</Col>
+				</Reference>
+				<Reference id="_magic_blast">
+					<Row>0</Row>
+					<Col>4</Col>
+				</Reference>
+				<Reference id="_entrance_closed">
+					<Row>0</Row>
+					<Col>5</Col>
+				</Reference>
+				<Reference id="_entrance_open">
+					<Row>0</Row>
+					<Col>6</Col>
+				</Reference>
+				<Reference id="_entrance_destroyed">
+					<Row>0</Row>
+					<Col>7</Col>
+				</Reference>
+			</References>
+		</Spritesheet>
 	</Spritesheets>
 </ShadowOfTheWyrm>

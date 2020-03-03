@@ -135,7 +135,9 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BeamShapeProcessor::create
       {
         // The beam is reflective. Update the direction based on the the
         // incoming direction and map characteristics.
-        current_direction = get_new_beam_direction_after_impact(current_direction, c, map, spell);
+        pair<Direction, Coordinate> new_dir_and_coord = get_new_beam_direction_after_impact(current_direction, c, map, spell);
+        current_direction = new_dir_and_coord.first;
+        c = new_dir_and_coord.second;
 
         // Ensure that each reflection also takes one off the range (again,
         // to prevent looping indefinitely).
@@ -234,11 +236,11 @@ bool BeamShapeProcessor::should_beam_reflect() const
 }
 
 // Get the new beam direction after an impact.
-Direction BeamShapeProcessor::get_new_beam_direction_after_impact(const Direction old_direction, const Coordinate& current_coord, MapPtr map, const Spell& spell)
+pair<Direction, Coordinate> BeamShapeProcessor::get_new_beam_direction_after_impact(const Direction old_direction, const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   if (DirectionUtils::is_cardinal(old_direction))
   {
-    return cardinal_reflection_map[old_direction];
+    return make_pair(cardinal_reflection_map[old_direction], current_coord);
   }
 
   // It's not cardinal, so we're dealing with an ordinal direction
@@ -261,10 +263,10 @@ Direction BeamShapeProcessor::get_new_beam_direction_after_impact(const Directio
   }
 
   // Should never actually get to this, based on the above logic:
-  return old_direction;
+  return make_pair(old_direction, current_coord);
 }
 
-Direction BeamShapeProcessor::get_ne_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
+std::pair<Direction, Coordinate> BeamShapeProcessor::get_ne_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   TileMagicChecker tmc;
 
@@ -290,10 +292,10 @@ Direction BeamShapeProcessor::get_ne_reflection(const Coordinate& current_coord,
     }
   }
 
-  return reflection;
+  return make_pair(reflection, current_coord);
 }
 
-Direction BeamShapeProcessor::get_nw_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
+std::pair<Direction, Coordinate> BeamShapeProcessor::get_nw_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   TileMagicChecker tmc;
 
@@ -319,10 +321,10 @@ Direction BeamShapeProcessor::get_nw_reflection(const Coordinate& current_coord,
     }
   }
 
-  return reflection;
+  return make_pair(reflection, current_coord);
 }
 
-Direction BeamShapeProcessor::get_se_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
+std::pair<Direction, Coordinate> BeamShapeProcessor::get_se_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   TileMagicChecker tmc;
   
@@ -348,10 +350,10 @@ Direction BeamShapeProcessor::get_se_reflection(const Coordinate& current_coord,
     }
   }
 
-  return reflection;
+  return make_pair(reflection, current_coord);
 }
 
-Direction BeamShapeProcessor::get_sw_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
+std::pair<Direction, Coordinate> BeamShapeProcessor::get_sw_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   TileMagicChecker tmc;
 
@@ -377,5 +379,5 @@ Direction BeamShapeProcessor::get_sw_reflection(const Coordinate& current_coord,
     }
   }
 
-  return reflection;
+  return make_pair(reflection, current_coord);
 }
