@@ -7298,18 +7298,109 @@
 					</Sprite>
 				</Symbol>
 			</Bed>
+			<!-- Door and Gate are entrances and handled by the system-defined sys spritesheet.  No need to define them. -->
 			<Door><Symbol><Char>+</Char></Symbol></Door>
 			<Gate><Symbol><Char>+</Char></Symbol></Gate>
-			<DecorativeStatue><Symbol><Char>I</Char></Symbol></DecorativeStatue>
-			<HighPriestDecorativeStatue><Symbol><Char>I</Char></Symbol></HighPriestDecorativeStatue>
-			<KingDecorativeStatue><Symbol><Char>I</Char></Symbol></KingDecorativeStatue>
-			<KnightDecorativeStatue><Symbol><Char>I</Char></Symbol></KnightDecorativeStatue>
-			<PetrifiedCorpseStatue><Symbol><Char>I</Char></Symbol></PetrifiedCorpseStatue>
-			<QueenDecorativeStatue><Symbol><Char>I</Char></Symbol></QueenDecorativeStatue>
-			<WarlordDecorativeStatue><Symbol><Char>I</Char></Symbol></WarlordDecorativeStatue>
-			<RegularDecorativeStatue><Symbol><Char>I</Char></Symbol></RegularDecorativeStatue>
-			<SorcerorDecorativeStatue><Symbol><Char>I</Char></Symbol></SorcerorDecorativeStatue>
-			<EastWestPew><Symbol><Char>|</Char></Symbol></EastWestPew>
+			<DecorativeStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>17</Col>
+					</Sprite>
+				</Symbol>
+			</DecorativeStatue>
+			<HighPriestDecorativeStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>18</Col>
+					</Sprite>
+				</Symbol>
+			</HighPriestDecorativeStatue>
+			<KingDecorativeStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
+			</KingDecorativeStatue>
+			<KnightDecorativeStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>19</Col>
+					</Sprite>
+				</Symbol>
+			</KnightDecorativeStatue>
+			<PetrifiedCorpseStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>17</Col>
+					</Sprite>
+				</Symbol>
+			</PetrifiedCorpseStatue>
+			<QueenDecorativeStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>21</Col>
+					</Sprite>
+				</Symbol>
+			</QueenDecorativeStatue>
+			<WarlordDecorativeStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>22</Col>
+					</Sprite>
+				</Symbol>
+			</WarlordDecorativeStatue>
+			<RegularDecorativeStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>17</Col>
+					</Sprite>
+				</Symbol>
+			</RegularDecorativeStatue>
+			<SorcerorDecorativeStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>23</Col>
+					</Sprite>
+				</Symbol>
+			</SorcerorDecorativeStatue>
+			<EastWestPew>
+				<Symbol>
+					<Char>|</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>25</Col>
+					</Sprite>
+				</Symbol>
+			</EastWestPew>
 			<FirePillar>
 				<Symbol>
 					<Char>Y</Char>
@@ -7320,7 +7411,16 @@
 					</Sprite>
 				</Symbol>
 			</FirePillar>
-			<Forge><Symbol><Char>&amp;</Char></Symbol></Forge>
+			<Forge>
+				<Symbol>
+					<Char>&amp;</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>14</Col>
+					</Sprite>
+				</Symbol>
+			</Forge>
 			<Fountain>
 				<Symbol>
 					<Char>~</Char>
@@ -7341,8 +7441,26 @@
 					</Sprite>
 				</Symbol>
 			</JewelerWorkbench>
-			<Pew><Symbol><Char>-</Char></Symbol></Pew>
-			<Pulper><Symbol><Char>:</Char></Symbol></Pulper>
+			<Pew>
+				<Symbol>
+					<Char>-</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>24</Col>
+					</Sprite>
+				</Symbol>
+			</Pew>
+			<Pulper>
+				<Symbol>
+					<Char>:</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>15</Col>
+					</Sprite>
+				</Symbol>
+			</Pulper>
 			<Sarcophagus>
 				<Symbol>
 					<Char>0</Char>
@@ -7393,7 +7511,16 @@
 					</Sprite>
 				</Symbol>
 			</Table>
-			<Tannery><Symbol><Char>;</Char></Symbol></Tannery>
+			<Tannery>
+				<Symbol>
+					<Char>;</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>17</Col>
+					</Sprite>
+				</Symbol>
+			</Tannery>
 			<Trap>
 				<Symbol>
 					<Char>^</Char>
@@ -7421,6 +7548,11 @@
 				<Symbol>
 					<Char>^</Char>
 					<Colour>9</Colour>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>29</Col>
+					</Sprite>
 				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_RIFT</DescriptionSID>
 			</ConfigurableFeature>
@@ -7429,6 +7561,11 @@
 				<Symbol>
 					<Char>o</Char>
 					<Colour>11</Colour>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>30</Col>
+					</Sprite>
 				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_DWARF_STAR</DescriptionSID>
 			</ConfigurableFeature>
@@ -7437,6 +7574,11 @@
 				<Symbol>
 					<Char>;</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>31</Col>
+					</Sprite>
 				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_SPIRAL_ARM</DescriptionSID>
 			</ConfigurableFeature>
@@ -7445,6 +7587,11 @@
 				<Symbol>
 					<Char>O</Char>
 					<Colour>9</Colour>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>1</Row>
+						<Col>0</Col>
+					</Sprite>
 				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_RED_GIANT</DescriptionSID>
 			</ConfigurableFeature>
@@ -7453,6 +7600,11 @@
 				<Symbol>
 					<Char> </Char>
 					<Colour>80</Colour>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>28</Col>
+					</Sprite>
 				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_SUPERNOVA</DescriptionSID>
 			</ConfigurableFeature>
@@ -7461,7 +7613,12 @@
 				<Symbol>
 					<Char>*</Char>
 					<Colour>8</Colour>
-				</Symbol>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>27</Col>
+					</Sprite>
+					</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_BLACK_HOLE</DescriptionSID>
 			</ConfigurableFeature>
 			<ConfigurableFeature id="_pulsar">
@@ -7469,6 +7626,11 @@
 				<Symbol>
 					<Char>*</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>1</Row>
+						<Col>2</Col>
+					</Sprite>
 				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_PULSAR</DescriptionSID>
 			</ConfigurableFeature>
@@ -7477,6 +7639,11 @@
 				<Symbol>
 					<Char>.</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>26</Col>
+					</Sprite>
 				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_COSMIC_DUST</DescriptionSID>
 			</ConfigurableFeature>
