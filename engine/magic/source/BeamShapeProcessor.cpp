@@ -85,9 +85,6 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> BeamShapeProcessor::get_affec
   // create a combined list of affected tiles and movement paths.
   auto multi_beam_pair = create_multi_beam(per_beam_affected_coords_and_tiles, per_beam_movement_paths, largest_at, largest_mp);
 
-  // JCD TODO: For each coord in coords, create the beam, then combine them to
-  // make a reasonable animation...
-
   // For regular beams, the current direction will always be the passed-in
   // direction (the beam will "fizzle out" if it hits a blocking tile).  For
   // reflective beams (a subclass), the current direction will change as the
@@ -133,21 +130,21 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BeamShapeProcessor::create
     {
       if (should_beam_reflect())
       {
-        // The beam is reflective. Update the direction based on the the
-        // incoming direction and map characteristics.
-        pair<Direction, Coordinate> new_dir_and_coord = get_new_beam_direction_after_impact(current_direction, c, map, spell);
-        current_direction = new_dir_and_coord.first;
-        c = new_dir_and_coord.second;
-
-        // Ensure that each reflection also takes one off the range (again,
-        // to prevent looping indefinitely).
-        count++;
-
         // Edge case: caster is standing by the wall.
         if (current_coord == caster_coord)
         {
           current_coord = c;
         }
+
+        // The beam is reflective. Update the direction based on the the
+        // incoming direction and map characteristics.
+        pair<Direction, Coordinate> new_dir_and_coord = get_new_beam_direction_after_impact(current_direction, c, map, spell);
+        current_direction = new_dir_and_coord.first;
+        current_coord = new_dir_and_coord.second;
+
+        // Ensure that each reflection also takes one off the range (again,
+        // to prevent looping indefinitely).
+        count++;
 
         // Update the symbol for the display
         dt = bst.create_display_tile(spell.get_range(), current_direction, spell.get_colour());
@@ -269,8 +266,8 @@ pair<Direction, Coordinate> BeamShapeProcessor::get_new_beam_direction_after_imp
 std::pair<Direction, Coordinate> BeamShapeProcessor::get_ne_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   TileMagicChecker tmc;
-
   Direction reflection;
+  Coordinate c = current_coord;
 
   // Inside/outside the corner
   if (MapUtils::is_corner(current_coord, Direction::DIRECTION_NORTH_EAST, map) || (MapUtils::is_corner(current_coord, Direction::DIRECTION_SOUTH_WEST, map)))
@@ -285,21 +282,23 @@ std::pair<Direction, Coordinate> BeamShapeProcessor::get_ne_reflection(const Coo
     if (north_wall_tile && tmc.does_tile_block_spell(north_wall_tile, spell))
     {
       reflection = Direction::DIRECTION_SOUTH_EAST;
+      c = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_WEST);
     }
     else
     {
       reflection = Direction::DIRECTION_NORTH_WEST;
+      c = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_SOUTH);
     }
   }
 
-  return make_pair(reflection, current_coord);
+  return make_pair(reflection, c);
 }
 
 std::pair<Direction, Coordinate> BeamShapeProcessor::get_nw_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   TileMagicChecker tmc;
-
   Direction reflection;
+  Coordinate c = current_coord;
 
   // Inside/outside the corner
   if (MapUtils::is_corner(current_coord, Direction::DIRECTION_NORTH_WEST, map) || MapUtils::is_corner(current_coord, Direction::DIRECTION_SOUTH_EAST, map))
@@ -314,21 +313,23 @@ std::pair<Direction, Coordinate> BeamShapeProcessor::get_nw_reflection(const Coo
     if (north_wall_tile && tmc.does_tile_block_spell(north_wall_tile, spell))
     {
       reflection = Direction::DIRECTION_SOUTH_WEST;
+      c = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_EAST);
     }
     else
     {
       reflection = Direction::DIRECTION_NORTH_EAST;
+      c = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_SOUTH);
     }
   }
 
-  return make_pair(reflection, current_coord);
+  return make_pair(reflection, c);
 }
 
 std::pair<Direction, Coordinate> BeamShapeProcessor::get_se_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   TileMagicChecker tmc;
-  
   Direction reflection;
+  Coordinate c = current_coord;
 
   // Inside/outside the corner
   if (MapUtils::is_corner(current_coord, Direction::DIRECTION_SOUTH_EAST, map) || MapUtils::is_corner(current_coord, Direction::DIRECTION_NORTH_WEST, map))
@@ -343,21 +344,23 @@ std::pair<Direction, Coordinate> BeamShapeProcessor::get_se_reflection(const Coo
     if (south_wall_tile && tmc.does_tile_block_spell(south_wall_tile, spell))
     {
       reflection = Direction::DIRECTION_NORTH_EAST;
+      c = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_WEST);
     }
     else
     {
       reflection = Direction::DIRECTION_SOUTH_WEST;
+      c = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_NORTH);
     }
   }
 
-  return make_pair(reflection, current_coord);
+  return make_pair(reflection, c);
 }
 
 std::pair<Direction, Coordinate> BeamShapeProcessor::get_sw_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell)
 {
   TileMagicChecker tmc;
-
   Direction reflection;
+  Coordinate c = current_coord;
 
   // Inside or outside the corner
   if (MapUtils::is_corner(current_coord, Direction::DIRECTION_SOUTH_WEST, map) || MapUtils::is_corner(current_coord, Direction::DIRECTION_NORTH_EAST, map))
@@ -372,12 +375,14 @@ std::pair<Direction, Coordinate> BeamShapeProcessor::get_sw_reflection(const Coo
     if (south_wall_tile && tmc.does_tile_block_spell(south_wall_tile, spell))
     {
       reflection = Direction::DIRECTION_NORTH_WEST;
+      c = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_EAST);
     }
     else
     {
       reflection = Direction::DIRECTION_SOUTH_EAST;
+      c = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_NORTH);
     }
   }
 
-  return make_pair(reflection, current_coord);
+  return make_pair(reflection, c);
 }
