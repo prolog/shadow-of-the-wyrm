@@ -990,6 +990,14 @@
 				</Weight>
 				<WornLocation>6</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>29</Col>
+					</Sprite>		
+				</Symbol>
 				<DangerLevel>6</DangerLevel>
 				<Properties>
 					<Property>
@@ -1066,6 +1074,14 @@
 				</Weight>
 				<WornLocation>6</WornLocation>
 				<Material>1</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>30</Col>
+					</Sprite>		
+				</Symbol>
 				<DangerLevel>18</DangerLevel>
 				<Resistances>
 					<Heat>0.25</Heat>
@@ -1410,6 +1426,14 @@
 				</Weight>
 				<WornLocation>6</WornLocation>
 				<Material>4</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>31</Col>
+					</Sprite>		
+				</Symbol>
 				<DangerLevel>12</DangerLevel>
 				<Properties>
 					<Property>
@@ -1430,6 +1454,14 @@
 				</Weight>
 				<WornLocation>6</WornLocation>
 				<Material>4</Material>
+        <Symbol>
+          <Char>[</Char>
+          <Sprite>
+            <ID>it</ID>
+            <Row>3</Row>
+            <Col>31</Col>
+          </Sprite>
+        </Symbol>
 				<DangerLevel>15</DangerLevel>
 				<Properties>
 					<Property>
@@ -1450,6 +1482,14 @@
 				</Weight>
 				<WornLocation>6</WornLocation>
 				<Material>4</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>31</Col>
+					</Sprite>
+        </Symbol>
 				<DangerLevel>20</DangerLevel>
 				<Properties>
 					<Property>
@@ -6256,6 +6296,15 @@
 				</Weight>
 				<WornLocation>10</WornLocation>
 				<Material>12</Material>
+        <Symbol>
+          <Char>V</Char>
+					<Colour>7</Colour>
+        	<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>28</Col>
+					</Sprite>
+        </Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1004</Skill>
 				<RangedSkill>2005</RangedSkill>
