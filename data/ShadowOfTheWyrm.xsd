@@ -1041,7 +1041,7 @@
 		<xs:element name="HandsRequired" type="tns:HandsType" minOccurs="0"/>
 		<xs:element name="Material" type="tns:MaterialType" minOccurs="0"/>
 		<xs:element name="Glow" type="xs:boolean" minOccurs="0"/>
-		<xs:element name="Symbol" type="tns:Symbol" minOccurs="0"/>
+		<xs:element name="Symbol" type="tns:Symbol" minOccurs="1"/>
 		<xs:element name="DangerLevel" type="xs:integer"/>
 		<xs:element name="Rarity" type="tns:Rarity" minOccurs="0" default="0"/>
 		<xs:element ref="tns:Resistances" minOccurs="0"/>

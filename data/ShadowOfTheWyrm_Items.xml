@@ -9793,6 +9793,11 @@
 				<Symbol>
 					<Char>*</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>18</Col>
+					</Sprite>		
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
@@ -9809,6 +9814,11 @@
 				<Symbol>
 					<Char>*</Char>
 					<Colour>2</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>20</Col>
+					</Sprite>		
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
@@ -9825,6 +9835,11 @@
 				<Symbol>
 					<Char>*</Char>
 					<Colour>8</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>19</Col>
+					</Sprite>		
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
@@ -9900,6 +9915,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
+				<Symbol>
+					<Char>(</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>21</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>1</DangerLevel>
 			</Tool>
 			<Tool id="lute">
@@ -9912,6 +9935,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
+				<Symbol>
+					<Char>(</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>22</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<Properties>
 					<Property>
@@ -9938,6 +9969,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>23</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<Properties>
 					<Property>
@@ -9964,6 +10003,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
+				<Symbol>
+					<Char>(</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>24</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<Properties>
 					<Property>
@@ -9990,6 +10037,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>25</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Properties>
 					<Property>
@@ -10016,6 +10071,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
+				<Symbol>
+					<Char>(</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>26</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Properties>
 					<Property>
@@ -10042,6 +10105,14 @@
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>3</Row>
+						<Col>27</Col>
+					</Sprite>
+				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Properties>
 					<Property>
