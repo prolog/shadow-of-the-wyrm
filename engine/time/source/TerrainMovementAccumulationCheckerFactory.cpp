@@ -26,24 +26,24 @@ ITerrainMovementAccumulationCheckerPtr TerrainMovementAccumulationCheckerFactory
   {
     if (movement == MovementType::MOVEMENT_TYPE_WALKING)
     {
-      checker = std::make_shared<SwimmingMovementAccumulationChecker>();
+      checker = std::make_unique<SwimmingMovementAccumulationChecker>();
     }
     else if (movement == MovementType::MOVEMENT_TYPE_BOAT)
     {
-      checker = std::make_shared<BoatingMovementAccumulationChecker>();
+      checker = std::make_unique<BoatingMovementAccumulationChecker>();
     }
   }
   else if (super_type == TileSuperType::TILE_SUPER_TYPE_AIR && movement == MovementType::MOVEMENT_TYPE_WALKING)
   {
-    checker = std::make_shared<FallingMovementAccumulationChecker>();
+    checker = std::make_unique<FallingMovementAccumulationChecker>();
   }
   else if (tile_type == TileType::TILE_TYPE_MOUNTAINS && (movement == MovementType::MOVEMENT_TYPE_WALKING))
   {
-    checker = std::make_shared<MountainClimbingMovementAccumulationChecker>();
+    checker = std::make_unique<MountainClimbingMovementAccumulationChecker>();
   }
   else
   {
-    checker = std::make_shared<NullMovementAccumulationChecker>();
+    checker = std::make_unique<NullMovementAccumulationChecker>();
   }
   
   return checker;
