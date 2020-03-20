@@ -13531,6 +13531,11 @@
 			<Symbol>
 				<Char>e</Char>
 				<Colour>6</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>2</Row>
+					<Col>7</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -13577,6 +13582,11 @@
 			<Symbol>
 				<Char>e</Char>
 				<Colour>13</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>2</Row>
+					<Col>8</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -13623,6 +13633,11 @@
 			<Symbol>
 				<Char>e</Char>
 				<Colour>15</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>2</Row>
+					<Col>9</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -13656,6 +13671,11 @@
 			<Symbol>
 				<Char>e</Char>
 				<Colour>12</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>2</Row>
+					<Col>10</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -13689,6 +13709,11 @@
 			<Symbol>
 				<Char>e</Char>
 				<Colour>14</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>2</Row>
+					<Col>11</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -14582,6 +14607,11 @@
 			<Symbol>
 				<Char>e</Char>
 				<Colour>14</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>2</Row>
+					<Col>12</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
@@ -14621,6 +14651,11 @@
 			<Symbol>
 				<Char>e</Char>
 				<Colour>4</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>2</Row>
+					<Col>13</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
@@ -14856,7 +14891,12 @@
 			<Symbol>
 				<Char>e</Char>
 				<Colour>8</Colour>
-			</Symbol>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>2</Row>
+					<Col>15</Col>
+				</Sprite>
+		</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -14888,6 +14928,11 @@
 			<Symbol>
 				<Char>@</Char>
 				<Colour>10</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>2</Row>
+					<Col>14</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
