@@ -24,6 +24,12 @@ string MountainsTile::get_danger_confirmation_sid() const
   return danger_confirmation;
 }
 
+// Mountains are real big and therefore real blocky
+bool MountainsTile::get_is_blocking(CreaturePtr creature) const
+{
+  return true;
+}
+
 Tile* MountainsTile::clone()
 {
   return new MountainsTile(*this);

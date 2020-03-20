@@ -4,6 +4,8 @@ Shadow of the Wyrm v1.1.8 "Rodrigo"
 - Reflective beams such as lightning now bounce differently - they should
   look more "connected" when looking at the output of diagonal beams.
 
+- Mountain tiles now block line of sight.
+
 - F10 can be used to switch between tiles and ascii when using SDL (IceBox).
 
 - F12 now also reloads existing texture references.

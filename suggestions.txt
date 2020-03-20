@@ -1,5 +1,4 @@
 Me:
-- Can see through mountains in Atua-Elar.
 - Fill out Kirin's empty house a bit
 - Dungeons should check for shop before generating trap.
 - Beer halls in villages
