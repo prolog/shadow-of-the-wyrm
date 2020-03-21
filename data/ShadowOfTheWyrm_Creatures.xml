@@ -14896,7 +14896,7 @@
 					<Row>2</Row>
 					<Col>15</Col>
 				</Sprite>
-		</Symbol>
+			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
@@ -15760,6 +15760,11 @@
 			<Symbol>
 				<Char>i</Char>
 				<Colour>14</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>2</Row>
+					<Col>16</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>

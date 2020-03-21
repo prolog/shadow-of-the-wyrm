@@ -9430,6 +9430,11 @@
 				<Symbol>
 					<Char>$</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>0</Col>
+					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 			</Currency>
