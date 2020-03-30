@@ -16,7 +16,7 @@ class ITimeObserver : public ISerializable
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 
-    virtual ITimeObserver* clone() = 0;
+    virtual std::unique_ptr<ITimeObserver> clone() = 0;
 
   protected:
     virtual std::string generate_id();

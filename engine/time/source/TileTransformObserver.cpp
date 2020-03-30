@@ -76,9 +76,10 @@ void TileTransformObserver::process_tile_transforms(MapPtr cur_map, const double
   }
 }
 
-ITimeObserver* TileTransformObserver::clone() 
+std::unique_ptr<ITimeObserver> TileTransformObserver::clone()
 {
-  return new TileTransformObserver(*this);
+  std::unique_ptr<ITimeObserver> tto = std::make_unique<TileTransformObserver>(*this);
+  return tto;
 }
 
 ClassIdentifier TileTransformObserver::internal_class_identifier() const

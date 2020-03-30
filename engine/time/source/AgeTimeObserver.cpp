@@ -66,9 +66,10 @@ void AgeTimeObserver::process_creatures(MapPtr cur_map, CreatureMap& creature_ma
   }
 }
 
-ITimeObserver* AgeTimeObserver::clone() 
+std::unique_ptr<ITimeObserver> AgeTimeObserver::clone()
 {
-  return new AgeTimeObserver(*this);
+  std::unique_ptr<ITimeObserver> ato = std::make_unique<AgeTimeObserver>(*this);
+  return ato;
 }
 
 ClassIdentifier AgeTimeObserver::internal_class_identifier() const

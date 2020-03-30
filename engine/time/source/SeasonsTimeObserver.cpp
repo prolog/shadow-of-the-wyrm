@@ -38,9 +38,10 @@ void SeasonsTimeObserver::notify(const ulonglong minutes_passed)
   }
 }
 
-ITimeObserver* SeasonsTimeObserver::clone() 
+std::unique_ptr<ITimeObserver> SeasonsTimeObserver::clone()
 {
-  return new SeasonsTimeObserver(*this);
+  std::unique_ptr<ITimeObserver> sto = std::make_unique<SeasonsTimeObserver>(*this);
+  return sto;
 }
 
 ClassIdentifier SeasonsTimeObserver::internal_class_identifier() const

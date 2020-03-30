@@ -14,7 +14,7 @@ class WorldTimeObserver : public ITimeObserver
     WorldTimeObserver();
     
     void notify(const ulonglong minutes_elapsed) override;
-    ITimeObserver* clone();
+    std::unique_ptr<ITimeObserver> clone();
 
     // No override for save/load - no new members.
 

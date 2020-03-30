@@ -38,9 +38,10 @@ void SpecialDayObserver::check_special_day(const std::map<int, CalendarDay>& cal
 }
 
 
-ITimeObserver* SpecialDayObserver::clone() 
+std::unique_ptr<ITimeObserver> SpecialDayObserver::clone()
 {
-  return new SpecialDayObserver(*this);
+  std::unique_ptr<ITimeObserver> sdo = std::make_unique<SpecialDayObserver>(*this);
+  return sdo;
 }
 
 ClassIdentifier SpecialDayObserver::internal_class_identifier() const

@@ -31,46 +31,46 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   regen.clear();
 
   // Regenerate the creature's HP
-  ICreatureRegenerationPtr hp_regen     = std::make_shared<CreatureHPRegeneration>();
+  ICreatureRegenerationPtr hp_regen     = std::make_unique<CreatureHPRegeneration>();
   // Regenerate the creature's AP
-  ICreatureRegenerationPtr ap_regen     = std::make_shared<CreatureAPRegeneration>();
+  ICreatureRegenerationPtr ap_regen     = std::make_unique<CreatureAPRegeneration>();
   // Regenerate or degenerate the creature's piety, depending on the value.
-  ICreatureRegenerationPtr piety_regen  = std::make_shared<CreaturePietyRegeneration>();
+  ICreatureRegenerationPtr piety_regen  = std::make_unique<CreaturePietyRegeneration>();
   // Update the minute values for the current movement accumulations.
-  ICreatureRegenerationPtr move_accum   = std::make_shared<MovementAccumulator>();
+  ICreatureRegenerationPtr move_accum   = std::make_unique<MovementAccumulator>();
   // Do things based on current movement accumulations - drown, fall from mountains, etc.
-  ICreatureRegenerationPtr move_checkr  = std::make_shared<MovementAccumulationChecker>();
+  ICreatureRegenerationPtr move_checkr  = std::make_unique<MovementAccumulationChecker>();
   // Every two days, increment each creature's stats if they've been exercised enough.
-  ICreatureRegenerationPtr stats_checkr = std::make_shared<CreatureStatsIncrementer>(2880);
+  ICreatureRegenerationPtr stats_checkr = std::make_unique<CreatureStatsIncrementer>(2880);
   // Every day, increment the creature's skills if they have been used enough.
-  ICreatureRegenerationPtr skill_checkr = std::make_shared<CreatureSkillIncrementer>(1440);
+  ICreatureRegenerationPtr skill_checkr = std::make_unique<CreatureSkillIncrementer>(1440);
   // Every minute, check to see if the creature has modifiers that should be removed.
-  ICreatureRegenerationPtr mod_chkr = std::make_shared<CreatureModifiers>();
+  ICreatureRegenerationPtr mod_chkr = std::make_unique<CreatureModifiers>();
   // Every minute, reduce the player's hunger clock...
-  ICreatureRegenerationPtr hungr_checkr = std::make_shared<CreatureHungerTimer>();
+  ICreatureRegenerationPtr hungr_checkr = std::make_unique<CreatureHungerTimer>();
   // Every minute, call the tick() function for each status the creature has.
-  ICreatureRegenerationPtr status_chekr = std::make_shared<CreatureStatuses>();
+  ICreatureRegenerationPtr status_chekr = std::make_unique<CreatureStatuses>();
   // Every half an hour to an hour, do alcohol absorption and metabolism.
-  ICreatureRegenerationPtr alcohol_chkr = std::make_shared<CreatureAlcoholTimer>();
+  ICreatureRegenerationPtr alcohol_chkr = std::make_unique<CreatureAlcoholTimer>();
   // Every few hours, check to see if the creature meets any of the conditions
   // for marking statistics.
-  ICreatureRegenerationPtr st_mark_chkr = std::make_shared<CreatureStatisticsMarkerChecker>(360);
+  ICreatureRegenerationPtr st_mark_chkr = std::make_unique<CreatureStatisticsMarkerChecker>(360);
   // Every few hours, do the same, but for miscellaneous skills (like Carrying).
-  ICreatureRegenerationPtr sk_mark_chkr = std::make_shared<CreatureSkillMarkerChecker>(360);
+  ICreatureRegenerationPtr sk_mark_chkr = std::make_unique<CreatureSkillMarkerChecker>(360);
 
-  regen.push_back(hp_regen    );
-  regen.push_back(ap_regen    );
-  regen.push_back(piety_regen );
-  regen.push_back(move_accum  );
-  regen.push_back(move_checkr );
-  regen.push_back(stats_checkr);
-  regen.push_back(skill_checkr);
-  regen.push_back(mod_chkr    );
-  regen.push_back(hungr_checkr);
-  regen.push_back(status_chekr);
-  regen.push_back(alcohol_chkr);
-  regen.push_back(st_mark_chkr);
-  regen.push_back(sk_mark_chkr);
+  regen.push_back(std::move(hp_regen)    );
+  regen.push_back(std::move(ap_regen)    );
+  regen.push_back(std::move(piety_regen) );
+  regen.push_back(std::move(move_accum)  );
+  regen.push_back(std::move(move_checkr) );
+  regen.push_back(std::move(stats_checkr));
+  regen.push_back(std::move(skill_checkr));
+  regen.push_back(std::move(mod_chkr)    );
+  regen.push_back(std::move(hungr_checkr));
+  regen.push_back(std::move(status_chekr));
+  regen.push_back(std::move(alcohol_chkr));
+  regen.push_back(std::move(st_mark_chkr));
+  regen.push_back(std::move(sk_mark_chkr));
 }
 
 void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)
@@ -89,7 +89,7 @@ void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)
     CreaturePtr creature = c_it->second;
     TilePtr tile = MapUtils::get_tile_for_creature(current_map, creature);
       
-    for (ICreatureRegenerationPtr regen_helper : regen)
+    for (ICreatureRegenerationPtr& regen_helper : regen)
     {
       if (game.should_keep_playing() && creature != nullptr)
       {
@@ -106,9 +106,9 @@ void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)
   }
 }
 
-ITimeObserver* CreatureTimeObserver::clone()
+std::unique_ptr<ITimeObserver> CreatureTimeObserver::clone()
 {
-  CreatureTimeObserver* creature_observer = new CreatureTimeObserver(*this);
+  std::unique_ptr<CreatureTimeObserver> creature_observer = std::make_unique<CreatureTimeObserver>();
 
   // Ensure that the new CreatureTimeObserver points to a *different*
   // set of regeneration helpers than the current object.

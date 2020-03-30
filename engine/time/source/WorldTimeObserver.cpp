@@ -80,9 +80,10 @@ void WorldTimeObserver::redraw_and_update_time_of_day(const TimeOfDayType tod)
   }
 }
 
-ITimeObserver* WorldTimeObserver::clone()
+std::unique_ptr<ITimeObserver> WorldTimeObserver::clone()
 {
-  return new WorldTimeObserver(*this);
+  std::unique_ptr<ITimeObserver> wto = std::make_unique<WorldTimeObserver>(*this);
+  return wto;
 }
 
 ClassIdentifier WorldTimeObserver::internal_class_identifier() const

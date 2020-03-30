@@ -8,7 +8,7 @@ class MapTimeObserver : public ITimeObserver
     
     void notify(const ulonglong minutes_elapsed) override;
 
-    ITimeObserver* clone() override;
+    std::unique_ptr<ITimeObserver> clone() override;
 
     // No data members, so just use ITimeObserver's serializer.
 
