@@ -117,13 +117,12 @@ string CharacterDumper::get_synopsis() const
   Game& game = Game::instance();
   
   RaceMap races = game.get_races_ref();
-  const ClassMap& classes = game.get_classes_ref();
+  ClassMap classes = game.get_classes_ref();
   string race_id = creature->get_race_id();
   string class_id = creature->get_class_id();
     
   RacePtr race = races[race_id];
-  // JCD FIXME
-  const std::shared_ptr<Class> char_class = classes.at(class_id);
+  ClassPtr char_class = classes[class_id];
     
   if (race && char_class)
   {

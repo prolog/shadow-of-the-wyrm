@@ -92,8 +92,7 @@ void CreatureCalculator::update_calculated_values(const CreaturePtr& c)
     RaceManager rm;
     ClassManager cm;
     ResistancesCalculator rc;
-    ClassPtr c_class = cm.get_class(c->get_class_id());
-    Resistances resists = rc.calculate_resistances(c, rm.get_race(c->get_race_id()), c_class.get());
+    Resistances resists = rc.calculate_resistances(c, rm.get_race(c->get_race_id()), cm.get_class(c->get_class_id()));
     c->set_resistances(resists);
 
     // Rejiggle items into neater piles, if necessary

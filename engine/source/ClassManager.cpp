@@ -13,8 +13,8 @@ ClassPtr ClassManager::get_class(const string& class_id)
 
   Game& game = Game::instance();
 
-  const ClassMap& classes = game.get_classes_ref();
-  cur_class = std::make_unique<Class>(*classes.at(class_id));
+  ClassMap classes = game.get_classes_ref();
+  cur_class = classes[class_id];
 
   return cur_class;
 }

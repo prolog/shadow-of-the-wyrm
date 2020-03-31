@@ -155,7 +155,7 @@ void CorpseFactory::set_resistances(CreaturePtr attacking_creature, CreaturePtr 
     // Ensure that we don't consider equipment resistances when creating the
     // corpse - don't factor in equipment.
     ResistancesCalculator rc;
-    Resistances creature_resists = rc.calculate_non_equipment_resistances(dead_creature, rm.get_race(dead_creature->get_race_id()), cm.get_class(dead_creature->get_class_id()).get());
+    Resistances creature_resists = rc.calculate_non_equipment_resistances(dead_creature, rm.get_race(dead_creature->get_race_id()), cm.get_class(dead_creature->get_class_id()));
 
     // Only copy in resistances - never vulnerabilities.
     for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)

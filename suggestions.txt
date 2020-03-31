@@ -1,8 +1,4 @@
 Me:
-- Fix failing unit tests
-- Finish up refactoring ClassPtr: ClassMap
-- On the Game, can ClassMap even just hold regular classes? Does it need to
-  even be a shared_ptr?
 - Fill out Kirin's empty house a bit
 - Mountains on world map
 - Dungeons should check for shop before generating trap.
