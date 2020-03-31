@@ -172,7 +172,7 @@ class Game : public ISerializable
 
     Game();
     Game(const Game& game) = delete;
-    bool operator=(const Game& game);
+    bool operator=(const Game& game) = delete;
    ~Game();
 
     // Game commands - protected, so they should only be called by ShadowOfTheWyrmEngine
