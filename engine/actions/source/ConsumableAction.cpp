@@ -107,7 +107,8 @@ void ConsumableAction::gain_resistances_from_consumable(CreaturePtr creature, Co
     ClassManager cm;
     
     Resistances consum_res = consumable->get_resistances();
-    Resistances cr_res = rc.calculate_non_equipment_resistances(creature, rm.get_race(creature->get_race_id()), cm.get_class(creature->get_class_id()));
+    ClassPtr c_class = cm.get_class(creature->get_class_id());
+    Resistances cr_res = rc.calculate_non_equipment_resistances(creature, rm.get_race(creature->get_race_id()), c_class.get());
     Resistances& cr_intr = creature->get_intrinsic_resistances_ref();
 
     bool added_msg = false;

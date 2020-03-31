@@ -246,10 +246,11 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
   DeityMap deities = game.get_deities_cref();
   RaceMap races = game.get_races_ref();
-  ClassMap classes = game.get_classes_ref();
+  const ClassMap& classes = game.get_classes_ref();
 
   RacePtr race = races[race_id];
-  ClassPtr char_class = classes[class_id];
+  // JCD FIXME
+  std::shared_ptr<Class> char_class = classes.at(class_id);
   DeityPtr deity = deities[deity_id];
 
   if (race && char_class && deity)
@@ -260,7 +261,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     string creature_id = creaturep->get_id();
 
     // Statistics, HP, and AP
-    set_initial_statistics(creaturep, race, char_class, deity);
+    set_initial_statistics(creaturep, race, char_class.get(), deity);
 
     ModifyStatisticsEffect mse;
 
@@ -291,10 +292,10 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     }
 
     // Resistances
-    set_initial_resistances(creaturep, race, char_class);
+    set_initial_resistances(creaturep, race, char_class.get());
 
     // Skills
-    set_initial_skills(creaturep, race, char_class);
+    set_initial_skills(creaturep, race, char_class.get());
       
     // Religion & Alignment
     Religion religion = ReligionFactory::create_religion(deities);
@@ -369,7 +370,7 @@ void CreatureFactory::create_initial_equipment_and_inventory(CreaturePtr creatur
   iie.add_inventory_items(creaturep, cgv, action_manager);
 }
 
-void CreatureFactory::set_initial_statistics(CreaturePtr creature, RacePtr race, ClassPtr char_class, DeityPtr deity)
+void CreatureFactory::set_initial_statistics(CreaturePtr creature, RacePtr race, Class* char_class, DeityPtr deity)
 {
   Modifier race_m = race->get_modifier();
   Modifier class_m = char_class->get_modifier();
@@ -506,7 +507,7 @@ void CreatureFactory::set_default_resistances(CreaturePtr current_creature)
   current_creature->set_resistances(resists);
 }
 
-void CreatureFactory::set_initial_resistances(CreaturePtr creature, RacePtr race, ClassPtr char_class)
+void CreatureFactory::set_initial_resistances(CreaturePtr creature, RacePtr race, Class* char_class)
 {
   ResistancesCalculator rc;
   Resistances resists = rc.calculate_resistances(creature, race, char_class);
@@ -514,7 +515,7 @@ void CreatureFactory::set_initial_resistances(CreaturePtr creature, RacePtr race
   creature->set_resistances(resists);
 }
 
-void CreatureFactory::set_initial_skills(CreaturePtr creature, RacePtr race, ClassPtr char_class)
+void CreatureFactory::set_initial_skills(CreaturePtr creature, RacePtr race, Class* char_class)
 {
   // Create a SkillCalculator class!
   Skills skills = SkillsCalculator::calculate_skills(creature, race, char_class);

@@ -83,10 +83,11 @@ string CreatureUtils::get_race_class_synopsis(CreaturePtr c)
   string race_id = c->get_race_id();
   string class_id = c->get_class_id();
   RaceMap races = game.get_races_ref();
-  ClassMap classes = game.get_classes_ref();
+  const ClassMap& classes = game.get_classes_ref();
 
   RacePtr race = races[race_id];
-  ClassPtr current_class = classes[class_id];
+  // JCD FIXME
+  const std::shared_ptr<Class> current_class = classes.at(class_id);
 
   if (race && current_class)
   {
@@ -408,13 +409,14 @@ RacePtr CreatureUtils::get_random_user_playable_race()
 ClassPtr CreatureUtils::get_random_user_playable_class()
 {
   Game& game = Game::instance();
-  ClassMap classes = game.get_classes_ref();
-  vector<ClassPtr> playable_classes;
-  ClassPtr cur_class;
+  const ClassMap& classes = game.get_classes_ref();
+  vector<std::shared_ptr<Class>> playable_classes;
+  // JCD FIXME
+  std::shared_ptr<Class> cur_class;
 
   for (const auto& class_pair : classes)
   {
-    ClassPtr cur_class = class_pair.second;
+    cur_class = class_pair.second;
 
     if (cur_class && cur_class->get_user_playable())
     {
@@ -427,7 +429,8 @@ ClassPtr CreatureUtils::get_random_user_playable_class()
     cur_class = playable_classes.at(RNG::range(0, playable_classes.size() - 1));
   }
 
-  return cur_class;
+  ClassPtr final_class = make_unique<Class>(*cur_class);
+  return final_class;
 }
 
 DeityPtr CreatureUtils::get_random_deity_for_race(RacePtr race)

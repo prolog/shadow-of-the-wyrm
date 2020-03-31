@@ -153,9 +153,13 @@ uint ExperienceManager::get_total_experience_needed_for_lvl_idx(CreaturePtr crea
       
     if (!class_id.empty())
     {
-      ClassMap classes = game.get_classes_ref();
-      ClassPtr cur_class = classes[class_id];
-      class_multiplier = cur_class->get_experience_multiplier();
+      const ClassMap& classes = game.get_classes_ref();
+      Class* cur_class = classes.at(class_id).get();
+
+      if (cur_class != nullptr)
+      {
+        class_multiplier = cur_class->get_experience_multiplier();
+      }
     }
       
     exp_needed = static_cast<int>(base_exp_needed * race_multiplier * class_multiplier);      
@@ -253,11 +257,14 @@ void ExperienceManager::gain_hp_and_ap(CreaturePtr creature)
     
     if (!class_id.empty())
     {
-      ClassMap class_map = game.get_classes_ref();
-      ClassPtr current_class = class_map[class_id];
-      
-      hit_dice = current_class->get_hit_dice();
-      ap_dice = current_class->get_ap_dice();
+      const ClassMap& class_map = game.get_classes_ref();
+      Class* current_class = class_map.at(class_id).get();
+
+      if (current_class != nullptr)
+      {
+        hit_dice = current_class->get_hit_dice();
+        ap_dice = current_class->get_ap_dice();
+      }      
     }
 
     uint hp_gained = RNG::dice(1, hit_dice, 2);
