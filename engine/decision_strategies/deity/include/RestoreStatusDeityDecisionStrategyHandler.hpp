@@ -11,6 +11,8 @@ class RestoreStatusDeityDecisionStrategyHandler : public DeityDecisionStrategyHa
 
     std::string get_message_sid() const override;
 
+    virtual std::unique_ptr<DeityDecisionStrategyHandler> clone() override;
+
   protected:
     void initialize_watched_statuses();
 

@@ -13,6 +13,12 @@ CrowningDeityDecisionStrategyHandler::CrowningDeityDecisionStrategyHandler(const
 {
 }
 
+std::unique_ptr<DeityDecisionStrategyHandler> CrowningDeityDecisionStrategyHandler::clone()
+{
+  std::unique_ptr<DeityDecisionStrategyHandler> handler = std::make_unique<CrowningDeityDecisionStrategyHandler>(*this);
+  return handler;
+}
+
 bool CrowningDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {
   ReligionManager rm;

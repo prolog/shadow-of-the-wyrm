@@ -103,7 +103,7 @@ void DeityActionManager::handle_displeasing_action(CreaturePtr creature, Deity* 
     if (multiplier > 0)
     {
       // Create a default (for now) dislike decision.
-      DeityDecisionStrategyHandlerPtr deity_decision_handler = std::make_shared<DislikeDeityDecisionStrategyHandler>(deity);
+      DeityDecisionStrategyHandlerPtr deity_decision_handler = std::make_unique<DislikeDeityDecisionStrategyHandler>(deity);
       DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature, creature_tile);
 
       // This may have been updated as a result of the decision.

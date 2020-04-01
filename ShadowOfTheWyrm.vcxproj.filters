@@ -3803,9 +3803,6 @@
     <ClInclude Include="engine\time\include\ShopsTimeObserver.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\decision_strategies\deity\include\HaltBreedingDeityDecisionStrategyHandler.hpp">
-      <Filter>Header Files\engine\decision_strategies\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\include\Status.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
@@ -4267,6 +4264,9 @@
     </ClInclude>
     <ClInclude Include="engine\maps\tiles\include\ArcaneTileDamageProcessor.hpp">
       <Filter>Header Files\engine\maps\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\HaltBreedingDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -18,6 +18,12 @@ DislikeDeityDecisionStrategyHandler::DislikeDeityDecisionStrategyHandler(Deity* 
 {
 }
 
+std::unique_ptr<DeityDecisionStrategyHandler> DislikeDeityDecisionStrategyHandler::clone()
+{
+  std::unique_ptr<DeityDecisionStrategyHandler> handler = std::make_unique<DislikeDeityDecisionStrategyHandler>(*this);
+  return handler;
+}
+
 // The Nine only dislike those with negative piety.
 //
 // They're very scientific, and it makes it easy to model.

@@ -10,6 +10,12 @@ SatiateDeityDecisionStrategyHandler::SatiateDeityDecisionStrategyHandler(const s
 {
 }
 
+std::unique_ptr<DeityDecisionStrategyHandler> SatiateDeityDecisionStrategyHandler::clone()
+{
+  std::unique_ptr<DeityDecisionStrategyHandler> handler = std::make_unique<SatiateDeityDecisionStrategyHandler>(*this);
+  return handler;
+}
+
 bool SatiateDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {
   bool decision = false;

@@ -12,6 +12,12 @@ ProtectionDeityDecisionStrategyHandler::ProtectionDeityDecisionStrategyHandler(c
 {
 }
 
+std::unique_ptr<DeityDecisionStrategyHandler> ProtectionDeityDecisionStrategyHandler::clone()
+{
+  std::unique_ptr<DeityDecisionStrategyHandler> handler = std::make_unique<ProtectionDeityDecisionStrategyHandler>(*this);
+  return handler;
+}
+
 // There must be a hostile creature in visible range for the protection strategy to fire.
 bool ProtectionDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {

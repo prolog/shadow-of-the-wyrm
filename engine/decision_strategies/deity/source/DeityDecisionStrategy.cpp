@@ -28,35 +28,35 @@ void DeityDecisionStrategy::initialize_decisions()
 {
   decisions.clear();
 
-  DeityDecisionStrategyHandlerPtr cur_decision = std::make_shared<DislikeDeityDecisionStrategyHandler>(deity_id);
-  decisions.push_back(cur_decision);
+  DeityDecisionStrategyHandlerPtr cur_decision = std::make_unique<DislikeDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(std::move(cur_decision));
   
-  cur_decision = std::make_shared<CrowningDeityDecisionStrategyHandler>(deity_id);
-  decisions.push_back(cur_decision);
+  cur_decision = std::make_unique<CrowningDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(std::move(cur_decision));
 
-  cur_decision = std::make_shared<RestoreStatusDeityDecisionStrategyHandler>(deity_id);
-  decisions.push_back(cur_decision);
+  cur_decision = std::make_unique<RestoreStatusDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(std::move(cur_decision));
 
-  cur_decision = std::make_shared<FullHPDeityDecisionStrategyHandler>(deity_id);
-  decisions.push_back(cur_decision);
+  cur_decision = std::make_unique<FullHPDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(std::move(cur_decision));
 
-  cur_decision = std::make_shared<HaltBreedingDeityDecisionStrategyHandler>(deity_id);
-  decisions.push_back(cur_decision);
+  cur_decision = std::make_unique<HaltBreedingDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(std::move(cur_decision));
    
-  cur_decision = std::make_shared<SmiteDeityDecisionStrategyHandler>(deity_id);
-  decisions.push_back(cur_decision);
+  cur_decision = std::make_unique<SmiteDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(std::move(cur_decision));
 
-  cur_decision = std::make_shared<ProtectionDeityDecisionStrategyHandler>(deity_id);
-  decisions.push_back(cur_decision);
+  cur_decision = std::make_unique<ProtectionDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(std::move(cur_decision));
 
-  cur_decision = std::make_shared<FullAPDeityDecisionStrategyHandler>(deity_id);
-  decisions.push_back(cur_decision);
+  cur_decision = std::make_unique<FullAPDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(std::move(cur_decision));
 
-  cur_decision = std::make_shared<UncurseDeityDecisionStrategyHandler>(deity_id);
-  decisions.push_back(cur_decision);
+  cur_decision = std::make_unique<UncurseDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(std::move(cur_decision));
 
-  cur_decision = std::make_shared<SatiateDeityDecisionStrategyHandler>(deity_id);
-  decisions.push_back(cur_decision);
+  cur_decision = std::make_unique<SatiateDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(std::move(cur_decision));
 }
 
 // Loop through the set of possible decisions.
@@ -65,13 +65,13 @@ void DeityDecisionStrategy::initialize_decisions()
 DeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision(CreaturePtr creature)
 {
   // The default decision if nothing else is selected.
-  DeityDecisionStrategyHandlerPtr decision_strategy = std::make_shared<DoNothingDeityDecisionStrategyHandler>(deity_id);
+  DeityDecisionStrategyHandlerPtr decision_strategy = nullptr;
 
-  for (DeityDecisionStrategyHandlerPtr decision : decisions)
+  for (auto& decision : decisions)
   {
     if (decision->decide(creature))
     {
-      decision_strategy = decision;
+      decision_strategy = decision->clone();
       break;
     }
   }
@@ -81,14 +81,14 @@ DeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision(CreaturePtr 
 
 DeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision_for_sacrifice(CreaturePtr creature, ItemPtr item)
 {
-  DeityDecisionStrategyHandlerPtr sacrifice = std::make_shared<SacrificeDeityDecisionStrategyHandler>(deity_id, creature, item);
+  DeityDecisionStrategyHandlerPtr sacrifice = std::make_unique<SacrificeDeityDecisionStrategyHandler>(deity_id, creature, item);
 
   return sacrifice;
 }
 
 DeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision_for_altar_drop(CreaturePtr dropping_creature, FeaturePtr altar, ItemPtr item)
 {
-  DeityDecisionStrategyHandlerPtr item_drop = std::make_shared<AltarDropDeityDecisionStrategyHandler>(deity_id, dropping_creature, altar, item);
+  DeityDecisionStrategyHandlerPtr item_drop = std::make_unique<AltarDropDeityDecisionStrategyHandler>(deity_id, dropping_creature, altar, item);
 
   return item_drop;
 }
