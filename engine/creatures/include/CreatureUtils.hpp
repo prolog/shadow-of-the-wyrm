@@ -22,7 +22,7 @@ class CreatureUtils
 
     static RacePtr get_random_user_playable_race();
     static ClassPtr get_random_user_playable_class();
-    static DeityPtr get_random_deity_for_race(RacePtr race);
+    static Deity* get_random_deity_for_race(RacePtr race);
 
     // Check to see if the given creature is either the player, or exists
     // on the player's view map.

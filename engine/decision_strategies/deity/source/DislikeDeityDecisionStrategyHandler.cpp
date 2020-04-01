@@ -9,11 +9,11 @@ const int DislikeDeityDecisionStrategyHandler::DISLIKE_DECISION_PIETY_LOSS = 750
 const int DislikeDeityDecisionStrategyHandler::DISLIKE_DECISION_ANGER_THRESHOLD = -1000;
 
 DislikeDeityDecisionStrategyHandler::DislikeDeityDecisionStrategyHandler(const string& new_deity_id)
-: DeityDecisionStrategyHandler(new_deity_id)
+: DeityDecisionStrategyHandler(new_deity_id), deity(nullptr)
 {
 }
 
-DislikeDeityDecisionStrategyHandler::DislikeDeityDecisionStrategyHandler(DeityPtr new_deity)
+DislikeDeityDecisionStrategyHandler::DislikeDeityDecisionStrategyHandler(Deity* new_deity)
 : DeityDecisionStrategyHandler(new_deity->get_id()), deity(new_deity)
 {
 }
@@ -40,9 +40,9 @@ bool DislikeDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 DeityDecisionImplications DislikeDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature, TilePtr tile)
 {
   ReligionManager rm;
-  DeityPtr deity = rm.get_deity(deity_id);
+  Deity* deity = rm.get_deity(deity_id);
 
-  if (deity)
+  if (deity != nullptr)
   {
     int piety = rm.get_piety_for_active_deity(creature);
     MapPtr map = Game::instance().get_current_map();

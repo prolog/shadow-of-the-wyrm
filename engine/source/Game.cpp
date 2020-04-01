@@ -190,7 +190,13 @@ MapRegistry& Game::get_map_registry_ref()
 
 void Game::set_deities(const DeityMap& game_deities)
 {
-  deities = game_deities;
+  deities.clear();
+
+  for (const auto& gd_it : game_deities)
+  {
+    DeityPtr deity = std::make_unique<Deity>(*gd_it.second);
+    deities.insert(make_pair(gd_it.first, std::move(deity)));
+  }
 }
 
 DeityMap& Game::get_deities_ref()
@@ -1096,7 +1102,7 @@ bool Game::serialize(ostream& stream) const
   Serialize::write_size_t(stream, deities.size());
   for (const auto& deity_pair : deities)
   {
-    DeityPtr deity = deity_pair.second;
+    Deity* deity = deity_pair.second.get();
 
     if (deity)
     {
@@ -1316,12 +1322,12 @@ bool Game::deserialize(istream& stream)
   for (size_t i = 0; i < size; i++)
   {
     string deity_id;
-    DeityPtr deity = make_shared<Deity>();
+    DeityPtr deity = std::make_unique<Deity>();
 
     Serialize::read_string(stream, deity_id);
     deity->deserialize(stream);
 
-    deities.insert(make_pair(deity_id, deity));
+    deities.insert(make_pair(deity_id, std::move(deity)));
   }
 
   // Ignore race map - this will be built up on startup.

@@ -11,8 +11,8 @@ DeityMap XMLDeitiesReader::get_deities(const XMLNode& deities_node)
   DeityMap deities;
   
   // Need a default deity, always.
-  DeityPtr default_deity = std::make_shared<Deity>();
-  deities.insert(make_pair(default_deity->get_id(), default_deity));
+  DeityPtr default_deity = std::make_unique<Deity>();
+  deities.insert(make_pair(default_deity->get_id(), std::move(default_deity)));
 
   if (!deities_node.is_null())
   {
@@ -24,7 +24,7 @@ DeityMap XMLDeitiesReader::get_deities(const XMLNode& deities_node)
       
       if (deity)
       {
-        deities.insert(make_pair(deity->get_id(), deity));
+        deities.insert(make_pair(deity->get_id(), std::move(deity)));
       }
     }
   }
@@ -35,12 +35,10 @@ DeityMap XMLDeitiesReader::get_deities(const XMLNode& deities_node)
 // Parse an individual Deity
 DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
 {
-  DeityPtr deity;
+  DeityPtr deity = std::make_unique<Deity>();
   
   if (!deity_node.is_null())
   {
-    deity = std::make_shared<Deity>();
-
     bool playable    = XMLUtils::get_child_node_bool_value(deity_node, "UserPlayable"); 
     string deity_id  = XMLUtils::get_attribute_value (deity_node, "id");
     string name_sid  = XMLUtils::get_child_node_value(deity_node, "NameSID");
@@ -68,10 +66,10 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
     deity->set_anger_message_sid(anger_sid);
     deity->set_death_message_sid(death_sid);
     deity->set_alignment_range(alignment);
-    parse_dislikes(dislikes_node, deity);
-    parse_crowning_gifts(crowning_node, deity);
+    parse_dislikes(dislikes_node, *deity);
+    parse_crowning_gifts(crowning_node, *deity);
     deity->set_pct_chance_class_crowning(class_crowning_chance);
-    parse_summons(summons_node, deity);
+    parse_summons(summons_node, *deity);
     deity->set_worship_site_type(worship_site_type);
     deity->set_anger_script(anger_script);
     deity->set_initial_modifier(m);
@@ -81,24 +79,24 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
 }
 
 // Read in the dislikes of a particular deity
-void XMLDeitiesReader::parse_dislikes(const XMLNode& dislikes_node, DeityPtr deity)
+void XMLDeitiesReader::parse_dislikes(const XMLNode& dislikes_node, Deity& deity)
 {
-  if (deity && !dislikes_node.is_null())
+  if (!dislikes_node.is_null())
   {
     vector<XMLNode> dislike_nodes = XMLUtils::get_elements_by_local_name(dislikes_node, "Action");
 
     for (const XMLNode& dislike_node : dislike_nodes)
     {
       string dislike_action = XMLUtils::get_node_value(dislike_node);
-      deity->set_dislike(dislike_action, true);
+      deity.set_dislike(dislike_action, true);
     }
   }
 }
 
 // Read in the deity's summons (the things it summons when angered).
-void XMLDeitiesReader::parse_summons(const XMLNode& summons_node, DeityPtr deity)
+void XMLDeitiesReader::parse_summons(const XMLNode& summons_node, Deity& deity)
 {
-  if (deity && !summons_node.is_null())
+  if (!summons_node.is_null())
   {
     vector<XMLNode> summon_nodes = XMLUtils::get_elements_by_local_name(summons_node, "Summon");
     vector<string> summons;
@@ -109,13 +107,13 @@ void XMLDeitiesReader::parse_summons(const XMLNode& summons_node, DeityPtr deity
       summons.push_back(summon);
     }
 
-    deity->set_summons(summons);
+    deity.set_summons(summons);
   }
 }
 
 // Read in the deity's crowning gifts
-void XMLDeitiesReader::parse_crowning_gifts(const XMLNode& crowning_node, DeityPtr deity)
+void XMLDeitiesReader::parse_crowning_gifts(const XMLNode& crowning_node, Deity& deity)
 {
   vector<string> crowning_gifts = get_crowning_gifts(crowning_node);
-  deity->set_crowning_gifts(crowning_gifts);
+  deity.set_crowning_gifts(crowning_gifts);
 }

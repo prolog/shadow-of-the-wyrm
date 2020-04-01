@@ -46,8 +46,8 @@ void ShrineSectorFeature::generate_altar(MapPtr map, const Coordinate& start_coo
 
     if (tile && !tile->has_feature())
     {
-      pair<DeityPtr, AlignmentRange> deity_details = DeityUtils::get_random_deity_with_align(Game::instance());
-      DeityPtr deity = deity_details.first;
+      pair<Deity*, AlignmentRange> deity_details = DeityUtils::get_random_deity_with_align(Game::instance());
+      Deity* deity = deity_details.first;
 
       if (deity != nullptr)
       {

@@ -4384,9 +4384,9 @@ int get_deity_summons(lua_State* ls)
     string deity_id = lua_tostring(ls, 1);
 
     ReligionManager rm;
-    DeityPtr deity = rm.get_deity(deity_id);
+    Deity* deity = rm.get_deity(deity_id);
 
-    if (deity)
+    if (deity != nullptr)
     {
       summons = deity->get_summons();
       uint summons_size = summons.size();

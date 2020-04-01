@@ -11,19 +11,19 @@ DeityUtils::~DeityUtils()
 {
 }
 
-pair<DeityPtr, AlignmentRange> DeityUtils::get_random_deity_with_align(const Game& game)
+pair<Deity*, AlignmentRange> DeityUtils::get_random_deity_with_align(const Game& game)
 {
-  DeityPtr rando;
+  Deity* rando;
   AlignmentRange arange = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL;
 
   const DeityMap& dm = game.get_deities_cref();
-  vector<DeityPtr> rand_deities;
+  vector<Deity*> rand_deities;
 
   for (const auto& dm_pair : dm)
   {
     if (!dm_pair.first.empty() && dm_pair.second != nullptr)
     {
-      rand_deities.push_back(dm_pair.second);
+      rand_deities.push_back(dm_pair.second.get());
     }
   }
 

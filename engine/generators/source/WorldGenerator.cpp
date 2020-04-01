@@ -619,7 +619,7 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
   Game& game = Game::instance();
   
   RaceMap races = game.get_races_ref();
-  DeityMap deities = game.get_deities_cref();
+  const DeityMap& deities = game.get_deities_cref();
     
   for (const Coordinate& c : village_coordinates)
   {
@@ -661,7 +661,12 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
               vector<string> initial_deity_ids = races[race_id]->get_initial_deity_ids();
               int deity_id_idx = RNG::range(0, initial_deity_ids.size() - 1);
               string deity_id = initial_deity_ids[deity_id_idx];
-              DeityPtr deity = deities[deity_id];
+              Deity* deity = nullptr;
+              auto d_it = deities.find(deity_id);
+              if (d_it != deities.end())
+              {
+                deity = d_it->second.get();
+              }
               WorshipSiteTilePtr site_tile = tg.generate_worship_site_tile(deity->get_alignment_range(), deity_id, deity->get_worship_site_type());
               map->insert(adjacent_row, adjacent_col, site_tile);
               worship_site_generated = true;

@@ -27,7 +27,6 @@ int DeityDecisionImplications::adjust_creature_piety(CreaturePtr creature, Featu
 
   Religion& religion = creature->get_religion_ref();
   string deity_id = religion.get_active_deity_id();
-  DeityPtr creature_deity = rm.get_deity(deity_id);
   DeityStatus status = religion.get_deity_status(deity_id);
 
   ClassPtr cur_class = cm.get_class(creature->get_class_id());

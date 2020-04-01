@@ -244,13 +244,19 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
   Game& game = Game::instance();
 
-  DeityMap deities = game.get_deities_cref();
+  const DeityMap& deities = game.get_deities_cref();
   RaceMap races = game.get_races_ref();
   ClassMap classes = game.get_classes_ref();
 
   RacePtr race = races[race_id];
   ClassPtr char_class = classes[class_id];
-  DeityPtr deity = deities[deity_id];
+  
+  Deity* deity = nullptr;
+  auto d_it = deities.find(deity_id);
+  if (d_it != deities.end())
+  {
+    deity = d_it->second.get();
+  }
 
   if (race && char_class && deity)
   {
@@ -369,7 +375,7 @@ void CreatureFactory::create_initial_equipment_and_inventory(CreaturePtr creatur
   iie.add_inventory_items(creaturep, cgv, action_manager);
 }
 
-void CreatureFactory::set_initial_statistics(CreaturePtr creature, RacePtr race, ClassPtr char_class, DeityPtr deity)
+void CreatureFactory::set_initial_statistics(CreaturePtr creature, RacePtr race, ClassPtr char_class, Deity* deity)
 {
   Modifier race_m = race->get_modifier();
   Modifier class_m = char_class->get_modifier();

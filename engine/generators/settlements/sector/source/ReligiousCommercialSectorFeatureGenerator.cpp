@@ -44,8 +44,8 @@ bool ReligiousCommercialSectorFeatureGenerator::create_feature(MapPtr map, const
     case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_OUTDOOR_SHRINE:
     {
       Game& game = Game::instance();
-      pair<DeityPtr, AlignmentRange> deity_details = DeityUtils::get_random_deity_with_align(game);
-      DeityPtr deity = deity_details.first;
+      auto deity_details = DeityUtils::get_random_deity_with_align(game);
+      Deity* deity = deity_details.first;
       string deity_id;
 
       if (deity != nullptr)

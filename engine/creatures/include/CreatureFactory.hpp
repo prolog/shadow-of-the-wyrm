@@ -23,7 +23,7 @@ class CreatureFactory
     void revert_to_original_configuration_values(CreaturePtr newly_created_creature, const Creature& configuration_instance, DecisionStrategyPtr template_decision_strategy);
 
     void set_age(CreaturePtr creature, const AgeInfo& age_info);
-    void set_initial_statistics(CreaturePtr creature, RacePtr race, ClassPtr char_class, DeityPtr deity);
+    void set_initial_statistics(CreaturePtr creature, RacePtr race, ClassPtr char_class, Deity* deity);
     void set_initial_statistics_modifiers(CreaturePtr creature, const CreatureGenerationValues& cgv);
     void set_default_resistances(CreaturePtr creature);
     void set_initial_resistances(CreaturePtr creature, RacePtr race, ClassPtr char_class);

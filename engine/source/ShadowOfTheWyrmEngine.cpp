@@ -237,7 +237,7 @@ void ShadowOfTheWyrmEngine::setup_game()
 
   log.debug("Reading deities.");
 
-  DeityMap deities = reader.get_deities();      
+  const DeityMap& deities = reader.get_deities();      
   game.set_deities(deities);
 
   log.debug("Reading races.");
@@ -354,7 +354,7 @@ bool ShadowOfTheWyrmEngine::process_new_game_random()
   ClassPtr cur_class = CreatureUtils::get_random_user_playable_class();
 
   // Random allowable deity
-  DeityPtr deity = CreatureUtils::get_random_deity_for_race(race);
+  Deity* deity = CreatureUtils::get_random_deity_for_race(race);
 
   // Random starting location
   StartingLocationMap sm = Game::instance().get_starting_locations();
@@ -385,7 +385,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   Game& game = Game::instance();
   CreatureSex sex = CreatureSex::CREATURE_SEX_MALE;
     
-  DeityMap deities = game.get_deities_cref();
+  const DeityMap& deities = game.get_deities_cref();
   RaceMap  races   = game.get_races_ref();
   ClassMap classes = game.get_classes_ref();
   
@@ -521,7 +521,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
     if (opt.is_random_option(deity_index.at(0)))
     {
-      DeityPtr deity = CreatureUtils::get_random_deity_for_race(selected_race);
+      Deity* deity = CreatureUtils::get_random_deity_for_race(selected_race);
 
       if (deity != nullptr)
       {
@@ -543,7 +543,13 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
   }
 
-  DeityPtr selected_deity = deities[selected_deity_id];
+  Deity* selected_deity = nullptr;
+  auto d_it = deities.find(selected_deity_id);
+  if (d_it != deities.end())
+  {
+    selected_deity = d_it->second.get();
+  }
+
   string default_starting_location_id = game.get_settings_ref().get_setting(Setting::DEFAULT_STARTING_LOCATION_ID);
   StartingLocationMap sm = game.get_starting_locations();
   StartingLocation sl;
@@ -582,11 +588,11 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
 
   RaceMap  races = game.get_races_ref();
   ClassMap classes = game.get_classes_ref();
-  DeityMap deities = game.get_deities_cref();
+  const DeityMap& deities = game.get_deities_cref();
 
   RacePtr selected_race = races.at(ccd.get_race_id());
   ClassPtr selected_class = classes.at(ccd.get_class_id());
-  DeityPtr deity = deities.at(ccd.get_deity_id());
+  Deity* deity = deities.at(ccd.get_deity_id()).get();
   string name;
 
   bool user_and_character_exist = true;

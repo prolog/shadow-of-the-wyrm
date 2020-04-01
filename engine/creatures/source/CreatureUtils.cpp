@@ -121,13 +121,13 @@ void CreatureUtils::handle_alignment_change(CreaturePtr creature, const int new_
       // Champion?  Not anymore!
       ReligionManager rm;
       Religion& religion = creature->get_religion_ref();
-      DeityPtr active_deity = rm.get_active_deity(creature);
+      Deity* active_deity = rm.get_active_deity(creature);
       DeityStatus status = rm.get_active_deity_status(creature);
 
-      if (status.get_champion_type() == ChampionType::CHAMPION_TYPE_CROWNED)
+      if (active_deity != nullptr && status.get_champion_type() == ChampionType::CHAMPION_TYPE_CROWNED)
       {
         // The creature is hereby a fallen champion of all deities.
-        for (auto deity_pair : deities)
+        for (auto& deity_pair : deities)
         {
           string deity_id = deity_pair.second->get_id();
 
@@ -148,13 +148,13 @@ void CreatureUtils::handle_alignment_change(CreaturePtr creature, const int new_
 
       // Change religion.
       // Get all the deities for the new alignment range.
-      vector<DeityPtr> potential_deities;
+      vector<Deity*> potential_deities;
 
-      for (auto deity_pair : deities)
+      for (auto& deity_pair : deities)
       {
-        DeityPtr deity = deity_pair.second;
+        Deity* deity = deity_pair.second.get();
 
-        if (deity && !deity->get_id().empty() && (deity->get_alignment_range() == range_after))
+        if (deity != nullptr && !deity->get_id().empty() && (deity->get_alignment_range() == range_after))
         {
           potential_deities.push_back(deity);
         }
@@ -166,7 +166,7 @@ void CreatureUtils::handle_alignment_change(CreaturePtr creature, const int new_
         std::shuffle(potential_deities.begin(), potential_deities.end(), RNG::get_engine());
 
         // Make this the active deity for the creature.
-        DeityPtr new_deity = potential_deities.at(0);
+        Deity* new_deity = potential_deities.at(0);
         religion.set_active_deity_id(new_deity->get_id());
 
         // Add a message about the new deity.
@@ -430,12 +430,12 @@ ClassPtr CreatureUtils::get_random_user_playable_class()
   return cur_class;
 }
 
-DeityPtr CreatureUtils::get_random_deity_for_race(RacePtr race)
+Deity* CreatureUtils::get_random_deity_for_race(RacePtr race)
 {
   Game& game = Game::instance();
-  DeityMap deities = game.get_deities_cref();
   vector<string> allowable_deity_ids;
-  DeityPtr deity;
+  Deity* deity;
+  ReligionManager rm;
 
   if (race != nullptr)
   {
@@ -445,7 +445,7 @@ DeityPtr CreatureUtils::get_random_deity_for_race(RacePtr race)
   if (!allowable_deity_ids.empty())
   {
     string deity_id = allowable_deity_ids.at(RNG::range(0, allowable_deity_ids.size() - 1));
-    deity = deities.at(deity_id);
+    deity = rm.get_deity(deity_id);
   }
 
   return deity;

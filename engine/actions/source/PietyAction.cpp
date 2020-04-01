@@ -28,7 +28,8 @@ ActionCostValue PietyAction::piety(CreaturePtr creature, MapPtr map, ActionManag
     }
     else
     {
-      DeityMap& deities = game.get_deities_ref();
+      const DeityMap& deities = game.get_deities_ref();
+
       if (!deities.empty())
       {
         check_piety(creature, manager);

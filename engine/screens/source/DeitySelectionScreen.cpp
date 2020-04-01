@@ -24,7 +24,7 @@ void DeitySelectionScreen::initialize()
   if (race)
   {
     Game& game_instance = Game::instance();
-    DeityMap deities = game_instance.get_deities_cref();
+    const DeityMap& deities = game_instance.get_deities_cref();
     vector<string> deity_ids = race->get_initial_deity_ids();
     ostringstream synop;
 
@@ -40,31 +40,23 @@ void DeitySelectionScreen::initialize()
     
     for (const string& deity_id : deity_ids)
     {
-      DeityMap::iterator d_it = deities.find(deity_id);
+      auto d_it = deities.find(deity_id);
       
       if (d_it != deities.end())
       {
-        DeityPtr deity = d_it->second;
+        Deity& deity = *d_it->second;
         
-        if (deity)
-        {
-          string deity_name  = StringTable::get(deity->get_name_sid());
-          string deity_sdesc = StringTable::get(deity->get_short_description_sid());
+        string deity_name  = StringTable::get(deity.get_name_sid());
+        string deity_sdesc = StringTable::get(deity.get_short_description_sid());
           
-          Option current_option;
-          current_option.set_id(current_id);
-          current_option.set_description(deity_name);
+        Option current_option;
+        current_option.set_id(current_id);
+        current_option.set_description(deity_name);
           
-          options->add_option(current_option);
-          options->add_option_description(deity_sdesc); 
+        options->add_option(current_option);
+        options->add_option_description(deity_sdesc); 
           
-          current_id++;
-        }
-        else
-        {
-          string error_msg = "DeitySelectionScreen::initialize - Deity ID (" + deity_id + ") found, but DeityPtr is null.";
-          Log::instance().log(error_msg);
-        }
+        current_id++;
       }
       else
       {

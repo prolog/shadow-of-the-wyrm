@@ -30,29 +30,34 @@ void DeityActionManager::notify_action(CreaturePtr creature, MapPtr map, const s
     }
 
     Religion& religion = creature->get_religion_ref();
-    DeityMap deities = game.get_deities_cref();
+    const DeityMap& deities = game.get_deities_cref();
 
-    vector<DeityPtr> deities_to_notify;
+    vector<Deity*> deities_to_notify;
 
     if (active_deity_only)
     {
-      DeityPtr active_deity = deities[religion.get_active_deity_id()];
-      deities_to_notify.push_back(active_deity);
+      auto d_it = deities.find(religion.get_active_deity_id());
+
+      if (d_it != deities.end())
+      {
+        Deity* active_deity = d_it->second.get();
+        deities_to_notify.push_back(active_deity);
+      }
     }
     else
     {
       for (auto it = deities.begin(); it != deities.end(); it++)
       {
-        DeityPtr cur_deity = it->second;
+        Deity* cur_deity = it->second.get();
         
-        if (cur_deity)
+        if (cur_deity != nullptr)
         {
           deities_to_notify.push_back(cur_deity);
         }
       }
     }
 
-    for (DeityPtr cur_deity : deities_to_notify)
+    for (Deity* cur_deity : deities_to_notify)
     {
       if (cur_deity->get_dislike(action_key))
       {
@@ -64,9 +69,9 @@ void DeityActionManager::notify_action(CreaturePtr creature, MapPtr map, const s
 }
 
 // Handle a displeasing action by decreasing piety.
-void DeityActionManager::handle_displeasing_action(CreaturePtr creature, DeityPtr deity, const string& action)
+void DeityActionManager::handle_displeasing_action(CreaturePtr creature, Deity* deity, const string& action)
 {
-  if (creature)
+  if (creature != nullptr && deity != nullptr)
   {
     Game& game = Game::instance();
     MapPtr current_map = game.get_current_map();
