@@ -26,8 +26,8 @@ ActionCostValue ScribingSkillProcessor::process(CreaturePtr creature, MapPtr map
     {
       Game& game = Game::instance();
       DisplayPtr display = game.get_display();
-      SpellScreenDisplayStrategyPtr sds = std::make_shared<SituationTypeSpellScreenDisplayStrategy>(SpellSituationType::SPELL_SITUATION_INTERNAL);
-      SpellSelectionScreen ss(display, creature, sds);
+      SpellScreenDisplayStrategyPtr sds = std::make_unique<SituationTypeSpellScreenDisplayStrategy>(SpellSituationType::SPELL_SITUATION_INTERNAL);
+      SpellSelectionScreen ss(display, creature, sds.get());
 
       string display_s = ss.display();
       string spell_id = ss.get_selected_spell(display_s.at(0));

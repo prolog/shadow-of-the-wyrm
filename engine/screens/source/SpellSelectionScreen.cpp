@@ -25,7 +25,7 @@ bool SituationTypeSpellScreenDisplayStrategy::display_spell(const Spell& spell) 
   return (sst == spell.get_shape().get_spell_situation());
 }
 
-SpellSelectionScreen::SpellSelectionScreen(DisplayPtr new_display, CreaturePtr player /* should only be shown for player! */, SpellScreenDisplayStrategyPtr ssds)
+SpellSelectionScreen::SpellSelectionScreen(DisplayPtr new_display, CreaturePtr player /* should only be shown for player! */, SpellScreenDisplayStrategy* ssds)
 : Screen(new_display), creature(player), strategy(ssds)
 {
   initialize();
