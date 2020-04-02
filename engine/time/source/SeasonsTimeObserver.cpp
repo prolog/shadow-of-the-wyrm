@@ -15,7 +15,7 @@ void SeasonsTimeObserver::notify(const ulonglong minutes_passed)
 {
   Game& game = Game::instance();
   
-  WorldPtr world = game.worlds.at(game.current_world_ix);
+  WorldPtr world = game.get_current_world();
     
   if (world)
   {

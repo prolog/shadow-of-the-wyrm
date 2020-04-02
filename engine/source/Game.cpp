@@ -59,7 +59,7 @@
 using namespace std;
 
 Game::Game()
-: keep_playing(true), reload_game_loop(false), check_scores(true), requires_redraw(false), current_world_ix(0)
+: keep_playing(true), reload_game_loop(false), check_scores(true), requires_redraw(false)
 {
   // Setup the time keeper.  On a new game, this will initialize everything as
   // expected - when loading an existing game, this will be overwritten later,
@@ -377,9 +377,7 @@ void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
   thread.join();
   current_world = fp.get();
 
-  WorldPtr world(new World(current_world));
-  worlds.push_back(world);
-  current_world_ix = (worlds.size() - 1);
+  world = WorldPtr(new World(current_world));
 
   set_world_settings();
 
@@ -548,7 +546,7 @@ void Game::go()
         ac.reset_if_necessary(current_map->get_permanent(), current_map->get_map_id(), map_creatures);
       }
 
-      Calendar& calendar = worlds[current_world_ix]->get_calendar();
+      Calendar& calendar = world->get_calendar();
 
       while (ac.has_actions())
       {
@@ -1046,15 +1044,6 @@ map<string, string> Game::get_scripts() const
 
 WorldPtr Game::get_current_world()
 {
-  WorldPtr world;
-
-  // This function may be called before the game is properly set up.  If so,
-  // just return a null shared ptr, and be prepared to check for it.
-  if (!worlds.empty())
-  {
-    world = worlds[current_world_ix];
-  }
-
   return world;
 }
 
@@ -1188,15 +1177,10 @@ bool Game::serialize(ostream& stream) const
 
   // Ignore tile_info map - this will be built up on startup.
 
-  size_t num_worlds = worlds.size();
-  Serialize::write_size_t(stream, num_worlds);
-
-  for (WorldPtr world : worlds)
-  {
-    world->serialize(stream);
-  }
-
-  Serialize::write_uint(stream, current_world_ix);
+  // Serialize the world
+  world->serialize(stream);
+  
+  // Serialize the current map ID
   Serialize::write_string(stream, current_map_id);
 
   actions.serialize(stream);
@@ -1431,20 +1415,12 @@ bool Game::deserialize(istream& stream)
 
   // Ignore tile_info map - this will be built up on startup.
 
-  size_t num_worlds;
-  Serialize::read_size_t(stream, num_worlds);
+  // Deserialize the world
+  world = WorldFactory::create_world();
+  if (!world) return false;
+  if (!world->deserialize(stream)) return false;
 
-  worlds.clear();
-
-  for (unsigned int i = 0; i < num_worlds; i++)
-  {
-    WorldPtr world = WorldFactory::create_world();
-    if (!world) return false;
-    if (!world->deserialize(stream)) return false;
-    worlds.push_back(world);
-  }
-
-  Serialize::read_uint(stream, current_world_ix);
+  // Read the current map ID
   Serialize::read_string(stream, current_map_id);
 
   actions.deserialize(stream);

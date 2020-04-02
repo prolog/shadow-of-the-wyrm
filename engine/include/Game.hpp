@@ -232,11 +232,7 @@ class Game : public ISerializable
     std::map<int, CalendarDay> calendar_days;
     StartingLocationMap starting_locations;
 
-    // The current list of game worlds.  For a long, long time, this should always be size=1.
-    std::vector<WorldPtr> worlds;
-
-    // The current world index in the list of worlds.
-    uint current_world_ix;
+    WorldPtr world;
 
     // The currently-loaded map's ID, used to look up the map in the registry.
     std::string current_map_id;
