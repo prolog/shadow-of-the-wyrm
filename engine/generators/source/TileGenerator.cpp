@@ -248,7 +248,7 @@ void TileGenerator::configure_tile(TilePtr result_tile)
 
   if (world)
   {
-    ISeasonPtr seasonp = world->get_calendar().get_season();
+    ISeason* seasonp = world->get_calendar().get_season();
       
     if (seasonp)
     {

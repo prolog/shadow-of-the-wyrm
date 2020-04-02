@@ -12,6 +12,8 @@ class Calendar : public ISerializable
   public:
     Calendar();
     bool operator==(const Calendar& c) const;
+    Calendar(const Calendar& c) = delete;
+    bool operator=(const Calendar& c) = delete;
     
     void set_date(const uint days_elapsed, const uint hours_elapsed);
     void add_days(const uint days);
@@ -19,7 +21,7 @@ class Calendar : public ISerializable
     double get_seconds() const;
     double get_seconds_from_date(const Date& date) const;
     Date get_date() const;
-    ISeasonPtr get_season() const;
+    ISeason* get_season() const;
     uint get_starting_year() const;
     
     bool update_season_if_necessary();

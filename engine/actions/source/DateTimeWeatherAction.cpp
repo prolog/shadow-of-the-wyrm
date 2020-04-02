@@ -24,9 +24,9 @@ ActionCostValue DateTimeWeatherAction::date_and_time_and_weather()
     
     if (world)
     {
-      Calendar calendar = world->get_calendar();
+      Calendar& calendar = world->get_calendar();
       Date date = calendar.get_date();
-      ISeasonPtr season = calendar.get_season();
+      ISeason* season = calendar.get_season();
       PhaseOfMoonCalculator pomc;
       MapPtr map = game.get_current_map();
       CreaturePtr player = game.get_current_player();

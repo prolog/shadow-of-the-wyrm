@@ -88,7 +88,7 @@ namespace SOTW
       virtual bool generate_initial_items(MapPtr map, const int danger_level, const std::tuple<bool, int, Rarity>& creature_details);
       virtual bool update_items(MapPtr map, const int danger_level);
       virtual bool generate_foragables(MapPtr map, const ForagableType ft);
-      virtual std::map<TileType, std::vector<std::string>> get_foragables_for_season(ISeasonPtr, const ForagableType ft);
+      virtual std::map<TileType, std::vector<std::string>> get_foragables_for_season(ISeason*, const ForagableType ft);
 
       virtual bool get_ignore_creature_generation_level_checks() const;
       virtual void create_properties_and_copy_to_map(MapPtr map);
