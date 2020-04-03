@@ -91,6 +91,12 @@ ActionCostValue WandcraftSkillProcessor::process(CreaturePtr creature, MapPtr ma
   return acv;
 }
 
+SkillProcessorPtr WandcraftSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<WandcraftSkillProcessor>();
+  return proc;
+}
+
 bool WandcraftSkillProcessor::check_for_components(CreaturePtr creature)
 {
   bool has_comp = false;

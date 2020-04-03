@@ -52,6 +52,12 @@ ActionCostValue ThieverySkillProcessor::process(CreaturePtr creature, MapPtr map
   return acv;
 }
 
+SkillProcessorPtr ThieverySkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<ThieverySkillProcessor>();
+  return proc;
+}
+
 // Check to see if there are any creature, hostile or not, that are adjacent
 // to the given creature.
 pair<bool, TileDirectionMap> ThieverySkillProcessor::check_for_adjacent_creatures(CreaturePtr creature, MapPtr map)

@@ -5,5 +5,6 @@ class StealthSkillProcessor : public SkillProcessor
 {
   public:
     ActionCostValue process(CreaturePtr creature, MapPtr map);
+    virtual SkillProcessorPtr clone() override;
 };
 

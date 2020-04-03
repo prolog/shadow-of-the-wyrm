@@ -70,3 +70,8 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
   return acv;
 }
 
+SkillProcessorPtr HidingSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<HidingSkillProcessor>();
+  return proc;
+}

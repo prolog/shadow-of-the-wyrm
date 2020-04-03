@@ -55,6 +55,12 @@ ActionCostValue ScribingSkillProcessor::process(CreaturePtr creature, MapPtr map
   return acv;
 }
 
+SkillProcessorPtr ScribingSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<ScribingSkillProcessor>();
+  return proc;
+}
+
 bool ScribingSkillProcessor::check_for_components(CreaturePtr creature)
 {
   bool has_comp = false;

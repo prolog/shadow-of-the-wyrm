@@ -52,6 +52,12 @@ ActionCostValue DisarmTrapsSkillProcessor::process(CreaturePtr creature, MapPtr 
   return acv;
 }
 
+SkillProcessorPtr DisarmTrapsSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<DisarmTrapsSkillProcessor>();
+  return proc;
+}
+
 pair<int, TileDirectionMap> DisarmTrapsSkillProcessor::count_known_traps(const TileDirectionMap& tdm)
 {
   pair<int, TileDirectionMap> num_traps = {0, {}};

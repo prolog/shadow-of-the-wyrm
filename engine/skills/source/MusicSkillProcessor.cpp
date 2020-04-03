@@ -45,6 +45,12 @@ ActionCostValue MusicSkillProcessor::process(CreaturePtr creature, MapPtr map)
   return acv;
 }
 
+SkillProcessorPtr MusicSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<MusicSkillProcessor>();
+  return proc;
+}
+
 // Go through the creature's wielded equipment, looking for an instrument.
 // If none are found, return a nullptr - this is fine, and will indicate to the
 // calling code to consider this a vocal performance.
