@@ -18,4 +18,4 @@ class ItemDescriber : public IDescriber
     ItemPtr item;
 };
 
-using ItemDescriberPtr = std::shared_ptr<ItemDescriber>;
+using ItemDescriberPtr = std::unique_ptr<ItemDescriber>;
