@@ -19,7 +19,7 @@ void WorldTimeObserver::notify(const ulonglong minutes_this_tick)
 {
   Game& game = Game::instance();
 
-  WorldPtr world = game.get_current_world();
+  World* world = game.get_current_world();
 
   if (world)
   {

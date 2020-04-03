@@ -15,7 +15,7 @@ bool WorldWeatherUpdater::should_update_weather(const int cur_hour) const
   return ((cur_hour % WEATHER_UPDATE_HOURS) == 0);;
 }
 
-void WorldWeatherUpdater::update_world_map_weather(WorldPtr world)
+void WorldWeatherUpdater::update_world_map_weather(World* world)
 {
   if (world != nullptr)
   {

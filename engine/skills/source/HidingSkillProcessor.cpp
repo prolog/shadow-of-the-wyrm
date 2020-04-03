@@ -31,7 +31,7 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
       HidingCalculator hc;
       bool is_player = creature->get_is_player();
       TimeOfDayType tod = TimeOfDayType::TIME_OF_DAY_UNDEFINED; 
-      WorldPtr world = Game::instance().get_current_world();
+      World* world = Game::instance().get_current_world();
       int hide_chance = hc.calculate_pct_chance_hide(creature, map, tod);
 
       if (world != nullptr)

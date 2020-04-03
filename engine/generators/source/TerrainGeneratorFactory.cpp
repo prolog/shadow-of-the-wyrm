@@ -272,7 +272,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
   // Set world map location into the generator, in case it is needed to
   // generate map details.
   Game& game = Game::instance();
-  WorldPtr world = game.get_current_world();
+  World* world = game.get_current_world();
 
   if (world != nullptr)
   {

@@ -162,7 +162,7 @@ bool GameUtils::is_player_among_creatures(CreaturePtr creature1, CreaturePtr cre
 double GameUtils::get_seconds(Game& game)
 {
   double sec = 0.0;
-  WorldPtr world = game.get_current_world();
+  World* world = game.get_current_world();
 
   if (world != nullptr)
   {
@@ -176,7 +176,7 @@ Date GameUtils::get_date(Game& game)
 {
   Date d = Date::null();
 
-  WorldPtr world = game.get_current_world();
+  World* world = game.get_current_world();
 
   if (world != nullptr)
   {

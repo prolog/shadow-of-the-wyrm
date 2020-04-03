@@ -18,7 +18,7 @@ ActionCostValue DateTimeWeatherAction::date_and_time_and_weather()
   IMessageManager& manager = MM::instance();
   
   // Get the date from the game's current world's calendar
-  WorldPtr world = game.get_current_world();
+  World* world = game.get_current_world();
     
   if (world)
   {

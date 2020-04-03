@@ -691,7 +691,7 @@ bool Generator::generate_foragables(MapPtr map, const ForagableType ft)
   bool generated_foragables = false;
 
   Game& game = Game::instance();
-  WorldPtr world = game.get_current_world();
+  World* world = game.get_current_world();
 
   if (map && world)
   {

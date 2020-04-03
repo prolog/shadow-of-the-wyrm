@@ -135,7 +135,7 @@ class Game : public ISerializable
     std::string get_script(const std::string& script_name);
     std::map<std::string, std::string> get_scripts() const;
 
-    WorldPtr get_current_world();
+    World* get_current_world();
 
     LoadedMapDetails& get_loaded_map_details_ref();
 

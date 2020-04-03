@@ -153,7 +153,7 @@ void Game::set_world_settings()
     days_elapsed = (parts->tm_mon * 30);
   }
 
-  WorldPtr world = get_current_world();
+  World* world = get_current_world();
 
   // If we're just starting up, the world may not have been instantiated yet.
   if (world != nullptr)
@@ -1042,9 +1042,9 @@ map<string, string> Game::get_scripts() const
   return scripts;
 }
 
-WorldPtr Game::get_current_world()
+World* Game::get_current_world()
 {
-  return world;
+  return world.get();
 }
 
 LoadedMapDetails& Game::get_loaded_map_details_ref()

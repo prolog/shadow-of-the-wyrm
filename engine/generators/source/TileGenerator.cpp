@@ -244,7 +244,7 @@ void TileGenerator::configure_tile(TilePtr result_tile)
 {
   Season season = Season::SEASON_SUMMER;
   Game& game = Game::instance();
-  WorldPtr world = game.get_current_world();
+  World* world = game.get_current_world();
 
   if (world)
   {

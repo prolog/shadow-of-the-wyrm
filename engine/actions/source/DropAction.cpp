@@ -249,7 +249,7 @@ bool DropAction::plant_seed(CreaturePtr creature, const string& tree_species_id,
   if (!tree_species_id.empty() && current_map)
   {
     Game& game = Game::instance();
-    WorldPtr world = game.get_current_world();
+    World* world = game.get_current_world();
     planted = true;
 
     // Regardless of whether anything can actually grow on the tile, mark
