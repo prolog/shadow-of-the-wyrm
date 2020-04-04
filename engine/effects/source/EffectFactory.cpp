@@ -47,110 +47,110 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type, const Modif
   switch(effect_type)
   {
     case EffectType::EFFECT_TYPE_HEALING:
-      effect = std::make_shared<HealingEffect>();
+      effect = std::make_unique<HealingEffect>();
       break;
     case EffectType::EFFECT_TYPE_IDENTIFY:
-      effect = std::make_shared<IdentifyEffect>();
+      effect = std::make_unique<IdentifyEffect>();
       break;
     case EffectType::EFFECT_TYPE_ETHER:
-      effect = std::make_shared<EtherEffect>();
+      effect = std::make_unique<EtherEffect>();
       break;
     case EffectType::EFFECT_TYPE_FRUIT_JUICE:
-      effect = std::make_shared<FruitJuiceEffect>();
+      effect = std::make_unique<FruitJuiceEffect>();
       break;
     case EffectType::EFFECT_TYPE_TELEPORT:
-      effect = std::make_shared<TeleportEffect>();
+      effect = std::make_unique<TeleportEffect>();
       break;
     case EffectType::EFFECT_TYPE_ANTIDOTE:
-      effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_POISON);
+      effect = std::make_unique<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_POISON);
       break;
     case EffectType::EFFECT_TYPE_AMUT:
-      effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_MUTE);
+      effect = std::make_unique<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_MUTE);
       break;
     case EffectType::EFFECT_TYPE_SPEED:
-      effect = std::make_shared<HasteEffect>();
+      effect = std::make_unique<HasteEffect>();
       break;
     case EffectType::EFFECT_TYPE_UNSTONING:
-      effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_STONE);
+      effect = std::make_unique<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_STONE);
       break;
     case EffectType::EFFECT_TYPE_UNBINDING:
-      effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_SPELLBOUND);
+      effect = std::make_unique<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_SPELLBOUND);
       break;
     case EffectType::EFFECT_TYPE_RESTORE_STATISTICS:
-      effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_DISFIGURED);
+      effect = std::make_unique<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_DISFIGURED);
       break;
     case EffectType::EFFECT_TYPE_UNBLINDING:
-      effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_BLINDED);
+      effect = std::make_unique<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_BLINDED);
       break;
     case EffectType::EFFECT_TYPE_RECHARGING:
-      effect = std::make_shared<RechargingEffect>();
+      effect = std::make_unique<RechargingEffect>();
       break;
     case EffectType::EFFECT_TYPE_INCORPOREAL:
-      effect = std::make_shared<IncorporealEffect>();
+      effect = std::make_unique<IncorporealEffect>();
       break;
     case EffectType::EFFECT_TYPE_ENCHANTING:
-      effect = std::make_shared<EnchantingEffect>();
+      effect = std::make_unique<EnchantingEffect>();
       break;
     case EffectType::EFFECT_TYPE_FLYING:
-      effect = std::make_shared<FlyingEffect>();
+      effect = std::make_unique<FlyingEffect>();
       break;
     case EffectType::EFFECT_TYPE_GAIN_ATTRIBUTES:
-      effect = std::make_shared<GainAttributesEffect>();
+      effect = std::make_unique<GainAttributesEffect>();
       break;
     case EffectType::EFFECT_TYPE_MODIFY_STATISTICS:
     {
-      shared_ptr<ModifyStatisticsEffect> ms_effect = std::make_shared<ModifyStatisticsEffect>();
+      unique_ptr<ModifyStatisticsEffect> ms_effect = std::make_unique<ModifyStatisticsEffect>();
       ms_effect->set_modifier(m);
       ms_effect->set_spell_id(spell_id);
 
-      effect = ms_effect;
+      effect = std::move(ms_effect);
       break;
     }
     case EffectType::EFFECT_TYPE_TIMEWALK:
-      effect = std::make_shared<TimewalkEffect>();
+      effect = std::make_unique<TimewalkEffect>();
       break;
     case EffectType::EFFECT_TYPE_CLEANSING:
-      effect = std::make_shared<CleansingEffect>();
+      effect = std::make_unique<CleansingEffect>();
       break;
     case EffectType::EFFECT_TYPE_UNCURSING:
-      effect = std::make_shared<UncursingEffect>();
+      effect = std::make_unique<UncursingEffect>();
       break;
     case EffectType::EFFECT_TYPE_DETECT_TRAPS:
-      effect = std::make_shared<DetectTrapsEffect>();
+      effect = std::make_unique<DetectTrapsEffect>();
       break;
     case EffectType::EFFECT_TYPE_BLESS:
-      effect = std::make_shared<BlessEffect>();
+      effect = std::make_unique<BlessEffect>();
       break;
     case EffectType::EFFECT_TYPE_MAPPING:
-      effect = std::make_shared<MappingEffect>();
+      effect = std::make_unique<MappingEffect>();
       break;
     case EffectType::EFFECT_TYPE_SUMMON_MONSTERS:
-      effect = std::make_shared<SummonMonstersEffect>();
+      effect = std::make_unique<SummonMonstersEffect>();
       break;
     case EffectType::EFFECT_TYPE_DIGGING:
-      effect = std::make_shared<DiggingEffect>();
+      effect = std::make_unique<DiggingEffect>();
       break;
     case EffectType::EFFECT_TYPE_RAGE:
-      effect = std::make_shared<RageEffect>();
+      effect = std::make_unique<RageEffect>();
       break;
     case EffectType::EFFECT_TYPE_INCREASE_MAX_HP:
-      effect = std::make_shared<IncreaseMaxHPEffect>();
+      effect = std::make_unique<IncreaseMaxHPEffect>();
       break;
     case EffectType::EFFECT_TYPE_INCREASE_MAX_AP:
-      effect = std::make_shared<IncreaseMaxAPEffect>();
+      effect = std::make_unique<IncreaseMaxAPEffect>();
       break;
     case EffectType::EFFECT_TYPE_REPEL:
-      effect = std::make_shared<RepelEffect>();
+      effect = std::make_unique<RepelEffect>();
       break;
     case EffectType::EFFECT_TYPE_WARP:
-      effect = std::make_shared<WarpEffect>();
+      effect = std::make_unique<WarpEffect>();
       break;
     case EffectType::EFFECT_TYPE_GLOW:
-      effect = std::make_shared<GlowEffect>();
+      effect = std::make_unique<GlowEffect>();
       break;
     case EffectType::EFFECT_TYPE_NULL:
     default:
-      effect = std::make_shared<NullEffect>();
+      effect = std::make_unique<NullEffect>();
       break;
   }
 
