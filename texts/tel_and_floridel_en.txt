@@ -3383,3 +3383,14 @@ felt distant as the day before they jumped %b
 the cliff and broke black water, falling through %b
 to the deathless lands, and laying bare the sum %b
 of what they'd lost against the things they thought they'd won.
+%p
+That night, three brothers made a tidy fire %b
+and said little, as if the death that passed %b
+them back and forth between the worlds abhorred %b
+a needless conversation, till at last %b
+Carne returned and brought a broken deer %b
+he'd ran exhausted off a nearby cliff. %b
+They cooked it on the coals until it seared %b
+a heavy black, took turns to sleep in shifts, %b
+while all the while the world around them went to drift.
+%p
