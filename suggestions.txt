@@ -1,5 +1,6 @@
 Me:
 - Fill out Kirin's empty house a bit
+- Item types in inventory
 - Mountains on world map
 - Dungeons should check for shop before generating trap.
 - Beer halls in villages
