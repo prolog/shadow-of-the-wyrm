@@ -386,7 +386,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   CreatureSex sex = CreatureSex::CREATURE_SEX_MALE;
     
   const DeityMap& deities = game.get_deities_cref();
-  RaceMap  races   = game.get_races_ref();
+  const RaceMap& races   = game.get_races_ref();
   ClassMap classes = game.get_classes_ref();
   
   Option opt;
@@ -418,7 +418,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   }
 
   string default_race_id = game.get_settings_ref().get_setting(Setting::DEFAULT_RACE_ID);
-  const auto r_it = races.find(default_race_id);
+  auto& r_it = races.find(default_race_id);
   bool prompt_user_for_race_selection = true;
   string selected_race_id;
 
@@ -498,7 +498,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
   }
 
-  RacePtr selected_race = races[selected_race_id];
+  RacePtr selected_race = races.find(selected_race_id)->second;
   ClassPtr selected_class = classes[selected_class_id];
 
   string default_deity_id = game.get_settings_ref().get_setting(Setting::DEFAULT_DEITY_ID);
@@ -586,7 +586,7 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
 {
   Game& game = Game::instance();
 
-  RaceMap  races = game.get_races_ref();
+  const RaceMap& races = game.get_races_ref();
   ClassMap classes = game.get_classes_ref();
   const DeityMap& deities = game.get_deities_cref();
 

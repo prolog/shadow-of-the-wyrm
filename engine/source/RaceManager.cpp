@@ -13,8 +13,8 @@ RacePtr RaceManager::get_race(const string& race_id)
 {
   RacePtr race;
   Game& game = Game::instance();
-  RaceMap races = game.get_races_ref();
-  RaceMap::iterator r_it = races.find(race_id);
+  const RaceMap& races = game.get_races_ref();
+  auto& r_it = races.find(race_id);
     
   if (r_it != races.end())
   {
@@ -34,9 +34,9 @@ bool RaceManager::is_race_or_descendent(const string& race_id, const string& rac
   string current_race_id;
 
   Game& game = Game::instance();
-  RaceMap races = game.get_races_ref();
+  const RaceMap& races = game.get_races_ref();
 
-  RaceMap::iterator r_it = races.find(race_id);
+  auto& r_it = races.find(race_id);
     
   if (r_it != races.end())
   {
@@ -79,11 +79,11 @@ map<string, DropParameters> RaceManager::get_all_drops(const string& race_id)
   map<string, DropParameters> drops;
 
   Game& game = Game::instance();
-  RaceMap races = game.get_races_ref();
+  const RaceMap& races = game.get_races_ref();
   RacePtr current_race;
   string current_race_id, parent_race_id;
 
-  RaceMap::iterator r_it = races.find(race_id);
+  auto& r_it = races.find(race_id);
 
   if (r_it != races.end())
   {

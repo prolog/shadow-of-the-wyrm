@@ -137,7 +137,7 @@ void   initialize_settings();
 void   print_skill_name();
 void   race_info();
 void   class_info();
-void   print_race_info(RaceMap& race_map, const std::string& id);
+void   print_race_info(const RaceMap& race_map, const std::string& id);
 void   print_class_info(ClassMap& class_map, const std::string& id);
 
 void initialize_settings()
@@ -627,9 +627,9 @@ std::string generate_world()
   return map_to_string(map);
 }
 
-void print_race_info(RaceMap& race_map, const std::string& id)
+void print_race_info(const RaceMap& race_map, const std::string& id)
 {
-  RacePtr race = race_map[id];
+  RacePtr race = race_map.find(id)->second;
 
   if (race)
   {

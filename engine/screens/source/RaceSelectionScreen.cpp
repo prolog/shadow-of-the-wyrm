@@ -21,7 +21,7 @@ RaceSelectionScreen::RaceSelectionScreen(DisplayPtr new_display, const string& s
 void RaceSelectionScreen::initialize()
 {
   Game& game_instance = Game::instance();
-  RaceMap races = game_instance.get_races_ref();
+  const RaceMap& races = game_instance.get_races_ref();
   ostringstream synop;
 
   vector<ScreenComponentPtr> race_screen;
@@ -39,7 +39,7 @@ void RaceSelectionScreen::initialize()
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
   int current_id = 0;
-  for (RaceMap::iterator races_it = races.begin(); races_it != races.end(); races_it++)
+  for (auto& races_it = races.begin(); races_it != races.end(); races_it++)
   {
     string race_id = races_it->first;
     RacePtr current_race = races_it->second;

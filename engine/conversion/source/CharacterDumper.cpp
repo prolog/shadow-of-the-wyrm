@@ -19,6 +19,7 @@
 #include "MessageManagerFactory.hpp"
 #include "MortuaryDumper.hpp"
 #include "QuestDumper.hpp"
+#include "RaceManager.hpp"
 #include "ReligionManager.hpp"
 #include "ResistancesDumper.hpp"
 #include "SizeTextKeys.hpp"
@@ -116,12 +117,12 @@ string CharacterDumper::get_synopsis() const
   ostringstream ss;
   Game& game = Game::instance();
   
-  RaceMap races = game.get_races_ref();
   ClassMap classes = game.get_classes_ref();
   string race_id = creature->get_race_id();
   string class_id = creature->get_class_id();
-    
-  RacePtr race = races[race_id];
+
+  RaceManager rm;
+  RacePtr race = rm.get_race(race_id);
   ClassPtr char_class = classes[class_id];
     
   if (race && char_class)

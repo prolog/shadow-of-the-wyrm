@@ -12,6 +12,7 @@
 #include "LineOfSightCalculator.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ModifyStatisticsEffect.hpp"
+#include "RaceManager.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
 #include "SpellAdditionalProperties.hpp"
@@ -82,10 +83,10 @@ string CreatureUtils::get_race_class_synopsis(CreaturePtr c)
 
   string race_id = c->get_race_id();
   string class_id = c->get_class_id();
-  RaceMap races = game.get_races_ref();
   ClassMap classes = game.get_classes_ref();
 
-  RacePtr race = races[race_id];
+  RaceManager rm;
+  RacePtr race = rm.get_race(race_id);
   ClassPtr current_class = classes[class_id];
 
   if (race && current_class)
@@ -383,7 +384,7 @@ pair<bool, string> CreatureUtils::can_pick_up(CreaturePtr c, ItemPtr i)
 RacePtr CreatureUtils::get_random_user_playable_race()
 {
   Game& game = Game::instance();
-  RaceMap  races = game.get_races_ref();
+  const RaceMap& races = game.get_races_ref();
   vector<RacePtr> playable_races;
   RacePtr race;
 

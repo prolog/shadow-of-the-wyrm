@@ -1,22 +1,23 @@
 #include <vector>
 #include "AlignmentEnums.hpp"
 #include "CastleGenerator.hpp"
-#include "CoordUtils.hpp"
+#include "CellularAutomataGenerator.hpp"
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "CreatureGenerationConstants.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "CreatureGenerationOptionsStringBuilder.hpp"
 #include "DungeonGenerator.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
-#include "WorldGenerator.hpp"
-#include "TileGenerator.hpp"
-#include "RNG.hpp"
-#include "CellularAutomataGenerator.hpp"
 #include "MapProperties.hpp"
+#include "RaceManager.hpp"
+#include "RNG.hpp"
 #include "Serialize.hpp"
+#include "TileGenerator.hpp"
 #include "TileTextKeys.hpp"
 #include "VillageTile.hpp"
+#include "WorldGenerator.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
@@ -452,9 +453,9 @@ void WorldGenerator::populate_race_information()
 {
   Game& game = Game::instance();
   
-  RaceMap races = game.get_races_ref();
+  const RaceMap& races = game.get_races_ref();
     
-  for (RaceMap::const_iterator r_it = races.begin(); r_it != races.end(); r_it++)
+  for (auto& r_it = races.begin(); r_it != races.end(); r_it++)
   {
     string current_race_id = r_it->first;
     RacePtr race = r_it->second;
@@ -473,8 +474,8 @@ void WorldGenerator::set_village_races(MapPtr map)
 //  int total_villages = village_coordinates.size();
 
   Game& game = Game::instance();
-  
-  RaceMap races = game.get_races_ref();
+  const RaceMap& races = game.get_races_ref();
+  RaceManager rm;
 
   for (const Coordinate& c : village_coordinates)
   {
@@ -492,7 +493,7 @@ void WorldGenerator::set_village_races(MapPtr map)
         if (count == rand_race_id_idx)
         {
           string race_id = *race_id_it;
-          RacePtr race = races[race_id];
+          RacePtr race = rm.get_race(race_id);
              
           // The population of the initial_race_ids set takes into consideration
           // that races must be user-playable (no bat villages!) and must allow
@@ -533,11 +534,12 @@ void WorldGenerator::set_village_races(MapPtr map)
 
       int rand_race_idx = RNG::range(0, playable_race_ids.size()-1);
       string race_id = playable_race_ids.at(rand_race_idx);
+      RacePtr race = rm.get_race(race_id);
 
-      if (village_tile != nullptr)
+      if (village_tile != nullptr && race != nullptr)
       {
         village_tile->set_village_race_id(race_id);
-        village_tile->set_tile_subtype(races[race_id]->get_settlement_tile_subtype());
+        village_tile->set_tile_subtype(race->get_settlement_tile_subtype());
       }
       else
       {

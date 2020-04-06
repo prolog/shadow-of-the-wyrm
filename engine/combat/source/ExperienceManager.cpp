@@ -146,8 +146,8 @@ uint ExperienceManager::get_total_experience_needed_for_lvl_idx(CreaturePtr crea
 
     if (!race_id.empty())
     {
-      RaceMap races = game.get_races_ref();
-      RacePtr race = races[race_id];
+      RaceManager rm;
+      RacePtr race = rm.get_race(race_id);
       race_multiplier = race->get_experience_multiplier();
     }
       

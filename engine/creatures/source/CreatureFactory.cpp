@@ -16,6 +16,7 @@
 #include "ModifyStatisticsEffect.hpp"
 #include "NullKeyboardController.hpp"
 #include "PlayerTextKeys.hpp"
+#include "RaceManager.hpp"
 #include "ReligionFactory.hpp"
 #include "ResistancesCalculator.hpp"
 #include "RNG.hpp"
@@ -245,10 +246,10 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   Game& game = Game::instance();
 
   const DeityMap& deities = game.get_deities_cref();
-  RaceMap races = game.get_races_ref();
   ClassMap classes = game.get_classes_ref();
 
-  RacePtr race = races[race_id];
+  RaceManager rm;
+  RacePtr race = rm.get_race(race_id);
   ClassPtr char_class = classes[class_id];
   
   Deity* deity = nullptr;
