@@ -351,7 +351,7 @@ bool ShadowOfTheWyrmEngine::process_new_game_random()
   Race* race = CreatureUtils::get_random_user_playable_race();
 
   // Random playable class id
-  ClassPtr cur_class = CreatureUtils::get_random_user_playable_class();
+  Class* cur_class = CreatureUtils::get_random_user_playable_class();
 
   // Random allowable deity
   Deity* deity = CreatureUtils::get_random_deity_for_race(race);
@@ -464,7 +464,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   if (c_it != classes.end())
   {
-    ClassPtr cur_class = c_it->second;
+    Class* cur_class = c_it->second.get();
 
     if (cur_class && cur_class->get_user_playable())
     {
@@ -484,7 +484,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
     if (opt.is_random_option(class_index.at(0)))
     {
-      ClassPtr cur_class = CreatureUtils::get_random_user_playable_class();
+      Class* cur_class = CreatureUtils::get_random_user_playable_class();
 
       if (cur_class != nullptr)
       {
@@ -499,7 +499,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   }
 
   Race* selected_race = races.find(selected_race_id)->second.get();
-  ClassPtr selected_class = classes.find(selected_class_id)->second;
+  Class* selected_class = classes.find(selected_class_id)->second.get();
 
   string default_deity_id = game.get_settings_ref().get_setting(Setting::DEFAULT_DEITY_ID);
   bool prompt_user_for_deity_selection = true;
@@ -591,7 +591,7 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
   const DeityMap& deities = game.get_deities_cref();
 
   Race* selected_race = races.at(ccd.get_race_id()).get();
-  ClassPtr selected_class = classes.at(ccd.get_class_id());
+  Class* selected_class = classes.at(ccd.get_class_id()).get();
   Deity* deity = deities.at(ccd.get_deity_id()).get();
   string name;
 

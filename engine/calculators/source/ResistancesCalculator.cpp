@@ -17,7 +17,7 @@ Resistances ResistancesCalculator::default_resistances()
   return resists;
 }
 
-Resistances ResistancesCalculator::calculate_resistances(CreaturePtr creature, Race* race, ClassPtr cur_class)
+Resistances ResistancesCalculator::calculate_resistances(CreaturePtr creature, Race* race, Class* cur_class)
 {
   Resistances resists_calculated;
   Resistances resists_eq = calculate_equipment_resistances(creature);
@@ -49,7 +49,7 @@ Resistances ResistancesCalculator::calculate_resistances(CreaturePtr creature, R
 }
 
 // Calculate the creature's combined race, class, and intrinsic resistances.
-Resistances ResistancesCalculator::calculate_non_equipment_resistances(CreaturePtr creature, Race* race, ClassPtr cur_class)
+Resistances ResistancesCalculator::calculate_non_equipment_resistances(CreaturePtr creature, Race* race, Class* cur_class)
 {
   Resistances res;
   res.set_all_resistances_to(0);

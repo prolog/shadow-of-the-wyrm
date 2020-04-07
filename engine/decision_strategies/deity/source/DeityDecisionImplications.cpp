@@ -29,7 +29,7 @@ int DeityDecisionImplications::adjust_creature_piety(CreaturePtr creature, Featu
   string deity_id = religion.get_active_deity_id();
   DeityStatus status = religion.get_deity_status(deity_id);
 
-  ClassPtr cur_class = cm.get_class(creature->get_class_id());
+  Class* cur_class = cm.get_class(creature->get_class_id());
 
   status.increment_piety(piety_gain);
   religion.set_deity_status(deity_id, status);

@@ -123,7 +123,7 @@ string CharacterDumper::get_synopsis() const
   ClassManager cm;
   RaceManager rm;
   Race* race = rm.get_race(race_id);
-  ClassPtr char_class = cm.get_class(class_id);
+  Class* char_class = cm.get_class(class_id);
     
   if (race && char_class)
   {

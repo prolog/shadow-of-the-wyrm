@@ -865,7 +865,7 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
       if (attacking_creature != nullptr)
       {
         ClassManager cm;
-        ClassPtr cr_class = cm.get_class(attacking_creature->get_class_id());
+        Class* cr_class = cm.get_class(attacking_creature->get_class_id());
 
         if (cr_class != nullptr)
         {

@@ -19,7 +19,7 @@ ClassSelectionScreen::ClassSelectionScreen(DisplayPtr new_display, const string&
 // instance at this point.
 //
 // The Screen will return an int based on the user's selection.  This will map to a race_id, which will then map to a
-// ClassPtr
+// Class*
 void ClassSelectionScreen::initialize()
 {
   Game& game_instance = Game::instance();
@@ -40,7 +40,7 @@ void ClassSelectionScreen::initialize()
   for (auto& classes_it = classes.begin(); classes_it != classes.end(); classes_it++)
   {
     string class_id = classes_it->first;
-    ClassPtr current_class = classes_it->second;
+    Class* current_class = classes_it->second.get();
 
     if (current_class && current_class->get_user_playable() && options)
     {

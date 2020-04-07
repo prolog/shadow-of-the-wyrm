@@ -31,7 +31,7 @@ ActionCostValue ExperienceAction::experience(CreaturePtr creature) const
     string race_name = StringTable::get(race->get_race_name_sid());
     float race_multiplier = race->get_experience_multiplier();
 
-    ClassPtr cls = cm.get_class(creature->get_class_id());
+    Class* cls = cm.get_class(creature->get_class_id());
     string class_name = StringTable::get(cls->get_class_name_sid());
     float class_multiplier = cls->get_experience_multiplier();
 

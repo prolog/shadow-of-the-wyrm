@@ -88,7 +88,7 @@ string CreatureUtils::get_race_class_synopsis(CreaturePtr c)
   RaceManager rm;
   ClassManager cm;
   Race* race = rm.get_race(race_id);
-  ClassPtr current_class = cm.get_class(class_id);
+  Class* current_class = cm.get_class(class_id);
 
   if (race && current_class)
   {
@@ -407,16 +407,16 @@ Race* CreatureUtils::get_random_user_playable_race()
   return race;
 }
 
-ClassPtr CreatureUtils::get_random_user_playable_class()
+Class* CreatureUtils::get_random_user_playable_class()
 {
   Game& game = Game::instance();
   const ClassMap& classes = game.get_classes_ref();
-  vector<ClassPtr> playable_classes;
-  ClassPtr cur_class;
+  vector<Class*> playable_classes;
+  Class* cur_class;
 
   for (const auto& class_pair : classes)
   {
-    ClassPtr cur_class = class_pair.second;
+    Class* cur_class = class_pair.second.get();
 
     if (cur_class && cur_class->get_user_playable())
     {

@@ -128,7 +128,7 @@ void PrayerAction::finish_prayer(CreaturePtr creature, const DeityDecisionImplic
   string deity_id = religion.get_active_deity_id();
   DeityStatus status = religion.get_deity_status(deity_id);
 
-  ClassPtr cur_class = cm.get_class(creature->get_class_id());
+  Class* cur_class = cm.get_class(creature->get_class_id());
   float piety_cost_multiplier = cur_class->get_piety_cost_multiplier();
   int piety_cost = static_cast<int>(piety_loss * piety_cost_multiplier);
   int initial_piety = status.get_piety();

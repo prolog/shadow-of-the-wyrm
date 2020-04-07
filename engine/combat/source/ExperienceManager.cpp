@@ -153,8 +153,8 @@ uint ExperienceManager::get_total_experience_needed_for_lvl_idx(CreaturePtr crea
       
     if (!class_id.empty())
     {
-      const ClassMap& classes = game.get_classes_ref();
-      ClassPtr cur_class = classes.find(class_id)->second;
+      ClassManager cm;
+      Class* cur_class = cm.get_class(class_id);
       class_multiplier = cur_class->get_experience_multiplier();
     }
       
@@ -253,8 +253,8 @@ void ExperienceManager::gain_hp_and_ap(CreaturePtr creature)
     
     if (!class_id.empty())
     {
-      const ClassMap& class_map = game.get_classes_ref();
-      ClassPtr current_class = class_map.find(class_id)->second;
+      ClassManager cm;
+      Class* current_class = cm.get_class(class_id);
       
       hit_dice = current_class->get_hit_dice();
       ap_dice = current_class->get_ap_dice();
@@ -299,7 +299,7 @@ void ExperienceManager::run_level_script(CreaturePtr creature)
     ClassManager cm;
     RaceManager rm;
     Race* racep = rm.get_race(race_id);
-    ClassPtr classp = cm.get_class(class_id);
+    Class* classp = cm.get_class(class_id);
 
     if (racep && classp)
     {

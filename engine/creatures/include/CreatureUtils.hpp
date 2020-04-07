@@ -21,7 +21,7 @@ class CreatureUtils
     static void add_hunger_level_message_if_necessary(CreaturePtr c, const int old_hunger, const int new_hunger);
 
     static Race* get_random_user_playable_race();
-    static ClassPtr get_random_user_playable_class();
+    static Class* get_random_user_playable_class();
     static Deity* get_random_deity_for_race(Race* race);
 
     // Check to see if the given creature is either the player, or exists

@@ -644,7 +644,7 @@ void print_race_info(const RaceMap& race_map, const std::string& id)
 
 void print_class_info(ClassMap& class_map, const std::string& id)
 {
-  ClassPtr current_class = class_map[id];
+  Class* current_class = class_map[id].get();
 
   if (current_class)
   {

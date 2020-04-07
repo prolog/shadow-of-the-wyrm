@@ -84,7 +84,7 @@ void DeityActionManager::handle_displeasing_action(CreaturePtr creature, Deity* 
     int original_piety = status.get_piety();
 
     ClassManager cm;
-    ClassPtr cr_class = cm.get_class(creature->get_class_id());
+    Class* cr_class = cm.get_class(creature->get_class_id());
     map<string, float> ddm = cr_class->get_deity_dislike_multipliers();
     auto d_it = ddm.find(action);
     float multiplier = 1.0f;

@@ -140,7 +140,7 @@ vector<string> CrowningDeityDecisionStrategyHandler::select_crowning_gifts(Creat
     if (RNG::percent_chance(deity->get_pct_chance_class_crowning()))
     {
       ClassManager cm;
-      ClassPtr cur_class = cm.get_class(creature->get_class_id());
+      Class* cur_class = cm.get_class(creature->get_class_id());
 
       if (cur_class != nullptr)
       {

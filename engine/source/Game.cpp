@@ -227,7 +227,13 @@ const RaceMap& Game::get_races_ref() const
 
 void Game::set_classes(const ClassMap& game_classes)
 {
-  classes = game_classes;
+  classes.clear();
+
+  for (const auto& cl_it : game_classes)
+  {
+    ClassPtr cur_class = std::make_unique<Class>(*cl_it.second);
+    classes.insert(make_pair(cl_it.first, std::move(cur_class)));
+  }
 }
 
 const ClassMap& Game::get_classes_ref() const
