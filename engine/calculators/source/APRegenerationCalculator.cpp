@@ -42,7 +42,7 @@ int APRegenerationCalculator::calculate_ap_per_tick(CreaturePtr creature)
     RaceManager rm;
     ClassManager cm;
 
-    RacePtr race = rm.get_race(creature->get_race_id());
+    Race* race = rm.get_race(creature->get_race_id());
     ClassPtr cr_class = cm.get_class(creature->get_class_id());
 
     if (race != nullptr)

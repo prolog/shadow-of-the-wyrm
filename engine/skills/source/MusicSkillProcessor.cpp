@@ -183,7 +183,7 @@ void MusicSkillProcessor::attempt_pacification(ItemPtr instr, CreaturePtr creatu
       fov_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_PACIFIED, to_string(true));
 
       RaceManager rm;
-      RacePtr race = rm.get_race(fov_creature->get_race_id());
+      Race* race = rm.get_race(fov_creature->get_race_id());
 
       if (race != nullptr)
       {

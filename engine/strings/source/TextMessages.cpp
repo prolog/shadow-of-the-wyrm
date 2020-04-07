@@ -575,7 +575,7 @@ string TextMessages::get_bool_sid(const bool val)
   }
 }
 
-string TextMessages::get_character_creation_synopsis(const CreatureSex cs, RacePtr race, ClassPtr cur_class, Deity* cur_deity)
+string TextMessages::get_character_creation_synopsis(const CreatureSex cs, Race* race, ClassPtr cur_class, Deity* cur_deity)
 {
   vector<string> details;
 

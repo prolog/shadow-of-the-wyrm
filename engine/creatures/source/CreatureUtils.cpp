@@ -86,7 +86,7 @@ string CreatureUtils::get_race_class_synopsis(CreaturePtr c)
   ClassMap classes = game.get_classes_ref();
 
   RaceManager rm;
-  RacePtr race = rm.get_race(race_id);
+  Race* race = rm.get_race(race_id);
   ClassPtr current_class = classes[class_id];
 
   if (race && current_class)
@@ -381,16 +381,16 @@ pair<bool, string> CreatureUtils::can_pick_up(CreaturePtr c, ItemPtr i)
   return can_pu;
 }
 
-RacePtr CreatureUtils::get_random_user_playable_race()
+Race* CreatureUtils::get_random_user_playable_race()
 {
   Game& game = Game::instance();
   const RaceMap& races = game.get_races_ref();
-  vector<RacePtr> playable_races;
-  RacePtr race;
+  vector<Race*> playable_races;
+  Race* race;
 
   for (const auto& race_pair : races)
   {
-    RacePtr race = race_pair.second;
+    Race* race = race_pair.second.get();
 
     if (race && race->get_user_playable())
     {
@@ -431,7 +431,7 @@ ClassPtr CreatureUtils::get_random_user_playable_class()
   return cur_class;
 }
 
-Deity* CreatureUtils::get_random_deity_for_race(RacePtr race)
+Deity* CreatureUtils::get_random_deity_for_race(Race* race)
 {
   Game& game = Game::instance();
   vector<string> allowable_deity_ids;

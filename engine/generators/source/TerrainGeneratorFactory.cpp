@@ -121,7 +121,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       {
         RaceManager rm;
         string race_id = village_tile->get_village_race_id();
-        RacePtr race = rm.get_race(race_id);
+        Race* race = rm.get_race(race_id);
         
         if (race)
         {

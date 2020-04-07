@@ -147,7 +147,7 @@ uint ExperienceManager::get_total_experience_needed_for_lvl_idx(CreaturePtr crea
     if (!race_id.empty())
     {
       RaceManager rm;
-      RacePtr race = rm.get_race(race_id);
+      Race* race = rm.get_race(race_id);
       race_multiplier = race->get_experience_multiplier();
     }
       
@@ -280,7 +280,7 @@ void ExperienceManager::gain_statistics(CreaturePtr creature)
   if (creature)
   {
     RaceManager rm;
-    RacePtr race = rm.get_race(creature->get_race_id());
+    Race* race = rm.get_race(creature->get_race_id());
 
     if (race != nullptr)
     {
@@ -298,7 +298,7 @@ void ExperienceManager::run_level_script(CreaturePtr creature)
     string class_id = creature->get_class_id();
     ClassManager cm;
     RaceManager rm;
-    RacePtr racep = rm.get_race(race_id);
+    Race* racep = rm.get_race(race_id);
     ClassPtr classp = cm.get_class(class_id);
 
     if (racep && classp)

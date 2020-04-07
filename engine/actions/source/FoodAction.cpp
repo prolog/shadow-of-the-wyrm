@@ -154,7 +154,7 @@ bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInv
       if (!corpse_race_id.empty())
       {
         RaceManager rm;
-        RacePtr corpse_race = rm.get_race(corpse_race_id);
+        Race* corpse_race = rm.get_race(corpse_race_id);
 
         if (corpse_race != nullptr)
         {

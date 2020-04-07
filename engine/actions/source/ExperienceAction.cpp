@@ -27,7 +27,7 @@ ActionCostValue ExperienceAction::experience(CreaturePtr creature) const
     uint experience_needed = em.get_current_experience_needed_for_level(creature, static_cast<uint>(level+1));
     int next_level = level + 1;
 
-    RacePtr race = rm.get_race(creature->get_race_id());
+    Race* race = rm.get_race(creature->get_race_id());
     string race_name = StringTable::get(race->get_race_name_sid());
     float race_multiplier = race->get_experience_multiplier();
 

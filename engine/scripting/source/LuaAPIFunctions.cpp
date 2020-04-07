@@ -5858,7 +5858,7 @@ int get_race_ids(lua_State* ls)
 
     for (const auto& race_pair : rm)
     {
-      RacePtr race = race_pair.second;
+      Race* race = race_pair.second.get();
 
       if (race != nullptr && 
           !race_pair.first.empty() && 
@@ -5968,7 +5968,7 @@ int get_race_name(lua_State* ls)
   {
     string race_id = lua_tostring(ls, 1);
     RaceManager rm;
-    RacePtr race = rm.get_race(race_id);
+    Race* race = rm.get_race(race_id);
 
     if (race != nullptr)
     {

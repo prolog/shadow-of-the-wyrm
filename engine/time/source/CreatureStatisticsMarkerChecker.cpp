@@ -67,7 +67,7 @@ void CreatureStatisticsMarkerChecker::check_health_conditions(CreaturePtr creatu
   {
     HungerLevel hl = HungerLevelConverter::to_hunger_level(creature->get_hunger_clock().get_hunger());
     RaceManager rm;
-    RacePtr race = rm.get_race(creature->get_race_id());
+    Race* race = rm.get_race(creature->get_race_id());
   
     // Ensure that hungerless races like the fae don't easily max out Health 
     // simply by existing.  Hungerless races can still increase health over

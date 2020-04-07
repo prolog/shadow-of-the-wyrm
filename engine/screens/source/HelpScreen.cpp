@@ -11,10 +11,6 @@ HelpScreen::HelpScreen(DisplayPtr new_display)
   initialize();
 }
 
-// Initialize the deity selection screen.  Deities must have been
-// read in, and set into the Game object by this point.  As well,
-// a valid RacePtr must have been provided to the constructor, so
-// that we know what deities can be selected.
 void HelpScreen::initialize()
 {
   title_text_sid = ScreenTitleTextKeys::SCREEN_TITLE_HELP;

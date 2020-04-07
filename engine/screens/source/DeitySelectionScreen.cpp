@@ -7,7 +7,7 @@
 
 using namespace std;
 
-DeitySelectionScreen::DeitySelectionScreen(DisplayPtr new_display, RacePtr selected_race, const string& synop)
+DeitySelectionScreen::DeitySelectionScreen(DisplayPtr new_display, Race* selected_race, const string& synop)
 : Screen(new_display), race(selected_race), creature_synopsis(synop)
 {
   initialize();
@@ -15,7 +15,7 @@ DeitySelectionScreen::DeitySelectionScreen(DisplayPtr new_display, RacePtr selec
 
 // Initialize the deity selection screen.  Deities must have been
 // read in, and set into the Game object by this point.  As well,
-// a valid RacePtr must have been provided to the constructor, so
+// a valid Race* must have been provided to the constructor, so
 // that we know what deities can be selected.
 void DeitySelectionScreen::initialize()
 {

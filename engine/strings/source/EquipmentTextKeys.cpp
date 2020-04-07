@@ -195,7 +195,7 @@ string EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(const 
         }
         else
         {
-          RacePtr slay_race = rm.get_race(slay_race_id);
+          Race* slay_race = rm.get_race(slay_race_id);
           
           if (slay_race != nullptr)
           {

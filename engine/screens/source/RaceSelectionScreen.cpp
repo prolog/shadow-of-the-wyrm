@@ -17,7 +17,7 @@ RaceSelectionScreen::RaceSelectionScreen(DisplayPtr new_display, const string& s
 // instance at this point.
 //
 // The Screen will return an int based on the user's selection.  This will map to a race_id, which will then map to a
-// RacePtr.
+// Race*.
 void RaceSelectionScreen::initialize()
 {
   Game& game_instance = Game::instance();
@@ -42,7 +42,7 @@ void RaceSelectionScreen::initialize()
   for (auto& races_it = races.begin(); races_it != races.end(); races_it++)
   {
     string race_id = races_it->first;
-    RacePtr current_race = races_it->second;
+    Race* current_race = races_it->second.get();
 
     if (current_race && current_race->get_user_playable() && options)
     {

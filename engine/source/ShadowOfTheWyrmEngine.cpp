@@ -348,7 +348,7 @@ bool ShadowOfTheWyrmEngine::process_new_game_random()
   }
 
   // Random playable race id
-  RacePtr race = CreatureUtils::get_random_user_playable_race();
+  Race* race = CreatureUtils::get_random_user_playable_race();
 
   // Random playable class id
   ClassPtr cur_class = CreatureUtils::get_random_user_playable_class();
@@ -424,7 +424,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   if (r_it != races.end())
   {
-    RacePtr race = r_it->second;
+    Race* race = r_it->second.get();
 
     if (race && race->get_user_playable())
     {
@@ -443,7 +443,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
     if (opt.is_random_option(race_index.at(0)))
     {
-      RacePtr random_race = CreatureUtils::get_random_user_playable_race();
+      Race* random_race = CreatureUtils::get_random_user_playable_race();
 
       if (random_race != nullptr)
       {
@@ -476,7 +476,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   if (prompt_user_for_class_selection)
   {
     RaceManager rm;
-    RacePtr sel_race = rm.get_race(selected_race_id);
+    Race* sel_race = rm.get_race(selected_race_id);
     creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, nullptr, nullptr);
     
     ClassSelectionScreen class_selection(display, creature_synopsis);
@@ -498,7 +498,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
   }
 
-  RacePtr selected_race = races.find(selected_race_id)->second;
+  Race* selected_race = races.find(selected_race_id)->second.get();
   ClassPtr selected_class = classes[selected_class_id];
 
   string default_deity_id = game.get_settings_ref().get_setting(Setting::DEFAULT_DEITY_ID);
@@ -590,7 +590,7 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
   ClassMap classes = game.get_classes_ref();
   const DeityMap& deities = game.get_deities_cref();
 
-  RacePtr selected_race = races.at(ccd.get_race_id());
+  Race* selected_race = races.at(ccd.get_race_id()).get();
   ClassPtr selected_class = classes.at(ccd.get_class_id());
   Deity* deity = deities.at(ccd.get_deity_id()).get();
   string name;

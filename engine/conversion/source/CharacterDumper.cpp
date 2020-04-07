@@ -122,7 +122,7 @@ string CharacterDumper::get_synopsis() const
   string class_id = creature->get_class_id();
 
   RaceManager rm;
-  RacePtr race = rm.get_race(race_id);
+  Race* race = rm.get_race(race_id);
   ClassPtr char_class = classes[class_id];
     
   if (race && char_class)

@@ -629,7 +629,7 @@ std::string generate_world()
 
 void print_race_info(const RaceMap& race_map, const std::string& id)
 {
-  RacePtr race = race_map.find(id)->second;
+  Race* race = race_map.find(id)->second.get();
 
   if (race)
   {

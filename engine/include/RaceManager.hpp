@@ -6,7 +6,7 @@ class RaceManager
   public:
     RaceManager();
 
-    RacePtr get_race(const std::string& race_id);
+    Race* get_race(const std::string& race_id);
 
     // Returns true if race_id = race_to_match, or if the race identified
     // by race_id is a descendent in the race hierarchy of the race represented

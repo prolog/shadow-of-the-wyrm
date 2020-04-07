@@ -45,8 +45,7 @@ ItemPtr CorpseFactory::create_corpse(CreaturePtr attacking_creature, CreaturePtr
     if (!dead_creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
     {
       RaceManager rm;
-
-      RacePtr race = rm.get_race(dead_creature->get_race_id());
+      Race* race = rm.get_race(dead_creature->get_race_id());
 
       if (race && race->get_corporeal().get_current())
       {

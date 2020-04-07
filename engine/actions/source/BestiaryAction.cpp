@@ -189,7 +189,7 @@ void BestiaryAction::display_race_information(vector<pair<Colour, string>>& best
         for (size_t i = 0; i < race_id_sz; i++)
         {
           string cur_race_id = race_ids.at(i);
-          RacePtr race = rm.get_race(cur_race_id);
+          Race* race = rm.get_race(cur_race_id);
 
           if (race != nullptr)
           {

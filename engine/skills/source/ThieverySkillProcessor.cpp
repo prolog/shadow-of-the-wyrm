@@ -231,7 +231,7 @@ bool ThieverySkillProcessor::is_already_stolen_from(CreaturePtr stealing_creatur
 bool ThieverySkillProcessor::has_pockets(CreaturePtr stealing_creature, CreaturePtr steal_creature, IMessageManager& pl_manager)
 {
   RaceManager rm;
-  RacePtr steal_race = rm.get_race(steal_creature->get_race_id());
+  Race* steal_race = rm.get_race(steal_creature->get_race_id());
 
   bool has_pockets = (steal_race && steal_race->get_has_pockets());
   CreatureDescriber cd(stealing_creature, steal_creature, true);

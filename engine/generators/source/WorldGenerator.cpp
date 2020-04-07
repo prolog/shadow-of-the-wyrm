@@ -458,7 +458,7 @@ void WorldGenerator::populate_race_information()
   for (auto& r_it = races.begin(); r_it != races.end(); r_it++)
   {
     string current_race_id = r_it->first;
-    RacePtr race = r_it->second;
+    Race* race = r_it->second.get();
       
     if (race && race->get_user_playable() && race->get_has_random_villages() && !current_race_id.empty())
     {
@@ -493,7 +493,7 @@ void WorldGenerator::set_village_races(MapPtr map)
         if (count == rand_race_id_idx)
         {
           string race_id = *race_id_it;
-          RacePtr race = rm.get_race(race_id);
+          Race* race = rm.get_race(race_id);
              
           // The population of the initial_race_ids set takes into consideration
           // that races must be user-playable (no bat villages!) and must allow
@@ -534,7 +534,7 @@ void WorldGenerator::set_village_races(MapPtr map)
 
       int rand_race_idx = RNG::range(0, playable_race_ids.size()-1);
       string race_id = playable_race_ids.at(rand_race_idx);
-      RacePtr race = rm.get_race(race_id);
+      Race* race = rm.get_race(race_id);
 
       if (village_tile != nullptr && race != nullptr)
       {
@@ -620,8 +620,9 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
   Dimensions dim = map->size();
   Game& game = Game::instance();
   
-  RaceMap races = game.get_races_ref();
+  const RaceMap& races = game.get_races_ref();
   const DeityMap& deities = game.get_deities_cref();
+  RaceManager rm;
     
   for (const Coordinate& c : village_coordinates)
   {
@@ -660,7 +661,7 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
 
             if (!race_id.empty())
             {
-              vector<string> initial_deity_ids = races[race_id]->get_initial_deity_ids();
+              vector<string> initial_deity_ids = rm.get_race(race_id)->get_initial_deity_ids();
               int deity_id_idx = RNG::range(0, initial_deity_ids.size() - 1);
               string deity_id = initial_deity_ids[deity_id_idx];
               Deity* deity = nullptr;

@@ -85,11 +85,11 @@ class Integer
 
       if (!map.empty())
       {
-        typename std::map<std::string, T>::const_iterator map_it = map.begin();
+        auto& map_it = map.begin();
 
         while (map_it != map.end() && cur <= pos)
         {
-          auto second_val = map_it->second;
+          auto& second_val = map_it->second;
 
           if (second_val->get_user_playable())
           {

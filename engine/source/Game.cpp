@@ -211,7 +211,13 @@ const DeityMap& Game::get_deities_cref() const
 
 void Game::set_races(const RaceMap& game_races)
 {
-  races = game_races;
+  races.clear();
+
+  for (const auto& r_it : game_races)
+  {
+    RacePtr race = std::make_unique<Race>(*r_it.second);
+    races.insert(make_pair(r_it.first, std::move(race)));
+  }
 }
 
 const RaceMap& Game::get_races_ref() const
