@@ -387,7 +387,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     
   const DeityMap& deities = game.get_deities_cref();
   const RaceMap& races   = game.get_races_ref();
-  ClassMap classes = game.get_classes_ref();
+  const ClassMap& classes = game.get_classes_ref();
   
   Option opt;
 
@@ -458,7 +458,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   }
 
   string default_class_id = game.get_settings_ref().get_setting(Setting::DEFAULT_CLASS_ID);
-  const auto c_it = classes.find(default_class_id);
+  const auto& c_it = classes.find(default_class_id);
   bool prompt_user_for_class_selection = true;
   string selected_class_id;
 
@@ -499,7 +499,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   }
 
   Race* selected_race = races.find(selected_race_id)->second.get();
-  ClassPtr selected_class = classes[selected_class_id];
+  ClassPtr selected_class = classes.find(selected_class_id)->second;
 
   string default_deity_id = game.get_settings_ref().get_setting(Setting::DEFAULT_DEITY_ID);
   bool prompt_user_for_deity_selection = true;
@@ -587,7 +587,7 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
   Game& game = Game::instance();
 
   const RaceMap& races = game.get_races_ref();
-  ClassMap classes = game.get_classes_ref();
+  const ClassMap& classes = game.get_classes_ref();
   const DeityMap& deities = game.get_deities_cref();
 
   Race* selected_race = races.at(ccd.get_race_id()).get();

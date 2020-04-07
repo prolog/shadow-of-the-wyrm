@@ -23,7 +23,7 @@ ClassSelectionScreen::ClassSelectionScreen(DisplayPtr new_display, const string&
 void ClassSelectionScreen::initialize()
 {
   Game& game_instance = Game::instance();
-  ClassMap classes = game_instance.get_classes_ref();
+  const ClassMap& classes = game_instance.get_classes_ref();
   ostringstream synop;
 
   if (!creature_synopsis.empty())
@@ -37,7 +37,7 @@ void ClassSelectionScreen::initialize()
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
   int current_id = 0;
-  for (ClassMap::iterator classes_it = classes.begin(); classes_it != classes.end(); classes_it++)
+  for (auto& classes_it = classes.begin(); classes_it != classes.end(); classes_it++)
   {
     string class_id = classes_it->first;
     ClassPtr current_class = classes_it->second;

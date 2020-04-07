@@ -2,6 +2,7 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include "ArcanaPointsCalculator.hpp"
+#include "ClassManager.hpp"
 #include "Conversion.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureFactory.hpp"
@@ -246,11 +247,11 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   Game& game = Game::instance();
 
   const DeityMap& deities = game.get_deities_cref();
-  ClassMap classes = game.get_classes_ref();
 
   RaceManager rm;
+  ClassManager cm;
   Race* race = rm.get_race(race_id);
-  ClassPtr char_class = classes[class_id];
+  ClassPtr char_class = cm.get_class(class_id);
   
   Deity* deity = nullptr;
   auto d_it = deities.find(deity_id);

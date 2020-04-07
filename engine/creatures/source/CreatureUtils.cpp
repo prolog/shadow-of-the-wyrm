@@ -1,6 +1,7 @@
 #include "ActionTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CarryingCapacityCalculator.hpp"
+#include "ClassManager.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureUtils.hpp"
 #include "DeityTextKeys.hpp"
@@ -83,11 +84,11 @@ string CreatureUtils::get_race_class_synopsis(CreaturePtr c)
 
   string race_id = c->get_race_id();
   string class_id = c->get_class_id();
-  ClassMap classes = game.get_classes_ref();
-
+  
   RaceManager rm;
+  ClassManager cm;
   Race* race = rm.get_race(race_id);
-  ClassPtr current_class = classes[class_id];
+  ClassPtr current_class = cm.get_class(class_id);
 
   if (race && current_class)
   {
@@ -409,7 +410,7 @@ Race* CreatureUtils::get_random_user_playable_race()
 ClassPtr CreatureUtils::get_random_user_playable_class()
 {
   Game& game = Game::instance();
-  ClassMap classes = game.get_classes_ref();
+  const ClassMap& classes = game.get_classes_ref();
   vector<ClassPtr> playable_classes;
   ClassPtr cur_class;
 

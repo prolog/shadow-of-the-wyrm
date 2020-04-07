@@ -9,12 +9,16 @@ ClassManager::ClassManager()
 
 ClassPtr ClassManager::get_class(const string& class_id)
 {
-  ClassPtr cur_class;
-
+  ClassPtr cur_class = nullptr;
   Game& game = Game::instance();
 
-  ClassMap classes = game.get_classes_ref();
-  cur_class = classes[class_id];
+  const ClassMap& classes = game.get_classes_ref();
+  auto& c_it = classes.find(class_id);
+
+  if (c_it != classes.end())
+  {
+    cur_class = c_it->second;
+  }
 
   return cur_class;
 }
