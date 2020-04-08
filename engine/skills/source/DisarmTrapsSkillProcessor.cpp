@@ -115,10 +115,10 @@ bool DisarmTrapsSkillProcessor::disarm_trap(const std::pair<int, TileDirectionMa
       KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
       CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, 0);
 
-      if (base_command)
+      if (base_command != nullptr)
       {
-        std::shared_ptr<DirectionalCommand> dcommand;
-        dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
+        DirectionalCommand* dcommand;
+        dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
 
         if (dcommand)
         {

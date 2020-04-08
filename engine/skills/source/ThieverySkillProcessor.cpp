@@ -122,8 +122,8 @@ CreaturePtr ThieverySkillProcessor::get_steal_creature(const TileDirectionMap& t
     if (base_command)
     {
       // Check to see if it's an actual directional command
-      std::shared_ptr<DirectionalCommand> dcommand;
-      dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
+      DirectionalCommand* dcommand;
+      dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
 
       if (dcommand)
       {

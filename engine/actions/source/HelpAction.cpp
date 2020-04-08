@@ -34,7 +34,7 @@ ActionCostValue HelpAction::help(CreaturePtr creature) const
       int input = display_s.at(0);
 
       CommandPtr help_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, &input);
-      action_cost_value = HelpCommandProcessor::process(creature, help_command);
+      action_cost_value = HelpCommandProcessor::process(creature, help_command.get());
     }
   }
 

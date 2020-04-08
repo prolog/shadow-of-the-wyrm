@@ -20,227 +20,227 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
 
   if (command_name == CommandKeys::QUIT)
   {
-    command = std::make_shared<QuitCommand>(key);
+    command = std::make_unique<QuitCommand>(key);
   }
   else if (command_name == CommandKeys::VERSION)
   {
-    command = std::make_shared<VersionCommand>(key);
+    command = std::make_unique<VersionCommand>(key);
   }
   else if (command_name == CommandKeys::GAME_DATE_TIME_WEATHER)
   {
-    command = std::make_shared<GameDateTimeWeatherCommand>(key);
+    command = std::make_unique<GameDateTimeWeatherCommand>(key);
   }
   else if (command_name == CommandKeys::MOVE_NORTHEAST)
   {
-    command = std::make_shared<MovementCommand>(Direction::DIRECTION_NORTH_EAST, key);
+    command = std::make_unique<MovementCommand>(Direction::DIRECTION_NORTH_EAST, key);
   }
   else if (command_name == CommandKeys::MOVE_NORTH)
   {
-    command = std::make_shared<MovementCommand>(Direction::DIRECTION_NORTH, key);
+    command = std::make_unique<MovementCommand>(Direction::DIRECTION_NORTH, key);
   }
   else if (command_name == CommandKeys::MOVE_NORTHWEST)
   {
-    command = std::make_shared<MovementCommand>(Direction::DIRECTION_NORTH_WEST, key);
+    command = std::make_unique<MovementCommand>(Direction::DIRECTION_NORTH_WEST, key);
   }
   else if (command_name == CommandKeys::MOVE_EAST)
   {
-    command = std::make_shared<MovementCommand>(Direction::DIRECTION_EAST, key);
+    command = std::make_unique<MovementCommand>(Direction::DIRECTION_EAST, key);
   }
   else if (command_name == CommandKeys::SEARCH)
   {
-    command = std::make_shared<SearchCommand>(key);
+    command = std::make_unique<SearchCommand>(key);
   }
   else if (command_name == CommandKeys::MOVE_WEST)
   {
-    command = std::make_shared<MovementCommand>(Direction::DIRECTION_WEST, key);
+    command = std::make_unique<MovementCommand>(Direction::DIRECTION_WEST, key);
   }
   else if (command_name == CommandKeys::MOVE_SOUTHEAST)
   {
-    command = std::make_shared<MovementCommand>(Direction::DIRECTION_SOUTH_EAST, key);
+    command = std::make_unique<MovementCommand>(Direction::DIRECTION_SOUTH_EAST, key);
   }
   else if (command_name == CommandKeys::MOVE_SOUTH)
   {
-    command = std::make_shared<MovementCommand>(Direction::DIRECTION_SOUTH, key);
+    command = std::make_unique<MovementCommand>(Direction::DIRECTION_SOUTH, key);
   }
   else if (command_name == CommandKeys::MOVE_SOUTHWEST)
   {
-    command = std::make_shared<MovementCommand>(Direction::DIRECTION_SOUTH_WEST, key);
+    command = std::make_unique<MovementCommand>(Direction::DIRECTION_SOUTH_WEST, key);
   }
   else if (command_name == CommandKeys::MOVE_UP)
   {
-    command = std::make_shared<MoveUpLevelCommand>(key);
+    command = std::make_unique<MoveUpLevelCommand>(key);
   }
   else if (command_name == CommandKeys::MOVE_DOWN)
   {
-    command = std::make_shared<MoveDownLevelCommand>(key);
+    command = std::make_unique<MoveDownLevelCommand>(key);
   }
   else if (command_name == CommandKeys::AUTOMATIC_MOVEMENT)
   {
-    command = std::make_shared<AutomaticMovementCommand>(key);
+    command = std::make_unique<AutomaticMovementCommand>(key);
   }
   else if (command_name == CommandKeys::PICK_UP_ITEM)
   {
-    command = std::make_shared<PickUpCommand>(key);
+    command = std::make_unique<PickUpCommand>(key);
   }
   else if (command_name == CommandKeys::PICK_UP_ALL)
   {
-    command = std::make_shared<PickUpAllCommand>(key);
+    command = std::make_unique<PickUpAllCommand>(key);
   }
   else if (command_name == CommandKeys::DROP_ITEM)
   {
-    command = std::make_shared<DropCommand>(key);
+    command = std::make_unique<DropCommand>(key);
   }
   else if (command_name == CommandKeys::CHAR_DETAILS)
   {
-    command = std::make_shared<CharDetailsCommand>(key);
+    command = std::make_unique<CharDetailsCommand>(key);
   }
   else if (command_name == CommandKeys::CHAR_DUMP)
   {
-    command = std::make_shared<CharDumpCommand>(key);
+    command = std::make_unique<CharDumpCommand>(key);
   }
   else if (command_name == CommandKeys::INVENTORY)
   {
-    command = std::make_shared<InventoryCommand>(key);
+    command = std::make_unique<InventoryCommand>(key);
   }
   else if (command_name == CommandKeys::PRAY)
   {
-    command = std::make_shared<PrayCommand>(key);
+    command = std::make_unique<PrayCommand>(key);
   }
   else if (command_name == CommandKeys::MELEE_WEAPON_INFO)
   {
-    command = std::make_shared<MeleeWeaponInfoCommand>(key);
+    command = std::make_unique<MeleeWeaponInfoCommand>(key);
   }
   else if (command_name == CommandKeys::RANGED_WEAPON_INFO)
   {
-    command = std::make_shared<RangedWeaponInfoCommand>(key);
+    command = std::make_unique<RangedWeaponInfoCommand>(key);
   }
   else if (command_name == CommandKeys::SELECT_TILE)
   {
-    command = std::make_shared<SelectTileCommand>(key);
+    command = std::make_unique<SelectTileCommand>(key);
   }
   else if (command_name == CommandKeys::FIRE_MISSILE)
   {
-    command = std::make_shared<FireMissileCommand>(key);
+    command = std::make_unique<FireMissileCommand>(key);
   }
   else if (command_name == CommandKeys::QUAFF)
   {
-    command = std::make_shared<QuaffCommand>(key);
+    command = std::make_unique<QuaffCommand>(key);
   }
   else if (command_name == CommandKeys::READ)
   {
-    command = std::make_shared<ReadCommand>(key);
+    command = std::make_unique<ReadCommand>(key);
   }
   else if (command_name == CommandKeys::CHECK_CURRENCY)
   {
-    command = std::make_shared<CheckCurrencyCommand>(key);
+    command = std::make_unique<CheckCurrencyCommand>(key);
   }
   else if (command_name == CommandKeys::SAVE_GAME)
   {
-    command = std::make_shared<SaveGameCommand>(key);
+    command = std::make_unique<SaveGameCommand>(key);
   }
   else if (command_name == CommandKeys::EAT)
   {
-    command = std::make_shared<EatCommand>(key);
+    command = std::make_unique<EatCommand>(key);
   }
   else if (command_name == CommandKeys::CHAT)
   {
-    command = std::make_shared<ChatCommand>(key);
+    command = std::make_unique<ChatCommand>(key);
   }
   else if (command_name == CommandKeys::APPLY_FEATURE)
   {
-    command = std::make_shared<ApplyFeatureCommand>(key);
+    command = std::make_unique<ApplyFeatureCommand>(key);
   }
   else if (command_name == CommandKeys::QUEST_LIST)
   {
-    command = std::make_shared<QuestListCommand>(key);
+    command = std::make_unique<QuestListCommand>(key);
   }
   else if (command_name == CommandKeys::RELOAD_SCRIPTS_TEXTURES_AND_SIDS)
   {
-    command = std::make_shared<ReloadScriptsCommand>(key);
+    command = std::make_unique<ReloadScriptsCommand>(key);
   }
   else if (command_name == CommandKeys::RUN_SCRIPT)
   {
-    command = std::make_shared<RunScriptCommand>(key);
+    command = std::make_unique<RunScriptCommand>(key);
   }
   else if (command_name == CommandKeys::CAST_SPELL)
   {
-    command = std::make_shared<CastSpellCommand>(key);
+    command = std::make_unique<CastSpellCommand>(key);
   }
   else if (command_name == CommandKeys::BESTIARY)
   {
-    command = std::make_shared<BestiaryCommand>(key);
+    command = std::make_unique<BestiaryCommand>(key);
   }
   else if (command_name == CommandKeys::EVOKE)
   {
-    command = std::make_shared<EvokeCommand>(key);
+    command = std::make_unique<EvokeCommand>(key);
   }
   else if (command_name == CommandKeys::SHOW_RESISTANCES)
   {
-    command = std::make_shared<ShowResistancesCommand>(key);
+    command = std::make_unique<ShowResistancesCommand>(key);
   }
   else if (command_name == CommandKeys::SHOW_CONDUCTS)
   {
-    command = std::make_shared<ShowConductsCommand>(key);
+    command = std::make_unique<ShowConductsCommand>(key);
   }
   else if (command_name == CommandKeys::SHOW_SKILLS)
   {
-    command = std::make_shared<ShowSkillsCommand>(key);
+    command = std::make_unique<ShowSkillsCommand>(key);
   }
   else if (command_name == CommandKeys::LATEST_MESSAGES)
   {
-    command = std::make_shared<LatestMessagesCommand>(key);
+    command = std::make_unique<LatestMessagesCommand>(key);
   }
   else if (command_name == CommandKeys::KICK)
   {
-    command = std::make_shared<KickCommand>(key);
+    command = std::make_unique<KickCommand>(key);
   }
   else if (command_name == CommandKeys::OFFER)
   {
-    command = std::make_shared<OfferCommand>(key);
+    command = std::make_unique<OfferCommand>(key);
   }
   else if (command_name == CommandKeys::SKIN)
   {
-    command = std::make_shared<SkinCommand>(key);
+    command = std::make_unique<SkinCommand>(key);
   }
   else if (command_name == CommandKeys::PIETY)
   {
-    command = std::make_shared<PietyCommand>(key);
+    command = std::make_unique<PietyCommand>(key);
   }
   else if (command_name == CommandKeys::EXPERIENCE)
   {
-    command = std::make_shared<ExperienceCommand>(key);
+    command = std::make_unique<ExperienceCommand>(key);
   }
   else if (command_name == CommandKeys::REST)
   {
-    command = std::make_shared<RestCommand>(key);
+    command = std::make_unique<RestCommand>(key);
   }
   else if (command_name == CommandKeys::VIEW_ITEMS)
   {
-    command = std::make_shared<ViewItemsCommand>(key);
+    command = std::make_unique<ViewItemsCommand>(key);
   }
   else if (command_name == CommandKeys::HELP)
   {
-    command = std::make_shared<HelpCommand>(key);
+    command = std::make_unique<HelpCommand>(key);
   }
   else if (command_name == CommandKeys::INSCRIBE)
   {
-    command = std::make_shared<InscribeCommand>(key);
+    command = std::make_unique<InscribeCommand>(key);
   }
   else if (command_name == CommandKeys::TOGGLE_AUTOPICKUP)
   {
-    command = std::make_shared<ToggleAutopickupCommand>(key);
+    command = std::make_unique<ToggleAutopickupCommand>(key);
   }
   else if (command_name == CommandKeys::BREED)
   {
-    command = std::make_shared<BreedCommand>(key);
+    command = std::make_unique<BreedCommand>(key);
   }
   else if (command_name == CommandKeys::ITEM_CODEX)
   {
-    command = std::make_shared<ItemCodexCommand>(key);
+    command = std::make_unique<ItemCodexCommand>(key);
   }
   else if (command_name == CommandKeys::SWITCH_GRAPHICS_MODE)
   {
-    command = std::make_shared<SwitchGraphicsModeCommand>(key);
+    command = std::make_unique<SwitchGraphicsModeCommand>(key);
   }
 
   return command;

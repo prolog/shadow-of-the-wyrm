@@ -854,7 +854,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
           MM::instance().clear_if_necessary();
         }
 
-        action_cost = CommandProcessor::process(current_creature, command, display);
+        action_cost = CommandProcessor::process(current_creature, command.get(), display);
 
         if (current_creature->get_is_player() && get_is_current_map(current_map))
         {

@@ -56,7 +56,7 @@ ActionCostValue SkillsAction::show_skills(CreaturePtr creature, const SkillsSele
       }
 
       CommandPtr skills_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, &input);
-      action_cost_value = scp->process(creature, skills_command, map, st);
+      action_cost_value = scp->process(creature, skills_command.get(), map, st);
     }
   }
 

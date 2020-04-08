@@ -20,15 +20,13 @@ CommandProcessor::~CommandProcessor()
 }
 
 // Determine the type of command, and process it appropriately.
-ActionCost CommandProcessor::process(CreaturePtr creature, CommandPtr command, DisplayPtr display)
+ActionCost CommandProcessor::process(CreaturePtr creature, Command* command, DisplayPtr display)
 {  
   ActionCost ac;
 
   if (command)
   {
-    Command* raw_command = command.get();
-
-    DirectionalCommand* d_command = dynamic_cast<DirectionalCommand*>(raw_command);
+    DirectionalCommand* d_command = dynamic_cast<DirectionalCommand*>(command);
 
     if (d_command && !(d_command->get_direction() == Direction::DIRECTION_NULL) /* search is a special case */)
     {
@@ -37,7 +35,7 @@ ActionCost CommandProcessor::process(CreaturePtr creature, CommandPtr command, D
     else
     {
       // It's a subclass of the basic command, but not one of the subclasses requiring special processing.
-      return process_command(creature, raw_command, display);
+      return process_command(creature, command, display);
     }
   }
 

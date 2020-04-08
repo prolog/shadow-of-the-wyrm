@@ -44,5 +44,5 @@ class TargetPrevCreatureCommand : public Command
     ~TargetPrevCreatureCommand();
 };
 
-using CursorDirectionalCommandPtr = std::shared_ptr<CursorDirectionalCommand>;
+using CursorDirectionalCommandPtr = std::unique_ptr<CursorDirectionalCommand>;
 

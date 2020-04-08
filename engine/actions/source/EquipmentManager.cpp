@@ -42,7 +42,7 @@ ActionCostValue EquipmentManager::manage_equipment()
           if (!screen_selection.empty())
           {
             CommandPtr equipment_command = command_factory->create(screen_selection.at(0), kb_command_map->get_command_type(screen_selection));
-            action_cost = EquipmentCommandProcessor::process(creature, equipment_command);
+            action_cost = EquipmentCommandProcessor::process(creature, equipment_command.get());
 
             if ((action_cost > 0) && (total_action_cost == 0))
             {

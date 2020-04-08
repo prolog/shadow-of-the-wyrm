@@ -19,30 +19,30 @@ CommandPtr SkillsCommandFactory::create(const int key, const std::string& comman
   
   if (command_name == SkillsCommandKeys::GENERAL_SKILLS)
   {
-    command = std::make_shared<GeneralSkillsCommand>(key);
+    command = std::make_unique<GeneralSkillsCommand>(key);
   }
   else if (command_name == SkillsCommandKeys::MELEE_WEAPON_SKILLS)
   {
-    command = std::make_shared<MeleeWeaponSkillsCommand>(key);
+    command = std::make_unique<MeleeWeaponSkillsCommand>(key);
   }
   else if (command_name == SkillsCommandKeys::RANGED_WEAPON_SKILLS)
   {
-    command = std::make_shared<RangedWeaponSkillsCommand>(key);
+    command = std::make_unique<RangedWeaponSkillsCommand>(key);
   }
   else if (command_name == SkillsCommandKeys::MAGIC_SKILLS)
   {
-    command = std::make_shared<MagicSkillsCommand>(key);
+    command = std::make_unique<MagicSkillsCommand>(key);
   }
   else if (command_name == SkillsCommandKeys::SELECT_SKILL)
   {
     if (!skill_selection_require_capitalization || isupper(key))
     {
-      command = std::make_shared<SelectSkillCommand>(key);
+      command = std::make_unique<SelectSkillCommand>(key);
     }
   }
   else if (command_name == SkillsCommandKeys::EXIT_SKILLS)
   {
-    command = std::make_shared<ExitSkillsCommand>(key);
+    command = std::make_unique<ExitSkillsCommand>(key);
   }
 
   return command;

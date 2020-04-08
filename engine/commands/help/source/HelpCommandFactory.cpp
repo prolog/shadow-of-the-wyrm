@@ -16,27 +16,27 @@ CommandPtr HelpCommandFactory::create(const int key, const std::string& command_
 
   if (command_name == HelpCommandKeys::KEYBINDINGS)
   {
-    command = std::make_shared<KeybindingsCommand>(key);
+    command = std::make_unique<KeybindingsCommand>(key);
   }
   else if (command_name == HelpCommandKeys::EXIT_HELP)
   {
-    command = std::make_shared<ExitHelpCommand>(key);
+    command = std::make_unique<ExitHelpCommand>(key);
   }
   else if (command_name == HelpCommandKeys::INTRODUCTION_ROGUELIKES)
   {
-    command = std::make_shared<IntroductionRoguelikesCommand>(key);
+    command = std::make_unique<IntroductionRoguelikesCommand>(key);
   }
   else if (command_name == HelpCommandKeys::SOTW_HISTORY)
   {
-    command = std::make_shared<SOTWHistoryCommand>(key);
+    command = std::make_unique<SOTWHistoryCommand>(key);
   }
   else if (command_name == HelpCommandKeys::STRATEGY_BASICS)
   {
-    command = std::make_shared<StrategyBasicsCommand>(key);
+    command = std::make_unique<StrategyBasicsCommand>(key);
   }
   else if (command_name == HelpCommandKeys::CASINO_GAMES)
   {
-    command = std::make_shared<CasinoGamesCommand>(key);
+    command = std::make_unique<CasinoGamesCommand>(key);
   }
 
   return command;

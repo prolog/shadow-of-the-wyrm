@@ -160,7 +160,7 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
   // advance to the next turn.
   if (!command)
   {
-    command = std::make_shared<SearchCommand>(-1);
+    command = std::make_unique<SearchCommand>(-1);
   }
   
   return command;
@@ -234,7 +234,7 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
       pair<string, Direction> spell_to_cast = potential_spells.at(0);
 
       // Create the spell command, adding properties to set the spell details.
-      magic_command = make_shared<CastSpellCommand>(-1);
+      magic_command = make_unique<CastSpellCommand>(-1);
       magic_command->set_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_SELECTED_SPELL_ID, spell_to_cast.first);
       magic_command->set_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_DIRECTION, to_string(static_cast<int>(spell_to_cast.second)));
     }
@@ -280,7 +280,7 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
               Direction direction = CoordUtils::get_direction(c_this, c_threat);
 
               // create movement command, return.
-              CommandPtr command = std::make_shared<AttackCommand>(direction, -1);
+              CommandPtr command = std::make_unique<AttackCommand>(direction, -1);
               return command;
             }
             else
@@ -295,7 +295,7 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
 
                 if (direction != Direction::DIRECTION_NULL)
                 {
-                  CommandPtr command = std::make_shared<MovementCommand>(direction, -1);
+                  CommandPtr command = std::make_unique<MovementCommand>(direction, -1);
                   return command;
                 }
               }
@@ -347,7 +347,7 @@ CommandPtr NPCDecisionStrategy::get_breed_decision(const string& this_creature_i
 
       if (tile != nullptr && tile->has_creature() == false)
       {
-        CommandPtr breed = std::make_shared<BreedCommand>(-1);
+        CommandPtr breed = std::make_unique<BreedCommand>(-1);
         return breed;
       }
     }
@@ -388,7 +388,7 @@ CommandPtr NPCDecisionStrategy::get_ranged_attack_decision(const string& this_cr
             {
               TargetMap& tm = this_cr->get_target_map_ref();
               tm[to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED))] = make_pair(threatening_creature_id, threat_c);
-              CommandPtr command = std::make_shared<FireMissileCommand>(-1);
+              CommandPtr command = std::make_unique<FireMissileCommand>(-1);
               command->set_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_SKIP_TARGETTING, Bool::to_string(true));
 
               return command;
@@ -428,7 +428,7 @@ CommandPtr NPCDecisionStrategy::get_custom_decision(const string& this_creature_
         ActionCostValue acv = ds.execute(se, decision_script, creature);
         if (acv > 0)
         {
-          command = std::make_shared<CustomScriptCommand>();
+          command = std::make_unique<CustomScriptCommand>();
           command->set_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_ACTION_COST_VALUE, std::to_string(acv));
         }
       }
@@ -471,7 +471,7 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
     {
       if (RNG::percent_chance(String::to_int(search_pct)))
       {
-        movement_command = std::make_shared<SearchCommand>(-1);
+        movement_command = std::make_unique<SearchCommand>(-1);
         return movement_command;
       }
     }
@@ -493,7 +493,7 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
 
         if (direction != Direction::DIRECTION_NULL)
         {
-          CommandPtr command = std::make_shared<MovementCommand>(direction, -1);
+          CommandPtr command = std::make_unique<MovementCommand>(direction, -1);
           return command;
         }
       }
@@ -518,7 +518,7 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
       {
         if (MapUtils::is_in_shop_or_adjacent(current_map, cc).first)
         {
-          movement_command = std::make_shared<MovementCommand>(CoordUtils::get_direction(this_creature_coords, cc), -1);
+          movement_command = std::make_unique<MovementCommand>(CoordUtils::get_direction(this_creature_coords, cc), -1);
           break;
         }
       }
@@ -530,7 +530,7 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
       {
         Coordinate movement_coord = choice_coordinates.at(RNG::range(0, choice_coordinates.size() - 1));
         Direction direction = CoordUtils::get_direction(this_creature_coords, movement_coord);
-        movement_command = std::make_shared<MovementCommand>(direction, -1);
+        movement_command = std::make_unique<MovementCommand>(direction, -1);
       }
     }
   }

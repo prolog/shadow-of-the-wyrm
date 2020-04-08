@@ -140,8 +140,8 @@ bool ChatAction::chat_multiple_options(CreaturePtr querying_creature, const Crea
   if (base_command)
   {
     // Check to see if it's an actual directional command
-    std::shared_ptr<DirectionalCommand> dcommand;
-    dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
+    DirectionalCommand* dcommand = nullptr;
+    dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
 
     if (dcommand)
     {

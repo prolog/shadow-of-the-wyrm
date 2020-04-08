@@ -121,7 +121,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const str
       if (decision_strategy)
       {
         CommandPtr tile_selection_command = decision_strategy->get_decision(true, creature->get_id(), command_factory.get(), kb_command_map);
-        command_result = TileSelectionCommandProcessor::process(creature, tile_selection_command, this);
+        command_result = TileSelectionCommandProcessor::process(creature, tile_selection_command.get(), this);
         
         continue_select_tiles = command_result.first;
       }

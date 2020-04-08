@@ -62,7 +62,7 @@ ItemPtr InventoryManager::manage_inventory(IInventoryPtr inv, const list<IItemFi
           if (!inv_selection.empty())
           {
             CommandPtr inv_command = command_factory->create(inv_selection.at(0), kb_command_map->get_command_type(inv_selection));
-            manage_inv = InventoryCommandProcessor::process(this, base_display_filter_list, display_inventory, external_id, creature, inv, inv_command, inventory_is_read_only, selected_item);
+            manage_inv = InventoryCommandProcessor::process(this, base_display_filter_list, display_inventory, external_id, creature, inv, inv_command.get(), inventory_is_read_only, selected_item);
           }
         }
       }

@@ -89,8 +89,8 @@ ActionCostValue KickAction::kick_on_regular_map(CreaturePtr creature, MapPtr cur
 
     if (base_command)
     {
-      std::shared_ptr<DirectionalCommand> dcommand;
-      dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
+      DirectionalCommand* dcommand;
+      dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
 
       if (dcommand)
       {

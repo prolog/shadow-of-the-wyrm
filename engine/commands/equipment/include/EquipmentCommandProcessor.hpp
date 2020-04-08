@@ -7,7 +7,7 @@
 class EquipmentCommandProcessor 
 {
   public:
-    static ActionCostValue process(CreaturePtr creature, CommandPtr command);
+    static ActionCostValue process(CreaturePtr creature, Command* command);
 
   protected:
     EquipmentCommandProcessor();

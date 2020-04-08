@@ -367,8 +367,8 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
   if (base_command)
   {
     // Check to see if it's an actual directional command
-    std::shared_ptr<DirectionalCommand> dcommand;
-    dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
+    DirectionalCommand* dcommand;
+    dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
 
     if (dcommand)
     {
@@ -439,7 +439,7 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
     // input has been provided (don't try to get the input twice).
     CommandPtr magic_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, &input);
 
-    action_cost_value = MagicCommandProcessor::process(creature, magic_command);
+    action_cost_value = MagicCommandProcessor::process(creature, magic_command.get());
 
     if (action_cost_value > 0 && !spell_id.empty())
     {

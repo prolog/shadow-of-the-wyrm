@@ -58,7 +58,7 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
 
       if (am.get_engaged())
       {
-        base_command = std::make_shared<MovementCommand>(am.get_direction(), -1);
+        base_command = std::make_unique<MovementCommand>(am.get_direction(), -1);
       }
       else
       {
@@ -72,8 +72,8 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
 
       if (base_command)
       {
-        std::shared_ptr<DirectionalCommand> dcommand;
-        dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
+        DirectionalCommand* dcommand;
+        dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
 
         if (dcommand)
         {

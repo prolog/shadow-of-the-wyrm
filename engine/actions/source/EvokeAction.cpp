@@ -226,8 +226,8 @@ pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature,
   if (base_command)
   {
     // Check to see if it's an actual directional command
-    std::shared_ptr<DirectionalCommand> dcommand;
-    dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
+    DirectionalCommand* dcommand;
+    dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
 
     if (dcommand && (DirectionUtils::direction_matches_category(dcommand->get_direction(), spell_shape.get_direction_category())))
     {

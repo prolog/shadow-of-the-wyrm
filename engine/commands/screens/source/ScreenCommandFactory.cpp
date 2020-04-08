@@ -16,11 +16,11 @@ CommandPtr ScreenCommandFactory::create(const int key, const std::string& comman
 
   if (command_name == ScreenCommandKeys::NEXT_PAGE)
   {
-    command = std::make_shared<NextPageScreenCommand>(key);
+    command = std::make_unique<NextPageScreenCommand>(key);
   }
   else if (command_name == ScreenCommandKeys::PREVIOUS_PAGE)
   {
-    command = std::make_shared<PreviousPageScreenCommand>(key);
+    command = std::make_unique<PreviousPageScreenCommand>(key);
   }
 
   return command;
