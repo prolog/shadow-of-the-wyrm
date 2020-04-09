@@ -3394,3 +3394,14 @@ They cooked it on the coals until it seared %b
 a heavy black, took turns to sleep in shifts, %b
 while all the while the world around them went to drift.
 %p
+Those dreams each turned to ash beneath the tongue. %b
+All night they felt the clammy hands of the dead %b
+against their skin, and when they tried to run %b
+they found themselves in lake-deep mud - instead %b
+of peace, the four found fingers at their ears %b
+and at their eyelids.  As they woke, they drank %b
+and spat.  The vivid dreaming felt like years - %b
+as if their whole existence seemed to shrink, %b
+collapsing to a black-eyed beast that never blinked.
+%p
+

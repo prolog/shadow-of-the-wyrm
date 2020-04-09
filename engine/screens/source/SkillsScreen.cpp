@@ -70,7 +70,7 @@ void SkillsScreen::initialize()
       TextComponentPtr option_text_component = current_option.get_description();
 
       SkillType st = static_cast<SkillType>(i);
-      SkillPtr skill = creature->get_skills().get_skill(st);
+      Skill* skill = creature->get_skills().get_skill(st);
 
       if (skill != nullptr && (skill->get_value() > 0 || skill->can_train_from_unlearned()))
       {

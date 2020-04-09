@@ -104,7 +104,7 @@ bool ForgeManipulator::check_creature_knows_smithing(CreaturePtr creature)
   bool knows_smithing = true;
 
   // Does the creature know anything about smithing?
-  SkillPtr smithing_skill;
+  Skill* smithing_skill;
   if (creature && (smithing_skill = creature->get_skills().get_skill(SkillType::SKILL_GENERAL_SMITHING)) != nullptr)
   {
     if (smithing_skill->get_value() <= 0)

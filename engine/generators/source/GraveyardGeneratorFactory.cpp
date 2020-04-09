@@ -31,6 +31,6 @@ GeneratorPtr GraveyardGeneratorFactory::create_scattered_graveyard_generator(con
 // such as cities.
 SectorFeaturePtr GraveyardGeneratorFactory::create_graveyard_sector_generator()
 {
-  SectorFeaturePtr gs = std::make_shared<GraveyardSectorFeature>();
+  SectorFeaturePtr gs = std::make_unique<GraveyardSectorFeature>();
   return gs;
 }

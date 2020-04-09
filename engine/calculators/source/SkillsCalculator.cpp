@@ -57,8 +57,8 @@ Skills SkillsCalculator::calculate_skills_in_given_range(CreaturePtr creature, R
   for (int st = first_skill; st < last_skill; st++)
   {
     SkillType skill_name = static_cast<SkillType>(st);
-    SkillPtr race_skill  = race_skills.get_skill(skill_name);
-    SkillPtr class_skill = class_skills.get_skill(skill_name);
+    Skill* race_skill  = race_skills.get_skill(skill_name);
+    Skill* class_skill = class_skills.get_skill(skill_name);
 
     int race_value  = race_skill->get_value();
     int class_value = class_skill->get_value();

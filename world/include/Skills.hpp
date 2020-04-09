@@ -934,11 +934,9 @@ class PrimordialMagicSkill : public MagicSkill
 
 // Classes aggregating skills
 
-using SkillPtr = std::shared_ptr<Skill>;
+using SkillPtr = std::unique_ptr<Skill>;
 using SkillMap = std::map<SkillType, SkillPtr>;
 using SkillMapPtr = std::map<SkillType, SkillPtr>*;
-
-using RawSkillMap = std::map<SkillType, SkillPtr>;
 
 class Skills : public ISerializable
 {
@@ -950,7 +948,7 @@ class Skills : public ISerializable
 
     // For each skill in skills_to_increment, update the values in the current
     // object by the appropriate amount.
-    void increment_skills(const Skills& skills_to_increment);
+    void increment_skills(Skills& skills_to_increment);
 
     void set_value(const SkillType skill_name, const unsigned int new_value);
     void mark(const SkillType skill_name, const bool override_default = false /* whether to mark regardless of whether the skill indicates it can be trained from unlearned */);
@@ -960,13 +958,12 @@ class Skills : public ISerializable
     
     void set_skill(const SkillType& skill_name, SkillPtr skill);
     void set_all_to(const int val);
-    SkillPtr get_skill(const SkillType& st) const;
+    Skill* get_skill(const SkillType& st) const;
 
     bool has_trainable_skill() const;
     std::string str() const;
     
-    RawSkillMap& get_raw_skills_ref();
-    RawSkillMap get_raw_skills() const;
+    SkillMap& get_raw_skills_ref();
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
@@ -981,7 +978,7 @@ class Skills : public ISerializable
     void initialize_ranged_skills();
     void initialize_magic_skills();
 
-    RawSkillMap skills;
+    SkillMap skills;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

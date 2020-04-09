@@ -93,7 +93,7 @@ ActionCostValue SkillsAction::improve_skill(CreaturePtr creature, const SkillTyp
 {
   if (creature != nullptr)
   {
-    SkillPtr skill = creature->get_skills().get_skill(st);
+    Skill* skill = creature->get_skills().get_skill(st);
 
     if (skill != nullptr)
     {

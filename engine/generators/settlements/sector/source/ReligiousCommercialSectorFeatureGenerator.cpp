@@ -38,7 +38,7 @@ bool ReligiousCommercialSectorFeatureGenerator::create_feature(MapPtr map, const
     }
     case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_SHOP:
     {
-      feature = std::make_shared<ShopSectorFeature>();
+      feature = std::make_unique<ShopSectorFeature>();
       break;
     }
     case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_OUTDOOR_SHRINE:
@@ -54,7 +54,7 @@ bool ReligiousCommercialSectorFeatureGenerator::create_feature(MapPtr map, const
       }
 
       SectorFeaturePtr garden = GardenGeneratorFactory::create_uniform_random_garden_generator(deity_id, deity_details.second);
-      feature = garden;
+      feature = std::move(garden);
 
       break;
     }

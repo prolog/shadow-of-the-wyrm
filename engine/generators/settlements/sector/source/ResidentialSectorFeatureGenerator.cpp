@@ -56,23 +56,23 @@ bool ResidentialSectorFeatureGenerator::create_feature(MapPtr map, const Coordin
     }
     case ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_SHOP:
     {
-      feature = make_shared<ShopSectorFeature>();
+      feature = std::make_unique<ShopSectorFeature>();
       break;
     }
     case ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_SHRINE:
     {
-      feature = make_shared<ShrineSectorFeature>();
+      feature = std::make_unique<ShrineSectorFeature>();
       break;
     }
     case ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_WORKSHOP:
     {
-      feature = make_shared<WorkshopSectorFeature>();
+      feature = std::make_unique<WorkshopSectorFeature>();
       break;
     }
     case ResidentialSectorFeatureType::RESIDENTIAL_SECTOR_FEATURE_HOUSE:
     default:
     {
-      feature = make_shared<HouseSectorFeature>(false);
+      feature = std::make_unique<HouseSectorFeature>(false);
       break;
     }
   }

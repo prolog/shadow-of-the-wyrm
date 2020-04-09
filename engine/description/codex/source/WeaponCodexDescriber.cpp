@@ -20,8 +20,8 @@ string WeaponCodexDescriber::describe_for_synopsis_line() const
   if (weapon != nullptr)
   {
     Skills skills;
-    SkillPtr m_sk = skills.get_skill(weapon->get_trained_skill());
-    SkillPtr r_sk = skills.get_skill(weapon->get_trained_ranged_skill());
+    Skill* m_sk = skills.get_skill(weapon->get_trained_skill());
+    Skill* r_sk = skills.get_skill(weapon->get_trained_ranged_skill());
     
     if (m_sk != nullptr && r_sk != nullptr)
     {

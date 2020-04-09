@@ -116,7 +116,7 @@ bool SpellbookReadStrategy::check_magic_skill(CreaturePtr creature, SkillType ma
 {
   bool has_magic_skill = true;
 
-  SkillPtr magic_skill = creature->get_skills().get_skill(SkillType::SKILL_GENERAL_MAGIC);
+  Skill* magic_skill = creature->get_skills().get_skill(SkillType::SKILL_GENERAL_MAGIC);
 
   // Cantrips don't need a magic check - they're not written in Old Runic.
   if (magic_skill->get_value() <= 0 && magic_category != SkillType::SKILL_MAGIC_CANTRIPS)

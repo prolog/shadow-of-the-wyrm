@@ -23,18 +23,18 @@ SectorFeaturePtr GardenGeneratorFactory::create_garden_generator(const GardenTyp
   switch(type)
   {
     case GardenType::GARDEN_TYPE_SHADE:
-      garden_gen = std::make_shared<ShadeGardenGenerator>(deity_id, ar);
+      garden_gen = std::make_unique<ShadeGardenGenerator>(deity_id, ar);
       break;
       case GardenType::GARDEN_TYPE_ROCK:
-      garden_gen = std::make_shared<RockGardenGenerator>(deity_id, ar);
+      garden_gen = std::make_unique<RockGardenGenerator>(deity_id, ar);
       break;
     case GardenType::GARDEN_TYPE_WILDFLOWER:
-      garden_gen = std::make_shared<WildflowerGardenGenerator>(deity_id, ar);
+      garden_gen = std::make_unique<WildflowerGardenGenerator>(deity_id, ar);
       break;
     case GardenType::GARDEN_TYPE_VEGETABLE:
     case GardenType::GARDEN_TYPE_LAST:
     default:
-      garden_gen = std::make_shared<VegetableGardenGenerator>(deity_id, ar);
+      garden_gen = std::make_unique<VegetableGardenGenerator>(deity_id, ar);
       break;
   }
 
