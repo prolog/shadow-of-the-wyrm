@@ -54,52 +54,52 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
   {
     case TileType::TILE_TYPE_FIELD:
     {
-      generator = std::make_shared<FieldGenerator>(map_exit_id);
+      generator = std::make_unique<FieldGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_SEA:
     {
-      generator = std::make_shared<SeaGenerator>(map_exit_id);
+      generator = std::make_unique<SeaGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_MARSH:
     {
-      generator = std::make_shared<MarshGenerator>(map_exit_id);
+      generator = std::make_unique<MarshGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_MOUNTAINS:
     {
-      generator = std::make_shared<MountainsGenerator>(map_exit_id);
+      generator = std::make_unique<MountainsGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_HILLS:
     {
-      generator = std::make_shared<HillsGenerator>(map_exit_id);
+      generator = std::make_unique<HillsGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_WILD_ORCHARD:
     {
-      generator = std::make_shared<WildOrchardGenerator>(map_exit_id);
+      generator = std::make_unique<WildOrchardGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_FOREST:
     {
-      generator = std::make_shared<ForestGenerator>(map_exit_id);
+      generator = std::make_unique<ForestGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_CAVERN:
     {
-      generator = std::make_shared<CavernGenerator>(map_exit_id);
+      generator = std::make_unique<CavernGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_DESERT:
     {
-      generator = std::make_shared<DesertGenerator>(map_exit_id);
+      generator = std::make_unique<DesertGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_SCRUB:
     {
-      generator = std::make_shared<ScrubGenerator>(map_exit_id);
+      generator = std::make_unique<ScrubGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_VILLAGE:
@@ -141,7 +141,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     }
     case TileType::TILE_TYPE_DUNGEON_COMPLEX:
     {
-      generator = std::make_shared<DungeonGenerator>(map_exit_id);
+      generator = std::make_unique<DungeonGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_SHRINE:
@@ -170,12 +170,12 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     }
     case TileType::TILE_TYPE_MINE:
     {
-      generator = std::make_shared<MineGenerator>(map_exit_id);
+      generator = std::make_unique<MineGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_CRYPT:
     {
-      generator = std::make_shared<CryptGenerator>(map_exit_id);
+      generator = std::make_unique<CryptGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_UP_STAIRCASE:
@@ -196,40 +196,40 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       
       if (ruined_keep)
       {
-        generator = std::make_shared<RuinsGenerator>(map_exit_id, 
+        generator = std::make_unique<RuinsGenerator>(map_exit_id, 
                                                      TileType::TILE_TYPE_FIELD /* if you need to change this, RuinsGenerator needs to be updated - currently a placeholder */, 
                                                      RuinsType::RUINS_TYPE_KEEP);
       }
       else
       {
-        generator = std::make_shared<KeepGenerator>(map_exit_id);
+        generator = std::make_unique<KeepGenerator>(map_exit_id);
       }
 
       break;
     }
     case TileType::TILE_TYPE_CASTLE:
     {
-      generator = std::make_shared<CastleGenerator>(map_exit_id, terrain_subtype);
+      generator = std::make_unique<CastleGenerator>(map_exit_id, terrain_subtype);
       break;
     }
     case TileType::TILE_TYPE_SEWER_COMPLEX:
     {
-      generator = std::make_shared<SewerGenerator>(map_exit_id);
+      generator = std::make_unique<SewerGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_FLOATING_TOWER:
     { 
-      generator = std::make_shared<FloatingTowerGenerator>(map_exit_id);
+      generator = std::make_unique<FloatingTowerGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_VOID:
     {
-      generator = std::make_shared<VoidGenerator>(map_exit_id);
+      generator = std::make_unique<VoidGenerator>(map_exit_id);
       break;
     }
     case TileType::TILE_TYPE_WELL:
     {
-      generator = std::make_shared<WellGenerator>(map_exit_id);
+      generator = std::make_unique<WellGenerator>(map_exit_id);
       break;
     }
 
@@ -263,11 +263,11 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TileType::TILE_TYPE_MAGICAL_TREE:
     default:
       // Right now, everything generates a field.  Change this once testing is complete.
-      generator = std::make_shared<FieldGenerator>(map_exit_id);
+      generator = std::make_unique<FieldGenerator>(map_exit_id);
       break;
   }
 
-  copy_properties(tile, generator);
+  copy_properties(tile, generator.get());
 
   // Set world map location into the generator, in case it is needed to
   // generate map details.
@@ -291,7 +291,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
 }
 
 // Copy properties from the tile to the generator's additional properties.
-void TerrainGeneratorFactory::copy_properties(TilePtr tile, GeneratorPtr generator)
+void TerrainGeneratorFactory::copy_properties(TilePtr tile, SOTW::Generator* generator)
 {
   if (tile && generator)
   {

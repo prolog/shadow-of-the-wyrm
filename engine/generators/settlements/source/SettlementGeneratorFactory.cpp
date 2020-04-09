@@ -20,16 +20,16 @@ GeneratorPtr SettlementGeneratorFactory::create_settlement_generator(const Settl
   switch(settlement_type)
   {
     case SettlementType::SETTLEMENT_TYPE_ORDERLY_VILLAGE:
-      settlement_generator = std::make_shared<SettlementGenerator>(base_map);
+      settlement_generator = std::make_unique<SettlementGenerator>(base_map);
       break;
     case SettlementType::SETTLEMENT_TYPE_HAMLET:
-      settlement_generator = std::make_shared<HamletGenerator>(base_map);
+      settlement_generator = std::make_unique<HamletGenerator>(base_map);
       break;
     case SettlementType::SETTLEMENT_TYPE_WALLED:
-      settlement_generator = std::make_shared<WalledSettlementGenerator>(base_map);
+      settlement_generator = std::make_unique<WalledSettlementGenerator>(base_map);
       break;
     case SettlementType::SETTLEMENT_TYPE_SCATTERED:
-      settlement_generator = std::make_shared<ScatteredSettlementGenerator>(base_map);
+      settlement_generator = std::make_unique<ScatteredSettlementGenerator>(base_map);
       break;
     default:
       break;

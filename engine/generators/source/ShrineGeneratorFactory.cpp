@@ -27,12 +27,12 @@ GeneratorPtr ShrineGeneratorFactory::create_random_shrine_generator(MapPtr base_
 
 GeneratorPtr ShrineGeneratorFactory::create_rectangular_shrine_generator(MapPtr base_map)
 {
-  GeneratorPtr shrine = make_shared<RectangularShrineGenerator>(base_map);
+  GeneratorPtr shrine = make_unique<RectangularShrineGenerator>(base_map);
   return shrine;
 }
 
 GeneratorPtr ShrineGeneratorFactory::create_cross_shrine_generator(MapPtr base_map)
 {
-  GeneratorPtr shrine = make_shared<CrossShrineGenerator>(base_map);
+  GeneratorPtr shrine = make_unique<CrossShrineGenerator>(base_map);
   return shrine;
 }

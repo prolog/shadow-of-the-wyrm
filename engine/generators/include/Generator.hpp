@@ -113,4 +113,4 @@ namespace SOTW
   };
 }
 
-using GeneratorPtr = std::shared_ptr<SOTW::Generator>;
+using GeneratorPtr = std::unique_ptr<SOTW::Generator>;
