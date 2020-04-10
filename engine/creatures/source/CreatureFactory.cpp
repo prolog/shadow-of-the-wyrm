@@ -94,7 +94,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
       
     Creature creature_instance = *creature_template;
     creature = std::make_shared<Creature>(creature_instance);
-    DecisionStrategyPtr template_decision_strategy = creature->get_decision_strategy();
+    DecisionStrategyPtr template_decision_strategy = creature->get_decision_strategy_uptr();
     
     string default_race_id;
 
@@ -116,7 +116,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
     // Set the template values that would be overridden by creating by race/class.
     // Anything that can be specified under the Creature element in the configuration XML
     // should be added here!
-    revert_to_original_configuration_values(creature, creature_instance, template_decision_strategy);
+    revert_to_original_configuration_values(creature, creature_instance, std::move(template_decision_strategy));
       
     // Set HP to a randomly generated value in the initial range.
     Dice initial_hp_range = cgv.get_initial_hit_points();
@@ -193,7 +193,7 @@ void CreatureFactory::revert_to_original_configuration_values(CreaturePtr creatu
   creature->set_text_details_sid(creature_instance.get_text_details_sid());
   creature->set_speech_text_sid(creature_instance.get_speech_text_sid());
   creature->set_breathes(creature_instance.get_base_breathes());
-  creature->set_decision_strategy(template_decision_strategy);
+  creature->set_decision_strategy(std::move(template_decision_strategy));
   creature->set_level(creature_instance.get_level());
   creature->set_base_damage(creature_instance.get_base_damage());
   creature->set_base_evade(creature_instance.get_base_evade());

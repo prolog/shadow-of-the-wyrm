@@ -77,4 +77,4 @@ class DecisionStrategy : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const = 0;
 };
 
-using DecisionStrategyPtr = std::shared_ptr<DecisionStrategy>;
+using DecisionStrategyPtr = std::unique_ptr<DecisionStrategy>;

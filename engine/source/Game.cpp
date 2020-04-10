@@ -760,7 +760,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
       return ac;
     }
 
-    DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
+    DecisionStrategy* strategy = current_creature->get_decision_strategy();
 
     if (strategy)
     {
@@ -834,6 +834,9 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         // variable as the strategy for explicitly getting a command.  This might
         // not actually be the creature's strategy, but rather another one,
         // such as automatic movement, etc.
+        //
+        // The decision strategy might be a copy of the creature's, or might be
+        // an altogether new one, which is why a unique_ptr is used.
         DecisionStrategyPtr command_strategy = DecisionStrategySelector::select_decision_strategy(current_creature);
         CommandPtr command = command_strategy->get_decision(true, current_creature->get_id(), game_command_factory.get(), game_kb_command_map, view_map /* fov_map */);
         

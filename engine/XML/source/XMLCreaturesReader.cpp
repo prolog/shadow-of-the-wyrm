@@ -361,6 +361,6 @@ void XMLCreaturesReader::parse_decision_strategy(const XMLNode& decision_strateg
     bool resist_switch = XMLUtils::get_child_node_bool_value(decision_strategy_node, "ResistSwitch", false);
     decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_RESIST_SWITCH, Bool::to_string(resist_switch));
 
-    creature->set_decision_strategy(decision_strategy);
+    creature->set_decision_strategy(std::move(decision_strategy));
   }
 }

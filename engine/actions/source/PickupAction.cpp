@@ -47,7 +47,7 @@ ActionCostValue PickupAction::toggle_autopickup(CreaturePtr creature)
 {
   if (creature != nullptr)
   {
-    DecisionStrategyPtr dec = creature->get_decision_strategy();
+    DecisionStrategy* dec = creature->get_decision_strategy();
 
     if (dec != nullptr)
     {

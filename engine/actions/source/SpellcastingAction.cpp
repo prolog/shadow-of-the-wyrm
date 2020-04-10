@@ -429,7 +429,7 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
 
   string spell_id = sss.get_selected_spell(screen_selection);
 
-  DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+  DecisionStrategy* decision_strategy = creature->get_decision_strategy();
   CommandFactoryPtr command_factory    = std::make_unique<MagicCommandFactory>();
   KeyboardCommandMapPtr kb_command_map = std::make_shared<MagicKeyboardCommandMap>();
 

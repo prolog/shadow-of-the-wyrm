@@ -801,7 +801,7 @@ void ShadowOfTheWyrmEngine::setup_autopickup_settings(CreaturePtr player)
       }
     }
 
-    DecisionStrategyPtr dec = player->get_decision_strategy();
+    DecisionStrategy* dec = player->get_decision_strategy();
     if (dec != nullptr)
     {
       dec->set_autopickup(autopickup);

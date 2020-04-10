@@ -229,7 +229,7 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
     CurrentCreatureAbilities cca;
     RaceManager rm;
     Race* race = rm.get_race(attacked_creature->get_race_id());
-    DecisionStrategyPtr d_strat = attacked_creature->get_decision_strategy();
+    DecisionStrategy* d_strat = attacked_creature->get_decision_strategy();
 
     if (d_strat && 
         d_strat->get_threats().has_threat(attacking_creature->get_id()).first == false &&

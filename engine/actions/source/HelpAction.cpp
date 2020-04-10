@@ -20,7 +20,7 @@ ActionCostValue HelpAction::help(CreaturePtr creature) const
   CreaturePtr nullc;
   ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
 
-  DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+  DecisionStrategy* decision_strategy = creature->get_decision_strategy();
   CommandFactoryPtr command_factory = std::make_unique<HelpCommandFactory>();
   KeyboardCommandMapPtr kb_command_map = std::make_shared<HelpKeyboardCommandMap>();
   Game& game = Game::instance();

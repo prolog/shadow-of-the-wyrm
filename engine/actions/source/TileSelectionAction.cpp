@@ -116,7 +116,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const str
     
     while (continue_select_tiles)
     {
-      DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+      DecisionStrategy* decision_strategy = creature->get_decision_strategy();
       
       if (decision_strategy)
       {

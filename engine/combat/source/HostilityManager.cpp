@@ -9,7 +9,7 @@ void HostilityManager::set_hostility_to_creature(CreaturePtr creature, const str
 {
   if (creature != nullptr)
   {
-    DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+    DecisionStrategy* decision_strategy = creature->get_decision_strategy();
     ThreatRatings& threat_ratings = decision_strategy->get_threats_ref();
 
     if (creature->get_id() != hostile_to_creature_id)
@@ -39,7 +39,7 @@ void HostilityManager::set_hostility_to_player(CreaturePtr creature, const bool 
   }
   else
   {
-    DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+    DecisionStrategy* decision_strategy = creature->get_decision_strategy();
     ThreatRatings& threat_ratings = decision_strategy->get_threats_ref();
 
     pair<bool, int> threat_exists = threat_ratings.has_threat(CreatureID::CREATURE_ID_PLAYER);
@@ -51,7 +51,7 @@ void HostilityManager::remove_hostility_to_creature(CreaturePtr creature, const 
 {
   if (creature != nullptr)
   {
-    DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+    DecisionStrategy* decision_strategy = creature->get_decision_strategy();
     ThreatRatings& threat_ratings = decision_strategy->get_threats_ref();
 
     if (creature->get_id() != hostile_to_creature_id)

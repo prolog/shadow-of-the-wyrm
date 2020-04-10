@@ -763,7 +763,7 @@ MapPtr CreatureUtils::update_fov_map(MapPtr current_map, MapPtr v_map, CreatureP
 
     FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy(current_creature->get_is_player());
     fov_map = fov_strategy->calculate(current_creature, view_map, creature_coords, los_len);
-    DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
+    DecisionStrategy* strategy = current_creature->get_decision_strategy();
 
     if (strategy)
     {

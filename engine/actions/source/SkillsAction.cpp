@@ -24,7 +24,7 @@ ActionCostValue SkillsAction::show_skills(CreaturePtr creature, const SkillsSele
   ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   int cur_page = 1;
 
-  DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+  DecisionStrategy* decision_strategy = creature->get_decision_strategy();
   CommandFactoryPtr command_factory = std::make_unique<SkillsCommandFactory>();
   KeyboardCommandMapPtr kb_command_map = std::make_shared<SkillsKeyboardCommandMap>();
   Game& game = Game::instance();

@@ -7529,7 +7529,7 @@ int set_automove_coords(lua_State* ls)
 
       if (creature != nullptr)
       {
-        DecisionStrategyPtr dec = creature->get_decision_strategy();
+        DecisionStrategy* dec = creature->get_decision_strategy();
 
         if (dec != nullptr)
         {

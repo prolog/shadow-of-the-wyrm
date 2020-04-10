@@ -239,8 +239,9 @@ class Creature : public ISerializable
     Statistic get_level() const;
 
     // Strategy info
-    void set_decision_strategy(const std::shared_ptr<DecisionStrategy> strategy);
-    std::shared_ptr<DecisionStrategy> get_decision_strategy() const;
+    void set_decision_strategy(std::unique_ptr<DecisionStrategy> strategy);
+    DecisionStrategy* get_decision_strategy() const;
+    DecisionStrategyPtr get_decision_strategy_uptr();
     
     // Is the creature hostile towards a given creature's ID?
     bool hostile_to(const std::string& creature_id);
@@ -444,7 +445,7 @@ class Creature : public ISerializable
     Statistic level;
 
     // Decision making strategy
-    std::shared_ptr<DecisionStrategy> decision_strategy;
+    std::unique_ptr<DecisionStrategy> decision_strategy;
     
     // Religious data
     Religion religion;

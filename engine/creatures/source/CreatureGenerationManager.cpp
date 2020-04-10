@@ -133,7 +133,7 @@ CreatureGenerationList CreatureGenerationManager::generate_ancient_beasts(const 
       ancient_beast->set_arcana_points(Statistic(RNG::dice(ap_dice)));
       ancient_beast->set_hit_points(Statistic(RNG::dice(hp_dice)));
       ancient_beast->set_original_id(creature_id);
-      ancient_beast->set_decision_strategy(ds);
+      ancient_beast->set_decision_strategy(std::move(ds));
       ancient_beast->set_description_sid(desc_sid);
       ancient_beast->set_short_description_sid(short_desc_sid);
       ancient_beast->set_text_details_sid(text_details_sid);

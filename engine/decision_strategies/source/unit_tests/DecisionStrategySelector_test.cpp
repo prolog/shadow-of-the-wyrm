@@ -11,8 +11,8 @@ TEST(SW_Engine_DecisionStrategies_DecisionStrategySelector, select_decision_stra
   am.set_engaged(false);
   am.set_direction(Direction::DIRECTION_NORTH);
 
-  DecisionStrategyPtr dec = std::make_shared<AutomaticMovementDecisionStrategy>(am, nullc);
-  c->set_decision_strategy(dec);
+  DecisionStrategyPtr dec = std::make_unique<AutomaticMovementDecisionStrategy>(am, nullc);
+  c->set_decision_strategy(std::move(dec));
 
   c->set_is_player(true, nullc);
 
