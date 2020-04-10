@@ -38,7 +38,7 @@ void NamingScreen::initialize()
     naming_screen.push_back(make_shared<TextComponent>(empty_str));
   }
 
-  user_prompt = std::make_shared<TextPrompt>();
+  user_prompt = std::make_unique<TextPrompt>();
   user_prompt->set_text_sid(PromptTextKeys::PROMPT_ENTER_YOUR_NAME);
 
   add_page(naming_screen);

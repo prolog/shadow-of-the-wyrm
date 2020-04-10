@@ -82,13 +82,13 @@ void NPCDecisionStrategy::update_threats_if_shopkeeper(MapPtr current_fov_map)
 
 // The basic decision structure for NPCs.  The individual get_decision_for functions are pure virtual within this class,
 // and implemented by concrete decision strategies.
-CommandPtr NPCDecisionStrategy::get_nonmap_decision(const bool reprompt_on_cmd_not_found, const string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p)
+CommandPtr NPCDecisionStrategy::get_nonmap_decision(const bool reprompt_on_cmd_not_found, const string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, int* key_p)
 {
   MapPtr nullmap;
   return get_decision(reprompt_on_cmd_not_found, this_creature_id, command_factory, keyboard_commands, nullmap, key_p);
 }
 
-CommandPtr NPCDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_found, const string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map, int* key_p)
+CommandPtr NPCDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_found, const string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, MapPtr view_map, int* key_p)
 {
   CommandPtr command;
   
@@ -115,7 +115,7 @@ CommandPtr NPCDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_foun
   return command;
 }
 
-CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map)
+CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, MapPtr view_map)
 {
   CommandPtr command;
   

@@ -15,7 +15,7 @@ Screen::Screen(DisplayPtr new_display)
 : line_increment(2), cur_page_idx(0), lines_displayable_area(21)
 {
   game_display = new_display;
-  user_prompt = std::make_shared<NullPrompt>();
+  user_prompt = std::make_unique<NullPrompt>();
   lines_displayable_area = Screen::get_lines_displayable_area(new_display);
 }
 
@@ -99,7 +99,7 @@ string Screen::display()
     if (!screen_selection.empty())
     {
       CommandFactoryPtr command_factory = std::make_unique<ScreenCommandFactory>();
-      KeyboardCommandMapPtr kb_command_map = std::make_shared<ScreenKeyboardCommandMap>();
+      KeyboardCommandMapPtr kb_command_map = std::make_unique<ScreenKeyboardCommandMap>();
       CommandPtr command = command_factory->create(String::to_int(screen_selection), kb_command_map->get_command_type(screen_selection));
 
       if (command != nullptr)

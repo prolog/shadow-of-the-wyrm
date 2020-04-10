@@ -346,7 +346,7 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
 
   // Make the creature select a direction.
   CommandFactoryPtr command_factory = std::make_unique<CommandFactory>();
-  KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
+  KeyboardCommandMapPtr kb_command_map = std::make_unique<KeyboardCommandMap>();
 
   // If the creature is the player, inform the player that a direction is needed.
   if (creature->get_is_player())
@@ -362,7 +362,7 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
   }
 
   // Try to get a direction.  This might fail.
-  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, 0);
+  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0);
 
   if (base_command)
   {
@@ -431,13 +431,13 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
 
   DecisionStrategy* decision_strategy = creature->get_decision_strategy();
   CommandFactoryPtr command_factory    = std::make_unique<MagicCommandFactory>();
-  KeyboardCommandMapPtr kb_command_map = std::make_shared<MagicKeyboardCommandMap>();
+  KeyboardCommandMapPtr kb_command_map = std::make_unique<MagicKeyboardCommandMap>();
 
   if (decision_strategy)
   {
     // Get the actual command, signalling to the decision function that
     // input has been provided (don't try to get the input twice).
-    CommandPtr magic_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, &input);
+    CommandPtr magic_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), &input);
 
     action_cost_value = MagicCommandProcessor::process(creature, magic_command.get());
 

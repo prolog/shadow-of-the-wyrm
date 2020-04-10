@@ -16,8 +16,8 @@ class TileSelectionAction : public IActionManager, ISerializable
 
     void set_selection_key(const std::string& new_selection_key);
     
-    void set_keyboard_command_map(const KeyboardCommandMapPtr new_command_map);
-    KeyboardCommandMapPtr get_keyboard_command_map();
+    void set_keyboard_command_map(KeyboardCommandMapPtr new_command_map);
+    KeyboardCommandMap* get_keyboard_command_map();
     
     // Functions used to set whether to display certain properties.
     //

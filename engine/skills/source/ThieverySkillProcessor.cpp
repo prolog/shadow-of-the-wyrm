@@ -111,13 +111,13 @@ CreaturePtr ThieverySkillProcessor::get_steal_creature(const TileDirectionMap& t
   else
   {
     CommandFactoryPtr command_factory = std::make_unique<CommandFactory>();
-    KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
+    KeyboardCommandMapPtr kb_command_map = std::make_unique<KeyboardCommandMap>();
 
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_GET_DIRECTION));
     manager.send();
 
-    CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, 0);
+    CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0);
 
     if (base_command)
     {

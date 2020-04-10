@@ -30,7 +30,7 @@ ActionCostValue EquipmentManager::manage_equipment()
     if (creature)
     {
       CommandFactoryPtr command_factory    = std::make_unique<EquipmentCommandFactory>();
-      KeyboardCommandMapPtr kb_command_map = std::make_shared<EquipmentKeyboardCommandMap>();
+      KeyboardCommandMapPtr kb_command_map = std::make_unique<EquipmentKeyboardCommandMap>();
     
       while (manage_eq)
       {

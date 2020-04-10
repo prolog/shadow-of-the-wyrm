@@ -22,7 +22,7 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
 
   // Make the creature select a direction.
   CommandFactoryPtr command_factory    = std::make_unique<CommandFactory>();
-  KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
+  KeyboardCommandMapPtr kb_command_map = std::make_unique<KeyboardCommandMap>();
 
   // Initial check: are we on the world map?
   Game& game = Game::instance();
@@ -62,7 +62,7 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
       }
       else
       {
-        base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, 0);
+        base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0);
       }
 
       if (added_initial_message && creature->get_is_player())

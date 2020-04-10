@@ -14,19 +14,19 @@ DecisionStrategy* MobileDecisionStrategy::copy()
   return new MobileDecisionStrategy(*this);
 }
 
-CommandPtr MobileDecisionStrategy::get_decision_for_inventory(CommandFactory* command_factory, KeyboardCommandMapPtr keyboard_commands)
+CommandPtr MobileDecisionStrategy::get_decision_for_inventory(CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands)
 {
   CommandPtr null;
   return null;
 }
 
-CommandPtr MobileDecisionStrategy::get_decision_for_equipment(CommandFactory* command_factory, KeyboardCommandMapPtr keyboard_commands)
+CommandPtr MobileDecisionStrategy::get_decision_for_equipment(CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands)
 {
   CommandPtr null;
   return null;
 }
 
-CommandPtr MobileDecisionStrategy::get_decision_for_tile_selection(CommandFactory* command_factory, KeyboardCommandMapPtr keyboard_commands)
+CommandPtr MobileDecisionStrategy::get_decision_for_tile_selection(CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands)
 {
   CommandPtr null;
   return null;

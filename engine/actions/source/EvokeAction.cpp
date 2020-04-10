@@ -204,7 +204,7 @@ pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature,
 
   // Make the creature select a direction.
   CommandFactoryPtr command_factory = std::make_unique<CommandFactory>();
-  KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
+  KeyboardCommandMapPtr kb_command_map = std::make_unique<KeyboardCommandMap>();
   SpellShape spell_shape = SpellShapeFactory::create_spell_shape(shape_type, SpellConstants::DEFAULT_BEAM_RADIUS);
 
   // If the creature is the player, inform the player that a direction is needed.
@@ -221,7 +221,7 @@ pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature,
     manager.send();
   }
 
-  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, 0);
+  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0);
 
   if (base_command)
   {

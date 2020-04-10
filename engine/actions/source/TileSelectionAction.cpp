@@ -20,7 +20,7 @@ TileSelectionAction::TileSelectionAction()
 : show_tile_description(true), show_feature_description(true), show_creature_description(true), show_item_descriptions(true)
 {
   command_factory = std::make_unique<TileSelectionCommandFactory>();
-  kb_command_map  = std::make_shared<TileSelectionKeyboardCommandMap>();
+  kb_command_map  = std::make_unique<TileSelectionKeyboardCommandMap>();
 }
 
 bool TileSelectionAction::operator==(const TileSelectionAction& tsa) const
@@ -37,14 +37,14 @@ bool TileSelectionAction::operator==(const TileSelectionAction& tsa) const
   return result;
 }
 
-void TileSelectionAction::set_keyboard_command_map(const KeyboardCommandMapPtr new_command_map)
+void TileSelectionAction::set_keyboard_command_map(KeyboardCommandMapPtr new_command_map)
 {
-  kb_command_map = new_command_map;
+  kb_command_map = std::move(new_command_map);
 }
 
-KeyboardCommandMapPtr TileSelectionAction::get_keyboard_command_map()
+KeyboardCommandMap* TileSelectionAction::get_keyboard_command_map()
 {
-  return kb_command_map;
+  return kb_command_map.get();
 }
 
 void TileSelectionAction::set_show_tile_description(const bool tile_desc)
@@ -120,7 +120,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const str
       
       if (decision_strategy)
       {
-        CommandPtr tile_selection_command = decision_strategy->get_decision(true, creature->get_id(), command_factory.get(), kb_command_map);
+        CommandPtr tile_selection_command = decision_strategy->get_decision(true, creature->get_id(), command_factory.get(), kb_command_map.get());
         command_result = TileSelectionCommandProcessor::process(creature, tile_selection_command.get(), this);
         
         continue_select_tiles = command_result.first;
