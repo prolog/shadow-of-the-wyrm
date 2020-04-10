@@ -8,22 +8,22 @@ using namespace std;
 
 INPCMagicDecisionPtr NPCMagicDecisionFactory::create_npc_magic_decision(const MagicClassification mc)
 {
-  INPCMagicDecisionPtr decide = make_shared<NullNPCMagicDecision>();
+  INPCMagicDecisionPtr decide = make_unique<NullNPCMagicDecision>();
 
   switch(mc)
   {
     case MagicClassification::MAGIC_CLASSIFICATION_ATTACK:
-      decide = make_shared<AttackNPCMagicDecision>();
+      decide = make_unique<AttackNPCMagicDecision>();
       break;
     case MagicClassification::MAGIC_CLASSIFICATION_HEALING:
-      decide = make_shared<HealingNPCMagicDecision>();
+      decide = make_unique<HealingNPCMagicDecision>();
       break;
     case MagicClassification::MAGIC_CLASSIFICATION_BUFF:
     case MagicClassification::MAGIC_CLASSIFICATION_UTILITY:
-      decide = make_shared<DefaultNPCMagicDecision>();
+      decide = make_unique<DefaultNPCMagicDecision>();
       break;
     case MagicClassification::MAGIC_CLASSIFICATION_UNDEFINED:
-      decide = make_shared<NullNPCMagicDecision>();
+      decide = make_unique<NullNPCMagicDecision>();
       break;
   }
 
