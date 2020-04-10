@@ -231,14 +231,9 @@ void Screen::add_page(const vector<ScreenComponentPtr>& new_page)
   components.push_back(new_page);
 }
 
-void Screen::set_prompt(PromptPtr new_prompt)
+Prompt* Screen::get_prompt() const
 {
-  user_prompt = new_prompt;
-}
-
-PromptPtr Screen::get_prompt() const
-{
-  return user_prompt;
+  return user_prompt.get();
 }
 
 vector<vector<ScreenComponentPtr>> Screen::get_components() const

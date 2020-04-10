@@ -594,7 +594,7 @@ string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& men
     SDLCursorLocation& cursor_loc = screen_cursors.back();
 
     SDLRender text_renderer(sdld);
-    PromptPtr prompt = screen.get_prompt();
+    Prompt* prompt = screen.get_prompt();
     prompt_processor.show_prompt(sdld, cursor_loc, text_renderer, renderer, spritesheets[TEXT_ID], current_screen, prompt, row, col, get_max_rows(), get_max_cols());
     refresh_current_window();
 

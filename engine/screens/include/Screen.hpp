@@ -32,8 +32,7 @@ class Screen
 
     OptionPtr get_option(const int option_id);
 
-    void set_prompt(PromptPtr new_prompt);
-    PromptPtr get_prompt() const;
+    Prompt* get_prompt() const;
 
     static int get_lines_displayable_area(DisplayPtr display);
 

@@ -13,7 +13,7 @@ bool CursesPromptProcessor::operator==(const CursesPromptProcessor& cpp) const
 }
 
 // JCD FIXME: Refactor.  Subclasses?  Split up into PromptReader/PromptWriter with applicable subclasses?
-string CursesPromptProcessor::get_prompt(WINDOW* window, const MenuWrapper& menu_wrapper, PromptPtr prompt)
+string CursesPromptProcessor::get_prompt(WINDOW* window, const MenuWrapper& menu_wrapper, Prompt* prompt)
 {
   string prompt_entry;
 
@@ -139,7 +139,7 @@ int CursesPromptProcessor::get_prompt(WINDOW* window/*, MENU* options_menu*/)
   return c; // JCD FIXME
 }
 
-void CursesPromptProcessor::show_prompt(WINDOW* window, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
+void CursesPromptProcessor::show_prompt(WINDOW* window, Prompt* prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
 {
   if (prompt != nullptr)
   {

@@ -495,7 +495,7 @@ void CursesDisplay::refresh_and_clear_window()
 string CursesDisplay::get_prompt_value(const Screen& current_screen, const MenuWrapper& wrapper, const int current_row, const int current_col)
 {
   WINDOW* screen_window = get_current_screen();
-  PromptPtr prompt = current_screen.get_prompt();
+  Prompt* prompt = current_screen.get_prompt();
   prompt_processor.show_prompt(screen_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
 
   string result = prompt_processor.get_prompt(screen_window, wrapper, prompt);

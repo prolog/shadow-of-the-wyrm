@@ -12,7 +12,7 @@ bool SDLPromptProcessor::operator==(const SDLPromptProcessor& cpp) const
   return true;
 }
 
-string SDLPromptProcessor::get_prompt(const SDLDisplayParameters& display_params, SDLCursorLocation& cursor_location, SDLRender& render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, const MenuWrapper& menu_wrapper, PromptPtr prompt)
+string SDLPromptProcessor::get_prompt(const SDLDisplayParameters& display_params, SDLCursorLocation& cursor_location, SDLRender& render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, const MenuWrapper& menu_wrapper, Prompt* prompt)
 {
   string prompt_entry;
 
@@ -113,7 +113,7 @@ int SDLPromptProcessor::get_prompt(SDL_Window* window)
   return prompt_val;
 }
 
-void SDLPromptProcessor::show_prompt(const SDLDisplayParameters& display_params, SDLCursorLocation& cursor_location, SDLRender& render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
+void SDLPromptProcessor::show_prompt(const SDLDisplayParameters& display_params, SDLCursorLocation& cursor_location, SDLRender& render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, Prompt* prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
 {
   if (sdl_renderer != nullptr && spritesheet != nullptr && screen != nullptr && prompt != nullptr)
   {

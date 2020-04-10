@@ -16,7 +16,7 @@ class CursesPromptProcessor : public PromptProcessor
     bool operator==(const CursesPromptProcessor& cpp) const;
 
     int get_prompt(WINDOW* window/*, SCREEN* screen*/);
-    std::string get_prompt(WINDOW* window, const MenuWrapper& menu_wrapper, PromptPtr prompt);
-    void show_prompt(WINDOW* window, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS);
+    std::string get_prompt(WINDOW* window, const MenuWrapper& menu_wrapper, Prompt* prompt);
+    void show_prompt(WINDOW* window, Prompt* prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS);
     std::string get_user_string(WINDOW* window, bool allow_nonalphanumeric = false);
 };

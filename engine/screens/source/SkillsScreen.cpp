@@ -128,13 +128,13 @@ void SkillsScreen::initialize()
   add_page(sk_screen);
 
   // Set the prompt
-  PromptPtr inv_prompt = std::make_shared<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr inv_prompt = std::make_unique<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
 
   // Accept any input to the inventory manager will take care of sorting out
   // what's a valid command and what is not.
   inv_prompt->set_accept_any_input(true);
   inv_prompt->set_text_sid(PromptTextKeys::PROMPT_SKILLS);
-  user_prompt = inv_prompt;
+  user_prompt = std::move(inv_prompt);
   line_increment = 1;
 }
 

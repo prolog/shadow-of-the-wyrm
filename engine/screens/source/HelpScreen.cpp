@@ -34,8 +34,8 @@ void HelpScreen::initialize()
   help_screen.push_back(options);
   add_page(help_screen);
 
-  PromptPtr help_prompt = std::make_shared<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr help_prompt = std::make_unique<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
   help_prompt->set_text_sid(PromptTextKeys::PROMPT_HELP);
   help_prompt->set_accept_any_input(true);
-  user_prompt = help_prompt;
+  user_prompt = std::move(help_prompt);
 }

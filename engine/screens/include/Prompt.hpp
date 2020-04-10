@@ -75,4 +75,4 @@ class TextPrompt : public Prompt
     void initialize();
 };
 
-using PromptPtr = std::shared_ptr<Prompt>;
+using PromptPtr = std::unique_ptr<Prompt>;

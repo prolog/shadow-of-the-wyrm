@@ -45,11 +45,11 @@ void WornLocationSelectionScreen::initialize()
   add_page(slot_screen);
 
   // Set the prompt
-  PromptPtr slot_prompt = std::make_shared<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr slot_prompt = std::make_unique<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
 
   // Accept any input - the equipment manager will take care of sorting out
   // what's a valid command and what is not.
   slot_prompt->set_accept_any_input(true);
   slot_prompt->set_text_sid(prompt_text_sid);
-  user_prompt = slot_prompt;
+  user_prompt = std::move(slot_prompt);
 }
