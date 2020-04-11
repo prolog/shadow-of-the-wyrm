@@ -303,12 +303,12 @@ bool EvokeAction::process_wand_damage_and_effect(CreaturePtr creature, MapPtr ma
     // add a status message based on whether the item was identified.
     SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(wand_spell.get_shape().get_spell_shape_type());
 
-    if (spell_processor)
+    if (spell_processor != nullptr)
     {
       // Use the generic spell processor, which is also used for "regular"
       // spellcasting.
       SpellcastingProcessor sp;
-      wand_identified = sp.process(spell_processor, creature, map, caster_coord, direction, wand_spell, wand_status);
+      wand_identified = sp.process(spell_processor.get(), creature, map, caster_coord, direction, wand_spell, wand_status);
     }
   }
   else

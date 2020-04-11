@@ -5,7 +5,7 @@ using namespace std;
 
 // Process the spell and the associated animation.  Return true if the spell
 // was identified during casting.
-bool SpellcastingProcessor::process(SpellShapeProcessorPtr spell_processor, CreaturePtr caster, MapPtr current_map, const Coordinate& caster_coord, const Direction spell_direction, const Spell& spell, const ItemStatus effect_status) const
+bool SpellcastingProcessor::process(SpellShapeProcessor* spell_processor, CreaturePtr caster, MapPtr current_map, const Coordinate& caster_coord, const Direction spell_direction, const Spell& spell, const ItemStatus effect_status) const
 {
   Game& game = Game::instance();
 

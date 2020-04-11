@@ -38,4 +38,4 @@ class SpellShapeProcessor
     bool is_coordinate_adjacent_to_coordinate_in_previous_frame(const Coordinate& coord, const std::vector<Coordinate>& prev_frame);
 };
 
-using SpellShapeProcessorPtr = std::shared_ptr<SpellShapeProcessor>;
+using SpellShapeProcessorPtr = std::unique_ptr<SpellShapeProcessor>;

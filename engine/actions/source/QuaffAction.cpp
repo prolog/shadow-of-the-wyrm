@@ -96,12 +96,12 @@ void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreatureP
       SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(potion_spell.get_shape().get_spell_shape_type());
       bool effect_identified = false;
 
-      if (spell_processor)
+      if (spell_processor != nullptr)
       {
         // Use the generic spell processor, which is also used for "regular"
         // spellcasting.
         SpellcastingProcessor sp;
-        effect_identified = sp.process(spell_processor, caster, map, caster_coord, Direction::DIRECTION_NULL, potion_spell, potion->get_status());
+        effect_identified = sp.process(spell_processor.get(), caster, map, caster_coord, Direction::DIRECTION_NULL, potion_spell, potion->get_status());
       }
 
       // Was the item identified?

@@ -185,12 +185,12 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
             // Process the spell shape.
             SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(spell.get_shape().get_spell_shape_type());
 
-            if (spell_processor)
+            if (spell_processor != nullptr)
             {
               SpellcastingProcessor sp;
 
               // Spells always use the "uncursed" effect status.
-              sp.process(spell_processor, creature, current_map, caster_coord, spell_direction, spell, ItemStatus::ITEM_STATUS_UNCURSED);
+              sp.process(spell_processor.get(), creature, current_map, caster_coord, spell_direction, spell, ItemStatus::ITEM_STATUS_UNCURSED);
 
               // Train the creature's magic skills
               train_skills(creature, spell);
