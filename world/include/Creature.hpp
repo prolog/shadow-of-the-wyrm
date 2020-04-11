@@ -241,7 +241,7 @@ class Creature : public ISerializable
     // Strategy info
     void set_decision_strategy(std::unique_ptr<DecisionStrategy> strategy);
     DecisionStrategy* get_decision_strategy() const;
-    DecisionStrategyPtr get_decision_strategy_uptr();
+    std::unique_ptr<DecisionStrategy> get_decision_strategy_uptr();
     
     // Is the creature hostile towards a given creature's ID?
     bool hostile_to(const std::string& creature_id);
