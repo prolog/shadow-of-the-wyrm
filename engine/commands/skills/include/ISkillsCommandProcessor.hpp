@@ -9,5 +9,5 @@ class ISkillsCommandProcessor
     virtual ActionCostValue process(CreaturePtr creature, Command* command, MapPtr map, const SkillType st) = 0;
 };
 
-using ISkillsCommandProcessorPtr = std::shared_ptr<ISkillsCommandProcessor>;
+using ISkillsCommandProcessorPtr = std::unique_ptr<ISkillsCommandProcessor>;
 
