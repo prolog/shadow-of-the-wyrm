@@ -119,14 +119,14 @@ bool SDLDisplay::check_available_screen_dimensions()
 void SDLDisplay::initialize_colours()
 {
   colours = { /* black                */ {0, {0,0,0,255} }, // jcd fixme these are bright
-              /* red                  */ {1, {139,0,0,255} },
-              /* green                */ {2, {0,139,0,255} },
-              /* yellow               */ {3, {139,139,0,255} },
+              /* red                  */ {1, {180,0,0,255} },
+              /* green                */ {2, {0,159,0,255} },
+              /* yellow               */ {3, {159,159,0,255} },
               /* blue                 */ {4, {0,100,200,255} }, /* dark blue hard to read in SDL if 139 used like the others */
-              /* magenta              */ {5, {139,0,139,255} },
-              /* cyan                 */ {6, {0,139,139,255} },
+              /* magenta              */ {5, {159,0,159,255} },
+              /* cyan                 */ {6, {0,159,159,255} },
               /* white                */ {7, {200,200,200,255} },
-              /* bold black/dark gray */ {8, {59,59,59,255} },
+              /* bold black/dark gray */ {8, {47,79,79,255} },
               /* bold red             */ {9, {255,0,0,255} },
               /* bold green           */ {10, {0,255,0,255} },
               /* bold yellow          */ {11, {255,255,0,255} },
