@@ -4042,6 +4042,11 @@
 			<Symbol>
 				<Char>@</Char>
 				<Colour>4</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>4</Row>
+					<Col>1</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
@@ -4074,6 +4079,11 @@
 			<Symbol>
 				<Char>@</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>4</Row>
+					<Col>2</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
@@ -4208,6 +4218,11 @@
 			<Symbol>
 				<Char>i</Char>
 				<Colour>10</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>4</Row>
+					<Col>3</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -4246,6 +4261,11 @@
 			<Symbol>
 				<Char>s</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>4</Row>
+					<Col>4</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
