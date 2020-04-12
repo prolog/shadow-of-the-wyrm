@@ -194,7 +194,7 @@ vector<pair<string, Colour>> CreatureTranslator::get_display_status_ailments(con
     initialize_status_ailment_checkers();
   }
 
-  for (IStatusAilmentTranslatorPtr status_ailment_checker : status_ailment_checkers)
+  for (IStatusAilmentTranslatorPtr& status_ailment_checker : status_ailment_checkers)
   {
     if (status_ailment_checker && status_ailment_checker->has_ailment(c))
     {
@@ -210,49 +210,49 @@ void CreatureTranslator::initialize_status_ailment_checkers()
 {
   status_ailment_checkers.clear();
 
-  IStatusAilmentTranslatorPtr hunger_checker = std::make_shared<HungerStatusAilmentTranslator>();
-  IStatusAilmentTranslatorPtr weight_checker = std::make_shared<WeightStatusAilmentTranslator>();
-  IStatusAilmentTranslatorPtr poison_checker = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_POISON, StatusAilmentTextKeys::STATUS_POISON, Colour::COLOUR_GREEN);
-  IStatusAilmentTranslatorPtr muteness_chekr = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_MUTE, StatusAilmentTextKeys::STATUS_MUTE, Colour::COLOUR_BLUE);
-  IStatusAilmentTranslatorPtr paralysis_chkr = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_PARALYSIS, StatusAilmentTextKeys::STATUS_PARALYSIS, Colour::COLOUR_YELLOW);
-  IStatusAilmentTranslatorPtr slowness_chekr = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SLOWNESS, StatusAilmentTextKeys::STATUS_SLOWNESS, Colour::COLOUR_WHITE);
-  IStatusAilmentTranslatorPtr haste_checker = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_HASTE, StatusAilmentTextKeys::STATUS_HASTE, Colour::COLOUR_BOLD_WHITE);
-  IStatusAilmentTranslatorPtr stone_checker = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_STONE, StatusAilmentTextKeys::STATUS_STONE, Colour::COLOUR_BOLD_BLACK);
-  IStatusAilmentTranslatorPtr bloodied_chkr = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_BLOODIED, StatusAilmentTextKeys::STATUS_BLOODIED, Colour::COLOUR_RED);
-  IStatusAilmentTranslatorPtr stunned_chekr = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_STUNNED, StatusAilmentTextKeys::STATUS_STUNNED, Colour::COLOUR_BOLD_CYAN);
-  IStatusAilmentTranslatorPtr exposed_chekr = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_EXPOSED, StatusAilmentTextKeys::STATUS_EXPOSED, Colour::COLOUR_CYAN);
-  IStatusAilmentTranslatorPtr disfigured_ck = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_DISFIGURED, StatusAilmentTextKeys::STATUS_DISFIGURED, Colour::COLOUR_BOLD_GREEN);
-  IStatusAilmentTranslatorPtr spellbound_ck = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SPELLBOUND, StatusAilmentTextKeys::STATUS_IMMOBILE, Colour::COLOUR_BOLD_MAGENTA);
-  IStatusAilmentTranslatorPtr blinded_check = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_BLINDED, StatusAilmentTextKeys::STATUS_BLINDED, Colour::COLOUR_BOLD_BLUE);
-  IStatusAilmentTranslatorPtr incorporeal_ck = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_INCORPOREAL, StatusAilmentTextKeys::STATUS_INCORPOREAL, Colour::COLOUR_WHITE);
-  IStatusAilmentTranslatorPtr drunk_checker = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_DRUNK, StatusAilmentTextKeys::STATUS_DRUNK, Colour::COLOUR_WHITE);
-  IStatusAilmentTranslatorPtr flying_checker = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_FLYING, StatusAilmentTextKeys::STATUS_FLYING, Colour::COLOUR_WHITE);
-  IStatusAilmentTranslatorPtr timewalk_chekr = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_TIMEWALK, StatusAilmentTextKeys::STATUS_TIMEWALK, Colour::COLOUR_WHITE);
-  IStatusAilmentTranslatorPtr sated_checker = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SATED, StatusAilmentTextKeys::STATUS_SATED, Colour::COLOUR_BOLD_YELLOW);
-  IStatusAilmentTranslatorPtr wb_checker    = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_WATER_BREATHING, StatusAilmentTextKeys::STATUS_WATER_BREATHING, Colour::COLOUR_BOLD_CYAN);
-  IStatusAilmentTranslatorPtr rage_checker  = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_RAGE, StatusAilmentTextKeys::STATUS_RAGE, Colour::COLOUR_BOLD_RED);
-  IStatusAilmentTranslatorPtr hide_checker  = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_HIDE, StatusAilmentTextKeys::STATUS_HIDE, Colour::COLOUR_WHITE);
+  IStatusAilmentTranslatorPtr hunger_checker = std::make_unique<HungerStatusAilmentTranslator>();
+  IStatusAilmentTranslatorPtr weight_checker = std::make_unique<WeightStatusAilmentTranslator>();
+  IStatusAilmentTranslatorPtr poison_checker = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_POISON, StatusAilmentTextKeys::STATUS_POISON, Colour::COLOUR_GREEN);
+  IStatusAilmentTranslatorPtr muteness_chekr = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_MUTE, StatusAilmentTextKeys::STATUS_MUTE, Colour::COLOUR_BLUE);
+  IStatusAilmentTranslatorPtr paralysis_chkr = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_PARALYSIS, StatusAilmentTextKeys::STATUS_PARALYSIS, Colour::COLOUR_YELLOW);
+  IStatusAilmentTranslatorPtr slowness_chekr = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SLOWNESS, StatusAilmentTextKeys::STATUS_SLOWNESS, Colour::COLOUR_WHITE);
+  IStatusAilmentTranslatorPtr haste_checker = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_HASTE, StatusAilmentTextKeys::STATUS_HASTE, Colour::COLOUR_BOLD_WHITE);
+  IStatusAilmentTranslatorPtr stone_checker = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_STONE, StatusAilmentTextKeys::STATUS_STONE, Colour::COLOUR_BOLD_BLACK);
+  IStatusAilmentTranslatorPtr bloodied_chkr = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_BLOODIED, StatusAilmentTextKeys::STATUS_BLOODIED, Colour::COLOUR_RED);
+  IStatusAilmentTranslatorPtr stunned_chekr = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_STUNNED, StatusAilmentTextKeys::STATUS_STUNNED, Colour::COLOUR_BOLD_CYAN);
+  IStatusAilmentTranslatorPtr exposed_chekr = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_EXPOSED, StatusAilmentTextKeys::STATUS_EXPOSED, Colour::COLOUR_CYAN);
+  IStatusAilmentTranslatorPtr disfigured_ck = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_DISFIGURED, StatusAilmentTextKeys::STATUS_DISFIGURED, Colour::COLOUR_BOLD_GREEN);
+  IStatusAilmentTranslatorPtr spellbound_ck = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SPELLBOUND, StatusAilmentTextKeys::STATUS_IMMOBILE, Colour::COLOUR_BOLD_MAGENTA);
+  IStatusAilmentTranslatorPtr blinded_check = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_BLINDED, StatusAilmentTextKeys::STATUS_BLINDED, Colour::COLOUR_BOLD_BLUE);
+  IStatusAilmentTranslatorPtr incorporeal_ck = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_INCORPOREAL, StatusAilmentTextKeys::STATUS_INCORPOREAL, Colour::COLOUR_WHITE);
+  IStatusAilmentTranslatorPtr drunk_checker = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_DRUNK, StatusAilmentTextKeys::STATUS_DRUNK, Colour::COLOUR_WHITE);
+  IStatusAilmentTranslatorPtr flying_checker = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_FLYING, StatusAilmentTextKeys::STATUS_FLYING, Colour::COLOUR_WHITE);
+  IStatusAilmentTranslatorPtr timewalk_chekr = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_TIMEWALK, StatusAilmentTextKeys::STATUS_TIMEWALK, Colour::COLOUR_WHITE);
+  IStatusAilmentTranslatorPtr sated_checker = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SATED, StatusAilmentTextKeys::STATUS_SATED, Colour::COLOUR_BOLD_YELLOW);
+  IStatusAilmentTranslatorPtr wb_checker    = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_WATER_BREATHING, StatusAilmentTextKeys::STATUS_WATER_BREATHING, Colour::COLOUR_BOLD_CYAN);
+  IStatusAilmentTranslatorPtr rage_checker  = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_RAGE, StatusAilmentTextKeys::STATUS_RAGE, Colour::COLOUR_BOLD_RED);
+  IStatusAilmentTranslatorPtr hide_checker  = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_HIDE, StatusAilmentTextKeys::STATUS_HIDE, Colour::COLOUR_WHITE);
 
-  status_ailment_checkers.push_back(hunger_checker);
-  status_ailment_checkers.push_back(weight_checker);
-  status_ailment_checkers.push_back(poison_checker);
-  status_ailment_checkers.push_back(muteness_chekr);
-  status_ailment_checkers.push_back(paralysis_chkr);
-  status_ailment_checkers.push_back(slowness_chekr);
-  status_ailment_checkers.push_back(haste_checker );
-  status_ailment_checkers.push_back(stone_checker );
-  status_ailment_checkers.push_back(bloodied_chkr );
-  status_ailment_checkers.push_back(stunned_chekr );
-  status_ailment_checkers.push_back(exposed_chekr );
-  status_ailment_checkers.push_back(disfigured_ck );
-  status_ailment_checkers.push_back(spellbound_ck );
-  status_ailment_checkers.push_back(blinded_check );
-  status_ailment_checkers.push_back(incorporeal_ck);
-  status_ailment_checkers.push_back(drunk_checker );
-  status_ailment_checkers.push_back(flying_checker);
-  status_ailment_checkers.push_back(timewalk_chekr);
-  status_ailment_checkers.push_back(sated_checker );
-  status_ailment_checkers.push_back(wb_checker    );
-  status_ailment_checkers.push_back(rage_checker  );
-  status_ailment_checkers.push_back(hide_checker  );
+  status_ailment_checkers.push_back(std::move(hunger_checker));
+  status_ailment_checkers.push_back(std::move(weight_checker));
+  status_ailment_checkers.push_back(std::move(poison_checker));
+  status_ailment_checkers.push_back(std::move(muteness_chekr));
+  status_ailment_checkers.push_back(std::move(paralysis_chkr));
+  status_ailment_checkers.push_back(std::move(slowness_chekr));
+  status_ailment_checkers.push_back(std::move(haste_checker ));
+  status_ailment_checkers.push_back(std::move(stone_checker ));
+  status_ailment_checkers.push_back(std::move(bloodied_chkr ));
+  status_ailment_checkers.push_back(std::move(stunned_chekr ));
+  status_ailment_checkers.push_back(std::move(exposed_chekr ));
+  status_ailment_checkers.push_back(std::move(disfigured_ck ));
+  status_ailment_checkers.push_back(std::move(spellbound_ck ));
+  status_ailment_checkers.push_back(std::move(blinded_check ));
+  status_ailment_checkers.push_back(std::move(incorporeal_ck));
+  status_ailment_checkers.push_back(std::move(drunk_checker ));
+  status_ailment_checkers.push_back(std::move(flying_checker));
+  status_ailment_checkers.push_back(std::move(timewalk_chekr));
+  status_ailment_checkers.push_back(std::move(sated_checker ));
+  status_ailment_checkers.push_back(std::move(wb_checker    ));
+  status_ailment_checkers.push_back(std::move(rage_checker  ));
+  status_ailment_checkers.push_back(std::move(hide_checker  ));
 }
