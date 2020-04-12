@@ -126,7 +126,7 @@ void SDLDisplay::initialize_colours()
               /* magenta              */ {5, {159,0,159,255} },
               /* cyan                 */ {6, {0,159,159,255} },
               /* white                */ {7, {200,200,200,255} },
-              /* bold black/dark gray */ {8, {47,79,79,255} },
+              /* bold black/dark gray */ {8, {67,99,99,255} },
               /* bold red             */ {9, {255,0,0,255} },
               /* bold green           */ {10, {0,255,0,255} },
               /* bold yellow          */ {11, {255,255,0,255} },
