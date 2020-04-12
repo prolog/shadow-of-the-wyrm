@@ -54,7 +54,6 @@
 #include "CommandFactoryFactory.hpp"
 #include "DisplayFactory.hpp"
 #include "KeyboardCommandMapFactory.hpp"
-#include "WorldFactory.hpp"
 
 using namespace std;
 
@@ -1431,7 +1430,7 @@ bool Game::deserialize(istream& stream)
   // Ignore tile_info map - this will be built up on startup.
 
   // Deserialize the world
-  world = WorldFactory::create_world();
+  world = std::make_unique<World>();
   if (!world) return false;
   if (!world->deserialize(stream)) return false;
 

@@ -30,4 +30,4 @@ class World : public ISerializable
     ClassIdentifier internal_class_identifier() const override;
 };
 
-using WorldPtr = std::shared_ptr<World>;
+using WorldPtr = std::unique_ptr<World>;

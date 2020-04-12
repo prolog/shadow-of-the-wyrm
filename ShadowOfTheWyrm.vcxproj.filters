@@ -1958,9 +1958,6 @@
     <ClInclude Include="engine\commands\include\KeyboardCommandMapFactory.hpp">
       <Filter>Header Files\engine\commands\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\include\WorldFactory.hpp">
-      <Filter>Header Files\world\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\time\include\TimeObserverFactory.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
@@ -5463,9 +5460,6 @@
     </ClCompile>
     <ClCompile Include="engine\commands\source\KeyboardCommandMapFactory.cpp">
       <Filter>Source Files\engine\commands\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\source\WorldFactory.cpp">
-      <Filter>Source Files\world\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\time\source\TimeObserverFactory.cpp">
       <Filter>Source Files\engine\time\source</Filter>
