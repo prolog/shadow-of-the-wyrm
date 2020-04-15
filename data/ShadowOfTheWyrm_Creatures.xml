@@ -4988,7 +4988,7 @@
 				<Type>0</Type>
 			</Damage>
 		</Creature>
-		<Creature id="geist">
+		<Creature id="ghast">
 			<RaceID>_spirit</RaceID>
 			<ShortDescriptionSID>GHAST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GHAST_DESCRIPTION_SID</DescriptionSID>
@@ -5000,6 +5000,11 @@
 			<Symbol>
 				<Char>U</Char>
 				<Colour>14</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>4</Row>
+					<Col>14</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -5098,6 +5103,11 @@
 			<Symbol>
 				<Char>L</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>4</Row>
+					<Col>15</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -5143,6 +5153,11 @@
 			<Symbol>
 				<Char>L</Char>
 				<Colour>1</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>4</Row>
+					<Col>16</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -5190,6 +5205,11 @@
 			<Symbol>
 				<Char>v</Char>
 				<Colour>6</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>0</Row>
+					<Col>1</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -5300,6 +5320,11 @@
 			<Symbol>
 				<Char>m</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>4</Row>
+					<Col>17</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
