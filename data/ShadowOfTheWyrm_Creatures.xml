@@ -5717,6 +5717,11 @@
 			<Symbol>
 				<Char>D</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>4</Row>
+					<Col>23</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -5765,6 +5770,11 @@
 			<Symbol>
 				<Char>u</Char>
 				<Colour>4</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>4</Row>
+					<Col>24</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -5812,6 +5822,11 @@
 			<Symbol>
 				<Char>Q</Char>
 				<Colour>12</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>4</Row>
+					<Col>25</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -8644,6 +8659,11 @@
 			<Symbol>
 				<Char>M</Char>
 				<Colour>7</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>4</Row>
+					<Col>22</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
