@@ -19128,6 +19128,11 @@
 			<Symbol>
 				<Char>A</Char>
 				<Colour>95</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>4</Row>
+					<Col>29</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
