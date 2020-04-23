@@ -16,6 +16,7 @@
 				<Action>Cannibalism</Action>
 				<Action>DesecrateGood</Action>
 				<Action>GraveRobbing</Action>
+				<Action>SkinHumanoid</Action>
 			</Dislikes>
 			<Crowning>
 				<Artifact>asturias</Artifact>
@@ -58,6 +59,7 @@
 				<Action>Cannibalism</Action>
 				<Action>DesecrateGood</Action>
 				<Action>GraveRobbing</Action>
+				<Action>SkinHumanoid</Action>
 			</Dislikes>
 			<Crowning>
 				<Artifact>delver</Artifact>
@@ -101,6 +103,7 @@
 				<Action>Cannibalism</Action>
 				<Action>DesecrateGood</Action>
 				<Action>GraveRobbing</Action>
+				<Action>SkinHumanoid</Action>
 			</Dislikes>
 			<Crowning>
 				<Artifact>delver</Artifact>
@@ -143,6 +146,7 @@
 				<Action>Cannibalism</Action>
 				<Action>DesecrateNeutral</Action>
 				<Action>GraveRobbing</Action>
+				<Action>SkinHumanoid</Action>
 			</Dislikes>
 			<Crowning>
 				<Artifact>carpathos</Artifact>

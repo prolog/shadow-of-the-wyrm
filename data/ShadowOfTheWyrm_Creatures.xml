@@ -10367,7 +10367,7 @@
 			</DecisionStrategy>
 			<Symbol>
 				<Char>d</Char>
-				<Colour>4</Colour>
+				<Colour>12</Colour>
 				<Sprite>
 					<ID>cr</ID>
 					<Row>3</Row>
@@ -17795,7 +17795,12 @@
 			</DecisionStrategy>
 			<Symbol>
 				<Char>h</Char>
-				<Colour>3</Colour>
+				<Colour>4</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>3</Row>
+					<Col>3</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -20948,6 +20953,11 @@
 			<Symbol>
 				<Char>d</Char>
 				<Colour>7</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>3</Row>
+					<Col>3</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>

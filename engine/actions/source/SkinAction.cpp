@@ -6,6 +6,8 @@
 #include "ItemManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RaceConstants.hpp"
+#include "RaceManager.hpp"
 #include "RNG.hpp"
 #include "SkinAction.hpp"
 #include "CorpseCalculator.hpp"
@@ -89,8 +91,19 @@ ActionCostValue SkinAction::attempt_skin(CreaturePtr creature, ItemPtr item, Til
 
   if (creature && item && tile)
   {
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+
     CorpseCalculator cc;
     int chance_skin = cc.calculate_chance_successful_skin(creature);
+
+    // Some deities don't like you skinning other humanoids...
+    string race_id = item->get_additional_property(ConsumableConstants::CORPSE_RACE_ID);
+    RaceManager rm;
+    if (rm.is_race_or_descendent(race_id, RaceConstants::RACE_CONSTANTS_RACE_ID_HUMANOID))
+    {
+      game.get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_SKIN_HUMANOID);
+    }
 
     if (RNG::percent_chance(chance_skin))
     {

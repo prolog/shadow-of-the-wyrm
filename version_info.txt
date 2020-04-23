@@ -10,6 +10,9 @@ Shadow of the Wyrm v1.1.8 "Rodrigo"
 
 - F12 now also reloads existing texture references.
 
+- Celeste, Aurelion, The Lady, and Vedere now dislike skinning humanoids
+  (hbholland).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

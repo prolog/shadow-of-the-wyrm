@@ -1,4 +1,5 @@
 Me:
+- Skinning same-race should generate god-hate (hbholland)
 - Fill out Kirin's empty house a bit
 - Item types in inventory
 - Mountains on world map

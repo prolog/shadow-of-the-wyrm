@@ -1336,6 +1336,7 @@
 		<xs:enumeration value="DesecrateNeutral"/>
 		<xs:enumeration value="DesecrateEvil"/>
 		<xs:enumeration value="GraveRobbing"/>
+		<xs:enumeration value="SkinHumanoid"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="TileType">
