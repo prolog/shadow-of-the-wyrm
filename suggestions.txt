@@ -1,5 +1,8 @@
 Me:
-- Skinning same-race should generate god-hate (hbholland)
+- Poison lasts too long
+- Grond: mark unreadable spellbook types
+- Can read scrolls while mute (spellbooks too?)
+- Use Magic to destroy spellbooks and get a bit of AP?
 - Fill out Kirin's empty house a bit
 - Item types in inventory
 - Mountains on world map

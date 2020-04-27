@@ -23,7 +23,7 @@ class SpellbookReadStrategy : public ReadStrategy
     // Confirm whether to continue reading, if necessary - this is automatic
     // when the creature has skill in the category, but requires prompting
     // when the creature does not (e.g., a priest reading an arcane spellbook).
-    bool confirm_reading_if_necessary(CreaturePtr creature, const SkillType magic_category);
+    bool confirm_reading_if_necessary(CreaturePtr creature, SpellbookPtr spellbook, const SkillType magic_category);
 
     // Add a message about the creature not having any knowledge of the Old
     // Runic language.
@@ -38,5 +38,8 @@ class SpellbookReadStrategy : public ReadStrategy
     // reading - success indicates memorization, failure is just a read.
     virtual std::pair<std::string, std::string> get_player_and_monster_read_sids() const override;
     virtual std::pair<std::string, std::string> get_player_and_monster_unsuccessful_read_sids() const;
+
+    // Mark the spellbook as tried/read
+    virtual bool mark_spellbook_tried(SpellbookPtr spellbook);
 };
 
