@@ -1,5 +1,6 @@
 Me:
 - Poison lasts too long
+- Aeschburh should have a chaotic altar
 - Grond: mark unreadable spellbook types
 - Can read scrolls while mute (spellbooks too?)
 - Use Magic to destroy spellbooks and get a bit of AP?
