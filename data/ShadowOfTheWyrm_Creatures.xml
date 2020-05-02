@@ -21796,7 +21796,7 @@
 			<Soak>2</Soak>
 		</Creature>
 		<Creature id="shimmering_cloud">
-			<RaceID>_monster</RaceID>
+			<RaceID>_spirit</RaceID>
 			<ShortDescriptionSID>SHIMMERING_CLOUD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SHIMMERING_CLOUD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHIMMERING_CLOUD_TEXT_DETAILS_SID</TextDetailsSID>

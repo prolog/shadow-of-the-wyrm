@@ -1,10 +1,6 @@
 Me:
 - Poison lasts too long
-- note first kill in mortuary
-- shimmering cloud corpse
 - Wintersea tombs feel underpopulated
-- Aeschburh should have a chaotic altar
-- Grond: mark unreadable spellbook types
 - Can read scrolls while mute (spellbooks too?)
 - Use Magic to destroy spellbooks and get a bit of AP?
 - Fill out Kirin's empty house a bit

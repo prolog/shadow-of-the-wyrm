@@ -16,6 +16,14 @@ Shadow of the Wyrm v1.1.8 "Rodrigo"
 - Celeste, Aurelion, The Lady, and Vedere now dislike skinning humanoids
   (hbholland).
 
+- Aeschburh now has a chaotic altar in the centre, courtesy of the new
+  inhabitants.
+
+- Shimmering clouds are now spirits, so they won't leave corpses and
+  can move through walls.
+
+- The mortuary in the character details now notes your first kill.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
