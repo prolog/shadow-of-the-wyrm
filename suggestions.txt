@@ -1,5 +1,6 @@
 Me:
 - Poison lasts too long
+- note first kill in mortuary
 - shimmering cloud corpse
 - Wintersea tombs feel underpopulated
 - Aeschburh should have a chaotic altar
