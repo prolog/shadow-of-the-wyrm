@@ -22,6 +22,8 @@ Shadow of the Wyrm v1.1.8 "Rodrigo"
 - Shimmering clouds are now spirits, so they won't leave corpses and
   can move through walls.
 
+- Snakeling sharpshooters now use crossbows.
+
 - The mortuary in the character details now notes your first kill.
 
 - Stanzas for "Tel and Floridel".

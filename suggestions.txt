@@ -1,5 +1,6 @@
 Me:
 - Poison lasts too long
+- Investigate enchant scrolls?
 - Wintersea tombs feel underpopulated
 - Can read scrolls while mute (spellbooks too?)
 - Use Magic to destroy spellbooks and get a bit of AP?

@@ -10445,6 +10445,11 @@
 			<Symbol>
 				<Char>A</Char>
 				<Colour>15</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>7</Row>
+					<Col>0</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -10490,6 +10495,11 @@
 			<Symbol>
 				<Char>W</Char>
 				<Colour>5</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>7</Row>
+					<Col>1</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -10534,7 +10544,7 @@
 				</Spell>
 				<Spell>
 					<SpellID>p_06_nightfire</SpellID>
-					<Castings>1</Castings>
+					<Castings>3</Castings>
 				</Spell>
 			</Spells>
 		</Creature>
@@ -10550,6 +10560,11 @@
 			<Symbol>
 				<Char>&amp;</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>7</Row>
+					<Col>2</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -10648,6 +10663,11 @@
 			<Symbol>
 				<Char>@</Char>
 				<Colour>5</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>7</Row>
+					<Col>3</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
@@ -10710,6 +10730,11 @@
 			<Symbol>
 				<Char>S</Char>
 				<Colour>4</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>6</Row>
+					<Col>31</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -10754,6 +10779,11 @@
 			<Symbol>
 				<Char>F</Char>
 				<Colour>7</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>7</Row>
+					<Col>4</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -10808,6 +10838,11 @@
 			<Symbol>
 				<Char>B</Char>
 				<Colour>4</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>7</Row>
+					<Col>5</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -10951,6 +10986,11 @@
 			<Symbol>
 				<Char>s</Char>
 				<Colour>10</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>7</Row>
+					<Col>6</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -10998,6 +11038,11 @@
 			<Symbol>
 				<Char>s</Char>
 				<Colour>1</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>7</Row>
+					<Col>6</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -11042,6 +11087,11 @@
 			<Symbol>
 				<Char>s</Char>
 				<Colour>7</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>7</Row>
+					<Col>7</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -11078,11 +11128,14 @@
 					</RangedWeaponSkills>
 				</Skills>
 				<InitialEquipmentAndInventory>
+					<Ranged>
+						<ID>crossbow</ID>
+					</Ranged>
 					<Ammunition>
-						<ID>barbed_spear</ID>
+						<ID>bolt</ID>
 						<Quantity>
 							<Random>
-								<NumDice>2</NumDice>
+								<NumDice>6</NumDice>
 								<NumSides>3</NumSides>
 							</Random>
 						</Quantity>
