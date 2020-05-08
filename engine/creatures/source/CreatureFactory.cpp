@@ -43,6 +43,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
 , const string& creature_id_and_options
 , MapPtr current_map
 , CreaturePtr procgen_creature_template
+, const bool ignore_maximum
 )
 {
   CreaturePtr creature;
@@ -87,7 +88,14 @@ CreaturePtr CreatureFactory::create_by_creature_id
     CreatureGenerationValues& cgv = cgv_it->second;
     if (cgv.is_maximum_reached())
     {
-      return creature;
+      if (ignore_maximum == false)
+      {
+        return creature;
+      }
+      else
+      {
+        cgv.set_current(cgv.get_current() - 1);
+      }
     }
 
     CreaturePtr creature_template = c_it->second;

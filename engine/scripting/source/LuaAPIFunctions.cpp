@@ -1922,10 +1922,16 @@ int add_creature_to_map(lua_State* ls)
       hostility_override = std::make_shared<bool>(lua_toboolean(ls, 5) != 0);
     }
 
+    bool ignore_maximum = false;
+    if (num_args == 6 && lua_isboolean(ls, 6))
+    {
+      ignore_maximum = lua_toboolean(ls, 6);
+    }
+
     string creature_id = lua_tostring(ls, 1);
 
     CreatureFactory cf;
-    CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id, map);
+    CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id, map, nullptr, ignore_maximum);
     Coordinate coords(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
     HostilityManager hm;
 

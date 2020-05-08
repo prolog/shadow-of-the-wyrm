@@ -14,7 +14,7 @@ class CreatureFactory
     void set_hostility_for_creatures(const bool override_host, const bool host);
     std::string select_race_id(const std::vector<std::string>& race_ids, const std::string& default_race_id);
 
-    CreaturePtr create_by_creature_id(ActionManager& am, const std::string& creature_id, MapPtr current_map, CreaturePtr procgen_creature = nullptr);
+    CreaturePtr create_by_creature_id(ActionManager& am, const std::string& creature_id, MapPtr current_map, CreaturePtr procgen_creature = nullptr, const bool ignore_maximum = false);
     CreaturePtr create_by_race_and_class(ActionManager& am, const std::string& race_id, const std::string& class_id, const std::string& creature_name, const CreatureSex creature_sex, const std::string& deity_id = "");
 
     void setup_player(CreaturePtr player, ControllerPtr controller);
