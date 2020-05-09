@@ -2377,6 +2377,11 @@
 			<Symbol>
 				<Char>@</Char>
 				<Colour>4</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>8</Row>
+					<Col>8</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
@@ -2432,6 +2437,11 @@
 			<Symbol>
 				<Char>@</Char>
 				<Colour>6</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>8</Row>
+					<Col>9</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
@@ -2470,6 +2480,11 @@
 			<Symbol>
 				<Char>@</Char>
 				<Colour>7</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>8</Row>
+					<Col>10</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
@@ -2519,6 +2534,11 @@
 			<Symbol>
 				<Char>@</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>8</Row>
+					<Col>11</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
@@ -12536,6 +12556,11 @@
 			<Symbol>
 				<Char>d</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>8</Row>
+					<Col>12</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -12569,6 +12594,11 @@
 			<Symbol>
 				<Char>d</Char>
 				<Colour>7</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>8</Row>
+					<Col>13</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -12602,6 +12632,11 @@
 			<Symbol>
 				<Char>d</Char>
 				<Colour>9</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>8</Row>
+					<Col>14</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -12637,6 +12672,11 @@
 			<Symbol>
 				<Char>d</Char>
 				<Colour>11</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>8</Row>
+					<Col>15</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -12670,6 +12710,11 @@
 			<Symbol>
 				<Char>d</Char>
 				<Colour>12</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>8</Row>
+					<Col>16</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -12740,6 +12785,11 @@
 			<Symbol>
 				<Char>d</Char>
 				<Colour>13</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>8</Row>
+					<Col>16</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -23013,6 +23063,11 @@
 			<Symbol>
 				<Char>d</Char>
 				<Colour>5</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>8</Row>
+					<Col>17</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
@@ -23053,6 +23108,11 @@
 			<Symbol>
 				<Char>d</Char>
 				<Colour>4</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>8</Row>
+					<Col>18</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
@@ -23091,6 +23151,11 @@
 			<Symbol>
 				<Char>d</Char>
 				<Colour>6</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>8</Row>
+					<Col>19</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
@@ -23129,6 +23194,11 @@
 			<Symbol>
 				<Char>@</Char>
 				<Colour>14</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>8</Row>
+					<Col>21</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<Max>1</Max>
@@ -23164,8 +23234,8 @@
 				<Colour>1</Colour>
 				<Sprite>
 					<ID>cr</ID>
-					<Row>6</Row>
-					<Col>15</Col>
+					<Row>8</Row>
+					<Col>20</Col>
 				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
@@ -23249,6 +23319,11 @@
 			<Symbol>
 				<Char>i</Char>
 				<Colour>2</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>8</Row>
+					<Col>22</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -23344,6 +23419,11 @@
 			<Symbol>
 				<Char>G</Char>
 				<Colour>12</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>3</Row>
+					<Col>4</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
