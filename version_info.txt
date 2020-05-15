@@ -26,6 +26,8 @@ Shadow of the Wyrm v1.1.8 "Rodrigo"
 
 - The mortuary in the character details now notes your first kill.
 
+- Changed the symbol for each of the Nine.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

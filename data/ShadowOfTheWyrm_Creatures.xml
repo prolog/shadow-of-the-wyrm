@@ -11772,7 +11772,7 @@
 			</DecisionStrategy>
 			<Symbol>
 				<Char>Z</Char>
-				<Colour>8</Colour>
+				<Colour>3</Colour>
 				<Sprite>
 					<ID>cr</ID>
 					<Row>7</Row>
@@ -17443,8 +17443,13 @@
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
 			<Symbol>
-				<Char>G</Char>
-				<Colour>123</Colour>
+				<Char>Z</Char>
+				<Colour>11</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>9</Row>
+					<Col>22</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
@@ -17479,8 +17484,13 @@
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
 			<Symbol>
-				<Char>G</Char>
-				<Colour>124</Colour>
+				<Char>Z</Char>
+				<Colour>13</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>9</Row>
+					<Col>23</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
@@ -17516,8 +17526,13 @@
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
 			<Symbol>
-				<Char>G</Char>
-				<Colour>127</Colour>
+				<Char>Z</Char>
+				<Colour>15</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>9</Row>
+					<Col>24</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
@@ -17552,8 +17567,13 @@
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
 			<Symbol>
-				<Char>G</Char>
-				<Colour>114</Colour>
+				<Char>Z</Char>
+				<Colour>2</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>9</Row>
+					<Col>25</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
@@ -17588,8 +17608,13 @@
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
 			<Symbol>
-				<Char>G</Char>
-				<Colour>113</Colour>
+				<Char>Z</Char>
+				<Colour>9</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>9</Row>
+					<Col>26</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
@@ -17624,8 +17649,13 @@
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
 			<Symbol>
-				<Char>G</Char>
-				<Colour>120</Colour>
+				<Char>Z</Char>
+				<Colour>7</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>9</Row>
+					<Col>27</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
@@ -17661,8 +17691,13 @@
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
 			<Symbol>
-				<Char>G</Char>
-				<Colour>118</Colour>
+				<Char>Z</Char>
+				<Colour>4</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>9</Row>
+					<Col>29</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
@@ -17697,8 +17732,13 @@
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
 			<Symbol>
-				<Char>G</Char>
-				<Colour>125</Colour>
+				<Char>Z</Char>
+				<Colour>12</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>9</Row>
+					<Col>28</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
@@ -17733,8 +17773,13 @@
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
 			<Symbol>
-				<Char>G</Char>
-				<Colour>112</Colour>
+				<Char>Z</Char>
+				<Colour>8</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>9</Row>
+					<Col>30</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
@@ -17770,6 +17815,11 @@
 			<Symbol>
 				<Char>C</Char>
 				<Colour>15</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>9</Row>
+					<Col>31</Col>
+				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
