@@ -1,16 +1,14 @@
 Me:
+- Configurable SDL colours
+- Make sure ancient beasts work with sprites
 - Poison lasts too long
 - Investigate enchant scrolls?
-- Wintersea tombs feel underpopulated
 - Can read scrolls while mute (spellbooks too?)
 - Use Magic to destroy spellbooks and get a bit of AP?
-- Fill out Kirin's empty house a bit
 - Item types in inventory
 - Mountains on world map
-- Make sure ancient beasts work with sprites
 - Dungeons should check for shop before generating trap.
 - Beer halls in villages
-- Spritesheets
 - auto save - not working?
 - google screen clear not working for SDL. reported 2x.
 - 2x draw?
