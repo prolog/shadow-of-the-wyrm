@@ -7718,6 +7718,52 @@
 	<Spritesheets>
 		<Spritesheet id="cr">
 			<Location>assets/sprites/creature_sprites.png</Location>
+			<References>
+				<Reference id="ancient_beast_0">
+					<Row>12</Row>
+					<Col>30</Col>
+				</Reference>
+				<Reference id="ancient_beast_1">
+					<Row>12</Row>
+					<Col>31</Col>
+				</Reference>
+				<Reference id="ancient_beast_2">
+					<Row>13</Row>
+					<Col>0</Col>
+				</Reference>
+				<Reference id="ancient_beast_3">
+					<Row>13</Row>
+					<Col>6</Col>
+				</Reference>
+				<Reference id="ancient_beast_4">
+					<Row>13</Row>
+					<Col>7</Col>
+				</Reference>
+				<Reference id="ancient_beast_5">
+					<Row>13</Row>
+					<Col>2</Col>
+				</Reference>
+				<Reference id="ancient_beast_6">
+					<Row>13</Row>
+					<Col>3</Col>
+				</Reference>
+				<Reference id="ancient_beast_7">
+					<Row>13</Row>
+					<Col>8</Col>
+				</Reference>
+				<Reference id="ancient_beast_8">
+					<Row>13</Row>
+					<Col>4</Col>
+				</Reference>
+				<Reference id="ancient_beast_9">
+					<Row>13</Row>
+					<Col>1</Col>
+				</Reference>
+				<Reference id="ancient_beast_10">
+					<Row>13</Row>
+					<Col>5</Col>
+				</Reference>
+			</References>
 		</Spritesheet>
 		<Spritesheet id="it">
 			<Location>assets/sprites/item_sprites.png</Location>

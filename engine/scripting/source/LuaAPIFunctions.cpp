@@ -396,6 +396,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "creature_exists", creature_exists);
   lua_register(L, "set_weather", set_weather);
   lua_register(L, "genocide", genocide);
+  lua_register(L, "generate_ancient_beast", generate_ancient_beast);
 }
 
 // Lua API helper functions
@@ -7955,4 +7956,44 @@ int genocide(lua_State* ls)
   }
 
   return 0;
+}
+
+int generate_ancient_beast(lua_State* ls)
+{
+  bool generated = false;
+
+  if (lua_gettop(ls) == 3)
+  {
+    int y = lua_tointeger(ls, 1);
+    int x = lua_tointeger(ls, 2);
+    int dtype = lua_tointeger(ls, 3);
+
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+
+    if (map != nullptr)
+    {
+      CreatureGenerationManager cgm;
+      CreatureGenerationList cgl = cgm.generate_ancient_beasts(CreatureGenerationManager::ANCIENT_BEASTS_MIN_DANGER_LEVEL, MapType::MAP_TYPE_UNDERWORLD, map->get_terrain_type());
+
+      auto cgl_val = cgl.at(dtype);
+
+      // Clear the list and then add back the val to ensure we generate
+      // the right ancient beast.
+      cgl.clear();
+      cgl.push_back(cgl_val);
+
+      ActionManager& am = game.get_action_manager_ref();
+      CreaturePtr generated_creature = cgm.generate_creature(am, cgl, map);
+      GameUtils::add_new_creature_to_map(game, generated_creature, map, { y,x });
+      generated = true;
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to generate_ancient_beast");
+  }
+
+  lua_pushboolean(ls, generated);
+  return 1;
 }

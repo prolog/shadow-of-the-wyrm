@@ -1,12 +1,8 @@
 Me:
-- Configurable SDL colours
-- Make sure ancient beasts work with sprites
 - Poison lasts too long
 - Investigate enchant scrolls?
 - Can read scrolls while mute (spellbooks too?)
 - Use Magic to destroy spellbooks and get a bit of AP?
-- Item types in inventory
-- Mountains on world map
 - Dungeons should check for shop before generating trap.
 - Beer halls in villages
 - auto save - not working?

@@ -121,6 +121,7 @@ CreatureGenerationList CreatureGenerationManager::generate_ancient_beasts(const 
       string desc_sid = "ANCIENT_BEAST" + std::to_string(i) + "_DESCRIPTION_SID";
       string short_desc_sid = "ANCIENT_BEAST" + std::to_string(i) + "_SHORT_DESCRIPTION_SID";
       string text_details_sid = "ANCIENT_BEAST_TEXT_DETAILS_SID";
+      string ref_id = "ancient_beast_" + std::to_string(i);
 
       ExperienceManager em;
       int dl = std::max(1, danger_level);
@@ -140,6 +141,11 @@ CreatureGenerationList CreatureGenerationManager::generate_ancient_beasts(const 
       ancient_beast->set_level(danger_level);
 
       Symbol s('X', static_cast<Colour>(i + 1));
+      SpritesheetLocation& ssl = s.get_spritesheet_location_ref();
+
+      ssl.set_reference_id(ref_id);
+      ssl.set_index(SpritesheetIndex::SPRITESHEET_INDEX_CREATURE);
+
       ancient_beast->set_symbol(s);
 
       ancient_beast->set_experience_value(xp_val);
