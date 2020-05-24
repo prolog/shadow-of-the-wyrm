@@ -45,6 +45,7 @@ bool SDLDisplay::create()
 {
   bool init = true;
 
+  init = read_colours_from_settings();
   init = read_dimensions_from_settings();
 
   if (init)
@@ -185,6 +186,41 @@ bool SDLDisplay::read_font_into_texture()
   }
 
   return font_result;
+}
+
+bool SDLDisplay::read_colours_from_settings()
+{
+  string prefix = Setting::DISPLAY_SDL_COLOUR_PREFIX;
+
+  for (uint i = 0; i <= static_cast<int>(Colour::COLOUR_MAX); i++)
+  {
+    string colour_setting = prefix + std::to_string(i);
+    string colour_val = get_property(colour_setting);
+
+    if (!colour_val.empty())
+    {
+      std::vector<std::string> rgba;
+      boost::split(rgba, colour_val, boost::is_any_of(", "));
+
+      if (rgba.size() == 4)
+      {
+        Uint8 r = String::to_int(rgba.at(0));
+        Uint8 g = String::to_int(rgba.at(1));
+        Uint8 b = String::to_int(rgba.at(2));
+        Uint8 a = String::to_int(rgba.at(3));
+
+        if (r >= 0 && r <= 255 &&
+          g >= 0 && g <= 255 &&
+          b >= 0 && b <= 255 &&
+          a >= 0 && a <= 255)
+        {
+          colours[i] = { r,g,b,a };
+        }
+      }
+    }
+  }
+
+  return true;
 }
 
 bool SDLDisplay::create_window_and_renderer()

@@ -93,6 +93,7 @@ class SDLDisplay : public Display
     // Functions to help set up the SDL display
     bool read_dimensions_from_settings();
     bool read_font_into_texture();
+    bool read_colours_from_settings();
     bool create_window_and_renderer();
     void initialize_colours();
 

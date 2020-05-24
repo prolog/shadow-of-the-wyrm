@@ -23,7 +23,8 @@ enum struct Colours
   COLOUR_BOLD_BLUE = 12,
   COLOUR_BOLD_MAGENTA = 13,
   COLOUR_BOLD_CYAN = 14,
-  COLOUR_BOLD_WHITE = 15
+  COLOUR_BOLD_WHITE = 15,
+  COLOUR_MAX = 15
 };
 
 using Colour = Colours;

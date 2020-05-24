@@ -258,6 +258,12 @@ void set_display_settings(DisplayPtr display, const Settings& settings)
                                      Setting::DISPLAY_TILE_GLYPHS_PER_LINE, 
                                      Setting::DISPLAY_NUM_GLYPHS };
 
+    for (int i = 0; i <= static_cast<int>(Colour::COLOUR_MAX); i++)
+    {
+      string colour_i = Setting::DISPLAY_SDL_COLOUR_PREFIX + std::to_string(i);
+      setting_names.push_back(colour_i);
+    }
+
     for (const string& s : setting_names)
     {
       display->set_property(s, settings.get_setting(s));
