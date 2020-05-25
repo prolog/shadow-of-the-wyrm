@@ -1,4 +1,6 @@
 Me:
+- YARD: can we suppress the tile-level msg and just display custom text? ie
+  for Carcassia
 - Poison lasts too long
 - Investigate enchant scrolls?
 - Can read scrolls while mute (spellbooks too?)

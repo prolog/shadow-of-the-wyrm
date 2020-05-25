@@ -6,6 +6,7 @@
 #include "StringTable.hpp"
 #include "TextDisplayFormatter.hpp"
 #include "TextKeys.hpp"
+#include "ScreenTitleTextKeys.hpp"
 #include "WelcomeScreen.hpp"
 
 using namespace std;
@@ -61,6 +62,10 @@ void WelcomeScreen::initialize()
   show_high_scores.set_id(option_id++);
   show_high_scores.set_description(StringTable::get(TextKeys::SW_TITLE_HIGH_SCORES));
 
+  Option help;
+  help.set_id(option_id++);
+  help.set_description(StringTable::get(ScreenTitleTextKeys::SCREEN_TITLE_HELP));
+
   Option quit;
   quit.set_id(25); // 'z'
   quit.set_description(StringTable::get(TextKeys::SW_TITLE_QUIT_GAME));
@@ -75,6 +80,9 @@ void WelcomeScreen::initialize()
   options->add_option_description("");
 
   options->add_option(show_high_scores);
+  options->add_option_description("");
+
+  options->add_option(help);
   options->add_option_description("");
 
   options->add_option(quit);

@@ -15,6 +15,8 @@
 #include "FileConstants.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "HelpCommandProcessor.hpp"
+#include "HelpScreen.hpp"
 #include "HighScoreScreen.hpp"
 #include "ItemDescriptionRandomizer.hpp"
 #include "ItemIdentifier.hpp"
@@ -24,6 +26,7 @@
 #include "MessageManagerFactory.hpp"
 #include "NamingScreen.hpp"
 #include "Naming.hpp"
+#include "PlayerDecisionStrategy.hpp"
 #include "RaceManager.hpp"
 #include "RaceSelectionScreen.hpp"
 #include "RNG.hpp"
@@ -94,6 +97,7 @@ void ShadowOfTheWyrmEngine::initialize_game_option_map()
                                    { "b", EngineStateEnum::ENGINE_STATE_START_NEW_GAME_RANDOM },
                                    { "c", EngineStateEnum::ENGINE_STATE_LOAD_GAME },
                                    { "d", EngineStateEnum::ENGINE_STATE_SHOW_HIGH_SCORES },
+                                   { "e", EngineStateEnum::ENGINE_STATE_SHOW_HELP },
                                    { "z", EngineStateEnum::ENGINE_STATE_STOP } };
 }
 
@@ -103,6 +107,7 @@ void ShadowOfTheWyrmEngine::initialize_game_flow_map()
   game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_START_NEW_GAME_RANDOM, &ShadowOfTheWyrmEngine::process_new_game_random));
   game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_SHOW_HIGH_SCORES, &ShadowOfTheWyrmEngine::process_show_high_scores));
   game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_LOAD_GAME, &ShadowOfTheWyrmEngine::process_load_game));
+  game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_SHOW_HELP, &ShadowOfTheWyrmEngine::process_show_help));
   game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_STOP, &ShadowOfTheWyrmEngine::process_exit_game));
 }
 
@@ -732,6 +737,18 @@ bool ShadowOfTheWyrmEngine::process_load_game()
   game.get_settings_ref().set_settings(keybinding_settings);
 
   return result;
+}
+
+bool ShadowOfTheWyrmEngine::process_show_help()
+{
+  Game& game = Game::instance();
+  CreaturePtr c = std::make_shared<Creature>();
+  DecisionStrategyPtr pdstrat = std::make_unique<PlayerDecisionStrategy>(controller);
+  c->set_decision_strategy(std::move(pdstrat));
+
+  game.get_action_manager_ref().help(c);
+
+  return false;
 }
 
 // Exit
