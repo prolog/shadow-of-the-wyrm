@@ -3810,6 +3810,9 @@
 					<Wandcraft>15</Wandcraft>
 					<Weaving>15</Weaving>
 				</GeneralSkills>
+				<WeaponSkills>
+					<RodsAndStaves>5</RodsAndStaves>
+				</WeaponSkills>
 				<MagicSkills>
 					<Arcane>15</Arcane>
 					<Divine>15</Divine>

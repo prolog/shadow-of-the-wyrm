@@ -1,5 +1,7 @@
-Shadow of the Wyrm v1.1.8 "Rodrigo"
+Shadow of the Wyrm v1.2.0 "Rodrigo"
 - Version declared February 16, 2020.
+
+- 1-bit sprite set now the default display mode.
 
 - Reflective beams such as lightning now bounce differently - they should
   look more "connected" when looking at the output of diagonal beams.
@@ -29,6 +31,10 @@ Shadow of the Wyrm v1.1.8 "Rodrigo"
 - The tombs at Wintersea are a bit more populated.
 
 - Changed the symbol for each of the Nine.
+
+- The help screen is now available on startup (YARD).
+
+- Sages now start with a little skill in Rods and Staves (YARD).
 
 - Stanzas for "Tel and Floridel".
 
