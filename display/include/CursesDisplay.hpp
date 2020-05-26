@@ -35,7 +35,7 @@ class CursesDisplay : public Display
 
     // Functions to add messages to the message buffer.
     void add_message(const std::string& message, const Colour colour, const bool reset_prompt) override;
-    std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool reset_prompt) override;
+    std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool reset_prompt, const std::string& default_for_esc_key) override;
 
     void halt_messages() override;
 

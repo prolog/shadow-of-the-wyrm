@@ -81,7 +81,7 @@ uint PlayerDecisionStrategy::get_count(const uint max_count)
   if (controller)
   {
     DisplayPtr display = Game::instance().get_display();
-    string selected_count = display->add_message_with_prompt("", Colour::COLOUR_WHITE, false);
+    string selected_count = display->add_message_with_prompt("", Colour::COLOUR_WHITE, false, "0");
     
     if (!selected_count.empty()) 
     {

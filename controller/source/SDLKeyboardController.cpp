@@ -75,9 +75,6 @@ void SDLKeyboardController::poll_event()
 
 string SDLKeyboardController::get_line()
 {
-/* CursesPromptProcessor ncpp;
-  return ncpp.get_user_string(stdscr); */
-
   // JCD FIXME
   // This *works*, but doesn't.  This needs to ultimately also display the
   // result on the screen, not just read it silently.

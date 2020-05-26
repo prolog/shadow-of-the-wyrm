@@ -1,4 +1,5 @@
 Me:
+- sprites: sea/water
 - YARD: can we suppress the tile-level msg and just display custom text? ie
   for Carcassia
 - Poison lasts too long

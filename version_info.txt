@@ -36,6 +36,8 @@ Shadow of the Wyrm v1.2.0 "Rodrigo"
 
 - Sages now start with a little skill in Rods and Staves (YARD).
 
+- You can now use the escape key on user prompts (YARD).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

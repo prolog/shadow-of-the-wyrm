@@ -50,7 +50,7 @@ class Display : public ISerializable
     // Add a message to display to the user
     virtual void add_message(const std::string& message, const bool reset_cursor) ;
     virtual void add_message(const std::string& message, const Colour colour, const bool clear_prior_to_adding_message) = 0;
-    virtual std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool clear_prior) = 0;
+    virtual std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool clear_prior, const std::string& default_for_esc_key) = 0;
 
     virtual bool uses_colour() const;
 

@@ -417,7 +417,7 @@ void CursesDisplay::add_message(const string& to_add_message, const Colour colou
   // wrefresh(screen);
 }
 
-string CursesDisplay::add_message_with_prompt(const string& message, const Colour colour, const bool reset_prompt)
+string CursesDisplay::add_message_with_prompt(const string& message, const Colour colour, const bool reset_prompt, const std::string& default_for_esc_key)
 {
   string prompt_result;
 
@@ -426,7 +426,7 @@ string CursesDisplay::add_message_with_prompt(const string& message, const Colou
   // from stdscr, since that's where the message manager is actually
   // displayed!
   add_message(message, colour, reset_prompt);
-  prompt_result = prompt_processor.get_user_string(stdscr, true /* allow arbitrary non-alphanumeric characters */);
+  prompt_result = prompt_processor.get_user_string(stdscr, true /* allow arbitrary non-alphanumeric characters */, default_for_esc_key);
 
   return prompt_result;
 }

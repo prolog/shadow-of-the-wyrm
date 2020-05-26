@@ -156,7 +156,7 @@ string MessageManager::add_new_message_with_prompt(const std::string& message_te
   if (user_display)
   {
     buffer_has_messages = true;
-    prompt_text = user_display->add_message_with_prompt(message_text, colour, false);
+    prompt_text = user_display->add_message_with_prompt(message_text, colour, false, "");
   }
 
   message_buffer.add_message(message_text, colour);
