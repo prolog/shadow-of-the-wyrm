@@ -25011,7 +25011,7 @@
 			</DecisionStrategy>
 			<Symbol>
 				<Char>g</Char>
-				<Colour>5</Colour>
+				<Colour>6</Colour>
 				<Sprite>
 					<ID>cr</ID>
 					<Row>6</Row>
@@ -26392,7 +26392,7 @@
 			</DecisionStrategy>
 			<Symbol>
 				<Char>G</Char>
-				<Colour>14</Colour>
+				<Colour>13</Colour>
 				<Sprite>
 					<ID>cr</ID>
 					<Row>6</Row>

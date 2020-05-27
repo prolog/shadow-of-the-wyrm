@@ -38,6 +38,8 @@ Shadow of the Wyrm v1.2.0 "Rodrigo"
 
 - You can now use the escape key on user prompts (YARD).
 
+- Emperor's guard and Carcassian guards have now flipped colours (YARD).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
