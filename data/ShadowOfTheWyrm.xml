@@ -6529,6 +6529,11 @@
 			<Symbol>
 				<Char>~</Char>
 				<Colour>7</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>29</Col>
+				</Sprite>
 			</Symbol>
 		</ShoalsTile>
 		<DungeonTile>
