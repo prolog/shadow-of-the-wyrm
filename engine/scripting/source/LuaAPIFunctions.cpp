@@ -397,6 +397,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_weather", set_weather);
   lua_register(L, "genocide", genocide);
   lua_register(L, "generate_ancient_beast", generate_ancient_beast);
+  lua_register(L, "set_colour", set_colour);
 }
 
 // Lua API helper functions
@@ -7996,4 +7997,29 @@ int generate_ancient_beast(lua_State* ls)
 
   lua_pushboolean(ls, generated);
   return 1;
+}
+
+int set_colour(lua_State* ls)
+{
+  if (lua_gettop(ls) == 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    int colour = lua_tointeger(ls, 1);
+    int r = lua_tointeger(ls, 2);
+    int g = lua_tointeger(ls, 3);
+    int b = lua_tointeger(ls, 4);
+
+    Game& game = Game::instance();
+    DisplayPtr display = game.get_display();
+    
+    if (display != nullptr)
+    {
+      display->set_colour(colour, r, g, b);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_colour");
+  }
+
+  return 0;
 }

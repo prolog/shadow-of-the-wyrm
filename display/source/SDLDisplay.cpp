@@ -811,6 +811,21 @@ void SDLDisplay::disable_colour(const Colour colour)
   }
 }
 
+void SDLDisplay::set_colour(const int colour, const int r, const int g, const int b)
+{
+  if (colour >= 0 && colour <= 127 &&
+      r >= 0 && r <= 255 &&
+      g >= 0 && g <= 255 &&
+      b >= 0 && b <= 255)
+  {
+    Uint8 a = 255;
+    colours[colour] = { static_cast<Uint8>(r), 
+                        static_cast<Uint8>(g), 
+                        static_cast<Uint8>(b), 
+                        a };
+  }
+}
+
 // When displaying a general screen, reset the colour to white.
 string SDLDisplay::display_screen(const Screen& current_screen)
 {

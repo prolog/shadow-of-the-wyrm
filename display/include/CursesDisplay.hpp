@@ -88,6 +88,7 @@ class CursesDisplay : public Display
     // Without a WINDOW* argument, stdscr is used.
     virtual void enable_colour(const Colour colour) override;
     virtual void disable_colour(const Colour colour) override;
+    virtual void set_colour(const int colour, const int r, const int g, const int b) override;
 
     void enable_colour(const int colour, WINDOW* window);
     void disable_colour(const int colour, WINDOW* window);

@@ -248,6 +248,7 @@ int creature_exists(lua_State* ls);
 int set_weather(lua_State* ls);
 int genocide(lua_State* ls);
 int generate_ancient_beast(lua_State* ls);
+int set_colour(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

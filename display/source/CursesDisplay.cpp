@@ -138,6 +138,10 @@ void CursesDisplay::disable_colour(const Colour colour)
   disable_colour(static_cast<int>(colour), stdscr);
 }
 
+void CursesDisplay::set_colour(const int colour, const int r, const int g, const int b)
+{
+}
+
 // Turn on colour using attron.
 //
 // Note that the enable/disable colour need to match!  Don't pass different colours!

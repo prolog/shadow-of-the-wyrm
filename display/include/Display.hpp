@@ -118,6 +118,7 @@ class Display : public ISerializable
     virtual void display_text(int row, int col, const std::string& s) = 0;
     virtual void enable_colour(const Colour colour) = 0;
     virtual void disable_colour(const Colour colour) = 0;
+    virtual void set_colour(const int colour, const int r, const int g, const int b) = 0;
 
     virtual void set_spritesheets(const std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>>& spritesheet_details) = 0;
 

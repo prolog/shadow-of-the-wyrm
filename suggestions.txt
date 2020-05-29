@@ -247,3 +247,7 @@ Stof:
 mission opossumable:
 - alternate tiles e.g. different grass tiles
 - seconded ^^ (Valduk)
+
+YARD:
+- creatures of a certain deity (frostlings and shiver, black servants and
+  sceadugenga) shouldn't attack you if you worship that deity

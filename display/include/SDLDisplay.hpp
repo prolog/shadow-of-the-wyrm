@@ -76,6 +76,7 @@ class SDLDisplay : public Display
     SDL_Color get_colour(const int curses_colour) const;
     void enable_colour(const Colour colour) override;
     void disable_colour(const Colour colour) override;
+    virtual void set_colour(const int colour, const int r, const int g, const int b) override;
 
     virtual std::string display_screen(const Screen& current_screen) override;
 
