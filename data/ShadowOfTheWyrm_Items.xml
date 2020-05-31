@@ -2527,7 +2527,7 @@
 				<Artifact>1</Artifact>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2556,7 +2556,7 @@
 				<Artifact>1</Artifact>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2585,7 +2585,7 @@
 				<Artifact>1</Artifact>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2611,7 +2611,7 @@
 				<Artifact>1</Artifact>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2642,7 +2642,7 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2669,7 +2669,7 @@
 				<AutoCurse>1</AutoCurse>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2694,7 +2694,7 @@
 				<AutoCurse>1</AutoCurse>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2720,7 +2720,7 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2746,7 +2746,7 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2771,7 +2771,7 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2796,7 +2796,7 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2826,7 +2826,7 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2854,7 +2854,7 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2882,7 +2882,7 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2910,7 +2910,7 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2938,7 +2938,7 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2966,7 +2966,7 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -2994,7 +2994,7 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -3022,7 +3022,7 @@
 				<WornLocation>2</WornLocation>
 				<Material>13</Material>
 				<Symbol>
-					<Char>)</Char>
+					<Char>=</Char>
 					<Sprite>
 						<ID>it</ID>
 						<Row>0</Row>
@@ -5042,7 +5042,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Symbol>
-					<Char>!</Char>
+					<Char>)</Char>
 					<Colour>7</Colour>
 					<Sprite>
 						<ID>it</ID>
@@ -5086,7 +5086,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Symbol>
-					<Char>!</Char>
+					<Char>)</Char>
 					<Colour>7</Colour>
 					<Sprite>
 						<ID>it</ID>
@@ -5348,7 +5348,7 @@
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<Symbol>
-					<Char>!</Char>
+					<Char>)</Char>
 					<Colour>7</Colour>
 					<Sprite>
 						<ID>it</ID>

@@ -1,5 +1,5 @@
 Me:
-- test church-type sprite
+- night water/day water
 - sprites: siren, barrow, sweet old hound
 - YARD: can we suppress the tile-level msg and just display custom text? ie
   for Carcassia
@@ -9,6 +9,7 @@ Me:
 - Use Magic to destroy spellbooks and get a bit of AP?
 - Dungeons should check for shop before generating trap.
 - Beer halls in villages
+- spell arcana (bind to capitals in spell list)
 - auto save - not working?
 - google screen clear not working for SDL. reported 2x.
 - 2x draw?
@@ -137,10 +138,6 @@ Kyzrati:
   With proper framerate throttling or delays could do more interesting 
   animations, etc.
 
-AgingMinotaur:
-- The "w"alk command isn't very practical at the moment, IMHO. It would be better if it behaved more like typical roguelikes, ie. stopping when you pass over an object or reach a forking path.
-- Stop walking on feature/branching corridor.
-
 roguecastergames:
 - sea monsters
 - pirates
@@ -169,12 +166,9 @@ Esran:
 - Sewer/dungeons: when random, prompt for "descend to what depth (ft)?
 
 kain:
-- way to see resists on item without equipping
 - Zapped wand moves to end of inventory?
 - Towns not repopping with the same types of creatures as before (e.g.,
   ogres).
-- Autorun: stop at intersections in sewers.
-- Holy presence but no altars?
 - Shops not generating fully stocked.
 
 ssteam
@@ -207,7 +201,6 @@ hapro:
 - Numpad enter key does not always work same as real enter key
 - Drop multiple items at once
 - Walking on an object/feature should put the exmaine message in the log
-- If try to sell item but price refused, stay in inventory?
 - Option to "pause" after certain triggers. When paused the game would
   ignore all inputs until space pressed. Example triggers: dropping below
   15% health, taking more than 50% in single attack, beginning to starve,
@@ -232,6 +225,7 @@ Grond:
 - Differentiate scribing and wandcraft - why use scribing?
 - Scything on ammo?
 - NPC pathing through mountains	
+- could magic skill affect spell duration
 
 Yan Zhang:
 - Dungeon symbol should generate that thing on the last level
@@ -251,3 +245,5 @@ mission opossumable:
 YARD:
 - creatures of a certain deity (frostlings and shiver, black servants and
   sceadugenga) shouldn't attack you if you worship that deity
+
+IceBox: can the confirm setting be allowed to change on load?

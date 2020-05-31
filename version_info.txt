@@ -40,6 +40,8 @@ Shadow of the Wyrm v1.2.0 "Rodrigo"
 
 - Emperor's guard and Carcassian guards have now flipped colours (YARD).
 
+- Poison now stays in your body for less time.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

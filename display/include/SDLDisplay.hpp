@@ -10,6 +10,7 @@
 
 #include <deque>
 #include <unordered_map>
+#include <vector>
 #include "Display.hpp"
 #include "SDLCursorLocation.hpp"
 #include "SDLDisplayParameters.hpp"
@@ -134,11 +135,14 @@ class SDLDisplay : public Display
     // All other textures should have a string key with length > 0.
     std::unordered_map<std::string, SDL_Texture*> spritesheets;
     std::unordered_map<std::string, std::unordered_map<std::string, Coordinate>> spritesheet_references;
+    std::map<std::string, std::pair<std::string, std::vector<SDL_Colour>>> palettes;
 
     static const int SCREEN_ROWS;
     static const int SCREEN_COLS;
     static const int NUM_SDL_BASE_COLOURS;
     static const std::string TEXT_ID;
+    static const std::string PALETTES_SETTING;
+    static const std::string DEFAULT_PALETTE_SETTING;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

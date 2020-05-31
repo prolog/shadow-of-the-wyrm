@@ -24,6 +24,8 @@ const int SDLDisplay::SCREEN_ROWS = 25;
 const int SDLDisplay::SCREEN_COLS = 80;
 const int SDLDisplay::NUM_SDL_BASE_COLOURS = 16;
 const string SDLDisplay::TEXT_ID = "";
+const string SDLDisplay::PALETTES_SETTING = "colour_palettes";
+const string SDLDisplay::DEFAULT_PALETTE_SETTING = "colour_palettes_default";
 
 SDLDisplay::SDLDisplay()
 {
@@ -119,11 +121,11 @@ bool SDLDisplay::check_available_screen_dimensions()
 
 void SDLDisplay::initialize_colours()
 {
-  colours = { /* black                */ {0, {0,0,0,255} }, // jcd fixme these are bright
+  colours = { /* black                */ {0, {0,0,0,255} }, 
               /* red                  */ {1, {180,0,0,255} },
               /* green                */ {2, {0,159,0,255} },
               /* yellow               */ {3, {159,159,0,255} },
-              /* blue                 */ {4, {0,100,200,255} }, /* dark blue hard to read in SDL if 139 used like the others */
+              /* blue                 */ {4, {0,100,200,255} },
               /* magenta              */ {5, {159,0,159,255} },
               /* cyan                 */ {6, {0,159,159,255} },
               /* white                */ {7, {200,200,200,255} },
@@ -190,33 +192,59 @@ bool SDLDisplay::read_font_into_texture()
 
 bool SDLDisplay::read_colours_from_settings()
 {
-  string prefix = Setting::DISPLAY_SDL_COLOUR_PREFIX;
+  vector<string> sdl_palettes = String::create_string_vector_from_csv_string(get_property(Setting::DISPLAY_SDL_PREFIX + PALETTES_SETTING));
+  string default_palette = get_property(Setting::DISPLAY_SDL_PREFIX + DEFAULT_PALETTE_SETTING);
 
-  for (uint i = 0; i <= static_cast<int>(Colour::COLOUR_MAX); i++)
+  // Read the colours
+  for (const string& p : sdl_palettes)
   {
-    string colour_setting = prefix + std::to_string(i);
-    string colour_val = get_property(colour_setting);
+    string palette_name = get_property(Setting::DISPLAY_SDL_PREFIX + p + "_name");
+    vector<SDL_Colour> palette_colours;
 
-    if (!colour_val.empty())
+    for (uint i = 0; i <= static_cast<int>(Colour::COLOUR_MAX); i++)
     {
-      std::vector<std::string> rgba;
-      boost::split(rgba, colour_val, boost::is_any_of(", "));
+      string colour_setting = Setting::DISPLAY_SDL_PREFIX + p + "_colour_" + std::to_string(i);
+      string colour_val = get_property(colour_setting);
 
-      if (rgba.size() == 4)
+      if (!colour_val.empty())
       {
-        Uint8 r = String::to_int(rgba.at(0));
-        Uint8 g = String::to_int(rgba.at(1));
-        Uint8 b = String::to_int(rgba.at(2));
-        Uint8 a = String::to_int(rgba.at(3));
+        std::vector<std::string> rgba;
+        boost::split(rgba, colour_val, boost::is_any_of(", "));
 
-        if (r >= 0 && r <= 255 &&
-          g >= 0 && g <= 255 &&
-          b >= 0 && b <= 255 &&
-          a >= 0 && a <= 255)
+        if (rgba.size() == 4)
         {
-          colours[i] = { r,g,b,a };
+          Uint8 r = String::to_int(rgba.at(0));
+          Uint8 g = String::to_int(rgba.at(1));
+          Uint8 b = String::to_int(rgba.at(2));
+          Uint8 a = String::to_int(rgba.at(3));
+
+          if (r >= 0 && r <= 255 &&
+            g >= 0 && g <= 255 &&
+            b >= 0 && b <= 255 &&
+            a >= 0 && a <= 255)
+          {
+            palette_colours.push_back({ r,g,b,a });
+          }
         }
       }
+    }
+
+    if (palette_colours.size() == NUM_SDL_BASE_COLOURS && palette_name.empty() == false)
+    {
+      palettes[p] = make_pair(palette_name, palette_colours);
+    }
+  }
+
+  // Set the default
+  auto p_it = palettes.find(default_palette);
+
+  if (p_it != palettes.end())
+  {
+    pair<string, vector<SDL_Colour>> palette_details = p_it->second;
+
+    for (uint i = 0; i < NUM_SDL_BASE_COLOURS; i++)
+    {
+      colours[i] = palette_details.second[i];
     }
   }
 
