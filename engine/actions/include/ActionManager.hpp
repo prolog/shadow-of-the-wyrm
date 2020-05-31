@@ -106,6 +106,9 @@ class ActionManager : public ISerializable
     // Switch between tiles and ASCII.
     ActionCost switch_graphics_mode(CreaturePtr creature);
 
+    // Switch between colour palettes.
+    ActionCost switch_colour_palettes(CreaturePtr creature);
+
     // Evoke/zap a wand.
     ActionCost evoke(CreaturePtr creature);
 

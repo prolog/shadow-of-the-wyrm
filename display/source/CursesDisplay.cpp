@@ -35,6 +35,18 @@ void CursesDisplay::set_spritesheets(const map<string, pair<string, unordered_ma
   // Curses doesn't use sprites.
 }
 
+void CursesDisplay::set_palette_id(const string& new_palette_id)
+{
+}
+
+pair<bool, pair<string, string>> CursesDisplay::switch_colour_palette(const std::string& current_palette_id)
+{
+  pair<bool, pair<string, string>> palette;
+  palette.first = false;
+
+  return palette;
+}
+
 // Assumption: screens is empty (prototype object), and so this is safe.
 Display* CursesDisplay::clone()
 {

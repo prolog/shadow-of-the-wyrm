@@ -8,6 +8,7 @@
 #include "Log.hpp"
 #include "MapDisplayArea.hpp"
 #include "Screen.hpp"
+#include "Serialize.hpp"
 #include "Setting.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
@@ -140,6 +141,18 @@ void SDLDisplay::initialize_colours()
   };
 }
 
+void SDLDisplay::initialize_colours(const vector<SDL_Colour>& colourset)
+{
+  if (colours.size() == NUM_SDL_BASE_COLOURS)
+  {
+    for (size_t i = 0; i < NUM_SDL_BASE_COLOURS; i++)
+    {
+      SDL_Colour cur_colour = colourset[i];
+      colours[i] = cur_colour;
+    }
+  }
+}
+
 bool SDLDisplay::read_dimensions_from_settings()
 {
   bool dim_val = false;
@@ -227,6 +240,7 @@ bool SDLDisplay::read_colours_from_settings()
           }
         }
       }
+
     }
 
     if (palette_colours.size() == NUM_SDL_BASE_COLOURS && palette_name.empty() == false)
@@ -247,6 +261,8 @@ bool SDLDisplay::read_colours_from_settings()
       colours[i] = palette_details.second[i];
     }
   }
+
+  cur_palette_id = default_palette;
 
   return true;
 }
@@ -898,6 +914,46 @@ SDL_Texture* SDLDisplay::get_spritesheet(const string& spritesheet_idx)
   return ss;
 }
 
+void SDLDisplay::set_palette_id(const string& new_palette_id)
+{
+  cur_palette_id = new_palette_id;
+}
+
+pair<bool, pair<string, string>> SDLDisplay::switch_colour_palette(const std::string& palette_id)
+{
+  pair<bool, pair<string, string>> palette;
+  palette.first = false;
+
+  string pid = palette_id;
+  if (pid.empty())
+  {
+    pid = this->cur_palette_id;
+  }
+
+  auto p_it = palettes.find(pid);
+  auto p_it_new = palettes.end();
+
+  if (p_it != palettes.end())
+  {
+    p_it_new = std::next(p_it);
+  }
+
+  if (p_it_new == palettes.end())
+  {
+    p_it_new = palettes.begin();
+  }
+
+  palette.first = true;
+  palette.second.first = p_it_new->first;
+  palette.second.second = p_it_new->second.first;
+
+  cur_palette_id = p_it_new->second.first;
+  initialize_colours(p_it_new->second.second);
+
+  return palette;
+}
+
+
 Coordinate SDLDisplay::get_spritesheet_coordinate(const SpritesheetLocation& ssl) const
 {
   Coordinate coords = ssl.get_coordinate();
@@ -925,11 +981,12 @@ bool SDLDisplay::serialize(std::ostream& stream) const
 {
   Display::serialize(stream);
 
-  // Window, raw screen textures, the font spritesheet, and renderer will 
-  // all be set up outside of this function. They're not serialized.  
-  // Ignore them.
+  // Window, raw screen textures, the font spritesheet, the renderer,
+  // palettes will all be set up outside of this function.  They're 
+  // not serialized.  Ignore them.
 
   sdld.serialize(stream);
+  Serialize::write_string(stream, cur_palette_id);
 
   return true;
 }
@@ -943,7 +1000,14 @@ bool SDLDisplay::deserialize(std::istream& stream)
   // Ignore them.
 
   sdld.deserialize(stream);
+  Serialize::read_string(stream, cur_palette_id);
 
+  auto p_it = palettes.find(cur_palette_id);
+  if (p_it != palettes.end())
+  {
+    auto palette = p_it->second.second;
+    initialize_colours(palette);
+  }
   return true;
 }
 

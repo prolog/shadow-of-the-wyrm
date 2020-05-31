@@ -475,6 +475,14 @@ string ActionTextKeys::get_hide_failure_message(const string& creature_desc_sid,
   return get_general_message(creature_desc_sid, ACTION_HIDE_FAILURE_PLAYER, ACTION_HIDE_FAILURE_MONSTER, is_player);
 }
 
+string ActionTextKeys::get_palette_switch_message(const string& new_palette_name_sid)
+{
+  string msg = StringTable::get(ACTION_SWITCH_PALETTE);
+  boost::replace_first(msg, "%s", StringTable::get(new_palette_name_sid));
+
+  return msg;
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -695,5 +703,5 @@ const string ActionTextKeys::ACTION_HIDE_FAILURE_PLAYER           = "ACTION_HIDE
 const string ActionTextKeys::ACTION_HIDE_FAILURE_MONSTER          = "ACTION_HIDE_FAILURE_MONSTER";
 const string ActionTextKeys::ACTION_ITEM_PACK_PLAYER              = "ACTION_ITEM_PACK_PLAYER";
 const string ActionTextKeys::ACTION_ITEM_PACK_NPC                 = "ACTION_ITEM_PACK_NPC";
-
+const string ActionTextKeys::ACTION_SWITCH_PALETTE                = "ACTION_SWITCH_PALETTE";
 

@@ -372,6 +372,13 @@ class SwitchGraphicsModeCommand : public Command
     ~SwitchGraphicsModeCommand();
 };
 
+class SwitchColourPalettesCommand : public Command
+{
+  public:
+    SwitchColourPalettesCommand(int key);
+    ~SwitchColourPalettesCommand();
+};
+
 // NPC-only commands:
 
 class BreedCommand : public Command

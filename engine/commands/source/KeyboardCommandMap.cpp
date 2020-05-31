@@ -177,6 +177,7 @@ void KeyboardCommandMap::initialize_command_mapping(const Settings& settings)
   parse_keybindings(settings, remappable_commands);
 
   // Non-remappable commands
+  command_mapping.insert(make_pair(std::to_string(KEY_F(9)), CommandKeys::SWITCH_COLOUR_PALETTES));
   command_mapping.insert(make_pair(std::to_string(KEY_F(10)), CommandKeys::SWITCH_GRAPHICS_MODE));
   command_mapping.insert(make_pair(std::to_string(KEY_F(11)), CommandKeys::RUN_SCRIPT));
   command_mapping.insert(make_pair(std::to_string(KEY_F(12)), CommandKeys::RELOAD_SCRIPTS_TEXTURES_AND_SIDS));

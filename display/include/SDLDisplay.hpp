@@ -84,6 +84,10 @@ class SDLDisplay : public Display
     void set_spritesheets(const std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>>& spritesheet_details) override;
     SDL_Texture* get_spritesheet(const std::string& spritesheet_idx);
 
+    // Palettes
+    void set_palette_id(const std::string& new_palette_id) override;
+    virtual std::pair<bool, std::pair<std::string, std::string>> switch_colour_palette(const std::string& current_palette_id) override;
+
     Coordinate get_spritesheet_coordinate(const SpritesheetLocation& ssl) const;
 
     virtual bool serialize(std::ostream& stream) const override;
@@ -98,6 +102,7 @@ class SDLDisplay : public Display
     bool read_colours_from_settings();
     bool create_window_and_renderer();
     void initialize_colours();
+    void initialize_colours(const std::vector<SDL_Colour>& colourset);
 
     bool check_available_screen_dimensions();
 
@@ -136,6 +141,7 @@ class SDLDisplay : public Display
     std::unordered_map<std::string, SDL_Texture*> spritesheets;
     std::unordered_map<std::string, std::unordered_map<std::string, Coordinate>> spritesheet_references;
     std::map<std::string, std::pair<std::string, std::vector<SDL_Colour>>> palettes;
+    std::string cur_palette_id;
 
     static const int SCREEN_ROWS;
     static const int SCREEN_COLS;

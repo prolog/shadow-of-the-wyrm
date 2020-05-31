@@ -1,4 +1,5 @@
 Me:
+- cur_palette_id not being set correctly so not persisting properly
 - night water/day water
 - sprites: siren, barrow, sweet old hound
 - YARD: can we suppress the tile-level msg and just display custom text? ie

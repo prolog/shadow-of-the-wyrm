@@ -541,6 +541,16 @@ SwitchGraphicsModeCommand::~SwitchGraphicsModeCommand()
 {
 }
 
+// Switch between colour palettes (when in SDL)
+SwitchColourPalettesCommand::SwitchColourPalettesCommand(int key)
+: Command(CommandKeys::SWITCH_COLOUR_PALETTES, key)
+{
+}
+
+SwitchColourPalettesCommand::~SwitchColourPalettesCommand()
+{
+}
+
 // NPC-only commands
 
 // Breed (create a new creature of the same ID on an adjacent tile)

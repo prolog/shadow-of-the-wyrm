@@ -4265,6 +4265,9 @@
     <ClInclude Include="engine\decision_strategies\deity\include\HaltBreedingDeityDecisionStrategyHandler.hpp">
       <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
     </ClInclude>
+    <ClInclude Include="display\include\DisplayProperties.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8544,6 +8547,9 @@
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\source\ArcaneTileDamageProcessor.cpp">
       <Filter>Source Files\engine\maps\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\DisplayProperties.cpp">
+      <Filter>Source Files\display\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

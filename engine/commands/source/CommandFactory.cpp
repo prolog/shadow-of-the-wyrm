@@ -242,6 +242,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_unique<SwitchGraphicsModeCommand>(key);
   }
+  else if (command_name == CommandKeys::SWITCH_COLOUR_PALETTES)
+  {
+    command = std::make_unique<SwitchColourPalettesCommand>(key);
+  }
 
   return command;
 }

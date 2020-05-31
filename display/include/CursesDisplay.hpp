@@ -54,6 +54,10 @@ class CursesDisplay : public Display
 
     void set_spritesheets(const std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>>& spritesheet_details) override;
 
+    // Palettes
+    void set_palette_id(const std::string& new_palette_id) override;
+    virtual std::pair<bool, std::pair<std::string, std::string>> switch_colour_palette(const std::string& current_palette_id) override;
+
     virtual Display* clone() override;
 
     WINDOW* get_current_screen();

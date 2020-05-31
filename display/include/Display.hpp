@@ -122,6 +122,10 @@ class Display : public ISerializable
 
     virtual void set_spritesheets(const std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>>& spritesheet_details) = 0;
 
+    // Palettes
+    virtual void set_palette_id(const std::string& new_palette_id) = 0;
+    virtual std::pair<bool, std::pair<std::string, std::string>> switch_colour_palette(const std::string& current_palette_id) = 0;
+
     // Property methods.
     virtual void set_properties(const std::map<std::string, std::string>& new_properties);
     virtual void set_property(const std::string& property, const std::string& value);

@@ -10,6 +10,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "CurrencyAction.hpp"
 #include "DateTimeWeatherAction.hpp"
+#include "DisplayProperties.hpp"
 #include "DropAction.hpp"
 #include "EquipmentManager.hpp"
 #include "ExitGameAction.hpp"
@@ -423,6 +424,46 @@ ActionCost ActionManager::switch_graphics_mode(CreaturePtr creature)
 
   // Now force a redraw
   game.set_requires_redraw(true);
+
+  return get_action_cost(creature, action_cost_value);
+}
+
+ActionCost ActionManager::switch_colour_palettes(CreaturePtr creature)
+{
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
+  Game& game = Game::instance();
+  DisplayPtr display = game.get_display();
+  string display_id;
+
+  // Get the current palette ID
+  if (creature != nullptr)
+  {
+    display_id = creature->get_additional_property(DisplayProperties::DISPLAY_PROPERTIES_ID);
+
+    // Try switching
+    pair<bool, pair<string, string>> switch_result = display->switch_colour_palette(display_id);
+
+    // If successful, display a message
+    if (switch_result.first)
+    {
+      string new_pal_id = switch_result.second.first;
+      string name_sid = switch_result.second.second;
+
+      // Display msg
+      string palette_msg = ActionTextKeys::get_palette_switch_message(name_sid);
+      IMessageManager& manager = MM::instance();
+      manager.clear_if_necessary();
+      manager.add_new_message(palette_msg);
+      manager.send();
+
+      // Update palette ID
+      creature->set_additional_property(DisplayProperties::DISPLAY_PROPERTIES_ID, new_pal_id);
+
+      // Force a redraw
+      game.set_requires_redraw(true);
+    }
+  }
+
 
   return get_action_cost(creature, action_cost_value);
 }

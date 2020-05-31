@@ -196,6 +196,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="display\include\DisplayItem.hpp" />
     <ClInclude Include="display\include\DisplayItemType.hpp" />
     <ClInclude Include="display\include\DisplayMap.hpp" />
+    <ClInclude Include="display\include\DisplayProperties.hpp" />
     <ClInclude Include="display\include\DisplaySettings.hpp" />
     <ClInclude Include="display\include\DisplayStatistics.hpp" />
     <ClInclude Include="display\include\DisplayTile.hpp" />
@@ -1330,6 +1331,7 @@ mkdir $(OutDir)logs
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\SDLKeyboardController.cpp" />
+    <ClCompile Include="display\source\DisplayProperties.cpp" />
     <ClCompile Include="display\source\PromptProcessor.cpp" />
     <ClCompile Include="display\source\SDL.cpp" />
     <ClCompile Include="display\source\SDLCursorLocation.cpp" />
