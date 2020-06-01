@@ -436,7 +436,7 @@ ActionCost ActionManager::switch_colour_palettes(CreaturePtr creature)
   string display_id;
 
   // Get the current palette ID
-  if (creature != nullptr)
+  if (creature != nullptr && display != nullptr)
   {
     display_id = creature->get_additional_property(DisplayProperties::DISPLAY_PROPERTIES_ID);
 
@@ -452,7 +452,8 @@ ActionCost ActionManager::switch_colour_palettes(CreaturePtr creature)
       // Display msg
       string palette_msg = ActionTextKeys::get_palette_switch_message(name_sid);
       IMessageManager& manager = MM::instance();
-      manager.clear_if_necessary();
+
+      display->clear_messages();
       manager.add_new_message(palette_msg);
       manager.send();
 
