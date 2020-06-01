@@ -1,5 +1,7 @@
 Me:
-- cur_palette_id not being set correctly so not persisting properly
+- need to persist palettes
+- after load, palettes are always reverting to Classic
+- after switch, the msg manager needs to be fully redrawn too
 - night water/day water
 - sprites: siren, barrow, sweet old hound
 - YARD: can we suppress the tile-level msg and just display custom text? ie

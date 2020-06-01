@@ -947,7 +947,7 @@ pair<bool, pair<string, string>> SDLDisplay::switch_colour_palette(const std::st
   palette.second.first = p_it_new->first;
   palette.second.second = p_it_new->second.first;
 
-  cur_palette_id = p_it_new->second.first;
+  cur_palette_id = p_it_new->first;
   initialize_colours(p_it_new->second.second);
 
   return palette;
@@ -988,6 +988,24 @@ bool SDLDisplay::serialize(std::ostream& stream) const
   sdld.serialize(stream);
   Serialize::write_string(stream, cur_palette_id);
 
+  Serialize::write_size_t(stream, palettes.size());
+  for (const auto& p_details : palettes)
+  {
+    Serialize::write_string(stream, p_details.first);
+    Serialize::write_string(stream, p_details.second.first);
+
+    vector<SDL_Colour> palette_colours = p_details.second.second;
+    Serialize::write_size_t(stream, palette_colours.size());
+
+    for (const auto& pc : palette_colours)
+    {
+      Serialize::write_uint(stream, pc.r);
+      Serialize::write_uint(stream, pc.g);
+      Serialize::write_uint(stream, pc.b);
+      Serialize::write_uint(stream, pc.a);
+    }
+  }
+
   return true;
 }
 
@@ -1002,12 +1020,50 @@ bool SDLDisplay::deserialize(std::istream& stream)
   sdld.deserialize(stream);
   Serialize::read_string(stream, cur_palette_id);
 
+  size_t num_palettes = 0;
+  Serialize::read_size_t(stream, num_palettes);
+
+  for (size_t i = 0; i < num_palettes; i++)
+  {
+    string palette_id;
+    Serialize::read_string(stream, palette_id);
+
+    string palette_name_sid;
+    Serialize::read_string(stream, palette_name_sid);
+
+    size_t palette_size = 0;
+    Serialize::read_size_t(stream, palette_size);
+
+    vector<SDL_Colour> colours;
+    for (size_t j = 0; j < palette_size; j++)
+    {
+      uint r = 0;
+      uint g = 0;
+      uint b = 0;
+      uint a = 0;
+
+      Serialize::read_uint(stream, r);
+      Serialize::read_uint(stream, g);
+      Serialize::read_uint(stream, b);
+      Serialize::read_uint(stream, a);
+
+      SDL_Colour c = {static_cast<Uint8>(r), static_cast<Uint8>(g), static_cast<Uint8>(b), static_cast<Uint8>(a)};
+      colours.push_back(c);
+    }
+
+    palettes.insert(make_pair(palette_id, make_pair(palette_name_sid, colours)));
+  }
+
+  // After reading palettes, update the palette based on the currently selected
+  // ID.
   auto p_it = palettes.find(cur_palette_id);
+
   if (p_it != palettes.end())
   {
     auto palette = p_it->second.second;
     initialize_colours(palette);
   }
+
   return true;
 }
 
