@@ -633,9 +633,10 @@ void SDLDisplay::refresh_current_window()
   if (!screens.empty() && !screen_cursors.empty())
   {
     SDL_Texture* cur_screen = screens.back();
+    SDL_Colour bl = get_colour(static_cast<int>(Colour::COLOUR_BLACK));
 
     SDL_SetRenderTarget(renderer, NULL);
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_SetRenderDrawColor(renderer, bl.r, bl.g, bl.b, bl.a);
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, cur_screen, NULL, NULL);
     SDL_RenderPresent(renderer);

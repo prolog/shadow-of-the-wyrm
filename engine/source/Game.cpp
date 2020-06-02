@@ -832,6 +832,9 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
           Game::instance().get_map_registry_ref().clear_symbol_cache();
         }
 
+        // Display what's been done in the last turn.
+        display->refresh_current_window();
+
         // strategy is used for the creature's decision strategy, so use another
         // variable as the strategy for explicitly getting a command.  This might
         // not actually be the creature's strategy, but rather another one,
