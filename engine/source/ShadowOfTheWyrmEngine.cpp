@@ -682,59 +682,64 @@ bool ShadowOfTheWyrmEngine::process_load_game()
   bool result = false;
   Game& game = Game::instance();
 
-  LoadGameScreen load_game(display);
-  string option = load_game.display();
-
-  string filename = load_game.get_file_name(option);
-
-  if (!filename.empty())
   {
-    // Do the load asynchronously or SDL/Windows can flip out because of
-    // events not being responded to.
-    promise<SerializationReturnCode> sp;
-    future<SerializationReturnCode> sf = sp.get_future();
-    DisplayPtr cur_display = display;
-    ControllerPtr cur_controller = controller;
+    LoadGameScreen load_game(display);
+    string option = load_game.display();
 
-    std::thread thread([&]() {
-      SerializationReturnCode src = Serialization::load(filename);
-      
-      game.set_display(cur_display);
-      CreaturePtr player = game.get_current_player();
-        
-      if (player != nullptr)
+    string filename = load_game.get_file_name(option);
+
+    if (!filename.empty())
+    {
+      // Do the load asynchronously or SDL/Windows can flip out because of
+      // events not being responded to.
+      promise<SerializationReturnCode> sp;
+      future<SerializationReturnCode> sf = sp.get_future();
+      DisplayPtr cur_display = display;
+      ControllerPtr cur_controller = controller;
+
+      std::thread thread([&]() {
+        SerializationReturnCode src = Serialization::load(filename);
+
+        game.set_display(cur_display);
+        CreaturePtr player = game.get_current_player();
+
+        if (player != nullptr)
+        {
+          player->get_decision_strategy()->set_controller(cur_controller);
+        }
+
+        sp.set_value(src);
+        });
+
+      game.set_loading();
+
+      while (sf.wait_for(std::chrono::milliseconds(250)) != std::future_status::ready)
       {
-        player->get_decision_strategy()->set_controller(cur_controller);
-      } 
+        controller->poll_event();
+      }
 
-      sp.set_value(src);
-    });
+      thread.join();
+      SerializationReturnCode src = sf.get();
 
-    game.set_loading();
+      if (src == SerializationReturnCode::SERIALIZATION_OK)
+      {
+        game.set_current_loaded_savefile(filename);
+        result = true;
+      }
 
-    while (sf.wait_for(std::chrono::milliseconds(250)) != std::future_status::ready)
-    {
-      controller->poll_event();
+      game.set_ready();
     }
 
-    thread.join();
-    SerializationReturnCode src = sf.get();
+    // JCD TODO: Add support for additional reloadable settings here.
+    // E.g., autopickup
+    Settings kb_settings(true);
+    map<string, string> keybinding_settings = kb_settings.get_keybindings();
 
-    if (src == SerializationReturnCode::SERIALIZATION_OK)
-    {
-      game.set_current_loaded_savefile(filename);
-      result = true;
-    }
-
-    game.set_ready();
+    game.get_settings_ref().set_settings(keybinding_settings);
   }
 
-  // JCD TODO: Add support for additional reloadable settings here.
-  // E.g., autopickup
-  Settings kb_settings(true);
-  map<string, string> keybinding_settings = kb_settings.get_keybindings();
-
-  game.get_settings_ref().set_settings(keybinding_settings);
+  display->clear_messages();
+  game.set_requires_redraw(true);
 
   return result;
 }

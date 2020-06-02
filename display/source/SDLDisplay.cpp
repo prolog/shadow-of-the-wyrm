@@ -919,6 +919,28 @@ void SDLDisplay::set_palette_id(const string& new_palette_id)
   cur_palette_id = new_palette_id;
 }
 
+void SDLDisplay::set_palette(const string& new_palette_id)
+{
+  auto p_it = palettes.find(new_palette_id);
+
+  if (p_it != palettes.end())
+  {
+    set_palette_id(new_palette_id);
+
+    auto colourset = p_it->second.second;
+    initialize_colours(colourset);
+
+    // Reset the colours on the dimensions
+    sdld.set_fg_colour(get_colour(static_cast<int>(Colour::COLOUR_BLACK)));
+    sdld.set_bg_colour(get_colour(static_cast<int>(Colour::COLOUR_BLACK)));
+  }
+}
+
+string SDLDisplay::get_palette_id() const
+{
+  return cur_palette_id;
+}
+
 pair<bool, pair<string, string>> SDLDisplay::switch_colour_palette(const std::string& palette_id)
 {
   pair<bool, pair<string, string>> palette;

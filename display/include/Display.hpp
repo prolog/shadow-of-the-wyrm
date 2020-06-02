@@ -124,6 +124,8 @@ class Display : public ISerializable
 
     // Palettes
     virtual void set_palette_id(const std::string& new_palette_id) = 0;
+    virtual void set_palette(const std::string& new_palette_id) = 0;
+    virtual std::string get_palette_id() const = 0;
     virtual std::pair<bool, std::pair<std::string, std::string>> switch_colour_palette(const std::string& current_palette_id) = 0;
 
     // Property methods.

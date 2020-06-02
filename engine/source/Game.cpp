@@ -530,6 +530,9 @@ void Game::go()
     }
 
     string welcome_message = TextMessages::get_welcome_message(current_player->get_name(), !reloaded_game);
+    
+    // JCD FIXME FIXME FIXME
+    display->clear_display();
 
     IMessageManager& manager = MM::instance();
     manager.add_new_message(welcome_message);
@@ -1310,6 +1313,10 @@ bool Game::deserialize(istream& stream)
 
   if (!dc_pair.first) return false;
   if (!dc_pair.first->deserialize(stream)) return false;
+
+  // We need the saved palette ID, however, so the user can see the last
+  // palette they were using when they saved.
+  display->set_palette(dc_pair.first->get_palette_id());
 
   map_registry.deserialize(stream);
 

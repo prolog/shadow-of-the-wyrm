@@ -56,6 +56,8 @@ class CursesDisplay : public Display
 
     // Palettes
     void set_palette_id(const std::string& new_palette_id) override;
+    virtual void set_palette(const std::string& new_palette_id) override;
+    virtual std::string get_palette_id() const override;
     virtual std::pair<bool, std::pair<std::string, std::string>> switch_colour_palette(const std::string& current_palette_id) override;
 
     virtual Display* clone() override;
