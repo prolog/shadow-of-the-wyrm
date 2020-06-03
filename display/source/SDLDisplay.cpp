@@ -324,7 +324,9 @@ void SDLDisplay::clear_messages()
 
     SDLRender render(sdld);
     render.fill_area(renderer, screens.back(), &dst_rect, get_colour(Colour::COLOUR_BLACK));
-    refresh_current_window();
+
+    // JCD FIXME this seems to mess with load new palette :(
+    //refresh_current_window();
 
     SDLCursorLocation& sdlc = screen_cursors.back();
     sdlc.set_y(0);
@@ -484,8 +486,6 @@ void SDLDisplay::add_message(const string& to_add_message, const Colour colour, 
 
     disable_colour(colour);
   }
-
-  refresh_current_window();
 }
 
 string SDLDisplay::add_message_with_prompt(const string& message, const Colour colour, const bool clear_prior, const std::string& default_for_esc_key)
@@ -497,6 +497,8 @@ string SDLDisplay::add_message_with_prompt(const string& message, const Colour c
     SDLRender render(sdld);
 
     add_message(message, colour, clear_prior);
+    refresh_current_window();
+
     prompt_result = prompt_processor.get_user_string(sdld, screen_cursors.back(), render, renderer, spritesheets[TEXT_ID], screens.back(), true /* allow arbitrary non-alphanumeric characters */, default_for_esc_key);
   }
   

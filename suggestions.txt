@@ -6,7 +6,8 @@ Me:
 - sprites: siren, barrow, sweet old hound
 - YARD: can we suppress the tile-level msg and just display custom text? ie
   for Carcassia
-- Poison lasts too long
+- Release after this: grond says tanning is complicated & dragon skins aren't
+  what they should be.
 - Investigate enchant scrolls?
 - Can read scrolls while mute (spellbooks too?)
 - Use Magic to destroy spellbooks and get a bit of AP?

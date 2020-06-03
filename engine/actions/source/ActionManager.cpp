@@ -455,7 +455,7 @@ ActionCost ActionManager::switch_colour_palettes(CreaturePtr creature)
 
       display->clear_messages();
       manager.add_new_message(palette_msg);
-      manager.send();
+      //x Bmanager.send();
 
       // Update palette ID
       creature->set_additional_property(DisplayProperties::DISPLAY_PROPERTIES_ID, new_pal_id);

@@ -48,6 +48,7 @@ bool Display::get_force_ascii() const
 void Display::confirm(const string& confirmation_message)
 {
   add_message(confirmation_message, Colour::COLOUR_WHITE, false);
+  refresh_current_window();
 }
 
 void Display::add_message(const string& message, const bool reset_cursor)
