@@ -38,8 +38,15 @@ CommandPtr PlayerDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_f
   CommandPtr player_command;
   long retry_count = 0;
 
+  DisplayPtr display = Game::instance().get_display();
+  if (display != nullptr)
+  {
+    display->refresh_current_window();
+  }
+
   // Don't prompt for input if input has been provided.
   bool prompt_for_input = !key_p;
+  Game& game = Game::instance();
 
   if (command_factory && keyboard_commands)
   {
@@ -120,6 +127,12 @@ bool PlayerDecisionStrategy::get_confirmation(const bool confirmation_default_va
   string confirm_str = StringTable::get(TextKeys::DECISION_CONFIRM_KEY);
   string deny_str = StringTable::get(TextKeys::DECISION_DENY_KEY);
   bool require_uppercase = Game::instance().get_settings_ref().get_setting_as_bool(Setting::CONFIRMATION_REQUIRE_CAPITALIZATION);
+
+  DisplayPtr display = Game::instance().get_display();
+  if (display != nullptr)
+  {
+    display->refresh_current_window();
+  }
 
   if (require_uppercase)
   {

@@ -54,7 +54,7 @@ string SDLPromptProcessor::get_user_string(const SDLDisplayParameters& display_p
   try
   {
     bool update = false;
-
+    
     for (c = kc.get_char_as_int(); (c != '\n') && (c != '\r') && (c != NC_ESCAPE_KEY); c = kc.get_char_as_int())
     {
       update = false;

@@ -1,5 +1,6 @@
 Me:
 - Refresh issue after casting a spell with a prompt
+- Maybe refresh needs to be in get_nonmap decision for PC?
 - Menu bg after e.g. switching between eq -> inv -> eq
 - Classic: night water/day water
 - sprites: siren, barrow, sweet old hound
