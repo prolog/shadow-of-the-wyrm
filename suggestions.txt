@@ -1,7 +1,6 @@
 Me:
-- Can we not do a refresh on MM? There's flicker switching palettes.
-- Also, refresh_current_window is using a hardcoded black instead of the
-  palette version.
+- Refresh issue after casting a spell with a prompt
+- Menu bg after e.g. switching between eq -> inv -> eq
 - Classic: night water/day water
 - sprites: siren, barrow, sweet old hound
 - YARD: can we suppress the tile-level msg and just display custom text? ie

@@ -325,9 +325,6 @@ void SDLDisplay::clear_messages()
     SDLRender render(sdld);
     render.fill_area(renderer, screens.back(), &dst_rect, get_colour(Colour::COLOUR_BLACK));
 
-    // JCD FIXME this seems to mess with load new palette :(
-    //refresh_current_window();
-
     SDLCursorLocation& sdlc = screen_cursors.back();
     sdlc.set_y(0);
     sdlc.set_x(0);
@@ -358,8 +355,10 @@ void SDLDisplay::clear_to_bottom(const int row)
     dst_rect.h = rows_to_blank * glyph_height;
     dst_rect.w = sdld.get_screen_width();
 
-    render.fill_area(renderer, screens.back(), &dst_rect, get_colour(0));
+    render.fill_area(renderer, screens.back(), &dst_rect, get_colour(Colour::COLOUR_BLACK));
   }
+
+//  refresh_current_window();
 }
 
 void SDLDisplay::add_alert(const string& message, const bool prompt_for_input)

@@ -534,21 +534,11 @@ void Game::go()
     display->clear_display();
     display->refresh_current_window();
 
-    // JCD REMOVEME
-    CreaturePtr playertest = Game::instance().get_current_player();
-    playertest->get_decision_strategy()->get_confirmation();
-
     IMessageManager& manager = MM::instance();
     manager.add_new_message(welcome_message);
     manager.send();
 
-    // JCD REMOVEME
-    display->refresh_current_window();
-    playertest->get_decision_strategy()->get_confirmation();
-
-
     CreatureCalculator::update_calculated_values(current_player);
-
     string map_id = "";
 
     // Main game loop.

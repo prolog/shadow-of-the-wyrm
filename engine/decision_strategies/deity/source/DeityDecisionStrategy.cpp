@@ -65,7 +65,7 @@ void DeityDecisionStrategy::initialize_decisions()
 DeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision(CreaturePtr creature)
 {
   // The default decision if nothing else is selected.
-  DeityDecisionStrategyHandlerPtr decision_strategy = nullptr;
+  DeityDecisionStrategyHandlerPtr decision_strategy = std::make_unique<DoNothingDeityDecisionStrategyHandler>(deity_id);
 
   for (auto& decision : decisions)
   {
