@@ -1,9 +1,10 @@
 Me:
-- Refresh issue after casting a spell with a prompt
+- "Command not found" not working
 - Maybe refresh needs to be in get_nonmap decision for PC?
+- bright colour palette
 - Menu bg after e.g. switching between eq -> inv -> eq
 - Classic: night water/day water
-- sprites: siren, barrow, sweet old hound
+- sprites: ???
 - YARD: can we suppress the tile-level msg and just display custom text? ie
   for Carcassia
 - Release after this: grond says tanning is complicated & dragon skins aren't
