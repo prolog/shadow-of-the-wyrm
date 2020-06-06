@@ -38,14 +38,6 @@ CommandPtr PlayerDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_f
   CommandPtr player_command;
   long retry_count = 0;
 
-  // JCD REMOVE ME
-  /*
-  DisplayPtr display = Game::instance().get_display();
-  if (display != nullptr)
-  {
-    display->refresh_current_window();
-  }*/
-
   // Don't prompt for input if input has been provided.
   bool prompt_for_input = !key_p;
   Game& game = Game::instance();

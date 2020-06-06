@@ -607,11 +607,6 @@ void SDLDisplay::clear_screen()
       SDL_SetRenderTarget(renderer, current_screen);
       SDL_SetRenderDrawColor(renderer, c.r, c.g, c.b, c.a);
       SDL_RenderClear(renderer);
-
-      // JCD REMOVE ME - if in, main screen is fine.
-      // If not, things like skills on level look terrible
-      // due to flicker.
-      //x refresh_current_window();
     }
   }
 }
@@ -642,8 +637,6 @@ void SDLDisplay::setup_new_screen()
   SDL_SetRenderTarget(renderer, screen);
   SDL_SetRenderDrawColor(renderer, c.r, c.g, c.b, c.a);
   SDL_RenderClear(renderer);
-
-  refresh_current_window();
 }
 
 // To render the screen, detach the renderer from the current texture and 
