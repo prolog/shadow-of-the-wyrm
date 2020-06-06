@@ -467,13 +467,13 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
 
     Coordinate display_coord = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, current_map, reference_coords.first);
     loaded_map_details.update_display_coord(display_coord);
-    bool redraw_needed = loaded_map_details.requires_full_map_redraw() || requires_redraw|| reloaded_game;
+    bool redraw_needed = loaded_map_details.requires_full_map_redraw() || requires_redraw || reloaded_game;
 
     CurrentCreatureAbilities cca;
     CreaturePtr player = game.get_current_player();
 
     DisplayMap display_map = MapTranslator::create_display_map(player, !cca.can_see(player), current_map, fov_map, display_area, reference_coords.first, redraw_needed);
-    
+
     CursorSettings cs = CursorSettings::CURSOR_SETTINGS_USE_DEFAULT;
 
     if (reference_coords.second)

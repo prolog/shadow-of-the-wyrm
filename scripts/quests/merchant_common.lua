@@ -4,7 +4,7 @@ module(..., package.seeall)
 -- to be present.
 function chat(creature_id, sold_item_id, cost, offer_sid, accept_sid, decline_sid, nsf_sid)
   local currency_amount = count_currency(creature_id)
-  if currency_amount > cost then
+  if currency_amount >= cost then
     if add_confirmation_message(offer_sid) then
       remove_object_from_player(CURRENCY_ID, cost)
       add_object_to_player_tile(sold_item_id)
