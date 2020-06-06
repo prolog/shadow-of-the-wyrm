@@ -1,4 +1,5 @@
 Me:
+- grond: 50 gold carcassia vendor silverweed
 - "Command not found" not working
 - Maybe refresh needs to be in get_nonmap decision for PC?
 - bright colour palette

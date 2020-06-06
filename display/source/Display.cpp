@@ -151,8 +151,6 @@ string Display::display_screen(const Screen& current_screen)
 
   // Done!  Add an appropriate prompt.
   result = get_prompt_value(current_screen, wrapper, current_row, current_col);
-  refresh_current_window();
-
   return result;
 }
 
@@ -183,7 +181,6 @@ void Display::draw(const DisplayMap& current_map, const CursorSettings cs)
   }
 
   redraw_cursor(current_map, cs, map_rows);
-  refresh_current_window();
   Game::instance().set_requires_redraw(false);
 }
 

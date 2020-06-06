@@ -25,8 +25,8 @@ pair<int, int> SDLRender::get_glyph_location_from_spritesheet(char x)
 
 void SDLRender::render_spritesheet(int y, int x, SDLCursorLocation& cursor_location, SDL_Renderer* renderer, SDL_Texture* spritesheet_texture, SDL_Texture* target_texture, SDL_Rect* clip, SDL_Rect* dst_rect, const SDL_Color& color)
 {
-  SDL_SetTextureColorMod(spritesheet_texture, color.r, color.g, color.b);
   SDL_SetRenderTarget(renderer, target_texture);
+  SDL_SetTextureColorMod(spritesheet_texture, color.r, color.g, color.b);
   SDL_RenderCopy(renderer, spritesheet_texture, clip, dst_rect);  
 }
 
@@ -96,9 +96,25 @@ void SDLRender::draw_glyph(SDLCursorLocation& cursor_location, SDL_Renderer* ren
   render_spritesheet(render_y, render_x, cursor_location, renderer, spritesheet, texture, &font_clip, &dst_rect, fg);
 }
 
+// Fills an entire texture based on the SDL display parameters.
+void SDLRender::fill_area(SDL_Renderer* renderer, SDL_Texture* target_texture, const SDL_Color& colour)
+{
+  SDL_Rect dst_rect = { 0, 0, 0, 0 };
+  int glyph_height = display_params.get_glyph_height();
+  int rows = display_params.get_screen_rows();
+  int width = display_params.get_screen_width();
+
+  dst_rect.y = 0 * glyph_height;
+  dst_rect.x = 0;
+  dst_rect.h = rows * glyph_height;
+  dst_rect.w = width;
+
+  fill_area(renderer, target_texture, &dst_rect, colour);
+}
+
 void SDLRender::fill_area(SDL_Renderer* renderer, SDL_Texture* target_texture, SDL_Rect* dst_rect, const SDL_Color& colour)
 {
-  SDL_SetRenderDrawColor(renderer, colour.r, colour.g, colour.b, colour.a);
   SDL_SetRenderTarget(renderer, target_texture);
+  SDL_SetRenderDrawColor(renderer, colour.r, colour.g, colour.b, colour.a);
   SDL_RenderFillRect(renderer, dst_rect);
 }

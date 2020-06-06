@@ -59,7 +59,10 @@ void MessageManager::send(const MessageSpacing ms, const bool halt_after, const 
       buffer_has_messages = true;
     }
 
-    user_display->refresh_current_window();
+    if (messages.size() > 0)
+    {
+      user_display->refresh_current_window();
+    }
   }
   
   if (halt_after)

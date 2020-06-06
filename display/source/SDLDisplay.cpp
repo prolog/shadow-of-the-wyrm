@@ -357,8 +357,6 @@ void SDLDisplay::clear_to_bottom(const int row)
 
     render.fill_area(renderer, screens.back(), &dst_rect, get_colour(Colour::COLOUR_BLACK));
   }
-
-//  refresh_current_window();
 }
 
 void SDLDisplay::add_alert(const string& message, const bool prompt_for_input)
@@ -600,6 +598,21 @@ void SDLDisplay::clear_screen()
     SDL_DestroyTexture(current_screen);
 
     Game::instance().set_requires_redraw(true);
+
+    // Refresh the equivalent of stdscr if need be.
+    if (screens.size() == 1)
+    {
+      current_screen = screens.back();
+      SDL_Colour c = sdld.get_bg_colour();
+      SDL_SetRenderTarget(renderer, current_screen);
+      SDL_SetRenderDrawColor(renderer, c.r, c.g, c.b, c.a);
+      SDL_RenderClear(renderer);
+
+      // JCD REMOVE ME - if in, main screen is fine.
+      // If not, things like skills on level look terrible
+      // due to flicker.
+      //x refresh_current_window();
+    }
   }
 }
 
@@ -608,7 +621,9 @@ void SDLDisplay::refresh_and_clear_window()
   if (!screens.empty() && !screen_cursors.empty())
   {
     clear_screen();
+    SDL_Colour c = sdld.get_bg_colour();
     SDL_SetRenderTarget(renderer, NULL);
+    SDL_SetRenderDrawColor(renderer, c.r, c.g, c.b, c.a);
     SDL_RenderClear(renderer);
     SDL_SetRenderTarget(renderer, screens.back());
     screen_cursors.back().reset();
@@ -623,7 +638,12 @@ void SDLDisplay::setup_new_screen()
   SDLCursorLocation cursor_loc(get_max_rows(), get_max_cols());
   screen_cursors.push_back(cursor_loc);
 
-  clear_display();
+  SDL_Colour c = sdld.get_bg_colour();
+  SDL_SetRenderTarget(renderer, screen);
+  SDL_SetRenderDrawColor(renderer, c.r, c.g, c.b, c.a);
+  SDL_RenderClear(renderer);
+
+  refresh_current_window();
 }
 
 // To render the screen, detach the renderer from the current texture and 
@@ -634,15 +654,14 @@ void SDLDisplay::refresh_current_window()
   if (!screens.empty() && !screen_cursors.empty())
   {
     SDL_Texture* cur_screen = screens.back();
-    SDL_Colour bl = get_colour(static_cast<int>(Colour::COLOUR_BLACK));
+    SDL_Colour bl = sdld.get_bg_colour();
 
     SDL_SetRenderTarget(renderer, NULL);
     SDL_SetRenderDrawColor(renderer, bl.r, bl.g, bl.b, bl.a);
     SDL_RenderClear(renderer);
+
     SDL_RenderCopy(renderer, cur_screen, NULL, NULL);
     SDL_RenderPresent(renderer);
-
-    SDL_SetRenderTarget(renderer, cur_screen);
   }
 }
 
