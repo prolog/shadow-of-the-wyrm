@@ -93,6 +93,7 @@ string Display::display_screen(const Screen& current_screen)
   if (!header_text.empty())
   {
     display_header(header_text, current_row);
+    refresh_current_window();
 
     // Always allow for some space between the title and the components of the
     // screen, regardless of what the screen has set for line spacing.

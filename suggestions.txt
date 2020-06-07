@@ -1,5 +1,7 @@
 Me:
-- Menu bg after e.g. switching between eq -> inv -> eq
+- YARD: more avians outside dungeons
+- 1st char isn't right on menu after inv. selection
+- redraw/cursor/examine
 - Classic: night water/day water
 - sprites: ???
 - YARD: can we suppress the tile-level msg and just display custom text? ie

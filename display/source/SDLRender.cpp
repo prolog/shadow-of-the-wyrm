@@ -99,17 +99,7 @@ void SDLRender::draw_glyph(SDLCursorLocation& cursor_location, SDL_Renderer* ren
 // Fills an entire texture based on the SDL display parameters.
 void SDLRender::fill_area(SDL_Renderer* renderer, SDL_Texture* target_texture, const SDL_Color& colour)
 {
-  SDL_Rect dst_rect = { 0, 0, 0, 0 };
-  int glyph_height = display_params.get_glyph_height();
-  int rows = display_params.get_screen_rows();
-  int width = display_params.get_screen_width();
-
-  dst_rect.y = 0 * glyph_height;
-  dst_rect.x = 0;
-  dst_rect.h = rows * glyph_height;
-  dst_rect.w = width;
-
-  fill_area(renderer, target_texture, &dst_rect, colour);
+  fill_area(renderer, target_texture, NULL, colour);
 }
 
 void SDLRender::fill_area(SDL_Renderer* renderer, SDL_Texture* target_texture, SDL_Rect* dst_rect, const SDL_Color& colour)

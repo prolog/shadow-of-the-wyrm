@@ -11,6 +11,9 @@ Shadow of the Wyrm v1.2.0 "Rodrigo"
 
 - Mountain tiles now block line of sight.
 
+- F9 can be used to switch between a number of predefined colour palettes
+  in SDL mode.
+
 - F10 can be used to switch between tiles and ascii when using SDL (IceBox).
 
 - F12 now also reloads existing texture references.

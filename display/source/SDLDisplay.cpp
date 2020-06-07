@@ -597,17 +597,13 @@ void SDLDisplay::clear_screen()
 
     SDL_DestroyTexture(current_screen);
 
-    Game::instance().set_requires_redraw(true);
+    current_screen = screens.back();
+    SDL_Colour c = sdld.get_bg_colour();
+    SDL_SetRenderTarget(renderer, current_screen);
+    SDL_SetRenderDrawColor(renderer, c.r, c.g, c.b, c.a);
+    SDL_RenderClear(renderer);
 
-    // Refresh the equivalent of stdscr if need be.
-    if (screens.size() == 1)
-    {
-      current_screen = screens.back();
-      SDL_Colour c = sdld.get_bg_colour();
-      SDL_SetRenderTarget(renderer, current_screen);
-      SDL_SetRenderDrawColor(renderer, c.r, c.g, c.b, c.a);
-      SDL_RenderClear(renderer);
-    }
+    Game::instance().set_requires_redraw(true);
   }
 }
 
