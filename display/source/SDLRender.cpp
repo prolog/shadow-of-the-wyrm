@@ -107,4 +107,11 @@ void SDLRender::fill_area(SDL_Renderer* renderer, SDL_Texture* target_texture, S
   SDL_SetRenderTarget(renderer, target_texture);
   SDL_SetRenderDrawColor(renderer, colour.r, colour.g, colour.b, colour.a);
   SDL_RenderFillRect(renderer, dst_rect);
+
+  if (false)
+  {
+    SDL_SetRenderTarget(renderer, NULL);
+    SDL_RenderCopy(renderer, target_texture, NULL, NULL);
+    SDL_RenderPresent(renderer);
+  }
 }

@@ -33,6 +33,12 @@ void MessageManager::send(const MessageSpacing ms, const bool halt_after, const 
 {
   Messages unread_messages = get_unread_messages_and_mark_as_read();
   string message_text;
+
+  // Update the background colour if need be.
+  if (!buffer_has_messages)
+  {
+    user_display->clear_messages();
+  }
   
   if (user_display)
   {

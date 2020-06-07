@@ -322,8 +322,20 @@ void SDLDisplay::clear_messages()
     dst_rect.h = clear_height;
     dst_rect.w = sdld.get_screen_width();
 
+    SDL_Rect src_rect = dst_rect;
+
     SDLRender render(sdld);
-    render.fill_area(renderer, screens.back(), &dst_rect, get_colour(Colour::COLOUR_BLACK));
+    SDL_Texture* screen = screens.back();
+    SDL_Colour c= get_colour(Colour::COLOUR_BLACK);
+
+    SDL_SetRenderDrawColor(renderer, c.r, c.g, c.b, c.a);
+    SDL_SetRenderTarget(renderer, NULL);
+    SDL_RenderClear(renderer);
+
+    SDL_RenderCopy(renderer, screen, NULL, NULL);
+    SDL_SetRenderTarget(renderer, screen);
+
+    render.fill_area(renderer, screen, &dst_rect, get_colour(Colour::COLOUR_BLACK));
 
     SDLCursorLocation& sdlc = screen_cursors.back();
     sdlc.set_y(0);
@@ -596,13 +608,6 @@ void SDLDisplay::clear_screen()
     screen_cursors.pop_back();
 
     SDL_DestroyTexture(current_screen);
-
-    current_screen = screens.back();
-    SDL_Colour c = sdld.get_bg_colour();
-    SDL_SetRenderTarget(renderer, current_screen);
-    SDL_SetRenderDrawColor(renderer, c.r, c.g, c.b, c.a);
-    SDL_RenderClear(renderer);
-
     Game::instance().set_requires_redraw(true);
   }
 }
@@ -633,6 +638,10 @@ void SDLDisplay::setup_new_screen()
   SDL_SetRenderTarget(renderer, screen);
   SDL_SetRenderDrawColor(renderer, c.r, c.g, c.b, c.a);
   SDL_RenderClear(renderer);
+  SDL_SetRenderTarget(renderer, NULL);
+  SDL_RenderCopy(renderer, screen, NULL, NULL);
+
+  SDL_SetRenderTarget(renderer, screen);
 }
 
 // To render the screen, detach the renderer from the current texture and 
