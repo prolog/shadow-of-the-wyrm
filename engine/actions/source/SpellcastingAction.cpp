@@ -362,6 +362,14 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
   }
 
   // Try to get a direction.  This might fail.
+  Game& game = Game::instance();
+  DisplayPtr display = game.get_display();
+
+  if (display != nullptr)
+  {
+    display->refresh_current_window();
+  }
+
   CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0);
 
   if (base_command)

@@ -29,6 +29,9 @@ DecisionStrategy* PlayerDecisionStrategy::copy()
 CommandPtr PlayerDecisionStrategy::get_nonmap_decision(const bool reprompt_on_cmd_not_found, const string& creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, int* key_p)
 {
   MapPtr nullmap;
+  Game& game = Game::instance();
+  DisplayPtr display = game.get_display();
+
   return get_decision(reprompt_on_cmd_not_found, creature_id, command_factory, keyboard_commands, nullmap, key_p);
 }
 

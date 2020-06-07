@@ -223,20 +223,25 @@ void CursesDisplay::clear_messages()
 int CursesDisplay::clear_message_buffer()
 {  
   int return_val;
+
   WINDOW* screen = get_message_buffer_screen();
-  
+  int orig_curs_y, orig_curs_x;
+  getyx(screen, orig_curs_y, orig_curs_x);
+
   wmove(screen, 0, 0);
   wclrtoeol(screen);
 
   wmove(screen, 1, 0);
   return_val = wclrtoeol(screen);
   
-  // Reset the internal state
+  // Move the cursor back to where it was.
+  wmove(screen, orig_curs_y, orig_curs_x);
+
+  // Reset cursor to original position
   msg_buffer_last_y = 0;
   msg_buffer_last_x = 0;
-  
-  // Reset cursor to original position
-  wmove(screen, msg_buffer_last_y, msg_buffer_last_x);
+
+  //wmove(screen, msg_buffer_last_y, msg_buffer_last_x);
 
   return return_val;
 }
