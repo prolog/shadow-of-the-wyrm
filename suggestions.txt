@@ -1,7 +1,10 @@
 Me:
+- Change display back to sdl
+- Message spillover to line index 2!
+- Text after "..." isn't working
+- Re-examine stuff in MessageManager::send()/clear etc
+- Every single thing that calls get_nonmap_decision - test
 - YARD: more avians outside dungeons
-- 1st char isn't right on menu after inv. selection
-- redraw/cursor/examine
 - Classic: night water/day water
 - sprites: ???
 - YARD: can we suppress the tile-level msg and just display custom text? ie

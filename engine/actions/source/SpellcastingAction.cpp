@@ -370,7 +370,7 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
     display->refresh_current_window();
   }
 
-  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0);
+  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0, false);
 
   if (base_command)
   {
@@ -445,7 +445,7 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
   {
     // Get the actual command, signalling to the decision function that
     // input has been provided (don't try to get the input twice).
-    CommandPtr magic_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), &input);
+    CommandPtr magic_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), &input, false);
 
     action_cost_value = MagicCommandProcessor::process(creature, magic_command.get());
 

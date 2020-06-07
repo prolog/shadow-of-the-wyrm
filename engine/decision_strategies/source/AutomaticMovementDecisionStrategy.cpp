@@ -25,7 +25,7 @@ CommandPtr AutomaticMovementDecisionStrategy::get_decision(const bool reprompt_o
   return movement_decision;
 }
 
-CommandPtr AutomaticMovementDecisionStrategy::get_nonmap_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, int* key_p)
+CommandPtr AutomaticMovementDecisionStrategy::get_nonmap_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, int* key_p, const bool refresh_window)
 {
   CommandPtr movement_decision = std::make_unique<AutomaticMovementCommand>(-1);
   return movement_decision;

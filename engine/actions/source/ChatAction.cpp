@@ -135,7 +135,7 @@ bool ChatAction::chat_multiple_options(CreaturePtr querying_creature, const Crea
   }
 
   // Try to get a direction.  This might fail.
-  CommandPtr base_command = querying_creature->get_decision_strategy()->get_nonmap_decision(false, querying_creature->get_id(), command_factory.get(), kb_command_map.get(), 0);
+  CommandPtr base_command = querying_creature->get_decision_strategy()->get_nonmap_decision(false, querying_creature->get_id(), command_factory.get(), kb_command_map.get(), 0, true);
 
   if (base_command)
   {

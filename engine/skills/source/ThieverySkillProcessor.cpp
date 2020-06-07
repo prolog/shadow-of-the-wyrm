@@ -117,7 +117,7 @@ CreaturePtr ThieverySkillProcessor::get_steal_creature(const TileDirectionMap& t
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_GET_DIRECTION));
     manager.send();
 
-    CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0);
+    CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0, true);
 
     if (base_command)
     {

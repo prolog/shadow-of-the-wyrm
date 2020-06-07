@@ -10,7 +10,7 @@ class NPCDecisionStrategy : public DecisionStrategy
     NPCDecisionStrategy(ControllerPtr new_controller);
 
     virtual CommandPtr get_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, MapPtr view_map = nullptr, int* key_p = 0) override;
-    virtual CommandPtr get_nonmap_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, int* key_p) override;
+    virtual CommandPtr get_nonmap_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, int* key_p, const bool refresh_window = true) override;
 
     virtual void set_fov_map(MapPtr map) override;
 

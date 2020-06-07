@@ -26,11 +26,16 @@ DecisionStrategy* PlayerDecisionStrategy::copy()
 
 // The player's decision is easy: just read a command from the keyboard, and then get a CommandPtr
 // based on that keyboard input, the provided KeyboardCommandMap*, and the CommandFactory*
-CommandPtr PlayerDecisionStrategy::get_nonmap_decision(const bool reprompt_on_cmd_not_found, const string& creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, int* key_p)
+CommandPtr PlayerDecisionStrategy::get_nonmap_decision(const bool reprompt_on_cmd_not_found, const string& creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, int* key_p, const bool refresh_window)
 {
   MapPtr nullmap;
   Game& game = Game::instance();
   DisplayPtr display = game.get_display();
+
+  if (display != nullptr && refresh_window)
+  {
+    display->refresh_current_window();
+  }
 
   return get_decision(reprompt_on_cmd_not_found, creature_id, command_factory, keyboard_commands, nullmap, key_p);
 }

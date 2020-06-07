@@ -35,6 +35,7 @@ void MessageManager::send(const MessageSpacing ms, const bool halt_after, const 
   string message_text;
 
   // Update the background colour if need be.
+  // JCD REMOVE ME
   if (!buffer_has_messages)
   {
     user_display->clear_messages();
@@ -64,11 +65,12 @@ void MessageManager::send(const MessageSpacing ms, const bool halt_after, const 
 
       buffer_has_messages = true;
     }
-    /*
-    if (messages.size() > 0)
+    
+    // JCD REMOVE ME ?
+/*    if (messages.size() > 0)
     {
       user_display->refresh_current_window();
-    }*/
+    } */
   }
   
   if (halt_after)
