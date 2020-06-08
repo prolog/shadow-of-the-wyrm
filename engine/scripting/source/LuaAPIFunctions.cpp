@@ -202,6 +202,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_skill_value", get_skill_value);
   lua_register(L, "get_magic_skills", get_magic_skills);
   lua_register(L, "check_skill", check_skill);
+  lua_register(L, "set_all_skills_value", set_all_skills_value);
   lua_register(L, "RNG_range", RNG_range);
   lua_register(L, "RNG_percent_chance", RNG_percent_chance);
   lua_register(L, "RNG_dice", RNG_dice);
@@ -1692,6 +1693,28 @@ int check_skill(lua_State* ls)
 
   lua_pushboolean(ls, check_value);
   return 1;
+}
+
+int set_all_skills_value(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_skills().set_all_to(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_all_skills_value");
+  }
+
+  return 0;
 }
 
 int RNG_range(lua_State* ls)

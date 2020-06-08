@@ -349,6 +349,12 @@ ActionCost ActionManager::run_script_command(CreaturePtr creature)
     se.set_last_executed(command);
   }
 
+  DisplayPtr display = game.get_display();
+  if (display != nullptr)
+  {
+    display->clear_messages();
+  }
+
   se.run_command(command);
 
   return get_action_cost(creature, 0);

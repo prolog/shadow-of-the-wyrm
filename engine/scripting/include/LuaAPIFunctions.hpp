@@ -52,6 +52,7 @@ int set_skill_value(lua_State* ls);
 int get_skill_value(lua_State* ls);
 int get_magic_skills(lua_State* ls);
 int check_skill(lua_State* ls);
+int set_all_skills_value(lua_State* ls);
 int RNG_range(lua_State* ls);
 int RNG_percent_chance(lua_State* ls);
 int RNG_dice(lua_State* ls);
