@@ -223,25 +223,20 @@ void CursesDisplay::clear_messages()
 int CursesDisplay::clear_message_buffer()
 {  
   int return_val;
-
   WINDOW* screen = get_message_buffer_screen();
-  int orig_curs_y, orig_curs_x;
-  getyx(screen, orig_curs_y, orig_curs_x);
 
   wmove(screen, 0, 0);
   wclrtoeol(screen);
 
   wmove(screen, 1, 0);
   return_val = wclrtoeol(screen);
-  
-  // Move the cursor back to where it was.
-  wmove(screen, orig_curs_y, orig_curs_x);
 
-  // Reset cursor to original position
+  // Reset the internal state
   msg_buffer_last_y = 0;
   msg_buffer_last_x = 0;
 
-  //wmove(screen, msg_buffer_last_y, msg_buffer_last_x);
+  // Reset cursor to original position
+  wmove(screen, msg_buffer_last_y, msg_buffer_last_x);
 
   return return_val;
 }
@@ -410,6 +405,10 @@ void CursesDisplay::add_message(const string& to_add_message, const Colour colou
         enable_colour(static_cast<int>(colour), screen);
 
         clear_message_buffer();
+
+        // JCD FIXME RESET TO 0 
+        // ...
+
         getyx(screen, cur_y, cur_x);
       }
     }
