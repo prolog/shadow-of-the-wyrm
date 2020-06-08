@@ -1,8 +1,6 @@
 Me:
-- Change display back to sdl
-- Message spillover to line index 2!
-- Text after "..." isn't working
-- Re-examine stuff in MessageManager::send()/clear etc
+- Change display to sdl again
+- Centre the icon in the bestiary and codex
 - Every single thing that calls get_nonmap_decision - test
 - YARD: more avians outside dungeons
 - Classic: night water/day water
@@ -11,6 +9,8 @@ Me:
   for Carcassia
 - Release after this: grond says tanning is complicated & dragon skins aren't
   what they should be.
+- '+' in examine mode should skip a creature if the cursor is already on it
+  (e.g. if manually selected already)
 - Investigate enchant scrolls?
 - Can read scrolls while mute (spellbooks too?)
 - Use Magic to destroy spellbooks and get a bit of AP?

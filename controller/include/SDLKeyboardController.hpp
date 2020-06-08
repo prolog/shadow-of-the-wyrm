@@ -8,7 +8,6 @@ class SDLKeyboardController : public Controller
     SDLKeyboardController();
 
     void poll_event() override;
-    std::string get_line() override;
 
     virtual Controller* clone() override;
 

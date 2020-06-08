@@ -104,6 +104,11 @@ void SDLDisplay::tear_down()
   SDL_DestroyWindow(window);
 }
 
+string SDLDisplay::get_name() const
+{
+  return "SDL";
+}
+
 bool SDLDisplay::check_available_screen_dimensions()
 {
   bool dim_ok = true;
@@ -653,6 +658,8 @@ void SDLDisplay::refresh_current_window()
   {
     SDL_Texture* cur_screen = screens.back();
     SDL_Colour bl = sdld.get_bg_colour();
+
+    SDL_RenderPresent(renderer);
 
     SDL_SetRenderTarget(renderer, NULL);
     SDL_SetRenderDrawColor(renderer, bl.r, bl.g, bl.b, bl.a);

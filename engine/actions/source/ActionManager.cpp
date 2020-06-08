@@ -426,6 +426,19 @@ ActionCost ActionManager::switch_graphics_mode(CreaturePtr creature)
   if (display != nullptr)
   {
     display->set_force_ascii(new_force_ascii);
+
+    // Add a message about the display name
+    string display_name = display->get_name();
+    string display_msg = ActionTextKeys::get_graphics_mode_switch_message(display_name);
+
+    if (new_force_ascii)
+    {
+      display_msg = display_name + " (ASCII)";
+    }
+
+    IMessageManager& manager = MM::instance();
+    manager.add_new_message(display_msg);
+    manager.send();
   }
 
   // Now force a redraw

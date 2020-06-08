@@ -52,6 +52,8 @@ Shadow of the Wyrm v1.2.0 "Rodrigo"
   - In the skill screen, selecting Lore would erroneously describe it as
     unimplemented.
 
+  - Inscriptions were broken in SDL.
+
 Shadow of the Wyrm v1.1.7 "Boccherini"
 - Version declared January 11, 2020.  Version finalized February 16, 2020.
 

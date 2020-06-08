@@ -41,6 +41,7 @@ class ActionTextKeys
     static std::string get_unimpressed_message(const std::string& creature_desc_sid, const bool is_player);
     static std::string get_hide_failure_message(const std::string& creature_desc_sid, const bool is_player);
     static std::string get_palette_switch_message(const std::string& new_palette_name_sid);
+    static std::string get_graphics_mode_switch_message(const std::string& new_display_name);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -270,4 +271,5 @@ class ActionTextKeys
     static const std::string ACTION_ITEM_PACK_PLAYER;
     static const std::string ACTION_ITEM_PACK_NPC;
     static const std::string ACTION_SWITCH_PALETTE;
+    static const std::string ACTION_SWITCH_GRAPHICS_MODE;
 };

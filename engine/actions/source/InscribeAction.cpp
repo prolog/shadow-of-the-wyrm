@@ -73,10 +73,7 @@ void InscribeAction::create_inscription(CreaturePtr creature, TilePtr tile) cons
     IMessageManager& manager = MM::instance();
 
     // Get/shorten the inscription.
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_INSCRIBE_QUERY));
-    manager.send();
-
-    string inscription = creature->get_decision_strategy()->get_controller()->get_line();
+    string inscription = manager.add_new_message_with_prompt(StringTable::get(ActionTextKeys::ACTION_INSCRIBE_QUERY));
     inscription = inscription.substr(0, MAX_INSCRIPTION_LENGTH);
     
     // Set the inscription on the tile.

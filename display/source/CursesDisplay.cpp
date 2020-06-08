@@ -314,6 +314,11 @@ void CursesDisplay::tear_down()
   endwin();
 }
 
+string CursesDisplay::get_name() const
+{
+  return "curses";
+}
+
 // Clear the display (in practice, stdscr).
 void CursesDisplay::clear_display()
 {

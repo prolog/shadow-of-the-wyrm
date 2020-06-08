@@ -22,6 +22,8 @@ class CursesDisplay : public Display
 	  bool create() override;
 	  void tear_down() override;
 
+    virtual std::string get_name() const override;
+
     unsigned int get_width() const override;
     unsigned int get_height() const override;
 

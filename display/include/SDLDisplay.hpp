@@ -25,6 +25,8 @@ class SDLDisplay : public Display
 	  virtual bool create() override;
 	  virtual void tear_down() override;
 
+    virtual std::string get_name() const override;
+
     // Get the screen's current width
     virtual unsigned int get_width() const;
 

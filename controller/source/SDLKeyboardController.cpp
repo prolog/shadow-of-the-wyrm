@@ -73,39 +73,6 @@ void SDLKeyboardController::poll_event()
   }
 }
 
-string SDLKeyboardController::get_line()
-{
-  // JCD FIXME
-  // This *works*, but doesn't.  This needs to ultimately also display the
-  // result on the screen, not just read it silently.
-  SDL_Event event;
-  std::ostringstream ss;
-  SDL_StartTextInput();
-  SDL_WaitEvent(&event);
-
-  while (event.key.keysym.sym != SDLK_RETURN)
-  {
-    while (SDL_WaitEvent(&event))
-    {
-      if (event.type == SDL_TEXTINPUT)
-      {
-        ss << event.text.text;
-      }
-
-      if (event.type == SDL_QUIT)
-      {
-        SDL sdl;
-        sdl.tear_down();
-
-        exit(0);
-      }
-    }
-  }
-
-  SDL_StopTextInput();
-  return ss.str();
-}
-
 int SDLKeyboardController::read_char_as_int()
 {
   int return_val = 0;
