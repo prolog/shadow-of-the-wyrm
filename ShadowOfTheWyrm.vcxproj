@@ -82,6 +82,7 @@
       <AdditionalLibraryDirectories>$(SDL_DIR)\lib\x86;$(ZLIB_DIR)\zlib-1.2.11\lib;$(LUA_DEV)\lib;$(GTEST_DIR)\gtest-1.8.0\Debug;$(BOOST_DIR)\stage\lib;$(XERCES_DIR)\xerces-c-3.2.1\src\Debug;$(CURSES_DIR)\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2_image.lib;zlib.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtest.lib;gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateMapFile>false</GenerateMapFile>
+      <Profile>true</Profile>
     </Link>
     <PostBuildEvent>
       <Command>

@@ -193,14 +193,14 @@ bool Screen::add_text(vector<ScreenComponentPtr>& text_screen, const vector<Text
   {
     Colour colour = line_pair.first;
     string text = line_pair.second;
+    size_t sym_count = count_substrings(text, TextFormatSpecifiers::SYMBOL);
 
-    if (preserve_formatting == false)
+    if (preserve_formatting == false && sym_count == 0)
     {
       trim_left(text);
       trim_right(text);
     }
 
-    size_t sym_count = count_substrings(text, TextFormatSpecifiers::SYMBOL);
     vector<Symbol> tc_symbols;
 
     for (size_t i = 0; i < sym_count; i++)
