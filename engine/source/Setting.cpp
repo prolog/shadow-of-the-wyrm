@@ -35,6 +35,7 @@ const string Setting::DEFAULT_NAME = "default_name";
 const string Setting::USERNAME_IS_CHARACTER_NAME = "username_is_character_name";
 const string Setting::MAX_CHARACTERS_PER_USER = "max_characters_per_user";
 const string Setting::DISPLAY = "display";
+const string Setting::DISPLAY_SDL_RENDERER = "display_sdl_renderer";
 const string Setting::DISPLAY_FONT = "display_font";
 const string Setting::DISPLAY_TILE_SIZE = "display_tile_size";
 const string Setting::DISPLAY_TILE_GLYPHS_PER_LINE = "display_tile_glyphs_per_line";

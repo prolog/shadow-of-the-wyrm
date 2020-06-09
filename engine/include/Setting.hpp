@@ -28,6 +28,7 @@ class Setting
     static const std::string USERNAME_IS_CHARACTER_NAME;
     static const std::string MAX_CHARACTERS_PER_USER;
     static const std::string DISPLAY;
+    static const std::string DISPLAY_SDL_RENDERER;
     static const std::string DISPLAY_FONT;
     static const std::string DISPLAY_TILE_SIZE;
     static const std::string DISPLAY_TILE_GLYPHS_PER_LINE;

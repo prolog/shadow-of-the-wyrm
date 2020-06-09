@@ -431,11 +431,6 @@ ActionCost ActionManager::switch_graphics_mode(CreaturePtr creature)
     string display_name = display->get_name();
     string display_msg = ActionTextKeys::get_graphics_mode_switch_message(display_name);
 
-    if (new_force_ascii)
-    {
-      display_msg = display_name + " (ASCII)";
-    }
-
     IMessageManager& manager = MM::instance();
     manager.add_new_message(display_msg);
     manager.send();

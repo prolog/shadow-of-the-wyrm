@@ -1,5 +1,7 @@
 Me:
 - Change display to sdl again
+- Rewrite renderer selection to use hints, test
+- After locking/unlocking, the next input seems to blank the entire screen
 - Centre the icon in the bestiary and codex
 - Every single thing that calls get_nonmap_decision - test
 - YARD: more avians outside dungeons

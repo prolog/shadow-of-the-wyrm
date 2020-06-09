@@ -102,6 +102,11 @@ int SDLKeyboardController::read_char_as_int()
         done = true;
       }
     }
+    else if (event.type == SDL_RENDER_TARGETS_RESET || event.type == SDL_RENDER_DEVICE_RESET)
+    {
+      // Handle dynamic texture regeneration...
+      // int x = 1;
+    }
     else if (event.type == SDL_QUIT)
     {
       SDL sdl;

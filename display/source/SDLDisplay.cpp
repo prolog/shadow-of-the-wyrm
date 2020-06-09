@@ -106,7 +106,41 @@ void SDLDisplay::tear_down()
 
 string SDLDisplay::get_name() const
 {
-  return "SDL";
+  vector<string> sdl_details;
+  ostringstream ss;
+  ss << "SDL";
+
+  SDL_RendererInfo* renderer_info = new SDL_RendererInfo();
+  SDL_GetRendererInfo(renderer, renderer_info);
+  if (renderer_info != nullptr)
+  {
+    sdl_details.push_back(renderer_info->name);
+
+    if (force_ascii)
+    {
+      sdl_details.push_back("ASCII");
+    }
+  }
+
+  if (!sdl_details.empty())
+  {
+    ss << " (";
+
+    size_t sz = sdl_details.size();
+    for (size_t i = 0; i < sz; i++)
+    {
+      ss << sdl_details[i];
+
+      if (i < sz - 1)
+      {
+        ss << ", ";
+      }
+    }
+
+    ss << ")";
+  }
+
+  return ss.str();
 }
 
 bool SDLDisplay::check_available_screen_dimensions()
@@ -288,8 +322,24 @@ bool SDLDisplay::create_window_and_renderer()
   }
   else
   {
-    //Create vsynced renderer for window
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE | SDL_RENDERER_PRESENTVSYNC);
+    // By default, -1 will let SDL select the value
+    int drv_index = -1;
+
+    string renderer_name = Game::instance().get_settings_ref().get_setting(Setting::DISPLAY_SDL_RENDERER);
+
+    for (int i = 0; i < SDL_GetNumRenderDrivers(); i++) 
+    {
+      SDL_RendererInfo rinfo;
+      SDL_GetRenderDriverInfo(i, &rinfo);
+
+      if (strcmp(renderer_name.c_str(), rinfo.name) == 0)
+      {
+        drv_index = i;
+        break;
+      }
+    }
+
+    renderer = SDL_CreateRenderer(window, drv_index, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE | SDL_RENDERER_PRESENTVSYNC);
 
     if (renderer == NULL)
     {
@@ -643,7 +693,9 @@ void SDLDisplay::setup_new_screen()
   SDL_SetRenderTarget(renderer, screen);
   SDL_SetRenderDrawColor(renderer, c.r, c.g, c.b, c.a);
   SDL_RenderClear(renderer);
+
   SDL_SetRenderTarget(renderer, NULL);
+  SDL_RenderClear(renderer);
   SDL_RenderCopy(renderer, screen, NULL, NULL);
 
   SDL_SetRenderTarget(renderer, screen);
@@ -658,8 +710,6 @@ void SDLDisplay::refresh_current_window()
   {
     SDL_Texture* cur_screen = screens.back();
     SDL_Colour bl = sdld.get_bg_colour();
-
-    SDL_RenderPresent(renderer);
 
     SDL_SetRenderTarget(renderer, NULL);
     SDL_SetRenderDrawColor(renderer, bl.r, bl.g, bl.b, bl.a);
