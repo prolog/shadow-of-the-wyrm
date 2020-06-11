@@ -1,12 +1,7 @@
 Me:
-- After locking/unlocking, the next input seems to blank the entire screen
-- Centre the icon in the bestiary and codex
-- Every single thing that calls get_nonmap_decision - test
 - YARD: more avians outside dungeons
 - Classic: night water/day water
 - sprites: ???
-- YARD: can we suppress the tile-level msg and just display custom text? ie
-  for Carcassia
 - Release after this: grond says tanning is complicated & dragon skins aren't
   what they should be.
 - '+' in examine mode should skip a creature if the cursor is already on it
@@ -26,6 +21,9 @@ Me:
 - EACH VERSION: clean up the usage of some shared_ptrs.  These should be
   unique_ptrs, generally, and method calls should use raw pointers or
   const&.
+- After locking/unlocking, the next input seems to blank the entire screen.
+  (This is an SDL Direct3D rendering issue with dynamically loaded textures
+  becoming invalidated.)
 - Do additional profiling after shared_ptr cleanup
 - Look at race balance: stats, speed, skill points, etc
 - Shield punch!
@@ -188,7 +186,6 @@ aotdev
 - Status/stats lines wrap weirdly with larger terminal sizes
 
 happylisk:
-- buff shrine guardians (doable at 25)
 - more diverse artifact effects (HP/AP regen, stat bonuses, etc)
 
 naughtusername: 
@@ -252,5 +249,9 @@ mission opossumable:
 YARD:
 - creatures of a certain deity (frostlings and shiver, black servants and
   sceadugenga) shouldn't attack you if you worship that deity
+- can we suppress the tile-level msg and just display custom text? ie
+  for Carcassia
+- spell details on shift+letter
 
-IceBox: can the confirm setting be allowed to change on load?
+IceBox: 
+- can the confirm setting be allowed to change on load?
