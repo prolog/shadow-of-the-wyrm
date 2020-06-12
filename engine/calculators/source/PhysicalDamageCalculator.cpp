@@ -13,8 +13,12 @@ const int PhysicalDamageCalculator::DAMAGE_STAT_DIVISOR = 5;
 // A creature gets +1 damage for every 10 points in the relevant weapon skill.
 const int PhysicalDamageCalculator::DAMAGE_SKILL_DIVISOR = 10;
 
-// A creatures get +1 damage for every 20 points in Combat or Archery.
+// A creature gets +1 damage for every 20 points in Combat or Archery.
 const int PhysicalDamageCalculator::DAMAGE_GENERAL_SKILL_DIVISOR = 20;
+
+// A creature gets +1 damage for every point of Dual Wield when the attack
+// is secondary.
+const int PhysicalDamageCalculator::DAMAGE_GENERAL_DUAL_WIELD_DIVISOR = 10;
 
 // When an attack is incorporeal, it allows only a fraction of the available
 // soak.
@@ -135,20 +139,31 @@ int PhysicalDamageCalculator::get_statistic_based_damage_modifier(CreaturePtr at
 }
 
 // Get the damage modifier that is calculated based on combat/archery, and the
-// applicable melee or ranged weapon.
+// applicable melee or ranged weapon, plus the dual wield bonus if this is
+// a secondary weapon.  The dual wield bonus is to encourage the use of the
+// skill rather than e.g. a shield.
 int PhysicalDamageCalculator::get_skill_based_damage_modifier(CreaturePtr attacking_creature)
 {
   int modifier = 0;
 
   if (attacking_creature)
   {
+    Skills& skills = attacking_creature->get_skills();
+
+    int dual_val = 0;
+    if (attack_type == AttackType::ATTACK_TYPE_MELEE_SECONDARY)
+    {
+      dual_val = skills.get_value(SkillType::SKILL_GENERAL_DUAL_WIELD);
+    }
+
     WeaponManager wm;
     SkillType skill = wm.get_skill_type(attacking_creature, attack_type);
-    int val = attacking_creature->get_skills().get_value(skill);
+    int val = skills.get_value(skill);
 
     SkillType general_skill = get_general_combat_skill();
-    int general_val = attacking_creature->get_skills().get_value(general_skill);
+    int general_val = skills.get_value(general_skill);
 
+    modifier += (dual_val / DAMAGE_GENERAL_DUAL_WIELD_DIVISOR);
     modifier += (val / DAMAGE_SKILL_DIVISOR);
     modifier += (general_val / DAMAGE_GENERAL_SKILL_DIVISOR);
   }

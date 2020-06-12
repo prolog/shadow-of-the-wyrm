@@ -45,6 +45,8 @@ Shadow of the Wyrm v1.2.0 "Rodrigo"
 
 - Poison now stays in your body for less time.
 
+- Dual wield now adds some damage to the secondary weapon.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
