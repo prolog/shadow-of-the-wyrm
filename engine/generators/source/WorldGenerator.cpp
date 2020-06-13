@@ -455,10 +455,10 @@ void WorldGenerator::populate_race_information()
   
   const RaceMap& races = game.get_races_ref();
     
-  for (auto& r_it = races.begin(); r_it != races.end(); r_it++)
+  for (const auto& r_pair : races)
   {
-    string current_race_id = r_it->first;
-    Race* race = r_it->second.get();
+    string current_race_id = r_pair.first;
+    Race* race = r_pair.second.get();
       
     if (race && race->get_user_playable() && race->get_has_random_villages() && !current_race_id.empty())
     {
@@ -620,7 +620,6 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
   Dimensions dim = map->size();
   Game& game = Game::instance();
   
-  const RaceMap& races = game.get_races_ref();
   const DeityMap& deities = game.get_deities_cref();
   RaceManager rm;
     

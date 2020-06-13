@@ -11,8 +11,6 @@ void XMLReader::parse_symbol(Symbol& symbol, const XMLNode& symbol_node) const
 {
   if (!symbol_node.is_null())
   {
-    Log& log = Log::instance();
-
     uchar symbol_char = '?';
     string symbol_text = XMLUtils::get_child_node_value(symbol_node, "Char");
 

@@ -115,7 +115,6 @@ string CharacterDumper::str() const
 string CharacterDumper::get_synopsis() const
 {
   ostringstream ss;
-  Game& game = Game::instance();
   
   string race_id = creature->get_race_id();
   string class_id = creature->get_class_id();

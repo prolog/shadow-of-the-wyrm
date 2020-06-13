@@ -80,7 +80,6 @@ void CreatureUtils::add_hunger_level_message_if_necessary(CreaturePtr creature, 
 string CreatureUtils::get_race_class_synopsis(CreaturePtr c)
 {
   string synopsis;
-  Game& game = Game::instance();
 
   string race_id = c->get_race_id();
   string class_id = c->get_class_id();
@@ -387,7 +386,7 @@ Race* CreatureUtils::get_random_user_playable_race()
   Game& game = Game::instance();
   const RaceMap& races = game.get_races_ref();
   vector<Race*> playable_races;
-  Race* race;
+  Race* race = nullptr;
 
   for (const auto& race_pair : races)
   {
@@ -412,7 +411,7 @@ Class* CreatureUtils::get_random_user_playable_class()
   Game& game = Game::instance();
   const ClassMap& classes = game.get_classes_ref();
   vector<Class*> playable_classes;
-  Class* cur_class;
+  Class* cur_class = nullptr;
 
   for (const auto& class_pair : classes)
   {
@@ -434,9 +433,8 @@ Class* CreatureUtils::get_random_user_playable_class()
 
 Deity* CreatureUtils::get_random_deity_for_race(Race* race)
 {
-  Game& game = Game::instance();
   vector<string> allowable_deity_ids;
-  Deity* deity;
+  Deity* deity = nullptr;
   ReligionManager rm;
 
   if (race != nullptr)
