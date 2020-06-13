@@ -1,6 +1,5 @@
 Me:
 - Should be able to drink items on the ground like you can do with eating
-- Unit tests for dual wield secondary damage
 - License file for tiles
 - Include sprites on OpenGameArt?
 - YARD: more avians outside dungeons
