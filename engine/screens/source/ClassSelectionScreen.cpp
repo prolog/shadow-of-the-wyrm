@@ -37,10 +37,10 @@ void ClassSelectionScreen::initialize()
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
   int current_id = 0;
-  for (auto& classes_it = classes.begin(); classes_it != classes.end(); classes_it++)
+  for (auto& classes_pair : classes)
   {
-    string class_id = classes_it->first;
-    Class* current_class = classes_it->second.get();
+    string class_id = classes_pair.first;
+    Class* current_class = classes_pair.second.get();
 
     if (current_class && current_class->get_user_playable() && options)
     {

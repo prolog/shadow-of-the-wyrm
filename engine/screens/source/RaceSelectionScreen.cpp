@@ -39,10 +39,10 @@ void RaceSelectionScreen::initialize()
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
   int current_id = 0;
-  for (auto& races_it = races.begin(); races_it != races.end(); races_it++)
+  for (auto& races_pair : races)
   {
-    string race_id = races_it->first;
-    Race* current_race = races_it->second.get();
+    string race_id = races_pair.first;
+    Race* current_race = races_pair.second.get();
 
     if (current_race && current_race->get_user_playable() && options)
     {

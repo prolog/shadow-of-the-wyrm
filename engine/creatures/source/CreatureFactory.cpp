@@ -154,7 +154,8 @@ CreaturePtr CreatureFactory::create_by_creature_id
     // Increment the creature's skills based on the skills in the generation
     // values.
     Skills& skills = creature->get_skills();
-    skills.increment_skills(cgv.get_skills());
+    Skills cgv_skills = cgv.get_skills();
+    skills.increment_skills(cgv_skills);
       
     // If the creature is guaranteed to be generated as friendly, then be sure
     // that hostility isn't set.
