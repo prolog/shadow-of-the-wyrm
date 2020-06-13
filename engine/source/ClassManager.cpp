@@ -13,7 +13,7 @@ Class* ClassManager::get_class(const string& class_id)
   Game& game = Game::instance();
 
   const ClassMap& classes = game.get_classes_ref();
-  auto& c_it = classes.find(class_id);
+  auto c_it = classes.find(class_id);
 
   if (c_it != classes.end())
   {
