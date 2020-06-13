@@ -423,7 +423,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   }
 
   string default_race_id = game.get_settings_ref().get_setting(Setting::DEFAULT_RACE_ID);
-  auto& r_it = races.find(default_race_id);
+  auto r_it = races.find(default_race_id);
   bool prompt_user_for_race_selection = true;
   string selected_race_id;
 
@@ -463,7 +463,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   }
 
   string default_class_id = game.get_settings_ref().get_setting(Setting::DEFAULT_CLASS_ID);
-  const auto& c_it = classes.find(default_class_id);
+  const auto c_it = classes.find(default_class_id);
   bool prompt_user_for_class_selection = true;
   string selected_class_id;
 

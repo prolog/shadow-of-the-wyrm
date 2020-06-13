@@ -85,7 +85,7 @@ class Integer
 
       if (!map.empty())
       {
-        auto& map_it = map.begin();
+        auto map_it = map.begin();
 
         while (map_it != map.end() && cur <= pos)
         {
