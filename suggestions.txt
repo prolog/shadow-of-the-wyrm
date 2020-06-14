@@ -1,10 +1,9 @@
 Me:
 - Should be able to drink items on the ground like you can do with eating
-- License file for tiles
-- Include sprites on OpenGameArt?
+- Include sprites on OpenGameArt, itch, ...?
 - YARD: more avians outside dungeons
 - Classic: night water/day water
-- sprites: robe, food ration
+- sprites: ?
 - Release after this: grond says tanning is complicated & dragon skins aren't
   what they should be.
 - '+' in examine mode should skip a creature if the cursor is already on it
