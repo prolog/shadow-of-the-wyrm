@@ -69,6 +69,14 @@ string ActionTextKeys::get_eat_confirmation_message(const string& consumable_des
   return message;
 }
 
+string ActionTextKeys::get_quaff_confirmation_message(const string& consumable_desc)
+{
+  string message = StringTable::get(ACTION_QUAFF_CONFIRMATION);
+  boost::replace_first(message, "%s", consumable_desc);
+
+  return message;
+}
+
 string ActionTextKeys::get_full_message(const string& desc_sid, const string& consumable_desc, const bool is_player)
 {
   return get_general_action_message(desc_sid, consumable_desc, ACTION_FULL_PLAYER, ACTION_FULL_MONSTER, is_player);
@@ -662,6 +670,7 @@ const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_P
 const string ActionTextKeys::ACTION_EVOKE_MONSTER              = "ACTION_EVOKE_MONSTER";
 const string ActionTextKeys::ACTION_QUAFF_PLAYER               = "ACTION_QUAFF_PLAYER";
 const string ActionTextKeys::ACTION_QUAFF_MONSTER              = "ACTION_QUAFF_MONSTER";
+const string ActionTextKeys::ACTION_QUAFF_CONFIRMATION         = "ACTION_QUAFF_CONFIRMATION";
 const string ActionTextKeys::ACTION_EAT_PLAYER                 = "ACTION_EAT_PLAYER";
 const string ActionTextKeys::ACTION_EAT_MONSTER                = "ACTION_EAT_MONSTER";
 const string ActionTextKeys::ACTION_EAT_CONFIRMATION           = "ACTION_EAT_CONFIRMATION";

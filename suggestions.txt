@@ -1,5 +1,4 @@
 Me:
-- Should be able to drink items on the ground like you can do with eating
 - Include sprites on OpenGameArt, itch, ...?
 - YARD: more avians outside dungeons
 - Classic: night water/day water

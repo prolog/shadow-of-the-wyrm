@@ -47,6 +47,9 @@ Shadow of the Wyrm v1.2.0 "Rodrigo"
 
 - Dual wield now adds some damage to the secondary weapon.
 
+- It's now possible to quaff items off the ground, similar to what's done
+  for eating.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

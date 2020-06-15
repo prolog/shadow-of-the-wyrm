@@ -1748,9 +1748,6 @@
     <ClInclude Include="engine\include\RNG.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\items\include\IItemFilter.hpp">
-      <Filter>Header Files\engine\items\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\items\include\InitialItemEquipper.hpp">
       <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
@@ -4267,6 +4264,9 @@
     </ClInclude>
     <ClInclude Include="display\include\DisplayProperties.hpp">
       <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\IItemFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

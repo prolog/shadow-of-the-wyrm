@@ -71,22 +71,8 @@ ActionCostValue FoodAction::eat_food_off_ground(CreaturePtr creature, const list
 
   if (tile)
   {
-    const list<ItemPtr> ground_items = tile->get_items()->get_items_cref();
-    list<ItemPtr> edible_ground;
-    back_insert_iterator<list<ItemPtr>> back_it(edible_ground);
-
-    copy_if(ground_items.begin(), ground_items.end(), back_it,
-      [display_list](ItemPtr item)
-    {
-      bool is_food = true;
-
-      for (IItemFilterPtr i : display_list)
-      {
-        is_food = is_food && i->passes_filter(item);
-      }
-
-      return is_food;
-    });
+    IInventoryPtr items = tile->get_items();
+    list<ItemPtr> edible_ground = ItemManager::get_filtered_items(items, display_list);
 
     // For each item on the ground, check with the creature to see if they 
     // want to eat it.
@@ -96,6 +82,7 @@ ActionCostValue FoodAction::eat_food_off_ground(CreaturePtr creature, const list
 
       string consumable_desc = iid.get_appropriate_usage_description(food);
       IMessageManager& manager = MM::instance();
+      manager.clear_if_necessary();
       manager.add_new_confirmation_message(TextMessages::get_confirmation_message(ActionTextKeys::get_eat_confirmation_message(consumable_desc)));
       bool confirm = creature->get_decision_strategy()->get_confirmation();
 

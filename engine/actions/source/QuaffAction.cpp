@@ -6,12 +6,14 @@
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
+#include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "QuaffAction.hpp"
 #include "SpellFactory.hpp"
 #include "SpellShapeProcessorFactory.hpp"
 #include "SpellcastingProcessor.hpp"
 #include "StatisticsMarker.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 using std::dynamic_pointer_cast;
@@ -28,27 +30,78 @@ ActionCostValue QuaffAction::quaff(CreaturePtr creature, ActionManager * const a
   
   if (creature)
   {
-    list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_type_filter(ItemType::ITEM_TYPE_POTION);
-    ItemPtr selected_item = am->inventory(creature, creature->get_inventory(), display_filter_list, {}, false);
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
     
-    if (selected_item)
-    {
-      PotionPtr potion = dynamic_pointer_cast<Potion>(selected_item);
-      
-      if (potion)
-      {
-        ItemIdentifier item_id;
-        string base_id = potion->get_base_id();
-  
-        // Get "You/monster quaffs a foo-ey potion" message
-        string quaff_message = ActionTextKeys::get_quaff_message(creature->get_description_sid(), item_id.get_appropriate_usage_description(potion), creature->get_is_player());
+    list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_type_filter(ItemType::ITEM_TYPE_POTION);
+    TilePtr tile = MapUtils::get_tile_for_creature(current_map, creature);
 
-        quaff_potion(creature, potion, creature, quaff_message);
-        action_cost_value = get_action_cost_value(creature);
+    action_cost_value = quaff_potion_off_ground(creature, display_filter_list);
+
+    if (action_cost_value == 0)
+    {
+      ItemPtr selected_item = am->inventory(creature, creature->get_inventory(), display_filter_list, {}, false);
+
+      if (selected_item)
+      {
+        PotionPtr potion = dynamic_pointer_cast<Potion>(selected_item);
+
+        if (potion)
+        {
+          ItemIdentifier item_id;
+          string base_id = potion->get_base_id();
+
+          // Get "You/monster quaffs a foo-ey potion" message
+          string quaff_message = ActionTextKeys::get_quaff_message(creature->get_description_sid(), item_id.get_appropriate_usage_description(potion), creature->get_is_player());
+
+          quaff_potion(creature, potion, creature, quaff_message);
+          action_cost_value = get_action_cost_value(creature);
+        }
       }
     }
   }
   
+  return action_cost_value;
+}
+
+ActionCostValue QuaffAction::quaff_potion_off_ground(CreaturePtr creature, const list<IItemFilterPtr>& display_filters)
+{
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
+  MapPtr current_map = Game::instance().get_current_map();
+  TilePtr tile = MapUtils::get_tile_for_creature(current_map, creature);
+
+  if (tile)
+  {
+    IInventoryPtr items = tile->get_items();
+    list<ItemPtr> potable_ground = ItemManager::get_filtered_items(items, display_filters);
+
+    // For each item on the ground, check with the creature to see if they 
+    // want to eat it.
+    for (ItemPtr potion : potable_ground)
+    {
+      ItemIdentifier iid;
+
+      string consumable_desc = iid.get_appropriate_usage_description(potion);
+      IMessageManager& manager = MM::instance();
+      manager.clear_if_necessary();
+      manager.add_new_confirmation_message(TextMessages::get_confirmation_message(ActionTextKeys::get_quaff_confirmation_message(consumable_desc)));
+      bool confirm = creature->get_decision_strategy()->get_confirmation();
+
+      if (confirm)
+      {
+        PotionPtr ppotion = std::dynamic_pointer_cast<Potion>(potion);
+
+        if (ppotion != nullptr)
+        {
+          string quaff_message = ActionTextKeys::get_quaff_message(creature->get_description_sid(), iid.get_appropriate_usage_description(potion), creature->get_is_player());
+          quaff_potion(creature, ppotion, creature, quaff_message);
+          action_cost_value = get_action_cost_value(creature);
+          break;
+        }
+      }
+    }
+  }
+
   return action_cost_value;
 }
 
