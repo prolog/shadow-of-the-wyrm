@@ -50,6 +50,9 @@ Shadow of the Wyrm v1.2.0 "Rodrigo"
 - It's now possible to quaff items off the ground, similar to what's done
   for eating.
 
+- There are no longer any racial deity restrictions: any race can select any
+  deity.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
@@ -58,6 +61,11 @@ Shadow of the Wyrm v1.2.0 "Rodrigo"
     unimplemented.
 
   - Inscriptions were broken in SDL.
+
+  - Creatures could start with more weight than they could carry, would be
+    overburdened, and couldn't shed the weight on the world map.  The player's
+    strength is now adjusted upward when the game starts until the player
+    is no longer burdened.
 
 Shadow of the Wyrm v1.1.7 "Boccherini"
 - Version declared January 11, 2020.  Version finalized February 16, 2020.

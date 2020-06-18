@@ -8,6 +8,8 @@
 #include "CreatureFactory.hpp"
 #include "CreatureGenerationConstants.hpp"
 #include "CreatureGenerationOptions.hpp"
+#include "CreatureUtils.hpp"
+#include "EngineConversion.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "HostilityManager.hpp"
@@ -185,6 +187,8 @@ CreaturePtr CreatureFactory::create_by_creature_id
     InitialItemEquipper iie;
     iie.equip(creature, cgv, action_manager);
     iie.add_inventory_items(creature, cgv, action_manager);
+
+    CreatureUtils::adjust_str_until_unburdened(creature);
   }
       
   return creature;
@@ -332,6 +336,9 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     // Create initial eq based on class and creature defaults.
     create_initial_equipment_and_inventory(creaturep, action_manager);
     
+    // Adjust str until unburdened.
+    CreatureUtils::adjust_str_until_unburdened(creaturep);
+
     // Set calculated statistics
     CreatureCalculator::update_calculated_values(creaturep);
 

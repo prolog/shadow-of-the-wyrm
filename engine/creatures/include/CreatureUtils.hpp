@@ -64,6 +64,9 @@ class CreatureUtils
 
     static bool has_negative_status(CreaturePtr creature);
 
+    // Returns the number of times str was incremented
+    static int adjust_str_until_unburdened(CreaturePtr creature);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();

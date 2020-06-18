@@ -796,6 +796,27 @@ bool CreatureUtils::has_negative_status(CreaturePtr creature)
   return has_neg;
 }
 
+int CreatureUtils::adjust_str_until_unburdened(CreaturePtr creature)
+{
+  int incr_cnt = 0;
+
+  if (creature != nullptr)
+  {
+    // Some creatures might start with low Str and a lot of carried weight.
+    // Adjust Str until carrying capacity is fine.
+    BurdenLevel bl = BurdenLevelConverter::to_burden_level(creature);
+
+    while (bl != BurdenLevel::BURDEN_LEVEL_UNBURDENED)
+    {
+      CreatureUtils::incr_str(creature, false);
+      bl = BurdenLevelConverter::to_burden_level(creature);
+      incr_cnt++;
+    }
+  }
+
+  return incr_cnt;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/CreatureUtils_test.cpp"
 #endif
