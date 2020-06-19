@@ -67,6 +67,8 @@ Shadow of the Wyrm v1.2.0 "Rodrigo"
     strength is now adjusted upward when the game starts until the player
     is no longer burdened.
 
+  - Gamblers and gnomish sailors were missing bestiary descriptions (YARD).
+
 Shadow of the Wyrm v1.1.7 "Boccherini"
 - Version declared January 11, 2020.  Version finalized February 16, 2020.
 
