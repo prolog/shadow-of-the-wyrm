@@ -5,6 +5,7 @@ Me:
 - sprites: ?
 - Release after this: grond says tanning is complicated & dragon skins aren't
   what they should be.
+- Add literacy as a component to # castings, remove difficulty
 - '+' in examine mode should skip a creature if the cursor is already on it
   (e.g. if manually selected already)
 - Investigate enchant scrolls?
