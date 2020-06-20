@@ -2,6 +2,7 @@
 #include "Creature.hpp"
 #include "IActionManager.hpp"
 #include "Item.hpp"
+#include "IItemFilter.hpp"
 
 class ItemManager : public IActionManager
 {
