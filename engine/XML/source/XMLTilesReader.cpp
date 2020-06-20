@@ -5,7 +5,7 @@
 
 using namespace std;
 
-vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_tiles_node, const bool force_ascii)
+vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_tiles_node)
 {
   static_assert(TileType::TILE_TYPE_LAST == static_cast<TileType>(55), "Unexpected TileType::TILE_TYPE_LAST value.");
 
@@ -36,7 +36,7 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
 
     for (const auto& xml_tile : tile_nodes)
     {
-      parse_tile_text_details(tiles, xml_tile, force_ascii);
+      parse_tile_text_details(tiles, xml_tile);
     }
   }
 
@@ -45,13 +45,13 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
 
 // Takes in the "Text" node of a particular tile, as well as a shared pointer to some
 // data structure I haven't defined, yet.
-void XMLTilesReader::parse_tile_text_details(vector<DisplayTile>& tile_info, const XMLNode& tile_node, const bool force_ascii)
+void XMLTilesReader::parse_tile_text_details(vector<DisplayTile>& tile_info, const XMLNode& tile_node)
 {
   if (!tile_node.is_null())
   {
     XMLNode symbol_node = XMLUtils::get_next_element_by_local_name(tile_node, "Symbol");
     Symbol s('?', Colour::COLOUR_WHITE);
-    parse_symbol(s, symbol_node, force_ascii);
+    parse_symbol(s, symbol_node);
 
     SeasonTileColourMap tile_colours;
 

@@ -15,6 +15,8 @@
 #include "FileConstants.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "HelpCommandProcessor.hpp"
+#include "HelpScreen.hpp"
 #include "HighScoreScreen.hpp"
 #include "ItemDescriptionRandomizer.hpp"
 #include "ItemIdentifier.hpp"
@@ -24,6 +26,7 @@
 #include "MessageManagerFactory.hpp"
 #include "NamingScreen.hpp"
 #include "Naming.hpp"
+#include "PlayerDecisionStrategy.hpp"
 #include "RaceManager.hpp"
 #include "RaceSelectionScreen.hpp"
 #include "RNG.hpp"
@@ -94,6 +97,7 @@ void ShadowOfTheWyrmEngine::initialize_game_option_map()
                                    { "b", EngineStateEnum::ENGINE_STATE_START_NEW_GAME_RANDOM },
                                    { "c", EngineStateEnum::ENGINE_STATE_LOAD_GAME },
                                    { "d", EngineStateEnum::ENGINE_STATE_SHOW_HIGH_SCORES },
+                                   { "e", EngineStateEnum::ENGINE_STATE_SHOW_HELP },
                                    { "z", EngineStateEnum::ENGINE_STATE_STOP } };
 }
 
@@ -103,6 +107,7 @@ void ShadowOfTheWyrmEngine::initialize_game_flow_map()
   game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_START_NEW_GAME_RANDOM, &ShadowOfTheWyrmEngine::process_new_game_random));
   game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_SHOW_HIGH_SCORES, &ShadowOfTheWyrmEngine::process_show_high_scores));
   game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_LOAD_GAME, &ShadowOfTheWyrmEngine::process_load_game));
+  game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_SHOW_HELP, &ShadowOfTheWyrmEngine::process_show_help));
   game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_STOP, &ShadowOfTheWyrmEngine::process_exit_game));
 }
 
@@ -112,7 +117,8 @@ void ShadowOfTheWyrmEngine::start(const Settings& settings)
   Log& log = Log::instance();
 
   game.set_settings(settings);
-  game.actions.reload_scripts_and_sids();
+  game.actions.reload_scripts_textures_and_sids();
+  bool disp_ok = true;
 
   if (state_manager.start_new_game())
   {
@@ -128,18 +134,31 @@ void ShadowOfTheWyrmEngine::start(const Settings& settings)
 
     if (display)
     {
-      display->create();
-      display->set_spritesheets(game.get_spritesheets());
-      display->set_title(StringTable::get(TextKeys::SW_TITLE));
-      display->show();
+      disp_ok = display->create();
+
+      if (disp_ok)
+      {
+        display->set_spritesheets(game.get_spritesheets());
+        display->set_title(StringTable::get(TextKeys::SW_TITLE));
+        display->show();
+      }
+      else
+      {
+        // If we couldn't create the display, set the appropriate engine
+        // state so we don't try to continue.
+        state_manager.set_state(EngineStateEnum::ENGINE_STATE_STOP);
+      }
     }
   }
 
-  setup_player_and_world();
+  if (disp_ok)
+  { 
+    setup_player_and_world();
 
-  if (!state_manager.exit())
-  {
-    game.go();
+    if (!state_manager.exit())
+    {
+      game.go();
+    }
   }
 }
 
@@ -176,7 +195,6 @@ void ShadowOfTheWyrmEngine::setup_game()
   string config_file = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_BASE);
   string config_file_creatures = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_CREATURES);
   string config_file_items = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_ITEMS);
-  bool display_force_ascii = game.get_settings_ref().get_setting_as_bool(Setting::DISPLAY_FORCE_ASCII);
 
   XMLConfigurationReader reader(config_file, config_file_creatures, config_file_items);
 
@@ -194,18 +212,18 @@ void ShadowOfTheWyrmEngine::setup_game()
 
   log.debug("Reading items.");
 
-  pair<ItemMap, GenerationValuesMap> items = reader.get_items(display_force_ascii);
+  pair<ItemMap, GenerationValuesMap> items = reader.get_items();
   game.set_items(items.first);
   game.set_item_generation_values(items.second);
 
   log.debug("Reading feature symbols.");
 
-  FeatureSymbolMap feature_symbols = reader.get_feature_symbols(display_force_ascii);
+  FeatureSymbolMap feature_symbols = reader.get_feature_symbols();
   FeatureGenerator::set_feature_symbol_map(feature_symbols);
 
   log.debug("Reading configurable features.");
 
-  FeatureMap configurable_features = reader.get_configurable_features(display_force_ascii);
+  FeatureMap configurable_features = reader.get_configurable_features();
   game.set_configurable_features(configurable_features);
 
   log.debug("Randomizing certain item types.");
@@ -224,7 +242,7 @@ void ShadowOfTheWyrmEngine::setup_game()
 
   log.debug("Reading deities.");
 
-  DeityMap deities = reader.get_deities();      
+  const DeityMap& deities = reader.get_deities();      
   game.set_deities(deities);
 
   log.debug("Reading races.");
@@ -239,7 +257,7 @@ void ShadowOfTheWyrmEngine::setup_game()
 
   log.debug("Reading creatures.");
 
-  pair<CreatureMap, CreatureGenerationValuesMap> creatures = reader.get_creatures(display_force_ascii);    
+  pair<CreatureMap, CreatureGenerationValuesMap> creatures = reader.get_creatures();    
   game.set_creatures(creatures.first);
   game.set_creature_generation_values(creatures.second);
 
@@ -250,12 +268,12 @@ void ShadowOfTheWyrmEngine::setup_game()
 
   log.debug("Reading tile info.");
 
-  vector<DisplayTile> tile_info = reader.get_tile_info(display_force_ascii);
+  vector<DisplayTile> tile_info = reader.get_tile_info();
   game.set_tile_display_info(tile_info);
 
   log.debug("Reading trap info.");
   
-  vector<TrapPtr> trap_info = reader.get_trap_info(display_force_ascii);
+  vector<TrapPtr> trap_info = reader.get_trap_info();
   game.set_trap_info(trap_info);
 
   log.debug("Reading calendar days.");
@@ -335,13 +353,13 @@ bool ShadowOfTheWyrmEngine::process_new_game_random()
   }
 
   // Random playable race id
-  RacePtr race = CreatureUtils::get_random_user_playable_race();
+  Race* race = CreatureUtils::get_random_user_playable_race();
 
   // Random playable class id
-  ClassPtr cur_class = CreatureUtils::get_random_user_playable_class();
+  Class* cur_class = CreatureUtils::get_random_user_playable_class();
 
   // Random allowable deity
-  DeityPtr deity = CreatureUtils::get_random_deity_for_race(race);
+  Deity* deity = CreatureUtils::get_random_deity_for_race(race);
 
   // Random starting location
   StartingLocationMap sm = Game::instance().get_starting_locations();
@@ -372,9 +390,9 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   Game& game = Game::instance();
   CreatureSex sex = CreatureSex::CREATURE_SEX_MALE;
     
-  DeityMap deities = game.get_deities_cref();
-  RaceMap  races   = game.get_races_ref();
-  ClassMap classes = game.get_classes_ref();
+  const DeityMap& deities = game.get_deities_cref();
+  const RaceMap& races   = game.get_races_ref();
+  const ClassMap& classes = game.get_classes_ref();
   
   Option opt;
 
@@ -405,13 +423,13 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   }
 
   string default_race_id = game.get_settings_ref().get_setting(Setting::DEFAULT_RACE_ID);
-  const auto r_it = races.find(default_race_id);
+  auto r_it = races.find(default_race_id);
   bool prompt_user_for_race_selection = true;
   string selected_race_id;
 
   if (r_it != races.end())
   {
-    RacePtr race = r_it->second;
+    Race* race = r_it->second.get();
 
     if (race && race->get_user_playable())
     {
@@ -430,7 +448,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
     if (opt.is_random_option(race_index.at(0)))
     {
-      RacePtr random_race = CreatureUtils::get_random_user_playable_race();
+      Race* random_race = CreatureUtils::get_random_user_playable_race();
 
       if (random_race != nullptr)
       {
@@ -451,7 +469,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   if (c_it != classes.end())
   {
-    ClassPtr cur_class = c_it->second;
+    Class* cur_class = c_it->second.get();
 
     if (cur_class && cur_class->get_user_playable())
     {
@@ -463,7 +481,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   if (prompt_user_for_class_selection)
   {
     RaceManager rm;
-    RacePtr sel_race = rm.get_race(selected_race_id);
+    Race* sel_race = rm.get_race(selected_race_id);
     creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, nullptr, nullptr);
     
     ClassSelectionScreen class_selection(display, creature_synopsis);
@@ -471,7 +489,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
     if (opt.is_random_option(class_index.at(0)))
     {
-      ClassPtr cur_class = CreatureUtils::get_random_user_playable_class();
+      Class* cur_class = CreatureUtils::get_random_user_playable_class();
 
       if (cur_class != nullptr)
       {
@@ -485,8 +503,8 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
   }
 
-  RacePtr selected_race = races[selected_race_id];
-  ClassPtr selected_class = classes[selected_class_id];
+  Race* selected_race = races.find(selected_race_id)->second.get();
+  Class* selected_class = classes.find(selected_class_id)->second.get();
 
   string default_deity_id = game.get_settings_ref().get_setting(Setting::DEFAULT_DEITY_ID);
   bool prompt_user_for_deity_selection = true;
@@ -508,7 +526,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
     if (opt.is_random_option(deity_index.at(0)))
     {
-      DeityPtr deity = CreatureUtils::get_random_deity_for_race(selected_race);
+      Deity* deity = CreatureUtils::get_random_deity_for_race(selected_race);
 
       if (deity != nullptr)
       {
@@ -530,7 +548,13 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
   }
 
-  DeityPtr selected_deity = deities[selected_deity_id];
+  Deity* selected_deity = nullptr;
+  auto d_it = deities.find(selected_deity_id);
+  if (d_it != deities.end())
+  {
+    selected_deity = d_it->second.get();
+  }
+
   string default_starting_location_id = game.get_settings_ref().get_setting(Setting::DEFAULT_STARTING_LOCATION_ID);
   StartingLocationMap sm = game.get_starting_locations();
   StartingLocation sl;
@@ -567,13 +591,13 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
 {
   Game& game = Game::instance();
 
-  RaceMap  races = game.get_races_ref();
-  ClassMap classes = game.get_classes_ref();
-  DeityMap deities = game.get_deities_cref();
+  const RaceMap& races = game.get_races_ref();
+  const ClassMap& classes = game.get_classes_ref();
+  const DeityMap& deities = game.get_deities_cref();
 
-  RacePtr selected_race = races.at(ccd.get_race_id());
-  ClassPtr selected_class = classes.at(ccd.get_class_id());
-  DeityPtr deity = deities.at(ccd.get_deity_id());
+  Race* selected_race = races.at(ccd.get_race_id()).get();
+  Class* selected_class = classes.at(ccd.get_class_id()).get();
+  Deity* deity = deities.at(ccd.get_deity_id()).get();
   string name;
 
   bool user_and_character_exist = true;
@@ -658,61 +682,79 @@ bool ShadowOfTheWyrmEngine::process_load_game()
   bool result = false;
   Game& game = Game::instance();
 
-  LoadGameScreen load_game(display);
-  string option = load_game.display();
-
-  string filename = load_game.get_file_name(option);
-
-  if (!filename.empty())
   {
-    // Do the load asynchronously or SDL/Windows can flip out because of
-    // events not being responded to.
-    promise<SerializationReturnCode> sp;
-    future<SerializationReturnCode> sf = sp.get_future();
-    DisplayPtr cur_display = display;
-    ControllerPtr cur_controller = controller;
+    LoadGameScreen load_game(display);
+    string option = load_game.display();
 
-    std::thread thread([&]() {
-      SerializationReturnCode src = Serialization::load(filename);
-      
-      game.set_display(cur_display);
-      CreaturePtr player = game.get_current_player();
-        
-      if (player != nullptr)
+    string filename = load_game.get_file_name(option);
+
+    if (!filename.empty())
+    {
+      // Do the load asynchronously or SDL/Windows can flip out because of
+      // events not being responded to.
+      promise<SerializationReturnCode> sp;
+      future<SerializationReturnCode> sf = sp.get_future();
+      DisplayPtr cur_display = display;
+      ControllerPtr cur_controller = controller;
+
+      std::thread thread([&]() {
+        SerializationReturnCode src = Serialization::load(filename);
+
+        game.set_display(cur_display);
+        CreaturePtr player = game.get_current_player();
+
+        if (player != nullptr)
+        {
+          player->get_decision_strategy()->set_controller(cur_controller);
+        }
+
+        sp.set_value(src);
+        });
+
+      game.set_loading();
+
+      while (sf.wait_for(std::chrono::milliseconds(250)) != std::future_status::ready)
       {
-        player->get_decision_strategy()->set_controller(cur_controller);
-      } 
+        controller->poll_event();
+      }
 
-      sp.set_value(src);
-    });
+      thread.join();
+      SerializationReturnCode src = sf.get();
 
-    game.set_loading();
+      if (src == SerializationReturnCode::SERIALIZATION_OK)
+      {
+        game.set_current_loaded_savefile(filename);
+        result = true;
+      }
 
-    while (sf.wait_for(std::chrono::milliseconds(250)) != std::future_status::ready)
-    {
-      controller->poll_event();
+      game.set_ready();
     }
 
-    thread.join();
-    SerializationReturnCode src = sf.get();
+    // JCD TODO: Add support for additional reloadable settings here.
+    // E.g., autopickup
+    Settings kb_settings(true);
+    map<string, string> keybinding_settings = kb_settings.get_keybindings();
 
-    if (src == SerializationReturnCode::SERIALIZATION_OK)
-    {
-      game.set_current_loaded_savefile(filename);
-      result = true;
-    }
-
-    game.set_ready();
+    game.get_settings_ref().set_settings(keybinding_settings);
   }
 
-  // JCD TODO: Add support for additional reloadable settings here.
-  // E.g., autopickup
-  Settings kb_settings(true);
-  map<string, string> keybinding_settings = kb_settings.get_keybindings();
-
-  game.get_settings_ref().set_settings(keybinding_settings);
+  display->clear_display();
+  display->refresh_current_window();
+  game.set_requires_redraw(true);
 
   return result;
+}
+
+bool ShadowOfTheWyrmEngine::process_show_help()
+{
+  Game& game = Game::instance();
+  CreaturePtr c = std::make_shared<Creature>();
+  DecisionStrategyPtr pdstrat = std::make_unique<PlayerDecisionStrategy>(controller);
+  c->set_decision_strategy(std::move(pdstrat));
+
+  game.get_action_manager_ref().help(c);
+
+  return false;
 }
 
 // Exit
@@ -782,7 +824,7 @@ void ShadowOfTheWyrmEngine::setup_autopickup_settings(CreaturePtr player)
       }
     }
 
-    DecisionStrategyPtr dec = player->get_decision_strategy();
+    DecisionStrategy* dec = player->get_decision_strategy();
     if (dec != nullptr)
     {
       dec->set_autopickup(autopickup);

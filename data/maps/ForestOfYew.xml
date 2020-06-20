@@ -35,6 +35,22 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>wood_elf_sentry</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>32</Col>
+				</Coord>
+				<Friendly>1</Friendly>
+			</Placement>
+			<Placement>
+				<ID>wood_elf_sentry</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>34</Col>
+				</Coord>
+				<Friendly>1</Friendly>
+			</Placement>
+			<Placement>
 				<ID>_shopkeeper</ID>
 				<Coord>
 					<Row>4</Row>

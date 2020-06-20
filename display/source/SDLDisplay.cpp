@@ -8,6 +8,7 @@
 #include "Log.hpp"
 #include "MapDisplayArea.hpp"
 #include "Screen.hpp"
+#include "Serialize.hpp"
 #include "Setting.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
@@ -24,6 +25,8 @@ const int SDLDisplay::SCREEN_ROWS = 25;
 const int SDLDisplay::SCREEN_COLS = 80;
 const int SDLDisplay::NUM_SDL_BASE_COLOURS = 16;
 const string SDLDisplay::TEXT_ID = "";
+const string SDLDisplay::PALETTES_SETTING = "colour_palettes";
+const string SDLDisplay::DEFAULT_PALETTE_SETTING = "colour_palettes_default";
 
 SDLDisplay::SDLDisplay()
 {
@@ -45,9 +48,41 @@ bool SDLDisplay::create()
 {
   bool init = true;
 
+  init = read_colours_from_settings();
   init = read_dimensions_from_settings();
-  init = init && create_window_and_renderer();
-  init = init && read_font_into_texture();
+
+  if (init)
+  {
+    init = check_available_screen_dimensions();
+
+    if (init)
+    {
+      init = create_window_and_renderer();
+
+      if (init)
+      {
+        init = read_font_into_texture();
+
+        if (!init)
+        {
+          std::cerr << "Could not read font into texture" << std::endl;
+        }
+      }
+      else
+      {
+        std::cerr << "Could not read create window and renderer" << std::endl;
+      }
+    }
+    else
+    {
+      std::cerr << "Screen is smaller than required " << sdld.get_screen_width() << "x" << sdld.get_screen_height() << " - increase resolution and restart, or change to display=curses in swyrm.ini" << std::endl;
+    }
+  }
+  else
+  {
+    std::cerr << "Could not read dimensions from settings" << std::endl;
+  }
+
   
   if (init)
   {
@@ -69,17 +104,72 @@ void SDLDisplay::tear_down()
   SDL_DestroyWindow(window);
 }
 
+string SDLDisplay::get_name() const
+{
+  vector<string> sdl_details;
+  ostringstream ss;
+  ss << "SDL";
+
+  SDL_RendererInfo* renderer_info = new SDL_RendererInfo();
+  SDL_GetRendererInfo(renderer, renderer_info);
+  if (renderer_info != nullptr)
+  {
+    sdl_details.push_back(renderer_info->name);
+
+    if (force_ascii)
+    {
+      sdl_details.push_back("ASCII");
+    }
+  }
+
+  if (!sdl_details.empty())
+  {
+    ss << " (";
+
+    size_t sz = sdl_details.size();
+    for (size_t i = 0; i < sz; i++)
+    {
+      ss << sdl_details[i];
+
+      if (i < sz - 1)
+      {
+        ss << ", ";
+      }
+    }
+
+    ss << ")";
+  }
+
+  return ss.str();
+}
+
+bool SDLDisplay::check_available_screen_dimensions()
+{
+  bool dim_ok = true;
+  SDL_DisplayMode display_mode;
+  SDL_GetCurrentDisplayMode(0, &display_mode);
+  auto avail_width = display_mode.w;
+  auto avail_height = display_mode.h;
+
+  if (avail_width < sdld.get_screen_width() || avail_height < sdld.get_screen_height())
+  {
+    dim_ok = false;
+  }
+
+  return dim_ok;
+}
+
 void SDLDisplay::initialize_colours()
 {
-  colours = { /* black                */ {0, {0,0,0,255} }, // jcd fixme these are bright
-              /* red                  */ {1, {139,0,0,255} },
-              /* green                */ {2, {0,139,0,255} },
-              /* yellow               */ {3, {139,139,0,255} },
-              /* blue                 */ {4, {0,0,139,255} },
-              /* magenta              */ {5, {139,0,139,255} },
-              /* cyan                 */ {6, {0,139,139,255} },
+  colours = { /* black                */ {0, {0,0,0,255} }, 
+              /* red                  */ {1, {180,0,0,255} },
+              /* green                */ {2, {0,159,0,255} },
+              /* yellow               */ {3, {159,159,0,255} },
+              /* blue                 */ {4, {0,100,200,255} },
+              /* magenta              */ {5, {159,0,159,255} },
+              /* cyan                 */ {6, {0,159,159,255} },
               /* white                */ {7, {200,200,200,255} },
-              /* bold black/dark gray */ {8, {59,59,59,255} },
+              /* bold black/dark gray */ {8, {67,99,99,255} },
               /* bold red             */ {9, {255,0,0,255} },
               /* bold green           */ {10, {0,255,0,255} },
               /* bold yellow          */ {11, {255,255,0,255} },
@@ -88,6 +178,18 @@ void SDLDisplay::initialize_colours()
               /* bold cyan            */ {14, {0,255,255,255} },
               /* bold white           */ {15, {255,255,255,255} }
   };
+}
+
+void SDLDisplay::initialize_colours(const vector<SDL_Colour>& colourset)
+{
+  if (colours.size() == NUM_SDL_BASE_COLOURS)
+  {
+    for (size_t i = 0; i < NUM_SDL_BASE_COLOURS; i++)
+    {
+      SDL_Colour cur_colour = colourset[i];
+      colours[i] = cur_colour;
+    }
+  }
 }
 
 bool SDLDisplay::read_dimensions_from_settings()
@@ -140,6 +242,70 @@ bool SDLDisplay::read_font_into_texture()
   return font_result;
 }
 
+bool SDLDisplay::read_colours_from_settings()
+{
+  vector<string> sdl_palettes = String::create_string_vector_from_csv_string(get_property(Setting::DISPLAY_SDL_PREFIX + PALETTES_SETTING));
+  string default_palette = get_property(Setting::DISPLAY_SDL_PREFIX + DEFAULT_PALETTE_SETTING);
+
+  // Read the colours
+  for (const string& p : sdl_palettes)
+  {
+    string palette_name = get_property(Setting::DISPLAY_SDL_PREFIX + p + "_name");
+    vector<SDL_Colour> palette_colours;
+
+    for (uint i = 0; i <= static_cast<int>(Colour::COLOUR_MAX); i++)
+    {
+      string colour_setting = Setting::DISPLAY_SDL_PREFIX + p + "_colour_" + std::to_string(i);
+      string colour_val = get_property(colour_setting);
+
+      if (!colour_val.empty())
+      {
+        std::vector<std::string> rgba;
+        boost::split(rgba, colour_val, boost::is_any_of(", "));
+
+        if (rgba.size() == 4)
+        {
+          Uint8 r = String::to_int(rgba.at(0));
+          Uint8 g = String::to_int(rgba.at(1));
+          Uint8 b = String::to_int(rgba.at(2));
+          Uint8 a = String::to_int(rgba.at(3));
+
+          if (r >= 0 && r <= 255 &&
+            g >= 0 && g <= 255 &&
+            b >= 0 && b <= 255 &&
+            a >= 0 && a <= 255)
+          {
+            palette_colours.push_back({ r,g,b,a });
+          }
+        }
+      }
+
+    }
+
+    if (palette_colours.size() == NUM_SDL_BASE_COLOURS && palette_name.empty() == false)
+    {
+      palettes[p] = make_pair(palette_name, palette_colours);
+    }
+  }
+
+  // Set the default
+  auto p_it = palettes.find(default_palette);
+
+  if (p_it != palettes.end())
+  {
+    pair<string, vector<SDL_Colour>> palette_details = p_it->second;
+
+    for (uint i = 0; i < NUM_SDL_BASE_COLOURS; i++)
+    {
+      colours[i] = palette_details.second[i];
+    }
+  }
+
+  cur_palette_id = default_palette;
+
+  return true;
+}
+
 bool SDLDisplay::create_window_and_renderer()
 {
   bool wr_created = true;
@@ -156,8 +322,24 @@ bool SDLDisplay::create_window_and_renderer()
   }
   else
   {
-    //Create vsynced renderer for window
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE | SDL_RENDERER_PRESENTVSYNC);
+    // By default, -1 will let SDL select the value
+    int drv_index = -1;
+
+    string renderer_name = Game::instance().get_settings_ref().get_setting(Setting::DISPLAY_SDL_RENDERER);
+
+    for (int i = 0; i < SDL_GetNumRenderDrivers(); i++) 
+    {
+      SDL_RendererInfo rinfo;
+      SDL_GetRenderDriverInfo(i, &rinfo);
+
+      if (strcmp(renderer_name.c_str(), rinfo.name) == 0)
+      {
+        drv_index = i;
+        break;
+      }
+    }
+
+    renderer = SDL_CreateRenderer(window, drv_index, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE | SDL_RENDERER_PRESENTVSYNC);
 
     if (renderer == NULL)
     {
@@ -195,9 +377,20 @@ void SDLDisplay::clear_messages()
     dst_rect.h = clear_height;
     dst_rect.w = sdld.get_screen_width();
 
+    SDL_Rect src_rect = dst_rect;
+
     SDLRender render(sdld);
-    render.fill_area(renderer, screens.back(), &dst_rect, get_colour(Colour::COLOUR_BLACK));
-    refresh_current_window();
+    SDL_Texture* screen = screens.back();
+    SDL_Colour c= get_colour(Colour::COLOUR_BLACK);
+
+    SDL_SetRenderDrawColor(renderer, c.r, c.g, c.b, c.a);
+    SDL_SetRenderTarget(renderer, NULL);
+    SDL_RenderClear(renderer);
+
+    SDL_RenderCopy(renderer, screen, NULL, NULL);
+    SDL_SetRenderTarget(renderer, screen);
+
+    render.fill_area(renderer, screen, &dst_rect, get_colour(Colour::COLOUR_BLACK));
 
     SDLCursorLocation& sdlc = screen_cursors.back();
     sdlc.set_y(0);
@@ -229,7 +422,7 @@ void SDLDisplay::clear_to_bottom(const int row)
     dst_rect.h = rows_to_blank * glyph_height;
     dst_rect.w = sdld.get_screen_width();
 
-    render.fill_area(renderer, screens.back(), &dst_rect, get_colour(0));
+    render.fill_area(renderer, screens.back(), &dst_rect, get_colour(Colour::COLOUR_BLACK));
   }
 }
 
@@ -357,11 +550,9 @@ void SDLDisplay::add_message(const string& to_add_message, const Colour colour, 
 
     disable_colour(colour);
   }
-
-  refresh_current_window();
 }
 
-string SDLDisplay::add_message_with_prompt(const string& message, const Colour colour, const bool clear_prior)
+string SDLDisplay::add_message_with_prompt(const string& message, const Colour colour, const bool clear_prior, const std::string& default_for_esc_key)
 {
   string prompt_result;
 
@@ -370,7 +561,9 @@ string SDLDisplay::add_message_with_prompt(const string& message, const Colour c
     SDLRender render(sdld);
 
     add_message(message, colour, clear_prior);
-    prompt_result = prompt_processor.get_user_string(sdld, screen_cursors.back(), render, renderer, spritesheets[TEXT_ID], screens.back(), true /* allow arbitrary non-alphanumeric characters */);
+    refresh_current_window();
+
+    prompt_result = prompt_processor.get_user_string(sdld, screen_cursors.back(), render, renderer, spritesheets[TEXT_ID], screens.back(), true /* allow arbitrary non-alphanumeric characters */, default_for_esc_key);
   }
   
   return prompt_result;
@@ -408,7 +601,7 @@ void SDLDisplay::draw_coordinate(const DisplayTile& current_tile, const uint ter
       enable_colour(colour);
     }
 
-    if (s.get_uses_spritesheet())
+    if (!force_ascii && s.get_uses_spritesheet())
     {
       SpritesheetLocation ssl = s.get_spritesheet_location();
       SDL_Texture* spritesheet = get_spritesheet(s.get_spritesheet_location_ref().get_index());
@@ -470,7 +663,6 @@ void SDLDisplay::clear_screen()
     screen_cursors.pop_back();
 
     SDL_DestroyTexture(current_screen);
-
     Game::instance().set_requires_redraw(true);
   }
 }
@@ -480,7 +672,9 @@ void SDLDisplay::refresh_and_clear_window()
   if (!screens.empty() && !screen_cursors.empty())
   {
     clear_screen();
+    SDL_Colour c = sdld.get_bg_colour();
     SDL_SetRenderTarget(renderer, NULL);
+    SDL_SetRenderDrawColor(renderer, c.r, c.g, c.b, c.a);
     SDL_RenderClear(renderer);
     SDL_SetRenderTarget(renderer, screens.back());
     screen_cursors.back().reset();
@@ -495,7 +689,16 @@ void SDLDisplay::setup_new_screen()
   SDLCursorLocation cursor_loc(get_max_rows(), get_max_cols());
   screen_cursors.push_back(cursor_loc);
 
-  clear_display();
+  SDL_Colour c = sdld.get_bg_colour();
+  SDL_SetRenderTarget(renderer, screen);
+  SDL_SetRenderDrawColor(renderer, c.r, c.g, c.b, c.a);
+  SDL_RenderClear(renderer);
+
+  SDL_SetRenderTarget(renderer, NULL);
+  SDL_RenderClear(renderer);
+  SDL_RenderCopy(renderer, screen, NULL, NULL);
+
+  SDL_SetRenderTarget(renderer, screen);
 }
 
 // To render the screen, detach the renderer from the current texture and 
@@ -506,14 +709,14 @@ void SDLDisplay::refresh_current_window()
   if (!screens.empty() && !screen_cursors.empty())
   {
     SDL_Texture* cur_screen = screens.back();
+    SDL_Colour bl = sdld.get_bg_colour();
 
     SDL_SetRenderTarget(renderer, NULL);
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_SetRenderDrawColor(renderer, bl.r, bl.g, bl.b, bl.a);
     SDL_RenderClear(renderer);
+
     SDL_RenderCopy(renderer, cur_screen, NULL, NULL);
     SDL_RenderPresent(renderer);
-
-    SDL_SetRenderTarget(renderer, cur_screen);
   }
 }
 
@@ -547,7 +750,7 @@ string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& men
     SDLCursorLocation& cursor_loc = screen_cursors.back();
 
     SDLRender text_renderer(sdld);
-    PromptPtr prompt = screen.get_prompt();
+    Prompt* prompt = screen.get_prompt();
     prompt_processor.show_prompt(sdld, cursor_loc, text_renderer, renderer, spritesheets[TEXT_ID], current_screen, prompt, row, col, get_max_rows(), get_max_cols());
     refresh_current_window();
 
@@ -728,6 +931,21 @@ void SDLDisplay::disable_colour(const Colour colour)
   }
 }
 
+void SDLDisplay::set_colour(const int colour, const int r, const int g, const int b)
+{
+  if (colour >= 0 && colour <= 127 &&
+      r >= 0 && r <= 255 &&
+      g >= 0 && g <= 255 &&
+      b >= 0 && b <= 255)
+  {
+    Uint8 a = 255;
+    colours[colour] = { static_cast<Uint8>(r), 
+                        static_cast<Uint8>(g), 
+                        static_cast<Uint8>(b), 
+                        a };
+  }
+}
+
 // When displaying a general screen, reset the colour to white.
 string SDLDisplay::display_screen(const Screen& current_screen)
 {
@@ -741,6 +959,16 @@ void SDLDisplay::set_spritesheets(const map<string, pair<string, unordered_map<s
   {
     string spritesheet_id = ss_it.first;
     string filename = ss_it.second.first;
+
+    // If the spritesheet already exists (we might be reloading textures),
+    // free it.
+    auto ss_texture_it = spritesheets.find(spritesheet_id);
+    if (ss_texture_it != spritesheets.end())
+    {
+      SDL_Texture* existing_texture = ss_texture_it->second;
+      SDL_DestroyTexture(existing_texture);
+    }
+
     SDL_Texture* spritesheet = load_texture(filename, renderer);
     spritesheets[spritesheet_id] = spritesheet;
 
@@ -761,6 +989,68 @@ SDL_Texture* SDLDisplay::get_spritesheet(const string& spritesheet_idx)
 
   return ss;
 }
+
+void SDLDisplay::set_palette_id(const string& new_palette_id)
+{
+  cur_palette_id = new_palette_id;
+}
+
+void SDLDisplay::set_palette(const string& new_palette_id)
+{
+  auto p_it = palettes.find(new_palette_id);
+
+  if (p_it != palettes.end())
+  {
+    set_palette_id(new_palette_id);
+
+    auto colourset = p_it->second.second;
+    initialize_colours(colourset);
+
+    // Reset the colours on the dimensions
+    sdld.set_fg_colour(get_colour(static_cast<int>(Colour::COLOUR_BLACK)));
+    sdld.set_bg_colour(get_colour(static_cast<int>(Colour::COLOUR_BLACK)));
+  }
+}
+
+string SDLDisplay::get_palette_id() const
+{
+  return cur_palette_id;
+}
+
+pair<bool, pair<string, string>> SDLDisplay::switch_colour_palette(const std::string& palette_id)
+{
+  pair<bool, pair<string, string>> palette;
+  palette.first = false;
+
+  string pid = palette_id;
+  if (pid.empty())
+  {
+    pid = this->cur_palette_id;
+  }
+
+  auto p_it = palettes.find(pid);
+  auto p_it_new = palettes.end();
+
+  if (p_it != palettes.end())
+  {
+    p_it_new = std::next(p_it);
+  }
+
+  if (p_it_new == palettes.end())
+  {
+    p_it_new = palettes.begin();
+  }
+
+  palette.first = true;
+  palette.second.first = p_it_new->first;
+  palette.second.second = p_it_new->second.first;
+
+  cur_palette_id = p_it_new->first;
+  initialize_colours(p_it_new->second.second);
+
+  return palette;
+}
+
 
 Coordinate SDLDisplay::get_spritesheet_coordinate(const SpritesheetLocation& ssl) const
 {
@@ -789,11 +1079,30 @@ bool SDLDisplay::serialize(std::ostream& stream) const
 {
   Display::serialize(stream);
 
-  // Window, raw screen textures, the font spritesheet, and renderer will 
-  // all be set up outside of this function. They're not serialized.  
-  // Ignore them.
+  // Window, raw screen textures, the font spritesheet, the renderer,
+  // palettes will all be set up outside of this function.  They're 
+  // not serialized.  Ignore them.
 
   sdld.serialize(stream);
+  Serialize::write_string(stream, cur_palette_id);
+
+  Serialize::write_size_t(stream, palettes.size());
+  for (const auto& p_details : palettes)
+  {
+    Serialize::write_string(stream, p_details.first);
+    Serialize::write_string(stream, p_details.second.first);
+
+    vector<SDL_Colour> palette_colours = p_details.second.second;
+    Serialize::write_size_t(stream, palette_colours.size());
+
+    for (const auto& pc : palette_colours)
+    {
+      Serialize::write_uint(stream, pc.r);
+      Serialize::write_uint(stream, pc.g);
+      Serialize::write_uint(stream, pc.b);
+      Serialize::write_uint(stream, pc.a);
+    }
+  }
 
   return true;
 }
@@ -807,6 +1116,51 @@ bool SDLDisplay::deserialize(std::istream& stream)
   // Ignore them.
 
   sdld.deserialize(stream);
+  Serialize::read_string(stream, cur_palette_id);
+
+  size_t num_palettes = 0;
+  Serialize::read_size_t(stream, num_palettes);
+
+  for (size_t i = 0; i < num_palettes; i++)
+  {
+    string palette_id;
+    Serialize::read_string(stream, palette_id);
+
+    string palette_name_sid;
+    Serialize::read_string(stream, palette_name_sid);
+
+    size_t palette_size = 0;
+    Serialize::read_size_t(stream, palette_size);
+
+    vector<SDL_Colour> colours;
+    for (size_t j = 0; j < palette_size; j++)
+    {
+      uint r = 0;
+      uint g = 0;
+      uint b = 0;
+      uint a = 0;
+
+      Serialize::read_uint(stream, r);
+      Serialize::read_uint(stream, g);
+      Serialize::read_uint(stream, b);
+      Serialize::read_uint(stream, a);
+
+      SDL_Colour c = {static_cast<Uint8>(r), static_cast<Uint8>(g), static_cast<Uint8>(b), static_cast<Uint8>(a)};
+      colours.push_back(c);
+    }
+
+    palettes.insert(make_pair(palette_id, make_pair(palette_name_sid, colours)));
+  }
+
+  // After reading palettes, update the palette based on the currently selected
+  // ID.
+  auto p_it = palettes.find(cur_palette_id);
+
+  if (p_it != palettes.end())
+  {
+    auto palette = p_it->second.second;
+    initialize_colours(palette);
+  }
 
   return true;
 }

@@ -1041,7 +1041,7 @@
 		<xs:element name="HandsRequired" type="tns:HandsType" minOccurs="0"/>
 		<xs:element name="Material" type="tns:MaterialType" minOccurs="0"/>
 		<xs:element name="Glow" type="xs:boolean" minOccurs="0"/>
-		<xs:element name="Symbol" type="tns:Symbol" minOccurs="0"/>
+		<xs:element name="Symbol" type="tns:Symbol" minOccurs="1"/>
 		<xs:element name="DangerLevel" type="xs:integer"/>
 		<xs:element name="Rarity" type="tns:Rarity" minOccurs="0" default="0"/>
 		<xs:element ref="tns:Resistances" minOccurs="0"/>
@@ -1235,10 +1235,10 @@
 		     causes water shimmer, waves, etc. -->
 		<xs:element name="WeatherColours" type="tns:WeatherColoursType" minOccurs="0"/>
 		<!-- This doesn't need to be defined for pure-text implementations -->
-		<xs:element name="SpritesheetLocation" type="tns:SpritesheetLocation" minOccurs="0"/>
+		<xs:element name="Sprite" type="tns:Sprite" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
-<xs:complexType name="SpritesheetLocation">
+<xs:complexType name="Sprite">
 	<xs:annotation>
 		<xs:documentation>Contains spritesheet info for a particular symbol.</xs:documentation>
 	</xs:annotation>
@@ -1336,6 +1336,7 @@
 		<xs:enumeration value="DesecrateNeutral"/>
 		<xs:enumeration value="DesecrateEvil"/>
 		<xs:enumeration value="GraveRobbing"/>
+		<xs:enumeration value="SkinHumanoid"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="TileType">

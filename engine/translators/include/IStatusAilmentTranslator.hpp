@@ -18,5 +18,5 @@ class IStatusAilmentTranslator
     virtual Colour get_status_ailment_colour(const CreaturePtr& creature) const = 0;
 };
 
-using IStatusAilmentTranslatorPtr = std::shared_ptr<IStatusAilmentTranslator>;
+using IStatusAilmentTranslatorPtr = std::unique_ptr<IStatusAilmentTranslator>;
 

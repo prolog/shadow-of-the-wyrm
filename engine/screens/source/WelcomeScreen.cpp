@@ -6,6 +6,7 @@
 #include "StringTable.hpp"
 #include "TextDisplayFormatter.hpp"
 #include "TextKeys.hpp"
+#include "ScreenTitleTextKeys.hpp"
 #include "WelcomeScreen.hpp"
 
 using namespace std;
@@ -61,6 +62,10 @@ void WelcomeScreen::initialize()
   show_high_scores.set_id(option_id++);
   show_high_scores.set_description(StringTable::get(TextKeys::SW_TITLE_HIGH_SCORES));
 
+  Option help;
+  help.set_id(option_id++);
+  help.set_description(StringTable::get(ScreenTitleTextKeys::SCREEN_TITLE_HELP));
+
   Option quit;
   quit.set_id(25); // 'z'
   quit.set_description(StringTable::get(TextKeys::SW_TITLE_QUIT_GAME));
@@ -75,6 +80,9 @@ void WelcomeScreen::initialize()
   options->add_option_description("");
 
   options->add_option(show_high_scores);
+  options->add_option_description("");
+
+  options->add_option(help);
   options->add_option_description("");
 
   options->add_option(quit);
@@ -96,7 +104,7 @@ void WelcomeScreen::initialize()
   add_page(welcome_screen);
 
   // Set the prompt
-  PromptPtr any_key_prompt = std::make_shared<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr any_key_prompt = std::make_unique<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
   any_key_prompt->set_text_sid(PromptTextKeys::PROMPT_SELECT_AN_OPTION);
-  user_prompt = any_key_prompt;
+  user_prompt = std::move(any_key_prompt);
 }

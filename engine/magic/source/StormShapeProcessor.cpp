@@ -79,7 +79,6 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> StormShapeProcessor::get_s
   Symbol s('*', spell.get_colour(), SpritesheetLocation(SpritesheetIndex::SPRITESHEET_INDEX_SYSTEM, SpritesheetReference::SPRITESHEET_REFERENCE_MAGIC_BLAST));  DisplayTile dt(s);
 
   Game& game = Game::instance();
-  ISeasonPtr season = game.get_current_world()->get_calendar().get_season();
   CreaturePtr player = game.get_current_player();
   vector<Colour> scv = String::create_colour_vector_from_csv_string(map->get_property(MapProperties::MAP_PROPERTIES_SHIMMER_COLOURS));
   ShimmerColours shimmer_colours(scv);

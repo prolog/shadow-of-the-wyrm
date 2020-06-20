@@ -10,7 +10,6 @@
 class CursesKeyboardController : public Controller
 {
   public:
-    std::string get_line() override;
     virtual Controller* clone() override;
 
   protected:

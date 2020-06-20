@@ -14,6 +14,12 @@ SmiteDeityDecisionStrategyHandler::SmiteDeityDecisionStrategyHandler(const strin
 {
 }
 
+std::unique_ptr<DeityDecisionStrategyHandler> SmiteDeityDecisionStrategyHandler::clone()
+{
+  std::unique_ptr<DeityDecisionStrategyHandler> handler = std::make_unique<SmiteDeityDecisionStrategyHandler>(*this);
+  return handler;
+}
+
 bool SmiteDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {
   Game& game = Game::instance();

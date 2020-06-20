@@ -12,6 +12,12 @@ HaltBreedingDeityDecisionStrategyHandler::HaltBreedingDeityDecisionStrategyHandl
 {
 }
 
+std::unique_ptr<DeityDecisionStrategyHandler> HaltBreedingDeityDecisionStrategyHandler::clone()
+{
+  std::unique_ptr<DeityDecisionStrategyHandler> handler = std::make_unique<HaltBreedingDeityDecisionStrategyHandler>(*this);
+  return handler;
+}
+
 bool HaltBreedingDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {
   bool decision = false;

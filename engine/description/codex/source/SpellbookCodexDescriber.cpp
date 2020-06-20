@@ -22,7 +22,7 @@ string SpellbookCodexDescriber::describe_for_synopsis_line() const
     if (sp_details != spells.end())
     {
       Skills skills;
-      SkillPtr skill = skills.get_skill(sp_details->second.get_magic_category());
+      Skill* skill = skills.get_skill(sp_details->second.get_magic_category());
 
       if (skill != nullptr)
       {

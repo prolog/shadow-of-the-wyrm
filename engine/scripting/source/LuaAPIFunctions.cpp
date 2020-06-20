@@ -202,6 +202,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_skill_value", get_skill_value);
   lua_register(L, "get_magic_skills", get_magic_skills);
   lua_register(L, "check_skill", check_skill);
+  lua_register(L, "set_all_skills_value", set_all_skills_value);
   lua_register(L, "RNG_range", RNG_range);
   lua_register(L, "RNG_percent_chance", RNG_percent_chance);
   lua_register(L, "RNG_dice", RNG_dice);
@@ -396,6 +397,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "creature_exists", creature_exists);
   lua_register(L, "set_weather", set_weather);
   lua_register(L, "genocide", genocide);
+  lua_register(L, "generate_ancient_beast", generate_ancient_beast);
+  lua_register(L, "set_colour", set_colour);
 }
 
 // Lua API helper functions
@@ -1692,6 +1695,28 @@ int check_skill(lua_State* ls)
   return 1;
 }
 
+int set_all_skills_value(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int val = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->get_skills().set_all_to(val);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_all_skills_value");
+  }
+
+  return 0;
+}
+
 int RNG_range(lua_State* ls)
 {
   int rng_val = 0;
@@ -1922,10 +1947,16 @@ int add_creature_to_map(lua_State* ls)
       hostility_override = std::make_shared<bool>(lua_toboolean(ls, 5) != 0);
     }
 
+    bool ignore_maximum = false;
+    if (num_args == 6 && lua_isboolean(ls, 6))
+    {
+      ignore_maximum = lua_toboolean(ls, 6);
+    }
+
     string creature_id = lua_tostring(ls, 1);
 
     CreatureFactory cf;
-    CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id, map);
+    CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id, map, nullptr, ignore_maximum);
     Coordinate coords(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
     HostilityManager hm;
 
@@ -4384,9 +4415,9 @@ int get_deity_summons(lua_State* ls)
     string deity_id = lua_tostring(ls, 1);
 
     ReligionManager rm;
-    DeityPtr deity = rm.get_deity(deity_id);
+    Deity* deity = rm.get_deity(deity_id);
 
-    if (deity)
+    if (deity != nullptr)
     {
       summons = deity->get_summons();
       uint summons_size = summons.size();
@@ -5858,7 +5889,7 @@ int get_race_ids(lua_State* ls)
 
     for (const auto& race_pair : rm)
     {
-      RacePtr race = race_pair.second;
+      Race* race = race_pair.second.get();
 
       if (race != nullptr && 
           !race_pair.first.empty() && 
@@ -5968,7 +5999,7 @@ int get_race_name(lua_State* ls)
   {
     string race_id = lua_tostring(ls, 1);
     RaceManager rm;
-    RacePtr race = rm.get_race(race_id);
+    Race* race = rm.get_race(race_id);
 
     if (race != nullptr)
     {
@@ -7529,7 +7560,7 @@ int set_automove_coords(lua_State* ls)
 
       if (creature != nullptr)
       {
-        DecisionStrategyPtr dec = creature->get_decision_strategy();
+        DecisionStrategy* dec = creature->get_decision_strategy();
 
         if (dec != nullptr)
         {
@@ -7946,6 +7977,71 @@ int genocide(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Invalid arguments to genocide");
+  }
+
+  return 0;
+}
+
+int generate_ancient_beast(lua_State* ls)
+{
+  bool generated = false;
+
+  if (lua_gettop(ls) == 3)
+  {
+    int y = lua_tointeger(ls, 1);
+    int x = lua_tointeger(ls, 2);
+    int dtype = lua_tointeger(ls, 3);
+
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+
+    if (map != nullptr)
+    {
+      CreatureGenerationManager cgm;
+      CreatureGenerationList cgl = cgm.generate_ancient_beasts(CreatureGenerationManager::ANCIENT_BEASTS_MIN_DANGER_LEVEL, MapType::MAP_TYPE_UNDERWORLD, map->get_terrain_type());
+
+      auto cgl_val = cgl.at(dtype);
+
+      // Clear the list and then add back the val to ensure we generate
+      // the right ancient beast.
+      cgl.clear();
+      cgl.push_back(cgl_val);
+
+      ActionManager& am = game.get_action_manager_ref();
+      CreaturePtr generated_creature = cgm.generate_creature(am, cgl, map);
+      GameUtils::add_new_creature_to_map(game, generated_creature, map, { y,x });
+      generated = true;
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to generate_ancient_beast");
+  }
+
+  lua_pushboolean(ls, generated);
+  return 1;
+}
+
+int set_colour(lua_State* ls)
+{
+  if (lua_gettop(ls) == 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    int colour = lua_tointeger(ls, 1);
+    int r = lua_tointeger(ls, 2);
+    int g = lua_tointeger(ls, 3);
+    int b = lua_tointeger(ls, 4);
+
+    Game& game = Game::instance();
+    DisplayPtr display = game.get_display();
+    
+    if (display != nullptr)
+    {
+      display->set_colour(colour, r, g, b);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_colour");
   }
 
   return 0;

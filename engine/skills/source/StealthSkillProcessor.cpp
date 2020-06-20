@@ -31,3 +31,8 @@ ActionCostValue StealthSkillProcessor::process(CreaturePtr creature, MapPtr map)
   return acv;
 }
 
+SkillProcessorPtr StealthSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<StealthSkillProcessor>();
+  return proc;
+}

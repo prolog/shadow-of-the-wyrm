@@ -15,7 +15,7 @@ void SeasonsTimeObserver::notify(const ulonglong minutes_passed)
 {
   Game& game = Game::instance();
   
-  WorldPtr world = game.worlds.at(game.current_world_ix);
+  World* world = game.get_current_world();
     
   if (world)
   {
@@ -38,9 +38,10 @@ void SeasonsTimeObserver::notify(const ulonglong minutes_passed)
   }
 }
 
-ITimeObserver* SeasonsTimeObserver::clone() 
+std::unique_ptr<ITimeObserver> SeasonsTimeObserver::clone()
 {
-  return new SeasonsTimeObserver(*this);
+  std::unique_ptr<ITimeObserver> sto = std::make_unique<SeasonsTimeObserver>(*this);
+  return sto;
 }
 
 ClassIdentifier SeasonsTimeObserver::internal_class_identifier() const

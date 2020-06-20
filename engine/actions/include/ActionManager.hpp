@@ -90,8 +90,8 @@ class ActionManager : public ISerializable
 
     // Clear the Lua state so that any script changes will be applied on
     // the next load.
-    void reload_scripts_and_sids(); // generic version.
-    ActionCost reload_scripts_and_sids(CreaturePtr creature); // creature's-command-version
+    void reload_scripts_textures_and_sids(); // generic version.
+    ActionCost reload_scripts_textures_and_sids(CreaturePtr creature); // creature's-command-version
     ActionCost run_script_command(CreaturePtr creature); // should only be available in debug mode!
 
     ActionCost cast_spell(CreaturePtr creature, const std::string& spell_id, const Direction d);
@@ -102,6 +102,12 @@ class ActionManager : public ISerializable
     ActionCost item_codex(CreaturePtr creature);
     ActionCost item_codex(CreaturePtr creature, const EquipmentWornLocation ewl);
     ActionCost item_codex(CreaturePtr creature, ItemPtr item);
+
+    // Switch between tiles and ASCII.
+    ActionCost switch_graphics_mode(CreaturePtr creature);
+
+    // Switch between colour palettes.
+    ActionCost switch_colour_palettes(CreaturePtr creature);
 
     // Evoke/zap a wand.
     ActionCost evoke(CreaturePtr creature);

@@ -11,6 +11,12 @@ UncurseDeityDecisionStrategyHandler::UncurseDeityDecisionStrategyHandler(const s
 {
 }
 
+std::unique_ptr<DeityDecisionStrategyHandler> UncurseDeityDecisionStrategyHandler::clone()
+{
+  std::unique_ptr<DeityDecisionStrategyHandler> handler = std::make_unique<UncurseDeityDecisionStrategyHandler>(*this);
+  return handler;
+}
+
 bool UncurseDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {
   bool uncurse_creature = false;

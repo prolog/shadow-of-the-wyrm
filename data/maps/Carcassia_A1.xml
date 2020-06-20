@@ -235,6 +235,34 @@
 		<FeaturePlacement>
 			<Coord>
 				<Row>13</Row>
+				<Col>59</Col>
+			</Coord>
+			<Table/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>13</Row>
+				<Col>64</Col>
+			</Coord>
+			<Table/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>17</Row>
+				<Col>68</Col>
+			</Coord>
+			<Table/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>17</Row>
+				<Col>72</Col>
+			</Coord>
+			<Table/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>13</Row>
 				<Col>67</Col>
 			</Coord>
 			<Bed/>

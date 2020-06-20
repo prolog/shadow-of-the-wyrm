@@ -12,6 +12,7 @@ class CreatureActionKeys
     static const std::string ACTION_DESECRATE_NEUTRAL;
     static const std::string ACTION_DESECRATE_EVIL;
   	static const std::string ACTION_GRAVEROBBING;
+    static const std::string ACTION_SKIN_HUMANOID;
 };
 
 using CreatureActionMap = std::map<std::string, bool>;

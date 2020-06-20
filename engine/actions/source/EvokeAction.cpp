@@ -204,7 +204,7 @@ pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature,
 
   // Make the creature select a direction.
   CommandFactoryPtr command_factory = std::make_unique<CommandFactory>();
-  KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
+  KeyboardCommandMapPtr kb_command_map = std::make_unique<KeyboardCommandMap>();
   SpellShape spell_shape = SpellShapeFactory::create_spell_shape(shape_type, SpellConstants::DEFAULT_BEAM_RADIUS);
 
   // If the creature is the player, inform the player that a direction is needed.
@@ -221,13 +221,13 @@ pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature,
     manager.send();
   }
 
-  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, 0);
+  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0, true);
 
   if (base_command)
   {
     // Check to see if it's an actual directional command
-    std::shared_ptr<DirectionalCommand> dcommand;
-    dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
+    DirectionalCommand* dcommand;
+    dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
 
     if (dcommand && (DirectionUtils::direction_matches_category(dcommand->get_direction(), spell_shape.get_direction_category())))
     {
@@ -303,12 +303,12 @@ bool EvokeAction::process_wand_damage_and_effect(CreaturePtr creature, MapPtr ma
     // add a status message based on whether the item was identified.
     SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(wand_spell.get_shape().get_spell_shape_type());
 
-    if (spell_processor)
+    if (spell_processor != nullptr)
     {
       // Use the generic spell processor, which is also used for "regular"
       // spellcasting.
       SpellcastingProcessor sp;
-      wand_identified = sp.process(spell_processor, creature, map, caster_coord, direction, wand_spell, wand_status);
+      wand_identified = sp.process(spell_processor.get(), creature, map, caster_coord, direction, wand_spell, wand_status);
     }
   }
   else

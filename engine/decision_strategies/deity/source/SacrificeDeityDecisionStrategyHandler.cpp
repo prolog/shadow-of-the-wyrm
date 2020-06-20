@@ -14,6 +14,12 @@ SacrificeDeityDecisionStrategyHandler::SacrificeDeityDecisionStrategyHandler(con
 {
 }
 
+std::unique_ptr<DeityDecisionStrategyHandler> SacrificeDeityDecisionStrategyHandler::clone()
+{
+  std::unique_ptr<DeityDecisionStrategyHandler> handler = std::make_unique<SacrificeDeityDecisionStrategyHandler>(*this);
+  return handler;
+}
+
 bool SacrificeDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {
   return true;

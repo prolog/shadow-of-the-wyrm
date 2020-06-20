@@ -24,12 +24,30 @@ ActionCostValue DefaultSkillProcessor::process(CreaturePtr creature, MapPtr map)
   return acv;
 }
 
+SkillProcessorPtr DefaultSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<DefaultSkillProcessor>(message_sid);
+  return proc;
+}
+
 WeaponSkillProcessor::WeaponSkillProcessor()
 : DefaultSkillProcessor(SkillTextKeys::SKILL_USAGE_WEAPON)
 {
 }
 
+SkillProcessorPtr WeaponSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<WeaponSkillProcessor>();
+  return proc;
+}
+
 MagicSkillProcessor::MagicSkillProcessor()
 : DefaultSkillProcessor(SkillTextKeys::SKILL_USAGE_MAGIC)
 {
+}
+
+SkillProcessorPtr MagicSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<MagicSkillProcessor>();
+  return proc;
 }

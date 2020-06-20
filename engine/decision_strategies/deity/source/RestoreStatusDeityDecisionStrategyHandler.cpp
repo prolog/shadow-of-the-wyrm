@@ -13,6 +13,12 @@ RestoreStatusDeityDecisionStrategyHandler::RestoreStatusDeityDecisionStrategyHan
   initialize_watched_statuses();
 }
 
+std::unique_ptr<DeityDecisionStrategyHandler> RestoreStatusDeityDecisionStrategyHandler::clone()
+{
+  std::unique_ptr<DeityDecisionStrategyHandler> handler = std::make_unique<RestoreStatusDeityDecisionStrategyHandler>(*this);
+  return handler;
+}
+
 // Set the list of statuses that will be used to determine if the deity will
 // restore the player.
 void RestoreStatusDeityDecisionStrategyHandler::initialize_watched_statuses()

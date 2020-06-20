@@ -33,9 +33,9 @@ class SpellShapeProcessor
 
     virtual bool apply_damage_and_effect(CreaturePtr caster, const std::vector<std::pair<Coordinate, TilePtr>>& affected_tiles, const Spell& spell, const ItemStatus effect_status, ActionManager * const am);
     virtual bool apply_damage(CreaturePtr caster, const Coordinate& c, TilePtr tile, const Spell& spell, ActionManager * const am);
-    virtual bool apply_effect(EffectPtr effect, CreaturePtr caster, const Coordinate& coord, TilePtr tile, const Spell& spell, const ItemStatus effect_status, ActionManager * const am);
+    virtual bool apply_effect(Effect* effect, CreaturePtr caster, const Coordinate& coord, TilePtr tile, const Spell& spell, const ItemStatus effect_status, ActionManager * const am);
 
     bool is_coordinate_adjacent_to_coordinate_in_previous_frame(const Coordinate& coord, const std::vector<Coordinate>& prev_frame);
 };
 
-using SpellShapeProcessorPtr = std::shared_ptr<SpellShapeProcessor>;
+using SpellShapeProcessorPtr = std::unique_ptr<SpellShapeProcessor>;

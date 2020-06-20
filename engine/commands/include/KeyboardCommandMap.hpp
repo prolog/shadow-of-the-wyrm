@@ -56,4 +56,4 @@ class SW_Engine_Commands_KeyboardCommandMapFixture : public ::testing::Test
 };
 #endif
 
-using KeyboardCommandMapPtr = std::shared_ptr<KeyboardCommandMap>;
+using KeyboardCommandMapPtr = std::unique_ptr<KeyboardCommandMap>;

@@ -10,6 +10,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "CurrencyAction.hpp"
 #include "DateTimeWeatherAction.hpp"
+#include "DisplayProperties.hpp"
 #include "DropAction.hpp"
 #include "EquipmentManager.hpp"
 #include "ExitGameAction.hpp"
@@ -300,19 +301,26 @@ ActionCost ActionManager::quest_list(CreaturePtr creature)
   return get_action_cost(creature, qla.quest_list());
 }
 
-void ActionManager::reload_scripts_and_sids()
+void ActionManager::reload_scripts_textures_and_sids()
 {
   CreaturePtr nullcr;
-  reload_scripts_and_sids(nullcr);
+  reload_scripts_textures_and_sids(nullcr);
 }
 
 // Clear the Lua state so scripts can be reloaded.
 // Reload the strings.
-ActionCost ActionManager::reload_scripts_and_sids(CreaturePtr creature)
+ActionCost ActionManager::reload_scripts_textures_and_sids(CreaturePtr creature)
 {
   Game& game = Game::instance();
   ScriptEngine& se = game.get_script_engine_ref();
   se.clear_state();
+
+  DisplayPtr display = game.get_display();
+  if (display != nullptr)
+  {
+    display->set_spritesheets(game.get_spritesheets());
+    game.set_requires_redraw(true);
+  }
 
   StringTable::load(game.get_sid_ini_filename());
 
@@ -339,6 +347,12 @@ ActionCost ActionManager::run_script_command(CreaturePtr creature)
   else
   {
     se.set_last_executed(command);
+  }
+
+  DisplayPtr display = game.get_display();
+  if (display != nullptr)
+  {
+    display->clear_messages();
   }
 
   se.run_command(command);
@@ -395,6 +409,78 @@ ActionCost ActionManager::item_codex(CreaturePtr creature, ItemPtr item)
   ItemCodexAction ica;
 
   return get_action_cost(creature, ica.item_details(creature, item, false));
+}
+
+ActionCost ActionManager::switch_graphics_mode(CreaturePtr creature)
+{
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
+
+  // Flip the force_ascii setting
+  Game& game = Game::instance();
+  DisplayPtr display = game.get_display();
+  Settings& settings = game.get_settings_ref();
+  bool force_ascii = settings.get_setting_as_bool(Setting::DISPLAY_FORCE_ASCII);
+  bool new_force_ascii = !force_ascii;
+  settings.set_setting(Setting::DISPLAY_FORCE_ASCII, Bool::to_string(new_force_ascii));
+
+  if (display != nullptr)
+  {
+    display->set_force_ascii(new_force_ascii);
+
+    // Add a message about the display name
+    string display_name = display->get_name();
+    string display_msg = ActionTextKeys::get_graphics_mode_switch_message(display_name);
+
+    IMessageManager& manager = MM::instance();
+    manager.add_new_message(display_msg);
+    manager.send();
+  }
+
+  // Now force a redraw
+  game.set_requires_redraw(true);
+
+  return get_action_cost(creature, action_cost_value);
+}
+
+ActionCost ActionManager::switch_colour_palettes(CreaturePtr creature)
+{
+  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
+  Game& game = Game::instance();
+  DisplayPtr display = game.get_display();
+  string display_id;
+
+  // Get the current palette ID
+  if (creature != nullptr && display != nullptr)
+  {
+    display_id = creature->get_additional_property(DisplayProperties::DISPLAY_PROPERTIES_ID);
+
+    // Try switching
+    pair<bool, pair<string, string>> switch_result = display->switch_colour_palette(display_id);
+
+    // If successful, display a message
+    if (switch_result.first)
+    {
+      string new_pal_id = switch_result.second.first;
+      string name_sid = switch_result.second.second;
+
+      // Display msg
+      string palette_msg = ActionTextKeys::get_palette_switch_message(name_sid);
+      IMessageManager& manager = MM::instance();
+
+      display->clear_messages();
+      manager.add_new_message(palette_msg);
+      //x Bmanager.send();
+
+      // Update palette ID
+      creature->set_additional_property(DisplayProperties::DISPLAY_PROPERTIES_ID, new_pal_id);
+
+      // Force a redraw
+      game.set_requires_redraw(true);
+    }
+  }
+
+
+  return get_action_cost(creature, action_cost_value);
 }
 
 ActionCost ActionManager::evoke(CreaturePtr creature)

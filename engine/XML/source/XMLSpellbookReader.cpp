@@ -12,11 +12,11 @@ XMLSpellbookReader::~XMLSpellbookReader()
 
 // Methods for reading details about a book/spellbook from an XML node
 // conformant to the Book type.
-void XMLSpellbookReader::parse(SpellbookPtr book, GenerationValues& igv, const XMLNode& book_node, const bool force_ascii)
+void XMLSpellbookReader::parse(SpellbookPtr book, GenerationValues& igv, const XMLNode& book_node)
 {
   if (!book_node.is_null())
   {
-    XMLReadableReader::parse(book, igv, book_node, force_ascii);
+    XMLReadableReader::parse(book, igv, book_node);
 
     // The spell which is contained within the book.
     string spell_id = XMLUtils::get_child_node_value(book_node, "SpellID");

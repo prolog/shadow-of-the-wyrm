@@ -16,15 +16,14 @@ EquipmentCommandProcessor::~EquipmentCommandProcessor()
 {
 }
 
-ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, CommandPtr command)
+ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, Command* command)
 {
   ActionCostValue process_result = ActionCostConstants::DEFAULT;
   Game& game = Game::instance();
   
   if (creature && command)
   {
-    Command* raw_command = command.get();
-    EquipmentCommand* raw_eq_command = dynamic_cast<EquipmentCommand*>(raw_command);
+    EquipmentCommand* raw_eq_command = dynamic_cast<EquipmentCommand*>(command);
     
     if (raw_eq_command)
     {
@@ -32,7 +31,7 @@ ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, Command
     
       if (raw_eq_command->is_wear_or_remove_command())
       {
-        WearOrRemoveCommand* wear_raw_command = dynamic_cast<WearOrRemoveCommand*>(raw_command);
+        WearOrRemoveCommand* wear_raw_command = dynamic_cast<WearOrRemoveCommand*>(command);
         
         if (wear_raw_command)
         {
@@ -56,7 +55,7 @@ ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, Command
       }
       else if (command_name == EquipmentCommandKeys::CODEX)
       {
-        shared_ptr<EquipmentSlotCommand> esc = std::dynamic_pointer_cast<EquipmentSlotCommand>(command);
+        EquipmentSlotCommand* esc = dynamic_cast<EquipmentSlotCommand*>(command);
 
         if (esc != nullptr)
         {

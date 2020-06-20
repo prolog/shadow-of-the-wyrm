@@ -5,6 +5,7 @@ using namespace std;
 
 // SpritesheetIndices
 const string SpritesheetIndex::SPRITESHEET_INDEX_SYSTEM = "sys";
+const string SpritesheetIndex::SPRITESHEET_INDEX_CREATURE = "cr";
 
 SpritesheetIndex::SpritesheetIndex()
 {

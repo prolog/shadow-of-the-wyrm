@@ -8,6 +8,12 @@ DoNothingDeityDecisionStrategyHandler::DoNothingDeityDecisionStrategyHandler(con
 {
 }
 
+std::unique_ptr<DeityDecisionStrategyHandler> DoNothingDeityDecisionStrategyHandler::clone()
+{
+  std::unique_ptr<DeityDecisionStrategyHandler> handler = std::make_unique<DoNothingDeityDecisionStrategyHandler>(*this);
+  return handler;
+}
+
 bool DoNothingDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {
   return true;

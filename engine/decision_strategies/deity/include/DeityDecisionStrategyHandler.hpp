@@ -16,6 +16,8 @@ class DeityDecisionStrategyHandler
     virtual DeityDecisionImplications handle_decision(CreaturePtr creature, TilePtr tile) = 0;
     virtual std::string get_message_sid() const = 0;
 
+    virtual std::unique_ptr<DeityDecisionStrategyHandler> clone() = 0;
+
   protected:
     virtual DeityDecisionImplications get_deity_decision_implications(CreaturePtr creature, TilePtr tile) const;
 
@@ -24,4 +26,4 @@ class DeityDecisionStrategyHandler
     std::string deity_id;
 };
 
-using DeityDecisionStrategyHandlerPtr = std::shared_ptr<DeityDecisionStrategyHandler>;
+using DeityDecisionStrategyHandlerPtr = std::unique_ptr<DeityDecisionStrategyHandler>;

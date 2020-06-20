@@ -9,6 +9,12 @@ FullAPDeityDecisionStrategyHandler::FullAPDeityDecisionStrategyHandler(const str
 {
 }
 
+std::unique_ptr<DeityDecisionStrategyHandler> FullAPDeityDecisionStrategyHandler::clone()
+{
+  std::unique_ptr<DeityDecisionStrategyHandler> handler = std::make_unique<FullAPDeityDecisionStrategyHandler>(*this);
+  return handler;
+}
+
 bool FullAPDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {
   bool decision = false;

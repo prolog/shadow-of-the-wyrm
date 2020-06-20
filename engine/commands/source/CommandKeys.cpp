@@ -45,7 +45,7 @@ const string CommandKeys::EAT            = "EAT";
 const string CommandKeys::CHAT           = "CHAT";
 const string CommandKeys::APPLY_FEATURE  = "APPLY_FEATURE";
 const string CommandKeys::QUEST_LIST     = "QUEST_LIST";
-const string CommandKeys::RELOAD_SCRIPTS_AND_SIDS = "RELOAD_SCRIPTS_AND_SIDS";
+const string CommandKeys::RELOAD_SCRIPTS_TEXTURES_AND_SIDS = "RELOAD_SCRIPTS_TEXTURES_AND_SIDS";
 const string CommandKeys::RUN_SCRIPT     = "RUN_SCRIPT";
 const string CommandKeys::CAST_SPELL     = "CAST_SPELL";
 const string CommandKeys::BESTIARY       = "BESTIARY";
@@ -67,6 +67,8 @@ const string CommandKeys::BREED          = "BREED";
 const string CommandKeys::INSCRIBE       = "INSCRIBE";
 const string CommandKeys::TOGGLE_AUTOPICKUP = "AUTOPICKUP";
 const string CommandKeys::ITEM_CODEX     = "ITEM_CODEX";
+const string CommandKeys::SWITCH_GRAPHICS_MODE = "SWITCH_GRAPHICS_MODE";
+const string CommandKeys::SWITCH_COLOUR_PALETTES = "SWITCH_COLOUR_PALETTES";
 
 const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
 const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";

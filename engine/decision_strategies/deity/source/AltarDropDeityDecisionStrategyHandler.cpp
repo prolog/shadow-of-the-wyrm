@@ -20,6 +20,12 @@ AltarDropDeityDecisionStrategyHandler::AltarDropDeityDecisionStrategyHandler(con
 {
 }
 
+std::unique_ptr<DeityDecisionStrategyHandler> AltarDropDeityDecisionStrategyHandler::clone()
+{
+  std::unique_ptr<DeityDecisionStrategyHandler> handler = std::make_unique<AltarDropDeityDecisionStrategyHandler>(*this);
+  return handler;
+}
+
 bool AltarDropDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {
   // Decision is true if:

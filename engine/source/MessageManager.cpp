@@ -33,7 +33,7 @@ void MessageManager::send(const MessageSpacing ms, const bool halt_after, const 
 {
   Messages unread_messages = get_unread_messages_and_mark_as_read();
   string message_text;
-  
+
   if (user_display)
   {
     vector<Message> messages = unread_messages.get_messages();
@@ -57,7 +57,7 @@ void MessageManager::send(const MessageSpacing ms, const bool halt_after, const 
       }
 
       buffer_has_messages = true;
-    }
+    }    
   }
   
   if (halt_after)
@@ -156,7 +156,7 @@ string MessageManager::add_new_message_with_prompt(const std::string& message_te
   if (user_display)
   {
     buffer_has_messages = true;
-    prompt_text = user_display->add_message_with_prompt(message_text, colour, false);
+    prompt_text = user_display->add_message_with_prompt(message_text, colour, false, "");
   }
 
   message_buffer.add_message(message_text, colour);

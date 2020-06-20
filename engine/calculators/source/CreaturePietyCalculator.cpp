@@ -28,7 +28,7 @@ int CreaturePietyCalculator::calculate_piety_regen_bonus(CreaturePtr creature)
     string deity_id = religion.get_active_deity_id();
     DeityStatus deity_status = religion.get_deity_status(deity_id);
 
-    ClassPtr cur_class = cm.get_class(creature->get_class_id());
+    Class* cur_class = cm.get_class(creature->get_class_id());
 
     if (cur_class)
     {

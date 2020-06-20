@@ -321,7 +321,7 @@ QuestListCommand::~QuestListCommand()
 
 // Clear the Lua state (scripts will reload)
 ReloadScriptsCommand::ReloadScriptsCommand(const int key)
-: Command(CommandKeys::RELOAD_SCRIPTS_AND_SIDS, key)
+: Command(CommandKeys::RELOAD_SCRIPTS_TEXTURES_AND_SIDS, key)
 {
 }
 
@@ -528,6 +528,26 @@ ItemCodexCommand::ItemCodexCommand(int key)
 }
 
 ItemCodexCommand::~ItemCodexCommand()
+{
+}
+
+// Switch between sprites and ASCII (when in SDL)
+SwitchGraphicsModeCommand::SwitchGraphicsModeCommand(int key)
+: Command(CommandKeys::SWITCH_GRAPHICS_MODE, key)
+{
+}
+
+SwitchGraphicsModeCommand::~SwitchGraphicsModeCommand()
+{
+}
+
+// Switch between colour palettes (when in SDL)
+SwitchColourPalettesCommand::SwitchColourPalettesCommand(int key)
+: Command(CommandKeys::SWITCH_COLOUR_PALETTES, key)
+{
+}
+
+SwitchColourPalettesCommand::~SwitchColourPalettesCommand()
 {
 }
 

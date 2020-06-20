@@ -146,15 +146,15 @@ uint ExperienceManager::get_total_experience_needed_for_lvl_idx(CreaturePtr crea
 
     if (!race_id.empty())
     {
-      RaceMap races = game.get_races_ref();
-      RacePtr race = races[race_id];
+      RaceManager rm;
+      Race* race = rm.get_race(race_id);
       race_multiplier = race->get_experience_multiplier();
     }
       
     if (!class_id.empty())
     {
-      ClassMap classes = game.get_classes_ref();
-      ClassPtr cur_class = classes[class_id];
+      ClassManager cm;
+      Class* cur_class = cm.get_class(class_id);
       class_multiplier = cur_class->get_experience_multiplier();
     }
       
@@ -253,8 +253,8 @@ void ExperienceManager::gain_hp_and_ap(CreaturePtr creature)
     
     if (!class_id.empty())
     {
-      ClassMap class_map = game.get_classes_ref();
-      ClassPtr current_class = class_map[class_id];
+      ClassManager cm;
+      Class* current_class = cm.get_class(class_id);
       
       hit_dice = current_class->get_hit_dice();
       ap_dice = current_class->get_ap_dice();
@@ -280,7 +280,7 @@ void ExperienceManager::gain_statistics(CreaturePtr creature)
   if (creature)
   {
     RaceManager rm;
-    RacePtr race = rm.get_race(creature->get_race_id());
+    Race* race = rm.get_race(creature->get_race_id());
 
     if (race != nullptr)
     {
@@ -298,8 +298,8 @@ void ExperienceManager::run_level_script(CreaturePtr creature)
     string class_id = creature->get_class_id();
     ClassManager cm;
     RaceManager rm;
-    RacePtr racep = rm.get_race(race_id);
-    ClassPtr classp = cm.get_class(class_id);
+    Race* racep = rm.get_race(race_id);
+    Class* classp = cm.get_class(class_id);
 
     if (racep && classp)
     {

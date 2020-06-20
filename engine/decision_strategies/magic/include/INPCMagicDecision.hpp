@@ -12,5 +12,5 @@ class INPCMagicDecision
     virtual std::pair<bool, Direction> decide(CreaturePtr caster, MapPtr view_map, const Spell& spell, const std::set<std::string>& creature_threats) const = 0;
 };
 
-using INPCMagicDecisionPtr = std::shared_ptr<INPCMagicDecision>;
+using INPCMagicDecisionPtr = std::unique_ptr<INPCMagicDecision>;
 

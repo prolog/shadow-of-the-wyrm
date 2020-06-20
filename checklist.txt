@@ -1,0 +1,32 @@
+Shadow of the Wyrm Release Checklist
+
+For each display type (SDL, curses):
+- message area
+- multi-part messages
+- set HP low - resting
+- drop
+- pick up
+- pick up stack
+- view equipment
+- view equipment/items/back to eq (palette issue)
+- view equiment/invalid selection (palette issue)
+- pray
+- search
+- examine tiles
+- examine and +/- to cycle
+- fire and +/- to cycle
+- drink potion
+- check $
+- chat (single)
+- chat (multi-target)
+- inscribe
+- switch palettes (sdl only)
+- save and restore to same palette
+- switch to ascii (sdl only)
+- goto_level, make sure ESC works
+- apply terrain feature
+- other creatures casting spells
+- other creatures firing ammo
+- regular ending
+- evil ending
+- godslayer ending

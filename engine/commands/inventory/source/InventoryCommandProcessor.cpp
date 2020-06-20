@@ -18,7 +18,7 @@ InventoryCommandProcessor::~InventoryCommandProcessor()
 {
 }
 
-bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, const list<IItemFilterPtr>& base_item_filter_list, const DisplayInventoryMap& inventory_display, const string& item_id, CreaturePtr creature, IInventoryPtr inv, CommandPtr command, const bool inventory_is_read_only, ItemPtr& selected_item)
+bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, const list<IItemFilterPtr>& base_item_filter_list, const DisplayInventoryMap& inventory_display, const string& item_id, CreaturePtr creature, IInventoryPtr inv, Command* command, const bool inventory_is_read_only, ItemPtr& selected_item)
 {
   bool process_result = true;
 
@@ -62,7 +62,7 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
     {
       if (!inventory_is_read_only)
       {
-        ItemSelectionCommand* selection_command = dynamic_cast<ItemSelectionCommand*>(command.get());
+        ItemSelectionCommand* selection_command = dynamic_cast<ItemSelectionCommand*>(command);
         
         if (selection_command)
         {

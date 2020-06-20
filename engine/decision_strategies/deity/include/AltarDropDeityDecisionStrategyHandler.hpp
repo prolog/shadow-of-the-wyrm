@@ -10,7 +10,9 @@ class AltarDropDeityDecisionStrategyHandler : public DeityDecisionStrategyHandle
     bool decide(CreaturePtr creature) override;
     DeityDecisionImplications handle_decision(CreaturePtr creature, TilePtr tile) override;
 
-  protected:
+    virtual std::unique_ptr<DeityDecisionStrategyHandler> clone() override;
+
+protected:
     int get_piety_loss() const override;
     std::string get_message_sid() const override;
 

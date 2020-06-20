@@ -45,6 +45,12 @@ ActionCostValue BowyerSkillProcessor::process(CreaturePtr creature, MapPtr map)
   return acv;
 }
 
+SkillProcessorPtr BowyerSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<BowyerSkillProcessor>();
+  return proc;
+}
+
 bool BowyerSkillProcessor::check_for_bough(CreaturePtr creature)
 {
   bool has_bough = false;

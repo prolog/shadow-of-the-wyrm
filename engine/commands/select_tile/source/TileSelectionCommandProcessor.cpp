@@ -14,7 +14,7 @@ TileSelectionCommandProcessor::~TileSelectionCommandProcessor()
 {
 }
 
-pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr creature, CommandPtr command, TileSelectionAction* const tsa)
+pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr creature, Command* command, TileSelectionAction* const tsa)
 {
   pair<bool, ActionCostValue> result(false, 0);  
   ActionCostValue action_cost = ActionCostConstants::DEFAULT;
@@ -22,7 +22,7 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr c
   if (creature && command)
   {
     string command_name = command->get_name();
-    CursorDirectionalCommandPtr cdc = dynamic_pointer_cast<CursorDirectionalCommand>(command);
+    CursorDirectionalCommand* cdc = dynamic_cast<CursorDirectionalCommand*>(command);
     
     if (cdc)
     {
@@ -68,7 +68,7 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr c
   return result;
 }
 
-pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_cursor_directional_command(CreaturePtr creature, CursorDirectionalCommandPtr cursor_command, TileSelectionAction* const tsa)
+pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_cursor_directional_command(CreaturePtr creature, CursorDirectionalCommand* cursor_command, TileSelectionAction* const tsa)
 {
   pair<bool, ActionCostValue> result(false, 0);
   

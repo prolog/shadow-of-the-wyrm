@@ -34,9 +34,10 @@ void MapTimeObserver::notify(const ulonglong minutes_passed)
   }
 }
 
-ITimeObserver* MapTimeObserver::clone() 
+std::unique_ptr<ITimeObserver> MapTimeObserver::clone()
 {
-  return new MapTimeObserver(*this);
+  std::unique_ptr<ITimeObserver> mto = std::make_unique<MapTimeObserver>(*this);
+  return mto;
 }
 
 ClassIdentifier MapTimeObserver::internal_class_identifier() const

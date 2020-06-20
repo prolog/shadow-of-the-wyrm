@@ -46,7 +46,7 @@ void AgeTimeObserver::process_creatures(MapPtr cur_map, CreatureMap& creature_ma
       Statistic age = creature->get_age();
       age.set_current(age.get_current() + 1);
 
-      RacePtr creature_race = rm.get_race(creature->get_race_id());
+      Race* creature_race = rm.get_race(creature->get_race_id());
 
       if (age.get_current() > age.get_base())
       {
@@ -66,9 +66,10 @@ void AgeTimeObserver::process_creatures(MapPtr cur_map, CreatureMap& creature_ma
   }
 }
 
-ITimeObserver* AgeTimeObserver::clone() 
+std::unique_ptr<ITimeObserver> AgeTimeObserver::clone()
 {
-  return new AgeTimeObserver(*this);
+  std::unique_ptr<ITimeObserver> ato = std::make_unique<AgeTimeObserver>(*this);
+  return ato;
 }
 
 ClassIdentifier AgeTimeObserver::internal_class_identifier() const

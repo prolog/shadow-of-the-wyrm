@@ -37,7 +37,7 @@ class DirectionalCommand : public Command
     Direction direction;
 };
 
-using DirectionalCommandPtr = std::shared_ptr<DirectionalCommand>;
+using DirectionalCommandPtr = std::unique_ptr<DirectionalCommand>;
 
 class MovementCommand : public DirectionalCommand
 {
@@ -363,6 +363,20 @@ class ItemCodexCommand : public Command
   public:
     ItemCodexCommand(int key);
     ~ItemCodexCommand();
+};
+
+class SwitchGraphicsModeCommand : public Command
+{
+  public:
+    SwitchGraphicsModeCommand(int key);
+    ~SwitchGraphicsModeCommand();
+};
+
+class SwitchColourPalettesCommand : public Command
+{
+  public:
+    SwitchColourPalettesCommand(int key);
+    ~SwitchColourPalettesCommand();
 };
 
 // NPC-only commands:

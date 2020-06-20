@@ -14,4 +14,4 @@ class ITerrainMovementAccumulationChecker
     SkillManager sm;
 };
 
-using ITerrainMovementAccumulationCheckerPtr = std::shared_ptr<ITerrainMovementAccumulationChecker>;
+using ITerrainMovementAccumulationCheckerPtr = std::unique_ptr<ITerrainMovementAccumulationChecker>;

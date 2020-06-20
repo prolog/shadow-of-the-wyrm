@@ -3,7 +3,7 @@
 
 using namespace std;
 
-FeatureMap XMLConfigurableFeatureReader::get_configurable_features(const XMLNode& config_features_node, const bool force_ascii)
+FeatureMap XMLConfigurableFeatureReader::get_configurable_features(const XMLNode& config_features_node)
 {
   FeatureMap fm;
 
@@ -13,7 +13,7 @@ FeatureMap XMLConfigurableFeatureReader::get_configurable_features(const XMLNode
 
     for (const XMLNode& cf_node : config_feature_nodes)
     {
-      FeaturePtr cf = get_configurable_feature(cf_node, force_ascii);
+      FeaturePtr cf = get_configurable_feature(cf_node);
 
       if (!cf_node.is_null())
       {
@@ -29,7 +29,7 @@ FeatureMap XMLConfigurableFeatureReader::get_configurable_features(const XMLNode
   return fm;
 }
 
-FeaturePtr XMLConfigurableFeatureReader::get_configurable_feature(const XMLNode& configurable_feature_node, const bool force_ascii)
+FeaturePtr XMLConfigurableFeatureReader::get_configurable_feature(const XMLNode& configurable_feature_node)
 {
   FeaturePtr cf;
 
@@ -38,7 +38,7 @@ FeaturePtr XMLConfigurableFeatureReader::get_configurable_feature(const XMLNode&
     MaterialType mt = static_cast<MaterialType>(XMLUtils::get_child_node_int_value(configurable_feature_node, "Material"));
     Symbol s('?', Colour::COLOUR_WHITE);
     XMLNode symbol_node = XMLUtils::get_next_element_by_local_name(configurable_feature_node, "Symbol");
-    parse_symbol(s, symbol_node, force_ascii);
+    parse_symbol(s, symbol_node);
     string desc_sid = XMLUtils::get_child_node_value(configurable_feature_node, "DescriptionSID");
     
     cf = FeatureGenerator::generate_configurable_feature(mt, s, desc_sid);

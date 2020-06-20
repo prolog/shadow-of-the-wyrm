@@ -25,14 +25,22 @@ DecisionStrategy* PlayerDecisionStrategy::copy()
 }
 
 // The player's decision is easy: just read a command from the keyboard, and then get a CommandPtr
-// based on that keyboard input, the provided KeyboardCommandMapPtr, and the CommandFactoryPtr.
-CommandPtr PlayerDecisionStrategy::get_nonmap_decision(const bool reprompt_on_cmd_not_found, const string& creature_id, CommandFactory* command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p)
+// based on that keyboard input, the provided KeyboardCommandMap*, and the CommandFactory*
+CommandPtr PlayerDecisionStrategy::get_nonmap_decision(const bool reprompt_on_cmd_not_found, const string& creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, int* key_p, const bool refresh_window)
 {
   MapPtr nullmap;
+  Game& game = Game::instance();
+  DisplayPtr display = game.get_display();
+
+  if (display != nullptr && refresh_window)
+  {
+    display->refresh_current_window();
+  }
+
   return get_decision(reprompt_on_cmd_not_found, creature_id, command_factory, keyboard_commands, nullmap, key_p);
 }
 
-CommandPtr PlayerDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_found, const string& creature_id, CommandFactory* command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map, int* key_p)
+CommandPtr PlayerDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_found, const string& creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, MapPtr view_map, int* key_p)
 {
   // view_map is ignored - keyboard input is used, instead.
   CommandPtr player_command;
@@ -81,7 +89,7 @@ uint PlayerDecisionStrategy::get_count(const uint max_count)
   if (controller)
   {
     DisplayPtr display = Game::instance().get_display();
-    string selected_count = display->add_message_with_prompt("", Colour::COLOUR_WHITE, false);
+    string selected_count = display->add_message_with_prompt("", Colour::COLOUR_WHITE, false, "0");
     
     if (!selected_count.empty()) 
     {
@@ -120,6 +128,12 @@ bool PlayerDecisionStrategy::get_confirmation(const bool confirmation_default_va
   string confirm_str = StringTable::get(TextKeys::DECISION_CONFIRM_KEY);
   string deny_str = StringTable::get(TextKeys::DECISION_DENY_KEY);
   bool require_uppercase = Game::instance().get_settings_ref().get_setting_as_bool(Setting::CONFIRMATION_REQUIRE_CAPITALIZATION);
+
+  DisplayPtr display = Game::instance().get_display();
+  if (display != nullptr)
+  {
+    display->refresh_current_window();
+  }
 
   if (require_uppercase)
   {

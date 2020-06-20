@@ -11,6 +11,7 @@ class DisarmTrapsSkillProcessor : public SkillProcessor
     DisarmTrapsSkillProcessor();
 
     virtual ActionCostValue process(CreaturePtr creature, MapPtr map) override;
+    virtual SkillProcessorPtr clone() override;
 
   protected:
     // Returns a count of the number of known traps, and a sparse direction

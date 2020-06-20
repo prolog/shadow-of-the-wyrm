@@ -7,20 +7,17 @@ ReligionManager::ReligionManager()
 {
 }
 
-DeityPtr ReligionManager::get_active_deity(CreaturePtr creature)
+Deity* ReligionManager::get_active_deity(CreaturePtr creature)
 {
   Religion& religion = creature->get_religion_ref();
   string deity_id = religion.get_active_deity_id();
-  DeityPtr creature_deity = get_deity(deity_id);
-
-  return creature_deity;
+  return get_deity(deity_id);
 }
 
 DeityStatus ReligionManager::get_active_deity_status(CreaturePtr creature)
 {
   Religion& religion = creature->get_religion_ref();
   string deity_id = religion.get_active_deity_id();
-  DeityPtr creature_deity = get_active_deity(creature);
   DeityStatus status = religion.get_deity_status(deity_id);
 
   return status;
@@ -34,14 +31,18 @@ int ReligionManager::get_piety_for_active_deity(CreaturePtr creature)
   return status.get_piety();
 }
 
-// Get a shared pointer to the deity.
-DeityPtr ReligionManager::get_deity(const string& deity_id) const
+// Get a pointer to the deity on the game.
+Deity* ReligionManager::get_deity(const string& deity_id) const
 {
   Game& game = Game::instance();
-  DeityPtr deity;
+  Deity* deity = nullptr;
   
-  DeityMap deities = game.get_deities_cref();
-  deity            = deities[deity_id];
+  const DeityMap& deities = game.get_deities_cref();
+  auto d_it = deities.find(deity_id);
+  if (d_it != deities.end())
+  {
+    deity = d_it->second.get();
+  }
   
   return deity;
 }
@@ -50,9 +51,9 @@ DeityPtr ReligionManager::get_deity(const string& deity_id) const
 string ReligionManager::get_deity_name_sid(const string& deity_id) const
 {
   string deity_name_sid;
-  DeityPtr deity = get_deity(deity_id);
+  Deity* deity = get_deity(deity_id);
     
-  if (deity)
+  if (deity != nullptr)
   {
     deity_name_sid = deity->get_name_sid();
   }
@@ -64,9 +65,9 @@ string ReligionManager::get_deity_name_sid(const string& deity_id) const
 string ReligionManager::get_death_message_sid(const string& deity_id) const
 {
   string death_message; // "Hurry, hurry - gal you love is dead"?
-  DeityPtr deity = get_deity(deity_id);
+  Deity* deity = get_deity(deity_id);
   
-  if (deity)
+  if (deity != nullptr)
   {
     death_message = deity->get_death_message_sid();
   }

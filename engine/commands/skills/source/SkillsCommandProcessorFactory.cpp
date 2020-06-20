@@ -9,11 +9,11 @@ ISkillsCommandProcessorPtr SkillsCommandProcessorFactory::create(const SkillsSel
   switch(sst)
   {
     case SkillsSelectionType::SKILLS_SELECTION_SELECT_SKILL:
-      scp = std::make_shared<ShowSkillsCommandProcessor>();
+      scp = std::make_unique<ShowSkillsCommandProcessor>();
       break;
     case SkillsSelectionType::SKILLS_SELECTION_IMPROVE_SKILL:
     default:
-      scp = std::make_shared<GainSkillsCommandProcessor>();
+      scp = std::make_unique<GainSkillsCommandProcessor>();
       break;
   }
 

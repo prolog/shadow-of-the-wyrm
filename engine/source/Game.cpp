@@ -54,12 +54,11 @@
 #include "CommandFactoryFactory.hpp"
 #include "DisplayFactory.hpp"
 #include "KeyboardCommandMapFactory.hpp"
-#include "WorldFactory.hpp"
 
 using namespace std;
 
 Game::Game()
-: keep_playing(true), reload_game_loop(false), check_scores(true), requires_redraw(false), current_world_ix(0)
+: keep_playing(true), reload_game_loop(false), check_scores(true), requires_redraw(false)
 {
   // Setup the time keeper.  On a new game, this will initialize everything as
   // expected - when loading an existing game, this will be overwritten later,
@@ -153,7 +152,7 @@ void Game::set_world_settings()
     days_elapsed = (parts->tm_mon * 30);
   }
 
-  WorldPtr world = get_current_world();
+  World* world = get_current_world();
 
   // If we're just starting up, the world may not have been instantiated yet.
   if (world != nullptr)
@@ -190,7 +189,13 @@ MapRegistry& Game::get_map_registry_ref()
 
 void Game::set_deities(const DeityMap& game_deities)
 {
-  deities = game_deities;
+  deities.clear();
+
+  for (const auto& gd_it : game_deities)
+  {
+    DeityPtr deity = std::make_unique<Deity>(*gd_it.second);
+    deities.insert(make_pair(gd_it.first, std::move(deity)));
+  }
 }
 
 DeityMap& Game::get_deities_ref()
@@ -205,7 +210,13 @@ const DeityMap& Game::get_deities_cref() const
 
 void Game::set_races(const RaceMap& game_races)
 {
-  races = game_races;
+  races.clear();
+
+  for (const auto& r_it : game_races)
+  {
+    RacePtr race = std::make_unique<Race>(*r_it.second);
+    races.insert(make_pair(r_it.first, std::move(race)));
+  }
 }
 
 const RaceMap& Game::get_races_ref() const
@@ -215,7 +226,13 @@ const RaceMap& Game::get_races_ref() const
 
 void Game::set_classes(const ClassMap& game_classes)
 {
-  classes = game_classes;
+  classes.clear();
+
+  for (const auto& cl_it : game_classes)
+  {
+    ClassPtr cur_class = std::make_unique<Class>(*cl_it.second);
+    classes.insert(make_pair(cl_it.first, std::move(cur_class)));
+  }
 }
 
 const ClassMap& Game::get_classes_ref() const
@@ -371,9 +388,7 @@ void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
   thread.join();
   current_world = fp.get();
 
-  WorldPtr world(new World(current_world));
-  worlds.push_back(world);
-  current_world_ix = (worlds.size() - 1);
+  world = WorldPtr(new World(current_world));
 
   set_world_settings();
 
@@ -452,13 +467,13 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
 
     Coordinate display_coord = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, current_map, reference_coords.first);
     loaded_map_details.update_display_coord(display_coord);
-    bool redraw_needed = loaded_map_details.requires_full_map_redraw() || requires_redraw|| reloaded_game;
+    bool redraw_needed = loaded_map_details.requires_full_map_redraw() || requires_redraw || reloaded_game;
 
     CurrentCreatureAbilities cca;
     CreaturePtr player = game.get_current_player();
 
     DisplayMap display_map = MapTranslator::create_display_map(player, !cca.can_see(player), current_map, fov_map, display_area, reference_coords.first, redraw_needed);
-    
+
     CursorSettings cs = CursorSettings::CURSOR_SETTINGS_USE_DEFAULT;
 
     if (reference_coords.second)
@@ -480,8 +495,6 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
     IMessageManager& manager = MM::instance();
     manager.send();
 
-    display->refresh_current_window();
-
     // As long as there are still player actions within the current map, and we've
     // not loaded a new map, a full redraw is not needed:
     loaded_map_details.synch();
@@ -491,7 +504,7 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
 void Game::go()
 {
   game_command_factory = std::make_unique<CommandFactory>();
-  game_kb_command_map = std::make_shared<KeyboardCommandMap>();
+  game_kb_command_map = std::make_unique<KeyboardCommandMap>();
 
   set_check_scores(true);
 
@@ -516,12 +529,14 @@ void Game::go()
 
     string welcome_message = TextMessages::get_welcome_message(current_player->get_name(), !reloaded_game);
 
+    display->clear_display();
+    display->refresh_current_window();
+
     IMessageManager& manager = MM::instance();
     manager.add_new_message(welcome_message);
     manager.send();
 
     CreatureCalculator::update_calculated_values(current_player);
-
     string map_id = "";
 
     // Main game loop.
@@ -542,7 +557,7 @@ void Game::go()
         ac.reset_if_necessary(current_map->get_permanent(), current_map->get_map_id(), map_creatures);
       }
 
-      Calendar& calendar = worlds[current_world_ix]->get_calendar();
+      Calendar& calendar = world->get_calendar();
 
       while (ac.has_actions())
       {
@@ -744,7 +759,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
       return ac;
     }
 
-    DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
+    DecisionStrategy* strategy = current_creature->get_decision_strategy();
 
     if (strategy)
     {
@@ -814,12 +829,18 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
           Game::instance().get_map_registry_ref().clear_symbol_cache();
         }
 
+        // Display what's been done in the last turn.
+        display->refresh_current_window();
+
         // strategy is used for the creature's decision strategy, so use another
         // variable as the strategy for explicitly getting a command.  This might
         // not actually be the creature's strategy, but rather another one,
         // such as automatic movement, etc.
+        //
+        // The decision strategy might be a copy of the creature's, or might be
+        // an altogether new one, which is why a unique_ptr is used.
         DecisionStrategyPtr command_strategy = DecisionStrategySelector::select_decision_strategy(current_creature);
-        CommandPtr command = command_strategy->get_decision(true, current_creature->get_id(), game_command_factory.get(), game_kb_command_map, view_map /* fov_map */);
+        CommandPtr command = command_strategy->get_decision(true, current_creature->get_id(), game_command_factory.get(), game_kb_command_map.get(), view_map /* fov_map */);
         
         if (log.debug_enabled())
         {
@@ -838,7 +859,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
           MM::instance().clear_if_necessary();
         }
 
-        action_cost = CommandProcessor::process(current_creature, command, display);
+        action_cost = CommandProcessor::process(current_creature, command.get(), display);
 
         if (current_creature->get_is_player() && get_is_current_map(current_map))
         {
@@ -1038,18 +1059,9 @@ map<string, string> Game::get_scripts() const
   return scripts;
 }
 
-WorldPtr Game::get_current_world()
+World* Game::get_current_world()
 {
-  WorldPtr world;
-
-  // This function may be called before the game is properly set up.  If so,
-  // just return a null shared ptr, and be prepared to check for it.
-  if (!worlds.empty())
-  {
-    world = worlds[current_world_ix];
-  }
-
-  return world;
+  return world.get();
 }
 
 LoadedMapDetails& Game::get_loaded_map_details_ref()
@@ -1096,7 +1108,7 @@ bool Game::serialize(ostream& stream) const
   Serialize::write_size_t(stream, deities.size());
   for (const auto& deity_pair : deities)
   {
-    DeityPtr deity = deity_pair.second;
+    Deity* deity = deity_pair.second.get();
 
     if (deity)
     {
@@ -1182,15 +1194,10 @@ bool Game::serialize(ostream& stream) const
 
   // Ignore tile_info map - this will be built up on startup.
 
-  size_t num_worlds = worlds.size();
-  Serialize::write_size_t(stream, num_worlds);
-
-  for (WorldPtr world : worlds)
-  {
-    world->serialize(stream);
-  }
-
-  Serialize::write_uint(stream, current_world_ix);
+  // Serialize the world
+  world->serialize(stream);
+  
+  // Serialize the current map ID
   Serialize::write_string(stream, current_map_id);
 
   actions.serialize(stream);
@@ -1307,6 +1314,10 @@ bool Game::deserialize(istream& stream)
   if (!dc_pair.first) return false;
   if (!dc_pair.first->deserialize(stream)) return false;
 
+  // We need the saved palette ID, however, so the user can see the last
+  // palette they were using when they saved.
+  display->set_palette(dc_pair.first->get_palette_id());
+
   map_registry.deserialize(stream);
 
   size_t size = 0;
@@ -1316,12 +1327,12 @@ bool Game::deserialize(istream& stream)
   for (size_t i = 0; i < size; i++)
   {
     string deity_id;
-    DeityPtr deity = make_shared<Deity>();
+    DeityPtr deity = std::make_unique<Deity>();
 
     Serialize::read_string(stream, deity_id);
     deity->deserialize(stream);
 
-    deities.insert(make_pair(deity_id, deity));
+    deities.insert(make_pair(deity_id, std::move(deity)));
   }
 
   // Ignore race map - this will be built up on startup.
@@ -1425,20 +1436,12 @@ bool Game::deserialize(istream& stream)
 
   // Ignore tile_info map - this will be built up on startup.
 
-  size_t num_worlds;
-  Serialize::read_size_t(stream, num_worlds);
+  // Deserialize the world
+  world = std::make_unique<World>();
+  if (!world) return false;
+  if (!world->deserialize(stream)) return false;
 
-  worlds.clear();
-
-  for (unsigned int i = 0; i < num_worlds; i++)
-  {
-    WorldPtr world = WorldFactory::create_world();
-    if (!world) return false;
-    if (!world->deserialize(stream)) return false;
-    worlds.push_back(world);
-  }
-
-  Serialize::read_uint(stream, current_world_ix);
+  // Read the current map ID
   Serialize::read_string(stream, current_map_id);
 
   actions.deserialize(stream);

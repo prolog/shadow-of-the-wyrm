@@ -10,6 +10,6 @@ class XMLBoatReader : public XMLItemReader
   
   protected:
     friend class XMLItemsReader;
-    void parse(BoatPtr boat, GenerationValues& gv, const XMLNode& boat_node, const bool force_ascii);
+    void parse(BoatPtr boat, GenerationValues& gv, const XMLNode& boat_node);
 };
 

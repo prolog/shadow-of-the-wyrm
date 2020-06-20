@@ -12,11 +12,11 @@ FeatureDescriberPtr FeatureDescriberFactory::create_feature_describer(const bool
 
   if (player_blind)
   {
-    describer = std::make_shared<BlindFeatureDescriber>();
+    describer = std::make_unique<BlindFeatureDescriber>();
   }
   else
   {
-    describer = std::make_shared<FeatureDescriber>(feature);
+    describer = std::make_unique<FeatureDescriber>(feature);
   }
 
   return describer;

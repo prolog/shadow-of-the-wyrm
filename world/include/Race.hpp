@@ -235,5 +235,5 @@ class Race
     std::string level_script;
 };
 
-using RacePtr = std::shared_ptr<Race>;
+using RacePtr = std::unique_ptr<Race>;
 using RaceMap = std::map<std::string, RacePtr>;

@@ -22,26 +22,26 @@ SpellShapeProcessorPtr SpellShapeProcessorFactory::create_processor(const SpellS
   switch(spell_shape)
   {
     case SpellShapeType::SPELL_SHAPE_TARGET_SELF:
-      spell_processor = std::make_shared<TargetSelfShapeProcessor>();
+      spell_processor = std::make_unique<TargetSelfShapeProcessor>();
       break;
     case SpellShapeType::SPELL_SHAPE_BEAM:
-      spell_processor = std::make_shared<BeamShapeProcessor>();
+      spell_processor = std::make_unique<BeamShapeProcessor>();
       break;
     case SpellShapeType::SPELL_SHAPE_REFLECTIVE_BEAM:
-      spell_processor = std::make_shared<ReflectiveBeamShapeProcessor>();
+      spell_processor = std::make_unique<ReflectiveBeamShapeProcessor>();
       break;
     case SpellShapeType::SPELL_SHAPE_CONE:
-      spell_processor = std::make_shared<ConeShapeProcessor>();
+      spell_processor = std::make_unique<ConeShapeProcessor>();
       break;
     case SpellShapeType::SPELL_SHAPE_BALL:
-      spell_processor = std::make_shared<BallShapeProcessor>();
+      spell_processor = std::make_unique<BallShapeProcessor>();
       break;
     case SpellShapeType::SPELL_SHAPE_CROSS:
-      spell_processor = std::make_shared<CrossShapeProcessor>();
+      spell_processor = std::make_unique<CrossShapeProcessor>();
       break;
     case SpellShapeType::SPELL_SHAPE_STORM:
     default:  
-      spell_processor = std::make_shared<StormShapeProcessor>();
+      spell_processor = std::make_unique<StormShapeProcessor>();
       break;
   }
 

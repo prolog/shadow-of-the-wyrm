@@ -82,6 +82,7 @@
       <AdditionalLibraryDirectories>$(SDL_DIR)\lib\x86;$(ZLIB_DIR)\zlib-1.2.11\lib;$(LUA_DEV)\lib;$(GTEST_DIR)\gtest-1.8.0\Debug;$(BOOST_DIR)\stage\lib;$(XERCES_DIR)\xerces-c-3.2.1\src\Debug;$(CURSES_DIR)\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2_image.lib;zlib.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtest.lib;gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateMapFile>false</GenerateMapFile>
+      <Profile>true</Profile>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -196,6 +197,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="display\include\DisplayItem.hpp" />
     <ClInclude Include="display\include\DisplayItemType.hpp" />
     <ClInclude Include="display\include\DisplayMap.hpp" />
+    <ClInclude Include="display\include\DisplayProperties.hpp" />
     <ClInclude Include="display\include\DisplaySettings.hpp" />
     <ClInclude Include="display\include\DisplayStatistics.hpp" />
     <ClInclude Include="display\include\DisplayTile.hpp" />
@@ -1202,7 +1204,6 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\include\WeavingConstants.hpp" />
     <ClInclude Include="world\include\Weight.hpp" />
     <ClInclude Include="world\include\World.hpp" />
-    <ClInclude Include="world\include\WorldFactory.hpp" />
     <ClInclude Include="world\magic\include\EffectProperties.hpp" />
     <ClInclude Include="world\magic\include\EffectTypes.hpp" />
     <ClInclude Include="world\magic\include\IndividualSpellKnowledge.hpp" />
@@ -1331,6 +1332,7 @@ mkdir $(OutDir)logs
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\SDLKeyboardController.cpp" />
+    <ClCompile Include="display\source\DisplayProperties.cpp" />
     <ClCompile Include="display\source\PromptProcessor.cpp" />
     <ClCompile Include="display\source\SDL.cpp" />
     <ClCompile Include="display\source\SDLCursorLocation.cpp" />
@@ -3658,7 +3660,6 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\source\WeavingConstants.cpp" />
     <ClCompile Include="world\source\Weight.cpp" />
     <ClCompile Include="world\source\World.cpp" />
-    <ClCompile Include="world\source\WorldFactory.cpp" />
     <ClCompile Include="world\tiles\features\source\ConfigurableFeature.cpp" />
     <ClCompile Include="world\tiles\features\source\EntranceState.cpp" />
     <ClCompile Include="world\tiles\features\source\Feature.cpp" />

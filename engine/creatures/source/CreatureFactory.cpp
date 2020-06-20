@@ -2,11 +2,14 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include "ArcanaPointsCalculator.hpp"
+#include "ClassManager.hpp"
 #include "Conversion.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureFactory.hpp"
 #include "CreatureGenerationConstants.hpp"
 #include "CreatureGenerationOptions.hpp"
+#include "CreatureUtils.hpp"
+#include "EngineConversion.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "HostilityManager.hpp"
@@ -16,6 +19,7 @@
 #include "ModifyStatisticsEffect.hpp"
 #include "NullKeyboardController.hpp"
 #include "PlayerTextKeys.hpp"
+#include "RaceManager.hpp"
 #include "ReligionFactory.hpp"
 #include "ResistancesCalculator.hpp"
 #include "RNG.hpp"
@@ -41,6 +45,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
 , const string& creature_id_and_options
 , MapPtr current_map
 , CreaturePtr procgen_creature_template
+, const bool ignore_maximum
 )
 {
   CreaturePtr creature;
@@ -85,14 +90,21 @@ CreaturePtr CreatureFactory::create_by_creature_id
     CreatureGenerationValues& cgv = cgv_it->second;
     if (cgv.is_maximum_reached())
     {
-      return creature;
+      if (ignore_maximum == false)
+      {
+        return creature;
+      }
+      else
+      {
+        cgv.set_current(cgv.get_current() - 1);
+      }
     }
 
     CreaturePtr creature_template = c_it->second;
       
     Creature creature_instance = *creature_template;
     creature = std::make_shared<Creature>(creature_instance);
-    DecisionStrategyPtr template_decision_strategy = creature->get_decision_strategy();
+    DecisionStrategyPtr template_decision_strategy = creature->get_decision_strategy_uptr();
     
     string default_race_id;
 
@@ -114,7 +126,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
     // Set the template values that would be overridden by creating by race/class.
     // Anything that can be specified under the Creature element in the configuration XML
     // should be added here!
-    revert_to_original_configuration_values(creature, creature_instance, template_decision_strategy);
+    revert_to_original_configuration_values(creature, creature_instance, std::move(template_decision_strategy));
       
     // Set HP to a randomly generated value in the initial range.
     Dice initial_hp_range = cgv.get_initial_hit_points();
@@ -144,7 +156,8 @@ CreaturePtr CreatureFactory::create_by_creature_id
     // Increment the creature's skills based on the skills in the generation
     // values.
     Skills& skills = creature->get_skills();
-    skills.increment_skills(cgv.get_skills());
+    Skills cgv_skills = cgv.get_skills();
+    skills.increment_skills(cgv_skills);
       
     // If the creature is guaranteed to be generated as friendly, then be sure
     // that hostility isn't set.
@@ -174,6 +187,8 @@ CreaturePtr CreatureFactory::create_by_creature_id
     InitialItemEquipper iie;
     iie.equip(creature, cgv, action_manager);
     iie.add_inventory_items(creature, cgv, action_manager);
+
+    CreatureUtils::adjust_str_until_unburdened(creature);
   }
       
   return creature;
@@ -191,7 +206,7 @@ void CreatureFactory::revert_to_original_configuration_values(CreaturePtr creatu
   creature->set_text_details_sid(creature_instance.get_text_details_sid());
   creature->set_speech_text_sid(creature_instance.get_speech_text_sid());
   creature->set_breathes(creature_instance.get_base_breathes());
-  creature->set_decision_strategy(template_decision_strategy);
+  creature->set_decision_strategy(std::move(template_decision_strategy));
   creature->set_level(creature_instance.get_level());
   creature->set_base_damage(creature_instance.get_base_damage());
   creature->set_base_evade(creature_instance.get_base_evade());
@@ -244,13 +259,19 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
   Game& game = Game::instance();
 
-  DeityMap deities = game.get_deities_cref();
-  RaceMap races = game.get_races_ref();
-  ClassMap classes = game.get_classes_ref();
+  const DeityMap& deities = game.get_deities_cref();
 
-  RacePtr race = races[race_id];
-  ClassPtr char_class = classes[class_id];
-  DeityPtr deity = deities[deity_id];
+  RaceManager rm;
+  ClassManager cm;
+  Race* race = rm.get_race(race_id);
+  Class* char_class = cm.get_class(class_id);
+  
+  Deity* deity = nullptr;
+  auto d_it = deities.find(deity_id);
+  if (d_it != deities.end())
+  {
+    deity = d_it->second.get();
+  }
 
   if (race && char_class && deity)
   {
@@ -315,6 +336,9 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     // Create initial eq based on class and creature defaults.
     create_initial_equipment_and_inventory(creaturep, action_manager);
     
+    // Adjust str until unburdened.
+    CreatureUtils::adjust_str_until_unburdened(creaturep);
+
     // Set calculated statistics
     CreatureCalculator::update_calculated_values(creaturep);
 
@@ -369,7 +393,7 @@ void CreatureFactory::create_initial_equipment_and_inventory(CreaturePtr creatur
   iie.add_inventory_items(creaturep, cgv, action_manager);
 }
 
-void CreatureFactory::set_initial_statistics(CreaturePtr creature, RacePtr race, ClassPtr char_class, DeityPtr deity)
+void CreatureFactory::set_initial_statistics(CreaturePtr creature, Race* race, Class* char_class, Deity* deity)
 {
   Modifier race_m = race->get_modifier();
   Modifier class_m = char_class->get_modifier();
@@ -506,7 +530,7 @@ void CreatureFactory::set_default_resistances(CreaturePtr current_creature)
   current_creature->set_resistances(resists);
 }
 
-void CreatureFactory::set_initial_resistances(CreaturePtr creature, RacePtr race, ClassPtr char_class)
+void CreatureFactory::set_initial_resistances(CreaturePtr creature, Race* race, Class* char_class)
 {
   ResistancesCalculator rc;
   Resistances resists = rc.calculate_resistances(creature, race, char_class);
@@ -514,7 +538,7 @@ void CreatureFactory::set_initial_resistances(CreaturePtr creature, RacePtr race
   creature->set_resistances(resists);
 }
 
-void CreatureFactory::set_initial_skills(CreaturePtr creature, RacePtr race, ClassPtr char_class)
+void CreatureFactory::set_initial_skills(CreaturePtr creature, Race* race, Class* char_class)
 {
   // Create a SkillCalculator class!
   Skills skills = SkillsCalculator::calculate_skills(creature, race, char_class);

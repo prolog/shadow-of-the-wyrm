@@ -7,4 +7,6 @@ class DetectionSkillProcessor : public SkillProcessor
 {
   public:
     virtual ActionCostValue process(CreaturePtr player, MapPtr map) override;
+    virtual SkillProcessorPtr clone() override;
+
 };

@@ -7,14 +7,18 @@ ClassManager::ClassManager()
 {
 }
 
-ClassPtr ClassManager::get_class(const string& class_id)
+Class* ClassManager::get_class(const string& class_id)
 {
-  ClassPtr cur_class;
-
+  Class* cur_class = nullptr;
   Game& game = Game::instance();
 
-  ClassMap classes = game.get_classes_ref();
-  cur_class = classes[class_id];
+  const ClassMap& classes = game.get_classes_ref();
+  auto c_it = classes.find(class_id);
+
+  if (c_it != classes.end())
+  {
+    cur_class = c_it->second.get();
+  }
 
   return cur_class;
 }
@@ -27,7 +31,7 @@ string ClassManager::get_title(CreaturePtr creature)
 
   if (creature)
   {
-    ClassPtr cr_class = get_class(creature->get_class_id());
+    Class* cr_class = get_class(creature->get_class_id());
     int cr_level = creature->get_level().get_current();
     map<int, string> titles = cr_class->get_titles();
 

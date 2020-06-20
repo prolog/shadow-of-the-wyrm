@@ -13,7 +13,7 @@ bool CursesPromptProcessor::operator==(const CursesPromptProcessor& cpp) const
 }
 
 // JCD FIXME: Refactor.  Subclasses?  Split up into PromptReader/PromptWriter with applicable subclasses?
-string CursesPromptProcessor::get_prompt(WINDOW* window, const MenuWrapper& menu_wrapper, PromptPtr prompt)
+string CursesPromptProcessor::get_prompt(WINDOW* window, const MenuWrapper& menu_wrapper, Prompt* prompt)
 {
   string prompt_entry;
 
@@ -46,7 +46,7 @@ string CursesPromptProcessor::get_prompt(WINDOW* window, const MenuWrapper& menu
 }
 
 // Get a prompt from the user
-string CursesPromptProcessor::get_user_string(WINDOW* window, bool allow_nonalphanumeric)
+string CursesPromptProcessor::get_user_string(WINDOW* window, bool allow_nonalphanumeric, const std::string& default_for_esc_key)
 {
   string prompt_text;
   char c;
@@ -54,7 +54,7 @@ string CursesPromptProcessor::get_user_string(WINDOW* window, bool allow_nonalph
         
   try
   {
-    for (c = wgetch(window); (c != '\n') && (c != '\r'); c = wgetch(window))
+    for (c = wgetch(window); (c != '\n') && (c != '\r') && (c != NC_ESCAPE_KEY); c = wgetch(window))
     {
       getyx(window, y, x);
 
@@ -67,6 +67,10 @@ string CursesPromptProcessor::get_user_string(WINDOW* window, bool allow_nonalph
           wmove(window, y, x - 1);
           wrefresh(window);
         }
+      }
+      else if (c == NC_ESCAPE_KEY)
+      {
+        prompt_text = default_for_esc_key;
       }
       else
       {
@@ -84,6 +88,11 @@ string CursesPromptProcessor::get_user_string(WINDOW* window, bool allow_nonalph
     // Do nothing, and use an empty string for the prompt text.
   }
   
+  if (c == NC_ESCAPE_KEY)
+  {
+    prompt_text = default_for_esc_key;
+  }
+
   string result = String::clean(prompt_text);  
   return result;
 }
@@ -139,7 +148,7 @@ int CursesPromptProcessor::get_prompt(WINDOW* window/*, MENU* options_menu*/)
   return c; // JCD FIXME
 }
 
-void CursesPromptProcessor::show_prompt(WINDOW* window, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
+void CursesPromptProcessor::show_prompt(WINDOW* window, Prompt* prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
 {
   if (prompt != nullptr)
   {

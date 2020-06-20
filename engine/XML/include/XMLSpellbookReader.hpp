@@ -8,6 +8,6 @@ class XMLSpellbookReader : public XMLReadableReader
     XMLSpellbookReader();
     ~XMLSpellbookReader();
 
-    void parse(SpellbookPtr book, GenerationValues& igv, const XMLNode& book_node, const bool force_ascii);
+    void parse(SpellbookPtr book, GenerationValues& igv, const XMLNode& book_node);
 };
 

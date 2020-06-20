@@ -190,7 +190,7 @@ void CreatureDeathManager::potentially_generate_corpse(CreaturePtr attacking_cre
   if (dead_creature)
   {
     RaceManager rm;
-    RacePtr race = rm.get_race(dead_creature->get_race_id());
+    Race* race = rm.get_race(dead_creature->get_race_id());
 
     if (race)
     {

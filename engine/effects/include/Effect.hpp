@@ -57,5 +57,5 @@ class Effect
     std::string source_id;
 };
 
-using EffectPtr = std::shared_ptr<Effect>;
+using EffectPtr = std::unique_ptr<Effect>;
 

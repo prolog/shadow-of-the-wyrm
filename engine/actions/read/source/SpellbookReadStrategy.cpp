@@ -1,5 +1,6 @@
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"
+#include "ItemTextKeys.hpp"
 #include "MessageManagerFactory.hpp"
 #include "SpellConstants.hpp"
 #include "SpellFailureConsequencesCoordinator.hpp"
@@ -34,7 +35,7 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
 
       if (check_magic_skill(creature, magic_category))
       {
-        if (confirm_reading_if_necessary(creature, magic_category))
+        if (confirm_reading_if_necessary(creature, spellbook, magic_category))
         {
           ItemIdentifier item_id;
           ItemStatus spellbook_status = spellbook->get_status();
@@ -116,7 +117,7 @@ bool SpellbookReadStrategy::check_magic_skill(CreaturePtr creature, SkillType ma
 {
   bool has_magic_skill = true;
 
-  SkillPtr magic_skill = creature->get_skills().get_skill(SkillType::SKILL_GENERAL_MAGIC);
+  Skill* magic_skill = creature->get_skills().get_skill(SkillType::SKILL_GENERAL_MAGIC);
 
   // Cantrips don't need a magic check - they're not written in Old Runic.
   if (magic_skill->get_value() <= 0 && magic_category != SkillType::SKILL_MAGIC_CANTRIPS)
@@ -134,7 +135,7 @@ bool SpellbookReadStrategy::check_magic_skill(CreaturePtr creature, SkillType ma
 
 // If the creature is skilled in the spell's category, automatically return
 // true.  Otherwise, prompt the creature to continue reading.
-bool SpellbookReadStrategy::confirm_reading_if_necessary(CreaturePtr creature, const SkillType spell_category)
+bool SpellbookReadStrategy::confirm_reading_if_necessary(CreaturePtr creature, SpellbookPtr spellbook, const SkillType spell_category)
 {
   bool confirmation = false;
 
@@ -162,6 +163,11 @@ bool SpellbookReadStrategy::confirm_reading_if_necessary(CreaturePtr creature, c
       confirmation = creature->get_decision_strategy()->get_confirmation();
       
       manager.clear_if_necessary();
+
+      if (spellbook != nullptr)
+      {
+        mark_spellbook_tried(spellbook);
+      }
     }
   }
 
@@ -214,4 +220,34 @@ pair<string, string> SpellbookReadStrategy::get_player_and_monster_unsuccessful_
 {
   pair<string, string> sids(SpellcastingTextKeys::SPELLCASTING_READ_BOOK_PLAYER, SpellcastingTextKeys::SPELLCASTING_READ_BOOK_MONSTER);
   return sids;
+}
+
+bool SpellbookReadStrategy::mark_spellbook_tried(SpellbookPtr spellbook)
+{
+  bool success = false;
+  const ItemMap& items = Game::instance().get_items_ref();
+
+  string base_id;
+
+  if (spellbook != nullptr)
+  {
+    spellbook->set_additional_property(ItemTextKeys::ITEM_TRIED, std::to_string(true));
+    base_id = spellbook->get_base_id();
+  }
+
+  auto i_it = items.find(base_id);
+  if (i_it != items.end())
+  {
+
+    ItemPtr base_item = i_it->second;
+    
+    if (base_item != nullptr)
+    {
+      base_item->set_additional_property(ItemTextKeys::ITEM_TRIED, std::to_string(true));
+    }
+
+    success = true;
+  }
+
+  return success;
 }

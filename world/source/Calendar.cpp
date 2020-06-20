@@ -52,12 +52,12 @@ double Calendar::get_seconds_from_date(const Date& date) const
 {
   double secs = 0;
 
-  secs = date.get_seconds() +
-         (date.get_minutes() * 60) +
-         (date.get_hours() * 60 * 60) +
-         (date.get_day_of_month() * 60 * 60 * 24) +
-         (date.get_month() * 60 * 60 * 24 * 30) +
-         ((date.get_year() - STARTING_YEAR) * 60 * 60 * 24 * 30 * 12);
+  secs = static_cast<double>(date.get_seconds() +
+                             (date.get_minutes() * 60u) +
+                             (date.get_hours() * 60u * 60u) +
+                             (date.get_day_of_month() * 60u * 60u * 24u) +
+                             (date.get_month() * 60u * 60u * 24u * 30u) +
+                             ((date.get_year() - STARTING_YEAR) * 60u * 60u * 24u * 30u * 12u));
 
   return secs;
 }
@@ -80,9 +80,9 @@ Date Calendar::get_date() const
   return calculated_date;
 }
 
-ISeasonPtr Calendar::get_season() const
+ISeason* Calendar::get_season() const
 {
-  return season;
+  return season.get();
 }
 
 uint Calendar::get_starting_year() const

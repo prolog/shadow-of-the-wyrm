@@ -1,7 +1,7 @@
 #include "PoisonCalculator.hpp"
 #include "Random.hpp"
 
-const int PoisonCalculator::BASE_POISON_DURATION_MEAN = 30;
+const int PoisonCalculator::BASE_POISON_DURATION_MEAN = 15;
 const int PoisonCalculator::BASE_POISON_PCT_CHANCE = 25;
 
 // The chance of being poisoned is reduced by 1 per every x points of

@@ -4,8 +4,8 @@
 
 TEST(SW_Engine_Calcalators_ResistancesCalculator, calculate_resistances)
 {
-  RacePtr racep = std::make_shared<Race>();
-  ClassPtr classp = std::make_shared<Class>();
+  RacePtr racep = std::make_unique<Race>();
+  ClassPtr classp = std::make_unique<Class>();
 
   CreaturePtr creature = CreaturePtr(new Creature());
 
@@ -34,7 +34,7 @@ TEST(SW_Engine_Calcalators_ResistancesCalculator, calculate_resistances)
   creature->set_intrinsic_resistances(intrinsic_resists);
 
   ResistancesCalculator rc;
-  Resistances calc_resists = rc.calculate_resistances(creature, racep, classp);
+  Resistances calc_resists = rc.calculate_resistances(creature, racep.get(), classp.get());
 
   EXPECT_DOUBLE_EQ(0.70, calc_resists.get_resistance_value(DamageType::DAMAGE_TYPE_SLASH));
   EXPECT_DOUBLE_EQ(0.73, calc_resists.get_resistance_value(DamageType::DAMAGE_TYPE_HOLY));
@@ -69,7 +69,7 @@ TEST(SW_Engine_Calcalators_ResistancesCalculator, calculate_equipment_resistance
   ResistancesCalculator rc;
   RacePtr nullrace;
   ClassPtr nullclass;
-  Resistances calc_resist = rc.calculate_resistances(creature, nullrace, nullclass);
+  Resistances calc_resist = rc.calculate_resistances(creature, nullrace.get(), nullclass.get());
 
   EXPECT_DOUBLE_EQ(1.25, calc_resist.get_resistance_value(DamageType::DAMAGE_TYPE_LIGHTNING));
   EXPECT_DOUBLE_EQ(0.80, calc_resist.get_resistance_value(DamageType::DAMAGE_TYPE_SLASH));

@@ -262,5 +262,12 @@ void set_display_settings(DisplayPtr display, const Settings& settings)
     {
       display->set_property(s, settings.get_setting(s));
     }
+
+    // Get all the SDL display settings
+    map<string, string> sdl_display_settings = settings.get_settings_starts_with(Setting::DISPLAY_SDL_PREFIX);
+    for (auto& s_pair : sdl_display_settings)
+    {
+      display->set_property(s_pair.first, s_pair.second);
+    }
   }
 }

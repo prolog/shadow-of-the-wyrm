@@ -7,12 +7,10 @@
 using namespace std;
 
 // Parse the symbol information out of an XML node
-void XMLReader::parse_symbol(Symbol& symbol, const XMLNode& symbol_node, const bool force_ascii) const
+void XMLReader::parse_symbol(Symbol& symbol, const XMLNode& symbol_node) const
 {
   if (!symbol_node.is_null())
   {
-    Log& log = Log::instance();
-
     uchar symbol_char = '?';
     string symbol_text = XMLUtils::get_child_node_value(symbol_node, "Char");
 
@@ -29,18 +27,11 @@ void XMLReader::parse_symbol(Symbol& symbol, const XMLNode& symbol_node, const b
       symbol.set_colour(colour);
     }
 
-    XMLNode ss_loc_node = XMLUtils::get_next_element_by_local_name(symbol_node, "SpritesheetLocation");
+    XMLNode ss_loc_node = XMLUtils::get_next_element_by_local_name(symbol_node, "Sprite");
 
-    if (force_ascii)
-    {
-      log.debug("ASCII forced - ignoring spritesheet information");
-    }
-    else
-    {
-      SpritesheetLocation ssl;
-      parse_spritesheet_location(ssl, ss_loc_node);
-      symbol.set_spritesheet_location(ssl);
-    }
+    SpritesheetLocation ssl;
+    parse_spritesheet_location(ssl, ss_loc_node);
+    symbol.set_spritesheet_location(ssl);
   }
 }
 

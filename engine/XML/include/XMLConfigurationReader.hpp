@@ -36,15 +36,15 @@ class XMLConfigurationReader
     DeityMap get_deities();
     RaceMap get_races();
     ClassMap get_classes();
-    std::pair<CreatureMap, CreatureGenerationValuesMap> get_creatures(const bool force_ascii);
+    std::pair<CreatureMap, CreatureGenerationValuesMap> get_creatures();
     SpellMap get_spells();
     std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>> get_spritesheets();
-    std::pair<ItemMap, GenerationValuesMap> get_items(const bool force_ascii);    
-    FeatureSymbolMap get_feature_symbols(const bool force_ascii);
-    FeatureMap get_configurable_features(const bool force_ascii);
+    std::pair<ItemMap, GenerationValuesMap> get_items();    
+    FeatureSymbolMap get_feature_symbols();
+    FeatureMap get_configurable_features();
     std::map<std::string, std::string> get_scripts();
-    std::vector<DisplayTile> get_tile_info(const bool force_ascii);
-    std::vector<TrapPtr> get_trap_info(const bool force_ascii);
+    std::vector<DisplayTile> get_tile_info();
+    std::vector<TrapPtr> get_trap_info();
     std::vector<MapPtr> get_custom_maps(const std::string& directory, const std::string& filename_pattern);
 
   protected:

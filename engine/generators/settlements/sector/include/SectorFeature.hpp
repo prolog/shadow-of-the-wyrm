@@ -14,5 +14,5 @@ class SectorFeature
     virtual bool generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) = 0;
 };
 
-using SectorFeaturePtr = std::shared_ptr<SectorFeature>;
+using SectorFeaturePtr = std::unique_ptr<SectorFeature>;
 

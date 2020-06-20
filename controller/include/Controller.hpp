@@ -15,7 +15,6 @@ class Controller : public ISerializable
     // "Not Responding" errors.
     virtual void poll_event();
 
-    virtual std::string get_line() = 0;
     virtual int get_char_as_int();
 
     // Non-blocking version.  Returns true when input is present, false

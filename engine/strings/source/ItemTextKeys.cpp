@@ -95,6 +95,7 @@ string ItemTextKeys::get_speed_modifier_message(const int modifier)
 }
 
 // Public
+const string ItemTextKeys::ITEM_TRIED = "ITEM_TRIED";
 const string ItemTextKeys::ITEM_GLOW = "ITEM_GLOW";
 const string ItemTextKeys::ITEM_MULTIPLE = "ITEM_MULTIPLE";
 const string ItemTextKeys::ITEM_CODEX_NOT_IDENTIFIED = "ITEM_CODEX_NOT_IDENTIFIED";

@@ -10,6 +10,8 @@ class FullAPDeityDecisionStrategyHandler : public DeityDecisionStrategyHandler
     DeityDecisionImplications handle_decision(CreaturePtr creature, TilePtr tile) override;
     std::string get_message_sid() const override;
 
+    std::unique_ptr<DeityDecisionStrategyHandler> clone() override;
+
   protected:
     int get_piety_loss() const override;
 };

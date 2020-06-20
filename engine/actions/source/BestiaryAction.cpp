@@ -134,7 +134,8 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
     deque<Symbol> symbols;
     symbols.push_back(s);
 
-    bestiary_text.push_back(make_pair(s.get_colour(), TextFormatSpecifiers::SYMBOL));
+    uint width = game.get_display()->get_width();
+    bestiary_text.push_back(make_pair(s.get_colour(), String::centre(TextFormatSpecifiers::SYMBOL, width)));
 
     // Display the creature short description
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
@@ -189,7 +190,7 @@ void BestiaryAction::display_race_information(vector<pair<Colour, string>>& best
         for (size_t i = 0; i < race_id_sz; i++)
         {
           string cur_race_id = race_ids.at(i);
-          RacePtr race = rm.get_race(cur_race_id);
+          Race* race = rm.get_race(cur_race_id);
 
           if (race != nullptr)
           {

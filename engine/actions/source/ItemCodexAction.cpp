@@ -2,11 +2,13 @@
 #include "ItemIdentifier.hpp"
 #include "ActionTextKeys.hpp"
 #include "CodexDescriberFactory.hpp"
+#include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemTextKeys.hpp"
+#include "ItemTranslator.hpp"
 #include "ItemTypeTextKeys.hpp"
 #include "MaterialTextKeys.hpp"
 #include "MessageManagerFactory.hpp"
@@ -148,9 +150,14 @@ void ItemCodexAction::add_symbol_and_description_to_codex(ItemPtr item, CodexDes
     // use the actual symbol and colour.
     if (identified)
     {
-      symbol_details = TextFormatSpecifiers::SYMBOL;
-      symbols.push_back(item->get_symbol());
+      uint width = Game::instance().get_display()->get_width();
+      symbol_details = String::centre(TextFormatSpecifiers::SYMBOL, width);
+
+      Symbol item_s = item->get_symbol();
       item_colour = item->get_colour();
+      item_s.set_colour(item_colour);
+
+      symbols.push_back(item_s);
     }
 
     codex_text.push_back(make_pair(item_colour, symbol_details));

@@ -34,19 +34,19 @@ void KeyboardCommandMapFactory::initialize_command_map_map()
 {
   kb_map.clear();
 
-  KeyboardCommandMapPtr kb_com_map  = std::make_shared<KeyboardCommandMap>();
-  KeyboardCommandMapPtr eq_com_map  = std::make_shared<EquipmentKeyboardCommandMap>();
-  KeyboardCommandMapPtr inv_com_map = std::make_shared<InventoryKeyboardCommandMap>();
-  KeyboardCommandMapPtr ts_com_map  = std::make_shared<TileSelectionKeyboardCommandMap>();
-  KeyboardCommandMapPtr hp_com_map  = std::make_shared<HelpKeyboardCommandMap>();
-  KeyboardCommandMapPtr sk_com_map  = std::make_shared<SkillsKeyboardCommandMap>();
-  KeyboardCommandMapPtr scr_com_map = std::make_shared<ScreenKeyboardCommandMap>();
+  KeyboardCommandMapPtr kb_com_map  = std::make_unique<KeyboardCommandMap>();
+  KeyboardCommandMapPtr eq_com_map  = std::make_unique<EquipmentKeyboardCommandMap>();
+  KeyboardCommandMapPtr inv_com_map = std::make_unique<InventoryKeyboardCommandMap>();
+  KeyboardCommandMapPtr ts_com_map  = std::make_unique<TileSelectionKeyboardCommandMap>();
+  KeyboardCommandMapPtr hp_com_map  = std::make_unique<HelpKeyboardCommandMap>();
+  KeyboardCommandMapPtr sk_com_map  = std::make_unique<SkillsKeyboardCommandMap>();
+  KeyboardCommandMapPtr scr_com_map = std::make_unique<ScreenKeyboardCommandMap>();
 
-  kb_map = KeyboardCommandMapSerializationMap{{ClassIdentifier::CLASS_ID_KEYBOARD_COMMAND_MAP, kb_com_map},
-                                              {ClassIdentifier::CLASS_ID_EQUIPMENT_KEYBOARD_COMMAND_MAP, eq_com_map},
-                                              {ClassIdentifier::CLASS_ID_INVENTORY_KEYBOARD_COMMAND_MAP, inv_com_map},
-                                              {ClassIdentifier::CLASS_ID_TILE_SELECTION_KEYBOARD_COMMAND_MAP, ts_com_map},
-                                              {ClassIdentifier::CLASS_ID_SCREEN_KEYBOARD_COMMAND_MAP, scr_com_map},
-                                              {ClassIdentifier::CLASS_ID_HELP_KEYBOARD_COMMAND_MAP, hp_com_map},
-                                              {ClassIdentifier::CLASS_ID_SKILLS_KEYBOARD_COMMAND_MAP, sk_com_map}};
+  kb_map.insert(make_pair(ClassIdentifier::CLASS_ID_KEYBOARD_COMMAND_MAP, std::move(kb_com_map)));
+  kb_map.insert(make_pair(ClassIdentifier::CLASS_ID_EQUIPMENT_KEYBOARD_COMMAND_MAP, std::move(eq_com_map)));
+  kb_map.insert(make_pair(ClassIdentifier::CLASS_ID_INVENTORY_KEYBOARD_COMMAND_MAP, std::move(inv_com_map)));
+  kb_map.insert(make_pair(ClassIdentifier::CLASS_ID_TILE_SELECTION_KEYBOARD_COMMAND_MAP, std::move(ts_com_map)));
+  kb_map.insert(make_pair(ClassIdentifier::CLASS_ID_SCREEN_KEYBOARD_COMMAND_MAP, std::move(scr_com_map)));
+  kb_map.insert(make_pair(ClassIdentifier::CLASS_ID_HELP_KEYBOARD_COMMAND_MAP, std::move(hp_com_map)));
+  kb_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILLS_KEYBOARD_COMMAND_MAP, std::move(sk_com_map)));
 }

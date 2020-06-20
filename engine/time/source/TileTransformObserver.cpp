@@ -9,7 +9,7 @@ void TileTransformObserver::notify(const ulonglong minutes_passed)
 {
   double cur_seconds = 0;
   Game& game = Game::instance();
-  WorldPtr world = game.get_current_world();
+  World* world = game.get_current_world();
 
   if (world != nullptr)
   {
@@ -76,9 +76,10 @@ void TileTransformObserver::process_tile_transforms(MapPtr cur_map, const double
   }
 }
 
-ITimeObserver* TileTransformObserver::clone() 
+std::unique_ptr<ITimeObserver> TileTransformObserver::clone()
 {
-  return new TileTransformObserver(*this);
+  std::unique_ptr<ITimeObserver> tto = std::make_unique<TileTransformObserver>(*this);
+  return tto;
 }
 
 ClassIdentifier TileTransformObserver::internal_class_identifier() const

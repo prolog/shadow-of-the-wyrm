@@ -12,21 +12,20 @@ SectorFeatureGeneratorPtr SectorFeatureGeneratorFactory::create(const CitySector
   switch(sector_type)
   {
     case CitySectorType::CITY_SECTOR_PUBLIC_AREA:
-      sfg = std::make_shared<PublicAreaSectorFeatureGenerator>();
+      sfg = std::make_unique<PublicAreaSectorFeatureGenerator>();
       break;
     case CitySectorType::CITY_SECTOR_LOW_INCOME_RESIDENTIAL:
-      sfg = std::make_shared<LowIncomeResidentialSectorFeatureGenerator>();
+      sfg = std::make_unique<LowIncomeResidentialSectorFeatureGenerator>();
       break;
     case CitySectorType::CITY_SECTOR_RELIGIOUS_COMMERCIAL:
-      sfg = std::make_shared<ReligiousCommercialSectorFeatureGenerator>();
+      sfg = std::make_unique<ReligiousCommercialSectorFeatureGenerator>();
       break;
-    // JCD FIXME: Move above rel/comm once populated
     case CitySectorType::CITY_SECTOR_RESIDENTIAL:
-      sfg = std::make_shared<ResidentialSectorFeatureGenerator>();
+      sfg = std::make_unique<ResidentialSectorFeatureGenerator>();
       break;
     case CitySectorType::CITY_SECTOR_NULL:
     default:
-      sfg = std::make_shared<DefaultSectorFeatureGenerator>();
+      sfg = std::make_unique<DefaultSectorFeatureGenerator>();
       break;
   }
 
