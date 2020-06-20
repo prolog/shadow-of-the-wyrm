@@ -18,6 +18,7 @@ MapTester.pdb
 xerces-c_3_1D.dll
 Debug
 dist
+dist_sprites
 \.vs
 docs/src/*.aux
 docs/src/*.log
