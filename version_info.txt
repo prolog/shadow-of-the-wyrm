@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.2.0 "Rodrigo"
-- Version declared February 16, 2020.
+- Version declared February 16, 2020.  Version finalized June 20, 2020.
 
 - 1-bit sprite set now the default display mode.
 
