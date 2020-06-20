@@ -3,7 +3,7 @@
 
 using namespace std;
 
-vector<TrapPtr> XMLTrapsReader::get_traps(const XMLNode& xml_config_traps_node, const bool force_ascii)
+vector<TrapPtr> XMLTrapsReader::get_traps(const XMLNode& xml_config_traps_node)
 {
   vector<TrapPtr> traps;
 
@@ -14,7 +14,7 @@ vector<TrapPtr> XMLTrapsReader::get_traps(const XMLNode& xml_config_traps_node, 
     for (const auto& xml_trap : trap_nodes)
     {
       TrapPtr trap = FeatureGenerator::create_trap();
-      parse_trap(xml_trap, trap, force_ascii);
+      parse_trap(xml_trap, trap);
 
       traps.push_back(trap);
     }
@@ -24,7 +24,7 @@ vector<TrapPtr> XMLTrapsReader::get_traps(const XMLNode& xml_config_traps_node, 
 }
 
 // Takes in the "Trap" node and sets the details
-void XMLTrapsReader::parse_trap(const XMLNode& trap_node, TrapPtr trap, const bool force_ascii)
+void XMLTrapsReader::parse_trap(const XMLNode& trap_node, TrapPtr trap)
 {
   if (!trap_node.is_null() && trap != nullptr)
   {
@@ -52,7 +52,7 @@ void XMLTrapsReader::parse_trap(const XMLNode& trap_node, TrapPtr trap, const bo
 
     XMLNode trigger_node = XMLUtils::get_next_element_by_local_name(trap_node, "Trigger");
     Symbol trigger_symbol('?', Colour::COLOUR_WHITE);
-    parse_symbol(trigger_symbol, trigger_node, force_ascii);
+    parse_symbol(trigger_symbol, trigger_node);
     trap->set_trigger_symbol(trigger_symbol);
 
     Colour colour = static_cast<Colour>(XMLUtils::get_child_node_int_value(trigger_node, "Colour"));

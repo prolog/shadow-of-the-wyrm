@@ -41,9 +41,10 @@ void ShopsTimeObserver::notify(const ulonglong minutes_passed)
   }
 }
 
-ITimeObserver* ShopsTimeObserver::clone() 
+std::unique_ptr<ITimeObserver> ShopsTimeObserver::clone()
 {
-  return new ShopsTimeObserver(*this);
+  std::unique_ptr<ITimeObserver> sto = std::make_unique<ShopsTimeObserver>(*this);
+  return sto;
 }
 
 ClassIdentifier ShopsTimeObserver::internal_class_identifier() const

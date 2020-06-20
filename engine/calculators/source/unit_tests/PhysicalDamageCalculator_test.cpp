@@ -78,6 +78,31 @@ TEST(SW_World_Calculators_PhysicalDamageCalculator, get_statistic_based_damage_m
   EXPECT_EQ(7, pdc.get_statistic_based_damage_modifier(creature));
 }
 
+// For every 10 points of Dual Wield, +10 damage to secondary attacks.
+TEST(SW_World_Calculators_PhysicalDamageCalculator, get_dual_wield_modifier)
+{
+  PhysicalDamageCalculator pdc_p(AttackType::ATTACK_TYPE_MELEE_PRIMARY, PhaseOfMoonType::PHASE_OF_MOON_NEW);
+  PhysicalDamageCalculator pdc_s(AttackType::ATTACK_TYPE_MELEE_SECONDARY, PhaseOfMoonType::PHASE_OF_MOON_NEW);
+  PhysicalDamageCalculator pdc_tu(AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED, PhaseOfMoonType::PHASE_OF_MOON_NEW);
+  PhysicalDamageCalculator pdc_r(AttackType::ATTACK_TYPE_RANGED, PhaseOfMoonType::PHASE_OF_MOON_NEW);
+
+  std::vector<PhysicalDamageCalculator> unaffected_types({ pdc_p, pdc_tu, pdc_r });
+  std::vector<std::pair<int, int>> expected_bonuses({ {0,0}, {11,1}, {28,2}, {30, 3}, {44, 4}, {52,5}, {63,6}, {77,7}, {89,8}, {94,9}, {100,10} });
+
+  CreaturePtr creature = std::make_shared<Creature>();
+
+  for (auto& value_and_bonus : expected_bonuses)
+  {
+    creature->get_skills().set_value(SkillType::SKILL_GENERAL_DUAL_WIELD, value_and_bonus.first);
+    EXPECT_EQ(value_and_bonus.second, pdc_s.get_skill_based_damage_modifier(creature));
+
+    for (auto& pdc : unaffected_types)
+    {
+      EXPECT_EQ(0, pdc.get_skill_based_damage_modifier(creature));
+    }
+  }
+}
+
 // For every 0.02 BAC, +1 dam.
 TEST(SW_World_Calculators_PhysicalDamageCalculator, get_drunkenness_modifier)
 {

@@ -15,7 +15,7 @@ XMLItemReader::~XMLItemReader()
 {
 }
 
-void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& item_node, const bool force_ascii)
+void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& item_node)
 {
   if (item && !item_node.is_null())
   {    
@@ -113,7 +113,7 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
     // symbol or colour is desired.
     XMLNode symbol_node = XMLUtils::get_next_element_by_local_name(item_node, "Symbol");
     Symbol s = item->get_symbol();
-    parse_symbol(s, symbol_node, force_ascii);
+    parse_symbol(s, symbol_node);
 
     item->set_symbol(s);
     item->set_colour(s.get_colour());

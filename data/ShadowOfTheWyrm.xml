@@ -16,6 +16,7 @@
 				<Action>Cannibalism</Action>
 				<Action>DesecrateGood</Action>
 				<Action>GraveRobbing</Action>
+				<Action>SkinHumanoid</Action>
 			</Dislikes>
 			<Crowning>
 				<Artifact>asturias</Artifact>
@@ -58,6 +59,7 @@
 				<Action>Cannibalism</Action>
 				<Action>DesecrateGood</Action>
 				<Action>GraveRobbing</Action>
+				<Action>SkinHumanoid</Action>
 			</Dislikes>
 			<Crowning>
 				<Artifact>delver</Artifact>
@@ -101,6 +103,7 @@
 				<Action>Cannibalism</Action>
 				<Action>DesecrateGood</Action>
 				<Action>GraveRobbing</Action>
+				<Action>SkinHumanoid</Action>
 			</Dislikes>
 			<Crowning>
 				<Artifact>delver</Artifact>
@@ -143,6 +146,7 @@
 				<Action>Cannibalism</Action>
 				<Action>DesecrateNeutral</Action>
 				<Action>GraveRobbing</Action>
+				<Action>SkinHumanoid</Action>
 			</Dislikes>
 			<Crowning>
 				<Artifact>carpathos</Artifact>
@@ -1612,6 +1616,12 @@
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
 				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
 			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
@@ -1691,9 +1701,15 @@
 			<Corporeal>1</Corporeal>
 			<Flying>0</Flying>
 			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
 				<DeityID>04_vedere</DeityID>
 				<DeityID>05_voros</DeityID>
 				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
 			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
@@ -1774,6 +1790,12 @@
 			<Corporeal>1</Corporeal>
 			<Flying>0</Flying>
 			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
 				<DeityID>09_sceadugenga</DeityID>
@@ -1856,9 +1878,15 @@
 			<Corporeal>1</Corporeal>
 			<Flying>0</Flying>
 			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
 				<DeityID>04_vedere</DeityID>
 				<DeityID>05_voros</DeityID>
 				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
 			</RaceInitialDeities>
 			<Resistances>
 				<Slash>-0.05</Slash>
@@ -1939,6 +1967,12 @@
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
 				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
 			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
@@ -2017,6 +2051,12 @@
 			<Corporeal>1</Corporeal>
 			<Flying>0</Flying>
 			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
 				<DeityID>09_sceadugenga</DeityID>
@@ -2099,6 +2139,12 @@
 			<Corporeal>1</Corporeal>
 			<Flying>0</Flying>
 			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
 				<DeityID>09_sceadugenga</DeityID>
@@ -2177,9 +2223,15 @@
 			<Corporeal>1</Corporeal>
 			<Flying>0</Flying>
 			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
 				<DeityID>04_vedere</DeityID>
 				<DeityID>05_voros</DeityID>
 				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
 			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
@@ -2259,6 +2311,12 @@
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
 				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
 			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
@@ -3806,6 +3864,9 @@
 					<Wandcraft>15</Wandcraft>
 					<Weaving>15</Weaving>
 				</GeneralSkills>
+				<WeaponSkills>
+					<RodsAndStaves>5</RodsAndStaves>
+				</WeaponSkills>
 				<MagicSkills>
 					<Arcane>15</Arcane>
 					<Divine>15</Divine>
@@ -6400,6 +6461,11 @@
 					<Autumn>3</Autumn>
 					<Winter>15</Winter>
 				</Colours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>0</Col>
+				</Sprite>
 			</Symbol>
 		</FieldTile>
 		<ScrubTile>
@@ -6411,9 +6477,15 @@
 					<Autumn>3</Autumn>
 					<Winter>7</Winter>
 				</Colours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>4</Col>
+				</Sprite>
 			</Symbol>
 		</ScrubTile>
 		<WheatTile>
+			<!-- Not currently used -->
 			<Symbol>
 				<Char>|</Char>
 				<Colours>
@@ -6428,6 +6500,11 @@
 			<Symbol>
 				<Char>,</Char>
 				<Colour>7</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>9</Col>
+				</Sprite>
 			</Symbol>
 		</CairnTile>
 		<TreeTile>
@@ -6439,6 +6516,11 @@
 					<Autumn>9</Autumn>
 					<Winter>3</Winter>
 				</Colours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>1</Col>
+				</Sprite>
 			</Symbol>
 		</TreeTile>
 		<DesertTile>
@@ -6450,12 +6532,22 @@
 					<Autumn>11</Autumn>
 					<Winter>7</Winter>
 				</Colours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>4</Col>
+				</Sprite>
 			</Symbol>
 		</DesertTile>
 		<RoadTile>
 			<Symbol>
 				<Char>.</Char>
-				<Colour>7</Colour>
+				<Colour>3</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>13</Col>
+				</Sprite>
 			</Symbol>
 		</RoadTile>
 		<RiverTile>
@@ -6465,6 +6557,11 @@
 				<WeatherColours>
 					<WeatherColour>14</WeatherColour>
 				</WeatherColours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>14</Col>
+				</Sprite>
 			</Symbol>
 		</RiverTile>
 		<SeaTile>
@@ -6475,30 +6572,55 @@
 					<WeatherColour>12</WeatherColour>
 					<WeatherColour>15</WeatherColour>
 				</WeatherColours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>14</Col>
+				</Sprite>
 			</Symbol>
 		</SeaTile>
 		<ShoalsTile>
 			<Symbol>
 				<Char>~</Char>
 				<Colour>7</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>29</Col>
+				</Sprite>
 			</Symbol>
 		</ShoalsTile>
 		<DungeonTile>
 			<Symbol>
 				<Char>.</Char>
 				<Colour>7</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>4</Col>
+				</Sprite>
 			</Symbol>
 		</DungeonTile>
 		<RockTile>
 			<Symbol>
 				<Char>#</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>3</Col>
+				</Sprite>
 			</Symbol>
 		</RockTile>
 		<GraveTile>
 			<Symbol>
 				<Char>+</Char>
 				<Colour>7</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>7</Col>
+				</Sprite>
 			</Symbol>
 		</GraveTile>
 		<MarshTile>
@@ -6508,6 +6630,11 @@
 				<WeatherColours>
 					<WeatherColour>10</WeatherColour>
 				</WeatherColours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>14</Col>
+				</Sprite>
 			</Symbol>
 		</MarshTile>
 		<ReedsTile>
@@ -6519,6 +6646,11 @@
 					<Autumn>3</Autumn>
 					<Winter>3</Winter>
 				</Colours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>5</Col>
+				</Sprite>
 			</Symbol>
 		</ReedsTile>
 		<HillsTile>
@@ -6530,15 +6662,26 @@
 					<Autumn>3</Autumn>
 					<Winter>15</Winter>
 				</Colours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>18</Col>
+				</Sprite>
 			</Symbol>
 		</HillsTile>
 		<MountainsTile>
 			<Symbol>
 				<Char>^</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>17</Col>
+				</Sprite>
 			</Symbol>
 		</MountainsTile>
 		<BeachTile>
+			<!-- Not currently used -->
 			<Symbol>
 				<Char>.</Char>
 				<Colour>3</Colour>
@@ -6553,6 +6696,11 @@
 					<Autumn>3</Autumn>
 					<Winter>3</Winter>
 				</Colours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>6</Col>
+				</Sprite>
 			</Symbol>
 		</BushTile>
 		<WeedsTile>
@@ -6564,6 +6712,11 @@
 					<Autumn>3</Autumn>
 					<Winter>3</Winter>
 				</Colours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>19</Col>
+				</Sprite>
 			</Symbol>
 		</WeedsTile>
 		<SpringsTile>
@@ -6573,6 +6726,11 @@
 				<WeatherColours>
 					<WeatherColour>6</WeatherColour>
 				</WeatherColours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>14</Col>
+				</Sprite>
 			</Symbol>
 		</SpringsTile>
 		<ForestTile>
@@ -6584,39 +6742,70 @@
 					<Autumn>9</Autumn>
 					<Winter>3</Winter>
 				</Colours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>15</Col>
+				</Sprite>
 			</Symbol>
 		</ForestTile>
 		<UpStaircaseTile>
 			<Symbol>
 				<Char>&lt;</Char>
 				<Colour>7</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>11</Col>
+				</Sprite>
 			</Symbol>
 		</UpStaircaseTile>
 		<DownStaircaseTile>
 			<Symbol>
 				<Char>&gt;</Char>
 				<Colour>7</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>10</Col>
+				</Sprite>
 			</Symbol>
 		</DownStaircaseTile>
 		<CavernTile>
 			<Symbol>
 				<Char>o</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>10</Col>
+				</Sprite>
 			</Symbol>
 		</CavernTile>
 		<VillageTile>
 			<Symbol>
 				<Char>o</Char>
 				<Colour>3</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>22</Col>
+				</Sprite>
 			</Symbol>
 		</VillageTile>
 		<DungeonComplexTile>
 			<Symbol>
 				<Char>&gt;</Char>
 				<Colour>3</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>10</Col>
+				</Sprite>
 			</Symbol>
 		</DungeonComplexTile>
 		<BarracksTile>
+			<!-- Not currently used -->
 			<Symbol>
 				<Char>*</Char>
 				<Colour>3</Colour>
@@ -6626,27 +6815,48 @@
 			<Symbol>
 				<Char>O</Char>
 				<Colour>15</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>24</Col>
+				</Sprite>
 			</Symbol>
 		</CastleTile>
 		<ChurchTile>
 			<Symbol>
 				<Char>+</Char>
 				<Colour>15</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>25</Col>
+				</Sprite>
 			</Symbol>
 		</ChurchTile>
 		<GraveyardTile>
 			<Symbol>
 				<Char>+</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>7</Col>
+				</Sprite>
 			</Symbol>
 		</GraveyardTile>
 		<KeepTile>
 			<Symbol>
 				<Char>O</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>20</Col>
+				</Sprite>
 			</Symbol>
 		</KeepTile>
 		<LibraryTile>
+			<!-- Currently unused -->
 			<Symbol>
 				<Char>"</Char>
 				<Colour>3</Colour>
@@ -6656,30 +6866,55 @@
 			<Symbol>
 				<Char>+</Char>
 				<Colour>1</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>26</Col>
+				</Sprite>
 			</Symbol>
 		</SiteOfDeathTile>
 		<TempleTile>
 			<Symbol>
 				<Char>+</Char>
 				<Colour>3</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>25</Col>
+				</Sprite>
 			</Symbol>
 		</TempleTile>
 		<DaisTile>
 			<Symbol>
 				<Char>.</Char>
 				<Colour>15</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>23</Col>
+				</Sprite>
 			</Symbol>
 		</DaisTile>
 		<PierTile>
 			<Symbol>
 				<Char>#</Char>
 				<Colour>3</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>21</Col>
+				</Sprite>
 			</Symbol>
 		</PierTile>
 		<BarrowTile>
 			<Symbol>
 				<Char>0</Char>
 				<Colour>3</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>8</Col>
+				</Sprite>
 			</Symbol>
 		</BarrowTile>
 		<WildOrchardTile>
@@ -6691,6 +6926,11 @@
 					<Autumn>9</Autumn>
 					<Winter>3</Winter>
 				</Colours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>12</Col>
+				</Sprite>
 			</Symbol>
 		</WildOrchardTile>
 		<FruitTreeTile>
@@ -6702,96 +6942,168 @@
 					<Autumn>9</Autumn>
 					<Winter>3</Winter>
 				</Colours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>12</Col>
+				</Sprite>
 			</Symbol>
 		</FruitTreeTile>
 		<EvergreenTreeTile>
 			<Symbol>
 				<Char>T</Char>
 				<Colour>2</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>1</Col>
+				</Sprite>
 			</Symbol>
 		</EvergreenTreeTile>
 		<RockyEarthTile>
 			<Symbol>
 				<Char>,</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>16</Col>
+				</Sprite>
 			</Symbol>
 		</RockyEarthTile>
 		<MineTile>
 			<Symbol>
 				<Char>o</Char>
 				<Colour>11</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>10</Col>
+				</Sprite>
 			</Symbol>
 		</MineTile>
 		<WellTile>
 			<Symbol>
 				<Char>o</Char>
 				<Colour>6</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>27</Col>
+				</Sprite>
 			</Symbol>
 		</WellTile>
 		<CryptTile>
 			<Symbol>
 				<Char>&gt;</Char>
 				<Colour>1</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>10</Col>
+				</Sprite>
 			</Symbol>
 		</CryptTile>
 		<AirTile>
 			<Symbol>
 				<Char> </Char>
 				<Colour>110</Colour>
+				<!-- No sprite required -->
 			</Symbol>
 		</AirTile>
 		<EarthTile>
 			<Symbol>
 				<Char>#</Char>
 				<Colour>3</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>3</Col>
+				</Sprite>
 			</Symbol>
 		</EarthTile>
 		<SewerComplexTile>
 			<Symbol>
 				<Char>&gt;</Char>
 				<Colour>2</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>10</Col>
+				</Sprite>
 			</Symbol>
 		</SewerComplexTile>
 		<SewerTile>
 			<Symbol>
 				<Char>.</Char>
 				<Colour>2</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>4</Col>
+				</Sprite>
 			</Symbol>
 		</SewerTile>
 		<ShrineTile>
 			<Symbol>
 				<Char>o</Char>
 				<Colour>5</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>28</Col>
+				</Sprite>
 			</Symbol>
 		</ShrineTile>
 		<SeabedTile>
 			<Symbol>
 				<Char>.</Char>
 				<Colour>4</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>3</Col>
+				</Sprite>
 			</Symbol>
 		</SeabedTile>
 		<AquaticVegetationTile>
 			<Symbol>
 				<Char>*</Char>
 				<Colour>2</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>2</Col>
+				</Sprite>
 			</Symbol>
 		</AquaticVegetationTile>
 		<FloatingTowerTile>
 			<Symbol>
 				<Char>|</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>11</Col>
+				</Sprite>
 			</Symbol>
 		</FloatingTowerTile>
 		<VoidTile>
 			<Symbol>
 				<Char> </Char>
 				<Colour>0</Colour>
+				<!-- No sprite needed -->
 			</Symbol>
 		</VoidTile>
 		<MagicalTreeTile>
 			<Symbol>
 				<Char>T</Char>
 				<Colour>14</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>0</Row>
+					<Col>12</Col>
+				</Sprite>
 			</Symbol>
 		</MagicalTreeTile>
 	</Tiles>
@@ -6992,38 +7304,309 @@
 	</Traps>
 	<AllFeatures>
 		<BaseFeatures>
-			<EvilAltar><Symbol><Char>_</Char></Symbol></EvilAltar>
-			<GoodAltar><Symbol><Char>_</Char></Symbol></GoodAltar>
-			<NeutralAltar><Symbol><Char>_</Char></Symbol></NeutralAltar>
-			<Barrel><Symbol><Char>o</Char></Symbol></Barrel>
-			<Bench><Symbol><Char>-</Char></Symbol></Bench>
-			<Bed><Symbol><Char>~</Char></Symbol></Bed>
+			<EvilAltar>
+				<Symbol>
+					<Char>_</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>1</Col>
+					</Sprite>
+				</Symbol>
+			</EvilAltar>
+			<GoodAltar>
+				<Symbol>
+					<Char>_</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>1</Col>
+					</Sprite>
+				</Symbol>
+			</GoodAltar>
+			<NeutralAltar>
+				<Symbol>
+					<Char>_</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>1</Col>
+					</Sprite>
+				</Symbol>
+			</NeutralAltar>
+			<Barrel>
+				<Symbol>
+					<Char>o</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>2</Col>
+					</Sprite>
+				</Symbol>
+			</Barrel>
+			<Bench>
+				<Symbol>
+					<Char>-</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>0</Col>
+					</Sprite>
+				</Symbol>
+			</Bench>
+			<Bed>
+				<Symbol>
+					<Char>~</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</Sprite>
+				</Symbol>
+			</Bed>
+			<!-- Door and Gate are entrances and handled by the system-defined sys spritesheet.  No need to define them. -->
 			<Door><Symbol><Char>+</Char></Symbol></Door>
 			<Gate><Symbol><Char>+</Char></Symbol></Gate>
-			<DecorativeStatue><Symbol><Char>I</Char></Symbol></DecorativeStatue>
-			<HighPriestDecorativeStatue><Symbol><Char>I</Char></Symbol></HighPriestDecorativeStatue>
-			<KingDecorativeStatue><Symbol><Char>I</Char></Symbol></KingDecorativeStatue>
-			<KnightDecorativeStatue><Symbol><Char>I</Char></Symbol></KnightDecorativeStatue>
-			<PetrifiedCorpseStatue><Symbol><Char>I</Char></Symbol></PetrifiedCorpseStatue>
-			<QueenDecorativeStatue><Symbol><Char>I</Char></Symbol></QueenDecorativeStatue>
-			<WarlordDecorativeStatue><Symbol><Char>I</Char></Symbol></WarlordDecorativeStatue>
-			<RegularDecorativeStatue><Symbol><Char>I</Char></Symbol></RegularDecorativeStatue>
-			<SorcerorDecorativeStatue><Symbol><Char>I</Char></Symbol></SorcerorDecorativeStatue>
-			<EastWestPew><Symbol><Char>|</Char></Symbol></EastWestPew>
-			<FirePillar><Symbol><Char>Y</Char></Symbol></FirePillar>
-			<Forge><Symbol><Char>&amp;</Char></Symbol></Forge>
-			<Fountain><Symbol><Char>~</Char></Symbol></Fountain>
-			<JewelerWorkbench><Symbol><Char>&amp;</Char></Symbol></JewelerWorkbench>
-			<Pew><Symbol><Char>-</Char></Symbol></Pew>
-			<Pulper><Symbol><Char>:</Char></Symbol></Pulper>
-			<Sarcophagus><Symbol><Char>0</Char></Symbol></Sarcophagus>
-			<Sign><Symbol><Char>+</Char></Symbol></Sign>
-			<SlotMachine><Symbol><Char>$</Char></Symbol></SlotMachine>
-			<StoneMarker><Symbol><Char>+</Char></Symbol></StoneMarker>
-			<Table><Symbol><Char>o</Char></Symbol></Table>
-			<Tannery><Symbol><Char>;</Char></Symbol></Tannery>
-			<Trap><Symbol><Char>^</Char></Symbol></Trap>
-			<WheelAndLoom><Symbol><Char>;</Char></Symbol></WheelAndLoom>
+			<DecorativeStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>17</Col>
+					</Sprite>
+				</Symbol>
+			</DecorativeStatue>
+			<HighPriestDecorativeStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>18</Col>
+					</Sprite>
+				</Symbol>
+			</HighPriestDecorativeStatue>
+			<KingDecorativeStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
+			</KingDecorativeStatue>
+			<KnightDecorativeStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>19</Col>
+					</Sprite>
+				</Symbol>
+			</KnightDecorativeStatue>
+			<PetrifiedCorpseStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>17</Col>
+					</Sprite>
+				</Symbol>
+			</PetrifiedCorpseStatue>
+			<QueenDecorativeStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>21</Col>
+					</Sprite>
+				</Symbol>
+			</QueenDecorativeStatue>
+			<WarlordDecorativeStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>22</Col>
+					</Sprite>
+				</Symbol>
+			</WarlordDecorativeStatue>
+			<RegularDecorativeStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>17</Col>
+					</Sprite>
+				</Symbol>
+			</RegularDecorativeStatue>
+			<SorcerorDecorativeStatue>
+				<Symbol>
+					<Char>I</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>23</Col>
+					</Sprite>
+				</Symbol>
+			</SorcerorDecorativeStatue>
+			<EastWestPew>
+				<Symbol>
+					<Char>|</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>25</Col>
+					</Sprite>
+				</Symbol>
+			</EastWestPew>
+			<FirePillar>
+				<Symbol>
+					<Char>Y</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>7</Col>
+					</Sprite>
+				</Symbol>
+			</FirePillar>
+			<Forge>
+				<Symbol>
+					<Char>&amp;</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>14</Col>
+					</Sprite>
+				</Symbol>
+			</Forge>
+			<Fountain>
+				<Symbol>
+					<Char>~</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>8</Col>
+					</Sprite>
+			</Symbol>
+			</Fountain>
+			<JewelerWorkbench>
+				<Symbol>
+					<Char>&amp;</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>9</Col>
+					</Sprite>
+				</Symbol>
+			</JewelerWorkbench>
+			<Pew>
+				<Symbol>
+					<Char>-</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>24</Col>
+					</Sprite>
+				</Symbol>
+			</Pew>
+			<Pulper>
+				<Symbol>
+					<Char>:</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>15</Col>
+					</Sprite>
+				</Symbol>
+			</Pulper>
+			<Sarcophagus>
+				<Symbol>
+					<Char>0</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>13</Col>
+					</Sprite>
+				</Symbol>
+			</Sarcophagus>
+			<Sign>
+				<Symbol>
+					<Char>+</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>12</Col>
+					</Sprite>
+				</Symbol>
+			</Sign>
+			<SlotMachine>
+				<Symbol>
+					<Char>$</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
+				</Symbol>
+			</SlotMachine>
+			<StoneMarker>
+				<Symbol>
+					<Char>+</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>6</Col>
+					</Sprite>
+				</Symbol>
+			</StoneMarker>
+			<Table>
+				<Symbol>
+					<Char>o</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>10</Col>
+					</Sprite>
+				</Symbol>
+			</Table>
+			<Tannery>
+				<Symbol>
+					<Char>;</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
+			</Tannery>
+			<Trap>
+				<Symbol>
+					<Char>^</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
+				</Symbol>
+			</Trap>
+			<WheelAndLoom>
+				<Symbol>
+					<Char>;</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>11</Col>
+					</Sprite>
+				</Symbol>
+			</WheelAndLoom>
 		</BaseFeatures>
 		<ConfigurableFeatures>
 			<ConfigurableFeature id="_rift">
@@ -7031,6 +7614,11 @@
 				<Symbol>
 					<Char>^</Char>
 					<Colour>9</Colour>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>29</Col>
+					</Sprite>
 				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_RIFT</DescriptionSID>
 			</ConfigurableFeature>
@@ -7039,6 +7627,11 @@
 				<Symbol>
 					<Char>o</Char>
 					<Colour>11</Colour>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>30</Col>
+					</Sprite>
 				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_DWARF_STAR</DescriptionSID>
 			</ConfigurableFeature>
@@ -7047,6 +7640,11 @@
 				<Symbol>
 					<Char>;</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>31</Col>
+					</Sprite>
 				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_SPIRAL_ARM</DescriptionSID>
 			</ConfigurableFeature>
@@ -7055,6 +7653,11 @@
 				<Symbol>
 					<Char>O</Char>
 					<Colour>9</Colour>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>1</Row>
+						<Col>0</Col>
+					</Sprite>
 				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_RED_GIANT</DescriptionSID>
 			</ConfigurableFeature>
@@ -7063,6 +7666,11 @@
 				<Symbol>
 					<Char> </Char>
 					<Colour>80</Colour>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>28</Col>
+					</Sprite>
 				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_SUPERNOVA</DescriptionSID>
 			</ConfigurableFeature>
@@ -7071,7 +7679,12 @@
 				<Symbol>
 					<Char>*</Char>
 					<Colour>8</Colour>
-				</Symbol>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>27</Col>
+					</Sprite>
+					</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_BLACK_HOLE</DescriptionSID>
 			</ConfigurableFeature>
 			<ConfigurableFeature id="_pulsar">
@@ -7079,6 +7692,11 @@
 				<Symbol>
 					<Char>*</Char>
 					<Colour>15</Colour>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>1</Row>
+						<Col>2</Col>
+					</Sprite>
 				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_PULSAR</DescriptionSID>
 			</ConfigurableFeature>
@@ -7087,6 +7705,11 @@
 				<Symbol>
 					<Char>.</Char>
 					<Colour>3</Colour>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>0</Row>
+						<Col>26</Col>
+					</Sprite>
 				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_COSMIC_DUST</DescriptionSID>
 			</ConfigurableFeature>
@@ -7154,4 +7777,101 @@
 	<Scripts>
 		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
 	</Scripts>
+	<Spritesheets>
+		<Spritesheet id="cr">
+			<Location>assets/sprites/creature_sprites.png</Location>
+			<References>
+				<Reference id="ancient_beast_0">
+					<Row>12</Row>
+					<Col>30</Col>
+				</Reference>
+				<Reference id="ancient_beast_1">
+					<Row>12</Row>
+					<Col>31</Col>
+				</Reference>
+				<Reference id="ancient_beast_2">
+					<Row>13</Row>
+					<Col>0</Col>
+				</Reference>
+				<Reference id="ancient_beast_3">
+					<Row>13</Row>
+					<Col>6</Col>
+				</Reference>
+				<Reference id="ancient_beast_4">
+					<Row>13</Row>
+					<Col>7</Col>
+				</Reference>
+				<Reference id="ancient_beast_5">
+					<Row>13</Row>
+					<Col>2</Col>
+				</Reference>
+				<Reference id="ancient_beast_6">
+					<Row>13</Row>
+					<Col>3</Col>
+				</Reference>
+				<Reference id="ancient_beast_7">
+					<Row>13</Row>
+					<Col>8</Col>
+				</Reference>
+				<Reference id="ancient_beast_8">
+					<Row>13</Row>
+					<Col>4</Col>
+				</Reference>
+				<Reference id="ancient_beast_9">
+					<Row>13</Row>
+					<Col>1</Col>
+				</Reference>
+				<Reference id="ancient_beast_10">
+					<Row>13</Row>
+					<Col>5</Col>
+				</Reference>
+			</References>
+		</Spritesheet>
+		<Spritesheet id="it">
+			<Location>assets/sprites/item_sprites.png</Location>
+		</Spritesheet>
+		<Spritesheet id="til">
+			<Location>assets/sprites/terrain_sprites.png</Location>
+		</Spritesheet>
+		<Spritesheet id="fea">
+			<Location>assets/sprites/feature_sprites.png</Location>
+		</Spritesheet>
+		<Spritesheet id="sys">
+			<Location>assets/sprites/sys_sprites.png</Location>
+			<References>
+				<Reference id="_beam_nwse">
+					<Row>0</Row>
+					<Col>0</Col>
+				</Reference>
+				<Reference id="_beam_nesw">
+					<Row>0</Row>
+					<Col>1</Col>
+				</Reference>
+				<Reference id="_beam_ns">
+					<Row>0</Row>
+					<Col>2</Col>
+				</Reference>
+				<Reference id="_beam_ew">
+					<Row>0</Row>
+					<Col>3</Col>
+				</Reference>
+				<Reference id="_magic_blast">
+					<Row>0</Row>
+					<Col>4</Col>
+				</Reference>
+				<Reference id="_entrance_closed">
+					<Row>0</Row>
+					<Col>5</Col>
+				</Reference>
+				<Reference id="_entrance_open">
+					<Row>0</Row>
+					<Col>6</Col>
+				</Reference>
+				<Reference id="_entrance_destroyed">
+					<Row>0</Row>
+					<Col>7</Col>
+				</Reference>
+			</References>
+		</Spritesheet>
+	</Spritesheets>
 </ShadowOfTheWyrm>

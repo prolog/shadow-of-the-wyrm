@@ -22,7 +22,7 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
 
   // Make the creature select a direction.
   CommandFactoryPtr command_factory    = std::make_unique<CommandFactory>();
-  KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
+  KeyboardCommandMapPtr kb_command_map = std::make_unique<KeyboardCommandMap>();
 
   // Initial check: are we on the world map?
   Game& game = Game::instance();
@@ -58,11 +58,11 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
 
       if (am.get_engaged())
       {
-        base_command = std::make_shared<MovementCommand>(am.get_direction(), -1);
+        base_command = std::make_unique<MovementCommand>(am.get_direction(), -1);
       }
       else
       {
-        base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, 0);
+        base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0, true);
       }
 
       if (added_initial_message && creature->get_is_player())
@@ -72,8 +72,8 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
 
       if (base_command)
       {
-        std::shared_ptr<DirectionalCommand> dcommand;
-        dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
+        DirectionalCommand* dcommand;
+        dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
 
         if (dcommand)
         {

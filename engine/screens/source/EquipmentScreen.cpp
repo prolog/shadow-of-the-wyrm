@@ -99,12 +99,12 @@ void EquipmentScreen::initialize()
   add_page(eq_screen);
 
   // Set the prompt
-  PromptPtr eq_prompt = std::make_shared<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr eq_prompt = std::make_unique<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
 
   // Accept any input - the equipment manager will take care of sorting out
   // what's a valid command and what is not.
   eq_prompt->set_accept_any_input(true);
   eq_prompt->set_text_sid(TextKeys::EQUIPMENT_PROMPT);
-  user_prompt = eq_prompt;
+  user_prompt = std::move(eq_prompt);
   line_increment = 1;
 }

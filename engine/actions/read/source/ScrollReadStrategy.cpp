@@ -45,12 +45,12 @@ ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ActionManager * c
       SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(scroll_spell.get_shape().get_spell_shape_type());
       bool effect_identified = false;
 
-      if (spell_processor)
+      if (spell_processor != nullptr)
       {
         // Use the generic spell processor, which is also used for "regular"
         // spellcasting.
         SpellcastingProcessor sp;
-        effect_identified = sp.process(spell_processor, creature, map, caster_coord, Direction::DIRECTION_NULL, scroll_spell, readable->get_status());
+        effect_identified = sp.process(spell_processor.get(), creature, map, caster_coord, Direction::DIRECTION_NULL, scroll_spell, readable->get_status());
       }
 
       add_read_message(get_player_and_monster_read_sids(), creature, readable, item_id);

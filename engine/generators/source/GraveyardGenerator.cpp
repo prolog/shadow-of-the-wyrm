@@ -168,7 +168,7 @@ void GraveyardGenerator::add_inscription(TilePtr grave_tile)
 {
   if (grave_tile != nullptr && RNG::percent_chance(PCT_CHANCE_INSCRIPTION))
   {
-    WorldPtr world = Game::instance().get_current_world();
+    World* world = Game::instance().get_current_world();
 
     if (world != nullptr)
     {

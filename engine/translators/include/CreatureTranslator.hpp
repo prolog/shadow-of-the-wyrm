@@ -8,6 +8,9 @@ class DisplayStatistics;
 class CreatureTranslator
 {
   public:
+    CreatureTranslator(const CreatureTranslator&) = delete;
+    bool operator=(const CreatureTranslator&) = delete;
+
     // Used by the translators
     static DisplayStatistics create_display_statistics(const CreaturePtr& creature, const MapPtr& map);
 

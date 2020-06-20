@@ -99,5 +99,15 @@
 				<Alignment>2</Alignment>
 			</Altar>
 		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>8</Row>
+				<Col>39</Col>
+			</Coord>
+			<Altar>
+				<DeityID>09_sceadugenga</DeityID>
+				<Alignment>0</Alignment>
+			</Altar>
+		</FeaturePlacement>
 	</Features>
 </CustomMap>

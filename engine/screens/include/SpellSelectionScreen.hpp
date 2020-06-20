@@ -30,12 +30,12 @@ class SituationTypeSpellScreenDisplayStrategy : public SpellScreenDisplayStrateg
     SpellSituationType sst;
 };
 
-using SpellScreenDisplayStrategyPtr = std::shared_ptr<SpellScreenDisplayStrategy>;
+using SpellScreenDisplayStrategyPtr = std::unique_ptr<SpellScreenDisplayStrategy>;
 
 class SpellSelectionScreen : public Screen
 {
   public:
-    SpellSelectionScreen(DisplayPtr new_display, CreaturePtr new_creature, SpellScreenDisplayStrategyPtr sds);
+    SpellSelectionScreen(DisplayPtr new_display, CreaturePtr new_creature, SpellScreenDisplayStrategy* sds);
 
     std::string get_selected_spell(const char selection) const;
 
@@ -46,5 +46,5 @@ class SpellSelectionScreen : public Screen
 
     std::vector<std::map<char, std::string>> screen_selection_to_spell_id_map;
     CreaturePtr creature;
-    SpellScreenDisplayStrategyPtr strategy;
+    SpellScreenDisplayStrategy* strategy;
 };

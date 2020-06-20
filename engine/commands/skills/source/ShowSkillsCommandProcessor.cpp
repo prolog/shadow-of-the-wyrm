@@ -14,7 +14,7 @@ bool ShowSkillsCommandProcessor::can_process(CreaturePtr creature)
   return (creature && creature->get_is_player());
 }
 
-ActionCostValue ShowSkillsCommandProcessor::process(CreaturePtr creature, CommandPtr command, MapPtr map, const SkillType st)
+ActionCostValue ShowSkillsCommandProcessor::process(CreaturePtr creature, Command* command, MapPtr map, const SkillType st)
 {
   ActionCostValue process_result = ActionCostConstants::NO_ACTION;
   Game& game = Game::instance();

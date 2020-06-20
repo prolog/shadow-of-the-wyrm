@@ -36,7 +36,7 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BallShapeProcessor::get_af
   uint spell_range = spell.get_range();
   Game& game = Game::instance();
   CurrentCreatureAbilities cca;
-  ISeasonPtr season = game.get_current_world()->get_calendar().get_season();
+  ISeason* season = game.get_current_world()->get_calendar().get_season();
   Settings& settings = game.get_settings_ref();
   CreaturePtr player = game.get_current_player();
   bool player_blind = !cca.can_see(player);
@@ -119,7 +119,7 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BallShapeProcessor::get_af
         TilePtr engine_tile = map->at(c);
         TilePtr fov_tile = player ? player->get_decision_strategy()->get_fov_map()->at(c) : nullptr;
 
-        if (engine_tile != nullptr)
+        if (engine_tile != nullptr && season != nullptr)
         {
           dt = MapTranslator::create_display_tile(player_blind, false, tod_overrides, shimmer_colours, engine_tile, fov_tile, c.first, c.second);
           dt.set_season(season->get_season());

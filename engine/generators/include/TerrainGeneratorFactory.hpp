@@ -11,5 +11,5 @@ class TerrainGeneratorFactory
     TerrainGeneratorFactory();
     ~TerrainGeneratorFactory();
 
-    static void copy_properties(TilePtr tile, GeneratorPtr generator);
+    static void copy_properties(TilePtr tile, SOTW::Generator* generator);
 };

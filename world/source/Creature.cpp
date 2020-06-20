@@ -110,7 +110,7 @@ Creature::Creature(const Creature& cr)
   {
     // Without the copy constuctor, the raw pointer was being shared between creature instances,
     // and the threat map for supposedly peaceful creatures contained the player, making the creature hostile!
-    decision_strategy = std::shared_ptr<DecisionStrategy>(cr.decision_strategy->copy());
+    decision_strategy = DecisionStrategyPtr(cr.decision_strategy->copy());
   }
   
   religion = cr.religion;
@@ -249,7 +249,7 @@ void Creature::set_is_player(const bool player, ControllerPtr controller)
   {
     // Players always use the PlayerDecisionStrategy class so that keyboard input
     // can be used.
-    decision_strategy = std::make_shared<PlayerDecisionStrategy>(controller);
+    decision_strategy = std::make_unique<PlayerDecisionStrategy>(controller);
 
     // Players are always @s.
     Symbol s('@', Colour::COLOUR_WHITE);
@@ -1041,19 +1041,24 @@ Statistic Creature::get_level() const
   return level;
 }
 
-void Creature::set_decision_strategy(const DecisionStrategyPtr strategy)
+void Creature::set_decision_strategy(DecisionStrategyPtr strategy)
 {
-  decision_strategy = strategy;
+  decision_strategy = std::move(strategy);
 }
 
-DecisionStrategyPtr Creature::get_decision_strategy() const
+DecisionStrategy* Creature::get_decision_strategy() const
 {
-  return decision_strategy;
+  return decision_strategy.get();
+}
+
+DecisionStrategyPtr Creature::get_decision_strategy_uptr()
+{
+  return std::move(decision_strategy);
 }
 
 bool Creature::hostile_to(const string& creature_id)
 {
-  DecisionStrategyPtr strategy = get_decision_strategy();
+  DecisionStrategy* strategy = get_decision_strategy();
   pair<bool, int> threat_details = strategy->get_threats().has_threat(creature_id);
 
   // Ensure that we only return creatures that are beyond the "dislike"
@@ -1560,14 +1565,14 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 1384, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1376, "Unexpected sizeof Creature.");
     #else
     // Release
-    static_assert(sizeof(*this) == 1272, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 1264, "Unexpected sizeof Creature.");
     #endif
   #else // gcc toolchain
   // Works for gcc in release
-  static_assert(sizeof(*this) == 2304 || sizeof(*this) == 1720, "Unexpected sizeof Creature.");
+  static_assert(sizeof(*this) == 2296 || sizeof(*this) == 1720, "Unexpected sizeof Creature.");
   #endif
 }
 

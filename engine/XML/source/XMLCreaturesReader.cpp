@@ -11,7 +11,7 @@
 
 using namespace std;
 
-pair<CreatureMap, CreatureGenerationValuesMap> XMLCreaturesReader::get_creatures(const XMLNode& xml_configuration_creatures_node, const bool force_ascii)
+pair<CreatureMap, CreatureGenerationValuesMap> XMLCreaturesReader::get_creatures(const XMLNode& xml_configuration_creatures_node)
 {
   pair<CreatureMap, CreatureGenerationValuesMap> creature_values;
   CreatureMap creatures;
@@ -23,7 +23,7 @@ pair<CreatureMap, CreatureGenerationValuesMap> XMLCreaturesReader::get_creatures
 
     for (const XMLNode& creature_node : creature_nodes)
     {
-      pair<CreaturePtr, CreatureGenerationValues> creature_details = parse_creature(creature_node, force_ascii);
+      pair<CreaturePtr, CreatureGenerationValues> creature_details = parse_creature(creature_node);
       CreaturePtr creature = creature_details.first;
       CreatureGenerationValues cgv = creature_details.second;
       string creature_id = creature->get_id();
@@ -44,7 +44,7 @@ pair<CreatureMap, CreatureGenerationValuesMap> XMLCreaturesReader::get_creatures
 }
 
 // Parse the details of the Creature node into a shared Creature pointer.
-pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(const XMLNode& creature_node, const bool force_ascii)
+pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(const XMLNode& creature_node)
 {
   pair<CreaturePtr, CreatureGenerationValues> creature_data;
   CreaturePtr creature;
@@ -122,7 +122,7 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     
     XMLNode symbol_node = XMLUtils::get_next_element_by_local_name(creature_node, "Symbol");
     Symbol s('?', Colour::COLOUR_WHITE);
-    parse_symbol(s, symbol_node, force_ascii);
+    parse_symbol(s, symbol_node);
     creature->set_symbol(s);
     
     XMLNode creature_generation_node = XMLUtils::get_next_element_by_local_name(creature_node, "CreatureGeneration");
@@ -361,6 +361,6 @@ void XMLCreaturesReader::parse_decision_strategy(const XMLNode& decision_strateg
     bool resist_switch = XMLUtils::get_child_node_bool_value(decision_strategy_node, "ResistSwitch", false);
     decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_RESIST_SWITCH, Bool::to_string(resist_switch));
 
-    creature->set_decision_strategy(decision_strategy);
+    creature->set_decision_strategy(std::move(decision_strategy));
   }
 }

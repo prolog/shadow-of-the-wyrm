@@ -9,6 +9,7 @@ class FishingSkillProcessor : public SkillProcessor
     FishingSkillProcessor();
 
     virtual ActionCostValue process(CreaturePtr creature, MapPtr map) override;
+    virtual SkillProcessorPtr clone() override;
 
   protected:
     std::pair<bool, FishingType> check_for_fishing_equipment(CreaturePtr creature, TilePtr creature_tile);

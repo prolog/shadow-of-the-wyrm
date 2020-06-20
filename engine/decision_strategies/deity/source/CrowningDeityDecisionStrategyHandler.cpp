@@ -13,11 +13,16 @@ CrowningDeityDecisionStrategyHandler::CrowningDeityDecisionStrategyHandler(const
 {
 }
 
+std::unique_ptr<DeityDecisionStrategyHandler> CrowningDeityDecisionStrategyHandler::clone()
+{
+  std::unique_ptr<DeityDecisionStrategyHandler> handler = std::make_unique<CrowningDeityDecisionStrategyHandler>(*this);
+  return handler;
+}
+
 bool CrowningDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {
   ReligionManager rm;
-
-  DeityPtr active_deity = rm.get_active_deity(creature);
+  Deity* active_deity = rm.get_active_deity(creature);
 
   if (active_deity && (active_deity->get_id() == deity_id))
   {
@@ -80,7 +85,7 @@ void CrowningDeityDecisionStrategyHandler::add_crowning_gift(CreaturePtr creatur
 {
   // A gift is customary.  First, try to generate an artifact.
   ReligionManager rm;
-  DeityPtr deity = rm.get_deity(deity_id);
+  Deity* deity = rm.get_deity(deity_id);
   ItemPtr crowning_gift;
   bool added_gift = false;
 
@@ -126,7 +131,7 @@ string CrowningDeityDecisionStrategyHandler::get_message_sid() const
   return message_sid;
 }
 
-vector<string> CrowningDeityDecisionStrategyHandler::select_crowning_gifts(CreaturePtr creature, DeityPtr deity)
+vector<string> CrowningDeityDecisionStrategyHandler::select_crowning_gifts(CreaturePtr creature, Deity* deity)
 {
   vector<string> gifts;
 
@@ -135,7 +140,7 @@ vector<string> CrowningDeityDecisionStrategyHandler::select_crowning_gifts(Creat
     if (RNG::percent_chance(deity->get_pct_chance_class_crowning()))
     {
       ClassManager cm;
-      ClassPtr cur_class = cm.get_class(creature->get_class_id());
+      Class* cur_class = cm.get_class(creature->get_class_id());
 
       if (cur_class != nullptr)
       {

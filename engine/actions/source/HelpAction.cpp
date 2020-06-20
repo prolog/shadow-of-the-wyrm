@@ -19,10 +19,10 @@ ActionCostValue HelpAction::help(CreaturePtr creature) const
 {
   CreaturePtr nullc;
   ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
+  DecisionStrategy* decision_strategy = decision_strategy = creature->get_decision_strategy();
 
-  DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
   CommandFactoryPtr command_factory = std::make_unique<HelpCommandFactory>();
-  KeyboardCommandMapPtr kb_command_map = std::make_shared<HelpKeyboardCommandMap>();
+  KeyboardCommandMapPtr kb_command_map = std::make_unique<HelpKeyboardCommandMap>();
   Game& game = Game::instance();
 
   if (decision_strategy)
@@ -33,8 +33,8 @@ ActionCostValue HelpAction::help(CreaturePtr creature) const
       string display_s = hs.display();
       int input = display_s.at(0);
 
-      CommandPtr help_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, &input);
-      action_cost_value = HelpCommandProcessor::process(creature, help_command);
+      CommandPtr help_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), &input, false);
+      action_cost_value = HelpCommandProcessor::process(creature, help_command.get());
     }
   }
 

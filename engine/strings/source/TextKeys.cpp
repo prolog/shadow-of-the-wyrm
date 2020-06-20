@@ -38,6 +38,7 @@ const string TextKeys::MAXIMUM_LEVEL_DIFFERENCE = "MAXIMUM_LEVEL_DIFFERENCE";
 const string TextKeys::TURNS = "TURNS";
 const string TextKeys::MAXIMUM_DEPTH_REACHED = "MAXIMUM_DEPTH_REACHED";
 const string TextKeys::MORTUARY = "MORTUARY";
+const string TextKeys::MORTUARY_FIRST_KILL = "MORTUARY_FIRST_KILL";
 const string TextKeys::STATUSES = "STATUSES";
 const string TextKeys::NPC_ESCAPES_MESSAGE = "NPC_ESCAPES_MESSAGE";
 const string TextKeys::SELECT_RACE = "SELECT_RACE";

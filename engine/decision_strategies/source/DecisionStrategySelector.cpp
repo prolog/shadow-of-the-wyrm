@@ -12,11 +12,11 @@ DecisionStrategyPtr DecisionStrategySelector::select_decision_strategy(CreatureP
   {
     if (creature->get_automatic_movement_ref().get_engaged())
     {
-      decision = std::make_shared<AutomaticMovementDecisionStrategy>(creature->get_automatic_movement_ref(), creature->get_decision_strategy()->get_controller());
+      decision = std::make_unique<AutomaticMovementDecisionStrategy>(creature->get_automatic_movement_ref(), creature->get_decision_strategy()->get_controller());
     }
     else
     {
-      decision = creature->get_decision_strategy();
+      decision = DecisionStrategyPtr(creature->get_decision_strategy()->copy());
     }
   }
 

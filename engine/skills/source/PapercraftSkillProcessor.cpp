@@ -66,6 +66,12 @@ ActionCostValue PapercraftSkillProcessor::process(CreaturePtr creature, MapPtr m
   return acv;
 }
 
+SkillProcessorPtr PapercraftSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<PapercraftSkillProcessor>();
+  return proc;
+}
+
 // Check to see if the creature has the right equipment for papermaking.
 bool PapercraftSkillProcessor::check_for_equipment(CreaturePtr creature, IMessageManager& manager)
 {

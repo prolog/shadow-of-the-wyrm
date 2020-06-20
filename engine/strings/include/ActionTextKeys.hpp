@@ -9,6 +9,7 @@ class ActionTextKeys
   public:
     static std::string get_evoke_message(const std::string& desc_sid, const std::string& wand_desc, const bool is_player);
     static std::string get_quaff_message(const std::string& desc_sid, const std::string& potion_desc, const bool is_player);
+    static std::string get_quaff_confirmation_message(const std::string& consumable_desc);
     static std::string get_read_message(const std::string& player_read_sid, const std::string& monster_read_sid, const std::string& desc_sid, const std::string& readable_desc, const bool is_player);
     static std::string get_eat_message(const std::string& desc_sid, const std::string& consumable_desc, const bool is_player);
     static std::string get_eat_confirmation_message(const std::string& consumable_desc);
@@ -40,6 +41,8 @@ class ActionTextKeys
     static std::string get_toggle_autopickup_message(const bool autopickup_value, const std::vector<std::string>& item_type_names);
     static std::string get_unimpressed_message(const std::string& creature_desc_sid, const bool is_player);
     static std::string get_hide_failure_message(const std::string& creature_desc_sid, const bool is_player);
+    static std::string get_palette_switch_message(const std::string& new_palette_name_sid);
+    static std::string get_graphics_mode_switch_message(const std::string& new_display_name);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -222,6 +225,7 @@ class ActionTextKeys
     static const std::string ACTION_EVOKE_MONSTER;
     static const std::string ACTION_QUAFF_PLAYER;
     static const std::string ACTION_QUAFF_MONSTER;
+    static const std::string ACTION_QUAFF_CONFIRMATION;
     static const std::string ACTION_EAT_PLAYER;
     static const std::string ACTION_EAT_MONSTER;
     static const std::string ACTION_EAT_CONFIRMATION;
@@ -268,4 +272,6 @@ class ActionTextKeys
     static const std::string ACTION_HIDE_FAILURE_MONSTER;
     static const std::string ACTION_ITEM_PACK_PLAYER;
     static const std::string ACTION_ITEM_PACK_NPC;
+    static const std::string ACTION_SWITCH_PALETTE;
+    static const std::string ACTION_SWITCH_GRAPHICS_MODE;
 };

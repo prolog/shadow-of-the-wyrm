@@ -14,8 +14,8 @@ ClassMap XMLClassesReader::get_classes(const XMLNode& classes_node)
 
   // We always need the default class for every creature, regardless
   // of whether there's any XML.
-  ClassPtr default_class = std::make_shared<Class>();
-  classes.insert(make_pair(default_class->get_class_id(), default_class));
+  ClassPtr default_class = std::make_unique<Class>();
+  classes.insert(make_pair(default_class->get_class_id(), std::move(default_class)));
 
   if (!classes_node.is_null())
   {
@@ -27,7 +27,7 @@ ClassMap XMLClassesReader::get_classes(const XMLNode& classes_node)
 
       if (current_class)
       {
-        classes.insert(make_pair(current_class->get_class_id(), current_class));
+        classes.insert(make_pair(current_class->get_class_id(), std::move(current_class)));
       }
     }
   }
@@ -41,7 +41,7 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
 
   if (!class_node.is_null())
   {
-    current_class = std::make_shared<Class>();
+    current_class = std::make_unique<Class>();
 
     string internal_class_id = XMLUtils::get_attribute_value(class_node, "id");
 
@@ -60,7 +60,7 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
     XMLNode initial_statistics_node = XMLUtils::get_next_element_by_local_name(class_node, "ClassInitialStatistics");
     XMLNode initial_modifiers_node = XMLUtils::get_next_element_by_local_name(class_node, "ClassInitialModifiers");
 
-    parse_class_initial_modifiers(current_class, initial_modifiers_node);
+    parse_class_initial_modifiers(current_class.get(), initial_modifiers_node);
 
     uint hit_dice = XMLUtils::get_child_node_int_value(class_node, "HitDice");
     current_class->set_hit_dice(hit_dice);
@@ -72,12 +72,12 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
     XMLNode skills_node = XMLUtils::get_next_element_by_local_name(class_node, "Skills");
     XMLNode titles_node = XMLUtils::get_next_element_by_local_name(class_node, "Titles");
 
-    parse_class_resistances(current_class, resistances_node);
-    parse_class_skills(current_class, skills_node);
-    parse_class_titles(current_class, titles_node);
+    parse_class_resistances(current_class.get(), resistances_node);
+    parse_class_skills(current_class.get(), skills_node);
+    parse_class_titles(current_class.get(), titles_node);
     
     XMLNode crowning_node = XMLUtils::get_next_element_by_local_name(class_node, "Crowning");
-    parse_crowning_gifts(current_class, crowning_node);
+    parse_crowning_gifts(current_class.get(), crowning_node);
 
     float piety_cost_multiplier = XMLUtils::get_child_node_float_value(class_node, "PietyCostMultiplier", current_class->get_piety_cost_multiplier());
     current_class->set_piety_cost_multiplier(piety_cost_multiplier);
@@ -98,7 +98,7 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
     current_class->set_ap_regen_multiplier(ap_regen_multiplier);
    
     XMLNode deity_dislike_multipliers_node = XMLUtils::get_next_element_by_local_name(class_node, "DeityDislikeMultipliers");
-    parse_class_deity_dislike_multipliers(current_class, deity_dislike_multipliers_node);
+    parse_class_deity_dislike_multipliers(current_class.get(), deity_dislike_multipliers_node);
 
     XMLNode initial_equipment_and_inventory_node = XMLUtils::get_next_element_by_local_name(class_node, "InitialEquipmentAndInventory");
     map<EquipmentWornLocation, InitialItem> initial_eq;
@@ -119,7 +119,7 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
   return current_class;
 }
 
-void XMLClassesReader::parse_class_initial_modifiers(ClassPtr current_class, const XMLNode& initial_modifiers_node)
+void XMLClassesReader::parse_class_initial_modifiers(Class* current_class, const XMLNode& initial_modifiers_node)
 {
   if (current_class && !initial_modifiers_node.is_null())
   {
@@ -129,7 +129,7 @@ void XMLClassesReader::parse_class_initial_modifiers(ClassPtr current_class, con
   }
 }
 
-void XMLClassesReader::parse_class_resistances(ClassPtr current_class, const XMLNode& resistances_node)
+void XMLClassesReader::parse_class_resistances(Class* current_class, const XMLNode& resistances_node)
 {
   if (current_class && !resistances_node.is_null())
   {
@@ -141,7 +141,7 @@ void XMLClassesReader::parse_class_resistances(ClassPtr current_class, const XML
   }
 }
 
-void XMLClassesReader::parse_class_skills(ClassPtr current_class, const XMLNode& skills_node)
+void XMLClassesReader::parse_class_skills(Class* current_class, const XMLNode& skills_node)
 {
   if (current_class && !skills_node.is_null())
   {
@@ -153,7 +153,7 @@ void XMLClassesReader::parse_class_skills(ClassPtr current_class, const XMLNode&
   }
 }
 
-void XMLClassesReader::parse_class_titles(ClassPtr current_class, const XMLNode& titles_node)
+void XMLClassesReader::parse_class_titles(Class* current_class, const XMLNode& titles_node)
 {
   if (current_class && !titles_node.is_null())
   {
@@ -174,7 +174,7 @@ void XMLClassesReader::parse_class_titles(ClassPtr current_class, const XMLNode&
   }
 }
 
-void XMLClassesReader::parse_class_deity_dislike_multipliers(ClassPtr current_class, const XMLNode& deity_dislike_multipliers_node)
+void XMLClassesReader::parse_class_deity_dislike_multipliers(Class* current_class, const XMLNode& deity_dislike_multipliers_node)
 {
   if (!deity_dislike_multipliers_node.is_null())
   {
@@ -194,7 +194,7 @@ void XMLClassesReader::parse_class_deity_dislike_multipliers(ClassPtr current_cl
   }
 }
 
-void XMLClassesReader::parse_crowning_gifts(ClassPtr current_class, const XMLNode& crowning_node)
+void XMLClassesReader::parse_crowning_gifts(Class* current_class, const XMLNode& crowning_node)
 {
   vector<string> crowning_gifts = get_crowning_gifts(crowning_node);
   current_class->set_crowning_gifts(crowning_gifts);

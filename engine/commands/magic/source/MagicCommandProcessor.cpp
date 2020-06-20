@@ -14,7 +14,7 @@ MagicCommandProcessor::~MagicCommandProcessor()
 {
 }
 
-ActionCostValue MagicCommandProcessor::process(CreaturePtr creature, CommandPtr command)
+ActionCostValue MagicCommandProcessor::process(CreaturePtr creature, Command* command)
 {
   ActionCostValue process_result = ActionCostConstants::DEFAULT;
 

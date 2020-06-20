@@ -62,20 +62,23 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
       TilePtr creature_tile = MapUtils::get_tile_for_creature(game.get_current_map(), creature);
 
       ReligionManager rm;
-      DeityPtr deity = rm.get_active_deity(creature);
+      Deity* deity = rm.get_active_deity(creature);
 
-      // Decide on a course of action.
-      IDeityDecisionStrategyPtr deity_decision_strategy = DeityDecisionStrategyFactory::create_deity_decision_strategy(deity->get_id());
-      DeityDecisionStrategyHandlerPtr deity_decision_handler = deity_decision_strategy->get_decision(creature);
+      if (deity != nullptr)
+      {
+        // Decide on a course of action.
+        IDeityDecisionStrategyPtr deity_decision_strategy = DeityDecisionStrategyFactory::create_deity_decision_strategy(deity->get_id());
+        DeityDecisionStrategyHandlerPtr deity_decision_handler = deity_decision_strategy->get_decision(creature);
 
-      // Act on that decision.
-      DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature, creature_tile);
+        // Act on that decision.
+        DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature, creature_tile);
 
-      // Reduce the piety and update the player on the result.
-      finish_prayer(creature, decision_implications);
+        // Reduce the piety and update the player on the result.
+        finish_prayer(creature, decision_implications);
 
-      // Break the Agnostic conduct.
-      creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_AGNOSTIC);
+        // Break the Agnostic conduct.
+        creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_AGNOSTIC);
+      }
     }
   }
 
@@ -123,10 +126,9 @@ void PrayerAction::finish_prayer(CreaturePtr creature, const DeityDecisionImplic
   
   Religion& religion = creature->get_religion_ref();
   string deity_id = religion.get_active_deity_id();
-  DeityPtr creature_deity = rm.get_deity(deity_id);
   DeityStatus status = religion.get_deity_status(deity_id);
 
-  ClassPtr cur_class = cm.get_class(creature->get_class_id());
+  Class* cur_class = cm.get_class(creature->get_class_id());
   float piety_cost_multiplier = cur_class->get_piety_cost_multiplier();
   int piety_cost = static_cast<int>(piety_loss * piety_cost_multiplier);
   int initial_piety = status.get_piety();

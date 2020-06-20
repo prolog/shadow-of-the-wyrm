@@ -185,12 +185,12 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
             // Process the spell shape.
             SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(spell.get_shape().get_spell_shape_type());
 
-            if (spell_processor)
+            if (spell_processor != nullptr)
             {
               SpellcastingProcessor sp;
 
               // Spells always use the "uncursed" effect status.
-              sp.process(spell_processor, creature, current_map, caster_coord, spell_direction, spell, ItemStatus::ITEM_STATUS_UNCURSED);
+              sp.process(spell_processor.get(), creature, current_map, caster_coord, spell_direction, spell, ItemStatus::ITEM_STATUS_UNCURSED);
 
               // Train the creature's magic skills
               train_skills(creature, spell);
@@ -346,7 +346,7 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
 
   // Make the creature select a direction.
   CommandFactoryPtr command_factory = std::make_unique<CommandFactory>();
-  KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
+  KeyboardCommandMapPtr kb_command_map = std::make_unique<KeyboardCommandMap>();
 
   // If the creature is the player, inform the player that a direction is needed.
   if (creature->get_is_player())
@@ -362,13 +362,21 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
   }
 
   // Try to get a direction.  This might fail.
-  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, 0);
+  Game& game = Game::instance();
+  DisplayPtr display = game.get_display();
+
+  if (display != nullptr)
+  {
+    display->refresh_current_window();
+  }
+
+  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0, false);
 
   if (base_command)
   {
     // Check to see if it's an actual directional command
-    std::shared_ptr<DirectionalCommand> dcommand;
-    dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
+    DirectionalCommand* dcommand;
+    dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
 
     if (dcommand)
     {
@@ -420,8 +428,8 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
   bool cast_spells = true;
 
   Game& game = Game::instance();
-  SpellScreenDisplayStrategyPtr sds = std::make_shared<DefaultSpellScreenDisplayStrategy>();
-  SpellSelectionScreen sss(game.get_display(), creature, sds);
+  SpellScreenDisplayStrategyPtr sds = std::make_unique<DefaultSpellScreenDisplayStrategy>();
+  SpellSelectionScreen sss(game.get_display(), creature, sds.get());
 
   string display_s = sss.display();
   int input = display_s.at(0);
@@ -429,17 +437,17 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
 
   string spell_id = sss.get_selected_spell(screen_selection);
 
-  DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+  DecisionStrategy* decision_strategy = creature->get_decision_strategy();
   CommandFactoryPtr command_factory    = std::make_unique<MagicCommandFactory>();
-  KeyboardCommandMapPtr kb_command_map = std::make_shared<MagicKeyboardCommandMap>();
+  KeyboardCommandMapPtr kb_command_map = std::make_unique<MagicKeyboardCommandMap>();
 
   if (decision_strategy)
   {
     // Get the actual command, signalling to the decision function that
     // input has been provided (don't try to get the input twice).
-    CommandPtr magic_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, &input);
+    CommandPtr magic_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), &input, false);
 
-    action_cost_value = MagicCommandProcessor::process(creature, magic_command);
+    action_cost_value = MagicCommandProcessor::process(creature, magic_command.get());
 
     if (action_cost_value > 0 && !spell_id.empty())
     {

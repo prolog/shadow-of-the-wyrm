@@ -44,7 +44,7 @@ class CombatManager
     void handle_explosive_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr current_map, const int damage_dealt, const Damage& damage_info, const AttackType attack_type);
 
     // Can the creature split when hit?
-    void handle_split_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, RacePtr creature_race, MapPtr current_map);
+    void handle_split_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, Race* creature_race, MapPtr current_map);
 
     // Set the creature to hostile, and yell out for support.
     void handle_hostility_implications(CreaturePtr attacking_creature, CreaturePtr attacked_creature);

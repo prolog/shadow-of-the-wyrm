@@ -39,6 +39,20 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>thrall</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>2</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>spook</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>1</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>skeletal_warrior</ID>
 				<Coord>
 					<Row>5</Row>
@@ -53,14 +67,98 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>mummy</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>48</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>ardu</ID>
 				<Coord>
 					<Row>9</Row>
 					<Col>28</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>skeletal_warrior</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>68</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>crone</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>69</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>mummy</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>70</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>crone</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>71</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>skeletal_warrior</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>72</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>skeletal_warrior</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>73</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>crone</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>74</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items>
+			<Placement>
+				<ID>_magici_shard</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>65</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>enchanting_scroll</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>65</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>_magici_shard</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>75</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>gain_attributes_potion</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>75</Col>
+				</Coord>
+			</Placement>
 			<Placement>
 				<ID>wintersea_keep_tower_key</ID>
 				<Coord>

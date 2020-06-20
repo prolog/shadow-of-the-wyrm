@@ -22,6 +22,7 @@ string ItemDescriber::describe() const
 
     ItemIdentifier item_id;
     ss << item_id.get_appropriate_description(item);
+    ss << describe_tried();
     ss << describe_quantity_and_value();
 
     // Add weight
@@ -49,6 +50,18 @@ string ItemDescriber::describe_usage() const
   }
 
   return item_description;
+}
+
+string ItemDescriber::describe_tried() const
+{
+  ostringstream ss;
+
+  if (item && String::to_bool(item->get_additional_property(ItemTextKeys::ITEM_TRIED)))
+  {
+    ss << " " << StringTable::get(ItemTextKeys::ITEM_TRIED);
+  }
+
+  return ss.str();
 }
 
 string ItemDescriber::describe_resists_and_flags() const

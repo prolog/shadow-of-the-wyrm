@@ -52,6 +52,12 @@ ActionCostValue DisarmTrapsSkillProcessor::process(CreaturePtr creature, MapPtr 
   return acv;
 }
 
+SkillProcessorPtr DisarmTrapsSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<DisarmTrapsSkillProcessor>();
+  return proc;
+}
+
 pair<int, TileDirectionMap> DisarmTrapsSkillProcessor::count_known_traps(const TileDirectionMap& tdm)
 {
   pair<int, TileDirectionMap> num_traps = {0, {}};
@@ -106,13 +112,13 @@ bool DisarmTrapsSkillProcessor::disarm_trap(const std::pair<int, TileDirectionMa
       }
 
       CommandFactoryPtr command_factory = std::make_unique<CommandFactory>();
-      KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
-      CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, 0);
+      KeyboardCommandMapPtr kb_command_map = std::make_unique<KeyboardCommandMap>();
+      CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0, true);
 
-      if (base_command)
+      if (base_command != nullptr)
       {
-        std::shared_ptr<DirectionalCommand> dcommand;
-        dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
+        DirectionalCommand* dcommand;
+        dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
 
         if (dcommand)
         {

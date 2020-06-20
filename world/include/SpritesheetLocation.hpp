@@ -8,6 +8,7 @@ class SpritesheetIndex
 {
   public:
     static const std::string SPRITESHEET_INDEX_SYSTEM;
+    static const std::string SPRITESHEET_INDEX_CREATURE;
 
   protected:
     SpritesheetIndex();

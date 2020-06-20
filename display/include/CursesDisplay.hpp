@@ -22,6 +22,8 @@ class CursesDisplay : public Display
 	  bool create() override;
 	  void tear_down() override;
 
+    virtual std::string get_name() const override;
+
     unsigned int get_width() const override;
     unsigned int get_height() const override;
 
@@ -35,7 +37,7 @@ class CursesDisplay : public Display
 
     // Functions to add messages to the message buffer.
     void add_message(const std::string& message, const Colour colour, const bool reset_prompt) override;
-    std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool reset_prompt) override;
+    std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool reset_prompt, const std::string& default_for_esc_key) override;
 
     void halt_messages() override;
 
@@ -53,6 +55,12 @@ class CursesDisplay : public Display
 	  void clear_screen() override;
 
     void set_spritesheets(const std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>>& spritesheet_details) override;
+
+    // Palettes
+    void set_palette_id(const std::string& new_palette_id) override;
+    virtual void set_palette(const std::string& new_palette_id) override;
+    virtual std::string get_palette_id() const override;
+    virtual std::pair<bool, std::pair<std::string, std::string>> switch_colour_palette(const std::string& current_palette_id) override;
 
     virtual Display* clone() override;
 
@@ -88,6 +96,7 @@ class CursesDisplay : public Display
     // Without a WINDOW* argument, stdscr is used.
     virtual void enable_colour(const Colour colour) override;
     virtual void disable_colour(const Colour colour) override;
+    virtual void set_colour(const int colour, const int r, const int g, const int b) override;
 
     void enable_colour(const int colour, WINDOW* window);
     void disable_colour(const int colour, WINDOW* window);

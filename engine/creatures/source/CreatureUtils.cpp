@@ -1,6 +1,7 @@
 #include "ActionTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CarryingCapacityCalculator.hpp"
+#include "ClassManager.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureUtils.hpp"
 #include "DeityTextKeys.hpp"
@@ -12,6 +13,7 @@
 #include "LineOfSightCalculator.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ModifyStatisticsEffect.hpp"
+#include "RaceManager.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
 #include "SpellAdditionalProperties.hpp"
@@ -78,15 +80,14 @@ void CreatureUtils::add_hunger_level_message_if_necessary(CreaturePtr creature, 
 string CreatureUtils::get_race_class_synopsis(CreaturePtr c)
 {
   string synopsis;
-  Game& game = Game::instance();
 
   string race_id = c->get_race_id();
   string class_id = c->get_class_id();
-  RaceMap races = game.get_races_ref();
-  ClassMap classes = game.get_classes_ref();
-
-  RacePtr race = races[race_id];
-  ClassPtr current_class = classes[class_id];
+  
+  RaceManager rm;
+  ClassManager cm;
+  Race* race = rm.get_race(race_id);
+  Class* current_class = cm.get_class(class_id);
 
   if (race && current_class)
   {
@@ -121,13 +122,13 @@ void CreatureUtils::handle_alignment_change(CreaturePtr creature, const int new_
       // Champion?  Not anymore!
       ReligionManager rm;
       Religion& religion = creature->get_religion_ref();
-      DeityPtr active_deity = rm.get_active_deity(creature);
+      Deity* active_deity = rm.get_active_deity(creature);
       DeityStatus status = rm.get_active_deity_status(creature);
 
-      if (status.get_champion_type() == ChampionType::CHAMPION_TYPE_CROWNED)
+      if (active_deity != nullptr && status.get_champion_type() == ChampionType::CHAMPION_TYPE_CROWNED)
       {
         // The creature is hereby a fallen champion of all deities.
-        for (auto deity_pair : deities)
+        for (auto& deity_pair : deities)
         {
           string deity_id = deity_pair.second->get_id();
 
@@ -148,13 +149,13 @@ void CreatureUtils::handle_alignment_change(CreaturePtr creature, const int new_
 
       // Change religion.
       // Get all the deities for the new alignment range.
-      vector<DeityPtr> potential_deities;
+      vector<Deity*> potential_deities;
 
-      for (auto deity_pair : deities)
+      for (auto& deity_pair : deities)
       {
-        DeityPtr deity = deity_pair.second;
+        Deity* deity = deity_pair.second.get();
 
-        if (deity && !deity->get_id().empty() && (deity->get_alignment_range() == range_after))
+        if (deity != nullptr && !deity->get_id().empty() && (deity->get_alignment_range() == range_after))
         {
           potential_deities.push_back(deity);
         }
@@ -166,7 +167,7 @@ void CreatureUtils::handle_alignment_change(CreaturePtr creature, const int new_
         std::shuffle(potential_deities.begin(), potential_deities.end(), RNG::get_engine());
 
         // Make this the active deity for the creature.
-        DeityPtr new_deity = potential_deities.at(0);
+        Deity* new_deity = potential_deities.at(0);
         religion.set_active_deity_id(new_deity->get_id());
 
         // Add a message about the new deity.
@@ -380,16 +381,16 @@ pair<bool, string> CreatureUtils::can_pick_up(CreaturePtr c, ItemPtr i)
   return can_pu;
 }
 
-RacePtr CreatureUtils::get_random_user_playable_race()
+Race* CreatureUtils::get_random_user_playable_race()
 {
   Game& game = Game::instance();
-  RaceMap  races = game.get_races_ref();
-  vector<RacePtr> playable_races;
-  RacePtr race;
+  const RaceMap& races = game.get_races_ref();
+  vector<Race*> playable_races;
+  Race* race = nullptr;
 
   for (const auto& race_pair : races)
   {
-    RacePtr race = race_pair.second;
+    Race* race = race_pair.second.get();
 
     if (race && race->get_user_playable())
     {
@@ -405,16 +406,16 @@ RacePtr CreatureUtils::get_random_user_playable_race()
   return race;
 }
 
-ClassPtr CreatureUtils::get_random_user_playable_class()
+Class* CreatureUtils::get_random_user_playable_class()
 {
   Game& game = Game::instance();
-  ClassMap classes = game.get_classes_ref();
-  vector<ClassPtr> playable_classes;
-  ClassPtr cur_class;
+  const ClassMap& classes = game.get_classes_ref();
+  vector<Class*> playable_classes;
+  Class* cur_class = nullptr;
 
   for (const auto& class_pair : classes)
   {
-    ClassPtr cur_class = class_pair.second;
+    Class* cur_class = class_pair.second.get();
 
     if (cur_class && cur_class->get_user_playable())
     {
@@ -430,12 +431,11 @@ ClassPtr CreatureUtils::get_random_user_playable_class()
   return cur_class;
 }
 
-DeityPtr CreatureUtils::get_random_deity_for_race(RacePtr race)
+Deity* CreatureUtils::get_random_deity_for_race(Race* race)
 {
-  Game& game = Game::instance();
-  DeityMap deities = game.get_deities_cref();
   vector<string> allowable_deity_ids;
-  DeityPtr deity;
+  Deity* deity = nullptr;
+  ReligionManager rm;
 
   if (race != nullptr)
   {
@@ -445,7 +445,7 @@ DeityPtr CreatureUtils::get_random_deity_for_race(RacePtr race)
   if (!allowable_deity_ids.empty())
   {
     string deity_id = allowable_deity_ids.at(RNG::range(0, allowable_deity_ids.size() - 1));
-    deity = deities.at(deity_id);
+    deity = rm.get_deity(deity_id);
   }
 
   return deity;
@@ -761,7 +761,7 @@ MapPtr CreatureUtils::update_fov_map(MapPtr current_map, MapPtr v_map, CreatureP
 
     FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy(current_creature->get_is_player());
     fov_map = fov_strategy->calculate(current_creature, view_map, creature_coords, los_len);
-    DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
+    DecisionStrategy* strategy = current_creature->get_decision_strategy();
 
     if (strategy)
     {
@@ -794,6 +794,27 @@ bool CreatureUtils::has_negative_status(CreaturePtr creature)
   }
 
   return has_neg;
+}
+
+int CreatureUtils::adjust_str_until_unburdened(CreaturePtr creature)
+{
+  int incr_cnt = 0;
+
+  if (creature != nullptr)
+  {
+    // Some creatures might start with low Str and a lot of carried weight.
+    // Adjust Str until carrying capacity is fine.
+    BurdenLevel bl = BurdenLevelConverter::to_burden_level(creature);
+
+    while (bl != BurdenLevel::BURDEN_LEVEL_UNBURDENED)
+    {
+      CreatureUtils::incr_str(creature, false);
+      bl = BurdenLevelConverter::to_burden_level(creature);
+      incr_cnt++;
+    }
+  }
+
+  return incr_cnt;
 }
 
 #ifdef UNIT_TESTS

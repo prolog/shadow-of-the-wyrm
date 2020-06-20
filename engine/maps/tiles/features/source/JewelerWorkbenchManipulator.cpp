@@ -85,7 +85,7 @@ bool JewelerWorkbenchManipulator::check_creature_has_jewelry_skill(CreaturePtr c
 {
   bool knows_jewelry = true;
 
-  SkillPtr jeweler_skill;
+  Skill* jeweler_skill;
   if (creature && (jeweler_skill = creature->get_skills().get_skill(SkillType::SKILL_GENERAL_JEWELER)) != nullptr)
   {
     if (jeweler_skill->get_value() <= 0)

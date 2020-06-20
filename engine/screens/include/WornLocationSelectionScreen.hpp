@@ -15,7 +15,7 @@ class WornLocationSelectionScreen : public Screen
     std::string prompt_text_sid;
 };
 
-// The shared_ptr is needed so that it can be passed around without actually
+// The unique_ptr is needed so that it can be passed around without actually
 // calling the destructor, which triggers the removal/freeing of the underlying
 // texture in SDL.
-using WornLocationSelectionScreenPtr = std::shared_ptr<WornLocationSelectionScreen>;
+using WornLocationSelectionScreenPtr = std::unique_ptr<WornLocationSelectionScreen>;

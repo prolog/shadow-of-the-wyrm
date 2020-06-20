@@ -8,6 +8,9 @@ using KeyboardCommandMapSerializationMap = std::map<ClassIdentifier, KeyboardCom
 class KeyboardCommandMapFactory
 {
   public:
+    KeyboardCommandMapFactory(const KeyboardCommandMapFactory&) = delete;
+    bool operator=(const KeyboardCommandMapFactory&) = delete;
+
     static KeyboardCommandMapPtr create_keyboard_command_map(const ClassIdentifier ci);
 
   protected:

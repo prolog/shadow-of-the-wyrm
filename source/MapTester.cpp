@@ -137,7 +137,7 @@ void   initialize_settings();
 void   print_skill_name();
 void   race_info();
 void   class_info();
-void   print_race_info(RaceMap& race_map, const std::string& id);
+void   print_race_info(const RaceMap& race_map, const std::string& id);
 void   print_class_info(ClassMap& class_map, const std::string& id);
 
 void initialize_settings()
@@ -288,7 +288,7 @@ void tile_to_string(TilePtr tile, std::string& tile_ascii, std::string& map_s, c
 
 std::string generate_cavern()
 {
-  GeneratorPtr cavern_gen = std::make_shared<CavernGenerator>("");
+  GeneratorPtr cavern_gen = std::make_unique<CavernGenerator>("");
   MapPtr map = cavern_gen->generate();
   std::cout << map_to_string(map, false);
   return map_to_string(map);
@@ -320,9 +320,9 @@ std::string generate_scattered_graveyard()
 
 std::string generate_keep()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr base_map = field_gen->generate();
-  GeneratorPtr keep_gen = std::make_shared<KeepGenerator>(base_map);
+  GeneratorPtr keep_gen = std::make_unique<KeepGenerator>(base_map);
   MapPtr keep_map = keep_gen->generate();
   std::cout << map_to_string(keep_map, false);
   return map_to_string(keep_map);
@@ -330,7 +330,7 @@ std::string generate_keep()
 
 std::string generate_crypt()
 {
-  GeneratorPtr crypt_gen = std::make_shared<CryptGenerator>("");
+  GeneratorPtr crypt_gen = std::make_unique<CryptGenerator>("");
   MapPtr crypt_map = crypt_gen->generate();
   std::cout << map_to_string(crypt_map, false);
   return map_to_string(crypt_map);
@@ -338,9 +338,9 @@ std::string generate_crypt()
 
 std::string generate_simple_church()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr map = field_gen->generate();
-  GeneratorPtr church_gen = std::make_shared<SimpleChurchGenerator>("", map);
+  GeneratorPtr church_gen = std::make_unique<SimpleChurchGenerator>("", map);
   MapPtr church_map = church_gen->generate();
   std::cout << map_to_string(church_map, false);
   return map_to_string(church_map);
@@ -348,9 +348,9 @@ std::string generate_simple_church()
 
 std::string generate_fortified_church()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  GeneratorPtr church_gen = std::make_shared<FortifiedChurchGenerator>("", field_map);
+  GeneratorPtr church_gen = std::make_unique<FortifiedChurchGenerator>("", field_map);
   MapPtr church_map = church_gen->generate();
   std::cout << map_to_string(church_map, false);
   return map_to_string(church_map);
@@ -358,9 +358,9 @@ std::string generate_fortified_church()
 
 std::string generate_cathedral()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  GeneratorPtr cathedral_gen = std::make_shared<CathedralGenerator>("", field_map);
+  GeneratorPtr cathedral_gen = std::make_unique<CathedralGenerator>("", field_map);
   MapPtr cathedral_map = cathedral_gen->generate();
   std::cout << map_to_string(cathedral_map, false);
   return map_to_string(cathedral_map);
@@ -368,9 +368,9 @@ std::string generate_cathedral()
 
 std::string generate_snaking_temple()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  GeneratorPtr temple_gen = std::make_shared<SnakingTempleGenerator>("", field_map);
+  GeneratorPtr temple_gen = std::make_unique<SnakingTempleGenerator>("", field_map);
   MapPtr temple_map = temple_gen->generate();
   std::cout << map_to_string(temple_map, false);
   return map_to_string(temple_map);
@@ -378,9 +378,9 @@ std::string generate_snaking_temple()
 
 std::string generate_simple_temple()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  GeneratorPtr temple_gen = std::make_shared<SimpleTempleGenerator>("", field_map);
+  GeneratorPtr temple_gen = std::make_unique<SimpleTempleGenerator>("", field_map);
   MapPtr temple_map = temple_gen->generate();
   std::cout << map_to_string(temple_map, false);
   return map_to_string(temple_map);
@@ -388,9 +388,9 @@ std::string generate_simple_temple()
 
 std::string generate_grand_temple()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  GeneratorPtr temple_gen = std::make_shared<GrandTempleGenerator>("", field_map);
+  GeneratorPtr temple_gen = std::make_unique<GrandTempleGenerator>("", field_map);
   MapPtr temple_map = temple_gen->generate();
   std::cout << map_to_string(temple_map, false);
   return map_to_string(temple_map);
@@ -398,9 +398,9 @@ std::string generate_grand_temple()
 
 std::string generate_island_sacrifice_site()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  GeneratorPtr site_gen = std::make_shared<IslandSacrificeSiteGenerator>("", field_map);
+  GeneratorPtr site_gen = std::make_unique<IslandSacrificeSiteGenerator>("", field_map);
   MapPtr site_map = site_gen->generate();
   std::cout << map_to_string(site_map, false);
   return map_to_string(site_map);
@@ -408,9 +408,9 @@ std::string generate_island_sacrifice_site()
 
 std::string generate_rocky_sacrifice_site()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  GeneratorPtr site_gen = std::make_shared<RockySacrificeSiteGenerator>("", field_map);
+  GeneratorPtr site_gen = std::make_unique<RockySacrificeSiteGenerator>("", field_map);
   MapPtr site_map = site_gen->generate();
   std::cout << map_to_string(site_map, false);
   return map_to_string(site_map);
@@ -418,9 +418,9 @@ std::string generate_rocky_sacrifice_site()
 
 std::string generate_overgrown_sacrifice_site()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  GeneratorPtr site_gen = std::make_shared<OvergrownSacrificeSiteGenerator>("", field_map);
+  GeneratorPtr site_gen = std::make_unique<OvergrownSacrificeSiteGenerator>("", field_map);
   MapPtr site_map = site_gen->generate();
   std::cout << map_to_string(site_map, false);
   return map_to_string(site_map);
@@ -428,7 +428,7 @@ std::string generate_overgrown_sacrifice_site()
 
 std::string generate_field()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr map = field_gen->generate();
   std::cout << map_to_string(map, false);
   return map_to_string(map);
@@ -436,7 +436,7 @@ std::string generate_field()
 
 std::string generate_forest()
 {
-  GeneratorPtr forest_gen = std::make_shared<ForestGenerator>("");
+  GeneratorPtr forest_gen = std::make_unique<ForestGenerator>("");
   MapPtr map = forest_gen->generate();
   std::cout << map_to_string(map, false);
   return map_to_string(map);
@@ -446,7 +446,7 @@ std::string generate_field_road()
 {
   CardinalDirection direction = static_cast<CardinalDirection>(RNG::range(0, 3));
   int width = RNG::range(3, 6);
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr map = field_gen->generate();
   RoadGenerator road_gen(direction, width);
   MapPtr final_map = road_gen.generate(map);
@@ -458,7 +458,7 @@ std::string generate_forest_road()
 {
   CardinalDirection direction = static_cast<CardinalDirection>(RNG::range(0, 3));
   int width = RNG::range(3, 6);
-  GeneratorPtr forest_gen = std::make_shared<ForestGenerator>("");
+  GeneratorPtr forest_gen = std::make_unique<ForestGenerator>("");
   MapPtr map = forest_gen->generate();
   RoadGenerator road_gen(direction, width);
   MapPtr final_map = road_gen.generate(map);
@@ -468,7 +468,7 @@ std::string generate_forest_road()
 
 std::string generate_field_settlement_ruins()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   SettlementRuinsGenerator sr_gen(field_map);
   MapPtr ruins_map = sr_gen.generate();
@@ -478,7 +478,7 @@ std::string generate_field_settlement_ruins()
 
 std::string generate_field_ruins()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   RuinsGenerator rg("fdsa", TileType::TILE_TYPE_FIELD, RuinsType::RUINS_TYPE_KEEP);
   MapPtr ruins_map = rg.generate(field_map->size());
@@ -488,7 +488,7 @@ std::string generate_field_ruins()
 
 std::string generate_marsh()
 {
-  GeneratorPtr marsh_gen = std::make_shared<MarshGenerator>("");
+  GeneratorPtr marsh_gen = std::make_unique<MarshGenerator>("");
   MapPtr marsh_map = marsh_gen->generate();
   std::cout << map_to_string(marsh_map, false);
   return map_to_string(marsh_map);
@@ -496,7 +496,7 @@ std::string generate_marsh()
 
 std::string generate_settlement()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   SettlementGenerator settle_gen(field_map);
   MapPtr settlement_map = settle_gen.generate();
@@ -506,7 +506,7 @@ std::string generate_settlement()
 
 std::string generate_hamlet()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   HamletGenerator hamlet_gen(field_map);
   MapPtr hamlet_map = hamlet_gen.generate();
@@ -516,7 +516,7 @@ std::string generate_hamlet()
 
 std::string generate_walled_settlement()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   WalledSettlementGenerator ws_gen(field_map);
   MapPtr ws_map = ws_gen.generate();
@@ -526,7 +526,7 @@ std::string generate_walled_settlement()
 
 std::string generate_scattered_settlement()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   ScatteredSettlementGenerator sc_gen(field_map);
   MapPtr sc_map = sc_gen.generate();
@@ -536,7 +536,7 @@ std::string generate_scattered_settlement()
 
 std::string generate_dungeon()
 {
-  GeneratorPtr dun_gen = std::make_shared<DungeonGenerator>(""); // ha ha
+  GeneratorPtr dun_gen = std::make_unique<DungeonGenerator>(""); // ha ha
   MapPtr dun_gen_map = dun_gen->generate();
   std::cout << map_to_string(dun_gen_map, false);
   return map_to_string(dun_gen_map);
@@ -544,7 +544,7 @@ std::string generate_dungeon()
 
 std::string generate_spiral_dungeon()
 {
-  GeneratorPtr sd_gen = std::make_shared<SpiralDungeonGenerator>("");
+  GeneratorPtr sd_gen = std::make_unique<SpiralDungeonGenerator>("");
   MapPtr sd_map = sd_gen->generate();
   std::cout << map_to_string(sd_map, false);
   return map_to_string(sd_map);
@@ -552,7 +552,7 @@ std::string generate_spiral_dungeon()
 
 std::string generate_sea()
 {
-  GeneratorPtr sea_gen = std::make_shared<SeaGenerator>("");
+  GeneratorPtr sea_gen = std::make_unique<SeaGenerator>("");
   MapPtr sea_map = sea_gen->generate();
   std::cout << map_to_string(sea_map, false);
   return map_to_string(sea_map);
@@ -560,7 +560,7 @@ std::string generate_sea()
 
 std::string generate_mine()
 {
-  GeneratorPtr mine_gen = std::make_shared<MineGenerator>("");
+  GeneratorPtr mine_gen = std::make_unique<MineGenerator>("");
   MapPtr mine_map = mine_gen->generate();
   std::cout << map_to_string(mine_map, false);
   return map_to_string(mine_map);
@@ -568,7 +568,7 @@ std::string generate_mine()
 
 std::string generate_castle()
 {
-  GeneratorPtr castle_gen = std::make_shared<CastleGenerator>("", TileType::TILE_TYPE_FIELD);
+  GeneratorPtr castle_gen = std::make_unique<CastleGenerator>("", TileType::TILE_TYPE_FIELD);
   MapPtr castle_map = castle_gen->generate();
   std::cout << map_to_string(castle_map, false);
   return map_to_string(castle_map);
@@ -576,7 +576,7 @@ std::string generate_castle()
 
 std::string generate_sewer()
 {
-  GeneratorPtr sewer_gen = std::make_shared<SewerGenerator>("");
+  GeneratorPtr sewer_gen = std::make_unique<SewerGenerator>("");
   MapPtr sewer_map = sewer_gen->generate();
   std::cout << map_to_string(sewer_map, false);
   return map_to_string(sewer_map);
@@ -584,7 +584,7 @@ std::string generate_sewer()
 
 std::string generate_rectangular_shrine()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   GeneratorPtr shrine_gen = ShrineGeneratorFactory::create_rectangular_shrine_generator(field_map);
   MapPtr shrine_map = shrine_gen->generate();
@@ -594,7 +594,7 @@ std::string generate_rectangular_shrine()
 
 std::string generate_cross_shrine()
 {
-  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   GeneratorPtr shrine_gen = ShrineGeneratorFactory::create_cross_shrine_generator(field_map);
   MapPtr shrine_map = shrine_gen->generate();
@@ -604,7 +604,7 @@ std::string generate_cross_shrine()
 
 std::string generate_floating_tower()
 {
-  GeneratorPtr ft_gen = std::make_shared<FloatingTowerGenerator>("");
+  GeneratorPtr ft_gen = std::make_unique<FloatingTowerGenerator>("");
   MapPtr ft_map = ft_gen->generate();
   std::cout << map_to_string(ft_map, false);
   return map_to_string(ft_map);
@@ -612,7 +612,7 @@ std::string generate_floating_tower()
 
 std::string generate_well()
 {
-  GeneratorPtr well_gen = std::make_shared<WellGenerator>("");
+  GeneratorPtr well_gen = std::make_unique<WellGenerator>("");
   MapPtr well_map = well_gen->generate();
   std::cout << map_to_string(well_map, false);
   return map_to_string(well_map);
@@ -627,9 +627,9 @@ std::string generate_world()
   return map_to_string(map);
 }
 
-void print_race_info(RaceMap& race_map, const std::string& id)
+void print_race_info(const RaceMap& race_map, const std::string& id)
 {
-  RacePtr race = race_map[id];
+  Race* race = race_map.find(id)->second.get();
 
   if (race)
   {
@@ -644,7 +644,7 @@ void print_race_info(RaceMap& race_map, const std::string& id)
 
 void print_class_info(ClassMap& class_map, const std::string& id)
 {
-  ClassPtr current_class = class_map[id];
+  Class* current_class = class_map[id].get();
 
   if (current_class)
   {
@@ -1150,7 +1150,7 @@ MapPtr load_custom_map(const std::string& fname_pattern, const std::string& cust
 
 std::string generate_void()
 {
-  GeneratorPtr void_gen = std::make_shared<VoidGenerator>("");
+  GeneratorPtr void_gen = std::make_unique<VoidGenerator>("");
   MapPtr map = void_gen->generate();
   std::cout << map_to_string(map, false);
   return map_to_string(map);

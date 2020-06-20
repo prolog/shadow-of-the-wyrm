@@ -1,4 +1,75 @@
-Shadow of the Wyrm v1.1.7 "Sor"
+Shadow of the Wyrm v1.2.0 "Rodrigo"
+- Version declared February 16, 2020.  Version finalized June 20, 2020.
+
+- 1-bit sprite set now the default display mode.
+
+- Reflective beams such as lightning now bounce differently - they should
+  look more "connected" when looking at the output of diagonal beams.
+
+- Failing to learn a spell, or reading a spellbook for an unfamiliar magic,
+  now annotates the item as (tried). (Grond)
+
+- Mountain tiles now block line of sight.
+
+- F9 can be used to switch between a number of predefined colour palettes
+  in SDL mode.
+
+- F10 can be used to switch between tiles and ascii when using SDL (IceBox).
+
+- F12 now also reloads existing texture references.
+
+- Celeste, Aurelion, The Lady, and Vedere now dislike skinning humanoids
+  (hbholland).
+
+- Aeschburh now has a chaotic altar in the centre, courtesy of the new
+  inhabitants.
+
+- Shimmering clouds are now spirits, so they won't leave corpses and
+  can move through walls.
+
+- Snakeling sharpshooters now use crossbows.
+
+- The mortuary in the character details now notes your first kill.
+
+- The tombs at Wintersea are a bit more populated.
+
+- Changed the symbol for each of the Nine.
+
+- The help screen is now available on startup (YARD).
+
+- Sages now start with a little skill in Rods and Staves (YARD).
+
+- You can now use the escape key on user prompts (YARD).
+
+- Emperor's guard and Carcassian guards have now flipped colours (YARD).
+
+- Poison now stays in your body for less time.
+
+- Dual wield now adds some damage to the secondary weapon.
+
+- It's now possible to quaff items off the ground, similar to what's done
+  for eating.
+
+- There are no longer any racial deity restrictions: any race can select any
+  deity.
+
+- Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - In the skill screen, selecting Lore would erroneously describe it as
+    unimplemented.
+
+  - Inscriptions were broken in SDL.
+
+  - Creatures could start with more weight than they could carry, would be
+    overburdened, and couldn't shed the weight on the world map.  The player's
+    strength is now adjusted upward when the game starts until the player
+    is no longer burdened.
+
+  - Gamblers and gnomish sailors were missing bestiary descriptions (YARD).
+
+Shadow of the Wyrm v1.1.7 "Boccherini"
 - Version declared January 11, 2020.  Version finalized February 16, 2020.
 
 - Teleporting is now disallowed in Telari and Zaeda's Tower (fiamma).

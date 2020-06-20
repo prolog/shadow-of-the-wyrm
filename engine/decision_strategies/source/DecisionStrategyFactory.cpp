@@ -48,20 +48,20 @@ DecisionStrategyPtr DecisionStrategyFactory::create_decision_strategy(const stri
   
   if (decision_strategy_id == DecisionStrategyID::DECISION_STRATEGY_IMMOBILE)
   {
-    strategy = std::make_shared<ImmobileDecisionStrategy>(controller);
+    strategy = std::make_unique<ImmobileDecisionStrategy>(controller);
   }
   else if (decision_strategy_id == DecisionStrategyID::DECISION_STRATEGY_MOBILE)
   {
-    strategy = std::make_shared<MobileDecisionStrategy>(controller);
+    strategy = std::make_unique<MobileDecisionStrategy>(controller);
   }
   else if (decision_strategy_id == DecisionStrategyID::DECISION_STRATEGY_PLAYER)
   {
-    strategy = std::make_shared<PlayerDecisionStrategy>(curses_controller);
+    strategy = std::make_unique<PlayerDecisionStrategy>(curses_controller);
   }
   // ??? == PLAYER?  Could be interesting...
   else // Assume == DecisionStrategyID::DECISION_STRATEGY_DEFAULT
   {
-    strategy = std::make_shared<ImmobileDecisionStrategy>(controller);
+    strategy = std::make_unique<ImmobileDecisionStrategy>(controller);
   }
   
   return strategy;

@@ -17,11 +17,11 @@ RaceSelectionScreen::RaceSelectionScreen(DisplayPtr new_display, const string& s
 // instance at this point.
 //
 // The Screen will return an int based on the user's selection.  This will map to a race_id, which will then map to a
-// RacePtr.
+// Race*.
 void RaceSelectionScreen::initialize()
 {
   Game& game_instance = Game::instance();
-  RaceMap races = game_instance.get_races_ref();
+  const RaceMap& races = game_instance.get_races_ref();
   ostringstream synop;
 
   vector<ScreenComponentPtr> race_screen;
@@ -39,10 +39,10 @@ void RaceSelectionScreen::initialize()
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
   int current_id = 0;
-  for (RaceMap::iterator races_it = races.begin(); races_it != races.end(); races_it++)
+  for (auto& races_pair : races)
   {
-    string race_id = races_it->first;
-    RacePtr current_race = races_it->second;
+    string race_id = races_pair.first;
+    Race* current_race = races_pair.second.get();
 
     if (current_race && current_race->get_user_playable() && options)
     {
@@ -70,7 +70,7 @@ void RaceSelectionScreen::initialize()
   add_page(race_screen);
 
   // Set the prompt
-  PromptPtr any_key_prompt = std::make_shared<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr any_key_prompt = std::make_unique<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
   any_key_prompt->set_text_sid(PromptTextKeys::PROMPT_SELECT_AN_OPTION);
-  user_prompt = any_key_prompt;
+  user_prompt = std::move(any_key_prompt);
 }

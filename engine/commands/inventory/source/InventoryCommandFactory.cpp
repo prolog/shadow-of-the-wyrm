@@ -16,23 +16,23 @@ CommandPtr InventoryCommandFactory::create(const int key, const std::string& com
 
   if (command_name == InventoryCommandKeys::EXIT_INVENTORY)
   {
-    inventory_command = std::make_shared<ExitInventoryCommand>(key);
+    inventory_command = std::make_unique<ExitInventoryCommand>(key);
   }
   else if (command_name == InventoryCommandKeys::CLEAR_FILTER)
   {
-    inventory_command = std::make_shared<InventoryClearFilterCommand>(key);
+    inventory_command = std::make_unique<InventoryClearFilterCommand>(key);
   }
   else if (command_name == InventoryCommandKeys::FILTER_VIEW)
   {
-    inventory_command = std::make_shared<InventoryFilterViewCommand>(key);
+    inventory_command = std::make_unique<InventoryFilterViewCommand>(key);
   }
   else if (command_name == InventoryCommandKeys::SELECT_ITEM)
   {
-    inventory_command = std::make_shared<ItemSelectionCommand>(key);      
+    inventory_command = std::make_unique<ItemSelectionCommand>(key);      
   }
   else if (command_name == InventoryCommandKeys::CODEX)
   {
-    inventory_command = std::make_shared<CodexInventoryCommand>(key);
+    inventory_command = std::make_unique<CodexInventoryCommand>(key);
   }
   
   return inventory_command;

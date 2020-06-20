@@ -15,12 +15,12 @@ protected:
 
     virtual std::pair<std::vector<std::pair<Coordinate, TilePtr>>, MovementPath> create_beam(MapPtr map, const Spell& spell, const Coordinate& cur_coord, const Coordinate& caster_coord, const Direction d);
     virtual std::pair<std::vector<std::pair<Coordinate, TilePtr>>, MovementPath> create_multi_beam(const std::vector<std::vector<std::pair<Coordinate, TilePtr>>>& per_beam_affected_tiles, const std::vector<MovementPath>& per_beam_movement_paths, const size_t largest_at, const size_t largest_mp);
-    virtual Direction get_new_beam_direction_after_impact(const Direction old_direction, const Coordinate& current_coord, MapPtr map, const Spell& spell);
+    virtual std::pair<Direction, Coordinate> get_new_beam_direction_after_impact(const Direction old_direction, const Coordinate& current_coord, MapPtr map, const Spell& spell);
 
-    Direction get_ne_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell);
-    Direction get_nw_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell);
-    Direction get_se_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell);
-    Direction get_sw_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell);
+    std::pair<Direction, Coordinate> get_ne_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell);
+    std::pair<Direction, Coordinate> get_nw_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell);
+    std::pair<Direction, Coordinate> get_se_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell);
+    std::pair<Direction, Coordinate> get_sw_reflection(const Coordinate& current_coord, MapPtr map, const Spell& spell);
 
     void initialize_reflection_maps();
     void initialize_cardinal_reflection_map();

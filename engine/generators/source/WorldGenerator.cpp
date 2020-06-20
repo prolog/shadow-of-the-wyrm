@@ -1,22 +1,23 @@
 #include <vector>
 #include "AlignmentEnums.hpp"
 #include "CastleGenerator.hpp"
-#include "CoordUtils.hpp"
+#include "CellularAutomataGenerator.hpp"
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "CreatureGenerationConstants.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "CreatureGenerationOptionsStringBuilder.hpp"
 #include "DungeonGenerator.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
-#include "WorldGenerator.hpp"
-#include "TileGenerator.hpp"
-#include "RNG.hpp"
-#include "CellularAutomataGenerator.hpp"
 #include "MapProperties.hpp"
+#include "RaceManager.hpp"
+#include "RNG.hpp"
 #include "Serialize.hpp"
+#include "TileGenerator.hpp"
 #include "TileTextKeys.hpp"
 #include "VillageTile.hpp"
+#include "WorldGenerator.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
@@ -452,12 +453,12 @@ void WorldGenerator::populate_race_information()
 {
   Game& game = Game::instance();
   
-  RaceMap races = game.get_races_ref();
+  const RaceMap& races = game.get_races_ref();
     
-  for (RaceMap::const_iterator r_it = races.begin(); r_it != races.end(); r_it++)
+  for (const auto& r_pair : races)
   {
-    string current_race_id = r_it->first;
-    RacePtr race = r_it->second;
+    string current_race_id = r_pair.first;
+    Race* race = r_pair.second.get();
       
     if (race && race->get_user_playable() && race->get_has_random_villages() && !current_race_id.empty())
     {
@@ -473,8 +474,8 @@ void WorldGenerator::set_village_races(MapPtr map)
 //  int total_villages = village_coordinates.size();
 
   Game& game = Game::instance();
-  
-  RaceMap races = game.get_races_ref();
+  const RaceMap& races = game.get_races_ref();
+  RaceManager rm;
 
   for (const Coordinate& c : village_coordinates)
   {
@@ -492,7 +493,7 @@ void WorldGenerator::set_village_races(MapPtr map)
         if (count == rand_race_id_idx)
         {
           string race_id = *race_id_it;
-          RacePtr race = races[race_id];
+          Race* race = rm.get_race(race_id);
              
           // The population of the initial_race_ids set takes into consideration
           // that races must be user-playable (no bat villages!) and must allow
@@ -533,11 +534,12 @@ void WorldGenerator::set_village_races(MapPtr map)
 
       int rand_race_idx = RNG::range(0, playable_race_ids.size()-1);
       string race_id = playable_race_ids.at(rand_race_idx);
+      Race* race = rm.get_race(race_id);
 
-      if (village_tile != nullptr)
+      if (village_tile != nullptr && race != nullptr)
       {
         village_tile->set_village_race_id(race_id);
-        village_tile->set_tile_subtype(races[race_id]->get_settlement_tile_subtype());
+        village_tile->set_tile_subtype(race->get_settlement_tile_subtype());
       }
       else
       {
@@ -618,8 +620,8 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
   Dimensions dim = map->size();
   Game& game = Game::instance();
   
-  RaceMap races = game.get_races_ref();
-  DeityMap deities = game.get_deities_cref();
+  const DeityMap& deities = game.get_deities_cref();
+  RaceManager rm;
     
   for (const Coordinate& c : village_coordinates)
   {
@@ -658,10 +660,15 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
 
             if (!race_id.empty())
             {
-              vector<string> initial_deity_ids = races[race_id]->get_initial_deity_ids();
+              vector<string> initial_deity_ids = rm.get_race(race_id)->get_initial_deity_ids();
               int deity_id_idx = RNG::range(0, initial_deity_ids.size() - 1);
               string deity_id = initial_deity_ids[deity_id_idx];
-              DeityPtr deity = deities[deity_id];
+              Deity* deity = nullptr;
+              auto d_it = deities.find(deity_id);
+              if (d_it != deities.end())
+              {
+                deity = d_it->second.get();
+              }
               WorshipSiteTilePtr site_tile = tg.generate_worship_site_tile(deity->get_alignment_range(), deity_id, deity->get_worship_site_type());
               map->insert(adjacent_row, adjacent_col, site_tile);
               worship_site_generated = true;

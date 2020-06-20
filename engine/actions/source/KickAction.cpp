@@ -84,13 +84,13 @@ ActionCostValue KickAction::kick_on_regular_map(CreaturePtr creature, MapPtr cur
     // If automatic movement is engaged, use the direction that has already been
     // selected.  Otherwise, prompt the creature.
     CommandFactoryPtr command_factory = std::make_unique<CommandFactory>();
-    KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
-    CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, 0);
+    KeyboardCommandMapPtr kb_command_map = std::make_unique<KeyboardCommandMap>();
+    CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0, true);
 
     if (base_command)
     {
-      std::shared_ptr<DirectionalCommand> dcommand;
-      dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
+      DirectionalCommand* dcommand;
+      dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
 
       if (dcommand)
       {

@@ -33,3 +33,9 @@ ActionCostValue SwimmingSkillProcessor::process(CreaturePtr creature, MapPtr map
 
   return get_default_skill_action_cost_value(creature);
 }
+
+SkillProcessorPtr SwimmingSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<SwimmingSkillProcessor>();
+  return proc;
+}

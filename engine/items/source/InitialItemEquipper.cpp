@@ -12,10 +12,10 @@ void InitialItemEquipper::equip(CreaturePtr creature, const CreatureGenerationVa
   if (creature)
   {
     ClassManager cm;
-    ClassPtr current_class = cm.get_class(creature->get_class_id());
+    Class* current_class = cm.get_class(creature->get_class_id());
     vector<map<EquipmentWornLocation, InitialItem>> equipment_maps;
 
-    if (current_class)
+    if (current_class != nullptr)
     {
       equipment_maps.push_back(current_class->get_initial_equipment());
     }
@@ -78,10 +78,10 @@ void InitialItemEquipper::add_inventory_items(CreaturePtr creature, const Creatu
   {
     ClassManager cm;
     string creature_race = creature->get_race_id();
-    ClassPtr current_class = cm.get_class(creature->get_class_id());
+    Class* current_class = cm.get_class(creature->get_class_id());
     vector<vector<InitialItem>> initial_inventories;
     
-    if (current_class)
+    if (current_class != nullptr)
     {
       initial_inventories.push_back(current_class->get_initial_inventory());
     }

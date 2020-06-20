@@ -45,6 +45,12 @@ ActionCostValue MusicSkillProcessor::process(CreaturePtr creature, MapPtr map)
   return acv;
 }
 
+SkillProcessorPtr MusicSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<MusicSkillProcessor>();
+  return proc;
+}
+
 // Go through the creature's wielded equipment, looking for an instrument.
 // If none are found, return a nullptr - this is fine, and will indicate to the
 // calling code to consider this a vocal performance.
@@ -177,7 +183,7 @@ void MusicSkillProcessor::attempt_pacification(ItemPtr instr, CreaturePtr creatu
       fov_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_PACIFIED, to_string(true));
 
       RaceManager rm;
-      RacePtr race = rm.get_race(fov_creature->get_race_id());
+      Race* race = rm.get_race(fov_creature->get_race_id());
 
       if (race != nullptr)
       {

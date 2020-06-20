@@ -399,7 +399,7 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
     add_tile_related_messages(creature, creatures_new_tile);
 
     // Pick up any applicable items on the tile.
-    DecisionStrategyPtr dec = creature->get_decision_strategy();
+    DecisionStrategy* dec = creature->get_decision_strategy();
 
     if (dec != nullptr)
     {
@@ -425,7 +425,7 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
   MovementAccumulationUpdater mau;
   mau.update(creature, creatures_new_tile);
 
-  ICreatureRegenerationPtr move_checker = std::make_shared<MovementAccumulationChecker>();
+  ICreatureRegenerationPtr move_checker = std::make_unique<MovementAccumulationChecker>();
   move_checker->tick(creature, creatures_new_tile, 0, 0);
 
   // Run any movement scripts associated with the creature.
@@ -1575,7 +1575,7 @@ void MapUtils::calculate_fov_maps_for_all_creatures(MapPtr current_map)
 
       FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy(current_creature->get_is_player());
       MapPtr fov_map = fov_strategy->calculate(current_creature, view_map, creature_coords, los_len);
-      DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
+      DecisionStrategy* strategy = current_creature->get_decision_strategy();
 
       if (strategy)
       {

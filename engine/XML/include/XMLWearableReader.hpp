@@ -11,5 +11,5 @@ class XMLWearableReader : public XMLItemReader
     ~XMLWearableReader();
 
   protected:
-    void parse(WearablePtr wearable, GenerationValues& gv, const XMLNode& wearable_node, const bool force_ascii);
+    void parse(WearablePtr wearable, GenerationValues& gv, const XMLNode& wearable_node);
 };

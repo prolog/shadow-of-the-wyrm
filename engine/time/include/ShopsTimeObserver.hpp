@@ -9,7 +9,7 @@ class ShopsTimeObserver : public ITimeObserver
     
     void notify(const ulonglong minutes_elapsed) override;
 
-    ITimeObserver* clone() override;
+    std::unique_ptr<ITimeObserver> clone() override;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

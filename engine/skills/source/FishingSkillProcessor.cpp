@@ -51,6 +51,12 @@ ActionCostValue FishingSkillProcessor::process(CreaturePtr creature, MapPtr map)
   return acv;
 }
 
+SkillProcessorPtr FishingSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<FishingSkillProcessor>();
+  return proc;
+}
+
 pair<bool, FishingType> FishingSkillProcessor::check_for_fishing_equipment(CreaturePtr creature, TilePtr creature_tile)
 {
   pair<bool, FishingType> fishing_details = make_pair(false, FishingType::FISHING_TYPE_NONE);

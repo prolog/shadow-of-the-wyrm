@@ -17,4 +17,5 @@ Q - Quit                      M - Message buffer      W - Melee info %b
 R - Ranged info               V - Version             T - Game date/time %b
 ! - Autopickup                @ - Character info      # - Character dump %b
 F1 - Resistances              F2 - Conducts           F3 - Skills %b
-F11 - Script console          F12 - Reload strings
+F9 - Switch palette (SDL)     F10 - Switch mode (SDL) F11 - Script console %b
+F12 - Reload strings

@@ -52,6 +52,12 @@ ActionCostValue ThieverySkillProcessor::process(CreaturePtr creature, MapPtr map
   return acv;
 }
 
+SkillProcessorPtr ThieverySkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<ThieverySkillProcessor>();
+  return proc;
+}
+
 // Check to see if there are any creature, hostile or not, that are adjacent
 // to the given creature.
 pair<bool, TileDirectionMap> ThieverySkillProcessor::check_for_adjacent_creatures(CreaturePtr creature, MapPtr map)
@@ -105,19 +111,19 @@ CreaturePtr ThieverySkillProcessor::get_steal_creature(const TileDirectionMap& t
   else
   {
     CommandFactoryPtr command_factory = std::make_unique<CommandFactory>();
-    KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
+    KeyboardCommandMapPtr kb_command_map = std::make_unique<KeyboardCommandMap>();
 
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_GET_DIRECTION));
     manager.send();
 
-    CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, 0);
+    CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0, true);
 
     if (base_command)
     {
       // Check to see if it's an actual directional command
-      std::shared_ptr<DirectionalCommand> dcommand;
-      dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
+      DirectionalCommand* dcommand;
+      dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
 
       if (dcommand)
       {
@@ -225,7 +231,7 @@ bool ThieverySkillProcessor::is_already_stolen_from(CreaturePtr stealing_creatur
 bool ThieverySkillProcessor::has_pockets(CreaturePtr stealing_creature, CreaturePtr steal_creature, IMessageManager& pl_manager)
 {
   RaceManager rm;
-  RacePtr steal_race = rm.get_race(steal_creature->get_race_id());
+  Race* steal_race = rm.get_race(steal_creature->get_race_id());
 
   bool has_pockets = (steal_race && steal_race->get_has_pockets());
   CreatureDescriber cd(stealing_creature, steal_creature, true);

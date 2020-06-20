@@ -62,7 +62,7 @@ string SkillsDumper::get_skills_by_category(const SkillCategory category) const
     
     for (SkillMap::const_iterator sk_it = skills.begin(); sk_it != skills.end(); sk_it++)
     {
-      SkillPtr skill = sk_it->second;
+      Skill* skill = sk_it->second.get();
       
       SkillCategory skill_category = skill->get_category();
       

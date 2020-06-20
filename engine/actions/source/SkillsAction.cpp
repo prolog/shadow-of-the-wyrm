@@ -24,9 +24,9 @@ ActionCostValue SkillsAction::show_skills(CreaturePtr creature, const SkillsSele
   ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   int cur_page = 1;
 
-  DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+  DecisionStrategy* decision_strategy = creature->get_decision_strategy();
   CommandFactoryPtr command_factory = std::make_unique<SkillsCommandFactory>();
-  KeyboardCommandMapPtr kb_command_map = std::make_shared<SkillsKeyboardCommandMap>();
+  KeyboardCommandMapPtr kb_command_map = std::make_unique<SkillsKeyboardCommandMap>();
   Game& game = Game::instance();
   MapPtr map = game.get_current_map();
 
@@ -55,8 +55,8 @@ ActionCostValue SkillsAction::show_skills(CreaturePtr creature, const SkillsSele
         cur_page = ss.get_current_page_number();
       }
 
-      CommandPtr skills_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map, &input);
-      action_cost_value = scp->process(creature, skills_command, map, st);
+      CommandPtr skills_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), &input, false);
+      action_cost_value = scp->process(creature, skills_command.get(), map, st);
     }
   }
 
@@ -93,7 +93,7 @@ ActionCostValue SkillsAction::improve_skill(CreaturePtr creature, const SkillTyp
 {
   if (creature != nullptr)
   {
-    SkillPtr skill = creature->get_skills().get_skill(st);
+    Skill* skill = creature->get_skills().get_skill(st);
 
     if (skill != nullptr)
     {

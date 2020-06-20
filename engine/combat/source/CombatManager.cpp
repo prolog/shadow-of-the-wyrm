@@ -228,8 +228,8 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
     HostilityManager hm;
     CurrentCreatureAbilities cca;
     RaceManager rm;
-    RacePtr race = rm.get_race(attacked_creature->get_race_id());
-    DecisionStrategyPtr d_strat = attacked_creature->get_decision_strategy();
+    Race* race = rm.get_race(attacked_creature->get_race_id());
+    DecisionStrategy* d_strat = attacked_creature->get_decision_strategy();
 
     if (d_strat && 
         d_strat->get_threats().has_threat(attacking_creature->get_id()).first == false &&
@@ -676,7 +676,7 @@ void CombatManager::handle_explosive_if_necessary(CreaturePtr attacking_creature
   }
 }
 
-void CombatManager::handle_split_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, RacePtr creature_race, MapPtr current_map)
+void CombatManager::handle_split_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, Race* creature_race, MapPtr current_map)
 {
   if (attacked_creature && creature_race)
   {
@@ -865,7 +865,7 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
       if (attacking_creature != nullptr)
       {
         ClassManager cm;
-        ClassPtr cr_class = cm.get_class(attacking_creature->get_class_id());
+        Class* cr_class = cm.get_class(attacking_creature->get_class_id());
 
         if (cr_class != nullptr)
         {
@@ -901,7 +901,7 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
     {
       // Does the creature split, potentially?
       RaceManager rm;
-      RacePtr creature_race = rm.get_race(attacked_creature->get_race_id());
+      Race* creature_race = rm.get_race(attacked_creature->get_race_id());
       handle_split_if_necessary(attacking_creature, attacked_creature, creature_race, map);
     }
   }

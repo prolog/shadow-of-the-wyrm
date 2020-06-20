@@ -12,8 +12,9 @@ class ItemManager : public IActionManager
     static std::list<ItemPtr> get_items_by_type(CreaturePtr creature, const ItemType item_type); // both eq and inv are checked in this case.
     static std::list<ItemPtr> get_items_by_type(const IInventoryPtr inv, const ItemType item_type); // Only the given inventory is checked.
     static std::list<ItemPtr> get_items_by_type(const Equipment& eq, const ItemType item_type); // Only the given equipment is checked.
+    static std::list<ItemPtr> get_filtered_items(const IInventoryPtr inv, const std::list<IItemFilterPtr>& item_filters); // get items that pass a particular set of filters
 
-    // Check to see if an item exists, given the base ID.
+                                                                                                 // Check to see if an item exists, given the base ID.
     static bool has_item(CreaturePtr creature, const std::string& base_item_id);
 
     // Create a new item from a given item.  This is used to make copies of the

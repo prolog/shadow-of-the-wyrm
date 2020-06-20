@@ -17,7 +17,7 @@ FieldOfViewStrategyPtr FieldOfViewStrategyFactory::create_field_of_view_strategy
   {
     case FieldOfViewAlgorithmType::FOV_RAY_CASTING:
     default:
-      strategy = std::make_shared<RayCastingFieldOfViewStrategy>(set_fov_tiles_view_flags);
+      strategy = std::make_unique<RayCastingFieldOfViewStrategy>(set_fov_tiles_view_flags);
       break;
   }
 

@@ -9,7 +9,7 @@ class AgeTimeObserver : public ITimeObserver
     
     void notify(const ulonglong minutes_elapsed) override;
 
-    ITimeObserver* clone() override;
+    std::unique_ptr<ITimeObserver> clone() override;
 
   protected:
     void process_creatures(MapPtr cur_map, std::map<std::string, CreaturePtr>& creature_map);

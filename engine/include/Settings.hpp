@@ -14,8 +14,13 @@ class Settings : public ISerializable
     std::string get_setting(const std::string& key) const;
     bool get_setting_as_bool(const std::string& key, const bool default_val = false) const;
 
+    std::map<std::string, std::string> get_settings_starts_with(const std::string& setting_prefix) const;
+
     // Get all the keybindings (settings whose key starts with "key_")
     std::map<std::string, std::string> get_keybindings() const;
+
+    // Set a particular setting within the ptree.
+    void set_setting(const std::string& name, const std::string& val);
 
     // Set/replace additional settings within the ptree.
     void set_settings(const std::map<std::string, std::string>& addl_settings);

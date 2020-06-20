@@ -126,7 +126,7 @@ bool ChatAction::chat_multiple_options(CreaturePtr querying_creature, const Crea
 
   // Make the creature select a direction.
   CommandFactoryPtr command_factory    = std::make_unique<CommandFactory>();
-  KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
+  KeyboardCommandMapPtr kb_command_map = std::make_unique<KeyboardCommandMap>();
 
   // If the creature is the player, inform the player that a direction is needed.
   if (querying_creature->get_is_player())
@@ -135,13 +135,13 @@ bool ChatAction::chat_multiple_options(CreaturePtr querying_creature, const Crea
   }
 
   // Try to get a direction.  This might fail.
-  CommandPtr base_command = querying_creature->get_decision_strategy()->get_nonmap_decision(false, querying_creature->get_id(), command_factory.get(), kb_command_map, 0);
+  CommandPtr base_command = querying_creature->get_decision_strategy()->get_nonmap_decision(false, querying_creature->get_id(), command_factory.get(), kb_command_map.get(), 0, true);
 
   if (base_command)
   {
     // Check to see if it's an actual directional command
-    std::shared_ptr<DirectionalCommand> dcommand;
-    dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
+    DirectionalCommand* dcommand = nullptr;
+    dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
 
     if (dcommand)
     {

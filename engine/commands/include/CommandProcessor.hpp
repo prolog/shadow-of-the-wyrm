@@ -12,7 +12,7 @@
 class CommandProcessor
 {
   public:
-    static ActionCost process(CreaturePtr creature, CommandPtr command, DisplayPtr display);
+    static ActionCost process(CreaturePtr creature, Command* command, DisplayPtr display);
 
   protected:
     CommandProcessor();

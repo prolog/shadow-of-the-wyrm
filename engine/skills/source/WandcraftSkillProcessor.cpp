@@ -26,8 +26,8 @@ ActionCostValue WandcraftSkillProcessor::process(CreaturePtr creature, MapPtr ma
     {
       Game& game = Game::instance();
       DisplayPtr display = game.get_display();
-      SpellScreenDisplayStrategyPtr sds = std::make_shared<SituationTypeSpellScreenDisplayStrategy>(SpellSituationType::SPELL_SITUATION_EXTERNAL);
-      SpellSelectionScreen ss(display, creature, sds);
+      SpellScreenDisplayStrategyPtr sds = std::make_unique<SituationTypeSpellScreenDisplayStrategy>(SpellSituationType::SPELL_SITUATION_EXTERNAL);
+      SpellSelectionScreen ss(display, creature, sds.get());
 
       string display_s = ss.display();
       string spell_id = ss.get_selected_spell(display_s.at(0));
@@ -89,6 +89,12 @@ ActionCostValue WandcraftSkillProcessor::process(CreaturePtr creature, MapPtr ma
   }
 
   return acv;
+}
+
+SkillProcessorPtr WandcraftSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<WandcraftSkillProcessor>();
+  return proc;
 }
 
 bool WandcraftSkillProcessor::check_for_components(CreaturePtr creature)

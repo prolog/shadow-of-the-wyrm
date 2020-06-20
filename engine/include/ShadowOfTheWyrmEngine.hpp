@@ -12,7 +12,8 @@ enum struct EngineStateEnum
   ENGINE_STATE_START_NEW_GAME_RANDOM = 1,
   ENGINE_STATE_SHOW_HIGH_SCORES = 2,
   ENGINE_STATE_LOAD_GAME = 3,
-  ENGINE_STATE_STOP = 4
+  ENGINE_STATE_SHOW_HELP = 4,
+  ENGINE_STATE_STOP = 5
 };
 
 class EngineStateManager
@@ -66,6 +67,7 @@ class ShadowOfTheWyrmEngine
     bool process_name_and_start(const CharacterCreationDetails& ccd);
     bool process_show_high_scores();
     bool process_load_game();
+    bool process_show_help();
     bool process_exit_game();
 
     bool is_new_game_allowed();

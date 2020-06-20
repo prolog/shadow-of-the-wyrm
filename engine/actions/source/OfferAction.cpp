@@ -171,7 +171,7 @@ bool OfferAction::sacrifice_on_coaligned_altar(CreaturePtr creature, FeaturePtr 
 
     // Does anything happen as a result?
     ReligionManager rm;
-    DeityPtr deity = rm.get_active_deity(creature);
+    Deity* deity = rm.get_active_deity(creature);
 
     IDeityDecisionStrategyPtr deity_decision_strategy = DeityDecisionStrategyFactory::create_deity_decision_strategy(deity->get_id());
     DeityDecisionStrategyHandlerPtr deity_decision_handler = deity_decision_strategy->get_decision_for_sacrifice(creature, item);
@@ -216,21 +216,24 @@ bool OfferAction::sacrifice_on_crossaligned_altar(CreaturePtr creature, TilePtr 
       if (RNG::percent_chance(pct_chance_altar_conversion))
       {
         ReligionManager rm;
-        DeityPtr deity = rm.get_active_deity(creature);
+        Deity* deity = rm.get_active_deity(creature);
 
-        AlignmentRange creature_range = creature->get_alignment().get_alignment_range();
-        new_alignment = ac.calculate_alignment_for_sacrifice_on_coaligned_altar(creature->get_alignment().get_alignment(), feature->get_alignment_range());
+        if (deity != nullptr)
+        {
+          AlignmentRange creature_range = creature->get_alignment().get_alignment_range();
+          new_alignment = ac.calculate_alignment_for_sacrifice_on_coaligned_altar(creature->get_alignment().get_alignment(), feature->get_alignment_range());
 
-        // Create new altar, add it to tile.
-        FeaturePtr new_altar = FeatureGenerator::generate_altar(deity->get_id(), creature_range);
-        tile->set_feature(new_altar);
+          // Create new altar, add it to tile.
+          FeaturePtr new_altar = FeatureGenerator::generate_altar(deity->get_id(), creature_range);
+          tile->set_feature(new_altar);
 
-        // Add a message about the altar's conversion.
-        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-        string altar_conversion_msg = SacrificeTextKeys::get_altar_conversion_message(deity->get_name_sid());
+          // Add a message about the altar's conversion.
+          IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+          string altar_conversion_msg = SacrificeTextKeys::get_altar_conversion_message(deity->get_name_sid());
 
-        manager.add_new_message(altar_conversion_msg);
-        manager.send();
+          manager.add_new_message(altar_conversion_msg);
+          manager.send();
+        }
       }
 
       CreatureUtils::handle_alignment_change(creature, new_alignment);

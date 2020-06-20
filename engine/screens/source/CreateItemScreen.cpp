@@ -53,10 +53,10 @@ void CreateItemScreen::initialize()
   add_page(create_item_screen);
 
   // Create the prompt
-  PromptPtr ci_prompt = std::make_shared<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr ci_prompt = std::make_unique<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
   ci_prompt->set_accept_any_input(true);
   ci_prompt->set_text_sid(PromptTextKeys::PROMPT_CREATE_ITEM);
-  user_prompt = ci_prompt;
+  user_prompt = std::move(ci_prompt);
 }
 
 vector<ItemPtr> CreateItemScreen::get_craftable_items()

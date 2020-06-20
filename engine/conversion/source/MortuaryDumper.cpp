@@ -1,5 +1,6 @@
 #include <sstream>
 #include "Conversion.hpp"
+#include "CreatureProperties.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "MortuaryDumper.hpp"
@@ -22,13 +23,27 @@ string MortuaryDumper::str() const
 string MortuaryDumper::get_mortuary() const
 {
   ostringstream ss;
-
-  ss << String::centre(StringTable::get(TextKeys::MORTUARY), num_cols) << endl << endl;
-
-  Mortuary& mortuary = creature->get_mortuary_ref();
-  MortuaryCountMap mcm = mortuary.get_creatures_killed();
   Game& game = Game::instance();
   CreatureMap cmap = game.get_creatures_ref();
+
+  // Display the first kill, assuming something's been killed.
+  ss << String::centre(StringTable::get(TextKeys::MORTUARY), num_cols) << endl << endl;
+  string first_kill_id = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_FIRST_KILL_ID);
+
+  if (!first_kill_id.empty())
+  {
+    auto c_it = cmap.find(first_kill_id);
+
+    if (c_it != cmap.end())
+    {
+      string first_kill = StringTable::get(TextKeys::MORTUARY_FIRST_KILL) + ": " + StringTable::get(c_it->second->get_short_description_sid());
+      ss << String::centre(first_kill, num_cols) << std::endl << std::endl;
+    }
+  }
+
+  // Display the total kill information.
+  Mortuary& mortuary = creature->get_mortuary_ref();
+  MortuaryCountMap mcm = mortuary.get_creatures_killed();
 
   for (auto mcm_vt : mcm)
   {

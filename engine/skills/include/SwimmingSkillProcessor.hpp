@@ -5,4 +5,5 @@ class SwimmingSkillProcessor : public SkillProcessor
 {
   public:
     ActionCostValue process(CreaturePtr creature, MapPtr map /* unused by SwimmingSkillProcessor */) override;
+    virtual SkillProcessorPtr clone() override;
 };

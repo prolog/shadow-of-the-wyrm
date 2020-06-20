@@ -47,3 +47,9 @@ ActionCostValue DetectionSkillProcessor::process(CreaturePtr creature, MapPtr ma
 
   return get_default_skill_action_cost_value(creature);
 }
+
+SkillProcessorPtr DetectionSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<DetectionSkillProcessor>();
+  return proc;
+}

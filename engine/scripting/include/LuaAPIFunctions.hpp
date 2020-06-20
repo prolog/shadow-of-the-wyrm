@@ -52,6 +52,7 @@ int set_skill_value(lua_State* ls);
 int get_skill_value(lua_State* ls);
 int get_magic_skills(lua_State* ls);
 int check_skill(lua_State* ls);
+int set_all_skills_value(lua_State* ls);
 int RNG_range(lua_State* ls);
 int RNG_percent_chance(lua_State* ls);
 int RNG_dice(lua_State* ls);
@@ -247,6 +248,8 @@ int get_primordial_castings(lua_State* ls);
 int creature_exists(lua_State* ls);
 int set_weather(lua_State* ls);
 int genocide(lua_State* ls);
+int generate_ancient_beast(lua_State* ls);
+int set_colour(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

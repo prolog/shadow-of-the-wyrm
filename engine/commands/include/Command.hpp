@@ -6,6 +6,8 @@
 class Command
 {
   public:
+    virtual ~Command();
+
     std::string get_name() const;
 
     virtual int get_key() const;
@@ -26,7 +28,6 @@ class Command
     friend class CommandFactory;
     Command(const std::string& name, int key);
     Command(const std::string& name, int key, const std::string& confirmation_text);
-    virtual ~Command();
 
     std::string command_name;
     int key_pressed;
@@ -34,4 +35,4 @@ class Command
     std::map<std::string, std::string> custom_values;
 };
 
-using CommandPtr = std::shared_ptr<Command>;
+using CommandPtr = std::unique_ptr<Command>;

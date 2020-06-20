@@ -15,7 +15,7 @@ Screen::Screen(DisplayPtr new_display)
 : line_increment(2), cur_page_idx(0), lines_displayable_area(21)
 {
   game_display = new_display;
-  user_prompt = std::make_shared<NullPrompt>();
+  user_prompt = std::make_unique<NullPrompt>();
   lines_displayable_area = Screen::get_lines_displayable_area(new_display);
 }
 
@@ -99,7 +99,7 @@ string Screen::display()
     if (!screen_selection.empty())
     {
       CommandFactoryPtr command_factory = std::make_unique<ScreenCommandFactory>();
-      KeyboardCommandMapPtr kb_command_map = std::make_shared<ScreenKeyboardCommandMap>();
+      KeyboardCommandMapPtr kb_command_map = std::make_unique<ScreenKeyboardCommandMap>();
       CommandPtr command = command_factory->create(String::to_int(screen_selection), kb_command_map->get_command_type(screen_selection));
 
       if (command != nullptr)
@@ -193,14 +193,14 @@ bool Screen::add_text(vector<ScreenComponentPtr>& text_screen, const vector<Text
   {
     Colour colour = line_pair.first;
     string text = line_pair.second;
+    size_t sym_count = count_substrings(text, TextFormatSpecifiers::SYMBOL);
 
-    if (preserve_formatting == false)
+    if (preserve_formatting == false && sym_count == 0)
     {
       trim_left(text);
       trim_right(text);
     }
 
-    size_t sym_count = count_substrings(text, TextFormatSpecifiers::SYMBOL);
     vector<Symbol> tc_symbols;
 
     for (size_t i = 0; i < sym_count; i++)
@@ -231,14 +231,9 @@ void Screen::add_page(const vector<ScreenComponentPtr>& new_page)
   components.push_back(new_page);
 }
 
-void Screen::set_prompt(PromptPtr new_prompt)
+Prompt* Screen::get_prompt() const
 {
-  user_prompt = new_prompt;
-}
-
-PromptPtr Screen::get_prompt() const
-{
-  return user_prompt;
+  return user_prompt.get();
 }
 
 vector<vector<ScreenComponentPtr>> Screen::get_components() const

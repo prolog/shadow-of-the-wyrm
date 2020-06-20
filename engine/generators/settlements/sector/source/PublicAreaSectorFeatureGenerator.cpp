@@ -34,23 +34,23 @@ bool PublicAreaSectorFeatureGenerator::create_feature(MapPtr map, const Coordina
   switch (feat)
   {
     case PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PLAZA:
-      feature = make_shared<PlazaSectorFeature>();
+      feature = std::make_unique<PlazaSectorFeature>();
       break;
     case PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_SHOP:
-      feature = make_shared<ShopSectorFeature>();
+      feature = std::make_unique<ShopSectorFeature>();
       break;
     case PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_TOMB:
-      feature = make_shared<TombSectorFeature>();
+      feature = std::make_unique<TombSectorFeature>();
       break;
     case PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_GARDEN:
       feature = GardenGeneratorFactory::create_uniform_random_garden_generator();
       break;
     case PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_BEER_HALL:
-      feature = std::make_shared<BeerHallSectorFeature>(true);
+      feature = std::make_unique<BeerHallSectorFeature>(true);
       break;
     case PublicSectorFeatureType::PUBLIC_SECTOR_FEATURE_PARK:
     default:
-      feature = make_shared<ParkSectorFeature>();
+      feature = std::make_unique<ParkSectorFeature>();
       break;
   }
 

@@ -19,11 +19,11 @@ ClassSelectionScreen::ClassSelectionScreen(DisplayPtr new_display, const string&
 // instance at this point.
 //
 // The Screen will return an int based on the user's selection.  This will map to a race_id, which will then map to a
-// ClassPtr
+// Class*
 void ClassSelectionScreen::initialize()
 {
   Game& game_instance = Game::instance();
-  ClassMap classes = game_instance.get_classes_ref();
+  const ClassMap& classes = game_instance.get_classes_ref();
   ostringstream synop;
 
   if (!creature_synopsis.empty())
@@ -37,10 +37,10 @@ void ClassSelectionScreen::initialize()
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
   int current_id = 0;
-  for (ClassMap::iterator classes_it = classes.begin(); classes_it != classes.end(); classes_it++)
+  for (auto& classes_pair : classes)
   {
-    string class_id = classes_it->first;
-    ClassPtr current_class = classes_it->second;
+    string class_id = classes_pair.first;
+    Class* current_class = classes_pair.second.get();
 
     if (current_class && current_class->get_user_playable() && options)
     {
@@ -70,7 +70,7 @@ void ClassSelectionScreen::initialize()
   add_page(cur_page);
 
   // Set the prompt
-  PromptPtr any_key_prompt = std::make_shared<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr any_key_prompt = std::make_unique<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
   any_key_prompt->set_text_sid(PromptTextKeys::PROMPT_SELECT_AN_OPTION);
-  user_prompt = any_key_prompt;
+  user_prompt = std::move(any_key_prompt);
 }

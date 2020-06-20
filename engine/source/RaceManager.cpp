@@ -9,16 +9,16 @@ RaceManager::RaceManager()
 
 // Gets a race from a given race ID, using the race map stored on the
 // Game singleton.
-RacePtr RaceManager::get_race(const string& race_id)
+Race* RaceManager::get_race(const string& race_id)
 {
-  RacePtr race;
+  Race* race = nullptr;
   Game& game = Game::instance();
-  RaceMap races = game.get_races_ref();
-  RaceMap::iterator r_it = races.find(race_id);
+  const RaceMap& races = game.get_races_ref();
+  auto r_it = races.find(race_id);
     
   if (r_it != races.end())
   {
-    race = r_it->second;
+    race = r_it->second.get();
   }
 
   return race;
@@ -29,18 +29,18 @@ bool RaceManager::is_race_or_descendent(const string& race_id, const string& rac
 {
   bool matches = false;
 
-  RacePtr current_race;
+  Race* current_race;
   string parent_race_id;
   string current_race_id;
 
   Game& game = Game::instance();
-  RaceMap races = game.get_races_ref();
+  const RaceMap& races = game.get_races_ref();
 
-  RaceMap::iterator r_it = races.find(race_id);
+  auto r_it = races.find(race_id);
     
   if (r_it != races.end())
   {
-    current_race = r_it->second;
+    current_race = r_it->second.get();
     parent_race_id = current_race->get_parent_race_id();
     current_race_id = current_race->get_race_id();
 
@@ -63,7 +63,7 @@ bool RaceManager::is_race_or_descendent(const string& race_id, const string& rac
 
         if (r_it != races.end())
         {
-          current_race    = r_it->second;
+          current_race    = r_it->second.get();
           current_race_id = current_race->get_race_id();
           parent_race_id  = current_race->get_parent_race_id();
         }
@@ -79,15 +79,15 @@ map<string, DropParameters> RaceManager::get_all_drops(const string& race_id)
   map<string, DropParameters> drops;
 
   Game& game = Game::instance();
-  RaceMap races = game.get_races_ref();
-  RacePtr current_race;
+  const RaceMap& races = game.get_races_ref();
+  Race* current_race;
   string current_race_id, parent_race_id;
 
-  RaceMap::iterator r_it = races.find(race_id);
+  auto r_it = races.find(race_id);
 
   if (r_it != races.end())
   {
-    current_race = r_it->second;
+    current_race = r_it->second.get();
     parent_race_id = current_race->get_parent_race_id();
     current_race_id = current_race->get_race_id();
 
@@ -107,7 +107,7 @@ map<string, DropParameters> RaceManager::get_all_drops(const string& race_id)
 
       if (r_it != races.end())
       {
-        current_race = r_it->second;
+        current_race = r_it->second.get();
         current_race_id = current_race->get_race_id();
         parent_race_id = current_race->get_parent_race_id();
       }

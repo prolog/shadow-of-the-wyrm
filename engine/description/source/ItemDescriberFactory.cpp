@@ -14,13 +14,13 @@ ItemDescriberPtr ItemDescriberFactory::create_item_describer(const bool player_b
   {
     if (!(item && item->get_glowing()))
     {
-      describer = std::make_shared<BlindItemDescriber>();
+      describer = std::make_unique<BlindItemDescriber>();
     }
   }
   
   if (!describer)
   {
-    describer = std::make_shared<ItemDescriber>(item);
+    describer = std::make_unique<ItemDescriber>(item);
   }
 
   return describer;

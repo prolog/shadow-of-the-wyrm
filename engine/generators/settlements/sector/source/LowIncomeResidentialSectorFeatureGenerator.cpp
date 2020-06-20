@@ -44,12 +44,12 @@ bool LowIncomeResidentialSectorFeatureGenerator::create_feature(MapPtr map, cons
         ruined = true;
       }
 
-      feature = make_shared<HouseSectorFeature>(ruined);
+      feature = make_unique<HouseSectorFeature>(ruined);
       break;
     }
     case LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_WORKSHOP:
     {
-      feature = make_shared<WorkshopSectorFeature>();
+      feature = std::make_unique<WorkshopSectorFeature>();
       break;
     }
     case LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_GRAVES:
@@ -70,13 +70,13 @@ bool LowIncomeResidentialSectorFeatureGenerator::create_feature(MapPtr map, cons
     case LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_BEER_HALL:
     {
       // Ensure that walls are generated for the beer hall.
-      feature = std::make_shared<BeerHallSectorFeature>(true);
+      feature = std::make_unique<BeerHallSectorFeature>(true);
       break;
     }
     case LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_SHOP:
     default:
     {
-      feature = make_shared<ShopSectorFeature>();
+      feature = make_unique<ShopSectorFeature>();
       break;
     }
   }

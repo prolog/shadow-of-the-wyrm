@@ -19,4 +19,4 @@ class FieldOfViewStrategy
     bool set_fov_tile_view_flag;
 };
 
-using FieldOfViewStrategyPtr = std::shared_ptr<FieldOfViewStrategy>;
+using FieldOfViewStrategyPtr = std::unique_ptr<FieldOfViewStrategy>;

@@ -22,4 +22,4 @@ class ChurchGenerator : public SOTW::Generator
     MapPtr base_map;
 };
 
-using ChurchGeneratorPtr = std::shared_ptr<ChurchGenerator>;
+using ChurchGeneratorPtr = std::unique_ptr<ChurchGenerator>;

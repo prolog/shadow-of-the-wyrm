@@ -12,6 +12,6 @@ class XMLFoodReader : public XMLConsumableReader
     
   protected:
     friend class XMLItemsReader;
-    void parse(FoodPtr food, GenerationValues& gv, const XMLNode& food_node, const bool force_ascii);
+    void parse(FoodPtr food, GenerationValues& gv, const XMLNode& food_node);
 };
 

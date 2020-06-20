@@ -1619,7 +1619,13 @@ Skills& Skills::operator=(const Skills& copy_skills)
 {
   if (this != &copy_skills)
   {
-    this->skills = copy_skills.skills;
+    skills.clear();
+
+    for (auto& sk_it : copy_skills.skills)
+    {
+      SkillPtr new_skill = SkillPtr(sk_it.second->clone());
+      skills.insert(make_pair(sk_it.first, std::move(new_skill)));
+    }
   }
 
   return *this;
@@ -1633,9 +1639,9 @@ bool Skills::operator==(const Skills& sk) const
 
   if (result)
   {
-    SkillMap sk2 = sk.skills;
-    SkillMap::const_iterator s_it = skills.begin();
-    SkillMap::const_iterator s_it2 = sk2.begin();
+    const SkillMap& sk2 = sk.skills;
+    auto s_it = skills.begin();
+    auto s_it2 = sk2.begin();
 
     while (s_it != skills.end())
     {
@@ -1651,14 +1657,14 @@ bool Skills::operator==(const Skills& sk) const
   return result;
 }
 
-void Skills::increment_skills(const Skills& skills_to_increment)
+void Skills::increment_skills(Skills& skills_to_increment)
 {
-  RawSkillMap rsm = skills_to_increment.get_raw_skills();
+  const SkillMap& rsm = skills_to_increment.get_raw_skills_ref();
 
   for (const auto& skill_pair : rsm)
   {
     SkillType sk = skill_pair.first;
-    SkillPtr skill = skill_pair.second;
+    Skill* skill = skill_pair.second.get();
 
     if (skill != nullptr)
     {
@@ -1671,14 +1677,18 @@ void Skills::increment_skills(const Skills& skills_to_increment)
 // Set the value of a skill
 void Skills::set_value(const SkillType skill_name, const unsigned int value)
 {
-  SkillPtr skill_to_set = skills[skill_name];
-  skill_to_set->set_value(value);
+  Skill* skill_to_set = get_skill(skill_name);
+
+  if (skill_to_set != nullptr)
+  {
+    skill_to_set->set_value(value);
+  }
 }
 
 // Mark a skill.  JCD FIXME: A skill manager should control this...
 void Skills::mark(const SkillType skill_name, const bool override_default)
 {
-  SkillPtr skill_to_mark = skills[skill_name];
+  Skill* skill_to_mark = get_skill(skill_name);
 
   if (skill_to_mark)
   {
@@ -1697,7 +1707,7 @@ void Skills::mark(const SkillType skill_name, const bool override_default)
 int Skills::get_value(const SkillType& skill_name) const
 {
   int value = -1;
-  SkillPtr skill = get_skill(skill_name);
+  Skill* skill = get_skill(skill_name);
 
   if (skill != nullptr)
   {
@@ -1711,7 +1721,7 @@ int Skills::get_value(const SkillType& skill_name) const
 int Skills::get_value_incr_marks(const SkillType& skill_name)
 {
   int val = 0;
-  SkillPtr skill = get_skill(skill_name);
+  Skill* skill = get_skill(skill_name);
 
   if (skill != nullptr)
   {
@@ -1732,14 +1742,18 @@ int Skills::get_value_incr_marks(const SkillType& skill_name)
 void Skills::set_skill(const SkillType& st, const SkillPtr skill)
 {
   // Always overwrite any previously existing skill.
-  skills[st] = skill;
+  if (skill != nullptr)
+  {
+    SkillPtr new_skill = SkillPtr(skill->clone());
+    skills.insert(make_pair(st, std::move(new_skill)));
+  }
 }
 
 void Skills::set_all_to(const int val)
 {
   for (auto& s_it : skills)
   {
-    SkillPtr cur_skill = s_it.second;
+    SkillPtr& cur_skill = s_it.second;
 
     if (cur_skill != nullptr)
     {
@@ -1747,15 +1761,16 @@ void Skills::set_all_to(const int val)
     }
   }
 }
-SkillPtr Skills::get_skill(const SkillType& st) const
+
+Skill* Skills::get_skill(const SkillType& st) const
 {
-  SkillPtr result;
+  Skill* result = nullptr;
 
   map<SkillType, SkillPtr>::const_iterator sk_it = skills.find(st);
 
   if (sk_it != skills.end())
   {
-    result = sk_it->second;
+    result = sk_it->second.get();
   }
 
   return result;
@@ -1767,7 +1782,7 @@ bool Skills::has_trainable_skill() const
 
   for (const auto& sk_it : skills)
   {
-    SkillPtr skill = sk_it.second;
+    Skill* skill = sk_it.second.get();
 
     if (skill != nullptr)
     {
@@ -1790,7 +1805,7 @@ string Skills::str() const
 
   for (SkillMap::const_iterator sk_it = skills.begin(); sk_it != skills.end(); sk_it++)
   {
-    SkillPtr skill = sk_it->second;
+    Skill* skill = sk_it->second.get();
     skills_str = skills_str + skill->str() + " ";
   }
 
@@ -1801,11 +1816,10 @@ bool Skills::serialize(ostream& stream) const
 {
   Serialize::write_size_t(stream, skills.size());
 
-  for (const RawSkillMap::value_type& skill_pair : skills)
+  for (const SkillMap::value_type& skill_pair : skills)
   {
     Serialize::write_enum(stream, skill_pair.first);
-
-    SkillPtr skill = skill_pair.second;
+    Skill* skill = skill_pair.second.get();
 
     if (skill)
     {
@@ -1842,7 +1856,7 @@ bool Skills::deserialize(istream& stream)
       if (!skill) return false;
       if (!skill->deserialize(stream)) return false;
 
-      skills.insert(make_pair(skill_type, skill));
+      skills.insert(make_pair(skill_type, std::move(skill)));
     }
   }
 
@@ -1860,11 +1874,6 @@ std::map<SkillType, SkillPtr>& Skills::get_raw_skills_ref()
   return skills;
 }
 
-std::map<SkillType, SkillPtr> Skills::get_raw_skills() const
-{
-  return skills;
-}
-
 // Initialize all the general, combat, and magical skills.
 void Skills::initialize_skills()
 {
@@ -1877,175 +1886,175 @@ void Skills::initialize_skills()
 // Initialize the list of general skills.
 void Skills::initialize_general_skills()
 {
-  std::shared_ptr<ArcherySkill> archery = std::make_shared<ArcherySkill>();
-  std::shared_ptr<AwarenessSkill> awareness = std::make_shared<AwarenessSkill>();
-  std::shared_ptr<BargainingSkill> bargaining = std::make_shared<BargainingSkill>();
-  std::shared_ptr<BeastmasterySkill> beastmastery = std::make_shared<BeastmasterySkill>();
-  std::shared_ptr<BlindFightingSkill> blind_fighting = std::make_shared<BlindFightingSkill>();
-  std::shared_ptr<BoatingSkill> boating = std::make_shared<BoatingSkill>();
-  std::shared_ptr<BowyerSkill> bowyer = std::make_shared<BowyerSkill>();
-  std::shared_ptr<BrewingSkill> brewing = std::make_shared<BrewingSkill>();
-  std::shared_ptr<CarryingSkill> carrying = std::make_shared<CarryingSkill>();
-  std::shared_ptr<CombatSkill> combat = std::make_shared<CombatSkill>();
-  std::shared_ptr<CraftingSkill> crafting = std::make_shared<CraftingSkill>();
-  std::shared_ptr<DesertLoreSkill> desert_lore = std::make_shared<DesertLoreSkill>();
-  std::shared_ptr<DetectionSkill> detection = std::make_shared<DetectionSkill>();
-  std::shared_ptr<DisarmTrapsSkill> disarm_traps = std::make_shared<DisarmTrapsSkill>();
-  std::shared_ptr<DualWieldSkill> dual_wield = std::make_shared<DualWieldSkill>();
-  std::shared_ptr<DungeoneeringSkill> dungeoneering = std::make_shared<DungeoneeringSkill>();
-  std::shared_ptr<EscapeSkill> escape = std::make_shared<EscapeSkill>();
-  std::shared_ptr<FishingSkill> fishing = std::make_shared<FishingSkill>();
-  std::shared_ptr<FletcherySkill> fletchery = std::make_shared<FletcherySkill>();
-  std::shared_ptr<ForagingSkill> foraging = std::make_shared<ForagingSkill>();
-  std::shared_ptr<ForestLoreSkill> forest_lore = std::make_shared<ForestLoreSkill>();
-  std::shared_ptr<HerbalismSkill> herbalism = std::make_shared<HerbalismSkill>();
-  std::shared_ptr<HidingSkill> hiding = std::make_shared<HidingSkill>();
-  std::shared_ptr<HuntingSkill> hunting = std::make_shared<HuntingSkill>();
-  std::shared_ptr<IntimidationSkill> intimidation = std::make_shared<IntimidationSkill>();
-  std::shared_ptr<JewelerSkill> jeweler = std::make_shared<JewelerSkill>();
-  std::shared_ptr<JumpingSkill> jumping = std::make_shared<JumpingSkill>();
-  std::shared_ptr<LeadershipSkill> leadership = std::make_shared<LeadershipSkill>();
-  std::shared_ptr<LiteracySkill> literacy = std::make_shared<LiteracySkill>();
-  std::shared_ptr<LoreSkill> lore = std::make_shared<LoreSkill>();
-  std::shared_ptr<MagicGeneralSkill> magic = std::make_shared<MagicGeneralSkill>();
-  std::shared_ptr<MarshLoreSkill> marsh_lore = std::make_shared<MarshLoreSkill>();
-  std::shared_ptr<MedicineSkill> medicine = std::make_shared<MedicineSkill>();
-  std::shared_ptr<MountainLoreSkill> mountain_lore = std::make_shared<MountainLoreSkill>();
-  std::shared_ptr<MountaineeringSkill> mountaineering = std::make_shared<MountaineeringSkill>();
-  std::shared_ptr<MusicSkill> music = std::make_shared<MusicSkill>();
-  std::shared_ptr<NightSightSkill> night_sight = std::make_shared<NightSightSkill>();
-  std::shared_ptr<OceanographySkill> oceanography = std::make_shared<OceanographySkill>();
-  std::shared_ptr<PapercraftSkill> papercraft = std::make_shared<PapercraftSkill>();
-  std::shared_ptr<ReligionSkill> religion = std::make_shared<ReligionSkill>();
-  std::shared_ptr<ScribingSkill> scribing = std::make_shared<ScribingSkill>();
-  std::shared_ptr<SkinningSkill> skinning = std::make_shared<SkinningSkill>();
-  std::shared_ptr<SmithingSkill> smithing = std::make_shared<SmithingSkill>();
-  std::shared_ptr<SpelunkingSkill> spelunking = std::make_shared<SpelunkingSkill>();
-  std::shared_ptr<StealthSkill> stealth = std::make_shared<StealthSkill>();
-  std::shared_ptr<SwimmingSkill> swimming = std::make_shared<SwimmingSkill>();
-  std::shared_ptr<TanningSkill> tanning = std::make_shared<TanningSkill>();
-  std::shared_ptr<ThieverySkill> thievery = std::make_shared<ThieverySkill>();
-  std::shared_ptr<WandcraftSkill> wandcraft = std::make_shared<WandcraftSkill>();
-  std::shared_ptr<WeavingSkill> weaving = std::make_shared<WeavingSkill>();
+  std::unique_ptr<ArcherySkill> archery = std::make_unique<ArcherySkill>();
+  std::unique_ptr<AwarenessSkill> awareness = std::make_unique<AwarenessSkill>();
+  std::unique_ptr<BargainingSkill> bargaining = std::make_unique<BargainingSkill>();
+  std::unique_ptr<BeastmasterySkill> beastmastery = std::make_unique<BeastmasterySkill>();
+  std::unique_ptr<BlindFightingSkill> blind_fighting = std::make_unique<BlindFightingSkill>();
+  std::unique_ptr<BoatingSkill> boating = std::make_unique<BoatingSkill>();
+  std::unique_ptr<BowyerSkill> bowyer = std::make_unique<BowyerSkill>();
+  std::unique_ptr<BrewingSkill> brewing = std::make_unique<BrewingSkill>();
+  std::unique_ptr<CarryingSkill> carrying = std::make_unique<CarryingSkill>();
+  std::unique_ptr<CombatSkill> combat = std::make_unique<CombatSkill>();
+  std::unique_ptr<CraftingSkill> crafting = std::make_unique<CraftingSkill>();
+  std::unique_ptr<DesertLoreSkill> desert_lore = std::make_unique<DesertLoreSkill>();
+  std::unique_ptr<DetectionSkill> detection = std::make_unique<DetectionSkill>();
+  std::unique_ptr<DisarmTrapsSkill> disarm_traps = std::make_unique<DisarmTrapsSkill>();
+  std::unique_ptr<DualWieldSkill> dual_wield = std::make_unique<DualWieldSkill>();
+  std::unique_ptr<DungeoneeringSkill> dungeoneering = std::make_unique<DungeoneeringSkill>();
+  std::unique_ptr<EscapeSkill> escape = std::make_unique<EscapeSkill>();
+  std::unique_ptr<FishingSkill> fishing = std::make_unique<FishingSkill>();
+  std::unique_ptr<FletcherySkill> fletchery = std::make_unique<FletcherySkill>();
+  std::unique_ptr<ForagingSkill> foraging = std::make_unique<ForagingSkill>();
+  std::unique_ptr<ForestLoreSkill> forest_lore = std::make_unique<ForestLoreSkill>();
+  std::unique_ptr<HerbalismSkill> herbalism = std::make_unique<HerbalismSkill>();
+  std::unique_ptr<HidingSkill> hiding = std::make_unique<HidingSkill>();
+  std::unique_ptr<HuntingSkill> hunting = std::make_unique<HuntingSkill>();
+  std::unique_ptr<IntimidationSkill> intimidation = std::make_unique<IntimidationSkill>();
+  std::unique_ptr<JewelerSkill> jeweler = std::make_unique<JewelerSkill>();
+  std::unique_ptr<JumpingSkill> jumping = std::make_unique<JumpingSkill>();
+  std::unique_ptr<LeadershipSkill> leadership = std::make_unique<LeadershipSkill>();
+  std::unique_ptr<LiteracySkill> literacy = std::make_unique<LiteracySkill>();
+  std::unique_ptr<LoreSkill> lore = std::make_unique<LoreSkill>();
+  std::unique_ptr<MagicGeneralSkill> magic = std::make_unique<MagicGeneralSkill>();
+  std::unique_ptr<MarshLoreSkill> marsh_lore = std::make_unique<MarshLoreSkill>();
+  std::unique_ptr<MedicineSkill> medicine = std::make_unique<MedicineSkill>();
+  std::unique_ptr<MountainLoreSkill> mountain_lore = std::make_unique<MountainLoreSkill>();
+  std::unique_ptr<MountaineeringSkill> mountaineering = std::make_unique<MountaineeringSkill>();
+  std::unique_ptr<MusicSkill> music = std::make_unique<MusicSkill>();
+  std::unique_ptr<NightSightSkill> night_sight = std::make_unique<NightSightSkill>();
+  std::unique_ptr<OceanographySkill> oceanography = std::make_unique<OceanographySkill>();
+  std::unique_ptr<PapercraftSkill> papercraft = std::make_unique<PapercraftSkill>();
+  std::unique_ptr<ReligionSkill> religion = std::make_unique<ReligionSkill>();
+  std::unique_ptr<ScribingSkill> scribing = std::make_unique<ScribingSkill>();
+  std::unique_ptr<SkinningSkill> skinning = std::make_unique<SkinningSkill>();
+  std::unique_ptr<SmithingSkill> smithing = std::make_unique<SmithingSkill>();
+  std::unique_ptr<SpelunkingSkill> spelunking = std::make_unique<SpelunkingSkill>();
+  std::unique_ptr<StealthSkill> stealth = std::make_unique<StealthSkill>();
+  std::unique_ptr<SwimmingSkill> swimming = std::make_unique<SwimmingSkill>();
+  std::unique_ptr<TanningSkill> tanning = std::make_unique<TanningSkill>();
+  std::unique_ptr<ThieverySkill> thievery = std::make_unique<ThieverySkill>();
+  std::unique_ptr<WandcraftSkill> wandcraft = std::make_unique<WandcraftSkill>();
+  std::unique_ptr<WeavingSkill> weaving = std::make_unique<WeavingSkill>();
 
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_ARCHERY, archery));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_AWARENESS, awareness));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_BARGAINING, bargaining));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_BEASTMASTERY, beastmastery));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_BLIND_FIGHTING, blind_fighting));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_BOATING, boating));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_BOWYER, bowyer));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_BREWING, brewing));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_CARRYING, carrying));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_COMBAT, combat));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_CRAFTING, crafting));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_DESERT_LORE, desert_lore));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_DETECTION, detection));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_DISARM_TRAPS, disarm_traps));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_DUAL_WIELD, dual_wield));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_DUNGEONEERING, dungeoneering));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_ESCAPE, escape));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_FISHING, fishing));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_FLETCHERY, fletchery));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_FORAGING, foraging));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_FOREST_LORE, forest_lore));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_HERBALISM, herbalism));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_HIDING, hiding));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_HUNTING, hunting));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_INTIMIDATION, intimidation));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_JEWELER, jeweler));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_JUMPING, jumping));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_LEADERSHIP, leadership));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_LITERACY, literacy));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_LORE, lore));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_MAGIC, magic));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_MARSH_LORE, marsh_lore));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_MEDICINE, medicine));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_MOUNTAIN_LORE, mountain_lore));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_MOUNTAINEERING, mountaineering));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_MUSIC, music));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_NIGHT_SIGHT, night_sight));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_OCEANOGRAPHY, oceanography));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_PAPERCRAFT, papercraft));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_RELIGION, religion));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_SCRIBING, scribing));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_SKINNING, skinning));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_SMITHING, smithing));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_SPELUNKING, spelunking));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_STEALTH, stealth));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_SWIMMING, swimming));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_TANNING, tanning));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_THIEVERY, thievery));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_WANDCRAFT, wandcraft));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_WEAVING, weaving));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_ARCHERY, std::move(archery)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_AWARENESS, std::move(awareness)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_BARGAINING, std::move(bargaining)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_BEASTMASTERY, std::move(beastmastery)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_BLIND_FIGHTING, std::move(blind_fighting)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_BOATING, std::move(boating)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_BOWYER, std::move(bowyer)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_BREWING, std::move(brewing)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_CARRYING, std::move(carrying)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_COMBAT, std::move(combat)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_CRAFTING, std::move(crafting)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_DESERT_LORE, std::move(desert_lore)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_DETECTION, std::move(detection)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_DISARM_TRAPS, std::move(disarm_traps)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_DUAL_WIELD, std::move(dual_wield)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_DUNGEONEERING, std::move(dungeoneering)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_ESCAPE, std::move(escape)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_FISHING, std::move(fishing)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_FLETCHERY, std::move(fletchery)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_FORAGING, std::move(foraging)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_FOREST_LORE, std::move(forest_lore)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_HERBALISM, std::move(herbalism)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_HIDING, std::move(hiding)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_HUNTING, std::move(hunting)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_INTIMIDATION, std::move(intimidation)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_JEWELER, std::move(jeweler)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_JUMPING, std::move(jumping)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_LEADERSHIP, std::move(leadership)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_LITERACY, std::move(literacy)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_LORE, std::move(lore)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_MAGIC, std::move(magic)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_MARSH_LORE, std::move(marsh_lore)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_MEDICINE, std::move(medicine)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_MOUNTAIN_LORE, std::move(mountain_lore)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_MOUNTAINEERING, std::move(mountaineering)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_MUSIC, std::move(music)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_NIGHT_SIGHT, std::move(night_sight)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_OCEANOGRAPHY, std::move(oceanography)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_PAPERCRAFT, std::move(papercraft)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_RELIGION, std::move(religion)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_SCRIBING, std::move(scribing)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_SKINNING, std::move(skinning)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_SMITHING, std::move(smithing)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_SPELUNKING, std::move(spelunking)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_STEALTH, std::move(stealth)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_SWIMMING, std::move(swimming)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_TANNING, std::move(tanning)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_THIEVERY, std::move(thievery)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_WANDCRAFT, std::move(wandcraft)));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_WEAVING, std::move(weaving)));
 }
 
 // Initialize all the melee skills.
 void Skills::initialize_melee_skills()
 {
-  std::shared_ptr<AxesSkill> axes = std::make_shared<AxesSkill>();
-  std::shared_ptr<ShortBladesSkill> short_blades = std::make_shared<ShortBladesSkill>();
-  std::shared_ptr<LongBladesSkill> long_blades = std::make_shared<LongBladesSkill>();
-  std::shared_ptr<BludgeonsSkill> bludgeons = std::make_shared<BludgeonsSkill>();
-  std::shared_ptr<DaggersSkill> daggers = std::make_shared<DaggersSkill>();
-  std::shared_ptr<RodsAndStavesSkill> rods_and_staves = std::make_shared<RodsAndStavesSkill>();
-  std::shared_ptr<SpearsSkill> spears = std::make_shared<SpearsSkill>();
-  std::shared_ptr<UnarmedSkill> unarmed = std::make_shared<UnarmedSkill>();
-  std::shared_ptr<WhipsSkill> whips = std::make_shared<WhipsSkill>();
-  std::shared_ptr<ExoticMeleeSkill> exotic = std::make_shared<ExoticMeleeSkill>();
+  std::unique_ptr<AxesSkill> axes = std::make_unique<AxesSkill>();
+  std::unique_ptr<ShortBladesSkill> short_blades = std::make_unique<ShortBladesSkill>();
+  std::unique_ptr<LongBladesSkill> long_blades = std::make_unique<LongBladesSkill>();
+  std::unique_ptr<BludgeonsSkill> bludgeons = std::make_unique<BludgeonsSkill>();
+  std::unique_ptr<DaggersSkill> daggers = std::make_unique<DaggersSkill>();
+  std::unique_ptr<RodsAndStavesSkill> rods_and_staves = std::make_unique<RodsAndStavesSkill>();
+  std::unique_ptr<SpearsSkill> spears = std::make_unique<SpearsSkill>();
+  std::unique_ptr<UnarmedSkill> unarmed = std::make_unique<UnarmedSkill>();
+  std::unique_ptr<WhipsSkill> whips = std::make_unique<WhipsSkill>();
+  std::unique_ptr<ExoticMeleeSkill> exotic = std::make_unique<ExoticMeleeSkill>();
 
-  skills.insert(make_pair(SkillType::SKILL_MELEE_AXES, axes));
-  skills.insert(make_pair(SkillType::SKILL_MELEE_SHORT_BLADES, short_blades));
-  skills.insert(make_pair(SkillType::SKILL_MELEE_LONG_BLADES, long_blades));
-  skills.insert(make_pair(SkillType::SKILL_MELEE_BLUDGEONS, bludgeons));
-  skills.insert(make_pair(SkillType::SKILL_MELEE_DAGGERS, daggers));
-  skills.insert(make_pair(SkillType::SKILL_MELEE_RODS_AND_STAVES, rods_and_staves));
-  skills.insert(make_pair(SkillType::SKILL_MELEE_SPEARS, spears));
-  skills.insert(make_pair(SkillType::SKILL_MELEE_UNARMED, unarmed));
-  skills.insert(make_pair(SkillType::SKILL_MELEE_WHIPS, whips));
-  skills.insert(make_pair(SkillType::SKILL_MELEE_EXOTIC, exotic));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_AXES, std::move(axes)));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_SHORT_BLADES, std::move(short_blades)));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_LONG_BLADES, std::move(long_blades)));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_BLUDGEONS, std::move(bludgeons)));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_DAGGERS, std::move(daggers)));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_RODS_AND_STAVES, std::move(rods_and_staves)));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_SPEARS, std::move(spears)));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_UNARMED, std::move(unarmed)));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_WHIPS, std::move(whips)));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_EXOTIC, std::move(exotic)));
 }
 
 // Initialize all the ranged weapon skills.
 void Skills::initialize_ranged_skills()
 {
-  std::shared_ptr<ThrownAxesSkill> axes = std::make_shared<ThrownAxesSkill>();
-  std::shared_ptr<ThrownBladesSkill> blades = std::make_shared<ThrownBladesSkill>();
-  std::shared_ptr<ThrownBludgeonsSkill> bludgeons = std::make_shared<ThrownBludgeonsSkill>();
-  std::shared_ptr<BowsSkill> bows = std::make_shared<BowsSkill>();
-  std::shared_ptr<CrossbowsSkill> crossbows = std::make_shared<CrossbowsSkill>();
-  std::shared_ptr<ThrownDaggersSkill> daggers = std::make_shared<ThrownDaggersSkill>();
-  std::shared_ptr<RocksSkill> rocks = std::make_shared<RocksSkill>();
-  std::shared_ptr<SlingsSkill> slings = std::make_shared<SlingsSkill>();
-  std::shared_ptr<ThrownSpearsSkill> spears = std::make_shared<ThrownSpearsSkill>();
-  std::shared_ptr<ExoticRangedSkill> exotic = std::make_shared<ExoticRangedSkill>();
+  std::unique_ptr<ThrownAxesSkill> axes = std::make_unique<ThrownAxesSkill>();
+  std::unique_ptr<ThrownBladesSkill> blades = std::make_unique<ThrownBladesSkill>();
+  std::unique_ptr<ThrownBludgeonsSkill> bludgeons = std::make_unique<ThrownBludgeonsSkill>();
+  std::unique_ptr<BowsSkill> bows = std::make_unique<BowsSkill>();
+  std::unique_ptr<CrossbowsSkill> crossbows = std::make_unique<CrossbowsSkill>();
+  std::unique_ptr<ThrownDaggersSkill> daggers = std::make_unique<ThrownDaggersSkill>();
+  std::unique_ptr<RocksSkill> rocks = std::make_unique<RocksSkill>();
+  std::unique_ptr<SlingsSkill> slings = std::make_unique<SlingsSkill>();
+  std::unique_ptr<ThrownSpearsSkill> spears = std::make_unique<ThrownSpearsSkill>();
+  std::unique_ptr<ExoticRangedSkill> exotic = std::make_unique<ExoticRangedSkill>();
 
-  skills.insert(make_pair(SkillType::SKILL_RANGED_AXES, axes));
-  skills.insert(make_pair(SkillType::SKILL_RANGED_BLADES, blades));
-  skills.insert(make_pair(SkillType::SKILL_RANGED_BLUDGEONS, bludgeons));
-  skills.insert(make_pair(SkillType::SKILL_RANGED_BOWS, bows));
-  skills.insert(make_pair(SkillType::SKILL_RANGED_CROSSBOWS, crossbows));
-  skills.insert(make_pair(SkillType::SKILL_RANGED_DAGGERS, daggers));
-  skills.insert(make_pair(SkillType::SKILL_RANGED_ROCKS, rocks));
-  skills.insert(make_pair(SkillType::SKILL_RANGED_SLINGS, slings));
-  skills.insert(make_pair(SkillType::SKILL_RANGED_SPEARS, spears));
-  skills.insert(make_pair(SkillType::SKILL_RANGED_EXOTIC, exotic));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_AXES, std::move(axes)));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_BLADES, std::move(blades)));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_BLUDGEONS, std::move(bludgeons)));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_BOWS, std::move(bows)));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_CROSSBOWS, std::move(crossbows)));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_DAGGERS, std::move(daggers)));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_ROCKS, std::move(rocks)));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_SLINGS, std::move(slings)));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_SPEARS, std::move(spears)));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_EXOTIC, std::move(exotic)));
 }
 
 // Initialize all the magic skills.
 void Skills::initialize_magic_skills()
 {
-  std::shared_ptr<ArcaneMagicSkill> arcane = std::make_shared<ArcaneMagicSkill>();
-  std::shared_ptr<DivineMagicSkill> divine = std::make_shared<DivineMagicSkill>();
-  std::shared_ptr<MysticMagicSkill> mystic = std::make_shared<MysticMagicSkill>();
-  std::shared_ptr<PrimordialMagicSkill> primordial = std::make_shared<PrimordialMagicSkill>();
-  std::shared_ptr<CantripsSkill> cantrips = std::make_shared<CantripsSkill>();
+  std::unique_ptr<ArcaneMagicSkill> arcane = std::make_unique<ArcaneMagicSkill>();
+  std::unique_ptr<DivineMagicSkill> divine = std::make_unique<DivineMagicSkill>();
+  std::unique_ptr<MysticMagicSkill> mystic = std::make_unique<MysticMagicSkill>();
+  std::unique_ptr<PrimordialMagicSkill> primordial = std::make_unique<PrimordialMagicSkill>();
+  std::unique_ptr<CantripsSkill> cantrips = std::make_unique<CantripsSkill>();
 
-  skills.insert(make_pair(SkillType::SKILL_MAGIC_ARCANE, arcane));
-  skills.insert(make_pair(SkillType::SKILL_MAGIC_DIVINE, divine));
-  skills.insert(make_pair(SkillType::SKILL_MAGIC_MYSTIC, mystic));
-  skills.insert(make_pair(SkillType::SKILL_MAGIC_PRIMORDIAL, primordial));
-  skills.insert(make_pair(SkillType::SKILL_MAGIC_CANTRIPS, cantrips));
+  skills.insert(make_pair(SkillType::SKILL_MAGIC_ARCANE, std::move(arcane)));
+  skills.insert(make_pair(SkillType::SKILL_MAGIC_DIVINE, std::move(divine)));
+  skills.insert(make_pair(SkillType::SKILL_MAGIC_MYSTIC, std::move(mystic)));
+  skills.insert(make_pair(SkillType::SKILL_MAGIC_PRIMORDIAL, std::move(primordial)));
+  skills.insert(make_pair(SkillType::SKILL_MAGIC_CANTRIPS, std::move(cantrips)));
 }
 
 #ifdef UNIT_TESTS

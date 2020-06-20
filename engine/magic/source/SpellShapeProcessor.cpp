@@ -56,7 +56,7 @@ bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vect
     TilePtr tile = ct_pair.second;
 
     bool damage_identified = apply_damage(caster, coord, tile, spell, am);
-    bool effect_identified = apply_effect(effect, caster, coord, tile, spell, effect_status, am);
+    bool effect_identified = apply_effect(effect.get(), caster, coord, tile, spell, effect_status, am);
 
     if ((damage_identified || effect_identified) && !spell_identified)
     {
@@ -120,7 +120,7 @@ bool SpellShapeProcessor::apply_damage(CreaturePtr caster, const Coordinate& c, 
 }
 
 // Apply a spell effect to a particular tile.
-bool SpellShapeProcessor::apply_effect(EffectPtr effect, CreaturePtr caster, const Coordinate& coord, TilePtr tile, const Spell& spell, const ItemStatus effect_status, ActionManager * const am)
+bool SpellShapeProcessor::apply_effect(Effect* effect, CreaturePtr caster, const Coordinate& coord, TilePtr tile, const Spell& spell, const ItemStatus effect_status, ActionManager * const am)
 {
   if (tile)
   {

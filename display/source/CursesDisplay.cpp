@@ -35,6 +35,30 @@ void CursesDisplay::set_spritesheets(const map<string, pair<string, unordered_ma
   // Curses doesn't use sprites.
 }
 
+void CursesDisplay::set_palette_id(const string& new_palette_id)
+{
+  // Curses doesn't use sprites.
+}
+
+void CursesDisplay::set_palette(const std::string& new_palette_id)
+{
+  // Curses doesn't use sprites.
+}
+
+std::string CursesDisplay::get_palette_id() const
+{
+  string no_id;
+  return no_id;
+}
+
+pair<bool, pair<string, string>> CursesDisplay::switch_colour_palette(const std::string& current_palette_id)
+{
+  pair<bool, pair<string, string>> palette;
+  palette.first = false;
+
+  return palette;
+}
+
 // Assumption: screens is empty (prototype object), and so this is safe.
 Display* CursesDisplay::clone()
 {
@@ -138,6 +162,10 @@ void CursesDisplay::disable_colour(const Colour colour)
   disable_colour(static_cast<int>(colour), stdscr);
 }
 
+void CursesDisplay::set_colour(const int colour, const int r, const int g, const int b)
+{
+}
+
 // Turn on colour using attron.
 //
 // Note that the enable/disable colour need to match!  Don't pass different colours!
@@ -196,17 +224,17 @@ int CursesDisplay::clear_message_buffer()
 {  
   int return_val;
   WINDOW* screen = get_message_buffer_screen();
-  
+
   wmove(screen, 0, 0);
   wclrtoeol(screen);
 
   wmove(screen, 1, 0);
   return_val = wclrtoeol(screen);
-  
+
   // Reset the internal state
   msg_buffer_last_y = 0;
   msg_buffer_last_x = 0;
-  
+
   // Reset cursor to original position
   wmove(screen, msg_buffer_last_y, msg_buffer_last_x);
 
@@ -284,6 +312,11 @@ void CursesDisplay::tear_down()
 {
   refresh();
   endwin();
+}
+
+string CursesDisplay::get_name() const
+{
+  return "curses";
 }
 
 // Clear the display (in practice, stdscr).
@@ -377,6 +410,10 @@ void CursesDisplay::add_message(const string& to_add_message, const Colour colou
         enable_colour(static_cast<int>(colour), screen);
 
         clear_message_buffer();
+
+        // JCD FIXME RESET TO 0 
+        // ...
+
         getyx(screen, cur_y, cur_x);
       }
     }
@@ -417,7 +454,7 @@ void CursesDisplay::add_message(const string& to_add_message, const Colour colou
   // wrefresh(screen);
 }
 
-string CursesDisplay::add_message_with_prompt(const string& message, const Colour colour, const bool reset_prompt)
+string CursesDisplay::add_message_with_prompt(const string& message, const Colour colour, const bool reset_prompt, const std::string& default_for_esc_key)
 {
   string prompt_result;
 
@@ -426,7 +463,7 @@ string CursesDisplay::add_message_with_prompt(const string& message, const Colou
   // from stdscr, since that's where the message manager is actually
   // displayed!
   add_message(message, colour, reset_prompt);
-  prompt_result = prompt_processor.get_user_string(stdscr, true /* allow arbitrary non-alphanumeric characters */);
+  prompt_result = prompt_processor.get_user_string(stdscr, true /* allow arbitrary non-alphanumeric characters */, default_for_esc_key);
 
   return prompt_result;
 }
@@ -495,7 +532,7 @@ void CursesDisplay::refresh_and_clear_window()
 string CursesDisplay::get_prompt_value(const Screen& current_screen, const MenuWrapper& wrapper, const int current_row, const int current_col)
 {
   WINDOW* screen_window = get_current_screen();
-  PromptPtr prompt = current_screen.get_prompt();
+  Prompt* prompt = current_screen.get_prompt();
   prompt_processor.show_prompt(screen_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
 
   string result = prompt_processor.get_prompt(screen_window, wrapper, prompt);

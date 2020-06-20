@@ -691,12 +691,12 @@ bool Generator::generate_foragables(MapPtr map, const ForagableType ft)
   bool generated_foragables = false;
 
   Game& game = Game::instance();
-  WorldPtr world = game.get_current_world();
+  World* world = game.get_current_world();
 
   if (map && world)
   {
     Calendar& calendar = world->get_calendar();
-    ISeasonPtr season = calendar.get_season();
+    ISeason* season = calendar.get_season();
 
     if (season)
     {
@@ -747,7 +747,7 @@ bool Generator::generate_foragables(MapPtr map, const ForagableType ft)
   return generated_foragables;
 }
 
-map<TileType, vector<string>> Generator::get_foragables_for_season(ISeasonPtr season, const ForagableType ft)
+map<TileType, vector<string>> Generator::get_foragables_for_season(ISeason* season, const ForagableType ft)
 {
   if (season != nullptr)
   {

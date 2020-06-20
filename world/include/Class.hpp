@@ -141,6 +141,6 @@ class Class
     std::map<std::string, float> deity_dislike_multipliers;
 };
 
-using ClassPtr = std::shared_ptr<Class>;
+using ClassPtr = std::unique_ptr<Class>;
 using ClassMap = std::map<std::string, ClassPtr>;
 using InitialEquipmentMap = std::map<EquipmentWornLocation, InitialItem>;

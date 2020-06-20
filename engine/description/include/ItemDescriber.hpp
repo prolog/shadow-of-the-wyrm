@@ -11,6 +11,7 @@ class ItemDescriber : public IDescriber
 
     virtual std::string describe() const override;
     virtual std::string describe_usage() const;
+    virtual std::string describe_tried() const;
     virtual std::string describe_resists_and_flags() const;
     virtual std::string describe_quantity_and_value() const;
 
@@ -18,4 +19,4 @@ class ItemDescriber : public IDescriber
     ItemPtr item;
 };
 
-using ItemDescriberPtr = std::shared_ptr<ItemDescriber>;
+using ItemDescriberPtr = std::unique_ptr<ItemDescriber>;

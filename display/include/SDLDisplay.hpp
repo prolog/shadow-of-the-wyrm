@@ -10,6 +10,7 @@
 
 #include <deque>
 #include <unordered_map>
+#include <vector>
 #include "Display.hpp"
 #include "SDLCursorLocation.hpp"
 #include "SDLDisplayParameters.hpp"
@@ -23,6 +24,8 @@ class SDLDisplay : public Display
     
 	  virtual bool create() override;
 	  virtual void tear_down() override;
+
+    virtual std::string get_name() const override;
 
     // Get the screen's current width
     virtual unsigned int get_width() const;
@@ -43,7 +46,7 @@ class SDLDisplay : public Display
 
     // Add a message to display to the user
     virtual void add_message(const std::string& message, const Colour colour, const bool clear_prior_to_adding_message) override;
-    virtual std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool clear_prior) override;
+    virtual std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool clear_prior, const std::string& default_for_esc_key) override;
 
     // Halt the messages - require some form of input from the user to continue
     virtual void halt_messages() override;
@@ -76,11 +79,18 @@ class SDLDisplay : public Display
     SDL_Color get_colour(const int curses_colour) const;
     void enable_colour(const Colour colour) override;
     void disable_colour(const Colour colour) override;
+    virtual void set_colour(const int colour, const int r, const int g, const int b) override;
 
     virtual std::string display_screen(const Screen& current_screen) override;
 
     void set_spritesheets(const std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>>& spritesheet_details) override;
     SDL_Texture* get_spritesheet(const std::string& spritesheet_idx);
+
+    // Palettes
+    void set_palette_id(const std::string& new_palette_id) override;
+    virtual void set_palette(const std::string& new_palette_id) override;
+    virtual std::string get_palette_id() const override;
+    virtual std::pair<bool, std::pair<std::string, std::string>> switch_colour_palette(const std::string& current_palette_id) override;
 
     Coordinate get_spritesheet_coordinate(const SpritesheetLocation& ssl) const;
 
@@ -93,8 +103,12 @@ class SDLDisplay : public Display
     // Functions to help set up the SDL display
     bool read_dimensions_from_settings();
     bool read_font_into_texture();
+    bool read_colours_from_settings();
     bool create_window_and_renderer();
     void initialize_colours();
+    void initialize_colours(const std::vector<SDL_Colour>& colourset);
+
+    bool check_available_screen_dimensions();
 
     // Game-related functions
     void display_text_component(SDL_Window* window, int* row, int* col, TextComponentPtr text_component, const uint line_increment);
@@ -130,11 +144,15 @@ class SDLDisplay : public Display
     // All other textures should have a string key with length > 0.
     std::unordered_map<std::string, SDL_Texture*> spritesheets;
     std::unordered_map<std::string, std::unordered_map<std::string, Coordinate>> spritesheet_references;
+    std::map<std::string, std::pair<std::string, std::vector<SDL_Colour>>> palettes;
+    std::string cur_palette_id;
 
     static const int SCREEN_ROWS;
     static const int SCREEN_COLS;
     static const int NUM_SDL_BASE_COLOURS;
     static const std::string TEXT_ID;
+    static const std::string PALETTES_SETTING;
+    static const std::string DEFAULT_PALETTE_SETTING;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

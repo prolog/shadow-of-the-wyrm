@@ -68,6 +68,32 @@ list<ItemPtr> ItemManager::get_items_by_type(const IInventoryPtr inv, const Item
   return result_items;
 }
 
+list<ItemPtr> ItemManager::get_filtered_items(IInventoryPtr inv, const list<IItemFilterPtr>& filters)
+{
+  list<ItemPtr> result;
+
+  if (inv != nullptr)
+  {
+    const list<ItemPtr> raw_items = inv->get_items_cref();
+    back_insert_iterator<list<ItemPtr>> back_it(result);
+
+    copy_if(raw_items.begin(), raw_items.end(), back_it,
+      [filters](ItemPtr item)
+      {
+        bool pass_f = true;
+
+        for (IItemFilterPtr i : filters)
+        {
+          pass_f = pass_f && i->passes_filter(item);
+        }
+
+        return pass_f;
+      });
+  }
+
+  return result;
+}
+
 // Check to see if a creature has an item with the given base ID.
 bool ItemManager::has_item(CreaturePtr creature, const string& base_item_id)
 {

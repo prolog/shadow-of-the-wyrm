@@ -27,25 +27,25 @@ class XMLItemsReader
     XMLItemsReader();
     ~XMLItemsReader();
     
-    std::pair<ItemMap, GenerationValuesMap> get_items(const XMLNode& items_node, const bool force_ascii);
+    std::pair<ItemMap, GenerationValuesMap> get_items(const XMLNode& items_node);
 
   protected:
-    std::pair<ItemMap, GenerationValuesMap> get_misc_items(const XMLNode& misc_items_node, const bool force_ascii);
-    std::pair<ItemMap, GenerationValuesMap> get_amulets(const XMLNode& amulets_node, const bool force_ascii);
-    std::pair<ItemMap, GenerationValuesMap> get_armour(const XMLNode& armour_node, const bool force_ascii);
-    std::pair<ItemMap, GenerationValuesMap> get_rings(const XMLNode& rings_node, const bool force_ascii);
-    std::pair<ItemMap, GenerationValuesMap> get_weapons(const XMLNode& weapons_node, const bool force_ascii);
-    std::pair<ItemMap, GenerationValuesMap> get_ranged_weapons(const XMLNode& ranged_weapons_node, const bool force_ascii);
-    std::pair<ItemMap, GenerationValuesMap> get_ammunition(const XMLNode& ammunition_node, const bool force_ascii);
-    std::pair<ItemMap, GenerationValuesMap> get_food(const XMLNode& foodstuffs_node, const bool force_ascii);
-    std::pair<ItemMap, GenerationValuesMap> get_plants(const XMLNode& plants_node, const bool force_ascii);
-    std::pair<ItemMap, GenerationValuesMap> get_boats(const XMLNode& boats_node, const bool force_ascii);
-    std::pair<ItemMap, GenerationValuesMap> get_potions(const XMLNode& potions_node, const bool force_ascii);
-    std::pair<ItemMap, GenerationValuesMap> get_scrolls(const XMLNode& scrolls_node, const bool force_ascii);
-    std::pair<ItemMap, GenerationValuesMap> get_currencies(const XMLNode& currencies_node, const bool force_ascii);
-    std::pair<ItemMap, GenerationValuesMap> get_tools(const XMLNode& tools_node, const bool force_ascii);
-    std::pair<ItemMap, GenerationValuesMap> get_wands(const XMLNode& wands_node, const bool force_ascii);
-    std::pair<ItemMap, GenerationValuesMap> get_spellbooks(const XMLNode& spellbooks_node, const bool force_ascii);
+    std::pair<ItemMap, GenerationValuesMap> get_misc_items(const XMLNode& misc_items_node);
+    std::pair<ItemMap, GenerationValuesMap> get_amulets(const XMLNode& amulets_node);
+    std::pair<ItemMap, GenerationValuesMap> get_armour(const XMLNode& armour_node);
+    std::pair<ItemMap, GenerationValuesMap> get_rings(const XMLNode& rings_node);
+    std::pair<ItemMap, GenerationValuesMap> get_weapons(const XMLNode& weapons_node);
+    std::pair<ItemMap, GenerationValuesMap> get_ranged_weapons(const XMLNode& ranged_weapons_node);
+    std::pair<ItemMap, GenerationValuesMap> get_ammunition(const XMLNode& ammunition_node);
+    std::pair<ItemMap, GenerationValuesMap> get_food(const XMLNode& foodstuffs_node);
+    std::pair<ItemMap, GenerationValuesMap> get_plants(const XMLNode& plants_node);
+    std::pair<ItemMap, GenerationValuesMap> get_boats(const XMLNode& boats_node);
+    std::pair<ItemMap, GenerationValuesMap> get_potions(const XMLNode& potions_node);
+    std::pair<ItemMap, GenerationValuesMap> get_scrolls(const XMLNode& scrolls_node);
+    std::pair<ItemMap, GenerationValuesMap> get_currencies(const XMLNode& currencies_node);
+    std::pair<ItemMap, GenerationValuesMap> get_tools(const XMLNode& tools_node);
+    std::pair<ItemMap, GenerationValuesMap> get_wands(const XMLNode& wands_node);
+    std::pair<ItemMap, GenerationValuesMap> get_spellbooks(const XMLNode& spellbooks_node);
     
     XMLItemReader item_reader;
     XMLAmuletReader amulet_reader;

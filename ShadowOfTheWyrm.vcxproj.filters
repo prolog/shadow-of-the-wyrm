@@ -1748,9 +1748,6 @@
     <ClInclude Include="engine\include\RNG.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\items\include\IItemFilter.hpp">
-      <Filter>Header Files\engine\items\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\items\include\InitialItemEquipper.hpp">
       <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
@@ -1957,9 +1954,6 @@
     </ClInclude>
     <ClInclude Include="engine\commands\include\KeyboardCommandMapFactory.hpp">
       <Filter>Header Files\engine\commands\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\include\WorldFactory.hpp">
-      <Filter>Header Files\world\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\time\include\TimeObserverFactory.hpp">
       <Filter>Header Files\engine\time\include</Filter>
@@ -3803,9 +3797,6 @@
     <ClInclude Include="engine\time\include\ShopsTimeObserver.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\decision_strategies\deity\include\HaltBreedingDeityDecisionStrategyHandler.hpp">
-      <Filter>Header Files\engine\decision_strategies\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\include\Status.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
@@ -4267,6 +4258,15 @@
     </ClInclude>
     <ClInclude Include="engine\maps\tiles\include\ArcaneTileDamageProcessor.hpp">
       <Filter>Header Files\engine\maps\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\HaltBreedingDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\DisplayProperties.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\IItemFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -5463,9 +5463,6 @@
     </ClCompile>
     <ClCompile Include="engine\commands\source\KeyboardCommandMapFactory.cpp">
       <Filter>Source Files\engine\commands\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\source\WorldFactory.cpp">
-      <Filter>Source Files\world\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\time\source\TimeObserverFactory.cpp">
       <Filter>Source Files\engine\time\source</Filter>
@@ -8550,6 +8547,9 @@
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\source\ArcaneTileDamageProcessor.cpp">
       <Filter>Source Files\engine\maps\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\DisplayProperties.cpp">
+      <Filter>Source Files\display\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

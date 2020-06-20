@@ -47,6 +47,11 @@ string Settings::get_setting(const string& key) const
   return setting;
 }
 
+void Settings::set_setting(const string& name, const string& val)
+{
+  settings_tree.put(name, val);
+}
+
 void Settings::set_settings(const map<string, string>& addl_settings)
 {
   for (const auto& s_pair : addl_settings)
@@ -85,6 +90,20 @@ bool Settings::get_setting_as_bool(const string& key, const bool default_val) co
   }
 
   return settingb;  
+}
+
+map<string, string> Settings::get_settings_starts_with(const string& key_prefix) const
+{
+  map<string, string> props;
+  for (auto it : settings_tree)
+  {
+    if (it.first.rfind(key_prefix) == 0)
+    {
+      props[it.first] = it.second.data();
+    }
+  }
+
+  return props;
 }
 
 bool Settings::serialize(ostream& stream) const

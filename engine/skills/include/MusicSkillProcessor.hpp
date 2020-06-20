@@ -5,6 +5,7 @@ class MusicSkillProcessor : public SkillProcessor
 {
   public:
     virtual ActionCostValue process(CreaturePtr creature, MapPtr map) override;
+    virtual SkillProcessorPtr clone() override;
 
   protected:
     ItemPtr get_musical_instrument(CreaturePtr creature);

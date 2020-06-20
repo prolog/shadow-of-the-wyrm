@@ -5,7 +5,7 @@ void MovementAccumulationUpdater::update(CreaturePtr creature, TilePtr new_tile)
 {
   if (creature && new_tile)
   {
-    WorldPtr world = Game::instance().get_current_world();
+    World* world = Game::instance().get_current_world();
     Season season = Season::SEASON_SPRING;
 
     if (world != nullptr)
@@ -55,7 +55,7 @@ void MovementAccumulationUpdater::update(CreaturePtr creature, TilePtr new_tile)
 MovementType MovementAccumulationUpdater::get_movement_type(CreaturePtr creature, TilePtr tile)
 {
   Game& game = Game::instance();
-  WorldPtr world = game.get_current_world();
+  World* world = game.get_current_world();
   Season season = Season::SEASON_SPRING;
 
   if (world != nullptr)

@@ -15,8 +15,8 @@ RaceMap XMLRacesReader::get_races(const XMLNode& races_node)
 
   // We always need the default race in the mapm regardless of whether there's
   // any XML!
-  RacePtr default_race = std::make_shared<Race>();
-  races.insert(make_pair(default_race->get_race_id(), default_race));
+  RacePtr default_race = std::make_unique<Race>();
+  races.insert(make_pair(default_race->get_race_id(), std::move(default_race)));
 
   if (!races_node.is_null())
   {
@@ -28,7 +28,7 @@ RaceMap XMLRacesReader::get_races(const XMLNode& races_node)
 
       if (race)
       {
-        races.insert(make_pair(race->get_race_id(), race));
+        races.insert(make_pair(race->get_race_id(), std::move(race)));
       }
     }
   }
@@ -49,7 +49,7 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     XMLNode resistances_node        = XMLUtils::get_next_element_by_local_name(race_node, "Resistances");
     XMLNode skills_node             = XMLUtils::get_next_element_by_local_name(race_node, "Skills");
 
-    race = std::make_shared<Race>();
+    race = std::make_unique<Race>();
 
     string id = XMLUtils::get_attribute_value(race_node, "id");
     race->set_race_id(id);
@@ -85,7 +85,7 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     race->set_has_hair(has_hair);
 
     XMLNode drops_node = XMLUtils::get_next_element_by_local_name(race_node, "Drops");
-    parse_race_drops(race, drops_node);
+    parse_race_drops(race.get(), drops_node);
 
     bool has_random_villages = XMLUtils::get_child_node_bool_value(race_node, "HasRandomVillages", true);
     race->set_has_random_villages(has_random_villages);
@@ -114,8 +114,8 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool hungerless = XMLUtils::get_child_node_bool_value(race_node, "Hungerless", race->get_hungerless());
     race->set_hungerless(hungerless);
     
-    parse_race_age_info(race, age_info_node);
-    parse_race_initial_statistics(race, initial_statistics_node);
+    parse_race_age_info(race.get(), age_info_node);
+    parse_race_initial_statistics(race.get(), initial_statistics_node);
 
     bool corporeal = XMLUtils::get_child_node_bool_value(race_node, "Corporeal", race->get_corporeal().get_base());
     BoolStatistic corporeal_stat(corporeal);
@@ -133,10 +133,10 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     BoolStatistic water_breathing_stat(water_breathing);
     race->set_water_breathing(water_breathing_stat);
 
-    parse_race_initial_modifiers(race, initial_modifiers_node);
-    parse_initial_deity_ids(race, initial_deity_ids_node);
-    parse_race_resistances(race, resistances_node);
-    parse_race_skills(race, skills_node);
+    parse_race_initial_modifiers(race.get(), initial_modifiers_node);
+    parse_initial_deity_ids(race.get(), initial_deity_ids_node);
+    parse_race_resistances(race.get(), resistances_node);
+    parse_race_skills(race.get(), skills_node);
 
     float experience_multiplier = XMLUtils::get_child_node_float_value(race_node, "ExperienceMultiplier");
     race->set_experience_multiplier(experience_multiplier);
@@ -157,7 +157,7 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
   return race;
 }
 
-void XMLRacesReader::parse_race_initial_statistics(RacePtr race, const XMLNode& initial_statistics_node)
+void XMLRacesReader::parse_race_initial_statistics(Race* race, const XMLNode& initial_statistics_node)
 {
   if (race && !initial_statistics_node.is_null())
   {
@@ -181,7 +181,7 @@ void XMLRacesReader::parse_race_initial_statistics(RacePtr race, const XMLNode& 
   }
 }
 
-void XMLRacesReader::parse_race_age_info(RacePtr race, const XMLNode& age_info_node)
+void XMLRacesReader::parse_race_age_info(Race* race, const XMLNode& age_info_node)
 {
   if (race && !age_info_node.is_null())
   {
@@ -199,7 +199,7 @@ void XMLRacesReader::parse_race_age_info(RacePtr race, const XMLNode& age_info_n
   }
 }
 
-void XMLRacesReader::parse_race_initial_modifiers(RacePtr race, const XMLNode& initial_modifiers_node)
+void XMLRacesReader::parse_race_initial_modifiers(Race* race, const XMLNode& initial_modifiers_node)
 {
   if (race && !initial_modifiers_node.is_null())
   {
@@ -210,7 +210,7 @@ void XMLRacesReader::parse_race_initial_modifiers(RacePtr race, const XMLNode& i
   }
 }
 
-void XMLRacesReader::parse_initial_deity_ids(RacePtr race, const XMLNode& initial_deities_node)
+void XMLRacesReader::parse_initial_deity_ids(Race* race, const XMLNode& initial_deities_node)
 {
   if (race && !initial_deities_node.is_null())
   {
@@ -230,7 +230,7 @@ void XMLRacesReader::parse_initial_deity_ids(RacePtr race, const XMLNode& initia
   }
 }
 
-void XMLRacesReader::parse_race_resistances(RacePtr race, const XMLNode& resistances_node)
+void XMLRacesReader::parse_race_resistances(Race* race, const XMLNode& resistances_node)
 {
   XMLResistancesReader resistances_reader;
 
@@ -239,7 +239,7 @@ void XMLRacesReader::parse_race_resistances(RacePtr race, const XMLNode& resista
   race->set_resistances(race_resistances);
 }
 
-void XMLRacesReader::parse_race_skills(RacePtr race, const XMLNode& skills_node)
+void XMLRacesReader::parse_race_skills(Race* race, const XMLNode& skills_node)
 {
   XMLSkillsReader skills_reader;
 
@@ -248,7 +248,7 @@ void XMLRacesReader::parse_race_skills(RacePtr race, const XMLNode& skills_node)
   race->set_skills(race_skills);
 }
 
-void XMLRacesReader::parse_race_drops(RacePtr race, const XMLNode& drops_node)
+void XMLRacesReader::parse_race_drops(Race* race, const XMLNode& drops_node)
 {
   if (race && !drops_node.is_null())
   {

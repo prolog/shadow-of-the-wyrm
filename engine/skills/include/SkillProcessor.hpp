@@ -10,10 +10,11 @@ class SkillProcessor
 {
   public:
     virtual ActionCostValue process(CreaturePtr creature, MapPtr map) = 0;
+    virtual std::unique_ptr<SkillProcessor> clone() = 0;
 
   protected:
     virtual ActionCostValue get_default_skill_action_cost_value(CreaturePtr creature) const;
 };
 
-using SkillProcessorPtr = std::shared_ptr<SkillProcessor>;
+using SkillProcessorPtr = std::unique_ptr<SkillProcessor>;
 

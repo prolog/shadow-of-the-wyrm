@@ -26,6 +26,11 @@ class Display : public ISerializable
 	  virtual bool create() = 0;
 	  virtual void tear_down() = 0;
 
+    virtual std::string get_name() const = 0;
+
+    virtual void set_force_ascii(const bool new_force_ascii);
+    virtual bool get_force_ascii() const;
+
     // Get the screen's current width
     virtual unsigned int get_width() const = 0;
 
@@ -47,7 +52,7 @@ class Display : public ISerializable
     // Add a message to display to the user
     virtual void add_message(const std::string& message, const bool reset_cursor) ;
     virtual void add_message(const std::string& message, const Colour colour, const bool clear_prior_to_adding_message) = 0;
-    virtual std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool clear_prior) = 0;
+    virtual std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool clear_prior, const std::string& default_for_esc_key) = 0;
 
     virtual bool uses_colour() const;
 
@@ -115,8 +120,15 @@ class Display : public ISerializable
     virtual void display_text(int row, int col, const std::string& s) = 0;
     virtual void enable_colour(const Colour colour) = 0;
     virtual void disable_colour(const Colour colour) = 0;
+    virtual void set_colour(const int colour, const int r, const int g, const int b) = 0;
 
     virtual void set_spritesheets(const std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>>& spritesheet_details) = 0;
+
+    // Palettes
+    virtual void set_palette_id(const std::string& new_palette_id) = 0;
+    virtual void set_palette(const std::string& new_palette_id) = 0;
+    virtual std::string get_palette_id() const = 0;
+    virtual std::pair<bool, std::pair<std::string, std::string>> switch_colour_palette(const std::string& current_palette_id) = 0;
 
     // Property methods.
     virtual void set_properties(const std::map<std::string, std::string>& new_properties);
@@ -136,6 +148,7 @@ class Display : public ISerializable
     virtual void redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows) = 0;
     int get_cursor_mode(const CursorSettings cs) const;
 
+    bool force_ascii;
     Colour mono_colour;
     std::map<std::string, std::string> display_properties;
     const int cursor_mode;

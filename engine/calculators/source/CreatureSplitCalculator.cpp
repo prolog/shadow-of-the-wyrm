@@ -4,7 +4,7 @@
 const int CreatureSplitCalculator::BASE_MIN_CHANCE_SPLIT = 10;
 const int CreatureSplitCalculator::HP_SPLIT_DIVISOR = 3;
 
-int CreatureSplitCalculator::calculate_pct_chance_split(CreaturePtr creature, RacePtr race, MapPtr current_map)
+int CreatureSplitCalculator::calculate_pct_chance_split(CreaturePtr creature, Race* race, MapPtr current_map)
 {
   int chance_split = 0;
 

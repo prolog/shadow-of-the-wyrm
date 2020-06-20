@@ -32,7 +32,7 @@ void CreatureSkillIncrementer::tick(CreaturePtr creature, TilePtr tile, const ul
       // (when the creature is the player), and then reset the number of marks back to zero.
       for (map<SkillType, SkillPtr>::iterator sk_it = raw_skills.begin(); sk_it != raw_skills.end(); sk_it++)
       {
-        SkillPtr skill = sk_it->second;
+        Skill* skill = sk_it->second.get();
         bool added_msg = update_skill_if_necessary(creature, skill, manager);
 
         if (added_msg)
@@ -44,7 +44,7 @@ void CreatureSkillIncrementer::tick(CreaturePtr creature, TilePtr tile, const ul
   }
 }
 
-bool CreatureSkillIncrementer::update_skill_if_necessary(CreaturePtr creature, SkillPtr skill, IMessageManager& manager)
+bool CreatureSkillIncrementer::update_skill_if_necessary(CreaturePtr creature, Skill* skill, IMessageManager& manager)
 {
   bool trained_skill = false;
 

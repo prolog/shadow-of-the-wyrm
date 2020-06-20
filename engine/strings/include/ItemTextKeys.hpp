@@ -7,6 +7,7 @@
 class ItemTextKeys
 {
   public:
+    static const std::string ITEM_TRIED;
     static const std::string ITEM_GLOW;
     static const std::string ITEM_MULTIPLE;
     static const std::string ITEM_CODEX_NOT_IDENTIFIED;

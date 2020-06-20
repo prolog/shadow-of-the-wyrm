@@ -135,7 +135,7 @@ class Game : public ISerializable
     std::string get_script(const std::string& script_name);
     std::map<std::string, std::string> get_scripts() const;
 
-    WorldPtr get_current_world();
+    World* get_current_world();
 
     LoadedMapDetails& get_loaded_map_details_ref();
 
@@ -172,7 +172,7 @@ class Game : public ISerializable
 
     Game();
     Game(const Game& game) = delete;
-    bool operator=(const Game& game);
+    bool operator=(const Game& game) = delete;
    ~Game();
 
     // Game commands - protected, so they should only be called by ShadowOfTheWyrmEngine
@@ -232,11 +232,7 @@ class Game : public ISerializable
     std::map<int, CalendarDay> calendar_days;
     StartingLocationMap starting_locations;
 
-    // The current list of game worlds.  For a long, long time, this should always be size=1.
-    std::vector<WorldPtr> worlds;
-
-    // The current world index in the list of worlds.
-    uint current_world_ix;
+    WorldPtr world;
 
     // The currently-loaded map's ID, used to look up the map in the registry.
     std::string current_map_id;

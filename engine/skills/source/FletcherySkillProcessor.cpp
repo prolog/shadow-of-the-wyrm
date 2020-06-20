@@ -44,6 +44,12 @@ ActionCostValue FletcherySkillProcessor::process(CreaturePtr creature, MapPtr ma
   return acv;
 }
 
+SkillProcessorPtr FletcherySkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<FletcherySkillProcessor>();
+  return proc;
+}
+
 bool FletcherySkillProcessor::check_for_branch(CreaturePtr creature)
 {
   bool has_branch = false;

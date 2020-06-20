@@ -12,7 +12,7 @@ bool SDLPromptProcessor::operator==(const SDLPromptProcessor& cpp) const
   return true;
 }
 
-string SDLPromptProcessor::get_prompt(const SDLDisplayParameters& display_params, SDLCursorLocation& cursor_location, SDLRender& render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, const MenuWrapper& menu_wrapper, PromptPtr prompt)
+string SDLPromptProcessor::get_prompt(const SDLDisplayParameters& display_params, SDLCursorLocation& cursor_location, SDLRender& render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, const MenuWrapper& menu_wrapper, Prompt* prompt)
 {
   string prompt_entry;
 
@@ -45,16 +45,17 @@ string SDLPromptProcessor::get_prompt(const SDLDisplayParameters& display_params
 }
 
 // Get a prompt from the user
-string SDLPromptProcessor::get_user_string(const SDLDisplayParameters& display_params, SDLCursorLocation& cursor_location, SDLRender& render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, bool allow_nonalphanumeric)
+string SDLPromptProcessor::get_user_string(const SDLDisplayParameters& display_params, SDLCursorLocation& cursor_location, SDLRender& render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, bool allow_nonalphanumeric, const string& default_for_esc_key)
 {
   string prompt_text;
   SDLKeyboardController kc;
+  char c = '1';
 
   try
   {
     bool update = false;
-
-    for (char c = kc.get_char_as_int(); (c != '\n') && (c != '\r'); c = kc.get_char_as_int())
+    
+    for (c = kc.get_char_as_int(); (c != '\n') && (c != '\r') && (c != NC_ESCAPE_KEY); c = kc.get_char_as_int())
     {
       update = false;
       Coordinate yx = cursor_location.get_yx();
@@ -71,6 +72,11 @@ string SDLPromptProcessor::get_user_string(const SDLDisplayParameters& display_p
 
           update = true;
         }
+      }
+      else if (c == NC_ESCAPE_KEY)
+      {
+        prompt_text = default_for_esc_key;
+        update = true;
       }
       else
       {
@@ -98,6 +104,11 @@ string SDLPromptProcessor::get_user_string(const SDLDisplayParameters& display_p
     // Do nothing, and use an empty string for the prompt text.
   }
 
+  if (c == NC_ESCAPE_KEY)
+  {
+    prompt_text = default_for_esc_key;
+  }
+
   string result = String::clean(prompt_text);
   return result;
 }
@@ -113,7 +124,7 @@ int SDLPromptProcessor::get_prompt(SDL_Window* window)
   return prompt_val;
 }
 
-void SDLPromptProcessor::show_prompt(const SDLDisplayParameters& display_params, SDLCursorLocation& cursor_location, SDLRender& render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
+void SDLPromptProcessor::show_prompt(const SDLDisplayParameters& display_params, SDLCursorLocation& cursor_location, SDLRender& render, SDL_Renderer* sdl_renderer, SDL_Texture* spritesheet, SDL_Texture* screen, Prompt* prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
 {
   if (sdl_renderer != nullptr && spritesheet != nullptr && screen != nullptr && prompt != nullptr)
   {

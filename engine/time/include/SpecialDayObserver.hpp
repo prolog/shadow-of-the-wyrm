@@ -8,7 +8,7 @@ class SpecialDayObserver : public ITimeObserver
   public:
     void notify(const ulonglong minutes_elapsed) override;
 
-    ITimeObserver* clone() override;
+    std::unique_ptr<ITimeObserver> clone() override;
 
   protected:
     void check_special_day(const std::map<int, CalendarDay>& calendar_days, const Calendar& calendar);

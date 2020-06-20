@@ -149,7 +149,7 @@ int StatisticsMarker::calculate_mark_probability_denominator(const int stat_base
   int d = stat_base_value;
 
   Game& game = Game::instance();
-  WorldPtr world = game.get_current_world();
+  World* world = game.get_current_world();
   PhaseOfMoonType phase = PhaseOfMoonType::PHASE_OF_MOON_NULL;
 
   if (world != nullptr)

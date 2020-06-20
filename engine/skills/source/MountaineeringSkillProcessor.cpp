@@ -44,3 +44,8 @@ ActionCostValue MountaineeringSkillProcessor::process(CreaturePtr creature, MapP
   return get_default_skill_action_cost_value(creature);
 }
 
+SkillProcessorPtr MountaineeringSkillProcessor::clone()
+{
+  SkillProcessorPtr proc = std::make_unique<MountaineeringSkillProcessor>();
+  return proc;
+}

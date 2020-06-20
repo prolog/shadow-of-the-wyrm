@@ -10,11 +10,13 @@ class CrowningDeityDecisionStrategyHandler : public DeityDecisionStrategyHandler
     bool decide(CreaturePtr creature) override;
     DeityDecisionImplications handle_decision(CreaturePtr creature, TilePtr tile) override;
 
+    virtual std::unique_ptr<DeityDecisionStrategyHandler> clone() override;
+
   protected:
     void crown_champion(CreaturePtr creature);
     void fortify_champion(CreaturePtr creature);
     void add_crowning_gift(CreaturePtr creature, TilePtr tile);
-    std::vector<std::string> select_crowning_gifts(CreaturePtr creature, DeityPtr deity);
+    std::vector<std::string> select_crowning_gifts(CreaturePtr creature, Deity* deity);
 
     int get_piety_loss() const override;
     std::string get_message_sid() const override;

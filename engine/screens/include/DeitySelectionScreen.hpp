@@ -8,12 +8,12 @@
 class DeitySelectionScreen : public Screen
 {
   public:
-    DeitySelectionScreen(DisplayPtr new_display, RacePtr selected_race, const std::string& synopsis);
+    DeitySelectionScreen(DisplayPtr new_display, Race* selected_race, const std::string& synopsis);
 
   protected:
     void initialize() override;
 
-    RacePtr race;
+    Race* race;
     std::map<int, std::string> screen_selection_to_deity_id;
     std::string creature_synopsis;
 };
