@@ -49,8 +49,8 @@ string CursesPromptProcessor::get_prompt(WINDOW* window, const MenuWrapper& menu
 string CursesPromptProcessor::get_user_string(WINDOW* window, bool allow_nonalphanumeric, const std::string& default_for_esc_key)
 {
   string prompt_text;
-  char c;
-  int y, x;
+  char c = '?';
+  int y = 0, x = 0;
         
   try
   {

@@ -13,7 +13,7 @@ DeityUtils::~DeityUtils()
 
 pair<Deity*, AlignmentRange> DeityUtils::get_random_deity_with_align(const Game& game)
 {
-  Deity* rando;
+  Deity* rando = nullptr;
   AlignmentRange arange = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL;
 
   const DeityMap& dm = game.get_deities_cref();
