@@ -1,4 +1,5 @@
 Me:
+- Title BS
 - Include sprites on OpenGameArt, itch, ...?
 - YARD: more avians outside dungeons
 - Classic: night water/day water
@@ -257,3 +258,9 @@ YARD:
 
 IceBox: 
 - can the confirm setting be allowed to change on load?
+
+yarpblat: 
+- automove while negative statuses - awkward msg
+- wrap around pagination via ,.
+- pg up + down for paging?
+

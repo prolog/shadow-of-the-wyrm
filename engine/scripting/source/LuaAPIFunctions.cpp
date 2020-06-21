@@ -535,11 +535,22 @@ int add_message(lua_State* ls)
   int num_args = lua_gettop(ls);
   if (num_args > 0 && lua_isstring(ls, 1))
   {
+    bool do_send = true;
+
+    if (num_args >= 2 && lua_isboolean(ls, 2))
+    {
+      do_send = lua_toboolean(ls, 2);
+    }
+
     string message = read_sid_and_replace_values(ls);
 
     IMessageManager& manager = MM::instance();
     manager.add_new_message(message);
-    manager.send();
+
+    if (do_send)
+    {
+      manager.send();
+    }
   }
   else
   {
