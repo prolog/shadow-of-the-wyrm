@@ -33,7 +33,7 @@ string ItemDumper::str() const
   {
     bool is_blind = !cca.can_see(creature);
 
-    if (ignore_blindness_checks)
+    if (ignore_blindness_checks || creature->is_dead())
     {
       is_blind = false;
     }

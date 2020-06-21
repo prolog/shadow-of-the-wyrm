@@ -3,6 +3,9 @@ Shadow of the Wyrm v1.2.1 "Lully"
 
 - Bug fixes:
 
+  - When you were blind at death, dumps showed "something" for items 
+    rather than showing what the items were (yarpblat).
+
   - Various typos in the bestiary/codex (YARD, others).
 
 Shadow of the Wyrm v1.2.0 "Rodrigo"
