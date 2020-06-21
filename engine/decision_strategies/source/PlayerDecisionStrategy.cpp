@@ -58,6 +58,14 @@ CommandPtr PlayerDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_f
 
       if (prompt_for_input)
       {
+        DisplayPtr display = Game::instance().get_display();
+
+        if (display != nullptr)
+        {
+          // Make sure any command not found msg/etc gets properly displayed.
+          display->refresh_current_window();
+        }
+
         key = controller->get_char_as_int();
       }
       else
