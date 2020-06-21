@@ -136,8 +136,6 @@ uint ExperienceManager::get_total_experience_needed_for_lvl_idx(CreaturePtr crea
   {
     int base_exp_needed = base_experience_table[level_idx];
     
-    Game& game = Game::instance();
-    
     string race_id = creature->get_race_id();
     string class_id = creature->get_class_id();
       
@@ -249,7 +247,6 @@ void ExperienceManager::gain_hp_and_ap(CreaturePtr creature)
     uint ap_dice  = LevelConstants::DEFAULT_AP_DICE;
 
     string class_id = creature->get_class_id();
-    Game& game = Game::instance();
     
     if (!class_id.empty())
     {
