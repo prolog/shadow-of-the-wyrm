@@ -377,8 +377,6 @@ void SDLDisplay::clear_messages()
     dst_rect.h = clear_height;
     dst_rect.w = sdld.get_screen_width();
 
-    SDL_Rect src_rect = dst_rect;
-
     SDLRender render(sdld);
     SDL_Texture* screen = screens.back();
     SDL_Colour c= get_colour(Colour::COLOUR_BLACK);

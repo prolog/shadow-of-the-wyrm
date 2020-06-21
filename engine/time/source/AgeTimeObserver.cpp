@@ -46,8 +46,6 @@ void AgeTimeObserver::process_creatures(MapPtr cur_map, CreatureMap& creature_ma
       Statistic age = creature->get_age();
       age.set_current(age.get_current() + 1);
 
-      Race* creature_race = rm.get_race(creature->get_race_id());
-
       if (age.get_current() > age.get_base())
       {
         DeathManagerPtr dm = DeathManagerFactory::create_death_manager(nullptr, creature, cur_map);
