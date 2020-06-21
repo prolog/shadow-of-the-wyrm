@@ -69,6 +69,14 @@ Shadow of the Wyrm v1.2.0 "Rodrigo"
 
   - Gamblers and gnomish sailors were missing bestiary descriptions (YARD).
 
+  - Special day messages (solstice, equinox, etc) were being cleared before
+    the player could see them.
+
+  - When you were blind at death, dumps showed "something" for items 
+    rather than showing what the items were (yarpblat).
+
+  - Various typos in the bestiary/codex (YARD, others).
+
 Shadow of the Wyrm v1.1.7 "Boccherini"
 - Version declared January 11, 2020.  Version finalized February 16, 2020.
 
