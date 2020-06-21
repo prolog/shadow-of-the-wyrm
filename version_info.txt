@@ -1,6 +1,10 @@
 Shadow of the Wyrm v1.2.1 "Lully"
 - Version declared June 20, 2020.
 
+- Bug fixes:
+
+  - Various typos in the bestiary/codex (YARD, others).
+
 Shadow of the Wyrm v1.2.0 "Rodrigo"
 - Version declared February 16, 2020.  Version finalized June 20, 2020.
 

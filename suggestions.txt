@@ -257,3 +257,10 @@ YARD:
 
 IceBox: 
 - can the confirm setting be allowed to change on load?
+
+yarpblat: 
+- dumps while blinded at death
+- automove while negative statuses - awkward msg
+- wrap around pagination via ,.
+- pg up + down for paging?
+

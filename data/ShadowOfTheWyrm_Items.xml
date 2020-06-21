@@ -1011,7 +1011,7 @@
 			<Armour id="plate_armour">
 				<DescriptionSID>PLATE_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>PLATE_ARMOUR_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>PLATE_ARMOURE_CODEX_SID</CodexDescriptionSID>
+				<CodexDescriptionSID>PLATE_ARMOUR_CODEX_SID</CodexDescriptionSID>
 				<Value>300</Value>
 				<Weight>
 					<Pounds>70</Pounds>
