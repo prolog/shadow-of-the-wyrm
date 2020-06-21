@@ -1,9 +1,8 @@
 Me:
-- Title BS
-- Include sprites on OpenGameArt, itch, ...?
 - YARD: more avians outside dungeons
 - Classic: night water/day water
-- sprites: ?
+- Each version: make sure to update itch.io page for both SotW and the sprite
+  pack! OpenGameArt if new sprites.
 - Release after this: grond says tanning is complicated & dragon skins aren't
   what they should be.
 - Add literacy as a component to # castings, remove difficulty
@@ -34,7 +33,6 @@ Me:
 - Write script to check for any items without CodexDescriptionSID
 - Random villages should include the race in the description prior to
   generation.
-- Each version: make sure to update itch.io page!
 - The "descend to" functionality
 - Sections of Carcassia should be open to random generation, with some
   parts of each map being set.
