@@ -259,6 +259,5 @@ IceBox:
 
 yarpblat: 
 - automove while negative statuses - awkward msg
-- wrap around pagination via ,.
 - pg up + down for paging?
 
