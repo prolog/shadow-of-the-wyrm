@@ -46,6 +46,8 @@ void SDLKeyboardController::init_keymap()
              {SDLK_F10, KEY_F(10)},
              {SDLK_F11, KEY_F(11)},
              {SDLK_F12, KEY_F(12)},
+             {SDLK_PAGEUP, KEY_PPAGE},
+             {SDLK_PAGEDOWN, KEY_NPAGE},
              {SDLK_UP, KEY_UP},
              {SDLK_DOWN, KEY_DOWN},
              {SDLK_LEFT, KEY_LEFT},
