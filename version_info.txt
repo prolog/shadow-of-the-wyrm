@@ -8,6 +8,8 @@ Shadow of the Wyrm v1.2.1 "Lully"
 
 - Page up/down now work for paging through screens (yarpblat).
 
+- Stanzas for "Tel and Floridel".
+
 Shadow of the Wyrm v1.2.0 "Rodrigo"
 - Version declared February 16, 2020.  Version finalized June 20, 2020.
 

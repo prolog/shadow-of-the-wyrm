@@ -3434,3 +3434,13 @@ stretched out as vectors on an endless plane %b
 until the point where both could finally reckon %b
 today was not the day they'd see their fathers beckon.
 %p
+The taller of the two was first to speak; %b
+but first, he laughed, a bitter little trill %b
+that trailed away.  "There's irony to see %b
+your mercy when we've killed your kin, and filled %b
+our lives with drinking to their empty hides - %b
+cast out, we two, we wander - feel the fear %b
+we lusted for in others cutting wide %b
+against our future - especially now - it's clear %b
+we can't even go to ground as trees and disappear."
+%p
