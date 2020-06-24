@@ -1,8 +1,4 @@
-#ifdef _MSC_VER
-#include <curses.h>
-#else
-#include <ncurses.h>
-#endif
+#include "curses.hpp"
 
 #include "Conversion.hpp"
 #include "ScreenCommandKeys.hpp"

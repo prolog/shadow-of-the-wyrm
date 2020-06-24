@@ -4181,9 +4181,6 @@
     <ClInclude Include="display\include\SDLDisplay.hpp">
       <Filter>Header Files\display\include</Filter>
     </ClInclude>
-    <ClInclude Include="display\include\SDL.hpp">
-      <Filter>Header Files\display\include</Filter>
-    </ClInclude>
     <ClInclude Include="display\include\SDLPromptProcessor.hpp">
       <Filter>Header Files\display\include</Filter>
     </ClInclude>
@@ -4267,6 +4264,18 @@
     </ClInclude>
     <ClInclude Include="engine\items\include\IItemFilter.hpp">
       <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\SDLUtils.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\SDLInit.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\sdl.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\curses.hpp">
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -8440,9 +8449,6 @@
     <ClCompile Include="display\source\unit_tests\SDLDisplay_test.cpp">
       <Filter>Source Files\display\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="display\source\SDL.cpp">
-      <Filter>Source Files\display\source</Filter>
-    </ClCompile>
     <ClCompile Include="display\source\SDLPromptProcessor.cpp">
       <Filter>Source Files\display\source</Filter>
     </ClCompile>
@@ -8462,9 +8468,6 @@
       <Filter>Source Files\display\source</Filter>
     </ClCompile>
     <ClCompile Include="display\source\unit_tests\SDLCursorLocation_test.cpp">
-      <Filter>Source Files\display\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\unit_tests\SDL_test.cpp">
       <Filter>Source Files\display\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="display\animation\source\DefaultAnimationFactory.cpp">
@@ -8549,6 +8552,15 @@
       <Filter>Source Files\engine\maps\tiles\source</Filter>
     </ClCompile>
     <ClCompile Include="display\source\DisplayProperties.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\SDLUtils.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\unit_tests\SDLUtils_test.cpp">
+      <Filter>Source Files\display\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\SDLInit.cpp">
       <Filter>Source Files\display\source</Filter>
     </ClCompile>
   </ItemGroup>

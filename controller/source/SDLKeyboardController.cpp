@@ -1,9 +1,7 @@
 // Needed for KEY_F(n) constants
-#ifdef _MSC_VER
-#include <curses.h>
-#else
-#include <ncurses.h>
-#endif
+#include "curses.hpp"
+
+#include "sdl.hpp"
 
 #include <map>
 #include <sstream>
@@ -12,13 +10,7 @@
 #include "Log.hpp"
 #include "SDLKeyboardController.hpp"
 
-#ifdef _MSC_VER
-#include "SDL.h"
-#else
-#include "SDL2/SDL.h"
-#endif
-
-#include "SDL.hpp"
+#include "SDLInit.hpp"
 
 using namespace std;
 
@@ -68,7 +60,7 @@ void SDLKeyboardController::poll_event()
 
   if (event.type == SDL_QUIT)
   {
-    SDL sdl;
+    SDLInit sdl;
     sdl.tear_down();
 
     exit(0);
@@ -111,7 +103,7 @@ int SDLKeyboardController::read_char_as_int()
     }
     else if (event.type == SDL_QUIT)
     {
-      SDL sdl;
+      SDLInit sdl;
       sdl.tear_down();
 
       exit(0);
@@ -138,7 +130,7 @@ pair<bool, int> SDLKeyboardController::read_char_as_int_nb()
     }
     else if (event.type == SDL_QUIT)
     {
-      SDL sdl;
+      SDLInit sdl;
       sdl.tear_down();
 
       exit(0);

@@ -1,5 +1,5 @@
 #include "SDLDisplayParameters.hpp"
-#include "SDL.hpp"
+#include "SDLUtils.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
@@ -36,7 +36,7 @@ bool SDLDisplayParameters::operator==(const SDLDisplayParameters& d)
 {
   bool eq = true;
 
-  SDL sdl;
+  SDLUtils sdl;
 
   eq = eq && (screen_cols == d.screen_cols);
   eq = eq && (screen_rows == d.screen_rows);

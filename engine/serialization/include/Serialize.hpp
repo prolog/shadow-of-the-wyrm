@@ -4,11 +4,7 @@
 #include <set>
 #include <vector>
 
-#ifdef _MSC_VER
-#include "SDL.h"
-#else
-#include "SDL2/SDL.h"
-#endif
+#include "sdl.hpp"
 
 #include "ClassIdentifiers.hpp"
 #include "Colours.hpp"

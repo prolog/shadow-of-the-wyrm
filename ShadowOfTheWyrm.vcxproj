@@ -191,6 +191,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="display\animation\include\DefaultDrawAnimationInstruction.hpp" />
     <ClInclude Include="display\animation\include\DrawAnimationInstruction.hpp" />
     <ClInclude Include="display\animation\include\PauseAnimationInstruction.hpp" />
+    <ClInclude Include="display\include\curses.hpp" />
     <ClInclude Include="display\include\Display.hpp" />
     <ClInclude Include="display\include\DisplayConstants.hpp" />
     <ClInclude Include="display\include\DisplayFactory.hpp" />
@@ -208,12 +209,14 @@ mkdir $(OutDir)logs
     <ClInclude Include="display\include\CursesUtils.hpp" />
     <ClInclude Include="display\include\MapDisplayArea.hpp" />
     <ClInclude Include="display\include\PromptProcessor.hpp" />
-    <ClInclude Include="display\include\SDL.hpp" />
+    <ClInclude Include="display\include\sdl.hpp" />
+    <ClInclude Include="display\include\SDLInit.hpp" />
     <ClInclude Include="display\include\SDLCursorLocation.hpp" />
     <ClInclude Include="display\include\SDLDisplay.hpp" />
     <ClInclude Include="display\include\SDLDisplayParameters.hpp" />
     <ClInclude Include="display\include\SDLPromptProcessor.hpp" />
     <ClInclude Include="display\include\SDLRender.hpp" />
+    <ClInclude Include="display\include\SDLUtils.hpp" />
     <ClInclude Include="engine\actions\include\ActionCoordinator.hpp" />
     <ClInclude Include="engine\actions\include\ActionCost.hpp" />
     <ClInclude Include="engine\actions\include\ActionManager.hpp" />
@@ -1334,12 +1337,13 @@ mkdir $(OutDir)logs
     <ClCompile Include="controller\source\SDLKeyboardController.cpp" />
     <ClCompile Include="display\source\DisplayProperties.cpp" />
     <ClCompile Include="display\source\PromptProcessor.cpp" />
-    <ClCompile Include="display\source\SDL.cpp" />
+    <ClCompile Include="display\source\SDLInit.cpp" />
     <ClCompile Include="display\source\SDLCursorLocation.cpp" />
     <ClCompile Include="display\source\SDLDisplay.cpp" />
     <ClCompile Include="display\source\SDLDisplayParameters.cpp" />
     <ClCompile Include="display\source\SDLPromptProcessor.cpp" />
     <ClCompile Include="display\source\SDLRender.cpp" />
+    <ClCompile Include="display\source\SDLUtils.cpp" />
     <ClCompile Include="display\source\unit_tests\SDLCursorLocation_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -1355,7 +1359,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="display\source\unit_tests\SDL_test.cpp">
+    <ClCompile Include="display\source\unit_tests\SDLUtils_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

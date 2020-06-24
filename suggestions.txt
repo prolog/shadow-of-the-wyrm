@@ -1,5 +1,4 @@
 Me:
-- YARD: more avians outside dungeons
 - Classic: night water/day water
 - Refactor so ncurses includes hidden behind a single include
 - Refactory so SDL includes hidden behind a single include
