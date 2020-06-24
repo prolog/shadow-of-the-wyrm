@@ -8,6 +8,8 @@ Shadow of the Wyrm v1.2.1 "Lully"
 
 - Page up/down now work for paging through screens (yarpblat).
 
+- Literacy now helps you get additional spell castings.
+
 - Stanzas for "Tel and Floridel".
 
 Shadow of the Wyrm v1.2.0 "Rodrigo"

@@ -1,7 +1,5 @@
 Me:
 - Classic: night water/day water
-- Refactor so ncurses includes hidden behind a single include
-- Refactory so SDL includes hidden behind a single include
 - Each version: make sure to update itch.io page for both SotW and the sprite
   pack! OpenGameArt if new sprites.
 - Release after this: grond says tanning is complicated & dragon skins aren't
