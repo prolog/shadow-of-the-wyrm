@@ -10,6 +10,8 @@ Shadow of the Wyrm v1.2.1 "Lully"
 
 - Literacy now helps you get additional spell castings.
 
+- The numpad enter key is now recognized.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

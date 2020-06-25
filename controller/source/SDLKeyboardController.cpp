@@ -47,7 +47,8 @@ void SDLKeyboardController::init_keymap()
              {SDLK_ESCAPE, 27},
              {SDLK_LALT, 27},
              {SDLK_BACKSPACE, NC_BACKSPACE_KEY},
-             {SDLK_RETURN, '\r'}
+             {SDLK_RETURN, '\r'},
+             {SDLK_KP_ENTER, '\r'}
   };
 }
 

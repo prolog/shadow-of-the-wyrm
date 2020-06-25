@@ -208,7 +208,6 @@ hapro:
   ignore all inputs until space pressed. Example triggers: dropping below
   15% health, taking more than 50% in single attack, beginning to starve,
   etc.
-- Auto-pickup ammo fired by player
 - Separating corpses and food into separate autopickup groups - want to
   auto pickup food, but not corpses
 - Auto pickup triggers when leaving a map on a tile you're leaving from.
@@ -227,7 +226,6 @@ Grond:
 - Adjacent creatures attack on load
 - Differentiate scribing and wandcraft - why use scribing?
 - Scything on ammo?
-- NPC pathing through mountains	
 - could magic skill affect spell duration
 
 Yan Zhang:
