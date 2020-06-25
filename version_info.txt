@@ -12,6 +12,11 @@ Shadow of the Wyrm v1.2.1 "Lully"
 
 - Stanzas for "Tel and Floridel".
 
+- Bug fixes:
+
+  - Trying to automove while affected by poison or stoning displayed a message
+    differently than other conditions that stopped automove (yarpblat).
+
 Shadow of the Wyrm v1.2.0 "Rodrigo"
 - Version declared February 16, 2020.  Version finalized June 20, 2020.
 

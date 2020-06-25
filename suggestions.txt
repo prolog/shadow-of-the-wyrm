@@ -4,7 +4,6 @@ Me:
   pack! OpenGameArt if new sprites.
 - Release after this: grond says tanning is complicated & dragon skins aren't
   what they should be.
-- Add literacy as a component to # castings, remove difficulty
 - '+' in examine mode should skip a creature if the cursor is already on it
   (e.g. if manually selected already)
 - Investigate enchant scrolls?
@@ -249,13 +248,8 @@ mission opossumable:
 YARD:
 - creatures of a certain deity (frostlings and shiver, black servants and
   sceadugenga) shouldn't attack you if you worship that deity
-- can we suppress the tile-level msg and just display custom text? ie
-  for Carcassia
 - spell details on shift+letter
 
 IceBox: 
 - can the confirm setting be allowed to change on load?
-
-yarpblat: 
-- automove while negative statuses - awkward msg
 
