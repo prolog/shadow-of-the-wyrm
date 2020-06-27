@@ -14,6 +14,9 @@ Shadow of the Wyrm v1.2.1 "Lully"
 
 - In addition to healing you, fairy spirits increase your max HP and AP by 1.
 
+- Springs can also generate magical spirits, who grant some castings in a pair
+  of randomly-determined spells.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
