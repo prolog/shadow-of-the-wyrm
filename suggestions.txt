@@ -1,11 +1,10 @@
 Me:
+- other spirits: magical spirit (teach a few castings of a few spells)
 - Classic: night water/day water
 - Each version: make sure to update itch.io page for both SotW and the sprite
   pack! OpenGameArt if new sprites.
 - Release after this: grond says tanning is complicated & dragon skins aren't
   what they should be.
-- '+' in examine mode should skip a creature if the cursor is already on it
-  (e.g. if manually selected already)
 - Investigate enchant scrolls?
 - Can read scrolls while mute (spellbooks too?)
 - Use Magic to destroy spellbooks and get a bit of AP?
@@ -15,7 +14,6 @@ Me:
 - auto save - not working?
 - google screen clear not working for SDL. reported 2x.
 - 2x draw?
-- Fairy spirit should increase max HP/AP by 1 when full
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?
 - EACH VERSION: clean up the usage of some shared_ptrs.  These should be

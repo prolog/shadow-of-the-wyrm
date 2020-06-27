@@ -12,6 +12,8 @@ Shadow of the Wyrm v1.2.1 "Lully"
 
 - The numpad enter key is now recognized.
 
+- In addition to healing you, fairy spirits increase your max HP and AP by 1.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
