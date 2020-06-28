@@ -17,6 +17,11 @@ Shadow of the Wyrm v1.2.1 "Lully"
 - Springs can also generate magical spirits, who grant some castings in a pair
   of randomly-determined spells.
 
+- You can now name places on the world map via 'N', the same way you'd
+  do inscriptions on other maps.
+
+- Villages now have an extra description to indicate its predominant race.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

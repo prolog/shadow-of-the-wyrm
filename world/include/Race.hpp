@@ -89,6 +89,9 @@ class Race
     void set_race_abbreviation_sid(const std::string& race_abrv_sid);
     std::string get_race_abbreviation_sid() const;
 
+    void set_race_settlement_sid(const std::string& race_settle_sid);
+    std::string get_race_settlement_sid() const;
+
     void set_size(const CreatureSize new_size);
     CreatureSize get_size() const;
 
@@ -185,6 +188,7 @@ class Race
     std::string race_short_description_sid;
     std::string race_description_sid;
     std::string race_abbreviation_sid;
+    std::string race_settlement_sid;
     CreatureSize size;
     bool hungerless;
     AgeInfo age_info;

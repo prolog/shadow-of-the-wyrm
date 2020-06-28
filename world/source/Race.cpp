@@ -250,6 +250,16 @@ string Race::get_race_abbreviation_sid() const
   return race_abbreviation_sid;
 }
 
+void Race::set_race_settlement_sid(const string& race_settle_sid)
+{
+  race_settlement_sid = race_settle_sid;
+}
+
+string Race::get_race_settlement_sid() const
+{
+  return race_settlement_sid;
+}
+
 void Race::set_size(const CreatureSize new_size)
 {
   size = new_size;

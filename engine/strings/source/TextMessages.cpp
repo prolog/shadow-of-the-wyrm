@@ -43,6 +43,7 @@ const string TextMessages::EXPERIENCE_SYNOPSIS_MAX_MESSAGE    = "EXPERIENCE_SYNO
 const string TextMessages::SPECIAL_DAY_MESSAGE                = "SPECIAL_DAY_MESSAGE";
 const string TextMessages::ENGRAVING_MESSAGE                  = "ENGRAVING_MESSAGE";
 const string TextMessages::INSCRIPTION_MESSAGE                = "INSCRIPTION_MESSAGE";
+const string TextMessages::INSCRIPTION_WORLD_MESSAGE          = "INSCRIPTION_WORLD_MESSAGE";
 const string TextMessages::SLOT_MACHINE_MESSAGE               = "SLOT_MACHINE_MESSAGE";
 const string TextMessages::SLOT_MACHINE_OUTCOME_MESSAGE       = "SLOT_MACHINE_OUTCOME_MESSAGE";
 const string TextMessages::CARRYING_CAPACITY_MESSAGE          = "CARRYING_CAPACITY_MESSAGE";
@@ -540,9 +541,16 @@ string TextMessages::get_engraving_message(const string& engraving_sid)
   return engraving_msg;
 }
 
-string TextMessages::get_inscription_message(const string& inscription_sid)
+string TextMessages::get_inscription_message(const string& inscription_sid, const bool is_world_map)
 {
-  string inscription_msg = StringTable::get(INSCRIPTION_MESSAGE);
+  string inscription_msg = INSCRIPTION_MESSAGE;
+
+  if (is_world_map)
+  {
+    inscription_msg = INSCRIPTION_WORLD_MESSAGE;
+  }
+
+  inscription_msg = StringTable::get(inscription_msg);
   string repl = StringTable::get(inscription_sid);
 
   if (repl.empty() && !inscription_sid.empty())

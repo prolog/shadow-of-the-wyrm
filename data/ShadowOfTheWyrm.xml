@@ -1499,6 +1499,7 @@
 			<ShortDescriptionSID>RACE_1_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_1_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_1_ABRV</DisplayAbbreviationSID>
+			<SettlementDescriptionSID>RACE_1_SETTLEMENT</SettlementDescriptionSID>
 			<Size>2</Size>
 			<AgeInfo>
 				<StartingAge>
@@ -1589,6 +1590,7 @@
 			<ShortDescriptionSID>RACE_2_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_2_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_2_ABRV</DisplayAbbreviationSID>
+			<SettlementDescriptionSID>RACE_2_SETTLEMENT</SettlementDescriptionSID>
 			<Size>2</Size>
 			<AgeInfo>
 				<StartingAge>
@@ -1677,6 +1679,7 @@
 			<ShortDescriptionSID>RACE_3_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_3_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_3_ABRV</DisplayAbbreviationSID>
+			<SettlementDescriptionSID>RACE_3_SETTLEMENT</SettlementDescriptionSID>
 			<Size>2</Size>
 			<AgeInfo>
 				<StartingAge>
@@ -1766,6 +1769,7 @@
 			<ShortDescriptionSID>RACE_4_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_4_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_4_ABRV</DisplayAbbreviationSID>
+			<SettlementDescriptionSID>RACE_4_SETTLEMENT</SettlementDescriptionSID>
 			<Size>2</Size>
 			<AgeInfo>
 				<StartingAge>
@@ -1853,6 +1857,7 @@
 			<ShortDescriptionSID>RACE_5_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_5_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_5_ABRV</DisplayAbbreviationSID>
+			<!-- No villages for Fae -->
 			<Size>2</Size>
 			<Hungerless>1</Hungerless>
 			<AgeInfo>
@@ -1940,6 +1945,7 @@
 			<ShortDescriptionSID>RACE_6_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_6_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_6_ABRV</DisplayAbbreviationSID>			
+			<SettlementDescriptionSID>RACE_6_SETTLEMENT</SettlementDescriptionSID>
 			<Size>1</Size>
 			<AgeInfo>
 				<StartingAge>
@@ -2027,6 +2033,7 @@
 			<ShortDescriptionSID>RACE_7_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_7_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_7_ABRV</DisplayAbbreviationSID>
+			<SettlementDescriptionSID>RACE_7_SETTLEMENT</SettlementDescriptionSID>
 			<Size>1</Size>
 			<AgeInfo>
 				<StartingAge>
@@ -2115,6 +2122,7 @@
 			<ShortDescriptionSID>RACE_8_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_8_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_8_ABRV</DisplayAbbreviationSID>
+			<SettlementDescriptionSID>RACE_8_SETTLEMENT</SettlementDescriptionSID>
 			<Size>4</Size>
 			<AgeInfo>
 				<StartingAge>
@@ -2199,6 +2207,7 @@
 			<ShortDescriptionSID>RACE_9_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_9_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_9_ABRV</DisplayAbbreviationSID>
+			<SettlementDescriptionSID>RACE_9_SETTLEMENT</SettlementDescriptionSID>
 			<Size>4</Size>
 			<AgeInfo>
 				<StartingAge>
@@ -2284,6 +2293,7 @@
 			<ShortDescriptionSID>RACE_10_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_10_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_10_ABRV</DisplayAbbreviationSID>
+			<SettlementDescriptionSID>RACE_10_SETTLEMENT</SettlementDescriptionSID>
 			<Size>2</Size>
 			<AgeInfo>
 				<StartingAge>

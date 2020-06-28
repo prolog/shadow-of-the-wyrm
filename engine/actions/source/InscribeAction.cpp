@@ -10,7 +10,7 @@ using namespace std;
 const size_t InscribeAction::MAX_INSCRIPTION_LENGTH = 32;
 
 InscribeAction::InscribeAction()
-: inscription_messages({{TileSuperType::TILE_SUPER_TYPE_GROUND, ActionTextKeys::ACTION_INSCRIBE_GROUND}, {TileSuperType::TILE_SUPER_TYPE_AIR, ActionTextKeys::ACTION_INSCRIBE_AIR}, {TileSuperType::TILE_SUPER_TYPE_WATER, ActionTextKeys::ACTION_INSCRIBE_WATER}, {TileSuperType::TILE_SUPER_TYPE_UNDEFINED, ActionTextKeys::ACTION_INSCRIBE_WORLD_MAP}})
+: inscription_messages({{TileSuperType::TILE_SUPER_TYPE_GROUND, ActionTextKeys::ACTION_INSCRIBE_GROUND}, {TileSuperType::TILE_SUPER_TYPE_AIR, ActionTextKeys::ACTION_INSCRIBE_AIR}, {TileSuperType::TILE_SUPER_TYPE_WATER, ActionTextKeys::ACTION_INSCRIBE_WATER}, {TileSuperType::TILE_SUPER_TYPE_UNDEFINED, ActionTextKeys::ACTION_INSCRIBE_AIR}})
 {
 }
 
@@ -24,11 +24,11 @@ ActionCostValue InscribeAction::inscribe(CreaturePtr creature) const
     if (map != nullptr)
     {
       MapType map_type = map->get_map_type();
+      TilePtr creature_tile = map->at(map->get_location(creature->get_id()));
 
       if (map_type != MapType::MAP_TYPE_WORLD)
       {
         TileSuperType tst = TileSuperType::TILE_SUPER_TYPE_UNDEFINED;
-        TilePtr creature_tile = map->at(map->get_location(creature->get_id()));
 
         if (creature_tile != nullptr)
         {
@@ -47,18 +47,17 @@ ActionCostValue InscribeAction::inscribe(CreaturePtr creature) const
             // Can only inscribe messages on ground - not on water, in the air, etc.
             if (tst == TileSuperType::TILE_SUPER_TYPE_GROUND)
             {
-              create_inscription(creature, creature_tile);
+              create_inscription(creature, creature_tile, false);
             }
 
             add_inscription_super_type_message(tst);
-
             return get_action_cost_value(creature);
           }
         }
       }
       else
       {
-        add_inscribe_on_world_map_message();
+        create_inscription(creature, creature_tile, true);
       }
     }
   }
@@ -66,36 +65,32 @@ ActionCostValue InscribeAction::inscribe(CreaturePtr creature) const
   return 0;
 }
 
-void InscribeAction::create_inscription(CreaturePtr creature, TilePtr tile) const
+void InscribeAction::create_inscription(CreaturePtr creature, TilePtr tile, const bool is_world_map) const
 {
   if (creature != nullptr && tile != nullptr)
   {
     IMessageManager& manager = MM::instance();
+    string message_sid = ActionTextKeys::ACTION_INSCRIBE_QUERY;
+
+    if (is_world_map)
+    {
+      message_sid = ActionTextKeys::ACTION_INSCRIBE_WORLD_QUERY;
+    }
 
     // Get/shorten the inscription.
-    string inscription = manager.add_new_message_with_prompt(StringTable::get(ActionTextKeys::ACTION_INSCRIBE_QUERY));
+    string inscription = manager.add_new_message_with_prompt(StringTable::get(message_sid));
     inscription = inscription.substr(0, MAX_INSCRIPTION_LENGTH);
     
     // Set the inscription on the tile.
     tile->set_inscription_sid(inscription);
 
-    // User might be a smartass and try to enter a page of text.
+    // User might be a smartass and try to enter a page of text.  Hard redraw.
     Game& game = Game::instance();
-    MapPtr current_map = game.get_current_map();
+    MapPtr current_map = Game::instance().get_current_map();
     
-    // Hard redraw, player might be a smartass who entered ten lines of text 
-    // (jerk).
     manager.clear_if_necessary();
     game.update_display(creature, current_map, creature->get_decision_strategy()->get_fov_map(), true);
   }
-}
-
-void InscribeAction::add_inscribe_on_world_map_message() const
-{
-  IMessageManager& manager = MM::instance();
-
-  manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_INSCRIBE_WORLD_MAP));
-  manager.send();
 }
 
 void InscribeAction::add_inscription_super_type_message(const TileSuperType tst) const

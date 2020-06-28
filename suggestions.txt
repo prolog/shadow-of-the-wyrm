@@ -1,5 +1,5 @@
 Me:
-- other spirits: magical spirit (teach a few castings of a few spells)
+- Narrative mode (no death, death removes negative statuses + heals)
 - Classic: night water/day water
 - Each version: make sure to update itch.io page for both SotW and the sprite
   pack! OpenGameArt if new sprites.
@@ -27,8 +27,6 @@ Me:
 - Shield punch!
 - Fruit trees should generate fruit annually.
 - Write script to check for any items without CodexDescriptionSID
-- Random villages should include the race in the description prior to
-  generation.
 - The "descend to" functionality
 - Sections of Carcassia should be open to random generation, with some
   parts of each map being set.

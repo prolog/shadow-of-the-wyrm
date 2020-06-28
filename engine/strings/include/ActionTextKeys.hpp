@@ -181,11 +181,11 @@ class ActionTextKeys
     static const std::string ACTION_DISARM_TRAPS_OUTCOME_TRIGGER;
     static const std::string ACTION_THIEVERY_NO_TARGETS;
     static const std::string ACTION_THIEVERY_SELF_TARGET;
-    static const std::string ACTION_INSCRIBE_WORLD_MAP;
     static const std::string ACTION_INSCRIBE_WATER;
     static const std::string ACTION_INSCRIBE_AIR;
     static const std::string ACTION_INSCRIBE_GROUND;
     static const std::string ACTION_INSCRIBE_QUERY;
+    static const std::string ACTION_INSCRIBE_WORLD_QUERY;
     static const std::string ACTION_INSCRIBE_ILLITERATE;
     static const std::string ACTION_POUR_EMPTY;
     static const std::string ACTION_WANDCRAFT_INSUFFICIENT_COMPONENTS;

@@ -49,7 +49,7 @@ WorldGenerator::WorldGenerator()
                       {TileType::TILE_TYPE_SEWER_COMPLEX, TileDepthOptions(5, 50, vector<int>({50}))},
                       {TileType::TILE_TYPE_CAVERN, TileDepthOptions(1, 50)},
                       {TileType::TILE_TYPE_MINE, TileDepthOptions(5, 50, vector<int>({50,30}))}})
-, tg(false)
+  , tg(false)
 {
 }
 
@@ -463,6 +463,7 @@ void WorldGenerator::populate_race_information()
     if (race && race->get_user_playable() && race->get_has_random_villages() && !current_race_id.empty())
     {
       initial_race_ids.insert(current_race_id);
+      village_race_sids[current_race_id] = race->get_race_settlement_sid();
     }
   }
 }
@@ -504,6 +505,7 @@ void WorldGenerator::set_village_races(MapPtr map)
             village_tile->set_village_race_id(race_id);
             village_tile->set_settlement_type(race->get_settlement_type());
             village_tile->set_tile_subtype(race->get_settlement_tile_subtype());
+            village_tile->set_extra_description_sid(get_race_village_extra_description_sid(race_id));
 
             set_initial_creatures_for_village(village_tile, race_id);
 
@@ -744,4 +746,17 @@ void WorldGenerator::set_castle_properties(TilePtr tile)
     CastleType ct = static_cast<CastleType>(RNG::range(static_cast<int>(CastleType::CASTLE_TYPE_MOTTE_AND_BAILEY), static_cast<int>(CastleType::CASTLE_TYPE_LAST)));
     tile->set_additional_property(TileProperties::TILE_PROPERTY_CASTLE_TYPE, std::to_string(static_cast<int>(ct)));
   }
+}
+
+string WorldGenerator::get_race_village_extra_description_sid(const string& race_id)
+{
+  string sid;
+  auto r_it = village_race_sids.find(race_id);
+
+  if (r_it != village_race_sids.end())
+  {
+    sid = r_it->second;
+  }
+
+  return sid;
 }

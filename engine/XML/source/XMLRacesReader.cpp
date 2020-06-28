@@ -108,6 +108,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     string race_abbreviation_sid = XMLUtils::get_child_node_value(race_node, "DisplayAbbreviationSID");
     race->set_race_abbreviation_sid(race_abbreviation_sid);
 
+    string race_settlement_sid = XMLUtils::get_child_node_value(race_node, "SettlementDescriptionSID");
+    race->set_race_settlement_sid(race_settlement_sid); 
+
     CreatureSize size = static_cast<CreatureSize>(XMLUtils::get_child_node_int_value(race_node, "Size"));
     race->set_size(size);
 

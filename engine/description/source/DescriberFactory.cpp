@@ -13,9 +13,9 @@ DescriberFactory::~DescriberFactory()
 {
 }
 
-IDescriberPtr DescriberFactory::create_describer(CreaturePtr viewing_creature, TilePtr tile)
+IDescriberPtr DescriberFactory::create_describer(CreaturePtr viewing_creature, TilePtr tile, const bool is_world_map)
 {
-  IDescriberPtr describer = std::make_unique<TileDescriber>(viewing_creature, tile);
+  IDescriberPtr describer = std::make_unique<TileDescriber>(viewing_creature, tile, is_world_map);
   return describer;
 }
 

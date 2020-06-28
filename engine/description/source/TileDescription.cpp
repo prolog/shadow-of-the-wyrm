@@ -17,7 +17,7 @@ TileDescription::TileDescription(const bool tile, const bool feature, const bool
 // - Whether it contains a creature (with the corresponding option for the bestiary)
 // - Whether it contains a feature
 // - Whether it contains items
-string TileDescription::describe(CreaturePtr viewing_creature, TilePtr tile, bool tile_is_in_fov)
+string TileDescription::describe(CreaturePtr viewing_creature, TilePtr tile, const bool tile_is_in_fov, const bool is_world_map)
 {
   vector<string> tile_info_strings;
 
@@ -35,7 +35,7 @@ string TileDescription::describe(CreaturePtr viewing_creature, TilePtr tile, boo
       
       if (show_tile)
       {
-        describer = DescriberFactory::create_describer(viewing_creature, tile);
+        describer = DescriberFactory::create_describer(viewing_creature, tile, is_world_map);
         tile_info_strings.push_back(describer->describe());
       }
 
