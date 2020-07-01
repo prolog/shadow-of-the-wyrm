@@ -7311,6 +7311,25 @@
 			<Effect>5</Effect>
 			<Uses>5</Uses>
 		</Trap>
+		<Trap id="cursing_trap">
+			<DescriptionSID>TRAP_CURSE_SID</DescriptionSID>
+			<TriggerMessageSID>TRAP_CURSE_TRIGGER_SID</TriggerMessageSID>
+			<PlayerDamageMessageSID>TRAP_CURSE_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
+			<Trigger>
+				<Char>*</Char>
+				<Colour>5</Colour>
+			</Trigger>
+			<Damage piercing="1">
+				<NumDice>1</NumDice>
+				<NumSides>1</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Effect>21</Effect>
+			<!-- Make sure the trap uses the "cursed" uncursing effect,
+			     which curses equipment. -->
+			<EffectStatus>2</EffectStatus>			
+			<Uses>5</Uses>
+		</Trap>
 	</Traps>
 	<AllFeatures>
 		<BaseFeatures>

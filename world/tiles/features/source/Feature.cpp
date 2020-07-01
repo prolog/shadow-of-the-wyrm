@@ -35,6 +35,7 @@ Feature& Feature::operator=(const Feature& feature)
     alignment_range = feature.alignment_range;
     symbol = feature.symbol;
     uses = feature.uses;
+    additional_properties = feature.additional_properties;
   }
 
   return *this;

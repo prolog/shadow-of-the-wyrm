@@ -22,6 +22,8 @@ Shadow of the Wyrm v1.2.1 "Lully"
 
 - Villages now have an extra description to indicate its predominant race.
 
+- New trap type: cursing (curses equipment).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
