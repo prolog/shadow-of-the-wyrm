@@ -7125,6 +7125,11 @@
 			<Trigger>
 				<Char>*</Char>
 				<Colour>1</Colour>
+				<Sprite>
+					<ID>sys</ID>
+					<Row>0</Row>
+					<Col>4</Col>
+				</Sprite>
 			</Trigger>
 			<Item>fire_bomb</Item>
 			<Damage>
@@ -7142,6 +7147,11 @@
 			<Trigger>
 				<Char>/</Char>
 				<Colour>3</Colour>
+				<Sprite>
+					<ID>it</ID>
+					<Row>1</Row>
+					<Col>25</Col>
+				</Sprite>					
 			</Trigger>
 			<Item>arrow</Item>
 			<Damage>
@@ -7159,6 +7169,11 @@
 			<Trigger>
 				<Char>/</Char>
 				<Colour>8</Colour>
+				<Sprite>
+					<ID>it</ID>
+					<Row>1</Row>
+					<Col>28</Col>
+				</Sprite>					
 			</Trigger>
 			<Item>bolt</Item>
 			<Damage>
@@ -7176,6 +7191,11 @@
 			<Trigger>
 				<Char>*</Char>
 				<Colour>3</Colour>
+				<Sprite>
+					<ID>it</ID>
+					<Row>0</Row>
+					<Col>15</Col>
+				</Sprite>
 			</Trigger>
 			<Item>_rock</Item>
 			<Damage>
@@ -7193,6 +7213,11 @@
 			<Trigger>
 				<Char>|</Char>
 				<Colour>7</Colour>
+				<Sprite>
+					<ID>sys</ID>
+					<Row>0</Row>
+					<Col>8</Col>
+				</Sprite>
 			</Trigger>
 			<Damage>
 				<NumDice>1</NumDice>
@@ -7208,6 +7233,11 @@
 			<Trigger>
 				<Char>*</Char>
 				<Colour>11</Colour>
+				<Sprite>
+					<ID>sys</ID>
+					<Row>0</Row>
+					<Col>4</Col>
+				</Sprite>
 			</Trigger>
 			<Damage piercing="1">
 				<NumDice>1</NumDice>
@@ -7227,6 +7257,11 @@
 			<Trigger>
 				<Char>-</Char>
 				<Colour>2</Colour>
+				<Sprite>
+					<ID>it</ID>
+					<Row>1</Row>
+					<Col>20</Col>
+				</Sprite>					
 			</Trigger>
 			<Item>poison_dart</Item>
 			<Damage>
@@ -7247,6 +7282,11 @@
 			<Trigger>
 				<Char>*</Char>
 				<Colour>12</Colour>
+				<Sprite>
+					<ID>sys</ID>
+					<Row>0</Row>
+					<Col>9</Col>
+				</Sprite>
 			</Trigger>
 			<Item>shadow_bomb</Item>
 			<Damage piercing="1">
@@ -7267,6 +7307,11 @@
 			<Trigger>
 				<Char>#</Char>
 				<Colour>11</Colour>
+				<Sprite>
+					<ID>sys</ID>
+					<Row>0</Row>
+					<Col>10</Col>
+				</Sprite>
 			</Trigger>
 			<Damage piercing="1">
 				<NumDice>1</NumDice>
@@ -7285,7 +7330,12 @@
 			<PlayerDamageMessageSID>TRAP_MONSTER_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
 			<Trigger>
 				<Char>*</Char>
-				<Colour>10</Colour>
+				<Colour>6</Colour>
+				<Sprite>
+					<ID>sys</ID>
+					<Row>0</Row>
+					<Col>4</Col>
+				</Sprite>
 			</Trigger>
 			<Damage piercing="1">
 				<NumDice>1</NumDice>
@@ -7302,6 +7352,11 @@
 			<Trigger>
 				<Char>*</Char>
 				<Colour>10</Colour>
+				<Sprite>
+					<ID>sys</ID>
+					<Row>0</Row>
+					<Col>4</Col>
+				</Sprite>
 			</Trigger>
 			<Damage piercing="1">
 				<NumDice>1</NumDice>
@@ -7318,6 +7373,11 @@
 			<Trigger>
 				<Char>*</Char>
 				<Colour>5</Colour>
+				<Sprite>
+					<ID>sys</ID>
+					<Row>0</Row>
+					<Col>4</Col>
+				</Sprite>
 			</Trigger>
 			<Damage piercing="1">
 				<NumDice>1</NumDice>

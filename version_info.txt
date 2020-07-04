@@ -22,6 +22,9 @@ Shadow of the Wyrm v1.2.1 "Lully"
 
 - Villages now have an extra description to indicate its predominant race.
 
+- Monster traps are now cyan instead of bold green to differentiate them
+  visually from teleport traps.
+
 - New trap type: cursing (curses equipment).
 
 - Stanzas for "Tel and Floridel".
@@ -30,6 +33,9 @@ Shadow of the Wyrm v1.2.1 "Lully"
 
   - Trying to automove while affected by poison or stoning displayed a message
     differently than other conditions that stopped automove (yarpblat).
+
+  - Trap triggers were still using only ASCII - set these to use a variety of
+    existing and new sprites.
 
 Shadow of the Wyrm v1.2.0 "Rodrigo"
 - Version declared February 16, 2020.  Version finalized June 20, 2020.

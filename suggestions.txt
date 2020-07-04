@@ -1,17 +1,15 @@
 Me:
 - Narrative mode (no death, death removes negative statuses + heals)
-- Classic: night water/day water
 - Each version: make sure to update itch.io page for both SotW and the sprite
   pack! OpenGameArt if new sprites.
 - Release after this: grond says tanning is complicated & dragon skins aren't
   what they should be.
-- Investigate enchant scrolls?
-- Can read scrolls while mute (spellbooks too?)
 - Use Magic to destroy spellbooks and get a bit of AP?
 - Dungeons should check for shop before generating trap.
 - Beer halls in villages
 - spell arcana (bind to capitals in spell list)
 - auto save - not working?
+- Do creatures pause when no threats in FOV? Seems slow.
 - Things to make villages more interesting:
   - Archery ranges (contests, using ranges should train ranged, etc)
   - Graves
