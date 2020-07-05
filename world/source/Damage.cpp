@@ -99,6 +99,19 @@ DamageType Damage::get_damage_type() const
   }
 }
 
+// damage category checks use the base damage type and ignore the chaotic flag
+DamageCategory Damage::get_damage_category() const
+{
+  DamageCategory category = DamageCategory::DAMAGE_CATEGORY_OTHER;
+
+  if (damage_type == DamageType::DAMAGE_TYPE_SLASH || damage_type == DamageType::DAMAGE_TYPE_PIERCE || damage_type == DamageType::DAMAGE_TYPE_POUND)
+  {
+    category = DamageCategory::DAMAGE_CATEGORY_PHYSICAL;
+  }
+
+  return category;
+}
+
 void Damage::set_slays_races(const vector<string>& new_slays_races)
 {
   slays_races = new_slays_races;

@@ -147,7 +147,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
       
     // Set the exp value to a randomly generated value around the base.
     uint base_experience_value = cgv.get_base_experience_value();
-    uint actual_experience_value = RNG::range(ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_LOWER_MULTIPLIER), ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_UPPER_MULTIPLIER));
+    uint actual_experience_value = static_cast<uint>(RNG::range(ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_LOWER_MULTIPLIER), ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_UPPER_MULTIPLIER)));
     creature->set_experience_value(actual_experience_value);
 
     // Update the statistics based on what's in the initial statistics modifiers.

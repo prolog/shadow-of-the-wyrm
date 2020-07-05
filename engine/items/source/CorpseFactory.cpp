@@ -167,6 +167,15 @@ void CorpseFactory::set_resistances(CreaturePtr attacking_creature, CreaturePtr 
         corpse_resists.set_resistance_value(dt, cur_val);
       }
     }
+
+    // Add a small amount of resistance to the creature's attacking damage type,
+    // as long as it's not physical.
+    Damage damage = dead_creature->get_base_damage();
+    if (damage.get_damage_category() != DamageCategory::DAMAGE_CATEGORY_PHYSICAL)
+    {
+      DamageType dt = damage.get_damage_type();
+      corpse_resists.set_resistance_value(dt, corpse_resists.get_resistance_value(dt) + RNG::range(0.01, 0.1));
+    }
   }
 }
 

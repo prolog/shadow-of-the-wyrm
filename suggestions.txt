@@ -1,4 +1,6 @@
 Me:
+- Beastmastery should set a flag whereby taming an animal gives slightly more
+  exp than killing it + sets a no-exp flag
 - Narrative mode (no death, death removes negative statuses + heals)
 - Each version: make sure to update itch.io page for both SotW and the sprite
   pack! OpenGameArt if new sprites.
