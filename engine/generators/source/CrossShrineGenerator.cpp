@@ -17,7 +17,7 @@ MapPtr CrossShrineGenerator::generate_shrine()
 
   int num_rows = dim.get_y();
   int mid_row = num_rows / 2;
-  int start_row = RNG::range(mid_row * 0.2, mid_row * 0.4);
+  int start_row = RNG::irange(mid_row * 0.2, mid_row * 0.4);
   int shrine_height = 2 * std::abs(mid_row - start_row);
 
   int num_cols = dim.get_x();

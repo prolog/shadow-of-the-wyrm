@@ -885,6 +885,8 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
         attacking_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_FIRST_KILL_ID, attacked_creature->get_original_id());
       }
 
+      bool no_exp = String::to_bool(attacked_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_NO_EXP));
+
       // Kill the creature, and run the death event function, if necessary.
       update_mortuaries(attacking_creature, attacked_creature);
       death_manager->die();
@@ -892,9 +894,18 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
       // Sometimes there will be no attacking creature, eg., when drowning, falling off mountains, etc.
       if (attacking_creature)
       {
-        ExperienceManager em;
-        uint experience_value = attacked_creature->get_experience_value();
-        em.gain_experience(attacking_creature, experience_value);
+        if (no_exp)
+        {
+          // Add no-exp kill msg.
+          IMessageManager& manager = MM::instance(MessageTransmit::SELF, attacking_creature, attacking_creature->get_is_player());
+          manager.add_new_message(StringTable::get(CombatTextKeys::COMBAT_NO_EXP_KILL));
+        }
+        else
+        {
+          ExperienceManager em;
+          uint experience_value = attacked_creature->get_experience_value();
+          em.gain_experience(attacking_creature, experience_value);
+        }
       }
     }
     else

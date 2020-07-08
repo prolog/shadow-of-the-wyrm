@@ -25,6 +25,9 @@ Shadow of the Wyrm v1.2.1 "Lully"
 - Monster traps are now cyan instead of bold green to differentiate them
   visually from teleport traps.
 
+- Corpses now also leave a small amount of resistance to the dead creature's
+  damage type, as long as it's not physical (slash/pierce/pound).
+
 - New trap type: cursing (curses equipment).
 
 - Stanzas for "Tel and Floridel".

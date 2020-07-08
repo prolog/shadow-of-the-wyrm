@@ -43,8 +43,8 @@ void GrandTempleGenerator::initialize_dimensions(MapPtr map)
   int rows = dim.get_y();
   int cols = dim.get_x();
   
-  temple_height = RNG::range(rows * 0.7, rows * 0.85);
-  temple_width  = RNG::range(cols * 0.7, cols * 0.90);
+  temple_height = RNG::irange(rows * 0.7, rows * 0.85);
+  temple_width  = RNG::irange(cols * 0.7, cols * 0.90);
   
   // Adjusting the start row/column to an odd height/width
   // makes for easier centring of fountains.

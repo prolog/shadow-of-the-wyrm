@@ -1,4 +1,5 @@
 Me:
+- Implement beastmastery
 - Beastmastery should set a flag whereby taming an animal gives slightly more
   exp than killing it + sets a no-exp flag
 - Narrative mode (no death, death removes negative statuses + heals)

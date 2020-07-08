@@ -68,6 +68,11 @@ int RNG::dice(int num_dice, int num_sides, int additional_modifier)
   return result;
 }
 
+int RNG::irange(double first, double second)
+{
+  return range(static_cast<int>(first), static_cast<int>(second));
+}
+
 // Get a number in the range of [min, max], with uniform probability.
 double RNG::range(double first, double second)
 {
