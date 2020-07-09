@@ -1,5 +1,6 @@
 Me:
-- Implement beastmastery
+- Implement pacifist flag (+ ver info)
+- Implement beastmastery (+ ver info)
 - Ensure there's a TamedScript and set one for Amaurosis so that the player
   can win by taming him.
 - Beastmastery should set a flag whereby taming an animal gives slightly more

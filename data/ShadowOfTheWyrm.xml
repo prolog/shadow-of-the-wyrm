@@ -1032,7 +1032,7 @@
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
 			<Pacifiable>1</Pacifiable>
-			<Tameable>0</Tameable>
+			<Tameable>1</Tameable>
 			<Splits>1</Splits>
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
