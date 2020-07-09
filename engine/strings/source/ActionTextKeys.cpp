@@ -664,6 +664,8 @@ const string ActionTextKeys::ACTION_PAPERCRAFT_NO_PULP         = "ACTION_PAPERCR
 const string ActionTextKeys::ACTION_PAPERCRAFT_SUCCESS         = "ACTION_PAPERCRAFT_SUCCESS";
 const string ActionTextKeys::ACTION_PAPERCRAFT_FAILURE         = "ACTION_PAPERCRAFT_FAILURE";
 const string ActionTextKeys::ACTION_PAPERCRAFT_PULP_TOO_LIGHT  = "ACTION_PAPERCRAFT_PULP_TOO_LIGHT";
+const string ActionTextKeys::ACTION_TAME_BEGIN                 = "ACTION_TAME_BEGIN";
+const string ActionTextKeys::ACTION_TAME_NO_TARGETS            = "ACTION_TAME_NO_TARGETS";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";

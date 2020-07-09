@@ -325,6 +325,7 @@
 			<xs:element name="LeavesCorpse" type="xs:boolean"/>
 			<xs:element name="CorpsePoisoned" type="xs:boolean"/>
 			<xs:element name="Pacifiable" type="xs:boolean"/>
+			<xs:element name="Tameable" type="xs:boolean"/>
 			<xs:element name="Splits" type="xs:boolean"/>
 			<!-- Can we steal from the creature? -->
 			<xs:element name="HasPockets" type="xs:boolean"/> 

@@ -918,6 +918,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\serialization\include\SerializationExceptions.hpp" />
     <ClInclude Include="engine\serialization\include\SerializationTypes.hpp" />
     <ClInclude Include="engine\serialization\include\Serialize.hpp" />
+    <ClInclude Include="engine\skills\include\BeastmasterySkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\BowyerSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\DetectionSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\DisarmTrapsSkillProcessor.hpp" />
@@ -1842,6 +1843,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\scripting\source\KillScript.cpp" />
     <ClCompile Include="engine\scripting\source\MapScript.cpp" />
     <ClCompile Include="engine\scripting\source\MoveScript.cpp" />
+    <ClCompile Include="engine\skills\source\BeastmasterySkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\BowyerSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\DetectionSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\DisarmTrapsSkillProcessor.cpp" />

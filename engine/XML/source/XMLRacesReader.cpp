@@ -72,6 +72,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool pacifiable = XMLUtils::get_child_node_bool_value(race_node, "Pacifiable");
     race->set_pacifiable(pacifiable);
 
+    bool tameable = XMLUtils::get_child_node_bool_value(race_node, "Tameable");
+    race->set_tameable(tameable);
+
     bool splits = XMLUtils::get_child_node_bool_value(race_node, "Splits");
     race->set_splits(splits);
 

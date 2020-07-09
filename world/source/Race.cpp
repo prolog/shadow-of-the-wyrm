@@ -21,6 +21,7 @@ Race::Race()
 , leaves_corpse(true)
 , corpse_poisoned(false)
 , pacifiable(true)
+, tameable(true)
 , splits(false)
 , has_pockets(false)
 , has_voice(false)
@@ -128,6 +129,16 @@ void Race::set_pacifiable(const bool new_pacifiable)
 bool Race::get_pacifiable() const
 {
   return pacifiable;
+}
+
+void Race::set_tameable(const bool new_tameable)
+{
+  tameable = new_tameable;
+}
+
+bool Race::get_tameable() const
+{
+  return tameable;
 }
 
 void Race::set_splits(const bool new_splits)
