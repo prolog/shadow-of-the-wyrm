@@ -1,4 +1,5 @@
 Me:
+- Should also add haste
 - Implement pacifist flag (+ ver info)
 - Implement beastmastery (+ ver info)
 - Ensure there's a TamedScript and set one for Amaurosis so that the player

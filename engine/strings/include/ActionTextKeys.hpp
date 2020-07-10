@@ -43,6 +43,8 @@ class ActionTextKeys
     static std::string get_hide_failure_message(const std::string& creature_desc_sid, const bool is_player);
     static std::string get_palette_switch_message(const std::string& new_palette_name_sid);
     static std::string get_graphics_mode_switch_message(const std::string& new_display_name);
+    static std::string get_tamed_message(const std::string& creature_desc, const std::string& tamed_creature_sid, const bool is_player);
+    static std::string get_tame_failure_message(const std::string& creature_desc);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -276,4 +278,7 @@ class ActionTextKeys
     static const std::string ACTION_ITEM_PACK_NPC;
     static const std::string ACTION_SWITCH_PALETTE;
     static const std::string ACTION_SWITCH_GRAPHICS_MODE;
+    static const std::string ACTION_TAMED_PLAYER;
+    static const std::string ACTION_TAMED_MONSTER;
+    static const std::string ACTION_TAME_FAILURE;
 };

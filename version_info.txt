@@ -28,6 +28,11 @@ Shadow of the Wyrm v1.2.1 "Lully"
 - Corpses now also leave a small amount of resistance to the dead creature's
   damage type, as long as it's not physical (slash/pierce/pound).
 
+- Beastmastery is now implemented, allowing you to tame many (but not all)
+  types of creatures.  Tamed creatures give experience as if killed, and
+  grant no experience if later killed.  The amount of experience depends
+  on your Beastmastery score.
+
 - New trap type: cursing (curses equipment).
 
 - Stanzas for "Tel and Floridel".
