@@ -10,12 +10,13 @@ CreaturePtr create_conductless_creature();
 // the various score components.
 CreaturePtr create_conductless_creature() 
 {
-  static_assert(ConductType::CONDUCT_SIZE == ConductType(10), "Unexpected CONDUCT_SIZE");
+  static_assert(ConductType::CONDUCT_SIZE == ConductType(11), "Unexpected CONDUCT_SIZE");
 
   CreaturePtr cp = std::make_shared<Creature>();
   Conducts& cond = cp->get_conducts_ref();
 
-  vector<ConductType> conducts = { ConductType::CONDUCT_TYPE_FOODLESS, ConductType::CONDUCT_TYPE_VEGETARIAN, ConductType::CONDUCT_TYPE_CORPSELESS, ConductType::CONDUCT_TYPE_AGNOSTIC, ConductType::CONDUCT_TYPE_ILLITERATE, ConductType::CONDUCT_TYPE_WEAPONLESS, ConductType::CONDUCT_TYPE_NO_GRAVEDIGGING, ConductType::CONDUCT_TYPE_QUESTLESS, ConductType::CONDUCT_TYPE_SILENT, ConductType::CONDUCT_TYPE_ARTIFACTLESS };
+  vector<ConductType> conducts = { ConductType::CONDUCT_TYPE_FOODLESS, ConductType::CONDUCT_TYPE_VEGETARIAN, ConductType::CONDUCT_TYPE_CORPSELESS, ConductType::CONDUCT_TYPE_AGNOSTIC, ConductType::CONDUCT_TYPE_ILLITERATE, ConductType::CONDUCT_TYPE_WEAPONLESS, ConductType::CONDUCT_TYPE_NO_GRAVEDIGGING, ConductType::CONDUCT_TYPE_QUESTLESS, ConductType::CONDUCT_TYPE_SILENT, ConductType::CONDUCT_TYPE_ARTIFACTLESS, ConductType::CONDUCT_TYPE_PACIFIST };
+
   for (const ConductType c : conducts)
   {
     cond.break_conduct(c);

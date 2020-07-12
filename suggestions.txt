@@ -1,7 +1,7 @@
 Me:
 - Should also add haste
-- Implement pacifist flag (+ ver info)
 - Implement beastmastery (+ ver info)
+- Carefully test all this
 - Ensure there's a TamedScript and set one for Amaurosis so that the player
   can win by taming him.
 - Beastmastery should set a flag whereby taming an animal gives slightly more

@@ -889,6 +889,13 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
 
       // Kill the creature, and run the death event function, if necessary.
       update_mortuaries(attacking_creature, attacked_creature);
+
+      // Break the pacifist conduct on the attacker before killing the creature.
+      if (attacking_creature)
+      {
+        attacking_creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_PACIFIST);
+      }
+
       death_manager->die();
 
       // Sometimes there will be no attacking creature, eg., when drowning, falling off mountains, etc.

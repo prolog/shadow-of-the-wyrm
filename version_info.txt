@@ -35,6 +35,8 @@ Shadow of the Wyrm v1.2.1 "Lully"
 
 - New trap type: cursing (curses equipment).
 
+- New conduct, pacifist, broken when you kill another creature.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
