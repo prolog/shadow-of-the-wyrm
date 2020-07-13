@@ -123,7 +123,7 @@ void BeastmasterySkillProcessor::handle_tame(CreaturePtr taming_creature, Creatu
     BeastmasteryCalculator bc;
     
     double proportion = bc.calculate_exp_proportion(taming_creature);
-    uint tamed_xp = to_tame->get_experience_value() * proportion;
+    uint tamed_xp = static_cast<uint>(to_tame->get_experience_value() * proportion);
     tamed_xp = std::max<uint>(tamed_xp, 1);
 
     em.gain_experience(taming_creature, tamed_xp);
@@ -141,15 +141,22 @@ void BeastmasterySkillProcessor::handle_anger(CreaturePtr taming_creature, const
 
     Coordinate cc = map->get_location(t_pair.first);
     TilePtr ct = map->at(cc);
-    EffectPtr effect = EffectFactory::create_effect(EffectType::EFFECT_TYPE_RAGE, {}, {}, "", "");
+    vector<EffectType> anger_effects = { EffectType::EFFECT_TYPE_RAGE, EffectType::EFFECT_TYPE_SPEED };
 
-    if (effect != nullptr)
+    for (auto etype : anger_effects)
     {
-      HostilityManager hm;
-      hm.set_hostility_to_creature(to_tame, taming_creature->get_id());
-      effect->effect(to_tame, &am, ItemStatus::ITEM_STATUS_UNCURSED, cc, ct);
-      manager.add_new_message(ActionTextKeys::get_tame_failure_message(to_tame->get_description_sid()));
+      EffectPtr effect = EffectFactory::create_effect(etype, {}, {}, "", "");
+
+      if (effect != nullptr)
+      {
+        effect->effect(to_tame, &am, ItemStatus::ITEM_STATUS_UNCURSED, cc, ct);
+      }
     }
+
+    HostilityManager hm;
+    hm.set_hostility_to_creature(to_tame, taming_creature->get_id());
+
+    manager.add_new_message(ActionTextKeys::get_tame_failure_message(to_tame->get_description_sid()));
   }
 }
 SkillProcessorPtr BeastmasterySkillProcessor::clone()

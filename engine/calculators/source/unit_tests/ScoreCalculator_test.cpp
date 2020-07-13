@@ -214,7 +214,7 @@ TEST(SW_Engine_Calculators_ScoreCalculator, memberships)
 
   ScoreCalculator sc;
 
-  EXPECT_EQ(17600 /* level, conducts */ + (16 * 250 * 4)
+  EXPECT_EQ(16 * 100 /* level */ + 16 * 100 * static_cast<int>(ConductType::CONDUCT_SIZE) /* conducts */ + (16 * 250 * 4) /* memberships */
           , sc.calculate_score(cp));
 }
 
