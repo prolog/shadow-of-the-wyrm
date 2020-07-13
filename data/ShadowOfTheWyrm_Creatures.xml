@@ -20196,6 +20196,9 @@
 				<ChatScript>
 					<Script>quests/amaurosis.lua</Script>
 				</ChatScript>
+				<TameScript>
+					<Script>tame/amaurosis.lua</Script>
+				</TameScript>
 			</EventScripts>
 		</Creature>
 		<Creature id="super_boss">

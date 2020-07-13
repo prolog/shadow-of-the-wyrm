@@ -27,6 +27,7 @@ const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT = "CREATURE_EVENT_
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION = "CREATURE_EVENT_SCRIPT_DECISION";
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_DROP = "CREATURE_EVENT_SCRIPT_DROP";
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_ENTER_TILE = "CREATURE_EVENT_SCRIPT_ENTER_TILE";
+const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_TAME = "CREATURE_EVENT_SCRIPT_TAME";
 
 CreatureID::CreatureID()
 {

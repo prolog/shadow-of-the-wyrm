@@ -4283,6 +4283,9 @@
     <ClInclude Include="engine\calculators\include\BeastmasteryCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\scripting\include\TameScript.hpp">
+      <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8577,6 +8580,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\BeastmasteryCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripting\source\TameScript.cpp">
+      <Filter>Source Files\engine\scripting\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

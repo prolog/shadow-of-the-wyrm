@@ -11,6 +11,7 @@
 #include "MessageManagerFactory.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
+#include "TameScript.hpp"
 
 using namespace std;
 
@@ -87,7 +88,7 @@ void BeastmasterySkillProcessor::tame_creatures(CreaturePtr taming_creature, con
         // Mark Beastmastery if successful.
         if (RNG::percent_chance(bc.calculate_pct_chance_tame(taming_creature, to_tame)))
         {
-          handle_tame(taming_creature, to_tame, manager);
+          handle_tame(taming_creature, to_tame, map, manager);
         }
         // If unsuccessful, the creature becomes enraged
         else
@@ -105,7 +106,7 @@ void BeastmasterySkillProcessor::tame_creatures(CreaturePtr taming_creature, con
   }
 }
 
-void BeastmasterySkillProcessor::handle_tame(CreaturePtr taming_creature, CreaturePtr to_tame, IMessageManager& manager)
+void BeastmasterySkillProcessor::handle_tame(CreaturePtr taming_creature, CreaturePtr to_tame, MapPtr current_map, IMessageManager& manager)
 {
   if (taming_creature != nullptr && to_tame != nullptr)
   {
@@ -127,6 +128,8 @@ void BeastmasterySkillProcessor::handle_tame(CreaturePtr taming_creature, Creatu
     tamed_xp = std::max<uint>(tamed_xp, 1);
 
     em.gain_experience(taming_creature, tamed_xp);
+
+    run_tame_event(taming_creature, to_tame, current_map);
   }
 }
 
@@ -159,6 +162,25 @@ void BeastmasterySkillProcessor::handle_anger(CreaturePtr taming_creature, const
     manager.add_new_message(ActionTextKeys::get_tame_failure_message(to_tame->get_description_sid()));
   }
 }
+
+void BeastmasterySkillProcessor::run_tame_event(CreaturePtr taming_creature, CreaturePtr tamed_creature, MapPtr map)
+{
+  string tame_script_id = CreatureEventScripts::CREATURE_EVENT_SCRIPT_TAME;
+  ScriptDetails sd = tamed_creature->get_event_script(tame_script_id);
+  string event_script_name = sd.get_script();
+  int chance = sd.get_chance();
+
+  if (!event_script_name.empty() && RNG::percent_chance(chance))
+  {
+    ScriptEngine& se = Game::instance().get_script_engine_ref();
+    TameScript ts;
+    ts.execute(se, event_script_name, tamed_creature, taming_creature, map);
+
+    // Ensure each creature's death script is only run once.
+    tamed_creature->remove_event_script(tame_script_id);
+  }
+}
+
 SkillProcessorPtr BeastmasterySkillProcessor::clone()
 {
   SkillProcessorPtr proc = std::make_unique<BeastmasterySkillProcessor>();
