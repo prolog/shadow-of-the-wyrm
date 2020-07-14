@@ -1,6 +1,6 @@
 require('constants')
 
-if player_has_item("hearts_needle") then
+if player_has_item("hearts_needle") and not get_winner(PLAYER_ID, CCREATURE_WIN_REGULAR) then
   if get_num_deities() == 0 then
     add_message_with_pause("EVIL_WIN_MESSAGE_GODSLAYER")
     clear_and_add_message("EVIL_WIN_MESSAGE_GODSLAYER2")
