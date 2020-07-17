@@ -68,7 +68,6 @@ void BeastmasterySkillProcessor::tame_creatures(CreaturePtr taming_creature, con
     SkillType bm_sk = SkillType::SKILL_GENERAL_BEASTMASTERY;
     BeastmasteryCalculator bc;
     Game& game = Game::instance();
-    ActionManager& am = game.get_action_manager_ref();
     MapPtr map = game.get_current_map();
 
     if (tameable_fov.empty())
