@@ -1,5 +1,10 @@
+Shadow of the Wyrm v1.2.2 "Borrono"
+- Version declared July 17, 2020.
+
+- More name combinations.
+
 Shadow of the Wyrm v1.2.1 "Lully"
-- Version declared June 21, 2020.  Version finalized July 17, 2017.
+- Version declared June 21, 2020.  Version finalized July 17, 2020.
 
 - More name combinations.
 
