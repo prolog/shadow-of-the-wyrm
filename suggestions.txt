@@ -1,10 +1,12 @@
 Me:
-- Carefully test all this
 - Narrative mode (no death, death removes negative statuses + heals)
 - Each version: make sure to update itch.io page for both SotW and the sprite
   pack! OpenGameArt if new sprites.
 - Release after this: grond says tanning is complicated & dragon skins aren't
   what they should be.
+- Leadership/music: give orders.
+- Leadership: get followers who can follow you up/down floors
+- Have followers change floor and tracked on eg world map
 - Use Magic to destroy spellbooks and get a bit of AP?
 - Dungeons should check for shop before generating trap.
 - Beer halls in villages

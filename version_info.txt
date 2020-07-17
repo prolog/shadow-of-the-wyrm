@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.2.1 "Lully"
-- Version declared June 21, 2020.
+- Version declared June 21, 2020.  Version finalized July 17, 2017.
 
 - More name combinations.
 
