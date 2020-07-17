@@ -65,6 +65,8 @@ class WorldGenerator : public SOTW::Generator
     void set_keep_properties(TilePtr tile);
     void set_sewer_complex_properties(TilePtr tile);
 
+    std::string get_race_village_extra_description_sid(const std::string& race_id);
+
     // A map containing pointers to member functions - used to set up special
     // sets of properties on particular tile types.
     std::map<TileType, void (WorldGenerator::*)(TilePtr tile)> tile_property_fns;
@@ -74,6 +76,7 @@ class WorldGenerator : public SOTW::Generator
 
     std::set<Coordinate> village_coordinates;
     std::set<std::string> initial_race_ids;
+    std::map<std::string, std::string> village_race_sids;
 
     TileGenerator tg;
     static const int MIN_CREATURES_PER_VILLAGE;

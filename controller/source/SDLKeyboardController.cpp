@@ -1,9 +1,7 @@
 // Needed for KEY_F(n) constants
-#ifdef _MSC_VER
-#include <curses.h>
-#else
-#include <ncurses.h>
-#endif
+#include "curses.hpp"
+
+#include "sdl.hpp"
 
 #include <map>
 #include <sstream>
@@ -12,13 +10,7 @@
 #include "Log.hpp"
 #include "SDLKeyboardController.hpp"
 
-#ifdef _MSC_VER
-#include "SDL.h"
-#else
-#include "SDL2/SDL.h"
-#endif
-
-#include "SDL.hpp"
+#include "SDLInit.hpp"
 
 using namespace std;
 
@@ -46,6 +38,8 @@ void SDLKeyboardController::init_keymap()
              {SDLK_F10, KEY_F(10)},
              {SDLK_F11, KEY_F(11)},
              {SDLK_F12, KEY_F(12)},
+             {SDLK_PAGEUP, KEY_PPAGE},
+             {SDLK_PAGEDOWN, KEY_NPAGE},
              {SDLK_UP, KEY_UP},
              {SDLK_DOWN, KEY_DOWN},
              {SDLK_LEFT, KEY_LEFT},
@@ -53,7 +47,8 @@ void SDLKeyboardController::init_keymap()
              {SDLK_ESCAPE, 27},
              {SDLK_LALT, 27},
              {SDLK_BACKSPACE, NC_BACKSPACE_KEY},
-             {SDLK_RETURN, '\r'}
+             {SDLK_RETURN, '\r'},
+             {SDLK_KP_ENTER, '\r'}
   };
 }
 
@@ -66,7 +61,7 @@ void SDLKeyboardController::poll_event()
 
   if (event.type == SDL_QUIT)
   {
-    SDL sdl;
+    SDLInit sdl;
     sdl.tear_down();
 
     exit(0);
@@ -109,7 +104,7 @@ int SDLKeyboardController::read_char_as_int()
     }
     else if (event.type == SDL_QUIT)
     {
-      SDL sdl;
+      SDLInit sdl;
       sdl.tear_down();
 
       exit(0);
@@ -136,7 +131,7 @@ pair<bool, int> SDLKeyboardController::read_char_as_int_nb()
     }
     else if (event.type == SDL_QUIT)
     {
-      SDL sdl;
+      SDLInit sdl;
       sdl.tear_down();
 
       exit(0);

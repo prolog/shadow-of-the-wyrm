@@ -20,6 +20,13 @@ enum struct DamageType
   DAMAGE_TYPE_MAX = 11
 };
 
+enum struct DamageCategory
+{
+  DAMAGE_CATEGORY_NULL = -1,
+  DAMAGE_CATEGORY_PHYSICAL = 0,
+  DAMAGE_CATEGORY_OTHER = 1
+};
+
 enum struct DamageFlagType
 {
   DAMAGE_FLAG_FIRST = 0,

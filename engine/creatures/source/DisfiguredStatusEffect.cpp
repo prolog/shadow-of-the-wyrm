@@ -31,7 +31,7 @@ Modifier DisfiguredStatusEffect::get_base_modifier(CreaturePtr creature, const i
   {
     Statistic str = creature->get_strength();
     int stat_cur = str.get_current();
-    reduce_amount = RNG::range(stat_cur * r_mults.first, stat_cur * r_mults.second) * -1;
+    reduce_amount = static_cast<int>(RNG::range(stat_cur * r_mults.first, stat_cur * r_mults.second)) * -1;
     m.set_strength_modifier(reduce_amount);
     creature_disfigured = true;
   }
@@ -41,7 +41,7 @@ Modifier DisfiguredStatusEffect::get_base_modifier(CreaturePtr creature, const i
   {
     Statistic dex = creature->get_dexterity();
     int stat_cur = dex.get_current();
-    reduce_amount = RNG::range(stat_cur * r_mults.first, stat_cur * r_mults.second) * -1;
+    reduce_amount = static_cast<int>(RNG::range(stat_cur * r_mults.first, stat_cur * r_mults.second)) * -1;
     m.set_dexterity_modifier(reduce_amount);
     creature_disfigured = true;
   }
@@ -51,7 +51,7 @@ Modifier DisfiguredStatusEffect::get_base_modifier(CreaturePtr creature, const i
   {
     Statistic agi = creature->get_agility();
     int stat_cur = agi.get_current();
-    reduce_amount = RNG::range(stat_cur * r_mults.first, stat_cur * r_mults.second) * -1;
+    reduce_amount = static_cast<int>(RNG::range(stat_cur * r_mults.first, stat_cur * r_mults.second)) * -1;
     m.set_agility_modifier(reduce_amount);
     creature_disfigured = true;
   }
@@ -61,7 +61,7 @@ Modifier DisfiguredStatusEffect::get_base_modifier(CreaturePtr creature, const i
   {
     Statistic hea = creature->get_health();
     int stat_cur = hea.get_current();
-    reduce_amount = RNG::range(stat_cur * r_mults.first, stat_cur * r_mults.second) * -1;
+    reduce_amount = static_cast<int>(RNG::range(stat_cur * r_mults.first, stat_cur * r_mults.second)) * -1;
     m.set_health_modifier(reduce_amount);
     creature_disfigured = true;
   }
@@ -71,7 +71,7 @@ Modifier DisfiguredStatusEffect::get_base_modifier(CreaturePtr creature, const i
   {
     Statistic intl = creature->get_intelligence();
     int stat_cur = intl.get_current();
-    reduce_amount = RNG::range(stat_cur * r_mults.first, stat_cur * r_mults.second) * -1;
+    reduce_amount = static_cast<int>(RNG::range(stat_cur * r_mults.first, stat_cur * r_mults.second)) * -1;
     m.set_intelligence_modifier(reduce_amount);
     creature_disfigured = true;
   }
@@ -81,7 +81,7 @@ Modifier DisfiguredStatusEffect::get_base_modifier(CreaturePtr creature, const i
   {
     Statistic wil = creature->get_willpower();
     int stat_cur = wil.get_current();
-    reduce_amount = RNG::range(stat_cur * r_mults.first, stat_cur * r_mults.second) * -1;
+    reduce_amount = static_cast<int>(RNG::range(stat_cur * r_mults.first, stat_cur * r_mults.second)) * -1;
     m.set_willpower_modifier(reduce_amount);
     creature_disfigured = true;
   }
@@ -91,7 +91,7 @@ Modifier DisfiguredStatusEffect::get_base_modifier(CreaturePtr creature, const i
   {
     Statistic cha = creature->get_charisma();
     int stat_cur = cha.get_current();
-    reduce_amount = RNG::range(stat_cur * r_mults.first, stat_cur * r_mults.second) * -1;
+    reduce_amount = static_cast<int>(RNG::range(stat_cur * r_mults.first, stat_cur * r_mults.second)) * -1;
     m.set_charisma_modifier(reduce_amount);
     creature_disfigured = true;
   }

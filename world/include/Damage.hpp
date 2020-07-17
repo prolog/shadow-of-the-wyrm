@@ -22,6 +22,7 @@ class Damage : public Dice
 
     void set_damage_type(const DamageType new_damage_type);
     DamageType get_damage_type() const;
+    DamageCategory get_damage_category() const;
 
     virtual void set_slays_races(const std::vector<std::string>& new_slay_races);
     std::vector<std::string> get_slays_races() const;
@@ -64,7 +65,7 @@ class Damage : public Dice
     // Check to see if the damage is always zero - this is used for
     // effect spells with no damage component (blindness, etc).
     bool is_always_zero() const;
-    
+
     std::string str() const;
     
     bool serialize(std::ostream& stream) const override;

@@ -1,3 +1,52 @@
+Shadow of the Wyrm v1.2.1 "Lully"
+- Version declared June 21, 2020.  Version finalized July 17, 2017.
+
+- More name combinations.
+
+- Paging now "wraps around" - going back on page 1 takes you to the last page,
+  and forward on the last page goes to page 1 (yarpblat).
+
+- Page up/down now work for paging through screens (yarpblat).
+
+- Literacy now helps you get additional spell castings.
+
+- The numpad enter key is now recognized.
+
+- In addition to healing you, fairy spirits increase your max HP and AP by 1.
+
+- Springs can also generate magical spirits, who grant some castings in a pair
+  of randomly-determined spells.
+
+- You can now name places on the world map via 'N', the same way you'd
+  do inscriptions on other maps.
+
+- Villages now have an extra description to indicate its predominant race.
+
+- Monster traps are now cyan instead of bold green to differentiate them
+  visually from teleport traps.
+
+- Corpses now also leave a small amount of resistance to the dead creature's
+  damage type, as long as it's not physical (slash/pierce/pound).
+
+- Beastmastery is now implemented, allowing you to tame many (but not all)
+  types of creatures.  Tamed creatures give experience as if killed, and
+  grant no experience if later killed.  The amount of experience depends
+  on your Beastmastery score.
+
+- New trap type: cursing (curses equipment).
+
+- New conduct, pacifist, broken when you kill another creature.
+
+- Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - Trying to automove while affected by poison or stoning displayed a message
+    differently than other conditions that stopped automove (yarpblat).
+
+  - Trap triggers were still using only ASCII - set these to use a variety of
+    existing and new sprites.
+
 Shadow of the Wyrm v1.2.0 "Rodrigo"
 - Version declared February 16, 2020.  Version finalized June 20, 2020.
 

@@ -221,7 +221,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Dir
 
     if (creature->get_is_player())
     {
-      describe_current_tile(creature, selected_tile, tile_exists_in_fov_map);
+      describe_current_tile(creature, selected_tile, tile_exists_in_fov_map, current_map->get_map_type() == MapType::MAP_TYPE_WORLD);
     }    
   }
   
@@ -232,14 +232,15 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Sel
 {
   if (creature)
   {
+    MapPtr current_map = Game::instance().get_current_map();
     MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
 
     string selected_creature_id = SelectionUtils::select_target_in_cycle(creature, fov_map, sct);
     
-    if (fov_map != nullptr)
+    if (fov_map != nullptr && current_map != nullptr)
     {
       TilePtr selected_creature_tile = fov_map->at(fov_map->get_location(selected_creature_id));
-      describe_current_tile(creature, selected_creature_tile, selected_creature_tile != nullptr);
+      describe_current_tile(creature, selected_creature_tile, selected_creature_tile != nullptr, current_map->get_map_type() == MapType::MAP_TYPE_WORLD);
     }
   }
 
@@ -272,11 +273,11 @@ ActionCostValue TileSelectionAction::get_action_cost_value(CreaturePtr creature)
 }
 
 // Describe the currently selected tile.
-void TileSelectionAction::describe_current_tile(CreaturePtr creature, TilePtr selected_tile, const bool tile_exists_in_fov_map)
+void TileSelectionAction::describe_current_tile(CreaturePtr creature, TilePtr selected_tile, const bool tile_exists_in_fov_map, const bool is_world_map)
 {
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   TileDescription td(show_tile_description, show_feature_description, show_creature_description, show_item_descriptions);
-  string tile_desc = td.describe(creature, selected_tile, tile_exists_in_fov_map);
+  string tile_desc = td.describe(creature, selected_tile, tile_exists_in_fov_map, is_world_map);
 
   if (creature->get_is_player())
   {

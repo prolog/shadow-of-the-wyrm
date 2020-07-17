@@ -268,7 +268,21 @@ uint Screen::get_cur_page_idx() const
 // Set the current page number, assuming sane input
 void Screen::set_current_page_number(const uint new_page_number)
 {
-  if (new_page_number >= 1 && new_page_number <= components.size())
+  auto c_sz = components.size();
+
+  // Are we page 0 and want to go back?  Wrap back to the the last page.
+  if (cur_page_idx == 0 && new_page_number == 0)
+  {
+    cur_page_idx = c_sz - 1;
+  }
+  // Are we at the last page and want to go forward?  Wrap around to the
+  // first page.
+  else if (cur_page_idx == c_sz-1 && new_page_number == c_sz + 1)
+  {
+    cur_page_idx = 0;
+  }
+  // Otherwise, do the normal logic.
+  else if (new_page_number >= 1 && new_page_number <= components.size())
   {
     cur_page_idx = new_page_number-1;
   }

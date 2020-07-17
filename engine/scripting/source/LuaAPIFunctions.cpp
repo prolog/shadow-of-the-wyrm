@@ -328,6 +328,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "curse_equipment", curse_equipment);
   lua_register(L, "curse_inventory", curse_inventory);
   lua_register(L, "set_winner", set_winner);
+  lua_register(L, "get_winner", get_winner);
   lua_register(L, "get_creature_colour", get_creature_colour);
   lua_register(L, "set_creature_colour", set_creature_colour);
   lua_register(L, "set_creature_evade", set_creature_evade);
@@ -5543,6 +5544,36 @@ int set_winner(lua_State* ls)
   }
 
   return 0;
+}
+
+// Does the creature have a particular win satisfied?
+int get_winner(lua_State* ls)
+{
+  bool winner = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string cr_id = lua_tostring(ls, 1);
+    int win_type = lua_tointeger(ls, 2);
+    CreaturePtr creature = get_creature(cr_id);
+
+    if (creature != nullptr)
+    {
+      string win_property = CreatureProperties::CREATURE_PROPERTIES_WINNER + "_" + to_string(win_type);
+
+      if (creature->has_additional_property(win_property))
+      {
+        winner = true;
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_winner");
+  }
+
+  lua_pushboolean(ls, winner);
+  return 1;
 }
 
 int get_creature_colour(lua_State* ls)

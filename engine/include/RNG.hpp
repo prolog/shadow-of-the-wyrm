@@ -13,7 +13,8 @@ class RNG
     static int dice(const Dice& dice);
 		static int dice(int num_dice, int num_sides, int additional_modifier = 0);
 		static int range(int min, int max, int additional_modifier = 0);
-    static int range(double min, double max);
+    static double range(double min, double max);
+    static int irange(double min, double max);
 		static bool percent_chance(const int percent_chance);
     static bool x_in_y_chance(const int x, const int y);
     static bool x_in_y_chance(const std::pair<int, int>& x_y);

@@ -43,6 +43,8 @@ class ActionTextKeys
     static std::string get_hide_failure_message(const std::string& creature_desc_sid, const bool is_player);
     static std::string get_palette_switch_message(const std::string& new_palette_name_sid);
     static std::string get_graphics_mode_switch_message(const std::string& new_display_name);
+    static std::string get_tamed_message(const std::string& creature_desc, const std::string& tamed_creature_sid, const bool is_player);
+    static std::string get_tame_failure_message(const std::string& creature_desc);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -181,11 +183,11 @@ class ActionTextKeys
     static const std::string ACTION_DISARM_TRAPS_OUTCOME_TRIGGER;
     static const std::string ACTION_THIEVERY_NO_TARGETS;
     static const std::string ACTION_THIEVERY_SELF_TARGET;
-    static const std::string ACTION_INSCRIBE_WORLD_MAP;
     static const std::string ACTION_INSCRIBE_WATER;
     static const std::string ACTION_INSCRIBE_AIR;
     static const std::string ACTION_INSCRIBE_GROUND;
     static const std::string ACTION_INSCRIBE_QUERY;
+    static const std::string ACTION_INSCRIBE_WORLD_QUERY;
     static const std::string ACTION_INSCRIBE_ILLITERATE;
     static const std::string ACTION_POUR_EMPTY;
     static const std::string ACTION_WANDCRAFT_INSUFFICIENT_COMPONENTS;
@@ -213,6 +215,8 @@ class ActionTextKeys
     static const std::string ACTION_PAPERCRAFT_SUCCESS;
     static const std::string ACTION_PAPERCRAFT_FAILURE;
     static const std::string ACTION_PAPERCRAFT_PULP_TOO_LIGHT;
+    static const std::string ACTION_TAME_BEGIN;
+    static const std::string ACTION_TAME_NO_TARGETS;
 
   protected:
     ActionTextKeys();
@@ -274,4 +278,7 @@ class ActionTextKeys
     static const std::string ACTION_ITEM_PACK_NPC;
     static const std::string ACTION_SWITCH_PALETTE;
     static const std::string ACTION_SWITCH_GRAPHICS_MODE;
+    static const std::string ACTION_TAMED_PLAYER;
+    static const std::string ACTION_TAMED_MONSTER;
+    static const std::string ACTION_TAME_FAILURE;
 };

@@ -85,6 +85,7 @@ class CreatureEventScripts
     static const std::string CREATURE_EVENT_SCRIPT_DECISION;
     static const std::string CREATURE_EVENT_SCRIPT_DROP;
     static const std::string CREATURE_EVENT_SCRIPT_ENTER_TILE;
+    static const std::string CREATURE_EVENT_SCRIPT_TAME;
 
   protected:
     CreatureEventScripts();
@@ -103,6 +104,7 @@ class CreatureID
   public:
     static const std::string CREATURE_ID_SHOPKEEPER;
     static const std::string CREATURE_ID_FAIRY_SPIRIT;
+    static const std::string CREATURE_ID_MAGICAL_SPIRIT;
     static const std::string CREATURE_ID_VENDOR;
     static const std::string CREATURE_ID_PLAYER;
     static const std::string CREATURE_ID_PREFIX_ANCIENT_BEAST;

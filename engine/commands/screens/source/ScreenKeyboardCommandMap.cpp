@@ -1,3 +1,5 @@
+#include "curses.hpp"
+
 #include "Conversion.hpp"
 #include "ScreenCommandKeys.hpp"
 #include "ScreenKeyboardCommandMap.hpp"
@@ -30,6 +32,8 @@ void ScreenKeyboardCommandMap::initialize_command_mapping(const Settings& settin
 
   command_mapping.insert(make_pair(",", ScreenCommandKeys::PREVIOUS_PAGE));
   command_mapping.insert(make_pair(".", ScreenCommandKeys::NEXT_PAGE));
+  command_mapping.insert(make_pair(to_string(KEY_PPAGE), ScreenCommandKeys::PREVIOUS_PAGE));
+  command_mapping.insert(make_pair(to_string(KEY_NPAGE), ScreenCommandKeys::NEXT_PAGE));
 }
 
 KeyboardCommandMap* ScreenKeyboardCommandMap::clone()

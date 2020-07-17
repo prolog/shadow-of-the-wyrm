@@ -1,10 +1,5 @@
 #pragma once
-#ifdef _MSC_VER
-#include <curses.h>
-#else
-#include <ncurses.h>
-#endif
-
+#include "curses.hpp"
 #include "Controller.hpp"
 
 class CursesKeyboardController : public Controller

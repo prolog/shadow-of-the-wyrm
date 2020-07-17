@@ -50,8 +50,13 @@ class Race
     void set_corpse_poisoned(const bool new_corpse_poisoned);
     bool get_corpse_poisoned() const;
 
+    // Pacifiable via Music
     void set_pacifiable(const bool new_pacifiable);
     bool get_pacifiable() const;
+
+    // Tameable via Beastmastery
+    void set_tameable(const bool new_tameable);
+    bool get_tameable() const;
 
     void set_splits(const bool new_splits);
     bool get_splits() const;
@@ -88,6 +93,9 @@ class Race
 
     void set_race_abbreviation_sid(const std::string& race_abrv_sid);
     std::string get_race_abbreviation_sid() const;
+
+    void set_race_settlement_sid(const std::string& race_settle_sid);
+    std::string get_race_settlement_sid() const;
 
     void set_size(const CreatureSize new_size);
     CreatureSize get_size() const;
@@ -171,6 +179,7 @@ class Race
     bool leaves_corpse;
     bool corpse_poisoned;
     bool pacifiable;
+    bool tameable;
     bool splits;
     bool has_pockets;
     bool has_voice;
@@ -185,6 +194,7 @@ class Race
     std::string race_short_description_sid;
     std::string race_description_sid;
     std::string race_abbreviation_sid;
+    std::string race_settlement_sid;
     CreatureSize size;
     bool hungerless;
     AgeInfo age_info;
