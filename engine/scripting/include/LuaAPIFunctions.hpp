@@ -178,6 +178,7 @@ int bless_equipment(lua_State* ls);
 int curse_equipment(lua_State* ls);
 int curse_inventory(lua_State* ls);
 int set_winner(lua_State* ls);
+int get_winner(lua_State* ls);
 int get_creature_colour(lua_State* ls);
 int set_creature_colour(lua_State* ls);
 int set_creature_evade(lua_State* ls);

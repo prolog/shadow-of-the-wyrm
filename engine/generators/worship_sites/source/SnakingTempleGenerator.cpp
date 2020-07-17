@@ -35,7 +35,7 @@ void SnakingTempleGenerator::initialize_temple_values(const int rows, const int 
   temple_width  = RNG::range(get_temple_width_min(cols), get_temple_width_max(cols));
   temple_height = RNG::range(get_temple_height_min(rows), get_temple_height_max(rows));
 
-  temple_middle_width = RNG::range(temple_width * 0.5, temple_width * 0.7);
+  temple_middle_width = RNG::irange(temple_width * 0.5, temple_width * 0.7);
   temple_middle_height = (rows/3);
     
   // Create the top and bottom sections

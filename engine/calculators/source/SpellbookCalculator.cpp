@@ -85,6 +85,7 @@ pair<bool, int> SpellbookCalculator::learn_spell(CreaturePtr creature, const Ski
 //       + Creature's willpower
 //       + (Creature's magic general skill / 4)
 //       + (Creature's magic category skill / 2)
+//       + (Creature's literacy score / 3)
 //       - (Difficulty / 3))
 int SpellbookCalculator::get_num_castings(CreaturePtr creature, const SkillType magic_category, const ItemStatus spellbook_status, const int difficulty)
 {
@@ -93,6 +94,7 @@ int SpellbookCalculator::get_num_castings(CreaturePtr creature, const SkillType 
   int will_score = creature->get_willpower().get_current();
   int magic_general_score = skills.get_skill(SkillType::SKILL_GENERAL_MAGIC)->get_value();
   int magic_category_score = skills.get_skill(magic_category)->get_value();
+  int literacy_score = skills.get_skill(SkillType::SKILL_GENERAL_LITERACY)->get_value();
   int random_factor = RNG::range(SpellConstants::BASE_MIN_CASTINGS, SpellConstants::BASE_MAX_CASTINGS);
 
   int calculated_castings = random_factor
@@ -100,6 +102,7 @@ int SpellbookCalculator::get_num_castings(CreaturePtr creature, const SkillType 
                           + will_score
                           + (magic_general_score / 4)
                           + (magic_category_score / 2)
+                          + (literacy_score / 3)
                           - (difficulty / 3);
 
   calculated_castings = static_cast<int>(calculated_castings * status_casting_multipliers[spellbook_status]);

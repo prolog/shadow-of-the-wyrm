@@ -499,6 +499,39 @@ string ActionTextKeys::get_graphics_mode_switch_message(const string& new_displa
   return msg;
 }
 
+string ActionTextKeys::get_tamed_message(const string& creature_sid, const string& tamed_creature_sid, const bool is_player)
+{
+  string msg_sid = ActionTextKeys::ACTION_TAMED_PLAYER;
+
+  if (!is_player)
+  {
+    msg_sid = ACTION_TAMED_MONSTER;
+  }
+
+  string msg = StringTable::get(msg_sid);
+
+  if (is_player)
+  {
+    boost::replace_first(msg, "%s", StringTable::get(tamed_creature_sid));
+  }
+  else
+  {
+    boost::replace_first(msg, "%s1", StringTable::get(creature_sid));
+    boost::replace_first(msg, "%s2", StringTable::get(tamed_creature_sid));
+  }
+
+  return msg;
+}
+
+string ActionTextKeys::get_tame_failure_message(const string& creature_sid)
+{
+  string msg = StringTable::get(ACTION_TAME_FAILURE);
+  boost::replace_first(msg, "%s", StringTable::get(creature_sid));
+  msg[0] = toupper(msg[0]);
+
+  return msg;
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -632,11 +665,11 @@ const string ActionTextKeys::ACTION_DISARM_TRAPS_OUTCOME_FAIL  = "ACTION_DISARM_
 const string ActionTextKeys::ACTION_DISARM_TRAPS_OUTCOME_TRIGGER = "ACTION_DISARM_TRAPS_OUTCOME_TRIGGER";
 const string ActionTextKeys::ACTION_THIEVERY_NO_TARGETS        = "ACTION_THIEVERY_NO_TARGETS";
 const string ActionTextKeys::ACTION_THIEVERY_SELF_TARGET       = "ACTION_THIEVERY_SELF_TARGET";
-const string ActionTextKeys::ACTION_INSCRIBE_WORLD_MAP         = "ACTION_INSCRIBE_WORLD_MAP";
 const string ActionTextKeys::ACTION_INSCRIBE_WATER             = "ACTION_INSCRIBE_WATER";
 const string ActionTextKeys::ACTION_INSCRIBE_AIR               = "ACTION_INSCRIBE_AIR";
 const string ActionTextKeys::ACTION_INSCRIBE_GROUND            = "ACTION_INSCRIBE_GROUND";
 const string ActionTextKeys::ACTION_INSCRIBE_QUERY             = "ACTION_INSCRIBE_QUERY";
+const string ActionTextKeys::ACTION_INSCRIBE_WORLD_QUERY       = "ACTION_INSCRIBE_WORLD_QUERY";
 const string ActionTextKeys::ACTION_INSCRIBE_ILLITERATE        = "ACTION_INSCRIBE_ILLITERATE";
 const string ActionTextKeys::ACTION_POUR_EMPTY                 = "ACTION_POUR_EMPTY";
 const string ActionTextKeys::ACTION_WANDCRAFT_INSUFFICIENT_COMPONENTS = "ACTION_WANDCRAFT_INSUFFICIENT_COMPONENTS";
@@ -664,6 +697,8 @@ const string ActionTextKeys::ACTION_PAPERCRAFT_NO_PULP         = "ACTION_PAPERCR
 const string ActionTextKeys::ACTION_PAPERCRAFT_SUCCESS         = "ACTION_PAPERCRAFT_SUCCESS";
 const string ActionTextKeys::ACTION_PAPERCRAFT_FAILURE         = "ACTION_PAPERCRAFT_FAILURE";
 const string ActionTextKeys::ACTION_PAPERCRAFT_PULP_TOO_LIGHT  = "ACTION_PAPERCRAFT_PULP_TOO_LIGHT";
+const string ActionTextKeys::ACTION_TAME_BEGIN                 = "ACTION_TAME_BEGIN";
+const string ActionTextKeys::ACTION_TAME_NO_TARGETS            = "ACTION_TAME_NO_TARGETS";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";
@@ -722,3 +757,6 @@ const string ActionTextKeys::ACTION_ITEM_PACK_PLAYER              = "ACTION_ITEM
 const string ActionTextKeys::ACTION_ITEM_PACK_NPC                 = "ACTION_ITEM_PACK_NPC";
 const string ActionTextKeys::ACTION_SWITCH_PALETTE                = "ACTION_SWITCH_PALETTE";
 const string ActionTextKeys::ACTION_SWITCH_GRAPHICS_MODE          = "ACTION_SWITCH_GRAPHICS_MODE";
+const string ActionTextKeys::ACTION_TAMED_PLAYER                  = "ACTION_TAMED_PLAYER";
+const string ActionTextKeys::ACTION_TAMED_MONSTER                 = "ACTION_TAMED_MONSTER";
+const string ActionTextKeys::ACTION_TAME_FAILURE                  = "ACTION_TAME_FAILURE";

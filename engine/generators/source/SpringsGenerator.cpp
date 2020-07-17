@@ -7,26 +7,28 @@
 #include "TileGenerator.hpp"
 #include "SpringsTile.hpp"
 
-const int SpringsGenerator::PCT_CHANCE_FAIRY_SPIRIT = 50;
+using std::string;
+
+const int SpringsGenerator::PCT_CHANCE_SPIRIT = 50;
 
 void SpringsGenerator::generate(MapPtr map, const int start_row, const int start_col, const int springs_size, const SpringsType type)
 {
-  generate(map, start_row, start_col, springs_size, type, PCT_CHANCE_FAIRY_SPIRIT);
+  generate(map, start_row, start_col, springs_size, type, PCT_CHANCE_SPIRIT);
 }
 
-void SpringsGenerator::generate(MapPtr result_map, const int start_row, const int start_col, const int springs_size, const SpringsType type, const int pct_chance_fairy)
+void SpringsGenerator::generate(MapPtr result_map, const int start_row, const int start_col, const int springs_size, const SpringsType type, const int pct_chance_spirit)
 {
   if (type == SpringsType::SPRINGS_TYPE_WIDE)
   {
-    generate_wide(result_map, start_row, start_col, springs_size, pct_chance_fairy);
+    generate_wide(result_map, start_row, start_col, springs_size, pct_chance_spirit);
   }
   else if (type == SpringsType::SPRINGS_TYPE_TALL)
   {
-    generate_tall(result_map, start_row, start_col, springs_size, pct_chance_fairy);
+    generate_tall(result_map, start_row, start_col, springs_size, pct_chance_spirit);
   }
 }
 
-void SpringsGenerator::generate_wide(MapPtr result_map, const int start_row, const int start_col, const int springs_size, const int pct_chance_fairy)
+void SpringsGenerator::generate_wide(MapPtr result_map, const int start_row, const int start_col, const int springs_size, const int pct_chance_spirit)
 {
   TileGenerator tg;
 
@@ -71,10 +73,10 @@ void SpringsGenerator::generate_wide(MapPtr result_map, const int start_row, con
     spring_size = spring_size - 1;
   }
 
-  add_fairy_spirit_if_necessary(result_map, centre_line, (start_col + springs_size / 2), pct_chance_fairy);
+  add_spirit_if_necessary(result_map, centre_line, (start_col + springs_size / 2), pct_chance_spirit);
 }
 
-void SpringsGenerator::generate_tall(MapPtr result_map, const int start_row, const int start_col, const int springs_size, const int pct_chance_fairy)
+void SpringsGenerator::generate_tall(MapPtr result_map, const int start_row, const int start_col, const int springs_size, const int pct_chance_spirit)
 {
   TileGenerator tg;
 
@@ -120,18 +122,19 @@ void SpringsGenerator::generate_tall(MapPtr result_map, const int start_row, con
     spring_size = spring_size - 1;
   }
 
-  add_fairy_spirit_if_necessary(result_map, start_row + (springs_size / 2), centre_line, pct_chance_fairy);
+  add_spirit_if_necessary(result_map, start_row + (springs_size / 2), centre_line, pct_chance_spirit);
 }
 
-void SpringsGenerator::add_fairy_spirit_if_necessary(MapPtr result_map, const int row, const int col, const int pct_chance_fairy)
+void SpringsGenerator::add_spirit_if_necessary(MapPtr result_map, const int row, const int col, const int pct_chance_spirit)
 {
-  // Chance of generating a fairy spirit.
-  if (RNG::percent_chance(pct_chance_fairy))
+  // Chance of generating a spirit over the spring.
+  if (RNG::percent_chance(pct_chance_spirit))
   {
     Game& game = Game::instance();
     CreatureFactory cf;
 
-    CreaturePtr spirit = cf.create_by_creature_id(game.get_action_manager_ref(), CreatureID::CREATURE_ID_FAIRY_SPIRIT, result_map);
+    string spirit_id = (RNG::percent_chance(50) ? CreatureID::CREATURE_ID_FAIRY_SPIRIT : CreatureID::CREATURE_ID_MAGICAL_SPIRIT);
+    CreaturePtr spirit = cf.create_by_creature_id(game.get_action_manager_ref(), spirit_id, result_map);
 
     if (spirit != nullptr)
     {

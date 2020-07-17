@@ -178,10 +178,7 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_can_auto_move(
 
   if (!status_ok && creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
-
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_AUTOMOVE_BAD_STATUSES));
-    manager.send();
+    message_sids.push_back(ActionTextKeys::ACTION_AUTOMOVE_BAD_STATUSES);
   }
 
   // Stop automovement if resting and HP and AP are full, and if there are no

@@ -24,7 +24,7 @@
 #include "Log.hpp"
 #include "LogFiles.hpp"
 #include "Metadata.hpp"
-#include "SDL.hpp"
+#include "SDLInit.hpp"
 #include "ShadowOfTheWyrmEngine.hpp"
 #include "Settings.hpp"
 #include "Setting.hpp"
@@ -123,7 +123,7 @@ int main(int argc, char* argv[])
     {
       Settings settings(true);
       string display_id = settings.get_setting(Setting::DISPLAY);
-      SDL sdl;
+      SDLInit sdl;
 
       if (display_id == DisplayIdentifier::DISPLAY_IDENTIFIER_SDL)
       {

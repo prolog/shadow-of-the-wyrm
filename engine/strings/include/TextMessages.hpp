@@ -35,7 +35,7 @@ class TextMessages
     static std::string get_experience_synopsis(const int level, const int exp, const int exp_required, const int next_level, const std::string& race_name, const float r_mult, const std::string class_name, const float c_mult);
     static std::string get_special_day_message(const std::string& day_name_sid, const std::string& day_desc_sid);
     static std::string get_engraving_message(const std::string& engraving_sid);
-    static std::string get_inscription_message(const std::string& inscription_sid);
+    static std::string get_inscription_message(const std::string& inscription_sid, const bool is_world_map);
     static std::string get_replacement_message(const std::string& message, const std::string& replace);
     static std::string get_bool_sid(const bool val);
     static std::string get_character_creation_synopsis(const CreatureSex cs, Race* race, Class* cur_class, Deity* cur_deity);
@@ -66,6 +66,7 @@ class TextMessages
     static const std::string SPECIAL_DAY_MESSAGE;
     static const std::string ENGRAVING_MESSAGE;
     static const std::string INSCRIPTION_MESSAGE;
+    static const std::string INSCRIPTION_WORLD_MESSAGE;
     static const std::string SLOT_MACHINE_MESSAGE;
     static const std::string SLOT_MACHINE_OUTCOME_MESSAGE;
     static const std::string CARRYING_CAPACITY_MESSAGE;

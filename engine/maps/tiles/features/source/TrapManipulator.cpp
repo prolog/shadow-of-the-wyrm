@@ -7,6 +7,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "DamageCalculatorFactory.hpp"
 #include "EffectFactory.hpp"
+#include "FeatureProperties.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "ItemManager.hpp"
@@ -137,6 +138,13 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
   Damage damage_default;
   damage_default.set_modifier(damage_dealt);
   string source_id; // sprung traps don't give exp when they kill creatures.
+  ItemStatus status = ItemStatus::ITEM_STATUS_UNCURSED;
+  string trap_status_s = trap->get_additional_property(FeatureProperties::FEATURE_PROPERTIES_TRAP_EFFECT_STATUS);
+
+  if (!trap_status_s.empty())
+  {
+    status = static_cast<ItemStatus>(String::to_int(trap_status_s));
+  }
 
   // First apply the regular effect, assuming there is one.
   if (effect != EffectType::EFFECT_TYPE_NULL)
@@ -150,7 +158,7 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
 
       if (effectp != nullptr)
       {
-        effectp->effect(creature, &game.get_action_manager_ref(), ItemStatus::ITEM_STATUS_UNCURSED, creature_loc.first, creature_loc.second);
+        effectp->effect(creature, &game.get_action_manager_ref(), status, creature_loc.first, creature_loc.second);
       }
     }
   }

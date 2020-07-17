@@ -1,3 +1,6 @@
+// Needed for KEY_P/NPAGE constants
+#include "curses.hpp"
+
 #include <ctype.h>
 #include "Conversion.hpp"
 #include "CursesConstants.hpp"
@@ -6,6 +9,17 @@
 #include "SDLPromptProcessor.hpp"
 
 using namespace std;
+
+SDLPromptProcessor::SDLPromptProcessor()
+{
+  init_int_mappings();
+}
+
+void SDLPromptProcessor::init_int_mappings()
+{
+  int_mappings = { {KEY_PPAGE, to_string(KEY_PPAGE)},
+                   {KEY_NPAGE, to_string(KEY_NPAGE)} };
+}
 
 bool SDLPromptProcessor::operator==(const SDLPromptProcessor& cpp) const
 {
@@ -27,7 +41,15 @@ string SDLPromptProcessor::get_prompt(const SDLDisplayParameters& display_params
     else
     {
       SDLKeyboardController kc;
-      prompt_entry = kc.get_char_as_int();
+      int prompt_ival = kc.get_char_as_int();
+      prompt_entry = prompt_ival;
+
+      string k_map = get_mapping(prompt_ival);
+
+      if (!k_map.empty())
+      {
+        prompt_entry = k_map;
+      }
 
       // Reprompt for new input if the input must be in the menu's option range,
       // and if the given input does not meet that criterion.
@@ -133,4 +155,17 @@ void SDLPromptProcessor::show_prompt(const SDLDisplayParameters& display_params,
     Coordinate c = get_prompt_coords(prompt->get_location(), prompt_text, row, col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
     render.render_text(cursor_location, sdl_renderer, spritesheet, screen, c.first, c.second, prompt_text, display_params.get_fg_colour(), display_params.get_bg_colour());
   }
+}
+
+string SDLPromptProcessor::get_mapping(const int key)
+{
+  string k_map;
+  auto m_it = int_mappings.find(key);
+
+  if (m_it != int_mappings.end())
+  {
+    k_map = m_it->second;
+  }
+
+  return k_map;
 }

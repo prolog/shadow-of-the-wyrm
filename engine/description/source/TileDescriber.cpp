@@ -8,8 +8,8 @@
 
 using namespace std;
 
-TileDescriber::TileDescriber(CreaturePtr new_creature, TilePtr new_tile)
-: viewing_creature(new_creature), tile(new_tile)
+TileDescriber::TileDescriber(CreaturePtr new_creature, TilePtr new_tile, const bool new_is_world_map)
+: viewing_creature(new_creature), tile(new_tile), is_world_map(new_is_world_map)
 {
 }
 
@@ -54,7 +54,7 @@ string TileDescriber::describe() const
 
       if (can_read)
       {
-        description = description + " " + TextMessages::get_inscription_message(tile->get_inscription_sid());
+        description = description + " " + TextMessages::get_inscription_message(tile->get_inscription_sid(), is_world_map);
       }
       else
       {

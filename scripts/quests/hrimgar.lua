@@ -39,7 +39,10 @@ local function wyrm_start_fn()
 end
 
 local function wyrm_completion_condition_fn()
-  return (get_num_creature_killed_global("end_boss") > 0)
+  local wyrm_killed = (get_num_creature_killed_global("end_boss") > 0)
+  local winner = get_winner(PLAYER_ID, CCREATURE_WIN_REGULAR)
+
+  return (wyrm_killed or winner)
 end
 
 local function wyrm_completion_fn()

@@ -50,7 +50,7 @@ pair<Coordinate, Coordinate> FloatingTowerGenerator::generate_tower(MapPtr map)
     int rows = dim.get_y();
     int cols = dim.get_x();
 
-    int height = RNG::range(rows * 0.6, rows * 0.8);
+    int height = RNG::irange(rows * 0.6, rows * 0.8);
     if (height % 2 == 0) height++;
     int width = 2 * height + 1;
 

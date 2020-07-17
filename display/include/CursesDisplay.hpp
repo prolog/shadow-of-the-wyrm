@@ -1,11 +1,6 @@
 #pragma once
-#ifdef _MSC_VER
-#include <curses.h>
-#else
-#define NCURSES_OPAQUE 0
-#include <ncurses.h>
-#endif
 #include <deque>
+#include "curses.hpp"
 #include "Display.hpp"
 #include "CursesPromptProcessor.hpp"
 #include "ISerializable.hpp"

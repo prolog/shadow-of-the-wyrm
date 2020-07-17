@@ -37,8 +37,8 @@ MapPtr KeepGenerator::generate()
   int max_height = dimensions.get_y();
   int max_width  = dimensions.get_x();
 
-  int height = RNG::range((0.5 * max_height), (0.8 * max_height));
-  int width  = RNG::range((0.5 * max_width), (0.8 * max_width));
+  int height = RNG::irange(0.5 * max_height, 0.8 * max_height);
+  int width  = RNG::irange(0.5 * max_width, 0.8 * max_width);
 
   int start_row = (max_height - height) / 2;
   int start_col = (max_width - width) / 2;

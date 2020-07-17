@@ -18,12 +18,12 @@ MapPtr RectangularShrineGenerator::generate_shrine()
 
   int num_rows = dim.get_y();
   int mid_row = num_rows / 2;
-  int start_row = RNG::range(mid_row * 0.2, mid_row * 0.4);
+  int start_row = RNG::irange(mid_row * 0.2, mid_row * 0.4);
   int shrine_height = 2 * std::abs(mid_row - start_row);
 
   int num_cols = dim.get_x();
   int mid_col = num_cols / 2;
-  int start_col = RNG::range(mid_col * 0.2, mid_col * 0.4);
+  int start_col = RNG::irange(mid_col * 0.2, mid_col * 0.4);
   int shrine_width = 2 * std::abs(mid_col - start_col);
 
   GeneratorUtils::generate_building(map, start_row, start_col, shrine_height, shrine_width);

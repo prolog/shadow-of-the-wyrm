@@ -197,7 +197,9 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
                                          {"AttackScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK},
                                          {"ChatScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT},
                                          {"DecisionScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION},
-                                         {"DropScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DROP}};
+                                         {"DropScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DROP},
+                                         {"TameScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_TAME}};
+
     parse_event_scripts(event_scripts_node, node_details, creature->get_event_scripts_ref());
   }
   

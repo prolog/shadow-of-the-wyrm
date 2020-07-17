@@ -21,6 +21,7 @@ Race::Race()
 , leaves_corpse(true)
 , corpse_poisoned(false)
 , pacifiable(true)
+, tameable(true)
 , splits(false)
 , has_pockets(false)
 , has_voice(false)
@@ -128,6 +129,16 @@ void Race::set_pacifiable(const bool new_pacifiable)
 bool Race::get_pacifiable() const
 {
   return pacifiable;
+}
+
+void Race::set_tameable(const bool new_tameable)
+{
+  tameable = new_tameable;
+}
+
+bool Race::get_tameable() const
+{
+  return tameable;
 }
 
 void Race::set_splits(const bool new_splits)
@@ -248,6 +259,16 @@ void Race::set_race_abbreviation_sid(const string& race_abrv_sid)
 string Race::get_race_abbreviation_sid() const
 {
   return race_abbreviation_sid;
+}
+
+void Race::set_race_settlement_sid(const string& race_settle_sid)
+{
+  race_settlement_sid = race_settle_sid;
+}
+
+string Race::get_race_settlement_sid() const
+{
+  return race_settlement_sid;
 }
 
 void Race::set_size(const CreatureSize new_size)

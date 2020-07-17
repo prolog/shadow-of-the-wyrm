@@ -1,5 +1,6 @@
 #include "XMLTrapsReader.hpp"
 #include "FeatureGenerator.hpp"
+#include "FeatureProperties.hpp"
 
 using namespace std;
 
@@ -35,14 +36,18 @@ void XMLTrapsReader::parse_trap(const XMLNode& trap_node, TrapPtr trap)
     string item_id = XMLUtils::get_child_node_value(trap_node, "Item");
     EffectType effect = static_cast<EffectType>(XMLUtils::get_child_node_int_value(trap_node, "Effect"));
 
+    XMLNode effect_status_node = XMLUtils::get_next_element_by_local_name(trap_node, "EffectStatus");
+    string effect_status = to_string(static_cast<int>(ItemStatus::ITEM_STATUS_UNCURSED));
+    if (!effect_status_node.is_null())
+    {
+      effect_status = XMLUtils::get_node_value(effect_status_node);
+    }
+
+    trap->set_additional_property(FeatureProperties::FEATURE_PROPERTIES_TRAP_EFFECT_STATUS, effect_status);
+
     Damage dam;
     XMLNode damage_node = XMLUtils::get_next_element_by_local_name(trap_node, "Damage");
     parse_damage(dam, damage_node);
-
-    XMLNode properties_node = XMLUtils::get_next_element_by_local_name(trap_node, "Properties");
-    map<string, string> prop_map;
-    parse_properties(prop_map, properties_node);
-    trap->set_additional_properties(prop_map);
 
     int uses = XMLUtils::get_child_node_int_value(trap_node, "Uses", 1);
 

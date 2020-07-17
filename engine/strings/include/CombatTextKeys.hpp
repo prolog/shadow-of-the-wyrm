@@ -35,7 +35,7 @@ class CombatTextKeys
     static const std::string COMBAT_MIGHTY_BLOW_MESSAGE; // Common to both - no substitutions
     static const std::string COMBAT_ATTACK_NO_EFFECT;
     static const std::string COMBAT_SNEAK_ATTACK;
-
+    static const std::string COMBAT_NO_EXP_KILL;
   protected:
     CombatTextKeys();
 

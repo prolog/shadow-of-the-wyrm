@@ -396,7 +396,7 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
       map->add_creature(creature);
     }
 
-    add_tile_related_messages(creature, creatures_new_tile);
+    add_tile_related_messages(creature, creatures_new_tile, map->get_map_type() == MapType::MAP_TYPE_WORLD);
 
     // Pick up any applicable items on the tile.
     DecisionStrategy* dec = creature->get_decision_strategy();
@@ -1762,14 +1762,14 @@ bool MapUtils::is_intersection(MapPtr map, CreaturePtr creature, const Coordinat
 //       If so, add the appropriate message.
 // Hold off on immediately sending these, as we may be changing maps and don't
 // want them erased too early.
-void MapUtils::add_tile_related_messages(CreaturePtr creature, TilePtr tile)
+void MapUtils::add_tile_related_messages(CreaturePtr creature, TilePtr tile, const bool is_world_map)
 {
-  add_message_about_tile_if_necessary(creature, tile);
+  add_message_about_tile_if_necessary(creature, tile, is_world_map);
   add_message_about_items_on_tile_if_necessary(creature, tile);
 }
 
 // Add a message about the tile if necessary.
-bool MapUtils::add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr tile)
+bool MapUtils::add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr tile, const bool is_world_map)
 {
   bool msg_added = false;
 
@@ -1779,7 +1779,7 @@ bool MapUtils::add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr
 
     if (tile->display_description_on_arrival() || tile->has_extra_description())
     {
-      TileDescriber td(creature, tile);
+      TileDescriber td(creature, tile, is_world_map);
       manager.add_new_message(td.describe());
       msg_added = true;
     }
@@ -1789,7 +1789,7 @@ bool MapUtils::add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr
 
       if (cca.can_read(creature))
       {
-        manager.add_new_message(TextMessages::get_inscription_message(tile->get_inscription_sid()));
+        manager.add_new_message(TextMessages::get_inscription_message(tile->get_inscription_sid(), is_world_map));
       }
       else
       {

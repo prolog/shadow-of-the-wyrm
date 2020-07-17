@@ -1,8 +1,9 @@
 #include "gtest/gtest.h"
+#include "SDLUtils.hpp"
 
-TEST(SW_Display_SDL, sdl_color_eq)
+TEST(SW_Display_SDLUtils, sdl_color_eq)
 {
-  SDL sdl;
+  SDLUtils sdl;
 
   SDL_Color black = {0,0,0,255};
   SDL_Color black_alpha2 = {0,0,0, 100};
