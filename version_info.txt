@@ -3,6 +3,11 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 
 - More name combinations.
 
+- Bug fixes:
+
+  - The free hidden actions counter could get out of whack. Capped that so
+    the player couldn't get lots of free actions while safely hidden (Grond).
+
 Shadow of the Wyrm v1.2.1 "Lully"
 - Version declared June 21, 2020.  Version finalized July 17, 2020.
 

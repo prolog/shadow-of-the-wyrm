@@ -1,4 +1,5 @@
 Me:
+- Grond says beastmastery should cancel hiding, but it seems to?
 - Narrative mode (no death, death removes negative statuses + heals)
 - Each version: make sure to update itch.io page for both SotW and the sprite
   pack! OpenGameArt if new sprites.
@@ -259,3 +260,6 @@ YARD:
 IceBox: 
 - can the confirm setting be allowed to change on load?
 
+Larzid
+- display type a command line arg
+- SDL as a build param

@@ -10,6 +10,8 @@
 
 using namespace std;
 
+const int Creature::MAX_FREE_HIDDEN_ACTIONS = 2;
+
 // Set a reasonable set of default values for simple types, which are helpfully initialized to bullshit memory.
 // Why did I write this in C++?
 Creature::Creature()
@@ -1432,6 +1434,12 @@ int Creature::increment_free_hidden_actions()
   int val = 0;
 
   val = get_free_hidden_actions() + 1;
+
+  if (val > MAX_FREE_HIDDEN_ACTIONS)
+  {
+    val = MAX_FREE_HIDDEN_ACTIONS;
+  }
+
   set_free_hidden_actions(val);
 
   return val;

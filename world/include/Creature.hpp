@@ -503,6 +503,8 @@ class Creature : public ISerializable
     // Maximum depth reached - tracked in the character dump for those who want
     // to dive through the infinite dungeon/sewer.
     Depth max_depth_reached;
+
+    static const int MAX_FREE_HIDDEN_ACTIONS;
 };
 
 using CreaturePtr = std::shared_ptr<Creature>;
