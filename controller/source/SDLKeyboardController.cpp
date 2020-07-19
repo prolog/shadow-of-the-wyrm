@@ -1,4 +1,5 @@
 // Needed for KEY_F(n) constants
+#ifdef ENABLE_SDL
 #include "curses.hpp"
 
 #include "sdl.hpp"
@@ -165,3 +166,5 @@ ClassIdentifier SDLKeyboardController::internal_class_identifier() const
 {
   return ClassIdentifier::CLASS_ID_SDL_KEYBOARD_CONTROLLER;
 }
+
+#endif

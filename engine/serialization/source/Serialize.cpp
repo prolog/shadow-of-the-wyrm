@@ -174,38 +174,6 @@ void Serialize::read_uint(istream& stream, unsigned int& val)
   }
 }
 
-void Serialize::write_uint8(ostream& stream, const Uint8 val)
-{
-  if (stream.good())
-  {
-    stream.write(reinterpret_cast<const char*>(&val), sizeof(val));
-  }
-  else
-  {
-    SerializationException stream_error("Could not write Uint8");
-    throw stream_error;
-  }
-}
-
-void Serialize::read_uint8(istream& stream, Uint8& val)
-{
-  if (stream.good())
-  {
-    stream.read((char*)& val, sizeof(val));
-  }
-  else
-  {
-    SerializationException stream_error("Could not read Uint8");
-    throw stream_error;
-  }
-
-  if (stream.fail())
-  {
-    SerializationException stream_error("Could not read full unsigned int");
-    throw stream_error;
-  }
-}
-
 // Write a (signed) int value.
 void Serialize::write_int(ostream& stream, const signed int val)
 {
@@ -616,6 +584,39 @@ void Serialize::read_event_scripts(istream& stream, EventScriptsMap& event_scrip
   }
 }
 
+#ifdef ENABLE_SDL
+void Serialize::write_uint8(ostream& stream, const Uint8 val)
+{
+  if (stream.good())
+  {
+    stream.write(reinterpret_cast<const char*>(&val), sizeof(val));
+  }
+  else
+  {
+    SerializationException stream_error("Could not write Uint8");
+    throw stream_error;
+  }
+}
+
+void Serialize::read_uint8(istream& stream, Uint8& val)
+{
+  if (stream.good())
+  {
+    stream.read((char*)&val, sizeof(val));
+  }
+  else
+  {
+    SerializationException stream_error("Could not read Uint8");
+    throw stream_error;
+  }
+
+  if (stream.fail())
+  {
+    SerializationException stream_error("Could not read full unsigned int");
+    throw stream_error;
+  }
+}
+
 void Serialize::write_sdl_colour(ostream& stream, const SDL_Color& color)
 {
   Serialize::write_uint8(stream, color.r);
@@ -631,7 +632,7 @@ void Serialize::read_sdl_colour(istream& stream, SDL_Color& color)
   Serialize::read_uint8(stream, color.b);
   Serialize::read_uint8(stream, color.a);
 }
-
+#endif
 
 #ifdef UNIT_TESTS
 #include "unit_tests/Serialize_test.cpp"

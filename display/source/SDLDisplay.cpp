@@ -1,3 +1,4 @@
+#ifdef ENABLE_SDL
 #include <boost/algorithm/string.hpp>
 #include <boost/tokenizer.hpp>
 #include "Conversion.hpp"
@@ -1271,4 +1272,6 @@ ClassIdentifier SDLDisplay::internal_class_identifier() const
 
 #ifdef UNIT_TESTS
 #include "unit_tests/SDLDisplay_test.cpp"
+#endif
+
 #endif

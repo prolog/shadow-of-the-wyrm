@@ -49,11 +49,16 @@ void ControllerFactory::initialize_controller_map()
   controller_map.clear();
 
   ControllerPtr keyboard = std::make_shared<CursesKeyboardController>();
-  ControllerPtr sdlcont  = std::make_shared<SDLKeyboardController>();
   ControllerPtr nullcont = std::make_shared<NullKeyboardController>();
 
-  controller_map = ControllerSerializationMap{ { ClassIdentifier::CLASS_ID_CURSES_KEYBOARD_CONTROLLER, keyboard }, 
-                                               { ClassIdentifier::CLASS_ID_SDL_KEYBOARD_CONTROLLER, sdlcont },
-                                               { ClassIdentifier::CLASS_ID_NULL_KEYBOARD_CONTROLLER, nullcont } };
+  #ifdef ENABLE_SDL
+  ControllerPtr sdlcont = std::make_shared<SDLKeyboardController>();
+  #endif
+
+  controller_map = ControllerSerializationMap{ { ClassIdentifier::CLASS_ID_CURSES_KEYBOARD_CONTROLLER, keyboard } 
+  #ifdef ENABLE_SDL
+                                               , { ClassIdentifier::CLASS_ID_SDL_KEYBOARD_CONTROLLER, sdlcont }
+  #endif
+                                               , { ClassIdentifier::CLASS_ID_NULL_KEYBOARD_CONTROLLER, nullcont } };
 }
 

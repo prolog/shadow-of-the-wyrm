@@ -1,4 +1,6 @@
 #pragma once
+#ifdef ENABLE_SDL
+
 #include "sdl.hpp"
 
 #include "MenuWrapper.hpp"
@@ -26,3 +28,5 @@ class SDLPromptProcessor : public PromptProcessor
 
     std::unordered_map<int, std::string> int_mappings;
 };
+
+#endif

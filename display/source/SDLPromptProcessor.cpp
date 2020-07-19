@@ -1,3 +1,4 @@
+#ifdef ENABLE_SDL
 // Needed for KEY_P/NPAGE constants
 #include "curses.hpp"
 
@@ -169,3 +170,5 @@ string SDLPromptProcessor::get_mapping(const int key)
 
   return k_map;
 }
+
+#endif

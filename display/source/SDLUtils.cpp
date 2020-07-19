@@ -1,3 +1,4 @@
+#ifdef ENABLE_SDL
 #include "SDLUtils.hpp"
 
 bool SDLUtils::sdl_color_eq(const SDL_Color& col1, const SDL_Color& col2) const
@@ -14,4 +15,6 @@ bool SDLUtils::sdl_color_eq(const SDL_Color& col1, const SDL_Color& col2) const
 
 #ifdef UNIT_TESTS
 #include "unit_tests/SDLUtils_test.cpp"
+#endif
+
 #endif

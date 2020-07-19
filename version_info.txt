@@ -3,6 +3,10 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 
 - More name combinations.
 
+- Added support for curses-only configurations in both Visual Studio and in
+  the premake configurations. These exclude SDL when building, resulting in a 
+  smaller, asset-less build that has no dependencies on SDL (Larzid).
+
 - Bug fixes:
 
   - The free hidden actions counter could get out of whack. Capped that so

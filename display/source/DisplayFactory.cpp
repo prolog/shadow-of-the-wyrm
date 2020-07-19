@@ -2,8 +2,11 @@
 #include "CursesKeyboardController.hpp"
 #include "DisplayConstants.hpp"
 #include "DisplayFactory.hpp"
+
+#ifdef ENABLE_SDL
 #include "SDLDisplay.hpp"
 #include "SDLKeyboardController.hpp"
+#endif
 
 using namespace std;
 
@@ -46,11 +49,17 @@ void DisplayFactory::initialize_display_map()
 
   DisplayPtr curses_display = std::make_shared<CursesDisplay>();
   ControllerPtr curses_keyboard_controller = std::make_shared<CursesKeyboardController>();
+
+  #ifdef ENABLE_SDL
   DisplayPtr sdl_display = std::make_shared<SDLDisplay>();
   ControllerPtr sdl_keyboard_controller = std::make_shared<SDLKeyboardController>();
+  #endif
 
-  display_map = DisplaySerializationMap{{ClassIdentifier::CLASS_ID_CURSES_DISPLAY, {curses_display, curses_keyboard_controller}},
-                                        {ClassIdentifier::CLASS_ID_SDL_DISPLAY, {sdl_display, sdl_keyboard_controller}}};
+  display_map = DisplaySerializationMap{{ClassIdentifier::CLASS_ID_CURSES_DISPLAY, {curses_display, curses_keyboard_controller}}
+  #ifdef ENABLE_SDL
+                                        , {ClassIdentifier::CLASS_ID_SDL_DISPLAY, {sdl_display, sdl_keyboard_controller}}
+  #endif
+                                       };
 }
 
 void DisplayFactory::initialize_display_identifier_map()
@@ -58,7 +67,10 @@ void DisplayFactory::initialize_display_identifier_map()
   display_identifier_map.clear();
 
   display_identifier_map.insert(make_pair(DisplayIdentifier::DISPLAY_IDENTIFIER_CURSES, ClassIdentifier::CLASS_ID_CURSES_DISPLAY));
+
+  #ifdef ENABLE_SDL
   display_identifier_map.insert(make_pair(DisplayIdentifier::DISPLAY_IDENTIFIER_SDL, ClassIdentifier::CLASS_ID_SDL_DISPLAY));
+  #endif
 }
 
 ClassIdentifier DisplayFactory::get_class_id_for_identifier(const string& display_identifier)

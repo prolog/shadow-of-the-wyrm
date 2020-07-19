@@ -1,3 +1,4 @@
+#ifdef ENABLE_SDL
 #include <sstream>
 #include "Log.hpp"
 #include "SDLInit.hpp"
@@ -23,3 +24,4 @@ void SDLInit::tear_down()
 {
   SDL_Quit();
 }
+#endif

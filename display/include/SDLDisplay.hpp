@@ -1,6 +1,7 @@
 // General definition of an abstract Display so that multiple displays
 // can be specified (curses-based, graphical tiles, etc).
 #pragma once
+#ifdef ENABLE_SDL
 
 #include "sdl.hpp"
 
@@ -153,3 +154,5 @@ class SDLDisplay : public Display
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };
+
+#endif
