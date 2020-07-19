@@ -17,8 +17,14 @@ ControllerFactory::~ControllerFactory()
 {
 }
 
-ControllerPtr ControllerFactory::create_controller(const ClassIdentifier ci)
+ControllerPtr ControllerFactory::create_controller(const ClassIdentifier c_id)
 {
+  #ifndef ENABLE_SDL
+  ClassIdentifier ci = ClassIdentifier::CLASS_ID_CURSES_KEYBOARD_CONTROLLER;
+  #else
+  ClassIdentifier ci = c_id;
+  #endif
+
   ControllerPtr controller;
 
   if (controller_map.empty())
