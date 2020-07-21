@@ -25,6 +25,8 @@ class MusicSkillProcessor : public SkillProcessor
 
     void add_unimpressed_message(CreaturePtr creature, CreaturePtr fov_creature);
     void enrage(CreaturePtr creature, CreaturePtr fov_creature);
+
+    void run_pacification_event(CreaturePtr creature, CreaturePtr fov_creature);
 };
 
 

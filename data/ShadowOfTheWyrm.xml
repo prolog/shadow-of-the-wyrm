@@ -601,7 +601,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
-			<Pacifiable>1</Pacifiable>
+			<Pacifiable>0</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
@@ -745,7 +745,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
-			<Pacifiable>1</Pacifiable>
+			<Pacifiable>0</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>

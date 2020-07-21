@@ -311,12 +311,14 @@ TEST(SW_World_Creature, increment_free_hidden_actions)
   CreaturePtr c = std::make_shared<Creature>();
   c->set_free_hidden_actions(2);
 
+  EXPECT_EQ(2, c->get_free_hidden_actions());
+
   for (int i = 0; i < 5; i++)
   {
     c->increment_free_hidden_actions();
   }
 
-  EXPECT_EQ(7, c->get_free_hidden_actions());
+  EXPECT_EQ(2, c->get_free_hidden_actions());
 }
 
 TEST(SW_World_Creature, decrement_free_hidden_actions)

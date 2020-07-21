@@ -185,6 +185,8 @@ class TextKeys
     static const std::string ARTIFACT;
     static const std::string AUTOCURSING;
     static const std::string GENERIC_MESSAGE;
+    static const std::string PACIFIED;
+    static const std::string TAMED;
 
   protected:
     TextKeys();

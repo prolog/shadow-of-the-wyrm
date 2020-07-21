@@ -354,7 +354,6 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\AttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\AttackSpeedCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\BaseDangerLevelCalculator.hpp" />
-    <ClInclude Include="engine\calculators\include\BeastmasteryCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\BlindedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\BloodiedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\BuySellCalculator.hpp" />
@@ -1458,7 +1457,6 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\AttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\AttackSpeedCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\BaseDangerLevelCalculator.cpp" />
-    <ClCompile Include="engine\calculators\source\BeastmasteryCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\BuySellCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CalcUtils.cpp" />
     <ClCompile Include="engine\calculators\source\CombatCounterCalculator.cpp" />
@@ -1496,12 +1494,6 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\ThieveryCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\TimewalkCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\unit_tests\BaseDangerLevelCalculator_test.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\unit_tests\BeastmasteryCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

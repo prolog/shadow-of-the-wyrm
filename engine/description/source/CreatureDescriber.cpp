@@ -2,6 +2,7 @@
 #include "ActionTextKeys.hpp"
 #include "CreatureDifficulty.hpp"
 #include "CreatureDescriber.hpp"
+#include "CreatureProperties.hpp"
 #include "CreatureTranslator.hpp"
 #include "Conversion.hpp"
 #include "CurrentCreatureAbilities.hpp"
@@ -65,6 +66,20 @@ string CreatureDescriber::describe() const
     if (!status_description.empty() && !short_description)
     {
       ss << " " << status_description;
+    }
+
+    bool pacified = String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_PACIFIED));
+
+    if (pacified)
+    {
+      ss << " " << StringTable::get(TextKeys::PACIFIED);
+    }
+
+    bool tamed = String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_TAMED));
+
+    if (tamed)
+    {
+      ss << " " << StringTable::get(TextKeys::TAMED);
     }
   }
 

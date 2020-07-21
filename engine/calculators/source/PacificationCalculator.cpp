@@ -1,6 +1,7 @@
 #include "PacificationCalculator.hpp"
 
-const int PacificationCalculator::MAX_PCT_CHANCE_PACIFY_MUSIC = 90;
+const int PacificationCalculator::MAX_PCT_CHANCE_PACIFY_MUSIC = 80;
+const int PacificationCalculator::MAX_PCT_CHANCE_TAME_BEASTMASTERY = 80;
 const int PacificationCalculator::CHARMS_BONUS = 25;
 
 // The chance to pacify musically is:
@@ -61,6 +62,36 @@ int PacificationCalculator::get_item_status_bonus(const ItemStatus status) const
   }
 
   return bonus;
+}
+
+int PacificationCalculator::calculate_pct_chance_tame_beastmastery(CreaturePtr taming_creature, CreaturePtr tamed_creature)
+{
+  int taming_pct = 0;
+
+  if (taming_creature != nullptr && tamed_creature != nullptr)
+  {
+    taming_pct = taming_creature->get_skills().get_value(SkillType::SKILL_GENERAL_BEASTMASTERY) - 10;
+    int level_diff = taming_creature->get_level().get_current() - tamed_creature->get_level().get_current();
+
+    taming_pct += level_diff;
+
+    taming_pct = std::max<int>(taming_pct, 0);
+    taming_pct = std::min<int>(taming_pct, MAX_PCT_CHANCE_TAME_BEASTMASTERY);
+  }
+
+  return taming_pct;
+}
+
+double PacificationCalculator::calculate_exp_proportion(CreaturePtr taming_creature, const SkillType skill)
+{
+  double exp = 0.0;
+
+  if (taming_creature != nullptr)
+  {
+    exp = taming_creature->get_skills().get_value(skill) / 100.0;
+  }
+
+  return exp;
 }
 
 #ifdef UNIT_TESTS

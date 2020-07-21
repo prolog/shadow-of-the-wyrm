@@ -7,6 +7,14 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   the premake configurations. These exclude SDL when building, resulting in a 
   smaller, asset-less build that has no dependencies on SDL (Larzid).
 
+- The Music skill now gives experience for pacification, like Beastmastery,
+  and sets the no-exp flag.
+
+- Pacified/Tamed are now displayed when examining a creature.
+
+- Pacification still works on many creatures, but not constructs, undead,
+  or the divine.
+
 - Bug fixes:
 
   - The free hidden actions counter could get out of whack. Capped that so
