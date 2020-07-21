@@ -551,6 +551,16 @@ SwitchColourPalettesCommand::~SwitchColourPalettesCommand()
 {
 }
 
+// Give orders to followers
+OrderCommand::OrderCommand(int key)
+: Command(CommandKeys::ORDER, key)
+{
+}
+
+OrderCommand::~OrderCommand()
+{
+}
+
 // NPC-only commands
 
 // Breed (create a new creature of the same ID on an adjacent tile)

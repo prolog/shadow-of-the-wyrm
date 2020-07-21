@@ -1,5 +1,6 @@
 Me:
-- Grond says beastmastery should cancel hiding, but it seems to?
+- Beastmastery: add mounts
+- Music, Leadership: 
 - Narrative mode (no death, death removes negative statuses + heals)
 - Each version: make sure to update itch.io page for both SotW and the sprite
   pack! OpenGameArt if new sprites.
@@ -236,6 +237,7 @@ Grond:
 - Differentiate scribing and wandcraft - why use scribing?
 - Scything on ammo?
 - could magic skill affect spell duration
+- monster as a mount
 
 Yan Zhang:
 - Dungeon symbol should generate that thing on the last level

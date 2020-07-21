@@ -71,6 +71,7 @@ class CommandKeys
     static const std::string ITEM_CODEX;
     static const std::string SWITCH_GRAPHICS_MODE;
     static const std::string SWITCH_COLOUR_PALETTES;
+    static const std::string ORDER;
 
     // Helpful public functions
     static bool is_movement_type_key(const std::string& key);

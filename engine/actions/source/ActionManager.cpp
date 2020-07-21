@@ -483,6 +483,12 @@ ActionCost ActionManager::switch_colour_palettes(CreaturePtr creature)
   return get_action_cost(creature, action_cost_value);
 }
 
+ActionCost ActionManager::order(CreaturePtr creature)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+  return get_action_cost(creature, acv);
+}
+
 ActionCost ActionManager::evoke(CreaturePtr creature)
 {
   EvokeAction ea;

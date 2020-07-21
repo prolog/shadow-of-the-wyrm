@@ -379,6 +379,13 @@ class SwitchColourPalettesCommand : public Command
     ~SwitchColourPalettesCommand();
 };
 
+class OrderCommand : public Command
+{
+  public:
+    OrderCommand(int key);
+    ~OrderCommand();
+};
+
 // NPC-only commands:
 
 class BreedCommand : public Command
