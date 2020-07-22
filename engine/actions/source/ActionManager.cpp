@@ -32,6 +32,7 @@
 #include "MessageManagerFactory.hpp"
 #include "MovementTextKeys.hpp"
 #include "OfferAction.hpp"
+#include "OrderAction.hpp"
 #include "PickupAction.hpp"
 #include "PietyAction.hpp"
 #include "PrayerAction.hpp"
@@ -485,8 +486,8 @@ ActionCost ActionManager::switch_colour_palettes(CreaturePtr creature)
 
 ActionCost ActionManager::order(CreaturePtr creature)
 {
-  ActionCostValue acv = ActionCostConstants::NO_ACTION;
-  return get_action_cost(creature, acv);
+  OrderAction oa;
+  return get_action_cost(creature, oa.order(creature));
 }
 
 ActionCost ActionManager::evoke(CreaturePtr creature)

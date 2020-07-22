@@ -30,6 +30,7 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_FIRST_KILL_ID;
     static const std::string CREATURE_PROPERTIES_NO_EXP;
     static const std::string CREATURE_PROPERTIES_TAMED;
+    static const std::string CREATURE_PROPERTIES_LEADER_ID;
 
   protected:
     CreatureProperties();

@@ -1,4 +1,5 @@
 Me:
+- Unit tests for everything in CurrentCreatureAbilities!
 - Beastmastery: add mounts
 - Music, Leadership: 
 - Narrative mode (no death, death removes negative statuses + heals)

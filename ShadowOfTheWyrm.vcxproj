@@ -320,6 +320,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\actions\include\MovementAccumulationUpdater.hpp" />
     <ClInclude Include="engine\actions\include\MovementAction.hpp" />
     <ClInclude Include="engine\actions\include\OfferAction.hpp" />
+    <ClInclude Include="engine\actions\include\OrderAction.hpp" />
     <ClInclude Include="engine\actions\include\PickupAction.hpp" />
     <ClInclude Include="engine\actions\include\PietyAction.hpp" />
     <ClInclude Include="engine\actions\include\PrayerAction.hpp" />
@@ -1445,6 +1446,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\actions\source\HelpAction.cpp" />
     <ClCompile Include="engine\actions\source\InscribeAction.cpp" />
     <ClCompile Include="engine\actions\source\ItemCodexAction.cpp" />
+    <ClCompile Include="engine\actions\source\OrderAction.cpp" />
     <ClCompile Include="engine\actions\source\RangedCombatUtils.cpp" />
     <ClCompile Include="engine\actions\source\SkillsAction.cpp" />
     <ClCompile Include="engine\actions\source\unit_tests\AutomaticMovementFlags_test.cpp">
@@ -1790,6 +1792,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\CurrentCreatureAbilities_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\creatures\source\unit_tests\HasteStatusEffect_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

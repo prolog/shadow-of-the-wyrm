@@ -247,6 +247,7 @@ void MusicSkillProcessor::pacify(CreaturePtr creature, CreaturePtr fov_creature,
 
     fov_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_PACIFIED, to_string(true));
     fov_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_NO_EXP, to_string(true));
+    fov_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID, creature->get_id());
 
     // Add a message about the pacification.
     bool creature_is_player = creature->get_is_player();
