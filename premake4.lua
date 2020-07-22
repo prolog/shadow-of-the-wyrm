@@ -112,14 +112,14 @@ project "ShadowOfTheWyrm"
                 _OPTIONS["lua_include"]
                 }
   excludes { "**_test.cpp" }
-  links { "SDL2", "SDL2_image", "pthread", "dl", "z", "boost_system", "boost_filesystem", "boost_date_time", _OPTIONS["boost_thread"], "boost_regex", _OPTIONS["lua_link"], "xerces-c", "tinfo", "ncurses" }
+  links { "pthread", "dl", "z", "boost_system", "boost_filesystem", "boost_date_time", _OPTIONS["boost_thread"], "boost_regex", _OPTIONS["lua_link"], "xerces-c", "tinfo", "ncurses" }
   flags { "ExtraWarnings" }
 
   -- Ignore SaveConverter, MapTester configs.
   configuration "Debug"
     defines { "_DEBUG", "DEBUG", "UNIT_TESTS", "ENABLE_SDL" }
     flags { "Symbols" }
-    links { "gtest" }
+    links { "SDL2", "SDL2_image", "gtest" }
     excludes { "source/MapTester.cpp", "source/SaveConverter.cpp" }
 
   configuration "CursesDebug"
@@ -131,6 +131,7 @@ project "ShadowOfTheWyrm"
   configuration "Release"
     defines { "NDEBUG", "ENABLE_SDL" }
     flags { "Optimize" }
+    links { "SDL2", "SDL2_image" }
     postbuildcommands { "mkdir sotw",
                         "cp ShadowOfTheWyrm sotw/sotw",
                         "cp -R data sotw",
