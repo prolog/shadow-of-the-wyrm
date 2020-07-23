@@ -14,7 +14,8 @@ enum struct CommandFactoryType
   COMMAND_FACTORY_TYPE_MAGIC = 4,
   COMMAND_FACTORY_TYPE_SCREEN = 5,
   COMMAND_FACTORY_TYPE_HELP = 6,
-  COMMAND_FACTORY_TYPE_SKILLS = 7
+  COMMAND_FACTORY_TYPE_SKILLS = 7,
+  COMMAND_FACTORY_TYPE_ORDER = 8
 };
 
 // The base CommandFactory, used for commands on the current map.  Other classes

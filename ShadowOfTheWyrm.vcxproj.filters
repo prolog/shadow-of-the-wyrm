@@ -816,6 +816,21 @@
     <Filter Include="Source Files\engine\description\codex\source">
       <UniqueIdentifier>{4396f385-7a81-49ac-9393-161fce0fb25a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\commands\order">
+      <UniqueIdentifier>{8a5b622b-c467-4cd8-86d7-49c08ec48ca2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\order\source">
+      <UniqueIdentifier>{8830bc0e-71b1-4786-9b0b-a182cdab6907}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\order">
+      <UniqueIdentifier>{cabb426d-4b5c-49e6-a63f-89a3b2b8ae4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\order\include">
+      <UniqueIdentifier>{2ca8a3bf-c681-4bea-8f9f-b6a2cc874305}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\order\source\unit_tests">
+      <UniqueIdentifier>{829fa522-3700-485e-a21c-e074f6cfcf62}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -4285,6 +4300,12 @@
     </ClInclude>
     <ClInclude Include="engine\actions\include\OrderAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\OrderScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\order\include\OrderCommandFactory.hpp">
+      <Filter>Header Files\engine\commands\order\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -8583,6 +8604,15 @@
     </ClCompile>
     <ClCompile Include="engine\creatures\source\unit_tests\CurrentCreatureAbilities_test.cpp">
       <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\OrderScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\order\source\OrderCommandFactory.cpp">
+      <Filter>Source Files\engine\commands\order\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\order\source\unit_tests\OrderCommandFactory_test.cpp">
+      <Filter>Source Files\engine\commands\order\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

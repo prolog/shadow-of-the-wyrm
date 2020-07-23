@@ -63,6 +63,7 @@ project "ShadowOfTheWyrm"
                 "engine/commands/include",
                 "engine/commands/equipment/include",
                 "engine/commands/help/include",
+		"engine/commands/order/include",
                 "engine/commands/inventory/include",
                 "engine/commands/magic/include",
                 "engine/commands/screens/include",

@@ -3,6 +3,11 @@
 #include "ActionTextKeys.hpp"
 #include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "Game.hpp"
+#include "OrderCommandFactory.hpp"
+//#include "OrderCommandProcessor.hpp"
+//#include "OrderKeyboardCommandProcessor.hpp"
+#include "OrderScreen.hpp"
 
 using std::string;
 
@@ -37,7 +42,7 @@ bool OrderAction::check_for_skills(CreaturePtr creature, IMessageManager& manage
     }
     else
     {
-      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ORDER_NO_FOLLOWERS));
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ORDER_NO_SKILLS));
     }
   }
 
@@ -74,10 +79,31 @@ bool OrderAction::check_for_followers(CreaturePtr creature, IMessageManager& man
 ActionCostValue OrderAction::order_followers(CreaturePtr creature, IMessageManager& manager)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
-
+ 
   if (creature != nullptr)
   {
-    acv = ActionCostConstants::DEFAULT;
+    Game& game = Game::instance();
+    DecisionStrategy* decision_strategy = creature->get_decision_strategy();
+
+    CommandFactoryPtr command_factory = std::make_unique<OrderCommandFactory>();
+    /*
+    KeyboardCommandMapPtr kb_command_map = std::make_unique<OrderKeyboardCommandMap>();
+    Game& game = Game::instance();
+
+    if (decision_strategy)
+    {
+      while (acv > -1)
+      { */
+        OrderScreen os(game.get_display());
+/*        string display_s = os.display();
+        int input = display_s.at(0);
+
+        CommandPtr order_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), &input, false);
+        action_cost_value = OrderCommandProcessor::process(creature, order_command.get());
+      }
+    }
+
+    acv = ActionCostConstants::DEFAULT;*/
   }
 
   return acv;
