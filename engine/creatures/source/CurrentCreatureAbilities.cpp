@@ -24,7 +24,7 @@ bool CurrentCreatureAbilities::can_give_orders(CreaturePtr creature, const bool 
 {
   bool can_order = false;
 
-  if (creature != nullptr)
+  if (creature != nullptr && can_speak(creature))
   {
     Skills& skills = creature->get_skills();
 
@@ -149,4 +149,6 @@ void CurrentCreatureAbilities::add_ability_message_for_sid(CreaturePtr creature,
   manager.send();
 }
 
+#ifdef UNIT_TESTS
 #include "unit_tests/CurrentCreatureAbilities_test.cpp"
+#endif
