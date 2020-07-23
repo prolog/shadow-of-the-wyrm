@@ -1,6 +1,6 @@
 #include "OrderCommandFactory.hpp"
-//#include "OrderCommandKeys.hpp"
-//#include "OrderCommands.hpp"
+#include "OrderCommandKeys.hpp"
+#include "OrderCommands.hpp"
 
 OrderCommandFactory::OrderCommandFactory()
 {
@@ -14,30 +14,26 @@ CommandPtr OrderCommandFactory::create(const int key, const std::string& command
 {
   CommandPtr command;
 
-/*  if (command_name == OrderCommandKeys::KEYBINDINGS)
+  if (command_name == OrderCommandKeys::ATTACK)
   {
-    command = std::make_unique<KeybindingsCommand>(key);
+    command = std::make_unique<OrderAttackCommand>(key);
   }
-  else if (command_name == OrderCommandKeys::EXIT_HELP)
+  else if (command_name == OrderCommandKeys::FOLLOW)
   {
-    command = std::make_unique<ExitOrderCommand>(key);
+    command = std::make_unique<OrderFollowCommand>(key);
   }
-  else if (command_name == OrderCommandKeys::INTRODUCTION_ROGUELIKES)
+  else if (command_name == OrderCommandKeys::GUARD)
   {
-    command = std::make_unique<IntroductionRoguelikesCommand>(key);
+    command = std::make_unique<OrderGuardCommand>(key);
   }
-  else if (command_name == OrderCommandKeys::SOTW_HISTORY)
+  else if (command_name == OrderCommandKeys::FREEZE)
   {
-    command = std::make_unique<SOTWHistoryCommand>(key);
+    command = std::make_unique<OrderFreezeCommand>(key);
   }
-  else if (command_name == OrderCommandKeys::STRATEGY_BASICS)
+  else if (command_name == OrderCommandKeys::EXIT_ORDER)
   {
-    command = std::make_unique<StrategyBasicsCommand>(key);
+    command = std::make_unique<OrderExitCommand>(key);
   }
-  else if (command_name == OrderCommandKeys::CASINO_GAMES)
-  {
-    command = std::make_unique<CasinoGamesCommand>(key);
-  } */
 
   return command;
 }

@@ -511,6 +511,10 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\commands\magic\include\MagicCommands.hpp" />
     <ClInclude Include="engine\commands\magic\include\MagicKeyboardCommandMap.hpp" />
     <ClInclude Include="engine\commands\order\include\OrderCommandFactory.hpp" />
+    <ClInclude Include="engine\commands\order\include\OrderCommandKeys.hpp" />
+    <ClInclude Include="engine\commands\order\include\OrderCommandProcessor.hpp" />
+    <ClInclude Include="engine\commands\order\include\OrderCommands.hpp" />
+    <ClInclude Include="engine\commands\order\include\OrderKeyboardCommandMap.hpp" />
     <ClInclude Include="engine\commands\screens\include\ScreenCommandFactory.hpp" />
     <ClInclude Include="engine\commands\screens\include\ScreenCommandKeys.hpp" />
     <ClInclude Include="engine\commands\screens\include\ScreenCommandProcessor.hpp" />
@@ -1735,7 +1739,17 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\commands\order\source\OrderCommandFactory.cpp" />
+    <ClCompile Include="engine\commands\order\source\OrderCommandKeys.cpp" />
+    <ClCompile Include="engine\commands\order\source\OrderCommandProcessor.cpp" />
+    <ClCompile Include="engine\commands\order\source\OrderCommands.cpp" />
+    <ClCompile Include="engine\commands\order\source\OrderKeyboardCommandMap.cpp" />
     <ClCompile Include="engine\commands\order\source\unit_tests\OrderCommandFactory_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\commands\order\source\unit_tests\OrderKeyboardCommandMap_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

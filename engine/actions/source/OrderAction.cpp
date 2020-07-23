@@ -109,6 +109,54 @@ ActionCostValue OrderAction::order_followers(CreaturePtr creature, IMessageManag
   return acv;
 }
 
+ActionCostValue OrderAction::order_attack(CreaturePtr creature)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
+  if (creature != nullptr)
+  {
+    acv = ActionCostConstants::DEFAULT;
+  }
+
+  return acv;
+}
+
+ActionCostValue OrderAction::order_follow(CreaturePtr creature)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
+  if (creature != nullptr)
+  {
+    acv = ActionCostConstants::DEFAULT;
+  }
+
+  return acv;
+}
+
+ActionCostValue OrderAction::order_guard(CreaturePtr creature)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
+  if (creature != nullptr)
+  {
+    acv = ActionCostConstants::DEFAULT;
+  }
+
+  return acv;
+}
+
+ActionCostValue OrderAction::order_freeze(CreaturePtr creature)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
+  if (creature != nullptr)
+  {
+    acv = ActionCostConstants::DEFAULT;
+  }
+
+  return acv;
+}
+
 ActionCostValue OrderAction::get_action_cost_value(CreaturePtr creature) const
 {
   return ActionCostConstants::DEFAULT;

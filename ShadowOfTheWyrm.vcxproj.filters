@@ -4307,6 +4307,18 @@
     <ClInclude Include="engine\commands\order\include\OrderCommandFactory.hpp">
       <Filter>Header Files\engine\commands\order\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\commands\order\include\OrderCommandKeys.hpp">
+      <Filter>Header Files\engine\commands\order\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\order\include\OrderCommands.hpp">
+      <Filter>Header Files\engine\commands\order\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\order\include\OrderCommandProcessor.hpp">
+      <Filter>Header Files\engine\commands\order\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\order\include\OrderKeyboardCommandMap.hpp">
+      <Filter>Header Files\engine\commands\order\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8612,6 +8624,21 @@
       <Filter>Source Files\engine\commands\order\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\commands\order\source\unit_tests\OrderCommandFactory_test.cpp">
+      <Filter>Source Files\engine\commands\order\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\order\source\OrderCommandKeys.cpp">
+      <Filter>Source Files\engine\commands\order\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\order\source\OrderCommandProcessor.cpp">
+      <Filter>Source Files\engine\commands\order\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\order\source\OrderCommands.cpp">
+      <Filter>Source Files\engine\commands\order\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\order\source\OrderKeyboardCommandMap.cpp">
+      <Filter>Source Files\engine\commands\order\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\order\source\unit_tests\OrderKeyboardCommandMap_test.cpp">
       <Filter>Source Files\engine\commands\order\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
