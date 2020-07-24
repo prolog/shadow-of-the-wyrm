@@ -5,8 +5,8 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "OrderCommandFactory.hpp"
-//#include "OrderCommandProcessor.hpp"
-//#include "OrderKeyboardCommandProcessor.hpp"
+#include "OrderCommandProcessor.hpp"
+#include "OrderKeyboardCommandMap.hpp"
 #include "OrderScreen.hpp"
 
 using std::string;
@@ -64,7 +64,7 @@ bool OrderAction::check_for_followers(CreaturePtr creature, IMessageManager& man
 
       if (num_followers > 0)
       {
-        // ...
+        has_followers_in_fov = true;
       }
       else
       {
@@ -86,24 +86,22 @@ ActionCostValue OrderAction::order_followers(CreaturePtr creature, IMessageManag
     DecisionStrategy* decision_strategy = creature->get_decision_strategy();
 
     CommandFactoryPtr command_factory = std::make_unique<OrderCommandFactory>();
-    /*
     KeyboardCommandMapPtr kb_command_map = std::make_unique<OrderKeyboardCommandMap>();
-    Game& game = Game::instance();
 
     if (decision_strategy)
     {
       while (acv > -1)
-      { */
+      {
         OrderScreen os(game.get_display());
-/*        string display_s = os.display();
+        string display_s = os.display();
         int input = display_s.at(0);
 
         CommandPtr order_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), &input, false);
-        action_cost_value = OrderCommandProcessor::process(creature, order_command.get());
+        acv = OrderCommandProcessor::process(creature, order_command.get());
       }
     }
 
-    acv = ActionCostConstants::DEFAULT;*/
+    acv = ActionCostConstants::DEFAULT;
   }
 
   return acv;

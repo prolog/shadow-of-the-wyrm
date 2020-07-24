@@ -394,7 +394,7 @@ File::~File()
 {
 }
 
-string File::to_string(const string& filename)
+string File::to_string(const string& filename, const map<string, string>& char_replacements)
 {
   try
   {
@@ -411,11 +411,19 @@ string File::to_string(const string& filename)
   return "";
 }
 
-string File::to_resource_string(const string& filename)
+string File::to_resource_string(const string& filename, const map<string, string>& char_replacements)
 {
-
   string str = to_string(filename);
-  boost::replace_all(str, "\n", " ");
+
+  string newline_replace = " ";
+
+  auto r_it = char_replacements.find("\n");
+  if (r_it != char_replacements.end())
+  {
+    newline_replace = r_it->second;
+  }
+
+  boost::replace_all(str, "\n", newline_replace);
   str = update_text_format_specifiers(str);
 
   return str;

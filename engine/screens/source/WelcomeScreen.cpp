@@ -29,7 +29,7 @@ void WelcomeScreen::initialize()
   TextComponentPtr copyright_info = std::make_shared<TextComponent>(StringTable::get(TextKeys::COPYRIGHT_NOTICE));
   string title_poem = get_title_poem();
 
-  TextDisplayFormatter tdf;
+  TextDisplayFormatter tdf(true);
   vector<string> poem_v = tdf.format_text(title_poem);
   vector<TextComponentPtr> poem_lines;
 

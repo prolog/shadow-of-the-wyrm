@@ -1037,6 +1037,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\strings\include\ItemTypeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MaterialTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MusicTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\OrderTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\PlayerTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\SacrificeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ScreenTitleTextKeys.hpp" />
@@ -2047,6 +2048,7 @@ mkdir $(OutDir)logs
     </ClCompile>
     <ClCompile Include="engine\strings\source\InscriptionTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MusicTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\OrderTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\PlayerTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\unit_tests\DateTextKeys_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

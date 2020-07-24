@@ -47,7 +47,7 @@ void StringTable::load(const string& filename)
 
 // Return a string from the table, returning an empty string if the
 // key couldn't be found.
-string StringTable::get(const string& key)
+string StringTable::get(const string& key, const map<string, string>& char_replacements)
 {
   string result = "";
   std::unordered_map<string, string>::iterator table_it = string_table.find(key);
@@ -63,8 +63,9 @@ string StringTable::get(const string& key)
 
     if (!files.empty())
     {
-      string rand_file = files.at(RNG::range(0, files.size()-1));
-      result = File::to_resource_string(rand_file);
+      int idx = RNG::range(0, files.size() - 1);
+      string rand_file = files.at(idx);
+      result = File::to_resource_string(rand_file, char_replacements);
     }
   }
 
