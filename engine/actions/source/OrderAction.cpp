@@ -8,6 +8,7 @@
 #include "OrderCommandProcessor.hpp"
 #include "OrderKeyboardCommandMap.hpp"
 #include "OrderScreen.hpp"
+#include "OrderTextKeys.hpp"
 
 using std::string;
 
@@ -90,18 +91,13 @@ ActionCostValue OrderAction::order_followers(CreaturePtr creature, IMessageManag
 
     if (decision_strategy)
     {
-      while (acv > -1)
-      {
-        OrderScreen os(game.get_display());
-        string display_s = os.display();
-        int input = display_s.at(0);
+      OrderScreen os(game.get_display());
+      string display_s = os.display();
+      int input = display_s.at(0);
 
-        CommandPtr order_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), &input, false);
-        acv = OrderCommandProcessor::process(creature, order_command.get());
-      }
+      CommandPtr order_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), &input, false);
+      acv = OrderCommandProcessor::process(creature, order_command.get());
     }
-
-    acv = ActionCostConstants::DEFAULT;
   }
 
   return acv;
@@ -113,6 +109,9 @@ ActionCostValue OrderAction::order_attack(CreaturePtr creature)
 
   if (creature != nullptr)
   {
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_ATTACK));
+
     acv = ActionCostConstants::DEFAULT;
   }
 
@@ -125,6 +124,9 @@ ActionCostValue OrderAction::order_follow(CreaturePtr creature)
 
   if (creature != nullptr)
   {
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_FOLLOW));
+
     acv = ActionCostConstants::DEFAULT;
   }
 
@@ -137,6 +139,9 @@ ActionCostValue OrderAction::order_guard(CreaturePtr creature)
 
   if (creature != nullptr)
   {
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_GUARD));
+
     acv = ActionCostConstants::DEFAULT;
   }
 
@@ -149,6 +154,9 @@ ActionCostValue OrderAction::order_freeze(CreaturePtr creature)
 
   if (creature != nullptr)
   {
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_FREEZE));
+
     acv = ActionCostConstants::DEFAULT;
   }
 
