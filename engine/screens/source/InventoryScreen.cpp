@@ -2,6 +2,7 @@
 #include "InventoryTranslator.hpp"
 #include "OptionsComponent.hpp"
 #include "Prompt.hpp"
+#include "PromptTextKeys.hpp"
 #include "TextComponent.hpp"
 #include "TextKeys.hpp"
 
@@ -102,11 +103,11 @@ void InventoryScreen::initialize()
   // Accept any input to the inventory manager will take care of sorting out
   // what's a valid command and what is not.
   inv_prompt->set_accept_any_input(true);
-  string prompt_text_sid = TextKeys::INVENTORY_PROMPT;
+  string prompt_text_sid = PromptTextKeys::PROMPT_INVENTORY;
   
   if (read_only)
   {
-	  prompt_text_sid = TextKeys::INVENTORY_PROMPT_NO_SELECTION;
+	  prompt_text_sid = PromptTextKeys::PROMPT_INVENTORY_NO_SELECTION;
   }
 
   inv_prompt->set_text_sid(prompt_text_sid);

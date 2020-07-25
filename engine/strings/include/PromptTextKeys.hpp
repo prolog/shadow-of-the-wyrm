@@ -15,6 +15,12 @@ class PromptTextKeys
     static const std::string PROMPT_HELP;
     static const std::string PROMPT_SKILLS;
     static const std::string PROMPT_CREATE_ITEM;
+    static const std::string PROMPT_ORDER;
+    static const std::string PROMPT_EQUIPMENT;
+    static const std::string PROMPT_INVENTORY;
+    static const std::string PROMPT_INVENTORY_NO_SELECTION;
+    static const std::string PROMPT_SKIN;
+    static const std::string PROMPT_WEAVE;
 
   protected:
     PromptTextKeys();

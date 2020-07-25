@@ -4,6 +4,7 @@
 #include "EquipmentTranslator.hpp"
 #include "Game.hpp"
 #include "OptionsComponent.hpp"
+#include "PromptTextKeys.hpp"
 #include "TextComponent.hpp"
 #include "TextKeys.hpp"
 
@@ -104,7 +105,7 @@ void EquipmentScreen::initialize()
   // Accept any input - the equipment manager will take care of sorting out
   // what's a valid command and what is not.
   eq_prompt->set_accept_any_input(true);
-  eq_prompt->set_text_sid(TextKeys::EQUIPMENT_PROMPT);
+  eq_prompt->set_text_sid(PromptTextKeys::PROMPT_EQUIPMENT);
   user_prompt = std::move(eq_prompt);
   line_increment = 1;
 }

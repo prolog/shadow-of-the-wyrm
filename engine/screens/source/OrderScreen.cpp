@@ -3,9 +3,9 @@
 #include "PromptTextKeys.hpp"
 #include "OrderScreen.hpp"
 #include "OrderTextKeys.hpp"
+#include "PromptTextKeys.hpp"
 #include "ScreenTitleTextKeys.hpp"
 #include "StringTable.hpp"
-#include "TextKeys.hpp"
 
 using namespace std;
 
@@ -22,7 +22,7 @@ void OrderScreen::initialize()
   vector<ScreenComponentPtr> order_screen;
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
-  vector<string> options_v = { OrderTextKeys::ORDER_ATTACK, OrderTextKeys::ORDER_FOLLOW, OrderTextKeys::ORDER_GUARD, OrderTextKeys::ORDER_FREEZE };
+  vector<string> options_v = {OrderTextKeys::ORDER_ATTACK, OrderTextKeys::ORDER_FOLLOW, OrderTextKeys::ORDER_GUARD, OrderTextKeys::ORDER_FREEZE};
   int cur_id = 0;
 
   for (const auto& option_s : options_v)
@@ -39,7 +39,8 @@ void OrderScreen::initialize()
   add_page(order_screen);
 
   // Set the prompt
-  PromptPtr any_key_prompt = std::make_unique<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
-  any_key_prompt->set_text_sid(PromptTextKeys::PROMPT_SELECT_AN_OPTION);
-  user_prompt = std::move(any_key_prompt);
+  PromptPtr order_prompt = std::make_unique<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
+  order_prompt->set_accept_any_input(true);
+  order_prompt->set_text_sid(PromptTextKeys::PROMPT_ORDER);
+  user_prompt = std::move(order_prompt);
 }

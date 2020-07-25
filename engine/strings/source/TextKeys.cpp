@@ -151,14 +151,9 @@ const string TextKeys::DAMAGE_SLAYS      = "DAMAGE_SLAYS";
 
 const string TextKeys::ATTACK_DETAILS    = "ATTACK_DETAILS";
 const string TextKeys::EQUIPMENT         = "EQUIPMENT";
-const string TextKeys::EQUIPMENT_PROMPT  = "EQUIPMENT_PROMPT";
 const string TextKeys::INVENTORY         = "INVENTORY";
 const string TextKeys::INVENTORY_FILTERED = "INVENTORY_FILTERED";
-const string TextKeys::INVENTORY_PROMPT  = "INVENTORY_PROMPT";
-const string TextKeys::INVENTORY_PROMPT_NO_SELECTION = "INVENTORY_PROMPT_NO_SELECTION";
 const string TextKeys::GENERATED_ARTIFACTS = "GENERATED_ARTIFACTS";
-const string TextKeys::SKIN_PROMPT       = "SKIN_PROMPT";
-const string TextKeys::WEAVE_PROMPT      = "WEAVE_PROMPT";
 
 const string TextKeys::DECISION_CONFIRM_KEY = "DECISION_CONFIRM_KEY";
 const string TextKeys::DECISION_DENY_KEY    = "DECISION_DENY_KEY";

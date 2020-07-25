@@ -147,15 +147,10 @@ class TextKeys
 
     static const std::string ATTACK_DETAILS;
     static const std::string EQUIPMENT;
-    static const std::string EQUIPMENT_PROMPT;
     static const std::string INVENTORY;
     static const std::string INVENTORY_FILTERED;
-    static const std::string INVENTORY_PROMPT;
-	static const std::string INVENTORY_PROMPT_NO_SELECTION;
     static const std::string GENERATED_ARTIFACTS;
-    static const std::string SKIN_PROMPT;
-    static const std::string WEAVE_PROMPT;
-    
+
     static const std::string DECISION_CONFIRM_KEY;
     static const std::string DECISION_DENY_KEY;
     static const std::string DECISION_LEAVE_AREA;

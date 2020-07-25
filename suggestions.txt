@@ -1,5 +1,4 @@
 Me:
-- Unit tests for everything in CurrentCreatureAbilities!
 - Linux: check premake scripts for commands/order
 - Beastmastery: add mounts
 - Music, Leadership: 
