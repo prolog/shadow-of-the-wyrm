@@ -3,6 +3,7 @@
 #include "CarryingCapacityCalculator.hpp"
 #include "ClassManager.hpp"
 #include "CreatureCalculator.hpp"
+#include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "DeityTextKeys.hpp"
 #include "EngineConversion.hpp"
@@ -815,6 +816,31 @@ int CreatureUtils::adjust_str_until_unburdened(CreaturePtr creature)
   }
 
   return incr_cnt;
+}
+
+CreatureMap CreatureUtils::get_followers_in_fov(CreaturePtr creature)
+{
+  CreatureMap followers;
+
+  if (creature != nullptr)
+  {
+    MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
+    
+    if (fov_map != nullptr)
+    {
+      const CreatureMap& creatures = fov_map->get_creatures_ref();
+
+      for (const auto& c_pair : creatures)
+      {
+        if (c_pair.second && c_pair.second->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == creature->get_id())
+        {
+          followers.insert(c_pair);
+        }
+      }
+    }
+  }
+
+  return followers;
 }
 
 #ifdef UNIT_TESTS

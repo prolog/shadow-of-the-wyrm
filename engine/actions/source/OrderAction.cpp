@@ -3,6 +3,8 @@
 #include "ActionTextKeys.hpp"
 #include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "CreatureUtils.hpp"
+#include "DecisionStrategyProperties.hpp"
 #include "Game.hpp"
 #include "OrderCommandFactory.hpp"
 #include "OrderCommandProcessor.hpp"
@@ -11,6 +13,7 @@
 #include "OrderTextKeys.hpp"
 
 using std::string;
+using std::vector;
 
 ActionCostValue OrderAction::order(CreaturePtr creature)
 {
@@ -53,25 +56,15 @@ bool OrderAction::check_for_skills(CreaturePtr creature, IMessageManager& manage
 bool OrderAction::check_for_followers(CreaturePtr creature, IMessageManager& manager)
 {
   bool has_followers_in_fov = false;
+  CreatureMap followers = CreatureUtils::get_followers_in_fov(creature);
 
-  if (creature != nullptr)
+  if (!followers.empty())
   {
-    MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
-
-    if (fov_map != nullptr)
-    {
-      const CreatureMap& creatures = fov_map->get_creatures_ref();
-      int num_followers = std::count_if(creatures.begin(), creatures.end(), [creature](std::pair<string, CreaturePtr> p) {return (p.second->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == creature->get_id()); });
-
-      if (num_followers > 0)
-      {
-        has_followers_in_fov = true;
-      }
-      else
-      {
-        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ORDER_NO_FOLLOWERS));
-      }
-    }
+    has_followers_in_fov = true;
+  }
+  else
+  {
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ORDER_NO_FOLLOWERS));
   }
 
   return has_followers_in_fov;
@@ -157,10 +150,42 @@ ActionCostValue OrderAction::order_freeze(CreaturePtr creature)
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_FREEZE));
 
+    CreatureMap creatures = CreatureUtils::get_followers_in_fov(creature);
+    for (auto c_pair : creatures)
+    {
+      CreaturePtr follower = c_pair.second;
+
+      if (follower != nullptr)
+      {
+        set_order(follower, DecisionStrategyProperties::DECISION_STRATEGY_ORDERED_SENTINEL);
+      }
+    }
+
     acv = ActionCostConstants::DEFAULT;
   }
 
   return acv;
+}
+
+// Void all other orders before setting the current one.
+void OrderAction::set_order(CreaturePtr creature, const string& prop)
+{
+  if (creature != nullptr)
+  {
+    DecisionStrategy* dec = creature->get_decision_strategy();
+
+    if (dec != nullptr)
+    {
+      vector<string> dec_props = { DecisionStrategyProperties::DECISION_STRATEGY_ORDERED_SENTINEL };
+
+      for (auto& p : dec_props)
+      {
+        dec->remove_property(p);
+      }
+
+      dec->set_property(prop, std::to_string(true));
+    }
+  }
 }
 
 ActionCostValue OrderAction::get_action_cost_value(CreaturePtr creature) const

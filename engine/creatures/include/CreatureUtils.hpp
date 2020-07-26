@@ -67,6 +67,8 @@ class CreatureUtils
     // Returns the number of times str was incremented
     static int adjust_str_until_unburdened(CreaturePtr creature);
 
+    static CreatureMap get_followers_in_fov(CreaturePtr creature);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();
