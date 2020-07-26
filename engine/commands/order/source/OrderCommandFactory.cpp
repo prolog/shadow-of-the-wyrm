@@ -22,10 +22,6 @@ CommandPtr OrderCommandFactory::create(const int key, const std::string& command
   {
     command = std::make_unique<OrderFollowCommand>(key);
   }
-  else if (command_name == OrderCommandKeys::GUARD)
-  {
-    command = std::make_unique<OrderGuardCommand>(key);
-  }
   else if (command_name == OrderCommandKeys::FREEZE)
   {
     command = std::make_unique<OrderFreezeCommand>(key);

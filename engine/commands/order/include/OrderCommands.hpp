@@ -13,12 +13,6 @@ class OrderFollowCommand : public Command
     OrderFollowCommand(const int key);
 };
 
-class OrderGuardCommand : public Command
-{
-  public:
-    OrderGuardCommand(const int key);
-};
-
 class OrderFreezeCommand : public Command
 {
   public:

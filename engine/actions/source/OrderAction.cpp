@@ -105,6 +105,26 @@ ActionCostValue OrderAction::order_attack(CreaturePtr creature)
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_ATTACK));
 
+    CreatureMap creatures = CreatureUtils::get_followers_in_fov(creature);
+    for (auto c_pair : creatures)
+    {
+      CreaturePtr follower = c_pair.second;
+      DecisionStrategy* f_dec = follower->get_decision_strategy();
+
+      if (f_dec != nullptr)
+      {
+        MapPtr f_fov_map = f_dec->get_fov_map();
+
+        if (f_fov_map != nullptr)
+        {
+          CreatureMap fov_creatures_cmap = f_fov_map->get_creatures();
+
+          // ...
+        }
+      }
+
+    }
+
     acv = ActionCostConstants::DEFAULT;
   }
 
@@ -120,20 +140,16 @@ ActionCostValue OrderAction::order_follow(CreaturePtr creature)
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_FOLLOW));
 
-    acv = ActionCostConstants::DEFAULT;
-  }
+    CreatureMap creatures = CreatureUtils::get_followers_in_fov(creature);
+    for (auto c_pair : creatures)
+    {
+      CreaturePtr follower = c_pair.second;
 
-  return acv;
-}
-
-ActionCostValue OrderAction::order_guard(CreaturePtr creature)
-{
-  ActionCostValue acv = ActionCostConstants::NO_ACTION;
-
-  if (creature != nullptr)
-  {
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
-    manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_GUARD));
+      if (follower != nullptr)
+      {
+        set_order(follower, DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID, creature->get_id());
+      }
+    }
 
     acv = ActionCostConstants::DEFAULT;
   }
@@ -157,7 +173,7 @@ ActionCostValue OrderAction::order_freeze(CreaturePtr creature)
 
       if (follower != nullptr)
       {
-        set_order(follower, DecisionStrategyProperties::DECISION_STRATEGY_ORDERED_SENTINEL);
+        set_order(follower, DecisionStrategyProperties::DECISION_STRATEGY_ORDERED_SENTINEL, std::to_string(true));
       }
     }
 
@@ -168,7 +184,7 @@ ActionCostValue OrderAction::order_freeze(CreaturePtr creature)
 }
 
 // Void all other orders before setting the current one.
-void OrderAction::set_order(CreaturePtr creature, const string& prop)
+void OrderAction::remove_orders(CreaturePtr creature)
 {
   if (creature != nullptr)
   {
@@ -182,8 +198,21 @@ void OrderAction::set_order(CreaturePtr creature, const string& prop)
       {
         dec->remove_property(p);
       }
+    }
+  }
+}
 
-      dec->set_property(prop, std::to_string(true));
+void OrderAction::set_order(CreaturePtr creature, const string& order_id, const string& value)
+{
+  if (creature != nullptr)
+  {
+    remove_orders(creature);
+
+    DecisionStrategy* dec = creature->get_decision_strategy();
+
+    if (dec != nullptr)
+    {
+      dec->set_property(order_id, value);
     }
   }
 }

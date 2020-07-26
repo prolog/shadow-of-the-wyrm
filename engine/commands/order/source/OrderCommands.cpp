@@ -11,11 +11,6 @@ OrderFollowCommand::OrderFollowCommand(const int key)
 {
 }
 
-OrderGuardCommand::OrderGuardCommand(const int key)
-: Command(OrderCommandKeys::GUARD, key)
-{
-}
-
 OrderFreezeCommand::OrderFreezeCommand(const int key)
 : Command(OrderCommandKeys::FREEZE, key)
 {

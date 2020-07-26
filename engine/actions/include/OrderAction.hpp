@@ -10,13 +10,14 @@ class OrderAction : public IActionManager
 
     ActionCostValue order_attack(CreaturePtr creature);
     ActionCostValue order_follow(CreaturePtr creature);
-    ActionCostValue order_guard(CreaturePtr creature);
     ActionCostValue order_freeze(CreaturePtr creature);
 
   protected:
     bool check_for_skills(CreaturePtr creature, IMessageManager& manager);
     bool check_for_followers(CreaturePtr creature, IMessageManager& manager);
-    void set_order(CreaturePtr creature, const std::string& order_property);
+
+    void set_order(CreaturePtr creature, const std::string& order_property, const std::string& value);
+    void remove_orders(CreaturePtr creature);
 
     ActionCostValue order_followers(CreaturePtr creature, IMessageManager& manager);
 };

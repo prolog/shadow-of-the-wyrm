@@ -1,6 +1,7 @@
 #include <sstream>
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
+#include "DecisionStrategyProperties.hpp"
 #include "DigChancesFactory.hpp"
 #include "Inventory.hpp"
 #include "FeatureGenerator.hpp"
@@ -291,16 +292,26 @@ bool Tile::get_is_blocking(CreaturePtr perspective_creature) const
 {
   bool tile_blocking = get_is_blocking_ignore_present_creature(perspective_creature);
   
-  if (creature && perspective_creature 
-               && (creature->get_id() != perspective_creature->get_id()))
+  if (creature != nullptr)
   {
-    // Check to see if the searching creature is hostile to this creature.
-    // If the creature's not hostile, consider the tile blocking; otherwise,
-    // use whatever the current value of tile_blocking is (based on movement,
-    // features, etc).
-    if (!perspective_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()).first)
+    string creature_id = creature->get_id();
+
+    if (perspective_creature && creature_id != perspective_creature->get_id())
     {
-      tile_blocking = true;
+      // Check to see if the searching creature is hostile to this creature.
+      // If the creature's not hostile, consider the tile blocking; otherwise,
+      // use whatever the current value of tile_blocking is (based on movement,
+      // features, etc).
+      if (!perspective_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()).first)
+      {
+        // Are we supposed to be following the creature? If so, don't consider it blocking
+        string follow_id = perspective_creature->get_decision_strategy()->get_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID);
+
+        if (follow_id != creature_id)
+        {
+          tile_blocking = true;
+        }
+      }
     }
   }
 

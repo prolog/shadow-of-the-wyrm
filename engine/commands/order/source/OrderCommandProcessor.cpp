@@ -34,10 +34,6 @@ ActionCostValue OrderCommandProcessor::process(CreaturePtr creature, Command* co
     {
       return oa.order_follow(creature);
     }
-    else if (command_name == OrderCommandKeys::GUARD)
-    {
-      return oa.order_guard(creature);
-    }
     else if (command_name == OrderCommandKeys::FREEZE)
     {
       return oa.order_freeze(creature);

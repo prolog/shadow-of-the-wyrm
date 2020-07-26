@@ -29,8 +29,7 @@ void OrderKeyboardCommandMap::initialize_command_mapping(const Settings& setting
   command_mapping.clear();
   command_mapping = KeyboardCommandMappingMap{ { std::to_string('a'), OrderCommandKeys::ATTACK },
   { std::to_string('b'), OrderCommandKeys::FOLLOW },
-  { std::to_string('c'), OrderCommandKeys::GUARD },
-  { std::to_string('d'), OrderCommandKeys::FREEZE },
+  { std::to_string('c'), OrderCommandKeys::FREEZE },
   { std::to_string('z'), OrderCommandKeys::EXIT_ORDER },
   { std::to_string('Z'), OrderCommandKeys::EXIT_ORDER },
   { std::to_string(NC_ESCAPE_KEY), OrderCommandKeys::EXIT_ORDER },

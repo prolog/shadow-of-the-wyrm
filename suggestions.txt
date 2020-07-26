@@ -1,4 +1,5 @@
 Me:
+- Followers' exp should give you some proportion - 10%? + Leadership?
 - Linux: check premake scripts for commands/order
 - Beastmastery: add mounts
 - Music, Leadership: 

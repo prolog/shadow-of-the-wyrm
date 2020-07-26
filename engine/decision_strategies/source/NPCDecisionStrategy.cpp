@@ -123,29 +123,42 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
   {
     // If the creature has any spells, consider casting a spell, based on
     // low health, nearby hostile creatures, etc.
-    command = get_magic_decision(this_creature_id, view_map);
+    if (has_movement_orders() == false)
+    {
+      command = get_magic_decision(this_creature_id, view_map);
+    }
 
     // Breed, potentially.
+    // Movement orders can't override this.
     if (command == nullptr)
     {
       command = get_breed_decision(this_creature_id, view_map);
     }
 
-    // Attack if threatened.
-    if (command == nullptr)
+    if (has_movement_orders() == false)
     {
-      command = get_ranged_attack_decision(this_creature_id, view_map);
+      // Attack if threatened.
+      if (command == nullptr)
+      {
+        command = get_ranged_attack_decision(this_creature_id, view_map);
+      }
     }
 
-    if (command == nullptr)
+    if (has_movement_orders() == false)
     {
-      command = get_attack_decision(this_creature_id, view_map);
+      if (command == nullptr)
+      {
+        command = get_attack_decision(this_creature_id, view_map);
+      }
     }
 
-    // If not threatened, try a custom (script-based) decision.
-    if (command == nullptr)
+    if (has_movement_orders() == false)
     {
-      command = get_custom_decision(this_creature_id, view_map);
+      // If not threatened, try a custom (script-based) decision.
+      if (command == nullptr)
+      {
+        command = get_custom_decision(this_creature_id, view_map);
+      }
     }
     
     // If no custom decisions fired, attempt movement.
@@ -465,6 +478,17 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
       return movement_command;
     }
 
+    string follow_id = get_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID);
+    if (!follow_id.empty())
+    {
+      movement_command = get_follow_direction(view_map, this_creature, this_creature_coords, follow_id);
+
+      if (movement_command != nullptr)
+      {
+        return movement_command;
+      }
+    }
+
     string search_pct = get_property(DecisionStrategyProperties::DECISION_STRATEGY_SEARCH_PCT);
 
     if (!search_pct.empty())
@@ -565,3 +589,29 @@ vector<Coordinate> NPCDecisionStrategy::get_adjacent_safe_coordinates_without_cr
   return coords_without_creatures;
 }
 
+bool NPCDecisionStrategy::has_movement_orders() const
+{
+  string follow = get_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID);
+
+  bool has_orders = (!follow.empty());
+  return has_orders;
+}
+
+CommandPtr NPCDecisionStrategy::get_follow_direction(MapPtr view_map, CreaturePtr this_creature, const Coordinate& this_creature_coords, const string& follow_id)
+{
+  CommandPtr command;
+  Coordinate c_follow = view_map->get_location(follow_id);
+
+  if (!CoordUtils::are_coordinates_adjacent(this_creature_coords, c_follow))
+  {
+    SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SearchType::SEARCH_TYPE_UNIFORM_COST, this_creature);
+    Direction direction = CoordUtils::get_direction(this_creature_coords, ss->search(view_map, this_creature_coords, c_follow));
+
+    if (direction != Direction::DIRECTION_NULL)
+    {
+      command = std::make_unique<MovementCommand>(direction, -1);
+    }
+  }
+
+  return command;
+}
