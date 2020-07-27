@@ -102,6 +102,8 @@ ActionCostValue OrderAction::order_attack(CreaturePtr creature)
 
   if (creature != nullptr)
   {
+    creature->get_skills().mark(SkillType::SKILL_GENERAL_LEADERSHIP);
+
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_ATTACK));
 
@@ -128,6 +130,8 @@ ActionCostValue OrderAction::order_follow(CreaturePtr creature)
 
   if (creature != nullptr)
   {
+    creature->get_skills().mark(SkillType::SKILL_GENERAL_LEADERSHIP);
+
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_FOLLOW));
 
@@ -154,6 +158,8 @@ ActionCostValue OrderAction::order_freeze(CreaturePtr creature)
 
   if (creature != nullptr)
   {
+    creature->get_skills().mark(SkillType::SKILL_GENERAL_LEADERSHIP);
+
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_FREEZE));
 
