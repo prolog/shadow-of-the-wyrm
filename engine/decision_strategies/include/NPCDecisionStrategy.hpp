@@ -35,6 +35,7 @@ class NPCDecisionStrategy : public DecisionStrategy
     virtual CommandPtr get_decision_for_tile_selection(CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands) = 0;
     virtual CommandPtr get_follow_direction(MapPtr view_map, CreaturePtr creature, const Coordinate& this_creature_coord, const std::string& follow_id);
 
+    virtual void update_threats_to_leader(const std::string& this_creature_id, MapPtr view_map);
     virtual void update_threats_if_shopkeeper(MapPtr current_fov_map);
 
     static const int PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET;

@@ -3,11 +3,13 @@
 #include "Commands.hpp"
 #include "CommandCustomValues.hpp"
 #include "Conversion.hpp"
+#include "CreatureProperties.hpp"
 #include "CreatureTileSafetyChecker.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DecisionScript.hpp"
 #include "DecisionStrategyProperties.hpp"
 #include "Game.hpp"
+#include "HostilityManager.hpp"
 #include "IMessageManager.hpp"
 #include "Log.hpp"
 #include "MagicalAbilityChecker.hpp"
@@ -121,6 +123,8 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
   
   if (view_map)
   {
+    update_threats_to_leader(this_creature_id, view_map);
+
     // If the creature has any spells, consider casting a spell, based on
     // low health, nearby hostile creatures, etc.
     if (has_movement_orders() == false)
@@ -614,4 +618,46 @@ CommandPtr NPCDecisionStrategy::get_follow_direction(MapPtr view_map, CreaturePt
   }
 
   return command;
+}
+
+void NPCDecisionStrategy::update_threats_to_leader(const std::string& this_creature_id, MapPtr view_map)
+{
+  Game& game = Game::instance();
+  MapPtr current_map = game.get_current_map();
+
+  if (current_map != nullptr)
+  {
+    CreaturePtr this_creature = current_map->get_creature(this_creature_id);
+
+    if (this_creature != nullptr)
+    {
+      // Have we been ordered to attack by our leader? If so, find all the
+      // threats to that creature, and attack one.
+      string attack_threaten_id = get_property(DecisionStrategyProperties::DECISION_STRATEGY_ATTACK_CREATURES_THREATENING_ID);
+      string leader_id = this_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+
+      if (view_map != nullptr && !attack_threaten_id.empty())
+      {
+        CreatureMap creatures = view_map->get_creatures();
+        vector<string> leader_attackers;
+
+        for (auto c_pair : creatures)
+        {
+          if (c_pair.second->get_decision_strategy()->get_threats_ref().has_threat(leader_id).first)
+          {
+            string threat_id = c_pair.second->get_id();
+            if (!threat_ratings.has_threat(threat_id).first)
+            {
+              HostilityManager hm;
+              hm.set_hostility_to_creature(this_creature, threat_id);
+            }
+
+            // Break so that the creature is only focused on one creature
+            // attacking their leader at a time.
+            break;
+          }
+        }
+      }
+    }
+  }
 }

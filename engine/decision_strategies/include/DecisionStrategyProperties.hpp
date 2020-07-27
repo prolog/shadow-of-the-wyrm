@@ -18,6 +18,7 @@ class DecisionStrategyProperties
     static const std::string DECISION_STRATEGY_AUTOMOVE_COORDINATES;
     static const std::string DECISION_STRATEGY_SEARCH_PCT;
     static const std::string DECISION_STRATEGY_FOLLOW_CREATURE_ID;
+    static const std::string DECISION_STRATEGY_ATTACK_CREATURES_THREATENING_ID;
 
   protected:
     DecisionStrategyProperties();

@@ -1,8 +1,11 @@
 Me:
+- Attack order should iterate through threats and add hostility but also
+  weigh more if the creature is nearer to the leader
 - Followers' exp should give you some proportion - 10%? + Leadership?
 - Linux: check premake scripts for commands/order
 - Beastmastery: add mounts
-- Music, Leadership: 
+- Music, Leadership:
+- How to give orders to individual creatures?
 - Narrative mode (no death, death removes negative statuses + heals)
 - Each version: make sure to update itch.io page for both SotW and the sprite
   pack! OpenGameArt if new sprites.

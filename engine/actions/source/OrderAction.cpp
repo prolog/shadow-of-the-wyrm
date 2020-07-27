@@ -109,20 +109,11 @@ ActionCostValue OrderAction::order_attack(CreaturePtr creature)
     for (auto c_pair : creatures)
     {
       CreaturePtr follower = c_pair.second;
-      DecisionStrategy* f_dec = follower->get_decision_strategy();
 
-      if (f_dec != nullptr)
+      if (follower != nullptr)
       {
-        MapPtr f_fov_map = f_dec->get_fov_map();
-
-        if (f_fov_map != nullptr)
-        {
-          CreatureMap fov_creatures_cmap = f_fov_map->get_creatures();
-
-          // ...
-        }
+        set_order(follower, DecisionStrategyProperties::DECISION_STRATEGY_ATTACK_CREATURES_THREATENING_ID, creature->get_id());
       }
-
     }
 
     acv = ActionCostConstants::DEFAULT;
@@ -192,7 +183,9 @@ void OrderAction::remove_orders(CreaturePtr creature)
 
     if (dec != nullptr)
     {
-      vector<string> dec_props = { DecisionStrategyProperties::DECISION_STRATEGY_ORDERED_SENTINEL };
+      vector<string> dec_props = { DecisionStrategyProperties::DECISION_STRATEGY_ATTACK_CREATURES_THREATENING_ID,
+                                   DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID,
+                                   DecisionStrategyProperties::DECISION_STRATEGY_ORDERED_SENTINEL };
 
       for (auto& p : dec_props)
       {

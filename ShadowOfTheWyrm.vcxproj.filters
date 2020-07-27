@@ -402,15 +402,6 @@
     <Filter Include="Source Files\engine\commands\screens\source\unit_tests">
       <UniqueIdentifier>{cfcf47be-f952-4093-8877-53bd61fe423b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\engine\conversion">
-      <UniqueIdentifier>{cf4e923c-1dfc-4200-9bfc-434cd20ae140}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\conversion\source">
-      <UniqueIdentifier>{a2c1829e-696e-446b-9d33-922240a3568f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\conversion\source\unit_tests">
-      <UniqueIdentifier>{0e99037b-4b54-48f3-858f-0e29cdda3eed}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\engine\decision_strategies">
       <UniqueIdentifier>{7439766f-a4d5-4aa2-bef1-dd368fb1abd8}</UniqueIdentifier>
     </Filter>
@@ -830,6 +821,15 @@
     </Filter>
     <Filter Include="Source Files\engine\commands\order\source\unit_tests">
       <UniqueIdentifier>{829fa522-3700-485e-a21c-e074f6cfcf62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\conversion">
+      <UniqueIdentifier>{cf4e923c-1dfc-4200-9bfc-434cd20ae140}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\conversion\source">
+      <UniqueIdentifier>{a2c1829e-696e-446b-9d33-922240a3568f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\conversion\source\unit_tests">
+      <UniqueIdentifier>{0e99037b-4b54-48f3-858f-0e29cdda3eed}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
