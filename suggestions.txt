@@ -1,4 +1,5 @@
 Me:
+- "As you were"/"At ease"
 - Attack order should iterate through threats and add hostility but also
   weigh more if the creature is nearer to the leader
 - Followers' exp should give you some proportion - 10%? + Leadership?

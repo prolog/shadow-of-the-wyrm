@@ -3,6 +3,7 @@
 #include "Commands.hpp"
 #include "CommandCustomValues.hpp"
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureTileSafetyChecker.hpp"
 #include "CurrentCreatureAbilities.hpp"
@@ -283,9 +284,12 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
       while (t_it != threat_map.rend() && t_it->first > ThreatConstants::DISLIKE_THREAT_RATING)
       {
         set<string> creature_ids = t_it->second;
+        vector<pair<string, int>> threat_distances = get_creatures_by_distance(this_cr, view_map, creature_ids);
 
-        for (const string& threatening_creature_id : creature_ids)
+        for (const auto& td_pair : threat_distances)
         {
+          string threatening_creature_id = td_pair.first;
+
           // Check the view map to see if the creature exists
           if (view_map->has_creature(threatening_creature_id))
           {
@@ -396,9 +400,11 @@ CommandPtr NPCDecisionStrategy::get_ranged_attack_decision(const string& this_cr
         while (t_it != threat_map.rend() && t_it->first > ThreatConstants::DISLIKE_THREAT_RATING)
         {
           set<string> creature_ids = t_it->second;
+          vector<pair<string, int>> threat_distances = get_creatures_by_distance(this_cr, view_map, creature_ids);
 
-          for (const string& threatening_creature_id : creature_ids)
+          for (const auto& td_pair : threat_distances)
           {
+            string threatening_creature_id = td_pair.first;
             Coordinate threat_c = view_map->get_location(threatening_creature_id);
 
             if (RangedCombatUtils::is_coord_in_range(threat_c, view_map) && RangedCombatUtils::is_coordinate_obstacle_free(this_cr, c_this, threat_c, view_map))
@@ -660,4 +666,27 @@ void NPCDecisionStrategy::update_threats_to_leader(const std::string& this_creat
       }
     }
   }
+}
+
+vector<pair<string, int>> NPCDecisionStrategy::get_creatures_by_distance(CreaturePtr creature, MapPtr view_map, const set<string>& creature_ids)
+{
+  vector<pair<string, int>> cdist;
+
+  if (creature != nullptr && view_map != nullptr)
+  {
+    Coordinate cr_coord = view_map->get_location(creature->get_id());
+
+    for (const string& cr_id : creature_ids)
+    {
+      if (view_map->has_location(cr_id))
+      {
+        Coordinate threat_coord = view_map->get_location(cr_id);
+        cdist.push_back(make_pair(cr_id, CoordUtils::chebyshev_distance(cr_coord, threat_coord)));
+      }
+    }
+
+    std::sort(cdist.begin(), cdist.end(), [](const auto& c1, const auto& c2) { return (c1.second < c2.second); });
+  }
+
+  return cdist;
 }

@@ -37,6 +37,7 @@ class NPCDecisionStrategy : public DecisionStrategy
 
     virtual void update_threats_to_leader(const std::string& this_creature_id, MapPtr view_map);
     virtual void update_threats_if_shopkeeper(MapPtr current_fov_map);
+    virtual std::vector<std::pair<std::string, int>> get_creatures_by_distance(CreaturePtr creature, MapPtr view_map, const std::set<std::string>& creature_ids);
 
     static const int PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET;
     static const int PERCENT_CHANCE_CONSIDER_USING_MAGIC;
