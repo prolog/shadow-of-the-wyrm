@@ -91,5 +91,7 @@ class CombatManager
     // Get the appropriate description for the defending creature.
     std::string get_appropriate_creature_description(CreaturePtr attacking_creature, CreaturePtr creature);
 
+    void gain_experience(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr map);
+
     static const int PCT_CHANCE_MARK_STATISTIC_ON_MISS;
 };

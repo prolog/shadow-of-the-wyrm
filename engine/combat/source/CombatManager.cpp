@@ -33,6 +33,7 @@
 #include "CombatTargetNumberCalculatorFactory.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "PacificationCalculator.hpp"
 #include "PhaseOfMoonCalculator.hpp"
 #include "PointsTransfer.hpp"
 #include "RaceManager.hpp"
@@ -909,9 +910,7 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
         }
         else
         {
-          ExperienceManager em;
-          uint experience_value = attacked_creature->get_experience_value();
-          em.gain_experience(attacking_creature, experience_value);
+          gain_experience(attacking_creature, attacked_creature, map);
         }
       }
     }
@@ -1243,6 +1242,36 @@ bool CombatManager::knock_back_creature_if_necessary(const AttackType attack_typ
 
   return knocked_back;
 }
+
+void CombatManager::gain_experience(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr map)
+{
+  if (attacking_creature != nullptr && attacked_creature != nullptr)
+  {
+    ExperienceManager em;
+    uint experience_value = attacked_creature->get_experience_value();
+    em.gain_experience(attacking_creature, experience_value);
+
+    string leader_id = attacking_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+
+    if (!leader_id.empty())
+    {
+      CreaturePtr leader = map->get_creature(leader_id);
+
+      if (leader != nullptr)
+      {
+        PacificationCalculator pc;
+        double leader_proportion = pc.calculate_exp_proportion_follower_kill(leader);
+        uint leader_exp = experience_value * leader_proportion;
+
+        if (leader_exp > 0)
+        {
+          em.gain_experience(leader, leader_exp);
+        }
+      }
+    }
+  }
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/CombatManager_test.cpp"
 #endif

@@ -3,6 +3,8 @@
 const int PacificationCalculator::MAX_PCT_CHANCE_PACIFY_MUSIC = 80;
 const int PacificationCalculator::MAX_PCT_CHANCE_TAME_BEASTMASTERY = 80;
 const int PacificationCalculator::CHARMS_BONUS = 25;
+const int PacificationCalculator::BASE_EXP_PROPORTION_LEADERSHIP = 10;
+const int PacificationCalculator::LEADERSHIP_EXP_DIVISOR = 4;
 
 // The chance to pacify musically is:
 //
@@ -89,6 +91,25 @@ double PacificationCalculator::calculate_exp_proportion(CreaturePtr taming_creat
   if (taming_creature != nullptr)
   {
     exp = taming_creature->get_skills().get_value(skill) / 100.0;
+  }
+
+  return exp;
+}
+
+double PacificationCalculator::calculate_exp_proportion_follower_kill(CreaturePtr leader)
+{
+  double exp = 0.0;
+
+  if (leader != nullptr)
+  {
+    int base_exp = BASE_EXP_PROPORTION_LEADERSHIP;
+    int leadership_val = leader->get_skills().get_value(SkillType::SKILL_GENERAL_LEADERSHIP);
+
+    if (leadership_val > 0)
+    {
+      base_exp += leadership_val / LEADERSHIP_EXP_DIVISOR;
+      exp = base_exp / 100.0;
+    }
   }
 
   return exp;

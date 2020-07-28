@@ -94,3 +94,20 @@ TEST(SW_Engine_Calculators_PacificationCalculator, calculate_exp_proportion)
     }
   }
 }
+
+TEST(SW_Engine_Calculators_PacificationCalculator, proportion_leadership_exp)
+{
+  PacificationCalculator pc;
+  CreaturePtr creature = std::make_shared<Creature>();
+  std::map<int, double> leader_vals = { {0, 0.0}, {1, 0.1}, {40, 0.2}, {55, 0.23}, {84, 0.31}, {100, 0.35} };
+
+  EXPECT_DOUBLE_EQ(0.0, pc.calculate_exp_proportion_follower_kill(nullptr));
+
+  for (auto lv_pair : leader_vals)
+  {
+    creature->get_skills().set_value(SkillType::SKILL_GENERAL_LEADERSHIP, lv_pair.first);
+
+    EXPECT_DOUBLE_EQ(lv_pair.second, pc.calculate_exp_proportion_follower_kill(creature));
+  }
+  
+}
