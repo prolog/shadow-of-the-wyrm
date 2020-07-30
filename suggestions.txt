@@ -1,4 +1,5 @@
 Me:
+- Adding starting loc to synopsis for name
 - Get following working exiting dungeons
 - "As you were"/"At ease"
 - Clear follower threat maps on map exit

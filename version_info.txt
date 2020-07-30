@@ -17,6 +17,11 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 
 - New poem fragment for the title screen.
 
+- You can now give 'o'rders to your followers, and they'll follow you between
+  maps if adjacent to you when you left the previous.
+
+- Starting location is now included in the synopsis on the naming screen.
+
 - Bug fixes:
 
   - The free hidden actions counter could get out of whack. Capped that so

@@ -890,6 +890,7 @@
 	<xs:sequence>
 		<xs:element name="Row" type="xs:integer"/>
 		<xs:element name="Col" type="xs:integer"/>
+		<xs:element name="ShortDescriptionSID" type="xs:string"/>
 		<xs:element name="DescriptionSID" type="xs:string"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="tns:Identifier"/>

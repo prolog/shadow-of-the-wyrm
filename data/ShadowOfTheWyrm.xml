@@ -7881,11 +7881,13 @@
 		<StartingLocation id="01_isen_dun">
 			<Row>96</Row>
 			<Col>96</Col>
+			<ShortDescriptionSID>STARTING_LOCATION_ISEN_DUN_SHORT</ShortDescriptionSID>
 			<DescriptionSID>STARTING_LOCATION_ISEN_DUN</DescriptionSID>
 		</StartingLocation>
 		<StartingLocation id="02_carcassia">
 			<Row>46</Row>
 			<Col>53</Col>
+			<ShortDescriptionSID>STARTING_LOCATION_CARCASSIA_SHORT</ShortDescriptionSID>
 			<DescriptionSID>STARTING_LOCATION_CARCASSIA</DescriptionSID>
 		</StartingLocation>
 	</StartingLocations>

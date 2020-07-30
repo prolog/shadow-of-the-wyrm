@@ -108,6 +108,7 @@ class MapUtils
 
     static bool is_intersection(MapPtr map, CreaturePtr cr, const Coordinate& c);
     static void place_followers(MapPtr map, CreaturePtr cr, const Coordinate& c);
+    static void serialize_and_remove_followers(MapPtr map, CreaturePtr creature);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);

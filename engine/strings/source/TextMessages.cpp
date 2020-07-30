@@ -583,7 +583,7 @@ string TextMessages::get_bool_sid(const bool val)
   }
 }
 
-string TextMessages::get_character_creation_synopsis(const CreatureSex cs, Race* race, Class* cur_class, Deity* cur_deity)
+string TextMessages::get_character_creation_synopsis(const CreatureSex cs, Race* race, Class* cur_class, Deity* cur_deity, StartingLocation* sl)
 {
   vector<string> details;
 
@@ -606,6 +606,11 @@ string TextMessages::get_character_creation_synopsis(const CreatureSex cs, Race*
   if (cur_deity != nullptr)
   {
     details.push_back("(" + StringTable::get(cur_deity->get_name_sid()) + ")");
+  }
+
+  if (sl != nullptr)
+  {
+    details.push_back("- " + StringTable::get(sl->get_short_description_sid()));
   }
 
   ostringstream ss;

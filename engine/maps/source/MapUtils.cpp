@@ -1931,6 +1931,40 @@ void MapUtils::run_movement_scripts(CreaturePtr creature, const string& map_id, 
   }
 }
 
+// If the creature has any adjacent followers that should follow them around,
+// save these as serialized strings so they can be restored on the next map
+// that isn't the world map.
+void MapUtils::serialize_and_remove_followers(MapPtr map, CreaturePtr creature)
+{
+  if (creature != nullptr && map != nullptr && map->get_map_type() != MapType::MAP_TYPE_WORLD)
+  {
+    CreatureDirectionMap cdm = MapUtils::get_adjacent_creatures(map, creature);
+    int cnt = 1;
+
+    for (auto cdm_pair : cdm)
+    {
+      CreaturePtr c = cdm_pair.second;
+
+      if (c != nullptr)
+      {
+        string leader_id = c->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+
+        if (!leader_id.empty() && leader_id == creature->get_id())
+        {
+          MapUtils::remove_creature(map, c);
+
+          ostringstream ss;
+          c->serialize(ss);
+
+          string follower_prop = CreatureProperties::CREATURE_PROPERTIES_FOLLOWER_PREFIX + std::to_string(cnt);
+          creature->set_additional_property(follower_prop, ss.str());
+
+          cnt++;
+        }
+      }
+    }
+  }
+}
 #ifdef UNIT_TESTS
 #include "unit_tests/Map_test.cpp"
 #include "unit_tests/MapUtils_test.cpp"
