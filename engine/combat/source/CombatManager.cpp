@@ -1261,7 +1261,7 @@ void CombatManager::gain_experience(CreaturePtr attacking_creature, CreaturePtr 
       {
         PacificationCalculator pc;
         double leader_proportion = pc.calculate_exp_proportion_follower_kill(leader);
-        uint leader_exp = experience_value * leader_proportion;
+        uint leader_exp = static_cast<uint>(experience_value * leader_proportion);
 
         if (leader_exp > 0)
         {

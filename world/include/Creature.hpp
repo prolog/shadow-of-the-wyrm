@@ -350,6 +350,8 @@ class Creature : public ISerializable
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
+    static const int MAX_TRANSFERRABLE_FOLLOWERS;
+
   private:
     void assert_size() const;
     void swap(Creature& c) throw ();

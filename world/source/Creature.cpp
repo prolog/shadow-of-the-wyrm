@@ -11,6 +11,7 @@
 using namespace std;
 
 const int Creature::MAX_FREE_HIDDEN_ACTIONS = 2;
+const int Creature::MAX_TRANSFERRABLE_FOLLOWERS = 8; // on stairs. exiting a map at the edges the max is 5.
 
 // Set a reasonable set of default values for simple types, which are helpfully initialized to bullshit memory.
 // Why did I write this in C++?

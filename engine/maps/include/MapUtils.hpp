@@ -106,7 +106,8 @@ class MapUtils
     // non-existant elsewhere.
     static WeatherPtr get_weather(MapPtr map, TilePtr tile);
 
-    static bool is_intersection(MapPtr map, CreaturePtr, const Coordinate& c);
+    static bool is_intersection(MapPtr map, CreaturePtr cr, const Coordinate& c);
+    static void place_followers(MapPtr map, CreaturePtr cr, const Coordinate& c);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);

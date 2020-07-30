@@ -1,5 +1,7 @@
 Me:
+- Get following working exiting dungeons
 - "As you were"/"At ease"
+- Clear follower threat maps on map exit
 - Attack order should iterate through threats and add hostility but also
   weigh more if the creature is nearer to the leader
 - Followers' exp should give you some proportion - 10%? + Leadership?

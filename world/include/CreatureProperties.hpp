@@ -31,6 +31,7 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_NO_EXP;
     static const std::string CREATURE_PROPERTIES_TAMED;
     static const std::string CREATURE_PROPERTIES_LEADER_ID;
+    static const std::string CREATURE_PROPERTIES_FOLLOWER_PREFIX;
 
   protected:
     CreatureProperties();

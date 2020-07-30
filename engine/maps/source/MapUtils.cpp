@@ -1354,7 +1354,7 @@ Coordinate MapUtils::place_creature(MapPtr map, CreaturePtr creature, const stri
       MapUtils::remove_creature(map, existing_creature);
     }
 
-    // If there's a blocking feature (which would prevent hte creature being
+    // If there's a blocking feature (which would prevent the creature being
     // here), remove it, too.
     if (placement_tile->has_feature() && placement_tile->get_feature()->get_is_blocking())
     {
@@ -1362,6 +1362,7 @@ Coordinate MapUtils::place_creature(MapPtr map, CreaturePtr creature, const stri
     }
 
     MapUtils::add_or_update_location(map, creature, coords);
+    MapUtils::place_followers(map, creature, coords);
   }
 
   return coords;
@@ -1753,6 +1754,67 @@ bool MapUtils::is_intersection(MapPtr map, CreaturePtr creature, const Coordinat
   }
   
   return is_int;
+}
+
+void MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinate& c)
+{
+  if (map != nullptr && map->get_map_type() != MapType::MAP_TYPE_WORLD && creature != nullptr)
+  {
+    vector<string> followers;
+
+    for (int i = 1; i < Creature::MAX_TRANSFERRABLE_FOLLOWERS; i++)
+    {
+      string prop = CreatureProperties::CREATURE_PROPERTIES_FOLLOWER_PREFIX + std::to_string(i);
+      string val = creature->get_additional_property(prop);
+
+      if (!val.empty())
+      {
+        followers.push_back(val);
+      }
+      else
+      {
+        break;
+      }
+    }
+
+    if (!followers.empty())
+    {
+      vector<Coordinate> coords = CoordUtils::get_adjacent_map_coordinates(map->size(), c.first, c.second, 4);
+      std::shuffle(coords.begin(), coords.end(), RNG::get_engine());
+      CreaturePtr follower = std::make_shared<Creature>();
+
+      {
+        istringstream iss(followers.back());
+        follower->deserialize(iss);
+      }
+
+      while (!followers.empty() && !coords.empty())
+      {
+        Coordinate cur_coord = coords.back();
+        TilePtr adj_tile = map->at(cur_coord);
+        coords.pop_back();
+
+        if (adj_tile != nullptr && adj_tile->get_is_available_for_creature(follower))
+        {
+          MapUtils::add_or_update_location(map, follower, cur_coord);
+          followers.pop_back();
+
+          if (!followers.empty())
+          {
+            follower = std::make_shared<Creature>();
+            istringstream iss(followers.back());
+            follower->deserialize(iss);
+          }
+        }
+      }
+    }
+
+    for (int i = 1; i < Creature::MAX_TRANSFERRABLE_FOLLOWERS; i++)
+    {
+      string prop = CreatureProperties::CREATURE_PROPERTIES_FOLLOWER_PREFIX + std::to_string(i);
+      creature->remove_additional_property(prop);
+    }
+  }
 }
 
 // Add any messages after moving to a particular tile:

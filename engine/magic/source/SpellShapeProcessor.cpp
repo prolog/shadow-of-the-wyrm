@@ -48,7 +48,7 @@ bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vect
   // Get the effect and track it here.
   string caster_id = caster != nullptr ? caster->get_id() : "";
   EffectType effect_type = spell.get_effect();
-s  EffectPtr effect = EffectFactory::create_effect(effect_type, spell.get_modifier(), spell.get_properties(), spell.get_spell_id(), caster_id);
+  EffectPtr effect = EffectFactory::create_effect(effect_type, spell.get_modifier(), spell.get_properties(), spell.get_spell_id(), caster_id);
 
   for (const pair<Coordinate, TilePtr>& ct_pair : affected_coords_and_tiles)
   {
