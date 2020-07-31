@@ -1,6 +1,5 @@
 Me:
-- Adding starting loc to synopsis for name
-- Get following working exiting dungeons
+- Unit tests for binary properties!!!
 - "As you were"/"At ease"
 - Clear follower threat maps on map exit
 - Attack order should iterate through threats and add hostility but also

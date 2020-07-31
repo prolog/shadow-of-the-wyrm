@@ -1,5 +1,8 @@
 #include <boost/scoped_array.hpp>
 #include "Serialize.hpp"
+#include "Log.hpp"
+
+const string Serialize::BINARY_PROPERTY_PREFIX = "__BIN__";
 
 using namespace std;
 
@@ -379,12 +382,13 @@ void Serialize::read_double(istream& stream, double& val)
 }
 
 // Write a std::string
-void Serialize::write_string(ostream& stream, const string& val)
+void Serialize::write_string(ostream& stream, const string& val, const bool binary_str)
 {
   if (stream.good())
   {
     size_t val_size = val.size();
     Serialize::write_size_t(stream, val_size);
+    Serialize::write_bool(stream, binary_str);
 
     const char* val_cstr = val.c_str();
     stream.write(val_cstr, val_size);
@@ -401,18 +405,29 @@ void Serialize::read_string(istream& stream, string& val)
 {
   if (stream.good())
   {
-    size_t string_size;
+    size_t string_size = 0;
+    bool binary_str = false;
+
     Serialize::read_size_t(stream, string_size);
- 
-    boost::scoped_array<char> raw_str(new char[string_size+1]);
+    Serialize::read_bool(stream, binary_str);
+    size_t stream_size = string_size;
 
-    stream.read(raw_str.get(), string_size);
+    if (binary_str == false)
+    {
+      string_size++;
+    }
 
-    raw_str.get()[string_size] = '\0';
+    boost::scoped_array<char> raw_str(new char[string_size]);
+    stream.read(raw_str.get(), stream_size);
+
+    if (binary_str == false)
+    {
+      raw_str.get()[string_size-1] = '\0';
+    }
 
     // Now that we have the actual string, create a copy and assign it to the passed-in
     // reference.  The scoped pointer should take care of deletion afterwards.
-    val = raw_str.get();
+    val = string(raw_str.get(), stream_size);
   }
   else
   {
@@ -482,7 +497,10 @@ void Serialize::write_string_map(ostream& stream, const map<string, string>& val
       string value = v_it->second;
 
       Serialize::write_string(stream, key);
-      Serialize::write_string(stream, value);
+
+      bool binary_str = (key.rfind(BINARY_PROPERTY_PREFIX, 0) == 0);
+
+      Serialize::write_string(stream, value, binary_str);
     }
   }
 }

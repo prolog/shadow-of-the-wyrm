@@ -17,6 +17,7 @@
 #include "RaceManager.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
+#include "Serialize.hpp"
 #include "SpellAdditionalProperties.hpp"
 #include "StatisticTextKeys.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -841,6 +842,11 @@ CreatureMap CreatureUtils::get_followers_in_fov(CreaturePtr creature)
   }
 
   return followers;
+}
+
+string CreatureUtils::get_follower_property_prefix()
+{
+  return Serialize::BINARY_PROPERTY_PREFIX + CreatureProperties::CREATURE_PROPERTIES_FOLLOWER_PREFIX;
 }
 
 #ifdef UNIT_TESTS

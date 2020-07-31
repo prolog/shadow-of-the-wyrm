@@ -47,7 +47,7 @@ class Serialize
     static void write_double(std::ostream& stream, const double val);
     static void read_double(std::istream& stream, double& val);
 
-    static void write_string(std::ostream& stream, const std::string& val);
+    static void write_string(std::ostream& stream, const std::string& val, const bool binary_string = false);
     static void read_string(std::istream& stream, std::string& val);
     static void consume_string(std::istream& stream);
 
@@ -103,5 +103,7 @@ class Serialize
         throw stream_error;
       }
     };
+
+    static const std::string BINARY_PROPERTY_PREFIX;
 };
 

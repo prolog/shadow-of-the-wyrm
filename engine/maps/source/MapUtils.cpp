@@ -1764,7 +1764,7 @@ void MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinat
 
     for (int i = 1; i < Creature::MAX_TRANSFERRABLE_FOLLOWERS; i++)
     {
-      string prop = CreatureProperties::CREATURE_PROPERTIES_FOLLOWER_PREFIX + std::to_string(i);
+      string prop = CreatureUtils::get_follower_property_prefix() + std::to_string(i);
       string val = creature->get_additional_property(prop);
 
       if (!val.empty())
@@ -1811,7 +1811,7 @@ void MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinat
 
     for (int i = 1; i < Creature::MAX_TRANSFERRABLE_FOLLOWERS; i++)
     {
-      string prop = CreatureProperties::CREATURE_PROPERTIES_FOLLOWER_PREFIX + std::to_string(i);
+      string prop = CreatureUtils::get_follower_property_prefix() + std::to_string(i);
       creature->remove_additional_property(prop);
     }
   }
@@ -1956,7 +1956,7 @@ void MapUtils::serialize_and_remove_followers(MapPtr map, CreaturePtr creature)
           ostringstream ss;
           c->serialize(ss);
 
-          string follower_prop = CreatureProperties::CREATURE_PROPERTIES_FOLLOWER_PREFIX + std::to_string(cnt);
+          string follower_prop = CreatureUtils::get_follower_property_prefix() + std::to_string(cnt);
           creature->set_additional_property(follower_prop, ss.str());
 
           cnt++;
