@@ -1951,6 +1951,10 @@ void MapUtils::serialize_and_remove_followers(MapPtr map, CreaturePtr creature)
 
         if (!leader_id.empty() && leader_id == creature->get_id())
         {
+          // Clear their threat map.
+          c->get_decision_strategy()->get_threats_ref().clear();
+
+          // Remove and serialize to a property on the leader.
           MapUtils::remove_creature(map, c);
 
           ostringstream ss;
