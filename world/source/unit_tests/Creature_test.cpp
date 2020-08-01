@@ -211,6 +211,28 @@ TEST(SW_World_Creature, saveload)
   EXPECT_FLOAT_EQ(1.2f, c2.get_blood().get_grams_alcohol());
 }
 
+TEST(SW_World_Creature, binary_string_serialization)
+{
+  CreaturePtr c = std::make_shared<Creature>();
+  ostringstream ss;
+
+  string bprop = Serialize::BINARY_PROPERTY_PREFIX + "1";
+  string bval = "04021431\0\tdsjlkaf\0\0dsajl\0";
+  c->set_name("ted");
+  c->set_id("fdsa'f324932849320rdsaldal");
+  c->set_age(36);
+  c->set_additional_property(bprop, bval);
+
+  c->serialize(ss);
+  istringstream iss(ss.str());
+
+  CreaturePtr c2 = std::make_shared<Creature>();
+  c2->deserialize(iss);
+
+  EXPECT_TRUE(*c == *c2);
+  EXPECT_EQ(bval, c2->get_additional_property(bprop));
+}
+
 TEST(SW_World_Creature, count_items)
 {
   Creature c;
