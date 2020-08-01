@@ -5,6 +5,7 @@ const int PacificationCalculator::MAX_PCT_CHANCE_TAME_BEASTMASTERY = 80;
 const int PacificationCalculator::CHARMS_BONUS = 25;
 const int PacificationCalculator::BASE_EXP_PROPORTION_LEADERSHIP = 10;
 const int PacificationCalculator::LEADERSHIP_EXP_DIVISOR = 4;
+const int PacificationCalculator::LEADERSHIP_DAMAGE_DIVISOR = 4;
 
 // The chance to pacify musically is:
 //
@@ -113,6 +114,25 @@ double PacificationCalculator::calculate_exp_proportion_follower_kill(CreaturePt
   }
 
   return exp;
+}
+
+Damage PacificationCalculator::calculate_follower_damage_bonus(CreaturePtr leader)
+{
+  Damage d;
+
+  if (leader != nullptr)
+  {
+    int level = leader->get_level().get_current();
+    int level_bonus = level / 2;
+
+    int leadership = leader->get_skills().get_value(SkillType::SKILL_GENERAL_LEADERSHIP);
+    int leader_bonus = leadership / LEADERSHIP_DAMAGE_DIVISOR;
+
+    d.set_num_dice(1);
+    d.set_modifier(level_bonus + leader_bonus);
+  }
+
+  return d;
 }
 
 #ifdef UNIT_TESTS

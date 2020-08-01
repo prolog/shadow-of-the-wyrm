@@ -18,7 +18,9 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 - New poem fragment for the title screen.
 
 - You can now give 'o'rders to your followers, and they'll follow you between
-  maps if adjacent to you when you left the previous.
+  maps if adjacent to you when you left the previous.  Your followers will get
+  a bonus to their attack damage based on your Leadership skill, as long as
+  you're in their line of sight.
 
 - Starting location is now included in the synopsis on the naming screen.
 

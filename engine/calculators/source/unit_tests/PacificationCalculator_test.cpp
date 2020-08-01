@@ -108,6 +108,32 @@ TEST(SW_Engine_Calculators_PacificationCalculator, proportion_leadership_exp)
     creature->get_skills().set_value(SkillType::SKILL_GENERAL_LEADERSHIP, lv_pair.first);
 
     EXPECT_DOUBLE_EQ(lv_pair.second, pc.calculate_exp_proportion_follower_kill(creature));
+  }  
+}
+
+TEST(SW_Engine_Calculators_PacificationCalculator, leadership_damage_bonus)
+{
+  PacificationCalculator pc;
+  Damage d;
+
+  EXPECT_EQ(d, pc.calculate_follower_damage_bonus(nullptr));
+
+  CreaturePtr creature = std::make_shared<Creature>();
+  d.set_num_dice(1);
+
+  EXPECT_EQ(d, pc.calculate_follower_damage_bonus(creature));
+
+  std::vector<std::pair<int, int>> lvl_lea = { {1, 5}, {6, 12}, {25, 80}, {50, 100} };
+
+  for (auto& ll : lvl_lea)
+  {
+    creature->set_level(ll.first);
+    creature->get_skills().set_value(SkillType::SKILL_GENERAL_LEADERSHIP, ll.second);
+
+    d = pc.calculate_follower_damage_bonus(creature);
+    int lvl_part = ll.first / 2;
+    int lea_part = ll.second / 4;
+
+    EXPECT_EQ(lvl_part + lea_part, d.get_modifier());
   }
-  
 }

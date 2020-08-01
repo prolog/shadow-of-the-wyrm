@@ -7,6 +7,7 @@
 #include "CombatConstants.hpp"
 #include "CombatCounterCalculator.hpp"
 #include "CombatManager.hpp"
+#include "CombatTargetNumberCalculatorFactory.hpp"
 #include "CombatTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
@@ -17,7 +18,6 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "DamageText.hpp"
 #include "DeathManagerFactory.hpp"
-#include "DamageCalculatorFactory.hpp"
 #include "EffectTextKeys.hpp"
 #include "EngineConversion.hpp"
 #include "ExperienceManager.hpp"
@@ -30,7 +30,6 @@
 #include "ItemProperties.hpp"
 #include "KillScript.hpp"
 #include "ToHitCalculatorFactory.hpp"
-#include "CombatTargetNumberCalculatorFactory.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "PacificationCalculator.hpp"
@@ -159,16 +158,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     int total_roll = d100_roll + to_hit_value;
     int target_number_value = ctn_calculator->calculate(attacking_creature, attacked_creature);
 
-    Damage damage;
-
-    if (predefined_damage)
-    {
-      damage = *predefined_damage;
-    }
-    else
-    {
-      damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(attacking_creature);
-    }
+    Damage damage = determine_damage(attacking_creature, predefined_damage.get(), damage_calculator.get());
         
     // Automatic miss is checked first
     if (is_automatic_miss(d100_roll))
@@ -1270,6 +1260,50 @@ void CombatManager::gain_experience(CreaturePtr attacking_creature, CreaturePtr 
       }
     }
   }
+}
+
+Damage CombatManager::determine_damage(CreaturePtr attacking_creature, Damage* predefined_damage, DamageCalculator* damage_calculator)
+{
+  Damage damage;
+
+  if (attacking_creature != nullptr)
+  {
+    if (predefined_damage)
+    {
+      damage = *predefined_damage;
+    }
+    else
+    {
+      damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(attacking_creature);
+    }
+
+    string leader_id = attacking_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+
+    if (!leader_id.empty())
+    {
+      DecisionStrategy* dec = attacking_creature->get_decision_strategy();
+
+      if (dec != nullptr)
+      {
+        MapPtr fov_map = dec->get_fov_map();
+
+        if (fov_map != nullptr)
+        {
+          CreaturePtr leader = fov_map->get_creature(leader_id);
+
+          if (leader != nullptr)
+          {
+            PacificationCalculator pc;
+            Damage leader_bonus = pc.calculate_follower_damage_bonus(leader);
+
+            damage.set_modifier(damage.get_modifier() + leader_bonus.get_modifier());
+          }
+        }
+      }
+    }
+  }
+
+  return damage;
 }
 
 #ifdef UNIT_TESTS
