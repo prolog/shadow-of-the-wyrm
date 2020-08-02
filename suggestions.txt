@@ -1,7 +1,6 @@
 Me:
 - Hirelings
 - Better AI around picking up items to throw, picking up and using wands, etc
-- "As you were"/"At ease"
 - Linux: check premake scripts for commands/order
 - Beastmastery: add mounts
 - Music, Leadership:

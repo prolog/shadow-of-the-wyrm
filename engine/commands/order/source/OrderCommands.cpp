@@ -16,6 +16,11 @@ OrderFreezeCommand::OrderFreezeCommand(const int key)
 {
 }
 
+OrderAtEaseCommand::OrderAtEaseCommand(const int key)
+: Command(OrderCommandKeys::AT_EASE, key)
+{
+}
+
 OrderExitCommand::OrderExitCommand(const int key)
 : Command(OrderCommandKeys::EXIT_ORDER, key)
 { 

@@ -180,6 +180,34 @@ ActionCostValue OrderAction::order_freeze(CreaturePtr creature)
   return acv;
 }
 
+ActionCostValue OrderAction::order_at_ease(CreaturePtr creature)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
+  if (creature != nullptr)
+  {
+    creature->get_skills().mark(SkillType::SKILL_GENERAL_LEADERSHIP);
+
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_AT_EASE));
+
+    CreatureMap creatures = CreatureUtils::get_followers_in_fov(creature);
+    for (auto c_pair : creatures)
+    {
+      CreaturePtr follower = c_pair.second;
+
+      if (follower != nullptr)
+      {
+        remove_orders(follower);
+      }
+    }
+
+    acv = ActionCostConstants::DEFAULT;
+  }
+
+  return acv;
+}
+
 // Void all other orders before setting the current one.
 void OrderAction::remove_orders(CreaturePtr creature)
 {

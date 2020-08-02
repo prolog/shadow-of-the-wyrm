@@ -26,6 +26,10 @@ CommandPtr OrderCommandFactory::create(const int key, const std::string& command
   {
     command = std::make_unique<OrderFreezeCommand>(key);
   }
+  else if (command_name == OrderCommandKeys::AT_EASE)
+  {
+    command = std::make_unique<OrderAtEaseCommand>(key);
+  }
   else if (command_name == OrderCommandKeys::EXIT_ORDER)
   {
     command = std::make_unique<OrderExitCommand>(key);

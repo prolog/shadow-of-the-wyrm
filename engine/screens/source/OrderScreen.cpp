@@ -22,7 +22,7 @@ void OrderScreen::initialize()
   vector<ScreenComponentPtr> order_screen;
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
-  vector<string> options_v = {OrderTextKeys::ORDER_ATTACK, OrderTextKeys::ORDER_FOLLOW, OrderTextKeys::ORDER_FREEZE};
+  vector<string> options_v = {OrderTextKeys::ORDER_ATTACK, OrderTextKeys::ORDER_FOLLOW, OrderTextKeys::ORDER_FREEZE, OrderTextKeys::ORDER_AT_EASE};
   int cur_id = 0;
 
   for (const auto& option_s : options_v)

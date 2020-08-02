@@ -11,6 +11,7 @@ class OrderAction : public IActionManager
     ActionCostValue order_attack(CreaturePtr creature);
     ActionCostValue order_follow(CreaturePtr creature);
     ActionCostValue order_freeze(CreaturePtr creature);
+    ActionCostValue order_at_ease(CreaturePtr creature);
 
   protected:
     bool check_for_skills(CreaturePtr creature, IMessageManager& manager);

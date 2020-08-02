@@ -19,6 +19,12 @@ class OrderFreezeCommand : public Command
     OrderFreezeCommand(const int key);
 };
 
+class OrderAtEaseCommand : public Command
+{
+  public:
+    OrderAtEaseCommand(const int key);
+};
+
 class OrderExitCommand : public Command
 {
   public:
