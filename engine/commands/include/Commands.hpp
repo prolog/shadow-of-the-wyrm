@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <string>
 #include "Command.hpp"
 #include "Directions.hpp"
 
@@ -96,7 +97,13 @@ class PickUpCommand : public Command
 {
   public:
     PickUpCommand(int key);
+    PickUpCommand(const std::string& new_item_id); // NPC version
     ~PickUpCommand();
+
+    std::string get_item_id() const;
+
+  protected:
+    std::string item_id;
 };
 
 class PickUpAllCommand : public Command

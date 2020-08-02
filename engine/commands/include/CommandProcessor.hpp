@@ -21,5 +21,7 @@ class CommandProcessor
     static ActionCost process_command(CreaturePtr creature, Command* command, DisplayPtr display);
     static ActionCost process_directional_command(CreaturePtr creature, DirectionalCommand* command, DisplayPtr display);
     static ActionCost process_spell_casting_command(CreaturePtr creature, Command* command, Game& game);
+    static ActionCost process_pick_up_command(CreaturePtr creature, Command* command, Game& game);
+
     static bool process_confirmation(CreaturePtr creature, Command* command, DisplayPtr display);
 };

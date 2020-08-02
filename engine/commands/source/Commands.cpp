@@ -145,8 +145,18 @@ PickUpCommand::PickUpCommand(const int key)
 {
 }
 
+PickUpCommand::PickUpCommand(const string& new_item_id)
+: Command(CommandKeys::PICK_UP_ITEM, '?'), item_id(new_item_id)
+{
+}
+
 PickUpCommand::~PickUpCommand()
 {
+}
+
+string PickUpCommand::get_item_id() const
+{
+  return item_id;
 }
 
 // Pick up all

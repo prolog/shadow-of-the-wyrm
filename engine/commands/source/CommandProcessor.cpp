@@ -86,7 +86,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::PICK_UP_ITEM)
       {
-        ac = game.actions.pick_up(creature, PickUpType::PICK_UP_SINGLE);
+        ac = process_pick_up_command(creature, command, game);
       }
       else if (command_name == CommandKeys::PICK_UP_ALL)
       {
@@ -342,6 +342,23 @@ ActionCost CommandProcessor::process_directional_command(CreaturePtr creature, D
   return ac;
 }
 
+ActionCost CommandProcessor::process_pick_up_command(CreaturePtr creature, Command* command, Game& game)
+{
+  ActionCost ac;
+  PickUpCommand* pu_cmd = dynamic_cast<PickUpCommand*>(command);
+
+  if (pu_cmd != nullptr)
+  {
+    string item_id = pu_cmd->get_item_id();
+
+    if (!item_id.empty())
+    {
+      ac = game.actions.pick_up(creature, item_id);
+    }
+  }
+
+  return ac;
+}
 // Get a confirmation from the creature's decision strategy, if necessary
 bool CommandProcessor::process_confirmation(CreaturePtr creature, Command* command, DisplayPtr display)
 {

@@ -20,12 +20,15 @@
 #include "NPCMagicDecisionFactory.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
 #include "RangedCombatUtils.hpp"
+#include "RaceManager.hpp"
 #include "RNG.hpp"
 #include "SearchStrategyFactory.hpp"
 #include "ThreatConstants.hpp"
+#include "Wand.hpp"
 
 using namespace std;
 
+const int NPCDecisionStrategy::PERCENT_CHANCE_PICK_UP_USEFUL_ITEM = 75;
 const int NPCDecisionStrategy::PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET = 85;
 const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_USING_MAGIC = 75;
 const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_RANGED_COMBAT = 80;
@@ -126,11 +129,29 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
   {
     update_threats_to_leader(this_creature_id, view_map);
 
+    if (has_movement_orders() == false)
+    {
+      // Is there something useful to pick up? Humanoids will pick up wands
+      // if they know what they do, if the wands cause damage
+      command = get_pick_up_decision(this_creature_id, view_map);
+    }
+
+    if (has_movement_orders() == false)
+    {
+      if (command == nullptr)
+      {
+        command = get_use_item_decision(this_creature_id, view_map);
+      }
+    }
+
     // If the creature has any spells, consider casting a spell, based on
     // low health, nearby hostile creatures, etc.
     if (has_movement_orders() == false)
     {
-      command = get_magic_decision(this_creature_id, view_map);
+      if (command == nullptr)
+      {
+        command = get_magic_decision(this_creature_id, view_map);
+      }
     }
 
     // Breed, potentially.
@@ -570,6 +591,70 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
   }
 
   return movement_command;
+}
+
+CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature_id, MapPtr view_map)
+{
+  CommandPtr pu_cmd;
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+
+  if (map != nullptr && RNG::percent_chance(PERCENT_CHANCE_PICK_UP_USEFUL_ITEM))
+  {
+    CreaturePtr creature = map->get_creature(this_creature_id);
+    RaceManager rm;
+    Race* race = rm.get_race(creature->get_race_id());
+
+    if (creature != nullptr && race != nullptr && race->get_has_pockets())
+    {
+      TilePtr tile = MapUtils::get_tile_for_creature(map, creature);
+
+      if (tile != nullptr)
+      {
+        IInventoryPtr inv = tile->get_items();
+
+        if (inv != nullptr)
+        {
+          list<ItemPtr>& items = inv->get_items_ref();
+
+          for (ItemPtr item : items)
+          {
+            if (item && item->get_type() == ItemType::ITEM_TYPE_WAND)
+            {
+              WandPtr wand = dynamic_pointer_cast<Wand>(item);
+
+              if (wand->get_charges().get_current() > 0 && wand->get_has_damage())
+              {
+                pu_cmd = make_unique<PickUpCommand>(wand->get_id());
+                break;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return pu_cmd;
+}
+
+CommandPtr NPCDecisionStrategy::get_use_item_decision(const string& this_creature_id, MapPtr view_map)
+{
+  CommandPtr pu_cmd;
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+
+  if (map != nullptr)
+  {
+    CreaturePtr creature = map->get_creature(this_creature_id);
+
+    if (creature != nullptr)
+    {
+      // ...
+    }
+  }
+
+  return pu_cmd;
 }
 
 // Get a list of the adjacent coordinates that do not contain creatures
