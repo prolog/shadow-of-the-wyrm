@@ -35,10 +35,11 @@ CreatureUtils::~CreatureUtils()
 }
 
 map<HungerLevel, string> CreatureUtils::hunger_message_sid_map;
+map<HungerLevel, Colour> CreatureUtils::hunger_colour_map;
 
 // Initialize the map of message SIDs.  Messages are shown when the creature
 // (the player, realistically) transitions to a new state.
-void CreatureUtils::initialize_hunger_message_sid_map()
+void CreatureUtils::initialize_hunger_maps()
 {
   hunger_message_sid_map.clear();
 
@@ -49,6 +50,11 @@ void CreatureUtils::initialize_hunger_message_sid_map()
     { HungerLevel::HUNGER_LEVEL_HUNGRY, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_HUNGRY },
     { HungerLevel::HUNGER_LEVEL_STARVING, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_STARVING },
     { HungerLevel::HUNGER_LEVEL_DYING, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_DYING } };
+
+  hunger_colour_map.clear();
+
+  hunger_colour_map = { {HungerLevel::HUNGER_LEVEL_STARVING, Colour::COLOUR_RED},
+                        {HungerLevel::HUNGER_LEVEL_DYING, Colour::COLOUR_RED} };
 }
 
 
@@ -64,14 +70,21 @@ void CreatureUtils::add_hunger_level_message_if_necessary(CreaturePtr creature, 
     {
       IMessageManager& manager = MM::instance();
 
-      if (hunger_message_sid_map.empty())
+      if (hunger_message_sid_map.empty() || hunger_colour_map.empty())
       {
-        initialize_hunger_message_sid_map();
+        initialize_hunger_maps();
       }
 
       string message_sid = hunger_message_sid_map[new_level];
+      Colour colour = Colour::COLOUR_WHITE;
 
-      manager.add_new_message(StringTable::get(message_sid));
+      auto col_it = hunger_colour_map.find(new_level);
+      if (col_it != hunger_colour_map.end())
+      {
+        colour = col_it->second;
+      }
+
+      manager.add_new_message(StringTable::get(message_sid), colour);
       manager.send();
     }
   }

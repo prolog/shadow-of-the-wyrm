@@ -76,6 +76,7 @@ class CreatureUtils
 
     static void add_removal_message(CreaturePtr creature, const std::string& spell_id);
 
-    static void initialize_hunger_message_sid_map();
+    static void initialize_hunger_maps();
     static std::map<HungerLevel, std::string> hunger_message_sid_map;
+    static std::map<HungerLevel, Colour> hunger_colour_map;
 };
