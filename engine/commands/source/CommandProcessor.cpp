@@ -187,7 +187,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::EVOKE)
       {
-        ac = game.actions.evoke(creature);
+        ac = process_evoke_command(creature, command, game);
       }
       else if (command_name == CommandKeys::SHOW_RESISTANCES)
       {
@@ -355,10 +355,38 @@ ActionCost CommandProcessor::process_pick_up_command(CreaturePtr creature, Comma
     {
       ac = game.actions.pick_up(creature, item_id);
     }
+    else
+    {
+      ac = game.actions.pick_up(creature, PickUpType::PICK_UP_SINGLE);
+    }
   }
 
   return ac;
 }
+
+ActionCost CommandProcessor::process_evoke_command(CreaturePtr creature, Command* command, Game& game)
+{
+  ActionCost ac;
+  EvokeCommand* ev_cmd = dynamic_cast<EvokeCommand*>(command);
+
+  if (ev_cmd != nullptr)
+  {
+    string item_id = ev_cmd->get_item_id();
+    Direction direction = ev_cmd->get_direction();
+
+    if (!item_id.empty())
+    {
+      ac = game.actions.evoke(creature, item_id, direction);
+    }
+    else
+    {
+      ac = game.actions.evoke(creature);
+    }
+  }
+
+  return ac;
+}
+
 // Get a confirmation from the creature's decision strategy, if necessary
 bool CommandProcessor::process_confirmation(CreaturePtr creature, Command* command, DisplayPtr display)
 {

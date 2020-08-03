@@ -111,6 +111,12 @@ ItemPtr NullInventory::get_from_base_id(const std::string& base_id)
   return nullp;
 }
 
+vector<ItemPtr> NullInventory::get_from_type(const ItemType item_type)
+{
+  vector<ItemPtr> no_items;
+  return no_items;
+}
+
 bool NullInventory::empty() const
 {
   return true;

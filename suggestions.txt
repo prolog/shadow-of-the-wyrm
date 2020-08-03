@@ -1,4 +1,7 @@
 Me:
+- Animation before damage? Player killed by spell or wand should see the
+  animation.
+- Item stacking issue: set mk_am on all initial items!
 - Hirelings
 - Better AI around picking up items to throw, picking up and using wands, etc
 - Linux: check premake scripts for commands/order

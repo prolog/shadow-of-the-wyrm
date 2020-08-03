@@ -7,6 +7,8 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   the premake configurations. These exclude SDL when building, resulting in a 
   smaller, asset-less build that has no dependencies on SDL (Larzid).
 
+- NPCs can now pick up and evoke wands.
+
 - The Music skill now gives experience for pacification, like Beastmastery,
   and sets the no-exp flag.
 

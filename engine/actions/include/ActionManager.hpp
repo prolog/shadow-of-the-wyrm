@@ -119,6 +119,9 @@ class ActionManager : public ISerializable
     // Evoke/zap a wand.
     ActionCost evoke(CreaturePtr creature);
 
+    // Evoke - NPC version
+    ActionCost evoke(CreaturePtr creature, const std::string& wand_item_id, const Direction d);
+
     // Show a creature's (well, the player's) resistances and vulnerabilities.
     ActionCost show_resistances(CreaturePtr creature);
     ActionCost show_conducts(CreaturePtr creature);

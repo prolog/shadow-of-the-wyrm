@@ -1,4 +1,5 @@
 #include "ActionTextKeys.hpp"
+#include "AttackNPCMagicDecision.hpp"
 #include "CoordUtils.hpp"
 #include "Commands.hpp"
 #include "CommandCustomValues.hpp"
@@ -23,6 +24,7 @@
 #include "RaceManager.hpp"
 #include "RNG.hpp"
 #include "SearchStrategyFactory.hpp"
+#include "SpellShapeFactory.hpp"
 #include "ThreatConstants.hpp"
 #include "Wand.hpp"
 
@@ -131,16 +133,16 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
 
     if (has_movement_orders() == false)
     {
-      // Is there something useful to pick up? Humanoids will pick up wands
-      // if they know what they do, if the wands cause damage
-      command = get_pick_up_decision(this_creature_id, view_map);
+      command = get_use_item_decision(this_creature_id, view_map);
     }
 
     if (has_movement_orders() == false)
     {
       if (command == nullptr)
       {
-        command = get_use_item_decision(this_creature_id, view_map);
+        // Is there something useful to pick up? Humanoids will pick up wands
+        // if they know what they do, if the wands cause damage
+        command = get_pick_up_decision(this_creature_id, view_map);
       }
     }
 
@@ -604,8 +606,9 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
     CreaturePtr creature = map->get_creature(this_creature_id);
     RaceManager rm;
     Race* race = rm.get_race(creature->get_race_id());
+    CurrentCreatureAbilities cca;
 
-    if (creature != nullptr && race != nullptr && race->get_has_pockets())
+    if (creature != nullptr && race != nullptr && race->get_has_pockets() && cca.can_speak(creature))
     {
       TilePtr tile = MapUtils::get_tile_for_creature(map, creature);
 
@@ -621,7 +624,7 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
           {
             if (item && item->get_type() == ItemType::ITEM_TYPE_WAND)
             {
-              WandPtr wand = dynamic_pointer_cast<Wand>(item);
+              Wand* wand = dynamic_cast<Wand*>(item.get());
 
               if (wand->get_charges().get_current() > 0 && wand->get_has_damage())
               {
@@ -640,7 +643,7 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
 
 CommandPtr NPCDecisionStrategy::get_use_item_decision(const string& this_creature_id, MapPtr view_map)
 {
-  CommandPtr pu_cmd;
+  CommandPtr use_cmd;
   Game& game = Game::instance();
   MapPtr map = game.get_current_map();
 
@@ -650,11 +653,37 @@ CommandPtr NPCDecisionStrategy::get_use_item_decision(const string& this_creatur
 
     if (creature != nullptr)
     {
-      // ...
+      vector<ItemPtr> wands = creature->get_inventory()->get_from_type(ItemType::ITEM_TYPE_WAND);
+
+      for (ItemPtr iwand : wands)
+      {
+        WandPtr wand = std::dynamic_pointer_cast<Wand>(iwand);
+
+        if (wand != nullptr && wand->get_charges().get_current() > 0 && wand->get_has_damage())
+        {
+          uint range = wand->get_range();
+          AttackNPCMagicDecision anmd;
+          Spell spell;
+          SpellShape ss = SpellShapeFactory::create_spell_shape(wand->get_spell_shape_type(), wand->get_radius());
+
+          spell.set_shape(ss);
+          spell.set_damage(wand->get_damage());
+          spell.set_range(wand->get_range());
+
+          // If there are hostiles in range no non-hostiles in the same,
+          // use the wand.
+          pair<bool, Direction> dec_details = anmd.decide(creature, view_map, spell, creature->get_decision_strategy()->get_threats_ref().get_true_threats_without_level());
+
+          if (dec_details.first)
+          {
+            use_cmd = std::make_unique<EvokeCommand>(wand->get_id(), dec_details.second);
+          }
+        }
+      }
     }
   }
 
-  return pu_cmd;
+  return use_cmd;
 }
 
 // Get a list of the adjacent coordinates that do not contain creatures

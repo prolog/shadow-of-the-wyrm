@@ -497,6 +497,13 @@ ActionCost ActionManager::evoke(CreaturePtr creature)
   return get_action_cost(creature, ea.evoke(creature, this));
 }
 
+ActionCost ActionManager::evoke(CreaturePtr creature, const string& wand_id, const Direction d)
+{
+  EvokeAction ea;
+
+  return get_action_cost(creature, ea.evoke(creature, wand_id, d));
+}
+
 ActionCost ActionManager::show_resistances(CreaturePtr creature)
 {
   ShowResistancesAction sra;

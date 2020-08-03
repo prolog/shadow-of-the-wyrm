@@ -257,7 +257,15 @@ class EvokeCommand : public Command
 {
   public:
     EvokeCommand(int key);
+    EvokeCommand(const std::string& new_item_id, const Direction new_d);
     ~EvokeCommand();
+
+    std::string get_item_id() const;
+    Direction get_direction() const;
+
+  protected:
+    std::string item_id;
+    Direction d;
 };
 
 class ShowResistancesCommand : public Command

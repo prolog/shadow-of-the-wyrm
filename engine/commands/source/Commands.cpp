@@ -371,8 +371,23 @@ BestiaryCommand::~BestiaryCommand()
 
 // E'v'oke (zap) a wand
 EvokeCommand::EvokeCommand(const int key)
-: Command(CommandKeys::EVOKE, key)
+: Command(CommandKeys::EVOKE, key), d(Direction::DIRECTION_NULL)
 {
+}
+
+EvokeCommand::EvokeCommand(const string& new_item_id, const Direction new_d)
+: Command(CommandKeys::EVOKE, '?'), item_id(new_item_id), d(new_d)
+{
+}
+
+string EvokeCommand::get_item_id() const
+{
+  return item_id;
+}
+
+Direction EvokeCommand::get_direction() const
+{
+  return d;
 }
 
 EvokeCommand::~EvokeCommand()
