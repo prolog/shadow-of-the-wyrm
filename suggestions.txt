@@ -1,4 +1,5 @@
 Me:
+- Test evoke (both), pick up single (both), pick up all
 - Animation before damage? Player killed by spell or wand should see the
   animation.
 - Item stacking issue: set mk_am on all initial items!

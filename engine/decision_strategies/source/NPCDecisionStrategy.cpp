@@ -30,6 +30,7 @@
 
 using namespace std;
 
+const int NPCDecisionStrategy::PERCENT_CHANCE_USE_ITEM = 40;
 const int NPCDecisionStrategy::PERCENT_CHANCE_PICK_UP_USEFUL_ITEM = 75;
 const int NPCDecisionStrategy::PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET = 85;
 const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_USING_MAGIC = 75;
@@ -647,7 +648,7 @@ CommandPtr NPCDecisionStrategy::get_use_item_decision(const string& this_creatur
   Game& game = Game::instance();
   MapPtr map = game.get_current_map();
 
-  if (map != nullptr)
+  if (map != nullptr && RNG::percent_chance(PERCENT_CHANCE_USE_ITEM))
   {
     CreaturePtr creature = map->get_creature(this_creature_id);
 

@@ -16,6 +16,7 @@ class TextMessages
     static std::string get_death_message(const std::string& deity_death_message_sid);
     static std::string get_player_description(const std::string& player_name);
     static std::string get_npc_escapes_message(const std::string& creature_description);
+    static std::string get_npc_level_message(const std::string& creature_description);
     static std::string get_action_not_found_message(const std::string& command_action);
     static std::string get_dumping_character_message(const std::string& creature_name);
     static std::string get_sex(const CreatureSex sex);
@@ -71,4 +72,5 @@ class TextMessages
     static const std::string SLOT_MACHINE_OUTCOME_MESSAGE;
     static const std::string CARRYING_CAPACITY_MESSAGE;
     static const std::string DAMAGE_MESSAGE;
+    static const std::string NPC_LEVEL_MESSAGE;
 };

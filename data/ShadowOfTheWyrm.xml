@@ -7892,6 +7892,7 @@
 		</StartingLocation>
 	</StartingLocations>
 	<Scripts>
+		<NPCLevelScript>level/npc.lua</NPCLevelScript>
 		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
 	</Scripts>
 	<Spritesheets>

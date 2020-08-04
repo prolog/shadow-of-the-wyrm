@@ -280,6 +280,8 @@
 	<xs:annotation><xs:documentation>Scripts used by the Shadow of the Wyrm engine.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
+			<!-- Run after a creature gains a level -->
+			<xs:element name="NPCLevelScript" type="xs:string"/>
 			<!-- Run after character creation to have special effects when
 				 starting on a particular day. -->
 			<xs:element name="SpecialDaysScript" type="xs:string"/>

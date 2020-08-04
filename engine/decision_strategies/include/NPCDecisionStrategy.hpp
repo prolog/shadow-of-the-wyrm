@@ -41,6 +41,7 @@ class NPCDecisionStrategy : public DecisionStrategy
     virtual void update_threats_if_shopkeeper(MapPtr current_fov_map);
     virtual std::vector<std::pair<std::string, int>> get_creatures_by_distance(CreaturePtr creature, MapPtr view_map, const std::set<std::string>& creature_ids);
 
+    static const int PERCENT_CHANCE_USE_ITEM;
     static const int PERCENT_CHANCE_PICK_UP_USEFUL_ITEM;
     static const int PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET;
     static const int PERCENT_CHANCE_CONSIDER_USING_MAGIC;

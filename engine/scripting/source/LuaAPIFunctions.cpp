@@ -400,6 +400,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "genocide", genocide);
   lua_register(L, "generate_ancient_beast", generate_ancient_beast);
   lua_register(L, "set_colour", set_colour);
+  lua_register(L, "add_npc_level_message", add_npc_level_message);
 }
 
 // Lua API helper functions
@@ -8084,6 +8085,32 @@ int set_colour(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Invalid arguments to set_colour");
+  }
+
+  return 0;
+}
+
+int add_npc_level_message(lua_State* ls)
+{
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr && !creature->get_is_player())
+    {
+      Game& game = Game::instance();
+      MapPtr current_map = game.get_current_map();
+      string msg = TextMessages::get_npc_level_message(StringTable::get(creature->get_description_sid()));
+
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(game, creature_id));
+      manager.add_new_message(msg);
+      manager.send();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to add_npc_level_message");
   }
 
   return 0;

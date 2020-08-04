@@ -48,6 +48,7 @@ const string TextMessages::SLOT_MACHINE_MESSAGE               = "SLOT_MACHINE_ME
 const string TextMessages::SLOT_MACHINE_OUTCOME_MESSAGE       = "SLOT_MACHINE_OUTCOME_MESSAGE";
 const string TextMessages::CARRYING_CAPACITY_MESSAGE          = "CARRYING_CAPACITY_MESSAGE";
 const string TextMessages::DAMAGE_MESSAGE                     = "DAMAGE_MESSAGE";
+const string TextMessages::NPC_LEVEL_MESSAGE                  = "NPC_LEVEL_MESSAGE";
 
 string TextMessages::get_full_header_text(const string& header, const uint num_cols)
 {
@@ -114,6 +115,15 @@ string TextMessages::get_npc_escapes_message(const string& creature_description)
   boost::replace_first(escapes_message, "%s", creature_description);
   escapes_message[0] = toupper(escapes_message[0]);
   return escapes_message;
+}
+
+string TextMessages::get_npc_level_message(const string& creature_description)
+{
+  string level_message = StringTable::get(NPC_LEVEL_MESSAGE);
+  boost::replace_first(level_message, "%s", creature_description);
+  level_message[0] = toupper(level_message[0]);
+  return level_message;
+
 }
 
 string TextMessages::get_action_not_found_message(const string& command_action)

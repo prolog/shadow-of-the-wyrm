@@ -6,6 +6,7 @@
 #include "MessageManagerFactory.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
+#include "ScriptConstants.hpp"
 #include "TextKeys.hpp"
 
 using namespace std;
@@ -307,6 +308,7 @@ void ExperienceManager::run_level_script(CreaturePtr creature)
       vector<string> setup_scripts;
       string race_script = racep->get_level_script();
       string class_script = classp->get_level_script();
+      string npc_script = Game::instance().get_script(ScriptConstants::NPC_LEVEL_SCRIPT);
 
       if (!race_script.empty())
       {
@@ -316,6 +318,11 @@ void ExperienceManager::run_level_script(CreaturePtr creature)
       if (!class_script.empty())
       {
         setup_scripts.push_back(classp->get_level_script());
+      }
+
+      if (!creature->get_is_player() && !npc_script.empty())
+      {
+        setup_scripts.push_back(npc_script);
       }
 
       try

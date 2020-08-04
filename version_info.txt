@@ -24,6 +24,9 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   a bonus to their attack damage based on your Leadership skill, as long as
   you're in their line of sight.
 
+- When NPCs gain levels, they now get extra HP, AP, and damage dice in line
+  with the progression used in the game data.
+
 - Starting location is now included in the synopsis on the naming screen.
 
 - Bug fixes:
