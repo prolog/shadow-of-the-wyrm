@@ -7,6 +7,7 @@
 #include "Item.hpp"
 #include "tiles.hpp"
 #include "Spell.hpp"
+#include "StartingLocation.hpp"
 
 class TextMessages
 {

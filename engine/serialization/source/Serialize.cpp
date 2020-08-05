@@ -2,9 +2,9 @@
 #include "Serialize.hpp"
 #include "Log.hpp"
 
-const string Serialize::BINARY_PROPERTY_PREFIX = "__BIN__";
-
 using namespace std;
+
+const string Serialize::BINARY_PROPERTY_PREFIX = "__BIN__";
 
 // Write the class identifier.  This is used by factory classes to determine which type of object to 
 // default construct.
