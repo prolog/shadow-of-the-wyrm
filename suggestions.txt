@@ -1,22 +1,16 @@
 Me:
-- Test evoke (both), pick up single (both), pick up all
 - Animation before damage? Player killed by spell or wand should see the
   animation.
-- Item stacking issue: set mk_am on all initial items!
 - Hirelings
-- Better AI around picking up items to throw, picking up and using wands, etc
+- Better AI around picking up items to throw, etc
 - Linux: check premake scripts for commands/order
 - Beastmastery: add mounts
-- Music, Leadership:
 - How to give orders to individual creatures?
 - Narrative mode (no death, death removes negative statuses + heals)
 - Each version: make sure to update itch.io page for both SotW and the sprite
   pack! OpenGameArt if new sprites.
 - Release after this: grond says tanning is complicated & dragon skins aren't
   what they should be.
-- Leadership/music: give orders.
-- Leadership: get followers who can follow you up/down floors
-- Have followers change floor and tracked on eg world map
 - Use Magic to destroy spellbooks and get a bit of AP?
 - Dungeons should check for shop before generating trap.
 - Beer halls in villages
@@ -80,9 +74,6 @@ Me:
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
 - The vaults of the old dwarven-kings
-- Creatures should have a chance to follow up/down stairs with special
-  case for returning to overworld.  Chance should be based on hostility
-  and an Escape roll.  Update Guidebook.
 - Before making negative amulets with statuses (e.g., poisoned amulet),
   make status identifier map calculated by going through the modifiers.
   Otherwise, it's stupid trying to figure out if a creature is still

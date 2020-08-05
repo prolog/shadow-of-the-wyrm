@@ -9,6 +9,8 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 
 - NPCs can now pick up and evoke wands.
 
+- Nobles now start with a higher starting leadership value (40).
+
 - The Music skill now gives experience for pacification, like Beastmastery,
   and sets the no-exp flag.
 
@@ -30,6 +32,10 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 - Starting location is now included in the synopsis on the naming screen.
 
 - Bug fixes:
+
+  - The "seen for automove" flag wasn't being set on initial items, so
+    there were issues when comparing items and multiple stacks would form
+    when they shouldn't have.
 
   - The free hidden actions counter could get out of whack. Capped that so
     the player couldn't get lots of free actions while safely hidden (Grond).

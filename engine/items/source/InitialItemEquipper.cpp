@@ -3,6 +3,7 @@
 #include "InitialItemEquipper.hpp"
 #include "InitialItemSelector.hpp"
 #include "ItemManager.hpp"
+#include "ItemProperties.hpp"
 #include "Log.hpp"
 
 using namespace std;
@@ -47,7 +48,7 @@ void InitialItemEquipper::process_initial_equipment(CreaturePtr creature, const 
 
       if (!item_id.empty())
       {
-        ItemPtr item = ItemManager::create_item(item_id, item_quantity);
+        ItemPtr item = set_initial_item_flags(ItemManager::create_item(item_id, item_quantity));
 
         if (item != nullptr)
         {
@@ -110,9 +111,20 @@ void InitialItemEquipper::process_initial_inventory(CreaturePtr creature, const 
 
       if (!item_id.empty())
       {
-        am.handle_item(creature, ItemAction::ITEM_ACTION_PICK_UP, ItemManager::create_item(item_id, item_quantity));
+        am.handle_item(creature, ItemAction::ITEM_ACTION_PICK_UP, set_initial_item_flags(ItemManager::create_item(item_id, item_quantity)));
       }
     }
   }
 }
 
+// All items in the initial inventory or equipment should be marked with the
+// automove-seen flag so that they stack nicely.
+ItemPtr InitialItemEquipper::set_initial_item_flags(ItemPtr i)
+{
+  if (i != nullptr)
+  {
+    i->set_additional_property(ItemProperties::ITEM_PROPERTIES_MARK_AUTOMOVE, std::to_string(true));
+  }
+
+  return i;
+}
