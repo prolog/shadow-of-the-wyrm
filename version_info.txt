@@ -7,7 +7,10 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   the premake configurations. These exclude SDL when building, resulting in a 
   smaller, asset-less build that has no dependencies on SDL (Larzid).
 
-- NPCs can now pick up and evoke wands.
+- NPCs may now pick up items if they consider them "good". This depends on 
+  the item type, but in general, NPCs avoid cursed and autocursing items.
+
+- NPCs can now evoke wands.
 
 - Nobles now start with a higher starting leadership value (40).
 

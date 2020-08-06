@@ -1,4 +1,5 @@
 #include "ActionTextKeys.hpp"
+#include "Amulet.hpp"
 #include "AttackNPCMagicDecision.hpp"
 #include "CoordUtils.hpp"
 #include "Commands.hpp"
@@ -10,6 +11,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "DecisionScript.hpp"
 #include "DecisionStrategyProperties.hpp"
+#include "EngineConversion.hpp"
 #include "Game.hpp"
 #include "HostilityManager.hpp"
 #include "IMessageManager.hpp"
@@ -22,11 +24,13 @@
 #include "RangedCombatApplicabilityChecker.hpp"
 #include "RangedCombatUtils.hpp"
 #include "RaceManager.hpp"
+#include "Ring.hpp"
 #include "RNG.hpp"
 #include "SearchStrategyFactory.hpp"
 #include "SpellShapeFactory.hpp"
 #include "ThreatConstants.hpp"
 #include "Wand.hpp"
+#include "WeaponManager.hpp"
 
 using namespace std;
 
@@ -609,11 +613,13 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
     Race* race = rm.get_race(creature->get_race_id());
     CurrentCreatureAbilities cca;
 
-    if (creature != nullptr && race != nullptr && race->get_has_pockets() && cca.can_speak(creature))
+    if (creature != nullptr && race != nullptr && race->get_has_pockets())
     {
+      BurdenLevel bl = BurdenLevelConverter::to_burden_level(creature);
       TilePtr tile = MapUtils::get_tile_for_creature(map, creature);
 
-      if (tile != nullptr)
+      // Creatures won't pick up if they're already burdened.
+      if (tile != nullptr && bl == BurdenLevel::BURDEN_LEVEL_UNBURDENED)
       {
         IInventoryPtr inv = tile->get_items();
 
@@ -623,14 +629,30 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
 
           for (ItemPtr item : items)
           {
-            if (item && item->get_type() == ItemType::ITEM_TYPE_WAND)
+            if (item != nullptr)
             {
-              Wand* wand = dynamic_cast<Wand*>(item.get());
+              ItemType itype = item->get_type();
 
-              if (wand->get_charges().get_current() > 0 && wand->get_has_damage())
+              if (itype == ItemType::ITEM_TYPE_WEAPON)
               {
-                pu_cmd = make_unique<PickUpCommand>(wand->get_id());
-                break;
+                pu_cmd = get_pick_up_weapon_decision(creature, item);
+              }
+              else if (itype == ItemType::ITEM_TYPE_AMULET)
+              {
+                pu_cmd = get_pick_up_amulet_decision(creature, item);
+              }
+              else if (itype == ItemType::ITEM_TYPE_RING)
+              {
+                pu_cmd = get_pick_up_ring_decision(creature, item);
+              }
+              else if (itype == ItemType::ITEM_TYPE_WAND)
+              {
+                pu_cmd = get_pick_up_wand_decision(creature, item);
+              }
+
+              if (pu_cmd != nullptr)
+              {
+                return pu_cmd;
               }
             }
           }
@@ -804,4 +826,92 @@ vector<pair<string, int>> NPCDecisionStrategy::get_creatures_by_distance(Creatur
   }
 
   return cdist;
+}
+
+CommandPtr NPCDecisionStrategy::get_pick_up_weapon_decision(CreaturePtr creature, ItemPtr item)
+{
+  CommandPtr pu_cmd;
+
+  if (creature != nullptr && item != nullptr)
+  {
+    WeaponManager wm;
+    WeaponPtr weapon = std::dynamic_pointer_cast<Weapon>(item);
+    WeaponPtr eq_weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
+    Damage d = wm.get_damage(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
+
+    if (eq_weapon == nullptr && (weapon->get_damage().avg() > d.avg()))
+    {
+      pu_cmd = make_unique<PickUpCommand>(weapon->get_id());
+    }
+  }
+
+  return pu_cmd;
+}
+
+CommandPtr NPCDecisionStrategy::get_pick_up_amulet_decision(CreaturePtr creature, ItemPtr item)
+{
+  CommandPtr pu_cmd;
+
+  if (creature != nullptr && item != nullptr)
+  {
+    AmuletPtr amulet = std::dynamic_pointer_cast<Amulet>(item);
+
+    if (amulet != nullptr)
+    {
+      ItemPtr amulet_eq = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_NECK);
+
+      if (amulet_eq == nullptr && amulet->get_is_good())
+      {
+        pu_cmd = make_unique<PickUpCommand>(amulet->get_id());
+      }
+    }
+  }
+
+  return pu_cmd;
+}
+
+CommandPtr NPCDecisionStrategy::get_pick_up_ring_decision(CreaturePtr creature, ItemPtr item)
+{
+  CommandPtr pu_cmd;
+
+  if (creature != nullptr && item != nullptr)
+  {
+    RingPtr ring = std::dynamic_pointer_cast<Ring>(item);
+
+    if (ring != nullptr)
+    {
+      ItemPtr f1 = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_LEFT_FINGER);
+      ItemPtr f2 = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_RIGHT_FINGER);
+
+      if ((f1 == nullptr || f2 == nullptr) && ring->get_is_good())
+      {
+        pu_cmd = make_unique<PickUpCommand>(ring->get_id());
+      }
+    }
+  }
+
+  return pu_cmd;
+}
+
+CommandPtr NPCDecisionStrategy::get_pick_up_wand_decision(CreaturePtr creature, ItemPtr item)
+{
+  CommandPtr pu_cmd;
+  CurrentCreatureAbilities cca;
+
+  // Creatures only pick up wands if they can speak - otherwise, evoking won't
+  // work.
+  if (creature != nullptr && item != nullptr && cca.can_speak(creature))
+  {
+    if (item && item->get_type() == ItemType::ITEM_TYPE_WAND)
+    {
+      Wand* wand = dynamic_cast<Wand*>(item.get());
+
+      if (wand->get_charges().get_current() > 0 && wand->get_has_damage())
+      {
+        pu_cmd = make_unique<PickUpCommand>(wand->get_id());
+      }
+    }
+  }
+
+  return pu_cmd;
 }

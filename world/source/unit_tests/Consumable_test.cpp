@@ -1,5 +1,26 @@
 #include "gtest/gtest.h"
 #include "Food.hpp"
+
+TEST(SW_World_Consumable, get_is_good_general_item_test)
+{
+  Food f;
+
+  EXPECT_TRUE(f.get_is_good());
+
+  f.set_auto_curse(true);
+
+  EXPECT_FALSE(f.get_is_good());
+
+  f.set_auto_curse(false);
+  f.set_status(ItemStatus::ITEM_STATUS_CURSED);
+
+  EXPECT_FALSE(f.get_is_good());
+
+  f.set_status(ItemStatus::ITEM_STATUS_BLESSED);
+
+  EXPECT_TRUE(f.get_is_good());
+}
+
 TEST(SW_World_Consumable, consumable_properties_match)
 {
   Food f1;

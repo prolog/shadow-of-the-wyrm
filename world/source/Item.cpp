@@ -853,6 +853,11 @@ bool Item::get_unpaid() const
   return unpaid;
 }
 
+bool Item::get_is_good() const
+{
+  return (status != ItemStatus::ITEM_STATUS_CURSED) && get_auto_curse() == false;
+}
+
 bool Item::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, id);

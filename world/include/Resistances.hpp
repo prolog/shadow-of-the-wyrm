@@ -196,6 +196,7 @@ class Resistances : public ISerializable
     virtual void add(const Resistances& res);
 
     bool has_resistances_or_vulnerabilities() const;
+    double get_total() const;
 
     void set_resistance_value(const DamageType type, double value);
     void set_all_resistances_to(const double new_value);

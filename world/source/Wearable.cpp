@@ -15,6 +15,9 @@ enum struct ImproveWearableType
   IMPROVE_WEARABLE_BOTH  = 3
 };
 
+const int Wearable::CSTAT_GOOD_THRESHOLD = 2;
+const double Wearable::RESISTS_GOOD_THRESHOLD = 0.1;
+
 Wearable::Wearable()
 : evade(0), soak(0), speed_bonus(0), to_hit(0), addl_damage(0)
 {
@@ -160,6 +163,22 @@ bool Wearable::additional_item_attributes_match(std::shared_ptr<Item> i) const
   }
   
   return match;
+}
+
+bool Wearable::get_is_good() const
+{
+  int cstat_total = speed_bonus
+                  + evade
+                  + soak
+                  + to_hit
+                  + addl_damage;
+
+  double resist_total = resistances.get_total();
+
+  bool good = Item::get_is_good() && 
+              (cstat_total > CSTAT_GOOD_THRESHOLD) || (resist_total > RESISTS_GOOD_THRESHOLD);
+
+  return good;
 }
 
 bool Wearable::serialize(ostream& stream) const

@@ -184,6 +184,9 @@ class Item : public ISerializable
     void set_unpaid(const bool new_unpaid);
     bool get_unpaid() const;
 
+    // Used for NPC AI decisions
+    virtual bool get_is_good() const;
+
     virtual Item* create_with_new_id();
     virtual Item* create();
     virtual Item* clone() = 0;
