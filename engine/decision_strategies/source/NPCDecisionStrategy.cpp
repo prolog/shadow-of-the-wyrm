@@ -611,7 +611,6 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
     CreaturePtr creature = map->get_creature(this_creature_id);
     RaceManager rm;
     Race* race = rm.get_race(creature->get_race_id());
-    CurrentCreatureAbilities cca;
 
     if (creature != nullptr && race != nullptr && race->get_has_pockets())
     {
@@ -676,30 +675,34 @@ CommandPtr NPCDecisionStrategy::get_use_item_decision(const string& this_creatur
 
     if (creature != nullptr)
     {
-      vector<ItemPtr> wands = creature->get_inventory()->get_from_type(ItemType::ITEM_TYPE_WAND);
+      const list<ItemPtr>& items = creature->get_inventory()->get_items_ref();
 
-      for (ItemPtr iwand : wands)
+      for (auto item : items)
       {
-        WandPtr wand = std::dynamic_pointer_cast<Wand>(iwand);
-
-        if (wand != nullptr && wand->get_charges().get_current() > 0 && wand->get_has_damage())
+        if (item != nullptr)
         {
-          uint range = wand->get_range();
-          AttackNPCMagicDecision anmd;
-          Spell spell;
-          SpellShape ss = SpellShapeFactory::create_spell_shape(wand->get_spell_shape_type(), wand->get_radius());
+          ItemType itype = item->get_type();
 
-          spell.set_shape(ss);
-          spell.set_damage(wand->get_damage());
-          spell.set_range(wand->get_range());
-
-          // If there are hostiles in range no non-hostiles in the same,
-          // use the wand.
-          pair<bool, Direction> dec_details = anmd.decide(creature, view_map, spell, creature->get_decision_strategy()->get_threats_ref().get_true_threats_without_level());
-
-          if (dec_details.first)
+          if (itype == ItemType::ITEM_TYPE_WEAPON)
           {
-            use_cmd = std::make_unique<EvokeCommand>(wand->get_id(), dec_details.second);
+            use_cmd = get_equip_weapon_decision(creature, item);
+          }
+          else if (itype == ItemType::ITEM_TYPE_RING)
+          {
+            use_cmd = get_equip_ring_decision(creature, item);
+          }
+          else if (itype == ItemType::ITEM_TYPE_AMULET)
+          {
+            use_cmd = get_equip_amulet_decision(creature, item);
+          }
+          else if (itype == ItemType::ITEM_TYPE_WAND)
+          {
+            use_cmd = get_use_wand_decision(creature, item, view_map);
+          }
+
+          if (use_cmd != nullptr)
+          {
+            return use_cmd;
           }
         }
       }
@@ -834,14 +837,9 @@ CommandPtr NPCDecisionStrategy::get_pick_up_weapon_decision(CreaturePtr creature
 
   if (creature != nullptr && item != nullptr)
   {
-    WeaponManager wm;
-    WeaponPtr weapon = std::dynamic_pointer_cast<Weapon>(item);
-    WeaponPtr eq_weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
-    Damage d = wm.get_damage(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
-
-    if (eq_weapon == nullptr && (weapon->get_damage().avg() > d.avg()))
+    if (should_equip_weapon(creature, item))
     {
-      pu_cmd = make_unique<PickUpCommand>(weapon->get_id());
+      pu_cmd = make_unique<PickUpCommand>(item->get_id());
     }
   }
 
@@ -914,4 +912,86 @@ CommandPtr NPCDecisionStrategy::get_pick_up_wand_decision(CreaturePtr creature, 
   }
 
   return pu_cmd;
+}
+
+CommandPtr NPCDecisionStrategy::get_equip_weapon_decision(CreaturePtr creature, ItemPtr item)
+{
+  CommandPtr equip_cmd;
+
+  if (creature != nullptr && item != nullptr && should_equip_weapon(creature, item))
+  {
+    equip_cmd = make_unique<InventoryCommand>(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED, item);
+  }
+
+  return equip_cmd;
+}
+
+bool NPCDecisionStrategy::should_equip_weapon(CreaturePtr creature, ItemPtr item)
+{
+  bool should_eq = false;
+
+  WeaponManager wm;
+  WeaponPtr weapon = std::dynamic_pointer_cast<Weapon>(item);
+  WeaponPtr eq_weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
+  Damage d = wm.get_damage(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
+
+  if (eq_weapon == nullptr && weapon != nullptr && (weapon->get_damage().avg() > d.avg()))
+  {
+    should_eq = true;
+  }
+
+  return should_eq;
+}
+
+CommandPtr NPCDecisionStrategy::get_equip_ring_decision(CreaturePtr creature, ItemPtr item)
+{
+  CommandPtr equip_cmd;
+
+  if (creature != nullptr && item != nullptr)
+  {
+    // ...
+  }
+
+  return equip_cmd;
+}
+
+CommandPtr NPCDecisionStrategy::get_equip_amulet_decision(CreaturePtr creature, ItemPtr item)
+{
+  CommandPtr equip_cmd;
+
+  if (creature != nullptr && item != nullptr)
+  {
+    // ...
+  }
+
+  return equip_cmd;
+}
+
+CommandPtr NPCDecisionStrategy::get_use_wand_decision(CreaturePtr creature, ItemPtr item, MapPtr view_map)
+{
+  CommandPtr use_cmd;
+  WandPtr wand = std::dynamic_pointer_cast<Wand>(item);
+
+  if (wand != nullptr && wand->get_charges().get_current() > 0 && wand->get_has_damage())
+  {
+    uint range = wand->get_range();
+    AttackNPCMagicDecision anmd;
+    Spell spell;
+    SpellShape ss = SpellShapeFactory::create_spell_shape(wand->get_spell_shape_type(), wand->get_radius());
+
+    spell.set_shape(ss);
+    spell.set_damage(wand->get_damage());
+    spell.set_range(wand->get_range());
+
+    // If there are hostiles in range no non-hostiles in the same,
+    // use the wand.
+    pair<bool, Direction> dec_details = anmd.decide(creature, view_map, spell, creature->get_decision_strategy()->get_threats_ref().get_true_threats_without_level());
+
+    if (dec_details.first)
+    {
+      use_cmd = std::make_unique<EvokeCommand>(wand->get_id(), dec_details.second);
+    }
+  }
+
+  return use_cmd;
 }

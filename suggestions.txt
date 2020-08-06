@@ -1,14 +1,9 @@
 Me:
+- Weird behaviour around eg insta-kill: messages don't show up as expected?
 - Better AI around picking up rings and amulets
   - If a ring or amulet improves resists, to-hit, damage, evade, or soak,
     pick it up.
   - If a ring or amulet can be equipped, and there is an open slot, equip it
-- Better AI around picking up weapons
-  - If a weapon is better than the current average damage and won't make the
-    creature overburdened, pick it up.
-  - When checking whether to use items, see if there are any weapons that could
-    be equipped and make the creature more powerful. This check should go after
-    wands.
 - Better AI around picking up items to throw, etc.
   - Pick up ammo if wielding a launcher of the appropriate type and under a
     certain limit

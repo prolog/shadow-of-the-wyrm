@@ -609,7 +609,6 @@ ItemPtr ActionManager::inventory(CreaturePtr creature, IInventoryPtr inv, const 
 ActionCost ActionManager::equipment(CreaturePtr creature)
 {
   ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
-  
   Game& game = Game::instance();
   
   if (creature)
@@ -621,6 +620,22 @@ ActionCost ActionManager::equipment(CreaturePtr creature)
   }
 
   return get_action_cost(creature, action_cost_value);
+}
+
+ActionCost ActionManager::equipment(CreaturePtr creature, ItemPtr i, const EquipmentWornLocation ewl)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+  Game& game = Game::instance();
+
+  if (creature != nullptr)
+  {
+    DisplayPtr game_display = game.get_display();
+    EquipmentManager equipment_manager(game_display, creature);
+
+    equipment_manager.equip(creature, i, ewl);
+  }
+
+  return get_action_cost(creature, acv);
 }
 
 ActionCost ActionManager::pray(CreaturePtr creature)

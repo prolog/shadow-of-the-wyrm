@@ -1,9 +1,15 @@
+#include "CurrentCreatureAbilities.hpp"
 #include "EquipmentCommandFactory.hpp"
 #include "EquipmentCommandProcessor.hpp"
 #include "EquipmentKeyboardCommandMap.hpp"
 #include "EquipmentManager.hpp"
 #include "EquipmentScreen.hpp"
 #include "EquipmentTranslator.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
+#include "ItemIdentifier.hpp"
+#include "MessageManagerFactory.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 
@@ -77,6 +83,44 @@ ActionCostValue EquipmentManager::manage_equipment()
   }
 
   return total_action_cost;
+}
+
+ActionCostValue EquipmentManager::equip(CreaturePtr creature, ItemPtr i, const EquipmentWornLocation ewl)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
+  if (creature != nullptr && i != nullptr)
+  {
+    Game& game = Game::instance();
+    CreaturePtr player = game.get_current_player();
+
+    // Remove the item from the creature's inventory
+    creature->get_inventory()->remove(i->get_id());
+
+    // If there's an equipped item, remove it and add it to the inventory.
+    ItemPtr eq_item = creature->get_equipment().remove_item(ewl);
+    creature->get_inventory()->merge_or_add(eq_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+
+    // Equip the item
+    creature->get_equipment().set_item(i, ewl);
+
+    // Add a message about equipping.
+    CurrentCreatureAbilities cca;
+    bool player_blind = cca.can_see(player) == false;
+
+    if (player != nullptr && !player_blind)
+    {
+      ItemIdentifier iid;
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(game, creature->get_id()));
+      string msg = TextMessages::get_equip_message(creature->get_description_sid(), iid.get_appropriate_usage_description(i));
+      manager.add_new_message(msg);
+      manager.send();
+
+      acv = ActionCostConstants::DEFAULT;
+    }
+  }
+
+  return acv;
 }
 
 ActionCostValue EquipmentManager::get_action_cost_value(CreaturePtr creature) const

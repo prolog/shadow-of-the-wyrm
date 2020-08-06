@@ -49,6 +49,7 @@ const string TextMessages::SLOT_MACHINE_OUTCOME_MESSAGE       = "SLOT_MACHINE_OU
 const string TextMessages::CARRYING_CAPACITY_MESSAGE          = "CARRYING_CAPACITY_MESSAGE";
 const string TextMessages::DAMAGE_MESSAGE                     = "DAMAGE_MESSAGE";
 const string TextMessages::NPC_LEVEL_MESSAGE                  = "NPC_LEVEL_MESSAGE";
+const string TextMessages::NPC_EQUIP_MESSAGE                  = "NPC_EQUIP_MESSAGE";
 
 string TextMessages::get_full_header_text(const string& header, const uint num_cols)
 {
@@ -663,6 +664,18 @@ string TextMessages::get_damage_message(const Damage& damage)
   string msg = StringTable::get(TextMessages::DAMAGE_MESSAGE);
 
   boost::replace_first(msg, "%s", damage.str());
+
+  return msg;
+}
+
+string TextMessages::get_equip_message(const string& creature_desc_sid, const string& item_desc)
+{
+  string msg = StringTable::get(TextMessages::NPC_EQUIP_MESSAGE);
+
+  boost::replace_first(msg, "%s1", StringTable::get(creature_desc_sid));
+  boost::replace_first(msg, "%s2", item_desc);
+
+  msg[0] = toupper(msg[0]);
 
   return msg;
 }

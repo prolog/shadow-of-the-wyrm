@@ -3,6 +3,8 @@
 #include <string>
 #include "Command.hpp"
 #include "Directions.hpp"
+#include "EquipmentTypes.hpp"
+#include "Item.hpp"
 
 class QuitCommand : public Command
 {
@@ -138,7 +140,15 @@ class InventoryCommand : public Command
 {
   public:
     InventoryCommand(int key);
+    InventoryCommand(const EquipmentWornLocation ewl, ItemPtr item);
     ~InventoryCommand();
+
+    EquipmentWornLocation get_equipment_worn_location() const;
+    ItemPtr get_item();
+
+protected:
+    EquipmentWornLocation ewl;
+    ItemPtr i;
 };
 
 class MeleeWeaponInfoCommand : public Command

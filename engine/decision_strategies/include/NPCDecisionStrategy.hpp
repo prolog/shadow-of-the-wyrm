@@ -42,6 +42,13 @@ class NPCDecisionStrategy : public DecisionStrategy
     virtual CommandPtr get_pick_up_ring_decision(CreaturePtr creature, ItemPtr item);
     virtual CommandPtr get_pick_up_wand_decision(CreaturePtr creature, ItemPtr item);
 
+    virtual CommandPtr get_equip_weapon_decision(CreaturePtr creature, ItemPtr item);
+    bool should_equip_weapon(CreaturePtr creature, ItemPtr item);
+
+    virtual CommandPtr get_equip_ring_decision(CreaturePtr creature, ItemPtr item);
+    virtual CommandPtr get_equip_amulet_decision(CreaturePtr creature, ItemPtr item);
+    virtual CommandPtr get_use_wand_decision(CreaturePtr creature, ItemPtr item, MapPtr view_map);
+
     virtual void update_threats_to_leader(const std::string& this_creature_id, MapPtr view_map);
     virtual void update_threats_if_shopkeeper(MapPtr current_fov_map);
     virtual std::vector<std::pair<std::string, int>> get_creatures_by_distance(CreaturePtr creature, MapPtr view_map, const std::set<std::string>& creature_ids);

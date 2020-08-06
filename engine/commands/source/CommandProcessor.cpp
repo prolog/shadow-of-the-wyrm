@@ -106,7 +106,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::INVENTORY)
       {
-        ac = game.actions.equipment(creature);
+        ac = process_inventory_command(creature, command, game);
       }
       else if (command_name == CommandKeys::PRAY)
       {
@@ -381,6 +381,29 @@ ActionCost CommandProcessor::process_evoke_command(CreaturePtr creature, Command
     else
     {
       ac = game.actions.evoke(creature);
+    }
+  }
+
+  return ac;
+}
+
+ActionCost CommandProcessor::process_inventory_command(CreaturePtr creature, Command* command, Game& game)
+{
+  ActionCost ac;
+  InventoryCommand* inv_cmd = dynamic_cast<InventoryCommand*>(command);
+
+  if (inv_cmd != nullptr)
+  {
+    ItemPtr i = inv_cmd->get_item();
+    EquipmentWornLocation ewl = inv_cmd->get_equipment_worn_location();
+
+    if (i != nullptr && ewl != EquipmentWornLocation::EQUIPMENT_WORN_NONE)
+    {
+      ac = game.actions.equipment(creature, i, ewl);
+    }
+    else
+    {
+      ac = game.actions.equipment(creature);
     }
   }
 

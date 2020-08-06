@@ -48,6 +48,7 @@ class ActionManager : public ISerializable
 
     ActionCost drop(CreaturePtr creature);
     ActionCost equipment(CreaturePtr creature);
+    ActionCost equipment(CreaturePtr creature, ItemPtr i, const EquipmentWornLocation ewl);
 
     // Display the inventory.  Potentially, select an item.  ItemPtr is null if no item
     // was selected.

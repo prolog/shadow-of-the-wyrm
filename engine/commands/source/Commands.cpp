@@ -202,12 +202,27 @@ CharDumpCommand::~CharDumpCommand()
 
 // Equipment and Inventory management
 InventoryCommand::InventoryCommand(const int key)
-: Command(CommandKeys::INVENTORY, key)
+: Command(CommandKeys::INVENTORY, key), ewl(EquipmentWornLocation::EQUIPMENT_WORN_NONE)
+{
+}
+
+InventoryCommand::InventoryCommand(const EquipmentWornLocation new_ewl, ItemPtr new_item)
+: Command(CommandKeys::INVENTORY, '?'), ewl(new_ewl), i(new_item)
 {
 }
 
 InventoryCommand::~InventoryCommand()
 {
+}
+
+EquipmentWornLocation InventoryCommand::get_equipment_worn_location() const
+{
+  return ewl;
+}
+
+ItemPtr InventoryCommand::get_item()
+{
+  return i;
 }
 
 // Melee and ranged weapon info commands
