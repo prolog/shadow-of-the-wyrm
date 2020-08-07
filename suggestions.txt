@@ -1,5 +1,7 @@
 Me:
 - Weird behaviour around eg insta-kill: messages don't show up as expected?
+  This appears to be the halt function not refreshing the display before
+  getting input.
 - Better AI around picking up rings and amulets
   - If a ring or amulet improves resists, to-hit, damage, evade, or soak,
     pick it up.

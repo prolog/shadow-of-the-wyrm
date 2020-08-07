@@ -570,6 +570,8 @@ string SDLDisplay::add_message_with_prompt(const string& message, const Colour c
 
 void SDLDisplay::halt_messages()
 {
+  refresh_current_window();
+
   // Get a keypress from the user and throw it away to continue.
   prompt_processor.get_prompt(window);
 }
