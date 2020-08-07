@@ -644,6 +644,10 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
               {
                 pu_cmd = get_pick_up_ring_decision(creature, item);
               }
+              else if (itype == ItemType::ITEM_TYPE_AMMUNITION)
+              {
+                pu_cmd = get_pick_up_ammunition_decision(creature, item);
+              }
               else if (itype == ItemType::ITEM_TYPE_WAND)
               {
                 pu_cmd = get_pick_up_wand_decision(creature, item);
@@ -694,6 +698,10 @@ CommandPtr NPCDecisionStrategy::get_use_item_decision(const string& this_creatur
           else if (itype == ItemType::ITEM_TYPE_AMULET)
           {
             use_cmd = get_equip_amulet_decision(creature, item);
+          }
+          else if (itype == ItemType::ITEM_TYPE_AMMUNITION)
+          {
+            use_cmd = get_equip_ammunition_decision(creature, item);
           }
           else if (itype == ItemType::ITEM_TYPE_WAND)
           {
@@ -891,6 +899,25 @@ CommandPtr NPCDecisionStrategy::get_pick_up_ring_decision(CreaturePtr creature, 
   return pu_cmd;
 }
 
+CommandPtr NPCDecisionStrategy::get_pick_up_ammunition_decision(CreaturePtr creature, ItemPtr item)
+{
+  CommandPtr pu_cmd;
+
+  if (creature != nullptr && item != nullptr)
+  {
+    WeaponManager wm;
+    WeaponPtr ranged = std::dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON));
+    WeaponPtr ammo = std::dynamic_pointer_cast<Weapon>(item);
+
+    if (wm.is_ranged_weapon_skill_type_compatible_with_ammunition(ranged, ammo))
+    {
+      pu_cmd = make_unique<PickUpCommand>(item->get_id());
+    }
+  }
+
+  return pu_cmd;
+}
+
 CommandPtr NPCDecisionStrategy::get_pick_up_wand_decision(CreaturePtr creature, ItemPtr item)
 {
   CommandPtr pu_cmd;
@@ -949,7 +976,26 @@ CommandPtr NPCDecisionStrategy::get_equip_ring_decision(CreaturePtr creature, It
 
   if (creature != nullptr && item != nullptr)
   {
-    // ...
+    Equipment& eq = creature->get_equipment();
+
+    EquipmentWornLocation f1 = EquipmentWornLocation::EQUIPMENT_WORN_LEFT_FINGER;
+    EquipmentWornLocation f2 = EquipmentWornLocation::EQUIPMENT_WORN_RIGHT_FINGER;
+    EquipmentWornLocation ewl = item->get_worn_location();
+
+    if (ewl == f1 || ewl == f2)
+    {
+      bool f1_worn = eq.has_item(f1);
+      bool f2_worn = eq.has_item(f2);
+
+      if (!f1_worn)
+      {
+        equip_cmd = std::make_unique<InventoryCommand>(f1, item);
+      }
+      else if (!f2_worn)
+      {
+        equip_cmd = std::make_unique<InventoryCommand>(f2, item);
+      }
+    }
   }
 
   return equip_cmd;
@@ -961,7 +1007,32 @@ CommandPtr NPCDecisionStrategy::get_equip_amulet_decision(CreaturePtr creature, 
 
   if (creature != nullptr && item != nullptr)
   {
-    // ...
+    EquipmentWornLocation ewl = item->get_worn_location();
+    EquipmentWornLocation worn_loc = EquipmentWornLocation::EQUIPMENT_WORN_NECK;
+
+    if (ewl == worn_loc && !creature->get_equipment().has_item(worn_loc))
+    {
+      equip_cmd = std::make_unique<InventoryCommand>(worn_loc, item);
+    }
+  }
+
+  return equip_cmd;
+}
+
+CommandPtr NPCDecisionStrategy::get_equip_ammunition_decision(CreaturePtr creature, ItemPtr item)
+{
+  CommandPtr equip_cmd;
+
+  if (creature != nullptr && item != nullptr)
+  {
+    WeaponPtr ranged = std::dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON));
+    WeaponPtr ammo = std::dynamic_pointer_cast<Weapon>(item);
+    WeaponManager wm;
+
+    if (wm.is_ranged_weapon_skill_type_compatible_with_ammunition(ranged, ammo))
+    {
+      equip_cmd = std::make_unique<InventoryCommand>(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION, item);
+    }
   }
 
   return equip_cmd;

@@ -10,7 +10,8 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 - NPCs may now pick up items if they consider them "good". This depends on 
   the item type, but in general, NPCs avoid cursed and autocursing items.
 
-- NPCs can now evoke wands, equip weapons.
+- NPCs can now evoke wands, equip weapons and ammunition, and wear rings and 
+  amulets.
 
 - Nobles now start with a higher starting leadership value (40).
 

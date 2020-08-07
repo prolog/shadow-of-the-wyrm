@@ -1,18 +1,4 @@
 Me:
-- Weird behaviour around eg insta-kill: messages don't show up as expected?
-  This appears to be the halt function not refreshing the display before
-  getting input.
-- Better AI around picking up rings and amulets
-  - If a ring or amulet improves resists, to-hit, damage, evade, or soak,
-    pick it up.
-  - If a ring or amulet can be equipped, and there is an open slot, equip it
-- Better AI around picking up items to throw, etc.
-  - Pick up ammo if wielding a launcher of the appropriate type and under a
-    certain limit
-  - Pick up launcher-less ammo if average damage > a certain amount and can
-    carry it without being burdened
-  - Add a decision to equip items as well. This should fire after "use" and
-    before "pickup".
 - Animation before damage? Player killed by spell or wand should see the
   animation.
 - Hirelings. Make uniques via same sort of process as ancient beasts. Add their
