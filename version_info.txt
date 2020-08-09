@@ -23,6 +23,10 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 - Pacification still works on many creatures, but not constructs, undead,
   or the divine.
 
+- There is now a narrative_mode setting that restores you to full health and
+  remove negative statuses at death, allowing you to play for as long as you
+  want.
+
 - New poem fragment for the title screen.
 
 - You can now give 'o'rders to your followers, and they'll follow you between
@@ -34,6 +38,8 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   with the progression used in the game data.
 
 - Starting location is now included in the synopsis on the naming screen.
+
+- Stanzas for "Tel and Floridel".
 
 - Bug fixes:
 

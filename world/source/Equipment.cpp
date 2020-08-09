@@ -54,7 +54,7 @@ bool Equipment::has_item(const EquipmentWornLocation worn_location) const
   bool iexists = false;
   auto e_it = equipment.find(worn_location);
 
-  if (e_it != equipment.end())
+  if (e_it != equipment.end() && e_it->second != nullptr)
   {
     iexists = true;
   }
@@ -80,12 +80,14 @@ ItemPtr Equipment::get_item(const EquipmentWornLocation worn_location) const
 ItemPtr Equipment::remove_item(const EquipmentWornLocation worn_location)
 {
   ItemPtr previously_worn_item;
+  ItemPtr no_item;
+
   auto e_it = equipment.find(worn_location);
 
   if (e_it != equipment.end())
   {
     previously_worn_item = e_it->second;
-    equipment.erase(e_it);
+    equipment[worn_location] = no_item;
   }
   
   return previously_worn_item;
@@ -115,6 +117,13 @@ uint Equipment::count_items() const
 void Equipment::initialize()
 {
   equipment.clear();
+
+  for (int i = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); i < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); i++)
+  {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(i);
+    ItemPtr no_item;
+    equipment[ewl] = no_item;
+  }
 }
 
 // Check to see if a heap of items can be equipped

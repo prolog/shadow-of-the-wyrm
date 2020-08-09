@@ -2143,24 +2143,7 @@ int remove_negative_statuses_from_creature(lua_State* ls)
   {
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
-
-    if (creature != nullptr)
-    {
-      CreatureStatusMap csm = creature->get_statuses();
-
-      for (const auto& csm_pair : csm)
-      {
-        string status_id = csm_pair.first;
-        StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
-
-        if (se && se->is_negative())
-        {
-          CreatureUtils::mark_modifiers_for_deletion(creature, status_id, StatusRemovalType::STATUS_REMOVAL_UNDO);
-        }
-      }
-
-      CreatureUtils::remove_modifiers(creature);
-    }
+    CreatureUtils::remove_negative_statuses_from_creature(creature);
   }
   else
   {

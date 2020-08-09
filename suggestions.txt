@@ -1,16 +1,14 @@
 Me:
-- Animation before damage? Player killed by spell or wand should see the
-  animation.
 - Hirelings. Make uniques via same sort of process as ancient beasts. Add their
   desc SIDs to the string table.
 - Linux: check premake scripts for commands/order
 - Beastmastery: add mounts
 - How to give orders to individual creatures?
-- Narrative mode (no death, death removes negative statuses + heals)
 - Each version: make sure to update itch.io page for both SotW and the sprite
   pack! OpenGameArt if new sprites.
 - Release after this: grond says tanning is complicated & dragon skins aren't
   what they should be.
+- Mode screen (F10): Game mode, graphics, palette
 - Use Magic to destroy spellbooks and get a bit of AP?
 - Dungeons should check for shop before generating trap.
 - Beer halls in villages

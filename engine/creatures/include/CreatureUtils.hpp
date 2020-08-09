@@ -70,6 +70,8 @@ class CreatureUtils
     static CreatureMap get_followers_in_fov(CreaturePtr creature);
     static std::string get_follower_property_prefix();
 
+    static bool remove_negative_statuses_from_creature(CreaturePtr creature);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();

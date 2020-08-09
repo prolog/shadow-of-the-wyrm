@@ -862,6 +862,32 @@ string CreatureUtils::get_follower_property_prefix()
   return Serialize::BINARY_PROPERTY_PREFIX + CreatureProperties::CREATURE_PROPERTIES_FOLLOWER_PREFIX;
 }
 
+bool CreatureUtils::remove_negative_statuses_from_creature(CreaturePtr creature)
+{
+  bool removed = false;
+
+  if (creature != nullptr)
+  {
+    CreatureStatusMap csm = creature->get_statuses();
+
+    for (const auto& csm_pair : csm)
+    {
+      string status_id = csm_pair.first;
+      StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
+
+      if (se && se->is_negative())
+      {
+        CreatureUtils::mark_modifiers_for_deletion(creature, status_id, StatusRemovalType::STATUS_REMOVAL_UNDO);
+        removed = true;
+      }
+    }
+
+    CreatureUtils::remove_modifiers(creature);
+  }
+
+  return removed;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/CreatureUtils_test.cpp"
 #endif
