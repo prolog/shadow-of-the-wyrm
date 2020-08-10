@@ -1,5 +1,6 @@
 #include "BuildingConfigFactory.hpp"
 #include "CoordUtils.hpp"
+#include "ParkSectorFeature.hpp"
 #include "ScatteredSettlementGenerator.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
@@ -77,31 +78,44 @@ void ScatteredSettlementGenerator::generate_scattered_settlement(MapPtr map)
   int cols          = dim.get_x();
   int num_buildings = RNG::range(6, 9);
   int num_attempts  = 100;
-  
+  int pct_chance_park = 20;
+
   int attempts  = 0;
   int nbuildings = 0;
   int row, col, height, width;
   CardinalDirection door_direction;
-  
+  bool park_placed = false;
+
   while ((nbuildings < num_buildings) && (attempts < num_attempts))
   {
     // JCD FIXME: DEFINE THESE CONSTANTS IN BASESETTLEMENTGENERATOR AND BE DONE WITH IT!
     height = RNG::range(4, 6);
-    width  = RNG::range(5, 7);
-    row    = RNG::range(1, rows - height - 2);
-    col    = RNG::range(1, cols - width - 2);
+    width = RNG::range(5, 7);
+    row = RNG::range(1, rows - height - 2);
+    col = RNG::range(1, cols - width - 2);
     door_direction = static_cast<CardinalDirection>(RNG::range(static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_NORTH), static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_WEST)));
-    
+
     if (can_building_be_placed(row, col, height, width))
     {
-      vector<ClassIdentifier> cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
-      BuildingGenerationParameters bgp(row, row + height, col, col + width, door_direction, false, cl_ids, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids));
-      SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
-      
-      Room room(no_features, attempts, col, col+width, row, row+width);
-      current_buildings.push_back(room);
-      
-      nbuildings++;
+      // JCD FIXME - refactor if condition
+      if (!park_placed && RNG::percent_chance(pct_chance_park))
+      {
+        ParkSectorFeature psf(0, 0, 100); // no statues or trader, but a pond
+
+        psf.generate(map, { row, col }, { row + height, col + width });
+        park_placed = true;
+      }
+      else
+      {
+        vector<ClassIdentifier> cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
+        BuildingGenerationParameters bgp(row, row + height, col, col + width, door_direction, false, cl_ids, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids));
+        SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
+
+        Room room(no_features, attempts, col, col + width, row, row + width);
+        current_buildings.push_back(room);
+
+        nbuildings++;
+      }
     }
     
     attempts++;

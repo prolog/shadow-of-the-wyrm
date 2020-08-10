@@ -10,6 +10,16 @@
 
 using namespace std;
 
+ParkSectorFeature::ParkSectorFeature()
+: pct_chance_statues(75), pct_chance_trader(100), pct_chance_pond(75)
+{
+}
+
+ParkSectorFeature::ParkSectorFeature(const int statues, const int trader, const int pond)
+: pct_chance_statues(statues), pct_chance_trader(trader), pct_chance_pond(pond)
+{
+}
+
 bool ParkSectorFeature::generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
 {
   bool generated = false;
@@ -18,9 +28,9 @@ bool ParkSectorFeature::generate_feature(MapPtr map, const Coordinate& start_coo
   int width = CoordUtils::get_width(start_coord, end_coord);
 
   bool generate_benches = RNG::percent_chance(50);
-  bool generate_statue_perimeter = RNG::percent_chance(75);
-  bool generate_trader = RNG::percent_chance(100);
-  bool generate_pond = !generate_statue_perimeter || RNG::percent_chance(75);
+  bool generate_statue_perimeter = RNG::percent_chance(pct_chance_statues);
+  bool generate_trader = RNG::percent_chance(pct_chance_trader);
+  bool generate_pond = !generate_statue_perimeter || RNG::percent_chance(pct_chance_pond);
 
   if (map != nullptr)
   {

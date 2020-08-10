@@ -1,8 +1,18 @@
 Me:
+- Things to make villages more interesting:
+  - Archery ranges (contests, using ranges should train ranged, etc)
+  - Graves
+  - Ponds w/ benches
+  - Caverns
+  - Sewers
+  - Mines
+  - fenced area with gate: pigs, chickens
+  - stream
+  - tavern
+  - orchard
 - Hirelings. Make uniques via same sort of process as ancient beasts. Add their
   desc SIDs to the string table.
 - Linux: check premake scripts for commands/order
-- Beastmastery: add mounts
 - How to give orders to individual creatures?
 - Each version: make sure to update itch.io page for both SotW and the sprite
   pack! OpenGameArt if new sprites.
@@ -15,19 +25,9 @@ Me:
 - spell arcana (bind to capitals in spell list)
 - auto save - not working?
 - Do creatures pause when no threats in FOV? Seems slow.
-- Things to make villages more interesting:
-  - Archery ranges (contests, using ranges should train ranged, etc)
-  - Graves
-  - Ponds w/ benches
-  - Caverns
-  - Sewers
-  - Mines
-  - fenced area with gate: pigs, chickens
-  - stream
-  - tavern
-  - orchard
 - google screen clear not working for SDL. reported 2x.
 - 2x draw?
+- Beastmastery: add mounts
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?
 - EACH VERSION: clean up the usage of some shared_ptrs.  These should be
