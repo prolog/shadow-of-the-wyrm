@@ -4,6 +4,7 @@
 #include "Building.hpp"
 #include "BuildingGenerationParameters.hpp"
 #include "GardenTypes.hpp"
+#include "SectorFeature.hpp"
 
 class BaseSettlementGenerator : public SOTW::Generator
 {
@@ -17,6 +18,8 @@ class BaseSettlementGenerator : public SOTW::Generator
   protected:
     virtual bool get_permanence_default() const override;
 
+    virtual std::vector<std::shared_ptr<SectorFeature>> get_sector_features();
+
     void generate_road_north(MapPtr map, const int start_row, const int start_col, const int road_length, const int probability, const int block_size_modifier = 0, bool recurse = true);
     void generate_road_south(MapPtr map, const int start_row, const int start_col, const int road_length, const int probability, const int block_size_modifier = 0, bool recurse = true);
     void generate_road_east(MapPtr map, const int start_row, const int start_col, const int road_length, const int probability, const int block_size_modifier = 0, bool recurse = true);
@@ -27,6 +30,7 @@ class BaseSettlementGenerator : public SOTW::Generator
 
     MapPtr base_map;
     int growth_rate;
+    int pct_chance_sector_feature;
 
     const int PROBABILITY_DECREMENT;
     const int WORKSHOP_PROBABILITY;

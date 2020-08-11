@@ -1,7 +1,5 @@
 #include "BuildingConfigFactory.hpp"
 #include "CoordUtils.hpp"
-#include "GraveyardSectorFeature.hpp"
-#include "ParkSectorFeature.hpp"
 #include "RNG.hpp"
 #include "ScatteredSettlementGenerator.hpp"
 #include "SettlementGeneratorUtils.hpp"
@@ -79,15 +77,13 @@ void ScatteredSettlementGenerator::generate_scattered_settlement(MapPtr map)
   int cols          = dim.get_x();
   int num_buildings = RNG::range(6, 9);
   int num_attempts  = 100;
-  int pct_chance_sf = 20;
 
   int attempts  = 0;
   int nbuildings = 0;
   int row, row_end, col, col_end, height, width;
   CardinalDirection door_direction;
-  ParkSectorFeature psf(0, 0, 100); // no statues or trader - but a pond!
-  GraveyardSectorFeature gsf;
-  vector<SectorFeature*> sfeatures = { &psf, &gsf };
+
+  vector<shared_ptr<SectorFeature>> sfeatures = get_sector_features();
 
   while ((nbuildings < num_buildings) && (attempts < num_attempts))
   {
@@ -102,7 +98,7 @@ void ScatteredSettlementGenerator::generate_scattered_settlement(MapPtr map)
 
     if (can_building_be_placed(row, col, height, width))
     {
-      if (!sfeatures.empty() && RNG::percent_chance(pct_chance_sf))
+      if (!sfeatures.empty() && RNG::percent_chance(pct_chance_sector_feature))
       {
         pair<bool, int> result = SettlementGeneratorUtils::generate_sector_feature_if_possible(map, { row, col }, { row_end, col_end }, sfeatures);
 

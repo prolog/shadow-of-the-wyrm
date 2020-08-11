@@ -4,6 +4,13 @@
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "TileGenerator.hpp"
+#include "GraveyardSectorFeature.hpp"
+#include "ParkSectorFeature.hpp"
+#include "PlazaSectorFeature.hpp"
+#include "RockGardenGenerator.hpp"
+#include "ShadeGardenGenerator.hpp"
+#include "ShopSectorFeature.hpp"
+#include "ShrineSectorFeature.hpp"
 
 using namespace std;
 
@@ -27,6 +34,8 @@ void WalledSettlementGenerator::initialize()
   west_wall  = 0;
   gate_row   = 0;
   gate_col   = 0;
+
+  pct_chance_sector_feature = 25;
 }
 
 MapPtr WalledSettlementGenerator::generate(const Dimensions& dim)
@@ -141,29 +150,73 @@ void WalledSettlementGenerator::generate_inner_settlement(MapPtr map)
   int cur_buildings_generated = 0;
   int num_attempts = 200;
   int num_buildings = RNG::range(6, 9);
-  int row, col;
+  int row, col, row_end, col_end;
   int height, width;
   CardinalDirection dir;
   int offset_extra = 1;
   BuildingConfigFactory bcf;
   
+  vector<shared_ptr<SectorFeature>> sfeatures = get_sector_features();
+
   while ((cur_buildings_generated < num_buildings) && (cur_attempts < num_attempts))
   {
-    row    = RNG::range(north_wall+2, south_wall-2);
-    col    = RNG::range(west_wall+2, east_wall-2);
-    height = RNG::range(std::min(5, gap_height), std::min(7, gap_height));
-    width  = RNG::range(std::min(5, gap_width), std::min(9, gap_width));
+    row     = RNG::range(north_wall+2, south_wall-2);
+    col     = RNG::range(west_wall+2, east_wall-2);
+    height  = RNG::range(std::min(5, gap_height), std::min(7, gap_height));
+    width   = RNG::range(std::min(5, gap_width), std::min(9, gap_width));
+    row_end = row + height;
+    col_end = col + width;
     dir = static_cast<CardinalDirection>(RNG::range(static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_NORTH), static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_WEST)));
     
     if (!SettlementGeneratorUtils::does_building_overlap(map, row, row+height+1, col, col+width+1, offset_extra))
     {
-      vector<ClassIdentifier> cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
-      BuildingGenerationParameters bgp(row, row + height, col, col + width, dir, false, cl_ids, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids));
+      if (!sfeatures.empty() && RNG::percent_chance(pct_chance_sector_feature))
+      {
+        pair<bool, int> result = SettlementGeneratorUtils::generate_sector_feature_if_possible(map, { row, col }, { row_end, col_end }, sfeatures);
 
-      SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
-      cur_buildings_generated++;
+        if (result.first)
+        {
+          sfeatures.erase(sfeatures.begin() + result.second);
+        }
+      }
+      else
+      {
+        vector<ClassIdentifier> cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
+        BuildingGenerationParameters bgp(row, row_end, col, col_end, dir, false, cl_ids, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids));
+
+        SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
+        cur_buildings_generated++;
+      }
     }
 
     cur_attempts++;
   }
+}
+
+vector<shared_ptr<SectorFeature>> WalledSettlementGenerator::get_sector_features()
+{
+  vector<shared_ptr<SectorFeature>> sfs;
+
+  shared_ptr<SectorFeature> sf = std::make_shared<GraveyardSectorFeature>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<ParkSectorFeature>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<PlazaSectorFeature>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<RockGardenGenerator>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<ShadeGardenGenerator>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<ShopSectorFeature>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<ShrineSectorFeature>();
+  sfs.push_back(sf);
+
+  return sfs;
 }

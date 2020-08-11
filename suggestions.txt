@@ -1,4 +1,5 @@
 Me:
+- Sector features for regular settlements
 - Things to make villages more interesting:
   - Archery ranges (contests, using ranges should train ranged, etc)
   - Graves

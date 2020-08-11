@@ -1,15 +1,18 @@
 #include <utility>
 #include "BaseSettlementGenerator.hpp"
 #include "BuildingConfigFactory.hpp"
+#include "GraveyardSectorFeature.hpp"
+#include "ParkSectorFeature.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "TileGenerator.hpp"
+#include "VegetableGardenGenerator.hpp"
 
 using namespace std;
 
 BaseSettlementGenerator::BaseSettlementGenerator(MapPtr new_base_map)
 : Generator(new_base_map->get_map_exit_id(), TileType::TILE_TYPE_VILLAGE),
-base_map(new_base_map), growth_rate(100)
+base_map(new_base_map), growth_rate(100), pct_chance_sector_feature(20)
 , PROBABILITY_DECREMENT(30)
 , WORKSHOP_PROBABILITY(20)
 , BUILDING_PROBABILITY(80)
@@ -24,7 +27,7 @@ base_map(new_base_map), growth_rate(100)
 
 BaseSettlementGenerator::BaseSettlementGenerator(MapPtr new_base_map, const int new_growth_rate)
 : Generator(new_base_map->get_map_exit_id(), TileType::TILE_TYPE_VILLAGE),
-base_map(new_base_map), growth_rate(new_growth_rate)
+base_map(new_base_map), growth_rate(new_growth_rate), pct_chance_sector_feature(20)
 , PROBABILITY_DECREMENT(30)
 , WORKSHOP_PROBABILITY(20)
 , BUILDING_PROBABILITY(80)
@@ -439,4 +442,20 @@ void BaseSettlementGenerator::generate_wells(MapPtr map)
       }
     }
   }
+}
+
+vector<shared_ptr<SectorFeature>> BaseSettlementGenerator::get_sector_features()
+{
+  vector<shared_ptr<SectorFeature>> sfs;
+
+  shared_ptr<SectorFeature> sf = std::make_shared<ParkSectorFeature>(0, 0, 100); // no statues or trader - but a pond!
+  sfs.push_back(sf);
+
+  sf = std::make_shared<GraveyardSectorFeature>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<VegetableGardenGenerator>();
+  sfs.push_back(sf);
+
+  return sfs;
 }
