@@ -1,16 +1,6 @@
 #pragma once
 #include "SectorFeatureGenerator.hpp"
-
-enum struct ReligiousCommercialSectorFeatureType
-{
-  RC_SECTOR_FIRST = 0,
-  RC_SECTOR_FEATURE_GARDEN = 0,
-  RC_SECTOR_FEATURE_ROCK_GARDEN = 1,
-  RC_SECTOR_FEATURE_FLOWER_GARDEN = 2,
-  RC_SECTOR_FEATURE_SHOP = 3,
-  RC_SECTOR_FEATURE_OUTDOOR_SHRINE = 4,
-  RC_SECTOR_LAST = 5
-};
+#include "SectorFeatureTypes.hpp"
 
 class ReligiousCommercialSectorFeatureGenerator : public SectorFeatureGenerator
 {

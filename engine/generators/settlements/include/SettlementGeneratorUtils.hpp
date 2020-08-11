@@ -4,6 +4,7 @@
 #include "Directions.hpp"
 #include "GardenTypes.hpp"
 #include "Map.hpp"
+#include "SectorFeature.hpp"
 
 class SettlementGeneratorUtils
 {
@@ -14,6 +15,7 @@ class SettlementGeneratorUtils
     static bool is_rows_and_cols_in_range(const Dimensions& dim, const int start_row, const int end_row, const int start_col, const int end_col);
     static bool generate_garden_if_possible(MapPtr map, const GardenType garden_type, const int start_row, const int end_row, const int start_col, const int end_col);
     static bool generate_building_if_possible(MapPtr map, const BuildingGenerationParameters& bgp, std::vector<Building>& buildings, const int growth_rate);
+    static std::pair<bool, int> generate_sector_feature_if_possible(MapPtr map, const Coordinate& start, const Coordinate& end, const vector<SectorFeature*>& sfeatures);
 
   protected:
     SettlementGeneratorUtils();

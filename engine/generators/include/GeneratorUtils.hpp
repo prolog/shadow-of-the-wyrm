@@ -48,6 +48,10 @@ class GeneratorUtils
     // Fill a subset of the map with a certain tile type.
     static void fill(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const TileType tile_type);
 
+    static void add_random_stream_or_springs(MapPtr map, const int pct_chance_stream, const int pct_chance_springs);
+    static void add_random_stream(MapPtr map);
+    static void add_random_springs(MapPtr map);
+
   protected:
     static bool position_in_range(const int min, const int max, const int actual);
     static bool are_tiles_ok_for_bazaar(MapPtr map, const int y_start, const int x_start, const int height, const int width);
@@ -56,6 +60,7 @@ class GeneratorUtils
     static const int BAZAAR_MAX_WIDTH;
     static const int BAZAAR_MIN_HEIGHT;
     static const int BAZAAR_MAX_HEIGHT;
+
     GeneratorUtils();
     ~GeneratorUtils();
 };

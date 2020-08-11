@@ -6,6 +6,7 @@
 #include "Dimensions.hpp"
 #include "tiles.hpp"
 #include "RNG.hpp"
+#include "StreamGenerator.hpp"
 
 using namespace std;
 
@@ -29,6 +30,11 @@ MapPtr FieldGenerator::generate(const Dimensions& dimensions)
       TilePtr current_tile = generate_tile(result_map, row, col);
       result_map->insert(row, col, current_tile);
     }
+  }
+
+  if (RNG::percent_chance(40))
+  {
+    StreamGenerator::generate(result_map);
   }
 
   if (RNG::percent_chance(25))

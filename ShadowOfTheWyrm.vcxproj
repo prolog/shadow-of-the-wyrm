@@ -798,6 +798,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\settlements\sector\include\SectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\SectorFeatureGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\SectorFeatureGeneratorFactory.hpp" />
+    <ClInclude Include="engine\generators\settlements\sector\include\SectorFeatureTypes.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\ShadeGardenGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\ShopSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\ShrineSectorFeature.hpp" />
