@@ -399,6 +399,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_weather", set_weather);
   lua_register(L, "genocide", genocide);
   lua_register(L, "generate_ancient_beast", generate_ancient_beast);
+  lua_register(L, "generate_hireling", generate_hireling);
   lua_register(L, "set_colour", set_colour);
   lua_register(L, "add_npc_level_message", add_npc_level_message);
 }
@@ -8046,6 +8047,35 @@ int generate_ancient_beast(lua_State* ls)
 
   lua_pushboolean(ls, generated);
   return 1;
+}
+
+int generate_hireling(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  if (num_args == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    Game& game = Game::instance();
+    string map_id = lua_tostring(ls, 1);
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
+    int y = lua_tointeger(ls, 2);
+    int x = lua_tointeger(ls, 3);
+    int lvl = lua_tointeger(ls, 4);
+
+    if (map != nullptr)
+    {
+      CreatureGenerationManager cgm;
+      CreaturePtr hireling = cgm.generate_hireling(game.get_action_manager_ref(), lvl);
+
+      GameUtils::add_new_creature_to_map(game, hireling, map, { y,x });
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to generate_hireling");
+  }
+
+  return 0;
 }
 
 int set_colour(lua_State* ls)

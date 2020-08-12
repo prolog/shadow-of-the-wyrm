@@ -27,8 +27,6 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   remove negative statuses at death, allowing you to play for as long as you
   want.
 
-- New poem fragment for the title screen.
-
 - You can now give 'o'rders to your followers, and they'll follow you between
   maps if adjacent to you when you left the previous.  Your followers will get
   a bonus to their attack damage based on your Leadership skill, as long as
@@ -38,6 +36,12 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   with the progression used in the game data.
 
 - Starting location is now included in the synopsis on the naming screen.
+
+- Hirelings can now be found in a few fixed areas (Isen Dun, Carcassia, Yew,
+  Gnordvar). Hirelings will follow you - for a fee - and can be ordered around
+  using the 'o'rder command.
+
+- New poem fragment for the title screen.
 
 - Stanzas for "Tel and Floridel".
 

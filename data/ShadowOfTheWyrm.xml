@@ -7943,6 +7943,10 @@
 					<Row>13</Row>
 					<Col>5</Col>
 				</Reference>
+				<Reference id="hireling">
+					<Row>13</Row>
+					<Col>9</Col>
+				</Reference>
 			</References>
 		</Spritesheet>
 		<Spritesheet id="it">

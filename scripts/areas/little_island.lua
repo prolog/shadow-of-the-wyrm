@@ -48,3 +48,6 @@ set_creature_name(shopkeeper_id, "Edmund", isen_dun_id)
 set_shop_shopkeeper_id(shop_id, shopkeeper_id, isen_dun_id)
 repop_shop(shop_id, isen_dun_id)
 
+-- Generate a hireling by the eastern docks
+generate_hireling("isen_dun", 16, 70, 6)
+

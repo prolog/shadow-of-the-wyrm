@@ -1040,6 +1040,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\strings\include\MusicTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\OrderTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\PlayerTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\ProcgenTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\SacrificeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ScreenTitleTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MovementTextKeys.hpp" />
@@ -1203,6 +1204,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\include\ConductTypes.hpp" />
     <ClInclude Include="world\include\ConsumableConstants.hpp" />
     <ClInclude Include="world\include\CreatureGenerationOptions.hpp" />
+    <ClInclude Include="world\include\CreatureTypes.hpp" />
     <ClInclude Include="world\include\DamageFlag.hpp" />
     <ClInclude Include="world\include\DamageFlagFactory.hpp" />
     <ClInclude Include="world\include\DropParameters.hpp" />
@@ -2051,6 +2053,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\strings\source\MusicTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\OrderTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\PlayerTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\ProcgenTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\unit_tests\DateTextKeys_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -3567,6 +3570,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\source\Conducts.cpp" />
     <ClCompile Include="world\source\ConsumableConstants.cpp" />
     <ClCompile Include="world\source\CreatureGenerationOptions.cpp" />
+    <ClCompile Include="world\source\CreatureTypes.cpp" />
     <ClCompile Include="world\source\DamageFlag.cpp" />
     <ClCompile Include="world\source\DamageFlagFactory.cpp" />
     <ClCompile Include="world\source\DropParameters.cpp" />

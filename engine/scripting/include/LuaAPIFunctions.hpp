@@ -250,6 +250,7 @@ int creature_exists(lua_State* ls);
 int set_weather(lua_State* ls);
 int genocide(lua_State* ls);
 int generate_ancient_beast(lua_State* ls);
+int generate_hireling(lua_State* ls);
 int set_colour(lua_State* ls);
 int add_npc_level_message(lua_State* ls);
 
