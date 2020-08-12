@@ -3494,3 +3494,13 @@ the heat sufficient for the meat above. %b
 The giants turned it often, and they checked %b
 the meat until the heat had crisped and crackled it.
 %p
+They ate in silence until Aes finally spoke. %b
+Slight and short, he had a quiet voice %b
+that carried through the campfire like the smoke %b
+the embers lacked.  "You had an easy choice," %b
+he said, and set his piece of meat aside. %b
+"If it were me, I wouldn't hesitate %b
+to cut your throats." He stared into Rhone's eyes - %b
+he recognized the boy - and held his gaze %b
+until the youngest brother couldn't concentrate.
+%p
