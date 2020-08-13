@@ -20,30 +20,6 @@ bool CurrentCreatureAbilities::can_speak(CreaturePtr creature, const bool add_me
   return creature_can_speak;
 }
 
-bool CurrentCreatureAbilities::can_give_orders(CreaturePtr creature, const bool add_message_if_player_and_cannot_give_orders) const
-{
-  bool can_order = false;
-
-  if (creature != nullptr && can_speak(creature))
-  {
-    Skills& skills = creature->get_skills();
-
-    if (skills.get_value(SkillType::SKILL_GENERAL_BEASTMASTERY) > 0 ||
-        skills.get_value(SkillType::SKILL_GENERAL_MUSIC) > 0        ||
-        skills.get_value(SkillType::SKILL_GENERAL_LEADERSHIP) > 0)
-    {
-      can_order = true;
-    }
-  }
-
-  if (add_message_if_player_and_cannot_give_orders && !can_order && creature && creature->get_is_player())
-  {
-    add_ability_message_for_sid(creature, ActionTextKeys::ACTION_ORDER_NO_SKILLS);
-  }
-
-  return can_order;
-}
-
 // Check to see if the creature can focus (is not enraged).
 // Creatures without focus can't cast spells, read, or use evocables.
 bool CurrentCreatureAbilities::can_focus(CreaturePtr creature, const bool add_message_if_player_and_cannot_focus) const

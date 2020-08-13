@@ -5,6 +5,7 @@
 #include "CreatureGenerationConstants.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "CreatureFactory.hpp"
+#include "CreatureProperties.hpp"
 #include "CreatureTypes.hpp"
 #include "CreatureUtils.hpp"
 #include "DecisionStrategyFactory.hpp"
@@ -267,6 +268,16 @@ CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, cons
 
   HostilityManager hm;
   hm.set_hostility_to_player(hireling, false);
+
+  hireling->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIRELING_CHAT_SID, "HIRELING_HIRE" + std::to_string(RNG::range(1, 5)) + "_SID");
+
+  int hire_fee = danger_level * 50;
+  hireling->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIRE_FEE, std::to_string(hire_fee));
+
+  // Set up the creature's attack, HP, AP, spells.
+  ExperienceManager em;
+  int xp = em.get_total_experience_needed_for_level(hireling, danger_level);
+  em.gain_experience(hireling, static_cast<uint>(xp));
 
   return hireling;
 }

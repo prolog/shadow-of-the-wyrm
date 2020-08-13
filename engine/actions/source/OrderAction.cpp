@@ -21,7 +21,7 @@ ActionCostValue OrderAction::order(CreaturePtr creature)
   {
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
-    if (check_for_skills(creature, manager) && check_for_followers(creature, manager))
+    if (check_for_followers(creature, manager))
     {
       order_followers(creature, manager);
     }
@@ -30,27 +30,6 @@ ActionCostValue OrderAction::order(CreaturePtr creature)
   }
 
   return get_action_cost_value(creature);
-}
-
-bool OrderAction::check_for_skills(CreaturePtr creature, IMessageManager& manager)
-{
-  bool has_skills = false;
-
-  if (creature != nullptr)
-  {
-    CurrentCreatureAbilities cca;
-
-    if (cca.can_give_orders(creature, false))
-    {
-      has_skills = true;
-    }
-    else
-    {
-      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ORDER_NO_SKILLS));
-    }
-  }
-
-  return has_skills;
 }
 
 bool OrderAction::check_for_followers(CreaturePtr creature, IMessageManager& manager)

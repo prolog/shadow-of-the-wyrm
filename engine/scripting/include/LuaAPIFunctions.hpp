@@ -253,6 +253,8 @@ int generate_ancient_beast(lua_State* ls);
 int generate_hireling(lua_State* ls);
 int set_colour(lua_State* ls);
 int add_npc_level_message(lua_State* ls);
+int get_leader_id(lua_State* ls);
+int get_name(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

@@ -23,29 +23,6 @@ TEST(SW_Engine_Creatures_CurrentCreatureAbilities, can_speak)
   EXPECT_FALSE(cca.can_speak(creature));
 }
 
-TEST(SW_Engine_Creatures_CurrentCreatureAbilities, can_give_orders)
-{
-  CurrentCreatureAbilities cca;
-  CreaturePtr creature = std::make_shared<Creature>();
-
-  EXPECT_FALSE(cca.can_give_orders(nullptr));
-  EXPECT_FALSE(cca.can_give_orders(creature));
-
-  creature->get_skills().set_value(SkillType::SKILL_GENERAL_BEASTMASTERY, 30);
-
-  EXPECT_TRUE(cca.can_give_orders(creature));
-
-  creature->get_skills().set_value(SkillType::SKILL_GENERAL_BEASTMASTERY, 0);
-  creature->get_skills().set_value(SkillType::SKILL_GENERAL_MUSIC, 30);
-
-  EXPECT_TRUE(cca.can_give_orders(creature));
-
-  creature->get_skills().set_value(SkillType::SKILL_GENERAL_MUSIC, 0);
-  creature->get_skills().set_value(SkillType::SKILL_GENERAL_LEADERSHIP, 30);
-
-  EXPECT_TRUE(cca.can_give_orders(creature));
-}
-
 TEST(SW_Engine_Creatures_CurrentCreatureAbilities, can_focus)
 {
   CurrentCreatureAbilities cca;

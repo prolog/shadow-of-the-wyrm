@@ -14,7 +14,6 @@ class OrderAction : public IActionManager
     ActionCostValue order_at_ease(CreaturePtr creature);
 
   protected:
-    bool check_for_skills(CreaturePtr creature, IMessageManager& manager);
     bool check_for_followers(CreaturePtr creature, IMessageManager& manager);
 
     void set_order(CreaturePtr creature, const std::string& order_property, const std::string& value);

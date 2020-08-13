@@ -1,4 +1,11 @@
 Me:
+- Prevent shopkeepers from picking up shop items
+- Ensure spellcasting AI doesn't target the leader
+- Transfer the hireling funds to the hireling's inventory
+- Unequip weapons from the hireling
+- Show race and class when looking when both are defined
+- Need to get spellcasting NPCs to get appropriate spells on level!
+- Test all the set locations for hirelings
 - Next release: need to do an asset release
 - Hirelings should have different wants: some money, some items, etc. Some
   should be nice, some gruff...

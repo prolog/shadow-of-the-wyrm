@@ -402,6 +402,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "generate_hireling", generate_hireling);
   lua_register(L, "set_colour", set_colour);
   lua_register(L, "add_npc_level_message", add_npc_level_message);
+  lua_register(L, "get_leader_id", get_leader_id);
+  lua_register(L, "get_name", get_name);
 }
 
 // Lua API helper functions
@@ -8127,4 +8129,44 @@ int add_npc_level_message(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_leader_id(lua_State* ls)
+{
+  string leader_id;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      leader_id = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_leader_id");
+  }
+
+  lua_pushstring(ls, leader_id.c_str());
+  return 1;
+}
+
+int get_name(lua_State* ls)
+{
+  string name;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      name = creature->get_name();
+    }
+  }
+
+  lua_pushstring(ls, name.c_str());
+  return 1;
 }

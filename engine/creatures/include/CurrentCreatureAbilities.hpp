@@ -7,7 +7,6 @@ class CurrentCreatureAbilities
 {
   public:
     bool can_speak(CreaturePtr creature, const bool add_message_if_player_and_cannot_speak = false) const;
-    bool can_give_orders(CreaturePtr creature, const bool add_message_if_player_and_cannot_give_orders = false) const;
 
     // Focus is more general, and without focus, the creature can't cast
     // spells, read scrolls, use wands.  Enraged creatures lack focus.
