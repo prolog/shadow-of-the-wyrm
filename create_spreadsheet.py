@@ -7,13 +7,14 @@
 # assigned to a particular creature.
 
 from xml.dom import minidom
+from collections import defaultdict
 
 # Get the creature data from the XML file.  A dictionary is returned,
 # keyed by a tuple of (creature_symbol, creature_colour).  The value is
 # the creature_id attribute.
 def get_creatures_from_xml(xml_file):
   # The creature values that will be written to the CSV file.
-  ss_creatures = {}
+  ss_creatures = []
 
   root = minidom.parse(xml_file)
 
@@ -26,26 +27,18 @@ def get_creatures_from_xml(xml_file):
       creature_id = creature.attributes["id"].value
 
       # Get the symbol and colour
-      text_node = creature.getElementsByTagName("Text")[0]
-      symbol_node = text_node.getElementsByTagName("Symbol")[0]
-      colour_node = text_node.getElementsByTagName("Colour")[0]
+      symbol_node = creature.getElementsByTagName("Symbol")[0]
+      colour_node = symbol_node.getElementsByTagName("Colour")[0]
+      char_node = symbol_node.getElementsByTagName("Char")[0]
       danger_level_node = creature.getElementsByTagName("DangerLevel")[0]
 
-      creature_symbol = symbol_node.childNodes[0].nodeValue
+      creature_symbol = char_node.childNodes[0].nodeValue
       creature_colour = colour_node.childNodes[0].nodeValue
       creature_level  = danger_level_node.childNodes[0].nodeValue
 
-      creature_tuple = (creature_symbol, creature_colour, creature_level)
-
-      # If there"s already a creature tuple of the given symbol/colour,
-      # add the current creature ID to the existing one.
-      for t in ss_creatures:
-        if t[0] == creature_symbol and t[1] == creature_colour:
-          existing_id = ss_creatures[t]
-          print("Duplicate creature symbol/colour detected - new ID: " + creature_id + ", existing: " + existing_id)
-          creature_id = creature_id + "," + existing_id
+      creature_row = "{}, {}, {}, {}\n".format(creature_symbol, creature_colour, creature_id, creature_level)
       
-      ss_creatures[creature_tuple] = creature_id
+      ss_creatures.append(creature_row)
 
   return ss_creatures
 
@@ -57,13 +50,12 @@ def write_creatures_to_csv(creatures, csv_file):
   csv.write("Symbol, Colour, Creature, Level \n")
 
   # Write the values
-  for sc_pair in sorted(creatures):
-    line = sc_pair[0] + "," + sc_pair[1] + "," + creatures[sc_pair] + "," + sc_pair[2] + "\n"
-    csv.write(line)
+  for c in creatures:
+    csv.write(c)
 
   csv.close()
 
 # Get the creatures from the XML configuration file, and write them to
 # a CSV file, pre-sorted by symbol and colour
-creatures = get_creatures_from_xml("data/ShadowOfTheWyrm.xml")
+creatures = get_creatures_from_xml("data/ShadowOfTheWyrm_Creatures.xml")
 write_creatures_to_csv(creatures, "ShadowOfTheWyrm.csv")

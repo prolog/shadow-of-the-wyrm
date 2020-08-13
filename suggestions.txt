@@ -1,5 +1,7 @@
 Me:
 - Next release: need to do an asset release
+- Hirelings should have different wants: some money, some items, etc. Some
+  should be nice, some gruff...
 - Sector features for regular settlements
 - Things to make villages more interesting:
   - Archery ranges (contests, using ranges should train ranged, etc)
@@ -264,3 +266,7 @@ IceBox:
 Larzid
 - display type a command line arg
 - SDL as a build param
+
+Echo38
+- Add info on the weapon synopsis to the manual
+- Update the quit message to reference not saving
