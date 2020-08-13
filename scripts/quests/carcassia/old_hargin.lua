@@ -12,7 +12,8 @@ local chat_topics = {"OLD_HARGIN_SPEECH_TEXT_SID",
                      "OLD_HARGIN_SPEECH_TEXT9_SID",
                      "OLD_HARGIN_SPEECH_TEXT10_SID",
                      "OLD_HARGIN_SPEECH_TEXT11_SID",
-                     "OLD_HARGIN_SPEECH_TEXT12_SID"}
+                     "OLD_HARGIN_SPEECH_TEXT12_SID",
+                     "OLD_HARGIN_SPEECH_TEXT13_SID"}
 
 clear_and_add_message(chat_topics[RNG_range(1, table.getn(chat_topics))])
 
