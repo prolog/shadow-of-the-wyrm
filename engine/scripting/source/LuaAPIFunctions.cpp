@@ -11,6 +11,7 @@
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "DecisionStrategyProperties.hpp"
+#include "EngineConversion.hpp"
 #include "EffectFactory.hpp"
 #include "ExperienceManager.hpp"
 #include "FeatureGenerator.hpp"
@@ -247,6 +248,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_creature_level", get_creature_level);
   lua_register(L, "is_player", is_player);
   lua_register(L, "incr_str", incr_str);
+  lua_register(L, "incr_str_to_unburdened", incr_str_to_unburdened);
   lua_register(L, "incr_dex", incr_dex);
   lua_register(L, "incr_agi", incr_agi);
   lua_register(L, "incr_hea", incr_hea);
@@ -1018,11 +1020,17 @@ int add_object_to_creature(lua_State* ls)
     string map_id = lua_tostring(ls, 1);
     string creature_id = lua_tostring(ls, 2);
     string object_id = lua_tostring(ls, 3);
+    uint quantity = 1;
     string prop;
     
     if (num_args >= 4 && lua_isstring(ls, 4))
     {
       prop = lua_tostring(ls, 4);
+    }
+
+    if (num_args >= 5 && lua_isnumber(ls, 5))
+    {
+      quantity = static_cast<uint>(lua_tointeger(ls, 5));
     }
 
     MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
@@ -1033,7 +1041,7 @@ int add_object_to_creature(lua_State* ls)
 
       if (creature != nullptr)
       {
-        ItemPtr item = ItemManager::create_item(object_id);
+        ItemPtr item = ItemManager::create_item(object_id, quantity);
 
         if (item != nullptr)
         {
@@ -3042,6 +3050,34 @@ int incr_str(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Incorrect arguments to incr_str");
+  }
+
+  return 0;
+}
+
+int incr_str_to_unburdened(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isboolean(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    bool add_msg = lua_toboolean(ls, 2) != 0;
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      BurdenLevel bl = BurdenLevelConverter::to_burden_level(creature);
+      Statistic& str = creature->get_strength_ref();
+
+      while (bl != BurdenLevel::BURDEN_LEVEL_UNBURDENED && str.get_current() != str.get_max())
+      {
+        CreatureUtils::incr_str(creature, add_msg);
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to incr_str_to_unburdened");
   }
 
   return 0;

@@ -93,6 +93,7 @@ int get_creature_base_id(lua_State* ls);
 int get_creature_num_broken_conducts(lua_State* ls);
 int get_current_map_id(lua_State* ls);
 int incr_str(lua_State* ls);
+int incr_str_to_unburdened(lua_State* ls);
 int incr_dex(lua_State* ls);
 int incr_agi(lua_State* ls);
 int incr_hea(lua_State* ls);

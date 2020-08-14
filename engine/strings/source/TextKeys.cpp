@@ -42,6 +42,7 @@ const string TextKeys::MORTUARY_FIRST_KILL = "MORTUARY_FIRST_KILL";
 const string TextKeys::STATUSES = "STATUSES";
 const string TextKeys::NPC_ESCAPES_MESSAGE = "NPC_ESCAPES_MESSAGE";
 const string TextKeys::SELECT_RACE = "SELECT_RACE";
+const string TextKeys::CLASS = "CLASS";
 const string TextKeys::SELECT_CLASS = "SELECT_CLASS";
 const string TextKeys::SELECT_DEITY = "SELECT_DEITY";
 const string TextKeys::SELECT_STARTING_LOCATION = "SELECT_STARTING_LOCATION";

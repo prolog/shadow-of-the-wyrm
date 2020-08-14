@@ -20881,6 +20881,7 @@
 		</Creature>
 		<Creature id="_shopkeeper">
 			<RaceID>01_human</RaceID>
+			<ClassID>merchant</ClassID>
 			<ShortDescriptionSID>SHOPKEEPER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SHOPKEEPER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHOPKEEPER_TEXT_DETAILS_SID</TextDetailsSID>

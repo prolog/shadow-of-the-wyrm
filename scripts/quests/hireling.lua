@@ -5,10 +5,14 @@ local function request_hire(this_cr_id, name)
   local hire_fee_s = get_creature_additional_property(this_cr_id, "CREATURE_PROPERTIES_HIRE_FEE")
   local hire_fee = tonumber(hire_fee_s)
   local hire_msg = get_creature_additional_property(this_cr_id, "CREATURE_PROPERTIES_HIRELING_CHAT_SID")
+  local map_id = get_current_map_id()
 
   if currency >= hire_fee then
     if add_confirmation_message(hire_msg, {name, hire_fee_s}) then
       remove_object_from_player(CURRENCY_ID, hire_fee)
+      add_object_to_creature(map_id, this_cr_id, CURRENCY_ID, "", hire_fee)
+      incr_str_to_unburdened(this_cr_id)
+
       set_creature_additional_property(this_cr_id, "CREATURE_PROPERTIES_LEADER_ID", PLAYER_ID)
 
       clear_and_add_message("HIRELING_ORDERS_SID", {name})

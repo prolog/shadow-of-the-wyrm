@@ -58,6 +58,9 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 
   - Drinking potions off the ground was buggy (Echo38).
 
+  - The examine command was giving too much information when the player was
+    blind.
+
 Shadow of the Wyrm v1.2.1 "Lully"
 - Version declared June 21, 2020.  Version finalized July 17, 2020.
 

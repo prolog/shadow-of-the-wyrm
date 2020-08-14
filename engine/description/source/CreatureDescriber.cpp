@@ -44,6 +44,7 @@ string CreatureDescriber::describe() const
       if (!cca.can_see(viewing_creature))
       {
         creature_desc = StringTable::get(TextKeys::SOMETHING);
+        return creature_desc;
       }
       else
       {
@@ -59,10 +60,15 @@ string CreatureDescriber::describe() const
 
     ss << creature_desc;
     
+    string race_class_desc = describe_race_and_class();
     string status_description = describe_statuses();
 
     // If the "short description" option is set (basically used only for
-    // combat), don't display the additional status information.
+    // combat), don't display the additional details
+    if (!race_class_desc.empty() && !short_description)
+    {
+      ss << " " << race_class_desc;
+    }
     if (!status_description.empty() && !short_description)
     {
       ss << " " << status_description;
@@ -70,16 +76,44 @@ string CreatureDescriber::describe() const
 
     bool pacified = String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_PACIFIED));
 
-    if (pacified)
+    if (pacified && !short_description)
     {
       ss << " " << StringTable::get(TextKeys::PACIFIED);
     }
 
     bool tamed = String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_TAMED));
 
-    if (tamed)
+    if (tamed && !short_description)
     {
       ss << " " << StringTable::get(TextKeys::TAMED);
+    }
+  }
+
+  return ss.str();
+}
+
+string CreatureDescriber::describe_race_and_class() const
+{
+  ostringstream ss;
+
+  if (creature != nullptr)
+  {
+    string race_id = creature->get_race_id();
+    string class_id = creature->get_class_id();
+
+    RaceManager rm;
+    ClassManager cm;
+
+
+    if (!race_id.empty() && !class_id.empty())
+    {
+      Race* race = rm.get_race(race_id);
+      Class* cur_class = cm.get_class(class_id);
+
+      if (race != nullptr && cur_class != nullptr)
+      {
+        ss << "(" << StringTable::get(race->get_race_name_sid()) << " " << StringTable::get(cur_class->get_class_name_sid()) << ")";
+      }
     }
   }
 
