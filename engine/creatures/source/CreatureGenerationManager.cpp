@@ -13,6 +13,7 @@
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "HostilityManager.hpp"
+#include "ItemEnchantmentCalculator.hpp"
 #include "MapProperties.hpp"
 #include "Naming.hpp"
 #include "ProcgenTextKeys.hpp"
@@ -278,6 +279,22 @@ CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, cons
   ExperienceManager em;
   int xp = em.get_total_experience_needed_for_level(hireling, danger_level);
   em.gain_experience(hireling, static_cast<uint>(xp));
+
+  // Enchant its equipment
+  ItemEnchantmentCalculator iec;
+  Equipment& eq = hireling->get_equipment();
+
+  for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
+  {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(e);
+    ItemPtr item = eq.get_item(ewl);
+
+    if (item != nullptr)
+    {
+      int num_enchants = 2 + iec.calculate_enchantments(danger_level);      
+      item->enchant(iec.calculate_pct_chance_brand(1.0, item), num_enchants);
+    }
+  }
 
   return hireling;
 }
