@@ -1028,10 +1028,12 @@ CommandPtr NPCDecisionStrategy::get_equip_ammunition_decision(CreaturePtr creatu
   if (creature != nullptr && item != nullptr)
   {
     WeaponPtr ranged = std::dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON));
+    ItemPtr ammo_item = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
+
     WeaponPtr ammo = std::dynamic_pointer_cast<Weapon>(item);
     WeaponManager wm;
 
-    if (wm.is_ranged_weapon_skill_type_compatible_with_ammunition(ranged, ammo))
+    if (ammo_item == nullptr && wm.is_ranged_weapon_skill_type_compatible_with_ammunition(ranged, ammo))
     {
       equip_cmd = std::make_unique<InventoryCommand>(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION, item);
     }
