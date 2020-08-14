@@ -628,7 +628,9 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
 
           for (ItemPtr item : items)
           {
-            if (item != nullptr)
+            // NPCs don't pick up shop items, this is too hazardous to their
+            // health!
+            if (item != nullptr && !item->get_unpaid())
             {
               ItemType itype = item->get_type();
 
