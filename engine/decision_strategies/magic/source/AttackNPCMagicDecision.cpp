@@ -1,4 +1,5 @@
 #include "AttackNPCMagicDecision.hpp"
+#include "CreatureProperties.hpp"
 #include "DirectionUtils.hpp"
 #include "SpellShapeProcessorFactory.hpp"
 
@@ -9,6 +10,7 @@ pair<bool, Direction> AttackNPCMagicDecision::decide(CreaturePtr caster, MapPtr 
   pair<bool, Direction> decision_details(false, Direction::DIRECTION_NULL);
   int threat_level_count = 0;
   int nonthreat_level_count = 0;
+  string leader_id = caster->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
 
   if (caster != nullptr && view_map != nullptr)
   {
@@ -46,6 +48,15 @@ pair<bool, Direction> AttackNPCMagicDecision::decide(CreaturePtr caster, MapPtr 
 
             if (creature_id != caster_id)
             {
+              // Prevent NPC spellcasting if it would target its leader.
+              if (creature_id == leader_id)
+              {
+                decision_details.first = false;
+                decision_details.second = Direction::DIRECTION_NULL;
+
+                return decision_details;
+              }
+
               if (creature_threats.find(creature_id) != creature_threats.end())
               {
                 threat_level_count += creature->get_level().get_current();
