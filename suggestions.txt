@@ -1,8 +1,9 @@
 Me:
+- Prevent creatures from casting when the leader is in their target area
 - Prevent shopkeepers from picking up shop items
 - Ensure spellcasting AI doesn't target the leader
 - Transfer the hireling funds to the hireling's inventory
-- Unequip weapons from the hireling
+- Enchant hireling items!
 - Show race and class when looking when both are defined
 - Need to get spellcasting NPCs to get appropriate spells on level!
 - Test all the set locations for hirelings
@@ -276,4 +277,4 @@ Larzid
 
 Echo38
 - Add info on the weapon synopsis to the manual
-- Update the quit message to reference not saving
+- max fire res on fire spirits, etc

@@ -41,6 +41,8 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   Gnordvar). Hirelings will follow you - for a fee - and can be ordered around
   using the 'o'rder command.
 
+- The quit message now references that the game won't be saved (Echo38).
+
 - New poem fragment for the title screen.
 
 - Stanzas for "Tel and Floridel".
@@ -53,6 +55,8 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 
   - The free hidden actions counter could get out of whack. Capped that so
     the player couldn't get lots of free actions while safely hidden (Grond).
+
+  - Drinking potions off the ground was buggy (Echo38).
 
 Shadow of the Wyrm v1.2.1 "Lully"
 - Version declared June 21, 2020.  Version finalized July 17, 2020.
