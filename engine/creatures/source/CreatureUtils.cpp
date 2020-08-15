@@ -415,7 +415,8 @@ Race* CreatureUtils::get_random_user_playable_race()
 
   if (!playable_races.empty())
   {
-    race = playable_races.at(RNG::range(0, playable_races.size() - 1));
+    int idx = RNG::range(0, playable_races.size() - 1);
+    race = playable_races.at(idx);
   }
 
   return race;
@@ -440,7 +441,8 @@ Class* CreatureUtils::get_random_user_playable_class()
 
   if (!playable_classes.empty())
   {
-    cur_class = playable_classes.at(RNG::range(0, playable_classes.size() - 1));
+    int idx = RNG::range(0, playable_classes.size() - 1);
+    cur_class = playable_classes.at(idx);
   }
 
   return cur_class;
@@ -886,6 +888,30 @@ bool CreatureUtils::remove_negative_statuses_from_creature(CreaturePtr creature)
   }
 
   return removed;
+}
+
+bool CreatureUtils::has_skill_for_spell(CreaturePtr creature, const string& spell_id)
+{
+  bool has_skill = false;
+
+  if (creature != nullptr)
+  {
+    const SpellMap& spells = Game::instance().get_spells_ref();
+    auto sp_it = spells.find(spell_id);
+
+    if (sp_it != spells.end())
+    {
+      Spell spell = Game::instance().get_spells_ref().find(spell_id)->second;
+
+      SkillType mskill = spell.get_magic_category();
+      if (creature->get_skills().get_value(mskill) > 0)
+      {
+        has_skill = true;
+      }
+    }
+  }
+
+  return has_skill;
 }
 
 #ifdef UNIT_TESTS

@@ -72,6 +72,8 @@ class CreatureUtils
 
     static bool remove_negative_statuses_from_creature(CreaturePtr creature);
 
+    static bool has_skill_for_spell(CreaturePtr creature, const std::string& spell_id);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();

@@ -88,7 +88,7 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
         // Insert the item back into the inventory.
         // This will take care of de-stacking/re-stacking and ensuring that
         // like-items are grouped together.
-        creature->get_inventory()->merge_or_add(new_wand, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        creature->get_inventory()->merge_or_add(new_wand, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
       }
     }
   }

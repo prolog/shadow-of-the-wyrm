@@ -189,8 +189,14 @@ class QuaffCommand : public Command
 class ReadCommand : public Command
 {
   public:
+    ReadCommand(const std::string& read_item_id);
     ReadCommand(int key);
     ~ReadCommand();
+
+    std::string get_item_id() const;
+  
+  protected:
+    std::string readable_id;
 };
 
 class CheckCurrencyCommand : public Command

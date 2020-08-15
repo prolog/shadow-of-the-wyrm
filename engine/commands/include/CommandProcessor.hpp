@@ -24,6 +24,7 @@ class CommandProcessor
     static ActionCost process_pick_up_command(CreaturePtr creature, Command* command, Game& game);
     static ActionCost process_evoke_command(CreaturePtr creature, Command* command, Game& game);
     static ActionCost process_inventory_command(CreaturePtr creature, Command* command, Game& game);
+    static ActionCost process_read_command(CreaturePtr creature, Command* command, Game& game);
 
     static bool process_confirmation(CreaturePtr creature, Command* command, DisplayPtr display);
 };

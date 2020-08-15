@@ -275,6 +275,11 @@ QuaffCommand::~QuaffCommand()
 }
 
 // 'r'ead a scroll or spellbook
+ReadCommand::ReadCommand(const std::string& read_item_id)
+: Command(CommandKeys::READ, '?'), readable_id(read_item_id)
+{
+}
+
 ReadCommand::ReadCommand(const int key)
 : Command(CommandKeys::READ, key)
 {
@@ -282,6 +287,11 @@ ReadCommand::ReadCommand(const int key)
 
 ReadCommand::~ReadCommand()
 {
+}
+
+std::string ReadCommand::get_item_id() const
+{
+  return readable_id;
 }
 
 // '$': check how much currency is currently held

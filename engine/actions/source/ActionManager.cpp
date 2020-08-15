@@ -261,10 +261,18 @@ ActionCost ActionManager::quaff(CreaturePtr creature)
 }
 
 // 'r'ead a scroll or spellbook
-ActionCost ActionManager::read(CreaturePtr creature)
+ActionCost ActionManager::read(CreaturePtr creature, const std::string& item_id)
 {
   ReadAction ra;
-  return get_action_cost(creature, ra.read(creature, this));
+
+  if (item_id.empty())
+  {
+    return get_action_cost(creature, ra.read(creature, this));
+  }
+  else
+  {
+    return get_action_cost(creature, ra.read(creature, item_id));
+  }
 }
 
 // '$': check how much currency is held (free action)

@@ -8,6 +8,7 @@
 #include "CoordUtils.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureTileSafetyChecker.hpp"
+#include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DecisionScript.hpp"
 #include "DecisionStrategyProperties.hpp"
@@ -27,6 +28,7 @@
 #include "Ring.hpp"
 #include "RNG.hpp"
 #include "SearchStrategyFactory.hpp"
+#include "Spellbook.hpp"
 #include "SpellShapeFactory.hpp"
 #include "ThreatConstants.hpp"
 #include "Wand.hpp"
@@ -654,6 +656,10 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
               {
                 pu_cmd = get_pick_up_wand_decision(creature, item);
               }
+              else if (itype == ItemType::ITEM_TYPE_SPELLBOOK)
+              {
+                pu_cmd = get_pick_up_book_decision(creature, item);
+              }
 
               if (pu_cmd != nullptr)
               {
@@ -708,6 +714,10 @@ CommandPtr NPCDecisionStrategy::get_use_item_decision(const string& this_creatur
           else if (itype == ItemType::ITEM_TYPE_WAND)
           {
             use_cmd = get_use_wand_decision(creature, item, view_map);
+          }
+          else if (itype == ItemType::ITEM_TYPE_SPELLBOOK)
+          {
+            use_cmd = get_use_book_decision(creature, item);
           }
 
           if (use_cmd != nullptr)
@@ -943,6 +953,27 @@ CommandPtr NPCDecisionStrategy::get_pick_up_wand_decision(CreaturePtr creature, 
   return pu_cmd;
 }
 
+CommandPtr NPCDecisionStrategy::get_pick_up_book_decision(CreaturePtr creature, ItemPtr item)
+{
+  CommandPtr pu_cmd;
+  CurrentCreatureAbilities cca;
+
+  // Creatures only pick up wands if they can speak - otherwise, evoking won't
+  // work.
+  if (creature != nullptr && item != nullptr && cca.can_speak(creature))
+  {
+    if (item && item->get_type() == ItemType::ITEM_TYPE_SPELLBOOK)
+    {
+      Spellbook* book = dynamic_cast<Spellbook*>(item.get());
+      if (CreatureUtils::has_skill_for_spell(creature, book->get_spell_id()))
+      {
+        pu_cmd = make_unique<PickUpCommand>(book->get_id());
+      }
+    }
+  }
+
+  return pu_cmd;
+}
 CommandPtr NPCDecisionStrategy::get_equip_weapon_decision(CreaturePtr creature, ItemPtr item)
 {
   CommandPtr equip_cmd;
@@ -954,6 +985,8 @@ CommandPtr NPCDecisionStrategy::get_equip_weapon_decision(CreaturePtr creature, 
 
   return equip_cmd;
 }
+
+
 
 bool NPCDecisionStrategy::should_equip_weapon(CreaturePtr creature, ItemPtr item)
 {
@@ -1069,4 +1102,18 @@ CommandPtr NPCDecisionStrategy::get_use_wand_decision(CreaturePtr creature, Item
   }
 
   return use_cmd;
+}
+
+CommandPtr NPCDecisionStrategy::get_use_book_decision(CreaturePtr creature, ItemPtr item)
+{
+  CommandPtr use_cmd;
+  SpellbookPtr book = std::dynamic_pointer_cast<Spellbook>(item);
+
+  if (book != nullptr && CreatureUtils::has_skill_for_spell(creature, book->get_spell_id()))
+  {
+    use_cmd = std::make_unique<ReadCommand>(book->get_id());
+  }
+
+  return use_cmd;
+
 }

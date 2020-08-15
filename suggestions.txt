@@ -1,8 +1,11 @@
 Me:
-- Make shopkeepers merchants; test
-- Book pickup and reading when appropriate
+- Synopsis stuff bleeding into pickup messages, looks bad
+- Creatures try to cast utility spells (eg rage) over and over and over
+- Creatures should only cast buffs when there are hostile creatures present
 - Need to get spellcasting NPCs to get appropriate spells on level!
 - Test all the set locations for hirelings
+- Hirelings in random villages
+- Distribute skill points on level - hirelings should have skill in their
 - Next release: need to do an asset release
 - Hirelings should have different wants: some money, some items, etc. Some
   should be nice, some gruff...
@@ -18,8 +21,6 @@ Me:
   - stream
   - tavern
   - orchard
-- Hirelings. Make uniques via same sort of process as ancient beasts. Add their
-  desc SIDs to the string table.
 - Linux: check premake scripts for commands/order
 - How to give orders to individual creatures?
 - Each version: make sure to update itch.io page for both SotW and the sprite
@@ -272,5 +273,6 @@ Larzid
 - SDL as a build param
 
 Echo38
+- Rebindable paging keys
 - Add info on the weapon synopsis to the manual
 - max fire res on fire spirits, etc

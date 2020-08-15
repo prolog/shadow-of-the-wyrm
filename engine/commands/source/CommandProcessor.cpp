@@ -142,7 +142,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::READ)
       {
-        ac = game.actions.read(creature);
+        ac = process_read_command(creature, command, game);
       }
       else if (command_name == CommandKeys::CHECK_CURRENCY)
       {
@@ -405,6 +405,20 @@ ActionCost CommandProcessor::process_inventory_command(CreaturePtr creature, Com
     {
       ac = game.actions.equipment(creature);
     }
+  }
+
+  return ac;
+}
+
+ActionCost CommandProcessor::process_read_command(CreaturePtr creature, Command* command, Game& game)
+{
+  ActionCost ac;
+  ReadCommand* read_cmd = dynamic_cast<ReadCommand*>(command);
+
+  if (read_cmd != nullptr)
+  {
+    string item_id = read_cmd->get_item_id();
+    ac = game.actions.read(creature, item_id);
   }
 
   return ac;

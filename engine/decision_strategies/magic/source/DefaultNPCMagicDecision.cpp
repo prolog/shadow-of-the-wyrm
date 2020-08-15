@@ -9,7 +9,10 @@ pair<bool, Direction> DefaultNPCMagicDecision::decide(CreaturePtr caster, MapPtr
 
   if (caster != nullptr)
   {
-    decision = true;
+    if (!caster->is_affected_by_modifier_spell(spell.get_spell_id()))
+    {
+      decision = true;
+    }
   }
 
   return make_pair(decision, Direction::DIRECTION_NULL);

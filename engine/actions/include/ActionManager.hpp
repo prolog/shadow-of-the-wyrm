@@ -76,7 +76,7 @@ class ActionManager : public ISerializable
     ActionCost quaff(CreaturePtr creature);
     
     // Read a scroll, or spellbook
-    ActionCost read(CreaturePtr creature);
+    ActionCost read(CreaturePtr creature, const std::string& item_id);
     
     // Check the current amount of currency held
     ActionCost check_currency(CreaturePtr creature);
