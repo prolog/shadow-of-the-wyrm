@@ -37,6 +37,7 @@ MapPtr ScatteredSettlementGenerator::generate()
   
   generate_scattered_settlement(map);
   generate_wells(map);
+  generate_special_inhabitants(map);
 
   return map;
 }

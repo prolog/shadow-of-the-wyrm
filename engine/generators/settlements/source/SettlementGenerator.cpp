@@ -26,6 +26,7 @@ MapPtr SettlementGenerator::generate()
 
   result_map = generate_roads_and_buildings(result_map);
   generate_wells(result_map);
+  generate_special_inhabitants(result_map);
 
   return result_map;
 }

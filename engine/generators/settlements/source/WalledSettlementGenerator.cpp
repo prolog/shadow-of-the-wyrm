@@ -49,6 +49,7 @@ MapPtr WalledSettlementGenerator::generate()
 
   generate_walled_settlement(map);
   generate_wells(map);
+  generate_special_inhabitants(map);
 
   return map;
 }

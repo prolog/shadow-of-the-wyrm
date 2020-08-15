@@ -1,9 +1,10 @@
 Me:
 - Synopsis stuff bleeding into pickup messages, looks bad
-- Creatures try to cast utility spells (eg rage) over and over and over
-- Creatures should only cast buffs when there are hostile creatures present
+- Creatures try to cast utility spells when they don't make sense (uncursing,
+  etc). Should be checks to see if effect makes sense.
 - Need to get spellcasting NPCs to get appropriate spells on level!
 - Test all the set locations for hirelings
+- Conduct for no hirelings
 - Hirelings in random villages
 - Distribute skill points on level - hirelings should have skill in their
 - Next release: need to do an asset release

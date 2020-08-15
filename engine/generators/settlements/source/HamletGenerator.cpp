@@ -44,6 +44,7 @@ MapPtr HamletGenerator::generate()
 
   generate_circular_hamlet(map);
   generate_wells(map);
+  generate_special_inhabitants(map);
 
   return map;
 }

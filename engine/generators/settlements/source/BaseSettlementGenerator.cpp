@@ -1,6 +1,9 @@
 #include <utility>
 #include "BaseSettlementGenerator.hpp"
 #include "BuildingConfigFactory.hpp"
+#include "CreatureGenerationManager.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
 #include "GraveyardSectorFeature.hpp"
 #include "ParkSectorFeature.hpp"
 #include "RNG.hpp"
@@ -22,6 +25,9 @@ base_map(new_base_map), growth_rate(100), pct_chance_sector_feature(20)
 , EW_DIVISOR(3)
 , WELLS_MIN(0)
 , WELLS_MAX(3)
+, HIRELING_PROBABILITY(70)
+, HIRELING_MIN_LEVEL(10)
+, HIRELING_MAX_LEVEL(40)
 {
 }
 
@@ -37,6 +43,9 @@ base_map(new_base_map), growth_rate(new_growth_rate), pct_chance_sector_feature(
 , EW_DIVISOR(3)
 , WELLS_MIN(0)
 , WELLS_MAX(3)
+, HIRELING_PROBABILITY(70)
+, HIRELING_MIN_LEVEL(10)
+, HIRELING_MAX_LEVEL(40)
 {
 }
 
@@ -437,6 +446,36 @@ void BaseSettlementGenerator::generate_wells(MapPtr map)
           tile = tg.generate(TileType::TILE_TYPE_WELL);
           map->insert(y, x, tile);
 
+          break;
+        }
+      }
+    }
+  }
+}
+
+void BaseSettlementGenerator::generate_special_inhabitants(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    if (RNG::percent_chance(HIRELING_PROBABILITY))
+    {
+      Game& game = Game::instance();
+      ActionManager& am = game.get_action_manager_ref();
+
+      CreatureGenerationManager cgm;
+      CreaturePtr hireling = cgm.generate_hireling(am, RNG::range(HIRELING_MIN_LEVEL, HIRELING_MAX_LEVEL));
+      Dimensions dim = map->size();
+
+      for (int i = 1; i < 20; i++)
+      {
+        int y = RNG::range(0, dim.get_y() - 1);
+        int x = RNG::range(0, dim.get_x() - 1);
+
+        TilePtr tile = map->at(y, x);
+
+        if (tile != nullptr && tile->get_is_available_for_creature(hireling))
+        {
+          GameUtils::add_new_creature_to_map(game, hireling, map, { y,x });
           break;
         }
       }
