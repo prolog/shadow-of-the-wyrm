@@ -1,6 +1,7 @@
 #include "ActionTextKeys.hpp"
 #include "Amulet.hpp"
 #include "AttackNPCMagicDecision.hpp"
+#include "CarryingCapacityCalculator.hpp"
 #include "CoordUtils.hpp"
 #include "Commands.hpp"
 #include "CommandCustomValues.hpp"
@@ -616,6 +617,10 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
 
     if (creature != nullptr && race != nullptr && race->get_has_pockets())
     {
+      CarryingCapacityCalculator ccc;
+      uint burden_weight_oz = ccc.calculate_burdened_weight(creature);
+      uint weight_carried_oz = creature->get_weight_carried();
+
       BurdenLevel bl = BurdenLevelConverter::to_burden_level(creature);
       TilePtr tile = MapUtils::get_tile_for_creature(map, creature);
 
@@ -632,7 +637,11 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
           {
             // NPCs don't pick up shop items, this is too hazardous to their
             // health!
-            if (item != nullptr && !item->get_unpaid())
+            // 
+            // They also don't pick up items that will make them burdened.
+            if (item != nullptr && 
+               !item->get_unpaid() &&
+               (weight_carried_oz + item->get_total_weight().get_weight() < burden_weight_oz))
             {
               ItemType itype = item->get_type();
 
@@ -659,6 +668,10 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
               else if (itype == ItemType::ITEM_TYPE_SPELLBOOK)
               {
                 pu_cmd = get_pick_up_book_decision(creature, item);
+              }
+              else if (itype == ItemType::ITEM_TYPE_CURRENCY)
+              {
+                pu_cmd = make_unique<PickUpCommand>(item->get_id());
               }
 
               if (pu_cmd != nullptr)
