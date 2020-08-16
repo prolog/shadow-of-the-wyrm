@@ -39,7 +39,8 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 
 - Hirelings can now be found in a few fixed areas (Isen Dun, Carcassia, Yew,
   Gnordvar). Hirelings will follow you - for a fee - and can be ordered around
-  using the 'o'rder command.
+  using the 'o'rder command. They have an enchanted set of initial equipment,
+  and have improved versions of their initial race and class skills.
 
 - The quit message now references that the game won't be saved (Echo38).
 
