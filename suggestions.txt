@@ -1,12 +1,10 @@
 Me:
-- Ensure NPCSkillDistributor is called on level up
 - Synopsis stuff bleeding into pickup messages, looks bad
 - Creatures try to cast utility spells when they don't make sense (uncursing,
   etc). Should be checks to see if effect makes sense.
 - Need to get spellcasting NPCs to get appropriate spells on level!
 - Test all the set locations for hirelings
 - Conduct for no hirelings
-- Distribute skill points on level - hirelings should have skill in their
 - Next release: need to do an asset release
 - Hirelings should have different wants: some money, some items, etc. Some
   should be nice, some gruff...

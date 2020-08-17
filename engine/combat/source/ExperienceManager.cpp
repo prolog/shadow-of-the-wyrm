@@ -4,6 +4,7 @@
 #include "LevelConstants.hpp"
 #include "LevelScript.hpp"
 #include "MessageManagerFactory.hpp"
+#include "NPCSkillDistributor.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
 #include "ScriptConstants.hpp"
@@ -80,6 +81,11 @@ bool ExperienceManager::gain_experience(CreaturePtr creature, const uint experie
 
         manager.clear_if_necessary();
       }
+    }
+    else if (creature && !creature->get_is_player())
+    {
+      NPCSkillDistributor nsd;
+      nsd.distribute_unused_skill_points(creature);
     }
   }
   

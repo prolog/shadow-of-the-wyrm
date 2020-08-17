@@ -16,7 +16,6 @@
 #include "ItemEnchantmentCalculator.hpp"
 #include "MapProperties.hpp"
 #include "Naming.hpp"
-#include "NPCSkillDistributor.hpp"
 #include "ProcgenTextKeys.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
@@ -280,9 +279,6 @@ CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, cons
   ExperienceManager em;
   int xp = em.get_total_experience_needed_for_level(hireling, danger_level);
   em.gain_experience(hireling, static_cast<uint>(xp));
-
-  NPCSkillDistributor nsd;
-  nsd.distribute_unused_skill_points(hireling);
 
   // Enchant its equipment
   ItemEnchantmentCalculator iec;
