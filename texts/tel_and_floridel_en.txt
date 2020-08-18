@@ -1230,7 +1230,7 @@ or nod to what they were before they unleashed hell.
 %p
 The evening turned with purpose.  As they walked %b
 from beauty into night, the skylark above %b
-held back its song in flight, and as its fought %b
+held back its song in flight, and as it fought %b
 its very voice, the air had just begun %b
 to cool.  Tremble of thunder.  Darkening %b
 clouds, and the low dust began to come alive, %b
@@ -3243,7 +3243,7 @@ the ground and caused her doubts to disappear, %b
 her skin left cut and bloody, but her mind now strangely clear.
 %p
 In the centre of the pillars, Floridel %b
-could see a simple pedestel,  alone %b
+could see a simple pedestal,  alone %b
 within the sea of shale.  She knew very well %b
 what called to her was on it, and was shown %b
 the truth at her approach: an opened book, %b

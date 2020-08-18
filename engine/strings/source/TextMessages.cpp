@@ -50,6 +50,7 @@ const string TextMessages::CARRYING_CAPACITY_MESSAGE          = "CARRYING_CAPACI
 const string TextMessages::DAMAGE_MESSAGE                     = "DAMAGE_MESSAGE";
 const string TextMessages::NPC_LEVEL_MESSAGE                  = "NPC_LEVEL_MESSAGE";
 const string TextMessages::NPC_EQUIP_MESSAGE                  = "NPC_EQUIP_MESSAGE";
+const string TextMessages::HIRELINGS_HIRED_MESSAGE            = "HIRELINGS_HIRED_MESSAGE";
 
 string TextMessages::get_full_header_text(const string& header, const uint num_cols)
 {
@@ -676,6 +677,15 @@ string TextMessages::get_equip_message(const string& creature_desc_sid, const st
   boost::replace_first(msg, "%s2", item_desc);
 
   msg[0] = toupper(msg[0]);
+
+  return msg;
+}
+
+string TextMessages::get_hirelings_hired_message(const int hired)
+{
+  string msg = StringTable::get(TextMessages::HIRELINGS_HIRED_MESSAGE);
+
+  boost::replace_first(msg, "%s", to_string(hired));
 
   return msg;
 }

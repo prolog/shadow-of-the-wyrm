@@ -1620,6 +1620,24 @@ Depth Creature::get_max_depth_reached() const
   return max_depth_reached;
 }
 
+void Creature::set_hirelings_hired(const int new_hirelings_hired)
+{
+  set_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIRELINGS_HIRED, std::to_string(new_hirelings_hired));
+}
+
+int Creature::get_hirelings_hired() const
+{
+  int hirelings_hired = 0;
+  string hired_s = get_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIRELINGS_HIRED);
+
+  if (!hired_s.empty())
+  {
+    hirelings_hired = String::to_int(hired_s);
+  }
+
+  return hirelings_hired;
+}
+
 // Swap values, no throw
 void Creature::swap(Creature &cr) throw ()
 {

@@ -45,6 +45,7 @@ class TextMessages
     static std::string get_slot_machine_outcome_message(const std::string& first_sid, const std::string& second_sid, const std::string& third_sid);
     static std::string get_damage_message(const Damage& damage);
     static std::string get_equip_message(const std::string& creature_desc_sid, const std::string& item_desc);
+    static std::string get_hirelings_hired_message(const int hirelings_hired);
 
   protected:
     TextMessages();
@@ -76,4 +77,5 @@ class TextMessages
     static const std::string DAMAGE_MESSAGE;
     static const std::string NPC_LEVEL_MESSAGE;
     static const std::string NPC_EQUIP_MESSAGE;
+    static const std::string HIRELINGS_HIRED_MESSAGE;
 };

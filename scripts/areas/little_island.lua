@@ -49,5 +49,5 @@ set_shop_shopkeeper_id(shop_id, shopkeeper_id, isen_dun_id)
 repop_shop(shop_id, isen_dun_id)
 
 -- Generate a hireling by the eastern docks
-generate_hireling("isen_dun", 16, 70, 6)
+generate_hireling("isen_dun", 16, 70, RNG_range(5,7))
 

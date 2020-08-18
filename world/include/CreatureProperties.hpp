@@ -34,6 +34,7 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_FOLLOWER_PREFIX;
     static const std::string CREATURE_PROPERTIES_HIRELING_CHAT_SID;
     static const std::string CREATURE_PROPERTIES_HIRE_FEE;
+    static const std::string CREATURE_PROPERTIES_HIRELINGS_HIRED;
 
   protected:
     CreatureProperties();

@@ -25,4 +25,4 @@ set_creature_name(shopkeeper_id, "Gantt", gnordvar_id)
 set_shop_shopkeeper_id(shop_id, shopkeeper_id, gnordvar_id)
 repop_shop(shop_id, gnordvar_id)
 
-generate_hireling("gnordvar", 5, 19, 22)
+generate_hireling("gnordvar", 5, 19, RNG_range(20, 24))

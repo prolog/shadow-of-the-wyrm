@@ -31,4 +31,4 @@ for k,v in pairs(carcassia_island) do
   v:insert()
 end
 
-generate_hireling("carcassia_a1", 2, 73, 8)
+generate_hireling("carcassia_a1", 10, 78, RNG_range(8, 10))

@@ -11,9 +11,10 @@ local function request_hire(this_cr_id, name)
     if add_confirmation_message(hire_msg, {name, hire_fee_s}) then
       remove_object_from_player(CURRENCY_ID, hire_fee)
       add_object_to_creature(map_id, this_cr_id, CURRENCY_ID, "", hire_fee)
-      incr_str_to_unburdened(this_cr_id)
+      incr_str_to_unburdened(this_cr_id, false)
 
       set_creature_additional_property(this_cr_id, "CREATURE_PROPERTIES_LEADER_ID", PLAYER_ID)
+      set_hirelings_hired(PLAYER_ID, get_hirelings_hired(PLAYER_ID) + 1)
 
       clear_and_add_message("HIRELING_ORDERS_SID", {name})
     else

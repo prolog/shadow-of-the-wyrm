@@ -406,6 +406,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_npc_level_message", add_npc_level_message);
   lua_register(L, "get_leader_id", get_leader_id);
   lua_register(L, "get_name", get_name);
+  lua_register(L, "set_hirelings_hired", set_hirelings_hired);
+  lua_register(L, "get_hirelings_hired", get_hirelings_hired);
 }
 
 // Lua API helper functions
@@ -8202,7 +8204,53 @@ int get_name(lua_State* ls)
       name = creature->get_name();
     }
   }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_name");
+  }
 
   lua_pushstring(ls, name.c_str());
+  return 1;
+}
+
+int set_hirelings_hired(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    { 
+      int hired = lua_tointeger(ls, 2);
+      creature->set_hirelings_hired(hired);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_hirelings_hired");
+  }
+
+  return 0;
+}
+
+int get_hirelings_hired(lua_State* ls)
+{
+  int hired = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      hired = creature->get_hirelings_hired();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_hirelings_hired");
+  }
+
+  lua_pushnumber(ls, hired);
   return 1;
 }

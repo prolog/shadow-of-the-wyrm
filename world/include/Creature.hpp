@@ -347,6 +347,9 @@ class Creature : public ISerializable
     void set_max_depth_reached(const Depth& new_depth);
     Depth get_max_depth_reached() const;
 
+    void set_hirelings_hired(const int new_hirelings_hired);
+    int get_hirelings_hired() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 

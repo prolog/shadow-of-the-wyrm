@@ -6,6 +6,7 @@ Me:
 - Need to get spellcasting NPCs to get appropriate spells on level!
 - Test all the set locations for hirelings
 - Conduct for no hirelings
+- Class-specific AI: pugilists should unequip any equipped weapon
 - Next release: need to do an asset release
 - Sector features for regular settlements
 - Things to make villages more interesting:
