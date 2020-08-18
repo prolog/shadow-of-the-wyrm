@@ -3468,7 +3468,7 @@
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
-					<Heat>0.15</Heat>
+					<Heat>0.25</Heat>
 				</Resistances>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
@@ -3953,7 +3953,7 @@
 				<Damage>
 					<NumDice>2</NumDice>
 					<NumSides>10</NumSides>
-					<Modifier>15</Modifier>
+					<Modifier>10</Modifier>
 					<Type>2</Type>
 					<Slays>
 						<Slay>07_goblin</Slay>

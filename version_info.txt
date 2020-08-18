@@ -47,6 +47,9 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 - When unstacking wands after use, the new wand now goes to the front of
   the inventory (Echo38).
 
+- Added a bit more heat resistance to Forger, toned down Goblincrusher's
+  damage a touch.
+
 - New poem fragment for the title screen.
 
 - Stanzas for "Tel and Floridel".
