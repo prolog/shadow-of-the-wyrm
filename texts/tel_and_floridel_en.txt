@@ -3504,3 +3504,13 @@ to cut your throats." He stared into Rhone's eyes - %b
 he recognized the boy - and held his gaze %b
 until the youngest brother couldn't concentrate.
 %p
+"But here we are.  Two castaways, and more %b
+of us out on the roadways, making space %b
+from what we used to be.  How did you four %b
+see through us, anyway?  We used to place %b
+our arms like branches and you'd see our skin %b
+grow bark-like.  So why spare us?  Why not let %b
+us bleed and gasp for air?  We had our sins. %b
+We thought that we would die today.  And yet %b
+you share your fire and haven't made a single threat."
+%p

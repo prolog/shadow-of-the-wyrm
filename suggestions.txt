@@ -1,5 +1,4 @@
 Me:
-- Hirelings hired, add to synopsis
 - Synopsis stuff bleeding into pickup messages, looks bad
 - Creatures try to cast utility spells when they don't make sense (uncursing,
   etc). Should be checks to see if effect makes sense.
