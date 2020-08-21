@@ -258,6 +258,7 @@ int get_leader_id(lua_State* ls);
 int get_name(lua_State* ls);
 int set_hirelings_hired(lua_State* ls);
 int get_hirelings_hired(lua_State* ls);
+int get_trained_magic_skills(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

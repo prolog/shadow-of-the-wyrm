@@ -408,6 +408,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_name", get_name);
   lua_register(L, "set_hirelings_hired", set_hirelings_hired);
   lua_register(L, "get_hirelings_hired", get_hirelings_hired);
+  lua_register(L, "get_trained_magic_skills", get_trained_magic_skills);
 }
 
 // Lua API helper functions
@@ -7500,6 +7501,7 @@ int get_object_ids_by_type(lua_State* ls)
   return 1;
 }
 
+
 int create_menu(lua_State* ls)
 {
   string selected_id;
@@ -8252,5 +8254,32 @@ int get_hirelings_hired(lua_State* ls)
   }
 
   lua_pushnumber(ls, hired);
+  return 1;
+}
+
+int get_trained_magic_skills(lua_State* ls)
+{
+  vector<int> mskills;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      auto cr_skills = creature->get_skills().get_trained_magic_skills();
+
+      for (auto cr_skill : cr_skills)
+      {
+        mskills.push_back(static_cast<int>(cr_skill));
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_trained_magic_skills");
+  }
+
+  LuaUtils::create_return_table_from_int_vector(ls, mskills);
   return 1;
 }
