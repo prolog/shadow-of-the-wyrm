@@ -37,16 +37,21 @@ local function npc_gain_spells(creature_id, level)
   
   local t_skills = get_trained_magic_skills(creature_id)
 
-  local spell = {CSKILL_MAGIC_CANTRIPS = {"c_02_flame_dart", "c_05_spirit_bolt", "c_09_force_bolt", "c_11_blast"},
-                 CSKILL_MAGIC_ARCANE = {"a_01_wreath_of_fire", "a_02_dragon_breath", "a_03_lightning_bolt", "a_04_shockwave", "a_06_cross_of_flame", "a_07_fireball", "a_09_frost_bolt", "a_15_vorpal_bolt"},
-                 CSKILL_MAGIC_DIVINE = {"d_02_smite", "d_10_radiant_beam"},
-                 CSKILL_MAGIC_MYSTIC = {"m_02_poison", "m_03_blind", "m_05_spellbind", "m_08_stone"}}
+  local spell = {[CSKILL_MAGIC_CANTRIPS] = {"c_02_flame_dart", "c_05_spirit_bolt", "c_09_force_bolt", "c_11_blast"},
+                 [CSKILL_MAGIC_ARCANE] = {"a_01_wreath_of_fire", "a_02_dragon_breath", "a_03_lightning_bolt", "a_04_shockwave", "a_06_cross_of_flame", "a_07_fireball", "a_09_frost_bolt", "a_15_vorpal_bolt"},
+                 [CSKILL_MAGIC_DIVINE] = {"d_02_smite", "d_10_radiant_beam"},
+                 [CSKILL_MAGIC_MYSTIC] = {"m_02_poison", "m_03_blind", "m_05_spellbind", "m_08_stone"}}
 
-  for i,v in t_skills do
-    local spell_list = spells[v]
-    local spell_id = spell_list[RNG_range(1, #spell_list)]
+  for i,v in ipairs(t_skills) do
+    local spell_list = spell[v]
+    
+    if spell_list ~= nil then
+      local spell_id = spell_list[RNG_range(1, #spell_list)]
+      local castings = RNG_range(3, 8)
 
-    add_spell_castings(creature_id, spell_id, RNG_range(3, 8))
+      add_spell_castings(creature_id, spell_id, castings)
+      log(CLOG_DEBUG, "Added " .. tostring(castings) .. " castings of " .. spell_id .. " for " .. creature_id)
+    end
   end
 end
 

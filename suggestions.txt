@@ -1,4 +1,6 @@
 Me:
+- Look at npc.lua - HP and AP are probably being gained twice. Should only be
+  done in the engine.
 - Synopsis stuff bleeding into pickup messages, looks bad
 - Creatures try to cast utility spells when they don't make sense (uncursing,
   etc). Should be checks to see if effect makes sense.
