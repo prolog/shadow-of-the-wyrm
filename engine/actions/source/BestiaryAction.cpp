@@ -140,7 +140,7 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
 
     // Display the creature short description
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
-    bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(creature->get_short_description_sid())));
+    bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(creature->get_short_description_sid(true))));
 
     // Display all the possible races (when searching) or the specific race
     // (when looking at a particular creature).

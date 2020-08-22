@@ -69,6 +69,11 @@ string StringTable::get(const string& key, const map<string, string>& char_repla
     }
   }
 
+  if (result.empty())
+  {
+    result = key;
+  }
+
   return result;
 }
 

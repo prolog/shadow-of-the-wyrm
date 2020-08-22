@@ -374,7 +374,7 @@ string TextMessages::get_item_pick_up_message(const bool player_blind, CreatureP
   else
   {
     item_message = StringTable::get(TextMessages::ITEM_PICK_UP_MESSAGE_MONSTER);
-    CreatureDescriber cd(creature, creature);
+    CreatureDescriber cd(creature, creature, true);
     boost::replace_first(item_message, "%s1", cd.describe());
   }
 
@@ -394,7 +394,7 @@ string TextMessages::get_item_pick_up_and_merge_message(const bool player_blind,
   }
   else
   {
-    CreatureDescriber cd(creature, creature);
+    CreatureDescriber cd(creature, creature, true);
     item_message = StringTable::get(TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE_MONSTER);
     boost::replace_first(item_message, "%s1", cd.describe());
   }

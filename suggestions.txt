@@ -1,10 +1,5 @@
 Me:
-- Look at npc.lua - HP and AP are probably being gained twice. Should only be
-  done in the engine.
-- Hirelings should get some extra spells once hired - move the code from
-  npc.lua
-- Ultimately npc.lua should be extra damage only
-- Synopsis stuff bleeding into pickup messages, looks bad
+- Need to get hirelings text-searchable in bestiary
 - Creatures try to cast utility spells when they don't make sense (uncursing,
   etc). Should be checks to see if effect makes sense.
 - Test all the set locations for hirelings

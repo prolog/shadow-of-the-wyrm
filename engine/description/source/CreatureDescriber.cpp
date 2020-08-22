@@ -48,13 +48,7 @@ string CreatureDescriber::describe() const
       }
       else
       {
-        string creature_name = creature->get_name();
         creature_desc = StringTable::get(creature->get_description_sid());
-
-        if (!creature_name.empty())
-        {
-          creature_desc = creature_name;
-        }
       }
     }
 

@@ -301,9 +301,16 @@ void Creature::set_short_description_sid(const string& new_short_description_sid
   short_description_sid = new_short_description_sid;
 }
 
-string Creature::get_short_description_sid() const
+string Creature::get_short_description_sid(const bool get_short_desc_only) const
 {
-  return short_description_sid;
+  if (get_short_desc_only || name.empty())
+  {
+    return short_description_sid;
+  }
+  else
+  {
+    return name;
+  }
 }
 
 void Creature::set_description_sid(const string& new_description_sid)
@@ -311,9 +318,16 @@ void Creature::set_description_sid(const string& new_description_sid)
   description_sid = new_description_sid;
 }
 
-string Creature::get_description_sid() const
+string Creature::get_description_sid(const bool get_desc_only) const
 {
-  return description_sid;
+  if (get_desc_only || name.empty())
+  {
+    return description_sid;
+  }
+  else
+  {
+    return name;
+  }
 }
 
 void Creature::set_text_details_sid(const string& new_text_details_sid)

@@ -226,11 +226,11 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
         d_strat->get_threats().has_threat(attacking_creature->get_id()).first == false &&
         race != nullptr &&
         race->get_has_voice() &&
+        attacked_creature != nullptr &&
         cca.can_speak(attacked_creature))
     {
       // The creature cries out for help
-      CreatureDescriber cd(attacking_creature, attacked_creature, true);
-      string cry_out_message = ActionTextKeys::get_cry_out_message(cd.describe());
+      string cry_out_message = ActionTextKeys::get_cry_out_message(StringTable::get(attacked_creature->get_description_sid()));
       IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacking_creature->get_is_player());
       manager.add_new_message(cry_out_message);
       manager.send();
@@ -328,7 +328,7 @@ void CombatManager::add_counter_strike_message(CreaturePtr attacking_creature, C
 {
   if (attacking_creature && attacked_creature)
   {
-    CreatureDescriber cd(attacking_creature, attacked_creature);
+    CreatureDescriber cd(attacking_creature, attacked_creature, true);
     string desc = cd.describe();
     string counter_message = CombatTextKeys::get_counter_message(attacked_creature->get_is_player(), desc);
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, (attacking_creature->get_is_player() || attacked_creature->get_is_player()));

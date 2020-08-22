@@ -68,10 +68,10 @@ class Creature : public ISerializable
     // Used for display information and messages, particularly when no name
     // is present.
     void set_short_description_sid(const std::string& new_short_description_sid);
-    std::string get_short_description_sid() const;
+    std::string get_short_description_sid(const bool get_short_desc_only = false) const;
     
     void set_description_sid(const std::string& new_description_sid);
-    std::string get_description_sid() const;
+    std::string get_description_sid(const bool get_desc_only = false) const;
 
     void set_text_details_sid(const std::string& new_text_details_sid);
     std::string get_text_details_sid() const;

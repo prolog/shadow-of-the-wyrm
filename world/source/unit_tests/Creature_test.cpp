@@ -155,6 +155,36 @@ TEST(SW_World_Creature, serialization_id)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_CREATURE, c.get_class_identifier());
 }
 
+TEST(SW_World_Creature, get_short_description_sid)
+{
+  Creature c;
+  string short_desc = "asdf";
+  string name = "buddy";
+  c.set_short_description_sid(short_desc);
+ 
+  EXPECT_EQ(short_desc, c.get_short_description_sid());
+
+  c.set_name(name);
+
+  EXPECT_EQ(name, c.get_short_description_sid());
+  EXPECT_EQ(short_desc, c.get_short_description_sid(true));
+}
+
+TEST(SW_World_Creature, get_description_sid)
+{
+  Creature c;
+  string short_desc = "aaaaaa";
+  string name = "name!";
+  c.set_description_sid(short_desc);
+
+  EXPECT_EQ(short_desc, c.get_description_sid());
+
+  c.set_name(name);
+
+  EXPECT_EQ(name, c.get_description_sid());
+  EXPECT_EQ(short_desc, c.get_description_sid(true));
+}
+
 TEST(SW_World_Creature, saveload)
 {
   Creature c, c2;

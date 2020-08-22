@@ -5009,7 +5009,7 @@ int get_creature_description(lua_State* ls)
       }
     }
 
-    CreatureDescriber cd(viewing_creature, creature);
+    CreatureDescriber cd(viewing_creature, creature, true);
     creature_desc = cd.describe();
   }
   else
