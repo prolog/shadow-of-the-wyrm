@@ -79,8 +79,9 @@ bool NPCUseEquipItemDecisionStrategy::should_equip_weapon(CreaturePtr creature, 
   WeaponPtr eq_weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
   Damage d = wm.get_damage(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
 
-  if (eq_weapon == nullptr && weapon != nullptr && (weapon->get_damage().avg() > d.avg()))
-  {
+  if ((eq_weapon == nullptr && weapon != nullptr && (weapon->get_damage().avg() > d.avg())) ||
+      (eq_weapon != nullptr && weapon != nullptr && weapon->get_status() != ItemStatus::ITEM_STATUS_CURSED && (weapon->get_damage().avg() > eq_weapon->get_damage().avg())))
+  {   
     should_eq = true;
   }
 
