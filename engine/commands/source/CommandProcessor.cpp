@@ -94,7 +94,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::DROP_ITEM)
       {
-        ac = game.actions.drop(creature);
+        ac = process_drop_command(creature, command, game);
       }
       else if (command_name == CommandKeys::CHAR_DETAILS)
       {
@@ -358,6 +358,28 @@ ActionCost CommandProcessor::process_pick_up_command(CreaturePtr creature, Comma
     else
     {
       ac = game.actions.pick_up(creature, PickUpType::PICK_UP_SINGLE);
+    }
+  }
+
+  return ac;
+}
+
+ActionCost CommandProcessor::process_drop_command(CreaturePtr creature, Command* command, Game& game)
+{
+  ActionCost ac;
+  DropCommand* drop_cmd = dynamic_cast<DropCommand*>(command);
+
+  if (drop_cmd != nullptr)
+  {
+    string drop_id = drop_cmd->get_drop_id();
+
+    if (!drop_id.empty())
+    {
+      ac = game.actions.drop(creature, drop_id);
+    }
+    else
+    {
+      ac = game.actions.drop(creature);
     }
   }
 

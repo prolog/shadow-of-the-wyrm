@@ -119,7 +119,13 @@ class DropCommand : public Command
 {
   public:
     DropCommand(int key);
+    DropCommand(const std::string& new_drop_id);
     ~DropCommand();
+
+    std::string get_drop_id() const;
+
+  protected:
+    std::string drop_id;
 };
 
 class CharDetailsCommand : public Command

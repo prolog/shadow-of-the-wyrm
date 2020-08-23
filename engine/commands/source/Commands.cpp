@@ -176,8 +176,18 @@ DropCommand::DropCommand(const int key)
 {
 }
 
+DropCommand::DropCommand(const string& new_drop_id)
+: Command(CommandKeys::DROP_ITEM, '?'), drop_id(new_drop_id)
+{
+}
+
 DropCommand::~DropCommand()
 {
+}
+
+string DropCommand::get_drop_id() const
+{
+  return drop_id;
 }
 
 // Display character details

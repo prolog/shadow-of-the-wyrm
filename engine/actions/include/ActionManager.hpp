@@ -42,11 +42,13 @@ class ActionManager : public ISerializable
 
     // Pick up/drop check the map type before proceeding.
     ActionCost pick_up(CreaturePtr creature, const PickUpType pick_up);
-
     // NPC version
     ActionCost pick_up(CreaturePtr creature, const std::string& ground_item_id);
 
     ActionCost drop(CreaturePtr creature);
+    // NPC version
+    ActionCost drop(CreaturePtr creature, const std::string& drop_item_id);
+
     ActionCost equipment(CreaturePtr creature);
     ActionCost equipment(CreaturePtr creature, ItemPtr i, const EquipmentWornLocation ewl);
 

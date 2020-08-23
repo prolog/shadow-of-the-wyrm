@@ -621,6 +621,9 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\decision_strategies\include\ImmobileDecisionStrategy.hpp" />
     <ClInclude Include="engine\decision_strategies\include\MobileDecisionStrategy.hpp" />
     <ClInclude Include="engine\decision_strategies\include\NPCDecisionStrategy.hpp" />
+    <ClInclude Include="engine\decision_strategies\include\NPCDropDecisionStrategy.hpp" />
+    <ClInclude Include="engine\decision_strategies\include\NPCPickupDecisionStrategy.hpp" />
+    <ClInclude Include="engine\decision_strategies\include\NPCUseEquipItemDecisionStrategy.hpp" />
     <ClInclude Include="engine\decision_strategies\include\PlayerDecisionStrategy.hpp" />
     <ClInclude Include="engine\decision_strategies\magic\include\AttackNPCMagicDecision.hpp" />
     <ClInclude Include="engine\decision_strategies\magic\include\DefaultNPCMagicDecision.hpp" />
@@ -1856,6 +1859,9 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\decision_strategies\magic\source\NPCMagicDecisionFactory.cpp" />
     <ClCompile Include="engine\decision_strategies\magic\source\NullNPCMagicDecision.cpp" />
     <ClCompile Include="engine\decision_strategies\source\DecisionStrategyProperties.cpp" />
+    <ClCompile Include="engine\decision_strategies\source\NPCDropDecisionStrategy.cpp" />
+    <ClCompile Include="engine\decision_strategies\source\NPCPickupDecisionStrategy.cpp" />
+    <ClCompile Include="engine\decision_strategies\source\NPCUseEquipItemDecisionStrategy.cpp" />
     <ClCompile Include="engine\description\codex\source\ArmourCodexDescriber.cpp" />
     <ClCompile Include="engine\description\codex\source\CodexDescriber.cpp" />
     <ClCompile Include="engine\description\codex\source\CodexDescriberFactory.cpp" />

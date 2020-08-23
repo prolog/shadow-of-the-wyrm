@@ -1,4 +1,7 @@
 Me:
+- Need to improve "should_equip_weapon" so that the creature can pick up a
+  better weapon.
+- Don't try to remove cursed eq
 - Need to get hirelings text-searchable in bestiary
 - Creatures try to cast utility spells when they don't make sense (uncursing,
   etc). Should be checks to see if effect makes sense.

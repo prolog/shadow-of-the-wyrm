@@ -595,6 +595,12 @@ ActionCost ActionManager::drop(CreaturePtr creature)
   return get_action_cost(creature, da.drop(creature, this));
 }
 
+ActionCost ActionManager::drop(CreaturePtr creature, const string& drop_item_id)
+{
+  DropAction da;
+  return get_action_cost(creature, da.drop(creature, drop_item_id));
+}
+
 // Display the inventory; potentially select something.
 ItemPtr ActionManager::inventory(CreaturePtr creature, IInventoryPtr inv, const list<IItemFilterPtr>& base_display_filter_list, const list<IItemFilterPtr>& additional_display_filter_list, const bool inventory_is_read_only)
 {

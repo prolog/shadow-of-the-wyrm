@@ -22,6 +22,7 @@ class CommandProcessor
     static ActionCost process_directional_command(CreaturePtr creature, DirectionalCommand* command, DisplayPtr display);
     static ActionCost process_spell_casting_command(CreaturePtr creature, Command* command, Game& game);
     static ActionCost process_pick_up_command(CreaturePtr creature, Command* command, Game& game);
+    static ActionCost process_drop_command(CreaturePtr creature, Command* command, Game& game);
     static ActionCost process_evoke_command(CreaturePtr creature, Command* command, Game& game);
     static ActionCost process_inventory_command(CreaturePtr creature, Command* command, Game& game);
     static ActionCost process_read_command(CreaturePtr creature, Command* command, Game& game);

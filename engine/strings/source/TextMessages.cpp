@@ -28,6 +28,7 @@ const string TextMessages::WELCOME_MESSAGE                    = "WELCOME_MESSAGE
 const string TextMessages::WELCOME_BACK_MESSAGE               = "WELCOME_BACK_MESSAGE";
 const string TextMessages::DUMPING_CHARACTER_MESSAGE          = "DUMPING_CHARACTER_MESSAGE";
 const string TextMessages::ITEM_DROP_MESSAGE                  = "ITEM_DROP_MESSAGE";
+const string TextMessages::ITEM_DROP_MESSAGE_MONSTER          = "ITEM_DROP_MESSAGE_MONSTER";
 const string TextMessages::ITEM_PICK_UP_MESSAGE_PLAYER        = "ITEM_PICK_UP_MESSAGE_PLAYER";
 const string TextMessages::ITEM_PICK_UP_MESSAGE_MONSTER       = "ITEM_PICK_UP_MESSAGE_MONSTER";
 const string TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE_PLAYER = "ITEM_PICK_UP_AND_MERGE_MESSAGE_PLAYER";
@@ -352,13 +353,25 @@ string TextMessages::get_area_entrance_message_given_terrain_type(const TileType
   return entrance_message;
 }
 
-string TextMessages::get_item_drop_message(const bool blind, ItemPtr item)
+string TextMessages::get_item_drop_message(CreaturePtr creature, const bool blind, ItemPtr item)
 {
-  ItemDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
-
+  bool player = creature && creature->get_is_player();
+  ItemDescriberPtr id = ItemDescriberFactory::create_item_describer(player && blind, item);
   string item_message = StringTable::get(TextMessages::ITEM_DROP_MESSAGE);
-  boost::replace_first(item_message, "%s", id->describe_usage());
-  
+
+  if (player)
+  {
+    boost::replace_first(item_message, "%s", id->describe_usage());
+  }
+  else
+  {
+    item_message = StringTable::get(TextMessages::ITEM_DROP_MESSAGE_MONSTER);
+
+    boost::replace_first(item_message, "%s1", StringTable::get(creature->get_description_sid()));
+    boost::replace_first(item_message, "%s2", id->describe_usage());
+    item_message[0] = toupper(item_message[0]);
+  }
+
   return item_message;
 }
 

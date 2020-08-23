@@ -4334,6 +4334,15 @@
     <ClInclude Include="engine\creatures\include\NPCSkillDistributor.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\NPCDropDecisionStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\NPCPickupDecisionStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\NPCUseEquipItemDecisionStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8670,6 +8679,15 @@
     </ClCompile>
     <ClCompile Include="engine\creatures\source\unit_tests\NPCSkillDistributor_test.cpp">
       <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\NPCDropDecisionStrategy.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\NPCPickupDecisionStrategy.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\NPCUseEquipItemDecisionStrategy.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

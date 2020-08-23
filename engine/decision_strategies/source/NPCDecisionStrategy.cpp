@@ -1,7 +1,6 @@
 #include "ActionTextKeys.hpp"
 #include "Amulet.hpp"
 #include "AttackNPCMagicDecision.hpp"
-#include "CarryingCapacityCalculator.hpp"
 #include "CoordUtils.hpp"
 #include "Commands.hpp"
 #include "CommandCustomValues.hpp"
@@ -13,7 +12,6 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "DecisionScript.hpp"
 #include "DecisionStrategyProperties.hpp"
-#include "EngineConversion.hpp"
 #include "Game.hpp"
 #include "HostilityManager.hpp"
 #include "IMessageManager.hpp"
@@ -22,7 +20,10 @@
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "NPCDecisionStrategy.hpp"
+#include "NPCDropDecisionStrategy.hpp"
 #include "NPCMagicDecisionFactory.hpp"
+#include "NPCPickupDecisionStrategy.hpp"
+#include "NPCUseEquipItemDecisionStrategy.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
 #include "RangedCombatUtils.hpp"
 #include "RaceManager.hpp"
@@ -39,6 +40,7 @@ using namespace std;
 
 const int NPCDecisionStrategy::PERCENT_CHANCE_USE_ITEM = 40;
 const int NPCDecisionStrategy::PERCENT_CHANCE_PICK_UP_USEFUL_ITEM = 75;
+const int NPCDecisionStrategy::PERCENT_CHANCE_DROP_ITEM = 90;
 const int NPCDecisionStrategy::PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET = 85;
 const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_USING_MAGIC = 75;
 const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_RANGED_COMBAT = 80;
@@ -142,6 +144,14 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
     if (has_movement_orders() == false)
     {
       command = get_use_item_decision(this_creature_id, view_map);
+    }
+
+    if (has_movement_orders() == false)
+    {
+      if (command == nullptr)
+      {
+        command = get_drop_decision(this_creature_id, view_map);
+      }
     }
 
     if (has_movement_orders() == false)
@@ -617,75 +627,29 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
 
     if (creature != nullptr && race != nullptr && race->get_has_pockets())
     {
-      CarryingCapacityCalculator ccc;
-      uint burden_weight_oz = ccc.calculate_burdened_weight(creature);
-      uint weight_carried_oz = creature->get_weight_carried();
-
-      BurdenLevel bl = BurdenLevelConverter::to_burden_level(creature);
-      TilePtr tile = MapUtils::get_tile_for_creature(map, creature);
-
-      // Creatures won't pick up if they're already burdened.
-      if (tile != nullptr && bl == BurdenLevel::BURDEN_LEVEL_UNBURDENED)
-      {
-        IInventoryPtr inv = tile->get_items();
-
-        if (inv != nullptr)
-        {
-          list<ItemPtr>& items = inv->get_items_ref();
-
-          for (ItemPtr item : items)
-          {
-            // NPCs don't pick up shop items, this is too hazardous to their
-            // health!
-            // 
-            // They also don't pick up items that will make them burdened.
-            if (item != nullptr && 
-               !item->get_unpaid() &&
-               (weight_carried_oz + item->get_total_weight().get_weight() < burden_weight_oz))
-            {
-              ItemType itype = item->get_type();
-
-              if (itype == ItemType::ITEM_TYPE_WEAPON)
-              {
-                pu_cmd = get_pick_up_weapon_decision(creature, item);
-              }
-              else if (itype == ItemType::ITEM_TYPE_AMULET)
-              {
-                pu_cmd = get_pick_up_amulet_decision(creature, item);
-              }
-              else if (itype == ItemType::ITEM_TYPE_RING)
-              {
-                pu_cmd = get_pick_up_ring_decision(creature, item);
-              }
-              else if (itype == ItemType::ITEM_TYPE_AMMUNITION)
-              {
-                pu_cmd = get_pick_up_ammunition_decision(creature, item);
-              }
-              else if (itype == ItemType::ITEM_TYPE_WAND)
-              {
-                pu_cmd = get_pick_up_wand_decision(creature, item);
-              }
-              else if (itype == ItemType::ITEM_TYPE_SPELLBOOK)
-              {
-                pu_cmd = get_pick_up_book_decision(creature, item);
-              }
-              else if (itype == ItemType::ITEM_TYPE_CURRENCY)
-              {
-                pu_cmd = make_unique<PickUpCommand>(item->get_id());
-              }
-
-              if (pu_cmd != nullptr)
-              {
-                return pu_cmd;
-              }
-            }
-          }
-        }
-      }
+      NPCPickupDecisionStrategy pu_strat;
+      pu_cmd = pu_strat.decide(creature, map);
     }
   }
 
   return pu_cmd;
+}
+
+CommandPtr NPCDecisionStrategy::get_drop_decision(const string& this_creature_id, MapPtr view_map)
+{
+  CommandPtr drop_cmd;
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+
+  if (map != nullptr && RNG::percent_chance(PERCENT_CHANCE_DROP_ITEM))
+  {
+    CreaturePtr creature = map->get_creature(this_creature_id);
+    NPCDropDecisionStrategy drop;
+
+    drop_cmd = drop.decide(creature, map);
+  }
+
+  return drop_cmd;
 }
 
 CommandPtr NPCDecisionStrategy::get_use_item_decision(const string& this_creature_id, MapPtr view_map)
@@ -700,45 +664,8 @@ CommandPtr NPCDecisionStrategy::get_use_item_decision(const string& this_creatur
 
     if (creature != nullptr)
     {
-      const list<ItemPtr>& items = creature->get_inventory()->get_items_ref();
-
-      for (auto item : items)
-      {
-        if (item != nullptr)
-        {
-          ItemType itype = item->get_type();
-
-          if (itype == ItemType::ITEM_TYPE_WEAPON)
-          {
-            use_cmd = get_equip_weapon_decision(creature, item);
-          }
-          else if (itype == ItemType::ITEM_TYPE_RING)
-          {
-            use_cmd = get_equip_ring_decision(creature, item);
-          }
-          else if (itype == ItemType::ITEM_TYPE_AMULET)
-          {
-            use_cmd = get_equip_amulet_decision(creature, item);
-          }
-          else if (itype == ItemType::ITEM_TYPE_AMMUNITION)
-          {
-            use_cmd = get_equip_ammunition_decision(creature, item);
-          }
-          else if (itype == ItemType::ITEM_TYPE_WAND)
-          {
-            use_cmd = get_use_wand_decision(creature, item, view_map);
-          }
-          else if (itype == ItemType::ITEM_TYPE_SPELLBOOK)
-          {
-            use_cmd = get_use_book_decision(creature, item);
-          }
-
-          if (use_cmd != nullptr)
-          {
-            return use_cmd;
-          }
-        }
-      }
+      NPCUseEquipItemDecisionStrategy ue;
+      use_cmd = ue.decide(creature, map);
     }
   }
 
@@ -864,269 +791,5 @@ vector<pair<string, int>> NPCDecisionStrategy::get_creatures_by_distance(Creatur
   return cdist;
 }
 
-CommandPtr NPCDecisionStrategy::get_pick_up_weapon_decision(CreaturePtr creature, ItemPtr item)
-{
-  CommandPtr pu_cmd;
-
-  if (creature != nullptr && item != nullptr)
-  {
-    if (should_equip_weapon(creature, item))
-    {
-      pu_cmd = make_unique<PickUpCommand>(item->get_id());
-    }
-  }
-
-  return pu_cmd;
-}
-
-CommandPtr NPCDecisionStrategy::get_pick_up_amulet_decision(CreaturePtr creature, ItemPtr item)
-{
-  CommandPtr pu_cmd;
-
-  if (creature != nullptr && item != nullptr)
-  {
-    AmuletPtr amulet = std::dynamic_pointer_cast<Amulet>(item);
-
-    if (amulet != nullptr)
-    {
-      ItemPtr amulet_eq = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_NECK);
-
-      if (amulet_eq == nullptr && amulet->get_is_good())
-      {
-        pu_cmd = make_unique<PickUpCommand>(amulet->get_id());
-      }
-    }
-  }
-
-  return pu_cmd;
-}
-
-CommandPtr NPCDecisionStrategy::get_pick_up_ring_decision(CreaturePtr creature, ItemPtr item)
-{
-  CommandPtr pu_cmd;
-
-  if (creature != nullptr && item != nullptr)
-  {
-    RingPtr ring = std::dynamic_pointer_cast<Ring>(item);
-
-    if (ring != nullptr)
-    {
-      ItemPtr f1 = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_LEFT_FINGER);
-      ItemPtr f2 = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_RIGHT_FINGER);
-
-      if ((f1 == nullptr || f2 == nullptr) && ring->get_is_good())
-      {
-        pu_cmd = make_unique<PickUpCommand>(ring->get_id());
-      }
-    }
-  }
-
-  return pu_cmd;
-}
-
-CommandPtr NPCDecisionStrategy::get_pick_up_ammunition_decision(CreaturePtr creature, ItemPtr item)
-{
-  CommandPtr pu_cmd;
-
-  if (creature != nullptr && item != nullptr)
-  {
-    WeaponManager wm;
-    WeaponPtr ranged = std::dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON));
-    WeaponPtr ammo = std::dynamic_pointer_cast<Weapon>(item);
-
-    if (wm.is_ranged_weapon_skill_type_compatible_with_ammunition(ranged, ammo))
-    {
-      pu_cmd = make_unique<PickUpCommand>(item->get_id());
-    }
-  }
-
-  return pu_cmd;
-}
-
-CommandPtr NPCDecisionStrategy::get_pick_up_wand_decision(CreaturePtr creature, ItemPtr item)
-{
-  CommandPtr pu_cmd;
-  CurrentCreatureAbilities cca;
-
-  // Creatures only pick up wands if they can speak - otherwise, evoking won't
-  // work.
-  if (creature != nullptr && item != nullptr && cca.can_speak(creature))
-  {
-    if (item && item->get_type() == ItemType::ITEM_TYPE_WAND)
-    {
-      Wand* wand = dynamic_cast<Wand*>(item.get());
-
-      if (wand->get_charges().get_current() > 0 && wand->get_has_damage())
-      {
-        pu_cmd = make_unique<PickUpCommand>(wand->get_id());
-      }
-    }
-  }
-
-  return pu_cmd;
-}
-
-CommandPtr NPCDecisionStrategy::get_pick_up_book_decision(CreaturePtr creature, ItemPtr item)
-{
-  CommandPtr pu_cmd;
-  CurrentCreatureAbilities cca;
-
-  // Creatures only pick up wands if they can speak - otherwise, evoking won't
-  // work.
-  if (creature != nullptr && item != nullptr && cca.can_speak(creature))
-  {
-    if (item && item->get_type() == ItemType::ITEM_TYPE_SPELLBOOK)
-    {
-      Spellbook* book = dynamic_cast<Spellbook*>(item.get());
-      if (CreatureUtils::has_skill_for_spell(creature, book->get_spell_id()))
-      {
-        pu_cmd = make_unique<PickUpCommand>(book->get_id());
-      }
-    }
-  }
-
-  return pu_cmd;
-}
-CommandPtr NPCDecisionStrategy::get_equip_weapon_decision(CreaturePtr creature, ItemPtr item)
-{
-  CommandPtr equip_cmd;
-
-  if (creature != nullptr && item != nullptr && should_equip_weapon(creature, item))
-  {
-    equip_cmd = make_unique<InventoryCommand>(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED, item);
-  }
-
-  return equip_cmd;
-}
 
 
-
-bool NPCDecisionStrategy::should_equip_weapon(CreaturePtr creature, ItemPtr item)
-{
-  bool should_eq = false;
-
-  WeaponManager wm;
-  WeaponPtr weapon = std::dynamic_pointer_cast<Weapon>(item);
-  WeaponPtr eq_weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
-  Damage d = wm.get_damage(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
-
-  if (eq_weapon == nullptr && weapon != nullptr && (weapon->get_damage().avg() > d.avg()))
-  {
-    should_eq = true;
-  }
-
-  return should_eq;
-}
-
-CommandPtr NPCDecisionStrategy::get_equip_ring_decision(CreaturePtr creature, ItemPtr item)
-{
-  CommandPtr equip_cmd;
-
-  if (creature != nullptr && item != nullptr)
-  {
-    Equipment& eq = creature->get_equipment();
-
-    EquipmentWornLocation f1 = EquipmentWornLocation::EQUIPMENT_WORN_LEFT_FINGER;
-    EquipmentWornLocation f2 = EquipmentWornLocation::EQUIPMENT_WORN_RIGHT_FINGER;
-    EquipmentWornLocation ewl = item->get_worn_location();
-
-    if (ewl == f1 || ewl == f2)
-    {
-      bool f1_worn = eq.has_item(f1);
-      bool f2_worn = eq.has_item(f2);
-
-      if (!f1_worn)
-      {
-        equip_cmd = std::make_unique<InventoryCommand>(f1, item);
-      }
-      else if (!f2_worn)
-      {
-        equip_cmd = std::make_unique<InventoryCommand>(f2, item);
-      }
-    }
-  }
-
-  return equip_cmd;
-}
-
-CommandPtr NPCDecisionStrategy::get_equip_amulet_decision(CreaturePtr creature, ItemPtr item)
-{
-  CommandPtr equip_cmd;
-
-  if (creature != nullptr && item != nullptr)
-  {
-    EquipmentWornLocation ewl = item->get_worn_location();
-    EquipmentWornLocation worn_loc = EquipmentWornLocation::EQUIPMENT_WORN_NECK;
-
-    if (ewl == worn_loc && !creature->get_equipment().has_item(worn_loc))
-    {
-      equip_cmd = std::make_unique<InventoryCommand>(worn_loc, item);
-    }
-  }
-
-  return equip_cmd;
-}
-
-CommandPtr NPCDecisionStrategy::get_equip_ammunition_decision(CreaturePtr creature, ItemPtr item)
-{
-  CommandPtr equip_cmd;
-
-  if (creature != nullptr && item != nullptr)
-  {
-    WeaponPtr ranged = std::dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON));
-    ItemPtr ammo_item = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
-
-    WeaponPtr ammo = std::dynamic_pointer_cast<Weapon>(item);
-    WeaponManager wm;
-
-    if (ammo_item == nullptr && wm.is_ranged_weapon_skill_type_compatible_with_ammunition(ranged, ammo))
-    {
-      equip_cmd = std::make_unique<InventoryCommand>(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION, item);
-    }
-  }
-
-  return equip_cmd;
-}
-
-CommandPtr NPCDecisionStrategy::get_use_wand_decision(CreaturePtr creature, ItemPtr item, MapPtr view_map)
-{
-  CommandPtr use_cmd;
-  WandPtr wand = std::dynamic_pointer_cast<Wand>(item);
-
-  if (wand != nullptr && wand->get_charges().get_current() > 0 && wand->get_has_damage())
-  {
-    uint range = wand->get_range();
-    AttackNPCMagicDecision anmd;
-    Spell spell;
-    SpellShape ss = SpellShapeFactory::create_spell_shape(wand->get_spell_shape_type(), wand->get_radius());
-
-    spell.set_shape(ss);
-    spell.set_damage(wand->get_damage());
-    spell.set_range(wand->get_range());
-
-    // If there are hostiles in range no non-hostiles in the same,
-    // use the wand.
-    pair<bool, Direction> dec_details = anmd.decide(creature, view_map, spell, creature->get_decision_strategy()->get_threats_ref().get_true_threats_without_level());
-
-    if (dec_details.first)
-    {
-      use_cmd = std::make_unique<EvokeCommand>(wand->get_id(), dec_details.second);
-    }
-  }
-
-  return use_cmd;
-}
-
-CommandPtr NPCDecisionStrategy::get_use_book_decision(CreaturePtr creature, ItemPtr item)
-{
-  CommandPtr use_cmd;
-  SpellbookPtr book = std::dynamic_pointer_cast<Spellbook>(item);
-
-  if (book != nullptr && CreatureUtils::has_skill_for_spell(creature, book->get_spell_id()))
-  {
-    use_cmd = std::make_unique<ReadCommand>(book->get_id());
-  }
-
-  return use_cmd;
-
-}
