@@ -1,4 +1,5 @@
 Me:
+- Allow humanoids to equip armour
 - Don't try to remove cursed eq
 - Need to get hirelings text-searchable in bestiary
 - Creatures try to cast utility spells when they don't make sense (uncursing,

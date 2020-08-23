@@ -23,6 +23,7 @@
 #include "StatusAilmentTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
 #include "ViewMapTranslator.hpp"
+#include "WeaponManager.hpp"
 
 using namespace std;
 
@@ -394,6 +395,41 @@ pair<bool, string> CreatureUtils::can_pick_up(CreaturePtr c, ItemPtr i)
   }
 
   return can_pu;
+}
+
+bool CreatureUtils::can_equip_weapon(CreaturePtr c, WeaponPtr w)
+{
+  if (c != nullptr && w != nullptr)
+  {
+    WeaponManager wm;
+    WeaponPtr weapon = wm.get_weapon(c, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
+    ItemPtr offhand = c->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND);
+    int hands_req = (w != nullptr) ? w->get_hands_required() : 1;
+
+    if (hands_req == 1)
+    {
+      if (weapon == nullptr || weapon->get_status() != ItemStatus::ITEM_STATUS_CURSED)
+      {
+        return true;
+      }
+    }
+    else
+    {
+      if (offhand != nullptr)
+      {
+        return false;
+      }
+      else
+      {
+        if (weapon == nullptr || weapon->get_status() != ItemStatus::ITEM_STATUS_CURSED)
+        {
+          return true;
+        }
+      }
+    }
+  }
+
+  return false;
 }
 
 Race* CreatureUtils::get_random_user_playable_race()

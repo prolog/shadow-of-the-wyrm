@@ -7,6 +7,7 @@
 #include "Deity.hpp"
 #include "SpellTypes.hpp"
 #include "Wearable.hpp"
+#include "Weapon.hpp"
 
 // Utility functions for creatures that are here (instead of on the
 // Creature class) because they require engine-specific work, such as
@@ -30,6 +31,9 @@ class CreatureUtils
 
     // Can the creature pick up the item?
     static std::pair<bool, std::string> can_pick_up(CreaturePtr c, ItemPtr i);
+
+    // Can the creature equip the weapon?
+    static bool can_equip_weapon(CreaturePtr creature, WeaponPtr weapon);
 
     // Increment a statistic, adding a message if desired.
     static void incr_str(CreaturePtr c, const bool add_msg);
