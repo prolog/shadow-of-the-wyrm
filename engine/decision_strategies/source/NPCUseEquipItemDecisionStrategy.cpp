@@ -25,6 +25,10 @@ CommandPtr NPCUseEquipItemDecisionStrategy::decide(CreaturePtr creature, MapPtr 
         {
           use_cmd = get_equip_weapon_decision(creature, item);
         }
+        else if (itype == ItemType::ITEM_TYPE_ARMOUR)
+        {
+          use_cmd = get_equip_armour_decision(creature, item);
+        }
         else if (itype == ItemType::ITEM_TYPE_RING)
         {
           use_cmd = get_equip_ring_decision(creature, item);
@@ -77,6 +81,25 @@ CommandPtr NPCUseEquipItemDecisionStrategy::get_equip_weapon_decision(CreaturePt
   return equip_cmd;
 }
 
+CommandPtr NPCUseEquipItemDecisionStrategy::get_equip_armour_decision(CreaturePtr creature, ItemPtr item)
+{
+  CommandPtr equip_cmd;
+
+  if (creature != nullptr && item != nullptr && should_equip_wearable(creature, item))
+  {
+    equip_cmd = std::make_unique<InventoryCommand>(item->get_worn_location(), item);
+  }
+  else
+  {
+    if (item != nullptr)
+    {
+      equip_cmd = std::make_unique<DropCommand>(item->get_id());
+    }
+  }
+
+  return equip_cmd;
+}
+
 bool NPCUseEquipItemDecisionStrategy::should_equip_weapon(CreaturePtr creature, ItemPtr item)
 {
   bool should_eq = false;
@@ -89,6 +112,65 @@ bool NPCUseEquipItemDecisionStrategy::should_equip_weapon(CreaturePtr creature, 
   if ((eq_weapon == nullptr && weapon != nullptr && (weapon->get_damage().avg() > d.avg())) ||
       (eq_weapon != nullptr && weapon != nullptr && (weapon->get_damage().avg() > eq_weapon->get_damage().avg())))
   {   
+    if (CreatureUtils::can_equip_weapon(creature, weapon))
+    {
+      should_eq = true;
+    }
+  }
+
+  return should_eq;
+}
+
+bool NPCUseEquipItemDecisionStrategy::should_equip_wearable(CreaturePtr creature, ItemPtr item)
+{
+  bool should_eq = false;
+
+  if (item != nullptr)
+  {
+    ItemPtr worn_item = creature->get_equipment().get_item(item->get_worn_location());
+    if (worn_item == nullptr && !item->get_auto_curse())
+    {
+      should_eq = true;
+    }
+    else if (worn_item != nullptr)
+    {
+      WearablePtr worn_wear = std::dynamic_pointer_cast<Wearable>(worn_item);
+      WearablePtr item_wear = std::dynamic_pointer_cast<Wearable>(item);
+
+      if (worn_wear != nullptr && item_wear != nullptr)
+      {
+        if (item_wear->get_score() > worn_wear->get_score())
+        {
+          if (item_wear->get_worn_location() == EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND)
+          {
+            WeaponManager wm;
+            WeaponPtr weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
+
+            if (weapon && weapon->get_hands_required() == 1)
+            {
+              should_eq = true;
+            }
+          }
+          else
+          {
+            // We can equip it if the item in the slot isn't cursed.
+            if (worn_wear->get_status() != ItemStatus::ITEM_STATUS_CURSED)
+            {
+              should_eq = true;
+            }
+          }
+        }
+      }
+    }
+  }
+  WeaponManager wm;
+  WeaponPtr weapon = std::dynamic_pointer_cast<Weapon>(item);
+  WeaponPtr eq_weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
+  Damage d = wm.get_damage(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
+
+  if ((eq_weapon == nullptr && weapon != nullptr && (weapon->get_damage().avg() > d.avg())) ||
+    (eq_weapon != nullptr && weapon != nullptr && (weapon->get_damage().avg() > eq_weapon->get_damage().avg())))
+  {
     if (CreatureUtils::can_equip_weapon(creature, weapon))
     {
       should_eq = true;

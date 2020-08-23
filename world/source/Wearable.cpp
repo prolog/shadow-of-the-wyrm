@@ -167,11 +167,7 @@ bool Wearable::additional_item_attributes_match(std::shared_ptr<Item> i) const
 
 bool Wearable::get_is_good() const
 {
-  int cstat_total = speed_bonus
-                  + evade
-                  + soak
-                  + to_hit
-                  + addl_damage;
+  int cstat_total = get_score();
 
   double resist_total = resistances.get_total();
 
@@ -179,6 +175,17 @@ bool Wearable::get_is_good() const
               (cstat_total > CSTAT_GOOD_THRESHOLD) || (resist_total > RESISTS_GOOD_THRESHOLD);
 
   return good;
+}
+
+int Wearable::get_score() const
+{
+  int cstat_total = speed_bonus
+                  + evade
+                  + soak
+                  + to_hit
+                  + addl_damage;
+
+  return cstat_total;
 }
 
 bool Wearable::serialize(ostream& stream) const

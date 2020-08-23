@@ -625,7 +625,7 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
     RaceManager rm;
     Race* race = rm.get_race(creature->get_race_id());
 
-    if (creature != nullptr && race != nullptr && race->get_has_pockets())
+    if (creature != nullptr && race != nullptr && race->get_has_pockets() && race->get_corporeal().get_current())
     {
       NPCPickupDecisionStrategy pu_strat;
       pu_cmd = pu_strat.decide(creature, map);

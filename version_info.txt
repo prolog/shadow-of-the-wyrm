@@ -11,7 +11,7 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   the item type, but in general, NPCs avoid cursed and autocursing items.
 
 - NPCs can now evoke wands, equip weapons and ammunition, and wear rings and 
-  amulets.
+  amulets. They can also pick up and wear armour.
 
 - Nobles now start with a higher starting leadership value (40).
 

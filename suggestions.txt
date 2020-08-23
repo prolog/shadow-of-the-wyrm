@@ -1,4 +1,7 @@
 Me:
+- Update the score functionality to consider evade more
+- The wearable score should also consider resists
+- Test: give goblin a greatsword, drop a shield
 - Allow humanoids to equip armour
 - Don't try to remove cursed eq
 - Need to get hirelings text-searchable in bestiary

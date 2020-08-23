@@ -53,6 +53,10 @@ CommandPtr NPCPickupDecisionStrategy::decide(CreaturePtr creature, MapPtr map)
             {
               pu_cmd = get_pick_up_weapon_decision(creature, item);
             }
+            else if (itype == ItemType::ITEM_TYPE_ARMOUR)
+            {
+              pu_cmd = get_pick_up_armour_decision(creature, item);
+            }
             else if (itype == ItemType::ITEM_TYPE_AMULET)
             {
               pu_cmd = get_pick_up_amulet_decision(creature, item);
@@ -100,6 +104,23 @@ CommandPtr NPCPickupDecisionStrategy::get_pick_up_weapon_decision(CreaturePtr cr
     NPCUseEquipItemDecisionStrategy ue;
 
     if (ue.should_equip_weapon(creature, item))
+    {
+      pu_cmd = std::make_unique<PickUpCommand>(item->get_id());
+    }
+  }
+
+  return pu_cmd;
+}
+
+CommandPtr NPCPickupDecisionStrategy::get_pick_up_armour_decision(CreaturePtr creature, ItemPtr item)
+{
+  CommandPtr pu_cmd;
+
+  if (creature != nullptr && item != nullptr)
+  {
+    NPCUseEquipItemDecisionStrategy ue;
+
+    if (ue.should_equip_wearable(creature, item))
     {
       pu_cmd = std::make_unique<PickUpCommand>(item->get_id());
     }

@@ -222,6 +222,11 @@ vector<string> Weapon::get_flag_sids() const
   return flag_sids;
 }
 
+int Weapon::get_score() const
+{
+  return damage.avg();
+}
+
 bool Weapon::serialize(ostream& stream) const
 {
   Wearable::serialize(stream);

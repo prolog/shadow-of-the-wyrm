@@ -186,6 +186,7 @@ class Item : public ISerializable
 
     // Used for NPC AI decisions
     virtual bool get_is_good() const;
+    virtual int get_score() const;
 
     virtual Item* create_with_new_id();
     virtual Item* create();

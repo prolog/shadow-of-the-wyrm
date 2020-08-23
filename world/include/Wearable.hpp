@@ -34,6 +34,8 @@ class Wearable : public Item
     
     virtual bool additional_item_attributes_match(std::shared_ptr<Item> i) const override;
 
+    int get_score() const override;
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
     
