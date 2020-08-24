@@ -35,6 +35,7 @@
 #include "MessageManagerFactory.hpp"
 #include "Naming.hpp"
 #include "OptionScreen.hpp"
+#include "OrderAction.hpp"
 #include "PickupAction.hpp"
 #include "PrimordialCalculator.hpp"
 #include "RaceManager.hpp"
@@ -409,6 +410,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_hirelings_hired", set_hirelings_hired);
   lua_register(L, "get_hirelings_hired", get_hirelings_hired);
   lua_register(L, "get_trained_magic_skills", get_trained_magic_skills);
+  lua_register(L, "order_follow", order_follow);
 }
 
 // Lua API helper functions
@@ -8282,4 +8284,27 @@ int get_trained_magic_skills(lua_State* ls)
 
   LuaUtils::create_return_table_from_int_vector(ls, mskills);
   return 1;
+}
+
+int order_follow(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string cr_id = lua_tostring(ls, 1);
+    string cr_to_foll_id = lua_tostring(ls, 2);
+
+    CreaturePtr creature = get_creature(cr_id);
+
+    if (creature != nullptr)
+    {
+      OrderAction oa;
+      oa.set_order(creature, DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID, cr_to_foll_id);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to order_follow");
+  }
+
+  return 0;
 }

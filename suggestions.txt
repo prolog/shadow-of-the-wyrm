@@ -1,6 +1,6 @@
 Me:
-- Follow by default (grond)
 - Wyrm level stupid slow?
+- Hirelings should be able to pick up while following
 - Fix leadership message
 - Update the score functionality to consider evade more
 - The wearable score should also consider resists

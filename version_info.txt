@@ -70,6 +70,8 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   - The examine command was giving too much information when the player was
     blind.
 
+  - The unarmed combat improvement message wasn't firing properly (Grond).
+
   - Various typos in the bestiary and "Tel and Floridel" (Echo38).
 
 Shadow of the Wyrm v1.2.1 "Lully"
