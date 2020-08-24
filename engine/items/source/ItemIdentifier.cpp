@@ -54,7 +54,7 @@ void ItemIdentifier::set_equipment_identified(CreaturePtr creature, const list<I
       }
       
       // This is an item to be identified (it passes all the filters), so identify it.
-      if (passes_filter && item) 
+      if (creature->get_is_player() && passes_filter && item) 
       {
         set_item_identified(creature, item, item->get_base_id(), true);
       }

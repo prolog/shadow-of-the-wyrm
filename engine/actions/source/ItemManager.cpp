@@ -430,14 +430,22 @@ void ItemManager::handle_item_identification_and_statuses(CreaturePtr creature, 
     if (wearable != nullptr)
     {
       ItemIdentifier iid;
-      iid.set_item_identified(creature, item, item->get_base_id(), true);
+
+      if (creature->get_is_player())
+      {
+        iid.set_item_identified(creature, item, item->get_base_id(), true);
+      }
     }
 
     // If auto-cursing, curse it.
     if (item->get_auto_curse())
     {
       item->set_status(ItemStatus::ITEM_STATUS_CURSED);
-      item->set_status_identified(true);
+
+      if (creature->get_is_player())
+      {
+        item->set_status_identified(true);
+      }
     }
   }
 }

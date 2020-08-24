@@ -5230,15 +5230,18 @@ int identify_item_type(lua_State* ls)
     Game& game = Game::instance();
     const map<string, ItemPtr>& items = game.get_items_ref();
 
-    for (const pair<string, ItemPtr>& item_pair : items)
+    if (creature && creature->get_is_player())
     {
-      ItemIdentifier iid;
-      ItemPtr item = item_pair.second;
-
-      if ((item->get_type() == item_type) && (!iid.get_item_identified(item, true)))
+      for (const pair<string, ItemPtr>& item_pair : items)
       {
-        iid.set_item_identified(creature, item, item->get_base_id(), true);
-        num_identified++;
+        ItemIdentifier iid;
+        ItemPtr item = item_pair.second;
+
+        if ((item->get_type() == item_type) && (!iid.get_item_identified(item, true)))
+        {
+          iid.set_item_identified(creature, item, item->get_base_id(), true);
+          num_identified++;
+        }
       }
     }
   }

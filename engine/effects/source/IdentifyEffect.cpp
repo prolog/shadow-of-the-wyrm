@@ -66,7 +66,7 @@ bool IdentifyEffect::effect_cursed(std::shared_ptr<Creature> creature, ActionMan
     list<IItemFilterPtr> empty_filter = ItemFilterFactory::create_empty_filter();
     ItemPtr item = am->inventory(creature, creature->get_inventory(), empty_filter, {}, false);
     
-    if (item)
+    if (creature->get_is_player() && item)
     {
       item_id.set_item_identified(creature, item, item->get_base_id(), true);
       return true;
