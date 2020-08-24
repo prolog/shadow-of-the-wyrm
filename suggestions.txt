@@ -1,4 +1,7 @@
 Me:
+- Follow by default (grond)
+- Wyrm level stupid slow?
+- Fix leadership message
 - Update the score functionality to consider evade more
 - The wearable score should also consider resists
 - Test: give goblin a greatsword, drop a shield

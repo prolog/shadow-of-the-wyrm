@@ -5,5 +5,5 @@
 // library for reasonable portability.
 void PauseAnimationInstruction::execute(Display* const display)
 {
-  boost::this_thread::sleep(boost::posix_time::milliseconds(150));
+  boost::this_thread::sleep(boost::posix_time::milliseconds(100));
 }

@@ -50,6 +50,8 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 - Added a bit more heat resistance to Forger, toned down Goblincrusher's
   damage a touch.
 
+- The ranged animation is now a little faster.
+
 - New poem fragment for the title screen.
 
 - Stanzas for "Tel and Floridel".

@@ -89,7 +89,7 @@ string CreatureDifficulty::get_health_indicator_sid(CreaturePtr target_creature)
 
     for (auto ind_it : hp_ind_mappings)
     {
-      if (hp_pct > ind_it.first)
+      if (hp_pct >= ind_it.first)
       {
         sid = ind_it.second;
         break;
