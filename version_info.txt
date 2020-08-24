@@ -58,6 +58,9 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 
 - Bug fixes:
 
+  - When evoking a stack of wands, the new wand had the old stack size set,
+    effectively creating a way of duplicating wands.
+
   - The "seen for automove" flag wasn't being set on initial items, so
     there were issues when comparing items and multiple stacks would form
     when they shouldn't have.

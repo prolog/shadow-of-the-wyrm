@@ -61,6 +61,7 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
           wand->set_quantity(wand->get_quantity() - 1);
           ItemPtr new_wand_as_item = ItemPtr(wand->clone());
           new_wand = dynamic_pointer_cast<Wand>(new_wand_as_item);
+          new_wand->set_quantity(1);
         }
         else
         {
