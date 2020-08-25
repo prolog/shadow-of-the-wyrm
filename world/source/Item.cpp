@@ -468,6 +468,17 @@ Item* Item::create()
   return clone();
 }
 
+Item* Item::clone_with_new_id()
+{
+  Item* item = clone();
+
+  boost::uuids::uuid new_id = boost::uuids::random_generator()();
+  std::string id_s = Uuid::to_string(new_id);
+  item->set_id(id_s);
+
+  return item;
+}
+
 void Item::set_item_identified(const bool new_item_identified)
 {
   item_identified = new_item_identified;

@@ -217,7 +217,7 @@ pair<bool, vector<ItemPtr>> ItemManager::remove_item_from_eq_or_inv(CreaturePtr 
         int existing_item_new_quantity = i_quantity - rem_quantity;
         int new_item_quantity = rem_quantity;
 
-        ItemPtr new_item = ItemPtr(item->clone());
+        ItemPtr new_item = ItemPtr(item->clone_with_new_id());
         item->set_quantity(existing_item_new_quantity);
         new_item->set_quantity(new_item_quantity);
 

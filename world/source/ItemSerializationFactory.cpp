@@ -42,7 +42,7 @@ ItemPtr ItemSerializationFactory::create_item(const ClassIdentifier ci)
 
   if (i_it != item_map.end())
   {
-    item = ItemPtr(i_it->second->clone());
+    item = ItemPtr(i_it->second->clone_with_new_id());
   }
 
   // Sanity check: throw an exception if the item is null!

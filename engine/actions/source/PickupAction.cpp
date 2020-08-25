@@ -515,7 +515,7 @@ ItemPtr PickupAction::recalculate_stack_sizes(IInventoryPtr inv, ItemPtr pick_up
     if (amount_to_take > 0 && amount_to_take < quantity)
     {
       // Reduce the quantity on the ground appropriately.
-      ItemPtr new_item = ItemPtr(pick_up_item->clone());
+      ItemPtr new_item = ItemPtr(pick_up_item->clone_with_new_id());
 
       if (new_item != nullptr)
       {

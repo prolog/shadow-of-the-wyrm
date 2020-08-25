@@ -59,7 +59,7 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
         if (wand->get_quantity() > 1)
         {
           wand->set_quantity(wand->get_quantity() - 1);
-          ItemPtr new_wand_as_item = ItemPtr(wand->clone());
+          ItemPtr new_wand_as_item = ItemPtr(wand->clone_with_new_id());
           new_wand = dynamic_pointer_cast<Wand>(new_wand_as_item);
           new_wand->set_quantity(1);
         }
@@ -74,7 +74,7 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
 
         // If we're in a shop, anger the shopkeeper.
         // Using charges is theft!
-        if (wand->get_unpaid())
+        if (new_wand->get_unpaid())
         {
           MapUtils::anger_shopkeeper_if_necessary(map->get_location(creature->get_id()), map, creature);
         }
@@ -83,7 +83,7 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
         // a single wand.
         if (need_to_remove_before_adding_or_merging)
         {
-          creature->get_inventory()->remove(wand->get_id());
+          creature->get_inventory()->remove(new_wand->get_id());
         }
 
         // Insert the item back into the inventory.
