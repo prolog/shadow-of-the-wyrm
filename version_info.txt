@@ -62,6 +62,10 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 
 - New poem fragment for the title screen.
 
+- Now that creatures can put on armour, created a new, common weapon (whisper-
+  thin dagger) that is slightly better than a normal dagger, and has the
+  piercing flag set.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
