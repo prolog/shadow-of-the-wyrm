@@ -1,5 +1,9 @@
 Me:
-- Merchants should start with all items identified
+- Companions to Telari, both dirs (Grond).
+- enemies firing spells shouldn't target themselves
+- reset wind faster
+- now that NPCs can wear armour, some sort of piercing weapon? rapier?
+- ammo stack bug
 - Wyrm level stupid slow?
 - Hirelings should be able to pick up while following
 - Fix leadership message

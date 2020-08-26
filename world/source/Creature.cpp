@@ -242,6 +242,11 @@ string Creature::get_original_id() const
   return original_id;
 }
 
+void Creature::set_is_player_flag(const bool player)
+{
+  is_player = player;
+}
+
 void Creature::set_is_player(const bool player, ControllerPtr controller)
 {
   is_player = player;

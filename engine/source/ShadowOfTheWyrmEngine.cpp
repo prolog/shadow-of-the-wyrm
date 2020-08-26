@@ -639,7 +639,7 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
   }
 
   CreatureFactory cf;
-  CreaturePtr player = cf.create_by_race_and_class(game.get_action_manager_ref(), ccd.get_race_id(), ccd.get_class_id(), name, ccd.get_sex(), ccd.get_deity_id());
+  CreaturePtr player = cf.create_by_race_and_class(game.get_action_manager_ref(), ccd.get_race_id(), ccd.get_class_id(), name, ccd.get_sex(), ccd.get_deity_id(), true);
   cf.setup_player(player, controller);
 
   setup_autopickup_settings(player);

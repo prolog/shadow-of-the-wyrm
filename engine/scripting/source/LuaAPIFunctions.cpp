@@ -5224,7 +5224,8 @@ int identify_item_type(lua_State* ls)
   if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
   {
     string creature_id = lua_tostring(ls, 1);
-    ItemType item_type = static_cast<ItemType>(lua_tointeger(ls, 2));
+    int iitype = lua_tointeger(ls, 2);
+    ItemType item_type = static_cast<ItemType>(iitype);
     CreaturePtr creature = get_creature(creature_id);
 
     Game& game = Game::instance();
@@ -5237,7 +5238,7 @@ int identify_item_type(lua_State* ls)
         ItemIdentifier iid;
         ItemPtr item = item_pair.second;
 
-        if ((item->get_type() == item_type) && (!iid.get_item_identified(item, true)))
+        if (iitype == -1 || ((item->get_type() == item_type) && (!iid.get_item_identified(item, true))))
         {
           iid.set_item_identified(creature, item, item->get_base_id(), true);
           num_identified++;

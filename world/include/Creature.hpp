@@ -56,6 +56,10 @@ class Creature : public ISerializable
     void set_original_id(const std::string& new_original_id);
     std::string get_original_id() const;
 
+    // Used only in creature setup. set_is_player sets a bunch of other stuff
+    // the game needs, but this function sets the flag only.
+    void set_is_player_flag(const bool player);
+
     void set_is_player(const bool player, ControllerPtr decision_strategy_controller);
     bool get_is_player() const;
     bool is(std::shared_ptr<Creature> creature) const;

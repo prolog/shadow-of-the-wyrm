@@ -55,6 +55,11 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 - Wands now show the total as well as the current charges, which makes it much
   more clear why they don't stack (Echo38).
 
+- Merchants now start with full knowledge of the game's items.
+
+- Pilgrims now start off with 100 Lore, meaning they will always know an
+  item's B/U/C status.
+
 - New poem fragment for the title screen.
 
 - Stanzas for "Tel and Floridel".
@@ -79,6 +84,8 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   - The unarmed combat improvement message wasn't firing properly (Grond).
 
   - Various typos in the bestiary and "Tel and Floridel" (Echo38).
+
+  - The messages for special in-game days were broken (Grond).
 
 Shadow of the Wyrm v1.2.1 "Lully"
 - Version declared June 21, 2020.  Version finalized July 17, 2020.
