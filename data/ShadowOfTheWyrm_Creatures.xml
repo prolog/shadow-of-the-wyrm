@@ -599,6 +599,7 @@
 			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -2373,6 +2374,7 @@
 			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -4205,6 +4207,7 @@
 			<SpeechTextSID>WISPE_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -4443,6 +4446,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>f</Char>
@@ -7202,6 +7206,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>f</Char>
@@ -7246,6 +7251,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>f</Char>
@@ -7288,6 +7294,7 @@
 			<SpeechTextSID>VENDOR_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>v</Char>
@@ -11730,6 +11737,7 @@
 			<SpeechTextSID>ALTUS_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>immobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -11774,6 +11782,7 @@
 			<SpeechTextSID>CORNEL_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>immobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -15158,6 +15167,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>e</Char>
@@ -15710,6 +15720,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>e</Char>
@@ -15792,6 +15803,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>e</Char>
@@ -15836,6 +15848,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>e</Char>
@@ -16031,6 +16044,7 @@
 			<SpeechTextSID>TIR_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -19436,6 +19450,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>g</Char>
@@ -19599,6 +19614,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>g</Char>
@@ -20158,6 +20174,7 @@
 			<SpeechTextSID>AMAUROSIS_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>W</Char>
@@ -20209,6 +20226,7 @@
 			<SpeechTextSID>EAKAURI_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>A</Char>
@@ -20381,6 +20399,7 @@
 			<SpeechTextSID>EAD_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -20426,6 +20445,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -20471,6 +20491,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -20596,6 +20617,7 @@
 			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -20641,6 +20663,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -20686,6 +20709,7 @@
 			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -20729,6 +20753,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -20771,6 +20796,7 @@
 			<SpeechTextSID>IDEM_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -20888,9 +20914,10 @@
 			<SpeechTextSID>SHOPKEEPER_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
-				<Shopkeeper>1</Shopkeeper>
-				<ResistSwitch>1</ResistSwitch>
-			</DecisionStrategy>
+        <Pickup>0</Pickup>
+        <Shopkeeper>1</Shopkeeper>
+        <ResistSwitch>1</ResistSwitch>
+      </DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
 				<Colour>13</Colour>
@@ -21070,6 +21097,7 @@
 			<SpeechTextSID>HRETHEL_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -21130,6 +21158,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -21209,6 +21238,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -21252,6 +21282,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -21892,6 +21923,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -21977,6 +22009,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -23702,6 +23735,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>d</Char>
@@ -23747,6 +23781,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>d</Char>
@@ -23790,6 +23825,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>d</Char>
@@ -24441,6 +24477,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>E</Char>
@@ -24486,6 +24523,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>E</Char>
@@ -24531,6 +24569,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>E</Char>
@@ -24577,6 +24616,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>E</Char>
@@ -24621,6 +24661,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>E</Char>
@@ -24665,6 +24706,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>E</Char>
@@ -24707,6 +24749,7 @@
 			<TextDetailsSID>THE_SMITH_TEXT_DETAILS_SID</TextDetailsSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>E</Char>
@@ -24751,6 +24794,7 @@
 			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>,</Char>
@@ -24794,6 +24838,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -24838,6 +24883,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -24879,6 +24925,7 @@
 			<SpeechTextSID>FFLEUR_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -24927,6 +24974,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -25012,6 +25060,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -25093,6 +25142,7 @@
 			<SpeechTextSID>GAMBLER_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>h</Char>
@@ -25135,6 +25185,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -25177,6 +25228,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -25219,6 +25271,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>g</Char>
@@ -25316,6 +25369,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>e</Char>
@@ -25358,6 +25412,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>O</Char>
@@ -25401,6 +25456,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>e</Char>
@@ -25443,6 +25499,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>h</Char>
@@ -25485,6 +25542,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>g</Char>
@@ -25526,6 +25584,7 @@
 			<SpeechTextSID>GOLGOA_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -25582,6 +25641,7 @@
 			<SpeechTextSID>LORELEI_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -25643,6 +25703,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -25699,6 +25760,7 @@
 			<SpeechTextSID>SCHELDT_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -25759,6 +25821,7 @@
 			<SpeechTextSID>LISH_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -25812,6 +25875,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>p</Char>
@@ -25855,6 +25919,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -25898,6 +25963,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>e</Char>
@@ -25978,6 +26044,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -26095,6 +26162,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>O</Char>
@@ -26138,6 +26206,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -26180,6 +26249,7 @@
 			<SpeechTextSID>COALMAN_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -26221,6 +26291,7 @@
 			<SpeechTextSID>PRAETOR_SCULLERYMAID_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -26264,6 +26335,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -26307,6 +26379,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -26348,6 +26421,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -26392,6 +26466,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>E</Char>
@@ -26474,6 +26549,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -26553,6 +26629,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>g</Char>
@@ -26595,6 +26672,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>e</Char>
@@ -26637,6 +26715,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>g</Char>
@@ -26685,6 +26764,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>g</Char>
@@ -26727,6 +26807,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -26769,6 +26850,7 @@
 			<SpeechTextSID>CORBETT_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Pickup>0</Pickup>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>

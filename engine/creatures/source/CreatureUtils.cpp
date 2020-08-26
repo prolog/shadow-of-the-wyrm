@@ -376,7 +376,6 @@ pair<bool, string> CreatureUtils::can_pick_up(CreaturePtr c, ItemPtr i)
   {
     CarryingCapacityCalculator ccc;
     uint total_items = ccc.calculate_carrying_capacity_total_items(c);
-
     can_pu.first = (i->get_type() == ItemType::ITEM_TYPE_CURRENCY || c->count_items() + i->get_quantity() <= total_items);
 
     if (!can_pu.first)

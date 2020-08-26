@@ -79,7 +79,7 @@ string Wand::get_synopsis() const
 {
   ostringstream oss;
 
-  oss << "(" << charges.get_current() << ")";
+  oss << "(" << charges.get_current() << "/" << charges.get_base() << ")";
 
   return oss.str();
 }

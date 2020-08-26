@@ -1,8 +1,10 @@
 #include "Amulet.hpp"
 #include "CarryingCapacityCalculator.hpp"
 #include "Commands.hpp"
+#include "Conversion.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "DecisionStrategyProperties.hpp"
 #include "EngineConversion.hpp"
 #include "MapUtils.hpp"
 #include "NPCPickupDecisionStrategy.hpp"
@@ -45,6 +47,7 @@ CommandPtr NPCPickupDecisionStrategy::decide(CreaturePtr creature, MapPtr map)
           if (CreatureUtils::can_pick_up(creature, item).first &&
             item != nullptr &&
             !item->get_unpaid() &&
+            String::to_bool(creature->get_decision_strategy()->get_property(DecisionStrategyProperties::DECISION_STRATEGY_PICKUP)) &&
             (weight_carried_oz + item->get_total_weight().get_weight() < burden_weight_oz))
           {
             ItemType itype = item->get_type();

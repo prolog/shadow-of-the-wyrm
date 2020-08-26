@@ -1,5 +1,4 @@
 Me:
-- Clone issue: id not copied?
 - Merchants should start with all items identified
 - Wyrm level stupid slow?
 - Hirelings should be able to pick up while following

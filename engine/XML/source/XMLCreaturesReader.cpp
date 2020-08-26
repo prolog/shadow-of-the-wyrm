@@ -357,6 +357,9 @@ void XMLCreaturesReader::parse_decision_strategy(const XMLNode& decision_strateg
     bool sentinel = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Sentinel", false);
     decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, Bool::to_string(sentinel));
 
+    bool pickup = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Pickup", true);
+    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_PICKUP, Bool::to_string(pickup));
+
     bool shopkeeper = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Shopkeeper", false);
     decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SHOPKEEPER, Bool::to_string(shopkeeper));
 

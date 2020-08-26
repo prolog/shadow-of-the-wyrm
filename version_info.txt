@@ -50,7 +50,10 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 - Added a bit more heat resistance to Forger, toned down Goblincrusher's
   damage a touch.
 
-- The ranged animation is now a little faster.
+- The ranged animation is now a little faster (Grond).
+
+- Wands now show the total as well as the current charges, which makes it much
+  more clear why they don't stack (Echo38).
 
 - New poem fragment for the title screen.
 
