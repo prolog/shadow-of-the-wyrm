@@ -1,8 +1,9 @@
 Me:
-- Companions to Telari, both dirs (Grond).
+- After incr to unburdened, add 1-4 more str
+- Grond: fountain inside wall (plaza)
+- Class-specific AI: pugilists should unequip any equipped weapon
 - enemies firing spells shouldn't target themselves
 - reset wind faster
-- now that NPCs can wear armour, some sort of piercing weapon? rapier?
 - ammo stack bug
 - Wyrm level stupid slow?
 - Hirelings should be able to pick up while following
@@ -16,7 +17,6 @@ Me:
 - Creatures try to cast utility spells when they don't make sense (uncursing,
   etc). Should be checks to see if effect makes sense.
 - Test all the set locations for hirelings
-- Class-specific AI: pugilists should unequip any equipped weapon
 - Next release: need to do an asset release
 - Sector features for regular settlements
 - Things to make villages more interesting:

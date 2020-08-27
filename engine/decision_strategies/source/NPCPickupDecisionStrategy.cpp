@@ -33,6 +33,13 @@ CommandPtr NPCPickupDecisionStrategy::decide(CreaturePtr creature, MapPtr map)
     if (tile != nullptr && bl == BurdenLevel::BURDEN_LEVEL_UNBURDENED)
     {
       IInventoryPtr inv = tile->get_items();
+      string pickup_s = creature->get_decision_strategy()->get_property(DecisionStrategyProperties::DECISION_STRATEGY_PICKUP);
+      bool pickup = true;
+
+      if (!pickup_s.empty())
+      {
+        pickup = String::to_bool(pickup_s);
+      }
 
       if (inv != nullptr)
       {
@@ -47,7 +54,7 @@ CommandPtr NPCPickupDecisionStrategy::decide(CreaturePtr creature, MapPtr map)
           if (CreatureUtils::can_pick_up(creature, item).first &&
             item != nullptr &&
             !item->get_unpaid() &&
-            String::to_bool(creature->get_decision_strategy()->get_property(DecisionStrategyProperties::DECISION_STRATEGY_PICKUP)) &&
+            pickup &&
             (weight_carried_oz + item->get_total_weight().get_weight() < burden_weight_oz))
           {
             ItemType itype = item->get_type();

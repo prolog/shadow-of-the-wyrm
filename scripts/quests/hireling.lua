@@ -34,7 +34,14 @@ local function request_hire(this_cr_id, name)
     if add_confirmation_message(hire_msg, {name, hire_fee_s}) then
       remove_object_from_player(CURRENCY_ID, hire_fee)
       add_object_to_creature(map_id, this_cr_id, CURRENCY_ID, "", hire_fee)
+     
       incr_str_to_unburdened(this_cr_id, false)
+
+      -- Give them a bit of extra strength so if they've picked up a lot of
+      -- ivory, they'll still have some capacity for picking up items.
+      for i = 1, RNG_range(2,4) do
+        incr_str(this_cr_id, false)
+      end
 
       set_creature_additional_property(this_cr_id, "CREATURE_PROPERTIES_LEADER_ID", PLAYER_ID)
       set_hirelings_hired(PLAYER_ID, get_hirelings_hired(PLAYER_ID) + 1)

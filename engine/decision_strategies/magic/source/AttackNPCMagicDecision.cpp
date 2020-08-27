@@ -46,7 +46,14 @@ pair<bool, Direction> AttackNPCMagicDecision::decide(CreaturePtr caster, MapPtr 
             string creature_id = creature->get_id();
             string caster_id = caster->get_id();
 
-            if (creature_id != caster_id)
+            // The caster shouldn't allow itself to be targetted by its own
+            // attack spells.
+            if (creature_id == caster_id)
+            {
+              decision_details.first = false;
+              break;
+            }
+            else
             {
               // Prevent NPC spellcasting if it would target its leader.
               if (creature_id == leader_id)
