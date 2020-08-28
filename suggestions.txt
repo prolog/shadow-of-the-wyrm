@@ -1,18 +1,12 @@
 Me:
-- After incr to unburdened, add 1-4 more str
 - Grond: fountain inside wall (plaza)
-- Class-specific AI: pugilists should unequip any equipped weapon
-- enemies firing spells shouldn't target themselves
 - reset wind faster
 - ammo stack bug
 - Wyrm level stupid slow?
 - Hirelings should be able to pick up while following
-- Fix leadership message
 - Update the score functionality to consider evade more
 - The wearable score should also consider resists
 - Test: give goblin a greatsword, drop a shield
-- Allow humanoids to equip armour
-- Don't try to remove cursed eq
 - Need to get hirelings text-searchable in bestiary
 - Creatures try to cast utility spells when they don't make sense (uncursing,
   etc). Should be checks to see if effect makes sense.

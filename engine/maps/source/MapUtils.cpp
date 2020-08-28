@@ -1362,7 +1362,6 @@ Coordinate MapUtils::place_creature(MapPtr map, CreaturePtr creature, const stri
     }
 
     MapUtils::add_or_update_location(map, creature, coords);
-    MapUtils::place_followers(map, creature, coords);
   }
 
   return coords;

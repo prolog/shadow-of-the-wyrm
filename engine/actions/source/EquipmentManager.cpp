@@ -8,6 +8,7 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "ItemIdentifier.hpp"
+#include "ItemManager.hpp"
 #include "MessageManagerFactory.hpp"
 #include "TextMessages.hpp"
 
@@ -94,15 +95,8 @@ ActionCostValue EquipmentManager::equip(CreaturePtr creature, ItemPtr i, const E
     Game& game = Game::instance();
     CreaturePtr player = game.get_current_player();
 
-    // Remove the item from the creature's inventory
-    creature->get_inventory()->remove(i->get_id());
-
-    // If there's an equipped item, remove it and add it to the inventory.
-    ItemPtr eq_item = creature->get_equipment().remove_item(ewl);
-    creature->get_inventory()->merge_or_add(eq_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
-
-    // Equip the item
-    creature->get_equipment().set_item(i, ewl);
+    ItemManager im;
+    acv = im.equip(creature, i, ewl);
 
     // Add a message about equipping.
     CurrentCreatureAbilities cca;
@@ -115,8 +109,6 @@ ActionCostValue EquipmentManager::equip(CreaturePtr creature, ItemPtr i, const E
       string msg = TextMessages::get_equip_message(creature->get_description_sid(), iid.get_appropriate_usage_description(i));
       manager.add_new_message(msg);
       manager.send();
-
-      acv = ActionCostConstants::DEFAULT;
     }
   }
 

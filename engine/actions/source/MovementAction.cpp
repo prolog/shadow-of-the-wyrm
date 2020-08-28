@@ -818,7 +818,6 @@ ActionCostValue MovementAction::handle_properties_and_move_to_new_map(CreaturePt
     }
 
     wwu.update_weather_for_map(old_map, old_tile, new_map);
-    MapUtils::serialize_and_remove_followers(old_map, creature);
 
     move_to_new_map(current_tile, old_map, new_map, map_exit);
     acv = get_action_cost_value(nullptr);
