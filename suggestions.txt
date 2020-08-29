@@ -1,14 +1,8 @@
 Me:
-- add order/hireling info to manual
-- Grond: fountain inside wall (plaza)
-- reset wind faster
-- wand animation offscreen
 - ammo stack bug
 - Wyrm level stupid slow?
-- Hirelings should be able to pick up while following
 - Update the score functionality to consider evade more
 - The wearable score should also consider resists
-- Test: give goblin a greatsword, drop a shield
 - Need to get hirelings text-searchable in bestiary
 - Creatures try to cast utility spells when they don't make sense (uncursing,
   etc). Should be checks to see if effect makes sense.

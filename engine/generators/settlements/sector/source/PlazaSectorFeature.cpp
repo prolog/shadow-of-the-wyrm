@@ -36,8 +36,8 @@ bool PlazaSectorFeature::generate_feature(MapPtr map, const Coordinate& start_co
       }
 
       // Centre fountains
-      int mid_row = (start_coord.first + end_coord.first) / 2;
-      int mid_col = (start_coord.second + end_coord.second) / 2;
+      int mid_row = (start_coord.first+1 + end_coord.first-1) / 2;
+      int mid_col = (start_coord.second+1 + end_coord.second-1) / 2;
 
       for (int f_row = mid_row - 1; f_row <= mid_row + 1; f_row++)
       {
@@ -46,7 +46,7 @@ bool PlazaSectorFeature::generate_feature(MapPtr map, const Coordinate& start_co
           FeaturePtr fountain = FeatureGenerator::generate_fountain();
           TilePtr tile = map->at(f_row, f_col);
 
-          if (tile && !tile->has_feature())
+          if (tile && tile->get_tile_type() == TileType::TILE_TYPE_DUNGEON && !tile->has_feature())
           {
             tile->set_feature(fountain);
             IInventoryPtr inv = tile->get_items();

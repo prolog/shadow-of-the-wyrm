@@ -96,6 +96,9 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 
   - The messages for special in-game days were broken (Grond).
 
+  - When plazas were generated, fountains could be generated on wall tiles
+    (Grond).
+
 Shadow of the Wyrm v1.2.1 "Lully"
 - Version declared June 21, 2020.  Version finalized July 17, 2020.
 
