@@ -411,6 +411,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_hirelings_hired", get_hirelings_hired);
   lua_register(L, "get_trained_magic_skills", get_trained_magic_skills);
   lua_register(L, "order_follow", order_follow);
+  lua_register(L, "order_at_ease", order_at_ease);
 }
 
 // Lua API helper functions
@@ -8304,6 +8305,28 @@ int order_follow(lua_State* ls)
     {
       OrderAction oa;
       oa.set_order(creature, DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID, cr_to_foll_id);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to order_follow");
+  }
+
+  return 0;
+}
+
+int order_at_ease(lua_State* ls)
+{
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string cr_id = lua_tostring(ls, 1);
+
+    CreaturePtr creature = get_creature(cr_id);
+
+    if (creature != nullptr)
+    {
+      OrderAction oa;
+      oa.set_order(creature, DecisionStrategyProperties::DECISION_STRATEGY_AT_EASE, std::to_string(true));
     }
   }
   else

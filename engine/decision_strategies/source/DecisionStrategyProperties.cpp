@@ -21,6 +21,7 @@ const string DecisionStrategyProperties::DECISION_STRATEGY_AUTOMOVE_COORDINATES 
 const string DecisionStrategyProperties::DECISION_STRATEGY_SEARCH_PCT = "search_pct";
 const string DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID = "follow_creature_id";
 const string DecisionStrategyProperties::DECISION_STRATEGY_ATTACK_CREATURES_THREATENING_ID = "attack_creatures_threatening_id";
+const string DecisionStrategyProperties::DECISION_STRATEGY_AT_EASE = "at_ease";
 
 
 

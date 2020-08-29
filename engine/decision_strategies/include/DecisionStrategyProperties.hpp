@@ -20,6 +20,7 @@ class DecisionStrategyProperties
     static const std::string DECISION_STRATEGY_SEARCH_PCT;
     static const std::string DECISION_STRATEGY_FOLLOW_CREATURE_ID;
     static const std::string DECISION_STRATEGY_ATTACK_CREATURES_THREATENING_ID;
+    static const std::string DECISION_STRATEGY_AT_EASE;
 
   protected:
     DecisionStrategyProperties();

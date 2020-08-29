@@ -1,4 +1,5 @@
 Me:
+- add order/hireling info to manual
 - Grond: fountain inside wall (plaza)
 - reset wind faster
 - ammo stack bug

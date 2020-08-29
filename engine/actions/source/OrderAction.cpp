@@ -177,7 +177,7 @@ ActionCostValue OrderAction::order_at_ease(CreaturePtr creature)
 
       if (follower != nullptr)
       {
-        remove_orders(follower);
+        set_order(follower, DecisionStrategyProperties::DECISION_STRATEGY_AT_EASE, std::to_string(true));
       }
     }
 
@@ -198,7 +198,8 @@ void OrderAction::remove_orders(CreaturePtr creature)
     {
       vector<string> dec_props = { DecisionStrategyProperties::DECISION_STRATEGY_ATTACK_CREATURES_THREATENING_ID,
                                    DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID,
-                                   DecisionStrategyProperties::DECISION_STRATEGY_ORDERED_SENTINEL };
+                                   DecisionStrategyProperties::DECISION_STRATEGY_ORDERED_SENTINEL,
+                                   DecisionStrategyProperties::DECISION_STRATEGY_AT_EASE };
 
       for (auto& p : dec_props)
       {

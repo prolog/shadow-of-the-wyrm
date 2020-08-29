@@ -304,10 +304,12 @@ bool Tile::get_is_blocking(CreaturePtr perspective_creature) const
       // features, etc).
       if (!perspective_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()).first)
       {
-        // Are we supposed to be following the creature? If so, don't consider it blocking
+        // Is it the leader's tile? Or, are we supposed to be following the 
+        // creature? If so, don't consider it blocking
         string follow_id = perspective_creature->get_decision_strategy()->get_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID);
+        string leader_id = perspective_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
 
-        if (follow_id != creature_id)
+        if ((follow_id != creature_id) && (leader_id != creature_id))
         {
           tile_blocking = true;
         }

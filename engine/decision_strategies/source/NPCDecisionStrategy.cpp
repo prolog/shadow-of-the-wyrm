@@ -530,7 +530,24 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
     }
 
     string follow_id = get_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID);
-    if (!follow_id.empty())
+    string at_ease = get_property(DecisionStrategyProperties::DECISION_STRATEGY_AT_EASE);
+    string leader_id;
+
+    if (this_creature != nullptr)
+    {
+      leader_id = this_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+    }
+
+    if (!at_ease.empty())
+    {
+      movement_command = get_follow_direction(view_map, this_creature, this_creature_coords, leader_id);
+
+      if (movement_command != nullptr)
+      {
+        return movement_command;
+      }
+    }
+    else if (!follow_id.empty())
     {
       movement_command = get_follow_direction(view_map, this_creature, this_creature_coords, follow_id);
 
@@ -741,8 +758,9 @@ void NPCDecisionStrategy::update_threats_to_leader(const std::string& this_creat
       // threats to that creature, and attack one.
       string attack_threaten_id = get_property(DecisionStrategyProperties::DECISION_STRATEGY_ATTACK_CREATURES_THREATENING_ID);
       string leader_id = this_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+      string at_ease = get_property(DecisionStrategyProperties::DECISION_STRATEGY_AT_EASE);
 
-      if (view_map != nullptr && !attack_threaten_id.empty())
+      if (view_map != nullptr && (!attack_threaten_id.empty() || !at_ease.empty()))
       {
         CreatureMap creatures = view_map->get_creatures();
         vector<string> leader_attackers;
