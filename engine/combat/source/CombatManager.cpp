@@ -647,7 +647,9 @@ void CombatManager::handle_explosive_if_necessary(CreaturePtr attacking_creature
 
     // Show the explosion animation
     Game& game = Game::instance();
-    game.get_display()->draw_animation(t_anim.second);
+    CreaturePtr player = game.get_current_player();
+    MapPtr player_fov_map = player->get_decision_strategy()->get_fov_map();
+    game.get_display()->draw_animation(t_anim.second, player_fov_map);
 
     vector<CreaturePtr> aff_creatures = MapUtils::get_adjacent_creatures_unsorted(map, attacked_creature);
 

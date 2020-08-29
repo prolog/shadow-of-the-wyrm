@@ -180,7 +180,7 @@ ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, co
 
             Animation anim = anim_tr.create_movement_animation(!cca.can_see(player), game.get_current_world()->get_calendar().get_season()->get_season(), animation_frames, true, current_map, fov_map);
 
-            display->draw_animation(anim);
+            display->draw_animation(anim, player->get_decision_strategy()->get_fov_map());
           }
 
           // Determine whether it's a hit or miss.

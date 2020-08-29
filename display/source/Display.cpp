@@ -1,5 +1,6 @@
 #include <sstream>
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "DefaultAnimationFactory.hpp"
 #include "Display.hpp"
 #include "DisplaySettings.hpp"
@@ -442,15 +443,43 @@ AnimationFactoryPtr Display::create_animation_factory() const
   return curses_animation_factory;
 }
 
-void Display::draw_animation(const Animation& animation)
+void Display::draw_animation(const Animation& animation, MapPtr player_fov_map)
 {
+  if (player_fov_map == nullptr)
+  {
+    return;
+  }
+
   vector<AnimationInstructionPtr> animation_instructions = animation.get_animation_instructions();
+  bool execute_instr = true;
 
   for (AnimationInstructionPtr instruct : animation_instructions)
   {
     if (instruct != nullptr)
     {
-      instruct->execute(this);
+      // Either this should be (-1,-1), used by the pause instruction, or else
+      // return a valid tile from the player's FOV map. If it's not the end
+      // tile and doesn't exist in the player's FOV map, it shouldn't be
+      // displayed.
+      Coordinate c = instruct->get_coords();
+      TilePtr tile = player_fov_map->at(c);
+
+      if (tile == nullptr && !CoordUtils::is_end(c))
+      {
+        execute_instr = false;
+      }
+      else if (tile != nullptr)
+      {
+        execute_instr = true;
+      }
+
+      if (execute_instr)
+      {
+        if (CoordUtils::is_end(c) || tile != nullptr)
+        {
+          instruct->execute(this);
+        }
+      }
     }
   }
 }

@@ -2,6 +2,7 @@ Me:
 - add order/hireling info to manual
 - Grond: fountain inside wall (plaza)
 - reset wind faster
+- wand animation offscreen
 - ammo stack bug
 - Wyrm level stupid slow?
 - Hirelings should be able to pick up while following

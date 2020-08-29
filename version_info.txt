@@ -66,12 +66,17 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   thin dagger) that is slightly better than a normal dagger, and has the
   piercing flag set.
 
+- Added info on updating the sprites to howdoi.txt
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
 
   - When evoking a stack of wands, the new wand had the old stack size set,
     effectively creating a way of duplicating wands.
+
+  - Animations (for spells, wands, etc) could be drawn offscreen even if none
+    of the tiles were in the player's FOV.
 
   - The "seen for automove" flag wasn't being set on initial items, so
     there were issues when comparing items and multiple stacks would form
