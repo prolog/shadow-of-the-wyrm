@@ -1,4 +1,5 @@
 Me:
+- stairs/air/etc hireling placement issue
 - ammo stack bug
 - Wyrm level stupid slow?
 - Update the score functionality to consider evade more
