@@ -9,7 +9,7 @@
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "TileGenerator.hpp"
-#include "VegetableGardenGenerator.hpp"
+#include "FruitVegetableGardenGenerator.hpp"
 
 using namespace std;
 
@@ -493,7 +493,7 @@ vector<shared_ptr<SectorFeature>> BaseSettlementGenerator::get_sector_features()
   sf = std::make_shared<GraveyardSectorFeature>();
   sfs.push_back(sf);
 
-  sf = std::make_shared<VegetableGardenGenerator>();
+  sf = std::make_shared<FruitVegetableGardenGenerator>();
   sfs.push_back(sf);
 
   return sfs;

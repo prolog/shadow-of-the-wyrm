@@ -1,7 +1,9 @@
 Me:
-- stairs/air/etc hireling placement issue
-- ammo stack bug
+- Add orchards to villages, test
 - Wyrm level stupid slow?
+- Fleeing behaviour for humanoids (Echo38)
+- Sentry flag for Carcassian guards - should attack creatures who attack
+  other creatures (Echo38).
 - Update the score functionality to consider evade more
 - The wearable score should also consider resists
 - Need to get hirelings text-searchable in bestiary

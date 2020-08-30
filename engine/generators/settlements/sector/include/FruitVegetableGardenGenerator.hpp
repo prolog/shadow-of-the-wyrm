@@ -1,10 +1,10 @@
 #pragma once
 #include "GardenSectorFeature.hpp"
 
-class VegetableGardenGenerator : public GardenSectorFeature
+class FruitVegetableGardenGenerator : public GardenSectorFeature
 {
   public:
-    VegetableGardenGenerator(const std::string& deity_id = "", const AlignmentRange ar = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL);
+    FruitVegetableGardenGenerator(const std::string& deity_id = "", const AlignmentRange ar = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL);
 
   protected:
     void populate_vegetable_map();

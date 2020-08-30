@@ -1778,7 +1778,7 @@ void MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinat
 
     if (!followers.empty())
     {
-      vector<Coordinate> coords = CoordUtils::get_adjacent_map_coordinates(map->size(), c.first, c.second, 4);
+      vector<Coordinate> coords = CoordUtils::get_adjacent_map_coordinates(map->size(), c.first, c.second);
       std::shuffle(coords.begin(), coords.end(), RNG::get_engine());
       CreaturePtr follower = std::make_shared<Creature>();
 
@@ -1805,6 +1805,14 @@ void MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinat
             follower->deserialize(iss);
           }
         }
+      }
+
+      if (!followers.empty())
+      {
+        // Add a message about feeling abandoned.
+        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ABANDONED));
+        manager.send();
       }
     }
 

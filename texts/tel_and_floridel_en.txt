@@ -3514,3 +3514,13 @@ us bleed and gasp for air?  We had our sins. %b
 We thought that we would die today.  And yet %b
 you share your fire and haven't made a single threat."
 %p
+Between the brothers, a look was passed around %b
+through the fire-light, deciding which of them would speak. %b
+Carne stared across the circle; as he found %b
+the paupers' looks, an ember hissed and spat. %b
+It was Phole who finally spoke: "We see new things, %b
+the four of us.  We see things as they are, %b
+so when you stretch like trees and let the wind %b
+play through your arms, the glamour comes apart, %b
+a trickery that dies before it even starts."
+%p

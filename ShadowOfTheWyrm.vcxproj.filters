@@ -4052,9 +4052,6 @@
     <ClInclude Include="engine\generators\settlements\sector\include\ShadeGardenGenerator.hpp">
       <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\generators\settlements\sector\include\VegetableGardenGenerator.hpp">
-      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\generators\settlements\sector\include\WildflowerGardenGenerator.hpp">
       <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
     </ClInclude>
@@ -4342,6 +4339,9 @@
     </ClInclude>
     <ClInclude Include="engine\decision_strategies\include\NPCUseEquipItemDecisionStrategy.hpp">
       <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\FruitVegetableGardenGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -8317,9 +8317,6 @@
     <ClCompile Include="engine\generators\settlements\sector\source\ShadeGardenGenerator.cpp">
       <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\generators\settlements\sector\source\VegetableGardenGenerator.cpp">
-      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\generators\settlements\sector\source\WildflowerGardenGenerator.cpp">
       <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
     </ClCompile>
@@ -8688,6 +8685,9 @@
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\source\NPCUseEquipItemDecisionStrategy.cpp">
       <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\FruitVegetableGardenGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

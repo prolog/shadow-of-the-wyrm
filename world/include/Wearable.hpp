@@ -47,6 +47,8 @@ class Wearable : public Item
     int evade, soak, speed_bonus, to_hit, addl_damage;
     static const int CSTAT_GOOD_THRESHOLD;
     static const double RESISTS_GOOD_THRESHOLD;
+    static const double RESISTS_SCORE_MULTIPLIER;
+    static const double EVADE_SCORE_MULTIPLIER;
 
     StatusAilments status_ailments;
 };

@@ -807,7 +807,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\settlements\sector\include\ShopSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\ShrineSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\TombSectorFeature.hpp" />
-    <ClInclude Include="engine\generators\settlements\sector\include\VegetableGardenGenerator.hpp" />
+    <ClInclude Include="engine\generators\settlements\sector\include\FruitVegetableGardenGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\WildflowerGardenGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\WorkshopSectorFeature.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\AquaticVegetationTileConfiguration.hpp" />
@@ -1908,7 +1908,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\settlements\sector\source\ShopSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\ShrineSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\TombSectorFeature.cpp" />
-    <ClCompile Include="engine\generators\settlements\sector\source\VegetableGardenGenerator.cpp" />
+    <ClCompile Include="engine\generators\settlements\sector\source\FruitVegetableGardenGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\WildflowerGardenGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\WorkshopSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\source\BaseSettlementGenerator.cpp" />

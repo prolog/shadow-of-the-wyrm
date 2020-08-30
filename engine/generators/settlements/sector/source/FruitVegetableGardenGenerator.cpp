@@ -1,17 +1,17 @@
-#include "VegetableGardenGenerator.hpp"
+#include "FruitVegetableGardenGenerator.hpp"
 #include "ItemManager.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
 using namespace std;
 
-VegetableGardenGenerator::VegetableGardenGenerator(const string& new_deity_id, const AlignmentRange new_ar)
+FruitVegetableGardenGenerator::FruitVegetableGardenGenerator(const string& new_deity_id, const AlignmentRange new_ar)
 : GardenSectorFeature(new_deity_id, new_ar), vegetable_min(1), vegetable_max(1)
 {
   populate_vegetable_map();
 }
 
-void VegetableGardenGenerator::populate_vegetable_map()
+void FruitVegetableGardenGenerator::populate_vegetable_map()
 {
   vegetable_map.clear();
   vegetable_map = std::map<int, std::string>{{1, ItemIdKeys::ITEM_ID_VEGETABLE_1},
@@ -25,7 +25,7 @@ void VegetableGardenGenerator::populate_vegetable_map()
   vegetable_max = 6;
 }
 
-bool VegetableGardenGenerator::generate_garden(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
+bool FruitVegetableGardenGenerator::generate_garden(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
 {
   TileGenerator tg;
 
