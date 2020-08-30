@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 #include <memory>
+#include <vector>
 #include "ISerializable.hpp"
 #include "Marks.hpp"
 #include "SkillTypes.hpp"
