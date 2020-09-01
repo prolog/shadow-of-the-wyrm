@@ -9,6 +9,7 @@
 #include "CreatureTypes.hpp"
 #include "CreatureUtils.hpp"
 #include "DecisionStrategyFactory.hpp"
+#include "DecisionStrategyProperties.hpp"
 #include "DecisionStrategyTypes.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
@@ -250,6 +251,10 @@ CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, cons
   string name = Naming::generate_name(sex);
   CreaturePtr hireling = cf.create_by_race_and_class(am, race_id, class_id, name, sex);
   DecisionStrategyPtr ds = DecisionStrategyFactory::create_decision_strategy(DecisionStrategyID::DECISION_STRATEGY_MOBILE);
+
+  // Hirelings remain neutral and never jump in to help.
+  ds->set_property(DecisionStrategyProperties::DECISION_STRATEGY_ASSIST_PCT, std::to_string(0));
+
   hireling->set_decision_strategy(std::move(ds));
 
   hireling->set_description_sid(ProcgenTextKeys::HIRELING_DESC_SID);

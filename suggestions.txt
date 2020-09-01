@@ -1,6 +1,4 @@
 Me:
-- Sentry flag, combat manager. Don't attack another sentry. Don't attack
-  anything attacking something currently in the threat list.
 - Feature: fence, east_west_fence. Add some fenced areas to set locations.
 - Fenced areas (veg gardens?) in villages
 - Wyrm level stupid slow?

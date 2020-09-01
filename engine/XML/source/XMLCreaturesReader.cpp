@@ -358,7 +358,11 @@ void XMLCreaturesReader::parse_decision_strategy(const XMLNode& decision_strateg
     decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, std::to_string(sentinel));
 
     bool sentry = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Sentry", false);
-    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTRY, std::to_string(sentry));
+
+    if (sentry)
+    {
+      decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_ASSIST_PCT, std::to_string(100));
+    }
 
     bool pickup = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Pickup", true);
     decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_PICKUP, std::to_string(pickup));

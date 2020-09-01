@@ -1,3 +1,4 @@
+#include "Conversion.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureToHitCalculator.hpp"
 #include "CreatureAdditionalDamageCalculator.hpp"
@@ -8,6 +9,8 @@
 #include "ResistancesCalculator.hpp"
 #include "SoakCalculator.hpp"
 #include "StatisticsCalculators.hpp"
+
+using namespace std;
 
 void CreatureCalculator::update_calculated_values(const CreaturePtr& c)
 {
@@ -105,9 +108,14 @@ int CreatureCalculator::get_combat_assist_pct(CreaturePtr c)
   {
     DecisionStrategy* d = c->get_decision_strategy();
 
-    if (d != nullptr && d->get_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTRY) == std::to_string(true))
+    if (d != nullptr)
     {
-      pct = 100;
+      string assist_pct_s = d->get_property(DecisionStrategyProperties::DECISION_STRATEGY_ASSIST_PCT);
+
+      if (!assist_pct_s.empty())
+      {
+        pct = std::min<int>(100, String::to_int(assist_pct_s));
+      }
     }
     else
     {

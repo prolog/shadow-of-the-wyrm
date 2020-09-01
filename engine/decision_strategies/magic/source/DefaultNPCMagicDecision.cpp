@@ -2,12 +2,12 @@
 
 using namespace std;
 
-// Optimistic: if the creature *can* cast it, cast it!
 pair<bool, Direction> DefaultNPCMagicDecision::decide(CreaturePtr caster, MapPtr view_map, const Spell& spell, const set<string>& creature_threats) const
 {
   bool decision = false;
 
-  if (caster != nullptr)
+  // JCD FIXME revisit this later and create per-effect checkers, etc
+/*  if (caster != nullptr)
   {
     // Make sure the creature is not already affected. Also, ensure that the
     // creature doesn't actually cast anything unless there are hostiles
@@ -20,7 +20,7 @@ pair<bool, Direction> DefaultNPCMagicDecision::decide(CreaturePtr caster, MapPtr
     {
       decision = true;
     }
-  }
+  } */
 
   return make_pair(decision, Direction::DIRECTION_NULL);
 }
