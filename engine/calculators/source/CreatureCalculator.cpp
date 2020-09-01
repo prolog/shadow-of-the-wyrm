@@ -1,20 +1,13 @@
 #include "CreatureCalculator.hpp"
 #include "CreatureToHitCalculator.hpp"
 #include "CreatureAdditionalDamageCalculator.hpp"
+#include "DecisionStrategyProperties.hpp"
 #include "EvadeCalculator.hpp"
 #include "RaceManager.hpp"
 #include "ClassManager.hpp"
 #include "ResistancesCalculator.hpp"
 #include "SoakCalculator.hpp"
 #include "StatisticsCalculators.hpp"
-
-CreatureCalculator::CreatureCalculator()
-{
-}
-
-CreatureCalculator::~CreatureCalculator()
-{
-}
 
 void CreatureCalculator::update_calculated_values(const CreaturePtr& c)
 {
@@ -103,3 +96,28 @@ void CreatureCalculator::update_calculated_values(const CreaturePtr& c)
     }
   }
 }
+
+int CreatureCalculator::get_combat_assist_pct(CreaturePtr c)
+{
+  int pct = 0;
+
+  if (c != nullptr)
+  {
+    DecisionStrategy* d = c->get_decision_strategy();
+
+    if (d != nullptr && d->get_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTRY) == std::to_string(true))
+    {
+      pct = 100;
+    }
+    else
+    {
+      pct = 20;
+    }
+  }
+
+  return pct;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/CreatureCalculator_test.cpp"
+#endif

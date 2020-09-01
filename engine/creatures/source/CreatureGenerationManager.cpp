@@ -224,7 +224,8 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, Crea
 
   if (generated_creature)
   {
-    CreatureCalculator::update_calculated_values(generated_creature);
+    CreatureCalculator cc;
+    cc.update_calculated_values(generated_creature);
   }
     
   return generated_creature;

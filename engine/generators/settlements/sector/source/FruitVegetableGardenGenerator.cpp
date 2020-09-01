@@ -5,8 +5,8 @@
 
 using namespace std;
 
-FruitVegetableGardenGenerator::FruitVegetableGardenGenerator(const string& new_deity_id, const AlignmentRange new_ar)
-: GardenSectorFeature(new_deity_id, new_ar), vegetable_min(1), vegetable_max(1)
+FruitVegetableGardenGenerator::FruitVegetableGardenGenerator(const FruitVegetableGardenType new_fv_type, const string& new_deity_id, const AlignmentRange new_ar)
+: GardenSectorFeature(new_deity_id, new_ar), vegetable_min(1), vegetable_max(1), fv_type(new_fv_type)
 {
   populate_vegetable_map();
 }
@@ -59,3 +59,47 @@ bool FruitVegetableGardenGenerator::generate_garden(MapPtr map, const Coordinate
   return true;
 }
 
+// Orchards
+OrchardGenerator::OrchardGenerator()
+: FruitVegetableGardenGenerator(FruitVegetableGardenType::FVG_TYPE_FRUIT)
+{
+}
+
+bool OrchardGenerator::generate_garden(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
+{
+  TileGenerator tg;
+  TileType tt = TileType::TILE_TYPE_UNDEFINED;
+
+  for (int col = start_coord.second; col <= end_coord.second; col++)
+  {
+    TilePtr tile;
+
+    // Spaces needed between vegetables to ensure that things grow.
+    for (int row = start_coord.first; row <= end_coord.first; row++)
+    {
+      if ((col % 3 == 0) && (row % 2 == 0))
+      {
+        if (RNG::percent_chance(4))
+        {
+          tt = TileType::TILE_TYPE_MAGICAL_TREE;
+        }
+        else
+        {
+          tt = TileType::TILE_TYPE_FRUIT_TREE;
+        }
+      }
+      else
+      {
+        tt = TileType::TILE_TYPE_UNDEFINED;
+      }
+
+      if (tt != TileType::TILE_TYPE_UNDEFINED)
+      {
+        tile = tg.generate(tt);
+        map->insert(row, col, tile);
+      }
+    }
+  }
+
+  return true;
+}

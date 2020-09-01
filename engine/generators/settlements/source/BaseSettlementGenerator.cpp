@@ -459,7 +459,7 @@ void BaseSettlementGenerator::generate_special_inhabitants(MapPtr map)
   {
     if (RNG::percent_chance(HIRELING_PROBABILITY))
     {
-      Game& game = Game::instance();
+        Game& game = Game::instance();
       ActionManager& am = game.get_action_manager_ref();
 
       CreatureGenerationManager cgm;
@@ -494,6 +494,9 @@ vector<shared_ptr<SectorFeature>> BaseSettlementGenerator::get_sector_features()
   sfs.push_back(sf);
 
   sf = std::make_shared<FruitVegetableGardenGenerator>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<OrchardGenerator>();
   sfs.push_back(sf);
 
   return sfs;

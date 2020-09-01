@@ -453,7 +453,7 @@ CommandPtr NPCDecisionStrategy::get_ranged_attack_decision(const string& this_cr
               TargetMap& tm = this_cr->get_target_map_ref();
               tm[to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED))] = make_pair(threatening_creature_id, threat_c);
               CommandPtr command = std::make_unique<FireMissileCommand>(-1);
-              command->set_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_SKIP_TARGETTING, Bool::to_string(true));
+              command->set_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_SKIP_TARGETTING, std::to_string(true));
 
               return command;
             }

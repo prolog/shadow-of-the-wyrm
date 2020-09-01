@@ -8,13 +8,13 @@ TEST(SW_World_Armour, get_is_good_cstat)
 
   a.set_evade(2);
 
-  EXPECT_FALSE(a.get_is_good());
+  EXPECT_TRUE(a.get_is_good());
 
   a.set_evade(6);
 
   EXPECT_TRUE(a.get_is_good());
 
-  a.set_soak(-4);
+  a.set_soak(-8);
 
   EXPECT_FALSE(a.get_is_good());
 

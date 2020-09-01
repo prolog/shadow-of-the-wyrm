@@ -587,7 +587,7 @@ bool Item::brand()
   {
     DamageType brand = do_brand();
 
-    set_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED, Bool::to_string(true));
+    set_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED, std::to_string(true));
     set_additional_property(ItemProperties::ITEM_PROPERTIES_BRAND, to_string(static_cast<int>(brand)));
     remaining_enchants.set_current(remaining_enchants.get_current() - 1);
 

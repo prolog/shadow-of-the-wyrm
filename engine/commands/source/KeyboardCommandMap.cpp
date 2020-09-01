@@ -69,7 +69,7 @@ KeyboardCommandMappingMap KeyboardCommandMap::get_internal_map()
 void KeyboardCommandMap::command_not_found(const string& keyboard_input)
 {
   // JCD FIXME: Does the wrong thing for function keys, etc.  Maybe use the String::clean function?
-  string keyboard_input_as_character = Char::to_string(String::to_int(keyboard_input));
+  string keyboard_input_as_character = string(1, String::to_int(keyboard_input));
   IMessageManager& manager = MM::instance();
   manager.add_new_message(TextMessages::get_action_not_found_message(keyboard_input_as_character));
   manager.send(MessageSpacing::DEFAULT_SPACING, false /* Don't halt */, true /* Reset the cursor on the player */);

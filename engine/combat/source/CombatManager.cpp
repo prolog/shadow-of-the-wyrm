@@ -11,6 +11,7 @@
 #include "CombatTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
+#include "CreatureCalculator.hpp"
 #include "CreatureFactory.hpp"
 #include "CreatureSplitCalculator.hpp"
 #include "CreatureDescriber.hpp"
@@ -213,8 +214,7 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
 {
   if (attacking_creature && 
       attacked_creature && 
-      (attacking_creature->get_id() != attacked_creature->get_id()) && 
-      !attacked_creature->get_is_player())
+      (attacking_creature->get_id() != attacked_creature->get_id()))
   {
     HostilityManager hm;
     CurrentCreatureAbilities cca;
@@ -229,16 +229,20 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
         attacked_creature != nullptr &&
         cca.can_speak(attacked_creature))
     {
-      // The creature cries out for help
-      string cry_out_message = ActionTextKeys::get_cry_out_message(StringTable::get(attacked_creature->get_description_sid()));
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacking_creature->get_is_player());
-      manager.add_new_message(cry_out_message);
-      manager.send();
+      // The creature cries out for help if not the player
+      if (!attacked_creature->get_is_player())
+      {
+        string cry_out_message = ActionTextKeys::get_cry_out_message(StringTable::get(attacked_creature->get_description_sid()));
+        IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacking_creature->get_is_player());
+        manager.add_new_message(cry_out_message);
+        manager.send();
+      }
 
       // Nearby creatures friendly to the attacker, seeing which way the
       // wind is blowing, decide that the attacker is not actually all
       // that friendly.
       MapPtr fov_map = d_strat->get_fov_map();
+      CreatureCalculator cc;
 
       if (fov_map != nullptr)
       {
@@ -252,9 +256,13 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
           {
             CreaturePtr tile_creature = tile->get_creature();
 
-            if (tile_creature && !tile_creature->get_is_player())
+            if (tile_creature && 
+               !tile_creature->get_is_player() && 
+                RNG::percent_chance(cc.get_combat_assist_pct(tile_creature)))
             {
+              // Make them co-hostile to avoid hostility cascades.
               hm.set_hostility_to_creature(tile_creature, attacking_creature->get_id());
+              hm.set_hostility_to_creature(attacking_creature, tile_creature->get_id());
             }
           }
         }

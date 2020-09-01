@@ -230,34 +230,12 @@ vector<string> String::tokenize(const string& tok_str, const string& delim, cons
   return output;
 }
 
-Bool::Bool()
-{
-}
-
-Bool::~Bool()
-{
-}
-
-string Bool::to_string(const bool b)
-{
-  ostringstream ss;
-  ss << b;
-  return ss.str();
-}
-
 Char::Char()
 {
 }
 
 Char::~Char()
 {
-}
-
-string Char::to_string(const char c)
-{
-  ostringstream ss;
-  ss << c;
-  return ss.str();
 }
 
 EquipmentWornLocation Char::to_equipment_worn_location(const char character)

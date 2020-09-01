@@ -23,9 +23,9 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 - Pacification still works on many creatures, but not constructs, undead,
   or the divine.
 
-- There is now a narrative_mode setting that restores you to full health and
-  remove negative statuses at death, allowing you to play for as long as you
-  want.
+- There is now a narrative_mode setting in swyrm.ini that restores you to full 
+  health and removes negative statuses at death, allowing you to play for as 
+  long as you want.
 
 - You can now give 'o'rders to your followers, and they'll follow you between
   maps if adjacent to you when you left the previous.  Your followers will get
@@ -44,6 +44,8 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 
 - The quit message now references that the game won't be saved (Echo38).
 
+- Villages can have orchards as well as vegetable gardens.
+
 - When unstacking wands after use, the new wand now goes to the front of
   the inventory (Echo38).
 
@@ -59,6 +61,8 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 
 - Pilgrims now start off with 100 Lore, meaning they will always know an
   item's B/U/C status.
+
+- Tradesmen are now bold red.
 
 - New poem fragment for the title screen.
 

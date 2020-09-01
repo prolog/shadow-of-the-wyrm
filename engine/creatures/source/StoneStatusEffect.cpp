@@ -59,9 +59,9 @@ void StoneStatusEffect::finalize(CreaturePtr creature) const
     // Its equipment will also petrify with it, so disallow transfer of eq
     // from the creature to the tile, as well as random items.  These can't be
     // picked up, anyway, since statues are blocking features.
-    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEAVES_CORPSE, Bool::to_string(false));
-    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEAVES_EQUIPMENT, Bool::to_string(false));
-    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_ALLOWS_RANDOM_DROPS, Bool::to_string(false));
+    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEAVES_CORPSE, std::to_string(false));
+    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEAVES_EQUIPMENT, std::to_string(false));
+    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_ALLOWS_RANDOM_DROPS, std::to_string(false));
 
     // Ensure that the tile doesn't already have a feature.
     if (creature_tile && !creature_tile->has_feature())

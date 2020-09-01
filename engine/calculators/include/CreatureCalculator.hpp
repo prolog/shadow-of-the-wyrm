@@ -5,8 +5,5 @@ class CreatureCalculator
 {
   public:
     static void update_calculated_values(const CreaturePtr& c);
-
-  protected:
-    CreatureCalculator();
-    ~CreatureCalculator();
+    static int get_combat_assist_pct(CreaturePtr c);
 };

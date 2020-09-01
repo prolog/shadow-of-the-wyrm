@@ -1,5 +1,8 @@
 Me:
-- Add orchards to villages, test
+- Sentry flag, combat manager. Don't attack another sentry. Don't attack
+  anything attacking something currently in the threat list.
+- Feature: fence, east_west_fence. Add some fenced areas to set locations.
+- Fenced areas (veg gardens?) in villages
 - Wyrm level stupid slow?
 - Fleeing behaviour for humanoids (Echo38)
 - Sentry flag for Carcassian guards - should attack creatures who attack

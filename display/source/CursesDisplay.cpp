@@ -598,7 +598,7 @@ void CursesDisplay::display_text_component(WINDOW* window, int* row, int* col, T
 
       for (const Symbol& s : symbols)
       {
-        boost::replace_first(cur_text, "%%s", Char::to_string(s.get_symbol()));
+        boost::replace_first(cur_text, "%%s", string(1, s.get_symbol()));
       }
 
       enable_colour(static_cast<int>(text_line.second), window);

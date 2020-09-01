@@ -430,7 +430,7 @@ ActionCost ActionManager::switch_graphics_mode(CreaturePtr creature)
   Settings& settings = game.get_settings_ref();
   bool force_ascii = settings.get_setting_as_bool(Setting::DISPLAY_FORCE_ASCII);
   bool new_force_ascii = !force_ascii;
-  settings.set_setting(Setting::DISPLAY_FORCE_ASCII, Bool::to_string(new_force_ascii));
+  settings.set_setting(Setting::DISPLAY_FORCE_ASCII, std::to_string(new_force_ascii));
 
   if (display != nullptr)
   {

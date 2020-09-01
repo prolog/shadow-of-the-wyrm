@@ -53,8 +53,11 @@ TEST(SW_Engine_ConversionRoutines, char_to_string)
   char x = 'x';
   char three = '3';
 
-  EXPECT_EQ("x", Char::to_string(x));
-  EXPECT_EQ("3", Char::to_string(three));
+  string x_s = string(1, x);
+  string three_s = string(1, three);
+
+  EXPECT_EQ("x", x_s);
+  EXPECT_EQ("3", three_s);
 }
 
 TEST(SW_Engine_ConversionRoutines, float_to_string)

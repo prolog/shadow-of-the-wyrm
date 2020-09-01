@@ -495,7 +495,7 @@ void PickupAction::potentially_identify_status(CreaturePtr creature, ItemPtr ite
   {
     if (String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_LORE_CHECKED)) == false)
     {
-      item->set_additional_property(ItemProperties::ITEM_PROPERTIES_LORE_CHECKED, Bool::to_string(true));
+      item->set_additional_property(ItemProperties::ITEM_PROPERTIES_LORE_CHECKED, std::to_string(true));
       int lore_val = creature->get_skills().get_value_incr_marks(SkillType::SKILL_GENERAL_LORE);
 
       if (RNG::percent_chance(lore_val))

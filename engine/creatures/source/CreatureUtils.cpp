@@ -2,7 +2,6 @@
 #include "Conversion.hpp"
 #include "CarryingCapacityCalculator.hpp"
 #include "ClassManager.hpp"
-#include "CreatureCalculator.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "DeityTextKeys.hpp"

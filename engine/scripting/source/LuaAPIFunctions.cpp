@@ -7582,7 +7582,7 @@ int set_sentinel(lua_State* ls)
       if (tile != nullptr && tile->has_creature())
       {
         CreaturePtr creature = tile->get_creature();
-        creature->get_decision_strategy()->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, Bool::to_string(val));
+        creature->get_decision_strategy()->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, std::to_string(val));
         set_sent_val = true;
       }
     }

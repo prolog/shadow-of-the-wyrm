@@ -107,7 +107,8 @@ bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifie
     }
 
     // Update the creature's calculated values.
-    CreatureCalculator::update_calculated_values(creature);
+    CreatureCalculator cc;
+    cc.update_calculated_values(creature);
 
     result = true;
   }

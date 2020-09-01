@@ -3,6 +3,7 @@
 
 TEST(SW_Engine_Creatures_HasteStatusEffect, confirm_speed_bonus)
 {
+  CreatureCalculator cc;
   CreaturePtr creature = std::make_shared<Creature>();
   Statistic speed(50);
   creature->set_speed(speed);
@@ -14,9 +15,9 @@ TEST(SW_Engine_Creatures_HasteStatusEffect, confirm_speed_bonus)
   EXPECT_EQ(25, creature->get_speed().get_current());
 
   // Simulate a few turns passing
-  CreatureCalculator::update_calculated_values(creature);
-  CreatureCalculator::update_calculated_values(creature);
-  CreatureCalculator::update_calculated_values(creature);
+  cc.update_calculated_values(creature);
+  cc.update_calculated_values(creature);
+  cc.update_calculated_values(creature);
 
   EXPECT_EQ(25, creature->get_speed().get_current());
 }

@@ -45,7 +45,7 @@ bool DefaultTileManipulator::dig(CreaturePtr creature, MapPtr map, TilePtr tile)
     }
 
     // Only add undead/items if the tile has not been dug already.
-    if (!(tile->get_additional_property(TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG) == Bool::to_string(true)))
+    if (!(tile->get_additional_property(TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG) == std::to_string(true)))
     {
       add_undead_if_necessary(creature, map, tile);
       add_item_if_necessary(creature, map, tile);

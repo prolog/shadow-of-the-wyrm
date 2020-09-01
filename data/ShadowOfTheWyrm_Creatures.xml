@@ -4490,6 +4490,7 @@
 			<SpeechTextSID>CARAVAN_GUARD_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Sentry>1</Sentry>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>f</Char>
@@ -8241,6 +8242,7 @@
 			<SpeechTextSID>GOBLIN_ELITE_GUARD_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Sentry>1</Sentry>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>g</Char>
@@ -15303,6 +15305,7 @@
 			<SpeechTextSID>WOOD_ELF_SENTRY_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Sentry>1</Sentry>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>e</Char>
@@ -21604,7 +21607,7 @@
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
-				<Colour>7</Colour>
+				<Colour>8</Colour>
 				<Sprite>
 					<ID>cr</ID>
 					<Row>11</Row>
@@ -21715,6 +21718,7 @@
 			<SpeechTextSID>GUARDSMAN_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Sentry>1</Sentry>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -22952,7 +22956,7 @@
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>10</NumSides>
-				<Type>0</Type>
+				<Type>2</Type>
 			</Damage>
 			<Evade>8</Evade>
 			<Soak>2</Soak>
@@ -23907,6 +23911,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Sentry>1</Sentry>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>d</Char>
@@ -25105,6 +25110,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Sentry>1</Sentry>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>g</Char>
@@ -26512,6 +26518,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
+				<Sentry>1</Sentry>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>G</Char>
