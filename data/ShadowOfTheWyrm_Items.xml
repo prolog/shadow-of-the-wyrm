@@ -166,6 +166,33 @@
 				<Evade>12</Evade>
 				<Soak>0</Soak>
 			</Amulet>
+			<Amulet id="narcotic_amulet">
+				<DescriptionSID>NARCOTIC_AMULET_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_NARCOTIC_AMULET_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>NARCOTIC_AMULET_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_NARCOTIC_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>NARCOTIC_AMULET_CODEX_SID</CodexDescriptionSID>
+				<Value>500</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>4</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<AutoCurse>1</AutoCurse>
+				<Material>13</Material>
+				<Symbol>
+					<Char>#</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>0</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>5</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>2</Soak>
+				<SpeedBonus>-25</SpeedBonus>
+			</Amulet>
 			<Amulet id="holy_amulet">
 				<DescriptionSID>HOLY_AMULET_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_HOLY_AMULET_SID</UnidentifiedDescriptionSID>

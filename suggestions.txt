@@ -5,8 +5,6 @@ Me:
 - Fleeing behaviour for humanoids (Echo38)
 - Sentry flag for Carcassian guards - should attack creatures who attack
   other creatures (Echo38).
-- Update the score functionality to consider evade more
-- The wearable score should also consider resists
 - Need to get hirelings text-searchable in bestiary
 - Creatures try to cast utility spells when they don't make sense (uncursing,
   etc). Should be checks to see if effect makes sense.
@@ -24,8 +22,6 @@ Me:
   - stream
   - tavern
   - orchard
-- Linux: check premake scripts for commands/order
-- How to give orders to individual creatures?
 - Each version: make sure to update itch.io page for both SotW and the sprite
   pack! OpenGameArt if new sprites.
 - Release after this: grond says tanning is complicated & dragon skins aren't

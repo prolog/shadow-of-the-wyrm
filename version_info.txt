@@ -74,6 +74,8 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 
 - Stanzas for "Tel and Floridel".
 
+- New items: narcotic amulet (speed penalty, a little soak).
+
 - Bug fixes:
 
   - When evoking a stack of wands, the new wand had the old stack size set,
