@@ -1,4 +1,5 @@
 Me:
+- Are nobles dropping rapiers because of the new NPC decision code?
 - Feature: fence, east_west_fence. Add some fenced areas to set locations.
 - Fenced areas (veg gardens?) in villages
 - Wyrm level stupid slow?
@@ -263,6 +264,9 @@ YARD:
 - creatures of a certain deity (frostlings and shiver, black servants and
   sceadugenga) shouldn't attack you if you worship that deity
 - spell details on shift+letter
+- corpse weight
+- codex on examine for single item
+- wilderness, low level creatures, etc
 
 IceBox: 
 - can the confirm setting be allowed to change on load?

@@ -207,10 +207,7 @@ ActionCostValue PickupAction::handle_pickup_single(CreaturePtr creature, MapPtr 
       else
       {
         bool prompt_for_stacks = Game::instance().get_settings_ref().get_setting_as_bool(Setting::PROMPT_ON_STACK_PICKUP);
-        take_item_and_give_to_creature(pick_up_item, inv, creature, prompt_for_stacks);
-
-        // Advance the turn
-        action_cost_value = get_action_cost_value(creature);
+        action_cost_value = take_item_and_give_to_creature(pick_up_item, inv, creature, prompt_for_stacks);
       }
     }
   }
@@ -321,8 +318,10 @@ bool PickupAction::autopickup_passes_exclusions(ItemPtr item)
   return item_ok;
 }
 
-void PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_item, IInventoryPtr inv, CreaturePtr creature, const bool prompt_for_amount)
+ActionCostValue PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_item, IInventoryPtr inv, CreaturePtr creature, const bool prompt_for_amount)
 {
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
   if (pick_up_item != nullptr && inv != nullptr && creature != nullptr)
   {
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
@@ -358,8 +357,12 @@ void PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_item, IInvento
       {
         merge_or_add_into_inventory(creature, pick_up_item);
       }
+
+      acv = ActionCostConstants::DEFAULT;
     }
   }
+
+  return acv;
 }
 
 // Handle the case where the creature already has the maximum number of items

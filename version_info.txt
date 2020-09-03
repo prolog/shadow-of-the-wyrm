@@ -105,6 +105,9 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   - When plazas were generated, fountains could be generated on wall tiles
     (Grond).
 
+  - Entering an invalid pickup quantity was causing the turn to advance
+    (Echo38).
+
 Shadow of the Wyrm v1.2.1 "Lully"
 - Version declared June 21, 2020.  Version finalized July 17, 2020.
 

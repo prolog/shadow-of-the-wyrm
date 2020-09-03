@@ -3494,7 +3494,7 @@ the heat sufficient for the meat above. %b
 The giants turned it often, and they checked %b
 the meat until the heat had crisped and crackled it.
 %p
-They ate in silence until Aes finally spoke. %b
+They ate in silence until Aese finally spoke. %b
 Slight and short, he had a quiet voice %b
 that carried through the campfire like the smoke %b
 the embers lacked.  "You had an easy choice," %b
@@ -3523,4 +3523,14 @@ the four of us.  We see things as they are, %b
 so when you stretch like trees and let the wind %b
 play through your arms, the glamour comes apart, %b
 a trickery that dies before it even starts."
+%p
+"You need us for the entrances."  Aese stared %b
+down Carne, who hadn't broke his gaze, then turned %b
+to Phole.  "That much is real.  The unprepared %b
+could search a hundred years and miss the berm %b
+or hill that marks the starting point.  And if %b
+you found the opening, the traps would rain %b
+down pitch or blackwater, spikes and spears to split %b
+your skulls inside the darkness.  You wouldn't gain %b
+ten feet before the floors would drink your blood and brains."
 %p
