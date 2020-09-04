@@ -72,6 +72,8 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 
 - Added info on updating the sprites to howdoi.txt
 
+- Max score is now 100000000.
+
 - Stanzas for "Tel and Floridel".
 
 - New items: narcotic amulet (speed penalty, a little soak).

@@ -6888,7 +6888,6 @@ int load_map(lua_State* ls)
     MapPtr new_map = game.get_map_registry_ref().get_map(map_id);
     TilePtr creature_tile = MapUtils::get_tile_for_creature(old_map, creature);
     GameUtils::move_to_new_map(creature_tile, old_map, new_map);
-    Coordinate new_coord = new_map->get_location(creature->get_id());
 
     loaded_map = true;
   }
