@@ -1,4 +1,7 @@
 Me:
+- Need to work out details around: add mute, wear voiceless, walk around.
+  Added mute should wear off. Voiceless mute should not and muteness should
+  remain.
 - After making negative amulets with statuses (e.g., poisoned amulet),
   make status identifier map calculated by going through the modifiers.
   Otherwise, it's stupid trying to figure out if a creature is still

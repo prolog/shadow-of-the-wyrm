@@ -367,6 +367,8 @@ class Creature : public ISerializable
 
   protected:
 
+    std::set<std::string> get_active_modifier_status_ids() const;
+
     std::string id;
     std::string original_id;
 

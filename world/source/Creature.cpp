@@ -1205,8 +1205,15 @@ void Creature::set_status(const string& status_id, const Status& status)
 
 bool Creature::remove_status(const string& status_id)
 {
-  statuses.erase(status_id);
-  return true;
+  set<string> am_status_ids = get_active_modifier_status_ids();
+
+  if (am_status_ids.find(status_id) == am_status_ids.end())
+  {
+    statuses.erase(status_id);
+    return true;
+  }
+
+  return false;
 }
 
 bool Creature::has_status(const string& status_id) const
@@ -2027,6 +2034,29 @@ bool Creature::deserialize(istream& stream)
 ClassIdentifier Creature::internal_class_identifier() const
 {
   return ClassIdentifier::CLASS_ID_CREATURE;
+}
+
+set<string> Creature::get_active_modifier_status_ids() const
+{
+  set<string> status_ids;
+  auto active_mods = get_active_modifiers();
+
+  for (auto m_details : active_mods)
+  {
+    auto m_list = m_details.second;
+
+    for (auto mods : m_list)
+    {
+      auto statuses = mods.second.get_affected_statuses();
+
+      for (auto s_details : statuses)
+      {
+        status_ids.insert(s_details.first);
+      }
+    }
+  }
+
+  return status_ids;
 }
 
 #ifdef UNIT_TESTS
