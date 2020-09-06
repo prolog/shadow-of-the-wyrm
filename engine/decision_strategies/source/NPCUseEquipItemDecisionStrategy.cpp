@@ -70,13 +70,6 @@ CommandPtr NPCUseEquipItemDecisionStrategy::get_equip_weapon_decision(CreaturePt
   {
     equip_cmd = std::make_unique<InventoryCommand>(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED, item);
   }
-  else
-  {
-    if (item != nullptr)
-    {
-      equip_cmd = std::make_unique<DropCommand>(item->get_id());
-    }
-  }
 
   return equip_cmd;
 }

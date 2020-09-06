@@ -193,6 +193,35 @@
 				<Soak>2</Soak>
 				<SpeedBonus>-25</SpeedBonus>
 			</Amulet>
+			<Amulet id="voiceless_amulet">
+				<DescriptionSID>VOICELESS_AMULET_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_VOICELESS_AMULET_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>VOICELESS_AMULET_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_VOICELESS_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>VOICELESS_AMULET_CODEX_SID</CodexDescriptionSID>
+				<Value>67</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>4</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<AutoCurse>1</AutoCurse>
+				<Material>13</Material>
+				<Symbol>
+					<Char>#</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>0</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>6</DangerLevel>
+				<Evade>5</Evade>
+				<Soak>1</Soak>
+				<StatusAilments>
+					<Status>_mute</Status>
+				</StatusAilments>
+			</Amulet>
 			<Amulet id="holy_amulet">
 				<DescriptionSID>HOLY_AMULET_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_HOLY_AMULET_SID</UnidentifiedDescriptionSID>

@@ -6,10 +6,11 @@
 
 using namespace std;
 
+const int MarshGenerator::XY_CHANCE_BERRIES_Y = 1000;
 const int MarshGenerator::PCT_CHANCE_BOG_IRON = 25;
 
 MarshGenerator::MarshGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id, TileType::TILE_TYPE_MARSH)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_MARSH), XY_CHANCE_BERRIES_X(RNG::percent_chance(60) ? 0 : RNG::range(1,30))
 {
 }
 
@@ -35,21 +36,27 @@ TilePtr MarshGenerator::generate_tile(MapPtr current_map, const int row, const i
 
   int rand = RNG::range(1, 100);
 
-  if (rand <= 3)
+  if (rand <= 2)
   {
     result_tile = tg.generate(TileType::TILE_TYPE_WEEDS);
   }
-  else if (rand <= 4)
+  else if (rand <= 3)
   {
     result_tile = tg.generate(TileType::TILE_TYPE_BUSH);
   }
-  else if (rand <= 10)
+  else if (rand <= 7)
   {
     result_tile = tg.generate(TileType::TILE_TYPE_TREE);
   }
-  else if (rand <= 28)
+  else if (rand <= 17)
   {
     result_tile = tg.generate(TileType::TILE_TYPE_REEDS);
+  }
+
+  if (result_tile != nullptr && RNG::x_in_y_chance(XY_CHANCE_BERRIES_X, XY_CHANCE_BERRIES_Y))
+  {
+    ItemPtr item = ItemManager::create_item(ItemIdKeys::ITEM_ID_BERRIES, RNG::range(1, 4));
+    result_tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
   }
 
   return result_tile;

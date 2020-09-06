@@ -1,11 +1,13 @@
 Me:
-- Are nobles dropping rapiers because of the new NPC decision code?
+- After making negative amulets with statuses (e.g., poisoned amulet),
+  make status identifier map calculated by going through the modifiers.
+  Otherwise, it's stupid trying to figure out if a creature is still
+  poisoned: e.g., a creature is poisoned, and then puts on a poisoned
+  amulet.  Should still be poisoned when either of the two wear off.
 - Feature: fence, east_west_fence. Add some fenced areas to set locations.
 - Fenced areas (veg gardens?) in villages
 - Wyrm level stupid slow?
 - Fleeing behaviour for humanoids (Echo38)
-- Sentry flag for Carcassian guards - should attack creatures who attack
-  other creatures (Echo38).
 - Need to get hirelings text-searchable in bestiary
 - Creatures try to cast utility spells when they don't make sense (uncursing,
   etc). Should be checks to see if effect makes sense.
@@ -81,11 +83,6 @@ Me:
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
 - The vaults of the old dwarven-kings
-- Before making negative amulets with statuses (e.g., poisoned amulet),
-  make status identifier map calculated by going through the modifiers.
-  Otherwise, it's stupid trying to figure out if a creature is still
-  poisoned: e.g., a creature is poisoned, and then puts on a poisoned
-  amulet.  Should still be poisoned when either of the two wear off.
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
   and caverns are 2.
 - Allow shopkeepers to be any of the selectable races.
