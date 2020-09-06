@@ -283,7 +283,7 @@ class Creature : public ISerializable
 
     // Set/check if the creature poisoned, etc
     void set_status(const std::string& status_id, const Status& status);
-    void remove_status(const std::string& status_id);
+    bool remove_status(const std::string& status_id);
     bool has_status(const std::string& status_id) const;
     bool has_status() const;
     Status get_status(const std::string& status_id) const;

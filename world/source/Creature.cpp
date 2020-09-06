@@ -1203,9 +1203,10 @@ void Creature::set_status(const string& status_id, const Status& status)
   statuses[status_id] = status;
 }
 
-void Creature::remove_status(const string& status_id)
+bool Creature::remove_status(const string& status_id)
 {
   statuses.erase(status_id);
+  return true;
 }
 
 bool Creature::has_status(const string& status_id) const
