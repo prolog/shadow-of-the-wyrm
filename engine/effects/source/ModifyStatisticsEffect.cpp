@@ -5,6 +5,7 @@
 #include "GameUtils.hpp"
 #include "ModifyStatisticsCalculator.hpp"
 #include "ModifyStatisticsEffect.hpp"
+#include "StatusTypes.hpp"
 
 using namespace std;
 
@@ -68,7 +69,7 @@ bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifie
 
   // The statistic modifiers can't be applied over and over!
   // This isn't Final Fantasy with RUSE.
-  if (creature && !creature->is_affected_by_modifier_spell(spell_id))
+  if (creature && (StatusIdentifiers::is_status_identifier(spell_id) || !creature->is_affected_by_modifier_spell(spell_id)))
   {
     ModifyStatisticsCalculator msc;
 
@@ -103,7 +104,10 @@ bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifie
 
     for (const auto& status : statuses)
     {
-      creature->set_status(status.first, {status.first, true, status.second, source_id});
+      if (!creature->has_status(status.first))
+      {
+        creature->set_status(status.first, { status.first, true, status.second, source_id });
+      }
     }
 
     // Update the creature's calculated values.

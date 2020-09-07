@@ -105,7 +105,6 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     {    
       Modifier m;
       ModifyStatisticsEffect mse;
-      creature->set_status(StatusIdentifiers::STATUS_ID_FLYING, { StatusIdentifiers::STATUS_ID_FLYING, true, 1, "" });
       m.set_status(StatusIdentifiers::STATUS_ID_FLYING, true);
       mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
     }

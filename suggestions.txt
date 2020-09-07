@@ -1,4 +1,9 @@
 Me:
+- Remove set_status()
+- Add drunkenness to StatusEffectFactory
+- Are there any more set_status() instances?
+- unit tests
+- CreatureUtils:650
 - Need to work out details around: add mute, wear voiceless, walk around.
   Added mute should wear off. Voiceless mute should not and muteness should
   remain.

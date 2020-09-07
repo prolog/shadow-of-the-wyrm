@@ -8692,5 +8692,8 @@
     <ClCompile Include="engine\calculators\source\unit_tests\CreatureCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="world\source\unit_tests\StatusTypes_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

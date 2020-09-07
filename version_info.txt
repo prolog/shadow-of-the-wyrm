@@ -74,6 +74,11 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 
 - Max score is now 100000000.
 
+- Reworked the code around not applying duplicate spells so that duplicate
+  status identifiers can be applied. This is so that you can eg get muted,
+  then put on a voiceless amulet, then have the original muting wear off but
+  still be muted because of the amulet.
+
 - Stanzas for "Tel and Floridel".
 
 - New items: narcotic amulet (speed penalty, a little soak), voiceless amulet
