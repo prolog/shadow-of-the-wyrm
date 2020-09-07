@@ -46,6 +46,8 @@ class TextMessages
     static std::string get_damage_message(const Damage& damage);
     static std::string get_equip_message(const std::string& creature_desc_sid, const std::string& item_desc);
     static std::string get_hirelings_hired_message(const int hirelings_hired);
+    static std::string get_modifier_message(const std::string& status_or_spell_id, const Modifier& m, CreaturePtr c);
+    static std::string get_ending_message(const std::string& ending_time);
 
   protected:
     TextMessages();
@@ -79,4 +81,6 @@ class TextMessages
     static const std::string NPC_LEVEL_MESSAGE;
     static const std::string NPC_EQUIP_MESSAGE;
     static const std::string HIRELINGS_HIRED_MESSAGE;
+    static const std::string AFFECTED_BY;
+    static const std::string ENDING_MESSAGE;
 };

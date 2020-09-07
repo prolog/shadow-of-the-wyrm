@@ -11,6 +11,7 @@
 #include "TextMessages.hpp"
 #include "EntranceTextKeys.hpp"
 #include "Setting.hpp"
+#include "StatusAilmentTextKeys.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
 
@@ -52,6 +53,8 @@ const string TextMessages::DAMAGE_MESSAGE                     = "DAMAGE_MESSAGE"
 const string TextMessages::NPC_LEVEL_MESSAGE                  = "NPC_LEVEL_MESSAGE";
 const string TextMessages::NPC_EQUIP_MESSAGE                  = "NPC_EQUIP_MESSAGE";
 const string TextMessages::HIRELINGS_HIRED_MESSAGE            = "HIRELINGS_HIRED_MESSAGE";
+const string TextMessages::AFFECTED_BY                        = "AFFECTED_BY";
+const string TextMessages::ENDING_MESSAGE                     = "ENDING_MESSAGE";
 
 string TextMessages::get_full_header_text(const string& header, const uint num_cols)
 {
@@ -700,5 +703,42 @@ string TextMessages::get_hirelings_hired_message(const int hired)
 
   boost::replace_first(msg, "%s", to_string(hired));
 
+  return msg;
+}
+
+string TextMessages::get_modifier_message(const string& status_or_spell_id, const Modifier& m, CreaturePtr c)
+{
+  string msg;
+
+  if (c != nullptr)
+  {
+    if (!status_or_spell_id.empty())
+    {
+      msg = StringTable::get(AFFECTED_BY);
+
+      if (StatusIdentifiers::is_status_identifier(status_or_spell_id))
+      {
+        boost::replace_first(msg, "%s", StringTable::get(StatusAilmentTextKeys::get_status_for_identifier(status_or_spell_id)));
+      }
+      else
+      {
+        const SpellMap& spells = Game::instance().get_spells_ref();
+        auto s_it = spells.find(status_or_spell_id);
+
+        if (s_it != spells.end())
+        {
+          boost::replace_first(msg, "%s", StringTable::get(s_it->second.get_spell_name_sid()));
+        }
+      }
+    }
+  }
+
+  return msg;
+}
+
+string TextMessages::get_ending_message(const string& ending_time)
+{
+  string msg = StringTable::get(ENDING_MESSAGE);
+  boost::replace_first(msg, "%s", ending_time);
   return msg;
 }

@@ -17,6 +17,7 @@
 #include "Metadata.hpp"
 #include "MessageBufferDumper.hpp"
 #include "MessageManagerFactory.hpp"
+#include "ModifiersDumper.hpp"
 #include "MortuaryDumper.hpp"
 #include "QuestDumper.hpp"
 #include "RaceManager.hpp"
@@ -59,6 +60,9 @@ string CharacterDumper::str() const
 
   ResistancesDumper res_dumper(creature, num_cols);
   ss << res_dumper.str() << endl << endl;
+
+  ModifiersDumper mod_dumper(creature, num_cols);
+  ss << mod_dumper.str() << endl << endl;
 
   VictoryDumper victory_dumper(creature, num_cols);
   string victory = victory_dumper.str();

@@ -74,10 +74,17 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 
 - Max score is now 100000000.
 
-- Reworked the code around not applying duplicate spells so that duplicate
-  status identifiers can be applied. This is so that you can eg get muted,
-  then put on a voiceless amulet, then have the original muting wear off but
-  still be muted because of the amulet.
+- Reworked the code around applying status identifiers.  This is more
+  sophisticated and can now have multiples of the same status in effect at
+  once (eg, poisoned by creature/spell, wearing a poison ring) and the game 
+  will correctly undoing the status only when 0 instances of that status 
+  remain in the set of active modifiers.  Undoing eg the creature's poison
+  won't undo the permanent poison associated with the ring (until that's
+  taken off), and so on.
+
+- The character synopsis now shows modifiers, which are time-based effects that
+  modify stats or apply statuses.  These can include spells, statuses applied by
+  creature attacks, and those added by wearing certain pieces of equipment.
 
 - Stanzas for "Tel and Floridel".
 

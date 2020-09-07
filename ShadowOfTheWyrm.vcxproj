@@ -546,6 +546,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\conversion\include\ItemDumper.hpp" />
     <ClInclude Include="engine\conversion\include\MembershipsDumper.hpp" />
     <ClInclude Include="engine\conversion\include\MessageBufferDumper.hpp" />
+    <ClInclude Include="engine\conversion\include\ModifiersDumper.hpp" />
     <ClInclude Include="engine\conversion\include\MortuaryDumper.hpp" />
     <ClInclude Include="engine\conversion\include\QuestDumper.hpp" />
     <ClInclude Include="engine\conversion\include\ResistancesDumper.hpp" />
@@ -1810,6 +1811,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\conversion\source\AttackDumper.cpp" />
     <ClCompile Include="engine\conversion\source\EngineConversion.cpp" />
     <ClCompile Include="engine\conversion\source\MembershipsDumper.cpp" />
+    <ClCompile Include="engine\conversion\source\ModifiersDumper.cpp" />
     <ClCompile Include="engine\conversion\source\unit_tests\EngineConversion_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

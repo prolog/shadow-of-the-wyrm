@@ -31,6 +31,8 @@ class TextKeys
     static const std::string BOOL_FALSE;
     static const std::string MORTUARY;
     static const std::string MORTUARY_FIRST_KILL;
+    static const std::string MODIFIERS;
+    static const std::string INDEFINITELY;
     static const std::string STATUSES;
     static const std::string TOTAL;
     static const std::string MAXIMUM_LEVEL_DIFFERENCE;

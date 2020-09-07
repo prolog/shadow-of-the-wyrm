@@ -15,7 +15,25 @@ DateTextKeys::~DateTextKeys()
 {
 }
 
+const string DateTextKeys::DATE_TIME_MESSAGE = "DATE_TIME_MESSAGE";
 const string DateTextKeys::DATE_TIME_WEATHER_MESSAGE = "DATE_TIME_WEATHER_MESSAGE";
+
+string DateTextKeys::get_date_time_message(const Date& date)
+{
+  string dt = StringTable::get(DateTextKeys::DATE_TIME_MESSAGE);
+
+  string time = DateTextKeys::get_time(date);
+  string day = std::to_string(date.get_day_of_month());
+  string month = StringTable::get(date.get_month_sid());
+  string year = std::to_string(date.get_year());
+
+  boost::replace_first(dt, "%s1", time);
+  boost::replace_first(dt, "%s2", day);
+  boost::replace_first(dt, "%s3", month);
+  boost::replace_first(dt, "%s4", year);
+
+  return dt;
+}
 
 string DateTextKeys::get_date_time_weather_message(const Date& date, const string& season_sid, const PhaseOfMoonType pom, const string& wind_sid)
 {
