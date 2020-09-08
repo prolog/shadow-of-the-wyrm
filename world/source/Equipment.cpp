@@ -76,6 +76,25 @@ ItemPtr Equipment::get_item(const EquipmentWornLocation worn_location) const
   return current_item;
 }
 
+// Get the item with a particular id
+ItemPtr Equipment::get_item_from_id(const string& id) const
+{
+  ItemPtr i;
+
+  for (auto c_it : equipment)
+  {
+    ItemPtr c_item = c_it.second;
+
+    if (c_item != nullptr && c_item->get_id() == id)
+    {
+      i = c_item;
+      break;
+    }
+  }
+
+  return i;
+}
+
 // Remove an item from a particular slot, and return it.
 ItemPtr Equipment::remove_item(const EquipmentWornLocation worn_location)
 {

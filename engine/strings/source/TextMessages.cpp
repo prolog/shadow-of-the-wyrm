@@ -10,6 +10,7 @@
 #include "ItemDescriberFactory.hpp"
 #include "TextMessages.hpp"
 #include "EntranceTextKeys.hpp"
+#include "ItemIdentifier.hpp"
 #include "Setting.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StringTable.hpp"
@@ -708,6 +709,7 @@ string TextMessages::get_hirelings_hired_message(const int hired)
 
 string TextMessages::get_modifier_message(const string& status_or_spell_id, const Modifier& m, CreaturePtr c)
 {
+  ostringstream ss;
   string msg;
 
   if (c != nullptr)
@@ -715,6 +717,7 @@ string TextMessages::get_modifier_message(const string& status_or_spell_id, cons
     if (!status_or_spell_id.empty())
     {
       msg = StringTable::get(AFFECTED_BY);
+      string item_id = m.get_item_id();
 
       if (StatusIdentifiers::is_status_identifier(status_or_spell_id))
       {
@@ -730,10 +733,23 @@ string TextMessages::get_modifier_message(const string& status_or_spell_id, cons
           boost::replace_first(msg, "%s", StringTable::get(s_it->second.get_spell_name_sid()));
         }
       }
+
+      ss << msg;
+
+      if (!item_id.empty())
+      {
+        ItemPtr i = c->get_equipment().get_item_from_id(item_id);
+
+        if (i != nullptr)
+        {
+          ItemIdentifier iid;
+          ss << "(" << boost::trim_copy(iid.get_appropriate_description(i)) << ")";
+        }
+      }
     }
   }
 
-  return msg;
+  return ss.str();
 }
 
 string TextMessages::get_ending_message(const string& ending_time)

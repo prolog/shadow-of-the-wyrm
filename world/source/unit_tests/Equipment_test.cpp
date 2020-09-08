@@ -21,6 +21,22 @@ TEST(SW_World_Equipment, get_item)
   EXPECT_TRUE(i == nullptr);
 }
 
+TEST(SW_World_Equipment, get_item_from_id)
+{
+  Equipment e;
+  AmuletPtr amulet = std::make_shared<Amulet>();
+  string id = "abc123";
+  amulet->set_id(id);
+
+  e.set_item(amulet, EquipmentWornLocation::EQUIPMENT_WORN_NECK);
+
+  ItemPtr i = e.get_item_from_id("fjdlksafdjsalkf");
+  EXPECT_TRUE(i == nullptr);
+
+  i = e.get_item_from_id(id);
+  EXPECT_TRUE(i != nullptr);
+}
+
 TEST(SW_World_Equipment, remove_item)
 {
   Equipment e;
