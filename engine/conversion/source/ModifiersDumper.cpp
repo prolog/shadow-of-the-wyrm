@@ -56,8 +56,10 @@ string ModifiersDumper::get_modifiers() const
             else
             {
               Game& game = Game::instance();
-              Date date = game.get_current_world()->get_calendar().get_date(time_val);
-              ss << TextMessages::get_ending_message(DateTextKeys::get_date_time_message(date));
+              Calendar& calendar = game.get_current_world()->get_calendar();
+              Date date = calendar.get_date(time_val);
+              Date cal_date = calendar.get_date();
+              ss << TextMessages::get_ending_message(DateTextKeys::get_date_time_message(date, date.get_days_equal(cal_date)));
             }
 
             ss << "] ";
