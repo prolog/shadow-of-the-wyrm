@@ -3526,7 +3526,7 @@ a trickery that dies before it even starts."
 %p
 "You need us for the entrances."  Aese stared %b
 down Carne, who hadn't broke his gaze, then turned %b
-to Phole.  "That much is real.  The unprepared %b
+to Phole.  "That part is real.  The unprepared %b
 could search a hundred years and miss the berm %b
 or hill that marks the starting point.  And if %b
 you found the opening, the traps would rain %b
@@ -3534,3 +3534,15 @@ down pitch or blackwater, spikes and spears to split %b
 your skulls inside the darkness.  You wouldn't gain %b
 ten feet before the floors would drink your blood and brains."
 %p
+A silence; a caesura.  He went on: %b
+"To see the unling dragged out of the hall, %b
+to show her that she never once belonged %b
+among our folk..."  Aese trailed off, then stalled %b
+in thought before continuing.  "The nobles %b
+who stood with her and Tel will wish us dead; %b
+their sons, too.  And our former servants, immobile %b
+for the lives we made for them - they will not dread %b
+the chance to stand and finally hold the blade instead."
+%p
+
+
