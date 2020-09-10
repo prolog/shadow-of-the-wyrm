@@ -86,6 +86,8 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   modify stats or apply statuses.  These can include spells, statuses applied by
   creature attacks, and those added by wearing certain pieces of equipment.
 
+- Urchins now start with a sling and a handful of stones.
+
 - Stanzas for "Tel and Floridel".
 
 - New items: narcotic amulet (speed penalty, a little soak), voiceless amulet
