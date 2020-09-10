@@ -736,12 +736,22 @@ bool CombatManager::run_attack_script_if_necessary(CreaturePtr attacking_creatur
     {
       Game& game = Game::instance();
       ScriptEngine& se = game.get_script_engine_ref();
+      MapPtr map = game.get_current_map();
+      bool adjacent = false;
 
       string attacking_base_id = attacking_creature->get_original_id();
       string attacked_creature_id = attacked_creature->get_id();
 
+      if (map != nullptr)
+      {
+        Coordinate c = map->get_location(attacking_creature->get_id());
+        Coordinate c2 = map->get_location(attacked_creature_id);
+
+        adjacent = CoordUtils::are_coordinates_adjacent(c, c2);
+      }
+
       AttackScript as;
-      result = as.execute(se, script, attacking_creature, attacked_creature_id);
+      result = as.execute(se, script, attacking_creature, attacked_creature_id, adjacent);
     }    
   }
 

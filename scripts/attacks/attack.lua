@@ -10,11 +10,11 @@ end
 
 -- "attack" has a chance of being called after a successful attack.
 -- It allows things like nethack-style leprechaun money theft, etc.
-function attack(original_id, attacker_id, attacked_id)
+function attack(original_id, attacker_id, attacked_id, adjacent)
   local attack_fn = attack_fns[original_id]
 
   if attack_fn ~= nil then
-    attack_fn(attacker_id, attacked_id)
+    attack_fn(attacker_id, attacked_id, adjacent)
   else
     log(CLOG_ERROR, "Could not call attack function for base ID " .. original_id)
   end

@@ -1,5 +1,7 @@
 Me:
-- "An urchin fires a small stone at <name" instead of "you".
+- "An urchin fires a small stone at <name" instead of "you". check
+  creature::get_description_sid
+- Pickpocket behaviour firing on ranged combat!
 - Are there any more set_status() instances that can be cleaned up?
 - Need to work out details around: add mute, wear voiceless, walk around.
   Added mute should wear off. Voiceless mute should not and muteness should
