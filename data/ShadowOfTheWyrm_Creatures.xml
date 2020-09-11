@@ -22478,7 +22478,7 @@
 						<ID>sling</ID>
 					</Ranged>
 					<Ammunition>
-						<ID>_stone</ID>
+						<ID>_rock</ID>
 						<Quantity>
 							<Random>
 								<NumDice>4</NumDice>

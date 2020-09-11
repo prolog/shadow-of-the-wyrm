@@ -1,16 +1,8 @@
 Me:
-- "An urchin fires a small stone at <name" instead of "you". check
-  creature::get_description_sid
-- Pickpocket behaviour firing on ranged combat!
-- Are there any more set_status() instances that can be cleaned up?
+- First urchin stone has no message!
 - Need to work out details around: add mute, wear voiceless, walk around.
   Added mute should wear off. Voiceless mute should not and muteness should
   remain.
-- After making negative amulets with statuses (e.g., poisoned amulet),
-  make status identifier map calculated by going through the modifiers.
-  Otherwise, it's stupid trying to figure out if a creature is still
-  poisoned: e.g., a creature is poisoned, and then puts on a poisoned
-  amulet.  Should still be poisoned when either of the two wear off.
 - Feature: fence, east_west_fence. Add some fenced areas to set locations.
 - Fenced areas (veg gardens?) in villages
 - Wyrm level stupid slow?
@@ -74,6 +66,11 @@ Me:
 - The guarded, empty areas in Carcassia C2 should lead to some kind of
   dungeon/special area.
 - Summonings
+- After making negative amulets with statuses (e.g., poisoned amulet),
+  make status identifier map calculated by going through the modifiers.
+  Otherwise, it's stupid trying to figure out if a creature is still
+  poisoned: e.g., a creature is poisoned, and then puts on a poisoned
+  amulet.  Should still be poisoned when either of the two wear off.
 - Email Nathan before next release re: Mac build check
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.

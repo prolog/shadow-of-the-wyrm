@@ -271,7 +271,7 @@ void RangedCombatAction::add_ranged_combat_message(CreaturePtr creature, Creatur
   // If a target creature is specified, a message is added noting that the ammunition is fired "at something".
   if (target_creature)
   {
-    target_creature_desc_sid = target_creature->get_description_sid();
+    target_creature_desc_sid = target_creature->get_description_sid(target_creature && target_creature->get_is_player());
   }
   
   ItemPtr ranged = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON);

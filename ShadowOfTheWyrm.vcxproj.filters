@@ -8701,5 +8701,11 @@
     <ClCompile Include="engine\conversion\source\ModifiersDumper.cpp">
       <Filter>Source Files\engine\conversion\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\MessageManager_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\NullMessageManager_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

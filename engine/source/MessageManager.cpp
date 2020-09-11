@@ -29,7 +29,7 @@ void MessageManager::clear_if_necessary()
 }
 
 // Send the currently-unread messages to the display.
-void MessageManager::send(const MessageSpacing ms, const bool halt_after, const bool reset_cursor_after)
+bool MessageManager::send(const MessageSpacing ms, const bool halt_after, const bool reset_cursor_after)
 {
   Messages unread_messages = get_unread_messages_and_mark_as_read();
   string message_text;
@@ -64,12 +64,13 @@ void MessageManager::send(const MessageSpacing ms, const bool halt_after, const 
   {
     user_display->halt_messages();
   }
+
+  return true;
 }
 
-
-void MessageManager::send_and_halt()
+bool MessageManager::send_and_halt()
 {
-  send(MessageSpacing::DEFAULT_SPACING, true);
+  return send(MessageSpacing::DEFAULT_SPACING, true);
 }
 
 void MessageManager::alert(const string& message)
@@ -206,3 +207,7 @@ MessageBuffer MessageManager::get_message_buffer() const
 {
   return message_buffer;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/MessageManager_test.cpp"
+#endif
