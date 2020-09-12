@@ -145,8 +145,18 @@ PickUpCommand::PickUpCommand(const int key)
 {
 }
 
+PickUpCommand::PickUpCommand(const string& new_item_id)
+: Command(CommandKeys::PICK_UP_ITEM, '?'), item_id(new_item_id)
+{
+}
+
 PickUpCommand::~PickUpCommand()
 {
+}
+
+string PickUpCommand::get_item_id() const
+{
+  return item_id;
 }
 
 // Pick up all
@@ -166,8 +176,18 @@ DropCommand::DropCommand(const int key)
 {
 }
 
+DropCommand::DropCommand(const string& new_drop_id)
+: Command(CommandKeys::DROP_ITEM, '?'), drop_id(new_drop_id)
+{
+}
+
 DropCommand::~DropCommand()
 {
+}
+
+string DropCommand::get_drop_id() const
+{
+  return drop_id;
 }
 
 // Display character details
@@ -192,12 +212,27 @@ CharDumpCommand::~CharDumpCommand()
 
 // Equipment and Inventory management
 InventoryCommand::InventoryCommand(const int key)
-: Command(CommandKeys::INVENTORY, key)
+: Command(CommandKeys::INVENTORY, key), ewl(EquipmentWornLocation::EQUIPMENT_WORN_NONE)
+{
+}
+
+InventoryCommand::InventoryCommand(const EquipmentWornLocation new_ewl, ItemPtr new_item)
+: Command(CommandKeys::INVENTORY, '?'), ewl(new_ewl), i(new_item)
 {
 }
 
 InventoryCommand::~InventoryCommand()
 {
+}
+
+EquipmentWornLocation InventoryCommand::get_equipment_worn_location() const
+{
+  return ewl;
+}
+
+ItemPtr InventoryCommand::get_item()
+{
+  return i;
 }
 
 // Melee and ranged weapon info commands
@@ -250,6 +285,11 @@ QuaffCommand::~QuaffCommand()
 }
 
 // 'r'ead a scroll or spellbook
+ReadCommand::ReadCommand(const std::string& read_item_id)
+: Command(CommandKeys::READ, '?'), readable_id(read_item_id)
+{
+}
+
 ReadCommand::ReadCommand(const int key)
 : Command(CommandKeys::READ, key)
 {
@@ -257,6 +297,11 @@ ReadCommand::ReadCommand(const int key)
 
 ReadCommand::~ReadCommand()
 {
+}
+
+std::string ReadCommand::get_item_id() const
+{
+  return readable_id;
 }
 
 // '$': check how much currency is currently held
@@ -361,8 +406,23 @@ BestiaryCommand::~BestiaryCommand()
 
 // E'v'oke (zap) a wand
 EvokeCommand::EvokeCommand(const int key)
-: Command(CommandKeys::EVOKE, key)
+: Command(CommandKeys::EVOKE, key), d(Direction::DIRECTION_NULL)
 {
+}
+
+EvokeCommand::EvokeCommand(const string& new_item_id, const Direction new_d)
+: Command(CommandKeys::EVOKE, '?'), item_id(new_item_id), d(new_d)
+{
+}
+
+string EvokeCommand::get_item_id() const
+{
+  return item_id;
+}
+
+Direction EvokeCommand::get_direction() const
+{
+  return d;
 }
 
 EvokeCommand::~EvokeCommand()
@@ -548,6 +608,16 @@ SwitchColourPalettesCommand::SwitchColourPalettesCommand(int key)
 }
 
 SwitchColourPalettesCommand::~SwitchColourPalettesCommand()
+{
+}
+
+// Give orders to followers
+OrderCommand::OrderCommand(int key)
+: Command(CommandKeys::ORDER, key)
+{
+}
+
+OrderCommand::~OrderCommand()
 {
 }
 

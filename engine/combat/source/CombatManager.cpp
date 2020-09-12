@@ -7,9 +7,11 @@
 #include "CombatConstants.hpp"
 #include "CombatCounterCalculator.hpp"
 #include "CombatManager.hpp"
+#include "CombatTargetNumberCalculatorFactory.hpp"
 #include "CombatTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
+#include "CreatureCalculator.hpp"
 #include "CreatureFactory.hpp"
 #include "CreatureSplitCalculator.hpp"
 #include "CreatureDescriber.hpp"
@@ -17,7 +19,6 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "DamageText.hpp"
 #include "DeathManagerFactory.hpp"
-#include "DamageCalculatorFactory.hpp"
 #include "EffectTextKeys.hpp"
 #include "EngineConversion.hpp"
 #include "ExperienceManager.hpp"
@@ -30,9 +31,9 @@
 #include "ItemProperties.hpp"
 #include "KillScript.hpp"
 #include "ToHitCalculatorFactory.hpp"
-#include "CombatTargetNumberCalculatorFactory.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "PacificationCalculator.hpp"
 #include "PhaseOfMoonCalculator.hpp"
 #include "PointsTransfer.hpp"
 #include "RaceManager.hpp"
@@ -158,16 +159,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     int total_roll = d100_roll + to_hit_value;
     int target_number_value = ctn_calculator->calculate(attacking_creature, attacked_creature);
 
-    Damage damage;
-
-    if (predefined_damage)
-    {
-      damage = *predefined_damage;
-    }
-    else
-    {
-      damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(attacking_creature);
-    }
+    Damage damage = determine_damage(attacking_creature, predefined_damage.get(), damage_calculator.get());
         
     // Automatic miss is checked first
     if (is_automatic_miss(d100_roll))
@@ -222,8 +214,7 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
 {
   if (attacking_creature && 
       attacked_creature && 
-      (attacking_creature->get_id() != attacked_creature->get_id()) && 
-      !attacked_creature->get_is_player())
+      (attacking_creature->get_id() != attacked_creature->get_id()))
   {
     HostilityManager hm;
     CurrentCreatureAbilities cca;
@@ -235,19 +226,23 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
         d_strat->get_threats().has_threat(attacking_creature->get_id()).first == false &&
         race != nullptr &&
         race->get_has_voice() &&
+        attacked_creature != nullptr &&
         cca.can_speak(attacked_creature))
     {
-      // The creature cries out for help
-      CreatureDescriber cd(attacking_creature, attacked_creature, true);
-      string cry_out_message = ActionTextKeys::get_cry_out_message(cd.describe());
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacking_creature->get_is_player());
-      manager.add_new_message(cry_out_message);
-      manager.send();
+      // The creature cries out for help if not the player
+      if (!attacked_creature->get_is_player())
+      {
+        string cry_out_message = ActionTextKeys::get_cry_out_message(StringTable::get(attacked_creature->get_description_sid()));
+        IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacking_creature->get_is_player());
+        manager.add_new_message(cry_out_message);
+        manager.send();
+      }
 
       // Nearby creatures friendly to the attacker, seeing which way the
       // wind is blowing, decide that the attacker is not actually all
       // that friendly.
       MapPtr fov_map = d_strat->get_fov_map();
+      CreatureCalculator cc;
 
       if (fov_map != nullptr)
       {
@@ -261,9 +256,13 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
           {
             CreaturePtr tile_creature = tile->get_creature();
 
-            if (tile_creature && !tile_creature->get_is_player())
+            if (tile_creature && 
+               !tile_creature->get_is_player() && 
+                RNG::percent_chance(cc.get_combat_assist_pct(tile_creature)))
             {
+              // Make them co-hostile to avoid hostility cascades.
               hm.set_hostility_to_creature(tile_creature, attacking_creature->get_id());
+              hm.set_hostility_to_creature(attacking_creature, tile_creature->get_id());
             }
           }
         }
@@ -337,7 +336,7 @@ void CombatManager::add_counter_strike_message(CreaturePtr attacking_creature, C
 {
   if (attacking_creature && attacked_creature)
   {
-    CreatureDescriber cd(attacking_creature, attacked_creature);
+    CreatureDescriber cd(attacking_creature, attacked_creature, true);
     string desc = cd.describe();
     string counter_message = CombatTextKeys::get_counter_message(attacked_creature->get_is_player(), desc);
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, (attacking_creature->get_is_player() || attacked_creature->get_is_player()));
@@ -656,7 +655,9 @@ void CombatManager::handle_explosive_if_necessary(CreaturePtr attacking_creature
 
     // Show the explosion animation
     Game& game = Game::instance();
-    game.get_display()->draw_animation(t_anim.second);
+    CreaturePtr player = game.get_current_player();
+    MapPtr player_fov_map = player->get_decision_strategy()->get_fov_map();
+    game.get_display()->draw_animation(t_anim.second, player_fov_map);
 
     vector<CreaturePtr> aff_creatures = MapUtils::get_adjacent_creatures_unsorted(map, attacked_creature);
 
@@ -735,12 +736,22 @@ bool CombatManager::run_attack_script_if_necessary(CreaturePtr attacking_creatur
     {
       Game& game = Game::instance();
       ScriptEngine& se = game.get_script_engine_ref();
+      MapPtr map = game.get_current_map();
+      bool adjacent = false;
 
       string attacking_base_id = attacking_creature->get_original_id();
       string attacked_creature_id = attacked_creature->get_id();
 
+      if (map != nullptr)
+      {
+        Coordinate c = map->get_location(attacking_creature->get_id());
+        Coordinate c2 = map->get_location(attacked_creature_id);
+
+        adjacent = CoordUtils::are_coordinates_adjacent(c, c2);
+      }
+
       AttackScript as;
-      result = as.execute(se, script, attacking_creature, attacked_creature_id);
+      result = as.execute(se, script, attacking_creature, attacked_creature_id, adjacent);
     }    
   }
 
@@ -909,9 +920,7 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
         }
         else
         {
-          ExperienceManager em;
-          uint experience_value = attacked_creature->get_experience_value();
-          em.gain_experience(attacking_creature, experience_value);
+          gain_experience(attacking_creature, attacked_creature, map);
         }
       }
     }
@@ -1243,6 +1252,80 @@ bool CombatManager::knock_back_creature_if_necessary(const AttackType attack_typ
 
   return knocked_back;
 }
+
+void CombatManager::gain_experience(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr map)
+{
+  if (attacking_creature != nullptr && attacked_creature != nullptr)
+  {
+    ExperienceManager em;
+    uint experience_value = attacked_creature->get_experience_value();
+    em.gain_experience(attacking_creature, experience_value);
+
+    string leader_id = attacking_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+
+    if (!leader_id.empty())
+    {
+      CreaturePtr leader = map->get_creature(leader_id);
+
+      if (leader != nullptr)
+      {
+        PacificationCalculator pc;
+        double leader_proportion = pc.calculate_exp_proportion_follower_kill(leader);
+        uint leader_exp = static_cast<uint>(experience_value * leader_proportion);
+
+        if (leader_exp > 0)
+        {
+          em.gain_experience(leader, leader_exp);
+        }
+      }
+    }
+  }
+}
+
+Damage CombatManager::determine_damage(CreaturePtr attacking_creature, Damage* predefined_damage, DamageCalculator* damage_calculator)
+{
+  Damage damage;
+
+  if (attacking_creature != nullptr)
+  {
+    if (predefined_damage)
+    {
+      damage = *predefined_damage;
+    }
+    else
+    {
+      damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(attacking_creature);
+    }
+
+    string leader_id = attacking_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+
+    if (!leader_id.empty())
+    {
+      DecisionStrategy* dec = attacking_creature->get_decision_strategy();
+
+      if (dec != nullptr)
+      {
+        MapPtr fov_map = dec->get_fov_map();
+
+        if (fov_map != nullptr)
+        {
+          CreaturePtr leader = fov_map->get_creature(leader_id);
+
+          if (leader != nullptr)
+          {
+            PacificationCalculator pc;
+            Damage leader_bonus = pc.calculate_follower_damage_bonus(leader);
+
+            damage.set_modifier(damage.get_modifier() + leader_bonus.get_modifier());
+          }
+        }
+      }
+    }
+  }
+
+  return damage;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/CombatManager_test.cpp"
 #endif

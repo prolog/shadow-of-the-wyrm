@@ -3,6 +3,7 @@
 #include "AttackTypes.hpp"
 #include "Creature.hpp"
 #include "Damage.hpp"
+#include "DamageCalculatorFactory.hpp"
 #include "DamageTypes.hpp"
 #include "StatusEffect.hpp"
 
@@ -90,6 +91,9 @@ class CombatManager
 
     // Get the appropriate description for the defending creature.
     std::string get_appropriate_creature_description(CreaturePtr attacking_creature, CreaturePtr creature);
+
+    void gain_experience(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr map);
+    Damage determine_damage(CreaturePtr attacking_creature, Damage* predefined_damage, DamageCalculator* damage_calculator);
 
     static const int PCT_CHANCE_MARK_STATISTIC_ON_MISS;
 };

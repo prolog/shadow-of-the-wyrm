@@ -190,6 +190,9 @@ void TrapManipulator::create_and_draw_animation(TrapPtr trap, CreaturePtr creatu
     // Create the animation
     Game& game = Game::instance();
     MapPtr current_map = game.get_current_map();
+    CreaturePtr player = game.get_current_player();
+    MapPtr player_fov_map = player->get_decision_strategy()->get_fov_map();
+
     CurrentCreatureAbilities cca;
     AnimationTranslator at(game.get_display());
     MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
@@ -209,6 +212,6 @@ void TrapManipulator::create_and_draw_animation(TrapPtr trap, CreaturePtr creatu
 
     // Draw the animation.
     DisplayPtr display = game.get_display();
-    display->draw_animation(animation);
+    display->draw_animation(animation, player_fov_map);
   }
 }

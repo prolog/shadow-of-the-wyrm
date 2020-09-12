@@ -47,6 +47,7 @@ void SkillProcessorFactory::populate_skill_map()
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_HUNTING, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_HUNTING)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_INTIMIDATION, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_INTIMIDATION)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_JEWELER, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_JEWELER)));
+  skill_map.insert(make_pair(SkillType::SKILL_GENERAL_LEADERSHIP, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_LEADERSHIP)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_LITERACY, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_LITERACY)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_LORE, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_LORE)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MAGIC, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_GENERAL_MAGIC)));

@@ -2,7 +2,7 @@
 #include "RNG.hpp"
 #include "RockGardenGenerator.hpp"
 #include "ShadeGardenGenerator.hpp"
-#include "VegetableGardenGenerator.hpp"
+#include "FruitVegetableGardenGenerator.hpp"
 #include "WildflowerGardenGenerator.hpp"
 
 using namespace std;
@@ -34,7 +34,7 @@ SectorFeaturePtr GardenGeneratorFactory::create_garden_generator(const GardenTyp
     case GardenType::GARDEN_TYPE_VEGETABLE:
     case GardenType::GARDEN_TYPE_LAST:
     default:
-      garden_gen = std::make_unique<VegetableGardenGenerator>(deity_id, ar);
+      garden_gen = std::make_unique<FruitVegetableGardenGenerator>(FruitVegetableGardenType::FVG_TYPE_VEGETABLE, deity_id, ar);
       break;
   }
 

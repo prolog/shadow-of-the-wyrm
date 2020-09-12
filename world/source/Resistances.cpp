@@ -488,6 +488,19 @@ bool Resistances::has_resistances_or_vulnerabilities() const
   return false;
 }
 
+double Resistances::get_total() const
+{
+  double total = 0.0;
+
+  for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
+  {
+    DamageType dt = static_cast<DamageType>(d);
+    total += get_resistance_value(dt);
+  }
+
+  return total;
+}
+
 double Resistances::get_resistance_value(const DamageType type) const
 {
   ResistancesMap::const_iterator map_it = resistances.find(type);

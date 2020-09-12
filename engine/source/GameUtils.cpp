@@ -76,6 +76,7 @@ void GameUtils::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new
     // Remove the creature from its present tile, and from the temporary
     // vector of creatures as well.
     CreaturePtr current_creature = current_tile->get_creature();
+    MapUtils::serialize_and_remove_followers(old_map, current_creature);
     MapUtils::remove_creature(old_map, current_creature);
 
     Coordinate c = CoordUtils::end();
@@ -91,6 +92,8 @@ void GameUtils::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new
 
     Coordinate new_map_prev_loc = MapUtils::place_creature(new_map, current_creature, current_creature->get_id(), c);
     MapUtils::set_multi_map_entry_details(new_map, old_map, new_map_prev_loc);
+
+    MapUtils::place_followers(new_map, current_creature, new_map_prev_loc);
 
     // If there's an exit, link it to the creature's location on the new map
     // so it can be easily found later.

@@ -5,8 +5,8 @@ class MessageManager : public IMessageManager
 {
 	public:
     void clear_if_necessary() override;
-    void send(const MessageSpacing ms, const bool halt_afterwards = false, const bool reset_afterwards = false) override;
-    void send_and_halt() override;
+    bool send(const MessageSpacing ms, const bool halt_afterwards = false, const bool reset_afterwards = false) override;
+    bool send_and_halt() override;
 
     void alert(const std::string& message) override;
     void alert_text(const std::string& message) override;

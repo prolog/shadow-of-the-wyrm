@@ -17,6 +17,7 @@
 #include "Metadata.hpp"
 #include "MessageBufferDumper.hpp"
 #include "MessageManagerFactory.hpp"
+#include "ModifiersDumper.hpp"
 #include "MortuaryDumper.hpp"
 #include "QuestDumper.hpp"
 #include "RaceManager.hpp"
@@ -59,6 +60,9 @@ string CharacterDumper::str() const
 
   ResistancesDumper res_dumper(creature, num_cols);
   ss << res_dumper.str() << endl << endl;
+
+  ModifiersDumper mod_dumper(creature, num_cols);
+  ss << mod_dumper.str() << endl << endl;
 
   VictoryDumper victory_dumper(creature, num_cols);
   string victory = victory_dumper.str();
@@ -105,6 +109,7 @@ string CharacterDumper::str() const
   MortuaryDumper mortuary_dumper(creature, num_cols);
   ss << mortuary_dumper.str() << endl << endl;
 
+  ss << TextMessages::get_hirelings_hired_message(creature->get_hirelings_hired()) << endl << endl;
   ss << StringTable::get(TextKeys::MAXIMUM_DEPTH_REACHED) << ": " << creature->get_max_depth_reached().str(true) << endl << endl;
   ss << StringTable::get(TextKeys::TURNS) << ": " << creature->get_turns() << endl << endl;
 

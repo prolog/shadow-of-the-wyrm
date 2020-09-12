@@ -46,7 +46,7 @@ ActionCostValue DigAction::dig_within(CreaturePtr creature, ItemPtr dig_item, Ma
         {
           handle_potential_item_breakage(creature, tile, dig_item);
 
-          tile->set_additional_property(TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG, Bool::to_string(true));
+          tile->set_additional_property(TileProperties::TILE_PROPERTY_PREVIOUSLY_DUG, std::to_string(true));
           acv = get_action_cost_value(creature);
 
           // Digging also removes any seeds currently planted.

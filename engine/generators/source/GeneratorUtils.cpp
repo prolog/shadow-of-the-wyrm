@@ -5,6 +5,8 @@
 #include "Log.hpp"
 #include "RNG.hpp"
 #include "ShopGenerator.hpp"
+#include "SpringsGenerator.hpp"
+#include "StreamGenerator.hpp"
 #include "TileGenerator.hpp"
 
 using namespace std;
@@ -379,3 +381,45 @@ void GeneratorUtils::fill(MapPtr map, const Coordinate& start_coord, const Coord
     }
   }
 }
+
+void GeneratorUtils::add_random_stream_or_springs(MapPtr result_map, const int pct_chance_stream, const int pct_chance_springs)
+{
+  int additional_random_feature = RNG::range(1, 100);
+
+  if (additional_random_feature < pct_chance_stream)
+  {
+    add_random_stream(result_map);
+  }
+  else
+  {
+    additional_random_feature = RNG::range(1, 100);
+
+    if (additional_random_feature < pct_chance_springs)
+    {
+      add_random_springs(result_map);
+    }
+  }
+}
+
+void GeneratorUtils::add_random_springs(MapPtr result_map)
+{
+  Dimensions dim = result_map->size();
+  int springs_size = RNG::dice(3, 2); // min size should be 3.
+  int start_y = RNG::range(1, (dim.get_y() - springs_size - 1));
+  int start_x = RNG::range(1, (dim.get_x() - springs_size - 1));
+  int rand_type = RNG::dice(1, 2);
+  SpringsType springs_type = SpringsType::SPRINGS_TYPE_TALL;
+
+  if (rand_type == 2)
+  {
+    springs_type = SpringsType::SPRINGS_TYPE_WIDE;
+  }
+
+  SpringsGenerator::generate(result_map, start_y, start_x, springs_size, springs_type);
+}
+
+void GeneratorUtils::add_random_stream(MapPtr map)
+{
+  StreamGenerator::generate(map);
+}
+

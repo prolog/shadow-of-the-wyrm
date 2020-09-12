@@ -1,7 +1,10 @@
 #pragma once
 #include <memory>
+#include <string>
 #include "Command.hpp"
 #include "Directions.hpp"
+#include "EquipmentTypes.hpp"
+#include "Item.hpp"
 
 class QuitCommand : public Command
 {
@@ -96,7 +99,13 @@ class PickUpCommand : public Command
 {
   public:
     PickUpCommand(int key);
+    PickUpCommand(const std::string& new_item_id); // NPC version
     ~PickUpCommand();
+
+    std::string get_item_id() const;
+
+  protected:
+    std::string item_id;
 };
 
 class PickUpAllCommand : public Command
@@ -110,7 +119,13 @@ class DropCommand : public Command
 {
   public:
     DropCommand(int key);
+    DropCommand(const std::string& new_drop_id);
     ~DropCommand();
+
+    std::string get_drop_id() const;
+
+  protected:
+    std::string drop_id;
 };
 
 class CharDetailsCommand : public Command
@@ -131,7 +146,15 @@ class InventoryCommand : public Command
 {
   public:
     InventoryCommand(int key);
+    InventoryCommand(const EquipmentWornLocation ewl, ItemPtr item);
     ~InventoryCommand();
+
+    EquipmentWornLocation get_equipment_worn_location() const;
+    ItemPtr get_item();
+
+protected:
+    EquipmentWornLocation ewl;
+    ItemPtr i;
 };
 
 class MeleeWeaponInfoCommand : public Command
@@ -172,8 +195,14 @@ class QuaffCommand : public Command
 class ReadCommand : public Command
 {
   public:
+    ReadCommand(const std::string& read_item_id);
     ReadCommand(int key);
     ~ReadCommand();
+
+    std::string get_item_id() const;
+  
+  protected:
+    std::string readable_id;
 };
 
 class CheckCurrencyCommand : public Command
@@ -250,7 +279,15 @@ class EvokeCommand : public Command
 {
   public:
     EvokeCommand(int key);
+    EvokeCommand(const std::string& new_item_id, const Direction new_d);
     ~EvokeCommand();
+
+    std::string get_item_id() const;
+    Direction get_direction() const;
+
+  protected:
+    std::string item_id;
+    Direction d;
 };
 
 class ShowResistancesCommand : public Command
@@ -377,6 +414,13 @@ class SwitchColourPalettesCommand : public Command
   public:
     SwitchColourPalettesCommand(int key);
     ~SwitchColourPalettesCommand();
+};
+
+class OrderCommand : public Command
+{
+  public:
+    OrderCommand(int key);
+    ~OrderCommand();
 };
 
 // NPC-only commands:

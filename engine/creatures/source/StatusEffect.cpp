@@ -257,23 +257,24 @@ void StatusEffect::undo(CreaturePtr creature) const
 {
   if (creature)
   {
-    creature->remove_status(get_status_identifier());
-    CreatureUtils::mark_modifiers_for_deletion(creature, get_status_identifier(), StatusRemovalType::STATUS_REMOVAL_UNDO);
-
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature->get_is_player());
-
-    string undo_message = get_undo_message(creature);
-
-    if (!undo_message.empty())
-    {
-      manager.add_new_message(undo_message);
-      manager.send();
-    }
-
-    // When a creature has dealt with a particular status, whether harmful or
-    // beneficial, they are the stronger for it.
     StatisticsMarker sm;
+    CreatureUtils::mark_modifiers_for_deletion(creature, get_status_identifier(), StatusRemovalType::STATUS_REMOVAL_UNDO);
     sm.mark_health(creature);
+
+    bool removed = creature->remove_status(get_status_identifier());
+
+    if (removed)
+    {
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature->get_is_player());
+
+      string undo_message = get_undo_message(creature);
+
+      if (!undo_message.empty())
+      {
+        manager.add_new_message(undo_message);
+        manager.send();
+      }
+    }
   }
 }
 

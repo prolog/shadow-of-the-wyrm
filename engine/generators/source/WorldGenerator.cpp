@@ -734,7 +734,7 @@ void WorldGenerator::set_keep_properties(TilePtr tile)
     // created, the keep can be generated either ruined or upright.
     if (ruined)
     {
-      tile->set_additional_property(TileProperties::TILE_PROPERTY_RUINED, Bool::to_string(ruined));
+      tile->set_additional_property(TileProperties::TILE_PROPERTY_RUINED, std::to_string(ruined));
     }
   }
 }

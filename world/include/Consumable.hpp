@@ -28,6 +28,8 @@ class Consumable : public Item
     bool additional_item_attributes_match(ItemPtr item) const override;
     bool consumable_properties_match(const Consumable& cons) const;
 
+    int get_score() const override;
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 

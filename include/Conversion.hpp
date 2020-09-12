@@ -63,10 +63,10 @@ class File
 {
   public:
     // Converts the contents of a text file to a string, newlines and all.
-    static std::string to_string(const std::string& filename);
+    static std::string to_string(const std::string& filename, const std::map<std::string, std::string>& char_replacements = {});
 
     // Converts the contents of a text file to a string, removing any newlines.
-    static std::string to_resource_string(const std::string& filename);
+    static std::string to_resource_string(const std::string& filename, const std::map<std::string, std::string>& char_replacements = {});
 
   protected:
     File();
@@ -153,16 +153,6 @@ class Uuid
     ~Uuid();
 };
 
-class Bool
-{
-  public:
-    static std::string to_string(const bool b);
-
-  protected:
-    Bool();
-    ~Bool();
-};
-
 class Float
 {
   public:
@@ -175,7 +165,6 @@ class Float
 class Char
 {
   public:
-    static std::string to_string(const char c);
     static EquipmentWornLocation to_equipment_worn_location(const char character);
     static int keyboard_selection_char_to_int(const char character);
 

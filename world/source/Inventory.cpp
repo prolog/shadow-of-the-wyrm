@@ -200,7 +200,7 @@ pair<bool, vector<ItemPtr>> Inventory::remove_by_base_id(const string& base_id, 
         {
           int new_quantity = rem_quantity;
 
-          ItemPtr new_item = ItemPtr(current_item->clone());
+          ItemPtr new_item = ItemPtr(current_item->clone_with_new_id());
           new_item->set_quantity(new_quantity);
 
           current_item->set_quantity(i_quantity - rem_quantity);
@@ -346,6 +346,21 @@ ItemPtr Inventory::get_from_base_id(const std::string& base_id)
   }
   
   return selected_item;
+}
+
+vector<ItemPtr> Inventory::get_from_type(const ItemType item_type)
+{
+  vector<ItemPtr> itype_items;
+
+  for (ItemPtr item : items)
+  {
+    if (item && item->get_type() == item_type)
+    {
+      itype_items.push_back(item);
+    }
+  }
+
+  return itype_items;
 }
 
 // Get whether the inventory is empty

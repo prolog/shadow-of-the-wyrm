@@ -307,7 +307,9 @@ enum struct ClassIdentifier
   CLASS_ID_SDL_DISPLAY_PARAMETERS = 302,
   CLASS_ID_SYMBOL = 303,
   CLASS_ID_SPRITESHEET_LOCATION = 304,
-  CLASS_ID_WEATHER = 305
+  CLASS_ID_WEATHER = 305,
+  CLASS_ID_ORDER_COMMAND_FACTORY = 306,
+  CLASS_ID_ORDER_KEYBOARD_COMMAND_MAP = 307
 };
 
 // Any class IDs needed for Lua scripts (e.g., feature class IDs) should go

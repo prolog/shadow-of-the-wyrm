@@ -43,6 +43,42 @@ ActionCostValue PickupAction::pick_up(CreaturePtr creature, ActionManager * cons
   return action_cost_value;
 }
 
+// NPC - pick up a specific ground item
+ActionCostValue PickupAction::pick_up(CreaturePtr creature, const string& ground_item_id)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+
+  if (creature != nullptr && map != nullptr)
+  {
+    TilePtr tile = MapUtils::get_tile_for_creature(map, creature);
+
+    if (tile != nullptr)
+    {
+      ItemPtr ground_item = tile->get_items()->get_from_id(ground_item_id);
+
+      if (ground_item != nullptr)
+      {
+        CreaturePtr player = game.get_current_player();
+        CurrentCreatureAbilities cca;
+        IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, CreatureUtils::is_player_or_in_los(creature));
+
+        string item_msg = TextMessages::get_item_pick_up_and_merge_message(!cca.can_see(player), creature, ground_item);
+        creature->get_inventory()->merge_or_add(ground_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        tile->get_items()->remove(ground_item_id);
+
+        manager.add_new_message(item_msg);
+        manager.send();
+
+        acv = ActionCostConstants::DEFAULT;
+      }
+    }
+  }
+
+  return acv;
+}
+
 ActionCostValue PickupAction::toggle_autopickup(CreaturePtr creature)
 {
   if (creature != nullptr)
@@ -171,10 +207,7 @@ ActionCostValue PickupAction::handle_pickup_single(CreaturePtr creature, MapPtr 
       else
       {
         bool prompt_for_stacks = Game::instance().get_settings_ref().get_setting_as_bool(Setting::PROMPT_ON_STACK_PICKUP);
-        take_item_and_give_to_creature(pick_up_item, inv, creature, prompt_for_stacks);
-
-        // Advance the turn
-        action_cost_value = get_action_cost_value(creature);
+        action_cost_value = take_item_and_give_to_creature(pick_up_item, inv, creature, prompt_for_stacks);
       }
     }
   }
@@ -285,8 +318,10 @@ bool PickupAction::autopickup_passes_exclusions(ItemPtr item)
   return item_ok;
 }
 
-void PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_item, IInventoryPtr inv, CreaturePtr creature, const bool prompt_for_amount)
+ActionCostValue PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_item, IInventoryPtr inv, CreaturePtr creature, const bool prompt_for_amount)
 {
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
   if (pick_up_item != nullptr && inv != nullptr && creature != nullptr)
   {
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
@@ -322,8 +357,12 @@ void PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_item, IInvento
       {
         merge_or_add_into_inventory(creature, pick_up_item);
       }
+
+      acv = ActionCostConstants::DEFAULT;
     }
   }
+
+  return acv;
 }
 
 // Handle the case where the creature already has the maximum number of items
@@ -459,7 +498,7 @@ void PickupAction::potentially_identify_status(CreaturePtr creature, ItemPtr ite
   {
     if (String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_LORE_CHECKED)) == false)
     {
-      item->set_additional_property(ItemProperties::ITEM_PROPERTIES_LORE_CHECKED, Bool::to_string(true));
+      item->set_additional_property(ItemProperties::ITEM_PROPERTIES_LORE_CHECKED, std::to_string(true));
       int lore_val = creature->get_skills().get_value_incr_marks(SkillType::SKILL_GENERAL_LORE);
 
       if (RNG::percent_chance(lore_val))
@@ -479,7 +518,7 @@ ItemPtr PickupAction::recalculate_stack_sizes(IInventoryPtr inv, ItemPtr pick_up
     if (amount_to_take > 0 && amount_to_take < quantity)
     {
       // Reduce the quantity on the ground appropriately.
-      ItemPtr new_item = ItemPtr(pick_up_item->clone());
+      ItemPtr new_item = ItemPtr(pick_up_item->clone_with_new_id());
 
       if (new_item != nullptr)
       {

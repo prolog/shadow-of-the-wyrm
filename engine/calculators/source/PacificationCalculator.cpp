@@ -1,7 +1,11 @@
 #include "PacificationCalculator.hpp"
 
-const int PacificationCalculator::MAX_PCT_CHANCE_PACIFY_MUSIC = 90;
+const int PacificationCalculator::MAX_PCT_CHANCE_PACIFY_MUSIC = 80;
+const int PacificationCalculator::MAX_PCT_CHANCE_TAME_BEASTMASTERY = 80;
 const int PacificationCalculator::CHARMS_BONUS = 25;
+const int PacificationCalculator::BASE_EXP_PROPORTION_LEADERSHIP = 10;
+const int PacificationCalculator::LEADERSHIP_EXP_DIVISOR = 4;
+const int PacificationCalculator::LEADERSHIP_DAMAGE_DIVISOR = 4;
 
 // The chance to pacify musically is:
 //
@@ -61,6 +65,74 @@ int PacificationCalculator::get_item_status_bonus(const ItemStatus status) const
   }
 
   return bonus;
+}
+
+int PacificationCalculator::calculate_pct_chance_tame_beastmastery(CreaturePtr taming_creature, CreaturePtr tamed_creature)
+{
+  int taming_pct = 0;
+
+  if (taming_creature != nullptr && tamed_creature != nullptr)
+  {
+    taming_pct = taming_creature->get_skills().get_value(SkillType::SKILL_GENERAL_BEASTMASTERY) - 10;
+    int level_diff = taming_creature->get_level().get_current() - tamed_creature->get_level().get_current();
+
+    taming_pct += level_diff;
+
+    taming_pct = std::max<int>(taming_pct, 0);
+    taming_pct = std::min<int>(taming_pct, MAX_PCT_CHANCE_TAME_BEASTMASTERY);
+  }
+
+  return taming_pct;
+}
+
+double PacificationCalculator::calculate_exp_proportion(CreaturePtr taming_creature, const SkillType skill)
+{
+  double exp = 0.0;
+
+  if (taming_creature != nullptr)
+  {
+    exp = taming_creature->get_skills().get_value(skill) / 100.0;
+  }
+
+  return exp;
+}
+
+double PacificationCalculator::calculate_exp_proportion_follower_kill(CreaturePtr leader)
+{
+  double exp = 0.0;
+
+  if (leader != nullptr)
+  {
+    int base_exp = BASE_EXP_PROPORTION_LEADERSHIP;
+    int leadership_val = leader->get_skills().get_value(SkillType::SKILL_GENERAL_LEADERSHIP);
+
+    if (leadership_val > 0)
+    {
+      base_exp += leadership_val / LEADERSHIP_EXP_DIVISOR;
+      exp = base_exp / 100.0;
+    }
+  }
+
+  return exp;
+}
+
+Damage PacificationCalculator::calculate_follower_damage_bonus(CreaturePtr leader)
+{
+  Damage d;
+
+  if (leader != nullptr)
+  {
+    int level = leader->get_level().get_current();
+    int level_bonus = level / 2;
+
+    int leadership = leader->get_skills().get_value(SkillType::SKILL_GENERAL_LEADERSHIP);
+    int leader_bonus = leadership / LEADERSHIP_DAMAGE_DIVISOR;
+
+    d.set_num_dice(1);
+    d.set_modifier(level_bonus + leader_bonus);
+  }
+
+  return d;
 }
 
 #ifdef UNIT_TESTS

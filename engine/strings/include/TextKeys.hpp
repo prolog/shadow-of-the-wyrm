@@ -31,6 +31,8 @@ class TextKeys
     static const std::string BOOL_FALSE;
     static const std::string MORTUARY;
     static const std::string MORTUARY_FIRST_KILL;
+    static const std::string MODIFIERS;
+    static const std::string INDEFINITELY;
     static const std::string STATUSES;
     static const std::string TOTAL;
     static const std::string MAXIMUM_LEVEL_DIFFERENCE;
@@ -52,6 +54,7 @@ class TextKeys
     static const std::string RACE;
     static const std::string RACES;
     static const std::string SELECT_RACE;
+    static const std::string CLASS;
     static const std::string SELECT_CLASS;
     static const std::string SELECT_DEITY;
     static const std::string SELECT_STARTING_LOCATION;
@@ -147,15 +150,10 @@ class TextKeys
 
     static const std::string ATTACK_DETAILS;
     static const std::string EQUIPMENT;
-    static const std::string EQUIPMENT_PROMPT;
     static const std::string INVENTORY;
     static const std::string INVENTORY_FILTERED;
-    static const std::string INVENTORY_PROMPT;
-	static const std::string INVENTORY_PROMPT_NO_SELECTION;
     static const std::string GENERATED_ARTIFACTS;
-    static const std::string SKIN_PROMPT;
-    static const std::string WEAVE_PROMPT;
-    
+
     static const std::string DECISION_CONFIRM_KEY;
     static const std::string DECISION_DENY_KEY;
     static const std::string DECISION_LEAVE_AREA;
@@ -185,6 +183,8 @@ class TextKeys
     static const std::string ARTIFACT;
     static const std::string AUTOCURSING;
     static const std::string GENERIC_MESSAGE;
+    static const std::string PACIFIED;
+    static const std::string TAMED;
 
   protected:
     TextKeys();

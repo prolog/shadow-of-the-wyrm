@@ -155,6 +155,36 @@ TEST(SW_World_Creature, serialization_id)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_CREATURE, c.get_class_identifier());
 }
 
+TEST(SW_World_Creature, get_short_description_sid)
+{
+  Creature c;
+  string short_desc = "asdf";
+  string name = "buddy";
+  c.set_short_description_sid(short_desc);
+ 
+  EXPECT_EQ(short_desc, c.get_short_description_sid());
+
+  c.set_name(name);
+
+  EXPECT_EQ(name, c.get_short_description_sid());
+  EXPECT_EQ(short_desc, c.get_short_description_sid(true));
+}
+
+TEST(SW_World_Creature, get_description_sid)
+{
+  Creature c;
+  string short_desc = "aaaaaa";
+  string name = "name!";
+  c.set_description_sid(short_desc);
+
+  EXPECT_EQ(short_desc, c.get_description_sid());
+
+  c.set_name(name);
+
+  EXPECT_EQ(name, c.get_description_sid());
+  EXPECT_EQ(short_desc, c.get_description_sid(true));
+}
+
 TEST(SW_World_Creature, saveload)
 {
   Creature c, c2;
@@ -209,6 +239,28 @@ TEST(SW_World_Creature, saveload)
   EXPECT_TRUE(c == c2);
   EXPECT_EQ(26, c2.get_skill_points());
   EXPECT_FLOAT_EQ(1.2f, c2.get_blood().get_grams_alcohol());
+}
+
+TEST(SW_World_Creature, binary_string_serialization)
+{
+  CreaturePtr c = std::make_shared<Creature>();
+  ostringstream ss;
+
+  string bprop = Serialize::BINARY_PROPERTY_PREFIX + "1";
+  string bval = "04021431\0\tdsjlkaf\0\0dsajl\0";
+  c->set_name("ted");
+  c->set_id("fdsa'f324932849320rdsaldal");
+  c->set_age(36);
+  c->set_additional_property(bprop, bval);
+
+  c->serialize(ss);
+  istringstream iss(ss.str());
+
+  CreaturePtr c2 = std::make_shared<Creature>();
+  c2->deserialize(iss);
+
+  EXPECT_TRUE(*c == *c2);
+  EXPECT_EQ(bval, c2->get_additional_property(bprop));
 }
 
 TEST(SW_World_Creature, count_items)
@@ -311,12 +363,14 @@ TEST(SW_World_Creature, increment_free_hidden_actions)
   CreaturePtr c = std::make_shared<Creature>();
   c->set_free_hidden_actions(2);
 
+  EXPECT_EQ(2, c->get_free_hidden_actions());
+
   for (int i = 0; i < 5; i++)
   {
     c->increment_free_hidden_actions();
   }
 
-  EXPECT_EQ(7, c->get_free_hidden_actions());
+  EXPECT_EQ(2, c->get_free_hidden_actions());
 }
 
 TEST(SW_World_Creature, decrement_free_hidden_actions)

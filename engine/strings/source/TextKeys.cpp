@@ -39,9 +39,12 @@ const string TextKeys::TURNS = "TURNS";
 const string TextKeys::MAXIMUM_DEPTH_REACHED = "MAXIMUM_DEPTH_REACHED";
 const string TextKeys::MORTUARY = "MORTUARY";
 const string TextKeys::MORTUARY_FIRST_KILL = "MORTUARY_FIRST_KILL";
+const string TextKeys::MODIFIERS = "MODIFIERS";
+const string TextKeys::INDEFINITELY = "INDEFINITELY";
 const string TextKeys::STATUSES = "STATUSES";
 const string TextKeys::NPC_ESCAPES_MESSAGE = "NPC_ESCAPES_MESSAGE";
 const string TextKeys::SELECT_RACE = "SELECT_RACE";
+const string TextKeys::CLASS = "CLASS";
 const string TextKeys::SELECT_CLASS = "SELECT_CLASS";
 const string TextKeys::SELECT_DEITY = "SELECT_DEITY";
 const string TextKeys::SELECT_STARTING_LOCATION = "SELECT_STARTING_LOCATION";
@@ -151,14 +154,9 @@ const string TextKeys::DAMAGE_SLAYS      = "DAMAGE_SLAYS";
 
 const string TextKeys::ATTACK_DETAILS    = "ATTACK_DETAILS";
 const string TextKeys::EQUIPMENT         = "EQUIPMENT";
-const string TextKeys::EQUIPMENT_PROMPT  = "EQUIPMENT_PROMPT";
 const string TextKeys::INVENTORY         = "INVENTORY";
 const string TextKeys::INVENTORY_FILTERED = "INVENTORY_FILTERED";
-const string TextKeys::INVENTORY_PROMPT  = "INVENTORY_PROMPT";
-const string TextKeys::INVENTORY_PROMPT_NO_SELECTION = "INVENTORY_PROMPT_NO_SELECTION";
 const string TextKeys::GENERATED_ARTIFACTS = "GENERATED_ARTIFACTS";
-const string TextKeys::SKIN_PROMPT       = "SKIN_PROMPT";
-const string TextKeys::WEAVE_PROMPT      = "WEAVE_PROMPT";
 
 const string TextKeys::DECISION_CONFIRM_KEY = "DECISION_CONFIRM_KEY";
 const string TextKeys::DECISION_DENY_KEY    = "DECISION_DENY_KEY";
@@ -189,5 +187,7 @@ const string TextKeys::CARRYING_CAPACITY = "CARRYING_CAPACITY";
 const string TextKeys::ARTIFACT = "ARTIFACT";
 const string TextKeys::AUTOCURSING = "AUTOCURSING";
 const string TextKeys::GENERIC_MESSAGE = "GENERIC_MESSAGE";
+const string TextKeys::PACIFIED = "PACIFIED";
+const string TextKeys::TAMED = "TAMED";
 
 

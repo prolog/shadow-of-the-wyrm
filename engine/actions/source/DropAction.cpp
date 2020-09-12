@@ -19,6 +19,21 @@
 
 using namespace std;
 
+// NPC drop version
+ActionCostValue DropAction::drop(CreaturePtr creature, const string& drop_item_id)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+  Game& game = Game::instance();
+
+  if (creature != nullptr)
+  {
+    ItemPtr item_to_drop = creature->get_inventory()->get_from_id(drop_item_id);
+    acv = do_drop(creature, game.get_current_map(), item_to_drop);
+  }
+
+  return acv;
+}
+
 // Drop the item on to the square, if possible.
 ActionCostValue DropAction::drop(CreaturePtr dropping_creature, ActionManager * const am)
 {  
@@ -80,14 +95,15 @@ void DropAction::handle_invalid_drop_quantity(CreaturePtr creature)
 // Show the description of the item being dropped, if applicable
 void DropAction::handle_item_dropped_message(CreaturePtr creature, ItemPtr item)
 {  
-  if (item && creature && creature->get_is_player())
+  if (item && creature)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
+    Game& game = Game::instance();
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(game, creature->get_id()));
 
     manager.clear_if_necessary();
     
     CurrentCreatureAbilities cca;
-    string drop_message = TextMessages::get_item_drop_message(!cca.can_see(creature), item);
+    string drop_message = TextMessages::get_item_drop_message(creature, !cca.can_see(creature), item);
     
     manager.add_new_message(drop_message);
     manager.send();

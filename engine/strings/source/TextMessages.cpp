@@ -10,7 +10,9 @@
 #include "ItemDescriberFactory.hpp"
 #include "TextMessages.hpp"
 #include "EntranceTextKeys.hpp"
+#include "ItemIdentifier.hpp"
 #include "Setting.hpp"
+#include "StatusAilmentTextKeys.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
 
@@ -28,6 +30,7 @@ const string TextMessages::WELCOME_MESSAGE                    = "WELCOME_MESSAGE
 const string TextMessages::WELCOME_BACK_MESSAGE               = "WELCOME_BACK_MESSAGE";
 const string TextMessages::DUMPING_CHARACTER_MESSAGE          = "DUMPING_CHARACTER_MESSAGE";
 const string TextMessages::ITEM_DROP_MESSAGE                  = "ITEM_DROP_MESSAGE";
+const string TextMessages::ITEM_DROP_MESSAGE_MONSTER          = "ITEM_DROP_MESSAGE_MONSTER";
 const string TextMessages::ITEM_PICK_UP_MESSAGE_PLAYER        = "ITEM_PICK_UP_MESSAGE_PLAYER";
 const string TextMessages::ITEM_PICK_UP_MESSAGE_MONSTER       = "ITEM_PICK_UP_MESSAGE_MONSTER";
 const string TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE_PLAYER = "ITEM_PICK_UP_AND_MERGE_MESSAGE_PLAYER";
@@ -48,6 +51,11 @@ const string TextMessages::SLOT_MACHINE_MESSAGE               = "SLOT_MACHINE_ME
 const string TextMessages::SLOT_MACHINE_OUTCOME_MESSAGE       = "SLOT_MACHINE_OUTCOME_MESSAGE";
 const string TextMessages::CARRYING_CAPACITY_MESSAGE          = "CARRYING_CAPACITY_MESSAGE";
 const string TextMessages::DAMAGE_MESSAGE                     = "DAMAGE_MESSAGE";
+const string TextMessages::NPC_LEVEL_MESSAGE                  = "NPC_LEVEL_MESSAGE";
+const string TextMessages::NPC_EQUIP_MESSAGE                  = "NPC_EQUIP_MESSAGE";
+const string TextMessages::HIRELINGS_HIRED_MESSAGE            = "HIRELINGS_HIRED_MESSAGE";
+const string TextMessages::AFFECTED_BY                        = "AFFECTED_BY";
+const string TextMessages::ENDING_MESSAGE                     = "ENDING_MESSAGE";
 
 string TextMessages::get_full_header_text(const string& header, const uint num_cols)
 {
@@ -114,6 +122,15 @@ string TextMessages::get_npc_escapes_message(const string& creature_description)
   boost::replace_first(escapes_message, "%s", creature_description);
   escapes_message[0] = toupper(escapes_message[0]);
   return escapes_message;
+}
+
+string TextMessages::get_npc_level_message(const string& creature_description)
+{
+  string level_message = StringTable::get(NPC_LEVEL_MESSAGE);
+  boost::replace_first(level_message, "%s", creature_description);
+  level_message[0] = toupper(level_message[0]);
+  return level_message;
+
 }
 
 string TextMessages::get_action_not_found_message(const string& command_action)
@@ -340,13 +357,25 @@ string TextMessages::get_area_entrance_message_given_terrain_type(const TileType
   return entrance_message;
 }
 
-string TextMessages::get_item_drop_message(const bool blind, ItemPtr item)
+string TextMessages::get_item_drop_message(CreaturePtr creature, const bool blind, ItemPtr item)
 {
-  ItemDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
-
+  bool player = creature && creature->get_is_player();
+  ItemDescriberPtr id = ItemDescriberFactory::create_item_describer(player && blind, item);
   string item_message = StringTable::get(TextMessages::ITEM_DROP_MESSAGE);
-  boost::replace_first(item_message, "%s", id->describe_usage());
-  
+
+  if (player)
+  {
+    boost::replace_first(item_message, "%s", id->describe_usage());
+  }
+  else
+  {
+    item_message = StringTable::get(TextMessages::ITEM_DROP_MESSAGE_MONSTER);
+
+    boost::replace_first(item_message, "%s1", StringTable::get(creature->get_description_sid()));
+    boost::replace_first(item_message, "%s2", id->describe_usage());
+    item_message[0] = toupper(item_message[0]);
+  }
+
   return item_message;
 }
 
@@ -362,7 +391,7 @@ string TextMessages::get_item_pick_up_message(const bool player_blind, CreatureP
   else
   {
     item_message = StringTable::get(TextMessages::ITEM_PICK_UP_MESSAGE_MONSTER);
-    CreatureDescriber cd(creature, creature);
+    CreatureDescriber cd(creature, creature, true);
     boost::replace_first(item_message, "%s1", cd.describe());
   }
 
@@ -382,7 +411,7 @@ string TextMessages::get_item_pick_up_and_merge_message(const bool player_blind,
   }
   else
   {
-    CreatureDescriber cd(creature, creature);
+    CreatureDescriber cd(creature, creature, true);
     item_message = StringTable::get(TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE_MONSTER);
     boost::replace_first(item_message, "%s1", cd.describe());
   }
@@ -583,7 +612,7 @@ string TextMessages::get_bool_sid(const bool val)
   }
 }
 
-string TextMessages::get_character_creation_synopsis(const CreatureSex cs, Race* race, Class* cur_class, Deity* cur_deity)
+string TextMessages::get_character_creation_synopsis(const CreatureSex cs, Race* race, Class* cur_class, Deity* cur_deity, StartingLocation* sl)
 {
   vector<string> details;
 
@@ -606,6 +635,11 @@ string TextMessages::get_character_creation_synopsis(const CreatureSex cs, Race*
   if (cur_deity != nullptr)
   {
     details.push_back("(" + StringTable::get(cur_deity->get_name_sid()) + ")");
+  }
+
+  if (sl != nullptr)
+  {
+    details.push_back("- " + StringTable::get(sl->get_short_description_sid()));
   }
 
   ostringstream ss;
@@ -649,5 +683,78 @@ string TextMessages::get_damage_message(const Damage& damage)
 
   boost::replace_first(msg, "%s", damage.str());
 
+  return msg;
+}
+
+string TextMessages::get_equip_message(const string& creature_desc_sid, const string& item_desc)
+{
+  string msg = StringTable::get(TextMessages::NPC_EQUIP_MESSAGE);
+
+  boost::replace_first(msg, "%s1", StringTable::get(creature_desc_sid));
+  boost::replace_first(msg, "%s2", item_desc);
+
+  msg[0] = toupper(msg[0]);
+
+  return msg;
+}
+
+string TextMessages::get_hirelings_hired_message(const int hired)
+{
+  string msg = StringTable::get(TextMessages::HIRELINGS_HIRED_MESSAGE);
+
+  boost::replace_first(msg, "%s", to_string(hired));
+
+  return msg;
+}
+
+string TextMessages::get_modifier_message(const string& status_or_spell_id, const Modifier& m, CreaturePtr c)
+{
+  ostringstream ss;
+  string msg;
+
+  if (c != nullptr)
+  {
+    if (!status_or_spell_id.empty())
+    {
+      msg = StringTable::get(AFFECTED_BY);
+      string item_id = m.get_item_id();
+
+      if (StatusIdentifiers::is_status_identifier(status_or_spell_id))
+      {
+        boost::replace_first(msg, "%s", StringTable::get(StatusAilmentTextKeys::get_status_for_identifier(status_or_spell_id)));
+      }
+      else
+      {
+        const SpellMap& spells = Game::instance().get_spells_ref();
+        auto s_it = spells.find(status_or_spell_id);
+
+        if (s_it != spells.end())
+        {
+          boost::replace_first(msg, "%s", StringTable::get(s_it->second.get_spell_name_sid()));
+        }
+      }
+
+      ss << msg;
+
+      if (!item_id.empty())
+      {
+        ItemPtr i = c->get_equipment().get_item_from_id(item_id);
+
+        if (i != nullptr)
+        {
+          ItemIdentifier iid;
+          ss << "(" << boost::trim_copy(iid.get_appropriate_description(i)) << ")";
+        }
+      }
+    }
+  }
+
+  return ss.str();
+}
+
+string TextMessages::get_ending_message(const string& ending_time)
+{
+  string msg = StringTable::get(ENDING_MESSAGE);
+  boost::replace_first(msg, "%s", ending_time);
   return msg;
 }

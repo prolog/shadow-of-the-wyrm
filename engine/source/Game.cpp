@@ -536,7 +536,8 @@ void Game::go()
     manager.add_new_message(welcome_message);
     manager.send();
 
-    CreatureCalculator::update_calculated_values(current_player);
+    CreatureCalculator cc;
+    cc.update_calculated_values(current_player);
     string map_id = "";
 
     // Main game loop.
@@ -893,7 +894,8 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
       }
       
       // Update the current creature 
-      CreatureCalculator::update_calculated_values(current_creature);
+      CreatureCalculator cc;
+      cc.update_calculated_values(current_creature);
       
       // Also update its number of turns, as long as we should keep playing
       // (player hasn't saved, been killed, and so on)

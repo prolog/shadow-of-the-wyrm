@@ -24,6 +24,7 @@ docs/src/*.aux
 docs/src/*.log
 docs/src/*.toc
 Release
+Release - Curses Only
 MapTester
 SaveConverter
 savage.exe

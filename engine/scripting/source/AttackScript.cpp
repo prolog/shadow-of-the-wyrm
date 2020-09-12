@@ -16,7 +16,7 @@ const string AttackScript::ATTACK_FUNCTION_NAME = "attack";
 
 // Execute an attack script.
 // Return true if the script executed successfully, false otherwise.
-bool AttackScript::execute(ScriptEngine& se, const string& attack_script, CreaturePtr attacking_creature, const string& attacked_creature_id)
+bool AttackScript::execute(ScriptEngine& se, const string& attack_script, CreaturePtr attacking_creature, const string& attacked_creature_id, const bool creatures_adjacent)
 {
   if (attack_script.empty())
   {
@@ -43,9 +43,10 @@ bool AttackScript::execute(ScriptEngine& se, const string& attack_script, Creatu
     lua_pushstring(L, attacking_creature_base_id.c_str());
     lua_pushstring(L, attacking_creature_id.c_str());
     lua_pushstring(L, attacked_creature_id.c_str());
+    lua_pushboolean(L, creatures_adjacent);
 
     // Do the function call.  The attack function returns nothing.
-    if (lua_pcall(L, 3, 0, 0) != 0)
+    if (lua_pcall(L, 4, 0, 0) != 0)
     {
       string l_err = lua_tostring(L, -1);
       string error_msg = "AttackScript::execute - error running Lua function `" + ATTACK_FUNCTION_NAME + "': " + l_err;

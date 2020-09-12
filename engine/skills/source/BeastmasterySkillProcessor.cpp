@@ -1,5 +1,4 @@
 #include "ActionTextKeys.hpp"
-#include "BeastmasteryCalculator.hpp"
 #include "BeastmasterySkillProcessor.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
@@ -9,6 +8,7 @@
 #include "Game.hpp"
 #include "HostilityManager.hpp"
 #include "MessageManagerFactory.hpp"
+#include "PacificationCalculator.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
 #include "TameScript.hpp"
@@ -66,7 +66,7 @@ void BeastmasterySkillProcessor::tame_creatures(CreaturePtr taming_creature, con
   {
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, taming_creature, taming_creature->get_is_player());
     SkillType bm_sk = SkillType::SKILL_GENERAL_BEASTMASTERY;
-    BeastmasteryCalculator bc;
+    PacificationCalculator pc;
     Game& game = Game::instance();
     MapPtr map = game.get_current_map();
 
@@ -85,7 +85,7 @@ void BeastmasterySkillProcessor::tame_creatures(CreaturePtr taming_creature, con
 
         // Is the creature tamed?
         // Mark Beastmastery if successful.
-        if (RNG::percent_chance(bc.calculate_pct_chance_tame(taming_creature, to_tame)))
+        if (RNG::percent_chance(pc.calculate_pct_chance_tame_beastmastery(taming_creature, to_tame)))
         {
           handle_tame(taming_creature, to_tame, map, manager);
         }
@@ -115,14 +115,15 @@ void BeastmasterySkillProcessor::handle_tame(CreaturePtr taming_creature, Creatu
     
     to_tame->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_NO_EXP, to_string(true));
     to_tame->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_TAMED, to_string(true));
+    to_tame->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID, taming_creature->get_id());
 
     taming_creature->get_skills().mark(SkillType::SKILL_GENERAL_BEASTMASTERY);
     manager.add_new_message(ActionTextKeys::get_tamed_message(taming_creature->get_description_sid(), to_tame->get_description_sid(), taming_creature->get_is_player()));
 
     ExperienceManager em;
-    BeastmasteryCalculator bc;
+    PacificationCalculator pc;
     
-    double proportion = bc.calculate_exp_proportion(taming_creature);
+    double proportion = pc.calculate_exp_proportion(taming_creature, SkillType::SKILL_GENERAL_BEASTMASTERY);
     uint tamed_xp = static_cast<uint>(to_tame->get_experience_value() * proportion);
     tamed_xp = std::max<uint>(tamed_xp, 1);
 
@@ -175,7 +176,7 @@ void BeastmasterySkillProcessor::run_tame_event(CreaturePtr taming_creature, Cre
     TameScript ts;
     ts.execute(se, event_script_name, tamed_creature, taming_creature, map);
 
-    // Ensure each creature's death script is only run once.
+    // Ensure each creature's tame script is only run once.
     tamed_creature->remove_event_script(tame_script_id);
   }
 }

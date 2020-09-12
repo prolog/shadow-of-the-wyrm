@@ -361,6 +361,16 @@ bool Modifier::get_permanent() const
   return permanent;
 }
 
+void Modifier::set_item_id(const string& new_item_id)
+{
+  item_id = new_item_id;
+}
+
+string Modifier::get_item_id() const
+{
+  return item_id;
+}
+
 bool Modifier::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, strength_modifier);
@@ -387,6 +397,7 @@ bool Modifier::serialize(ostream& stream) const
   resistances.serialize(stream);
   Serialize::write_bool(stream, mark_delete);
   Serialize::write_bool(stream, permanent);
+  Serialize::write_string(stream, item_id);
 
   return true;
 }
@@ -424,6 +435,7 @@ bool Modifier::deserialize(istream& stream)
   resistances.deserialize(stream);
   Serialize::read_bool(stream, mark_delete);
   Serialize::read_bool(stream, permanent);
+  Serialize::read_string(stream, item_id);
 
   return true;
 }

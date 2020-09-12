@@ -13,7 +13,7 @@ class QuaffAction : public IActionManager
     ActionCostValue quaff(CreaturePtr creature, ActionManager * const am);
 
     void explode_potion(CreaturePtr original_attacker, CreaturePtr creature_by_exploding_potion, PotionPtr potion);
-    void quaff_potion(CreaturePtr creature, PotionPtr potion, CreaturePtr caster, const std::string& message);
+    void quaff_potion(CreaturePtr creature, PotionPtr potion, CreaturePtr caster, IInventoryPtr inventory, const std::string& message);
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 

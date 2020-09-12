@@ -11,11 +11,11 @@ D - Drink                     r - Read scroll/book    $ - Count currency %b
 e - Eat                       C - Chat                a - Apply feature %b
 N - Inscribe                  q - Quests              z - Cast spell %b
 B - Bestiary                  v - Evoke wand          K - Kick %b
-O - Sacrifice                 / - Skin corpse         P - Show piety %b
-c - Codex                     X - Experience          S - Save and quit %b
-Q - Quit                      M - Message buffer      W - Melee info %b
-R - Ranged info               V - Version             T - Game date/time %b
-! - Autopickup                @ - Character info      # - Character dump %b
-F1 - Resistances              F2 - Conducts           F3 - Skills %b
-F9 - Switch palette (SDL)     F10 - Switch mode (SDL) F11 - Script console %b
-F12 - Reload strings
+O - Sacrifice                 o - Order followers     / - Skin corpse %b
+P - Show piety                c - Codex               X - Experience %b
+S - Save and quit             Q - Quit (no save)      M - Message buffer %b
+W - Melee info                R - Ranged info         V - Version %b
+T - Game date/time            ! - Autopickup          @ - Character info %b
+# - Character dump            F1 - Resistances        F2 - Conducts %b
+F3 - Skills                   F9 - Palette (SDL)      F10 - Mode (SDL) %b
+F11 - Script console          F12 - Reload strings

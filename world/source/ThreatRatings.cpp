@@ -21,6 +21,11 @@ bool ThreatRatings::operator==(const ThreatRatings& threat) const
   return result;
 }
 
+void ThreatRatings::clear()
+{
+  threat_ratings.clear();
+}
+
 // Check to see if a particular creature ID exists at any threat level.
 // If the threat exists, return true and the threat level.
 // Else, return false/-1.
@@ -45,7 +50,7 @@ pair<bool, int> ThreatRatings::has_threat(const string& creature_id) const
   return threat_exists;
 }
 
-// Add or updeate a threat at a given threat rating.
+// Add or update a threat at a given threat rating.
 void ThreatRatings::add_or_update_threat(const string& creature_id, const int threat_rating)
 {
   auto details = has_threat(creature_id);

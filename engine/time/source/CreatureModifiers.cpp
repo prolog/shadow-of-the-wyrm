@@ -1,5 +1,4 @@
 #include "ActionTextKeys.hpp"
-#include "CreatureCalculator.hpp"
 #include "CreatureModifiers.hpp"
 #include "CreatureUtils.hpp"
 #include "Game.hpp"

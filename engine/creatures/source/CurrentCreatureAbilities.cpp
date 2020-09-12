@@ -1,3 +1,4 @@
+#include "ActionTextKeys.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "CarryingCapacityCalculator.hpp"
 #include "MessageManagerFactory.hpp"
@@ -123,3 +124,7 @@ void CurrentCreatureAbilities::add_ability_message_for_sid(CreaturePtr creature,
   manager.add_new_message(StringTable::get(status_ability_message_sid));
   manager.send();
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/CurrentCreatureAbilities_test.cpp"
+#endif

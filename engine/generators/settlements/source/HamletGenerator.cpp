@@ -44,6 +44,7 @@ MapPtr HamletGenerator::generate()
 
   generate_circular_hamlet(map);
   generate_wells(map);
+  generate_special_inhabitants(map);
 
   return map;
 }
@@ -178,7 +179,9 @@ void HamletGenerator::generate_additional_random_buildings(MapPtr map, const int
   
   int cur_addl_buildings = 0;
   int attempts = 0;
-  
+
+  vector<shared_ptr<SectorFeature>> sfeatures = get_sector_features();
+
   while ((cur_addl_buildings != additional_buildings) && (attempts < 100))
   {
     int height = RNG::range(BUILDING_HEIGHT_MIN, BUILDING_HEIGHT_MAX);
@@ -191,23 +194,35 @@ void HamletGenerator::generate_additional_random_buildings(MapPtr map, const int
 
     if (!SettlementGeneratorUtils::does_building_overlap(map, row, row_end, col, col_end))
     {
-      GeneratorUtils::generate_building(map, row, col, height, width);
-      CardinalDirection cd = static_cast<CardinalDirection>(RNG::range(static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_NORTH), static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_WEST)));
-      
-      // If the building is beyond the road, use an east/west boundary.
-      // Otherwise, it's above or below the road, so use north/south.
-      if (col > road_col && col > road_end_col) cd = CardinalDirection::CARDINAL_DIRECTION_WEST;
-      else if (col < road_col && col < road_end_col) cd = CardinalDirection::CARDINAL_DIRECTION_EAST;
-      else if (row + height < road_row) cd = CardinalDirection::CARDINAL_DIRECTION_SOUTH;
-      else cd = CardinalDirection::CARDINAL_DIRECTION_NORTH;
-      
-      Coordinate door_coords = SettlementGeneratorUtils::get_door_location(row, row+height-1, col, col+width-1, cd);
-      GeneratorUtils::generate_door(map, door_coords.first, door_coords.second);
-      buildings.push_back({{row, col}, {row_end, col_end}, door_coords});
+      if (!sfeatures.empty() && RNG::percent_chance(pct_chance_sector_feature))
+      {
+        pair<bool, int> result = SettlementGeneratorUtils::generate_sector_feature_if_possible(map, { row, col }, { row_end, col_end }, sfeatures);
 
-      potentially_generate_vegetable_garden(map, row, row+height, col, col+width, 30);
-      
-      cur_addl_buildings++;
+        if (result.first)
+        {
+          sfeatures.erase(sfeatures.begin() + result.second);
+        }
+      }
+      else
+      {
+        GeneratorUtils::generate_building(map, row, col, height, width);
+        CardinalDirection cd = static_cast<CardinalDirection>(RNG::range(static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_NORTH), static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_WEST)));
+
+        // If the building is beyond the road, use an east/west boundary.
+        // Otherwise, it's above or below the road, so use north/south.
+        if (col > road_col && col > road_end_col) cd = CardinalDirection::CARDINAL_DIRECTION_WEST;
+        else if (col < road_col && col < road_end_col) cd = CardinalDirection::CARDINAL_DIRECTION_EAST;
+        else if (row + height < road_row) cd = CardinalDirection::CARDINAL_DIRECTION_SOUTH;
+        else cd = CardinalDirection::CARDINAL_DIRECTION_NORTH;
+
+        Coordinate door_coords = SettlementGeneratorUtils::get_door_location(row, row + height - 1, col, col + width - 1, cd);
+        GeneratorUtils::generate_door(map, door_coords.first, door_coords.second);
+        buildings.push_back({ {row, col}, {row_end, col_end}, door_coords });
+
+        potentially_generate_vegetable_garden(map, row, row + height, col, col + width, 30);
+
+        cur_addl_buildings++;
+      }
     }
     
     attempts++;

@@ -46,6 +46,8 @@ class Date
     Date(const uint sec, const uint min, const uint hrs, const uint day_week, const uint day_month, const uint day_year, const uint month, const uint year);
     static Date null();
 
+    bool get_days_equal(const Date& d) const;
+
     uint get_seconds() const;
     uint get_minutes() const;
     uint get_hours() const;

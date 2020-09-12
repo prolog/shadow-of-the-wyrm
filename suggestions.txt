@@ -1,18 +1,18 @@
 Me:
-- Narrative mode (no death, death removes negative statuses + heals)
-- Each version: make sure to update itch.io page for both SotW and the sprite
-  pack! OpenGameArt if new sprites.
-- Release after this: grond says tanning is complicated & dragon skins aren't
-  what they should be.
-- Leadership/music: give orders.
-- Leadership: get followers who can follow you up/down floors
-- Have followers change floor and tracked on eg world map
-- Use Magic to destroy spellbooks and get a bit of AP?
-- Dungeons should check for shop before generating trap.
-- Beer halls in villages
-- spell arcana (bind to capitals in spell list)
-- auto save - not working?
-- Do creatures pause when no threats in FOV? Seems slow.
+- First urchin stone has no message!
+- Need to work out details around: add mute, wear voiceless, walk around.
+  Added mute should wear off. Voiceless mute should not and muteness should
+  remain.
+- Feature: fence, east_west_fence. Add some fenced areas to set locations.
+- Fenced areas (veg gardens?) in villages
+- Wyrm level stupid slow?
+- Fleeing behaviour for humanoids (Echo38)
+- Need to get hirelings text-searchable in bestiary
+- Creatures try to cast utility spells when they don't make sense (uncursing,
+  etc). Should be checks to see if effect makes sense.
+- Test all the set locations for hirelings
+- Next release: need to do an asset release
+- Sector features for regular settlements
 - Things to make villages more interesting:
   - Archery ranges (contests, using ranges should train ranged, etc)
   - Graves
@@ -24,8 +24,20 @@ Me:
   - stream
   - tavern
   - orchard
+- Each version: make sure to update itch.io page for both SotW and the sprite
+  pack! OpenGameArt if new sprites.
+- Release after this: grond says tanning is complicated & dragon skins aren't
+  what they should be.
+- Mode screen (F10): Game mode, graphics, palette
+- Use Magic to destroy spellbooks and get a bit of AP?
+- Dungeons should check for shop before generating trap.
+- Beer halls in villages
+- spell arcana (bind to capitals in spell list)
+- auto save - not working?
+- Do creatures pause when no threats in FOV? Seems slow.
 - google screen clear not working for SDL. reported 2x.
 - 2x draw?
+- Beastmastery: add mounts
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?
 - EACH VERSION: clean up the usage of some shared_ptrs.  These should be
@@ -54,6 +66,11 @@ Me:
 - The guarded, empty areas in Carcassia C2 should lead to some kind of
   dungeon/special area.
 - Summonings
+- After making negative amulets with statuses (e.g., poisoned amulet),
+  make status identifier map calculated by going through the modifiers.
+  Otherwise, it's stupid trying to figure out if a creature is still
+  poisoned: e.g., a creature is poisoned, and then puts on a poisoned
+  amulet.  Should still be poisoned when either of the two wear off.
 - Email Nathan before next release re: Mac build check
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
@@ -70,14 +87,6 @@ Me:
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
 - The vaults of the old dwarven-kings
-- Creatures should have a chance to follow up/down stairs with special
-  case for returning to overworld.  Chance should be based on hostility
-  and an Escape roll.  Update Guidebook.
-- Before making negative amulets with statuses (e.g., poisoned amulet),
-  make status identifier map calculated by going through the modifiers.
-  Otherwise, it's stupid trying to figure out if a creature is still
-  poisoned: e.g., a creature is poisoned, and then puts on a poisoned
-  amulet.  Should still be poisoned when either of the two wear off.
 - Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
   and caverns are 2.
 - Allow shopkeepers to be any of the selectable races.
@@ -235,6 +244,7 @@ Grond:
 - Differentiate scribing and wandcraft - why use scribing?
 - Scything on ammo?
 - could magic skill affect spell duration
+- monster as a mount
 
 Yan Zhang:
 - Dungeon symbol should generate that thing on the last level
@@ -255,7 +265,18 @@ YARD:
 - creatures of a certain deity (frostlings and shiver, black servants and
   sceadugenga) shouldn't attack you if you worship that deity
 - spell details on shift+letter
+- corpse weight
+- codex on examine for single item
+- wilderness, low level creatures, etc
 
 IceBox: 
 - can the confirm setting be allowed to change on load?
 
+Larzid
+- display type a command line arg
+- SDL as a build param
+
+Echo38
+- Rebindable paging keys
+- Add info on the weapon synopsis to the manual
+- max fire res on fire spirits, etc

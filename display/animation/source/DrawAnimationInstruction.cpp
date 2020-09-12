@@ -5,3 +5,7 @@ DrawAnimationInstruction::DrawAnimationInstruction(const Coordinate& new_coords,
 {
 }
 
+Coordinate DrawAnimationInstruction::get_coords() const
+{
+  return coords;
+}

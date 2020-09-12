@@ -9,11 +9,12 @@ class EvokeAction : public IActionManager
 {
   public:
     ActionCostValue evoke(CreaturePtr creature, ActionManager * const am);
+    ActionCostValue evoke(CreaturePtr creature, const std::string& wand_id, const Direction d);
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 
   protected:
-    ActionCostValue evoke_wand(CreaturePtr creature, ActionManager * const am, WandPtr wand);
+    ActionCostValue evoke_wand(CreaturePtr creature, WandPtr wand, const Direction d);
     void add_evocation_message(CreaturePtr creature, WandPtr wand, const ItemIdentifier& item_id);
     Spell create_wand_spell(CreaturePtr creature, WandPtr wand, const Direction dir) const;
     void reduce_wand_charges_if_necessary(CreaturePtr creature, WandPtr wand) const;

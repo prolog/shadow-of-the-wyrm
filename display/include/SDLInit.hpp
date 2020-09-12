@@ -1,4 +1,5 @@
 #pragma once
+#ifdef ENABLE_SDL
 
 #include "sdl.hpp"
 
@@ -9,3 +10,5 @@ class SDLInit
     void set_up();
     void tear_down();
 };
+
+#endif

@@ -217,6 +217,8 @@ class ActionTextKeys
     static const std::string ACTION_PAPERCRAFT_PULP_TOO_LIGHT;
     static const std::string ACTION_TAME_BEGIN;
     static const std::string ACTION_TAME_NO_TARGETS;
+    static const std::string ACTION_ORDER_NO_FOLLOWERS;
+    static const std::string ACTION_ABANDONED;
 
   protected:
     ActionTextKeys();

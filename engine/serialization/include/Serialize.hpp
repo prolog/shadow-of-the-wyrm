@@ -29,9 +29,6 @@ class Serialize
     static void write_uint(std::ostream& stream, const unsigned int val);
     static void read_uint(std::istream& stream, unsigned int& val);
 
-    static void write_uint8(std::ostream& stream, const Uint8 val);
-    static void read_uint8(std::istream& stream, Uint8& val);
-
     static void write_int(std::ostream& stream, const signed int val);
     static void read_int(std::istream& stream, signed int& val);
 
@@ -50,7 +47,7 @@ class Serialize
     static void write_double(std::ostream& stream, const double val);
     static void read_double(std::istream& stream, double& val);
 
-    static void write_string(std::ostream& stream, const std::string& val);
+    static void write_string(std::ostream& stream, const std::string& val, const bool binary_string = false);
     static void read_string(std::istream& stream, std::string& val);
     static void consume_string(std::istream& stream);
 
@@ -69,8 +66,13 @@ class Serialize
     static void write_event_scripts(std::ostream& stream, const EventScriptsMap& event_scripts);
     static void read_event_scripts(std::istream& stream, EventScriptsMap& event_scripts);
 
+#ifdef ENABLE_SDL
+    static void write_uint8(std::ostream& stream, const Uint8 val);
+    static void read_uint8(std::istream& stream, Uint8& val);
+
     static void write_sdl_colour(std::ostream& stream, const SDL_Color& color);
     static void read_sdl_colour(std::istream& stream, SDL_Color& color);
+#endif
 
     template<class T>
     static void write_enum(std::ostream& stream, T& enum_type)
@@ -101,5 +103,7 @@ class Serialize
         throw stream_error;
       }
     };
+
+    static const std::string BINARY_PROPERTY_PREFIX;
 };
 

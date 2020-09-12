@@ -1,4 +1,5 @@
 require('level')
+require('constants')
 
 local function pugilist_stat_gain_fn(creature_id, level)
   if level % 5 == 0 then
@@ -48,7 +49,9 @@ local function pugilist_stat_gain_fn(creature_id, level)
       add_unarmed_slay(creature_id, new_race_slay)
 
       -- Add a message about slaying this race.
-      add_message("DAMAGE_NEW_SLAY", {get_race_name(new_race_slay)})
+      if is_player(creature_id) then
+        add_message("DAMAGE_NEW_SLAY", {get_race_name(new_race_slay)})
+      end
     end
   end
 end

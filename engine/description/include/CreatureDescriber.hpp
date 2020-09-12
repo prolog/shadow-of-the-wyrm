@@ -14,6 +14,7 @@ class CreatureDescriber : public IDescriber
 
   protected:
     std::string describe_statuses() const;
+    std::string describe_race_and_class() const;
 
     CreaturePtr viewing_creature;
     CreaturePtr creature;

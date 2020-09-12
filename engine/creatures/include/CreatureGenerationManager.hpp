@@ -16,6 +16,7 @@ class CreatureGenerationManager
 
     std::string select_creature_id_for_generation(ActionManager& am, CreatureGenerationList& creature_generation_list);
     std::shared_ptr<Creature> generate_creature(ActionManager& am, CreatureGenerationList& creature_generation_list, MapPtr map);
+    std::shared_ptr<Creature> generate_hireling(ActionManager& am, const int level);
     
     static const int ANCIENT_BEASTS_MIN_DANGER_LEVEL;
 

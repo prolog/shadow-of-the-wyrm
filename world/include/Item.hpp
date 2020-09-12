@@ -184,7 +184,17 @@ class Item : public ISerializable
     void set_unpaid(const bool new_unpaid);
     bool get_unpaid() const;
 
+    // Used for NPC AI decisions
+    virtual bool get_is_good() const;
+    virtual int get_score() const;
+
     virtual Item* create_with_new_id();
+    virtual Item* clone_with_new_id();
+
+    // These functions create copies of the item without changing the ID.
+    // This may be what you want. But it can lead to weirdness as you
+    // interact with items on the ground and your inventory (because the
+    // IDs are the same!).
     virtual Item* create();
     virtual Item* clone() = 0;
 

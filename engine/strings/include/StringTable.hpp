@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include <string>
 #include <boost/algorithm/string.hpp>
 #include <unordered_map>
@@ -9,7 +10,7 @@ class StringTable
 {
   public:
     static void load(const std::string& filename);
-    static std::string get(const std::string& key);
+    static std::string get(const std::string& key, const std::map<std::string, std::string>& char_replacements = {});
     static std::string get_default(const std::string& key, const std::string& default_val);
 
   protected:

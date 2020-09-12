@@ -324,3 +324,27 @@ TEST(SW_World_Skills, increment_skills)
   EXPECT_EQ(50, s1.get_value(SkillType::SKILL_GENERAL_BOATING));
   EXPECT_EQ(10, s1.get_value(SkillType::SKILL_GENERAL_CARRYING));
 }
+
+TEST(SW_World_Skills, get_trained_magic_skills)
+{
+  Skills skills;
+
+  EXPECT_TRUE(skills.get_trained_magic_skills().empty());
+
+  vector<SkillType> to_train = {SkillType::SKILL_MAGIC_CANTRIPS, SkillType::SKILL_MAGIC_DIVINE};
+  for (SkillType st : to_train)
+  {
+    skills.set_value(st, 5);
+  }
+
+  vector<SkillType> trained = skills.get_trained_magic_skills();
+
+  EXPECT_EQ(2, trained.size());
+  EXPECT_TRUE(trained == to_train);
+
+  to_train = {SkillType::SKILL_MAGIC_CANTRIPS, SkillType::SKILL_MAGIC_ARCANE, SkillType::SKILL_MAGIC_DIVINE, SkillType::SKILL_MAGIC_MYSTIC, SkillType::SKILL_MAGIC_PRIMORDIAL};
+  skills.set_all_to(10);
+  trained = skills.get_trained_magic_skills();
+
+  EXPECT_TRUE(trained == to_train);
+}

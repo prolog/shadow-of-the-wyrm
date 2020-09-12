@@ -35,6 +35,7 @@ ActionCostValue QuaffAction::quaff(CreaturePtr creature, ActionManager * const a
     
     list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_type_filter(ItemType::ITEM_TYPE_POTION);
     TilePtr tile = MapUtils::get_tile_for_creature(current_map, creature);
+    IInventoryPtr inventory = creature->get_inventory();
 
     action_cost_value = quaff_potion_off_ground(creature, display_filter_list);
 
@@ -54,7 +55,7 @@ ActionCostValue QuaffAction::quaff(CreaturePtr creature, ActionManager * const a
           // Get "You/monster quaffs a foo-ey potion" message
           string quaff_message = ActionTextKeys::get_quaff_message(creature->get_description_sid(), item_id.get_appropriate_usage_description(potion), creature->get_is_player());
 
-          quaff_potion(creature, potion, creature, quaff_message);
+          quaff_potion(creature, potion, creature, inventory, quaff_message);
           action_cost_value = get_action_cost_value(creature);
         }
       }
@@ -94,9 +95,9 @@ ActionCostValue QuaffAction::quaff_potion_off_ground(CreaturePtr creature, const
         if (ppotion != nullptr)
         {
           string quaff_message = ActionTextKeys::get_quaff_message(creature->get_description_sid(), iid.get_appropriate_usage_description(potion), creature->get_is_player());
-          quaff_potion(creature, ppotion, creature, quaff_message);
+          quaff_potion(creature, ppotion, creature, items, quaff_message);
           action_cost_value = get_action_cost_value(creature);
-          break;
+          break;  
         }
       }
     }
@@ -109,15 +110,22 @@ void QuaffAction::explode_potion(CreaturePtr original_attacker, CreaturePtr crea
 {
   if (creature_by_exploding_potion && potion)
   {
+    IInventoryPtr inv;
+
+    if (original_attacker != nullptr)
+    {
+      inv = original_attacker->get_inventory();
+    }
+
     string message = StringTable::get(ActionTextKeys::ACTION_POTION_EXPLODES);
-    quaff_potion(creature_by_exploding_potion, potion, original_attacker, message);
+    quaff_potion(creature_by_exploding_potion, potion, original_attacker, inv, message);
   }
 }
 
 // A valid potion's been selected.  Quaff it: get the potion's nutrition, and then do the magical effect.
-void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreaturePtr caster, const string& message)
+void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreaturePtr caster, IInventoryPtr inventory, const string& message)
 {
-  if (creature && potion)
+  if (creature != nullptr && potion != nullptr && inventory != nullptr)
   {
     string caster_id = caster != nullptr ? caster->get_id() : "";
 
@@ -139,7 +147,7 @@ void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreatureP
       
       // Reduce the quantity, removing it from the inventory if necessary
       potion->set_quantity(potion->get_quantity() - 1);
-      if (potion->get_quantity() == 0) creature->get_inventory()->remove(potion->get_id());
+      if (potion->get_quantity() == 0) inventory->remove(potion->get_id());
       
       // Process the effect using a temporary spell.  This will do any necessary 
       // updates to the creature, and will also add a status message based on

@@ -242,6 +242,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 , const string& creature_name
 , const CreatureSex creature_sex
 , const string& deity_id
+, const bool is_player
 )
 {
   CreaturePtr creaturep = std::make_shared<Creature>();
@@ -250,6 +251,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   // special circumstances.
   ControllerPtr null_controller = std::make_shared<NullKeyboardController>();
   creaturep->set_is_player(false, null_controller);
+  creaturep->set_is_player_flag(is_player);
 
   creaturep->set_name(creature_name);
   creaturep->set_race_id(race_id);

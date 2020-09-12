@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 #include <memory>
+#include <vector>
 #include "ISerializable.hpp"
 #include "Marks.hpp"
 #include "SkillTypes.hpp"
@@ -949,6 +950,8 @@ class Skills : public ISerializable
     // For each skill in skills_to_increment, update the values in the current
     // object by the appropriate amount.
     void increment_skills(Skills& skills_to_increment);
+
+    std::vector<SkillType> get_trained_magic_skills() const;
 
     void set_value(const SkillType skill_name, const unsigned int new_value);
     void mark(const SkillType skill_name, const bool override_default = false /* whether to mark regardless of whether the skill indicates it can be trained from unlearned */);

@@ -10,6 +10,30 @@ A Brief Guide to Basic Modding for Shadow of the Wyrm
   where the details of those types can be found in the engine's C++
   code.
 
+- Adding sprites is a bit more effort, but not particularly hard.  You'll
+  need Gimp.  Open up the appropriate file (creature_sprites.xcf,
+  item_sprites.xcf, etc) in Gimp.
+
+  - Go to Image -> Configure Grid
+  
+  - Click the chain link under "Spacing" so that it's broken
+
+  - Ensure spacing is 16 for horizontal, 24 for vertical
+
+  - Click OK
+
+  - Now go to View -> Show Grid. You should set the grid neatly placed around
+    the existing sprites.
+
+  - Finally, add your new sprites.  Ensure the FG colour is white.  You'll
+    likely need to magnify 6x so that each of the "checks" in the transparent
+    background corresponds to a pixel.
+
+  - Use the tools (pencil, etc) to make a new sprite.
+
+  - Finally, when you're done, save the project, then do a File -> Export and 
+    export to assets/sprites.
+
 - Resource strings are defined in shadowofthewyrm_blank.ini, and also
   in each language-specific resource strings file.  So if you were
   wanting to edit a resource string, edit shadowofthewyrm_en.ini.  To

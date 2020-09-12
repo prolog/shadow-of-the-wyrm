@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "ResistanceFactory.hpp"
+
 TEST(SW_World_Resistances, add)
 {
   Resistances r1;
@@ -59,6 +60,22 @@ TEST(SW_World_Resistances, gain_and_lose_messages)
     EXPECT_EQ(gain_msg, indirect_gain_msg);
     EXPECT_EQ(lose_msg, indirect_lose_msg);
   }
+}
+
+TEST(SW_World_Resistances, get_total)
+{
+  Resistances r;
+
+  EXPECT_DOUBLE_EQ(0.0, r.get_total());
+
+  r.set_resistance_value(DamageType::DAMAGE_TYPE_HEAT, 0.36);
+  r.set_resistance_value(DamageType::DAMAGE_TYPE_LIGHTNING, 0.6);
+
+  EXPECT_DOUBLE_EQ(0.96, r.get_total());
+
+  r.set_resistance_value(DamageType::DAMAGE_TYPE_SHADOW, 0.5);
+
+  EXPECT_DOUBLE_EQ(1.46, r.get_total());
 }
 
 TEST(SW_World_Resistances, serialization_id)

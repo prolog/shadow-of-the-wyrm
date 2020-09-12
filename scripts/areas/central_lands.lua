@@ -30,3 +30,5 @@ table.insert(carcassia_island, carcassia)
 for k,v in pairs(carcassia_island) do
   v:insert()
 end
+
+generate_hireling("carcassia_a1", 10, 78, RNG_range(8, 10))

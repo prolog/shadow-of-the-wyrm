@@ -18,6 +18,7 @@ class ScreenTitleTextKeys
     static const std::string SCREEN_TITLE_STRATEGY_BASICS;
     static const std::string SCREEN_TITLE_CASINO_GAMES;
     static const std::string SCREEN_TITLE_CREATE_ITEM;
+    static const std::string SCREEN_TITLE_GIVE_ORDERS;
 
   protected:
     ScreenTitleTextKeys();

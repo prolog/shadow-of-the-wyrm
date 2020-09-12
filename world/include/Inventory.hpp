@@ -31,7 +31,8 @@ class Inventory : public IInventory
     ItemPtr at(const uint index) override;
     ItemPtr get_from_id(const std::string& id) override;
     ItemPtr get_from_base_id(const std::string& base_id) override;
-    
+    std::vector<ItemPtr> get_from_type(const ItemType item_type);
+
     bool empty() const override;
     
     uint size() const override;

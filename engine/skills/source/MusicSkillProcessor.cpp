@@ -4,6 +4,7 @@
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
@@ -14,6 +15,7 @@
 #include "RaceManager.hpp"
 #include "RNG.hpp"
 #include "StatusEffectFactory.hpp"
+#include "TameScript.hpp"
 
 using namespace std;
 
@@ -180,8 +182,6 @@ void MusicSkillProcessor::attempt_pacification(ItemPtr instr, CreaturePtr creatu
 
     if (!pacified)
     {
-      fov_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_PACIFIED, to_string(true));
-
       RaceManager rm;
       Race* race = rm.get_race(fov_creature->get_race_id());
 
@@ -244,7 +244,10 @@ void MusicSkillProcessor::pacify(CreaturePtr creature, CreaturePtr fov_creature,
 
     HostilityManager hm;
     hm.remove_hostility_to_creature(fov_creature, creature_id);
-    hm.set_hostility_to_creature(fov_creature, creature_id, ThreatConstants::DISLIKE_THREAT_RATING);
+
+    fov_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_PACIFIED, to_string(true));
+    fov_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_NO_EXP, to_string(true));
+    fov_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID, creature->get_id());
 
     // Add a message about the pacification.
     bool creature_is_player = creature->get_is_player();
@@ -262,6 +265,16 @@ void MusicSkillProcessor::pacify(CreaturePtr creature, CreaturePtr fov_creature,
     }
     
     manager.send();
+
+    ExperienceManager em;
+    PacificationCalculator pc;
+
+    double proportion = pc.calculate_exp_proportion(creature, SkillType::SKILL_GENERAL_MUSIC);
+    uint tamed_xp = static_cast<uint>(fov_creature->get_experience_value() * proportion);
+    tamed_xp = std::max<uint>(tamed_xp, 1);
+
+    em.gain_experience(creature, tamed_xp);
+    run_pacification_event(creature, fov_creature);
   }
 }
 
@@ -285,13 +298,16 @@ void MusicSkillProcessor::enrage(CreaturePtr creature, CreaturePtr fov_creature)
 {
   if (creature != nullptr && fov_creature != nullptr)
   {
-    // Set the enraged status.  No need to add a separate message - that'll
-    // get done in the status application.
-    StatusEffectPtr rage = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_RAGE, creature->get_id());
-
-    if (rage != nullptr && fov_creature != nullptr)
+    vector<string> status_ids = {StatusIdentifiers::STATUS_ID_HASTE, StatusIdentifiers::STATUS_ID_RAGE};
+    
+    for (auto status_id : status_ids)
     {
-      rage->apply_change(fov_creature, fov_creature->get_level().get_current());
+      StatusEffectPtr status = StatusEffectFactory::create_status_effect(status_id, creature->get_id());
+
+      if (status != nullptr && fov_creature != nullptr)
+      {
+        status->apply_change(fov_creature, fov_creature->get_level().get_current());
+      }
     }
   }
 }
@@ -325,3 +341,29 @@ bool MusicSkillProcessor::get_charms_creature(ItemPtr item, CreaturePtr fov_crea
   
   return charms;
 }
+
+void MusicSkillProcessor::run_pacification_event(CreaturePtr creature, CreaturePtr fov_creature)
+{
+  MapPtr map = Game::instance().get_current_map();
+
+  if (map != nullptr)
+  {
+    // Pacification and Taming are not quite the same thing, but use the same
+    // script event.
+    string tame_script_id = CreatureEventScripts::CREATURE_EVENT_SCRIPT_TAME;
+    ScriptDetails sd = fov_creature->get_event_script(tame_script_id);
+    string event_script_name = sd.get_script();
+    int chance = sd.get_chance();
+
+    if (!event_script_name.empty() && RNG::percent_chance(chance))
+    {
+      ScriptEngine& se = Game::instance().get_script_engine_ref();
+      TameScript ts;
+      ts.execute(se, event_script_name, fov_creature, creature, map);
+
+      // Ensure each creature's tame script is only run once.
+      fov_creature->remove_event_script(tame_script_id);
+    }
+  }
+}
+

@@ -166,6 +166,62 @@
 				<Evade>12</Evade>
 				<Soak>0</Soak>
 			</Amulet>
+			<Amulet id="narcotic_amulet">
+				<DescriptionSID>NARCOTIC_AMULET_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_NARCOTIC_AMULET_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>NARCOTIC_AMULET_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_NARCOTIC_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>NARCOTIC_AMULET_CODEX_SID</CodexDescriptionSID>
+				<Value>500</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>4</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<AutoCurse>1</AutoCurse>
+				<Material>13</Material>
+				<Symbol>
+					<Char>#</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>0</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>5</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>2</Soak>
+				<SpeedBonus>-25</SpeedBonus>
+			</Amulet>
+			<Amulet id="voiceless_amulet">
+				<DescriptionSID>VOICELESS_AMULET_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_VOICELESS_AMULET_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>VOICELESS_AMULET_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_VOICELESS_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>VOICELESS_AMULET_CODEX_SID</CodexDescriptionSID>
+				<Value>67</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>4</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<AutoCurse>1</AutoCurse>
+				<Material>13</Material>
+				<Symbol>
+					<Char>#</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>0</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>6</DangerLevel>
+				<Evade>5</Evade>
+				<Soak>1</Soak>
+				<StatusAilments>
+					<Status>_mute</Status>
+				</StatusAilments>
+			</Amulet>
 			<Amulet id="holy_amulet">
 				<DescriptionSID>HOLY_AMULET_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_HOLY_AMULET_SID</UnidentifiedDescriptionSID>
@@ -3216,6 +3272,43 @@
 					<Type>1</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="whisper_thin_dagger">
+				<DescriptionSID>WHISPER_THIN_DAGGER_SID</DescriptionSID>
+				<UsageDescriptionSID>WHISPER_THIN_DAGGER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WHISPER_THIN_DAGGER_CODEX_SID</CodexDescriptionSID>
+				<Value>8</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>1</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>3</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
+				<Difficulty>40</Difficulty>
+				<Speed>1</Speed>
+				<Damage piercing="1">
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>4</Modifier>
+					<Type>1</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="athame">
 				<DescriptionSID>ATHAME_SID</DescriptionSID>
 				<UsageDescriptionSID>ATHAME_USAGE_SID</UsageDescriptionSID>
@@ -3468,7 +3561,7 @@
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
-					<Heat>0.15</Heat>
+					<Heat>0.25</Heat>
 				</Resistances>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
@@ -3953,7 +4046,7 @@
 				<Damage>
 					<NumDice>2</NumDice>
 					<NumSides>10</NumSides>
-					<Modifier>15</Modifier>
+					<Modifier>10</Modifier>
 					<Type>2</Type>
 					<Slays>
 						<Slay>07_goblin</Slay>

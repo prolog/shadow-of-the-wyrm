@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Generator.hpp"
 #include "ForestCalculator.hpp"
 
@@ -15,9 +14,6 @@ class ForestGenerator : public SOTW::Generator
   protected:
     virtual TilePtr generate_tile(MapPtr current_map, int row, int col);
     virtual void add_random_bushes_and_weeds(MapPtr map);
-    virtual void add_random_stream_or_springs(MapPtr map);
-    virtual void add_random_stream(MapPtr map);
-    virtual void add_random_springs(MapPtr map);
     virtual TilePtr generate_tree_based_on_world_location(const int world_map_height, const Coordinate& world_location, const int pct_chance_evergreen);
 
     const int PCT_CHANCE_FOREST_STREAM;

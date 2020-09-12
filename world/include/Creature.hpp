@@ -56,6 +56,10 @@ class Creature : public ISerializable
     void set_original_id(const std::string& new_original_id);
     std::string get_original_id() const;
 
+    // Used only in creature setup. set_is_player sets a bunch of other stuff
+    // the game needs, but this function sets the flag only.
+    void set_is_player_flag(const bool player);
+
     void set_is_player(const bool player, ControllerPtr decision_strategy_controller);
     bool get_is_player() const;
     bool is(std::shared_ptr<Creature> creature) const;
@@ -68,10 +72,10 @@ class Creature : public ISerializable
     // Used for display information and messages, particularly when no name
     // is present.
     void set_short_description_sid(const std::string& new_short_description_sid);
-    std::string get_short_description_sid() const;
+    std::string get_short_description_sid(const bool get_short_desc_only = false) const;
     
     void set_description_sid(const std::string& new_description_sid);
-    std::string get_description_sid() const;
+    std::string get_description_sid(const bool get_desc_only = false) const;
 
     void set_text_details_sid(const std::string& new_text_details_sid);
     std::string get_text_details_sid() const;
@@ -279,7 +283,7 @@ class Creature : public ISerializable
 
     // Set/check if the creature poisoned, etc
     void set_status(const std::string& status_id, const Status& status);
-    void remove_status(const std::string& status_id);
+    bool remove_status(const std::string& status_id);
     bool has_status(const std::string& status_id) const;
     bool has_status() const;
     Status get_status(const std::string& status_id) const;
@@ -347,8 +351,13 @@ class Creature : public ISerializable
     void set_max_depth_reached(const Depth& new_depth);
     Depth get_max_depth_reached() const;
 
+    void set_hirelings_hired(const int new_hirelings_hired);
+    int get_hirelings_hired() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
+
+    static const int MAX_TRANSFERRABLE_FOLLOWERS;
 
   private:
     void assert_size() const;
@@ -357,6 +366,8 @@ class Creature : public ISerializable
     ClassIdentifier internal_class_identifier() const override;
 
   protected:
+
+    std::set<std::string> get_active_modifier_status_ids() const;
 
     std::string id;
     std::string original_id;
@@ -503,6 +514,8 @@ class Creature : public ISerializable
     // Maximum depth reached - tracked in the character dump for those who want
     // to dive through the infinite dungeon/sewer.
     Depth max_depth_reached;
+
+    static const int MAX_FREE_HIDDEN_ACTIONS;
 };
 
 using CreaturePtr = std::shared_ptr<Creature>;

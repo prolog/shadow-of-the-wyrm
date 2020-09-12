@@ -22,6 +22,8 @@ enum struct HungerLevel
 class StatusIdentifiers
 {
   public:
+    static bool is_status_identifier(const std::string& str);
+
     static const std::string STATUS_ID_POISON;
     static const std::string STATUS_ID_MUTE;
     static const std::string STATUS_ID_PARALYSIS;

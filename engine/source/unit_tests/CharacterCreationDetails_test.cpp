@@ -14,7 +14,7 @@ TEST(SW_Engine_CharacterCreationDetails, default_constructor)
 
 TEST(SW_Engine_CharacterCreationDetails, populating_constructor)
 {
-  StartingLocation sl("abc", make_pair(3,4), "desc");
+  StartingLocation sl("abc", make_pair(3,4), "short_desc", "desc");
   CharacterCreationDetails ccd(CreatureSex::CREATURE_SEX_FEMALE, "elf", "mason", "the_one_god", sl);
 
   EXPECT_EQ(CreatureSex::CREATURE_SEX_FEMALE, ccd.get_sex());

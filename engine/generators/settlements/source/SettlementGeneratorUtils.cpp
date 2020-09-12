@@ -74,7 +74,7 @@ bool SettlementGeneratorUtils::does_tile_overlap(MapPtr map, const int row, cons
     TilePtr tile = map->at(row, col);
     TileType type = tile->get_tile_type();
 
-    if (type == TileType::TILE_TYPE_ROAD || type == TileType::TILE_TYPE_ROCK || type == TileType::TILE_TYPE_DUNGEON)
+    if (type == TileType::TILE_TYPE_ROAD || type == TileType::TILE_TYPE_ROCK || type == TileType::TILE_TYPE_DUNGEON || type == TileType::TILE_TYPE_RIVER || type == TileType::TILE_TYPE_SPRINGS || type == TileType::TILE_TYPE_DOWN_STAIRCASE || type == TileType::TILE_TYPE_UP_STAIRCASE)
     {
       tile_overlaps = true;
     }
@@ -320,4 +320,22 @@ void SettlementGeneratorUtils::generate_building_objects(MapPtr map, const Build
       }
     }
   }
+}
+
+pair<bool, int> SettlementGeneratorUtils::generate_sector_feature_if_possible(MapPtr map, const Coordinate& start, const Coordinate& end, const vector<shared_ptr<SectorFeature>>& sfeatures)
+{
+  pair<bool, int> placed = { false, -1 };
+
+  if (!sfeatures.empty())
+  {
+    int idx = RNG::range(0, sfeatures.size() - 1);
+    shared_ptr<SectorFeature> sf = sfeatures.at(idx);
+
+    if (sf != nullptr)
+    {
+      placed.first = sf->generate(map, start, end);
+      placed.second = idx;
+    }
+  }
+  return placed;
 }

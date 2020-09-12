@@ -1,15 +1,21 @@
 #include <utility>
 #include "BaseSettlementGenerator.hpp"
 #include "BuildingConfigFactory.hpp"
+#include "CreatureGenerationManager.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
+#include "GraveyardSectorFeature.hpp"
+#include "ParkSectorFeature.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "TileGenerator.hpp"
+#include "FruitVegetableGardenGenerator.hpp"
 
 using namespace std;
 
 BaseSettlementGenerator::BaseSettlementGenerator(MapPtr new_base_map)
 : Generator(new_base_map->get_map_exit_id(), TileType::TILE_TYPE_VILLAGE),
-base_map(new_base_map), growth_rate(100)
+base_map(new_base_map), growth_rate(100), pct_chance_sector_feature(20)
 , PROBABILITY_DECREMENT(30)
 , WORKSHOP_PROBABILITY(20)
 , BUILDING_PROBABILITY(80)
@@ -19,12 +25,15 @@ base_map(new_base_map), growth_rate(100)
 , EW_DIVISOR(3)
 , WELLS_MIN(0)
 , WELLS_MAX(3)
+, HIRELING_PROBABILITY(70)
+, HIRELING_MIN_LEVEL(10)
+, HIRELING_MAX_LEVEL(40)
 {
 }
 
 BaseSettlementGenerator::BaseSettlementGenerator(MapPtr new_base_map, const int new_growth_rate)
 : Generator(new_base_map->get_map_exit_id(), TileType::TILE_TYPE_VILLAGE),
-base_map(new_base_map), growth_rate(new_growth_rate)
+base_map(new_base_map), growth_rate(new_growth_rate), pct_chance_sector_feature(20)
 , PROBABILITY_DECREMENT(30)
 , WORKSHOP_PROBABILITY(20)
 , BUILDING_PROBABILITY(80)
@@ -34,6 +43,9 @@ base_map(new_base_map), growth_rate(new_growth_rate)
 , EW_DIVISOR(3)
 , WELLS_MIN(0)
 , WELLS_MAX(3)
+, HIRELING_PROBABILITY(70)
+, HIRELING_MIN_LEVEL(10)
+, HIRELING_MAX_LEVEL(40)
 {
 }
 
@@ -439,4 +451,53 @@ void BaseSettlementGenerator::generate_wells(MapPtr map)
       }
     }
   }
+}
+
+void BaseSettlementGenerator::generate_special_inhabitants(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    if (RNG::percent_chance(HIRELING_PROBABILITY))
+    {
+        Game& game = Game::instance();
+      ActionManager& am = game.get_action_manager_ref();
+
+      CreatureGenerationManager cgm;
+      CreaturePtr hireling = cgm.generate_hireling(am, RNG::range(HIRELING_MIN_LEVEL, HIRELING_MAX_LEVEL));
+      Dimensions dim = map->size();
+
+      for (int i = 1; i < 20; i++)
+      {
+        int y = RNG::range(0, dim.get_y() - 1);
+        int x = RNG::range(0, dim.get_x() - 1);
+
+        TilePtr tile = map->at(y, x);
+
+        if (tile != nullptr && tile->get_is_available_for_creature(hireling))
+        {
+          GameUtils::add_new_creature_to_map(game, hireling, map, { y,x });
+          break;
+        }
+      }
+    }
+  }
+}
+
+vector<shared_ptr<SectorFeature>> BaseSettlementGenerator::get_sector_features()
+{
+  vector<shared_ptr<SectorFeature>> sfs;
+
+  shared_ptr<SectorFeature> sf = std::make_shared<ParkSectorFeature>(0, 0, 100); // no statues or trader - but a pond!
+  sfs.push_back(sf);
+
+  sf = std::make_shared<GraveyardSectorFeature>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<FruitVegetableGardenGenerator>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<OrchardGenerator>();
+  sfs.push_back(sf);
+
+  return sfs;
 }

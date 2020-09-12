@@ -468,6 +468,17 @@ Item* Item::create()
   return clone();
 }
 
+Item* Item::clone_with_new_id()
+{
+  Item* item = clone();
+
+  boost::uuids::uuid new_id = boost::uuids::random_generator()();
+  std::string id_s = Uuid::to_string(new_id);
+  item->set_id(id_s);
+
+  return item;
+}
+
 void Item::set_item_identified(const bool new_item_identified)
 {
   item_identified = new_item_identified;
@@ -576,7 +587,7 @@ bool Item::brand()
   {
     DamageType brand = do_brand();
 
-    set_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED, Bool::to_string(true));
+    set_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED, std::to_string(true));
     set_additional_property(ItemProperties::ITEM_PROPERTIES_BRAND, to_string(static_cast<int>(brand)));
     remaining_enchants.set_current(remaining_enchants.get_current() - 1);
 
@@ -851,6 +862,16 @@ void Item::set_unpaid(const bool new_unpaid)
 bool Item::get_unpaid() const
 {
   return unpaid;
+}
+
+bool Item::get_is_good() const
+{
+  return (status != ItemStatus::ITEM_STATUS_CURSED) && get_auto_curse() == false;
+}
+
+int Item::get_score() const
+{
+  return 0;
 }
 
 bool Item::serialize(ostream& stream) const

@@ -21,6 +21,8 @@ class Calendar : public ISerializable
     double get_seconds() const;
     double get_seconds_from_date(const Date& date) const;
     Date get_date() const;
+    Date get_date(const double sec_since_start) const;
+
     ISeason* get_season() const;
     uint get_starting_year() const;
     

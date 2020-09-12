@@ -1230,7 +1230,7 @@ or nod to what they were before they unleashed hell.
 %p
 The evening turned with purpose.  As they walked %b
 from beauty into night, the skylark above %b
-held back its song in flight, and as its fought %b
+held back its song in flight, and as it fought %b
 its very voice, the air had just begun %b
 to cool.  Tremble of thunder.  Darkening %b
 clouds, and the low dust began to come alive, %b
@@ -2018,8 +2018,8 @@ evening curls into woodsmoke, and alone, %b
 the mind turns in against itself.  It skates %b
 around what's seen and mines the consciousness: %b
 for primal fears that come on darkest night; %b
-for faces glimpsed just briefly, that then press %b
-like tongues against the back which then recite %b
+for faces glimpsed just briefly, ones that press %b
+like tongues against the back and then recite %b
 a name that licks and flickers on like candlelight.
 %p
 An ugly whine escaped the creature's mouth, %b
@@ -3243,7 +3243,7 @@ the ground and caused her doubts to disappear, %b
 her skin left cut and bloody, but her mind now strangely clear.
 %p
 In the centre of the pillars, Floridel %b
-could see a simple pedestel,  alone %b
+could see a simple pedestal,  alone %b
 within the sea of shale.  She knew very well %b
 what called to her was on it, and was shown %b
 the truth at her approach: an opened book, %b
@@ -3474,3 +3474,75 @@ extended to tomorrow, so their journey'd %b
 continue.  Something queer was underway; %b
 they hoped to steer the details as the process played.
 %p
+At first, there was a sense of six apart, %b
+how little they spoke; but as the day went on, %b
+the silence sputtered, finally cut short %b
+when Rhone came back and held a jack-knifed fawn %b
+for their mid-day meal.  As Aes produced wild garlic %b
+from the pockets in his cloak, they skinned the game %b
+then pricked the meat.  Each inch, a clove.  They stuffed it %b
+till the meat was fragrant and the whole thing came %b
+to roast atop a pile of stones and open flames. %b
+%p
+The grasslands offered little wood, but rocks %b
+in abundance, so their fire was carefully fed %b
+by handfuls in through gaps within the ring %b
+of stones.  They threw in leaves, then made a bed %b
+of woody shrubs that burnt just long enough %b
+to fetch some more, until the embers kept %b
+the heat sufficient for the meat above. %b
+The giants turned it often, and they checked %b
+the meat until the heat had crisped and crackled it.
+%p
+They ate in silence until Aese finally spoke. %b
+Slight and short, he had a quiet voice %b
+that carried through the campfire like the smoke %b
+the embers lacked.  "You had an easy choice," %b
+he said, and set his piece of meat aside. %b
+"If it were me, I wouldn't hesitate %b
+to cut your throats." He stared into Rhone's eyes - %b
+he recognized the boy - and held his gaze %b
+until the youngest brother couldn't concentrate.
+%p
+"But here we are.  Two castaways, and more %b
+of us out on the roadways, making space %b
+from what we used to be.  How did you four %b
+see through us, anyway?  We used to place %b
+our arms like branches and you'd see our skin %b
+grow bark-like.  So why spare us?  Why not let %b
+us bleed and gasp for air?  We had our sins. %b
+We thought that we would die today.  And yet %b
+you share your fire and haven't made a single threat."
+%p
+Between the brothers, a look was passed around %b
+through the fire-light, deciding which of them would speak. %b
+Carne stared across the circle; as he found %b
+the paupers' looks, an ember hissed and spat. %b
+It was Phole who finally spoke: "We see new things, %b
+the four of us.  We see things as they are, %b
+so when you stretch like trees and let the wind %b
+play through your arms, the glamour comes apart, %b
+a trickery that dies before it even starts."
+%p
+"You need us for the entrances."  Aese stared %b
+down Carne, who hadn't broke his gaze, then turned %b
+to Phole.  "That part is real.  The unprepared %b
+could search a hundred years and miss the berm %b
+or hill that marks the starting point.  And if %b
+you found the opening, the traps would rain %b
+down pitch or blackwater, spikes and spears to split %b
+your skulls inside the darkness.  You wouldn't gain %b
+ten feet before the floors would drink your blood and brains."
+%p
+A silence; a caesura.  He went on: %b
+"To see the unling dragged out of the hall, %b
+to show her that she never once belonged %b
+among our folk..."  Aese trailed off, then stalled %b
+in thought before continuing.  "The nobles %b
+who stood with her and Tel will wish us dead; %b
+their sons, too.  And our former servants, immobile %b
+for the lives we made for them - they will not dread %b
+the chance to stand and finally hold the blade instead."
+%p
+
+

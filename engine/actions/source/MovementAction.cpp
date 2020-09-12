@@ -163,7 +163,7 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
         if (creature->get_decision_strategy()->get_confirmation())
         {
           MapUtils::set_up_transitive_exits_as_necessary(map, map_exit);
-          handle_properties_and_move_to_new_map(creature, creatures_old_tile, map, map_exit, proposed_new_coord);
+          handle_properties_and_move(creature, creatures_old_tile, map, map_exit, proposed_new_coord);
           movement_acv = get_action_cost_value(creature);
         }
 
@@ -710,7 +710,7 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
     // handled during map generation, and will be removed after creating
     // items and creatures.
     add_initial_map_messages(creature, new_map, tile_type);
-    handle_properties_and_move_to_new_map(tile, map, new_map, map_exit);
+    handle_properties_and_move_to_new_map(creature, tile, map, new_map, map_exit);
     action_cost_value = get_action_cost_value(creature);
   }
  
@@ -785,7 +785,7 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Map
   return true;  
 }
 
-ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map, MapExitPtr map_exit)
+ActionCostValue MovementAction::handle_properties_and_move_to_new_map(CreaturePtr creature, TilePtr current_tile, MapPtr old_map, MapPtr new_map, MapExitPtr map_exit)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
@@ -814,8 +814,7 @@ ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr cu
 
     if (old_map != nullptr)
     {
-      CreaturePtr player = Game::instance().get_current_player();
-      old_tile = MapUtils::get_tile_for_creature(old_map, player);
+      old_tile = MapUtils::get_tile_for_creature(old_map, creature);
     }
 
     wwu.update_weather_for_map(old_map, old_tile, new_map);
@@ -840,7 +839,7 @@ void MovementAction::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPt
   }
 }
 
-void MovementAction::handle_properties_and_move_to_new_map(CreaturePtr creature, TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit, const Coordinate& proposed_new_coord)
+void MovementAction::handle_properties_and_move(CreaturePtr creature, TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit, const Coordinate& proposed_new_coord)
 {
   Game& game = Game::instance();
   
@@ -856,7 +855,7 @@ void MovementAction::handle_properties_and_move_to_new_map(CreaturePtr creature,
         new_map->add_or_update_location(creature->get_id(), proposed_new_coord);
       }
       
-      handle_properties_and_move_to_new_map(old_tile, old_map, new_map, map_exit);
+      handle_properties_and_move_to_new_map(creature, old_tile, old_map, new_map, map_exit);
     }
     else
     {

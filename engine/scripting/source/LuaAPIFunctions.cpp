@@ -11,6 +11,7 @@
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "DecisionStrategyProperties.hpp"
+#include "EngineConversion.hpp"
 #include "EffectFactory.hpp"
 #include "ExperienceManager.hpp"
 #include "FeatureGenerator.hpp"
@@ -34,6 +35,7 @@
 #include "MessageManagerFactory.hpp"
 #include "Naming.hpp"
 #include "OptionScreen.hpp"
+#include "OrderAction.hpp"
 #include "PickupAction.hpp"
 #include "PrimordialCalculator.hpp"
 #include "RaceManager.hpp"
@@ -247,6 +249,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_creature_level", get_creature_level);
   lua_register(L, "is_player", is_player);
   lua_register(L, "incr_str", incr_str);
+  lua_register(L, "incr_str_to_unburdened", incr_str_to_unburdened);
   lua_register(L, "incr_dex", incr_dex);
   lua_register(L, "incr_agi", incr_agi);
   lua_register(L, "incr_hea", incr_hea);
@@ -399,7 +402,16 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_weather", set_weather);
   lua_register(L, "genocide", genocide);
   lua_register(L, "generate_ancient_beast", generate_ancient_beast);
+  lua_register(L, "generate_hireling", generate_hireling);
   lua_register(L, "set_colour", set_colour);
+  lua_register(L, "add_npc_level_message", add_npc_level_message);
+  lua_register(L, "get_leader_id", get_leader_id);
+  lua_register(L, "get_name", get_name);
+  lua_register(L, "set_hirelings_hired", set_hirelings_hired);
+  lua_register(L, "get_hirelings_hired", get_hirelings_hired);
+  lua_register(L, "get_trained_magic_skills", get_trained_magic_skills);
+  lua_register(L, "order_follow", order_follow);
+  lua_register(L, "order_at_ease", order_at_ease);
 }
 
 // Lua API helper functions
@@ -1014,11 +1026,17 @@ int add_object_to_creature(lua_State* ls)
     string map_id = lua_tostring(ls, 1);
     string creature_id = lua_tostring(ls, 2);
     string object_id = lua_tostring(ls, 3);
+    uint quantity = 1;
     string prop;
     
     if (num_args >= 4 && lua_isstring(ls, 4))
     {
       prop = lua_tostring(ls, 4);
+    }
+
+    if (num_args >= 5 && lua_isnumber(ls, 5))
+    {
+      quantity = static_cast<uint>(lua_tointeger(ls, 5));
     }
 
     MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
@@ -1029,7 +1047,7 @@ int add_object_to_creature(lua_State* ls)
 
       if (creature != nullptr)
       {
-        ItemPtr item = ItemManager::create_item(object_id);
+        ItemPtr item = ItemManager::create_item(object_id, quantity);
 
         if (item != nullptr)
         {
@@ -2142,24 +2160,7 @@ int remove_negative_statuses_from_creature(lua_State* ls)
   {
     string creature_id = lua_tostring(ls, 1);
     CreaturePtr creature = get_creature(creature_id);
-
-    if (creature != nullptr)
-    {
-      CreatureStatusMap csm = creature->get_statuses();
-
-      for (const auto& csm_pair : csm)
-      {
-        string status_id = csm_pair.first;
-        StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
-
-        if (se && se->is_negative())
-        {
-          CreatureUtils::mark_modifiers_for_deletion(creature, status_id, StatusRemovalType::STATUS_REMOVAL_UNDO);
-        }
-      }
-
-      CreatureUtils::remove_modifiers(creature);
-    }
+    CreatureUtils::remove_negative_statuses_from_creature(creature);
   }
   else
   {
@@ -3055,6 +3056,34 @@ int incr_str(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Incorrect arguments to incr_str");
+  }
+
+  return 0;
+}
+
+int incr_str_to_unburdened(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isboolean(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    bool add_msg = lua_toboolean(ls, 2) != 0;
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      BurdenLevel bl = BurdenLevelConverter::to_burden_level(creature);
+      Statistic& str = creature->get_strength_ref();
+
+      while (bl != BurdenLevel::BURDEN_LEVEL_UNBURDENED && str.get_current() != str.get_max())
+      {
+        CreatureUtils::incr_str(creature, add_msg);
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to incr_str_to_unburdened");
   }
 
   return 0;
@@ -4983,7 +5012,7 @@ int get_creature_description(lua_State* ls)
       }
     }
 
-    CreatureDescriber cd(viewing_creature, creature);
+    CreatureDescriber cd(viewing_creature, creature, true);
     creature_desc = cd.describe();
   }
   else
@@ -5196,21 +5225,25 @@ int identify_item_type(lua_State* ls)
   if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
   {
     string creature_id = lua_tostring(ls, 1);
-    ItemType item_type = static_cast<ItemType>(lua_tointeger(ls, 2));
+    int iitype = lua_tointeger(ls, 2);
+    ItemType item_type = static_cast<ItemType>(iitype);
     CreaturePtr creature = get_creature(creature_id);
 
     Game& game = Game::instance();
     const map<string, ItemPtr>& items = game.get_items_ref();
 
-    for (const pair<string, ItemPtr>& item_pair : items)
+    if (creature && creature->get_is_player())
     {
-      ItemIdentifier iid;
-      ItemPtr item = item_pair.second;
-
-      if ((item->get_type() == item_type) && (!iid.get_item_identified(item, true)))
+      for (const pair<string, ItemPtr>& item_pair : items)
       {
-        iid.set_item_identified(creature, item, item->get_base_id(), true);
-        num_identified++;
+        ItemIdentifier iid;
+        ItemPtr item = item_pair.second;
+
+        if (iitype == -1 || ((item->get_type() == item_type) && (!iid.get_item_identified(item, true))))
+        {
+          iid.set_item_identified(creature, item, item->get_base_id(), true);
+          num_identified++;
+        }
       }
     }
   }
@@ -7475,6 +7508,7 @@ int get_object_ids_by_type(lua_State* ls)
   return 1;
 }
 
+
 int create_menu(lua_State* ls)
 {
   string selected_id;
@@ -7547,7 +7581,7 @@ int set_sentinel(lua_State* ls)
       if (tile != nullptr && tile->has_creature())
       {
         CreaturePtr creature = tile->get_creature();
-        creature->get_decision_strategy()->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, Bool::to_string(val));
+        creature->get_decision_strategy()->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, std::to_string(val));
         set_sent_val = true;
       }
     }
@@ -8064,6 +8098,35 @@ int generate_ancient_beast(lua_State* ls)
   return 1;
 }
 
+int generate_hireling(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  if (num_args == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    Game& game = Game::instance();
+    string map_id = lua_tostring(ls, 1);
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
+    int y = lua_tointeger(ls, 2);
+    int x = lua_tointeger(ls, 3);
+    int lvl = lua_tointeger(ls, 4);
+
+    if (map != nullptr)
+    {
+      CreatureGenerationManager cgm;
+      CreaturePtr hireling = cgm.generate_hireling(game.get_action_manager_ref(), lvl);
+
+      GameUtils::add_new_creature_to_map(game, hireling, map, { y,x });
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to generate_hireling");
+  }
+
+  return 0;
+}
+
 int set_colour(lua_State* ls)
 {
   if (lua_gettop(ls) == 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
@@ -8084,6 +8147,190 @@ int set_colour(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Invalid arguments to set_colour");
+  }
+
+  return 0;
+}
+
+int add_npc_level_message(lua_State* ls)
+{
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr && !creature->get_is_player())
+    {
+      Game& game = Game::instance();
+      MapPtr current_map = game.get_current_map();
+      string msg = TextMessages::get_npc_level_message(StringTable::get(creature->get_description_sid()));
+
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(game, creature_id));
+      manager.add_new_message(msg);
+      manager.send();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to add_npc_level_message");
+  }
+
+  return 0;
+}
+
+int get_leader_id(lua_State* ls)
+{
+  string leader_id;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      leader_id = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_leader_id");
+  }
+
+  lua_pushstring(ls, leader_id.c_str());
+  return 1;
+}
+
+int get_name(lua_State* ls)
+{
+  string name;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      name = creature->get_name();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_name");
+  }
+
+  lua_pushstring(ls, name.c_str());
+  return 1;
+}
+
+int set_hirelings_hired(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    { 
+      int hired = lua_tointeger(ls, 2);
+      creature->set_hirelings_hired(hired);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_hirelings_hired");
+  }
+
+  return 0;
+}
+
+int get_hirelings_hired(lua_State* ls)
+{
+  int hired = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      hired = creature->get_hirelings_hired();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_hirelings_hired");
+  }
+
+  lua_pushnumber(ls, hired);
+  return 1;
+}
+
+int get_trained_magic_skills(lua_State* ls)
+{
+  vector<int> mskills;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      auto cr_skills = creature->get_skills().get_trained_magic_skills();
+
+      for (auto cr_skill : cr_skills)
+      {
+        mskills.push_back(static_cast<int>(cr_skill));
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_trained_magic_skills");
+  }
+
+  LuaUtils::create_return_table_from_int_vector(ls, mskills);
+  return 1;
+}
+
+int order_follow(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string cr_id = lua_tostring(ls, 1);
+    string cr_to_foll_id = lua_tostring(ls, 2);
+
+    CreaturePtr creature = get_creature(cr_id);
+
+    if (creature != nullptr)
+    {
+      OrderAction oa;
+      oa.set_order(creature, DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID, cr_to_foll_id);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to order_follow");
+  }
+
+  return 0;
+}
+
+int order_at_ease(lua_State* ls)
+{
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string cr_id = lua_tostring(ls, 1);
+
+    CreaturePtr creature = get_creature(cr_id);
+
+    if (creature != nullptr)
+    {
+      OrderAction oa;
+      oa.set_order(creature, DecisionStrategyProperties::DECISION_STRATEGY_AT_EASE, std::to_string(true));
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to order_follow");
   }
 
   return 0;

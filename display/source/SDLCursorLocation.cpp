@@ -1,3 +1,4 @@
+#ifdef ENABLE_SDL
 #include "SDLCursorLocation.hpp"
 
 using namespace std;
@@ -98,4 +99,6 @@ pair<int, int> SDLCursorLocation::get_yx() const
 
 #ifdef UNIT_TESTS
 #include "unit_tests/SDLCursorLocation_test.cpp"
+#endif
+
 #endif

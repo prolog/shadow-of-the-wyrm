@@ -10,6 +10,9 @@
 
 using namespace std;
 
+const int Creature::MAX_FREE_HIDDEN_ACTIONS = 2;
+const int Creature::MAX_TRANSFERRABLE_FOLLOWERS = 8; // on stairs. exiting a map at the edges the max is 5.
+
 // Set a reasonable set of default values for simple types, which are helpfully initialized to bullshit memory.
 // Why did I write this in C++?
 Creature::Creature()
@@ -239,6 +242,11 @@ string Creature::get_original_id() const
   return original_id;
 }
 
+void Creature::set_is_player_flag(const bool player)
+{
+  is_player = player;
+}
+
 void Creature::set_is_player(const bool player, ControllerPtr controller)
 {
   is_player = player;
@@ -298,9 +306,16 @@ void Creature::set_short_description_sid(const string& new_short_description_sid
   short_description_sid = new_short_description_sid;
 }
 
-string Creature::get_short_description_sid() const
+string Creature::get_short_description_sid(const bool get_short_desc_only) const
 {
-  return short_description_sid;
+  if (get_short_desc_only || name.empty())
+  {
+    return short_description_sid;
+  }
+  else
+  {
+    return name;
+  }
 }
 
 void Creature::set_description_sid(const string& new_description_sid)
@@ -308,9 +323,16 @@ void Creature::set_description_sid(const string& new_description_sid)
   description_sid = new_description_sid;
 }
 
-string Creature::get_description_sid() const
+string Creature::get_description_sid(const bool get_desc_only) const
 {
-  return description_sid;
+  if (get_desc_only || name.empty())
+  {
+    return description_sid;
+  }
+  else
+  {
+    return name;
+  }
 }
 
 void Creature::set_text_details_sid(const string& new_text_details_sid)
@@ -1181,9 +1203,17 @@ void Creature::set_status(const string& status_id, const Status& status)
   statuses[status_id] = status;
 }
 
-void Creature::remove_status(const string& status_id)
+bool Creature::remove_status(const string& status_id)
 {
-  statuses.erase(status_id);
+  set<string> am_status_ids = get_active_modifier_status_ids();
+
+  if (am_status_ids.find(status_id) == am_status_ids.end())
+  {
+    statuses.erase(status_id);
+    return true;
+  }
+
+  return false;
 }
 
 bool Creature::has_status(const string& status_id) const
@@ -1432,6 +1462,12 @@ int Creature::increment_free_hidden_actions()
   int val = 0;
 
   val = get_free_hidden_actions() + 1;
+
+  if (val > MAX_FREE_HIDDEN_ACTIONS)
+  {
+    val = MAX_FREE_HIDDEN_ACTIONS;
+  }
+
   set_free_hidden_actions(val);
 
   return val;
@@ -1609,6 +1645,24 @@ void Creature::set_max_depth_reached(const Depth& new_depth)
 Depth Creature::get_max_depth_reached() const
 {
   return max_depth_reached;
+}
+
+void Creature::set_hirelings_hired(const int new_hirelings_hired)
+{
+  set_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIRELINGS_HIRED, std::to_string(new_hirelings_hired));
+}
+
+int Creature::get_hirelings_hired() const
+{
+  int hirelings_hired = 0;
+  string hired_s = get_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIRELINGS_HIRED);
+
+  if (!hired_s.empty())
+  {
+    hirelings_hired = String::to_int(hired_s);
+  }
+
+  return hirelings_hired;
 }
 
 // Swap values, no throw
@@ -1980,6 +2034,29 @@ bool Creature::deserialize(istream& stream)
 ClassIdentifier Creature::internal_class_identifier() const
 {
   return ClassIdentifier::CLASS_ID_CREATURE;
+}
+
+set<string> Creature::get_active_modifier_status_ids() const
+{
+  set<string> status_ids;
+  auto active_mods = get_active_modifiers();
+
+  for (auto m_details : active_mods)
+  {
+    auto m_list = m_details.second;
+
+    for (auto mods : m_list)
+    {
+      auto statuses = mods.second.get_affected_statuses();
+
+      for (auto s_details : statuses)
+      {
+        status_ids.insert(s_details.first);
+      }
+    }
+  }
+
+  return status_ids;
 }
 
 #ifdef UNIT_TESTS
