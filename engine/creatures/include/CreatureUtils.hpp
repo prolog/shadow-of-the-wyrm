@@ -7,6 +7,7 @@
 #include "Deity.hpp"
 #include "SpellTypes.hpp"
 #include "Wearable.hpp"
+#include "Weapon.hpp"
 
 // Utility functions for creatures that are here (instead of on the
 // Creature class) because they require engine-specific work, such as
@@ -31,6 +32,9 @@ class CreatureUtils
     // Can the creature pick up the item?
     static std::pair<bool, std::string> can_pick_up(CreaturePtr c, ItemPtr i);
 
+    // Can the creature equip the weapon?
+    static bool can_equip_weapon(CreaturePtr creature, WeaponPtr weapon);
+
     // Increment a statistic, adding a message if desired.
     static void incr_str(CreaturePtr c, const bool add_msg);
     static void incr_dex(CreaturePtr c, const bool add_msg);
@@ -53,7 +57,7 @@ class CreatureUtils
     // Remove any marked modifiers
     static void remove_modifiers(CreaturePtr creature);
     static void process_creature_modifiers(CreaturePtr creature, std::vector<std::pair<std::string, Modifier>>& modifiers, const StatusRemovalType sr);
-    static void process_creature_modifier(CreaturePtr creature, std::pair<std::string, Modifier>& modifier, const StatusRemovalType sr);
+    static void process_creature_modifier(CreaturePtr creature, std::pair<std::string, Modifier>& modifier, const StatusRemovalType sr, const std::string& item_id = "");
 
     // Apply/remove status ailments from the wearable to the creature
     static void apply_status_ailments(WearablePtr wearable, CreaturePtr creature);
@@ -67,12 +71,20 @@ class CreatureUtils
     // Returns the number of times str was incremented
     static int adjust_str_until_unburdened(CreaturePtr creature);
 
+    static CreatureMap get_followers_in_fov(CreaturePtr creature);
+    static std::string get_follower_property_prefix();
+
+    static bool remove_negative_statuses_from_creature(CreaturePtr creature);
+
+    static bool has_skill_for_spell(CreaturePtr creature, const std::string& spell_id);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();
 
     static void add_removal_message(CreaturePtr creature, const std::string& spell_id);
 
-    static void initialize_hunger_message_sid_map();
+    static void initialize_hunger_maps();
     static std::map<HungerLevel, std::string> hunger_message_sid_map;
+    static std::map<HungerLevel, Colour> hunger_colour_map;
 };

@@ -105,7 +105,6 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     {    
       Modifier m;
       ModifyStatisticsEffect mse;
-      creature->set_status(StatusIdentifiers::STATUS_ID_FLYING, { StatusIdentifiers::STATUS_ID_FLYING, true, 1, "" });
       m.set_status(StatusIdentifiers::STATUS_ID_FLYING, true);
       mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
     }
@@ -349,19 +348,29 @@ void XMLCreaturesReader::parse_decision_strategy(const XMLNode& decision_strateg
     DecisionStrategyPtr decision_strategy = DecisionStrategyFactory::create_decision_strategy(decision_strategy_id);
 
     bool suppress_magic = XMLUtils::get_child_node_bool_value(decision_strategy_node, "SuppressMagic");
-    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SUPPRESS_MAGIC, Bool::to_string(suppress_magic));
+    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SUPPRESS_MAGIC, std::to_string(suppress_magic));
 
     bool breeds = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Breeds", false);
-    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_BREEDS, Bool::to_string(breeds));
+    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_BREEDS, std::to_string(breeds));
 
     bool sentinel = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Sentinel", false);
-    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, Bool::to_string(sentinel));
+    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, std::to_string(sentinel));
+
+    bool sentry = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Sentry", false);
+
+    if (sentry)
+    {
+      decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_ASSIST_PCT, std::to_string(100));
+    }
+
+    bool pickup = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Pickup", true);
+    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_PICKUP, std::to_string(pickup));
 
     bool shopkeeper = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Shopkeeper", false);
-    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SHOPKEEPER, Bool::to_string(shopkeeper));
+    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SHOPKEEPER, std::to_string(shopkeeper));
 
     bool resist_switch = XMLUtils::get_child_node_bool_value(decision_strategy_node, "ResistSwitch", false);
-    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_RESIST_SWITCH, Bool::to_string(resist_switch));
+    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_RESIST_SWITCH, std::to_string(resist_switch));
 
     creature->set_decision_strategy(std::move(decision_strategy));
   }

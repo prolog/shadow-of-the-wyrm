@@ -217,7 +217,7 @@ pair<bool, vector<ItemPtr>> ItemManager::remove_item_from_eq_or_inv(CreaturePtr 
         int existing_item_new_quantity = i_quantity - rem_quantity;
         int new_item_quantity = rem_quantity;
 
-        ItemPtr new_item = ItemPtr(item->clone());
+        ItemPtr new_item = ItemPtr(item->clone_with_new_id());
         item->set_quantity(existing_item_new_quantity);
         new_item->set_quantity(new_item_quantity);
 
@@ -430,14 +430,22 @@ void ItemManager::handle_item_identification_and_statuses(CreaturePtr creature, 
     if (wearable != nullptr)
     {
       ItemIdentifier iid;
-      iid.set_item_identified(creature, item, item->get_base_id(), true);
+
+      if (creature->get_is_player())
+      {
+        iid.set_item_identified(creature, item, item->get_base_id(), true);
+      }
     }
 
     // If auto-cursing, curse it.
     if (item->get_auto_curse())
     {
       item->set_status(ItemStatus::ITEM_STATUS_CURSED);
-      item->set_status_identified(true);
+
+      if (creature->get_is_player())
+      {
+        item->set_status_identified(true);
+      }
     }
   }
 }

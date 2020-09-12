@@ -2,7 +2,7 @@
 #include "RNG.hpp"
 
 const int WeatherCalculator::STORM_WIND_SPEED_THRESHOLD = 75;
-const int WeatherCalculator::PCT_CHANCE_STORM_DISSIPATION = 25;
+const int WeatherCalculator::PCT_CHANCE_STORM_DISSIPATION = 50;
 const int WeatherCalculator::MAX_WIND_SPEED = 150;
 const int WeatherCalculator::MIN_WIND_SPEED_FOR_SHIMMER = 20;
 

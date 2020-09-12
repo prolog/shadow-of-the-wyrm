@@ -53,6 +53,7 @@ class IInventory : public ISerializable
     virtual ItemPtr at(const uint index) = 0;
     virtual ItemPtr get_from_id(const std::string& id) = 0;
     virtual ItemPtr get_from_base_id(const std::string& base_id) = 0;
+    virtual std::vector<ItemPtr> get_from_type(const ItemType item_type) = 0;
 
     virtual bool empty() const = 0; // returns whether the internal list of items is empty or not.
 

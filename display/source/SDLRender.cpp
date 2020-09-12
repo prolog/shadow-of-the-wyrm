@@ -1,3 +1,4 @@
+#ifdef ENABLE_SDL
 #include "SDLRender.hpp"
 
 using namespace std;
@@ -115,3 +116,5 @@ void SDLRender::fill_area(SDL_Renderer* renderer, SDL_Texture* target_texture, S
     SDL_RenderPresent(renderer);
   }
 }
+
+#endif

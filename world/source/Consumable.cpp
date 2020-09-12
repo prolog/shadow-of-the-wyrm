@@ -113,6 +113,11 @@ void Consumable::do_enchant_item(const int points)
   poisoned = false;
 }
 
+int Consumable::get_score() const
+{
+  return nutrition;
+}
+
 bool Consumable::serialize(ostream& stream) const
 {
   Item::serialize(stream);

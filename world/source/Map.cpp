@@ -238,6 +238,25 @@ void Map::remove_creature(const string& creature_id)
     creatures.erase(c_it);
   }
 
+  // Remove the dead creature from all creatures' threat ratings.
+  for (auto c_pair : creatures)
+  {
+    CreaturePtr c = c_pair.second;
+    if (c != nullptr)
+    {
+      DecisionStrategy* dec = c->get_decision_strategy();
+      if (dec != nullptr)
+      {
+        ThreatRatings& threat_ratings = dec->get_threats_ref();
+        pair<bool, int> threat_exists = threat_ratings.has_threat(creature_id);
+        if (threat_exists.first)
+        {
+          threat_ratings.remove_threat(creature_id, threat_exists.second);
+        }
+      }
+    }
+  }
+
   auto l_it = locations.find(creature_id);
 
   if (l_it != locations.end())

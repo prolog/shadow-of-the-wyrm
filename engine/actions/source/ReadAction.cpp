@@ -40,34 +40,58 @@ ActionCostValue ReadAction::read(CreaturePtr creature, ActionManager * const am)
     if (selected_readable_item)
     {
       ReadablePtr readable = std::dynamic_pointer_cast<Readable>(selected_readable_item);
-
-      if (readable)
-      {
-        string text_sid = readable->get_text_sid();
-        ReadStrategyPtr read_strategy = ReadStrategyFactory::create_read_strategy(readable->get_type(), text_sid);
-
-        if (read_strategy)
-        {
-          Game& game = Game::instance();
-          MapPtr map = game.get_current_map();
-
-          // Cast or learn the spell from the scroll/spellbook/etc.
-          action_cost_value = read_strategy->read(creature, am, readable);
-
-          // Break the illiterate conduct.
-          creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_ILLITERATE);
-
-          // If we're in a shop, anger the shopkeeper.
-          // Shops aren't libraries!
-          if (readable->get_unpaid())
-          {
-            MapUtils::anger_shopkeeper_if_necessary(map->get_location(creature->get_id()), map, creature);
-          }
-
-          creature->get_skills().mark(SkillType::SKILL_GENERAL_LITERACY);
-        }
-      }
+      return read(creature, readable, am);
     }    
+  }
+
+  return action_cost_value;
+}
+
+ActionCostValue ReadAction::read(CreaturePtr creature, const string& item_id)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
+  if (creature != nullptr)
+  {
+    Game& game = Game::instance();
+    ActionManager& am = game.get_action_manager_ref();
+    ItemPtr item = creature->get_inventory()->get_from_id(item_id);
+    ReadablePtr readable = std::dynamic_pointer_cast<Readable>(item);
+    acv = read(creature, readable, &am);
+  }
+
+  return acv;
+}
+
+ActionCostValue ReadAction::read(CreaturePtr creature, ReadablePtr readable, ActionManager * const am)
+{
+  ActionCostValue action_cost_value = ActionCostConstants::DEFAULT;
+
+  if (readable)
+  {
+    string text_sid = readable->get_text_sid();
+    ReadStrategyPtr read_strategy = ReadStrategyFactory::create_read_strategy(readable->get_type(), text_sid);
+
+    if (read_strategy)
+    {
+      Game& game = Game::instance();
+      MapPtr map = game.get_current_map();
+
+      // Cast or learn the spell from the scroll/spellbook/etc.
+      action_cost_value = read_strategy->read(creature, am, readable);
+
+      // Break the illiterate conduct.
+      creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_ILLITERATE);
+
+      // If we're in a shop, anger the shopkeeper.
+      // Shops aren't libraries!
+      if (readable->get_unpaid())
+      {
+        MapUtils::anger_shopkeeper_if_necessary(map->get_location(creature->get_id()), map, creature);
+      }
+
+      creature->get_skills().mark(SkillType::SKILL_GENERAL_LITERACY);
+    }
   }
 
   return action_cost_value;

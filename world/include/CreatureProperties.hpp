@@ -30,6 +30,11 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_FIRST_KILL_ID;
     static const std::string CREATURE_PROPERTIES_NO_EXP;
     static const std::string CREATURE_PROPERTIES_TAMED;
+    static const std::string CREATURE_PROPERTIES_LEADER_ID;
+    static const std::string CREATURE_PROPERTIES_FOLLOWER_PREFIX;
+    static const std::string CREATURE_PROPERTIES_HIRELING_CHAT_SID;
+    static const std::string CREATURE_PROPERTIES_HIRE_FEE;
+    static const std::string CREATURE_PROPERTIES_HIRELINGS_HIRED;
 
   protected:
     CreatureProperties();

@@ -8,6 +8,10 @@ class EquipmentManager : public IActionManager
   public:
     ActionCostValue manage_equipment();
 
+    // Assumption is that this function is only called for NPCs and the item
+    // exists in the creature's inventory.
+    ActionCostValue equip(CreaturePtr creature, ItemPtr i, const EquipmentWornLocation ewl);
+
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 
   protected:

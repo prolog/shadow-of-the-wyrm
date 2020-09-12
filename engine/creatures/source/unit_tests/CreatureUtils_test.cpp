@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "Amulet.hpp"
+#include "ImmobileDecisionStrategy.hpp"
 
 TEST(SW_Engine_Creatures_CreatureUtils, can_pick_up)
 {
@@ -43,4 +44,38 @@ TEST(SW_Engine_CreatureUtils, has_negative_status)
   creature->set_status(StatusIdentifiers::STATUS_ID_STONE, s);
 
   EXPECT_TRUE(CreatureUtils::has_negative_status(creature));
+}
+
+TEST(SW_Engine_CreatureUtils, has_followers_in_fov)
+{
+  CreatureMap cm = CreatureUtils::get_followers_in_fov(nullptr);
+
+  EXPECT_TRUE(cm.empty());
+
+  string l_id = "leader";
+  CreaturePtr c = std::make_shared<Creature>();
+  c->set_id(l_id);
+  DecisionStrategyPtr d = std::make_unique<ImmobileDecisionStrategy>(nullptr);
+  Dimensions dim;
+  MapPtr fov_map = std::make_shared<Map>(dim);
+  d->set_fov_map(fov_map);
+  c->set_decision_strategy(std::move(d));
+
+  cm = CreatureUtils::get_followers_in_fov(c);
+
+  EXPECT_TRUE(cm.empty());
+
+  CreaturePtr c2 = std::make_shared<Creature>();
+  c->get_decision_strategy()->get_fov_map()->get_creatures_ref().insert(make_pair("id", c2));
+
+  cm = CreatureUtils::get_followers_in_fov(c);
+
+  EXPECT_TRUE(cm.empty());
+
+  c2->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID, l_id);
+
+  cm = CreatureUtils::get_followers_in_fov(c);
+
+  EXPECT_FALSE(cm.empty());
+  EXPECT_EQ(1, cm.size());
 }

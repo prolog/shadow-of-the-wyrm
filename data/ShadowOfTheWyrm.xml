@@ -601,7 +601,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
-			<Pacifiable>1</Pacifiable>
+			<Pacifiable>0</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
@@ -745,7 +745,7 @@
 			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
-			<Pacifiable>1</Pacifiable>
+			<Pacifiable>0</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
 			<HasPockets>1</HasPockets>
@@ -3274,7 +3274,7 @@
 					<Escape>15</Escape>
 					<Herbalism>15</Herbalism>
 					<Intimidation>10</Intimidation>
-					<Leadership>20</Leadership>
+					<Leadership>40</Leadership>
 					<Literacy>15</Literacy>
 					<Religion>15</Religion>
 					<Swimming>15</Swimming>
@@ -3526,7 +3526,7 @@
 					<Dungeoneering>15</Dungeoneering>
 					<Herbalism>15</Herbalism>
 					<Literacy>25</Literacy>
-					<Lore>20</Lore>
+					<Lore>100</Lore>
 					<Magic>15</Magic>
 					<Medicine>5</Medicine>
 					<Religion>25</Religion>
@@ -7881,15 +7881,18 @@
 		<StartingLocation id="01_isen_dun">
 			<Row>96</Row>
 			<Col>96</Col>
+			<ShortDescriptionSID>STARTING_LOCATION_ISEN_DUN_SHORT</ShortDescriptionSID>
 			<DescriptionSID>STARTING_LOCATION_ISEN_DUN</DescriptionSID>
 		</StartingLocation>
 		<StartingLocation id="02_carcassia">
 			<Row>46</Row>
 			<Col>53</Col>
+			<ShortDescriptionSID>STARTING_LOCATION_CARCASSIA_SHORT</ShortDescriptionSID>
 			<DescriptionSID>STARTING_LOCATION_CARCASSIA</DescriptionSID>
 		</StartingLocation>
 	</StartingLocations>
 	<Scripts>
+		<NPCLevelScript>level/npc.lua</NPCLevelScript>
 		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
 	</Scripts>
 	<Spritesheets>
@@ -7939,6 +7942,10 @@
 				<Reference id="ancient_beast_10">
 					<Row>13</Row>
 					<Col>5</Col>
+				</Reference>
+				<Reference id="hireling">
+					<Row>13</Row>
+					<Col>9</Col>
 				</Reference>
 			</References>
 		</Spritesheet>

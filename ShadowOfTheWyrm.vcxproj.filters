@@ -402,15 +402,6 @@
     <Filter Include="Source Files\engine\commands\screens\source\unit_tests">
       <UniqueIdentifier>{cfcf47be-f952-4093-8877-53bd61fe423b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\engine\conversion">
-      <UniqueIdentifier>{cf4e923c-1dfc-4200-9bfc-434cd20ae140}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\conversion\source">
-      <UniqueIdentifier>{a2c1829e-696e-446b-9d33-922240a3568f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\conversion\source\unit_tests">
-      <UniqueIdentifier>{0e99037b-4b54-48f3-858f-0e29cdda3eed}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\engine\decision_strategies">
       <UniqueIdentifier>{7439766f-a4d5-4aa2-bef1-dd368fb1abd8}</UniqueIdentifier>
     </Filter>
@@ -815,6 +806,30 @@
     </Filter>
     <Filter Include="Source Files\engine\description\codex\source">
       <UniqueIdentifier>{4396f385-7a81-49ac-9393-161fce0fb25a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\order">
+      <UniqueIdentifier>{8a5b622b-c467-4cd8-86d7-49c08ec48ca2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\order\source">
+      <UniqueIdentifier>{8830bc0e-71b1-4786-9b0b-a182cdab6907}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\order">
+      <UniqueIdentifier>{cabb426d-4b5c-49e6-a63f-89a3b2b8ae4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\order\include">
+      <UniqueIdentifier>{2ca8a3bf-c681-4bea-8f9f-b6a2cc874305}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\order\source\unit_tests">
+      <UniqueIdentifier>{829fa522-3700-485e-a21c-e074f6cfcf62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\conversion">
+      <UniqueIdentifier>{cf4e923c-1dfc-4200-9bfc-434cd20ae140}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\conversion\source">
+      <UniqueIdentifier>{a2c1829e-696e-446b-9d33-922240a3568f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\conversion\source\unit_tests">
+      <UniqueIdentifier>{0e99037b-4b54-48f3-858f-0e29cdda3eed}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -4037,9 +4052,6 @@
     <ClInclude Include="engine\generators\settlements\sector\include\ShadeGardenGenerator.hpp">
       <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\generators\settlements\sector\include\VegetableGardenGenerator.hpp">
-      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\generators\settlements\sector\include\WildflowerGardenGenerator.hpp">
       <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
     </ClInclude>
@@ -4280,11 +4292,59 @@
     <ClInclude Include="engine\skills\include\BeastmasterySkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\calculators\include\BeastmasteryCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\scripting\include\TameScript.hpp">
       <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\OrderAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\OrderScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\order\include\OrderCommandFactory.hpp">
+      <Filter>Header Files\engine\commands\order\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\order\include\OrderCommandKeys.hpp">
+      <Filter>Header Files\engine\commands\order\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\order\include\OrderCommands.hpp">
+      <Filter>Header Files\engine\commands\order\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\order\include\OrderCommandProcessor.hpp">
+      <Filter>Header Files\engine\commands\order\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\order\include\OrderKeyboardCommandMap.hpp">
+      <Filter>Header Files\engine\commands\order\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\OrderTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\SectorFeatureTypes.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\ProcgenTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\CreatureTypes.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\NPCSkillDistributor.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\NPCDropDecisionStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\NPCPickupDecisionStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\NPCUseEquipItemDecisionStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\FruitVegetableGardenGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\conversion\include\ModifiersDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -8260,9 +8320,6 @@
     <ClCompile Include="engine\generators\settlements\sector\source\ShadeGardenGenerator.cpp">
       <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\generators\settlements\sector\source\VegetableGardenGenerator.cpp">
-      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\generators\settlements\sector\source\WildflowerGardenGenerator.cpp">
       <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
     </ClCompile>
@@ -8575,14 +8632,80 @@
     <ClCompile Include="engine\skills\source\BeastmasterySkillProcessor.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\calculators\source\BeastmasteryCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\unit_tests\BeastmasteryCalculator_test.cpp">
-      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="engine\scripting\source\TameScript.cpp">
       <Filter>Source Files\engine\scripting\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\OrderAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\CurrentCreatureAbilities_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\OrderScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\order\source\OrderCommandFactory.cpp">
+      <Filter>Source Files\engine\commands\order\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\order\source\unit_tests\OrderCommandFactory_test.cpp">
+      <Filter>Source Files\engine\commands\order\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\order\source\OrderCommandKeys.cpp">
+      <Filter>Source Files\engine\commands\order\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\order\source\OrderCommandProcessor.cpp">
+      <Filter>Source Files\engine\commands\order\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\order\source\OrderCommands.cpp">
+      <Filter>Source Files\engine\commands\order\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\order\source\OrderKeyboardCommandMap.cpp">
+      <Filter>Source Files\engine\commands\order\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\order\source\unit_tests\OrderKeyboardCommandMap_test.cpp">
+      <Filter>Source Files\engine\commands\order\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\OrderTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\ProcgenTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\CreatureTypes.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\NPCSkillDistributor.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\NPCSkillDistributor_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\NPCDropDecisionStrategy.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\NPCPickupDecisionStrategy.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\NPCUseEquipItemDecisionStrategy.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\FruitVegetableGardenGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\CreatureCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\StatusTypes_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\ModifiersDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\MessageManager_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\NullMessageManager_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

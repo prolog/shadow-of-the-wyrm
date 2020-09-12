@@ -1,4 +1,5 @@
 #pragma once
+#ifdef ENABLE_SDL
 
 #include "sdl.hpp"
 
@@ -31,3 +32,4 @@ class SDLRender
     SDLDisplayParameters display_params;
 };
 
+#endif

@@ -1,3 +1,4 @@
+#ifdef ENABLE_SDL
 #include "SDLDisplayParameters.hpp"
 #include "SDLUtils.hpp"
 #include "Serialize.hpp"
@@ -199,4 +200,6 @@ ClassIdentifier SDLDisplayParameters::internal_class_identifier() const
 
 #ifdef UNIT_TESTS
 #include "unit_tests/SDLDisplayParameters_test.cpp"
+#endif
+
 #endif

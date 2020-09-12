@@ -5,5 +5,10 @@
 // library for reasonable portability.
 void PauseAnimationInstruction::execute(Display* const display)
 {
-  boost::this_thread::sleep(boost::posix_time::milliseconds(150));
+  boost::this_thread::sleep(boost::posix_time::milliseconds(100));
+}
+
+Coordinate PauseAnimationInstruction::get_coords() const
+{
+  return std::make_pair(-1, -1);
 }

@@ -39,7 +39,7 @@ end
 -- have the correct versions of all the libraries/headers installed, the game
 -- and all supporting files will be found in the "sotw" folder.
 solution "ShadowOfTheWyrm"
-  configurations { "Debug", "Release" }
+  configurations { "Debug", "CursesDebug", "Release", "CursesRelease" }
 
 project "ShadowOfTheWyrm"
   kind "ConsoleApp"
@@ -63,6 +63,7 @@ project "ShadowOfTheWyrm"
                 "engine/commands/include",
                 "engine/commands/equipment/include",
                 "engine/commands/help/include",
+		"engine/commands/order/include",
                 "engine/commands/inventory/include",
                 "engine/commands/magic/include",
                 "engine/commands/screens/include",
@@ -112,23 +113,51 @@ project "ShadowOfTheWyrm"
                 _OPTIONS["lua_include"]
                 }
   excludes { "**_test.cpp" }
-  links { "SDL2", "SDL2_image", "pthread", "dl", "z", "boost_system", "boost_filesystem", "boost_date_time", _OPTIONS["boost_thread"], "boost_regex", _OPTIONS["lua_link"], "xerces-c", "tinfo", "ncurses" }
+  links { "pthread", "dl", "z", "boost_system", "boost_filesystem", "boost_date_time", _OPTIONS["boost_thread"], "boost_regex", _OPTIONS["lua_link"], "xerces-c", "tinfo", "ncurses" }
   flags { "ExtraWarnings" }
 
   -- Ignore SaveConverter, MapTester configs.
   configuration "Debug"
+    defines { "_DEBUG", "DEBUG", "UNIT_TESTS", "ENABLE_SDL" }
+    flags { "Symbols" }
+    links { "SDL2", "SDL2_image", "gtest" }
+    excludes { "source/MapTester.cpp", "source/SaveConverter.cpp" }
+
+  configuration "CursesDebug"
     defines { "_DEBUG", "DEBUG", "UNIT_TESTS" }
     flags { "Symbols" }
     links { "gtest" }
     excludes { "source/MapTester.cpp", "source/SaveConverter.cpp" }
-
+  
   configuration "Release"
+    defines { "NDEBUG", "ENABLE_SDL" }
+    flags { "Optimize" }
+    links { "SDL2", "SDL2_image" }
+    postbuildcommands { "mkdir sotw",
+                        "cp ShadowOfTheWyrm sotw/sotw",
+                        "cp -R data sotw",
+			"cp -R assets sotw",
+                        "mkdir sotw/docs",
+                        "mkdir sotw/logs",
+                        "cp docs/*.pdf sotw/docs",
+                        "cp -R licenses sotw",
+                        "cp -R scripts sotw",
+                        "cp -R texts sotw",
+                        "cp howdoi.txt sotw",
+                        "cp *.ini sotw",
+                        "cp README.md sotw",
+                        "cp LICENSE sotw",
+                        -- Copy libraries:
+                        "lua copy_libs.lua",
+                        "tar cvzf ShadowOfTheWyrm-Linux.tar.gz sotw"}
+
+  configuration "CursesRelease"
     defines { "NDEBUG" }
     flags { "Optimize" }
     postbuildcommands { "mkdir sotw",
                         "cp ShadowOfTheWyrm sotw/sotw",
                         "cp -R data sotw",
-			"cp -R assets sotw",
+			-- Assets ignored in this config 
                         "mkdir sotw/docs",
                         "mkdir sotw/logs",
                         "cp docs/*.pdf sotw/docs",

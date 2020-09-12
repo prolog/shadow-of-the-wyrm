@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "Amulet.hpp"
 #include "Conversion.hpp"
 #include "ItemProperties.hpp"
 #include "Spellbook.hpp"
@@ -179,4 +180,21 @@ TEST(SW_World_Inventory, set_additional_property)
   inv.add_items({ item, item2 });
   inv.set_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED, "1");
   EXPECT_EQ(2, inv.count_items_with_property(ItemProperties::ITEM_PROPERTIES_BRANDED));
+}
+
+TEST(SW_World_Inventory, get_from_type)
+{
+  Inventory inv;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  ItemPtr item2 = std::make_shared<Spellbook>();
+  ItemPtr item3 = std::make_shared<Amulet>();
+
+  inv.add(item);
+  inv.add(item3);
+  inv.add(item2);
+
+  vector<ItemPtr> items = inv.get_from_type(ItemType::ITEM_TYPE_SPELLBOOK);
+
+  EXPECT_EQ(2, items.size());
 }

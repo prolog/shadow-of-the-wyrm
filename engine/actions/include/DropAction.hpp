@@ -8,7 +8,8 @@ class DropAction : public IActionManager
 {
   public:
     ActionCostValue drop(CreaturePtr creature, ActionManager * const am);
-    
+    ActionCostValue drop(CreaturePtr creature, const std::string& drop_item_id);
+
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
   
   protected:

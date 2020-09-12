@@ -15,6 +15,7 @@
 class Screen;
 class MapDisplayArea;
 class Animation;
+class Map;
 
 class Display : public ISerializable
 {
@@ -76,7 +77,7 @@ class Display : public ISerializable
     virtual AnimationFactoryPtr create_animation_factory() const;
 
     // Draws an animation.
-    virtual void draw_animation(const Animation& animation);
+    virtual void draw_animation(const Animation& animation, std::shared_ptr<Map> player_fov_map);
 	  
 	  // Displays the player info
 	  virtual void display(const DisplayStatistics& player_stats);

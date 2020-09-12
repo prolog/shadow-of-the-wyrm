@@ -1,6 +1,7 @@
 #include <boost/algorithm/string.hpp>
 #include "ActionTextKeys.hpp"
 #include "BestiaryAction.hpp"
+#include "ClassManager.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "Game.hpp"
@@ -139,11 +140,24 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
 
     // Display the creature short description
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
-    bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(creature->get_short_description_sid())));
+    bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(creature->get_short_description_sid(true))));
 
     // Display all the possible races (when searching) or the specific race
     // (when looking at a particular creature).
     display_race_information(bestiary_text, tdf, creature);
+
+    string class_id = creature->get_class_id();
+    if (!class_id.empty())
+    {
+      ClassManager cm;
+      Class* cur_class = cm.get_class(class_id);
+
+      if (cur_class != nullptr)
+      {
+        string class_details = StringTable::get(TextKeys::CLASS) + ": " + StringTable::get(cur_class->get_class_name_sid());
+        bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, class_details));
+      }
+    }
 
     // Display the creature's details.
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));

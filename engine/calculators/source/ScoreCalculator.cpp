@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const int ScoreCalculator::MAX_SCORE_EXPERIENCE = 10000000;
+const int ScoreCalculator::MAX_SCORE_EXPERIENCE = 100000000;
 
 long long ScoreCalculator::calculate_score(CreaturePtr creature)
 {
@@ -116,7 +116,7 @@ void ScoreCalculator::update_score_experience(CreaturePtr creature, long long& s
     exp = tier_amount;
   }
 
-  if (exp_score < 0 /* overflow? */ || exp_score > MAX_SCORE_EXPERIENCE)
+  if (exp_score > MAX_SCORE_EXPERIENCE)
   {
     exp_score = MAX_SCORE_EXPERIENCE;
   }

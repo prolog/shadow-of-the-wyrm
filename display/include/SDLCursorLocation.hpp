@@ -1,4 +1,5 @@
 #pragma once
+#ifdef ENABLE_SDL
 #include <memory>
 
 class SDLCursorLocation
@@ -25,3 +26,5 @@ class SDLCursorLocation
     int x;
     const int total_rows, total_cols;
 };
+
+#endif

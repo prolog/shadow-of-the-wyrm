@@ -30,8 +30,11 @@ class Wearable : public Item
     StatusAilments get_status_ailments() const;
 
     std::string get_synopsis() const override;
+    virtual bool get_is_good() const override;
     
     virtual bool additional_item_attributes_match(std::shared_ptr<Item> i) const override;
+
+    int get_score() const override;
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
@@ -42,6 +45,11 @@ class Wearable : public Item
     virtual void do_improve_item(const int points);
 
     int evade, soak, speed_bonus, to_hit, addl_damage;
+    static const int CSTAT_GOOD_THRESHOLD;
+    static const double RESISTS_GOOD_THRESHOLD;
+    static const double RESISTS_SCORE_MULTIPLIER;
+    static const double EVADE_SCORE_MULTIPLIER;
+
     StatusAilments status_ailments;
 };
 

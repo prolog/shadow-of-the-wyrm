@@ -32,6 +32,7 @@
 #include "MessageManagerFactory.hpp"
 #include "MovementTextKeys.hpp"
 #include "OfferAction.hpp"
+#include "OrderAction.hpp"
 #include "PickupAction.hpp"
 #include "PietyAction.hpp"
 #include "PrayerAction.hpp"
@@ -260,10 +261,18 @@ ActionCost ActionManager::quaff(CreaturePtr creature)
 }
 
 // 'r'ead a scroll or spellbook
-ActionCost ActionManager::read(CreaturePtr creature)
+ActionCost ActionManager::read(CreaturePtr creature, const std::string& item_id)
 {
   ReadAction ra;
-  return get_action_cost(creature, ra.read(creature, this));
+
+  if (item_id.empty())
+  {
+    return get_action_cost(creature, ra.read(creature, this));
+  }
+  else
+  {
+    return get_action_cost(creature, ra.read(creature, item_id));
+  }
 }
 
 // '$': check how much currency is held (free action)
@@ -421,7 +430,7 @@ ActionCost ActionManager::switch_graphics_mode(CreaturePtr creature)
   Settings& settings = game.get_settings_ref();
   bool force_ascii = settings.get_setting_as_bool(Setting::DISPLAY_FORCE_ASCII);
   bool new_force_ascii = !force_ascii;
-  settings.set_setting(Setting::DISPLAY_FORCE_ASCII, Bool::to_string(new_force_ascii));
+  settings.set_setting(Setting::DISPLAY_FORCE_ASCII, std::to_string(new_force_ascii));
 
   if (display != nullptr)
   {
@@ -483,11 +492,24 @@ ActionCost ActionManager::switch_colour_palettes(CreaturePtr creature)
   return get_action_cost(creature, action_cost_value);
 }
 
+ActionCost ActionManager::order(CreaturePtr creature)
+{
+  OrderAction oa;
+  return get_action_cost(creature, oa.order(creature));
+}
+
 ActionCost ActionManager::evoke(CreaturePtr creature)
 {
   EvokeAction ea;
 
   return get_action_cost(creature, ea.evoke(creature, this));
+}
+
+ActionCost ActionManager::evoke(CreaturePtr creature, const string& wand_id, const Direction d)
+{
+  EvokeAction ea;
+
+  return get_action_cost(creature, ea.evoke(creature, wand_id, d));
 }
 
 ActionCost ActionManager::show_resistances(CreaturePtr creature)
@@ -560,11 +582,23 @@ ActionCost ActionManager::pick_up(CreaturePtr creature, const PickUpType pick_up
   return get_action_cost(creature, pa.pick_up(creature, this, pick_up_type));
 }
 
+ActionCost ActionManager::pick_up(CreaturePtr creature, const string& ground_item_id)
+{
+  PickupAction pa;
+  return get_action_cost(creature, pa.pick_up(creature, ground_item_id));
+}
+
 // Drop an item, doing any necessary checks first.
 ActionCost ActionManager::drop(CreaturePtr creature)
 {
   DropAction da;
   return get_action_cost(creature, da.drop(creature, this));
+}
+
+ActionCost ActionManager::drop(CreaturePtr creature, const string& drop_item_id)
+{
+  DropAction da;
+  return get_action_cost(creature, da.drop(creature, drop_item_id));
 }
 
 // Display the inventory; potentially select something.
@@ -589,7 +623,6 @@ ItemPtr ActionManager::inventory(CreaturePtr creature, IInventoryPtr inv, const 
 ActionCost ActionManager::equipment(CreaturePtr creature)
 {
   ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
-  
   Game& game = Game::instance();
   
   if (creature)
@@ -601,6 +634,22 @@ ActionCost ActionManager::equipment(CreaturePtr creature)
   }
 
   return get_action_cost(creature, action_cost_value);
+}
+
+ActionCost ActionManager::equipment(CreaturePtr creature, ItemPtr i, const EquipmentWornLocation ewl)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+  Game& game = Game::instance();
+
+  if (creature != nullptr)
+  {
+    DisplayPtr game_display = game.get_display();
+    EquipmentManager equipment_manager(game_display, creature);
+
+    equipment_manager.equip(creature, i, ewl);
+  }
+
+  return get_action_cost(creature, acv);
 }
 
 ActionCost ActionManager::pray(CreaturePtr creature)

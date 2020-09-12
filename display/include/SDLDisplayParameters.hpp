@@ -1,4 +1,5 @@
 #pragma once
+#ifdef ENABLE_SDL
 
 #include "sdl.hpp"
 
@@ -60,3 +61,5 @@ protected:
   private:
     ClassIdentifier internal_class_identifier() const;
 };
+
+#endif

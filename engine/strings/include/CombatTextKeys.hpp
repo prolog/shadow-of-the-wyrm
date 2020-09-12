@@ -36,6 +36,8 @@ class CombatTextKeys
     static const std::string COMBAT_ATTACK_NO_EFFECT;
     static const std::string COMBAT_SNEAK_ATTACK;
     static const std::string COMBAT_NO_EXP_KILL;
+    static const std::string COMBAT_REVIVE;
+
   protected:
     CombatTextKeys();
 

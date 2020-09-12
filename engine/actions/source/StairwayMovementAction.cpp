@@ -177,7 +177,7 @@ void StairwayMovementAction::move_to_custom_map(TilePtr current_tile, MapPtr cur
   // (assume everything's on the same rough z-level), so pass in a null
   // coordinate to allow the game to use either the pre-set location,
   // or the pre-existing one.
-  ma->handle_properties_and_move_to_new_map(creature, current_tile, current_map, map_exit, CoordUtils::end());
+  ma->handle_properties_and_move(creature, current_tile, current_map, map_exit, CoordUtils::end());
 }
 
 ActionCostValue StairwayMovementAction::get_action_cost_value(CreaturePtr creature) const

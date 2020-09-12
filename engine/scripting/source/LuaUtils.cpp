@@ -62,6 +62,22 @@ void LuaUtils::create_return_table_from_string_vector(lua_State* ls, const vecto
   }
 }
 
+void LuaUtils::create_return_table_from_int_vector(lua_State* ls, const vector<int>& int_vec)
+{
+  lua_newtable(ls);
+  size_t int_vec_size = int_vec.size();
+
+  lua_createtable(ls, static_cast<int>(int_vec_size), 0);
+
+  for (unsigned int i = 0; i < int_vec_size; i++)
+  {
+    int cur_item = int_vec.at(i);
+
+    lua_pushinteger(ls, cur_item);
+    lua_rawseti(ls, -2, i + 1);
+  }
+}
+
 void LuaUtils::set_field(lua_State* ls, const char* name, const bool val)
 {
   if (ls != nullptr)

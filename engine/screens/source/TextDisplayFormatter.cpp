@@ -113,6 +113,11 @@ void TextDisplayFormatter::process_token(const string& current_token, vector<str
   {
     // JCD FIXME
   }
+  else if (current_token == TextFormatSpecifiers::SPACE)
+  {
+    current_str.append(" ");
+    cur_pos++;
+  }
   else
   {
     if ((cur_pos + current_token.length()) > (width-1))

@@ -25,8 +25,8 @@ MapPtr SettlementGenerator::generate()
   MapPtr result_map = std::make_shared<Map>(*base_map);
 
   result_map = generate_roads_and_buildings(result_map);
-  result_map = populate_settlement(result_map);
   generate_wells(result_map);
+  generate_special_inhabitants(result_map);
 
   return result_map;
 }
@@ -123,11 +123,4 @@ MapPtr SettlementGenerator::generate_settlement_with_winding_road(MapPtr map)
 {
   // JCD FIXME: Implement this.
   return map;
-}
-
-MapPtr SettlementGenerator::populate_settlement(MapPtr map)
-{
-  MapPtr result_map = std::make_shared<Map>(*map);
-
-  return result_map;
 }

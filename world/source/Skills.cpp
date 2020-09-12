@@ -1674,6 +1674,23 @@ void Skills::increment_skills(Skills& skills_to_increment)
   }
 }
 
+// Checks for trained magic skills corresponding to the in-game schools/spheres.
+vector<SkillType> Skills::get_trained_magic_skills() const
+{
+  vector<SkillType> trained;
+  vector<SkillType> check = {SkillType::SKILL_MAGIC_CANTRIPS, SkillType::SKILL_MAGIC_ARCANE, SkillType::SKILL_MAGIC_DIVINE, SkillType::SKILL_MAGIC_MYSTIC, SkillType::SKILL_MAGIC_PRIMORDIAL};
+
+  for (SkillType cs : check)
+  {
+    if (get_value(cs) > 0)
+    {
+      trained.push_back(cs);
+    }
+  }
+
+  return trained;
+}
+
 // Set the value of a skill
 void Skills::set_value(const SkillType skill_name, const unsigned int value)
 {

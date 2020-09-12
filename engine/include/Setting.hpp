@@ -50,6 +50,7 @@ class Setting
     static const std::string CONFIGURATION_FILE_CREATURES;
     static const std::string CONFIGURATION_FILE_ITEMS;
     static const std::string CONFIGURATION_FILE_WORLD_MAP_AREAS;
+    static const std::string NARRATIVE_MODE;
 
   protected:
     Setting();

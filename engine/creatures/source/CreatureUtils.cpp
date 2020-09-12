@@ -2,7 +2,7 @@
 #include "Conversion.hpp"
 #include "CarryingCapacityCalculator.hpp"
 #include "ClassManager.hpp"
-#include "CreatureCalculator.hpp"
+#include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "DeityTextKeys.hpp"
 #include "EngineConversion.hpp"
@@ -16,11 +16,13 @@
 #include "RaceManager.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
+#include "Serialize.hpp"
 #include "SpellAdditionalProperties.hpp"
 #include "StatisticTextKeys.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
 #include "ViewMapTranslator.hpp"
+#include "WeaponManager.hpp"
 
 using namespace std;
 
@@ -33,10 +35,11 @@ CreatureUtils::~CreatureUtils()
 }
 
 map<HungerLevel, string> CreatureUtils::hunger_message_sid_map;
+map<HungerLevel, Colour> CreatureUtils::hunger_colour_map;
 
 // Initialize the map of message SIDs.  Messages are shown when the creature
 // (the player, realistically) transitions to a new state.
-void CreatureUtils::initialize_hunger_message_sid_map()
+void CreatureUtils::initialize_hunger_maps()
 {
   hunger_message_sid_map.clear();
 
@@ -47,6 +50,11 @@ void CreatureUtils::initialize_hunger_message_sid_map()
     { HungerLevel::HUNGER_LEVEL_HUNGRY, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_HUNGRY },
     { HungerLevel::HUNGER_LEVEL_STARVING, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_STARVING },
     { HungerLevel::HUNGER_LEVEL_DYING, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_DYING } };
+
+  hunger_colour_map.clear();
+
+  hunger_colour_map = { {HungerLevel::HUNGER_LEVEL_STARVING, Colour::COLOUR_RED},
+                        {HungerLevel::HUNGER_LEVEL_DYING, Colour::COLOUR_RED} };
 }
 
 
@@ -62,14 +70,21 @@ void CreatureUtils::add_hunger_level_message_if_necessary(CreaturePtr creature, 
     {
       IMessageManager& manager = MM::instance();
 
-      if (hunger_message_sid_map.empty())
+      if (hunger_message_sid_map.empty() || hunger_colour_map.empty())
       {
-        initialize_hunger_message_sid_map();
+        initialize_hunger_maps();
       }
 
       string message_sid = hunger_message_sid_map[new_level];
+      Colour colour = Colour::COLOUR_WHITE;
 
-      manager.add_new_message(StringTable::get(message_sid));
+      auto col_it = hunger_colour_map.find(new_level);
+      if (col_it != hunger_colour_map.end())
+      {
+        colour = col_it->second;
+      }
+
+      manager.add_new_message(StringTable::get(message_sid), colour);
       manager.send();
     }
   }
@@ -360,7 +375,6 @@ pair<bool, string> CreatureUtils::can_pick_up(CreaturePtr c, ItemPtr i)
   {
     CarryingCapacityCalculator ccc;
     uint total_items = ccc.calculate_carrying_capacity_total_items(c);
-
     can_pu.first = (i->get_type() == ItemType::ITEM_TYPE_CURRENCY || c->count_items() + i->get_quantity() <= total_items);
 
     if (!can_pu.first)
@@ -379,6 +393,41 @@ pair<bool, string> CreatureUtils::can_pick_up(CreaturePtr c, ItemPtr i)
   }
 
   return can_pu;
+}
+
+bool CreatureUtils::can_equip_weapon(CreaturePtr c, WeaponPtr w)
+{
+  if (c != nullptr && w != nullptr)
+  {
+    WeaponManager wm;
+    WeaponPtr weapon = wm.get_weapon(c, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
+    ItemPtr offhand = c->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND);
+    int hands_req = (w != nullptr) ? w->get_hands_required() : 1;
+
+    if (hands_req == 1)
+    {
+      if (weapon == nullptr || weapon->get_status() != ItemStatus::ITEM_STATUS_CURSED)
+      {
+        return true;
+      }
+    }
+    else
+    {
+      if (offhand != nullptr)
+      {
+        return false;
+      }
+      else
+      {
+        if (weapon == nullptr || weapon->get_status() != ItemStatus::ITEM_STATUS_CURSED)
+        {
+          return true;
+        }
+      }
+    }
+  }
+
+  return false;
 }
 
 Race* CreatureUtils::get_random_user_playable_race()
@@ -400,7 +449,8 @@ Race* CreatureUtils::get_random_user_playable_race()
 
   if (!playable_races.empty())
   {
-    race = playable_races.at(RNG::range(0, playable_races.size() - 1));
+    int idx = RNG::range(0, playable_races.size() - 1);
+    race = playable_races.at(idx);
   }
 
   return race;
@@ -425,7 +475,8 @@ Class* CreatureUtils::get_random_user_playable_class()
 
   if (!playable_classes.empty())
   {
-    cur_class = playable_classes.at(RNG::range(0, playable_classes.size() - 1));
+    int idx = RNG::range(0, playable_classes.size() - 1);
+    cur_class = playable_classes.at(idx);
   }
 
   return cur_class;
@@ -547,11 +598,14 @@ void CreatureUtils::process_creature_modifiers(CreaturePtr creature, vector<pair
   }
 }
 
-void CreatureUtils::process_creature_modifier(CreaturePtr creature, pair<string, Modifier>& mod_pair, const StatusRemovalType sr)
+void CreatureUtils::process_creature_modifier(CreaturePtr creature, pair<string, Modifier>& mod_pair, const StatusRemovalType sr, const string& item_id)
 {
   // Don't process/remove permanent modifiers, and also don't attempt to
   // double-process a modifier already marked for deletion.
-  if (mod_pair.second.get_permanent() == true || mod_pair.second.get_delete())
+  //
+  // Also don't process/remove item-based modifiers unless the ids match.  
+  // Those modifiers remain as long as the item is being worn.
+  if (mod_pair.second.get_permanent() == true || (item_id != mod_pair.second.get_item_id()) || mod_pair.second.get_delete())
   {
     return;
   }
@@ -597,23 +651,29 @@ void CreatureUtils::apply_status_ailments(WearablePtr wearable, CreaturePtr crea
 
       for (const auto& ailment : ailments)
       {
-        if (!creature->has_status(ailment))
+        bool has_status = creature->has_status(ailment);
+
+        ModifyStatisticsEffect mse;
+        Modifier m;
+
+        StatusEffectPtr status = StatusEffectFactory::create_status_effect(ailment, "");
+
+        if (!has_status)
         {
-          ModifyStatisticsEffect mse;
-          Modifier m;
-
-          StatusEffectPtr status = StatusEffectFactory::create_status_effect(ailment, "");
           creature->set_status(ailment, { ailment, true, 1 /* JCD FIXME? */, creature_id });
-          m.set_status(ailment, true);
-          mse.set_spell_id(ailment); // set for easy rollback
-          mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
+        }
 
-          if (status != nullptr)
-          {
-            IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-            manager.add_new_message(status->get_application_message(creature));
-            manager.send();
-          }
+        m.set_item_id(wearable->get_id());
+        m.set_status(ailment, true);
+
+        mse.set_spell_id(ailment); // set for easy rollback
+        mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
+
+        if (status != nullptr)
+        {
+          IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+          manager.add_new_message(status->get_application_message(creature));
+          manager.send();
         }
       }
     }
@@ -624,11 +684,12 @@ void CreatureUtils::remove_status_ailments_from_wearable(WearablePtr wearable, C
 {
   if (wearable != nullptr && creature != nullptr)
   {
+    string wearable_id = wearable->get_id();
     StatusAilments sa = wearable->get_status_ailments();
     set<string> ailments = sa.get_ailments();
 
     auto& cr_mods = creature->get_modifiers_ref();
-    auto indefinite_mod_it = creature->get_modifiers_ref().find(-1);
+    auto indefinite_mod_it = creature->get_modifiers_ref().find(-1.0);
 
     if (indefinite_mod_it != cr_mods.end())
     {
@@ -636,14 +697,10 @@ void CreatureUtils::remove_status_ailments_from_wearable(WearablePtr wearable, C
 
       for (pair<string, Modifier>& mod_pair : mods)
       {
-        string status_id = mod_pair.first;
-        if (mod_pair.second.get_permanent() == false)
+        if (mod_pair.second.get_item_id() == wearable_id)
         {
-          if (ailments.find(status_id) != ailments.end() && !has_status_ailment_from_wearable(creature, status_id))
-          {
-            CreatureUtils::process_creature_modifier(creature, mod_pair, StatusRemovalType::STATUS_REMOVAL_UNDO);
-            mod_pair.second.set_delete(true);
-          }
+          CreatureUtils::process_creature_modifier(creature, mod_pair, StatusRemovalType::STATUS_REMOVAL_UNDO, wearable_id);
+          mod_pair.second.set_delete(true);
         }
       }
     }
@@ -815,6 +872,86 @@ int CreatureUtils::adjust_str_until_unburdened(CreaturePtr creature)
   }
 
   return incr_cnt;
+}
+
+CreatureMap CreatureUtils::get_followers_in_fov(CreaturePtr creature)
+{
+  CreatureMap followers;
+
+  if (creature != nullptr)
+  {
+    MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
+    
+    if (fov_map != nullptr)
+    {
+      const CreatureMap& creatures = fov_map->get_creatures_ref();
+
+      for (const auto& c_pair : creatures)
+      {
+        if (c_pair.second && c_pair.second->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == creature->get_id())
+        {
+          followers.insert(c_pair);
+        }
+      }
+    }
+  }
+
+  return followers;
+}
+
+string CreatureUtils::get_follower_property_prefix()
+{
+  return Serialize::BINARY_PROPERTY_PREFIX + CreatureProperties::CREATURE_PROPERTIES_FOLLOWER_PREFIX;
+}
+
+bool CreatureUtils::remove_negative_statuses_from_creature(CreaturePtr creature)
+{
+  bool removed = false;
+
+  if (creature != nullptr)
+  {
+    CreatureStatusMap csm = creature->get_statuses();
+
+    for (const auto& csm_pair : csm)
+    {
+      string status_id = csm_pair.first;
+      StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
+
+      if (se && se->is_negative())
+      {
+        CreatureUtils::mark_modifiers_for_deletion(creature, status_id, StatusRemovalType::STATUS_REMOVAL_UNDO);
+        removed = true;
+      }
+    }
+
+    CreatureUtils::remove_modifiers(creature);
+  }
+
+  return removed;
+}
+
+bool CreatureUtils::has_skill_for_spell(CreaturePtr creature, const string& spell_id)
+{
+  bool has_skill = false;
+
+  if (creature != nullptr)
+  {
+    const SpellMap& spells = Game::instance().get_spells_ref();
+    auto sp_it = spells.find(spell_id);
+
+    if (sp_it != spells.end())
+    {
+      Spell spell = Game::instance().get_spells_ref().find(spell_id)->second;
+
+      SkillType mskill = spell.get_magic_category();
+      if (creature->get_skills().get_value(mskill) > 0)
+      {
+        has_skill = true;
+      }
+    }
+  }
+
+  return has_skill;
 }
 
 #ifdef UNIT_TESTS

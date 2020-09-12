@@ -1,4 +1,5 @@
 #pragma once
+#ifdef ENABLE_SDL
 #include <unordered_map>
 #include "Controller.hpp"
 
@@ -25,3 +26,5 @@ class SDLKeyboardController : public Controller
   private:
     ClassIdentifier internal_class_identifier() const override;
 };
+
+#endif

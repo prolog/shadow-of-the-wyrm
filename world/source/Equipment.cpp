@@ -49,6 +49,19 @@ bool Equipment::set_item(ItemPtr item, const EquipmentWornLocation worn_location
   return item_set;
 }
 
+bool Equipment::has_item(const EquipmentWornLocation worn_location) const
+{
+  bool iexists = false;
+  auto e_it = equipment.find(worn_location);
+
+  if (e_it != equipment.end() && e_it->second != nullptr)
+  {
+    iexists = true;
+  }
+
+  return iexists;
+}
+
 // Get the item being worn in a certain slot.
 ItemPtr Equipment::get_item(const EquipmentWornLocation worn_location) const
 {
@@ -63,14 +76,36 @@ ItemPtr Equipment::get_item(const EquipmentWornLocation worn_location) const
   return current_item;
 }
 
+// Get the item with a particular id
+ItemPtr Equipment::get_item_from_id(const string& id) const
+{
+  ItemPtr i;
+
+  for (auto c_it : equipment)
+  {
+    ItemPtr c_item = c_it.second;
+
+    if (c_item != nullptr && c_item->get_id() == id)
+    {
+      i = c_item;
+      break;
+    }
+  }
+
+  return i;
+}
+
 // Remove an item from a particular slot, and return it.
 ItemPtr Equipment::remove_item(const EquipmentWornLocation worn_location)
 {
-  ItemPtr previously_worn_item = equipment[worn_location];
+  ItemPtr previously_worn_item;
   ItemPtr no_item;
-  
-  if (previously_worn_item)
+
+  auto e_it = equipment.find(worn_location);
+
+  if (e_it != equipment.end())
   {
+    previously_worn_item = e_it->second;
     equipment[worn_location] = no_item;
   }
   
@@ -101,7 +136,7 @@ uint Equipment::count_items() const
 void Equipment::initialize()
 {
   equipment.clear();
-  
+
   for (int i = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); i < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); i++)
   {
     EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(i);

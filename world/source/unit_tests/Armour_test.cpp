@@ -1,5 +1,29 @@
 #include "gtest/gtest.h"
 
+TEST(SW_World_Armour, get_is_good_cstat)
+{
+  Armour a;
+
+  EXPECT_FALSE(a.get_is_good());
+
+  a.set_evade(2);
+
+  EXPECT_TRUE(a.get_is_good());
+
+  a.set_evade(6);
+
+  EXPECT_TRUE(a.get_is_good());
+
+  a.set_soak(-8);
+
+  EXPECT_FALSE(a.get_is_good());
+
+  a.set_addl_damage(10);
+
+  EXPECT_TRUE(a.get_is_good());
+}
+
+
 TEST(SW_World_Armour, serialization_id)
 {
   Armour armour;

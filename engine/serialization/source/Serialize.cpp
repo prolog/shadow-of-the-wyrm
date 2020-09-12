@@ -1,7 +1,10 @@
 #include <boost/scoped_array.hpp>
 #include "Serialize.hpp"
+#include "Log.hpp"
 
 using namespace std;
+
+const string Serialize::BINARY_PROPERTY_PREFIX = "__BIN__";
 
 // Write the class identifier.  This is used by factory classes to determine which type of object to 
 // default construct.
@@ -164,38 +167,6 @@ void Serialize::read_uint(istream& stream, unsigned int& val)
   else
   {
     SerializationException stream_error("Could not read unsigned int");
-    throw stream_error;
-  }
-
-  if (stream.fail())
-  {
-    SerializationException stream_error("Could not read full unsigned int");
-    throw stream_error;
-  }
-}
-
-void Serialize::write_uint8(ostream& stream, const Uint8 val)
-{
-  if (stream.good())
-  {
-    stream.write(reinterpret_cast<const char*>(&val), sizeof(val));
-  }
-  else
-  {
-    SerializationException stream_error("Could not write Uint8");
-    throw stream_error;
-  }
-}
-
-void Serialize::read_uint8(istream& stream, Uint8& val)
-{
-  if (stream.good())
-  {
-    stream.read((char*)& val, sizeof(val));
-  }
-  else
-  {
-    SerializationException stream_error("Could not read Uint8");
     throw stream_error;
   }
 
@@ -411,12 +382,13 @@ void Serialize::read_double(istream& stream, double& val)
 }
 
 // Write a std::string
-void Serialize::write_string(ostream& stream, const string& val)
+void Serialize::write_string(ostream& stream, const string& val, const bool binary_str)
 {
   if (stream.good())
   {
     size_t val_size = val.size();
     Serialize::write_size_t(stream, val_size);
+    Serialize::write_bool(stream, binary_str);
 
     const char* val_cstr = val.c_str();
     stream.write(val_cstr, val_size);
@@ -433,18 +405,29 @@ void Serialize::read_string(istream& stream, string& val)
 {
   if (stream.good())
   {
-    size_t string_size;
+    size_t string_size = 0;
+    bool binary_str = false;
+
     Serialize::read_size_t(stream, string_size);
- 
-    boost::scoped_array<char> raw_str(new char[string_size+1]);
+    Serialize::read_bool(stream, binary_str);
+    size_t stream_size = string_size;
 
-    stream.read(raw_str.get(), string_size);
+    if (binary_str == false)
+    {
+      string_size++;
+    }
 
-    raw_str.get()[string_size] = '\0';
+    boost::scoped_array<char> raw_str(new char[string_size]);
+    stream.read(raw_str.get(), stream_size);
+
+    if (binary_str == false)
+    {
+      raw_str.get()[string_size-1] = '\0';
+    }
 
     // Now that we have the actual string, create a copy and assign it to the passed-in
     // reference.  The scoped pointer should take care of deletion afterwards.
-    val = raw_str.get();
+    val = string(raw_str.get(), stream_size);
   }
   else
   {
@@ -514,7 +497,10 @@ void Serialize::write_string_map(ostream& stream, const map<string, string>& val
       string value = v_it->second;
 
       Serialize::write_string(stream, key);
-      Serialize::write_string(stream, value);
+
+      bool binary_str = (key.rfind(BINARY_PROPERTY_PREFIX, 0) == 0);
+
+      Serialize::write_string(stream, value, binary_str);
     }
   }
 }
@@ -616,6 +602,39 @@ void Serialize::read_event_scripts(istream& stream, EventScriptsMap& event_scrip
   }
 }
 
+#ifdef ENABLE_SDL
+void Serialize::write_uint8(ostream& stream, const Uint8 val)
+{
+  if (stream.good())
+  {
+    stream.write(reinterpret_cast<const char*>(&val), sizeof(val));
+  }
+  else
+  {
+    SerializationException stream_error("Could not write Uint8");
+    throw stream_error;
+  }
+}
+
+void Serialize::read_uint8(istream& stream, Uint8& val)
+{
+  if (stream.good())
+  {
+    stream.read((char*)&val, sizeof(val));
+  }
+  else
+  {
+    SerializationException stream_error("Could not read Uint8");
+    throw stream_error;
+  }
+
+  if (stream.fail())
+  {
+    SerializationException stream_error("Could not read full unsigned int");
+    throw stream_error;
+  }
+}
+
 void Serialize::write_sdl_colour(ostream& stream, const SDL_Color& color)
 {
   Serialize::write_uint8(stream, color.r);
@@ -631,7 +650,7 @@ void Serialize::read_sdl_colour(istream& stream, SDL_Color& color)
   Serialize::read_uint8(stream, color.b);
   Serialize::read_uint8(stream, color.a);
 }
-
+#endif
 
 #ifdef UNIT_TESTS
 #include "unit_tests/Serialize_test.cpp"

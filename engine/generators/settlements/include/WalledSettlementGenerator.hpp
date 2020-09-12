@@ -12,6 +12,8 @@ class WalledSettlementGenerator : public BaseSettlementGenerator
 
   protected:
     virtual void initialize();
+
+    std::vector<std::shared_ptr<SectorFeature>> get_sector_features() override;
     
     virtual void generate_walled_settlement(MapPtr map);
     virtual void generate_walls(MapPtr map);

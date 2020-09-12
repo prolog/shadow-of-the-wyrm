@@ -42,8 +42,15 @@ class ActionManager : public ISerializable
 
     // Pick up/drop check the map type before proceeding.
     ActionCost pick_up(CreaturePtr creature, const PickUpType pick_up);
+    // NPC version
+    ActionCost pick_up(CreaturePtr creature, const std::string& ground_item_id);
+
     ActionCost drop(CreaturePtr creature);
+    // NPC version
+    ActionCost drop(CreaturePtr creature, const std::string& drop_item_id);
+
     ActionCost equipment(CreaturePtr creature);
+    ActionCost equipment(CreaturePtr creature, ItemPtr i, const EquipmentWornLocation ewl);
 
     // Display the inventory.  Potentially, select an item.  ItemPtr is null if no item
     // was selected.
@@ -71,7 +78,7 @@ class ActionManager : public ISerializable
     ActionCost quaff(CreaturePtr creature);
     
     // Read a scroll, or spellbook
-    ActionCost read(CreaturePtr creature);
+    ActionCost read(CreaturePtr creature, const std::string& item_id);
     
     // Check the current amount of currency held
     ActionCost check_currency(CreaturePtr creature);
@@ -109,8 +116,14 @@ class ActionManager : public ISerializable
     // Switch between colour palettes.
     ActionCost switch_colour_palettes(CreaturePtr creature);
 
+    // Give orders to your followers.
+    ActionCost order(CreaturePtr creature);
+
     // Evoke/zap a wand.
     ActionCost evoke(CreaturePtr creature);
+
+    // Evoke - NPC version
+    ActionCost evoke(CreaturePtr creature, const std::string& wand_item_id, const Direction d);
 
     // Show a creature's (well, the player's) resistances and vulnerabilities.
     ActionCost show_resistances(CreaturePtr creature);

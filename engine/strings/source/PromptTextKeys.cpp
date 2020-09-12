@@ -31,3 +31,10 @@ const string PromptTextKeys::PROMPT_RUN_SCRIPT = "PROMPT_RUN_SCRIPT";
 const string PromptTextKeys::PROMPT_HELP = "PROMPT_HELP";
 const string PromptTextKeys::PROMPT_SKILLS = "PROMPT_SKILLS";
 const string PromptTextKeys::PROMPT_CREATE_ITEM = "PROMPT_CREATE_ITEM";
+const string PromptTextKeys::PROMPT_ORDER = "PROMPT_ORDER";
+const string PromptTextKeys::PROMPT_EQUIPMENT = "PROMPT_EQUIPMENT";
+const string PromptTextKeys::PROMPT_INVENTORY = "PROMPT_INVENTORY";
+const string PromptTextKeys::PROMPT_INVENTORY_NO_SELECTION = "PROMPT_INVENTORY_NO_SELECTION";
+const string PromptTextKeys::PROMPT_SKIN = "PROMPT_SKIN";
+const string PromptTextKeys::PROMPT_WEAVE = "PROMPT_WEAVE";
+

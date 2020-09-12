@@ -1,28 +1,46 @@
 #include "ActionTextKeys.hpp"
+#include "Amulet.hpp"
+#include "AttackNPCMagicDecision.hpp"
 #include "CoordUtils.hpp"
 #include "Commands.hpp"
 #include "CommandCustomValues.hpp"
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
+#include "CreatureProperties.hpp"
 #include "CreatureTileSafetyChecker.hpp"
+#include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DecisionScript.hpp"
 #include "DecisionStrategyProperties.hpp"
 #include "Game.hpp"
+#include "HostilityManager.hpp"
 #include "IMessageManager.hpp"
 #include "Log.hpp"
 #include "MagicalAbilityChecker.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "NPCDecisionStrategy.hpp"
+#include "NPCDropDecisionStrategy.hpp"
 #include "NPCMagicDecisionFactory.hpp"
+#include "NPCPickupDecisionStrategy.hpp"
+#include "NPCUseEquipItemDecisionStrategy.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
 #include "RangedCombatUtils.hpp"
+#include "RaceManager.hpp"
+#include "Ring.hpp"
 #include "RNG.hpp"
 #include "SearchStrategyFactory.hpp"
+#include "Spellbook.hpp"
+#include "SpellShapeFactory.hpp"
 #include "ThreatConstants.hpp"
+#include "Wand.hpp"
+#include "WeaponManager.hpp"
 
 using namespace std;
 
+const int NPCDecisionStrategy::PERCENT_CHANCE_USE_ITEM = 40;
+const int NPCDecisionStrategy::PERCENT_CHANCE_PICK_UP_USEFUL_ITEM = 75;
+const int NPCDecisionStrategy::PERCENT_CHANCE_DROP_ITEM = 90;
 const int NPCDecisionStrategy::PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET = 85;
 const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_USING_MAGIC = 75;
 const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_RANGED_COMBAT = 80;
@@ -121,31 +139,72 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
   
   if (view_map)
   {
+    update_threats_to_leader(this_creature_id, view_map);
+
+    if (has_movement_orders() == false)
+    {
+      command = get_use_item_decision(this_creature_id, view_map);
+    }
+
+    if (has_movement_orders() == false)
+    {
+      if (command == nullptr)
+      {
+        command = get_drop_decision(this_creature_id, view_map);
+      }
+    }
+
+    if (has_movement_orders() == false)
+    {
+      if (command == nullptr)
+      {
+        // Is there something useful to pick up? Humanoids will pick up wands
+        // if they know what they do, if the wands cause damage
+        command = get_pick_up_decision(this_creature_id, view_map);
+      }
+    }
+
     // If the creature has any spells, consider casting a spell, based on
     // low health, nearby hostile creatures, etc.
-    command = get_magic_decision(this_creature_id, view_map);
+    if (has_movement_orders() == false)
+    {
+      if (command == nullptr)
+      {
+        command = get_magic_decision(this_creature_id, view_map);
+      }
+    }
 
     // Breed, potentially.
+    // Movement orders can't override this.
     if (command == nullptr)
     {
       command = get_breed_decision(this_creature_id, view_map);
     }
 
-    // Attack if threatened.
-    if (command == nullptr)
+    if (has_movement_orders() == false)
     {
-      command = get_ranged_attack_decision(this_creature_id, view_map);
+      // Attack if threatened.
+      if (command == nullptr)
+      {
+        command = get_ranged_attack_decision(this_creature_id, view_map);
+      }
     }
 
-    if (command == nullptr)
+    if (has_movement_orders() == false)
     {
-      command = get_attack_decision(this_creature_id, view_map);
+      if (command == nullptr)
+      {
+        command = get_attack_decision(this_creature_id, view_map);
+      }
     }
 
-    // If not threatened, try a custom (script-based) decision.
-    if (command == nullptr)
+    if (has_movement_orders() == false)
     {
-      command = get_custom_decision(this_creature_id, view_map);
+      // If not threatened, try a custom (script-based) decision.
+      if (command == nullptr)
+      {
+        command = get_custom_decision(this_creature_id, view_map);
+      }
     }
     
     // If no custom decisions fired, attempt movement.
@@ -266,9 +325,12 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
       while (t_it != threat_map.rend() && t_it->first > ThreatConstants::DISLIKE_THREAT_RATING)
       {
         set<string> creature_ids = t_it->second;
+        vector<pair<string, int>> threat_distances = get_creatures_by_distance(this_cr, view_map, creature_ids);
 
-        for (const string& threatening_creature_id : creature_ids)
+        for (const auto& td_pair : threat_distances)
         {
+          string threatening_creature_id = td_pair.first;
+
           // Check the view map to see if the creature exists
           if (view_map->has_creature(threatening_creature_id))
           {
@@ -379,9 +441,11 @@ CommandPtr NPCDecisionStrategy::get_ranged_attack_decision(const string& this_cr
         while (t_it != threat_map.rend() && t_it->first > ThreatConstants::DISLIKE_THREAT_RATING)
         {
           set<string> creature_ids = t_it->second;
+          vector<pair<string, int>> threat_distances = get_creatures_by_distance(this_cr, view_map, creature_ids);
 
-          for (const string& threatening_creature_id : creature_ids)
+          for (const auto& td_pair : threat_distances)
           {
+            string threatening_creature_id = td_pair.first;
             Coordinate threat_c = view_map->get_location(threatening_creature_id);
 
             if (RangedCombatUtils::is_coord_in_range(threat_c, view_map) && RangedCombatUtils::is_coordinate_obstacle_free(this_cr, c_this, threat_c, view_map))
@@ -389,7 +453,7 @@ CommandPtr NPCDecisionStrategy::get_ranged_attack_decision(const string& this_cr
               TargetMap& tm = this_cr->get_target_map_ref();
               tm[to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED))] = make_pair(threatening_creature_id, threat_c);
               CommandPtr command = std::make_unique<FireMissileCommand>(-1);
-              command->set_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_SKIP_TARGETTING, Bool::to_string(true));
+              command->set_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_SKIP_TARGETTING, std::to_string(true));
 
               return command;
             }
@@ -456,13 +520,41 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
 
     // Is the creature a sentinel?  Sentinels are just NPCs that stay in one
     // place, moving only to pursue when attacked.
-    string sentinel_s = get_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL);
-    if (!sentinel_s.empty() && 
-       (String::to_bool(sentinel_s) == true) &&
-       this_creature &&
-       (MapUtils::hostile_creature_exists(this_creature_id, view_map) == false))
+    bool sentinel = String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL));
+    bool ordered_sentinel = String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_ORDERED_SENTINEL));
+    if ((sentinel || ordered_sentinel) &&
+         this_creature &&
+         MapUtils::hostile_creature_exists(this_creature_id, view_map) == false)
     {
       return movement_command;
+    }
+
+    string follow_id = get_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID);
+    string at_ease = get_property(DecisionStrategyProperties::DECISION_STRATEGY_AT_EASE);
+    string leader_id;
+
+    if (this_creature != nullptr)
+    {
+      leader_id = this_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+    }
+
+    if (!at_ease.empty())
+    {
+      movement_command = get_follow_direction(view_map, this_creature, this_creature_coords, leader_id);
+
+      if (movement_command != nullptr)
+      {
+        return movement_command;
+      }
+    }
+    else if (!follow_id.empty())
+    {
+      movement_command = get_follow_direction(view_map, this_creature, this_creature_coords, follow_id);
+
+      if (movement_command != nullptr)
+      {
+        return movement_command;
+      }
     }
 
     string search_pct = get_property(DecisionStrategyProperties::DECISION_STRATEGY_SEARCH_PCT);
@@ -538,6 +630,65 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
   return movement_command;
 }
 
+CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature_id, MapPtr view_map)
+{
+  CommandPtr pu_cmd;
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+
+  if (map != nullptr && RNG::percent_chance(PERCENT_CHANCE_PICK_UP_USEFUL_ITEM))
+  {
+    CreaturePtr creature = map->get_creature(this_creature_id);
+    RaceManager rm;
+    Race* race = rm.get_race(creature->get_race_id());
+
+    if (creature != nullptr && race != nullptr && race->get_has_pockets() && race->get_corporeal().get_current())
+    {
+      NPCPickupDecisionStrategy pu_strat;
+      pu_cmd = pu_strat.decide(creature, map);
+    }
+  }
+
+  return pu_cmd;
+}
+
+CommandPtr NPCDecisionStrategy::get_drop_decision(const string& this_creature_id, MapPtr view_map)
+{
+  CommandPtr drop_cmd;
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+
+  if (map != nullptr && RNG::percent_chance(PERCENT_CHANCE_DROP_ITEM))
+  {
+    CreaturePtr creature = map->get_creature(this_creature_id);
+    NPCDropDecisionStrategy drop;
+
+    drop_cmd = drop.decide(creature, map);
+  }
+
+  return drop_cmd;
+}
+
+CommandPtr NPCDecisionStrategy::get_use_item_decision(const string& this_creature_id, MapPtr view_map)
+{
+  CommandPtr use_cmd;
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+
+  if (map != nullptr && RNG::percent_chance(PERCENT_CHANCE_USE_ITEM))
+  {
+    CreaturePtr creature = map->get_creature(this_creature_id);
+
+    if (creature != nullptr)
+    {
+      NPCUseEquipItemDecisionStrategy ue;
+      use_cmd = ue.decide(creature, map);
+    }
+  }
+
+  return use_cmd;
+}
+
 // Get a list of the adjacent coordinates that do not contain creatures
 vector<Coordinate> NPCDecisionStrategy::get_adjacent_safe_coordinates_without_creatures(MapPtr current_map, const vector<Coordinate>& all_adjacent_coordinates, CreaturePtr this_creature)
 {
@@ -564,4 +715,99 @@ vector<Coordinate> NPCDecisionStrategy::get_adjacent_safe_coordinates_without_cr
   
   return coords_without_creatures;
 }
+
+bool NPCDecisionStrategy::has_movement_orders() const
+{
+  string follow = get_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID);
+
+  bool has_orders = (!follow.empty());
+  return has_orders;
+}
+
+CommandPtr NPCDecisionStrategy::get_follow_direction(MapPtr view_map, CreaturePtr this_creature, const Coordinate& this_creature_coords, const string& follow_id)
+{
+  CommandPtr command;
+  Coordinate c_follow = view_map->get_location(follow_id);
+
+  if (!CoordUtils::are_coordinates_adjacent(this_creature_coords, c_follow))
+  {
+    SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SearchType::SEARCH_TYPE_UNIFORM_COST, this_creature);
+    Direction direction = CoordUtils::get_direction(this_creature_coords, ss->search(view_map, this_creature_coords, c_follow));
+
+    if (direction != Direction::DIRECTION_NULL)
+    {
+      command = std::make_unique<MovementCommand>(direction, -1);
+    }
+  }
+
+  return command;
+}
+
+void NPCDecisionStrategy::update_threats_to_leader(const std::string& this_creature_id, MapPtr view_map)
+{
+  Game& game = Game::instance();
+  MapPtr current_map = game.get_current_map();
+
+  if (current_map != nullptr)
+  {
+    CreaturePtr this_creature = current_map->get_creature(this_creature_id);
+
+    if (this_creature != nullptr)
+    {
+      // Have we been ordered to attack by our leader? If so, find all the
+      // threats to that creature, and attack one.
+      string attack_threaten_id = get_property(DecisionStrategyProperties::DECISION_STRATEGY_ATTACK_CREATURES_THREATENING_ID);
+      string leader_id = this_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+      string at_ease = get_property(DecisionStrategyProperties::DECISION_STRATEGY_AT_EASE);
+
+      if (view_map != nullptr && (!attack_threaten_id.empty() || !at_ease.empty()))
+      {
+        CreatureMap creatures = view_map->get_creatures();
+        vector<string> leader_attackers;
+
+        for (auto c_pair : creatures)
+        {
+          if (c_pair.second->get_decision_strategy()->get_threats_ref().has_threat(leader_id).first)
+          {
+            string threat_id = c_pair.second->get_id();
+            if (!threat_ratings.has_threat(threat_id).first)
+            {
+              HostilityManager hm;
+              hm.set_hostility_to_creature(this_creature, threat_id);
+            }
+
+            // Break so that the creature is only focused on one creature
+            // attacking their leader at a time.
+            break;
+          }
+        }
+      }
+    }
+  }
+}
+
+vector<pair<string, int>> NPCDecisionStrategy::get_creatures_by_distance(CreaturePtr creature, MapPtr view_map, const set<string>& creature_ids)
+{
+  vector<pair<string, int>> cdist;
+
+  if (creature != nullptr && view_map != nullptr)
+  {
+    Coordinate cr_coord = view_map->get_location(creature->get_id());
+
+    for (const string& cr_id : creature_ids)
+    {
+      if (view_map->has_location(cr_id))
+      {
+        Coordinate threat_coord = view_map->get_location(cr_id);
+        cdist.push_back(make_pair(cr_id, CoordUtils::chebyshev_distance(cr_coord, threat_coord)));
+      }
+    }
+
+    std::sort(cdist.begin(), cdist.end(), [](const auto& c1, const auto& c2) { return (c1.second < c2.second); });
+  }
+
+  return cdist;
+}
+
+
 

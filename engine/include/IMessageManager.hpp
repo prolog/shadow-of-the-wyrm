@@ -11,8 +11,8 @@ class IMessageManager
     virtual ~IMessageManager() {};
 
     virtual void clear_if_necessary() = 0;
-    virtual void send(const MessageSpacing ms = MessageSpacing::DEFAULT_SPACING, const bool halt_afterwards = false, const bool reset_afterwards = false) = 0;
-    virtual void send_and_halt() = 0;
+    virtual bool send(const MessageSpacing ms = MessageSpacing::DEFAULT_SPACING, const bool halt_afterwards = false, const bool reset_afterwards = false) = 0;
+    virtual bool send_and_halt() = 0;
 
     // Alert with ... - require user input
     virtual void alert(const std::string& message) = 0;

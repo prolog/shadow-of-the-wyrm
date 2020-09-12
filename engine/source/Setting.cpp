@@ -57,3 +57,4 @@ const string Setting::CONFIGURATION_FILE_BASE = "configuration_file_base";
 const string Setting::CONFIGURATION_FILE_CREATURES = "configuration_file_creatures";
 const string Setting::CONFIGURATION_FILE_ITEMS = "configuration_file_items";
 const string Setting::CONFIGURATION_FILE_WORLD_MAP_AREAS = "configuration_file_world_map_areas";
+const string Setting::NARRATIVE_MODE = "narrative_mode";

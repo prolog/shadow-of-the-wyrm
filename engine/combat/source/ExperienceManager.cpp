@@ -4,8 +4,10 @@
 #include "LevelConstants.hpp"
 #include "LevelScript.hpp"
 #include "MessageManagerFactory.hpp"
+#include "NPCSkillDistributor.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
+#include "ScriptConstants.hpp"
 #include "TextKeys.hpp"
 
 using namespace std;
@@ -79,6 +81,11 @@ bool ExperienceManager::gain_experience(CreaturePtr creature, const uint experie
 
         manager.clear_if_necessary();
       }
+    }
+    else if (creature && !creature->get_is_player())
+    {
+      NPCSkillDistributor nsd;
+      nsd.distribute_unused_skill_points(creature);
     }
   }
   
@@ -298,38 +305,52 @@ void ExperienceManager::run_level_script(CreaturePtr creature)
     Race* racep = rm.get_race(race_id);
     Class* classp = cm.get_class(class_id);
 
-    if (racep && classp)
+    LevelScript level_script;
+    ScriptEngine& se = Game::instance().get_script_engine_ref();
+    se.set_creature(creature);
+
+    vector<string> setup_scripts;
+    string race_script;
+    string class_script;
+
+    if (racep)
     {
-      LevelScript level_script;
-      ScriptEngine& se = Game::instance().get_script_engine_ref();
-      se.set_creature(creature);
-
-      vector<string> setup_scripts;
-      string race_script = racep->get_level_script();
-      string class_script = classp->get_level_script();
-
-      if (!race_script.empty())
-      {
-        setup_scripts.push_back(racep->get_level_script());
-      }
-
-      if (!class_script.empty())
-      {
-        setup_scripts.push_back(classp->get_level_script());
-      }
-
-      try
-      {
-        level_script.execute(se, setup_scripts, creature);
-      }
-      catch(...)
-      {
-      }
-
-      // Ensure that the "local creature" that the scripts can get at is reset
-      // appropriately.
-      CreaturePtr nullcr;
-      se.set_creature(nullcr);
+      race_script = racep->get_level_script();
     }
+
+    if (classp)
+    {
+      class_script = classp->get_level_script();
+    }
+
+    string npc_script = Game::instance().get_script(ScriptConstants::NPC_LEVEL_SCRIPT);
+
+    if (!race_script.empty())
+    {
+      setup_scripts.push_back(race_script);
+    }
+
+    if (!class_script.empty())
+    {
+      setup_scripts.push_back(class_script);
+    }
+
+    if (!creature->get_is_player() && !npc_script.empty())
+    {
+      setup_scripts.push_back(npc_script);
+    }
+
+    try
+    {
+      level_script.execute(se, setup_scripts, creature);
+    }
+    catch(...)
+    {
+    }
+
+    // Ensure that the "local creature" that the scripts can get at is reset
+    // appropriately.
+    CreaturePtr nullcr;
+    se.set_creature(nullcr);
   }
 }

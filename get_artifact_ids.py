@@ -40,7 +40,7 @@ def dump_artifacts(artifacts, txt_file):
 
   txt.close()
 
-artifacts = get_artifacts_from_xml("data/ShadowOfTheWyrm.xml")
+artifacts = get_artifacts_from_xml("data/ShadowOfTheWyrm_Items.xml")
 
 print("Dumping %s artifact IDs..." % (len(artifacts)))
 

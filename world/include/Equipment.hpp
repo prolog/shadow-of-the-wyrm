@@ -16,7 +16,9 @@ class Equipment : public ISerializable
     bool operator==(const Equipment& e) const;
     
     bool set_item(ItemPtr item, const EquipmentWornLocation location);
+    bool has_item(const EquipmentWornLocation location) const;
     ItemPtr get_item(const EquipmentWornLocation location) const;
+    ItemPtr get_item_from_id(const std::string& id) const;
     ItemPtr remove_item(const EquipmentWornLocation location);
     uint count_items() const;
 

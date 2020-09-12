@@ -86,7 +86,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::PICK_UP_ITEM)
       {
-        ac = game.actions.pick_up(creature, PickUpType::PICK_UP_SINGLE);
+        ac = process_pick_up_command(creature, command, game);
       }
       else if (command_name == CommandKeys::PICK_UP_ALL)
       {
@@ -94,7 +94,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::DROP_ITEM)
       {
-        ac = game.actions.drop(creature);
+        ac = process_drop_command(creature, command, game);
       }
       else if (command_name == CommandKeys::CHAR_DETAILS)
       {
@@ -106,7 +106,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::INVENTORY)
       {
-        ac = game.actions.equipment(creature);
+        ac = process_inventory_command(creature, command, game);
       }
       else if (command_name == CommandKeys::PRAY)
       {
@@ -142,7 +142,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::READ)
       {
-        ac = game.actions.read(creature);
+        ac = process_read_command(creature, command, game);
       }
       else if (command_name == CommandKeys::CHECK_CURRENCY)
       {
@@ -187,7 +187,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::EVOKE)
       {
-        ac = game.actions.evoke(creature);
+        ac = process_evoke_command(creature, command, game);
       }
       else if (command_name == CommandKeys::SHOW_RESISTANCES)
       {
@@ -278,6 +278,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game.actions.switch_colour_palettes(creature);
       }
+      else if (command_name == CommandKeys::ORDER)
+      {
+        ac = game.actions.order(creature);
+      }
     }
   }
   
@@ -335,6 +339,110 @@ ActionCost CommandProcessor::process_directional_command(CreaturePtr creature, D
     }
   }
   
+  return ac;
+}
+
+ActionCost CommandProcessor::process_pick_up_command(CreaturePtr creature, Command* command, Game& game)
+{
+  ActionCost ac;
+  PickUpCommand* pu_cmd = dynamic_cast<PickUpCommand*>(command);
+
+  if (pu_cmd != nullptr)
+  {
+    string item_id = pu_cmd->get_item_id();
+
+    if (!item_id.empty())
+    {
+      ac = game.actions.pick_up(creature, item_id);
+    }
+    else
+    {
+      ac = game.actions.pick_up(creature, PickUpType::PICK_UP_SINGLE);
+    }
+  }
+
+  return ac;
+}
+
+ActionCost CommandProcessor::process_drop_command(CreaturePtr creature, Command* command, Game& game)
+{
+  ActionCost ac;
+  DropCommand* drop_cmd = dynamic_cast<DropCommand*>(command);
+
+  if (drop_cmd != nullptr)
+  {
+    string drop_id = drop_cmd->get_drop_id();
+
+    if (!drop_id.empty())
+    {
+      ac = game.actions.drop(creature, drop_id);
+    }
+    else
+    {
+      ac = game.actions.drop(creature);
+    }
+  }
+
+  return ac;
+}
+
+ActionCost CommandProcessor::process_evoke_command(CreaturePtr creature, Command* command, Game& game)
+{
+  ActionCost ac;
+  EvokeCommand* ev_cmd = dynamic_cast<EvokeCommand*>(command);
+
+  if (ev_cmd != nullptr)
+  {
+    string item_id = ev_cmd->get_item_id();
+    Direction direction = ev_cmd->get_direction();
+
+    if (!item_id.empty())
+    {
+      ac = game.actions.evoke(creature, item_id, direction);
+    }
+    else
+    {
+      ac = game.actions.evoke(creature);
+    }
+  }
+
+  return ac;
+}
+
+ActionCost CommandProcessor::process_inventory_command(CreaturePtr creature, Command* command, Game& game)
+{
+  ActionCost ac;
+  InventoryCommand* inv_cmd = dynamic_cast<InventoryCommand*>(command);
+
+  if (inv_cmd != nullptr)
+  {
+    ItemPtr i = inv_cmd->get_item();
+    EquipmentWornLocation ewl = inv_cmd->get_equipment_worn_location();
+
+    if (i != nullptr && ewl != EquipmentWornLocation::EQUIPMENT_WORN_NONE)
+    {
+      ac = game.actions.equipment(creature, i, ewl);
+    }
+    else
+    {
+      ac = game.actions.equipment(creature);
+    }
+  }
+
+  return ac;
+}
+
+ActionCost CommandProcessor::process_read_command(CreaturePtr creature, Command* command, Game& game)
+{
+  ActionCost ac;
+  ReadCommand* read_cmd = dynamic_cast<ReadCommand*>(command);
+
+  if (read_cmd != nullptr)
+  {
+    string item_id = read_cmd->get_item_id();
+    ac = game.actions.read(creature, item_id);
+  }
+
   return ac;
 }
 

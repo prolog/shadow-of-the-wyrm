@@ -6,12 +6,14 @@ void NullMessageManager::clear_if_necessary()
 {
 }
 
-void NullMessageManager::send(const MessageSpacing ms, const bool halt_afterwards, const bool reset_afterwards)
+bool NullMessageManager::send(const MessageSpacing ms, const bool halt_afterwards, const bool reset_afterwards)
 {
+  return false;
 }
 
-void NullMessageManager::send_and_halt()
+bool NullMessageManager::send_and_halt()
 {
+  return false;
 }
 
 void NullMessageManager::alert(const string& message)
@@ -67,3 +69,7 @@ MessageBuffer NullMessageManager::get_message_buffer() const
   MessageBuffer mb;
   return mb;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/NullMessageManager_test.cpp"
+#endif

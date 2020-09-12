@@ -2,6 +2,7 @@
 #include "EquipmentCommandFactory.hpp"
 #include "HelpCommandFactory.hpp"
 #include "InventoryCommandFactory.hpp"
+#include "OrderCommandFactory.hpp"
 #include "ScreenCommandFactory.hpp"
 #include "SkillsCommandFactory.hpp"
 #include "TileSelectionCommandFactory.hpp"
@@ -16,6 +17,7 @@ CommandFactoryFactory::CommandFactoryFactory()
   CommandFactoryPtr screen = std::make_unique<ScreenCommandFactory>();
   CommandFactoryPtr help = std::make_unique<HelpCommandFactory>();
   CommandFactoryPtr skills = std::make_unique<SkillsCommandFactory>();
+  CommandFactoryPtr order = std::make_unique<OrderCommandFactory>();
 
   command_factory_map.insert(make_pair(ClassIdentifier::CLASS_ID_COMMAND_FACTORY, std::move(command)));
   command_factory_map.insert(make_pair(ClassIdentifier::CLASS_ID_EQUIPMENT_COMMAND_FACTORY, std::move(equipment)));
@@ -24,6 +26,7 @@ CommandFactoryFactory::CommandFactoryFactory()
   command_factory_map.insert(make_pair(ClassIdentifier::CLASS_ID_SCREEN_COMMAND_FACTORY, std::move(screen)));
   command_factory_map.insert(make_pair(ClassIdentifier::CLASS_ID_HELP_COMMAND_FACTORY, std::move(help)));
   command_factory_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILLS_COMMAND_FACTORY, std::move(skills)));
+  command_factory_map.insert(make_pair(ClassIdentifier::CLASS_ID_ORDER_COMMAND_FACTORY, std::move(order)));
 }
 
 CommandFactoryFactory::~CommandFactoryFactory()

@@ -123,12 +123,15 @@ int main(int argc, char* argv[])
     {
       Settings settings(true);
       string display_id = settings.get_setting(Setting::DISPLAY);
+
+      #ifdef ENABLE_SDL
       SDLInit sdl;
 
       if (display_id == DisplayIdentifier::DISPLAY_IDENTIFIER_SDL)
       {
         sdl.set_up();
       }
+      #endif
 
       remove_old_logfiles(settings);
 
@@ -181,7 +184,9 @@ int main(int argc, char* argv[])
 
       if (display_id == DisplayIdentifier::DISPLAY_IDENTIFIER_SDL)
       {
+        #ifdef ENABLE_SDL
         sdl.tear_down();
+        #endif
       }
     }
   }

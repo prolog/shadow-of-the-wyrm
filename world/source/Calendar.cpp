@@ -62,13 +62,12 @@ double Calendar::get_seconds_from_date(const Date& date) const
   return secs;
 }
 
-// Calculate and return the date, based on the total seconds that have elapsed so far.
-Date Calendar::get_date() const
+Date Calendar::get_date(const double sec_since_start) const
 {
-  uint usec = static_cast<uint>(seconds);
+  uint usec = static_cast<uint>(sec_since_start);
   uint sec = usec % 60;
   uint min = (usec / 60) % 60;
-  uint hr  = ((usec / 60) / 60) % 24;
+  uint hr = ((usec / 60) / 60) % 24;
   uint total_days_elapsed = (usec / 86400);
   uint day_week = (total_days_elapsed % 7);
   uint day_month = (total_days_elapsed % DateValues::NUMBER_OF_DAYS_PER_MONTH) + 1 /* Days of month start at 1, too */;
@@ -78,6 +77,12 @@ Date Calendar::get_date() const
 
   Date calculated_date(sec, min, hr, day_week, day_month, day_year, month, year);
   return calculated_date;
+}
+
+// Calculate and return the date, based on the total seconds that have elapsed so far.
+Date Calendar::get_date() const
+{
+  return get_date(seconds);
 }
 
 ISeason* Calendar::get_season() const

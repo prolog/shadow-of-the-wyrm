@@ -1,3 +1,4 @@
+#ifdef ENABLE_SDL
 #include <boost/algorithm/string.hpp>
 #include <boost/tokenizer.hpp>
 #include "Conversion.hpp"
@@ -569,6 +570,8 @@ string SDLDisplay::add_message_with_prompt(const string& message, const Colour c
 
 void SDLDisplay::halt_messages()
 {
+  refresh_current_window();
+
   // Get a keypress from the user and throw it away to continue.
   prompt_processor.get_prompt(window);
 }
@@ -1271,4 +1274,6 @@ ClassIdentifier SDLDisplay::internal_class_identifier() const
 
 #ifdef UNIT_TESTS
 #include "unit_tests/SDLDisplay_test.cpp"
+#endif
+
 #endif

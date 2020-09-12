@@ -31,7 +31,7 @@ class MovementAction : public IActionManager
     ActionCostValue move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords, const Direction d);
     // With an existing map, handle the properties on the tile, and then
     // move on to the map.
-    ActionCostValue handle_properties_and_move_to_new_map(TilePtr old_tile, MapPtr old_map, MapPtr new_map, MapExitPtr map_exit = nullptr);
+    ActionCostValue handle_properties_and_move_to_new_map(CreaturePtr creature, TilePtr old_tile, MapPtr old_map, MapPtr new_map, MapExitPtr map_exit = nullptr);
     // Generate a new map, and move to it - staircases, etc.
     ActionCostValue generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, MapExitPtr map_exit, TilePtr tile, const ExitMovementType emt = ExitMovementType::EXIT_MOVEMENT_DESCEND);
     ActionCostValue generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, MapExitPtr map_exit, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const std::map<std::string, std::string>& map_exit_properties, const ExitMovementType emt = ExitMovementType::EXIT_MOVEMENT_DESCEND);
@@ -46,9 +46,10 @@ class MovementAction : public IActionManager
 
     void add_cannot_escape_message(const CreaturePtr& creature);
     void move_to_new_map(TilePtr old_tile, MapPtr old_map, MapPtr new_map, MapExitPtr map_exit);
-    void handle_properties_and_move_to_new_map(CreaturePtr creature, TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit, const Coordinate& proposed_new_coord);
+    void handle_properties_and_move(CreaturePtr creature, TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit, const Coordinate& proposed_new_coord);
     bool confirm_move_to_tile_if_necessary(CreaturePtr creature, MapPtr current_map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& creatures_new_tile_coords);
     void check_movement_stealth(CreaturePtr creature, Direction d);
+    void save_followers_for_move(CreaturePtr creature, MapPtr old_map);
 
     static const int BASE_ASCEND_DESCEND_CHANCE;
 };

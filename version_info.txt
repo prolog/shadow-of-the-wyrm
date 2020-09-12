@@ -1,5 +1,132 @@
+Shadow of the Wyrm v1.2.2 "Borrono"
+- Version declared July 17, 2020.
+
+- More name combinations.
+
+- Added support for curses-only configurations in both Visual Studio and in
+  the premake configurations. These exclude SDL when building, resulting in a 
+  smaller, asset-less build that has no dependencies on SDL (Larzid).
+
+- NPCs may now pick up items if they consider them "good". This depends on 
+  the item type, but in general, NPCs avoid cursed and autocursing items.
+
+- NPCs can now evoke wands, equip weapons and ammunition, and wear rings and 
+  amulets. They can also pick up and wear armour.
+
+- Nobles now start with a higher starting leadership value (40).
+
+- The Music skill now gives experience for pacification, like Beastmastery,
+  and sets the no-exp flag.
+
+- Pacified/Tamed are now displayed when examining a creature.
+
+- Pacification still works on many creatures, but not constructs, undead,
+  or the divine.
+
+- There is now a narrative_mode setting in swyrm.ini that restores you to full 
+  health and removes negative statuses at death, allowing you to play for as 
+  long as you want.
+
+- You can now give 'o'rders to your followers, and they'll follow you between
+  maps if adjacent to you when you left the previous.  Your followers will get
+  a bonus to their attack damage based on your Leadership skill, as long as
+  you're in their line of sight.
+
+- When NPCs gain levels, they now get extra HP, AP, and damage dice in line
+  with the progression used in the game data.
+
+- Starting location is now included in the synopsis on the naming screen.
+
+- Hirelings can now be found in a few fixed areas (Isen Dun, Carcassia, Yew,
+  Gnordvar). Hirelings will follow you - for a fee - and can be ordered around
+  using the 'o'rder command. They have an enchanted set of initial equipment,
+  and have improved versions of their initial race and class skills.
+
+- The quit message now references that the game won't be saved (Echo38).
+
+- Villages can have orchards as well as vegetable gardens.
+
+- When unstacking wands after use, the new wand now goes to the front of
+  the inventory (Echo38).
+
+- Added a bit more heat resistance to Forger, toned down Goblincrusher's
+  damage a touch.
+
+- The ranged animation is now a little faster (Grond).
+
+- Wands now show the total as well as the current charges, which makes it much
+  more clear why they don't stack (Echo38).
+
+- Merchants now start with full knowledge of the game's items.
+
+- Pilgrims now start off with 100 Lore, meaning they will always know an
+  item's B/U/C status.
+
+- Tradesmen are now bold red.
+
+- New poem fragment for the title screen.
+
+- Now that creatures can put on armour, created a new, common weapon (whisper-
+  thin dagger) that is slightly better than a normal dagger, and has the
+  piercing flag set.
+
+- Added info on updating the sprites to howdoi.txt
+
+- Max score is now 100000000.
+
+- Reworked the code around applying status identifiers.  This is more
+  sophisticated and can now have multiples of the same status in effect at
+  once (eg, poisoned by creature/spell, wearing a poison ring) and the game 
+  will correctly undoing the status only when 0 instances of that status 
+  remain in the set of active modifiers.  Undoing eg the creature's poison
+  won't undo the permanent poison associated with the ring (until that's
+  taken off), and so on.
+
+- The character synopsis now shows modifiers, which are time-based effects that
+  modify stats or apply statuses.  These can include spells, statuses applied by
+  creature attacks, and those added by wearing certain pieces of equipment.
+
+- Urchins now start with a sling and a handful of stones.
+
+- Stanzas for "Tel and Floridel".
+
+- New items: narcotic amulet (speed penalty, a little soak), voiceless amulet
+  (mutes the wearer).
+
+- Bug fixes:
+
+  - When evoking a stack of wands, the new wand had the old stack size set,
+    effectively creating a way of duplicating wands.
+
+  - Animations (for spells, wands, etc) could be drawn offscreen even if none
+    of the tiles were in the player's FOV.
+
+  - The "seen for automove" flag wasn't being set on initial items, so
+    there were issues when comparing items and multiple stacks would form
+    when they shouldn't have.
+
+  - The free hidden actions counter could get out of whack. Capped that so
+    the player couldn't get lots of free actions while safely hidden (Grond).
+
+  - Drinking potions off the ground was buggy (Echo38).
+
+  - The examine command was giving too much information when the player was
+    blind.
+
+  - The unarmed combat improvement message wasn't firing properly (Grond).
+
+  - Various typos in the bestiary and "Tel and Floridel" (Echo38).
+
+  - The messages for special in-game days were broken (Grond).
+
+  - When plazas were generated, fountains could be generated on wall tiles
+    (Grond).
+
+  - Entering an invalid pickup quantity was causing the turn to advance
+    (Echo38).
+
 Shadow of the Wyrm v1.2.1 "Lully"
-- Version declared June 21, 2020.  Version finalized July 17, 2017.
+- Version declared June 21, 2020.  Version finalized July 17, 2020.
 
 - More name combinations.
 

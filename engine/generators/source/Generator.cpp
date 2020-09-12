@@ -637,7 +637,7 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
   if (ignore_lvl_checks_val.empty())
   {
     bool ignore_creature_lvl_checks = get_ignore_creature_generation_level_checks();
-    string ignore_creature_lvl_checks_val = Bool::to_string(ignore_creature_lvl_checks);
+    string ignore_creature_lvl_checks_val = std::to_string(ignore_creature_lvl_checks);
   }
 
   set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS, ignore_lvl_checks_val);

@@ -12,4 +12,5 @@ class InitialItemEquipper
   protected:
     void process_initial_equipment(CreaturePtr creature, const std::map<EquipmentWornLocation, InitialItem>& initial_eq, ActionManager& am);
     void process_initial_inventory(CreaturePtr creature, const std::vector<InitialItem>& initial_inv, ActionManager& am);
+    ItemPtr set_initial_item_flags(ItemPtr i);
 };

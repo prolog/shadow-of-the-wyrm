@@ -93,3 +93,13 @@ TEST(SW_World_NullInventory, count_items_without_property)
   ni.add_items({ item });
   EXPECT_EQ(0, ni.count_items_without_property("abc"));
 }
+
+TEST(SW_World_NullInventory, get_from_type)
+{
+  NullInventory ni;
+  ItemPtr item = std::make_shared<Spellbook>();
+  ni.add(item);
+  vector<ItemPtr> itypes = ni.get_from_type(ItemType::ITEM_TYPE_SPELLBOOK);
+
+  EXPECT_EQ(0, itypes.size());
+}

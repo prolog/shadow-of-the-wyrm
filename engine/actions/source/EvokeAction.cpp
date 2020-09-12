@@ -59,8 +59,9 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
         if (wand->get_quantity() > 1)
         {
           wand->set_quantity(wand->get_quantity() - 1);
-          ItemPtr new_wand_as_item = ItemPtr(wand->clone());
+          ItemPtr new_wand_as_item = ItemPtr(wand->clone_with_new_id());
           new_wand = dynamic_pointer_cast<Wand>(new_wand_as_item);
+          new_wand->set_quantity(1);
         }
         else
         {
@@ -69,11 +70,11 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
         }
 
         // Try to evoke the item
-        action_cost_value = evoke_wand(creature, am, new_wand);
+        action_cost_value = evoke_wand(creature, new_wand, Direction::DIRECTION_NULL);
 
         // If we're in a shop, anger the shopkeeper.
         // Using charges is theft!
-        if (wand->get_unpaid())
+        if (new_wand->get_unpaid())
         {
           MapUtils::anger_shopkeeper_if_necessary(map->get_location(creature->get_id()), map, creature);
         }
@@ -82,13 +83,13 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
         // a single wand.
         if (need_to_remove_before_adding_or_merging)
         {
-          creature->get_inventory()->remove(wand->get_id());
+          creature->get_inventory()->remove(new_wand->get_id());
         }
 
         // Insert the item back into the inventory.
         // This will take care of de-stacking/re-stacking and ensuring that
         // like-items are grouped together.
-        creature->get_inventory()->merge_or_add(new_wand, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        creature->get_inventory()->merge_or_add(new_wand, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
       }
     }
   }
@@ -96,8 +97,26 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
   return action_cost_value;
 }
 
+ActionCostValue EvokeAction::evoke(CreaturePtr creature, const string& wand_id, const Direction d)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
+  if (creature != nullptr)
+  {
+    ItemPtr item = creature->get_inventory()->get_from_id(wand_id);
+    WandPtr wand = std::dynamic_pointer_cast<Wand>(item);
+
+    if (wand != nullptr)
+    {
+      acv = evoke_wand(creature, wand, d);
+    }
+  }
+
+  return acv;
+}
+
 // A wand was selected.  Evoke it: apply any damage, and then do the magical effect.
-ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * const am, WandPtr wand)
+ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, WandPtr wand, const Direction dir)
 {
   ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
 
@@ -120,7 +139,18 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
 
       if (ss.get_direction_category() != DirectionCategory::DIRECTION_CATEGORY_NONE)
       {
-        evoke_result = get_evocation_direction(creature, shape_type);
+        // If it's an NPC, the decision strategy has already worked out
+        // what direction to use.
+        if (dir != Direction::DIRECTION_NULL)
+        {
+          evoke_result = { true, dir };
+        }
+        // If it's the player, we need to prompt
+        else
+        {
+          evoke_result = get_evocation_direction(creature, shape_type);
+        }
+
         evoke_successful = evoke_result.first;
       }
 

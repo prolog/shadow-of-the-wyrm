@@ -5,11 +5,19 @@
 #include "CreatureGenerationConstants.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "CreatureFactory.hpp"
+#include "CreatureProperties.hpp"
+#include "CreatureTypes.hpp"
+#include "CreatureUtils.hpp"
 #include "DecisionStrategyFactory.hpp"
+#include "DecisionStrategyProperties.hpp"
 #include "DecisionStrategyTypes.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
+#include "HostilityManager.hpp"
+#include "ItemEnchantmentCalculator.hpp"
 #include "MapProperties.hpp"
+#include "Naming.hpp"
+#include "ProcgenTextKeys.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
 
@@ -217,10 +225,84 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, Crea
 
   if (generated_creature)
   {
-    CreatureCalculator::update_calculated_values(generated_creature);
+    CreatureCalculator cc;
+    cc.update_calculated_values(generated_creature);
   }
     
   return generated_creature;
+}
+
+CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, const int danger_level)
+{
+  CreatureSex sex = CreatureSex::CREATURE_SEX_NOT_SPECIFIED;
+  CreatureFactory cf;
+
+  Race* race = CreatureUtils::get_random_user_playable_race();
+  Class* cur_class = CreatureUtils::get_random_user_playable_class();
+  string race_id;
+  string class_id;
+
+  if (race != nullptr && cur_class != nullptr)
+  {
+    race_id = race->get_race_id();
+    class_id = cur_class->get_class_id();
+  }
+
+  string name = Naming::generate_name(sex);
+  CreaturePtr hireling = cf.create_by_race_and_class(am, race_id, class_id, name, sex);
+  DecisionStrategyPtr ds = DecisionStrategyFactory::create_decision_strategy(DecisionStrategyID::DECISION_STRATEGY_MOBILE);
+
+  // Hirelings remain neutral and never jump in to help.
+  ds->set_property(DecisionStrategyProperties::DECISION_STRATEGY_ASSIST_PCT, std::to_string(0));
+
+  hireling->set_decision_strategy(std::move(ds));
+
+  hireling->set_description_sid(ProcgenTextKeys::HIRELING_DESC_SID);
+  hireling->set_short_description_sid(ProcgenTextKeys::HIRELING_SHORT_DESC_SID);
+  hireling->set_text_details_sid(ProcgenTextKeys::HIRELING_TEXT_DETAILS_SID);
+  
+  string lua_script = StringTable::get(ProcgenTextKeys::HIRELING_LUA_SCRIPT_SID);
+  EventScriptsMap scripts;
+  ScriptDetails sd(lua_script, 100);
+  hireling->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT, sd);
+
+  Symbol s('@', static_cast<Colour>(RNG::range(1, 15)));
+  SpritesheetLocation & ssl = s.get_spritesheet_location_ref();
+
+  ssl.set_reference_id(CreatureReferences::HIRELING);
+  ssl.set_index(SpritesheetIndex::SPRITESHEET_INDEX_CREATURE);
+  hireling->set_symbol(s);
+
+  HostilityManager hm;
+  hm.set_hostility_to_player(hireling, false);
+
+  hireling->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIRELING_CHAT_SID, "HIRELING_HIRE" + std::to_string(RNG::range(1, 5)) + "_SID");
+
+  int hire_fee = danger_level * 50;
+  hireling->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIRE_FEE, std::to_string(hire_fee));
+
+  // Set up the creature's attack, HP, AP, spells.
+  ExperienceManager em;
+  int xp = em.get_total_experience_needed_for_level(hireling, danger_level);
+  em.gain_experience(hireling, static_cast<uint>(xp));
+
+  // Enchant its equipment
+  ItemEnchantmentCalculator iec;
+  Equipment& eq = hireling->get_equipment();
+
+  for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
+  {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(e);
+    ItemPtr item = eq.get_item(ewl);
+
+    if (item != nullptr)
+    {
+      int num_enchants = 2 + iec.calculate_enchantments(danger_level);      
+      item->enchant(iec.calculate_pct_chance_brand(1.0, item), num_enchants);
+    }
+  }
+
+  return hireling;
 }
 
 bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const TileType terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const bool ignore_level_checks, const string& required_race, const vector<string>& generator_filters, const vector<string>& preset_creature_ids)

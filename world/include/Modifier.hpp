@@ -65,6 +65,9 @@ class Modifier : public ISerializable
     void set_delete(const bool new_delete);
     bool get_delete() const;
 
+    void set_item_id(const std::string& new_item_id);
+    std::string get_item_id() const;
+
     void set_permanent(const bool new_permanent);
     bool get_permanent() const;
 
@@ -95,6 +98,8 @@ class Modifier : public ISerializable
 
     bool mark_delete;
     bool permanent;
+
+    std::string item_id;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

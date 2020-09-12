@@ -5,8 +5,6 @@
 #include "GeneratorUtils.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
-#include "SpringsGenerator.hpp"
-#include "StreamGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
 #include "Directions.hpp"
@@ -42,7 +40,7 @@ MapPtr ForestGenerator::generate(const Dimensions& dimensions)
   fill(result_map, TileType::TILE_TYPE_FIELD);
 
   add_random_bushes_and_weeds (result_map);
-  add_random_stream_or_springs(result_map);
+  GeneratorUtils::add_random_stream_or_springs(result_map, PCT_CHANCE_FOREST_STREAM, PCT_CHANCE_FOREST_STREAM);
 
   return result_map;
 }
@@ -122,43 +120,3 @@ TilePtr ForestGenerator::generate_tree_based_on_world_location(const int world_m
   return tile;
 }
 
-void ForestGenerator::add_random_stream_or_springs(MapPtr result_map)
-{
-  int additional_random_feature = RNG::range(1, 100);
-
-  if (additional_random_feature < PCT_CHANCE_FOREST_STREAM)
-  {
-    add_random_stream(result_map);
-  }
-  else
-  {
-    additional_random_feature = RNG::range(1, 100);
-
-    if (additional_random_feature < PCT_CHANCE_FOREST_SPRINGS)
-    {
-      add_random_springs(result_map);
-    }
-  }
-}
-
-void ForestGenerator::add_random_springs(MapPtr result_map)
-{
-  Dimensions dim = result_map->size();
-  int springs_size = RNG::dice(3, 2); // min size should be 3.
-  int start_y      = RNG::range(1, (dim.get_y() - springs_size - 1));
-  int start_x      = RNG::range(1, (dim.get_x() - springs_size - 1));
-  int rand_type    = RNG::dice(1, 2);
-  SpringsType springs_type = SpringsType::SPRINGS_TYPE_TALL;
-
-  if (rand_type == 2)
-  {
-    springs_type = SpringsType::SPRINGS_TYPE_WIDE;
-  }
-
-  SpringsGenerator::generate(result_map, start_y, start_x, springs_size, springs_type);
-}
-
-void ForestGenerator::add_random_stream(MapPtr map)
-{
-  StreamGenerator::generate(map);
-}

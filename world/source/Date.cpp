@@ -82,6 +82,11 @@ Date Date::null()
   return null_d;
 }
 
+bool Date::get_days_equal(const Date& d) const
+{
+  return ((day_of_year == d.get_day_of_year()) && (year == d.get_year()));
+}
+
 uint Date::get_seconds() const
 {
   return seconds;

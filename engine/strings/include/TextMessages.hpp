@@ -7,6 +7,7 @@
 #include "Item.hpp"
 #include "tiles.hpp"
 #include "Spell.hpp"
+#include "StartingLocation.hpp"
 
 class TextMessages
 {
@@ -16,6 +17,7 @@ class TextMessages
     static std::string get_death_message(const std::string& deity_death_message_sid);
     static std::string get_player_description(const std::string& player_name);
     static std::string get_npc_escapes_message(const std::string& creature_description);
+    static std::string get_npc_level_message(const std::string& creature_description);
     static std::string get_action_not_found_message(const std::string& command_action);
     static std::string get_dumping_character_message(const std::string& creature_name);
     static std::string get_sex(const CreatureSex sex);
@@ -25,7 +27,7 @@ class TextMessages
     static std::string get_equipment_location(const EquipmentWornLocation location);
     static std::string get_confirmation_message(const std::string& query_or_sid);
     static std::string get_area_entrance_message_given_terrain_type(const TileType type);
-    static std::string get_item_drop_message(const bool blind, ItemPtr item);
+    static std::string get_item_drop_message(CreaturePtr creature, const bool blind, ItemPtr item);
     static std::string get_item_pick_up_message(const bool player_blind, CreaturePtr creature, ItemPtr item);
     static std::string get_item_pick_up_and_merge_message(const bool player_blind, CreaturePtr creature, ItemPtr item);
     static std::string get_item_on_ground_description_message(const bool blind, ItemPtr item);
@@ -38,10 +40,14 @@ class TextMessages
     static std::string get_inscription_message(const std::string& inscription_sid, const bool is_world_map);
     static std::string get_replacement_message(const std::string& message, const std::string& replace);
     static std::string get_bool_sid(const bool val);
-    static std::string get_character_creation_synopsis(const CreatureSex cs, Race* race, Class* cur_class, Deity* cur_deity);
+    static std::string get_character_creation_synopsis(const CreatureSex cs, Race* race, Class* cur_class, Deity* cur_deity, StartingLocation* sl);
     static std::string get_slot_machine_message(const int cost, const int pct_chance_win, const int payout_amount);
     static std::string get_slot_machine_outcome_message(const std::string& first_sid, const std::string& second_sid, const std::string& third_sid);
     static std::string get_damage_message(const Damage& damage);
+    static std::string get_equip_message(const std::string& creature_desc_sid, const std::string& item_desc);
+    static std::string get_hirelings_hired_message(const int hirelings_hired);
+    static std::string get_modifier_message(const std::string& status_or_spell_id, const Modifier& m, CreaturePtr c);
+    static std::string get_ending_message(const std::string& ending_time);
 
   protected:
     TextMessages();
@@ -51,6 +57,7 @@ class TextMessages
     static const std::string WELCOME_BACK_MESSAGE;
     static const std::string DUMPING_CHARACTER_MESSAGE;
     static const std::string ITEM_DROP_MESSAGE;
+    static const std::string ITEM_DROP_MESSAGE_MONSTER;
     static const std::string ITEM_PICK_UP_MESSAGE_PLAYER;
     static const std::string ITEM_PICK_UP_MESSAGE_MONSTER;
     static const std::string ITEM_PICK_UP_AND_MERGE_MESSAGE_PLAYER;
@@ -71,4 +78,9 @@ class TextMessages
     static const std::string SLOT_MACHINE_OUTCOME_MESSAGE;
     static const std::string CARRYING_CAPACITY_MESSAGE;
     static const std::string DAMAGE_MESSAGE;
+    static const std::string NPC_LEVEL_MESSAGE;
+    static const std::string NPC_EQUIP_MESSAGE;
+    static const std::string HIRELINGS_HIRED_MESSAGE;
+    static const std::string AFFECTED_BY;
+    static const std::string ENDING_MESSAGE;
 };
