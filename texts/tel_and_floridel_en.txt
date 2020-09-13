@@ -3544,5 +3544,13 @@ their sons, too.  And our former servants, immobile %b
 for the lives we made for them - they will not dread %b
 the chance to stand and finally hold the blade instead."
 %p
-
-
+"Spare the families of our exiled group %b
+and it's a deal."  As Aese looked over, Elin %b
+nodded, as did Weyg.  "We'll need a troop %b
+of a hundred, minimum.  I have a feeling %b
+that Tel will send his skirmishers out here, %b
+but many guards remain, and even serfs %b
+are dangerous enough when armed with spears. %b
+The six of us would barely break the dirt %b
+if we tried to make our way into the fairy courts."
+%p
