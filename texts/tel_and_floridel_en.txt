@@ -3554,3 +3554,13 @@ are dangerous enough when armed with spears. %b
 The six of us would barely break the dirt %b
 if we tried to make our way into the fairy courts."
 %p
+"We'll go to Farstead," Weyg said with a nod, %b
+"and get the men we need.  A hundred hurts %b
+our manpower, but the chance to hit them hard %b
+in their very home, to prise the place apart - %b
+well, to meet you was a serendipity. %b
+We'll kit you at our hall.  We have some breastplates %b
+the unlings made from bronze.  They're rickety %b
+but will stop a sword in close.  We'll make our fate. %b
+Revenge is something both of us can celebrate."
+%p
