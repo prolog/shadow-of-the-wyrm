@@ -3,6 +3,11 @@ Shadow of the Wyrm v1.2.3 "Britten"
 
 - Stanzas for "Tel and Floridel".
 
+- Bug fixes:
+
+  - The time of day LOS code was incorrectly firing when not on an overworld
+    map (Echo38).
+
 Shadow of the Wyrm v1.2.2 "Borrono"
 - Version declared July 17, 2020.  Version finalized September 12, 2020.
 

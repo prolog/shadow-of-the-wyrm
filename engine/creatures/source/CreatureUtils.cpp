@@ -809,7 +809,7 @@ MapPtr CreatureUtils::update_fov_map(MapPtr current_map, MapPtr v_map, CreatureP
     Game& game = Game::instance();
     Date date = GameUtils::get_date(game);
 
-    int los_len = losc.calculate_los_length(current_creature, date.get_time_of_day());
+    int los_len = losc.calculate_los_length(current_creature, current_map->get_map_type(), date.get_time_of_day());
 
     if (view_map == nullptr)
     {

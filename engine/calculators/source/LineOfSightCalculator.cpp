@@ -13,11 +13,12 @@ LineOfSightCalculator::LineOfSightCalculator()
   }
 }
 
-int LineOfSightCalculator::calculate_los_length(CreaturePtr creature, const TimeOfDayType tod)
+int LineOfSightCalculator::calculate_los_length(CreaturePtr creature, const MapType map_type, const TimeOfDayType tod)
 {
   int los_len = DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH;
 
-  if (creature != nullptr)
+  // Only the overworld is affected by TOD values
+  if (creature != nullptr && map_type == MapType::MAP_TYPE_OVERWORLD)
   {
     auto btp_it = base_tod_penalty.find(tod);
 
