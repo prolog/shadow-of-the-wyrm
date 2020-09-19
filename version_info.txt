@@ -3,6 +3,9 @@ Shadow of the Wyrm v1.2.3 "Britten"
 
 - Stanzas for "Tel and Floridel".
 
+- The pickup code is more restrictive, and now only fires for humanoids
+  (Echo38).
+
 - Bug fixes:
 
   - The time of day LOS code was incorrectly firing when not on an overworld

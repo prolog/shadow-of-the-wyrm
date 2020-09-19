@@ -1,5 +1,6 @@
 Me:
-- Stacking issues still present with stones, etc
+- Echo38: Stacking issues still present with stones, etc. Stepping out of
+  shadows displayed twice.
 - First urchin stone has no message!
 - Feature: fence, east_west_fence. Add some fenced areas to set locations.
 - Fenced areas (veg gardens?) in villages
