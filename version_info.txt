@@ -1,10 +1,12 @@
 Shadow of the Wyrm v1.2.3 "Britten"
 - Version declared September 12, 2020.
 
-- Stanzas for "Tel and Floridel".
-
 - The pickup code is more restrictive, and now only fires for humanoids
   (Echo38).
+
+- You can no longer find hiding places while blind (Echo38).
+
+- Stanzas for "Tel and Floridel".
 
 - Bug fixes:
 
