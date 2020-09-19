@@ -3,6 +3,7 @@
 #include "CreatureFactory.hpp"
 #include "MapCreatureGenerator.hpp"
 #include "Conversion.hpp"
+#include "CreatureCalculator.hpp"
 #include "CreationUtils.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "GameUtils.hpp"
@@ -15,7 +16,6 @@
 using namespace std;
 
 const int MapCreatureGenerator::OUT_OF_DEPTH_CREATURES_CHANCE = 15;
-const int MapCreatureGenerator::PACK_CHANCE = 1;
 const int MapCreatureGenerator::PACK_TILE_CHANCE = 90;
 
 // Generate the creatures.  Returns true if creatures were created, false otherwise.
@@ -145,7 +145,9 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
           can_generate_pack = (c_it->second.is_maximum_reached() == false);
         }
 
-        if (can_generate_pack && RNG::percent_chance(PACK_CHANCE))
+        CreatureCalculator cc;
+
+        if (can_generate_pack && cc.get_pct_chance_pack(generated_creature))
         {
           // Pack generation: packs are meaner, are not suppressed from appearing
           // by stairs.

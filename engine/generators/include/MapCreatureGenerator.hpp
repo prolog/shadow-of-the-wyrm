@@ -24,7 +24,6 @@ class MapCreatureGenerator
     bool maximum_creatures_reached(MapPtr map, const int current_creatures_placed, const int num_creatures_to_place);
 
     static const int OUT_OF_DEPTH_CREATURES_CHANCE;
-    static const int PACK_CHANCE;
     static const int PACK_TILE_CHANCE;
 };
 
