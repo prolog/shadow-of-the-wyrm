@@ -16,6 +16,8 @@ Shadow of the Wyrm v1.2.3 "Britten"
   - The time of day LOS code was incorrectly firing when not on an overworld
     map (Echo38).
 
+  - Leviathans were incorrectly appearing in dungeons (Echo38).
+
   - Various bestiary/codex typos and improvements (various)
 
 Shadow of the Wyrm v1.2.2 "Borrono"
