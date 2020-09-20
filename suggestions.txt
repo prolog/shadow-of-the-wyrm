@@ -1,4 +1,7 @@
 Me:
+- sword-eater/hits himself (Echo38)
+- Osmosis wand: how much MP is it draining? (Grond)
+- Improve money saccing (Grond)
 - Pack calculations. Unit tests.
 - Echo38: Stacking issues still present with stones, etc. Stepping out of
   shadows displayed twice.
@@ -279,5 +282,6 @@ Larzid
 
 Echo38
 - Rebindable paging keys
+- User macros
 - Add info on the weapon synopsis to the manual
 - max fire res on fire spirits, etc

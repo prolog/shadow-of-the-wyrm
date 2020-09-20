@@ -323,6 +323,7 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="UserPlayable" type="xs:boolean"/>
+			<xs:element name="PackMultiplier" type="xs:integer" minOccurs="0"/>
 			<xs:element name="Slayable" type="xs:boolean"/>
 			<xs:element name="LeavesCorpse" type="xs:boolean"/>
 			<xs:element name="CorpsePoisoned" type="xs:boolean"/>
@@ -1471,7 +1472,7 @@
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxExclusive value="100"/>
+		<xs:maxInclusive value="100"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="PrimaryStatistic">

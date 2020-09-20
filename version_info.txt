@@ -6,12 +6,17 @@ Shadow of the Wyrm v1.2.3 "Britten"
 
 - You can no longer find hiding places while blind (Echo38).
 
+- Races can now be defined to have an increased chance to generate packs of 
+  creatures.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
 
   - The time of day LOS code was incorrectly firing when not on an overworld
     map (Echo38).
+
+  - Various bestiary/codex typos and improvements (various)
 
 Shadow of the Wyrm v1.2.2 "Borrono"
 - Version declared July 17, 2020.  Version finalized September 12, 2020.

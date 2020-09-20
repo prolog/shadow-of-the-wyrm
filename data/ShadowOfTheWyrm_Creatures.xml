@@ -6790,7 +6790,6 @@
 			<ShortDescriptionSID>GOLGOTHAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GOLGOTHAN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GOLGOTHAN_TEXT_DETAILS_SID</TextDetailsSID>
-			<SpeechTextSID>GOLGOTHAN_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
