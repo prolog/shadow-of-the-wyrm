@@ -541,7 +541,7 @@ an artery.  The hobbled creature sprayed %b
 and screamed, and as it did, the willows shied, %b
 the tallgrass bending low as if to pray %b
 to be released from fury amplified %b
-by ankle bones laid bare and tendons slashed aside.
+by ankle bones exposed and tendons slashed aside.
 %p
 Unsteady, now, the giant snarled with hate: %b
 "You petty thing, you gnome-beneath-the-earth, %b
@@ -1195,7 +1195,7 @@ their schedule.  The weather never cooled, %b
 remaining humid, moisture in the air %b
 becoming condensation on the skin, %b
 beads that reformed to rivulets, and where %b
-the flat of an axe-blade touched the back, the thin %b
+the flat of an axe head touched the back, the thin %b
 cotton became a butterfly or violin.
 %p
 Appropriate, for now they broke away %b
@@ -2637,7 +2637,7 @@ in patterns, planar figures in the dark %b
 whose boundaries met rivers, lit the dead %b
 beneath the water, helping to impart %b
 the barest glint of order, and to send %b
-them through the shadow-lands whose name is never said.
+them through shadowlands whose name is never said.
 %p
 They walked around the rivers, as they found %b
 each terminus fell somewhere down below, %b
@@ -2707,7 +2707,7 @@ of paper whose expansion forms a plane %b
 that touches ours.  We see it in the way %b
 our lover scratches at the windowpane %b
 despite being dead a week, or in the grey %b
-periphery, a face we can't explain away.
+periphery, that face we can't explain away.
 %p
 Within the tallgrass, each could feel the air %b
 grow heavier with scent - the obvious %b

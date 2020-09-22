@@ -805,7 +805,12 @@ ActionCostValue MovementAction::handle_properties_and_move_to_new_map(CreaturePt
     if (current_tile->has_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_ITEMS))
     {
       MapItemGenerator mig;
-      mig.generate_initial_set_items(new_map, current_tile->get_additional_properties());
+      bool items_generated = mig.generate_initial_set_items(new_map, current_tile->get_additional_properties());
+
+      if (items_generated)
+      {
+        current_tile->remove_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_ITEMS);
+      }
     }
 
     // Update the weather, if we're coming off the world map.

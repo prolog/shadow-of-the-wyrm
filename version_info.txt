@@ -20,6 +20,9 @@ Shadow of the Wyrm v1.2.3 "Britten"
 
   - Various bestiary/codex typos and improvements (various)
 
+  - When tiles/maps had preset items to be generated, this property wasn't
+    being cleared properly after generation, causing duplication (Echo38).
+
 Shadow of the Wyrm v1.2.2 "Borrono"
 - Version declared July 17, 2020.  Version finalized September 12, 2020.
 
