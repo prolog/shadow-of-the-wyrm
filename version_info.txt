@@ -2,9 +2,9 @@ Shadow of the Wyrm v1.2.3 "Britten"
 - Version declared September 12, 2020.
 
 - The pickup code is more restrictive, and now only fires for humanoids
-  (Echo38).
+  (Josh Engdahl).
 
-- You can no longer find hiding places while blind (Echo38).
+- You can no longer find hiding places while blind (Josh Engdahl).
 
 - Races can now be defined to have an increased chance to generate packs of 
   creatures.
@@ -16,14 +16,15 @@ Shadow of the Wyrm v1.2.3 "Britten"
 - Bug fixes:
 
   - The time of day LOS code was incorrectly firing when not on an overworld
-    map (Echo38).
+    map (Josh Engdahl).
 
-  - Leviathans were incorrectly appearing in dungeons (Echo38).
+  - Leviathans were incorrectly appearing in dungeons (Josh Engdahl).
 
   - Various bestiary/codex typos and improvements (various)
 
   - When tiles/maps had preset items to be generated, this property wasn't
-    being cleared properly after generation, causing duplication (Echo38).
+    being cleared properly after generation, causing duplication (Josh 
+    Engdahl).
 
 Shadow of the Wyrm v1.2.2 "Borrono"
 - Version declared July 17, 2020.  Version finalized September 12, 2020.
@@ -69,12 +70,12 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   using the 'o'rder command. They have an enchanted set of initial equipment,
   and have improved versions of their initial race and class skills.
 
-- The quit message now references that the game won't be saved (Echo38).
+- The quit message now references that the game won't be saved (Josh Engdahl).
 
 - Villages can have orchards as well as vegetable gardens.
 
 - When unstacking wands after use, the new wand now goes to the front of
-  the inventory (Echo38).
+  the inventory (Josh Engdahl).
 
 - Added a bit more heat resistance to Forger, toned down Goblincrusher's
   damage a touch.
@@ -82,7 +83,7 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 - The ranged animation is now a little faster (Grond).
 
 - Wands now show the total as well as the current charges, which makes it much
-  more clear why they don't stack (Echo38).
+  more clear why they don't stack (Josh Engdahl).
 
 - Merchants now start with full knowledge of the game's items.
 
@@ -135,14 +136,14 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   - The free hidden actions counter could get out of whack. Capped that so
     the player couldn't get lots of free actions while safely hidden (Grond).
 
-  - Drinking potions off the ground was buggy (Echo38).
+  - Drinking potions off the ground was buggy (Josh Engdahl).
 
   - The examine command was giving too much information when the player was
     blind.
 
   - The unarmed combat improvement message wasn't firing properly (Grond).
 
-  - Various typos in the bestiary and "Tel and Floridel" (Echo38).
+  - Various typos in the bestiary and "Tel and Floridel" (Josh Engdahl).
 
   - The messages for special in-game days were broken (Grond).
 
@@ -150,7 +151,7 @@ Shadow of the Wyrm v1.2.2 "Borrono"
     (Grond).
 
   - Entering an invalid pickup quantity was causing the turn to advance
-    (Echo38).
+    (Josh Engdahl).
 
 Shadow of the Wyrm v1.2.1 "Lully"
 - Version declared June 21, 2020.  Version finalized July 17, 2020.
