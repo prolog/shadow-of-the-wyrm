@@ -9,6 +9,8 @@ Shadow of the Wyrm v1.2.3 "Britten"
 - Races can now be defined to have an increased chance to generate packs of 
   creatures.
 
+- Corpses are worth a little more piety; ivory is worth a lot more.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

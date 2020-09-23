@@ -147,7 +147,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 
         CreatureCalculator cc;
 
-        if (can_generate_pack && cc.get_pct_chance_pack(generated_creature))
+        if (can_generate_pack && RNG::percent_chance(cc.get_pct_chance_pack(generated_creature)))
         {
           // Pack generation: packs are meaner, are not suppressed from appearing
           // by stairs.

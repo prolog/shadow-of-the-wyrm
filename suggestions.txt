@@ -1,9 +1,9 @@
 Me:
-- Target creature, lose LOS, cursor goes back to its location (Echo38)
+- Some kind of warning/etc around the treasury
+- Should golems have guard flag as well, so that guards won't attack them?
+- Generate tombs with keys outside door/doors locked
 - sword-eater/hits himself (Echo38)
 - Osmosis wand: how much MP is it draining? (Grond)
-- Improve money saccing (Grond)
-- Pack calculations. Unit tests.
 - Echo38: Stacking issues still present with stones, etc. Stepping out of
   shadows displayed twice.
 - Corpse weights
