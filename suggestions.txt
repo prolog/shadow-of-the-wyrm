@@ -1,5 +1,4 @@
 Me:
-- Some kind of warning/etc around the treasury
 - Should golems have guard flag as well, so that guards won't attack them?
 - Generate tombs with keys outside door/doors locked
 - sword-eater/hits himself (Echo38)

@@ -50,28 +50,28 @@
 				<ID>carcassian_guard</ID>
 				<Coord>
 					<Row>18</Row>
-					<Col>41</Col>
+					<Col>42</Col>
 				</Coord>
 			</Placement>
 			<Placement>
 				<ID>carcassian_guard</ID>
 				<Coord>
 					<Row>18</Row>
-					<Col>52</Col>
+					<Col>51</Col>
 				</Coord>
 			</Placement>
 			<Placement>
 				<ID>carcassian_guard</ID>
 				<Coord>
 					<Row>18</Row>
-					<Col>58</Col>
+					<Col>59</Col>
 				</Coord>
 			</Placement>
 			<Placement>
 				<ID>carcassian_guard</ID>
 				<Coord>
 					<Row>18</Row>
-					<Col>73</Col>
+					<Col>72</Col>
 				</Coord>
 			</Placement>
 			<Placement>
@@ -205,6 +205,24 @@
 		</Exit>
 	</Exits>
 	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>18</Row>
+				<Col>52</Col>
+			</Coord>
+			<Sign>
+				<TextSID>CARCASSIAN_TREASURY_SID</TextSID>
+			</Sign>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>18</Row>
+				<Col>58</Col>
+			</Coord>
+			<Sign>
+				<TextSID>CARCASSIAN_TREASURY_SID</TextSID>
+			</Sign>
+		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>
 				<Row>10</Row>

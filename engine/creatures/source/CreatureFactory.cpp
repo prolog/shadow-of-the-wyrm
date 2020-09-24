@@ -421,10 +421,20 @@ void CreatureFactory::set_initial_statistics(CreaturePtr creature, Race* race, C
                          + deity_m.get_health_modifier()
                          + (RNG::range(0,3));
                          
-  Statistic intelligence = race->get_starting_intelligence().get_base()
+  int iint               = race->get_starting_intelligence().get_base()
                          + class_m.get_intelligence_modifier()
-                         + deity_m.get_intelligence_modifier()
-                         + (RNG::range(0,3));
+                         + deity_m.get_intelligence_modifier();
+
+  // Intelligence is something of a special case, and doesn't allow
+  // randomizing if the value is 1.  This is because certain races
+  // (e.g., constructs) may requires creatures to have an Int of 1
+  // to prevent things like opening doors, etc.
+  if (iint > 1)
+  {
+    iint += RNG::range(0, 3);
+  }
+
+  Statistic intelligence = iint;
                          
   Statistic willpower    = race->get_starting_willpower().get_base()
                          + class_m.get_willpower_modifier()

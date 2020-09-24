@@ -11,6 +11,8 @@ Shadow of the Wyrm v1.2.3 "Britten"
 
 - Corpses are worth a little more piety; ivory is worth a lot more.
 
+- There's now a pair of warning signs outside the treasury.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
@@ -25,6 +27,9 @@ Shadow of the Wyrm v1.2.3 "Britten"
   - When tiles/maps had preset items to be generated, this property wasn't
     being cleared properly after generation, causing duplication (Josh 
     Engdahl).
+
+  - Stopped randomizing Intelligence when generated at 1 so that golems and
+    other unintelligent creatures can no longer figure out how to work doors.
 
 Shadow of the Wyrm v1.2.2 "Borrono"
 - Version declared July 17, 2020.  Version finalized September 12, 2020.
