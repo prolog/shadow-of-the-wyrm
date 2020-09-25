@@ -16,6 +16,9 @@ Shadow of the Wyrm v1.2.3 "Britten"
 - Various code updates to make items stack in a more intuitive way, creating
   fewer stacks overall.
 
+- Draining and ethereal damage flags now have a greater chance to fire - 30%
+  and 70%, respectively (was 20 and 20).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

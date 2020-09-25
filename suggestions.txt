@@ -1,18 +1,14 @@
 Me:
-- Consumable nutrition in codex
+- Hidden PCs are never found via bumping (Josh Engdahl)
 - Should golems have guard flag as well, so that guards won't attack them?
 - Generate tombs with keys outside door/doors locked
-- Hidden PCs are never found via bumping (Josh Engdahl)
-- sword-eater/hits himself (Echo38)
-- Osmosis wand: how much MP is it draining? (Grond)
-- Echo38: Stacking issues still present with stones, etc. Stepping out of
-  shadows displayed twice.
+- sword-eater/hits himself (Josh Engdahl)
 - Corpse weights
 - First urchin stone has no message!
 - Feature: fence, east_west_fence. Add some fenced areas to set locations.
 - Fenced areas (veg gardens?) in villages
 - Wyrm level stupid slow?
-- Fleeing behaviour for humanoids (Echo38)
+- Fleeing behaviour for humanoids (Josh Engdahl)
 - Need to get hirelings text-searchable in bestiary
 - Creatures try to cast utility spells when they don't make sense (uncursing,
   etc). Should be checks to see if effect makes sense.
@@ -282,7 +278,7 @@ Larzid
 - display type a command line arg
 - SDL as a build param
 
-Echo38
+Josh Engdahl
 - Rebindable paging keys
 - User macros
 - Add info on the weapon synopsis to the manual
