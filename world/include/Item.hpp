@@ -211,10 +211,6 @@ class Item : public ISerializable
     virtual void set_item_identified(const bool new_item_identified);
     virtual bool get_item_identified() const;
 
-    // Initialize the number of remaining enchantments/smithings on item creation
-    void initialize_remaining_enchants();
-    void initialize_remaining_smithings();
-
     // The base item class enchants/smiths by updating resistances.
     // Other items may modify nutrition (consumables), evade/soak (wearables),
     // etc.  Smithing only updates physical damage types.  Branding only

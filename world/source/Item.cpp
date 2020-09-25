@@ -18,13 +18,6 @@ using namespace std;
 
 namespace ItemEnchantingSmithing
 {
-  // Minimum/maximum number of enchantments on an item.
-  const int MIN_ENCHANTS = 6;
-  const int MAX_ENCHANTS = 9;
-
-  const int MIN_SMITHING = 6;
-  const int MAX_SMITHING = 9;
-
   // Minimum/maximum number of points per enchant/smithing.
   const int MIN_POINTS = 3;
   const int MAX_POINTS = 6;
@@ -34,11 +27,9 @@ Item::Item()
 : quantity(1), readable(false), worn_location(EquipmentWornLocation::EQUIPMENT_WORN_NONE), status(ItemStatus::ITEM_STATUS_UNCURSED), status_identified(false), 
 item_identified(false), auto_curse(false), artifact(false), hands_required(1), type(ItemType::ITEM_TYPE_MISC), symbol('?', Colour::COLOUR_UNDEFINED), colour(Colour::COLOUR_UNDEFINED), 
 identification_type(ItemIdentificationType::ITEM_IDENTIFY_ON_SUCCESSFUL_USE), effect(EffectType::EFFECT_TYPE_NULL), material(MaterialType::MATERIAL_TYPE_WOOD),
-glowing(false), unpaid(false)
+glowing(false), remaining_enchants(8), remaining_smithings(8), unpaid(false)
 {
   resistances.set_all_resistances_to(0);
-  initialize_remaining_enchants();
-  initialize_remaining_smithings();
 }
 
 Item::~Item()
@@ -506,18 +497,6 @@ bool Item::get_auto_curse() const
   return auto_curse;
 }
 
-void Item::initialize_remaining_enchants()
-{
-  Statistic new_rem(RNG::range(ItemEnchantingSmithing::MIN_ENCHANTS, ItemEnchantingSmithing::MAX_ENCHANTS));
-  set_remaining_enchants(new_rem);
-}
-
-void Item::initialize_remaining_smithings()
-{
-  Statistic new_sm(RNG::range(ItemEnchantingSmithing::MIN_SMITHING, ItemEnchantingSmithing::MAX_SMITHING));
-  set_remaining_smithings(new_sm);
-}
-
 bool Item::can_enchant() const
 {
   bool can_enchant = !get_artifact();
@@ -583,7 +562,7 @@ bool Item::smith(const int smith_points)
 
 bool Item::brand()
 {
-  if (remaining_enchants.get_current() > 0)
+  if (remaining_enchants.get_current() > 0 && worn_location != EquipmentWornLocation::EQUIPMENT_WORN_NONE)
   {
     DamageType brand = do_brand();
 
@@ -677,73 +656,81 @@ void Item::do_enchant_item(const int points)
   }
 
   // Enchant between 1 and 3 resistances.
-  int num_resists = RNG::range(1, std::min<int>(points, 3));
-
-  vector<DamageType> resvul_dt_vec;
-  vector<DamageType> unused_dt_vec;
-
-  // Get a list of resistances/vulns.
-  // For items, these are values != 0.
-  // Also track the non-zero ones, so that if there are additional "slots"
-  // to enchant, one can be selected.
-  for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
+  int num_resists = 0;
+  
+  if (worn_location != EquipmentWornLocation::EQUIPMENT_WORN_NONE)
   {
-    DamageType dt = static_cast<DamageType>(d);
-
-    if (!dequal(resistances.get_resistance_value(dt), 0))
-    {
-      resvul_dt_vec.push_back(dt);
-    }
-    else
-    {
-      unused_dt_vec.push_back(dt);
-    }
+    num_resists = RNG::range(1, std::min<int>(points, 3));
   }
 
-  // Randomly shuffle the already-resisted and yet-to-be-resisted damage
-  // types to determine what will be resisted.
-  shuffle(resvul_dt_vec.begin(), resvul_dt_vec.end(), RNG::get_engine());
-  shuffle(unused_dt_vec.begin(), unused_dt_vec.end(), RNG::get_engine());
-
-  // The enchantment amount is the number of points divided by the number of
-  // enchantments, int-and-then-float-ified.
-  int base_enchant_amt = points / num_resists;
-  float enchant_amt = base_enchant_amt / 100.0f;
-
-  // Start with the initial damage types and enchant a number of them.
-  uint i = 0;
-  uint unum_resists = static_cast<uint>(num_resists);
-
-  for (; i < unum_resists; i++)
+  if (num_resists > 0)
   {
-    if (i >= resvul_dt_vec.size())
+    vector<DamageType> resvul_dt_vec;
+    vector<DamageType> unused_dt_vec;
+
+    // Get a list of resistances/vulns.
+    // For items, these are values != 0.
+    // Also track the non-zero ones, so that if there are additional "slots"
+    // to enchant, one can be selected.
+    for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
     {
-      break;
+      DamageType dt = static_cast<DamageType>(d);
+
+      if (!dequal(resistances.get_resistance_value(dt), 0))
+      {
+        resvul_dt_vec.push_back(dt);
+      }
+      else
+      {
+        unused_dt_vec.push_back(dt);
+      }
     }
 
-    DamageType dt = resvul_dt_vec.at(i);
-    resistances.set_resistance_value(dt, resistances.get_resistance_value(dt) + enchant_amt);
-  }
+    // Randomly shuffle the already-resisted and yet-to-be-resisted damage
+    // types to determine what will be resisted.
+    shuffle(resvul_dt_vec.begin(), resvul_dt_vec.end(), RNG::get_engine());
+    shuffle(unused_dt_vec.begin(), unused_dt_vec.end(), RNG::get_engine());
 
-  // Any carryover is applied to the unused damage types.
-  uint j = 0;
-  for (; i < unum_resists; i++)
-  {
-    if (j >= unused_dt_vec.size())
+    // The enchantment amount is the number of points divided by the number of
+    // enchantments, int-and-then-float-ified.
+    int base_enchant_amt = points / num_resists;
+    float enchant_amt = base_enchant_amt / 100.0f;
+
+    // Start with the initial damage types and enchant a number of them.
+    uint i = 0;
+    uint unum_resists = static_cast<uint>(num_resists);
+
+    for (; i < unum_resists; i++)
     {
-      break;
+      if (i >= resvul_dt_vec.size())
+      {
+        break;
+      }
+
+      DamageType dt = resvul_dt_vec.at(i);
+      resistances.set_resistance_value(dt, resistances.get_resistance_value(dt) + enchant_amt);
     }
 
-    DamageType dt = unused_dt_vec.at(j);
-    resistances.set_resistance_value(dt, resistances.get_resistance_value(dt) + enchant_amt);
+    // Any carryover is applied to the unused damage types.
+    uint j = 0;
+    for (; i < unum_resists; i++)
+    {
+      if (j >= unused_dt_vec.size())
+      {
+        break;
+      }
 
-    j++;
+      DamageType dt = unused_dt_vec.at(j);
+      resistances.set_resistance_value(dt, resistances.get_resistance_value(dt) + enchant_amt);
+
+      j++;
+    }
   }
 }
 
 void Item::do_smith_item(const int points)
 {
-  if (points < 1)
+  if (points < 1 || worn_location == EquipmentWornLocation::EQUIPMENT_WORN_NONE)
   {
     return;
   }

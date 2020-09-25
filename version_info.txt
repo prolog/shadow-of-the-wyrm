@@ -13,6 +13,9 @@ Shadow of the Wyrm v1.2.3 "Britten"
 
 - There's now a pair of warning signs outside the treasury.
 
+- Various code updates to make items stack in a more intuitive way, creating
+  fewer stacks overall.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

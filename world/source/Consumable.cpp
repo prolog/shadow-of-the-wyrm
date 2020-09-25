@@ -105,11 +105,10 @@ bool Consumable::consumable_properties_match(const Consumable& cons) const
   return result;
 }
 
-// Food becomes more or less nutritious, based on whether the enchantment's BUC
-// status.  Any poison is also removed.
+// Food becomes more or less nutritious, based on the enchantment's BUC
+// status.  Any poison is removed.
 void Consumable::do_enchant_item(const int points)
 {
-  nutrition *= points;
   poisoned = false;
 }
 

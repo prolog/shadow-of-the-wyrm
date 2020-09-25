@@ -34,7 +34,7 @@ class Consumable : public Item
     virtual bool deserialize(std::istream& stream) override;
 
   protected:
-    virtual void do_enchant_item(const int points);
+    virtual void do_enchant_item(const int points) override;
 
     int nutrition;
     float standard_drinks;
