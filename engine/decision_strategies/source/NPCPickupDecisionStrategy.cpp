@@ -44,6 +44,7 @@ CommandPtr NPCPickupDecisionStrategy::decide(CreaturePtr creature, MapPtr map)
       if (inv != nullptr)
       {
         list<ItemPtr>& items = inv->get_items_ref();
+        CurrentCreatureAbilities cca;
 
         for (ItemPtr item : items)
         {
@@ -52,6 +53,7 @@ CommandPtr NPCPickupDecisionStrategy::decide(CreaturePtr creature, MapPtr map)
           // 
           // They also don't pick up items that will make them burdened.
           if (CreatureUtils::can_pick_up(creature, item).first &&
+            cca.can_see(creature) &&
             item != nullptr &&
             !item->get_unpaid() &&
             pickup &&

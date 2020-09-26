@@ -37,6 +37,8 @@ Shadow of the Wyrm v1.2.3 "Britten"
   - Stopped randomizing Intelligence when generated at 1 so that golems and
     other unintelligent creatures can no longer figure out how to work doors.
 
+  - NPCs will no longer pick up items while blind.
+
 Shadow of the Wyrm v1.2.2 "Borrono"
 - Version declared July 17, 2020.  Version finalized September 12, 2020.
 

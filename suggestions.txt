@@ -1,4 +1,9 @@
 Me:
+- Can't uncurse voiceless amulet via prayer (Vestphiliac)
+- When follower has rocks and you're between them and a hostile creature
+  your follower will throw rocks but it'll be their melee attack (Josh
+  Engdahl)
+- Only pick up or equip ammo when no spells or out of ammo
 - Hidden PCs are never found via bumping (Josh Engdahl)
 - Should golems have guard flag as well, so that guards won't attack them?
 - Generate tombs with keys outside door/doors locked
