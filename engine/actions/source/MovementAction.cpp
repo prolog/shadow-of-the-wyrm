@@ -405,7 +405,7 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
 
   if (adjacent_creature != nullptr)
   {
-    CombatManager cm;
+    CombatManager cm;   
 
     // Call the directional attack function so that if the creature is
     // dual wielding weapons, both attacks are properly considered.

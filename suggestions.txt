@@ -1,4 +1,5 @@
 Me:
+- Ancient beasts back in wells (grond/JE)
 - Can't uncurse voiceless amulet via prayer (Vestphiliac)
 - When follower has rocks and you're between them and a hostile creature
   your follower will throw rocks but it'll be their melee attack (Josh
