@@ -1,6 +1,13 @@
 Me:
-- Ancient beasts back in wells (grond/JE)
-- Can't uncurse voiceless amulet via prayer (Vestphiliac)
+- Can't uncurse voiceless amulet via prayer (Vestphiliac). This is because
+  the game selects remove status, but can't as it's the result of a cursed
+  item. RestoreStatusDeity... should also uncurse any cursed items that
+  generate negative statuses.
+- There may be a crash happening. Reported in forest by ID, rapid moving
+  toward group of spearmen
+- Exclude mk_am property when doing item comparison. Test by generating an
+  item, automoving over it, generating another item, seeing if they stack.
+- Some kind of special comparison ("Unknown") for Ancient Beasts
 - When follower has rocks and you're between them and a hostile creature
   your follower will throw rocks but it'll be their melee attack (Josh
   Engdahl)
