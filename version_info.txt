@@ -19,6 +19,9 @@ Shadow of the Wyrm v1.2.3 "Britten"
 - Draining and ethereal damage flags now have a greater chance to fire - 30%
   and 70%, respectively (was 20 and 20).
 
+- Insects now generate with 1 Intelligence to prevent them from being able to
+  open doors (Josh Engdahl).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
