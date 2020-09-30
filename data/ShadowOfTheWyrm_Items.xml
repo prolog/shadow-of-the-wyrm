@@ -13277,7 +13277,7 @@
 			<Item id="wave_locket">
 				<DescriptionSID>WAVE_LOCKET_SID</DescriptionSID>
 				<UsageDescriptionSID>WAVE_LOCKET_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>WAVE_LOCKED_CODEX_SID</CodexDescriptionSID>
+				<CodexDescriptionSID>WAVE_LOCKET_CODEX_SID</CodexDescriptionSID>
 				<Value>8</Value>
 				<Weight>
 					<Pounds>0</Pounds>
