@@ -403,13 +403,30 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
     }
   }
 
+  // Prevent hirelings from trying to move into their leader's tile,
+  // thereby trying to attack them.
   if (adjacent_creature != nullptr)
   {
-    CombatManager cm;   
+    bool should_attack = true;
 
-    // Call the directional attack function so that if the creature is
-    // dual wielding weapons, both attacks are properly considered.
-    movement_acv = cm.attack(creature, d);
+    if (creature != nullptr)
+    {
+      string leader_id = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+
+      if (leader_id == adjacent_creature->get_id())
+      {
+        should_attack = false;
+      }
+    }
+
+    if (should_attack)
+    {
+      CombatManager cm;
+
+      // Call the directional attack function so that if the creature is
+      // dual wielding weapons, both attacks are properly considered.
+      movement_acv = cm.attack(creature, d);
+    }
   }
 
   return movement_acv;

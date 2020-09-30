@@ -39,6 +39,10 @@ Shadow of the Wyrm v1.2.3 "Britten"
 
   - NPCs will no longer pick up items while blind.
 
+  - Hirelings were very enthusiastic about following your orders to attack,
+    to the point of attacking you to get at the creature they're supposed to
+    be killing (Josh Engdahl).
+
 Shadow of the Wyrm v1.2.2 "Borrono"
 - Version declared July 17, 2020.  Version finalized September 12, 2020.
 
