@@ -1,4 +1,5 @@
 Me:
+- Are hirelings disappearing between Carcassian maps? (debugger)
 - Can't uncurse voiceless amulet via prayer (Vestphiliac). This is because
   the game selects remove status, but can't as it's the result of a cursed
   item. RestoreStatusDeity... should also uncurse any cursed items that
