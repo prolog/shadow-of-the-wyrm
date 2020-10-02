@@ -297,3 +297,9 @@ Josh Engdahl
 - User macros
 - Add info on the weapon synopsis to the manual
 - max fire res on fire spirits, etc
+- support for "extending" good status effects via drinking multiple potions,
+  etc
+- exile should have a rowboat
+- when hiding and checking stuff, spirits in walls don't seem to count against
+  the checks
+- don't step out of shadows if creatures don't have you in LOS
