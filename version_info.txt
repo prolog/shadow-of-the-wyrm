@@ -52,6 +52,10 @@ Shadow of the Wyrm v1.2.3 "Britten"
 
   - Bestiary/codex typos (various).
 
+  - Melura's stats option text wasn't displaying properly (Josh Engdahl),
+    and her chat script was also not gracefully handling garbage input or
+    offering 0 ivory.
+
 Shadow of the Wyrm v1.2.2 "Borrono"
 - Version declared July 17, 2020.  Version finalized September 12, 2020.
 

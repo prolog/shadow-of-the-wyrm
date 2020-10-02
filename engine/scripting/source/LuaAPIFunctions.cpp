@@ -709,6 +709,7 @@ int add_char_message(lua_State* ls)
   if ((lua_gettop(ls) > 0) && (lua_isstring(ls, 1)))
   {
     Game& game = Game::instance();
+    DisplayPtr display = game.get_display();
     CreaturePtr player = game.get_current_player();
     string message = read_sid_and_replace_values(ls);
 
@@ -716,6 +717,11 @@ int add_char_message(lua_State* ls)
     manager.clear_if_necessary();
     manager.add_new_message(message);
     manager.send();
+
+    if (display != nullptr)
+    {
+      display->refresh_current_window();
+    }
 
     key_val = static_cast<char>(player->get_decision_strategy()->get_controller()->get_char_as_int());
   }

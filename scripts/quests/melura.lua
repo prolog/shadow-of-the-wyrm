@@ -9,6 +9,11 @@ local stat_enum = trainable_stats[keypress]
 if stat_enum ~= nil then
   local payment = tonumber(add_prompt_message("MELURA_SPEECH_AMOUNT_SID"))
   local avail_funds = count_currency(PLAYER_ID)
+  
+  if payment == nil or payment == 0 then
+    clear_and_add_message("MELURA_NIL_PAYMENT")
+    return
+  end
 
   if payment > avail_funds then
     clear_and_add_message("MELURA_NSF_SID")
