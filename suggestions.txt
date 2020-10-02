@@ -1,4 +1,9 @@
 Me:
+- JE: tile selection keys not added to reloadable ones
+- JE: Melura's options don't show up when talking to her, have to use msg
+  history
+- JE: make crumble work on items/features made out of stone/marble (eg
+  petrified corpses)
 - Are hirelings disappearing between Carcassian maps? (debugger)
 - Can't uncurse voiceless amulet via prayer (Vestphiliac). This is because
   the game selects remove status, but can't as it's the result of a cursed

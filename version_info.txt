@@ -48,6 +48,8 @@ Shadow of the Wyrm v1.2.3 "Britten"
 
   - Seafarers' titles weren't properly defined (Josh Engdahl).
 
+  - Cypress trees were incorrectly defined as deciduous (Josh Engdahl).
+
   - Bestiary/codex typos (various).
 
 Shadow of the Wyrm v1.2.2 "Borrono"
