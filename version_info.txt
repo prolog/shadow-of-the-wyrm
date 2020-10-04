@@ -22,6 +22,9 @@ Shadow of the Wyrm v1.2.3 "Britten"
 - Insects now generate with 1 Intelligence to prevent them from being able to
   open doors (Josh Engdahl).
 
+- Ancient Beasts now show up as "Unknown" difficulty, regardless of their
+  level.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
@@ -55,6 +58,8 @@ Shadow of the Wyrm v1.2.3 "Britten"
   - Melura's stats option text wasn't displaying properly (Josh Engdahl),
     and her chat script was also not gracefully handling garbage input or
     offering 0 ivory.
+
+  - Blindness wasn't properly restricting NPCs' FOV maps (Josh Engdahl).
 
 Shadow of the Wyrm v1.2.2 "Borrono"
 - Version declared July 17, 2020.  Version finalized September 12, 2020.

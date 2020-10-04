@@ -813,7 +813,7 @@ MapPtr CreatureUtils::update_fov_map(MapPtr current_map, MapPtr v_map, CreatureP
 
     if (view_map == nullptr)
     {
-      view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, los_len);
+      view_map = ViewMapTranslator::create_view_map_around_tile(current_creature, current_map, creature_coords, los_len);
     }
 
     FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy(current_creature->get_is_player());

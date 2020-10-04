@@ -5,6 +5,7 @@
 class DifficultyTextKeys
 {
   public:
+    static const std::string DIFFICULTY_UNKNOWN;
     static const std::string DIFFICULTY_DEADLY;
     static const std::string DIFFICULTY_DANGEROUS;
     static const std::string DIFFICULTY_CAPABLE;

@@ -1571,7 +1571,7 @@ void MapUtils::calculate_fov_maps_for_all_creatures(MapPtr current_map)
     {
       int los_len = losc.calculate_los_length(current_creature, current_map->get_map_type(), tod);
       Coordinate creature_coords = current_map->get_location(current_creature->get_id());
-      MapPtr view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, los_len);
+      MapPtr view_map = ViewMapTranslator::create_view_map_around_tile(current_creature, current_map, creature_coords, los_len);
 
       FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy(current_creature->get_is_player());
       MapPtr fov_map = fov_strategy->calculate(current_creature, view_map, creature_coords, los_len);

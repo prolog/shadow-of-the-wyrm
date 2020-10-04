@@ -59,6 +59,11 @@ string CreatureDifficulty::get_difficulty_text_sid(CreaturePtr appraising_creatu
 
   if (appraising_creature != nullptr && target_creature != nullptr)
   {
+    if (Creature::is_ancient_beast(target_creature->get_original_id()))
+    {
+      return DifficultyTextKeys::DIFFICULTY_UNKNOWN;
+    }
+
     int appraise_level = appraising_creature->get_level().get_current();
     int target_level = target_creature->get_level().get_current();
 

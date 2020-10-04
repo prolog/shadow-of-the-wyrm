@@ -1,4 +1,5 @@
 Me:
+- pick up/drop all that work with filters
 - JE: tile selection keys not added to reloadable ones
 - JE: Melura's options don't show up when talking to her, have to use msg
   history
