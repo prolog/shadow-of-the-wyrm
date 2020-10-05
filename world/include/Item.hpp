@@ -174,6 +174,8 @@ class Item : public ISerializable
     std::string get_additional_property(const std::string& property_name) const;
     bool has_additional_property(const std::string& property_name) const;
 
+    std::map<std::string, std::string> get_additional_properties() const;
+
     void clear_event_scripts();
     void set_event_scripts(const std::map<std::string, ScriptDetails>& esm);
     std::map<std::string, ScriptDetails> get_event_scripts() const;
@@ -210,6 +212,11 @@ class Item : public ISerializable
     // created items on the current level will be correctly identified as well.
     virtual void set_item_identified(const bool new_item_identified);
     virtual bool get_item_identified() const;
+
+    // Not all item properties are durable.  To allow for fewer stacks
+    // and more intuitive stacking behaviours, some properties are
+    // ignored when doing item comparison.
+    std::map<std::string, std::string> get_additional_properties_for_item_comparison() const;
 
     // The base item class enchants/smiths by updating resistances.
     // Other items may modify nutrition (consumables), evade/soak (wearables),

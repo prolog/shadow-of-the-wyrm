@@ -1,8 +1,5 @@
 Me:
 - pick up/drop all that work with filters
-- JE: tile selection keys not added to reloadable ones
-- JE: Melura's options don't show up when talking to her, have to use msg
-  history
 - JE: make crumble work on items/features made out of stone/marble (eg
   petrified corpses)
 - Are hirelings disappearing between Carcassian maps? (debugger)
@@ -10,9 +7,6 @@ Me:
   the game selects remove status, but can't as it's the result of a cursed
   item. RestoreStatusDeity... should also uncurse any cursed items that
   generate negative statuses.
-- Exclude mk_am property when doing item comparison. Test by generating an
-  item, automoving over it, generating another item, seeing if they stack.
-- Some kind of special comparison ("Unknown") for Ancient Beasts
 - Only pick up or equip ammo when no spells or out of ammo
 - Hidden PCs are never found via bumping (Josh Engdahl)
 - Should golems have guard flag as well, so that guards won't attack them?
@@ -300,6 +294,7 @@ Josh Engdahl
 - max fire res on fire spirits, etc
 - support for "extending" good status effects via drinking multiple potions,
   etc
+- tile selection keys not reloading with others
 - exile should have a rowboat
 - when hiding and checking stuff, spirits in walls don't seem to count against
   the checks

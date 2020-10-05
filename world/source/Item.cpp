@@ -378,7 +378,16 @@ bool Item::matches(std::shared_ptr<Item> i) const
     match = match && (glowing               == i->get_glowing()              );
     match = match && (resistances           == i->get_resistances()          );
     match = match && (modifier              == i->get_modifier()             );
-    match = match && (additional_properties == i->additional_properties      );
+
+    map<string, string> comp_props = get_additional_properties_for_item_comparison();
+    map<string, string> icomp_props = i->get_additional_properties_for_item_comparison();
+
+    // Don't compare the additional properties without removing useless properties
+    // (such as lore-checked, or mark-for-automove, which don't need to be durable)
+    // or else you'll get a larger number of stacks that won't be explainable to
+    // the player via stats, etc.
+    //x match = match && (additional_properties == i->additional_properties      );
+    match = match && (comp_props            == icomp_props                   );
     match = match && (event_scripts         == i->event_scripts              );
     match = match && (unpaid                == i->unpaid                     );
 
@@ -786,6 +795,21 @@ string Item::get_additional_property(const string& property_name) const
   }
 
   return value;
+}
+
+map<string, string> Item::get_additional_properties() const
+{
+  return additional_properties;
+}
+
+map<string, string> Item::get_additional_properties_for_item_comparison() const
+{
+  map<string, string> comp_props = additional_properties;
+
+  comp_props.erase(ItemProperties::ITEM_PROPERTIES_MARK_AUTOMOVE);
+  comp_props.erase(ItemProperties::ITEM_PROPERTIES_LORE_CHECKED);
+
+  return comp_props;
 }
 
 bool Item::has_additional_property(const string& property_name) const
