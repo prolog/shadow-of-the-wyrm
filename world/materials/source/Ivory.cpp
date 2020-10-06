@@ -28,7 +28,7 @@ bool Ivory::get_is_corrodible() const
   return false;
 }
 
-bool Ivory::get_can_rust() const
+bool Ivory::get_crumbles() const
 {
   return false;
 }

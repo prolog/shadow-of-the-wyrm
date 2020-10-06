@@ -28,7 +28,7 @@ bool Leather::get_is_corrodible() const
   return false;
 }
 
-bool Leather::get_can_rust() const
+bool Leather::get_crumbles() const
 {
   return false;
 }

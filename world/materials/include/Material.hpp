@@ -20,7 +20,7 @@ class Material
     virtual bool get_is_flammable() const = 0;
     virtual bool get_is_explosive() const = 0;
     virtual bool get_is_corrodible() const = 0;
-    virtual bool get_can_rust() const = 0;
+    virtual bool get_crumbles() const = 0;
     
     // The colour of the material, for use in text-based displays.
     virtual Colour get_colour() const;

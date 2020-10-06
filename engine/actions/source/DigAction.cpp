@@ -9,6 +9,7 @@
 #include "ItemManager.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
+#include "MaterialFactory.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "StatisticsMarker.hpp"
@@ -74,7 +75,7 @@ ActionCostValue DigAction::dig_within(CreaturePtr creature, ItemPtr dig_item, Ma
 }
 
 // Dig through an adjacent tile.
-ActionCostValue DigAction::dig_through(const string& creature_id, ItemPtr dig_item, MapPtr map, TilePtr adjacent_tile, const Coordinate& dig_coord, const bool add_messages) const
+ActionCostValue DigAction::dig_through(const string& creature_id, ItemPtr dig_item, MapPtr map, TilePtr adjacent_tile, const Coordinate& dig_coord, const bool add_messages, const bool dig_tile_only) const
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
@@ -93,7 +94,7 @@ ActionCostValue DigAction::dig_through(const string& creature_id, ItemPtr dig_it
 
     // Do the actual decomposition, then re-add the tile, check for dig item
     // breakage, and add an appropriate message.
-    TilePtr new_tile = dig_tile(adjacent_tile);
+    TilePtr new_tile = dig_tile(adjacent_tile, dig_tile_only);
     map->insert(dig_coord, new_tile);
 
     if (add_messages)
@@ -155,12 +156,27 @@ bool DigAction::add_cannot_dig_message_if_necessary(CreaturePtr creature, MapPtr
 // By digging the tile, we create a new one using the decomposition tile
 // type, and potentially add items (e.g., rocks, earth) using the decomposition
 // item id.
-TilePtr DigAction::dig_tile(TilePtr adjacent_tile) const
+TilePtr DigAction::dig_tile(TilePtr adjacent_tile, const bool dig_tile_only) const
 {
   TileGenerator tg;
 
   TileType decomp_tile_type = adjacent_tile->get_decomposition_tile_type();
 
+  if (adjacent_tile != nullptr && !dig_tile_only)
+  {
+    // First, dig through any features.
+    bool dug_feature = dig_feature(adjacent_tile);
+
+    // Next, dig through any items.
+    bool dug_items = dig_items(adjacent_tile->get_items());
+
+    if (dug_feature || dug_items)
+    {
+      // ...
+    }
+  }
+
+  // Finally dig through the tile itself.
   if (decomp_tile_type != TileType::TILE_TYPE_UNDEFINED)
   {
     TilePtr new_tile = tg.generate(decomp_tile_type);
@@ -189,6 +205,47 @@ TilePtr DigAction::dig_tile(TilePtr adjacent_tile) const
   {
     return adjacent_tile;
   }
+}
+
+bool DigAction::dig_feature(TilePtr tile) const
+{
+  bool dug = false;
+
+  if (tile != nullptr && tile->has_feature())
+  {
+    FeaturePtr feature = tile->get_feature();
+    MaterialPtr mat = MaterialFactory::create_material(feature->get_material_type());
+
+    if (mat != nullptr && mat->get_crumbles())
+    {
+      tile->remove_feature();
+      dug = true;
+    }
+  }
+  
+  return dug;
+}
+
+bool DigAction::dig_items(IInventoryPtr items) const
+{
+  bool dug = false;
+
+  if (items != nullptr)
+  {
+    list<ItemPtr>& raw_items = items->get_items_ref();
+    size_t original_size = raw_items.size();
+
+    raw_items.remove_if([](ItemPtr i)
+      {
+        MaterialPtr m = MaterialFactory::create_material(i->get_material_type());
+        return (m != nullptr && m->get_crumbles() && !i->get_artifact());
+      });
+
+    size_t new_size = raw_items.size();
+    dug = (new_size < original_size);
+  }
+
+  return dug;
 }
 
 void DigAction::add_successful_dig_message(CreaturePtr creature) const

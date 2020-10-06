@@ -25,6 +25,9 @@ Shadow of the Wyrm v1.2.3 "Britten"
 - Ancient Beasts now show up as "Unknown" difficulty, regardless of their
   level.
 
+- Crumbling spells/digging wands will now crumble items and tile features
+  in their path as well, so long as they're made of marble or stone.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
