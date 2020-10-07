@@ -20,7 +20,7 @@ class DigAction : public IActionManager
 
     DigAction();
 
-    TilePtr dig_tile(TilePtr adjacent_tile, const bool dig_tile_only) const;
+    TilePtr dig_tile(CreaturePtr creature, TilePtr adjacent_tile, const bool dig_tile_only) const;
     bool dig_feature(TilePtr adjacent_tile) const;
     bool dig_items(IInventoryPtr inv) const;
 
@@ -29,6 +29,7 @@ class DigAction : public IActionManager
     bool tile_super_type_supports_digging(const TileSuperType tst) const;
     void handle_potential_item_breakage(CreaturePtr creature, TilePtr adjacent_tile, ItemPtr item) const;
     void add_successful_dig_message(CreaturePtr creature) const;
+    void add_stone_dust_message(CreaturePtr creature) const;
 
     static const int DIG_PERCENT_CHANCE_MARK_STATISTIC;
 };

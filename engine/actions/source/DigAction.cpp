@@ -3,6 +3,7 @@
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "DigAction.hpp"
+#include "GameUtils.hpp"
 #include "HostilityManager.hpp"
 #include "ItemBreakageCalculator.hpp"
 #include "ItemIdentifier.hpp"
@@ -94,13 +95,13 @@ ActionCostValue DigAction::dig_through(const string& creature_id, ItemPtr dig_it
 
     // Do the actual decomposition, then re-add the tile, check for dig item
     // breakage, and add an appropriate message.
-    TilePtr new_tile = dig_tile(adjacent_tile, dig_tile_only);
-    map->insert(dig_coord, new_tile);
-
     if (add_messages)
     {
       add_successful_dig_message(creature);
     }
+
+    TilePtr new_tile = dig_tile(creature, adjacent_tile, dig_tile_only);
+    map->insert(dig_coord, new_tile);
 
     handle_potential_item_breakage(creature, adjacent_tile, dig_item);
 
@@ -156,7 +157,7 @@ bool DigAction::add_cannot_dig_message_if_necessary(CreaturePtr creature, MapPtr
 // By digging the tile, we create a new one using the decomposition tile
 // type, and potentially add items (e.g., rocks, earth) using the decomposition
 // item id.
-TilePtr DigAction::dig_tile(TilePtr adjacent_tile, const bool dig_tile_only) const
+TilePtr DigAction::dig_tile(CreaturePtr creature, TilePtr adjacent_tile, const bool dig_tile_only) const
 {
   TileGenerator tg;
 
@@ -172,7 +173,9 @@ TilePtr DigAction::dig_tile(TilePtr adjacent_tile, const bool dig_tile_only) con
 
     if (dug_feature || dug_items)
     {
-      // ...
+      // Always add these messages, so that the player knows that stone items
+      // or features were destroyed.
+      add_stone_dust_message(creature);
     }
   }
 
@@ -255,6 +258,17 @@ void DigAction::add_successful_dig_message(CreaturePtr creature) const
   if (creature->get_is_player())
   {
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_THROUGH_TILE));
+    manager.send();
+  }
+}
+
+void DigAction::add_stone_dust_message(CreaturePtr creature) const
+{
+  IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+
+  if (creature->get_is_player())
+  {
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_STONE_DUST));
     manager.send();
   }
 }

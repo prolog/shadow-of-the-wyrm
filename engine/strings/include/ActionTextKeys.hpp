@@ -144,6 +144,7 @@ class ActionTextKeys
     static const std::string ACTION_DIG_UNDEAD_FOUND;
     static const std::string ACTION_DIG_ITEM_FOUND;
     static const std::string ACTION_DIG_THROUGH_TILE;
+    static const std::string ACTION_DIG_STONE_DUST;
     static const std::string ACTION_DIG_CANNOT_DIG;
     static const std::string ACTION_DIG_CANNOT_DIG_ON_SUPER_TYPE;
     static const std::string ACTION_DIG_TOO_HARD;
