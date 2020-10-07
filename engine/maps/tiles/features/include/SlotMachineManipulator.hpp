@@ -1,9 +1,9 @@
 #pragma once
 #include "ActionManager.hpp"
-#include "IFeatureManipulator.hpp"
+#include "FeatureManipulator.hpp"
 #include "Feature.hpp"
 
-class SlotMachineManipulator : public IFeatureManipulator
+class SlotMachineManipulator : public FeatureManipulator
 {
   public:
     SlotMachineManipulator(FeaturePtr feature);

@@ -7,7 +7,7 @@
 using namespace std;
 
 BarrelManipulator::BarrelManipulator(FeaturePtr feature)
-: IFeatureManipulator(feature)
+: FeatureManipulator(feature)
 {
 }
 

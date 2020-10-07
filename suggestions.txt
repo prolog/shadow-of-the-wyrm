@@ -1,5 +1,4 @@
 Me:
-- need some kind of message for feature/items/etc turning to dust
 - make sure petrified corpse crumbles
 - make sure pick axe only affects the tile, not the feature/items
 - pick up/drop all that work with filters

@@ -6,7 +6,7 @@
 using namespace std;
 
 TableManipulator::TableManipulator(FeaturePtr feature)
-: IFeatureManipulator(feature)
+: FeatureManipulator(feature)
 {
 }
 

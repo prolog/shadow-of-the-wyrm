@@ -3,8 +3,10 @@
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "DigAction.hpp"
+#include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
+#include "IFeatureManipulatorFactory.hpp"
 #include "ItemBreakageCalculator.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemManager.hpp"
@@ -165,8 +167,10 @@ TilePtr DigAction::dig_tile(CreaturePtr creature, TilePtr adjacent_tile, const b
 
   if (adjacent_tile != nullptr && !dig_tile_only)
   {
+    MapPtr current_map = Game::instance().get_current_map();
+
     // First, dig through any features.
-    bool dug_feature = dig_feature(adjacent_tile);
+    bool dug_feature = dig_feature(creature, current_map, adjacent_tile);
 
     // Next, dig through any items.
     bool dug_items = dig_items(adjacent_tile->get_items());
@@ -210,7 +214,7 @@ TilePtr DigAction::dig_tile(CreaturePtr creature, TilePtr adjacent_tile, const b
   }
 }
 
-bool DigAction::dig_feature(TilePtr tile) const
+bool DigAction::dig_feature(CreaturePtr creature, MapPtr map, TilePtr tile) const
 {
   bool dug = false;
 
@@ -221,7 +225,10 @@ bool DigAction::dig_feature(TilePtr tile) const
 
     if (mat != nullptr && mat->get_crumbles())
     {
+      FeatureManipulatorPtr manip = IFeatureManipulatorFactory::create_manipulator(feature);
+      manip->desecrate(creature, map);
       tile->remove_feature();
+
       dug = true;
     }
   }

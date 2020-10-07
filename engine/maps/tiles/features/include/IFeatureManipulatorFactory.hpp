@@ -1,10 +1,10 @@
 #pragma once
-#include "IFeatureManipulator.hpp"
+#include "FeatureManipulator.hpp"
 
 class IFeatureManipulatorFactory
 {
   public:
-    IFeatureManipulatorPtr static create_manipulator(FeaturePtr feature);
+    FeatureManipulatorPtr static create_manipulator(FeaturePtr feature);
 
   protected:
     IFeatureManipulatorFactory() {};

@@ -8,7 +8,7 @@
 using namespace std;
 
 PulperManipulator::PulperManipulator(FeaturePtr feature)
-: IFeatureManipulator(feature)
+: FeatureManipulator(feature)
 {
 }
 

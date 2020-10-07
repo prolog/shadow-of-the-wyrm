@@ -21,7 +21,7 @@ class DigAction : public IActionManager
     DigAction();
 
     TilePtr dig_tile(CreaturePtr creature, TilePtr adjacent_tile, const bool dig_tile_only) const;
-    bool dig_feature(TilePtr adjacent_tile) const;
+    bool dig_feature(CreaturePtr creature, MapPtr current_map, TilePtr adjacent_tile) const;
     bool dig_items(IInventoryPtr inv) const;
 
     bool add_cannot_dig_message_if_necessary(CreaturePtr creature, MapPtr map, TilePtr tile) const;

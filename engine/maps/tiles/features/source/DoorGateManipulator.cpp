@@ -20,7 +20,7 @@ const int DoorGateManipulator::SPRAIN_DAMAGE_MAX = 10;
 const int DoorGateManipulator::MIN_INTELLIGENCE_OPERATE_DOOR = 2;
 
 DoorGateManipulator::DoorGateManipulator(FeaturePtr feature)
-: IFeatureManipulator(feature)
+: FeatureManipulator(feature)
 {
 }
 

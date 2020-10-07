@@ -12,7 +12,7 @@
 using namespace std;
 
 WheelAndLoomManipulator::WheelAndLoomManipulator(FeaturePtr feature)
-: IFeatureManipulator(feature),
+: FeatureManipulator(feature),
 loom_map({ {EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, "_cloak"}, {EquipmentWornLocation::EQUIPMENT_WORN_BODY, "_robes"} })
 {
 }
