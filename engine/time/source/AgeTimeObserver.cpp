@@ -43,6 +43,11 @@ void AgeTimeObserver::process_creatures(MapPtr cur_map, CreatureMap& creature_ma
 
     if (creature != nullptr)
     {
+      if (creature->get_id() == "player")
+      {
+        int x = 1;
+      }
+
       Statistic age = creature->get_age();
       age.set_current(age.get_current() + 1);
 

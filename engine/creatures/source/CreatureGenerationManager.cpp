@@ -116,10 +116,13 @@ CreatureGenerationList CreatureGenerationManager::generate_ancient_beasts(const 
 
       for (int df = static_cast<int>(DamageFlagType::DAMAGE_FLAG_FIRST); df < static_cast<int>(DamageFlagType::DAMAGE_FLAG_LAST); df++)
       {
-        // Look, ancient beasts are in no way fair.
-        if (RNG::percent_chance(50))
+        if (df != static_cast<int>(DamageFlagType::DAMAGE_FLAG_CHAOTIC))
         {
-          dam.set_damage_flag(static_cast<DamageFlagType>(df), true);
+          // Look, ancient beasts are in no way fair.
+          if (RNG::percent_chance(50))
+          {
+            dam.set_damage_flag(static_cast<DamageFlagType>(df), true);
+          }
         }
       }
 

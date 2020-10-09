@@ -26,7 +26,11 @@ Shadow of the Wyrm v1.2.3 "Britten"
   level.
 
 - Crumbling spells/digging wands will now crumble items and tile features
-  in their path as well, so long as they're made of marble or stone.
+  in their path as well, so long as they're made of marble or stone.  The
+  Nine won't like you destroying their altars this way, though.
+
+- Praying when you've got a cursed, status-bearing item (e.g. voiceless
+  amulet) might now cause your deity to uncurse your equipment (Vestphiliac).
 
 - Stanzas for "Tel and Floridel".
 
@@ -63,6 +67,11 @@ Shadow of the Wyrm v1.2.3 "Britten"
     offering 0 ivory.
 
   - Blindness wasn't properly restricting NPCs' FOV maps (Josh Engdahl).
+
+  - Ancient Beasts can get random damage flags when they're generated, but
+    this was including chaotic, which would shift the damage type around,
+    and was confusing for very damage-specific type creatures (Josh
+    Engdahl).
 
 Shadow of the Wyrm v1.2.2 "Borrono"
 - Version declared July 17, 2020.  Version finalized September 12, 2020.

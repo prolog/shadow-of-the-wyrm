@@ -30,7 +30,7 @@ bool Onyx::get_is_corrodible() const
 
 bool Onyx::get_crumbles() const
 {
-  return false;
+  return true;
 }
 
 Colour Onyx::get_colour() const
