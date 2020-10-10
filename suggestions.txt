@@ -1,15 +1,8 @@
 Me:
-- ancient beast damage types
 - making mountains blocking has prevented being able to move over them!
 - max cap on hunger
 - pick up/drop all that work with filters
-- JE: make crumble work on items/features made out of stone/marble (eg
-  petrified corpses)
 - Are hirelings disappearing between Carcassian maps? (debugger)
-- Can't uncurse voiceless amulet via prayer (Vestphiliac). This is because
-  the game selects remove status, but can't as it's the result of a cursed
-  item. RestoreStatusDeity... should also uncurse any cursed items that
-  generate negative statuses.
 - Only pick up or equip ammo when no spells or out of ammo
 - Hidden PCs are never found via bumping (Josh Engdahl)
 - Should golems have guard flag as well, so that guards won't attack them?
