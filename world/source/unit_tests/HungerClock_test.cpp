@@ -21,6 +21,22 @@ TEST(SW_World_HungerClock, raw_hunger_level)
   EXPECT_EQ(12345, hc.get_hunger());
 }
 
+TEST(SW_World_HungerClock, min_max_values)
+{
+  HungerClock hc;
+  hc.set_hunger(230000);
+
+  EXPECT_EQ(200000, hc.get_hunger());
+
+  hc.set_hunger(56457);
+
+  EXPECT_EQ(56457, hc.get_hunger());
+
+  hc.set_hunger(-36);
+
+  EXPECT_EQ(0, hc.get_hunger());
+}
+
 TEST(SW_World_HungerClock, hunger_levels)
 {
   HungerClock hc;

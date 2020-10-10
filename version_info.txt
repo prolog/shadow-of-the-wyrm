@@ -32,6 +32,8 @@ Shadow of the Wyrm v1.2.3 "Britten"
 - Praying when you've got a cursed, status-bearing item (e.g. voiceless
   amulet) might now cause your deity to uncurse your equipment (Vestphiliac).
 
+- The food/hunger counter now has a (very large) cap, instead of just max int.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
@@ -72,6 +74,12 @@ Shadow of the Wyrm v1.2.3 "Britten"
     this was including chaotic, which would shift the damage type around,
     and was confusing for very damage-specific type creatures (Josh
     Engdahl).
+
+  - Esc-ing out of inscription no longer advances the turn (Josh Engdahl).
+
+  - The change to make mountains visually blocking was causing it to be
+    unable to move on to them. Separated out visually-blocking from
+    movement-blocking.
 
 Shadow of the Wyrm v1.2.2 "Borrono"
 - Version declared July 17, 2020.  Version finalized September 12, 2020.

@@ -11,7 +11,7 @@ class InscribeAction : public IActionManager
   protected:
     InscribeAction();
 
-    void create_inscription(CreaturePtr creature, TilePtr tile, const bool is_world_map) const;
+    ActionCostValue create_inscription(CreaturePtr creature, TilePtr tile, const bool is_world_map) const;
     void add_inscription_super_type_message(const TileSuperType tst) const;
 
     static const size_t MAX_INSCRIPTION_LENGTH;

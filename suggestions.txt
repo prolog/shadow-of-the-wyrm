@@ -1,6 +1,4 @@
 Me:
-- making mountains blocking has prevented being able to move over them!
-- max cap on hunger
 - pick up/drop all that work with filters
 - Are hirelings disappearing between Carcassian maps? (debugger)
 - Only pick up or equip ammo when no spells or out of ammo
