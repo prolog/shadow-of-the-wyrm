@@ -1,7 +1,6 @@
 Me:
 - pick up/drop all that work with filters
 - Are hirelings disappearing between Carcassian maps? (debugger)
-- Only pick up or equip ammo when no spells or out of ammo
 - Hidden PCs are never found via bumping (Josh Engdahl)
 - Should golems have guard flag as well, so that guards won't attack them?
 - Generate tombs with keys outside door/doors locked

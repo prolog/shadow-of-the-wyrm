@@ -6,7 +6,6 @@
 #include "Game.hpp"
 #include "HostilityManager.hpp"
 #include "MapUtils.hpp"
-#include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "StatisticsMarker.hpp"
 #include "StatusEffectFactory.hpp"
@@ -34,48 +33,71 @@ void DoorGateManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr
 
     if (door != nullptr)
     {
-      // Is the creature's strength enough to potentially break the door?
-      DoorBreakageCalculator dbc;
-      int break_chance = dbc.calculate_pct_chance_breakage(creature, door);
+      EntranceStateType est = door->get_state().get_state();
 
-      if (break_chance > 0)
+      switch (est)
       {
-        if (RNG::percent_chance(break_chance))
-        {
-          MapPtr current_map = Game::instance().get_current_map();
-
-          break_down_door(creature, feature_tile);
-          MapUtils::anger_shopkeeper_if_necessary(feature_coord, current_map, creature);
-
-          // Breaking down a shop's door will anger the shopkeeper.
-
-          // Breaking down doors with a solid kick is pretty impressive,
-          // and marks Strength.
-          StatisticsMarker sm;
-
-          for (int i = 0; i < RNG::range(2, 4); i++)
-          {
-            sm.mark_strength(creature);
-          }
-        }
-        else
-        {
-          // Add a message that the door buckled but didn't break.
-          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_BUCKLED));
-          handle_sprain_if_necessary(creature, PCT_CHANCE_SPRAIN_LEG_BUCKLE);
-        }
-      }
-      else
-      {
-        // If there was no chance at all of breaking the door, add a message to
-        // that effect.
-        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_UNMOVED));
-        handle_sprain_if_necessary(creature, PCT_CHANCE_SPRAIN_LEG_UNMOVED);
+        case EntranceStateType::ENTRANCE_TYPE_CLOSED:
+          kick_closed_door(manager, door, creature, current_map, feature_tile, feature_coord, feature);
+          break;
+        case EntranceStateType::ENTRANCE_TYPE_OPEN:
+          kick_open_door(manager, door);
+          break;
+        case EntranceStateType::ENTRANCE_TYPE_DESTROYED:
+          break;
       }
     }
   }
 
   manager.send();
+}
+
+void DoorGateManipulator::kick_open_door(IMessageManager& manager, DoorPtr door)
+{
+  door->get_state_ref().set_state(EntranceStateType::ENTRANCE_TYPE_CLOSED);
+  manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_CLOSED));
+}
+
+void DoorGateManipulator::kick_closed_door(IMessageManager& manager, DoorPtr door, CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+{
+  // Is the creature's strength enough to potentially break the door?
+  DoorBreakageCalculator dbc;
+  int break_chance = dbc.calculate_pct_chance_breakage(creature, door);
+
+  if (break_chance > 0)
+  {
+    if (RNG::percent_chance(break_chance))
+    {
+      MapPtr current_map = Game::instance().get_current_map();
+
+      break_down_door(creature, feature_tile);
+      MapUtils::anger_shopkeeper_if_necessary(feature_coord, current_map, creature);
+
+      // Breaking down a shop's door will anger the shopkeeper.
+
+      // Breaking down doors with a solid kick is pretty impressive,
+      // and marks Strength.
+      StatisticsMarker sm;
+
+      for (int i = 0; i < RNG::range(2, 4); i++)
+      {
+        sm.mark_strength(creature);
+      }
+    }
+    else
+    {
+      // Add a message that the door buckled but didn't break.
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_BUCKLED));
+      handle_sprain_if_necessary(creature, PCT_CHANCE_SPRAIN_LEG_BUCKLE);
+    }
+  }
+  else
+  {
+    // If there was no chance at all of breaking the door, add a message to
+    // that effect.
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_UNMOVED));
+    handle_sprain_if_necessary(creature, PCT_CHANCE_SPRAIN_LEG_UNMOVED);
+  }
 }
 
 bool DoorGateManipulator::handle(TilePtr tile, CreaturePtr creature)

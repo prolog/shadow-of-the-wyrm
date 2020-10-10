@@ -194,9 +194,18 @@ CommandPtr NPCPickupDecisionStrategy::get_pick_up_ammunition_decision(CreaturePt
   {
     WeaponManager wm;
     WeaponPtr ranged = std::dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON));
+    WeaponPtr eq_ammo = std::dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
     WeaponPtr ammo = std::dynamic_pointer_cast<Weapon>(item);
 
-    if (wm.is_ranged_weapon_skill_type_compatible_with_ammunition(ranged, ammo))
+    // Only pick up ammo if it's compatible with the weapon slot, if the
+    // creature doesn't have ammo currently equipped, and if the creature
+    // doesn't know any spells.
+    //
+    // (basically, ensure that you can't pin spellcasters in a pickup loop
+    //  by firing a ton of rocks, etc)
+    if (wm.is_ranged_weapon_skill_type_compatible_with_ammunition(ranged, ammo) &&
+        eq_ammo == nullptr &&
+        creature->get_spell_knowledge_ref().count_spells_known() == 0)
     {
       pu_cmd = std::make_unique<PickUpCommand>(item->get_id());
     }

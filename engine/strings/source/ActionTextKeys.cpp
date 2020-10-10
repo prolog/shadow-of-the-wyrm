@@ -603,6 +603,7 @@ const string ActionTextKeys::ACTION_KICK_PASSES_THROUGH        = "ACTION_KICK_PA
 const string ActionTextKeys::ACTION_KICK_DOOR_DESTROYED        = "ACTION_KICK_DOOR_DESTROYED";
 const string ActionTextKeys::ACTION_KICK_DOOR_BUCKLED          = "ACTION_KICK_DOOR_BUCKLED";
 const string ActionTextKeys::ACTION_KICK_DOOR_UNMOVED          = "ACTION_KICK_DOOR_UNMOVED";
+const string ActionTextKeys::ACTION_KICK_DOOR_CLOSED           = "ACTION_KICK_DOOR_CLOSED";
 const string ActionTextKeys::ACTION_KICK_TABLE                 = "ACTION_KICK_TABLE";
 const string ActionTextKeys::ACTION_KICK_SLOT_MACHINE          = "ACTION_KICK_SLOT_MACHINE";
 const string ActionTextKeys::ACTION_KICK_SPRAIN_LEG            = "ACTION_KICK_SPRAIN_LEG";

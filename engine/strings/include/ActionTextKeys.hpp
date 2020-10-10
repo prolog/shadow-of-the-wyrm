@@ -115,6 +115,7 @@ class ActionTextKeys
     static const std::string ACTION_KICK_DOOR_DESTROYED;
     static const std::string ACTION_KICK_DOOR_BUCKLED;
     static const std::string ACTION_KICK_DOOR_UNMOVED;
+    static const std::string ACTION_KICK_DOOR_CLOSED;
     static const std::string ACTION_KICK_TABLE;
     static const std::string ACTION_KICK_SLOT_MACHINE;
     static const std::string ACTION_KICK_SPRAIN_LEG;
