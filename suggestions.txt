@@ -2,7 +2,6 @@ Me:
 - pick up/drop all that work with filters
 - Are hirelings disappearing between Carcassian maps? (debugger)
 - Hidden PCs are never found via bumping (Josh Engdahl)
-- Should golems have guard flag as well, so that guards won't attack them?
 - Generate tombs with keys outside door/doors locked
 - sword-eater/hits himself (Josh Engdahl)
 - Corpse weights
@@ -14,7 +13,6 @@ Me:
 - Need to get hirelings text-searchable in bestiary
 - Creatures try to cast utility spells when they don't make sense (uncursing,
   etc). Should be checks to see if effect makes sense.
-- Test all the set locations for hirelings
 - Next release: need to do an asset release
 - Sector features for regular settlements
 - Things to make villages more interesting:
@@ -288,8 +286,8 @@ Josh Engdahl
 - support for "extending" good status effects via drinking multiple potions,
   etc
 - tile selection keys not reloading with others
-- exile should have a rowboat
 - when hiding and checking stuff, spirits in walls don't seem to count against
   the checks
 - don't step out of shadows if creatures don't have you in LOS
 - weird age incrementing issue?
+- make undead hostile to e.g. all humanoids

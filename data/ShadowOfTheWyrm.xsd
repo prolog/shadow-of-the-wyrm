@@ -1228,6 +1228,10 @@
 		<xs:element name="Pickup" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="Shopkeeper" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="ResistSwitch" type="xs:boolean" minOccurs="0"/>
+		<!-- Used by guards. Creatures that can attack eg the player unprovoked
+		     and that will not draw guard hostility.  List of creature IDs, 
+			 comma-separated. -->
+		<xs:element name="Allies" type="xs:string" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Symbol">

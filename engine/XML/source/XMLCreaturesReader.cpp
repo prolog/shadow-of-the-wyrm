@@ -363,6 +363,13 @@ void XMLCreaturesReader::parse_decision_strategy(const XMLNode& decision_strateg
       decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_ASSIST_PCT, std::to_string(100));
     }
 
+    string allies = XMLUtils::get_child_node_value(decision_strategy_node, "Allies");
+
+    if (!allies.empty())
+    {
+      decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_ALLIES_IDS, allies);
+    }
+
     bool pickup = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Pickup", true);
     decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_PICKUP, std::to_string(pickup));
 

@@ -258,7 +258,8 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
 
             if (tile_creature && 
                !tile_creature->get_is_player() && 
-                RNG::percent_chance(cc.get_combat_assist_pct(tile_creature)))
+                RNG::percent_chance(cc.get_combat_assist_pct(tile_creature)) &&
+               !tile_creature->is_allied_to(attacking_creature->get_original_id()))
             {
               // Make them co-hostile to avoid hostility cascades.
               hm.set_hostility_to_creature(tile_creature, attacking_creature->get_id());

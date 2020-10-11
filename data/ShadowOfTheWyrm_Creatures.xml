@@ -25113,6 +25113,7 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 				<Sentry>1</Sentry>
+				<Allies>golem,electric_eel</Allies>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>g</Char>
