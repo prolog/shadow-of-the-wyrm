@@ -105,7 +105,8 @@ ActionCostValue ItemCodexAction::item_details(CreaturePtr creature, ItemPtr item
       // Assumption is that it's only ever the player calling this.
       // This is overlaid over the inventory screen, so use an alert.
       IMessageManager& manager = MM::instance();
-      manager.alert(StringTable::get(ItemTextKeys::ITEM_CODEX_NO_INFORMATION_FOUND));
+      string msg = StringTable::get(ItemTextKeys::ITEM_CODEX_NO_INFORMATION_FOUND);
+      manager.alert(msg);
     }
   }
 

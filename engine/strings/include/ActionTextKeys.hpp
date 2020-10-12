@@ -91,6 +91,7 @@ class ActionTextKeys
     static const std::string ACTION_HANDLE_LOCK;
     static const std::string ACTION_HANDLE_LOCK_NO_KEY;
     static const std::string ACTION_BESTIARY_DISPLAY_COMMAND_FOR_TILE_SELECTION;
+    static const std::string ACTION_ITEM_CODEX_COMMAND_FOR_TILE_SELECTION;
     static const std::string ACTION_BESTIARY_NO_SUCH_CREATURE_EXISTS;
     static const std::string ACTION_ITEM_CODEX_NO_SUCH_ITEM_EXISTS;
     static const std::string ACTION_POTION_EXPLODES;
@@ -243,7 +244,6 @@ class ActionTextKeys
     static const std::string ACTION_SPELLCASTING_CANCELLED_MONSTER;
     static const std::string ACTION_BESTIARY_WHICH_CREATURE;
     static const std::string ACTION_BESTIARY_PREVIOUS_SEARCH_MESSAGE;
-    static const std::string ACTION_ITEM_CODEX_COMMAND_FOR_TILE_SELECTION;
     static const std::string ACTION_ITEM_CODEX_WHICH_ITEM;
     static const std::string ACTION_ITEM_CODEX_PREVIOUS_SEARCH_MESSAGE;
     static const std::string ACTION_POUR_PLAYER;

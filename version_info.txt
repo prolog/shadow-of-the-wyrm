@@ -34,6 +34,8 @@ Shadow of the Wyrm v1.2.3 "Britten"
 
 - The food/hunger counter now has a (very large) cap, instead of just max int.
 
+- The item codex is now available on tile selection (YARD).
+
 - NPC AI improvements.
 
 - Kicking an open door now causes it to slam shut.

@@ -1,4 +1,6 @@
 Me:
+- Entering church, player is placed on stairs instead of outside church. JE
+- Cancel prompts should clear text: kick, drop, etc
 - pick up/drop all that work with filters
 - Are hirelings disappearing between Carcassian maps? (debugger)
 - Hidden PCs are never found via bumping (Josh Engdahl)
@@ -61,18 +63,11 @@ Me:
 - Tidy up scripts/quests into subdirectories, like carcassia, and test.
   Need to remember to update env.lua!
 - More guilds/things with memberships
-- Allow music to not only pacify but enchant (allow for ordering)
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
   attack.
 - The guarded, empty areas in Carcassia C2 should lead to some kind of
   dungeon/special area.
-- Summonings
-- After making negative amulets with statuses (e.g., poisoned amulet),
-  make status identifier map calculated by going through the modifiers.
-  Otherwise, it's stupid trying to figure out if a creature is still
-  poisoned: e.g., a creature is poisoned, and then puts on a poisoned
-  amulet.  Should still be poisoned when either of the two wear off.
 - Email Nathan before next release re: Mac build check
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
@@ -89,8 +84,6 @@ Me:
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
 - The vaults of the old dwarven-kings
-- Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
-  and caverns are 2.
 - Allow shopkeepers to be any of the selectable races.
 - Towers/tower generators.
 - Reuse some of the sector feature generators in dungeons - tomb, etc.
@@ -216,13 +209,8 @@ Mirza Ghalib:
 - Wide displays are causing text in e.g. the Isen Dun Chronicle to
   mess up (see the section about Gnordvar). 88x25
 
-vedvid:
-- rebind '*' (vedvid)
-
 hapro:
-- Numpad enter key does not always work same as real enter key
 - Drop multiple items at once
-- Walking on an object/feature should put the exmaine message in the log
 - Option to "pause" after certain triggers. When paused the game would
   ignore all inputs until space pressed. Example triggers: dropping below
   15% health, taking more than 50% in single attack, beginning to starve,
@@ -268,15 +256,10 @@ YARD:
   sceadugenga) shouldn't attack you if you worship that deity
 - spell details on shift+letter
 - corpse weight
-- codex on examine for single item
 - wilderness, low level creatures, etc
 
 IceBox: 
 - can the confirm setting be allowed to change on load?
-
-Larzid
-- display type a command line arg
-- SDL as a build param
 
 Josh Engdahl
 - Rebindable paging keys
@@ -291,3 +274,4 @@ Josh Engdahl
 - don't step out of shadows if creatures don't have you in LOS
 - weird age incrementing issue?
 - make undead hostile to e.g. all humanoids
+- nearby guards/priests should get angry when altars are desecrated

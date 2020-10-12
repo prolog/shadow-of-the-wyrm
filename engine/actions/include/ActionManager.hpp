@@ -108,7 +108,7 @@ class ActionManager : public ISerializable
 
     ActionCost item_codex(CreaturePtr creature);
     ActionCost item_codex(CreaturePtr creature, const EquipmentWornLocation ewl);
-    ActionCost item_codex(CreaturePtr creature, ItemPtr item);
+    ActionCost item_codex(CreaturePtr creature, ItemPtr item, const bool error_as_alert = true);
 
     // Switch between tiles and ASCII.
     ActionCost switch_graphics_mode(CreaturePtr creature);

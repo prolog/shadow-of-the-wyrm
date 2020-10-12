@@ -1,7 +1,10 @@
 #include "CommandKeys.hpp"
 #include "Game.hpp"
+#include "ItemFilterFactory.hpp"
+#include "MessageManagerFactory.hpp"
 #include "TileSelectionCommandProcessor.hpp"
 
+using std::list;
 using std::string;
 using std::pair;
 using std::dynamic_pointer_cast;
@@ -37,6 +40,10 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr c
       else if (command_name == CommandKeys::BESTIARY)
       {
         result = process_tile_selection_bestiary(creature, tsa);
+      }
+      else if (command_name == CommandKeys::ITEM_CODEX)
+      {
+        result = process_tile_selection_item_codex(creature, tsa);
       }
       else if (command_name == TileSelectionCommandKeys::TARGET_TILE)
       {
@@ -120,6 +127,50 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selectio
   {
     Game& game = Game::instance();
     game.get_action_manager_ref().bestiary(creature, search_text, tile_creature);
+  }
+
+  return result;
+}
+
+pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selection_item_codex(CreaturePtr creature, TileSelectionAction* const tsa)
+{
+  pair<bool, ActionCostValue> result(false, 0);
+
+  string search_text;
+  TilePtr tile = tsa->get_cursor_tile();
+  bool ok_to_consult_codex = false;
+  ItemPtr item;
+
+  if (tile)
+  {
+    IInventoryPtr items = tile->get_items();
+
+    if (items != nullptr)
+    {
+      uint count = items->get_items_cref().size();
+
+      // count == 0: silently do nothing
+      // count > 1: display the list of items, prompt to select one
+      if (count > 1)
+      {
+        Game& game = Game::instance();
+        list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
+        item = game.get_action_manager_ref().inventory(creature, items, no_filter, {}, false);
+        ok_to_consult_codex = (item != nullptr);
+      }
+      // count == 1: display the single item on the ground
+      else
+      {
+        item = items->get_items_cref().front();
+        ok_to_consult_codex = true;
+      }
+    }
+  }
+
+  if (ok_to_consult_codex)
+  {
+    Game& game = Game::instance();
+    game.get_action_manager_ref().item_codex(creature, item, false);
   }
 
   return result;
