@@ -1,8 +1,8 @@
 Me:
+- Are bazaars bugged on scrublands? (JE)
+- Are hirelings disappearing between maps? (debugger)
 - Entering church, player is placed on stairs instead of outside church. JE
-- Cancel prompts should clear text: kick, drop, etc
 - pick up/drop all that work with filters
-- Are hirelings disappearing between Carcassian maps? (debugger)
 - Hidden PCs are never found via bumping (Josh Engdahl)
 - Generate tombs with keys outside door/doors locked
 - sword-eater/hits himself (Josh Engdahl)
@@ -274,4 +274,5 @@ Josh Engdahl
 - don't step out of shadows if creatures don't have you in LOS
 - weird age incrementing issue?
 - make undead hostile to e.g. all humanoids
+- Cancel prompts should clear text: kick, drop, etc
 - nearby guards/priests should get angry when altars are desecrated
