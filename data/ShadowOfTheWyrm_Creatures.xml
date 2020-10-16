@@ -8241,7 +8241,6 @@
 			<SpeechTextSID>GOBLIN_ELITE_GUARD_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
-				<Sentry>1</Sentry>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>g</Char>

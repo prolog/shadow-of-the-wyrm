@@ -1,4 +1,5 @@
 Me:
+- Shale rocks before spells
 - Are bazaars bugged on scrublands? (JE)
 - Are hirelings disappearing between maps? (debugger)
 - Entering church, player is placed on stairs instead of outside church. JE
