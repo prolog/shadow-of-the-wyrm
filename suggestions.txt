@@ -1,5 +1,9 @@
 Me:
-- Shale rocks before spells
+- hirelings sex random JE
+- using a wand of digging and pressing numpad 5, a placeholder message is
+  given. JE
+- High scores not working always? Delete scores.dat. Generate a number of
+  characters. Autosave? JE
 - Are bazaars bugged on scrublands? (JE)
 - Are hirelings disappearing between maps? (debugger)
 - Entering church, player is placed on stairs instead of outside church. JE
@@ -277,3 +281,5 @@ Josh Engdahl
 - make undead hostile to e.g. all humanoids
 - Cancel prompts should clear text: kick, drop, etc
 - nearby guards/priests should get angry when altars are desecrated
+- when viewing items in codex, remember inventory page and return to that
+  page

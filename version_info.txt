@@ -40,6 +40,9 @@ Shadow of the Wyrm v1.2.3 "Britten"
 
 - Kicking an open door now causes it to slam shut.
 
+- Version info now includes the build date to easily distinguish different
+  prerelease builds.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
@@ -86,6 +89,9 @@ Shadow of the Wyrm v1.2.3 "Britten"
   - The change to make mountains visually blocking was causing it to be
     unable to move on to them. Separated out visually-blocking from
     movement-blocking.
+
+  - Some digging strings weren't defined and were showing the default value
+    (Josh Engdahl).
 
 Shadow of the Wyrm v1.2.2 "Borrono"
 - Version declared July 17, 2020.  Version finalized September 12, 2020.
