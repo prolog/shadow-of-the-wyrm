@@ -2227,6 +2227,7 @@
 					<Holy>0.15</Holy>
 					<Shadow>0.15</Shadow>
 					<Arcane>0.15</Arcane>
+					<Lightning>0.15</Lightning>
 				</Resistances>
 				<Evade>4</Evade>
 				<Soak>2</Soak>

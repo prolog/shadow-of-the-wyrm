@@ -3562,5 +3562,38 @@ well, to meet you was a serendipity. %b
 We'll kit you at our hall.  We have some breastplates %b
 the unlings made from bronze.  They're rickety %b
 but will stop a sword in close.  We'll make our fate. %b
-Revenge is something both of us can celebrate."
+Revenge is something both our kinds can celebrate."
+%p
+Weyg stood, and Rhone ran off to find a stream %b
+to douse the embers.  Unsettled quiet.  Neither %b
+group felt compelled to talk, or seemed %b
+prepared to move past what-was-once to try %b
+to figure out a way forward.  Allies %b
+of the uneasiest sort.  When Rhone returned, %b
+they poured the water, stirred the ash, and pried %b
+the barest conversation as they turned %b
+to realize their plan to make the fair folk burn.
+%p
+X
+%p
+The sound of hoofbeats; little else.  The road %b
+was thin, and Alcius now lead his men %b
+toward a settlement their maps had told %b
+existed sixty years ago.  Instead %b
+of riding down the giants, now he'd search %b
+for rats in buildings, hiding in the fields %b
+or aspen copses.  Bitter, dirty work. %b
+And easy for the exiles, too, to steal %b
+away and vanish deep into the open weald.
+%p
+The forests of the ancient world were burned %b
+for farmland, as the ground that took the ash %b
+would yield for years; and once so many heard %b
+the benefits, the towering woodlands passed %b
+to collective memory, replaced by wheat, %b
+or rye, or taro.  But the bit of weald %b
+that stretched just north of Cithriel would cheat %b
+the fate it should've had, and as it wheeled %b
+around the grasslands, formed a kind of shield, %b
+as those who hid within its heart were well concealed.
 %p

@@ -1,10 +1,7 @@
-Me:
-- hirelings sex random JE
-- using a wand of digging and pressing numpad 5, a placeholder message is
-  given. JE
+Me: 
+- Are bazaars bugged on scrublands? (JE) (savefile ready!)
 - High scores not working always? Delete scores.dat. Generate a number of
   characters. Autosave? JE
-- Are bazaars bugged on scrublands? (JE)
 - Are hirelings disappearing between maps? (debugger)
 - Entering church, player is placed on stairs instead of outside church. JE
 - pick up/drop all that work with filters

@@ -305,6 +305,15 @@ CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, cons
     }
   }
 
+  // Add a boat
+  IInventoryPtr inv = hireling->get_inventory();
+
+  if (!inv->has_item_type(ItemType::ITEM_TYPE_BOAT))
+  {
+    ItemPtr coracle = ItemManager::create_item(ItemIdKeys::ITEM_ID_CORACLE);
+    inv->merge_or_add(coracle, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+  }
+
   return hireling;
 }
 
