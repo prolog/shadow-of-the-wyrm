@@ -2170,6 +2170,7 @@
 					<Pound>0.15</Pound>
 					<Heat>0.10</Heat>
 					<Cold>0.20</Cold>
+					<Lightning>0.10</Lightning>
 				</Resistances>
 				<Evade>7</Evade>
 				<Soak>5</Soak>
@@ -5873,7 +5874,7 @@
 				<DescriptionSID>CALARA_WHIP_SID</DescriptionSID>
 				<UsageDescriptionSID>CALARA_WHIP_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>CALARA_WHIP_CODEX_SID</CodexDescriptionSID>
-				<Value>60</Value>
+				<Value>330</Value>
 				<Weight>
 					<Pounds>2</Pounds>
 				</Weight>
@@ -7824,7 +7825,7 @@
 				</Weight>
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>8</Material>	 
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
