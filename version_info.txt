@@ -32,6 +32,8 @@ Shadow of the Wyrm v1.2.3 "Britten"
 - Praying when you've got a cursed, status-bearing item (e.g. voiceless
   amulet) might now cause your deity to uncurse your equipment (Vestphiliac).
 
+- Flying now adds some evade as well.
+`
 - The food/hunger counter now has a (very large) cap, instead of just max int.
 
 - The item codex is now available on tile selection (YARD).

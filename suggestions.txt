@@ -1,7 +1,4 @@
 Me: 
-- Is multiple dam type setting working?
-- JE One of the unimplemented skills, bartering, is missing the asterisk the
-  other ones have.
 - There's a patch of rocky earth on the tile just north of Carcassia, but
   entering it shows a grassland tile instead.  Meant to be something else?
 - Pickpocket message should be FOV not self, not showing when thief PP gua JE
