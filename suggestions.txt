@@ -1,8 +1,9 @@
 Me: 
-- There's a patch of rocky earth on the tile just north of Carcassia, but
-  entering it shows a grassland tile instead.  Meant to be something else?
+- Tile release!
+- Different tile for evergreens
+- Avernal bats not listed as flying
+- Rocky earth generator JE 1n Carcassia
 - Pickpocket message should be FOV not self, not showing when thief PP gua JE
-- Flying effect should add evade
 - Enchants and esp brands should add value to items!
 - Statues can generate on road in Carcassia A1 far right
 - Are bazaars bugged on scrublands? (JE) (savefile ready!)
@@ -268,6 +269,9 @@ YARD:
 
 IceBox: 
 - can the confirm setting be allowed to change on load?
+
+Paul Blay:
+- Allow enchant to hit equipment too
 
 Josh Engdahl
 - Rebindable paging keys

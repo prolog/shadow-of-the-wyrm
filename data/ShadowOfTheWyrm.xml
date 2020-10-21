@@ -6999,7 +6999,7 @@
 				<Sprite>
 					<ID>til</ID>
 					<Row>0</Row>
-					<Col>1</Col>
+					<Col>30</Col>
 				</Sprite>
 			</Symbol>
 		</EvergreenTreeTile>

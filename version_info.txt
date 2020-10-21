@@ -1,8 +1,10 @@
-Shadow of the Wyrm v1.2.3 "Britten"
+Shadow of the Wyrm v1.2.4 "Britten"
 - Version declared September 12, 2020.
 
 - The pickup code is more restrictive, and now only fires for humanoids
   (Josh Engdahl).
+
+- Evergreen trees now have their own unique sprite.
 
 - You can no longer find hiding places while blind (Josh Engdahl).
 
@@ -50,6 +52,9 @@ Shadow of the Wyrm v1.2.3 "Britten"
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
+
+  - Freshwater tiles such as rivers were still being listed as "dangerous"
+    in winter, despite being frozen and therefore passable.
 
   - The time of day LOS code was incorrectly firing when not on an overworld
     map (Josh Engdahl).
