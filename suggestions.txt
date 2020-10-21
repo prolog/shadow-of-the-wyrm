@@ -1,12 +1,9 @@
 Me: 
-- Tile release!
-- Different tile for evergreens
-- Avernal bats not listed as flying
-- Rocky earth generator JE 1n Carcassia
+- Tile release! Evergreen trees were added.
 - Pickpocket message should be FOV not self, not showing when thief PP gua JE
 - Enchants and esp brands should add value to items!
 - Statues can generate on road in Carcassia A1 far right
-- Are bazaars bugged on scrublands? (JE) (savefile ready!)
+- Are bazaars bugged on scrublands? (JE) (savefile ready!) Reported 2x.
 - High scores not working always? Delete scores.dat. Generate a number of
   characters. Autosave? JE
 - Are hirelings disappearing between maps? (debugger)
@@ -16,6 +13,8 @@ Me:
 - Generate tombs with keys outside door/doors locked
 - sword-eater/hits himself (Josh Engdahl)
 - Corpse weights
+- Long term, give a chance for coastal generators to produce coastline, maybe
+  with little islands, etc
 - First urchin stone has no message!
 - Feature: fence, east_west_fence. Add some fenced areas to set locations.
 - Fenced areas (veg gardens?) in villages
@@ -290,3 +289,5 @@ Josh Engdahl
 - nearby guards/priests should get angry when altars are desecrated
 - when viewing items in codex, remember inventory page and return to that
   page
+- Rocky earth generator 1n Carcassia
+

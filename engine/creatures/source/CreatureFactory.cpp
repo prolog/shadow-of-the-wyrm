@@ -228,9 +228,9 @@ void CreatureFactory::revert_to_original_configuration_values(CreaturePtr creatu
   // statuses set: birds fly, spirits are incorporeal, etc.
   auto instance_statuses = creature_instance.get_statuses();
   auto& cr_statuses = creature->get_statuses_ref();
-  for (auto& cs_pair : cr_statuses)
+  for (auto& is_pair : instance_statuses)
   {
-    cr_statuses[cs_pair.first] = cs_pair.second;
+    cr_statuses[is_pair.first] = is_pair.second;
   }
 }
 

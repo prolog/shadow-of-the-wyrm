@@ -107,6 +107,9 @@ Shadow of the Wyrm v1.2.4 "Britten"
 
   - Gildi's cloak was missing lightning resistance (Josh Engdahl).
 
+  - Special creature statuses (such as avernal bats: flying) weren't being 
+    properly applied.
+
 Shadow of the Wyrm v1.2.2 "Borrono"
 - Version declared July 17, 2020.  Version finalized September 12, 2020.
 
