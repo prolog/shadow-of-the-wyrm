@@ -281,7 +281,7 @@ TileType MapTileTypes::map_type_to_default_tile_type(const MapType mt)
       tt = TileType::TILE_TYPE_FIELD;
       break;
     case MapType::MAP_TYPE_UNDERWORLD:
-      tt = TileType::TILE_TYPE_DUNGEON;
+      tt = TileType::TILE_TYPE_DUNGEON_COMPLEX;
       break;
     case MapType::MAP_TYPE_UNDERWATER:
       tt = TileType::TILE_TYPE_SEA;

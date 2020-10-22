@@ -4,6 +4,7 @@
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "EffectFactory.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
@@ -298,17 +299,25 @@ void MusicSkillProcessor::enrage(CreaturePtr creature, CreaturePtr fov_creature)
 {
   if (creature != nullptr && fov_creature != nullptr)
   {
-    vector<string> status_ids = {StatusIdentifiers::STATUS_ID_HASTE, StatusIdentifiers::STATUS_ID_RAGE};
-    
-    for (auto status_id : status_ids)
-    {
-      StatusEffectPtr status = StatusEffectFactory::create_status_effect(status_id, creature->get_id());
+    Game& game = Game::instance();
+    ActionManager& am = game.get_action_manager_ref();
+    MapPtr map = game.get_current_map();
+    Coordinate cc = map->get_location(fov_creature->get_id());
+    TilePtr ct = map->at(cc);
+    vector<EffectType> anger_effects = { EffectType::EFFECT_TYPE_RAGE, EffectType::EFFECT_TYPE_SPEED };
 
-      if (status != nullptr && fov_creature != nullptr)
+    for (auto etype : anger_effects)
+    {
+      EffectPtr effect = EffectFactory::create_effect(etype, {}, {}, "", "");
+
+      if (effect != nullptr)
       {
-        status->apply_change(fov_creature, fov_creature->get_level().get_current());
+        effect->effect(fov_creature, &am, ItemStatus::ITEM_STATUS_UNCURSED, cc, ct);
       }
     }
+
+    HostilityManager hm;
+    hm.set_hostility_to_creature(fov_creature, creature->get_id());
   }
 }
 

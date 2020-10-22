@@ -119,7 +119,13 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   TileMovementConfirmation tmc;
   pair<Coordinate, Coordinate> coord_range = map->get_generation_coordinates();
 
-  while (!maximum_creatures_reached(map, current_creatures_placed, num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
+  // Final sanity check before we try to start generating.
+  if (generation_list.empty())
+  {
+    return creatures_generated;
+  }
+
+  while (!generation_list.empty() && !maximum_creatures_reached(map, current_creatures_placed, num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
   {
     CreaturePtr generated_creature = cgm.generate_creature(am, generation_list, map);
 

@@ -53,6 +53,11 @@ Shadow of the Wyrm v1.2.4 "Britten"
 
 - Bug fixes:
 
+  - Custom underground maps (Siriath's level, etc) didn't set the terrain
+    type appropriately.
+
+  - Singing had a couple of missing messages (Josh Engdahl).
+
   - Freshwater tiles such as rivers were still being listed as "dangerous"
     in winter, despite being frozen and therefore passable.
 

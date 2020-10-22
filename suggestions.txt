@@ -1,5 +1,4 @@
 Me: 
-- MUSIC_PERFORMANCE_VOICE_FAILED_SID
 - Tile release! Evergreen trees were added.
 - Pickpocket message should be FOV not self, not showing when thief PP gua JE
 - Enchants and esp brands should add value to items!
@@ -10,7 +9,6 @@ Me:
 - Are hirelings disappearing between maps? (debugger)
 - Entering church, player is placed on stairs instead of outside church. JE
 - pick up/drop all that work with filters
-- Hidden PCs are never found via bumping (Josh Engdahl)
 - Generate tombs with keys outside door/doors locked
 - sword-eater/hits himself (Josh Engdahl)
 - Corpse weights
@@ -281,6 +279,7 @@ Josh Engdahl
 - support for "extending" good status effects via drinking multiple potions,
   etc
 - tile selection keys not reloading with others
+- Hidden PCs are never found via bumping (Josh Engdahl)
 - when hiding and checking stuff, spirits in walls don't seem to count against
   the checks
 - don't step out of shadows if creatures don't have you in LOS
@@ -291,4 +290,4 @@ Josh Engdahl
 - when viewing items in codex, remember inventory page and return to that
   page
 - Rocky earth generator 1n Carcassia
-
+- Warping out of levels doesn't put you back at the default entry position
