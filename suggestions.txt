@@ -1,4 +1,5 @@
 Me: 
+- MUSIC_PERFORMANCE_VOICE_FAILED_SID
 - Tile release! Evergreen trees were added.
 - Pickpocket message should be FOV not self, not showing when thief PP gua JE
 - Enchants and esp brands should add value to items!

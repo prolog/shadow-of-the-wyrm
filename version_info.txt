@@ -61,7 +61,7 @@ Shadow of the Wyrm v1.2.4 "Britten"
 
   - Leviathans were incorrectly appearing in dungeons (Josh Engdahl).
 
-  - Various bestiary/codex typos and improvements (various)
+  - Various bestiary/codex/manual typos and improvements (various)
 
   - When tiles/maps had preset items to be generated, this property wasn't
     being cleared properly after generation, causing duplication (Josh 
