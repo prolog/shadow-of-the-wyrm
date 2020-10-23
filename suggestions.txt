@@ -1,6 +1,7 @@
 Me: 
+- there's an issue with one of the music messages around trying to re-pacify
+  add_not_pacifiable_message
 - Tile release! Evergreen trees were added.
-- Pickpocket message should be FOV not self, not showing when thief PP gua JE
 - Enchants and esp brands should add value to items!
 - Statues can generate on road in Carcassia A1 far right
 - Are bazaars bugged on scrublands? (JE) (savefile ready!) Reported 2x.

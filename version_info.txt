@@ -56,6 +56,8 @@ Shadow of the Wyrm v1.2.4 "Britten"
   - Custom underground maps (Siriath's level, etc) didn't set the terrain
     type appropriately.
 
+  - Thief titles were missing (Red).
+
   - Singing had a couple of missing messages (Josh Engdahl).
 
   - Freshwater tiles such as rivers were still being listed as "dangerous"
@@ -80,6 +82,8 @@ Shadow of the Wyrm v1.2.4 "Britten"
 
   - NPCs will no longer pick up items while blind.
 
+  - Trying to view the codex when there are no items caused a crash.
+  
   - Hirelings were very enthusiastic about following your orders to attack,
     to the point of attacking you to get at the creature they're supposed to
     be killing (Josh Engdahl).

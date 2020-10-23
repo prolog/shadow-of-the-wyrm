@@ -19,7 +19,7 @@ local function steal(attacker_id, attacked_id, adjacent)
     end
 
     -- Vanish!
-    add_message_for_creature(attacked_id, "MONSTER_VANISHES_MESSAGE", {get_creature_description(attacked_id, attacker_id)})
+    add_fov_message(attacker_id, attacked_id, "MONSTER_VANISHES_MESSAGE", {get_creature_description(attacked_id, attacker_id)})
     teleport(attacker_id)
   end
 end

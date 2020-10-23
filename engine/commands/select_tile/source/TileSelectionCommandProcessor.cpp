@@ -149,9 +149,12 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selectio
     {
       uint count = items->get_items_cref().size();
 
-      // count == 0: silently do nothing
+      if (count == 0)
+      {
+        // count == 0: silently do nothing
+      }
       // count > 1: display the list of items, prompt to select one
-      if (count > 1)
+      else if (count > 1)
       {
         Game& game = Game::instance();
         list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
