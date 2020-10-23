@@ -187,12 +187,15 @@ ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, co
           fire_at_given_coordinates(creature, current_map, target_coords);
 
           // If the creature fired at a friendly creature, notify the deity
-          // of the action.  It doesn't matter whether or not the attack hit
-          // or missed, or if the creature was ultimately blocked by an 
-          // obstacle or another creature - it's the intention that counts.
+          // of the action, but only if the creature is now unfriendly.
           if (firing_details.second)
           {
-            game.get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
+            TilePtr target_tile = current_map->at(target_coords);
+
+            if (target_tile != nullptr && target_tile->has_creature() && target_tile->get_creature()->hostile_to(creature->get_id()))
+            {
+              game.get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
+            }
           }
         }
       }      
