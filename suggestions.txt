@@ -1,10 +1,7 @@
 Me: 
-- test witchthorn message
-- there's an issue with one of the music messages around trying to re-pacify
-  add_not_pacifiable_message
+- Test evergreen generation
 - Tile release! Evergreen trees were added.
 - Enchants and esp brands should add value to items!
-- Statues can generate on road in Carcassia A1 far right
 - Are bazaars bugged on scrublands? (JE) (savefile ready!) Reported 2x.
 - High scores not working always? Delete scores.dat. Generate a number of
   characters. Autosave? JE

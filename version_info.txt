@@ -66,6 +66,8 @@ Shadow of the Wyrm v1.2.4 "Britten"
   - The time of day LOS code was incorrectly firing when not on an overworld
     map (Josh Engdahl).
 
+  - One of the areas in Carcassia A1 could generate over the road.
+
   - Leviathans were incorrectly appearing in dungeons (Josh Engdahl).
 
   - Various bestiary/codex/manual typos and improvements (various)
