@@ -291,3 +291,5 @@ Josh Engdahl
   page
 - Rocky earth generator 1n Carcassia
 - Warping out of levels doesn't put you back at the default entry position
+- Freeze not always working when hostile creatures in view or creatures 
+  hostile to leader in view?

@@ -1755,75 +1755,6 @@ bool MapUtils::is_intersection(MapPtr map, CreaturePtr creature, const Coordinat
   return is_int;
 }
 
-void MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinate& c)
-{
-  if (map != nullptr && map->get_map_type() != MapType::MAP_TYPE_WORLD && creature != nullptr)
-  {
-    vector<string> followers;
-
-    for (int i = 1; i < Creature::MAX_TRANSFERRABLE_FOLLOWERS; i++)
-    {
-      string prop = CreatureUtils::get_follower_property_prefix() + std::to_string(i);
-      string val = creature->get_additional_property(prop);
-
-      if (!val.empty())
-      {
-        followers.push_back(val);
-      }
-      else
-      {
-        break;
-      }
-    }
-
-    if (!followers.empty())
-    {
-      vector<Coordinate> coords = CoordUtils::get_adjacent_map_coordinates(map->size(), c.first, c.second);
-      std::shuffle(coords.begin(), coords.end(), RNG::get_engine());
-      CreaturePtr follower = std::make_shared<Creature>();
-
-      {
-        istringstream iss(followers.back());
-        follower->deserialize(iss);
-      }
-
-      while (!followers.empty() && !coords.empty())
-      {
-        Coordinate cur_coord = coords.back();
-        TilePtr adj_tile = map->at(cur_coord);
-        coords.pop_back();
-
-        if (adj_tile != nullptr && adj_tile->get_is_available_for_creature(follower) && !adj_tile->get_dangerous(follower))
-        {
-          MapUtils::add_or_update_location(map, follower, cur_coord);
-          followers.pop_back();
-
-          if (!followers.empty())
-          {
-            follower = std::make_shared<Creature>();
-            istringstream iss(followers.back());
-            follower->deserialize(iss);
-          }
-        }
-      }
-
-      if (!followers.empty())
-      {
-        // Add a message about feeling abandoned.
-        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ABANDONED));
-        manager.send();
-      }
-    }
-
-    for (int i = 1; i < Creature::MAX_TRANSFERRABLE_FOLLOWERS; i++)
-    {
-      string prop = CreatureUtils::get_follower_property_prefix() + std::to_string(i);
-      creature->remove_additional_property(prop);
-    }
-  }
-}
-
 // Add any messages after moving to a particular tile:
 // - Should a message be displayed about the tile automatically? (staircases, etc)
 //       If so, add it.
@@ -1961,14 +1892,28 @@ void MapUtils::serialize_and_remove_followers(MapPtr map, CreaturePtr creature)
           // Clear their threat map.
           c->get_decision_strategy()->get_threats_ref().clear();
 
+          // Generate the follower key
+          string follower_prop = CreatureUtils::get_follower_property_prefix() + std::to_string(cnt);
+
+          // If the character has a follower with this key, loop until we find 
+          // one that's okay.
+          while (creature->has_additional_property(follower_prop) && cnt <= Creature::MAX_TRANSFERRABLE_FOLLOWERS)
+          {
+            follower_prop = CreatureUtils::get_follower_property_prefix() + std::to_string(cnt++);
+          }
+
           // Remove and serialize to a property on the leader.
           MapUtils::remove_creature(map, c);
 
           ostringstream ss;
           c->serialize(ss);
 
-          string follower_prop = CreatureUtils::get_follower_property_prefix() + std::to_string(cnt);
           creature->set_additional_property(follower_prop, ss.str());
+
+          if (cnt == Creature::MAX_TRANSFERRABLE_FOLLOWERS)
+          {
+            return;
+          }
 
           cnt++;
         }
@@ -1976,6 +1921,80 @@ void MapUtils::serialize_and_remove_followers(MapPtr map, CreaturePtr creature)
     }
   }
 }
+
+void MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinate& c)
+{
+  vector<string> placed_followers_keys;
+
+  if (map != nullptr && map->get_map_type() != MapType::MAP_TYPE_WORLD && creature != nullptr)
+  {
+    vector<pair<string, string>> followers;
+
+    for (int i = 1; i <= Creature::MAX_TRANSFERRABLE_FOLLOWERS; i++)
+    {
+      string prop = CreatureUtils::get_follower_property_prefix() + std::to_string(i);
+      string val = creature->get_additional_property(prop);
+
+      if (!val.empty())
+      {
+        followers.push_back(make_pair(prop, val));
+      }
+      else
+      {
+        break;
+      }
+    }
+
+    if (!followers.empty())
+    {
+      vector<Coordinate> coords = CoordUtils::get_adjacent_map_coordinates(map->size(), c.first, c.second);
+      std::shuffle(coords.begin(), coords.end(), RNG::get_engine());
+      CreaturePtr follower = std::make_shared<Creature>();
+      pair<string, string> follower_details = followers.back();
+
+      {
+        istringstream iss(follower_details.second);
+        follower->deserialize(iss);
+      }
+
+      while (!followers.empty() && !coords.empty())
+      {
+        Coordinate cur_coord = coords.back();
+        TilePtr adj_tile = map->at(cur_coord);
+        coords.pop_back();
+
+        if (adj_tile != nullptr && adj_tile->get_is_available_for_creature(follower) && !adj_tile->get_dangerous(follower))
+        {
+          MapUtils::add_or_update_location(map, follower, cur_coord);
+          followers.pop_back();
+          placed_followers_keys.push_back(follower_details.first);
+
+          if (!followers.empty())
+          {
+            follower = std::make_shared<Creature>();
+            follower_details = followers.back();
+            istringstream iss(follower_details.second);
+            follower->deserialize(iss);
+          }
+        }
+      }
+
+      if (!followers.empty())
+      {
+        // Add a message about feeling abandoned.
+        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ABANDONED));
+        manager.send();
+      }
+    }
+
+    for (auto key : placed_followers_keys)
+    {
+      creature->remove_additional_property(key);
+    }
+  }
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Map_test.cpp"
 #include "unit_tests/MapUtils_test.cpp"
