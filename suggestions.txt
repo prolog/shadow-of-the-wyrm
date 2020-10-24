@@ -6,7 +6,6 @@ Me:
 - Are bazaars bugged on scrublands? (JE) (savefile ready!) Reported 2x.
 - High scores not working always? Delete scores.dat. Generate a number of
   characters. Autosave? JE
-- Are hirelings disappearing between maps? (debugger)
 - Entering church, player is placed on stairs instead of outside church. JE
 - pick up/drop all that work with filters
 - Generate tombs with keys outside door/doors locked

@@ -1963,7 +1963,7 @@ void MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinat
         TilePtr adj_tile = map->at(cur_coord);
         coords.pop_back();
 
-        if (adj_tile != nullptr && adj_tile->get_is_available_for_creature(follower) && !adj_tile->get_dangerous(follower))
+        if (adj_tile != nullptr && is_tile_available_for_creature(follower, adj_tile) && !adj_tile->get_dangerous(follower))
         {
           MapUtils::add_or_update_location(map, follower, cur_coord);
           followers.pop_back();
