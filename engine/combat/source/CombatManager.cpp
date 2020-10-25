@@ -584,7 +584,8 @@ void CombatManager::handle_draining_if_necessary(CreaturePtr attacking_creature,
 
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
     string attacking_creature_desc = (attacking_creature != nullptr) ? StringTable::get(attacking_creature->get_description_sid()) : "";
-    string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
+    string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature, false);
+
     string drain_message = CombatTextKeys::get_drain_message(attacking_creature && attacking_creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), attacking_creature_desc, creature_desc);
     manager.add_new_message(drain_message);
 
@@ -610,7 +611,7 @@ void CombatManager::handle_ethereal_if_necessary(CreaturePtr attacking_creature,
 
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
     string attacking_creature_desc = (attacking_creature != nullptr) ? StringTable::get(attacking_creature->get_description_sid()) : "";
-    string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
+    string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature, false);
 
     string ethereal_message = CombatTextKeys::get_ethereal_message(attacking_creature && attacking_creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), attacking_creature_desc, creature_desc);
     manager.add_new_message(ethereal_message);
@@ -632,7 +633,7 @@ void CombatManager::handle_explosive_if_necessary(CreaturePtr attacking_creature
     // Add a message about the explosion.
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
     string attacking_creature_desc = (attacking_creature != nullptr) ? StringTable::get(attacking_creature->get_description_sid()) : "";
-    string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
+    string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature, false);
 
     string explosion_msg = CombatTextKeys::get_explosive_message(attacking_creature && attacking_creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), attacking_creature_desc, creature_desc);
     manager.add_new_message(explosion_msg);
@@ -989,17 +990,7 @@ bool CombatManager::intimidate(CreaturePtr attacking_creature, CreaturePtr attac
 // so that these are only added when the target is not the player.
 void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, CreaturePtr attacked_creature, const int damage, const bool piercing, const bool incorporeal)
 {
-  vector<string> additional_messages;
-  
-  if (damage == 0)
-  {
-    // ...
-  }
-  else if (damage < 0)
-  {
-    // ...
-  }
-
+  vector<string> additional_messages;  
   string attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
 
   if (creature && attacked_creature && (creature->get_id() != attacked_creature->get_id()))
@@ -1101,11 +1092,14 @@ bool CombatManager::is_automatic_hit(const int d100_roll)
 // also the player, in which case it will be "yourself".
 //
 // If it is not the player, it will just be the creature's description.
-string CombatManager::get_appropriate_creature_description(CreaturePtr attacking_creature, CreaturePtr creature)
+string CombatManager::get_appropriate_creature_description(CreaturePtr attacking_creature, CreaturePtr creature, const bool use_reflexive_when_same)
 {
   string desc;
 
-  if (attacking_creature && creature && (attacking_creature->get_id() == creature->get_id()))
+  if (attacking_creature && 
+      creature && 
+     (attacking_creature->get_id() == creature->get_id()) && 
+     (use_reflexive_when_same || creature->get_is_player()))
   {
     desc = TextMessages::get_reflexive_pronoun(creature);
   }

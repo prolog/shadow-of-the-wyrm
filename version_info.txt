@@ -35,7 +35,7 @@ Shadow of the Wyrm v1.2.4 "Britten"
   amulet) might now cause your deity to uncurse your equipment (Vestphiliac).
 
 - Flying now adds some evade as well.
-`
+
 - The food/hunger counter now has a (very large) cap, instead of just max int.
 
 - The item codex is now available on tile selection (YARD).
@@ -45,7 +45,7 @@ Shadow of the Wyrm v1.2.4 "Britten"
 - Kicking an open door now causes it to slam shut.
 
 - Version info now includes the build date to easily distinguish different
-  prerelease builds.
+  builds with the same build number (e.g. prerelease builds).
 
 - Hirelings now all start with boats (Blue).
 
@@ -88,7 +88,10 @@ Shadow of the Wyrm v1.2.4 "Britten"
   - NPCs will no longer pick up items while blind.
 
   - Trying to view the codex when there are no items caused a crash.
-  
+ 
+  - Draining, ethereal, and explosive attacks were grammatically weird when
+    a stunned creature attacked themselves (Josh Engdahl).
+
   - Hirelings were very enthusiastic about following your orders to attack,
     to the point of attacking you to get at the creature they're supposed to
     be killing (Josh Engdahl).

@@ -5247,7 +5247,7 @@
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
-					<Type>1</Type>
+					<Type>0</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="briar_axe">
