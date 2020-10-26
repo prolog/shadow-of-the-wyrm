@@ -2,7 +2,7 @@
 #include "Map.hpp"
 #include "Directions.hpp"
 
-#define DEFAULT_ROAD_WIDTH 3
+constexpr auto DEFAULT_ROAD_WIDTH = 3;
 
 class RoadGenerator
 {

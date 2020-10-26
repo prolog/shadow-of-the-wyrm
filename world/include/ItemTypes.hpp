@@ -26,22 +26,22 @@ enum struct ItemType
 };
 
 // Item types for the Lua code.
-#define CITEM_TYPE_MISC 0
-#define CITEM_TYPE_WEAPON 1
-#define CITEM_TYPE_ARMOUR 2
-#define CITEM_TYPE_POTION 3
-#define CITEM_TYPE_SPELLBOOK 4
-#define CITEM_TYPE_SCROLL 5
-#define CITEM_TYPE_WAND 6
-#define CITEM_TYPE_STAFF 7
-#define CITEM_TYPE_RING 8
-#define CITEM_TYPE_AMULET 9
-#define CITEM_TYPE_FOOD 10
-#define CITEM_TYPE_AMMUNITION 11
-#define CITEM_TYPE_PLANT 12
-#define CITEM_TYPE_BOAT 13
-#define CITEM_TYPE_CURRENCY 14
-#define CITEM_TYPE_TOOL 15
+constexpr auto CITEM_TYPE_MISC = 0;
+constexpr auto CITEM_TYPE_WEAPON = 1;
+constexpr auto CITEM_TYPE_ARMOUR = 2;
+constexpr auto CITEM_TYPE_POTION = 3;
+constexpr auto CITEM_TYPE_SPELLBOOK = 4;
+constexpr auto CITEM_TYPE_SCROLL = 5;
+constexpr auto CITEM_TYPE_WAND = 6;
+constexpr auto CITEM_TYPE_STAFF = 7;
+constexpr auto CITEM_TYPE_RING = 8;
+constexpr auto CITEM_TYPE_AMULET = 9;
+constexpr auto CITEM_TYPE_FOOD = 10;
+constexpr auto CITEM_TYPE_AMMUNITION = 11;
+constexpr auto CITEM_TYPE_PLANT = 12;
+constexpr auto CITEM_TYPE_BOAT = 13;
+constexpr auto CITEM_TYPE_CURRENCY = 14;
+constexpr auto CITEM_TYPE_TOOL = 15;
 
 enum struct ItemStatus
 {

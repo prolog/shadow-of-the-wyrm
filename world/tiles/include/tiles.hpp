@@ -72,62 +72,62 @@ enum struct TileType
 };
 
 // Tile types for the Lua API
-#define CTILE_TYPE_UNDEFINED -1
-#define CTILE_TYPE_FIRST 0
-#define CTILE_TYPE_FIELD 0
-#define CTILE_TYPE_SCRUB 1
-#define CTILE_TYPE_WHEAT 2
-#define CTILE_TYPE_CAIRN 3
-#define CTILE_TYPE_TREE 4
-#define CTILE_TYPE_DESERT 5
-#define CTILE_TYPE_ROAD 6
-#define CTILE_TYPE_RIVER 7
-#define CTILE_TYPE_SEA 8
-#define CTILE_TYPE_SHOALS 9
-#define CTILE_TYPE_DUNGEON 10
-#define CTILE_TYPE_ROCK 11
-#define CTILE_TYPE_GRAVE 12
-#define CTILE_TYPE_MARSH 13
-#define CTILE_TYPE_REEDS 14
-#define CTILE_TYPE_HILLS 15
-#define CTILE_TYPE_MOUNTAINS 16
-#define CTILE_TYPE_BEACH 17
-#define CTILE_TYPE_BUSH 18
-#define CTILE_TYPE_WEEDS 19
-#define CTILE_TYPE_SPRINGS 20
-#define CTILE_TYPE_FOREST 21
-#define CTILE_TYPE_UP_STAIRCASE 22
-#define CTILE_TYPE_DOWN_STAIRCASE 23
-#define CTILE_TYPE_CAVERN 24
-#define CTILE_TYPE_VILLAGE 25
-#define CTILE_TYPE_DUNGEON_COMPLEX 26
-#define CTILE_TYPE_BARRACKS 27
-#define CTILE_TYPE_CASTLE 28
-#define CTILE_TYPE_CHURCH 29
-#define CTILE_TYPE_GRAVEYARD 30
-#define CTILE_TYPE_KEEP 31
-#define CTILE_TYPE_LIBRARY 32
-#define CTILE_TYPE_SITE_OF_DEATH 33
-#define CTILE_TYPE_TEMPLE 34
-#define CTILE_TYPE_DAIS 35
-#define CTILE_TYPE_PIER 36
-#define CTILE_TYPE_BARROW 37
-#define CTILE_TYPE_WILD_ORCHARD 38
-#define CTILE_TYPE_FRUIT_TREE 39
-#define CTILE_TYPE_EVERGREEN_TREE 40
-#define CTILE_TYPE_ROCKY_EARTH 41
-#define CTILE_TYPE_MINE 42
-#define CTILE_TYPE_WELL 43
-#define CTILE_TYPE_CRYPT 44
-#define CTILE_TYPE_AIR 45
-#define CTILE_TYPE_EARTH 46
-#define CTILE_TYPE_SEWER_COMPLEX 47
-#define CTILE_TYPE_SEWER 48
-#define CTILE_TYPE_SHRINE 49
-#define CTILE_TYPE_SEABED 50
-#define CTILE_TYPE_AQUATIC_VEGETATION 51
-#define CTILE_TYPE_FLOATING_TOWER 52
-#define CTILE_TYPE_VOID 53
-#define CTILE_TYPE_MAGICAL_TREE 54
-#define CTILE_TYPE_LAST 555
+constexpr auto CTILE_TYPE_UNDEFINED = -1;
+constexpr auto CTILE_TYPE_FIRST = 0;
+constexpr auto CTILE_TYPE_FIELD = 0;
+constexpr auto CTILE_TYPE_SCRUB = 1;
+constexpr auto CTILE_TYPE_WHEAT = 2;
+constexpr auto CTILE_TYPE_CAIRN = 3;
+constexpr auto CTILE_TYPE_TREE = 4;
+constexpr auto CTILE_TYPE_DESERT = 5;
+constexpr auto CTILE_TYPE_ROAD = 6;
+constexpr auto CTILE_TYPE_RIVER = 7;
+constexpr auto CTILE_TYPE_SEA = 8;
+constexpr auto CTILE_TYPE_SHOALS = 9;
+constexpr auto CTILE_TYPE_DUNGEON = 10;
+constexpr auto CTILE_TYPE_ROCK = 11;
+constexpr auto CTILE_TYPE_GRAVE = 12;
+constexpr auto CTILE_TYPE_MARSH = 13;
+constexpr auto CTILE_TYPE_REEDS = 14;
+constexpr auto CTILE_TYPE_HILLS = 15;
+constexpr auto CTILE_TYPE_MOUNTAINS = 16;
+constexpr auto CTILE_TYPE_BEACH = 17;
+constexpr auto CTILE_TYPE_BUSH = 18;
+constexpr auto CTILE_TYPE_WEEDS = 19;
+constexpr auto CTILE_TYPE_SPRINGS = 20;
+constexpr auto CTILE_TYPE_FOREST = 21;
+constexpr auto CTILE_TYPE_UP_STAIRCASE = 22;
+constexpr auto CTILE_TYPE_DOWN_STAIRCASE = 23;
+constexpr auto CTILE_TYPE_CAVERN = 24;
+constexpr auto CTILE_TYPE_VILLAGE = 25;
+constexpr auto CTILE_TYPE_DUNGEON_COMPLEX = 26;
+constexpr auto CTILE_TYPE_BARRACKS = 27;
+constexpr auto CTILE_TYPE_CASTLE = 28;
+constexpr auto CTILE_TYPE_CHURCH = 29;
+constexpr auto CTILE_TYPE_GRAVEYARD = 30;
+constexpr auto CTILE_TYPE_KEEP = 31;
+constexpr auto CTILE_TYPE_LIBRARY = 32;
+constexpr auto CTILE_TYPE_SITE_OF_DEATH = 33;
+constexpr auto CTILE_TYPE_TEMPLE = 34;
+constexpr auto CTILE_TYPE_DAIS = 35;
+constexpr auto CTILE_TYPE_PIER = 36;
+constexpr auto CTILE_TYPE_BARROW = 37;
+constexpr auto CTILE_TYPE_WILD_ORCHARD = 38;
+constexpr auto CTILE_TYPE_FRUIT_TREE = 39;
+constexpr auto CTILE_TYPE_EVERGREEN_TREE = 40;
+constexpr auto CTILE_TYPE_ROCKY_EARTH = 41;
+constexpr auto CTILE_TYPE_MINE = 42;
+constexpr auto CTILE_TYPE_WELL = 43;
+constexpr auto CTILE_TYPE_CRYPT = 44;
+constexpr auto CTILE_TYPE_AIR = 45;
+constexpr auto CTILE_TYPE_EARTH = 46;
+constexpr auto CTILE_TYPE_SEWER_COMPLEX = 47;
+constexpr auto CTILE_TYPE_SEWER = 48;
+constexpr auto CTILE_TYPE_SHRINE = 49;
+constexpr auto CTILE_TYPE_SEABED = 50;
+constexpr auto CTILE_TYPE_AQUATIC_VEGETATION = 51;
+constexpr auto CTILE_TYPE_FLOATING_TOWER = 52;
+constexpr auto CTILE_TYPE_VOID = 53;
+constexpr auto CTILE_TYPE_MAGICAL_TREE = 54;
+constexpr auto CTILE_TYPE_LAST = 55;
 
