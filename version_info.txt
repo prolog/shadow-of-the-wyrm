@@ -129,6 +129,11 @@ Shadow of the Wyrm v1.2.4 "Britten"
 
   - Deities were angered when throwing beneficial potions (Josh Engdahl).
 
+  - Bazaars weren't generating correctly on scrublands (various).
+
+  - On the equipment screen, using the codex was improperly advancing the
+    turn (Josh Engdahl).
+
 Shadow of the Wyrm v1.2.2 "Borrono"
 - Version declared July 17, 2020.  Version finalized September 12, 2020.
 

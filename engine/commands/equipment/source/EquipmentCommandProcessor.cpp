@@ -62,6 +62,8 @@ ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, Command
           EquipmentWornLocation ewl = esc->get_equipment_worn_location();
           Game::instance().get_action_manager_ref().item_codex(creature, ewl);
         }
+
+        process_result = 0;
       }
       else if (command_name == EquipmentCommandKeys::YOUR_ITEMS)
       {

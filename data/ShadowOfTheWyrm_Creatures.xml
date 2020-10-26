@@ -9658,6 +9658,7 @@
 			<TextDetailsSID>SYLPH_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SYLPH_SPEECH_TEXT_SID</SpeechTextSID>
 			<Sex>1</Sex>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>

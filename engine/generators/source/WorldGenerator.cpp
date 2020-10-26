@@ -216,7 +216,7 @@ void WorldGenerator::potentially_add_properties_on_type_match(const int row, con
         if (Log::instance().debug_enabled())
         {
           ostringstream ss;
-          ss << "Bazaar generated at " << row << "," << col;
+          ss << "Bazaar generated at " << row << "," << col << " for tile type " << static_cast<int>(tile_type);
           
           Log::instance().debug(ss.str());
         }

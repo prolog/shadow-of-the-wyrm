@@ -1,9 +1,6 @@
 Me: 
-- Codex in inventory advancing turn
-- Test evergreen generation
 - Tile release! Evergreen trees were added.
 - Enchants and esp brands should add value to items!
-- Are bazaars bugged on scrublands? (JE) (savefile ready!) Reported 2x.
 - High scores not working always? Delete scores.dat. Generate a number of
   characters. Autosave? JE
 - Entering church, player is placed on stairs instead of outside church. JE
