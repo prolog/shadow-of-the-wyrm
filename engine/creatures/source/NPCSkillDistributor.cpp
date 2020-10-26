@@ -9,7 +9,6 @@ void NPCSkillDistributor::distribute_unused_skill_points(CreaturePtr creature)
   if (creature != nullptr)
   {
     vector<SkillType> imp_skills = get_skills_to_improve(creature);
-    Skills& sk = creature->get_skills();
     int skill_points = creature->get_skill_points();
 
     while (skill_points > 0 && !imp_skills.empty())

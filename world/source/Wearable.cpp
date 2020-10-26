@@ -174,7 +174,7 @@ bool Wearable::get_is_good() const
   double resist_total = resistances.get_total();
 
   bool good = Item::get_is_good() && 
-              (cstat_total > CSTAT_GOOD_THRESHOLD) || (resist_total > RESISTS_GOOD_THRESHOLD);
+              (cstat_total > CSTAT_GOOD_THRESHOLD || resist_total > RESISTS_GOOD_THRESHOLD);
 
   return good;
 }

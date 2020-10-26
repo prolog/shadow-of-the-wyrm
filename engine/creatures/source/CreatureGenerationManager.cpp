@@ -237,7 +237,7 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, Crea
 
 CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, const int danger_level)
 {
-  CreatureSex sex = sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE)));
+  CreatureSex sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE)));
   CreatureFactory cf;
 
   Race* race = CreatureUtils::get_random_user_playable_race();

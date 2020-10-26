@@ -250,7 +250,6 @@ CommandPtr NPCUseEquipItemDecisionStrategy::get_use_wand_decision(CreaturePtr cr
 
   if (wand != nullptr && wand->get_charges().get_current() > 0 && wand->get_has_damage())
   {
-    uint range = wand->get_range();
     AttackNPCMagicDecision anmd;
     Spell spell;
     SpellShape ss = SpellShapeFactory::create_spell_shape(wand->get_spell_shape_type(), wand->get_radius());
