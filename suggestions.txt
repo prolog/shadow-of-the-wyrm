@@ -1,4 +1,6 @@
 Me: 
+- uncursing potion you can throw at followers
+- Cancelling wand evocation doesn't take a turn, cancelling a spell does.
 - Tile release! Evergreen trees were added.
 - Enchants and esp brands should add value to items!
 - High scores not working always? Delete scores.dat. Generate a number of

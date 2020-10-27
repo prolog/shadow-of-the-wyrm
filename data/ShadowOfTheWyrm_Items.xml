@@ -8902,6 +8902,31 @@
 				<Nutrition>100</Nutrition>
 				<Effect>8</Effect>
 			</Potion>
+			<Potion id="uncursing_potion">
+				<DescriptionSID>UNCURSING_POTION_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_UNCURSING_POTION_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>UNCURSING_POTION_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_UNCURSING_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>UNCURSING_POTION_CODEX_SID</CodexDescriptionSID>
+				<Value>60</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>2</Material>
+				<Symbol>
+					<Char>!</Char>
+					<Colour>14</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>1</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>1</DangerLevel>
+				<Nutrition>100</Nutrition>
+				<Effect>21</Effect>
+			</Potion>
 			<Potion id="_unstoning_potion">
 				<DescriptionSID>UNSTONING_POTION_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_UNSTONING_POTION_SID</UnidentifiedDescriptionSID>

@@ -24,6 +24,8 @@ Shadow of the Wyrm v1.2.4 "Britten"
 - Insects now generate with 1 Intelligence to prevent them from being able to
   open doors (Josh Engdahl).
 
+- Effects now broadcast properly when applied to NPCs.
+
 - Ancient Beasts now show up as "Unknown" difficulty, regardless of their
   level.
 
@@ -50,6 +52,8 @@ Shadow of the Wyrm v1.2.4 "Britten"
 - Hirelings now all start with boats (Blue).
 
 - Stanzas for "Tel and Floridel".
+
+- New items: uncursing potion.
 
 - Bug fixes:
 
