@@ -9755,6 +9755,7 @@
 		</Creature>
 		<Creature id="naiad">
 			<RaceID>_humanoid</RaceID>
+			<WaterBreathing>1</WaterBreathing>
 			<ShortDescriptionSID>NAIAD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>NAIAD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>NAIAD_TEXT_DETAILS_SID</TextDetailsSID>

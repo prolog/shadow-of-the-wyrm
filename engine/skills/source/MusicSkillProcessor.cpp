@@ -129,6 +129,7 @@ void MusicSkillProcessor::perform(CreaturePtr creature, MapPtr map, ItemPtr inst
       CreatureMap fov_creatures = creature->get_decision_strategy()->get_fov_map()->get_creatures();
       int num_hostile = 0;
       int num_pacified = 0;
+      int num_not_pacifiable = 0;
       string perf_sid = perf_sids.first; // Start off with the success SID.
 
       // Begin the performance.
@@ -141,13 +142,18 @@ void MusicSkillProcessor::perform(CreaturePtr creature, MapPtr map, ItemPtr inst
 
         if (fov_creature->hostile_to(creature->get_id()))
         {
-          attempt_pacification(instr, creature, fov_creature, num_hostile, num_pacified);
+          auto po = attempt_pacification(instr, creature, fov_creature, num_hostile, num_pacified);
+
+          if (po == PacificationOutcome::PACIFICATION_OUTCOME_NOT_PACIFIABLE)
+          {
+            num_not_pacifiable++;
+          }
         }
       }
 
       // If there were hostile creatures, but none of them were pacified, the
       // performance was a failure.
-      if (num_hostile > 0 && num_pacified == 0)
+      if (num_hostile > 0 && num_pacified == 0 && num_hostile != num_not_pacifiable)
       {
         perf_sid = perf_sids.second;
       }
@@ -161,8 +167,10 @@ void MusicSkillProcessor::perform(CreaturePtr creature, MapPtr map, ItemPtr inst
   }
 }
 
-void MusicSkillProcessor::attempt_pacification(ItemPtr instr, CreaturePtr creature, CreaturePtr fov_creature, int& num_hostile, int& num_pacified)
+PacificationOutcome MusicSkillProcessor::attempt_pacification(ItemPtr instr, CreaturePtr creature, CreaturePtr fov_creature, int& num_hostile, int& num_pacified)
 {
+  PacificationOutcome po = PacificationOutcome::PACIFICATION_OUTCOME_FAILURE;
+
   if (creature != nullptr && fov_creature != nullptr)
   {
     num_hostile++;
@@ -193,6 +201,8 @@ void MusicSkillProcessor::attempt_pacification(ItemPtr instr, CreaturePtr creatu
           if (RNG::percent_chance(pct_chance_pacify))
           {
             pacify(creature, fov_creature, charms_creature);
+            po = PacificationOutcome::PACIFICATION_OUTCOME_SUCCESS;
+
             num_pacified++;
           }
           else
@@ -212,10 +222,13 @@ void MusicSkillProcessor::attempt_pacification(ItemPtr instr, CreaturePtr creatu
         else
         {
           add_not_pacifiable_message(creature, fov_creature);
+          po = PacificationOutcome::PACIFICATION_OUTCOME_NOT_PACIFIABLE;
         }
       }
     }
   }
+
+  return po;
 }
 
 void MusicSkillProcessor::add_start_performance_message(CreaturePtr creature)

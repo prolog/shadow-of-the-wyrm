@@ -54,7 +54,7 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
   {
     creature = std::make_shared<Creature>();
     creature_data.first = creature;
-      
+
     // The creature ID for the templates gives a unique value - for each individual
     // creature, a GUID will be genreated during creation of that creature.
     string id = XMLUtils::get_attribute_value(creature_node, "id");
@@ -77,11 +77,11 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
       BreatheType breathes = static_cast<BreatheType>(XMLUtils::get_node_int_value(breathetype_node));
       creature->set_breathes(breathes);
     }
-    
+
     // Typically a single word or phrase: bat, orc child, troll pedestrian, etc.
     string short_description_sid = XMLUtils::get_child_node_value(creature_node, "ShortDescriptionSID");
     creature->set_short_description_sid(short_description_sid);
-    
+
     // A longer description, which can be used as part of a sentence:
     // "a goblin warrior", "some grey ooze", etc.
     string description_sid = XMLUtils::get_child_node_value(creature_node, "DescriptionSID");
@@ -94,19 +94,25 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     // What the creature says when chatted with, if anything at all.
     string speech_text_sid = XMLUtils::get_child_node_value(creature_node, "SpeechTextSID");
     creature->set_speech_text_sid(speech_text_sid);
-    
+
     // What sex is the creature?  If unspecified, default to male.
     CreatureSex sex = static_cast<CreatureSex>(XMLUtils::get_child_node_int_value(creature_node, "Sex"));
     creature->set_sex(sex);
 
-    bool flying = XMLUtils::get_child_node_bool_value(creature_node, "Flying");
+    // Read any permanent statuses that override the race values.
+    vector<pair<string, string>> element_and_id = { {"Flying", StatusIdentifiers::STATUS_ID_FLYING}, {"WaterBreathing", StatusIdentifiers::STATUS_ID_WATER_BREATHING} };
 
-    if (flying)
-    {    
-      Modifier m;
-      ModifyStatisticsEffect mse;
-      m.set_status(StatusIdentifiers::STATUS_ID_FLYING, true);
-      mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
+    for (const auto& ei : element_and_id)
+    {
+      bool node_val = XMLUtils::get_child_node_bool_value(creature_node, ei.first);
+
+      if (node_val)
+      {
+        Modifier m;
+        ModifyStatisticsEffect mse;
+        m.set_status(ei.second, true);
+        mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
+      }
     }
 
     // A decision strategy for the creature, which provides a set of actions (move, attack, and so on)

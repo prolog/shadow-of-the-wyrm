@@ -26,7 +26,7 @@ bool WaterSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
     else
     {
       if (creature->can_breathe(BreatheType::BREATHE_TYPE_WATER) ||
-        creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
+          creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
       {
         safe = true;
       }

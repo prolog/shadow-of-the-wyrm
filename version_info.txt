@@ -51,6 +51,9 @@ Shadow of the Wyrm v1.2.4 "Britten"
 
 - Hirelings now all start with boats (Blue).
 
+- It's now clearer when something can't be pacified, and the musical failure
+  message now only triggers when you fail to pacify any pacifiable creatures.
+
 - Stanzas for "Tel and Floridel".
 
 - New items: uncursing potion.
