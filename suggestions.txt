@@ -1,5 +1,8 @@
 Me:
+- You can't kick a creature to a tile with an already-triggered trap because
+  they'll decline movement confirmation.
 - 100 swimming: swim forever
+- Is the area fleeing message broadcasting?
 - Cancelling wand evocation doesn't take a turn, cancelling a spell does.
 - Tile release! Evergreen trees were added.
 - Enchants and esp brands should add value to items!
@@ -240,6 +243,7 @@ Grond:
 - Scything on ammo?
 - could magic skill affect spell duration
 - monster as a mount
+- "some ivory pieces shimmers in a radiant light"
 
 Yan Zhang:
 - Dungeon symbol should generate that thing on the last level
@@ -292,3 +296,5 @@ Josh Engdahl
 - Freeze not always working when hostile creatures in view or creatures 
   hostile to leader in view?
 - waterbreathing flag, similar to incorporeal, flying, etc
+- los code: .@..   can't see
+            ####s

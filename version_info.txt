@@ -54,6 +54,9 @@ Shadow of the Wyrm v1.2.4 "Britten"
 - It's now clearer when something can't be pacified, and the musical failure
   message now only triggers when you fail to pacify any pacifiable creatures.
 
+- The usage string for ivory pieces has been tweaked to work better with
+  enchantments (Grond).
+
 - Stanzas for "Tel and Floridel".
 
 - New items: uncursing potion.
@@ -62,6 +65,9 @@ Shadow of the Wyrm v1.2.4 "Britten"
 
   - Custom underground maps (Siriath's level, etc) didn't set the terrain
     type appropriately.
+
+  - The ordering of messages around kicking, especially when dealing with a
+    tile with a hidden trap, was off (Josh Engdahl).
 
   - Thief titles were missing (Red).
 

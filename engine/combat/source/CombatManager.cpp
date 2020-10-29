@@ -487,9 +487,17 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   }
 
   // If this is a tertiary unarmed attack (kicking), there is a chance that 
-  // the creature is knocked back, given the existence of an open, inhabitable
-  // tile.
+  // the creature is knocked back, given the existence of an open tile.
+  int damage_dealt = 0;
   knock_back_creature_if_necessary(attack_type, attacking_creature, attacked_creature, game, current_map);
+
+  // This may have killed the creature due to traps present and triggered on
+  // the new tile.  If so, be sure not to do the rest of the damage 
+  // application.
+  if (attacked_creature != nullptr && attacked_creature->is_dead())
+  {
+    return damage_dealt;
+  }
 
   // Deal damage.
   PhaseOfMoonCalculator pomc;
@@ -498,7 +506,7 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   bool slays_race = does_attack_slay_creature_race(attacking_creature, attacked_creature, attack_type);
   DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type, phase);
   float soak_multiplier = hit_calculator->get_soak_multiplier();
-  int damage_dealt = damage_calc->calculate(attacked_creature, sneak_attack, slays_race, combat_damage_fixed, base_damage, soak_multiplier);
+  damage_dealt = damage_calc->calculate(attacked_creature, sneak_attack, slays_race, combat_damage_fixed, base_damage, soak_multiplier);
 
   // Add the text so far.
   add_combat_message(attacking_creature, attacked_creature, combat_message.str());
@@ -1220,29 +1228,23 @@ bool CombatManager::knock_back_creature_if_necessary(const AttackType attack_typ
 
       if (MapUtils::is_tile_available_for_creature(attacked_creature, tile))
       {
+        // If the creature was knocked back, and if it is appropriate to do so,
+        // add a message.
+        IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacking_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
+        string knock_back_msg = ActionTextKeys::get_knock_back_message(attacked_creature->get_description_sid(), attacked_creature->get_is_player());
+
+        manager.add_new_message(knock_back_msg);
+        manager.send();
+
         am.move(attacked_creature, kick_dir);
         knocked_back = true;
 
-        if (MapUtils::is_tile_available_for_creature(attacked_creature, next_tile))
+        if (!attacked_creature->is_dead() && MapUtils::is_tile_available_for_creature(attacked_creature, next_tile))
         {
           am.move(attacked_creature, kick_dir);
         }
       }
     }
-  }
-
-  // If the creature was knocked back, and if it is appropriate to do so,
-  // add a message.
-  CurrentCreatureAbilities cca;
-
-  // Show a message if the player is in the field of view of either creature.
-  if (knocked_back && cca.can_see(attacking_creature))
-  {
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacking_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
-    string knock_back_msg = ActionTextKeys::get_knock_back_message(attacked_creature->get_description_sid(), attacked_creature->get_is_player());
-
-    manager.add_new_message(knock_back_msg);
-    manager.send();
   }
 
   return knocked_back;
