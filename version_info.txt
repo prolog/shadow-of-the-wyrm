@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.2.4 "Britten"
-- Version declared September 12, 2020.
+- Version declared September 12, 2020. Version finalized November 1, 2020.
 
 - The pickup code is more restrictive, and now only fires for humanoids
   (Josh Engdahl).

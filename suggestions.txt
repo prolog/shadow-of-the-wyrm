@@ -1,10 +1,6 @@
 Me:
 - Tile release! Evergreen trees were added.
 - Enchants and esp brands should add value to items!
-- High scores not working always? Delete scores.dat. Generate a number of
-  characters. Autosave? Def autosave. If you autosave before dying, it doesnt
-  work. JE
-- Entering church, player is placed on stairs instead of outside church. JE
 - pick up/drop all that work with filters
 - Generate tombs with keys outside door/doors locked
 - sword-eater/hits himself (Josh Engdahl)
@@ -300,4 +296,4 @@ Josh Engdahl
 - You can't kick a creature to a tile with an already-triggered trap because
   they'll decline movement confirmation.
 - Is the area fleeing message broadcasting?
-
+- Entering church, player is placed on stairs instead of outside church.
