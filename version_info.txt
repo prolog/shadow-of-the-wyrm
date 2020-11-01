@@ -57,6 +57,12 @@ Shadow of the Wyrm v1.2.4 "Britten"
 - The usage string for ivory pieces has been tweaked to work better with
   enchantments (Grond).
 
+- You can now swim a little longer, and the damage that's dealt after you're
+  exhausted is now reduced by the Swimming skill.
+
+- Cancelling a spell via an invalid direction no longer advances the turn
+  (Josh Engdahl).
+
 - Stanzas for "Tel and Floridel".
 
 - New items: uncursing potion.

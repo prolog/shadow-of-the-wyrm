@@ -1,13 +1,9 @@
 Me:
-- You can't kick a creature to a tile with an already-triggered trap because
-  they'll decline movement confirmation.
-- 100 swimming: swim forever
-- Is the area fleeing message broadcasting?
-- Cancelling wand evocation doesn't take a turn, cancelling a spell does.
 - Tile release! Evergreen trees were added.
 - Enchants and esp brands should add value to items!
 - High scores not working always? Delete scores.dat. Generate a number of
-  characters. Autosave? JE
+  characters. Autosave? Def autosave. If you autosave before dying, it doesnt
+  work. JE
 - Entering church, player is placed on stairs instead of outside church. JE
 - pick up/drop all that work with filters
 - Generate tombs with keys outside door/doors locked
@@ -298,3 +294,10 @@ Josh Engdahl
 - waterbreathing flag, similar to incorporeal, flying, etc
 - los code: .@..   can't see
             ####s
+
+- can lure ancient monsters into trap room and kill them via an unwillingness
+  to move on to trapped tiles.
+- You can't kick a creature to a tile with an already-triggered trap because
+  they'll decline movement confirmation.
+- Is the area fleeing message broadcasting?
+

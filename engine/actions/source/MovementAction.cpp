@@ -853,6 +853,11 @@ void MovementAction::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPt
   {
     Game& game = Game::instance();
     game.get_action_manager_ref().save(game.get_current_player(), false);
+
+    // Normally when saving, check_scores is set to false so that a score file
+    // entry won't be generated.  But checkpoint saves don't exit the game, so
+    // ensure check_scores is reset to true and score file entries can happen.
+    game.set_check_scores(true);
   }
 }
 

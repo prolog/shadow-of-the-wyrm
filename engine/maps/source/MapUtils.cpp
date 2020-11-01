@@ -1939,10 +1939,6 @@ void MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinat
       {
         followers.push_back(make_pair(prop, val));
       }
-      else
-      {
-        break;
-      }
     }
 
     if (!followers.empty())
