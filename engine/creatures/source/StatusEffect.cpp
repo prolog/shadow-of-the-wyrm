@@ -257,13 +257,16 @@ void StatusEffect::undo(CreaturePtr creature) const
 {
   if (creature)
   {
+    string status_id = get_status_identifier();
     StatisticsMarker sm;
     CreatureUtils::mark_modifiers_for_deletion(creature, get_status_identifier(), StatusRemovalType::STATUS_REMOVAL_UNDO);
     sm.mark_health(creature);
 
-    bool removed = creature->remove_status(get_status_identifier());
+    bool had_status = creature->has_status(status_id);
+    creature->remove_status(status_id);
+    bool has_status = creature->has_status(status_id);
 
-    if (removed)
+    if (had_status && !has_status)
     {
       IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature->get_is_player());
 

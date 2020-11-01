@@ -37,5 +37,6 @@ class HungerClock : public ISerializable
 
   private:
     ClassIdentifier internal_class_identifier() const override;
+    static const int MAX_HUNGER_VAL;
 };
 

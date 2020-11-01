@@ -183,6 +183,7 @@ class SkillTextKeys
     // Skill usage - specific skills
     static const std::string SKILL_USAGE_ARCHERY;
     static const std::string SKILL_USAGE_AWARENESS;
+    static const std::string SKILL_USAGE_BARGAINING;
     static const std::string SKILL_USAGE_BLIND_FIGHTING;
     static const std::string SKILL_USAGE_CARRYING;
     static const std::string SKILL_USAGE_COMBAT;

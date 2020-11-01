@@ -77,7 +77,7 @@ bool DiggingEffect::dig(CreaturePtr creature, const Coordinate& affected_coord)
         if (tile_cannot_dig.empty() || String::to_bool(tile_cannot_dig) == false)
         {
           DigAction da;
-          da.dig_through(source_id, nullptr, map, affected_tile, affected_coord, add_messages);
+          da.dig_through(source_id, nullptr, map, affected_tile, affected_coord, add_messages, false);
 
           dug = true;
         }

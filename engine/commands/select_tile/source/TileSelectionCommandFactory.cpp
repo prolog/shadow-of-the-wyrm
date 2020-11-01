@@ -69,6 +69,10 @@ CommandPtr TileSelectionCommandFactory::create(const int key, const std::string&
   {
     command = std::make_unique<BestiaryCommand>(key);
   }
+  else if (command_name == CommandKeys::ITEM_CODEX)
+  {
+    command = std::make_unique<ItemCodexCommand>(key);
+  }
   
   return command;
 }

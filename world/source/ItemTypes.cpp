@@ -51,6 +51,7 @@ const string ItemIdKeys::ITEM_ID_VOXFLOWER        = "_voxflower";
 const string ItemIdKeys::ITEM_ID_VERBENA          = "_verbena";
 const string ItemIdKeys::ITEM_ID_BLACKROOT        = "_blackroot";
 const string ItemIdKeys::ITEM_ID_FISHING_ROD      = "_fishing_rod";
+const string ItemIdKeys::ITEM_ID_CORACLE          = "coracle";
 const string ItemIdKeys::ITEM_ID_TROUT            = "_trout";
 const string ItemIdKeys::ITEM_ID_CARP             = "_carp";
 const string ItemIdKeys::ITEM_ID_PIKE             = "_pike";

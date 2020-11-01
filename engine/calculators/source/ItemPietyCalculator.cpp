@@ -5,7 +5,9 @@
 const int ItemPietyCalculator::MINIMUM_PIETY = 10;
 const int ItemPietyCalculator::MINIMUM_NUTRITION_FOR_PIETY = 1000;
 const int ItemPietyCalculator::BASE_DIVISOR = 10;
-const int ItemPietyCalculator::CORPSE_DIVISOR = 4;
+const int ItemPietyCalculator::CORPSE_DIVISOR = 3;
+const int ItemPietyCalculator::CURRENCY_DIVISOR = 3;
+const int ItemPietyCalculator::ARTIFACT_DIVISOR = 2;
 
 // Calculate the piety granted for the sacrifice of a particular item.
 // - If the item's piety is less than the minimum piety, a piety of 0
@@ -80,9 +82,14 @@ int ItemPietyCalculator::get_base_divisor(ItemPtr item)
       divisor = CORPSE_DIVISOR;
     }
 
+    if (item->get_type() == ItemType::ITEM_TYPE_CURRENCY)
+    {
+      divisor = CURRENCY_DIVISOR;
+    }
+
     if (item->get_artifact())
     {
-      divisor /= 2;
+      divisor /= ARTIFACT_DIVISOR;
     }
   }
 

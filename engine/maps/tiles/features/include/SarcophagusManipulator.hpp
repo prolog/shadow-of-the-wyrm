@@ -1,9 +1,9 @@
 #pragma once
 #include "ActionManager.hpp"
-#include "IFeatureManipulator.hpp"
+#include "FeatureManipulator.hpp"
 #include "Feature.hpp"
 
-class SarcophagusManipulator : public IFeatureManipulator
+class SarcophagusManipulator : public FeatureManipulator
 {
   public:
     SarcophagusManipulator(FeaturePtr feature);

@@ -258,7 +258,8 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
 
             if (tile_creature && 
                !tile_creature->get_is_player() && 
-                RNG::percent_chance(cc.get_combat_assist_pct(tile_creature)))
+                RNG::percent_chance(cc.get_combat_assist_pct(tile_creature)) &&
+               !tile_creature->is_allied_to(attacking_creature->get_original_id()))
             {
               // Make them co-hostile to avoid hostility cascades.
               hm.set_hostility_to_creature(tile_creature, attacking_creature->get_id());
@@ -486,9 +487,17 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   }
 
   // If this is a tertiary unarmed attack (kicking), there is a chance that 
-  // the creature is knocked back, given the existence of an open, inhabitable
-  // tile.
+  // the creature is knocked back, given the existence of an open tile.
+  int damage_dealt = 0;
   knock_back_creature_if_necessary(attack_type, attacking_creature, attacked_creature, game, current_map);
+
+  // This may have killed the creature due to traps present and triggered on
+  // the new tile.  If so, be sure not to do the rest of the damage 
+  // application.
+  if (attacked_creature != nullptr && attacked_creature->is_dead())
+  {
+    return damage_dealt;
+  }
 
   // Deal damage.
   PhaseOfMoonCalculator pomc;
@@ -497,7 +506,7 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   bool slays_race = does_attack_slay_creature_race(attacking_creature, attacked_creature, attack_type);
   DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type, phase);
   float soak_multiplier = hit_calculator->get_soak_multiplier();
-  int damage_dealt = damage_calc->calculate(attacked_creature, sneak_attack, slays_race, combat_damage_fixed, base_damage, soak_multiplier);
+  damage_dealt = damage_calc->calculate(attacked_creature, sneak_attack, slays_race, combat_damage_fixed, base_damage, soak_multiplier);
 
   // Add the text so far.
   add_combat_message(attacking_creature, attacked_creature, combat_message.str());
@@ -583,7 +592,8 @@ void CombatManager::handle_draining_if_necessary(CreaturePtr attacking_creature,
 
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
     string attacking_creature_desc = (attacking_creature != nullptr) ? StringTable::get(attacking_creature->get_description_sid()) : "";
-    string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
+    string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature, false);
+
     string drain_message = CombatTextKeys::get_drain_message(attacking_creature && attacking_creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), attacking_creature_desc, creature_desc);
     manager.add_new_message(drain_message);
 
@@ -609,7 +619,7 @@ void CombatManager::handle_ethereal_if_necessary(CreaturePtr attacking_creature,
 
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
     string attacking_creature_desc = (attacking_creature != nullptr) ? StringTable::get(attacking_creature->get_description_sid()) : "";
-    string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
+    string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature, false);
 
     string ethereal_message = CombatTextKeys::get_ethereal_message(attacking_creature && attacking_creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), attacking_creature_desc, creature_desc);
     manager.add_new_message(ethereal_message);
@@ -631,7 +641,7 @@ void CombatManager::handle_explosive_if_necessary(CreaturePtr attacking_creature
     // Add a message about the explosion.
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
     string attacking_creature_desc = (attacking_creature != nullptr) ? StringTable::get(attacking_creature->get_description_sid()) : "";
-    string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
+    string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature, false);
 
     string explosion_msg = CombatTextKeys::get_explosive_message(attacking_creature && attacking_creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), attacking_creature_desc, creature_desc);
     manager.add_new_message(explosion_msg);
@@ -988,17 +998,7 @@ bool CombatManager::intimidate(CreaturePtr attacking_creature, CreaturePtr attac
 // so that these are only added when the target is not the player.
 void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, CreaturePtr attacked_creature, const int damage, const bool piercing, const bool incorporeal)
 {
-  vector<string> additional_messages;
-  
-  if (damage == 0)
-  {
-    // ...
-  }
-  else if (damage < 0)
-  {
-    // ...
-  }
-
+  vector<string> additional_messages;  
   string attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
 
   if (creature && attacked_creature && (creature->get_id() != attacked_creature->get_id()))
@@ -1100,11 +1100,14 @@ bool CombatManager::is_automatic_hit(const int d100_roll)
 // also the player, in which case it will be "yourself".
 //
 // If it is not the player, it will just be the creature's description.
-string CombatManager::get_appropriate_creature_description(CreaturePtr attacking_creature, CreaturePtr creature)
+string CombatManager::get_appropriate_creature_description(CreaturePtr attacking_creature, CreaturePtr creature, const bool use_reflexive_when_same)
 {
   string desc;
 
-  if (attacking_creature && creature && (attacking_creature->get_id() == creature->get_id()))
+  if (attacking_creature && 
+      creature && 
+     (attacking_creature->get_id() == creature->get_id()) && 
+     (use_reflexive_when_same || creature->get_is_player()))
   {
     desc = TextMessages::get_reflexive_pronoun(creature);
   }
@@ -1225,29 +1228,23 @@ bool CombatManager::knock_back_creature_if_necessary(const AttackType attack_typ
 
       if (MapUtils::is_tile_available_for_creature(attacked_creature, tile))
       {
+        // If the creature was knocked back, and if it is appropriate to do so,
+        // add a message.
+        IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacking_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
+        string knock_back_msg = ActionTextKeys::get_knock_back_message(attacked_creature->get_description_sid(), attacked_creature->get_is_player());
+
+        manager.add_new_message(knock_back_msg);
+        manager.send();
+
         am.move(attacked_creature, kick_dir);
         knocked_back = true;
 
-        if (MapUtils::is_tile_available_for_creature(attacked_creature, next_tile))
+        if (!attacked_creature->is_dead() && MapUtils::is_tile_available_for_creature(attacked_creature, next_tile))
         {
           am.move(attacked_creature, kick_dir);
         }
       }
     }
-  }
-
-  // If the creature was knocked back, and if it is appropriate to do so,
-  // add a message.
-  CurrentCreatureAbilities cca;
-
-  // Show a message if the player is in the field of view of either creature.
-  if (knocked_back && cca.can_see(attacking_creature))
-  {
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacking_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
-    string knock_back_msg = ActionTextKeys::get_knock_back_message(attacked_creature->get_description_sid(), attacked_creature->get_is_player());
-
-    manager.add_new_message(knock_back_msg);
-    manager.send();
   }
 
   return knocked_back;

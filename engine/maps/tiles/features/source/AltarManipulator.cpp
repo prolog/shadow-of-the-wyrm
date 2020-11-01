@@ -8,8 +8,20 @@
 using namespace std;
 
 AltarManipulator::AltarManipulator(FeaturePtr feature)
-: IFeatureManipulator(feature)
+: FeatureManipulator(feature)
 {
+}
+
+bool AltarManipulator::desecrate(CreaturePtr creature, MapPtr current_map)
+{
+  if (feature != nullptr)
+  {
+    Game::instance().get_deity_action_manager_ref().notify_action(creature, current_map, get_creature_action_key(), false);
+
+    return true;
+  }
+
+  return false;
 }
 
 bool AltarManipulator::handle(TilePtr tile, CreaturePtr creature)
@@ -54,6 +66,6 @@ bool AltarManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr
 
 void AltarManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
 {
-  Game::instance().get_deity_action_manager_ref().notify_action(creature, current_map, get_creature_action_key(), false);
+  desecrate(creature, current_map);
 }
 

@@ -60,6 +60,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool user_playable = XMLUtils::get_child_node_bool_value(race_node, "UserPlayable");
     race->set_user_playable(user_playable);
 
+    int pack_multiplier = XMLUtils::get_child_node_int_value(race_node, "PackMultiplier", 1);
+    race->set_pack_multiplier(pack_multiplier);
+
     bool slayable = XMLUtils::get_child_node_bool_value(race_node, "Slayable");
     race->set_slayable(slayable);
 

@@ -1,12 +1,13 @@
 #pragma once
 #include "Creature.hpp"
 #include "Date.hpp"
+#include "MapTypes.hpp"
 
 class LineOfSightCalculator
 {
   public:
     LineOfSightCalculator();
-    int calculate_los_length(CreaturePtr creature, const TimeOfDayType tod);
+    int calculate_los_length(CreaturePtr creature, const MapType map_type, const TimeOfDayType tod);
 
     static const int DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH;
 

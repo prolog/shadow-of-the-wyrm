@@ -4,6 +4,8 @@
 
 using namespace std;
 
+const int HungerClock::MAX_HUNGER_VAL = 200000;
+
 bool HungerClock::operator==(const HungerClock& hc) const
 {
   bool result = true;
@@ -34,7 +36,18 @@ bool HungerClock::get_requires_food() const
 // Set/get the actual hunger level
 void HungerClock::set_hunger(const int new_hunger)
 {
-  hunger = new_hunger;
+  if (new_hunger > MAX_HUNGER_VAL)
+  {
+    hunger = MAX_HUNGER_VAL;
+  }
+  else if (new_hunger < 0)
+  {
+    hunger = 0;
+  }
+  else
+  {
+    hunger = new_hunger;
+  }
 }
 
 int HungerClock::get_hunger() const

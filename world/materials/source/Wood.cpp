@@ -28,7 +28,7 @@ bool Wood::get_is_corrodible() const
   return true;
 }
 
-bool Wood::get_can_rust() const
+bool Wood::get_crumbles() const
 {
   return false;
 }

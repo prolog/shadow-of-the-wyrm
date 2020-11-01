@@ -13,10 +13,10 @@ enum struct LoggingLevel
   LOG_HIGHEST = 4
 };
 
-#define CLOG_TRACE 0
-#define CLOG_DEBUG 1
-#define CLOG_INFO 2
-#define CLOG_ERROR 3
+constexpr auto CLOG_TRACE = 0;
+constexpr auto CLOG_DEBUG = 1;
+constexpr auto CLOG_INFO = 2;
+constexpr auto CLOG_ERROR = 3;
 
 class Log
 {

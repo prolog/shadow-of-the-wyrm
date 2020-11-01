@@ -25,7 +25,8 @@ string MountainsTile::get_danger_confirmation_sid() const
 }
 
 // Mountains are real big and therefore real blocky
-bool MountainsTile::get_is_blocking(CreaturePtr creature) const
+// But they should only block LOS, not movement!
+bool MountainsTile::get_is_blocking_visually(CreaturePtr creature) const
 {
   return true;
 }

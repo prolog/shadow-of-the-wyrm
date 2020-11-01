@@ -11,10 +11,16 @@ end
 -- JCD FIXME: Consider making this a generic Lua API function in the
 -- engine.
 local function setup_parklands_around_treasure_room(map_id)
+  local tile_type = CTILE_TYPE_TREE
+
+  if RNG_percent_chance(33) then
+    tile_type = CTILE_TYPE_EVERGREEN_TREE
+  end
+
   if RNG_percent_chance(50) then
-    map_fill_random(map_id, 2, 3, 9, 11, CTILE_TYPE_FIELD, CTILE_TYPE_TREE, 50)
+    map_fill_random(map_id, 2, 3, 9, 11, CTILE_TYPE_FIELD, tile_type, 50)
   else
-    map_fill_staggered(map_id, 2, 3, 9, 11, CTILE_TYPE_FIELD, CTILE_TYPE_TREE, RNG_range(2, 3))
+    map_fill_staggered(map_id, 2, 3, 9, 11, CTILE_TYPE_FIELD, tile_type, RNG_range(2, 3))
   end
 end
 
@@ -70,7 +76,7 @@ local function setup_dynamic_content(map_id)
   generate_city_feature(map_id, 3, 15, 8, 30, CCITY_SECTOR_PUBLIC_AREA)
   generate_city_feature(map_id, 12, 15, 18, 30, CCITY_SECTOR_PUBLIC_AREA)
   generate_city_feature(map_id, 3, 58, 8, 67, CCITY_SECTOR_PUBLIC_AREA)
-  generate_city_feature(map_id, 3, 70, 10, 78, CCITY_SECTOR_PUBLIC_AREA)
+  generate_city_feature(map_id, 3, 70, 9, 78, CCITY_SECTOR_PUBLIC_AREA)
 end
 
 local function init_carcassia_a1(map_id)

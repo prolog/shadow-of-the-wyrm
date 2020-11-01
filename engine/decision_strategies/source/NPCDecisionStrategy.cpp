@@ -24,6 +24,7 @@
 #include "NPCMagicDecisionFactory.hpp"
 #include "NPCPickupDecisionStrategy.hpp"
 #include "NPCUseEquipItemDecisionStrategy.hpp"
+#include "RaceConstants.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
 #include "RangedCombatUtils.hpp"
 #include "RaceManager.hpp"
@@ -639,13 +640,19 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
   if (map != nullptr && RNG::percent_chance(PERCENT_CHANCE_PICK_UP_USEFUL_ITEM))
   {
     CreaturePtr creature = map->get_creature(this_creature_id);
-    RaceManager rm;
-    Race* race = rm.get_race(creature->get_race_id());
 
-    if (creature != nullptr && race != nullptr && race->get_has_pockets() && race->get_corporeal().get_current())
+    if (creature != nullptr)
     {
-      NPCPickupDecisionStrategy pu_strat;
-      pu_cmd = pu_strat.decide(creature, map);
+      RaceManager rm;
+      string race_id = creature->get_race_id();
+      Race* race = rm.get_race(race_id);
+      bool humanoid = rm.is_race_or_descendent(race_id, RaceConstants::RACE_CONSTANTS_RACE_ID_HUMANOID);
+
+      if (creature != nullptr && humanoid && race->get_corporeal().get_current())
+      {
+        NPCPickupDecisionStrategy pu_strat;
+        pu_cmd = pu_strat.decide(creature, map);
+      }
     }
   }
 
@@ -661,9 +668,12 @@ CommandPtr NPCDecisionStrategy::get_drop_decision(const string& this_creature_id
   if (map != nullptr && RNG::percent_chance(PERCENT_CHANCE_DROP_ITEM))
   {
     CreaturePtr creature = map->get_creature(this_creature_id);
-    NPCDropDecisionStrategy drop;
 
-    drop_cmd = drop.decide(creature, map);
+    if (creature != nullptr)
+    {
+      NPCDropDecisionStrategy drop;
+      drop_cmd = drop.decide(creature, map);
+    }
   }
 
   return drop_cmd;

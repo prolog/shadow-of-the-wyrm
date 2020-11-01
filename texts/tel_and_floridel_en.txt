@@ -541,7 +541,7 @@ an artery.  The hobbled creature sprayed %b
 and screamed, and as it did, the willows shied, %b
 the tallgrass bending low as if to pray %b
 to be released from fury amplified %b
-by ankle bones laid bare and tendons slashed aside.
+by ankle bones exposed and tendons slashed aside.
 %p
 Unsteady, now, the giant snarled with hate: %b
 "You petty thing, you gnome-beneath-the-earth, %b
@@ -1195,7 +1195,7 @@ their schedule.  The weather never cooled, %b
 remaining humid, moisture in the air %b
 becoming condensation on the skin, %b
 beads that reformed to rivulets, and where %b
-the flat of an axe-blade touched the back, the thin %b
+the flat of an axe head touched the back, the thin %b
 cotton became a butterfly or violin.
 %p
 Appropriate, for now they broke away %b
@@ -2637,7 +2637,7 @@ in patterns, planar figures in the dark %b
 whose boundaries met rivers, lit the dead %b
 beneath the water, helping to impart %b
 the barest glint of order, and to send %b
-them through the shadow-lands whose name is never said.
+them through shadowlands whose name is never said.
 %p
 They walked around the rivers, as they found %b
 each terminus fell somewhere down below, %b
@@ -2707,7 +2707,7 @@ of paper whose expansion forms a plane %b
 that touches ours.  We see it in the way %b
 our lover scratches at the windowpane %b
 despite being dead a week, or in the grey %b
-periphery, a face we can't explain away.
+periphery, that face we can't explain away.
 %p
 Within the tallgrass, each could feel the air %b
 grow heavier with scent - the obvious %b
@@ -3459,7 +3459,7 @@ He offered out his hand; the fair folk shook. %b
 Weyg introduced his brothers, and it took %b
 a second now for Weyg to see they placed %b
 Rhone, the two recalling Floridel, %b
-her wild magics.  Aes and Elin looked %b
+her wild magics.  Aese and Elin looked %b
 away, each little sniff or bark a tell %b
 that what she'd raised was real, and with a hook %b
 corralled it like a sheep inside her shepherd's crook.
@@ -3478,7 +3478,7 @@ At first, there was a sense of six apart, %b
 how little they spoke; but as the day went on, %b
 the silence sputtered, finally cut short %b
 when Rhone came back and held a jack-knifed fawn %b
-for their mid-day meal.  As Aes produced wild garlic %b
+for their mid-day meal.  As Aese produced wild garlic %b
 from the pockets in his cloak, they skinned the game %b
 then pricked the meat.  Each inch, a clove.  They stuffed it %b
 till the meat was fragrant and the whole thing came %b
@@ -3544,5 +3544,76 @@ their sons, too.  And our former servants, immobile %b
 for the lives we made for them - they will not dread %b
 the chance to stand and finally hold the blade instead."
 %p
-
-
+"Spare the families of our exiled group %b
+and it's a deal."  As Aese looked over, Elin %b
+nodded, as did Weyg.  "We'll need a troop %b
+of a hundred, minimum.  I have a feeling %b
+that Tel will send his skirmishers out here, %b
+but many guards remain, and even serfs %b
+are dangerous enough when armed with spears. %b
+The six of us would barely break the dirt %b
+if we tried to make our way into the fairy courts."
+%p
+"We'll go to Farstead," Weyg said with a nod, %b
+"and get the men we need.  A hundred hurts %b
+our manpower, but the chance to hit them hard %b
+in their very home, to prise the place apart - %b
+well, to meet you was a serendipity. %b
+We'll kit you at our hall.  We have some breastplates %b
+the unlings made from bronze.  They're rickety %b
+but will stop a sword in close.  We'll make our fate. %b
+Revenge is something both our kinds can celebrate."
+%p
+Weyg stood, and Rhone ran off to find a stream %b
+to douse the embers.  Unsettled quiet.  Neither %b
+group felt compelled to talk, or seemed %b
+prepared to move past what-was-once to try %b
+to figure out a way forward.  Allies %b
+of the uneasiest sort.  When Rhone returned, %b
+they poured the water, stirred the ash, and pried %b
+the barest conversation as they turned %b
+to realize their plan to make the fair folk burn.
+%p
+X
+%p
+The sound of hoofbeats; little else.  The road %b
+was thin, and Alcius now led his men %b
+toward a settlement their maps had told %b
+existed sixty years ago.  Instead %b
+of riding down the giants, now he'd search %b
+for rats in buildings, hiding in the fields %b
+or aspen copses.  Bitter, dirty work. %b
+And easy for the exiles, too, to steal %b
+away and vanish deep into the open weald.
+%p
+The forests of the ancient world were burned %b
+for farmland, as the ground that took the ash %b
+would yield for years; and once so many heard %b
+the benefits, the towering woodlands passed %b
+to collective memory, replaced by wheat, %b
+or rye, or taro.  But the bit of weald %b
+that stretched just north of Cithriel would cheat %b
+the fate it should've had, and as it wheeled %b
+around the grasslands, formed a kind of shield, %b
+as those who hid within its heart were well concealed.
+%p
+They passed it on the right, the thin dirt road %b
+an artificial border, a boundary line %b
+that tied its blooming vein.  The forest slowed %b
+as if a courser, one that kicked and whined %b
+then broke formation, galloping away %b
+into the north.  The road grew wider now, %b
+expanding before the place their map would say %b
+was a camp, but which had grown into a town %b
+they hoped would stop to help the riders of the crown.
+%p
+The road became a main street where sod huts %b
+shared space with cabins made from old growth trees %b
+that had fallen in the forest, hauled on sleds %b
+back into town.  A generation's peace %b
+made carpenters and farmers; in the square %b
+before them, broken gallows, left as proof %b
+of what they'd been, and weren't.  The very air %b
+was charged.  No townsfolk.  Quiet.  From the roofs %b
+the west wind; underneath, the clop of nervous hooves.
+%p

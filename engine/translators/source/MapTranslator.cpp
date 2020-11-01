@@ -30,7 +30,7 @@ DisplayMap MapTranslator::create_display_map(CreaturePtr creature, const bool pl
   Coordinate display_coords = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, map, reference_coords);
   LineOfSightCalculator losc;
   TimeOfDayType tod = GameUtils::get_date(Game::instance()).get_time_of_day();
-  int los_len = losc.calculate_los_length(creature, tod);
+  int los_len = losc.calculate_los_length(creature, map->get_map_type(), tod);
   int actual_row, actual_col;
 
   // Get the current season and set it into the copy.

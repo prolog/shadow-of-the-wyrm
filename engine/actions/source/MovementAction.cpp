@@ -247,7 +247,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
           if (String::to_int(dig_hardness) >= creatures_new_tile->get_hardness())
           {
             DigAction da;
-            movement_acv = da.dig_through(creature->get_id(), wielded, map, creatures_new_tile, new_coords, true);
+            movement_acv = da.dig_through(creature->get_id(), wielded, map, creatures_new_tile, new_coords, true, true);
           }
           else
           {
@@ -303,11 +303,6 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
         }
       }
     }
-
-    // If the movement cost an action, check to see if the creature should be
-    // made visible.
-    // JCD FIXME
-    // ...
 
     // After moving, there is a chance to get a free search of the surrounding
     // tiles.
@@ -403,13 +398,30 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
     }
   }
 
+  // Prevent hirelings from trying to move into their leader's tile,
+  // thereby trying to attack them.
   if (adjacent_creature != nullptr)
   {
-    CombatManager cm;
+    bool should_attack = true;
 
-    // Call the directional attack function so that if the creature is
-    // dual wielding weapons, both attacks are properly considered.
-    movement_acv = cm.attack(creature, d);
+    if (creature != nullptr)
+    {
+      string leader_id = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+
+      if (leader_id == adjacent_creature->get_id())
+      {
+        should_attack = false;
+      }
+    }
+
+    if (should_attack)
+    {
+      CombatManager cm;
+
+      // Call the directional attack function so that if the creature is
+      // dual wielding weapons, both attacks are properly considered.
+      movement_acv = cm.attack(creature, d);
+    }
   }
 
   return movement_acv;
@@ -805,7 +817,12 @@ ActionCostValue MovementAction::handle_properties_and_move_to_new_map(CreaturePt
     if (current_tile->has_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_ITEMS))
     {
       MapItemGenerator mig;
-      mig.generate_initial_set_items(new_map, current_tile->get_additional_properties());
+      bool items_generated = mig.generate_initial_set_items(new_map, current_tile->get_additional_properties());
+
+      if (items_generated)
+      {
+        current_tile->remove_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_ITEMS);
+      }
     }
 
     // Update the weather, if we're coming off the world map.
@@ -836,6 +853,11 @@ void MovementAction::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPt
   {
     Game& game = Game::instance();
     game.get_action_manager_ref().save(game.get_current_player(), false);
+
+    // Normally when saving, check_scores is set to false so that a score file
+    // entry won't be generated.  But checkpoint saves don't exit the game, so
+    // ensure check_scores is reset to true and score file entries can happen.
+    game.set_check_scores(true);
   }
 }
 

@@ -1,4 +1,5 @@
 #include "WaterSafetyCondition.hpp"
+#include "Game.hpp"
 
 using namespace std;
 
@@ -14,22 +15,33 @@ bool WaterSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
 
   if (creature)
   {
-    if (creature->can_breathe(BreatheType::BREATHE_TYPE_WATER) || 
-        creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
+    Game& game = Game::instance();
+    ISeason* season = game.get_current_world()->get_calendar().get_season();
+
+    // Frozen water is safe.
+    if (tile->get_is_frozen(season->get_season()))
     {
-      safe = true;
+      return true;
     }
     else
     {
-      IInventoryPtr inv = creature->get_inventory();
-      const list<ItemPtr> items = inv->get_items_cref();
-
-      for (ItemPtr item : items)
+      if (creature->can_breathe(BreatheType::BREATHE_TYPE_WATER) ||
+          creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
       {
-        if (item && item->get_type() == ItemType::ITEM_TYPE_BOAT)
+        safe = true;
+      }
+      else
+      {
+        IInventoryPtr inv = creature->get_inventory();
+        const list<ItemPtr> items = inv->get_items_cref();
+
+        for (ItemPtr item : items)
         {
-          safe = true;
-          break;
+          if (item && item->get_type() == ItemType::ITEM_TYPE_BOAT)
+          {
+            safe = true;
+            break;
+          }
         }
       }
     }

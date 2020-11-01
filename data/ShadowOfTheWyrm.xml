@@ -454,6 +454,7 @@
 		</Race>		
 		<Race id="_animal">
 			<UserPlayable>0</UserPlayable>
+			<PackMultiplier>3</PackMultiplier>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
@@ -523,6 +524,7 @@
 		</Race>		
 		<Race id="_bird" parent_id="_animal">
 			<UserPlayable>0</UserPlayable>
+			<PackMultiplier>2</PackMultiplier>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
@@ -959,6 +961,7 @@
 		</Race>
 		<Race id="_insect">
 			<UserPlayable>0</UserPlayable>
+			<PackMultiplier>5</PackMultiplier>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
@@ -985,7 +988,7 @@
 				<Dexterity>10</Dexterity>
 				<Agility>10</Agility>
 				<Health>10</Health>
-				<Intelligence>10</Intelligence>
+				<Intelligence>1</Intelligence>
 				<Willpower>10</Willpower>
 				<Charisma>10</Charisma>
 				<Speed>50</Speed>
@@ -1028,6 +1031,7 @@
 		</Race>		
 		<Race id="_jelly">
 			<UserPlayable>0</UserPlayable>
+			<PackMultiplier>4</PackMultiplier>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
@@ -1166,6 +1170,7 @@
 		</Race>		
 		<Race id="_plant">
 			<UserPlayable>0</UserPlayable>
+			<PackMultiplier>5</PackMultiplier>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
@@ -1299,6 +1304,7 @@
 		</Race>
 		<Race id="_corporeal_undead" parent_id="_undead">
 			<UserPlayable>0</UserPlayable>
+			<PackMultiplier>2</PackMultiplier>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>1</CorpsePoisoned>
@@ -2041,6 +2047,7 @@
 		</Race>
 		<Race id="07_goblin" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
+			<PackMultiplier>2</PackMultiplier>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
@@ -5028,7 +5035,7 @@
 			<MagicClassification>1</MagicClassification>
 			<Colour>7</Colour>
 			<APCost>8</APCost>
-			<Speed>6</Speed>
+			<Speed>1</Speed>
 			<Range>0</Range>
 			<Shape>0</Shape>
 			<Effect>6</Effect>
@@ -6992,7 +6999,7 @@
 				<Sprite>
 					<ID>til</ID>
 					<Row>0</Row>
-					<Col>1</Col>
+					<Col>30</Col>
 				</Sprite>
 			</Symbol>
 		</EvergreenTreeTile>

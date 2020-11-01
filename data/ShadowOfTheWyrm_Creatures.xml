@@ -6790,7 +6790,6 @@
 			<ShortDescriptionSID>GOLGOTHAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GOLGOTHAN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GOLGOTHAN_TEXT_DETAILS_SID</TextDetailsSID>
-			<SpeechTextSID>GOLGOTHAN_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -8242,7 +8241,6 @@
 			<SpeechTextSID>GOBLIN_ELITE_GUARD_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
-				<Sentry>1</Sentry>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>g</Char>
@@ -9660,6 +9658,7 @@
 			<TextDetailsSID>SYLPH_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SYLPH_SPEECH_TEXT_SID</SpeechTextSID>
 			<Sex>1</Sex>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -9756,6 +9755,7 @@
 		</Creature>
 		<Creature id="naiad">
 			<RaceID>_humanoid</RaceID>
+			<WaterBreathing>1</WaterBreathing>
 			<ShortDescriptionSID>NAIAD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>NAIAD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>NAIAD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -13009,19 +13009,8 @@
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
-					<TileType>0</TileType>
-					<TileType>1</TileType>
-					<TileType>5</TileType>
-					<TileType>13</TileType>
-					<TileType>15</TileType>
-					<TileType>16</TileType>
-					<TileType>21</TileType>
-					<TileType>24</TileType>
-					<TileType>26</TileType>
-					<TileType>38</TileType>
-					<TileType>42</TileType>
-					<TileType>47</TileType>
-					<TileType>49</TileType>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
@@ -25125,6 +25114,7 @@
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
 				<Sentry>1</Sentry>
+				<Allies>golem,electric_eel</Allies>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>g</Char>

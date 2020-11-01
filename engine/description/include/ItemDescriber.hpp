@@ -10,6 +10,7 @@ class ItemDescriber : public IDescriber
     virtual ~ItemDescriber() {};
 
     virtual std::string describe() const override;
+    virtual std::string describe_for_tile_selection() const override;
     virtual std::string describe_usage() const;
     virtual std::string describe_tried() const;
     virtual std::string describe_resists_and_flags() const;

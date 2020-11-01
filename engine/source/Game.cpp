@@ -815,9 +815,9 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
  
         LineOfSightCalculator losc;
         TimeOfDayType tod = GameUtils::get_date(Game::instance()).get_time_of_day();
-        int los_len = losc.calculate_los_length(current_creature, tod);
+        int los_len = losc.calculate_los_length(current_creature, current_map->get_map_type(), tod);
         Coordinate creature_coords = current_map->get_location(current_creature->get_id());
-        MapPtr view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, los_len);
+        MapPtr view_map = ViewMapTranslator::create_view_map_around_tile(current_creature, current_map, creature_coords, los_len);
         MapPtr fov_map = CreatureUtils::update_fov_map(current_map, view_map, current_creature);
         
         if (current_creature->get_is_player())

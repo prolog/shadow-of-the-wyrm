@@ -1,3 +1,4 @@
+#include "global_prototypes.hpp"
 #include "Consumable.hpp"
 #include "ConsumableConstants.hpp"
 #include "Serialize.hpp"
@@ -98,18 +99,17 @@ bool Consumable::consumable_properties_match(const Consumable& cons) const
   bool result = true;
   
   result = (nutrition == cons.nutrition);
-  result = result && (standard_drinks == cons.standard_drinks);
+  result = result && fequal(standard_drinks, cons.standard_drinks);
   result = result && (food_type == cons.food_type);
   result = result && (poisoned == cons.poisoned);
 
   return result;
 }
 
-// Food becomes more or less nutritious, based on whether the enchantment's BUC
-// status.  Any poison is also removed.
+// Food becomes more or less nutritious, based on the enchantment's BUC
+// status.  Any poison is removed.
 void Consumable::do_enchant_item(const int points)
 {
-  nutrition *= points;
   poisoned = false;
 }
 

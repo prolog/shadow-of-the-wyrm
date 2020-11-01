@@ -228,9 +228,9 @@ void CreatureFactory::revert_to_original_configuration_values(CreaturePtr creatu
   // statuses set: birds fly, spirits are incorporeal, etc.
   auto instance_statuses = creature_instance.get_statuses();
   auto& cr_statuses = creature->get_statuses_ref();
-  for (auto& cs_pair : cr_statuses)
+  for (auto& is_pair : instance_statuses)
   {
-    cr_statuses[cs_pair.first] = cs_pair.second;
+    cr_statuses[is_pair.first] = is_pair.second;
   }
 }
 
@@ -421,10 +421,20 @@ void CreatureFactory::set_initial_statistics(CreaturePtr creature, Race* race, C
                          + deity_m.get_health_modifier()
                          + (RNG::range(0,3));
                          
-  Statistic intelligence = race->get_starting_intelligence().get_base()
+  int iint               = race->get_starting_intelligence().get_base()
                          + class_m.get_intelligence_modifier()
-                         + deity_m.get_intelligence_modifier()
-                         + (RNG::range(0,3));
+                         + deity_m.get_intelligence_modifier();
+
+  // Intelligence is something of a special case, and doesn't allow
+  // randomizing if the value is 1.  This is because certain races
+  // (e.g., constructs) may requires creatures to have an Int of 1
+  // to prevent things like opening doors, etc.
+  if (iint > 1)
+  {
+    iint += RNG::range(0, 3);
+  }
+
+  Statistic intelligence = iint;
                          
   Statistic willpower    = race->get_starting_willpower().get_base()
                          + class_m.get_willpower_modifier()

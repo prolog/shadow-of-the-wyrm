@@ -54,12 +54,7 @@ void Effect::identify_effect_as_necessary(std::shared_ptr<Creature> creature, co
   {
     if (effect_identified)
     {
-      identify_effect_if_player(creature);
-
-      // if (!creature->get_is_player()) {
-      // JCD FIXME: Do some sort of "broadcasting" thing here, so that nearby creatures can learn about the
-      // potion's effect.
-      // }
+      broadcast_effect_message(creature);
     }
     else
     {
@@ -71,11 +66,11 @@ void Effect::identify_effect_as_necessary(std::shared_ptr<Creature> creature, co
   }
 }
 
-void Effect::identify_effect_if_player(std::shared_ptr<Creature> creature) const
+void Effect::broadcast_effect_message(std::shared_ptr<Creature> creature) const
 {  
-  if (creature && creature->get_is_player())
+  if (creature != nullptr)
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     string effect_message = get_effect_identification_message(creature);
     
     manager.add_new_message(effect_message);

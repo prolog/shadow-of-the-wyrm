@@ -591,6 +591,11 @@ TileExitMap& Tile::get_tile_exit_map_ref()
   return map_exits;
 }
 
+bool Tile::get_is_blocking_visually(CreaturePtr creature) const
+{
+  return get_is_blocking(creature);
+}
+
 bool Tile::get_is_blocking_or_dangerous(CreaturePtr creature) const
 {
   return get_dangerous(creature) || get_is_blocking(creature);

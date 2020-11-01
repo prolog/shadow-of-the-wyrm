@@ -1,8 +1,8 @@
 #pragma once
-#include "IFeatureManipulator.hpp"
+#include "FeatureManipulator.hpp"
 #include "Feature.hpp"
 
-class TanneryManipulator : public IFeatureManipulator
+class TanneryManipulator : public FeatureManipulator
 {
   public:
     TanneryManipulator(FeaturePtr feature);

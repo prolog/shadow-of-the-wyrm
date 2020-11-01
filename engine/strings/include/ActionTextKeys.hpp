@@ -91,6 +91,7 @@ class ActionTextKeys
     static const std::string ACTION_HANDLE_LOCK;
     static const std::string ACTION_HANDLE_LOCK_NO_KEY;
     static const std::string ACTION_BESTIARY_DISPLAY_COMMAND_FOR_TILE_SELECTION;
+    static const std::string ACTION_ITEM_CODEX_COMMAND_FOR_TILE_SELECTION;
     static const std::string ACTION_BESTIARY_NO_SUCH_CREATURE_EXISTS;
     static const std::string ACTION_ITEM_CODEX_NO_SUCH_ITEM_EXISTS;
     static const std::string ACTION_POTION_EXPLODES;
@@ -115,6 +116,7 @@ class ActionTextKeys
     static const std::string ACTION_KICK_DOOR_DESTROYED;
     static const std::string ACTION_KICK_DOOR_BUCKLED;
     static const std::string ACTION_KICK_DOOR_UNMOVED;
+    static const std::string ACTION_KICK_DOOR_CLOSED;
     static const std::string ACTION_KICK_TABLE;
     static const std::string ACTION_KICK_SLOT_MACHINE;
     static const std::string ACTION_KICK_SPRAIN_LEG;
@@ -144,6 +146,7 @@ class ActionTextKeys
     static const std::string ACTION_DIG_UNDEAD_FOUND;
     static const std::string ACTION_DIG_ITEM_FOUND;
     static const std::string ACTION_DIG_THROUGH_TILE;
+    static const std::string ACTION_DIG_STONE_DUST;
     static const std::string ACTION_DIG_CANNOT_DIG;
     static const std::string ACTION_DIG_CANNOT_DIG_ON_SUPER_TYPE;
     static const std::string ACTION_DIG_TOO_HARD;
@@ -241,7 +244,6 @@ class ActionTextKeys
     static const std::string ACTION_SPELLCASTING_CANCELLED_MONSTER;
     static const std::string ACTION_BESTIARY_WHICH_CREATURE;
     static const std::string ACTION_BESTIARY_PREVIOUS_SEARCH_MESSAGE;
-    static const std::string ACTION_ITEM_CODEX_COMMAND_FOR_TILE_SELECTION;
     static const std::string ACTION_ITEM_CODEX_WHICH_ITEM;
     static const std::string ACTION_ITEM_CODEX_PREVIOUS_SEARCH_MESSAGE;
     static const std::string ACTION_POUR_PLAYER;

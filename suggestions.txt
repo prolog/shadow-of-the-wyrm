@@ -1,16 +1,20 @@
 Me:
+- Tile release! Evergreen trees were added.
+- Enchants and esp brands should add value to items!
+- pick up/drop all that work with filters
+- Generate tombs with keys outside door/doors locked
+- sword-eater/hits himself (Josh Engdahl)
+- Corpse weights
+- Long term, give a chance for coastal generators to produce coastline, maybe
+  with little islands, etc
 - First urchin stone has no message!
-- Need to work out details around: add mute, wear voiceless, walk around.
-  Added mute should wear off. Voiceless mute should not and muteness should
-  remain.
 - Feature: fence, east_west_fence. Add some fenced areas to set locations.
 - Fenced areas (veg gardens?) in villages
 - Wyrm level stupid slow?
-- Fleeing behaviour for humanoids (Echo38)
+- Fleeing behaviour for humanoids (Josh Engdahl)
 - Need to get hirelings text-searchable in bestiary
 - Creatures try to cast utility spells when they don't make sense (uncursing,
   etc). Should be checks to see if effect makes sense.
-- Test all the set locations for hirelings
 - Next release: need to do an asset release
 - Sector features for regular settlements
 - Things to make villages more interesting:
@@ -59,18 +63,11 @@ Me:
 - Tidy up scripts/quests into subdirectories, like carcassia, and test.
   Need to remember to update env.lua!
 - More guilds/things with memberships
-- Allow music to not only pacify but enchant (allow for ordering)
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
   attack.
 - The guarded, empty areas in Carcassia C2 should lead to some kind of
   dungeon/special area.
-- Summonings
-- After making negative amulets with statuses (e.g., poisoned amulet),
-  make status identifier map calculated by going through the modifiers.
-  Otherwise, it's stupid trying to figure out if a creature is still
-  poisoned: e.g., a creature is poisoned, and then puts on a poisoned
-  amulet.  Should still be poisoned when either of the two wear off.
 - Email Nathan before next release re: Mac build check
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
@@ -87,8 +84,6 @@ Me:
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
 - The vaults of the old dwarven-kings
-- Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
-  and caverns are 2.
 - Allow shopkeepers to be any of the selectable races.
 - Towers/tower generators.
 - Reuse some of the sector feature generators in dungeons - tomb, etc.
@@ -214,13 +209,8 @@ Mirza Ghalib:
 - Wide displays are causing text in e.g. the Isen Dun Chronicle to
   mess up (see the section about Gnordvar). 88x25
 
-vedvid:
-- rebind '*' (vedvid)
-
 hapro:
-- Numpad enter key does not always work same as real enter key
 - Drop multiple items at once
-- Walking on an object/feature should put the exmaine message in the log
 - Option to "pause" after certain triggers. When paused the game would
   ignore all inputs until space pressed. Example triggers: dropping below
   15% health, taking more than 50% in single attack, beginning to starve,
@@ -245,6 +235,7 @@ Grond:
 - Scything on ammo?
 - could magic skill affect spell duration
 - monster as a mount
+- "some ivory pieces shimmers in a radiant light"
 
 Yan Zhang:
 - Dungeon symbol should generate that thing on the last level
@@ -266,17 +257,43 @@ YARD:
   sceadugenga) shouldn't attack you if you worship that deity
 - spell details on shift+letter
 - corpse weight
-- codex on examine for single item
 - wilderness, low level creatures, etc
 
 IceBox: 
 - can the confirm setting be allowed to change on load?
 
-Larzid
-- display type a command line arg
-- SDL as a build param
+Paul Blay:
+- Allow enchant to hit equipment too
 
-Echo38
+Josh Engdahl
 - Rebindable paging keys
+- User macros
 - Add info on the weapon synopsis to the manual
 - max fire res on fire spirits, etc
+- support for "extending" good status effects via drinking multiple potions,
+  etc
+- tile selection keys not reloading with others
+- Hidden PCs are never found via bumping (Josh Engdahl)
+- when hiding and checking stuff, spirits in walls don't seem to count against
+  the checks
+- don't step out of shadows if creatures don't have you in LOS
+- weird age incrementing issue?
+- make undead hostile to e.g. all humanoids
+- Cancel prompts should clear text: kick, drop, etc
+- nearby guards/priests should get angry when altars are desecrated
+- when viewing items in codex, remember inventory page and return to that
+  page
+- Rocky earth generator 1n Carcassia
+- Warping out of levels doesn't put you back at the default entry position
+- Freeze not always working when hostile creatures in view or creatures 
+  hostile to leader in view?
+- waterbreathing flag, similar to incorporeal, flying, etc
+- los code: .@..   can't see
+            ####s
+
+- can lure ancient monsters into trap room and kill them via an unwillingness
+  to move on to trapped tiles.
+- You can't kick a creature to a tile with an already-triggered trap because
+  they'll decline movement confirmation.
+- Is the area fleeing message broadcasting?
+- Entering church, player is placed on stairs instead of outside church.

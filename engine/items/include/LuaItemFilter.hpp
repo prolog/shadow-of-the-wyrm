@@ -1,6 +1,6 @@
 #pragma once
 
-#define CITEM_FILTER_NONE 0
-#define CITEM_FILTER_UNIDENTIFIED 1
-#define CITEM_FILTER_ARTIFACT 2
+constexpr auto CITEM_FILTER_NONE = 0;
+constexpr auto CITEM_FILTER_UNIDENTIFIED = 1;
+constexpr auto CITEM_FILTER_ARTIFACT = 2;
 

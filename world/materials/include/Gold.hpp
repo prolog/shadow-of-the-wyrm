@@ -10,7 +10,7 @@ class Gold : public Material
     bool get_is_flammable() const override;
     bool get_is_explosive() const override;
     bool get_is_corrodible() const override;
-    bool get_can_rust() const override;
+    bool get_crumbles() const override;
     
     virtual Colour get_colour() const override;
 

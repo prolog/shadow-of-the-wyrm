@@ -28,7 +28,7 @@ bool Cloth::get_is_corrodible() const
   return true;
 }
 
-bool Cloth::get_can_rust() const
+bool Cloth::get_crumbles() const
 {
   return false;
 }

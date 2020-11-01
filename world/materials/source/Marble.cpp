@@ -28,9 +28,9 @@ bool Marble::get_is_corrodible() const
   return false;
 }
 
-bool Marble::get_can_rust() const
+bool Marble::get_crumbles() const
 {
-  return false;
+  return true;
 }
 
 Colour Marble::get_colour() const

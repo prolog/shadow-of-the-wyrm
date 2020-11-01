@@ -16,9 +16,9 @@
 #include "TrapManipulator.hpp"
 #include "WheelAndLoomManipulator.hpp"
 
-IFeatureManipulatorPtr IFeatureManipulatorFactory::create_manipulator(FeaturePtr feature)
+FeatureManipulatorPtr IFeatureManipulatorFactory::create_manipulator(FeaturePtr feature)
 {
-  IFeatureManipulatorPtr manipulator;
+  FeatureManipulatorPtr manipulator;
 
   if (feature != nullptr)
   {

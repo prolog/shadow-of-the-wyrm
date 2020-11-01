@@ -1,8 +1,8 @@
 #pragma once
-#include "IFeatureManipulator.hpp"
+#include "FeatureManipulator.hpp"
 #include "Feature.hpp"
 
-class TableManipulator : public IFeatureManipulator
+class TableManipulator : public FeatureManipulator
 {
   public:
     TableManipulator(FeaturePtr feature);

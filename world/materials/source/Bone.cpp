@@ -28,7 +28,7 @@ bool Bone::get_is_corrodible() const
   return true;
 }
 
-bool Bone::get_can_rust() const
+bool Bone::get_crumbles() const
 {
   return false;
 }

@@ -17,6 +17,7 @@ const string RaceID::RACE_ID_UNKNOWN = "_unknown";
 // Set the bare defaults for each race.
 Race::Race()
 : user_playable(false)
+, pack_multiplier(1)
 , slayable(false)
 , leaves_corpse(true)
 , corpse_poisoned(false)
@@ -89,6 +90,16 @@ void Race::set_user_playable(const bool playable)
 bool Race::get_user_playable() const
 {
   return user_playable;
+}
+
+void Race::set_pack_multiplier(const int new_pack_multiplier)
+{
+  pack_multiplier = new_pack_multiplier;
+}
+
+int Race::get_pack_multiplier() const
+{
+  return pack_multiplier;
 }
 
 void Race::set_slayable(const bool new_slayable)

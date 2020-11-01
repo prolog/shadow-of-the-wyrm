@@ -1,0 +1,296 @@
+Me:
+- codex on examine for single item YARD
+- Entering church, player is placed on stairs instead of outside church. JE
+- Cancel prompts should clear text: kick, drop, etc
+- pick up/drop all that work with filters
+- Are hirelings disappearing between Carcassian maps? (debugger)
+- Hidden PCs are never found via bumping (Josh Engdahl)
+- Generate tombs with keys outside door/doors locked
+- sword-eater/hits himself (Josh Engdahl)
+- Corpse weights
+- First urchin stone has no message!
+- Feature: fence, east_west_fence. Add some fenced areas to set locations.
+- Fenced areas (veg gardens?) in villages
+- Wyrm level stupid slow?
+- Fleeing behaviour for humanoids (Josh Engdahl)
+- Need to get hirelings text-searchable in bestiary
+- Creatures try to cast utility spells when they don't make sense (uncursing,
+  etc). Should be checks to see if effect makes sense.
+- Next release: need to do an asset release
+- Sector features for regular settlements
+- Things to make villages more interesting:
+  - Archery ranges (contests, using ranges should train ranged, etc)
+  - Graves
+  - Ponds w/ benches
+  - Caverns
+  - Sewers
+  - Mines
+  - fenced area with gate: pigs, chickens
+  - stream
+  - tavern
+  - orchard
+- Each version: make sure to update itch.io page for both SotW and the sprite
+  pack! OpenGameArt if new sprites.
+- Release after this: grond says tanning is complicated & dragon skins aren't
+  what they should be.
+- Mode screen (F10): Game mode, graphics, palette
+- Use Magic to destroy spellbooks and get a bit of AP?
+- Dungeons should check for shop before generating trap.
+- Beer halls in villages
+- spell arcana (bind to capitals in spell list)
+- auto save - not working?
+- Do creatures pause when no threats in FOV? Seems slow.
+- google screen clear not working for SDL. reported 2x.
+- 2x draw?
+- Beastmastery: add mounts
+- Grond: attacking turtles causes some kind of ToD crash after teleporting
+  and maybe other stuff?
+- EACH VERSION: clean up the usage of some shared_ptrs.  These should be
+  unique_ptrs, generally, and method calls should use raw pointers or
+  const&.
+- After locking/unlocking, the next input seems to blank the entire screen.
+  (This is an SDL Direct3D rendering issue with dynamically loaded textures
+  becoming invalidated.)
+- Do additional profiling after shared_ptr cleanup
+- Look at race balance: stats, speed, skill points, etc
+- Shield punch!
+- Fruit trees should generate fruit annually.
+- Write script to check for any items without CodexDescriptionSID
+- The "descend to" functionality
+- Sections of Carcassia should be open to random generation, with some
+  parts of each map being set.
+- "The Vertical City"
+- refactor the huge function in ShadowOfTheWyrmEngine.cpp
+- Tidy up scripts/quests into subdirectories, like carcassia, and test.
+  Need to remember to update env.lua!
+- More guilds/things with memberships
+- Allow music to not only pacify but enchant (allow for ordering)
+- Improve spellcasting AI so that spells are only considered when adjacent
+  if the expected damage is greater than the expected damage of a melee
+  attack.
+- The guarded, empty areas in Carcassia C2 should lead to some kind of
+  dungeon/special area.
+- Summonings
+- After making negative amulets with statuses (e.g., poisoned amulet),
+  make status identifier map calculated by going through the modifiers.
+  Otherwise, it's stupid trying to figure out if a creature is still
+  poisoned: e.g., a creature is poisoned, and then puts on a poisoned
+  amulet.  Should still be poisoned when either of the two wear off.
+- Email Nathan before next release re: Mac build check
+- More special terrain rooms, and then slightly increase the probability so
+  that dungeons are more interesting.
+- Penalties from bloodied, exposed should also scale with level.
+- The Ybari/Asturias?
+- Negative rings/amulets: ring of poison, spellbound amulet.
+- Names should work into combat messages, etc
+- Buildings generated in towns should automatically get inhabitants.
+- Explore the cities Carcassia is built on top of.
+- Wind should have a chance to "carry" flames.
+- Revisit smithing.
+- Do something with the Order Ex Gladiatores
+- Revisit how values are updated after enchantment.
+- Unnecessary refresh being called for generator? (refreshing overworld
+  when it shouldn't)
+- The vaults of the old dwarven-kings
+- Maps should have "pack multipliers".  Most are 1, sewers are 0, mines
+  and caverns are 2.
+- Allow shopkeepers to be any of the selectable races.
+- Towers/tower generators.
+- Reuse some of the sector feature generators in dungeons - tomb, etc.
+- Descent into the underworld.
+- Allow shopkeepers to sell for different prices depending on their
+  race, and the buying creature's.
+- Wilderness ruins/lairs
+- Dungeon vaults
+- In text display screen, p to page to a particular page.
+- Arae-of-the-Woods, the first dryad.  Very fast (speed 7?), always runs
+  away from the player, hits incredibly hard when attacked.  Chatting to
+  her grants a wish.  She should have a chance of vanishing, which then
+  decrements her generated counter to ensure she can appear again.  There
+  should be a creature that talks about her.
+- Craft different launchers/projectiles as skill increases.
+- Some sort of ship area - raiders, ghost ship, etc.
+- z-maps for settlements: test flying between multi-level maps and going
+  up/down stairs.
+- Set a number of artifacts with danger levels > -1, so that they can be
+  generated.
+- SDL: full screen
+- Cancellation effect type
+- Special rooms: magical workshop, armory.
+- More shops in set locations.
+- Keep marking general skills as applicable when using them.
+- Scent maps/track by scent.
+- Bones files
+- More monsters with special attacks or death events.
+- Code should handle being started from outside the game's directory.
+- Additional phase-of-moon effects.
+- Remove need for zlib and xerces by making everything statically linked.
+- Different types of branches (species) should have different wand
+  properties.
+- General performance improvements.  Use profiler - check out LOS code,
+  pathfinding, etc.
+- Potion components of some sort?  Weeds should be "pickable"?
+- Cauldrons, then potion-brewing, based on the brewing ability.
+- Per-tile fertility ratings for planting trees and other plants.  Fields
+  should give you a great chance, beaches very small, etc.
+- Update MapTester config for generation runs of creatures
+- Define all monsters as good/neutral/evil
+- Monsters should have a chance of being generated friendly when same
+  alignment.
+- Sacrifices should generate more piety when non-aligned.
+- Invisibility status, spell, potion
+- See Invis status, spell, scroll
+- More poem fragments for start.
+- Smarter pack logic: not just by creature type, but maybe by race, etc.
+- Weather, weather patterns, effects
+- Armour flags
+- More guilds
+- Food rotting for caught fish, other foods?
+- Message when doing checkpoint saves to indicate why the delay happens.
+
+Sean McKeague:
+- Ability to pick up partial stacks.
+
+redfeek:
+- Add wide char support to more easily support UTF-8/Russian translation.
+
+Kyzrati:
+- Over time, generation of new random uniques, etc.
+- Different in-game event when inhabitants of certain places have aged,
+  died, etc.
+- Group like items together (scrolls, etc) even if not exactly the same
+- Lit FOV
+- Can probably keep most of the SDL_PollEvent calls in the controller.  
+  With proper framerate throttling or delays could do more interesting 
+  animations, etc.
+
+roguecastergames:
+- sea monsters
+- pirates
+- ambushes
+
+Dallas Herrin:
+
+Not bugs, but probably not working as intended:
+
+- Spellcasting enemies, specifically the ones that have large AoE ball 
+  spells, have a tendency to cast their spells around corners, hitting you 
+  up to three times without ever seeing you.
+- Make it obvious somewhere how much certain spells do, and what mechanical
+  effect increasing spell levels has.
+- Add the ability to make macros and/or adjust the letters that spells map 
+  to. The useful buff spells that one might use regularly are currently 
+  being distributed at random throughout the many non-buff spells that one 
+  rarely uses. Even hotkeys would improve this by a great deal.
+
+Samildanach:
+- Make it more obvious what skills do and how they work.
+
+Esran:
+- Once monsters are smarter, create spells that allow hitting monsters
+  past walls.
+- Sewer/dungeons: when random, prompt for "descend to what depth (ft)?
+
+kain:
+- Zapped wand moves to end of inventory?
+- Towns not repopping with the same types of creatures as before (e.g.,
+  ogres).
+- Shops not generating fully stocked.
+
+ssteam
+- w->, w-< to autowalk to stairs
+- Descend via '>' while in air.
+- More secrets!
+- Balance artifacts - mostly blades
+
+aotdev
+- Status/stats lines wrap weirdly with larger terminal sizes
+
+happylisk:
+- more diverse artifact effects (HP/AP regen, stat bonuses, etc)
+
+naughtusername: 
+- Skill descriptions on shift+letter or something
+
+Timo:
+- Can kill off guards one by one, emperor doesn't care.
+
+Mirza Ghalib:
+- Wide displays are causing text in e.g. the Isen Dun Chronicle to
+  mess up (see the section about Gnordvar). 88x25
+
+vedvid:
+- rebind '*' (vedvid)
+
+hapro:
+- Numpad enter key does not always work same as real enter key
+- Drop multiple items at once
+- Walking on an object/feature should put the exmaine message in the log
+- Option to "pause" after certain triggers. When paused the game would
+  ignore all inputs until space pressed. Example triggers: dropping below
+  15% health, taking more than 50% in single attack, beginning to starve,
+  etc.
+- Separating corpses and food into separate autopickup groups - want to
+  auto pickup food, but not corpses
+- Auto pickup triggers when leaving a map on a tile you're leaving from.
+  e.g. Drop an item on edge of town, leave town, item picked up.
+
+Rob Ayres
+- Aging attacks and potions of youth
+
+Troubler: 
+- Doors in dungeon occasionally get spawned in a big, long line.
+
+Grond:
+- Torment-type spell (1/2 HP)
+- you see flickering even in areas where LOS is blocked by a wall
+- Switching with townsfolk (in churches?) leads to weird behaviour
+- Adjacent creatures attack on load
+- Differentiate scribing and wandcraft - why use scribing?
+- Scything on ammo?
+- could magic skill affect spell duration
+- monster as a mount
+
+Yan Zhang:
+- Dungeon symbol should generate that thing on the last level
+- Do something interesting with flowers!
+- Climb up Telari: more NPCs
+
+Skjarl:
+- SDL resizing
+
+Stof:
+- mouse click pathfinding
+
+mission opossumable:
+- alternate tiles e.g. different grass tiles
+- seconded ^^ (Valduk)
+
+YARD:
+- creatures of a certain deity (frostlings and shiver, black servants and
+  sceadugenga) shouldn't attack you if you worship that deity
+- spell details on shift+letter
+- corpse weight
+- wilderness, low level creatures, etc
+
+IceBox: 
+- can the confirm setting be allowed to change on load?
+
+Larzid
+- display type a command line arg
+- SDL as a build param
+
+Josh Engdahl
+- Rebindable paging keys
+- User macros
+- Add info on the weapon synopsis to the manual
+- max fire res on fire spirits, etc
+- support for "extending" good status effects via drinking multiple potions,
+  etc
+- tile selection keys not reloading with others
+- when hiding and checking stuff, spirits in walls don't seem to count against
+  the checks
+- don't step out of shadows if creatures don't have you in LOS
+- weird age incrementing issue?
+- make undead hostile to e.g. all humanoids
+- nearby guards/priests should get angry when altars are desecrated

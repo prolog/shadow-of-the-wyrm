@@ -28,7 +28,7 @@ bool Gases::get_is_corrodible() const
   return false;
 }
 
-bool Gases::get_can_rust() const
+bool Gases::get_crumbles() const
 {
   return false;
 }

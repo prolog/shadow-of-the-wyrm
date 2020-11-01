@@ -12,7 +12,7 @@
 using namespace std;
 
 ForgeManipulator::ForgeManipulator(FeaturePtr feature)
-: IFeatureManipulator(feature)
+: FeatureManipulator(feature)
 {
 }
 

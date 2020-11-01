@@ -2170,6 +2170,7 @@
 					<Pound>0.15</Pound>
 					<Heat>0.10</Heat>
 					<Cold>0.20</Cold>
+					<Lightning>0.10</Lightning>
 				</Resistances>
 				<Evade>7</Evade>
 				<Soak>5</Soak>
@@ -2227,6 +2228,7 @@
 					<Holy>0.15</Holy>
 					<Shadow>0.15</Shadow>
 					<Arcane>0.15</Arcane>
+					<Lightning>0.15</Lightning>
 				</Resistances>
 				<Evade>4</Evade>
 				<Soak>2</Soak>
@@ -5245,7 +5247,7 @@
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
-					<Type>1</Type>
+					<Type>0</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="briar_axe">
@@ -5872,7 +5874,7 @@
 				<DescriptionSID>CALARA_WHIP_SID</DescriptionSID>
 				<UsageDescriptionSID>CALARA_WHIP_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>CALARA_WHIP_CODEX_SID</CodexDescriptionSID>
-				<Value>60</Value>
+				<Value>330</Value>
 				<Weight>
 					<Pounds>2</Pounds>
 				</Weight>
@@ -7823,7 +7825,7 @@
 				</Weight>
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>8</Material>	 
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
@@ -8899,6 +8901,31 @@
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>100</Nutrition>
 				<Effect>8</Effect>
+			</Potion>
+			<Potion id="uncursing_potion">
+				<DescriptionSID>UNCURSING_POTION_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_UNCURSING_POTION_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>UNCURSING_POTION_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_UNCURSING_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>UNCURSING_POTION_CODEX_SID</CodexDescriptionSID>
+				<Value>60</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>2</Material>
+				<Symbol>
+					<Char>!</Char>
+					<Colour>14</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>1</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>1</DangerLevel>
+				<Nutrition>100</Nutrition>
+				<Effect>21</Effect>
 			</Potion>
 			<Potion id="_unstoning_potion">
 				<DescriptionSID>UNSTONING_POTION_SID</DescriptionSID>
@@ -13277,7 +13304,7 @@
 			<Item id="wave_locket">
 				<DescriptionSID>WAVE_LOCKET_SID</DescriptionSID>
 				<UsageDescriptionSID>WAVE_LOCKET_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>WAVE_LOCKED_CODEX_SID</CodexDescriptionSID>
+				<CodexDescriptionSID>WAVE_LOCKET_CODEX_SID</CodexDescriptionSID>
 				<Value>8</Value>
 				<Weight>
 					<Pounds>0</Pounds>

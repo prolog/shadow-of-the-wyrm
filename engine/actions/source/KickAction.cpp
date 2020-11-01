@@ -199,7 +199,7 @@ ActionCostValue KickAction::kick_feature(CreaturePtr creature, MapPtr current_ma
 {
   if (creature && current_map && kick_tile && kick_feature)
   {
-    IFeatureManipulatorPtr manipulator = IFeatureManipulatorFactory::create_manipulator(kick_feature);
+    FeatureManipulatorPtr manipulator = IFeatureManipulatorFactory::create_manipulator(kick_feature);
 
     // Add a message about kicking the feature, whether it can be seen,
     // or not.

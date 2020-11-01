@@ -930,7 +930,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\maps\tiles\features\include\EvilAltarManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\ForgeManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\GoodAltarManipulator.hpp" />
-    <ClInclude Include="engine\maps\tiles\features\include\IFeatureManipulator.hpp" />
+    <ClInclude Include="engine\maps\tiles\features\include\FeatureManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\IFeatureManipulatorFactory.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\JewelerWorkbenchManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\NeutralAltarManipulator.hpp" />
@@ -1985,6 +1985,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\FeatureManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\PulperManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\SarcophagusManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\SlotMachineManipulator.cpp" />

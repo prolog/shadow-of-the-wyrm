@@ -20,6 +20,9 @@ class Food : public Consumable
 
     Item* clone() override;
 
+  protected:
+    virtual void do_enchant_item(const int points) override;
+
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };

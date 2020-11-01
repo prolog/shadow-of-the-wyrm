@@ -30,5 +30,12 @@ class ItemPietyCalculator
     // The divisor used for corpses, which are appreciated by deities more
     // than any other item.
     static const int CORPSE_DIVISOR;
+
+    // The Nine still appreciate monetary gifts.
+    static const int CURRENCY_DIVISOR;
+
+    // Artifacts are valuable, and are reflected as such in the piety 
+    // calculations.
+    static const int ARTIFACT_DIVISOR;
 };
 

@@ -5,7 +5,7 @@
 using namespace std;
 
 DefaultFeatureManipulator::DefaultFeatureManipulator(FeaturePtr feature)
-: IFeatureManipulator(feature)
+: FeatureManipulator(feature)
 {
 }
 

@@ -1,8 +1,9 @@
-#include "HidingSkillProcessor.hpp"
-#include "HidingCalculator.hpp"
 #include "ActionTextKeys.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "HidingSkillProcessor.hpp"
+#include "HidingCalculator.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "SkillManager.hpp"
@@ -33,13 +34,18 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
       TimeOfDayType tod = TimeOfDayType::TIME_OF_DAY_UNDEFINED; 
       World* world = Game::instance().get_current_world();
       int hide_chance = hc.calculate_pct_chance_hide(creature, map, tod);
+      CurrentCreatureAbilities cca;
 
       if (world != nullptr)
       {
         tod = world->get_calendar().get_date().get_time_of_day();
       }
 
-      if (RNG::percent_chance(hide_chance))
+      if (!cca.can_see(creature, true))
+      {
+        // Do nothing, a message will already have been added by cca.
+      }
+      else if (RNG::percent_chance(hide_chance))
       {
         StatusEffectPtr hide = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HIDE, creature->get_id());
 

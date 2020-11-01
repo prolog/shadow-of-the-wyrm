@@ -6,10 +6,10 @@
 // Interface class that allows the engine to manipulate the tile features.
 // Each class that implements this interface allows the engine to 
 // manipulate a particular feature.  E.g., an altar, a door, etc.
-class IFeatureManipulator
+class FeatureManipulator
 {
   public:
-    IFeatureManipulator(FeaturePtr new_feature) : feature(new_feature) {};
+    FeatureManipulator(FeaturePtr new_feature) : feature(new_feature) {};
 
     // Kicking returns void because kicking something and getting to the point
     // of using a manipulator is always an action.  
@@ -26,8 +26,13 @@ class IFeatureManipulator
     // of things like altars.
     virtual bool drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item) = 0;
 
+    // Indirectly called by other functions, like kick(...), but also when
+    // eg the feature is destroyed in other ways, like via crumbling,
+    // elsewhere in the engine.
+    virtual bool desecrate(CreaturePtr creature, MapPtr current_map);
+
   protected:
     FeaturePtr feature;
 };
 
-using IFeatureManipulatorPtr = std::unique_ptr<IFeatureManipulator>;
+using FeatureManipulatorPtr = std::unique_ptr<FeatureManipulator>;
