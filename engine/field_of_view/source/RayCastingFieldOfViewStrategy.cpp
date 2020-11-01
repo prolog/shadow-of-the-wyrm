@@ -1,12 +1,11 @@
 #include <sstream>
+#include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "Log.hpp"
 #include "RayCastingFieldOfViewStrategy.hpp"
 #include "BresenhamLine.hpp"
 #include "MapUtils.hpp"
-
-#include "Conversion.hpp"
-#include "Log.hpp"
 
 using std::string;
 using std::vector;
@@ -83,7 +82,7 @@ void RayCastingFieldOfViewStrategy::add_points_to_map_as_appropriate(CreaturePtr
         add_point_to_map(fov_creature, c, view_map, fov_map);
       }
 
-      if (tile->get_is_blocking())
+      if (tile->get_is_blocking_visually())
       {
         return;
       }
@@ -105,7 +104,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(CreaturePtr
     string tile_coords = t_it->first;
     TilePtr current_view_tile = t_it->second;
     
-    if (current_view_tile && current_view_tile->get_is_blocking() && (fov_tile_cont.find(tile_coords) == fov_tile_cont.end()))
+    if (current_view_tile && current_view_tile->get_is_blocking_visually() && (fov_tile_cont.find(tile_coords) == fov_tile_cont.end()))
     {
       Coordinate c = MapUtils::convert_map_key_to_coordinate(tile_coords);
       
@@ -163,7 +162,7 @@ bool RayCastingFieldOfViewStrategy::does_adjacent_non_blocking_tile_exist_in_fov
     Log::instance().debug(ss.str());
   }
   
-  return (tile && (tile->get_is_blocking() == false));
+  return (tile && (tile->get_is_blocking_visually() == false));
 }
 
 bool RayCastingFieldOfViewStrategy::does_adjacent_blocking_tile_exist_in_fov_map(MapPtr fov_map, const Coordinate& centre_coord, const Direction direction)
@@ -171,7 +170,7 @@ bool RayCastingFieldOfViewStrategy::does_adjacent_blocking_tile_exist_in_fov_map
   Coordinate c_dir = CoordUtils::get_new_coordinate(centre_coord, direction);
   TilePtr tile = fov_map->at(c_dir);
 
-  return (tile && tile->get_is_blocking());
+  return (tile && tile->get_is_blocking_visually());
 }
 
 bool RayCastingFieldOfViewStrategy::is_artifact_nw(MapPtr fov_map, const Coordinate& c, const PassType type)

@@ -28,7 +28,7 @@ bool UnknownMaterial::get_is_corrodible() const
   return false;
 }
 
-bool UnknownMaterial::get_can_rust() const
+bool UnknownMaterial::get_crumbles() const
 {
   return false;
 }

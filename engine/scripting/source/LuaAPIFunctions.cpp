@@ -709,6 +709,7 @@ int add_char_message(lua_State* ls)
   if ((lua_gettop(ls) > 0) && (lua_isstring(ls, 1)))
   {
     Game& game = Game::instance();
+    DisplayPtr display = game.get_display();
     CreaturePtr player = game.get_current_player();
     string message = read_sid_and_replace_values(ls);
 
@@ -716,6 +717,11 @@ int add_char_message(lua_State* ls)
     manager.clear_if_necessary();
     manager.add_new_message(message);
     manager.send();
+
+    if (display != nullptr)
+    {
+      display->refresh_current_window();
+    }
 
     key_val = static_cast<char>(player->get_decision_strategy()->get_controller()->get_char_as_int());
   }
@@ -732,15 +738,21 @@ int add_fov_message(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
 
-  if (num_args == 3 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isstring(ls, 3))
+  if (num_args >= 3 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isstring(ls, 3))
   {
     string creature_id = lua_tostring(ls, 1);
     string aff_creature_id = lua_tostring(ls, 2);
     string message_sid = lua_tostring(ls, 3);
     CreaturePtr creature = get_creature(creature_id);
+    string message = StringTable::get(message_sid);
+
+    if (num_args == 4)
+    {
+      message = read_sid_and_replace_values(ls, 2);
+    }
 
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, aff_creature_id == CreatureID::CREATURE_ID_PLAYER);
-    manager.add_new_message(StringTable::get(message_sid));
+    manager.add_new_message(message);
     manager.send();
   }
   else

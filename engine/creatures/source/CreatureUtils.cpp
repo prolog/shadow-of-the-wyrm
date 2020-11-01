@@ -809,11 +809,11 @@ MapPtr CreatureUtils::update_fov_map(MapPtr current_map, MapPtr v_map, CreatureP
     Game& game = Game::instance();
     Date date = GameUtils::get_date(game);
 
-    int los_len = losc.calculate_los_length(current_creature, date.get_time_of_day());
+    int los_len = losc.calculate_los_length(current_creature, current_map->get_map_type(), date.get_time_of_day());
 
     if (view_map == nullptr)
     {
-      view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, los_len);
+      view_map = ViewMapTranslator::create_view_map_around_tile(current_creature, current_map, creature_coords, los_len);
     }
 
     FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy(current_creature->get_is_player());

@@ -69,9 +69,15 @@ bool Wand::wand_properties_match(const Wand& rhs) const
   result = result && (shape == rhs.shape);
   result = result && (has_damage == rhs.has_damage);
   result = result && (damage == rhs.damage);
-  result = result && (charges == rhs.charges);
-  result = result && (spell_colour == rhs.spell_colour);
 
+  // Charges is a Statistic, so "original" is also tracked, but that 
+  // never gets used for wands so shouldn't be considered when determining
+  // if the items are stackable.
+  result = result && (charges.get_base() == rhs.charges.get_base());
+  result = result && (charges.get_current() == rhs.charges.get_current());
+
+  result = result && (spell_colour == rhs.spell_colour);
+                                                                              
   return result;
 }
 

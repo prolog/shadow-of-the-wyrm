@@ -28,9 +28,9 @@ bool Iron::get_is_corrodible() const
   return false;
 }
 
-bool Iron::get_can_rust() const
+bool Iron::get_crumbles() const
 {
-  return true;
+  return false;
 }
 
 Material* Iron::clone()

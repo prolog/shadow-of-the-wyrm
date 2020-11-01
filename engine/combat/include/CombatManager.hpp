@@ -90,7 +90,7 @@ class CombatManager
     void update_mortuaries(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
 
     // Get the appropriate description for the defending creature.
-    std::string get_appropriate_creature_description(CreaturePtr attacking_creature, CreaturePtr creature);
+    std::string get_appropriate_creature_description(CreaturePtr attacking_creature, CreaturePtr creature, const bool use_reflexive_when_same = true);
 
     void gain_experience(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr map);
     Damage determine_damage(CreaturePtr attacking_creature, Damage* predefined_damage, DamageCalculator* damage_calculator);

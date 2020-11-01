@@ -1,5 +1,160 @@
+Shadow of the Wyrm v1.2.4 "Britten"
+- Version declared September 12, 2020. Version finalized November 1, 2020.
+
+- The pickup code is more restrictive, and now only fires for humanoids
+  (Josh Engdahl).
+
+- Evergreen trees now have their own unique sprite.
+
+- You can no longer find hiding places while blind (Josh Engdahl).
+
+- Races can now be defined to have an increased chance to generate packs of 
+  creatures.
+
+- Corpses are worth a little more piety; ivory is worth a lot more.
+
+- There's now a pair of warning signs outside the treasury.
+
+- Various code updates to make items stack in a more intuitive way, creating
+  fewer stacks overall.
+
+- Draining and ethereal damage flags now have a greater chance to fire - 30%
+  and 70%, respectively (was 20 and 20).
+
+- Insects now generate with 1 Intelligence to prevent them from being able to
+  open doors (Josh Engdahl).
+
+- Effects now broadcast properly when applied to NPCs.
+
+- Ancient Beasts now show up as "Unknown" difficulty, regardless of their
+  level.
+
+- Crumbling spells/digging wands will now crumble items and tile features
+  in their path as well, so long as they're made of marble or stone.  The
+  Nine won't like you destroying their altars this way, though.
+
+- Praying when you've got a cursed, status-bearing item (e.g. voiceless
+  amulet) might now cause your deity to uncurse your equipment (Vestphiliac).
+
+- Flying now adds some evade as well.
+
+- The food/hunger counter now has a (very large) cap, instead of just max int.
+
+- The item codex is now available on tile selection (YARD).
+
+- NPC AI improvements.
+
+- Kicking an open door now causes it to slam shut.
+
+- Version info now includes the build date to easily distinguish different
+  builds with the same build number (e.g. prerelease builds).
+
+- Hirelings now all start with boats (Blue).
+
+- It's now clearer when something can't be pacified, and the musical failure
+  message now only triggers when you fail to pacify any pacifiable creatures.
+
+- The usage string for ivory pieces has been tweaked to work better with
+  enchantments (Grond).
+
+- You can now swim a little longer, and the damage that's dealt after you're
+  exhausted is now reduced by the Swimming skill.
+
+- Cancelling a spell via an invalid direction no longer advances the turn
+  (Josh Engdahl).
+
+- Stanzas for "Tel and Floridel".
+
+- New items: uncursing potion.
+
+- Bug fixes:
+
+  - Custom underground maps (Siriath's level, etc) didn't set the terrain
+    type appropriately.
+
+  - The ordering of messages around kicking, especially when dealing with a
+    tile with a hidden trap, was off (Josh Engdahl).
+
+  - Thief titles were missing (Red).
+
+  - Singing had a couple of missing messages (Josh Engdahl).
+
+  - Freshwater tiles such as rivers were still being listed as "dangerous"
+    in winter, despite being frozen and therefore passable.
+
+  - The time of day LOS code was incorrectly firing when not on an overworld
+    map (Josh Engdahl).
+
+  - One of the areas in Carcassia A1 could generate over the road.
+
+  - Leviathans were incorrectly appearing in dungeons (Josh Engdahl).
+
+  - When moving between maps, followers could vanish when there were other
+    creatures present (various).
+
+  - Various bestiary/codex/manual typos and improvements (various)
+
+  - When tiles/maps had preset items to be generated, this property wasn't
+    being cleared properly after generation, causing duplication (Josh 
+    Engdahl).
+
+  - Stopped randomizing Intelligence when generated at 1 so that golems and
+    other unintelligent creatures can no longer figure out how to work doors.
+
+  - Bargaining was showing an "unimplemented" message when selected on the
+    skills screen (Josh Engdahl).
+
+  - NPCs will no longer pick up items while blind.
+
+  - Trying to view the codex when there are no items caused a crash.
+ 
+  - Draining, ethereal, and explosive attacks were grammatically weird when
+    a stunned creature attacked themselves (Josh Engdahl).
+
+  - Hirelings were very enthusiastic about following your orders to attack,
+    to the point of attacking you to get at the creature they're supposed to
+    be killing (Josh Engdahl).
+
+  - Seafarers' titles weren't properly defined (Josh Engdahl).
+
+  - Cypress trees were incorrectly defined as deciduous (Josh Engdahl).
+
+  - Bestiary/codex typos (various).
+
+  - Melura's stats option text wasn't displaying properly (Josh Engdahl),
+    and her chat script was also not gracefully handling garbage input or
+    offering 0 ivory.
+
+  - Blindness wasn't properly restricting NPCs' FOV maps (Josh Engdahl).
+
+  - Ancient Beasts can get random damage flags when they're generated, but
+    this was including chaotic, which would shift the damage type around,
+    and was confusing for very damage-specific type creatures (Josh
+    Engdahl).
+
+  - Esc-ing out of inscription no longer advances the turn (Josh Engdahl).
+
+  - The change to make mountains visually blocking was causing it to be
+    unable to move on to them. Separated out visually-blocking from
+    movement-blocking.
+
+  - Some digging strings weren't defined and were showing the default value
+    (Josh Engdahl).
+
+  - Gildi's cloak was missing lightning resistance (Josh Engdahl).
+
+  - Special creature statuses (such as avernal bats: flying) weren't being 
+    properly applied at creature creation.
+
+  - Deities were angered when throwing beneficial potions (Josh Engdahl).
+
+  - Bazaars weren't generating correctly on scrublands (various).
+
+  - On the equipment screen, using the codex was improperly advancing the
+    turn (Josh Engdahl).
+
 Shadow of the Wyrm v1.2.2 "Borrono"
-- Version declared July 17, 2020.
+- Version declared July 17, 2020.  Version finalized September 12, 2020.
 
 - More name combinations.
 
@@ -42,12 +197,12 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   using the 'o'rder command. They have an enchanted set of initial equipment,
   and have improved versions of their initial race and class skills.
 
-- The quit message now references that the game won't be saved (Echo38).
+- The quit message now references that the game won't be saved (Josh Engdahl).
 
 - Villages can have orchards as well as vegetable gardens.
 
 - When unstacking wands after use, the new wand now goes to the front of
-  the inventory (Echo38).
+  the inventory (Josh Engdahl).
 
 - Added a bit more heat resistance to Forger, toned down Goblincrusher's
   damage a touch.
@@ -55,7 +210,7 @@ Shadow of the Wyrm v1.2.2 "Borrono"
 - The ranged animation is now a little faster (Grond).
 
 - Wands now show the total as well as the current charges, which makes it much
-  more clear why they don't stack (Echo38).
+  more clear why they don't stack (Josh Engdahl).
 
 - Merchants now start with full knowledge of the game's items.
 
@@ -108,14 +263,14 @@ Shadow of the Wyrm v1.2.2 "Borrono"
   - The free hidden actions counter could get out of whack. Capped that so
     the player couldn't get lots of free actions while safely hidden (Grond).
 
-  - Drinking potions off the ground was buggy (Echo38).
+  - Drinking potions off the ground was buggy (Josh Engdahl).
 
   - The examine command was giving too much information when the player was
     blind.
 
   - The unarmed combat improvement message wasn't firing properly (Grond).
 
-  - Various typos in the bestiary and "Tel and Floridel" (Echo38).
+  - Various typos in the bestiary and "Tel and Floridel" (Josh Engdahl).
 
   - The messages for special in-game days were broken (Grond).
 
@@ -123,7 +278,7 @@ Shadow of the Wyrm v1.2.2 "Borrono"
     (Grond).
 
   - Entering an invalid pickup quantity was causing the turn to advance
-    (Echo38).
+    (Josh Engdahl).
 
 Shadow of the Wyrm v1.2.1 "Lully"
 - Version declared June 21, 2020.  Version finalized July 17, 2020.

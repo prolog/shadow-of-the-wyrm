@@ -15,6 +15,7 @@ class RestoreStatusDeityDecisionStrategyHandler : public DeityDecisionStrategyHa
 
   protected:
     void initialize_watched_statuses();
+    void uncurse_equipment_with_negative_statuses(CreaturePtr creature);
 
     int get_piety_loss() const override;
 

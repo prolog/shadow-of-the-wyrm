@@ -21,7 +21,7 @@
 using namespace std;
 
 TrapManipulator::TrapManipulator(FeaturePtr feature)
-: IFeatureManipulator(feature)
+: FeatureManipulator(feature)
 {
 }
 

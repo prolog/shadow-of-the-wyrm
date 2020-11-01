@@ -1,7 +1,7 @@
 #pragma once
-#include "IFeatureManipulator.hpp"
+#include "FeatureManipulator.hpp"
 
-class DefaultFeatureManipulator : public IFeatureManipulator
+class DefaultFeatureManipulator : public FeatureManipulator
 {
   public:
     DefaultFeatureManipulator(FeaturePtr feature);

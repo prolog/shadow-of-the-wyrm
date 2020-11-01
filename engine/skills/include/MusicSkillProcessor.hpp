@@ -1,6 +1,13 @@
 #pragma once
 #include "SkillProcessor.hpp"
 
+enum struct PacificationOutcome
+{
+  PACIFICATION_OUTCOME_SUCCESS = 0,
+  PACIFICATION_OUTCOME_FAILURE = 1,
+  PACIFICATION_OUTCOME_NOT_PACIFIABLE = 2
+};
+
 class MusicSkillProcessor : public SkillProcessor
 {
   public:
@@ -21,7 +28,7 @@ class MusicSkillProcessor : public SkillProcessor
     bool get_charms_creature(ItemPtr item, CreaturePtr fov_creature);
 
     // Attempt pacification, updating the hostile/pacified counts as required
-    void attempt_pacification(ItemPtr instr, CreaturePtr creature, CreaturePtr fov_creature, int& num_hostile, int& num_pacified);
+    PacificationOutcome attempt_pacification(ItemPtr instr, CreaturePtr creature, CreaturePtr fov_creature, int& num_hostile, int& num_pacified);
 
     void add_unimpressed_message(CreaturePtr creature, CreaturePtr fov_creature);
     void enrage(CreaturePtr creature, CreaturePtr fov_creature);

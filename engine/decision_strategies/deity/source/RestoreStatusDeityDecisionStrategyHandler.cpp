@@ -3,7 +3,10 @@
 #include "Game.hpp"
 #include "RemoveStatusEffect.hpp"
 #include "RestoreStatusDeityDecisionStrategyHandler.hpp"
+#include "StatusEffectFactory.hpp"
 #include "StatusTypes.hpp"
+#include "UncursingEffect.hpp"
+#include "Wearable.hpp"
 
 using namespace std;
 
@@ -92,10 +95,50 @@ DeityDecisionImplications RestoreStatusDeityDecisionStrategyHandler::handle_deci
           current_piety_loss /= 2;
         }
       }
+
+      uncurse_equipment_with_negative_statuses(creature);
     }
   }
 
   return get_deity_decision_implications(creature, tile);
+}
+
+void RestoreStatusDeityDecisionStrategyHandler::uncurse_equipment_with_negative_statuses(CreaturePtr creature)
+{
+  if (creature != nullptr)
+  {
+    EquipmentMap em = creature->get_equipment().get_equipment();
+
+    for (auto& em_pair : em)
+    {
+      if (em_pair.second &&
+          em_pair.second->get_status() == ItemStatus::ITEM_STATUS_CURSED)
+      {
+        Wearable* w = dynamic_cast<Wearable*>(em_pair.second.get());
+        Game& game = Game::instance();
+        MapPtr map = game.get_current_map();
+
+        if (w != nullptr && map != nullptr)
+        {
+          Coordinate cr_coord = map->get_location(creature->get_id());
+          TilePtr cr_tile = map->at(cr_coord);
+
+          set<string> ail = w->get_status_ailments().get_ailments();
+
+          for (const string& sa : ail)
+          {
+            StatusEffectPtr status = StatusEffectFactory::create_status_effect(sa, "");
+
+            if (status != nullptr && status->is_negative())
+            {
+              UncursingEffect uncurse;
+              uncurse.effect(creature, &game.get_action_manager_ref(), ItemStatus::ITEM_STATUS_UNCURSED, cr_coord, cr_tile);
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 // Piety loss is based on the number of statuses that were lifted by

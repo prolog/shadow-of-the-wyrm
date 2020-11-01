@@ -11,6 +11,5 @@ class SwimmingCalculator
     bool is_incorporeal;
     
     static const int MAXIMUM_SWIMMING_TIME_MULTIPLIER;
-    static const float SWIMMING_DAMAGE_MAX_HP_MULTIPLIER;
     static const int HOLD_BREATH_HEALTH_DIVISOR;
 };

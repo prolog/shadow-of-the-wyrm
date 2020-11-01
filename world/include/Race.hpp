@@ -41,6 +41,9 @@ class Race
     void set_user_playable(const bool playable);
     bool get_user_playable() const;
 
+    void set_pack_multiplier(const int new_pack_multiplier);
+    int get_pack_multiplier() const;
+
     void set_slayable(const bool slayable);
     bool get_slayable() const;
 
@@ -175,6 +178,7 @@ class Race
     std::string race_id;
     std::string parent_race_id;
     bool user_playable;
+    int pack_multiplier;
     bool slayable;
     bool leaves_corpse;
     bool corpse_poisoned;

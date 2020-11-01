@@ -2,6 +2,7 @@
 
 using namespace std;
 
+const string DifficultyTextKeys::DIFFICULTY_UNKNOWN   = "DIFFICULTY_UNKNOWN";
 const string DifficultyTextKeys::DIFFICULTY_DEADLY    = "DIFFICULTY_DEADLY";
 const string DifficultyTextKeys::DIFFICULTY_DANGEROUS = "DIFFICULTY_DANGEROUS";
 const string DifficultyTextKeys::DIFFICULTY_CAPABLE   = "DIFFICULTY_CAPABLE";

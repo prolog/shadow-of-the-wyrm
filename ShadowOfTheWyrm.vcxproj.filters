@@ -3326,9 +3326,6 @@
     <ClInclude Include="engine\maps\tiles\features\include\GoodAltarManipulator.hpp">
       <Filter>Header Files\engine\maps\tiles\features\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\maps\tiles\features\include\IFeatureManipulator.hpp">
-      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\maps\tiles\features\include\IFeatureManipulatorFactory.hpp">
       <Filter>Header Files\engine\maps\tiles\features\include</Filter>
     </ClInclude>
@@ -4345,6 +4342,9 @@
     </ClInclude>
     <ClInclude Include="engine\conversion\include\ModifiersDumper.hpp">
       <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\FeatureManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -8706,6 +8706,9 @@
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\NullMessageManager_test.cpp">
       <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\FeatureManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -48,7 +48,7 @@
 		</Creatures>
 		<Items>
 			<Placement>
-				<ID>coracle</ID>
+				<ID>rowboat</ID>
 				<Coord>
 					<Row>6</Row>
 					<Col>3</Col>

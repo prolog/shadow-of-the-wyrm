@@ -28,7 +28,7 @@ bool Paper::get_is_corrodible() const
   return true;
 }
 
-bool Paper::get_can_rust() const
+bool Paper::get_crumbles() const
 {
   return false;
 }

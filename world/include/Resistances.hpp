@@ -5,7 +5,8 @@
 #include "DamageTypes.hpp"
 #include "ISerializable.hpp"
 
-#define DEFAULT_RESISTANCE_VALUE 1.0;
+constexpr auto DEFAULT_RESISTANCE_VALUE = 1.0;
+
 class Resistance : public ISerializable
 {
   public:

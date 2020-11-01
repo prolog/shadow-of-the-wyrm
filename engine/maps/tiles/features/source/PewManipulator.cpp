@@ -6,7 +6,7 @@
 using namespace std;
 
 PewManipulator::PewManipulator(FeaturePtr feature)
-: IFeatureManipulator(feature)
+: FeatureManipulator(feature)
 {
 }
 
@@ -14,7 +14,13 @@ PewManipulator::PewManipulator(FeaturePtr feature)
 // desecration of pews.
 void PewManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
 {
+  desecrate(creature, current_map);
+}
+
+bool PewManipulator::desecrate(CreaturePtr creature, MapPtr current_map)
+{
   Game::instance().get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_DESECRATE_GOOD, false);
+  return true;
 }
 
 bool PewManipulator::handle(TilePtr tile, CreaturePtr creature)

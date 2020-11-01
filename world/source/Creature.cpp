@@ -3,6 +3,7 @@
 #include "Creature.hpp"
 #include "CreatureProperties.hpp"
 #include "DecisionStrategyFactory.hpp"
+#include "DecisionStrategyProperties.hpp"
 #include "InventoryFactory.hpp"
 #include "PlayerDecisionStrategy.hpp"
 #include "Serialize.hpp"
@@ -1663,6 +1664,23 @@ int Creature::get_hirelings_hired() const
   }
 
   return hirelings_hired;
+}
+
+bool Creature::is_allied_to(const string& creature_id) const
+{
+  bool allied = false;
+
+  if (decision_strategy != nullptr)
+  {
+    vector<string> allies = String::create_string_vector_from_csv_string(decision_strategy->get_property(DecisionStrategyProperties::DECISION_STRATEGY_ALLIES_IDS));
+
+    if (std::find(allies.begin(), allies.end(), creature_id) != allies.end())
+    {
+      allied = true;
+    }
+  }
+
+  return allied;
 }
 
 // Swap values, no throw

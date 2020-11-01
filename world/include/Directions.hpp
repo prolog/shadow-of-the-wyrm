@@ -16,17 +16,17 @@ enum struct Direction
   DIRECTION_DOWN = 11
 };
 
-#define CDIRECTION_SOUTH_WEST 1
-#define CDIRECTION_SOUTH 2
-#define CDIRECTION_SOUTH_EAST 3
-#define CDIRECTION_WEST 4
-#define CDIRECTION_NULL 5
-#define CDIRECTION_EAST 6
-#define CDIRECTION_NORTH_WEST 7
-#define CDIRECTION_NORTH 8
-#define CDIRECTION_NORTH_EAST 9
-#define CDIRECTION_UP 10
-#define CDIRECTION_DOWN 11
+constexpr auto CDIRECTION_SOUTH_WEST = 1;
+constexpr auto CDIRECTION_SOUTH = 2;
+constexpr auto CDIRECTION_SOUTH_EAST = 3;
+constexpr auto CDIRECTION_WEST = 4;
+constexpr auto CDIRECTION_NULL = 5;
+constexpr auto CDIRECTION_EAST = 6;
+constexpr auto CDIRECTION_NORTH_WEST = 7;
+constexpr auto CDIRECTION_NORTH = 8;
+constexpr auto CDIRECTION_NORTH_EAST = 9;
+constexpr auto CDIRECTION_UP = 10;
+constexpr auto CDIRECTION_DOWN = 11;
 
 // More general - used in terrain generation, etc.
 enum struct CardinalDirection

@@ -1,3 +1,4 @@
+#include "ActionTextKeys.hpp"
 #include "Conversion.hpp"
 #include "ItemDescriber.hpp"
 #include "ItemIdentifier.hpp"
@@ -12,6 +13,18 @@ ItemDescriber::ItemDescriber(ItemPtr new_item)
 {
 }
 
+string ItemDescriber::describe_for_tile_selection() const
+{
+  ostringstream ss;
+  string idesc = describe();
+
+  if (!idesc.empty())
+  {
+    ss << idesc << " " << StringTable::get(ActionTextKeys::ACTION_ITEM_CODEX_COMMAND_FOR_TILE_SELECTION);
+  }
+
+  return ss.str();
+}
 string ItemDescriber::describe() const
 {
   string item_description;

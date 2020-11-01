@@ -250,7 +250,7 @@ void DisarmTrapsSkillProcessor::disarm_trap_trigger(CreaturePtr creature, MapPtr
       TilePtr creature_current_tile = map->at(creature_coords);
       MapUtils::add_or_update_location(map, creature, CoordUtils::get_new_coordinate(creature_coords, d), creature_current_tile);
 
-      IFeatureManipulatorPtr trap_manip = IFeatureManipulatorFactory::create_manipulator(tile->get_feature());
+      FeatureManipulatorPtr trap_manip = IFeatureManipulatorFactory::create_manipulator(tile->get_feature());
 
       if (trap_manip != nullptr)
       {

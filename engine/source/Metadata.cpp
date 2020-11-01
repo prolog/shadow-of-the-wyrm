@@ -55,7 +55,7 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  return "\"Borrono\"";
+  return "\"Britten\"";
 }
 
 string Metadata::get_game_version_synopsis() const
@@ -78,7 +78,8 @@ string Metadata::get_full_game_version_details() const
   ostringstream oss;
   CompilationDetails cd;
 
-  oss << get_game_version_synopsis() << " (" << cd.get_compilation_details_string() << ")";
+  oss << get_game_version_synopsis() << " (" << cd.get_compilation_details_string() << ") ";
+  oss << "[" << __DATE__ << "]";
 
   return oss.str();
 }

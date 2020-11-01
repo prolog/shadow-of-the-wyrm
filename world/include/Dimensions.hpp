@@ -2,8 +2,8 @@
 #include "Depth.hpp"
 #include "ISerializable.hpp"
 
-#define DEFAULT_DIMENSIONS_Y 20;
-#define DEFAULT_DIMENSIONS_X 80;
+constexpr auto DEFAULT_DIMENSIONS_Y = 20;
+constexpr auto DEFAULT_DIMENSIONS_X = 80;
 
 class Dimensions : public ISerializable
 {

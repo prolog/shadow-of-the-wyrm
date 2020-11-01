@@ -2,7 +2,7 @@
 
 // This is set up as a define so that it can be easily exported to the Lua
 // scripts.
-#define CPIETY_CROWNING 17000
+constexpr auto CPIETY_CROWNING = 17000;
 
 class ReligionConstants
 {

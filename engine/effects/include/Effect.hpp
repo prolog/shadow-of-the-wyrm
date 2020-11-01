@@ -42,7 +42,7 @@ class Effect
     
     // Effect identification functions
     virtual void identify_effect_as_necessary(std::shared_ptr<Creature> creature, const bool is_identified, const bool show_msg_on_unid) const;
-    virtual void identify_effect_if_player(std::shared_ptr<Creature> creature) const;
+    virtual void broadcast_effect_message(std::shared_ptr<Creature> creature) const;
     virtual void inform_unidentified_if_player(std::shared_ptr<Creature> creature) const;
 
     // Add all the additional effect messages, if the creature is the

@@ -158,6 +158,11 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
               pair<bool, Direction> direction_pair = get_spell_direction_from_creature(creature, spell, spell_direction);
               spellcasting_succeeded = direction_pair.first; // Can the input be converted to a dir?
               spell_direction = direction_pair.second; // The actual direction, or the initial value if action conversion didn't work.
+
+              if (!spellcasting_succeeded)
+              {
+                action_cost_value = ActionCostConstants::NO_ACTION;
+              }
             }
           }
 

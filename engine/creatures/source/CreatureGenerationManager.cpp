@@ -116,10 +116,13 @@ CreatureGenerationList CreatureGenerationManager::generate_ancient_beasts(const 
 
       for (int df = static_cast<int>(DamageFlagType::DAMAGE_FLAG_FIRST); df < static_cast<int>(DamageFlagType::DAMAGE_FLAG_LAST); df++)
       {
-        // Look, ancient beasts are in no way fair.
-        if (RNG::percent_chance(50))
+        if (df != static_cast<int>(DamageFlagType::DAMAGE_FLAG_CHAOTIC))
         {
-          dam.set_damage_flag(static_cast<DamageFlagType>(df), true);
+          // Look, ancient beasts are in no way fair.
+          if (RNG::percent_chance(50))
+          {
+            dam.set_damage_flag(static_cast<DamageFlagType>(df), true);
+          }
         }
       }
 
@@ -234,7 +237,7 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, Crea
 
 CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, const int danger_level)
 {
-  CreatureSex sex = CreatureSex::CREATURE_SEX_NOT_SPECIFIED;
+  CreatureSex sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE)));
   CreatureFactory cf;
 
   Race* race = CreatureUtils::get_random_user_playable_race();
@@ -300,6 +303,15 @@ CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, cons
       int num_enchants = 2 + iec.calculate_enchantments(danger_level);      
       item->enchant(iec.calculate_pct_chance_brand(1.0, item), num_enchants);
     }
+  }
+
+  // Add a boat
+  IInventoryPtr inv = hireling->get_inventory();
+
+  if (!inv->has_item_type(ItemType::ITEM_TYPE_BOAT))
+  {
+    ItemPtr coracle = ItemManager::create_item(ItemIdKeys::ITEM_ID_CORACLE);
+    inv->merge_or_add(coracle, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
   }
 
   return hireling;

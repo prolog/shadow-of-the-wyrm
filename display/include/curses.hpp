@@ -3,7 +3,7 @@
 #include <curses.h>
 #else
   #ifndef NCURSES_OPAQUE
-    #define NCURSES_OPAQUE 0
+    constexpr auto NCURSES_OPAQUE = 0;
   #endif
 #include <ncurses.h>
 #endif

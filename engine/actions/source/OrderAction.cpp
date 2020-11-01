@@ -17,19 +17,21 @@ using std::vector;
 
 ActionCostValue OrderAction::order(CreaturePtr creature)
 {
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
   if (creature)
   {
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
     if (check_for_followers(creature, manager))
     {
-      order_followers(creature, manager);
+      acv = order_followers(creature, manager);
     }
 
     manager.send();
   }
 
-  return get_action_cost_value(creature);
+  return acv;
 }
 
 bool OrderAction::check_for_followers(CreaturePtr creature, IMessageManager& manager)

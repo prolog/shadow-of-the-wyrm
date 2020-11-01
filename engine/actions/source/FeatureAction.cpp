@@ -111,7 +111,7 @@ bool FeatureAction::handle(TilePtr tile, FeaturePtr feature, CreaturePtr creatur
 
     if (feature_locked == false || creature_unlocked_lock)
     {
-      IFeatureManipulatorPtr feature_manipulator = IFeatureManipulatorFactory::create_manipulator(feature);
+      FeatureManipulatorPtr feature_manipulator = IFeatureManipulatorFactory::create_manipulator(feature);
 
       if (feature_manipulator)
       {

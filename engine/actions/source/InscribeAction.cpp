@@ -16,6 +16,8 @@ InscribeAction::InscribeAction()
 
 ActionCostValue InscribeAction::inscribe(CreaturePtr creature) const
 {
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
   if (creature != nullptr && creature->get_is_player())
   {
     Game& game = Game::instance();
@@ -47,26 +49,34 @@ ActionCostValue InscribeAction::inscribe(CreaturePtr creature) const
             // Can only inscribe messages on ground - not on water, in the air, etc.
             if (tst == TileSuperType::TILE_SUPER_TYPE_GROUND)
             {
-              create_inscription(creature, creature_tile, false);
+              acv = create_inscription(creature, creature_tile, false);
+            }
+            else
+            {
+              acv = get_action_cost_value(creature);
             }
 
-            add_inscription_super_type_message(tst);
-            return get_action_cost_value(creature);
+            if (acv > ActionCostConstants::NO_ACTION)
+            {
+              add_inscription_super_type_message(tst);
+            }
           }
         }
       }
       else
       {
-        create_inscription(creature, creature_tile, true);
+        acv = create_inscription(creature, creature_tile, true);
       }
     }
   }
 
-  return 0;
+  return acv;
 }
 
-void InscribeAction::create_inscription(CreaturePtr creature, TilePtr tile, const bool is_world_map) const
+ActionCostValue InscribeAction::create_inscription(CreaturePtr creature, TilePtr tile, const bool is_world_map) const
 {
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
   if (creature != nullptr && tile != nullptr)
   {
     IMessageManager& manager = MM::instance();
@@ -80,17 +90,23 @@ void InscribeAction::create_inscription(CreaturePtr creature, TilePtr tile, cons
     // Get/shorten the inscription.
     string inscription = manager.add_new_message_with_prompt(StringTable::get(message_sid));
     inscription = inscription.substr(0, MAX_INSCRIPTION_LENGTH);
-    
-    // Set the inscription on the tile.
-    tile->set_inscription_sid(inscription);
+  
+    if (!inscription.empty())
+    {
+      // Set the inscription on the tile.
+      tile->set_inscription_sid(inscription);
 
-    // User might be a smartass and try to enter a page of text.  Hard redraw.
-    Game& game = Game::instance();
-    MapPtr current_map = Game::instance().get_current_map();
-    
-    manager.clear_if_necessary();
-    game.update_display(creature, current_map, creature->get_decision_strategy()->get_fov_map(), true);
+      // User might be a smartass and try to enter a page of text.  Hard redraw.
+      Game& game = Game::instance();
+      MapPtr current_map = Game::instance().get_current_map();
+
+      manager.clear_if_necessary();
+      game.update_display(creature, current_map, creature->get_decision_strategy()->get_fov_map(), true);
+      acv = get_action_cost_value(creature);
+    }
   }
+
+  return acv;
 }
 
 void InscribeAction::add_inscription_super_type_message(const TileSuperType tst) const

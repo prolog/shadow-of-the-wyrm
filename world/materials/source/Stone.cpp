@@ -28,9 +28,9 @@ bool Stone::get_is_corrodible() const
   return false;
 }
 
-bool Stone::get_can_rust() const
+bool Stone::get_crumbles() const
 {
-  return false;
+  return true;
 }
 
 Material* Stone::clone()

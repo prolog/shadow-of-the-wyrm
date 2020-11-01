@@ -15,7 +15,7 @@ using namespace std;
 vector<string> SlotMachineManipulator::slot_faces = {};
 
 SlotMachineManipulator::SlotMachineManipulator(FeaturePtr feature)
-: IFeatureManipulator(feature)
+: FeatureManipulator(feature)
 {
   if (slot_faces.empty())
   {

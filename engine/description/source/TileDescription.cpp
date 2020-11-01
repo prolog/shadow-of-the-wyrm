@@ -72,7 +72,7 @@ string TileDescription::describe(CreaturePtr viewing_creature, TilePtr tile, con
           CurrentCreatureAbilities cca;
           IInventoryPtr inventory = tile->get_items();
           describer = DescriberFactory::create_describer(!cca.can_see(viewing_creature), inventory);
-          tile_info_strings.push_back(describer->describe());
+          tile_info_strings.push_back(describer->describe_for_tile_selection());
         }
       }
       // If the tile's been explored, but is out of range, add another message.

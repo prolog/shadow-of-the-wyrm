@@ -28,7 +28,7 @@ bool DragonScale::get_is_corrodible() const
   return false;
 }
 
-bool DragonScale::get_can_rust() const
+bool DragonScale::get_crumbles() const
 {
   return false;
 }

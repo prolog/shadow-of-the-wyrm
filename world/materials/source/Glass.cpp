@@ -28,7 +28,7 @@ bool Glass::get_is_corrodible() const
   return false; // Yeah, yeah, I know.
 }
 
-bool Glass::get_can_rust() const
+bool Glass::get_crumbles() const
 {
   return false;
 }

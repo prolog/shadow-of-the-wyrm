@@ -323,6 +323,7 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="UserPlayable" type="xs:boolean"/>
+			<xs:element name="PackMultiplier" type="xs:integer" minOccurs="0"/>
 			<xs:element name="Slayable" type="xs:boolean"/>
 			<xs:element name="LeavesCorpse" type="xs:boolean"/>
 			<xs:element name="CorpsePoisoned" type="xs:boolean"/>
@@ -479,6 +480,7 @@
 			<xs:element name="SpeechTextSID" type="xs:string" minOccurs="0"/>
 			<xs:element name="Sex" type="tns:Sex" minOccurs="0"/>
 			<xs:element name="Flying" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="WaterBreathing" type="xs:boolean" minOccurs="0"/>
             <!-- Used to create a decision strategy for the creature.  Currently accepted values:
                  - default (or just ignore the field)
 				 - immobile_default
@@ -1227,6 +1229,10 @@
 		<xs:element name="Pickup" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="Shopkeeper" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="ResistSwitch" type="xs:boolean" minOccurs="0"/>
+		<!-- Used by guards. Creatures that can attack eg the player unprovoked
+		     and that will not draw guard hostility.  List of creature IDs, 
+			 comma-separated. -->
+		<xs:element name="Allies" type="xs:string" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Symbol">
@@ -1471,7 +1477,7 @@
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxExclusive value="100"/>
+		<xs:maxInclusive value="100"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="PrimaryStatistic">

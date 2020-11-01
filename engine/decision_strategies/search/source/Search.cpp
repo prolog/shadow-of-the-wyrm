@@ -108,6 +108,7 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
         
           int danger_cost = 0;
           FeaturePtr feature = tile->get_feature();
+
           if (feature != nullptr && feature->get_is_dangerous())
           {
             // If it's a dangerous feature (probably a trap), penalize the 

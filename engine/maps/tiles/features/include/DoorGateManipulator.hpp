@@ -1,7 +1,9 @@
 #pragma once
-#include "IFeatureManipulator.hpp"
+#include "Features.hpp"
+#include "FeatureManipulator.hpp"
+#include "MessageManagerFactory.hpp"
 
-class DoorGateManipulator : public IFeatureManipulator
+class DoorGateManipulator : public FeatureManipulator
 {
   public:
     DoorGateManipulator(FeaturePtr feature);
@@ -11,6 +13,8 @@ class DoorGateManipulator : public IFeatureManipulator
     bool drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item) override;
 
   protected:
+    void kick_closed_door(IMessageManager& manager, DoorPtr door, CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature);
+    void kick_open_door(IMessageManager& manager, DoorPtr door);
     void break_down_door(CreaturePtr creature, TilePtr feature_tile);
     void handle_sprain_if_necessary(CreaturePtr creature, const int pct_chance);
 

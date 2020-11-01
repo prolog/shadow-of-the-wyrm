@@ -6,11 +6,14 @@
 #include "EvadeCalculator.hpp"
 #include "RaceManager.hpp"
 #include "ClassManager.hpp"
+#include "RaceManager.hpp"
 #include "ResistancesCalculator.hpp"
 #include "SoakCalculator.hpp"
 #include "StatisticsCalculators.hpp"
 
 using namespace std;
+
+const int CreatureCalculator::BASE_PCT_CHANCE_PACK = 1;
 
 void CreatureCalculator::update_calculated_values(const CreaturePtr& c)
 {
@@ -124,6 +127,26 @@ int CreatureCalculator::get_combat_assist_pct(CreaturePtr c)
   }
 
   return pct;
+}
+
+int CreatureCalculator::get_pct_chance_pack(CreaturePtr creature)
+{
+  int pct_chance = 0;
+
+  if (creature != nullptr)
+  {
+    pct_chance = BASE_PCT_CHANCE_PACK;
+
+    RaceManager rm;
+    Race* race = rm.get_race(creature->get_race_id());
+
+    if (race != nullptr)
+    {
+      pct_chance *= race->get_pack_multiplier();
+    }
+  }
+
+  return pct_chance;
 }
 
 #ifdef UNIT_TESTS

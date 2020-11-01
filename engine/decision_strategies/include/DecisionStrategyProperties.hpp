@@ -12,6 +12,7 @@ class DecisionStrategyProperties
     // orders.
     static const std::string DECISION_STRATEGY_SENTINEL;
     static const std::string DECISION_STRATEGY_ORDERED_SENTINEL;
+    static const std::string DECISION_STRATEGY_ALLIES_IDS;
     
     static const std::string DECISION_STRATEGY_ASSIST_PCT;
     static const std::string DECISION_STRATEGY_PICKUP;

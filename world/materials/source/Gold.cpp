@@ -28,7 +28,7 @@ bool Gold::get_is_corrodible() const
   return false;
 }
 
-bool Gold::get_can_rust() const
+bool Gold::get_crumbles() const
 {
   return false;
 }

@@ -29,6 +29,7 @@ void SkillProcessorFactory::populate_skill_map()
 {
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_ARCHERY, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_ARCHERY)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_AWARENESS, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_AWARENESS)));
+  skill_map.insert(make_pair(SkillType::SKILL_GENERAL_BARGAINING, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_BARGAINING  )));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_BEASTMASTERY, make_unique<BeastmasterySkillProcessor>()));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_BLIND_FIGHTING, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_BLIND_FIGHTING)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_BOWYER, make_unique<BowyerSkillProcessor>()));

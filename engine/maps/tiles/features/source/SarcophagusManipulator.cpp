@@ -12,7 +12,7 @@
 using namespace std;
 
 SarcophagusManipulator::SarcophagusManipulator(FeaturePtr feature)
-: IFeatureManipulator(feature)
+: FeatureManipulator(feature)
 {
 }
 

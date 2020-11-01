@@ -213,7 +213,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
           if (creatures_tile->has_feature())
           {
             FeaturePtr feature = creatures_tile->get_feature();
-            IFeatureManipulatorPtr feature_manip = IFeatureManipulatorFactory::create_manipulator(feature);
+            FeatureManipulatorPtr feature_manip = IFeatureManipulatorFactory::create_manipulator(feature);
 
             if (feature_manip != nullptr)
             {

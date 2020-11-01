@@ -77,6 +77,17 @@ class Tile : public ISerializable
     
     virtual bool get_is_staircase() const;
     virtual bool get_is_available_for_creature(std::shared_ptr<Creature> creature) const;
+
+    // get_is_blocking_visually checks to see if a tile is blocking only
+    // in terms of LOS. The real case for this is mountain tiles, which
+    // should be visually blocking, but not "blocking" in terms of
+    // e.g. disallowing movement.
+    //
+    // Basically:
+    // - this function should be called from LOS code!
+    // - this function should not be called anywhere else!
+    virtual bool get_is_blocking_visually(std::shared_ptr<Creature> perspective_creature = nullptr) const;
+
     virtual bool get_is_blocking_or_dangerous(std::shared_ptr<Creature> creature) const;
     virtual bool get_is_blocking(std::shared_ptr<Creature> perspective_creature = nullptr) const;
     virtual bool get_is_blocking_ignore_present_creature(std::shared_ptr<Creature> perspective_creature) const;
