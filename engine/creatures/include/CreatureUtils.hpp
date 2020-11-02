@@ -78,6 +78,8 @@ class CreatureUtils
 
     static bool has_skill_for_spell(CreaturePtr creature, const std::string& spell_id);
 
+    static std::string get_description_for_fov_message(CreaturePtr player, CreaturePtr creature_to_describe);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();

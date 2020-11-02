@@ -4,6 +4,7 @@
 #include "ClassManager.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "DeityTextKeys.hpp"
 #include "EngineConversion.hpp"
 #include "FieldOfViewStrategy.hpp"
@@ -21,6 +22,7 @@
 #include "StatisticTextKeys.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
+#include "TextKeys.hpp"
 #include "ViewMapTranslator.hpp"
 #include "WeaponManager.hpp"
 
@@ -952,6 +954,27 @@ bool CreatureUtils::has_skill_for_spell(CreaturePtr creature, const string& spel
   }
 
   return has_skill;
+}
+
+string CreatureUtils::get_description_for_fov_message(CreaturePtr player, CreaturePtr creature_to_describe)
+{
+  string desc;
+
+  if (player != nullptr && creature_to_describe != nullptr)
+  {
+    CurrentCreatureAbilities cca;
+
+    if (cca.can_see(player) || creature_to_describe->get_is_player())
+    {
+      desc = StringTable::get(creature_to_describe->get_description_sid());
+    }
+    else
+    {
+      desc = StringTable::get(TextKeys::SOMETHING);
+    }
+  }
+
+  return desc;
 }
 
 #ifdef UNIT_TESTS

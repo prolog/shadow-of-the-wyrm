@@ -9755,12 +9755,12 @@
 		</Creature>
 		<Creature id="naiad">
 			<RaceID>_humanoid</RaceID>
-			<WaterBreathing>1</WaterBreathing>
 			<ShortDescriptionSID>NAIAD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>NAIAD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>NAIAD_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>NAIAD_SPEECH_TEXT_SID</SpeechTextSID>
 			<Sex>1</Sex>
+			<WaterBreathing>1</WaterBreathing>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -19003,6 +19003,7 @@
 			<DescriptionSID>ROC_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ROC_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>ROC_SPEECH_TEXT_SID</SpeechTextSID>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>

@@ -1,6 +1,13 @@
 Shadow of the Wyrm v1.2.5 "Arnold"
 - Version declared November 1, 2020.
 
+- Rocs now have the "flying" flag (Josh Engdahl).
+
+- Bug fixes:
+
+  - The spellcasting message wasn't properly displaying "something" when an
+    NPC cast a spell, you were blind, and it was adjacent (Josh Engdahl).
+
 Shadow of the Wyrm v1.2.4 "Britten"
 - Version declared September 12, 2020. Version finalized November 1, 2020.
 

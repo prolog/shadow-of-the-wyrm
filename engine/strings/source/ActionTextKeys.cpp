@@ -1,5 +1,7 @@
 #include <boost/algorithm/string/replace.hpp>
 #include "ActionTextKeys.hpp"
+#include "CreatureUtils.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "RNG.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
@@ -82,9 +84,11 @@ string ActionTextKeys::get_full_message(const string& desc_sid, const string& co
   return get_general_action_message(desc_sid, consumable_desc, ACTION_FULL_PLAYER, ACTION_FULL_MONSTER, is_player);
 }
 
-string ActionTextKeys::get_spellcasting_message(const Spell& spell, const string& creature_desc_sid, const bool is_player)
+string ActionTextKeys::get_spellcasting_message(const Spell& spell, CreaturePtr player, CreaturePtr caster, const bool is_player)
 {
   string spellcasting_message;
+
+  string creature_desc = CreatureUtils::get_description_for_fov_message(player, caster);
 
   if (is_player)
   {
@@ -93,7 +97,7 @@ string ActionTextKeys::get_spellcasting_message(const Spell& spell, const string
   else
   {
     spellcasting_message = StringTable::get(spell.get_monster_cast_message_sid());
-    boost::replace_first(spellcasting_message, "%s", StringTable::get(creature_desc_sid));
+    boost::replace_first(spellcasting_message, "%s", creature_desc);
   }
 
   spellcasting_message[0] = toupper(spellcasting_message[0]);

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Creature.hpp"
 #include "Spell.hpp"
 #include "FishingTypes.hpp"
 #include "WaterTypes.hpp"
@@ -14,7 +15,7 @@ class ActionTextKeys
     static std::string get_eat_message(const std::string& desc_sid, const std::string& consumable_desc, const bool is_player);
     static std::string get_eat_confirmation_message(const std::string& consumable_desc);
     static std::string get_full_message(const std::string& desc_sid, const std::string& consumable_desc, const bool is_player);
-    static std::string get_spellcasting_message(const Spell& spell, const std::string& creature_desc_s, const bool is_player);
+    static std::string get_spellcasting_message(const Spell& spell, CreaturePtr player, CreaturePtr caster, const bool is_player);
     static std::string get_spellcasting_cancelled_message(const std::string& creature_desc_sid, const bool is_player);
     static std::string get_bestiary_search_message(const std::string& prev_search_text);
     static std::string get_item_codex_search_message(const std::string& prev_search_text);
