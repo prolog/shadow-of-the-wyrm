@@ -1,5 +1,6 @@
 #include "AttackNPCMagicDecision.hpp"
 #include "CreatureProperties.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "DirectionUtils.hpp"
 #include "SpellShapeProcessorFactory.hpp"
 
@@ -11,6 +12,12 @@ pair<bool, Direction> AttackNPCMagicDecision::decide(CreaturePtr caster, MapPtr 
   int threat_level_count = 0;
   int nonthreat_level_count = 0;
   string leader_id = caster->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+
+  CurrentCreatureAbilities cca;
+  if (!cca.can_see(caster))
+  {
+    return decision_details;
+  }
 
   if (caster != nullptr && view_map != nullptr)
   {
