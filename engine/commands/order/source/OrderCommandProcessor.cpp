@@ -15,7 +15,7 @@ OrderCommandProcessor::~OrderCommandProcessor()
 
 ActionCostValue OrderCommandProcessor::process(CreaturePtr creature, Command* command)
 {
-  ActionCostValue process_result = ActionCostConstants::DEFAULT;
+  ActionCostValue process_result = ActionCostConstants::NO_ACTION;
   OrderAction oa;
 
   if (creature && command)

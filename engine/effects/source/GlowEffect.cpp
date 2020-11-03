@@ -47,8 +47,9 @@ bool GlowEffect::glow(CreaturePtr creature, ActionManager * const am, const bool
 
   if (creature != nullptr)
   {
+    IInventoryPtr inv = creature->get_inventory();
     list<IItemFilterPtr> empty_filter = ItemFilterFactory::create_empty_filter();
-    ItemPtr item = am->inventory(creature, creature->get_inventory(), empty_filter, {}, false);
+    ItemPtr item = am->inventory(creature, inv, empty_filter, {}, false);
 
     if (item)
     {
@@ -59,6 +60,7 @@ bool GlowEffect::glow(CreaturePtr creature, ActionManager * const am, const bool
       else
       {
         glow_item(creature, item, glow_on);
+        inv->mark_for_restack();
       }
  
       glow_effect = true;

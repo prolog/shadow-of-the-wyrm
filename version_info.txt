@@ -7,6 +7,9 @@ Shadow of the Wyrm v1.2.5 "Arnold"
 
 - When doing the Carcassia start, you now start on it instead of 1n (Grond).
 
+- The glow effect now properly combines the glowing item(s) into similar
+  stacks in the inventory (Josh Engdahl).
+
 - Bug fixes:
 
   - The spellcasting message wasn't properly displaying "something" when an
@@ -14,6 +17,9 @@ Shadow of the Wyrm v1.2.5 "Arnold"
 
   - NPC spellcasting for attack spells could cause a crash when the caster
     was blinded (Josh Engdahl).
+
+  - An invalid action selection in the Order screen was advancing the turn
+    (Josh Engdahl).
 
 Shadow of the Wyrm v1.2.4 "Britten"
 - Version declared September 12, 2020. Version finalized November 1, 2020.
