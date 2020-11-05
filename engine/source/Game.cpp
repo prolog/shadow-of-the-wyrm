@@ -975,7 +975,9 @@ void Game::set_current_map(MapPtr map)
   current_map_id = map->get_map_id();
   map_registry.set_map(current_map_id, map);
 
-  // Do an initial calculation of all the FOV maps.
+  // Do an initial calculation of all the FOV maps and rebuild the temporary
+  // data structures.
+  map->reset_creatures_and_creature_locations();
   MapUtils::calculate_fov_maps_for_all_creatures(map);
 }
 

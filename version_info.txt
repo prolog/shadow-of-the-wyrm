@@ -21,6 +21,11 @@ Shadow of the Wyrm v1.2.5 "Arnold"
   - An invalid action selection in the Order screen was advancing the turn
     (Josh Engdahl).
 
+  - Pegasus was missing flying.
+
+  - The game could lose track of creatures in a map's internal set of
+    locations, leading to issues like duplication, non-removal, etc (various).
+
 Shadow of the Wyrm v1.2.4 "Britten"
 - Version declared September 12, 2020. Version finalized November 1, 2020.
 

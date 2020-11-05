@@ -32,6 +32,10 @@ class Map : public ISerializable
 		// creatures and locations after copying the map.
 		void reset_creatures_and_locations();
 
+    // Function used when loading a map - reset the creatures
+    // and the creature locations (but not all locations).
+    void reset_creatures_and_creature_locations();
+
 		// These functions work on a list built up from the map itself.
 		// This allows for quicker lookup.
 		bool has_creature(const std::string& creature_id);

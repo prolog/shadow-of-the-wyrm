@@ -729,6 +729,7 @@ bool ShadowOfTheWyrmEngine::process_load_game()
       }
 
       game.set_ready();
+      game.get_current_map()->reset_creatures_and_creature_locations();
     }
 
     // JCD TODO: Add support for additional reloadable settings here.
