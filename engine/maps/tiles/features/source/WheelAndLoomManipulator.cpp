@@ -11,6 +11,8 @@
 
 using namespace std;
 
+const int WheelAndLoomManipulator::WEAVING_PCT_CHANCE_BRAND = 1;
+
 WheelAndLoomManipulator::WheelAndLoomManipulator(FeaturePtr feature)
 : FeatureManipulator(feature),
 loom_map({ {EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, "_cloak"}, {EquipmentWornLocation::EQUIPMENT_WORN_BODY, "_robes"} })
@@ -140,10 +142,12 @@ ItemPtr WheelAndLoomManipulator::create_woven_armour(CreaturePtr creature, ItemP
 
         int num_points = RNG::range(min_points, max_points);
 
-        // High weaving skill can improve an item as if by enchantments, but
-        // cannot brand it, which is why enchant is called with a pct_chance
-        // of 0 for branding.
-        wearable->enchant(0 /* weaving doesn't brand */, num_points);
+        // High weaving skill can improve an item as if by enchantments, and
+        // has a very small chance to apply a brand with each enchant.
+        for (int i = 0; i < num_points; i++)
+        {
+          wearable->enchant(WEAVING_PCT_CHANCE_BRAND, 1);
+        }
       }
     }
   }

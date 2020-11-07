@@ -7203,6 +7203,7 @@
 			<TextDetailsSID>FAIRY_SPIRIT_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>FAIRY_SPIRIT_SPEECH_TEXT_SID</SpeechTextSID>
 			<Sex>1</Sex>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>
@@ -7248,6 +7249,7 @@
 			<TextDetailsSID>MAGICAL_SPIRIT_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MAGICAL_SPIRIT_SPEECH_TEXT_SID</SpeechTextSID>
 			<Sex>1</Sex>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentinel>1</Sentinel>

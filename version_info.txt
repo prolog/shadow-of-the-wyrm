@@ -10,6 +10,11 @@ Shadow of the Wyrm v1.2.5 "Arnold"
 - The glow effect now properly combines the glowing item(s) into similar
   stacks in the inventory (Josh Engdahl).
 
+- Weaving was previously doing its free enchant "in one shot", leading to
+  items that are weighted in the extreme: all soak, all evade, etc.  Updated
+  this so that it goes point-by-point, creating more diverse items, and also
+  updated it so that there is a small chance per enchant to apply a brand.
+
 - Bug fixes:
 
   - The spellcasting message wasn't properly displaying "something" when an
