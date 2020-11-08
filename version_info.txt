@@ -15,6 +15,18 @@ Shadow of the Wyrm v1.2.5 "Arnold"
   this so that it goes point-by-point, creating more diverse items, and also
   updated it so that there is a small chance per enchant to apply a brand.
 
+- Whiteflower is a little more common, and there is some guaranteed in Isen
+  Dun.
+
+- Woven items will now start off a little more powerful (2-4 EV, 1-2 SK) even
+  before the free enchantments are applied.
+
+- Instead of robes, the body-slot woven item is now wayfarer clothes, and you
+  can weave for the head slot (cap) as well.
+
+- Rarer, healing herbs can now generate naturally in fields, though with a 
+  very low probability.
+
 - Bug fixes:
 
   - The spellcasting message wasn't properly displaying "something" when an

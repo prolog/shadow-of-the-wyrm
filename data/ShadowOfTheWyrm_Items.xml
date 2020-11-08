@@ -391,7 +391,7 @@
 			</Amulet>
 		</Amulets>
 		<Armours>
-			<Armour id="cap">
+			<Armour id="_cap">
 				<DescriptionSID>CAP_SID</DescriptionSID>
 				<UsageDescriptionSID>CAP_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>CAP_CODEX_SID</CodexDescriptionSID>
@@ -1584,7 +1584,7 @@
 				<Evade>2</Evade>
 				<Soak>0</Soak>
 			</Armour>
-			<Armour id="wayfarer_clothes">
+			<Armour id="_wayfarer_clothes">
 				<DescriptionSID>WAYFARER_CLOTHES_SID</DescriptionSID>
 				<UsageDescriptionSID>WAYFARER_CLOTHES_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>WAYFARER_CLOTHES_CODEX_SID</CodexDescriptionSID>
@@ -1609,7 +1609,7 @@
 						<Value>1</Value>
 					</Property>
 				</Properties>
-				<Evade>1</Evade>
+				<Evade>2</Evade>
 				<Soak>1</Soak>
 			</Armour>
 			<Armour id="linothorax">

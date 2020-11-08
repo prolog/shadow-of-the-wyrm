@@ -2488,7 +2488,7 @@
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
-					<ID>cap</ID>
+					<ID>_cap</ID>
 				</Head>
 				<Wielded>
 					<Random>
@@ -3103,7 +3103,7 @@
 					</Random>
 				</Wielded>
 				<Body>
-					<ID>wayfarer_clothes</ID>
+					<ID>_wayfarer_clothes</ID>
 				</Body>
 				<Feet>
 					<ID>leather_boots</ID>
@@ -3578,13 +3578,13 @@
 			<ExperienceMultiplier>1.03</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
-					<ID>cap</ID>
+					<ID>_cap</ID>
 				</Head>
 				<Wielded>
 					<ID>mace</ID>
 				</Wielded>
 				<Body>
-					<ID>wayfarer_clothes</ID>
+					<ID>_wayfarer_clothes</ID>
 				</Body>
 				<Feet>
 					<ID>leather_boots</ID>
@@ -3697,7 +3697,7 @@
 			<ExperienceMultiplier>0.97</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
-					<ID>cap</ID>
+					<ID>_cap</ID>
 				</Head>
 				<Body>
 					<ID>clothes</ID>
@@ -4066,13 +4066,13 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
-					<ID>cap</ID>
+					<ID>_cap</ID>
 				</Head>
 				<Wielded>
 					<ID>long_spear</ID>
 				</Wielded>
 				<Body>
-					<ID>wayfarer_clothes</ID>
+					<ID>_wayfarer_clothes</ID>
 				</Body>
 				<AroundBody>
 					<ID>_cloak</ID>
@@ -4185,13 +4185,13 @@
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
-					<ID>cap</ID>
+					<ID>_cap</ID>
 				</Head>
 				<Wielded>
 					<ID>shepherd_crook</ID>
 				</Wielded>
 				<Body>
-					<ID>wayfarer_clothes</ID>
+					<ID>_wayfarer_clothes</ID>
 				</Body>
 				<AroundBody>
 					<ID>_cloak</ID>
@@ -4436,7 +4436,7 @@
 			</DeityDislikeMultipliers>
 			<InitialEquipmentAndInventory>
 				<Head>
-					<ID>cap</ID>
+					<ID>_cap</ID>
 				</Head>
 				<Wielded>
 					<ID>dagger</ID>

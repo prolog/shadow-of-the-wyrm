@@ -11,7 +11,7 @@ local function setup_special_features(map_id)
 end
 
 local function setup_arena_litter(map_id)
-  local litter_ids = {"dagger", "mace", "broad_sword", "spear", "cap", "buckler", "sling"}
+  local litter_ids = {"dagger", "mace", "broad_sword", "spear", "_cap", "buckler", "sling"}
 
   for row = 6,12 do
     for col = 54,62 do
