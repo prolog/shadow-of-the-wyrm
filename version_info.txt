@@ -27,6 +27,12 @@ Shadow of the Wyrm v1.2.5 "Arnold"
 - Rarer, healing herbs can now generate naturally in fields, though with a 
   very low probability.
 
+- Updates to the premake script to fix postbuild steps when run with premake 5
+  (Larzid).
+
+- Auto-identification on equip is no longer restricted to wearables (Josh
+  Engdahl).
+
 - Bug fixes:
 
   - The spellcasting message wasn't properly displaying "something" when an
