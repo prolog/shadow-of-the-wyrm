@@ -23,6 +23,8 @@ namespace ItemEnchantingSmithing
   const int MAX_POINTS = 6;
 };
 
+const int Item::MIN_ENCHANT_VALUE_INCR = 40;
+
 Item::Item()
 : quantity(1), readable(false), worn_location(EquipmentWornLocation::EQUIPMENT_WORN_NONE), status(ItemStatus::ITEM_STATUS_UNCURSED), status_identified(false), 
 item_identified(false), auto_curse(false), artifact(false), hands_required(1), type(ItemType::ITEM_TYPE_MISC), symbol('?', Colour::COLOUR_UNDEFINED), colour(Colour::COLOUR_UNDEFINED), 
@@ -536,6 +538,8 @@ bool Item::can_smith() const
 // generated, and to allow additional enchantments as well.
 bool Item::enchant(const int pct_chance_brand, const int enchant_points)
 {
+  increase_value(enchant_points);
+
   if (RNG::percent_chance(pct_chance_brand))
   {
     brand();
@@ -558,6 +562,8 @@ bool Item::smith(const int smith_points)
 {
   if (remaining_smithings.get_current() > 0)
   {
+    increase_value(smith_points);
+
     do_smith_item(smith_points);
     remaining_smithings.set_current(remaining_smithings.get_current() - 1);
 
@@ -602,6 +608,8 @@ bool Item::enchant(const int pct_chance_brand, const float enchant_mult)
   
   if (can_enchant())
   {
+    increase_value();
+
     int points = static_cast<int>(RNG::range(ItemEnchantingSmithing::MIN_POINTS, ItemEnchantingSmithing::MAX_POINTS) * enchant_mult);
 
     if (RNG::percent_chance(pct_chance_brand))
@@ -883,6 +891,15 @@ bool Item::get_is_good() const
 int Item::get_score() const
 {
   return 0;
+}
+
+void Item::increase_value(const int num_points)
+{
+  for (int i = 0; i < num_points; i++)
+  {
+    int new_value_incr = std::max<int>(MIN_ENCHANT_VALUE_INCR, static_cast<int>(value * 0.1));
+    value += new_value_incr;
+  }
 }
 
 bool Item::serialize(ostream& stream) const

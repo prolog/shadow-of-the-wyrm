@@ -1,7 +1,4 @@
 Me:
-- instrument identify on wield?
-- Enchants and esp brands should add value to items! > of 50iv or 10%
-- Smithing should add > of 25iv or 5%
 - pick up/drop all that work with filters
 - Generate tombs with keys outside door/doors locked
 - sword-eater/hits himself (Josh Engdahl)
