@@ -1,6 +1,4 @@
 Me:
-- Larzid: attempting to disarm trap from adjacent says you're too far away
-  but will eventually disarm the trap?
 - pick up/drop all that work with filters
 - Generate tombs with keys outside door/doors locked
 - sword-eater/hits himself (Josh Engdahl)

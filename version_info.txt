@@ -49,6 +49,8 @@ Shadow of the Wyrm v1.2.5 "Arnold"
   - The game could lose track of creatures in a map's internal set of
     locations, leading to issues like duplication, non-removal, etc (various).
 
+  - Applying traps while adjacent would eventually disarm them (Larzid).
+
 Shadow of the Wyrm v1.2.4 "Britten"
 - Version declared September 12, 2020. Version finalized November 1, 2020.
 
