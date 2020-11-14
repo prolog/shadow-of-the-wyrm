@@ -152,8 +152,9 @@ CommandPtr NPCPickupDecisionStrategy::get_pick_up_amulet_decision(CreaturePtr cr
     if (amulet != nullptr)
     {
       ItemPtr amulet_eq = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_NECK);
+      NPCUseEquipItemDecisionStrategy ue;
 
-      if (amulet_eq == nullptr && amulet->get_is_good())
+      if (amulet->get_is_good() && ue.should_equip_wearable(creature, item))
       {
         pu_cmd = std::make_unique<PickUpCommand>(amulet->get_id());
       }
@@ -175,8 +176,11 @@ CommandPtr NPCPickupDecisionStrategy::get_pick_up_ring_decision(CreaturePtr crea
     {
       ItemPtr f1 = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_LEFT_FINGER);
       ItemPtr f2 = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_RIGHT_FINGER);
+      NPCUseEquipItemDecisionStrategy ue;
 
-      if ((f1 == nullptr || f2 == nullptr) && ring->get_is_good())
+      if (ring->get_is_good() &&
+           ((f1 == nullptr || ue.should_equip_wearable(creature, item, EquipmentWornLocation::EQUIPMENT_WORN_LEFT_FINGER)) ||
+            (f2 == nullptr || ue.should_equip_wearable(creature, item, EquipmentWornLocation::EQUIPMENT_WORN_RIGHT_FINGER))))
       {
         pu_cmd = std::make_unique<PickUpCommand>(ring->get_id());
       }

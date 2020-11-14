@@ -4,6 +4,7 @@
 #include "NPCUseEquipItemDecisionStrategy.hpp"
 #include "Spellbook.hpp"
 #include "SpellShapeFactory.hpp"
+#include "SquishyEquipWornLocationFilter.hpp"
 #include "Wand.hpp"
 #include "WeaponManager.hpp"
 
@@ -114,13 +115,20 @@ bool NPCUseEquipItemDecisionStrategy::should_equip_weapon(CreaturePtr creature, 
   return should_eq;
 }
 
-bool NPCUseEquipItemDecisionStrategy::should_equip_wearable(CreaturePtr creature, ItemPtr item)
+bool NPCUseEquipItemDecisionStrategy::should_equip_wearable(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation ewl_override)
 {
   bool should_eq = false;
 
   if (item != nullptr)
   {
-    ItemPtr worn_item = creature->get_equipment().get_item(item->get_worn_location());
+    EquipmentWornLocation ewl = ewl_override;
+
+    if (ewl == EquipmentWornLocation::EQUIPMENT_WORN_NONE)
+    {
+      ewl = item->get_worn_location();
+    }
+
+    ItemPtr worn_item = creature->get_equipment().get_item(ewl);
     if (worn_item == nullptr && !item->get_auto_curse())
     {
       should_eq = true;
@@ -134,7 +142,7 @@ bool NPCUseEquipItemDecisionStrategy::should_equip_wearable(CreaturePtr creature
       {
         if (item_wear->get_score() > worn_wear->get_score())
         {
-          if (item_wear->get_worn_location() == EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND)
+          if (ewl == EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND)
           {
             WeaponManager wm;
             WeaponPtr weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
@@ -156,6 +164,7 @@ bool NPCUseEquipItemDecisionStrategy::should_equip_wearable(CreaturePtr creature
       }
     }
   }
+
   WeaponManager wm;
   WeaponPtr weapon = std::dynamic_pointer_cast<Weapon>(item);
   WeaponPtr eq_weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
@@ -187,14 +196,14 @@ CommandPtr NPCUseEquipItemDecisionStrategy::get_equip_ring_decision(CreaturePtr 
 
     if (ewl == f1 || ewl == f2)
     {
-      bool f1_worn = eq.has_item(f1);
-      bool f2_worn = eq.has_item(f2);
+      ItemPtr f1_item = eq.get_item(f1);
+      ItemPtr f2_item = eq.get_item(f2);
 
-      if (!f1_worn)
+      if (f1_item == nullptr || (item->get_score() > f1_item->get_score()))
       {
         equip_cmd = std::make_unique<InventoryCommand>(f1, item);
       }
-      else if (!f2_worn)
+      else if (f2_item == nullptr || (item->get_score() > f2_item->get_score()))
       {
         equip_cmd = std::make_unique<InventoryCommand>(f2, item);
       }
@@ -212,8 +221,9 @@ CommandPtr NPCUseEquipItemDecisionStrategy::get_equip_amulet_decision(CreaturePt
   {
     EquipmentWornLocation ewl = item->get_worn_location();
     EquipmentWornLocation worn_loc = EquipmentWornLocation::EQUIPMENT_WORN_NECK;
+    ItemPtr worn_item = creature->get_equipment().get_item(worn_loc);
 
-    if (ewl == worn_loc && !creature->get_equipment().has_item(worn_loc))
+    if (ewl == worn_loc && (worn_item == nullptr || item->get_score() > worn_item->get_score()))
     {
       equip_cmd = std::make_unique<InventoryCommand>(worn_loc, item);
     }
