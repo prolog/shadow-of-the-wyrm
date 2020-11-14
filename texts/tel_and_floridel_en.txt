@@ -3617,3 +3617,33 @@ of what they'd been, and weren't.  The very air %b
 was charged.  No townsfolk.  Quiet.  From the roofs %b
 the west wind; underneath, the clop of nervous hooves.
 %p
+They ringed around the gallows, facing out %b
+and waited.  Minutes passed, and then the sound %b
+of a doorway slamming shut.  Each rider's mount %b
+shifted expectantly.  But all that party found %b
+was a woman dressed in simple clothes, her hand %b
+cradling a worn and loaded sling. %b
+"Your exiles came and left, and if you planned %b
+to pull us into this, we'd like you to bring %b
+a message from our village to your new-crowned king."
+%p
+The riders had drawn weapons, and she slung %b
+a stone at Alcius' upright sword. %b
+He dropped it, and before a single one %b
+could ride her down, the woman moved towards %b
+the group of them.  And then the shutters sang %b
+around them, and a hundred bows and spears %b
+made eyes at gaps in armour.  Now defanged, %b
+the riders lowered weapons.  In the square, %b
+a kind of electricity arced through the air.
+%p
+But she raised her hand, and, signalling a stop, %b
+the weapons vanished.  Walking to the group, %b
+she folded up her sling, then let it flop %b
+on Alcius' sword.  "My name is Tula," %b
+she said, "if you remember me.  Or not." %b
+She let the nobles think.  "I cleaned your scraps %b
+on feasting days.  You drank till you forgot, %b
+and if I did it wrong, you'd browbeat me, or slap %b
+me till I tasted blood and all your families laughed."
+%p

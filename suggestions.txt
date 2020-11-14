@@ -1,4 +1,6 @@
 Me:
+- Use Magic to destroy spellbooks and get a bit of AP?
+- Dungeons should check for shop before generating trap.
 - pick up/drop all that work with filters
 - Generate tombs with keys outside door/doors locked
 - sword-eater/hits himself (Josh Engdahl)
@@ -31,11 +33,8 @@ Me:
 - Release after this: grond says tanning is complicated & dragon skins aren't
   what they should be.
 - Mode screen (F10): Game mode, graphics, palette
-- Use Magic to destroy spellbooks and get a bit of AP?
-- Dungeons should check for shop before generating trap.
 - Beer halls in villages
 - spell arcana (bind to capitals in spell list)
-- auto save - not working?
 - Do creatures pause when no threats in FOV? Seems slow.
 - google screen clear not working for SDL. reported 2x.
 - 2x draw?
