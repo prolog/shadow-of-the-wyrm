@@ -30,6 +30,8 @@ Shadow of the Wyrm v1.2.5 "Arnold"
 - Updates to the premake script to fix postbuild steps when run with premake 5
   (Larzid).
 
+- Traps will no longer generate in random shops.
+
 - Auto-identification on equip is no longer restricted to wearables (Josh
   Engdahl).
 

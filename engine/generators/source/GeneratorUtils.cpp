@@ -239,6 +239,7 @@ int GeneratorUtils::generate_traps(const MapPtr map, const int num_traps)
 }
 
 // Generate a trap with a given ID and place it at the given coordinates.
+// Don't generate the trap if it's in a shop.
 void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int col, const vector<TrapPtr>& traps, const string& trap_id, const bool trap_triggered)
 {
   if (map == nullptr)
@@ -261,6 +262,19 @@ void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int co
 
     if (selected_trap != nullptr)
     {
+      const auto& shops = map->get_shops_ref();
+
+      if (!shops.empty())
+      {
+        for (auto s_it : shops)
+        {
+          if (CoordUtils::is_contained(s_it.second.get_start(), s_it.second.get_end(), { row, col }))
+          {
+            return;
+          }
+        }
+      }
+
       // Make a copy of the one provided.
       TrapPtr new_trap = TrapPtr(selected_trap->clone_and_randomize_uses());
       new_trap->set_triggered(trap_triggered);
@@ -292,6 +306,19 @@ void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int co
 
     if (trap != nullptr)
     {
+      const auto& shops = map->get_shops_ref();
+
+      if (!shops.empty())
+      {
+        for (auto s_it : shops)
+        {
+          if (CoordUtils::is_contained(s_it.second.get_start(), s_it.second.get_end(), { row, col }))
+          {
+            return;
+          }
+        }
+      }
+
       // Make a copy of the one provided.
       trap = TrapPtr(trap->clone_and_randomize_uses());
       trap->set_triggered(trap_triggered);
