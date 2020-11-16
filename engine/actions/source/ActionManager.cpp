@@ -202,7 +202,7 @@ ActionCostValue ActionManager::wear_or_remove_item(CreaturePtr creature, const E
         total_filter.insert(total_filter.end(), hands_filter.begin(), hands_filter.end());
       }
 
-      ItemPtr item_in_slot = inventory(creature, creature->get_inventory(), total_filter, {}, false);
+      ItemPtr item_in_slot = inventory(creature, creature->get_inventory(), total_filter, {}, false, false);
       
       // This is null if no item was selected.
       if (item_in_slot)
@@ -602,7 +602,7 @@ ActionCost ActionManager::drop(CreaturePtr creature, const string& drop_item_id)
 }
 
 // Display the inventory; potentially select something.
-ItemPtr ActionManager::inventory(CreaturePtr creature, IInventoryPtr inv, const list<IItemFilterPtr>& base_display_filter_list, const list<IItemFilterPtr>& additional_display_filter_list, const bool inventory_is_read_only)
+ItemPtr ActionManager::inventory(CreaturePtr creature, IInventoryPtr inv, const list<IItemFilterPtr>& base_display_filter_list, const list<IItemFilterPtr>& additional_display_filter_list, const bool inventory_is_read_only, const bool allow_multiple_selected_items)
 {
   ItemPtr selected_item;
   
@@ -613,7 +613,7 @@ ItemPtr ActionManager::inventory(CreaturePtr creature, IInventoryPtr inv, const 
     DisplayPtr game_display = game.get_display();
     InventoryManager inv_manager(game_display, creature);
 
-    selected_item = inv_manager.manage_inventory(inv, base_display_filter_list, additional_display_filter_list, inventory_is_read_only);
+    selected_item = inv_manager.manage_inventory(inv, base_display_filter_list, additional_display_filter_list, inventory_is_read_only, allow_multiple_selected_items);
   }
   
   return selected_item;

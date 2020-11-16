@@ -4830,7 +4830,7 @@ int select_item(lua_State* ls)
 
       Game& game = Game::instance();
       list<IItemFilterPtr> selected_filter = ItemFilterFactory::create_script_filter(item_filter);
-      ItemPtr item = game.get_action_manager_ref().inventory(creature, creature->get_inventory(), selected_filter, {}, false);
+      ItemPtr item = game.get_action_manager_ref().inventory(creature, creature->get_inventory(), selected_filter, {}, false, false);
 
       if (item != nullptr)
       {

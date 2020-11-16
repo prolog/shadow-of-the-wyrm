@@ -74,7 +74,7 @@ ItemPtr PulperManipulator::get_item_to_pulp(CreaturePtr creature)
   if (creature != nullptr)
   {
     list<IItemFilterPtr> display_filter = ItemFilterFactory::create_material_type_filter(MaterialType::MATERIAL_TYPE_PAPER);
-    pulp_item = Game::instance().get_action_manager_ref().inventory(creature, creature->get_inventory(), display_filter, {}, false);
+    pulp_item = Game::instance().get_action_manager_ref().inventory(creature, creature->get_inventory(), display_filter, {}, false, false);
   }
 
   return pulp_item;

@@ -23,7 +23,7 @@ Effect* RemoveStatusEffect::clone()
   return new RemoveStatusEffect(*this);
 }
 
-bool RemoveStatusEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool RemoveStatusEffect::effect_blessed(CreaturePtr creature, ActionManager* const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
 {
   return remove_status(creature);
 }

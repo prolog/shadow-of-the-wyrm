@@ -50,7 +50,7 @@ ActionCostValue DropAction::drop(CreaturePtr dropping_creature, ActionManager * 
     else
     {
       list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
-      ItemPtr item_to_drop = am->inventory(dropping_creature, dropping_creature->get_inventory(), no_filter, {}, false);
+      ItemPtr item_to_drop = am->inventory(dropping_creature, dropping_creature->get_inventory(), no_filter, {}, false, true);
       
       if (!item_to_drop)
       {

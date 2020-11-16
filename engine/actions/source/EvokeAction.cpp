@@ -40,7 +40,7 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
     }
 
     list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_type_filter(ItemType::ITEM_TYPE_WAND);
-    ItemPtr selected_item = am->inventory(creature, creature->get_inventory(), display_filter_list, {}, false);
+    ItemPtr selected_item = am->inventory(creature, creature->get_inventory(), display_filter_list, {}, false, false);
     
     if (selected_item)
     {
