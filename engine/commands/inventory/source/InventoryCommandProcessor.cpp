@@ -4,6 +4,7 @@
 #include "InventoryCommandKeys.hpp"
 #include "InventoryCommandProcessor.hpp"
 #include "InventoryCommands.hpp"
+#include "InventoryKeyboardCommandMap.hpp"
 #include "InventoryManager.hpp"
 #include "ItemFilterFactory.hpp"
 #include "Log.hpp"
@@ -47,7 +48,17 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
     }
     else if (command_name == InventoryCommandKeys::FILTER_VIEW)
     {
-      list<IItemFilterPtr> display_filter = ItemFilterFactory::create_item_type_filter(command->get_key());
+      list<IItemFilterPtr> display_filter;
+      int key = command->get_key();
+
+      if (key == InventoryKeyboardCommandMap::FILTER_UNPAID[0])
+      {
+        display_filter = ItemFilterFactory::create_unpaid_filter();
+      }
+      else
+      {
+        display_filter = ItemFilterFactory::create_item_type_filter(command->get_key());
+      }
 
       ItemPtr item = game.actions.inventory(creature, inv, base_item_filter_list, display_filter, inventory_is_read_only, allow_multiple_item_selection);
 

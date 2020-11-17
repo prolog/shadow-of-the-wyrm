@@ -35,6 +35,9 @@ Shadow of the Wyrm v1.2.5 "Arnold"
 - Auto-identification on equip is no longer restricted to wearables (Josh
   Engdahl).
 
+- You can now use '~' to list your unpaid items in the inventory view (Josh
+  Engdahl).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

@@ -15,6 +15,8 @@ class InventoryKeyboardCommandMap : public KeyboardCommandMap
     // serialize/deserialize taken care of by KeyboardCommandMap
 
     virtual KeyboardCommandMap* clone() override;
+    
+    static const std::string FILTER_UNPAID;
 
   protected:
     // Command mapping for keys on the inventory screen

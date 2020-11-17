@@ -887,6 +887,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\items\include\ItemMaterialFilter.hpp" />
     <ClInclude Include="engine\items\include\ItemPropertyFilter.hpp" />
     <ClInclude Include="engine\items\include\ItemTypeFilter.hpp" />
+    <ClInclude Include="engine\items\include\ItemUnpaidFilter.hpp" />
     <ClInclude Include="engine\items\include\LuaItemFilter.hpp" />
     <ClInclude Include="engine\items\include\NullItemFilter.hpp" />
     <ClInclude Include="engine\items\include\ReadableItemFilter.hpp" />
@@ -1959,6 +1960,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\items\source\HandsRequiredItemFilter.cpp" />
     <ClCompile Include="engine\items\source\ItemBaseIdFilter.cpp" />
     <ClCompile Include="engine\items\source\ItemGenerationConstraints.cpp" />
+    <ClCompile Include="engine\items\source\ItemUnpaidFilter.cpp" />
     <ClCompile Include="engine\items\source\UnidentifiedItemFilter.cpp" />
     <ClCompile Include="engine\items\source\unit_tests\HandsRequiredItemFilter_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1977,6 +1979,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\unit_tests\ItemUnpaidFilter_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\magic\source\SpellTransfer.cpp" />
     <ClCompile Include="engine\magic\source\unit_tests\TileMagicChecker_test.cpp">

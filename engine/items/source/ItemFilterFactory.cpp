@@ -7,6 +7,7 @@
 #include "ItemMaterialFilter.hpp"
 #include "ItemPropertyFilter.hpp"
 #include "ItemTypeFilter.hpp"
+#include "ItemUnpaidFilter.hpp"
 #include "LuaItemFilter.hpp"
 #include "NullItemFilter.hpp"
 #include "ReadableItemFilter.hpp"
@@ -51,6 +52,16 @@ list<IItemFilterPtr> ItemFilterFactory::create_empty_filter()
   return null_filter_list;
 }
 
+list<IItemFilterPtr> ItemFilterFactory::create_unpaid_filter()
+{
+  list<IItemFilterPtr> unpaid_filter_list;
+
+  IItemFilterPtr unpaid = std::make_shared<ItemUnpaidFilter>();
+  unpaid_filter_list.push_back(unpaid);
+
+  return unpaid_filter_list;
+}
+
 // Create a list of filters for the passed-in worn locations.
 list<IItemFilterPtr> ItemFilterFactory::create_equipment_filter(const std::list<EquipmentWornLocation>& eq_loc_list)
 {
@@ -92,7 +103,7 @@ list<IItemFilterPtr> ItemFilterFactory::create_item_type_filter(const std::list<
   return it_filter;
 }
 
-// Create an item type filter from a user-entered keyboard value.
+// Create an item type (or unpaid) filter from a user-entered keyboard value.
 list<IItemFilterPtr> ItemFilterFactory::create_item_type_filter(const int display_symbol)
 {
   list<IItemFilterPtr> it_filter;
