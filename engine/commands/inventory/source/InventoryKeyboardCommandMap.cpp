@@ -7,6 +7,7 @@
 using namespace std;
 
 const string InventoryKeyboardCommandMap::FILTER_UNPAID = "~";
+const string InventoryKeyboardCommandMap::SELECT_ALL = "*";
 
 InventoryKeyboardCommandMap::InventoryKeyboardCommandMap()
 {
@@ -35,6 +36,7 @@ void InventoryKeyboardCommandMap::initialize_command_mapping(const Settings& set
   command_mapping = KeyboardCommandMappingMap{{"z", InventoryCommandKeys::EXIT_INVENTORY},
                                               {"Z", InventoryCommandKeys::EXIT_INVENTORY},
                                               {esc_key, InventoryCommandKeys::EXIT_INVENTORY},
+                                              {"*", InventoryCommandKeys::SELECT_ITEM},
                                               {"`", InventoryCommandKeys::CLEAR_FILTER},
                                               {"~", InventoryCommandKeys::FILTER_VIEW},
                                               {"]", InventoryCommandKeys::FILTER_VIEW},

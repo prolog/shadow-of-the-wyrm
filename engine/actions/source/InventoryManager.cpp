@@ -51,18 +51,28 @@ ItemPtr InventoryManager::manage_inventory(IInventoryPtr inv, const list<IItemFi
           string external_id;
           int option_id = Char::keyboard_selection_char_to_int(inv_selection.at(0));
           OptionPtr op = is.get_option(option_id);
+          vector<string> external_ids;
+
+          // JCD FIXME:
+          // vector<OptionPtr> options = is.get_options();
+          // iterate, put external IDs into vector, etc
           
           if (op != nullptr)
           {
-            external_id = op->get_external_id();
+            external_ids.push_back(op->get_external_id());
           }
 
-          // JCD FIXME - if this is recursive, refactor so that it uses an
-          // iterative approach.
           if (!inv_selection.empty())
           {
+            vector<ItemPtr> selected_items;
+
             CommandPtr inv_command = command_factory->create(inv_selection.at(0), kb_command_map->get_command_type(inv_selection));
-            manage_inv = InventoryCommandProcessor::process(this, base_display_filter_list, display_inventory, external_id, creature, inv, inv_command.get(), inventory_is_read_only, allow_multiple_selected_items, selected_item);
+            manage_inv = InventoryCommandProcessor::process(this, base_display_filter_list, display_inventory, external_ids, creature, inv, inv_command.get(), inventory_is_read_only, allow_multiple_selected_items, selected_items);
+
+            if (!selected_items.empty())
+            {
+              selected_item = selected_items[0];
+            }
           }
         }
       }
