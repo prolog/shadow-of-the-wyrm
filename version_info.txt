@@ -58,6 +58,8 @@ Shadow of the Wyrm v1.2.5 "Arnold"
 
   - Applying traps while adjacent would eventually disarm them (Larzid).
 
+  - A couple of characters still referenced "Hrothgar" in their chat text.
+
 Shadow of the Wyrm v1.2.4 "Britten"
 - Version declared September 12, 2020. Version finalized November 1, 2020.
 
