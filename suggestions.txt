@@ -1,4 +1,5 @@
 Me:
+- Remove cap, *, crash
 - Use Magic to destroy spellbooks and get a bit of AP?
 - pick up/drop all that work with filters
 - Generate tombs with keys outside door/doors locked

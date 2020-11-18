@@ -115,12 +115,15 @@ bool InventoryCommandProcessor::process_select_item(Command* command, IInventory
       }
       else
       {
-        ItemPtr item = inv->get_from_id(item_ids[0]);
-
-        if (item != nullptr)
+        if (!item_ids.empty())
         {
-          selected_items.push_back(item);
-          process_result = false;
+          ItemPtr item = inv->get_from_id(item_ids[0]);
+
+          if (item != nullptr)
+          {
+            selected_items.push_back(item);
+            process_result = false;
+          }
         }
       }
     }
