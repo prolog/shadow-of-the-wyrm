@@ -613,7 +613,13 @@ ItemPtr ActionManager::inventory(CreaturePtr creature, IInventoryPtr inv, const 
     DisplayPtr game_display = game.get_display();
     InventoryManager inv_manager(game_display, creature);
 
-    selected_item = inv_manager.manage_inventory(inv, base_display_filter_list, additional_display_filter_list, inventory_is_read_only, allow_multiple_selected_items);
+    vector<ItemPtr> items = inv_manager.manage_inventory(inv, base_display_filter_list, additional_display_filter_list, inventory_is_read_only, allow_multiple_selected_items);
+
+    // JCD FIXME remove later
+    if (!items.empty())
+    {
+      selected_item = items[0];
+    }
   }
   
   return selected_item;

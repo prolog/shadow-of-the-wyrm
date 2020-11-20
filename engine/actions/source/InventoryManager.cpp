@@ -21,9 +21,9 @@ InventoryManager::~InventoryManager()
 
 // If the inventory is read-only, the items can be viewed, but not selected.  This is for use in the "y" - View your inventory
 // mode.  If the inventory is not read-only, items can be selected.
-ItemPtr InventoryManager::manage_inventory(IInventoryPtr inv, const list<IItemFilterPtr>& base_display_filter_list, const list<IItemFilterPtr>& additional_display_filter_list, const bool inventory_is_read_only, const bool allow_multiple_selected_items)
+vector<ItemPtr> InventoryManager::manage_inventory(IInventoryPtr inv, const list<IItemFilterPtr>& base_display_filter_list, const list<IItemFilterPtr>& additional_display_filter_list, const bool inventory_is_read_only, const bool allow_multiple_selected_items)
 {
-  ItemPtr selected_item;
+  vector<ItemPtr> selected_items;
   bool manage_inv = true;
 
   try
@@ -64,15 +64,8 @@ ItemPtr InventoryManager::manage_inventory(IInventoryPtr inv, const list<IItemFi
 
           if (!inv_selection.empty())
           {
-            vector<ItemPtr> selected_items;
-
             CommandPtr inv_command = command_factory->create(inv_selection.at(0), kb_command_map->get_command_type(inv_selection));
             manage_inv = InventoryCommandProcessor::process(this, base_display_filter_list, display_inventory, external_ids, creature, inv, inv_command.get(), inventory_is_read_only, allow_multiple_selected_items, selected_items);
-
-            if (!selected_items.empty())
-            {
-              selected_item = selected_items[0];
-            }
           }
         }
       }
@@ -82,7 +75,7 @@ ItemPtr InventoryManager::manage_inventory(IInventoryPtr inv, const list<IItemFi
   {
   }
   
-  return selected_item;
+  return selected_items;
 }
 
 ActionCostValue InventoryManager::get_action_cost_value(CreaturePtr creature) const
