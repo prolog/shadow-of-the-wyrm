@@ -50,15 +50,18 @@ ActionCostValue DropAction::drop(CreaturePtr dropping_creature, ActionManager * 
     else
     {
       list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
-      ItemPtr item_to_drop = am->inventory(dropping_creature, dropping_creature->get_inventory(), no_filter, {}, false, true);
+      vector<ItemPtr> items_to_drop = am->inventory_multiple(dropping_creature, dropping_creature->get_inventory(), no_filter, {}, false, true);
       
-      if (!item_to_drop)
+      if (items_to_drop.empty())
       {
         handle_no_item_dropped(dropping_creature);
       }
       else // Item selected
       {
-        action_cost_value = do_drop(dropping_creature, game.get_current_map(), item_to_drop);
+        for (ItemPtr i : items_to_drop)
+        {
+          action_cost_value += do_drop(dropping_creature, game.get_current_map(), i);
+        }
       }      
     }
   }

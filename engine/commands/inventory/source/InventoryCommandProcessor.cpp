@@ -37,11 +37,11 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
     {
       list<IItemFilterPtr> empty_filter = {};
 
-      ItemPtr item = game.actions.inventory(creature, inv, base_item_filter_list, empty_filter, inventory_is_read_only, allow_multiple_item_selection);
+      vector<ItemPtr> items = game.actions.inventory_multiple(creature, inv, base_item_filter_list, empty_filter, inventory_is_read_only, allow_multiple_item_selection);
 
-      if (item != nullptr)
+      for (ItemPtr i : items)
       {
-        selected_items.push_back(item);
+        selected_items.push_back(i);
       }
 
       process_result = false;
@@ -60,11 +60,11 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
         display_filter = ItemFilterFactory::create_item_type_filter(command->get_key());
       }
 
-      ItemPtr item = game.actions.inventory(creature, inv, base_item_filter_list, display_filter, inventory_is_read_only, allow_multiple_item_selection);
+      vector<ItemPtr> items = game.actions.inventory_multiple(creature, inv, base_item_filter_list, display_filter, inventory_is_read_only, allow_multiple_item_selection);
 
-      if (item != nullptr)
+      for (ItemPtr i : items)
       {
-        selected_items.push_back(item);
+        selected_items.push_back(i);
       }
 
       process_result = false;

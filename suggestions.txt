@@ -1,4 +1,6 @@
 Me:
+- Drop: * should drop all by default
+- Drop: messages clearing each time
 - Remove cap, *, crash
 - Use Magic to destroy spellbooks and get a bit of AP?
 - pick up/drop all that work with filters

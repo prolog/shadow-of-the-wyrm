@@ -53,11 +53,20 @@ vector<ItemPtr> InventoryManager::manage_inventory(IInventoryPtr inv, const list
           OptionPtr op = is.get_option(option_id);
           vector<string> external_ids;
 
-          // JCD FIXME:
-          // vector<OptionPtr> options = is.get_options();
-          // iterate, put external IDs into vector, etc
-          
-          if (op != nullptr)
+          if (op == nullptr && inv_selection == InventoryKeyboardCommandMap::SELECT_ALL)
+          {
+            vector<OptionPtr> options = is.get_options();
+
+            for (OptionPtr op : options)
+            {
+              if (op != nullptr)
+              {
+                external_ids.push_back(op->get_external_id());
+              }
+            }
+          }
+
+          else if (op != nullptr)
           {
             external_ids.push_back(op->get_external_id());
           }
