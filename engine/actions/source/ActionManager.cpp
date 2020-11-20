@@ -605,7 +605,20 @@ ActionCost ActionManager::drop(CreaturePtr creature, const string& drop_item_id)
 ItemPtr ActionManager::inventory(CreaturePtr creature, IInventoryPtr inv, const list<IItemFilterPtr>& base_display_filter_list, const list<IItemFilterPtr>& additional_display_filter_list, const bool inventory_is_read_only, const bool allow_multiple_selected_items)
 {
   ItemPtr selected_item;
-  
+  vector<ItemPtr> items = inventory_multiple(creature, inv, base_display_filter_list, additional_display_filter_list, inventory_is_read_only, allow_multiple_selected_items);
+
+  if (!items.empty())
+  {
+    selected_item = items[0];
+  }
+
+  return selected_item;
+}
+
+// Select (potentially) multiple items from the inventory.
+vector<ItemPtr> ActionManager::inventory_multiple(CreaturePtr creature, IInventoryPtr inv, const list<IItemFilterPtr>& base_display_filter_list, const list<IItemFilterPtr>& additional_display_filter_list, const bool inventory_is_read_only, const bool allow_multiple_selected_items)
+{
+  vector<ItemPtr> items;  
   Game& game = Game::instance();
   
   if (creature)
@@ -613,16 +626,10 @@ ItemPtr ActionManager::inventory(CreaturePtr creature, IInventoryPtr inv, const 
     DisplayPtr game_display = game.get_display();
     InventoryManager inv_manager(game_display, creature);
 
-    vector<ItemPtr> items = inv_manager.manage_inventory(inv, base_display_filter_list, additional_display_filter_list, inventory_is_read_only, allow_multiple_selected_items);
-
-    // JCD FIXME remove later
-    if (!items.empty())
-    {
-      selected_item = items[0];
-    }
+    items = inv_manager.manage_inventory(inv, base_display_filter_list, additional_display_filter_list, inventory_is_read_only, allow_multiple_selected_items);
   }
   
-  return selected_item;
+  return items;
 }
 
 // Wear/unwear equipment
