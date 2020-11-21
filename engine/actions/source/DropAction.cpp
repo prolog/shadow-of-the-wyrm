@@ -103,8 +103,6 @@ void DropAction::handle_item_dropped_message(CreaturePtr creature, ItemPtr item)
     Game& game = Game::instance();
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(game, creature->get_id()));
 
-    manager.clear_if_necessary();
-    
     CurrentCreatureAbilities cca;
     string drop_message = TextMessages::get_item_drop_message(creature, !cca.can_see(creature), item);
     

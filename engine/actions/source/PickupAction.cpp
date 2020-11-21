@@ -162,6 +162,7 @@ ActionCostValue PickupAction::handle_pickup_single(CreaturePtr creature, MapPtr 
   if (creature != nullptr && map != nullptr && tile != nullptr)
   {
     IInventoryPtr inv = tile->get_items();
+    vector<tuple<ItemPtr, bool, std::string>> items_to_take;
 
     if (inv != nullptr)
     {
@@ -170,11 +171,9 @@ ActionCostValue PickupAction::handle_pickup_single(CreaturePtr creature, MapPtr 
       bool can_pick_up = true;
       string pickup_sid;
 
-      ItemPtr pick_up_item;
-
       if (num_items == 1)
       {
-        pick_up_item = inv->at(0);
+        ItemPtr pick_up_item = inv->at(0);
 
         pair<bool, string> pickup_details = CreatureUtils::can_pick_up(creature, pick_up_item);
 
@@ -187,27 +186,40 @@ ActionCostValue PickupAction::handle_pickup_single(CreaturePtr creature, MapPtr 
           can_pick_up = false;
           pickup_sid = pickup_details.second;
         }
-      }
 
+        items_to_take.push_back({pick_up_item, can_pick_up, pickup_sid});
+      }
       // If there are many items, get one of them.
       else
       {
         list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
-        pick_up_item = am->inventory(creature, inv, no_filter, {}, false, true);
+        vector<ItemPtr> items = am->inventory_multiple(creature, inv, no_filter, {}, false, true);
 
-        pair<bool, string> pickup_details = CreatureUtils::can_pick_up(creature, pick_up_item);
-        can_pick_up = pickup_details.first;
-        pickup_sid = pickup_details.second;
+        for (ItemPtr i : items)
+        {
+          pair<bool, string> pickup_details = CreatureUtils::can_pick_up(creature, i);
+          can_pick_up = pickup_details.first;
+          pickup_sid = pickup_details.second;
+
+          items_to_take.push_back({i, can_pick_up, pickup_sid});
+        }
       }
 
-      if (pick_up_item != nullptr && !can_pick_up)
+      for (const auto& item_context : items_to_take)
       {
-        handle_cannot_pickup(creature, pickup_sid);
-      }
-      else
-      {
-        bool prompt_for_stacks = Game::instance().get_settings_ref().get_setting_as_bool(Setting::PROMPT_ON_STACK_PICKUP);
-        action_cost_value = take_item_and_give_to_creature(pick_up_item, inv, creature, prompt_for_stacks);
+        ItemPtr ic_item = std::get<0>(item_context);
+        bool ic_can_take = std::get<1>(item_context);
+        string ic_pickup_sid = std::get<2>(item_context);
+
+        if (ic_item != nullptr && !ic_can_take)
+        {
+          handle_cannot_pickup(creature, ic_pickup_sid);
+        }
+        else
+        {
+          bool prompt_for_stacks = (items_to_take.size() == 1) && Game::instance().get_settings_ref().get_setting_as_bool(Setting::PROMPT_ON_STACK_PICKUP);
+          action_cost_value = take_item_and_give_to_creature(ic_item, inv, creature, prompt_for_stacks);
+        }
       }
     }
   }
