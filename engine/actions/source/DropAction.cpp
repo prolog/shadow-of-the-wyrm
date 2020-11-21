@@ -28,7 +28,7 @@ ActionCostValue DropAction::drop(CreaturePtr creature, const string& drop_item_i
   if (creature != nullptr)
   {
     ItemPtr item_to_drop = creature->get_inventory()->get_from_id(drop_item_id);
-    acv = do_drop(creature, game.get_current_map(), item_to_drop);
+    acv = do_drop(creature, game.get_current_map(), item_to_drop, false);
   }
 
   return acv;
@@ -60,7 +60,7 @@ ActionCostValue DropAction::drop(CreaturePtr dropping_creature, ActionManager * 
       {
         for (ItemPtr i : items_to_drop)
         {
-          action_cost_value += do_drop(dropping_creature, game.get_current_map(), i);
+          action_cost_value += do_drop(dropping_creature, game.get_current_map(), i, items_to_drop.size() > 1);
         }
       }      
     }
@@ -148,7 +148,7 @@ void DropAction::handle_seed_planted_message(CreaturePtr creature, ItemPtr seed)
 }
 
 // Do the actual dropping of items.
-ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, ItemPtr item_to_drop)
+ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, ItemPtr item_to_drop, const bool multi_item)
 {
   ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   TilePtr creatures_tile = MapUtils::get_tile_for_creature(current_map, creature);
@@ -165,7 +165,10 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
 
     if (quantity > 1)
     {
-      selected_quantity = get_drop_quantity(creature, quantity);
+      if (!multi_item)
+      {
+        selected_quantity = get_drop_quantity(creature, quantity);
+      }
     }
 
     // Drop quantity
