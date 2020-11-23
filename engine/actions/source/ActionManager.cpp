@@ -105,9 +105,9 @@ ActionCost ActionManager::search(CreaturePtr creature)
   return get_action_cost(creature, sa.search(creature, true));
 }
 
-ActionCost ActionManager::move(CreaturePtr creature, const Direction direction)
+ActionCost ActionManager::move(CreaturePtr creature, const Direction direction, const bool confirm_if_dangerous)
 {
-  return get_action_cost(creature, movement_action.move(creature, direction));
+  return get_action_cost(creature, movement_action.move(creature, direction, confirm_if_dangerous));
 }
 
 ActionCost ActionManager::automatic_movement(CreaturePtr creature)

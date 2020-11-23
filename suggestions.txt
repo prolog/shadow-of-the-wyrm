@@ -1,7 +1,6 @@
 Me:
-- Drop: * should drop all by default
-- Drop: messages clearing each time
-- Remove cap, *, crash
+- You can't kick a creature to a tile with an already-triggered trap because
+  they'll decline movement confirmation.
 - Use Magic to destroy spellbooks and get a bit of AP?
 - pick up/drop all that work with filters
 - Generate tombs with keys outside door/doors locked
@@ -13,7 +12,6 @@ Me:
 - Feature: fence, east_west_fence. Add some fenced areas to set locations.
 - Fenced areas (veg gardens?) in villages
 - Wyrm level stupid slow?
-- Fleeing behaviour for humanoids (Josh Engdahl)
 - Need to get hirelings text-searchable in bestiary
 - Creatures try to cast utility spells when they don't make sense (uncursing,
   etc). Should be checks to see if effect makes sense.
@@ -266,6 +264,7 @@ Paul Blay:
 
 Josh Engdahl
 - Rebindable paging keys
+- Fleeing behaviour for humanoids
 - User macros
 - Add info on the weapon synopsis to the manual
 - max fire res on fire spirits, etc
@@ -292,7 +291,5 @@ Josh Engdahl
 
 - can lure ancient monsters into trap room and kill them via an unwillingness
   to move on to trapped tiles.
-- You can't kick a creature to a tile with an already-triggered trap because
-  they'll decline movement confirmation.
 - Is the area fleeing message broadcasting?
 - Entering church, player is placed on stairs instead of outside church.
