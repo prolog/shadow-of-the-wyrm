@@ -27,6 +27,7 @@ enum struct CreatureSize
 
 enum struct CreatureSex
 {
+  CREATURE_SEX_NA = -1,
   CREATURE_SEX_MALE = 0,
   CREATURE_SEX_FEMALE = 1,
   CREATURE_SEX_NOT_SPECIFIED = 2,

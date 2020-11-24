@@ -287,7 +287,13 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
     ModifyStatisticsEffect mse;
 
-    // Various race-based flags (boolean statistics)
+    // Various race-based flags (sex, boolean statistics, etc)
+    CreatureSex rsex = race->get_sex();
+    if (rsex != CreatureSex::CREATURE_SEX_NA)
+    {
+      creaturep->set_sex(rsex);
+    }
+
     if (race->get_corporeal().get_base() == false)
     {
       Modifier m;

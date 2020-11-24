@@ -18,6 +18,11 @@ Shadow of the Wyrm v1.2.5 "Arnold"
 - Whiteflower is a little more common, and there is some guaranteed in Isen
   Dun.
 
+- An individual jelly is now properly referred to as "itself" rather than
+  "himself", as they are sexless (Josh Engdahl). Race-based flags have also
+  been set for insects, constructs, and plants, not all of which are actually
+  asexual, but for which "himself"/"herself" feels awkward.
+
 - Woven items will now start off a little more powerful (2-4 EV, 1-2 SK) even
   before the free enchantments are applied.
 

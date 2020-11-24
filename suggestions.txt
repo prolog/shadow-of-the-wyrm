@@ -1,10 +1,6 @@
 Me:
-- You can't kick a creature to a tile with an already-triggered trap because
-  they'll decline movement confirmation.
 - Use Magic to destroy spellbooks and get a bit of AP?
-- pick up/drop all that work with filters
 - Generate tombs with keys outside door/doors locked
-- sword-eater/hits himself (Josh Engdahl)
 - Corpse weights
 - Long term, give a chance for coastal generators to produce coastline, maybe
   with little islands, etc
@@ -291,5 +287,4 @@ Josh Engdahl
 
 - can lure ancient monsters into trap room and kill them via an unwillingness
   to move on to trapped tiles.
-- Is the area fleeing message broadcasting?
 - Entering church, player is placed on stairs instead of outside church.
