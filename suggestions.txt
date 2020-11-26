@@ -1,4 +1,5 @@
 Me:
+- All races are defined as size 2
 - Use Magic to destroy spellbooks and get a bit of AP?
 - Generate tombs with keys outside door/doors locked
 - Corpse weights

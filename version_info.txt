@@ -47,6 +47,9 @@ Shadow of the Wyrm v1.2.5 "Arnold"
   to select all the items in the current view and pick them up or drop them
   all at once.
 
+- Created a new colourblind-friendly SDL palette (CB Reader) based on Paul
+  Tol's work at https://personal.sron.nl/~pault/
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
