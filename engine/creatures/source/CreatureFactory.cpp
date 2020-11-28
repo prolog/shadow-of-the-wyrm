@@ -121,6 +121,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
                                         creature->get_class_id(),
                                         creature->get_name(),
                                         creature->get_sex(),
+                                        creature->get_size(),
                                         creature->get_religion().get_active_deity_id());
 
     // Set the template values that would be overridden by creating by race/class.
@@ -241,6 +242,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 , const string& class_id
 , const string& creature_name
 , const CreatureSex creature_sex
+, const CreatureSize creature_size
 , const string& deity_id
 , const bool is_player
 )
@@ -258,6 +260,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   creaturep->set_class_id(class_id);
   creaturep->set_level(1);
   creaturep->set_sex(creature_sex);
+  creaturep->set_size(creature_size);
 
   Game& game = Game::instance();
 
@@ -463,7 +466,15 @@ void CreatureFactory::set_initial_statistics(CreaturePtr creature, Race* race, C
   creature->set_charisma(charisma);
 
   creature->set_speed(speed);
-  creature->set_size(race->get_size());
+
+  // Use the creature's size if overridden; otherwise use the race's value.
+  CreatureSize c_size = creature->get_size();
+
+  if (c_size == CreatureSize::CREATURE_SIZE_NA)
+  {
+    creature->set_size(race->get_size());
+  }
+
   creature->get_hunger_clock_ref().set_requires_food(race->get_hungerless() == false);
   
   HairColour hair_colour = HairColour::HAIR_NA;

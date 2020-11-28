@@ -41,6 +41,7 @@
 			<DescriptionSID>RAT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>RAT_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>RAT_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>0</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -87,6 +88,7 @@
 			<DescriptionSID>MOLE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MOLE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MOLE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>0</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -186,6 +188,7 @@
 			<DescriptionSID>FOX_MAGE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FOX_MAGE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>FOX_MAGE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>1</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -641,6 +644,7 @@
 			<DescriptionSID>HELLBORE_BEETLE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>HELLBORE_BEETLE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>HELLBORE_BEETLE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -693,6 +697,7 @@
 			<DescriptionSID>CORPSE_RAT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CORPSE_RAT_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CORPSE_RAT_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>0</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -1524,6 +1529,7 @@
 			<DescriptionSID>BOAR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BOAR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>BOAR_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -2637,6 +2643,7 @@
 			<DescriptionSID>GIANT_TOAD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GIANT_TOAD_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GIANT_TOAD_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -2689,6 +2696,7 @@
 			<DescriptionSID>GIANT_FROG_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GIANT_FROG_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GIANT_FROG_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -3122,6 +3130,7 @@
 			<DescriptionSID>CAVE_BEAR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CAVE_BEAR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CAVE_BEAR_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -3271,6 +3280,7 @@
 			<ShortDescriptionSID>ROCK_CRAWLER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ROCK_CRAWLER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ROCK_CRAWLER_TEXT_DETAILS_SID</TextDetailsSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -4978,6 +4988,7 @@
 			<DescriptionSID>DIRE_WOLF_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DIRE_WOLF_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>DIRE_WOLF_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -5026,6 +5037,7 @@
 			<DescriptionSID>LYCAON_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>LYCAON_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>LYCAON_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -5593,6 +5605,7 @@
 			<DescriptionSID>GOLDEN_EAGLE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GOLDEN_EAGLE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GOLDEN_EAGLE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -5696,6 +5709,7 @@
 			<DescriptionSID>STAR_BEAST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>STAR_BEAST_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>STAR_BEAST_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -5801,6 +5815,7 @@
 			<DescriptionSID>WAR_MAMMOTH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>WAR_MAMMOTH_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>WAR_MAMMOTH_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -6427,6 +6442,7 @@
 			<DescriptionSID>SKYBORN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SKYBORN_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SKYBORN_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -6662,6 +6678,7 @@
 			<DescriptionSID>AVERNAL_BAT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>AVERNAL_BAT_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>AVERNAL_BAT_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
@@ -6892,6 +6909,7 @@
 			<DescriptionSID>ANCIENT_WORM_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ANCIENT_WORM_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>ANCIENT_WORM_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -9041,6 +9059,7 @@
 			<DescriptionSID>MAMMOTH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MAMMOTH_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MAMMOTH_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -9192,6 +9211,7 @@
 			<DescriptionSID>ARCHANGEL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ARCHANGEL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>ARCHANGEL_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -9255,6 +9275,7 @@
 			<DescriptionSID>COSMIC_INFERNO_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>COSMIC_INFERNO_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>COSMIC_INFERNO_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -9266,7 +9287,7 @@
 					<Row>0</Row>
 					<Col>1</Col>
 				</Sprite>
-		</Symbol>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>0</TileType>
@@ -9445,6 +9466,7 @@
 			<DescriptionSID>DYING_STAR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DYING_STAR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>DYING_STAR_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -9502,6 +9524,7 @@
 			<DescriptionSID>FIRE_ELEMENTAL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FIRE_ELEMENTAL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>FIRE_ELEMENTAL_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -9550,6 +9573,7 @@
 			<ShortDescriptionSID>TENTACLED_HORROR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TENTACLED_HORROR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TENTACLED_HORROR_TEXT_DETAILS_SID</TextDetailsSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -10252,6 +10276,7 @@
 			<DescriptionSID>TITAN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TITAN_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>TITAN_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>5</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -10302,6 +10327,7 @@
 			<DescriptionSID>AIR_ELEMENTAL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>AIR_ELEMENTAL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>AIR_ELEMENTAL_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -10516,6 +10542,7 @@
 			<DescriptionSID>GREAT_SERPENT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GREAT_SERPENT_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GREAT_SERPENT_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -10729,6 +10756,7 @@
 			<DescriptionSID>ASTRAL_HORROR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ASTRAL_HORROR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>ASTRAL_HORROR_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -10782,6 +10810,7 @@
 			<DescriptionSID>SHADOW_WOLF_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHADOW_WOLF_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SHADOW_WOLF_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -10899,6 +10928,7 @@
 			<DescriptionSID>SHADOW_SNAKE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHADOW_SNAKE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SHADOW_SNAKE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -11007,6 +11037,7 @@
 			<DescriptionSID>SHADOW_BEAST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHADOW_BEAST_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SHADOW_BEAST_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -12032,6 +12063,7 @@
 			<DescriptionSID>STONE_WORM_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>STONE_WORM_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>STONE_WORM_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -12233,6 +12265,7 @@
 			<DescriptionSID>EARTH_ELEMENTAL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>EARTH_ELEMENTAL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>EARTH_ELEMENTAL_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -13100,6 +13133,7 @@
 			<DescriptionSID>ASTER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ASTER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>ASTER_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -13558,6 +13592,7 @@
 			<DescriptionSID>SEAL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SEAL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SEAL_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -13887,6 +13922,7 @@
 			<DescriptionSID>BLACKFIN_SHARK_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACKFIN_SHARK_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>BLACKFIN_SHARK_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -14088,6 +14124,7 @@
 			<DescriptionSID>STONE_WHALE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>STONE_WHALE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>STONE_WHALE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -14127,6 +14164,7 @@
 			<DescriptionSID>SEADRAGON_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SEADRAGON_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SEADRAGON_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -14166,6 +14204,7 @@
 			<DescriptionSID>MAMMOTH_TURTLE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MAMMOTH_TURTLE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MAMMOTH_TURTLE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -14205,6 +14244,7 @@
 			<DescriptionSID>GREAT_EEL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GREAT_EEL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GREAT_EEL_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -14283,6 +14323,7 @@
 			<DescriptionSID>LION_SHARK_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>LION_SHARK_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>LION_SHARK_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -14322,6 +14363,7 @@
 			<DescriptionSID>WATER_ELEMENTAL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>WATER_ELEMENTAL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>WATER_ELEMENTAL_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -16124,6 +16166,7 @@
 			<DescriptionSID>COUGAR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>COUGAR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>COUGAR_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -16269,6 +16312,7 @@
 			<DescriptionSID>LION_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>LION_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>LION_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -16320,6 +16364,7 @@
 			<DescriptionSID>CAVE_TIGER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CAVE_TIGER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CAVE_TIGER_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -16369,6 +16414,7 @@
 			<DescriptionSID>LIGER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>LIGER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>LIGER_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -16509,6 +16555,7 @@
 			<DescriptionSID>WHITE_WHALE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>WHITE_WHALE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>WHITE_WHALE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -16756,6 +16803,7 @@
 			<DescriptionSID>SOLARIAN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SOLARIAN_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SOLARIAN_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -17001,6 +17049,7 @@
 			<DescriptionSID>MESOSAUR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MESOSAUR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MESOSAUR_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -17039,6 +17088,7 @@
 			<DescriptionSID>GHOST_RAY_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GHOST_RAY_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GHOST_RAY_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -17077,6 +17127,7 @@
 			<DescriptionSID>MEGALODON_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MEGALODON_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MEGALODON_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -17502,6 +17553,7 @@
 			<DescriptionSID>CELESTE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CELESTE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CELESTE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>5</Size>
 			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
@@ -17544,6 +17596,7 @@
 			<DescriptionSID>AURELION_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>AURELION_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>AURELION_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>5</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -17585,6 +17638,7 @@
 			<DescriptionSID>THE_LADY_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>THE_LADY_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>THE_LADY_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>5</Size>
 			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
@@ -17627,6 +17681,7 @@
 			<DescriptionSID>VEDERE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>VEDERE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>VEDERE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>5</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -17668,6 +17723,7 @@
 			<DescriptionSID>VOROS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>VOROS_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>VOROS_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>5</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -17709,6 +17765,7 @@
 			<DescriptionSID>THE_TRICKSTER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>THE_TRICKSTER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>THE_TRICKSTER_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>5</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -17750,6 +17807,7 @@
 			<DescriptionSID>SHIVER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHIVER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SHIVER_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>5</Size>
 			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
@@ -17792,6 +17850,7 @@
 			<DescriptionSID>URGOTH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>URGOTH_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>URGOTH_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>5</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -17833,6 +17892,7 @@
 			<DescriptionSID>SCEADUGENGA_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SCEADUGENGA_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SCEADUGENGA_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>5</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -17873,6 +17933,7 @@
 			<ShortDescriptionSID>CRYSTALLINE_BEING_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CRYSTALLINE_BEING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CRYSTALLINE_BEING_TEXT_DETAILS_SID</TextDetailsSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -17911,6 +17972,7 @@
 			<DescriptionSID>SERAPH_HIGHEST_HEAVENLY_ORDER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SERAPH_HIGHEST_HEAVENLY_ORDER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SERAPH_HIGHEST_HEAVENLY_ORDER_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -17949,6 +18011,7 @@
 			<DescriptionSID>GABAR_CLUTCHING_FIRST_HOLY_BOOK_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GABAR_CLUTCHING_FIRST_HOLY_BOOK_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GABAR_CLUTCHING_FIRST_HOLY_BOOK_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -18003,6 +18066,7 @@
 			<DescriptionSID>KNIGHT_EXEMPLAR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>KNIGHT_EXEMPLAR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>KNIGHT_EXEMPLAR_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -18048,6 +18112,7 @@
 			<DescriptionSID>PARAGON_TWENTY_VIRTUES_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>PARAGON_TWENTY_VIRTUES_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>PARAGON_TWENTY_VIRTUES_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -18128,6 +18193,7 @@
 			<DescriptionSID>HOWLING_FURY_FIRST_LOVE_LOST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>HOWLING_FURY_FIRST_LOVE_LOST_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>HOWLING_FURY_FIRST_LOVE_LOST_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
@@ -18170,6 +18236,7 @@
 			<DescriptionSID>LUMINOUS_ANGEL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>LUMINOUS_ANGEL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>LUMINOUS_ANGEL_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -18211,6 +18278,7 @@
 			<DescriptionSID>SAINT_WHO_MOVES_IN_PERFECT_GRACE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SAINT_WHO_MOVES_IN_PERFECT_GRACE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SAINT_WHO_MOVES_IN_PERFECT_GRACE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -18327,6 +18395,7 @@
 			<DescriptionSID>THUNDERBIRD_LOW_STEPPES_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>THUNDERBIRD_LOW_STEPPES_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>THUNDERBIRD_LOW_STEPPES_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -18402,6 +18471,7 @@
 			<DescriptionSID>DRAKKHAR_CARRYING_MASSIVE_FLAMING_SWORD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DRAKKHAR_CARRYING_MASSIVE_FLAMING_SWORD_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>DRAKKHAR_CARRYING_MASSIVE_FLAMING_SWORD_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -18603,6 +18673,7 @@
 			<DescriptionSID>BLOOD_ANGEL_WHITE_QUEEN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLOOD_ANGEL_WHITE_QUEEN_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>BLOOD_ANGEL_WHITE_QUEEN_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
@@ -18641,6 +18712,7 @@
 			<DescriptionSID>NETHER_HOUND_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>NETHER_HOUND_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>NETHER_HOUND_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -18799,6 +18871,7 @@
 			<DescriptionSID>DARK_RIDER_COMING_HORDE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DARK_RIDER_COMING_HORDE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>DARK_RIDER_COMING_HORDE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -18838,6 +18911,7 @@
 			<DescriptionSID>TEEMING_MASS_WRITHING_TENTACLES_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TEEMING_MASS_WRITHING_TENTACLES_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>TEEMING_MASS_WRITHING_TENTACLES_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -18877,6 +18951,7 @@
 			<DescriptionSID>BEAST_BEYOND_FURTHEST_STAR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BEAST_BEYOND_FURTHEST_STAR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>BEAST_BEYOND_FURTHEST_STAR_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -18915,6 +18990,7 @@
 			<DescriptionSID>APOCALYPTIC_HELL_BEARS_NO_NAME_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>APOCALYPTIC_HELL_BEARS_NO_NAME_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>APOCALYPTIC_HELL_BEARS_NO_NAME_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -20220,6 +20296,7 @@
 			<DescriptionSID>EAKAURI_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>EAKAURI_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>EAKAURI_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Pickup>0</Pickup>
@@ -22225,6 +22302,7 @@
 			<DescriptionSID>WHITE_WOLF_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>WHITE_WOLF_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>WHITE_WOLF_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -23074,6 +23152,7 @@
 			<DescriptionSID>ROCK_GRINDER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ROCK_GRINDER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>ROCK_GRINDER_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -24004,6 +24083,7 @@
 			<DescriptionSID>DEEP_CRAWLER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DEEP_CRAWLER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>DEEP_CRAWLER_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -24156,6 +24236,7 @@
 			<DescriptionSID>IRON_HORROR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>IRON_HORROR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>IRON_HORROR_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -24319,6 +24400,7 @@
 			<DescriptionSID>TEMPLE_GUARDIAN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TEMPLE_GUARDIAN_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>TEMPLE_GUARDIAN_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>5</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>

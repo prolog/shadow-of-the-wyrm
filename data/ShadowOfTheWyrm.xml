@@ -465,7 +465,7 @@
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
 			<NameSID>ANIMAL_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>1</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>20</Min>
@@ -541,7 +541,7 @@
 				</Drop>
 			</Drops>
 			<NameSID>BIRD_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>1</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>20</Min>
@@ -617,7 +617,7 @@
 				</Drop>
 			</Drops>
 			<NameSID>CONSTRUCT_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>3</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>20</Min>
@@ -686,7 +686,7 @@
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<NameSID>DEMON_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>3</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>20</Min>
@@ -974,7 +974,7 @@
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
 			<NameSID>INSECT_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>1</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>20</Min>
@@ -1045,7 +1045,7 @@
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
 			<NameSID>JELLY_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>1</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>20</Min>
@@ -1114,7 +1114,7 @@
 			<HasVoice>1</HasVoice>
 			<HasHair>0</HasHair>
 			<NameSID>MONSTER_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>3</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>20</Min>
@@ -1185,7 +1185,7 @@
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
 			<NameSID>PLANT_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>3</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>20</Min>
@@ -1458,7 +1458,7 @@
 				</Drop>
 			</Drops>
 			<NameSID>DRAGON_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>4</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>100</Min>
@@ -2331,7 +2331,7 @@
 			<DescriptionSID>RACE_10_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_10_ABRV</DisplayAbbreviationSID>
 			<SettlementDescriptionSID>RACE_10_SETTLEMENT</SettlementDescriptionSID>
-			<Size>2</Size>
+			<Size>1</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>17</Min>

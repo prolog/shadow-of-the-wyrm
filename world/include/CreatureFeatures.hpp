@@ -16,6 +16,7 @@ constexpr auto CCREATURE_WIN_GODSLAYER = 3;
 
 enum struct CreatureSize
 {
+  CREATURE_SIZE_NA = -1,
   CREATURE_SIZE_TINY = 0,
   CREATURE_SIZE_SMALL = 1,
   CREATURE_SIZE_MEDIUM = 2,
