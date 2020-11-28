@@ -977,6 +977,29 @@ string CreatureUtils::get_description_for_fov_message(CreaturePtr player, Creatu
   return desc;
 }
 
+CreatureSize CreatureUtils::get_size(CreaturePtr creature)
+{
+  CreatureSize size = CreatureSize::CREATURE_SIZE_NA;
+
+  if (creature != nullptr)
+  {
+    size = creature->get_size();
+
+    if (size == CreatureSize::CREATURE_SIZE_NA)
+    {
+      RaceManager rm;
+      Race* creature_race = rm.get_race(creature->get_race_id());
+
+      if (creature_race != nullptr)
+      {
+        size = creature_race->get_size();
+      }
+    }
+  }
+
+  return size;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/CreatureUtils_test.cpp"
 #endif

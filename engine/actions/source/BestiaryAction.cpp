@@ -4,10 +4,12 @@
 #include "ClassManager.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
+#include "CreatureUtils.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ScreenTitleTextKeys.hpp"
 #include "RaceManager.hpp"
+#include "SizeTextKeys.hpp"
 #include "StringTable.hpp"
 #include "TextFormatSpecifiers.hpp"
 #include "TextKeys.hpp"
@@ -158,6 +160,8 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
         bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, class_details));
       }
     }
+
+    bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(SizeTextKeys::SIZE) + ": " + StringTable::get(SizeTextKeys::get_size_sid_from_creature_size(CreatureUtils::get_size(creature)))));
 
     // Display the creature's details.
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));

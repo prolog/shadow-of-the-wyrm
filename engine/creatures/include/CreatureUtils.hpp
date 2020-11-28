@@ -80,6 +80,8 @@ class CreatureUtils
 
     static std::string get_description_for_fov_message(CreaturePtr player, CreaturePtr creature_to_describe);
 
+    static CreatureSize get_size(CreaturePtr creature);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();
