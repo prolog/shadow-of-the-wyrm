@@ -1477,6 +1477,7 @@
 			<DescriptionSID>CHANGELING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CHANGELING_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CHANGELING_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>1</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -2591,6 +2592,7 @@
 			<DescriptionSID>QUIVERING_BLOB_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>QUIVERING_BLOB_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>QUIVERING_BLOB_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -3228,6 +3230,7 @@
 			<ShortDescriptionSID>SWORD_EATER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SWORD_EATER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SWORD_EATER_TEXT_DETAILS_SID</TextDetailsSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -4737,6 +4740,7 @@
 			<DescriptionSID>CAVE_TROLL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CAVE_TROLL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CAVE_TROLL_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -4836,6 +4840,7 @@
 			<ShortDescriptionSID>STONE_OOZE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>STONE_OOZE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>STONE_OOZE_TEXT_DETAILS_SID</TextDetailsSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -5556,6 +5561,7 @@
 			<DescriptionSID>VIREQUUS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>VIREQUUS_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>VIREQUUS_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -5763,6 +5769,7 @@
 			<DescriptionSID>KING_SLIME_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>KING_SLIME_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>KING_SLIME_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -7453,6 +7460,7 @@
 			<DescriptionSID>STEEL_SLIME_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>STEEL_SLIME_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>STEEL_SLIME_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -7987,6 +7995,7 @@
 			<DescriptionSID>IMP_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>IMP_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>IMP_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>1</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -8419,6 +8428,7 @@
 			<DescriptionSID>MINOTAUR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MINOTAUR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MINOTAUR_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -8648,6 +8658,7 @@
 			<DescriptionSID>MUCK_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MUCK_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MUCK_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -9367,6 +9378,7 @@
 			<DescriptionSID>TROLL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TROLL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>TROLL_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -9683,6 +9695,7 @@
 			<DescriptionSID>SYLPH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SYLPH_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SYLPH_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>0</Size>
 			<Sex>1</Sex>
 			<Flying>1</Flying>
 			<DecisionStrategy>
@@ -12115,6 +12128,7 @@
 			<DescriptionSID>REDCAP_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>REDCAP_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>REDCAP_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>1</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -16466,6 +16480,7 @@
 			<DescriptionSID>GOLIATH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GOLIATH_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GOLIATH_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>5</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -17325,6 +17340,7 @@
 			<ShortDescriptionSID>TITANIC_SLIME_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TITANIC_SLIME_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TITANIC_SLIME_TEXT_DETAILS_SID</TextDetailsSID>
+			<Size>5</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -18797,6 +18813,7 @@
 			<DescriptionSID>BLACK_OGRE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_OGRE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>BLACK_OGRE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -22353,6 +22370,7 @@
 			<DescriptionSID>CYCLOPS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CYCLOPS_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CYCLOPS_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
