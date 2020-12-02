@@ -54,6 +54,8 @@ Shadow of the Wyrm v1.2.5 "Arnold"
   definitions to override this.  Previously most corpses were 100 lbs. (the
   default for size medium) and there should be more variety now (Josh Engdahl).
 
+- Level has been added to the bestiary.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
@@ -66,6 +68,8 @@ Shadow of the Wyrm v1.2.5 "Arnold"
 
   - NPC spellcasting for attack spells could cause a crash when the caster
     was blinded (Josh Engdahl).
+
+  - Quislings' chat text was written, but not set in the game configuration.
 
   - An invalid action selection in the Order screen was advancing the turn
     (Josh Engdahl).

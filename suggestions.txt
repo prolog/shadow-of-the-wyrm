@@ -1,6 +1,6 @@
 Me:
-- Still need to go through: monster, demon
-- Add size to bestiary
+- Creature name to bestiary in parentheses when defined?
+- Still need to go through: monster
 - Use Magic to destroy spellbooks and get a bit of AP?
 - Generate tombs with keys outside door/doors locked
 - Corpse weights

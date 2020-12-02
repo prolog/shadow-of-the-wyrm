@@ -1424,6 +1424,7 @@
 			<DescriptionSID>GARGOYLE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GARGOYLE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GARGOYLE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -2818,6 +2819,7 @@
 			<DescriptionSID>SHAPESHIFTER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHAPESHIFTER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SHAPESHIFTER_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -3475,6 +3477,7 @@
 			<DescriptionSID>PRESENCE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>PRESENCE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>PRESENCE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -4616,6 +4619,7 @@
 			<DescriptionSID>BLACK_PRIEST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_PRIEST_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>BLACK_PRIEST_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -8162,6 +8166,7 @@
 			<DescriptionSID>CHAOSLING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CHAOSLING_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CHAOSLING_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>1</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -10190,6 +10195,7 @@
 			<DescriptionSID>QUADARI_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>QUADARI_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>QUADARI_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -11924,6 +11930,7 @@
 			<DescriptionSID>ABOMINATION_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ABOMINATION_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>ABOMINATION_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>4</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -15670,6 +15677,8 @@
 			<ShortDescriptionSID>QUISLING_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>QUISLING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>QUISLING_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>QUISLING_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>2</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -17292,6 +17301,7 @@
 			<ShortDescriptionSID>MOLOCH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>MOLOCH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MOLOCH_TEXT_DETAILS_SID</TextDetailsSID>
+			<Size>5</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -20175,6 +20185,7 @@
 			<DescriptionSID>FROST_DEVIL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FROST_DEVIL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>FROST_DEVIL_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>0</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -20218,6 +20229,7 @@
 			<DescriptionSID>FIRE_DEVIL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FIRE_DEVIL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>FIRE_DEVIL_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>1</Size>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>

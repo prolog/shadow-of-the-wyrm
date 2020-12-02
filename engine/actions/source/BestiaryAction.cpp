@@ -161,7 +161,9 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
       }
     }
 
+    // Display size and level
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(SizeTextKeys::SIZE) + ": " + StringTable::get(SizeTextKeys::get_size_sid_from_creature_size(CreatureUtils::get_size(creature)))));
+    bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(TextKeys::LEVEL) + ": " + to_string(creature->get_level().get_current())));
 
     // Display the creature's details.
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
