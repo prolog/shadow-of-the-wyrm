@@ -54,7 +54,8 @@ Shadow of the Wyrm v1.2.5 "Arnold"
   definitions to override this.  Previously most corpses were 100 lbs. (the
   default for size medium) and there should be more variety now (Josh Engdahl).
 
-- Level has been added to the bestiary.
+- Level has been added to the bestiary, as well as the creature's name, when
+  that's been defined (shopkeepers, hirelings, etc).
 
 - Stanzas for "Tel and Floridel".
 
