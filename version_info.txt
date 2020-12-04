@@ -57,6 +57,8 @@ Shadow of the Wyrm v1.2.5 "Arnold"
 - Level has been added to the bestiary, as well as the creature's name, when
   that's been defined (shopkeepers, hirelings, etc).
 
+- Signposts no longer block.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

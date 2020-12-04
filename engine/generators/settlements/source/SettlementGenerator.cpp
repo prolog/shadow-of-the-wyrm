@@ -119,8 +119,3 @@ MapPtr SettlementGenerator::generate_settlement_with_square_and_cardinal_roads(M
   return result_map;
 }
 
-MapPtr SettlementGenerator::generate_settlement_with_winding_road(MapPtr map)
-{
-  // JCD FIXME: Implement this.
-  return map;
-}

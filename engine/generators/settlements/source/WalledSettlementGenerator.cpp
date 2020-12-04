@@ -4,6 +4,7 @@
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "TileGenerator.hpp"
+#include "FruitVegetableGardenGenerator.hpp"
 #include "GraveyardSectorFeature.hpp"
 #include "ParkSectorFeature.hpp"
 #include "PlazaSectorFeature.hpp"
@@ -199,6 +200,12 @@ vector<shared_ptr<SectorFeature>> WalledSettlementGenerator::get_sector_features
   vector<shared_ptr<SectorFeature>> sfs;
 
   shared_ptr<SectorFeature> sf = std::make_shared<GraveyardSectorFeature>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<OrchardGenerator>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<FruitVegetableGardenGenerator>();
   sfs.push_back(sf);
 
   sf = std::make_shared<ParkSectorFeature>();

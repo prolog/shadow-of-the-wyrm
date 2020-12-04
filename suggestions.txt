@@ -1,5 +1,12 @@
 Me:
-- Creature name to bestiary in parentheses when defined?
+- New sector features:
+- UndergroundSectorFeature (takes tile type - dungeoncomplex, mine, cavern,
+  sewer)
+- Settlement names!
+- Settlement names on signposts!
+- Make signposts non-blocking and add them to each random village
+- Walled settlement should have a garrison in one of the corners: guard and
+  some weapons/armour with 0-2 enchants
 - Use Magic to destroy spellbooks and get a bit of AP?
 - Generate tombs with keys outside door/doors locked
 - Corpse weights
