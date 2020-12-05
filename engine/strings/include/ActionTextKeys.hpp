@@ -46,6 +46,8 @@ class ActionTextKeys
     static std::string get_graphics_mode_switch_message(const std::string& new_display_name);
     static std::string get_tamed_message(const std::string& creature_desc, const std::string& tamed_creature_sid, const bool is_player);
     static std::string get_tame_failure_message(const std::string& creature_desc);
+    static std::string get_incinerate_spellbook_message(const std::string& item_usage_desc_sid);
+    static std::string get_incinerate_spellbook_wild_message(const std::string& item_usage_desc_sid);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -225,6 +227,7 @@ class ActionTextKeys
     static const std::string ACTION_ABANDONED;
     static const std::string ACTION_INCINERATE_NO_SPELLBOOKS;
     static const std::string ACTION_INCINERATE_NO_AP;
+    static const std::string ACTION_INCINERATE_FULL_AP;
 
   protected:
     ActionTextKeys();
@@ -288,4 +291,6 @@ class ActionTextKeys
     static const std::string ACTION_TAMED_PLAYER;
     static const std::string ACTION_TAMED_MONSTER;
     static const std::string ACTION_TAME_FAILURE;
+    static const std::string ACTION_INCINERATE_SPELLBOOK;
+    static const std::string ACTION_INCINERATE_SPELLBOOK_WILD;
 };

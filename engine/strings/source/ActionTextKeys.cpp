@@ -536,6 +536,24 @@ string ActionTextKeys::get_tame_failure_message(const string& creature_sid)
   return msg;
 }
 
+string ActionTextKeys::get_incinerate_spellbook_message(const string& item_usage_desc_sid)
+{
+  string msg = StringTable::get(ACTION_INCINERATE_SPELLBOOK);
+  boost::replace_first(msg, "%s", StringTable::get(item_usage_desc_sid));
+  msg[0] = toupper(msg[0]);
+
+  return msg;
+}
+
+string ActionTextKeys::get_incinerate_spellbook_wild_message(const string& item_usage_desc_sid)
+{
+  string msg = StringTable::get(ACTION_INCINERATE_SPELLBOOK_WILD);
+  boost::replace_first(msg, "%s", StringTable::get(item_usage_desc_sid));
+  msg[0] = toupper(msg[0]);
+
+  return msg;
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -709,6 +727,7 @@ const string ActionTextKeys::ACTION_ORDER_NO_FOLLOWERS         = "ACTION_ORDER_N
 const string ActionTextKeys::ACTION_ABANDONED                  = "ACTION_ABANDONED";
 const string ActionTextKeys::ACTION_INCINERATE_NO_SPELLBOOKS   = "ACTION_INCINERATE_NO_SPELLBOOKS";
 const string ActionTextKeys::ACTION_INCINERATE_NO_AP           = "ACTION_INCINERATE_NO_AP";
+const string ActionTextKeys::ACTION_INCINERATE_FULL_AP         = "ACTION_INCINERATE_FULL_AP";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";
@@ -770,3 +789,5 @@ const string ActionTextKeys::ACTION_SWITCH_GRAPHICS_MODE          = "ACTION_SWIT
 const string ActionTextKeys::ACTION_TAMED_PLAYER                  = "ACTION_TAMED_PLAYER";
 const string ActionTextKeys::ACTION_TAMED_MONSTER                 = "ACTION_TAMED_MONSTER";
 const string ActionTextKeys::ACTION_TAME_FAILURE                  = "ACTION_TAME_FAILURE";
+const string ActionTextKeys::ACTION_INCINERATE_SPELLBOOK          = "ACTION_INCINERATE_SPELLBOOK";
+const string ActionTextKeys::ACTION_INCINERATE_SPELLBOOK_WILD     = "ACTION_INCINERATE_SPELLBOOK_WILD";

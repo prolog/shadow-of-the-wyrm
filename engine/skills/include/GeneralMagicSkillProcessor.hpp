@@ -11,7 +11,7 @@ class GeneralMagicSkillProcessor : public SkillProcessor
     virtual SkillProcessorPtr clone() override;
 
   protected:
-    ActionCostValue incinerate_spellbook(CreaturePtr creature, SpellbookPtr book);
+    ActionCostValue incinerate_spellbook(CreaturePtr creature, SpellbookPtr book, const int book_ap);
 
     virtual ActionCostValue get_default_skill_action_cost_value(CreaturePtr creature) const override;
     static const int PCT_CHANCE_BACKFIRE;

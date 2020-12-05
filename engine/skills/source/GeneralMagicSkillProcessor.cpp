@@ -1,7 +1,9 @@
 #include "GeneralMagicSkillProcessor.hpp"
 #include "ActionTextKeys.hpp"
+#include "CombatManager.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
+#include "ItemIdentifier.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 
@@ -15,7 +17,7 @@ GeneralMagicSkillProcessor::GeneralMagicSkillProcessor()
 
 ActionCostValue GeneralMagicSkillProcessor::process(CreaturePtr creature, MapPtr map)
 {
-  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION_MENU;
 
   if (creature && map)
   {
@@ -51,7 +53,15 @@ ActionCostValue GeneralMagicSkillProcessor::process(CreaturePtr creature, MapPtr
 
           if (book_ap > 0)
           {
-            acv = incinerate_spellbook(creature, book);
+            if (creature->get_arcana_points().get_full())
+            {
+              self_mm.add_new_message(StringTable::get(ActionTextKeys::ACTION_INCINERATE_FULL_AP));
+              self_mm.send();
+            }
+            else
+            {
+              acv = incinerate_spellbook(creature, book, book_ap);
+            }
           }
           else
           {
@@ -71,22 +81,45 @@ ActionCostValue GeneralMagicSkillProcessor::process(CreaturePtr creature, MapPtr
   return acv;
 }
 
-ActionCostValue GeneralMagicSkillProcessor::incinerate_spellbook(CreaturePtr creature, SpellbookPtr book)
+ActionCostValue GeneralMagicSkillProcessor::incinerate_spellbook(CreaturePtr creature, SpellbookPtr book, const int book_ap)
 {
   ActionCostValue acv = get_default_skill_action_cost_value(creature);
 
   if (creature != nullptr && book != nullptr)
   {
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    ItemIdentifier iid;
+    string item_usage_desc_sid = iid.get_appropriate_usage_description(book);
+
     acv *= static_cast<int>(book->get_quantity());
 
     if (RNG::percent_chance(PCT_CHANCE_BACKFIRE))
     {
+      CombatManager cm;
+      int damage_dealt = RNG::range(1, book_ap);
+      Damage dmg;
+      dmg.set_num_dice(1);
+      dmg.set_dice_sides(damage_dealt);
+      dmg.set_damage_type(DamageType::DAMAGE_TYPE_ARCANE);
 
+      cm.deal_damage(nullptr, creature, "", damage_dealt, dmg);
+      manager.add_new_message(ActionTextKeys::get_incinerate_spellbook_wild_message(item_usage_desc_sid));
+      manager.send();
     }
     else
     {
+      Statistic& ap = creature->get_arcana_points_ref();
+      int pts_from_max = ap.get_base() - ap.get_current();
+      int base_ap_gained = RNG::range(static_cast<int>(book_ap * 0.75), book_ap);
+      int ap_gained = std::min<int>(base_ap_gained, pts_from_max);
 
+      // JCD FIXME: EtherEffect goes here!
+
+      manager.add_new_message(ActionTextKeys::get_incinerate_spellbook_message(item_usage_desc_sid));
+      manager.send();
     }
+
+    creature->get_inventory()->remove(book->get_id());
   }
 
   return acv;
