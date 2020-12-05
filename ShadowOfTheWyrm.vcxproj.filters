@@ -4349,6 +4349,9 @@
     <ClInclude Include="engine\items\include\ItemUnpaidFilter.hpp">
       <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\skills\include\GeneralMagicSkillProcessor.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8718,6 +8721,9 @@
     </ClCompile>
     <ClCompile Include="engine\items\source\unit_tests\ItemUnpaidFilter_test.cpp">
       <Filter>Source Files\engine\items\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\GeneralMagicSkillProcessor.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

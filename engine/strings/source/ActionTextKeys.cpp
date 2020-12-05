@@ -707,6 +707,8 @@ const string ActionTextKeys::ACTION_TAME_BEGIN                 = "ACTION_TAME_BE
 const string ActionTextKeys::ACTION_TAME_NO_TARGETS            = "ACTION_TAME_NO_TARGETS";
 const string ActionTextKeys::ACTION_ORDER_NO_FOLLOWERS         = "ACTION_ORDER_NO_FOLLOWERS";
 const string ActionTextKeys::ACTION_ABANDONED                  = "ACTION_ABANDONED";
+const string ActionTextKeys::ACTION_INCINERATE_NO_SPELLBOOKS   = "ACTION_INCINERATE_NO_SPELLBOOKS";
+const string ActionTextKeys::ACTION_INCINERATE_NO_AP           = "ACTION_INCINERATE_NO_AP";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";

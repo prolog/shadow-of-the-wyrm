@@ -1,4 +1,10 @@
 Me:
+- Use Magic to destroy spellbooks and lose some HP and gain some AP?
+- Finish spellbook incineration code
+- Long term, give a chance for coastal generators to produce coastline, maybe
+  with little islands, etc. Before generating, set booleans for coast in
+  the different directions and then pick one. Should be done after the initial
+  fill but before adding stuff
 - New sector features:
 - UndergroundSectorFeature (takes tile type - dungeoncomplex, mine, cavern,
   sewer)
@@ -7,11 +13,7 @@ Me:
 - Make signposts non-blocking and add them to each random village
 - Walled settlement should have a garrison in one of the corners: guard and
   some weapons/armour with 0-2 enchants
-- Use Magic to destroy spellbooks and get a bit of AP?
 - Generate tombs with keys outside door/doors locked
-- Corpse weights
-- Long term, give a chance for coastal generators to produce coastline, maybe
-  with little islands, etc
 - First urchin stone has no message!
 - Feature: fence, east_west_fence. Add some fenced areas to set locations.
 - Fenced areas (veg gardens?) in villages

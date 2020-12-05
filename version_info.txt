@@ -59,6 +59,11 @@ Shadow of the Wyrm v1.2.5 "Arnold"
 
 - Signposts no longer block.
 
+- Spellbooks are now heavier (5 lbs - they were always meant to be big and
+  tome-like).  The Magic skill can now be used to incinerate spellbooks and
+  absorb the AP, though this always has a chance to backfire and cause a bit
+  of damage.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
