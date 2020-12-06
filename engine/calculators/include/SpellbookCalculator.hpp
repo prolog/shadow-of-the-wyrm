@@ -9,6 +9,9 @@ class SpellbookCalculator
   public:
     SpellbookCalculator();
 
+    int calculate_pct_chance_wild_incineration(const uint quantity);
+    int get_ap_amount(const int spell_ap, CreaturePtr creature);
+
     // The first member of the pair is whether the spell was learned; the second
     // is the difference between the random value (with creature factors) and the
     // spell's difficulty.
@@ -28,5 +31,8 @@ class SpellbookCalculator
 
     std::map<ItemStatus, int> status_failure_levels;
     std::map<ItemStatus, float> status_casting_multipliers;
+
+    static const int BASE_PCT_CHANCE_WILD_INCINERATION;
+    static const int MAX_PCT_CHANCE_WILD_INCINERATION;
 };
 

@@ -8725,5 +8725,8 @@
     <ClCompile Include="engine\skills\source\GeneralMagicSkillProcessor.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\SpellbookCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

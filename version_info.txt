@@ -62,7 +62,8 @@ Shadow of the Wyrm v1.2.5 "Arnold"
 - Spellbooks are now heavier (5 lbs - they were always meant to be big and
   tome-like).  The Magic skill can now be used to incinerate spellbooks and
   absorb the AP, though this always has a chance to backfire and cause a bit
-  of damage.
+  of damage. The amount of damage, and the chance to backfire, increases with
+  the number of spellbooks you're trying to incinerate at once.
 
 - Stanzas for "Tel and Floridel".
 

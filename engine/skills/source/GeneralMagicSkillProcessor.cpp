@@ -7,10 +7,9 @@
 #include "ItemIdentifier.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
+#include "SpellbookCalculator.hpp"
 
 using namespace std;
-
-const int GeneralMagicSkillProcessor::PCT_CHANCE_BACKFIRE = 5;
 
 GeneralMagicSkillProcessor::GeneralMagicSkillProcessor()
 {
@@ -94,10 +93,13 @@ ActionCostValue GeneralMagicSkillProcessor::incinerate_spellbook(CreaturePtr cre
     ItemIdentifier iid;
     string item_usage_desc_sid = iid.get_appropriate_usage_description(book);
 
-    acv *= static_cast<int>(book->get_quantity());
+    SpellbookCalculator sc;
 
-    if (RNG::percent_chance(PCT_CHANCE_BACKFIRE))
+    if (RNG::percent_chance(sc.calculate_pct_chance_wild_incineration(book->get_quantity())))
     {
+      manager.add_new_message(ActionTextKeys::get_incinerate_spellbook_wild_message(item_usage_desc_sid));
+      manager.send();
+
       CombatManager cm;
       int damage_dealt = RNG::range(1, book_ap);
       Damage dmg;
@@ -106,15 +108,10 @@ ActionCostValue GeneralMagicSkillProcessor::incinerate_spellbook(CreaturePtr cre
       dmg.set_damage_type(DamageType::DAMAGE_TYPE_ARCANE);
 
       cm.deal_damage(nullptr, creature, "", damage_dealt, dmg);
-      manager.add_new_message(ActionTextKeys::get_incinerate_spellbook_wild_message(item_usage_desc_sid));
-      manager.send();
     }
     else
     {
-      Statistic& ap = creature->get_arcana_points_ref();
-      int pts_from_max = ap.get_base() - ap.get_current();
-      int base_ap_gained = RNG::range(static_cast<int>(book_ap * 0.75), book_ap);
-      int ap_gained = std::min<int>(base_ap_gained, pts_from_max);
+      int ap_gained = sc.get_ap_amount(book_ap, creature);
       string ap_gained_s = to_string(ap_gained);
 
       EtherEffect ether;
