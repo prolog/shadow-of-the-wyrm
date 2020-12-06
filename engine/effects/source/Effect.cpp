@@ -16,6 +16,11 @@ string Effect::get_source_id() const
   return source_id;
 }
 
+void Effect::clear_additional_effect_messages()
+{
+  additional_effect_messages.clear();
+}
+
 // Call the correct item effect function based on the item status.  Blessed effects can often be
 // much better than uncursed, and cursed are often more hurtful than helpful.
 bool Effect::effect(std::shared_ptr<Creature> creature, ActionManager * const am, const ItemStatus item_status, const Coordinate& affected_coordinate, TilePtr affected_tile, const bool show_msg_on_unid) 

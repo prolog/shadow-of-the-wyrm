@@ -1,6 +1,7 @@
 #include "GeneralMagicSkillProcessor.hpp"
 #include "ActionTextKeys.hpp"
 #include "CombatManager.hpp"
+#include "EtherEffect.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
@@ -87,6 +88,8 @@ ActionCostValue GeneralMagicSkillProcessor::incinerate_spellbook(CreaturePtr cre
 
   if (creature != nullptr && book != nullptr)
   {
+    Game& game = Game::instance();
+
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     ItemIdentifier iid;
     string item_usage_desc_sid = iid.get_appropriate_usage_description(book);
@@ -112,8 +115,14 @@ ActionCostValue GeneralMagicSkillProcessor::incinerate_spellbook(CreaturePtr cre
       int pts_from_max = ap.get_base() - ap.get_current();
       int base_ap_gained = RNG::range(static_cast<int>(book_ap * 0.75), book_ap);
       int ap_gained = std::min<int>(base_ap_gained, pts_from_max);
+      string ap_gained_s = to_string(ap_gained);
 
-      // JCD FIXME: EtherEffect goes here!
+      EtherEffect ether;
+      map<string, string> properties = {{EtherEffect::HEALING_MIN, ap_gained_s}, {EtherEffect::HEALING_MAX, ap_gained_s}};
+
+      ether.read_properties(properties);
+      ether.clear_additional_effect_messages();
+      ether.effect(creature, &game.get_action_manager_ref(), book->get_status(), {}, nullptr);
 
       manager.add_new_message(ActionTextKeys::get_incinerate_spellbook_message(item_usage_desc_sid));
       manager.send();

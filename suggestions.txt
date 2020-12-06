@@ -1,6 +1,7 @@
 Me:
 - Use Magic to destroy spellbooks and lose some HP and gain some AP?
 - Finish spellbook incineration code
+- Testttttt (plus test regular ether potions)
 - Long term, give a chance for coastal generators to produce coastline, maybe
   with little islands, etc. Before generating, set booleans for coast in
   the different directions and then pick one. Should be done after the initial
