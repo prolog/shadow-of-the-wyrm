@@ -3647,3 +3647,13 @@ on feasting days.  You drank till you forgot, %b
 and if I did it wrong, you'd browbeat me, or slap %b
 me till I tasted blood and all your families laughed."
 %p
+A silence.  "Didn't think so.  Why would you %b
+stoop down and learn the name of those who shared %b
+your lives - facilitated them?  It just never suited %b
+your kind to admit that lives were not just spared %b
+or taken, but lived.  Well, this is ours.  Your crown %b
+has no power here.  Your exiles left, went north %b
+after presuming the assistance of our town %b
+as well.  We're done with high-born feuds and scores. %b
+We outnumber you.  You cannot harm us anymore."
+%p
