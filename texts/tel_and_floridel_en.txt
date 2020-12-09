@@ -3657,3 +3657,13 @@ after presuming the assistance of our town %b
 as well.  We're done with high-born feuds and scores. %b
 We outnumber you.  You cannot harm us anymore."
 %p
+The quiet perched on rooftops as the wind %b
+knocked shutters and a rusty weathervane %b
+complained against its movement.  They were pinned, %b
+Alcius knew; a hasty act would stain %b
+the town square red.  He met her eyes, and turned %b
+his horse around.  They rode back through the feel %b
+of failure.  Not their mission, but it burned %b
+they couldn't turn their kinfolk.  Open field. %b
+They drew their swords and rode towards the sprawling weald.
+%p
