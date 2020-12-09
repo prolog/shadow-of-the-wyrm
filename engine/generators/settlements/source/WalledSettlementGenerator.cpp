@@ -1,6 +1,7 @@
 #include "BuildingConfigFactory.hpp"
 #include "WalledSettlementGenerator.hpp"
 #include "FeatureGenerator.hpp"
+#include "ItemGenerationManager.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "TileGenerator.hpp"
@@ -99,6 +100,47 @@ void WalledSettlementGenerator::generate_walls(MapPtr map)
     wall_tile = tg.generate(TileType::TILE_TYPE_ROCK);
     map->insert(row, west_wall, wall_tile);
   }
+
+  generate_barracks(map);
+}
+
+void WalledSettlementGenerator::generate_barracks(MapPtr map)
+{
+  vector<Direction> corner_v = { Direction::DIRECTION_SOUTH_EAST, Direction::DIRECTION_SOUTH_WEST, Direction::DIRECTION_NORTH_EAST, Direction::DIRECTION_NORTH_WEST };
+  Direction d = corner_v.at(RNG::range(0, corner_v.size() - 1));
+  CardinalDirection door_dir = CardinalDirection::CARDINAL_DIRECTION_SOUTH;
+
+  Coordinate start_barracks = { 0,0 };
+  int sz = RNG::range(4, 5);
+
+  switch (d)
+  {
+    case Direction::DIRECTION_NORTH_EAST:
+      start_barracks = { north_wall + 1, east_wall + 1 };
+      break;
+    case Direction::DIRECTION_NORTH_WEST:
+      start_barracks = { north_wall + 1, west_wall - 1 };
+      break;
+    case Direction::DIRECTION_SOUTH_EAST:
+      start_barracks = { south_wall - 1, east_wall + 1 };
+      door_dir = CardinalDirection::CARDINAL_DIRECTION_NORTH;
+      break;
+    case Direction::DIRECTION_SOUTH_WEST:
+      start_barracks = { south_wall - 1, west_wall - 1 };
+      door_dir = CardinalDirection::CARDINAL_DIRECTION_NORTH;
+      break;
+    default:
+      break;
+  }
+  
+  Coordinate end_barracks = { start_barracks.first + sz, start_barracks.second + sz };
+  int danger = map->get_danger();
+  ItemGenerationConstraints igc;
+  igc.set_item_type_restrictions({ ItemType::ITEM_TYPE_WEAPON, ItemType::ITEM_TYPE_AMMUNITION, ItemType::ITEM_TYPE_ARMOUR });
+  igc.set_max_danger_level(danger);
+  igc.set_min_danger_level(1);
+  // ...
+  // BuildingGenerationParameters bgp(start_barracks.first, end_barracks.first, start_barracks.second, end_barracks.second, door_dir, false, {}, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids));
 }
 
 void WalledSettlementGenerator::generate_gate(MapPtr map)

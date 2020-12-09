@@ -17,6 +17,7 @@ class WalledSettlementGenerator : public BaseSettlementGenerator
     
     virtual void generate_walled_settlement(MapPtr map);
     virtual void generate_walls(MapPtr map);
+    virtual void generate_barracks(MapPtr map);
     virtual void generate_gate(MapPtr map);
     virtual void generate_inner_settlement(MapPtr map);
 

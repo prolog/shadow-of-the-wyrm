@@ -1,5 +1,7 @@
 Me:
-- Testttttt (plus test regular ether potions)
+- Barracks placement, guard placement along walls (set sentinel!), make them
+  friendly, items in barracks, table, barrel
+- Break the barracks code into the utils
 - Long term, give a chance for coastal generators to produce coastline, maybe
   with little islands, etc. Before generating, set booleans for coast in
   the different directions and then pick one. Should be done after the initial
@@ -9,7 +11,7 @@ Me:
   sewer)
 - Settlement names!
 - Settlement names on signposts!
-- Make signposts non-blocking and add them to each random village
+- Add signposts to each random village
 - Walled settlement should have a garrison in one of the corners: guard and
   some weapons/armour with 0-2 enchants
 - Generate tombs with keys outside door/doors locked

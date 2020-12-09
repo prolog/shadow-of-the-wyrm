@@ -80,6 +80,10 @@ Shadow of the Wyrm v1.2.5 "Arnold"
 
   - Quislings' chat text was written, but not set in the game configuration.
 
+  - Guardsmen were explicitly gender-neutral in their description but called
+    "guardsman"/"guardsmen"; an instance is now simply a "guard".  Previously
+    they were always human, and can now be any playable race.
+
   - An invalid action selection in the Order screen was advancing the turn
     (Josh Engdahl).
 
