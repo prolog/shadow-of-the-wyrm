@@ -116,17 +116,17 @@ void WalledSettlementGenerator::generate_barracks(MapPtr map)
   switch (d)
   {
     case Direction::DIRECTION_NORTH_EAST:
-      start_barracks = { north_wall + 1, east_wall + 1 };
+      start_barracks = { north_wall + 1, east_wall - 1 - sz };
       break;
     case Direction::DIRECTION_NORTH_WEST:
-      start_barracks = { north_wall + 1, west_wall - 1 };
+      start_barracks = { north_wall + 1, west_wall + 1 };
       break;
     case Direction::DIRECTION_SOUTH_EAST:
-      start_barracks = { south_wall - 1, east_wall + 1 };
+      start_barracks = { south_wall - 1 - sz, east_wall - 1 - sz };
       door_dir = CardinalDirection::CARDINAL_DIRECTION_NORTH;
       break;
     case Direction::DIRECTION_SOUTH_WEST:
-      start_barracks = { south_wall - 1, west_wall - 1 };
+      start_barracks = { south_wall - 1 - sz, west_wall + 1 };
       door_dir = CardinalDirection::CARDINAL_DIRECTION_NORTH;
       break;
     default:
@@ -139,8 +139,13 @@ void WalledSettlementGenerator::generate_barracks(MapPtr map)
   igc.set_item_type_restrictions({ ItemType::ITEM_TYPE_WEAPON, ItemType::ITEM_TYPE_AMMUNITION, ItemType::ITEM_TYPE_ARMOUR });
   igc.set_max_danger_level(danger);
   igc.set_min_danger_level(1);
-  // ...
-  // BuildingGenerationParameters bgp(start_barracks.first, end_barracks.first, start_barracks.second, end_barracks.second, door_dir, false, {}, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids));
+
+  vector<ClassIdentifier> class_ids = { ClassIdentifier::CLASS_ID_BED, ClassIdentifier::CLASS_ID_TABLE, ClassIdentifier::CLASS_ID_BARREL };
+  vector<string> item_ids;
+
+  // JCD FIXME: Item IDs
+  BuildingGenerationParameters bgp(start_barracks.first, end_barracks.first, start_barracks.second, end_barracks.second, door_dir, false, class_ids, { CreatureID::CREATURE_ID_GUARD }, item_ids);
+  SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
 }
 
 void WalledSettlementGenerator::generate_gate(MapPtr map)
