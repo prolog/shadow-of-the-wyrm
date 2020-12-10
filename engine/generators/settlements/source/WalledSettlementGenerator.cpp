@@ -17,13 +17,13 @@
 using namespace std;
 
 WalledSettlementGenerator::WalledSettlementGenerator(MapPtr new_base_map)
-: BaseSettlementGenerator(new_base_map)
+: BaseSettlementGenerator(new_base_map), wall_tile_type(TileType::TILE_TYPE_ROCK)
 {
   initialize();
 }
 
 WalledSettlementGenerator::WalledSettlementGenerator(MapPtr new_base_map, const int new_growth_rate)
-: BaseSettlementGenerator(new_base_map, new_growth_rate)
+: BaseSettlementGenerator(new_base_map, new_growth_rate), wall_tile_type(TileType::TILE_TYPE_ROCK)
 {
   initialize();
 }
@@ -38,6 +38,11 @@ void WalledSettlementGenerator::initialize()
   gate_col   = 0;
 
   pct_chance_sector_feature = 25;
+
+  if (RNG::percent_chance(30))
+  {
+    wall_tile_type = TileType::TILE_TYPE_EARTH;
+  }
 }
 
 MapPtr WalledSettlementGenerator::generate(const Dimensions& dim)
@@ -84,20 +89,20 @@ void WalledSettlementGenerator::generate_walls(MapPtr map)
   TilePtr wall_tile;
   for (int col = west_wall; col <= east_wall; col++)
   {
-    wall_tile = tg.generate(TileType::TILE_TYPE_ROCK);
+    wall_tile = tg.generate(wall_tile_type);
     map->insert(north_wall, col, wall_tile);
     
-    wall_tile = tg.generate(TileType::TILE_TYPE_ROCK);
+    wall_tile = tg.generate(wall_tile_type);
     map->insert(south_wall, col, wall_tile);
   }
     
   // East, west wall
   for (int row = north_wall; row < south_wall; row++)
   {
-    wall_tile = tg.generate(TileType::TILE_TYPE_ROCK);
+    wall_tile = tg.generate(wall_tile_type);
     map->insert(row, east_wall, wall_tile);
     
-    wall_tile = tg.generate(TileType::TILE_TYPE_ROCK);
+    wall_tile = tg.generate(wall_tile_type);
     map->insert(row, west_wall, wall_tile);
   }
 
@@ -144,8 +149,8 @@ void WalledSettlementGenerator::generate_barracks(MapPtr map)
   vector<string> item_ids;
 
   // JCD FIXME: Item IDs
-  BuildingGenerationParameters bgp(start_barracks.first, end_barracks.first, start_barracks.second, end_barracks.second, door_dir, false, class_ids, { CreatureID::CREATURE_ID_GUARD }, item_ids);
-  SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
+  BuildingGenerationParameters bgp(start_barracks.first, end_barracks.first, start_barracks.second, end_barracks.second, door_dir, false, class_ids, { CreatureID::CREATURE_ID_GUARD }, item_ids, TileType::TILE_TYPE_ROCK);
+  SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate, false);
 }
 
 void WalledSettlementGenerator::generate_gate(MapPtr map)
@@ -231,7 +236,7 @@ void WalledSettlementGenerator::generate_inner_settlement(MapPtr map)
       else
       {
         vector<ClassIdentifier> cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
-        BuildingGenerationParameters bgp(row, row_end, col, col_end, dir, false, cl_ids, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids));
+        BuildingGenerationParameters bgp(row, row_end, col, col_end, dir, false, cl_ids, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids), TileType::TILE_TYPE_ROCK);
 
         SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
         cur_buildings_generated++;

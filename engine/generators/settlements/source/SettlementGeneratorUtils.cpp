@@ -125,7 +125,7 @@ bool SettlementGeneratorUtils::generate_garden_if_possible(MapPtr map, const Gar
 
 // Generate a building if possible, returning true if a building could be generated,
 // and false otherwise.
-bool SettlementGeneratorUtils::generate_building_if_possible(MapPtr map, const BuildingGenerationParameters& bgp, vector<Building>& buildings, const int growth_rate)
+bool SettlementGeneratorUtils::generate_building_if_possible(MapPtr map, const BuildingGenerationParameters& bgp, vector<Building>& buildings, const int growth_rate, const bool allow_shop)
 {
   bool generated = false;
   TileGenerator tg;
@@ -134,6 +134,7 @@ bool SettlementGeneratorUtils::generate_building_if_possible(MapPtr map, const B
   int end_row = bgp.get_end_row();
   int start_col = bgp.get_start_col();
   int end_col = bgp.get_end_col();
+  TileType wall = bgp.get_wall_tile_type();
   CardinalDirection door_direction = bgp.get_door_direction();
   bool shop = false;
 
@@ -161,7 +162,7 @@ bool SettlementGeneratorUtils::generate_building_if_possible(MapPtr map, const B
         {
           if (cur_row == start_row || cur_row == end_row || cur_col == start_col || cur_col == end_col)
           {
-            current_tile = tg.generate(TileType::TILE_TYPE_ROCK);
+            current_tile = tg.generate(wall);
           }
           else
           {
@@ -175,7 +176,7 @@ bool SettlementGeneratorUtils::generate_building_if_possible(MapPtr map, const B
 
     if (growth_rate == 100)
     {
-      if (RNG::percent_chance(PCT_CHANCE_BUILDING_SHOP))
+      if (allow_shop && RNG::percent_chance(PCT_CHANCE_BUILDING_SHOP))
       {
         // Set a flag to generate a shop after the building is otherwise done.
         shop = true;

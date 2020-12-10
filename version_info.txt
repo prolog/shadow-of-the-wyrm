@@ -50,6 +50,10 @@ Shadow of the Wyrm v1.2.5 "Arnold"
 - Created a new colourblind-friendly SDL palette (CB Reader) based on Paul
   Tol's work at https://personal.sron.nl/~pault/
 
+- A settlement's walls can now be made of earth as well as rock.
+
+- Walled settlements generate a barracks in one of the corners of the town.
+
 - Races now have a reasonable default size, with support on the creature 
   definitions to override this.  Previously most corpses were 100 lbs. (the
   default for size medium) and there should be more variety now (Josh Engdahl).

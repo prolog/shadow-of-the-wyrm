@@ -21,6 +21,7 @@ class WalledSettlementGenerator : public BaseSettlementGenerator
     virtual void generate_gate(MapPtr map);
     virtual void generate_inner_settlement(MapPtr map);
 
+    TileType wall_tile_type;
     int north_wall;
     int south_wall;
     int east_wall;

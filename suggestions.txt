@@ -1,4 +1,6 @@
 Me:
+- Guards along walls
+- Houses made of earth, too? Maybe hamlets?
 - Barracks placement, guard placement along walls (set sentinel!), make them
   friendly, items in barracks, table, barrel
 - Break the barracks code into the utils
