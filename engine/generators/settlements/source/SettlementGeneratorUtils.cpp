@@ -74,7 +74,14 @@ bool SettlementGeneratorUtils::does_tile_overlap(MapPtr map, const int row, cons
     TilePtr tile = map->at(row, col);
     TileType type = tile->get_tile_type();
 
-    if (type == TileType::TILE_TYPE_ROAD || type == TileType::TILE_TYPE_ROCK || type == TileType::TILE_TYPE_DUNGEON || type == TileType::TILE_TYPE_RIVER || type == TileType::TILE_TYPE_SPRINGS || type == TileType::TILE_TYPE_DOWN_STAIRCASE || type == TileType::TILE_TYPE_UP_STAIRCASE)
+    if (type == TileType::TILE_TYPE_ROAD || 
+        type == TileType::TILE_TYPE_ROCK || 
+        type == TileType::TILE_TYPE_EARTH || 
+        type == TileType::TILE_TYPE_DUNGEON || 
+        type == TileType::TILE_TYPE_RIVER || 
+        type == TileType::TILE_TYPE_SPRINGS || 
+        type == TileType::TILE_TYPE_DOWN_STAIRCASE || 
+        type == TileType::TILE_TYPE_UP_STAIRCASE)
     {
       tile_overlaps = true;
     }

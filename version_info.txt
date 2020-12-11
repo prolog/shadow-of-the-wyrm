@@ -54,6 +54,9 @@ Shadow of the Wyrm v1.2.5 "Arnold"
 
 - Walled settlements generate a barracks in one of the corners of the town.
 
+- Walled settlement barracks generate a few mobile guards, and a few sentries
+  are now placed along the walls.
+
 - Races now have a reasonable default size, with support on the creature 
   definitions to override this.  Previously most corpses were 100 lbs. (the
   default for size medium) and there should be more variety now (Josh Engdahl).

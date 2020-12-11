@@ -1,18 +1,24 @@
-#include "BuildingConfigFactory.hpp"
 #include "WalledSettlementGenerator.hpp"
+#include "BuildingConfigFactory.hpp"
+#include "CoordUtils.hpp"
+#include "CreatureFactory.hpp"
+#include "DecisionStrategyProperties.hpp"
 #include "FeatureGenerator.hpp"
-#include "ItemGenerationManager.hpp"
-#include "RNG.hpp"
-#include "SettlementGeneratorUtils.hpp"
-#include "TileGenerator.hpp"
 #include "FruitVegetableGardenGenerator.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
 #include "GraveyardSectorFeature.hpp"
+#include "ItemGenerationManager.hpp"
+#include "MapUtils.hpp"
 #include "ParkSectorFeature.hpp"
 #include "PlazaSectorFeature.hpp"
+#include "RNG.hpp"
 #include "RockGardenGenerator.hpp"
+#include "SettlementGeneratorUtils.hpp"
 #include "ShadeGardenGenerator.hpp"
 #include "ShopSectorFeature.hpp"
 #include "ShrineSectorFeature.hpp"
+#include "TileGenerator.hpp"
 
 using namespace std;
 
@@ -170,22 +176,42 @@ void WalledSettlementGenerator::generate_guards(MapPtr map, const int north_wall
 {
   int num_guards = RNG::range(2, 6);
   vector<CardinalDirection> dirs = { CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_SOUTH, CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_WEST };
+  Game& game = Game::instance();
+  ActionManager& am = game.get_action_manager_ref();
+  CreatureFactory cf;
 
   for (int i = 0; i < num_guards; i++)
   {
     CardinalDirection cd = dirs.at(RNG::range(0, dirs.size()-1));
+    Coordinate c = CoordUtils::end();
 
     switch (cd)
     {
       case CardinalDirection::CARDINAL_DIRECTION_NORTH:
+        c = { north_wall + 1, RNG::range(west_wall + 1, east_wall - 1) };
         break;
       case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
+        c = { south_wall - 1, RNG::range(west_wall + 1, east_wall - 1) };
         break;
       case CardinalDirection::CARDINAL_DIRECTION_WEST:
+        c = { RNG::range(north_wall + 1, south_wall - 1), west_wall + 1 };
         break;
       case CardinalDirection::CARDINAL_DIRECTION_EAST:
       default:
+        c = { RNG::range(north_wall + 1, south_wall - 1), east_wall - 1 };
         break;
+    }
+
+    CreaturePtr creature = cf.create_by_creature_id(am, CreatureID::CREATURE_ID_GUARD, map);
+    GameUtils::add_new_creature_to_map(game, creature, map, c);
+
+    TilePtr tile = map->at(c);
+
+    // Wall guards are always sentries.
+    if (tile && tile->has_creature())
+    {
+      CreaturePtr c = tile->get_creature();
+      c->get_decision_strategy()->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, to_string(true));
     }
   }
 }
