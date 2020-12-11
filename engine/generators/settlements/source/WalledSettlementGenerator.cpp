@@ -16,6 +16,8 @@
 
 using namespace std;
 
+const int WalledSettlementGenerator::MAX_NUM_GUARDS = 4;
+
 WalledSettlementGenerator::WalledSettlementGenerator(MapPtr new_base_map)
 : BaseSettlementGenerator(new_base_map), wall_tile_type(TileType::TILE_TYPE_ROCK)
 {
@@ -106,10 +108,10 @@ void WalledSettlementGenerator::generate_walls(MapPtr map)
     map->insert(row, west_wall, wall_tile);
   }
 
-  generate_barracks(map);
+  generate_barracks(map, north_wall, south_wall, east_wall, west_wall);
 }
 
-void WalledSettlementGenerator::generate_barracks(MapPtr map)
+void WalledSettlementGenerator::generate_barracks(MapPtr map, const int north_wall, const int south_wall, const int east_wall, const int west_wall)
 {
   vector<Direction> corner_v = { Direction::DIRECTION_SOUTH_EAST, Direction::DIRECTION_SOUTH_WEST, Direction::DIRECTION_NORTH_EAST, Direction::DIRECTION_NORTH_WEST };
   Direction d = corner_v.at(RNG::range(0, corner_v.size() - 1));
@@ -146,11 +148,46 @@ void WalledSettlementGenerator::generate_barracks(MapPtr map)
   igc.set_min_danger_level(1);
 
   vector<ClassIdentifier> class_ids = { ClassIdentifier::CLASS_ID_BED, ClassIdentifier::CLASS_ID_TABLE, ClassIdentifier::CLASS_ID_BARREL };
+  vector<string> creature_ids;
+
+  int num_guards = RNG::range(1, MAX_NUM_GUARDS);
+
+  for (int i = 0; i < num_guards; i++)
+  {
+    creature_ids.push_back(CreatureID::CREATURE_ID_GUARD);
+  }
+
   vector<string> item_ids;
 
   // JCD FIXME: Item IDs
-  BuildingGenerationParameters bgp(start_barracks.first, end_barracks.first, start_barracks.second, end_barracks.second, door_dir, false, class_ids, { CreatureID::CREATURE_ID_GUARD }, item_ids, TileType::TILE_TYPE_ROCK);
+  BuildingGenerationParameters bgp(start_barracks.first, end_barracks.first, start_barracks.second, end_barracks.second, door_dir, false, class_ids, creature_ids, item_ids, TileType::TILE_TYPE_ROCK);
   SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate, false);
+
+  generate_guards(map, north_wall, south_wall, east_wall, west_wall);
+}
+
+void WalledSettlementGenerator::generate_guards(MapPtr map, const int north_wall, const int south_wall, const int east_wall, const int west_wall)
+{
+  int num_guards = RNG::range(2, 6);
+  vector<CardinalDirection> dirs = { CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_SOUTH, CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_WEST };
+
+  for (int i = 0; i < num_guards; i++)
+  {
+    CardinalDirection cd = dirs.at(RNG::range(0, dirs.size()-1));
+
+    switch (cd)
+    {
+      case CardinalDirection::CARDINAL_DIRECTION_NORTH:
+        break;
+      case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
+        break;
+      case CardinalDirection::CARDINAL_DIRECTION_WEST:
+        break;
+      case CardinalDirection::CARDINAL_DIRECTION_EAST:
+      default:
+        break;
+    }
+  }
 }
 
 void WalledSettlementGenerator::generate_gate(MapPtr map)
