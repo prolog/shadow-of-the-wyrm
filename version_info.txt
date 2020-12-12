@@ -7,6 +7,8 @@ Shadow of the Wyrm v1.2.5 "Arnold"
 
 - When doing the Carcassia start, you now start on it instead of 1n (Grond).
 
+- Hamlets have a chance to generate with earthen (sod) buildings.
+
 - The glow effect now properly combines the glowing item(s) into similar
   stacks in the inventory (Josh Engdahl).
 

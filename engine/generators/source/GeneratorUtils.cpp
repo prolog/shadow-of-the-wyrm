@@ -67,7 +67,7 @@ bool GeneratorUtils::position_in_range(const int min, const int max, const int a
 // I was using this sort of thing a lot, so I'm moving it here...
 // Generates a building without any additional feature - useful for generating
 // an empty building when you don't want house features like beds, pots, etc
-void GeneratorUtils::generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width)
+void GeneratorUtils::generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width, const TileType wall_tile_type)
 {
   TileGenerator tg;
 
@@ -82,9 +82,9 @@ void GeneratorUtils::generate_building(const MapPtr map, const int start_row, co
     {
       // Generate a wall at the borders, floor otherwise.
       if ((row == start_row) || (row == (end_row - 1))
-        || (col == start_col) || (col == (end_col - 1)))
+       || (col == start_col) || (col == (end_col - 1)))
       {
-        current_tile = tg.generate(TileType::TILE_TYPE_ROCK);
+        current_tile = tg.generate(wall_tile_type);
       }
       else
       {

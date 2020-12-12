@@ -32,4 +32,5 @@ class HamletGenerator : public BaseSettlementGenerator
     int GARDEN_HEIGHT_MAX;
     int GARDEN_WIDTH_MIN;
     int GARDEN_WIDTH_MAX;
+    TileType WALL_TILE_TYPE;
 };
