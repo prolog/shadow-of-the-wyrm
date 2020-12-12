@@ -172,6 +172,8 @@ Shadow of the Wyrm v1.2.4 "Britten"
 - Cancelling a spell via an invalid direction no longer advances the turn
   (Josh Engdahl).
 
+- Added some more features to make the Carcassian fortress feel less empty.
+
 - Stanzas for "Tel and Floridel".
 
 - New items: uncursing potion.
