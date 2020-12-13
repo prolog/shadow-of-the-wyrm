@@ -8,7 +8,7 @@ class NPCUseEquipItemDecisionStrategy
   public:
     CommandPtr decide(CreaturePtr creature, MapPtr map);
     bool should_equip_weapon(CreaturePtr creature, ItemPtr item);
-    bool should_equip_wearable(CreaturePtr creature, ItemPtr item);
+    bool should_equip_wearable(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation ewl = EquipmentWornLocation::EQUIPMENT_WORN_NONE);
 
   protected:
     virtual CommandPtr get_equip_weapon_decision(CreaturePtr creature, ItemPtr item);

@@ -31,6 +31,7 @@ class Screen
     uint get_num_pages() const;
 
     OptionPtr get_option(const int option_id);
+    std::vector<OptionPtr> get_options();
 
     Prompt* get_prompt() const;
 

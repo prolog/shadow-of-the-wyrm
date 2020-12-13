@@ -158,7 +158,7 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selectio
       {
         Game& game = Game::instance();
         list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
-        item = game.get_action_manager_ref().inventory(creature, items, no_filter, {}, false);
+        item = game.get_action_manager_ref().inventory(creature, items, no_filter, {}, false, false);
         ok_to_consult_codex = (item != nullptr);
       }
       // count == 1: display the single item on the ground

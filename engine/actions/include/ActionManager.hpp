@@ -34,7 +34,7 @@ class ActionManager : public ISerializable
     ActionCost display_character(CreaturePtr creature);
     ActionCost dump_character(CreaturePtr creature);
     ActionCost search(CreaturePtr creature);
-    ActionCost move(CreaturePtr creature, const Direction d);
+    ActionCost move(CreaturePtr creature, const Direction d, const bool confirm_if_dangerous = true);
     ActionCost automatic_movement(CreaturePtr creature);
     ActionCost attack(CreaturePtr creature, const Direction d);
     ActionCost ascend(CreaturePtr creature);
@@ -52,9 +52,9 @@ class ActionManager : public ISerializable
     ActionCost equipment(CreaturePtr creature);
     ActionCost equipment(CreaturePtr creature, ItemPtr i, const EquipmentWornLocation ewl);
 
-    // Display the inventory.  Potentially, select an item.  ItemPtr is null if no item
-    // was selected.
-    ItemPtr inventory(CreaturePtr creature, IInventoryPtr inv, const std::list<IItemFilterPtr>& base_display_filter_list, const std::list<IItemFilterPtr>& additional_filter_list, const bool inventory_is_read_only);
+    // Display the inventory.  Potentially, select an item.
+    ItemPtr inventory(CreaturePtr creature, IInventoryPtr inv, const std::list<IItemFilterPtr>& base_display_filter_list, const std::list<IItemFilterPtr>& additional_filter_list, const bool inventory_is_read_only, const bool allow_multiple_selected_items);
+    std::vector<ItemPtr> inventory_multiple(CreaturePtr creature, IInventoryPtr inv, const std::list<IItemFilterPtr>& base_display_filter_list, const std::list<IItemFilterPtr>& additional_filter_list, const bool inventory_is_read_only, const bool allow_multiple_selected_items);
     
     // Miscellaneous actions
     ActionCost pray(CreaturePtr creature);

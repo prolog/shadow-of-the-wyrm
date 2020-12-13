@@ -12,6 +12,7 @@ class SizeTextKeys
     static const std::string SIZE_LARGE;
     static const std::string SIZE_HUGE;
     static const std::string SIZE_BEHEMOTH;
+    static const std::string SIZE_VARIES;
     
     static std::string get_size_sid_from_creature_size(const CreatureSize size);
     

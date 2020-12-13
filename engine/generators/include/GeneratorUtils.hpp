@@ -10,7 +10,7 @@ class GeneratorUtils
     static void generate_circle(MapPtr map, const int row_centre, const int col_centre, const int radius, const TileType tile_type);
 
     // Generates a building: walls are TileType::TILE_TYPE_ROCK, floor is TileType::TILE_TYPE_DUNGEON.
-    static void generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width);
+    static void generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width, const TileType tile_type = TileType::TILE_TYPE_ROCK);
     
     // Generate a series of overlapping squares on a map to simulate a dug passage.
     static std::vector<std::pair<Coordinate, Coordinate>> generate_rectangles(const MapPtr map, const int start_row, const int start_col, const int end_row, const int end_col, const int num_rectangles, const TileType rect_fill_type);

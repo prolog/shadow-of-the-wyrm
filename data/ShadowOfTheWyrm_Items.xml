@@ -391,7 +391,7 @@
 			</Amulet>
 		</Amulets>
 		<Armours>
-			<Armour id="cap">
+			<Armour id="_cap">
 				<DescriptionSID>CAP_SID</DescriptionSID>
 				<UsageDescriptionSID>CAP_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>CAP_CODEX_SID</CodexDescriptionSID>
@@ -1584,7 +1584,7 @@
 				<Evade>2</Evade>
 				<Soak>0</Soak>
 			</Armour>
-			<Armour id="wayfarer_clothes">
+			<Armour id="_wayfarer_clothes">
 				<DescriptionSID>WAYFARER_CLOTHES_SID</DescriptionSID>
 				<UsageDescriptionSID>WAYFARER_CLOTHES_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>WAYFARER_CLOTHES_CODEX_SID</CodexDescriptionSID>
@@ -1609,7 +1609,7 @@
 						<Value>1</Value>
 					</Property>
 				</Properties>
-				<Evade>1</Evade>
+				<Evade>2</Evade>
 				<Soak>1</Soak>
 			</Armour>
 			<Armour id="linothorax">
@@ -11049,7 +11049,7 @@
 				<CodexDescriptionSID>MINOR_HEALING_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11073,7 +11073,7 @@
 				<CodexDescriptionSID>FLAME_DART_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11097,7 +11097,7 @@
 				<CodexDescriptionSID>STEEL_WIND_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>25</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11121,7 +11121,7 @@
 				<CodexDescriptionSID>BLINK_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>60</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11145,7 +11145,7 @@
 				<CodexDescriptionSID>SPIRIT_BOLT_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>100</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11169,7 +11169,7 @@
 				<CodexDescriptionSID>PURIFY_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>60</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11193,7 +11193,7 @@
 				<CodexDescriptionSID>ANTIMAGIC_SHIELD_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>60</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11217,7 +11217,7 @@
 				<CodexDescriptionSID>BRAVERY_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>30</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11241,7 +11241,7 @@
 				<CodexDescriptionSID>FORCE_BOLT_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>30</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11265,7 +11265,7 @@
 				<CodexDescriptionSID>CLEANSING_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>30</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11289,7 +11289,7 @@
 				<CodexDescriptionSID>MAPPING_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>30</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11313,7 +11313,7 @@
 				<CodexDescriptionSID>CRUMBLE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>22</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11337,7 +11337,7 @@
 				<CodexDescriptionSID>BLAST_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>22</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11361,7 +11361,7 @@
 				<CodexDescriptionSID>INFERNO_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11385,7 +11385,7 @@
 				<CodexDescriptionSID>SHARDS_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11409,7 +11409,7 @@
 				<CodexDescriptionSID>ELECTRIC_ARC_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>24</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11433,7 +11433,7 @@
 				<CodexDescriptionSID>REPEL_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>28</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11457,7 +11457,7 @@
 				<CodexDescriptionSID>GLOW_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>34</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11481,7 +11481,7 @@
 				<CodexDescriptionSID>WREATH_OF_FIRE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>800</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11505,7 +11505,7 @@
 				<CodexDescriptionSID>LIGHTNING_BOLT_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>450</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11529,7 +11529,7 @@
 				<CodexDescriptionSID>DRAGON_BREATH_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>750</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11553,7 +11553,7 @@
 				<CodexDescriptionSID>SHOCKWAVE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11577,7 +11577,7 @@
 				<CodexDescriptionSID>FLIGHT_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>800</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11601,7 +11601,7 @@
 				<CodexDescriptionSID>CROSS_OF_FLAME_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11625,7 +11625,7 @@
 				<CodexDescriptionSID>FIREBALL_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11649,7 +11649,7 @@
 				<CodexDescriptionSID>ELEMENTAL_MASTERY_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11673,7 +11673,7 @@
 				<CodexDescriptionSID>FROST_BOLT_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>220</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11697,7 +11697,7 @@
 				<CodexDescriptionSID>FIRE_STORM_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1100</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11721,7 +11721,7 @@
 				<CodexDescriptionSID>ICE_STORM_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1100</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11745,7 +11745,7 @@
 				<CodexDescriptionSID>LIGHTNING_STORM_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1100</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11769,7 +11769,7 @@
 				<CodexDescriptionSID>MAELSTROM_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1163</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11793,7 +11793,7 @@
 				<CodexDescriptionSID>ABSOLUTE_ZERO_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1214</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11817,7 +11817,7 @@
 				<CodexDescriptionSID>VORPAL_BOLT_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>600</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11841,7 +11841,7 @@
 				<CodexDescriptionSID>DIG_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>200</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11865,7 +11865,7 @@
 				<CodexDescriptionSID>HOLOCAUST_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>3000</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11889,7 +11889,7 @@
 				<CodexDescriptionSID>METEOR_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1444</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11913,7 +11913,7 @@
 				<CodexDescriptionSID>TELEPORT_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>250</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11937,7 +11937,7 @@
 				<CodexDescriptionSID>WARP_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>300</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11961,7 +11961,7 @@
 				<CodexDescriptionSID>HEALING_WORD_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>375</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -11985,7 +11985,7 @@
 				<CodexDescriptionSID>SMITE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>275</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12009,7 +12009,7 @@
 				<CodexDescriptionSID>HOLY_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1075</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12033,7 +12033,7 @@
 				<CodexDescriptionSID>DIVINE_WIND_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>405</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12057,7 +12057,7 @@
 				<CodexDescriptionSID>DIVINE_SHIELD_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>405</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12081,7 +12081,7 @@
 				<CodexDescriptionSID>CURE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>50</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12105,7 +12105,7 @@
 				<CodexDescriptionSID>SOFTEN_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>90</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12129,7 +12129,7 @@
 				<CodexDescriptionSID>BENEDICTION_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>200</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12153,7 +12153,7 @@
 				<CodexDescriptionSID>HEAVENLY_HAND_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>140</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12177,7 +12177,7 @@
 				<CodexDescriptionSID>RADIANT_BEAM_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>180</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12201,7 +12201,7 @@
 				<CodexDescriptionSID>DIVINE_FORM_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>3000</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12225,7 +12225,7 @@
 				<CodexDescriptionSID>ABSOLUTION_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>3000</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12249,7 +12249,7 @@
 				<CodexDescriptionSID>WRAITH_FORM_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>1000</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12273,7 +12273,7 @@
 				<CodexDescriptionSID>POISON_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>300</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12297,7 +12297,7 @@
 				<CodexDescriptionSID>BLIND_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>250</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12321,7 +12321,7 @@
 				<CodexDescriptionSID>MUTE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>150</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12345,7 +12345,7 @@
 				<CodexDescriptionSID>SPELLBIND_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>450</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12369,7 +12369,7 @@
 				<CodexDescriptionSID>HASTE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>350</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12393,7 +12393,7 @@
 				<CodexDescriptionSID>SLOW_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>350</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12417,7 +12417,7 @@
 				<CodexDescriptionSID>STONE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>550</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12441,7 +12441,7 @@
 				<CodexDescriptionSID>CURSE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>300</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12465,7 +12465,7 @@
 				<CodexDescriptionSID>AIM_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>150</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12489,7 +12489,7 @@
 				<CodexDescriptionSID>HAZE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>150</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12513,7 +12513,7 @@
 				<CodexDescriptionSID>TIMEWALK_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>150</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12537,7 +12537,7 @@
 				<CodexDescriptionSID>UNCURSE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>125</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12561,7 +12561,7 @@
 				<CodexDescriptionSID>DETECT_TRAPS_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>100</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12585,7 +12585,7 @@
 				<CodexDescriptionSID>BLESS_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>175</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12609,7 +12609,7 @@
 				<CodexDescriptionSID>MALEDICTION_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>3000</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12633,7 +12633,7 @@
 				<CodexDescriptionSID>RAGE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>150</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>
@@ -12657,7 +12657,7 @@
 				<CodexDescriptionSID>STUN_BOLT_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
 				<Value>177</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>5</Pounds>
 				</Weight>
 				<Material>5</Material>
 				<Symbol>

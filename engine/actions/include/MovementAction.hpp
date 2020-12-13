@@ -11,7 +11,7 @@ class MovementAction : public IActionManager
   public:
     bool operator==(const MovementAction& mm) const;
 
-    ActionCostValue move(CreaturePtr creature, const Direction d);
+    ActionCostValue move(CreaturePtr creature, const Direction d, const bool confirm_if_dangerous = true);
     ActionCostValue ascend(CreaturePtr creature);
     ActionCostValue descend(CreaturePtr creature);
 
@@ -28,7 +28,7 @@ class MovementAction : public IActionManager
     // Move off the edge of a map - fields, forests, etc.
     ActionCostValue move_off_map(CreaturePtr creature, MapPtr map, TilePtr old_tile, const Direction direction);
     // A standard move within a map.
-    ActionCostValue move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords, const Direction d);
+    ActionCostValue move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords, const Direction d, const bool confirm_if_dangerous);
     // With an existing map, handle the properties on the tile, and then
     // move on to the map.
     ActionCostValue handle_properties_and_move_to_new_map(CreaturePtr creature, TilePtr old_tile, MapPtr old_map, MapPtr new_map, MapExitPtr map_exit = nullptr);

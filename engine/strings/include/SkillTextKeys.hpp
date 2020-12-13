@@ -200,7 +200,6 @@ class SkillTextKeys
     static const std::string SKILL_USAGE_LEADERSHIP;
     static const std::string SKILL_USAGE_LITERACY;
     static const std::string SKILL_USAGE_LORE;
-    static const std::string SKILL_USAGE_GENERAL_MAGIC;
     static const std::string SKILL_USAGE_MEDICINE;
     static const std::string SKILL_USAGE_MOUNTAINEERING;
     static const std::string SKILL_USAGE_NIGHT_SIGHT;

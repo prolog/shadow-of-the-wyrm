@@ -69,9 +69,13 @@ bool ParkSectorFeature::generate_feature(MapPtr map, const Coordinate& start_coo
           {
             tile = tg.generate(TileType::TILE_TYPE_FRUIT_TREE);
           }
-          else if (RNG::percent_chance(15))
+          else if (RNG::percent_chance(10))
           {
             tile = tg.generate(TileType::TILE_TYPE_TREE);
+          }
+          else if (RNG::percent_chance(5))
+          {
+            tile = tg.generate(TileType::TILE_TYPE_EVERGREEN_TREE);
           }
         }
 

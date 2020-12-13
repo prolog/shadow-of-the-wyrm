@@ -391,6 +391,22 @@
 				</Coord>
 				<Quantity>1</Quantity>
 			</Placement>
+			<Placement>
+				<ID>_whiteflower</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>77</Col>
+				</Coord>
+				<Quantity>1</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_whiteflower</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>74</Col>
+				</Coord>
+				<Quantity>1</Quantity>
+			</Placement>
 		</Items>
 	</InitialPlacements>
 	<Features>

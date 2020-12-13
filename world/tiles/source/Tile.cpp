@@ -421,7 +421,7 @@ void Tile::set_feature(FeaturePtr new_feature)
 
 void Tile::remove_feature()
 {
-  feature.reset();
+  feature = nullptr;
 }
 
 FeaturePtr Tile::get_feature()
@@ -454,7 +454,7 @@ void Tile::set_creature(const CreaturePtr& new_creature)
 
 void Tile::remove_creature()
 {
-  creature.reset();
+  creature = nullptr;
 }
 
 CreaturePtr Tile::get_creature() const

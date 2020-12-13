@@ -13,7 +13,7 @@ class InventoryManager : public IActionManager
     ~InventoryManager();
 
     // Do the actual managing of the inventory
-    ItemPtr manage_inventory(IInventoryPtr inv, const std::list<IItemFilterPtr>& base_display_filter_list, const std::list<IItemFilterPtr>& additional_display_filter_list, const bool inventory_is_read_only);
+    std::vector<ItemPtr> manage_inventory(IInventoryPtr inv, const std::list<IItemFilterPtr>& base_display_filter_list, const std::list<IItemFilterPtr>& additional_display_filter_list, const bool inventory_is_read_only, const bool allow_multiple_selected_items);
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 

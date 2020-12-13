@@ -18,9 +18,9 @@ local function setup_parklands_around_treasure_room(map_id)
   end
 
   if RNG_percent_chance(50) then
-    map_fill_random(map_id, 2, 3, 9, 11, CTILE_TYPE_FIELD, tile_type, 50)
+    map_fill_random(map_id, 2, 3, 7, 11, CTILE_TYPE_FIELD, tile_type, 50)
   else
-    map_fill_staggered(map_id, 2, 3, 9, 11, CTILE_TYPE_FIELD, tile_type, RNG_range(2, 3))
+    map_fill_staggered(map_id, 2, 3, 7, 11, CTILE_TYPE_FIELD, tile_type, RNG_range(2, 3))
   end
 end
 

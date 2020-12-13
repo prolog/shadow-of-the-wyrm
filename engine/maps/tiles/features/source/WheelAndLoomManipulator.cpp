@@ -2,6 +2,7 @@
 #include "ActionTextKeys.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
+#include "ItemTypes.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "Wearable.hpp"
@@ -11,9 +12,13 @@
 
 using namespace std;
 
+const int WheelAndLoomManipulator::WEAVING_PCT_CHANCE_BRAND = 1;
+
 WheelAndLoomManipulator::WheelAndLoomManipulator(FeaturePtr feature)
 : FeatureManipulator(feature),
-loom_map({ {EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, "_cloak"}, {EquipmentWornLocation::EQUIPMENT_WORN_BODY, "_robes"} })
+loom_map({ {EquipmentWornLocation::EQUIPMENT_WORN_HEAD, ItemIdKeys::ITEM_ID_CAP},
+           {EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, ItemIdKeys::ITEM_ID_CLOAK},
+           {EquipmentWornLocation::EQUIPMENT_WORN_BODY, ItemIdKeys::ITEM_ID_WAYFARER_CLOTHES} })
 {
 }
 
@@ -57,7 +62,7 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
         vector<pair<string, string>> item_property_filter = { make_pair(WeavingConstants::WEAVING_MATERIAL_TYPE_KEY, "") };
         list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_property_type_filter(item_property_filter);
 
-        ItemPtr selected_fibre = am.inventory(creature, creature->get_inventory(), display_filter_list, {}, false);
+        ItemPtr selected_fibre = am.inventory(creature, creature->get_inventory(), display_filter_list, {}, false, false);
 
         if (selected_fibre)
         {
@@ -135,15 +140,21 @@ ItemPtr WheelAndLoomManipulator::create_woven_armour(CreaturePtr creature, ItemP
       {
         WeavingCalculator wc;
 
-        int min_points = wc.calculate_min_enchant_points(creature);
-        int max_points = wc.calculate_max_enchant_points(creature);
+        int extra_evade = RNG::range(2, 4);
+        int extra_soak  = RNG::range(1, 2);
+        int min_points  = wc.calculate_min_enchant_points(creature);
+        int max_points  = wc.calculate_max_enchant_points(creature);
+        int num_points  = RNG::range(min_points, max_points);
 
-        int num_points = RNG::range(min_points, max_points);
+        wearable->set_evade(wearable->get_evade() + extra_evade);
+        wearable->set_soak(wearable->get_soak() + extra_soak);
 
-        // High weaving skill can improve an item as if by enchantments, but
-        // cannot brand it, which is why enchant is called with a pct_chance
-        // of 0 for branding.
-        wearable->enchant(0 /* weaving doesn't brand */, num_points);
+        // High weaving skill can improve an item as if by enchantments, and
+        // has a very small chance to apply a brand with each enchant.
+        for (int i = 0; i < num_points; i++)
+        {
+          wearable->enchant(WEAVING_PCT_CHANCE_BRAND, 1);
+        }
       }
     }
   }

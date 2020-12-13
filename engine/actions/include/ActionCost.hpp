@@ -9,6 +9,7 @@ class ActionCostConstants
 {
   public:
     static const int FISHING;
+    static const int INCINERATE_SPELLBOOK;
     static const int INSCRIBE;
     static const int STUMBLE;
     static const int DEFAULT;

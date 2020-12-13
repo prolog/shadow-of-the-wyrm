@@ -1,6 +1,7 @@
 #include "ActionTextKeys.hpp"
 #include "Commands.hpp"
 #include "Conversion.hpp"
+#include "CreatureDescriber.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DirectionUtils.hpp"
 #include "SpellcastingAction.hpp"
@@ -176,9 +177,10 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
             // Casting a spell always involves a verbal component, which breaks the
             // Silent conduct.
             creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_SILENT);
+            CreaturePtr player = Game::instance().get_current_player();
 
             // Add an appropriate casting message.
-            string cast_message = ActionTextKeys::get_spellcasting_message(spell, creature->get_description_sid(), creature->get_is_player());
+            string cast_message = ActionTextKeys::get_spellcasting_message(spell, player, creature, creature->get_is_player());
             manager.add_new_message(cast_message);
 
             // Reduce castings by one, removing the spell if there are none left.

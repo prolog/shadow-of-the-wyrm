@@ -138,7 +138,7 @@ CreatureGenerationList CreatureGenerationManager::generate_ancient_beasts(const 
       int dl = std::max(1, danger_level);
       int xp_val = em.get_total_experience_needed_for_level(nullptr, std::min(dl, 50));
 
-      ancient_beast = cf.create_by_race_and_class(Game::instance().get_action_manager_ref(), RaceID::RACE_ID_UNKNOWN, "", "", CreatureSex::CREATURE_SEX_NOT_SPECIFIED);
+      ancient_beast = cf.create_by_race_and_class(Game::instance().get_action_manager_ref(), RaceID::RACE_ID_UNKNOWN, "", "", CreatureSex::CREATURE_SEX_NOT_SPECIFIED, CreatureSize::CREATURE_SIZE_HUGE);
       ancient_beast->set_base_damage(dam);
       ancient_beast->set_evade(danger_level);
       ancient_beast->set_soak(danger_level);
@@ -252,7 +252,7 @@ CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, cons
   }
 
   string name = Naming::generate_name(sex);
-  CreaturePtr hireling = cf.create_by_race_and_class(am, race_id, class_id, name, sex);
+  CreaturePtr hireling = cf.create_by_race_and_class(am, race_id, class_id, name, sex, CreatureSize::CREATURE_SIZE_NA);
   DecisionStrategyPtr ds = DecisionStrategyFactory::create_decision_strategy(DecisionStrategyID::DECISION_STRATEGY_MOBILE);
 
   // Hirelings remain neutral and never jump in to help.

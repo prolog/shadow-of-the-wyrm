@@ -57,7 +57,7 @@ bool MovementAction::operator==(const MovementAction& mm) const
   return true;
 }
 
-ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direction)
+ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direction, const bool confirm_if_dangerous)
 {
   ActionCostValue movement_acv = ActionCostConstants::NO_ACTION;
   Game& game = Game::instance();
@@ -104,7 +104,7 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
       Coordinate new_coords = CoordUtils::get_new_coordinate(creature_location, direction);
       TilePtr creatures_new_tile = map->at(new_coords.first, new_coords.second);
       
-      movement_acv = move_within_map(creature, map, creatures_old_tile, creatures_new_tile, new_coords, direction);
+      movement_acv = move_within_map(creature, map, creatures_old_tile, creatures_new_tile, new_coords, direction, confirm_if_dangerous);
     }
 
     // Update the loaded map details with the player's new coordinate,
@@ -189,7 +189,7 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
   return movement_acv;
 }
 
-ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords, const Direction d)
+ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords, const Direction d, const bool confirm_if_dangerous)
 {
   ActionCostValue movement_acv = ActionCostConstants::NO_ACTION;
   bool creature_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
@@ -277,7 +277,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
 
       if (cca.can_move(creature, true))
       {
-        if (confirm_move_to_tile_if_necessary(creature, map, creatures_old_tile, creatures_new_tile, new_coords))
+        if (!confirm_if_dangerous || confirm_move_to_tile_if_necessary(creature, map, creatures_old_tile, creatures_new_tile, new_coords))
         {
           ostringstream ss;
           ss << "Moving within map: ID " << creature->get_id() << " to " << new_coords.first << "," << new_coords.second;

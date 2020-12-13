@@ -7,7 +7,7 @@ class EtherEffect : public HealingEffect
 {
   public:
     EtherEffect();
-    
+
     virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const override;
     virtual Effect* clone() override;
 

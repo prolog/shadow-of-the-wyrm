@@ -261,6 +261,7 @@ int get_hirelings_hired(lua_State* ls);
 int get_trained_magic_skills(lua_State* ls);
 int order_follow(lua_State* ls);
 int order_at_ease(lua_State* ls);
+int reset_creatures_and_creature_locations(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

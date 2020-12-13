@@ -908,6 +908,18 @@ bool CoordUtils::is_vertical(const pair<Coordinate, Coordinate>& segment)
   return (segment.first.second == segment.second.second);
 }
 
+bool CoordUtils::is_contained(const Coordinate& top_left, const Coordinate& bottom_right, const Coordinate& c)
+{
+  bool contained = false;
+
+  contained = ((c.first >= top_left.first) &&
+               (c.first <= bottom_right.first) &&
+               (c.second >= top_left.second) &&
+               (c.second <= bottom_right.second));
+
+  return contained;
+}
+
 string CoordUtils::to_string(const Coordinate& c)
 {
   ostringstream ss;

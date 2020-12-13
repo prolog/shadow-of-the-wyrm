@@ -228,6 +228,33 @@ void Map::reset_creatures_and_locations()
   }
 }
 
+// Resets the creatures and the list of creature locations.
+// Leave general locations alone.
+void Map::reset_creatures_and_creature_locations()
+{
+  creatures.clear();
+
+  // explicitly not resetting all locations here, as we don't want to wipe
+  // out any non-creature locations.
+
+  for (TilesContainer::iterator t_it = tiles.begin(); t_it != tiles.end(); t_it++)
+  {
+    string tile_key = t_it->first;
+    TilePtr tile = t_it->second;
+
+    if (tile && tile->has_creature())
+    {
+      CreaturePtr creature = tile->get_creature();
+
+      if (creature)
+      {
+        add_creature(creature);
+        locations[creature->get_id()] = MapUtils::convert_map_key_to_coordinate(tile_key);
+      }
+    }
+  }
+}
+
 // Remove a creature both from the main list, as well as from the locations list.
 void Map::remove_creature(const string& creature_id)
 {

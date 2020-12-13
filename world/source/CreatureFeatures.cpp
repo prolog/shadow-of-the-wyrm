@@ -53,3 +53,4 @@ const string CreatureID::CREATURE_ID_NOBLE = "_noble";
 const string CreatureID::CREATURE_ID_FISHERMAN = "_fisherman";
 const string CreatureID::CREATURE_ID_FARMER = "_farmer";
 const string CreatureID::CREATURE_ID_SMALL_CHILD = "_small_child";
+const string CreatureID::CREATURE_ID_GUARD = "_guard";

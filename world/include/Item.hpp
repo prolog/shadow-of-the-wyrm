@@ -227,6 +227,8 @@ class Item : public ISerializable
     virtual DamageType do_brand();
     DamageType get_random_brand();
 
+    void increase_value(const int num_enchant_or_smith_points = 1);
+
     std::string id;
     std::string base_id;
     uint quantity; // the number of items in the stack
@@ -260,6 +262,8 @@ class Item : public ISerializable
     std::map<std::string, std::string> additional_properties;
     std::map<std::string, ScriptDetails> event_scripts;
     bool unpaid;
+
+    static const int MIN_ENCHANT_VALUE_INCR;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const = 0;

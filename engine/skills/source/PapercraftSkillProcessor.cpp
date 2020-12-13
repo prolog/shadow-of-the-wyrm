@@ -142,7 +142,7 @@ ItemPtr PapercraftSkillProcessor::select_pulp_pile(CreaturePtr creature)
   if (creature != nullptr)
   {
     list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_base_id_filter(ItemIdKeys::ITEM_ID_PAPER_PULP);
-    selected = Game::instance().get_action_manager_ref().inventory(creature, creature->get_inventory(), display_filter_list, {}, false);
+    selected = Game::instance().get_action_manager_ref().inventory(creature, creature->get_inventory(), display_filter_list, {}, false, false);
   }
 
   return selected;

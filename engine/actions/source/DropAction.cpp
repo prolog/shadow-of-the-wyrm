@@ -28,7 +28,7 @@ ActionCostValue DropAction::drop(CreaturePtr creature, const string& drop_item_i
   if (creature != nullptr)
   {
     ItemPtr item_to_drop = creature->get_inventory()->get_from_id(drop_item_id);
-    acv = do_drop(creature, game.get_current_map(), item_to_drop);
+    acv = do_drop(creature, game.get_current_map(), item_to_drop, false);
   }
 
   return acv;
@@ -50,15 +50,18 @@ ActionCostValue DropAction::drop(CreaturePtr dropping_creature, ActionManager * 
     else
     {
       list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
-      ItemPtr item_to_drop = am->inventory(dropping_creature, dropping_creature->get_inventory(), no_filter, {}, false);
+      vector<ItemPtr> items_to_drop = am->inventory_multiple(dropping_creature, dropping_creature->get_inventory(), no_filter, {}, false, true);
       
-      if (!item_to_drop)
+      if (items_to_drop.empty())
       {
         handle_no_item_dropped(dropping_creature);
       }
       else // Item selected
       {
-        action_cost_value = do_drop(dropping_creature, game.get_current_map(), item_to_drop);
+        for (ItemPtr i : items_to_drop)
+        {
+          action_cost_value += do_drop(dropping_creature, game.get_current_map(), i, items_to_drop.size() > 1);
+        }
       }      
     }
   }
@@ -100,8 +103,6 @@ void DropAction::handle_item_dropped_message(CreaturePtr creature, ItemPtr item)
     Game& game = Game::instance();
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(game, creature->get_id()));
 
-    manager.clear_if_necessary();
-    
     CurrentCreatureAbilities cca;
     string drop_message = TextMessages::get_item_drop_message(creature, !cca.can_see(creature), item);
     
@@ -145,7 +146,7 @@ void DropAction::handle_seed_planted_message(CreaturePtr creature, ItemPtr seed)
 }
 
 // Do the actual dropping of items.
-ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, ItemPtr item_to_drop)
+ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, ItemPtr item_to_drop, const bool multi_item)
 {
   ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
   TilePtr creatures_tile = MapUtils::get_tile_for_creature(current_map, creature);
@@ -162,7 +163,10 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
 
     if (quantity > 1)
     {
-      selected_quantity = get_drop_quantity(creature, quantity);
+      if (!multi_item)
+      {
+        selected_quantity = get_drop_quantity(creature, quantity);
+      }
     }
 
     // Drop quantity

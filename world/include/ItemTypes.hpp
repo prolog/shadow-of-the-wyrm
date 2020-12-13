@@ -132,6 +132,11 @@ class ItemIdKeys
     static const std::string ITEM_ID_PAPER_PULP;
     static const std::string ITEM_ID_MOLD_AND_DECKLE;
 
+    // Weaving
+    static const std::string ITEM_ID_CAP;
+    static const std::string ITEM_ID_CLOAK;
+    static const std::string ITEM_ID_WAYFARER_CLOTHES;
+
     // Beer Halls
     static const std::string ITEM_ID_DRAM_GIN;
     static const std::string ITEM_ID_DRAM_MEAD;

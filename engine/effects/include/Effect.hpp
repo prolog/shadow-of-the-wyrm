@@ -28,6 +28,9 @@ class Effect
     // Is this a negative effect?  Would a create be upset if it were applied?
     virtual bool is_negative_effect() const;
 
+    // In some cases we may not want the additional effect messages.
+    virtual void clear_additional_effect_messages();
+
     // Additional properties are read in from a map.  These can be used to set
     // values from spells, like healing amounts.
     virtual void read_properties(const std::map<std::string, std::string>& properties);

@@ -6,6 +6,7 @@ using namespace std;
 
 // Constants for particular actions (to avoid magic numbers in the action code)
 const int ActionCostConstants::FISHING = 100;
+const int ActionCostConstants::INCINERATE_SPELLBOOK = 125;
 const int ActionCostConstants::INSCRIBE = 100;
 const int ActionCostConstants::STUMBLE = 15;
 const int ActionCostConstants::DEFAULT = 1;

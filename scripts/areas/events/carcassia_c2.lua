@@ -11,7 +11,7 @@ local function setup_special_features(map_id)
 end
 
 local function setup_arena_litter(map_id)
-  local litter_ids = {"dagger", "mace", "broad_sword", "spear", "cap", "buckler", "sling"}
+  local litter_ids = {"dagger", "mace", "broad_sword", "spear", "_cap", "buckler", "sling"}
 
   for row = 6,12 do
     for col = 54,62 do
@@ -50,8 +50,30 @@ local function setup_entrance_features(map_id)
   end
 end
 
+local function setup_west_room_features(map_id)
+  -- Fountains
+  local rows = {4, 14}
+  
+  for i,y in ipairs(rows) do
+    for x = 6,8 do
+      add_feature_to_map(CCLASS_ID_FOUNTAIN, y, x, map_id)
+    end
+  end
+
+  -- Statues
+  rows = {1, 18}
+  local class_ids = {CCLASS_ID_WARLORD_DECORATIVE_STATUE, CCLASS_ID_KNIGHT_DECORATIVE_STATUE}
+
+  for i,y in ipairs(rows) do
+    for x = 1, 13, 2 do
+      add_feature_to_map(class_ids[RNG_range(1, #class_ids)], y, x, map_id)
+    end
+  end
+end
+
 function init_carcassia_c2(map_id)
   setup_special_features(map_id)
+  setup_west_room_features(map_id)
   setup_entrance_features(map_id)
   setup_arena_litter(map_id)
   carcassia_common.setup_population(map_id, {4,28}, {16,43}, population)

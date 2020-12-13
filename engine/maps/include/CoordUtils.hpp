@@ -97,6 +97,9 @@ class CoordUtils
     // Convert to a "(y,x)" format string
     static std::string to_string(const Coordinate& c);
 
+    // Is the coordinate contained in the given bounds, inclusive?
+    static bool is_contained(const Coordinate& top_left, const Coordinate& bottom_right, const Coordinate& c);
+
   protected:
     CoordUtils();
     ~CoordUtils();
