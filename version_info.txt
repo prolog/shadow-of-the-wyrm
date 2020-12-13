@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.2.5 "Arnold"
-- Version declared November 1, 2020.
+- Version declared November 1, 2020. Version finalized December 13, 2020.
 
 - Rocs now have the "flying" flag (Josh Engdahl).
 
