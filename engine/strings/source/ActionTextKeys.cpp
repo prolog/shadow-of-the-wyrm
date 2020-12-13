@@ -1,5 +1,7 @@
 #include <boost/algorithm/string/replace.hpp>
 #include "ActionTextKeys.hpp"
+#include "CreatureUtils.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "RNG.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
@@ -82,9 +84,11 @@ string ActionTextKeys::get_full_message(const string& desc_sid, const string& co
   return get_general_action_message(desc_sid, consumable_desc, ACTION_FULL_PLAYER, ACTION_FULL_MONSTER, is_player);
 }
 
-string ActionTextKeys::get_spellcasting_message(const Spell& spell, const string& creature_desc_sid, const bool is_player)
+string ActionTextKeys::get_spellcasting_message(const Spell& spell, CreaturePtr player, CreaturePtr caster, const bool is_player)
 {
   string spellcasting_message;
+
+  string creature_desc = CreatureUtils::get_description_for_fov_message(player, caster);
 
   if (is_player)
   {
@@ -93,7 +97,7 @@ string ActionTextKeys::get_spellcasting_message(const Spell& spell, const string
   else
   {
     spellcasting_message = StringTable::get(spell.get_monster_cast_message_sid());
-    boost::replace_first(spellcasting_message, "%s", StringTable::get(creature_desc_sid));
+    boost::replace_first(spellcasting_message, "%s", creature_desc);
   }
 
   spellcasting_message[0] = toupper(spellcasting_message[0]);
@@ -532,6 +536,24 @@ string ActionTextKeys::get_tame_failure_message(const string& creature_sid)
   return msg;
 }
 
+string ActionTextKeys::get_incinerate_spellbook_message(const string& item_usage_desc_sid)
+{
+  string msg = StringTable::get(ACTION_INCINERATE_SPELLBOOK);
+  boost::replace_first(msg, "%s", StringTable::get(item_usage_desc_sid));
+  msg[0] = toupper(msg[0]);
+
+  return msg;
+}
+
+string ActionTextKeys::get_incinerate_spellbook_wild_message(const string& item_usage_desc_sid)
+{
+  string msg = StringTable::get(ACTION_INCINERATE_SPELLBOOK_WILD);
+  boost::replace_first(msg, "%s", StringTable::get(item_usage_desc_sid));
+  msg[0] = toupper(msg[0]);
+
+  return msg;
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -703,6 +725,9 @@ const string ActionTextKeys::ACTION_TAME_BEGIN                 = "ACTION_TAME_BE
 const string ActionTextKeys::ACTION_TAME_NO_TARGETS            = "ACTION_TAME_NO_TARGETS";
 const string ActionTextKeys::ACTION_ORDER_NO_FOLLOWERS         = "ACTION_ORDER_NO_FOLLOWERS";
 const string ActionTextKeys::ACTION_ABANDONED                  = "ACTION_ABANDONED";
+const string ActionTextKeys::ACTION_INCINERATE_NO_SPELLBOOKS   = "ACTION_INCINERATE_NO_SPELLBOOKS";
+const string ActionTextKeys::ACTION_INCINERATE_NO_AP           = "ACTION_INCINERATE_NO_AP";
+const string ActionTextKeys::ACTION_INCINERATE_FULL_AP         = "ACTION_INCINERATE_FULL_AP";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";
@@ -764,3 +789,5 @@ const string ActionTextKeys::ACTION_SWITCH_GRAPHICS_MODE          = "ACTION_SWIT
 const string ActionTextKeys::ACTION_TAMED_PLAYER                  = "ACTION_TAMED_PLAYER";
 const string ActionTextKeys::ACTION_TAMED_MONSTER                 = "ACTION_TAMED_MONSTER";
 const string ActionTextKeys::ACTION_TAME_FAILURE                  = "ACTION_TAME_FAILURE";
+const string ActionTextKeys::ACTION_INCINERATE_SPELLBOOK          = "ACTION_INCINERATE_SPELLBOOK";
+const string ActionTextKeys::ACTION_INCINERATE_SPELLBOOK_WILD     = "ACTION_INCINERATE_SPELLBOOK_WILD";

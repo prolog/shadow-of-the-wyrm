@@ -1,3 +1,112 @@
+Shadow of the Wyrm v1.2.5 "Arnold"
+- Version declared November 1, 2020. Version finalized December 13, 2020.
+
+- Rocs now have the "flying" flag (Josh Engdahl).
+
+- More name combinations.
+
+- When doing the Carcassia start, you now start on it instead of 1n (Grond).
+
+- Hamlets have a chance to generate with earthen (sod) buildings.
+
+- The glow effect now properly combines the glowing item(s) into similar
+  stacks in the inventory (Josh Engdahl).
+
+- Weaving was previously doing its free enchant "in one shot", leading to
+  items that are weighted in the extreme: all soak, all evade, etc.  Updated
+  this so that it goes point-by-point, creating more diverse items, and also
+  updated it so that there is a small chance per enchant to apply a brand.
+
+- Whiteflower is a little more common, and there is some guaranteed in Isen
+  Dun.
+
+- An individual jelly is now properly referred to as "itself" rather than
+  "himself", as they are sexless (Josh Engdahl). Race-based flags have also
+  been set for insects, constructs, and plants, not all of which are actually
+  asexual, but for which "himself"/"herself" feels awkward.
+
+- Woven items will now start off a little more powerful (2-4 EV, 1-2 SK) even
+  before the free enchantments are applied.
+
+- Instead of robes, the body-slot woven item is now wayfarer clothes, and you
+  can weave for the head slot (cap) as well.
+
+- Rarer, healing herbs can now generate naturally in fields, though with a 
+  very low probability.
+
+- Updates to the premake script to fix postbuild steps when run with premake 5
+  (Larzid).
+
+- Traps will no longer generate in random shops.
+
+- Auto-identification on equip is no longer restricted to wearables (Josh
+  Engdahl).
+
+- You can now use '~' to list your unpaid items in the inventory view (Josh
+  Engdahl).
+
+- When picking up/dropping items, you can now use '*' in the inventory screen
+  to select all the items in the current view and pick them up or drop them
+  all at once.
+
+- Created a new colourblind-friendly SDL palette (CB Reader) based on Paul
+  Tol's work at https://personal.sron.nl/~pault/
+
+- A settlement's walls can now be made of earth as well as rock.
+
+- Walled settlements generate a barracks in one of the corners of the town.
+
+- Walled settlement barracks generate a few mobile guards, and a few sentries
+  are now placed along the walls.
+
+- Races now have a reasonable default size, with support on the creature 
+  definitions to override this.  Previously most corpses were 100 lbs. (the
+  default for size medium) and there should be more variety now (Josh Engdahl).
+
+- Level has been added to the bestiary, as well as the creature's name, when
+  that's been defined (shopkeepers, hirelings, etc).
+
+- Signposts no longer block.
+
+- Spellbooks are now heavier (5 lbs - they were always meant to be big and
+  tome-like).  The Magic skill can now be used to incinerate spellbooks and
+  absorb the AP, though this always has a chance to backfire and cause a bit
+  of damage. The amount of damage, and the chance to backfire, increases with
+  the number of spellbooks you're trying to incinerate at once.
+
+- Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - The spellcasting message wasn't properly displaying "something" when an
+    NPC cast a spell, you were blind, and it was adjacent (Josh Engdahl).
+
+  - when kicking a creature, knockback was prevented into dangerous tiles
+    because the game was querying the NPC for permission.
+
+  - NPC spellcasting for attack spells could cause a crash when the caster
+    was blinded (Josh Engdahl).
+
+  - Quislings' chat text was written, but not set in the game configuration.
+
+  - Guardsmen were explicitly gender-neutral in their description but called
+    "guardsman"/"guardsmen"; an instance is now simply a "guard".  Previously
+    they were always human, and can now be any playable race.
+
+  - An invalid action selection in the Order screen was advancing the turn
+    (Josh Engdahl).
+
+  - Pegasus was missing flying.
+
+  - The game could lose track of creatures in a map's internal set of
+    locations, leading to issues like duplication, non-removal, etc (various).
+
+  - Applying traps while adjacent would eventually disarm them (Larzid).
+
+  - A couple of characters still referenced "Hrothgar" in their chat text.
+
+  - Typo fixes in bestiary/codex/manual (various).
+
 Shadow of the Wyrm v1.2.4 "Britten"
 - Version declared September 12, 2020. Version finalized November 1, 2020.
 
@@ -62,6 +171,8 @@ Shadow of the Wyrm v1.2.4 "Britten"
 
 - Cancelling a spell via an invalid direction no longer advances the turn
   (Josh Engdahl).
+
+- Added some more features to make the Carcassian fortress feel less empty.
 
 - Stanzas for "Tel and Floridel".
 

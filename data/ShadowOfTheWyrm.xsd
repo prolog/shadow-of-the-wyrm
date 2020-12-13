@@ -323,6 +323,7 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="UserPlayable" type="xs:boolean"/>
+			<xs:element name="Sex" type="tns:Sex" minOccurs="0"/>
 			<xs:element name="PackMultiplier" type="xs:integer" minOccurs="0"/>
 			<xs:element name="Slayable" type="xs:boolean"/>
 			<xs:element name="LeavesCorpse" type="xs:boolean"/>
@@ -478,6 +479,7 @@
 			<xs:element name="DescriptionSID" type="xs:string"/>
 			<xs:element name="TextDetailsSID" type="xs:string"/>
 			<xs:element name="SpeechTextSID" type="xs:string" minOccurs="0"/>
+			<xs:element name="Size" type="tns:CreatureSizeType" minOccurs="0"/>
 			<xs:element name="Sex" type="tns:Sex" minOccurs="0"/>
 			<xs:element name="Flying" type="xs:boolean" minOccurs="0"/>
 			<xs:element name="WaterBreathing" type="xs:boolean" minOccurs="0"/>
@@ -1456,7 +1458,7 @@
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxExclusive value="5"/>		
+		<xs:maxInclusive value="5"/>		
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="Statistic">
@@ -1900,6 +1902,7 @@
 	<xs:restriction base="xs:integer">
 		<xs:enumeration value="0"/>
 		<xs:enumeration value="1"/>
+		<xs:enumeration value="2"/>
 	</xs:restriction>
 </xs:simpleType>
 <!-- See ItemTypes.hpp -->

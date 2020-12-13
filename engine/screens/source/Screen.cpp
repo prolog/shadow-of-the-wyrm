@@ -9,6 +9,7 @@
 
 using namespace std;
 using namespace boost::algorithm;
+using std::vector;
 
 // Any base initialization for the Screen
 Screen::Screen(DisplayPtr new_display)
@@ -83,6 +84,30 @@ OptionPtr Screen::get_option(const int op_id)
   }
 
   return option;
+}
+
+vector<OptionPtr> Screen::get_options()
+{
+  vector<OptionPtr> options;
+
+  auto cur_page = get_current_page();
+  for (auto comp : cur_page)
+  {
+    auto as_options = dynamic_pointer_cast<OptionsComponent>(comp);
+
+    if (as_options != nullptr)
+    {
+      auto ops = as_options->get_options();
+
+      for (auto op : ops)
+      {
+        OptionPtr option = make_shared<Option>(op);
+        options.push_back(option);
+      }
+    }
+  }
+
+  return options;
 }
 
 // Display the contents of the Screen to the user via the DisplayPtr.

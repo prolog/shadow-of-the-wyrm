@@ -22,6 +22,6 @@ class DropAction : public IActionManager
     bool plant_seed(CreaturePtr creature, const std::string& tree_species_id, const Coordinate& coords, TilePtr tile, MapPtr current_map);
     void make_map_permanent(Game& game, CreaturePtr creature, MapPtr current_map);
     
-    ActionCostValue do_drop(CreaturePtr creature, MapPtr current_map, ItemPtr item);
+    ActionCostValue do_drop(CreaturePtr creature, MapPtr current_map, ItemPtr item, const bool multi_item);
     uint get_drop_quantity(CreaturePtr creature, const uint max_quantity) const;
 };

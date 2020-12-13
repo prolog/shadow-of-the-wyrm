@@ -52,7 +52,7 @@ bool BlessEffect::bless(CreaturePtr creature, const BlessEffectType bless_type, 
   {
     list<IItemFilterPtr> empty_list = ItemFilterFactory::create_empty_filter();
     IInventoryPtr inv = creature->get_inventory();
-    ItemPtr selected_item = am->inventory(creature, inv, empty_list, empty_list, false);
+    ItemPtr selected_item = am->inventory(creature, inv, empty_list, empty_list, false, false);
 
     if (selected_item != nullptr)
     {

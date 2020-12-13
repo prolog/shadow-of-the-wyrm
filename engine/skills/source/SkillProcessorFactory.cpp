@@ -3,6 +3,7 @@
 #include "DisarmTrapsSkillProcessor.hpp"
 #include "FishingSkillProcessor.hpp"
 #include "FletcherySkillProcessor.hpp"
+#include "GeneralMagicSkillProcessor.hpp"
 #include "HidingSkillProcessor.hpp"
 #include "MusicSkillProcessor.hpp"
 #include "PapercraftSkillProcessor.hpp"
@@ -51,7 +52,7 @@ void SkillProcessorFactory::populate_skill_map()
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_LEADERSHIP, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_LEADERSHIP)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_LITERACY, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_LITERACY)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_LORE, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_LORE)));
-  skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MAGIC, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_GENERAL_MAGIC)));
+  skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MAGIC, make_unique<GeneralMagicSkillProcessor>()));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MEDICINE, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_MEDICINE)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MOUNTAINEERING, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_MOUNTAINEERING)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MUSIC, make_unique<MusicSkillProcessor>()));

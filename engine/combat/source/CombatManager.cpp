@@ -1236,7 +1236,7 @@ bool CombatManager::knock_back_creature_if_necessary(const AttackType attack_typ
         manager.add_new_message(knock_back_msg);
         manager.send();
 
-        am.move(attacked_creature, kick_dir);
+        am.move(attacked_creature, kick_dir, false);
         knocked_back = true;
 
         if (!attacked_creature->is_dead() && MapUtils::is_tile_available_for_creature(attacked_creature, next_tile))

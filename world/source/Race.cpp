@@ -17,6 +17,7 @@ const string RaceID::RACE_ID_UNKNOWN = "_unknown";
 // Set the bare defaults for each race.
 Race::Race()
 : user_playable(false)
+, sex(CreatureSex::CREATURE_SEX_NA)
 , pack_multiplier(1)
 , slayable(false)
 , leaves_corpse(true)
@@ -90,6 +91,16 @@ void Race::set_user_playable(const bool playable)
 bool Race::get_user_playable() const
 {
   return user_playable;
+}
+
+void Race::set_sex(const CreatureSex new_sex)
+{
+  sex = new_sex;
+}
+
+CreatureSex Race::get_sex() const
+{
+  return sex;
 }
 
 void Race::set_pack_multiplier(const int new_pack_multiplier)
@@ -539,6 +550,7 @@ string Race::str() const
   string race_abrv_value = StringTable::get(race_abbreviation_sid);
 
   race_details << race_id << endl;
+  race_details << static_cast<int>(sex) << endl;
   race_details << starting_strength.get_base() << " " << starting_dexterity.get_base() << " " << starting_agility.get_base() << " " << starting_health.get_base() << " " << starting_intelligence.get_base() << " " << starting_willpower.get_base() << " " << starting_charisma.get_base() << " " << starting_speed.get_base() << endl;
   race_details << race_name_value << endl;
   race_details << race_abrv_value << endl;

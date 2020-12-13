@@ -11,6 +11,7 @@ class ItemFilterFactory
     static std::list<IItemFilterPtr> create_script_filter(const int script_constant);
 
     static std::list<IItemFilterPtr> create_empty_filter();
+    static std::list<IItemFilterPtr> create_unpaid_filter();
     static std::list<IItemFilterPtr> create_equipment_filter(const std::list<EquipmentWornLocation>& worn_list);
     static std::list<IItemFilterPtr> create_item_type_filter(const ItemType item_type);
     static std::list<IItemFilterPtr> create_item_type_filter(const std::list<ItemType>& item_type_list);

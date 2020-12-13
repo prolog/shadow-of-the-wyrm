@@ -4,10 +4,35 @@
 
 using namespace std;
 
+const int SpellbookCalculator::BASE_PCT_CHANCE_WILD_INCINERATION = 5;
+const int SpellbookCalculator::MAX_PCT_CHANCE_WILD_INCINERATION = 80;
+
 SpellbookCalculator::SpellbookCalculator()
 {
   initialize_status_failure_levels();
   initialize_status_casting_multipliers();
+}
+
+int SpellbookCalculator::calculate_pct_chance_wild_incineration(const uint quantity)
+{
+  int pct_chance = BASE_PCT_CHANCE_WILD_INCINERATION * static_cast<int>(quantity);
+  pct_chance = std::min<int>(pct_chance, MAX_PCT_CHANCE_WILD_INCINERATION);
+
+  return pct_chance;
+}
+
+int SpellbookCalculator::get_ap_amount(const int spell_ap, CreaturePtr creature)
+{
+  int ap_amount = 0;
+
+  if (creature != nullptr)
+  {
+    Statistic& ap = creature->get_arcana_points_ref();
+    int pts_from_max = ap.get_base() - ap.get_current();
+    ap_amount = std::min<int>(spell_ap, pts_from_max);
+  }
+
+  return ap_amount;
 }
 
 void SpellbookCalculator::initialize_status_failure_levels()
@@ -127,3 +152,7 @@ bool SpellbookCalculator::get_is_spellbook_destroyed(const ItemStatus spellbook_
 
   return spellbook_destroyed;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/SpellbookCalculator_test.cpp"
+#endif

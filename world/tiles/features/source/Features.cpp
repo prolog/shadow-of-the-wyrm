@@ -946,11 +946,6 @@ pair<string, vector<string>> Sign::get_description_and_replacement_sids() const
   return make_pair(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SIGN, replace);
 }
 
-bool Sign::get_is_blocking() const
-{
-  return true;
-}
-
 ClassIdentifier Sign::internal_class_identifier() const
 {
   return ClassIdentifier::CLASS_ID_SIGN;

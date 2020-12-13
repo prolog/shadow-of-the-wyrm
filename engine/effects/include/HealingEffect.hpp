@@ -11,6 +11,9 @@ class HealingEffect : public Effect
 
     virtual void read_properties(const std::map<std::string, std::string>& properties) override;
 
+    static const std::string HEALING_MIN;
+    static const std::string HEALING_MAX;
+
   protected:
     virtual bool effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
     virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
@@ -30,6 +33,4 @@ class HealingEffect : public Effect
     static const double CURSED_MULTIPLIER;
     static const int BASE_MIN_HP;
     static const int BASE_MAX_HP;
-    static const std::string HEALING_MIN;
-    static const std::string HEALING_MAX;
 };

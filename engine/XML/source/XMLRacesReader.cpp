@@ -60,6 +60,13 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool user_playable = XMLUtils::get_child_node_bool_value(race_node, "UserPlayable");
     race->set_user_playable(user_playable);
 
+    XMLNode sex_node = XMLUtils::get_next_element_by_local_name(race_node, "Sex");
+    if (!sex_node.is_null())
+    {
+      CreatureSex sex = static_cast<CreatureSex>(XMLUtils::get_node_int_value(sex_node, -1));
+      race->set_sex(sex);
+    }
+
     int pack_multiplier = XMLUtils::get_child_node_int_value(race_node, "PackMultiplier", 1);
     race->set_pack_multiplier(pack_multiplier);
 

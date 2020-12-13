@@ -1,5 +1,6 @@
 #include "FieldTileConfiguration.hpp"
 #include "ItemManager.hpp"
+#include "ItemTypes.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -57,13 +58,17 @@ void FieldTileConfiguration::configure(TilePtr tile, const Season season) const
 
 void FieldTileConfiguration::initialize_additional_flora_map()
 {
-  vector<pair<pair<int, int>, string>> summer_p_map = { { {1, 1000}, "_wildflower_1" }, 
-                                                        { {1, 1000}, "_wildflower_2" }, 
-                                                        { {1, 1000}, "_wildflower_3"}, 
-                                                        { {1, 1000}, "_wildflower_4"}, 
-                                                        { {1, 1000}, "_wildflower_5"}, 
-                                                        { {1, 1000}, "_wildflower_6"},
-                                                        { {1, 2500}, "_whiteflower" } };
+  vector<pair<pair<int, int>, string>> summer_p_map = { { {1, 1000}, ItemIdKeys::ITEM_ID_WILDFLOWER_1}, 
+                                                        { {1, 1000}, ItemIdKeys::ITEM_ID_WILDFLOWER_2}, 
+                                                        { {1, 1000}, ItemIdKeys::ITEM_ID_WILDFLOWER_3}, 
+                                                        { {1, 1000}, ItemIdKeys::ITEM_ID_WILDFLOWER_4}, 
+                                                        { {1, 1000}, ItemIdKeys::ITEM_ID_WILDFLOWER_5}, 
+                                                        { {1, 1000}, ItemIdKeys::ITEM_ID_WILDFLOWER_6},
+                                                        { {1, 1700}, ItemIdKeys::ITEM_ID_WHITEFLOWER },
+                                                        { {1, 7000}, ItemIdKeys::ITEM_ID_STONEFLOWER },
+                                                        { {1, 7000}, ItemIdKeys::ITEM_ID_WHITE_BASIL },
+                                                        { {1, 7000}, ItemIdKeys::ITEM_ID_VERBENA     },
+                                                        { {1, 7000}, ItemIdKeys::ITEM_ID_VOXFLOWER   } };
 
   flora_map = AdditionalFloraMap{ {Season::SEASON_SUMMER, summer_p_map} };
 }

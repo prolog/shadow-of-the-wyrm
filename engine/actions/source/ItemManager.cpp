@@ -424,17 +424,11 @@ void ItemManager::handle_item_identification_and_statuses(CreaturePtr creature, 
       creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_ARTIFACTLESS);
     }
 
-    WearablePtr wearable = std::dynamic_pointer_cast<Wearable>(item);
+    ItemIdentifier iid;
 
-    // If wearable, identify it.
-    if (wearable != nullptr)
+    if (creature->get_is_player())
     {
-      ItemIdentifier iid;
-
-      if (creature->get_is_player())
-      {
-        iid.set_item_identified(creature, item, item->get_base_id(), true);
-      }
+      iid.set_item_identified(creature, item, item->get_base_id(), true);
     }
 
     // If auto-cursing, curse it.

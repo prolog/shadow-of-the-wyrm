@@ -13,7 +13,7 @@ WornLocationSelectionScreenPtr WornLocationScreenFactory::create_skin_screen(Dis
 
 WornLocationSelectionScreenPtr WornLocationScreenFactory::create_weaving_screen(DisplayPtr display)
 {
-  vector<EquipmentWornLocation> weave_locs = { EquipmentWornLocation::EQUIPMENT_WORN_BODY, EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY };
+  vector<EquipmentWornLocation> weave_locs = { EquipmentWornLocation::EQUIPMENT_WORN_HEAD, EquipmentWornLocation::EQUIPMENT_WORN_BODY, EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY };
   WornLocationSelectionScreenPtr scr = make_unique<WornLocationSelectionScreen>(display, weave_locs, PromptTextKeys::PROMPT_WEAVE);
 
   return scr;

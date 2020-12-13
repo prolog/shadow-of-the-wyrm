@@ -412,6 +412,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_trained_magic_skills", get_trained_magic_skills);
   lua_register(L, "order_follow", order_follow);
   lua_register(L, "order_at_ease", order_at_ease);
+  lua_register(L, "reset_creatures_and_creature_locations", reset_creatures_and_creature_locations);
 }
 
 // Lua API helper functions
@@ -2055,7 +2056,7 @@ int remove_creature_from_map(lua_State* ls)
     }
 
     string creature_id_or_base = lua_tostring(ls, 1);
-    const CreatureMap& creatures = map->get_creatures();
+    CreatureMap creatures = map->get_creatures();
 
     if (!creature_id_or_base.empty())
     {
@@ -4829,7 +4830,7 @@ int select_item(lua_State* ls)
 
       Game& game = Game::instance();
       list<IItemFilterPtr> selected_filter = ItemFilterFactory::create_script_filter(item_filter);
-      ItemPtr item = game.get_action_manager_ref().inventory(creature, creature->get_inventory(), selected_filter, {}, false);
+      ItemPtr item = game.get_action_manager_ref().inventory(creature, creature->get_inventory(), selected_filter, {}, false, false);
 
       if (item != nullptr)
       {
@@ -8346,4 +8347,27 @@ int order_at_ease(lua_State* ls)
   }
 
   return 0;
+}
+
+int reset_creatures_and_creature_locations(lua_State* ls)
+{
+  int sz = 0;
+
+  if (lua_gettop(ls) == 0)
+  {
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      map->reset_creatures_and_creature_locations();
+      sz = map->get_creatures().size();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to reset_creatures_and_creature_locations");
+  }
+
+  lua_pushinteger(ls, sz);
+  return 1;
 }

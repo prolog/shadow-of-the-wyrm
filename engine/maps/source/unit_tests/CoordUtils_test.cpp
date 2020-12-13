@@ -656,3 +656,23 @@ TEST(SW_Engine_Maps_CoordUtils, get_corner_coordinates)
   EXPECT_FALSE(c_it != corners.end());
 }
 
+TEST(SW_Engine_Maps_CoordUtils, is_contained)
+{
+  Coordinate top_left({ 0,0 });
+  Coordinate bottom_right({ 3,3 });
+
+  for (int y = 0; y <= 3; y++)
+  {
+    for (int x = 0; x <= 3; x++)
+    {
+      EXPECT_TRUE(CoordUtils::is_contained(top_left, bottom_right, { y,x }));
+    }
+  }
+
+  EXPECT_FALSE(CoordUtils::is_contained(top_left, bottom_right, { -2, 0 }));
+  EXPECT_FALSE(CoordUtils::is_contained(top_left, bottom_right, { 0, 4 }));
+  EXPECT_FALSE(CoordUtils::is_contained(top_left, bottom_right, { 3, 4 }));
+  EXPECT_FALSE(CoordUtils::is_contained(top_left, bottom_right, { 4, 3 }));
+  EXPECT_FALSE(CoordUtils::is_contained(top_left, bottom_right, { 5, 6 }));
+  EXPECT_FALSE(CoordUtils::is_contained(top_left, bottom_right, { 2, 17 }));
+}

@@ -1,5 +1,48 @@
 #include "gtest/gtest.h"
 
+TEST(SW_World_Amulet, enchantment_value_progression)
+{
+  Amulet a;
+  a.set_value(1);
+
+  vector<int> new_values = { 41, 81, 121, 161 };
+
+  for (int i = 0; i < 4; i++)
+  {
+    a.enchant(10, 1);
+
+    EXPECT_EQ(new_values[i], a.get_value());
+  }
+
+  Amulet a2;
+  a2.set_value(1);
+  a2.enchant(10, 4);
+
+  EXPECT_EQ(new_values[3], a2.get_value());
+}
+
+TEST(SW_World_Amulet, smithing_value_progression)
+{
+  Amulet a;
+
+  a.set_value(300);
+
+  vector<int> new_values = { 340, 380, 420, 462 /* last one becomes 10% */ };
+
+  for (int i = 0; i < 4; i++)
+  {
+    a.enchant(10, 1);
+
+    EXPECT_EQ(new_values[i], a.get_value());
+  }
+
+  Amulet a2;
+  a2.set_value(300);
+  a2.smith(4);
+
+  EXPECT_EQ(new_values[3], a2.get_value());
+}
+
 TEST(SW_World_Amulet, serialization_id)
 {
   Amulet amulet;

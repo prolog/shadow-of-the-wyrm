@@ -36,6 +36,7 @@ string SizeTextKeys::get_size_sid_from_creature_size(const CreatureSize size)
       size_sid = SIZE_BEHEMOTH;
       break;
     default:
+      size_sid = SIZE_VARIES;
       break;
   }
   
@@ -49,3 +50,4 @@ const string SizeTextKeys::SIZE_MEDIUM = "SIZE_MEDIUM";
 const string SizeTextKeys::SIZE_LARGE = "SIZE_LARGE";
 const string SizeTextKeys::SIZE_HUGE = "SIZE_HUGE";
 const string SizeTextKeys::SIZE_BEHEMOTH = "SIZE_BEHEMOTH";
+const string SizeTextKeys::SIZE_VARIES = "SIZE_VARIES";

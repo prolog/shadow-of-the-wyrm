@@ -19,5 +19,6 @@ class WheelAndLoomManipulator : public FeatureManipulator
     ItemPtr create_woven_armour(CreaturePtr creature, ItemPtr fibre, const EquipmentWornLocation worn_loc);
 
     std::map<EquipmentWornLocation, std::string> loom_map;
+    static const int WEAVING_PCT_CHANCE_BRAND;
 };
 

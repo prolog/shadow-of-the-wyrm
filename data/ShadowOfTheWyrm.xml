@@ -465,7 +465,7 @@
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
 			<NameSID>ANIMAL_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>1</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>20</Min>
@@ -541,7 +541,7 @@
 				</Drop>
 			</Drops>
 			<NameSID>BIRD_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>1</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>20</Min>
@@ -600,6 +600,7 @@
 		</Race>		
 		<Race id="_construct">
 			<UserPlayable>0</UserPlayable>
+			<Sex>2</Sex>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
@@ -616,7 +617,7 @@
 				</Drop>
 			</Drops>
 			<NameSID>CONSTRUCT_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>3</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>20</Min>
@@ -685,7 +686,7 @@
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<NameSID>DEMON_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>3</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>20</Min>
@@ -961,6 +962,7 @@
 		</Race>
 		<Race id="_insect">
 			<UserPlayable>0</UserPlayable>
+			<Sex>2</Sex>
 			<PackMultiplier>5</PackMultiplier>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
@@ -972,7 +974,7 @@
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
 			<NameSID>INSECT_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>1</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>20</Min>
@@ -1031,6 +1033,7 @@
 		</Race>		
 		<Race id="_jelly">
 			<UserPlayable>0</UserPlayable>
+			<Sex>2</Sex>
 			<PackMultiplier>4</PackMultiplier>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
@@ -1042,7 +1045,7 @@
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
 			<NameSID>JELLY_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>1</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>20</Min>
@@ -1111,7 +1114,7 @@
 			<HasVoice>1</HasVoice>
 			<HasHair>0</HasHair>
 			<NameSID>MONSTER_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>3</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>20</Min>
@@ -1170,6 +1173,7 @@
 		</Race>		
 		<Race id="_plant">
 			<UserPlayable>0</UserPlayable>
+			<Sex>2</Sex>
 			<PackMultiplier>5</PackMultiplier>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
@@ -1181,7 +1185,7 @@
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
 			<NameSID>PLANT_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>3</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>20</Min>
@@ -1454,7 +1458,7 @@
 				</Drop>
 			</Drops>
 			<NameSID>DRAGON_RACE_NAME</NameSID>
-			<Size>2</Size>
+			<Size>4</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>100</Min>
@@ -2327,7 +2331,7 @@
 			<DescriptionSID>RACE_10_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_10_ABRV</DisplayAbbreviationSID>
 			<SettlementDescriptionSID>RACE_10_SETTLEMENT</SettlementDescriptionSID>
-			<Size>2</Size>
+			<Size>1</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>17</Min>
@@ -2488,7 +2492,7 @@
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
-					<ID>cap</ID>
+					<ID>_cap</ID>
 				</Head>
 				<Wielded>
 					<Random>
@@ -3103,7 +3107,7 @@
 					</Random>
 				</Wielded>
 				<Body>
-					<ID>wayfarer_clothes</ID>
+					<ID>_wayfarer_clothes</ID>
 				</Body>
 				<Feet>
 					<ID>leather_boots</ID>
@@ -3578,13 +3582,13 @@
 			<ExperienceMultiplier>1.03</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
-					<ID>cap</ID>
+					<ID>_cap</ID>
 				</Head>
 				<Wielded>
 					<ID>mace</ID>
 				</Wielded>
 				<Body>
-					<ID>wayfarer_clothes</ID>
+					<ID>_wayfarer_clothes</ID>
 				</Body>
 				<Feet>
 					<ID>leather_boots</ID>
@@ -3697,7 +3701,7 @@
 			<ExperienceMultiplier>0.97</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
-					<ID>cap</ID>
+					<ID>_cap</ID>
 				</Head>
 				<Body>
 					<ID>clothes</ID>
@@ -4066,13 +4070,13 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
-					<ID>cap</ID>
+					<ID>_cap</ID>
 				</Head>
 				<Wielded>
 					<ID>long_spear</ID>
 				</Wielded>
 				<Body>
-					<ID>wayfarer_clothes</ID>
+					<ID>_wayfarer_clothes</ID>
 				</Body>
 				<AroundBody>
 					<ID>_cloak</ID>
@@ -4185,13 +4189,13 @@
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
-					<ID>cap</ID>
+					<ID>_cap</ID>
 				</Head>
 				<Wielded>
 					<ID>shepherd_crook</ID>
 				</Wielded>
 				<Body>
-					<ID>wayfarer_clothes</ID>
+					<ID>_wayfarer_clothes</ID>
 				</Body>
 				<AroundBody>
 					<ID>_cloak</ID>
@@ -4436,7 +4440,7 @@
 			</DeityDislikeMultipliers>
 			<InitialEquipmentAndInventory>
 				<Head>
-					<ID>cap</ID>
+					<ID>_cap</ID>
 				</Head>
 				<Wielded>
 					<ID>dagger</ID>
@@ -7892,7 +7896,7 @@
 			<DescriptionSID>STARTING_LOCATION_ISEN_DUN</DescriptionSID>
 		</StartingLocation>
 		<StartingLocation id="02_carcassia">
-			<Row>46</Row>
+			<Row>47</Row>
 			<Col>53</Col>
 			<ShortDescriptionSID>STARTING_LOCATION_CARCASSIA_SHORT</ShortDescriptionSID>
 			<DescriptionSID>STARTING_LOCATION_CARCASSIA</DescriptionSID>

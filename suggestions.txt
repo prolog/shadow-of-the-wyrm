@@ -1,17 +1,27 @@
 Me:
-- Tile release! Evergreen trees were added.
-- Enchants and esp brands should add value to items!
-- pick up/drop all that work with filters
-- Generate tombs with keys outside door/doors locked
-- sword-eater/hits himself (Josh Engdahl)
-- Corpse weights
+- Guardhouses in Carcassia at the gates. A1 = below teleport room. A2 = south
+  of entrance. Check random generation!
+- Houses made of earth, too? Maybe hamlets?
+- Barracks placement, guard placement along walls (set sentinel!), make them
+  friendly, items in barracks, table, barrel
+- Break the barracks code into the utils
 - Long term, give a chance for coastal generators to produce coastline, maybe
-  with little islands, etc
+  with little islands, etc. Before generating, set booleans for coast in
+  the different directions and then pick one. Should be done after the initial
+  fill but before adding stuff
+- New sector features:
+- UndergroundSectorFeature (takes tile type - dungeoncomplex, mine, cavern,
+  sewer)
+- Settlement names!
+- Settlement names on signposts!
+- Add signposts to each random village
+- Walled settlement should have a garrison in one of the corners: guard and
+  some weapons/armour with 0-2 enchants
+- Generate tombs with keys outside door/doors locked
 - First urchin stone has no message!
 - Feature: fence, east_west_fence. Add some fenced areas to set locations.
 - Fenced areas (veg gardens?) in villages
 - Wyrm level stupid slow?
-- Fleeing behaviour for humanoids (Josh Engdahl)
 - Need to get hirelings text-searchable in bestiary
 - Creatures try to cast utility spells when they don't make sense (uncursing,
   etc). Should be checks to see if effect makes sense.
@@ -33,11 +43,8 @@ Me:
 - Release after this: grond says tanning is complicated & dragon skins aren't
   what they should be.
 - Mode screen (F10): Game mode, graphics, palette
-- Use Magic to destroy spellbooks and get a bit of AP?
-- Dungeons should check for shop before generating trap.
 - Beer halls in villages
 - spell arcana (bind to capitals in spell list)
-- auto save - not working?
 - Do creatures pause when no threats in FOV? Seems slow.
 - google screen clear not working for SDL. reported 2x.
 - 2x draw?
@@ -267,6 +274,7 @@ Paul Blay:
 
 Josh Engdahl
 - Rebindable paging keys
+- Fleeing behaviour for humanoids
 - User macros
 - Add info on the weapon synopsis to the manual
 - max fire res on fire spirits, etc
@@ -293,7 +301,4 @@ Josh Engdahl
 
 - can lure ancient monsters into trap room and kill them via an unwillingness
   to move on to trapped tiles.
-- You can't kick a creature to a tile with an already-triggered trap because
-  they'll decline movement confirmation.
-- Is the area fleeing message broadcasting?
 - Entering church, player is placed on stairs instead of outside church.

@@ -444,7 +444,6 @@ class Sign : public Feature
     Sign(const Symbol& new_symbol, const std::string& new_text_sid);
 
     virtual Feature* clone() override;
-    virtual bool get_is_blocking() const;
 
     virtual std::pair<std::string, std::vector<std::string>> get_description_and_replacement_sids() const override;
 

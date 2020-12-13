@@ -41,7 +41,7 @@ ActionCostValue QuaffAction::quaff(CreaturePtr creature, ActionManager * const a
 
     if (action_cost_value == 0)
     {
-      ItemPtr selected_item = am->inventory(creature, creature->get_inventory(), display_filter_list, {}, false);
+      ItemPtr selected_item = am->inventory(creature, creature->get_inventory(), display_filter_list, {}, false, false);
 
       if (selected_item)
       {

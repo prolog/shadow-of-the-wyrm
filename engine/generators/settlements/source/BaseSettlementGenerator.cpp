@@ -8,6 +8,7 @@
 #include "ParkSectorFeature.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
+#include "ShrineSectorFeature.hpp"
 #include "TileGenerator.hpp"
 #include "FruitVegetableGardenGenerator.hpp"
 
@@ -497,6 +498,9 @@ vector<shared_ptr<SectorFeature>> BaseSettlementGenerator::get_sector_features()
   sfs.push_back(sf);
 
   sf = std::make_shared<OrchardGenerator>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<ShrineSectorFeature>();
   sfs.push_back(sf);
 
   return sfs;

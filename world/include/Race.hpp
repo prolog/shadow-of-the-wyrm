@@ -5,6 +5,7 @@
 #include <vector>
 #include "AgeInfo.hpp"
 #include "BoolStatistic.hpp"
+#include "CreatureFeatures.hpp"
 #include "DropParameters.hpp"
 #include "Skills.hpp"
 #include "Statistic.hpp"
@@ -40,6 +41,9 @@ class Race
 
     void set_user_playable(const bool playable);
     bool get_user_playable() const;
+
+    void set_sex(const CreatureSex sex);
+    CreatureSex get_sex() const;
 
     void set_pack_multiplier(const int new_pack_multiplier);
     int get_pack_multiplier() const;
@@ -178,6 +182,7 @@ class Race
     std::string race_id;
     std::string parent_race_id;
     bool user_playable;
+    CreatureSex sex;
     int pack_multiplier;
     bool slayable;
     bool leaves_corpse;

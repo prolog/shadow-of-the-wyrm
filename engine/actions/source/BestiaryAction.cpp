@@ -4,10 +4,12 @@
 #include "ClassManager.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
+#include "CreatureUtils.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ScreenTitleTextKeys.hpp"
 #include "RaceManager.hpp"
+#include "SizeTextKeys.hpp"
 #include "StringTable.hpp"
 #include "TextFormatSpecifiers.hpp"
 #include "TextKeys.hpp"
@@ -137,10 +139,20 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
 
     uint width = game.get_display()->get_width();
     bestiary_text.push_back(make_pair(s.get_colour(), String::centre(TextFormatSpecifiers::SYMBOL, width)));
-
-    // Display the creature short description
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
-    bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(creature->get_short_description_sid(true))));
+
+    // Display the creature short description, displaying the name if it's
+    // been defined.
+    ostringstream short_desc;
+    short_desc << StringTable::get(creature->get_short_description_sid(true));
+    string name = creature->get_name();
+
+    if (!name.empty())
+    {
+      short_desc << " (" << name << ")";
+    }
+
+    bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, short_desc.str()));
 
     // Display all the possible races (when searching) or the specific race
     // (when looking at a particular creature).
@@ -158,6 +170,10 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
         bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, class_details));
       }
     }
+
+    // Display size and level
+    bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(SizeTextKeys::SIZE) + ": " + StringTable::get(SizeTextKeys::get_size_sid_from_creature_size(CreatureUtils::get_size(creature)))));
+    bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(TextKeys::LEVEL) + ": " + to_string(creature->get_level().get_current())));
 
     // Display the creature's details.
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));

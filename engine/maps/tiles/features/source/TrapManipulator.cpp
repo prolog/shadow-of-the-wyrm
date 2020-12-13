@@ -40,6 +40,7 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
   Game& game = Game::instance();
   FeaturePtr feature = tile->get_feature();
   TrapPtr trap = dynamic_pointer_cast<Trap>(feature);
+  bool handled = false;
 
   // Traps can only be manipulated when the manipulating creature is standing
   // directly on the tile.
@@ -61,6 +62,7 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
         // Pass the coordinate in now because the triggering of the trap
         // may have killed the creature...
         create_and_draw_animation(trap, creature, creature_coord);
+        handled = true;
       }
     }
     else
@@ -74,7 +76,7 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
     }
   }
 
-  return true;
+  return handled;
 }
 
 bool TrapManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)

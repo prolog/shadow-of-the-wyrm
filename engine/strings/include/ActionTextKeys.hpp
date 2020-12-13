@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Creature.hpp"
 #include "Spell.hpp"
 #include "FishingTypes.hpp"
 #include "WaterTypes.hpp"
@@ -14,7 +15,7 @@ class ActionTextKeys
     static std::string get_eat_message(const std::string& desc_sid, const std::string& consumable_desc, const bool is_player);
     static std::string get_eat_confirmation_message(const std::string& consumable_desc);
     static std::string get_full_message(const std::string& desc_sid, const std::string& consumable_desc, const bool is_player);
-    static std::string get_spellcasting_message(const Spell& spell, const std::string& creature_desc_s, const bool is_player);
+    static std::string get_spellcasting_message(const Spell& spell, CreaturePtr player, CreaturePtr caster, const bool is_player);
     static std::string get_spellcasting_cancelled_message(const std::string& creature_desc_sid, const bool is_player);
     static std::string get_bestiary_search_message(const std::string& prev_search_text);
     static std::string get_item_codex_search_message(const std::string& prev_search_text);
@@ -45,6 +46,8 @@ class ActionTextKeys
     static std::string get_graphics_mode_switch_message(const std::string& new_display_name);
     static std::string get_tamed_message(const std::string& creature_desc, const std::string& tamed_creature_sid, const bool is_player);
     static std::string get_tame_failure_message(const std::string& creature_desc);
+    static std::string get_incinerate_spellbook_message(const std::string& item_usage_desc_sid);
+    static std::string get_incinerate_spellbook_wild_message(const std::string& item_usage_desc_sid);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -222,6 +225,9 @@ class ActionTextKeys
     static const std::string ACTION_TAME_NO_TARGETS;
     static const std::string ACTION_ORDER_NO_FOLLOWERS;
     static const std::string ACTION_ABANDONED;
+    static const std::string ACTION_INCINERATE_NO_SPELLBOOKS;
+    static const std::string ACTION_INCINERATE_NO_AP;
+    static const std::string ACTION_INCINERATE_FULL_AP;
 
   protected:
     ActionTextKeys();
@@ -285,4 +291,6 @@ class ActionTextKeys
     static const std::string ACTION_TAMED_PLAYER;
     static const std::string ACTION_TAMED_MONSTER;
     static const std::string ACTION_TAME_FAILURE;
+    static const std::string ACTION_INCINERATE_SPELLBOOK;
+    static const std::string ACTION_INCINERATE_SPELLBOOK_WILD;
 };

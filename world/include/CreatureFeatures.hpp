@@ -16,6 +16,7 @@ constexpr auto CCREATURE_WIN_GODSLAYER = 3;
 
 enum struct CreatureSize
 {
+  CREATURE_SIZE_NA = -1,
   CREATURE_SIZE_TINY = 0,
   CREATURE_SIZE_SMALL = 1,
   CREATURE_SIZE_MEDIUM = 2,
@@ -27,6 +28,7 @@ enum struct CreatureSize
 
 enum struct CreatureSex
 {
+  CREATURE_SEX_NA = -1,
   CREATURE_SEX_MALE = 0,
   CREATURE_SEX_FEMALE = 1,
   CREATURE_SEX_NOT_SPECIFIED = 2,
@@ -120,6 +122,7 @@ class CreatureID
     static const std::string CREATURE_ID_FISHERMAN;
     static const std::string CREATURE_ID_FARMER;
     static const std::string CREATURE_ID_SMALL_CHILD;
+    static const std::string CREATURE_ID_GUARD;
 
   protected:
     CreatureID();

@@ -134,7 +134,7 @@ project "ShadowOfTheWyrm"
     flags { "Optimize" }
     links { "SDL2", "SDL2_image" }
     postbuildcommands { "mkdir sotw",
-                        "cp ShadowOfTheWyrm sotw/sotw",
+                        "cp $(TARGETDIR)/ShadowOfTheWyrm sotw/sotw",
                         "cp -R data sotw",
 			"cp -R assets sotw",
                         "mkdir sotw/docs",
@@ -155,7 +155,7 @@ project "ShadowOfTheWyrm"
     defines { "NDEBUG" }
     flags { "Optimize" }
     postbuildcommands { "mkdir sotw",
-                        "cp ShadowOfTheWyrm sotw/sotw",
+                        "cp $(TARGETDIR)/ShadowOfTheWyrm sotw/sotw",
                         "cp -R data sotw",
 			-- Assets ignored in this config 
                         "mkdir sotw/docs",
