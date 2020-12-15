@@ -1,6 +1,8 @@
 Shadow of the Wyrm v1.2.6 "Holborne"
 - Version declared December 13, 2020.
 
+- Cleaned up some issues around the Linux premake build file (Larzid).
+
 Shadow of the Wyrm v1.2.5 "Arnold"
 - Version declared November 1, 2020. Version finalized December 13, 2020.
 

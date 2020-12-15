@@ -147,8 +147,6 @@ project "ShadowOfTheWyrm"
                         "cp *.ini sotw",
                         "cp README.md sotw",
                         "cp LICENSE sotw",
-                        -- Copy libraries:
-                        "lua copy_libs.lua",
                         "tar cvzf ShadowOfTheWyrm-Linux.tar.gz sotw"}
 
   configuration "CursesRelease"
@@ -168,7 +166,5 @@ project "ShadowOfTheWyrm"
                         "cp *.ini sotw",
                         "cp README.md sotw",
                         "cp LICENSE sotw",
-                        -- Copy libraries:
-                        "lua copy_libs.lua",
                         "tar cvzf ShadowOfTheWyrm-Linux.tar.gz sotw"}
 
