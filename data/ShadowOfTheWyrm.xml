@@ -6301,6 +6301,25 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>				
+		<Spell id="m_19_paralyze">
+			<NameSID>PARALYZE_NAME_SID</NameSID>
+			<PlayerCastMessageSID>PARALYZE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>PARALYZE_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3002</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>10</Colour>
+			<APCost>25</APCost>
+			<Speed>1</Speed>
+			<Range>3</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>10</Type>
+				<EffectBonus>100</EffectBonus>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>				
 		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
 			<PlayerCastMessageSID>SHADOW_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>

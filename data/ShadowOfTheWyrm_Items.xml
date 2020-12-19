@@ -12673,6 +12673,30 @@
 				<SpellID>m_18_stun_bolt</SpellID>
 				<Difficulty>65</Difficulty>
 			</Spellbook>
+			<Spellbook id="paralyze_spellbook">
+				<DescriptionSID>PARALYZE_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_PARALYZE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>PARALYZE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_PARALYZE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>PARALYZE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
+				<Value>233</Value>
+				<Weight>
+					<Pounds>5</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<Symbol>
+					<Char>"</Char>
+					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>8</DangerLevel>
+				<SpellID>m_19_paralyze</SpellID>
+				<Difficulty>80</Difficulty>
+			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
 			<Item id="_paper_pulp">

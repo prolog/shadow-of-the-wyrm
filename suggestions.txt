@@ -1,6 +1,5 @@
 Me:
-- Guardhouses in Carcassia at the gates. A1 = below teleport room. A2 = south
-  of entrance. Check random generation!
+- Infinite potions out of barrels? (Gordon Overkill)
 - Houses made of earth, too? Maybe hamlets?
 - Barracks placement, guard placement along walls (set sentinel!), make them
   friendly, items in barracks, table, barrel
