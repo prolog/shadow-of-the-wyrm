@@ -3,6 +3,9 @@ Shadow of the Wyrm v1.2.6 "Holborne"
 
 - Cleaned up some issues around the Linux premake build file (Larzid).
 
+- When using the codex in the inventory, the inventory page is remembered
+  on exit, rather than returning to the first page (Josh Engdahl).
+
 - New spells: paralyze (Mystic).
 
 Shadow of the Wyrm v1.2.5 "Arnold"

@@ -25,6 +25,7 @@ vector<ItemPtr> InventoryManager::manage_inventory(IInventoryPtr inv, const list
 {
   vector<ItemPtr> selected_items;
   bool manage_inv = true;
+  uint cur_page = 1;
 
   try
   {
@@ -46,7 +47,10 @@ vector<ItemPtr> InventoryManager::manage_inventory(IInventoryPtr inv, const list
           display_inventory = InventoryTranslator::create_display_inventory(creature, inv, all_filters);
           bool user_filters = !additional_display_filter_list.empty();
           InventoryScreen is(display, creature, display_inventory, user_filters, inventory_is_read_only);
+
+          is.set_current_page_number(cur_page);
           string inv_selection = is.display();
+          cur_page = is.get_current_page_number();
 
           string external_id;
           int option_id = Char::keyboard_selection_char_to_int(inv_selection.at(0));
@@ -75,6 +79,7 @@ vector<ItemPtr> InventoryManager::manage_inventory(IInventoryPtr inv, const list
           {
             CommandPtr inv_command = command_factory->create(inv_selection.at(0), kb_command_map->get_command_type(inv_selection));
             manage_inv = InventoryCommandProcessor::process(this, base_display_filter_list, display_inventory, external_ids, creature, inv, inv_command.get(), inventory_is_read_only, allow_multiple_selected_items, selected_items);
+            is.set_current_page_number(cur_page);
           }
         }
       }

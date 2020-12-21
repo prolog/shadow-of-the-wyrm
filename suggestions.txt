@@ -1,9 +1,5 @@
 Me:
 - Infinite potions out of barrels? (Gordon Overkill)
-- Houses made of earth, too? Maybe hamlets?
-- Barracks placement, guard placement along walls (set sentinel!), make them
-  friendly, items in barracks, table, barrel
-- Break the barracks code into the utils
 - Long term, give a chance for coastal generators to produce coastline, maybe
   with little islands, etc. Before generating, set booleans for coast in
   the different directions and then pick one. Should be done after the initial
@@ -14,8 +10,6 @@ Me:
 - Settlement names!
 - Settlement names on signposts!
 - Add signposts to each random village
-- Walled settlement should have a garrison in one of the corners: guard and
-  some weapons/armour with 0-2 enchants
 - Generate tombs with keys outside door/doors locked
 - First urchin stone has no message!
 - Feature: fence, east_west_fence. Add some fenced areas to set locations.
@@ -288,8 +282,6 @@ Josh Engdahl
 - make undead hostile to e.g. all humanoids
 - Cancel prompts should clear text: kick, drop, etc
 - nearby guards/priests should get angry when altars are desecrated
-- when viewing items in codex, remember inventory page and return to that
-  page
 - Rocky earth generator 1n Carcassia
 - Warping out of levels doesn't put you back at the default entry position
 - Freeze not always working when hostile creatures in view or creatures 
