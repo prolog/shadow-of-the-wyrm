@@ -1,4 +1,10 @@
 Me:
+- Move the cathedral library generation into something general and hook it up
+  to settlements/Carcassia
+- Big empty priest quarters in cathedral
+- Urchins outside churches
+- Crypt goes to main map (due to "down staircase leading to map exit" for
+  towers)
 - Infinite potions out of barrels? (Gordon Overkill)
 - Long term, give a chance for coastal generators to produce coastline, maybe
   with little islands, etc. Before generating, set booleans for coast in
@@ -182,7 +188,6 @@ Esran:
 - Sewer/dungeons: when random, prompt for "descend to what depth (ft)?
 
 kain:
-- Zapped wand moves to end of inventory?
 - Towns not repopping with the same types of creatures as before (e.g.,
   ogres).
 - Shops not generating fully stocked.
@@ -292,4 +297,3 @@ Josh Engdahl
 
 - can lure ancient monsters into trap room and kill them via an unwillingness
   to move on to trapped tiles.
-- Entering church, player is placed on stairs instead of outside church.

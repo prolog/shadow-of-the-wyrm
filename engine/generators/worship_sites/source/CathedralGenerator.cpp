@@ -1,10 +1,12 @@
 #include "CathedralGenerator.hpp"
 #include "FeatureGenerator.hpp"
+#include "Game.hpp"
 #include "GeneratorUtils.hpp"
+#include "ItemGenerationManager.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
-using std::string;
+using namespace std;
 
 CathedralGenerator::CathedralGenerator(const string& new_deity_id, MapPtr new_base_map)
 : ChurchGenerator(new_deity_id, new_base_map, TileType::TILE_TYPE_CHURCH), start_row(0), start_col(0), church_height(0), church_width(0)
@@ -59,7 +61,7 @@ void CathedralGenerator::generate_cathedral(MapPtr map)
   generate_fountains(map);
   generate_pews(map, pew_end_row, pew_end_col);
   generate_dais_and_altar(map, dais_start_row, dais_start_col, dais_height, dais_width);
-  generate_back_rooms(map, dais_start_col + dais_width + 3);
+  generate_back_rooms(map, dais_start_col + dais_width + 3, start_row, start_row + church_height, start_col + church_width);
 }
 
 // Generate a 5x5 dais, placing an altar in the centre.
@@ -135,17 +137,17 @@ void CathedralGenerator::generate_doors(MapPtr map)
 }
 
 // Generate the back rooms: treasure room (potentially), crypt entrance (potentially), priest's quarters
-void CathedralGenerator::generate_back_rooms(MapPtr map, const int room_start_col)
+void CathedralGenerator::generate_back_rooms(MapPtr map, const int room_start_col, const int start_row, const int end_row, const int end_col)
 {
   // Generate the priest's quarters
-  generate_priest_quarters(map, room_start_col);
+  generate_priest_quarters(map, room_start_col, start_row, end_row, end_col);
  
   // Create the treasure room and stairs to the crypt, or the library.
-  generate_secondary_back_room(map, room_start_col);  
+  generate_secondary_back_room(map, room_start_col, start_row, end_row, end_col);  
 }
 
 // Generate the priest's quarters in the back of the Cathedral
-void CathedralGenerator::generate_priest_quarters(MapPtr map, const int room_start_col)
+void CathedralGenerator::generate_priest_quarters(MapPtr map, const int room_start_col, const int start_row, const int end_row, const int end_col)
 {
   TileGenerator tg;
   TilePtr current_tile;
@@ -166,11 +168,11 @@ void CathedralGenerator::generate_priest_quarters(MapPtr map, const int room_sta
   }
 }
 
-void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room_start_col)
+void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room_start_col, const int start_row, const int end_row, const int end_col)
 {
   TileGenerator tg;
   TilePtr current_tile;
-
+  int door_col = 0;
   int wall_row = start_row + church_height - static_cast<int>((church_height/2.5));
   for (int col = room_start_col; col < start_col + church_width; col++)
   {
@@ -179,6 +181,7 @@ void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room
       FeaturePtr door = FeatureGenerator::generate_door();
       current_tile = map->at(wall_row, col);
       current_tile->set_feature(door);
+      door_col = col;
     }
     else
     {
@@ -197,12 +200,60 @@ void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room
     
     // Generate the stairs down to the crypt
     Coordinate c = { (wall_row + start_row + church_height) / 2, (room_start_col + start_col + church_width) / 2 };
-    place_staircase(map, c.first, c.second, TileType::TILE_TYPE_DOWN_STAIRCASE, TileType::TILE_TYPE_CRYPT, Direction::DIRECTION_DOWN, get_permanence_default(), true);
+    place_staircase(map, c.first, c.second, TileType::TILE_TYPE_DOWN_STAIRCASE, TileType::TILE_TYPE_CRYPT, Direction::DIRECTION_DOWN, false, false);
   }
   else
   {
     // If there's no treasure room, it is guaranteed that there will be a library
-    
-    // FIXME: Generate populated bookshelves, generate chairs.
+
+    // FIXME: flame pillars at corners
+    // FIXME: Move this into a different generator so it can be reused by settlements!
+    ItemGenerationConstraints igc;
+    igc.set_min_danger_level(1);
+    igc.set_max_danger_level(5);
+    vector<ItemType> itype_restr = { ItemType::ITEM_TYPE_SCROLL, ItemType::ITEM_TYPE_SPELLBOOK };
+    igc.set_item_type_restrictions(itype_restr);
+    ItemGenerationManager igm;
+    ItemGenerationMap imap = igm.generate_item_generation_map(igc);
+
+    Game& game = Game::instance();
+
+    // A few benches, for reading
+    int num_benches = RNG::range(2, 4);
+
+    for (int i = 0; i < num_benches; i++)
+    {
+      int cur_col = RNG::range(room_start_col + 1, end_col - 1);
+
+      if (cur_col == door_col)
+      {
+        continue;
+      }
+      else
+      {
+        FeaturePtr bench = FeatureGenerator::generate_bench();
+        map->at({ wall_row + 1, cur_col })->set_feature(bench);
+      }
+    }
+
+    // Books
+    int incr = RNG::range(2, 3);
+
+    for (int col = room_start_col + 1; col < end_col; col = col + incr)
+    {
+      if (col == door_col)
+      {
+        continue;
+      }
+      else
+      {
+        ItemPtr generated_item = igm.generate_item(game.get_action_manager_ref(), imap, Rarity::RARITY_COMMON, itype_restr, 0);
+
+        if (generated_item != nullptr)
+        {
+          map->at({ end_row - 2, col })->get_items()->merge_or_add(generated_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        }
+      }
+    }
   }
 }

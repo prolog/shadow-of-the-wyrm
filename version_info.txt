@@ -6,7 +6,14 @@ Shadow of the Wyrm v1.2.6 "Holborne"
 - When using the codex in the inventory, the inventory page is remembered
   on exit, rather than returning to the first page (Josh Engdahl).
 
+- Cathedrals can now have libraries generated behind the priest's quarters.
+
 - New spells: paralyze (Mystic).
+
+- Bug fixes:
+
+  - When a cathedral had stairs to the crypt, the player was being placed
+    on those steps after entering the map (Josh Engdahl).
 
 Shadow of the Wyrm v1.2.5 "Arnold"
 - Version declared November 1, 2020. Version finalized December 13, 2020.
