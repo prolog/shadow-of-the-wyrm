@@ -205,8 +205,13 @@ void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room
   else
   {
     // If there's no treasure room, it is guaranteed that there will be a library
+    vector<Coordinate> corners = { {wall_row + 1, room_start_col + 1}, {wall_row + 1, end_col - 2}, {end_row - 2, room_start_col + 1}, {end_row - 2, end_col - 2} };
+    for (const Coordinate& c : corners)
+    {
+      FeaturePtr fire_pillar = FeatureGenerator::generate_fire_pillar();
+      map->at(c)->set_feature(fire_pillar);
+    }
 
-    // FIXME: flame pillars at corners
     // FIXME: Move this into a different generator so it can be reused by settlements!
     ItemGenerationConstraints igc;
     igc.set_min_danger_level(1);
@@ -217,13 +222,17 @@ void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room
     ItemGenerationMap imap = igm.generate_item_generation_map(igc);
 
     Game& game = Game::instance();
+    vector<int> feature_rows = { wall_row + 1, end_row - 2 };
+    std::shuffle(feature_rows.begin(), feature_rows.end(), RNG::get_engine());
 
     // A few benches, for reading
     int num_benches = RNG::range(2, 4);
+    int bench_row = feature_rows.back();
+    feature_rows.pop_back();
 
     for (int i = 0; i < num_benches; i++)
     {
-      int cur_col = RNG::range(room_start_col + 1, end_col - 1);
+      int cur_col = RNG::range(room_start_col + 2, end_col - 3);
 
       if (cur_col == door_col)
       {
@@ -232,14 +241,15 @@ void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room
       else
       {
         FeaturePtr bench = FeatureGenerator::generate_bench();
-        map->at({ wall_row + 1, cur_col })->set_feature(bench);
+        map->at({ bench_row, cur_col })->set_feature(bench);
       }
     }
 
     // Books
     int incr = RNG::range(2, 3);
+    int book_row = feature_rows.back();
 
-    for (int col = room_start_col + 1; col < end_col; col = col + incr)
+    for (int col = room_start_col + 3; col < end_col - 2; col = col + incr)
     {
       if (col == door_col)
       {
@@ -251,7 +261,7 @@ void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room
 
         if (generated_item != nullptr)
         {
-          map->at({ end_row - 2, col })->get_items()->merge_or_add(generated_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          map->at({ book_row, col })->get_items()->merge_or_add(generated_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
         }
       }
     }

@@ -1,6 +1,7 @@
 Me:
 - Move the cathedral library generation into something general and hook it up
   to settlements/Carcassia
+- Statues outside doors of cathedral
 - Big empty priest quarters in cathedral
 - Urchins outside churches
 - Crypt goes to main map (due to "down staircase leading to map exit" for
