@@ -9,6 +9,7 @@
 #include "GameUtils.hpp"
 #include "GraveyardSectorFeature.hpp"
 #include "ItemGenerationManager.hpp"
+#include "LibrarySectorFeature.hpp"
 #include "MapUtils.hpp"
 #include "ParkSectorFeature.hpp"
 #include "PlazaSectorFeature.hpp"
@@ -313,8 +314,9 @@ void WalledSettlementGenerator::generate_inner_settlement(MapPtr map)
 vector<shared_ptr<SectorFeature>> WalledSettlementGenerator::get_sector_features()
 {
   vector<shared_ptr<SectorFeature>> sfs;
+  shared_ptr<SectorFeature> sf;
 
-  shared_ptr<SectorFeature> sf = std::make_shared<GraveyardSectorFeature>();
+  sf = std::make_shared<GraveyardSectorFeature>();
   sfs.push_back(sf);
 
   sf = std::make_shared<OrchardGenerator>();
@@ -339,6 +341,12 @@ vector<shared_ptr<SectorFeature>> WalledSettlementGenerator::get_sector_features
   sfs.push_back(sf);
 
   sf = std::make_shared<ShrineSectorFeature>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<LibrarySectorFeature>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<LittleLibrarySectorFeature>();
   sfs.push_back(sf);
 
   return sfs;

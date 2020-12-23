@@ -1,4 +1,6 @@
 Me:
+- Break out book code from library sector feature into common fn
+- Add to other settlement types
 - Statues around armory in carcassia
 - Little library - add to settlements
 - Statues outside doors of cathedral

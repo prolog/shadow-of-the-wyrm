@@ -39,3 +39,12 @@ class FeatureDescriptionTextKeys
   protected:
     FeatureDescriptionTextKeys();
 };
+
+class SignTextKeys
+{
+  public:
+    static const std::string SIGN_LITTLE_LIBRARY;
+
+  protected:
+    SignTextKeys();
+};

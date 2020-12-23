@@ -12,4 +12,11 @@ class LibrarySectorFeature : public SectorFeature
     bool generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
 };
 
-// JCD FIXME: Do a little library too, only for regular settlements!
+class LittleLibrarySectorFeature : public SectorFeature
+{
+  public:
+    LittleLibrarySectorFeature();
+
+  protected:
+    bool generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
+};
