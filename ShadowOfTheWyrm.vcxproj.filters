@@ -4352,6 +4352,9 @@
     <ClInclude Include="engine\skills\include\GeneralMagicSkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\LibrarySectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8727,6 +8730,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\SpellbookCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\LibrarySectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

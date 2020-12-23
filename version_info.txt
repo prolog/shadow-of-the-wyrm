@@ -8,6 +8,8 @@ Shadow of the Wyrm v1.2.6 "Holborne"
 
 - Cathedrals can now have libraries generated behind the priest's quarters.
 
+- Libraries can now appear in the Carcassia religious district.
+
 - New spells: paralyze (Mystic).
 
 - Bug fixes:
