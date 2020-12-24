@@ -6,7 +6,8 @@ Shadow of the Wyrm v1.2.6 "Holborne"
 - When using the codex in the inventory, the inventory page is remembered
   on exit, rather than returning to the first page (Josh Engdahl).
 
-- Cathedrals can now have libraries generated behind the priest's quarters.
+- Cathedrals can now have libraries generated behind the priest's quarters,
+  and generally feel less empty (more features in various places).
 
 - Libraries can now appear in the Carcassia religious district.
 

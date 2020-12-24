@@ -62,6 +62,7 @@ void CathedralGenerator::generate_cathedral(MapPtr map)
   generate_fountains(map);
   generate_pews(map, pew_end_row, pew_end_col);
   generate_dais_and_altar(map, dais_start_row, dais_start_col, dais_height, dais_width);
+  generate_feature_behind_dais(map, dais_start_row, dais_start_col, dais_height, dais_width);
   generate_back_rooms(map, dais_start_col + dais_width + 3, start_row, start_row + church_height, start_col + church_width);
 }
 
@@ -87,6 +88,22 @@ void CathedralGenerator::generate_dais_and_altar(MapPtr map, const int dais_star
   
   FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, AlignmentRange::ALIGNMENT_RANGE_GOOD);
   dais_tile->set_feature(altar);
+}
+
+void CathedralGenerator::generate_feature_behind_dais(MapPtr map, const int dais_start_row, const int dais_start_col, const int dais_height, const int dais_width)
+{
+  int feature_start_row = dais_start_row - 1;
+  int feature_end_row = dais_start_row + dais_height + 1;
+  int feature_col = dais_start_col + dais_width + 2;
+
+  vector<ClassIdentifier> dais_features = { ClassIdentifier::CLASS_ID_FIRE_PILLAR, ClassIdentifier::CLASS_ID_FOUNTAIN, ClassIdentifier::CLASS_ID_SARCOPHAGUS, ClassIdentifier::CLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE };
+  ClassIdentifier ci = dais_features[RNG::range(0, dais_features.size() - 1)];
+
+  for (int row = feature_start_row; row <= feature_end_row; row += 2)
+  {
+    FeaturePtr feature = FeatureGenerator::create_feature(ci);
+    map->at(row, feature_col)->set_feature(feature);
+  }
 }
 
 // Generate a pair of fountains by the entrance.
@@ -122,7 +139,8 @@ void CathedralGenerator::generate_pews(MapPtr map, const int pew_end_row, const 
   }
 }
 
-// Generate a pair of doors that lead into the cathedral
+// Generate a pair of doors that lead into the cathedral, as well as statues
+// outside.
 void CathedralGenerator::generate_doors(MapPtr map)
 {
   TileGenerator tg;
@@ -133,22 +151,32 @@ void CathedralGenerator::generate_doors(MapPtr map)
   first_door_tile->set_feature(first_door);
   second_door_tile->set_feature(second_door);
   
-  map->insert(start_row + (church_height / 2 - 1), start_col, first_door_tile);
-  map->insert(start_row + (church_height / 2), start_col, second_door_tile);
+  int door_row_1 = start_row + (church_height / 2 - 1);
+  int door_row_2 = start_row + (church_height / 2);
+
+  map->insert(door_row_1, start_col, first_door_tile);
+  map->insert(door_row_2, start_col, second_door_tile);
+
+  vector<Coordinate> statue_coords = { {door_row_1 - 1, start_col - 2}, {door_row_2 + 1, start_col - 2} };
+  for (const Coordinate& c : statue_coords)
+  {
+    FeaturePtr statue = FeatureGenerator::generate_decorative_statue(DecorativeStatueType::DECORATIVE_STATUE_TYPE_HIGH_PRIEST);
+    map->at(c)->set_feature(statue);
+  }
 }
 
 // Generate the back rooms: treasure room (potentially), crypt entrance (potentially), priest's quarters
 void CathedralGenerator::generate_back_rooms(MapPtr map, const int room_start_col, const int start_row, const int end_row, const int end_col)
 {
-  // Generate the priest's quarters
-  generate_priest_quarters(map, room_start_col, start_row, end_row, end_col);
- 
   // Create the treasure room and stairs to the crypt, or the library.
-  generate_secondary_back_room(map, room_start_col, start_row, end_row, end_col);  
+  int back_room_wall_row = generate_secondary_back_room(map, room_start_col, start_row, end_row, end_col);
+
+  // Generate the priest's quarters
+  generate_priest_quarters(map, room_start_col, start_row, end_row, end_col, back_room_wall_row); 
 }
 
 // Generate the priest's quarters in the back of the Cathedral
-void CathedralGenerator::generate_priest_quarters(MapPtr map, const int room_start_col, const int start_row, const int end_row, const int end_col)
+void CathedralGenerator::generate_priest_quarters(MapPtr map, const int room_start_col, const int start_row, const int end_row, const int end_col, int back_room_wall_row)
 {
   TileGenerator tg;
   TilePtr current_tile;
@@ -167,9 +195,46 @@ void CathedralGenerator::generate_priest_quarters(MapPtr map, const int room_sta
       current_tile->set_feature(priest_door);
     }
   }
+
+  // Always a bed.
+  int row = RNG::range(start_row + 1, back_room_wall_row - 2);
+  FeaturePtr bed = FeatureGenerator::generate_bed();
+  map->at({ row, room_start_col + 2 })->set_feature(bed);
+
+  // A couple of fire pillars in two corners.
+  vector<Coordinate> corners = { {start_row + 1, end_col - 2}, {back_room_wall_row - 1, room_start_col + 1} };
+  for (const Coordinate& c : corners)
+  {
+    FeaturePtr fp = FeatureGenerator::generate_fire_pillar();
+    map->at(c)->set_feature(fp);
+  }
+
+  // Sometimes: table, bench
+  if (RNG::percent_chance(65))
+  {
+    FeaturePtr table = FeatureGenerator::generate_table();
+    add_feature_to_middle_of_priest_quarters(map, room_start_col, start_row, end_row, end_col, back_room_wall_row, table);
+  }
+
+  if (RNG::percent_chance(65))
+  {
+    FeaturePtr bench = FeatureGenerator::generate_bench();
+    add_feature_to_middle_of_priest_quarters(map, room_start_col, start_row, end_row, end_col, back_room_wall_row, bench);
+  }
 }
 
-void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room_start_col, const int start_row, const int end_row, const int end_col)
+void CathedralGenerator::add_feature_to_middle_of_priest_quarters(MapPtr map, const int room_start_col, const int start_row, const int end_row, const int end_col, const int back_room_wall_row, FeaturePtr feature)
+{
+  if (map != nullptr)
+  {
+    int row = RNG::range(start_row + 2, back_room_wall_row - 2);
+    int col = RNG::range(start_col + 2, end_col - 2);
+
+    map->at({ row, col })->set_feature(feature);
+  }
+}
+
+int CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room_start_col, const int start_row, const int end_row, const int end_col)
 {
   TileGenerator tg;
   TilePtr current_tile;
@@ -196,8 +261,13 @@ void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room
   
   if (generate_treasure_room_and_crypt)
   {
-    // FIXME: Generate 2 or 3 chests
-    // FIXME: Generate items, and place them in the chest
+    // Sarcophagi
+    vector<Coordinate> corners = { {wall_row + 1, room_start_col + 1}, {wall_row + 1, end_col - 2}, {end_row - 2, room_start_col + 1}, {end_row - 2, end_col - 2} };
+    for (Coordinate& c : corners)
+    {
+      FeaturePtr sarcophagus = FeatureGenerator::generate_sarcophagus();
+      map->at(c)->set_feature(sarcophagus);
+    }
     
     // Generate the stairs down to the crypt
     Coordinate c = { (wall_row + start_row + church_height) / 2, (room_start_col + start_col + church_width) / 2 };
@@ -208,4 +278,6 @@ void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room
     LibrarySectorFeature lsf;
     lsf.generate_interior(map, { wall_row, room_start_col }, { end_row-1, end_col-1 }, { wall_row, door_col });
   }
+
+  return wall_row;
 }

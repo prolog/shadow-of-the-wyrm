@@ -1,10 +1,7 @@
 Me:
-- Break out book code from library sector feature into common fn
-- Add to other settlement types
+- Add LL to other settlement types
 - Statues around armory in carcassia
 - Little library - add to settlements
-- Statues outside doors of cathedral
-- Big empty priest quarters in cathedral
 - Urchins outside churches
 - Crypt goes to main map (due to "down staircase leading to map exit" for
   towers)
