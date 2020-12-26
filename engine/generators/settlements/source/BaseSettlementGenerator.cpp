@@ -5,6 +5,7 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "GraveyardSectorFeature.hpp"
+#include "LibrarySectorFeature.hpp"
 #include "ParkSectorFeature.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
@@ -492,6 +493,9 @@ vector<shared_ptr<SectorFeature>> BaseSettlementGenerator::get_sector_features()
   sfs.push_back(sf);
 
   sf = std::make_shared<GraveyardSectorFeature>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<LittleLibrarySectorFeature>();
   sfs.push_back(sf);
 
   sf = std::make_shared<FruitVegetableGardenGenerator>();

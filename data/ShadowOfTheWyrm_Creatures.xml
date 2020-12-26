@@ -22600,7 +22600,10 @@
 				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
-				<AllowableTerrainTypes/>
+				<AllowableTerrainTypes>
+					<TileType>29</TileType>
+					<TileType>34</TileType>
+				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>

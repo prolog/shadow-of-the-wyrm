@@ -1,10 +1,7 @@
 Me:
-- Add LL to other settlement types
-- Statues around armory in carcassia
-- Little library - add to settlements
 - Urchins outside churches
 - Crypt goes to main map (due to "down staircase leading to map exit" for
-  towers)
+  towers) - fix by making the room an ossuary and its own type
 - Infinite potions out of barrels? (Gordon Overkill)
 - Long term, give a chance for coastal generators to produce coastline, maybe
   with little islands, etc. Before generating, set booleans for coast in

@@ -3667,3 +3667,13 @@ of failure.  Not their mission, but it burned %b
 they couldn't turn their kinfolk.  Open field. %b
 They drew their swords and rode towards the sprawling weald.
 %p
+The advantage of the cavalry is space - %b
+in movement, yes, but also vertically, %b
+for fighting upward's harder.  Every trace %b
+of this erased as, stopping at the trees, %b
+they found the brush so dense they left a man %b
+to mind the horses.  Going on their way, %b
+they walked with weapons out to cut the strands %b
+of hanging vines, and sometimes notch a blaze, %b
+to help them find their way back through that wooded maze.
+%p

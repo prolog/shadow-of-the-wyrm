@@ -13,6 +13,8 @@ Shadow of the Wyrm v1.2.6 "Holborne"
 
 - New spells: paralyze (Mystic).
 
+- Stanzas for "Tel and Floridel".
+
 - Bug fixes:
 
   - When a cathedral had stairs to the crypt, the player was being placed
