@@ -11,6 +11,8 @@ Shadow of the Wyrm v1.2.6 "Holborne"
 
 - Libraries can now appear in the Carcassia religious district.
 
+- Toned down the number of potions available via barrels.
+
 - New spells: paralyze (Mystic).
 
 - Stanzas for "Tel and Floridel".
@@ -19,6 +21,8 @@ Shadow of the Wyrm v1.2.6 "Holborne"
 
   - When a cathedral had stairs to the crypt, the player was being placed
     on those steps after entering the map (Josh Engdahl).
+
+  - Fixed issues with crypt generation in cathedrals.
 
 Shadow of the Wyrm v1.2.5 "Arnold"
 - Version declared November 1, 2020. Version finalized December 13, 2020.

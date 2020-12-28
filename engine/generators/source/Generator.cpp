@@ -403,7 +403,7 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
     //
     // For things like floating towers, a down staircase leads to the previous.
     //
-    if (does_tile_lead_to_previous_map(get_map_type(), tile_type))
+    if (does_tile_lead_to_previous_map(get_map_type(), tile_type, depth))
     {
       // This may be empty, in which case, the custom map ID will be empty
       // and terrain will be checked instead, which is the desired behaviour.
@@ -469,12 +469,20 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
   return false;
 }
 
-bool Generator::does_tile_lead_to_previous_map(const MapType map_type, const TileType tile_type)
+bool Generator::does_tile_lead_to_previous_map(const MapType map_type, const TileType tile_type, const Depth& depth)
 {
   if ((map_type == MapType::MAP_TYPE_UNDERWORLD && tile_type == TileType::TILE_TYPE_UP_STAIRCASE) ||
       (map_type == MapType::MAP_TYPE_OVERWORLD && tile_type == TileType::TILE_TYPE_DOWN_STAIRCASE))
   {
-    return true;
+    // Wherever we are - under ground, or above - if the depth isn't 0, we
+    // should go back to the previous.
+    //
+    // Disallowing this when depth = 0 ensures that we don't go back to the
+    // previous when e.g. going down a staircase in a town, church, etc.
+    if (depth.get_current() != 0)
+    {
+      return true;
+    }
   }
 
   return false;
