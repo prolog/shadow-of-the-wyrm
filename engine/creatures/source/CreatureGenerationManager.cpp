@@ -235,6 +235,24 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, Crea
   return generated_creature;
 }
 
+CreaturePtr CreatureGenerationManager::generate_follower(ActionManager& am, const FollowerType ft, const int danger_level)
+{
+  CreaturePtr follower;
+
+  switch (ft)
+  {
+    case FollowerType::FOLLOWER_TYPE_HIRELING:
+      follower = generate_hireling(am, danger_level);
+      break;
+    case FollowerType::FOLLOWER_TYPE_ADVENTURER:
+      follower = generate_adventurer(am, danger_level);
+    default:
+      break;
+  }
+
+  return follower;
+}
+
 CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, const int danger_level)
 {
   CreatureSex sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE)));
@@ -315,6 +333,67 @@ CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, cons
   }
 
   return hireling;
+}
+
+CreaturePtr CreatureGenerationManager::generate_adventurer(ActionManager& am, const int danger_level)
+{
+  CreatureSex sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE)));
+  CreatureFactory cf;
+
+  Race* race = CreatureUtils::get_random_user_playable_race();
+  Class* cur_class = CreatureUtils::get_random_user_playable_class();
+  string race_id;
+  string class_id;
+
+  if (race != nullptr && cur_class != nullptr)
+  {
+    race_id = race->get_race_id();
+    class_id = cur_class->get_class_id();
+  }
+
+  string name = Naming::generate_name(sex);
+  CreaturePtr adv = cf.create_by_race_and_class(am, race_id, class_id, name, sex, CreatureSize::CREATURE_SIZE_NA);
+  DecisionStrategyPtr ds = DecisionStrategyFactory::create_decision_strategy(DecisionStrategyID::DECISION_STRATEGY_MOBILE);
+
+  // Adventurers remain neutral and never jump in to help.
+  ds->set_property(DecisionStrategyProperties::DECISION_STRATEGY_ASSIST_PCT, std::to_string(0));
+
+  adv->set_decision_strategy(std::move(ds));
+
+  adv->set_description_sid(ProcgenTextKeys::ADVENTURER_DESC_SID);
+  adv->set_short_description_sid(ProcgenTextKeys::ADVENTURER_SHORT_DESC_SID);
+  adv->set_text_details_sid(ProcgenTextKeys::ADVENTURER_TEXT_DETAILS_SID);
+
+  string lua_script = StringTable::get(ProcgenTextKeys::ADVENTURER_LUA_SCRIPT_SID);
+  EventScriptsMap scripts;
+  ScriptDetails sd(lua_script, 100);
+  adv->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT, sd);
+
+  Symbol s('@', static_cast<Colour>(RNG::range(1, 15)));
+  SpritesheetLocation& ssl = s.get_spritesheet_location_ref();
+
+  ssl.set_reference_id(CreatureReferences::ADVENTURER);
+  ssl.set_index(SpritesheetIndex::SPRITESHEET_INDEX_CREATURE);
+  adv->set_symbol(s);
+
+  HostilityManager hm;
+  hm.set_hostility_to_player(adv, false);
+
+  // Set up the creature's attack, HP, AP, spells.
+  ExperienceManager em;
+  int xp = em.get_total_experience_needed_for_level(adv, danger_level);
+  em.gain_experience(adv, static_cast<uint>(xp));
+
+  // Add a boat
+  IInventoryPtr inv = adv->get_inventory();
+
+  if (!inv->has_item_type(ItemType::ITEM_TYPE_BOAT))
+  {
+    ItemPtr coracle = ItemManager::create_item(ItemIdKeys::ITEM_ID_CORACLE);
+    inv->merge_or_add(coracle, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+  }
+
+  return adv;
 }
 
 bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const TileType terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const bool ignore_level_checks, const string& required_race, const vector<string>& generator_filters, const vector<string>& preset_creature_ids)

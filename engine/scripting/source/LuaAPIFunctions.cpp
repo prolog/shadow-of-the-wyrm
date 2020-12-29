@@ -403,16 +403,21 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "genocide", genocide);
   lua_register(L, "generate_ancient_beast", generate_ancient_beast);
   lua_register(L, "generate_hireling", generate_hireling);
+  lua_register(L, "generate_adventurer", generate_adventurer);
   lua_register(L, "set_colour", set_colour);
   lua_register(L, "add_npc_level_message", add_npc_level_message);
   lua_register(L, "get_leader_id", get_leader_id);
   lua_register(L, "get_name", get_name);
   lua_register(L, "set_hirelings_hired", set_hirelings_hired);
   lua_register(L, "get_hirelings_hired", get_hirelings_hired);
+  lua_register(L, "set_adventurers_joined", set_adventurers_joined);
+  lua_register(L, "get_adventurers_joined", get_adventurers_joined);
   lua_register(L, "get_trained_magic_skills", get_trained_magic_skills);
   lua_register(L, "order_follow", order_follow);
   lua_register(L, "order_at_ease", order_at_ease);
   lua_register(L, "reset_creatures_and_creature_locations", reset_creatures_and_creature_locations);
+  lua_register(L, "set_creature_speech_text_sid", set_creature_speech_text_sid);
+  lua_register(L, "get_creature_speech_text_sid", get_creature_speech_text_sid);
 }
 
 // Lua API helper functions
@@ -8127,7 +8132,7 @@ int generate_hireling(lua_State* ls)
     if (map != nullptr)
     {
       CreatureGenerationManager cgm;
-      CreaturePtr hireling = cgm.generate_hireling(game.get_action_manager_ref(), lvl);
+      CreaturePtr hireling = cgm.generate_follower(game.get_action_manager_ref(), FollowerType::FOLLOWER_TYPE_HIRELING, lvl);
 
       GameUtils::add_new_creature_to_map(game, hireling, map, { y,x });
     }
@@ -8135,6 +8140,35 @@ int generate_hireling(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Invalid arguments to generate_hireling");
+  }
+
+  return 0;
+}
+
+int generate_adventurer(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  if (num_args == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    Game& game = Game::instance();
+    string map_id = lua_tostring(ls, 1);
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
+    int y = lua_tointeger(ls, 2);
+    int x = lua_tointeger(ls, 3);
+    int lvl = lua_tointeger(ls, 4);
+
+    if (map != nullptr)
+    {
+      CreatureGenerationManager cgm;
+      CreaturePtr adv = cgm.generate_follower(game.get_action_manager_ref(), FollowerType::FOLLOWER_TYPE_ADVENTURER, lvl);
+
+      GameUtils::add_new_creature_to_map(game, adv, map, { y,x });
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to generate_adventurer");
   }
 
   return 0;
@@ -8277,6 +8311,49 @@ int get_hirelings_hired(lua_State* ls)
   return 1;
 }
 
+int set_adventurers_joined(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      int joined = lua_tointeger(ls, 2);
+      creature->set_adventurers_joined(joined);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_adventurers_joined");
+  }
+
+  return 0;
+}
+
+int get_adventurers_joined(lua_State* ls)
+{
+  int joined = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      joined = creature->get_adventurers_joined();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_adventurers_joined");
+  }
+
+  lua_pushnumber(ls, joined);
+  return 1;
+}
+
+
 int get_trained_magic_skills(lua_State* ls)
 {
   vector<int> mskills;
@@ -8369,5 +8446,49 @@ int reset_creatures_and_creature_locations(lua_State* ls)
   }
 
   lua_pushinteger(ls, sz);
+  return 1;
+}
+
+int set_creature_speech_text_sid(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string cr_id = lua_tostring(ls, 1);
+    string text_sid = lua_tostring(ls, 2);
+    CreaturePtr creature = get_creature(cr_id);
+
+    if (creature != nullptr)
+    {
+      creature->set_speech_text_sid(text_sid);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_creature_speech_text_sid");
+  }
+
+  return 0;
+}
+
+int get_creature_speech_text_sid(lua_State* ls)
+{
+  string speech_text_sid;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      speech_text_sid = creature->get_speech_text_sid();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_creature_speech_text_sid");
+  }
+
+  lua_pushstring(ls, speech_text_sid.c_str());
   return 1;
 }

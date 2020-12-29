@@ -354,6 +354,9 @@ class Creature : public ISerializable
     void set_hirelings_hired(const int new_hirelings_hired);
     int get_hirelings_hired() const;
 
+    void set_adventurers_joined(const int new_adventurers_joined);
+    int get_adventurers_joined() const;
+
     bool is_allied_to(const std::string& creature_original_id) const;
 
     bool serialize(std::ostream& stream) const override;

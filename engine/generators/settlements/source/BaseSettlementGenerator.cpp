@@ -461,11 +461,11 @@ void BaseSettlementGenerator::generate_special_inhabitants(MapPtr map)
   {
     if (RNG::percent_chance(HIRELING_PROBABILITY))
     {
-        Game& game = Game::instance();
+      Game& game = Game::instance();
       ActionManager& am = game.get_action_manager_ref();
 
       CreatureGenerationManager cgm;
-      CreaturePtr hireling = cgm.generate_hireling(am, RNG::range(HIRELING_MIN_LEVEL, HIRELING_MAX_LEVEL));
+      CreaturePtr hireling = cgm.generate_follower(am, FollowerType::FOLLOWER_TYPE_HIRELING, RNG::range(HIRELING_MIN_LEVEL, HIRELING_MAX_LEVEL));
       Dimensions dim = map->size();
 
       for (int i = 1; i < 20; i++)

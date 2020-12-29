@@ -252,16 +252,21 @@ int set_weather(lua_State* ls);
 int genocide(lua_State* ls);
 int generate_ancient_beast(lua_State* ls);
 int generate_hireling(lua_State* ls);
+int generate_adventurer(lua_State* ls);
 int set_colour(lua_State* ls);
 int add_npc_level_message(lua_State* ls);
 int get_leader_id(lua_State* ls);
 int get_name(lua_State* ls);
 int set_hirelings_hired(lua_State* ls);
 int get_hirelings_hired(lua_State* ls);
+int set_adventurers_joined(lua_State* ls);
+int get_adventurers_joined(lua_State* ls);
 int get_trained_magic_skills(lua_State* ls);
 int order_follow(lua_State* ls);
 int order_at_ease(lua_State* ls);
 int reset_creatures_and_creature_locations(lua_State* ls);
+int set_creature_speech_text_sid(lua_State* ls);
+int get_creature_speech_text_sid(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

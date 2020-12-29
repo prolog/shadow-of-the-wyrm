@@ -1,6 +1,8 @@
 Me:
-- Crypt goes to main map (due to "down staircase leading to map exit" for
-  towers) - fix by making the room an ossuary and its own type
+- NEED TO DO AN ASSET RELEASE
+- Tavern generator for settlements
+- Tavern should have a low level adventuring party (L1-3), 2 ppl
+- Test by generating these in Carcassia, Gnordvar
 - Long term, give a chance for coastal generators to produce coastline, maybe
   with little islands, etc. Before generating, set booleans for coast in
   the different directions and then pick one. Should be done after the initial
@@ -29,9 +31,7 @@ Me:
   - Sewers
   - Mines
   - fenced area with gate: pigs, chickens
-  - stream
-  - tavern
-  - orchard
+  - tavern with low-level adventuring party
 - Each version: make sure to update itch.io page for both SotW and the sprite
   pack! OpenGameArt if new sprites.
 - Release after this: grond says tanning is complicated & dragon skins aren't

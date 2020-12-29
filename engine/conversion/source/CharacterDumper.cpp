@@ -109,7 +109,9 @@ string CharacterDumper::str() const
   MortuaryDumper mortuary_dumper(creature, num_cols);
   ss << mortuary_dumper.str() << endl << endl;
 
-  ss << TextMessages::get_hirelings_hired_message(creature->get_hirelings_hired()) << endl << endl;
+  ss << TextMessages::get_hirelings_hired_message(creature->get_hirelings_hired()) << endl;
+  ss << TextMessages::get_adventurers_joined_message(creature->get_adventurers_joined()) << endl << endl;
+
   ss << StringTable::get(TextKeys::MAXIMUM_DEPTH_REACHED) << ": " << creature->get_max_depth_reached().str(true) << endl << endl;
   ss << StringTable::get(TextKeys::TURNS) << ": " << creature->get_turns() << endl << endl;
 

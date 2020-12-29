@@ -7977,6 +7977,10 @@
 					<Row>13</Row>
 					<Col>9</Col>
 				</Reference>
+				<Reference id="adventurer">
+					<Row>13</Row>
+					<Col>10</Col>
+				</Reference>
 			</References>
 		</Spritesheet>
 		<Spritesheet id="it">

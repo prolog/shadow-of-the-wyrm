@@ -1666,6 +1666,24 @@ int Creature::get_hirelings_hired() const
   return hirelings_hired;
 }
 
+void Creature::set_adventurers_joined(const int new_adventurers_joined)
+{
+  set_additional_property(CreatureProperties::CREATURE_PROPERTIES_ADVENTURERS_JOINED, std::to_string(new_adventurers_joined));
+}
+
+int Creature::get_adventurers_joined() const
+{
+  int adv_joined = 0;
+  string joined_s = get_additional_property(CreatureProperties::CREATURE_PROPERTIES_ADVENTURERS_JOINED);
+
+  if (!joined_s.empty())
+  {
+    adv_joined = String::to_int(joined_s);
+  }
+
+  return adv_joined;
+}
+
 bool Creature::is_allied_to(const string& creature_id) const
 {
   bool allied = false;
