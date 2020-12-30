@@ -13,6 +13,18 @@ Shadow of the Wyrm v1.2.6 "Holborne"
 
 - Toned down the number of potions available via barrels.
 
+- NPC adventurers are now available around the world (e.g. in the inn in
+  Carcassia, at Wintersea Keep) and will join you for free.  They are squishy 
+  and have just the base equipment for their race and class, so they may take 
+  some care to keep alive.
+
+- Drunks and bartenders can now be any race (as they're now considered
+  townfolk).
+
+- Taverns can now be generated in Carcassia (in the north-east sector)
+  as well as in random settlements.  Each tavern is likely to have at least
+  one adventurer looking to form a party.
+
 - New spells: paralyze (Mystic).
 
 - Stanzas for "Tel and Floridel".

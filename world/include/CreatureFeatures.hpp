@@ -123,6 +123,8 @@ class CreatureID
     static const std::string CREATURE_ID_FARMER;
     static const std::string CREATURE_ID_SMALL_CHILD;
     static const std::string CREATURE_ID_GUARD;
+    static const std::string CREATURE_ID_BARTENDER;
+    static const std::string CREATURE_ID_DRUNK;
 
   protected:
     CreatureID();

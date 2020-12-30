@@ -4,7 +4,7 @@ require('map_events')
 require('carcassia_common')
 
 local map_id = "carcassia_a2"
-local population = {"_farmer", "_small_child", "seawife", "_commoner", "thief", "urchin", "blackguard", "rat", "gnomish_sailor", "_fisherman", "carcassian_guard", "layperson", "tradesman", "merchant", "_vendor", "traveller", "drunk"}
+local population = {"_farmer", "_small_child", "seawife", "_commoner", "thief", "urchin", "blackguard", "rat", "gnomish_sailor", "_fisherman", "carcassian_guard", "layperson", "tradesman", "merchant", "_vendor", "traveller", "_drunk"}
 
 local function setup_casino(map_id)
   -- Ivory in the vault

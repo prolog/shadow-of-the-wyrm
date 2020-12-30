@@ -58,7 +58,7 @@
 				</Random>
 			</Placement>
 			<Placement>
-				<ID>bartender</ID>
+				<ID>_bartender</ID>
 				<Coord>
 					<Row>16</Row>
 					<Col>77</Col>
@@ -86,21 +86,21 @@
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>drunk</ID>
+				<ID>_drunk</ID>
 				<Coord>
 					<Row>15</Row>
 					<Col>64</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>drunk</ID>
+				<ID>_drunk</ID>
 				<Coord>
 					<Row>13</Row>
 					<Col>59</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>drunk</ID>
+				<ID>_drunk</ID>
 				<Coord>
 					<Row>16</Row>
 					<Col>71</Col>

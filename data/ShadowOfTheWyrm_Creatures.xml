@@ -19738,8 +19738,8 @@
 				<Type>0</Type>
 			</Damage>
 		</Creature>
-		<Creature id="bartender">
-			<RaceID>10_gnome</RaceID>
+		<Creature id="_bartender">
+			<RaceID>01_human,02_woodelf,03_mountainelf,04_snakeling,05_fae,06_dwarf,07_goblin,08_ogre,09_giant,10_gnome</RaceID>
 			<ShortDescriptionSID>BARTENDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BARTENDER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BARTENDER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -22545,8 +22545,8 @@
 			</Damage>
 			<Soak>7</Soak>
 		</Creature>
-		<Creature id="drunk">
-			<RaceID>06_dwarf</RaceID>
+		<Creature id="_drunk">
+			<RaceID>01_human,02_woodelf,03_mountainelf,04_snakeling,05_fae,06_dwarf,07_goblin,08_ogre,09_giant,10_gnome</RaceID>
 			<ShortDescriptionSID>DRUNK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DRUNK_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DRUNK_TEXT_DETAILS_SID</TextDetailsSID>

@@ -1,7 +1,5 @@
 Me:
 - NEED TO DO AN ASSET RELEASE
-- Tavern generator for settlements
-- Tavern should have a low level adventuring party (L1-3), 2 ppl
 - Test by generating these in Carcassia, Gnordvar
 - Long term, give a chance for coastal generators to produce coastline, maybe
   with little islands, etc. Before generating, set booleans for coast in

@@ -131,7 +131,7 @@
 				<Friendly>1</Friendly>
 			</Placement>
 			<Placement>
-				<ID>bartender</ID>
+				<ID>_bartender</ID>
 				<Coord>
 					<Row>6</Row>
 					<Col>11</Col>

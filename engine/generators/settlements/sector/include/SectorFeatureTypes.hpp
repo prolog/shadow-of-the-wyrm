@@ -34,7 +34,8 @@ enum struct LowIncomeResidentialSectorFeatureType
   LIR_SECTOR_FEATURE_SHOP = 4,
   LIR_SECTOR_FEATURE_BEER_HALL = 5,
   LIR_SECTOR_FEATURE_WORKSHOP = 6,
-  LIR_SECTOR_LAST = 7
+  LIR_SECTOR_FEATURE_TAVERN = 7,
+  LIR_SECTOR_LAST = 8
 };
 
 enum struct ResidentialSectorFeatureType

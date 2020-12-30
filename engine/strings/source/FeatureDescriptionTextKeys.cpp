@@ -43,3 +43,4 @@ SignTextKeys::SignTextKeys()
 }
 
 const string SignTextKeys::SIGN_LITTLE_LIBRARY = "SIGN_LITTLE_LIBRARY";
+const string SignTextKeys::SIGN_TAVERN         = "SIGN_TAVERN";

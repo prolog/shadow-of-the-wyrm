@@ -10,6 +10,7 @@
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "ShrineSectorFeature.hpp"
+#include "TavernSectorFeature.hpp"
 #include "TileGenerator.hpp"
 #include "FruitVegetableGardenGenerator.hpp"
 
@@ -505,6 +506,9 @@ vector<shared_ptr<SectorFeature>> BaseSettlementGenerator::get_sector_features()
   sfs.push_back(sf);
 
   sf = std::make_shared<ShrineSectorFeature>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<TavernSectorFeature>();
   sfs.push_back(sf);
 
   return sfs;

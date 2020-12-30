@@ -1,0 +1,97 @@
+#include "CoordUtils.hpp"
+#include "CreatureFeatures.hpp"
+#include "CreatureGenerationManager.hpp"
+#include "FeatureDescriptionTextKeys.hpp"
+#include "FeatureGenerator.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
+#include "RNG.hpp"
+#include "SettlementGeneratorUtils.hpp"
+#include "TavernSectorFeature.hpp"
+
+using namespace std;
+
+bool TavernSectorFeature::generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
+{
+  bool generated = false;
+
+  if (map != nullptr)
+  {
+    vector<Building> buildings;
+    vector<ClassIdentifier> feature_ids;
+    int num_tables = RNG::range(2, 4);
+
+    for (int i = 0; i < num_tables; i++)
+    {
+      feature_ids.push_back(ClassIdentifier::CLASS_ID_TABLE);
+
+      if (RNG::percent_chance(40))
+      {
+        feature_ids.push_back(ClassIdentifier::CLASS_ID_BENCH);
+      }
+    }
+
+    vector<string> creature_ids = { CreatureID::CREATURE_ID_BARTENDER };
+
+    int num_drunks = RNG::range(1, 2);
+    for (int i = 0; i < num_drunks; i++)
+    {
+      creature_ids.push_back(CreatureID::CREATURE_ID_DRUNK);
+    }
+
+    vector<string> item_ids = { ItemIdKeys::ITEM_ID_DRAM_WHISKY, ItemIdKeys::ITEM_ID_GNOMISH_STOUT };
+
+    CardinalDirection door_dir = static_cast<CardinalDirection>(RNG::range(static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_NORTH), static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_WEST)));
+    BuildingGenerationParameters bgp(start_coord.first, end_coord.first, start_coord.second, end_coord.second, door_dir, false, feature_ids, creature_ids, item_ids);
+    SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, 100);
+    CreatureGenerationManager cgm;
+    Game& game = Game::instance();
+
+    if (!buildings.empty())
+    {
+      generated = true;
+
+      // Now, generate adventurers
+      int num_adv = RNG::range(1, 2);
+
+      Building b = buildings[0];
+      pair<Coordinate, Coordinate> interior = b.get_interior_coords();
+      Coordinate dc = b.get_door_coord();
+
+      for (int i = 0; i < num_adv; i++)
+      {
+        for (int j = 0; j < 5; j++)
+        {
+          Coordinate c = { RNG::range(interior.first.first, interior.second.first), RNG::range(interior.first.second, interior.second.second) };
+          TilePtr tile = map->at(c);
+
+          if (tile != nullptr && !tile->has_creature())
+          {
+            CreaturePtr adv = cgm.generate_follower(game.get_action_manager_ref(), FollowerType::FOLLOWER_TYPE_ADVENTURER, 1);
+            GameUtils::add_new_creature_to_map(game, adv, map, c);
+
+            break;
+          }
+        }
+      }
+
+      // Generate a sign
+      vector<Coordinate> sign_locs = { CoordUtils::get_new_coordinate(dc, Direction::DIRECTION_NORTH_WEST), CoordUtils::get_new_coordinate(dc, Direction::DIRECTION_SOUTH_EAST) };
+      for (const Coordinate& c : sign_locs)
+      {
+        TilePtr tile = map->at(c);
+
+        if (tile != nullptr && tile->get_tile_type() != TileType::TILE_TYPE_DUNGEON && tile->get_movement_multiplier() > 0 && !tile->has_feature())
+        {
+          FeaturePtr sign = FeatureGenerator::generate_sign(SignTextKeys::SIGN_TAVERN);
+          tile->set_feature(sign);
+
+          break;
+        }
+      }
+    }
+  }
+
+  return generated;
+}
+

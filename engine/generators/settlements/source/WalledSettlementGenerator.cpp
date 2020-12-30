@@ -19,6 +19,7 @@
 #include "ShadeGardenGenerator.hpp"
 #include "ShopSectorFeature.hpp"
 #include "ShrineSectorFeature.hpp"
+#include "TavernSectorFeature.hpp"
 #include "TileGenerator.hpp"
 
 using namespace std;
@@ -347,6 +348,9 @@ vector<shared_ptr<SectorFeature>> WalledSettlementGenerator::get_sector_features
   sfs.push_back(sf);
 
   sf = std::make_shared<LittleLibrarySectorFeature>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<TavernSectorFeature>();
   sfs.push_back(sf);
 
   return sfs;

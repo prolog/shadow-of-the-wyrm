@@ -6,17 +6,19 @@
 #include "RNG.hpp"
 #include "SectorFeature.hpp"
 #include "ShopSectorFeature.hpp"
+#include "TavernSectorFeature.hpp"
 #include "WorkshopSectorFeature.hpp"
 
 using namespace std;
 
 LowIncomeResidentialSectorFeatureGenerator::LowIncomeResidentialSectorFeatureGenerator()
 : features({{35, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_HOUSE},
-            {45, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_WORKSHOP},
+            {45, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_TAVERN},
             {55, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_GRAVES},
             {70, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_VEGETABLE_GARDEN},
             {80, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_SHOP},
-            {90, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_BEER_HALL},
+            {88, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_WORKSHOP},
+            {95, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_BEER_HALL},
             {100, LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_SHOP}})
 {
 }
@@ -71,6 +73,11 @@ bool LowIncomeResidentialSectorFeatureGenerator::create_feature(MapPtr map, cons
     {
       // Ensure that walls are generated for the beer hall.
       feature = std::make_unique<BeerHallSectorFeature>(true);
+      break;
+    }
+    case LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_TAVERN:
+    {
+      feature = std::make_unique<TavernSectorFeature>();
       break;
     }
     case LowIncomeResidentialSectorFeatureType::LIR_SECTOR_FEATURE_SHOP:

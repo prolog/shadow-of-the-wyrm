@@ -4,7 +4,7 @@ require('fn')
 require('map_events')
 
 local map_id = "carcassia_b2"
-local population = {"layperson", "devotee", "cleric", "follower", "apostle", "pilgrim", "carcassian_guard", "_noble", "_commoner", "thief", "urchin", "tradesman", "merchant", "traveller", "drunk"}
+local population = {"layperson", "devotee", "cleric", "follower", "apostle", "pilgrim", "carcassian_guard", "_noble", "_commoner", "thief", "urchin", "tradesman", "merchant", "traveller", "_drunk"}
 
 local function setup_properties(map_id)
   map_set_tile_property(map_id, 18, 76, "MAP_PROPERTIES_INITIAL_ITEMS", "smite_spellbook")
