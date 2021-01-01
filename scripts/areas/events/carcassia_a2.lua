@@ -61,7 +61,7 @@ local function setup_dynamic_content(map_id)
   -- generated, run the algorithm a number of times to try to luck out.
   for i=1,80 do
     local y = RNG_range(3,10)
-    local y2 = y + RNG_range(5,8)
+    local y2 = y + RNG_range(6,9)
 
     local x = RNG_range(20,70)
     local x2 = x + RNG_range(6, 10)

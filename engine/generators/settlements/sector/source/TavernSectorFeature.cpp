@@ -5,18 +5,31 @@
 #include "FeatureGenerator.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "ItemManager.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "TavernSectorFeature.hpp"
+#include "WildflowerGardenGenerator.hpp"
 
 using namespace std;
 
-bool TavernSectorFeature::generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
+const int TavernSectorFeature::MIN_HEIGHT_FOR_BARRELS = 5;
+
+bool TavernSectorFeature::generate_feature(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
 {
   bool generated = false;
+  int height = end_coord.first - st_coord.first;
+  Coordinate start_coord = st_coord;
+  bool create_barrels = false;
 
   if (map != nullptr)
   {
+    if (height >= MIN_HEIGHT_FOR_BARRELS)
+    {
+      create_barrels = true;
+      start_coord.first += 1;
+    }
+
     vector<Building> buildings;
     vector<ClassIdentifier> feature_ids;
     int num_tables = RNG::range(2, 4);
@@ -89,9 +102,55 @@ bool TavernSectorFeature::generate_feature(MapPtr map, const Coordinate& start_c
           break;
         }
       }
+
+      // Barrels go along the north wall - this gets the least sun
+      if (create_barrels)
+      {
+        generate_barrels(map, st_coord, end_coord, buildings[0]);
+      }
     }
   }
 
   return generated;
 }
 
+void TavernSectorFeature::generate_barrels(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const Building& building)
+{
+  if (map != nullptr)
+  {
+    vector<string> item_ids = { ItemIdKeys::ITEM_ID_GNOMISH_STOUT, ItemIdKeys::ITEM_ID_ELVEN_BRANDY, ItemIdKeys::ITEM_ID_DRAM_MEAD, ItemIdKeys::ITEM_ID_DRAM_GIN };
+    int incr_mod = RNG::range(1, 3);
+    WildflowerGardenGenerator wgg;
+    ItemManager im;
+
+    auto flower_details = wgg.get_wildflower_details();
+
+    for (int col = start_coord.second; col <= end_coord.second; col++)
+    {
+      TilePtr tile = map->at(start_coord.first, col);
+
+      if (tile != nullptr && !tile->has_feature())
+      {
+        if (col % incr_mod == 0 && col != building.get_door_coord().second)
+        {
+          // Generate a barrel.
+          FeaturePtr bfeat = FeatureGenerator::generate_barrel();
+          std::shared_ptr<Barrel> barrel = dynamic_pointer_cast<Barrel>(bfeat);
+
+          if (barrel != nullptr)
+          {
+            barrel->set_pour_item_id(item_ids[RNG::range(0, item_ids.size() - 1)]);
+            tile->set_feature(barrel);
+          }
+        }
+        else
+        {
+          // Generate flowers between the barrels.
+          string wildflower_id = flower_details.second[RNG::range(flower_details.first.first, flower_details.first.second)];
+          ItemPtr wildflower = im.create_item(wildflower_id);
+          tile->get_items()->merge_or_add(wildflower, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,9 @@
 Me:
+- Update the synopsis to include your current party (adv + hire on same map).
+  Names/races/classes!
+- Make taverns more distinctive
 - NEED TO DO AN ASSET RELEASE
+- Do a couple of quests that require a party
 - Test by generating these in Carcassia, Gnordvar
 - Long term, give a chance for coastal generators to produce coastline, maybe
   with little islands, etc. Before generating, set booleans for coast in
