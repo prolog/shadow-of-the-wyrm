@@ -17,7 +17,7 @@
 #include "ItemEnchantmentCalculator.hpp"
 #include "MapProperties.hpp"
 #include "Naming.hpp"
-#include "ProcgenTextKeys.hpp"
+#include "PartyTextKeys.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
 
@@ -278,11 +278,11 @@ CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, cons
 
   hireling->set_decision_strategy(std::move(ds));
 
-  hireling->set_description_sid(ProcgenTextKeys::HIRELING_DESC_SID);
-  hireling->set_short_description_sid(ProcgenTextKeys::HIRELING_SHORT_DESC_SID);
-  hireling->set_text_details_sid(ProcgenTextKeys::HIRELING_TEXT_DETAILS_SID);
+  hireling->set_description_sid(PartyTextKeys::HIRELING_DESC_SID);
+  hireling->set_short_description_sid(PartyTextKeys::HIRELING_SHORT_DESC_SID);
+  hireling->set_text_details_sid(PartyTextKeys::HIRELING_TEXT_DETAILS_SID);
   
-  string lua_script = StringTable::get(ProcgenTextKeys::HIRELING_LUA_SCRIPT_SID);
+  string lua_script = StringTable::get(PartyTextKeys::HIRELING_LUA_SCRIPT_SID);
   EventScriptsMap scripts;
   ScriptDetails sd(lua_script, 100);
   hireling->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT, sd);
@@ -360,11 +360,11 @@ CreaturePtr CreatureGenerationManager::generate_adventurer(ActionManager& am, co
 
   adv->set_decision_strategy(std::move(ds));
 
-  adv->set_description_sid(ProcgenTextKeys::ADVENTURER_DESC_SID);
-  adv->set_short_description_sid(ProcgenTextKeys::ADVENTURER_SHORT_DESC_SID);
-  adv->set_text_details_sid(ProcgenTextKeys::ADVENTURER_TEXT_DETAILS_SID);
+  adv->set_description_sid(PartyTextKeys::ADVENTURER_DESC_SID);
+  adv->set_short_description_sid(PartyTextKeys::ADVENTURER_SHORT_DESC_SID);
+  adv->set_text_details_sid(PartyTextKeys::ADVENTURER_TEXT_DETAILS_SID);
 
-  string lua_script = StringTable::get(ProcgenTextKeys::ADVENTURER_LUA_SCRIPT_SID);
+  string lua_script = StringTable::get(PartyTextKeys::ADVENTURER_LUA_SCRIPT_SID);
   EventScriptsMap scripts;
   ScriptDetails sd(lua_script, 100);
   adv->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT, sd);

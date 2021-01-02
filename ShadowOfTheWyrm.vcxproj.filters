@@ -4319,9 +4319,6 @@
     <ClInclude Include="engine\generators\settlements\sector\include\SectorFeatureTypes.hpp">
       <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\strings\include\ProcgenTextKeys.hpp">
-      <Filter>Header Files\engine\strings\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\include\CreatureTypes.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
@@ -4357,6 +4354,9 @@
     </ClInclude>
     <ClInclude Include="engine\generators\settlements\sector\include\TavernSectorFeature.hpp">
       <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\PartyTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -8680,9 +8680,6 @@
     <ClCompile Include="engine\strings\source\OrderTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\strings\source\ProcgenTextKeys.cpp">
-      <Filter>Source Files\engine\strings\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\source\CreatureTypes.cpp">
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
@@ -8739,6 +8736,9 @@
     </ClCompile>
     <ClCompile Include="engine\generators\settlements\sector\source\TavernSectorFeature.cpp">
       <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\PartyTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

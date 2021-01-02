@@ -9,6 +9,7 @@
 #include "ColourTextKeys.hpp"
 #include "ConductsDumper.hpp"
 #include "Conversion.hpp"
+#include "CreatureProperties.hpp"
 #include "CreatureTranslator.hpp"
 #include "EquipmentDumper.hpp"
 #include "Game.hpp"
@@ -19,6 +20,7 @@
 #include "MessageManagerFactory.hpp"
 #include "ModifiersDumper.hpp"
 #include "MortuaryDumper.hpp"
+#include "PartyTextKeys.hpp"
 #include "QuestDumper.hpp"
 #include "RaceManager.hpp"
 #include "ReligionManager.hpp"
@@ -109,8 +111,7 @@ string CharacterDumper::str() const
   MortuaryDumper mortuary_dumper(creature, num_cols);
   ss << mortuary_dumper.str() << endl << endl;
 
-  ss << TextMessages::get_hirelings_hired_message(creature->get_hirelings_hired()) << endl;
-  ss << TextMessages::get_adventurers_joined_message(creature->get_adventurers_joined()) << endl << endl;
+  ss << get_party() << endl << endl;
 
   ss << StringTable::get(TextKeys::MAXIMUM_DEPTH_REACHED) << ": " << creature->get_max_depth_reached().str(true) << endl << endl;
   ss << StringTable::get(TextKeys::TURNS) << ": " << creature->get_turns() << endl << endl;
@@ -119,7 +120,75 @@ string CharacterDumper::str() const
 }
 
 // Helper functions
-string CharacterDumper::get_synopsis() const
+string CharacterDumper::get_party() const
+{
+  ostringstream ss;
+
+  ss << TextMessages::get_hirelings_hired_message(creature->get_hirelings_hired()) << endl;
+  ss << TextMessages::get_adventurers_joined_message(creature->get_adventurers_joined()) << endl << endl;
+
+  // Party info
+  Game& game = Game::instance();
+  MapPtr current_map = game.get_current_map();
+
+  if (current_map != nullptr)
+  {
+    ss << StringTable::get(PartyTextKeys::CURRENT_PARTY) << ": ";
+
+    if (current_map->get_map_type() == MapType::MAP_TYPE_WORLD)
+    {
+      ss << StringTable::get(PartyTextKeys::PARTY_IN_TRANSIT);
+    }
+    else
+    {
+      const CreatureMap& creatures = current_map->get_creatures_ref();
+      vector<string> follower_descs;
+
+      for (const auto& c_pair : creatures)
+      {
+        ostringstream ss2;
+        CreaturePtr f = c_pair.second;
+        CharacterDumper cd(f);
+
+        if (f && f->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == creature->get_id())
+        {
+          string name = f->get_name();
+
+          if (name.empty())
+          {
+            ss2 << StringTable::get(f->get_short_description_sid());
+          }
+          else
+          {
+            ss2 << name;
+          }
+
+          ss2 << " " << "(" << cd.get_synopsis(false) << ")";
+          follower_descs.push_back(ss2.str());
+        }
+      }
+
+      for (size_t i = 0; i < follower_descs.size(); i++)
+      {
+        ss << follower_descs[i];
+
+        if (i < follower_descs.size() - 1)
+        {
+          ss << ", ";
+        }
+      }
+
+      if (follower_descs.empty())
+      {
+        ss << "-";
+      }
+    }
+  }
+
+  return ss.str();
+}
+
+string CharacterDumper::get_synopsis(const bool centre) const
 {
   ostringstream ss;
   
@@ -137,7 +206,16 @@ string CharacterDumper::get_synopsis() const
     string class_name = StringTable::get(char_class->get_class_name_sid());
       
     string character_synopsis = "L" + std::to_string(creature->get_level().get_current()) + " " + race_name + " " + class_name;
-    ss << String::centre(character_synopsis, num_cols);
+    trim_right(character_synopsis);
+
+    if (centre)
+    {
+      ss << String::centre(character_synopsis, num_cols);
+    }
+    else
+    {
+      ss << character_synopsis;
+    }
   }
 
   return ss.str();

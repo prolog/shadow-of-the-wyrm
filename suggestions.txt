@@ -1,4 +1,5 @@
 Me:
+- "Let's go!"
 - Update the synopsis to include your current party (adv + hire on same map).
   Names/races/classes!
 - Make taverns more distinctive
