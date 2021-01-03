@@ -153,6 +153,7 @@ string CharacterDumper::get_party() const
         if (f && f->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == creature->get_id())
         {
           string name = f->get_name();
+          ss2 << " - ";
 
           if (name.empty())
           {
@@ -168,19 +169,18 @@ string CharacterDumper::get_party() const
         }
       }
 
-      for (size_t i = 0; i < follower_descs.size(); i++)
-      {
-        ss << follower_descs[i];
-
-        if (i < follower_descs.size() - 1)
-        {
-          ss << ", ";
-        }
-      }
-
       if (follower_descs.empty())
       {
         ss << "-";
+      }
+      else
+      {
+        ss << endl;
+
+        for (const string& fdesc : follower_descs)
+        {
+          ss << fdesc << endl;
+        }
       }
     }
   }

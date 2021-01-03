@@ -1,5 +1,7 @@
 Me:
 - "Let's go!"
+- person
+- person2
 - Update the synopsis to include your current party (adv + hire on same map).
   Names/races/classes!
 - Make taverns more distinctive
@@ -239,6 +241,7 @@ Grond:
 - could magic skill affect spell duration
 - monster as a mount
 - "some ivory pieces shimmers in a radiant light"
+- fishing from boat, fish vanish
 
 Yan Zhang:
 - Dungeon symbol should generate that thing on the last level

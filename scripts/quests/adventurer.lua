@@ -11,7 +11,8 @@ local function request_follow(this_cr_id, name)
     -- Set the chat text
     set_creature_speech_text_sid(this_cr_id, "ADVENTURER_SPEECH_TEXT" .. tostring(RNG_range(1, 7)) .. "_SID")
 
-    clear_and_add_message(get_creature_speech_text_sid(this_cr_id), {name})
+    -- Let's go!
+    clear_and_add_message("ADVENTURER_SPEECH_LETS_GO_SID")
   else
     clear_and_add_message("ADVENTURER_FOLLOW_DECLINE_SID", {name})
   end
