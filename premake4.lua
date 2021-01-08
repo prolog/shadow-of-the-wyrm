@@ -1,5 +1,8 @@
 #!lua
 -- Additional include dir for Lua, if necessary.
+--
+-- If installed in your home directory, use an absolute path.  Issues have
+-- been reported using e.g. ~/
 newoption {
   trigger = "lua_include",
   value = "",
@@ -9,6 +12,9 @@ newoption {
 -- What Lua should be linked against?
 -- Default is "lua", but SotW requires Lua 5.1, and some distros will need
 -- to use Lua 5.1 instead.
+--
+-- If installed in your home directory, use an absolute path.  Issues have
+-- been reported using e.g. ~/
 newoption {
   trigger = "lua_link",
   value = "lua",

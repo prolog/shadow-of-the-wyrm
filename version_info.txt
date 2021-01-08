@@ -25,6 +25,9 @@ Shadow of the Wyrm v1.2.6 "Holborne"
   as well as in random settlements.  Each tavern is likely to have at least
   one adventurer looking to form a party.
 
+- Updated the comments in the Lua premake file based on some feedback
+  (Ezequiel Birman).
+
 - New spells: paralyze (Mystic).
 
 - Stanzas for "Tel and Floridel".
