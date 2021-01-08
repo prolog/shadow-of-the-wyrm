@@ -1,12 +1,16 @@
 Me:
-- "Let's go!"
-- person
-- person2
-- Update the synopsis to include your current party (adv + hire on same map).
-  Names/races/classes!
 - Make taverns more distinctive
 - NEED TO DO AN ASSET RELEASE
 - Do a couple of quests that require a party
+  - Isen Dun (sea captain): gold to Whalings End for scrimshaw, receive ivory 
+    for ID target in return (ench scroll)
+  - Isen Dun (sea captain): inkpots to Atua-Elar (ench scroll, whiteflower)
+  - Isen Dun (Hrimgar): envoy to Forest of Yew (PoGA)
+  - Carcassia (Acey): deliver stolen goods from the thieves guild to Sithrin 
+    (1000 gold)
+  - Carcassia (Golgoa): wyrms attacked Stoneheim, wizard killed, tower wants 
+    you to deliver his apprentice robes and staff (+ench?) (ench scroll, 
+    5x magici shard)
 - Test by generating these in Carcassia, Gnordvar
 - Long term, give a chance for coastal generators to produce coastline, maybe
   with little islands, etc. Before generating, set booleans for coast in
@@ -298,3 +302,6 @@ Josh Engdahl
 
 - can lure ancient monsters into trap room and kill them via an unwillingness
   to move on to trapped tiles.
+
+Phantom:
+- escort quest with very fragile NPC

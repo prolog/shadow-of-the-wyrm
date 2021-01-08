@@ -28,6 +28,11 @@ Shadow of the Wyrm v1.2.6 "Holborne"
 - Updated the comments in the Lua premake file based on some feedback
   (Ezequiel Birman).
 
+- Isen Dun now has a sea-captain on the east pier who can give quests to
+  adventuring parties.
+
+- New creatures: adventurer, sea captain.
+
 - New spells: paralyze (Mystic).
 
 - Stanzas for "Tel and Floridel".

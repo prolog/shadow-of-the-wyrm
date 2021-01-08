@@ -20448,6 +20448,50 @@
 			<Evade>3</Evade>
 			<Soak>1</Soak>
 		</Creature>
+		<Creature id="sea_captain">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>SEA_CAPTAIN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SEA_CAPTAIN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SEA_CAPTAIN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SEA_CAPTAIN_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>S</Char>
+				<Colour>11</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>11</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>15</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>15</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>60</Exp>
+			</CreatureGeneration>
+			<Level>15</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>30</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/sea_captain.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 		<Creature id="seawife">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>SEAWIFE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -25556,7 +25600,7 @@
 				</HP>
 				<Exp>60</Exp>
 			</CreatureGeneration>
-			<Level>4</Level>
+			<Level>15</Level>
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>30</NumSides>

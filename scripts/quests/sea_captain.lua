@@ -1,0 +1,1 @@
+clear_and_add_message("SEA_CAPTAIN_SPEECH_TEXT_SID")
