@@ -8512,7 +8512,7 @@ int creature_has_humanoid_followers(lua_State* ls)
       {
         CreaturePtr c = c_pair.second;
 
-        if (c != nullptr && c->get_decision_strategy()->get_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID) == creature_id)
+        if (c != nullptr && c->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == creature_id)
         {
           RaceManager rm;
           Race* r = rm.get_race(c->get_race_id());

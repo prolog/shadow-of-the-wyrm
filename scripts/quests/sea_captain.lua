@@ -30,7 +30,9 @@ end
 local function whaling_completion_fn()
   remove_object_from_player(IVORY_TUSK_ID, 6)
   add_message("SEA_CAPTAIN_WHALING_QUEST_COMPLETE_SID")
-  add_object_to_player_tile("enchanting_scroll")
+
+  add_object_to_player_tile(UNSTONING_POTION_ID, RNG_range(2,3))
+  add_object_to_player_tile(ANTIDOTE_POTION_ID, RNG_range(2,3))
 
   return true
 end
