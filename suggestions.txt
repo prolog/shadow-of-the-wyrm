@@ -2,8 +2,6 @@ Me:
 - Make taverns more distinctive
 - NEED TO DO AN ASSET RELEASE
 - Do a couple of quests that require a party
-  - Isen Dun (sea captain): gold to Whalings End for scrimshaw, receive ivory 
-    for ID target in return (ench scroll)
   - Isen Dun (sea captain): inkpots to Atua-Elar (ench scroll, whiteflower)
   - Isen Dun (Hrimgar): envoy to Forest of Yew (PoGA)
   - Carcassia (Acey): deliver stolen goods from the thieves guild to Sithrin 

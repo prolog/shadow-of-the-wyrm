@@ -40,6 +40,7 @@
 #include "PrimordialCalculator.hpp"
 #include "RaceManager.hpp"
 #include "Quests.hpp"
+#include "RaceConstants.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
 #include "SkillManager.hpp"
@@ -418,6 +419,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "reset_creatures_and_creature_locations", reset_creatures_and_creature_locations);
   lua_register(L, "set_creature_speech_text_sid", set_creature_speech_text_sid);
   lua_register(L, "get_creature_speech_text_sid", get_creature_speech_text_sid);
+  lua_register(L, "creature_has_humanoid_followers", creature_has_humanoid_followers);
 }
 
 // Lua API helper functions
@@ -8490,5 +8492,45 @@ int get_creature_speech_text_sid(lua_State* ls)
   }
 
   lua_pushstring(ls, speech_text_sid.c_str());
+  return 1;
+}
+
+int creature_has_humanoid_followers(lua_State* ls)
+{
+  bool has_hfoll = false;
+
+  if (lua_gettop(ls) == 1 && lua_tostring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      const CreatureMap& creatures = map->get_creatures_ref();
+
+      for (const auto& c_pair : creatures)
+      {
+        CreaturePtr c = c_pair.second;
+
+        if (c != nullptr && c->get_decision_strategy()->get_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID) == creature_id)
+        {
+          RaceManager rm;
+          Race* r = rm.get_race(c->get_race_id());
+
+          if (rm.is_race_or_descendent(c->get_race_id(), RaceConstants::RACE_CONSTANTS_RACE_ID_HUMANOID))
+          {
+            has_hfoll = true;
+            break;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to creature_has_humanoid_followers");
+  }
+
+  lua_pushboolean(ls, has_hfoll);
   return 1;
 }

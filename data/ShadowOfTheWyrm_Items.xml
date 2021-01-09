@@ -13050,6 +13050,26 @@
 					</Property>
 				</Properties>
 			</Item>
+			<Item id="_ivory_tusk">
+				<DescriptionSID>IVORY_TUSK_SID</DescriptionSID>
+				<UsageDescriptionSID>IVORY_TUSK_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>IVORY_TUSK_CODEX_SID</CodexDescriptionSID>
+				<Value>12</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>8</Ounces>
+				</Weight>
+				<Material>11</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>2</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="_magici_shard">
 				<DescriptionSID>MAGICI_SHARD_SID</DescriptionSID>
 				<UsageDescriptionSID>MAGICI_SHARD_USAGE_SID</UsageDescriptionSID>

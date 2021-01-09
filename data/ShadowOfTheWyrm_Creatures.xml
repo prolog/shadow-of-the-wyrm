@@ -20484,11 +20484,55 @@
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>30</NumSides>
-				<Type>9</Type>
+				<Type>1</Type>
 			</Damage>
 			<EventScripts>
 				<ChatScript>
 					<Script>quests/sea_captain.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="gnomish_seatrader">
+			<RaceID>10_gnome</RaceID>
+			<ShortDescriptionSID>GNOMISH_SEATRADER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GNOMISH_SEATRADER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GNOMISH_SEATRADER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GNOMISH_SEATRADER_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>g</Char>
+				<Colour>10</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>12</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>15</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>15</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>60</Exp>
+			</CreatureGeneration>
+			<Level>15</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>30</NumSides>
+				<Type>0</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/gnomish_seatrader.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
