@@ -635,7 +635,7 @@
 			<Speed>45</Speed>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/melura.lua</Script>
+					<Script>quests/yew/melura.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -2419,7 +2419,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/bagra.lua</Script>
+					<Script>quests/last_islands/bagra.lua</Script>
 				</ChatScript>
 			</EventScripts>
 			<Spells>
@@ -4256,7 +4256,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/wispe.lua</Script>
+					<Script>quests/aeschburh/wispe.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -4498,7 +4498,7 @@
 			<Speed>43</Speed>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/caravan_master.lua</Script>
+					<Script>quests/fae_caravan/caravan_master.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -11839,7 +11839,7 @@
 			<Soak>2</Soak>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/altus.lua</Script>
+					<Script>quests/sithrin/altus.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -11884,7 +11884,7 @@
 			<Soak>2</Soak>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/cornel.lua</Script>
+					<Script>quests/sithrin/cornel.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>		
@@ -15278,7 +15278,7 @@
 			<Soak>1</Soak>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/ilru.lua</Script>
+					<Script>quests/yew/ilru.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -15832,7 +15832,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/kirin.lua</Script>
+					<Script>quests/atuaelar/kirin.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -15915,7 +15915,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/twille.lua</Script>
+					<Script>quests/atuaelar/twille.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -15960,7 +15960,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/thesilea.lua</Script>
+					<Script>quests/atuaelar/thesilea.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -16155,7 +16155,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/tir.lua</Script>
+					<Script>quests/atuaelar/tir.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -19616,7 +19616,7 @@
 			<Soak>10</Soak>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/christof.lua</Script>
+					<Script>quests/gnordvar/christof.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -20346,7 +20346,7 @@
 					<Chance>100</Chance>
 				</DeathScript>
 				<ChatScript>
-					<Script>quests/amaurosis.lua</Script>
+					<Script>quests/last_islands/amaurosis.lua</Script>
 				</ChatScript>
 				<TameScript>
 					<Script>tame/amaurosis.lua</Script>
@@ -20403,7 +20403,7 @@
 			<Speed>15</Speed>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/eakauri.lua</Script>
+					<Script>quests/fae_caravan/eakauri.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -20532,7 +20532,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/gnomish_seatrader.lua</Script>
+					<Script>quests/whalings_end/gnomish_seatrader.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -21359,7 +21359,7 @@
 			<Speed>42</Speed>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/hrethel.lua</Script>
+					<Script>quests/whalings_end/hrethel.lua</Script>
 				</ChatScript>
 			</EventScripts>
 			<Spells>
@@ -21413,7 +21413,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/maisy.lua</Script>
+					<Script>quests/rowan_head/maisy.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -21493,7 +21493,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/franck.lua</Script>
+					<Script>quests/rowan_head/franck.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -21539,7 +21539,7 @@
 			<Soak>5</Soak>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/exile.lua</Script>
+					<Script>quests/rowan_head/exile.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -24014,7 +24014,7 @@
 			<Soak>5</Soak>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/skaal.lua</Script>
+					<Script>quests/stoneheim/skaal.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -24058,7 +24058,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/gildi.lua</Script>
+					<Script>quests/stoneheim/gildi.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -24103,7 +24103,7 @@
 			<Soak>10</Soak>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/thengil.lua</Script>
+					<Script>quests/stoneheim/thengil.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -27044,7 +27044,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/herbalist.lua</Script>
+					<Script>quests/carcassia/herbalist.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
