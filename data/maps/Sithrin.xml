@@ -35,6 +35,13 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>snakes</ID>
+				<Coord>
+					<Row>1</Row>
+					<Col>56</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>snakeling_conjurer</ID>
 				<Coord>
 					<Row>5</Row>

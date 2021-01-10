@@ -1,5 +1,7 @@
 Me:
+- Keep refactoring quests
 - Acey next
+- Acey: need 2 people at target in Sithrin
 - Make taverns more distinctive
 - NEED TO DO AN ASSET RELEASE
 - Do a couple of quests that require a party

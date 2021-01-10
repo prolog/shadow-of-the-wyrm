@@ -20488,7 +20488,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/sea_captain.lua</Script>
+					<Script>quests/isen_dun/sea_captain.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -20656,7 +20656,7 @@
 			<Soak>0</Soak>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/ead.lua</Script>
+					<Script>quests/isen_dun/ead.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -20702,7 +20702,7 @@
 			<Soak>1</Soak>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/the_ploughman.lua</Script>
+					<Script>quests/isen_dun/the_ploughman.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -20748,7 +20748,7 @@
 			<Soak>3</Soak>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/the_blacksmith.lua</Script>
+					<Script>quests/isen_dun/the_blacksmith.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -20874,7 +20874,7 @@
 			<Soak>4</Soak>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/cynwise.lua</Script>
+					<Script>quests/isen_dun/cynwise.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -20920,7 +20920,7 @@
 			<Soak>5</Soak>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/kew.lua</Script>
+					<Script>quests/isen_dun/kew.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -20964,7 +20964,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/cadlind.lua</Script>
+					<Script>quests/isen_dun/cadlind.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -21008,7 +21008,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/nama.lua</Script>
+					<Script>quests/isen_dun/nama.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -21053,7 +21053,7 @@
 			<Soak>5</Soak>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/idem.lua</Script>
+					<Script>quests/isen_dun/idem.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -22180,7 +22180,7 @@
 			<Evade>7</Evade>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/hild.lua</Script>
+					<Script>quests/isen_dun/hild.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -22267,7 +22267,7 @@
 			<Soak>15</Soak>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/hrimgar.lua</Script>
+					<Script>quests/isen_dun/hrimgar.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -24759,7 +24759,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/the_sorceror.lua</Script>
+					<Script>quests/telari/the_sorceror.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -24806,7 +24806,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/the_sentry.lua</Script>
+					<Script>quests/telari/the_sentry.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -24852,7 +24852,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/the_worldsinger.lua</Script>
+					<Script>quests/telari/the_worldsinger.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -24899,7 +24899,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/the_speaker.lua</Script>
+					<Script>quests/telari/the_speaker.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -24944,7 +24944,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/the_conjurer.lua</Script>
+					<Script>quests/telari/the_conjurer.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -24989,7 +24989,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/the_armourer.lua</Script>
+					<Script>quests/telari/the_armourer.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -25032,7 +25032,7 @@
 			</Damage>
 			<EventScripts>
 				<ChatScript>
-					<Script>quests/the_smith.lua</Script>
+					<Script>quests/telari/the_smith.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -25344,6 +25344,94 @@
 			<EventScripts>
 				<ChatScript>
 					<Script>quests/carcassia/guildmaster_caro.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="acey">
+			<RaceID>04_snakeling</RaceID>
+			<ShortDescriptionSID>ACEY_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ACEY_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ACEY_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ACEY_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>s</Char>
+				<Colour>15</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>13</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>20</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>20</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>220</Exp>
+			</CreatureGeneration>
+			<Level>20</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>40</NumSides>
+				<Type>6</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/acey.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="snakes">
+			<RaceID>04_snakeling</RaceID>
+			<ShortDescriptionSID>SNAKES_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SNAKES_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SNAKES_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SNAKES_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>s</Char>
+				<Colour>1</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>13</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>30</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>30</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10000</Exp>
+			</CreatureGeneration>
+			<Level>30</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>60</NumSides>
+				<Type>6</Type>
+			</Damage>
+			<Evade>20</Evade>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/sithrin/snakes.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>

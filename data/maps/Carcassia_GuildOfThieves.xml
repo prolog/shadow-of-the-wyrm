@@ -44,6 +44,13 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>acey</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>8</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>guildmaster_caro</ID>
 				<Coord>
 					<Row>17</Row>
