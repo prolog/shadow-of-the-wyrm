@@ -13070,6 +13070,25 @@
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
+			<Item id="stolen_goods">
+				<DescriptionSID>STOLEN_GOODS_SID</DescriptionSID>
+				<UsageDescriptionSID>STOLEN_GOODS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>STOLEN_GOODS_CODEX_SID</CodexDescriptionSID>
+				<Value>200</Value>
+				<Weight>
+					<Pounds>12</Pounds>
+				</Weight>
+				<Material>0</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>3</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="_magici_shard">
 				<DescriptionSID>MAGICI_SHARD_SID</DescriptionSID>
 				<UsageDescriptionSID>MAGICI_SHARD_USAGE_SID</UsageDescriptionSID>
