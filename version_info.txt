@@ -31,6 +31,9 @@ Shadow of the Wyrm v1.2.6 "Holborne"
 - Isen Dun now has a sea-captain on the east pier who can give quests to
   adventuring parties.
 
+- Added Acey, in the Carcassia thieves guild, who offers quests to
+  adventuring parties.
+
 - New creatures: adventurer, sea captain, gnomish seatrader, Acey, Snakes.
 
 - New items: ivory tusks.

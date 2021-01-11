@@ -28,6 +28,7 @@ GAIN_ATTRIBUTES_POTION_ID = "gain_attributes_potion"
 QUILL_ID = "_quill"
 INKPOT_ID = "_inkpot"
 INTACT_SKELETON_ID = "_intact_skeleton"
+STOLEN_GOODS_ID = "stolen_goods"
 PLAYER_ID = "player"
 WORLD_MAP_ID = "world_map"
 CLASS_ID_ARCHER = "archer"
@@ -36,3 +37,11 @@ CLASS_ID_THIEF = "thief"
 HIGH_TOWER_GUILD_ID = "high_tower"
 THIEVES_GUILD_ID = "carcassia_guild_thieves"
 MIN_GEN_VALUE = 10
+
+-- Creature constants
+SNAKELING_THUG_ID = "snakeling_thug"
+SNAKELING_MERCENARY_ID = "snakeling_mercenary"
+SNAKELING_ASSASSIN_ID = "snakeling_assassin"
+
+-- Quest constants
+QUEST_ACEY_STOLEN_GOODS_COMPLETE = "quest_acey_stolen_goods_complete"
