@@ -13075,6 +13075,7 @@
 				<UsageDescriptionSID>STOLEN_GOODS_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>STOLEN_GOODS_CODEX_SID</CodexDescriptionSID>
 				<Value>200</Value>
+				<Contraband>1</Contraband>
 				<Weight>
 					<Pounds>12</Pounds>
 				</Weight>

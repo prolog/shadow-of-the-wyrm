@@ -1042,6 +1042,7 @@
 		<xs:element name="UnidentifiedUsageDescriptionSID" type="xs:string" minOccurs="0"/>
 		<xs:element name="CodexDescriptionSID" type="xs:string"/>
 		<xs:element name="Value" type="tns:NonNegativeInt"/>
+		<xs:element name="Contraband" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="Weight" type="tns:Weight"/>
 		<xs:element name="WornLocation" type="tns:WornLocation" minOccurs="0"/>
 		<xs:element name="ItemStatus" type="tns:ItemStatus" minOccurs="0"/>
@@ -1235,6 +1236,7 @@
 		     and that will not draw guard hostility.  List of creature IDs, 
 			 comma-separated. -->
 		<xs:element name="Allies" type="xs:string" minOccurs="0"/>
+		<xs:element name="AttackContraband" type="xs:boolean" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Symbol">

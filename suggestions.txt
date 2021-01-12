@@ -1,7 +1,6 @@
 Me:
-- Contraband flag for items (stolen goods), causes guards to become hostile
-- Acey next
-- Acey: need 2 people at target in Sithrin
+- Contraband should cause guards to become hostile
+- More Acey/Sea Captain quests
 - Make taverns more distinctive
 - NEED TO DO AN ASSET RELEASE
 - Do a couple of quests that require a party

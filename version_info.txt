@@ -34,6 +34,9 @@ Shadow of the Wyrm v1.2.6 "Holborne"
 - Added Acey, in the Carcassia thieves guild, who offers quests to
   adventuring parties.
 
+- Guards are now vigilant for stolen and contraband goods, and will attack you
+  if they see any.
+
 - New creatures: adventurer, sea captain, gnomish seatrader, Acey, Snakes.
 
 - New items: ivory tusks.

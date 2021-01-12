@@ -21940,6 +21940,7 @@
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Sentry>1</Sentry>
+				<AttackContraband>1</AttackContraband>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
@@ -25446,6 +25447,7 @@
 				<Sentinel>1</Sentinel>
 				<Sentry>1</Sentry>
 				<Allies>golem,electric_eel</Allies>
+				<AttackContraband>1</AttackContraband>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>g</Char>
