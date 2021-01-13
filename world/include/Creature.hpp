@@ -190,6 +190,7 @@ class Creature : public ISerializable
     // Does the creature have any equipped or worn items?  Are any unpaid?
     bool has_items() const;
     bool has_unpaid_items() const;
+    bool has_item_with_property(const std::string& property_name) const;
     uint count_items() const;
     uint get_unpaid_amount() const;
     void set_items_paid();

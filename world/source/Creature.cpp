@@ -830,6 +830,29 @@ bool Creature::has_unpaid_items() const
   return false;
 }
 
+bool Creature::has_item_with_property(const std::string& prop_name) const
+{
+  bool has_item = false;
+
+  for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
+  {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(e);
+    ItemPtr item = equipment.get_item(ewl);
+    if (item != nullptr && item->has_additional_property(prop_name))
+    {
+      return true;
+    }
+  }
+
+  if (inventory != nullptr)
+  {
+    return inventory->has_item_with_property(prop_name);
+  }
+
+
+  return false;
+}
+
 uint Creature::count_items() const
 {
   uint count = equipment.count_items() + inventory->count_items();

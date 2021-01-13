@@ -52,6 +52,10 @@ Shadow of the Wyrm v1.2.6 "Holborne"
 
   - Fixed issues with crypt generation in cathedrals.
 
+  - The game was using the view map (a subset of the full map) for determining
+    NPC actions, which was cheating, because this wasn't taking into account
+    things like line of sight.
+
 Shadow of the Wyrm v1.2.5 "Arnold"
 - Version declared November 1, 2020. Version finalized December 13, 2020.
 

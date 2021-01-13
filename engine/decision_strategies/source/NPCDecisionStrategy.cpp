@@ -15,6 +15,7 @@
 #include "Game.hpp"
 #include "HostilityManager.hpp"
 #include "IMessageManager.hpp"
+#include "ItemProperties.hpp"
 #include "Log.hpp"
 #include "MagicalAbilityChecker.hpp"
 #include "MapUtils.hpp"
@@ -140,7 +141,7 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
   
   if (view_map)
   {
-    update_threats_to_leader(this_creature_id, view_map);
+    update_threats_based_on_fov(this_creature_id, view_map);
 
     if (has_movement_orders() == false)
     {
@@ -751,6 +752,42 @@ CommandPtr NPCDecisionStrategy::get_follow_direction(MapPtr view_map, CreaturePt
   }
 
   return command;
+}
+
+void NPCDecisionStrategy::update_threats_based_on_fov(const std::string& this_creature_id, MapPtr view_map)
+{
+  update_threats_with_contraband(this_creature_id, view_map);
+  update_threats_to_leader(this_creature_id, view_map);
+}
+
+void NPCDecisionStrategy::update_threats_with_contraband(const std::string& this_creature_id, MapPtr view_map)
+{
+  Game& game = Game::instance();
+  MapPtr current_map = game.get_current_map();
+  bool attack_contraband = String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_ATTACK_CONTRABAND));
+
+  if (attack_contraband && current_map != nullptr && view_map != nullptr)
+  {
+    const CreatureMap& creatures = view_map->get_creatures_ref();
+    CreaturePtr this_creature = current_map->get_creature(this_creature_id);
+    HostilityManager hm;
+
+    for (const auto& c_pair : creatures)
+    {
+      if (c_pair.second && 
+          c_pair.second->has_item_with_property(ItemProperties::ITEM_PROPERTIES_CONTRABAND) &&
+          !this_creature->hostile_to(c_pair.second->get_id()))
+      {
+        string msg = ActionTextKeys::get_npc_contraband_message(this_creature->get_description_sid());
+
+        IMessageManager& manager = MM::instance(MessageTransmit::FOV, c_pair.second, c_pair.second->get_is_player());
+        manager.add_new_message(msg);
+        manager.send();
+
+        hm.set_hostility_to_creature(this_creature, c_pair.second->get_id());
+      }
+    }
+  }
 }
 
 void NPCDecisionStrategy::update_threats_to_leader(const std::string& this_creature_id, MapPtr view_map)
