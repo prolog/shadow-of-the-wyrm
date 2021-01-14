@@ -37,7 +37,8 @@ Shadow of the Wyrm v1.2.6 "Holborne"
 - Guards are now vigilant for stolen and contraband goods, and will attack you
   if they see any.
 
-- New creatures: adventurer, sea captain, gnomish seatrader, Acey, Snakes.
+- New creatures: adventurer, sea captain, gnomish seatrader, Acey, Snakes,
+  Koris.
 
 - New items: ivory tusks.
 

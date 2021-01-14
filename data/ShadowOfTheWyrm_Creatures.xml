@@ -15640,6 +15640,50 @@
 				</Spell>
 			</Spells>
 		</Creature>
+		<Creature id="koris">
+			<RaceID>02_woodelf</RaceID>
+			<ShortDescriptionSID>KORIS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>KORIS_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>KORIS_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>KORIS_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>@</Char>
+				<Colour>12</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>14</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>13</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>16</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>65</Exp>
+			</CreatureGeneration>
+			<Level>13</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>26</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/yew/koris.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 		<Creature id="ghoul">
 			<RaceID>_corporeal_undead</RaceID>
 			<ShortDescriptionSID>GHOUL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
