@@ -25,6 +25,8 @@ VEGETABLE4_ID = "_vegetable_4"
 VEGETABLE5_ID = "_vegetable_5"
 VEGETABLE6_ID = "_vegetable_6"
 GAIN_ATTRIBUTES_POTION_ID = "gain_attributes_potion"
+ENCHANTING_SCROLL_ID = "enchanting_scroll"
+AMULET_OF_THE_SEA_ID = "amulet_of_the_sea"
 QUILL_ID = "_quill"
 INKPOT_ID = "_inkpot"
 INTACT_SKELETON_ID = "_intact_skeleton"
@@ -45,3 +47,4 @@ SNAKELING_ASSASSIN_ID = "snakeling_assassin"
 
 -- Quest constants
 QUEST_ACEY_STOLEN_GOODS_COMPLETE = "quest_acey_stolen_goods_complete"
+QUEST_SEA_CAPTAIN_KORIS_COMPLETE = "quest_sea_captain_koris_complete"

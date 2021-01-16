@@ -1,7 +1,4 @@
 Me:
-- Hint in Yew that Koris in the grotto
-- Talking to Koris should make her disappear, leave item for captain
-- Contraband should cause guards to become hostile
 - More Acey/Sea Captain quests
 - Acey quest to steal Ironsword and deliver to Atua-Elar after it's retrieved.
   - Emperor should transfer Ironsword to the armory
