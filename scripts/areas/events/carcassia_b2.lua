@@ -10,6 +10,24 @@ local function setup_properties(map_id)
   map_set_tile_property(map_id, 18, 76, "MAP_PROPERTIES_INITIAL_ITEMS", "smite_spellbook")
 end
 
+local function setup_stash(map_id)
+  -- Ensure the stash isn't diggable
+  for y = 13, 17 do
+    for x = 45, 52 do
+      map_set_tile_property(map_id, y, x, "TILE_PROPERTY_CANNOT_DIG", "1")
+    end
+  end
+
+  -- Set up guards
+  for x = 41, 45 do
+    add_creature_to_map(CARCASSIAN_BLACKKNIFE_ID, 16, x, map_id) 
+  end
+
+  for x = 48, 52 do
+    add_creature_to_map(CARCASSIAN_BLACKKNIFE_ID, 16, x, map_id)
+  end
+end
+
 local function setup_vault(map_id)
   local trap_squares = {{10,55},{11,54},{11,55},{11,56},{12,55}}
 

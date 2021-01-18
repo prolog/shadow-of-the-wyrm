@@ -1,4 +1,5 @@
 Me:
+- Balabin sprite
 - More Acey/Sea Captain quests
 - Acey quest to steal Ironsword and deliver to Atua-Elar after it's retrieved.
   - Emperor should transfer Ironsword to the armory

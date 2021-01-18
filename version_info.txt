@@ -38,9 +38,10 @@ Shadow of the Wyrm v1.2.6 "Holborne"
   if they see any.
 
 - New creatures: adventurer, sea captain, gnomish seatrader, Acey, Snakes,
-  Koris.
+  Koris, Balabin, Carcassian blackknife.
 
-- New items: ivory tusks.
+- New items: ivory tusks, stolen goods, powdered snowcap, forged documents,
+  alabaster key.
 
 - New spells: paralyze (Mystic).
 

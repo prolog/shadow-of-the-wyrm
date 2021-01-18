@@ -9868,6 +9868,26 @@
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carc_b1_armory</LockID>
 			</Tool>
+			<Tool id="carcassia_stash_key">
+				<DescriptionSID>CARCASSIA_STASH_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>CARCASSIA_STASH_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CARCASSIA_STASH_KEY_CODEX_SID</CodexDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>carcassia_stash</LockID>
+			</Tool>
 			<Tool id="_crypt_key">
 				<DescriptionSID>CRYPT_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>CRYPT_KEY_USAGE_SID</UsageDescriptionSID>
@@ -13086,6 +13106,27 @@
 						<ID>it</ID>
 						<Row>4</Row>
 						<Col>3</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="powdered_snowcap">
+				<DescriptionSID>POWDERED_SNOWCAP_SID</DescriptionSID>
+				<UsageDescriptionSID>POWDERED_SNOWCAP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>POWDERED_SNOWCAP_CODEX_SID</CodexDescriptionSID>
+				<Value>600</Value>
+				<Contraband>1</Contraband>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>0</Material>
+				<Symbol>
+					<Char>!</Char>
+					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>1</Col>
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>

@@ -1,0 +1,1 @@
+clear_and_add_message("BALABIN_SPEECH_TEXT_SID")
