@@ -25443,6 +25443,7 @@
 			<SpeechTextSID>BALABIN_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>@</Char>
@@ -25473,6 +25474,9 @@
 							<Quantity>
 								<Amount>2</Amount>
 							</Quantity>
+						</InitialItem>
+						<InitialItem>
+							<ID>carcassia_stash_key</ID>
 						</InitialItem>
 					</InitialInventory>
 				</InitialEquipmentAndInventory>

@@ -13110,6 +13110,45 @@
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
+			<Item id="forged_documents">
+				<DescriptionSID>FORGED_DOCUMENTS_SID</DescriptionSID>
+				<UsageDescriptionSID>FORGED_DOCUMENTS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FORGED_DOCUMENTS_CODEX_SID</CodexDescriptionSID>
+				<Value>3</Value>
+				<Weight>
+					<Ounces>6</Ounces>
+				</Weight>
+				<Material>5</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>3</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="fake_snowcap">
+				<DescriptionSID>FAKE_SNOWCAP_SID</DescriptionSID>
+				<UsageDescriptionSID>FAKE_SNOWCAP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FAKE_SNOWCAP_CODEX_SID</CodexDescriptionSID>
+				<Value>3</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>2</Material>
+				<Symbol>
+					<Char>!</Char>
+					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>1</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="powdered_snowcap">
 				<DescriptionSID>POWDERED_SNOWCAP_SID</DescriptionSID>
 				<UsageDescriptionSID>POWDERED_SNOWCAP_USAGE_SID</UsageDescriptionSID>
@@ -13119,7 +13158,7 @@
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
-				<Material>0</Material>
+				<Material>2</Material>
 				<Symbol>
 					<Char>!</Char>
 					<Colour>15</Colour>

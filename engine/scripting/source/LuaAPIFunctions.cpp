@@ -420,6 +420,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_speech_text_sid", set_creature_speech_text_sid);
   lua_register(L, "get_creature_speech_text_sid", get_creature_speech_text_sid);
   lua_register(L, "creature_has_humanoid_followers", creature_has_humanoid_followers);
+  lua_register(L, "count_creature_humanoid_followers", count_creature_humanoid_followers);
 }
 
 // Lua API helper functions
@@ -8532,5 +8533,44 @@ int creature_has_humanoid_followers(lua_State* ls)
   }
 
   lua_pushboolean(ls, has_hfoll);
+  return 1;
+}
+
+int count_creature_humanoid_followers(lua_State* ls)
+{
+  int num_hf = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      const CreatureMap& creatures = map->get_creatures_ref();
+
+      for (const auto& c_pair : creatures)
+      {
+        CreaturePtr c = c_pair.second;
+
+        if (c != nullptr && c->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == creature_id)
+        {
+          RaceManager rm;
+          Race* r = rm.get_race(c->get_race_id());
+
+          if (rm.is_race_or_descendent(c->get_race_id(), RaceConstants::RACE_CONSTANTS_RACE_ID_HUMANOID))
+          {
+            num_hf++;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to count_creature_humanoid_followers");
+  }
+
+  lua_pushinteger(ls, num_hf);
   return 1;
 }

@@ -44,7 +44,8 @@ local function imperial_stash_start_fn()
   add_message_with_pause("ACEY_IMPERIAL_STASH_QUEST_START4_SID")
   clear_and_add_message("ACEY_IMPERIAL_STASH_QUEST_START5_SID")
 
-  -- JCD FIXME: Need to add the fake snowcap and papers
+  add_object_to_player_tile(FORGED_DOCUMENTS_ID)
+  add_object_to_player_tile(FAKE_SNOWCAP_ID)
 end
 
 local function imperial_stash_completion_condition_fn()
