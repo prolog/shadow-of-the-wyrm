@@ -53,13 +53,18 @@ local function imperial_stash_completion_condition_fn()
 end
 
 local function imperial_stash_completion_fn()
+  local potion_ids = {HEALING_POTION_ID, ETHER_POTION_ID, SPEED_POTION_ID, GAIN_ATTRIBUTES_POTION_ID}
+
   remove_object_from_player(POWDERED_SNOWCAP_ID)
   
   add_message_with_pause("ACEY_IMPERIAL_STASH_QUEST_COMPLETE_SID")
   clear_and_add_message("ACEY_IMPERIAL_STASH_QUEST_COMPLETE2_SID")
 
   add_object_to_player_tile(CURRENCY_ID, RNG_range(400, 500))
-  add_object_to_player_tile(GAIN_ATTRIBUTES_POTION_ID, 3)
+  
+  for i,v in ipairs(potion_ids) do
+    add_object_to_player_tile(v, RNG_range(3,4))
+  end
 
   if get_num_creature_killed_global(BALABIN_ID) == 1 then
     add_message_with_pause("ACEY_IMPERIAL_STASH_KILLED_BALABIN_SID")

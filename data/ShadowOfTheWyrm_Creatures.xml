@@ -25515,7 +25515,6 @@
 				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
-				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
 				<DangerLevel>22</DangerLevel>
