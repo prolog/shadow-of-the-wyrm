@@ -13,7 +13,7 @@ end
 local function setup_stash(map_id)
   -- Ensure the stash isn't diggable
   for y = 13, 17 do
-    for x = 45, 52 do
+    for x = 40, 53 do
       map_set_tile_property(map_id, y, x, "TILE_PROPERTY_CANNOT_DIG", "1")
     end
   end
@@ -82,6 +82,7 @@ end
 local function init_carcassia_b2(map_id)
   setup_properties(map_id)
   setup_vault(map_id)
+  setup_stash(map_id)
   setup_dynamic_content(map_id)
   carcassia_common.setup_population(map_id, {0,1}, {18, 37}, population)
 end
