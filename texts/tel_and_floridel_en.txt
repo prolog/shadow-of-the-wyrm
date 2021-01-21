@@ -3677,3 +3677,13 @@ they walked with weapons out to cut the strands %b
 of hanging vines, and sometimes notch a blaze, %b
 to help them find their way back through that wooded maze.
 %p
+Mid-day, and in the forest, already darkness %b
+in bits and patches.  Little gifts of light: %b
+the trees so thick, what scattered through was stark %b
+against the uneven rocks; and if pressed, the sight %b
+was the flicker of a campfire, or perhaps the glimpse %b
+your grandfather gives as he tries to place your face, %b
+and for a moment, does.  Each movement linked %b
+to every other, and within that space, %b
+each object bits of shadow looking for its place.
+%p
