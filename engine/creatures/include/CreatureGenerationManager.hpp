@@ -27,6 +27,9 @@ class CreatureGenerationManager
     std::shared_ptr<Creature> generate_follower(ActionManager& am, const FollowerType ft, const int level);
     
     static const int ANCIENT_BEASTS_MIN_DANGER_LEVEL;
+    static const int ADVENTURER_DEFAULT_LEVEL;
+    static const int HIRELING_MIN_LEVEL;
+    static const int HIRELING_MAX_LEVEL;
 
   protected:
     std::shared_ptr<Creature> generate_hireling(ActionManager& am, const int level);

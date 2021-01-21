@@ -1,6 +1,4 @@
 Me:
-- Logs: could not call map function for wintersea_keep
-- Carcassia B2 no-dig and in-room creatures not generating
 - Debug into set_hostility and figure out why it's not setting for Snakes etc
 - More Acey/Sea Captain quests
 - Acey quest to steal Ironsword and deliver to Atua-Elar after it's retrieved.

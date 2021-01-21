@@ -18,6 +18,11 @@ pair<int, int> FollowerCalculator::calculate_x_in_y_chance_adventurer(const Dept
   {
     odds.second = static_cast<int>(pow(odds.second, depth));
   }
+  // Adventurers can appear in overworld maps (depth = 0) but not e.g. towers, etc.
+  else if (depth < 0)
+  {
+    odds.second = 0;
+  }
 
   return odds;
 }

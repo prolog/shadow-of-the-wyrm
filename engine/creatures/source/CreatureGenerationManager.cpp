@@ -24,6 +24,9 @@
 using namespace std;
 
 const int CreatureGenerationManager::ANCIENT_BEASTS_MIN_DANGER_LEVEL = 20;
+const int CreatureGenerationManager::ADVENTURER_DEFAULT_LEVEL = 1;
+const int CreatureGenerationManager::HIRELING_MIN_LEVEL = 10;
+const int CreatureGenerationManager::HIRELING_MAX_LEVEL = 40;
 
 CreatureGenerationManager::CreatureGenerationManager()
 {

@@ -1,6 +1,7 @@
 #include "ActionTextKeys.hpp"
 #include "CoordUtils.hpp"
 #include "CreatureFactory.hpp"
+#include "FollowerCalculator.hpp"
 #include "MapCreatureGenerator.hpp"
 #include "Conversion.hpp"
 #include "CreatureCalculator.hpp"
@@ -77,6 +78,9 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   uint current_creatures_placed = 0;
   uint unsuccessful_attempts = 0;
 
+  bool adv_placed = false;
+  bool hire_placed = false;
+
   auto fd_it = additional_properties.find(MapProperties::MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED);
   if (fd_it != additional_properties.end())
   {
@@ -125,6 +129,8 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
     return creatures_generated;
   }
 
+  place_followers(map, coord_range, game, am, manager, base_danger_level, current_creatures_placed, creatures_generated);
+
   while (!generation_list.empty() && !maximum_creatures_reached(map, current_creatures_placed, num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
   {
     CreaturePtr generated_creature = cgm.generate_creature(am, generation_list, map);
@@ -152,7 +158,6 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
         }
 
         CreatureCalculator cc;
-
         if (can_generate_pack && RNG::percent_chance(cc.get_pct_chance_pack(generated_creature)))
         {
           // Pack generation: packs are meaner, are not suppressed from appearing
@@ -347,4 +352,69 @@ bool MapCreatureGenerator::maximum_creatures_reached(MapPtr map, const int curre
 {
   bool max_reached = (current_creatures_placed >= num_creatures_to_place);
   return max_reached;
+}
+
+void MapCreatureGenerator::place_followers(MapPtr map, const pair<Coordinate, Coordinate>& coord_range, Game& game, ActionManager& am, IMessageManager& manager, const int base_danger_level, uint& current_creatures_placed, tuple<bool, int, Rarity>& creatures_generated)
+{
+  CreatureGenerationManager cgm;
+  FollowerCalculator fc;
+  Depth d = map->size().depth();
+  const int num_attempts = 20;
+
+  if (RNG::x_in_y_chance(fc.calculate_x_in_y_chance_adventurer(d)))
+  {
+    int num_adv = RNG::range(1, 2);
+
+    for (int adv = 0; adv < num_adv; adv++)
+    {
+      CreaturePtr adventurer = cgm.generate_follower(am, FollowerType::FOLLOWER_TYPE_ADVENTURER, CreatureGenerationManager::ADVENTURER_DEFAULT_LEVEL);
+
+      for (int i = 0; i < num_attempts; i++)
+      {
+        bool placed = place_follower(adventurer, map, coord_range, game, am, manager, base_danger_level, current_creatures_placed, creatures_generated);
+
+        if (placed)
+        {
+          break;
+        }
+      }
+    }
+  }
+
+  if (RNG::x_in_y_chance(fc.calculate_x_in_y_chance_hireling(d)))
+  {
+    CreaturePtr hireling = cgm.generate_follower(am, FollowerType::FOLLOWER_TYPE_HIRELING, RNG::range(CreatureGenerationManager::HIRELING_MIN_LEVEL, CreatureGenerationManager::HIRELING_MAX_LEVEL));
+
+    for (int i = 0; i < num_attempts; i++)
+    {
+      bool placed = place_follower(hireling, map, coord_range, game, am, manager, base_danger_level, current_creatures_placed, creatures_generated);
+
+      if (placed)
+      {
+        break;
+      }
+    }
+  }
+}
+
+bool MapCreatureGenerator::place_follower(CreaturePtr creature, MapPtr map, const pair<Coordinate, Coordinate>& coord_range, Game& game, ActionManager& am, IMessageManager& manager, const int base_danger_level, uint& current_creatures_placed, tuple<bool, int, Rarity>& creatures_generated)
+{
+  bool placed = false;
+
+  if (creature != nullptr && map != nullptr)
+  {
+    Coordinate c = get_coordinate_for_creature(map, creature, coord_range);
+
+    // Check to see if the spot is empty, and if a creature can be added there.
+    TilePtr tile = map->at(c.first, c.second);
+
+    if (MapUtils::is_tile_available_for_creature(creature, tile) &&
+        MapUtils::does_area_around_tile_allow_creature_generation(map, c))
+    {
+      add_creature_to_map(game, creature, map, manager, base_danger_level, c.first, c.second, current_creatures_placed, creatures_generated);
+      placed = true;
+    }
+  }
+
+  return placed;
 }

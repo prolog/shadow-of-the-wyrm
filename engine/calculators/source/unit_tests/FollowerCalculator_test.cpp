@@ -11,7 +11,7 @@ TEST(SW_Engine_Calculators_FollowerCalculator, calculate_x_in_y_chance_adventure
   EXPECT_EQ(1, odds.first);
   EXPECT_EQ(20, odds.second);
 
-  vector<pair<int, int>> val_and_expect = { {0, 20}, {-3, 20}, {2, static_cast<int>(pow(20, 2))}, {5, static_cast<int>(pow(20, 5))}, {20, static_cast<int>(pow(20, 10))}, {50, static_cast<int>(pow(20, 50))} };
+  vector<pair<int, int>> val_and_expect = { {0, 20}, {-3, 0}, {2, static_cast<int>(pow(20, 2))}, {5, static_cast<int>(pow(20, 5))}, {20, static_cast<int>(pow(20, 10))}, {50, static_cast<int>(pow(20, 50))} };
 
   for (const auto& ve_pair : val_and_expect)
   {

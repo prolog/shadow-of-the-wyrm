@@ -15,6 +15,8 @@ class MapCreatureGenerator
     virtual std::tuple<bool, int, Rarity> generate_random_creatures(MapPtr map, const int danger_level, const std::map<std::string, std::string>& additional_properties);
 
   protected:
+    void place_followers(MapPtr map, const std::pair<Coordinate, Coordinate>& coord_range, Game& game, ActionManager& am, IMessageManager& manager, const int base_danger_level, uint& current_creatures_placed, std::tuple<bool, int, Rarity>& creatures_generated);
+    bool place_follower(CreaturePtr creature, MapPtr map, const std::pair<Coordinate, Coordinate>& coord_range, Game& game, ActionManager& am, IMessageManager& manager, const int base_danger_level, uint& current_creatures_placed, std::tuple<bool, int, Rarity>& creatures_generated);
     void add_creature_to_map(Game& game, CreaturePtr creature, MapPtr map, IMessageManager& manager, const int danger_level, const int creature_row, const int creature_col, unsigned int& current_creatures_placed, std::tuple<bool, int, Rarity>& creatures_generated);
     int get_num_creatures(MapPtr map, const int max_creatures);
     int get_min_danger_level(MapPtr map, const int base_danger_level);

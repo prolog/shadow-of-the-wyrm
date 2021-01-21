@@ -29,8 +29,6 @@ base_map(new_base_map), growth_rate(100), pct_chance_sector_feature(20)
 , WELLS_MIN(0)
 , WELLS_MAX(3)
 , HIRELING_PROBABILITY(70)
-, HIRELING_MIN_LEVEL(10)
-, HIRELING_MAX_LEVEL(40)
 {
 }
 
@@ -47,8 +45,6 @@ base_map(new_base_map), growth_rate(new_growth_rate), pct_chance_sector_feature(
 , WELLS_MIN(0)
 , WELLS_MAX(3)
 , HIRELING_PROBABILITY(70)
-, HIRELING_MIN_LEVEL(10)
-, HIRELING_MAX_LEVEL(40)
 {
 }
 
@@ -466,7 +462,7 @@ void BaseSettlementGenerator::generate_special_inhabitants(MapPtr map)
       ActionManager& am = game.get_action_manager_ref();
 
       CreatureGenerationManager cgm;
-      CreaturePtr hireling = cgm.generate_follower(am, FollowerType::FOLLOWER_TYPE_HIRELING, RNG::range(HIRELING_MIN_LEVEL, HIRELING_MAX_LEVEL));
+      CreaturePtr hireling = cgm.generate_follower(am, FollowerType::FOLLOWER_TYPE_HIRELING, RNG::range(CreatureGenerationManager::HIRELING_MIN_LEVEL, CreatureGenerationManager::HIRELING_MAX_LEVEL));
       Dimensions dim = map->size();
 
       for (int i = 1; i < 20; i++)
