@@ -80,7 +80,7 @@ bool TavernSectorFeature::generate_feature(MapPtr map, const Coordinate& st_coor
 
           if (tile != nullptr && !tile->has_creature())
           {
-            CreaturePtr adv = cgm.generate_follower(game.get_action_manager_ref(), FollowerType::FOLLOWER_TYPE_ADVENTURER, CreatureGenerationManager::ADVENTURER_DEFAULT_LEVEL);
+            CreaturePtr adv = cgm.generate_follower(game.get_action_manager_ref(), map, FollowerType::FOLLOWER_TYPE_ADVENTURER, CreatureGenerationManager::ADVENTURER_DEFAULT_LEVEL);
             GameUtils::add_new_creature_to_map(game, adv, map, c);
 
             break;

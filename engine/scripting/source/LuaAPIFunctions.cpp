@@ -8135,7 +8135,7 @@ int generate_hireling(lua_State* ls)
     if (map != nullptr)
     {
       CreatureGenerationManager cgm;
-      CreaturePtr hireling = cgm.generate_follower(game.get_action_manager_ref(), FollowerType::FOLLOWER_TYPE_HIRELING, lvl);
+      CreaturePtr hireling = cgm.generate_follower(game.get_action_manager_ref(), map, FollowerType::FOLLOWER_TYPE_HIRELING, lvl);
 
       GameUtils::add_new_creature_to_map(game, hireling, map, { y,x });
     }
@@ -8164,7 +8164,7 @@ int generate_adventurer(lua_State* ls)
     if (map != nullptr)
     {
       CreatureGenerationManager cgm;
-      CreaturePtr adv = cgm.generate_follower(game.get_action_manager_ref(), FollowerType::FOLLOWER_TYPE_ADVENTURER, lvl);
+      CreaturePtr adv = cgm.generate_follower(game.get_action_manager_ref(), map, FollowerType::FOLLOWER_TYPE_ADVENTURER, lvl);
 
       GameUtils::add_new_creature_to_map(game, adv, map, { y,x });
     }

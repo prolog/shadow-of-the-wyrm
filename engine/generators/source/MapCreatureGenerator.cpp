@@ -367,7 +367,7 @@ void MapCreatureGenerator::place_followers(MapPtr map, const pair<Coordinate, Co
 
     for (int adv = 0; adv < num_adv; adv++)
     {
-      CreaturePtr adventurer = cgm.generate_follower(am, FollowerType::FOLLOWER_TYPE_ADVENTURER, CreatureGenerationManager::ADVENTURER_DEFAULT_LEVEL);
+      CreaturePtr adventurer = cgm.generate_follower(am, map, FollowerType::FOLLOWER_TYPE_ADVENTURER, CreatureGenerationManager::ADVENTURER_DEFAULT_LEVEL);
 
       for (int i = 0; i < num_attempts; i++)
       {
@@ -383,7 +383,7 @@ void MapCreatureGenerator::place_followers(MapPtr map, const pair<Coordinate, Co
 
   if (RNG::x_in_y_chance(fc.calculate_x_in_y_chance_hireling(d)))
   {
-    CreaturePtr hireling = cgm.generate_follower(am, FollowerType::FOLLOWER_TYPE_HIRELING, RNG::range(CreatureGenerationManager::HIRELING_MIN_LEVEL, CreatureGenerationManager::HIRELING_MAX_LEVEL));
+    CreaturePtr hireling = cgm.generate_follower(am, map, FollowerType::FOLLOWER_TYPE_HIRELING, RNG::range(CreatureGenerationManager::HIRELING_MIN_LEVEL, CreatureGenerationManager::HIRELING_MAX_LEVEL));
 
     for (int i = 0; i < num_attempts; i++)
     {

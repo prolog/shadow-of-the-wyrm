@@ -3863,6 +3863,7 @@
 					</InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<StartingPetIDs>boar,falcon</StartingPetIDs>
 			<LevelScript>level/rover.lua</LevelScript>
 		</Class>
 		<Class id="sage">

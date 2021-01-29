@@ -462,7 +462,7 @@ void BaseSettlementGenerator::generate_special_inhabitants(MapPtr map)
       ActionManager& am = game.get_action_manager_ref();
 
       CreatureGenerationManager cgm;
-      CreaturePtr hireling = cgm.generate_follower(am, FollowerType::FOLLOWER_TYPE_HIRELING, RNG::range(CreatureGenerationManager::HIRELING_MIN_LEVEL, CreatureGenerationManager::HIRELING_MAX_LEVEL));
+      CreaturePtr hireling = cgm.generate_follower(am, map, FollowerType::FOLLOWER_TYPE_HIRELING, RNG::range(CreatureGenerationManager::HIRELING_MIN_LEVEL, CreatureGenerationManager::HIRELING_MAX_LEVEL));
       Dimensions dim = map->size();
 
       for (int i = 1; i < 20; i++)
