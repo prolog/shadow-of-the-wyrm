@@ -107,7 +107,7 @@ class MapUtils
     static WeatherPtr get_weather(MapPtr map, TilePtr tile);
 
     static bool is_intersection(MapPtr map, CreaturePtr cr, const Coordinate& c);
-    static void place_followers(MapPtr map, CreaturePtr cr, const Coordinate& c);
+    static std::vector<std::string> place_followers(MapPtr map, CreaturePtr cr, const Coordinate& c);
     static void serialize_and_remove_followers(MapPtr map, CreaturePtr creature);
 
   protected: 

@@ -42,6 +42,9 @@ Shadow of the Wyrm v1.2.6 "Holborne"
   start with a sheep, and witchlings and wizards start out with a cat, owl,
   or xither.
 
+- Adventurers and hirelings of these classes should have their own pets
+  generated.  Happily, these will not try to kill you.
+
 - New creatures: adventurer, sea captain, gnomish seatrader, Acey, Snakes,
   Koris, Balabin, Carcassian blackknife, owl, cat, sheep.
 

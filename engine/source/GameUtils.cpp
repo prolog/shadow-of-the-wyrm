@@ -53,21 +53,26 @@ void GameUtils::add_new_creature_to_map(Game& game, CreaturePtr new_creature, Ma
     // Add the creature to the map.
     MapUtils::add_or_update_location(map, new_creature, coords);
 
-    // If it has any followers, place them too.
-    MapUtils::place_followers(map, new_creature, coords);
+    // If it has any followers, place them too.  Grab the list of IDs so we
+    // can update the action coordinator, then add the new creature as well.
+    vector<string> new_creature_ids = MapUtils::place_followers(map, new_creature, coords);
+    new_creature_ids.push_back(new_creature->get_id());
 
-    // Potentially add the creature to the action coordinator, if the
+    // Potentially add the creature(s) to the action coordinator, if the
     // map is the current game map.
     MapPtr game_current_map = game.get_current_map();
 
     if (game_current_map != nullptr && map->get_map_id() == game_current_map->get_map_id())
     {
-      ActionCoordinator& ac = game.get_action_coordinator_ref();
-      ActionCost cost = ac.get_current_action_cost();
-      cost.set_cost(cost.get_cost() + 1);
+      for (const string& id : new_creature_ids)
+      {
+        ActionCoordinator& ac = game.get_action_coordinator_ref();
+        ActionCost cost = ac.get_current_action_cost();
+        cost.set_cost(cost.get_cost() + 1);
 
-      // Set the action cost to one more than the current.
-      game.get_action_coordinator_ref().add(cost, new_creature->get_id());
+        // Set the action cost to one more than the current.
+        ac.add(cost, id);
+      }
     }
   }
 }

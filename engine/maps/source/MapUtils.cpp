@@ -1922,8 +1922,9 @@ void MapUtils::serialize_and_remove_followers(MapPtr map, CreaturePtr creature)
   }
 }
 
-void MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinate& c)
+vector<string> MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinate& c)
 {
+  vector<string> placed_follower_ids;
   vector<string> placed_followers_keys;
 
   if (map != nullptr && map->get_map_type() != MapType::MAP_TYPE_WORLD && creature != nullptr)
@@ -1964,6 +1965,7 @@ void MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinat
           MapUtils::add_or_update_location(map, follower, cur_coord);
           followers.pop_back();
           placed_followers_keys.push_back(follower_details.first);
+          placed_follower_ids.push_back(follower->get_id());
 
           if (!followers.empty())
           {
@@ -1989,6 +1991,8 @@ void MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinat
       creature->remove_additional_property(key);
     }
   }
+
+  return placed_follower_ids;
 }
 
 #ifdef UNIT_TESTS
