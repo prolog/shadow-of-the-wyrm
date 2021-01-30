@@ -1,7 +1,7 @@
 Me:
 - Pets!
   - Shepherd: sheep
-  - Rover: wild animal
+  - Rover: wild animal (boar, falcon)
   - Witchling, wizard: familiar
   - Manual!
   - Are pets properly generated when e.g. a follower is generated on a map?

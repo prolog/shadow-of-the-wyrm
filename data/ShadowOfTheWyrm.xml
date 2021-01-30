@@ -4222,6 +4222,7 @@
 					</InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<StartingPetIDs>sheep</StartingPetIDs>
 			<LevelScript>level/shepherd.lua</LevelScript>
 		</Class>
 		<Class id="smith">
@@ -4803,6 +4804,7 @@
 					</InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<StartingPetIDs>owl,cat,xither</StartingPetIDs>
 			<!-- Witchlings get new/more spells with each level. -->
 			<LevelScript>level/witchling.lua</LevelScript>
 		</Class>
@@ -4923,6 +4925,7 @@
 					</InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<StartingPetIDs>owl,cat,xither</StartingPetIDs>
 			<LevelScript>level/wizard.lua</LevelScript>
 		</Class>
 	</Classes>

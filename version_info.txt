@@ -38,10 +38,12 @@ Shadow of the Wyrm v1.2.6 "Holborne"
   if they see any.
 
 - Certain classes can now start with animal followers (think of them as pets,
-  familiars, etc).  Currently, rovers start with a falcon or boar.
+  familiars, etc).  Currently, rovers start with a falcon or boar, shepherds
+  start with a sheep, and witchlings and wizards start out with a cat, owl,
+  or xither.
 
 - New creatures: adventurer, sea captain, gnomish seatrader, Acey, Snakes,
-  Koris, Balabin, Carcassian blackknife.
+  Koris, Balabin, Carcassian blackknife, owl, cat, sheep.
 
 - New items: ivory tusks, stolen goods, powdered snowcap, fake snowcap,
   forged documents, alabaster key.
