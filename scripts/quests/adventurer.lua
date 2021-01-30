@@ -6,7 +6,7 @@ local function request_follow(this_cr_id, name)
 
     set_creature_additional_property(this_cr_id, "CREATURE_PROPERTIES_LEADER_ID", PLAYER_ID)
     set_adventurers_joined(PLAYER_ID, get_adventurers_joined(PLAYER_ID) + 1)
-    order_at_ease(this_cr_id)
+    order_follow(this_cr_id)
 
     -- Set the chat text
     set_creature_speech_text_sid(this_cr_id, "ADVENTURER_SPEECH_TEXT" .. tostring(RNG_range(1, 7)) .. "_SID")

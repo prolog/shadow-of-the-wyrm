@@ -1,9 +1,5 @@
 Me:
 - Pets!
-  - Shepherd: sheep
-  - Rover: wild animal (boar, falcon)
-  - Witchling, wizard: familiar
-  - Manual!
   - Are pets properly generated when e.g. a follower is generated on a map?
     E.g. a rover hireling in Isen Dun should have corresponding pets
   - Transitive commands

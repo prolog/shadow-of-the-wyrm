@@ -10,6 +10,7 @@
 #include "CreatureGenerationOptions.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
+#include "DecisionStrategyProperties.hpp"
 #include "EngineConversion.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
@@ -19,6 +20,7 @@
 #include "Log.hpp"
 #include "ModifyStatisticsEffect.hpp"
 #include "NullKeyboardController.hpp"
+#include "OrderAction.hpp"
 #include "PlayerTextKeys.hpp"
 #include "RaceManager.hpp"
 #include "ReligionFactory.hpp"
@@ -687,10 +689,12 @@ bool CreatureFactory::create_pet(CreaturePtr creature, ActionManager& am, MapPtr
 
         if (pet != nullptr)
         {
+          OrderAction oa;
           HostilityManager hm;
-          hm.clear_hostility(pet);
+          string leader_id = creature->get_id();
 
-          pet->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID, creature->get_id());
+          hm.clear_hostility(pet);
+          pet->set_leader_and_follow(leader_id);
 
           string pet_prop = CreatureUtils::get_follower_property_prefix() + "1";
           ostringstream ss;
