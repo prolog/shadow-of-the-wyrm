@@ -255,6 +255,7 @@ int generate_hireling(lua_State* ls);
 int generate_adventurer(lua_State* ls);
 int set_colour(lua_State* ls);
 int add_npc_level_message(lua_State* ls);
+int set_leader(lua_State* ls);
 int get_leader_id(lua_State* ls);
 int get_name(lua_State* ls);
 int set_hirelings_hired(lua_State* ls);

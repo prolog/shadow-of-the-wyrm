@@ -28,6 +28,8 @@
 
 using namespace std;
 
+const int CreatureUtils::LEADERSHIP_MAX_PASSES = 2;
+
 CreatureUtils::CreatureUtils()
 {
 }
@@ -999,6 +1001,35 @@ CreatureSize CreatureUtils::get_size(CreaturePtr creature)
   }
 
   return size;
+}
+
+void CreatureUtils::set_leadership(CreaturePtr creature, const string& leader_id, MapPtr map, const int cur_pass)
+{
+  if (cur_pass > LEADERSHIP_MAX_PASSES)
+  {
+    return;
+  }
+
+  if (creature != nullptr)
+  {
+    creature->set_leader_and_follow(leader_id);
+
+    if (map != nullptr)
+    {
+      const CreatureMap& creatures = map->get_creatures_ref();
+
+      for (const auto& c_pair : creatures)
+      {
+        if (c_pair.second != nullptr)
+        {
+          if (c_pair.second->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == creature->get_id())
+          {
+            set_leadership(c_pair.second, leader_id, map, cur_pass + 1);
+          }
+        }
+      }
+    }
+  }
 }
 
 #ifdef UNIT_TESTS

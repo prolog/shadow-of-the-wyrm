@@ -407,6 +407,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "generate_adventurer", generate_adventurer);
   lua_register(L, "set_colour", set_colour);
   lua_register(L, "add_npc_level_message", add_npc_level_message);
+  lua_register(L, "set_leader", set_leader);
   lua_register(L, "get_leader_id", get_leader_id);
   lua_register(L, "get_name", get_name);
   lua_register(L, "set_hirelings_hired", set_hirelings_hired);
@@ -8228,6 +8229,23 @@ int add_npc_level_message(lua_State* ls)
   return 0;
 }
 
+int set_leader(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+    string leader_id = lua_tostring(ls, 2);
+    MapPtr current_map = Game::instance().get_current_map();
+
+    CreatureUtils::set_leadership(creature, leader_id, current_map);
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_leader");
+  }
+  
+  return 0;
+}
 int get_leader_id(lua_State* ls)
 {
   string leader_id;

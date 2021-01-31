@@ -3,6 +3,7 @@
 #include "CombatTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
+#include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "EffectFactory.hpp"
 #include "ExperienceManager.hpp"
@@ -258,10 +259,11 @@ void MusicSkillProcessor::pacify(CreaturePtr creature, CreaturePtr fov_creature,
 
     HostilityManager hm;
     hm.remove_hostility_to_creature(fov_creature, creature_id);
+    MapPtr current_map = Game::instance().get_current_map();
 
     fov_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_PACIFIED, to_string(true));
     fov_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_NO_EXP, to_string(true));
-    fov_creature->set_leader_and_follow(creature->get_id());
+    CreatureUtils::set_leadership(fov_creature, creature_id, current_map);
 
     // Add a message about the pacification.
     bool creature_is_player = creature->get_is_player();

@@ -694,7 +694,7 @@ bool CreatureFactory::create_pet(CreaturePtr creature, ActionManager& am, MapPtr
           string leader_id = creature->get_id();
 
           hm.clear_hostility(pet);
-          pet->set_leader_and_follow(leader_id);
+          CreatureUtils::set_leadership(pet, creature->get_id(), current_map);
 
           string pet_prop = CreatureUtils::get_follower_property_prefix() + "1";
           ostringstream ss;

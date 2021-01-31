@@ -4,9 +4,9 @@ local function request_follow(this_cr_id, name)
   if add_confirmation_message("ADVENTURER_FOLLOW_SID", {name}) then
     incr_str_to_unburdened(this_cr_id, false)
 
-    set_creature_additional_property(this_cr_id, "CREATURE_PROPERTIES_LEADER_ID", PLAYER_ID)
+    set_leader(this_cr_id, PLAYER_ID)
     set_adventurers_joined(PLAYER_ID, get_adventurers_joined(PLAYER_ID) + 1)
-    order_follow(this_cr_id)
+    order_follow(this_cr_id, PLAYER_ID)
 
     -- Set the chat text
     set_creature_speech_text_sid(this_cr_id, "ADVENTURER_SPEECH_TEXT" .. tostring(RNG_range(1, 7)) .. "_SID")

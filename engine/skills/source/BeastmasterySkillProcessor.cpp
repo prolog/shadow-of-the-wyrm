@@ -2,6 +2,7 @@
 #include "BeastmasterySkillProcessor.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
+#include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "EffectFactory.hpp"
 #include "ExperienceManager.hpp"
@@ -115,7 +116,7 @@ void BeastmasterySkillProcessor::handle_tame(CreaturePtr taming_creature, Creatu
     
     to_tame->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_NO_EXP, to_string(true));
     to_tame->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_TAMED, to_string(true));
-    to_tame->set_leader_and_follow(taming_creature->get_id());
+    CreatureUtils::set_leadership(to_tame, taming_creature->get_id(), current_map);
 
     taming_creature->get_skills().mark(SkillType::SKILL_GENERAL_BEASTMASTERY);
     manager.add_new_message(ActionTextKeys::get_tamed_message(taming_creature->get_description_sid(), to_tame->get_description_sid(), taming_creature->get_is_player()));
