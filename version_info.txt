@@ -45,6 +45,8 @@ Shadow of the Wyrm v1.2.6 "Holborne"
 - Adventurers and hirelings of these classes should have their own pets
   generated.  Happily, these will not try to kill you.
 
+- Performance improvements to world generation.
+
 - New creatures: adventurer, sea captain, gnomish seatrader, Acey, Snakes,
   Koris, Balabin, Carcassian blackknife, owl, cat, sheep.
 

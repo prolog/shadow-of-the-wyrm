@@ -11,7 +11,6 @@ Me:
 - Make taverns more distinctive
 - NEED TO DO AN ASSET RELEASE
 - Do a couple of quests that require a party
-  - Isen Dun (sea captain): inkpots to Atua-Elar (ench scroll, whiteflower)
   - Isen Dun (Hrimgar): envoy to Forest of Yew (PoGA)
   - Carcassia (Golgoa): wyrms attacked Stoneheim, wizard killed, tower wants 
     you to deliver his apprentice robes and staff (+ench?) (ench scroll, 

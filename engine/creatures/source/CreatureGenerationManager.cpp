@@ -41,7 +41,7 @@ CreatureGenerationList CreatureGenerationManager::generate_creature_generation_m
   Game& game = Game::instance();
   
   CreatureMap creatures = game.get_creatures_ref();
-  CreatureGenerationValuesMap cgv_map = game.get_creature_generation_values_ref();
+  CreatureGenerationValuesMap& cgv_map = game.get_creature_generation_values_ref();
 
   bool ignore_level_checks = false;
 
