@@ -7750,7 +7750,7 @@ int get_random_hostile_creature_id(lua_State* ls)
     TileType tile_type = static_cast<TileType>(lua_tointeger(ls, 3));
 
     CreatureGenerationManager cgm;
-    CreatureGenerationList cgl = cgm.generate_creature_generation_map(tile_type, true, min_level, max_level, Rarity::RARITY_COMMON, {});
+    CreatureGenerationIndex cgl = cgm.generate_creature_generation_map(tile_type, true, min_level, max_level, Rarity::RARITY_COMMON, {});
     vector<string> possible_ids;
 
     for (auto cgl_pair : cgl)
@@ -7880,7 +7880,7 @@ int generate_creature(lua_State* ls)
       if (tile != nullptr && !tile->has_creature())
       {
         CreatureGenerationManager cgm;
-        CreatureGenerationList generation_list = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger, max_danger, Rarity::RARITY_COMMON /* hardcode for now */, {});
+        CreatureGenerationIndex generation_list = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger, max_danger, Rarity::RARITY_COMMON /* hardcode for now */, {});
         CreaturePtr creature = cgm.generate_creature(game.get_action_manager_ref(), generation_list, map);
 
         if (creature != nullptr)
@@ -8096,7 +8096,7 @@ int generate_ancient_beast(lua_State* ls)
     if (map != nullptr)
     {
       CreatureGenerationManager cgm;
-      CreatureGenerationList cgl = cgm.generate_ancient_beasts(CreatureGenerationManager::ANCIENT_BEASTS_MIN_DANGER_LEVEL, MapType::MAP_TYPE_UNDERWORLD, map->get_terrain_type());
+      CreatureGenerationIndex cgl = cgm.generate_ancient_beasts(CreatureGenerationManager::ANCIENT_BEASTS_MIN_DANGER_LEVEL, MapType::MAP_TYPE_UNDERWORLD, map->get_terrain_type());
 
       auto cgl_val = cgl.at(dtype);
 

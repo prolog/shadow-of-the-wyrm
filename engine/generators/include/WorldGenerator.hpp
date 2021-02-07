@@ -79,7 +79,7 @@ class WorldGenerator : public SOTW::Generator
     std::map<std::string, std::string> village_race_sids;
 
     TileGenerator tg;
-    std::map<TileType, CreatureGenerationList> creature_generation_map_cache;
+    std::map<TileType, CreatureGenerationIndex> creature_generation_map_cache;
 
     static const int MIN_CREATURES_PER_VILLAGE;
     static const int MAX_CREATURES_PER_VILLAGE;

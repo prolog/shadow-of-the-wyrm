@@ -562,6 +562,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\creatures\include\CreatureDifficulty.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureFactory.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationConstants.hpp" />
+    <ClInclude Include="engine\creatures\include\CreatureGenerationIndex.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationListValue.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationManager.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationOptionsStringBuilder.hpp" />
@@ -1837,6 +1838,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\conversion\source\VictoryDumper.cpp" />
+    <ClCompile Include="engine\creatures\source\CreatureGenerationIndex.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureGenerationListValue.cpp" />
     <ClCompile Include="engine\creatures\source\GroundSafetyCondition.cpp" />
     <ClCompile Include="engine\creatures\source\HideStatusEffect.cpp" />

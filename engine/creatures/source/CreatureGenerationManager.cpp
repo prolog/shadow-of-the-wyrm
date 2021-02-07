@@ -32,10 +32,10 @@ CreatureGenerationManager::CreatureGenerationManager()
 {
 }
 
-CreatureGenerationList CreatureGenerationManager::generate_creature_generation_map(const TileType map_terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const map<string, string>& additional_properties)
+CreatureGenerationIndex CreatureGenerationManager::generate_creature_generation_map(const TileType map_terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const map<string, string>& additional_properties)
 {
   int min_danger = min_danger_level;
-  CreatureGenerationList generation_list;
+  CreatureGenerationIndex generation_list;
 
   CreaturePtr generated_creature;
   Game& game = Game::instance();
@@ -95,9 +95,9 @@ CreatureGenerationList CreatureGenerationManager::generate_creature_generation_m
   return generation_list;
 }
 
-CreatureGenerationList CreatureGenerationManager::generate_ancient_beasts(const int danger_level, const MapType map_type, const TileType map_terrain_type)
+CreatureGenerationIndex CreatureGenerationManager::generate_ancient_beasts(const int danger_level, const MapType map_type, const TileType map_terrain_type)
 {
-  CreatureGenerationList cgl;
+  CreatureGenerationIndex cgl;
 
   // Ancient beasts only ever appear underground, in dungeons, sewers, caverns,
   // etc.
@@ -183,7 +183,7 @@ CreatureGenerationList CreatureGenerationManager::generate_ancient_beasts(const 
   return cgl;
 }
 
-string CreatureGenerationManager::select_creature_id_for_generation(ActionManager& am, CreatureGenerationList& generation_list)
+string CreatureGenerationManager::select_creature_id_for_generation(ActionManager& am, CreatureGenerationIndex& generation_list)
 {
   string creature_id;
 
@@ -207,7 +207,7 @@ string CreatureGenerationManager::select_creature_id_for_generation(ActionManage
   return creature_id;
 }
 
-CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, CreatureGenerationList& generation_list, MapPtr current_map)
+CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, CreatureGenerationIndex& generation_list, MapPtr current_map)
 {
   CreaturePtr generated_creature;
   CreatureFactory cf;

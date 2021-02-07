@@ -300,8 +300,8 @@ void WorldGenerator::set_tile_depth_creature_details(TilePtr tile, const int max
   {
     TileType tile_type = tile->get_tile_type();
 
-    CreatureGenerationList glist_full;
-    CreatureGenerationList generation_list;
+    CreatureGenerationIndex glist_full;
+    CreatureGenerationIndex generation_list;
     auto cgm_cache_it = creature_generation_map_cache.find(tile_type);
 
     if (cgm_cache_it != creature_generation_map_cache.end())

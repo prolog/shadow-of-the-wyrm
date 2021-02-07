@@ -4,7 +4,8 @@
 #include "CreatureGenerationListValue.hpp"
 #include "RarityTypes.hpp"
 
-using CreatureGenerationList = std::vector<CreatureGenerationListValue>;
+// JCD CHANGE ME BACK TO: using CreatureGenerationList = std::vector<CreatureGenerationListValue>;
+using CreatureGenerationIndex = std::vector<CreatureGenerationListValue>;
 
 enum struct FollowerType
 {
@@ -17,12 +18,12 @@ class CreatureGenerationManager
   public:
     CreatureGenerationManager();
     
-    CreatureGenerationList generate_creature_generation_map(const TileType map_terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const std::map<std::string, std::string>& additional_properties);
-    CreatureGenerationList generate_ancient_beasts(const int max_danger_level, const MapType map_type, const TileType map_terrain_type);
+    CreatureGenerationIndex generate_creature_generation_map(const TileType map_terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const std::map<std::string, std::string>& additional_properties);
+    CreatureGenerationIndex generate_ancient_beasts(const int max_danger_level, const MapType map_type, const TileType map_terrain_type);
 
-    std::string select_creature_id_for_generation(ActionManager& am, CreatureGenerationList& creature_generation_list);
+    std::string select_creature_id_for_generation(ActionManager& am, CreatureGenerationIndex& creature_generation_list);
 
-    std::shared_ptr<Creature> generate_creature(ActionManager& am, CreatureGenerationList& creature_generation_list, MapPtr map);
+    std::shared_ptr<Creature> generate_creature(ActionManager& am, CreatureGenerationIndex& creature_generation_list, MapPtr map);
 
     std::shared_ptr<Creature> generate_follower(ActionManager& am, MapPtr map, const FollowerType ft, const int level);
     
