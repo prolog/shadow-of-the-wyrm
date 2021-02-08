@@ -1,5 +1,5 @@
 Me:
-- generation_list
+- calculate_resistances in update_calculated_values
 - Update the CreatureGenerationManager functions so they return a new class,
   CreatureGenerationIndex
 - Update CreatureGenerationIndex so it's an actual class, with an internal

@@ -109,12 +109,13 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
     }
   }
 
-  CreatureGenerationIndex generation_list = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger_level, max_danger_level, rarity, additional_properties);
+  CreatureGenerationIndex generation_index = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger_level, max_danger_level, rarity, additional_properties);
+  CreatureGenerationList generation_list = generation_index.get();
 
   if (generation_list.empty())
   {
     MapType map_type = map->get_map_type();
-    generation_list = cgm.generate_ancient_beasts(max_danger_level, map_type, map_terrain_type);
+    generation_list = cgm.generate_ancient_beasts(max_danger_level, map_type, map_terrain_type).get();
   }
 
   IMessageManager& manager = MM::instance();

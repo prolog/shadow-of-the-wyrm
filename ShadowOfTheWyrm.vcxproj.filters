@@ -8755,5 +8755,8 @@
     <ClCompile Include="engine\creatures\source\CreatureGenerationIndex.cpp">
       <Filter>Source Files\engine\creatures\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\CreatureGenerationIndex_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

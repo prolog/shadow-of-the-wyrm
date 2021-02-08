@@ -300,30 +300,24 @@ void WorldGenerator::set_tile_depth_creature_details(TilePtr tile, const int max
   {
     TileType tile_type = tile->get_tile_type();
 
-    CreatureGenerationIndex glist_full;
-    CreatureGenerationIndex generation_list;
+    CreatureGenerationIndex gindex;
+    CreatureGenerationList generation_list;
     auto cgm_cache_it = creature_generation_map_cache.find(tile_type);
 
     if (cgm_cache_it != creature_generation_map_cache.end())
     {
-      glist_full = cgm_cache_it->second;
+      generation_list = cgm_cache_it->second.get(max_depth);
     }
     else
     {
       // Get a creature ID for the given tile/depth combination.
       // Cache it so that performance isn't brutal.
       CreatureGenerationManager cgm;
-      glist_full = cgm.generate_creature_generation_map(tile_type, true /* assume permanent */, 1, MAX_DANGER_LEVEL_FOR_WORLD_GEN, Rarity::RARITY_COMMON, {});
+      gindex = cgm.generate_creature_generation_map(tile_type, true /* assume permanent */, 1, MAX_DANGER_LEVEL_FOR_WORLD_GEN, Rarity::RARITY_COMMON, {});
+      generation_list = gindex.get(max_depth);
 
-      creature_generation_map_cache[tile_type] = glist_full;
+      creature_generation_map_cache.emplace(tile_type, gindex);
     }
-
-    // Now that we have a full 1-50 generation list, either newly created or
-    // from the cache, filter it and use only the actual danger level we care
-    // about.
-    std::copy_if(glist_full.begin(), glist_full.end(), std::back_inserter(generation_list), [max_depth](auto cdata) {
-      return cdata.get_creature_generation_values().get_danger_level() == max_depth;
-      });
 
     if (!generation_list.empty())
     {

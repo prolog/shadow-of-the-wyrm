@@ -35,13 +35,14 @@ CreatureGenerationManager::CreatureGenerationManager()
 CreatureGenerationIndex CreatureGenerationManager::generate_creature_generation_map(const TileType map_terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const map<string, string>& additional_properties)
 {
   int min_danger = min_danger_level;
-  CreatureGenerationIndex generation_list;
+  CreatureGenerationList generation_list;
 
   CreaturePtr generated_creature;
   Game& game = Game::instance();
   
-  CreatureMap creatures = game.get_creatures_ref();
+  const CreatureMap& creatures = game.get_creatures_ref();
   CreatureGenerationValuesMap& cgv_map = game.get_creature_generation_values_ref();
+  generation_list.reserve(creatures.size() / 2);
 
   bool ignore_level_checks = false;
 
@@ -79,25 +80,22 @@ CreatureGenerationIndex CreatureGenerationManager::generate_creature_generation_
   }
     
   // Build the map of creatures available for generation given the danger level and rarity
-  for (CreatureMap::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
+  for (auto c_it = creatures.begin(); c_it != creatures.end(); c_it++)
   {
-    string creature_id = c_it->first;
-
-    CreaturePtr creature = c_it->second;
-    CreatureGenerationValues cgvals = cgv_map[creature_id];
+    const CreatureGenerationValues& cgvals = cgv_map[c_it->first];
 
     if (does_creature_match_generation_criteria(cgvals, map_terrain_type, permanent_map, min_danger, max_danger_level, rarity, ignore_level_checks, required_race, generator_filters, preset_creature_ids))
     {
-      generation_list.push_back({creature_id, creature, cgvals});
+      generation_list.push_back({c_it->first, c_it->second, cgvals});
     }
   }
-  
-  return generation_list;
+
+  return CreatureGenerationIndex(generation_list);
 }
 
 CreatureGenerationIndex CreatureGenerationManager::generate_ancient_beasts(const int danger_level, const MapType map_type, const TileType map_terrain_type)
 {
-  CreatureGenerationIndex cgl;
+  CreatureGenerationList cgl;
 
   // Ancient beasts only ever appear underground, in dungeons, sewers, caverns,
   // etc.
@@ -180,10 +178,11 @@ CreatureGenerationIndex CreatureGenerationManager::generate_ancient_beasts(const
     }
   }
 
-  return cgl;
+  CreatureGenerationIndex cgi(cgl);
+  return cgi;
 }
 
-string CreatureGenerationManager::select_creature_id_for_generation(ActionManager& am, CreatureGenerationIndex& generation_list)
+string CreatureGenerationManager::select_creature_id_for_generation(ActionManager& am, CreatureGenerationList& generation_list)
 {
   string creature_id;
 
@@ -207,7 +206,7 @@ string CreatureGenerationManager::select_creature_id_for_generation(ActionManage
   return creature_id;
 }
 
-CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, CreatureGenerationIndex& generation_list, MapPtr current_map)
+CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, CreatureGenerationList& generation_list, MapPtr current_map)
 {
   CreaturePtr generated_creature;
   CreatureFactory cf;
