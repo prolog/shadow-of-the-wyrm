@@ -1,4 +1,5 @@
 #pragma once
+#include <unordered_map>
 #include <map>
 #include <string>
 #include <memory>
@@ -13,7 +14,7 @@ class Resistance : public ISerializable
     Resistance();
     virtual ~Resistance() {};
     Resistance(const DamageType type, const std::string& name_sid, const std::string& abrv_sid, const std::string& gain_msg_sid, const std::string& lose_msg_sid, const double value);
-    virtual bool operator==(const Resistance& res) const;
+    bool operator==(const Resistance& r) const;
 
     void set_type(const DamageType new_type);
     DamageType get_type() const;
@@ -43,8 +44,6 @@ class Resistance : public ISerializable
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 
-    virtual Resistance* clone() = 0;
-
   protected:
     DamageType type;
     std::string name_sid;
@@ -54,134 +53,10 @@ class Resistance : public ISerializable
     double value;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const = 0;
+    virtual ClassIdentifier internal_class_identifier() const;
 };
 
-using ResistancePtr = std::shared_ptr<Resistance>;
-
-// Individual resistance types
-class SlashResistance : public Resistance
-{
-  public:
-    SlashResistance();
-
-    virtual Resistance* clone() override;
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const override;
-};
-
-class PierceResistance : public Resistance
-{
-  public:
-    PierceResistance();
-
-    virtual Resistance* clone() override;
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const override;
-};
-
-class PoundResistance : public Resistance
-{
-  public:
-    PoundResistance();
-
-    virtual Resistance* clone() override;
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const override;
-};
-
-class HeatResistance : public Resistance
-{
-  public:
-    HeatResistance();
-
-    virtual Resistance* clone() override;
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const override;
-};
-
-class ColdResistance : public Resistance
-{
-  public:
-    ColdResistance();
-
-    virtual Resistance* clone() override;
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const override;
-};
-
-class AcidResistance : public Resistance
-{
-  public:
-    AcidResistance();
-
-    virtual Resistance* clone() override;
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const override;
-};
-
-class PoisonResistance : public Resistance
-{
-  public:
-    PoisonResistance();
-
-    virtual Resistance* clone() override;
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const override;
-};
-
-class HolyResistance : public Resistance
-{
-  public:
-    HolyResistance();
-
-    virtual Resistance* clone() override;
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const override;
-};
-
-class ShadowResistance : public Resistance
-{
-  public:
-    ShadowResistance();
-
-    virtual Resistance* clone() override;
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const override;
-};
-
-class ArcaneResistance : public Resistance
-{
-  public:
-    ArcaneResistance();
-
-    virtual Resistance* clone() override;
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const override;
-};
-
-class LightningResistance : public Resistance
-{
-  public:
-    LightningResistance();
-
-    virtual Resistance* clone() override;
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const override;
-};
-
-using ResistancesMap = std::map<DamageType, std::shared_ptr<Resistance>>;
+using ResistancesMap = std::map<DamageType, Resistance>;
 
 // Resistance container class
 class Resistances : public ISerializable
@@ -189,9 +64,9 @@ class Resistances : public ISerializable
   public:
     Resistances();
     Resistances(const Resistances& r);
-    Resistances& operator=(const Resistances& r);
+    bool operator==(const Resistances& r) const;
 
-    virtual bool operator==(const Resistances& resistances) const;
+    void clear();
 
     // Add the values from the given resistances to the current set of resistances.
     virtual void add(const Resistances& res);
@@ -201,9 +76,12 @@ class Resistances : public ISerializable
 
     void set_resistance_value(const DamageType type, double value);
     void set_all_resistances_to(const double new_value);
-    ResistancePtr get_resistance(const DamageType dt) const;
+    const Resistance& get_resistance_cref(const DamageType dt) const;
+    Resistance& get_resistance_ref(const DamageType dt);
     double get_resistance_value(const DamageType type) const;
     ResistancesMap get_resistances_map() const;
+
+    void default_resistances();
 
     std::string str() const;
 
@@ -211,8 +89,6 @@ class Resistances : public ISerializable
     virtual bool deserialize(std::istream& stream) override;
     
   protected:
-    void default_resistances();
-
     ResistancesMap resistances;
 
   private:

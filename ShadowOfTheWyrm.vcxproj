@@ -1273,7 +1273,6 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\include\Race.hpp" />
     <ClInclude Include="world\include\RarityTypes.hpp" />
     <ClInclude Include="world\include\Readable.hpp" />
-    <ClInclude Include="world\include\ResistanceFactory.hpp" />
     <ClInclude Include="world\include\Resistances.hpp" />
     <ClInclude Include="world\include\Ring.hpp" />
     <ClInclude Include="world\include\Scroll.hpp" />
@@ -3694,7 +3693,6 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\source\Quests.cpp" />
     <ClCompile Include="world\source\Race.cpp" />
     <ClCompile Include="world\source\Readable.cpp" />
-    <ClCompile Include="world\source\ResistanceFactory.cpp" />
     <ClCompile Include="world\source\Resistances.cpp" />
     <ClCompile Include="world\source\Ring.cpp" />
     <ClCompile Include="world\source\Scroll.cpp" />

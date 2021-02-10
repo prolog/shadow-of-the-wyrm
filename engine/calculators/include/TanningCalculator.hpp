@@ -18,7 +18,7 @@ class TanningCalculator
     std::vector<int> calculate_evade_probabilities(CreaturePtr creature);
     std::vector<int> calculate_soak_probabilities(CreaturePtr creature);
 
-    double calculate_resistance_value(CreaturePtr creature, ResistancePtr resist);
+    double calculate_resistance_value(CreaturePtr creature, const Resistance& resist);
     int calculate_potential_extra_resistance_points(CreaturePtr creature);
     
     static const int MAX_EVADE_BONUS;

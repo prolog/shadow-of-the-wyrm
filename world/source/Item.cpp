@@ -762,13 +762,10 @@ void Item::do_smith_item(const int points)
 DamageType Item::do_brand()
 {
   DamageType brand = get_random_brand();
-  ResistancePtr brand_res = resistances.get_resistance(brand);
+  Resistance& brand_res = resistances.get_resistance_ref(brand);
 
-  if (brand_res != nullptr)
-  {
-    double res_val = std::max<double>(brand_res->get_value() + BrandConstants::BRAND_RESISTANCE_AMOUNT, 0.0);
-    brand_res->set_value(res_val);
-  }
+  double res_val = std::max<double>(brand_res.get_value() + BrandConstants::BRAND_RESISTANCE_AMOUNT, 0.0);
+  brand_res.set_value(res_val);
 
   return brand;
 }
