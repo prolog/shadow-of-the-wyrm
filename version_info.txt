@@ -45,7 +45,7 @@ Shadow of the Wyrm v1.2.8 "Holborne"
 - Adventurers and hirelings of these classes should have their own pets
   generated.  Happily, these will not try to kill you.
 
-- Performance improvements to world generation.
+- Performance improvements to world generation and other areas.
 
 - New creatures: adventurer, sea captain, gnomish seatrader, Acey, Snakes,
   Koris, Balabin, Carcassian blackknife, owl, cat, sheep.
@@ -67,6 +67,10 @@ Shadow of the Wyrm v1.2.8 "Holborne"
   - The game was using the view map (a subset of the full map) for determining
     NPC actions, which was cheating, because this wasn't taking into account
     things like line of sight.
+
+  - If you had items made from skins, but no actual skins, applying a tannery
+    was giving an empty inventory screen instead of the usual no-skins
+    message.
 
 Shadow of the Wyrm v1.2.5 "Arnold"
 - Version declared November 1, 2020. Version finalized December 13, 2020.
