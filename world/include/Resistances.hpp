@@ -12,7 +12,7 @@ class Resistance : public ISerializable
 {
   public:
     Resistance();
-    virtual ~Resistance() {};
+    
     Resistance(const DamageType type, const std::string& name_sid, const std::string& abrv_sid, const std::string& gain_msg_sid, const std::string& lose_msg_sid, const double value);
     bool operator==(const Resistance& r) const;
 
@@ -69,7 +69,7 @@ class Resistances : public ISerializable
     void clear();
 
     // Add the values from the given resistances to the current set of resistances.
-    virtual void add(const Resistances& res);
+    void add(const Resistances& res);
 
     bool has_resistances_or_vulnerabilities() const;
     double get_total() const;
@@ -80,8 +80,6 @@ class Resistances : public ISerializable
     Resistance& get_resistance_ref(const DamageType dt);
     double get_resistance_value(const DamageType type) const;
     ResistancesMap get_resistances_map() const;
-
-    void default_resistances();
 
     std::string str() const;
 

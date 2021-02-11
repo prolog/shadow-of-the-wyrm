@@ -1,15 +1,6 @@
 Me:
 - when you don't have skins but you DO have something made from a skin, you
   get an empty inventory screen when applying at a tannery
-- calculate_resistances in update_calculated_values
-- Make resistance a concrete class, with a factory to create each type.
-  Eliminate the extra class IDs
-- Update the CreatureGenerationManager functions so they return a new class,
-  CreatureGenerationIndex
-- Update CreatureGenerationIndex so it's an actual class, with an internal
-  hashmap: levels associated with a vector of items. This should speed up 
-  worldgen considerably. Add a get(min, max) and a get_all that return
-  CreatureGenerationList
 - Additional profiling improvements
 - Pets!
 - Debug into set_hostility and figure out why it's not setting for Snakes etc

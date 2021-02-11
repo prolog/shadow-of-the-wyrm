@@ -87,7 +87,6 @@ TEST(SW_World_Resistances, serialization_id)
 TEST(SW_World_Resistances, saveload)
 {
   Resistances res;
-  res.default_resistances();
 
   for (int i = static_cast<int>(DamageType::DAMAGE_TYPE_SLASH); i <= static_cast<int>(DamageType::DAMAGE_TYPE_LIGHTNING); i++)
   {

@@ -1159,13 +1159,13 @@ Coordinate MapUtils::convert_map_key_to_coordinate(const string& map_key)
   
   if (t_it != tokens.end())
   {
-    coords.first = String::to_int(*t_it);
+    coords.first = std::stoi(*t_it);
     t_it++;
   }
     
   if (t_it != tokens.end())
   {
-    coords.second = String::to_int(*t_it);
+    coords.second = std::stoi(*t_it);
   }
 
   return coords;
