@@ -1,7 +1,5 @@
 Me:
-- when you don't have skins but you DO have something made from a skin, you
-  get an empty inventory screen when applying at a tannery
-- Additional profiling improvements
+- Allow shopkeepers to be any of the selectable races.
 - Pets!
 - Debug into set_hostility and figure out why it's not setting for Snakes etc
 - More Acey/Sea Captain quests
@@ -53,10 +51,10 @@ Me:
 - Release after this: grond says tanning is complicated & dragon skins aren't
   what they should be.
 - Mode screen (F10): Game mode, graphics, palette
+- Additional profiling improvements
 - Beer halls in villages
 - spell arcana (bind to capitals in spell list)
 - Do creatures pause when no threats in FOV? Seems slow.
-- google screen clear not working for SDL. reported 2x.
 - 2x draw?
 - Beastmastery: add mounts
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
@@ -77,15 +75,12 @@ Me:
   parts of each map being set.
 - "The Vertical City"
 - refactor the huge function in ShadowOfTheWyrmEngine.cpp
-- Tidy up scripts/quests into subdirectories, like carcassia, and test.
-  Need to remember to update env.lua!
 - More guilds/things with memberships
 - Improve spellcasting AI so that spells are only considered when adjacent
   if the expected damage is greater than the expected damage of a melee
   attack.
 - The guarded, empty areas in Carcassia C2 should lead to some kind of
   dungeon/special area.
-- Email Nathan before next release re: Mac build check
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
 - Penalties from bloodied, exposed should also scale with level.
@@ -101,12 +96,9 @@ Me:
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
 - The vaults of the old dwarven-kings
-- Allow shopkeepers to be any of the selectable races.
 - Towers/tower generators.
 - Reuse some of the sector feature generators in dungeons - tomb, etc.
 - Descent into the underworld.
-- Allow shopkeepers to sell for different prices depending on their
-  race, and the buying creature's.
 - Wilderness ruins/lairs
 - Dungeon vaults
 - In text display screen, p to page to a particular page.

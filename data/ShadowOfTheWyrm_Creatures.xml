@@ -21316,7 +21316,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="_shopkeeper">
-			<RaceID>01_human</RaceID>
+			<RaceID>01_human,02_woodelf,03_mountainelf,04_snakeling,05_fae,06_dwarf,07_goblin,08_ogre,09_giant,10_gnome	</RaceID>
 			<ClassID>merchant</ClassID>
 			<ShortDescriptionSID>SHOPKEEPER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SHOPKEEPER_DESCRIPTION_SID</DescriptionSID>
@@ -21324,10 +21324,10 @@
 			<SpeechTextSID>SHOPKEEPER_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
-        <Pickup>0</Pickup>
-        <Shopkeeper>1</Shopkeeper>
-        <ResistSwitch>1</ResistSwitch>
-      </DecisionStrategy>
+				<Pickup>0</Pickup>
+				<Shopkeeper>1</Shopkeeper>
+				<ResistSwitch>1</ResistSwitch>
+			</DecisionStrategy>
 			<Symbol>
 				<Char>t</Char>
 				<Colour>13</Colour>
