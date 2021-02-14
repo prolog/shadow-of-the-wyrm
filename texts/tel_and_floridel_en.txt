@@ -3689,11 +3689,41 @@ each object bits of shadow looking for its place.
 %p
 They pushed for hours, what they thought what north %b
 but faintly drifted, seeking out the trace %b
-of exiles in the woodlands.  Each had torn %b
+of the exiles in the woodlands.  Each had torn %b
 off strips of blankets, padding to erase %b
 the clinking of their packs and swords.  They moved %b
 like foxes through the fern-lands, and as they they stirred %b
 the waist-high fronds, it seemed their little group %b
 became like boats, unseen and still unheard, %b
 their only trace the sudden leap and flight of birds.
+%p
+The afternoon was fading as the sun %b
+arced westward as if loaded in a sling %b
+and loosed to the horizon.  As it swung %b
+across them like a warning shot, a twinge %b
+of worry as the light began to fade. %b
+They continued not to speak, but cast a glance %b
+around to find a campsite in the waves %b
+of bracken, full and thick, and took the chance %b
+to pass the night inside the cover of those plants.
+%p
+Uneven ground.  They rested best they could %b
+and listened as the evening's sounds were stilled %b
+further by layers of the pinnae.  Pulled %b
+their meals from belt-packs, sipped at water, filled %b
+themselves with heavy cakes, the kind they said %b
+would keep a year and still taste just the same. %b
+But filling.  Lard and spices.  As they spread %b
+apart beneath the fronds, the night became %b
+a living thing that seemed to reach and call their names.
+%p
+How long had fair folk lived beneath the earth %b
+like burrow-grubs?  They called it Cithriel %b
+but their high-halled home could only be a hearth %b
+for those deemed better - like the lie they'd tell %b
+each person from their birth, that some are made %b
+better by blood, and all the rest must serve. %b
+For all the rest, the whip and hand, a slave %b
+to self-enforcing nobility, who preserve %b
+the lie by force and saying this is all deserved.
 %p
