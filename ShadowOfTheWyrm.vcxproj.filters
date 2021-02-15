@@ -4361,6 +4361,9 @@
     <ClInclude Include="engine\creatures\include\CreatureGenerationIndex.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\CompanionDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8751,6 +8754,9 @@
     </ClCompile>
     <ClCompile Include="engine\creatures\source\unit_tests\CreatureGenerationIndex_test.cpp">
       <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\CompanionDeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

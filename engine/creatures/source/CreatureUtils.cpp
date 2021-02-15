@@ -879,6 +879,27 @@ int CreatureUtils::adjust_str_until_unburdened(CreaturePtr creature)
   return incr_cnt;
 }
 
+CreatureMap CreatureUtils::get_followers(CreaturePtr creature, MapPtr map)
+{
+  CreatureMap followers;
+
+  if (creature != nullptr && map != nullptr)
+  {
+    string c_id = creature->get_id();
+    const CreatureMap& creatures = map->get_creatures_ref();
+
+    for (const auto& c_pair : creatures)
+    {
+      if (c_pair.second && c_pair.second->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == c_id)
+      {
+        followers.insert(c_pair);
+      }
+    }
+  }
+
+  return followers;
+}
+
 CreatureMap CreatureUtils::get_followers_in_fov(CreaturePtr creature)
 {
   CreatureMap followers;

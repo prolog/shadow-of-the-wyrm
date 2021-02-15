@@ -596,6 +596,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\creatures\include\WaterBreathingStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\WaterSafetyCondition.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\AltarDropDeityDecisionStrategyHandler.hpp" />
+    <ClInclude Include="engine\decision_strategies\deity\include\CompanionDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\CrowningDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionConstants.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionImplications.hpp" />
@@ -1884,6 +1885,7 @@ mkdir $(OutDir)logs
     </ClCompile>
     <ClCompile Include="engine\creatures\source\WaterBreathingStatusEffect.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\AltarDropDeityDecisionStrategyHandler.cpp" />
+    <ClCompile Include="engine\decision_strategies\deity\source\CompanionDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\HaltBreedingDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\UncurseDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\magic\source\AttackNPCMagicDecision.cpp" />

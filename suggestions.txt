@@ -1,6 +1,9 @@
 Me:
-- Allow shopkeepers to be any of the selectable races.
 - Pets!
+- Unit test for new MapUtil fn
+- Extra HP/AP for divine companions
+- The Snakes hostility issue
+- Make ancient beasts untamable
 - Debug into set_hostility and figure out why it's not setting for Snakes etc
 - More Acey/Sea Captain quests
 - Acey quest to steal Ironsword and deliver to Atua-Elar after it's retrieved.

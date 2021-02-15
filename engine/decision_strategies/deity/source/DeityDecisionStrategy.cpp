@@ -1,6 +1,7 @@
 #include "DeityDecisionConstants.hpp"
 #include "DeityDecisionStrategy.hpp"
 #include "AltarDropDeityDecisionStrategyHandler.hpp"
+#include "CompanionDeityDecisionStrategyHandler.hpp"
 #include "CrowningDeityDecisionStrategyHandler.hpp"
 #include "FullAPDeityDecisionStrategyHandler.hpp"
 #include "FullHPDeityDecisionStrategyHandler.hpp"
@@ -53,6 +54,9 @@ void DeityDecisionStrategy::initialize_decisions()
   decisions.push_back(std::move(cur_decision));
 
   cur_decision = std::make_unique<UncurseDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(std::move(cur_decision));
+
+  cur_decision = std::make_unique<CompanionDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(std::move(cur_decision));
 
   cur_decision = std::make_unique<SatiateDeityDecisionStrategyHandler>(deity_id);
