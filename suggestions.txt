@@ -1,8 +1,6 @@
 Me:
 - Pets!
-- Unit test for new MapUtil fn
 - all-breathing divine companions?
-- Extra HP/AP for divine companions
 - The Snakes hostility issue
 - Make ancient beasts untamable
 - Debug into set_hostility and figure out why it's not setting for Snakes etc
