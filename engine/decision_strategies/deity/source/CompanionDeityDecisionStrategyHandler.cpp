@@ -4,6 +4,7 @@
 #include "CreatureUtils.hpp"
 #include "DeityDecisionConstants.hpp"
 #include "DeityTextKeys.hpp"
+#include "DivineCompanionCalculator.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
@@ -73,6 +74,7 @@ DeityDecisionImplications CompanionDeityDecisionStrategyHandler::handle_decision
 
     CreaturePtr gen_creature = cgm.generate_creature(game.get_action_manager_ref(), generation_list, map);
     gen_creature->set_leader_and_follow(creature->get_id());
+    set_companion_bonuses(gen_creature);
 
     HostilityManager hm;
     hm.set_hostility_to_player(gen_creature, false);
@@ -88,6 +90,24 @@ DeityDecisionImplications CompanionDeityDecisionStrategyHandler::handle_decision
   }
 
   return get_deity_decision_implications(creature, tile);
+}
+
+void CompanionDeityDecisionStrategyHandler::set_companion_bonuses(CreaturePtr companion)
+{
+  if (companion != nullptr)
+  {
+    DivineCompanionCalculator dcc;
+    Damage d = companion->get_base_damage();
+
+    Statistic calc_hp = dcc.calculate_hp(companion->get_hit_points());
+    Statistic calc_ap = dcc.calculate_ap(companion->get_arcana_points());
+    int damage_mod = dcc.calculate_damage_modifier(companion, d);
+    d.set_modifier(damage_mod);
+
+    companion->set_hit_points(calc_hp);
+    companion->set_arcana_points(calc_ap);
+    companion->set_base_damage(d);
+  }
 }
 
 int CompanionDeityDecisionStrategyHandler::get_piety_loss() const
