@@ -1896,8 +1896,8 @@
 <!-- See CreatureFeatures.hpp -->
 <xs:simpleType name="BreatheType">
 	<xs:restriction base="xs:integer">
-		<xs:enumeration value="0"/>
-		<xs:enumeration value="1"/>
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="2"/>
 	</xs:restriction>
 </xs:simpleType>
 <!-- See CreatureFeatures.hpp -->

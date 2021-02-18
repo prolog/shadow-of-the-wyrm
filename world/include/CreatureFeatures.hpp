@@ -65,7 +65,8 @@ enum struct Handedness
 enum struct BreatheType
 {
   BREATHE_TYPE_AIR = 0,
-  BREATHE_TYPE_WATER = 1
+  BREATHE_TYPE_WATER = 1,
+  BREATHE_TYPE_ALL = 2
 };
 
 class CreatureConstants

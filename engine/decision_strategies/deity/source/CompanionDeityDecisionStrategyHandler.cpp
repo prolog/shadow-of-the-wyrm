@@ -107,6 +107,7 @@ void CompanionDeityDecisionStrategyHandler::set_companion_bonuses(CreaturePtr co
     companion->set_hit_points(calc_hp);
     companion->set_arcana_points(calc_ap);
     companion->set_base_damage(d);
+    companion->set_breathes(BreatheType::BREATHE_TYPE_ALL);
   }
 }
 

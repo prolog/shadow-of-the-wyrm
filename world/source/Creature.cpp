@@ -442,6 +442,11 @@ vector<BreatheType> Creature::get_breathes() const
 
 bool Creature::can_breathe(const BreatheType btype) const
 {
+  if (breathes == BreatheType::BREATHE_TYPE_ALL)
+  {
+    return true;
+  }
+
   if (btype == breathes || (btype == BreatheType::BREATHE_TYPE_WATER && has_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING)))
   {
     return true;

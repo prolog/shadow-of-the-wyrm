@@ -50,6 +50,10 @@ Shadow of the Wyrm v1.2.8 "Holborne"
 
 - Shopkeepers can be generated from any of the user-playable races.
 
+- Creatures previously breathed either water or air - there is now a
+  breathe-all option, and this is set when praying for a companion, so you
+  can take them anywhere.
+
 - Performance improvements to world generation and other areas.
 
 - New creatures: adventurer, sea captain, gnomish seatrader, Acey, Snakes,
