@@ -11,7 +11,7 @@ if player_has_item(FORGED_DOCUMENTS_ID) then
   else
     clear_and_add_message("BALABIN_UNEXPECTED_PARTY_SID")
 
-    set_hostility(SPEAKING_CREATURE_ID, PLAYER_ID)
+    set_hostility(args[SPEAKING_CREATURE_ID], PLAYER_ID)
     summon_monsters_around_creature({CARCASSIAN_GUARD_ID, CARCASSIAN_BLACKKNIFE_ID}, PLAYER_ID, RNG_range(3, 6), true)
   end
 else

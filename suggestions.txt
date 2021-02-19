@@ -1,7 +1,5 @@
 Me:
 - Pets!
-- all-breathing divine companions?
-- The Snakes hostility issue
 - Make ancient beasts untamable
 - Debug into set_hostility and figure out why it's not setting for Snakes etc
 - More Acey/Sea Captain quests
