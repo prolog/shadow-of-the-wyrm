@@ -31,6 +31,7 @@ void async_worldgen(std::promise<MapPtr>&& mp)
 
 const int WorldGenerator::MIN_CREATURES_PER_VILLAGE = 12;
 const int WorldGenerator::MAX_CREATURES_PER_VILLAGE = 26;
+const int WorldGenerator::MAX_DANGER_LEVEL_FOR_WORLD_GEN = 50;
 
 // Even though the map_terrain_type parameter is used to generate creatures, and UNDEFINED would normally be bad, it
 // shouldn't matter for the world, since there will never be creatures generated on it.
@@ -297,9 +298,26 @@ void WorldGenerator::set_tile_depth_creature_details(TilePtr tile, const int max
 {
   if (tile != nullptr)
   {
-    // Get a creature ID for the given tile/depth combination.
-    CreatureGenerationManager cgm;
-    CreatureGenerationList generation_list = cgm.generate_creature_generation_map(tile->get_tile_type(), true /* assume permanent */, max_depth, max_depth, Rarity::RARITY_COMMON, {});
+    TileType tile_type = tile->get_tile_type();
+
+    CreatureGenerationIndex gindex;
+    CreatureGenerationList generation_list;
+    auto cgm_cache_it = creature_generation_map_cache.find(tile_type);
+
+    if (cgm_cache_it != creature_generation_map_cache.end())
+    {
+      generation_list = cgm_cache_it->second.get(max_depth);
+    }
+    else
+    {
+      // Get a creature ID for the given tile/depth combination.
+      // Cache it so that performance isn't brutal.
+      CreatureGenerationManager cgm;
+      gindex = cgm.generate_creature_generation_map(tile_type, true /* assume permanent */, 1, MAX_DANGER_LEVEL_FOR_WORLD_GEN, Rarity::RARITY_COMMON, {});
+      generation_list = gindex.get(max_depth);
+
+      creature_generation_map_cache.emplace(tile_type, gindex);
+    }
 
     if (!generation_list.empty())
     {

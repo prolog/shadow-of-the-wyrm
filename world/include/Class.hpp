@@ -88,6 +88,9 @@ class Class
     void set_deity_dislike_multipliers(const std::map<std::string, float>& new_deity_dislike_multipliers);
     std::map<std::string, float> get_deity_dislike_multipliers() const;
 
+    void set_starting_pet_ids(const std::vector<std::string>& new_starting_pet_ids);
+    std::vector<std::string> get_starting_pet_ids() const;
+
     std::string str() const;
 
   protected:
@@ -139,6 +142,10 @@ class Class
     // key (action name), then the multiplier is used; otherwise
     // the default multiplier of 1 is used.
     std::map<std::string, float> deity_dislike_multipliers;
+
+    // Some classes can start with pets.  An ID is selected
+    // at random from the starting list.
+    std::vector<std::string> starting_pet_ids;
 };
 
 using ClassPtr = std::unique_ptr<Class>;

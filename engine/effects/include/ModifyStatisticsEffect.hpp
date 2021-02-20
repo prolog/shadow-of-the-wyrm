@@ -2,7 +2,7 @@
 #include "Effect.hpp"
 #include "Modifier.hpp"
 
-enum class ModifyStatisticsDuration
+enum struct ModifyStatisticsDuration
 {
   MODIFY_STATISTICS_DURATION_PRESET = 0,
   MODIFY_STATISTICS_DURATION_CALCULATE = 1

@@ -1979,9 +1979,6 @@
     <ClInclude Include="world\tiles\include\TileFactory.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\include\ResistanceFactory.hpp">
-      <Filter>Header Files\world\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\include\SkillFactory.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
@@ -4319,9 +4316,6 @@
     <ClInclude Include="engine\generators\settlements\sector\include\SectorFeatureTypes.hpp">
       <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\strings\include\ProcgenTextKeys.hpp">
-      <Filter>Header Files\engine\strings\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\include\CreatureTypes.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
@@ -4351,6 +4345,27 @@
     </ClInclude>
     <ClInclude Include="engine\skills\include\GeneralMagicSkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\LibrarySectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\TavernSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\PartyTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\FollowerCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\CreatureGenerationIndex.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\CompanionDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\DivineCompanionCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -5559,9 +5574,6 @@
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\Lock.cpp">
       <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\source\ResistanceFactory.cpp">
-      <Filter>Source Files\world\source</Filter>
     </ClCompile>
     <ClCompile Include="world\source\SkillFactory.cpp">
       <Filter>Source Files\world\source</Filter>
@@ -8674,9 +8686,6 @@
     <ClCompile Include="engine\strings\source\OrderTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\strings\source\ProcgenTextKeys.cpp">
-      <Filter>Source Files\engine\strings\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\source\CreatureTypes.cpp">
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
@@ -8726,6 +8735,36 @@
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\SpellbookCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\LibrarySectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\TavernSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\PartyTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\FollowerCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\FollowerCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\CreatureGenerationIndex.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\CreatureGenerationIndex_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\CompanionDeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\DivineCompanionCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\DivineCompanionCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>

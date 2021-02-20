@@ -79,6 +79,13 @@
 			<Placement>
 				<ID>_fisherman</ID>
 				<Coord>
+					<Row>16</Row>
+					<Col>64</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>sea_captain</ID>
+				<Coord>
 					<Row>18</Row>
 					<Col>66</Col>
 				</Coord>

@@ -5,6 +5,7 @@ class WildflowerGardenGenerator : public GardenSectorFeature
 {
   public:
     WildflowerGardenGenerator(const std::string& deity_id = "", const AlignmentRange ar = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL);
+    std::pair<std::pair<int, int>, std::map<int, std::string>> get_wildflower_details() const;
 
   protected:
     virtual bool generate_garden(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;

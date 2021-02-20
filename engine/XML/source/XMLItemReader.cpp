@@ -1,5 +1,6 @@
 #include "XMLItemReader.hpp"
 #include "GenerationProperties.hpp"
+#include "ItemProperties.hpp"
 #include "ItemTypes.hpp"
 #include "XMLResistancesReader.hpp"
 #include "XMLScriptsReader.hpp"
@@ -62,6 +63,13 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
 
       // The generation values needs the value as well
       gv.set_property(GenerationProperties::GENERATION_PROPERTIES_VALUE, to_string(static_cast<int>(item->get_value())));
+    }
+
+    XMLNode contraband_node = XMLUtils::get_next_element_by_local_name(item_node, "Contraband");
+    if (!contraband_node.is_null())
+    {
+      bool contraband = XMLUtils::get_node_bool_value(contraband_node);
+      item->set_additional_property(ItemProperties::ITEM_PROPERTIES_CONTRABAND, to_string(contraband));
     }
 
     XMLNode weight_node = XMLUtils::get_next_element_by_local_name(item_node, "Weight");

@@ -1624,7 +1624,7 @@ Skills& Skills::operator=(const Skills& copy_skills)
     for (auto& sk_it : copy_skills.skills)
     {
       SkillPtr new_skill = SkillPtr(sk_it.second->clone());
-      skills.insert(make_pair(sk_it.first, std::move(new_skill)));
+      skills[sk_it.first] = std::move(new_skill);
     }
   }
 

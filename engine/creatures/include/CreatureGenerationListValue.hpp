@@ -10,6 +10,7 @@ class CreatureGenerationListValue
 {
   public:
     CreatureGenerationListValue(const std::string& new_creature_base_id, CreaturePtr new_creature, const CreatureGenerationValues new_cgv);
+    bool operator==(const CreatureGenerationListValue& cglv2) const;
 
     std::string get_creature_base_id() const;
     CreaturePtr get_creature() const;

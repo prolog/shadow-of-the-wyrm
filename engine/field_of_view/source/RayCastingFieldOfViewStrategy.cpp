@@ -66,7 +66,12 @@ void RayCastingFieldOfViewStrategy::add_points_to_map_as_appropriate(CreaturePtr
 {
   CurrentCreatureAbilities cca;
   bool creature_blinded = (cca.can_see(fov_creature) == false);
+  bool incorporeal = false;
 
+  if (fov_creature)
+  {
+    incorporeal = fov_creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
+  }
   for (const Coordinate& c : coords)
   {
     TilePtr tile = view_map->at(c);
@@ -82,7 +87,7 @@ void RayCastingFieldOfViewStrategy::add_points_to_map_as_appropriate(CreaturePtr
         add_point_to_map(fov_creature, c, view_map, fov_map);
       }
 
-      if (tile->get_is_blocking_visually())
+      if (tile->get_is_blocking_visually() && !incorporeal)
       {
         return;
       }

@@ -190,6 +190,7 @@ class Creature : public ISerializable
     // Does the creature have any equipped or worn items?  Are any unpaid?
     bool has_items() const;
     bool has_unpaid_items() const;
+    bool has_item_with_property(const std::string& property_name) const;
     uint count_items() const;
     uint get_unpaid_amount() const;
     void set_items_paid();
@@ -246,7 +247,8 @@ class Creature : public ISerializable
     void set_decision_strategy(std::unique_ptr<DecisionStrategy> strategy);
     DecisionStrategy* get_decision_strategy() const;
     std::unique_ptr<DecisionStrategy> get_decision_strategy_uptr();
-    
+    void set_leader_and_follow(const std::string& leader_id);
+
     // Is the creature hostile towards a given creature's ID?
     bool hostile_to(const std::string& creature_id);
     
@@ -353,6 +355,9 @@ class Creature : public ISerializable
 
     void set_hirelings_hired(const int new_hirelings_hired);
     int get_hirelings_hired() const;
+
+    void set_adventurers_joined(const int new_adventurers_joined);
+    int get_adventurers_joined() const;
 
     bool is_allied_to(const std::string& creature_original_id) const;
 

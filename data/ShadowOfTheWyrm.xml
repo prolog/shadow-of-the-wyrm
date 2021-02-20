@@ -3863,6 +3863,7 @@
 					</InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<StartingPetIDs>boar,falcon</StartingPetIDs>
 			<LevelScript>level/rover.lua</LevelScript>
 		</Class>
 		<Class id="sage">
@@ -4221,6 +4222,7 @@
 					</InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<StartingPetIDs>sheep</StartingPetIDs>
 			<LevelScript>level/shepherd.lua</LevelScript>
 		</Class>
 		<Class id="smith">
@@ -4802,6 +4804,7 @@
 					</InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<StartingPetIDs>owl,cat,xither</StartingPetIDs>
 			<!-- Witchlings get new/more spells with each level. -->
 			<LevelScript>level/witchling.lua</LevelScript>
 		</Class>
@@ -4922,6 +4925,7 @@
 					</InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<StartingPetIDs>owl,cat,xither</StartingPetIDs>
 			<LevelScript>level/wizard.lua</LevelScript>
 		</Class>
 	</Classes>
@@ -6297,6 +6301,25 @@
 				<NumDice>6</NumDice>
 				<NumSides>6</NumSides>
 				<Type>2</Type>
+				<EffectBonus>100</EffectBonus>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>				
+		<Spell id="m_19_paralyze">
+			<NameSID>PARALYZE_NAME_SID</NameSID>
+			<PlayerCastMessageSID>PARALYZE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>PARALYZE_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3002</MagicCategory>
+			<MagicClassification>0</MagicClassification>
+			<Colour>10</Colour>
+			<APCost>25</APCost>
+			<Speed>1</Speed>
+			<Range>3</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>10</Type>
 				<EffectBonus>100</EffectBonus>
 			</Damage>
 			<Effect>0</Effect>
@@ -7957,6 +7980,10 @@
 				<Reference id="hireling">
 					<Row>13</Row>
 					<Col>9</Col>
+				</Reference>
+				<Reference id="adventurer">
+					<Row>13</Row>
+					<Col>10</Col>
 				</Reference>
 			</References>
 		</Spritesheet>

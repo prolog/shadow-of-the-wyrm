@@ -303,6 +303,19 @@ TEST(SW_World_Creature, breathes_types)
   EXPECT_TRUE(land_creature.can_breathe(BreatheType::BREATHE_TYPE_WATER));
 }
 
+TEST(SW_World_Creature, breathe_any_type)
+{
+  Creature c;
+  c.set_breathes(BreatheType::BREATHE_TYPE_ALL);
+
+  vector<BreatheType> vals = { BreatheType::BREATHE_TYPE_AIR, BreatheType::BREATHE_TYPE_WATER, BreatheType::BREATHE_TYPE_ALL };
+
+  for (const BreatheType breathe_type : vals)
+  {
+    EXPECT_TRUE(c.can_breathe(breathe_type));
+  }
+}
+
 TEST(SW_World_Creature, status_details)
 {
   Creature c;

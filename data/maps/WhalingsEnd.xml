@@ -49,6 +49,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>gnomish_seatrader</ID>
+				<Coord>
+					<Row>11</Row>
+					<Col>18</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>gnomish_sailor</ID>
 				<Coord>
 					<Row>8</Row>

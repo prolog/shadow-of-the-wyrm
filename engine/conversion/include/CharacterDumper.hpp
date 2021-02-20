@@ -12,7 +12,8 @@ class CharacterDumper : public StringConverter
     
   protected:
     // Functions to get smaller parts of the character's details, as strings.
-    std::string get_synopsis() const;
+    std::string get_party() const;
+    std::string get_synopsis(const bool centre = true) const;
     std::string get_vital_statistics() const;
     std::string get_carrying_capacity() const;
       

@@ -1,4 +1,5 @@
 #include <vector>
+#include "Conversion.hpp"
 #include "Resistances.hpp"
 #include "XMLClassesReader.hpp"
 #include "XMLDataStructures.hpp"
@@ -108,6 +109,10 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
 
     current_class->set_initial_equipment(initial_eq);
     current_class->set_initial_inventory(initial_inv);
+
+    string potential_pets_s = XMLUtils::get_child_node_value(class_node, "StartingPetIDs");
+    vector<string> potential_pets = String::create_string_vector_from_csv_string(potential_pets_s);
+    current_class->set_starting_pet_ids(potential_pets);
 
     string level_script = XMLUtils::get_child_node_value(class_node, "LevelScript");
     current_class->set_level_script(level_script);

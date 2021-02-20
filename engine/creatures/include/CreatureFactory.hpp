@@ -14,8 +14,8 @@ class CreatureFactory
     void set_hostility_for_creatures(const bool override_host, const bool host);
     std::string select_race_id(const std::vector<std::string>& race_ids, const std::string& default_race_id);
 
-    CreaturePtr create_by_creature_id(ActionManager& am, const std::string& creature_id, MapPtr current_map, CreaturePtr procgen_creature = nullptr, const bool ignore_maximum = false);
-    CreaturePtr create_by_race_and_class(ActionManager& am, const std::string& race_id, const std::string& class_id, const std::string& creature_name, const CreatureSex creature_sex, const CreatureSize creature_size, const std::string& deity_id = "", const bool is_player = false);
+    CreaturePtr create_by_creature_id(ActionManager& am, const std::string& creature_id, MapPtr current_map, CreaturePtr procgen_creature = nullptr, const bool ignore_maximum = false, const bool allow_pet_generation = true);
+    CreaturePtr create_by_race_and_class(ActionManager& am, MapPtr current_map, const std::string& race_id, const std::string& class_id, const std::string& creature_name, const CreatureSex creature_sex, const CreatureSize creature_size, const std::string& deity_id = "", const bool allow_pet_generation = true, const bool is_player = false);
 
     void setup_player(CreaturePtr player, ControllerPtr controller);
 
@@ -38,6 +38,9 @@ class CreatureFactory
     // Called to initialize a new ID and set any other ID-like values that are more for
     // book-keeping than game-playing.
     void initialize(CreaturePtr creature);
+
+    // Create a pet if the creature's class allows it.
+    bool create_pet(CreaturePtr creature, ActionManager& am, MapPtr current_map);
 
     bool override_hostility_setting;
     bool create_hostile;

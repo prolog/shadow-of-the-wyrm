@@ -20,7 +20,8 @@ enum struct ReligiousCommercialSectorFeatureType
   RC_SECTOR_FEATURE_FLOWER_GARDEN = 2,
   RC_SECTOR_FEATURE_SHOP = 3,
   RC_SECTOR_FEATURE_OUTDOOR_SHRINE = 4,
-  RC_SECTOR_LAST = 5
+  RC_SECTOR_FEATURE_LIBRARY = 5,
+  RC_SECTOR_LAST = 6
 };
 
 enum struct LowIncomeResidentialSectorFeatureType
@@ -33,7 +34,8 @@ enum struct LowIncomeResidentialSectorFeatureType
   LIR_SECTOR_FEATURE_SHOP = 4,
   LIR_SECTOR_FEATURE_BEER_HALL = 5,
   LIR_SECTOR_FEATURE_WORKSHOP = 6,
-  LIR_SECTOR_LAST = 7
+  LIR_SECTOR_FEATURE_TAVERN = 7,
+  LIR_SECTOR_LAST = 8
 };
 
 enum struct ResidentialSectorFeatureType

@@ -14,6 +14,7 @@ const string DecisionStrategyProperties::DECISION_STRATEGY_SUPPRESS_MAGIC = "sup
 const string DecisionStrategyProperties::DECISION_STRATEGY_BREEDS = "breeds";
 const string DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL = "sentinel";
 const string DecisionStrategyProperties::DECISION_STRATEGY_ALLIES_IDS = "allies";
+const string DecisionStrategyProperties::DECISION_STRATEGY_ATTACK_CONTRABAND = "attack_contra";
 const string DecisionStrategyProperties::DECISION_STRATEGY_ASSIST_PCT = "assist_pct";
 const string DecisionStrategyProperties::DECISION_STRATEGY_PICKUP = "pickup";
 const string DecisionStrategyProperties::DECISION_STRATEGY_ORDERED_SENTINEL = "ordered_sentinel";

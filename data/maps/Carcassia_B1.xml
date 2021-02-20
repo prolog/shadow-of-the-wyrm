@@ -145,6 +145,24 @@
 	<Features>
 		<FeaturePlacement>
 			<Coord>
+				<Row>18</Row>
+				<Col>19</Col>
+			</Coord>
+			<DecorativeStatue>
+				<Type>2</Type>
+			</DecorativeStatue>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>18</Row>
+				<Col>22</Col>
+			</Coord>
+			<DecorativeStatue>
+				<Type>2</Type>
+			</DecorativeStatue>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
 				<Row>6</Row>
 				<Col>8</Col>
 			</Coord>

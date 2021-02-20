@@ -17,19 +17,22 @@
 #include "ItemEnchantmentCalculator.hpp"
 #include "MapProperties.hpp"
 #include "Naming.hpp"
-#include "ProcgenTextKeys.hpp"
+#include "PartyTextKeys.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
 
 using namespace std;
 
 const int CreatureGenerationManager::ANCIENT_BEASTS_MIN_DANGER_LEVEL = 20;
+const int CreatureGenerationManager::ADVENTURER_DEFAULT_LEVEL = 1;
+const int CreatureGenerationManager::HIRELING_MIN_LEVEL = 10;
+const int CreatureGenerationManager::HIRELING_MAX_LEVEL = 40;
 
 CreatureGenerationManager::CreatureGenerationManager()
 {
 }
 
-CreatureGenerationList CreatureGenerationManager::generate_creature_generation_map(const TileType map_terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const map<string, string>& additional_properties)
+CreatureGenerationIndex CreatureGenerationManager::generate_creature_generation_map(const TileType map_terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const map<string, string>& additional_properties)
 {
   int min_danger = min_danger_level;
   CreatureGenerationList generation_list;
@@ -37,8 +40,9 @@ CreatureGenerationList CreatureGenerationManager::generate_creature_generation_m
   CreaturePtr generated_creature;
   Game& game = Game::instance();
   
-  CreatureMap creatures = game.get_creatures_ref();
-  CreatureGenerationValuesMap cgv_map = game.get_creature_generation_values_ref();
+  const CreatureMap& creatures = game.get_creatures_ref();
+  CreatureGenerationValuesMap& cgv_map = game.get_creature_generation_values_ref();
+  generation_list.reserve(creatures.size() / 2);
 
   bool ignore_level_checks = false;
 
@@ -76,23 +80,20 @@ CreatureGenerationList CreatureGenerationManager::generate_creature_generation_m
   }
     
   // Build the map of creatures available for generation given the danger level and rarity
-  for (CreatureMap::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
+  for (auto c_it = creatures.begin(); c_it != creatures.end(); c_it++)
   {
-    string creature_id = c_it->first;
-
-    CreaturePtr creature = c_it->second;
-    CreatureGenerationValues cgvals = cgv_map[creature_id];
+    const CreatureGenerationValues& cgvals = cgv_map[c_it->first];
 
     if (does_creature_match_generation_criteria(cgvals, map_terrain_type, permanent_map, min_danger, max_danger_level, rarity, ignore_level_checks, required_race, generator_filters, preset_creature_ids))
     {
-      generation_list.push_back({creature_id, creature, cgvals});
+      generation_list.push_back({c_it->first, c_it->second, cgvals});
     }
   }
-  
-  return generation_list;
+
+  return CreatureGenerationIndex(generation_list);
 }
 
-CreatureGenerationList CreatureGenerationManager::generate_ancient_beasts(const int danger_level, const MapType map_type, const TileType map_terrain_type)
+CreatureGenerationIndex CreatureGenerationManager::generate_ancient_beasts(const int danger_level, const MapType map_type, const TileType map_terrain_type)
 {
   CreatureGenerationList cgl;
 
@@ -138,7 +139,7 @@ CreatureGenerationList CreatureGenerationManager::generate_ancient_beasts(const 
       int dl = std::max(1, danger_level);
       int xp_val = em.get_total_experience_needed_for_level(nullptr, std::min(dl, 50));
 
-      ancient_beast = cf.create_by_race_and_class(Game::instance().get_action_manager_ref(), RaceID::RACE_ID_UNKNOWN, "", "", CreatureSex::CREATURE_SEX_NOT_SPECIFIED, CreatureSize::CREATURE_SIZE_HUGE);
+      ancient_beast = cf.create_by_race_and_class(Game::instance().get_action_manager_ref(), nullptr, RaceID::RACE_ID_UNKNOWN, "", "", CreatureSex::CREATURE_SEX_NOT_SPECIFIED, CreatureSize::CREATURE_SIZE_HUGE);
       ancient_beast->set_base_damage(dam);
       ancient_beast->set_evade(danger_level);
       ancient_beast->set_soak(danger_level);
@@ -177,7 +178,8 @@ CreatureGenerationList CreatureGenerationManager::generate_ancient_beasts(const 
     }
   }
 
-  return cgl;
+  CreatureGenerationIndex cgi(cgl);
+  return cgi;
 }
 
 string CreatureGenerationManager::select_creature_id_for_generation(ActionManager& am, CreatureGenerationList& generation_list)
@@ -235,7 +237,25 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, Crea
   return generated_creature;
 }
 
-CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, const int danger_level)
+CreaturePtr CreatureGenerationManager::generate_follower(ActionManager& am, MapPtr current_map, const FollowerType ft, const int danger_level)
+{
+  CreaturePtr follower;
+
+  switch (ft)
+  {
+    case FollowerType::FOLLOWER_TYPE_HIRELING:
+      follower = generate_hireling(am, current_map, danger_level);
+      break;
+    case FollowerType::FOLLOWER_TYPE_ADVENTURER:
+      follower = generate_adventurer(am, current_map, danger_level);
+    default:
+      break;
+  }
+
+  return follower;
+}
+
+CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, MapPtr current_map, const int danger_level)
 {
   CreatureSex sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE)));
   CreatureFactory cf;
@@ -252,7 +272,7 @@ CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, cons
   }
 
   string name = Naming::generate_name(sex);
-  CreaturePtr hireling = cf.create_by_race_and_class(am, race_id, class_id, name, sex, CreatureSize::CREATURE_SIZE_NA);
+  CreaturePtr hireling = cf.create_by_race_and_class(am, current_map, race_id, class_id, name, sex, CreatureSize::CREATURE_SIZE_NA);
   DecisionStrategyPtr ds = DecisionStrategyFactory::create_decision_strategy(DecisionStrategyID::DECISION_STRATEGY_MOBILE);
 
   // Hirelings remain neutral and never jump in to help.
@@ -260,11 +280,11 @@ CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, cons
 
   hireling->set_decision_strategy(std::move(ds));
 
-  hireling->set_description_sid(ProcgenTextKeys::HIRELING_DESC_SID);
-  hireling->set_short_description_sid(ProcgenTextKeys::HIRELING_SHORT_DESC_SID);
-  hireling->set_text_details_sid(ProcgenTextKeys::HIRELING_TEXT_DETAILS_SID);
+  hireling->set_description_sid(PartyTextKeys::HIRELING_DESC_SID);
+  hireling->set_short_description_sid(PartyTextKeys::HIRELING_SHORT_DESC_SID);
+  hireling->set_text_details_sid(PartyTextKeys::HIRELING_TEXT_DETAILS_SID);
   
-  string lua_script = StringTable::get(ProcgenTextKeys::HIRELING_LUA_SCRIPT_SID);
+  string lua_script = StringTable::get(PartyTextKeys::HIRELING_LUA_SCRIPT_SID);
   EventScriptsMap scripts;
   ScriptDetails sd(lua_script, 100);
   hireling->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT, sd);
@@ -315,6 +335,67 @@ CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, cons
   }
 
   return hireling;
+}
+
+CreaturePtr CreatureGenerationManager::generate_adventurer(ActionManager& am, MapPtr current_map, const int danger_level)
+{
+  CreatureSex sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE)));
+  CreatureFactory cf;
+
+  Race* race = CreatureUtils::get_random_user_playable_race();
+  Class* cur_class = CreatureUtils::get_random_user_playable_class();
+  string race_id;
+  string class_id;
+
+  if (race != nullptr && cur_class != nullptr)
+  {
+    race_id = race->get_race_id();
+    class_id = cur_class->get_class_id();
+  }
+
+  string name = Naming::generate_name(sex);
+  CreaturePtr adv = cf.create_by_race_and_class(am, current_map, race_id, class_id, name, sex, CreatureSize::CREATURE_SIZE_NA);
+  DecisionStrategyPtr ds = DecisionStrategyFactory::create_decision_strategy(DecisionStrategyID::DECISION_STRATEGY_MOBILE);
+
+  // Adventurers remain neutral and never jump in to help.
+  ds->set_property(DecisionStrategyProperties::DECISION_STRATEGY_ASSIST_PCT, std::to_string(0));
+
+  adv->set_decision_strategy(std::move(ds));
+
+  adv->set_description_sid(PartyTextKeys::ADVENTURER_DESC_SID);
+  adv->set_short_description_sid(PartyTextKeys::ADVENTURER_SHORT_DESC_SID);
+  adv->set_text_details_sid(PartyTextKeys::ADVENTURER_TEXT_DETAILS_SID);
+
+  string lua_script = StringTable::get(PartyTextKeys::ADVENTURER_LUA_SCRIPT_SID);
+  EventScriptsMap scripts;
+  ScriptDetails sd(lua_script, 100);
+  adv->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT, sd);
+
+  Symbol s('@', static_cast<Colour>(RNG::range(1, 15)));
+  SpritesheetLocation& ssl = s.get_spritesheet_location_ref();
+
+  ssl.set_reference_id(CreatureReferences::ADVENTURER);
+  ssl.set_index(SpritesheetIndex::SPRITESHEET_INDEX_CREATURE);
+  adv->set_symbol(s);
+
+  HostilityManager hm;
+  hm.set_hostility_to_player(adv, false);
+
+  // Set up the creature's attack, HP, AP, spells.
+  ExperienceManager em;
+  int xp = em.get_total_experience_needed_for_level(adv, danger_level);
+  em.gain_experience(adv, static_cast<uint>(xp));
+
+  // Add a boat
+  IInventoryPtr inv = adv->get_inventory();
+
+  if (!inv->has_item_type(ItemType::ITEM_TYPE_BOAT))
+  {
+    ItemPtr coracle = ItemManager::create_item(ItemIdKeys::ITEM_ID_CORACLE);
+    inv->merge_or_add(coracle, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+  }
+
+  return adv;
 }
 
 bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const TileType terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const bool ignore_level_checks, const string& required_race, const vector<string>& generator_filters, const vector<string>& preset_creature_ids)

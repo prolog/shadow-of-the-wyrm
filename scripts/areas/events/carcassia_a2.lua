@@ -4,7 +4,7 @@ require('map_events')
 require('carcassia_common')
 
 local map_id = "carcassia_a2"
-local population = {"_farmer", "_small_child", "seawife", "_commoner", "thief", "urchin", "blackguard", "rat", "gnomish_sailor", "_fisherman", "carcassian_guard", "layperson", "tradesman", "merchant", "_vendor", "traveller", "drunk"}
+local population = {"_farmer", "_small_child", "seawife", "_commoner", "thief", "urchin", "blackguard", "rat", "gnomish_sailor", "_fisherman", "carcassian_guard", "layperson", "tradesman", "merchant", "_vendor", "traveller", "_drunk"}
 
 local function setup_casino(map_id)
   -- Ivory in the vault
@@ -61,7 +61,7 @@ local function setup_dynamic_content(map_id)
   -- generated, run the algorithm a number of times to try to luck out.
   for i=1,80 do
     local y = RNG_range(3,10)
-    local y2 = y + RNG_range(5,8)
+    local y2 = y + RNG_range(6,9)
 
     local x = RNG_range(20,70)
     local x2 = x + RNG_range(6, 10)

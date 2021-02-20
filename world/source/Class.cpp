@@ -248,6 +248,16 @@ map<string, float> Class::get_deity_dislike_multipliers() const
   return deity_dislike_multipliers;
 }
 
+void Class::set_starting_pet_ids(const vector<string>& new_starting_pet_ids)
+{
+  starting_pet_ids = new_starting_pet_ids;
+}
+
+vector<string> Class::get_starting_pet_ids() const
+{
+  return starting_pet_ids;
+}
+
 string Class::str() const
 {
   ostringstream class_details;

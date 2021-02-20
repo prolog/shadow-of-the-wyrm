@@ -4,10 +4,28 @@ require('fn')
 require('map_events')
 
 local map_id = "carcassia_b2"
-local population = {"layperson", "devotee", "cleric", "follower", "apostle", "pilgrim", "carcassian_guard", "_noble", "_commoner", "thief", "urchin", "tradesman", "merchant", "traveller", "drunk"}
+local population = {"layperson", "devotee", "cleric", "follower", "apostle", "pilgrim", "carcassian_guard", "_noble", "_commoner", "thief", "urchin", "tradesman", "merchant", "traveller", "_drunk"}
 
 local function setup_properties(map_id)
   map_set_tile_property(map_id, 18, 76, "MAP_PROPERTIES_INITIAL_ITEMS", "smite_spellbook")
+end
+
+local function setup_stash(map_id)
+  -- Ensure the stash isn't diggable
+  for y = 13, 17 do
+    for x = 40, 53 do
+      map_set_tile_property(map_id, y, x, "TILE_PROPERTY_CANNOT_DIG", "1")
+    end
+  end
+
+  -- Set up guards
+  for x = 41, 45 do
+    add_creature_to_map(CARCASSIAN_BLACKKNIFE_ID, 16, x, map_id) 
+  end
+
+  for x = 48, 52 do
+    add_creature_to_map(CARCASSIAN_BLACKKNIFE_ID, 16, x, map_id)
+  end
 end
 
 local function setup_vault(map_id)
@@ -40,10 +58,16 @@ local function setup_dynamic_content(map_id)
     carcassia_garden_type = RNG_range(0, 1)
   end
 
-  -- Always a shop across from the Fellowship
-  generate_city_feature(map_id, 1, 3, 5, 16, CCITY_SECTOR_RELIGIOUS_COMMERCIAL, 3)
+  -- A shop or library across from the fellowship
+  local sl_val = 3
 
-  -- A shrine below the shop.
+  if RNG_percent_chance(50) then
+    sl_val = 5
+  end
+
+  generate_city_feature(map_id, 1, 3, 5, 16, CCITY_SECTOR_RELIGIOUS_COMMERCIAL, sl_val)
+
+  -- A shrine below that.
   generate_city_feature(map_id, 7, 3, 11, 16, CCITY_SECTOR_RELIGIOUS_COMMERCIAL, 4)
 
   -- Wildflowers or rocks in front of the palace.
@@ -58,6 +82,7 @@ end
 local function init_carcassia_b2(map_id)
   setup_properties(map_id)
   setup_vault(map_id)
+  setup_stash(map_id)
   setup_dynamic_content(map_id)
   carcassia_common.setup_population(map_id, {0,1}, {18, 37}, population)
 end

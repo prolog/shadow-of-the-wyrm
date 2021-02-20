@@ -68,13 +68,8 @@ void CrowningDeityDecisionStrategyHandler::fortify_champion(CreaturePtr creature
   for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
   {
     DamageType dt = static_cast<DamageType>(d);
-
-    ResistancePtr cur_res = intrinsics.get_resistance(dt);
-
-    if (cur_res)
-    {
-      cur_res->set_value(cur_res->get_value() + 0.1);
-    }
+    Resistance& cur_res = intrinsics.get_resistance_ref(dt);
+    cur_res.set_value(cur_res.get_value() + 0.1);
   }
 }
 

@@ -43,32 +43,29 @@ string ResistancesTranslator::create_description(const Resistances& res, const R
     for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
     {
       DamageType dt = static_cast<DamageType>(d);
-      ResistancePtr cur_res = res.get_resistance(dt);
+      const Resistance& cur_res = res.get_resistance_cref(dt);
 
-      if (cur_res != nullptr)
+      double val = cur_res.get_value();
+
+      if (!dequal(val, 0.00))
       {
-        double val = cur_res->get_value();
-
-        if (!dequal(val, 0.00))
+        if (!first)
         {
-          if (!first)
-          {
-            ss << " ";
-          }
-
-          ss << val;
-
-          if (use_abrv)
-          {
-            ss << StringTable::get(cur_res->get_abrv_sid());
-          }
-          else
-          {
-            ss << " " << StringTable::get(cur_res->get_name_sid());
-          }
-
-          first = false;
+          ss << " ";
         }
+
+        ss << val;
+
+        if (use_abrv)
+        {
+          ss << StringTable::get(cur_res.get_abrv_sid());
+        }
+        else
+        {
+          ss << " " << StringTable::get(cur_res.get_name_sid());
+        }
+
+        first = false;
       }
     }
 

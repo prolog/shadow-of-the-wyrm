@@ -20,6 +20,7 @@ class DeityTextKeys
     static const std::string PRAYER_SMITE;
     static const std::string PRAYER_UNCURSE;
     static const std::string PRAYER_HALT_BREEDING;
+    static const std::string PRAYER_COMPANION;
     static const std::string PRAYER_NO_DEITIES;
     static const std::string DEITY_CANNOT_PRAY;
     static const std::string DEITY_ACTION_DISPLEASED;

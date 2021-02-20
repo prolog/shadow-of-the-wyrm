@@ -493,6 +493,28 @@ uint MapUtils::get_num_following_creatures(const MapPtr& map)
   return count;
 }
 
+// Get the adjacent tiles to a particular creature that another creature can
+// be placed on.
+std::map<Direction, TilePtr> MapUtils::get_available_adjacent_tiles_to_creature(const MapPtr& map, const CreaturePtr& centre_creature, const CreaturePtr& creature_to_place)
+{
+  std::map<Direction, TilePtr> result_map;
+
+  if (map != nullptr && centre_creature != nullptr && creature_to_place != nullptr)
+  {
+    std::map<Direction, TilePtr> adjacent_map = get_adjacent_tiles_to_creature(map, centre_creature);
+
+    for (const auto& t_pair : adjacent_map)
+    {
+      if (MapUtils::is_tile_available_for_creature(creature_to_place, t_pair.second))
+      {
+        result_map.insert(t_pair);
+      }
+    }
+  }
+
+  return result_map;
+}
+
 // Get the adjacent tiles to a creature by getting the adjacent coordinates,
 // mapping each coordinate to a direction, then looking up the tile and placing
 // it in the result map.
@@ -1159,13 +1181,13 @@ Coordinate MapUtils::convert_map_key_to_coordinate(const string& map_key)
   
   if (t_it != tokens.end())
   {
-    coords.first = String::to_int(*t_it);
+    coords.first = std::stoi(*t_it);
     t_it++;
   }
     
   if (t_it != tokens.end())
   {
-    coords.second = String::to_int(*t_it);
+    coords.second = std::stoi(*t_it);
   }
 
   return coords;
@@ -1922,8 +1944,9 @@ void MapUtils::serialize_and_remove_followers(MapPtr map, CreaturePtr creature)
   }
 }
 
-void MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinate& c)
+vector<string> MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinate& c)
 {
+  vector<string> placed_follower_ids;
   vector<string> placed_followers_keys;
 
   if (map != nullptr && map->get_map_type() != MapType::MAP_TYPE_WORLD && creature != nullptr)
@@ -1964,6 +1987,7 @@ void MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinat
           MapUtils::add_or_update_location(map, follower, cur_coord);
           followers.pop_back();
           placed_followers_keys.push_back(follower_details.first);
+          placed_follower_ids.push_back(follower->get_id());
 
           if (!followers.empty())
           {
@@ -1989,6 +2013,8 @@ void MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinat
       creature->remove_additional_property(key);
     }
   }
+
+  return placed_follower_ids;
 }
 
 #ifdef UNIT_TESTS

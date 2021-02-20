@@ -9868,6 +9868,26 @@
 				<DangerLevel>-1</DangerLevel>
 				<LockID>carc_b1_armory</LockID>
 			</Tool>
+			<Tool id="carcassia_stash_key">
+				<DescriptionSID>CARCASSIA_STASH_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>CARCASSIA_STASH_KEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CARCASSIA_STASH_KEY_CODEX_SID</CodexDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>2</Pounds>
+				</Weight>
+				<Material>3</Material>
+				<Symbol>
+					<Char>(</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>3</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>carcassia_stash</LockID>
+			</Tool>
 			<Tool id="_crypt_key">
 				<DescriptionSID>CRYPT_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>CRYPT_KEY_USAGE_SID</UsageDescriptionSID>
@@ -12673,6 +12693,30 @@
 				<SpellID>m_18_stun_bolt</SpellID>
 				<Difficulty>65</Difficulty>
 			</Spellbook>
+			<Spellbook id="paralyze_spellbook">
+				<DescriptionSID>PARALYZE_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_PARALYZE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>PARALYZE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_PARALYZE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>PARALYZE_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
+				<Value>233</Value>
+				<Weight>
+					<Pounds>5</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<Symbol>
+					<Char>"</Char>
+					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>8</DangerLevel>
+				<SpellID>m_19_paralyze</SpellID>
+				<Difficulty>80</Difficulty>
+			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
 			<Item id="_paper_pulp">
@@ -13025,6 +13069,106 @@
 						<Value>13</Value>
 					</Property>
 				</Properties>
+			</Item>
+			<Item id="_ivory_tusk">
+				<DescriptionSID>IVORY_TUSK_SID</DescriptionSID>
+				<UsageDescriptionSID>IVORY_TUSK_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>IVORY_TUSK_CODEX_SID</CodexDescriptionSID>
+				<Value>12</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>8</Ounces>
+				</Weight>
+				<Material>11</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>2</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="stolen_goods">
+				<DescriptionSID>STOLEN_GOODS_SID</DescriptionSID>
+				<UsageDescriptionSID>STOLEN_GOODS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>STOLEN_GOODS_CODEX_SID</CodexDescriptionSID>
+				<Value>200</Value>
+				<Contraband>1</Contraband>
+				<Weight>
+					<Pounds>12</Pounds>
+				</Weight>
+				<Material>0</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>3</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="forged_documents">
+				<DescriptionSID>FORGED_DOCUMENTS_SID</DescriptionSID>
+				<UsageDescriptionSID>FORGED_DOCUMENTS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FORGED_DOCUMENTS_CODEX_SID</CodexDescriptionSID>
+				<Value>3</Value>
+				<Weight>
+					<Ounces>6</Ounces>
+				</Weight>
+				<Material>5</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>3</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="fake_snowcap">
+				<DescriptionSID>FAKE_SNOWCAP_SID</DescriptionSID>
+				<UsageDescriptionSID>FAKE_SNOWCAP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FAKE_SNOWCAP_CODEX_SID</CodexDescriptionSID>
+				<Value>3</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>2</Material>
+				<Symbol>
+					<Char>!</Char>
+					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>1</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="powdered_snowcap">
+				<DescriptionSID>POWDERED_SNOWCAP_SID</DescriptionSID>
+				<UsageDescriptionSID>POWDERED_SNOWCAP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>POWDERED_SNOWCAP_CODEX_SID</CodexDescriptionSID>
+				<Value>600</Value>
+				<Contraband>1</Contraband>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>2</Material>
+				<Symbol>
+					<Char>!</Char>
+					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>1</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
 			</Item>
 			<Item id="_magici_shard">
 				<DescriptionSID>MAGICI_SHARD_SID</DescriptionSID>

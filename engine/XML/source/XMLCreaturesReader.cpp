@@ -380,6 +380,13 @@ void XMLCreaturesReader::parse_decision_strategy(const XMLNode& decision_strateg
       decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_ALLIES_IDS, allies);
     }
 
+    XMLNode acontra_node = XMLUtils::get_next_element_by_local_name(decision_strategy_node, "AttackContraband");
+    if (!acontra_node.is_null())
+    {
+      bool attack_contra = XMLUtils::get_node_bool_value(acontra_node);
+      decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_ATTACK_CONTRABAND, to_string(attack_contra));
+    }
+
     bool pickup = XMLUtils::get_child_node_bool_value(decision_strategy_node, "Pickup", true);
     decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_PICKUP, std::to_string(pickup));
 

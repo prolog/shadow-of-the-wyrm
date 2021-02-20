@@ -5,10 +5,12 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "GraveyardSectorFeature.hpp"
+#include "LibrarySectorFeature.hpp"
 #include "ParkSectorFeature.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "ShrineSectorFeature.hpp"
+#include "TavernSectorFeature.hpp"
 #include "TileGenerator.hpp"
 #include "FruitVegetableGardenGenerator.hpp"
 
@@ -27,8 +29,6 @@ base_map(new_base_map), growth_rate(100), pct_chance_sector_feature(20)
 , WELLS_MIN(0)
 , WELLS_MAX(3)
 , HIRELING_PROBABILITY(70)
-, HIRELING_MIN_LEVEL(10)
-, HIRELING_MAX_LEVEL(40)
 {
 }
 
@@ -45,8 +45,6 @@ base_map(new_base_map), growth_rate(new_growth_rate), pct_chance_sector_feature(
 , WELLS_MIN(0)
 , WELLS_MAX(3)
 , HIRELING_PROBABILITY(70)
-, HIRELING_MIN_LEVEL(10)
-, HIRELING_MAX_LEVEL(40)
 {
 }
 
@@ -460,11 +458,11 @@ void BaseSettlementGenerator::generate_special_inhabitants(MapPtr map)
   {
     if (RNG::percent_chance(HIRELING_PROBABILITY))
     {
-        Game& game = Game::instance();
+      Game& game = Game::instance();
       ActionManager& am = game.get_action_manager_ref();
 
       CreatureGenerationManager cgm;
-      CreaturePtr hireling = cgm.generate_hireling(am, RNG::range(HIRELING_MIN_LEVEL, HIRELING_MAX_LEVEL));
+      CreaturePtr hireling = cgm.generate_follower(am, map, FollowerType::FOLLOWER_TYPE_HIRELING, RNG::range(CreatureGenerationManager::HIRELING_MIN_LEVEL, CreatureGenerationManager::HIRELING_MAX_LEVEL));
       Dimensions dim = map->size();
 
       for (int i = 1; i < 20; i++)
@@ -494,6 +492,9 @@ vector<shared_ptr<SectorFeature>> BaseSettlementGenerator::get_sector_features()
   sf = std::make_shared<GraveyardSectorFeature>();
   sfs.push_back(sf);
 
+  sf = std::make_shared<LittleLibrarySectorFeature>();
+  sfs.push_back(sf);
+
   sf = std::make_shared<FruitVegetableGardenGenerator>();
   sfs.push_back(sf);
 
@@ -501,6 +502,9 @@ vector<shared_ptr<SectorFeature>> BaseSettlementGenerator::get_sector_features()
   sfs.push_back(sf);
 
   sf = std::make_shared<ShrineSectorFeature>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<TavernSectorFeature>();
   sfs.push_back(sf);
 
   return sfs;

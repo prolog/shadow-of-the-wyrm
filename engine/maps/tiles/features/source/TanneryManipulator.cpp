@@ -44,7 +44,7 @@ bool TanneryManipulator::handle(TilePtr tile, CreaturePtr creature)
     ActionManager& am = game.get_action_manager_ref();
 
     // Check for skins
-    if (!creature->get_inventory()->has_item_with_property(SkinningConstants::SKIN_DESCRIPTION_SID))
+    if (!creature->get_inventory()->has_item_with_property(SkinningConstants::SKIN_IS_SKIN))
     {
       add_no_skins_message(creature);
     }

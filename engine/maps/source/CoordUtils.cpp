@@ -230,6 +230,7 @@ Direction CoordUtils::get_direction(const Coordinate& start, const Coordinate& e
 vector<Coordinate> CoordUtils::get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col, const int step_size)
 {
   vector<Coordinate> adjacent_coordinates;
+  adjacent_coordinates.reserve(static_cast<int>((1 + 2*step_size), 2));
 
   int max_rows = dim.get_y();
   int max_cols = dim.get_x();
@@ -244,7 +245,7 @@ vector<Coordinate> CoordUtils::get_adjacent_map_coordinates(const Dimensions& di
         // Neighbours can't include the current tile
         if (cur_row != row || cur_col != col)
         {
-          adjacent_coordinates.push_back(make_pair(cur_row, cur_col));
+          adjacent_coordinates.push_back({ cur_row, cur_col });
         }
       }
     }
