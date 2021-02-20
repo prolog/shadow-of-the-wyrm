@@ -27,3 +27,4 @@ const string ItemProperties::ITEM_PROPERTIES_MUSIC_PERFORMANCE_FAILED = "music_p
 const string ItemProperties::ITEM_PROPERTIES_MUSIC_CHARM_RACES = "music_charm_races";
 const string ItemProperties::ITEM_PROPERTIES_LOCK_ID = "lock_id";
 const string ItemProperties::ITEM_PROPERTIES_MARK_AUTOMOVE = "mk_am";
+const string ItemProperties::ITEM_PROPERTIES_CONTRABAND = "contraband";

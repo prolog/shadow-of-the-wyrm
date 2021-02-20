@@ -8,7 +8,9 @@
 #include "CreatureFactory.hpp"
 #include "CreatureGenerationConstants.hpp"
 #include "CreatureGenerationOptions.hpp"
+#include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
+#include "DecisionStrategyProperties.hpp"
 #include "EngineConversion.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
@@ -18,6 +20,7 @@
 #include "Log.hpp"
 #include "ModifyStatisticsEffect.hpp"
 #include "NullKeyboardController.hpp"
+#include "OrderAction.hpp"
 #include "PlayerTextKeys.hpp"
 #include "RaceManager.hpp"
 #include "ReligionFactory.hpp"
@@ -46,6 +49,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
 , MapPtr current_map
 , CreaturePtr procgen_creature_template
 , const bool ignore_maximum
+, const bool allow_pet_generation
 )
 {
   CreaturePtr creature;
@@ -117,12 +121,14 @@ CreaturePtr CreatureFactory::create_by_creature_id
     string race_id = select_race_id(race_ids, default_race_id);
 
     creature = create_by_race_and_class(action_manager,
+                                        current_map,
                                         race_id,
                                         creature->get_class_id(),
                                         creature->get_name(),
                                         creature->get_sex(),
                                         creature->get_size(),
-                                        creature->get_religion().get_active_deity_id());
+                                        creature->get_religion().get_active_deity_id(),
+                                        allow_pet_generation);
 
     // Set the template values that would be overridden by creating by race/class.
     // Anything that can be specified under the Creature element in the configuration XML
@@ -238,12 +244,14 @@ void CreatureFactory::revert_to_original_configuration_values(CreaturePtr creatu
 CreaturePtr CreatureFactory::create_by_race_and_class
 (
   ActionManager& action_manager
+, MapPtr current_map
 , const string& race_id
 , const string& class_id
 , const string& creature_name
 , const CreatureSex creature_sex
 , const CreatureSize creature_size
 , const string& deity_id
+, const bool allow_pet_generation
 , const bool is_player
 )
 {
@@ -300,7 +308,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     if (race->get_corporeal().get_base() == false)
     {
       Modifier m;
-      creaturep->set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, {StatusIdentifiers::STATUS_ID_INCORPOREAL, true, 1, ""});
+      creaturep->set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, { StatusIdentifiers::STATUS_ID_INCORPOREAL, true, 1, "" });
       m.set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, true);
       m.set_permanent(true);
       mse.apply_modifiers(creaturep, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
@@ -309,7 +317,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     if (race->get_flying().get_base() == true)
     {
       Modifier m;
-      creaturep->set_status(StatusIdentifiers::STATUS_ID_FLYING, {StatusIdentifiers::STATUS_ID_FLYING, true, 1, ""});
+      creaturep->set_status(StatusIdentifiers::STATUS_ID_FLYING, { StatusIdentifiers::STATUS_ID_FLYING, true, 1, "" });
       m.set_status(StatusIdentifiers::STATUS_ID_FLYING, true);
       mse.apply_modifiers(creaturep, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
     }
@@ -317,7 +325,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     if (race->get_water_breathing().get_base() == true)
     {
       Modifier m;
-      creaturep->set_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING, {StatusIdentifiers::STATUS_ID_WATER_BREATHING, true, 1, ""});
+      creaturep->set_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING, { StatusIdentifiers::STATUS_ID_WATER_BREATHING, true, 1, "" });
       m.set_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING, true);
       mse.apply_modifiers(creaturep, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
     }
@@ -327,7 +335,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
     // Skills
     set_initial_skills(creaturep, race, char_class);
-      
+
     // Religion & Alignment
     Religion religion = ReligionFactory::create_religion(deities);
     religion.set_active_deity_id(deity_id);
@@ -343,10 +351,24 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   {
     // Set additional book-keeping values
     initialize(creaturep);
+   
+    // If it's the player, set the player ID early on so that pets can be
+    // properly generated.
+    if (is_player)
+    {
+      creaturep->set_is_player(true, nullptr);
+    }
 
     // Create initial eq based on class and creature defaults.
     create_initial_equipment_and_inventory(creaturep, action_manager);
-    
+
+    // Check just in case someone tries to get sneaky and define recursive
+    // pets. Pets can't have pets.
+    if (allow_pet_generation)
+    {
+      create_pet(creaturep, action_manager, current_map);
+    }
+
     // Adjust str until unburdened.
     CreatureUtils::adjust_str_until_unburdened(creaturep);
 
@@ -645,6 +667,46 @@ string CreatureFactory::select_race_id(const vector<string>& race_ids, const str
   }
 
   return race_id;
+}
+
+bool CreatureFactory::create_pet(CreaturePtr creature, ActionManager& am, MapPtr current_map)
+{
+  bool pet_created = false;
+
+  if (creature != nullptr)
+  {
+    ClassManager cm;
+    Class* char_class = cm.get_class(creature->get_class_id());
+
+    if (char_class != nullptr)
+    {
+      vector<string> pet_ids = char_class->get_starting_pet_ids();
+
+      if (!pet_ids.empty())
+      {
+        string starting_pet_id = pet_ids.at(RNG::range(0, pet_ids.size() - 1));
+        CreaturePtr pet = create_by_creature_id(am, starting_pet_id, current_map, nullptr, false, false);
+
+        if (pet != nullptr)
+        {
+          OrderAction oa;
+          HostilityManager hm;
+          string leader_id = creature->get_id();
+
+          hm.clear_hostility(pet);
+          CreatureUtils::set_leadership(pet, creature->get_id(), current_map);
+
+          string pet_prop = CreatureUtils::get_follower_property_prefix() + "1";
+          ostringstream ss;
+          pet->serialize(ss);
+
+          creature->set_additional_property(pet_prop, ss.str());
+        }
+      }
+    }
+  }
+
+  return pet_created;
 }
 
 #ifdef UNIT_TESTS

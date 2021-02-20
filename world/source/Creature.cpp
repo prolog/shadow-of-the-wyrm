@@ -442,6 +442,11 @@ vector<BreatheType> Creature::get_breathes() const
 
 bool Creature::can_breathe(const BreatheType btype) const
 {
+  if (breathes == BreatheType::BREATHE_TYPE_ALL)
+  {
+    return true;
+  }
+
   if (btype == breathes || (btype == BreatheType::BREATHE_TYPE_WATER && has_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING)))
   {
     return true;
@@ -830,6 +835,29 @@ bool Creature::has_unpaid_items() const
   return false;
 }
 
+bool Creature::has_item_with_property(const std::string& prop_name) const
+{
+  bool has_item = false;
+
+  for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
+  {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(e);
+    ItemPtr item = equipment.get_item(ewl);
+    if (item != nullptr && item->has_additional_property(prop_name))
+    {
+      return true;
+    }
+  }
+
+  if (inventory != nullptr)
+  {
+    return inventory->has_item_with_property(prop_name);
+  }
+
+
+  return false;
+}
+
 uint Creature::count_items() const
 {
   uint count = equipment.count_items() + inventory->count_items();
@@ -1077,6 +1105,16 @@ DecisionStrategy* Creature::get_decision_strategy() const
 DecisionStrategyPtr Creature::get_decision_strategy_uptr()
 {
   return std::move(decision_strategy);
+}
+
+void Creature::set_leader_and_follow(const std::string& leader_id)
+{
+  set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID, leader_id);
+
+  if (decision_strategy != nullptr)
+  {
+    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID, leader_id);
+  }
 }
 
 bool Creature::hostile_to(const string& creature_id)
@@ -1664,6 +1702,24 @@ int Creature::get_hirelings_hired() const
   }
 
   return hirelings_hired;
+}
+
+void Creature::set_adventurers_joined(const int new_adventurers_joined)
+{
+  set_additional_property(CreatureProperties::CREATURE_PROPERTIES_ADVENTURERS_JOINED, std::to_string(new_adventurers_joined));
+}
+
+int Creature::get_adventurers_joined() const
+{
+  int adv_joined = 0;
+  string joined_s = get_additional_property(CreatureProperties::CREATURE_PROPERTIES_ADVENTURERS_JOINED);
+
+  if (!joined_s.empty())
+  {
+    adv_joined = String::to_int(joined_s);
+  }
+
+  return adv_joined;
 }
 
 bool Creature::is_allied_to(const string& creature_id) const

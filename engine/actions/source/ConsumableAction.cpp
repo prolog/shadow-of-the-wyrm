@@ -119,8 +119,8 @@ void ConsumableAction::gain_resistances_from_consumable(CreaturePtr creature, Co
     {
       DamageType dt = static_cast<DamageType>(d);
 
-      ResistancePtr res = consum_res.get_resistance(dt);
-      double consum_val = res->get_value();
+      Resistance& res = consum_res.get_resistance_ref(dt);
+      double consum_val = res.get_value();
 
       double cr_val = cr_res.get_resistance_value(dt);
       double delta = (consum_val - cr_val);
@@ -147,14 +147,14 @@ void ConsumableAction::gain_resistances_from_consumable(CreaturePtr creature, Co
 }
 
 // If the creature is the player, add a message based on the resistance.
-bool ConsumableAction::add_consumable_message_if_necessary(CreaturePtr creature, ResistancePtr res, const double delta)
+bool ConsumableAction::add_consumable_message_if_necessary(CreaturePtr creature, const Resistance& res, const double delta)
 {
   bool added_msg = false;
 
   // Add a message about the change.
   if (creature && creature->get_is_player() && delta > 0)
   {
-    string res_msg = StringTable::get(res->get_gain_message_sid());
+    string res_msg = StringTable::get(res.get_gain_message_sid());
 
     IMessageManager& manager = MM::instance();
     manager.add_new_message(res_msg);

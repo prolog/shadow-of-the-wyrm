@@ -77,7 +77,7 @@ bool BeerHallSectorFeature::generate_feature(MapPtr map, const Coordinate& start
 
         barrel->set_tap(true);
         barrel->set_pour_item_id(booze_id);
-        barrel->set_drinks(RNG::range(10, 30));
+        barrel->set_drinks(RNG::range(5, 10));
 
         if (tile && !tile->has_feature())
         {

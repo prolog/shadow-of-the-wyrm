@@ -71,6 +71,7 @@ class CreatureUtils
     // Returns the number of times str was incremented
     static int adjust_str_until_unburdened(CreaturePtr creature);
 
+    static CreatureMap get_followers(CreaturePtr creature, MapPtr map);
     static CreatureMap get_followers_in_fov(CreaturePtr creature);
     static std::string get_follower_property_prefix();
 
@@ -82,6 +83,8 @@ class CreatureUtils
 
     static CreatureSize get_size(CreaturePtr creature);
 
+    static void set_leadership(CreaturePtr creature, const std::string& leader_id, MapPtr map, const int pass = 1);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();
@@ -91,4 +94,6 @@ class CreatureUtils
     static void initialize_hunger_maps();
     static std::map<HungerLevel, std::string> hunger_message_sid_map;
     static std::map<HungerLevel, Colour> hunger_colour_map;
+
+    static const int LEADERSHIP_MAX_PASSES;
 };

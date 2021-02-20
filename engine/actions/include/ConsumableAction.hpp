@@ -14,5 +14,5 @@ class ConsumableAction : public IActionManager
 
   protected:
     void gain_resistances_from_consumable(CreaturePtr creature, ConsumablePtr consumable);
-    bool add_consumable_message_if_necessary(CreaturePtr creature, ResistancePtr res, const double delta);
+    bool add_consumable_message_if_necessary(CreaturePtr creature, const Resistance& res, const double delta);
 };

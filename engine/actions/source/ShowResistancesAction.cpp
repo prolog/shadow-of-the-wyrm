@@ -26,10 +26,10 @@ ActionCostValue ShowResistancesAction::show_resistances(CreaturePtr creature)
     DamageType dt = static_cast<DamageType>(d);
     ostringstream ss;
     
-    ResistancePtr cur_res = res.get_resistance(dt);
-    double res_val = cur_res->get_value();
-    string res_str = cur_res->get_value_str();
-    string name = cur_res->get_name_sid();
+    const Resistance& cur_res = res.get_resistance_ref(dt);
+    double res_val = cur_res.get_value();
+    string res_str = cur_res.get_value_str();
+    string name = cur_res.get_name_sid();
     Colour text_colour = get_resistance_text_colour(res_val);
 
     ss << StringTable::get(name) << ": " << res_str;

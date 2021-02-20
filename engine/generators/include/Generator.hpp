@@ -95,7 +95,7 @@ namespace SOTW
       virtual void set_property_to_generator_and_map(MapPtr map, const std::string& property, const std::string& value);
       virtual void set_depth_properties_to_map(MapPtr map);
 
-      virtual bool does_tile_lead_to_previous_map(const MapType map_type, const TileType tile_type);
+      virtual bool does_tile_lead_to_previous_map(const MapType map_type, const TileType tile_type, const Depth& depth);
       std::string map_exit_id;
       TileType map_terrain_type;
       int danger_level;

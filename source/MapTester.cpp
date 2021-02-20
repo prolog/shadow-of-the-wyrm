@@ -963,7 +963,7 @@ void test_creature_generation()
     std::cout << "Filename: ";
     std::cin >> filename;
 
-    CreatureGenerationList generation_list = cgm.generate_creature_generation_map(static_cast<TileType>(tile_type), false, min_level, max_level, Rarity::RARITY_COMMON, {});
+    CreatureGenerationIndex generation_list = cgm.generate_creature_generation_map(static_cast<TileType>(tile_type), false, min_level, max_level, Rarity::RARITY_COMMON, {});
     std::map<std::string, int> creature_count;
 
     if (num_creatures > 0)

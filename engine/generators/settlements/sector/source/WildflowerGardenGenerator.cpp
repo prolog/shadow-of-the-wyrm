@@ -16,6 +16,11 @@ void WildflowerGardenGenerator::initialize_generator()
   populate_wildflower_ids();
 }
 
+pair<pair<int, int>, map<int, string>> WildflowerGardenGenerator::get_wildflower_details() const
+{
+  return make_pair(make_pair(wildflower_rand_min, wildflower_rand_max), wildflower_item_ids);
+}
+
 void WildflowerGardenGenerator::populate_wildflower_ids()
 {
   wildflower_item_ids.clear();

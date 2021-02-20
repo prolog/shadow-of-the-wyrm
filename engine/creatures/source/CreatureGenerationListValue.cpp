@@ -7,6 +7,15 @@ CreatureGenerationListValue::CreatureGenerationListValue(const string& new_creat
 {
 }
 
+bool CreatureGenerationListValue::operator==(const CreatureGenerationListValue& cglv2) const
+{
+  bool result = (creature_base_id == cglv2.creature_base_id);
+  result = result && ((creature == nullptr && cglv2.creature == nullptr) || (creature && cglv2.creature && *creature == *cglv2.creature));
+  result = result && (cgv == cglv2.cgv);
+
+  return result;
+}
+
 string CreatureGenerationListValue::get_creature_base_id() const
 {
   return creature_base_id;

@@ -33,7 +33,7 @@
 	,,,,,,,,,,,,,,,,,,,rrr,,,,,,,,,,,,,,,,,,#............#...#................#,,#,,
 	,,,,,,,,,,,,,,,,,,,rrr,,,,,,,,,,,,,,,,,,#............#...#................#,,#,,
 	,,,,,,,,,,,,,,,,,,,rrr,,,,,,,,,,,,,,,,,,#............#...#................#,,#,,
-	,,,,,,,,,,,,,,,,,,,rrr,,,,,,,,,,,,,,,,,,#............#...#................#,,#,,
+	,,,,,,,,,,,,,,,,,,,rrr,,,,,,,,,,,,,,,,,,######..######...#................#,,#,,
 	,,,,,,,,,,,,,,,,,,,rrr,,,,,,,,,,,,,,,,,,#............##.##................#,w#,,
 	###################...###################.................................####,,
 	</Tiles>
@@ -180,7 +180,15 @@
 				</Coord>
 			</Placement>
 		</Creatures>
-		<Items/>
+		<Items>
+			<Placement>
+				<ID>powdered_snowcap</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>47</Col>
+				</Coord>
+			</Placement>
+		</Items>
 	</InitialPlacements>
 	<Exits>
 		<Exit>
@@ -207,6 +215,20 @@
 	<Features>
 		<FeaturePlacement>
 			<Coord>
+				<Row>14</Row>
+				<Col>41</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>14</Row>
+				<Col>52</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
 				<Row>18</Row>
 				<Col>52</Col>
 			</Coord>
@@ -222,6 +244,32 @@
 			<Sign>
 				<TextSID>CARCASSIAN_TREASURY_SID</TextSID>
 			</Sign>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>17</Row>
+				<Col>46</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+				<LockID>carcassia_stash</LockID>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>17</Row>
+				<Col>47</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+				<LockID>carcassia_stash</LockID>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
 		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>

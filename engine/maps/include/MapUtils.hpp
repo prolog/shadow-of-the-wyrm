@@ -24,6 +24,7 @@ class MapUtils
     static Coordinate get_coordinate_for_creature(const MapPtr& map, const CreaturePtr& creature);
     static TilePtr get_tile_for_creature(const MapPtr& map, const CreaturePtr& creature);
     static uint get_num_following_creatures(const MapPtr& map);
+    static TileDirectionMap get_available_adjacent_tiles_to_creature(const MapPtr& map, const CreaturePtr& tiles_around_creature, const CreaturePtr& creature_to_place);
     static TileDirectionMap get_adjacent_tiles_to_creature(const MapPtr& map, const CreaturePtr& creature);
     static std::vector<TilePtr> get_adjacent_tiles_to_creature_unsorted(const MapPtr& map, const CreaturePtr& creature, const int offset = 1);
     static bool adjacent_tiles_match_type(const MapPtr& map, const Coordinate& c, const std::vector<Direction>& directions, const TileType tile_type_to_match);
@@ -107,7 +108,7 @@ class MapUtils
     static WeatherPtr get_weather(MapPtr map, TilePtr tile);
 
     static bool is_intersection(MapPtr map, CreaturePtr cr, const Coordinate& c);
-    static void place_followers(MapPtr map, CreaturePtr cr, const Coordinate& c);
+    static std::vector<std::string> place_followers(MapPtr map, CreaturePtr cr, const Coordinate& c);
     static void serialize_and_remove_followers(MapPtr map, CreaturePtr creature);
 
   protected: 

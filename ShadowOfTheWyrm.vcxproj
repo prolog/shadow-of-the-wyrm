@@ -378,11 +378,13 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\DepthBasedDangerLevelCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DisarmTrapsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DisfiguredCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\DivineCompanionCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DoorBreakageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\EvadeCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ExposedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\FishingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\FlyingCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\FollowerCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ForagablesCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ForestCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HasteCalculator.hpp" />
@@ -561,6 +563,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\creatures\include\CreatureDifficulty.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureFactory.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationConstants.hpp" />
+    <ClInclude Include="engine\creatures\include\CreatureGenerationIndex.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationListValue.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationManager.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationOptionsStringBuilder.hpp" />
@@ -594,6 +597,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\creatures\include\WaterBreathingStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\WaterSafetyCondition.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\AltarDropDeityDecisionStrategyHandler.hpp" />
+    <ClInclude Include="engine\decision_strategies\deity\include\CompanionDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\CrowningDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionConstants.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionImplications.hpp" />
@@ -793,6 +797,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\settlements\sector\include\GardenTypes.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\GraveyardSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\HouseSectorFeature.hpp" />
+    <ClInclude Include="engine\generators\settlements\sector\include\LibrarySectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\LowIncomeResidentialSectorFeatureGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\ParkSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\PlazaSectorFeature.hpp" />
@@ -807,6 +812,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\settlements\sector\include\ShadeGardenGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\ShopSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\ShrineSectorFeature.hpp" />
+    <ClInclude Include="engine\generators\settlements\sector\include\TavernSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\TombSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\FruitVegetableGardenGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\WildflowerGardenGenerator.hpp" />
@@ -1047,7 +1053,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\strings\include\MusicTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\OrderTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\PlayerTextKeys.hpp" />
-    <ClInclude Include="engine\strings\include\ProcgenTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\PartyTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\SacrificeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ScreenTitleTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MovementTextKeys.hpp" />
@@ -1269,7 +1275,6 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\include\Race.hpp" />
     <ClInclude Include="world\include\RarityTypes.hpp" />
     <ClInclude Include="world\include\Readable.hpp" />
-    <ClInclude Include="world\include\ResistanceFactory.hpp" />
     <ClInclude Include="world\include\Resistances.hpp" />
     <ClInclude Include="world\include\Ring.hpp" />
     <ClInclude Include="world\include\Scroll.hpp" />
@@ -1484,8 +1489,10 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\CreatureSplitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DepthBasedDangerLevelCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DisarmTrapsCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\DivineCompanionCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DoorBreakageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\FishingCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\FollowerCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ForagablesCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HidingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HungerCalculator.cpp" />
@@ -1560,6 +1567,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\DivineCompanionCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\DoorBreakageCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -1571,6 +1584,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\FollowerCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ForagablesCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1827,6 +1846,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\conversion\source\VictoryDumper.cpp" />
+    <ClCompile Include="engine\creatures\source\CreatureGenerationIndex.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureGenerationListValue.cpp" />
     <ClCompile Include="engine\creatures\source\GroundSafetyCondition.cpp" />
     <ClCompile Include="engine\creatures\source\HideStatusEffect.cpp" />
@@ -1835,6 +1855,12 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\creatures\source\SatedStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\StatusActionProcessor.cpp" />
     <ClCompile Include="engine\creatures\source\TimewalkStatusEffect.cpp" />
+    <ClCompile Include="engine\creatures\source\unit_tests\CreatureGenerationIndex_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\creatures\source\unit_tests\CreatureGenerationListValue_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -1867,6 +1893,7 @@ mkdir $(OutDir)logs
     </ClCompile>
     <ClCompile Include="engine\creatures\source\WaterBreathingStatusEffect.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\AltarDropDeityDecisionStrategyHandler.cpp" />
+    <ClCompile Include="engine\decision_strategies\deity\source\CompanionDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\HaltBreedingDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\UncurseDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\magic\source\AttackNPCMagicDecision.cpp" />
@@ -1910,6 +1937,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\settlements\sector\source\GardenSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\GraveyardSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\HouseSectorFeature.cpp" />
+    <ClCompile Include="engine\generators\settlements\sector\source\LibrarySectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\LowIncomeResidentialSectorFeatureGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\ParkSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\PlazaSectorFeature.cpp" />
@@ -1923,6 +1951,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\settlements\sector\source\ShadeGardenGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\ShopSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\ShrineSectorFeature.cpp" />
+    <ClCompile Include="engine\generators\settlements\sector\source\TavernSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\TombSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\FruitVegetableGardenGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\WildflowerGardenGenerator.cpp" />
@@ -2104,7 +2133,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\strings\source\MusicTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\OrderTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\PlayerTextKeys.cpp" />
-    <ClCompile Include="engine\strings\source\ProcgenTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\PartyTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\unit_tests\DateTextKeys_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -3674,7 +3703,6 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\source\Quests.cpp" />
     <ClCompile Include="world\source\Race.cpp" />
     <ClCompile Include="world\source\Readable.cpp" />
-    <ClCompile Include="world\source\ResistanceFactory.cpp" />
     <ClCompile Include="world\source\Resistances.cpp" />
     <ClCompile Include="world\source\Ring.cpp" />
     <ClCompile Include="world\source\Scroll.cpp" />

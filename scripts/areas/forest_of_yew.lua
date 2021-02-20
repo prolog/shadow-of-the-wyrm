@@ -9,7 +9,8 @@ local creatures = {{"skeleton", 9, 13},
                    {"lichling", 9, 13},
                    {"corpse_bird", 9, 13},
                    {"quisling", 9, 13},
-                   {"lalo", 1, 1}}
+                   {"lalo", 1, 1},
+	           {"koris", 1, 1}}
 
 local creatures_csv = creature.to_csv(creatures)
 

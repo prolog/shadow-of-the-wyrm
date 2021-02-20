@@ -144,14 +144,14 @@ Resistances TanningCalculator::calculate_item_resistances(CreaturePtr creature, 
 //
 // Additional points (0.01) can potentially be added based on the
 // creature's Tanning skill.
-double TanningCalculator::calculate_resistance_value(CreaturePtr creature, ResistancePtr resistance)
+double TanningCalculator::calculate_resistance_value(CreaturePtr creature, const Resistance& resistance)
 {
   double resist_val = 0.0;
 
-  if (creature != nullptr && resistance != nullptr)
+  if (creature != nullptr)
   {
     int tanning_val = creature->get_skills().get_value(SkillType::SKILL_GENERAL_TANNING);
-    double val = resistance->get_value();
+    double val = resistance.get_value();
     double divisor = 1.0;
 
     for (const pair<int, double>& r_pair : SKILL_VALUE_DIVISORS)

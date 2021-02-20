@@ -65,7 +65,8 @@ enum struct Handedness
 enum struct BreatheType
 {
   BREATHE_TYPE_AIR = 0,
-  BREATHE_TYPE_WATER = 1
+  BREATHE_TYPE_WATER = 1,
+  BREATHE_TYPE_ALL = 2
 };
 
 class CreatureConstants
@@ -123,6 +124,8 @@ class CreatureID
     static const std::string CREATURE_ID_FARMER;
     static const std::string CREATURE_ID_SMALL_CHILD;
     static const std::string CREATURE_ID_GUARD;
+    static const std::string CREATURE_ID_BARTENDER;
+    static const std::string CREATURE_ID_DRUNK;
 
   protected:
     CreatureID();

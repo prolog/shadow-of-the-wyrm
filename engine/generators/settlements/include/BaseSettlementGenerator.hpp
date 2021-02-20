@@ -43,8 +43,6 @@ class BaseSettlementGenerator : public SOTW::Generator
     const int WELLS_MIN;
     const int WELLS_MAX;
     const int HIRELING_PROBABILITY;
-    const int HIRELING_MIN_LEVEL;
-    const int HIRELING_MAX_LEVEL;
 
     std::vector<Building> buildings;
 };

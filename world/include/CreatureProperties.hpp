@@ -35,7 +35,7 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_HIRELING_CHAT_SID;
     static const std::string CREATURE_PROPERTIES_HIRE_FEE;
     static const std::string CREATURE_PROPERTIES_HIRELINGS_HIRED;
-
+    static const std::string CREATURE_PROPERTIES_ADVENTURERS_JOINED;
   protected:
     CreatureProperties();
     ~CreatureProperties();

@@ -43,10 +43,10 @@ local function request_hire(this_cr_id, name)
         incr_str(this_cr_id, false)
       end
 
-      set_creature_additional_property(this_cr_id, "CREATURE_PROPERTIES_LEADER_ID", PLAYER_ID)
+      set_leader(this_cr_id, PLAYER_ID)
       set_hirelings_hired(PLAYER_ID, get_hirelings_hired(PLAYER_ID) + 1)
       hireling_gain_spells(this_cr_id)
-      order_at_ease(this_cr_id)
+      order_follow(this_cr_id, PLAYER_ID)
       
       clear_and_add_message("HIRELING_ORDERS_SID", {name})
     else

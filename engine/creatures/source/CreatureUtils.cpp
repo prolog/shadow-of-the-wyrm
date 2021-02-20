@@ -28,6 +28,8 @@
 
 using namespace std;
 
+const int CreatureUtils::LEADERSHIP_MAX_PASSES = 2;
+
 CreatureUtils::CreatureUtils()
 {
 }
@@ -821,6 +823,7 @@ MapPtr CreatureUtils::update_fov_map(MapPtr current_map, MapPtr v_map, CreatureP
     FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy(current_creature->get_is_player());
     fov_map = fov_strategy->calculate(current_creature, view_map, creature_coords, los_len);
     DecisionStrategy* strategy = current_creature->get_decision_strategy();
+    fov_map->create_creatures();
 
     if (strategy)
     {
@@ -874,6 +877,27 @@ int CreatureUtils::adjust_str_until_unburdened(CreaturePtr creature)
   }
 
   return incr_cnt;
+}
+
+CreatureMap CreatureUtils::get_followers(CreaturePtr creature, MapPtr map)
+{
+  CreatureMap followers;
+
+  if (creature != nullptr && map != nullptr)
+  {
+    string c_id = creature->get_id();
+    const CreatureMap& creatures = map->get_creatures_ref();
+
+    for (const auto& c_pair : creatures)
+    {
+      if (c_pair.second && c_pair.second->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == c_id)
+      {
+        followers.insert(c_pair);
+      }
+    }
+  }
+
+  return followers;
 }
 
 CreatureMap CreatureUtils::get_followers_in_fov(CreaturePtr creature)
@@ -998,6 +1022,35 @@ CreatureSize CreatureUtils::get_size(CreaturePtr creature)
   }
 
   return size;
+}
+
+void CreatureUtils::set_leadership(CreaturePtr creature, const string& leader_id, MapPtr map, const int cur_pass)
+{
+  if (cur_pass > LEADERSHIP_MAX_PASSES)
+  {
+    return;
+  }
+
+  if (creature != nullptr)
+  {
+    creature->set_leader_and_follow(leader_id);
+
+    if (map != nullptr)
+    {
+      const CreatureMap& creatures = map->get_creatures_ref();
+
+      for (const auto& c_pair : creatures)
+      {
+        if (c_pair.second != nullptr)
+        {
+          if (c_pair.second->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == creature->get_id())
+          {
+            set_leadership(c_pair.second, leader_id, map, cur_pass + 1);
+          }
+        }
+      }
+    }
+  }
 }
 
 #ifdef UNIT_TESTS

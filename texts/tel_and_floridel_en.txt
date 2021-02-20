@@ -3645,7 +3645,7 @@ she said, "if you remember me.  Or not." %b
 She let the nobles think.  "I cleaned your scraps %b
 on feasting days.  You drank till you forgot, %b
 and if I did it wrong, you'd browbeat me, or slap %b
-me till I tasted blood and all your families laughed."
+me till I spat out blood and all your families laughed."
 %p
 A silence.  "Didn't think so.  Why would you %b
 stoop down and learn the name of those who shared %b
@@ -3666,4 +3666,64 @@ his horse around.  They rode back through the feel %b
 of failure.  Not their mission, but it burned %b
 they couldn't turn their kinfolk.  Open field. %b
 They drew their swords and rode towards the sprawling weald.
+%p
+The advantage of the cavalry is space - %b
+in movement, yes, but also vertically, %b
+for fighting upward's harder.  Every trace %b
+of this erased as, stopping at the trees, %b
+they found the brush so dense they left a man %b
+to mind the horses.  Going on their way, %b
+they walked with weapons out to cut the strands %b
+of hanging vines, and sometimes notch a blaze, %b
+to help them find their way back through that wooded maze.
+%p
+Mid-day, and in the forest, already darkness %b
+in bits and patches.  Little gifts of light: %b
+the trees so thick, what scattered through was stark %b
+against the uneven rocks; and if pressed, the sight %b
+was the flicker of a campfire, or perhaps the glimpse %b
+your grandfather gives as he tries to place your face, %b
+and for a moment, does.  Each movement linked %b
+to every other, and within that space, %b
+each object bits of shadow looking for its place.
+%p
+They pushed for hours, what they thought what north %b
+but faintly drifted, seeking out the trace %b
+of the exiles in the woodlands.  Each had torn %b
+off strips of blankets, padding to erase %b
+the clinking of their packs and swords.  They moved %b
+like foxes through the fern-lands, and as they they stirred %b
+the waist-high fronds, it seemed their little group %b
+became like boats, unseen and still unheard, %b
+their only trace the sudden leap and flight of birds.
+%p
+The afternoon was fading as the sun %b
+arced westward as if loaded in a sling %b
+and loosed to the horizon.  As it swung %b
+across them like a warning shot, a twinge %b
+of worry as the light began to fade. %b
+They continued not to speak, but cast a glance %b
+around to find a campsite in the waves %b
+of bracken, full and thick, and took the chance %b
+to pass the night inside the cover of those plants.
+%p
+Uneven ground.  They rested best they could %b
+and listened as the evening's sounds were stilled %b
+further by layers of the pinnae.  Pulled %b
+their meals from belt-packs, sipped at water, filled %b
+themselves with heavy cakes, the kind they said %b
+would keep a year and still taste just the same. %b
+But filling.  Lard and spices.  As they spread %b
+apart beneath the fronds, the night became %b
+a living thing that seemed to reach and call their names.
+%p
+How long had fair folk lived beneath the earth %b
+like burrow-grubs?  They called it Cithriel %b
+but their high-halled home could only be a hearth %b
+for those deemed better - like the lie they'd tell %b
+each person from their birth, that some are made %b
+better by blood, and all the rest must serve. %b
+For all the rest, the whip and hand, a slave %b
+to self-enforcing nobility, who preserve %b
+the lie by force and saying this is all deserved.
 %p

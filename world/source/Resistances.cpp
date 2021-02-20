@@ -1,7 +1,6 @@
 #include <sstream>
 #include "global_prototypes.hpp"
 #include "Resistances.hpp"
-#include "ResistanceFactory.hpp"
 #include "ResistanceTextKeys.hpp"
 #include "Serialize.hpp"
 #include "StringTable.hpp"
@@ -9,16 +8,21 @@
 using namespace std;
 
 // Initialize the Resistance
-Resistance::Resistance()
-{
-  type = DamageType::DAMAGE_TYPE_NULL;
 
-  // By default, the multiplier should be 1.
-  // This is because creatures without a race
-  // and class will use this value, so they
-  // should have absolutely no vulnerabilities
-  // or resistances.
-  value = 1.0;
+// By default, the multiplier should be 1.
+// This is because creatures without a race
+// and class will use this value, so they
+// should have absolutely no vulnerabilities
+// or resistances.
+Resistance::Resistance()
+: type(DamageType::DAMAGE_TYPE_NULL)
+, value(1.0)
+{
+}
+
+Resistance::Resistance(const DamageType dt, const string& name, const string& abrv, const string& gain, const string& lose, const double val)
+: type(dt), name_sid(name), abrv_sid(abrv), gain_message_sid(gain), lose_message_sid(lose), value(val)
+{
 }
 
 bool Resistance::operator==(const Resistance& r) const
@@ -33,16 +37,6 @@ bool Resistance::operator==(const Resistance& r) const
   result = result && (dequal(value, r.value));
 
   return result;
-}
-
-Resistance::Resistance(const DamageType dt, const string& name, const string& abrv, const string& gain, const string& lose, const double val)
-{
-  type = dt;
-  name_sid = name;
-  abrv_sid = abrv;
-  gain_message_sid = gain;
-  lose_message_sid = lose;
-  value = val;
 }
 
 void Resistance::set_type(const DamageType new_type)
@@ -136,6 +130,11 @@ string Resistance::str() const
   return ss.str();
 }
 
+ClassIdentifier Resistance::internal_class_identifier() const
+{
+  return ClassIdentifier::CLASS_ID_RESISTANCE;
+}
+
 bool Resistance::serialize(ostream& stream) const
 {
   Serialize::write_enum(stream, type);
@@ -162,8 +161,19 @@ bool Resistance::deserialize(istream& stream)
 
 // Initialize the resistances to a set of default values
 Resistances::Resistances()
+: resistances ( { { DamageType::DAMAGE_TYPE_SLASH,     Resistance(DamageType::DAMAGE_TYPE_SLASH, ResistanceTextKeys::RESISTANCE_SLASH, ResistanceTextKeys::RESISTANCE_ABRV_SLASH, ResistanceTextKeys::RESISTANCE_GAIN_SLASH, ResistanceTextKeys::RESISTANCE_LOSE_SLASH, 0.0) },
+                  { DamageType::DAMAGE_TYPE_POUND,     Resistance(DamageType::DAMAGE_TYPE_POUND, ResistanceTextKeys::RESISTANCE_POUND, ResistanceTextKeys::RESISTANCE_ABRV_POUND, ResistanceTextKeys::RESISTANCE_GAIN_POUND, ResistanceTextKeys::RESISTANCE_LOSE_POUND, 0.0) },
+                  { DamageType::DAMAGE_TYPE_PIERCE,    Resistance(DamageType::DAMAGE_TYPE_PIERCE, ResistanceTextKeys::RESISTANCE_PIERCE, ResistanceTextKeys::RESISTANCE_ABRV_PIERCE, ResistanceTextKeys::RESISTANCE_GAIN_PIERCE, ResistanceTextKeys::RESISTANCE_LOSE_PIERCE, 0.0) },
+                  { DamageType::DAMAGE_TYPE_HEAT,      Resistance(DamageType::DAMAGE_TYPE_HEAT, ResistanceTextKeys::RESISTANCE_HEAT, ResistanceTextKeys::RESISTANCE_ABRV_HEAT, ResistanceTextKeys::RESISTANCE_GAIN_HEAT, ResistanceTextKeys::RESISTANCE_LOSE_HEAT, 0.0) },
+                  { DamageType::DAMAGE_TYPE_COLD,      Resistance(DamageType::DAMAGE_TYPE_COLD, ResistanceTextKeys::RESISTANCE_COLD, ResistanceTextKeys::RESISTANCE_ABRV_COLD, ResistanceTextKeys::RESISTANCE_GAIN_COLD, ResistanceTextKeys::RESISTANCE_LOSE_COLD, 0.0) },
+                  { DamageType::DAMAGE_TYPE_ACID,      Resistance(DamageType::DAMAGE_TYPE_ACID, ResistanceTextKeys::RESISTANCE_ACID, ResistanceTextKeys::RESISTANCE_ABRV_ACID, ResistanceTextKeys::RESISTANCE_GAIN_ACID, ResistanceTextKeys::RESISTANCE_LOSE_ACID, 0.0) },
+                  { DamageType::DAMAGE_TYPE_POISON,    Resistance(DamageType::DAMAGE_TYPE_POISON, ResistanceTextKeys::RESISTANCE_POISON, ResistanceTextKeys::RESISTANCE_ABRV_POISON, ResistanceTextKeys::RESISTANCE_GAIN_POISON, ResistanceTextKeys::RESISTANCE_LOSE_POISON, 0.0) },
+                  { DamageType::DAMAGE_TYPE_HOLY,      Resistance(DamageType::DAMAGE_TYPE_HOLY, ResistanceTextKeys::RESISTANCE_HOLY, ResistanceTextKeys::RESISTANCE_ABRV_HOLY, ResistanceTextKeys::RESISTANCE_GAIN_HOLY, ResistanceTextKeys::RESISTANCE_LOSE_HOLY, 0.0) },
+                  { DamageType::DAMAGE_TYPE_SHADOW,    Resistance(DamageType::DAMAGE_TYPE_SHADOW, ResistanceTextKeys::RESISTANCE_SHADOW, ResistanceTextKeys::RESISTANCE_ABRV_SHADOW, ResistanceTextKeys::RESISTANCE_GAIN_SHADOW, ResistanceTextKeys::RESISTANCE_LOSE_SHADOW, 0.0) },
+                  { DamageType::DAMAGE_TYPE_ARCANE,    Resistance(DamageType::DAMAGE_TYPE_ARCANE, ResistanceTextKeys::RESISTANCE_ARCANE, ResistanceTextKeys::RESISTANCE_ABRV_ARCANE, ResistanceTextKeys::RESISTANCE_GAIN_ARCANE, ResistanceTextKeys::RESISTANCE_LOSE_ARCANE, 0.0)},
+                  { DamageType::DAMAGE_TYPE_LIGHTNING, Resistance(DamageType::DAMAGE_TYPE_LIGHTNING, ResistanceTextKeys::RESISTANCE_LIGHTNING, ResistanceTextKeys::RESISTANCE_ABRV_LIGHTNING, ResistanceTextKeys::RESISTANCE_GAIN_LIGHTNING, ResistanceTextKeys::RESISTANCE_LOSE_LIGHTNING, 0.0) }
+} )
 {
-  default_resistances();
 }
 
 Resistances::Resistances(const Resistances& r)
@@ -171,54 +181,14 @@ Resistances::Resistances(const Resistances& r)
   *this = r;
 }
 
-// Ensure that we create new shared ptrs, or else the shallow copy will
-// mess everything up!  Copying shared_ptrs is the worst.
-Resistances& Resistances::operator=(const Resistances& r)
+bool Resistances::operator==(const Resistances& r) const
 {
-  if (this != &r)
-  {
-    default_resistances();
-
-    for (const auto& r_pair : r.resistances)
-    {
-      if (r_pair.second != nullptr)
-      {
-        std::shared_ptr<Resistance> r = r_pair.second;
-        resistances[r_pair.first] = ResistancePtr(r->clone());
-      }
-    }
-  }
-
-  return *this;
+  return resistances == r.resistances;
 }
 
-bool Resistances::operator==(const Resistances& res) const
+void Resistances::clear()
 {
-  bool result = true;
-
-  result = result && (resistances.size() == res.resistances.size());
-
-  if (result)
-  {
-    ResistancesMap r2_map = res.resistances;
-    ResistancesMap::const_iterator r_it;
-    ResistancesMap::const_iterator r_it2;
-
-    r_it = resistances.begin();
-    r_it2 = r2_map.begin();
-
-    while (r_it != resistances.end())
-    {
-      result = result && (*r_it->second == *r_it2->second);
-
-      if (!result) break;
-
-      r_it++;
-      r_it2++;
-    }
-  }
-
-  return result;
+  resistances.clear();
 }
 
 void Resistances::add(const Resistances& res)
@@ -233,7 +203,7 @@ void Resistances::add(const Resistances& res)
 
 void Resistances::set_resistance_value(const DamageType type, double value)
 {
-  resistances[type]->set_value(value);
+  resistances[type].set_value(value);
 }
 
 void Resistances::set_all_resistances_to(const double value)
@@ -241,14 +211,18 @@ void Resistances::set_all_resistances_to(const double value)
   for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
   {
     DamageType dt = static_cast<DamageType>(d);
-    resistances[dt]->set_value(value);
+    resistances[dt].set_value(value);
   }
 }
 
-ResistancePtr Resistances::get_resistance(const DamageType dt) const
+const Resistance& Resistances::get_resistance_cref(const DamageType dt) const
 {
-  ResistancePtr res = resistances.find(dt)->second;
-  return res;
+  return resistances.find(dt)->second;
+}
+
+Resistance& Resistances::get_resistance_ref(const DamageType dt)
+{
+  return resistances[dt];
 }
 
 bool Resistances::serialize(ostream& stream) const
@@ -258,18 +232,10 @@ bool Resistances::serialize(ostream& stream) const
   for (const ResistancesMap::value_type& r_pair : resistances)
   {
     Serialize::write_enum(stream, r_pair.first);
+    Resistance r = r_pair.second;
 
-    std::shared_ptr<Resistance> resistance = r_pair.second;
-
-    if (resistance)
-    {
-      Serialize::write_class_id(stream, resistance->get_class_identifier());
-      resistance->serialize(stream);
-    }
-    else
-    {
-      Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
-    }
+    Serialize::write_class_id(stream, r.get_class_identifier());
+    r.serialize(stream);
   }
 
   return true;
@@ -290,11 +256,14 @@ bool Resistances::deserialize(istream& stream)
 
     if (resistance_clid != ClassIdentifier::CLASS_ID_NULL)
     {
-      std::shared_ptr<Resistance> resistance = ResistanceFactory::create_resistance(resistance_clid);
-      if (!resistance) return false;
-      if (!resistance->deserialize(stream)) return false;
+      Resistance new_res;
 
-      resistances[type] = resistance;
+      if (!new_res.deserialize(stream))
+      {
+        return false;
+      }
+
+      resistances[type] = new_res;
     }
   }
   return true;
@@ -303,172 +272,6 @@ bool Resistances::deserialize(istream& stream)
 ClassIdentifier Resistances::internal_class_identifier() const
 {
   return ClassIdentifier::CLASS_ID_RESISTANCES;
-}
-
-// Individual resistance classes
-SlashResistance::SlashResistance()
-: Resistance(DamageType::DAMAGE_TYPE_SLASH, ResistanceTextKeys::RESISTANCE_SLASH, ResistanceTextKeys::RESISTANCE_ABRV_SLASH, ResistanceTextKeys::RESISTANCE_GAIN_SLASH, ResistanceTextKeys::RESISTANCE_LOSE_SLASH, 0.0)
-{
-}
-
-Resistance* SlashResistance::clone()
-{
-  return new SlashResistance(*this);
-}
-
-ClassIdentifier SlashResistance::internal_class_identifier() const
-{
-  return ClassIdentifier::CLASS_ID_SLASH_RESISTANCE;
-}
-
-PoundResistance::PoundResistance()
-: Resistance(DamageType::DAMAGE_TYPE_POUND, ResistanceTextKeys::RESISTANCE_POUND, ResistanceTextKeys::RESISTANCE_ABRV_POUND, ResistanceTextKeys::RESISTANCE_GAIN_POUND, ResistanceTextKeys::RESISTANCE_LOSE_POUND, 0.0)
-{
-}
-
-Resistance* PoundResistance::clone()
-{
-  return new PoundResistance(*this);
-}
-
-ClassIdentifier PoundResistance::internal_class_identifier() const
-{
-  return ClassIdentifier::CLASS_ID_POUND_RESISTANCE;
-}
-
-PierceResistance::PierceResistance()
-: Resistance(DamageType::DAMAGE_TYPE_PIERCE, ResistanceTextKeys::RESISTANCE_PIERCE, ResistanceTextKeys::RESISTANCE_ABRV_PIERCE, ResistanceTextKeys::RESISTANCE_GAIN_PIERCE, ResistanceTextKeys::RESISTANCE_LOSE_PIERCE, 0.0)
-{
-}
-
-Resistance* PierceResistance::clone()
-{
-  return new PierceResistance(*this);
-}
-
-ClassIdentifier PierceResistance::internal_class_identifier() const
-{
-  return ClassIdentifier::CLASS_ID_PIERCE_RESISTANCE;
-}
-
-HeatResistance::HeatResistance()
-: Resistance(DamageType::DAMAGE_TYPE_HEAT, ResistanceTextKeys::RESISTANCE_HEAT, ResistanceTextKeys::RESISTANCE_ABRV_HEAT, ResistanceTextKeys::RESISTANCE_GAIN_HEAT, ResistanceTextKeys::RESISTANCE_LOSE_HEAT, 0.0)
-{
-}
-
-Resistance* HeatResistance::clone()
-{
-  return new HeatResistance(*this);
-}
-
-ClassIdentifier HeatResistance::internal_class_identifier() const
-{
-  return ClassIdentifier::CLASS_ID_HEAT_RESISTANCE;
-}
-
-ColdResistance::ColdResistance()
-: Resistance(DamageType::DAMAGE_TYPE_COLD, ResistanceTextKeys::RESISTANCE_COLD, ResistanceTextKeys::RESISTANCE_ABRV_COLD, ResistanceTextKeys::RESISTANCE_GAIN_COLD, ResistanceTextKeys::RESISTANCE_LOSE_COLD, 0.0)
-{
-}
-
-Resistance* ColdResistance::clone()
-{
-  return new ColdResistance(*this);
-}
-
-ClassIdentifier ColdResistance::internal_class_identifier() const
-{
-  return ClassIdentifier::CLASS_ID_COLD_RESISTANCE;
-}
-
-AcidResistance::AcidResistance()
-: Resistance(DamageType::DAMAGE_TYPE_ACID, ResistanceTextKeys::RESISTANCE_ACID, ResistanceTextKeys::RESISTANCE_ABRV_ACID, ResistanceTextKeys::RESISTANCE_GAIN_ACID, ResistanceTextKeys::RESISTANCE_LOSE_ACID, 0.0)
-{
-}
-
-Resistance* AcidResistance::clone()
-{
-  return new AcidResistance(*this);
-}
-
-ClassIdentifier AcidResistance::internal_class_identifier() const
-{
-  return ClassIdentifier::CLASS_ID_ACID_RESISTANCE;
-}
-
-PoisonResistance::PoisonResistance()
-: Resistance(DamageType::DAMAGE_TYPE_POISON, ResistanceTextKeys::RESISTANCE_POISON, ResistanceTextKeys::RESISTANCE_ABRV_POISON, ResistanceTextKeys::RESISTANCE_GAIN_POISON, ResistanceTextKeys::RESISTANCE_LOSE_POISON, 0.0)
-{
-}
-
-Resistance* PoisonResistance::clone()
-{
-  return new PoisonResistance(*this);
-}
-
-ClassIdentifier PoisonResistance::internal_class_identifier() const
-{
-  return ClassIdentifier::CLASS_ID_POISON_RESISTANCE;
-}
-
-HolyResistance::HolyResistance()
-: Resistance(DamageType::DAMAGE_TYPE_HOLY, ResistanceTextKeys::RESISTANCE_HOLY, ResistanceTextKeys::RESISTANCE_ABRV_HOLY, ResistanceTextKeys::RESISTANCE_GAIN_HOLY, ResistanceTextKeys::RESISTANCE_LOSE_HOLY, 0.0)
-{
-}
-
-Resistance* HolyResistance::clone()
-{
-  return new HolyResistance(*this);
-}
-
-ClassIdentifier HolyResistance::internal_class_identifier() const
-{
-  return ClassIdentifier::CLASS_ID_HOLY_RESISTANCE;
-}
-
-ShadowResistance::ShadowResistance()
-: Resistance(DamageType::DAMAGE_TYPE_SHADOW, ResistanceTextKeys::RESISTANCE_SHADOW, ResistanceTextKeys::RESISTANCE_ABRV_SHADOW, ResistanceTextKeys::RESISTANCE_GAIN_SHADOW, ResistanceTextKeys::RESISTANCE_LOSE_SHADOW, 0.0)
-{
-}
-
-Resistance* ShadowResistance::clone()
-{
-  return new ShadowResistance(*this);
-}
-
-ClassIdentifier ShadowResistance::internal_class_identifier() const
-{
-  return ClassIdentifier::CLASS_ID_SHADOW_RESISTANCE;
-}
-
-ArcaneResistance::ArcaneResistance()
-: Resistance(DamageType::DAMAGE_TYPE_ARCANE, ResistanceTextKeys::RESISTANCE_ARCANE, ResistanceTextKeys::RESISTANCE_ABRV_ARCANE, ResistanceTextKeys::RESISTANCE_GAIN_ARCANE, ResistanceTextKeys::RESISTANCE_LOSE_ARCANE, 0.0)
-{
-}
-
-Resistance* ArcaneResistance::clone()
-{
-  return new ArcaneResistance(*this);
-}
-
-ClassIdentifier ArcaneResistance::internal_class_identifier() const
-{
-  return ClassIdentifier::CLASS_ID_ARCANE_RESISTANCE;
-}
-
-LightningResistance::LightningResistance()
-: Resistance(DamageType::DAMAGE_TYPE_LIGHTNING, ResistanceTextKeys::RESISTANCE_LIGHTNING, ResistanceTextKeys::RESISTANCE_ABRV_LIGHTNING, ResistanceTextKeys::RESISTANCE_GAIN_LIGHTNING, ResistanceTextKeys::RESISTANCE_LOSE_LIGHTNING, 0.0)
-{
-}
-
-Resistance* LightningResistance::clone()
-{
-  return new LightningResistance(*this);
-}
-
-ClassIdentifier LightningResistance::internal_class_identifier() const
-{
-  return ClassIdentifier::CLASS_ID_LIGHTNING_RESISTANCE;
 }
 
 bool Resistances::has_resistances_or_vulnerabilities() const
@@ -507,7 +310,7 @@ double Resistances::get_resistance_value(const DamageType type) const
 
   if (map_it != resistances.end())
   {
-    return (map_it->second)->get_value();
+    return (map_it->second).get_value();
   }
 
   return DEFAULT_RESISTANCE_VALUE;
@@ -524,28 +327,12 @@ string Resistances::str() const
 
   for (ResistancesMap::const_iterator res_it = resistances.begin(); res_it != resistances.end(); res_it++)
   {
-    std::shared_ptr<Resistance> current_resistance = res_it->second;
+    Resistance current_resistance = res_it->second;
 
-    resistances_str = resistances_str + current_resistance->str() + " ";
+    resistances_str = resistances_str + current_resistance.str() + " ";
   }
 
   return resistances_str;
-}
-
-// Reset the resistances to an absolute default - 1.0 for each value
-void Resistances::default_resistances()
-{
-  resistances = ResistancesMap{{DamageType::DAMAGE_TYPE_SLASH, std::make_shared<SlashResistance>()},
-                               {DamageType::DAMAGE_TYPE_POUND, std::make_shared<PoundResistance>()},
-                               {DamageType::DAMAGE_TYPE_PIERCE, std::make_shared<PierceResistance>()},
-                               {DamageType::DAMAGE_TYPE_HEAT, std::make_shared<HeatResistance>()},
-                               {DamageType::DAMAGE_TYPE_COLD, std::make_shared<ColdResistance>()},
-                               {DamageType::DAMAGE_TYPE_ACID, std::make_shared<AcidResistance>()},
-                               {DamageType::DAMAGE_TYPE_POISON, std::make_shared<PoisonResistance>()},
-                               {DamageType::DAMAGE_TYPE_HOLY, std::make_shared<HolyResistance>()},
-                               {DamageType::DAMAGE_TYPE_SHADOW, std::make_shared<ShadowResistance>()},
-                               {DamageType::DAMAGE_TYPE_ARCANE, std::make_shared<ArcaneResistance>()},
-                               {DamageType::DAMAGE_TYPE_LIGHTNING, std::make_shared<LightningResistance>()}};
 }
 
 #ifdef UNIT_TESTS

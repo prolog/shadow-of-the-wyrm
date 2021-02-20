@@ -1,3 +1,86 @@
+Shadow of the Wyrm v1.2.8 "Holborne"
+- Version declared December 13, 2020.  Version finalized February 20, 2021.
+
+- Cleaned up some issues around the Linux premake build file (Larzid).
+
+- When using the codex in the inventory, the inventory page is remembered
+  on exit, rather than returning to the first page (Josh Engdahl).
+
+- Cathedrals can now have libraries generated behind the priest's quarters,
+  and generally feel less empty (more features in various places).
+
+- Libraries can now appear in the Carcassia religious district.
+
+- Toned down the number of potions available via barrels.
+
+- NPC adventurers are now available around the world (e.g. in the inn in
+  Carcassia, at Wintersea Keep) and will join you for free.  They are squishy 
+  and have just the base equipment for their race and class, so they may take 
+  some care to keep alive.
+
+- Drunks and bartenders can now be any race (as they're now considered
+  townfolk).
+
+- Taverns can now be generated in Carcassia (in the north-east sector)
+  as well as in random settlements.  Each tavern is likely to have at least
+  one adventurer looking to form a party.
+
+- Updated the comments in the Lua premake file based on some feedback
+  (Ezequiel Birman).
+
+- Isen Dun now has a sea-captain on the east pier who can give quests to
+  adventuring parties.
+
+- Added Acey, in the Carcassia thieves guild, who offers quests to
+  adventuring parties.
+
+- Guards are now vigilant for stolen and contraband goods, and will attack you
+  if they see any.
+
+- Certain classes can now start with animal followers (think of them as pets,
+  familiars, etc).  Currently, rovers start with a falcon or boar, shepherds
+  start with a sheep, and witchlings and wizards start out with a cat, owl,
+  or xither.
+
+- Adventurers and hirelings of these classes should have their own pets
+  generated.  Happily, these will not try to kill you.
+
+- Deities may now grant a divine companion.  You will need high piety for
+  this to happen, and be not generally afflicted by anything else.
+
+- Shopkeepers can be generated from any of the user-playable races.
+
+- Creatures previously breathed either water or air - there is now a
+  breathe-all option, and this is set when praying for a companion, so you
+  can take them anywhere.
+
+- Performance improvements to world generation and other areas.
+
+- New creatures: adventurer, sea captain, gnomish seatrader, Acey, Snakes,
+  Koris, Balabin, Carcassian blackknife, owl, cat, sheep.
+
+- New items: ivory tusks, stolen goods, powdered snowcap, fake snowcap,
+  forged documents, alabaster key.
+
+- New spells: paralyze (Mystic).
+
+- Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - When a cathedral had stairs to the crypt, the player was being placed
+    on those steps after entering the map (Josh Engdahl).
+
+  - Fixed issues with crypt generation in cathedrals.
+
+  - The game was using the view map (a subset of the full map) for determining
+    NPC actions, which was cheating, because this wasn't taking into account
+    things like line of sight.
+
+  - If you had items made from skins, but no actual skins, applying a tannery
+    was giving an empty inventory screen instead of the usual no-skins
+    message.
+
 Shadow of the Wyrm v1.2.5 "Arnold"
 - Version declared November 1, 2020. Version finalized December 13, 2020.
 

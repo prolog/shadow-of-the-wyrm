@@ -1,6 +1,7 @@
 #include "ReligiousCommercialSectorFeatureGenerator.hpp"
 #include "DeityUtils.hpp"
 #include "GardenGeneratorFactory.hpp"
+#include "LibrarySectorFeature.hpp"
 #include "ShopSectorFeature.hpp"
 
 using namespace std;
@@ -8,6 +9,7 @@ using namespace std;
 ReligiousCommercialSectorFeatureGenerator::ReligiousCommercialSectorFeatureGenerator()
 : features({{20, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_SHOP},
             {40, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_OUTDOOR_SHRINE},
+            {60, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_LIBRARY},
             {100, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_GARDEN}})
 {
 }
@@ -39,6 +41,11 @@ bool ReligiousCommercialSectorFeatureGenerator::create_feature(MapPtr map, const
     case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_SHOP:
     {
       feature = std::make_unique<ShopSectorFeature>();
+      break;
+    }
+    case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_LIBRARY:
+    {
+      feature = std::make_unique<LibrarySectorFeature>();
       break;
     }
     case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_OUTDOOR_SHRINE:

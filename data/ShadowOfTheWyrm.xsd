@@ -558,6 +558,7 @@
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
 			<xs:element ref="tns:DeityDislikeMultipliers" minOccurs="0"/>
 			<xs:element ref="tns:InitialEquipmentAndInventory" minOccurs="0"/>
+			<xs:element name="StartingPetIDs" type="xs:string" minOccurs="0"/>
 			<xs:element name="LevelScript" type="xs:string" minOccurs="0"/>
 			<xs:element name="KillScript" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
@@ -1042,6 +1043,7 @@
 		<xs:element name="UnidentifiedUsageDescriptionSID" type="xs:string" minOccurs="0"/>
 		<xs:element name="CodexDescriptionSID" type="xs:string"/>
 		<xs:element name="Value" type="tns:NonNegativeInt"/>
+		<xs:element name="Contraband" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="Weight" type="tns:Weight"/>
 		<xs:element name="WornLocation" type="tns:WornLocation" minOccurs="0"/>
 		<xs:element name="ItemStatus" type="tns:ItemStatus" minOccurs="0"/>
@@ -1235,6 +1237,7 @@
 		     and that will not draw guard hostility.  List of creature IDs, 
 			 comma-separated. -->
 		<xs:element name="Allies" type="xs:string" minOccurs="0"/>
+		<xs:element name="AttackContraband" type="xs:boolean" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Symbol">
@@ -1893,8 +1896,8 @@
 <!-- See CreatureFeatures.hpp -->
 <xs:simpleType name="BreatheType">
 	<xs:restriction base="xs:integer">
-		<xs:enumeration value="0"/>
-		<xs:enumeration value="1"/>
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="2"/>
 	</xs:restriction>
 </xs:simpleType>
 <!-- See CreatureFeatures.hpp -->

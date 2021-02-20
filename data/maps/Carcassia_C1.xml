@@ -117,6 +117,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>balabin</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>56</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>snakeling_thug</ID>
 				<Coord>
 					<Row>16</Row>

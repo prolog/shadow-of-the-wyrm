@@ -260,3 +260,38 @@ TEST(SW_Engine_Maps_MapUtils, get_weather)
   EXPECT_EQ(no_weather, MapUtils::get_weather(underwater_map, tile));
   EXPECT_EQ(no_weather, MapUtils::get_weather(cosmos_map, tile));
 }
+
+TEST(SW_Engine_Maps_MapUtils, get_available_adjacent_tiles_to_creature)
+{
+  CreaturePtr pov_creature = std::make_shared<Creature>();
+  pov_creature->set_id("pov");
+
+  CreaturePtr adj_creature = std::make_shared<Creature>();
+  adj_creature->set_id("adj");
+
+  CreaturePtr place_creature = std::make_shared<Creature>();
+
+  Dimensions d;
+  MapPtr map = std::make_shared<Map>(d);
+  GeneratorUtils::fill(map, { 0,0 }, { 5,5 }, TileType::TILE_TYPE_FIELD);
+  
+  MapUtils::add_or_update_location(map, pov_creature, { 1,1 });
+  MapUtils::add_or_update_location(map, adj_creature, { 0,1 });
+
+  auto avail_adj = MapUtils::get_available_adjacent_tiles_to_creature(map, pov_creature, place_creature);
+
+  EXPECT_EQ(7, avail_adj.size());
+  EXPECT_TRUE(avail_adj.find(Direction::DIRECTION_NORTH) == avail_adj.end());
+
+  map->at(0, 1)->remove_creature();
+  avail_adj = MapUtils::get_available_adjacent_tiles_to_creature(map, pov_creature, place_creature);
+
+  vector<Direction> dirs = { Direction::DIRECTION_NORTH_EAST, Direction::DIRECTION_NORTH, Direction::DIRECTION_NORTH_WEST, Direction::DIRECTION_EAST, Direction::DIRECTION_WEST, Direction::DIRECTION_SOUTH_EAST, Direction::DIRECTION_SOUTH, Direction::DIRECTION_SOUTH_WEST };
+
+  EXPECT_EQ(8, avail_adj.size());
+
+  for (const Direction d : dirs)
+  {
+    EXPECT_TRUE(avail_adj.find(d) != avail_adj.end());
+  }
+}
