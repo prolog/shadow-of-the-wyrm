@@ -11,6 +11,7 @@
 #include "CreatureDescriber.hpp"
 #include "CreatureCoordinateCalculator.hpp"
 #include "CreatureFeatures.hpp"
+#include "CreatureGenerationIndex.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"

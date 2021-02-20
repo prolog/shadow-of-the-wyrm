@@ -70,7 +70,8 @@ bool SummonMonstersEffect::summon(CreaturePtr creature, MapPtr map, const int nu
 
         if (tile != nullptr)
         {
-          CreaturePtr summoned_creature = cgm.generate_creature(am, generation_list.get(), map);
+          const CreatureGenerationList& cgl = generation_list.get();
+          CreaturePtr summoned_creature = cgm.generate_creature(am, cgl, map);
 
           if (summoned_creature != nullptr)
           {
