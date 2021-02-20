@@ -1,5 +1,6 @@
 #pragma once
 #include "SectorFeature.hpp"
+#include "Building.hpp"
 
 class TavernSectorFeature : public SectorFeature
 {
