@@ -4,6 +4,7 @@
 #include <set>
 #include <vector>
 #include "CellularAutomataTypes.hpp"
+#include "CreatureGenerationIndex.hpp"
 #include "Generator.hpp"
 #include "TileDepthOptions.hpp"
 #include "TileGenerator.hpp"

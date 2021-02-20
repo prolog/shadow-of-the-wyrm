@@ -182,7 +182,7 @@ CreatureGenerationIndex CreatureGenerationManager::generate_ancient_beasts(const
   return cgi;
 }
 
-string CreatureGenerationManager::select_creature_id_for_generation(ActionManager& am, CreatureGenerationList& generation_list)
+string CreatureGenerationManager::select_creature_id_for_generation(ActionManager& am, const CreatureGenerationList& generation_list)
 {
   string creature_id;
 
@@ -206,7 +206,7 @@ string CreatureGenerationManager::select_creature_id_for_generation(ActionManage
   return creature_id;
 }
 
-CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, CreatureGenerationList& generation_list, MapPtr current_map)
+CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, const CreatureGenerationList& generation_list, MapPtr current_map)
 {
   CreaturePtr generated_creature;
   CreatureFactory cf;

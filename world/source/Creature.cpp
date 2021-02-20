@@ -837,8 +837,6 @@ bool Creature::has_unpaid_items() const
 
 bool Creature::has_item_with_property(const std::string& prop_name) const
 {
-  bool has_item = false;
-
   for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
   {
     EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(e);
@@ -853,7 +851,6 @@ bool Creature::has_item_with_property(const std::string& prop_name) const
   {
     return inventory->has_item_with_property(prop_name);
   }
-
 
   return false;
 }
