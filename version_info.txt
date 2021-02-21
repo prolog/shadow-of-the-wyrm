@@ -3,6 +3,8 @@ Shadow of the Wyrm v1.2.9 "Kapsberger"
 
 - Additional name combinations.
 
+- Stanzas for "Tel and Floridel".
+
 Shadow of the Wyrm v1.2.8 "Holborne"
 - Version declared December 13, 2020.  Version finalized February 20, 2021.
 
