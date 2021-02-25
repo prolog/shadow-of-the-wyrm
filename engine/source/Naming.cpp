@@ -1,7 +1,10 @@
 #include <algorithm>
 #include <sstream>
+#include <boost/algorithm/string/replace.hpp>
+#include "Conversion.hpp"
 #include "Naming.hpp"
 #include "RNG.hpp"
+#include "SettlementTextKeys.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
 
@@ -144,4 +147,56 @@ string Naming::clean_name(const string& name)
 uint Naming::get_max_name_size()
 {
   return MAXIMUM_NAME_SIZE;
+}
+
+string Naming::generate_settlement_name()
+{
+  string settlement_name;
+
+/*  if (RNG::percent_chance(15))
+  {
+    settlement_name = generate_possessive_settlement_name();
+  } 
+  else if (RNG::percent_chance(20)) */
+  {
+    settlement_name = generate_descriptive_settlement_name();
+  }
+/*  else
+  {
+    settlement_name = generate_random_settlement_name();
+  } */
+
+  return settlement_name;
+}
+
+string Naming::generate_possessive_settlement_name()
+{
+  string poss_name;
+  return poss_name;
+}
+
+string Naming::generate_descriptive_settlement_name()
+{
+  string desc_name;
+
+  vector<string> adjs = String::create_string_vector_from_csv_string(StringTable::get(SettlementTextKeys::SETTLEMENT_NAME_ADJECTIVES));
+  vector<string> descs = String::create_string_vector_from_csv_string(StringTable::get(SettlementTextKeys::SETTLEMENT_NAME_DESCRIPTIONS));
+
+  int dir_idx = RNG::range(0, adjs.size() - 1);
+  int desc_idx = RNG::range(0, descs.size() - 1);
+
+  string adj_part = adjs[dir_idx];
+  string desc_part = descs[desc_idx];
+
+  desc_name = StringTable::get(SettlementTextKeys::DESCRIPTIVE_SETTLEMENT_FORMAT);
+  boost::replace_first(desc_name, "%s1", adj_part);
+  boost::replace_first(desc_name, "%s2", desc_part);
+
+  return desc_name;
+}
+
+string Naming::generate_random_settlement_name()
+{
+  string rand_name;
+  return rand_name;
 }

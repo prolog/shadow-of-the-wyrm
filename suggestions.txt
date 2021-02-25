@@ -1,5 +1,13 @@
 Me:
-- Pets!
+- Settlement names:
+  - <Dir?> <Name or Descriptor>
+  - DirectionalName: <Dir> <Name or Descriptor>
+  - Name: (<1, 2, 3 syllable> or <Possessive>) <Descriptor?>
+  - Possessive: things like Angel's, Devil's, <regular name>'s
+  - Descriptor: things like Falls, Forest, etc. Always included if possessive
+    present.
+  - Examples: West Haver, Ilirik, Dunla Falls, Braebik's River
+  - MapTester should be able to spit out a list
 - More Acey/Sea Captain quests
 - Acey quest to steal Ironsword and deliver to Atua-Elar after it's retrieved.
   - Emperor should transfer Ironsword to the armory
@@ -8,7 +16,6 @@ Me:
   - Deliver to Atua-Elar
   - Stage 1 of the uprising
 - Make taverns more distinctive
-- NEED TO DO AN ASSET RELEASE
 - Do a couple of quests that require a party
   - Isen Dun (Hrimgar): envoy to Forest of Yew (PoGA)
   - Carcassia (Golgoa): wyrms attacked Stoneheim, wizard killed, tower wants 
@@ -24,6 +31,7 @@ Me:
   sewer)
 - Settlement names!
 - Settlement names on signposts!
+- Other names: dungeons, caverns, sewers...
 - Add signposts to each random village
 - Generate tombs with keys outside door/doors locked
 - First urchin stone has no message!

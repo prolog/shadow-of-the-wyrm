@@ -1062,6 +1062,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\strings\include\ResistanceTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ScoreTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\SeasonTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\SettlementTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\SizeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\SkillTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\SpellcastingTextKeys.hpp" />
@@ -2134,6 +2135,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\strings\source\OrderTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\PlayerTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\PartyTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\SettlementTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\unit_tests\DateTextKeys_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
