@@ -36,4 +36,5 @@ class Naming
 
     // Map from number of syllables to potential syllables for each place.
     static const SyllableMap syllables;
+    static const std::map<int, std::vector<std::string>> settlement_syllables;
 };

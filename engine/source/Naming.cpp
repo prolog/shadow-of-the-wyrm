@@ -26,6 +26,15 @@ const SyllableMap Naming::syllables =
                                                } } } } } }
 };
 
+const map<int, vector<string>> Naming::settlement_syllables =
+{
+  {
+    { 1, { "Ad", "Aer", "Al", "Bak", "Ban", "Cad", "Cam", "Dan", "Den", "Dip", "Ex", "Ix", "Ip", "Ran", "Tam", "Tar", "Tet", "Sar", "Scar", "Skar", "Vid", "Var"} },
+    { 2, { "a", "e", "i", "o", "da", "de", "di", "do", "du", "la", "le", "li", "lo", "ra", "re", "ri", "ro", "ru"} },
+    { 3, { "ban", "bex", "bil", "can", "car", "dan", "den", "dil", "dix", "el", "fil", "gan", "gap", "gen", "gon", "ham", "hem", "kam", "kan", "kar", "tam", "tan", "tap"}}
+  }
+};
+
 Naming::Naming()
 {
 }
@@ -153,18 +162,18 @@ string Naming::generate_settlement_name()
 {
   string settlement_name;
 
-/*  if (RNG::percent_chance(15))
+  if (RNG::percent_chance(15))
   {
     settlement_name = generate_possessive_settlement_name();
   } 
-  else if (RNG::percent_chance(20)) */
+  else if (RNG::percent_chance(20))
   {
     settlement_name = generate_descriptive_settlement_name();
   }
-/*  else
+  else
   {
     settlement_name = generate_random_settlement_name();
-  } */
+  }
 
   return settlement_name;
 }
@@ -172,6 +181,16 @@ string Naming::generate_settlement_name()
 string Naming::generate_possessive_settlement_name()
 {
   string poss_name;
+
+  string name = generate_name(CreatureSex::CREATURE_SEX_NOT_SPECIFIED);
+  vector<string> descs = String::create_string_vector_from_csv_string(StringTable::get(SettlementTextKeys::SETTLEMENT_NAME_DESCRIPTIONS));
+  int desc_idx = RNG::range(0, descs.size() - 1);
+  string desc_part = descs[desc_idx];
+
+  poss_name = StringTable::get(SettlementTextKeys::POSSESSIVE_SETTLEMENT_FORMAT);
+  boost::replace_first(poss_name, "%s1", name);
+  boost::replace_first(poss_name, "%s2", desc_part);
+
   return poss_name;
 }
 
@@ -198,5 +217,32 @@ string Naming::generate_descriptive_settlement_name()
 string Naming::generate_random_settlement_name()
 {
   string rand_name;
+  int num_syllables = RNG::range(1, 3);
+
+  for (int i = 1; i <= num_syllables; i++)
+  {
+    if (i == 1 || RNG::percent_chance(70))
+    {
+      const vector<string>& syllables = settlement_syllables.at(i);
+      string syl = syllables.at(RNG::range(0, syllables.size() - 1));
+
+      rand_name += syl;
+    }
+  }
+
+  if (RNG::percent_chance(20))
+  {
+    vector<string> descs = String::create_string_vector_from_csv_string(StringTable::get(SettlementTextKeys::SETTLEMENT_NAME_DESCRIPTIONS));
+
+    int desc_idx = RNG::range(0, descs.size() - 1);
+    string desc_part = descs[desc_idx];
+
+    string desc_name = StringTable::get(SettlementTextKeys::DESCRIPTIVE_SETTLEMENT_FORMAT);
+    boost::replace_first(desc_name, "%s1", rand_name);
+    boost::replace_first(desc_name, "%s2", desc_part);
+
+    rand_name = desc_name;
+  }
+
   return rand_name;
 }
