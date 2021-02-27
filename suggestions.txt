@@ -1,4 +1,5 @@
 Me:
+- Occasionally hyphens in names
 - Settlement names:
   - <Dir?> <Name or Descriptor>
   - DirectionalName: <Dir> <Name or Descriptor>
