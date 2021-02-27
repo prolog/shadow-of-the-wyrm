@@ -41,6 +41,10 @@ class Tile : public ISerializable
     virtual std::vector<std::string> get_extra_description_sids() const;
     virtual bool has_extra_description() const;
 
+    virtual bool has_name() const;
+    virtual void set_name(const std::string& tile_name);
+    virtual std::string get_name() const;
+
     // Sometimes, someone has engraved something on a particular tile...
     virtual void set_engraving_sid(const std::string& new_engraving_sid);
     virtual std::string get_engraving_sid() const;

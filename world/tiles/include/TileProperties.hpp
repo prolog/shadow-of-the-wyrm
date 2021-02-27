@@ -74,6 +74,9 @@ class TileProperties
 
     static const std::string CUSTOM_MAP_ID_PART;
 
+    // Villages can have names - other places too, eventually...
+    static const std::string TILE_PROPERTY_NAME;
+
     // Checks to see if a given string reprensents a depth-based
     // custom map ID.
     static bool is_depth_custom_map_id(const std::string& key);

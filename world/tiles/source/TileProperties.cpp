@@ -34,6 +34,8 @@ const string TileProperties::TILE_PROPERTY_CANNOT_DIG = "TILE_PROPERTY_CANNOT_DI
 // Represents the non-number part of a depth custom map ID key.
 const string TileProperties::CUSTOM_MAP_ID_PART = "_CUSTOM_MAP_ID";
 
+const string TileProperties::TILE_PROPERTY_NAME = "TILE_PROPERTY_NAME";
+
 // Generate the string used to identify the custom map ID of a particular depth
 // in the dungeon or world.  A custom map ID for two levels deep in the dungeon
 // would be "-2_MAP_ID".  One that was five levels up (in a tower, etc) would

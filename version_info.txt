@@ -1,9 +1,15 @@
-Shadow of the Wyrm v1.2.9 "Kapsberger"
+Shadow of the Wyrm v1.3.0 "Kapsberger"
 - Version declared February 20, 2021.
+
+- Settlements are now named during world generation.
 
 - Additional name combinations.
 
 - Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - Cats shouldn't have been aggressive by default (YARD).
 
 Shadow of the Wyrm v1.2.8 "Holborne"
 - Version declared December 13, 2020.  Version finalized February 20, 2021.

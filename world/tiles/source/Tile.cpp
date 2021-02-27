@@ -143,6 +143,21 @@ bool Tile::has_extra_description() const
   return false;
 }
 
+bool Tile::has_name() const
+{
+  return has_additional_property(TileProperties::TILE_PROPERTY_NAME);
+}
+
+void Tile::set_name(const string& name)
+{
+  set_additional_property(TileProperties::TILE_PROPERTY_NAME, name);
+}
+
+string Tile::get_name() const
+{
+  return get_additional_property(TileProperties::TILE_PROPERTY_NAME);
+}
+
 void Tile::set_engraving_sid(const string& new_engraving_sid)
 {
   set_additional_property(TileProperties::TILE_PROPERTY_ENGRAVING_SID, new_engraving_sid);
