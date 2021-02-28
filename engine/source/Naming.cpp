@@ -29,9 +29,9 @@ const SyllableMap Naming::syllables =
 const map<int, vector<string>> Naming::settlement_syllables =
 {
   {
-    { 1, { "Ad", "Aer", "Al", "Bak", "Ban", "Cad", "Cam", "Dan", "Den", "Dip", "Ex", "Ix", "Ip", "Ran", "Tam", "Tar", "Tet", "Sar", "Scar", "Skar", "Vid", "Var"} },
-    { 2, { "a", "e", "i", "o", "da", "de", "di", "do", "du", "la", "le", "li", "lo", "ra", "re", "ri", "ro", "ru"} },
-    { 3, { "ban", "bex", "bil", "can", "car", "dan", "den", "dil", "dix", "el", "fil", "gan", "gap", "gen", "gon", "ham", "hem", "kam", "kan", "kar", "tam", "tan", "tap"}}
+    { 1, { "Ad", "Aed", "Aer", "Alt", "Ap", "Ax", "Bac", "Bak", "Ban", "Cad", "Cam", "Dam", "Dan", "Dar", "Den", "Dip", "El", "Ex", "Ix", "Ip", "Kal", "Kan", "Kat", "Ket", "Kit", "Ox", "Pad", "Pan", "Ran", "Tam", "Tar", "Tet", "Sar", "Scar", "Skar", "Star", "Ux", "Var", "Vid", "Vir", "Yad", "Yan", "Yar"} },
+    { 2, { "a", "ae", "e", "i", "o", "da", "dae", "de", "di", "do", "du", "ga", "gae", "ge", "gi", "go", "la", "lae", "le", "li", "lo", "ra", "rae", "re", "ri", "ro", "ru", "sa", "sae", "se", "si", "so", "su"} },
+    { 3, { "bal", "ban", "bex", "bil", "can", "car", "dan", "den", "dil", "dix", "el", "fil", "gan", "gap", "gel", "gen", "gil", "gon", "ham", "hem", "kam", "kan", "kar", "tam", "tan", "tap"}}
   }
 };
 
