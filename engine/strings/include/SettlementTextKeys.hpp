@@ -12,6 +12,12 @@ class SettlementTextKeys
 
     // %s1 = name, %s2 = description/feature
     static const std::string POSSESSIVE_SETTLEMENT_FORMAT;
+
+    // Located settlement formats give names reminiscent
+    // of English places: X-upon-Y, etc.  They each
+    // follow a %s1-<something>-%s2 format.
+    static const std::string LOCATED_SETTLEMENT_FORMATS;
+
   protected:
     SettlementTextKeys();
     ~SettlementTextKeys();

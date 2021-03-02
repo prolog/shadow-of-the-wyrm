@@ -26,9 +26,11 @@ class Naming
 
     static std::string create_name(const int num_syllables, const std::map<int, std::map<int, std::vector<std::string>>>& syl_map_entry);
 
+    static std::string generate_locative_settlement_name();
     static std::string generate_possessive_settlement_name();
     static std::string generate_descriptive_settlement_name();
     static std::string generate_random_settlement_name();
+    static std::string generate_base_random_settlement_name();
 
     static uint MAXIMUM_NAME_SIZE;
     static const int MIN_NAME_SYL;

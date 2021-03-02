@@ -162,7 +162,11 @@ string Naming::generate_settlement_name()
 {
   string settlement_name;
 
-  if (RNG::percent_chance(15))
+  if (RNG::percent_chance(7))
+  {
+    settlement_name = generate_locative_settlement_name();
+  }
+  else if (RNG::percent_chance(15))
   {
     settlement_name = generate_possessive_settlement_name();
   } 
@@ -178,6 +182,17 @@ string Naming::generate_settlement_name()
   return settlement_name;
 }
 
+string Naming::generate_locative_settlement_name()
+{
+  vector<string> locative_formats = String::create_string_vector_from_csv_string(StringTable::get(SettlementTextKeys::LOCATED_SETTLEMENT_FORMATS));
+  string name = locative_formats.at(RNG::range(0, locative_formats.size() - 1));
+  string rand1 = generate_base_random_settlement_name();
+  string rand2 = generate_base_random_settlement_name();
+  boost::replace_first(name, "%s1", rand1);
+  boost::replace_first(name, "%s2", rand2);
+
+  return name;
+}
 string Naming::generate_possessive_settlement_name()
 {
   string poss_name;
@@ -214,7 +229,7 @@ string Naming::generate_descriptive_settlement_name()
   return desc_name;
 }
 
-string Naming::generate_random_settlement_name()
+string Naming::generate_base_random_settlement_name()
 {
   string rand_name;
   int num_syllables = RNG::range(1, 3);
@@ -226,9 +241,21 @@ string Naming::generate_random_settlement_name()
       const vector<string>& syllables = settlement_syllables.at(i);
       string syl = syllables.at(RNG::range(0, syllables.size() - 1));
 
+      if (i == 2 && num_syllables == 2 && RNG::percent_chance(10))
+      {
+        rand_name += "-";
+      }
+
       rand_name += syl;
     }
   }
+
+  return rand_name;
+}
+
+string Naming::generate_random_settlement_name()
+{
+  string rand_name = generate_base_random_settlement_name();
 
   if (RNG::percent_chance(20))
   {
