@@ -1,14 +1,8 @@
 Me:
-- Occasionally hyphens in names
-- Settlement names:
-  - <Dir?> <Name or Descriptor>
-  - DirectionalName: <Dir> <Name or Descriptor>
-  - Name: (<1, 2, 3 syllable> or <Possessive>) <Descriptor?>
-  - Possessive: things like Angel's, Devil's, <regular name>'s
-  - Descriptor: things like Falls, Forest, etc. Always included if possessive
-    present.
-  - Examples: West Haver, Ilirik, Dunla Falls, Braebik's River
-  - MapTester should be able to spit out a list
+- Prevent add_object_to_... generating cursed from Lua?
+- Scale sprites by setting a float scaling factor and allowing SDL_RenderCopy
+  to stretch into the dest rect. horizontal and vertical scaling factors to
+  match resolution?
 - More Acey/Sea Captain quests
 - Acey quest to steal Ironsword and deliver to Atua-Elar after it's retrieved.
   - Emperor should transfer Ironsword to the armory

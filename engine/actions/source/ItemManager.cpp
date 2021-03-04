@@ -248,7 +248,7 @@ pair<bool, vector<ItemPtr>> ItemManager::remove_item_from_eq_or_inv(CreaturePtr 
 
 // Create an item with a certain probability, and add it to the given
 // inventory.  If we don't pass the probability check, do nothing.
-bool ItemManager::create_item_with_probability(const int rand_less_than_or_equal_val, const int rand_upper_val, IInventoryPtr inv, const std::string& item_id, const uint quantity)
+bool ItemManager::create_item_with_probability(const int rand_less_than_or_equal_val, const int rand_upper_val, IInventoryPtr inv, const std::string& item_id, const uint quantity, const bool disallow_cursed)
 {
   // For safety's sake, always do nothing and return false when the item id
   // is empty.
@@ -265,6 +265,11 @@ bool ItemManager::create_item_with_probability(const int rand_less_than_or_equal
     // Only add the item if it was created successfully
     if (item)
     {
+      if (disallow_cursed && item->get_status() == ItemStatus::ITEM_STATUS_CURSED)
+      {
+        item->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
+      }
+
       inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
 
       return true;

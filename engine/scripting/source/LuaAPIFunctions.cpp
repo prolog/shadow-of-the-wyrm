@@ -979,7 +979,7 @@ int add_object_to_player_tile(lua_State* ls)
         quantity = static_cast<uint>(lua_tointeger(ls, 2));
       }
 
-      added = ItemManager::create_item_with_probability(100, 100, player_tile->get_items(), base_item_id, quantity);
+      added = ItemManager::create_item_with_probability(100, 100, player_tile->get_items(), base_item_id, quantity, true /* disallow cursed */);
     }
   }
   else

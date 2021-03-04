@@ -3,6 +3,12 @@ Shadow of the Wyrm v1.3.0 "Kapsberger"
 
 - Settlements are now named during world generation.
 
+- Cloak of Shadows now adds a little evade and soak as well as the Shadow
+  resistance, making it more useful as a general-purpose buff.
+
+- Items generated for the player (via NPCs, quest rewards, and so on) are
+  now prevented from having cursed status (Mythrrinthael).
+
 - Additional name combinations.
 
 - Stanzas for "Tel and Floridel".
