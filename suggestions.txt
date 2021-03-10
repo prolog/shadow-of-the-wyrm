@@ -1,5 +1,8 @@
 Me:
-- Prevent add_object_to_... generating cursed from Lua?
+- Water inventory should be a new WaterInventory class. Items that float,
+  based on material, stay. Others are discarded. (prep for the afterlife,
+  corpse river, etc)
+- Colour negative status msgs different (Poser Disposer)
 - Scale sprites by setting a float scaling factor and allowing SDL_RenderCopy
   to stretch into the dest rect. horizontal and vertical scaling factors to
   match resolution?

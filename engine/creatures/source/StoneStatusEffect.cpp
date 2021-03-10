@@ -34,7 +34,7 @@ void StoneStatusEffect::tick(CreaturePtr creature, const int danger_level) const
       message = get_npc_application_message(creature);
     }
 
-    manager.add_new_message(message);
+    manager.add_new_message(message, Colour::COLOUR_RED);
     manager.send();
   }
 }
@@ -93,7 +93,6 @@ void StoneStatusEffect::finalize(CreaturePtr creature) const
 string StoneStatusEffect::get_player_application_message() const
 {
   string message = StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_STONE);
-  
   return message;
 }
 
