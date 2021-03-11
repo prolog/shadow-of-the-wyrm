@@ -890,6 +890,24 @@ int Item::get_score() const
   return 0;
 }
 
+void Item::set_floats(const bool new_floats)
+{
+  set_additional_property(ItemProperties::ITEM_PROPERTIES_FLOATS, std::to_string(new_floats));
+}
+
+bool Item::get_floats() const
+{
+  bool floats = false;
+  string float_prop = get_additional_property(ItemProperties::ITEM_PROPERTIES_FLOATS);
+
+  if (!float_prop.empty())
+  {
+    floats = String::to_bool(float_prop);
+  }
+
+  return floats;
+}
+
 void Item::increase_value(const int num_points)
 {
   for (int i = 0; i < num_points; i++)

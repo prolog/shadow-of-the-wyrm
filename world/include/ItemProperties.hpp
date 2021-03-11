@@ -22,6 +22,7 @@ class ItemProperties
     static const std::string ITEM_PROPERTIES_LOCK_ID;
     static const std::string ITEM_PROPERTIES_MARK_AUTOMOVE;
     static const std::string ITEM_PROPERTIES_CONTRABAND;
+    static const std::string ITEM_PROPERTIES_FLOATS;
 
   protected:
     ItemProperties();

@@ -9,6 +9,9 @@ Shadow of the Wyrm v1.3.0 "Kapsberger"
 - Items generated for the player (via NPCs, quest rewards, and so on) are
   now prevented from having cursed status (Mythrrinthael).
 
+- The tick message for stoning is now displayed in red, to be more visible
+  against other messages (Poser Destroyer).
+
 - Additional name combinations.
 
 - Stanzas for "Tel and Floridel".
