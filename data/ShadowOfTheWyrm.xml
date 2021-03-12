@@ -5728,7 +5728,7 @@
 			<Properties>
 				<Property>
 					<Name>STATISTIC_MODIFIER_SOAK</Name>
-					<Value>10</Value>
+					<Value>15</Value>
 				</Property>
 				<Property>
 					<Name>SPELL_WEAR_OFF_SID</Name>

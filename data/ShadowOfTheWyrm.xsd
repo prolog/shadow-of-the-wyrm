@@ -1204,7 +1204,7 @@
 </xs:complexType>
 <xs:complexType name="Weight">
 	<xs:sequence>
-		<xs:element name="Pounds" type="xs:integer"/>
+		<xs:element name="Pounds" type="xs:integer" minOccurs="0"/>
 		<xs:element name="Ounces" type="xs:integer" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
@@ -1515,11 +1515,12 @@
 			13 = Gold
 			14 = Gases
 			15 = Unknown
+			16 = Meat
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="15"/>
+		<xs:maxInclusive value="16"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="ColourType">

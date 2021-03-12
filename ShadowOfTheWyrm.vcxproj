@@ -1326,6 +1326,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\materials\include\Material.hpp" />
     <ClInclude Include="world\materials\include\MaterialFactory.hpp" />
     <ClInclude Include="world\materials\include\MaterialTypes.hpp" />
+    <ClInclude Include="world\materials\include\Meat.hpp" />
     <ClInclude Include="world\materials\include\Onyx.hpp" />
     <ClInclude Include="world\materials\include\Paper.hpp" />
     <ClInclude Include="world\materials\include\Steel.hpp" />
@@ -3565,6 +3566,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\materials\source\Marble.cpp" />
     <ClCompile Include="world\materials\source\Material.cpp" />
     <ClCompile Include="world\materials\source\MaterialFactory.cpp" />
+    <ClCompile Include="world\materials\source\Meat.cpp" />
     <ClCompile Include="world\materials\source\Onyx.cpp" />
     <ClCompile Include="world\materials\source\Paper.cpp" />
     <ClCompile Include="world\materials\source\Steel.cpp" />

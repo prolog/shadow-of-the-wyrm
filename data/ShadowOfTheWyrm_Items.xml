@@ -7352,7 +7352,7 @@
 				</Weight>
 				<WornLocation>-1</WornLocation>
 				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
@@ -7824,7 +7824,6 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>	 
 				<Symbol>
 					<Char>%</Char>
@@ -7848,7 +7847,6 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7872,8 +7870,7 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
@@ -7896,8 +7893,7 @@
 					<Pounds>8</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
@@ -7920,8 +7916,7 @@
 					<Pounds>4</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
@@ -7944,8 +7939,7 @@
 					<Pounds>6</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
@@ -7968,8 +7962,7 @@
 					<Pounds>12</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
@@ -7992,8 +7985,7 @@
 					<Pounds>2</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
@@ -8017,7 +8009,6 @@
 					<Ounces>8</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -8042,8 +8033,7 @@
 					<Ounces>9</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
@@ -8067,8 +8057,7 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
@@ -8092,7 +8081,6 @@
 					<Ounces>3</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -8117,8 +8105,7 @@
 					<Ounces>6</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
