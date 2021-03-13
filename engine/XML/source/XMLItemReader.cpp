@@ -90,6 +90,14 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
       item->set_weight(weight);
     }
 
+    XMLNode floats_node = XMLUtils::get_next_element_by_local_name(item_node, "Floats");
+
+    if (!floats_node.is_null())
+    {
+      bool floats = XMLUtils::get_node_bool_value(floats_node);
+      item->set_floats(floats);
+    }
+
     EquipmentWornLocation location = static_cast<EquipmentWornLocation>(XMLUtils::get_child_node_int_value(item_node, "WornLocation", static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_NONE)));
     item->set_worn_location(location);
 

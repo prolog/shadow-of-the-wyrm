@@ -1045,6 +1045,7 @@
 		<xs:element name="Value" type="tns:NonNegativeInt"/>
 		<xs:element name="Contraband" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="Weight" type="tns:Weight"/>
+		<xs:element name="Floats" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="WornLocation" type="tns:WornLocation" minOccurs="0"/>
 		<xs:element name="ItemStatus" type="tns:ItemStatus" minOccurs="0"/>
 <!--		<xs:element name="ItemType" type="tns:ItemType"/> -->
