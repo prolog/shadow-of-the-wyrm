@@ -1,6 +1,7 @@
 #include "InventoryFactory.hpp"
 #include "Inventory.hpp"
 #include "NullInventory.hpp"
+#include "WaterInventory.hpp"
 
 IInventoryPtr InventoryFactory::create_inventory(ClassIdentifier cl_id)
 {
@@ -13,6 +14,10 @@ IInventoryPtr InventoryFactory::create_inventory(ClassIdentifier cl_id)
   else if (cl_id == ClassIdentifier::CLASS_ID_NULL_INVENTORY)
   {
     inv = std::make_shared<NullInventory>();
+  }
+  else if (cl_id == ClassIdentifier::CLASS_ID_WATER_INVENTORY)
+  {
+    inv = std::make_shared<WaterInventory>();
   }
   else
   {

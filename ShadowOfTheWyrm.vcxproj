@@ -1295,6 +1295,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\include\ThreatRatings.hpp" />
     <ClInclude Include="world\include\Tool.hpp" />
     <ClInclude Include="world\include\Wand.hpp" />
+    <ClInclude Include="world\include\WaterInventory.hpp" />
     <ClInclude Include="world\include\WaterTypes.hpp" />
     <ClInclude Include="world\include\Weapon.hpp" />
     <ClInclude Include="world\include\WeaponTypes.hpp" />
@@ -4005,6 +4006,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\source\unit_tests\WaterInventory_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\source\unit_tests\WorldMap_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -4126,6 +4133,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\Wand.cpp" />
+    <ClCompile Include="world\source\WaterInventory.cpp" />
     <ClCompile Include="world\source\Weapon.cpp" />
     <ClCompile Include="world\source\Wearable.cpp" />
     <ClCompile Include="world\source\WeavingConstants.cpp" />
