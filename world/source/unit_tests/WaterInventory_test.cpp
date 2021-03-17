@@ -53,6 +53,43 @@ TEST(SW_World_WaterInventory, add_front)
   }
 }
 
+TEST(SW_World_WaterInventory, merge_or_add)
+{
+  WaterInventory wi;
+  ItemPtr item = std::make_shared<Amulet>();
+  item->set_floats(true);
+  wi.merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+
+  EXPECT_EQ(1, wi.size());
+
+  item = std::make_shared<Amulet>();
+  item->set_floats(true);
+  wi.merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+
+  auto ilist = wi.get_items_cref();
+  EXPECT_EQ(1, ilist.size());
+  EXPECT_EQ(2, ilist.front()->get_quantity());
+}
+
+TEST(SW_World_WaterInventory, merge)
+{
+  WaterInventory wi;
+  ItemPtr item = std::make_shared<Amulet>();
+  item->set_floats(true);
+
+  EXPECT_FALSE(wi.merge(item));
+
+  wi.add(item);
+
+  item = std::make_shared<Amulet>();
+  item->set_floats(true);
+
+  bool result = wi.merge(item);
+  auto ilist = wi.get_items_cref();
+  EXPECT_EQ(1, ilist.size());
+  EXPECT_EQ(2, ilist.front()->get_quantity());
+}
+
 TEST(SW_World_WaterInventory, set_items)
 {
   WaterInventory wi;
@@ -123,6 +160,12 @@ TEST(SW_World_WaterInventory, add_items)
   EXPECT_EQ(3, items.size());
   EXPECT_EQ("abc123", items.front()->get_id());
   EXPECT_EQ("321321", items.back()->get_id());
+}
+
+TEST(SW_World_WaterInventory, get_drop_effect_sid)
+{
+  WaterInventory wi;
+  EXPECT_EQ(ActionTextKeys::ACTION_DROP_WATER, wi.get_drop_effect_sid());
 }
 
 TEST(SW_World_WaterInventory, serialization_id)

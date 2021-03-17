@@ -1,4 +1,5 @@
 #include "WaterInventory.hpp"
+#include "ActionTextKeys.hpp"
 
 using namespace std;
 
@@ -60,6 +61,11 @@ void WaterInventory::add_items(const list<ItemPtr>& new_items)
   }
 
   Inventory::add_items(safe_to_add);
+}
+
+string WaterInventory::get_drop_effect_sid() const
+{
+  return ActionTextKeys::ACTION_DROP_WATER;
 }
 
 ClassIdentifier WaterInventory::internal_class_identifier() const

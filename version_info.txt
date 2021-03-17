@@ -12,6 +12,8 @@ Shadow of the Wyrm v1.3.0 "Kapsberger"
 - The tick message for stoning is now displayed in red, to be more visible
   against other messages (Poser Destroyer).
 
+- Dropping items in water now generates a "Splash!" message.
+
 - Additional name combinations.
 
 - Defined a new "meat" material type, and named the wood one "wood/plant".

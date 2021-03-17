@@ -576,6 +576,7 @@ const string ActionTextKeys::ACTION_DROP_NOT_ALLOWED           = "ACTION_DROP_NO
 const string ActionTextKeys::ACTION_DROP_NO_ITEM_SELECTED      = "ACTION_DROP_NO_ITEM_SELECTED";
 const string ActionTextKeys::ACTION_DROP_QUANTITY_PROMPT       = "ACTION_DROP_QUANTITY_PROMPT";
 const string ActionTextKeys::ACTION_DROP_INVALID_QUANTITY      = "ACTION_DROP_INVALID_QUANTITY";
+const string ActionTextKeys::ACTION_DROP_WATER                 = "ACTION_DROP_WATER";
 const string ActionTextKeys::ACTION_PICK_UP_NOTHING_ON_GROUND  = "ACTION_PICK_UP_NOTHING_ON_GROUND";
 const string ActionTextKeys::ACTION_PICK_UP_MAX_ITEMS          = "ACTION_PICK_UP_MAX_ITEMS";
 const string ActionTextKeys::ACTION_PICK_UP_MAX_WEIGHT         = "ACTION_PICK_UP_MAX_WEIGHT";

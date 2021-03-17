@@ -13,6 +13,8 @@ class WaterInventory : public Inventory
     void set_items(const std::list<ItemPtr>& items) override;
     void add_items(const std::list<ItemPtr>& items) override;
 
+    std::string get_drop_effect_sid() const override;
+
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };

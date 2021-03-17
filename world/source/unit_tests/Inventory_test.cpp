@@ -198,3 +198,10 @@ TEST(SW_World_Inventory, get_from_type)
 
   EXPECT_EQ(2, items.size());
 }
+
+TEST(SW_World_Inventory, no_drop_effect_sid)
+{
+  Inventory i;
+
+  EXPECT_EQ("", i.get_drop_effect_sid());
+}
