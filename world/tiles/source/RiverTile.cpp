@@ -1,11 +1,11 @@
 #include "RiverTile.hpp"
-#include "NullInventory.hpp"
 #include "TileProperties.hpp"
+#include "WaterInventory.hpp"
 #include "WaterTypes.hpp"
 
 RiverTile::RiverTile()
 {
-  items = std::make_shared<NullInventory>();
+  items = std::make_shared<WaterInventory>();
 }
 
 TileType RiverTile::get_tile_type() const

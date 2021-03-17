@@ -40,18 +40,18 @@ bool WaterInventory::merge(ItemPtr new_item)
   return false;
 }
 
-void WaterInventory::set_items(const list<ItemPtr>& items)
+void WaterInventory::set_items(const list<ItemPtr>& new_items)
 {
   this->items.clear();
 
-  add_items(items);
+  add_items(new_items);
 }
 
-void WaterInventory::add_items(const list<ItemPtr>& items)
+void WaterInventory::add_items(const list<ItemPtr>& new_items)
 {
   list<ItemPtr> safe_to_add;
 
-  for (ItemPtr i : items)
+  for (ItemPtr i : new_items)
   {
     if (i != nullptr && i->get_floats())
     {

@@ -3,6 +3,7 @@ Me:
   based on material, stay. Others are discarded. (prep for the afterlife,
   corpse river, etc)
 - Unit tests for WaterInventory
+- Splash message when dropping in water
 - Scale sprites by setting a float scaling factor and allowing SDL_RenderCopy
   to stretch into the dest rect. horizontal and vertical scaling factors to
   match resolution?
