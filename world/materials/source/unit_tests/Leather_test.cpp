@@ -1,5 +1,11 @@
 #include "gtest/gtest.h"
 
+TEST(SW_World_Material_Leather, type)
+{
+  Leather l;
+  EXPECT_EQ(MaterialType::MATERIAL_TYPE_LEATHER, l.get_type());
+}
+
 TEST(SW_World_Material_Leather, get_colour)
 {
   Leather l;
@@ -13,7 +19,7 @@ TEST(SW_World_Material_Leather, flags)
 
   EXPECT_FALSE(l.get_is_flammable());
   EXPECT_FALSE(l.get_is_explosive());
-  EXPECT_FALSE(l.get_corrodible());
+  EXPECT_FALSE(l.get_is_corrodible());
   EXPECT_FALSE(l.get_crumbles());
 }
 

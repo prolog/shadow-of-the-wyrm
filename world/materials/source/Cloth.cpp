@@ -43,3 +43,6 @@ Material* Cloth::clone()
   return new Cloth(*this);
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/Cloth_test.cpp"
+#endif

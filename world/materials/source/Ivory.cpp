@@ -43,3 +43,6 @@ Material* Ivory::clone()
   return new Ivory(*this);
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/Ivory_test.cpp"
+#endif

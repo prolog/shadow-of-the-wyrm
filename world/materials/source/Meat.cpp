@@ -42,3 +42,7 @@ Material* Meat::clone()
 {
   return new Meat(*this);
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Meat_test.cpp"
+#endif

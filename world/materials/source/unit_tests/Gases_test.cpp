@@ -1,5 +1,11 @@
 #include "gtest/gtest.h"
 
+TEST(SW_World_Material_Gases, type)
+{
+  Gases g;
+  EXPECT_EQ(MaterialType::MATERIAL_TYPE_GASES, g.get_type());
+}
+
 TEST(SW_World_Material_Gases, get_colour)
 {
   Gases g;
@@ -13,7 +19,7 @@ TEST(SW_World_Material_Gases, flags)
 
   EXPECT_TRUE(g.get_is_flammable());
   EXPECT_TRUE(g.get_is_explosive());
-  EXPECT_FALSE(g.get_corrodible());
+  EXPECT_FALSE(g.get_is_corrodible());
   EXPECT_FALSE(g.get_crumbles());
 }
 

@@ -8797,5 +8797,47 @@
     <ClCompile Include="world\materials\source\unit_tests\Wood_test.cpp">
       <Filter>Source Files\world\materials\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Bone_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Cloth_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\DragonScale_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Glass_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Gold_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Iron_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Ivory_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Marble_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Meat_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Onyx_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Paper_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Steel_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Stone_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\UnknownMaterial_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

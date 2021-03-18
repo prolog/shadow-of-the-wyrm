@@ -43,3 +43,6 @@ Material* UnknownMaterial::clone()
   return new UnknownMaterial(*this);
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/UnknownMaterial_test.cpp"
+#endif
