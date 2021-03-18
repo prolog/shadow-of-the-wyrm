@@ -26,6 +26,9 @@ Shadow of the Wyrm v1.3.0 "Kapsberger"
 
   - Scroll-stacking issues (Mythrrinthael).
 
+  - Cyrillic text wasn't working in SDL when bitmapped fonts were placing
+    the characters > 127 (Meklon2007).
+
 Shadow of the Wyrm v1.2.8 "Holborne"
 - Version declared December 13, 2020.  Version finalized February 20, 2021.
 
