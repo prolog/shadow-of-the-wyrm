@@ -43,3 +43,11 @@ Material* Gases::clone()
   return new Gases(*this);
 }
 
+bool Gases::get_material_floats() const
+{
+  return true;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Gases_test.cpp"
+#endif

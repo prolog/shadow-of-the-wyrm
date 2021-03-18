@@ -14,6 +14,8 @@ class Gases : public Material
     
     virtual Colour get_colour() const override;
 
+    bool get_material_floats() const override;
+
     Material* clone() override;
 };
 

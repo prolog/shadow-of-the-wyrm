@@ -8788,5 +8788,14 @@
     <ClCompile Include="world\source\unit_tests\WaterInventory_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Gases_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Leather_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Wood_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
