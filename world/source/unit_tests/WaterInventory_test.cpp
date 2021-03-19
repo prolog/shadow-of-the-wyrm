@@ -4,6 +4,7 @@
 TEST(SW_World_WaterInventory, add)
 {
   ItemPtr amulet = std::make_shared<Amulet>();
+  amulet->set_material_type(MaterialType::MATERIAL_TYPE_GOLD);
   WaterInventory wi;
 
   bool val = wi.add(amulet);
@@ -11,6 +12,7 @@ TEST(SW_World_WaterInventory, add)
   EXPECT_EQ(0, wi.size());
 
   ItemPtr fl_amulet = std::make_shared<Amulet>();
+  fl_amulet->set_material_type(MaterialType::MATERIAL_TYPE_GOLD);
   fl_amulet->set_floats(true);
   val = wi.add(fl_amulet);
 
@@ -21,6 +23,7 @@ TEST(SW_World_WaterInventory, add)
 TEST(SW_World_WaterInventory, add_front)
 {
   ItemPtr amulet = std::make_shared<Amulet>();
+  amulet->set_material_type(MaterialType::MATERIAL_TYPE_GOLD);
   WaterInventory wi;
 
   bool val = wi.add_front(amulet);
@@ -28,6 +31,7 @@ TEST(SW_World_WaterInventory, add_front)
   EXPECT_EQ(0, wi.size());
 
   ItemPtr fl_amulet = std::make_shared<Amulet>();
+  fl_amulet->set_material_type(MaterialType::MATERIAL_TYPE_GOLD);
   fl_amulet->set_id("1");
   fl_amulet->set_floats(true);
   val = wi.add_front(fl_amulet);
@@ -75,6 +79,7 @@ TEST(SW_World_WaterInventory, merge)
 {
   WaterInventory wi;
   ItemPtr item = std::make_shared<Amulet>();
+  item->set_material_type(MaterialType::MATERIAL_TYPE_GOLD);
   item->set_floats(true);
 
   EXPECT_FALSE(wi.merge(item));
@@ -82,6 +87,7 @@ TEST(SW_World_WaterInventory, merge)
   wi.add(item);
 
   item = std::make_shared<Amulet>();
+  item->set_material_type(MaterialType::MATERIAL_TYPE_GOLD);
   item->set_floats(true);
 
   bool result = wi.merge(item);
@@ -94,6 +100,7 @@ TEST(SW_World_WaterInventory, set_items)
 {
   WaterInventory wi;
   ItemPtr item = std::make_shared<Amulet>();
+  item->set_material_type(MaterialType::MATERIAL_TYPE_GOLD);
   item->set_floats(true);
 
   list<ItemPtr> items;

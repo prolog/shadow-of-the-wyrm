@@ -46,6 +46,7 @@ TEST(SW_World_Amulet, smithing_value_progression)
 TEST(SW_World_Amulet, floats)
 {
   Amulet a;
+  a.set_material_type(MaterialType::MATERIAL_TYPE_GOLD);
 
   EXPECT_FALSE(a.get_floats());
 

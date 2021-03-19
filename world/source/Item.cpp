@@ -11,7 +11,6 @@
 #include "SkinningConstants.hpp"
 #include "Wood.hpp"
 #include "EffectFactory.hpp"
-#include "MaterialFactory.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
@@ -898,11 +897,16 @@ void Item::set_floats(const bool new_floats)
 bool Item::get_floats() const
 {
   bool floats = false;
+  MaterialPtr materialp = MaterialFactory::create_material(material);
+  floats = materialp->get_material_floats();
+
   string float_prop = get_additional_property(ItemProperties::ITEM_PROPERTIES_FLOATS);
 
   if (!float_prop.empty())
   {
-    floats = String::to_bool(float_prop);
+
+    floats = floats || String::to_bool(float_prop);
+
   }
 
   return floats;
