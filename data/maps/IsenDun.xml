@@ -63,6 +63,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>advisor</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>34</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>_fisherman</ID>
 				<Coord>
 					<Row>17</Row>

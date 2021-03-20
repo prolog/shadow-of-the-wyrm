@@ -1,8 +1,7 @@
 Me:
-- Splash message when dropping in water
-- Water inventory should be a new WaterInventory class. Items that float,
-  based on material, stay. Others are discarded. (prep for the afterlife,
-  corpse river, etc)
+- ASSET RELEASE
+- advisor
+- dynamically set Hrimgar's advisor's chat script, text details sid
 - Scale sprites by setting a float scaling factor and allowing SDL_RenderCopy
   to stretch into the dest rect. horizontal and vertical scaling factors to
   match resolution?

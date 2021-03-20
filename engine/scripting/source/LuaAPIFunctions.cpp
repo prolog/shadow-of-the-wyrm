@@ -420,6 +420,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "reset_creatures_and_creature_locations", reset_creatures_and_creature_locations);
   lua_register(L, "set_creature_speech_text_sid", set_creature_speech_text_sid);
   lua_register(L, "get_creature_speech_text_sid", get_creature_speech_text_sid);
+  lua_register(L, "set_creature_text_details_sid", set_creature_text_details_sid);
   lua_register(L, "creature_has_humanoid_followers", creature_has_humanoid_followers);
   lua_register(L, "count_creature_humanoid_followers", count_creature_humanoid_followers);
 }
@@ -8513,6 +8514,44 @@ int get_creature_speech_text_sid(lua_State* ls)
   }
 
   lua_pushstring(ls, speech_text_sid.c_str());
+  return 1;
+}
+
+int set_creature_text_details_sid(lua_State* ls)
+{
+  bool set_val = false;
+
+  if (lua_gettop(ls) == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int y = lua_tointeger(ls, 2);
+    int x = lua_tointeger(ls, 3);
+    string new_sid = lua_tostring(ls, 4);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      if (tile != nullptr && tile->has_creature())
+      {
+        CreaturePtr c = tile->get_creature();
+
+        if (c != nullptr)
+        {
+          c->set_text_details_sid(new_sid);
+          set_val = true;
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_creature_text_details_sid");
+  }
+
+  lua_pushboolean(ls, set_val);
   return 1;
 }
 

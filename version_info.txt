@@ -17,7 +17,9 @@ Shadow of the Wyrm v1.3.0 "Kapsberger"
 - Additional name combinations.
 
 - Defined a new "meat" material type, and named the wood one "wood/plant".
-  
+
+- New creatures: advisor.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
