@@ -33,5 +33,6 @@ set_creature_name(shk_id, "Bree", yew_id)
 set_shop_shopkeeper_id(shop_id, shk_id, yew_id)
 repop_shop(shop_id, yew_id)
 
-generate_hireling("forest_of_yew", 1, 28, RNG_range(14, 17))
+generate_hireling(yew_id, 1, 28, RNG_range(14, 17))
+set_chat_script(yew_id, 5, 36, "quests/yew/advisor.lua")
 

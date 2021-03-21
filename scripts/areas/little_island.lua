@@ -53,3 +53,4 @@ generate_hireling(isen_dun_id, 16, 70, RNG_range(5,7))
 
 -- Set Hrimgar's advisor's custom bestiary text and chat script
 set_creature_text_details_sid(isen_dun_id, 4, 34, "HRIMGAR_ADVISOR_TEXT_DETAILS_SID")
+set_chat_script(isen_dun_id, 4, 34, "quests/isen_dun/advisor.lua")

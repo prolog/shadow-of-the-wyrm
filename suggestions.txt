@@ -1,6 +1,9 @@
 Me:
 - ASSET RELEASE
 - advisor
+- when drinking a large amount of alcohol (say 20 std drinks?) poison the player
+  immediately
+- quest for advisor in Yew
 - dynamically set Hrimgar's advisor's chat script, text details sid
 - Scale sprites by setting a float scaling factor and allowing SDL_RenderCopy
   to stretch into the dest rect. horizontal and vertical scaling factors to

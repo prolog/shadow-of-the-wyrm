@@ -8655,6 +8655,30 @@
 				<StandardDrinks>1</StandardDrinks>
 				<Effect>0</Effect>
 			</Potion>
+			<Potion id="isen_dun_whisky">
+				<DescriptionSID>ISEN_DUN_WHISKY_SID</DescriptionSID>
+				<UsageDescriptionSID>ISEN_DUN_WHISKY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ISEN_DUN_WHISKY_CODEX_SID</CodexDescriptionSID>
+				<Value>400</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>2</Material>
+				<Symbol>
+					<Char>!</Char>
+					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>4</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>0</Nutrition>
+				<StandardDrinks>100</StandardDrinks>
+				<Effect>0</Effect>
+			</Potion>
 			<Potion id="gnomish_stout">
 				<DescriptionSID>GNOMISH_STOUT_SID</DescriptionSID>
 				<UsageDescriptionSID>GNOMISH_STOUT_USAGE_SID</UsageDescriptionSID>

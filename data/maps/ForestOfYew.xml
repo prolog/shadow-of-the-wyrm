@@ -72,6 +72,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>advisor</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>36</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>falir</ID>
 				<Coord>
 					<Row>12</Row>

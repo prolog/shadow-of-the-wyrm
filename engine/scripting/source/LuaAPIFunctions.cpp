@@ -423,6 +423,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_text_details_sid", set_creature_text_details_sid);
   lua_register(L, "creature_has_humanoid_followers", creature_has_humanoid_followers);
   lua_register(L, "count_creature_humanoid_followers", count_creature_humanoid_followers);
+  lua_register(L, "set_chat_script", set_chat_script);
 }
 
 // Lua API helper functions
@@ -8632,4 +8633,45 @@ int count_creature_humanoid_followers(lua_State* ls)
 
   lua_pushinteger(ls, num_hf);
   return 1;
+}
+
+int set_chat_script(lua_State* ls)
+{
+  bool set = false;
+
+  if (lua_gettop(ls) == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int y = lua_tointeger(ls, 2);
+    int x = lua_tointeger(ls, 3);
+    string new_chat_script = lua_tostring(ls, 4);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      if (tile != nullptr && tile->has_creature())
+      {
+        CreaturePtr c = tile->get_creature();
+
+        if (c != nullptr)
+        {
+          ScriptDetails sd;
+          sd.set_chance(100);
+          sd.set_script(new_chat_script);
+
+          c->get_event_scripts_ref()[CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT] = sd;
+          set = true;
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_chat_script");
+  }
+
+  return set;
 }
