@@ -78,9 +78,6 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   uint current_creatures_placed = 0;
   uint unsuccessful_attempts = 0;
 
-  bool adv_placed = false;
-  bool hire_placed = false;
-
   auto fd_it = additional_properties.find(MapProperties::MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED);
   if (fd_it != additional_properties.end())
   {
