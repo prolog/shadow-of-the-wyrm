@@ -18,6 +18,9 @@ Shadow of the Wyrm v1.3.0 "Kapsberger"
 
 - Defined a new "meat" material type, and named the wood one "wood/plant".
 
+- A number of locations now have advisor NPCs.  Set a group quest for the
+  advisor in Isen Dun.
+
 - New creatures: advisor.
 
 - New items: Isen Dun whisky.
