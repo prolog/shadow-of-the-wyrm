@@ -2,6 +2,7 @@
 
 using namespace std;
 
+const uint AlcoholCalculator::IMMEDIATE_SICKNESS_TOUGHNESS_DIVISOR = 3;
 const uint AlcoholCalculator::BASE_MINUTES_FOR_ABSORPTION = 30;
 const uint AlcoholCalculator::BASE_MINUTES_FOR_METABOLIZATION = 60;
 const float AlcoholCalculator::BASE_METABOLISM_RATE = 0.5f;
@@ -25,6 +26,22 @@ void AlcoholCalculator::initialize_sex_based_maps()
   absorption_by_sex = map<CreatureSex, float>{{CreatureSex::CREATURE_SEX_MALE, 1.0f}, {CreatureSex::CREATURE_SEX_FEMALE, 1.5f}, {CreatureSex::CREATURE_SEX_NOT_SPECIFIED, 1.0f}};
 
   static_assert(CreatureSex::CREATURE_SEX_LAST == CreatureSex(3), "Creature sex has been updated - alcohol absorption and metabolism rate maps must be updated as well.");
+}
+
+// Is the creature immediately sick after drinking booze?
+bool AlcoholCalculator::is_immediately_sick(CreaturePtr creature, const float standard_drinks)
+{
+  bool sick = false;
+
+  if (creature != nullptr)
+  {
+    if (standard_drinks > (static_cast<uint>(creature->get_health().get_current()) / IMMEDIATE_SICKNESS_TOUGHNESS_DIVISOR))
+    {
+      sick = true;
+    }
+  }
+
+  return sick;
 }
 
 // Number of minutes required to pass before some alcohol is absorbed

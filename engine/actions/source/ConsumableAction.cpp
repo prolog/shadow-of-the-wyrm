@@ -1,3 +1,4 @@
+#include "AlcoholCalculator.hpp"
 #include "ClassManager.hpp"
 #include "ConsumableAction.hpp"
 #include "CreatureUtils.hpp"
@@ -35,7 +36,8 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
     int hunger_after = hunger.get_hunger();
     CreatureUtils::add_hunger_level_message_if_necessary(creature, hunger_before, hunger_after);
 
-    creature->increment_grams_unabsorbed_alcohol(AlcoholConverter::standard_drinks_to_absorbable_grams(consumable->get_standard_drinks()));
+    float std_drinks = consumable->get_standard_drinks();
+    creature->increment_grams_unabsorbed_alcohol(AlcoholConverter::standard_drinks_to_absorbable_grams(std_drinks));
 
     EffectType et = consumable->get_effect_type();
 
@@ -49,7 +51,10 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
     // the creature's combined race and class values.
     gain_resistances_from_consumable(creature, consumable);
 
-    if (consumable->get_poisoned())
+    AlcoholCalculator ac;
+    bool alcohol_poisoning = ac.is_immediately_sick(creature, std_drinks);
+
+    if (alcohol_poisoning || consumable->get_poisoned())
     {
       // Much greater chance to get poisoned by consuming poisoned food/drink
       // than by getting attacked by a poisoned attack.
@@ -64,7 +69,14 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
         danger_level = i_it->second.get_danger_level();
       }
 
-      if (poison && poison->should_apply_change(creature, ConsumableConstants::FOOD_POISON_APPLICATION_BONUS))
+      int bonus = ConsumableConstants::FOOD_POISON_APPLICATION_BONUS;
+
+      if (alcohol_poisoning)
+      {
+        bonus = ConsumableConstants::ALCOHOL_POISON_APPLICATION_BONUS;
+      }
+
+      if (poison && poison->should_apply_change(creature, bonus))
       {
         poison->apply_change(creature, danger_level);
       }

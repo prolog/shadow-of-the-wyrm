@@ -7,6 +7,8 @@ class AlcoholCalculator
   public:
     AlcoholCalculator();
 
+    bool is_immediately_sick(CreaturePtr creature, const float standard_drinks);
+
     uint calculate_minutes_for_absorption(CreaturePtr creature);
     uint calculate_minutes_for_metabolization(CreaturePtr creature);
 
@@ -19,6 +21,7 @@ class AlcoholCalculator
   protected:
     void initialize_sex_based_maps();
 
+    static const uint IMMEDIATE_SICKNESS_TOUGHNESS_DIVISOR;
     static const uint BASE_MINUTES_FOR_ABSORPTION;
     static const uint BASE_MINUTES_FOR_METABOLIZATION;
     static const float BASE_METABOLISM_RATE;

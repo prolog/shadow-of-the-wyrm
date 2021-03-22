@@ -21,6 +21,9 @@ Shadow of the Wyrm v1.3.0 "Kapsberger"
 - A number of locations now have advisor NPCs.  Set a group quest for the
   advisor in Isen Dun.
 
+- Drinking a large quantity of alcohol at once can now inflict immediate
+  poison status.
+
 - New creatures: advisor.
 
 - New items: Isen Dun whisky.

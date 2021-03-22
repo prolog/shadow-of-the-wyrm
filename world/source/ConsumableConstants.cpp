@@ -23,3 +23,6 @@ const string ConsumableConstants::CORPSE_RACE_ID = "CORPSE_RACE_ID";
 // poisoned blade.
 const int ConsumableConstants::FOOD_POISON_APPLICATION_BONUS = 30;
 
+// Alcohol poisoning is a very sure thing, if you've had enough at once.
+const int ConsumableConstants::ALCOHOL_POISON_APPLICATION_BONUS = 1000;
+
