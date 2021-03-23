@@ -1,6 +1,8 @@
 #include "global_prototypes.hpp"
 #include "Consumable.hpp"
 #include "ConsumableConstants.hpp"
+#include "Conversion.hpp"
+#include "ItemProperties.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
@@ -39,6 +41,24 @@ bool Consumable::is_corpse() const
   }
 
   return corpse;
+}
+
+void Consumable::set_metabolizes_alcohol(const bool new_metabolizes_alcohol)
+{
+  set_additional_property(ItemProperties::ITEM_PROPERTIES_METABOLIZES_ALCOHOL, std::to_string(new_metabolizes_alcohol));
+}
+
+bool Consumable::get_metabolizes_alcohol() const
+{
+  bool metabolizes = false;
+
+  string prop = get_additional_property(ItemProperties::ITEM_PROPERTIES_METABOLIZES_ALCOHOL);
+  if (!prop.empty())
+  {
+    metabolizes = String::to_bool(prop);
+  }
+
+  return metabolizes;
 }
 
 void Consumable::set_food_type(const FoodType new_food_type)
@@ -102,6 +122,7 @@ bool Consumable::consumable_properties_match(const Consumable& cons) const
   result = result && fequal(standard_drinks, cons.standard_drinks);
   result = result && (food_type == cons.food_type);
   result = result && (poisoned == cons.poisoned);
+  result = result && (get_additional_property(ItemProperties::ITEM_PROPERTIES_METABOLIZES_ALCOHOL) == cons.get_additional_property(ItemProperties::ITEM_PROPERTIES_METABOLIZES_ALCOHOL));
 
   return result;
 }

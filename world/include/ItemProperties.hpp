@@ -23,6 +23,7 @@ class ItemProperties
     static const std::string ITEM_PROPERTIES_MARK_AUTOMOVE;
     static const std::string ITEM_PROPERTIES_CONTRABAND;
     static const std::string ITEM_PROPERTIES_FLOATS;
+    static const std::string ITEM_PROPERTIES_METABOLIZES_ALCOHOL;
 
   protected:
     ItemProperties();

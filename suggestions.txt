@@ -1,6 +1,7 @@
 Me:
 - ASSET RELEASE
 - advisor
+- alcohol dehydrogenase (ADH) for wildflowers. Make it an item property.
 - wildflowers should negate booze (clue somewhere...)
 - quest for advisor in Yew
 - dynamically set Hrimgar's advisor's chat script, text details sid

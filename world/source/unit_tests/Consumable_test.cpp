@@ -1,6 +1,27 @@
 #include "gtest/gtest.h"
 #include "Food.hpp"
 
+TEST(SW_World_Consumable, metabolizes_alcohol)
+{
+  Food f;
+
+  EXPECT_FALSE(f.get_metabolizes_alcohol());
+
+  f.set_metabolizes_alcohol(true);
+
+  EXPECT_TRUE(f.get_metabolizes_alcohol());
+
+  Food f2;
+  f2.set_metabolizes_alcohol(true);
+
+  // With nothing else set, comparison should be based on alcohol metabolism.
+  EXPECT_TRUE(f == f2);
+
+  f2.set_metabolizes_alcohol(false);
+
+  EXPECT_FALSE(f == f2);
+}
+
 TEST(SW_World_Consumable, get_is_good_general_item_test)
 {
   Food f;
