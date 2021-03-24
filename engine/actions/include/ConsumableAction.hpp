@@ -13,6 +13,7 @@ class ConsumableAction : public IActionManager
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 
   protected:
+    void metabolize_alcohol(CreaturePtr creature, ConsumablePtr consumable);
     void gain_resistances_from_consumable(CreaturePtr creature, ConsumablePtr consumable);
     bool add_consumable_message_if_necessary(CreaturePtr creature, const Resistance& res, const double delta);
 };

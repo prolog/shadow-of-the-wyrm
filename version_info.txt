@@ -24,9 +24,13 @@ Shadow of the Wyrm v1.3.0 "Kapsberger"
 - Drinking a large quantity of alcohol at once can now inflict immediate
   poison status.
 
+- Certain items (wildflowers) metabolize alcohol, for reasons not fully
+  understood. Eating these metabolizes a portion of the unabsorbed alcohol
+  in your system and can help sober you up.
+
 - New creatures: advisor.
 
-- New items: Isen Dun whisky.
+- New items: Isen Dun whisky, flower bread.
 
 - Stanzas for "Tel and Floridel".
 

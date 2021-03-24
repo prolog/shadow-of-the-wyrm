@@ -32,7 +32,7 @@ void XMLConsumableReader::parse(ConsumablePtr consumable, GenerationValues& gv, 
     XMLNode metabolizes_alcohol_node = XMLUtils::get_next_element_by_local_name(node, "MetabolizesAlcohol");
     if (!metabolizes_alcohol_node.is_null())
     {
-      bool metabolizes = XMLUtils::get_child_node_bool_value(metabolizes_alcohol_node, false);
+      bool metabolizes = XMLUtils::get_node_bool_value(metabolizes_alcohol_node, false);
       consumable->set_additional_property(ItemProperties::ITEM_PROPERTIES_METABOLIZES_ALCOHOL, std::to_string(metabolizes));
     }
 

@@ -473,6 +473,7 @@ Blood& Creature::get_blood_ref()
 void Creature::decrement_grams_unabsorbed_alcohol(const float delta_grams)
 {
   grams_unabsorbed_alcohol -= delta_grams;
+  grams_unabsorbed_alcohol = std::max<float>(grams_unabsorbed_alcohol, 0);
 }
 
 void Creature::increment_grams_unabsorbed_alcohol(const float addl_grams)

@@ -47,6 +47,9 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
       consumable_effect->effect(creature, &game.get_action_manager_ref(), consumable->get_status(), creature_loc.first, creature_loc.second);
     }
 
+    // If the consumable metabolizes alcohol, process that.
+    metabolize_alcohol(creature, consumable);
+
     // Get any intrinsics from the resistances on the item being greater than
     // the creature's combined race and class values.
     gain_resistances_from_consumable(creature, consumable);
@@ -108,6 +111,23 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
   }
 
   return action_cost_value;
+}
+
+void ConsumableAction::metabolize_alcohol(CreaturePtr creature, ConsumablePtr consumable)
+{
+  if (creature != nullptr && consumable != nullptr)
+  {
+    if (consumable->get_metabolizes_alcohol())
+    {
+      AlcoholCalculator ac;
+      float grams = ac.calculate_grams_to_cancel(consumable);
+
+      // Consumables that metabolize alcohol work on both absorbed and
+      // unabsorbed alcohol.
+      creature->decrement_grams_unabsorbed_alcohol(grams);
+      creature->get_blood_ref().decrement_grams_alcohol(grams);
+    }
+  }
 }
 
 void ConsumableAction::gain_resistances_from_consumable(CreaturePtr creature, ConsumablePtr consumable)

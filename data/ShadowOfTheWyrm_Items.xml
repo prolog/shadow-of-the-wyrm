@@ -7841,6 +7841,30 @@
 				<Nutrition>1001</Nutrition>
 				<FoodType>1</FoodType>
 			</Food>
+			<Food id="flower_bread">
+				<DescriptionSID>FLOWER_BREAD_SID</DescriptionSID>
+				<UsageDescriptionSID>FLOWER_BREAD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FLOWER_BREAD_CODEX_SID</CodexDescriptionSID>
+				<Value>2</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>8</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>5</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>1</DangerLevel>
+				<Nutrition>900</Nutrition>
+				<FoodType>1</FoodType>
+				<MetabolizesAlcohol>1</MetabolizesAlcohol>
+			</Food>
 			<Food id="_trout">
 				<DescriptionSID>TROUT_SID</DescriptionSID>
 				<UsageDescriptionSID>TROUT_USAGE_SID</UsageDescriptionSID>
@@ -8296,6 +8320,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
+				<MetabolizesAlcohol>1</MetabolizesAlcohol>
 			</Plant>
 			<Plant id="_wildflower_2">
 				<DescriptionSID>WILDFLOWER2_SID</DescriptionSID>
@@ -8320,6 +8345,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
+				<MetabolizesAlcohol>1</MetabolizesAlcohol>
 			</Plant>
 			<Plant id="_wildflower_3">
 				<DescriptionSID>WILDFLOWER3_SID</DescriptionSID>
@@ -8344,6 +8370,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
+				<MetabolizesAlcohol>1</MetabolizesAlcohol>
 			</Plant>
 			<Plant id="_wildflower_4">
 				<DescriptionSID>WILDFLOWER4_SID</DescriptionSID>
@@ -8368,6 +8395,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
+				<MetabolizesAlcohol>1</MetabolizesAlcohol>
 			</Plant>
 			<Plant id="_wildflower_5">
 				<DescriptionSID>WILDFLOWER5_SID</DescriptionSID>
@@ -8392,6 +8420,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
+				<MetabolizesAlcohol>1</MetabolizesAlcohol>
 			</Plant>
 			<Plant id="_wildflower_6">
 				<DescriptionSID>WILDFLOWER6_SID</DescriptionSID>
@@ -8416,6 +8445,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
+				<MetabolizesAlcohol>1</MetabolizesAlcohol>
 			</Plant>
 			<Plant id="_fiddlehead_green">
 				<DescriptionSID>FIDDLEHEAD_GREEN_SID</DescriptionSID>

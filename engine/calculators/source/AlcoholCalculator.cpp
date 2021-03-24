@@ -5,6 +5,7 @@ using namespace std;
 const uint AlcoholCalculator::IMMEDIATE_SICKNESS_TOUGHNESS_DIVISOR = 3;
 const uint AlcoholCalculator::BASE_MINUTES_FOR_ABSORPTION = 30;
 const uint AlcoholCalculator::BASE_MINUTES_FOR_METABOLIZATION = 60;
+const float AlcoholCalculator::CANCEL_ALCOHOL_GRAMS_PER_OUNCE = 0.2f;
 const float AlcoholCalculator::BASE_METABOLISM_RATE = 0.5f;
 const float AlcoholCalculator::DRUNK_BAC_THRESHOLD = 0.08f;
 const float AlcoholCalculator::DEAD_BAC_THRESHOLD = 0.37f;
@@ -56,6 +57,20 @@ uint AlcoholCalculator::calculate_minutes_for_absorption(CreaturePtr creature)
 uint AlcoholCalculator::calculate_minutes_for_metabolization(CreaturePtr creature)
 {
   return BASE_MINUTES_FOR_METABOLIZATION;
+}
+
+// Grams of alcohol a particular consumable with alcohol metabolism qualities
+// will cancel.
+float AlcoholCalculator::calculate_grams_to_cancel(ConsumablePtr consumable)
+{
+  float to_cancel = 0.0f;
+
+  if (consumable != nullptr && consumable->get_metabolizes_alcohol())
+  {
+    to_cancel = CANCEL_ALCOHOL_GRAMS_PER_OUNCE * consumable->get_weight().get_weight();
+  }
+
+  return to_cancel;
 }
 
 // Grams of alcohol to absorb per tick.
