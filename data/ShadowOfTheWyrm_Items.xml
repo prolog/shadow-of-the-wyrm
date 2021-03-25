@@ -7841,11 +7841,11 @@
 				<Nutrition>1001</Nutrition>
 				<FoodType>1</FoodType>
 			</Food>
-			<Food id="flower_bread">
-				<DescriptionSID>FLOWER_BREAD_SID</DescriptionSID>
-				<UsageDescriptionSID>FLOWER_BREAD_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>FLOWER_BREAD_CODEX_SID</CodexDescriptionSID>
-				<Value>2</Value>
+			<Food id="bread">
+				<DescriptionSID>BREAD_SID</DescriptionSID>
+				<UsageDescriptionSID>BREAD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BREAD_CODEX_SID</CodexDescriptionSID>
+				<Value>1</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
@@ -7861,7 +7861,30 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
-				<Nutrition>900</Nutrition>
+				<Nutrition>1100</Nutrition>
+				<FoodType>1</FoodType>
+			</Food>
+			<Food id="flower_bread">
+				<DescriptionSID>FLOWER_BREAD_SID</DescriptionSID>
+				<UsageDescriptionSID>FLOWER_BREAD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FLOWER_BREAD_CODEX_SID</CodexDescriptionSID>
+				<Value>3</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>8</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>5</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>1</DangerLevel>
+				<Nutrition>800</Nutrition>
 				<FoodType>1</FoodType>
 				<MetabolizesAlcohol>1</MetabolizesAlcohol>
 			</Food>
