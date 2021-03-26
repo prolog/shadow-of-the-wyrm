@@ -700,7 +700,7 @@ void Game::update_score_file_if_necessary(CreaturePtr current_player)
 {
   // Do scorefile wizardry? (is the game being exited for reasons other
   // than saving?)
-   if (should_check_scores())
+  if (should_check_scores())
   {
     try
     {

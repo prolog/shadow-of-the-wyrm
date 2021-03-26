@@ -1,14 +1,7 @@
 Me:
-- Carcassia (Golgoa): wyrms attacked Stoneheim, wizard killed, tower wants 
-  you to deliver his apprentice robes and staff (+ench?) (ench scroll, 
-  5x magici shard)
-
-  - EITHER ALONE OR COMPANION WHO KNOWS MAGIC
-
 - ASSET RELEASE
 - advisor
 - quest for advisor in Yew
-- dynamically set Hrimgar's advisor's chat script, text details sid
 - Scale sprites by setting a float scaling factor and allowing SDL_RenderCopy
   to stretch into the dest rect. horizontal and vertical scaling factors to
   match resolution?
