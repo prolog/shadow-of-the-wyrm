@@ -12,5 +12,9 @@ if has_membership(PLAYER_ID, HIGH_TOWER_GUILD_ID) and string.len(pl_val) == 0 th
 
   set_creature_additional_property(PLAYER_ID, gol_gift_key, "1")
 else
-  clear_and_add_message("GOLGOA_SPEECH_TEXT_SID")
+  if has_membership(PLAYER_ID, THIEVES_GUILD_ID) then
+    clear_and_add_message("GOLGOA_THIEVES_GUILD_MEMBER_SID")
+  else
+    clear_and_add_message("GOLGOA_SPEECH_TEXT_SID")
+  end
 end

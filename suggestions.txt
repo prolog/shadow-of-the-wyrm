@@ -1,9 +1,12 @@
 Me:
+- Carcassia (Golgoa): wyrms attacked Stoneheim, wizard killed, tower wants 
+  you to deliver his apprentice robes and staff (+ench?) (ench scroll, 
+  5x magici shard)
+
+  - EITHER ALONE OR COMPANION WHO KNOWS MAGIC
+
 - ASSET RELEASE
-- regular bread
 - advisor
-- alcohol dehydrogenase (ADH) for wildflowers. Make it an item property.
-- wildflowers should negate booze (clue somewhere...)
 - quest for advisor in Yew
 - dynamically set Hrimgar's advisor's chat script, text details sid
 - Scale sprites by setting a float scaling factor and allowing SDL_RenderCopy
@@ -19,9 +22,6 @@ Me:
 - Make taverns more distinctive
 - Do a couple of quests that require a party
   - Isen Dun (Hrimgar): envoy to Forest of Yew (PoGA)
-  - Carcassia (Golgoa): wyrms attacked Stoneheim, wizard killed, tower wants 
-    you to deliver his apprentice robes and staff (+ench?) (ench scroll, 
-    5x magici shard)
 - Test by generating these in Carcassia, Gnordvar
 - Long term, give a chance for coastal generators to produce coastline, maybe
   with little islands, etc. Before generating, set booleans for coast in

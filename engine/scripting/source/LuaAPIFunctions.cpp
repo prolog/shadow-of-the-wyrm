@@ -8128,7 +8128,7 @@ int generate_hireling(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
 
-  if (num_args == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  if (num_args >= 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
   {
     Game& game = Game::instance();
     string map_id = lua_tostring(ls, 1);
@@ -8136,11 +8136,23 @@ int generate_hireling(lua_State* ls)
     int y = lua_tointeger(ls, 2);
     int x = lua_tointeger(ls, 3);
     int lvl = lua_tointeger(ls, 4);
+    string race_id;
+    string class_id;
+
+    if (num_args >= 5 && lua_isstring(ls, 5))
+    {
+      race_id = lua_tostring(ls, 5);
+    }
+
+    if (num_args >= 6 && lua_isstring(ls, 6))
+    {
+      class_id = lua_tostring(ls, 6);
+    }
 
     if (map != nullptr)
     {
       CreatureGenerationManager cgm;
-      CreaturePtr hireling = cgm.generate_follower(game.get_action_manager_ref(), map, FollowerType::FOLLOWER_TYPE_HIRELING, lvl);
+      CreaturePtr hireling = cgm.generate_follower(game.get_action_manager_ref(), map, FollowerType::FOLLOWER_TYPE_HIRELING, lvl, race_id, class_id);
 
       GameUtils::add_new_creature_to_map(game, hireling, map, { y,x });
     }
@@ -8157,7 +8169,7 @@ int generate_adventurer(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
 
-  if (num_args == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  if (num_args >= 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
   {
     Game& game = Game::instance();
     string map_id = lua_tostring(ls, 1);
@@ -8165,11 +8177,23 @@ int generate_adventurer(lua_State* ls)
     int y = lua_tointeger(ls, 2);
     int x = lua_tointeger(ls, 3);
     int lvl = lua_tointeger(ls, 4);
+    string race_id;
+    string class_id;
+
+    if (num_args >= 5 && lua_isstring(ls, 5))
+    {
+      race_id = lua_tostring(ls, 5);
+    }
+
+    if (num_args >= 6 && lua_isstring(ls, 6))
+    {
+      class_id = lua_tostring(ls, 6);
+    }
 
     if (map != nullptr)
     {
       CreatureGenerationManager cgm;
-      CreaturePtr adv = cgm.generate_follower(game.get_action_manager_ref(), map, FollowerType::FOLLOWER_TYPE_ADVENTURER, lvl);
+      CreaturePtr adv = cgm.generate_follower(game.get_action_manager_ref(), map, FollowerType::FOLLOWER_TYPE_ADVENTURER, lvl, race_id, class_id);
 
       GameUtils::add_new_creature_to_map(game, adv, map, { y,x });
     }
