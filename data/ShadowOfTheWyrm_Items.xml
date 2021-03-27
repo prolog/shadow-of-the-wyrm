@@ -58,6 +58,34 @@
 				<Evade>10</Evade>
 				<Soak>4</Soak>
 			</Amulet>
+			<Amulet id="protector">
+				<DescriptionSID>PROTECTOR_SID</DescriptionSID>
+				<UsageDescriptionSID>PROTECTOR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>PROTECTOR_CODEX_SID</CodexDescriptionSID>
+				<Value>820</Value>
+				<Weight>
+					<Pounds>5</Pounds>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>6</Material>
+				<Symbol>
+					<Char>#</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>0</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.05</Slash>
+					<Pierce>0.05</Pierce>
+					<Pound>0.25</Pound>
+				</Resistances>
+				<Evade>-2</Evade>
+				<Soak>8</Soak>
+			</Amulet>
 			<Amulet id="eunoia">
 				<DescriptionSID>EUNOIA_SID</DescriptionSID>
 				<UsageDescriptionSID>EUNOIA_USAGE_SID</UsageDescriptionSID>

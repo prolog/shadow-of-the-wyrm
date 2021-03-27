@@ -34,7 +34,7 @@ Shadow of the Wyrm v1.3.0 "Kapsberger"
 
 - New creatures: advisor.
 
-- New items: Isen Dun whisky, bread, flower bread.
+- New items: Isen Dun whisky, bread, flower bread, dwarven amulet "Protector".
 
 - Stanzas for "Tel and Floridel".
 

@@ -424,6 +424,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "creature_has_humanoid_followers", creature_has_humanoid_followers);
   lua_register(L, "count_creature_humanoid_followers", count_creature_humanoid_followers);
   lua_register(L, "set_chat_script", set_chat_script);
+  lua_register(L, "count_creatures_with_race", count_creatures_with_race);
 }
 
 // Lua API helper functions
@@ -8698,4 +8699,52 @@ int set_chat_script(lua_State* ls)
   }
 
   return set;
+}
+
+int count_creatures_with_race(lua_State* ls)
+{
+  int cnt = 0;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 1 && lua_isstring(ls, 1))
+  {
+    string race_id = lua_tostring(ls, 1);
+    string map_id;
+
+    if (num_args >= 2 && lua_isstring(ls, 2))
+    {
+      map_id = lua_tostring(ls, 2);
+    }
+
+    MapPtr map;
+    
+    if (map_id.empty())
+    {
+      map = Game::instance().get_current_map();
+    }
+    else
+    {
+      map = Game::instance().get_map_registry_ref().get_map(map_id);
+    }
+
+    if (map != nullptr)
+    {
+      const CreatureMap& creatures = map->get_creatures_ref();
+
+      for (const auto& c_pair : creatures)
+      {
+        if (c_pair.second && c_pair.second->get_race_id() == race_id)
+        {
+          cnt++;
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to count_creatures_with_race");
+  }
+
+  lua_pushinteger(ls, cnt);
+  return 1;
 }

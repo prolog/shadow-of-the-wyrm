@@ -1,4 +1,10 @@
 Me:
+- remove_object_from_player: inventory first
+- When first talking to wizard, should thank & trigger the usual flag.
+  
+  - Then, a secondary assault, which when cleared should get something from
+    Skaal.
+
 - ASSET RELEASE
 - advisor
 - quest for advisor in Yew
