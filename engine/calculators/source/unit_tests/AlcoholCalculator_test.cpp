@@ -13,7 +13,7 @@ TEST(SW_Engine_Calculators_AlcoholCalculator, grams_to_cancel)
   EXPECT_FLOAT_EQ(0.0f, ac.calculate_grams_to_cancel(cons));
 
   cons->set_metabolizes_alcohol(true);
-  float exp = static_cast<float>(w.get_weight()) * 0.2;
+  float exp = static_cast<float>(w.get_weight()) * 0.2f;
 
   EXPECT_FLOAT_EQ(exp, ac.calculate_grams_to_cancel(cons));
 }

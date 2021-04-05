@@ -1190,6 +1190,7 @@
 				<xs:element name="Difficulty" type="xs:integer"/>
 				<xs:element name="Speed" type="xs:integer"/>
 				<xs:element name="Damage" type="tns:Damage"/>
+				<xs:element name="Range" type="xs:integer" minOccurs="0"/> 
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>

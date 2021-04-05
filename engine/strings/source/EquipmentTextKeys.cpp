@@ -31,6 +31,7 @@ const string EquipmentTextKeys::EQUIPMENT_WEAPON_DIFFICULTY_SPEED_AND_DAMAGE_SYN
 const string EquipmentTextKeys::EQUIPMENT_PRIMARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS = "EQUIPMENT_PRIMARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS";
 const string EquipmentTextKeys::EQUIPMENT_SECONDARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS = "EQUIPMENT_SECONDARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS";
 const string EquipmentTextKeys::EQUIPMENT_REMOVAL_CURSED = "EQUIPMENT_REMOVAL_CURSED";
+const string EquipmentTextKeys::EQUIPMENT_MELEE_WEAPON_RANGE = "EQUIPMENT_MELEE_WEAPON_RANGE";
 
 string EquipmentTextKeys::get_equipment_text_from_given_worn_location(const EquipmentWornLocation& worn_location)
 {
@@ -220,7 +221,7 @@ string EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(const 
   return synopsis;
 }
 
-string EquipmentTextKeys::get_melee_weapon_synopsis(const AttackType attack_type, WeaponPtr weapon, const int base_difficulty, const int total_difficulty, const int speed, const Damage& damage)
+string EquipmentTextKeys::get_melee_weapon_synopsis(const AttackType attack_type, WeaponPtr weapon, const int base_difficulty, const int total_difficulty, const int speed, const Damage& damage, const int range)
 {
   string synopsis;
   
@@ -245,6 +246,10 @@ string EquipmentTextKeys::get_melee_weapon_synopsis(const AttackType attack_type
   string dmg_synopsis = get_weapon_difficulty_speed_and_damage_synopsis(base_difficulty, total_difficulty, speed, damage);
   boost::replace_first(synopsis, "%s", dmg_synopsis);
 
+  string range_s = StringTable::get(EquipmentTextKeys::EQUIPMENT_MELEE_WEAPON_RANGE);
+  boost::replace_first(range_s, "%s", std::to_string(range));
+  synopsis = synopsis + " " + range_s;
+
   return synopsis;
 }
 
@@ -265,6 +270,12 @@ string EquipmentTextKeys::get_melee_weapon_synopsis(WeaponPtr weapon)
     synopsis = StringTable::get(TextKeys::GENERIC_MESSAGE);
     string dmg_synopsis = get_weapon_difficulty_speed_and_damage_synopsis(weapon->get_difficulty(), wdc.get_item_total_difficulty_for_weapon(weapon), weapon->get_speed(), damage);
     boost::replace_first(synopsis, "%s", dmg_synopsis);
+
+    int melee_range = weapon->get_range();
+    string range = StringTable::get(EquipmentTextKeys::EQUIPMENT_MELEE_WEAPON_RANGE);
+    boost::replace_first(range, "%s", std::to_string(melee_range));
+
+    synopsis = synopsis + " " + range;
   }
 
   return synopsis;

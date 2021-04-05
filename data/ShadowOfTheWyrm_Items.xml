@@ -4758,6 +4758,7 @@
 						<Slay>_dragon</Slay>
 					</Slays>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="stonespear">
 				<DescriptionSID>STONESPEAR_SID</DescriptionSID>
@@ -4793,6 +4794,7 @@
 					<Modifier>12</Modifier>
 					<Type>1</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="radiance">
 				<DescriptionSID>RADIANCE_SID</DescriptionSID>
@@ -4832,6 +4834,7 @@
 						<Slay>_undead</Slay>
 					</Slays>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="dragonsfist">
 				<DescriptionSID>DRAGONSFIST_SID</DescriptionSID>
@@ -5535,6 +5538,7 @@
 					<NumSides>6</NumSides>
 					<Type>1</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="long_spear">
 				<DescriptionSID>LONG_SPEAR_SID</DescriptionSID>
@@ -5571,6 +5575,7 @@
 					<NumSides>10</NumSides>
 					<Type>1</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="scythe">
 				<DescriptionSID>SCYTHE_SID</DescriptionSID>
@@ -5862,6 +5867,7 @@
 					<NumSides>4</NumSides>
 					<Type>0</Type>
 				</Damage>
+				<Range>3</Range>
 			</Weapon>
 			<Weapon id="thorn_whip">
 				<DescriptionSID>THORN_WHIP_SID</DescriptionSID>
@@ -5897,6 +5903,7 @@
 					<NumSides>4</NumSides>
 					<Type>1</Type>
 				</Damage>
+				<Range>3</Range>
 			</Weapon>
 			<Weapon id="calara_whip">
 				<DescriptionSID>CALARA_WHIP_SID</DescriptionSID>
@@ -5930,6 +5937,7 @@
 					<NumSides>4</NumSides>
 					<Type>3</Type>
 				</Damage>
+				<Range>3</Range>
 			</Weapon>
 			<Weapon id="shepherd_crook">
 				<DescriptionSID>SHEPHERD_CROOK_SID</DescriptionSID>
@@ -5965,6 +5973,7 @@
 					<NumSides>3</NumSides>
 					<Type>2</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="yew_staff">
 				<DescriptionSID>YEW_STAFF_SID</DescriptionSID>
@@ -6993,6 +7002,7 @@
 					<NumSides>3</NumSides>
 					<Type>1</Type>
 				</Damage>
+				<Range>2</Range>
 			</Missile>
 			<Missile id="barbed_spear">
 				<DescriptionSID>BARBED_SPEAR_SID</DescriptionSID>
@@ -7028,6 +7038,7 @@
 					<NumSides>3</NumSides>
 					<Type>1</Type>
 				</Damage>
+				<Range>2</Range>
 			</Missile>
 			<Missile id="winged_javelin">
 				<DescriptionSID>WINGED_JAVELIN_SID</DescriptionSID>
@@ -7063,6 +7074,7 @@
 					<NumSides>3</NumSides>
 					<Type>1</Type>
 				</Damage>
+				<Range>2</Range>
 			</Missile>
 			<Missile id="spine_ancient_horror">
 				<DescriptionSID>SPINE_ANCIENT_HORROR_SID</DescriptionSID>
@@ -7092,6 +7104,7 @@
 					<NumSides>3</NumSides>
 					<Type>1</Type>
 				</Damage>
+				<Range>2</Range>
 			</Missile>
 			<Missile id="throwing_club">
 				<DescriptionSID>THROWING_CLUB_SID</DescriptionSID>

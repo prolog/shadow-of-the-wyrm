@@ -1,11 +1,11 @@
 Me:
 - remove_object_from_player: inventory first
-- When first talking to wizard, should thank & trigger the usual flag.
-  
-  - Then, a secondary assault, which when cleared should get something from
-    Skaal.
+- weapon ranges for spears (2) and whips (3) (KikuMorgana)
 
-- ASSET RELEASE
+  - do we need an option to default-attack? default-not-attack?
+  - dual wield
+
+- ASSET RELEASE FOR 1.3.0
 - advisor
 - quest for advisor in Yew
 - Scale sprites by setting a float scaling factor and allowing SDL_RenderCopy

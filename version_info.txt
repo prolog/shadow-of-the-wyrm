@@ -32,6 +32,10 @@ Shadow of the Wyrm v1.3.0 "Kapsberger"
   understood. Eating these metabolizes a portion of the unabsorbed alcohol
   in your system and can help sober you up.
 
+- Weapons now have an associated melee range. Typically 1, this can also be 2
+  (spears) or 3 (whips).  This will let you attack creatures to up to x distance
+  away.  Range information is shown in the item codex.
+
 - New creatures: advisor.
 
 - New items: Isen Dun whisky, bread, flower bread, dwarven amulet "Protector".
