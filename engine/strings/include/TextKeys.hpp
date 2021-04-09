@@ -154,6 +154,7 @@ class TextKeys
     static const std::string INVENTORY_FILTERED;
     static const std::string GENERATED_ARTIFACTS;
 
+    static const std::string DECISION_CONFIRM_RANGED_MELEE_ATTACK;
     static const std::string DECISION_CONFIRM_KEY;
     static const std::string DECISION_DENY_KEY;
     static const std::string DECISION_LEAVE_AREA;
