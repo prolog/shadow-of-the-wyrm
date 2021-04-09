@@ -2055,8 +2055,12 @@ pair<bool, TilePtr> MapUtils::get_melee_attack_target(MapPtr map, CreaturePtr cr
           if (tc->get_decision_strategy()->get_threats_ref().has_threat(c_id).first)
           {
             result = {true, t};
-            break;
           }
+
+          // If there's a creature present, stop checking.  If the creature
+          // is hostile, we'll return true plus the tile; if not, we'll
+          // return false and nullptr indicating we shouldn't attack.
+          break;
         }
       }
       else

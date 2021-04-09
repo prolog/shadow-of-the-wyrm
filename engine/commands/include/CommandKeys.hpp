@@ -67,7 +67,7 @@ class CommandKeys
     static const std::string HELP;
     static const std::string BREED;
     static const std::string INSCRIBE;
-    static const std::string TOGGLE_AUTOPICKUP;
+    static const std::string AUTOMATIC_ACTIONS;
     static const std::string ITEM_CODEX;
     static const std::string SWITCH_GRAPHICS_MODE;
     static const std::string SWITCH_COLOUR_PALETTES;

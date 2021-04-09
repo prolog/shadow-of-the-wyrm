@@ -789,7 +789,7 @@ ActionCost ActionManager::inscribe(CreaturePtr creature)
   return get_action_cost(creature, ia.inscribe(creature));
 }
 
-ActionCost ActionManager::autopickup(CreaturePtr creature)
+ActionCost ActionManager::automatic_actions(CreaturePtr creature)
 {
   PickupAction pa;
   return get_action_cost(creature, pa.toggle_autopickup(creature));
