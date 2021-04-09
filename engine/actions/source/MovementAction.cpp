@@ -194,6 +194,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
   ActionCostValue movement_acv = ActionCostConstants::NO_ACTION;
   bool creature_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  pair<bool, TilePtr> attack_at_range = MapUtils::get_melee_attack_target(map, creature, d);
 
   if (creature && creatures_new_tile)
   {
@@ -211,6 +212,12 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
     if (MapUtils::is_creature_present(creatures_new_tile))
     {
       movement_acv = handle_movement_into_occupied_tile(creature, creatures_new_tile, map, new_coords, d);
+    }
+    else if (attack_at_range.first && attack_at_range.second != nullptr)
+    {
+      CombatManager cm;
+
+      movement_acv = cm.attack(creature, attack_at_range.second->get_creature(), AttackType::ATTACK_TYPE_MELEE_PRIMARY);
     }
     // Only try to handle a blocking terrain feature if the creature is corporeal.
     // Spirits don't care about closed doors, etc!

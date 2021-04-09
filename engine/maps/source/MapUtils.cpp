@@ -25,6 +25,7 @@
 #include "TextMessages.hpp"
 #include "TileDescriber.hpp"
 #include "ViewMapTranslator.hpp"
+#include "WeaponManager.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
@@ -2015,6 +2016,57 @@ vector<string> MapUtils::place_followers(MapPtr map, CreaturePtr creature, const
   }
 
   return placed_follower_ids;
+}
+
+pair<bool, TilePtr> MapUtils::get_melee_attack_target(MapPtr map, CreaturePtr creature, const Direction d)
+{
+  pair<bool, TilePtr> result = {false, nullptr};
+
+  if (map != nullptr && creature != nullptr)
+  {
+    WeaponManager wm;
+    WeaponPtr weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
+    int range = 1;
+
+    if (weapon != nullptr)
+    {
+      range = weapon->get_range();
+    }
+
+    string c_id = creature->get_id();
+    Coordinate creature_coords = map->get_location(c_id);
+    HostilityManager hm;
+
+    // Find the attacked tile, if one exists
+    for (int i = 1; i <= range; i++)
+    {
+      Coordinate c = CoordUtils::get_new_coordinate(creature_coords, d, i);
+      TilePtr t = map->at(c);
+
+      // Checking if the tile is generally blocking instead of specifically
+      // for the creature for game balance purposes. Otherwise, a creature
+      // could attack two-deep in rock/earth, behind doors, etc.
+      if (t != nullptr && !t->get_is_blocking(nullptr))
+      {
+        if (t->has_creature())
+        {
+          CreaturePtr tc = t->get_creature();
+
+          if (tc->get_decision_strategy()->get_threats_ref().has_threat(c_id).first)
+          {
+            result = {true, t};
+            break;
+          }
+        }
+      }
+      else
+      {
+        break;
+      }
+    }
+  }
+
+  return result;
 }
 
 #ifdef UNIT_TESTS

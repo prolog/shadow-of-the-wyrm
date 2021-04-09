@@ -111,6 +111,11 @@ class MapUtils
     static std::vector<std::string> place_followers(MapPtr map, CreaturePtr cr, const Coordinate& c);
     static void serialize_and_remove_followers(MapPtr map, CreaturePtr creature);
 
+    // Returns true for the first parameter if a melee attack at range is
+    // possible, false otherwise. The second parameter will be populated
+    // with a valid tile if the first parameter is true.
+    static std::pair<bool, TilePtr> get_melee_attack_target(MapPtr map, CreaturePtr creature, const Direction d);
+
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
     static bool is_tile_contained_in_an_existing_component(const Coordinate&, const MapComponents& components);

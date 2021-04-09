@@ -34,7 +34,8 @@ Shadow of the Wyrm v1.3.0 "Kapsberger"
 
 - Weapons now have an associated melee range. Typically 1, this can also be 2
   (spears) or 3 (whips).  This will let you attack creatures to up to x distance
-  away.  Range information is shown in the item codex.
+  away.  Range information is shown in the item codex.  Range is only
+  considered for the primary melee weapon.
 
 - New creatures: advisor.
 
