@@ -4376,6 +4376,9 @@
     <ClInclude Include="world\include\WaterInventory.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\actions\include\AutomaticActionsAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8838,6 +8841,9 @@
     </ClCompile>
     <ClCompile Include="world\materials\source\unit_tests\UnknownMaterial_test.cpp">
       <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\AutomaticActionsAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

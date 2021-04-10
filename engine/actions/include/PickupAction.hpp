@@ -16,7 +16,6 @@ class PickupAction : public IActionManager
   public:
     ActionCostValue pick_up(CreaturePtr creature, ActionManager * const am, const PickUpType pick_up, const std::set<ItemType>& pickup_types = {});
     ActionCostValue pick_up(CreaturePtr creature, const std::string& ground_item_id);
-    ActionCostValue toggle_autopickup(CreaturePtr creature);
 
     bool merge_into_equipment(CreaturePtr creature, ItemPtr item);
     bool merge_or_add_into_inventory(CreaturePtr creature, ItemPtr item);
