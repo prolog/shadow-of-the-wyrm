@@ -4,6 +4,10 @@ Me:
 - remove_object_from_player: inventory first
 - weapon ranges for spears (2) and whips (3) (KikuMorgana)
 
+  - automelee should be a per-creature flag
+    - always true for NPCs
+  
+  - need to show pickup types in menu
   - do we need an option to default-attack? default-not-attack?
   - NEED TO TEST: follower in front of hostile
   - Options screen

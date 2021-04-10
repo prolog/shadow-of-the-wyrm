@@ -793,7 +793,7 @@ ActionCost ActionManager::inscribe(CreaturePtr creature)
 ActionCost ActionManager::automatic_actions(CreaturePtr creature)
 {
   AutomaticActionsAction aaa;
-  return get_action_cost(creature, aaa.automatic_actions());
+  return get_action_cost(creature, aaa.automatic_actions(creature));
 }
 
 ActionCost ActionManager::breed(CreaturePtr creature)

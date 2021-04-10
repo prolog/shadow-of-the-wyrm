@@ -8,28 +8,30 @@
 
 using namespace std;
 
-map<int, pair<string, string>> AutomaticActionsAction::get_auto_action_settings() const
+vector<pair<string, string>> AutomaticActionsAction::get_auto_action_settings(CreaturePtr c) const
 {
-  map<int, pair<string, string>> settings = { { 0, { Setting::AUTOPICKUP, StringTable::get(SettingTextKeys::SETTING_AUTOPICKUP) } },
-                                              { 1, { Setting::AUTOPICKUP_IGNORE_CORPSES, StringTable::get(SettingTextKeys::SETTING_AUTOPICKUP_EXCLUDE_CORPSES) } },
-                                              { 2, { Setting::AUTOMELEE, StringTable::get(SettingTextKeys::SETTING_AUTOMELEE_AT_RANGE) } } };
-  return settings;
+  Settings& settings = Game::instance().get_settings_ref();
+
+  vector<pair<string, string>> action_set = { { Setting::AUTOPICKUP, Setting::AUTOPICKUP + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOPICKUP) + ": " + StringTable::get(TextMessages::get_bool_sid(c->get_decision_strategy()->get_autopickup())) },
+                                              { Setting::AUTOPICKUP_IGNORE_CORPSES, Setting::AUTOPICKUP_IGNORE_CORPSES + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOPICKUP_EXCLUDE_CORPSES) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_CORPSES))) },
+                                              { Setting::AUTOMELEE, Setting::AUTOMELEE + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOMELEE_AT_RANGE) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::AUTOMELEE))) } };
+  return action_set;
 }
 
-ActionCostValue AutomaticActionsAction::automatic_actions() const
+ActionCostValue AutomaticActionsAction::automatic_actions(CreaturePtr creature) const
 {
   Game& game = Game::instance();
   Settings& set = game.get_settings_ref();
   auto do_aa = true;
 
-  while (do_aa)
+  while (creature != nullptr && do_aa)
   {
-    auto settings = get_auto_action_settings();
+    auto settings = get_auto_action_settings(creature);
     vector<string> options;
 
-    for (const auto& aa_pair : settings)
+    for (const auto& s : settings)
     {
-      options.push_back(aa_pair.second.first + "=" + aa_pair.second.second + ": " + StringTable::get(TextMessages::get_bool_sid(game.get_settings_ref().get_setting_as_bool(aa_pair.second.first))));
+      options.push_back(s.second);
     }
 
     OptionScreen os(game.get_display(), ScreenTitleTextKeys::SCREEN_TITLE_AUTO_ACTIONS, {}, options);
@@ -43,8 +45,17 @@ ActionCostValue AutomaticActionsAction::automatic_actions() const
 
     if (idx >= 0 && idx < static_cast<int>(settings.size()))
     {
-      auto s_it = settings.find(idx);
-      set.set_setting(s_it->second.first, std::to_string(!set.get_setting_as_bool(s_it->second.first)));
+      auto s_val = settings[idx];
+
+      string setting_id = s_val.first;
+      bool new_set_value = !set.get_setting_as_bool(setting_id);
+      set.set_setting(setting_id, std::to_string(new_set_value));
+
+      if (setting_id == Setting::AUTOPICKUP)
+      {
+        creature->get_decision_strategy()->set_autopickup(new_set_value);
+      }
+      // JCD FIXME: automelee
     }
     else
     {
