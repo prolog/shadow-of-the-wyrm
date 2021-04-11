@@ -1,4 +1,5 @@
 #include "AutomaticActionsAction.hpp"
+#include "DisplayItemTypeFactory.hpp"
 #include "Game.hpp"
 #include "OptionScreen.hpp"
 #include "ScreenTitleTextKeys.hpp"
@@ -12,9 +13,9 @@ vector<pair<string, string>> AutomaticActionsAction::get_auto_action_settings(Cr
 {
   Settings& settings = Game::instance().get_settings_ref();
 
-  vector<pair<string, string>> action_set = { { Setting::AUTOPICKUP, Setting::AUTOPICKUP + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOPICKUP) + ": " + StringTable::get(TextMessages::get_bool_sid(c->get_decision_strategy()->get_autopickup())) },
+  vector<pair<string, string>> action_set = { { Setting::AUTOPICKUP, Setting::AUTOPICKUP + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOPICKUP) + " " + get_autopickup_type_string(c) + ": " + StringTable::get(TextMessages::get_bool_sid(c->get_decision_strategy()->get_autopickup())) },
                                               { Setting::AUTOPICKUP_IGNORE_CORPSES, Setting::AUTOPICKUP_IGNORE_CORPSES + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOPICKUP_EXCLUDE_CORPSES) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_CORPSES))) },
-                                              { Setting::AUTOMELEE, Setting::AUTOMELEE + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOMELEE_AT_RANGE) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::AUTOMELEE))) } };
+                                              { Setting::AUTOMELEE, Setting::AUTOMELEE + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOMELEE_AT_RANGE) + ": " + StringTable::get(TextMessages::get_bool_sid(c->get_decision_strategy()->get_automelee())) } };
   return action_set;
 }
 
@@ -55,7 +56,10 @@ ActionCostValue AutomaticActionsAction::automatic_actions(CreaturePtr creature) 
       {
         creature->get_decision_strategy()->set_autopickup(new_set_value);
       }
-      // JCD FIXME: automelee
+      else if (setting_id == Setting::AUTOMELEE)
+      {
+        creature->get_decision_strategy()->set_automelee(new_set_value);
+      }
     }
     else
     {
@@ -66,6 +70,35 @@ ActionCostValue AutomaticActionsAction::automatic_actions(CreaturePtr creature) 
   // Display the Automatic Actions screen, which allows toggling autopickup,
   // automelee, etc.
   return get_action_cost_value(nullptr);
+}
+
+string AutomaticActionsAction::get_autopickup_type_string(CreaturePtr creature) const
+{
+  ostringstream ss;
+
+  if (creature != nullptr)
+  {
+    set<ItemType> autopickup_types = creature->get_decision_strategy()->get_autopickup_types();
+
+    if (autopickup_types.empty())
+    {
+      ss << "-";
+    }
+    else
+    {
+      for (auto s_it = autopickup_types.begin(); s_it != autopickup_types.end(); s_it++)
+      {
+        DisplayItemTypePtr dit = DisplayItemTypeFactory::create(*s_it);
+
+        if (dit != nullptr)
+        {
+          ss << dit->get_symbol();
+        }
+      }
+    }
+  }
+
+  return ss.str();
 }
 
 ActionCostValue AutomaticActionsAction::get_action_cost_value(CreaturePtr c) const
