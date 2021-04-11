@@ -1,17 +1,4 @@
 Me:
-- screen for SDL stuff
-- screen for "auto" options (pickup, attack, corpse, etc)
-- remove_object_from_player: inventory first
-- weapon ranges for spears (2) and whips (3) (KikuMorgana)
-
-  - automelee should be a per-creature flag
-    - always true for NPCs
-  
-  - need to show pickup types in menu
-  - do we need an option to default-attack? default-not-attack?
-  - NEED TO TEST: follower in front of hostile
-  - Options screen
-
 - ASSET RELEASE FOR 1.3.0
 - advisor
 - quest for advisor in Yew
