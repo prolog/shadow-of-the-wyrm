@@ -3767,3 +3767,13 @@ then dried a minute, dressed, until at last %b
 they doubled back, and the widening stream now led %b
 them where they'd have to try another path instead.
 %p
+This time they took the dried-out lake.  Just north, %b
+the forest drew a pair of open curves, %b
+their boundaries delineating thin %b
+shorelines where nothing grew below, and carved %b
+a dusty lakebed where the scattered rocks %b
+were orange-red, so full of toxic metals %b
+each seed and spore that tried to root was stopped %b
+and withered where it was, as if some devil %b
+had emptied out its cauldron in that stony kettle.
+%p

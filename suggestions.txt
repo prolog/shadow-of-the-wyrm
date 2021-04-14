@@ -1,4 +1,6 @@
 Me:
+- Update narrative mode so that when you're revived, it removes negative
+  statuses.
 - ASSET RELEASE FOR 1.3.0
 - advisor
 - quest for advisor in Yew
