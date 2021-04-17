@@ -98,10 +98,12 @@ int SDLKeyboardController::read_char_as_int()
         done = true;
       }
     }
-    else if (event.type == SDL_RENDER_TARGETS_RESET || event.type == SDL_RENDER_DEVICE_RESET)
+    else if (event.type == SDL_WINDOWEVENT)
     {
-      // Handle dynamic texture regeneration...
-      // int x = 1;
+      if (event.window.event == SDL_WINDOWEVENT_SIZE_CHANGED)
+      {
+        Game::instance().get_display()->refresh_current_window();
+      }
     }
     else if (event.type == SDL_QUIT)
     {

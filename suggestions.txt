@@ -1,12 +1,11 @@
 Me:
-- Update narrative mode so that when you're revived, it removes negative
-  statuses.
-- ASSET RELEASE FOR 1.3.0
-- advisor
-- quest for advisor in Yew
+- Unit tests for String::create_width_height
 - Scale sprites by setting a float scaling factor and allowing SDL_RenderCopy
   to stretch into the dest rect. horizontal and vertical scaling factors to
   match resolution?
+- ASSET RELEASE FOR 1.3.0
+- advisor
+- quest for advisor in Yew
 - More Acey/Sea Captain quests
 - Acey quest to steal Ironsword and deliver to Atua-Elar after it's retrieved.
   - Emperor should transfer Ironsword to the armory
@@ -288,6 +287,8 @@ Josh Engdahl
 - Hidden PCs are never found via bumping (Josh Engdahl)
 - when hiding and checking stuff, spirits in walls don't seem to count against
   the checks
+- when hiding and checking stuff, spirits in walls don't seem to count against
+  the checks
 - don't step out of shadows if creatures don't have you in LOS
 - weird age incrementing issue?
 - make undead hostile to e.g. all humanoids
@@ -304,5 +305,3 @@ Josh Engdahl
 - can lure ancient monsters into trap room and kill them via an unwillingness
   to move on to trapped tiles.
 
-Phantom:
-- escort quest with very fragile NPC

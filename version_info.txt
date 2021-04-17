@@ -37,6 +37,16 @@ Shadow of the Wyrm v1.3.0 "Kapsberger"
   away in a straight line.  Range information is shown in the item codex.  
   Range is only considered for the primary melee weapon (KikuMorgana).
 
+- The display can now be resized, and should scale to larger sizes nicely.
+  It will stretch the sprites so things may not look perfect; there's also
+  a setting in swyrm.ini allowing for integer scaling, which allows for
+  cleaner scaling but will letterbox the game until it reaches a new integer
+  multiple of 1280x600 (ACID GRIND).
+
+- Created display_sdl_window_size to allow setting the window size at
+  startup. When this isn't set, the window size will be created based on
+  the size of the sprites.
+
 - New creatures: advisor.
 
 - New items: Isen Dun whisky, bread, flower bread, dwarven amulet "Protector".

@@ -230,6 +230,22 @@ vector<string> String::tokenize(const string& tok_str, const string& delim, cons
   return output;
 }
 
+pair<int, int> String::create_width_height(const string& wh_str)
+{
+  pair<int, int> wh = { 0,0 };
+
+  vector<string> split_v;
+  boost::split(split_v, wh_str, boost::is_any_of("x"));
+
+  if (split_v.size() >= 2)
+  {
+    wh.first = to_int(split_v[0]);
+    wh.second = to_int(split_v[1]);
+  }
+
+  return wh;
+}
+
 Char::Char()
 {
 }
