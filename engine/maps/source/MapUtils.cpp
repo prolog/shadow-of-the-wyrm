@@ -2035,7 +2035,6 @@ pair<bool, TilePtr> MapUtils::get_melee_attack_target(MapPtr map, CreaturePtr cr
 
     string c_id = creature->get_id();
     Coordinate creature_coords = map->get_location(c_id);
-    HostilityManager hm;
 
     // Find the attacked tile, if one exists
     for (int i = 1; i <= range; i++)

@@ -22266,6 +22266,11 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>3</Exp>
+				<InitialEquipmentAndInventory>
+					<Wielded>
+						<ID>spear</ID>
+					</Wielded>
+				</InitialEquipmentAndInventory>
 			</CreatureGeneration>
 			<Level>1</Level>
 			<Damage>
