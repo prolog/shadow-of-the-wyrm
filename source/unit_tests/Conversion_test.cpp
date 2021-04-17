@@ -178,3 +178,18 @@ TEST(SW_Engine_ConversionRoutines, string_to_coord)
 
   EXPECT_FALSE(CoordUtils::is_end(String::create_coordinate_from_string("4,5")));
 }
+
+TEST(SW_Engine_ConversionRoutines, dimensions_string_to_pair)
+{
+  string bad = "hithere";
+  pair<int, int> wh = String::create_width_height(bad);
+
+  EXPECT_EQ(0, wh.first);
+  EXPECT_EQ(0, wh.second);
+
+  string good = "1500x600";
+  wh = String::create_width_height(good);
+
+  EXPECT_EQ(1500, wh.first);
+  EXPECT_EQ(600, wh.second);
+}
