@@ -4665,6 +4665,7 @@
 				<NumSides>64</NumSides>
 				<Type>3</Type>
 			</Damage>
+			<Range>2</Range>
 			<Soak>7</Soak>
 		</Creature>
 		<Creature id="fae_musician">
@@ -8457,6 +8458,7 @@
 				<NumSides>30</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<Range>2</Range>
 			<Evade>-7</Evade>
 			<Soak>4</Soak>
 		</Creature>
@@ -8511,6 +8513,7 @@
 				<NumSides>44</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<Range>2</Range>
 		</Creature>
 		<Creature id="cahri">
 			<RaceID>04_snakeling</RaceID>
@@ -9159,6 +9162,7 @@
 				<NumSides>8</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<Range>2</Range>
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="golem">
@@ -12007,6 +12011,7 @@
 				<NumSides>60</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<Range>3</Range>
 			<Evade>-30</Evade>
 			<Soak>2</Soak>
 			<EventScripts>
@@ -22222,6 +22227,7 @@
 				<NumSides>40</NumSides>
 				<Type>0</Type>
 			</Damage>
+			<Range>2</Range>
 			<Soak>4</Soak>
 		</Creature>
 		<Creature id="spearman">
@@ -22266,11 +22272,6 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>3</Exp>
-				<InitialEquipmentAndInventory>
-					<Wielded>
-						<ID>spear</ID>
-					</Wielded>
-				</InitialEquipmentAndInventory>
 			</CreatureGeneration>
 			<Level>1</Level>
 			<Damage>
@@ -22278,6 +22279,7 @@
 				<NumSides>6</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<Range>2</Range>
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="archer">
@@ -25791,6 +25793,7 @@
 				<NumSides>20</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<Range>2</Range>
 			<Soak>5</Soak>
 		</Creature>
 		<Creature id="gambler">
@@ -27199,6 +27202,7 @@
 				<NumSides>60</NumSides>
 				<Type>7</Type>
 			</Damage>
+			<Range>2</Range>
 			<Soak>15</Soak>
 		</Creature>
 		<Creature id="questare">

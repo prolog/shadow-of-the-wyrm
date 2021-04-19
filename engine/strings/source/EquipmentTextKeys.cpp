@@ -248,7 +248,7 @@ string EquipmentTextKeys::get_melee_weapon_synopsis(const AttackType attack_type
 
   string range_s = StringTable::get(EquipmentTextKeys::EQUIPMENT_MELEE_WEAPON_RANGE);
   boost::replace_first(range_s, "%s", std::to_string(range));
-  synopsis = synopsis + " " + range_s;
+  synopsis = synopsis + " " + range_s + ". ";
 
   return synopsis;
 }
@@ -275,8 +275,16 @@ string EquipmentTextKeys::get_melee_weapon_synopsis(WeaponPtr weapon)
     string range = StringTable::get(EquipmentTextKeys::EQUIPMENT_MELEE_WEAPON_RANGE);
     boost::replace_first(range, "%s", std::to_string(melee_range));
 
-    synopsis = synopsis + " " + range;
+    synopsis = synopsis + " " + range + ". ";
   }
 
   return synopsis;
+}
+
+string EquipmentTextKeys::get_range(const int range)
+{
+  string range_s = StringTable::get(EquipmentTextKeys::EQUIPMENT_MELEE_WEAPON_RANGE);
+  boost::replace_first(range_s, "%s", std::to_string(range));
+
+  return range_s;
 }

@@ -2024,15 +2024,7 @@ pair<bool, TilePtr> MapUtils::get_melee_attack_target(MapPtr map, CreaturePtr cr
 
   if (map != nullptr && creature != nullptr)
   {
-    WeaponManager wm;
-    WeaponPtr weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
-    int range = 1;
-
-    if (weapon != nullptr)
-    {
-      range = weapon->get_range();
-    }
-
+    int range = creature->get_primary_melee_range();
     string c_id = creature->get_id();
     Coordinate creature_coords = map->get_location(c_id);
 
