@@ -2043,7 +2043,11 @@ pair<bool, TilePtr> MapUtils::get_melee_attack_target(MapPtr map, CreaturePtr cr
         {
           CreaturePtr tc = t->get_creature();
 
-          if (tc->get_decision_strategy()->get_threats_ref().has_threat(c_id).first)
+          // Attack if the tile creature has the attacking creature in its
+          // threat map, or if the attacking creature has the tile creature
+          // in its own.
+          if (tc->get_decision_strategy()->get_threats_ref().has_threat(c_id).first ||
+              creature->get_decision_strategy()->get_threats_ref().has_threat(tc->get_id()).first)
           {
             result = {true, t};
           }
