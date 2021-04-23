@@ -1,6 +1,4 @@
 Me:
-- Update NPC AI to properly handle ranged melee
-- What other weapons should be range 2?
 - ASSET RELEASE FOR 1.3.0
 - advisor
 - quest for advisor in Yew

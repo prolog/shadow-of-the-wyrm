@@ -33,9 +33,10 @@ Shadow of the Wyrm v1.3.0 "Kapsberger"
   in your system and can help sober you up.
 
 - Weapons now have an associated melee range. Typically 1, this can also be 2
-  (spears) or 3 (whips).  This will let you attack creatures to up to x distance
-  away in a straight line.  Range information is shown in the item codex.  
-  Range is only considered for the primary melee weapon (KikuMorgana).
+  (spears, greatswords, great axes) or 3 (whips).  This will let you attack 
+  creatures to up to x distance away in a straight line.  Range information is 
+  shown in the item codex.  Range is only considered for the primary melee 
+  weapon (KikuMorgana).
 
 - The display can now be resized, and should scale to larger sizes nicely.
   It will stretch the sprites so things may not look perfect; there's also

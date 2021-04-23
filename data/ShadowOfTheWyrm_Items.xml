@@ -3709,6 +3709,7 @@
 						<Slay>03_mountainelf</Slay>
 					</Slays>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="inferno">
 				<DescriptionSID>INFERNO_SID</DescriptionSID>
@@ -3783,6 +3784,7 @@
 						<Slay>_divine</Slay>
 					</Slays>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="erebus">
 				<DescriptionSID>EREBUS_SID</DescriptionSID>
@@ -4193,6 +4195,7 @@
 						<Slay>_monster</Slay>
 					</Slays>
 				</Damage>
+				<Range>3</Range>
 			</Weapon>
 			<Weapon id="skyslayer">
 				<DescriptionSID>SKYSLAYER_SID</DescriptionSID>
@@ -4461,6 +4464,7 @@
 						<Slay>*</Slay>
 					</Slays>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="godblade">
 				<DescriptionSID>GODBLADE_SID</DescriptionSID>
@@ -4509,6 +4513,7 @@
 						<Slay>_divine</Slay>
 					</Slays>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="shard_starlight">
 				<DescriptionSID>SHARD_OF_STARLIGHT_SID</DescriptionSID>
@@ -5013,6 +5018,7 @@
 					<NumSides>10</NumSides>
 					<Type>0</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="mace">
 				<DescriptionSID>MACE_SID</DescriptionSID>
@@ -5080,6 +5086,7 @@
 					<Modifier>16</Modifier>
 					<Type>2</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="stone_club_urgol">
 				<DescriptionSID>STONE_CLUB_URGOL_SID</DescriptionSID>
@@ -5387,6 +5394,7 @@
 					<NumSides>20</NumSides>
 					<Type>0</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="earthcleaver">
 				<DescriptionSID>EARTHCLEAVER_SID</DescriptionSID>
@@ -5422,6 +5430,7 @@
 					<NumSides>20</NumSides>
 					<Type>0</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>			
 			<Weapon id="blood_and_glory">
 				<DescriptionSID>BLOOD_AND_GLORY_SID</DescriptionSID>
@@ -5461,6 +5470,7 @@
 						<Slay>_divine</Slay>
 					</Slays>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>			
 			<Weapon id="delver">
 				<DescriptionSID>DELVER_SID</DescriptionSID>
