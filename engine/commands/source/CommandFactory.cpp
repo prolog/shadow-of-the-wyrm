@@ -226,9 +226,9 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_unique<InscribeCommand>(key);
   }
-  else if (command_name == CommandKeys::TOGGLE_AUTOPICKUP)
+  else if (command_name == CommandKeys::AUTOMATIC_ACTIONS)
   {
-    command = std::make_unique<ToggleAutopickupCommand>(key);
+    command = std::make_unique<AutomaticActionsCommand>(key);
   }
   else if (command_name == CommandKeys::BREED)
   {

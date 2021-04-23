@@ -28,7 +28,7 @@ class ItemManager : public IActionManager
     std::pair<bool, std::vector<ItemPtr>> remove_item_from_eq_or_inv(CreaturePtr creature, const std::string& base_item_id, const int quantity = 1);
     
     static ItemPtr create_item(const std::string& item_id, const uint quantity = 1); // This version assumes that we use the collection on the Game singleton.
-    static bool create_item_with_probability(const int rand_less_than_or_equal_val, const int rand_upper_bound, IInventoryPtr inv, const std::string& item_id, const uint quantity = 1);
+    static bool create_item_with_probability(const int rand_less_than_or_equal_val, const int rand_upper_bound, IInventoryPtr inv, const std::string& item_id, const uint quantity = 1, const bool disallow_cursed = false);
 
     ActionCostValue pick_up(CreaturePtr creature, ItemPtr item);
     ActionCostValue drop(CreaturePtr creature, ItemPtr item);

@@ -30,6 +30,9 @@ class Weapon : public Wearable
     
     virtual void set_requires_ranged_weapon(const bool new_requires_ranged_weapon);
     virtual bool get_requires_ranged_weapon() const;
+
+    virtual void set_range(const int new_range);
+    virtual int get_range() const;
     
     virtual bool additional_item_attributes_match(std::shared_ptr<Item> i) const override;
 
@@ -54,6 +57,7 @@ class Weapon : public Wearable
     SkillType trained_skill;
     SkillType trained_ranged_skill;
     bool requires_ranged_weapon;
+    int range;
 };
 
 class MeleeWeapon : public Weapon

@@ -103,3 +103,9 @@ TEST(SW_World_NullInventory, get_from_type)
 
   EXPECT_EQ(0, itypes.size());
 }
+
+TEST(SW_World_NullInventory, no_drop_effect_sid)
+{
+  NullInventory ni;
+  EXPECT_EQ("", ni.get_drop_effect_sid());
+}

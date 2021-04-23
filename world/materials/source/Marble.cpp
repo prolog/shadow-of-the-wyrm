@@ -43,3 +43,6 @@ Material* Marble::clone()
   return new Marble(*this);
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/Marble_test.cpp"
+#endif

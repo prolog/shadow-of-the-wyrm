@@ -1,3 +1,4 @@
+#include "AlcoholCalculator.hpp"
 #include "ClassManager.hpp"
 #include "ConsumableAction.hpp"
 #include "CreatureUtils.hpp"
@@ -35,7 +36,8 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
     int hunger_after = hunger.get_hunger();
     CreatureUtils::add_hunger_level_message_if_necessary(creature, hunger_before, hunger_after);
 
-    creature->increment_grams_unabsorbed_alcohol(AlcoholConverter::standard_drinks_to_absorbable_grams(consumable->get_standard_drinks()));
+    float std_drinks = consumable->get_standard_drinks();
+    creature->increment_grams_unabsorbed_alcohol(AlcoholConverter::standard_drinks_to_absorbable_grams(std_drinks));
 
     EffectType et = consumable->get_effect_type();
 
@@ -45,11 +47,17 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
       consumable_effect->effect(creature, &game.get_action_manager_ref(), consumable->get_status(), creature_loc.first, creature_loc.second);
     }
 
+    // If the consumable metabolizes alcohol, process that.
+    metabolize_alcohol(creature, consumable);
+
     // Get any intrinsics from the resistances on the item being greater than
     // the creature's combined race and class values.
     gain_resistances_from_consumable(creature, consumable);
 
-    if (consumable->get_poisoned())
+    AlcoholCalculator ac;
+    bool alcohol_poisoning = ac.is_immediately_sick(creature, std_drinks);
+
+    if (alcohol_poisoning || consumable->get_poisoned())
     {
       // Much greater chance to get poisoned by consuming poisoned food/drink
       // than by getting attacked by a poisoned attack.
@@ -64,7 +72,14 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
         danger_level = i_it->second.get_danger_level();
       }
 
-      if (poison && poison->should_apply_change(creature, ConsumableConstants::FOOD_POISON_APPLICATION_BONUS))
+      int bonus = ConsumableConstants::FOOD_POISON_APPLICATION_BONUS;
+
+      if (alcohol_poisoning)
+      {
+        bonus = ConsumableConstants::ALCOHOL_POISON_APPLICATION_BONUS;
+      }
+
+      if (poison && poison->should_apply_change(creature, bonus))
       {
         poison->apply_change(creature, danger_level);
       }
@@ -96,6 +111,23 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
   }
 
   return action_cost_value;
+}
+
+void ConsumableAction::metabolize_alcohol(CreaturePtr creature, ConsumablePtr consumable)
+{
+  if (creature != nullptr && consumable != nullptr)
+  {
+    if (consumable->get_metabolizes_alcohol())
+    {
+      AlcoholCalculator ac;
+      float grams = ac.calculate_grams_to_cancel(consumable);
+
+      // Consumables that metabolize alcohol work on both absorbed and
+      // unabsorbed alcohol.
+      creature->decrement_grams_unabsorbed_alcohol(grams);
+      creature->get_blood_ref().decrement_grams_alcohol(grams);
+    }
+  }
 }
 
 void ConsumableAction::gain_resistances_from_consumable(CreaturePtr creature, ConsumablePtr consumable)

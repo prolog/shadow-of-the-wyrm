@@ -43,3 +43,11 @@ Material* Leather::clone()
   return new Leather(*this);
 }
 
+bool Leather::get_material_floats() const
+{
+  return true;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Leather_test.cpp"
+#endif

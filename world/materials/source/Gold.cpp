@@ -43,3 +43,7 @@ Material* Gold::clone()
   return new Gold(*this);
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/Gold_test.cpp"
+#endif
+

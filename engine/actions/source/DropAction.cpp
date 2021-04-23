@@ -96,7 +96,7 @@ void DropAction::handle_invalid_drop_quantity(CreaturePtr creature)
 }
 
 // Show the description of the item being dropped, if applicable
-void DropAction::handle_item_dropped_message(CreaturePtr creature, ItemPtr item)
+void DropAction::handle_item_dropped_message(CreaturePtr creature, IInventoryPtr inv, ItemPtr item)
 {  
   if (item && creature)
   {
@@ -105,8 +105,18 @@ void DropAction::handle_item_dropped_message(CreaturePtr creature, ItemPtr item)
 
     CurrentCreatureAbilities cca;
     string drop_message = TextMessages::get_item_drop_message(creature, !cca.can_see(creature), item);
-    
     manager.add_new_message(drop_message);
+
+    if (inv)
+    {
+      string inv_drop_effect_sid = inv->get_drop_effect_sid();
+
+      if (!inv_drop_effect_sid.empty())
+      {
+        manager.add_new_message(StringTable::get(inv_drop_effect_sid));
+      }
+    }
+
     manager.send();
   }
   // If it's not the player, and the player is in range, inform the player
@@ -206,7 +216,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
 
           // Display a message if appropriate.
           // If it's the player, remind the user what he or she dropped.
-          handle_item_dropped_message(creature, new_item);
+          handle_item_dropped_message(creature, inv, new_item);
 
           // Do any of the creatures watching this have drop scripts?
           handle_reacting_creature_drop_scripts(creature, current_map, new_item, drop_coord);

@@ -8,6 +8,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "FireWeaponTileSelectionKeyboardCommandMap.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "ItemScript.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemManager.hpp"
@@ -338,13 +339,23 @@ bool RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature
     }
     
     AmmunitionCalculator ammunition_calc;
-    
+    IInventoryPtr inv = tile->get_items();
+    Game& game = Game::instance();
+
     if (ammunition_calc.survives(creature, ammunition))
     {
-      IInventoryPtr inv = tile->get_items();
-      
       inv->merge_or_add(ammunition, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
       ammunition_destroyed = false;
+    }
+
+    // Add a message based on the inventory type, if appropriate.
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(game, creature->get_id()));
+    string msg = inv->get_drop_effect_sid();
+
+    if (!msg.empty())
+    {
+      manager.add_new_message(StringTable::get(msg));
+      manager.send();
     }
   }
 

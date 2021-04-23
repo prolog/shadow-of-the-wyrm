@@ -12,6 +12,8 @@ class Wood : public Material
     bool get_is_corrodible() const override;
     bool get_crumbles() const override;
     
+    bool get_material_floats() const override;
+
     virtual Colour get_colour() const override;
     
     Material* clone() override;

@@ -43,6 +43,7 @@ const string TileTextKeys::TILE_DESC_HOT_SPRINGS    = "TILE_DESC_HOT_SPRINGS";
 const string TileTextKeys::TILE_DESC_SPRINGS        = "TILE_DESC_SPRINGS";
 const string TileTextKeys::TILE_DESC_TREE           = "TILE_DESC_TREE";
 const string TileTextKeys::TILE_DESC_VILLAGE        = "TILE_DESC_VILLAGE";
+const string TileTextKeys::TILE_DESC_NAMED_VILLAGE  = "TILE_DESC_NAMED_VILLAGE";
 const string TileTextKeys::TILE_DESC_WEEDS          = "TILE_DESC_WEEDS";
 const string TileTextKeys::TILE_DESC_WHEAT          = "TILE_DESC_WHEAT";
 const string TileTextKeys::TILE_DESC_BARRACKS       = "TILE_DESC_BARRACKS";

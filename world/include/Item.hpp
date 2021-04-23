@@ -190,6 +190,9 @@ class Item : public ISerializable
     virtual bool get_is_good() const;
     virtual int get_score() const;
 
+    virtual void set_floats(const bool new_floats);
+    bool get_floats() const;
+
     virtual Item* create_with_new_id();
     virtual Item* clone_with_new_id();
 

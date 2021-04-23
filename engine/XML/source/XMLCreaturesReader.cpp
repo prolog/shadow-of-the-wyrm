@@ -180,6 +180,12 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     base_damage.set_damage_type(CombatConstants::DEFAULT_UNARMED_DAMAGE_TYPE);
     parse_damage(base_damage, base_damage_node);
     creature->set_base_damage(base_damage);
+
+    XMLNode range_node = XMLUtils::get_next_element_by_local_name(creature_node, "Range");
+    if (!range_node.is_null())
+    {
+      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_PRIMARY_MELEE_RANGE, XMLUtils::get_node_value(range_node));
+    }
     
     // Read the base evade and soak for the creature.  For most creatures, this will be 0,
     // but some creatures (armoured beetles, dragons, etc) will have higher than usual values.

@@ -1,4 +1,5 @@
 require('quest')
+require('constants')
 
 -- Wyrmeswraec quest details
 local function skaal_wyrmeswraec_start_fn()
@@ -31,7 +32,28 @@ skaal_quest = Quest:new("skaal_wyrmeswraec_quest",
                         skaal_wyrmeswraec_completion_condition_fn, 
                         skaal_wyrmeswraec_completion_fn)
 
-if skaal_quest:execute() == false then
-  add_message("SKAAL_SPEECH_TEXT_SID")
+local function check_defense()
+  local def = false
+
+  if count_creatures_with_race(GOBLIN_RACE_ID) == 0 then
+    remove_creature_additional_property(PLAYER_ID, QUEST_STONEHEIM_RAID)
+    
+    add_message_with_pause("SKAAL_RAID_SID")
+    clear_and_add_message("SKAAL_RAID2_SID")
+
+    add_object_to_player_tile("protector")
+  else
+    clear_and_add_message("SKAAL_RAID_IN_PROGRESS_SID")
+  end
+end
+
+local raid_in_progress = get_creature_additional_property(PLAYER_ID, QUEST_STONEHEIM_RAID)
+
+if raid_in_progress == "1" then
+  check_defense()
+else
+  if skaal_quest:execute() == false then
+    add_message("SKAAL_SPEECH_TEXT_SID")
+  end
 end
 

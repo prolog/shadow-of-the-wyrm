@@ -28,3 +28,6 @@ const string ItemProperties::ITEM_PROPERTIES_MUSIC_CHARM_RACES = "music_charm_ra
 const string ItemProperties::ITEM_PROPERTIES_LOCK_ID = "lock_id";
 const string ItemProperties::ITEM_PROPERTIES_MARK_AUTOMOVE = "mk_am";
 const string ItemProperties::ITEM_PROPERTIES_CONTRABAND = "contraband";
+const string ItemProperties::ITEM_PROPERTIES_FLOATS = "floats";
+const string ItemProperties::ITEM_PROPERTIES_METABOLIZES_ALCOHOL = "met_alc";
+

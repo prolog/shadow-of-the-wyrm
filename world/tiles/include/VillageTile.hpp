@@ -20,6 +20,9 @@ class VillageTile : public WorldMapLandmarkTile
     
     void set_village_race_id(const std::string& new_race_id);
     std::string get_village_race_id() const;
+
+    void set_village_name(const std::string& new_name);
+    std::string get_village_name() const;
     
     void set_settlement_type(const SettlementType settlement_type);
     SettlementType get_settlement_type() const;

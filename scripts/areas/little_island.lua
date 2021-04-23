@@ -49,5 +49,8 @@ set_shop_shopkeeper_id(shop_id, shopkeeper_id, isen_dun_id)
 repop_shop(shop_id, isen_dun_id)
 
 -- Generate a hireling by the eastern docks
-generate_hireling("isen_dun", 16, 70, RNG_range(5,7))
+generate_hireling(isen_dun_id, 16, 70, RNG_range(5,7))
 
+-- Set Hrimgar's advisor's custom bestiary text and chat script
+set_creature_text_details_sid(isen_dun_id, 4, 34, "HRIMGAR_ADVISOR_TEXT_DETAILS_SID")
+set_chat_script(isen_dun_id, 4, 34, "quests/isen_dun/advisor.lua")

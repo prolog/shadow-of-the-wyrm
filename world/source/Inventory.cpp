@@ -471,6 +471,11 @@ uint Inventory::count_items(const string& item_base_id) const
   return num_items;
 }
 
+string Inventory::get_drop_effect_sid() const
+{
+  return "";
+}
+
 bool Inventory::serialize(ostream& stream) const
 {
   Serialize::write_size_t(stream, items.size());

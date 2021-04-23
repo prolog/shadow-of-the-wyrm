@@ -43,3 +43,6 @@ Material* Onyx::clone()
   return new Onyx(*this);
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/Onyx_test.cpp"
+#endif

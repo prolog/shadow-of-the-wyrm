@@ -1,5 +1,6 @@
 #include <iterator>
 #include <map>
+#include "ClassManager.hpp"
 #include "Conversion.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureGenerationConstants.hpp"
@@ -237,17 +238,17 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, cons
   return generated_creature;
 }
 
-CreaturePtr CreatureGenerationManager::generate_follower(ActionManager& am, MapPtr current_map, const FollowerType ft, const int danger_level)
+CreaturePtr CreatureGenerationManager::generate_follower(ActionManager& am, MapPtr current_map, const FollowerType ft, const int danger_level, const string& race_id, const string& class_id)
 {
   CreaturePtr follower;
 
   switch (ft)
   {
     case FollowerType::FOLLOWER_TYPE_HIRELING:
-      follower = generate_hireling(am, current_map, danger_level);
+      follower = generate_hireling(am, current_map, danger_level, race_id, class_id);
       break;
     case FollowerType::FOLLOWER_TYPE_ADVENTURER:
-      follower = generate_adventurer(am, current_map, danger_level);
+      follower = generate_adventurer(am, current_map, danger_level, race_id, class_id);
     default:
       break;
   }
@@ -255,15 +256,29 @@ CreaturePtr CreatureGenerationManager::generate_follower(ActionManager& am, MapP
   return follower;
 }
 
-CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, MapPtr current_map, const int danger_level)
+CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, MapPtr current_map, const int danger_level, const string& r_id, const string& c_id)
 {
   CreatureSex sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE)));
   CreatureFactory cf;
 
-  Race* race = CreatureUtils::get_random_user_playable_race();
-  Class* cur_class = CreatureUtils::get_random_user_playable_class();
-  string race_id;
-  string class_id;
+  string race_id = r_id;
+  string class_id = c_id;
+
+  RaceManager rm;
+  ClassManager cm;
+
+  Race* race = rm.get_race(race_id);
+  Class* cur_class = cm.get_class(class_id);
+
+  if (race_id.empty() || race == nullptr)
+  {
+    race = CreatureUtils::get_random_user_playable_race();
+  }
+
+  if (class_id.empty() || cur_class == nullptr)
+  {
+    cur_class = CreatureUtils::get_random_user_playable_class();
+  }
 
   if (race != nullptr && cur_class != nullptr)
   {
@@ -337,15 +352,29 @@ CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, MapP
   return hireling;
 }
 
-CreaturePtr CreatureGenerationManager::generate_adventurer(ActionManager& am, MapPtr current_map, const int danger_level)
+CreaturePtr CreatureGenerationManager::generate_adventurer(ActionManager& am, MapPtr current_map, const int danger_level, const string& r_id, const string& c_id)
 {
   CreatureSex sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE)));
   CreatureFactory cf;
 
-  Race* race = CreatureUtils::get_random_user_playable_race();
-  Class* cur_class = CreatureUtils::get_random_user_playable_class();
-  string race_id;
-  string class_id;
+  string race_id = r_id;
+  string class_id = c_id;
+
+  RaceManager rm;
+  ClassManager cm;
+
+  Race* race = rm.get_race(race_id);
+  Class* cur_class = cm.get_class(class_id);
+
+  if (race_id.empty() || race == nullptr)
+  {
+    race = CreatureUtils::get_random_user_playable_race();
+  }
+
+  if (class_id.empty() || cur_class == nullptr)
+  {
+    cur_class = CreatureUtils::get_random_user_playable_class();
+  }
 
   if (race != nullptr && cur_class != nullptr)
   {

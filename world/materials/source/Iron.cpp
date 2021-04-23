@@ -38,3 +38,6 @@ Material* Iron::clone()
   return new Iron(*this);
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/Iron_test.cpp"
+#endif

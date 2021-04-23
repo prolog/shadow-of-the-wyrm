@@ -268,8 +268,11 @@ int order_at_ease(lua_State* ls);
 int reset_creatures_and_creature_locations(lua_State* ls);
 int set_creature_speech_text_sid(lua_State* ls);
 int get_creature_speech_text_sid(lua_State* ls);
+int set_creature_text_details_sid(lua_State* ls);
 int creature_has_humanoid_followers(lua_State* ls);
 int count_creature_humanoid_followers(lua_State* ls);
+int set_chat_script(lua_State* ls);
+int count_creatures_with_race(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

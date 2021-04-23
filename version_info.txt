@@ -1,3 +1,68 @@
+Shadow of the Wyrm v1.3.0 "Kapsberger"
+- Version declared February 20, 2021.  Version finalized April 23, 2021.
+
+- Settlements are now named during world generation.
+
+- Cloak of Shadows now adds a little evade and soak as well as the Shadow
+  resistance, making it more useful as a general-purpose buff.
+
+- Items generated for the player (via NPCs, quest rewards, and so on) are
+  now prevented from having cursed status (Mythrrinthael).
+
+- The tick message for stoning is now displayed in red, to be more visible
+  against other messages (Poser Destroyer).
+
+- Dropping items in water now generates a "Splash!" message.
+
+- The hireling and adventurer generation functions have been updated so that
+  optional race and class IDs can be specified. A random value will be chosen
+  for each if not specified or if the ID is bad.
+
+- Additional name combinations.
+
+- Defined a new "meat" material type, and named the wood one "wood/plant".
+
+- A number of locations now have advisor NPCs.  Set a group quest for the
+  advisor in Isen Dun.
+
+- Drinking a large quantity of alcohol at once can now inflict immediate
+  poison status.
+
+- Certain items (wildflowers) metabolize alcohol, for reasons not fully
+  understood. Eating these metabolizes a portion of the unabsorbed alcohol
+  in your system and can help sober you up.
+
+- Weapons now have an associated melee range. Typically 1, this can also be 2
+  (spears, greatswords, great axes) or 3 (whips).  This will let you attack 
+  creatures to up to x distance away in a straight line.  Range information is 
+  shown in the item codex.  Range is only considered for the primary melee 
+  weapon (KikuMorgana).
+
+- The display can now be resized, and should scale to larger sizes nicely.
+  It will stretch the sprites so things may not look perfect; there's also
+  a setting in swyrm.ini allowing for integer scaling, which allows for
+  cleaner scaling but will letterbox the game until it reaches a new integer
+  multiple of 1280x600 (ACID GRIND).
+
+- Created display_sdl_window_size to allow setting the window size at
+  startup. When this isn't set, the window size will be created based on
+  the size of the sprites.
+
+- New creatures: advisor.
+
+- New items: Isen Dun whisky, bread, flower bread, dwarven amulet "Protector".
+
+- Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - Cats shouldn't have been aggressive by default (YARD).
+
+  - Scroll-stacking issues (Mythrrinthael).
+
+  - Cyrillic text wasn't working in SDL when bitmapped fonts were placing
+    the characters > 127 (Meklon2007).
+
 Shadow of the Wyrm v1.2.8 "Holborne"
 - Version declared December 13, 2020.  Version finalized February 20, 2021.
 

@@ -8,6 +8,7 @@
 #include "PlayerDecisionStrategy.hpp"
 #include "Serialize.hpp"
 #include "ThreatConstants.hpp"
+#include "Weapon.hpp"
 
 using namespace std;
 
@@ -473,6 +474,7 @@ Blood& Creature::get_blood_ref()
 void Creature::decrement_grams_unabsorbed_alcohol(const float delta_grams)
 {
   grams_unabsorbed_alcohol -= delta_grams;
+  grams_unabsorbed_alcohol = std::max<float>(grams_unabsorbed_alcohol, 0);
 }
 
 void Creature::increment_grams_unabsorbed_alcohol(const float addl_grams)
@@ -1734,6 +1736,28 @@ bool Creature::is_allied_to(const string& creature_id) const
   }
 
   return allied;
+}
+
+int Creature::get_primary_melee_range() const
+{
+  int range = 1;
+  WeaponPtr weapon = std::dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED));
+
+  if (weapon != nullptr)
+  {
+    range = weapon->get_range();
+  }
+  else
+  {
+    string range_prop = get_additional_property(CreatureProperties::CREATURE_PROPERTIES_PRIMARY_MELEE_RANGE);
+
+    if (!range_prop.empty())
+    {
+      range = String::to_int(range_prop);
+    }
+  }
+
+  return range;
 }
 
 // Swap values, no throw

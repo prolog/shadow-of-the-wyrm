@@ -15,6 +15,9 @@ class Consumable : public Item
     virtual FoodType get_food_type() const;
 
     virtual ItemType get_type() const override = 0;
+
+    void set_metabolizes_alcohol(const bool new_metabolizes_alcohol);
+    bool get_metabolizes_alcohol() const;
     
     void set_nutrition(const int new_nutrition);
     int get_nutrition() const;

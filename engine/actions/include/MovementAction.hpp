@@ -44,6 +44,7 @@ class MovementAction : public IActionManager
     MovementThroughTileType get_movement_through_tile_type(CreaturePtr creature, CreaturePtr adjacent_creature, TilePtr creatures_new_tile);
     MovementThroughTileType get_friendly_movement_past_type(CreaturePtr creature, const std::string& prompt_sid, const MovementThroughTileType selected_movement_type, const MovementThroughTileType fallback_type);
 
+    bool confirm_ranged_melee_attack(CreaturePtr creature);
     void add_cannot_escape_message(const CreaturePtr& creature);
     void move_to_new_map(TilePtr old_tile, MapPtr old_map, MapPtr new_map, MapExitPtr map_exit);
     void handle_properties_and_move(CreaturePtr creature, TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit, const Coordinate& proposed_new_coord);

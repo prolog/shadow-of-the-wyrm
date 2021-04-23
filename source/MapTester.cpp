@@ -48,6 +48,7 @@
 #include "SimpleChurchGenerator.hpp"
 #include "KeepRuinsGenerator.hpp"
 #include "MapTranslator.hpp"
+#include "Naming.hpp"
 #include "ShadowOfTheWyrmEngine.hpp"
 #include "SettlementRuinsGenerator.hpp"
 #include "ShrineGeneratorFactory.hpp"
@@ -80,6 +81,7 @@ void misc();
 void test_calendar();
 void test_item_generation();
 void test_creature_generation();
+void settlement_name_generation();
 
 // Other maps
 void test_other_maps();
@@ -795,6 +797,7 @@ void misc()
     std::cout << "4. Other Map Types" << std::endl;
     std::cout << "5. Load Custom Map" << std::endl;
     std::cout << "6. Creature Generation" << std::endl;
+    std::cout << "7. Settlement Name Generation" << std::endl;
 
     std::cin >> choice;
     
@@ -817,6 +820,8 @@ void misc()
         break;
       case 6:
         test_creature_generation();
+      case 7:
+        settlement_name_generation();
       default:
         break;
     }
@@ -964,13 +969,15 @@ void test_creature_generation()
     std::cin >> filename;
 
     CreatureGenerationIndex generation_list = cgm.generate_creature_generation_map(static_cast<TileType>(tile_type), false, min_level, max_level, Rarity::RARITY_COMMON, {});
+    const auto& cgl = generation_list.get();
+
     std::map<std::string, int> creature_count;
 
     if (num_creatures > 0)
     {
       for (int i = 0; i < num_creatures; i++)
       {
-        CreaturePtr creature = cgm.generate_creature(am, generation_list, nullptr);
+        CreaturePtr creature = cgm.generate_creature(am, cgl, nullptr);
 
         if (creature != nullptr)
         {
@@ -999,6 +1006,14 @@ void test_creature_generation()
 
       outfile.close();
     }
+  }
+}
+
+void settlement_name_generation()
+{
+  for (int i = 0; i < 15; i++)
+  {
+    std::cout << Naming::generate_settlement_name() << std::endl;
   }
 }
 

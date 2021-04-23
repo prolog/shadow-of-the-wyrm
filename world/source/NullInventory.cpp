@@ -170,6 +170,11 @@ uint NullInventory::count_items(const string& item_base_id) const
   return 0;
 }
 
+string NullInventory::get_drop_effect_sid() const
+{
+  return "";
+}
+
 bool NullInventory::serialize(ostream& stream) const
 {
   return true;

@@ -26,7 +26,7 @@ class SDLRender
     void render_glyph(SDLCursorLocation& cursor_location, SDL_Renderer* renderer, SDL_Texture* spritesheet, SDL_Texture* texture, const int row, const int col, const int spritesheet_y, const int spritesheet_x, const SDL_Color& fg, const SDL_Color& bg);
 
   protected:
-    std::pair<int, int> get_glyph_location_from_spritesheet(const char x);
+    std::pair<int, int> get_glyph_location_from_spritesheet(const unsigned char x);
     void draw_glyph(SDLCursorLocation& cursor_location, SDL_Renderer* renderer, SDL_Texture* spritesheet, SDL_Texture* texture, const std::pair<int, int>& ss_coords, const int col, const int row, const SDL_Color& fg, const SDL_Color& bg);
 
     SDLDisplayParameters display_params;
