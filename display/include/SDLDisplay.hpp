@@ -12,6 +12,7 @@
 #include "SDLCursorLocation.hpp"
 #include "SDLDisplayParameters.hpp"
 #include "SDLPromptProcessor.hpp"
+#include "Settings.hpp"
 
 class SDLDisplay : public Display
 {

@@ -8601,7 +8601,6 @@ int creature_has_humanoid_followers(lua_State* ls)
         if (c != nullptr && c->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == creature_id)
         {
           RaceManager rm;
-          Race* r = rm.get_race(c->get_race_id());
 
           if (rm.is_race_or_descendent(c->get_race_id(), RaceConstants::RACE_CONSTANTS_RACE_ID_HUMANOID))
           {
@@ -8641,7 +8640,6 @@ int count_creature_humanoid_followers(lua_State* ls)
         if (c != nullptr && c->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == creature_id)
         {
           RaceManager rm;
-          Race* r = rm.get_race(c->get_race_id());
 
           if (rm.is_race_or_descendent(c->get_race_id(), RaceConstants::RACE_CONSTANTS_RACE_ID_HUMANOID))
           {
