@@ -1,4 +1,5 @@
 Me:
+- Kure: skinning/tanning
 - ASSET RELEASE FOR 1.3.0
 - advisor
 - quest for advisor in Yew

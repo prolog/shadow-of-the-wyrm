@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.3.0 "Kapsberger"
-- Version declared February 20, 2021.
+- Version declared February 20, 2021.  Version finalized April 23, 2021.
 
 - Settlements are now named during world generation.
 
