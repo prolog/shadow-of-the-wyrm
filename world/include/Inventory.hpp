@@ -50,6 +50,8 @@ class Inventory : public IInventory
     std::list<ItemPtr>& get_items_ref() override;
     const std::list<ItemPtr>& get_items_cref() const override;
 
+    std::string get_drop_effect_sid() const override;
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
     

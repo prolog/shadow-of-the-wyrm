@@ -43,3 +43,6 @@ Material* Bone::clone()
   return new Bone(*this);
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/Bone_test.cpp"
+#endif

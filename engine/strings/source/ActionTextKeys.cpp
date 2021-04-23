@@ -447,36 +447,6 @@ string ActionTextKeys::get_fletchery_message(const string& item_usage_desc_sid)
   return msg;
 }
 
-string ActionTextKeys::get_toggle_autopickup_message(const bool autopickup_value, const vector<string>& item_type_names)
-{
-  string item_types;
-
-  if (item_type_names.empty())
-  {
-    item_types = "/";
-  }
-  else
-  {
-    size_t it_sz = item_type_names.size();
-
-    for (size_t i = 0; i < it_sz; i++)
-    {
-      item_types = item_types + item_type_names.at(i);
-
-      if (i < (it_sz - 1))
-      {
-        item_types += ", ";
-      }
-    }
-  }
-
-  string msg = StringTable::get(ACTION_TOGGLE_AUTOPICKUP);
-  boost::replace_first(msg, "%s1", StringTable::get(TextMessages::get_bool_sid(autopickup_value)));
-  boost::replace_first(msg, "%s2", item_types);
-
-  return msg;
-}
-
 string ActionTextKeys::get_unimpressed_message(const string& creature_desc, const bool is_player)
 {
   return get_general_message(creature_desc, ACTION_UNIMPRESSED_PLAYER, ACTION_UNIMPRESSED_MONSTER, is_player);
@@ -576,6 +546,7 @@ const string ActionTextKeys::ACTION_DROP_NOT_ALLOWED           = "ACTION_DROP_NO
 const string ActionTextKeys::ACTION_DROP_NO_ITEM_SELECTED      = "ACTION_DROP_NO_ITEM_SELECTED";
 const string ActionTextKeys::ACTION_DROP_QUANTITY_PROMPT       = "ACTION_DROP_QUANTITY_PROMPT";
 const string ActionTextKeys::ACTION_DROP_INVALID_QUANTITY      = "ACTION_DROP_INVALID_QUANTITY";
+const string ActionTextKeys::ACTION_DROP_WATER                 = "ACTION_DROP_WATER";
 const string ActionTextKeys::ACTION_PICK_UP_NOTHING_ON_GROUND  = "ACTION_PICK_UP_NOTHING_ON_GROUND";
 const string ActionTextKeys::ACTION_PICK_UP_MAX_ITEMS          = "ACTION_PICK_UP_MAX_ITEMS";
 const string ActionTextKeys::ACTION_PICK_UP_MAX_WEIGHT         = "ACTION_PICK_UP_MAX_WEIGHT";
@@ -786,7 +757,6 @@ const string ActionTextKeys::ACTION_THIEVERY_STEAL_UNSUCCESSFUL_MONSTER = "ACTIO
 const string ActionTextKeys::ACTION_CRY_OUT                       = "ACTION_CRY_OUT";
 const string ActionTextKeys::ACTION_BOWYER_CREATE                 = "ACTION_BOWYER_CREATE";
 const string ActionTextKeys::ACTION_FLETCHERY_CREATE              = "ACTION_FLETCHERY_CREATE";
-const string ActionTextKeys::ACTION_TOGGLE_AUTOPICKUP             = "ACTION_TOGGLE_AUTOPICKUP";
 const string ActionTextKeys::ACTION_UNIMPRESSED_PLAYER            = "ACTION_UNIMPRESSED_PLAYER";
 const string ActionTextKeys::ACTION_UNIMPRESSED_MONSTER           = "ACTION_UNIMPRESSED_MONSTER";
 const string ActionTextKeys::ACTION_HIDE_FAILURE_PLAYER           = "ACTION_HIDE_FAILURE_PLAYER";

@@ -145,14 +145,20 @@ string WeaponInfoAction::get_melee_weapon_info(CreaturePtr creature, WeaponPtr w
       Damage weapon_damage = damage_calc->calculate_base_damage_with_bonuses_or_penalties(creature);
 
       int speed = 0;
+      int range = 1;
 
+      if (creature)
+      {
+        range = creature->get_primary_melee_range();
+      }
+      
       if (weapon)
       {
         AttackSpeedCalculatorPtr sc = AttackSpeedCalculatorFactory::create_speed_calculator(attack_type);
         speed = sc->calculate(creature);
       }
 
-      melee_info = EquipmentTextKeys::get_melee_weapon_synopsis(attack_type, weapon, base_difficulty, total_difficulty, speed, weapon_damage);
+      melee_info = EquipmentTextKeys::get_melee_weapon_synopsis(attack_type, weapon, base_difficulty, total_difficulty, speed, weapon_damage, range);
     }
   }
 

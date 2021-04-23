@@ -79,40 +79,6 @@ ActionCostValue PickupAction::pick_up(CreaturePtr creature, const string& ground
   return acv;
 }
 
-ActionCostValue PickupAction::toggle_autopickup(CreaturePtr creature)
-{
-  if (creature != nullptr)
-  {
-    DecisionStrategy* dec = creature->get_decision_strategy();
-
-    if (dec != nullptr)
-    {
-      dec->set_autopickup(!dec->get_autopickup());
-
-      bool ap_value = dec->get_autopickup();
-      set<ItemType> autopickup_types = dec->get_autopickup_types();
-      vector<string> item_type_names;
-
-      for (const ItemType it : autopickup_types)
-      {
-        DisplayItemTypePtr dit = DisplayItemTypeFactory::create(it);
-        
-        if (dit != nullptr)
-        {
-          item_type_names.push_back(dit->get_description());
-        }
-      }
-
-      // Add a message about autopickup being on or off.
-      IMessageManager& manager = MM::instance();
-      manager.add_new_message(ActionTextKeys::get_toggle_autopickup_message(ap_value, item_type_names));
-      manager.send();
-    }
-  }
-
-  return 0; // toggling autopickup is a free action
-}
-
 ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, ActionManager * const am, const PickUpType pick_up, const set<ItemType>& pickup_types)
 {
   ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;

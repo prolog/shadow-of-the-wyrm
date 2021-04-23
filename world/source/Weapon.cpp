@@ -18,7 +18,7 @@ enum struct ImproveWeaponType
 
 // WEAPON
 Weapon::Weapon()
-: difficulty(0), speed(0), trained_skill(SkillType::SKILL_MELEE_EXOTIC), trained_ranged_skill(SkillType::SKILL_MELEE_EXOTIC), requires_ranged_weapon(false)
+: difficulty(0), speed(0), trained_skill(SkillType::SKILL_MELEE_EXOTIC), trained_ranged_skill(SkillType::SKILL_MELEE_EXOTIC), requires_ranged_weapon(false), range(1)
 {
   type = ItemType::ITEM_TYPE_WEAPON;
   symbol.set_symbol(')');
@@ -34,6 +34,7 @@ bool Weapon::operator==(const Weapon& weapon) const
   result = result && (trained_skill == weapon.trained_skill);
   result = result && (trained_ranged_skill == weapon.trained_ranged_skill);
   result = result && (requires_ranged_weapon == weapon.requires_ranged_weapon);
+  result = result && (range == weapon.range);
 
   result = result && (get_style() == weapon.get_style());
 
@@ -100,6 +101,16 @@ bool Weapon::get_requires_ranged_weapon() const
   return requires_ranged_weapon;
 }
 
+void Weapon::set_range(const int new_range)
+{
+  range = new_range;
+}
+
+int Weapon::get_range() const
+{
+  return range;
+}
+
 bool Weapon::additional_item_attributes_match(std::shared_ptr<Item> i) const
 {
   bool match = (i != nullptr);
@@ -114,6 +125,7 @@ bool Weapon::additional_item_attributes_match(std::shared_ptr<Item> i) const
     match = match && (damage               == i_weap->get_damage()    );
     match = match && (trained_skill        == i_weap->get_trained_skill());
     match = match && (trained_ranged_skill == i_weap->get_trained_ranged_skill());
+    match = match && (range                == i_weap->get_range());
   }
   
   return match;
@@ -236,6 +248,7 @@ bool Weapon::serialize(ostream& stream) const
   Serialize::write_enum(stream, trained_skill);
   Serialize::write_enum(stream, trained_ranged_skill);
   Serialize::write_bool(stream, requires_ranged_weapon);
+  Serialize::write_int(stream, range);
 
   return true;
 }
@@ -249,6 +262,7 @@ bool Weapon::deserialize(istream& stream)
   Serialize::read_enum(stream, trained_skill);
   Serialize::read_enum(stream, trained_ranged_skill);
   Serialize::read_bool(stream, requires_ranged_weapon);
+  Serialize::read_int(stream, range);
 
   return true;
 }

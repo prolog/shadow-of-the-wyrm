@@ -18,7 +18,7 @@ SDLDisplayParameters SDLRender::get_display_parameters() const
   return display_params;
 }
 
-pair<int, int> SDLRender::get_glyph_location_from_spritesheet(char x)
+pair<int, int> SDLRender::get_glyph_location_from_spritesheet(const unsigned char x)
 {
   int glyphs_per_line = display_params.get_glyphs_per_line();
   return { x / glyphs_per_line, x % glyphs_per_line };
@@ -47,15 +47,15 @@ void SDLRender::render_text(SDLCursorLocation& cursor_location, SDL_Renderer* re
 
 void SDLRender::render_text(SDLCursorLocation& cursor_location, SDL_Renderer* renderer, SDL_Texture* text_spritesheet, SDL_Texture* texture, const int row, const int col, const char c, const SDL_Color& fg, const SDL_Color& bg)
 {
-  char display_c = c;
+  unsigned char uc = static_cast<unsigned char>(c);
 
   // Look up the letter
-  if (c < 0 || c > display_params.get_num_glyphs())
+  if (uc > display_params.get_num_glyphs())
   {
-    display_c = '?';
+    uc = '?';
   }
 
-  std::pair<int, int> ss_coords = get_glyph_location_from_spritesheet(display_c);
+  std::pair<int, int> ss_coords = get_glyph_location_from_spritesheet(uc);
   draw_glyph(cursor_location, renderer, text_spritesheet, texture, ss_coords, col, row, fg, bg);
 }
 

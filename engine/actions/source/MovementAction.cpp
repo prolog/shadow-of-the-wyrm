@@ -191,9 +191,12 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
 
 ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords, const Direction d, const bool confirm_if_dangerous)
 {
+  Game& game = Game::instance();
   ActionCostValue movement_acv = ActionCostConstants::NO_ACTION;
   bool creature_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  pair<bool, TilePtr> attack_at_range = MapUtils::get_melee_attack_target(map, creature, d);
+  bool automelee = game.get_settings_ref().get_setting_as_bool(Setting::AUTOMELEE);
 
   if (creature && creatures_new_tile)
   {
@@ -211,6 +214,13 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
     if (MapUtils::is_creature_present(creatures_new_tile))
     {
       movement_acv = handle_movement_into_occupied_tile(creature, creatures_new_tile, map, new_coords, d);
+    }
+    else if (attack_at_range.first && 
+             attack_at_range.second != nullptr && 
+             (automelee || confirm_ranged_melee_attack(creature)))
+    {
+      CombatManager cm;
+      movement_acv = cm.attack(creature, attack_at_range.second->get_creature(), AttackType::ATTACK_TYPE_MELEE_PRIMARY);
     }
     // Only try to handle a blocking terrain feature if the creature is corporeal.
     // Spirits don't care about closed doors, etc!
@@ -944,6 +954,22 @@ ActionCostValue MovementAction::descend(CreaturePtr creature)
   }
 
   return movement_acv;
+}
+
+bool MovementAction::confirm_ranged_melee_attack(CreaturePtr creature)
+{
+  bool confirm = false;
+
+  if (creature != nullptr)
+  {
+    Game& game = Game::instance();
+    string confirm_attack = TextMessages::get_confirmation_message(TextKeys::DECISION_CONFIRM_RANGED_MELEE_ATTACK);
+    game.display->confirm(confirm_attack);
+
+    confirm = creature->get_decision_strategy()->get_confirmation();
+  }
+
+  return confirm;
 }
 
 void MovementAction::add_cannot_escape_message(const CreaturePtr& creature)

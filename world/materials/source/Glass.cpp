@@ -37,3 +37,7 @@ Material* Glass::clone()
 {
   return new Glass(*this);
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Glass_test.cpp"
+#endif

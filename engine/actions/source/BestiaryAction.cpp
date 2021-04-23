@@ -5,6 +5,7 @@
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
+#include "EquipmentTextKeys.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ScreenTitleTextKeys.hpp"
@@ -171,9 +172,10 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
       }
     }
 
-    // Display size and level
+    // Display size, level, and range
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(SizeTextKeys::SIZE) + ": " + StringTable::get(SizeTextKeys::get_size_sid_from_creature_size(CreatureUtils::get_size(creature)))));
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(TextKeys::LEVEL) + ": " + to_string(creature->get_level().get_current())));
+    bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, EquipmentTextKeys::get_range(creature->get_primary_melee_range())));
 
     // Display the creature's details.
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));

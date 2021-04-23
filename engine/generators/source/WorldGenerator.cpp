@@ -11,6 +11,7 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "MapProperties.hpp"
+#include "Naming.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
@@ -524,6 +525,7 @@ void WorldGenerator::set_village_races(MapPtr map)
             village_tile->set_settlement_type(race->get_settlement_type());
             village_tile->set_tile_subtype(race->get_settlement_tile_subtype());
             village_tile->set_extra_description_sid(get_race_village_extra_description_sid(race_id));
+            village_tile->set_village_name(Naming::generate_settlement_name());
 
             set_initial_creatures_for_village(village_tile, race_id);
 

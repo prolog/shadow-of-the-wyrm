@@ -25,6 +25,7 @@
 #include "TextMessages.hpp"
 #include "TileDescriber.hpp"
 #include "ViewMapTranslator.hpp"
+#include "WeaponManager.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
@@ -2015,6 +2016,56 @@ vector<string> MapUtils::place_followers(MapPtr map, CreaturePtr creature, const
   }
 
   return placed_follower_ids;
+}
+
+pair<bool, TilePtr> MapUtils::get_melee_attack_target(MapPtr map, CreaturePtr creature, const Direction d)
+{
+  pair<bool, TilePtr> result = {false, nullptr};
+
+  if (map != nullptr && creature != nullptr)
+  {
+    int range = creature->get_primary_melee_range();
+    string c_id = creature->get_id();
+    Coordinate creature_coords = map->get_location(c_id);
+
+    // Find the attacked tile, if one exists
+    for (int i = 1; i <= range; i++)
+    {
+      Coordinate c = CoordUtils::get_new_coordinate(creature_coords, d, i);
+      TilePtr t = map->at(c);
+
+      // Checking if the tile is generally blocking instead of specifically
+      // for the creature for game balance purposes. Otherwise, a creature
+      // could attack two-deep in rock/earth, behind doors, etc.
+      if (t != nullptr && !t->get_is_blocking(nullptr))
+      {
+        if (t->has_creature())
+        {
+          CreaturePtr tc = t->get_creature();
+
+          // Attack if the tile creature has the attacking creature in its
+          // threat map, or if the attacking creature has the tile creature
+          // in its own.
+          if (tc->get_decision_strategy()->get_threats_ref().has_threat(c_id).first ||
+              creature->get_decision_strategy()->get_threats_ref().has_threat(tc->get_id()).first)
+          {
+            result = {true, t};
+          }
+
+          // If there's a creature present, stop checking.  If the creature
+          // is hostile, we'll return true plus the tile; if not, we'll
+          // return false and nullptr indicating we shouldn't attack.
+          break;
+        }
+      }
+      else
+      {
+        break;
+      }
+    }
+  }
+
+  return result;
 }
 
 #ifdef UNIT_TESTS

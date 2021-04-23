@@ -72,6 +72,8 @@ class IInventory : public ISerializable
     virtual std::list<ItemPtr>& get_items_ref() = 0;
     virtual const std::list<ItemPtr>& get_items_cref() const = 0;
 
+    virtual std::string get_drop_effect_sid() const = 0;
+
     virtual bool serialize(std::ostream& stream) const override = 0;
     virtual bool deserialize(std::istream& stream) override = 0;
 

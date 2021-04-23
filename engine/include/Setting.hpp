@@ -29,6 +29,8 @@ class Setting
     static const std::string MAX_CHARACTERS_PER_USER;
     static const std::string DISPLAY;
     static const std::string DISPLAY_SDL_RENDERER;
+    static const std::string DISPLAY_SDL_WINDOW_SIZE;
+    static const std::string DISPLAY_SDL_INTEGER_SCALING;
     static const std::string DISPLAY_FONT;
     static const std::string DISPLAY_TILE_SIZE;
     static const std::string DISPLAY_TILE_GLYPHS_PER_LINE;
@@ -42,6 +44,7 @@ class Setting
     static const std::string AUTOPICKUP_TYPES;
     static const std::string AUTOPICKUP_IGNORE_CORPSES;
     static const std::string PROMPT_ON_STACK_PICKUP;
+    static const std::string AUTOMELEE;
     static const std::string CHECKPOINT_SAVE;
     static const std::string ALLOW_CURSED_AMMUNITION_USE;
     static const std::string SKILL_SELECTION_REQUIRE_CAPITALIZATION;

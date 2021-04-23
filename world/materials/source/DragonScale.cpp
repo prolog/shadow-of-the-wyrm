@@ -43,3 +43,6 @@ Material* DragonScale::clone()
   return new DragonScale(*this);
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/DragonScale_test.cpp"
+#endif

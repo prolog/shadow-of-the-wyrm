@@ -42,3 +42,7 @@ Material* Paper::clone()
 {
   return new Paper(*this);
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Paper_test.cpp"
+#endif

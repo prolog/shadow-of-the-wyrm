@@ -9,9 +9,10 @@
 TEST(SW_World_Tiles_Tile, correct_inventory_type)
 {
   // Generally speaking, all tile super types have a usual value.
-  // Items fall away from water or air, and are kept on ground tiles.
+  // Items fall away in air, and generally sink in water (but not always), 
+  // and are kept on ground tiles.
   std::map<TileSuperType, ClassIdentifier> default_st_value({{TileSuperType::TILE_SUPER_TYPE_AIR, ClassIdentifier::CLASS_ID_NULL_INVENTORY},
-                                                             {TileSuperType::TILE_SUPER_TYPE_WATER, ClassIdentifier::CLASS_ID_NULL_INVENTORY},
+                                                             {TileSuperType::TILE_SUPER_TYPE_WATER, ClassIdentifier::CLASS_ID_WATER_INVENTORY},
                                                              {TileSuperType::TILE_SUPER_TYPE_GROUND, ClassIdentifier::CLASS_ID_INVENTORY},
                                                              {TileSuperType::TILE_SUPER_TYPE_UNDEFINED, ClassIdentifier::CLASS_ID_NULL_INVENTORY}});
 

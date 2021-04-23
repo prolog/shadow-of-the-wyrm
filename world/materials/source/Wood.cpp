@@ -42,3 +42,12 @@ Material* Wood::clone()
 {
   return new Wood(*this);
 }
+
+bool Wood::get_material_floats() const
+{
+  return true;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Wood_test.cpp"
+#endif

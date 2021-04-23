@@ -1,4 +1,5 @@
 #include "Serialize.hpp"
+#include "TileProperties.hpp"
 #include "VillageTile.hpp"
 
 using namespace std;
@@ -38,7 +39,14 @@ TileType VillageTile::get_tile_type() const
 
 string VillageTile::get_tile_description_sid() const
 {
-  return TileTextKeys::TILE_DESC_VILLAGE;
+  if (has_name())
+  {
+    return TileTextKeys::TILE_DESC_NAMED_VILLAGE;
+  }
+  else
+  {
+    return TileTextKeys::TILE_DESC_VILLAGE;
+  }
 }
 
 void VillageTile::set_village_race_id(const string& new_village_race_id)
@@ -49,6 +57,16 @@ void VillageTile::set_village_race_id(const string& new_village_race_id)
 string VillageTile::get_village_race_id() const
 {
   return village_race_id;
+}
+
+void VillageTile::set_village_name(const string& new_name)
+{
+  set_additional_property(TileProperties::TILE_PROPERTY_NAME, new_name);
+}
+
+string VillageTile::get_village_name() const
+{
+  return get_additional_property(TileProperties::TILE_PROPERTY_NAME);
 }
 
 void VillageTile::set_settlement_type(const SettlementType new_settlement_type)

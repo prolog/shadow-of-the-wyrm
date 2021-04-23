@@ -1,10 +1,10 @@
 #include "ShoalsTile.hpp"
-#include "NullInventory.hpp"
+#include "WaterInventory.hpp"
 #include "WaterTypes.hpp"
 
 ShoalsTile::ShoalsTile()
 {
-  items = std::make_shared<NullInventory>();
+  items = std::make_shared<WaterInventory>();
 }
 
 TileType ShoalsTile::get_tile_type() const

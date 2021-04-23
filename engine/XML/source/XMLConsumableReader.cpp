@@ -1,4 +1,5 @@
 #include "XMLConsumableReader.hpp"
+#include "ItemProperties.hpp"
 
 XMLConsumableReader::XMLConsumableReader()
 {
@@ -26,6 +27,13 @@ void XMLConsumableReader::parse(ConsumablePtr consumable, GenerationValues& gv, 
     {
       FoodType food_type = static_cast<FoodType>(XMLUtils::get_node_int_value(food_type_node, static_cast<int>(FoodType::FOOD_TYPE_OTHER)));
       consumable->set_food_type(food_type);
+    }
+
+    XMLNode metabolizes_alcohol_node = XMLUtils::get_next_element_by_local_name(node, "MetabolizesAlcohol");
+    if (!metabolizes_alcohol_node.is_null())
+    {
+      bool metabolizes = XMLUtils::get_node_bool_value(metabolizes_alcohol_node, false);
+      consumable->set_additional_property(ItemProperties::ITEM_PROPERTIES_METABOLIZES_ALCOHOL, std::to_string(metabolizes));
     }
 
     bool poisoned = XMLUtils::get_child_node_bool_value(node, "Poisoned", consumable->get_poisoned());

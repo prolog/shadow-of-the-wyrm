@@ -38,3 +38,6 @@ Material* Stone::clone()
   return new Stone(*this);
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/Stone_test.cpp"
+#endif

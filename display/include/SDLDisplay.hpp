@@ -120,6 +120,8 @@ class SDLDisplay : public Display
 
     virtual void redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows) override;
 
+    std::pair<int, int> get_calculated_or_requested_window_size(const Settings& settings);
+
     std::unordered_map<int, SDL_Color> colours;
 
     SDL_Window* window = NULL;

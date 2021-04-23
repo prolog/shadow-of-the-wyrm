@@ -1,5 +1,8 @@
 Me:
-- Pets!
+- Kure: skinning/tanning
+- ASSET RELEASE FOR 1.3.0
+- advisor
+- quest for advisor in Yew
 - More Acey/Sea Captain quests
 - Acey quest to steal Ironsword and deliver to Atua-Elar after it's retrieved.
   - Emperor should transfer Ironsword to the armory
@@ -8,12 +11,8 @@ Me:
   - Deliver to Atua-Elar
   - Stage 1 of the uprising
 - Make taverns more distinctive
-- NEED TO DO AN ASSET RELEASE
 - Do a couple of quests that require a party
   - Isen Dun (Hrimgar): envoy to Forest of Yew (PoGA)
-  - Carcassia (Golgoa): wyrms attacked Stoneheim, wizard killed, tower wants 
-    you to deliver his apprentice robes and staff (+ench?) (ench scroll, 
-    5x magici shard)
 - Test by generating these in Carcassia, Gnordvar
 - Long term, give a chance for coastal generators to produce coastline, maybe
   with little islands, etc. Before generating, set booleans for coast in
@@ -24,6 +23,7 @@ Me:
   sewer)
 - Settlement names!
 - Settlement names on signposts!
+- Other names: dungeons, caverns, sewers...
 - Add signposts to each random village
 - Generate tombs with keys outside door/doors locked
 - First urchin stone has no message!
@@ -284,6 +284,8 @@ Josh Engdahl
 - Hidden PCs are never found via bumping (Josh Engdahl)
 - when hiding and checking stuff, spirits in walls don't seem to count against
   the checks
+- when hiding and checking stuff, spirits in walls don't seem to count against
+  the checks
 - don't step out of shadows if creatures don't have you in LOS
 - weird age incrementing issue?
 - make undead hostile to e.g. all humanoids
@@ -300,5 +302,3 @@ Josh Engdahl
 - can lure ancient monsters into trap room and kill them via an unwillingness
   to move on to trapped tiles.
 
-Phantom:
-- escort quest with very fragile NPC

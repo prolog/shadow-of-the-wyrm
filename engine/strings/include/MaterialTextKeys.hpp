@@ -24,6 +24,7 @@ class MaterialTextKeys
     static const std::string MATERIAL_BONE;
     static const std::string MATERIAL_GASES;
     static const std::string MATERIAL_UNKNOWN;
+    static const std::string MATERIAL_MEAT;
     
   protected:
     MaterialTextKeys();

@@ -56,7 +56,7 @@ class ShadowOfTheWyrmEngine
     void setup_display(const Settings& settings);
     void setup_game();
     void setup_player_and_world();
-    void setup_autopickup_settings(std::shared_ptr<Creature> player);
+    void setup_auto_action_settings(std::shared_ptr<Creature> player);
 
     void initialize_game_option_map();
     void initialize_game_flow_map();

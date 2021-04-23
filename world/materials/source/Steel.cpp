@@ -38,3 +38,6 @@ Material* Steel::clone()
   return new Steel(*this);
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/Steel_test.cpp"
+#endif

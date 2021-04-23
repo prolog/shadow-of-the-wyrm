@@ -9,7 +9,7 @@
 using namespace std;
 
 DecisionStrategy::DecisionStrategy(ControllerPtr new_controller)
-: controller(new_controller), autopickup(false)
+: controller(new_controller), automelee(true), autopickup(false)
 {
 }
 
@@ -36,6 +36,7 @@ bool DecisionStrategy::operator==(const DecisionStrategy& ds) const
   }
 
   result = result && (properties == ds.properties);
+  result = result && (automelee == ds.automelee);
   result = result && (autopickup == ds.autopickup);
   result = result && (autopickup_types == ds.autopickup_types);
 
@@ -138,6 +139,16 @@ map<string, string> DecisionStrategy::get_properties() const
   return properties;
 }
 
+void DecisionStrategy::set_automelee(const bool new_automelee)
+{
+  automelee = new_automelee;
+}
+
+bool DecisionStrategy::get_automelee() const
+{
+  return automelee;
+}
+
 void DecisionStrategy::set_autopickup(const bool new_autopickup)
 {
   autopickup = new_autopickup;
@@ -200,6 +211,7 @@ bool DecisionStrategy::serialize(ostream& stream) const
 {
   threat_ratings.serialize(stream);
   Serialize::write_string_map(stream, properties);
+  Serialize::write_bool(stream, automelee);
   Serialize::write_bool(stream, autopickup);
   
   Serialize::write_size_t(stream, autopickup_types.size());
@@ -225,6 +237,7 @@ bool DecisionStrategy::deserialize(istream& stream)
 {
   threat_ratings.deserialize(stream);
   Serialize::read_string_map(stream, properties);
+  Serialize::read_bool(stream, automelee);
   Serialize::read_bool(stream, autopickup);
 
   autopickup_types.clear();

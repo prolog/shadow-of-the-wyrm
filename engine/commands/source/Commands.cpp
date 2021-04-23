@@ -571,13 +571,13 @@ InscribeCommand::~InscribeCommand()
 {
 }
 
-// Turn autopickup on or off.
-ToggleAutopickupCommand::ToggleAutopickupCommand(int key)
-: Command(CommandKeys::TOGGLE_AUTOPICKUP, key)
+// Toggle various automatic actions
+AutomaticActionsCommand::AutomaticActionsCommand(int key)
+: Command(CommandKeys::AUTOMATIC_ACTIONS, key)
 {
 }
 
-ToggleAutopickupCommand::~ToggleAutopickupCommand()
+AutomaticActionsCommand::~AutomaticActionsCommand()
 {
 }
 

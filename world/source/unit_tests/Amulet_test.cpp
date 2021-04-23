@@ -43,6 +43,22 @@ TEST(SW_World_Amulet, smithing_value_progression)
   EXPECT_EQ(new_values[3], a2.get_value());
 }
 
+TEST(SW_World_Amulet, floats)
+{
+  Amulet a;
+  a.set_material_type(MaterialType::MATERIAL_TYPE_GOLD);
+
+  EXPECT_FALSE(a.get_floats());
+
+  a.set_floats(false);
+
+  EXPECT_FALSE(a.get_floats());
+
+  a.set_floats(true);
+
+  EXPECT_TRUE(a.get_floats());
+}
+
 TEST(SW_World_Amulet, serialization_id)
 {
   Amulet amulet;

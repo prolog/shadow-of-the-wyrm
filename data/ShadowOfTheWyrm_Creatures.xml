@@ -101,23 +101,8 @@
 				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
-				<AllowableTerrainTypes>
-					<TileType>0</TileType>
-					<TileType>1</TileType>
-					<TileType>5</TileType>
-					<TileType>13</TileType>
-					<TileType>15</TileType>
-					<TileType>16</TileType>
-					<TileType>21</TileType>
-					<TileType>24</TileType>
-					<TileType>26</TileType>
-					<TileType>28</TileType>
-					<TileType>31</TileType>
-					<TileType>38</TileType>
-					<TileType>42</TileType>
-					<TileType>47</TileType>
-					<TileType>49</TileType>
-				</AllowableTerrainTypes>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
@@ -4680,6 +4665,7 @@
 				<NumSides>64</NumSides>
 				<Type>3</Type>
 			</Damage>
+			<Range>2</Range>
 			<Soak>7</Soak>
 		</Creature>
 		<Creature id="fae_musician">
@@ -8472,6 +8458,7 @@
 				<NumSides>30</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<Range>2</Range>
 			<Evade>-7</Evade>
 			<Soak>4</Soak>
 		</Creature>
@@ -8526,6 +8513,7 @@
 				<NumSides>44</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<Range>2</Range>
 		</Creature>
 		<Creature id="cahri">
 			<RaceID>04_snakeling</RaceID>
@@ -9174,6 +9162,7 @@
 				<NumSides>8</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<Range>2</Range>
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="golem">
@@ -12022,6 +12011,7 @@
 				<NumSides>60</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<Range>3</Range>
 			<Evade>-30</Evade>
 			<Soak>2</Soak>
 			<EventScripts>
@@ -20678,6 +20668,47 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="advisor">
+			<RaceID>01_human,02_woodelf,03_mountainelf,04_snakeling,05_fae,06_dwarf,07_goblin,08_ogre,09_giant,10_gnome</RaceID>
+			<ShortDescriptionSID>ADVISOR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ADVISOR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ADVISOR_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ADVISOR_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>h</Char>
+				<Colour>12</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>20</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>6</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>2</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="gnomish_seatrader">
 			<RaceID>10_gnome</RaceID>
 			<ShortDescriptionSID>GNOMISH_SEATRADER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -22196,6 +22227,7 @@
 				<NumSides>40</NumSides>
 				<Type>0</Type>
 			</Damage>
+			<Range>2</Range>
 			<Soak>4</Soak>
 		</Creature>
 		<Creature id="spearman">
@@ -22247,6 +22279,7 @@
 				<NumSides>6</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<Range>2</Range>
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="archer">
@@ -25760,6 +25793,7 @@
 				<NumSides>20</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<Range>2</Range>
 			<Soak>5</Soak>
 		</Creature>
 		<Creature id="gambler">
@@ -27168,6 +27202,7 @@
 				<NumSides>60</NumSides>
 				<Type>7</Type>
 			</Damage>
+			<Range>2</Range>
 			<Soak>15</Soak>
 		</Creature>
 		<Creature id="questare">

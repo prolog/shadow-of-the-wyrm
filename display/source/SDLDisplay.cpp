@@ -198,21 +198,21 @@ bool SDLDisplay::read_dimensions_from_settings()
   bool dim_val = false;
 
   string tile_size = get_property(Setting::DISPLAY_TILE_SIZE);
-  vector<string> tile_spl;
+  pair<int, int> wh = String::create_width_height(tile_size);
+  bool size_set = false;
 
-  // The dimensions are in HxW format, eg, 8x8, 8x16, ...
-  boost::split(tile_spl, tile_size, boost::is_any_of("x"));
-
-  if (tile_spl.size() >= 2)
+  if (wh.first > 0 && wh.second > 0)
   {
-    int glyph_width = String::to_int(tile_spl[0]);
-    int glyph_height = String::to_int(tile_spl[1]);
+    int glyph_width = wh.first;
+    int glyph_height = wh.second;
 
     sdld.set_glyph_width(glyph_width);
     sdld.set_glyph_height(glyph_height);
 
     sdld.set_screen_width(sdld.get_screen_cols() * glyph_width);
     sdld.set_screen_height(sdld.get_screen_rows() * glyph_height);
+
+    size_set = true;
   }
 
   string tile_glyphs_per_line = get_property(Setting::DISPLAY_TILE_GLYPHS_PER_LINE);
@@ -223,7 +223,7 @@ bool SDLDisplay::read_dimensions_from_settings()
   int num_glyphs = String::to_int(num_glyphs_s);
   sdld.set_num_glyphs(num_glyphs);
 
-  dim_val = (tile_spl.size() >= 2 && !tile_glyphs_per_line.empty() && glyphs_per_line > 0);
+  dim_val = (size_set && !tile_glyphs_per_line.empty() && glyphs_per_line > 0);
   return dim_val;
 }
 
@@ -311,9 +311,12 @@ bool SDLDisplay::create_window_and_renderer()
 {
   bool wr_created = true;
   ostringstream ss;
+  Settings& settings = Game::instance().get_settings_ref();
+
+  pair<int, int> window_size = get_calculated_or_requested_window_size(settings);
 
   string window_title = StringTable::get(TextKeys::SW_TITLE);
-  window = SDL_CreateWindow(window_title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, sdld.get_screen_width(), sdld.get_screen_height(), SDL_WINDOW_SHOWN);
+  window = SDL_CreateWindow(window_title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window_size.first, window_size.second, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
   if (window == NULL)
   {
     ss << "Window could not be created! SDL Error: " << SDL_GetError();
@@ -348,6 +351,16 @@ bool SDLDisplay::create_window_and_renderer()
       Log::instance().error(ss.str());
 
       wr_created = false;
+    }
+    else
+    {
+      // Set additional values
+      SDL_DisplayMode display_mode;
+      SDL_GetCurrentDisplayMode(0, &display_mode);
+      bool integer_scaling = settings.get_setting_as_bool(Setting::DISPLAY_SDL_INTEGER_SCALING);
+
+      SDL_RenderSetLogicalSize(renderer, sdld.get_screen_width(), sdld.get_screen_height());
+      SDL_RenderSetIntegerScale(renderer, integer_scaling ? SDL_bool::SDL_TRUE : SDL_bool::SDL_FALSE);
     }
   }
 
@@ -1265,6 +1278,21 @@ void SDLDisplay::redraw_cursor(const DisplayMap& current_map, const CursorSettin
       render.fill_area(renderer, screens.back(), &dst_rect, cursor_colour);
     }
   }
+}
+
+pair<int, int> SDLDisplay::get_calculated_or_requested_window_size(const Settings& settings)
+{
+  pair<int, int> window_size = { sdld.get_screen_width(), sdld.get_screen_height() };
+  string window_size_s = settings.get_setting(Setting::DISPLAY_SDL_WINDOW_SIZE);
+
+  if (!window_size_s.empty())
+  {
+    pair<int, int> requested = String::create_width_height(window_size_s);
+    window_size.first = requested.first;
+    window_size.second = requested.second;
+  }
+
+  return window_size;
 }
 
 ClassIdentifier SDLDisplay::internal_class_identifier() const

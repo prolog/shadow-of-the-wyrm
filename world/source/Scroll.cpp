@@ -21,6 +21,10 @@ bool Scroll::destroy_on_read() const
   return destroy;
 }
 
+void Scroll::do_enchant_item(const int points)
+{
+}
+
 Item* Scroll::clone()
 {
   return new Scroll(*this);

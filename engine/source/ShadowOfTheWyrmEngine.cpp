@@ -642,7 +642,7 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
   CreaturePtr player = cf.create_by_race_and_class(game.get_action_manager_ref(), nullptr, ccd.get_race_id(), ccd.get_class_id(), name, ccd.get_sex(), CreatureSize::CREATURE_SIZE_NA, ccd.get_deity_id(), true, true);
   cf.setup_player(player, controller);
 
-  setup_autopickup_settings(player);
+  setup_auto_action_settings(player);
 
   // Identify the player's equipment and inventory.  If any equipment is
   // cursed, make it uncursed.
@@ -807,13 +807,14 @@ bool ShadowOfTheWyrmEngine::is_new_game_allowed()
   return allowed;
 }
 
-void ShadowOfTheWyrmEngine::setup_autopickup_settings(CreaturePtr player)
+void ShadowOfTheWyrmEngine::setup_auto_action_settings(CreaturePtr player)
 {
   if (player != nullptr)
   {
     Game& game = Game::instance();
     Settings& settings = game.get_settings_ref();
     bool autopickup = settings.get_setting_as_bool(Setting::AUTOPICKUP);
+    bool automelee = settings.get_setting_as_bool(Setting::AUTOMELEE);
     vector<string> auto_types_s = String::create_string_vector_from_csv_string(settings.get_setting(Setting::AUTOPICKUP_TYPES));
     set<ItemType> itypes;
 
@@ -831,6 +832,7 @@ void ShadowOfTheWyrmEngine::setup_autopickup_settings(CreaturePtr player)
     {
       dec->set_autopickup(autopickup);
       dec->set_autopickup_types(itypes);
+      dec->set_automelee(automelee);
     }
   }
 }

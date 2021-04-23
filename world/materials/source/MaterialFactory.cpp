@@ -9,6 +9,7 @@
 #include "Ivory.hpp"
 #include "Leather.hpp"
 #include "Marble.hpp"
+#include "Meat.hpp"
 #include "Onyx.hpp"
 #include "Paper.hpp"
 #include "Steel.hpp"
@@ -28,7 +29,7 @@ MaterialFactory::~MaterialFactory()
 
 MaterialPtr MaterialFactory::create_material(const MaterialType type)
 {
-  static_assert(MaterialType::MATERIAL_TYPE_LAST == MaterialType(16), "Unexpected MATERIAL_TYPE_LAST");
+  static_assert(MaterialType::MATERIAL_TYPE_LAST == MaterialType(17), "Unexpected MATERIAL_TYPE_LAST");
 
   MaterialPtr material;
 
@@ -78,6 +79,9 @@ MaterialPtr MaterialFactory::create_material(const MaterialType type)
       break;
     case MaterialType::MATERIAL_TYPE_GASES:
       material = std::make_unique<Gases>();
+      break;
+    case MaterialType::MATERIAL_TYPE_MEAT:
+      material = std::make_unique<Meat>();
       break;
     case MaterialType::MATERIAL_TYPE_UNKNOWN:
     default:

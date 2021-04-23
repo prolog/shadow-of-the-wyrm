@@ -1,6 +1,7 @@
 #include <string>
 #include "ActionManager.hpp"
 #include "ActionTextKeys.hpp"
+#include "AutomaticActionsAction.hpp"
 #include "AutomaticMovementAction.hpp"
 #include "BestiaryAction.hpp"
 #include "BreedAction.hpp"
@@ -789,10 +790,10 @@ ActionCost ActionManager::inscribe(CreaturePtr creature)
   return get_action_cost(creature, ia.inscribe(creature));
 }
 
-ActionCost ActionManager::autopickup(CreaturePtr creature)
+ActionCost ActionManager::automatic_actions(CreaturePtr creature)
 {
-  PickupAction pa;
-  return get_action_cost(creature, pa.toggle_autopickup(creature));
+  AutomaticActionsAction aaa;
+  return get_action_cost(creature, aaa.automatic_actions(creature));
 }
 
 ActionCost ActionManager::breed(CreaturePtr creature)

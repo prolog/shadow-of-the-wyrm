@@ -44,6 +44,7 @@ class String
     static std::string centre(const std::string& string_to_centre, const uint num_cols);
     static std::string right(const std::string& string_to_right_justify, const uint num_cols);
     static std::vector<std::string> tokenize(const std::string& string_to_tokenize, const std::string& delimiters, const bool include_tokens = false);
+    static std::pair<int, int> create_width_height(const std::string& width_height_string);
 
     static bool to_bool(const std::string& str);
     static int to_int(const std::string& str);

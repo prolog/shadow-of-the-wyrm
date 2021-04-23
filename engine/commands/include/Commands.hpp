@@ -388,11 +388,11 @@ class InscribeCommand : public Command
     ~InscribeCommand();
 };
 
-class ToggleAutopickupCommand : public Command
+class AutomaticActionsCommand : public Command
 {
   public:
-    ToggleAutopickupCommand(int key);
-    ~ToggleAutopickupCommand();
+    AutomaticActionsCommand(int key);
+    ~AutomaticActionsCommand();
 };
 
 class ItemCodexCommand : public Command

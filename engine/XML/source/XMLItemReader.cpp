@@ -78,12 +78,24 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
     {
       Weight weight;
       
-      uint pounds = static_cast<uint>(XMLUtils::get_child_node_int_value(weight_node, "Pounds"));
-      uint ounces = static_cast<uint>(XMLUtils::get_child_node_int_value(weight_node, "Ounces"));
+      uint pounds = static_cast<uint>(XMLUtils::get_child_node_int_value(weight_node, "Pounds", 0));
+      uint ounces = static_cast<uint>(XMLUtils::get_child_node_int_value(weight_node, "Ounces", 0));
+
+      if (pounds == 0 && ounces == 0)
+      {
+        ounces = 1;
+      }
       
       weight.set_weight(pounds, ounces);
-            
       item->set_weight(weight);
+    }
+
+    XMLNode floats_node = XMLUtils::get_next_element_by_local_name(item_node, "Floats");
+
+    if (!floats_node.is_null())
+    {
+      bool floats = XMLUtils::get_node_bool_value(floats_node);
+      item->set_floats(floats);
     }
 
     EquipmentWornLocation location = static_cast<EquipmentWornLocation>(XMLUtils::get_child_node_int_value(item_node, "WornLocation", static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_NONE)));

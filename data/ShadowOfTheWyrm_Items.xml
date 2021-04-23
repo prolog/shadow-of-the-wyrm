@@ -58,6 +58,34 @@
 				<Evade>10</Evade>
 				<Soak>4</Soak>
 			</Amulet>
+			<Amulet id="protector">
+				<DescriptionSID>PROTECTOR_SID</DescriptionSID>
+				<UsageDescriptionSID>PROTECTOR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>PROTECTOR_CODEX_SID</CodexDescriptionSID>
+				<Value>820</Value>
+				<Weight>
+					<Pounds>5</Pounds>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>6</Material>
+				<Symbol>
+					<Char>#</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>0</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.05</Slash>
+					<Pierce>0.05</Pierce>
+					<Pound>0.25</Pound>
+				</Resistances>
+				<Evade>-2</Evade>
+				<Soak>8</Soak>
+			</Amulet>
 			<Amulet id="eunoia">
 				<DescriptionSID>EUNOIA_SID</DescriptionSID>
 				<UsageDescriptionSID>EUNOIA_USAGE_SID</UsageDescriptionSID>
@@ -3681,6 +3709,7 @@
 						<Slay>03_mountainelf</Slay>
 					</Slays>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="inferno">
 				<DescriptionSID>INFERNO_SID</DescriptionSID>
@@ -3755,6 +3784,7 @@
 						<Slay>_divine</Slay>
 					</Slays>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="erebus">
 				<DescriptionSID>EREBUS_SID</DescriptionSID>
@@ -4165,6 +4195,7 @@
 						<Slay>_monster</Slay>
 					</Slays>
 				</Damage>
+				<Range>3</Range>
 			</Weapon>
 			<Weapon id="skyslayer">
 				<DescriptionSID>SKYSLAYER_SID</DescriptionSID>
@@ -4433,6 +4464,7 @@
 						<Slay>*</Slay>
 					</Slays>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="godblade">
 				<DescriptionSID>GODBLADE_SID</DescriptionSID>
@@ -4481,6 +4513,7 @@
 						<Slay>_divine</Slay>
 					</Slays>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="shard_starlight">
 				<DescriptionSID>SHARD_OF_STARLIGHT_SID</DescriptionSID>
@@ -4730,6 +4763,7 @@
 						<Slay>_dragon</Slay>
 					</Slays>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="stonespear">
 				<DescriptionSID>STONESPEAR_SID</DescriptionSID>
@@ -4765,6 +4799,7 @@
 					<Modifier>12</Modifier>
 					<Type>1</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="radiance">
 				<DescriptionSID>RADIANCE_SID</DescriptionSID>
@@ -4804,6 +4839,7 @@
 						<Slay>_undead</Slay>
 					</Slays>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="dragonsfist">
 				<DescriptionSID>DRAGONSFIST_SID</DescriptionSID>
@@ -4982,6 +5018,7 @@
 					<NumSides>10</NumSides>
 					<Type>0</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="mace">
 				<DescriptionSID>MACE_SID</DescriptionSID>
@@ -5049,6 +5086,7 @@
 					<Modifier>16</Modifier>
 					<Type>2</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="stone_club_urgol">
 				<DescriptionSID>STONE_CLUB_URGOL_SID</DescriptionSID>
@@ -5356,6 +5394,7 @@
 					<NumSides>20</NumSides>
 					<Type>0</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="earthcleaver">
 				<DescriptionSID>EARTHCLEAVER_SID</DescriptionSID>
@@ -5391,6 +5430,7 @@
 					<NumSides>20</NumSides>
 					<Type>0</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>			
 			<Weapon id="blood_and_glory">
 				<DescriptionSID>BLOOD_AND_GLORY_SID</DescriptionSID>
@@ -5430,6 +5470,7 @@
 						<Slay>_divine</Slay>
 					</Slays>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>			
 			<Weapon id="delver">
 				<DescriptionSID>DELVER_SID</DescriptionSID>
@@ -5507,6 +5548,7 @@
 					<NumSides>6</NumSides>
 					<Type>1</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="long_spear">
 				<DescriptionSID>LONG_SPEAR_SID</DescriptionSID>
@@ -5543,6 +5585,7 @@
 					<NumSides>10</NumSides>
 					<Type>1</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="scythe">
 				<DescriptionSID>SCYTHE_SID</DescriptionSID>
@@ -5834,6 +5877,7 @@
 					<NumSides>4</NumSides>
 					<Type>0</Type>
 				</Damage>
+				<Range>3</Range>
 			</Weapon>
 			<Weapon id="thorn_whip">
 				<DescriptionSID>THORN_WHIP_SID</DescriptionSID>
@@ -5869,6 +5913,7 @@
 					<NumSides>4</NumSides>
 					<Type>1</Type>
 				</Damage>
+				<Range>3</Range>
 			</Weapon>
 			<Weapon id="calara_whip">
 				<DescriptionSID>CALARA_WHIP_SID</DescriptionSID>
@@ -5902,6 +5947,7 @@
 					<NumSides>4</NumSides>
 					<Type>3</Type>
 				</Damage>
+				<Range>3</Range>
 			</Weapon>
 			<Weapon id="shepherd_crook">
 				<DescriptionSID>SHEPHERD_CROOK_SID</DescriptionSID>
@@ -5937,6 +5983,7 @@
 					<NumSides>3</NumSides>
 					<Type>2</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="yew_staff">
 				<DescriptionSID>YEW_STAFF_SID</DescriptionSID>
@@ -6549,7 +6596,6 @@
 					<Ounces>2</Ounces>
 				</Weight>
 				<WornLocation>10</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>7</Material>
 				<Symbol>
 					<Char>*</Char>
@@ -6611,7 +6657,6 @@
 					<Pounds>80</Pounds>
 				</Weight>
 				<WornLocation>10</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<HandsRequired>2</HandsRequired>
 				<Material>7</Material>
 				<Symbol>
@@ -6645,8 +6690,7 @@
 					<Ounces>2</Ounces>
 				</Weight>
 				<WornLocation>10</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>7</Material>
+				<Material>15</Material>
 				<Symbol>
 					<Char>.</Char>
 					<Colour>12</Colour>
@@ -6968,6 +7012,7 @@
 					<NumSides>3</NumSides>
 					<Type>1</Type>
 				</Damage>
+				<Range>2</Range>
 			</Missile>
 			<Missile id="barbed_spear">
 				<DescriptionSID>BARBED_SPEAR_SID</DescriptionSID>
@@ -7003,6 +7048,7 @@
 					<NumSides>3</NumSides>
 					<Type>1</Type>
 				</Damage>
+				<Range>2</Range>
 			</Missile>
 			<Missile id="winged_javelin">
 				<DescriptionSID>WINGED_JAVELIN_SID</DescriptionSID>
@@ -7038,6 +7084,7 @@
 					<NumSides>3</NumSides>
 					<Type>1</Type>
 				</Damage>
+				<Range>2</Range>
 			</Missile>
 			<Missile id="spine_ancient_horror">
 				<DescriptionSID>SPINE_ANCIENT_HORROR_SID</DescriptionSID>
@@ -7067,6 +7114,7 @@
 					<NumSides>3</NumSides>
 					<Type>1</Type>
 				</Damage>
+				<Range>2</Range>
 			</Missile>
 			<Missile id="throwing_club">
 				<DescriptionSID>THROWING_CLUB_SID</DescriptionSID>
@@ -7351,8 +7399,7 @@
 					<Pounds>100</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
@@ -7375,8 +7422,7 @@
 					<Pounds>10</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>12</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>15</Colour>
@@ -7400,7 +7446,6 @@
 					<Ounces>6</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7431,7 +7476,6 @@
 					<Ounces>2</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7456,7 +7500,6 @@
 					<Ounces>6</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7487,7 +7530,6 @@
 					<Ounces>6</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7518,7 +7560,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7549,7 +7590,6 @@
 					<Ounces>6</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7580,7 +7620,6 @@
 					<Ounces>6</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7611,7 +7650,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7643,7 +7681,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7675,7 +7712,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7700,7 +7736,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7725,7 +7760,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7750,7 +7784,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7775,7 +7808,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7800,7 +7832,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7824,7 +7855,6 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>	 
 				<Symbol>
 					<Char>%</Char>
@@ -7848,7 +7878,6 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -7863,6 +7892,53 @@
 				<Nutrition>1001</Nutrition>
 				<FoodType>1</FoodType>
 			</Food>
+			<Food id="bread">
+				<DescriptionSID>BREAD_SID</DescriptionSID>
+				<UsageDescriptionSID>BREAD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BREAD_CODEX_SID</CodexDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>8</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>5</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>1</DangerLevel>
+				<Nutrition>1100</Nutrition>
+				<FoodType>1</FoodType>
+			</Food>
+			<Food id="flower_bread">
+				<DescriptionSID>FLOWER_BREAD_SID</DescriptionSID>
+				<UsageDescriptionSID>FLOWER_BREAD_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FLOWER_BREAD_CODEX_SID</CodexDescriptionSID>
+				<Value>3</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>8</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>5</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>1</DangerLevel>
+				<Nutrition>800</Nutrition>
+				<FoodType>1</FoodType>
+				<MetabolizesAlcohol>1</MetabolizesAlcohol>
+			</Food>
 			<Food id="_trout">
 				<DescriptionSID>TROUT_SID</DescriptionSID>
 				<UsageDescriptionSID>TROUT_USAGE_SID</UsageDescriptionSID>
@@ -7872,8 +7948,7 @@
 					<Pounds>3</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
@@ -7896,8 +7971,7 @@
 					<Pounds>8</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
@@ -7920,8 +7994,7 @@
 					<Pounds>4</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
@@ -7944,8 +8017,7 @@
 					<Pounds>6</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
@@ -7968,8 +8040,7 @@
 					<Pounds>12</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
@@ -7992,8 +8063,7 @@
 					<Pounds>2</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
@@ -8017,7 +8087,6 @@
 					<Ounces>8</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -8042,8 +8111,7 @@
 					<Ounces>9</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
@@ -8067,8 +8135,7 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
@@ -8092,7 +8159,6 @@
 					<Ounces>3</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -8117,8 +8183,7 @@
 					<Ounces>6</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
-				<Material>8</Material>
+				<Material>16</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
@@ -8144,7 +8209,6 @@
 					<Ounces>4</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -8168,7 +8232,6 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -8193,7 +8256,6 @@
 					<Ounces>6</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>%</Char>
@@ -8219,7 +8281,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>w</Char>
@@ -8245,7 +8306,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>w</Char>
@@ -8271,7 +8331,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>w</Char>
@@ -8297,7 +8356,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>w</Char>
@@ -8323,7 +8381,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>w</Char>
@@ -8337,6 +8394,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
+				<MetabolizesAlcohol>1</MetabolizesAlcohol>
 			</Plant>
 			<Plant id="_wildflower_2">
 				<DescriptionSID>WILDFLOWER2_SID</DescriptionSID>
@@ -8348,7 +8406,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>w</Char>
@@ -8362,6 +8419,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
+				<MetabolizesAlcohol>1</MetabolizesAlcohol>
 			</Plant>
 			<Plant id="_wildflower_3">
 				<DescriptionSID>WILDFLOWER3_SID</DescriptionSID>
@@ -8373,7 +8431,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>w</Char>
@@ -8387,6 +8444,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
+				<MetabolizesAlcohol>1</MetabolizesAlcohol>
 			</Plant>
 			<Plant id="_wildflower_4">
 				<DescriptionSID>WILDFLOWER4_SID</DescriptionSID>
@@ -8398,7 +8456,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>w</Char>
@@ -8412,6 +8469,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
+				<MetabolizesAlcohol>1</MetabolizesAlcohol>
 			</Plant>
 			<Plant id="_wildflower_5">
 				<DescriptionSID>WILDFLOWER5_SID</DescriptionSID>
@@ -8423,7 +8481,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>w</Char>
@@ -8437,6 +8494,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
+				<MetabolizesAlcohol>1</MetabolizesAlcohol>
 			</Plant>
 			<Plant id="_wildflower_6">
 				<DescriptionSID>WILDFLOWER6_SID</DescriptionSID>
@@ -8448,7 +8506,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>w</Char>
@@ -8462,6 +8519,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
+				<MetabolizesAlcohol>1</MetabolizesAlcohol>
 			</Plant>
 			<Plant id="_fiddlehead_green">
 				<DescriptionSID>FIDDLEHEAD_GREEN_SID</DescriptionSID>
@@ -8473,7 +8531,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>f</Char>
@@ -8498,7 +8555,6 @@
 					<Ounces>8</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>f</Char>
@@ -8555,7 +8611,6 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<Symbol>
 					<Char>w</Char>
@@ -8702,6 +8757,30 @@
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>0</Nutrition>
 				<StandardDrinks>1</StandardDrinks>
+				<Effect>0</Effect>
+			</Potion>
+			<Potion id="isen_dun_whisky">
+				<DescriptionSID>ISEN_DUN_WHISKY_SID</DescriptionSID>
+				<UsageDescriptionSID>ISEN_DUN_WHISKY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ISEN_DUN_WHISKY_CODEX_SID</CodexDescriptionSID>
+				<Value>400</Value>
+				<Weight>
+					<Pounds>40</Pounds>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>2</Material>
+				<Symbol>
+					<Char>!</Char>
+					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>4</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>0</Nutrition>
+				<StandardDrinks>100</StandardDrinks>
 				<Effect>0</Effect>
 			</Potion>
 			<Potion id="gnomish_stout">
