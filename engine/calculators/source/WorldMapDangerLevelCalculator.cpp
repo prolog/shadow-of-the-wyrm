@@ -33,7 +33,7 @@ int WorldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
     {
       float danger_calc = (distance /
                       (static_cast<float>(max(world_dimensions.get_x(), world_dimensions.get_y()))));
-      danger_level = (uint) danger_calc * CreatureConstants::MAX_CREATURE_LEVEL;
+      danger_level = static_cast<int>(danger_calc * CreatureConstants::MAX_CREATURE_LEVEL);
     }
 
     danger_level = max<int>(1, danger_level);

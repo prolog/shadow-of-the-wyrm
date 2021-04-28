@@ -1,4 +1,5 @@
 Me:
+- Unit test for the world danger calc
 - Kure: skinning/tanning
 - ASSET RELEASE FOR 1.3.0
 - advisor
