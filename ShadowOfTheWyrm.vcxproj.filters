@@ -8851,5 +8851,8 @@
     <ClCompile Include="engine\strings\source\SettingTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\WorldMapDangerLevelCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

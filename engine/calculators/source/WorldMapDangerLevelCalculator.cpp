@@ -41,3 +41,8 @@ int WorldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
 
   return danger_level;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/WorldMapDangerLevelCalculator_test.cpp"
+#endif
+
