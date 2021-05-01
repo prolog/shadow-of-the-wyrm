@@ -1,6 +1,11 @@
 Shadow of the Wyrm v1.3.1 "del Liuto"
 - Version declared April 23, 2021.
 
+- Damage messages will now be displayed in red when you are criticalled and 
+  take damage, when you take >= 20% of your max HP, or when your HP falls 
+  below 40% of the maximum.  Each of these settings can be configured in
+  swyrm.ini.
+
 - More name and settlement name combinations.
 
 - Bug fixes:

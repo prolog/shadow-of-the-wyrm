@@ -5,6 +5,7 @@
 #include "Damage.hpp"
 #include "DamageCalculatorFactory.hpp"
 #include "DamageTypes.hpp"
+#include "HitTypes.hpp"
 #include "StatusEffect.hpp"
 
 class Game;
@@ -63,7 +64,7 @@ class CombatManager
         
     bool run_attack_script_if_necessary(CreaturePtr creature, CreaturePtr attacked_creature);
     void add_any_necessary_damage_messages(CreaturePtr creature, CreaturePtr attacked_creature, const int damage, const bool piercing, const bool incorporeal);
-    void add_combat_message(CreaturePtr creature, CreaturePtr attacked_creature, const std::string& message);
+    void add_combat_message(CreaturePtr creature, CreaturePtr attacked_creature, const std::string& message, const bool highlight = false);
     void send_combat_messages(CreaturePtr creature);
     
     // Functions to determine whether a particular attack hits, misses, etc.
@@ -94,6 +95,8 @@ class CombatManager
 
     void gain_experience(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr map);
     Damage determine_damage(CreaturePtr attacking_creature, Damage* predefined_damage, DamageCalculator* damage_calculator);
+
+    bool check_highlight_damage(CreaturePtr attacked_creature, const HitTypeEnum hit_type, const int damage_dealt);
 
     static const int PCT_CHANCE_MARK_STATISTIC_ON_MISS;
 };
