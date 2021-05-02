@@ -5,7 +5,7 @@
 #include "BallShapeProcessor.hpp"
 #include "ClassManager.hpp"
 #include "CombatConstants.hpp"
-#include "CombatCounterCalculator.hpp"
+#include "CombatEffectsCalculator.hpp"
 #include "CombatManager.hpp"
 #include "CombatTargetNumberCalculatorFactory.hpp"
 #include "CombatTextKeys.hpp"
@@ -312,9 +312,9 @@ bool CombatManager::counter_strike_if_necessary(CreaturePtr attacking_creature, 
       ast == AttackSequenceType::ATTACK_SEQUENCE_INITIAL &&
       MapUtils::are_creatures_adjacent(current_map, attacking_creature, attacked_creature))
   {
-    CombatCounterCalculator ccc;
+    CombatEffectsCalculator cec;
 
-    if (RNG::percent_chance(ccc.calc_pct_chance_counter_strike(attacked_creature)))
+    if (RNG::percent_chance(cec.calc_pct_chance_counter_strike(attacked_creature)))
     {
       add_counter_strike_message(attacking_creature, attacked_creature);
 

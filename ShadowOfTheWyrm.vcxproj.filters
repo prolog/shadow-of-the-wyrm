@@ -3863,7 +3863,7 @@
     <ClInclude Include="include\ColourUtils.hpp">
       <Filter>Header Files\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\calculators\include\CombatCounterCalculator.hpp">
+    <ClInclude Include="engine\calculators\include\CombatEffectsCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\ScythingCalculator.hpp">
@@ -8125,10 +8125,10 @@
     <ClCompile Include="source\unit_tests\ColourUtils_test.cpp">
       <Filter>Source Files\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="engine\calculators\source\CombatCounterCalculator.cpp">
+    <ClCompile Include="engine\calculators\source\CombatEffectsCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\calculators\source\unit_tests\CombatCounterCalculator_test.cpp">
+    <ClCompile Include="engine\calculators\source\unit_tests\CombatEffectsCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\ScythingCalculator.cpp">
