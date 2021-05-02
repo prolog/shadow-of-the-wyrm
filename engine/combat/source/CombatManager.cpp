@@ -44,7 +44,6 @@
 #include "StatusEffectFactory.hpp"
 #include "StealthCalculator.hpp"
 #include "StatisticsMarker.hpp"
-#include "TertiaryUnarmedCalculator.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "RNG.hpp"
@@ -1216,37 +1215,33 @@ void CombatManager::update_mortuaries(CreaturePtr attacking_creature, CreaturePt
 bool CombatManager::knock_back_creature_if_necessary(const AttackType attack_type, CreaturePtr attacking_creature, CreaturePtr attacked_creature, Game& game, MapPtr current_map)
 {
   bool knocked_back = false;
+  CombatEffectsCalculator cec;
 
-  if (attacking_creature && attacked_creature && attack_type == AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED)
+  if (attacking_creature && 
+      attacked_creature && 
+      RNG::percent_chance(cec.calculate_knock_back_pct_chance(attack_type, attacking_creature, attacked_creature)))
   {
-    // Check to see if the knock-back succeeded.
-    TertiaryUnarmedCalculator tuc;
-    int kb_chance = tuc.calculate_knock_back_pct_chance(attacking_creature);
+    Direction knockback_dir = CoordUtils::get_direction(current_map->get_location(attacking_creature->get_id()), current_map->get_location(attacked_creature->get_id()));
+    TilePtr tile = MapUtils::get_adjacent_tile(current_map, attacking_creature, knockback_dir, 2);
+    TilePtr next_tile = MapUtils::get_adjacent_tile(current_map, attacking_creature, knockback_dir, 3);
+    ActionManager& am = game.get_action_manager_ref();
 
-    if (RNG::percent_chance(kb_chance))
+    if (MapUtils::is_tile_available_for_creature(attacked_creature, tile))
     {
-      Direction kick_dir = CoordUtils::get_direction(current_map->get_location(attacking_creature->get_id()), current_map->get_location(attacked_creature->get_id()));
-      TilePtr tile = MapUtils::get_adjacent_tile(current_map, attacking_creature, kick_dir, 2);
-      TilePtr next_tile = MapUtils::get_adjacent_tile(current_map, attacking_creature, kick_dir, 3);
-      ActionManager& am = game.get_action_manager_ref();
+      // If the creature was knocked back, and if it is appropriate to do so,
+      // add a message.
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacking_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
+      string knock_back_msg = ActionTextKeys::get_knock_back_message(attacked_creature->get_description_sid(), attacked_creature->get_is_player());
 
-      if (MapUtils::is_tile_available_for_creature(attacked_creature, tile))
+      manager.add_new_message(knock_back_msg);
+      manager.send();
+
+      am.move(attacked_creature, knockback_dir, false);
+      knocked_back = true;
+
+      if (!attacked_creature->is_dead() && MapUtils::is_tile_available_for_creature(attacked_creature, next_tile))
       {
-        // If the creature was knocked back, and if it is appropriate to do so,
-        // add a message.
-        IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacking_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
-        string knock_back_msg = ActionTextKeys::get_knock_back_message(attacked_creature->get_description_sid(), attacked_creature->get_is_player());
-
-        manager.add_new_message(knock_back_msg);
-        manager.send();
-
-        am.move(attacked_creature, kick_dir, false);
-        knocked_back = true;
-
-        if (!attacked_creature->is_dead() && MapUtils::is_tile_available_for_creature(attacked_creature, next_tile))
-        {
-          am.move(attacked_creature, kick_dir);
-        }
+        am.move(attacked_creature, knockback_dir);
       }
     }
   }

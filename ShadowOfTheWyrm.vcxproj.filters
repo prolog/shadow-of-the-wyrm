@@ -3437,9 +3437,6 @@
     <ClInclude Include="world\include\RaceConstants.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\calculators\include\TertiaryUnarmedCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\scripting\include\DeathScript.hpp">
       <Filter>Header Files\engine\scripting\include</Filter>
     </ClInclude>
@@ -7569,12 +7566,6 @@
     </ClCompile>
     <ClCompile Include="world\source\RaceConstants.cpp">
       <Filter>Source Files\world\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\TertiaryUnarmedCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\unit_tests\TertiaryUnarmedCalculator_test.cpp">
-      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\scripting\source\DeathScript.cpp">
       <Filter>Source Files\engine\scripting\source</Filter>
