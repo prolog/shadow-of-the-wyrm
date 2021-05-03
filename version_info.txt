@@ -6,6 +6,12 @@ Shadow of the Wyrm v1.3.1 "del Liuto"
   below 40% of the maximum.  Each of these settings can be configured in
   swyrm.ini.
 
+- Knockback has been expanded from being possible only on kicks, to
+  potentially firing on regular melee attacks when the size differential
+  between the attacker and attacked is great enough.
+
+- Knockback has a chance to apply the stun and exposed statuses.
+
 - More name and settlement name combinations.
 
 - Bug fixes:

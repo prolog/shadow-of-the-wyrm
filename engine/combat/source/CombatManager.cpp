@@ -1243,6 +1243,16 @@ bool CombatManager::knock_back_creature_if_necessary(const AttackType attack_typ
       {
         am.move(attacked_creature, knockback_dir);
       }
+
+      vector<string> statuses = { StatusIdentifiers::STATUS_ID_STUNNED, StatusIdentifiers::STATUS_ID_EXPOSED };
+
+      for (const string& status_id : statuses)
+      {
+        string source_id = attacking_creature->get_id();
+        StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(status_id, source_id);
+
+        apply_damage_effect(attacked_creature, status_effect, 0, attacking_creature->get_level().get_current());
+      }
     }
   }
 
