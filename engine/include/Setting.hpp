@@ -26,6 +26,8 @@ class Setting
     static const std::string DEFAULT_RACE_ID;
     static const std::string DEFAULT_CLASS_ID;
     static const std::string DEFAULT_DEITY_ID;
+    static const std::string DEFAULT_HAIR_COLOUR;
+    static const std::string DEFAULT_EYE_COLOUR;
     static const std::string DEFAULT_STARTING_LOCATION_ID;
     static const std::string DEFAULT_NAME;
     static const std::string USERNAME_IS_CHARACTER_NAME;

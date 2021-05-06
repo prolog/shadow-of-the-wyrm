@@ -3,12 +3,12 @@
 using namespace std;
 
 CharacterCreationDetails::CharacterCreationDetails()
-: sex(CreatureSex::CREATURE_SEX_NOT_SPECIFIED)
+: sex(CreatureSex::CREATURE_SEX_NOT_SPECIFIED), hair_colour(HairColour::HAIR_NA), eye_colour(EyeColour::EYE_COLOUR_NA)
 {
 }
 
-CharacterCreationDetails::CharacterCreationDetails(const CreatureSex cs, const string& r_id, const string& c_id, const string& d_id, const StartingLocation& sl)
-: sex(cs), race_id(r_id), class_id(c_id), deity_id(d_id), starting_location(sl)
+CharacterCreationDetails::CharacterCreationDetails(const CreatureSex cs, const HairColour hc, const EyeColour ec, const string& r_id, const string& c_id, const string& d_id, const StartingLocation& sl)
+: sex(cs), hair_colour(hc), eye_colour(ec), race_id(r_id), class_id(c_id), deity_id(d_id), starting_location(sl)
 {
 }
 
@@ -20,6 +20,26 @@ void CharacterCreationDetails::set_sex(const CreatureSex new_sex)
 CreatureSex CharacterCreationDetails::get_sex() const
 {
   return sex;
+}
+
+void CharacterCreationDetails::set_hair_colour(const HairColour new_hair_colour)
+{
+  hair_colour = new_hair_colour;
+}
+
+HairColour CharacterCreationDetails::get_hair_colour() const
+{
+  return hair_colour;
+}
+
+void CharacterCreationDetails::set_eye_colour(const EyeColour new_eye_colour)
+{
+  eye_colour = new_eye_colour;
+}
+
+EyeColour CharacterCreationDetails::get_eye_colour() const
+{
+  return eye_colour;
 }
 
 void CharacterCreationDetails::set_race_id(const string& new_race_id)

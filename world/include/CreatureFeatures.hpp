@@ -48,6 +48,7 @@ enum struct HairColour
 
 enum struct EyeColour
 {
+  EYE_COLOUR_NA = -1,
   EYE_COLOUR_BROWN = 0,
   EYE_COLOUR_BLUE = 1,
   EYE_COLOUR_GREEN = 2,

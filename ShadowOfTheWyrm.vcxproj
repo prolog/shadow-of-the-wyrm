@@ -967,6 +967,8 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\screens\include\CreateItemScreen.hpp" />
     <ClInclude Include="engine\screens\include\DeitySelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\EquipmentScreen.hpp" />
+    <ClInclude Include="engine\screens\include\EyeSelectionScreen.hpp" />
+    <ClInclude Include="engine\screens\include\HairSelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\HelpScreen.hpp" />
     <ClInclude Include="engine\screens\include\HighScoreScreen.hpp" />
     <ClInclude Include="engine\screens\include\InventoryScreen.hpp" />
@@ -2066,6 +2068,8 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\maps\tiles\source\TileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\TileDamageProcessorFactory.cpp" />
     <ClCompile Include="engine\screens\source\CreateItemScreen.cpp" />
+    <ClCompile Include="engine\screens\source\EyeSelectionScreen.cpp" />
+    <ClCompile Include="engine\screens\source\HairSelectionScreen.cpp" />
     <ClCompile Include="engine\screens\source\HelpScreen.cpp" />
     <ClCompile Include="engine\screens\source\OptionScreen.cpp" />
     <ClCompile Include="engine\screens\source\OrderScreen.cpp" />
