@@ -9,8 +9,8 @@
 
 using namespace std;
 
-HairSelectionScreen::HairSelectionScreen(DisplayPtr new_display)
-: Screen(new_display)
+HairSelectionScreen::HairSelectionScreen(DisplayPtr new_display, const string& synopsis)
+: Screen(new_display), creature_synopsis(synopsis)
 {
   initialize();
 }
@@ -20,7 +20,12 @@ void HairSelectionScreen::initialize()
   TextComponentPtr hair_selection_text = std::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_HAIR_COLOUR));
 
   vector<ScreenComponentPtr> hair_screen;
-  vector<HairColour> hair_colours = { HairColour::HAIR_COLOUR_BLACK, HairColour::HAIR_COLOUR_BROWN, HairColour::HAIR_COLOUR_BLONDE, HairColour::HAIR_COLOUR_RED, HairColour::HAIR_COLOUR_GREY, HairColour::HAIR_COLOUR_WHITE };
+  vector<HairColour> hair_colours;
+  
+  for (int i = static_cast<int>(HairColour::HAIR_COLOUR_FIRST); i <= static_cast<int>(HairColour::HAIR_COLOUR_LAST); i++)
+  {
+    hair_colours.push_back(static_cast<HairColour>(i));
+  }
 
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
@@ -42,6 +47,10 @@ void HairSelectionScreen::initialize()
   options->add_option(random_option);
   options->add_option_description("");
 
+  TextComponentPtr synopsis = std::make_shared<TextComponent>("[" + creature_synopsis + "]");
+  hair_screen.push_back(synopsis);
+  hair_screen.push_back(hair_selection_text);
+  hair_screen.push_back(options);
   add_page(hair_screen);
 
   // Set the prompt

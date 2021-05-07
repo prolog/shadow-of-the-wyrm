@@ -38,22 +38,26 @@ enum struct CreatureSex
 enum struct HairColour
 {
   HAIR_NA = -1,
+  HAIR_COLOUR_FIRST = 0,
   HAIR_COLOUR_BLACK = 0,
   HAIR_COLOUR_BROWN = 1,
   HAIR_COLOUR_BLONDE = 2,
   HAIR_COLOUR_RED = 3,
   HAIR_COLOUR_GREY = 4,
-  HAIR_COLOUR_WHITE = 5
+  HAIR_COLOUR_WHITE = 5,
+  HAIR_COLOUR_LAST = 5
 };
 
 enum struct EyeColour
 {
   EYE_COLOUR_NA = -1,
+  EYE_COLOUR_FIRST = 0,
   EYE_COLOUR_BROWN = 0,
   EYE_COLOUR_BLUE = 1,
   EYE_COLOUR_GREEN = 2,
   EYE_COLOUR_HAZEL = 3,
-  EYE_COLOUR_GREY = 4
+  EYE_COLOUR_GREY = 4,
+  EYE_COLOUR_LAST = 4
 };
 
 // This should always mirror the worn location enumeration!

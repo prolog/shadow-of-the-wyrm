@@ -9,8 +9,8 @@
 
 using namespace std;
 
-EyeSelectionScreen::EyeSelectionScreen(DisplayPtr new_display)
-: Screen(new_display)
+EyeSelectionScreen::EyeSelectionScreen(DisplayPtr new_display, const string& synopsis)
+: Screen(new_display), creature_synopsis(synopsis)
 {
   initialize();
 }
@@ -20,7 +20,12 @@ void EyeSelectionScreen::initialize()
   TextComponentPtr eye_selection_text = std::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_EYE_COLOUR));
 
   vector<ScreenComponentPtr> eye_screen;
-  vector<EyeColour> eye_colours = { EyeColour::EYE_COLOUR_BROWN, EyeColour::EYE_COLOUR_BLUE, EyeColour::EYE_COLOUR_GREEN, EyeColour::EYE_COLOUR_HAZEL, EyeColour::EYE_COLOUR_HAZEL };
+  vector<EyeColour> eye_colours;
+  
+  for (int i = static_cast<int>(EyeColour::EYE_COLOUR_FIRST); i <= static_cast<int>(EyeColour::EYE_COLOUR_LAST); i++)
+  {
+    eye_colours.push_back(static_cast<EyeColour>(i));
+  }
 
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
@@ -42,6 +47,10 @@ void EyeSelectionScreen::initialize()
   options->add_option(random_option);
   options->add_option_description("");
 
+  TextComponentPtr synopsis = std::make_shared<TextComponent>("[" + creature_synopsis + "]");
+  eye_screen.push_back(synopsis);
+  eye_screen.push_back(eye_selection_text);
+  eye_screen.push_back(options);
   add_page(eye_screen);
 
   // Set the prompt

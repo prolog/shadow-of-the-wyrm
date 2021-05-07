@@ -5,8 +5,10 @@
 class EyeSelectionScreen : public Screen
 {
   public:
-    EyeSelectionScreen(DisplayPtr display);
+    EyeSelectionScreen(DisplayPtr display, const std::string& synopsis);
 
   protected:
     void initialize() override;
+
+    const std::string creature_synopsis;
 };

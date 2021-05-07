@@ -272,7 +272,14 @@ EquipmentWornLocation Char::to_equipment_worn_location(const char character)
 
 int Char::keyboard_selection_char_to_int(const char character)
 {
-  return static_cast<int>(std::tolower(character) - 'a');
+  if (isdigit(character))
+  {
+    return character - '0';
+  }
+  else
+  {
+    return static_cast<int>(std::tolower(character) - 'a');
+  }
 }
 
 String::String()
