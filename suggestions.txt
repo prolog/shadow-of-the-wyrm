@@ -1,5 +1,4 @@
 Me:
-- hair/eye selection, off by default, swyrm configurable (Echo38)
 - Kure: skinning/tanning
 - ASSET RELEASE FOR 1.3.0
 - advisor

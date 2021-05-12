@@ -3777,3 +3777,13 @@ each seed and spore that tried to root was stopped %b
 and withered where it was, as if some devil %b
 had emptied out its cauldron in that stony kettle.
 %p
+They stopped to take it in, and then the stones %b
+began to fly: the air was thick with rust %b
+as if the ground itself had stirred and shown %b
+its teeth.  But as the shock died down, they just, %b
+in the distance, saw the outline of their kind %b
+emerge along the lakeside and then stop %b
+to reload their makeshift slings of corded vine. %b
+As Alcius turned to shout, a comrade dropped, %b
+his eyes wide open, his head smashed in against the rocks.
+%p
