@@ -18,6 +18,9 @@ Shadow of the Wyrm v1.3.1 "del Liuto"
 
 - More name and settlement name combinations.
 
+- New material type (clay).  Clay pots, fire bombs, and shadow bombs are now
+  made of clay.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
@@ -25,6 +28,8 @@ Shadow of the Wyrm v1.3.1 "del Liuto"
   - The danger level of wilderness tiles was always intended to scale the
     further you got from your starting location, but due to a casting bug,
     the danger was always being defaulted to 1 instead (Echo38).
+
+  - Various typos in the codex/bestiary.
 
 Shadow of the Wyrm v1.3.0 "Kapsberger"
 - Version declared February 20, 2021.  Version finalized April 23, 2021.

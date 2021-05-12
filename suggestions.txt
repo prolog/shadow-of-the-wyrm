@@ -1,4 +1,11 @@
 Me:
+- Fun with clay:
+  - New material type, clay
+  - Update bombs to be clay
+  - Forges (no hammer):
+    - Clay bullets (+15, 1d2+2)
+    - Creatures with shadow damtype: small chance (4%?) of dropping essence of
+      chaos
 - Kure: skinning/tanning
 - ASSET RELEASE FOR 1.3.0
 - advisor

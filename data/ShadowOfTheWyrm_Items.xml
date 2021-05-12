@@ -6468,7 +6468,7 @@
 					<Ounces>5</Ounces>
 				</Weight>
 				<WornLocation>10</WornLocation>
-				<Material>3</Material>
+				<Material>17</Material>
 				<Symbol>
 					<Char>*</Char>
 					<Colour>9</Colour>
@@ -6507,7 +6507,7 @@
 					<Ounces>8</Ounces>
 				</Weight>
 				<WornLocation>10</WornLocation>
-				<Material>3</Material>
+				<Material>17</Material>
 				<Symbol>
 					<Char>*</Char>
 					<Colour>4</Colour>
@@ -6721,7 +6721,7 @@
 					<Pounds>4</Pounds>
 				</Weight>
 				<WornLocation>10</WornLocation>
-				<Material>8</Material>
+				<Material>17</Material>
 				<Symbol>
 					<Char>o</Char>
 					<Colour>3</Colour>

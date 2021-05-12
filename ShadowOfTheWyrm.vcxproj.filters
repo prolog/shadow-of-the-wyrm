@@ -4385,6 +4385,9 @@
     <ClInclude Include="engine\screens\include\HairSelectionScreen.hpp">
       <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\materials\include\Clay.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8856,6 +8859,12 @@
     </ClCompile>
     <ClCompile Include="engine\screens\source\HairSelectionScreen.cpp">
       <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\Clay.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Clay_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

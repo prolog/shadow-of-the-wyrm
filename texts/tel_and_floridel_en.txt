@@ -3787,3 +3787,13 @@ to reload their makeshift slings of corded vine. %b
 As Alcius turned to shout, a comrade dropped, %b
 his eyes wide open, his head smashed in against the rocks.
 %p
+If the king's men hunted before, the relation switched. %b
+They dodged and feinted, kettled in that space %b
+like animals.  Each time the exiles twitched, %b
+a stone flew in; the seconds were a race %b
+to read the situation. "Scatter back!" %b
+Alcius yelled.  They drew their swords and ran %b
+towards the trees, the better to attack %b
+the exiles, who would have to, to a man, %b
+be forced to fight with clubs, or rocks, or hand-to-hand.
+%p
