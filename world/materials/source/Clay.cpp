@@ -35,7 +35,7 @@ bool Clay::get_crumbles() const
 
 Colour Clay::get_colour() const
 {
-  return Colour::COLOUR_YELLOW;
+  return Colour::COLOUR_RED;
 }
 
 Material* Clay::clone()

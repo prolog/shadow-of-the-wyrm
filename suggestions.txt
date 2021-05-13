@@ -6,8 +6,7 @@ Me:
     - Clay bullets (+15, 1d2+2)
     - Creatures with shadow damtype: small chance (4%?) of dropping essence of
       chaos
-- Kure: skinning/tanning
-- ASSET RELEASE FOR 1.3.0
+- ASSET RELEASE FOR 1.3.1
 - advisor
 - quest for advisor in Yew
 - More Acey/Sea Captain quests
@@ -28,8 +27,8 @@ Me:
 - New sector features:
 - UndergroundSectorFeature (takes tile type - dungeoncomplex, mine, cavern,
   sewer)
-- Settlement names!
 - Settlement names on signposts!
+- Kure: skinning/tanning
 - Other names: dungeons, caverns, sewers...
 - Add signposts to each random village
 - Generate tombs with keys outside door/doors locked

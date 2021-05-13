@@ -6586,6 +6586,37 @@
 					</StatusAilments>
 				</Damage>
 			</Missile>
+			<Missile id="_clay_shot">
+				<DescriptionSID>CLAY_SHOT_SID</DescriptionSID>
+				<UsageDescriptionSID>CLAY_SHOT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CLAY_SHOT_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>17</Material>
+				<Symbol>
+					<Char>*</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>7</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>2</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2006</RangedSkill>
+				<Difficulty>40</Difficulty>
+				<Speed>1</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>3</NumSides>
+					<Modifier>2</Modifier>
+					<Type>2</Type>
+				</Damage>
+			</Missile>
 			<Missile id="_stone">
 				<DescriptionSID>STONE_SID</DescriptionSID>
 				<UsageDescriptionSID>STONE_USAGE_SID</UsageDescriptionSID>
@@ -12798,6 +12829,25 @@
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
+			<Item id="_clay">
+				<DescriptionSID>CLAY_SID</DescriptionSID>
+				<UsageDescriptionSID>CLAY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CLAY_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>17</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>6</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="_paper_pulp">
 				<DescriptionSID>PAPER_PULP_SID</DescriptionSID>
 				<UsageDescriptionSID>PAPER_PULP_USAGE_SID</UsageDescriptionSID>

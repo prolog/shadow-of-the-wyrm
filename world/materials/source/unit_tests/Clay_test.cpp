@@ -10,7 +10,7 @@ TEST(SW_World_Material_Clay, get_colour)
 {
   Clay c;
 
-  EXPECT_EQ(Colour::COLOUR_YELLOW, c.get_colour());
+  EXPECT_EQ(Colour::COLOUR_RED, c.get_colour());
 }
 
 TEST(SW_World_Material_Clay, flags)
