@@ -3797,3 +3797,13 @@ towards the trees, the better to attack %b
 the exiles, who would have to, to a man, %b
 be forced to fight with clubs, or rocks, or hand-to-hand.
 %p
+Adrenaline in full swing, they circled round %b
+the sheltered shoreline of the lake, swords out, %b
+but found the slingers ready - one man crowned %b
+by stones, another jumped and turned about %b
+with a makeshift mace, a bough lashed to a rock, %b
+a weapon, they would've joked, that unlings used, %b
+the joke the sort that echoed through their halls %b
+but now landed with a crack as they let loose %b
+with everything at hand, as stone and brain were fused.
+%p
