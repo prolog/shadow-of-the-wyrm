@@ -220,6 +220,7 @@
 			<xs:element name="Forge" type="tns:BaseFeature"/>
 			<xs:element name="Fountain" type="tns:BaseFeature"/>
 			<xs:element name="JewelerWorkbench" type="tns:BaseFeature"/>
+			<xs:element name="Kiln" type="tns:BaseFeature"/>
 			<xs:element name="Pew" type="tns:BaseFeature"/>
 			<xs:element name="Pulper" type="tns:BaseFeature"/>
 			<xs:element name="Sarcophagus" type="tns:BaseFeature"/>

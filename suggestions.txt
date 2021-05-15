@@ -1,11 +1,15 @@
 Me:
 - Fun with clay:
-  - New material type, clay
-  - Update bombs to be clay
+  - Clay should be diggable
   - Forges (no hammer):
     - Clay bullets (+15, 1d2+2)
     - Creatures with shadow damtype: small chance (4%?) of dropping essence of
       chaos
+  - Load kilns
+  - Save/load
+  - Work in via workshops, random features, etc
+  - More set locations for kilns
+  - Hints or something as to how to harvest it
 - ASSET RELEASE FOR 1.3.1
 - advisor
 - quest for advisor in Yew

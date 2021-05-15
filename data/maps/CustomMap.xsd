@@ -213,6 +213,7 @@
 				<xs:element name="Tannery" type="tns:Tannery"/>
 				<xs:element name="Pulper" type="tns:Pulper"/>
 				<xs:element name="JewelerWorkbench" type="tns:JewelerWorkbench"/>
+				<xs:element name="Kiln" type="tns:Feature"/>
 				<xs:element name="WheelAndLoom" type="tns:WheelAndLoom"/>
 				<xs:element name="Bed" type="tns:Feature"/>
 				<xs:element name="StoneMarker" type="tns:Feature"/>

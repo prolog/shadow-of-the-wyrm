@@ -1139,6 +1139,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLForgeReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLFountainReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLJewelerWorkbenchReader.hpp" />
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLKilnReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureFactory.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureReaders.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLPewReader.hpp" />
@@ -2187,6 +2188,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\time\source\WorldWeatherUpdater.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLConfigurableFeatureCMReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLDecorativeStatueReader.cpp" />
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLKilnReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLPulperReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLSignReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLSlotMachineReader.cpp" />

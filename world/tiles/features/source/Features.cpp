@@ -693,6 +693,23 @@ ClassIdentifier JewelerWorkbench::internal_class_identifier() const
   return ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH;
 }
 
+// Kiln
+
+Kiln::Kiln(const Symbol& new_symbol)
+  : Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_KILN, MaterialType::MATERIAL_TYPE_CLAY, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
+{
+}
+
+Feature* Kiln::clone()
+{
+  return new Kiln(*this);
+}
+
+ClassIdentifier Kiln::internal_class_identifier() const
+{
+  return ClassIdentifier::CLASS_ID_KILN;
+}
+
 // Pew and EastWestPew
 Pew::Pew(const Symbol& new_symbol)
   : Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_PEW, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)

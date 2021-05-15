@@ -353,6 +353,16 @@ class JewelerWorkbench : public Feature
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
+class Kiln : public Feature
+{
+  public:
+    Kiln(const Symbol& new_symbol);
+    virtual Feature* clone() override;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const override;
+};
+
 class Pulper : public Feature
 {
   public:

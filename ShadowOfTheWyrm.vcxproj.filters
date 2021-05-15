@@ -4388,6 +4388,9 @@
     <ClInclude Include="world\materials\include\Clay.hpp">
       <Filter>Header Files\world\materials\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLKilnReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8865,6 +8868,9 @@
     </ClCompile>
     <ClCompile Include="world\materials\source\unit_tests\Clay_test.cpp">
       <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLKilnReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

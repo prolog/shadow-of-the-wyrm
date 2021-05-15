@@ -21,6 +21,8 @@ Shadow of the Wyrm v1.3.1 "del Liuto"
 - New material type (clay).  Clay pots, fire bombs, and shadow bombs are now
   made of clay.
 
+- New features: kiln.
+
 - New items: raw clay, clay shot.
 
 - Stanzas for "Tel and Floridel".

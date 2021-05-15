@@ -7664,6 +7664,16 @@
 					</Sprite>
 				</Symbol>
 			</JewelerWorkbench>
+			<Kiln>
+				<Symbol>
+					<Char>&amp;</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>1</Row>
+						<Col>2</Col>
+					</Sprite>
+				</Symbol>
+			</Kiln>
 			<Pew>
 				<Symbol>
 					<Char>-</Char>
