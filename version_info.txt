@@ -16,6 +16,10 @@ Shadow of the Wyrm v1.3.1 "del Liuto"
 
 - Knockback has a chance to apply the stun and exposed statuses.
 
+- When using an unarmed attack (either unarmed or a weapon that trains the
+  skill, e.g. claws/knuckles) there is now a chance, based on the unarmed
+  combat skill, to get an additional, free kick attack.
+
 - More name and settlement name combinations.
 
 - New material type (clay).  Clay pots, fire bombs, and shadow bombs are now

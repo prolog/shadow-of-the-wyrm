@@ -1,4 +1,5 @@
 Me:
+- Need to test: unarmed combat, wield claw, does kick fire?
 - Fun with clay:
   - Clay should be diggable
   - Forges (no hammer):

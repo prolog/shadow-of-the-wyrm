@@ -37,6 +37,7 @@
 #include "PhaseOfMoonCalculator.hpp"
 #include "PointsTransfer.hpp"
 #include "RaceManager.hpp"
+#include "RNG.hpp"
 #include "ScythingCalculator.hpp"
 #include "Setting.hpp"
 #include "SkillManager.hpp"
@@ -46,7 +47,7 @@
 #include "StatisticsMarker.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
-#include "RNG.hpp"
+#include "UnarmedCombatCalculator.hpp"
 #include "WeaponManager.hpp"
 
 using namespace std;
@@ -82,10 +83,11 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
     // Sanity check
     if (creature && adjacent_creature)
     {
-      action_cost_value = attack(creature, adjacent_creature);
+      AttackType attack_type = AttackType::ATTACK_TYPE_MELEE_PRIMARY;
+      action_cost_value = attack(creature, adjacent_creature, attack_type);
 
       // Re-get the adjacent creature - it may have been killed by the
-      // first attack.
+      // first attack, or knocked back.
       adjacent_creature = adjacent_tile->get_creature();
 
       if (adjacent_creature)
@@ -97,6 +99,26 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
         if (off_hand_weapon != nullptr)
         {
           action_cost_value += attack(creature, adjacent_creature, AttackType::ATTACK_TYPE_MELEE_SECONDARY);
+        }
+
+        // A secondary attack may have killed the creature, or the creature
+        // may have been knocked back.
+        adjacent_creature = adjacent_tile->get_creature();
+
+        // If we're doing unarmed melee, there is a chance as well to kick.
+        UnarmedCombatCalculator ucc;
+
+        if (adjacent_creature != nullptr && ucc.is_attack_unarmed(creature, attack_type))
+        {
+          if (RNG::percent_chance(ucc.calculate_pct_chance_free_kick(creature)))
+          {
+            IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+            manager.add_new_message(ActionTextKeys::get_kick_message(creature->get_description_sid(), creature->get_is_player()));
+                    
+            // The kick is free - it's considered part of the primary attack -
+            // so we ignore its action_cost_value.
+            attack(creature, adjacent_creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED);
+          }
         }
       }
     }
