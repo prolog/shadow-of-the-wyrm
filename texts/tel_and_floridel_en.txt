@@ -3807,3 +3807,13 @@ the joke the sort that echoed through their halls %b
 but now landed with a crack as they let loose %b
 with everything at hand, as stone and brain were fused.
 %p
+But distance done, the fight took on a new tone. %b
+Against unarmoured men, the blades cut deep %b
+and bled them quickly, right down to the bone %b
+as cover let the kingsmen duck and creep %b
+towards their once-was friends.  They cut down men %b
+they'd gone to war with, men who'd blessed their child %b
+on christening day; who screamed and cried out when %b
+run through, and all the old bonds were defiled %b
+within the woods that made up this unholy wild.
+%p
