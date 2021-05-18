@@ -108,9 +108,13 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
         // If we're doing unarmed melee, there is a chance as well to kick.
         UnarmedCombatCalculator ucc;
 
-        if (adjacent_creature != nullptr && ucc.is_attack_unarmed(creature, attack_type))
+        if (adjacent_creature != nullptr)
         {
-          if (RNG::percent_chance(ucc.calculate_pct_chance_free_kick(creature)))
+          Coordinate attack_c = map->get_location(creature->get_id());
+          Coordinate defend_c = map->get_location(adjacent_creature->get_id());
+
+          if (CoordUtils::are_coordinates_adjacent(attack_c, defend_c) &&
+              RNG::percent_chance(ucc.calculate_pct_chance_free_kick(creature)))
           {
             IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
             manager.add_new_message(ActionTextKeys::get_kick_message(creature->get_description_sid(), creature->get_is_player()));
