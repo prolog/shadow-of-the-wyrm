@@ -1,7 +1,5 @@
 Me:
-- Need to test: unarmed combat, wield claw, does kick fire?
-- Actually: make it follow same logic but fire after any adjacent pri/sec
-  attack.
+- monochrome mode not working in SDL for non-white colours
 - Fun with clay:
   - Clay should be diggable
   - Forges (no hammer):

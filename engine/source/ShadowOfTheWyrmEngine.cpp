@@ -185,6 +185,10 @@ void ShadowOfTheWyrmEngine::setup_display(const Settings& settings)
 
     string mono_colour = DisplaySettings::DISPLAY_SETTING_MONOCHROME_COLOUR;
     display->set_property(mono_colour, settings.get_setting(mono_colour));
+
+    // For graphical/tiled displays, force ASCII?
+    bool force_ascii = settings.get_setting_as_bool(Setting::DISPLAY_FORCE_ASCII);
+    display->set_force_ascii(force_ascii);
   }
 }
 
