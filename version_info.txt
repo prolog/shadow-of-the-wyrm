@@ -27,7 +27,7 @@ Shadow of the Wyrm v1.3.1 "del Liuto"
 
 - New features: kiln.
 
-- New items: raw clay, clay shot.
+- New items: raw clay, clay shot, wisp of primordial essence.
 
 - Stanzas for "Tel and Floridel".
 

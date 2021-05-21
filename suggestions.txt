@@ -1,12 +1,12 @@
 Me:
-- value causing issues with item comparison
-- monochrome mode not working in SDL for non-white colours
 - Fun with clay:
-  - Clay should be diggable
-  - Forges (no hammer):
+  - Kiln:
     - Clay bullets (+15, 1d2+2)
-    - Creatures with shadow damtype: small chance (4%?) of dropping essence of
-      chaos
+    - Fire bomb, when clay + magici
+    - Creatures with shadow damtype: small chance (4%?) of dropping primordial
+      essence
+    - Shadow bomb, when clay + essence
+    - What material shd pri ess be?
   - Load kilns
   - Save/load
   - Work in via workshops, random features, etc
