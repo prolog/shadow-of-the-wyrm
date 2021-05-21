@@ -230,7 +230,7 @@ class Item : public ISerializable
     virtual DamageType do_brand();
     DamageType get_random_brand();
 
-    void increase_value(const int num_enchant_or_smith_points = 1);
+    virtual void increase_value(const int num_enchant_or_smith_points = 1);
 
     std::string id;
     std::string base_id;

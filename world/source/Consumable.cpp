@@ -127,11 +127,15 @@ bool Consumable::consumable_properties_match(const Consumable& cons) const
   return result;
 }
 
-// Food becomes more or less nutritious, based on the enchantment's BUC
-// status.  Any poison is removed.
+// Any poison is removed when an item is enchanted.
 void Consumable::do_enchant_item(const int points)
 {
   poisoned = false;
+}
+
+// Consumables don't vary in price with enchantments.
+void Consumable::increase_value(const int num_points)
+{
 }
 
 int Consumable::get_score() const

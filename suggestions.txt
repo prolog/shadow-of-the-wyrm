@@ -1,4 +1,5 @@
 Me:
+- value causing issues with item comparison
 - monochrome mode not working in SDL for non-white colours
 - Fun with clay:
   - Clay should be diggable

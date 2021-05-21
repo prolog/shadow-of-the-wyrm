@@ -43,6 +43,9 @@ Shadow of the Wyrm v1.3.1 "del Liuto"
 
   - Mono colour settings weren't working properly in the SDL display.
 
+  - Issues with stacking due to value increasing for item types that don't
+    actually improve with enchanting (potions, scrolls) (인수태).
+
   - Various typos in the codex/bestiary.
 
 Shadow of the Wyrm v1.3.0 "Kapsberger"
