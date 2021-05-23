@@ -169,7 +169,7 @@ bool Inventory::remove(const string& id)
   return false;
 }
 
-pair<bool, vector<ItemPtr>> Inventory::remove_by_base_id(const string& base_id, const int quantity)
+pair<bool, vector<ItemPtr>> Inventory::remove_by_base_id(const string& base_id, const int quantity, const map<string, string>& properties)
 {
   pair<bool, vector<ItemPtr>> result = { false, {} };
 
@@ -185,7 +185,7 @@ pair<bool, vector<ItemPtr>> Inventory::remove_by_base_id(const string& base_id, 
 
       ItemPtr current_item = *item_it;
       
-      if (current_item && (current_item->get_base_id() == base_id))
+      if (current_item && (current_item->get_base_id() == base_id) && current_item->has_additional_properties(properties))
       {
         result.first = true;
         int i_quantity = current_item->get_quantity();

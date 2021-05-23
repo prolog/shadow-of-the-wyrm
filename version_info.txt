@@ -27,6 +27,9 @@ Shadow of the Wyrm v1.3.2 "del Liuto"
   be used as a projectile on its own, or in the manufacturing of shadow
   bombs.
 
+- Tagged Urlac's robes/staff on generation.  Now when doing a specific quest,
+  those specific items will be removed from the player.
+
 - New material type (clay).  Clay pots, fire bombs, and shadow bombs are now
   made of clay.
 

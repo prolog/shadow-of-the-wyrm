@@ -20,7 +20,7 @@ class Inventory : public IInventory
     
     bool remove(const std::string& id) override;
     ItemPtr remove_and_return(const std::string& id) override;
-    std::pair<bool, std::vector<ItemPtr>> remove_by_base_id(const std::string& base_id, const int quantity = 1) override;
+    std::pair<bool, std::vector<ItemPtr>> remove_by_base_id(const std::string& base_id, const int quantity = 1, const std::map<std::string, std::string>& properties = {}) override;
     
     bool clear() override;
     

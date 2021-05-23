@@ -18,8 +18,8 @@ local function wizard_quest_start_fn()
   generate_adventurer(map_id, 5, 32, RNG_range(6,15), "", "wizard")
   set_chat_script(map_id, 5, 32, "quests/stoneheim/new_wizard.lua")
 
-  add_object_to_player_tile("wizard_staff")
-  add_object_to_player_tile("wizard_robes")
+  add_object_to_player_tile("wizard_staff", 1, "stoneheim_quest=1")
+  add_object_to_player_tile("wizard_robes", 1, "stoneheim_quest=1")
 end
 
 local function wizard_quest_completion_condition_fn()

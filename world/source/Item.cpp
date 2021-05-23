@@ -821,6 +821,21 @@ bool Item::has_additional_property(const string& property_name) const
   return (additional_properties.find(property_name) != additional_properties.end());
 }
 
+bool Item::has_additional_properties(const map<string, string>& properties_subset) const
+{
+  bool has_all_props = true;
+
+  for (const auto& prop_pair : properties_subset)
+  {
+    if (get_additional_property(prop_pair.first) != prop_pair.second)
+    {
+      has_all_props = false;
+      break;
+    }
+  }
+  return has_all_props;
+}
+
 void Item::clear_event_scripts()
 {
   event_scripts.clear();

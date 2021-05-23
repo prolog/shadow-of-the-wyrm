@@ -95,7 +95,7 @@ list<ItemPtr> ItemManager::get_filtered_items(IInventoryPtr inv, const list<IIte
 }
 
 // Check to see if a creature has an item with the given base ID.
-bool ItemManager::has_item(CreaturePtr creature, const string& base_item_id)
+bool ItemManager::has_item(CreaturePtr creature, const string& base_item_id, const map<string, string>& properties)
 {
   EquipmentMap eq_map = creature->get_equipment().get_equipment();
 
@@ -105,7 +105,21 @@ bool ItemManager::has_item(CreaturePtr creature, const string& base_item_id)
 
     if (item && item->get_base_id() == base_item_id)
     {
-      return true;
+      bool props_match = true;
+
+      for (const auto& prop_pair : properties)
+      {
+        if (item->get_additional_property(prop_pair.first) != prop_pair.second)
+        {
+          props_match = false;
+          break;
+        }
+      }
+
+      if (props_match)
+      {
+        return true;
+      }
     }
   }
 
@@ -115,7 +129,21 @@ bool ItemManager::has_item(CreaturePtr creature, const string& base_item_id)
   {
     if (item && item->get_base_id() == base_item_id)
     {
-      return true;
+      bool props_match = true;
+
+      for (const auto& prop_pair : properties)
+      {
+        if (item->get_additional_property(prop_pair.first) != prop_pair.second)
+        {
+          props_match = false;
+          break;
+        }
+      }
+
+      if (props_match)
+      {
+        return true;
+      }
     }
   }
 
@@ -178,7 +206,7 @@ ItemPtr ItemManager::create_item(const std::string& item_id, const uint quantity
 
 // Remove an item or reduce the quantity by 1.  First check the equipment, and
 // then the inventory.
-pair<bool, vector<ItemPtr>> ItemManager::remove_item_from_eq_or_inv(CreaturePtr creature, const string& base_item_id, const int quantity)
+pair<bool, vector<ItemPtr>> ItemManager::remove_item_from_eq_or_inv(CreaturePtr creature, const string& base_item_id, const int quantity, const map<string, string>& properties)
 {
   pair<bool, vector<ItemPtr>> result;
   result.first = false;
@@ -194,7 +222,7 @@ pair<bool, vector<ItemPtr>> ItemManager::remove_item_from_eq_or_inv(CreaturePtr 
   {
     ItemPtr item = eq_pair.second;
 
-    if (item && item->get_base_id() == base_item_id)
+    if (item && item->get_base_id() == base_item_id && item->has_additional_properties(properties))
     {
       int i_quantity = item->get_quantity();
       bool remove_item = (i_quantity <= rem_quantity);
@@ -237,7 +265,7 @@ pair<bool, vector<ItemPtr>> ItemManager::remove_item_from_eq_or_inv(CreaturePtr 
 
   if (rem_quantity > 0)
   {
-    inv_items = inv->remove_by_base_id(base_item_id, rem_quantity);
+    inv_items = inv->remove_by_base_id(base_item_id, rem_quantity, properties);
   }
 
   result.first = inv_items.first;

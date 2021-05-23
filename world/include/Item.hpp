@@ -173,6 +173,7 @@ class Item : public ISerializable
     void set_additional_property(const std::string& property_name, const std::string& property_value);
     std::string get_additional_property(const std::string& property_name) const;
     bool has_additional_property(const std::string& property_name) const;
+    bool has_additional_properties(const std::map<std::string, std::string>& properties_subset) const;
 
     std::map<std::string, std::string> get_additional_properties() const;
 
