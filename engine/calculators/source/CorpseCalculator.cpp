@@ -1,4 +1,5 @@
 #include "CorpseCalculator.hpp"
+#include "CreatureUtils.hpp"
 
 const int CorpseCalculator::BASE_CHANCE_PRIMORDIAL_ESSENCE = 5;
 const int CorpseCalculator::PRIMORDIAL_ESSENCE_SKILL_DIVISOR = 5;
@@ -61,7 +62,7 @@ int CorpseCalculator::calculate_chance_primordial_essence(CreaturePtr attacking_
   {
     Damage damage = deathblow_creature->get_base_damage();
 
-    if (damage.get_damage_type() == DamageType::DAMAGE_TYPE_SHADOW)
+    if (CreatureUtils::has_primordial_essence(deathblow_creature))
     {
       pct_chance = BASE_CHANCE_PRIMORDIAL_ESSENCE;
 

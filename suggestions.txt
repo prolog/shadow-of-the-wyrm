@@ -1,6 +1,7 @@
 Me:
-- 1.3.1 ASSET RELEASE
-- also drop shadow when primordial spells
+- 1.3.2 ASSET RELEASE
+- Grond: goblin raid duplication
+- Grond: goblin raid theft when equipped
 - Fun with clay:
   - Kiln:
     - Clay bullets (+15, 1d2+2)

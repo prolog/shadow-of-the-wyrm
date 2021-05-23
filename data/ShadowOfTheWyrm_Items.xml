@@ -3637,6 +3637,7 @@
 					<Modifier>12</Modifier>
 					<Type>0</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="ironsword">
 				<DescriptionSID>IRONSWORD_SID</DescriptionSID>

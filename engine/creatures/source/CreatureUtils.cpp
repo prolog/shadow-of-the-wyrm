@@ -1053,6 +1053,42 @@ void CreatureUtils::set_leadership(CreaturePtr creature, const string& leader_id
   }
 }
 
+bool CreatureUtils::has_primordial_essence(CreaturePtr creature)
+{
+  bool has_essence = false;
+
+  if (creature != nullptr)
+  {
+    if (creature->get_base_damage().get_damage_type() == DamageType::DAMAGE_TYPE_SHADOW)
+    {
+      has_essence = true;
+    }
+    else
+    {
+      const SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+      const SpellMap& spells = Game::instance().get_spells_ref();
+
+      for (const auto sk_it : sk.get_known_spells())
+      {
+        auto sp_it = spells.find(sk_it.first);
+
+        if (sp_it != spells.end())
+        {
+          SkillType spell_type = sp_it->second.get_magic_category();
+
+          if (spell_type == SkillType::SKILL_MAGIC_PRIMORDIAL)
+          {
+            has_essence = true;
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  return has_essence;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/CreatureUtils_test.cpp"
 #endif

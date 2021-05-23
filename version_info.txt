@@ -1,4 +1,4 @@
-Shadow of the Wyrm v1.3.1 "del Liuto"
+Shadow of the Wyrm v1.3.2 "del Liuto"
 - Version declared April 23, 2021.
 
 - Default hair and eye colour can now be set in swyrm.ini, as well as an
@@ -21,6 +21,11 @@ Shadow of the Wyrm v1.3.1 "del Liuto"
   kick attack.
 
 - More name and settlement name combinations.
+
+- Primordial creatures (those dealing shadow damage or knowing primordial
+  spells) have a chance to leave primordial essence when they die. This can
+  be used as a projectile on its own, or in the manufacturing of shadow
+  bombs.
 
 - New material type (clay).  Clay pots, fire bombs, and shadow bombs are now
   made of clay.
@@ -45,6 +50,8 @@ Shadow of the Wyrm v1.3.1 "del Liuto"
 
   - Issues with stacking due to value increasing for item types that don't
     actually improve with enchanting (potions, scrolls) (인수태).
+
+  - Brightblade didn't have reach 2, as it should have (Grond).
 
   - Various typos in the codex/bestiary.
 
