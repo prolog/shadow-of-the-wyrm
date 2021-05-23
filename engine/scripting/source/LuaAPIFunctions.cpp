@@ -8054,31 +8054,33 @@ int set_weather(lua_State* ls)
   return 0;
 }
 
-// Clear all non-player creatures from the current map
+// Clear all non-player creatures from the current map.
+// If an argument is given, clear that race ID.
 int genocide(lua_State* ls)
 {
-  if (lua_gettop(ls) == 0)
+  MapPtr map = Game::instance().get_current_map();
+  string race_id;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
   {
-    MapPtr map = Game::instance().get_current_map();
+    race_id = lua_tostring(ls, 1);
+  }
 
-    if (map != nullptr)
+  if (map != nullptr)
+  {
+    const CreatureMap creatures = map->get_creatures();
+
+    for (auto cr_pair : creatures)
     {
-      const CreatureMap creatures = map->get_creatures();
+      CreaturePtr creature = cr_pair.second;
 
-      for (auto cr_pair : creatures)
+      if (creature != nullptr && 
+          !creature->get_is_player() &&
+          (race_id.empty() || race_id == creature->get_race_id()))
       {
-        CreaturePtr creature = cr_pair.second;
-
-        if (creature != nullptr && !creature->get_is_player())
-        {
-          MapUtils::remove_creature(map, creature);
-        }
+        MapUtils::remove_creature(map, creature);
       }
     }
-  }
-  else
-  {
-    LuaUtils::log_and_raise(ls, "Invalid arguments to genocide");
   }
 
   return 0;
