@@ -205,3 +205,62 @@ TEST(SW_World_Inventory, no_drop_effect_sid)
 
   EXPECT_EQ("", i.get_drop_effect_sid());
 }
+
+TEST(SW_World_Inventory, remove_by_base_id)
+{
+  Inventory i;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_base_id("book");
+  
+  ItemPtr item2 = std::make_shared<Spellbook>();
+  item2->set_base_id("book");
+  
+  ItemPtr item3 = std::make_shared<Amulet>();
+  item3->set_base_id("amulet");
+
+  i.add(item);
+  i.add(item2);
+  i.add(item3);
+
+  EXPECT_EQ(3, i.size());
+
+  i.remove_by_base_id("book");
+
+  EXPECT_EQ(2, i.size());
+
+  i.remove_by_base_id("book");
+
+  EXPECT_EQ(1, i.size());
+}
+
+TEST(SW_World_Inventory, remove_by_base_id_with_properties)
+{
+  Inventory i;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_base_id("book");
+
+  ItemPtr item2 = std::make_shared<Spellbook>();
+  item2->set_base_id("book");
+
+  ItemPtr item3 = std::make_shared<Amulet>();
+  item3->set_base_id("amulet");
+
+  i.add(item);
+  i.add(item2);
+  i.add(item3);
+
+  EXPECT_EQ(3, i.size());
+
+  map<string, string> props = { {"prop1", "propval"} };
+  i.remove_by_base_id("book", 1, props);
+
+  EXPECT_EQ(3, i.size());
+
+  item->set_additional_properties(props);
+
+  i.remove_by_base_id("book", 1, props);
+
+  EXPECT_EQ(2, i.size());
+}
