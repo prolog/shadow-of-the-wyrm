@@ -52,6 +52,26 @@ TEST(SW_World_NullInventory, count_items)
   EXPECT_EQ(0, ni.count_items());
 }
 
+TEST(SW_World_NullInventory, size)
+{
+  NullInventory ni;
+
+  SpellbookPtr book = std::make_shared<Spellbook>();
+  ni.add_front(book);
+
+  EXPECT_EQ(0, ni.size());
+}
+
+TEST(SW_World_NullInventory, empty)
+{
+  NullInventory ni;
+
+  SpellbookPtr book = std::make_shared<Spellbook>();
+  ni.add_front(book);
+
+  EXPECT_TRUE(ni.empty());
+}
+
 TEST(SW_World_NullInventory, mark_is_useless)
 {
   NullInventory ni;

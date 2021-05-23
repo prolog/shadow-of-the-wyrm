@@ -122,6 +122,30 @@ TEST(SW_World_Inventory, count_items)
   EXPECT_EQ(8, inv.count_items("book"));
 }
 
+TEST(SW_World_Inventory, size)
+{
+  Inventory inv;
+
+  EXPECT_EQ(0, inv.size());
+
+  SpellbookPtr book = std::make_shared<Spellbook>();
+  inv.add(book);
+
+  EXPECT_EQ(1, inv.size());
+}
+
+TEST(SW_World_Inventory, empty)
+{
+  Inventory inv;
+
+  EXPECT_TRUE(inv.empty());
+
+  SpellbookPtr book = std::make_shared<Spellbook>();
+  inv.add(book);
+
+  EXPECT_FALSE(inv.empty());
+}
+
 TEST(SW_World_Inventory, items_are_persisted)
 {
   Inventory inv;
