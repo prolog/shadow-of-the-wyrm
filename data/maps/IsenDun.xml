@@ -204,6 +204,13 @@
 					<Col>20</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>_potter</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>46</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items>
 			<Placement>
