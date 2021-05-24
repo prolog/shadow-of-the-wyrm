@@ -8,6 +8,7 @@
 #include "DoorGateManipulator.hpp"
 #include "BarrelManipulator.hpp"
 #include "JewelerWorkbenchManipulator.hpp"
+#include "KilnManipulator.hpp"
 #include "PulperManipulator.hpp"
 #include "SarcophagusManipulator.hpp"
 #include "SlotMachineManipulator.hpp"
@@ -83,6 +84,10 @@ FeatureManipulatorPtr IFeatureManipulatorFactory::create_manipulator(FeaturePtr 
     else if (class_id == ClassIdentifier::CLASS_ID_PULPER)
     {
       manipulator = std::make_unique<PulperManipulator>(feature);
+    }
+    else if (class_id == ClassIdentifier::CLASS_ID_KILN)
+    {
+      manipulator = std::make_unique<KilnManipulator>(feature);
     }
     // All other features
     else

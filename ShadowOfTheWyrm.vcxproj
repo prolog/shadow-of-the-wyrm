@@ -941,6 +941,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\maps\tiles\features\include\FeatureManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\IFeatureManipulatorFactory.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\JewelerWorkbenchManipulator.hpp" />
+    <ClInclude Include="engine\maps\tiles\features\include\KilnManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\NeutralAltarManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\PewManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\PulperManipulator.hpp" />
@@ -2046,6 +2047,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\features\source\FeatureManipulator.cpp" />
+    <ClCompile Include="engine\maps\tiles\features\source\KilnManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\PulperManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\SarcophagusManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\SlotMachineManipulator.cpp" />

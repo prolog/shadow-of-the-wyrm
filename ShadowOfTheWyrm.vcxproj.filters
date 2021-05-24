@@ -4394,6 +4394,9 @@
     <ClInclude Include="engine\calculators\include\UnarmedCombatCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\KilnManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8880,6 +8883,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\UnarmedCombatCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\KilnManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
