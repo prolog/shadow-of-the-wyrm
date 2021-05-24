@@ -607,7 +607,8 @@ bool DungeonGenerator::generate_craft_room(MapPtr map, const int start_row, cons
                                          ClassIdentifier::CLASS_ID_TANNERY, 
                                          ClassIdentifier::CLASS_ID_PULPER,
                                          ClassIdentifier::CLASS_ID_FORGE, 
-                                         ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH};
+                                         ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH,
+                                         ClassIdentifier::CLASS_ID_KILN};
 
   std::shuffle(placement_coords.begin(), placement_coords.end(), RNG::get_engine());
   std::shuffle(feature_ids.begin(), feature_ids.end(), RNG::get_engine());
