@@ -20,6 +20,7 @@ class ScreenTitleTextKeys
     static const std::string SCREEN_TITLE_CREATE_ITEM;
     static const std::string SCREEN_TITLE_GIVE_ORDERS;
     static const std::string SCREEN_TITLE_AUTO_ACTIONS;
+    static const std::string SCREEN_TITLE_KILN;
 
   protected:
     ScreenTitleTextKeys();

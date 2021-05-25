@@ -288,3 +288,14 @@ TEST(SW_World_Inventory, remove_by_base_id_with_properties)
 
   EXPECT_EQ(2, i.size());
 }
+
+TEST(SW_World_Inventory, has_item)
+{
+  Inventory i;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_base_id("book");
+  i.add(item);
+
+  EXPECT_TRUE(i.has_item("book"));
+}

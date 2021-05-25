@@ -129,3 +129,14 @@ TEST(SW_World_NullInventory, no_drop_effect_sid)
   NullInventory ni;
   EXPECT_EQ("", ni.get_drop_effect_sid());
 }
+
+TEST(SW_World_NullInventory, has_item)
+{
+  NullInventory ni;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_base_id("book");
+
+  ni.add(item);
+  EXPECT_FALSE(ni.has_item("book"));
+}

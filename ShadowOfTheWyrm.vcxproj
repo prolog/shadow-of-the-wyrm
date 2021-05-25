@@ -974,6 +974,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\screens\include\HelpScreen.hpp" />
     <ClInclude Include="engine\screens\include\HighScoreScreen.hpp" />
     <ClInclude Include="engine\screens\include\InventoryScreen.hpp" />
+    <ClInclude Include="engine\screens\include\KilnScreen.hpp" />
     <ClInclude Include="engine\screens\include\LoadGameScreen.hpp" />
     <ClInclude Include="engine\screens\include\OptionScreen.hpp" />
     <ClInclude Include="engine\screens\include\OrderScreen.hpp" />
@@ -2083,6 +2084,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\screens\source\EyeSelectionScreen.cpp" />
     <ClCompile Include="engine\screens\source\HairSelectionScreen.cpp" />
     <ClCompile Include="engine\screens\source\HelpScreen.cpp" />
+    <ClCompile Include="engine\screens\source\KilnScreen.cpp" />
     <ClCompile Include="engine\screens\source\OptionScreen.cpp" />
     <ClCompile Include="engine\screens\source\OrderScreen.cpp" />
     <ClCompile Include="engine\screens\source\SkillsScreen.cpp" />

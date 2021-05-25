@@ -26,6 +26,8 @@ class NullInventory : public IInventory
 
     bool has_items() const override;
     bool has_unpaid_items() const override;
+    bool has_item(const std::string& base_id) const override;
+
     ItemPtr at(const uint index) override;
     ItemPtr get_from_id(const std::string& id) override;
     ItemPtr get_from_base_id(const std::string& base_id) override;

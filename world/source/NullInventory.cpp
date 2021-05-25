@@ -93,6 +93,11 @@ bool NullInventory::has_unpaid_items() const
   return false;
 }
 
+bool NullInventory::has_item(const string& base_id) const
+{
+  return false;
+}
+
 ItemPtr NullInventory::at(const uint index)
 {
   ItemPtr nullp;

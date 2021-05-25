@@ -425,6 +425,21 @@ bool Inventory::has_item_with_property(const string& item_property) const
   return false;
 }
 
+// Does the inventory have at least one item with the given ID?
+bool Inventory::has_item(const string& base_id) const
+{
+  for (ItemPtr item : items)
+  {
+    if (item && item->get_base_id() == base_id)
+    {
+      return true;
+    }
+  }
+
+  return false;
+
+}
+
 // How many items in the inventory with the given property?
 uint Inventory::count_items_with_property(const string& item_property) const
 {

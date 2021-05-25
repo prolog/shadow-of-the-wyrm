@@ -1,5 +1,7 @@
 #include "KilnManipulator.hpp"
 #include "ActionTextKeys.hpp"
+#include "Game.hpp"
+#include "KilnScreen.hpp"
 #include "ItemTypes.hpp"
 #include "MessageManagerFactory.hpp"
 
@@ -24,10 +26,20 @@ bool KilnManipulator::handle(TilePtr tile, CreaturePtr creature)
 {
   bool kiln_used = false;
 
-  if (feature != nullptr)
+  if (feature != nullptr && creature != nullptr)
   {
     if (check_for_clay(creature))
     {
+      Game& game = Game::instance();
+      DisplayPtr display = game.get_display();
+
+      bool fire_bombs = creature->get_inventory()->has_item(ItemIdKeys::ITEM_ID_MAGICI_SHARD);
+      bool shadow_bombs = creature->get_inventory()->has_item(ItemIdKeys::ITEM_ID_PRIMORDIAL_ESSENCE);
+
+      KilnScreen ks(display, fire_bombs, shadow_bombs);
+      string d = ks.display();
+
+      // Call the appropriate function based on the response:
       // ...
     }
   }

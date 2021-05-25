@@ -51,6 +51,8 @@ class IInventory : public ISerializable
 
     virtual bool has_items() const = 0;
     virtual bool has_unpaid_items() const = 0;
+    virtual bool has_item(const std::string& base_id) const = 0;
+
     virtual ItemPtr at(const uint index) = 0;
     virtual ItemPtr get_from_id(const std::string& id) = 0;
     virtual ItemPtr get_from_base_id(const std::string& base_id) = 0;
