@@ -127,6 +127,7 @@ class ActionTextKeys
     static const std::string ACTION_KICK_SPRAIN_LEG;
     static const std::string ACTION_APPLY_TRAP_TOO_FAR;
     static const std::string ACTION_KILN_NO_CLAY;
+    static const std::string ACTION_KILN_CREATE_ITEM;
     static const std::string ACTION_FORGE_NO_SUITABLE_HAMMER;
     static const std::string ACTION_FORGE_NO_SMITHING_SKILL;
     static const std::string ACTION_FORGE_NO_INGOTS;

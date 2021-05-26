@@ -17,6 +17,7 @@ const string ItemIdKeys::ITEM_ID_BRANCH           = "_branch";
 const string ItemIdKeys::ITEM_ID_BOUGH            = "_bough";
 const string ItemIdKeys::ITEM_ID_DIRT             = "_dirt";
 const string ItemIdKeys::ITEM_ID_CLAY             = "_clay";
+const string ItemIdKeys::ITEM_ID_CLAY_SHOT        = "_clay_shot";
 const string ItemIdKeys::ITEM_ID_ROCK             = "_rock";
 const string ItemIdKeys::ITEM_ID_STONE            = "_stone";
 const string ItemIdKeys::ITEM_ID_HUGE_ROCK        = "_huge_rock";
