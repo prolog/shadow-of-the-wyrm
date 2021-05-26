@@ -326,7 +326,7 @@
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>fire_bomb</ID>
+				<ID>_fire_bomb</ID>
 				<Coord>
 					<Row>2</Row>
 					<Col>64</Col>

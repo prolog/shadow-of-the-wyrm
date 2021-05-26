@@ -26,29 +26,28 @@ void KilnScreen::initialize()
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
   options->set_show_option_descriptions(false);
 
-  vector<string> item_ids = { ItemIdKeys::ITEM_ID_CLAY_SHOT };
+  map<string, int> item_ids = { {ItemIdKeys::ITEM_ID_CLAY_SHOT, 0} };
 
   if (allow_fire_bombs)
   {
-    // ...
+    item_ids[ItemIdKeys::ITEM_ID_FIRE_BOMB] = 1;
   }
 
   if (allow_shadow_bombs)
   {
-    // ...
+    item_ids[ItemIdKeys::ITEM_ID_SHADOW_BOMB] = 2;
   }
 
   const ItemMap& items = Game::instance().get_items_ref();
-  int cnt = 0;
 
-  for (const string& item_id : item_ids)
+  for (const auto& i_detail : item_ids)
   {
-    auto i_it = items.find(item_id);
+    auto i_it = items.find(i_detail.first);
 
     if (i_it != items.end())
     {
       Option current_option;
-      current_option.set_id(cnt++);
+      current_option.set_id(i_detail.second);
       current_option.set_description(StringTable::get(i_it->second->get_description_sid()));
 
       options->add_option(current_option);

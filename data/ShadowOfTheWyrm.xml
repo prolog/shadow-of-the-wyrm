@@ -7199,7 +7199,7 @@
 					<Col>4</Col>
 				</Sprite>
 			</Trigger>
-			<Item>fire_bomb</Item>
+			<Item>_fire_bomb</Item>
 			<Damage>
 				<NumDice>4</NumDice>
 				<NumSides>6</NumSides>
@@ -7356,7 +7356,7 @@
 					<Col>9</Col>
 				</Sprite>
 			</Trigger>
-			<Item>shadow_bomb</Item>
+			<Item>_shadow_bomb</Item>
 			<Damage piercing="1">
 				<NumDice>3</NumDice>
 				<NumSides>6</NumSides>

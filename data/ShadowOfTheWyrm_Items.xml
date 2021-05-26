@@ -6447,7 +6447,7 @@
 						<Row>3</Row>
 						<Col>28</Col>
 					</Sprite>
-        </Symbol>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1004</Skill>
 				<RangedSkill>2005</RangedSkill>
@@ -6459,7 +6459,7 @@
 					<Type>6</Type>
 				</Damage>
 			</Missile>
-			<Missile id="fire_bomb">
+			<Missile id="_fire_bomb">
 				<DescriptionSID>FIRE_BOMB_SID</DescriptionSID>
 				<UsageDescriptionSID>FIRE_BOMB_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>FIRE_BOMB_CODEX_SID</CodexDescriptionSID>
@@ -6498,7 +6498,7 @@
 					<EffectBonus>50</EffectBonus>
 				</Damage>
 			</Missile>
-			<Missile id="shadow_bomb">
+			<Missile id="_shadow_bomb">
 				<DescriptionSID>SHADOW_BOMB_SID</DescriptionSID>
 				<UsageDescriptionSID>SHADOW_BOMB_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>SHADOW_BOMB_CODEX_SID</CodexDescriptionSID>

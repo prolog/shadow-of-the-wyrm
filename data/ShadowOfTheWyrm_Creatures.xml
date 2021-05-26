@@ -20372,7 +20372,7 @@
 				<Exp>10</Exp>
 				<InitialEquipmentAndInventory>
 					<Ammunition>
-						<ID>fire_bomb</ID>
+						<ID>_fire_bomb</ID>
 						<Quantity>
 							<Random>
 								<NumDice>3</NumDice>

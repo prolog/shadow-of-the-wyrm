@@ -69,6 +69,8 @@ class ItemIdKeys
     static const std::string ITEM_ID_DIRT;
     static const std::string ITEM_ID_CLAY;
     static const std::string ITEM_ID_CLAY_SHOT;
+    static const std::string ITEM_ID_FIRE_BOMB;
+    static const std::string ITEM_ID_SHADOW_BOMB;
     static const std::string ITEM_ID_ROCK;
     static const std::string ITEM_ID_STONE;
     static const std::string ITEM_ID_HUGE_ROCK;
