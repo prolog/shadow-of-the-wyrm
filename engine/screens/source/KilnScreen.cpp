@@ -50,6 +50,7 @@ void KilnScreen::initialize()
       current_option.set_id(i_detail.second);
       current_option.set_description(StringTable::get(i_it->second->get_description_sid()));
 
+
       options->add_option(current_option);
     }
   }

@@ -2,12 +2,15 @@ Me:
 - 1.3.2 ASSET RELEASE
 - Fun with clay:
   - Kiln:
+    - DISABLED OPTIONS FOR BOMBS
+    - Kiln screen: disabled options
     - Clay bullets (+15, 1d2+2)
     - Fire bomb, when clay + magici
     - Creatures with shadow damtype: small chance (4%?) of dropping primordial
       essence
     - Shadow bomb, when clay + essence
     - What material shd pri ess be?
+    - Suppress ivory creation when pots are thrown when they're player-made
   - Load kilns
   - Save/load
   - Work in via workshops, random features, etc

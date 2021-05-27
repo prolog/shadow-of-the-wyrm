@@ -4,13 +4,7 @@ using namespace std;
 
 // Option - an individual menu option
 Option::Option()
-: id(-1), external_id(""), colour(Colour::COLOUR_WHITE), uppercase(false)
-{
-  description = std::make_shared<TextComponent>(string(""));
-}
-
-Option::Option(const int new_id, const string& new_external_id, const string& new_description)
-: id(new_id), external_id(new_external_id), colour(Colour::COLOUR_WHITE), uppercase(false)
+: id(-1), external_id(""), colour(Colour::COLOUR_WHITE), enabled(true), uppercase(false)
 {
   description = std::make_shared<TextComponent>(string(""));
 }
@@ -23,6 +17,16 @@ void Option::set_id(const int new_id)
 int Option::get_id() const
 {
   return id;
+}
+
+void Option::set_enabled(const bool new_enabled)
+{
+  enabled = new_enabled;
+}
+
+bool Option::get_enabled() const
+{
+  return enabled;
 }
 
 int Option::get_id_for_random() const

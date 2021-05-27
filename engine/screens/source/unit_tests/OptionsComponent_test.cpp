@@ -27,3 +27,18 @@ TEST(SW_Engine_Screens_Option, get_id_char_uppercase_tests)
   EXPECT_EQ('B', o.get_id_char());
 }
 
+TEST(SW_World_Option, enabled)
+{
+  Option o;
+
+  EXPECT_TRUE(o.get_enabled());
+
+  vector<bool> op_vals = { true, false };
+
+  for (const bool ov : op_vals)
+  {
+    o.set_enabled(ov);
+
+    EXPECT_EQ(ov, o.get_enabled());
+  }
+}

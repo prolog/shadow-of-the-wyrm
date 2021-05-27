@@ -9,10 +9,12 @@ class Option
 {
   public:
     Option();
-    Option(const int id, const std::string& external_id, const std::string& option_description);
 
     void set_colour(const Colour new_colour);
     Colour get_colour() const;
+
+    void set_enabled(const bool new_enabled);
+    bool get_enabled() const;
 
     // A unique identifier within the current set of options.
     // 0, 1, 2, etc.
@@ -42,6 +44,7 @@ class Option
     std::string external_id;
     TextComponentPtr description;
     Colour colour;
+    bool enabled;
     bool uppercase;
 };
 
