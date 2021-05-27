@@ -26,30 +26,22 @@ void KilnScreen::initialize()
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
   options->set_show_option_descriptions(false);
 
-  map<string, int> item_ids = { {ItemIdKeys::ITEM_ID_CLAY_POT, 0}, {ItemIdKeys::ITEM_ID_CLAY_SHOT, 1} };
-
-  if (allow_fire_bombs)
-  {
-    item_ids[ItemIdKeys::ITEM_ID_FIRE_BOMB] = 2;
-  }
-
-  if (allow_shadow_bombs)
-  {
-    item_ids[ItemIdKeys::ITEM_ID_SHADOW_BOMB] = 3;
-  }
+  vector<tuple<string, int, bool>> item_display_details = { {ItemIdKeys::ITEM_ID_CLAY_POT, 0, true}, {ItemIdKeys::ITEM_ID_CLAY_SHOT, 1, true} };
+  item_display_details.push_back({ItemIdKeys::ITEM_ID_FIRE_BOMB, 2, allow_fire_bombs});
+  item_display_details.push_back({ItemIdKeys::ITEM_ID_SHADOW_BOMB, 3, allow_shadow_bombs });
 
   const ItemMap& items = Game::instance().get_items_ref();
 
-  for (const auto& i_detail : item_ids)
+  for (const auto& i_detail : item_display_details)
   {
-    auto i_it = items.find(i_detail.first);
+    auto i_it = items.find(std::get<0>(i_detail));
 
     if (i_it != items.end())
     {
       Option current_option;
-      current_option.set_id(i_detail.second);
+      current_option.set_id(std::get<1>(i_detail));
       current_option.set_description(StringTable::get(i_it->second->get_description_sid()));
-
+      current_option.set_enabled(std::get<2>(i_detail));
 
       options->add_option(current_option);
     }

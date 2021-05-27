@@ -881,7 +881,18 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
       }
 
       ostringstream display_option;
-      display_option << "  [" << current_option.get_id_char() << "] ";
+      display_option << "  [";
+      
+      if (current_option.get_enabled())
+      {
+        display_option << current_option.get_id_char();
+      }
+      else
+      {
+        display_option << "-";
+      }
+      
+      display_option << "] ";
       string display_option_s = display_option.str();
       display_text(*row, *col, display_option_s);
 

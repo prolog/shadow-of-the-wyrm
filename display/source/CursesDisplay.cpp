@@ -649,7 +649,18 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
       enable_colour(static_cast<int>(option_colour), window);
 
       ostringstream display_option;
-      display_option << "  [" << current_option.get_id_char() << "] ";
+      display_option << "  [";
+
+      if (current_option.get_enabled())
+      {
+        display_option << current_option.get_id_char();
+      }
+      else
+      {
+        display_option << "-";
+      }
+        
+      display_option << "] ";
 
       int ocol = *col;
 
