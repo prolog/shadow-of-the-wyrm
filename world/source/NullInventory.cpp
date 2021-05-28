@@ -110,6 +110,11 @@ ItemPtr NullInventory::get_from_id(const std::string& id)
   return nullp;
 }
 
+vector<ItemPtr> NullInventory::get_all_from_base_id(const std::string& base_id)
+{
+  return {};
+}
+
 ItemPtr NullInventory::get_from_base_id(const std::string& base_id)
 {
   ItemPtr nullp;

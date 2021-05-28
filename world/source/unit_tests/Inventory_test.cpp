@@ -299,3 +299,23 @@ TEST(SW_World_Inventory, has_item)
 
   EXPECT_TRUE(i.has_item("book"));
 }
+
+TEST(SW_World_Inventory, get_all_from_base_id)
+{
+  Inventory i;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_base_id("book");
+
+  ItemPtr item2 = std::make_shared<Spellbook>();
+  item2->set_base_id("book2");
+
+  ItemPtr item3 = std::make_shared<Spellbook>();
+  item3->set_base_id("book");
+
+  i.add(item);
+  i.add(item2);
+  i.add(item3);
+
+  EXPECT_EQ(2, i.get_all_from_base_id("book").size());
+}
