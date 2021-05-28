@@ -533,6 +533,16 @@ string ActionTextKeys::get_npc_contraband_message(const string& creature_sid)
   return msg;
 }
 
+string ActionTextKeys::get_kiln_no_item_message(const string& missing_sid, const string& creation_sid)
+{
+  string msg = StringTable::get(ACTION_KILN_NO_ITEM);
+  boost::replace_first(msg, "%s1", StringTable::get(missing_sid));
+  boost::replace_first(msg, "%s2", StringTable::get(creation_sid));
+
+  msg[0] = toupper(msg[0]);
+  return msg;
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -774,3 +784,4 @@ const string ActionTextKeys::ACTION_TAME_FAILURE                  = "ACTION_TAME
 const string ActionTextKeys::ACTION_INCINERATE_SPELLBOOK          = "ACTION_INCINERATE_SPELLBOOK";
 const string ActionTextKeys::ACTION_INCINERATE_SPELLBOOK_WILD     = "ACTION_INCINERATE_SPELLBOOK_WILD";
 const string ActionTextKeys::ACTION_NPC_YELL_CONTRABAND           = "ACTION_NPC_YELL_CONTRABAND";
+const string ActionTextKeys::ACTION_KILN_NO_ITEM                  = "ACTION_KILN_NO_ITEM";

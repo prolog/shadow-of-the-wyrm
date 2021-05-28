@@ -103,7 +103,40 @@ ItemPtr get_item(const string& item_base_id, CreaturePtr creature)
 
 bool KilnManipulator::create_clay_item(const vector<string>& component_item_ids, const string& crafted_item_id, const int rng_min, const int rng_max, CreaturePtr creature)
 {
+  Game& game = Game::instance();
+  const ItemMap& items = game.get_items_ref();
+  auto cr_i_it = items.find(crafted_item_id);
+  IMessageManager& mm_self = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+
+  if (cr_i_it == items.end())
+  {
+    return false;
+  }
+
+  ItemPtr crafted_item_template = cr_i_it->second;
+
+  for (const string& comp_item_id : component_item_ids)
+  {
+    auto i_it = items.find(comp_item_id);
+
+    if (i_it != items.end())
+    {
+      if (!creature->get_inventory()->has_item(comp_item_id))
+      {
+        mm_self.add_new_message(ActionTextKeys::get_kiln_no_item_message(i_it->second->get_usage_description_sid(), crafted_item_template->get_usage_description_sid()));
+        mm_self.send();
+
+        return false;
+      }
+    }
+    else
+    {
+      return false;
+    }
+  }
+
   // ...
+
   return false;
 }
 
