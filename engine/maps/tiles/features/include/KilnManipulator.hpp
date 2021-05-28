@@ -13,5 +13,14 @@ class KilnManipulator : public FeatureManipulator
 
   protected:
     bool check_for_clay(CreaturePtr creature);
+    ItemPtr get_item(const std::string& item_base_id, CreaturePtr creature);
+    
+    bool create_clay_item(const std::vector<std::string>& required_item_ids, const std::string& crafted_item_id, const int rng_min, const int rng_max, CreaturePtr creature);
+    bool create_clay_pot(CreaturePtr creature);
+    bool create_clay_shot(CreaturePtr creature);
+    bool create_fire_bomb(CreaturePtr creature);
+    bool create_shadow_bomb(CreaturePtr creature);
+
+    std::map<int, bool (KilnManipulator::*)(CreaturePtr)> crafting_functions;
 };
 
