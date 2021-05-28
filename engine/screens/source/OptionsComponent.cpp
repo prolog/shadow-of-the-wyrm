@@ -68,7 +68,9 @@ void Option::set_description(const string& new_description)
 
 TextComponentPtr Option::get_description() const
 {
-  return TextComponentPtr(description);
+  description->set_colour(get_colour());
+
+  return description;
 }
 
 void Option::set_colour(const Colour new_colour)
@@ -78,7 +80,14 @@ void Option::set_colour(const Colour new_colour)
 
 Colour Option::get_colour() const
 {
-  return colour;
+  if (enabled)
+  {
+    return colour;
+  }
+  else
+  {
+    return Colour::COLOUR_BOLD_BLACK;
+  }
 }
 
 void Option::set_uppercase(const bool new_uppercase)

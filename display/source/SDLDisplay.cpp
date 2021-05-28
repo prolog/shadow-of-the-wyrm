@@ -894,13 +894,16 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
       
       display_option << "] ";
       string display_option_s = display_option.str();
+      TextComponentPtr text = current_option.get_description();
+      SDL_Color original_color = sdld.get_fg_colour();
+      sdld.set_fg_colour(get_colour(static_cast<int>(current_option.get_colour())));
+
       display_text(*row, *col, display_option_s);
 
       int ocol = *col + display_option_s.size();
 
-      TextComponentPtr text = current_option.get_description();
-
       display_text_component(window, row, &ocol, text, DisplayConstants::OPTION_SPACING);
+      sdld.set_fg_colour(original_color);
 
       options_added++;
       temp_row++;

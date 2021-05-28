@@ -192,5 +192,6 @@ const string TextKeys::AUTOCURSING = "AUTOCURSING";
 const string TextKeys::GENERIC_MESSAGE = "GENERIC_MESSAGE";
 const string TextKeys::PACIFIED = "PACIFIED";
 const string TextKeys::TAMED = "TAMED";
+const string TextKeys::REQUIRES = "REQUIRES";
 
 

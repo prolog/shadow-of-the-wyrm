@@ -16,6 +16,14 @@ ScreenComponent::ScreenComponent(const std::string& new_text, const Colour new_c
   text.push_back(make_pair(new_text, new_colour));
 }
 
+void ScreenComponent::set_colour(const Colour c)
+{
+  for (auto& t_pair : text)
+  {
+    t_pair.second = c;
+  }
+}
+
 void ScreenComponent::set_text(const std::vector<std::pair<std::string, Colour>>& new_text)
 {
   text = new_text;

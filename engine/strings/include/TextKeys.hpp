@@ -188,6 +188,7 @@ class TextKeys
     static const std::string GENERIC_MESSAGE;
     static const std::string PACIFIED;
     static const std::string TAMED;
+    static const std::string REQUIRES;
 
   protected:
     TextKeys();

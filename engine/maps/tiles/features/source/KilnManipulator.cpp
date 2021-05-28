@@ -36,7 +36,7 @@ bool KilnManipulator::handle(TilePtr tile, CreaturePtr creature)
       bool fire_bombs = creature->get_inventory()->has_item(ItemIdKeys::ITEM_ID_MAGICI_SHARD);
       bool shadow_bombs = creature->get_inventory()->has_item(ItemIdKeys::ITEM_ID_PRIMORDIAL_ESSENCE);
 
-      KilnScreen ks(display, fire_bombs, shadow_bombs);
+      KilnScreen ks(display, fire_bombs, ItemIdKeys::ITEM_ID_MAGICI_SHARD, shadow_bombs, ItemIdKeys::ITEM_ID_PRIMORDIAL_ESSENCE);
       string d = ks.display();
 
       // Call the appropriate function based on the response:
