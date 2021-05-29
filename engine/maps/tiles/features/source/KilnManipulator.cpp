@@ -104,6 +104,7 @@ ItemPtr get_item(const string& item_base_id, CreaturePtr creature)
 bool KilnManipulator::create_clay_item(const vector<string>& component_item_ids, const string& crafted_item_id, const int rng_min, const int rng_max, CreaturePtr creature)
 {
   Game& game = Game::instance();
+  ActionManager& am = game.get_action_manager_ref();
   const ItemMap& items = game.get_items_ref();
   auto cr_i_it = items.find(crafted_item_id);
   IMessageManager& mm_self = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
@@ -135,7 +136,35 @@ bool KilnManipulator::create_clay_item(const vector<string>& component_item_ids,
     }
   }
 
-  // ...
+  vector<ItemPtr> selected_items;
+
+  for (const string& comp_item_id : component_item_ids)
+  {
+    vector<ItemPtr> comp_items = creature->get_inventory()->get_all_from_base_id(comp_item_id);
+
+    if (comp_items.size() == 1)
+    {
+      selected_items.push_back(comp_items[0]);
+    }
+    else
+    {
+      list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_base_id_filter(comp_item_id);
+      ItemPtr selected_item = am.inventory(creature, creature->get_inventory(), display_filter_list, {}, false, false);
+
+      if (selected_item != nullptr)
+      {
+        selected_items.push_back(selected_item);
+      }
+    }
+  }
+
+  // If we have an item for each component item ID, then we have everything
+  // we need to make the new item.
+  if (selected_items.size() == component_item_ids.size())
+  {
+    // Reduce or remove the selected items, create the new item, and put it
+    // on the player's tile.
+  }
 
   return false;
 }
