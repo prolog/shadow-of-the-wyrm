@@ -319,7 +319,8 @@ void KilnManipulator::create_item(CreaturePtr creature, TilePtr tile, vector<Ite
       tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
     }
 
-    // Add a message.
-    // ...
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KILN_CREATION_COMPLETE));
+    manager.send();
   }
 }

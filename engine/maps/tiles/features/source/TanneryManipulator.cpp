@@ -15,7 +15,7 @@ using namespace std;
 
 TanneryManipulator::TanneryManipulator(FeaturePtr feature)
 : FeatureManipulator(feature),
-skin_items({ {EquipmentWornLocation::EQUIPMENT_WORN_HEAD, "_hide_cap"}, {EquipmentWornLocation::EQUIPMENT_WORN_BODY, "_hide_armour"}, {EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, "_hide_cloak"}, {EquipmentWornLocation::EQUIPMENT_WORN_FEET, "_hide_boots"}, { EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON, "_hide_sling" } })
+skin_items({ {EquipmentWornLocation::EQUIPMENT_WORN_HEAD, "_hide_cap"}, {EquipmentWornLocation::EQUIPMENT_WORN_WIELDED, "_hide_whip"}, {EquipmentWornLocation::EQUIPMENT_WORN_BODY, "_hide_armour"}, {EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, "_hide_cloak"}, {EquipmentWornLocation::EQUIPMENT_WORN_FEET, "_hide_boots"}, { EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON, "_hide_sling" } })
 {
 }
 

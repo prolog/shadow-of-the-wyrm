@@ -623,6 +623,7 @@ const string ActionTextKeys::ACTION_KICK_SPRAIN_LEG            = "ACTION_KICK_SP
 const string ActionTextKeys::ACTION_APPLY_TRAP_TOO_FAR         = "ACTION_APPLY_TRAP_TOO_FAR";
 const string ActionTextKeys::ACTION_KILN_NO_CLAY               = "ACTION_KILN_NO_CLAY";
 const string ActionTextKeys::ACTION_KILN_CREATE_ITEM           = "ACTION_KILN_CREATE_ITEM";
+const string ActionTextKeys::ACTION_KILN_CREATION_COMPLETE     = "ACTION_KILN_CREATION_COMPLETE";
 const string ActionTextKeys::ACTION_FORGE_NO_SUITABLE_HAMMER   = "ACTION_FORGE_NO_SUITABLE_HAMMER";
 const string ActionTextKeys::ACTION_FORGE_NO_SMITHING_SKILL    = "ACTION_FORGE_NO_SMITHING_SKILL";
 const string ActionTextKeys::ACTION_FORGE_NO_INGOTS            = "ACTION_FORGE_NO_INGOTS";

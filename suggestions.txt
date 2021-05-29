@@ -1,6 +1,7 @@
 Me:
 - 1.3.2 ASSET RELEASE
 - Applying tannery for wielded should create whip
+- Name isn't being applied properly for whip
 - Fun with clay:
   - Kiln:
     - DISABLED OPTIONS FOR BOMBS

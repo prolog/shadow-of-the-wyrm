@@ -5880,6 +5880,42 @@
 				</Damage>
 				<Range>3</Range>
 			</Weapon>
+			<Weapon id="_hide_whip">
+				<DescriptionSID>HIDE_WHIP_SID</DescriptionSID>
+				<UsageDescriptionSID>HIDE_WHIP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HIDE_WHIP_CODEX_SID</CodexDescriptionSID>
+				<Value>10</Value>
+				<Weight>
+					<Pounds>6</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>4</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>15</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Skill>1008</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>45</Difficulty>
+				<Speed>5</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Type>0</Type>
+				</Damage>
+				<Range>3</Range>
+			</Weapon>
 			<Weapon id="thorn_whip">
 				<DescriptionSID>THORN_WHIP_SID</DescriptionSID>
 				<UsageDescriptionSID>THORN_WHIP_USAGE_SID</UsageDescriptionSID>

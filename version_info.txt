@@ -30,6 +30,11 @@ Shadow of the Wyrm v1.3.2 "del Liuto"
 - Tagged Urlac's robes/staff on generation.  Now when doing a specific quest,
   those specific items will be removed from the player.
 
+- Added kilns, which can be used to create clay pots and shot, as well as
+  fire and shadow bombs, if you have the right components.
+
+- You can now create whips at tanneries.
+
 - New material type (clay).  Clay pots, fire bombs, and shadow bombs are now
   made of clay.
 
