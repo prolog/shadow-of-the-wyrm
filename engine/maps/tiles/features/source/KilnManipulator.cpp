@@ -5,6 +5,7 @@
 #include "KilnScreen.hpp"
 #include "ItemTypes.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
 
 using namespace std;
 
@@ -59,7 +60,7 @@ bool KilnManipulator::handle(TilePtr tile, CreaturePtr creature)
           if (f_it != crafting_functions.end())
           {
             auto f_p = f_it->second.first;
-            kiln_used = (this->*f_p)(creature);
+            kiln_used = (this->*f_p)(creature, tile);
           }
         }
       }
@@ -76,7 +77,7 @@ bool KilnManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr 
 
 bool KilnManipulator::notify_on_first_uncraftable_item(CreaturePtr creature)
 {
-  for (auto cr_it : crafting_functions)
+  for (const auto& cr_it : crafting_functions)
   {
     auto v_f = cr_it.second.second;
 
@@ -175,7 +176,7 @@ bool KilnManipulator::verify_item_requirements(const vector<string>& component_i
   return false;
 }
 
-bool KilnManipulator::create_clay_item(ItemVerifier v, const vector<string>& component_item_ids, const string& crafted_item_id, const int rng_min, const int rng_max, CreaturePtr creature)
+bool KilnManipulator::create_clay_item(ItemVerifier v, const vector<string>& component_item_ids, const string& crafted_item_id, const int rng_min, const int rng_max, CreaturePtr creature, TilePtr tile)
 {
   Game& game = Game::instance();
   ActionManager& am = game.get_action_manager_ref();
@@ -243,6 +244,7 @@ bool KilnManipulator::create_clay_item(ItemVerifier v, const vector<string>& com
   {
     // Reduce or remove the selected items, create the new item, and put it
     // on the player's tile.
+    create_item(creature, tile, selected_items, crafted_item_template, rng_min, rng_max);
   }
 
   return false;
@@ -268,22 +270,56 @@ bool KilnManipulator::verify_shadow_bomb(CreaturePtr creature)
   return verify_item_requirements({ ItemIdKeys::ITEM_ID_CLAY, ItemIdKeys::ITEM_ID_PRIMORDIAL_ESSENCE }, ItemIdKeys::ITEM_ID_SHADOW_BOMB, true, creature);
 }
 
-bool KilnManipulator::create_clay_pot(CreaturePtr creature)
+bool KilnManipulator::create_clay_pot(CreaturePtr creature, TilePtr tile)
 {
-  return create_clay_item(&KilnManipulator::verify_clay_pot, { ItemIdKeys::ITEM_ID_CLAY }, ItemIdKeys::ITEM_ID_CLAY_POT, 1, 1, creature);
+  return create_clay_item(&KilnManipulator::verify_clay_pot, { ItemIdKeys::ITEM_ID_CLAY }, ItemIdKeys::ITEM_ID_CLAY_POT, 1, 1, creature, tile);
 }
 
-bool KilnManipulator::create_clay_shot(CreaturePtr creature)
+bool KilnManipulator::create_clay_shot(CreaturePtr creature, TilePtr tile)
 {
-  return create_clay_item(&KilnManipulator::verify_clay_shot, { ItemIdKeys::ITEM_ID_CLAY }, ItemIdKeys::ITEM_ID_CLAY_SHOT, 12, 30, creature);
+  return create_clay_item(&KilnManipulator::verify_clay_shot, { ItemIdKeys::ITEM_ID_CLAY }, ItemIdKeys::ITEM_ID_CLAY_SHOT, 12, 30, creature, tile);
 }
 
-bool KilnManipulator::create_fire_bomb(CreaturePtr creature)
+bool KilnManipulator::create_fire_bomb(CreaturePtr creature, TilePtr tile)
 {
-  return create_clay_item(&KilnManipulator::verify_fire_bomb, { ItemIdKeys::ITEM_ID_CLAY, ItemIdKeys::ITEM_ID_MAGICI_SHARD }, ItemIdKeys::ITEM_ID_FIRE_BOMB, 3, 4, creature);
+  return create_clay_item(&KilnManipulator::verify_fire_bomb, { ItemIdKeys::ITEM_ID_CLAY, ItemIdKeys::ITEM_ID_MAGICI_SHARD }, ItemIdKeys::ITEM_ID_FIRE_BOMB, 3, 4, creature, tile);
 }
 
-bool KilnManipulator::create_shadow_bomb(CreaturePtr creature)
+bool KilnManipulator::create_shadow_bomb(CreaturePtr creature, TilePtr tile)
 {
-  return create_clay_item(&KilnManipulator::verify_shadow_bomb, { ItemIdKeys::ITEM_ID_CLAY, ItemIdKeys::ITEM_ID_PRIMORDIAL_ESSENCE }, ItemIdKeys::ITEM_ID_SHADOW_BOMB, 3, 4, creature);
+  return create_clay_item(&KilnManipulator::verify_shadow_bomb, { ItemIdKeys::ITEM_ID_CLAY, ItemIdKeys::ITEM_ID_PRIMORDIAL_ESSENCE }, ItemIdKeys::ITEM_ID_SHADOW_BOMB, 3, 4, creature, tile);
+}
+
+void KilnManipulator::create_item(CreaturePtr creature, TilePtr tile, vector<ItemPtr>& selected_items, ItemPtr item_template, const int rng_min, const int rng_max)
+{
+  if (creature != nullptr && tile != nullptr)
+  {
+    for (ItemPtr i : selected_items)
+    {
+      if (i != nullptr)
+      {
+        if (i->get_quantity() > 1)
+        {
+          i->set_quantity(i->get_quantity() - 1);
+        }
+        else
+        {
+          creature->get_inventory()->remove(i->get_id());
+        }
+      }
+    }
+
+    ItemPtr item = ItemManager::create_item(item_template->get_base_id(), static_cast<uint>(RNG::range(rng_min, rng_max)));
+
+    // Improve the item with free enchants based on crafting
+    // ...
+
+    if (item != nullptr)
+    {
+      tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+    }
+
+    // Add a message.
+    // ...
+  }
 }
