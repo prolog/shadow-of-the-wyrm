@@ -3,6 +3,7 @@ Me:
 - Fun with clay:
   - Kiln:
     - DISABLED OPTIONS FOR BOMBS
+    - something for when they press '-'
     - Kiln screen: disabled options
     - Clay bullets (+15, 1d2+2)
     - Fire bomb, when clay + magici

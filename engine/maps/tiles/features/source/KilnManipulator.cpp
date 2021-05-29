@@ -10,10 +10,10 @@ using namespace std;
 
 KilnManipulator::KilnManipulator(FeaturePtr feature)
 : FeatureManipulator(feature),
-  crafting_functions({ {0, &KilnManipulator::create_clay_pot},
-                       {1, &KilnManipulator::create_clay_shot},
-                       {2, &KilnManipulator::create_fire_bomb},
-                       {3, &KilnManipulator::create_shadow_bomb} })
+  crafting_functions({ {0, {&KilnManipulator::create_clay_pot, &KilnManipulator::verify_clay_pot}},
+                       {1, {&KilnManipulator::create_clay_shot, &KilnManipulator::verify_clay_shot}},
+                       {2, {&KilnManipulator::create_fire_bomb, &KilnManipulator::verify_fire_bomb}},
+                       {3, {&KilnManipulator::create_shadow_bomb, &KilnManipulator::verify_shadow_bomb}} })
 {
 }
 
@@ -47,13 +47,20 @@ bool KilnManipulator::handle(TilePtr tile, CreaturePtr creature)
       // Call the appropriate function based on the response:
       if (!d.empty())
       {
-        int idx = tolower(d.at(0)) - 'a';
-        auto f_it = crafting_functions.find(idx);
-
-        if (f_it != crafting_functions.end())
+        if (d.at(0) == '-')
         {
-          auto f_p = f_it->second;
-          kiln_used = (this->*f_p)(creature);
+          return notify_on_first_uncraftable_item(creature);
+        }
+        else
+        {
+          int idx = tolower(d.at(0)) - 'a';
+          auto f_it = crafting_functions.find(idx);
+
+          if (f_it != crafting_functions.end())
+          {
+            auto f_p = f_it->second.first;
+            kiln_used = (this->*f_p)(creature);
+          }
         }
       }
     }
@@ -65,6 +72,21 @@ bool KilnManipulator::handle(TilePtr tile, CreaturePtr creature)
 bool KilnManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
 {
   return false;
+}
+
+bool KilnManipulator::notify_on_first_uncraftable_item(CreaturePtr creature)
+{
+  for (auto cr_it : crafting_functions)
+  {
+    auto v_f = cr_it.second.second;
+
+    if (!(this->*v_f)(creature))
+    {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 bool KilnManipulator::check_for_clay(CreaturePtr creature)
@@ -101,7 +123,59 @@ ItemPtr get_item(const string& item_base_id, CreaturePtr creature)
   return item;
 }
 
-bool KilnManipulator::create_clay_item(const vector<string>& component_item_ids, const string& crafted_item_id, const int rng_min, const int rng_max, CreaturePtr creature)
+// JCD FIXME: Once Smithing is updated, move this into some CreatureUtils
+// function.
+bool KilnManipulator::verify_item_requirements(const vector<string>& component_item_ids, const string& crafted_item_id, const bool add_message, CreaturePtr creature)
+{
+  if (creature != nullptr)
+  {
+    Game& game = Game::instance();
+    const ItemMap& items = game.get_items_ref();
+
+    auto cr_it = items.find(crafted_item_id);
+    ItemPtr crafted_item;
+
+    if (cr_it == items.end() || cr_it->second == nullptr)
+    {
+      return false;
+    }
+    else
+    {
+      crafted_item = cr_it->second;
+    }
+
+    for (const string& comp_item_id : component_item_ids)
+    {
+      auto i_it = items.find(comp_item_id);
+
+      if (i_it != items.end())
+      {
+        if (!creature->get_inventory()->has_item(comp_item_id))
+        {
+          if (add_message)
+          {
+            IMessageManager& mm_self = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+
+            mm_self.add_new_message(ActionTextKeys::get_kiln_no_item_message(i_it->second->get_usage_description_sid(), crafted_item->get_usage_description_sid()));
+            mm_self.send();
+          }
+
+          return false;
+        }
+      }
+      else
+      {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  return false;
+}
+
+bool KilnManipulator::create_clay_item(ItemVerifier v, const vector<string>& component_item_ids, const string& crafted_item_id, const int rng_min, const int rng_max, CreaturePtr creature)
 {
   Game& game = Game::instance();
   ActionManager& am = game.get_action_manager_ref();
@@ -115,6 +189,11 @@ bool KilnManipulator::create_clay_item(const vector<string>& component_item_ids,
   }
 
   ItemPtr crafted_item_template = cr_i_it->second;
+
+  if (!(this->*v)(creature))
+  {
+    return false;
+  }
 
   for (const string& comp_item_id : component_item_ids)
   {
@@ -169,22 +248,42 @@ bool KilnManipulator::create_clay_item(const vector<string>& component_item_ids,
   return false;
 }
 
+bool KilnManipulator::verify_clay_pot(CreaturePtr creature)
+{
+  return verify_item_requirements({ ItemIdKeys::ITEM_ID_CLAY }, ItemIdKeys::ITEM_ID_CLAY_POT, true, creature);
+}
+
+bool KilnManipulator::verify_clay_shot(CreaturePtr creature)
+{
+  return verify_item_requirements({ ItemIdKeys::ITEM_ID_CLAY }, ItemIdKeys::ITEM_ID_CLAY_SHOT, true, creature);
+}
+
+bool KilnManipulator::verify_fire_bomb(CreaturePtr creature)
+{
+  return verify_item_requirements({ ItemIdKeys::ITEM_ID_CLAY, ItemIdKeys::ITEM_ID_MAGICI_SHARD }, ItemIdKeys::ITEM_ID_FIRE_BOMB, true, creature);
+}
+
+bool KilnManipulator::verify_shadow_bomb(CreaturePtr creature)
+{
+  return verify_item_requirements({ ItemIdKeys::ITEM_ID_CLAY, ItemIdKeys::ITEM_ID_PRIMORDIAL_ESSENCE }, ItemIdKeys::ITEM_ID_SHADOW_BOMB, true, creature);
+}
+
 bool KilnManipulator::create_clay_pot(CreaturePtr creature)
 {
-  return create_clay_item({ ItemIdKeys::ITEM_ID_CLAY }, ItemIdKeys::ITEM_ID_CLAY_POT, 1, 1, creature);
+  return create_clay_item(&KilnManipulator::verify_clay_pot, { ItemIdKeys::ITEM_ID_CLAY }, ItemIdKeys::ITEM_ID_CLAY_POT, 1, 1, creature);
 }
 
 bool KilnManipulator::create_clay_shot(CreaturePtr creature)
 {
-  return create_clay_item({ ItemIdKeys::ITEM_ID_CLAY }, ItemIdKeys::ITEM_ID_CLAY_SHOT, 12, 30, creature);
+  return create_clay_item(&KilnManipulator::verify_clay_shot, { ItemIdKeys::ITEM_ID_CLAY }, ItemIdKeys::ITEM_ID_CLAY_SHOT, 12, 30, creature);
 }
 
 bool KilnManipulator::create_fire_bomb(CreaturePtr creature)
 {
-  return create_clay_item({ ItemIdKeys::ITEM_ID_CLAY, ItemIdKeys::ITEM_ID_MAGICI_SHARD }, ItemIdKeys::ITEM_ID_FIRE_BOMB, 3, 4, creature);
+  return create_clay_item(&KilnManipulator::verify_fire_bomb, { ItemIdKeys::ITEM_ID_CLAY, ItemIdKeys::ITEM_ID_MAGICI_SHARD }, ItemIdKeys::ITEM_ID_FIRE_BOMB, 3, 4, creature);
 }
 
 bool KilnManipulator::create_shadow_bomb(CreaturePtr creature)
 {
-  return create_clay_item({ ItemIdKeys::ITEM_ID_CLAY, ItemIdKeys::ITEM_ID_PRIMORDIAL_ESSENCE }, ItemIdKeys::ITEM_ID_SHADOW_BOMB, 3, 4, creature);
+  return create_clay_item(&KilnManipulator::verify_shadow_bomb, { ItemIdKeys::ITEM_ID_CLAY, ItemIdKeys::ITEM_ID_PRIMORDIAL_ESSENCE }, ItemIdKeys::ITEM_ID_SHADOW_BOMB, 3, 4, creature);
 }
