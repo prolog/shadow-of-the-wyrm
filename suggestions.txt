@@ -1,6 +1,6 @@
 Me:
 - 1.3.2 ASSET RELEASE
-- Applying tannery for wielded should create whip
+- Whips should add TH/damage modifiers, not evade/soak
 - Name isn't being applied properly for whip
 - Fun with clay:
   - Kiln:

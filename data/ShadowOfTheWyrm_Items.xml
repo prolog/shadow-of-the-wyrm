@@ -5899,12 +5899,6 @@
 					</Sprite>					
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
-				<Properties>
-					<Property>
-						<Name>brandable</Name>
-						<Value>1</Value>
-					</Property>
-				</Properties>
 				<Skill>1008</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>45</Difficulty>
