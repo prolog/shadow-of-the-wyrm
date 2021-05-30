@@ -115,6 +115,11 @@ vector<ItemPtr> NullInventory::get_all_from_base_id(const std::string& base_id)
   return {};
 }
 
+vector<ItemPtr> NullInventory::get_all_from_property(const std::string& property_name)
+{
+  return {};
+}
+
 ItemPtr NullInventory::get_from_base_id(const std::string& base_id)
 {
   ItemPtr nullp;

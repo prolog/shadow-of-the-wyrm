@@ -347,6 +347,22 @@ vector<ItemPtr> Inventory::get_all_from_base_id(const string& base_id)
   return b_items;
 }
 
+vector<ItemPtr> Inventory::get_all_from_property(const string& item_property)
+{
+  vector<ItemPtr> p_items;
+
+  for (ItemPtr item : items)
+  {
+    if (item && item->has_additional_property(item_property))
+    {
+      p_items.push_back(item);
+    }
+  }
+
+  return p_items;
+}
+
+
 ItemPtr Inventory::get_from_base_id(const std::string& base_id)
 {
   ItemPtr selected_item;

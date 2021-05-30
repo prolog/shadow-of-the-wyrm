@@ -145,10 +145,11 @@ ItemPtr TanneryManipulator::create_hide_equipment(CreaturePtr creature, ItemPtr 
           int th_bonus = weapon->get_to_hit() + tc.calculate_combat_bonus(creature);
 
           Damage d = weapon->get_damage();
-          int damage_bonus = d.get_modifier() + tc.calculate_combat_bonus(creature);
+          int damage_bonus = tc.calculate_combat_bonus(creature);
           int damage_type_bonus = d.get_effect_bonus() + tc.calculate_combat_bonus(creature);
 
           weapon->set_to_hit(th_bonus);
+          weapon->set_addl_damage(damage_bonus);
           d.set_modifier(damage_bonus);
           d.set_effect_bonus(damage_type_bonus);
           weapon->set_damage(d);

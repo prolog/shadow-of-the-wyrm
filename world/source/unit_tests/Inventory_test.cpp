@@ -319,3 +319,25 @@ TEST(SW_World_Inventory, get_all_from_base_id)
 
   EXPECT_EQ(2, i.get_all_from_base_id("book").size());
 }
+
+TEST(SW_World_Inventory, get_all_from_property)
+{
+  Inventory i;
+  string pname = "test";
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  ItemPtr item2 = std::make_shared<Spellbook>();
+  ItemPtr item3 = std::make_shared<Spellbook>();
+
+  item2->set_additional_property(pname, "test");
+
+  i.add(item);
+  i.add(item2);
+  i.add(item3);
+
+  EXPECT_EQ(1, i.get_all_from_property(pname).size());
+
+  item3->set_additional_property(pname, "test");
+
+  EXPECT_EQ(2, i.get_all_from_property(pname).size());
+}

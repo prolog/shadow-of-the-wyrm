@@ -59,10 +59,20 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
         DisplayPtr display = game.get_display();
         ActionManager& am = game.get_action_manager_ref();
 
-        vector<pair<string, string>> item_property_filter = { make_pair(WeavingConstants::WEAVING_MATERIAL_TYPE_KEY, "") };
-        list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_property_type_filter(item_property_filter);
+        vector<ItemPtr> p_items = creature->get_inventory()->get_all_from_property(WeavingConstants::WEAVING_MATERIAL_TYPE_KEY);
+        ItemPtr selected_fibre;
 
-        ItemPtr selected_fibre = am.inventory(creature, creature->get_inventory(), display_filter_list, {}, false, false);
+        if (p_items.size() == 1)
+        {
+          selected_fibre = p_items[0];
+        }
+        else
+        {
+          vector<pair<string, string>> item_property_filter = { make_pair(WeavingConstants::WEAVING_MATERIAL_TYPE_KEY, "") };
+          list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_property_type_filter(item_property_filter);
+
+          selected_fibre = am.inventory(creature, creature->get_inventory(), display_filter_list, {}, false, false);
+        }
 
         if (selected_fibre)
         {
