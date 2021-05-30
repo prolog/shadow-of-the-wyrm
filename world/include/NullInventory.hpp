@@ -32,6 +32,7 @@ class NullInventory : public IInventory
     ItemPtr get_from_id(const std::string& id) override;
     virtual std::vector<ItemPtr> get_all_from_base_id(const std::string& id) override;
     virtual std::vector<ItemPtr> get_all_from_property(const std::string& property_name) override;
+    virtual std::vector<ItemPtr> get_all_from_property(const std::string& property_name, const std::string& required_value) override;
     ItemPtr get_from_base_id(const std::string& base_id) override;
     std::vector<ItemPtr> get_from_type(const ItemType item_type);
 

@@ -151,3 +151,25 @@ TEST(SW_World_NullInventory, get_all_from_base_id)
   ni.add(item);
   EXPECT_EQ(0, ni.get_all_from_base_id("book").size());
 }
+
+TEST(SW_World_NullInventory, get_all_from_property)
+{
+  NullInventory ni;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_additional_property("fdsa", "asdf");
+
+  ni.add(item);
+  EXPECT_EQ(0, ni.get_all_from_property("fdsa").size());
+}
+
+TEST(SW_World_NullInventory, get_all_from_property_and_required_value)
+{
+  NullInventory ni;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_additional_property("fdsa", "asdf");
+
+  ni.add(item);
+  EXPECT_EQ(0, ni.get_all_from_property("fdsa", "asdf").size());
+}

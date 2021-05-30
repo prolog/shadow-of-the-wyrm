@@ -341,3 +341,22 @@ TEST(SW_World_Inventory, get_all_from_property)
 
   EXPECT_EQ(2, i.get_all_from_property(pname).size());
 }
+
+TEST(SW_World_Inventory, get_all_from_property_and_required_value)
+{
+  Inventory i;
+  string pname = "test";
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  ItemPtr item2 = std::make_shared<Spellbook>();
+  ItemPtr item3 = std::make_shared<Spellbook>();
+
+  item2->set_additional_property(pname, "test");
+
+  i.add(item);
+  i.add(item2);
+  i.add(item3);
+
+  EXPECT_EQ(0, i.get_all_from_property(pname, "aaa").size());
+  EXPECT_EQ(1, i.get_all_from_property(pname, "test").size());
+}
