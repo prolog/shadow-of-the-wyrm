@@ -68,7 +68,10 @@ void Option::set_description(const string& new_description)
 
 TextComponentPtr Option::get_description() const
 {
-  description->set_colour(get_colour());
+  if (!enabled)
+  {
+    description->set_colour(get_colour());
+  }
 
   return description;
 }

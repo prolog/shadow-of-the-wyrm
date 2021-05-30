@@ -8,6 +8,7 @@
 #include "RNG.hpp"
 #include "SkinningConstants.hpp"
 #include "TanningCalculator.hpp"
+#include "Weapon.hpp"
 #include "Wearable.hpp"
 #include "WornLocationScreenFactory.hpp"
 
@@ -137,16 +138,34 @@ ItemPtr TanneryManipulator::create_hide_equipment(CreaturePtr creature, ItemPtr 
       // also based on the base evade/soak of the skinned creature.
       if (wearable)
       {
-        int hide_evade = wearable->get_evade() + tc.calculate_evade_bonus(creature);
-        int hide_soak = wearable->get_soak() + tc.calculate_soak_bonus(creature);
+        WeaponPtr weapon = dynamic_pointer_cast<Weapon>(item);
 
-        if (selected_skin->has_additional_property(SkinningConstants::SKIN_SOAK))
+        if (weapon != nullptr)
         {
-          hide_soak += RNG::range(0, String::to_int(selected_skin->get_additional_property(SkinningConstants::SKIN_SOAK)));
-        }
+          int th_bonus = weapon->get_to_hit() + tc.calculate_combat_bonus(creature);
 
-        wearable->set_evade(hide_evade);
-        wearable->set_soak(hide_soak);
+          Damage d = weapon->get_damage();
+          int damage_bonus = d.get_modifier() + tc.calculate_combat_bonus(creature);
+          int damage_type_bonus = d.get_effect_bonus() + tc.calculate_combat_bonus(creature);
+
+          weapon->set_to_hit(th_bonus);
+          d.set_modifier(damage_bonus);
+          d.set_effect_bonus(damage_type_bonus);
+          weapon->set_damage(d);
+        }
+        else
+        {
+          int hide_evade = wearable->get_evade() + tc.calculate_evade_bonus(creature);
+          int hide_soak = wearable->get_soak() + tc.calculate_soak_bonus(creature);
+
+          if (selected_skin->has_additional_property(SkinningConstants::SKIN_SOAK))
+          {
+            hide_soak += RNG::range(0, String::to_int(selected_skin->get_additional_property(SkinningConstants::SKIN_SOAK)));
+          }
+
+          wearable->set_evade(hide_evade);
+          wearable->set_soak(hide_soak);
+        }
 
         item->set_resistances(tc.calculate_item_resistances(creature, selected_skin->get_resistances()));
         item->set_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID));

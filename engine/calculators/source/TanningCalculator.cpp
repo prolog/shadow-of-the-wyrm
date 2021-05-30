@@ -5,6 +5,8 @@ using namespace std;
 
 const int TanningCalculator::MAX_EVADE_BONUS = 10;
 const int TanningCalculator::MAX_SOAK_BONUS = 5;
+const int TanningCalculator::MAX_COMBAT_BONUS = 20;
+const int TanningCalculator::TANNING_COMBAT_DECREMENT = 5;
 const int TanningCalculator::TANNING_EVADE_DECREMENT = 5;
 const int TanningCalculator::TANNING_SOAK_DECREMENT = 5;
 const int TanningCalculator::BASE_IMPROVEMENT_PCT = 10;
@@ -12,6 +14,26 @@ const int TanningCalculator::MAX_IMPROVEMENT_PCT = 100;
 const int TanningCalculator::BASE_RESIST_DIVISOR = 5;
 const vector<pair<int, double>> TanningCalculator::SKILL_VALUE_DIVISORS = {{100, 2.5}, {75, 3}, {50, 3.5}, {25, 4}, {0, 5.0}};
 const int TanningCalculator::PCT_CHANCE_EXTRA_POINT = 60;
+
+int TanningCalculator::calculate_combat_bonus(CreaturePtr creature)
+{
+  int combat_bonus = 0;
+  vector<int> combat_probs = calculate_combat_probabilities(creature);
+
+  for (int p : combat_probs)
+  {
+    if (RNG::percent_chance(p))
+    {
+      combat_bonus++;
+    }
+    else
+    {
+      break;
+    }
+  }
+
+  return combat_bonus;
+}
 
 int TanningCalculator::calculate_evade_bonus(CreaturePtr creature)
 {
@@ -51,6 +73,40 @@ int TanningCalculator::calculate_soak_bonus(CreaturePtr creature)
   }
 
   return sk_bonus;
+}
+
+vector<int> TanningCalculator::calculate_combat_probabilities(CreaturePtr creature)
+{
+  vector<int> combat_probs;
+
+  if (creature)
+  {
+    Skills& skills = creature->get_skills();
+    int tanning_value = skills.get_value(SkillType::SKILL_GENERAL_TANNING);
+    int crafting_value = skills.get_value(SkillType::SKILL_GENERAL_CRAFTING);
+
+    // Unlike the armour probs, the combat ones use crafting as the
+    // main val.
+    int total_value = (tanning_value / 2) + crafting_value;
+
+    int p = min(MAX_IMPROVEMENT_PCT, total_value);
+
+    for (int i = 0; i < MAX_EVADE_BONUS; i += 2)
+    {
+      if (p > BASE_IMPROVEMENT_PCT)
+      {
+        combat_probs.push_back(p);
+      }
+      else
+      {
+        combat_probs.push_back(BASE_IMPROVEMENT_PCT);
+      }
+
+      p -= TANNING_COMBAT_DECREMENT;
+    }
+  }
+
+  return combat_probs;
 }
 
 vector<int> TanningCalculator::calculate_evade_probabilities(CreaturePtr creature)

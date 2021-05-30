@@ -5906,6 +5906,7 @@
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
+					<Modifier>1</Modifier>
 					<Type>0</Type>
 				</Damage>
 				<Range>3</Range>

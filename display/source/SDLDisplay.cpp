@@ -882,8 +882,9 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
 
       ostringstream display_option;
       display_option << "  [";
-      
-      if (current_option.get_enabled())
+      bool option_enabled = current_option.get_enabled();
+
+      if (option_enabled)
       {
         display_option << current_option.get_id_char();
       }
@@ -896,14 +897,22 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
       string display_option_s = display_option.str();
       TextComponentPtr text = current_option.get_description();
       SDL_Color original_color = sdld.get_fg_colour();
-      sdld.set_fg_colour(get_colour(static_cast<int>(current_option.get_colour())));
+
+      if (!option_enabled)
+      {
+        sdld.set_fg_colour(get_colour(static_cast<int>(current_option.get_colour())));
+      }
 
       display_text(*row, *col, display_option_s);
 
       int ocol = *col + display_option_s.size();
 
       display_text_component(window, row, &ocol, text, DisplayConstants::OPTION_SPACING);
-      sdld.set_fg_colour(original_color);
+
+      if (!option_enabled)
+      {
+        sdld.set_fg_colour(original_color);
+      }
 
       options_added++;
       temp_row++;
