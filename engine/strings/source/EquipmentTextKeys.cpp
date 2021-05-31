@@ -1,6 +1,7 @@
 #include <boost/algorithm/string/replace.hpp>
 #include "Conversion.hpp"
 #include "EquipmentTextKeys.hpp"
+#include "ItemIdentifier.hpp"
 #include "RaceManager.hpp"
 #include "TextKeys.hpp"
 #include "PrimaryPhysicalAttackSpeedCalculator.hpp"
@@ -88,15 +89,16 @@ string EquipmentTextKeys::get_ranged_weapon_synopsis(WeaponPtr ranged_weapon, We
   string ranged_synopsis = StringTable::get(EQUIPMENT_RANGED_SYNOPSIS);
   string weapon_string = "/";
   string ammunition_string = "/";
-  
+  ItemIdentifier iid;
+
   if (ranged_weapon)
   {
-    weapon_string = StringTable::get(ranged_weapon->get_description_sid());
+    weapon_string = iid.get_appropriate_description(ranged_weapon, false);
   }
   
   if (ammunition)
   {
-    ammunition_string = StringTable::get(ammunition->get_description_sid());
+    ammunition_string = iid.get_appropriate_description(ammunition, false);
   }
   
   boost::replace_first(ranged_synopsis, "%s", weapon_string);
@@ -234,14 +236,15 @@ string EquipmentTextKeys::get_melee_weapon_synopsis(const AttackType attack_type
     synopsis = StringTable::get(EQUIPMENT_SECONDARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS);
   }
   
-  string weapon_description_sid = TextKeys::UNARMED;
+  string weapon_description = StringTable::get(TextKeys::UNARMED);
   
   if (weapon)
   {
-    weapon_description_sid = weapon->get_description_sid();
+    ItemIdentifier iid;
+    weapon_description = iid.get_appropriate_description(weapon, false);
   }
   
-  boost::replace_first(synopsis, "%s", StringTable::get(weapon_description_sid));
+  boost::replace_first(synopsis, "%s", weapon_description);
 
   string dmg_synopsis = get_weapon_difficulty_speed_and_damage_synopsis(base_difficulty, total_difficulty, speed, damage);
   boost::replace_first(synopsis, "%s", dmg_synopsis);
