@@ -1,15 +1,9 @@
 Me:
 - 1.3.2 ASSET RELEASE
-- Rework tanning values to be a straight uniform to max
-- Hide whip doesn't work with W
 - Fun with clay:
   - Kiln:
-    - need to adjust status based on component statuses
+    - successful item creation not incrementing clock
     - improve items based on crafting 
-    - Fire bomb, when clay + magici
-    - Creatures with shadow damtype: small chance (4%?) of dropping primordial
-      essence
-    - Shadow bomb, when clay + essence
     - What material shd pri ess be?
     - Suppress ivory creation when pots are thrown when they're player-made
   - Load kilns

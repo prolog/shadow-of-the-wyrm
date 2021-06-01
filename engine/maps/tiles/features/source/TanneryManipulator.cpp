@@ -142,6 +142,7 @@ ItemPtr TanneryManipulator::create_hide_equipment(CreaturePtr creature, ItemPtr 
       // Create the item.
       item = ItemManager::create_item(item_id);
       WearablePtr wearable = dynamic_pointer_cast<Wearable>(item);
+      wearable->set_status(selected_skin->get_status());
 
       // Set the skin details: creature description, resistances, etc.
       // Additional evade and soak may be added if the tanner is skilled, and

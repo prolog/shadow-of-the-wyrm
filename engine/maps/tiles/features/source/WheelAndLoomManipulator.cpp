@@ -95,6 +95,9 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
 
               if (armour)
               {
+                // Set the status based on the fibre
+                armour->set_status(selected_fibre->get_status());
+
                 // Reduce/remove the skin.
                 selected_fibre->set_quantity(selected_fibre->get_quantity() - 1);
 

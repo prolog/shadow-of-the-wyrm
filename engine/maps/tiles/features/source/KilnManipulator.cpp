@@ -309,6 +309,13 @@ void KilnManipulator::create_item(CreaturePtr creature, TilePtr tile, vector<Ite
       }
     }
 
+    ItemStatus status = ItemStatus::ITEM_STATUS_UNCURSED;
+
+    if (!selected_items.empty())
+    {
+      status = selected_items[RNG::range(0, selected_items.size() - 1)]->get_status();
+    }
+
     ItemPtr item = ItemManager::create_item(item_template->get_base_id(), static_cast<uint>(RNG::range(rng_min, rng_max)));
 
     // Improve the item with free enchants based on crafting
@@ -316,6 +323,7 @@ void KilnManipulator::create_item(CreaturePtr creature, TilePtr tile, vector<Ite
 
     if (item != nullptr)
     {
+      item->set_status(status);
       tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
     }
 
