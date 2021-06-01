@@ -152,22 +152,21 @@ ItemPtr TanneryManipulator::create_hide_equipment(CreaturePtr creature, ItemPtr 
 
         if (weapon != nullptr)
         {
-          int th_bonus = weapon->get_to_hit() + tc.calculate_combat_bonus(creature);
+          int th_bonus = weapon->get_to_hit() + RNG::range(tc.calculate_combat_bonus_min(creature), tc.calculate_combat_bonus_max(creature));
 
           Damage d = weapon->get_damage();
-          int damage_bonus = tc.calculate_combat_bonus(creature);
-          int damage_type_bonus = d.get_effect_bonus() + tc.calculate_combat_bonus(creature);
+          int damage_bonus = RNG::range(tc.calculate_combat_bonus_min(creature), tc.calculate_combat_bonus_max(creature));
+          int damage_type_bonus = d.get_effect_bonus() + RNG::range(tc.calculate_combat_bonus_min(creature), tc.calculate_combat_bonus_max(creature));
 
           weapon->set_to_hit(th_bonus);
           weapon->set_addl_damage(damage_bonus);
-          d.set_modifier(damage_bonus);
           d.set_effect_bonus(damage_type_bonus);
           weapon->set_damage(d);
         }
         else
         {
-          int hide_evade = wearable->get_evade() + tc.calculate_evade_bonus(creature);
-          int hide_soak = wearable->get_soak() + tc.calculate_soak_bonus(creature);
+          int hide_evade = wearable->get_evade() + RNG::range(tc.calculate_evade_bonus_min(creature), tc.calculate_evade_bonus_max(creature));
+          int hide_soak = wearable->get_soak() + RNG::range(tc.calculate_soak_bonus_min(creature), tc.calculate_soak_bonus_max(creature));
 
           if (selected_skin->has_additional_property(SkinningConstants::SKIN_SOAK))
           {

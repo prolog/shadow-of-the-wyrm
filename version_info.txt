@@ -39,6 +39,9 @@ Shadow of the Wyrm v1.3.2 "del Liuto"
   the inventory.  Pulpers will still prompt because selecting the item
   destroys it, and the player needs an option to cancel out.
 
+- Tanning bonus have been simplified, and are now based on a min/max
+  range that varies with the tanning and crafting skills.
+
 - You can now create whips at tanneries.
 
 - New material type (clay).  Clay pots, fire bombs, and shadow bombs are now

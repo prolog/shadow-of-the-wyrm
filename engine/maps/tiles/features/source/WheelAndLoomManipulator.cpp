@@ -150,7 +150,7 @@ ItemPtr WheelAndLoomManipulator::create_woven_armour(CreaturePtr creature, ItemP
       {
         WeavingCalculator wc;
 
-        int extra_evade = RNG::range(2, 4);
+        int extra_evade = RNG::range(1, 6);
         int extra_soak  = RNG::range(1, 2);
         int min_points  = wc.calculate_min_enchant_points(creature);
         int max_points  = wc.calculate_max_enchant_points(creature);
