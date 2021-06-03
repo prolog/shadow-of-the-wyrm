@@ -247,7 +247,7 @@ bool KilnManipulator::create_clay_item(ItemVerifier v, const vector<string>& com
     create_item(creature, tile, selected_items, crafted_item_template, rng_min, rng_max);
   }
 
-  return false;
+  return true;
 }
 
 bool KilnManipulator::verify_clay_pot(CreaturePtr creature)

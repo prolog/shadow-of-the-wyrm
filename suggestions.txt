@@ -2,7 +2,6 @@ Me:
 - 1.3.2 ASSET RELEASE
 - Fun with clay:
   - Kiln:
-    - successful item creation not incrementing clock
     - improve items based on crafting 
     - What material shd pri ess be?
     - Suppress ivory creation when pots are thrown when they're player-made
