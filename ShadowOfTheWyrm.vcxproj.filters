@@ -4400,6 +4400,9 @@
     <ClInclude Include="engine\screens\include\KilnScreen.hpp">
       <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\KilnCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8892,6 +8895,12 @@
     </ClCompile>
     <ClCompile Include="engine\screens\source\KilnScreen.cpp">
       <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\KilnCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\KilnCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

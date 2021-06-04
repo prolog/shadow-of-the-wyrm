@@ -2,6 +2,7 @@
 #include "ActionTextKeys.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
+#include "KilnCalculator.hpp"
 #include "KilnScreen.hpp"
 #include "ItemTypes.hpp"
 #include "MessageManagerFactory.hpp"
@@ -319,7 +320,9 @@ void KilnManipulator::create_item(CreaturePtr creature, TilePtr tile, vector<Ite
     ItemPtr item = ItemManager::create_item(item_template->get_base_id(), static_cast<uint>(RNG::range(rng_min, rng_max)));
 
     // Improve the item with free enchants based on crafting
-    // ...
+    KilnCalculator kc;
+    int enchants = RNG::range(kc.calc_min_free_enchants(creature), kc.calc_max_free_enchants(creature));
+    item->enchant(kc.calc_pct_chance_brand(), enchants);
 
     if (item != nullptr)
     {
