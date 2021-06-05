@@ -25,13 +25,13 @@ class KilnManipulator : public FeatureManipulator
     bool verify_fire_bomb(CreaturePtr creature);
     bool verify_shadow_bomb(CreaturePtr creature);
 
-    bool create_clay_item(ItemVerifier v, const std::vector<std::string>& required_item_ids, const std::string& crafted_item_id, const int rng_min, const int rng_max, CreaturePtr creature, TilePtr tile);
+    bool create_clay_item(ItemVerifier v, const std::vector<std::string>& required_item_ids, const std::string& crafted_item_id, const std::map<std::string, std::string>& props, const int rng_min, const int rng_max, CreaturePtr creature, TilePtr tile);
     bool create_clay_pot(CreaturePtr creature, TilePtr tile);
     bool create_clay_shot(CreaturePtr creature, TilePtr tile);
     bool create_fire_bomb(CreaturePtr creature, TilePtr tile);
     bool create_shadow_bomb(CreaturePtr creature, TilePtr tile);
 
-    void create_item(CreaturePtr creature, TilePtr tile, std::vector<ItemPtr>& selected_items, ItemPtr item_template, const int rng_min, const int rng_max);
+    void create_item(CreaturePtr creature, TilePtr tile, std::vector<ItemPtr>& selected_items, ItemPtr item_template, const std::map<std::string, std::string>& properties,  const int rng_min, const int rng_max);
 
     std::map<int, std::pair<bool (KilnManipulator::*)(CreaturePtr, TilePtr), ItemVerifier>> crafting_functions;
 };

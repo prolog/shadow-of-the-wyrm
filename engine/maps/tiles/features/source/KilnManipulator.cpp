@@ -4,6 +4,7 @@
 #include "ItemFilterFactory.hpp"
 #include "KilnCalculator.hpp"
 #include "KilnScreen.hpp"
+#include "ItemProperties.hpp"
 #include "ItemTypes.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
@@ -177,7 +178,7 @@ bool KilnManipulator::verify_item_requirements(const vector<string>& component_i
   return false;
 }
 
-bool KilnManipulator::create_clay_item(ItemVerifier v, const vector<string>& component_item_ids, const string& crafted_item_id, const int rng_min, const int rng_max, CreaturePtr creature, TilePtr tile)
+bool KilnManipulator::create_clay_item(ItemVerifier v, const vector<string>& component_item_ids, const string& crafted_item_id, const map<string, string>& properties, const int rng_min, const int rng_max, CreaturePtr creature, TilePtr tile)
 {
   Game& game = Game::instance();
   ActionManager& am = game.get_action_manager_ref();
@@ -245,7 +246,7 @@ bool KilnManipulator::create_clay_item(ItemVerifier v, const vector<string>& com
   {
     // Reduce or remove the selected items, create the new item, and put it
     // on the player's tile.
-    create_item(creature, tile, selected_items, crafted_item_template, rng_min, rng_max);
+    create_item(creature, tile, selected_items, crafted_item_template, properties, rng_min, rng_max);
   }
 
   return true;
@@ -273,25 +274,25 @@ bool KilnManipulator::verify_shadow_bomb(CreaturePtr creature)
 
 bool KilnManipulator::create_clay_pot(CreaturePtr creature, TilePtr tile)
 {
-  return create_clay_item(&KilnManipulator::verify_clay_pot, { ItemIdKeys::ITEM_ID_CLAY }, ItemIdKeys::ITEM_ID_CLAY_POT, 1, 1, creature, tile);
+  return create_clay_item(&KilnManipulator::verify_clay_pot, { ItemIdKeys::ITEM_ID_CLAY }, ItemIdKeys::ITEM_ID_CLAY_POT, { {ItemProperties::ITEM_PROPERTIES_SUPPRESS_ITEM_GENERATION_ON_DESTRUCTION, "1"} }, 1, 1, creature, tile);
 }
 
 bool KilnManipulator::create_clay_shot(CreaturePtr creature, TilePtr tile)
 {
-  return create_clay_item(&KilnManipulator::verify_clay_shot, { ItemIdKeys::ITEM_ID_CLAY }, ItemIdKeys::ITEM_ID_CLAY_SHOT, 12, 30, creature, tile);
+  return create_clay_item(&KilnManipulator::verify_clay_shot, { ItemIdKeys::ITEM_ID_CLAY }, ItemIdKeys::ITEM_ID_CLAY_SHOT, {}, 12, 30, creature, tile);
 }
 
 bool KilnManipulator::create_fire_bomb(CreaturePtr creature, TilePtr tile)
 {
-  return create_clay_item(&KilnManipulator::verify_fire_bomb, { ItemIdKeys::ITEM_ID_CLAY, ItemIdKeys::ITEM_ID_MAGICI_SHARD }, ItemIdKeys::ITEM_ID_FIRE_BOMB, 3, 4, creature, tile);
+  return create_clay_item(&KilnManipulator::verify_fire_bomb, { ItemIdKeys::ITEM_ID_CLAY, ItemIdKeys::ITEM_ID_MAGICI_SHARD }, ItemIdKeys::ITEM_ID_FIRE_BOMB, {}, 3, 4, creature, tile);
 }
 
 bool KilnManipulator::create_shadow_bomb(CreaturePtr creature, TilePtr tile)
 {
-  return create_clay_item(&KilnManipulator::verify_shadow_bomb, { ItemIdKeys::ITEM_ID_CLAY, ItemIdKeys::ITEM_ID_PRIMORDIAL_ESSENCE }, ItemIdKeys::ITEM_ID_SHADOW_BOMB, 3, 4, creature, tile);
+  return create_clay_item(&KilnManipulator::verify_shadow_bomb, { ItemIdKeys::ITEM_ID_CLAY, ItemIdKeys::ITEM_ID_PRIMORDIAL_ESSENCE }, ItemIdKeys::ITEM_ID_SHADOW_BOMB, {}, 3, 4, creature, tile);
 }
 
-void KilnManipulator::create_item(CreaturePtr creature, TilePtr tile, vector<ItemPtr>& selected_items, ItemPtr item_template, const int rng_min, const int rng_max)
+void KilnManipulator::create_item(CreaturePtr creature, TilePtr tile, vector<ItemPtr>& selected_items, ItemPtr item_template, const map<string, string>& properties, const int rng_min, const int rng_max)
 {
   if (creature != nullptr && tile != nullptr)
   {
@@ -328,6 +329,11 @@ void KilnManipulator::create_item(CreaturePtr creature, TilePtr tile, vector<Ite
     {
       item->set_status(status);
       tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+
+      for (const auto& k_v : properties)
+      {
+        item->set_additional_property(k_v.first, k_v.second);
+      }
     }
 
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
