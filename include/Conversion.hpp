@@ -38,6 +38,7 @@ class String
     static std::vector<Colour> create_colour_vector_from_csv_string(const std::string& csv_str);
     static std::vector<int> create_int_vector_from_csv_string(const std::string& csv_str);
     static std::string create_csv_from_string_vector(const std::vector<std::string>& str_vec);
+    static std::string create_csv_from_string_map(const std::map<std::string, std::string>& str_map);
     static std::string create_string_from_coordinate(const Coordinate& c);
     static Coordinate create_coordinate_from_string(const std::string& coord_s);
     static void reset_and_pad(std::string& string_to_reset_and_pad, const uint num_cols);

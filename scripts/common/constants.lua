@@ -66,6 +66,9 @@ GOBLIN_RAIDER_ID = "goblin_raider"
 GOBLIN_CHAMPION_ID = "goblin_champion"
 GOBLIN_RACE_ID = "07_goblin"
 
+-- Item properties
+ITEM_PROPERTIES_SUPPRESS_ITEM_GENERATION_ON_DESTRUCTION = "no_item_on_destr"
+
 -- Quest constants
 QUEST_ACEY_STOLEN_GOODS_COMPLETE = "quest_acey_stolen_goods_complete"
 QUEST_SEA_CAPTAIN_KORIS_COMPLETE = "quest_sea_captain_koris_complete"

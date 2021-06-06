@@ -9,7 +9,7 @@ class ScriptEngine;
 class ItemScript
 {
   public:
-    bool execute(ScriptEngine& se, const std::string& attack_script, const std::string& item_event, const std::string& base_item_id, const std::string& original_creature_id, const int row, const int col);
+    bool execute(ScriptEngine& se, const std::string& item_script, const std::string& item_event, const std::string& base_item_id, const map<string, string>& item_properties, const std::string& original_creature_id, const int row, const int col);
 
   protected:
     static const std::string ITEM_MODULE_NAME;

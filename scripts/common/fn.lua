@@ -84,6 +84,24 @@ function array_to_csv(t)
   return csv
 end
 
+function props_to_table(s)
+  local t = {}
+
+  for str in s:gmatch("([^,%s]+)") do
+    local kv = {}
+    
+    for prop in str:gmatch("([^=%s]+)") do
+      table.insert(kv, prop)
+    end
+    
+    if #kv >= 2 then
+      t[kv[1]] = kv[2]
+    end
+  end
+  
+  return t
+end
+
 function area(c1, c2)
   return ((c2[1] - c1[1]) * (c2[2] - c1[2]))
 end

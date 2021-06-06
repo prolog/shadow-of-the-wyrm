@@ -160,6 +160,23 @@ string String::create_csv_from_string_vector(const vector<string>& str_vec)
   return ss.str();
 }
 
+string String::create_csv_from_string_map(const map<string, string>& str_map)
+{
+  ostringstream ss;
+
+  for (auto sm_it = str_map.begin(); sm_it != str_map.end();)
+  {
+    ss << sm_it->first << "=" << sm_it->second;
+
+    if (++sm_it != str_map.end())
+    {
+      ss << ",";
+    }
+  }
+
+  return ss.str();
+}
+
 string String::create_string_from_coordinate(const Coordinate& c)
 {
   ostringstream ss;
