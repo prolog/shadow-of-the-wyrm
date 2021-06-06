@@ -1,15 +1,7 @@
 Me:
+- explosive damage should also trigger destr_pct_chance items on ground.
+  e.g. set up explosive fields...
 - 1.3.2 ASSET RELEASE
-- Fun with clay:
-  - Kiln:
-    - What material shd pri ess be?
-    - Suppress ivory creation when pots are thrown when they're player-made
-  - Load kilns
-  - Save/load
-  - Work in via workshops, random features, etc
-  - More set locations for kilns
-  - Hints or something as to how to harvest it
-- ASSET RELEASE FOR 1.3.1
 - advisor
 - quest for advisor in Yew
 - More Acey/Sea Captain quests
