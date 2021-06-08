@@ -23,5 +23,7 @@ class DefaultTileManipulator : public ITileManipulator
     static const int UNDEAD_LEVEL_UPPER_BOUND_OFFSET;
 
     static const int PCT_CHANCE_DETRITUS;
+    static const int PCT_CHANCE_CLAY;
+    static const int PCT_CHANCE_CLAY_NEARBY;
 };
 

@@ -10,7 +10,7 @@ using namespace std;
 void StreamGenerator::generate(MapPtr map)
 {
   Dimensions dimensions = map->size();
-  generate_stream(map, RNG::range(0, dimensions.get_x()));
+  generate_stream(map, RNG::range(0, dimensions.get_x()-3));
 }
 
 void StreamGenerator::generate_stream(MapPtr result_map, const int start_col)

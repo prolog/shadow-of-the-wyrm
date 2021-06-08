@@ -1,6 +1,4 @@
 Me:
-- explosive damage should also trigger destr_pct_chance items on ground.
-  e.g. set up explosive fields...
 - 1.3.2 ASSET RELEASE
 - advisor
 - quest for advisor in Yew
@@ -15,6 +13,8 @@ Me:
 - Do a couple of quests that require a party
   - Isen Dun (Hrimgar): envoy to Forest of Yew (PoGA)
 - Test by generating these in Carcassia, Gnordvar
+- explosive damage should also trigger destr_pct_chance items on ground.
+  e.g. set up explosive fields...
 - Long term, give a chance for coastal generators to produce coastline, maybe
   with little islands, etc. Before generating, set booleans for coast in
   the different directions and then pick one. Should be done after the initial

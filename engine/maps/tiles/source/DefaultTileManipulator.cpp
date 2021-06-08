@@ -15,6 +15,8 @@ using namespace std;
 
 const int DefaultTileManipulator::UNDEAD_LEVEL_UPPER_BOUND_OFFSET = 5;
 const int DefaultTileManipulator::PCT_CHANCE_DETRITUS = 30;
+const int DefaultTileManipulator::PCT_CHANCE_CLAY = 4;
+const int DefaultTileManipulator::PCT_CHANCE_CLAY_NEARBY = 40;
 
 DefaultTileManipulator::DefaultTileManipulator()
   : super_type_message_sids({ { TileSuperType::TILE_SUPER_TYPE_GROUND, ActionTextKeys::ACTION_DIG_GROUND },
@@ -186,21 +188,30 @@ void DefaultTileManipulator::add_detritus(CreaturePtr creature, MapPtr map, Tile
     ItemManager im;
     auto tiles = MapUtils::get_adjacent_tiles_to_creature_unsorted(map, creature);
     IInventoryPtr items = tile->get_items();
-    bool clay = false;
+    int chance_clay = PCT_CHANCE_CLAY;
 
     for (TilePtr tile : tiles)
     {
-      if (tile->get_water_type() == WaterType::WATER_TYPE_FRESH)
+      if (tile != nullptr)
       {
-        clay = true;
-        break;
+        if (tile->get_water_type() == WaterType::WATER_TYPE_FRESH)
+        {
+          chance_clay = 100;
+          break;
+        }
+        if (tile->get_additional_property(TileProperties::TILE_PROPERTY_CLAY) == "1")
+        {
+          chance_clay = PCT_CHANCE_CLAY_NEARBY;
+          break;
+        }
       }
     }
 
-    if (clay)
+    if (RNG::percent_chance(chance_clay))
     {
       ItemPtr clay = im.create_item(ItemIdKeys::ITEM_ID_CLAY);
       items->merge_or_add(clay, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      tile->set_additional_property(TileProperties::TILE_PROPERTY_CLAY, std::to_string(true));
     }
 
     vector<string> general_detritus_ids = { ItemIdKeys::ITEM_ID_STONE, ItemIdKeys::ITEM_ID_ROCK };

@@ -30,6 +30,7 @@ const string TileProperties::TILE_PROPERTY_WATER_TYPE = "TILE_PROPERTY_WATER_TYP
 const string TileProperties::TILE_PROPERTY_ALLOWED_RACES = "TILE_PROPERTY_ALLOWED_RACES";
 const string TileProperties::TILE_PROPERTY_ALLOWED_CREATURE_IDS = "TILE_PROPERTY_ALLOWED_CREATURE_IDS";
 const string TileProperties::TILE_PROPERTY_CANNOT_DIG = "TILE_PROPERTY_CANNOT_DIG";
+const string TileProperties::TILE_PROPERTY_CLAY = "TILE_PROPERTY_CLAY";
 
 // Represents the non-number part of a depth custom map ID key.
 const string TileProperties::CUSTOM_MAP_ID_PART = "_CUSTOM_MAP_ID";
