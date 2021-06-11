@@ -1,5 +1,15 @@
 Me:
 - 1.3.2 ASSET RELEASE
+- Houses:
+  - Free from Emperor when arena cleared
+  - Towns could have builders/masons
+  - When chatting to them, will follow, help you build, give you a scroll that
+    when read sets the generation rate to 0
+  - Help you build: chat with them, select features/rooms from menu, leaves
+    when done
+- wildflower varieties, from the descs
+- wildflower seeds
+- plant these like trees
 - advisor
 - quest for advisor in Yew
 - More Acey/Sea Captain quests
