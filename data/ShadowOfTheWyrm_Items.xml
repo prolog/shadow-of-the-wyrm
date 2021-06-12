@@ -6764,6 +6764,12 @@
 					</Sprite>					
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>destruction_pct_chance</Name>
+						<Value>100</Value>
+					</Property>
+				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2006</RangedSkill>
 				<Difficulty>40</Difficulty>

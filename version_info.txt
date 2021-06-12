@@ -48,6 +48,9 @@ Shadow of the Wyrm v1.3.2 "del Liuto"
 
 - You can now create whips at tanneries.
 
+- A couple of the houses near the water in Isen Dun now have a shared flower
+  garden, with a shovel left out for their use.
+
 - New material type (clay).  Clay pots, fire bombs, and shadow bombs are now
   made of clay.
 
