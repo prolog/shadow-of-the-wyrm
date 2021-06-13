@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.3.2 "del Liuto"
-- Version declared April 23, 2021.
+- Version declared April 23, 2021.  Version finalized June 13, 2021.
 
 - Default hair and eye colour can now be set in swyrm.ini, as well as an
   option that brings up a menu for each, in case you want to select these
