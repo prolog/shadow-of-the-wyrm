@@ -301,5 +301,12 @@
 				</Entrance>
 			</Door>
 		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>17</Row>
+				<Col>75</Col>
+			</Coord>
+			<Kiln/>
+		</FeaturePlacement>
 	</Features>
 </CustomMap>

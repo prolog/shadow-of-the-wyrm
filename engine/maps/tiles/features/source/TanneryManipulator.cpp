@@ -8,6 +8,7 @@
 #include "RNG.hpp"
 #include "SkinningConstants.hpp"
 #include "TanningCalculator.hpp"
+#include "Weapon.hpp"
 #include "Wearable.hpp"
 #include "WornLocationScreenFactory.hpp"
 
@@ -15,7 +16,7 @@ using namespace std;
 
 TanneryManipulator::TanneryManipulator(FeaturePtr feature)
 : FeatureManipulator(feature),
-skin_items({ {EquipmentWornLocation::EQUIPMENT_WORN_HEAD, "_hide_cap"}, {EquipmentWornLocation::EQUIPMENT_WORN_BODY, "_hide_armour"}, {EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, "_hide_cloak"}, {EquipmentWornLocation::EQUIPMENT_WORN_FEET, "_hide_boots"}, { EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON, "_hide_sling" } })
+skin_items({ {EquipmentWornLocation::EQUIPMENT_WORN_HEAD, "_hide_cap"}, {EquipmentWornLocation::EQUIPMENT_WORN_WIELDED, "_hide_whip"}, {EquipmentWornLocation::EQUIPMENT_WORN_BODY, "_hide_armour"}, {EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, "_hide_cloak"}, {EquipmentWornLocation::EQUIPMENT_WORN_FEET, "_hide_boots"}, { EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON, "_hide_sling" } })
 {
 }
 
@@ -50,10 +51,20 @@ bool TanneryManipulator::handle(TilePtr tile, CreaturePtr creature)
     }
     else
     {
-      vector<pair<string, string>> item_property_filter = {make_pair(SkinningConstants::SKIN_IS_SKIN, std::to_string(true))};
-      list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_property_type_filter(item_property_filter);
+      ItemPtr selected_skin;
+      vector<ItemPtr> skins = creature->get_inventory()->get_all_from_property(SkinningConstants::SKIN_IS_SKIN, std::to_string(true));
 
-      ItemPtr selected_skin = am.inventory(creature, creature->get_inventory(), display_filter_list, {}, false, false);
+      if (skins.size() == 1)
+      {
+        selected_skin = skins[0];
+      }
+      else
+      {
+        vector<pair<string, string>> item_property_filter = { make_pair(SkinningConstants::SKIN_IS_SKIN, std::to_string(true)) };
+        list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_property_type_filter(item_property_filter);
+
+        selected_skin = am.inventory(creature, creature->get_inventory(), display_filter_list, {}, false, false);
+      }
 
       if (selected_skin)
       {
@@ -131,22 +142,41 @@ ItemPtr TanneryManipulator::create_hide_equipment(CreaturePtr creature, ItemPtr 
       // Create the item.
       item = ItemManager::create_item(item_id);
       WearablePtr wearable = dynamic_pointer_cast<Wearable>(item);
+      wearable->set_status(selected_skin->get_status());
 
       // Set the skin details: creature description, resistances, etc.
       // Additional evade and soak may be added if the tanner is skilled, and
       // also based on the base evade/soak of the skinned creature.
       if (wearable)
       {
-        int hide_evade = wearable->get_evade() + tc.calculate_evade_bonus(creature);
-        int hide_soak = wearable->get_soak() + tc.calculate_soak_bonus(creature);
+        WeaponPtr weapon = dynamic_pointer_cast<Weapon>(item);
 
-        if (selected_skin->has_additional_property(SkinningConstants::SKIN_SOAK))
+        if (weapon != nullptr)
         {
-          hide_soak += RNG::range(0, String::to_int(selected_skin->get_additional_property(SkinningConstants::SKIN_SOAK)));
-        }
+          int th_bonus = weapon->get_to_hit() + RNG::range(tc.calculate_combat_bonus_min(creature), tc.calculate_combat_bonus_max(creature));
 
-        wearable->set_evade(hide_evade);
-        wearable->set_soak(hide_soak);
+          Damage d = weapon->get_damage();
+          int damage_bonus = RNG::range(tc.calculate_combat_bonus_min(creature), tc.calculate_combat_bonus_max(creature));
+          int damage_type_bonus = d.get_effect_bonus() + RNG::range(tc.calculate_combat_bonus_min(creature), tc.calculate_combat_bonus_max(creature));
+
+          weapon->set_to_hit(th_bonus);
+          weapon->set_addl_damage(damage_bonus);
+          d.set_effect_bonus(damage_type_bonus);
+          weapon->set_damage(d);
+        }
+        else
+        {
+          int hide_evade = wearable->get_evade() + RNG::range(tc.calculate_evade_bonus_min(creature), tc.calculate_evade_bonus_max(creature));
+          int hide_soak = wearable->get_soak() + RNG::range(tc.calculate_soak_bonus_min(creature), tc.calculate_soak_bonus_max(creature));
+
+          if (selected_skin->has_additional_property(SkinningConstants::SKIN_SOAK))
+          {
+            hide_soak += RNG::range(0, String::to_int(selected_skin->get_additional_property(SkinningConstants::SKIN_SOAK)));
+          }
+
+          wearable->set_evade(hide_evade);
+          wearable->set_soak(hide_soak);
+        }
 
         item->set_resistances(tc.calculate_item_resistances(creature, selected_skin->get_resistances()));
         item->set_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID));

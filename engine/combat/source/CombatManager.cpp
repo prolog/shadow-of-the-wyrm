@@ -5,7 +5,7 @@
 #include "BallShapeProcessor.hpp"
 #include "ClassManager.hpp"
 #include "CombatConstants.hpp"
-#include "CombatCounterCalculator.hpp"
+#include "CombatEffectsCalculator.hpp"
 #include "CombatManager.hpp"
 #include "CombatTargetNumberCalculatorFactory.hpp"
 #include "CombatTextKeys.hpp"
@@ -37,6 +37,7 @@
 #include "PhaseOfMoonCalculator.hpp"
 #include "PointsTransfer.hpp"
 #include "RaceManager.hpp"
+#include "RNG.hpp"
 #include "ScythingCalculator.hpp"
 #include "Setting.hpp"
 #include "SkillManager.hpp"
@@ -44,10 +45,9 @@
 #include "StatusEffectFactory.hpp"
 #include "StealthCalculator.hpp"
 #include "StatisticsMarker.hpp"
-#include "TertiaryUnarmedCalculator.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
-#include "RNG.hpp"
+#include "UnarmedCombatCalculator.hpp"
 #include "WeaponManager.hpp"
 
 using namespace std;
@@ -83,10 +83,11 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
     // Sanity check
     if (creature && adjacent_creature)
     {
-      action_cost_value = attack(creature, adjacent_creature);
+      AttackType attack_type = AttackType::ATTACK_TYPE_MELEE_PRIMARY;
+      action_cost_value = attack(creature, adjacent_creature, attack_type);
 
       // Re-get the adjacent creature - it may have been killed by the
-      // first attack.
+      // first attack, or knocked back.
       adjacent_creature = adjacent_tile->get_creature();
 
       if (adjacent_creature)
@@ -98,6 +99,30 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
         if (off_hand_weapon != nullptr)
         {
           action_cost_value += attack(creature, adjacent_creature, AttackType::ATTACK_TYPE_MELEE_SECONDARY);
+        }
+
+        // A secondary attack may have killed the creature, or the creature
+        // may have been knocked back.
+        adjacent_creature = adjacent_tile->get_creature();
+
+        // If we're doing unarmed melee, there is a chance as well to kick.
+        UnarmedCombatCalculator ucc;
+
+        if (adjacent_creature != nullptr)
+        {
+          Coordinate attack_c = map->get_location(creature->get_id());
+          Coordinate defend_c = map->get_location(adjacent_creature->get_id());
+
+          if (CoordUtils::are_coordinates_adjacent(attack_c, defend_c) &&
+              RNG::percent_chance(ucc.calculate_pct_chance_free_kick(creature)))
+          {
+            IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+            manager.add_new_message(ActionTextKeys::get_kick_message(creature->get_description_sid(), creature->get_is_player()));
+                    
+            // The kick is free - it's considered part of the primary attack -
+            // so we ignore its action_cost_value.
+            attack(creature, adjacent_creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED);
+          }
         }
       }
     }
@@ -312,9 +337,9 @@ bool CombatManager::counter_strike_if_necessary(CreaturePtr attacking_creature, 
       ast == AttackSequenceType::ATTACK_SEQUENCE_INITIAL &&
       MapUtils::are_creatures_adjacent(current_map, attacking_creature, attacked_creature))
   {
-    CombatCounterCalculator ccc;
+    CombatEffectsCalculator cec;
 
-    if (RNG::percent_chance(ccc.calc_pct_chance_counter_strike(attacked_creature)))
+    if (RNG::percent_chance(cec.calc_pct_chance_counter_strike(attacked_creature)))
     {
       add_counter_strike_message(attacking_creature, attacked_creature);
 
@@ -508,16 +533,18 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   float soak_multiplier = hit_calculator->get_soak_multiplier();
   damage_dealt = damage_calc->calculate(attacked_creature, sneak_attack, slays_race, combat_damage_fixed, base_damage, soak_multiplier);
 
+  bool highlight_damage_msg = check_highlight_damage(attacked_creature, hit_type_enum, damage_dealt);
+
   // Add the text so far.
-  add_combat_message(attacking_creature, attacked_creature, combat_message.str());
+  add_combat_message(attacking_creature, attacked_creature, combat_message.str(), highlight_damage_msg);
   add_any_necessary_damage_messages(attacking_creature, attacked_creature, damage_dealt, piercing, incorporeal);
   
-  int danger_level = attacking_creature ? attacking_creature->get_level().get_current() : 1;
-
   // Do damage effects if damage was dealt, or if there is a bonus to the
   // effect.
   if (damage_dealt > 0 || effect_bonus > 0)
   {
+    int danger_level = attacking_creature ? attacking_creature->get_level().get_current() : 1;
+
     // Apply any effects (e.g., poison) that occur as the result of the damage)
     handle_damage_effects(attacking_creature, attacked_creature, damage_dealt, damage_type, effect_bonus, combat_damage_fixed.get_status_ailments(), danger_level);
 
@@ -866,7 +893,7 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
     int ap_trans = pt.get_points_for_transfer(attacked_creature, damage_dealt, PointsTransferType::POINTS_TRANSFER_AP);
     
     int current_hp = attacked_creature->decrement_hit_points(damage_dealt);
-    
+
     if (!message_sid.empty())
     {
       IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
@@ -1023,13 +1050,15 @@ void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, Crea
   }
 }
 
-void CombatManager::add_combat_message(CreaturePtr creature, CreaturePtr attacked_creature, const string& combat_message)
+void CombatManager::add_combat_message(CreaturePtr creature, CreaturePtr attacked_creature, const string& combat_message, const bool highlight)
 {
   DamageText dt;
 
   // Display combat information.
   IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
-  manager.add_new_message(combat_message, dt.get_colour(attacked_creature));
+  Colour colour = highlight ? Colour::COLOUR_RED : dt.get_colour(attacked_creature);
+
+  manager.add_new_message(combat_message, colour);
 }
 
 void CombatManager::send_combat_messages(CreaturePtr creature)
@@ -1212,37 +1241,43 @@ void CombatManager::update_mortuaries(CreaturePtr attacking_creature, CreaturePt
 bool CombatManager::knock_back_creature_if_necessary(const AttackType attack_type, CreaturePtr attacking_creature, CreaturePtr attacked_creature, Game& game, MapPtr current_map)
 {
   bool knocked_back = false;
+  CombatEffectsCalculator cec;
 
-  if (attacking_creature && attacked_creature && attack_type == AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED)
+  if (attacking_creature && 
+      attacked_creature && 
+      RNG::percent_chance(cec.calculate_knock_back_pct_chance(attack_type, attacking_creature, attacked_creature)))
   {
-    // Check to see if the knock-back succeeded.
-    TertiaryUnarmedCalculator tuc;
-    int kb_chance = tuc.calculate_knock_back_pct_chance(attacking_creature);
+    Direction knockback_dir = CoordUtils::get_direction(current_map->get_location(attacking_creature->get_id()), current_map->get_location(attacked_creature->get_id()));
+    TilePtr tile = MapUtils::get_adjacent_tile(current_map, attacking_creature, knockback_dir, 2);
+    TilePtr next_tile = MapUtils::get_adjacent_tile(current_map, attacking_creature, knockback_dir, 3);
+    ActionManager& am = game.get_action_manager_ref();
 
-    if (RNG::percent_chance(kb_chance))
+    if (MapUtils::is_tile_available_for_creature(attacked_creature, tile))
     {
-      Direction kick_dir = CoordUtils::get_direction(current_map->get_location(attacking_creature->get_id()), current_map->get_location(attacked_creature->get_id()));
-      TilePtr tile = MapUtils::get_adjacent_tile(current_map, attacking_creature, kick_dir, 2);
-      TilePtr next_tile = MapUtils::get_adjacent_tile(current_map, attacking_creature, kick_dir, 3);
-      ActionManager& am = game.get_action_manager_ref();
+      // If the creature was knocked back, and if it is appropriate to do so,
+      // add a message.
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacking_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
+      string knock_back_msg = ActionTextKeys::get_knock_back_message(attacked_creature->get_description_sid(), attacked_creature->get_is_player());
 
-      if (MapUtils::is_tile_available_for_creature(attacked_creature, tile))
+      manager.add_new_message(knock_back_msg);
+      manager.send();
+
+      am.move(attacked_creature, knockback_dir, false);
+      knocked_back = true;
+
+      if (!attacked_creature->is_dead() && MapUtils::is_tile_available_for_creature(attacked_creature, next_tile))
       {
-        // If the creature was knocked back, and if it is appropriate to do so,
-        // add a message.
-        IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacking_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
-        string knock_back_msg = ActionTextKeys::get_knock_back_message(attacked_creature->get_description_sid(), attacked_creature->get_is_player());
+        am.move(attacked_creature, knockback_dir);
+      }
 
-        manager.add_new_message(knock_back_msg);
-        manager.send();
+      vector<string> statuses = { StatusIdentifiers::STATUS_ID_STUNNED, StatusIdentifiers::STATUS_ID_EXPOSED };
 
-        am.move(attacked_creature, kick_dir, false);
-        knocked_back = true;
+      for (const string& status_id : statuses)
+      {
+        string source_id = attacking_creature->get_id();
+        StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(status_id, source_id);
 
-        if (!attacked_creature->is_dead() && MapUtils::is_tile_available_for_creature(attacked_creature, next_tile))
-        {
-          am.move(attacked_creature, kick_dir);
-        }
+        apply_damage_effect(attacked_creature, status_effect, 0, attacking_creature->get_level().get_current());
       }
     }
   }
@@ -1321,6 +1356,50 @@ Damage CombatManager::determine_damage(CreaturePtr attacking_creature, Damage* p
   }
 
   return damage;
+}
+
+bool CombatManager::check_highlight_damage(CreaturePtr creature, const HitTypeEnum hit_type, const int damage_dealt)
+{
+  if (creature != nullptr && creature->get_is_player())
+  {
+    float f_dd = static_cast<float>(damage_dealt);
+    Settings& settings = Game::instance().get_settings_ref();
+    bool pause_on_crit = settings.get_setting_as_bool(Setting::HIGHLIGHT_ON_PC_CRITICAL_HIT);
+
+    if (pause_on_crit && hit_type == HitTypeEnum::HIT_TYPE_CRITICAL && damage_dealt > 0)
+    {
+      return true;
+    }
+
+    int max_hp_dmg_pct = String::to_int(settings.get_setting(Setting::HIGHLIGHT_ON_PC_MAX_DAMAGE_PCT));
+    Statistic hp = creature->get_hit_points();
+    int hp_max = hp.get_base();
+
+    if (max_hp_dmg_pct > 0)
+    {
+      int dmg_pct = static_cast<int>((f_dd / hp_max) * 100);
+
+      if (dmg_pct >= max_hp_dmg_pct)
+      {
+        return true;
+      }
+    }
+
+    int hp_below_pct = String::to_int(settings.get_setting(Setting::HIGHLIGHT_ON_PC_HP_BELOW_PCT));
+
+    if (hp_below_pct > 0)
+    {
+      int cur_after_dmg = hp.get_current() - damage_dealt;
+      int pct_after_dmg = static_cast<int>((static_cast<float>(cur_after_dmg) / hp_max) * 100);
+
+      if (pct_after_dmg < hp_below_pct)
+      {
+        return true;
+      }
+    }
+  }
+
+  return false;
 }
 
 #ifdef UNIT_TESTS

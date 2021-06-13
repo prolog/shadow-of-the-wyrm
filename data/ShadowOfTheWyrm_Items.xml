@@ -3637,6 +3637,7 @@
 					<Modifier>12</Modifier>
 					<Type>0</Type>
 				</Damage>
+				<Range>2</Range>
 			</Weapon>
 			<Weapon id="ironsword">
 				<DescriptionSID>IRONSWORD_SID</DescriptionSID>
@@ -5879,6 +5880,37 @@
 				</Damage>
 				<Range>3</Range>
 			</Weapon>
+			<Weapon id="_hide_whip">
+				<DescriptionSID>HIDE_WHIP_SID</DescriptionSID>
+				<UsageDescriptionSID>HIDE_WHIP_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HIDE_WHIP_CODEX_SID</CodexDescriptionSID>
+				<Value>10</Value>
+				<Weight>
+					<Pounds>6</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>4</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>15</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>1</DangerLevel>
+				<Skill>1008</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>45</Difficulty>
+				<Speed>5</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>1</Modifier>
+					<Type>0</Type>
+				</Damage>
+				<Range>3</Range>
+			</Weapon>
 			<Weapon id="thorn_whip">
 				<DescriptionSID>THORN_WHIP_SID</DescriptionSID>
 				<UsageDescriptionSID>THORN_WHIP_USAGE_SID</UsageDescriptionSID>
@@ -6446,7 +6478,7 @@
 						<Row>3</Row>
 						<Col>28</Col>
 					</Sprite>
-        </Symbol>
+				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1004</Skill>
 				<RangedSkill>2005</RangedSkill>
@@ -6458,7 +6490,7 @@
 					<Type>6</Type>
 				</Damage>
 			</Missile>
-			<Missile id="fire_bomb">
+			<Missile id="_fire_bomb">
 				<DescriptionSID>FIRE_BOMB_SID</DescriptionSID>
 				<UsageDescriptionSID>FIRE_BOMB_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>FIRE_BOMB_CODEX_SID</CodexDescriptionSID>
@@ -6468,7 +6500,7 @@
 					<Ounces>5</Ounces>
 				</Weight>
 				<WornLocation>10</WornLocation>
-				<Material>3</Material>
+				<Material>17</Material>
 				<Symbol>
 					<Char>*</Char>
 					<Colour>9</Colour>
@@ -6497,7 +6529,7 @@
 					<EffectBonus>50</EffectBonus>
 				</Damage>
 			</Missile>
-			<Missile id="shadow_bomb">
+			<Missile id="_shadow_bomb">
 				<DescriptionSID>SHADOW_BOMB_SID</DescriptionSID>
 				<UsageDescriptionSID>SHADOW_BOMB_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>SHADOW_BOMB_CODEX_SID</CodexDescriptionSID>
@@ -6507,7 +6539,7 @@
 					<Ounces>8</Ounces>
 				</Weight>
 				<WornLocation>10</WornLocation>
-				<Material>3</Material>
+				<Material>17</Material>
 				<Symbol>
 					<Char>*</Char>
 					<Colour>4</Colour>
@@ -6529,7 +6561,7 @@
 				<Difficulty>47</Difficulty>
 				<Speed>3</Speed>
 				<Damage piercing="1">
-					<NumDice>3</NumDice>
+					<NumDice>4</NumDice>
 					<NumSides>6</NumSides>
 					<Type>8</Type>
 					<EffectBonus>30</EffectBonus>
@@ -6584,6 +6616,37 @@
 						<Status>_spellb</Status>
 						<Status>_blind</Status>
 					</StatusAilments>
+				</Damage>
+			</Missile>
+			<Missile id="_clay_shot">
+				<DescriptionSID>CLAY_SHOT_SID</DescriptionSID>
+				<UsageDescriptionSID>CLAY_SHOT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CLAY_SHOT_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>17</Material>
+				<Symbol>
+					<Char>*</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>7</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>2</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2006</RangedSkill>
+				<Difficulty>40</Difficulty>
+				<Speed>1</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>3</NumSides>
+					<Modifier>2</Modifier>
+					<Type>2</Type>
 				</Damage>
 			</Missile>
 			<Missile id="_stone">
@@ -6680,6 +6743,43 @@
 					<Type>2</Type>
 				</Damage>
 			</Missile>
+			<Missile id="_primordial_essence">
+				<DescriptionSID>PRIMORDIAL_ESSENCE_SID</DescriptionSID>
+				<UsageDescriptionSID>PRIMORDIAL_ESSENCE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>PRIMORDIAL_ESSENCE_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>14</Material>
+				<Symbol>
+					<Char>.</Char>
+					<Colour>12</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>8</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>destruction_pct_chance</Name>
+						<Value>100</Value>
+					</Property>
+				</Properties>
+				<Skill>1009</Skill>
+				<RangedSkill>2006</RangedSkill>
+				<Difficulty>40</Difficulty>
+				<Speed>1</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Type>8</Type>
+				</Damage>
+			</Missile>
 			<Missile id="antimatter_shot">
 				<DescriptionSID>ANTIMATTER_SHOT_SID</DescriptionSID>
 				<UsageDescriptionSID>ANTIMATTER_SHOT_USAGE_SID</UsageDescriptionSID>
@@ -6721,7 +6821,7 @@
 					<Pounds>4</Pounds>
 				</Weight>
 				<WornLocation>10</WornLocation>
-				<Material>8</Material>
+				<Material>17</Material>
 				<Symbol>
 					<Char>o</Char>
 					<Colour>3</Colour>
@@ -12798,6 +12898,25 @@
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
+			<Item id="_clay">
+				<DescriptionSID>CLAY_SID</DescriptionSID>
+				<UsageDescriptionSID>CLAY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CLAY_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<Material>17</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>6</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="_paper_pulp">
 				<DescriptionSID>PAPER_PULP_SID</DescriptionSID>
 				<UsageDescriptionSID>PAPER_PULP_USAGE_SID</UsageDescriptionSID>

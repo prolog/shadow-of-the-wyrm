@@ -73,8 +73,8 @@ class SDLDisplay : public Display
 
     void display_text(int row, int col, const std::string& s) override;
 
-    SDL_Colour get_colour(const Colour curses_colour) const;
-    SDL_Color get_colour(const int curses_colour) const;
+    SDL_Colour get_colour(const Colour curses_colour, const bool fg_colour = true) const;
+    SDL_Color get_colour(const int curses_colour, const bool fg_colour = true) const;
     void enable_colour(const Colour colour) override;
     void disable_colour(const Colour colour) override;
     virtual void set_colour(const int colour, const int r, const int g, const int b) override;

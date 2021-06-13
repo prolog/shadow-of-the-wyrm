@@ -90,7 +90,7 @@
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>shadow_bomb</ID>
+				<ID>_shadow_bomb</ID>
 				<Coord>
 					<Row>12</Row>
 					<Col>35</Col>
@@ -98,7 +98,7 @@
 				<Quantity>2</Quantity>
 			</Placement>
 			<Placement>
-				<ID>fire_bomb</ID>
+				<ID>_fire_bomb</ID>
 				<Coord>
 					<Row>12</Row>
 					<Col>36</Col>

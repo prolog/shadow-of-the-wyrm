@@ -58,11 +58,21 @@ bool JewelerWorkbenchManipulator::check_creature_has_ingots(CreaturePtr creature
 
 ItemPtr JewelerWorkbenchManipulator::get_selected_ingot(CreaturePtr creature, ActionManager& am)
 {
-  vector<pair<string, string>> item_property_filter = { make_pair(SmithingConstants::SMITHING_CONSTANTS_JEWELRY_MATERIAL_TYPE, "") };
+  ItemPtr selected_ingot;
+  vector<ItemPtr> ingots = creature->get_inventory()->get_all_from_property(SmithingConstants::SMITHING_CONSTANTS_JEWELRY_MATERIAL_TYPE);
 
-  // Select an ingot-type item.
-  list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_property_type_filter(item_property_filter);
-  ItemPtr selected_ingot = am.inventory(creature, creature->get_inventory(), display_filter_list, {}, false, false);
+  if (ingots.size() == 1)
+  {
+    selected_ingot = ingots[0];
+  }
+  else
+  {
+    vector<pair<string, string>> item_property_filter = { make_pair(SmithingConstants::SMITHING_CONSTANTS_JEWELRY_MATERIAL_TYPE, "") };
+
+    // Select an ingot-type item.
+    list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_property_type_filter(item_property_filter);
+    selected_ingot = am.inventory(creature, creature->get_inventory(), display_filter_list, {}, false, false);
+  }
 
   return selected_ingot;
 }

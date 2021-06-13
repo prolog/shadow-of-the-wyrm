@@ -30,4 +30,5 @@ const string ItemProperties::ITEM_PROPERTIES_MARK_AUTOMOVE = "mk_am";
 const string ItemProperties::ITEM_PROPERTIES_CONTRABAND = "contraband";
 const string ItemProperties::ITEM_PROPERTIES_FLOATS = "floats";
 const string ItemProperties::ITEM_PROPERTIES_METABOLIZES_ALCOHOL = "met_alc";
+const string ItemProperties::ITEM_PROPERTIES_SUPPRESS_ITEM_GENERATION_ON_DESTRUCTION = "no_item_on_destr";
 

@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include <memory>
 #include <list>
 #include <vector>
@@ -41,7 +42,7 @@ class IInventory : public ISerializable
 
     virtual bool remove(const std::string& id) = 0;
     virtual ItemPtr remove_and_return(const std::string& id) = 0;
-    virtual std::pair<bool, std::vector<ItemPtr>> remove_by_base_id(const std::string& base_id, const int quantity = 1) = 0;
+    virtual std::pair<bool, std::vector<ItemPtr>> remove_by_base_id(const std::string& base_id, const int quantity = 1, const std::map<std::string, std::string>& properties = {}) = 0;
 
     virtual bool clear() = 0;
 
@@ -50,8 +51,13 @@ class IInventory : public ISerializable
 
     virtual bool has_items() const = 0;
     virtual bool has_unpaid_items() const = 0;
+    virtual bool has_item(const std::string& base_id) const = 0;
+
     virtual ItemPtr at(const uint index) = 0;
     virtual ItemPtr get_from_id(const std::string& id) = 0;
+    virtual std::vector<ItemPtr> get_all_from_base_id(const std::string& id) = 0;
+    virtual std::vector<ItemPtr> get_all_from_property(const std::string& property_name) = 0;
+    virtual std::vector<ItemPtr> get_all_from_property(const std::string& property_name, const std::string& required_value) = 0;
     virtual ItemPtr get_from_base_id(const std::string& base_id) = 0;
     virtual std::vector<ItemPtr> get_from_type(const ItemType item_type) = 0;
 

@@ -1,71 +1,109 @@
 #include "gtest/gtest.h"
 
-class TanningCalculatorTestFixture : public ::testing::Test
+void jiggle_tanning_bonus_skills(CreaturePtr creature)
 {
-  public:
-    vector<int> calculate_evade_probabilities(CreaturePtr creature);
-    vector<int> calculate_soak_probabilities(CreaturePtr creature);
-};
+  if (creature != nullptr)
+  {
+    vector<SkillType> tanning_skills = { SkillType::SKILL_GENERAL_CRAFTING, SkillType::SKILL_GENERAL_TANNING };
 
-vector<int> TanningCalculatorTestFixture::calculate_evade_probabilities(CreaturePtr creature)
-{
-  TanningCalculator tc;
-
-  return tc.calculate_evade_probabilities(creature);
+    for (const auto& sk : tanning_skills)
+    {
+      creature->get_skills().set_value(sk, RNG::range(0, 100));
+    }
+  }
 }
-
-vector<int> TanningCalculatorTestFixture::calculate_soak_probabilities(CreaturePtr creature)
-{
-  TanningCalculator tc;
-
-  return tc.calculate_soak_probabilities(creature);
-}
-
-TEST_F(TanningCalculatorTestFixture, calculate_evade_probabilities)
+TEST(SW_Engine_Calculator_TanningCalculator, combat_min)
 {
   CreaturePtr creature = std::make_shared<Creature>();
-  Skills skills;
+  TanningCalculator tc;
 
-  vector<int> ev_p = calculate_evade_probabilities(creature);
+  for (int i = 0; i < 5; i++)
+  {
+    jiggle_tanning_bonus_skills(creature);
 
-  EXPECT_EQ(vector<int>({ 10, 10, 10, 10, 10 }), ev_p);
+    int tanning_part = creature->get_skills().get_value(SkillType::SKILL_GENERAL_TANNING) / 50;
+    int crafting_part = creature->get_skills().get_value(SkillType::SKILL_GENERAL_CRAFTING) / 50;
 
-  skills.set_value(SkillType::SKILL_GENERAL_TANNING, 105);
-  creature->set_skills(skills);
-
-  ev_p = calculate_evade_probabilities(creature);
-
-  EXPECT_EQ(vector<int>({100, 95, 90, 85, 80}), ev_p);
-
-  skills.set_value(SkillType::SKILL_GENERAL_TANNING, 25);
-  creature->set_skills(skills);
-
-  ev_p = calculate_evade_probabilities(creature);
-
-  EXPECT_EQ(vector<int>({ 25, 20, 15, 10, 10 }), ev_p);
+    EXPECT_EQ(tanning_part + crafting_part, tc.calculate_combat_bonus_min(creature));
+  }
 }
 
-TEST_F(TanningCalculatorTestFixture, calculate_soak_probabilities)
+TEST(SW_Engine_Calculator_TanningCalculator, combat_max)
 {
   CreaturePtr creature = std::make_shared<Creature>();
-  Skills skills;
+  TanningCalculator tc;
 
-  vector<int> sk_p = calculate_soak_probabilities(creature);
+  for (int i = 0; i < 5; i++)
+  {
+    jiggle_tanning_bonus_skills(creature);
 
-  EXPECT_EQ(vector<int>({ 10, 10, 10, 10, 10 }), sk_p);
+    int tanning_part = creature->get_skills().get_value(SkillType::SKILL_GENERAL_TANNING) / 5;
+    int crafting_part = creature->get_skills().get_value(SkillType::SKILL_GENERAL_CRAFTING) / 5;
 
-  skills.set_value(SkillType::SKILL_GENERAL_TANNING, 105);
-  creature->set_skills(skills);
-
-  sk_p = calculate_soak_probabilities(creature);
-
-  EXPECT_EQ(vector<int>({ 100, 95, 90, 85, 80 }), sk_p);
-
-  skills.set_value(SkillType::SKILL_GENERAL_TANNING, 24);
-  creature->set_skills(skills);
-
-  sk_p = calculate_soak_probabilities(creature);
-
-  EXPECT_EQ(vector<int>({ 24, 19, 14, 10, 10 }), sk_p);
+    EXPECT_EQ(tanning_part + crafting_part, tc.calculate_combat_bonus_max(creature));
+  }
 }
 
+TEST(SW_Engine_Calculator_TanningCalculator, evade_min)
+{
+  CreaturePtr creature = std::make_shared<Creature>();
+  TanningCalculator tc;
+
+  for (int i = 0; i < 5; i++)
+  {
+    jiggle_tanning_bonus_skills(creature);
+
+    int tanning_part = creature->get_skills().get_value(SkillType::SKILL_GENERAL_TANNING) / 50;
+    int crafting_part = creature->get_skills().get_value(SkillType::SKILL_GENERAL_CRAFTING) / 50;
+
+    EXPECT_EQ(tanning_part + crafting_part, tc.calculate_evade_bonus_min(creature));
+  }
+}
+
+TEST(SW_Engine_Calculator_TanningCalculator, evade_max)
+{
+  CreaturePtr creature = std::make_shared<Creature>();
+  TanningCalculator tc;
+
+  for (int i = 0; i < 5; i++)
+  {
+    jiggle_tanning_bonus_skills(creature);
+
+    int tanning_part = creature->get_skills().get_value(SkillType::SKILL_GENERAL_TANNING) / 10;
+    int crafting_part = creature->get_skills().get_value(SkillType::SKILL_GENERAL_CRAFTING) / 10;
+
+    EXPECT_EQ(tanning_part + crafting_part, tc.calculate_evade_bonus_max(creature));
+  }
+}
+
+TEST(SW_Engine_Calculator_TanningCalculator, soak_min)
+{
+  CreaturePtr creature = std::make_shared<Creature>();
+  TanningCalculator tc;
+
+  for (int i = 0; i < 5; i++)
+  {
+    jiggle_tanning_bonus_skills(creature);
+
+    int tanning_part = creature->get_skills().get_value(SkillType::SKILL_GENERAL_TANNING) / 50;
+    int crafting_part = creature->get_skills().get_value(SkillType::SKILL_GENERAL_CRAFTING) / 50;
+
+    EXPECT_EQ(tanning_part + crafting_part, tc.calculate_soak_bonus_min(creature));
+  }
+}
+
+TEST(SW_Engine_Calculator_TanningCalculator, soak_max)
+{
+  CreaturePtr creature = std::make_shared<Creature>();
+  TanningCalculator tc;
+
+  for (int i = 0; i < 5; i++)
+  {
+    jiggle_tanning_bonus_skills(creature);
+
+    int tanning_part = creature->get_skills().get_value(SkillType::SKILL_GENERAL_TANNING) / 20;
+    int crafting_part = creature->get_skills().get_value(SkillType::SKILL_GENERAL_CRAFTING) / 20;
+
+    EXPECT_EQ(tanning_part + crafting_part, tc.calculate_soak_bonus_max(creature));
+  }
+}

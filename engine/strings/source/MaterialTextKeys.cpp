@@ -32,12 +32,13 @@ void MaterialTextKeys::init_material_sids()
                    {MaterialType::MATERIAL_TYPE_GOLD, MATERIAL_GOLD},
                    {MaterialType::MATERIAL_TYPE_GASES, MATERIAL_GASES},
                    {MaterialType::MATERIAL_TYPE_UNKNOWN, MATERIAL_UNKNOWN},
-                   {MaterialType::MATERIAL_TYPE_MEAT, MATERIAL_MEAT}};
+                   {MaterialType::MATERIAL_TYPE_MEAT, MATERIAL_MEAT},
+                   {MaterialType::MATERIAL_TYPE_CLAY, MATERIAL_CLAY}};
 }
 
 const string MaterialTextKeys::get_material(const MaterialType mt)
 {
-  static_assert(MaterialType::MATERIAL_TYPE_LAST == MaterialType(17), "Unexpected MATERIAL_TYPE_LAST!");
+  static_assert(MaterialType::MATERIAL_TYPE_LAST == MaterialType(18), "Unexpected MATERIAL_TYPE_LAST!");
 
   if (material_sids.empty())
   {
@@ -73,3 +74,4 @@ const string MaterialTextKeys::MATERIAL_BONE         = "MATERIAL_BONE";
 const string MaterialTextKeys::MATERIAL_GASES        = "MATERIAL_GASES";
 const string MaterialTextKeys::MATERIAL_UNKNOWN      = "MATERIAL_UNKNOWN";
 const string MaterialTextKeys::MATERIAL_MEAT         = "MATERIAL_MEAT";
+const string MaterialTextKeys::MATERIAL_CLAY         = "MATERIAL_CLAY";

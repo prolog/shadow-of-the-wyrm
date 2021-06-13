@@ -168,16 +168,26 @@ bool ForgeManipulator::check_creature_has_ingots(CreaturePtr creature)
 // Get an ingot from the creature's inventory.
 ItemPtr ForgeManipulator::get_selected_ingot(CreaturePtr creature, ActionManager& am)
 {
-  // Empty string means no particular value required; item just has to have this
-  // property.
-  //
-  // We want to match all items that have the "smithing material property", which
-  // implies the item can be used to improve other items in smithing.
-  vector<pair<string, string>> item_property_filter = { make_pair(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE, "") };
+  ItemPtr selected_ingot;
+  vector<ItemPtr> ingots = creature->get_inventory()->get_all_from_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE);
 
-  // Select an ingot-type item.
-  list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_property_type_filter(item_property_filter);
-  ItemPtr selected_ingot = am.inventory(creature, creature->get_inventory(), display_filter_list, {}, false, false);
+  if (ingots.size() == 1)
+  {
+    selected_ingot = ingots[0];
+  }
+  else
+  {
+    // Empty string means no particular value required; item just has to have this
+    // property.
+    //
+    // We want to match all items that have the "smithing material property", which
+    // implies the item can be used to improve other items in smithing.
+    vector<pair<string, string>> item_property_filter = { make_pair(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE, "") };
+
+    // Select an ingot-type item.
+    list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_property_type_filter(item_property_filter);
+    selected_ingot = am.inventory(creature, creature->get_inventory(), display_filter_list, {}, false, false);
+  }
 
   return selected_ingot;
 }

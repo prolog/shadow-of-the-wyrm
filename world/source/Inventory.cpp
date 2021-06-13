@@ -169,7 +169,7 @@ bool Inventory::remove(const string& id)
   return false;
 }
 
-pair<bool, vector<ItemPtr>> Inventory::remove_by_base_id(const string& base_id, const int quantity)
+pair<bool, vector<ItemPtr>> Inventory::remove_by_base_id(const string& base_id, const int quantity, const map<string, string>& properties)
 {
   pair<bool, vector<ItemPtr>> result = { false, {} };
 
@@ -185,7 +185,7 @@ pair<bool, vector<ItemPtr>> Inventory::remove_by_base_id(const string& base_id, 
 
       ItemPtr current_item = *item_it;
       
-      if (current_item && (current_item->get_base_id() == base_id))
+      if (current_item && (current_item->get_base_id() == base_id) && current_item->has_additional_properties(properties))
       {
         result.first = true;
         int i_quantity = current_item->get_quantity();
@@ -332,6 +332,51 @@ ItemPtr Inventory::get_from_id(const std::string& id)
   return selected_item;
 }
 
+vector<ItemPtr> Inventory::get_all_from_base_id(const string& base_id)
+{
+  vector<ItemPtr> b_items;
+
+  for (ItemPtr item : items)
+  {
+    if (item->get_base_id() == base_id)
+    {
+      b_items.push_back(item);
+    }
+  }
+
+  return b_items;
+}
+
+vector<ItemPtr> Inventory::get_all_from_property(const string& item_property)
+{
+  vector<ItemPtr> p_items;
+
+  for (ItemPtr item : items)
+  {
+    if (item && item->has_additional_property(item_property))
+    {
+      p_items.push_back(item);
+    }
+  }
+
+  return p_items;
+}
+
+vector<ItemPtr> Inventory::get_all_from_property(const string& property_name, const string& required_value)
+{
+  vector<ItemPtr> p_items;
+
+  for (ItemPtr item : items)
+  {
+    if (item && item->get_additional_property(property_name) == required_value)
+    {
+      p_items.push_back(item);
+    }
+  }
+
+  return p_items;
+}
+
 ItemPtr Inventory::get_from_base_id(const std::string& base_id)
 {
   ItemPtr selected_item;
@@ -423,6 +468,21 @@ bool Inventory::has_item_with_property(const string& item_property) const
   }
 
   return false;
+}
+
+// Does the inventory have at least one item with the given ID?
+bool Inventory::has_item(const string& base_id) const
+{
+  for (ItemPtr item : items)
+  {
+    if (item && item->get_base_id() == base_id)
+    {
+      return true;
+    }
+  }
+
+  return false;
+
 }
 
 // How many items in the inventory with the given property?

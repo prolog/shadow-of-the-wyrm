@@ -128,6 +128,16 @@ TEST(SW_Engine_ConversionRoutines, vector_to_csv)
   EXPECT_EQ("foo,bar,baz,quux", String::create_csv_from_string_vector(foo));
 }
 
+TEST(SW_Engine_ConversionRoutines, map_to_csv)
+{
+  map<string, string> props;
+  props["a"] = "b";
+  props["test"] = "4324";
+  props["some_prop"] = "val";
+
+  EXPECT_EQ("a=b,some_prop=val,test=4324", String::create_csv_from_string_map(props));
+}
+
 TEST(SW_Engine_ConversionRoutines, create_properties_from_string)
 {
   map<string, string> props;

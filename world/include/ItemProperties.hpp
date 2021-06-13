@@ -24,6 +24,7 @@ class ItemProperties
     static const std::string ITEM_PROPERTIES_CONTRABAND;
     static const std::string ITEM_PROPERTIES_FLOATS;
     static const std::string ITEM_PROPERTIES_METABOLIZES_ALCOHOL;
+    static const std::string ITEM_PROPERTIES_SUPPRESS_ITEM_GENERATION_ON_DESTRUCTION;
 
   protected:
     ItemProperties();

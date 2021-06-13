@@ -1323,6 +1323,9 @@ bool Game::deserialize(istream& stream)
   // palette they were using when they saved.
   display->set_palette(dc_pair.first->get_palette_id());
 
+  // We also need the value of ASCII mode.
+  display->set_force_ascii(dc_pair.first->get_force_ascii());
+
   map_registry.deserialize(stream);
 
   size_t size = 0;

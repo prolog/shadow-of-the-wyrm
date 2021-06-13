@@ -13,6 +13,7 @@ class Scroll : public Readable
 
   protected:
     virtual void do_enchant_item(const int points) override;
+    virtual void increase_value(const int points = 1) override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

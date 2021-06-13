@@ -122,6 +122,30 @@ TEST(SW_World_Inventory, count_items)
   EXPECT_EQ(8, inv.count_items("book"));
 }
 
+TEST(SW_World_Inventory, size)
+{
+  Inventory inv;
+
+  EXPECT_EQ(0, inv.size());
+
+  SpellbookPtr book = std::make_shared<Spellbook>();
+  inv.add(book);
+
+  EXPECT_EQ(1, inv.size());
+}
+
+TEST(SW_World_Inventory, empty)
+{
+  Inventory inv;
+
+  EXPECT_TRUE(inv.empty());
+
+  SpellbookPtr book = std::make_shared<Spellbook>();
+  inv.add(book);
+
+  EXPECT_FALSE(inv.empty());
+}
+
 TEST(SW_World_Inventory, items_are_persisted)
 {
   Inventory inv;
@@ -204,4 +228,135 @@ TEST(SW_World_Inventory, no_drop_effect_sid)
   Inventory i;
 
   EXPECT_EQ("", i.get_drop_effect_sid());
+}
+
+TEST(SW_World_Inventory, remove_by_base_id)
+{
+  Inventory i;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_base_id("book");
+  
+  ItemPtr item2 = std::make_shared<Spellbook>();
+  item2->set_base_id("book");
+  
+  ItemPtr item3 = std::make_shared<Amulet>();
+  item3->set_base_id("amulet");
+
+  i.add(item);
+  i.add(item2);
+  i.add(item3);
+
+  EXPECT_EQ(3, i.size());
+
+  i.remove_by_base_id("book");
+
+  EXPECT_EQ(2, i.size());
+
+  i.remove_by_base_id("book");
+
+  EXPECT_EQ(1, i.size());
+}
+
+TEST(SW_World_Inventory, remove_by_base_id_with_properties)
+{
+  Inventory i;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_base_id("book");
+
+  ItemPtr item2 = std::make_shared<Spellbook>();
+  item2->set_base_id("book");
+
+  ItemPtr item3 = std::make_shared<Amulet>();
+  item3->set_base_id("amulet");
+
+  i.add(item);
+  i.add(item2);
+  i.add(item3);
+
+  EXPECT_EQ(3, i.size());
+
+  map<string, string> props = { {"prop1", "propval"} };
+  i.remove_by_base_id("book", 1, props);
+
+  EXPECT_EQ(3, i.size());
+
+  item->set_additional_properties(props);
+
+  i.remove_by_base_id("book", 1, props);
+
+  EXPECT_EQ(2, i.size());
+}
+
+TEST(SW_World_Inventory, has_item)
+{
+  Inventory i;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_base_id("book");
+  i.add(item);
+
+  EXPECT_TRUE(i.has_item("book"));
+}
+
+TEST(SW_World_Inventory, get_all_from_base_id)
+{
+  Inventory i;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_base_id("book");
+
+  ItemPtr item2 = std::make_shared<Spellbook>();
+  item2->set_base_id("book2");
+
+  ItemPtr item3 = std::make_shared<Spellbook>();
+  item3->set_base_id("book");
+
+  i.add(item);
+  i.add(item2);
+  i.add(item3);
+
+  EXPECT_EQ(2, i.get_all_from_base_id("book").size());
+}
+
+TEST(SW_World_Inventory, get_all_from_property)
+{
+  Inventory i;
+  string pname = "test";
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  ItemPtr item2 = std::make_shared<Spellbook>();
+  ItemPtr item3 = std::make_shared<Spellbook>();
+
+  item2->set_additional_property(pname, "test");
+
+  i.add(item);
+  i.add(item2);
+  i.add(item3);
+
+  EXPECT_EQ(1, i.get_all_from_property(pname).size());
+
+  item3->set_additional_property(pname, "test");
+
+  EXPECT_EQ(2, i.get_all_from_property(pname).size());
+}
+
+TEST(SW_World_Inventory, get_all_from_property_and_required_value)
+{
+  Inventory i;
+  string pname = "test";
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  ItemPtr item2 = std::make_shared<Spellbook>();
+  ItemPtr item3 = std::make_shared<Spellbook>();
+
+  item2->set_additional_property(pname, "test");
+
+  i.add(item);
+  i.add(item2);
+  i.add(item3);
+
+  EXPECT_EQ(0, i.get_all_from_property(pname, "aaa").size());
+  EXPECT_EQ(1, i.get_all_from_property(pname, "test").size());
 }

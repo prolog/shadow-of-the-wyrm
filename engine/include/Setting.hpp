@@ -7,6 +7,9 @@ class Setting
     static const std::string SHADE_CREATURES_AND_ITEMS;
     static const std::string DEFAULT_HP_COLOUR;
     static const std::string DEFAULT_AP_COLOUR;
+    static const std::string HIGHLIGHT_ON_PC_CRITICAL_HIT;
+    static const std::string HIGHLIGHT_ON_PC_MAX_DAMAGE_PCT;
+    static const std::string HIGHLIGHT_ON_PC_HP_BELOW_PCT;
     static const std::string REST_TURNS;
     static const std::string NEVER_MOVE_TO_DANGER_TILES;
     static const std::string MULTIPLE_DAMAGE_TYPE_MESSAGES;
@@ -23,6 +26,8 @@ class Setting
     static const std::string DEFAULT_RACE_ID;
     static const std::string DEFAULT_CLASS_ID;
     static const std::string DEFAULT_DEITY_ID;
+    static const std::string DEFAULT_HAIR_COLOUR;
+    static const std::string DEFAULT_EYE_COLOUR;
     static const std::string DEFAULT_STARTING_LOCATION_ID;
     static const std::string DEFAULT_NAME;
     static const std::string USERNAME_IS_CHARACTER_NAME;

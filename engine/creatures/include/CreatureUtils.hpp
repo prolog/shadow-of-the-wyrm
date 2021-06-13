@@ -85,6 +85,8 @@ class CreatureUtils
 
     static void set_leadership(CreaturePtr creature, const std::string& leader_id, MapPtr map, const int pass = 1);
 
+    static bool has_primordial_essence(CreaturePtr creature);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();

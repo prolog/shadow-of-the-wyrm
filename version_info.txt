@@ -1,3 +1,89 @@
+Shadow of the Wyrm v1.3.2 "del Liuto"
+- Version declared April 23, 2021.  Version finalized June 13, 2021.
+
+- Default hair and eye colour can now be set in swyrm.ini, as well as an
+  option that brings up a menu for each, in case you want to select these
+  values for each character (Echo38).
+
+- Damage messages will now be displayed in red when you are criticalled and 
+  take damage, when you take >= 20% of your max HP, or when your HP falls 
+  below 40% of the maximum.  Each of these settings can be configured in
+  swyrm.ini.
+
+- Knockback has been expanded from being possible only on kicks, to
+  potentially firing on regular melee attacks when the size differential
+  between the attacker and attacked is great enough.
+
+- Knockback has a chance to apply the stun and exposed statuses.
+
+- When attacking an adjacent creature with a regular attack, there is now
+  a chance, based on the unarmed combat skill, to get an additional, free 
+  kick attack.
+
+- More name and settlement name combinations.
+
+- Primordial creatures (those dealing shadow damage or knowing primordial
+  spells) have a chance to leave primordial essence when they die. This can
+  be used as a projectile on its own, or in the manufacturing of shadow
+  bombs.
+
+- Tagged Urlac's robes/staff on generation.  Now when doing a specific quest,
+  those specific items will be removed from the player.
+
+- You can now dig up clay along riverbeds. Clay also occasionally appears
+  when you dig on regular ground, and is more likely to appear near other
+  clay deposits.
+
+- Added kilns, which can be used to create clay pots and shot, as well as
+  fire and shadow bombs, if you have the right components.
+
+- To be in line with kiln behaviours around item components, forges, jeweler
+  workbenches, wheels and looms, etc., will no longer prompt you for the
+  component (ingots, whiteflower, etc) when there is only one available in
+  the inventory.  Pulpers will still prompt because selecting the item
+  destroys it, and the player needs an option to cancel out.
+
+- Tanning bonus have been simplified, and are now based on a min/max
+  range that varies with the tanning and crafting skills.
+
+- You can now create whips at tanneries.
+
+- A couple of the houses near the water in Isen Dun now have a shared flower
+  garden, with a shovel left out for their use.
+
+- New material type (clay).  Clay pots, fire bombs, and shadow bombs are now
+  made of clay.
+
+- New creatures: potter.
+
+- New features: kiln.
+
+- New items: raw clay, clay shot, wisp of primordial essence.
+
+- Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - The danger level of wilderness tiles was always intended to scale the
+    further you got from your starting location, but due to a casting bug,
+    the danger was always being defaulted to 1 instead (Echo38).
+
+  - The value of the saved ASCII mode setting wasn't being properly set 
+    after loading a saved game, reverting things back to whatever the 
+    system default was.
+
+  - Mono colour settings weren't working properly in the SDL display.
+
+  - Issues with stacking due to value increasing for item types that don't
+    actually improve with enchanting (potions, scrolls) (인수태).
+
+  - Stream generation occasionally wouldn't work correctly, as it would start
+    beyond the edge of the map.
+
+  - Brightblade didn't have reach 2, as it should have (Grond).
+
+  - Various typos in the codex/bestiary.
+
 Shadow of the Wyrm v1.3.0 "Kapsberger"
 - Version declared February 20, 2021.  Version finalized April 23, 2021.
 

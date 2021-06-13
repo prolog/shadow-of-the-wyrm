@@ -4,7 +4,7 @@ require('fn')
 require('map_events')
 
 local map_id = "carcassia_c2"
-local population = {"urchin", "_commoner", "_drunk", "_farmer", "_noble"}
+local population = {"urchin", "_commoner", "_drunk", "_farmer", "_potter", "_noble"}
 
 local function setup_special_features(map_id)
   map_set_tile_property(map_id, 9, 47, "TILE_PROPERTY_ALLOWED_CREATURE_IDS", PLAYER_ID)

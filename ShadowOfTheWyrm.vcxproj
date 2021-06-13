@@ -361,7 +361,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\BuySellCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CalcUtils.hpp" />
     <ClInclude Include="engine\calculators\include\CarryingCapacityCalculator.hpp" />
-    <ClInclude Include="engine\calculators\include\CombatCounterCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\CombatEffectsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CombatTargetNumberCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CombatTargetNumberCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\CreateItemCalculator.hpp" />
@@ -404,6 +404,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\ItemDropRateCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ItemEnchantmentCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ItemPietyCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\KilnCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\LineOfSightCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\MineCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ModifyStatisticsCalculator.hpp" />
@@ -457,12 +458,12 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\StunnedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SwimmingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\TanningCalculator.hpp" />
-    <ClInclude Include="engine\calculators\include\TertiaryUnarmedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\TertiaryUnarmedPhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ThieveryCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\TimewalkCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculatorFactory.hpp" />
+    <ClInclude Include="engine\calculators\include\UnarmedCombatCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\UntimedStatusCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WandCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WeaponDifficultyCalculator.hpp" />
@@ -941,6 +942,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\maps\tiles\features\include\FeatureManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\IFeatureManipulatorFactory.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\JewelerWorkbenchManipulator.hpp" />
+    <ClInclude Include="engine\maps\tiles\features\include\KilnManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\NeutralAltarManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\PewManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\PulperManipulator.hpp" />
@@ -968,9 +970,12 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\screens\include\CreateItemScreen.hpp" />
     <ClInclude Include="engine\screens\include\DeitySelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\EquipmentScreen.hpp" />
+    <ClInclude Include="engine\screens\include\EyeSelectionScreen.hpp" />
+    <ClInclude Include="engine\screens\include\HairSelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\HelpScreen.hpp" />
     <ClInclude Include="engine\screens\include\HighScoreScreen.hpp" />
     <ClInclude Include="engine\screens\include\InventoryScreen.hpp" />
+    <ClInclude Include="engine\screens\include\KilnScreen.hpp" />
     <ClInclude Include="engine\screens\include\LoadGameScreen.hpp" />
     <ClInclude Include="engine\screens\include\OptionScreen.hpp" />
     <ClInclude Include="engine\screens\include\OrderScreen.hpp" />
@@ -1138,6 +1143,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLForgeReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLFountainReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLJewelerWorkbenchReader.hpp" />
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLKilnReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureFactory.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureReaders.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLPewReader.hpp" />
@@ -1317,6 +1323,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\magic\include\SpellShapeFactory.hpp" />
     <ClInclude Include="world\magic\include\SpellTypes.hpp" />
     <ClInclude Include="world\materials\include\Bone.hpp" />
+    <ClInclude Include="world\materials\include\Clay.hpp" />
     <ClInclude Include="world\materials\include\Cloth.hpp" />
     <ClInclude Include="world\materials\include\DragonScale.hpp" />
     <ClInclude Include="world\materials\include\Gases.hpp" />
@@ -1489,7 +1496,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\BaseDangerLevelCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\BuySellCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CalcUtils.cpp" />
-    <ClCompile Include="engine\calculators\source\CombatCounterCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\CombatEffectsCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreateItemCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreaturePietyCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureSplitCalculator.cpp" />
@@ -1506,6 +1513,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\ItemBreakageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemDropRateCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ItemEnchantmentCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\KilnCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\LineOfSightCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MineCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\NullAttackSpeedCalculator.cpp" />
@@ -1522,9 +1530,9 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\SmithingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\StatisticsMarker.cpp" />
     <ClCompile Include="engine\calculators\source\StealthCalculator.cpp" />
-    <ClCompile Include="engine\calculators\source\TertiaryUnarmedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ThieveryCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\TimewalkCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\UnarmedCombatCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\unit_tests\BaseDangerLevelCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -1543,7 +1551,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="engine\calculators\source\unit_tests\CombatCounterCalculator_test.cpp">
+    <ClCompile Include="engine\calculators\source\unit_tests\CombatEffectsCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -1639,6 +1647,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\KilnCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\LineOfSightCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -1729,17 +1743,17 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="engine\calculators\source\unit_tests\TertiaryUnarmedCalculator_test.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ThieveryCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\UnarmedCombatCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\WandCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1758,6 +1772,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\WorldMapDangerLevelCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\UntimedStatusCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\WandCalculator.cpp" />
@@ -2036,6 +2056,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\features\source\FeatureManipulator.cpp" />
+    <ClCompile Include="engine\maps\tiles\features\source\KilnManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\PulperManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\SarcophagusManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\SlotMachineManipulator.cpp" />
@@ -2068,7 +2089,10 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\maps\tiles\source\TileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\TileDamageProcessorFactory.cpp" />
     <ClCompile Include="engine\screens\source\CreateItemScreen.cpp" />
+    <ClCompile Include="engine\screens\source\EyeSelectionScreen.cpp" />
+    <ClCompile Include="engine\screens\source\HairSelectionScreen.cpp" />
     <ClCompile Include="engine\screens\source\HelpScreen.cpp" />
+    <ClCompile Include="engine\screens\source\KilnScreen.cpp" />
     <ClCompile Include="engine\screens\source\OptionScreen.cpp" />
     <ClCompile Include="engine\screens\source\OrderScreen.cpp" />
     <ClCompile Include="engine\screens\source\SkillsScreen.cpp" />
@@ -2184,6 +2208,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\time\source\WorldWeatherUpdater.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLConfigurableFeatureCMReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLDecorativeStatueReader.cpp" />
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLKilnReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLPulperReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLSignReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLSlotMachineReader.cpp" />
@@ -3560,6 +3585,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\materials\source\Bone.cpp" />
+    <ClCompile Include="world\materials\source\Clay.cpp" />
     <ClCompile Include="world\materials\source\Cloth.cpp" />
     <ClCompile Include="world\materials\source\DragonScale.cpp" />
     <ClCompile Include="world\materials\source\Gases.cpp" />
@@ -3577,6 +3603,12 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\materials\source\Steel.cpp" />
     <ClCompile Include="world\materials\source\Stone.cpp" />
     <ClCompile Include="world\materials\source\unit_tests\Bone_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Clay_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

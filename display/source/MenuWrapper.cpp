@@ -41,8 +41,11 @@ void MenuWrapper::add_options(OptionsComponentPtr options)
 
     for (auto& o : op)
     {
-      char option = o.get_id() + 'a';
-      add_option(option);
+      if (o.get_enabled())
+      {
+        char option = o.get_id() + 'a';
+        add_option(option);
+      }
     }
   }
 }

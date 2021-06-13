@@ -24,6 +24,7 @@ class FeatureGenerator
     static FeaturePtr generate_gate();
     static FeaturePtr generate_fire_pillar();
     static FeaturePtr generate_forge();
+    static FeaturePtr generate_kiln();
     static FeaturePtr generate_fountain();
     static FeaturePtr generate_pew(const PewDirection pew_direction = PewDirection::PEW_DIRECTION_NORTH_SOUTH);
     static FeaturePtr generate_bench();

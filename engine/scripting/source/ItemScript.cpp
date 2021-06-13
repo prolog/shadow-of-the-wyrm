@@ -5,6 +5,7 @@ extern "C"
 #include "lauxlib.h"
 }
 
+#include "Conversion.hpp"
 #include "ItemScript.hpp"
 #include "Log.hpp"
 #include "ScriptEngine.hpp"
@@ -16,7 +17,7 @@ const string ItemScript::ITEM_FUNCTION_NAME = "item_event_fn";
 
 // Execute an item script.
 // Return true if the script executed successfully, false otherwise.
-bool ItemScript::execute(ScriptEngine& se, const string& item_script, const string& item_event, const string& base_item_id, const string& original_creature_id, const int row, const int col)
+bool ItemScript::execute(ScriptEngine& se, const string& item_script, const string& item_event, const string& base_item_id, const map<string, string>& properties, const string& original_creature_id, const int row, const int col)
 {
   bool result = true;
   
@@ -27,13 +28,14 @@ bool ItemScript::execute(ScriptEngine& se, const string& item_script, const stri
     lua_getglobal(L, ITEM_MODULE_NAME.c_str());
     lua_getfield(L, -1, ITEM_FUNCTION_NAME.c_str());
     lua_pushstring(L, base_item_id.c_str());
+    lua_pushstring(L, String::create_csv_from_string_map(properties).c_str());
     lua_pushstring(L, original_creature_id.c_str());
     lua_pushstring(L, item_event.c_str());
     lua_pushinteger(L, row);
     lua_pushinteger(L, col);
 
     // Do the function call.  The attack function returns nothing.
-    if (lua_pcall(L, 5, 0, 0) != 0)
+    if (lua_pcall(L, 6, 0, 0) != 0)
     {
       string l_err = lua_tostring(L, -1);
       string error_msg = "ItemScript::execute - error running Lua function `" + ITEM_FUNCTION_NAME + "': " + l_err;

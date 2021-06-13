@@ -79,3 +79,40 @@ TEST(SW_Engine_CreatureUtils, has_followers_in_fov)
   EXPECT_FALSE(cm.empty());
   EXPECT_EQ(1, cm.size());
 }
+
+TEST(SW_Engine_Creatures_CreatureUtils, has_primordial_essence)
+{
+  Game& game = Game::instance();
+  Spell pri_spell;
+  string pspell_id = "p_test";
+  pri_spell.set_magic_category(SkillType::SKILL_MAGIC_PRIMORDIAL);
+  const SpellMap& old_spells = game.get_spells_ref();
+
+  SpellMap spells;
+  spells[pspell_id] = pri_spell;
+  game.set_spells(spells);
+
+  CreaturePtr creature = std::make_shared<Creature>();
+  EXPECT_EQ(false, CreatureUtils::has_primordial_essence(creature));
+
+  Damage d;
+  d.set_damage_type(DamageType::DAMAGE_TYPE_SHADOW);
+  creature->set_base_damage(d);
+
+  EXPECT_EQ(true, CreatureUtils::has_primordial_essence(creature));
+
+  d.set_damage_type(DamageType::DAMAGE_TYPE_POUND);
+  creature->set_base_damage(d);
+
+  EXPECT_EQ(false, CreatureUtils::has_primordial_essence(creature));
+
+  SpellKnowledge sk;
+  IndividualSpellKnowledge isk;
+  isk.set_castings(30);
+  sk.set_spell_knowledge(pspell_id, isk);
+  creature->set_spell_knowledge(sk);
+
+  EXPECT_EQ(true, CreatureUtils::has_primordial_essence(creature));
+
+  game.set_spells(old_spells);
+}

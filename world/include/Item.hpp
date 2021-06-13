@@ -173,6 +173,7 @@ class Item : public ISerializable
     void set_additional_property(const std::string& property_name, const std::string& property_value);
     std::string get_additional_property(const std::string& property_name) const;
     bool has_additional_property(const std::string& property_name) const;
+    bool has_additional_properties(const std::map<std::string, std::string>& properties_subset) const;
 
     std::map<std::string, std::string> get_additional_properties() const;
 
@@ -230,7 +231,7 @@ class Item : public ISerializable
     virtual DamageType do_brand();
     DamageType get_random_brand();
 
-    void increase_value(const int num_enchant_or_smith_points = 1);
+    virtual void increase_value(const int num_enchant_or_smith_points = 1);
 
     std::string id;
     std::string base_id;

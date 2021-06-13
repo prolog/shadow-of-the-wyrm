@@ -1,6 +1,11 @@
 <CustomMap id="isen_dun" xmlns="urn:shadow_of_the_wyrm:maps:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:shadow_of_the_wyrm:maps:1.0.0 ./CustomMap.xsd">
 	<NameSID>MAP_NAME_ISENDUN</NameSID>
 	<DefaultRaceID>01_human</DefaultRaceID>
+	<EventScripts>
+		<CreateScript>
+			<Script>areas/events/isen_dun.lua</Script>
+		</CreateScript>
+	</EventScripts>
 	<Dimensions>
 		<Rows>20</Rows>
 		<Columns>80</Columns>
@@ -12,9 +17,9 @@
 	<MapType>1</MapType>
 	<Tiles>
 	,,,,,,,,,,,,,,,,,,,,,*,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-	,T,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,#########,,,,,,,#####,,,,,,,,,###############,,
-	,,,,,#######,,,,,,,,#####,,,,,,,,#.......#,,,w,,,#...#,,*,,,,,,#...#......#..#,,
-	,,,*,#.....#,,,,,,T,#...#,,,,,,,,#.......#,,,,,,,##.##,,,,,,,,,##.##......#..#,,
+	,T,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,#########,,#.#,,#####,w,,,,,,,###############,,
+	,,,,,#######,,,,,,,,#####,,,,,,,,#.......#,,...,,#...#,,*,,,,,,#...#......#..#,,
+	,,,*,#.....#,,,,,,T,#...#,,,,,,,,#.......#,,#.#,,##.##,,,,,,,,,##.##......#..#,,
 	,,,,,#.....#,,,,,,,,##.##,,,,,,,,#.......#,,,*,,,,,,,,,,,,,,,,,....#.........#,,
 	,,,,,#.....#,,,,,,,,,,,,,,,,,,,,,#.......#,,,,,,,,,,,,,,,,,,,,,#...#......##.#,,
 	,,,,,###.###,,,,,,,,,,,T,,,,,,,,,####.####,,,,,,T,,,,,,,,,,,,,,#..........#..#,,
@@ -204,6 +209,13 @@
 					<Col>20</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>_potter</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>46</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items>
 			<Placement>
@@ -319,7 +331,7 @@
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>fire_bomb</ID>
+				<ID>_fire_bomb</ID>
 				<Coord>
 					<Row>2</Row>
 					<Col>64</Col>
@@ -541,6 +553,13 @@
 			<Pew>
 				<Orientation>0</Orientation>
 			</Pew>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>2</Row>
+				<Col>45</Col>
+			</Coord>
+			<Kiln/>
 		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>

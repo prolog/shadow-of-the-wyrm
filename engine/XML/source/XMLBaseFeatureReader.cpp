@@ -26,6 +26,7 @@ FeatureSymbolMap XMLBaseFeatureReader::get_feature_symbols(const XMLNode& base_f
                                                   {"EastWestPew", ClassIdentifier::CLASS_ID_EAST_WEST_PEW},
                                                   {"FirePillar", ClassIdentifier::CLASS_ID_FIRE_PILLAR},
                                                   {"Forge", ClassIdentifier::CLASS_ID_FORGE},
+                                                  {"Kiln", ClassIdentifier::CLASS_ID_KILN},
                                                   {"Fountain", ClassIdentifier::CLASS_ID_FOUNTAIN},
                                                   {"JewelerWorkbench", ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH},
                                                   {"Pew", ClassIdentifier::CLASS_ID_PEW},

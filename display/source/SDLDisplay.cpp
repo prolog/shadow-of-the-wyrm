@@ -393,7 +393,7 @@ void SDLDisplay::clear_messages()
 
     SDLRender render(sdld);
     SDL_Texture* screen = screens.back();
-    SDL_Colour c= get_colour(Colour::COLOUR_BLACK);
+    SDL_Colour c = get_colour(Colour::COLOUR_BLACK, false);
 
     SDL_SetRenderDrawColor(renderer, c.r, c.g, c.b, c.a);
     SDL_SetRenderTarget(renderer, NULL);
@@ -402,7 +402,7 @@ void SDLDisplay::clear_messages()
     SDL_RenderCopy(renderer, screen, NULL, NULL);
     SDL_SetRenderTarget(renderer, screen);
 
-    render.fill_area(renderer, screen, &dst_rect, get_colour(Colour::COLOUR_BLACK));
+    render.fill_area(renderer, screen, &dst_rect, get_colour(Colour::COLOUR_BLACK, false));
 
     SDLCursorLocation& sdlc = screen_cursors.back();
     sdlc.set_y(0);
@@ -434,7 +434,7 @@ void SDLDisplay::clear_to_bottom(const int row)
     dst_rect.h = rows_to_blank * glyph_height;
     dst_rect.w = sdld.get_screen_width();
 
-    render.fill_area(renderer, screens.back(), &dst_rect, get_colour(Colour::COLOUR_BLACK));
+    render.fill_area(renderer, screens.back(), &dst_rect, get_colour(Colour::COLOUR_BLACK, false));
   }
 }
 
@@ -881,15 +881,38 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
       }
 
       ostringstream display_option;
-      display_option << "  [" << current_option.get_id_char() << "] ";
+      display_option << "  [";
+      bool option_enabled = current_option.get_enabled();
+
+      if (option_enabled)
+      {
+        display_option << current_option.get_id_char();
+      }
+      else
+      {
+        display_option << "-";
+      }
+      
+      display_option << "] ";
       string display_option_s = display_option.str();
+      TextComponentPtr text = current_option.get_description();
+      SDL_Color original_color = sdld.get_fg_colour();
+
+      if (!option_enabled)
+      {
+        sdld.set_fg_colour(get_colour(static_cast<int>(current_option.get_colour())));
+      }
+
       display_text(*row, *col, display_option_s);
 
       int ocol = *col + display_option_s.size();
 
-      TextComponentPtr text = current_option.get_description();
-
       display_text_component(window, row, &ocol, text, DisplayConstants::OPTION_SPACING);
+
+      if (!option_enabled)
+      {
+        sdld.set_fg_colour(original_color);
+      }
 
       options_added++;
       temp_row++;
@@ -900,16 +923,23 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
   // It will have been taken care of when displaying the TextComponent.
 }
 
-SDL_Color SDLDisplay::get_colour(const Colour curses_colour) const
+SDL_Color SDLDisplay::get_colour(const Colour curses_colour, const bool fg_colour) const
 {
-  return get_colour(static_cast<int>(curses_colour));
+  return get_colour(static_cast<int>(curses_colour), fg_colour);
 }
 
-SDL_Color SDLDisplay::get_colour(const int curses_colour) const
+SDL_Color SDLDisplay::get_colour(const int ccolour, const bool fg_colour) const
 {
+  Colour curses_colour = static_cast<Colour>(ccolour);
+
+  if (fg_colour && mono_colour != Colour::COLOUR_UNDEFINED)
+  {
+    curses_colour = mono_colour;
+  }
+
   SDL_Color c = { 0,0,0,255 };
 
-  auto c_it = colours.find(curses_colour);
+  auto c_it = colours.find(static_cast<int>(curses_colour));
 
   if (c_it != colours.end())
   {
@@ -934,7 +964,7 @@ void SDLDisplay::enable_colour(const Colour colour)
   int colour_bg_curses = colour_i / NUM_SDL_BASE_COLOURS;
 
   sdld.set_fg_colour(get_colour(colour_fg_curses));
-  sdld.set_bg_colour(get_colour(colour_bg_curses));
+  sdld.set_bg_colour(get_colour(colour_bg_curses, false));
 }
 
 void SDLDisplay::disable_colour(const Colour colour)
@@ -1022,7 +1052,7 @@ void SDLDisplay::set_palette(const string& new_palette_id)
 
     // Reset the colours on the dimensions
     sdld.set_fg_colour(get_colour(static_cast<int>(Colour::COLOUR_BLACK)));
-    sdld.set_bg_colour(get_colour(static_cast<int>(Colour::COLOUR_BLACK)));
+    sdld.set_bg_colour(get_colour(static_cast<int>(Colour::COLOUR_BLACK), false));
   }
 }
 

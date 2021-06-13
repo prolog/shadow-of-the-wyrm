@@ -38,6 +38,7 @@ class Consumable : public Item
 
   protected:
     virtual void do_enchant_item(const int points) override;
+    virtual void increase_value(const int num_enchant_or_smith_points = 1) override;
 
     int nutrition;
     float standard_drinks;

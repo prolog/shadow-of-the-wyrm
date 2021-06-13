@@ -16,6 +16,7 @@ class MenuWrapper
     void add_options(OptionsComponentPtr options);
     void add_option(const char option);
     bool is_option_in_set(const char option) const;
+    bool is_enabled(const char option) const;
 
   protected:
     std::set<char> options;
