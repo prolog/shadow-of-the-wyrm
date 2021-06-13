@@ -21,6 +21,7 @@ class PromptTextKeys
     static const std::string PROMPT_INVENTORY_NO_SELECTION;
     static const std::string PROMPT_SKIN;
     static const std::string PROMPT_WEAVE;
+    static const std::string PROMPT_KILN;
 
   protected:
     PromptTextKeys();

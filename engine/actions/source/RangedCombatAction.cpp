@@ -219,6 +219,7 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
   ItemPtr item = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
   string item_base_id = item->get_base_id();
   ScriptDetails item_script = item->get_event_script(ItemEventScripts::ITEM_EVENT_AMMO_DESTRUCT);
+  map<string, string> item_props = item->get_additional_properties();
 
   if (target_creature)
   {
@@ -263,7 +264,7 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
     ScriptEngine& se = Game::instance().get_script_engine_ref();
     ItemScript is;
 
-    is.execute(se, script_name, ItemEventScripts::ITEM_EVENT_AMMO_DESTRUCT, item_base_id, creature->get_original_id(), target_coords.first, target_coords.second);
+    is.execute(se, script_name, ItemEventScripts::ITEM_EVENT_AMMO_DESTRUCT, item_base_id, item_props, creature->get_original_id(), target_coords.first, target_coords.second);
   }
 }
 

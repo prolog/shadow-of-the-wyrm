@@ -95,15 +95,7 @@ int parse_command_line_arguments(int argc, char* argv[])
   return 0;
 }
 
-// This is required because of SDL main-redefinition bullshit trickery.
-#ifdef main
-#undef main
-#endif
-#ifdef _MSC_VER
-int _tmain(int argc, _TCHAR* argv[])
-#else
 int main(int argc, char* argv[])
-#endif
 {
   register_unhandled_exception_handler();
   Log& log = Log::instance();

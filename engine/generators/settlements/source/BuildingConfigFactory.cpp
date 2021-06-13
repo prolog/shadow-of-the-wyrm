@@ -27,6 +27,8 @@ void BuildingConfigFactory::initialize_feature_items()
                    {ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, {{ItemIdKeys::ITEM_ID_WHITEFLOWER, 100}}},
                    {ClassIdentifier::CLASS_ID_FORGE,          {{ItemIdKeys::ITEM_ID_STEEL_INGOT, 20},
                                                                {ItemIdKeys::ITEM_ID_IRON_INGOT, 80}}},
+                   {ClassIdentifier::CLASS_ID_KILN,           {{ItemIdKeys::ITEM_ID_CLAY, 50},
+                                                               {ItemIdKeys::ITEM_ID_CLAY_POT, 50}}},
                    {ClassIdentifier::CLASS_ID_PULPER,         {{ItemIdKeys::ITEM_ID_BLANK_SCROLL, 100},
                                                                {ItemIdKeys::ITEM_ID_QUILL, 80},
                                                                {ItemIdKeys::ITEM_ID_INKPOT, 80}}}};
@@ -41,6 +43,7 @@ void BuildingConfigFactory::initialize_feature_creatures()
                                                                    {CreatureID::CREATURE_ID_SMALL_CHILD, 50}}},
                        {ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM,  {{CreatureID::CREATURE_ID_WEAVER, 90}}},
                        {ClassIdentifier::CLASS_ID_FORGE,           {{CreatureID::CREATURE_ID_SMITH, 90}}},
+                       {ClassIdentifier::CLASS_ID_KILN,            {{CreatureID::CREATURE_ID_POTTER, 90}}},
                        {ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH, {{CreatureID::CREATURE_ID_JEWELER, 90}}},
                        {ClassIdentifier::CLASS_ID_PULPER,          {{CreatureID::CREATURE_ID_SCRIBE, 90}}}};
 }
@@ -150,11 +153,12 @@ vector<ClassIdentifier> BuildingConfigFactory::create_house_features() const
 
 vector<ClassIdentifier> BuildingConfigFactory::create_workshop_features() const
 {
-  map<ClassIdentifier, int> f_probs = {{ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, 20}, 
-                                       {ClassIdentifier::CLASS_ID_TANNERY, 20},
-                                       {ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH, 20},
-                                       {ClassIdentifier::CLASS_ID_FORGE, 20},
-                                       {ClassIdentifier::CLASS_ID_PULPER, 20}};
+  map<ClassIdentifier, int> f_probs = {{ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, 17}, 
+                                       {ClassIdentifier::CLASS_ID_TANNERY, 17},
+                                       {ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH, 17},
+                                       {ClassIdentifier::CLASS_ID_FORGE, 17},
+                                       {ClassIdentifier::CLASS_ID_PULPER, 17},
+                                       {ClassIdentifier::CLASS_ID_KILN, 17}};
   vector<ClassIdentifier> features;
 
   for (auto f_pair : f_probs)
@@ -167,7 +171,7 @@ vector<ClassIdentifier> BuildingConfigFactory::create_workshop_features() const
 
   if (features.empty())
   {
-    features.push_back(ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM);
+    features.push_back(ClassIdentifier::CLASS_ID_KILN);
   }
 
   return features;

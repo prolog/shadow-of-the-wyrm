@@ -118,6 +118,7 @@ void FeatureGenerator::initialize_feature_map()
   FeaturePtr config_feature     = std::make_shared<ConfigurableFeature>(Symbol('?', Colour::COLOUR_WHITE));
   FeaturePtr slot_machine       = std::make_shared<SlotMachine>(get_config_symbol(ClassIdentifier::CLASS_ID_SLOT_MACHINE));
   FeaturePtr sign               = std::make_shared<Sign>(get_config_symbol(ClassIdentifier::CLASS_ID_SIGN), "fake_sid");
+  FeaturePtr kiln               = std::make_shared<Kiln>(get_config_symbol(ClassIdentifier::CLASS_ID_KILN));
 
   feature_map = FeatureSerializationMap{{ClassIdentifier::CLASS_ID_GOOD_ALTAR, good_altar},
                                         {ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR, neutral_altar},
@@ -151,7 +152,8 @@ void FeatureGenerator::initialize_feature_map()
                                         {ClassIdentifier::CLASS_ID_CONFIGURABLE_FEATURE, config_feature},
                                         {ClassIdentifier::CLASS_ID_SLOT_MACHINE, slot_machine},
                                         {ClassIdentifier::CLASS_ID_SIGN, sign},
-                                        {ClassIdentifier::CLASS_ID_PULPER, pulper}};
+                                        {ClassIdentifier::CLASS_ID_PULPER, pulper},
+                                        {ClassIdentifier::CLASS_ID_KILN, kiln}};
 }
 
 
@@ -267,6 +269,13 @@ FeaturePtr FeatureGenerator::generate_forge()
 {
   FeaturePtr forge = std::make_shared<Forge>(get_config_symbol(ClassIdentifier::CLASS_ID_FORGE));
   return forge;
+}
+
+// Generate a kiln
+FeaturePtr FeatureGenerator::generate_kiln()
+{
+  FeaturePtr kiln = std::make_shared<Kiln>(get_config_symbol(ClassIdentifier::CLASS_ID_KILN));
+  return kiln;
 }
 
 // Generate a tannery

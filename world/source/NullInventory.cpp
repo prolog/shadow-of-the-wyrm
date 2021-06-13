@@ -68,9 +68,9 @@ uint NullInventory::count_currency() const
   return 0;
 }
 
-pair<bool, vector<ItemPtr>> NullInventory::remove_by_base_id(const string& base_id, const int quantity)
+pair<bool, vector<ItemPtr>> NullInventory::remove_by_base_id(const string& base_id, const int quantity, const map<string, string>& properties)
 {
-  pair<bool, vector<ItemPtr>> result;
+  pair<bool, vector<ItemPtr>> result = { false, {} };
   return result;
 }
 
@@ -93,6 +93,11 @@ bool NullInventory::has_unpaid_items() const
   return false;
 }
 
+bool NullInventory::has_item(const string& base_id) const
+{
+  return false;
+}
+
 ItemPtr NullInventory::at(const uint index)
 {
   ItemPtr nullp;
@@ -103,6 +108,21 @@ ItemPtr NullInventory::get_from_id(const std::string& id)
 {
   ItemPtr nullp;
   return nullp;
+}
+
+vector<ItemPtr> NullInventory::get_all_from_base_id(const std::string& base_id)
+{
+  return {};
+}
+
+vector<ItemPtr> NullInventory::get_all_from_property(const std::string& property_name)
+{
+  return {};
+}
+
+vector<ItemPtr> NullInventory::get_all_from_property(const std::string& property_name, const std::string& required_value)
+{
+  return {};
 }
 
 ItemPtr NullInventory::get_from_base_id(const std::string& base_id)

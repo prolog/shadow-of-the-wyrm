@@ -107,6 +107,8 @@ bool RNG::x_in_y_chance(const pair<int, int>& x_y)
 
 bool RNG::percent_chance(const int percent_chance)
 {
+  if (percent_chance <= 0) return false;
+
   int val = RNG::range(1, 100);
   return (val <= percent_chance);
 }

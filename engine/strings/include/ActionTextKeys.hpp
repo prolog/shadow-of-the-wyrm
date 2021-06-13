@@ -48,6 +48,7 @@ class ActionTextKeys
     static std::string get_incinerate_spellbook_message(const std::string& item_usage_desc_sid);
     static std::string get_incinerate_spellbook_wild_message(const std::string& item_usage_desc_sid);
     static std::string get_npc_contraband_message(const std::string& creature_sid);
+    static std::string get_kiln_no_item_message(const std::string& missing_item_sid, const std::string& creation_item_sid);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -108,6 +109,7 @@ class ActionTextKeys
     static const std::string ACTION_KICK_NOTHING_TO_KICK_AT;
     static const std::string ACTION_KICK_SOLID_TILE;
     static const std::string ACTION_KICK_WATER_TILE;
+    static const std::string ACTION_KICK_KILN;
     static const std::string ACTION_KICK_FORGE;
     static const std::string ACTION_KICK_JEWELER_WORKBENCH;
     static const std::string ACTION_KICK_TANNERY;
@@ -125,6 +127,9 @@ class ActionTextKeys
     static const std::string ACTION_KICK_SLOT_MACHINE;
     static const std::string ACTION_KICK_SPRAIN_LEG;
     static const std::string ACTION_APPLY_TRAP_TOO_FAR;
+    static const std::string ACTION_KILN_NO_CLAY;
+    static const std::string ACTION_KILN_CREATE_ITEM;
+    static const std::string ACTION_KILN_CREATION_COMPLETE;
     static const std::string ACTION_FORGE_NO_SUITABLE_HAMMER;
     static const std::string ACTION_FORGE_NO_SMITHING_SKILL;
     static const std::string ACTION_FORGE_NO_INGOTS;
@@ -294,4 +299,5 @@ class ActionTextKeys
     static const std::string ACTION_INCINERATE_SPELLBOOK;
     static const std::string ACTION_INCINERATE_SPELLBOOK_WILD;
     static const std::string ACTION_NPC_YELL_CONTRABAND;
+    static const std::string ACTION_KILN_NO_ITEM;
 };

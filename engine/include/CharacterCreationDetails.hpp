@@ -11,10 +11,16 @@ class CharacterCreationDetails
 {
   public:
     CharacterCreationDetails();
-    CharacterCreationDetails(const CreatureSex cs, const std::string& r_id, const std::string& c_id, const std::string& d_id, const StartingLocation& sl);
+    CharacterCreationDetails(const CreatureSex cs, const HairColour hc, const EyeColour ec, const std::string& r_id, const std::string& c_id, const std::string& d_id, const StartingLocation& sl);
 
     void set_sex(const CreatureSex new_sex);
     CreatureSex get_sex() const;
+
+    void set_hair_colour(const HairColour new_hair_colour);
+    HairColour get_hair_colour() const;
+
+    void set_eye_colour(const EyeColour new_eye_colour);
+    EyeColour get_eye_colour() const;
 
     void set_race_id(const std::string& new_race_id);
     std::string get_race_id() const;
@@ -30,6 +36,8 @@ class CharacterCreationDetails
 
   protected:
     CreatureSex sex;
+    HairColour hair_colour;
+    EyeColour eye_colour;
     std::string race_id;
     std::string class_id;
     std::string deity_id;

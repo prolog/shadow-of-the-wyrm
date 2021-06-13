@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include "Creature.hpp"
 #include "IActionManager.hpp"
 #include "Item.hpp"
@@ -16,7 +17,7 @@ class ItemManager : public IActionManager
     static std::list<ItemPtr> get_filtered_items(const IInventoryPtr inv, const std::list<IItemFilterPtr>& item_filters); // get items that pass a particular set of filters
 
                                                                                                  // Check to see if an item exists, given the base ID.
-    static bool has_item(CreaturePtr creature, const std::string& base_item_id);
+    static bool has_item(CreaturePtr creature, const std::string& base_item_id, const std::map<std::string, std::string>& properties = {});
 
     // Create a new item from a given item.  This is used to make copies of the
     // template items, so that, say, fifty distinct broadswords can be created.
@@ -25,7 +26,7 @@ class ItemManager : public IActionManager
     // Remove an item by base ID, first checking the creature's equipment, and then
     // the inventory.  Return true if an item with the given ID was removed, or the
     // quantity reduced by 1, and also return the vector of items.
-    std::pair<bool, std::vector<ItemPtr>> remove_item_from_eq_or_inv(CreaturePtr creature, const std::string& base_item_id, const int quantity = 1);
+    std::pair<bool, std::vector<ItemPtr>> remove_item_from_eq_or_inv(CreaturePtr creature, const std::string& base_item_id, const int quantity = 1, const std::map<std::string, std::string>& properties = {});
     
     static ItemPtr create_item(const std::string& item_id, const uint quantity = 1); // This version assumes that we use the collection on the Game singleton.
     static bool create_item_with_probability(const int rand_less_than_or_equal_val, const int rand_upper_bound, IInventoryPtr inv, const std::string& item_id, const uint quantity = 1, const bool disallow_cursed = false);

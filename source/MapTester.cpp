@@ -1351,7 +1351,7 @@ void church_maps()
   }  
 }
 
-int main(int argc, char** argv)
+int main(int argc, char* argv[])
 {
   std::string map;
   int option = 0;
@@ -1467,4 +1467,5 @@ int main(int argc, char** argv)
   }
 
   XML::tear_down();
+  return 0;
 }

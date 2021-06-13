@@ -27,4 +27,5 @@ const string ScreenTitleTextKeys::SCREEN_TITLE_CASINO_GAMES = "SCREEN_TITLE_CASI
 const string ScreenTitleTextKeys::SCREEN_TITLE_CREATE_ITEM = "SCREEN_TITLE_CREATE_ITEM";
 const string ScreenTitleTextKeys::SCREEN_TITLE_GIVE_ORDERS = "SCREEN_TITLE_GIVE_ORDERS";
 const string ScreenTitleTextKeys::SCREEN_TITLE_AUTO_ACTIONS = "SCREEN_TITLE_AUTO_ACTIONS";
+const string ScreenTitleTextKeys::SCREEN_TITLE_KILN = "SCREEN_TITLE_KILN";
 

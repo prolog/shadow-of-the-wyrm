@@ -25,6 +25,10 @@ void Scroll::do_enchant_item(const int points)
 {
 }
 
+void Scroll::increase_value(const int points)
+{
+}
+
 Item* Scroll::clone()
 {
   return new Scroll(*this);

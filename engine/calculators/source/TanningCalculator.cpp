@@ -3,118 +3,108 @@
 
 using namespace std;
 
-const int TanningCalculator::MAX_EVADE_BONUS = 10;
-const int TanningCalculator::MAX_SOAK_BONUS = 5;
-const int TanningCalculator::TANNING_EVADE_DECREMENT = 5;
-const int TanningCalculator::TANNING_SOAK_DECREMENT = 5;
+const int TanningCalculator::COMBAT_MIN_DIVISOR = 50;
+const int TanningCalculator::COMBAT_MAX_DIVISOR = 5;
+const int TanningCalculator::EVADE_MIN_DIVISOR = 50;
+const int TanningCalculator::EVADE_MAX_DIVISOR = 10;
+const int TanningCalculator::SOAK_MIN_DIVISOR = 50;
+const int TanningCalculator::SOAK_MAX_DIVISOR = 20;
 const int TanningCalculator::BASE_IMPROVEMENT_PCT = 10;
 const int TanningCalculator::MAX_IMPROVEMENT_PCT = 100;
 const int TanningCalculator::BASE_RESIST_DIVISOR = 5;
 const vector<pair<int, double>> TanningCalculator::SKILL_VALUE_DIVISORS = {{100, 2.5}, {75, 3}, {50, 3.5}, {25, 4}, {0, 5.0}};
 const int TanningCalculator::PCT_CHANCE_EXTRA_POINT = 60;
 
-int TanningCalculator::calculate_evade_bonus(CreaturePtr creature)
+int TanningCalculator::calculate_combat_bonus_min(CreaturePtr creature)
 {
-  int ev_bonus = 0;
-  vector<int> ev_probs = calculate_evade_probabilities(creature);
+  int combat_bonus = 0;
 
-  for (int p : ev_probs)
+  if (creature != nullptr)
   {
-    if (RNG::percent_chance(p))
-    {
-      ev_bonus++;
-    }
-    else
-    {
-      break;
-    }
+    combat_bonus = calculate_skills_bonus(creature, COMBAT_MIN_DIVISOR);
   }
 
-  return ev_bonus;
+  return combat_bonus;
 }
 
-int TanningCalculator::calculate_soak_bonus(CreaturePtr creature)
+int TanningCalculator::calculate_combat_bonus_max(CreaturePtr creature)
 {
-  int sk_bonus = 0;
-  vector<int> sk_probs = calculate_soak_probabilities(creature);
+  int combat_bonus = 0;
 
-  for (int p : sk_probs)
+  if (creature != nullptr)
   {
-    if (RNG::percent_chance(p))
-    {
-      sk_bonus++;
-    }
-    else
-    {
-      break;
-    }
+    combat_bonus = calculate_skills_bonus(creature, COMBAT_MAX_DIVISOR);
   }
 
-  return sk_bonus;
+  return combat_bonus;
 }
 
-vector<int> TanningCalculator::calculate_evade_probabilities(CreaturePtr creature)
+int TanningCalculator::calculate_evade_bonus_min(CreaturePtr creature)
 {
-  vector<int> ev_probs;
+  int evade_bonus = 0;
 
-  if (creature)
+  if (creature != nullptr)
   {
+    evade_bonus = calculate_skills_bonus(creature, EVADE_MIN_DIVISOR);
+  }
+
+  return evade_bonus;
+}
+
+int TanningCalculator::calculate_evade_bonus_max(CreaturePtr creature)
+{
+  int evade_bonus = 0;
+
+  if (creature != nullptr)
+  {
+    evade_bonus = calculate_skills_bonus(creature, EVADE_MAX_DIVISOR);
+  }
+
+  return evade_bonus;
+}
+
+int TanningCalculator::calculate_soak_bonus_min(CreaturePtr creature)
+{
+  int soak_bonus = 0;
+
+  if (creature != nullptr)
+  {
+    soak_bonus = calculate_skills_bonus(creature, SOAK_MIN_DIVISOR);
+  }
+
+  return soak_bonus;
+}
+
+int TanningCalculator::calculate_soak_bonus_max(CreaturePtr creature)
+{
+  int soak_bonus = 0;
+
+  if (creature != nullptr)
+  {
+    soak_bonus = calculate_skills_bonus(creature, SOAK_MAX_DIVISOR);
+  }
+
+  return soak_bonus;
+}
+
+
+
+int TanningCalculator::calculate_skills_bonus(CreaturePtr creature, const int divisor)
+{
+  int skill_bonus = 0;
+
+  if (creature != nullptr)
+  {
+    vector<SkillType> check_skills = { SkillType::SKILL_GENERAL_CRAFTING, SkillType::SKILL_GENERAL_TANNING };
     Skills& skills = creature->get_skills();
-    int tanning_value = skills.get_value(SkillType::SKILL_GENERAL_TANNING);
-    int crafting_value = skills.get_value(SkillType::SKILL_GENERAL_CRAFTING);
 
-    int total_value = tanning_value + (crafting_value / 2);
-
-    int p = min(MAX_IMPROVEMENT_PCT, total_value);
-
-    for (int i = 0; i < MAX_EVADE_BONUS; i += 2)
+    for (const auto& c_skill : check_skills)
     {
-      if (p > BASE_IMPROVEMENT_PCT)
-      {
-        ev_probs.push_back(p);
-      }
-      else
-      {
-        ev_probs.push_back(BASE_IMPROVEMENT_PCT);
-      }
-
-      p -= TANNING_EVADE_DECREMENT;
+      skill_bonus += (skills.get_value(c_skill) / divisor);
     }
   }
 
-  return ev_probs;
-}
-
-vector<int> TanningCalculator::calculate_soak_probabilities(CreaturePtr creature)
-{
-  vector<int> sk_probs;
-
-  if (creature)
-  {
-    Skills& skills = creature->get_skills();
-    int tanning_value = skills.get_value(SkillType::SKILL_GENERAL_TANNING);
-    int crafting_value = skills.get_value(SkillType::SKILL_GENERAL_CRAFTING);
-
-    int total_value = tanning_value + (crafting_value / 2);
-
-    int p = min(MAX_IMPROVEMENT_PCT, total_value);
-
-    for (int i = 0; i < MAX_SOAK_BONUS; i++)
-    {
-      if (p > BASE_IMPROVEMENT_PCT)
-      {
-        sk_probs.push_back(p);
-      }
-      else
-      {
-        sk_probs.push_back(BASE_IMPROVEMENT_PCT);
-      }
-
-      p -= TANNING_SOAK_DECREMENT;
-    }
-  }
-
-  return sk_probs;
+  return skill_bonus;
 }
 
 // Calculate the resistances for a tanned item.  This will be based on the

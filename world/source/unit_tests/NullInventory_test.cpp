@@ -52,6 +52,26 @@ TEST(SW_World_NullInventory, count_items)
   EXPECT_EQ(0, ni.count_items());
 }
 
+TEST(SW_World_NullInventory, size)
+{
+  NullInventory ni;
+
+  SpellbookPtr book = std::make_shared<Spellbook>();
+  ni.add_front(book);
+
+  EXPECT_EQ(0, ni.size());
+}
+
+TEST(SW_World_NullInventory, empty)
+{
+  NullInventory ni;
+
+  SpellbookPtr book = std::make_shared<Spellbook>();
+  ni.add_front(book);
+
+  EXPECT_TRUE(ni.empty());
+}
+
 TEST(SW_World_NullInventory, mark_is_useless)
 {
   NullInventory ni;
@@ -108,4 +128,48 @@ TEST(SW_World_NullInventory, no_drop_effect_sid)
 {
   NullInventory ni;
   EXPECT_EQ("", ni.get_drop_effect_sid());
+}
+
+TEST(SW_World_NullInventory, has_item)
+{
+  NullInventory ni;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_base_id("book");
+
+  ni.add(item);
+  EXPECT_FALSE(ni.has_item("book"));
+}
+
+TEST(SW_World_NullInventory, get_all_from_base_id)
+{
+  NullInventory ni;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_base_id("book");
+
+  ni.add(item);
+  EXPECT_EQ(0, ni.get_all_from_base_id("book").size());
+}
+
+TEST(SW_World_NullInventory, get_all_from_property)
+{
+  NullInventory ni;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_additional_property("fdsa", "asdf");
+
+  ni.add(item);
+  EXPECT_EQ(0, ni.get_all_from_property("fdsa").size());
+}
+
+TEST(SW_World_NullInventory, get_all_from_property_and_required_value)
+{
+  NullInventory ni;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_additional_property("fdsa", "asdf");
+
+  ni.add(item);
+  EXPECT_EQ(0, ni.get_all_from_property("fdsa", "asdf").size());
 }

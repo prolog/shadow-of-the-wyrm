@@ -52,7 +52,9 @@ const string TextKeys::SELECT_SAVED_GAME = "SELECT_SAVED_GAME";
 const string TextKeys::DEITY = "DEITY";
 const string TextKeys::AGE = "AGE";
 const string TextKeys::SEX = "SEX";
+const string TextKeys::SELECT_HAIR_COLOUR = "SELECT_HAIR_COLOUR";
 const string TextKeys::HAIR_COLOUR = "HAIR_COLOUR";
+const string TextKeys::SELECT_EYE_COLOUR = "SELECT_EYE_COLOUR";
 const string TextKeys::EYE_COLOUR = "EYE_COLOUR";
 const string TextKeys::RACE = "RACE";
 const string TextKeys::RACES = "RACES";
@@ -190,5 +192,6 @@ const string TextKeys::AUTOCURSING = "AUTOCURSING";
 const string TextKeys::GENERIC_MESSAGE = "GENERIC_MESSAGE";
 const string TextKeys::PACIFIED = "PACIFIED";
 const string TextKeys::TAMED = "TAMED";
+const string TextKeys::REQUIRES = "REQUIRES";
 
 

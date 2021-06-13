@@ -20,7 +20,7 @@ class Inventory : public IInventory
     
     bool remove(const std::string& id) override;
     ItemPtr remove_and_return(const std::string& id) override;
-    std::pair<bool, std::vector<ItemPtr>> remove_by_base_id(const std::string& base_id, const int quantity = 1) override;
+    std::pair<bool, std::vector<ItemPtr>> remove_by_base_id(const std::string& base_id, const int quantity = 1, const std::map<std::string, std::string>& properties = {}) override;
     
     bool clear() override;
     
@@ -28,8 +28,13 @@ class Inventory : public IInventory
 
     bool has_items() const override;
     bool has_unpaid_items() const override;
+    bool has_item(const std::string& base_id) const override;
+
     ItemPtr at(const uint index) override;
     ItemPtr get_from_id(const std::string& id) override;
+    virtual std::vector<ItemPtr> get_all_from_base_id(const std::string& id) override;
+    virtual std::vector<ItemPtr> get_all_from_property(const std::string& property_name) override;
+    virtual std::vector<ItemPtr> get_all_from_property(const std::string& property_name, const std::string& required_value) override;
     ItemPtr get_from_base_id(const std::string& base_id) override;
     std::vector<ItemPtr> get_from_type(const ItemType item_type);
 

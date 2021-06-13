@@ -39,6 +39,7 @@ void CreatureDeathManager::die() const
     remove_creature_equipment_and_drop_inventory_on_tile(map, dead_creature, ground);
     potentially_generate_random_drop(attacking_creature, dead_creature, ground);
     potentially_generate_corpse(attacking_creature, dead_creature, ground);
+    potentially_generate_primordial_essence(attacking_creature, dead_creature, ground);
   }
 }
 
@@ -224,6 +225,25 @@ void CreatureDeathManager::potentially_generate_corpse(CreaturePtr attacking_cre
       }
 
       ground->add_front(corpse);
+    }
+  }
+}
+
+// Creatures with primordial attacks might leave primordial essence.
+void CreatureDeathManager::potentially_generate_primordial_essence(CreaturePtr attacking_creature, CreaturePtr attacked_creature, IInventoryPtr ground) const
+{
+  if (attacked_creature != nullptr && ground != nullptr)
+  {
+    CorpseCalculator cc;
+
+    if (RNG::percent_chance(cc.calculate_chance_primordial_essence(attacking_creature, attacked_creature)))
+    {
+      ItemPtr essence = ItemManager::create_item(ItemIdKeys::ITEM_ID_PRIMORDIAL_ESSENCE);
+
+      if (essence != nullptr)
+      {
+        ground->merge_or_add(essence, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+      }
     }
   }
 }

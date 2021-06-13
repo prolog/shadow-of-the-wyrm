@@ -67,10 +67,15 @@ class ItemIdKeys
     static const std::string ITEM_ID_BRANCH;
     static const std::string ITEM_ID_BOUGH;
     static const std::string ITEM_ID_DIRT;
+    static const std::string ITEM_ID_CLAY;
+    static const std::string ITEM_ID_CLAY_SHOT;
+    static const std::string ITEM_ID_FIRE_BOMB;
+    static const std::string ITEM_ID_SHADOW_BOMB;
     static const std::string ITEM_ID_ROCK;
     static const std::string ITEM_ID_STONE;
     static const std::string ITEM_ID_HUGE_ROCK;
     static const std::string ITEM_ID_MAGICI_SHARD;
+    static const std::string ITEM_ID_PRIMORDIAL_ESSENCE;
     static const std::string ITEM_ID_COAL;
     static const std::string ITEM_ID_LUMP_GOLD;
     static const std::string ITEM_ID_BOG_IRON;

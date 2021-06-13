@@ -80,3 +80,29 @@ TEST(SW_Engine_Calculators_CorpseCalculator, calculate_chance_corpse)
 
   EXPECT_EQ(80, cc.calculate_chance_corpse(creature));
 }
+
+TEST(SW_Engine_Calculators_CorpseCalculator, calculate_pct_chance_primordial_essence)
+{
+  CorpseCalculator cc;
+
+  CreaturePtr attacking_creature = std::make_shared<Creature>();
+  CreaturePtr deathblow_creature = std::make_shared<Creature>();
+
+  EXPECT_EQ(0, cc.calculate_chance_primordial_essence(nullptr, nullptr));
+  EXPECT_EQ(0, cc.calculate_chance_primordial_essence(attacking_creature, nullptr));
+  EXPECT_EQ(0, cc.calculate_chance_primordial_essence(nullptr, deathblow_creature));
+
+  Damage d;
+  d.set_damage_type(DamageType::DAMAGE_TYPE_SHADOW);
+  deathblow_creature->set_base_damage(d);
+
+  EXPECT_EQ(5, cc.calculate_chance_primordial_essence(attacking_creature, deathblow_creature));
+
+  attacking_creature->get_skills().set_value(SkillType::SKILL_GENERAL_DUNGEONEERING, 33);
+
+  EXPECT_EQ(11, cc.calculate_chance_primordial_essence(attacking_creature, deathblow_creature));
+
+  attacking_creature->get_skills().set_value(SkillType::SKILL_MAGIC_PRIMORDIAL, 100);
+
+  EXPECT_EQ(25, cc.calculate_chance_primordial_essence(attacking_creature, deathblow_creature));
+}

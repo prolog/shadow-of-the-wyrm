@@ -13,12 +13,16 @@ local function setup_raid()
     add_creature_to_map(creature_ids[RNG_range(1, #creature_ids)], y, x)
   end
 
+  set_creature_additional_property(PLAYER_ID, QUEST_STONEHEIM_RAID_INITIATED, "1")
   set_creature_additional_property(PLAYER_ID, QUEST_STONEHEIM_RAID, "1")
 end
 
-if player_has_item(WIZARD_ROBES_ID) and player_has_item(WIZARD_STAFF_ID) then
-  remove_object_from_player(WIZARD_ROBES_ID)
-  remove_object_from_player(WIZARD_STAFF_ID)
+local raid_initiated = (get_creature_additional_property(PLAYER_ID, QUEST_STONEHEIM_RAID_INITIATED) == "1")
+local stoneheim_props = "stoneheim_quest=1"
+
+if player_has_item(WIZARD_ROBES_ID, stoneheim_props) and player_has_item(WIZARD_STAFF_ID, stoneheim_props) and raid_initiated == false then
+  remove_object_from_player(WIZARD_ROBES_ID, 1, "stoneheim_quest=1")
+  remove_object_from_player(WIZARD_STAFF_ID, 1, "stoneheim_quest=1")
 
   set_creature_additional_property(PLAYER_ID, QUEST_GOLGOA_WIZARD_COMPLETE, "1")
   add_message_with_pause("NEW_WIZARD_THANKS_SID")

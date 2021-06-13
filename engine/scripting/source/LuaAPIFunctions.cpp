@@ -954,6 +954,7 @@ int is_unique(lua_State* ls)
 // Arguments:
 // - 1: base item ID
 // - 2: quantity (optional, 1 is assumed)
+// - 3: properties to add to item once created (optional, empty assumed)
 //
 // Return value: true if added, false otherwise.
 int add_object_to_player_tile(lua_State* ls)
@@ -961,10 +962,21 @@ int add_object_to_player_tile(lua_State* ls)
   bool added = false;
   int num_args = lua_gettop(ls);
 
-  if (lua_isstring(ls, 1) && (num_args == 1 || (num_args == 2 && lua_isnumber(ls, 2))))
+  if (lua_isstring(ls, 1))
   {
-    string base_item_id;
+    string base_item_id = lua_tostring(ls, 1);
     uint quantity = 1;
+    std::map<string, string> properties;
+
+    if (num_args >= 2 && lua_isnumber(ls, 2))
+    {
+      quantity = static_cast<uint>(lua_tointeger(ls, 2));
+    }
+
+    if (num_args >= 3 && lua_isstring(ls, 3))
+    {
+      properties = String::create_properties_from_string(lua_tostring(ls, 3));
+    }
 
     Game& game = Game::instance();
     MapPtr map = game.get_current_map();
@@ -973,16 +985,28 @@ int add_object_to_player_tile(lua_State* ls)
     {
       CreaturePtr player = game.get_current_player();
       TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
+      
+      ItemPtr item = ItemManager::create_item(base_item_id, quantity);
 
-      base_item_id = lua_tostring(ls, 1);
-
-      // Set the quantity if it was specified.    
-      if (num_args == 2)
+      if (item != nullptr)
       {
-        quantity = static_cast<uint>(lua_tointeger(ls, 2));
-      }
+        if (item->get_status() == ItemStatus::ITEM_STATUS_CURSED)
+        {
+          item->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
+        }
 
-      added = ItemManager::create_item_with_probability(100, 100, player_tile->get_items(), base_item_id, quantity, true /* disallow cursed */);
+        for (const auto& prop_pair : properties)
+        {
+          item->set_additional_property(prop_pair.first, prop_pair.second);
+        }
+
+        IInventoryPtr items = player_tile->get_items();
+
+        if (items != nullptr)
+        {
+          items->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+        }
+      }
     }
   }
   else
@@ -1519,14 +1543,21 @@ int get_quest_details(lua_State* ls)
 int player_has_item(lua_State* ls)
 {
   bool has_item = false;
+  int num_args = lua_gettop(ls);
+  std::map<string, string> properties;
 
-  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, -1)))
+  if (num_args >= 1 && lua_isstring(ls, 1))
   {
+    if (num_args >= 2 && lua_isstring(ls, 2))
+    {
+      properties = String::create_properties_from_string(lua_tostring(ls, 2));
+    }
+
     string base_item_id = lua_tostring(ls, 1);
     Game& game = Game::instance();
     CreaturePtr player = game.get_current_player();
 
-    has_item = ItemManager::has_item(player, base_item_id);
+    has_item = ItemManager::has_item(player, base_item_id, properties);
   }
   else
   {
@@ -1543,21 +1574,27 @@ int remove_object_from_player(lua_State* ls)
 {
   int num_args = lua_gettop(ls);
   int quantity = 1;
+  map<string, string> properties;
 
-  if ((num_args >= 1) && (lua_isstring(ls, 1)))
+  if (num_args >= 1 && lua_isstring(ls, 1))
   {
     string object_base_id = lua_tostring(ls, 1);
 
-    if ((num_args == 2) && (lua_isnumber(ls, 2)))
+    if (num_args >= 2 && lua_isnumber(ls, 2))
     {
       quantity = lua_tointeger(ls, 2);
+    }
+
+    if (num_args >= 3 && lua_isstring(ls, 3))
+    {
+      properties = String::create_properties_from_string(lua_tostring(ls, 3));
     }
 
     Game& game = Game::instance();
     CreaturePtr player = game.get_current_player();
 
     ItemManager im;
-    im.remove_item_from_eq_or_inv(player, object_base_id, quantity);
+    im.remove_item_from_eq_or_inv(player, object_base_id, quantity, properties);
   }
   else
   {
@@ -8054,31 +8091,33 @@ int set_weather(lua_State* ls)
   return 0;
 }
 
-// Clear all non-player creatures from the current map
+// Clear all non-player creatures from the current map.
+// If an argument is given, clear that race ID.
 int genocide(lua_State* ls)
 {
-  if (lua_gettop(ls) == 0)
+  MapPtr map = Game::instance().get_current_map();
+  string race_id;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
   {
-    MapPtr map = Game::instance().get_current_map();
+    race_id = lua_tostring(ls, 1);
+  }
 
-    if (map != nullptr)
+  if (map != nullptr)
+  {
+    const CreatureMap creatures = map->get_creatures();
+
+    for (auto cr_pair : creatures)
     {
-      const CreatureMap creatures = map->get_creatures();
+      CreaturePtr creature = cr_pair.second;
 
-      for (auto cr_pair : creatures)
+      if (creature != nullptr && 
+          !creature->get_is_player() &&
+          (race_id.empty() || race_id == creature->get_race_id()))
       {
-        CreaturePtr creature = cr_pair.second;
-
-        if (creature != nullptr && !creature->get_is_player())
-        {
-          MapUtils::remove_creature(map, creature);
-        }
+        MapUtils::remove_creature(map, creature);
       }
     }
-  }
-  else
-  {
-    LuaUtils::log_and_raise(ls, "Invalid arguments to genocide");
   }
 
   return 0;

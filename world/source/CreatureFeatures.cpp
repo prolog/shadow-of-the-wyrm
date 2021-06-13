@@ -43,6 +43,7 @@ const string CreatureID::CREATURE_ID_MAGICAL_SPIRIT = "_magical_spirit";
 const string CreatureID::CREATURE_ID_VENDOR = "_vendor";
 const string CreatureID::CREATURE_ID_PLAYER = "player";
 const string CreatureID::CREATURE_ID_PREFIX_ANCIENT_BEAST = "_ancient_beast_";
+const string CreatureID::CREATURE_ID_POTTER = "_potter";
 const string CreatureID::CREATURE_ID_SMITH = "_smith";
 const string CreatureID::CREATURE_ID_JEWELER = "_jeweler";
 const string CreatureID::CREATURE_ID_WEAVER = "_weaver";

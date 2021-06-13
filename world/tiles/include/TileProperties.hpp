@@ -68,6 +68,10 @@ class TileProperties
     // Can this tile be dug?
     static const std::string TILE_PROPERTY_CANNOT_DIG;
 
+    // Did this tile contain clay?  Used to influence the chance that
+    // nearby tiles have clay as well.
+    static const std::string TILE_PROPERTY_CLAY;
+
     // Generates the map key that identifies the custom map ID for
     // a given depth.
     static std::string get_depth_custom_map_id(const int depth);

@@ -15,12 +15,12 @@ local function kew_dungeon_completion_condition_fn()
 end
 
 -- Kew, in his gratitute, grants the player the best part of his former
--- adventuring arsenal: chain mail, a good sword, and a few healing
+-- adventuring arsenal: chain mail, some shadow bombs, and a few healing
 -- potions.
 local function kew_dungeon_completion_fn()
   add_message("KEW_DUNGEON_QUEST_COMPLETE_SID")
   add_object_to_player_tile("chain_mail")
-  add_object_to_player_tile("shadow_bomb", 8)
+  add_object_to_player_tile("_shadow_bomb", 8)
   add_object_to_player_tile("_healing_potion", 2)
 
   return true

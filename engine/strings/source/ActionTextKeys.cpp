@@ -533,6 +533,16 @@ string ActionTextKeys::get_npc_contraband_message(const string& creature_sid)
   return msg;
 }
 
+string ActionTextKeys::get_kiln_no_item_message(const string& missing_sid, const string& creation_sid)
+{
+  string msg = StringTable::get(ACTION_KILN_NO_ITEM);
+  boost::replace_first(msg, "%s1", StringTable::get(missing_sid));
+  boost::replace_first(msg, "%s2", StringTable::get(creation_sid));
+
+  msg[0] = toupper(msg[0]);
+  return msg;
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -593,6 +603,7 @@ const string ActionTextKeys::ACTION_KICK_WORLD_MAP             = "ACTION_KICK_WO
 const string ActionTextKeys::ACTION_KICK_NOTHING_TO_KICK_AT    = "ACTION_KICK_NOTHING_TO_KICK_AT";
 const string ActionTextKeys::ACTION_KICK_SOLID_TILE            = "ACTION_KICK_SOLID_TILE";
 const string ActionTextKeys::ACTION_KICK_WATER_TILE            = "ACTION_KICK_WATER_TILE";
+const string ActionTextKeys::ACTION_KICK_KILN                  = "ACTION_KICK_KILN";
 const string ActionTextKeys::ACTION_KICK_FORGE                 = "ACTION_KICK_FORGE";
 const string ActionTextKeys::ACTION_KICK_JEWELER_WORKBENCH     = "ACTION_KICK_JEWELER_WORKBENCH";
 const string ActionTextKeys::ACTION_KICK_TANNERY               = "ACTION_KICK_TANNERY";
@@ -610,6 +621,9 @@ const string ActionTextKeys::ACTION_KICK_TABLE                 = "ACTION_KICK_TA
 const string ActionTextKeys::ACTION_KICK_SLOT_MACHINE          = "ACTION_KICK_SLOT_MACHINE";
 const string ActionTextKeys::ACTION_KICK_SPRAIN_LEG            = "ACTION_KICK_SPRAIN_LEG";
 const string ActionTextKeys::ACTION_APPLY_TRAP_TOO_FAR         = "ACTION_APPLY_TRAP_TOO_FAR";
+const string ActionTextKeys::ACTION_KILN_NO_CLAY               = "ACTION_KILN_NO_CLAY";
+const string ActionTextKeys::ACTION_KILN_CREATE_ITEM           = "ACTION_KILN_CREATE_ITEM";
+const string ActionTextKeys::ACTION_KILN_CREATION_COMPLETE     = "ACTION_KILN_CREATION_COMPLETE";
 const string ActionTextKeys::ACTION_FORGE_NO_SUITABLE_HAMMER   = "ACTION_FORGE_NO_SUITABLE_HAMMER";
 const string ActionTextKeys::ACTION_FORGE_NO_SMITHING_SKILL    = "ACTION_FORGE_NO_SMITHING_SKILL";
 const string ActionTextKeys::ACTION_FORGE_NO_INGOTS            = "ACTION_FORGE_NO_INGOTS";
@@ -771,3 +785,4 @@ const string ActionTextKeys::ACTION_TAME_FAILURE                  = "ACTION_TAME
 const string ActionTextKeys::ACTION_INCINERATE_SPELLBOOK          = "ACTION_INCINERATE_SPELLBOOK";
 const string ActionTextKeys::ACTION_INCINERATE_SPELLBOOK_WILD     = "ACTION_INCINERATE_SPELLBOOK_WILD";
 const string ActionTextKeys::ACTION_NPC_YELL_CONTRABAND           = "ACTION_NPC_YELL_CONTRABAND";
+const string ActionTextKeys::ACTION_KILN_NO_ITEM                  = "ACTION_KILN_NO_ITEM";

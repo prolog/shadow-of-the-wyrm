@@ -11,10 +11,12 @@
 #include "DeitySelectionScreen.hpp"
 #include "DisplaySettings.hpp"
 #include "DisplayTile.hpp"
+#include "EyeSelectionScreen.hpp"
 #include "FeatureGenerator.hpp"
 #include "FileConstants.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "HairSelectionScreen.hpp"
 #include "HelpCommandProcessor.hpp"
 #include "HelpScreen.hpp"
 #include "HighScoreScreen.hpp"
@@ -183,6 +185,10 @@ void ShadowOfTheWyrmEngine::setup_display(const Settings& settings)
 
     string mono_colour = DisplaySettings::DISPLAY_SETTING_MONOCHROME_COLOUR;
     display->set_property(mono_colour, settings.get_setting(mono_colour));
+
+    // For graphical/tiled displays, force ASCII?
+    bool force_ascii = settings.get_setting_as_bool(Setting::DISPLAY_FORCE_ASCII);
+    display->set_force_ascii(force_ascii);
   }
 }
 
@@ -506,6 +512,53 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   Race* selected_race = races.find(selected_race_id)->second.get();
   Class* selected_class = classes.find(selected_class_id)->second.get();
 
+  creature_synopsis = TextMessages::get_character_creation_synopsis(sex, selected_race, selected_class, nullptr, nullptr);
+
+  HairColour hair_colour = HairColour::HAIR_NA;
+  string default_hair = game.get_settings_ref().get_setting(Setting::DEFAULT_HAIR_COLOUR);
+
+  if (!default_hair.empty())
+  {
+    HairColour hc = static_cast<HairColour>(String::to_int(default_hair));
+
+    if (hc == HairColour::HAIR_NA)
+    {
+      HairSelectionScreen hss(display, creature_synopsis);
+      string val = hss.display();
+
+      if (!opt.is_random_option(val.at(0)))
+      {
+        hair_colour = static_cast<HairColour>(Char::keyboard_selection_char_to_int(val.at(0)));
+      }
+    }
+    else
+    {
+      hair_colour = hc;
+    }
+  }
+
+  EyeColour eye_colour = EyeColour::EYE_COLOUR_NA;
+  string default_eye = game.get_settings_ref().get_setting(Setting::DEFAULT_EYE_COLOUR);
+  if (!default_eye.empty())
+  {
+    EyeColour ec = static_cast<EyeColour>(String::to_int(default_eye));
+
+    if (ec == EyeColour::EYE_COLOUR_NA)
+    {
+      EyeSelectionScreen ess(display, creature_synopsis);
+      string val = ess.display();
+
+      if (!opt.is_random_option(val.at(0)))
+      {
+        eye_colour = static_cast<EyeColour>(Char::keyboard_selection_char_to_int(val.at(0)));
+      }
+    }
+    else
+    {
+      eye_colour = ec;
+    }
+  }
+
   string default_deity_id = game.get_settings_ref().get_setting(Setting::DEFAULT_DEITY_ID);
   bool prompt_user_for_deity_selection = true;
   vector<string> deity_ids = selected_race->get_initial_deity_ids();
@@ -519,8 +572,6 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   if (prompt_user_for_deity_selection)
   {
-    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, selected_race, selected_class, nullptr, nullptr);
-
     DeitySelectionScreen deity_selection(display, selected_race, creature_synopsis);
     string deity_index = deity_selection.display();
 
@@ -583,7 +634,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
   }
 
-  CharacterCreationDetails ccd(sex, selected_race_id, selected_class_id, selected_deity_id, sl);
+  CharacterCreationDetails ccd(sex, hair_colour, eye_colour, selected_race_id, selected_class_id, selected_deity_id, sl);
   return process_name_and_start(ccd);
 }
 
@@ -640,6 +691,20 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
 
   CreatureFactory cf;
   CreaturePtr player = cf.create_by_race_and_class(game.get_action_manager_ref(), nullptr, ccd.get_race_id(), ccd.get_class_id(), name, ccd.get_sex(), CreatureSize::CREATURE_SIZE_NA, ccd.get_deity_id(), true, true);
+
+  HairColour hc = ccd.get_hair_colour();
+  EyeColour ec = ccd.get_eye_colour();
+
+  if (hc != HairColour::HAIR_NA)
+  {
+    player->set_hair_colour(hc);
+  }
+
+  if (ec != EyeColour::EYE_COLOUR_NA)
+  {
+    player->set_eye_colour(ec);
+  }
+
   cf.setup_player(player, controller);
 
   setup_auto_action_settings(player);

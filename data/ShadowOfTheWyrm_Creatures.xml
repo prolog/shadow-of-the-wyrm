@@ -20372,7 +20372,7 @@
 				<Exp>10</Exp>
 				<InitialEquipmentAndInventory>
 					<Ammunition>
-						<ID>fire_bomb</ID>
+						<ID>_fire_bomb</ID>
 						<Quantity>
 							<Random>
 								<NumDice>3</NumDice>
@@ -21798,6 +21798,55 @@
 				<Type>1</Type>
 			</Damage>
 			<Evade>3</Evade>
+		</Creature>
+		<Creature id="_potter">
+			<RaceID>01_human,02_woodelf,03_mountainelf,04_snakeling,05_fae,06_dwarf,07_goblin,08_ogre,09_giant,10_gnome</RaceID>
+			<ShortDescriptionSID>POTTER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>POTTER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>POTTER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>POTTER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>t</Char>
+				<Colour>12</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>21</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>3</Exp>
+				<InitialEquipmentAndInventory>
+					<Ammunition>
+						<ID>_clay_pot</ID>
+						<Quantity>
+							<Random>
+								<NumDice>1</NumDice>
+								<NumSides>3</NumSides>
+							</Random>
+						</Quantity>
+					</Ammunition>
+				</InitialEquipmentAndInventory>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>1</Type>
+			</Damage>
 		</Creature>
 		<Creature id="layperson">
 			<RaceID>01_human</RaceID>

@@ -37,7 +37,7 @@ local function check_defense()
 
   if count_creatures_with_race(GOBLIN_RACE_ID) == 0 then
     remove_creature_additional_property(PLAYER_ID, QUEST_STONEHEIM_RAID)
-    
+
     add_message_with_pause("SKAAL_RAID_SID")
     clear_and_add_message("SKAAL_RAID2_SID")
 

@@ -189,7 +189,7 @@ bool ItemIdentifier::get_item_identified(ItemPtr item, const bool item_is_base_i
 
 // Get the appropriate description.  If the item is unidentified, use the unidentified_description_sid;
 // otherwise, use the regular (identified) one.  Add status, etc.
-string ItemIdentifier::get_appropriate_description(ItemPtr item) const
+string ItemIdentifier::get_appropriate_description(ItemPtr item, const bool show_synopsis) const
 {
   string appropriate_desc;
   ostringstream desc;
@@ -245,8 +245,9 @@ string ItemIdentifier::get_appropriate_description(ItemPtr item) const
       desc << StringTable::get(item->get_description_sid());
     }
 
-    // Show the synopsis whenever the item is identified or has no hidden info.
-    if (item_identified || item->get_unidentified_description_sid().empty())
+    // If we're supposed to show the synopsis, show it whenever the item is 
+    // identified or has no hidden info.
+    if (show_synopsis && (item_identified || item->get_unidentified_description_sid().empty()))
     {
       string synopsis = item->get_synopsis();
 

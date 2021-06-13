@@ -59,10 +59,20 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
         DisplayPtr display = game.get_display();
         ActionManager& am = game.get_action_manager_ref();
 
-        vector<pair<string, string>> item_property_filter = { make_pair(WeavingConstants::WEAVING_MATERIAL_TYPE_KEY, "") };
-        list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_property_type_filter(item_property_filter);
+        vector<ItemPtr> p_items = creature->get_inventory()->get_all_from_property(WeavingConstants::WEAVING_MATERIAL_TYPE_KEY);
+        ItemPtr selected_fibre;
 
-        ItemPtr selected_fibre = am.inventory(creature, creature->get_inventory(), display_filter_list, {}, false, false);
+        if (p_items.size() == 1)
+        {
+          selected_fibre = p_items[0];
+        }
+        else
+        {
+          vector<pair<string, string>> item_property_filter = { make_pair(WeavingConstants::WEAVING_MATERIAL_TYPE_KEY, "") };
+          list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_property_type_filter(item_property_filter);
+
+          selected_fibre = am.inventory(creature, creature->get_inventory(), display_filter_list, {}, false, false);
+        }
 
         if (selected_fibre)
         {
@@ -85,6 +95,9 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
 
               if (armour)
               {
+                // Set the status based on the fibre
+                armour->set_status(selected_fibre->get_status());
+
                 // Reduce/remove the skin.
                 selected_fibre->set_quantity(selected_fibre->get_quantity() - 1);
 
@@ -140,7 +153,7 @@ ItemPtr WheelAndLoomManipulator::create_woven_armour(CreaturePtr creature, ItemP
       {
         WeavingCalculator wc;
 
-        int extra_evade = RNG::range(2, 4);
+        int extra_evade = RNG::range(1, 6);
         int extra_soak  = RNG::range(1, 2);
         int min_points  = wc.calculate_min_enchant_points(creature);
         int max_points  = wc.calculate_max_enchant_points(creature);
