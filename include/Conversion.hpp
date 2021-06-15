@@ -70,6 +70,8 @@ class File
     // Converts the contents of a text file to a string, removing any newlines.
     static std::string to_resource_string(const std::string& filename, const std::map<std::string, std::string>& char_replacements = {});
 
+    static std::string harmonize_dirname(const std::string& dirname);
+
   protected:
     File();
     ~File();

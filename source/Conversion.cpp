@@ -447,6 +447,18 @@ string File::to_resource_string(const string& filename, const map<string, string
   return str;
 }
 
+string File::harmonize_dirname(const string& dir_name)
+{
+  string d = dir_name;
+
+  if (dir_name.at(dir_name.size() - 1) != '/')
+  {
+    d += "/";
+  }
+
+  return d;
+}
+
 // Update the resource string so any occurrence of a text format specifier
 // within the string is always followed by a space.  This ensures that the
 // tokenization functions used for resource strings works properly.

@@ -2,30 +2,46 @@
 #include <ctime>
 #include <sstream>
 #include <limits>
+#include <boost/algorithm/string/trim.hpp> 
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/filesystem.hpp>
+#include "Conversion.hpp"
 #include "Log.hpp"
+#include "MessageManagerFactory.hpp"
+#include "Setting.hpp"
 
 using namespace std;
 
 LoggingLevel Log::level = LoggingLevel::LOG_NONE; // Logging is off by default.
 int Log::counter = 0;
 const string Log::LOG_PREFIX = "sotw-";
+const string Log::ERROR_CANNOT_WRITE_LOG = "Could not write log file - check log_dir setting and permissions!";
 
-Log::Log()
+Log::Log(const Settings* settings)
 {
-  string filename = create_filename();
-  while (boost::filesystem::exists(filename) && (counter != std::numeric_limits<int>::max()))
-  {
-    filename = create_filename();
-  }
-
-  sl_log.open(filename.c_str(), ios::out);
+  init_file(settings);
 }
 
 Log::~Log()
 {
   sl_log.close();
+}
+
+void Log::init_file(const Settings* settings)
+{
+  string filename = create_filename(settings);
+  while (boost::filesystem::exists(filename) && (counter != std::numeric_limits<int>::max()))
+  {
+    filename = create_filename(settings);
+  }
+
+  sl_log.open(filename.c_str(), ios::out);
+
+  if (!sl_log)
+  {
+    IMessageManager& mm = MM::instance();
+    mm.add_new_message(ERROR_CANNOT_WRITE_LOG);
+  }
 }
 
 bool Log::log_using_level(const LoggingLevel log_level, const string& log_msg)
@@ -130,7 +146,7 @@ bool Log::trace_enabled() const
   return level_enabled(LoggingLevel::LOG_TRACE);
 }
 
-string Log::create_filename()
+string Log::create_filename(const Settings* settings)
 {
   string filename_ext = ".log";
   auto now = std::chrono::system_clock::now();
@@ -138,7 +154,25 @@ string Log::create_filename()
 
   struct tm *parts = std::localtime(&now_c);
   ostringstream filename;
-  filename << "logs/" << LOG_PREFIX;
+
+  string log_dir;
+  
+  if (settings != nullptr)
+  {
+    log_dir = settings->get_setting(Setting::LOG_DIR);
+    boost::algorithm::trim(log_dir);
+  }
+
+  if (log_dir.empty())
+  {
+    log_dir = "logs/";
+  }
+  else
+  {
+    log_dir = File::harmonize_dirname(log_dir);
+  }
+
+  filename << log_dir << LOG_PREFIX;
   filename << (1900 + parts->tm_year);
 
   int mon = 1 + parts->tm_mon;

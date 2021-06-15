@@ -98,13 +98,9 @@ int parse_command_line_arguments(int argc, char* argv[])
 int main(int argc, char* argv[])
 {
   register_unhandled_exception_handler();
-  Log& log = Log::instance();
 
   try
   {
-    log.set_log_level(LoggingLevel::LOG_ERROR);
-    log.trace("main - testing");
-
     print_title();
 
     if (argc > 1)
@@ -114,6 +110,9 @@ int main(int argc, char* argv[])
     else
     {
       Settings settings(true);
+      Log& log = Log::instance(&settings);
+      log.set_log_level(LoggingLevel::LOG_ERROR);
+
       string display_id = settings.get_setting(Setting::DISPLAY);
 
       #ifdef ENABLE_SDL
@@ -185,14 +184,14 @@ int main(int argc, char* argv[])
   catch(std::exception& e)
   {
     ostringstream ss;
-    ss << "main - Unable to run Shadow of the Wyrm: " << e.what();
-    log.error(ss.str());
+    ss << "Unable to run Shadow of the Wyrm: " << e.what();
+    std::cerr << ss.str();
     
     return 1;
   }
   catch(...)
   {
-    log.error("main - Unable to run Shadow of the Wyrm - unknown exception");
+    std::cerr << "Unable to run Shadow of the Wyrm - unknown exception";
     return 1;
   }
 

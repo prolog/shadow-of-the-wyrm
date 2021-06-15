@@ -3,6 +3,7 @@
 class Setting
 {
   public:
+    static const std::string LOG_DIR;
     static const std::string SHADE_TERRAIN;
     static const std::string SHADE_CREATURES_AND_ITEMS;
     static const std::string DEFAULT_HP_COLOUR;

@@ -1,6 +1,9 @@
 Shadow of the Wyrm v1.3.3 "de Sarlat"
 - Version declared June 13, 2021.
 
+- The log file location can now be configured via log_dir and will give the
+  player an error if there are problems writing to that location (Larzid).
+
 - New name and settlement name combinations.
 
 Shadow of the Wyrm v1.3.2 "del Liuto"
