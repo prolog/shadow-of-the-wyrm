@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include <boost/property_tree/ptree.hpp>
 #include "ISerializable.hpp"
 

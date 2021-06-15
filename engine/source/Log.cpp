@@ -29,15 +29,26 @@ Log::~Log()
 
 void Log::init_file(const Settings* settings)
 {
-  string filename = create_filename(settings);
-  while (boost::filesystem::exists(filename) && (counter != std::numeric_limits<int>::max()))
+  bool log_ok = true;
+  string filename;
+
+  try
   {
     filename = create_filename(settings);
+    while (boost::filesystem::exists(filename) && (counter != std::numeric_limits<int>::max()))
+    {
+      filename = create_filename(settings);
+    }
+  }
+  catch (...)
+  {
+    log_ok = false;
   }
 
   sl_log.open(filename.c_str(), ios::out);
+  log_ok = log_ok && sl_log;
 
-  if (!sl_log)
+  if (!log_ok)
   {
     IMessageManager& mm = MM::instance();
     mm.add_new_message(ERROR_CANNOT_WRITE_LOG);
