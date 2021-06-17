@@ -11,6 +11,10 @@ Shadow of the Wyrm v1.3.3 "de Sarlat"
 
 - New name and settlement name combinations.
 
+- Bug fixes:
+
+  - Hide whips weren't being suppressed during regular item generation (Red).
+
 Shadow of the Wyrm v1.3.2 "del Liuto"
 - Version declared April 23, 2021.  Version finalized June 13, 2021.
 
