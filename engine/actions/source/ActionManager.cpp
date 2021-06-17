@@ -47,6 +47,8 @@
 #include "SkinAction.hpp"
 #include "SpellcastingAction.hpp"
 #include "StatusAilmentTextKeys.hpp"
+#include "TextKeys.hpp"
+#include "TextMessages.hpp"
 #include "VersionAction.hpp"
 #include "WeaponInfoAction.hpp"
 #include "Log.hpp"
@@ -345,27 +347,45 @@ ActionCost ActionManager::run_script_command(CreaturePtr creature)
 {
   Game& game = Game::instance();
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-  ScriptEngine& se = game.get_script_engine_ref();
-  string command = manager.add_new_message_with_prompt(StringTable::get(PromptTextKeys::PROMPT_RUN_SCRIPT));
 
-  // If the player didn't enter anything, use the last command.
-  // Otherwise, save the current command for next time.
-  if (command.empty())
+  bool disallow_score_on_exploration = game.get_settings_ref().get_setting_as_bool(Setting::DISALLOW_SCORE_ON_EXPLORATION);
+  bool confirmation = (game.should_count_score() == false);
+
+  if (disallow_score_on_exploration && game.should_count_score())
   {
-    command = se.get_last_executed();
-  }
-  else
-  {
-    se.set_last_executed(command);
+    manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_USE_LUA_CONSOLE));
+    confirmation = creature->get_decision_strategy()->get_confirmation();
   }
 
-  DisplayPtr display = game.get_display();
-  if (display != nullptr)
+  if (disallow_score_on_exploration == false || confirmation)
   {
-    display->clear_messages();
-  }
+    ScriptEngine& se = game.get_script_engine_ref();
+    string command = manager.add_new_message_with_prompt(StringTable::get(PromptTextKeys::PROMPT_RUN_SCRIPT));
 
-  se.run_command(command);
+    // If the player didn't enter anything, use the last command.
+    // Otherwise, save the current command for next time.
+    if (command.empty())
+    {
+      command = se.get_last_executed();
+    }
+    else
+    {
+      se.set_last_executed(command);
+    }
+
+    DisplayPtr display = game.get_display();
+    if (display != nullptr)
+    {
+      display->clear_messages();
+    }
+
+    se.run_command(command);
+
+    if (disallow_score_on_exploration)
+    {
+      game.set_count_score(false);
+    }
+  }
 
   return get_action_cost(creature, 0);
 }

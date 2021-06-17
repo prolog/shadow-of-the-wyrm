@@ -144,6 +144,10 @@ class Game : public ISerializable
     void set_current_loaded_savefile(const std::string& current_loaded_savefile);
     std::string get_current_loaded_savefile() const;
 
+    void set_count_score(const bool new_count_score);
+    bool get_count_score() const;
+    bool should_count_score() const;
+
     void set_spritesheets(const std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>>& new_spritesheets);
     std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>> get_spritesheets() const;
 
@@ -285,6 +289,10 @@ class Game : public ISerializable
 
     // Any spritesheets and references associated with the configuration.
     std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>> spritesheets;
+
+    // Should this game create a score at the end?  Generally yes, unless
+    // the Lua console was used with a particular setting in place.
+    bool count_score;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

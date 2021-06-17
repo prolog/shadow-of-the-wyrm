@@ -59,7 +59,11 @@
 using namespace std;
 
 Game::Game()
-: keep_playing(true), reload_game_loop(false), check_scores(true), requires_redraw(false)
+: keep_playing(true)
+, reload_game_loop(false)
+, check_scores(true)
+, requires_redraw(false)
+, count_score(true)
 {
   // Setup the time keeper.  On a new game, this will initialize everything as
   // expected - when loading an existing game, this will be overwritten later,
@@ -645,6 +649,14 @@ void Game::go()
 
     // We're done - clear the display so that score information (or error
     // information, it is me coding this, after all) can be shown.
+    if (!should_count_score())
+    {
+      IMessageManager& manager = MM::instance();
+      manager.add_new_message_with_pause(StringTable::get(TextKeys::SCORE_SUPPRESSED_LUA_NARRATIVE));
+      manager.send();
+      get_current_player()->get_decision_strategy()->get_confirmation();
+    }
+
     display->clear_display();
     display->redraw();
     update_score_file_if_necessary(current_player);
@@ -694,6 +706,24 @@ bool Game::should_check_scores() const
   return check_scores;
 }
 
+bool Game::should_count_score() const
+{
+  bool calc_score = true;
+  bool disallow_score_on_exploration = settings.get_setting_as_bool(Setting::DISALLOW_SCORE_ON_EXPLORATION);
+
+  if (disallow_score_on_exploration)
+  {
+    bool narrative_mode = settings.get_setting_as_bool(Setting::NARRATIVE_MODE);
+
+    if (disallow_score_on_exploration && (narrative_mode || !count_score))
+    {
+      calc_score = false;
+    }
+  }
+
+  return calc_score;
+}
+
 // Update score files if the game is being exited but not saved
 // (e.g.: creature killed, wins, etc)
 void Game::update_score_file_if_necessary(CreaturePtr current_player)
@@ -704,14 +734,17 @@ void Game::update_score_file_if_necessary(CreaturePtr current_player)
   {
     try
     {
-      ScoreFile sf;
-      sf.write(current_player);
+      if (should_count_score())
+      {
+        ScoreFile sf;
+        sf.write(current_player);
 
-      Game& game = Game::instance();
-      HighScoreScreen hss(game.get_display(), sf.get_entries());
-      auto val = hss.display();
+        Game& game = Game::instance();
+        HighScoreScreen hss(game.get_display(), sf.get_entries());
+        auto val = hss.display();
 
-      sf.save();
+        sf.save();
+      }
     }
     catch (const std::runtime_error& e)
     {
@@ -1094,6 +1127,16 @@ std::map<string, pair<string, unordered_map<string, Coordinate>>> Game::get_spri
   return spritesheets;
 }
 
+void Game::set_count_score(const bool new_count_score)
+{
+  count_score = new_count_score;
+}
+
+bool Game::get_count_score() const
+{
+  return count_score;
+}
+
 bool Game::serialize(ostream& stream) const
 {
   Log::instance().trace("Game::serialize - start");
@@ -1263,6 +1306,8 @@ bool Game::serialize(ostream& stream) const
     Serialize::write_string(stream, sl_pair.first);
     sl_pair.second.serialize(stream);
   }
+
+  Serialize::write_bool(stream, count_score);
 
   Log::instance().trace("Game::serialize - end");
 
@@ -1534,6 +1579,8 @@ bool Game::deserialize(istream& stream)
 
     starting_locations.insert(make_pair(sl_id, sl));
   }
+
+  Serialize::read_bool(stream, count_score);
 
   Log::instance().trace("Game::deserialize - end");
   return true;

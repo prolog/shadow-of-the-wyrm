@@ -60,6 +60,7 @@ class Setting
     static const std::string CONFIGURATION_FILE_ITEMS;
     static const std::string CONFIGURATION_FILE_WORLD_MAP_AREAS;
     static const std::string NARRATIVE_MODE;
+    static const std::string DISALLOW_SCORE_ON_EXPLORATION;
 
   protected:
     Setting();

@@ -4,6 +4,11 @@ Shadow of the Wyrm v1.3.3 "de Sarlat"
 - The log file location can now be configured via log_dir and will give the
   player an error if there are problems writing to that location (Larzid).
 
+- Added a new setting to disallow score generation for a character when
+  either narrative mode is set, or the Lua console has been used.  This
+  setting (_disallow_score_on_exploration) is off by default, and is intended 
+  for use on multiuser systems and in tournaments to enforce fairness.
+
 - New name and settlement name combinations.
 
 Shadow of the Wyrm v1.3.2 "del Liuto"

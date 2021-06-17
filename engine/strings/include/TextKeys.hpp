@@ -169,6 +169,9 @@ class TextKeys
     static const std::string DECISION_RESIST_SWITCH;
     static const std::string DECISION_STEAL_FRIENDLY_CREATURE;
     static const std::string DECISION_CREATE_IDENTIFIED_DUMP;
+    static const std::string DECISION_USE_LUA_CONSOLE;
+
+    static const std::string SCORE_SUPPRESSED_LUA_NARRATIVE;
 
     static const std::string GAIN_LEVEL;
     static const std::string UNARMED;
