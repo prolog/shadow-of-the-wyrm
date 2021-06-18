@@ -451,9 +451,12 @@ string File::harmonize_dirname(const string& dir_name)
 {
   string d = dir_name;
 
-  if (dir_name.at(dir_name.size() - 1) != '/')
+  if (!dir_name.empty())
   {
-    d += "/";
+    if (dir_name.at(dir_name.size() - 1) != '/')
+    {
+      d += "/";
+    }
   }
 
   return d;

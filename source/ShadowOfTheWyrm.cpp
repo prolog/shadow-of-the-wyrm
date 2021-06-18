@@ -20,6 +20,7 @@
 #include "CursesDisplay.hpp"
 #include "DisplayConstants.hpp"
 #include "DisplayFactory.hpp"
+#include "Environment.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
 #include "LogFiles.hpp"
@@ -112,6 +113,7 @@ int main(int argc, char* argv[])
       Settings settings(true);
       Log& log = Log::instance(&settings);
       log.set_log_level(LoggingLevel::LOG_ERROR);
+      Environment::create_userdata_directory(&settings);
 
       string display_id = settings.get_setting(Setting::DISPLAY);
 

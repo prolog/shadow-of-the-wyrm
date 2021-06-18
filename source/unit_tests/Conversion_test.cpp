@@ -203,3 +203,13 @@ TEST(SW_Engine_ConversionRoutines, dimensions_string_to_pair)
   EXPECT_EQ(1500, wh.first);
   EXPECT_EQ(600, wh.second);
 }
+
+TEST(SW_Engine_ConversionRoutines, harmonize_dirname)
+{
+  EXPECT_EQ("", File::harmonize_dirname(""));
+  EXPECT_EQ("/", File::harmonize_dirname("/"));
+  EXPECT_EQ("a/", File::harmonize_dirname("a"));
+  EXPECT_EQ("/var/", File::harmonize_dirname("/var"));
+  EXPECT_EQ("/var/root/", File::harmonize_dirname("/var/root"));
+  EXPECT_EQ("/var/root/", File::harmonize_dirname("/var/root/"));
+}

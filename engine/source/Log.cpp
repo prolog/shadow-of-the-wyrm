@@ -6,6 +6,7 @@
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/filesystem.hpp>
 #include "Conversion.hpp"
+#include "Environment.hpp"
 #include "Log.hpp"
 #include "MessageManagerFactory.hpp"
 #include "Setting.hpp"
@@ -176,7 +177,7 @@ string Log::create_filename(const Settings* settings)
 
   if (log_dir.empty())
   {
-    log_dir = "logs/";
+    log_dir = Environment::get_log_directory(settings);
   }
   else
   {

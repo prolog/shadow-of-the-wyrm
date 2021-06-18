@@ -44,39 +44,50 @@ string Serialization::save(CreaturePtr creature)
 
     // Get the user's name
     string user_name = meta.get_user_name();
-    string filename = generate_savefile_name(user_name, name);
+    Settings& settings = game.get_settings_ref();
+    string userdata_dir = Environment::get_userdata_directory(&settings);
+    string filename = generate_savefile_name(userdata_dir, user_name, name);
     fname = filename;
 
     // Name the file and do the appropriate setup
     std::ofstream stream(filename, ios::binary | ios::out);
 
-    // Create a stream for the game data (can be compressed or uncompressed).
-    ostringstream game_stream;
-        
-    // Save the state and game data:
+    if (!stream)
+    {
+      string error_msg = "Could not write savefile: " + filename;
+      Log::instance().error(error_msg);
+      std::cerr << error_msg << endl;
+    }
+    else
+    {
+      // Create a stream for the game data (can be compressed or uncompressed).
+      ostringstream game_stream;
 
-    // Save the metadata
-    meta.serialize(stream);
+      // Save the state and game data:
 
-    Settings& settings = game.get_settings_ref();
-    bool use_compression = String::to_bool(settings.get_setting(Setting::SAVEFILE_COMPRESSION));
-    int compression_level = String::to_int(settings.get_setting(Setting::COMPRESSION_LEVEL));
-    Serialize::write_bool(stream, use_compression);
-    Serialize::write_int(stream, compression_level);
+      // Save the metadata
+      meta.serialize(stream);
 
-    // Write the remaining settings: RNG, message buffer.
-    // These are not massive, so they can be left uncompressed.
-    Serialize::write_uint(stream, RNG::get_seed());
-    MessageBuffer mb = MM::instance().get_message_buffer();
-    mb.serialize(stream);
+      Settings& settings = game.get_settings_ref();
+      bool use_compression = String::to_bool(settings.get_setting(Setting::SAVEFILE_COMPRESSION));
+      int compression_level = String::to_int(settings.get_setting(Setting::COMPRESSION_LEVEL));
+      Serialize::write_bool(stream, use_compression);
+      Serialize::write_int(stream, compression_level);
 
-    // Save the game details.  This is where the bulk of the size comes from -
-    // this can be compressed after to save a lot of disk space.
-    game.serialize(game_stream);
+      // Write the remaining settings: RNG, message buffer.
+      // These are not massive, so they can be left uncompressed.
+      Serialize::write_uint(stream, RNG::get_seed());
+      MessageBuffer mb = MM::instance().get_message_buffer();
+      mb.serialize(stream);
 
-    // Write the game data, either compressed or uncompressed, depending on the
-    // settings in the ini file.
-    write_savefile(stream, game_stream, use_compression, compression_level);
+      // Save the game details.  This is where the bulk of the size comes from -
+      // this can be compressed after to save a lot of disk space.
+      game.serialize(game_stream);
+
+      // Write the game data, either compressed or uncompressed, depending on the
+      // settings in the ini file.
+      write_savefile(stream, game_stream, use_compression, compression_level);
+    }
   }
   catch(...)
   {
@@ -211,7 +222,7 @@ bool Serialization::delete_savefile(const string& filename)
 }
 
 // Generate the savefile name based on the user name and character name provided.
-string Serialization::generate_savefile_name(const string& user_name, const string& character_name)
+string Serialization::generate_savefile_name(const string& userdata_dir, const string& user_name, const string& character_name)
 {
   string string_to_hash = trim_copy(user_name) + "_" + trim_copy(character_name);
 
@@ -221,14 +232,17 @@ string Serialization::generate_savefile_name(const string& user_name, const stri
   
   boost::hash<string> string_hash;
   size_t hash = string_hash(string_to_hash);
-  string savefile_name = "./" + std::to_string(hash) + ".sws"; // "sws" = "Shadow of the Wyrm Save"
+  string savefile_name = userdata_dir + std::to_string(hash) + ".sws"; // "sws" = "Shadow of the Wyrm Save"
 
   return savefile_name;
 }
 
 bool Serialization::does_savefile_exist_for_user_and_character(const string& user_name, const string& character_name)
 {
-  string filename = generate_savefile_name(user_name, character_name);
+  Game& game = Game::instance();
+  Settings& settings = game.get_settings_ref();
+  string userdata_dir = Environment::get_userdata_directory(&settings);
+  string filename = generate_savefile_name(userdata_dir, user_name, character_name);
   path save_file_filter(filename);
 
   return (exists(save_file_filter));
@@ -239,9 +253,11 @@ bool Serialization::does_savefile_exist_for_user_and_character(const string& use
 // Get a list of savefile names for the current user.
 vector<pair<string, string>> Serialization::get_save_file_names(const bool single_user_mode, const bool skip_metadata_verification)
 {
+  Settings& settings = Game::instance().get_settings_ref();
   vector<pair<string,string>> save_files;
   string user_name = Environment::get_user_name();
-  path save_file_filter(".");
+  string userdata_dir = Environment::get_userdata_directory(&settings);
+  path save_file_filter(userdata_dir + ".");
   directory_iterator end_it;
 
   boost::regex e(FileConstants::SAVEFILE_PATTERN);

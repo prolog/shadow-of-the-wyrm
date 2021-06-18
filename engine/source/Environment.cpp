@@ -1,6 +1,10 @@
 #include <sstream>
 #include <vector>
+#include <boost/algorithm/string/trim.hpp> 
+#include <boost/filesystem.hpp>
+#include "Conversion.hpp"
 #include "Environment.hpp"
+#include "Setting.hpp"
 
 using namespace std;
 
@@ -21,6 +25,60 @@ using namespace std;
 #endif
 
 using namespace std;
+
+string Environment::get_log_directory(const Settings* settings)
+{
+  string log_directory;
+
+  if (settings != nullptr)
+  {
+    log_directory = File::harmonize_dirname(settings->get_setting(Setting::LOG_DIR));
+    boost::algorithm::trim(log_directory);
+  }
+
+  if (log_directory.empty())
+  {
+    log_directory = "logs/";
+  }
+
+  return log_directory;
+}
+
+bool Environment::create_userdata_directory(const Settings* settings)
+{
+  bool created = false;
+
+  string userdata_dir = get_userdata_directory(settings);
+  string user_home_dir = get_user_home_directory();
+
+  // Only try to create the directory if it's in the user's home dir.
+  // Leave other directory creation to the sysadmins.
+  if (userdata_dir.find(user_home_dir) != std::string::npos)
+  {
+    boost::filesystem::create_directory(userdata_dir);
+  }
+
+  return created;
+}
+
+string Environment::get_userdata_directory(const Settings* settings)
+{
+  string userdata_directory = get_user_home_directory() + "/.sotw/";
+
+  if (settings != nullptr)
+  {
+    string settings_userdata_dir = settings->get_setting(Setting::USERDATA_DIR);
+    boost::algorithm::trim(settings_userdata_dir);
+
+    if (!settings_userdata_dir.empty())
+    {
+      userdata_directory = settings_userdata_dir;
+    }
+  }
+
+  userdata_directory = File::harmonize_dirname(userdata_directory);
+  return userdata_directory;
+}
 
 // Return the current player's username.
 string Environment::get_user_name()
