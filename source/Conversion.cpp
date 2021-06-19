@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <iterator>
 #include <boost/algorithm/string.hpp>
+#include <boost/filesystem.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/tokenizer.hpp>
 #include <boost/uuid/uuid_io.hpp>
@@ -449,17 +450,18 @@ string File::to_resource_string(const string& filename, const map<string, string
 
 string File::harmonize_dirname(const string& dir_name)
 {
-  string d = dir_name;
+  ostringstream ss;
+  ss << dir_name;
 
   if (!dir_name.empty())
   {
-    if (dir_name.at(dir_name.size() - 1) != '/')
+    if (dir_name.at(dir_name.size() - 1) != FS_PATH_SEPARATOR)
     {
-      d += "/";
+      ss << FS_PATH_SEPARATOR;
     }
   }
 
-  return d;
+  return ss.str();
 }
 
 // Update the resource string so any occurrence of a text format specifier

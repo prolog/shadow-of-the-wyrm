@@ -141,10 +141,11 @@ string TextMessages::get_action_not_found_message(const string& command_action)
   return action_message;
 }
 
-string TextMessages::get_dumping_character_message(const string& creature_name)
+string TextMessages::get_dumping_character_message(const string& char_name, const string& dir)
 {
   string dumping_message = StringTable::get(TextMessages::DUMPING_CHARACTER_MESSAGE);
-  boost::replace_first(dumping_message, "%s", creature_name);
+  boost::replace_first(dumping_message, "%s1", char_name);
+  boost::replace_first(dumping_message, "%s2", dir);
   return dumping_message;
 }
 

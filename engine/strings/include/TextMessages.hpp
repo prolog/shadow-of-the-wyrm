@@ -19,7 +19,7 @@ class TextMessages
     static std::string get_npc_escapes_message(const std::string& creature_description);
     static std::string get_npc_level_message(const std::string& creature_description);
     static std::string get_action_not_found_message(const std::string& command_action);
-    static std::string get_dumping_character_message(const std::string& creature_name);
+    static std::string get_dumping_character_message(const std::string& char_name, const std::string& dir);
     static std::string get_sex(const CreatureSex sex);
     static std::string get_sex_abrv(const CreatureSex sex);
     static std::string get_name_and_title(CreaturePtr creature);

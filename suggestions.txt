@@ -1,5 +1,7 @@
 Me:
 - make multiuser friendly:
+  - ensure file save error goes to logs
+  - update manual to mention data dirs
   - configurable paths for scores.dat, savefiles, dumps
   - per-user configuration setting overrides (.sotwrc/sotw.rc) read from home
   - death-dump file similar to nethack etc

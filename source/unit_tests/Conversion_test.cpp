@@ -206,10 +206,13 @@ TEST(SW_Engine_ConversionRoutines, dimensions_string_to_pair)
 
 TEST(SW_Engine_ConversionRoutines, harmonize_dirname)
 {
+  string fs_sep(1, FS_PATH_SEPARATOR);
+
   EXPECT_EQ("", File::harmonize_dirname(""));
-  EXPECT_EQ("/", File::harmonize_dirname("/"));
-  EXPECT_EQ("a/", File::harmonize_dirname("a"));
-  EXPECT_EQ("/var/", File::harmonize_dirname("/var"));
-  EXPECT_EQ("/var/root/", File::harmonize_dirname("/var/root"));
-  EXPECT_EQ("/var/root/", File::harmonize_dirname("/var/root/"));
+  EXPECT_EQ("a" + fs_sep, File::harmonize_dirname("a"));
+  EXPECT_EQ("/var" + fs_sep, File::harmonize_dirname("/var"));
+  EXPECT_EQ("/var/root" + fs_sep, File::harmonize_dirname("/var/root"));
+  EXPECT_EQ("/var/root" + fs_sep, File::harmonize_dirname("/var/root" + fs_sep));
+  EXPECT_EQ("C:\\temp" + fs_sep, File::harmonize_dirname("C:\\temp"));
+  EXPECT_EQ("C:\\temp" + fs_sep, File::harmonize_dirname("C:\\temp" + fs_sep));
 }

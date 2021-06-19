@@ -38,7 +38,8 @@ string Environment::get_log_directory(const Settings* settings)
 
   if (log_directory.empty())
   {
-    log_directory = "logs/";
+    log_directory = "logs";
+    log_directory.append(1, FS_PATH_SEPARATOR);
   }
 
   return log_directory;
@@ -63,7 +64,7 @@ bool Environment::create_userdata_directory(const Settings* settings)
 
 string Environment::get_userdata_directory(const Settings* settings)
 {
-  string userdata_directory = get_user_home_directory() + "/.sotw/";
+  string userdata_directory = get_user_home_directory().append(1, FS_PATH_SEPARATOR).append(".sotw").append(1, FS_PATH_SEPARATOR);
 
   if (settings != nullptr)
   {
