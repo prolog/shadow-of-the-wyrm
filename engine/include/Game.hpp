@@ -1,4 +1,5 @@
 #pragma once
+#include <chrono>
 #include <vector>
 #include "ActionCoordinator.hpp"
 #include "ActionManager.hpp"
@@ -138,6 +139,11 @@ class Game : public ISerializable
     World* get_current_world();
 
     LoadedMapDetails& get_loaded_map_details_ref();
+
+    double get_total_elapsed_game_time(const std::chrono::system_clock::time_point& current_time) const;
+
+    void set_game_start_time(const std::chrono::system_clock::time_point& new_start_time);
+    std::chrono::system_clock::time_point get_game_start_time() const;
 
     void process_elapsed_time(const int seconds);
 
@@ -293,6 +299,12 @@ class Game : public ISerializable
     // Should this game create a score at the end?  Generally yes, unless
     // the Lua console was used with a particular setting in place.
     bool count_score;
+
+    // Total seconds played
+    double total_seconds_played;
+
+    // The time at which the game was started.
+    std::chrono::system_clock::time_point game_start_time;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

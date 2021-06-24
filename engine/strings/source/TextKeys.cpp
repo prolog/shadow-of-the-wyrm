@@ -36,6 +36,7 @@ const string TextKeys::BOOL_FALSE = "BOOL_FALSE";
 const string TextKeys::TOTAL = "TOTAL";
 const string TextKeys::MAXIMUM_LEVEL_DIFFERENCE = "MAXIMUM_LEVEL_DIFFERENCE";
 const string TextKeys::TURNS = "TURNS";
+const string TextKeys::TOTAL_ELAPSED_TIME = "TOTAL_ELAPSED_TIME";
 const string TextKeys::MAXIMUM_DEPTH_REACHED = "MAXIMUM_DEPTH_REACHED";
 const string TextKeys::MORTUARY = "MORTUARY";
 const string TextKeys::MORTUARY_FIRST_KILL = "MORTUARY_FIRST_KILL";

@@ -64,6 +64,8 @@ Game::Game()
 , check_scores(true)
 , requires_redraw(false)
 , count_score(true)
+, total_seconds_played(0.0)
+, game_start_time(chrono::system_clock::now())
 {
   // Setup the time keeper.  On a new game, this will initialize everything as
   // expected - when loading an existing game, this will be overwritten later,
@@ -516,6 +518,7 @@ void Game::go()
   StatusActionProcessor sap;
   MapPtr current_map = get_current_map();
   CreaturePtr current_player = get_current_player();
+  set_game_start_time(chrono::system_clock::now());
 
   // Use a try-catch block so that if there is an exception thrown, we can
   // try to recover by saving.
@@ -1137,6 +1140,21 @@ bool Game::get_count_score() const
   return count_score;
 }
 
+double Game::get_total_elapsed_game_time(const std::chrono::system_clock::time_point& current_time) const
+{
+  return total_seconds_played + std::chrono::duration_cast<std::chrono::seconds>(current_time - game_start_time).count();
+}
+
+void Game::set_game_start_time(const std::chrono::system_clock::time_point& new_start_time)
+{
+  game_start_time = new_start_time;
+}
+
+std::chrono::system_clock::time_point Game::get_game_start_time() const
+{
+  return game_start_time;
+}
+
 bool Game::serialize(ostream& stream) const
 {
   Log::instance().trace("Game::serialize - start");
@@ -1308,6 +1326,10 @@ bool Game::serialize(ostream& stream) const
   }
 
   Serialize::write_bool(stream, count_score);
+
+  // We keep track of total seconds, but not start time, etc.
+  double total_elapsed_time = get_total_elapsed_game_time(std::chrono::system_clock::now());
+  Serialize::write_double(stream, total_elapsed_time);
 
   Log::instance().trace("Game::serialize - end");
 
@@ -1581,6 +1603,8 @@ bool Game::deserialize(istream& stream)
   }
 
   Serialize::read_bool(stream, count_score);
+
+  Serialize::read_double(stream, total_seconds_played);
 
   Log::instance().trace("Game::deserialize - end");
   return true;

@@ -116,6 +116,12 @@ string CharacterDumper::str() const
   ss << StringTable::get(TextKeys::MAXIMUM_DEPTH_REACHED) << ": " << creature->get_max_depth_reached().str(true) << endl << endl;
   ss << StringTable::get(TextKeys::TURNS) << ": " << creature->get_turns() << endl << endl;
 
+  double seconds = game.get_total_elapsed_game_time(std::chrono::system_clock::now());
+  ulonglong secs = static_cast<ulonglong>(seconds) % 60;
+  ulonglong minutes = (static_cast<ulonglong>(seconds) / 60) % 60;
+  ulonglong hours = static_cast<ulonglong>(seconds) / 3600;
+  ss << StringTable::get(TextKeys::TOTAL_ELAPSED_TIME) << ": " << std::setw(2) << std::setfill('0') << hours << ":" << std::setw(2) << std::setfill('0') << minutes << ":" << std::setw(2) << std::setfill('0') << secs << endl << endl;
+ 
   return ss.str();
 }
 

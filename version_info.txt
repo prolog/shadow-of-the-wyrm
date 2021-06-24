@@ -16,6 +16,9 @@ Shadow of the Wyrm v1.3.3 "de Sarlat"
   setting (_disallow_score_on_exploration) is off by default, and is intended 
   for use on multiuser systems and in tournaments to enforce fairness.
 
+- Each game's total playing time is now tracked and available in the
+  character dump.
+
 - New name and settlement name combinations.
 
 - Bug fixes:
