@@ -53,3 +53,10 @@ class Memberships : public ISerializable
 
     std::map<std::string, Membership> memberships;
 };
+
+class MembershipFactory
+{
+  public:
+    Membership create_holy_champion();
+    Membership create_fallen_champion();
+};

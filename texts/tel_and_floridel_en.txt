@@ -3818,7 +3818,7 @@ run through, and all the old bonds were defiled %b
 within the woods that made up this unholy wild.
 %p
 At first the numbers roughly evened out - %b
-the nobles losing two, a couples exiles %b
+the nobles losing two, a couple of exiles %b
 run through - but soon the exiles found the scouts %b
 too much.  And as they fought back, all the while %b
 Alcius circled wide to roam their rear. %b
@@ -3836,4 +3836,14 @@ He stared up helplessly and watched the club %b
 sweep down towards him, blessed as the sound %b
 lasted longer than his death, its crack-and-thud %b
 enough to shake the trees and launch the birds above.
+%p
+Not having shovels, they gathered up the dead %b
+and moved them to the lakebed, moving stones %b
+until they hit red soil; and then they spread %b
+the bodies of the dead in staggered rows %b
+to face the sun.  They built a six-foot cairn %b
+to mark the place, and hoped that heavy rain %b
+might fill the lake and open up to where %b
+the souls could find some rest, that when it drained %b
+they'd find the bodies missing, travelling back again.
 %p

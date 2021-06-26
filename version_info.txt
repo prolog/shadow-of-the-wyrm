@@ -19,7 +19,12 @@ Shadow of the Wyrm v1.3.3 "de Sarlat"
 - Each game's total playing time is now tracked and available in the
   character dump.
 
+- Your status as Holy Champion/Fallen Champion is now displayed in the
+  Memberships section of the character dump.
+
 - New name and settlement name combinations.
+
+- Stanzas for "Tel and Floridel".
 
 - Bug fixes:
 

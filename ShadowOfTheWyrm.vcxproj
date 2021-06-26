@@ -1056,6 +1056,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\strings\include\ItemTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ItemTypeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MaterialTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\MembershipTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MusicTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\OrderTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\PlayerTextKeys.hpp" />
@@ -2160,6 +2161,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\strings\source\InscriptionTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\MembershipTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MusicTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\OrderTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\PlayerTextKeys.cpp" />

@@ -137,3 +137,14 @@ class CreatureID
     CreatureID();
     ~CreatureID();
 };
+
+class MembershipID
+{
+  public:
+    static const std::string MEMBERSHIP_ID_HOLY_CHAMPION;
+    static const std::string MEMBERSHIP_ID_FALLEN_CHAMPION;
+
+  protected:
+    MembershipID();
+    ~MembershipID();
+};
