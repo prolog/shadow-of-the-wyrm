@@ -12,6 +12,7 @@
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureTranslator.hpp"
+#include "Environment.hpp"
 #include "EquipmentDumper.hpp"
 #include "Game.hpp"
 #include "InventoryDumper.hpp"
@@ -54,7 +55,16 @@ string CharacterDumper::str() const
   Metadata meta;
   string version = meta.get_game_version_synopsis();
   ss << String::centre(version, num_cols) << endl << endl;
-  ss << String::centre(TextMessages::get_name_and_title(creature), num_cols) << endl;
+  
+  string name_title_user = TextMessages::get_name_and_title(creature);
+  string user = Environment::get_user_name();
+
+  if (!user.empty())
+  {
+    name_title_user += " (" + user + ")";
+  }
+
+  ss << String::centre(name_title_user, num_cols) << endl;
   ss << get_synopsis() << endl << endl;
   ss << get_vital_statistics();
     

@@ -9,7 +9,10 @@ Shadow of the Wyrm v1.3.3 "de Sarlat"
   user's home directory.  This can be reconfigured via a new setting,
   userdata_dir (Larzid).
 
-- Char dumps now name the directory to which the file is written.
+- The character dump command now displays directory to which the file was 
+  written.
+
+- Character dumps now contain the user's username.
 
 - Added a new setting to disallow score generation for a character when
   either narrative mode is set, or the Lua console has been used.  This
