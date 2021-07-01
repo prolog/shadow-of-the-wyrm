@@ -99,7 +99,7 @@ ActionCost ActionManager::display_character(CreaturePtr creature)
 ActionCost ActionManager::dump_character(CreaturePtr creature)
 {
   CharacterAction ca;
-  return get_action_cost(creature, ca.dump_character(creature));
+  return get_action_cost(creature, ca.dump_character(creature, CharacterDumpType::CHARACTER_DUMP_USER_INITIATED));
 }
 
 ActionCost ActionManager::search(CreaturePtr creature)

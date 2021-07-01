@@ -5,6 +5,7 @@
 #include "EffectFactory.hpp"
 #include "Game.hpp"
 #include "Serialization.hpp"
+#include "Setting.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
 
@@ -90,8 +91,22 @@ void ExitGameAction::create_dump_if_necessary(IMessageManager& manager, ActionMa
   bool require_proper_selection = true;
 
   bool create_dump = creature && creature->get_decision_strategy()->get_confirmation(default_selection_value, require_proper_selection);
+  vector<CharacterDumpType> dump_types;
 
   if (create_dump && creature != nullptr)
+  {
+    dump_types.push_back(CharacterDumpType::CHARACTER_DUMP_USER_INITIATED);
+  }
+
+  Game& game = Game::instance();
+  bool create_system_chardump = game.get_settings_ref().get_setting_as_bool(Setting::GENERATE_SYSTEM_CHARDUMP);
+
+  if (create_system_chardump)
+  {
+    dump_types.push_back(CharacterDumpType::CHARACTER_DUMP_SYSTEM_INITIATED);
+  }
+
+  for (const auto cdt : dump_types)
   {
     Game& game = Game::instance();
     MapPtr current_map = game.get_current_map();
@@ -105,6 +120,6 @@ void ExitGameAction::create_dump_if_necessary(IMessageManager& manager, ActionMa
     }
 
     CharacterAction ca;
-    ca.dump_character(creature);
+    ca.dump_character(creature, cdt);
   }
 }

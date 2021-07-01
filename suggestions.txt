@@ -1,6 +1,4 @@
 Me:
-- system_morgue_on_death flag
-- system_morgue_path dir
 - make multiuser friendly:
   - ensure file save error goes to logs
   - update manual to mention data dirs

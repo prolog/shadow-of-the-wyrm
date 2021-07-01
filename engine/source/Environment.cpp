@@ -81,6 +81,26 @@ string Environment::get_userdata_directory(const Settings* settings)
   return userdata_directory;
 }
 
+string Environment::get_syschardump_directory(const Settings* settings)
+{
+  string syschardump_directory = ".";
+
+  if (settings != nullptr)
+  {
+    string settings_syschardump_dir = settings->get_setting(Setting::SYSCHARDUMP_DIR);
+    boost::algorithm::trim(settings_syschardump_dir);
+
+    if (!settings_syschardump_dir.empty())
+    {
+      syschardump_directory = settings_syschardump_dir;
+    }
+  }
+
+  syschardump_directory = File::harmonize_dirname(syschardump_directory);
+  return syschardump_directory;
+}
+
+
 // Return the current player's username.
 string Environment::get_user_name()
 {
