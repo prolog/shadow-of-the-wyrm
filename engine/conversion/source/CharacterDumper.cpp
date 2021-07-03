@@ -12,6 +12,7 @@
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureTranslator.hpp"
+#include "DeathDumper.hpp"
 #include "Environment.hpp"
 #include "EquipmentDumper.hpp"
 #include "Game.hpp"
@@ -76,6 +77,14 @@ string CharacterDumper::str() const
 
   ModifiersDumper mod_dumper(creature, num_cols);
   ss << mod_dumper.str() << endl << endl;
+
+  DeathDumper death_dumper(creature, num_cols);
+  string death = death_dumper.str();
+
+  if (!death.empty())
+  {
+    ss << death << endl << endl;
+  }
 
   VictoryDumper victory_dumper(creature, num_cols);
   string victory = victory_dumper.str();

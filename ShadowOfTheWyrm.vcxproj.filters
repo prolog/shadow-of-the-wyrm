@@ -4406,6 +4406,9 @@
     <ClInclude Include="engine\strings\include\MembershipTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\conversion\include\DeathDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8907,6 +8910,9 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\MembershipTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\DeathDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

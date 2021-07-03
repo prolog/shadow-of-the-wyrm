@@ -544,6 +544,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\conversion\include\AttackDumper.hpp" />
     <ClInclude Include="engine\conversion\include\CharacterDumper.hpp" />
     <ClInclude Include="engine\conversion\include\ConductsDumper.hpp" />
+    <ClInclude Include="engine\conversion\include\DeathDumper.hpp" />
     <ClInclude Include="engine\conversion\include\EngineConversion.hpp" />
     <ClInclude Include="engine\conversion\include\EquipmentDumper.hpp" />
     <ClInclude Include="engine\conversion\include\InventoryDumper.hpp" />
@@ -1863,6 +1864,7 @@ mkdir $(OutDir)logs
     </ClCompile>
     <ClCompile Include="engine\conversion\source\ArtifactDumper.cpp" />
     <ClCompile Include="engine\conversion\source\AttackDumper.cpp" />
+    <ClCompile Include="engine\conversion\source\DeathDumper.cpp" />
     <ClCompile Include="engine\conversion\source\EngineConversion.cpp" />
     <ClCompile Include="engine\conversion\source\MembershipsDumper.cpp" />
     <ClCompile Include="engine\conversion\source\ModifiersDumper.cpp" />
