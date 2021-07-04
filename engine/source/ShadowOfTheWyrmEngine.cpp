@@ -659,6 +659,7 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
   while (user_and_character_exist)
   {
     Settings& settings = game.get_settings_ref();
+    bool use_default_name = settings.get_setting_as_bool(Setting::USE_DEFAULT_NAME);
     string default_name = settings.get_setting(Setting::DEFAULT_NAME);
     bool username_is_character_name = String::to_bool(settings.get_setting(Setting::USERNAME_IS_CHARACTER_NAME));
     
@@ -668,8 +669,11 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
     }
     else
     {
-      NamingScreen naming(display, creature_synopsis, warning_message);
-      name = naming.display();
+      if (use_default_name == false)
+      {
+        NamingScreen naming(display, creature_synopsis, warning_message);
+        name = naming.display();
+      }
     }
 
     if (name.empty())

@@ -9,6 +9,9 @@ Shadow of the Wyrm v1.3.3 "de Sarlat"
   user's home directory.  This can be reconfigured via a new setting,
   userdata_dir (Larzid).
 
+- Added the setting use_default_name to allow you to bypass name selection
+  and use the default/generated value, based on the default_name setting.
+
 - Changes to character dumps:
 
   - The character dump command now displays the directory to which the file 
