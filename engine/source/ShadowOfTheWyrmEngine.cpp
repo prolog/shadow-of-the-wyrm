@@ -799,7 +799,11 @@ bool ShadowOfTheWyrmEngine::process_load_game()
 
     // JCD TODO: Add support for additional reloadable settings here.
     // E.g., autopickup
-    Settings kb_settings(true);
+    Settings user_settings(true, true);
+    Settings kb_settings(true, false);
+
+    kb_settings.merge_user_settings(user_settings);
+
     map<string, string> keybinding_settings = kb_settings.get_keybindings();
 
     game.get_settings_ref().set_settings(keybinding_settings);

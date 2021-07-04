@@ -1,6 +1,6 @@
 Me:
 - make multiuser friendly:
-  - per-user configuration setting overrides (.sotwrc/sotw.rc) read from home
+  - per-user configuration setting overrides (.sotwrc/.sotwrc) read from home
   - disable_lua_console for tournaments, etc - but we need a way of ensuring
     that user settings don't overwrite this. maybe append _no_override and
     these settings get tossed when reading the user settings?

@@ -110,7 +110,11 @@ int main(int argc, char* argv[])
     }
     else
     {
-      Settings settings(true);
+      Settings user_settings(true, true);
+      Settings settings(true, false);
+
+      settings.merge_user_settings(user_settings);
+
       Log& log = Log::instance(&settings);
       log.set_log_level(LoggingLevel::LOG_ERROR);
       Environment::create_userdata_directory(&settings);

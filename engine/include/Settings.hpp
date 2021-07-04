@@ -6,7 +6,9 @@
 class Settings : public ISerializable
 {
   public:
-    Settings(const bool read_from_disk = false);
+    Settings(const bool read_from_disk = false, const bool read_user_copy = false);
+
+    bool merge_user_settings(const Settings& settings);
 
     // This is generally called by passing in a string literal.
     // Ideally, there should be one and only one place in which each setting
@@ -25,6 +27,8 @@ class Settings : public ISerializable
 
     // Set/replace additional settings within the ptree.
     void set_settings(const std::map<std::string, std::string>& addl_settings);
+
+    boost::property_tree::ptree get_settings_tree() const;
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
