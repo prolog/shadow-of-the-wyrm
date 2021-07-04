@@ -87,7 +87,8 @@ void StoneStatusEffect::finalize(CreaturePtr creature) const
     manager.send();
 
     Damage stone_default;
-    cm.deal_damage(no_creature, creature, source_id, creature->get_hit_points().get_base(), stone_default, "", DeathSourceTextKeys::DEATH_SOURCE_PETRIFICATION);
+    auto damage = creature->get_hit_points().get_current() + 10;
+    cm.deal_damage(no_creature, creature, source_id, damage, stone_default, "", DeathSourceTextKeys::DEATH_SOURCE_PETRIFICATION);
   }
 }
 

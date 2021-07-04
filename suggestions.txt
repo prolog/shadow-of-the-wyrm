@@ -1,11 +1,6 @@
 Me:
-- stoning isn't killing properly?
 - make multiuser friendly:
-  - ensure file save error goes to logs
-  - update manual to mention data dirs
-  - configurable paths for scores.dat, savefiles, dumps
   - per-user configuration setting overrides (.sotwrc/sotw.rc) read from home
-  - death-dump file similar to nethack etc
   - disable_lua_console for tournaments, etc - but we need a way of ensuring
     that user settings don't overwrite this. maybe append _no_override and
     these settings get tossed when reading the user settings?

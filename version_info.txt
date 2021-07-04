@@ -42,6 +42,9 @@ Shadow of the Wyrm v1.3.3 "de Sarlat"
 
   - Hide whips weren't being suppressed during regular item generation (Red).
 
+  - Petrification wouldn't kill you when your current HP was greater than the
+    max value.
+
 Shadow of the Wyrm v1.3.2 "del Liuto"
 - Version declared April 23, 2021.  Version finalized June 13, 2021.
 
