@@ -32,6 +32,7 @@ class TextKeys
     static const std::string MORTUARY;
     static const std::string MORTUARY_FIRST_KILL;
     static const std::string MODIFIERS;
+    static const std::string DEATH_DETAILS;
     static const std::string INDEFINITELY;
     static const std::string STATUSES;
     static const std::string TOTAL;
@@ -193,6 +194,7 @@ class TextKeys
     static const std::string PACIFIED;
     static const std::string TAMED;
     static const std::string REQUIRES;
+    static const std::string THE_WORLD_MAP;
 
   protected:
     TextKeys();

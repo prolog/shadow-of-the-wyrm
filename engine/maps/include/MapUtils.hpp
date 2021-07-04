@@ -116,6 +116,8 @@ class MapUtils
     // with a valid tile if the first parameter is true.
     static std::pair<bool, TilePtr> get_melee_attack_target(MapPtr map, CreaturePtr creature, const Direction d);
 
+    static std::string get_map_description(MapPtr map);
+
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
     static bool is_tile_contained_in_an_existing_component(const Coordinate&, const MapComponents& components);

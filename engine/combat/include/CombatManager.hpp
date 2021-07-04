@@ -29,10 +29,13 @@ class CombatManager
                            const bool mark_skills = true, 
                            DamagePtr damage = DamagePtr());
 
-    void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const std::string& source_id, const int damage_dealt, const Damage& damage, const std::string combat_message_sid = "");
+    void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const std::string& source_id, const int damage_dealt, const Damage& damage, const std::string& combat_message_sid = "", const std::string& death_source_sid = "");
     void handle_damage_effects(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments, const int danger_level);
 
   protected:
+    // Record death details for the character dump
+    void record_death_info_for_dump(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const std::string& dmg_source_id, const std::string& death_source_sid, MapPtr map);
+
     // Is the creature still hidden after applying damage?
     void handle_attacker_hidden_after_damage(CreaturePtr creature);
 

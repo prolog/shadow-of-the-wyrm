@@ -1,6 +1,7 @@
 #include "CombatManager.hpp"
 #include "CoordUtils.hpp"
 #include "CreatureFactory.hpp"
+#include "DeathSourceTextKeys.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "MapUtils.hpp"
@@ -29,7 +30,7 @@ bool SpellFailureConsequences::damage_caster(CreaturePtr caster)
   {
     CombatManager cm;
     CreaturePtr no_attacker;
-    cm.deal_damage(no_attacker, caster, source_id, damage_in_hp, damage_default, spellbook_message_sid);
+    cm.deal_damage(no_attacker, caster, source_id, damage_in_hp, damage_default, spellbook_message_sid, DeathSourceTextKeys::DEATH_SOURCE_INCINERATION);
 
     spellbook_destroyed = true;
   }

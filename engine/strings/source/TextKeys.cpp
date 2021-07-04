@@ -41,6 +41,7 @@ const string TextKeys::MAXIMUM_DEPTH_REACHED = "MAXIMUM_DEPTH_REACHED";
 const string TextKeys::MORTUARY = "MORTUARY";
 const string TextKeys::MORTUARY_FIRST_KILL = "MORTUARY_FIRST_KILL";
 const string TextKeys::MODIFIERS = "MODIFIERS";
+const string TextKeys::DEATH_DETAILS = "DEATH_DETAILS";
 const string TextKeys::INDEFINITELY = "INDEFINITELY";
 const string TextKeys::STATUSES = "STATUSES";
 const string TextKeys::NPC_ESCAPES_MESSAGE = "NPC_ESCAPES_MESSAGE";
@@ -197,5 +198,6 @@ const string TextKeys::GENERIC_MESSAGE = "GENERIC_MESSAGE";
 const string TextKeys::PACIFIED = "PACIFIED";
 const string TextKeys::TAMED = "TAMED";
 const string TextKeys::REQUIRES = "REQUIRES";
+const string TextKeys::THE_WORLD_MAP = "THE_WORLD_MAP";
 
 

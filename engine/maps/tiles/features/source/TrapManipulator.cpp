@@ -6,6 +6,7 @@
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DamageCalculatorFactory.hpp"
+#include "DeathSourceTextKeys.hpp"
 #include "EffectFactory.hpp"
 #include "FeatureProperties.hpp"
 #include "Game.hpp"
@@ -169,7 +170,7 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
   if (damage_dealt > 0)
   {
     cm.handle_damage_effects(nullptr, creature, damage_dealt, dt, effect_bonus, status_ailments, 1);
-    cm.deal_damage(nullptr, creature, source_id, damage_dealt, damage_default, message);
+    cm.deal_damage(nullptr, creature, source_id, damage_dealt, damage_default, message, DeathSourceTextKeys::DEATH_SOURCE_TRAP);
   }
 }
 

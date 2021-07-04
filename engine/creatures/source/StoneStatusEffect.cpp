@@ -1,6 +1,7 @@
 #include "CombatManager.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
+#include "DeathSourceTextKeys.hpp"
 #include "FeatureGenerator.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
@@ -86,7 +87,7 @@ void StoneStatusEffect::finalize(CreaturePtr creature) const
     manager.send();
 
     Damage stone_default;
-    cm.deal_damage(no_creature, creature, source_id, creature->get_hit_points().get_base(), stone_default);
+    cm.deal_damage(no_creature, creature, source_id, creature->get_hit_points().get_base(), stone_default, "", DeathSourceTextKeys::DEATH_SOURCE_PETRIFICATION);
   }
 }
 

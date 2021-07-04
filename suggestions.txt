@@ -1,4 +1,5 @@
 Me:
+- stoning isn't killing properly?
 - make multiuser friendly:
   - ensure file save error goes to logs
   - update manual to mention data dirs

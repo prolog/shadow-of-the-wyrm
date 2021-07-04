@@ -1,5 +1,6 @@
 #include "DeityTextKeys.hpp"
 #include "CombatManager.hpp"
+#include "DeathSourceTextKeys.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
 #include "SmiteDeityDecisionStrategyHandler.hpp"
@@ -67,7 +68,7 @@ DeityDecisionImplications SmiteDeityDecisionStrategyHandler::handle_decision(Cre
         smite_damage.set_modifier(damage);
         string source_id = ""; // source id - deity is causing the damage, but doesn't actually exist and so doesn't get exp
 
-        cm.deal_damage(nullptr, adj_creature, source_id, damage, smite_damage);
+        cm.deal_damage(nullptr, adj_creature, source_id, damage, smite_damage, "", DeathSourceTextKeys::DEATH_SOURCE_SMITE);
       }
     }
   }

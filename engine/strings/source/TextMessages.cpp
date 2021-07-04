@@ -57,6 +57,8 @@ const string TextMessages::HIRELINGS_HIRED_MESSAGE            = "HIRELINGS_HIRED
 const string TextMessages::ADVENTURERS_JOINED_MESSAGE         = "ADVENTURERS_JOINED_MESSAGE";
 const string TextMessages::AFFECTED_BY                        = "AFFECTED_BY";
 const string TextMessages::ENDING_MESSAGE                     = "ENDING_MESSAGE";
+const string TextMessages::KILLED_BY_MESSAGE                  = "KILLED_BY_MESSAGE";
+const string TextMessages::DEATH_DEPTH_LOCATION_MESSAGE       = "DEATH_DEPTH_LOCATION_MESSAGE";
 
 string TextMessages::get_full_header_text(const string& header, const uint num_cols)
 {
@@ -765,5 +767,22 @@ string TextMessages::get_ending_message(const string& ending_time)
 {
   string msg = StringTable::get(ENDING_MESSAGE);
   boost::replace_first(msg, "%s", ending_time);
+  return msg;
+}
+
+string TextMessages::get_killed_by_message(const string& killed_by_source)
+{
+  string msg = StringTable::get(KILLED_BY_MESSAGE);
+  boost::replace_first(msg, "%s1", killed_by_source);
+
+  return msg;
+}
+
+string TextMessages::get_death_depth_location_message(const string& depth, const string& location)
+{
+  string msg = StringTable::get(DEATH_DEPTH_LOCATION_MESSAGE);
+  boost::replace_first(msg, "%s1", depth);
+  boost::replace_first(msg, "%s2", location);
+
   return msg;
 }

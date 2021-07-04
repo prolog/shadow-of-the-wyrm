@@ -846,6 +846,63 @@ void CombatManager::handle_damage_effects(CreaturePtr attacking_creature, Creatu
   }
 }
 
+void CombatManager::record_death_info_for_dump(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const string& dmg_source_id, const string& death_source_sid, MapPtr map)
+{
+  if (map != nullptr && attacked_creature != nullptr && attacked_creature->get_is_player())
+  {
+    string killed_by_sid;
+    bool secondary_creature_check = false;
+
+    // Dump the death source details.
+    if (!death_source_sid.empty())
+    {
+      killed_by_sid = death_source_sid;
+      secondary_creature_check = true;
+    }
+    else if (attacking_creature != nullptr)
+    {
+      killed_by_sid = attacking_creature->get_description_sid();
+    }
+
+    ostringstream kbc_ss;
+    kbc_ss << StringTable::get(killed_by_sid);
+
+    if (secondary_creature_check && !dmg_source_id.empty())
+    {
+      CreaturePtr source_creature = map->get_creature(dmg_source_id);
+      string screature_desc_sid;
+
+      if (source_creature != nullptr)
+      {
+        screature_desc_sid = source_creature->get_description_sid();
+      }
+      else if (attacking_creature != nullptr)
+      {
+        screature_desc_sid = attacking_creature->get_description_sid();
+      }
+
+      if (!screature_desc_sid.empty())
+      {
+        kbc_ss << " (" << StringTable::get(screature_desc_sid) << ")";
+      }
+    }
+
+    if (killed_by_sid.empty())
+    {
+      kbc_ss << "?";
+    }
+
+    attacked_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_KILLED_BY_SOURCE, kbc_ss.str());
+
+    // Dump the death depth and location details.
+    string depth = map->size().depth().str(true);
+    attacked_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_KILLED_BY_DEPTH, depth);
+
+    string map_desc = MapUtils::get_map_description(map);
+    attacked_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_KILLED_BY_MAP, map_desc);
+  }
+}
+
 void CombatManager::handle_attacker_hidden_after_damage(CreaturePtr attacking_creature)
 {
   if (attacking_creature != nullptr)
@@ -874,7 +931,7 @@ void CombatManager::apply_damage_effect(CreaturePtr creature, StatusEffectPtr st
 // Once damage is dealt, check for death.  If the attack has lowered the attacked creature's
 // HP to 0, kill it, and award the dead creature's experience value to the attacking
 // creature.
-void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreaturePtr attacked_creature, const string& source_id, const int damage_dealt, const Damage& damage_info, const string message_sid)
+void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreaturePtr attacked_creature, const string& source_id, const int damage_dealt, const Damage& damage_info, const string& message_sid, const string& death_source_sid)
 {
   Game& game = Game::instance();
   MapPtr map = game.get_current_map();
@@ -924,6 +981,10 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
           ks.execute(se, kill_script_name, attacked_creature, attacking_creature);
         }
       }
+
+      // If this is the player, record the necessary death info for the
+      // character dump.
+      record_death_info_for_dump(attacking_creature, attacked_creature, source_id, death_source_sid, map);
 
       DeathManagerPtr death_manager = DeathManagerFactory::create_death_manager(attacking_creature, attacked_creature, map);
 

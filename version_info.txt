@@ -11,7 +11,7 @@ Shadow of the Wyrm v1.3.3 "de Sarlat"
 
 - Changes to character dumps:
 
-  - The character dump command now displays directory to which the file 
+  - The character dump command now displays the directory to which the file 
     was written.
 
   - Dumps now contain the user's username.
@@ -19,6 +19,9 @@ Shadow of the Wyrm v1.3.3 "de Sarlat"
   - There is now a setting to always take system character dumps when the
     game ends.  These are stored to a directory specified by syschardump_dir
     and are intended to be used for stats, etc. on multi-user systems.
+
+  - Character dumps taken after death now record what killed you, and where,
+    and at what depth.
 
 - Added a new setting to disallow score generation for a character when
   either narrative mode is set, or the Lua console has been used.  This
