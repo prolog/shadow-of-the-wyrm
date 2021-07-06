@@ -894,10 +894,25 @@ void CombatManager::record_death_info_for_dump(CreaturePtr attacking_creature, C
     WeaponManager wm;
     weapon = wm.get_weapon(source_creature, attack_type);
 
-    if (source_creature != nullptr && weapon != nullptr)
+    if (source_creature != nullptr)
     {
-      ItemIdentifier iid;
-      kbc_ss << " [" << iid.get_appropriate_description(weapon, false) << "]";
+      if (weapon != nullptr)
+      {
+        ItemIdentifier iid;
+        kbc_ss << " [" << iid.get_appropriate_description(weapon, false) << "]";
+      }
+      if (attack_type == AttackType::ATTACK_TYPE_MAGICAL)
+      {
+        string spell_id = source_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LAST_CAST_SPELL);
+        const SpellMap& spells = Game::instance().get_spells_ref();
+
+        auto s_it = spells.find(spell_id);
+
+        if (s_it != spells.end())
+        {
+          kbc_ss << " [" << StringTable::get(s_it->second.get_spell_name_sid()) << "]";
+        }
+      }
     }
 
     if (killed_by_sid.empty())
