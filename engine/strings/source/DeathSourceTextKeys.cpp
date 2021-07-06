@@ -21,3 +21,4 @@ const string DeathSourceTextKeys::DEATH_SOURCE_SPRAIN = "DEATH_SOURCE_SPRAIN";
 const string DeathSourceTextKeys::DEATH_SOURCE_SMITE = "DEATH_SOURCE_SMITE";
 const string DeathSourceTextKeys::DEATH_SOURCE_PETRIFICATION = "DEATH_SOURCE_PETRIFICATION";
 const string DeathSourceTextKeys::DEATH_SOURCE_POISON = "DEATH_SOURCE_POISON";
+const string DeathSourceTextKeys::DEATH_SOURCE_OLD_AGE = "DEATH_SOURCE_OLD_AGE";

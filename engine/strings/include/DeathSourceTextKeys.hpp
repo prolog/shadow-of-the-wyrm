@@ -15,6 +15,7 @@ class DeathSourceTextKeys
     static const std::string DEATH_SOURCE_SMITE;
     static const std::string DEATH_SOURCE_PETRIFICATION;
     static const std::string DEATH_SOURCE_POISON;
+    static const std::string DEATH_SOURCE_OLD_AGE;
 
   protected:
     DeathSourceTextKeys();
