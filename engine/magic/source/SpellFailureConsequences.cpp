@@ -30,7 +30,7 @@ bool SpellFailureConsequences::damage_caster(CreaturePtr caster)
   {
     CombatManager cm;
     CreaturePtr no_attacker;
-    cm.deal_damage(no_attacker, caster, source_id, damage_in_hp, damage_default, spellbook_message_sid, DeathSourceTextKeys::DEATH_SOURCE_INCINERATION);
+    cm.deal_damage(no_attacker, caster, AttackType::ATTACK_TYPE_MAGICAL, source_id, damage_in_hp, damage_default, spellbook_message_sid, DeathSourceTextKeys::DEATH_SOURCE_INCINERATION);
 
     spellbook_destroyed = true;
   }

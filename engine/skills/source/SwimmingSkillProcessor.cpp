@@ -29,7 +29,7 @@ ActionCostValue SwimmingSkillProcessor::process(CreaturePtr creature, MapPtr map
 
     // Stop automovement on drowning.
     creature->get_automatic_movement_ref().set_engaged(false);
-    cm.deal_damage(no_attacker, creature, "", swimming_damage, swimming_default, drowning_message_sid, DeathSourceTextKeys::DEATH_SOURCE_DROWNING);
+    cm.deal_damage(no_attacker, creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED, "", swimming_damage, swimming_default, drowning_message_sid, DeathSourceTextKeys::DEATH_SOURCE_DROWNING);
   }
 
   return get_default_skill_action_cost_value(creature);

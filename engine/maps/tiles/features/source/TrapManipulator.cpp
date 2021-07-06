@@ -169,8 +169,15 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
   // Only apply the damage-based effect if there is damage to be dealt.
   if (damage_dealt > 0)
   {
+    string trap_sid = DeathSourceTextKeys::DEATH_SOURCE_TRAP;
+
+    if (trap != nullptr)
+    {
+      trap_sid = trap->get_description_and_replacement_sids().first;
+    }
+
     cm.handle_damage_effects(nullptr, creature, damage_dealt, dt, effect_bonus, status_ailments, 1);
-    cm.deal_damage(nullptr, creature, source_id, damage_dealt, damage_default, message, DeathSourceTextKeys::DEATH_SOURCE_TRAP);
+    cm.deal_damage(nullptr, creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED, source_id, damage_dealt, damage_default, message, trap_sid);
   }
 }
 

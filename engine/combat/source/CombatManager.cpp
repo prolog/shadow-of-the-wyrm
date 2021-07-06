@@ -28,6 +28,7 @@
 #include "HostilityManager.hpp"
 #include "IntimidationCalculator.hpp"
 #include "IHitTypeFactory.hpp"
+#include "ItemIdentifier.hpp"
 #include "ItemProperties.hpp"
 #include "KillScript.hpp"
 #include "ToHitCalculatorFactory.hpp"
@@ -560,7 +561,7 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
 
     handle_vorpal_if_necessary(attacking_creature, attacked_creature, combat_damage_fixed, damage_dealt); 
     handle_explosive_if_necessary(attacking_creature, attacked_creature, current_map, damage_dealt, combat_damage_fixed, attack_type);
-    deal_damage(attacking_creature, attacked_creature, source_id, damage_dealt, combat_damage_fixed);
+    deal_damage(attacking_creature, attacked_creature, attack_type, source_id, damage_dealt, combat_damage_fixed);
 
     if (!attacked_creature->is_dead())
     {
@@ -846,10 +847,11 @@ void CombatManager::handle_damage_effects(CreaturePtr attacking_creature, Creatu
   }
 }
 
-void CombatManager::record_death_info_for_dump(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const string& dmg_source_id, const string& death_source_sid, MapPtr map)
+void CombatManager::record_death_info_for_dump(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const string& dmg_source_id, const string& death_source_sid, MapPtr map)
 {
   if (map != nullptr && attacked_creature != nullptr && attacked_creature->get_is_player())
   {
+    CreaturePtr source_creature = attacking_creature;
     string killed_by_sid;
     bool secondary_creature_check = false;
 
@@ -859,9 +861,9 @@ void CombatManager::record_death_info_for_dump(CreaturePtr attacking_creature, C
       killed_by_sid = death_source_sid;
       secondary_creature_check = true;
     }
-    else if (attacking_creature != nullptr)
+    else if (source_creature != nullptr)
     {
-      killed_by_sid = attacking_creature->get_description_sid();
+      killed_by_sid = source_creature->get_description_sid();
     }
 
     ostringstream kbc_ss;
@@ -869,12 +871,13 @@ void CombatManager::record_death_info_for_dump(CreaturePtr attacking_creature, C
 
     if (secondary_creature_check && !dmg_source_id.empty())
     {
-      CreaturePtr source_creature = map->get_creature(dmg_source_id);
+      CreaturePtr indirect_creature = map->get_creature(dmg_source_id);
       string screature_desc_sid;
 
-      if (source_creature != nullptr)
+      if (indirect_creature != nullptr)
       {
         screature_desc_sid = source_creature->get_description_sid();
+        source_creature = indirect_creature;
       }
       else if (attacking_creature != nullptr)
       {
@@ -885,6 +888,16 @@ void CombatManager::record_death_info_for_dump(CreaturePtr attacking_creature, C
       {
         kbc_ss << " (" << StringTable::get(screature_desc_sid) << ")";
       }
+    }
+
+    WeaponPtr weapon;
+    WeaponManager wm;
+    weapon = wm.get_weapon(source_creature, attack_type);
+
+    if (source_creature != nullptr && weapon != nullptr)
+    {
+      ItemIdentifier iid;
+      kbc_ss << " [" << iid.get_appropriate_description(weapon, false) << "]";
     }
 
     if (killed_by_sid.empty())
@@ -931,7 +944,7 @@ void CombatManager::apply_damage_effect(CreaturePtr creature, StatusEffectPtr st
 // Once damage is dealt, check for death.  If the attack has lowered the attacked creature's
 // HP to 0, kill it, and award the dead creature's experience value to the attacking
 // creature.
-void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreaturePtr attacked_creature, const string& source_id, const int damage_dealt, const Damage& damage_info, const string& message_sid, const string& death_source_sid)
+void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const string& source_id, const int damage_dealt, const Damage& damage_info, const string& message_sid, const string& death_source_sid)
 {
   Game& game = Game::instance();
   MapPtr map = game.get_current_map();
@@ -984,7 +997,7 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
 
       // If this is the player, record the necessary death info for the
       // character dump.
-      record_death_info_for_dump(attacking_creature, attacked_creature, source_id, death_source_sid, map);
+      record_death_info_for_dump(attacking_creature, attacked_creature, attack_type, source_id, death_source_sid, map);
 
       DeathManagerPtr death_manager = DeathManagerFactory::create_death_manager(attacking_creature, attacked_creature, map);
 

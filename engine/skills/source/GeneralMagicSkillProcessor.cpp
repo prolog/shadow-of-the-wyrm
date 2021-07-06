@@ -108,7 +108,7 @@ ActionCostValue GeneralMagicSkillProcessor::incinerate_spellbook(CreaturePtr cre
       dmg.set_dice_sides(damage_dealt);
       dmg.set_damage_type(DamageType::DAMAGE_TYPE_ARCANE);
 
-      cm.deal_damage(nullptr, creature, "", damage_dealt, dmg, "", DeathSourceTextKeys::DEATH_SOURCE_INCINERATION);
+      cm.deal_damage(nullptr, creature, AttackType::ATTACK_TYPE_MAGICAL, "", damage_dealt, dmg, "", DeathSourceTextKeys::DEATH_SOURCE_INCINERATION);
     }
     else
     {
