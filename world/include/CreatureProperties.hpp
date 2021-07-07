@@ -40,7 +40,8 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_KILLED_BY_SOURCE;
     static const std::string CREATURE_PROPERTIES_KILLED_BY_DEPTH;
     static const std::string CREATURE_PROPERTIES_KILLED_BY_MAP;
-    static const std::string CREATURE_PROPERTIES_LAST_CAST_SPELL;
+    static const std::string CREATURE_PROPERTIES_SPELL_IN_PROGRESS;
+    static const std::string CREATURE_PROPERTIES_ITEM_IN_USE;
 
   protected:
     CreatureProperties();

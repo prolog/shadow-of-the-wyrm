@@ -199,12 +199,12 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
 
               // Track the last cast spell in case it kills the target and
               // the target is the player and needs it for a character dump.
-              creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LAST_CAST_SPELL, spell_id);
+              creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_SPELL_IN_PROGRESS, spell_id);
 
               // Spells always use the "uncursed" effect status.
               sp.process(spell_processor.get(), creature, current_map, caster_coord, spell_direction, spell, ItemStatus::ITEM_STATUS_UNCURSED);
 
-              creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_LAST_CAST_SPELL);
+              creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_SPELL_IN_PROGRESS);
 
               // Train the creature's magic skills
               train_skills(creature, spell);

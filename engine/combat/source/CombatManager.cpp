@@ -903,7 +903,7 @@ void CombatManager::record_death_info_for_dump(CreaturePtr attacking_creature, C
       }
       if (attack_type == AttackType::ATTACK_TYPE_MAGICAL)
       {
-        string spell_id = source_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LAST_CAST_SPELL);
+        string spell_id = source_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_SPELL_IN_PROGRESS);
         const SpellMap& spells = Game::instance().get_spells_ref();
 
         auto s_it = spells.find(spell_id);
@@ -911,6 +911,20 @@ void CombatManager::record_death_info_for_dump(CreaturePtr attacking_creature, C
         if (s_it != spells.end())
         {
           kbc_ss << " [" << StringTable::get(s_it->second.get_spell_name_sid()) << "]";
+        }
+        else
+        {
+          string item_id = source_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_ITEM_IN_USE);
+          ItemPtr used_item = source_creature->get_inventory()->get_from_id(item_id);
+
+          if (used_item != nullptr)
+          {
+            // Identify the item before dumping it.
+            ItemIdentifier iid;
+            iid.set_item_identified(attacked_creature, used_item, used_item->get_base_id(), true);
+
+            kbc_ss << " [" << iid.get_appropriate_description(used_item, false) << "]";
+          }
         }
       }
     }
