@@ -35,6 +35,8 @@ class CombatManager
   protected:
     // Record death details for the character dump
     void record_death_info_for_dump(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const std::string& dmg_source_id, const std::string& death_source_sid, MapPtr map);
+    std::string get_killed_by_source(CreaturePtr source_creature, const std::string& death_source_sid);
+    std::string get_dump_magical_death_details(CreaturePtr source_creature);
 
     // Is the creature still hidden after applying damage?
     void handle_attacker_hidden_after_damage(CreaturePtr creature);

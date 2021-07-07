@@ -852,50 +852,16 @@ void CombatManager::record_death_info_for_dump(CreaturePtr attacking_creature, C
   if (map != nullptr && attacked_creature != nullptr && attacked_creature->get_is_player())
   {
     CreaturePtr source_creature = attacking_creature;
-    string killed_by_sid;
-    bool secondary_creature_check = false;
-
-    // Dump the death source details.
-    if (!death_source_sid.empty())
-    {
-      killed_by_sid = death_source_sid;
-      secondary_creature_check = true;
-    }
-    else if (source_creature != nullptr)
-    {
-      killed_by_sid = source_creature->get_description_sid();
-    }
-
     ostringstream kbc_ss;
-    kbc_ss << StringTable::get(killed_by_sid);
 
-    if (secondary_creature_check && !dmg_source_id.empty())
-    {
-      CreaturePtr indirect_creature = map->get_creature(dmg_source_id);
-      string screature_desc_sid;
-
-      if (indirect_creature != nullptr)
-      {
-        screature_desc_sid = source_creature->get_description_sid();
-        source_creature = indirect_creature;
-      }
-      else if (attacking_creature != nullptr)
-      {
-        screature_desc_sid = attacking_creature->get_description_sid();
-      }
-
-      if (!screature_desc_sid.empty())
-      {
-        kbc_ss << " (" << StringTable::get(screature_desc_sid) << ")";
-      }
-    }
-
-    WeaponPtr weapon;
-    WeaponManager wm;
-    weapon = wm.get_weapon(source_creature, attack_type);
+    kbc_ss << StringTable::get(get_killed_by_source(source_creature, death_source_sid));
 
     if (source_creature != nullptr)
     {
+      WeaponPtr weapon;
+      WeaponManager wm;
+      weapon = wm.get_weapon(source_creature, attack_type);
+
       if (weapon != nullptr)
       {
         ItemIdentifier iid;
@@ -903,46 +869,72 @@ void CombatManager::record_death_info_for_dump(CreaturePtr attacking_creature, C
       }
       if (attack_type == AttackType::ATTACK_TYPE_MAGICAL)
       {
-        string spell_id = source_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_SPELL_IN_PROGRESS);
-        const SpellMap& spells = Game::instance().get_spells_ref();
-
-        auto s_it = spells.find(spell_id);
-
-        if (s_it != spells.end())
-        {
-          kbc_ss << " [" << StringTable::get(s_it->second.get_spell_name_sid()) << "]";
-        }
-        else
-        {
-          string item_id = source_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_ITEM_IN_USE);
-          ItemPtr used_item = source_creature->get_inventory()->get_from_id(item_id);
-
-          if (used_item != nullptr)
-          {
-            // Identify the item before dumping it.
-            ItemIdentifier iid;
-            iid.set_item_identified(attacked_creature, used_item, used_item->get_base_id(), true);
-
-            kbc_ss << " [" << iid.get_appropriate_description(used_item, false) << "]";
-          }
-        }
+        string magical_death_details = get_dump_magical_death_details(source_creature);
+        kbc_ss << magical_death_details;
       }
     }
 
-    if (killed_by_sid.empty())
-    {
-      kbc_ss << "?";
-    }
+    string depth = map->size().depth().str(true);
+    string map_desc = MapUtils::get_map_description(map);
 
     attacked_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_KILLED_BY_SOURCE, kbc_ss.str());
-
-    // Dump the death depth and location details.
-    string depth = map->size().depth().str(true);
     attacked_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_KILLED_BY_DEPTH, depth);
-
-    string map_desc = MapUtils::get_map_description(map);
     attacked_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_KILLED_BY_MAP, map_desc);
   }
+}
+
+string CombatManager::get_killed_by_source(CreaturePtr source_creature, const string& death_source_sid)
+{
+  string killed_by_sid;
+
+  // Dump the death source details.
+  if (!death_source_sid.empty())
+  {
+    killed_by_sid = death_source_sid;
+  }
+  else if (source_creature != nullptr)
+  {
+    killed_by_sid = source_creature->get_description_sid();
+  }
+  else
+  {
+    killed_by_sid = "?";
+  }
+
+  return killed_by_sid;
+}
+
+string CombatManager::get_dump_magical_death_details(CreaturePtr source_creature)
+{
+  ostringstream details;
+
+  if (source_creature != nullptr)
+  {
+    string spell_id = source_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_SPELL_IN_PROGRESS);
+    const SpellMap& spells = Game::instance().get_spells_ref();
+
+    auto s_it = spells.find(spell_id);
+
+    if (s_it != spells.end())
+    {
+      details << " [" << StringTable::get(s_it->second.get_spell_name_sid()) << "]";
+    }
+    else
+    {
+      string item_id = source_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_ITEM_IN_USE);
+      ItemPtr used_item = source_creature->get_inventory()->get_from_id(item_id);
+
+      if (used_item != nullptr)
+      {
+        // Identify the item before dumping it.
+        ItemIdentifier iid;
+        iid.set_item_identified(source_creature, used_item, used_item->get_base_id(), true);
+
+        details << " [" << iid.get_appropriate_description(used_item, false) << "]";
+      }
+    }
+  }
+  return details.str();
 }
 
 void CombatManager::handle_attacker_hidden_after_damage(CreaturePtr attacking_creature)
