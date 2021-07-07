@@ -851,16 +851,15 @@ void CombatManager::record_death_info_for_dump(CreaturePtr attacking_creature, C
 {
   if (map != nullptr && attacked_creature != nullptr && attacked_creature->get_is_player())
   {
-    CreaturePtr source_creature = attacking_creature;
     ostringstream kbc_ss;
 
-    kbc_ss << StringTable::get(get_killed_by_source(source_creature, death_source_sid));
+    kbc_ss << StringTable::get(get_killed_by_source(attacking_creature, death_source_sid));
 
-    if (source_creature != nullptr)
+    if (attacking_creature != nullptr)
     {
       WeaponPtr weapon;
       WeaponManager wm;
-      weapon = wm.get_weapon(source_creature, attack_type);
+      weapon = wm.get_weapon(attacking_creature, attack_type);
 
       if (weapon != nullptr)
       {
@@ -869,7 +868,7 @@ void CombatManager::record_death_info_for_dump(CreaturePtr attacking_creature, C
       }
       if (attack_type == AttackType::ATTACK_TYPE_MAGICAL)
       {
-        string magical_death_details = get_dump_magical_death_details(source_creature);
+        string magical_death_details = get_dump_magical_death_details(attacking_creature);
         kbc_ss << magical_death_details;
       }
     }
