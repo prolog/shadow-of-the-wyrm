@@ -1,6 +1,5 @@
 Me:
 - Echo:
-- If automelee=0, when enemy e.g. spearman attacks from afar, player received ranged prompt when being attacked (not only when attacking, and even if player-character is not wielding ranged-melee weapon).
 - I evoked an unID'd wand at this thrall, hoping it'd be lightning or something, but it was digging, instead.  Somehow, the game thought the thrall dug, as well, although it didn't.
 - Get all scripts working with 1.3.2
 - Houses:
