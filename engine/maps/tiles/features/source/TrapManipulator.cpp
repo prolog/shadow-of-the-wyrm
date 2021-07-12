@@ -186,11 +186,23 @@ void TrapManipulator::create_item_if_necessary(TilePtr tile, TrapPtr trap)
   // Generate an item, if applicable.
   ItemManager im;
   IInventoryPtr inv = tile->get_items();
+  string trap_item_id = trap->get_item_id();
 
-  string item_destruction_s = trap->get_additional_property(ItemProperties::ITEM_PROPERTIES_DESTRUCTION_PCT_CHANCE);
-  int item_destruction_pct = item_destruction_s.empty() ? 0 : String::to_int(item_destruction_s);
+  if (!trap_item_id.empty())
+  {
+    const ItemMap items = Game::instance().get_items_ref();
+    auto i_it = items.find(trap_item_id);
 
-  im.create_item_with_probability(50, 100 - item_destruction_pct, inv, trap->get_item_id());
+    if (i_it != items.end() && i_it->second != nullptr)
+    {
+      string item_destruction_s = i_it->second->get_additional_property(ItemProperties::ITEM_PROPERTIES_DESTRUCTION_PCT_CHANCE);
+      int item_destruction_pct = item_destruction_s.empty() ? 0 : String::to_int(item_destruction_s);
+      int upper_bound = 100 - item_destruction_pct;
+      int lower_bound = upper_bound / 2;
+
+      im.create_item_with_probability(lower_bound, upper_bound, inv, trap_item_id);
+    }
+  }
 }
 
 void TrapManipulator::create_and_draw_animation(TrapPtr trap, CreaturePtr creature, const Coordinate& creature_coord)

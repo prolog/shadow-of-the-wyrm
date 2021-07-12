@@ -47,6 +47,9 @@ Shadow of the Wyrm v1.3.3 "de Sarlat"
 
   - Petrification wouldn't kill you when your current HP was greater than the
     max value.
+  
+  - Fireball traps were leaving fire bombs, when these had item destruction
+    percentages that should've prevented that (Echo38).
 
 Shadow of the Wyrm v1.3.2 "del Liuto"
 - Version declared April 23, 2021.  Version finalized June 13, 2021.
