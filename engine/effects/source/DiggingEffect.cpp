@@ -18,10 +18,17 @@ DiggingEffect::DiggingEffect()
 string DiggingEffect::get_effect_identification_message(CreaturePtr creature) const
 {
   string effect_msg;
+  CreaturePtr msg_creature = creature;
+  bool originator_is_player = false;
 
   if (creature)
   {
-    effect_msg = EffectTextKeys::get_digging_effect_message(creature->get_description_sid(), creature->get_is_player());
+    if (originator != nullptr)
+    {
+      originator_is_player = true;
+    }
+
+    effect_msg = EffectTextKeys::get_digging_effect_message(msg_creature->get_description_sid(), originator_is_player);
   }
 
   return effect_msg;

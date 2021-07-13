@@ -136,6 +136,8 @@ bool SpellShapeProcessor::apply_effect(Effect* effect, CreaturePtr caster, const
       // a message if applicable when the effect is not identified.
       if (creature && caster)
       {
+        effect->set_originator(caster);
+          
         if (negative_effect && (caster->get_id() != (creature->get_id())))
         {
           HostilityManager hm;
