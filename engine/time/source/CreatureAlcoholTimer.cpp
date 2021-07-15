@@ -1,6 +1,7 @@
 #include "ActionTextKeys.hpp"
 #include "CombatManager.hpp"
 #include "CreatureAlcoholTimer.hpp"
+#include "DeathSourceTextKeys.hpp"
 #include "MessageManagerFactory.hpp"
 #include "StatusAilmentTextKeys.hpp"
 
@@ -124,6 +125,6 @@ void CreatureAlcoholTimer::check_for_alcohol_poisoning_death(CreaturePtr creatur
     Damage alcohol_default;
     alcohol_default.set_modifier(alcohol_damage);
 
-    cm.deal_damage(no_attacker, creature, "", alcohol_damage, alcohol_default);
+    cm.deal_damage(no_attacker, creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED, "", alcohol_damage, alcohol_default, "", DeathSourceTextKeys::DEATH_SOURCE_ALCOHOL_POISONING);
   }
 }

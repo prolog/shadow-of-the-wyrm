@@ -36,10 +36,12 @@ const string TextKeys::BOOL_FALSE = "BOOL_FALSE";
 const string TextKeys::TOTAL = "TOTAL";
 const string TextKeys::MAXIMUM_LEVEL_DIFFERENCE = "MAXIMUM_LEVEL_DIFFERENCE";
 const string TextKeys::TURNS = "TURNS";
+const string TextKeys::TOTAL_ELAPSED_TIME = "TOTAL_ELAPSED_TIME";
 const string TextKeys::MAXIMUM_DEPTH_REACHED = "MAXIMUM_DEPTH_REACHED";
 const string TextKeys::MORTUARY = "MORTUARY";
 const string TextKeys::MORTUARY_FIRST_KILL = "MORTUARY_FIRST_KILL";
 const string TextKeys::MODIFIERS = "MODIFIERS";
+const string TextKeys::DEATH_DETAILS = "DEATH_DETAILS";
 const string TextKeys::INDEFINITELY = "INDEFINITELY";
 const string TextKeys::STATUSES = "STATUSES";
 const string TextKeys::NPC_ESCAPES_MESSAGE = "NPC_ESCAPES_MESSAGE";
@@ -173,6 +175,9 @@ const string TextKeys::DECISION_SQUEEZE_FRIENDLY_CREATURE = "DECISION_SQUEEZE_FR
 const string TextKeys::DECISION_RESIST_SWITCH = "DECISION_RESIST_SWITCH";
 const string TextKeys::DECISION_STEAL_FRIENDLY_CREATURE  = "DECISION_STEAL_FRIENDLY_CREATURE";
 const string TextKeys::DECISION_CREATE_IDENTIFIED_DUMP = "DECISION_CREATE_IDENTIFIED_DUMP";
+const string TextKeys::DECISION_USE_LUA_CONSOLE = "DECISION_USE_LUA_CONSOLE";
+
+const string TextKeys::SCORE_SUPPRESSED_LUA_NARRATIVE = "SCORE_SUPPRESSED_LUA_NARRATIVE";
 
 const string TextKeys::GAIN_LEVEL = "GAIN_LEVEL";
 
@@ -193,5 +198,6 @@ const string TextKeys::GENERIC_MESSAGE = "GENERIC_MESSAGE";
 const string TextKeys::PACIFIED = "PACIFIED";
 const string TextKeys::TAMED = "TAMED";
 const string TextKeys::REQUIRES = "REQUIRES";
+const string TextKeys::THE_WORLD_MAP = "THE_WORLD_MAP";
 
 

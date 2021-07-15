@@ -1,5 +1,7 @@
 #include "AgeTimeObserver.hpp"
+#include "CombatManager.hpp"
 #include "DeathManagerFactory.hpp"
+#include "DeathSourceTextKeys.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "MapUtils.hpp"
@@ -48,12 +50,12 @@ void AgeTimeObserver::process_creatures(MapPtr cur_map, CreatureMap& creature_ma
 
       if (age.get_current() > age.get_base())
       {
-        DeathManagerPtr dm = DeathManagerFactory::create_death_manager(nullptr, creature, cur_map);
+        int oldage_damage = creature->get_hit_points().get_current() + 10;
+        Damage oldage_default;
+        oldage_default.set_modifier(oldage_damage);
 
-        if (dm != nullptr)
-        {
-          dm->die();
-        }
+        CombatManager cm;
+        cm.deal_damage(nullptr, creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED, "", oldage_damage, oldage_default, "", DeathSourceTextKeys::DEATH_SOURCE_OLD_AGE);
       }
       else
       {

@@ -2,9 +2,9 @@
 
 using namespace std;
 
-FileWriter::FileWriter(const string& filename_less_extension)
+FileWriter::FileWriter(const string& new_filename)
 {
-  filename = filename_less_extension + ".txt";
+  filename = new_filename;
 }
 
 FileWriter::~FileWriter()
@@ -15,9 +15,9 @@ FileWriter::~FileWriter()
   }
 }
 
-void FileWriter::set_base_file_name(const string& filename_less_extension)
+void FileWriter::set_file_name(const string& new_filename)
 {
-  filename = filename_less_extension + ".txt";
+  filename = new_filename;
 }
 
 // Check to see if a file is available.  If it is, write the file.

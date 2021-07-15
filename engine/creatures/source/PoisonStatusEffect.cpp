@@ -1,5 +1,6 @@
 #include "CombatManager.hpp"
 #include "Creature.hpp"
+#include "DeathSourceTextKeys.hpp"
 #include "PoisonCalculator.hpp"
 #include "PoisonStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -24,7 +25,7 @@ void PoisonStatusEffect::tick(CreaturePtr creature, const int danger_level) cons
   poison_dmg.set_damage_type(DamageType::DAMAGE_TYPE_POISON);
   int damage = pc.calculate_damage_per_tick(creature, danger_level);
   poison_dmg.set_modifier(damage);
-  cm.deal_damage(no_creature, creature, source_id, damage, poison_dmg);
+  cm.deal_damage(no_creature, creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED, source_id, damage, poison_dmg, "", DeathSourceTextKeys::DEATH_SOURCE_POISON);
 }
 
 string PoisonStatusEffect::get_player_application_message() const

@@ -1,7 +1,9 @@
-#include "DeityTextKeys.hpp"
 #include "ClassManager.hpp"
+#include "CreatureFeatures.hpp"
 #include "CrowningDeityDecisionStrategyHandler.hpp"
+#include "DeityTextKeys.hpp"
 #include "ItemManager.hpp"
+#include "Memberships.hpp"
 #include "ReligionConstants.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
@@ -52,12 +54,19 @@ DeityDecisionImplications CrowningDeityDecisionStrategyHandler::handle_decision(
 // Set the creature to be the champion of this deity.
 void CrowningDeityDecisionStrategyHandler::crown_champion(CreaturePtr creature)
 {
-  ReligionManager rm;
-  Religion& religion = creature->get_religion_ref();
-  DeityStatus status = rm.get_active_deity_status(creature);
+  if (creature != nullptr)
+  {
+    ReligionManager rm;
+    Religion& religion = creature->get_religion_ref();
+    DeityStatus status = rm.get_active_deity_status(creature);
 
-  status.set_champion_type(ChampionType::CHAMPION_TYPE_CROWNED);
-  religion.set_deity_status(deity_id, status);
+    status.set_champion_type(ChampionType::CHAMPION_TYPE_CROWNED);
+    religion.set_deity_status(deity_id, status);
+
+    MembershipFactory mf;
+    Membership champion = mf.create_holy_champion();
+    creature->get_memberships_ref().add_membership(champion.get_membership_id(), champion);
+  }
 }
 
 // Champions get a 10% damage reduction for all damage types.

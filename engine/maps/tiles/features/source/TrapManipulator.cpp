@@ -6,6 +6,7 @@
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DamageCalculatorFactory.hpp"
+#include "DeathSourceTextKeys.hpp"
 #include "EffectFactory.hpp"
 #include "FeatureProperties.hpp"
 #include "Game.hpp"
@@ -168,8 +169,15 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
   // Only apply the damage-based effect if there is damage to be dealt.
   if (damage_dealt > 0)
   {
+    string trap_sid = DeathSourceTextKeys::DEATH_SOURCE_TRAP;
+
+    if (trap != nullptr)
+    {
+      trap_sid = trap->get_description_and_replacement_sids().first;
+    }
+
     cm.handle_damage_effects(nullptr, creature, damage_dealt, dt, effect_bonus, status_ailments, 1);
-    cm.deal_damage(nullptr, creature, source_id, damage_dealt, damage_default, message);
+    cm.deal_damage(nullptr, creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED, source_id, damage_dealt, damage_default, message, trap_sid);
   }
 }
 
@@ -178,11 +186,23 @@ void TrapManipulator::create_item_if_necessary(TilePtr tile, TrapPtr trap)
   // Generate an item, if applicable.
   ItemManager im;
   IInventoryPtr inv = tile->get_items();
+  string trap_item_id = trap->get_item_id();
 
-  string item_destruction_s = trap->get_additional_property(ItemProperties::ITEM_PROPERTIES_DESTRUCTION_PCT_CHANCE);
-  int item_destruction_pct = item_destruction_s.empty() ? 0 : String::to_int(item_destruction_s);
+  if (!trap_item_id.empty())
+  {
+    const ItemMap items = Game::instance().get_items_ref();
+    auto i_it = items.find(trap_item_id);
 
-  im.create_item_with_probability(50, 100 - item_destruction_pct, inv, trap->get_item_id());
+    if (i_it != items.end() && i_it->second != nullptr)
+    {
+      string item_destruction_s = i_it->second->get_additional_property(ItemProperties::ITEM_PROPERTIES_DESTRUCTION_PCT_CHANCE);
+      int item_destruction_pct = item_destruction_s.empty() ? 0 : String::to_int(item_destruction_s);
+      int upper_bound = 100 - item_destruction_pct;
+      int lower_bound = upper_bound / 2;
+
+      im.create_item_with_probability(lower_bound, upper_bound, inv, trap_item_id);
+    }
+  }
 }
 
 void TrapManipulator::create_and_draw_animation(TrapPtr trap, CreaturePtr creature, const Coordinate& creature_coord)

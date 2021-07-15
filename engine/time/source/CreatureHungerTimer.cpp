@@ -3,6 +3,7 @@
 #include "CreatureHungerTimer.hpp"
 #include "CreatureUtils.hpp"
 #include "CombatManager.hpp"
+#include "DeathSourceTextKeys.hpp"
 #include "FoodAction.hpp"
 #include "HungerCalculator.hpp"
 #include "MessageManager.hpp"
@@ -56,7 +57,7 @@ void CreatureHungerTimer::apply_hunger_damage_if_appropriate(CreaturePtr creatur
       Damage hunger_default;
       hunger_default.set_modifier(hunger_damage);
 
-      cm.deal_damage(no_attacker, creature, "", hunger_damage, hunger_default, hunger_message_sid);
+      cm.deal_damage(no_attacker, creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED, "", hunger_damage, hunger_default, hunger_message_sid, DeathSourceTextKeys::DEATH_SOURCE_STARVATION);
     }
   }
 }

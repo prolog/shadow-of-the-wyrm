@@ -35,6 +35,9 @@ class Effect
     // values from spells, like healing amounts.
     virtual void read_properties(const std::map<std::string, std::string>& properties);
 
+    void set_originator(CreaturePtr new_originator);
+    CreaturePtr get_originator() const;
+
     // Create an exact copy
     virtual Effect* clone() = 0;
 
@@ -51,6 +54,8 @@ class Effect
     // Add all the additional effect messages, if the creature is the
     // player.
     virtual void add_additional_effect_messages(std::shared_ptr<Creature> creature) const;
+
+    CreaturePtr originator;
 
     // Additional messages that are displayed regardless of identification
     // success or failure.

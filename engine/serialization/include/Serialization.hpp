@@ -12,7 +12,7 @@ class Serialization
     static SerializationReturnCode load(const std::string& filename);
     static bool delete_savefile(const std::string& filename);
 
-    static std::string generate_savefile_name(const std::string& user_name, const std::string& character_name);
+    static std::string generate_savefile_name(const std::string& userdata_dir, const std::string& user_name, const std::string& character_name);
     static bool does_savefile_exist_for_user_and_character(const std::string& user_name, const std::string& character_name);
 
     static std::vector<std::pair<std::string, std::string>> get_save_file_names(const bool single_user_mode, const bool skip_metadata_verification);

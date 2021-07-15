@@ -28,6 +28,7 @@
 #include "HostilityManager.hpp"
 #include "IntimidationCalculator.hpp"
 #include "IHitTypeFactory.hpp"
+#include "ItemIdentifier.hpp"
 #include "ItemProperties.hpp"
 #include "KillScript.hpp"
 #include "ToHitCalculatorFactory.hpp"
@@ -560,7 +561,7 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
 
     handle_vorpal_if_necessary(attacking_creature, attacked_creature, combat_damage_fixed, damage_dealt); 
     handle_explosive_if_necessary(attacking_creature, attacked_creature, current_map, damage_dealt, combat_damage_fixed, attack_type);
-    deal_damage(attacking_creature, attacked_creature, source_id, damage_dealt, combat_damage_fixed);
+    deal_damage(attacking_creature, attacked_creature, attack_type, source_id, damage_dealt, combat_damage_fixed);
 
     if (!attacked_creature->is_dead())
     {
@@ -846,6 +847,95 @@ void CombatManager::handle_damage_effects(CreaturePtr attacking_creature, Creatu
   }
 }
 
+void CombatManager::record_death_info_for_dump(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const string& dmg_source_id, const string& death_source_sid, MapPtr map)
+{
+  if (map != nullptr && attacked_creature != nullptr && attacked_creature->get_is_player())
+  {
+    ostringstream kbc_ss;
+
+    kbc_ss << StringTable::get(get_killed_by_source(attacking_creature, death_source_sid));
+
+    if (attacking_creature != nullptr)
+    {
+      WeaponPtr weapon;
+      WeaponManager wm;
+      weapon = wm.get_weapon(attacking_creature, attack_type);
+
+      if (weapon != nullptr)
+      {
+        ItemIdentifier iid;
+        kbc_ss << " [" << iid.get_appropriate_description(weapon, false) << "]";
+      }
+      if (attack_type == AttackType::ATTACK_TYPE_MAGICAL)
+      {
+        string magical_death_details = get_dump_magical_death_details(attacking_creature);
+        kbc_ss << magical_death_details;
+      }
+    }
+
+    string depth = map->size().depth().str(true);
+    string map_desc = MapUtils::get_map_description(map);
+
+    attacked_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_KILLED_BY_SOURCE, kbc_ss.str());
+    attacked_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_KILLED_BY_DEPTH, depth);
+    attacked_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_KILLED_BY_MAP, map_desc);
+  }
+}
+
+string CombatManager::get_killed_by_source(CreaturePtr source_creature, const string& death_source_sid)
+{
+  string killed_by_sid;
+
+  // Dump the death source details.
+  if (!death_source_sid.empty())
+  {
+    killed_by_sid = death_source_sid;
+  }
+  else if (source_creature != nullptr)
+  {
+    killed_by_sid = source_creature->get_description_sid();
+  }
+  else
+  {
+    killed_by_sid = "?";
+  }
+
+  return killed_by_sid;
+}
+
+string CombatManager::get_dump_magical_death_details(CreaturePtr source_creature)
+{
+  ostringstream details;
+
+  if (source_creature != nullptr)
+  {
+    string spell_id = source_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_SPELL_IN_PROGRESS);
+    const SpellMap& spells = Game::instance().get_spells_ref();
+
+    auto s_it = spells.find(spell_id);
+
+    if (s_it != spells.end())
+    {
+      details << " [" << StringTable::get(s_it->second.get_spell_name_sid()) << "]";
+    }
+    else
+    {
+      string item_id = source_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_ITEM_IN_USE);
+      ItemPtr used_item = source_creature->get_inventory()->get_from_id(item_id);
+
+      if (used_item != nullptr)
+      {
+        // Identify the item before dumping it.
+        ItemIdentifier iid;
+        iid.set_item_identified(source_creature, used_item, used_item->get_base_id(), true);
+
+        details << " [" << iid.get_appropriate_description(used_item, false) << "]";
+      }
+    }
+  }
+  return details.str();
+}
+
 void CombatManager::handle_attacker_hidden_after_damage(CreaturePtr attacking_creature)
 {
   if (attacking_creature != nullptr)
@@ -874,7 +964,7 @@ void CombatManager::apply_damage_effect(CreaturePtr creature, StatusEffectPtr st
 // Once damage is dealt, check for death.  If the attack has lowered the attacked creature's
 // HP to 0, kill it, and award the dead creature's experience value to the attacking
 // creature.
-void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreaturePtr attacked_creature, const string& source_id, const int damage_dealt, const Damage& damage_info, const string message_sid)
+void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const string& source_id, const int damage_dealt, const Damage& damage_info, const string& message_sid, const string& death_source_sid)
 {
   Game& game = Game::instance();
   MapPtr map = game.get_current_map();
@@ -924,6 +1014,10 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
           ks.execute(se, kill_script_name, attacked_creature, attacking_creature);
         }
       }
+
+      // If this is the player, record the necessary death info for the
+      // character dump.
+      record_death_info_for_dump(attacking_creature, attacked_creature, attack_type, source_id, death_source_sid, map);
 
       DeathManagerPtr death_manager = DeathManagerFactory::create_death_manager(attacking_creature, attacked_creature, map);
 

@@ -5,6 +5,7 @@
 #include "CombatTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
+#include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "FireWeaponTileSelectionKeyboardCommandMap.hpp"
 #include "Game.hpp"
@@ -229,8 +230,12 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
 
     if (potion)
     {
+      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_ITEM_IN_USE, potion->get_id());
+
       QuaffAction qa;
       qa.explode_potion(creature, target_creature, potion);
+
+      creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_ITEM_IN_USE);
 
       // Quaff action reduces the number of potions as part of the quaff step.
       // If we're now down to 0, we should remove the potion from the

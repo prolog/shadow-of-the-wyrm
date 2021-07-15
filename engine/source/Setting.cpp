@@ -10,6 +10,10 @@ Setting::~Setting()
 {
 }
 
+const string Setting::LOG_DIR = "log_dir";
+const string Setting::USERDATA_DIR = "userdata_dir";
+const string Setting::GENERATE_SYSTEM_CHARDUMP = "generate_system_chardump";
+const string Setting::SYSCHARDUMP_DIR = "syschardump_dir";
 const string Setting::SHADE_TERRAIN = "shade_terrain";
 const string Setting::SHADE_CREATURES_AND_ITEMS = "shade_creatures_and_items";
 const string Setting::DEFAULT_HP_COLOUR = "default_hp_colour";
@@ -36,9 +40,10 @@ const string Setting::DEFAULT_DEITY_ID = "default_deity_id";
 const string Setting::DEFAULT_HAIR_COLOUR = "default_hair_colour";
 const string Setting::DEFAULT_EYE_COLOUR = "default_eye_colour";
 const string Setting::DEFAULT_STARTING_LOCATION_ID = "default_starting_location_id";
+const string Setting::USE_DEFAULT_NAME = "use_default_name";
 const string Setting::DEFAULT_NAME = "default_name";
 const string Setting::USERNAME_IS_CHARACTER_NAME = "username_is_character_name";
-const string Setting::MAX_CHARACTERS_PER_USER = "max_characters_per_user";
+const string Setting::MAX_CHARACTERS_PER_USER = "_max_characters_per_user";
 const string Setting::DISPLAY = "display";
 const string Setting::DISPLAY_SDL_RENDERER = "display_sdl_renderer";
 const string Setting::DISPLAY_SDL_WINDOW_SIZE = "display_sdl_window_size";
@@ -50,8 +55,8 @@ const string Setting::DISPLAY_NUM_GLYPHS = "display_num_glyphs";
 const string Setting::DISPLAY_FORCE_ASCII = "display_force_ascii";
 const string Setting::DISPLAY_SDL_PREFIX = "display_sdl_";
 const string Setting::REMOVE_LOGS_DAYS_OLD = "remove_logs_days_old";
-const string Setting::SINGLE_USER_MODE = "single_user_mode";
-const string Setting::SKIP_SAVEFILE_METADATA_VERIFICATION = "skip_savefile_metadata_verification";
+const string Setting::SINGLE_USER_MODE = "_single_user_mode";
+const string Setting::SKIP_SAVEFILE_METADATA_VERIFICATION = "_skip_savefile_metadata_verification";
 const string Setting::AUTOPICKUP = "autopickup";
 const string Setting::AUTOPICKUP_TYPES = "autopickup_types";
 const string Setting::AUTOPICKUP_IGNORE_CORPSES = "autopickup_ignore_corpses";
@@ -61,8 +66,9 @@ const string Setting::CHECKPOINT_SAVE = "checkpoint_save";
 const string Setting::ALLOW_CURSED_AMMUNITION_USE = "allow_cursed_ammunition_use";
 const string Setting::SKILL_SELECTION_REQUIRE_CAPITALIZATION = "skill_selection_require_capitalization";
 const string Setting::CONFIRMATION_REQUIRE_CAPITALIZATION = "confirmation_require_capitalization";
-const string Setting::CONFIGURATION_FILE_BASE = "configuration_file_base";
-const string Setting::CONFIGURATION_FILE_CREATURES = "configuration_file_creatures";
-const string Setting::CONFIGURATION_FILE_ITEMS = "configuration_file_items";
-const string Setting::CONFIGURATION_FILE_WORLD_MAP_AREAS = "configuration_file_world_map_areas";
+const string Setting::CONFIGURATION_FILE_BASE = "_configuration_file_base";
+const string Setting::CONFIGURATION_FILE_CREATURES = "_configuration_file_creatures";
+const string Setting::CONFIGURATION_FILE_ITEMS = "_configuration_file_items";
+const string Setting::CONFIGURATION_FILE_WORLD_MAP_AREAS = "_configuration_file_world_map_areas";
 const string Setting::NARRATIVE_MODE = "narrative_mode";
+const string Setting::DISALLOW_SCORE_ON_EXPLORATION = "_disallow_score_on_exploration";

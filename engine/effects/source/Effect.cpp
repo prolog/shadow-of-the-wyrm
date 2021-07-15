@@ -115,3 +115,13 @@ bool Effect::is_negative_effect() const
 void Effect::read_properties(const map<string, string>& properties)
 {
 }
+
+void Effect::set_originator(CreaturePtr new_originator)
+{
+  originator = new_originator;
+}
+
+CreaturePtr Effect::get_originator() const
+{
+  return originator;
+}

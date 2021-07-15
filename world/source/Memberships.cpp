@@ -1,4 +1,6 @@
 #include "Memberships.hpp"
+#include "CreatureFeatures.hpp"
+#include "MembershipTextKeys.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
@@ -194,6 +196,19 @@ bool Membership::deserialize(istream& stream)
 
   return true;
 }
+
+Membership MembershipFactory::create_holy_champion()
+{
+  Membership m(MembershipID::MEMBERSHIP_ID_HOLY_CHAMPION, MembershipTextKeys::MEMBERSHIP_CHAMPION, {});
+  return m;
+}
+
+Membership MembershipFactory::create_fallen_champion()
+{
+  Membership m(MembershipID::MEMBERSHIP_ID_FALLEN_CHAMPION, MembershipTextKeys::MEMBERSHIP_FALLEN_CHAMPION, {});
+  return m;
+}
+
 
 #ifdef UNIT_TESTS
 #include "unit_tests/Memberships_test.cpp"

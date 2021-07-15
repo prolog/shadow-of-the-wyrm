@@ -1,6 +1,7 @@
 #include "ActionManager.hpp"
 #include "ActionTextKeys.hpp"
 #include "Commands.hpp"
+#include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DirectionUtils.hpp"
 #include "EffectFactory.hpp"
@@ -174,9 +175,13 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, WandPtr wand, cons
         Statistic original_charges = wand->get_charges();
         reduce_wand_charges_if_necessary(creature, wand);
 
+        creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_ITEM_IN_USE, wand->get_id());
+
         // Process the damage and spell on the wand.  If there are no charges,
         // the effect returned will be null, and has_damage will return false.
         bool wand_identified = process_wand_damage_and_effect(creature, map, caster_coord, evoke_result.second, wand_spell, wand->get_status(), original_charges);
+
+        creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_ITEM_IN_USE);
 
         // If the wand was identified during use, name it.
         name_wand_if_identified(creature, wand, wand_identified, wand_originally_identified, item_id);

@@ -14,27 +14,43 @@ const string Settings::KEYBINDING_PREFIX = "key_";
 // Find the ini file (first check the user's home directory, then the
 // game directory).  Parse it into the boost::ptree so that it can be
 // later queried for languages, keybindings, etc.
-Settings::Settings(const bool read_from_disk)
+Settings::Settings(const bool read_from_disk, const bool read_user_copy)
 {
   if (read_from_disk)
   {
-    string home_dir = Environment::get_user_home_directory();
-    string ini_file_loc = home_dir + SETTINGS_FILENAME;
+    string ini_file_loc = SETTINGS_FILENAME;
 
-    if (!boost::filesystem::exists(ini_file_loc))
+    if (read_user_copy)
     {
-      ini_file_loc = SETTINGS_FILENAME;
-
-      // There was no per-user slands.ini file - use the one in the main game
-      // directory.
-      if (!boost::filesystem::exists(SETTINGS_FILENAME))
-      {
-        throw std::runtime_error("Could not find a copy of swyrm.ini");
-      }
+      string dir = Environment::get_userdata_directory(nullptr);
+      ini_file_loc = dir + SETTINGS_FILENAME;
     }
 
-    boost::property_tree::ini_parser::read_ini(ini_file_loc, settings_tree);
+    if (boost::filesystem::exists(ini_file_loc))
+    {
+      boost::property_tree::ini_parser::read_ini(ini_file_loc, settings_tree);
+    }
   }
+}
+
+// Merge the user settings. This merges all settings except those that start
+// with a '_'
+bool Settings::merge_user_settings(const Settings& user_settings)
+{
+  int count = 0;
+
+  for (auto& u_it : user_settings.get_settings_tree())
+  {
+    string name = u_it.first;
+
+    if (!name.empty() && name[0] != '_')
+    {
+      set_setting(name, u_it.second.data());
+      count++;
+    }
+  }
+
+  return (count > 0);
 }
 
 // Look up a setting
@@ -104,6 +120,11 @@ map<string, string> Settings::get_settings_starts_with(const string& key_prefix)
   }
 
   return props;
+}
+
+boost::property_tree::ptree Settings::get_settings_tree() const
+{
+  return settings_tree;
 }
 
 bool Settings::serialize(ostream& stream) const

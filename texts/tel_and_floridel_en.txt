@@ -3818,7 +3818,7 @@ run through, and all the old bonds were defiled %b
 within the woods that made up this unholy wild.
 %p
 At first the numbers roughly evened out - %b
-the nobles losing two, a couples exiles %b
+the nobles losing two, a couple of exiles %b
 run through - but soon the exiles found the scouts %b
 too much.  And as they fought back, all the while %b
 Alcius circled wide to roam their rear. %b
@@ -3837,3 +3837,34 @@ sweep down towards him, blessed as the sound %b
 lasted longer than his death, its crack-and-thud %b
 enough to shake the trees and launch the birds above.
 %p
+Not having shovels, they gathered up the dead %b
+and moved them to the lakebed, moving stones %b
+until they hit red soil; and then they spread %b
+the bodies of the dead in staggered rows %b
+to face the sun.  They built a six-foot cairn %b
+to mark the place, and hoped that heavy rain %b
+might fill the lake and open up to where %b
+the souls could find some rest, that when it drained %b
+they'd find the bodies missing, travelling back again.
+%p
+And after this, it was Alcius who spoke. %b
+"You see the ones we killed," the king's aide said, %b
+"and counted in your head each killing stroke. %b
+So you know the number of the rebel dead %b
+doesn't match the count that left, that some remain %b
+upland.  Some may have slipped beyond the town %b
+to find the other settlements and stain %b
+them with their creeping rot against the crown. %b
+We cannot rest until they're buried in the ground."
+%p
+An uneasy look - they thought this would be fast, %b
+that they'd grab some horses, ride the exiles down %b
+like in a fairy tale, where each day passed %b
+namelessly into the next, where treachery found %b
+a shining blade, and where the only sounds %b
+were pipes and drums to welcome heroes home. %b
+Control so easily exerted underground, %b
+but here among the dead and orange-red stones %b
+it slipped away and left them standing all alone.
+%p
+

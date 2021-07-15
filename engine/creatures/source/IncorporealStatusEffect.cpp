@@ -1,6 +1,7 @@
 #include "ActionTextKeys.hpp"
 #include "CombatManager.hpp"
 #include "Creature.hpp"
+#include "DeathSourceTextKeys.hpp"
 #include "Game.hpp"
 #include "IncorporealCalculator.hpp"
 #include "IncorporealStatusEffect.hpp"
@@ -46,7 +47,7 @@ void IncorporealStatusEffect::after_undo(CreaturePtr creature) const
       Damage torn_apart_default;
       torn_apart_default.set_modifier(torn_apart_damage);
       
-      cm.deal_damage(no_attacker, creature, source_id, torn_apart_damage, torn_apart_default, torn_apart_message_sid);
+      cm.deal_damage(no_attacker, creature, AttackType::ATTACK_TYPE_MAGICAL, source_id, torn_apart_damage, torn_apart_default, torn_apart_message_sid, DeathSourceTextKeys::DEATH_SOURCE_OBLITERATION);
     }
   }
 }

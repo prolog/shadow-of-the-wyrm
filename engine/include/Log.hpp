@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <fstream>
+#include "Settings.hpp"
 
 enum struct LoggingLevel
 {
@@ -21,12 +22,13 @@ constexpr auto CLOG_ERROR = 3;
 class Log
 {
   public:
-    static Log& instance()
+    static Log& instance(const Settings* settings = nullptr)
     {
-      static Log inst;
+      static Log inst(settings);
       return inst;
     }
 
+    void init_file(const Settings* settings);
     void set_log_level(const LoggingLevel);
 
     bool log_using_level(const LoggingLevel level, const std::string& log_msg);
@@ -45,16 +47,17 @@ class Log
     friend class LogFiles;
     friend int main(int argc, char* argv[]);
     static Log* instance(const LoggingLevel level_to_set);
-    Log(); // Open file
+    Log(const Settings* settings); // Open file
     ~Log(); // Close generated file
     Log(const Log& log); // Do not implement.
     bool operator=(const Log& log); // Do not implement.
 
-    std::string create_filename();
+    std::string create_filename(const Settings* settings);
     std::string create_datetimestamp();
 
     static LoggingLevel level;
     static int counter;
     static const std::string LOG_PREFIX;
+    static const std::string ERROR_CANNOT_WRITE_LOG;
     std::ofstream sl_log;
 };
