@@ -19,7 +19,15 @@ string TileDescriber::describe() const
 
   if (viewing_creature != nullptr && tile != nullptr)
   {
-    description = StringTable::get(tile->get_tile_description_sid());
+    string tile_desc = StringTable::get(tile->get_tile_description_sid());
+    
+    if (!tile_desc.empty())
+    {
+      tile_desc[0] = std::toupper(tile_desc[0]);
+      tile_desc += ".";
+    }
+
+    description = tile_desc;
 
     if (tile->has_name())
     {

@@ -3,6 +3,7 @@
 #include "CharacterAction.hpp"
 #include "CharacterDumper.hpp"
 #include "Conversion.hpp"
+#include "Environment.hpp"
 #include "FileWriter.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
@@ -57,34 +58,46 @@ ActionCostValue CharacterAction::display_character(CreaturePtr creature)
   return get_action_cost_value(creature);
 }
 
-ActionCostValue CharacterAction::dump_character(CreaturePtr creature)
+ActionCostValue CharacterAction::dump_character(CreaturePtr creature, const CharacterDumpType cdt)
 {
   if (creature)
   {
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature->get_is_player());
     string name = creature->get_name();
-    string dump_message = TextMessages::get_dumping_character_message(name);
-    manager.add_new_message(dump_message);
-    manager.send();
+
+    ostringstream fns;
+    Settings& settings = Game::instance().get_settings_ref();
+    auto cur_time = std::chrono::system_clock::now();
+
+    string dumpdata_dir = Environment::get_syschardump_directory(&settings);
+
+    if (cdt == CharacterDumpType::CHARACTER_DUMP_USER_INITIATED)
+    {
+      dumpdata_dir = Environment::get_userdata_directory(&settings);
+
+      string dump_message = TextMessages::get_dumping_character_message(name, dumpdata_dir);
+      manager.add_new_message(dump_message);
+      manager.send();
+    }
 
     CharacterDumper dumper(creature);
     string file_contents = dumper.str();
-    FileWriter file(creature->get_name());
+    string fname = dumpdata_dir + name + ".txt";
+    FileWriter file(fname);
     
     bool created_file = file.write(file_contents);
 
     if (!created_file)
     {
-      ostringstream fname;
-      auto cur_time = std::chrono::system_clock::now();
-      fname << creature->get_name() << "_" << std::chrono::system_clock::to_time_t(cur_time);
-
-      file.set_base_file_name(fname.str());
+      ostringstream fns;
+      fns << dumpdata_dir << name << "_" << std::chrono::system_clock::to_time_t(cur_time) << ".txt";
+      string new_file_name = fns.str();
+      file.set_file_name(new_file_name);
       created_file = file.write(file_contents);
 
       if (!created_file)
       {
-        manager.add_new_message(StringTable::get(TextKeys::DUMPING_CHARACTER_FAILED));
+        manager.add_new_message(StringTable::get(TextKeys::DUMPING_CHARACTER_FAILED) + " - " + new_file_name);
         manager.send();
       }
     }    

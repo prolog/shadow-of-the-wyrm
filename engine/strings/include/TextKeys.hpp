@@ -32,11 +32,13 @@ class TextKeys
     static const std::string MORTUARY;
     static const std::string MORTUARY_FIRST_KILL;
     static const std::string MODIFIERS;
+    static const std::string DEATH_DETAILS;
     static const std::string INDEFINITELY;
     static const std::string STATUSES;
     static const std::string TOTAL;
     static const std::string MAXIMUM_LEVEL_DIFFERENCE;
     static const std::string TURNS;
+    static const std::string TOTAL_ELAPSED_TIME;
     static const std::string MAXIMUM_DEPTH_REACHED;
     static const std::string NPC_ESCAPES_MESSAGE;
     static const std::string SEX;
@@ -169,6 +171,9 @@ class TextKeys
     static const std::string DECISION_RESIST_SWITCH;
     static const std::string DECISION_STEAL_FRIENDLY_CREATURE;
     static const std::string DECISION_CREATE_IDENTIFIED_DUMP;
+    static const std::string DECISION_USE_LUA_CONSOLE;
+
+    static const std::string SCORE_SUPPRESSED_LUA_NARRATIVE;
 
     static const std::string GAIN_LEVEL;
     static const std::string UNARMED;
@@ -189,6 +194,7 @@ class TextKeys
     static const std::string PACIFIED;
     static const std::string TAMED;
     static const std::string REQUIRES;
+    static const std::string THE_WORLD_MAP;
 
   protected:
     TextKeys();

@@ -5898,7 +5898,7 @@
 						<Col>15</Col>
 					</Sprite>					
 				</Symbol>
-				<DangerLevel>1</DangerLevel>
+				<DangerLevel>-1</DangerLevel>
 				<Skill>1008</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>45</Difficulty>

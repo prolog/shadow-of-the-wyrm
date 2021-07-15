@@ -19,7 +19,7 @@ class TextMessages
     static std::string get_npc_escapes_message(const std::string& creature_description);
     static std::string get_npc_level_message(const std::string& creature_description);
     static std::string get_action_not_found_message(const std::string& command_action);
-    static std::string get_dumping_character_message(const std::string& creature_name);
+    static std::string get_dumping_character_message(const std::string& char_name, const std::string& dir);
     static std::string get_sex(const CreatureSex sex);
     static std::string get_sex_abrv(const CreatureSex sex);
     static std::string get_name_and_title(CreaturePtr creature);
@@ -49,6 +49,8 @@ class TextMessages
     static std::string get_adventurers_joined_message(const int adv_joined);
     static std::string get_modifier_message(const std::string& status_or_spell_id, const Modifier& m, CreaturePtr c);
     static std::string get_ending_message(const std::string& ending_time);
+    static std::string get_killed_by_message(const std::string& killed_by_source);
+    static std::string get_death_depth_location_message(const std::string& depth, const std::string& location);
 
   protected:
     TextMessages();
@@ -85,4 +87,6 @@ class TextMessages
     static const std::string ADVENTURERS_JOINED_MESSAGE;
     static const std::string AFFECTED_BY;
     static const std::string ENDING_MESSAGE;
+    static const std::string KILLED_BY_MESSAGE;
+    static const std::string DEATH_DEPTH_LOCATION_MESSAGE;
 };

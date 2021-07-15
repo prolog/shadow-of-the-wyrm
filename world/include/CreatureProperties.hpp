@@ -37,6 +37,11 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_HIRELINGS_HIRED;
     static const std::string CREATURE_PROPERTIES_ADVENTURERS_JOINED;
     static const std::string CREATURE_PROPERTIES_PRIMARY_MELEE_RANGE;
+    static const std::string CREATURE_PROPERTIES_KILLED_BY_SOURCE;
+    static const std::string CREATURE_PROPERTIES_KILLED_BY_DEPTH;
+    static const std::string CREATURE_PROPERTIES_KILLED_BY_MAP;
+    static const std::string CREATURE_PROPERTIES_SPELL_IN_PROGRESS;
+    static const std::string CREATURE_PROPERTIES_ITEM_IN_USE;
 
   protected:
     CreatureProperties();

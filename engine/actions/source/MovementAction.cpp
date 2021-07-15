@@ -962,11 +962,19 @@ bool MovementAction::confirm_ranged_melee_attack(CreaturePtr creature)
 
   if (creature != nullptr)
   {
-    Game& game = Game::instance();
-    string confirm_attack = TextMessages::get_confirmation_message(TextKeys::DECISION_CONFIRM_RANGED_MELEE_ATTACK);
-    game.display->confirm(confirm_attack);
+    if (creature->get_is_player())
+    {
+      Game& game = Game::instance();
+      string confirm_attack = TextMessages::get_confirmation_message(TextKeys::DECISION_CONFIRM_RANGED_MELEE_ATTACK);
+      game.display->confirm(confirm_attack);
 
-    confirm = creature->get_decision_strategy()->get_confirmation();
+      confirm = creature->get_decision_strategy()->get_confirmation();
+    }
+    else
+    {
+      // NPCs always confirm.
+      confirm = true;
+    }
   }
 
   return confirm;

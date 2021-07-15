@@ -59,7 +59,13 @@
 using namespace std;
 
 Game::Game()
-: keep_playing(true), reload_game_loop(false), check_scores(true), requires_redraw(false)
+: keep_playing(true)
+, reload_game_loop(false)
+, check_scores(true)
+, requires_redraw(false)
+, count_score(true)
+, total_seconds_played(0.0)
+, game_start_time(chrono::system_clock::now())
 {
   // Setup the time keeper.  On a new game, this will initialize everything as
   // expected - when loading an existing game, this will be overwritten later,
@@ -512,6 +518,7 @@ void Game::go()
   StatusActionProcessor sap;
   MapPtr current_map = get_current_map();
   CreaturePtr current_player = get_current_player();
+  set_game_start_time(chrono::system_clock::now());
 
   // Use a try-catch block so that if there is an exception thrown, we can
   // try to recover by saving.
@@ -645,6 +652,14 @@ void Game::go()
 
     // We're done - clear the display so that score information (or error
     // information, it is me coding this, after all) can be shown.
+    if (!should_count_score())
+    {
+      IMessageManager& manager = MM::instance();
+      manager.add_new_message_with_pause(StringTable::get(TextKeys::SCORE_SUPPRESSED_LUA_NARRATIVE));
+      manager.send();
+      get_current_player()->get_decision_strategy()->get_confirmation();
+    }
+
     display->clear_display();
     display->redraw();
     update_score_file_if_necessary(current_player);
@@ -694,6 +709,24 @@ bool Game::should_check_scores() const
   return check_scores;
 }
 
+bool Game::should_count_score() const
+{
+  bool calc_score = true;
+  bool disallow_score_on_exploration = settings.get_setting_as_bool(Setting::DISALLOW_SCORE_ON_EXPLORATION);
+
+  if (disallow_score_on_exploration)
+  {
+    bool narrative_mode = settings.get_setting_as_bool(Setting::NARRATIVE_MODE);
+
+    if (disallow_score_on_exploration && (narrative_mode || !count_score))
+    {
+      calc_score = false;
+    }
+  }
+
+  return calc_score;
+}
+
 // Update score files if the game is being exited but not saved
 // (e.g.: creature killed, wins, etc)
 void Game::update_score_file_if_necessary(CreaturePtr current_player)
@@ -704,14 +737,17 @@ void Game::update_score_file_if_necessary(CreaturePtr current_player)
   {
     try
     {
-      ScoreFile sf;
-      sf.write(current_player);
+      if (should_count_score())
+      {
+        ScoreFile sf;
+        sf.write(current_player);
 
-      Game& game = Game::instance();
-      HighScoreScreen hss(game.get_display(), sf.get_entries());
-      auto val = hss.display();
+        Game& game = Game::instance();
+        HighScoreScreen hss(game.get_display(), sf.get_entries());
+        auto val = hss.display();
 
-      sf.save();
+        sf.save();
+      }
     }
     catch (const std::runtime_error& e)
     {
@@ -1094,6 +1130,31 @@ std::map<string, pair<string, unordered_map<string, Coordinate>>> Game::get_spri
   return spritesheets;
 }
 
+void Game::set_count_score(const bool new_count_score)
+{
+  count_score = new_count_score;
+}
+
+bool Game::get_count_score() const
+{
+  return count_score;
+}
+
+double Game::get_total_elapsed_game_time(const std::chrono::system_clock::time_point& current_time) const
+{
+  return total_seconds_played + std::chrono::duration_cast<std::chrono::seconds>(current_time - game_start_time).count();
+}
+
+void Game::set_game_start_time(const std::chrono::system_clock::time_point& new_start_time)
+{
+  game_start_time = new_start_time;
+}
+
+std::chrono::system_clock::time_point Game::get_game_start_time() const
+{
+  return game_start_time;
+}
+
 bool Game::serialize(ostream& stream) const
 {
   Log::instance().trace("Game::serialize - start");
@@ -1263,6 +1324,12 @@ bool Game::serialize(ostream& stream) const
     Serialize::write_string(stream, sl_pair.first);
     sl_pair.second.serialize(stream);
   }
+
+  Serialize::write_bool(stream, count_score);
+
+  // We keep track of total seconds, but not start time, etc.
+  double total_elapsed_time = get_total_elapsed_game_time(std::chrono::system_clock::now());
+  Serialize::write_double(stream, total_elapsed_time);
 
   Log::instance().trace("Game::serialize - end");
 
@@ -1534,6 +1601,10 @@ bool Game::deserialize(istream& stream)
 
     starting_locations.insert(make_pair(sl_id, sl));
   }
+
+  Serialize::read_bool(stream, count_score);
+
+  Serialize::read_double(stream, total_seconds_played);
 
   Log::instance().trace("Game::deserialize - end");
   return true;

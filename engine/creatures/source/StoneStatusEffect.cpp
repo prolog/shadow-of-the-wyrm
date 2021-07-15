@@ -1,6 +1,7 @@
 #include "CombatManager.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
+#include "DeathSourceTextKeys.hpp"
 #include "FeatureGenerator.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
@@ -86,7 +87,8 @@ void StoneStatusEffect::finalize(CreaturePtr creature) const
     manager.send();
 
     Damage stone_default;
-    cm.deal_damage(no_creature, creature, source_id, creature->get_hit_points().get_base(), stone_default);
+    auto damage = creature->get_hit_points().get_current() + 10;
+    cm.deal_damage(no_creature, creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED, source_id, damage, stone_default, "", DeathSourceTextKeys::DEATH_SOURCE_PETRIFICATION);
   }
 }
 

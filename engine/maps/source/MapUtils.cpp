@@ -22,8 +22,10 @@
 #include "MovementTextKeys.hpp"
 #include "PickupAction.hpp"
 #include "RNG.hpp"
+#include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "TileDescriber.hpp"
+#include "TileGenerator.hpp"
 #include "ViewMapTranslator.hpp"
 #include "WeaponManager.hpp"
 #include "WorldMapLocationTextKeys.hpp"
@@ -2066,6 +2068,41 @@ pair<bool, TilePtr> MapUtils::get_melee_attack_target(MapPtr map, CreaturePtr cr
   }
 
   return result;
+}
+
+string MapUtils::get_map_description(MapPtr map)
+{
+  ostringstream ss;
+
+  if (map != nullptr)
+  {
+    string sid;
+    string name_sid = map->get_name_sid();
+
+    if (!name_sid.empty())
+    {
+      sid = name_sid;
+    }
+    else if (map->get_map_type() == MapType::MAP_TYPE_WORLD)
+    {
+      sid = TextKeys::THE_WORLD_MAP;
+    }
+    else
+    {
+      TileType tt = map->get_terrain_type();
+      TileGenerator tg;
+      TilePtr tile = tg.generate(tt);
+
+      if (tile != nullptr)
+      {
+        sid = tile->get_tile_description_sid();
+      }
+    }
+
+    ss << StringTable::get(sid);
+  }
+
+  return ss.str();
 }
 
 #ifdef UNIT_TESTS

@@ -3,6 +3,10 @@
 class Setting
 {
   public:
+    static const std::string LOG_DIR;
+    static const std::string USERDATA_DIR;
+    static const std::string GENERATE_SYSTEM_CHARDUMP;
+    static const std::string SYSCHARDUMP_DIR;
     static const std::string SHADE_TERRAIN;
     static const std::string SHADE_CREATURES_AND_ITEMS;
     static const std::string DEFAULT_HP_COLOUR;
@@ -29,6 +33,7 @@ class Setting
     static const std::string DEFAULT_HAIR_COLOUR;
     static const std::string DEFAULT_EYE_COLOUR;
     static const std::string DEFAULT_STARTING_LOCATION_ID;
+    static const std::string USE_DEFAULT_NAME;
     static const std::string DEFAULT_NAME;
     static const std::string USERNAME_IS_CHARACTER_NAME;
     static const std::string MAX_CHARACTERS_PER_USER;
@@ -59,6 +64,7 @@ class Setting
     static const std::string CONFIGURATION_FILE_ITEMS;
     static const std::string CONFIGURATION_FILE_WORLD_MAP_AREAS;
     static const std::string NARRATIVE_MODE;
+    static const std::string DISALLOW_SCORE_ON_EXPLORATION;
 
   protected:
     Setting();

@@ -1,3 +1,4 @@
+#include <iomanip>
 #include <sstream>
 #include <boost/algorithm/string.hpp>
 #include <boost/tokenizer.hpp>
@@ -11,6 +12,8 @@
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureTranslator.hpp"
+#include "DeathDumper.hpp"
+#include "Environment.hpp"
 #include "EquipmentDumper.hpp"
 #include "Game.hpp"
 #include "InventoryDumper.hpp"
@@ -53,7 +56,16 @@ string CharacterDumper::str() const
   Metadata meta;
   string version = meta.get_game_version_synopsis();
   ss << String::centre(version, num_cols) << endl << endl;
-  ss << String::centre(TextMessages::get_name_and_title(creature), num_cols) << endl;
+  
+  string name_title_user = TextMessages::get_name_and_title(creature);
+  string user = Environment::get_user_name();
+
+  if (!user.empty())
+  {
+    name_title_user += " (" + user + ")";
+  }
+
+  ss << String::centre(name_title_user, num_cols) << endl;
   ss << get_synopsis() << endl << endl;
   ss << get_vital_statistics();
     
@@ -65,6 +77,14 @@ string CharacterDumper::str() const
 
   ModifiersDumper mod_dumper(creature, num_cols);
   ss << mod_dumper.str() << endl << endl;
+
+  DeathDumper death_dumper(creature, num_cols);
+  string death = death_dumper.str();
+
+  if (!death.empty())
+  {
+    ss << death << endl << endl;
+  }
 
   VictoryDumper victory_dumper(creature, num_cols);
   string victory = victory_dumper.str();
@@ -116,6 +136,12 @@ string CharacterDumper::str() const
   ss << StringTable::get(TextKeys::MAXIMUM_DEPTH_REACHED) << ": " << creature->get_max_depth_reached().str(true) << endl << endl;
   ss << StringTable::get(TextKeys::TURNS) << ": " << creature->get_turns() << endl << endl;
 
+  double seconds = game.get_total_elapsed_game_time(std::chrono::system_clock::now());
+  ulonglong secs = static_cast<ulonglong>(seconds) % 60;
+  ulonglong minutes = (static_cast<ulonglong>(seconds) / 60) % 60;
+  ulonglong hours = static_cast<ulonglong>(seconds) / 3600;
+  ss << StringTable::get(TextKeys::TOTAL_ELAPSED_TIME) << ": " << std::setw(2) << std::setfill('0') << hours << ":" << std::setw(2) << std::setfill('0') << minutes << ":" << std::setw(2) << std::setfill('0') << secs << endl << endl;
+ 
   return ss.str();
 }
 

@@ -12,6 +12,7 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "LineOfSightCalculator.hpp"
+#include "Memberships.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ModifyStatisticsEffect.hpp"
 #include "RaceManager.hpp"
@@ -143,9 +144,12 @@ void CreatureUtils::handle_alignment_change(CreaturePtr creature, const int new_
       Religion& religion = creature->get_religion_ref();
       Deity* active_deity = rm.get_active_deity(creature);
       DeityStatus status = rm.get_active_deity_status(creature);
+      Memberships& memberships = creature->get_memberships_ref();
 
       if (active_deity != nullptr && status.get_champion_type() == ChampionType::CHAMPION_TYPE_CROWNED)
       {
+        memberships.remove_membership(MembershipID::MEMBERSHIP_ID_HOLY_CHAMPION);
+
         // The creature is hereby a fallen champion of all deities.
         for (auto& deity_pair : deities)
         {
@@ -156,6 +160,10 @@ void CreatureUtils::handle_alignment_change(CreaturePtr creature, const int new_
 
           religion.set_deity_status(deity_id, cur_status);
         }
+
+        MembershipFactory mf;
+        Membership fallen = mf.create_fallen_champion();
+        memberships.add_membership(fallen.get_membership_id(), fallen);
 
         if (creature->get_is_player())
         {
