@@ -1,3 +1,8 @@
+Shadow of the Wyrm v1.5.5 "Valdaberano"
+- Version declared July 14, 2021.
+
+- More name/settlement name combos.
+
 Shadow of the Wyrm v1.3.3 "de Sarlat"
 - Version declared June 13, 2021.  Version finalized July 14, 2021.
 
