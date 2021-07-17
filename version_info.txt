@@ -3,6 +3,8 @@ Shadow of the Wyrm v1.5.5 "Valdaberano"
 
 - More name/settlement name combos.
 
+- Stanzas for "Tel and Floridel".
+
 Shadow of the Wyrm v1.3.3 "de Sarlat"
 - Version declared June 13, 2021.  Version finalized July 14, 2021.
 

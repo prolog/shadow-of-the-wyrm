@@ -3863,8 +3863,20 @@ like in a fairy tale, where each day passed %b
 namelessly into the next, where treachery found %b
 a shining blade, and where the only sounds %b
 were pipes and drums to welcome heroes home. %b
-Control so easily exerted underground, %b
+Their control so easily exerted underground, %b
 but here among the dead and orange-red stones %b
 it slipped away and left them standing all alone.
 %p
+Against the stripping light, they stopped to drink %b
+then doubled back to take a mid-day meal %b
+away from the dead, to clean the crust and stink %b
+of blood in the shallow stream, to briefly feel %b
+the numbing of cold water on the skin %b
+and imagine that the hands that killed old friends %b
+were not their own at all; the hour thinned, %b
+becoming afternoon as Alcius went %b
+about the planning, knowing what a moment meant.
+%p
+
+
 
