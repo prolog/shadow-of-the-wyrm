@@ -1,5 +1,4 @@
 Me:
-- Get all scripts working with 1.3.2
 - Houses:
   - Free from Emperor when arena cleared
   - Towns could have builders/masons

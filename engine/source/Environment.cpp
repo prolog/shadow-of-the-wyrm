@@ -4,6 +4,7 @@
 #include <boost/filesystem.hpp>
 #include "Conversion.hpp"
 #include "Environment.hpp"
+#include "FileWriter.hpp"
 #include "Setting.hpp"
 
 using namespace std;
@@ -59,6 +60,27 @@ bool Environment::create_userdata_directory(const Settings* settings)
     boost::filesystem::create_directory(userdata_dir);
   }
 
+  return created;
+}
+
+bool Environment::create_empty_user_settings_if_necessary(const Settings* settings)
+{
+  bool created = false;
+
+  string dir = Environment::get_userdata_directory(nullptr);
+  string ini_file_loc = dir + Settings::SETTINGS_FILENAME;
+
+  FileWriter fw(ini_file_loc);
+  ostringstream ss;
+
+  ss << "; This is your personal copy of swyrm.ini.\n";
+  ss << "; \n";
+  ss << "; You can use this file to override settings from the game's swyrm.ini that\n";
+  ss << "; don't start with '_'.  To find the game's copy of swyrm.ini and to see what\n";
+  ss << "; you might want to override, look in the main game directory.\n";
+  ss << "; \n";
+
+  created = fw.write(ss.str());
   return created;
 }
 
