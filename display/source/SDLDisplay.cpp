@@ -354,6 +354,20 @@ bool SDLDisplay::create_window_and_renderer()
     }
     else
     {
+      // Setup fullscreen if requested.
+      string window_mode_s = get_property(Setting::DISPLAY_SDL_WINDOW_MODE);
+      if (!window_mode_s.empty())
+      {
+        SDLWindowMode window_mode = static_cast<SDLWindowMode>(String::to_int(window_mode_s));
+
+        if (window_mode != SDLWindowMode::SDL_WINDOW_MODE_WINDOWED)
+        {
+          auto sdl_win_mode = (window_mode == SDLWindowMode::SDL_WINDOW_MODE_DESKTOP_FULLSCREEN) ? SDL_WINDOW_FULLSCREEN_DESKTOP : SDL_WINDOW_FULLSCREEN;
+
+          SDL_SetWindowFullscreen(window, sdl_win_mode);
+        }
+      }
+
       // Set additional values
       SDL_DisplayMode display_mode;
       SDL_GetCurrentDisplayMode(0, &display_mode);

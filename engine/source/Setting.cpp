@@ -46,6 +46,7 @@ const string Setting::USERNAME_IS_CHARACTER_NAME = "username_is_character_name";
 const string Setting::MAX_CHARACTERS_PER_USER = "_max_characters_per_user";
 const string Setting::DISPLAY = "display";
 const string Setting::DISPLAY_SDL_RENDERER = "display_sdl_renderer";
+const string Setting::DISPLAY_SDL_WINDOW_MODE = "display_sdl_window_mode";
 const string Setting::DISPLAY_SDL_WINDOW_SIZE = "display_sdl_window_size";
 const string Setting::DISPLAY_SDL_INTEGER_SCALING = "display_sdl_integer_scaling";
 const string Setting::DISPLAY_FONT = "display_font";

@@ -4,6 +4,9 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 - A copy of swyrm.ini is now created in the user's .sotw directory, with some
   hints on how to get started with overriding settings.
 
+- New swyrm.ini setting (display_sdl_window_mode) to allow the SDL display to
+  be either windowed (default) or fullscreen.
+
 - More name/settlement name combos.
 
 - Stanzas for "Tel and Floridel".
