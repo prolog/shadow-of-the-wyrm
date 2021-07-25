@@ -177,6 +177,7 @@ xcopy /y /d $(ProjectDir)LICENSE $(OutDir)
 mkdir $(Outdir)licenses
 xcopy /y /d $(ProjectDir)licenses $(OutDir)licenses
 xcopy /y /d $(Projectdir)README-SDL.txt $(OutDir)
+xcopy /y /d $(Projectdir)README.resolutions.txt $(OutDir)
 mkdir $(OutDir)docs
 xcopy /y /d $(ProjectDir)docs\*.pdf $(OutDir)docs
 xcopy /y /d $(ProjectDir)*.ini $(OutDir)
@@ -230,6 +231,7 @@ xcopy /y /d $(ProjectDir)LICENSE $(OutDir)
 mkdir $(Outdir)licenses
 xcopy /y /d $(ProjectDir)licenses $(OutDir)licenses
 xcopy /y /d $(Projectdir)README-SDL.txt $(OutDir)
+xcopy /y /d $(Projectdir)README.resolutions.txt $(OutDir)
 mkdir $(OutDir)docs
 xcopy /y /d $(ProjectDir)docs\*.pdf $(OutDir)docs
 xcopy /y /d $(ProjectDir)*.ini $(OutDir)
