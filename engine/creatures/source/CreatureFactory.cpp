@@ -165,6 +165,8 @@ CreaturePtr CreatureFactory::create_by_creature_id
     Skills& skills = creature->get_skills();
     Skills cgv_skills = cgv.get_skills();
     skills.increment_skills(cgv_skills);
+
+    set_magic_skills_based_on_spells(creature);
       
     // If the creature is guaranteed to be generated as friendly, then be sure
     // that hostility isn't set.
@@ -707,6 +709,47 @@ bool CreatureFactory::create_pet(CreaturePtr creature, ActionManager& am, MapPtr
   }
 
   return pet_created;
+}
+
+void CreatureFactory::set_magic_skills_based_on_spells(CreaturePtr creature)
+{
+  if (creature != nullptr)
+  {
+    SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+    const SpellMap& spells = Game::instance().get_spells_ref();
+    map<SkillType, bool> spell_types;
+    auto skm = sk.get_known_spells();
+
+    for (const auto sk_it : skm)
+    {
+      const string& spell_id = sk_it.first;
+      auto sp_it = spells.find(spell_id);
+
+      if (sp_it != spells.end())
+      {
+        SkillType magic_skill = sp_it->second.get_magic_category();
+        if (spell_types.find(magic_skill) == spell_types.end())
+        {
+          spell_types[magic_skill] = true;
+        }
+
+        if (magic_skill != SkillType::SKILL_MAGIC_CANTRIPS)
+        {
+          spell_types[SkillType::SKILL_GENERAL_MAGIC] = true;
+        }
+      }
+    }
+
+    int creature_level = creature->get_level().get_current();
+    Skills& skills = creature->get_skills();
+
+    for (auto st_it : spell_types)
+    {
+      int sp_min = std::max<int>(creature_level, 10);
+      int sp_max = std::max<int>(creature_level * 2, 20);
+      skills.set_value(st_it.first, RNG::range(sp_min, sp_max));
+    }
+  }
 }
 
 #ifdef UNIT_TESTS

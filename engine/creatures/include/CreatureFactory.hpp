@@ -42,6 +42,10 @@ class CreatureFactory
     // Create a pet if the creature's class allows it.
     bool create_pet(CreaturePtr creature, ActionManager& am, MapPtr current_map);
 
+    // Update skills so that if the creature starts with spells, they also
+    // start with appropriate skills.
+    void set_magic_skills_based_on_spells(CreaturePtr creature);
+
     bool override_hostility_setting;
     bool create_hostile;
 };

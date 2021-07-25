@@ -7,6 +7,10 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 - New swyrm.ini setting (display_sdl_window_mode) to allow the SDL display to
   be either windowed (default) or fullscreen.
 
+- NPCs that start with spells now start with some skill in those categories,
+  plus Magic if the spell isn't Cantrips, to allow the NPC to pick up and
+  read appropriate spellbooks.
+
 - More name/settlement name combos.
 
 - Stanzas for "Tel and Floridel".
