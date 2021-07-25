@@ -246,7 +246,7 @@ CommandPtr NPCPickupDecisionStrategy::get_pick_up_book_decision(CreaturePtr crea
   CommandPtr pu_cmd;
   CurrentCreatureAbilities cca;
 
-  // Creatures only pick up wands if they can speak - otherwise, evoking won't
+  // Creatures only pick up spellbooks if they can speak - otherwise, casting won't
   // work.
   if (creature != nullptr && item != nullptr && cca.can_speak(creature))
   {
