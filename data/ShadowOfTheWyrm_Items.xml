@@ -10897,6 +10897,32 @@
 				<Range>4</Range>
 				<Colour>7</Colour>
 			</Wand>
+			<Wand id="crumbling_wand">
+				<DescriptionSID>CRUMBLING_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_CRUMBLING_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>CRUMBLING_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_CRUMBLING_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>CRUMBLING_WAND_CODEX_SID</CodexDescriptionSID>
+				<Value>99</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<Symbol>
+					<Char>\</Char>
+					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>2</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>4</DangerLevel>
+				<Effect>26</Effect>
+				<BeamType>4</BeamType>
+				<Range>1</Range>
+				<Colour>7</Colour>
+			</Wand>
 			<Wand id="digging_wand">
 				<DescriptionSID>DIGGING_WAND_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_DIGGING_WAND_SID</UnidentifiedDescriptionSID>
@@ -10920,7 +10946,7 @@
 				<DangerLevel>2</DangerLevel>
 				<Effect>26</Effect>
 				<BeamType>1</BeamType>
-				<Range>4</Range>
+				<Range>5</Range>
 				<Colour>7</Colour>
 			</Wand>
 			<Wand id="inferno_wand">

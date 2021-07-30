@@ -5163,7 +5163,7 @@
 			<APCost>10</APCost>
 			<Speed>1</Speed>
 			<Range>1</Range>
-			<Shape>1</Shape>
+			<Shape>4</Shape>
 			<Effect>26</Effect>
 		</Spell>		
 		<Spell id="c_14_inferno">
@@ -5540,7 +5540,7 @@
 			<Colour>7</Colour>
 			<APCost>6</APCost>
 			<Speed>1</Speed>
-			<Range>4</Range>
+			<Range>5</Range>
 			<Shape>1</Shape>
 			<Effect>26</Effect>
 		</Spell>
