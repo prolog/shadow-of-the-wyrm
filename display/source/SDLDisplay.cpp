@@ -365,6 +365,7 @@ bool SDLDisplay::create_window_and_renderer()
           auto sdl_win_mode = (window_mode == SDLWindowMode::SDL_WINDOW_MODE_DESKTOP_FULLSCREEN) ? SDL_WINDOW_FULLSCREEN_DESKTOP : SDL_WINDOW_FULLSCREEN;
 
           SDL_SetWindowFullscreen(window, sdl_win_mode);
+          SDL_RaiseWindow(window);
         }
       }
 

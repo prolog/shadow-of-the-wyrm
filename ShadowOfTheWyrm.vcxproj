@@ -797,6 +797,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\settlements\sector\include\CitySectorGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\CitySectorTypes.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\DefaultSectorFeatureGenerator.hpp" />
+    <ClInclude Include="engine\generators\settlements\sector\include\DenseVegetationSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\GardenGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\GardenSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\GardenTypes.hpp" />
@@ -1965,6 +1966,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\settlements\sector\source\BeerHallSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\CitySectorGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\DefaultSectorFeatureGenerator.cpp" />
+    <ClCompile Include="engine\generators\settlements\sector\source\DenseVegetationSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\GardenGeneratorFactory.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\GardenSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\GraveyardSectorFeature.cpp" />

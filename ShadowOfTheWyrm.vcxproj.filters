@@ -4412,6 +4412,9 @@
     <ClInclude Include="engine\strings\include\DeathSourceTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\DenseVegetationSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8919,6 +8922,9 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\DeathSourceTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\DenseVegetationSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

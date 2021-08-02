@@ -74,10 +74,15 @@ bool OrchardGenerator::generate_garden(MapPtr map, const Coordinate& start_coord
   {
     TilePtr tile;
 
+    if (col % 3 != 0)
+    {
+      continue;
+    }
+
     // Spaces needed between vegetables to ensure that things grow.
     for (int row = start_coord.first; row <= end_coord.first; row++)
     {
-      if ((col % 3 == 0) && (row % 2 == 0))
+      if (row % 2 == 0)
       {
         if (RNG::percent_chance(4))
         {

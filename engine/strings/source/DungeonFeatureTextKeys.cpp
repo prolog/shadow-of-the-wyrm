@@ -22,6 +22,8 @@ const string DungeonFeatureTextKeys::DUNGEON_FEATURE_CRAFT_ROOM = "DUNGEON_FEATU
 const string DungeonFeatureTextKeys::DUNGEON_FEATURE_MAGIC_TREE = "DUNGEON_FEATURE_MAGIC_TREE";
 const string DungeonFeatureTextKeys::DUNGEON_FEATURE_SHOP = "DUNGEON_FEATURE_SHOP";
 const string DungeonFeatureTextKeys::DUNGEON_FEATURE_BEER_HALL = "DUNGEON_FEATURE_BEER_HALL";
+const string DungeonFeatureTextKeys::DUNGEON_FEATURE_ORCHARD = "DUNGEON_FEATURE_ORCHARD";
+const string DungeonFeatureTextKeys::DUNGEON_FEATURE_VEGETATION = "DUNGEON_FEATURE_VEGETATION";
 
 
 

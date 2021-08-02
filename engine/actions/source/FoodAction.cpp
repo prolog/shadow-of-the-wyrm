@@ -212,7 +212,7 @@ void FoodAction::create_seed_on_tile(CreaturePtr creature, TilePtr tile, const s
 
     if (seed != nullptr)
     {
-      tile->get_items()->add_front(seed);
+      tile->get_items()->merge_or_add(seed, InventoryAdditionType::INVENTORY_ADDITION_BACK);
 
       if (creature->get_is_player())
       {

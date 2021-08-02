@@ -11,9 +11,21 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
   plus Magic if the spell isn't Cantrips, to allow the NPC to pick up and
   read appropriate spellbooks.
 
+- The spell Dig and digging wands are now range 5, rather than 4.  Crumble is
+  still range 1, but now a ball rather than a directional spell.
+
+- Dungeons can now have orchards and vegetation rooms.
+
 - More name/settlement name combos.
 
 - Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - Fixed a couple of cases where items would be added to a tile without
+    checking for stacking.
+
+  - Tree and weed species had an extra period at the end of their synopsis.
 
 Shadow of the Wyrm v1.3.3 "de Sarlat"
 - Version declared June 13, 2021.  Version finalized July 14, 2021.
