@@ -1,7 +1,4 @@
 Me:
-- Unit tests for merge-or-add
-- When selling item and reconsidering, item shouldn't be dropped on the
-  ground (krwak).
 - When generating items: chance of a skeleton with eq. Small!
 - Houses:
   - Free from Emperor when arena cleared

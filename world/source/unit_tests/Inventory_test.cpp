@@ -360,3 +360,33 @@ TEST(SW_World_Inventory, get_all_from_property_and_required_value)
   EXPECT_EQ(0, i.get_all_from_property(pname, "aaa").size());
   EXPECT_EQ(1, i.get_all_from_property(pname, "test").size());
 }
+
+TEST(SW_World_Inventory, merge_or_add)
+{
+  SpellbookPtr item = std::make_shared<Spellbook>();
+  item->set_base_id("abc212");
+  item->set_description_sid("ABC123");
+  item->set_effect_type(EffectType::EFFECT_TYPE_BLESS);
+
+  SpellbookPtr item2 = std::make_shared<Spellbook>();
+  item2->set_base_id("abc212");
+  item2->set_description_sid("ABC123");
+  item2->set_effect_type(EffectType::EFFECT_TYPE_BLESS);
+
+  SpellbookPtr item3 = std::make_shared<Spellbook>();
+  item3->set_base_id("ddd333");
+  item3->set_description_sid("DDD333");
+  item3->set_effect_type(EffectType::EFFECT_TYPE_ETHER);
+
+  Inventory i;
+  EXPECT_TRUE(i.merge_or_add(item3, InventoryAdditionType::INVENTORY_ADDITION_BACK));
+  EXPECT_EQ(1, i.size());
+
+  EXPECT_TRUE(i.merge_or_add(item2, InventoryAdditionType::INVENTORY_ADDITION_BACK));
+  EXPECT_EQ(2, i.size());
+
+  EXPECT_TRUE(i.merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK));
+  EXPECT_EQ(2, i.size());
+  EXPECT_EQ(2, i.get_from_base_id("abc212")->get_quantity());
+
+}
