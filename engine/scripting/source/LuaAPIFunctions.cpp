@@ -173,7 +173,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_message", add_message);
   lua_register(L, "add_fov_message", add_fov_message);
   lua_register(L, "add_message_direct", add_message_direct);
-  lua_register(L, "add_debug_message", add_debug_message);
+  lua_register(L, "add_debug_message", add_debug_message);  
   lua_register(L, "add_confirmation_message", add_confirmation_message);
   lua_register(L, "add_prompt_message", add_prompt_message);
   lua_register(L, "add_char_message", add_char_message);
@@ -186,6 +186,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_object_to_player_tile", add_object_to_player_tile);
   lua_register(L, "add_object_to_map", add_object_to_map);
   lua_register(L, "add_object_to_creature", add_object_to_creature);
+  lua_register(L, "add_object_on_tile_to_creature", add_object_on_tile_to_creature);
   lua_register(L, "add_object_to_tile", add_object_to_tile);
   lua_register(L, "add_key_to_player_tile", add_key_to_player_tile);
   lua_register(L, "add_configurable_feature_to_map", add_configurable_feature_to_map);
@@ -1119,6 +1120,50 @@ int add_object_to_creature(lua_State* ls)
   }
 
   lua_pushboolean(ls, obj_added);
+  return 1;
+}
+
+int add_object_on_tile_to_creature(lua_State* ls)
+{
+  bool added_obj = false;
+
+  if (lua_gettop(ls) == 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3) && lua_isstring(ls, 4))
+  {
+    int y = lua_tointeger(ls, 1);
+    int x = lua_tointeger(ls, 2);
+    string item_id = lua_tostring(ls, 3);
+    string creature_id = lua_tostring(ls, 4);
+
+    MapPtr map = Game::instance().get_current_map();
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (map != nullptr && creature != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      if (tile != nullptr)
+      {
+        IInventoryPtr tile_items = tile->get_items();
+        ItemPtr i = tile_items->get_from_id(item_id);
+
+        if (i != nullptr)
+        {
+          added_obj = creature->get_inventory()->merge_or_add(i, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          
+          if (added_obj)
+          {
+            tile_items->remove(item_id);
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_object_on_tile_to_creature");
+  }
+
+  lua_pushboolean(ls, added_obj);
   return 1;
 }
 

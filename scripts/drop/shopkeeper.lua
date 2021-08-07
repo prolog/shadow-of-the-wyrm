@@ -41,8 +41,9 @@ local function purchase_item(price, cash_on_hand, dropping_creature_id, shopkeep
     set_item_unpaid(coords[1], coords[2], item_id)
     transfer_item(dropping_creature_id, shopkeeper_id, CURRENCY_ID, final_price)
   else
-    -- Offer rejected
+    -- Offer rejected.  The player takes the item back.
     clear_and_add_message("SHOPKEEPER_DROP_BUY_DECLINE_SID")
+    add_object_on_tile_to_creature(coords[1], coords[2], item_id, dropping_creature_id)
   end
 end
 

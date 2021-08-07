@@ -33,6 +33,7 @@ int is_unique(lua_State* ls);
 int add_object_to_player_tile(lua_State* ls);
 int add_object_to_map(lua_State* ls);
 int add_object_to_creature(lua_State* ls);
+int add_object_on_tile_to_creature(lua_State* ls);
 int add_object_to_tile(lua_State* ls); // assumes current map
 int add_key_to_player_tile(lua_State* ls);
 int add_feature_to_map(lua_State* ls);

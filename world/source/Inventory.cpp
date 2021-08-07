@@ -92,21 +92,24 @@ bool Inventory::add(ItemPtr item)
   return added_item;
 }
 
-void Inventory::merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc)
+bool Inventory::merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc)
 {
-  if (!merge(item))
+  bool added = merge(item);
+  if (!added)
   {
     switch(inv_add_loc)
     {
       case InventoryAdditionType::INVENTORY_ADDITION_FRONT:
-        add_front(item);
+        added = add_front(item);
         break;
       case InventoryAdditionType::INVENTORY_ADDITION_BACK:
       default:
-        add(item);
+        added = add(item);
         break;
     }
   }
+
+  return added;
 }
 
 bool Inventory::merge(ItemPtr item)

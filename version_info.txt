@@ -14,6 +14,13 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 - The spell Dig and digging wands are now range 5, rather than 4.  Crumble is
   still range 1, but now a ball rather than a directional spell.
 
+- Dropping an item and refusing the shopkeeper's item now keeps the item in
+  your inventory (krwak).
+
+- Pickup all/pickup/autopickup now smartly pick up the right number of items.
+  If the stack is too large, the maximum quantity of items is selected (Sean
+  McKeague).
+  
 - Dungeons can now have orchards and vegetation rooms.
 
 - More name/settlement name combos.

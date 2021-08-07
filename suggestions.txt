@@ -1,4 +1,8 @@
 Me:
+- Unit tests for merge-or-add
+- When selling item and reconsidering, item shouldn't be dropped on the
+  ground (krwak).
+- When generating items: chance of a skeleton with eq. Small!
 - Houses:
   - Free from Emperor when arena cleared
   - Towns could have builders/masons
@@ -154,9 +158,6 @@ Me:
 - More guilds
 - Food rotting for caught fish, other foods?
 - Message when doing checkpoint saves to indicate why the delay happens.
-
-Sean McKeague:
-- Ability to pick up partial stacks.
 
 redfeek:
 - Add wide char support to more easily support UTF-8/Russian translation.

@@ -15,7 +15,7 @@ class Inventory : public IInventory
 
     bool add_front(ItemPtr new_item) override;
     bool add(ItemPtr new_item) override;    
-    void merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc) override;
+    bool merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc) override;
     bool merge(ItemPtr new_item) override;
     
     bool remove(const std::string& id) override;

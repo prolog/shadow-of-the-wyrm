@@ -23,12 +23,14 @@ bool WaterInventory::add(ItemPtr new_item)
   return false;
 }
 
-void WaterInventory::merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc)
+bool WaterInventory::merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc)
 {
   if (item != nullptr && item->get_floats())
   {
     return Inventory::merge_or_add(item, inv_add_loc);
   }
+
+  return false;
 }
 
 bool WaterInventory::merge(ItemPtr new_item)

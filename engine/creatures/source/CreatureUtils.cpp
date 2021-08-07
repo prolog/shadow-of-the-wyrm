@@ -378,28 +378,36 @@ void CreatureUtils::incr_cha(CreaturePtr creature, const bool add_msg)
   }
 }
 
-pair<bool, string> CreatureUtils::can_pick_up(CreaturePtr c, ItemPtr i)
+tuple<bool, uint, string> CreatureUtils::can_pick_up(CreaturePtr c, ItemPtr i)
 {
-  pair<bool, string> can_pu;
-  can_pu.first = false;
+  tuple<bool, uint, string> can_pu;
+  get<0>(can_pu) = false;
+  get<1>(can_pu) = 0;
 
   if (c != nullptr && i != nullptr)
   {
     CarryingCapacityCalculator ccc;
     uint total_items = ccc.calculate_carrying_capacity_total_items(c);
-    can_pu.first = (i->get_type() == ItemType::ITEM_TYPE_CURRENCY || c->count_items() + i->get_quantity() <= total_items);
+    uint carried_items = c->count_items();
+    bool can_take = (i->get_type() == ItemType::ITEM_TYPE_CURRENCY || carried_items + i->get_quantity() <= total_items);
+    get<0>(can_pu) = can_take;
+    get<1>(can_pu) = static_cast<int>(i->get_quantity());
 
-    if (!can_pu.first)
+    if (!can_take)
     {
-      can_pu.second = ActionTextKeys::ACTION_PICK_UP_MAX_ITEMS;
+      get<1>(can_pu) = total_items - carried_items;
+      get<2>(can_pu) = ActionTextKeys::ACTION_PICK_UP_MAX_ITEMS;
     }
-    else
-    {
-      can_pu.first = c->get_weight_carried() < ccc.calculate_overburdened_weight(c);
 
-      if (!can_pu.first)
+    if (can_take)
+    {
+      can_take = c->get_weight_carried() < ccc.calculate_overburdened_weight(c);
+      get<0>(can_pu) = can_take;
+
+      if (!can_take)
       {
-        can_pu.second = ActionTextKeys::ACTION_PICK_UP_MAX_WEIGHT;
+        get<1>(can_pu) = 0;
+        get<2>(can_pu) = ActionTextKeys::ACTION_PICK_UP_MAX_WEIGHT;
       }
     }
   }
