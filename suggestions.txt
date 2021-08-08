@@ -1,5 +1,5 @@
 Me:
-- When generating items: chance of a skeleton with eq. Small!
+- Skeleton: 75% chance items
 - Houses:
   - Free from Emperor when arena cleared
   - Towns could have builders/masons

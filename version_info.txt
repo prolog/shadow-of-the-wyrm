@@ -20,7 +20,9 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 - Pickup all/pickup/autopickup now smartly pick up the right number of items.
   If the stack is too large, the maximum quantity of items is selected (Sean
   McKeague).
-  
+
+- You can now occasionally stumble across the corpse of a hapless adventurer.
+
 - Dungeons can now have orchards and vegetation rooms.
 
 - More name/settlement name combos.
