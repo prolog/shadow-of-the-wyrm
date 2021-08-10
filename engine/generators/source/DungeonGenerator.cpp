@@ -745,6 +745,7 @@ bool DungeonGenerator::generate_vegetation(MapPtr map, const int start_row, cons
 bool DungeonGenerator::generate_little_library(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
 {
   LittleLibrarySectorFeature llsf(false);
+  llsf.set_danger_level(std::max<int>(danger_level, llsf.get_default_danger_level()));
 
   // Leave enough space so that creatures can walk around the structure fully.
   return llsf.generate(map, { start_row, start_col }, { end_row, end_col });
