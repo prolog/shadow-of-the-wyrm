@@ -15,8 +15,10 @@ class LibrarySectorFeature : public SectorFeature
 class LittleLibrarySectorFeature : public SectorFeature
 {
   public:
-    LittleLibrarySectorFeature();
+    LittleLibrarySectorFeature(const bool new_generate_walls);
 
   protected:
     bool generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
+
+    bool generate_walls;
 };

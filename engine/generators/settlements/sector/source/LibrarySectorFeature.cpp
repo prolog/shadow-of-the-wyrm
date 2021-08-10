@@ -109,7 +109,8 @@ bool LibrarySectorFeature::generate_feature(MapPtr map, const Coordinate& start_
 }
 
 // Little Library
-LittleLibrarySectorFeature::LittleLibrarySectorFeature()
+LittleLibrarySectorFeature::LittleLibrarySectorFeature(const bool new_generate_walls)
+: generate_walls(new_generate_walls)
 {
 }
 
@@ -131,27 +132,33 @@ bool LittleLibrarySectorFeature::generate_feature(MapPtr map, const Coordinate& 
       // Sign
       FeaturePtr sign = FeatureGenerator::generate_sign(SignTextKeys::SIGN_LITTLE_LIBRARY);
       map->at(start_row, start_col)->set_feature(sign);
+      int offset = 2;
 
       // Little library
-      vector<Coordinate> corners = { {start_row, start_col + 2}, {start_row, start_col + 4}, {end_row, start_col + 2}, {end_row, start_col + 4} };
-      vector<Coordinate> walls = { {start_row + 1, start_col + 2}, {start_row + 1, start_col + 4}, {start_row, start_col + 3}, {end_row, start_col + 3} };
-     
-      // Remove one of the walls to form an entrance
-      std::shuffle(walls.begin(), walls.end(), RNG::get_engine());
-      walls.pop_back();
-
-      walls.insert(walls.end(), corners.begin(), corners.end());
-      TileGenerator tg;
-
-      for (const Coordinate& c : walls)
+      if (generate_walls)
       {
-        TilePtr wall = tg.generate(TileType::TILE_TYPE_ROCK);
-        map->insert(c, wall);
+        vector<Coordinate> corners = { {start_row, start_col + 2}, {start_row, start_col + 4}, {end_row, start_col + 2}, {end_row, start_col + 4} };
+        vector<Coordinate> walls = { {start_row + 1, start_col + 2}, {start_row + 1, start_col + 4}, {start_row, start_col + 3}, {end_row, start_col + 3} };
+
+        // Remove one of the walls to form an entrance
+        std::shuffle(walls.begin(), walls.end(), RNG::get_engine());
+        walls.pop_back();
+
+        walls.insert(walls.end(), corners.begin(), corners.end());
+        TileGenerator tg;
+
+        for (const Coordinate& c : walls)
+        {
+          TilePtr wall = tg.generate(TileType::TILE_TYPE_ROCK);
+          map->insert(c, wall);
+        }
+
+        offset = 3;
       }
 
       // Books!
-      Coordinate book_c = { start_row + 1, start_col + 3 };
-      int num_books = RNG::range(1, 2);
+      Coordinate book_c = { start_row + 1, start_col + offset };
+      int num_books = RNG::range(1, 4);
       Game& game = Game::instance();
 
       ItemGenerationConstraints igc;

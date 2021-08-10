@@ -15,5 +15,6 @@ class MapItemGenerator
     static const int OUT_OF_DEPTH_ITEMS_CHANCE;
     static const int PCT_CHANCE_ADVENTURER_SKELETON_TRAP;
     static const int PCT_CHANCE_ADVENTURER_CORPSE;
+    static const int PCT_CHANCE_ADVENTURER_ITEMS;
 };
 

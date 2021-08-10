@@ -492,7 +492,7 @@ vector<shared_ptr<SectorFeature>> BaseSettlementGenerator::get_sector_features()
   sf = std::make_shared<GraveyardSectorFeature>();
   sfs.push_back(sf);
 
-  sf = std::make_shared<LittleLibrarySectorFeature>();
+  sf = std::make_shared<LittleLibrarySectorFeature>(true);
   sfs.push_back(sf);
 
   sf = std::make_shared<FruitVegetableGardenGenerator>();

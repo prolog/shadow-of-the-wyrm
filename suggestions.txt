@@ -1,5 +1,8 @@
 Me:
-- Skeleton: 75% chance items
+- More dungeon item features:
+  - Hoard (weapons, armour, etc - trapped)
+  - Little Library
+  - danger level for little library
 - Houses:
   - Free from Emperor when arena cleared
   - Towns could have builders/masons

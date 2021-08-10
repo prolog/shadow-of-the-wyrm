@@ -12,6 +12,7 @@
 #include "Game.hpp"
 #include "GeneratorUtils.hpp"
 #include "ItemManager.hpp"
+#include "LibrarySectorFeature.hpp"
 #include "MapExitUtils.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
@@ -428,7 +429,7 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
 {
   vector<string> room_features;
 
-  bool generate_feature = RNG::x_in_y_chance(1, 37);
+  bool generate_feature = RNG::x_in_y_chance(1, 35);
 
   if (generate_feature)
   {
@@ -444,7 +445,8 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
                                                     {RoomFeatures::ROOM_FEATURE_SHOP, DungeonFeatureTextKeys::DUNGEON_FEATURE_SHOP},
                                                     {RoomFeatures::ROOM_FEATURE_BEER_HALL, DungeonFeatureTextKeys::DUNGEON_FEATURE_BEER_HALL},
                                                     {RoomFeatures::ROOM_FEATURE_ORCHARD, DungeonFeatureTextKeys::DUNGEON_FEATURE_ORCHARD},
-                                                    {RoomFeatures::ROOM_FEATURE_VEGETATION, DungeonFeatureTextKeys::DUNGEON_FEATURE_VEGETATION}};
+                                                    {RoomFeatures::ROOM_FEATURE_VEGETATION, DungeonFeatureTextKeys::DUNGEON_FEATURE_VEGETATION},
+                                                    {RoomFeatures::ROOM_FEATURE_LITTLE_LIBRARY, DungeonFeatureTextKeys::DUNGEON_FEATURE_LITTLE_LIBRARY} };
 
     shuffle(feature_choices.begin(), feature_choices.end(), RNG::get_engine());
 
@@ -514,6 +516,10 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
         else if (feature == RoomFeatures::ROOM_FEATURE_VEGETATION)
         {
           placed_feature = generate_vegetation(map, start_row, end_row, start_col, end_col);
+        }
+        else if (feature == RoomFeatures::ROOM_FEATURE_LITTLE_LIBRARY)
+        {
+          placed_feature = generate_little_library(map, start_row, end_row, start_col, end_col);
         }
 
         if (placed_feature)
@@ -734,6 +740,14 @@ bool DungeonGenerator::generate_vegetation(MapPtr map, const int start_row, cons
 
   DenseVegetationSectorFeature dvsg(vegetation_base_tiles, item_ids, 20);
   return dvsg.generate(map, { start_row, start_col }, { end_row, end_col });
+}
+
+bool DungeonGenerator::generate_little_library(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+{
+  LittleLibrarySectorFeature llsf(false);
+
+  // Leave enough space so that creatures can walk around the structure fully.
+  return llsf.generate(map, { start_row, start_col }, { end_row, end_col });
 }
 
 bool DungeonGenerator::generate_zoo(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)

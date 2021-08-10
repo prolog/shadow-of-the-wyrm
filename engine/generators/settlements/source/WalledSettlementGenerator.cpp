@@ -347,7 +347,7 @@ vector<shared_ptr<SectorFeature>> WalledSettlementGenerator::get_sector_features
   sf = std::make_shared<LibrarySectorFeature>();
   sfs.push_back(sf);
 
-  sf = std::make_shared<LittleLibrarySectorFeature>();
+  sf = std::make_shared<LittleLibrarySectorFeature>(true);
   sfs.push_back(sf);
 
   sf = std::make_shared<TavernSectorFeature>();
