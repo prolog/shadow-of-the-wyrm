@@ -18,6 +18,9 @@
 				<Action>GraveRobbing</Action>
 				<Action>SkinHumanoid</Action>
 			</Dislikes>
+			<Likes>
+				<Action>BuryDead</Action>
+			</Likes>
 			<Crowning>
 				<Artifact>asturias</Artifact>
 				<Artifact>delver</Artifact>
@@ -61,6 +64,9 @@
 				<Action>GraveRobbing</Action>
 				<Action>SkinHumanoid</Action>
 			</Dislikes>
+			<Likes>
+				<Action>BuryDead</Action>
+			</Likes>
 			<Crowning>
 				<Artifact>delver</Artifact>
 				<Artifact>falcons_eye</Artifact>
@@ -105,6 +111,9 @@
 				<Action>GraveRobbing</Action>
 				<Action>SkinHumanoid</Action>
 			</Dislikes>
+			<Likes>
+				<Action>BuryDead</Action>
+			</Likes>
 			<Crowning>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
@@ -148,6 +157,9 @@
 				<Action>GraveRobbing</Action>
 				<Action>SkinHumanoid</Action>
 			</Dislikes>
+			<Likes>
+				<Action>BuryDead</Action>
+			</Likes>
 			<Crowning>
 				<Artifact>carpathos</Artifact>
 				<Artifact>delver</Artifact>
@@ -188,6 +200,9 @@
 				<Action>DesecrateNeutral</Action>
 				<Action>GraveRobbing</Action>
 			</Dislikes>
+			<Likes>
+				<Action>BuryDead</Action>
+			</Likes>
 			<Crowning>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
@@ -231,6 +246,9 @@
 				<Action>DesecrateNeutral</Action>
 				<Action>GraveRobbing</Action>
 			</Dislikes>
+			<Likes>
+				<Action>BuryDead</Action>
+			</Likes>
 			<Crowning>
 				<Artifact>carpathos</Artifact>
 				<Artifact>delver</Artifact>
@@ -274,6 +292,7 @@
 			<Dislikes>
 				<Action>DesecrateEvil</Action>
 			</Dislikes>
+			<Likes/>
 			<Crowning>
 				<Artifact>asturias</Artifact>
 				<Artifact>carpathos</Artifact>
@@ -317,6 +336,7 @@
 			<Dislikes>
 				<Action>DesecrateEvil</Action>
 			</Dislikes>
+			<Likes/>
 			<Crowning>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
@@ -357,6 +377,7 @@
 			<Dislikes>
 				<Action>DesecrateEvil</Action>
 			</Dislikes>
+			<Likes/>
 			<Crowning>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>

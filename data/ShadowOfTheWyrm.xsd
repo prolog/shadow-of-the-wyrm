@@ -310,6 +310,7 @@
 			<xs:element name="Alignment" type="tns:AlignmentRange"/>
 			<xs:element name="DeityInitialModifiers" type="tns:InitialStatisticsModifiers"/>
 			<xs:element name="Dislikes" type="tns:TrackedDeityActions"/>
+			<xs:element name="Likes" type="tns:TrackedDeityActions"/>
 			<xs:element name="Crowning" type="tns:Crowning"/>
 			<xs:element name="ClassCrowningChance" type="xs:integer"/>
 			<xs:element name="Summons" type="tns:Summons"/>
@@ -1361,6 +1362,7 @@
 		<xs:enumeration value="DesecrateEvil"/>
 		<xs:enumeration value="GraveRobbing"/>
 		<xs:enumeration value="SkinHumanoid"/>
+		<xs:enumeration value="BuryDead"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="TileType">

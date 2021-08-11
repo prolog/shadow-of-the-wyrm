@@ -7510,6 +7510,16 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>remains</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>CORPSE_RACE_ID</Name>
+						<Value>_humanoid</Value>
+					</Property>
+				</Properties>
 				<Nutrition>1950</Nutrition>
 				<FoodType>2</FoodType>
 			</Food>
@@ -7533,6 +7543,16 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>remains</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>CORPSE_RACE_ID</Name>
+						<Value>_humanoid</Value>
+					</Property>
+				</Properties>
 				<Nutrition>50</Nutrition>
 				<FoodType>2</FoodType>
 			</Food>
@@ -13071,6 +13091,16 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>remains</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>CORPSE_RACE_ID</Name>
+						<Value>_humanoid</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="mummified_corpse">
 				<DescriptionSID>MUMMIFIED_CORPSE_SID</DescriptionSID>
@@ -13091,6 +13121,16 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>remains</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>CORPSE_RACE_ID</Name>
+						<Value>_humanoid</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="mum_corpse_amaur_1">
 				<DescriptionSID>MUMMIFIED_CORPSE_AMAUR_1_SID</DescriptionSID>
@@ -13111,6 +13151,16 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>remains</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>CORPSE_RACE_ID</Name>
+						<Value>_humanoid</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="mum_corpse_amaur_2">
 				<DescriptionSID>MUMMIFIED_CORPSE_AMAUR_2_SID</DescriptionSID>
@@ -13131,6 +13181,16 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>remains</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>CORPSE_RACE_ID</Name>
+						<Value>_humanoid</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="mum_corpse_amaur_3">
 				<DescriptionSID>MUMMIFIED_CORPSE_AMAUR_3_SID</DescriptionSID>
@@ -13151,6 +13211,16 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>remains</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>CORPSE_RACE_ID</Name>
+						<Value>_humanoid</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="_pile_of_bones">
 				<DescriptionSID>PILE_OF_BONES_SID</DescriptionSID>

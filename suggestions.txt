@@ -1,8 +1,11 @@
 Me:
+- terminal dragon: no-take flag for tanned, woven items
 - Burying the dead should grant piety for certain deities
-  - Certain items should have a flag (eg intact skeletons)
-  - Corpses should get that flag when killed
-  - Should be race-based
+  - Deities should have a list of holy races (divine for all, humanoid for
+    good, animal for Vedere, dragon for Voros)
+  - when burying, trigger (+ piety)
+  - dropped item with flag should disappear (no tile transform to avoid
+    weird edge cases)
 - More dungeon item features:
   - Hoard (weapons, armour, etc - trapped)
 - Houses:
