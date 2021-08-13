@@ -11,6 +11,8 @@
 #include "ItemProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RaceManager.hpp"
+#include "ReligionManager.hpp"
 #include "RNG.hpp"
 #include "SeedCalculator.hpp"
 #include "TextMessages.hpp"
@@ -325,11 +327,28 @@ bool DropAction::bury_remains(CreaturePtr creature, const string& remains_race_i
 
   if (creature != nullptr)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(Game::instance(), creature->get_id()));
-    manager.add_new_message(TextMessages::get_burial_message(creature));
-    manager.send();
+    ReligionManager rm;
+    Deity* deity = rm.get_active_deity(creature);
 
-    buried = true;
+    if (deity != nullptr)
+    {
+      RaceManager racem;
+      vector<string> bury_race_ids = deity->get_burial_races();
+
+      for (const string& cur_race : bury_race_ids)
+      {
+        if (racem.is_race_or_descendent(cur_race, remains_race_id))
+        {
+          Game::instance().get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_BURY_REMAINS);
+
+          IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(Game::instance(), creature->get_id()));
+          manager.add_new_message(TextMessages::get_burial_message(creature));
+          manager.send();
+
+          buried = true;
+        }
+      }
+    }
   }
 
   return buried;
