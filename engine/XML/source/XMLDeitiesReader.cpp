@@ -48,6 +48,8 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
     string death_sid = XMLUtils::get_child_node_value(deity_node, "DeathMessageSID");
     AlignmentRange alignment = static_cast<AlignmentRange>(XMLUtils::get_child_node_int_value(deity_node, "Alignment"));
     XMLNode dislikes_node = XMLUtils::get_next_element_by_local_name(deity_node, "Dislikes");
+    XMLNode likes_node = XMLUtils::get_next_element_by_local_name(deity_node, "Likes");
+    XMLNode burial_races_node = XMLUtils::get_next_element_by_local_name(deity_node, "BurialRaces");
     XMLNode crowning_node = XMLUtils::get_next_element_by_local_name(deity_node, "Crowning");
     int class_crowning_chance = XMLUtils::get_child_node_int_value(deity_node, "ClassCrowningChance");
     XMLNode summons_node  = XMLUtils::get_next_element_by_local_name(deity_node, "Summons");
@@ -67,6 +69,8 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
     deity->set_death_message_sid(death_sid);
     deity->set_alignment_range(alignment);
     parse_dislikes(dislikes_node, *deity);
+    parse_likes(likes_node, *deity);
+    parse_burial_races(burial_races_node, *deity);
     parse_crowning_gifts(crowning_node, *deity);
     deity->set_pct_chance_class_crowning(class_crowning_chance);
     parse_summons(summons_node, *deity);
@@ -90,6 +94,39 @@ void XMLDeitiesReader::parse_dislikes(const XMLNode& dislikes_node, Deity& deity
       string dislike_action = XMLUtils::get_node_value(dislike_node);
       deity.set_dislike(dislike_action, true);
     }
+  }
+}
+
+// Read in what the diety likes
+void XMLDeitiesReader::parse_likes(const XMLNode& likes_node, Deity& deity)
+{
+  if (!likes_node.is_null())
+  {
+    vector<XMLNode> like_nodes = XMLUtils::get_elements_by_local_name(likes_node, "Action");
+
+    for (const XMLNode& like_node : like_nodes)
+    {
+      string like_action = XMLUtils::get_node_value(like_node);
+      deity.set_like(like_action, true);
+    }
+  }
+}
+
+// Read in the races the deity cares about for burial purposes.
+void XMLDeitiesReader::parse_burial_races(const XMLNode& burial_races_node, Deity& deity)
+{
+  if (!burial_races_node.is_null())
+  {
+    vector<XMLNode> race_id_nodes = XMLUtils::get_elements_by_local_name(burial_races_node, "RaceID");
+    vector<string> race_ids;
+
+    for (const XMLNode& race_id_node : race_id_nodes)
+    {
+      string race_id = XMLUtils::get_node_value(race_id_node);
+      race_ids.push_back(race_id);
+    }
+
+    deity.set_burial_races(race_ids);
   }
 }
 

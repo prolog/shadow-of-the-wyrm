@@ -63,7 +63,10 @@ void DeityActionManager::notify_action(CreaturePtr creature, MapPtr map, const s
       {
         handle_displeasing_action(creature, cur_deity, action_key);
       }
-      // else if (active_deity->get_like(action_key)) { ... }
+      else if (cur_deity->get_like(action_key))
+      {
+        // ...
+      }
     }
   }
 }

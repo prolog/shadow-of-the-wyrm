@@ -23,6 +23,9 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 
 - You can now occasionally stumble across the corpse of a hapless adventurer.
 
+- Burying remains (corpses, skeletons, etc) removes the remains and may give
+  piety depending on what you're burying and your active deity.
+
 - Dungeons can now have orchards and vegetation rooms.
 
 - More name/settlement name combos.

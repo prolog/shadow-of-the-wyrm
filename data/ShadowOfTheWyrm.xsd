@@ -311,6 +311,7 @@
 			<xs:element name="DeityInitialModifiers" type="tns:InitialStatisticsModifiers"/>
 			<xs:element name="Dislikes" type="tns:TrackedDeityActions"/>
 			<xs:element name="Likes" type="tns:TrackedDeityActions"/>
+			<xs:element name="BurialRaces" type="tns:BurialRaces" minOccurs="0"/>
 			<xs:element name="Crowning" type="tns:Crowning"/>
 			<xs:element name="ClassCrowningChance" type="xs:integer"/>
 			<xs:element name="Summons" type="tns:Summons"/>
@@ -1338,6 +1339,11 @@
 <xs:complexType name="BaseFeature">
 	<xs:sequence>
 		<xs:element name="Symbol" type="tns:Symbol"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="BurialRaces">
+	<xs:sequence>
+		<xs:element name="RaceID" type="tns:Identifier" minOccurs="0" maxOccurs="unbounded"/>
 	</xs:sequence>
 </xs:complexType>
 <!-- SIMPLE TYPES -->

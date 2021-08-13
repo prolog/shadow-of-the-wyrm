@@ -31,6 +31,8 @@ const string TextMessages::WELCOME_BACK_MESSAGE               = "WELCOME_BACK_ME
 const string TextMessages::DUMPING_CHARACTER_MESSAGE          = "DUMPING_CHARACTER_MESSAGE";
 const string TextMessages::ITEM_DROP_MESSAGE                  = "ITEM_DROP_MESSAGE";
 const string TextMessages::ITEM_DROP_MESSAGE_MONSTER          = "ITEM_DROP_MESSAGE_MONSTER";
+const string TextMessages::BURY_MESSAGE                       = "BURY_MESSAGE";
+const string TextMessages::BURY_MESSAGE_MONSTER               = "BURY_MESSAGE_MONSTER";
 const string TextMessages::ITEM_PICK_UP_MESSAGE_PLAYER        = "ITEM_PICK_UP_MESSAGE_PLAYER";
 const string TextMessages::ITEM_PICK_UP_MESSAGE_MONSTER       = "ITEM_PICK_UP_MESSAGE_MONSTER";
 const string TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE_PLAYER = "ITEM_PICK_UP_AND_MERGE_MESSAGE_PLAYER";
@@ -381,6 +383,19 @@ string TextMessages::get_item_drop_message(CreaturePtr creature, const bool blin
   }
 
   return item_message;
+}
+
+string TextMessages::get_burial_message(CreaturePtr creature)
+{
+  bool player = creature && creature->get_is_player();
+  string bury_message = StringTable::get(TextMessages::BURY_MESSAGE);
+
+  if (!player)
+  {
+    bury_message = StringTable::get(BURY_MESSAGE_MONSTER);
+  }
+
+  return bury_message;
 }
 
 string TextMessages::get_item_pick_up_message(const bool player_blind, CreaturePtr creature, ItemPtr item)

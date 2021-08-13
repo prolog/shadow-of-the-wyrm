@@ -21,6 +21,9 @@
 			<Likes>
 				<Action>BuryDead</Action>
 			</Likes>
+			<BurialRaces>
+				<RaceID>_humanoid</RaceID>
+			</BurialRaces>
 			<Crowning>
 				<Artifact>asturias</Artifact>
 				<Artifact>delver</Artifact>
@@ -67,6 +70,9 @@
 			<Likes>
 				<Action>BuryDead</Action>
 			</Likes>
+			<BurialRaces>
+				<RaceID>_humanoid</RaceID>
+			</BurialRaces>
 			<Crowning>
 				<Artifact>delver</Artifact>
 				<Artifact>falcons_eye</Artifact>
@@ -114,6 +120,9 @@
 			<Likes>
 				<Action>BuryDead</Action>
 			</Likes>
+			<BurialRaces>
+				<RaceID>_humanoid</RaceID>
+			</BurialRaces>
 			<Crowning>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
@@ -160,6 +169,9 @@
 			<Likes>
 				<Action>BuryDead</Action>
 			</Likes>
+			<BurialRaces>
+				<RaceID>_animal</RaceID>
+			</BurialRaces>
 			<Crowning>
 				<Artifact>carpathos</Artifact>
 				<Artifact>delver</Artifact>
@@ -203,6 +215,9 @@
 			<Likes>
 				<Action>BuryDead</Action>
 			</Likes>
+			<BurialRaces>
+				<RaceID>_dragon</RaceID>
+			</BurialRaces>
 			<Crowning>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
