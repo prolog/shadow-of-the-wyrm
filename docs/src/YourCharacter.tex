@@ -469,7 +469,7 @@ damage.  When a character's hit points are reduced to 0 or lower, the
 character is dead.
 
 \item {\bf Arcana Points} (AP) are a character's ability to cast spells.  
-Each spell has a particular arcana point cost associated with it, so the 
+Each spell has a particular Arcana point cost associated with it, so the 
 higher this score, the more spells the creature can cast before exhaustion.
 \end{itemize}
 
@@ -660,6 +660,23 @@ creatures scattered throughout the world, and a well-prepared character
 should have preparations in place for many different possibilities, not 
 just the most common.
 
+\subsection{Damage Flags}
+
+Damage can have flags that are independent of the actual damage type.
+These add additional effects that can be triggered along with the damage
+itself, and include:
+
+\begin{itemize}
+\item {\bf Chaotic}: for the duration of the attack, the damage type can change
+\item {\bf Draining}: transfer some Hit Points to the attacker
+\item {\bf Ethereal}: transfer some Arcana Points to the attacker
+\item {\bf Explosive}: deal explosive damage to and around the target
+\item {\bf Incorporeal}: the ghostly attack bypasses most of the target's Soak
+\item {\bf Piercing}: bypass Soak completely
+\item {\bf Scything}: the attack travels in an arc around the attacker
+\item {\bf Vorpal}: small chance to instantly kill the target
+\end{itemize}
+
 \subsection{Status Ailments}
 
 Each of the above damage types can also have a lingering effect on the
@@ -688,3 +705,70 @@ unless the corruption is cured.
 desired direction is unlikely.
 \end{itemize}
 
+\subsection{Equipment and Inventory}
+
+When you start off, you have a minimal set of equipment based on your race
+and class.  As you progress through the game, you can find additional items
+in a number of ways, not limited to: lying strewn on the ground, hidden 
+underground in dungeons and caverns, carried by monsters and townsfolk, or 
+granted as a reward for completing quests.  Improving your equipment is
+essential to progressing deeper into the game, as the monsters you encounter
+become more and more dangerous.
+
+\subsubsection{Equipment}
+
+Your equipment includes your worn weapons and armour, as well as whatever
+magical items like rings and amulets you're able to wear as well.  Your
+worn equipment helps determine how much damage you can do, how easily you can
+dodge or take a hit, as well as contributing to your resistances.  A sample
+screen might look like:
+
+\begin{verbatim}
+----------------------------------- Equipment ---------------------------------
+
+[a] Head         : uncursed cap [4, 0]  [0.44 lbs]
+
+[b] Neck         :
+
+[c] Right Finger :
+
+[d] Left Finger  :
+
+[e] Wielded      : uncursed spear (15, 2, 0) (1d6)  [7.00 lbs] 
+    Resists/Flags: {0.02Sl 0.02Po 0.01Ar}
+[f] Off Hand     :
+
+[g] Body         : uncursed chain mail [3, 6]  [40.00 lbs]
+
+[h] Around Body  :
+
+[i] Feet         : blessed leather boots [3, 1]  [5.00 lbs]
+
+[j] Ranged       :
+
+[k] Ammunition   :
+
+\end{verbatim}
+
+Next to a weapon, \((x, y, z)\) shows the bonus to-hit, to damage, and to speed.
+A weapon can also have damage flags associated with it, explained earlier.
+
+Next to a piece of armour, \([a, b]\) shows the Evade and Soak bonuses,
+respectively.
+
+Any item might carry resistances contributing to the character's overall
+resistances.  While these individual values might be small, they can add up,
+and form an important way of mitigating damage, especially in certain parts
+of the game, when the damage dealt is so great that it can overwhelm or even
+bypass a high Soak value.
+
+\subsubsection{Inventory}
+
+Your inventory is all the items you carry that aren't actually equipped.
+These can include things like wands and potions, spare weapons, food, a
+favourite rock --- anything you think might be useful that you've decided
+to carry with you.  
+
+There are limits to your inventory. Your statistics will determine how much
+weight you can carry, and how many items, and these numbers can be improved
+by improving those statistics, as well as the Carrying skill.

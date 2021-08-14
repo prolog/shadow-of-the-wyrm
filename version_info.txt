@@ -28,6 +28,9 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 
 - Dungeons can now have orchards and vegetation rooms.
 
+- The guidebook now includes information on how to read the equipment screen,
+  as well as detailing what each of the damage flags does (krwak).
+
 - More name/settlement name combos.
 
 - Stanzas for "Tel and Floridel".
