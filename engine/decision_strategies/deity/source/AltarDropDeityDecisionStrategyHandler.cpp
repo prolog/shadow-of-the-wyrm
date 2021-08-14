@@ -107,7 +107,7 @@ DeityDecisionImplications AltarDropDeityDecisionStrategyHandler::handle_decision
 //
 // If the altar is not the same alignment as the creature, the item is
 // cursed - no piety loss.
-int AltarDropDeityDecisionStrategyHandler::get_piety_loss() const
+int AltarDropDeityDecisionStrategyHandler::get_piety_amount() const
 {
   int piety_loss = PIETY_LOSS_CROSSALIGN;
 

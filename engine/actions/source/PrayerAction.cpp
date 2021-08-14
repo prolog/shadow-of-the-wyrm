@@ -118,7 +118,7 @@ bool PrayerAction::say_prayer(CreaturePtr creature)
 // Reduce the piety by the given amount, and update the player on the result
 void PrayerAction::finish_prayer(CreaturePtr creature, const DeityDecisionImplications& decision_implications)
 {
-  int piety_loss = decision_implications.get_piety_loss();
+  int piety_loss = decision_implications.get_piety_amount();
 
   // Get the deity and the creature's status with that deity.
   ReligionManager rm;

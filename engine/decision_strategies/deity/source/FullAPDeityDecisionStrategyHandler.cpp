@@ -52,7 +52,7 @@ DeityDecisionImplications FullAPDeityDecisionStrategyHandler::handle_decision(Cr
 
 // Slightly less piety loss than yelling,
 // "HEY IMMS, I COULD USE A HEAL!"
-int FullAPDeityDecisionStrategyHandler::get_piety_loss() const
+int FullAPDeityDecisionStrategyHandler::get_piety_amount() const
 {
   return 400;
 }

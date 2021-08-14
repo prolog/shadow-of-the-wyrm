@@ -50,7 +50,7 @@ DeityDecisionImplications FullHPDeityDecisionStrategyHandler::handle_decision(Cr
   return get_deity_decision_implications(creature, tile);
 }
 
-int FullHPDeityDecisionStrategyHandler::get_piety_loss() const
+int FullHPDeityDecisionStrategyHandler::get_piety_amount() const
 {
   return 500;
 }

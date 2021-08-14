@@ -61,7 +61,7 @@ DeityDecisionImplications HaltBreedingDeityDecisionStrategyHandler::handle_decis
   return get_deity_decision_implications(creature, tile);
 }
 
-int HaltBreedingDeityDecisionStrategyHandler::get_piety_loss() const
+int HaltBreedingDeityDecisionStrategyHandler::get_piety_amount() const
 {
   return 400;
 }

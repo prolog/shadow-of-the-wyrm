@@ -111,7 +111,7 @@ void CompanionDeityDecisionStrategyHandler::set_companion_bonuses(CreaturePtr co
   }
 }
 
-int CompanionDeityDecisionStrategyHandler::get_piety_loss() const
+int CompanionDeityDecisionStrategyHandler::get_piety_amount() const
 {
   return 2000;
 }

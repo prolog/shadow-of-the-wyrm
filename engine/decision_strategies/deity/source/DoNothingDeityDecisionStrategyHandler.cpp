@@ -25,7 +25,7 @@ DeityDecisionImplications DoNothingDeityDecisionStrategyHandler::handle_decision
 }
 
 // You can't nag 'em forever.
-int DoNothingDeityDecisionStrategyHandler::get_piety_loss() const
+int DoNothingDeityDecisionStrategyHandler::get_piety_amount() const
 {
   return 100;
 }
