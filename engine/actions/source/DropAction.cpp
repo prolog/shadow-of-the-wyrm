@@ -327,6 +327,10 @@ bool DropAction::bury_remains(CreaturePtr creature, const string& remains_race_i
 
   if (creature != nullptr)
   {
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(Game::instance(), creature->get_id()));
+    manager.add_new_message(TextMessages::get_burial_message(creature));
+    manager.send();
+
     ReligionManager rm;
     Deity* deity = rm.get_active_deity(creature);
 
@@ -341,11 +345,8 @@ bool DropAction::bury_remains(CreaturePtr creature, const string& remains_race_i
         {
           Game::instance().get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_BURY_REMAINS);
 
-          IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(Game::instance(), creature->get_id()));
-          manager.add_new_message(TextMessages::get_burial_message(creature));
-          manager.send();
-
           buried = true;
+          break;
         }
       }
     }
