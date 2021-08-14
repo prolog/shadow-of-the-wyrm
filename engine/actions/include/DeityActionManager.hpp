@@ -14,6 +14,7 @@ class DeityActionManager
 
   protected:
     void handle_displeasing_action(CreaturePtr creature, Deity* deity, const std::string& action_key);
+    void handle_pleasing_action(CreaturePtr creature, Deity* deity, const std::string& action_key);
     void add_displeasure_message(CreaturePtr creature, const std::string& displeasure_message_sid);
 };
 

@@ -87,6 +87,8 @@ class CreatureUtils
 
     static bool has_primordial_essence(CreaturePtr creature);
 
+    static void add_piety_message_if_player(CreaturePtr creature);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();

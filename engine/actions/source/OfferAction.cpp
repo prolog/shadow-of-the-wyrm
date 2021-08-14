@@ -260,17 +260,7 @@ void OfferAction::add_no_altar_message(CreaturePtr creature)
 
 void OfferAction::add_piety_message_if_player(CreaturePtr creature)
 {
-  if (creature->get_is_player())
-  {
-    ReligionManager rm;
-    int new_creature_piety = rm.get_piety_for_active_deity(creature);
-
-    IMessageManager& manager = MM::instance();
-    string sac_piety_message = SacrificeTextKeys::get_piety_message(new_creature_piety);
-
-    manager.add_new_message(sac_piety_message);
-    manager.send();
-  }
+  CreatureUtils::add_piety_message_if_player(creature);
 }
 
 ActionCostValue OfferAction::get_action_cost_value(CreaturePtr creature) const

@@ -341,7 +341,7 @@ bool DropAction::bury_remains(CreaturePtr creature, const string& remains_race_i
 
       for (const string& cur_race : bury_race_ids)
       {
-        if (racem.is_race_or_descendent(cur_race, remains_race_id))
+        if (racem.is_race_or_descendent(remains_race_id, cur_race))
         {
           Game::instance().get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_BURY_REMAINS);
 

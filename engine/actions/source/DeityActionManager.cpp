@@ -1,6 +1,7 @@
 #include "global_prototypes.hpp"
 #include "ClassManager.hpp"
 #include "Conversion.hpp"
+#include "CreatureUtils.hpp"
 #include "DeityActionManager.hpp"
 #include "DeityDecisionImplications.hpp"
 #include "DislikeDeityDecisionStrategyHandler.hpp"
@@ -65,7 +66,7 @@ void DeityActionManager::notify_action(CreaturePtr creature, MapPtr map, const s
       }
       else if (cur_deity->get_like(action_key))
       {
-        // ...
+        handle_pleasing_action(creature, cur_deity, action_key);
       }
     }
   }
@@ -126,6 +127,15 @@ void DeityActionManager::handle_displeasing_action(CreaturePtr creature, Deity* 
         // may occur.
       }
     }
+  }
+}
+
+void DeityActionManager::handle_pleasing_action(CreaturePtr creature, Deity* deity, const string& action_key)
+{
+  if (creature != nullptr)
+  {
+    // ...
+    CreatureUtils::add_piety_message_if_player(creature);
   }
 }
 

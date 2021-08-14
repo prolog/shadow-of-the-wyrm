@@ -18,6 +18,7 @@
 #include "RaceManager.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
+#include "SacrificeTextKeys.hpp"
 #include "Serialize.hpp"
 #include "SpellAdditionalProperties.hpp"
 #include "StatisticTextKeys.hpp"
@@ -1103,6 +1104,21 @@ bool CreatureUtils::has_primordial_essence(CreaturePtr creature)
   }
 
   return has_essence;
+}
+
+void CreatureUtils::add_piety_message_if_player(CreaturePtr creature)
+{
+  if (creature != nullptr && creature->get_is_player())
+  {
+    ReligionManager rm;
+    int new_creature_piety = rm.get_piety_for_active_deity(creature);
+
+    IMessageManager& manager = MM::instance();
+    string sac_piety_message = SacrificeTextKeys::get_piety_message(new_creature_piety);
+
+    manager.add_new_message(sac_piety_message);
+    manager.send();
+  }
 }
 
 #ifdef UNIT_TESTS

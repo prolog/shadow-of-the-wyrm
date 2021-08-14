@@ -1368,7 +1368,7 @@
 		<xs:enumeration value="DesecrateEvil"/>
 		<xs:enumeration value="GraveRobbing"/>
 		<xs:enumeration value="SkinHumanoid"/>
-		<xs:enumeration value="BuryDead"/>
+		<xs:enumeration value="BuryRemains"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="TileType">
