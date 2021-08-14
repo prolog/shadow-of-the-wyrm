@@ -202,7 +202,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
 
       if (!remains.empty() && creatures_tile->has_been_dug())
       {
-        bury_remains(creature, item_to_drop->get_additional_property(ConsumableConstants::CORPSE_RACE_ID), creature_coord, creatures_tile, current_map);
+        bury_remains(creature, item_to_drop->get_additional_property(ConsumableConstants::CORPSE_RACE_ID), selected_quantity, creature_coord, creatures_tile, current_map);
       }
       else if (!tree_species_id.empty() && creatures_tile->has_been_dug())
       {
@@ -321,7 +321,7 @@ bool DropAction::plant_seed(CreaturePtr creature, const string& tree_species_id,
 }
 
 // Bury the remains of something once living
-bool DropAction::bury_remains(CreaturePtr creature, const string& remains_race_id, const Coordinate& coords, TilePtr tile, MapPtr current_map)
+bool DropAction::bury_remains(CreaturePtr creature, const string& remains_race_id, const uint selected_quantity, const Coordinate& coords, TilePtr tile, MapPtr current_map)
 {
   bool buried = false;
 
@@ -343,7 +343,7 @@ bool DropAction::bury_remains(CreaturePtr creature, const string& remains_race_i
       {
         if (racem.is_race_or_descendent(remains_race_id, cur_race))
         {
-          Game::instance().get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_BURY_REMAINS);
+          Game::instance().get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_BURY_REMAINS, true, selected_quantity);
 
           buried = true;
           break;

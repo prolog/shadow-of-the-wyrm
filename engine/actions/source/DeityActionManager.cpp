@@ -15,7 +15,7 @@ using namespace std;
 // Check to see if the deity likes or dislikes (or simply doesn't care)
 // about the action just performed, and update the creature's piety
 // accordingly.
-void DeityActionManager::notify_action(CreaturePtr creature, MapPtr map, const string& action_key, bool active_deity_only)
+void DeityActionManager::notify_action(CreaturePtr creature, MapPtr map, const string& action_key, bool active_deity_only, const uint num_times)
 {
   Game& game = Game::instance();
 
@@ -62,18 +62,18 @@ void DeityActionManager::notify_action(CreaturePtr creature, MapPtr map, const s
     {
       if (cur_deity->get_dislike(action_key))
       {
-        handle_displeasing_action(creature, cur_deity, action_key);
+        handle_displeasing_action(creature, cur_deity, action_key, num_times);
       }
       else if (cur_deity->get_like(action_key))
       {
-        handle_pleasing_action(creature, cur_deity, action_key);
+        handle_pleasing_action(creature, cur_deity, action_key, num_times);
       }
     }
   }
 }
 
 // Handle a displeasing action by decreasing piety.
-void DeityActionManager::handle_displeasing_action(CreaturePtr creature, Deity* deity, const string& action)
+void DeityActionManager::handle_displeasing_action(CreaturePtr creature, Deity* deity, const string& action, const uint num_times)
 {
   if (creature != nullptr && deity != nullptr)
   {
@@ -111,7 +111,7 @@ void DeityActionManager::handle_displeasing_action(CreaturePtr creature, Deity* 
       DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature, creature_tile);
 
       // This may have been updated as a result of the decision.
-      int new_piety = original_piety - static_cast<int>(decision_implications.get_piety_amount() * multiplier);
+      int new_piety = original_piety - static_cast<int>(decision_implications.get_piety_amount() * multiplier * num_times);
       status.set_piety(new_piety);
 
       if (creature->get_religion_ref().get_active_deity_id() == deity->get_id())
@@ -130,7 +130,7 @@ void DeityActionManager::handle_displeasing_action(CreaturePtr creature, Deity* 
   }
 }
 
-void DeityActionManager::handle_pleasing_action(CreaturePtr creature, Deity* deity, const string& action_key)
+void DeityActionManager::handle_pleasing_action(CreaturePtr creature, Deity* deity, const string& action_key, const uint num_times)
 {
   if (creature != nullptr)
   {
