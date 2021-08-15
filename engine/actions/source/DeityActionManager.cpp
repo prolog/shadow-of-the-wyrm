@@ -5,10 +5,12 @@
 #include "DeityActionManager.hpp"
 #include "DeityDecisionImplications.hpp"
 #include "DislikeDeityDecisionStrategyHandler.hpp"
+#include "LikeDeityDecisionStrategyHandler.hpp"
 #include "Game.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "ReligionManager.hpp"
 
 using namespace std;
 
@@ -134,7 +136,17 @@ void DeityActionManager::handle_pleasing_action(CreaturePtr creature, Deity* dei
 {
   if (creature != nullptr)
   {
-    // ...
+    ReligionManager rm;
+    Deity* deity = rm.get_active_deity(creature);
+    LikeDeityDecisionStrategyHandler like(deity);
+
+    int piety = like.get_piety_amount();
+    DeityRelations& relations = creature->get_religion_ref().get_deity_relations_ref();
+    DeityStatus& status = relations[deity->get_id()];
+
+    int new_piety = status.get_piety() + (piety * static_cast<int>(num_times));
+    status.set_piety(new_piety);
+
     CreatureUtils::add_piety_message_if_player(creature);
   }
 }

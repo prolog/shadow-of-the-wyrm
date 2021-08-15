@@ -4415,6 +4415,9 @@
     <ClInclude Include="engine\generators\settlements\sector\include\DenseVegetationSectorFeature.hpp">
       <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\LikeDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8925,6 +8928,9 @@
     </ClCompile>
     <ClCompile Include="engine\generators\settlements\sector\source\DenseVegetationSectorFeature.cpp">
       <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\LikeDeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

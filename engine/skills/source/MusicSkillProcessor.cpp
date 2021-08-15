@@ -143,7 +143,7 @@ void MusicSkillProcessor::perform(CreaturePtr creature, MapPtr map, ItemPtr inst
 
         if (fov_creature->hostile_to(creature->get_id()))
         {
-          auto po = attempt_pacification(instr, creature, fov_creature, num_hostile, num_pacified);
+          auto po = attempt_pacification(instr, creature, fov_creature, map, num_hostile, num_pacified);
 
           if (po == PacificationOutcome::PACIFICATION_OUTCOME_NOT_PACIFIABLE)
           {
@@ -168,7 +168,7 @@ void MusicSkillProcessor::perform(CreaturePtr creature, MapPtr map, ItemPtr inst
   }
 }
 
-PacificationOutcome MusicSkillProcessor::attempt_pacification(ItemPtr instr, CreaturePtr creature, CreaturePtr fov_creature, int& num_hostile, int& num_pacified)
+PacificationOutcome MusicSkillProcessor::attempt_pacification(ItemPtr instr, CreaturePtr creature, CreaturePtr fov_creature, MapPtr current_map, int& num_hostile, int& num_pacified)
 {
   PacificationOutcome po = PacificationOutcome::PACIFICATION_OUTCOME_FAILURE;
 
@@ -189,6 +189,7 @@ PacificationOutcome MusicSkillProcessor::attempt_pacification(ItemPtr instr, Cre
     PacificationCalculator pc;
     int pct_chance_pacify = pc.calculate_pct_chance_pacify_music(creature, fov_creature, charms_creature, item_status);
     bool pacified = String::to_bool(fov_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_PACIFIED));
+    Game& game = Game::instance();
 
     if (!pacified)
     {
@@ -201,6 +202,8 @@ PacificationOutcome MusicSkillProcessor::attempt_pacification(ItemPtr instr, Cre
         {
           if (RNG::percent_chance(pct_chance_pacify))
           {
+            game.get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_PACIFY, true);
+
             pacify(creature, fov_creature, charms_creature);
             po = PacificationOutcome::PACIFICATION_OUTCOME_SUCCESS;
 

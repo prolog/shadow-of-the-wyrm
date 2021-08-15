@@ -1,11 +1,5 @@
 Me:
 - terminal dragon: no-take flag for tanned, woven items
-- Burying the dead should grant piety for certain deities
-  - Deities should have a list of holy races (divine for all, humanoid for
-    good, animal for Vedere, dragon for Voros)
-  - when burying, trigger (+ piety)
-  - dropped item with flag should disappear (no tile transform to avoid
-    weird edge cases)
 - More dungeon item features:
   - Hoard (weapons, armour, etc - trapped)
 - Houses:
@@ -318,3 +312,5 @@ Josh Engdahl
 - can lure ancient monsters into trap room and kill them via an unwillingness
   to move on to trapped tiles.
 
+TheGhostInTheMachine:
+- game segfaults if you put it on the path and then run it elsewhere?

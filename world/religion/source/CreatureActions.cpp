@@ -13,6 +13,8 @@ const string CreatureActionKeys::ACTION_DESECRATE_EVIL = "DesecrateEvil";
 const string CreatureActionKeys::ACTION_GRAVEROBBING = "GraveRobbing";
 const string CreatureActionKeys::ACTION_SKIN_HUMANOID = "SkinHumanoid";
 const string CreatureActionKeys::ACTION_BURY_REMAINS = "BuryRemains";
+const string CreatureActionKeys::ACTION_PLANT_SEEDS = "PlantSeeds";
+const string CreatureActionKeys::ACTION_PACIFY = "Pacify";
 
 bool CreatureActions::operator==(const CreatureActions& ca) const
 {

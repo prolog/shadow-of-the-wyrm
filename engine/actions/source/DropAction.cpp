@@ -314,6 +314,8 @@ bool DropAction::plant_seed(CreaturePtr creature, const string& tree_species_id,
       {
         GameUtils::make_map_permanent(game, creature, current_map);
       }
+
+      game.get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_PLANT_SEEDS, true);
     }
   }
   

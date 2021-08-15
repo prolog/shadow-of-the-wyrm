@@ -110,6 +110,8 @@ void BeastmasterySkillProcessor::handle_tame(CreaturePtr taming_creature, Creatu
 {
   if (taming_creature != nullptr && to_tame != nullptr)
   {
+    Game::instance().get_deity_action_manager_ref().notify_action(taming_creature, current_map, CreatureActionKeys::ACTION_PACIFY, true);
+
     HostilityManager hm;
 
     hm.remove_hostility_to_creature(to_tame, taming_creature->get_id());

@@ -119,6 +119,7 @@
 			</Dislikes>
 			<Likes>
 				<Action>BuryRemains</Action>
+				<Action>Pacify</Action>
 			</Likes>
 			<BurialRaces>
 				<RaceID>_humanoid</RaceID>
@@ -168,6 +169,7 @@
 			</Dislikes>
 			<Likes>
 				<Action>BuryRemains</Action>
+				<Action>PlantSeeds</Action>
 			</Likes>
 			<BurialRaces>
 				<RaceID>_animal</RaceID>
@@ -307,7 +309,9 @@
 			<Dislikes>
 				<Action>DesecrateEvil</Action>
 			</Dislikes>
-			<Likes/>
+			<Likes>
+				<Action>AttackFriendlyCreature</Action>
+			</Likes>
 			<Crowning>
 				<Artifact>asturias</Artifact>
 				<Artifact>carpathos</Artifact>
@@ -351,7 +355,9 @@
 			<Dislikes>
 				<Action>DesecrateEvil</Action>
 			</Dislikes>
-			<Likes/>
+			<Likes>
+				<Action>AttackFriendlyCreature</Action>
+			</Likes>
 			<Crowning>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
@@ -392,7 +398,13 @@
 			<Dislikes>
 				<Action>DesecrateEvil</Action>
 			</Dislikes>
-			<Likes/>
+			<Likes>
+				<Action>AttackFriendlyCreature</Action>
+				<Action>Cannibalism</Action>
+				<Action>DesecrateGood</Action>
+				<Action>DesecrateNeutral</Action>
+				<Action>GraveRobbing</Action>
+			</Likes>
 			<Crowning>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>

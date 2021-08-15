@@ -23,8 +23,20 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 
 - You can now occasionally stumble across the corpse of a hapless adventurer.
 
-- Burying remains (corpses, skeletons, etc) removes the remains and may give
-  piety depending on what you're burying and your active deity.
+- Deities now have likes as well as disikes:
+
+  - Burying remains (corpses, skeletons, etc) removes the remains and may give
+    piety depending on what you're burying and your active deity.
+
+  - The evil deities enjoy cruelty, and attacking friendly creatures will make
+    your god happy if you follow Shiver, Urgoth, or Sceadugenga.
+
+  - Additionally, Sceadugenga rewards cannibalism, desecration, and 
+    graverobbing.
+
+  - Vedere enjoys the planting of seeds.
+
+  - The Lady smiles on pacification via Beastmastery and Music.
 
 - Dungeons can now have orchards and vegetation rooms.
 
