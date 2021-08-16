@@ -2199,7 +2199,7 @@ int add_status_to_creature(lua_State* ls)
 
     if (creature && !creature->has_status(status_id))
     {
-      StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
+      StatusEffectPtr se = StatusEffectFactory::create_status_effect(/* don't know originator */ nullptr, status_id, "");
       se->apply_change(creature, danger_level);
 
       lua_pushboolean(ls, true);
@@ -2243,7 +2243,7 @@ int add_status_to_creature_at(lua_State* ls)
       {
         CreaturePtr creature = tile->get_creature();
 
-        StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
+        StatusEffectPtr se = StatusEffectFactory::create_status_effect(/* don't know originator */ nullptr, status_id, "");
         se->apply_change(creature, danger_level);
 
         added_status = true;

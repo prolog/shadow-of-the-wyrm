@@ -2653,10 +2653,10 @@
 				<Resistances>
 					<Cold>0.20</Cold>
 					<Acid>0.15</Acid>
-					<Poison>0.15</Poison>
+					<Poison>0.20</Poison>
 				</Resistances>
-				<Evade>5</Evade>
-				<Soak>10</Soak>
+				<Evade>8</Evade>
+				<Soak>8</Soak>
 			</Ring>
 			<Ring id="asturias">
 				<DescriptionSID>ASTURIAS_SID</DescriptionSID>

@@ -26,7 +26,7 @@ bool RageEffect::rage(CreaturePtr creature)
 
   if (creature != nullptr && !creature->has_status(rage_s))
   {
-    StatusEffectPtr rage = StatusEffectFactory::create_status_effect(rage_s, source_id);
+    StatusEffectPtr rage = StatusEffectFactory::create_status_effect(this->get_originator(), rage_s, source_id);
 
     if (rage != nullptr)
     {

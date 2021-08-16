@@ -26,7 +26,7 @@ bool SlownessStatusEffect::after_apply(CreaturePtr creature) const
       creature->remove_status(StatusIdentifiers::STATUS_ID_SLOWNESS);
 
       // Undo the haste status, adding a message if necessary:
-      StatusEffectPtr haste = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HASTE, source_id);
+      StatusEffectPtr haste = StatusEffectFactory::create_status_effect(initiating_creature, StatusIdentifiers::STATUS_ID_HASTE, source_id);
       haste->undo_change(creature);
 
       effect_applied = false;

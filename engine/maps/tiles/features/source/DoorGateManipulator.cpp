@@ -195,7 +195,7 @@ void DoorGateManipulator::handle_sprain_if_necessary(CreaturePtr creature, const
       cm.deal_damage(no_attacker, creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED, source_id, sprain_damage, sprain_default, "", DeathSourceTextKeys::DEATH_SOURCE_SPRAIN);
 
       // Potentially add slow status, due to the gimpy leg.
-      StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_SLOWNESS, creature->get_id());
+      StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(creature, StatusIdentifiers::STATUS_ID_SLOWNESS, creature->get_id());
 
       if (status_effect && status_effect->should_apply_change(creature))
       {

@@ -127,7 +127,7 @@ void RestoreStatusDeityDecisionStrategyHandler::uncurse_equipment_with_negative_
 
           for (const string& sa : ail)
           {
-            StatusEffectPtr status = StatusEffectFactory::create_status_effect(sa, "");
+            StatusEffectPtr status = StatusEffectFactory::create_status_effect(creature, sa, "");
 
             if (status != nullptr && status->is_negative())
             {

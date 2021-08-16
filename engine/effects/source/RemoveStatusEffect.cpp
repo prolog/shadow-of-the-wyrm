@@ -42,7 +42,7 @@ bool RemoveStatusEffect::remove_status(CreaturePtr creature)
 {
   if (creature && creature->has_status(status_id))
   {
-    StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(status_id, source_id);
+    StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(this->get_originator(), status_id, source_id);
     status_effect->undo_change(creature);
   }
 

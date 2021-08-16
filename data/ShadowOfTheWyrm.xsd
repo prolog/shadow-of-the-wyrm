@@ -1362,6 +1362,7 @@
 	</xs:annotation>
 	<xs:restriction base="xs:string">
 		<xs:enumeration value="AttackFriendlyCreature"/>
+		<xs:enumeration value="Bloodletting"/>
 		<xs:enumeration value="BuryRemains"/>
 		<xs:enumeration value="Cannibalism"/>
 		<xs:enumeration value="DesecrateGood"/>

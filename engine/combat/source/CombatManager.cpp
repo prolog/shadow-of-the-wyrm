@@ -836,13 +836,13 @@ void CombatManager::handle_damage_effects(CreaturePtr attacking_creature, Creatu
 
     for (const string& ailment : ailments)
     {
-      status_effect = StatusEffectFactory::create_status_effect(ailment, source_id);
+      status_effect = StatusEffectFactory::create_status_effect(attacking_creature, ailment, source_id);
       apply_damage_effect(creature, status_effect, effect_bonus, danger_level);
     }
   }
   else
   {
-    status_effect = StatusEffectFactory::create_effect_for_damage_type(damage_type, source_id);
+    status_effect = StatusEffectFactory::create_effect_for_damage_type(attacking_creature, damage_type, source_id);
     apply_damage_effect(creature, status_effect, effect_bonus, danger_level);
   }
 }
@@ -1369,7 +1369,7 @@ bool CombatManager::knock_back_creature_if_necessary(const AttackType attack_typ
       for (const string& status_id : statuses)
       {
         string source_id = attacking_creature->get_id();
-        StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(status_id, source_id);
+        StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(attacking_creature, status_id, source_id);
 
         apply_damage_effect(attacked_creature, status_effect, 0, attacking_creature->get_level().get_current());
       }

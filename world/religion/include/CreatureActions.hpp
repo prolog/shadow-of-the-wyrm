@@ -16,6 +16,7 @@ class CreatureActionKeys
     static const std::string ACTION_BURY_REMAINS;
     static const std::string ACTION_PLANT_SEEDS;
     static const std::string ACTION_PACIFY;
+    static const std::string ACTION_BLOODLETTING;
 };
 
 using CreatureActionMap = std::map<std::string, bool>;

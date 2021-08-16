@@ -15,6 +15,7 @@ const string CreatureActionKeys::ACTION_SKIN_HUMANOID = "SkinHumanoid";
 const string CreatureActionKeys::ACTION_BURY_REMAINS = "BuryRemains";
 const string CreatureActionKeys::ACTION_PLANT_SEEDS = "PlantSeeds";
 const string CreatureActionKeys::ACTION_PACIFY = "Pacify";
+const string CreatureActionKeys::ACTION_BLOODLETTING = "Bloodletting";
 
 bool CreatureActions::operator==(const CreatureActions& ca) const
 {

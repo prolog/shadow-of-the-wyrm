@@ -646,7 +646,7 @@ void CreatureUtils::process_creature_modifier(CreaturePtr creature, pair<string,
     if (creature->has_status(status_id))
     {
       Status st = creature->get_status(status_id);
-      StatusEffectPtr status_p = StatusEffectFactory::create_status_effect(status_id, st.get_source_id());
+      StatusEffectPtr status_p = StatusEffectFactory::create_status_effect(creature, status_id, st.get_source_id());
 
       if (sr == StatusRemovalType::STATUS_REMOVAL_FINALIZE)
       {
@@ -677,7 +677,7 @@ void CreatureUtils::apply_status_ailments(WearablePtr wearable, CreaturePtr crea
         ModifyStatisticsEffect mse;
         Modifier m;
 
-        StatusEffectPtr status = StatusEffectFactory::create_status_effect(ailment, "");
+        StatusEffectPtr status = StatusEffectFactory::create_status_effect(creature, ailment, "");
 
         if (!has_status)
         {
@@ -862,7 +862,7 @@ bool CreatureUtils::has_negative_status(CreaturePtr creature)
     for (const auto& csm_pair : csm)
     {
       string status_id = csm_pair.first;
-      StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
+      StatusEffectPtr se = StatusEffectFactory::create_status_effect(creature, status_id, "");
 
       if (se && se->is_negative())
       {
@@ -958,7 +958,7 @@ bool CreatureUtils::remove_negative_statuses_from_creature(CreaturePtr creature)
     for (const auto& csm_pair : csm)
     {
       string status_id = csm_pair.first;
-      StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
+      StatusEffectPtr se = StatusEffectFactory::create_status_effect(creature, status_id, "");
 
       if (se && se->is_negative())
       {

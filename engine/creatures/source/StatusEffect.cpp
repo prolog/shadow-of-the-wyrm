@@ -29,6 +29,11 @@ StatusEffect::~StatusEffect()
 {
 }
 
+void StatusEffect::set_initiating_creature(CreaturePtr new_creature)
+{
+  initiating_creature = new_creature;
+}
+
 // Most status effects are negative.
 bool StatusEffect::is_negative() const
 {
@@ -86,6 +91,8 @@ void StatusEffect::apply_change(CreaturePtr creature, const int danger_level) co
 
   if (status_applied)
   {
+    notify_deities();
+
     string message = get_application_message(creature);
 
     if (!message.empty())
@@ -333,6 +340,10 @@ Modifier StatusEffect::get_base_modifier(CreaturePtr creature, const int danger_
 {
   Modifier m;
   return m;
+}
+
+void StatusEffect::notify_deities() const
+{
 }
 
 string StatusEffect::get_status_identifier() const

@@ -311,24 +311,16 @@
 			</Dislikes>
 			<Likes>
 				<Action>AttackFriendlyCreature</Action>
+				<Action>Bloodletting</Action>
 			</Likes>
 			<Crowning>
 				<Artifact>asturias</Artifact>
-				<Artifact>carpathos</Artifact>
-				<Artifact>delver</Artifact>
-				<Artifact>great_mace_torasin</Artifact>
-				<Artifact>erebus</Artifact>
-				<Artifact>pelter</Artifact>
 				<Artifact>shadow</Artifact>
-				<Artifact>kithslayer</Artifact>
-				<Artifact>skyslayer</Artifact>
 				<Artifact>staff_artificer</Artifact>
-				<Artifact>plate_mail_terror</Artifact>
 				<Artifact>crown_of_tyranny</Artifact>
 				<Artifact>athame_winter</Artifact>
 				<Artifact>akkar</Artifact>
 				<Artifact>akos_akari</Artifact>
-				<Artifact>whisperwind</Artifact>
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>elcrynn</Artifact>
 			</Crowning>

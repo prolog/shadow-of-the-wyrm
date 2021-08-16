@@ -1,5 +1,6 @@
 #include "BloodiedCalculator.hpp"
 #include "BloodiedStatusEffect.hpp"
+#include "Game.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StatusTypes.hpp"
 
@@ -45,6 +46,16 @@ Modifier BloodiedStatusEffect::get_base_modifier(CreaturePtr creature, const int
   m.set_to_hit_modifier(BLOODIED_TO_HIT_PENALTY);
 
   return m;
+}
+
+void BloodiedStatusEffect::notify_deities() const
+{
+  if (initiating_creature != nullptr)
+  {
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+    game.get_deity_action_manager_ref().notify_action(initiating_creature, current_map, CreatureActionKeys::ACTION_BLOODLETTING, true);
+  }
 }
 
 string BloodiedStatusEffect::get_status_identifier() const

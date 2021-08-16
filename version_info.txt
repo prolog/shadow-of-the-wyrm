@@ -38,6 +38,11 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 
   - The Lady smiles on pacification via Beastmastery and Music.
 
+  - Shiver enjoys bloodletting.
+
+- Shiver's artifact list has been pared down, and the weapons are now only
+  daggers and staves.
+
 - Dungeons can now have orchards and vegetation rooms.
 
 - The guidebook now includes information on how to read the equipment screen,
