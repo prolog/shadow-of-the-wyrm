@@ -5,7 +5,7 @@
 
 using std::string;
 
-const int LikeDeityDecisionStrategyHandler::LIKE_DECISION_PIETY = 100;
+const int LikeDeityDecisionStrategyHandler::LIKE_DECISION_PIETY = 50;
 
 LikeDeityDecisionStrategyHandler::LikeDeityDecisionStrategyHandler(const string& new_deity_id)
 : DeityDecisionStrategyHandler(new_deity_id), deity(nullptr)

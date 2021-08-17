@@ -1371,7 +1371,9 @@
 		<xs:enumeration value="GraveRobbing"/>
 		<xs:enumeration value="Pacify"/>
 		<xs:enumeration value="PlantSeeds"/>
+		<xs:enumeraiton value="Rage"/>
 		<xs:enumeration value="SkinHumanoid"/>
+		<xs:enumeration value="SneakAttack"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="TileType">

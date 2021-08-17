@@ -48,7 +48,7 @@ Modifier BloodiedStatusEffect::get_base_modifier(CreaturePtr creature, const int
   return m;
 }
 
-void BloodiedStatusEffect::notify_deities() const
+void BloodiedStatusEffect::notify_deities(CreaturePtr init_creature, CreaturePtr affected_creature) const
 {
   if (initiating_creature != nullptr)
   {

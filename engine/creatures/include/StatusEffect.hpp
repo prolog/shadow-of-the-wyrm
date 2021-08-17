@@ -43,7 +43,7 @@ class StatusEffect
     // applied as a part of this status effect.
     virtual Modifier get_base_modifier(std::shared_ptr<Creature> creature, const int danger_level) const;
 
-    virtual void notify_deities() const;
+    virtual void notify_deities(std::shared_ptr<Creature> initiating_creature, std::shared_ptr<Creature> affected_creature) const;
 
     // These functions are boolean to indicate whether or not the status was
     // actually applied.  The status will be applied in almost all cases, but

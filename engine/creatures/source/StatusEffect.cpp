@@ -91,7 +91,7 @@ void StatusEffect::apply_change(CreaturePtr creature, const int danger_level) co
 
   if (status_applied)
   {
-    notify_deities();
+    notify_deities(initiating_creature, creature);
 
     string message = get_application_message(creature);
 
@@ -342,7 +342,7 @@ Modifier StatusEffect::get_base_modifier(CreaturePtr creature, const int danger_
   return m;
 }
 
-void StatusEffect::notify_deities() const
+void StatusEffect::notify_deities(CreaturePtr initiating_creature, CreaturePtr affected_creature) const
 {
 }
 

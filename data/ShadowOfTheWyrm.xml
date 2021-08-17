@@ -264,7 +264,7 @@
 				<Action>GraveRobbing</Action>
 			</Dislikes>
 			<Likes>
-				<Action>BuryRemains</Action>
+				<Action>SneakAttack</Action>
 			</Likes>
 			<Crowning>
 				<Artifact>carpathos</Artifact>
@@ -349,6 +349,7 @@
 			</Dislikes>
 			<Likes>
 				<Action>AttackFriendlyCreature</Action>
+				<Action>Rage</Action>
 			</Likes>
 			<Crowning>
 				<Artifact>delver</Artifact>

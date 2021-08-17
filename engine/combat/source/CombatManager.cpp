@@ -488,6 +488,8 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
 
   if (sneak_attack)
   {
+    game.get_deity_action_manager_ref().notify_action(attacking_creature, current_map, CreatureActionKeys::ACTION_SNEAK_ATTACK, true);
+
     combat_message << StringTable::get(CombatTextKeys::COMBAT_SNEAK_ATTACK) << " ";
     
     if (attacked_creature)
