@@ -9,6 +9,9 @@ class StoneStatusEffect : public StatusEffect
     virtual void tick(std::shared_ptr<Creature> creature, const int danger_level) const override;
 
   protected:
+
+    void notify_deities(CreaturePtr initiating, CreaturePtr affected_creature) const override;
+
     // When Stone status runs its course, the creature dies and becomes
     // a statue.
     virtual void finalize(std::shared_ptr<Creature> creature) const override;

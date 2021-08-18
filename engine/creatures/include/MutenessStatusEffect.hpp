@@ -7,6 +7,8 @@ class MutenessStatusEffect : public StatusEffect
     MutenessStatusEffect();
   
   protected:
+    virtual void notify_deities(CreaturePtr initiating, CreaturePtr affected_creature) const override;
+
     virtual std::string get_player_application_message() const override;
     virtual std::string get_player_undo_message() const override;
     virtual std::string get_npc_application_message(std::shared_ptr<Creature> creature) const override;

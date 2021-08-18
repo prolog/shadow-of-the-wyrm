@@ -1370,9 +1370,11 @@
 		<xs:enumeration value="DesecrateEvil"/>
 		<xs:enumeration value="GraveRobbing"/>
 		<xs:enumeration value="Pacify"/>
+		<xs:enumeration value="Petrify"/>
 		<xs:enumeration value="PlantSeeds"/>
-		<xs:enumeraiton value="Rage"/>
+		<xs:enumeration value="Rage"/>
 		<xs:enumeration value="SkinHumanoid"/>
+		<xs:enumeration value="Smite"/>
 		<xs:enumeration value="SneakAttack"/>
 	</xs:restriction>
 </xs:simpleType>

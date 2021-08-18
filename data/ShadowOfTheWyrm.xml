@@ -20,6 +20,7 @@
 			</Dislikes>
 			<Likes>
 				<Action>BuryRemains</Action>
+				<Action>Smite</Action>
 			</Likes>
 			<BurialRaces>
 				<RaceID>_humanoid</RaceID>
@@ -69,6 +70,7 @@
 			</Dislikes>
 			<Likes>
 				<Action>BuryRemains</Action>
+				<Action>Smite</Action>
 			</Likes>
 			<BurialRaces>
 				<RaceID>_humanoid</RaceID>
@@ -397,6 +399,7 @@
 				<Action>DesecrateGood</Action>
 				<Action>DesecrateNeutral</Action>
 				<Action>GraveRobbing</Action>
+				<Action>Petrify</Action>
 			</Likes>
 			<Crowning>
 				<Artifact>delver</Artifact>
