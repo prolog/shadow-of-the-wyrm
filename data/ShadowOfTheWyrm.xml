@@ -71,6 +71,7 @@
 			<Likes>
 				<Action>BuryRemains</Action>
 				<Action>Smite</Action>
+				<Action>Stun</Action>
 			</Likes>
 			<BurialRaces>
 				<RaceID>_humanoid</RaceID>
@@ -164,10 +165,7 @@
 			</DeityInitialModifiers>
 			<Dislikes>
 				<Action>AttackFriendlyCreature</Action>
-				<Action>Cannibalism</Action>
 				<Action>DesecrateNeutral</Action>
-				<Action>GraveRobbing</Action>
-				<Action>SkinHumanoid</Action>
 			</Dislikes>
 			<Likes>
 				<Action>BuryRemains</Action>
@@ -218,6 +216,7 @@
 			</Dislikes>
 			<Likes>
 				<Action>BuryRemains</Action>
+				<Action>Burn</Action>
 			</Likes>
 			<BurialRaces>
 				<RaceID>_dragon</RaceID>
@@ -314,6 +313,7 @@
 			<Likes>
 				<Action>AttackFriendlyCreature</Action>
 				<Action>Bloodletting</Action>
+				<Action>Freeze</Action>
 			</Likes>
 			<Crowning>
 				<Artifact>asturias</Artifact>
@@ -352,6 +352,7 @@
 			<Likes>
 				<Action>AttackFriendlyCreature</Action>
 				<Action>Rage</Action>
+				<Action>Stun</Action>
 			</Likes>
 			<Crowning>
 				<Artifact>delver</Artifact>

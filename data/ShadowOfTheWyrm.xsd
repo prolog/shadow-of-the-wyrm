@@ -1363,11 +1363,13 @@
 	<xs:restriction base="xs:string">
 		<xs:enumeration value="AttackFriendlyCreature"/>
 		<xs:enumeration value="Bloodletting"/>
+		<xs:enumeration value="Burn"/>
 		<xs:enumeration value="BuryRemains"/>
 		<xs:enumeration value="Cannibalism"/>
 		<xs:enumeration value="DesecrateGood"/>
 		<xs:enumeration value="DesecrateNeutral"/>
 		<xs:enumeration value="DesecrateEvil"/>
+		<xs:enumeration value="Freeze"/>
 		<xs:enumeration value="GraveRobbing"/>
 		<xs:enumeration value="Pacify"/>
 		<xs:enumeration value="Petrify"/>
@@ -1376,6 +1378,7 @@
 		<xs:enumeration value="SkinHumanoid"/>
 		<xs:enumeration value="Smite"/>
 		<xs:enumeration value="SneakAttack"/>
+		<xs:enumeration value="Stun"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="TileType">

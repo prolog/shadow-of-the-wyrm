@@ -21,6 +21,9 @@ class CreatureActionKeys
     static const std::string ACTION_RAGE;
     static const std::string ACTION_SMITE;
     static const std::string ACTION_PETRIFY;
+    static const std::string ACTION_BURN;
+    static const std::string ACTION_FREEZE;
+    static const std::string ACTION_STUN;
 };
 
 using CreatureActionMap = std::map<std::string, bool>;

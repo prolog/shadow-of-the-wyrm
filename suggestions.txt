@@ -1,5 +1,5 @@
 Me:
-- trickster: sneak attack
+- Test: freeze (shiver), stun (Urgoth,Aur), blind (Voros)
 - update manual for deity likes
 - terminal dragon: no-take flag for tanned, woven items
 - More dungeon item features:

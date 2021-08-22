@@ -38,13 +38,17 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
   - Additionally, Sceadugenga rewards cannibalism, desecration, and 
     graverobbing.
 
-  - Urgoth revels when his followers rage.
+  - Aurelion and Celeste both like smiting, and Aurelion also likes stunning.
+
+  - Urgoth likes stunning, and revels when his followers rage.
 
   - Vedere enjoys the planting of seeds.
 
+  - Voros likes inflicting blinding.
+
   - The Lady smiles on pacification via Beastmastery and Music.
 
-  - Shiver enjoys bloodletting.
+  - Shiver enjoys bloodletting and inflicting slowness.
 
   - The Trickster likes sneak attacks.
 

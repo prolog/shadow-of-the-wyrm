@@ -20,6 +20,9 @@ const string CreatureActionKeys::ACTION_SNEAK_ATTACK = "SneakAttack";
 const string CreatureActionKeys::ACTION_RAGE = "Rage";
 const string CreatureActionKeys::ACTION_SMITE = "Smite";
 const string CreatureActionKeys::ACTION_PETRIFY = "Petrify";
+const string CreatureActionKeys::ACTION_BURN = "Burn";
+const string CreatureActionKeys::ACTION_FREEZE = "Freeze";
+const string CreatureActionKeys::ACTION_STUN = "Stun";
 
 bool CreatureActions::operator==(const CreatureActions& ca) const
 {

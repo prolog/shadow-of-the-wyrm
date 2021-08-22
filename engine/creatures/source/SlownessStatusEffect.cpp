@@ -1,5 +1,6 @@
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
+#include "Game.hpp"
 #include "SlownessCalculator.hpp"
 #include "SlownessStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -11,6 +12,17 @@ using namespace std;
 SlownessStatusEffect::SlownessStatusEffect()
 {
   status_calc = std::make_shared<SlownessCalculator>();
+}
+
+void SlownessStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr affected_creature) const
+{
+  if (initiating != nullptr)
+  {
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+
+    game.get_deity_action_manager_ref().notify_action(initiating, current_map, CreatureActionKeys::ACTION_FREEZE, true);
+  }
 }
 
 bool SlownessStatusEffect::after_apply(CreaturePtr creature) const
