@@ -20,6 +20,7 @@
 			</Dislikes>
 			<Likes>
 				<Action>BuryRemains</Action>
+				<Action>LearnSpell</Action>
 				<Action>Smite</Action>
 			</Likes>
 			<BurialRaces>
@@ -266,6 +267,7 @@
 			</Dislikes>
 			<Likes>
 				<Action>SneakAttack</Action>
+				<Action>LearnSpell</Action>
 			</Likes>
 			<Crowning>
 				<Artifact>carpathos</Artifact>
@@ -314,6 +316,7 @@
 				<Action>AttackFriendlyCreature</Action>
 				<Action>Bloodletting</Action>
 				<Action>Freeze</Action>
+				<Action>LearnSpell</Action>
 			</Likes>
 			<Crowning>
 				<Artifact>asturias</Artifact>

@@ -23,6 +23,7 @@ const string CreatureActionKeys::ACTION_PETRIFY = "Petrify";
 const string CreatureActionKeys::ACTION_BURN = "Burn";
 const string CreatureActionKeys::ACTION_FREEZE = "Freeze";
 const string CreatureActionKeys::ACTION_STUN = "Stun";
+const string CreatureActionKeys::ACTION_LEARN_SPELL = "LearnSpell";
 
 bool CreatureActions::operator==(const CreatureActions& ca) const
 {
