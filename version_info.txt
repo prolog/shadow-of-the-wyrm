@@ -38,7 +38,8 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
   - Additionally, Sceadugenga rewards cannibalism, desecration, and 
     graverobbing.
 
-  - Aurelion and Celeste both like smiting, and Aurelion also likes stunning.
+  - Aurelion and Celeste both like smiting.  Celeste likes it when her followers
+    learn spells, and Aurelion likes stunning.
 
   - Urgoth likes stunning, and revels when his followers rage.
 
@@ -48,9 +49,9 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 
   - The Lady smiles on pacification via Beastmastery and Music.
 
-  - Shiver enjoys bloodletting and inflicting slowness.
+  - Shiver enjoys bloodletting, learning spells, and inflicting slowness.
 
-  - The Trickster likes sneak attacks.
+  - The Trickster likes sneak attacks and learning spells.
 
 - Shiver's artifact list has been pared down, and the weapons are now only
   daggers and staves.
