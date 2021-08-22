@@ -19,6 +19,7 @@ class CombatConstants
     static const int PCT_CHANCE_ETHEREAL;
     static const float DRAIN_MULTIPLIER;
     static const float ETHEREAL_MULTIPLIER;
+    static const int MIN_ARTIFACT_EFFECT_BONUS;
 
   protected:
     CombatConstants();

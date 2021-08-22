@@ -15,6 +15,7 @@ const int CombatConstants::PCT_CHANCE_DRAIN = 30;
 const int CombatConstants::PCT_CHANCE_ETHEREAL = 70;
 const float CombatConstants::DRAIN_MULTIPLIER = 0.20f;
 const float CombatConstants::ETHEREAL_MULTIPLIER = 0.20f;
+const int CombatConstants::MIN_ARTIFACT_EFFECT_BONUS = 20;
 
 CombatConstants::CombatConstants()
 {

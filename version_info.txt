@@ -23,6 +23,10 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 
 - You can now occasionally stumble across the corpse of a hapless adventurer.
 
+- Artifact weapons are now more effective at inflicting status effects,
+  giving a minimum bonus even if not explicitly specified in the game
+  configuration.
+
 - Deities now have likes as well as disikes.  Doing something a deity likes
   will grant a small amount of piety if you follow them.  This allows you to
   gain piety passively, rather than having to camp out at an altar and

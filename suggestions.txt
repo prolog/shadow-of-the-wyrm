@@ -1,6 +1,5 @@
 Me:
-- Test: freeze (shiver), stun (Urgoth,Aur), blind (Voros)
-- update manual for deity likes
+- make shops unavailable at night
 - terminal dragon: no-take flag for tanned, woven items
 - More dungeon item features:
   - Hoard (weapons, armour, etc - trapped)
