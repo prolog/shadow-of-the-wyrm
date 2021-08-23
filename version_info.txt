@@ -27,6 +27,8 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
   giving a minimum bonus even if not explicitly specified in the game
   configuration.
 
+- Shops are closed for business at night.
+
 - Deities now have likes as well as disikes.  Doing something a deity likes
   will grant a small amount of piety if you follow them.  This allows you to
   gain piety passively, rather than having to camp out at an altar and

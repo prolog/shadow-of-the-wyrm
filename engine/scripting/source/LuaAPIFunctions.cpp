@@ -426,6 +426,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "count_creature_humanoid_followers", count_creature_humanoid_followers);
   lua_register(L, "set_chat_script", set_chat_script);
   lua_register(L, "count_creatures_with_race", count_creatures_with_race);
+  lua_register(L, "get_time_of_day", get_time_of_day);
 }
 
 // Lua API helper functions
@@ -8828,5 +8829,23 @@ int count_creatures_with_race(lua_State* ls)
   }
 
   lua_pushinteger(ls, cnt);
+  return 1;
+}
+
+int get_time_of_day(lua_State* ls)
+{
+  int tod = CTIME_OF_DAY_UNDEFINED;
+
+  if (lua_gettop(ls) == 0)
+  {
+    TimeOfDayType todt = GameUtils::get_date(Game::instance()).get_time_of_day();
+    tod = static_cast<int>(todt);
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_time_of_day");
+  }
+
+  lua_pushinteger(ls, tod);
   return 1;
 }
