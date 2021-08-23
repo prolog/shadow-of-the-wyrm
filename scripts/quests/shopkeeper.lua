@@ -33,34 +33,28 @@ local function get_purchase_amount(unpaid_amount)
   return purchase_amount
 end
 
-local time_of_day = get_time_of_day()
+-- Is there an amount owing?
+local num_unpaid_items = get_num_unpaid_items(PLAYER_ID)
+local unpaid_amount = get_unpaid_amount(PLAYER_ID)
+local shopkeep_id = args[SPEAKING_CREATURE_ID]
 
-if time_of_day == CTIME_OF_DAY_NIGHT then
-  clear_and_add_message("SHOPKEEPER_NIGHT")
-else
-  -- Is there an amount owing?
-  local num_unpaid_items = get_num_unpaid_items(PLAYER_ID)
-  local unpaid_amount = get_unpaid_amount(PLAYER_ID)
-  local shopkeep_id = args[SPEAKING_CREATURE_ID]
+if num_unpaid_items > 0 then
+  -- Does the player have enough ivory to cover it?
+  local currency_amount = count_currency(PLAYER_ID)
 
-  if num_unpaid_items > 0 then
-    -- Does the player have enough ivory to cover it?
-    local currency_amount = count_currency(PLAYER_ID)
+  if (currency_amount >= unpaid_amount) then
+    local purchase_amount = get_purchase_amount(unpaid_amount)
 
-    if (currency_amount >= unpaid_amount) then
-      local purchase_amount = get_purchase_amount(unpaid_amount)
-
-      -- Confirm the purchase
-      if add_confirmation_message("SHOPKEEPER_CONFIRM_PURCHASE_SID", {tostring(unpaid_amount)}) then
-        complete_purchase(purchase_amount, unpaid_amount, shopkeep_id)
-      else
-        clear_and_add_message("SHOPKEEPER_WARNING_SID")
-      end
+    -- Confirm the purchase
+    if add_confirmation_message("SHOPKEEPER_CONFIRM_PURCHASE_SID", {tostring(unpaid_amount)}) then
+      complete_purchase(purchase_amount, unpaid_amount, shopkeep_id)
     else
-      clear_and_add_message("SHOPKEEPER_INSUFFICIENT_FUNDS_SID")
+      clear_and_add_message("SHOPKEEPER_WARNING_SID")
     end
   else
-    -- Nothing owed.  Add a standard greeting.
-    clear_and_add_message("SHOPKEEPER_SPEECH_TEXT_SID")
+    clear_and_add_message("SHOPKEEPER_INSUFFICIENT_FUNDS_SID")
   end
+else
+  -- Nothing owed.  Add a standard greeting.
+  clear_and_add_message("SHOPKEEPER_SPEECH_TEXT_SID")
 end

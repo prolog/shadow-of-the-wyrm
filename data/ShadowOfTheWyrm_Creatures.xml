@@ -21353,6 +21353,7 @@
 			<DescriptionSID>SHOPKEEPER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHOPKEEPER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SHOPKEEPER_SPEECH_TEXT_SID</SpeechTextSID>
+			<NightSpeechTextSID>SHOPKEEPER_NIGHT_SPEECH_TEXT_SID</NightSpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Pickup>0</Pickup>

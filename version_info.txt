@@ -27,7 +27,8 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
   giving a minimum bonus even if not explicitly specified in the game
   configuration.
 
-- Shops are closed for business at night.
+- Shops are closed for business at night.  More generally, the game now supports
+  night-time chat text and chat scripts.
 
 - Deities now have likes as well as disikes.  Doing something a deity likes
   will grant a small amount of piety if you follow them.  This allows you to
