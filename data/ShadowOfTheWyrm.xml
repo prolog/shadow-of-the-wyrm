@@ -20,6 +20,7 @@
 			</Dislikes>
 			<Likes>
 				<Action>BuryRemains</Action>
+				<Action>HealCompanion</Action>
 				<Action>LearnSpell</Action>
 				<Action>Smite</Action>
 			</Likes>
@@ -71,6 +72,7 @@
 			</Dislikes>
 			<Likes>
 				<Action>BuryRemains</Action>
+				<Action>HealCompanion</Action>
 				<Action>Smite</Action>
 				<Action>Stun</Action>
 			</Likes>
@@ -123,6 +125,7 @@
 			</Dislikes>
 			<Likes>
 				<Action>BuryRemains</Action>
+				<Action>HealCompanion</Action>
 				<Action>Pacify</Action>
 			</Likes>
 			<BurialRaces>

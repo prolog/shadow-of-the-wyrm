@@ -1,5 +1,4 @@
 Me:
-- terminal dragon: no-take flag for tanned, woven items
 - More dungeon item features:
   - Hoard (weapons, armour, etc - trapped)
 - Houses:

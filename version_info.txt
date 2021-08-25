@@ -39,6 +39,8 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
   - Burying remains (corpses, skeletons, etc) removes the remains and may give
     piety depending on what you're burying and your active deity.
 
+  - The three good deities will give you piety when you heal your companions.
+
   - The evil deities enjoy cruelty, and attacking friendly creatures will make
     your god happy if you follow Shiver, Urgoth, or Sceadugenga.
 

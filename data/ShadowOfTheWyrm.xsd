@@ -1373,6 +1373,7 @@
 		<xs:enumeration value="DesecrateEvil"/>
 		<xs:enumeration value="Freeze"/>
 		<xs:enumeration value="GraveRobbing"/>
+		<xs:enumeration value="HealCompanion"/>
 		<xs:enumeration value="LearnSpell"/>
 		<xs:enumeration value="Pacify"/>
 		<xs:enumeration value="Petrify"/>
