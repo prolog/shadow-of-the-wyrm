@@ -116,6 +116,8 @@ class ActionManager : public ISerializable
     // Switch between colour palettes.
     ActionCost switch_colour_palettes(CreaturePtr creature);
 
+    ActionCost toggle_window_mode(CreaturePtr creature);
+
     // Give orders to your followers.
     ActionCost order(CreaturePtr creature);
 

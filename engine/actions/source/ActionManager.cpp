@@ -513,6 +513,18 @@ ActionCost ActionManager::switch_colour_palettes(CreaturePtr creature)
   return get_action_cost(creature, action_cost_value);
 }
 
+ActionCost ActionManager::toggle_window_mode(CreaturePtr creature)
+{
+  DisplayPtr display = Game::instance().get_display();
+
+  if (display != nullptr)
+  {
+    display->toggle_fullscreen();
+  }
+
+  return get_action_cost(creature, ActionCostConstants::NO_ACTION);
+}
+
 ActionCost ActionManager::order(CreaturePtr creature)
 {
   OrderAction oa;

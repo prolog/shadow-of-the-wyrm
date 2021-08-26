@@ -32,6 +32,8 @@ class Display : public ISerializable
     virtual void set_force_ascii(const bool new_force_ascii);
     virtual bool get_force_ascii() const;
 
+    virtual void toggle_fullscreen() = 0;
+
     // Get the screen's current width
     virtual unsigned int get_width() const = 0;
 

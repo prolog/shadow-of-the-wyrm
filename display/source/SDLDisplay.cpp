@@ -105,6 +105,14 @@ void SDLDisplay::tear_down()
   SDL_DestroyWindow(window);
 }
 
+void SDLDisplay::toggle_fullscreen()
+{
+  bool currently_fs = SDL_GetWindowFlags(window) & SDL_WINDOW_FULLSCREEN;
+  SDL_SetWindowFullscreen(window, currently_fs ? 0 : 1);
+
+  refresh_current_window();
+}
+
 string SDLDisplay::get_name() const
 {
   vector<string> sdl_details;

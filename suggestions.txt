@@ -1,4 +1,5 @@
 Me:
+- Display isn't refreshing properly when switching from FS to windowed.
 - More dungeon item features:
   - Hoard (weapons, armour, etc - trapped)
 - Houses:

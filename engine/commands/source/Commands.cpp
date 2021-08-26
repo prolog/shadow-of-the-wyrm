@@ -611,6 +611,15 @@ SwitchColourPalettesCommand::~SwitchColourPalettesCommand()
 {
 }
 
+// Switch between fullscreen and windowed (when in SDL)
+ToggleWindowModeCommand::ToggleWindowModeCommand(int key)
+: Command(CommandKeys::TOGGLE_WINDOW_MODE, key)
+{
+}
+
+ToggleWindowModeCommand::~ToggleWindowModeCommand()
+{
+}
 // Give orders to followers
 OrderCommand::OrderCommand(int key)
 : Command(CommandKeys::ORDER, key)
