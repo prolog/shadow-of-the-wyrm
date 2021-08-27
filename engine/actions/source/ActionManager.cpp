@@ -520,6 +520,10 @@ ActionCost ActionManager::toggle_window_mode(CreaturePtr creature)
   if (display != nullptr)
   {
     display->toggle_fullscreen();
+
+    Game& game = Game::instance();
+    game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
+    game.get_display()->redraw();
   }
 
   return get_action_cost(creature, ActionCostConstants::NO_ACTION);

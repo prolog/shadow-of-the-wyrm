@@ -107,8 +107,24 @@ void SDLDisplay::tear_down()
 
 void SDLDisplay::toggle_fullscreen()
 {
-  bool currently_fs = SDL_GetWindowFlags(window) & SDL_WINDOW_FULLSCREEN;
-  SDL_SetWindowFullscreen(window, currently_fs ? 0 : 1);
+  Settings& settings = Game::instance().get_settings_ref();
+  int fs_mode = String::to_int(settings.get_setting(Setting::DISPLAY_SDL_WINDOW_MODE));
+
+  // If we initially specified windowed mode, then switch to SDL's FS
+  // desktop mode.
+  if (fs_mode == 0 || fs_mode == 1)
+  {
+    fs_mode = SDL_WINDOW_FULLSCREEN_DESKTOP;
+  }
+  else
+  {
+    fs_mode = SDL_WINDOW_FULLSCREEN;
+  }
+
+  bool currently_fs = SDL_GetWindowFlags(window) & fs_mode;
+
+  SDL_SetWindowFullscreen(window, currently_fs ? 0 : fs_mode);
+  SDL_SetWindowSize(window, sdld.get_screen_width(), sdld.get_screen_height());
 
   refresh_current_window();
 }
@@ -377,17 +393,20 @@ bool SDLDisplay::create_window_and_renderer()
         }
       }
 
-      // Set additional values
-      SDL_DisplayMode display_mode;
-      SDL_GetCurrentDisplayMode(0, &display_mode);
-      bool integer_scaling = settings.get_setting_as_bool(Setting::DISPLAY_SDL_INTEGER_SCALING);
-
-      SDL_RenderSetLogicalSize(renderer, sdld.get_screen_width(), sdld.get_screen_height());
-      SDL_RenderSetIntegerScale(renderer, integer_scaling ? SDL_bool::SDL_TRUE : SDL_bool::SDL_FALSE);
+      set_window_dimensions(settings);
     }
   }
 
   return wr_created;
+}
+
+void SDLDisplay::set_window_dimensions(const Settings& settings)
+{
+  // Set additional values
+  bool integer_scaling = settings.get_setting_as_bool(Setting::DISPLAY_SDL_INTEGER_SCALING);
+
+  SDL_RenderSetLogicalSize(renderer, sdld.get_screen_width(), sdld.get_screen_height());
+  SDL_RenderSetIntegerScale(renderer, integer_scaling ? SDL_bool::SDL_TRUE : SDL_bool::SDL_FALSE);
 }
 
 // width is in rows

@@ -107,6 +107,8 @@ class SDLDisplay : public Display
     virtual Display* clone() override;
 
   protected:
+    void set_window_dimensions(const Settings& settings);
+
     // Functions to help set up the SDL display
     bool read_dimensions_from_settings();
     bool read_font_into_texture();
