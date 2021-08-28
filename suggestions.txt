@@ -1,5 +1,4 @@
 Me:
-- Test: windowed, true FS, curses
 - More dungeon item features:
   - Hoard (weapons, armour, etc - trapped)
 - Houses:
