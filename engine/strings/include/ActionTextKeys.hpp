@@ -234,6 +234,10 @@ class ActionTextKeys
     static const std::string ACTION_INCINERATE_NO_SPELLBOOKS;
     static const std::string ACTION_INCINERATE_NO_AP;
     static const std::string ACTION_INCINERATE_FULL_AP;
+    static const std::string ACTION_TOGGLE_FULLSCREEN_SDL_WINDOWED;
+    static const std::string ACTION_TOGGLE_FULLSCREEN_SDL_DESKTOP;
+    static const std::string ACTION_TOGGLE_FULLSCREEN_SDL_TRUE;
+    static const std::string ACTION_TOGGLE_FULLSCREEN_CURSES;
 
   protected:
     ActionTextKeys();

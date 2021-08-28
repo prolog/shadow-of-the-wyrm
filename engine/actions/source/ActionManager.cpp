@@ -517,13 +517,12 @@ ActionCost ActionManager::toggle_window_mode(CreaturePtr creature)
 {
   DisplayPtr display = Game::instance().get_display();
 
-  if (display != nullptr)
+  if (display != nullptr && creature != nullptr && creature->get_is_player())
   {
-    display->toggle_fullscreen();
-
-    Game& game = Game::instance();
-    game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
-    game.get_display()->redraw();
+    string result_sid = display->toggle_fullscreen();
+    IMessageManager& manager = MM::instance();
+    manager.add_new_message(StringTable::get(result_sid));
+    manager.send();
   }
 
   return get_action_cost(creature, ActionCostConstants::NO_ACTION);

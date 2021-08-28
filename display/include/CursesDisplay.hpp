@@ -19,7 +19,7 @@ class CursesDisplay : public Display
 
     virtual std::string get_name() const override;
 
-    virtual void toggle_fullscreen() override;
+    virtual std::string toggle_fullscreen() override;
 
     unsigned int get_width() const override;
     unsigned int get_height() const override;

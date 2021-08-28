@@ -1,6 +1,7 @@
 #ifdef ENABLE_SDL
 #include <boost/algorithm/string.hpp>
 #include <boost/tokenizer.hpp>
+#include "ActionTextKeys.hpp"
 #include "Conversion.hpp"
 #include "SDLKeyboardController.hpp"
 #include "SDLDisplay.hpp"
@@ -105,28 +106,24 @@ void SDLDisplay::tear_down()
   SDL_DestroyWindow(window);
 }
 
-void SDLDisplay::toggle_fullscreen()
+string SDLDisplay::toggle_fullscreen()
 {
+  string result = ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_SDL_TRUE;
   Settings& settings = Game::instance().get_settings_ref();
   int fs_mode = String::to_int(settings.get_setting(Setting::DISPLAY_SDL_WINDOW_MODE));
 
-  // If we initially specified windowed mode, then switch to SDL's FS
-  // desktop mode.
+  // The toggle doesn't work in true fullscreen
   if (fs_mode == 0 || fs_mode == 1)
   {
     fs_mode = SDL_WINDOW_FULLSCREEN_DESKTOP;
+
+    bool currently_fs = SDL_GetWindowFlags(window) & fs_mode;
+    result = currently_fs ? ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_SDL_WINDOWED : ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_SDL_DESKTOP;
+    SDL_SetWindowFullscreen(window, currently_fs ? 0 : fs_mode);
+    SDL_SetWindowSize(window, sdld.get_screen_width(), sdld.get_screen_height());
   }
-  else
-  {
-    fs_mode = SDL_WINDOW_FULLSCREEN;
-  }
 
-  bool currently_fs = SDL_GetWindowFlags(window) & fs_mode;
-
-  SDL_SetWindowFullscreen(window, currently_fs ? 0 : fs_mode);
-  SDL_SetWindowSize(window, sdld.get_screen_width(), sdld.get_screen_height());
-
-  refresh_current_window();
+  return result;
 }
 
 string SDLDisplay::get_name() const
