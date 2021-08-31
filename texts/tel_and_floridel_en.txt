@@ -3417,7 +3417,7 @@ they realized just what their father's shade had done.
 But strangely, where most fae would clutch a spear %b
 or wear a curving sword, these vagrant men %b
 reached skyward with their empty palms to wield %b
-the empty air, and let their bodies bend %b
+the gusts of wind, and let their bodies bend %b
 like patient trees.  The two were not a threat, %b
 that much was clear: no weapons and no glamour, %b
 the deathly primrose letting them forget %b
@@ -3909,7 +3909,13 @@ those sent to hunt were twinned and went to bleed %b
 what exiles they could find, and whom they'd show %b
 the short and sharpened mercy of the faerie throne.
 %p
-
-
-
-
+They moved through meadowlands, and each horse fed %b
+on grasses as it walked.  An unling passed %b
+in silence; though they hailed her, she still said %b
+nothing, and they kept on until at last %b
+they made their camp beneath a massive tree. %b
+Its leafless branches made for little shade, %b
+but segmented the stars, so that they seemed %b
+to re-arrange the starlight and portray %b
+a different set of constellations on display.
+%p

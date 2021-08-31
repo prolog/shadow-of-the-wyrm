@@ -1,4 +1,5 @@
 Me:
+- Settlement names on signposts!
 - More dungeon item features:
   - Hoard (weapons, armour, etc - trapped)
 - Houses:
@@ -33,7 +34,6 @@ Me:
 - New sector features:
 - UndergroundSectorFeature (takes tile type - dungeoncomplex, mine, cavern,
   sewer)
-- Settlement names on signposts!
 - Kure: skinning/tanning
 - Other names: dungeons, caverns, sewers...
 - Add signposts to each random village
