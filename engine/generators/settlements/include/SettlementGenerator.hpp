@@ -12,8 +12,8 @@ class SettlementGenerator : public BaseSettlementGenerator
     virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:
-     MapPtr generate_roads_and_buildings(MapPtr map);
-     MapPtr generate_settlement_with_square_and_cardinal_roads(MapPtr map);
+    MapPtr generate_roads_and_buildings(MapPtr map);
+    MapPtr generate_settlement_with_square_and_cardinal_roads(MapPtr map);
 
-     MapPtr generate_square(MapPtr map, const int start_row, const int start_col, const int square_size);
+    MapPtr generate_square(MapPtr map, const int start_row, const int start_col, const int square_size);
 };

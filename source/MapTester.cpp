@@ -501,6 +501,8 @@ std::string generate_settlement()
   GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   SettlementGenerator settle_gen(field_map);
+  settle_gen.set_additional_property(TileProperties::TILE_PROPERTY_NAME, "test");
+
   MapPtr settlement_map = settle_gen.generate();
   std::cout << map_to_string(settlement_map, false);
   return map_to_string(settlement_map);
@@ -511,6 +513,8 @@ std::string generate_hamlet()
   GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   HamletGenerator hamlet_gen(field_map);
+  hamlet_gen.set_additional_property(TileProperties::TILE_PROPERTY_NAME, "test");
+
   MapPtr hamlet_map = hamlet_gen.generate();
   std::cout << map_to_string(hamlet_map, false);
   return map_to_string(hamlet_map);
@@ -521,6 +525,8 @@ std::string generate_walled_settlement()
   GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   WalledSettlementGenerator ws_gen(field_map);
+  ws_gen.set_additional_property(TileProperties::TILE_PROPERTY_NAME, "test");
+
   MapPtr ws_map = ws_gen.generate();
   std::cout << map_to_string(ws_map, false);
   return map_to_string(ws_map);
@@ -531,6 +537,8 @@ std::string generate_scattered_settlement()
   GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   ScatteredSettlementGenerator sc_gen(field_map);
+  sc_gen.set_additional_property(TileProperties::TILE_PROPERTY_NAME, "test");
+
   MapPtr sc_map = sc_gen.generate();
   std::cout << map_to_string(sc_map, false);
   return map_to_string(sc_map);  

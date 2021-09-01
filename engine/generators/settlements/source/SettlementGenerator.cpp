@@ -1,5 +1,6 @@
 #include "FeatureGenerator.hpp"
 #include "SettlementGenerator.hpp"
+#include "SettlementGeneratorUtils.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
 
@@ -27,6 +28,8 @@ MapPtr SettlementGenerator::generate()
   result_map = generate_roads_and_buildings(result_map);
   generate_wells(result_map);
   generate_special_inhabitants(result_map);
+
+  SettlementGeneratorUtils::generate_perimeter_sign(result_map, get_additional_property(TileProperties::TILE_PROPERTY_NAME));
 
   return result_map;
 }

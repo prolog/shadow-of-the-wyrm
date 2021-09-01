@@ -2,6 +2,7 @@
 #include "BaseSettlementGenerator.hpp"
 #include "BuildingConfigFactory.hpp"
 #include "CreatureGenerationManager.hpp"
+#include "FeatureGenerator.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "GraveyardSectorFeature.hpp"
@@ -58,7 +59,6 @@ bool BaseSettlementGenerator::get_ignore_creature_generation_level_checks() cons
 {
   return true;
 }
-
 
 void BaseSettlementGenerator::generate_road_north(MapPtr map, const int start_row, const int start_col, const int road_length, const int probability, const int block_modifier, bool recurse)
 {

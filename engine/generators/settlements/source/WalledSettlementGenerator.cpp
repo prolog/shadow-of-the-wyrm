@@ -222,7 +222,9 @@ void WalledSettlementGenerator::generate_gate(MapPtr map)
 {
   TileGenerator tg;
   CardinalDirection rand = static_cast<CardinalDirection>(RNG::range(static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_NORTH), static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_SOUTH)));
-  
+  int sign_row = 0;
+  int sign_col = 0;
+
   switch(rand)
   {
     case CardinalDirection::CARDINAL_DIRECTION_WEST:
@@ -230,21 +232,27 @@ void WalledSettlementGenerator::generate_gate(MapPtr map)
       gate_wall = CardinalDirection::CARDINAL_DIRECTION_NORTH;
       gate_row  = north_wall;
       gate_col  = (east_wall + west_wall) / 2;
+      sign_row = north_wall - 1;
       break;
     case CardinalDirection::CARDINAL_DIRECTION_EAST:
     case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
       gate_wall = CardinalDirection::CARDINAL_DIRECTION_SOUTH;
       gate_row  = south_wall;
       gate_col  = (east_wall + west_wall) / 2;
+      sign_row = south_wall + 1;
       break;
     default:
       break;
   }
   
+  sign_col = RNG::percent_chance(50) ? gate_col - 1 : gate_col + 1;
+
   TilePtr tile    = tg.generate(TileType::TILE_TYPE_DUNGEON);
   FeaturePtr gate = FeatureGenerator::generate_gate();
   tile->set_feature(gate);
   map->insert(gate_row, gate_col, tile); 
+
+  SettlementGeneratorUtils::place_sign(map, sign_row, sign_col, get_additional_property(TileProperties::TILE_PROPERTY_NAME));
 }
 
 void WalledSettlementGenerator::generate_inner_settlement(MapPtr map)

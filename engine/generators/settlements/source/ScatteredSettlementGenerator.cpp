@@ -39,6 +39,8 @@ MapPtr ScatteredSettlementGenerator::generate()
   generate_wells(map);
   generate_special_inhabitants(map);
 
+  SettlementGeneratorUtils::generate_perimeter_sign(map, get_additional_property(TileProperties::TILE_PROPERTY_NAME));
+
   return map;
 }
 

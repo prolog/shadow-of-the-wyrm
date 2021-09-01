@@ -15,6 +15,7 @@ class ScatteredSettlementGenerator : public BaseSettlementGenerator
 
   protected:
     void initialize();
+
     bool can_building_be_placed(const int row, const int col, const int height, const int width);
     void generate_scattered_settlement(MapPtr map);
 

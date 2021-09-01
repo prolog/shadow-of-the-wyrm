@@ -347,3 +347,48 @@ pair<bool, int> SettlementGeneratorUtils::generate_sector_feature_if_possible(Ma
   }
   return placed;
 }
+
+bool SettlementGeneratorUtils::place_sign(MapPtr map, const int row, const int col, const std::string& settlement_name)
+{
+  bool placed_sign = false;
+
+  if (map != nullptr)
+  {
+    TilePtr tile = map->at(row, col);
+
+    if (tile != nullptr && !tile->has_feature())
+    {
+      if (!settlement_name.empty())
+      {
+        FeaturePtr sign = FeatureGenerator::generate_sign(settlement_name);
+        tile->set_feature(sign);
+
+        placed_sign = true;
+      }
+    }
+  }
+
+  return placed_sign;
+}
+
+bool SettlementGeneratorUtils::generate_perimeter_sign(MapPtr map, const std::string& settlement_name)
+{
+  bool placed_sign = false;
+
+  if (map != nullptr)
+  {
+    int cnt = 0;
+
+    while (cnt < 5 && placed_sign == false)
+    {
+      int max_y = map->size().get_y() - 1;
+      int max_x = map->size().get_x() - 1;
+      int s_row = RNG::percent_chance(50) ? RNG::range(1, 2) : RNG::range(max_y - 2, max_y - 1);
+      int s_col = RNG::percent_chance(50) ? RNG::range(1, 2) : RNG::range(max_x - 2, max_x - 1);
+
+      placed_sign = place_sign(map, s_row, s_col, settlement_name);
+    }
+  }
+
+  return placed_sign;
+}

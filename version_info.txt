@@ -70,6 +70,8 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 - The guidebook now includes information on how to read the equipment screen,
   as well as detailing what each of the damage flags does (krwak).
 
+- Settlements now have signs at the perimeter with their names.
+
 - More name/settlement name combos.
 
 - Stanzas for "Tel and Floridel".

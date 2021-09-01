@@ -62,6 +62,11 @@ void HamletGenerator::generate_road(MapPtr map, const int start_col, const int e
   TileGenerator tg;
   int cur_col = start_col;
 
+  int sign_row = RNG::percent_chance(50) && row >= 2 ? row - 1 : row + 1;
+  int sign_col = RNG::range(start_col, end_col);
+
+  SettlementGeneratorUtils::place_sign(map, sign_row, sign_col, get_additional_property(TileProperties::TILE_PROPERTY_NAME));
+
   while (cur_col != end_col)
   {
     TilePtr road_tile = tg.generate(TileType::TILE_TYPE_ROAD);

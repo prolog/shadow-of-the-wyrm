@@ -1,5 +1,4 @@
 Me:
-- Settlement names on signposts!
 - More dungeon item features:
   - Hoard (weapons, armour, etc - trapped)
 - Houses:
@@ -36,7 +35,6 @@ Me:
   sewer)
 - Kure: skinning/tanning
 - Other names: dungeons, caverns, sewers...
-- Add signposts to each random village
 - Generate tombs with keys outside door/doors locked
 - First urchin stone has no message!
 - Feature: fence, east_west_fence. Add some fenced areas to set locations.
