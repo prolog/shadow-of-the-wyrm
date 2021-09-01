@@ -621,6 +621,23 @@ ClassIdentifier Gate::internal_class_identifier() const
   return ClassIdentifier::CLASS_ID_GATE;
 }
 
+// Fence
+
+Fence::Fence(const Symbol& new_symbol)
+: Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_FENCE, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
+{
+}
+
+Feature* Fence::clone()
+{
+  return new Fence(*this);
+}
+
+ClassIdentifier Fence::internal_class_identifier() const
+{
+  return ClassIdentifier::CLASS_ID_FENCE;
+}
+
 // FirePillar
 FirePillar::FirePillar(const Symbol& new_symbol)
   : Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_FIRE_PILLAR, MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)

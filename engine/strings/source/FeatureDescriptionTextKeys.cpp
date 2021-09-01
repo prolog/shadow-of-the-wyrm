@@ -7,6 +7,7 @@ FeatureDescriptionTextKeys::FeatureDescriptionTextKeys()
 }
 
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_DOOR               = "FEATURE_DESCRIPTION_DOOR";
+const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_FENCE              = "FEATURE_DESCRIPTION_FENCE";
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_GATE               = "FEATURE_DESCRIPTION_GATE";
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_EVIL_ALTAR         = "FEATURE_DESCRIPTION_EVIL_ALTAR";
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_GOOD_ALTAR         = "FEATURE_DESCRIPTION_GOOD_ALTAR";

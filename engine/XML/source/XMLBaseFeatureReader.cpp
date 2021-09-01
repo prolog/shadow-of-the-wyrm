@@ -13,6 +13,7 @@ FeatureSymbolMap XMLBaseFeatureReader::get_feature_symbols(const XMLNode& base_f
                                                   {"Bench", ClassIdentifier::CLASS_ID_BENCH},
                                                   {"Bed", ClassIdentifier::CLASS_ID_BED},
                                                   {"Door", ClassIdentifier::CLASS_ID_DOOR},
+                                                  {"Fence", ClassIdentifier::CLASS_ID_FENCE},
                                                   {"Gate", ClassIdentifier::CLASS_ID_GATE},
                                                   {"DecorativeStatue", ClassIdentifier::CLASS_ID_DECORATIVE_STATUE},
                                                   {"HighPriestDecorativeStatue", ClassIdentifier::CLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE},

@@ -309,6 +309,17 @@ class EastWestPew : public Pew
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
+class Fence : public Feature
+{
+  public:
+    Fence(const Symbol& new_symbol);
+
+    virtual Feature* clone() override;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const override;
+};
+
 class FirePillar : public Feature
 {
   public:

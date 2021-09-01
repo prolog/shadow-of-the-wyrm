@@ -7574,7 +7574,17 @@
 			</Bed>
 			<!-- Door and Gate are entrances and handled by the system-defined sys spritesheet.  No need to define them. -->
 			<Door><Symbol><Char>+</Char></Symbol></Door>
-			<Gate><Symbol><Char>+</Char></Symbol></Gate>
+			<Fence>
+				<Symbol>
+					<Char>|</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>1</Row>
+						<Col>3</Col>
+					</Sprite>
+				</Symbol>
+			</Fence>
+ 			<Gate><Symbol><Char>+</Char></Symbol></Gate>
 			<DecorativeStatue>
 				<Symbol>
 					<Char>I</Char>

@@ -205,6 +205,7 @@
 			<xs:element name="Bench" type="tns:BaseFeature"/>
 			<xs:element name="Bed" type="tns:BaseFeature"/>
 			<xs:element name="Door" type="tns:BaseFeature"/>
+			<xs:element name="Fence" type="tns:BaseFeature"/>
 			<xs:element name="Gate" type="tns:BaseFeature"/>
 			<xs:element name="DecorativeStatue" type="tns:BaseFeature"/>
 			<xs:element name="HighPriestDecorativeStatue" type="tns:BaseFeature"/>

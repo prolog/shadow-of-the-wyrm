@@ -5,6 +5,7 @@ class FeatureDescriptionTextKeys
 {
   public:
     static const std::string FEATURE_DESCRIPTION_DOOR;
+    static const std::string FEATURE_DESCRIPTION_FENCE;
     static const std::string FEATURE_DESCRIPTION_GATE;
     static const std::string FEATURE_DESCRIPTION_EVIL_ALTAR;
     static const std::string FEATURE_DESCRIPTION_GOOD_ALTAR;

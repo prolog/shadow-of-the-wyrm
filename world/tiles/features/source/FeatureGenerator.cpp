@@ -119,6 +119,7 @@ void FeatureGenerator::initialize_feature_map()
   FeaturePtr slot_machine       = std::make_shared<SlotMachine>(get_config_symbol(ClassIdentifier::CLASS_ID_SLOT_MACHINE));
   FeaturePtr sign               = std::make_shared<Sign>(get_config_symbol(ClassIdentifier::CLASS_ID_SIGN), "fake_sid");
   FeaturePtr kiln               = std::make_shared<Kiln>(get_config_symbol(ClassIdentifier::CLASS_ID_KILN));
+  FeaturePtr fence              = std::make_shared<Fence>(get_config_symbol(ClassIdentifier::CLASS_ID_FENCE));
 
   feature_map = FeatureSerializationMap{{ClassIdentifier::CLASS_ID_GOOD_ALTAR, good_altar},
                                         {ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR, neutral_altar},
@@ -153,7 +154,8 @@ void FeatureGenerator::initialize_feature_map()
                                         {ClassIdentifier::CLASS_ID_SLOT_MACHINE, slot_machine},
                                         {ClassIdentifier::CLASS_ID_SIGN, sign},
                                         {ClassIdentifier::CLASS_ID_PULPER, pulper},
-                                        {ClassIdentifier::CLASS_ID_KILN, kiln}};
+                                        {ClassIdentifier::CLASS_ID_KILN, kiln},
+                                        {ClassIdentifier::CLASS_ID_FENCE, fence}};
 }
 
 
@@ -189,6 +191,12 @@ FeaturePtr FeatureGenerator::generate_bed()
 {
   FeaturePtr bed = std::make_shared<Bed>(get_config_symbol(ClassIdentifier::CLASS_ID_BED));
   return bed;
+}
+
+FeaturePtr FeatureGenerator::generate_fence()
+{
+  FeaturePtr fence = std::make_shared<Fence>(get_config_symbol(ClassIdentifier::CLASS_ID_FENCE));
+  return fence;
 }
 
 // Generate a door based on the parameters provided.

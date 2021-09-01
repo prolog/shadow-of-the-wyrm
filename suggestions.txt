@@ -1,4 +1,7 @@
 Me:
+- Fencing!
+- Make fences blocking
+- Add fences to gardens
 - More dungeon item features:
   - Hoard (weapons, armour, etc - trapped)
 - Houses:

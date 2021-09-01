@@ -3,11 +3,11 @@
 
 using namespace std;
 
-FeaturePtr XMLKilnReader::create(const XMLNode& forge_node) const
+FeaturePtr XMLKilnReader::create(const XMLNode& kiln_node) const
 {
   FeaturePtr kiln = FeatureGenerator::generate_kiln();
 
-  XMLNode material_node = XMLUtils::get_next_element_by_local_name(forge_node, "Material");
+  XMLNode material_node = XMLUtils::get_next_element_by_local_name(kiln_node, "Material");
 
   if (!material_node.is_null())
   {

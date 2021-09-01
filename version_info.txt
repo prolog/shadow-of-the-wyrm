@@ -76,6 +76,8 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 
 - Stanzas for "Tel and Floridel".
 
+- New features: fencing.
+
 - Bug fixes:
 
   - Fixed a couple of cases where items would be added to a tile without

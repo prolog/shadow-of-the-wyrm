@@ -4418,6 +4418,9 @@
     <ClInclude Include="engine\decision_strategies\deity\include\LikeDeityDecisionStrategyHandler.hpp">
       <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLFenceReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8931,6 +8934,9 @@
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\deity\source\LikeDeityDecisionStrategyHandler.cpp">
       <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLFenceReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
