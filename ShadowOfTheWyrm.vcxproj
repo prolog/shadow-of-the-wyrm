@@ -385,6 +385,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\DoorBreakageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\EvadeCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ExposedCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\FenceCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\FishingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\FlyingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\FollowerCalculator.hpp" />
@@ -942,6 +943,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\maps\tiles\features\include\DefaultFeatureManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\DoorGateManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\EvilAltarManipulator.hpp" />
+    <ClInclude Include="engine\maps\tiles\features\include\FenceManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\ForgeManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\GoodAltarManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\FeatureManipulator.hpp" />
@@ -1512,6 +1514,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\DisarmTrapsCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DivineCompanionCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DoorBreakageCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\FenceCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\FishingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\FollowerCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ForagablesCalculator.cpp" />
@@ -1600,6 +1603,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\FenceCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\FishingCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -2067,6 +2076,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\features\source\FeatureManipulator.cpp" />
+    <ClCompile Include="engine\maps\tiles\features\source\FenceManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\KilnManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\PulperManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\SarcophagusManipulator.cpp" />

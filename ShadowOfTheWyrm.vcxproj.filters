@@ -4067,9 +4067,6 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLTableReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\maps\tiles\features\include\TableManipulator.hpp">
-      <Filter>Header Files\engine\maps\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\generators\include\WellGenerator.hpp">
       <Filter>Header Files\engine\generators\include</Filter>
     </ClInclude>
@@ -4420,6 +4417,15 @@
     </ClInclude>
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLFenceReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\FenceManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\FenceCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\TableManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -8937,6 +8943,15 @@
     </ClCompile>
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLFenceReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\FenceManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\FenceCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\FenceCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

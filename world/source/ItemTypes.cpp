@@ -83,6 +83,7 @@ const string ItemIdKeys::ITEM_ID_GOBLIN_MOONSHINE = "goblin_moonshine";
 const string ItemIdKeys::ITEM_ID_UNSTONING_POTION = "_unstoning_potion";
 const string ItemIdKeys::ITEM_ID_HEALING_POTION   = "_healing_potion";
 const string ItemIdKeys::ITEM_ID_ETHER_POTION     = "_ether_potion";
+const string ItemIdKeys::ITEM_ID_BOARD_WITH_NAIL_IN_IT = "_board_with_nail_in_it";
 
 // Item Scripts
 ItemEventScripts::ItemEventScripts()

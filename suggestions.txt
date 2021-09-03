@@ -1,5 +1,7 @@
 Me:
+- Asset release
 - Fencing!
+- Manipulator. Should break on kick.
 - Make fences blocking
 - Add fences to gardens
 - More dungeon item features:

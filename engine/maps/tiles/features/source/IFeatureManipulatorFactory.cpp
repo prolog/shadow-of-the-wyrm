@@ -1,5 +1,6 @@
 #include "IFeatureManipulatorFactory.hpp"
 #include "DefaultFeatureManipulator.hpp"
+#include "FenceManipulator.hpp"
 #include "ForgeManipulator.hpp"
 #include "PewManipulator.hpp"
 #include "GoodAltarManipulator.hpp"
@@ -88,6 +89,10 @@ FeatureManipulatorPtr IFeatureManipulatorFactory::create_manipulator(FeaturePtr 
     else if (class_id == ClassIdentifier::CLASS_ID_KILN)
     {
       manipulator = std::make_unique<KilnManipulator>(feature);
+    }
+    else if (class_id == ClassIdentifier::CLASS_ID_FENCE)
+    {
+      manipulator = std::make_unique<FenceManipulator>(feature);
     }
     // All other features
     else

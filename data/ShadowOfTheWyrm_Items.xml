@@ -5659,6 +5659,42 @@
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="_board_with_nail_in_it">
+				<DescriptionSID>BOARD_WITH_NAIL_IN_IT_SID</DescriptionSID>
+				<UsageDescriptionSID>BOARD_WITH_NAIL_IN_IT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BOARD_WITH_NAIL_IN_IT_CODEX_SID</CodexDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>4</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>9</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>55</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>2</Modifier>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="lituus">
 				<DescriptionSID>LITUUS_SID</DescriptionSID>
 				<UsageDescriptionSID>LITUUS_USAGE_SID</UsageDescriptionSID>

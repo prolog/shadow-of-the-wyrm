@@ -154,6 +154,9 @@ class ItemIdKeys
     static const std::string ITEM_ID_HEALING_POTION;
     static const std::string ITEM_ID_ETHER_POTION;
 
+    // Misc
+    static const std::string ITEM_ID_BOARD_WITH_NAIL_IN_IT;
+
   protected:
     ItemIdKeys();
     ~ItemIdKeys();
