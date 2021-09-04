@@ -15,6 +15,7 @@
 #include "EffectFactory.hpp"
 #include "ExperienceManager.hpp"
 #include "FeatureGenerator.hpp"
+#include "FruitVegetableGardenGenerator.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "GenerationProperties.hpp"
@@ -406,6 +407,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "generate_ancient_beast", generate_ancient_beast);
   lua_register(L, "generate_hireling", generate_hireling);
   lua_register(L, "generate_adventurer", generate_adventurer);
+  lua_register(L, "generate_vegetable_garden", generate_vegetable_garden);
   lua_register(L, "set_colour", set_colour);
   lua_register(L, "add_npc_level_message", add_npc_level_message);
   lua_register(L, "set_leader", set_leader);
@@ -8289,6 +8291,52 @@ int generate_adventurer(lua_State* ls)
     LuaUtils::log_and_raise(ls, "Invalid arguments to generate_adventurer");
   }
 
+  return 0;
+}
+
+int generate_vegetable_garden(lua_State* ls)
+{
+  bool generated = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 5 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int y_start = lua_tointeger(ls, 2);
+    int y_end = lua_tointeger(ls, 3);
+    int x_start = lua_tointeger(ls, 4);
+    int x_end = lua_tointeger(ls, 5);
+    bool fence = false;
+    int row_spacing = 1;
+    int col_spacing = 1;
+
+    if (num_args >= 6 && lua_isboolean(ls, 6))
+    {
+      fence = lua_toboolean(ls, 6);
+    }
+
+    if (num_args >= 8 && lua_isnumber(ls, 7) && lua_isnumber(ls, 8))
+    {
+      row_spacing = lua_tointeger(ls, 7);
+      col_spacing = lua_tointeger(ls, 8);
+    }
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+    FruitVegetableGardenGenerator fvgg(FruitVegetableGardenType::FVG_TYPE_VEGETABLE, "", AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, col_spacing, row_spacing);
+
+    if (map != nullptr)
+    {
+      // JCD FIXME FENCE
+      fvgg.generate(map, { y_start, x_start }, { y_end, x_end });
+      generated = true;
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to generate_vegetable_garden");
+  }
+
+  lua_pushboolean(ls, generated);
   return 0;
 }
 

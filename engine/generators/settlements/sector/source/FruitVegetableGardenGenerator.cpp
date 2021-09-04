@@ -5,8 +5,8 @@
 
 using namespace std;
 
-FruitVegetableGardenGenerator::FruitVegetableGardenGenerator(const FruitVegetableGardenType new_fv_type, const string& new_deity_id, const AlignmentRange new_ar)
-: GardenSectorFeature(new_deity_id, new_ar), vegetable_min(1), vegetable_max(1), fv_type(new_fv_type)
+FruitVegetableGardenGenerator::FruitVegetableGardenGenerator(const FruitVegetableGardenType new_fv_type, const string& new_deity_id, const AlignmentRange new_ar, const int new_col_spacing, const int new_row_spacing)
+: GardenSectorFeature(new_deity_id, new_ar), vegetable_min(1), vegetable_max(1), fv_type(new_fv_type), col_spacing(new_col_spacing), row_spacing(new_row_spacing)
 {
   populate_vegetable_map();
 }
@@ -40,7 +40,7 @@ bool FruitVegetableGardenGenerator::generate_garden(MapPtr map, const Coordinate
     {
       TilePtr field_tile = tg.generate(TileType::TILE_TYPE_FIELD);
       
-      if ((col % 3 == 0) && (row % 2 == 0))
+      if ((col % col_spacing == 0) && (row % row_spacing == 0))
       {
         // Generate a column of a particular vegetable.
         ItemPtr veg = ItemManager::create_item(vegetable_id);
@@ -74,7 +74,7 @@ bool OrchardGenerator::generate_garden(MapPtr map, const Coordinate& start_coord
   {
     TilePtr tile;
 
-    if (col % 3 != 0)
+    if (col % col_spacing != 0)
     {
       continue;
     }
@@ -82,7 +82,7 @@ bool OrchardGenerator::generate_garden(MapPtr map, const Coordinate& start_coord
     // Spaces needed between vegetables to ensure that things grow.
     for (int row = start_coord.first; row <= end_coord.first; row++)
     {
-      if (row % 2 == 0)
+      if (row % row_spacing == 0)
       {
         if (RNG::percent_chance(4))
         {

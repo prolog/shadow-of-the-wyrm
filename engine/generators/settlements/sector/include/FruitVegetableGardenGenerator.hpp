@@ -10,7 +10,7 @@ enum struct FruitVegetableGardenType
 class FruitVegetableGardenGenerator : public GardenSectorFeature
 {
   public:
-    FruitVegetableGardenGenerator(const FruitVegetableGardenType fvg = FruitVegetableGardenType::FVG_TYPE_VEGETABLE, const std::string& deity_id = "", const AlignmentRange ar = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL);
+    FruitVegetableGardenGenerator(const FruitVegetableGardenType fvg = FruitVegetableGardenType::FVG_TYPE_VEGETABLE, const std::string& deity_id = "", const AlignmentRange ar = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, const int new_col_spacing = 3, const int new_row_spacing = 2);
 
   protected:
     void populate_vegetable_map();
@@ -20,6 +20,8 @@ class FruitVegetableGardenGenerator : public GardenSectorFeature
     int vegetable_min;
     int vegetable_max;
     FruitVegetableGardenType fv_type;
+    int col_spacing;
+    int row_spacing;
 };
 
 class OrchardGenerator : public FruitVegetableGardenGenerator
