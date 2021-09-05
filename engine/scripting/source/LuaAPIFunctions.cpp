@@ -8322,11 +8322,10 @@ int generate_vegetable_garden(lua_State* ls)
     }
 
     MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
-    FruitVegetableGardenGenerator fvgg(FruitVegetableGardenType::FVG_TYPE_VEGETABLE, "", AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, col_spacing, row_spacing);
+    FruitVegetableGardenGenerator fvgg(FruitVegetableGardenType::FVG_TYPE_VEGETABLE, "", AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, col_spacing, row_spacing, fence);
 
     if (map != nullptr)
     {
-      // JCD FIXME FENCE
       fvgg.generate(map, { y_start, x_start }, { y_end, x_end });
       generated = true;
     }

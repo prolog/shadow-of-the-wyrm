@@ -86,6 +86,8 @@ class ActionTextKeys
     static const std::string ACTION_GET_CARDINAL_DIRECTION;
     static const std::string ACTION_OPEN_DOOR;
     static const std::string ACTION_CLOSE_DOOR;
+    static const std::string ACTION_OPEN_GATE;
+    static const std::string ACTION_CLOSE_GATE;
     static const std::string ACTION_DOOR_BLOCKED;
     static const std::string ACTION_OPEN_SARCOPHAGUS;
     static const std::string ACTION_OPEN_SARCOPHAGUS_CONFIRM;

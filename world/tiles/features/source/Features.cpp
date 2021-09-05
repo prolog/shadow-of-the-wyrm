@@ -419,6 +419,16 @@ Door::Door(const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_
 {
 }
 
+string Door::get_open_message_sid() const
+{
+  return ActionTextKeys::ACTION_OPEN_DOOR;
+}
+
+string Door::get_close_message_sid() const
+{
+  return ActionTextKeys::ACTION_CLOSE_DOOR;
+}
+
 Feature* Door::clone()
 {
   return new Door(*this);
@@ -554,11 +564,11 @@ string Entrance::get_handle_message_sid() const
     handle_message_sid = ActionTextKeys::ACTION_DOOR_DESTROYED;
     break;
   case EntranceStateType::ENTRANCE_TYPE_OPEN:
-    handle_message_sid = ActionTextKeys::ACTION_OPEN_DOOR;
+    handle_message_sid = get_open_message_sid();
     break;
   case EntranceStateType::ENTRANCE_TYPE_CLOSED:
   default:
-    handle_message_sid = ActionTextKeys::ACTION_CLOSE_DOOR;
+    handle_message_sid = get_close_message_sid();
     break;
   }
 
@@ -606,6 +616,16 @@ Gate::Gate(const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_
   set_material_type(MaterialType::MATERIAL_TYPE_IRON);
 }
 
+string Gate::get_open_message_sid() const
+{
+  return ActionTextKeys::ACTION_OPEN_GATE;
+}
+
+string Gate::get_close_message_sid() const
+{
+  return ActionTextKeys::ACTION_CLOSE_GATE;
+}
+
 Feature* Gate::clone()
 {
   return new Gate(*this);
@@ -626,6 +646,11 @@ ClassIdentifier Gate::internal_class_identifier() const
 Fence::Fence(const Symbol& new_symbol)
 : Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_FENCE, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
+}
+
+bool Fence::get_is_blocking() const
+{
+  return true;
 }
 
 Feature* Fence::clone()

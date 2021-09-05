@@ -15,7 +15,7 @@ local function init_seagarden(map_id)
 end
 
 local function init_pier_garden(map_id)
-  generate_vegetable_garden(map_id, 13, 16, 51, 54)
+  generate_vegetable_garden(map_id, 13, 16, 51, 54, true, 1, 1)
 end
 
 local function init_isen_dun(map_id)
