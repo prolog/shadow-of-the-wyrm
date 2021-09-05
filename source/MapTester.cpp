@@ -1319,39 +1319,39 @@ void church_maps()
     {
       case 1: 
         map = generate_cathedral();
-        output_map(map, "cathedral.html");
+        output_map(map, "cathedral_test.html");
         break;
       case 2:
         map = generate_fortified_church();
-        output_map(map, "fortified_church.html");
+        output_map(map, "fortified_church_test.html");
         break;
       case 3:
         map = generate_simple_church();
-        output_map(map, "simple_church.html");
+        output_map(map, "simple_church_test.html");
         break;
       case 4:
         map = generate_grand_temple();
-        output_map(map, "grand_temple.html");
+        output_map(map, "grand_temple_test.html");
         break;
       case 5:
         map = generate_snaking_temple();
-        output_map(map, "snaking_temple.html");
+        output_map(map, "snaking_temple_test.html");
         break;
       case 6:
         map = generate_simple_temple();
-        output_map(map, "simple_temple.html");
+        output_map(map, "simple_temple_test.html");
         break;
       case 7:
         map = generate_island_sacrifice_site();
-        output_map(map, "island_site.html");
+        output_map(map, "island_site_test.html");
         break;
       case 8:
         map = generate_rocky_sacrifice_site();
-        output_map(map, "rocky_site.html");
+        output_map(map, "rocky_site_test.html");
         break;
       case 9:
         map = generate_overgrown_sacrifice_site();
-        output_map(map, "overgrown_site.html");
+        output_map(map, "overgrown_site_test.html");
         break;
       default:
         break;
