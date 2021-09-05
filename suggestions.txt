@@ -1,9 +1,5 @@
 Me:
 - Asset release
-- Vegetable gardens in other set maps (Gnordvar, Yew, Atua-Elar)
-- Fencing!
-- Manipulator. Should break on kick.
-- Make fences blocking
 - Add fences to gardens
 - More dungeon item features:
   - Hoard (weapons, armour, etc - trapped)
