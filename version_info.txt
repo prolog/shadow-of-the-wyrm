@@ -72,6 +72,8 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 
 - Settlements now have signs at the perimeter with their names.
 
+- Added vegetable gardens to Isen Dun, Gnordvar, Yew.
+
 - More name/settlement name combos.
 
 - Stanzas for "Tel and Floridel".
@@ -87,7 +89,8 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 
   - Tree and weed species had an extra period at the end of their synopsis.
 
-  - There was a long-standing issue with gates not closing properly.
+  - There was a long-standing issue with gates not closing properly, or being
+    kickable.
 
 Shadow of the Wyrm v1.3.3 "de Sarlat"
 - Version declared June 13, 2021.  Version finalized July 14, 2021.

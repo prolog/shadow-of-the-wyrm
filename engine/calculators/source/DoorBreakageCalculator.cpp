@@ -14,13 +14,13 @@ DoorBreakageCalculator::DoorBreakageCalculator()
 
 // Door breakage is based on the number of strength points above a certain
 // threshold, which varies depending on the door's material.
-int DoorBreakageCalculator::calculate_pct_chance_breakage(CreaturePtr creature, DoorPtr door)
+int DoorBreakageCalculator::calculate_pct_chance_breakage(CreaturePtr creature, EntrancePtr entr)
 {
   int chance = 0;
 
-  if (creature && door)
+  if (creature && entr)
   {
-    int base_str_val = get_base_strength_value(door);
+    int base_str_val = get_base_strength_value(entr);
     int creature_str = creature->get_strength().get_current();
 
     if (creature_str > base_str_val)
@@ -33,13 +33,13 @@ int DoorBreakageCalculator::calculate_pct_chance_breakage(CreaturePtr creature, 
   return chance;
 }
 
-int DoorBreakageCalculator::get_base_strength_value(DoorPtr door)
+int DoorBreakageCalculator::get_base_strength_value(EntrancePtr entr)
 {
   int base_str = DEFAULT_STR_BASE;
 
-  if (door != nullptr)
+  if (entr != nullptr)
   {
-    MaterialType mt = door->get_material_type();
+    MaterialType mt = entr->get_material_type();
     auto m_it = material_base_strength_values.find(mt);
 
     if (m_it != material_base_strength_values.end())
@@ -47,7 +47,7 @@ int DoorBreakageCalculator::get_base_strength_value(DoorPtr door)
       base_str = m_it->second;
     }
 
-    LockPtr lock = door->get_lock();
+    LockPtr lock = entr->get_lock();
 
     // Locked doors are harder to kick down.
     // Not for any good reason, but for game balance and mechanic purposes.

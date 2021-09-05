@@ -255,6 +255,8 @@ class Entrance : public Feature
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
+using EntrancePtr = std::shared_ptr<Entrance>;
+
 // Doors are Features, but like Windows, will be re-used outside the
 // dungeon environment.
 class Door : public Entrance

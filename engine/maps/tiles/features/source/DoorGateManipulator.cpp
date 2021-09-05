@@ -30,7 +30,7 @@ void DoorGateManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr
 
   if (creature && current_map)
   {
-    DoorPtr door = dynamic_pointer_cast<Door>(feature);
+    std::shared_ptr<Entrance> door = dynamic_pointer_cast<Entrance>(feature);
 
     if (door != nullptr)
     {
@@ -53,51 +53,57 @@ void DoorGateManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr
   manager.send();
 }
 
-void DoorGateManipulator::kick_open_door(IMessageManager& manager, DoorPtr door)
+void DoorGateManipulator::kick_open_door(IMessageManager& manager, EntrancePtr entr)
 {
-  door->get_state_ref().set_state(EntranceStateType::ENTRANCE_TYPE_CLOSED);
-  manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_CLOSED));
+  if (entr != nullptr)
+  {
+    entr->get_state_ref().set_state(EntranceStateType::ENTRANCE_TYPE_CLOSED);
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_CLOSED));
+  }
 }
 
-void DoorGateManipulator::kick_closed_door(IMessageManager& manager, DoorPtr door, CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+void DoorGateManipulator::kick_closed_door(IMessageManager& manager, EntrancePtr entr, CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
 {
-  // Is the creature's strength enough to potentially break the door?
-  DoorBreakageCalculator dbc;
-  int break_chance = dbc.calculate_pct_chance_breakage(creature, door);
-
-  if (break_chance > 0)
+  if (entr != nullptr)
   {
-    if (RNG::percent_chance(break_chance))
+    // Is the creature's strength enough to potentially break the door?
+    DoorBreakageCalculator dbc;
+    int break_chance = dbc.calculate_pct_chance_breakage(creature, entr);
+
+    if (break_chance > 0)
     {
-      MapPtr current_map = Game::instance().get_current_map();
-
-      break_down_door(creature, feature_tile);
-      MapUtils::anger_shopkeeper_if_necessary(feature_coord, current_map, creature);
-
-      // Breaking down a shop's door will anger the shopkeeper.
-
-      // Breaking down doors with a solid kick is pretty impressive,
-      // and marks Strength.
-      StatisticsMarker sm;
-
-      for (int i = 0; i < RNG::range(2, 4); i++)
+      if (RNG::percent_chance(break_chance))
       {
-        sm.mark_strength(creature);
+        MapPtr current_map = Game::instance().get_current_map();
+
+        break_down_door(creature, feature_tile);
+        MapUtils::anger_shopkeeper_if_necessary(feature_coord, current_map, creature);
+
+        // Breaking down a shop's door will anger the shopkeeper.
+
+        // Breaking down doors with a solid kick is pretty impressive,
+        // and marks Strength.
+        StatisticsMarker sm;
+
+        for (int i = 0; i < RNG::range(2, 4); i++)
+        {
+          sm.mark_strength(creature);
+        }
+      }
+      else
+      {
+        // Add a message that the door buckled but didn't break.
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_BUCKLED));
+        handle_sprain_if_necessary(creature, PCT_CHANCE_SPRAIN_LEG_BUCKLE);
       }
     }
     else
     {
-      // Add a message that the door buckled but didn't break.
-      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_BUCKLED));
-      handle_sprain_if_necessary(creature, PCT_CHANCE_SPRAIN_LEG_BUCKLE);
+      // If there was no chance at all of breaking the door, add a message to
+      // that effect.
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_UNMOVED));
+      handle_sprain_if_necessary(creature, PCT_CHANCE_SPRAIN_LEG_UNMOVED);
     }
-  }
-  else
-  {
-    // If there was no chance at all of breaking the door, add a message to
-    // that effect.
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_UNMOVED));
-    handle_sprain_if_necessary(creature, PCT_CHANCE_SPRAIN_LEG_UNMOVED);
   }
 }
 

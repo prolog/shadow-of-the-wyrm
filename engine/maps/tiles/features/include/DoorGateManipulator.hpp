@@ -13,8 +13,8 @@ class DoorGateManipulator : public FeatureManipulator
     bool drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item) override;
 
   protected:
-    void kick_closed_door(IMessageManager& manager, DoorPtr door, CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature);
-    void kick_open_door(IMessageManager& manager, DoorPtr door);
+    void kick_closed_door(IMessageManager& manager, EntrancePtr entr, CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature);
+    void kick_open_door(IMessageManager& manager, EntrancePtr entr);
     void break_down_door(CreaturePtr creature, TilePtr feature_tile);
     void handle_sprain_if_necessary(CreaturePtr creature, const int pct_chance);
 
