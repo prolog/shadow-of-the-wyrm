@@ -1450,6 +1450,7 @@ ClassIdentifier WheelAndLoom::internal_class_identifier() const
 #include "unit_tests/Bench_test.cpp"
 #include "unit_tests/DecorativeStatues_test.cpp"
 #include "unit_tests/EastWestPew_test.cpp"
+#include "unit_tests/Fence_test.cpp"
 #include "unit_tests/FirePillar_test.cpp"
 #include "unit_tests/Forge_test.cpp"
 #include "unit_tests/Fountain_test.cpp"

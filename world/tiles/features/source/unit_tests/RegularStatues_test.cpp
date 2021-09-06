@@ -26,3 +26,11 @@ TEST(SW_World_Tiles_Features_RegularStatues, saveload)
 
   EXPECT_TRUE(pcs == pcs2);
 }
+
+TEST(SW_World_Tiles_Features_RegularStatues, blocking)
+{
+  Symbol s('?', Colour::COLOUR_WHITE);
+  PetrifiedCorpseStatue pcs(s);
+
+  EXPECT_TRUE(pcs.get_is_blocking());
+}

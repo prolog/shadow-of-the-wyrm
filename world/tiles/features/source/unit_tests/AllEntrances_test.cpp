@@ -43,3 +43,22 @@ TEST(SW_World_Tiles_Feature_Entrances, serialization_id)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_GATE, gate.get_class_identifier());
 }
 
+TEST(SW_World_Tiles_Feature_Entrances, blocking)
+{
+  Symbol s('+', Colour::COLOUR_WHITE);
+
+  Door door(s);
+  door.open();
+
+  Gate gate(s);
+  gate.open();
+
+  EXPECT_FALSE(door.get_is_blocking());
+  EXPECT_FALSE(gate.get_is_blocking());
+
+  door.close();
+  gate.close();
+
+  EXPECT_TRUE(door.get_is_blocking());
+  EXPECT_TRUE(gate.get_is_blocking());
+}

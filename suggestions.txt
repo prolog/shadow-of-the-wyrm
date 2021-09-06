@@ -1,6 +1,5 @@
 Me:
 - Asset release
-- Add fences to gardens
 - More dungeon item features:
   - Hoard (weapons, armour, etc - trapped)
 - Houses:
