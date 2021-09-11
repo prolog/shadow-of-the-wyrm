@@ -343,7 +343,7 @@ bool EvokeAction::process_wand_damage_and_effect(CreaturePtr creature, MapPtr ma
       // Use the generic spell processor, which is also used for "regular"
       // spellcasting.
       SpellcastingProcessor sp;
-      wand_identified = sp.process(spell_processor.get(), creature, map, caster_coord, direction, wand_spell, wand_status);
+      wand_identified = sp.process(spell_processor.get(), creature, map, caster_coord, direction, wand_spell, 0, wand_status);
     }
   }
   else

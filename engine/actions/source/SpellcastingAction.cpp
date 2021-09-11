@@ -188,7 +188,9 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
             reduce_castings_or_remove_spell(creature, spell);
 
             // Mark the spell as the most recently cast.
-            creature->get_spell_knowledge_ref().set_most_recently_cast_spell_id(spell.get_spell_id());
+            SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+            sk.set_most_recently_cast_spell_id(spell_id);
+            IndividualSpellKnowledge isk = sk.get_spell_knowledge(spell_id);
 
             // Process the spell shape.
             SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(spell.get_shape().get_spell_shape_type());
@@ -202,7 +204,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
               creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_SPELL_IN_PROGRESS, spell_id);
 
               // Spells always use the "uncursed" effect status.
-              sp.process(spell_processor.get(), creature, current_map, caster_coord, spell_direction, spell, ItemStatus::ITEM_STATUS_UNCURSED);
+              sp.process(spell_processor.get(), creature, current_map, caster_coord, spell_direction, spell, isk.get_bonus().get_base(), ItemStatus::ITEM_STATUS_UNCURSED);
 
               creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_SPELL_IN_PROGRESS);
 

@@ -74,6 +74,8 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 
 - Added vegetable gardens to Isen Dun, Gnordvar, Yew.
 
+- Dwarves now start with a very small Smithing value, and smiths much more.
+
 - More name/settlement name combos.
 
 - Stanzas for "Tel and Floridel".

@@ -5,7 +5,7 @@ using namespace std;
 
 // Process the spell and the associated animation.  Return true if the spell
 // was identified during casting.
-bool SpellcastingProcessor::process(SpellShapeProcessor* spell_processor, CreaturePtr caster, MapPtr current_map, const Coordinate& caster_coord, const Direction spell_direction, const Spell& spell, const ItemStatus effect_status) const
+bool SpellcastingProcessor::process(SpellShapeProcessor* spell_processor, CreaturePtr caster, MapPtr current_map, const Coordinate& caster_coord, const Direction spell_direction, const Spell& spell, const int bonus, const ItemStatus effect_status) const
 {
   Game& game = Game::instance();
   CreaturePtr player = game.get_current_player();
@@ -20,5 +20,5 @@ bool SpellcastingProcessor::process(SpellShapeProcessor* spell_processor, Creatu
   game.get_display()->draw_animation(spell_animation, player_fov_map);
 
   // Apply the damage, effects, etc, to the affected tiles.
-  return spell_processor->process_damage_and_effect(caster, affected_coord_tiles, spell, effect_status, &game.get_action_manager_ref());
+  return spell_processor->process_damage_and_effect(caster, affected_coord_tiles, spell, bonus, effect_status, &game.get_action_manager_ref());
 }

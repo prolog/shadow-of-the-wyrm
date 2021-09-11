@@ -2083,7 +2083,7 @@
 					<DisarmTraps>10</DisarmTraps>
 					<MountainLore>20</MountainLore>
 					<NightSight>15</NightSight>
-					<Smithing>20</Smithing>
+					<Smithing>5</Smithing>
 					<Spelunking>20</Spelunking>
 				</GeneralSkills>
 				<WeaponSkills>
@@ -4318,7 +4318,7 @@
 					<Intimidation>15</Intimidation>
 					<MountainLore>10</MountainLore>
 					<Skinning>15</Skinning>
-					<Smithing>15</Smithing>
+					<Smithing>30</Smithing>
 					<Tanning>10</Tanning>
 				</GeneralSkills>
 				<WeaponSkills>

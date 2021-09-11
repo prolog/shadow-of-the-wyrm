@@ -50,6 +50,7 @@ bool HealingEffect::heal(CreaturePtr creature, const double healing_multiplier) 
   if (creature)
   {
     int healing_amount = static_cast<int>(get_random_healing_amount() * healing_multiplier);
+    healing_amount += bonus;
 
     Statistic hit_points = creature->get_hit_points();
 
