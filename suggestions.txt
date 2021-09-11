@@ -1,6 +1,5 @@
 Me:
-- Effect bonus for heal, etc
-- Does flying/incorp avoid traps?
+- Pig/sheep pens
 - Asset release
 - More dungeon item features:
   - Hoard (weapons, armour, etc - trapped)
