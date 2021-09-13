@@ -204,7 +204,7 @@ void HamletGenerator::generate_additional_random_buildings(MapPtr map, const int
     int row_end = row+height;
     int col_end = col+width;
 
-    if (!SettlementGeneratorUtils::does_building_overlap(map, row, row_end, col, col_end))
+    if (!SettlementGeneratorUtils::does_building_overlap(map, row, row_end, col, col_end, 1))
     {
       if (!sfeatures.empty() && RNG::percent_chance(pct_chance_sector_feature))
       {

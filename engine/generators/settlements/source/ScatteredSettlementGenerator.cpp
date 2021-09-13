@@ -115,7 +115,7 @@ void ScatteredSettlementGenerator::generate_scattered_settlement(MapPtr map)
       }
       else
       {
-        if (!SettlementGeneratorUtils::does_building_overlap(map, row, row_end, col, col_end))
+        if (!SettlementGeneratorUtils::does_building_overlap(map, row, row_end, col, col_end, 1))
         {
           vector<ClassIdentifier> cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
           BuildingGenerationParameters bgp(row, row + height, col, col + width, door_direction, false, cl_ids, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids));
