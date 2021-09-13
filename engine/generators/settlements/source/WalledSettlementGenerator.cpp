@@ -12,6 +12,7 @@
 #include "LibrarySectorFeature.hpp"
 #include "MapUtils.hpp"
 #include "ParkSectorFeature.hpp"
+#include "PenSectorFeature.hpp"
 #include "PlazaSectorFeature.hpp"
 #include "RNG.hpp"
 #include "RockGardenGenerator.hpp"
@@ -304,6 +305,9 @@ void WalledSettlementGenerator::generate_inner_settlement(MapPtr map)
         if (result.first)
         {
           sfeatures.erase(sfeatures.begin() + result.second);
+
+          // Keep a phantom building so another building doesn't build over it.
+          buildings.push_back({ {row, col}, {row_end, col_end}, {} });
         }
       }
       else
@@ -359,6 +363,9 @@ vector<shared_ptr<SectorFeature>> WalledSettlementGenerator::get_sector_features
   sfs.push_back(sf);
 
   sf = std::make_shared<TavernSectorFeature>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<PenSectorFeature>();
   sfs.push_back(sf);
 
   return sfs;

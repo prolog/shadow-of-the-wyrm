@@ -117,6 +117,7 @@ class MapUtils
     static std::pair<bool, TilePtr> get_melee_attack_target(MapPtr map, CreaturePtr creature, const Direction d);
 
     static std::string get_map_description(MapPtr map);
+    static std::vector<CardinalDirection> get_unblocked_door_dirs(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);

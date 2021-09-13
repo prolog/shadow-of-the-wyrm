@@ -108,6 +108,9 @@ void ScatteredSettlementGenerator::generate_scattered_settlement(MapPtr map)
         if (result.first)
         {
           sfeatures.erase(sfeatures.begin() + result.second);
+
+          // Keep a phantom building so another building doesn't build over it.
+          buildings.push_back({ {row, col}, {row_end, col_end}, {} });
         }
       }
       else

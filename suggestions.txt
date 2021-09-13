@@ -1,5 +1,7 @@
 Me:
 - Pig/sheep pens
+- building_overlap - check -1/+1 (extra space) to ensure nicer placement
+- Use MapUtils::get_unblocked_door_dirs elsewhere
 - Asset release
 - More dungeon item features:
   - Hoard (weapons, armour, etc - trapped)

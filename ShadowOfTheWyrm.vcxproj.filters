@@ -4427,6 +4427,9 @@
     <ClInclude Include="engine\maps\tiles\features\include\TableManipulator.hpp">
       <Filter>Header Files\engine\maps\tiles\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\PenSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8955,6 +8958,9 @@
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Fence_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\PenSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

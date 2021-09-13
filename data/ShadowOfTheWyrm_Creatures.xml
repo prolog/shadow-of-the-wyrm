@@ -171,7 +171,7 @@
 			</Damage>
 			<Speed>40</Speed>
 		</Creature>
-		<Creature id="sheep">
+		<Creature id="_sheep">
 			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>SHEEP_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SHEEP_DESCRIPTION_SID</DescriptionSID>

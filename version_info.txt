@@ -76,6 +76,8 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 
 - Dwarves now start with a very small Smithing value, and smiths much more.
 
+- Settlements can now have sheep pens.
+
 - More name/settlement name combos.
 
 - Stanzas for "Tel and Floridel".
@@ -93,6 +95,12 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 
   - There was a long-standing issue with gates not closing properly, or being
     kickable.
+
+  - Special settlement features weren't being tracked properly and could be
+    partially overwritten on the map by other buildings and structures.
+
+  - Settlement generators are now better at placing new buildings and features
+    without colliding with previously placed structures.
 
 Shadow of the Wyrm v1.3.3 "de Sarlat"
 - Version declared June 13, 2021.  Version finalized July 14, 2021.

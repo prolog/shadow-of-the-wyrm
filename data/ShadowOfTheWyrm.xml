@@ -4273,7 +4273,7 @@
 					</InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
-			<StartingPetIDs>sheep</StartingPetIDs>
+			<StartingPetIDs>_sheep</StartingPetIDs>
 			<LevelScript>level/shepherd.lua</LevelScript>
 		</Class>
 		<Class id="smith">

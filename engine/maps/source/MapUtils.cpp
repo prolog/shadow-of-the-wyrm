@@ -22,6 +22,7 @@
 #include "MovementTextKeys.hpp"
 #include "PickupAction.hpp"
 #include "RNG.hpp"
+#include "SettlementGeneratorUtils.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "TileDescriber.hpp"
@@ -2103,6 +2104,31 @@ string MapUtils::get_map_description(MapPtr map)
   }
 
   return ss.str();
+}
+
+vector<CardinalDirection> MapUtils::get_unblocked_door_dirs(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
+{
+  vector<CardinalDirection> filtered_door_dirs;
+
+  if (map != nullptr)
+  {
+    set<Direction> gate_dirs = DirectionUtils::get_all_directions_for_category(DirectionCategory::DIRECTION_CATEGORY_CARDINAL);
+
+    for (const Direction d : gate_dirs)
+    {
+      Coordinate possible_gate_coord = SettlementGeneratorUtils::get_door_location(st_coord.first, end_coord.first, st_coord.second, end_coord.second, DirectionUtils::to_cardinal_direction(d));
+      Coordinate space_in_front = CoordUtils::get_new_coordinate(possible_gate_coord, d);
+
+      TilePtr adj_tile = map->at(space_in_front);
+
+      if (adj_tile != nullptr && !adj_tile->get_is_blocking())
+      {
+        filtered_door_dirs.push_back(DirectionUtils::to_cardinal_direction(d));
+      }
+    }
+  }
+
+  return filtered_door_dirs;
 }
 
 #ifdef UNIT_TESTS

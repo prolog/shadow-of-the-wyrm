@@ -330,6 +330,11 @@ bool CoordUtils::is_in_perimeter(const Coordinate& cur_loc, const Coordinate& c1
   return in_perimeter;
 }
 
+vector<Coordinate> CoordUtils::get_interior_coordinates(const Coordinate& start_c, const Coordinate& end_c)
+{
+  return get_coordinates_in_range({start_c.first + 1, start_c.second + 1}, {end_c.first - 1, end_c.second - 1});
+}
+
 vector<Coordinate> CoordUtils::get_beam_coordinates(const Coordinate& centre_coord, const Direction d, const uint radius)
 {
   vector<Coordinate> beam;

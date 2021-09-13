@@ -1,4 +1,5 @@
 #include "CoordUtils.hpp"
+#include "DirectionUtils.hpp"
 #include "FeatureGenerator.hpp"
 #include "FruitVegetableGardenGenerator.hpp"
 #include "ItemManager.hpp"
@@ -54,13 +55,11 @@ bool FruitVegetableGardenGenerator::generate_garden(MapPtr map, const Coordinate
   int gate_row = 0;
   int gate_col = 0;
 
-  vector<CardinalDirection> gate_dirs = { CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_SOUTH, CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_WEST };
   Coordinate gate_coord;
 
-  if (!gate_dirs.empty() && has_fence && (fv_end_row - fv_start_row > 2) && (fv_end_col - fv_start_col > 2))
+  if (has_fence && (fv_end_row - fv_start_row > 2) && (fv_end_col - fv_start_col > 2))
   {
-    CardinalDirection gate_dir = gate_dirs[RNG::range(0, gate_dirs.size() - 1)];
-    gate_coord = SettlementGeneratorUtils::get_door_location(fv_start_row, fv_end_row, fv_start_col, fv_end_col, gate_dir);
+    gate_coord = SettlementGeneratorUtils::get_door_location(fv_start_row, fv_end_row, fv_start_col, fv_end_col, DirectionUtils::get_random_cardinal_direction());
 
     fv_start_row++;
     fv_start_col++;

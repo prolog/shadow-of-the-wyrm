@@ -213,6 +213,9 @@ void HamletGenerator::generate_additional_random_buildings(MapPtr map, const int
         if (result.first)
         {
           sfeatures.erase(sfeatures.begin() + result.second);
+
+          // Keep a phantom building so another building doesn't build over it.
+          buildings.push_back({ {row, col}, {row_end, col_end}, {} });
         }
       }
       else
@@ -281,7 +284,12 @@ bool HamletGenerator::potentially_generate_vegetable_garden(MapPtr map, const in
           break;
       }
       
-      if (garden_generated) break;
+      if (garden_generated)
+      {
+        // Track the garden so we don't build over it.
+        buildings.push_back({ {start_row, start_col}, {end_row, end_col}, {} });
+        break;
+      }
     }
   }
   
