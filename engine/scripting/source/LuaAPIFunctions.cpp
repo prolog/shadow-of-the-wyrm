@@ -37,6 +37,7 @@
 #include "Naming.hpp"
 #include "OptionScreen.hpp"
 #include "OrderAction.hpp"
+#include "PenSectorFeature.hpp"
 #include "PickupAction.hpp"
 #include "PrimordialCalculator.hpp"
 #include "RaceManager.hpp"
@@ -408,6 +409,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "generate_hireling", generate_hireling);
   lua_register(L, "generate_adventurer", generate_adventurer);
   lua_register(L, "generate_vegetable_garden", generate_vegetable_garden);
+  lua_register(L, "generate_pen", generate_pen);
   lua_register(L, "set_colour", set_colour);
   lua_register(L, "add_npc_level_message", add_npc_level_message);
   lua_register(L, "set_leader", set_leader);
@@ -8336,7 +8338,33 @@ int generate_vegetable_garden(lua_State* ls)
   }
 
   lua_pushboolean(ls, generated);
-  return 0;
+  return 1;
+}
+
+int generate_pen(lua_State* ls)
+{
+  bool generated = false;
+
+  if (lua_gettop(ls) == 5 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5))
+  {
+    Coordinate st_coord = { lua_tointeger(ls, 1), lua_tointeger(ls, 2) };
+    Coordinate end_coord = { lua_tointeger(ls, 3), lua_tointeger(ls, 4) };
+    PenContentsType ptype = static_cast<PenContentsType>(lua_tointeger(ls, 5));
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      PenSectorFeature psf(ptype);
+      generated = psf.generate(map, st_coord, end_coord);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to generate_pen");
+  }
+
+  lua_pushboolean(ls, generated);
+  return 1;
 }
 
 int set_colour(lua_State* ls)

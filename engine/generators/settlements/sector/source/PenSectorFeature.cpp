@@ -3,6 +3,7 @@
 #include "CreatureFeatures.hpp"
 #include "DirectionUtils.hpp"
 #include "FeatureGenerator.hpp"
+#include "FruitVegetableGardenGenerator.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
@@ -36,8 +37,10 @@ bool PenSectorFeature::generate_feature(MapPtr map, const Coordinate& st_coord, 
         generated = generated && add_vegetables_to_pen(map, st_coord, end_coord);
         break;
       case PenContentsType::PEN_CONTENTS_WEEDS:
-      default:
         generated = generated && add_weeds_to_pen(map, st_coord, end_coord);
+        break;
+      case PenContentsType::PEN_CONTENTS_NONE:
+      default:
         break;
     }
   }
@@ -131,6 +134,8 @@ bool PenSectorFeature::add_animals_to_pen(MapPtr map, const Coordinate& st_coord
 
 bool PenSectorFeature::add_vegetables_to_pen(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
 {
+  FruitVegetableGardenGenerator fvgg(FruitVegetableGardenType::FVG_TYPE_VEGETABLE, "", AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, 1, 1, false);
+  return fvgg.generate(map, { st_coord.first + 1, st_coord.second + 1 }, { end_coord.first - 1, end_coord.second - 1 });
   return false;
 }
 

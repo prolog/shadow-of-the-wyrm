@@ -4,16 +4,18 @@
 
 enum struct PenContentsType
 {
-  PEN_CONTENTS_ANIMALS = 0,
-  PEN_CONTENTS_VEGETABLES = 1,
-  PEN_CONTENTS_WEEDS = 2
+  PEN_CONTENTS_NONE = 0,
+  PEN_CONTENTS_ANIMALS = 1,
+  PEN_CONTENTS_VEGETABLES = 2,
+  PEN_CONTENTS_WEEDS = 3
 };
 
 class PenSectorFeature : public SectorFeature
 {
-  protected:
+  public:
     PenSectorFeature(const PenContentsType new_contents = PenContentsType::PEN_CONTENTS_ANIMALS);
 
+  protected:
     bool generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
 
     bool generate_pen(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);

@@ -1,7 +1,8 @@
 Me:
-- Vegetable pens
+- Add vegetable pens to ::get_sector_feature
+- Chance of shovel for vegetables
 - Weed pens
-- Lua fn to test
+- Probably rename Pens to FencedArea
 - Homesteads in fields
 - building_overlap - check -1/+1 (extra space) to ensure nicer placement
 - Use MapUtils::get_unblocked_door_dirs elsewhere
