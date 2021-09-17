@@ -1,5 +1,8 @@
 Me:
-- Pig/sheep pens
+- Vegetable pens
+- Weed pens
+- Lua fn to test
+- Homesteads in fields
 - building_overlap - check -1/+1 (extra space) to ensure nicer placement
 - Use MapUtils::get_unblocked_door_dirs elsewhere
 - Asset release

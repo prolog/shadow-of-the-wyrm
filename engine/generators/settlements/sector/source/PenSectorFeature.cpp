@@ -14,6 +14,11 @@
 
 using namespace std;
 
+PenSectorFeature::PenSectorFeature(const PenContentsType new_contents)
+: pen_contents(new_contents)
+{
+}
+
 bool PenSectorFeature::generate_feature(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
 {
   bool generated = false;
@@ -21,7 +26,20 @@ bool PenSectorFeature::generate_feature(MapPtr map, const Coordinate& st_coord, 
   if (map != nullptr)
   {
     generated = generate_pen(map, st_coord, end_coord);
-    generated = generated && add_sheep_to_pen(map, st_coord, end_coord);
+
+    switch (pen_contents)
+    {
+      case PenContentsType::PEN_CONTENTS_ANIMALS:
+        generated = generated && add_animals_to_pen(map, st_coord, end_coord);
+        break;
+      case PenContentsType::PEN_CONTENTS_VEGETABLES:
+        generated = generated && add_vegetables_to_pen(map, st_coord, end_coord);
+        break;
+      case PenContentsType::PEN_CONTENTS_WEEDS:
+      default:
+        generated = generated && add_weeds_to_pen(map, st_coord, end_coord);
+        break;
+    }
   }
 
   return generated;
@@ -73,7 +91,7 @@ bool PenSectorFeature::generate_pen(MapPtr map, const Coordinate& st_coord, cons
   return generated;
 }
 
-bool PenSectorFeature::add_sheep_to_pen(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
+bool PenSectorFeature::add_animals_to_pen(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
 {
   bool generated = false;
 
@@ -81,15 +99,16 @@ bool PenSectorFeature::add_sheep_to_pen(MapPtr map, const Coordinate& st_coord, 
   {
     vector<Coordinate> interior = CoordUtils::get_interior_coordinates(st_coord, end_coord);
     std::shuffle(interior.begin(), interior.end(), RNG::get_engine());
-
-    int num_sheep = RNG::range(1, std::max<int>(1, interior.size() / 3));
-    int num_attempts = num_sheep * 2;
+    vector<string> creature_ids = { CreatureID::CREATURE_ID_SHEEP, CreatureID::CREATURE_ID_CHICKEN };
+    string creature_id = creature_ids[RNG::range(0, creature_ids.size() - 1)];
+    int num_animals = RNG::range(1, std::max<int>(1, interior.size() / 3));
+    int num_attempts = num_animals * 2;
     Game& game = Game::instance();
     HostilityManager hm;
 
     for (int i = 0; i < num_attempts; i++)
     {
-      if (interior.empty() || (i == num_sheep))
+      if (interior.empty() || (i == num_animals))
       {
         break;
       }
@@ -98,14 +117,24 @@ bool PenSectorFeature::add_sheep_to_pen(MapPtr map, const Coordinate& st_coord, 
       interior.pop_back();
 
       CreatureFactory cf;
-      CreaturePtr sheep = cf.create_by_creature_id(game.get_action_manager_ref(), CreatureID::CREATURE_ID_SHEEP, map);
-      hm.clear_hostility(sheep);
+      CreaturePtr animal = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id, map);
+      hm.clear_hostility(animal);
 
-      GameUtils::add_new_creature_to_map(game, sheep, map, c);
+      GameUtils::add_new_creature_to_map(game, animal, map, c);
     }
 
     generated = true;
   }
 
   return generated;
+}
+
+bool PenSectorFeature::add_vegetables_to_pen(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
+{
+  return false;
+}
+
+bool PenSectorFeature::add_weeds_to_pen(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
+{
+  return false;
 }

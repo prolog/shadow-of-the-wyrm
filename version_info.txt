@@ -82,6 +82,8 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 
 - Stanzas for "Tel and Floridel".
 
+- New creatures: chicken.
+
 - New features: fencing.
 
 - New items: board with a nail in it.
