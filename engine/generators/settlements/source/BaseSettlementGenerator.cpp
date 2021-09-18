@@ -8,7 +8,7 @@
 #include "GraveyardSectorFeature.hpp"
 #include "LibrarySectorFeature.hpp"
 #include "ParkSectorFeature.hpp"
-#include "PenSectorFeature.hpp"
+#include "EnclosureSectorFeature.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "ShrineSectorFeature.hpp"
@@ -508,7 +508,7 @@ vector<shared_ptr<SectorFeature>> BaseSettlementGenerator::get_sector_features()
   sf = std::make_shared<TavernSectorFeature>();
   sfs.push_back(sf);
 
-  sf = std::make_shared<PenSectorFeature>();
+  sf = std::make_shared<EnclosureSectorFeature>();
   sfs.push_back(sf);
 
   return sfs;

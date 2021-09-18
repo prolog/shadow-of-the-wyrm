@@ -98,6 +98,7 @@ class ItemIdKeys
     static const std::string ITEM_ID_VEGETABLE_4;
     static const std::string ITEM_ID_VEGETABLE_5;
     static const std::string ITEM_ID_VEGETABLE_6;
+    static const std::string ITEM_ID_SHOVEL;
 
     // Foragables
     static const std::string ITEM_ID_ROOT;

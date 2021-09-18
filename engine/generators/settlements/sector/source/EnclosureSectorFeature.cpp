@@ -2,6 +2,7 @@
 #include "CreatureFactory.hpp"
 #include "CreatureFeatures.hpp"
 #include "DirectionUtils.hpp"
+#include "EnclosureSectorFeature.hpp"
 #include "FeatureGenerator.hpp"
 #include "FruitVegetableGardenGenerator.hpp"
 #include "Game.hpp"
@@ -9,18 +10,18 @@
 #include "HostilityManager.hpp"
 #include "ItemManager.hpp"
 #include "MapUtils.hpp"
-#include "PenSectorFeature.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
+#include "TileGenerator.hpp"
 
 using namespace std;
 
-PenSectorFeature::PenSectorFeature(const PenContentsType new_contents)
+EnclosureSectorFeature::EnclosureSectorFeature(const EnclosureContentsType new_contents)
 : pen_contents(new_contents)
 {
 }
 
-bool PenSectorFeature::generate_feature(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
+bool EnclosureSectorFeature::generate_feature(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
 {
   bool generated = false;
 
@@ -30,16 +31,16 @@ bool PenSectorFeature::generate_feature(MapPtr map, const Coordinate& st_coord, 
 
     switch (pen_contents)
     {
-      case PenContentsType::PEN_CONTENTS_ANIMALS:
-        generated = generated && add_animals_to_pen(map, st_coord, end_coord);
+      case EnclosureContentsType::ENCLOSURE_CONTENTS_ANIMALS:
+        generated = generated && add_animals(map, st_coord, end_coord);
         break;
-      case PenContentsType::PEN_CONTENTS_VEGETABLES:
-        generated = generated && add_vegetables_to_pen(map, st_coord, end_coord);
+      case EnclosureContentsType::ENCLOSURE_CONTENTS_VEGETABLES:
+        generated = generated && add_vegetables(map, st_coord, end_coord);
         break;
-      case PenContentsType::PEN_CONTENTS_WEEDS:
-        generated = generated && add_weeds_to_pen(map, st_coord, end_coord);
+      case EnclosureContentsType::ENCLOSURE_CONTENTS_WEEDS:
+        generated = generated && add_weeds(map, st_coord, end_coord);
         break;
-      case PenContentsType::PEN_CONTENTS_NONE:
+      case EnclosureContentsType::ENCLOSURE_CONTENTS_NONE:
       default:
         break;
     }
@@ -48,7 +49,7 @@ bool PenSectorFeature::generate_feature(MapPtr map, const Coordinate& st_coord, 
   return generated;
 }
 
-bool PenSectorFeature::generate_pen(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
+bool EnclosureSectorFeature::generate_pen(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
 {
   bool generated = false;
 
@@ -94,7 +95,7 @@ bool PenSectorFeature::generate_pen(MapPtr map, const Coordinate& st_coord, cons
   return generated;
 }
 
-bool PenSectorFeature::add_animals_to_pen(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
+bool EnclosureSectorFeature::add_animals(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
 {
   bool generated = false;
 
@@ -132,14 +133,65 @@ bool PenSectorFeature::add_animals_to_pen(MapPtr map, const Coordinate& st_coord
   return generated;
 }
 
-bool PenSectorFeature::add_vegetables_to_pen(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
+bool EnclosureSectorFeature::add_vegetables(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
 {
+  Coordinate st_new = { st_coord.first + 1, st_coord.second + 1 };
+  Coordinate end_new = { end_coord.first - 1, end_coord.second - 1 };
   FruitVegetableGardenGenerator fvgg(FruitVegetableGardenType::FVG_TYPE_VEGETABLE, "", AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, 1, 1, false);
-  return fvgg.generate(map, { st_coord.first + 1, st_coord.second + 1 }, { end_coord.first - 1, end_coord.second - 1 });
-  return false;
+  bool result = fvgg.generate(map, st_new, end_new);
+
+  if (RNG::percent_chance(75))
+  {
+    vector<Coordinate> inner_coords = CoordUtils::get_coordinates_in_range(st_new, end_new);
+    if (!inner_coords.empty())
+    {
+      Coordinate c = inner_coords[RNG::range(0, inner_coords.size() - 1)];
+      TilePtr tile = map->at(c);
+
+      if (tile != nullptr)
+      {
+        ItemPtr shovel = ItemManager::create_item(ItemIdKeys::ITEM_ID_SHOVEL);
+
+        if (shovel != nullptr)
+        {
+          tile->get_items()->merge_or_add(shovel, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+        }
+      }
+    }
+  }
+
+  return result;
 }
 
-bool PenSectorFeature::add_weeds_to_pen(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
+bool EnclosureSectorFeature::add_weeds(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
 {
-  return false;
+  bool weeds_added = false;
+
+  if (map != nullptr)
+  {
+    vector<Coordinate> weed_coords = CoordUtils::get_coordinates_in_range({ st_coord.first + 1, st_coord.second + 1 }, { end_coord.first - 1, end_coord.second - 1 });
+
+    if (!weed_coords.empty())
+    {
+      TileGenerator tg;
+      TilePtr w_tile;
+
+      for (const Coordinate& wc : weed_coords)
+      {
+        TilePtr tile = map->at(wc);
+
+        if (tile != nullptr && tile->get_tile_type() == TileType::TILE_TYPE_FIELD)
+        {
+          w_tile = tg.generate(TileType::TILE_TYPE_WEEDS);
+          w_tile->transform_from(tile);
+
+          map->insert(wc, w_tile);
+        }
+      }
+
+      weeds_added = true;
+    }
+  }
+
+  return weeds_added;
 }

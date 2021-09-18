@@ -1,12 +1,10 @@
 Me:
-- Add vegetable pens to ::get_sector_feature
-- Chance of shovel for vegetables
-- Weed pens
-- Probably rename Pens to FencedArea
-- Homesteads in fields
-- building_overlap - check -1/+1 (extra space) to ensure nicer placement
-- Use MapUtils::get_unblocked_door_dirs elsewhere
+- the shovel code - refactor into a function that generates an item into a
+  random tile in range
 - Asset release
+- Chance of shovel for vegetables
+- Homesteads in fields
+- Use MapUtils::get_unblocked_door_dirs elsewhere
 - More dungeon item features:
   - Hoard (weapons, armour, etc - trapped)
 - Houses:

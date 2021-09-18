@@ -13081,7 +13081,7 @@
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
-			<Item id="shovel">
+			<Item id="_shovel">
 				<DescriptionSID>SHOVEL_SID</DescriptionSID>
 				<UsageDescriptionSID>SHOVEL_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>SHOVEL_CODEX_SID</CodexDescriptionSID>

@@ -12,7 +12,7 @@
 #include "LibrarySectorFeature.hpp"
 #include "MapUtils.hpp"
 #include "ParkSectorFeature.hpp"
-#include "PenSectorFeature.hpp"
+#include "EnclosureSectorFeature.hpp"
 #include "PlazaSectorFeature.hpp"
 #include "RNG.hpp"
 #include "RockGardenGenerator.hpp"
@@ -365,7 +365,7 @@ vector<shared_ptr<SectorFeature>> WalledSettlementGenerator::get_sector_features
   sf = std::make_shared<TavernSectorFeature>();
   sfs.push_back(sf);
 
-  sf = std::make_shared<PenSectorFeature>();
+  sf = std::make_shared<EnclosureSectorFeature>();
   sfs.push_back(sf);
 
   return sfs;
