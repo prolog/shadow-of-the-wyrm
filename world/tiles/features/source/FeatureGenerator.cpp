@@ -210,11 +210,13 @@ DoorPtr FeatureGenerator::generate_door(const EntranceStateType est)
 }
 
 // Generate a gate
-FeaturePtr FeatureGenerator::generate_gate()
+FeaturePtr FeatureGenerator::generate_gate(const EntranceStateType est)
 {
   LockPtr lock_info;
   EntranceState gate_state;
-  FeaturePtr gate = std::make_shared<Gate>(get_config_symbol(ClassIdentifier::CLASS_ID_GATE), lock_info, gate_state);
+  std::shared_ptr<Gate> gate = std::make_shared<Gate>(get_config_symbol(ClassIdentifier::CLASS_ID_GATE), lock_info, gate_state);
+  gate->get_state_ref().set_state(est);
+
   return gate;
 }
 

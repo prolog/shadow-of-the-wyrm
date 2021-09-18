@@ -18,7 +18,7 @@ class EnclosureSectorFeature : public SectorFeature
   protected:
     bool generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
 
-    bool generate_pen(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);
+    bool generate_enclosure(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const EntranceStateType est);
     bool add_animals(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);
     bool add_vegetables(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);
     bool add_weeds(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);

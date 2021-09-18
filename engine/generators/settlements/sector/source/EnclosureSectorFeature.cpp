@@ -27,7 +27,14 @@ bool EnclosureSectorFeature::generate_feature(MapPtr map, const Coordinate& st_c
 
   if (map != nullptr)
   {
-    generated = generate_pen(map, st_coord, end_coord);
+    EntranceStateType gate_state = EntranceStateType::ENTRANCE_TYPE_CLOSED;
+
+    if (pen_contents == EnclosureContentsType::ENCLOSURE_CONTENTS_WEEDS)
+    {
+      gate_state = EntranceStateType::ENTRANCE_TYPE_OPEN;
+    }
+
+    generated = generate_enclosure(map, st_coord, end_coord, gate_state);
 
     switch (pen_contents)
     {
@@ -49,7 +56,7 @@ bool EnclosureSectorFeature::generate_feature(MapPtr map, const Coordinate& st_c
   return generated;
 }
 
-bool EnclosureSectorFeature::generate_pen(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
+bool EnclosureSectorFeature::generate_enclosure(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord, const EntranceStateType est)
 {
   bool generated = false;
 
@@ -80,7 +87,7 @@ bool EnclosureSectorFeature::generate_pen(MapPtr map, const Coordinate& st_coord
 
         if (tile != nullptr)
         {
-          FeaturePtr gate = FeatureGenerator::generate_gate();
+          FeaturePtr gate = FeatureGenerator::generate_gate(est);
           gate->set_material_type(MaterialType::MATERIAL_TYPE_WOOD);
 
           tile->set_feature(gate);
