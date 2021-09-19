@@ -45,6 +45,10 @@ class GeneratorUtils
     // is not empty.
     static void generate_bazaar_if_necessary(const MapPtr map, const std::string& bazaar_property);
 
+    // Generates a hermitage somewhere on the map assuming the hermitage
+    // property is not empty.
+    static void generate_hermitage_if_necessary(MapPtr map, const std::string& hermitage_property);
+
     // Fill a subset of the map with a certain tile type.
     static void fill(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const TileType tile_type);
 
@@ -54,12 +58,12 @@ class GeneratorUtils
 
   protected:
     static bool position_in_range(const int min, const int max, const int actual);
-    static bool are_tiles_ok_for_bazaar(MapPtr map, const int y_start, const int x_start, const int height, const int width);
+    static bool are_tiles_ok_for_structure(MapPtr map, const int y_start, const int x_start, const int height, const int width);
 
-    static const int BAZAAR_MIN_WIDTH;
-    static const int BAZAAR_MAX_WIDTH;
-    static const int BAZAAR_MIN_HEIGHT;
-    static const int BAZAAR_MAX_HEIGHT;
+    static const int STRUCTURE_MIN_WIDTH;
+    static const int STRUCTURE_MAX_WIDTH;
+    static const int STRUCTURE_MIN_HEIGHT;
+    static const int STRUCTURE_MAX_HEIGHT;
 
     GeneratorUtils();
     ~GeneratorUtils();

@@ -201,7 +201,8 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
                            {100, {TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FIELD}}};
 
     tile = generate_feature_or_default(field_special_types, TileType::TILE_TYPE_FIELD, row, col);
-    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_FIELD, {{200, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}}});
+    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_FIELD, { {200, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}},
+                                                                                          {200, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}} });
 
     result_map->insert(row, col, tile);
   }
@@ -218,7 +219,7 @@ void WorldGenerator::potentially_add_properties_on_type_match(const int row, con
         if (Log::instance().debug_enabled())
         {
           ostringstream ss;
-          ss << "Bazaar generated at " << row << "," << col << " for tile type " << static_cast<int>(tile_type);
+          ss << "Generated " << p_pair.second.first << " at " << row << "," << col << " for tile type " << static_cast<int>(tile_type);
           
           Log::instance().debug(ss.str());
         }
@@ -347,7 +348,8 @@ void WorldGenerator::process_hill_cell(MapPtr result_map, const int row, const i
                            { 650, { TileType::TILE_TYPE_GRAVEYARD, TileType::TILE_TYPE_UNDEFINED } } };
 
     tile = generate_feature_or_default(hill_special_types, TileType::TILE_TYPE_HILLS, row, col);
-    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_HILLS, {{400, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}}});
+    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_HILLS, { {400, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}},
+                                                                                          {500, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}} });
 
     result_map->insert(row, col, tile);
   }
@@ -394,6 +396,8 @@ void WorldGenerator::process_marsh_cell(MapPtr result_map, const int row, const 
     marsh_special_types = { { 200, { TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_MARSH } } };
 
     tile = generate_feature_or_default(marsh_special_types, TileType::TILE_TYPE_MARSH, row, col);
+    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_MARSH, { {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}} });
+
     result_map->insert(row, col, tile);
   }
 }
@@ -411,6 +415,8 @@ void WorldGenerator::process_forest_cell(MapPtr result_map, const int row, const
                             { 650, { TileType::TILE_TYPE_GRAVEYARD, TileType::TILE_TYPE_UNDEFINED } } };
 
     tile = generate_feature_or_default(forest_special_types, TileType::TILE_TYPE_FOREST, row, col);
+    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_FOREST, { {200, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}} });
+
     result_map->insert(row, col, tile);
   }
 }
@@ -427,7 +433,8 @@ void WorldGenerator::process_scrub_cell(MapPtr result_map, const int row, const 
                             { 500, { TileType::TILE_TYPE_GRAVEYARD, TileType::TILE_TYPE_UNDEFINED } } };
 
     tile = generate_feature_or_default(scrub_special_types, TileType::TILE_TYPE_SCRUB, row, col);
-    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_SCRUB, {{450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}}});
+    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_SCRUB, { {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}},
+                                                                                          {300, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}} });
 
     result_map->insert(row, col, tile);
   }
@@ -441,7 +448,8 @@ void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const
   if (desert_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF && scrub_val == CellValue::CELL_OFF)
   {
     tile = generate_feature_or_default({}, TileType::TILE_TYPE_DESERT, row, col);
-    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_DESERT, {{400, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}}});
+    potentially_add_properties_on_type_match(row, col, tile, TileType::TILE_TYPE_DESERT, { {100, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}},
+                                                                                           {600, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}} });
 
     result_map->insert(row, col, tile);
   }

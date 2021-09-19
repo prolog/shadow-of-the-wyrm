@@ -39,6 +39,7 @@ CreatureID::~CreatureID()
 }
 
 const string CreatureID::CREATURE_ID_SHOPKEEPER = "_shopkeeper";
+const string CreatureID::CREATURE_ID_HERMIT = "_hermit";
 const string CreatureID::CREATURE_ID_FAIRY_SPIRIT = "_fairy_spirit";
 const string CreatureID::CREATURE_ID_MAGICAL_SPIRIT = "_magical_spirit";
 const string CreatureID::CREATURE_ID_VENDOR = "_vendor";

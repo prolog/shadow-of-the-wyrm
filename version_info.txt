@@ -76,7 +76,10 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 
 - Dwarves now start with a very small Smithing value, and smiths much more.
 
-- Settlements can now have sheep pens.
+- Settlements can now have pens with sheep or chicken.
+
+- World generation can now specify hermitages on certain types of terrain, 
+  where a hermit either lives, or used to.
 
 - More name/settlement name combos.
 

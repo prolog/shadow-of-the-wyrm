@@ -1,6 +1,8 @@
 Me:
 - the shovel code - refactor into a function that generates an item into a
   random tile in range
+- look at world gen special feature code: do these as post-processing so 
+  they're not lost when another tile type overwrites
 - Asset release
 - Chance of shovel for vegetables
 - Homesteads in fields

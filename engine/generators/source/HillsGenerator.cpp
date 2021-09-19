@@ -66,6 +66,7 @@ MapPtr HillsGenerator::generate(const Dimensions& dim)
   }
 
   GeneratorUtils::generate_bazaar_if_necessary(result_map, get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR));
+  GeneratorUtils::generate_hermitage_if_necessary(result_map, get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE));
 
   return result_map;
 }

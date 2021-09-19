@@ -410,6 +410,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "generate_adventurer", generate_adventurer);
   lua_register(L, "generate_vegetable_garden", generate_vegetable_garden);
   lua_register(L, "generate_enclosure", generate_enclosure);
+  lua_register(L, "generate_hermitage", generate_hermitage);
   lua_register(L, "set_colour", set_colour);
   lua_register(L, "add_npc_level_message", add_npc_level_message);
   lua_register(L, "set_leader", set_leader);
@@ -8365,6 +8366,26 @@ int generate_enclosure(lua_State* ls)
 
   lua_pushboolean(ls, generated);
   return 1;
+}
+
+int generate_hermitage(lua_State* ls)
+{
+  if (lua_gettop(ls) == 0)
+  {
+    MapPtr map = Game::instance().get_current_map();
+    
+    if (map != nullptr)
+    {
+      map->set_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE);
+      GeneratorUtils::generate_hermitage_if_necessary(map, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to generate_hermitage");
+  }
+
+  return 0;
 }
 
 int set_colour(lua_State* ls)

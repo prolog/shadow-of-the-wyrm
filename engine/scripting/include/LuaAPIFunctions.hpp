@@ -278,6 +278,7 @@ int set_chat_script(lua_State* ls);
 int count_creatures_with_race(lua_State* ls);
 int get_time_of_day(lua_State* ls);
 int generate_enclosure(lua_State* ls);
+int generate_hermitage(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);
