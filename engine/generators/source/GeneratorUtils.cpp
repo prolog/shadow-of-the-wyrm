@@ -1,11 +1,13 @@
 #include "CoordUtils.hpp"
 #include "FeatureGenerator.hpp"
-#include "GeneratorUtils.hpp"
 #include "Game.hpp"
+#include "GardenGeneratorFactory.hpp"
+#include "GeneratorUtils.hpp"
 #include "ItemGenerationManager.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
+#include "RockGardenGenerator.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "ShopGenerator.hpp"
 #include "SpringsGenerator.hpp"
@@ -390,62 +392,71 @@ void GeneratorUtils::generate_hermitage_if_necessary(MapPtr map, const string& h
 
       if (are_tiles_ok_for_structure(map, y_start, x_start, height, width))
       {
-        int offset = RNG::range(1, 3);
-        Coordinate wildfl_start = { y_start - offset, x_start - offset };
-        Coordinate wildfl_end = { y_start + height + offset, x_start + width + offset };
-        WildflowerGardenGenerator wgg;
-        wgg.generate(map, wildfl_start, wildfl_end);
+        int offset = RNG::range(2, 3);
+        Coordinate garden_start = { y_start - offset, x_start - offset };
+        Coordinate garden_end = { y_start + height + offset, x_start + width + offset };
+        SectorFeaturePtr garden = std::make_unique<WildflowerGardenGenerator>();
 
-        Coordinate st_coord = { y_start, x_start };
-        Coordinate end_coord = { y_start + height, x_start + width };
-        vector<CardinalDirection> door_dirs = MapUtils::get_unblocked_door_dirs(map, st_coord, end_coord);
-
-        if (!door_dirs.empty())
+        if (RNG::percent_chance(30))
         {
-          vector<string> creatures = {};
-          vector<string> items = {};
-          vector<ClassIdentifier> features = { ClassIdentifier::CLASS_ID_BED };
-          vector<ClassIdentifier> potential_features = { ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, ClassIdentifier::CLASS_ID_TABLE };
+          garden = std::make_unique<RockGardenGenerator>();
+        }
+        
+        if (garden != nullptr)
+        {
+          garden->generate(map, garden_start, garden_end);
 
-          for (const auto& pf : potential_features)
+          Coordinate st_coord = { y_start, x_start };
+          Coordinate end_coord = { y_start + height, x_start + width };
+          vector<CardinalDirection> door_dirs = MapUtils::get_unblocked_door_dirs(map, st_coord, end_coord);
+
+          if (!door_dirs.empty())
           {
+            vector<string> creatures = {};
+            vector<string> items = {};
+            vector<ClassIdentifier> features = { ClassIdentifier::CLASS_ID_BED };
+            vector<ClassIdentifier> potential_features = { ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, ClassIdentifier::CLASS_ID_TABLE };
+
+            for (const auto& pf : potential_features)
+            {
+              if (RNG::percent_chance(50))
+              {
+                features.push_back(pf);
+              }
+            }
+
+            // Hermit's long dead
             if (RNG::percent_chance(50))
             {
-              features.push_back(pf);
+              items.push_back(ItemIdKeys::ITEM_ID_INTACT_SKELETON);
             }
-          }
-
-          // Hermit's long dead
-          if (RNG::percent_chance(50))
-          {
-            items.push_back(ItemIdKeys::ITEM_ID_INTACT_SKELETON);
-          }
-          else
-          {
-            creatures.push_back(CreatureID::CREATURE_ID_HERMIT);
-          }
-
-          ItemGenerationConstraints igc;
-          igc.set_item_type_restrictions({ ItemType::ITEM_TYPE_SPELLBOOK, ItemType::ITEM_TYPE_SCROLL });
-          igc.set_min_danger_level(1);
-          igc.set_max_danger_level(map->get_danger());
-          ItemGenerationManager igm;
-          vector<string> potential_items = igm.get_item_ids(igm.generate_item_generation_map(igc));
-
-          if (!potential_items.empty())
-          {
-            int num_readables = RNG::range(2, 4);
-            for (int i = 0; i < num_readables; i++)
+            else
             {
-              items.push_back(potential_items[RNG::range(0, potential_items.size() - 1)]);
+              creatures.push_back(CreatureID::CREATURE_ID_HERMIT);
             }
+
+            ItemGenerationConstraints igc;
+            igc.set_item_type_restrictions({ ItemType::ITEM_TYPE_SPELLBOOK, ItemType::ITEM_TYPE_SCROLL });
+            igc.set_min_danger_level(1);
+            igc.set_max_danger_level(map->get_danger());
+            ItemGenerationManager igm;
+            vector<string> potential_items = igm.get_item_ids(igm.generate_item_generation_map(igc));
+
+            if (!potential_items.empty())
+            {
+              int num_readables = RNG::range(2, 4);
+              for (int i = 0; i < num_readables; i++)
+              {
+                items.push_back(potential_items[RNG::range(0, potential_items.size() - 1)]);
+              }
+            }
+
+            BuildingGenerationParameters bgp(y_start, y_start + height, x_start, x_start + width, door_dirs[RNG::range(0, door_dirs.size() - 1)], false, features, creatures, items, TileType::TILE_TYPE_EARTH);
+            SettlementGeneratorUtils::generate_building_if_possible(map, bgp, vector<Building>(), 100, false);
+
+            map->set_permanent(true);
+            break;
           }
-
-          BuildingGenerationParameters bgp(y_start, y_start + height, x_start, x_start + width, door_dirs[RNG::range(0, door_dirs.size()-1)], false, features, creatures, items, TileType::TILE_TYPE_EARTH);
-          SettlementGeneratorUtils::generate_building_if_possible(map, bgp, vector<Building>(), 100, false);
-
-          map->set_permanent(true);
-          break;
         }
       }
     }

@@ -59,11 +59,7 @@ bool WildflowerGardenGenerator::generate_garden(MapPtr map, const Coordinate& st
     {
       // Generate the field tile, and then "plant" the flower on top.
       flower_tile = tg.generate(TileType::TILE_TYPE_FIELD);
-
-      if (RNG::percent_chance(75))
-      {
-        plant_flower(flower_tile);
-      }
+      plant_flower(flower_tile);
       
       map->insert(row, col, flower_tile);
     }
