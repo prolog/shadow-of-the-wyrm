@@ -2,6 +2,7 @@
 #include <boost/uuid/uuid_io.hpp>
 #include "Conversion.hpp"
 #include "DirectionUtils.hpp"
+#include "GeneratorUtils.hpp"
 #include "Log.hpp"
 #include "MapCreatureGenerator.hpp"
 #include "MapExitUtils.hpp"
@@ -53,11 +54,24 @@ MapPtr Generator::generate_and_initialize(const int danger, const Dimensions& di
   danger_level = danger;
 
   MapPtr map = generate(dim);
+  map->set_danger(danger_level);
+
+  generate_additional_structures(map);
+
   initialize(map, danger_level);
   create_properties_and_copy_to_map(map);
   map->set_map_type(get_map_type());
     
   return map;
+}
+
+void Generator::generate_additional_structures(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    GeneratorUtils::generate_bazaar_if_necessary(map, get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR));
+    GeneratorUtils::generate_hermitage_if_necessary(map, get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE));
+  }
 }
 
 // Initializes essential map properties like terrain type, ID, and permanence.

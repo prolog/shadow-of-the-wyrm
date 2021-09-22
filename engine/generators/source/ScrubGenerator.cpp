@@ -1,7 +1,6 @@
 #include "ScrubGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "GameUtils.hpp"
-#include "GeneratorUtils.hpp"
 #include "RNG.hpp"
 
 ScrubGenerator::ScrubGenerator(const std::string& new_map_exit_id)
@@ -34,9 +33,6 @@ MapPtr ScrubGenerator::generate(const Dimensions& dimensions)
     result_map->insert(gr_row, gr_col, grave_or_barrow);
     result_map->set_permanent(true);
   }
-
-  GeneratorUtils::generate_bazaar_if_necessary(result_map, get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR));
-  GeneratorUtils::generate_hermitage_if_necessary(result_map, get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE));
 
   return result_map;
 }

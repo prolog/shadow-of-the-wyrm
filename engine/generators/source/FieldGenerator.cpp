@@ -2,7 +2,6 @@
 #include "TileGenerator.hpp"
 #include "FieldGenerator.hpp"
 #include "Game.hpp"
-#include "GeneratorUtils.hpp"
 #include "Dimensions.hpp"
 #include "tiles.hpp"
 #include "RNG.hpp"
@@ -46,9 +45,6 @@ MapPtr FieldGenerator::generate(const Dimensions& dimensions)
     result_map->insert(gr_row, gr_col, grave_or_barrow);
     result_map->set_permanent(true);
   }
-
-  GeneratorUtils::generate_bazaar_if_necessary(result_map, get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR));
-  GeneratorUtils::generate_hermitage_if_necessary(result_map, get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE));
 
   return result_map;
 }

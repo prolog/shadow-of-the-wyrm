@@ -107,6 +107,12 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
   - Settlement generators are now better at placing new buildings and features
     without colliding with previously placed structures.
 
+  - Bazaars were rarer than they should have been, due to a quirk in the world
+    generation algorithm.  This has been refactored a bit, and things like
+    bazaars, hermitages, etc., should now be slightly more common.
+
+  - Fixed an issue with the current danger level and bazaar item generation.
+
 Shadow of the Wyrm v1.3.3 "de Sarlat"
 - Version declared June 13, 2021.  Version finalized July 14, 2021.
 

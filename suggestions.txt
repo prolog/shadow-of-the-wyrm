@@ -1,4 +1,5 @@
 Me:
+- Test bazaar items
 - danger level is 0 when hermitage is generated on map creation
 - the shovel code - refactor into a function that generates an item into a
   random tile in range
