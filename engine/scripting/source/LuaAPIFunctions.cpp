@@ -8376,8 +8376,7 @@ int generate_hermitage(lua_State* ls)
     
     if (map != nullptr)
     {
-      map->set_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE);
-      GeneratorUtils::generate_hermitage_if_necessary(map, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE);
+      GeneratorUtils::generate_hermitage(map);
     }
   }
   else

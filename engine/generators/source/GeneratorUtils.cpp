@@ -11,6 +11,7 @@
 #include "SettlementGeneratorUtils.hpp"
 #include "ShopGenerator.hpp"
 #include "SpringsGenerator.hpp"
+#include "StorehouseSectorFeature.hpp"
 #include "StreamGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "WildflowerGardenGenerator.hpp"
@@ -344,9 +345,9 @@ void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int co
   }
 }
 
-void GeneratorUtils::generate_bazaar_if_necessary(const MapPtr map, const string& bazaar_property)
+void GeneratorUtils::generate_bazaar(const MapPtr map)
 {
-  if (map != nullptr && !bazaar_property.empty())
+  if (map != nullptr)
   {
     Dimensions d = map->size();
     int max_attempts = 15;
@@ -374,9 +375,9 @@ void GeneratorUtils::generate_bazaar_if_necessary(const MapPtr map, const string
   }
 }
 
-void GeneratorUtils::generate_hermitage_if_necessary(MapPtr map, const string& hermitage_property)
+void GeneratorUtils::generate_hermitage(MapPtr map)
 {
-  if (map != nullptr && !hermitage_property.empty())
+  if (map != nullptr)
   {
     Dimensions d = map->size();
     int max_attempts = 15;
@@ -386,7 +387,7 @@ void GeneratorUtils::generate_hermitage_if_necessary(MapPtr map, const string& h
       int width = RNG::range(STRUCTURE_MIN_WIDTH, STRUCTURE_MAX_WIDTH);
       int height = RNG::range(STRUCTURE_MIN_HEIGHT, STRUCTURE_MAX_HEIGHT);
 
-      // Try to place the bazaar somewhere on the map.
+      // Try to place the hermitage somewhere on the map.
       int y_start = RNG::range(0, d.get_y() - height - 1);
       int x_start = RNG::range(0, d.get_x() - width - 1);
 
@@ -460,6 +461,34 @@ void GeneratorUtils::generate_hermitage_if_necessary(MapPtr map, const string& h
         }
       }
     }
+  }
+}
+
+void GeneratorUtils::generate_storehouses(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    int max_attempts = 15;
+    Dimensions d = map->size();
+
+    for (int i = 0; i < max_attempts; i++)
+    {
+      int width = RNG::range(STRUCTURE_MIN_WIDTH, STRUCTURE_MAX_WIDTH);
+      int height = RNG::range(STRUCTURE_MIN_HEIGHT, STRUCTURE_MAX_HEIGHT);
+
+      // Try to place the storehouse somewhere on the map.
+      int y_start = RNG::range(0, d.get_y() - height - 1);
+      int x_start = RNG::range(0, d.get_x() - width - 1);
+
+      // Ensure some space around the buildings.
+      if (are_tiles_ok_for_structure(map, y_start-1, x_start-1, height+2, width+2))
+      {
+        StorehouseSectorFeature ssf;
+        ssf.generate(map, { y_start, x_start }, { y_start + height, x_start + width });
+      }
+    }
+
+    map->set_permanent(true);
   }
 }
 

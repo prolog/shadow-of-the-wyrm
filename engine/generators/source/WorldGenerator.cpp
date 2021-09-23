@@ -145,12 +145,14 @@ void WorldGenerator::post_process_cell(MapPtr map, const int row, const int col)
   if (tt == TileType::TILE_TYPE_FIELD)
   {
     prop_pairs = { {250, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}},
-                   {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}} };
+                   {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}},
+                   {250, {TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE, TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE}}};
   }
   else if (tt == TileType::TILE_TYPE_HILLS)
   {
     prop_pairs = { {400, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}},
-                   {500, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}} };
+                   {500, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}},
+                   {350, {TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE, TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE}}};
   }
   else if (tt == TileType::TILE_TYPE_MARSH)
   {
@@ -163,7 +165,8 @@ void WorldGenerator::post_process_cell(MapPtr map, const int row, const int col)
   else if (tt == TileType::TILE_TYPE_SCRUB)
   {
     prop_pairs = { {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}},
-                   {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}} };
+                   {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}},
+                   {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE, TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE}} };
   }
   else if (tt == TileType::TILE_TYPE_DESERT)
   {

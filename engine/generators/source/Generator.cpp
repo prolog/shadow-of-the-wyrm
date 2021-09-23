@@ -69,8 +69,20 @@ void Generator::generate_additional_structures(MapPtr map)
 {
   if (map != nullptr)
   {
-    GeneratorUtils::generate_bazaar_if_necessary(map, get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR));
-    GeneratorUtils::generate_hermitage_if_necessary(map, get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE));
+    if (!get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR).empty())
+    {
+      GeneratorUtils::generate_bazaar(map);
+    }
+
+    if (!get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE).empty())
+    {
+      GeneratorUtils::generate_hermitage(map);
+    }
+
+    if (!get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE).empty())
+    {
+      GeneratorUtils::generate_storehouses(map);
+    }
   }
 }
 
