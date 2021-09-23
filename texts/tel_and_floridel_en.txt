@@ -3900,7 +3900,7 @@ the bonds they used to share could be what buried them.
 XI
 %p
 The other scouts went solo or in pairs, %b
-a tactic learned from wars from long ago, %b
+a tactic learned from campaigns long ago, %b
 when scouts were counter-tracked, and found, and where %b
 their bodies lined the roadside, posed to show %b
 the way back home.  The ones sent out to plead %b
@@ -3918,4 +3918,14 @@ Its leafless branches made for little shade, %b
 but segmented the stars, so that they seemed %b
 to re-arrange the starlight and portray %b
 a different set of constellations on display.
+%p
+Against that starry night, their silence kept %b
+a kind of watch.  Light sleepers, they now let %b
+the night-sounds wake them, dreaming as they slept %b
+in snatches, watching as the silhouettes %b
+they dreaded never came.  The day reset, %b
+their fears gone by, they followed down a stream %b
+whose waters teemed with fish, and where they bet %b
+their once-was countrymen had drank and seen %b
+survival flashing red and silver in that sheen.
 %p
