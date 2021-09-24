@@ -47,6 +47,9 @@ class GeneratorUtils
     // Generates a hermitage somewhere on the map.
     static void generate_hermitage(MapPtr map);
 
+    // Generates a witchling's cottage somewhere on the map.
+    static void generate_cottage(MapPtr map);
+
     // Generates storehouses of food over the map.
     static void generate_storehouses(MapPtr map);
 

@@ -73,6 +73,7 @@ class TileTextKeys
     static const std::string TILE_EXTRA_DESCRIPTION_BAZAAR;
     static const std::string TILE_EXTRA_DESCRIPTION_HERMITAGE;
     static const std::string TILE_EXTRA_DESCRIPTION_STOREHOUSE;
+    static const std::string TILE_EXTRA_DESCRIPTION_COTTAGE;
 
     static const std::string TILE_DAMAGE_HEAT;
     static const std::string TILE_DAMAGE_COLD;

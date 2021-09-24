@@ -1,4 +1,4 @@
-Shadow of the Wyrm v1.3.5 "Valdaberano"
+Shadow of the Wyrm v1.3.5 "Valderrabano"
 - Version declared July 14, 2021.
 
 - A copy of swyrm.ini is now created in the user's .sotw directory, with some
@@ -81,11 +81,15 @@ Shadow of the Wyrm v1.3.5 "Valdaberano"
 - World generation can now specify hermitages on certain types of terrain, 
   where a hermit either lives, or used to.
 
+- World generation can also place storehouses, where large quantities of food
+  are kept for long-term storage, as well as cottages, where witchlings
+  retreat to live in peace.
+
 - More name/settlement name combos.
 
 - Stanzas for "Tel and Floridel".
 
-- New creatures: chicken.
+- New creatures: chicken, hermit, witchling.
 
 - New features: fencing.
 

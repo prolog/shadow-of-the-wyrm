@@ -61,6 +61,7 @@ const string CreatureID::CREATURE_ID_BARTENDER = "_bartender";
 const string CreatureID::CREATURE_ID_DRUNK = "_drunk";
 const string CreatureID::CREATURE_ID_SHEEP = "_sheep";
 const string CreatureID::CREATURE_ID_CHICKEN = "_chicken";
+const string CreatureID::CREATURE_ID_WITCHLING = "_witchling";
 
 MembershipID::MembershipID()
 {

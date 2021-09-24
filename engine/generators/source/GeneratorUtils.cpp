@@ -464,6 +464,56 @@ void GeneratorUtils::generate_hermitage(MapPtr map)
   }
 }
 
+void GeneratorUtils::generate_cottage(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    Dimensions d = map->size();
+    int max_attempts = 15;
+
+    for (int i = 0; i < max_attempts; i++)
+    {
+      int width = RNG::range(STRUCTURE_MIN_WIDTH, STRUCTURE_MAX_WIDTH);
+      int height = RNG::range(STRUCTURE_MIN_HEIGHT, STRUCTURE_MAX_HEIGHT);
+
+      // Place the cottage
+      int y_start = RNG::range(0, d.get_y() - height - 1);
+      int x_start = RNG::range(0, d.get_x() - width - 1);
+
+      if (are_tiles_ok_for_structure(map, y_start, x_start, height, width))
+      {
+        int offset = RNG::range(2, 3);
+
+        Coordinate st_coord = { y_start, x_start };
+        Coordinate end_coord = { y_start + height, x_start + width };
+        vector<CardinalDirection> door_dirs = MapUtils::get_unblocked_door_dirs(map, st_coord, end_coord);
+
+        if (!door_dirs.empty())
+        {
+          vector<string> creatures = {CreatureID::CREATURE_ID_WITCHLING};
+          vector<string> items = {};
+          vector<string> pot_items = {ItemIdKeys::ITEM_ID_STONEFLOWER, ItemIdKeys::ITEM_ID_WHITE_BASIL, ItemIdKeys::ITEM_ID_VOXFLOWER, ItemIdKeys::ITEM_ID_BLACKROOT};
+          vector<ClassIdentifier> features = { ClassIdentifier::CLASS_ID_BED, ClassIdentifier::CLASS_ID_TABLE };
+
+          for (const auto& item : pot_items)
+          {
+            if (RNG::percent_chance(75))
+            {
+              items.push_back(item);
+            }
+          }
+
+          BuildingGenerationParameters bgp(y_start, y_start + height, x_start, x_start + width, door_dirs[RNG::range(0, door_dirs.size() - 1)], false, features, creatures, items, TileType::TILE_TYPE_ROCK);
+          SettlementGeneratorUtils::generate_building_if_possible(map, bgp, vector<Building>(), 100, false);
+
+          map->set_permanent(true);
+          break;
+        }
+      }
+    }
+  }
+}
+
 void GeneratorUtils::generate_storehouses(MapPtr map)
 {
   if (map != nullptr)

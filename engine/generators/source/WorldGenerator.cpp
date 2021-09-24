@@ -146,6 +146,7 @@ void WorldGenerator::post_process_cell(MapPtr map, const int row, const int col)
   {
     prop_pairs = { {250, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}},
                    {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}},
+                   {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE}},
                    {250, {TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE, TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE}}};
   }
   else if (tt == TileType::TILE_TYPE_HILLS)
@@ -156,11 +157,15 @@ void WorldGenerator::post_process_cell(MapPtr map, const int row, const int col)
   }
   else if (tt == TileType::TILE_TYPE_MARSH)
   {
-    prop_pairs = { {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}} };
+    prop_pairs = { {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}},
+                   {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE}}
+    };
   }
   else if (tt == TileType::TILE_TYPE_FOREST)
   {
-    prop_pairs = { {200, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}} };
+    prop_pairs = { {300, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}},
+                   {300, {TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE}},
+    };
   }
   else if (tt == TileType::TILE_TYPE_SCRUB)
   {
