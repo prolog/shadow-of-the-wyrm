@@ -83,6 +83,11 @@ void Generator::generate_additional_structures(MapPtr map)
     {
       GeneratorUtils::generate_storehouses(map);
     }
+
+    if (!get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE).empty())
+    {
+      GeneratorUtils::generate_cottage(map);
+    }
   }
 }
 

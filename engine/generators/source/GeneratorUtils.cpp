@@ -486,6 +486,23 @@ void GeneratorUtils::generate_cottage(MapPtr map)
 
         Coordinate st_coord = { y_start, x_start };
         Coordinate end_coord = { y_start + height, x_start + width };
+
+        for (int i = 1; i <= offset; i++)
+        {
+          vector<Coordinate> fern_coords = CoordUtils::get_perimeter_coordinates({ y_start - i, x_start - i }, { y_start + height + i, x_start + width + i });
+
+          for (const Coordinate& c : fern_coords)
+          {
+            TilePtr tile = map->at(c);
+
+            if (tile != nullptr)
+            {
+              ItemPtr fern = ItemManager::create_item(ItemIdKeys::ITEM_ID_FERN);
+              tile->get_items()->merge_or_add(fern, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+            }
+          }
+        }
+
         vector<CardinalDirection> door_dirs = MapUtils::get_unblocked_door_dirs(map, st_coord, end_coord);
 
         if (!door_dirs.empty())

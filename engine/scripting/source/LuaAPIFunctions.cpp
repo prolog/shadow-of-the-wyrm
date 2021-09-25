@@ -411,6 +411,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "generate_vegetable_garden", generate_vegetable_garden);
   lua_register(L, "generate_enclosure", generate_enclosure);
   lua_register(L, "generate_hermitage", generate_hermitage);
+  lua_register(L, "remove_chat_script", remove_chat_script);
   lua_register(L, "set_colour", set_colour);
   lua_register(L, "add_npc_level_message", add_npc_level_message);
   lua_register(L, "set_leader", set_leader);
@@ -8387,6 +8388,35 @@ int generate_hermitage(lua_State* ls)
   return 0;
 }
 
+int remove_chat_script(lua_State* ls)
+{
+  bool removed = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      EventScriptsMap& events = creature->get_event_scripts_ref();
+      auto e_it = events.find(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT);
+
+      if (e_it != events.end())
+      {
+        events.erase(e_it);
+        removed = true;
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to remove_chat_script");
+  }
+
+  lua_pushboolean(ls, removed);
+  return 1;
+}
 int set_colour(lua_State* ls)
 {
   if (lua_gettop(ls) == 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))

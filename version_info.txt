@@ -1,4 +1,4 @@
-Shadow of the Wyrm v1.3.5 "Valderrabano"
+Shadow of the Wyrm v1.3.6 "Valderrabano"
 - Version declared July 14, 2021.
 
 - A copy of swyrm.ini is now created in the user's .sotw directory, with some
@@ -83,7 +83,11 @@ Shadow of the Wyrm v1.3.5 "Valderrabano"
 
 - World generation can also place storehouses, where large quantities of food
   are kept for long-term storage, as well as cottages, where witchlings
-  retreat to live in peace.
+  retreat to live in peace, and welcome friendly visitors.
+
+- Witchlings (and sages, who also learn primordial spells) now form their own 
+  association, which other characters can automatically join by learning 
+  primordial spells.
 
 - More name/settlement name combos.
 
