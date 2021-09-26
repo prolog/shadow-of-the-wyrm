@@ -1,6 +1,7 @@
 #include "ScrubGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "GameUtils.hpp"
+#include "GeneratorUtils.hpp"
 #include "RNG.hpp"
 
 ScrubGenerator::ScrubGenerator(const std::string& new_map_exit_id)
