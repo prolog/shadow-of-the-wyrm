@@ -3,6 +3,7 @@
 #include "CreatureFeatures.hpp"
 #include "DirectionUtils.hpp"
 #include "EnclosureSectorFeature.hpp"
+#include "EntranceState.hpp"
 #include "FeatureGenerator.hpp"
 #include "FruitVegetableGardenGenerator.hpp"
 #include "Game.hpp"
