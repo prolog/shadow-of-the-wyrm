@@ -52,8 +52,6 @@ bool FruitVegetableGardenGenerator::generate_garden(MapPtr map, const Coordinate
   int fv_end_row = end_coord.first;
   int fv_start_col = start_coord.second;
   int fv_end_col = end_coord.second;
-  int gate_row = 0;
-  int gate_col = 0;
 
   Coordinate gate_coord;
 
