@@ -1,6 +1,7 @@
 #pragma once
 #include "SectorFeature.hpp"
 #include "Building.hpp"
+#include "EntranceState.hpp"
 
 enum struct EnclosureContentsType
 {
