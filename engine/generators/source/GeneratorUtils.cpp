@@ -453,7 +453,8 @@ void GeneratorUtils::generate_hermitage(MapPtr map)
             }
 
             BuildingGenerationParameters bgp(y_start, y_start + height, x_start, x_start + width, door_dirs[RNG::range(0, door_dirs.size() - 1)], false, features, creatures, items, TileType::TILE_TYPE_EARTH);
-            SettlementGeneratorUtils::generate_building_if_possible(map, bgp, vector<Building>(), 100, false);
+            vector<Building> buildings;
+            SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, 100, false);
 
             map->set_permanent(true);
             break;
@@ -521,7 +522,8 @@ void GeneratorUtils::generate_cottage(MapPtr map)
           }
 
           BuildingGenerationParameters bgp(y_start, y_start + height, x_start, x_start + width, door_dirs[RNG::range(0, door_dirs.size() - 1)], false, features, creatures, items, TileType::TILE_TYPE_ROCK);
-          SettlementGeneratorUtils::generate_building_if_possible(map, bgp, vector<Building>(), 100, false);
+          vector<Building> buildings;
+          SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, 100, false);
 
           map->set_permanent(true);
           break;
