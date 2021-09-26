@@ -4568,6 +4568,7 @@
 		</Creature>
 		<Creature id="black_servant">
 			<RaceID>01_human</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>BLACK_SERVANT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACK_SERVANT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_SERVANT_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4784,6 +4785,7 @@
 		</Creature>
 		<Creature id="black_priest">
 			<RaceID>_demon</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>BLACK_PRIEST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACK_PRIEST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_PRIEST_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5643,6 +5645,7 @@
 		</Creature>
 		<Creature id="black_monk">
 			<RaceID>01_human</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>BLACK_MONK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACK_MONK_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_MONK_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5698,6 +5701,7 @@
 		</Creature>
 		<Creature id="black_summoner">
 			<RaceID>01_human</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>BLACK_SUMMONER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACK_SUMMONER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_SUMMONER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5888,6 +5892,7 @@
 		</Creature>
 		<Creature id="star_beast">
 			<RaceID>_divine</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>STAR_BEAST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>STAR_BEAST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>STAR_BEAST_TEXT_DETAILS_SID</TextDetailsSID>
@@ -6046,6 +6051,7 @@
 		</Creature>
 		<Creature id="black_devil">
 			<RaceID>_demon</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>BLACK_DEVIL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACK_DEVIL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_DEVIL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -10954,6 +10960,7 @@
 		</Creature>
 		<Creature id="astral_horror">
 			<RaceID>_divine</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>ASTRAL_HORROR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ASTRAL_HORROR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ASTRAL_HORROR_TEXT_DETAILS_SID</TextDetailsSID>
