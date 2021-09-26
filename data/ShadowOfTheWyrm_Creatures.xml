@@ -13588,6 +13588,7 @@
 		</Creature>
 		<Creature id="frostling">
 			<RaceID>_monster</RaceID>
+			<DeityID>07_shiver</DeityID>
 			<ShortDescriptionSID>FROSTLING_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FROSTLING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FROSTLING_TEXT_DETAILS_SID</TextDetailsSID>
@@ -23259,6 +23260,7 @@
 					<Castings>6</Castings>
 				</Spell>
 				<Spell>
+
 					<SpellID>p_02_curse_of_shadows</SpellID>
 					<Castings>3</Castings>
 				</Spell>

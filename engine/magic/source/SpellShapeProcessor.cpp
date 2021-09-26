@@ -142,7 +142,7 @@ bool SpellShapeProcessor::apply_effect(Effect* effect, CreaturePtr caster, const
         if (negative_effect && (caster->get_id() != (creature->get_id())))
         {
           HostilityManager hm;
-          hm.set_hostility_to_creature(creature, caster->get_id());
+          hm.set_hostility_to_creature(creature, caster->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
         }
 
         show_msg_on_unid = (creature && caster && caster->get_is_player() && creature->get_is_player());

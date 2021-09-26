@@ -288,15 +288,15 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
                !tile_creature->is_allied_to(attacking_creature->get_original_id()))
             {
               // Make them co-hostile to avoid hostility cascades.
-              hm.set_hostility_to_creature(tile_creature, attacking_creature->get_id());
-              hm.set_hostility_to_creature(attacking_creature, tile_creature->get_id());
+              hm.set_hostility_to_creature(tile_creature, attacking_creature->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
+              hm.set_hostility_to_creature(attacking_creature, tile_creature->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
             }
           }
         }
       }
     }
 
-    hm.set_hostility_to_creature(attacked_creature, attacking_creature->get_id());
+    hm.set_hostility_to_creature(attacked_creature, attacking_creature->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
   }
 }
 

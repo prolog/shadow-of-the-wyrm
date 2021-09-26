@@ -241,6 +241,8 @@ void CreatureFactory::revert_to_original_configuration_values(CreaturePtr creatu
   {
     cr_statuses[is_pair.first] = is_pair.second;
   }
+
+  creature->get_religion_ref().set_active_deity_id(creature_instance.get_religion().get_active_deity_id());
 }
 
 CreaturePtr CreatureFactory::create_by_race_and_class

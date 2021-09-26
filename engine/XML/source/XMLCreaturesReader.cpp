@@ -68,6 +68,14 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     string class_id = XMLUtils::get_child_node_value(creature_node, "ClassID");
     creature->set_class_id(class_id);
 
+    // Deity, maybe.
+    string deity_id = XMLUtils::get_child_node_value(creature_node, "DeityID");
+
+    if (!deity_id.empty())
+    {
+      creature->get_religion_ref().set_active_deity_id(deity_id);
+    }
+
     // Whether the creature breathes air, or water.  Only set the value if
     // explicitly set on the creature - most things will breathe air, and some
     // races will set a number of options.

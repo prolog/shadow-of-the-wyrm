@@ -335,7 +335,7 @@ void MusicSkillProcessor::enrage(CreaturePtr creature, CreaturePtr fov_creature)
     }
 
     HostilityManager hm;
-    hm.set_hostility_to_creature(fov_creature, creature->get_id());
+    hm.set_hostility_to_creature(fov_creature, creature->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
   }
 }
 

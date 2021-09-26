@@ -313,7 +313,7 @@ void ThieverySkillProcessor::set_flags_on_target_creature(CreaturePtr stealing_c
   if (stealing_creature != nullptr && steal_creature != nullptr)
   {
     HostilityManager hm;
-    hm.set_hostility_to_creature(steal_creature, stealing_creature->get_id());
+    hm.set_hostility_to_creature(steal_creature, stealing_creature->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
     steal_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_STOLEN_FROM, to_string(true));
   }
 }

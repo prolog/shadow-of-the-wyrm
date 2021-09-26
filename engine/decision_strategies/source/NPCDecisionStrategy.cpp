@@ -758,6 +758,7 @@ void NPCDecisionStrategy::update_threats_based_on_fov(const std::string& this_cr
 {
   update_threats_with_contraband(this_creature_id, view_map);
   update_threats_to_leader(this_creature_id, view_map);
+  remove_threats_with_same_deity(this_creature_id, view_map);
 }
 
 void NPCDecisionStrategy::update_threats_with_contraband(const std::string& this_creature_id, MapPtr view_map)
@@ -784,7 +785,7 @@ void NPCDecisionStrategy::update_threats_with_contraband(const std::string& this
         manager.add_new_message(msg);
         manager.send();
 
-        hm.set_hostility_to_creature(this_creature, c_pair.second->get_id());
+        hm.set_hostility_to_creature(this_creature, c_pair.second->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
       }
     }
   }
@@ -812,7 +813,7 @@ void NPCDecisionStrategy::update_threats_to_leader(const std::string& this_creat
         CreatureMap creatures = view_map->get_creatures();
         vector<string> leader_attackers;
 
-        for (auto c_pair : creatures)
+        for (const pair<string, CreaturePtr>& c_pair : creatures)
         {
           if (c_pair.second->get_decision_strategy()->get_threats_ref().has_threat(leader_id).first)
           {
@@ -820,12 +821,46 @@ void NPCDecisionStrategy::update_threats_to_leader(const std::string& this_creat
             if (!threat_ratings.has_threat(threat_id).first)
             {
               HostilityManager hm;
-              hm.set_hostility_to_creature(this_creature, threat_id);
+              hm.set_hostility_to_creature(this_creature, threat_id, ThreatConstants::ACTIVE_THREAT_RATING);
             }
 
             // Break so that the creature is only focused on one creature
             // attacking their leader at a time.
             break;
+          }
+        }
+      }
+    }
+  }
+}
+
+void NPCDecisionStrategy::remove_threats_with_same_deity(const std::string& this_creature_id, MapPtr view_map)
+{
+  Game& game = Game::instance();
+  MapPtr current_map = game.get_current_map();
+
+  if (current_map != nullptr)
+  {
+    CreaturePtr this_creature = current_map->get_creature(this_creature_id);
+
+    if (this_creature != nullptr && view_map != nullptr)
+    {
+      string deity_id = this_creature->get_religion_ref().get_active_deity_id();
+
+      if (!deity_id.empty())
+      {
+        CreatureMap creatures = view_map->get_creatures();
+
+        for (const pair<string, CreaturePtr>& c_pair : creatures)
+        {
+          auto t_details = this_creature->get_decision_strategy()->get_threats_ref().has_threat(c_pair.first);
+          if (t_details.first
+            && t_details.second < ThreatConstants::ACTIVE_THREAT_RATING
+            && c_pair.second != nullptr
+            && deity_id == c_pair.second->get_religion_ref().get_active_deity_id())
+          {
+            HostilityManager hm;
+            hm.remove_hostility_to_creature(this_creature, c_pair.first);
           }
         }
       }

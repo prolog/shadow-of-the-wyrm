@@ -1573,7 +1573,7 @@ void MapUtils::anger_shopkeeper_if_necessary(const Coordinate& c, MapPtr current
       {
         // The shopkeeper is justifiably pissed!
         HostilityManager hm;
-        hm.set_hostility_to_creature(current_map->get_creature(s_it->second.get_shopkeeper_id()), anger_creature->get_id());
+        hm.set_hostility_to_creature(current_map->get_creature(s_it->second.get_shopkeeper_id()), anger_creature->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
 
         IMessageManager& manager = MM::instance(MessageTransmit::MAP, anger_creature, true);
         manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ENRAGED_SHOPKEEPER));

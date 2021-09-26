@@ -1,6 +1,9 @@
 Me:
-- the shovel code - refactor into a function that generates an item into a
-  random tile in range
+- creatures of a certain deity (frostlings and shiver, black servants and
+  sceadugenga) shouldn't attack you if you worship that deity (YARD)
+  
+  - implications: cosmos
+
 - Asset release
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere
@@ -272,8 +275,6 @@ mission opossumable:
 - seconded ^^ (Valduk)
 
 YARD:
-- creatures of a certain deity (frostlings and shiver, black servants and
-  sceadugenga) shouldn't attack you if you worship that deity
 - spell details on shift+letter
 - corpse weight
 - wilderness, low level creatures, etc
@@ -307,7 +308,6 @@ Josh Engdahl
 - Warping out of levels doesn't put you back at the default entry position
 - Freeze not always working when hostile creatures in view or creatures 
   hostile to leader in view?
-- waterbreathing flag, similar to incorporeal, flying, etc
 - los code: .@..   can't see
             ####s
 

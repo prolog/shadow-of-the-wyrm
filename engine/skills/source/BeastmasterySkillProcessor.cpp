@@ -160,7 +160,7 @@ void BeastmasterySkillProcessor::handle_anger(CreaturePtr taming_creature, const
     }
 
     HostilityManager hm;
-    hm.set_hostility_to_creature(to_tame, taming_creature->get_id());
+    hm.set_hostility_to_creature(to_tame, taming_creature->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
 
     manager.add_new_message(ActionTextKeys::get_tame_failure_message(to_tame->get_description_sid()));
   }
