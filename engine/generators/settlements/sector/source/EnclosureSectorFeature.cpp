@@ -150,20 +150,11 @@ bool EnclosureSectorFeature::add_vegetables(MapPtr map, const Coordinate& st_coo
   if (RNG::percent_chance(75))
   {
     vector<Coordinate> inner_coords = CoordUtils::get_coordinates_in_range(st_new, end_new);
+
     if (!inner_coords.empty())
     {
-      Coordinate c = inner_coords[RNG::range(0, inner_coords.size() - 1)];
-      TilePtr tile = map->at(c);
-
-      if (tile != nullptr)
-      {
-        ItemPtr shovel = ItemManager::create_item(ItemIdKeys::ITEM_ID_SHOVEL);
-
-        if (shovel != nullptr)
-        {
-          tile->get_items()->merge_or_add(shovel, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
-        }
-      }
+      ItemPtr shovel = ItemManager::create_item(ItemIdKeys::ITEM_ID_SHOVEL);
+      MapUtils::add_item(map, inner_coords, shovel);
     }
   }
 

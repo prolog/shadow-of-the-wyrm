@@ -2131,6 +2131,29 @@ vector<CardinalDirection> MapUtils::get_unblocked_door_dirs(MapPtr map, const Co
   return filtered_door_dirs;
 }
 
+bool MapUtils::add_item(MapPtr map, const vector<Coordinate>& possible_coords, ItemPtr item)
+{
+
+  if (map != nullptr && item != nullptr)
+  {
+    vector<Coordinate> coords = possible_coords;
+    std::shuffle(coords.begin(), coords.end(), RNG::get_engine());
+
+    for (const auto& c : coords)
+    {
+      TilePtr tile = map->at(c);
+
+      if (tile != nullptr && MapUtils::is_tile_available_for_item(tile))
+      {
+        tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Map_test.cpp"
 #include "unit_tests/MapUtils_test.cpp"
