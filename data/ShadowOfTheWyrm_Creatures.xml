@@ -1803,6 +1803,7 @@
 		</Creature>
 		<Creature id="pallas">
 			<RaceID>03_mountainelf</RaceID>
+			<DeityID>08_urgoth</DeityID>
 			<ShortDescriptionSID>PALLAS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>PALLAS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>PALLAS_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2042,6 +2043,7 @@
 		</Creature>
 		<Creature id="kith">
 			<RaceID>04_snakeling</RaceID>
+			<DeityID>06_thetrickster</DeityID>
 			<ShortDescriptionSID>KITH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>KITH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>KITH_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2147,6 +2149,7 @@
 		</Creature>
 		<Creature id="brimman">
 			<RaceID>01_human</RaceID>
+			<DeityID>07_shiver</DeityID>
 			<ShortDescriptionSID>BRIMMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BRIMMAN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BRIMMAN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2541,6 +2544,7 @@
 		</Creature>
 		<Creature id="bagra">
 			<RaceID>05_fae</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>BAGRA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BAGRA_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BAGRA_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2646,6 +2650,7 @@
 		</Creature>
 		<Creature id="alcien">
 			<RaceID>02_woodelf</RaceID>
+			<DeityID>01_celeste</DeityID>
 			<ShortDescriptionSID>ALCIEN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ALCIEN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ALCIEN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2700,6 +2705,7 @@
 		</Creature>
 		<Creature id="rukhala">
 			<RaceID>01_human</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>RUKHALA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>RUKHALA_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>RUKHALA_TEXT_DETAILS_SID</TextDetailsSID>
@@ -20215,6 +20221,7 @@
 		</Creature>
 		<Creature id="gnordvar_priest">
 			<RaceID>10_gnome</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>GNORDVAR_PRIEST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GNORDVAR_PRIEST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GNORDVAR_PRIEST_TEXT_DETAILS_SID</TextDetailsSID>
@@ -21056,6 +21063,7 @@
 		</Creature>
 		<Creature id="village_priest">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste</DeityID>
 			<ShortDescriptionSID>VILLAGE_PRIEST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>VILLAGE_PRIEST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>VILLAGE_PRIEST_TEXT_DETAILS_SID</TextDetailsSID>
