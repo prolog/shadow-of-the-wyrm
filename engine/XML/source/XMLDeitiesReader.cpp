@@ -130,6 +130,26 @@ void XMLDeitiesReader::parse_burial_races(const XMLNode& burial_races_node, Deit
   }
 }
 
+// Read in the generator filters, which are tags used to determine if the
+// deity should be the default deity for a particular map.  This is used
+// because some creatures can be e.g. priests of one deity or another.
+void XMLDeitiesReader::parse_generator_filters(const XMLNode& generator_filters_node, Deity& deity)
+{
+  if (!generator_filters_node.is_null())
+  {
+    vector<XMLNode> filter_nodes = XMLUtils::get_elements_by_local_name(generator_filters_node, "Filter");
+    vector<string> filters;
+
+    for (const XMLNode& filter_node : filter_nodes)
+    {
+      string filter = XMLUtils::get_node_value(filter_node);
+      filters.push_back(filter);
+    }
+
+    deity.set_generator_filters(filters);
+  }
+}
+
 // Read in the deity's summons (the things it summons when angered).
 void XMLDeitiesReader::parse_summons(const XMLNode& summons_node, Deity& deity)
 {

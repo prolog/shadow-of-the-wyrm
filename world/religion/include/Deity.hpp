@@ -67,6 +67,9 @@ class Deity : public ISerializable
     void set_user_playable(const bool new_user_playable);
     bool get_user_playable() const;
 
+    void set_generator_filters(const std::vector<std::string>& new_generator_filters);
+    std::vector<std::string> get_generator_filters() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -88,6 +91,7 @@ class Deity : public ISerializable
     CreatureActions likes;
     std::vector<std::string> burial_races;
     bool user_playable;
+    std::vector<std::string> generator_filters;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

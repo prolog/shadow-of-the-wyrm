@@ -29,6 +29,7 @@ bool Deity::operator==(const Deity& d) const
   result = result && likes == d.likes;
   result = result && burial_races == d.burial_races;
   result = result && user_playable == d.user_playable;
+  result = result && generator_filters == d.generator_filters;
 
   return result;
 }
@@ -216,6 +217,16 @@ bool Deity::get_user_playable() const
   return user_playable;
 }
 
+void Deity::set_generator_filters(const vector<string>& new_generator_filters)
+{
+  generator_filters = new_generator_filters;
+}
+
+vector<string> Deity::get_generator_filters() const
+{
+  return generator_filters;
+}
+
 bool Deity::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, id);
@@ -235,8 +246,8 @@ bool Deity::serialize(ostream& stream) const
   dislikes.serialize(stream);
   likes.serialize(stream);
   Serialize::write_string_vector(stream, burial_races);
-
   Serialize::write_bool(stream, user_playable);
+  Serialize::write_string_vector(stream, generator_filters);
 
   return true;
 }
@@ -260,8 +271,8 @@ bool Deity::deserialize(istream& stream)
   dislikes.deserialize(stream);
   likes.deserialize(stream);
   Serialize::read_string_vector(stream, burial_races);
-
   Serialize::read_bool(stream, user_playable);
+  Serialize::read_string_vector(stream, generator_filters);
 
   return true;
 }

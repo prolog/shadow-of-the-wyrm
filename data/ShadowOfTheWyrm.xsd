@@ -318,6 +318,7 @@
 			<xs:element name="Summons" type="tns:Summons"/>
 			<xs:element name="WorshipSiteType" type="tns:WorshipSiteType"/>
 			<xs:element name="AngerScript" type="xs:string"/>
+			<xs:element name="GeneratorFilters" type="tns:GeneratorFilters" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="tns:Identifier" use="required"/>
 	</xs:complexType>
@@ -478,7 +479,7 @@
 		<xs:sequence>
 			<xs:element name="RaceID" type="tns:Identifiers"/>
 			<xs:element name="ClassID" type="tns:Identifier" minOccurs="0"/>
-			<xs:element name="DeityID" type="tns:Identifier" minOccurs="0"/>
+			<xs:element name="DeityID" type="tns:Identifiers" minOccurs="0"/>
 			<xs:element name="BreatheType" type="tns:BreatheType" minOccurs="0"/>
 			<xs:element name="ShortDescriptionSID" type="xs:string"/>
 			<xs:element name="DescriptionSID" type="xs:string"/>

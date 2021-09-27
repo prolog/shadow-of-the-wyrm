@@ -340,6 +340,9 @@
 			</Summons>
 			<WorshipSiteType>6</WorshipSiteType>
 			<AngerScript>deities/anger_common.lua</AngerScript>
+			<GeneratorFilters>
+				<Filter>IslandSacrificeSite</Filter>
+			</GeneratorFilters>
 		</Deity>
 		<Deity id="08_urgoth">
 			<UserPlayable>1</UserPlayable>
@@ -385,6 +388,9 @@
 			</Summons>
 			<WorshipSiteType>7</WorshipSiteType>
 			<AngerScript>deities/anger_common.lua</AngerScript>
+			<GeneratorFilters>
+				<Filter>RockySacrificeSite</Filter>
+			</GeneratorFilters>
 		</Deity>
 		<Deity id="09_sceadugenga">
 			<UserPlayable>1</UserPlayable>
