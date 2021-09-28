@@ -1,4 +1,5 @@
 Me:
+- no creatures on sac site?
 - creatures of a certain deity (frostlings and shiver, black servants and
   sceadugenga) shouldn't attack you if you worship that deity (YARD)
   

@@ -106,7 +106,18 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
     }
   }
 
-  CreatureGenerationIndex generation_index = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger_level, max_danger_level, rarity, additional_properties);
+  CreatureGenerationIndex generation_index;
+  
+  while (generation_index.empty() && min_danger_level >= 1)
+  {
+    generation_index = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger_level, max_danger_level, rarity, additional_properties);
+
+    if (generation_index.empty())
+    {
+      min_danger_level /= 2;
+    }
+  }
+
   CreatureGenerationList generation_list = generation_index.get();
 
   if (generation_list.empty())

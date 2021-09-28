@@ -50,6 +50,7 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
     XMLNode dislikes_node = XMLUtils::get_next_element_by_local_name(deity_node, "Dislikes");
     XMLNode likes_node = XMLUtils::get_next_element_by_local_name(deity_node, "Likes");
     XMLNode burial_races_node = XMLUtils::get_next_element_by_local_name(deity_node, "BurialRaces");
+    XMLNode generator_filters_node = XMLUtils::get_next_element_by_local_name(deity_node, "GeneratorFilters");
     XMLNode crowning_node = XMLUtils::get_next_element_by_local_name(deity_node, "Crowning");
     int class_crowning_chance = XMLUtils::get_child_node_int_value(deity_node, "ClassCrowningChance");
     XMLNode summons_node  = XMLUtils::get_next_element_by_local_name(deity_node, "Summons");
@@ -71,6 +72,7 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
     parse_dislikes(dislikes_node, *deity);
     parse_likes(likes_node, *deity);
     parse_burial_races(burial_races_node, *deity);
+    parse_generator_filters(generator_filters_node, *deity);
     parse_crowning_gifts(crowning_node, *deity);
     deity->set_pct_chance_class_crowning(class_crowning_chance);
     parse_summons(summons_node, *deity);

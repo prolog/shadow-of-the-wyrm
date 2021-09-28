@@ -737,6 +737,7 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
               {
                 deity = d_it->second.get();
               }
+
               WorshipSiteTilePtr site_tile = tg.generate_worship_site_tile(deity->get_alignment_range(), deity_id, deity->get_worship_site_type());
               map->insert(adjacent_row, adjacent_col, site_tile);
               worship_site_generated = true;

@@ -124,6 +124,11 @@ Shadow of the Wyrm v1.3.6 "Valderrabano"
 
   - Fixed an issue with the current danger level and bazaar item generation.
 
+  - The creature generation algorithm could lead to empty areas in some
+    circumstances.  Updated the algorithm so that when the creature list
+    is empty, the minimum danger level is halved, repeating until creatures
+    are generated or we hit danger level 1.
+
 Shadow of the Wyrm v1.3.3 "de Sarlat"
 - Version declared June 13, 2021.  Version finalized July 14, 2021.
 
