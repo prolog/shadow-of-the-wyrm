@@ -120,7 +120,9 @@ CreaturePtr CreatureFactory::create_by_creature_id
     }
 
     vector<string> race_ids = String::create_string_vector_from_csv_string(creature->get_race_id());
+    vector<string> deity_ids = String::create_string_vector_from_csv_string(creature->get_religion_ref().get_active_deity_id());
     string race_id = select_id(race_ids, default_race_id);
+    string deity_id = select_id(deity_ids, default_deity_id);
 
     creature = create_by_race_and_class(action_manager,
                                         current_map,
@@ -129,7 +131,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
                                         creature->get_name(),
                                         creature->get_sex(),
                                         creature->get_size(),
-                                        creature->get_religion().get_active_deity_id(),
+                                        deity_id,
                                         allow_pet_generation);
 
     // Set the template values that would be overridden by creating by race/class.
@@ -243,8 +245,6 @@ void CreatureFactory::revert_to_original_configuration_values(CreaturePtr creatu
   {
     cr_statuses[is_pair.first] = is_pair.second;
   }
-
-  creature->get_religion_ref().set_active_deity_id(creature_instance.get_religion().get_active_deity_id());
 }
 
 CreaturePtr CreatureFactory::create_by_race_and_class
