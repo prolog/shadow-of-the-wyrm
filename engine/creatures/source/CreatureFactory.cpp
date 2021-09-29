@@ -111,14 +111,16 @@ CreaturePtr CreatureFactory::create_by_creature_id
     DecisionStrategyPtr template_decision_strategy = creature->get_decision_strategy_uptr();
     
     string default_race_id;
+    string default_deity_id;
 
     if (current_map != nullptr)
     {
       default_race_id = current_map->get_default_race_id();
+      default_deity_id = current_map->get_default_deity_id();
     }
 
     vector<string> race_ids = String::create_string_vector_from_csv_string(creature->get_race_id());
-    string race_id = select_race_id(race_ids, default_race_id);
+    string race_id = select_id(race_ids, default_race_id);
 
     creature = create_by_race_and_class(action_manager,
                                         current_map,
@@ -649,28 +651,28 @@ void CreatureFactory::set_hostility_to_player(CreaturePtr npc)
   }
 }
 
-string CreatureFactory::select_race_id(const vector<string>& race_ids, const string& default_race_id)
+string CreatureFactory::select_id(const vector<string>& ids, const string& default_id)
 {
-  string race_id;
+  string id;
 
-  // Check to see if we should use the default race id.  It's used when
-  // it can be found in the set of race IDs.
-  if (!default_race_id.empty() && find(race_ids.begin(), race_ids.end(), default_race_id) != race_ids.end())
+  // Check to see if we should use the default id.  It's used when
+  // it can be found in the set of IDs.
+  if (!default_id.empty() && find(ids.begin(), ids.end(), default_id) != ids.end())
   {
-    race_id = default_race_id;
+    id = default_id;
   }
 
   // If we're not using the default race IDs, select one of the race IDs at
   // random.
-  if (race_id.empty())
+  if (id.empty())
   {
-    if (!race_ids.empty())
+    if (!ids.empty())
     {
-      race_id = race_ids[RNG::range(0, race_ids.size()-1)];
+      id = ids[RNG::range(0, ids.size()-1)];
     }
   }
 
-  return race_id;
+  return id;
 }
 
 bool CreatureFactory::create_pet(CreaturePtr creature, ActionManager& am, MapPtr current_map)

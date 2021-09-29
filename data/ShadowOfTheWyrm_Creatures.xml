@@ -12784,6 +12784,7 @@
 		</Creature>
 		<Creature id="dark_priest">
 			<RaceID>08_ogre</RaceID>
+			<DeityID>07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>DARK_PRIEST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DARK_PRIEST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DARK_PRIEST_TEXT_DETAILS_SID</TextDetailsSID>

@@ -652,7 +652,7 @@ void Game::go()
 
     // We're done - clear the display so that score information (or error
     // information, it is me coding this, after all) can be shown.
-    if (!should_count_score())
+n    if (!should_count_score())
     {
       IMessageManager& manager = MM::instance();
       manager.add_new_message_with_pause(StringTable::get(TextKeys::SCORE_SUPPRESSED_LUA_NARRATIVE));

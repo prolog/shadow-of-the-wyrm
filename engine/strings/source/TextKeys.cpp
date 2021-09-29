@@ -51,6 +51,7 @@ const string TextKeys::SELECT_CLASS = "SELECT_CLASS";
 const string TextKeys::SELECT_DEITY = "SELECT_DEITY";
 const string TextKeys::SELECT_STARTING_LOCATION = "SELECT_STARTING_LOCATION";
 const string TextKeys::SELECT_SAVED_GAME = "SELECT_SAVED_GAME";
+const string TextKeys::DEITIES = "DEITIES";
 const string TextKeys::DEITY = "DEITY";
 const string TextKeys::AGE = "AGE";
 const string TextKeys::SEX = "SEX";

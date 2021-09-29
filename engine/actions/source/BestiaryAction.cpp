@@ -154,9 +154,8 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
     }
 
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, short_desc.str()));
+    bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
 
-    // Display all the possible races (when searching) or the specific race
-    // (when looking at a particular creature).
     display_race_information(bestiary_text, tdf, creature);
 
     string class_id = creature->get_class_id();
@@ -171,6 +170,8 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
         bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, class_details));
       }
     }
+
+    display_deity_information(bestiary_text, tdf, creature);
 
     // Display size, level, and range
     bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(SizeTextKeys::SIZE) + ": " + StringTable::get(SizeTextKeys::get_size_sid_from_creature_size(CreatureUtils::get_size(creature)))));
@@ -195,51 +196,87 @@ void BestiaryAction::display_race_information(vector<pair<Colour, string>>& best
 {
   if (creature != nullptr)
   {
-    // Display race details. If the race id is comma-separated, we're working
-    // with a range of possible race IDs (for creatures that can be more than
-    // one race).
     string race_id = creature->get_race_id();
-    if (!race_id.empty())
+    display_id_details(bestiary_text, tdf, creature, TextKeys::RACES, TextKeys::RACE, race_id, true);
+  }
+}
+
+void BestiaryAction::display_deity_information(vector<pair<Colour, string>>& bestiary_text, const TextDisplayFormatter& tdf, CreaturePtr creature) const
+{
+  string deity_id;
+
+  if (creature != nullptr)
+  {
+    deity_id = creature->get_religion_ref().get_active_deity_id();
+
+    if (!deity_id.empty())
+    {
+      display_id_details(bestiary_text, tdf, creature, TextKeys::DEITIES, TextKeys::DEITY, deity_id, false);
+    }
+  }
+}
+
+void BestiaryAction::display_id_details(vector<pair<Colour, string>>& bestiary_text, const TextDisplayFormatter& tdf, CreaturePtr creature, const string& plural_sid, const string& singular_sid, const string& id, const bool is_for_race) const
+{
+  if (creature != nullptr)
+  {
+    // Display the details. If the id is comma-separated, we're working
+    // with a range of possible IDs (for creatures that can be more than
+    // one race, have more than one deity, whatever the context is).
+
+    if (!id.empty())
     {
       RaceManager rm;
-      vector<string> race_ids = String::create_string_vector_from_csv_string(race_id);
+      vector<string> all_ids = String::create_string_vector_from_csv_string(id);
 
-      if (!race_ids.empty())
+      if (!all_ids.empty())
       {
-        bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
+        string info_sid = singular_sid;
+        size_t ids_sz = all_ids.size();
 
-        string race_info_sid = TextKeys::RACE;
-        size_t race_id_sz = race_ids.size();
-
-        if (race_id_sz > 1)
+        if (ids_sz > 1)
         {
-          race_info_sid = TextKeys::RACES;
+          info_sid = plural_sid;
         }
 
         ostringstream ss;
-        ss << StringTable::get(race_info_sid) << ": ";
+        ss << StringTable::get(info_sid) << ": ";
 
-        for (size_t i = 0; i < race_id_sz; i++)
+        for (size_t i = 0; i < ids_sz; i++)
         {
-          string cur_race_id = race_ids.at(i);
-          Race* race = rm.get_race(cur_race_id);
+          string cur_id = all_ids.at(i);
 
-          if (race != nullptr)
+          if (is_for_race)
           {
-            ss << StringTable::get(race->get_race_name_sid());
+            Race* race = rm.get_race(cur_id);
+
+            if (race != nullptr)
+            {
+              ss << StringTable::get(race->get_race_name_sid());
+            }
+          }
+          else
+          {
+            const DeityMap& deities = Game::instance().get_deities_cref();
+            auto d_it = deities.find(cur_id);
+
+            if (d_it != deities.end())
+            {
+              ss << StringTable::get(d_it->second->get_name_sid());
+            }
           }
 
-          if (i < race_id_sz - 1)
+          if (i < ids_sz - 1)
           {
             ss << ", ";
           }
         }
 
-        vector<string> race_details = tdf.format_text(ss.str());
+        vector<string> details = tdf.format_text(ss.str());
 
-        for (const string& race_line : race_details)
+        for (const string& line : details)
         {
-          bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, race_line));
+          bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, line));
         }
       }
     }
