@@ -1,5 +1,4 @@
 Me:
-- hiding checks: allied/non-hostile
 - creatures of a certain deity (frostlings and shiver, black servants and
   sceadugenga) shouldn't attack you if you worship that deity (YARD)
   

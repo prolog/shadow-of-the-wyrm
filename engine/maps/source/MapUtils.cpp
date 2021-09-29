@@ -438,6 +438,23 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
   return added_location;
 }
 
+bool MapUtils::does_hostile_creature_exist(MapPtr map, const vector<string>& creature_list, const string& hostile_to_id)
+{
+  if (map != nullptr)
+  {
+    for (const auto& c_id : creature_list)
+    {
+      CreaturePtr creature = map->get_creature(c_id);
+
+      if (creature != nullptr && creature->get_decision_strategy()->get_threats_ref().has_threat(hostile_to_id).first)
+      {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
 vector<string> MapUtils::get_creatures_with_creature_in_view(const MapPtr& map, const string& creature_id)
 {
   CreatureMap creatures = map->get_creatures();

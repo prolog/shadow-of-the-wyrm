@@ -1,4 +1,5 @@
 #include "HidingCalculator.hpp"
+#include "HostilityManager.hpp"
 #include "CoordUtils.hpp"
 #include "MapUtils.hpp"
 
@@ -19,14 +20,12 @@ int HidingCalculator::calculate_pct_chance_hide(CreaturePtr creature, MapPtr map
     // Get the creatures that can see the creature trying to hide.
     vector<string> creature_ids = MapUtils::get_creatures_with_creature_in_view(map, creature_id);
 
-    if (creature_ids.empty())
+    if (creature_ids.empty() || !MapUtils::does_hostile_creature_exist(map, creature_ids, creature_id))
     {
       pct_chance_hide = 100;
     }
     else
     {
-      // Slightly easier to hide at dawn/dusk, much easier at night
-      // TODO: Should not apply to underground, etc.
       int tod_modifier = get_tod_hide_modifier_for_map_type(tod, map->get_map_type());
 
       pct_chance_hide += creature->get_skills().get_value(SkillType::SKILL_GENERAL_HIDING);
@@ -106,7 +105,7 @@ int HidingCalculator::get_viewing_creatures_modifier(CreaturePtr creature, MapPt
     {
       CreaturePtr view_cr = map->get_creature(id);
 
-      if (view_cr != nullptr)
+      if (view_cr != nullptr && view_cr->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()).first)
       {
         Coordinate c_coord = map->get_location(creature->get_id());
         Coordinate vc_coord = map->get_location(view_cr->get_id());

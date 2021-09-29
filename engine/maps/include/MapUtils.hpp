@@ -20,6 +20,7 @@ class MapUtils
     
     static bool add_or_update_location(MapPtr map, CreaturePtr creature, const Coordinate& new_coords, TilePtr creatures_old_tile = nullptr);
 
+    static bool does_hostile_creature_exist(MapPtr map, const std::vector<std::string>& creature_ids, const std::string& hostile_to_id);
     static std::vector<std::string> get_creatures_with_creature_in_view(const MapPtr& map, const std::string& creature_id);
     static Coordinate get_coordinate_for_creature(const MapPtr& map, const CreaturePtr& creature);
     static TilePtr get_tile_for_creature(const MapPtr& map, const CreaturePtr& creature);
