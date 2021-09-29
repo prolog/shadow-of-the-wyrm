@@ -1,8 +1,9 @@
 Me:
+- hiding checks: allied/non-hostile
 - creatures of a certain deity (frostlings and shiver, black servants and
   sceadugenga) shouldn't attack you if you worship that deity (YARD)
   
-  - implications: cosmos
+  - implications: cosmos, heresy (crossing over)
 
   - need a way of handling creatures that can be generated in multiple
     religious sites...

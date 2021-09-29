@@ -129,6 +129,8 @@ Shadow of the Wyrm v1.3.6 "Valderrabano"
     is empty, the minimum danger level is halved, repeating until creatures
     are generated or we hit danger level 1.
 
+  - Beastmastery anger was turning pets (RelicWraith).
+
 Shadow of the Wyrm v1.3.3 "de Sarlat"
 - Version declared June 13, 2021.  Version finalized July 14, 2021.
 

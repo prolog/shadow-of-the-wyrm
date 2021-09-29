@@ -84,16 +84,24 @@ void BeastmasterySkillProcessor::tame_creatures(CreaturePtr taming_creature, con
       {
         CreaturePtr to_tame = t_pair.second;
 
-        // Is the creature tamed?
-        // Mark Beastmastery if successful.
-        if (RNG::percent_chance(pc.calculate_pct_chance_tame_beastmastery(taming_creature, to_tame)))
+        if (to_tame != nullptr)
         {
-          handle_tame(taming_creature, to_tame, map, manager);
-        }
-        // If unsuccessful, the creature becomes enraged
-        else
-        {
-          handle_anger(taming_creature, t_pair, map, manager);
+          string leader_id = to_tame->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+
+          if (leader_id.empty() || (leader_id != taming_creature->get_id()))
+          {
+            // Is the creature tamed?
+            // Mark Beastmastery if successful.
+            if (RNG::percent_chance(pc.calculate_pct_chance_tame_beastmastery(taming_creature, to_tame)))
+            {
+              handle_tame(taming_creature, to_tame, map, manager);
+            }
+            // If unsuccessful, the creature becomes enraged
+            else
+            {
+              handle_anger(taming_creature, t_pair, map, manager);
+            }
+          }
         }
       }
 
