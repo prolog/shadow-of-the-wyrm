@@ -21,7 +21,7 @@ void DeityActionManager::notify_action(CreaturePtr creature, MapPtr map, const s
 {
   Game& game = Game::instance();
 
-  if (creature != nullptr && map != nullptr && !game.get_deities_cref().empty())
+  if (creature != nullptr && map != nullptr && game.do_deities_exist())
   {
     bool cannot_pray = String::to_bool(map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_PRAY));
    

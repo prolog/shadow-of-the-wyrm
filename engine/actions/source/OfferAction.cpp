@@ -48,7 +48,7 @@ ActionCostValue OfferAction::offer(CreaturePtr creature, ActionManager * const a
     // On an altar - pick an item to sacrifice as long as there are still gods.
     else if (tile && feature && feature->can_offer())
     {
-      if (!game.get_deities_cref().empty())
+      if (game.do_deities_exist())
       {
         acv = sacrifice_item(creature, tile, feature, am);
       }

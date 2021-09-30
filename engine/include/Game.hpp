@@ -57,7 +57,8 @@ class Game : public ISerializable
     void set_deities(const DeityMap& game_deities);
     DeityMap& get_deities_ref();
     const DeityMap& get_deities_cref() const;
-    
+    bool do_deities_exist() const;
+
     void set_races(const RaceMap& game_races);
     const RaceMap& get_races_ref() const;
 

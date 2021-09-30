@@ -210,6 +210,11 @@ DeityMap& Game::get_deities_ref()
   return deities;
 }
 
+bool Game::do_deities_exist() const
+{
+  return (deities.empty() == false);
+}
+
 const DeityMap& Game::get_deities_cref() const
 {
   return deities;

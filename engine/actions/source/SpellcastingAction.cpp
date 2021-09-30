@@ -125,7 +125,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
       spell = s_it->second;
 
       MagicalAbilityChecker mac;
-      if (spell.get_magic_category() == SkillType::SKILL_MAGIC_DIVINE && game.get_deities_cref().empty())
+      if (spell.get_magic_category() == SkillType::SKILL_MAGIC_DIVINE && !game.do_deities_exist())
       {
         add_no_deities_message(creature);
       }

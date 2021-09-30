@@ -264,6 +264,10 @@ void BestiaryAction::display_id_details(vector<pair<Colour, string>>& bestiary_t
             {
               ss << StringTable::get(d_it->second->get_name_sid());
             }
+            else
+            {
+              ss << StringTable::get(TextKeys::DEITY_GONE);
+            }
           }
 
           if (i < ids_sz - 1)

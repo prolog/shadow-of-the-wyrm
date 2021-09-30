@@ -93,7 +93,7 @@ bool PrayerAction::say_prayer(CreaturePtr creature)
     Game& game = Game::instance();
     IMessageManager& manager = MM::instance();
 
-    if (!game.get_deities_cref().empty())
+    if (game.do_deities_exist())
     {
       ReligionManager rm;
       string deity_name_sid = rm.get_deity_name_sid(creature->get_religion().get_active_deity_id());

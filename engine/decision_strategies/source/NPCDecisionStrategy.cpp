@@ -839,7 +839,7 @@ void NPCDecisionStrategy::remove_threats_with_same_deity(const std::string& this
   Game& game = Game::instance();
   MapPtr current_map = game.get_current_map();
 
-  if (current_map != nullptr)
+  if (current_map != nullptr && game.do_deities_exist())
   {
     CreaturePtr this_creature = current_map->get_creature(this_creature_id);
 
