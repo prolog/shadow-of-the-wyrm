@@ -2,13 +2,9 @@ Me:
 - test apostate in cosmos after all deity IDs defined
 - creatures of a certain deity (frostlings and shiver, black servants and
   sceadugenga) shouldn't attack you if you worship that deity (YARD)
-  
-  - implications: cosmos, heresy (crossing over)
-
-  - need a way of handling creatures that can be generated in multiple
-    religious sites...
 
   - deities in bestiary
+  - last cr: fire ele
 
 - Asset release
 - Homesteads in fields
