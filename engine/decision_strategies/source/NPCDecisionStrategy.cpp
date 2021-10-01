@@ -853,14 +853,21 @@ void NPCDecisionStrategy::remove_threats_with_same_deity(const std::string& this
 
         for (const pair<string, CreaturePtr>& c_pair : creatures)
         {
-          auto t_details = this_creature->get_decision_strategy()->get_threats_ref().has_threat(c_pair.first);
-          if (t_details.first
-            && t_details.second < ThreatConstants::ACTIVE_THREAT_RATING
-            && c_pair.second != nullptr
-            && deity_id == c_pair.second->get_religion_ref().get_active_deity_id())
+          CreaturePtr creature = c_pair.second;
+
+          if (creature != nullptr)
           {
-            HostilityManager hm;
-            hm.remove_hostility_to_creature(this_creature, c_pair.first);
+            bool apostate = String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_APOSTATE));
+            auto t_details = this_creature->get_decision_strategy()->get_threats_ref().has_threat(c_pair.first);
+
+            if (t_details.first
+              && t_details.second < ThreatConstants::ACTIVE_THREAT_RATING
+              && !apostate
+              && deity_id == c_pair.second->get_religion_ref().get_active_deity_id())
+            {
+              HostilityManager hm;
+              hm.remove_hostility_to_creature(this_creature, c_pair.first);
+            }
           }
         }
       }
