@@ -10889,6 +10889,7 @@
 		</Creature>
 		<Creature id="celestial">
 			<RaceID>_divine</RaceID>
+			<DeityID>01_celeste,03_thelady</DeityID>
 			<ShortDescriptionSID>CELESTIAL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CELESTIAL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CELESTIAL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -12517,6 +12518,7 @@
 		</Creature>
 		<Creature id="earth_elemental">
 			<RaceID>_divine</RaceID>
+			<DeityID>08_urgoth,09_sceadugenga</DeityID>
 			<ShortDescriptionSID>EARTH_ELEMENTAL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>EARTH_ELEMENTAL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>EARTH_ELEMENTAL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -12620,6 +12622,7 @@
 		</Creature>
 		<Creature id="flare_beast">
 			<RaceID>_monster</RaceID>
+			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>FLARE_BEAST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FLARE_BEAST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FLARE_BEAST_TEXT_DETAILS_SID</TextDetailsSID>
@@ -12724,6 +12727,7 @@
 		</Creature>
 		<Creature id="zealot">
 			<RaceID>07_goblin</RaceID>
+			<DeityID>07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>ZEALOT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ZEALOT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ZEALOT_TEXT_DETAILS_SID</TextDetailsSID>
@@ -12781,6 +12785,7 @@
 		</Creature>
 		<Creature id="bloodletter">
 			<RaceID>04_snakeling</RaceID>
+			<DeityID>07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>BLOODLETTER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLOODLETTER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLOODLETTER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -12864,6 +12869,7 @@
 		</Creature>
 		<Creature id="believer">
 			<RaceID>07_goblin</RaceID>
+			<DeityID>07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>BELIEVER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BELIEVER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BELIEVER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -14622,6 +14628,7 @@
 		</Creature>
 		<Creature id="water_elemental">
 			<RaceID>_divine</RaceID>
+			<DeityID>04_vedere,07_shiver</DeityID>
 			<BreatheType>1</BreatheType>
 			<ShortDescriptionSID>WATER_ELEMENTAL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>WATER_ELEMENTAL_DESCRIPTION_SID</DescriptionSID>
