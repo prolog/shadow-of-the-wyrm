@@ -4638,12 +4638,20 @@ int clear_deities(lua_State* ls)
 
 int summon_monsters_around_creature(lua_State* ls)
 {
-  if (lua_gettop(ls) == 4 && lua_istable(ls, 1) && lua_isstring(ls, 2) && lua_isnumber(ls, 3))
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 4 && lua_istable(ls, 1) && lua_isstring(ls, 2) && lua_isnumber(ls, 3))
   {
     vector<string> monsters = LuaUtils::get_string_array_from_table(ls, 1);
     string creature_id = lua_tostring(ls, 2);
     int num_to_summon = lua_tointeger(ls, 3);
     bool override_hostility = lua_toboolean(ls, 4) != 0;
+    string deity_id;
+
+    if (num_args == 5 && lua_isstring(ls, 5))
+    {
+      deity_id = lua_tostring(ls, 5);
+    }
 
     if (!monsters.empty())
     {
@@ -4676,7 +4684,12 @@ int summon_monsters_around_creature(lua_State* ls)
             if (override_hostility)
             {
               HostilityManager hm;
-              hm.set_hostility_to_player(creature);
+              hm.set_hostility_to_player(creature, true, ThreatConstants::ACTIVE_THREAT_RATING);
+            }
+
+            if (!deity_id.empty())
+            {
+              creature->get_religion_ref().set_active_deity_id(deity_id);
             }
 
             GameUtils::add_new_creature_to_map(game, creature, current_map, c);

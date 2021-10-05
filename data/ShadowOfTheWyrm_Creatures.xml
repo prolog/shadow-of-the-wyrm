@@ -9811,6 +9811,7 @@
 		</Creature>
 		<Creature id="tentacled_horror">
 			<RaceID>_divine</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>TENTACLED_HORROR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TENTACLED_HORROR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TENTACLED_HORROR_TEXT_DETAILS_SID</TextDetailsSID>
@@ -9920,6 +9921,7 @@
 		</Creature>
 		<Creature id="sylph">
 			<RaceID>_humanoid</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>SYLPH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SYLPH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SYLPH_TEXT_DETAILS_SID</TextDetailsSID>
@@ -10023,6 +10025,7 @@
 		</Creature>
 		<Creature id="naiad">
 			<RaceID>_humanoid</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>NAIAD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>NAIAD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>NAIAD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -10074,6 +10077,7 @@
 		</Creature>
 		<Creature id="dryad">
 			<RaceID>_humanoid</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>DRYAD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DRYAD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DRYAD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -10225,6 +10229,7 @@
 		</Creature>
 		<Creature id="oread">
 			<RaceID>_humanoid</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>OREAD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>OREAD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>OREAD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -10275,7 +10280,8 @@
 			<Speed>42</Speed>
 		</Creature>
 		<Creature id="cleric">
-			<RaceID>01_human</RaceID>
+			<RaceID>01_human,02_woodelf,03_mountainelf,04_snakeling,05_fae,06_dwarf,07_goblin,08_ogre,09_giant,10_gnome</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>CLERIC_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CLERIC_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CLERIC_TEXT_DETAILS_SID</TextDetailsSID>
@@ -10516,6 +10522,7 @@
 		</Creature>
 		<Creature id="titan">
 			<RaceID>_divine</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>TITAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TITAN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TITAN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -10567,6 +10574,7 @@
 		</Creature>
 		<Creature id="air_elemental">
 			<RaceID>_divine</RaceID>
+			<DeityID>03_thelady,06_thetrickster</DeityID>
 			<ShortDescriptionSID>AIR_ELEMENTAL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>AIR_ELEMENTAL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>AIR_ELEMENTAL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -20562,6 +20570,7 @@
 		</Creature>
 		<Creature id="end_boss">
 			<RaceID>_dragon</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>AMAUROSIS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>AMAUROSIS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>AMAUROSIS_TEXT_DETAILS_SID</TextDetailsSID>

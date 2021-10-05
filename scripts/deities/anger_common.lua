@@ -31,7 +31,7 @@ local function deity_anger_summon_creatures(creature_id, deity_id)
   local monsters = get_deity_summons(deity_id)
   local override_hostility = true
 
-  summon_monsters_around_creature(monsters, creature_id, 3, override_hostility)
+  summon_monsters_around_creature(monsters, creature_id, 3, override_hostility, deity_id)
 
   add_message("DEITY_ACTION_DISPLEASED_SUMMON")
 end

@@ -92,6 +92,9 @@ Shadow of the Wyrm v1.3.6 "Valderrabano"
 - Creatures who worship a particular deity and share that deity with you will
   no longer be hostile.
 
+- When deities summon creatures around you, their deity ID now reflects who
+  summoned them.
+
 - More name/settlement name combos.
 
 - Stanzas for "Tel and Floridel".
