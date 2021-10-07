@@ -137,6 +137,8 @@ Shadow of the Wyrm v1.3.6 "Valderrabano"
   - Hiding could be very difficult even if the only nearby creatures were
     friendly/allied (RelicWraith).
 
+  - Pulsars were mapped to the wrong sprite.
+
 Shadow of the Wyrm v1.3.3 "de Sarlat"
 - Version declared June 13, 2021.  Version finalized July 14, 2021.
 

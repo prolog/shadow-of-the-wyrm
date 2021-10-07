@@ -1,11 +1,6 @@
 Me:
+- pulsars showing as kilns
 - test apostate in cosmos after all deity IDs defined
-- creatures of a certain deity (frostlings and shiver, black servants and
-  sceadugenga) shouldn't attack you if you worship that deity (YARD)
-
-  - deities in bestiary
-  - last cr: fire ele
-
 - Asset release
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere

@@ -7929,7 +7929,7 @@
 					<Sprite>
 						<ID>fea</ID>
 						<Row>1</Row>
-						<Col>2</Col>
+						<Col>1</Col>
 					</Sprite>
 				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_PULSAR</DescriptionSID>
