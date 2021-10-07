@@ -20518,6 +20518,7 @@
 		</Creature>
 		<Creature id="frost_devil">
 			<RaceID>_demon</RaceID>
+			<DeityID>07_shiver</DeityID>
 			<ShortDescriptionSID>FROST_DEVIL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FROST_DEVIL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FROST_DEVIL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -20562,6 +20563,7 @@
 		</Creature>
 		<Creature id="fire_devil">
 			<RaceID>_demon</RaceID>
+			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>FIRE_DEVIL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FIRE_DEVIL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FIRE_DEVIL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -21980,6 +21982,7 @@
 		</Creature>
 		<Creature id="layperson">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>LAYPERSON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>LAYPERSON_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>LAYPERSON_TEXT_DETAILS_SID</TextDetailsSID>
@@ -22020,6 +22023,7 @@
 		</Creature>
 		<Creature id="devotee">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>DEVOTEE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DEVOTEE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DEVOTEE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -22059,6 +22063,7 @@
 		</Creature>
 		<Creature id="follower">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>FOLLOWER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FOLLOWER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FOLLOWER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -22099,6 +22104,7 @@
 		</Creature>
 		<Creature id="apostle">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>APOSTLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>APOSTLE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>APOSTLE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -22138,6 +22144,7 @@
 		</Creature>
 		<Creature id="pilgrim">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>PILGRIM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>PILGRIM_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>PILGRIM_TEXT_DETAILS_SID</TextDetailsSID>
@@ -24450,6 +24457,7 @@
 		</Creature>
 		<Creature id="urgrim">
 			<RaceID>08_ogre</RaceID>
+			<DeityID>08_urgoth</DeityID>
 			<ShortDescriptionSID>URGRIM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>URGRIM_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>URGRIM_TEXT_DETAILS_SID</TextDetailsSID>
@@ -24952,6 +24960,7 @@
 		</Creature>
 		<Creature id="holy_shade">
 			<RaceID>_spirit</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>HOLY_SHADE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HOLY_SHADE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>HOLY_SHADE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -25003,6 +25012,7 @@
 		</Creature>
 		<Creature id="divine_avenger">
 			<RaceID>_divine</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>DIVINE_AVENGER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DIVINE_AVENGER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DIVINE_AVENGER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -26867,6 +26877,7 @@
 		</Creature>
 		<Creature id="temple_tutor">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>TEMPLE_TUTOR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TEMPLE_TUTOR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TEMPLE_TUTOR_TEXT_DETAILS_SID</TextDetailsSID>
@@ -26993,6 +27004,7 @@
 		</Creature>
 		<Creature id="axander">
 			<RaceID>01_human</RaceID>
+			<DeityID>02_aurelion</DeityID>
 			<ShortDescriptionSID>AXANDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>AXANDER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>AXANDER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -27037,6 +27049,7 @@
 		</Creature>
 		<Creature id="vorogil">
 			<RaceID>01_human</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>VOROGIL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>VOROGIL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>VOROGIL_TEXT_DETAILS_SID</TextDetailsSID>
