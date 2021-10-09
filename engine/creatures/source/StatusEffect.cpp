@@ -125,7 +125,7 @@ bool StatusEffect::apply(CreaturePtr creature, const int danger_level) const
     // and will be cancelled by some other mechanism.
     if (duration < std::numeric_limits<int>::max())
     {
-      eff_dur_sec = current_seconds_since_game_start + (duration * 60);
+      eff_dur_sec = current_seconds_since_game_start + (static_cast<double>(duration) * 60);
     }
     else
     {

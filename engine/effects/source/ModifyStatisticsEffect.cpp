@@ -80,7 +80,7 @@ bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifie
       Game& game = Game::instance();
       double seconds = GameUtils::get_seconds(game);
 
-      duration_end = seconds + (msc.calculate_duration() * 60);
+      duration_end = seconds + (static_cast<double>(msc.calculate_duration()) * 60);
     }
 
     // Get the statistics modifiers.

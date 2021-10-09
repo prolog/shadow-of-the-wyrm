@@ -11,6 +11,10 @@
 
 using namespace std;
 
+XMLCreaturesReader::XMLCreaturesReader()
+{
+}
+
 pair<CreatureMap, CreatureGenerationValuesMap> XMLCreaturesReader::get_creatures(const XMLNode& xml_configuration_creatures_node)
 {
   pair<CreatureMap, CreatureGenerationValuesMap> creature_values;

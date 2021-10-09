@@ -52,7 +52,7 @@ void ScoreCalculator::update_score_currency(CreaturePtr creature, long long& sco
 
 void ScoreCalculator::update_score_skill_points(CreaturePtr creature, long long& score)
 {
-  int skill_points = creature->get_skill_points();
+  long long skill_points = static_cast<long long>(creature->get_skill_points());
 
   score  += (skill_points * 75);
 }
@@ -131,7 +131,7 @@ void ScoreCalculator::update_score_level(CreaturePtr creature, long long& score)
 
   if (current_level > 1)
   {
-    score += (current_level * ScoreConstants::LEVEL_MULTIPLIER);
+    score += (static_cast<long long>(current_level) * ScoreConstants::LEVEL_MULTIPLIER);
   }
 }
 
@@ -176,8 +176,8 @@ void ScoreCalculator::update_score_spells(CreaturePtr creature, long long& score
     
     for (auto& spell_pair : skm)
     {
-      uint castings = spell_pair.second.get_castings();
-      uint bonus = spell_pair.second.get_bonus().get_current();
+      long long castings = static_cast<long long>(spell_pair.second.get_castings());
+      long long bonus = static_cast<long long>(spell_pair.second.get_bonus().get_current());
 
       score += (castings * 4);
       score += (bonus * 2);
@@ -190,7 +190,7 @@ void ScoreCalculator::update_score_conducts(CreaturePtr creature, long long& sco
   if (creature != nullptr)
   {
     // Each conduct is worth 100 points per level at the end of the game
-    int level = creature->get_level().get_current();
+    long long level = static_cast<long long>(creature->get_level().get_current());
 
     Conducts cond = creature->get_conducts_ref();
 
@@ -216,7 +216,7 @@ void ScoreCalculator::update_score_quests_complete(CreaturePtr creature, long lo
     QuestMap completed_quests = quests.get_completed_quests();
     int level = creature->get_level().get_current();
 
-    score += (completed_quests.size() * 100 * level);
+    score += (static_cast<long long>(completed_quests.size()) * 100 * static_cast<long long>(level));
   }
 }
 
@@ -224,7 +224,7 @@ void ScoreCalculator::update_score_memberships(CreaturePtr creature, long long& 
 {
   if (creature != nullptr)
   {
-    score += (creature->get_memberships().get_memberships().size() * 250 * creature->get_level().get_current());
+    score += (static_cast<long long>(creature->get_memberships().get_memberships().size()) * 250 * static_cast<long long>(creature->get_level().get_current()));
   }
 }
 
