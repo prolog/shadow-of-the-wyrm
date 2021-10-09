@@ -4,6 +4,7 @@
 using namespace std;
 
 Ammunition::Ammunition()
+: requires_ranged_weapon(false)
 {
   type = ItemType::ITEM_TYPE_AMMUNITION;
   symbol.set_symbol('/');

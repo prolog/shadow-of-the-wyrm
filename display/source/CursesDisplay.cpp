@@ -74,7 +74,7 @@ Display* CursesDisplay::clone()
 }
 
 CursesDisplay::CursesDisplay()
-: message_buffer_screen(nullptr)
+: message_buffer_screen(nullptr), can_use_colour(true)
 {
 }
 

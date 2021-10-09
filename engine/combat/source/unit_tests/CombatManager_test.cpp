@@ -61,8 +61,8 @@ TEST_F(SW_Engine_Combat_CombatManager, is_close_miss)
   total_roll--;
 
   int roll;
-  int i;
-  for (i = 0; i <= CombatConstants::CLOSE_MISS_THRESHOLD; i++)
+
+  for (int i = 0; i >= CombatConstants::CLOSE_MISS_THRESHOLD; i--)
   {
     roll = total_roll - i;
     EXPECT_TRUE(is_close_miss(roll, target_number_value));

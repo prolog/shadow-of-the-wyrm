@@ -12,6 +12,7 @@ VillageTile::VillageTile()
 }
 
 VillageTile::VillageTile(const TileType new_tile_subtype)
+: settlement_type(SettlementType::SETTLEMENT_TYPE_WALLED)
 {
   tile_subtype = new_tile_subtype;
 }

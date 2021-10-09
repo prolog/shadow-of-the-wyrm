@@ -103,7 +103,7 @@ TEST(SW_Engine_Calculators_PacificationCalculator, proportion_leadership_exp)
 
   EXPECT_DOUBLE_EQ(0.0, pc.calculate_exp_proportion_follower_kill(nullptr));
 
-  for (auto lv_pair : leader_vals)
+  for (const auto& lv_pair : leader_vals)
   {
     creature->get_skills().set_value(SkillType::SKILL_GENERAL_LEADERSHIP, lv_pair.first);
 

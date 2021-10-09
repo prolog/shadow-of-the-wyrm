@@ -11,5 +11,6 @@ class SerializationException : public std::exception
     virtual const char* what() const throw() override;
   
   private:
+    std::string msg;
     std::string additional_desc;
 };
