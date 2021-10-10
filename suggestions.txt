@@ -1,4 +1,5 @@
 Me:
+- let enchant work on eq (suggested)
 - pulsars showing as kilns
 - test apostate in cosmos after all deity IDs defined
 - Asset release

@@ -1206,7 +1206,7 @@ bool CombatManager::is_intimidate(CreaturePtr attacking_creature, CreaturePtr at
 
 bool CombatManager::is_close_miss(const int total_roll, const int target_number_value)
 {
-  return (is_miss(total_roll, target_number_value) && ((target_number_value - total_roll) < CombatConstants::CLOSE_MISS_THRESHOLD));
+  return (is_miss(total_roll, target_number_value) && (std::abs(total_roll - target_number_value) < CombatConstants::CLOSE_MISS_THRESHOLD));
 }
 
 bool CombatManager::is_automatic_miss(const int d100_roll)

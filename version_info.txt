@@ -139,6 +139,9 @@ Shadow of the Wyrm v1.3.6 "Valderrabano"
 
   - Pulsars were mapped to the wrong sprite.
 
+  - The logic around close misses was broken (and always had be), so now
+    periodically combat should generate "you barely miss <x>"-type messages.
+
 Shadow of the Wyrm v1.3.3 "de Sarlat"
 - Version declared June 13, 2021.  Version finalized July 14, 2021.
 
