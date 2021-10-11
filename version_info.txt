@@ -95,6 +95,9 @@ Shadow of the Wyrm v1.3.6 "Valderrabano"
 - When deities summon creatures around you, their deity ID now reflects who
   summoned them.
 
+- Enchanting and glowing now start on the equipment screen, allowing you to
+  selected equipped items as well as inventory items (Paul Blay).
+
 - More name/settlement name combos.
 
 - Stanzas for "Tel and Floridel".

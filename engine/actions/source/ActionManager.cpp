@@ -701,6 +701,22 @@ ActionCost ActionManager::equipment(CreaturePtr creature, ItemPtr i, const Equip
   return get_action_cost(creature, acv);
 }
 
+ItemPtr ActionManager::select_equipment_or_inventory_item(CreaturePtr creature)
+{
+  ItemPtr item;
+  Game& game = Game::instance();
+
+  if (creature != nullptr)
+  {
+    DisplayPtr game_display = game.get_display();
+
+    EquipmentManager equipment_manager(game_display, creature);
+    item = equipment_manager.select_item();
+  }
+
+  return item;
+}
+
 ActionCost ActionManager::pray(CreaturePtr creature)
 {
   ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;

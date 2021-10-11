@@ -115,6 +115,40 @@ ActionCostValue EquipmentManager::equip(CreaturePtr creature, ItemPtr i, const E
   return acv;
 }
 
+ItemPtr EquipmentManager::select_item()
+{
+  ItemPtr item;
+
+  if (creature != nullptr)
+  {
+    bool eq_loop = true;
+
+    CommandFactoryPtr command_factory = std::make_unique<EquipmentCommandFactory>();
+    KeyboardCommandMapPtr kb_command_map = std::make_unique<EquipmentKeyboardCommandMap>();
+
+    while (eq_loop)
+    {
+      EquipmentScreen es(display, creature);
+      string screen_selection = es.display();
+
+      if (!screen_selection.empty())
+      {
+        CommandPtr equipment_command = command_factory->create(screen_selection.at(0), kb_command_map->get_command_type(screen_selection));
+
+        pair<bool, ItemPtr> selection = EquipmentCommandProcessor::process_selection(creature, equipment_command.get());
+
+        if (selection.first)
+        {
+          eq_loop = false;
+          item = selection.second;
+        }
+      }
+    }
+  }
+
+  return item;
+}
+
 ActionCostValue EquipmentManager::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;

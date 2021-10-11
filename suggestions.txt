@@ -1,7 +1,4 @@
 Me:
-- let enchant work on eq (suggested)
-- pulsars showing as kilns
-- test apostate in cosmos after all deity IDs defined
 - Asset release
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere
@@ -274,14 +271,10 @@ mission opossumable:
 
 YARD:
 - spell details on shift+letter
-- corpse weight
 - wilderness, low level creatures, etc
 
 IceBox: 
 - can the confirm setting be allowed to change on load?
-
-Paul Blay:
-- Allow enchant to hit equipment too
 
 Josh Engdahl
 - Rebindable paging keys

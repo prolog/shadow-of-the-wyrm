@@ -12,6 +12,10 @@ class EquipmentManager : public IActionManager
     // exists in the creature's inventory.
     ActionCostValue equip(CreaturePtr creature, ItemPtr i, const EquipmentWornLocation ewl);
 
+    // This function should be called whenever a single equipment (or inventory)
+    // item is required.  Equipping and unequipping is disallowed.
+    ItemPtr select_item();
+
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 
   protected:
