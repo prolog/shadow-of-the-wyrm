@@ -3929,3 +3929,13 @@ whose waters teemed with fish, and where they bet %b
 their once-was countrymen had drank and seen %b
 survival flashing red and silver in that sheen.
 %p
+That day went by, and another; with no one %b
+but themselves and the meadowlands, they watched the nights %b
+as the other slept, alert for threats; but none %b
+emerged, and so it felt they had to fight %b
+to remain cautious, alone, it seemed, unseen, %b
+observers of the natural world, and not %b
+assassins set to work against the green %b
+that lit the days, the two of them now caught %b
+between this quiet calm and all the blood they sought.
+%p
