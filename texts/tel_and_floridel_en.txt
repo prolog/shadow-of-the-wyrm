@@ -3939,3 +3939,13 @@ assassins set to work against the green %b
 that lit the days, the two of them now caught %b
 between this quiet calm and all the blood they sought.
 %p
+The tenth day out they walked the jagged hills %b
+north-east of Cithriel, and staying low, %b
+they traced its valleys roughly north until %b
+a campsite halted them, its traces stowed %b
+poorly.  They found some ashes under leaves, %b
+then sleeping spots, the grass still matted down %b
+and about their size.  Excitement and relief: %b
+it might be unlings, but it seemed they'd found %b
+an indication where their quarry'd gone to ground.
+%p
