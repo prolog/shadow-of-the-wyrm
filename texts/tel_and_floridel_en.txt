@@ -3949,3 +3949,13 @@ and about their size.  Excitement and relief: %b
 it might be unlings, but it seemed they'd found %b
 an indication where their quarry'd gone to ground.
 %p
+Assuming that they'd hoped to stay from sight, %b
+they traced a lazy route that followed through %b
+the central valley, walking every night %b
+to scan the surrounding plains, that panoramic view %b
+empty each time, a trap that never came. %b
+Three days of this.  Their nerves on edge.  They knew %b
+they'd been sent to kill, and as they followed the same %b
+trail the exiles made, they each withdrew, %b
+unspeaking, focused only on the long pursuit.
+%p
