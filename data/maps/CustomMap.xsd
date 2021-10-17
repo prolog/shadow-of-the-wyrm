@@ -9,7 +9,7 @@
 			<xs:sequence>
 				<xs:element name="NameSID" type="xs:string"/>
 				<xs:element name="DefaultRaceID" type="sw:Identifier"/>
-				<xs:element name="DefaultDeityID" type="sw:Identifier"/>
+				<xs:element name="DefaultDeityID" type="sw:Identifier" minOccurs="0"/>
 				<xs:element name="EventScripts" type="tns:MapEvents" minOccurs="0"/>
 				<xs:element ref="tns:Dimensions"/>
 				<xs:element name="LevelRange" type="tns:LevelRange"/>
@@ -100,6 +100,8 @@
 			<!-- Used only for creatures - has no meaning for items. -->
 			<xs:element name="Friendly" type="xs:boolean" minOccurs="0"/>
 			<xs:element name="Name" type="xs:string" minOccurs="0"/>
+			<!-- EventScripts is intended for creatures only. -->
+			<xs:element name="EventScripts" type="tns:PlacementEvents" minOccurs="0"/>
 			<!-- Quantity is only used for items. -->
 			<xs:element name="Quantity" type="xs:unsignedInt" minOccurs="0"/>
 		</xs:sequence>
@@ -172,6 +174,17 @@
 			     maps, not custom maps.  Event scripts for custom maps are defined
 				 at the map level. -->
 			<xs:element name="EventScripts" type="tns:MapEvents" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PlacementEvents">
+		<xs:sequence>
+			<xs:element name="DeathScript" type="tns:ScriptDetails" minOccurs="0"/>
+			<xs:element name="AttackScript" type="tns:ScriptDetails" minOccurs="0"/>
+			<xs:element name="ChatScript" type="tns:ScriptDetails" minOccurs="0"/>
+			<xs:element name="NightChatScript" type="tns:ScriptDetails" minOccurs="0"/>
+			<xs:element name="DecisionScript" type="tns:ScriptDetails" minOccurs="0"/>
+			<xs:element name="DropScript" type="tns:ScriptDetails" minOccurs="0"/>
+			<xs:element name="TameScript" type="tns:ScriptDetails" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="MapEvents">

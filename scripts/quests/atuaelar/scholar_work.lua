@@ -1,0 +1,4 @@
+add_message_with_pause("MOUNTAIN_ELF_SCHOLAR_WORK_SID")
+add_message_with_pause("MOUNTAIN_ELF_SCHOLAR_WORK2_SID")
+clear_and_add_message("MOUNTAIN_ELF_SCHOLAR_WORK3_SID")
+

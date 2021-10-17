@@ -243,6 +243,14 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
         }
       }
 
+      // Parse any event scripts
+      XMLNode event_scripts_node = XMLUtils::get_next_element_by_local_name(placement_node, "EventScripts");
+
+      if (!event_scripts_node.is_null())
+      {
+        parse_event_scripts(event_scripts_node, creature->get_event_scripts_ref());
+      }
+
       TilePtr placement_tile = map->at(coord);
 
       if (creature && placement_tile)

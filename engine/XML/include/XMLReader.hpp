@@ -17,6 +17,8 @@ class XMLReader
     void parse_damage(Damage& damage, const XMLNode& damage_node) const;
     void parse_status_ailments(StatusAilments& ailments, const XMLNode& status_ailments_node) const;
     void parse_properties(std::map<std::string, std::string>& properties_map, const XMLNode& properties_node) const;
+
+    void parse_event_scripts(const XMLNode& event_scripts_node, EventScriptsMap& scripts);
     void parse_event_scripts(const XMLNode& event_scripts_node, const std::map<std::string, std::string>& node_mappings, EventScriptsMap& scripts);
 
     void parse_initial_equipment_and_inventory(std::map<EquipmentWornLocation, InitialItem>& initial_eq, std::vector<InitialItem>& initial_inv, const XMLNode& initial_equipment_and_inventory_node);
