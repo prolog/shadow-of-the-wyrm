@@ -1,12 +1,14 @@
 #include "ActionTextKeys.hpp"
 #include "ChatAction.hpp"
 #include "Commands.hpp"
+#include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
+#include "TextFormatSpecifiers.hpp"
 
 using namespace std;
 
@@ -189,9 +191,27 @@ bool ChatAction::chat_multiple_options(CreaturePtr querying_creature, const Crea
 void ChatAction::add_chat_message(CreaturePtr creature, const string& chat_text_sid) const
 {
   IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+  string chat_text = StringTable::get(chat_text_sid);
+  vector<string> chat_texts = String::clean_and_trim(String::split(chat_text, TextFormatSpecifiers::NEW_PARAGRAPH));
+  size_t ct_sz = chat_texts.size();
 
-  manager.add_new_message(StringTable::get(chat_text_sid));
-  manager.send();
+  for (size_t i = 0; i < ct_sz; i++)
+  {
+    string ct = chat_texts.at(i);
+    manager.clear_if_necessary();
+
+    if (i < ct_sz - 1)
+    {
+      manager.add_new_message_with_pause(ct);
+      manager.send();
+      creature->get_decision_strategy()->get_confirmation();
+    }
+    else
+    {
+      manager.add_new_message(ct);
+      manager.send();
+    }
+  }
 }
 
 // Chatting with a creature successfully incurs the cost of a turn.

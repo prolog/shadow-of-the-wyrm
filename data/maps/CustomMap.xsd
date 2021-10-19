@@ -100,7 +100,8 @@
 			<!-- Used only for creatures - has no meaning for items. -->
 			<xs:element name="Friendly" type="xs:boolean" minOccurs="0"/>
 			<xs:element name="Name" type="xs:string" minOccurs="0"/>
-			<!-- EventScripts is intended for creatures only. -->
+			<!-- SpeechTextSID and EventScripts are intended for creatures only. -->
+			<xs:element name="SpeechTextSID" type="xs:string" minOccurs="0"/>
 			<xs:element name="EventScripts" type="tns:PlacementEvents" minOccurs="0"/>
 			<!-- Quantity is only used for items. -->
 			<xs:element name="Quantity" type="xs:unsignedInt" minOccurs="0"/>

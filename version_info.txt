@@ -11,7 +11,7 @@ Shadow of the Wyrm v1.3.6 "Valderrabano"
   plus Magic if the spell isn't Cantrips, to allow the NPC to pick up and
   read appropriate spellbooks.
 
--   The spell Dig and digging wands are now range 5, rather than 4.  Crumble is
+- The spell Dig and digging wands are now range 5, rather than 4.  Crumble is
   still range 1, but now a ball rather than a directional spell.
 
 - Dropping an item and refusing the shopkeeper's item now keeps the item in
@@ -101,6 +101,9 @@ Shadow of the Wyrm v1.3.6 "Valderrabano"
 - Added the ability to set custom scripts for a particular creature in its
   placement details, and added another scholar to the library at Atua-Elar to
   prove this out.
+
+- Multi-page chat speech is now available (split using "%") - the game will
+  split the text before displaying each page.
 
 - More name/settlement name combos.
 

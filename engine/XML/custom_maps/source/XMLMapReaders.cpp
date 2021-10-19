@@ -224,6 +224,8 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
         name = XMLUtils::get_node_value(name_node);
       }
 
+      string speech_text_sid = XMLUtils::get_child_node_value(placement_node, "SpeechTextSID");
+
       XMLMapCoordinateReader coord_reader;
       Coordinate coord = coord_reader.parse_coordinate(placement_node);
 
@@ -240,6 +242,11 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
         if (!name.empty())
         {
           creature->set_name(name);
+        }
+
+        if (!speech_text_sid.empty())
+        {
+          creature->set_speech_text_sid(speech_text_sid);
         }
       }
 

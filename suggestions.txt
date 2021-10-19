@@ -1,4 +1,5 @@
 Me:
+- get %p working on other add_message type calls
 - Asset release
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere

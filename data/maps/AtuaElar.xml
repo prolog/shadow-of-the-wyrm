@@ -123,8 +123,8 @@
 			<Placement>
 				<ID>mountain_elf_scholar</ID>
 				<Coord>
-					<Row>12</Row>
-					<Col>31</Col>
+					<Row>9</Row>
+					<Col>32</Col>
 				</Coord>
 				<Friendly>1</Friendly>
 				<EventScripts>

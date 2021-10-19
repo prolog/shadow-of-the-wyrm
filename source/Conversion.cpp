@@ -59,6 +59,38 @@ string String::clean(const string& to_clean)
   return clean.str();
 }
 
+vector<string> String::clean_and_trim(const std::vector<std::string>& to_trim)
+{
+  vector<string> trimmed;
+
+  for (const auto& tt : to_trim)
+  {
+    trimmed.push_back(boost::algorithm::trim_copy(clean(tt)));
+  }
+
+  return trimmed;
+}
+
+vector<string> String::split(const string& split_str, const string& split_on)
+{
+  vector<string> vals;
+
+  size_t cur_pos = 0;
+  auto end = split_str.find(split_on);
+
+  while (end != std::string::npos)
+  {
+    vals.push_back(split_str.substr(cur_pos, end - cur_pos));
+
+    cur_pos = end + split_on.length();
+    end = split_str.find(split_on, cur_pos);
+  }
+
+  vals.push_back(split_str.substr(cur_pos, end));
+
+  return vals;
+}
+
 vector<string> String::create_string_vector_from_csv_string(const string& csv_str)
 {
   vector<string> str_vec;
