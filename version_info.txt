@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.3.6 "Valderrabano"
-- Version declared July 14, 2021.
+- Version declared July 14, 2021.  Version finalized October 19, 2021.
 
 - A copy of swyrm.ini is now created in the user's .sotw directory, with some
   hints on how to get started with overriding settings.
