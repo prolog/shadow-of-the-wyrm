@@ -50,9 +50,12 @@ void FenceManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr fe
 
 bool FenceManipulator::handle(TilePtr tile, CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance();
-  manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FENCE_WOBBLE_POST));
-  manager.send();
+  if (creature != nullptr && creature->get_is_player())
+  {
+    IMessageManager& manager = MM::instance();
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FENCE_WOBBLE_POST));
+    manager.send();
+  }
 
   return false;
 }
