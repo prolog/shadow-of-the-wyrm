@@ -29,6 +29,11 @@ StatusEffect::~StatusEffect()
 {
 }
 
+void StatusEffect::set_initiating_creature(CreaturePtr new_creature)
+{
+  initiating_creature = new_creature;
+}
+
 // Most status effects are negative.
 bool StatusEffect::is_negative() const
 {
@@ -86,6 +91,8 @@ void StatusEffect::apply_change(CreaturePtr creature, const int danger_level) co
 
   if (status_applied)
   {
+    notify_deities(initiating_creature, creature);
+
     string message = get_application_message(creature);
 
     if (!message.empty())
@@ -118,7 +125,7 @@ bool StatusEffect::apply(CreaturePtr creature, const int danger_level) const
     // and will be cancelled by some other mechanism.
     if (duration < std::numeric_limits<int>::max())
     {
-      eff_dur_sec = current_seconds_since_game_start + (duration * 60);
+      eff_dur_sec = current_seconds_since_game_start + (static_cast<double>(duration) * 60);
     }
     else
     {
@@ -333,6 +340,10 @@ Modifier StatusEffect::get_base_modifier(CreaturePtr creature, const int danger_
 {
   Modifier m;
   return m;
+}
+
+void StatusEffect::notify_deities(CreaturePtr initiating_creature, CreaturePtr affected_creature) const
+{
 }
 
 string StatusEffect::get_status_identifier() const

@@ -1,6 +1,9 @@
 #include "Conversion.hpp"
 #include "Creature.hpp"
+#include "CreatureActions.hpp"
+#include "CreatureProperties.hpp"
 #include "EffectTextKeys.hpp"
+#include "Game.hpp"
 #include "Log.hpp"
 #include "HealingEffect.hpp"
 #include "RNG.hpp"
@@ -47,6 +50,7 @@ bool HealingEffect::heal(CreaturePtr creature, const double healing_multiplier) 
   if (creature)
   {
     int healing_amount = static_cast<int>(get_random_healing_amount() * healing_multiplier);
+    healing_amount += bonus;
 
     Statistic hit_points = creature->get_hit_points();
 
@@ -60,6 +64,17 @@ bool HealingEffect::heal(CreaturePtr creature, const double healing_multiplier) 
       
       // Some healing was performed, so the effect was identified.
       effect_identified = true;
+    }
+  }
+
+  string leader_id = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+
+  if (effect_identified && !leader_id.empty() && originator != nullptr)
+  {
+    if (leader_id == originator->get_id())
+    {
+      Game& game = Game::instance();
+      game.get_deity_action_manager_ref().notify_action(originator, game.get_current_map(), CreatureActionKeys::ACTION_HEAL_COMPANION, true); 
     }
   }
 

@@ -77,7 +77,7 @@ DeityDecisionImplications SmiteDeityDecisionStrategyHandler::handle_decision(Cre
 }
 
 // Divine intervention is a very costly thing!
-int SmiteDeityDecisionStrategyHandler::get_piety_loss() const
+int SmiteDeityDecisionStrategyHandler::get_piety_amount() const
 {
   return 5000;
 }

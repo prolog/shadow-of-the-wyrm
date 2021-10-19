@@ -43,6 +43,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     MapType map_type = static_cast<MapType>(XMLUtils::get_child_node_int_value(custom_map_node, "MapType"));
     string name_sid = XMLUtils::get_child_node_value(custom_map_node, "NameSID");
     string default_race_id = XMLUtils::get_child_node_value(custom_map_node, "DefaultRaceID");
+    string default_deity_id = XMLUtils::get_child_node_value(custom_map_node, "DefaultDeityID");
     
     Dimensions dim = parse_dimensions(dimensions_node);
     custom_map = MapPtr(new Map(dim));
@@ -73,6 +74,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     custom_map->set_map_id(map_id);
     custom_map->set_name_sid(name_sid);
     custom_map->set_default_race_id(default_race_id);
+    custom_map->set_default_deity_id(default_deity_id);
     custom_map->set_tiles(tiles);
     custom_map->set_permanent(true); // custom maps are always permanent.
     custom_map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, player_start_location);
@@ -222,6 +224,8 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
         name = XMLUtils::get_node_value(name_node);
       }
 
+      string speech_text_sid = XMLUtils::get_child_node_value(placement_node, "SpeechTextSID");
+
       XMLMapCoordinateReader coord_reader;
       Coordinate coord = coord_reader.parse_coordinate(placement_node);
 
@@ -239,6 +243,19 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
         {
           creature->set_name(name);
         }
+
+        if (!speech_text_sid.empty())
+        {
+          creature->set_speech_text_sid(speech_text_sid);
+        }
+      }
+
+      // Parse any event scripts
+      XMLNode event_scripts_node = XMLUtils::get_next_element_by_local_name(placement_node, "EventScripts");
+
+      if (!event_scripts_node.is_null())
+      {
+        parse_event_scripts(event_scripts_node, creature->get_event_scripts_ref());
       }
 
       TilePtr placement_tile = map->at(coord);

@@ -111,14 +111,18 @@ CreaturePtr CreatureFactory::create_by_creature_id
     DecisionStrategyPtr template_decision_strategy = creature->get_decision_strategy_uptr();
     
     string default_race_id;
+    string default_deity_id;
 
     if (current_map != nullptr)
     {
       default_race_id = current_map->get_default_race_id();
+      default_deity_id = current_map->get_default_deity_id();
     }
 
     vector<string> race_ids = String::create_string_vector_from_csv_string(creature->get_race_id());
-    string race_id = select_race_id(race_ids, default_race_id);
+    vector<string> deity_ids = String::create_string_vector_from_csv_string(creature->get_religion_ref().get_active_deity_id());
+    string race_id = select_id(race_ids, default_race_id);
+    string deity_id = select_id(deity_ids, default_deity_id);
 
     creature = create_by_race_and_class(action_manager,
                                         current_map,
@@ -127,7 +131,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
                                         creature->get_name(),
                                         creature->get_sex(),
                                         creature->get_size(),
-                                        creature->get_religion().get_active_deity_id(),
+                                        deity_id,
                                         allow_pet_generation);
 
     // Set the template values that would be overridden by creating by race/class.
@@ -165,6 +169,8 @@ CreaturePtr CreatureFactory::create_by_creature_id
     Skills& skills = creature->get_skills();
     Skills cgv_skills = cgv.get_skills();
     skills.increment_skills(cgv_skills);
+
+    set_magic_skills_based_on_spells(creature);
       
     // If the creature is guaranteed to be generated as friendly, then be sure
     // that hostility isn't set.
@@ -645,28 +651,28 @@ void CreatureFactory::set_hostility_to_player(CreaturePtr npc)
   }
 }
 
-string CreatureFactory::select_race_id(const vector<string>& race_ids, const string& default_race_id)
+string CreatureFactory::select_id(const vector<string>& ids, const string& default_id)
 {
-  string race_id;
+  string id;
 
-  // Check to see if we should use the default race id.  It's used when
-  // it can be found in the set of race IDs.
-  if (!default_race_id.empty() && find(race_ids.begin(), race_ids.end(), default_race_id) != race_ids.end())
+  // Check to see if we should use the default id.  It's used when
+  // it can be found in the set of IDs.
+  if (!default_id.empty() && find(ids.begin(), ids.end(), default_id) != ids.end())
   {
-    race_id = default_race_id;
+    id = default_id;
   }
 
   // If we're not using the default race IDs, select one of the race IDs at
   // random.
-  if (race_id.empty())
+  if (id.empty())
   {
-    if (!race_ids.empty())
+    if (!ids.empty())
     {
-      race_id = race_ids[RNG::range(0, race_ids.size()-1)];
+      id = ids[RNG::range(0, ids.size()-1)];
     }
   }
 
-  return race_id;
+  return id;
 }
 
 bool CreatureFactory::create_pet(CreaturePtr creature, ActionManager& am, MapPtr current_map)
@@ -707,6 +713,47 @@ bool CreatureFactory::create_pet(CreaturePtr creature, ActionManager& am, MapPtr
   }
 
   return pet_created;
+}
+
+void CreatureFactory::set_magic_skills_based_on_spells(CreaturePtr creature)
+{
+  if (creature != nullptr)
+  {
+    SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+    const SpellMap& spells = Game::instance().get_spells_ref();
+    map<SkillType, bool> spell_types;
+    auto skm = sk.get_known_spells();
+
+    for (const auto sk_it : skm)
+    {
+      const string& spell_id = sk_it.first;
+      auto sp_it = spells.find(spell_id);
+
+      if (sp_it != spells.end())
+      {
+        SkillType magic_skill = sp_it->second.get_magic_category();
+        if (spell_types.find(magic_skill) == spell_types.end())
+        {
+          spell_types[magic_skill] = true;
+        }
+
+        if (magic_skill != SkillType::SKILL_MAGIC_CANTRIPS)
+        {
+          spell_types[SkillType::SKILL_GENERAL_MAGIC] = true;
+        }
+      }
+    }
+
+    int creature_level = creature->get_level().get_current();
+    Skills& skills = creature->get_skills();
+
+    for (auto st_it : spell_types)
+    {
+      int sp_min = std::max<int>(creature_level, 10);
+      int sp_max = std::max<int>(creature_level * 2, 20);
+      skills.set_value(st_it.first, RNG::range(sp_min, sp_max));
+    }
+  }
 }
 
 #ifdef UNIT_TESTS

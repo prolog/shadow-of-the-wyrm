@@ -26,7 +26,10 @@ bool Deity::operator==(const Deity& d) const
   result = result && anger_script == d.anger_script;
   result = result && initial_modifier == d.initial_modifier;
   result = result && dislikes == d.dislikes;
+  result = result && likes == d.likes;
+  result = result && burial_races == d.burial_races;
   result = result && user_playable == d.user_playable;
+  result = result && generator_filters == d.generator_filters;
 
   return result;
 }
@@ -120,6 +123,27 @@ bool Deity::get_dislike(const string& dislike) const
   return dislikes.get_action_value(dislike);
 }
 
+// Set/get a particular like
+void Deity::set_like(const string& like, const bool value)
+{
+  likes.set_action_value(like, value);
+}
+
+bool Deity::get_like(const string& like) const
+{
+  return likes.get_action_value(like);
+}
+
+// Set/get the races the deity cares about for burial
+void Deity::set_burial_races(const vector<string>& new_burial_races)
+{
+  burial_races = new_burial_races;
+}
+
+vector<string> Deity::get_burial_races() const
+{
+  return burial_races;
+}
 // Set/get the deity's list of crowning gifts.
 void Deity::set_crowning_gifts(const vector<string>& new_crowning_gifts)
 {
@@ -193,6 +217,16 @@ bool Deity::get_user_playable() const
   return user_playable;
 }
 
+void Deity::set_generator_filters(const vector<string>& new_generator_filters)
+{
+  generator_filters = new_generator_filters;
+}
+
+vector<string> Deity::get_generator_filters() const
+{
+  return generator_filters;
+}
+
 bool Deity::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, id);
@@ -210,8 +244,10 @@ bool Deity::serialize(ostream& stream) const
 
   initial_modifier.serialize(stream);
   dislikes.serialize(stream);
-
+  likes.serialize(stream);
+  Serialize::write_string_vector(stream, burial_races);
   Serialize::write_bool(stream, user_playable);
+  Serialize::write_string_vector(stream, generator_filters);
 
   return true;
 }
@@ -233,8 +269,10 @@ bool Deity::deserialize(istream& stream)
 
   initial_modifier.deserialize(stream);
   dislikes.deserialize(stream);
-
+  likes.deserialize(stream);
+  Serialize::read_string_vector(stream, burial_races);
   Serialize::read_bool(stream, user_playable);
+  Serialize::read_string_vector(stream, generator_filters);
 
   return true;
 }

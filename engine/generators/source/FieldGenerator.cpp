@@ -1,12 +1,12 @@
 #include <iostream>
-#include "TileGenerator.hpp"
+#include "Dimensions.hpp"
 #include "FieldGenerator.hpp"
 #include "Game.hpp"
 #include "GeneratorUtils.hpp"
-#include "Dimensions.hpp"
 #include "tiles.hpp"
 #include "RNG.hpp"
 #include "StreamGenerator.hpp"
+#include "TileGenerator.hpp"
 
 using namespace std;
 
@@ -46,8 +46,6 @@ MapPtr FieldGenerator::generate(const Dimensions& dimensions)
     result_map->insert(gr_row, gr_col, grave_or_barrow);
     result_map->set_permanent(true);
   }
-
-  GeneratorUtils::generate_bazaar_if_necessary(result_map, get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR));
 
   return result_map;
 }

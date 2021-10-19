@@ -16,6 +16,7 @@ class ItemGenerationManager
     // a given danger/rarity range.
     ItemType generate_item_type() const;
     ItemGenerationMap generate_item_generation_map(const ItemGenerationConstraints& igc);
+    std::vector<std::string> get_item_ids(const ItemGenerationMap& igm);
 
     // Generate an item from the given creature generation map, calling out to the ItemManager to do the actual creation.
     std::shared_ptr<Item> generate_item(ActionManager& am, ItemGenerationMap& item_generation_map, const Rarity rarity, const std::vector<ItemType>& item_type_restrictions, const int enchant_points);

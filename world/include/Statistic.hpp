@@ -2,7 +2,7 @@
 #include "ISerializable.hpp"
 #include "Marks.hpp"
 
-enum SetStatisticFailure
+enum struct SetStatisticFailure
 {
   SET_STATISTIC_FAILURE_IGNORE = 0,
   SET_STATISTIC_FAILURE_TAKE_HIGHEST = 1

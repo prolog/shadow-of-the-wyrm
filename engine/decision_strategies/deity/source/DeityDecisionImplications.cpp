@@ -45,7 +45,7 @@ void DeityDecisionImplications::set_piety_loss(const int new_piety_loss)
   piety_loss = new_piety_loss;
 }
 
-int DeityDecisionImplications::get_piety_loss() const
+int DeityDecisionImplications::get_piety_amount() const
 {
   return piety_loss;
 }

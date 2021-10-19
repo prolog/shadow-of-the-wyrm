@@ -79,7 +79,7 @@ DeityDecisionImplications ProtectionDeityDecisionStrategyHandler::handle_decisio
   return get_deity_decision_implications(creature, tile);
 }
 
-int ProtectionDeityDecisionStrategyHandler::get_piety_loss() const
+int ProtectionDeityDecisionStrategyHandler::get_piety_amount() const
 {
   return 1000;
 }

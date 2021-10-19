@@ -205,6 +205,7 @@
 			<xs:element name="Bench" type="tns:BaseFeature"/>
 			<xs:element name="Bed" type="tns:BaseFeature"/>
 			<xs:element name="Door" type="tns:BaseFeature"/>
+			<xs:element name="Fence" type="tns:BaseFeature"/>
 			<xs:element name="Gate" type="tns:BaseFeature"/>
 			<xs:element name="DecorativeStatue" type="tns:BaseFeature"/>
 			<xs:element name="HighPriestDecorativeStatue" type="tns:BaseFeature"/>
@@ -310,11 +311,14 @@
 			<xs:element name="Alignment" type="tns:AlignmentRange"/>
 			<xs:element name="DeityInitialModifiers" type="tns:InitialStatisticsModifiers"/>
 			<xs:element name="Dislikes" type="tns:TrackedDeityActions"/>
+			<xs:element name="Likes" type="tns:TrackedDeityActions"/>
+			<xs:element name="BurialRaces" type="tns:BurialRaces" minOccurs="0"/>
 			<xs:element name="Crowning" type="tns:Crowning"/>
 			<xs:element name="ClassCrowningChance" type="xs:integer"/>
 			<xs:element name="Summons" type="tns:Summons"/>
 			<xs:element name="WorshipSiteType" type="tns:WorshipSiteType"/>
 			<xs:element name="AngerScript" type="xs:string"/>
+			<xs:element name="GeneratorFilters" type="tns:GeneratorFilters" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="tns:Identifier" use="required"/>
 	</xs:complexType>
@@ -475,11 +479,13 @@
 		<xs:sequence>
 			<xs:element name="RaceID" type="tns:Identifiers"/>
 			<xs:element name="ClassID" type="tns:Identifier" minOccurs="0"/>
+			<xs:element name="DeityID" type="tns:Identifiers" minOccurs="0"/>
 			<xs:element name="BreatheType" type="tns:BreatheType" minOccurs="0"/>
 			<xs:element name="ShortDescriptionSID" type="xs:string"/>
 			<xs:element name="DescriptionSID" type="xs:string"/>
 			<xs:element name="TextDetailsSID" type="xs:string"/>
 			<xs:element name="SpeechTextSID" type="xs:string" minOccurs="0"/>
+			<xs:element name="NightSpeechTextSID" type="xs:string" minOccurs="0"/>
 			<xs:element name="Size" type="tns:CreatureSizeType" minOccurs="0"/>
 			<xs:element name="Sex" type="tns:Sex" minOccurs="0"/>
 			<xs:element name="Flying" type="xs:boolean" minOccurs="0"/>
@@ -519,6 +525,7 @@
 			<xs:element name="DeathScript" type="tns:ScriptDetails" minOccurs="0"/>
 			<xs:element name="AttackScript" type="tns:ScriptDetails" minOccurs="0"/>
 			<xs:element name="ChatScript" type="tns:ScriptDetails" minOccurs="0"/>
+			<xs:element name="NightChatScript" type="tns:ScriptDetails" minOccurs="0"/>
 			<xs:element name="DecisionScript" type="tns:ScriptDetails" minOccurs="0"/>
 			<xs:element name="DropScript" type="tns:ScriptDetails" minOccurs="0"/>
 			<xs:element name="TameScript" type="tns:ScriptDetails" minOccurs="0"/>
@@ -1339,6 +1346,11 @@
 		<xs:element name="Symbol" type="tns:Symbol"/>
 	</xs:sequence>
 </xs:complexType>
+<xs:complexType name="BurialRaces">
+	<xs:sequence>
+		<xs:element name="RaceID" type="tns:Identifier" minOccurs="0" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
 <!-- SIMPLE TYPES -->
 <xs:simpleType name="HandsType">
 	<xs:annotation>
@@ -1355,12 +1367,25 @@
 	</xs:annotation>
 	<xs:restriction base="xs:string">
 		<xs:enumeration value="AttackFriendlyCreature"/>
+		<xs:enumeration value="Bloodletting"/>
+		<xs:enumeration value="Burn"/>
+		<xs:enumeration value="BuryRemains"/>
 		<xs:enumeration value="Cannibalism"/>
 		<xs:enumeration value="DesecrateGood"/>
 		<xs:enumeration value="DesecrateNeutral"/>
 		<xs:enumeration value="DesecrateEvil"/>
+		<xs:enumeration value="Freeze"/>
 		<xs:enumeration value="GraveRobbing"/>
+		<xs:enumeration value="HealCompanion"/>
+		<xs:enumeration value="LearnSpell"/>
+		<xs:enumeration value="Pacify"/>
+		<xs:enumeration value="Petrify"/>
+		<xs:enumeration value="PlantSeeds"/>
+		<xs:enumeration value="Rage"/>
 		<xs:enumeration value="SkinHumanoid"/>
+		<xs:enumeration value="Smite"/>
+		<xs:enumeration value="SneakAttack"/>
+		<xs:enumeration value="Stun"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="TileType">

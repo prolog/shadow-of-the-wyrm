@@ -2,11 +2,13 @@
 #include "BaseSettlementGenerator.hpp"
 #include "BuildingConfigFactory.hpp"
 #include "CreatureGenerationManager.hpp"
+#include "FeatureGenerator.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "GraveyardSectorFeature.hpp"
 #include "LibrarySectorFeature.hpp"
 #include "ParkSectorFeature.hpp"
+#include "EnclosureSectorFeature.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "ShrineSectorFeature.hpp"
@@ -58,7 +60,6 @@ bool BaseSettlementGenerator::get_ignore_creature_generation_level_checks() cons
 {
   return true;
 }
-
 
 void BaseSettlementGenerator::generate_road_north(MapPtr map, const int start_row, const int start_col, const int road_length, const int probability, const int block_modifier, bool recurse)
 {
@@ -492,7 +493,7 @@ vector<shared_ptr<SectorFeature>> BaseSettlementGenerator::get_sector_features()
   sf = std::make_shared<GraveyardSectorFeature>();
   sfs.push_back(sf);
 
-  sf = std::make_shared<LittleLibrarySectorFeature>();
+  sf = std::make_shared<LittleLibrarySectorFeature>(true);
   sfs.push_back(sf);
 
   sf = std::make_shared<FruitVegetableGardenGenerator>();
@@ -505,6 +506,9 @@ vector<shared_ptr<SectorFeature>> BaseSettlementGenerator::get_sector_features()
   sfs.push_back(sf);
 
   sf = std::make_shared<TavernSectorFeature>();
+  sfs.push_back(sf);
+
+  sf = std::make_shared<EnclosureSectorFeature>();
   sfs.push_back(sf);
 
   return sfs;

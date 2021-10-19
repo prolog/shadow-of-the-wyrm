@@ -34,7 +34,7 @@ class IInventory : public ISerializable
     // Attempt to merge the item.  If the item cannot be merged into the
     // inventory, add it either to the front or to the back, based on the
     // parameter provided.
-    virtual void merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc) = 0;
+    virtual bool merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc) = 0;
 
     // Attempt to merge the item.  Return true if the item could be merged into an existing item
     // in the inventory, false otherwise.  When returning false, the item is not added to the inventory.

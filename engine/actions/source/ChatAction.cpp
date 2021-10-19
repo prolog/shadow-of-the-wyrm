@@ -1,11 +1,14 @@
 #include "ActionTextKeys.hpp"
 #include "ChatAction.hpp"
 #include "Commands.hpp"
+#include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
+#include "TextFormatSpecifiers.hpp"
 
 using namespace std;
 
@@ -83,12 +86,38 @@ bool ChatAction::chat_single_creature(CreaturePtr querying_creature, CreaturePtr
   if (speaking_creature)
   {
     // Check to see if the creature is quest-granting:
+    Game& game = Game::instance();
     ScriptDetails sd = speaking_creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT);
+    TimeOfDayType tod = GameUtils::get_date(game).get_time_of_day();
+    string speech_text_sid = speaking_creature->get_speech_text_sid();
+
+    // Set the chat text/scripts to the night ones if defined.
+    if (tod == TimeOfDayType::TIME_OF_DAY_NIGHT)
+    {
+      string night_speech_text_sid = speaking_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_NIGHT_SPEECH_TEXT_SID);
+
+      if (!night_speech_text_sid.empty())
+      {
+        // Set the night speech text.  If there's a regular chat script, blank
+        // that out.  It might get replaced by a night chat script further on,
+        // but the "regular" script shouldn't fire if there's TOD-related
+        // chat text.
+        speech_text_sid = night_speech_text_sid;
+        sd.set_script("");
+      }
+
+      ScriptDetails sd_night = speaking_creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT_NIGHT);
+
+      if (!sd_night.get_script().empty())
+      {
+        sd = sd_night;
+      }
+    }
+
     string chat_script = sd.get_script();
 
     if (!chat_script.empty())
     {
-      Game& game = Game::instance();
       ScriptEngine& se = game.get_script_engine_ref();
 
       if (RNG::percent_chance(sd.get_chance()))
@@ -100,9 +129,6 @@ bool ChatAction::chat_single_creature(CreaturePtr querying_creature, CreaturePtr
     }
     else
     {
-      // If not, go ahead and use the default speech option:
-      string speech_text_sid = speaking_creature->get_speech_text_sid();
-
       // If a creature doesn't have speech text defined, throw up a generic
       // response.
       if (speech_text_sid.empty())
@@ -165,9 +191,27 @@ bool ChatAction::chat_multiple_options(CreaturePtr querying_creature, const Crea
 void ChatAction::add_chat_message(CreaturePtr creature, const string& chat_text_sid) const
 {
   IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+  string chat_text = StringTable::get(chat_text_sid);
+  vector<string> chat_texts = String::clean_and_trim(String::split(chat_text, TextFormatSpecifiers::NEW_PARAGRAPH));
+  size_t ct_sz = chat_texts.size();
 
-  manager.add_new_message(StringTable::get(chat_text_sid));
-  manager.send();
+  for (size_t i = 0; i < ct_sz; i++)
+  {
+    string ct = chat_texts.at(i);
+    manager.clear_if_necessary();
+
+    if (i < ct_sz - 1)
+    {
+      manager.add_new_message_with_pause(ct);
+      manager.send();
+      creature->get_decision_strategy()->get_confirmation();
+    }
+    else
+    {
+      manager.add_new_message(ct);
+      manager.send();
+    }
+  }
 }
 
 // Chatting with a creature successfully incurs the cost of a turn.

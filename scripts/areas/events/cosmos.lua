@@ -55,6 +55,11 @@ function init_cosmos(map_id)
   -- Generate lesser divine beings throughout the level.  The number of
   -- creatures should be half the number of columns.
   add_divine_creatures(map_id, r, c, c/2)
+
+  -- Finally, now that the player has entered the cosmos, the Nine are aware
+  -- of them and devout creatures will no longer become friendly if they share
+  -- the same god.
+  set_creature_additional_property(PLAYER_ID, "CREATURE_PROPERTIES_APOSTATE", "1")
 end
 
 map_events.set_map_fn(cosmos_map_id, init_cosmos)

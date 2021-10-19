@@ -16,6 +16,7 @@ class Creature;
 class Effect
 {
   public:
+    Effect();
     virtual ~Effect() {};
 
     void set_source_id(const std::string& new_source_id);
@@ -37,6 +38,9 @@ class Effect
 
     void set_originator(CreaturePtr new_originator);
     CreaturePtr get_originator() const;
+
+    void set_bonus(const int new_bonus);
+    int get_bonus() const;
 
     // Create an exact copy
     virtual Effect* clone() = 0;
@@ -63,6 +67,7 @@ class Effect
 
     // Where did the effect originally come from?
     std::string source_id;
+    int bonus;
 };
 
 using EffectPtr = std::unique_ptr<Effect>;

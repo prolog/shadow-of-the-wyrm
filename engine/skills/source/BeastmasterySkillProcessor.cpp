@@ -84,16 +84,24 @@ void BeastmasterySkillProcessor::tame_creatures(CreaturePtr taming_creature, con
       {
         CreaturePtr to_tame = t_pair.second;
 
-        // Is the creature tamed?
-        // Mark Beastmastery if successful.
-        if (RNG::percent_chance(pc.calculate_pct_chance_tame_beastmastery(taming_creature, to_tame)))
+        if (to_tame != nullptr)
         {
-          handle_tame(taming_creature, to_tame, map, manager);
-        }
-        // If unsuccessful, the creature becomes enraged
-        else
-        {
-          handle_anger(taming_creature, t_pair, map, manager);
+          string leader_id = to_tame->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+
+          if (leader_id.empty() || (leader_id != taming_creature->get_id()))
+          {
+            // Is the creature tamed?
+            // Mark Beastmastery if successful.
+            if (RNG::percent_chance(pc.calculate_pct_chance_tame_beastmastery(taming_creature, to_tame)))
+            {
+              handle_tame(taming_creature, to_tame, map, manager);
+            }
+            // If unsuccessful, the creature becomes enraged
+            else
+            {
+              handle_anger(taming_creature, t_pair, map, manager);
+            }
+          }
         }
       }
 
@@ -110,6 +118,8 @@ void BeastmasterySkillProcessor::handle_tame(CreaturePtr taming_creature, Creatu
 {
   if (taming_creature != nullptr && to_tame != nullptr)
   {
+    Game::instance().get_deity_action_manager_ref().notify_action(taming_creature, current_map, CreatureActionKeys::ACTION_PACIFY, true);
+
     HostilityManager hm;
 
     hm.remove_hostility_to_creature(to_tame, taming_creature->get_id());
@@ -158,7 +168,7 @@ void BeastmasterySkillProcessor::handle_anger(CreaturePtr taming_creature, const
     }
 
     HostilityManager hm;
-    hm.set_hostility_to_creature(to_tame, taming_creature->get_id());
+    hm.set_hostility_to_creature(to_tame, taming_creature->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
 
     manager.add_new_message(ActionTextKeys::get_tame_failure_message(to_tame->get_description_sid()));
   }

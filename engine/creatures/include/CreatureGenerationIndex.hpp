@@ -12,6 +12,7 @@ class CreatureGenerationIndex
 
     CreatureGenerationList get() const;
     CreatureGenerationList get(const int danger_level) const;
+    bool empty() const;
 
   protected:
     void initialize_index(const CreatureGenerationList& cgl);

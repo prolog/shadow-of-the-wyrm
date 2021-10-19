@@ -121,6 +121,19 @@
 				<Friendly>1</Friendly>
 			</Placement>
 			<Placement>
+				<ID>mountain_elf_scholar</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>32</Col>
+				</Coord>
+				<Friendly>1</Friendly>
+				<EventScripts>
+					<ChatScript>
+						<Script>quests/atuaelar/scholar_work.lua</Script>
+					</ChatScript>
+				</EventScripts>
+			</Placement>
+			<Placement>
 				<ID>mountain_elf_brewer</ID>
 				<Coord>
 					<Row>15</Row>

@@ -52,12 +52,12 @@ CommandPtr NPCPickupDecisionStrategy::decide(CreaturePtr creature, MapPtr map)
           // health!
           // 
           // They also don't pick up items that will make them burdened.
-          if (CreatureUtils::can_pick_up(creature, item).first &&
-            cca.can_see(creature) &&
-            item != nullptr &&
-            !item->get_unpaid() &&
-            pickup &&
-            (weight_carried_oz + item->get_total_weight().get_weight() < burden_weight_oz))
+          if (get<1>(CreatureUtils::can_pick_up(creature, item)) > 0 &&
+              cca.can_see(creature) &&
+              item != nullptr &&
+             !item->get_unpaid() &&
+              pickup &&
+             (weight_carried_oz + item->get_total_weight().get_weight() < burden_weight_oz))
           {
             ItemType itype = item->get_type();
 
@@ -246,7 +246,7 @@ CommandPtr NPCPickupDecisionStrategy::get_pick_up_book_decision(CreaturePtr crea
   CommandPtr pu_cmd;
   CurrentCreatureAbilities cca;
 
-  // Creatures only pick up wands if they can speak - otherwise, evoking won't
+  // Creatures only pick up spellbooks if they can speak - otherwise, casting won't
   // work.
   if (creature != nullptr && item != nullptr && cca.can_speak(creature))
   {

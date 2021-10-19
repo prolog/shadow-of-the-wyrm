@@ -14,6 +14,13 @@
 #include "SDLPromptProcessor.hpp"
 #include "Settings.hpp"
 
+enum class SDLWindowMode
+{
+  SDL_WINDOW_MODE_WINDOWED = 0,
+  SDL_WINDOW_MODE_DESKTOP_FULLSCREEN = 1,
+  SDL_WINDOW_MODE_FULLSCREEN = 2
+};
+
 class SDLDisplay : public Display
 {
 	public:
@@ -22,6 +29,8 @@ class SDLDisplay : public Display
     
 	  virtual bool create() override;
 	  virtual void tear_down() override;
+
+    virtual std::string toggle_fullscreen() override;
 
     virtual std::string get_name() const override;
 
@@ -98,6 +107,8 @@ class SDLDisplay : public Display
     virtual Display* clone() override;
 
   protected:
+    void set_window_dimensions(const Settings& settings);
+
     // Functions to help set up the SDL display
     bool read_dimensions_from_settings();
     bool read_font_into_texture();

@@ -40,6 +40,17 @@ void StoneStatusEffect::tick(CreaturePtr creature, const int danger_level) const
   }
 }
 
+void StoneStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr affected_creature) const
+{
+  if (initiating != nullptr)
+  {
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+
+    game.get_deity_action_manager_ref().notify_action(initiating, current_map, CreatureActionKeys::ACTION_PETRIFY, true);
+  }
+}
+
 void StoneStatusEffect::finalize(CreaturePtr creature) const
 {
   if (creature != nullptr)

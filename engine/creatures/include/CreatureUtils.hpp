@@ -30,7 +30,7 @@ class CreatureUtils
     static bool is_player_or_in_los(CreaturePtr c);
 
     // Can the creature pick up the item?
-    static std::pair<bool, std::string> can_pick_up(CreaturePtr c, ItemPtr i);
+    static std::tuple<bool, uint, std::string> can_pick_up(CreaturePtr c, ItemPtr i);
 
     // Can the creature equip the weapon?
     static bool can_equip_weapon(CreaturePtr creature, WeaponPtr weapon);
@@ -86,6 +86,8 @@ class CreatureUtils
     static void set_leadership(CreaturePtr creature, const std::string& leader_id, MapPtr map, const int pass = 1);
 
     static bool has_primordial_essence(CreaturePtr creature);
+
+    static void add_piety_message_if_player(CreaturePtr creature);
 
   protected:
     CreatureUtils();

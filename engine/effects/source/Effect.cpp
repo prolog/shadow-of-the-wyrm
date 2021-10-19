@@ -6,6 +6,11 @@
 
 using namespace std;
 
+Effect::Effect()
+: bonus(0)
+{
+}
+
 void Effect::set_source_id(const string& new_source_id)
 {
   source_id = new_source_id;
@@ -14,6 +19,16 @@ void Effect::set_source_id(const string& new_source_id)
 string Effect::get_source_id() const
 {
   return source_id;
+}
+
+void Effect::set_bonus(const int new_bonus)
+{
+  bonus = new_bonus;
+}
+
+int Effect::get_bonus() const
+{
+  return bonus;
 }
 
 void Effect::clear_additional_effect_messages()

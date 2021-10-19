@@ -31,4 +31,5 @@ const string ItemProperties::ITEM_PROPERTIES_CONTRABAND = "contraband";
 const string ItemProperties::ITEM_PROPERTIES_FLOATS = "floats";
 const string ItemProperties::ITEM_PROPERTIES_METABOLIZES_ALCOHOL = "met_alc";
 const string ItemProperties::ITEM_PROPERTIES_SUPPRESS_ITEM_GENERATION_ON_DESTRUCTION = "no_item_on_destr";
+const string ItemProperties::ITEM_PROPERTIES_REMAINS = "remains";
 

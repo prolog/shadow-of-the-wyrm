@@ -3,6 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <boost/tokenizer.hpp>
+#include "ActionTextKeys.hpp"
 #include "Animation.hpp"
 #include "Colours.hpp"
 #include "Conversion.hpp"
@@ -29,6 +30,13 @@ uint CursesDisplay::TERMINAL_MAX_COLS = 80;
 
 const int CURSES_NUM_BASE_COLOURS = 8;
 const int CURSES_NUM_TOTAL_COLOURS = 16;
+
+string CursesDisplay::toggle_fullscreen()
+{
+  // Curses has no notion of fullscreen.
+  string result = ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_CURSES;
+  return result;
+}
 
 void CursesDisplay::set_spritesheets(const map<string, pair<string, unordered_map<string, Coordinate>>>& spritesheets)
 {
@@ -66,7 +74,7 @@ Display* CursesDisplay::clone()
 }
 
 CursesDisplay::CursesDisplay()
-: message_buffer_screen(nullptr)
+: message_buffer_screen(nullptr), can_use_colour(true)
 {
 }
 

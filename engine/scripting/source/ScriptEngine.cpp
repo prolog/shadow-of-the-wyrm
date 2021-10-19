@@ -1,5 +1,6 @@
 #include "Conversion.hpp"
 #include "CitySectorTypes.hpp"
+#include "Date.hpp"
 #include "GameEnvTextKeys.hpp"
 #include "Log.hpp"
 #include "LuaAPIFunctions.hpp"
@@ -280,6 +281,11 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_DECISION);
   lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_DROP);
   lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_ENTER_TILE);
+
+  lua_exportConst(ls, CTIME_OF_DAY_DAWN);
+  lua_exportConst(ls, CTIME_OF_DAY_DAY);
+  lua_exportConst(ls, CTIME_OF_DAY_DUSK);
+  lua_exportConst(ls, CTIME_OF_DAY_NIGHT);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)

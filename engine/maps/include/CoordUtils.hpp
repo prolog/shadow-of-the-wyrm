@@ -34,6 +34,10 @@ class CoordUtils
     static std::vector<Coordinate> get_perimeter_coordinates(const Coordinate& top_left, const Coordinate& bottom_right);
     static bool is_in_perimeter(const Coordinate& cur_loc, const Coordinate& c1, const Coordinate& c2);
 
+    // Get all the coordinates for a given rectangle that are not in the
+    // perimeter.
+    static std::vector<Coordinate> get_interior_coordinates(const Coordinate& top_left, const Coordinate& bottom_right);
+
     // Get coordinates used for a beam.
     // A radius 1 beam: *******
     //

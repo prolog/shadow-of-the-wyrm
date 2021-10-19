@@ -44,21 +44,18 @@ pair<int, int> SettlementGeneratorUtils::get_door_location(const int start_row, 
 // or road.
 bool SettlementGeneratorUtils::does_building_overlap(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col, const int offset_extra)
 {
-  bool building_will_overlap = false;
-
   for (int cur_row = start_row - offset_extra; cur_row <= end_row + offset_extra; cur_row++)
   {
     for (int cur_col = start_col - offset_extra; cur_col <= end_col + offset_extra; cur_col++)
     {
       if (does_tile_overlap(map, cur_row, cur_col))
       {
-        building_will_overlap = true;
-        break;
+        return true;
       }
     }
   }
 
-  return building_will_overlap;
+  return false;
 }
 
 bool SettlementGeneratorUtils::does_tile_overlap(MapPtr map, const int row, const int col)
@@ -72,18 +69,29 @@ bool SettlementGeneratorUtils::does_tile_overlap(MapPtr map, const int row, cons
   if (row < max_rows && col < max_cols)
   {
     TilePtr tile = map->at(row, col);
-    TileType type = tile->get_tile_type();
 
-    if (type == TileType::TILE_TYPE_ROAD || 
-        type == TileType::TILE_TYPE_ROCK || 
-        type == TileType::TILE_TYPE_EARTH || 
-        type == TileType::TILE_TYPE_DUNGEON || 
-        type == TileType::TILE_TYPE_RIVER || 
-        type == TileType::TILE_TYPE_SPRINGS || 
-        type == TileType::TILE_TYPE_DOWN_STAIRCASE || 
-        type == TileType::TILE_TYPE_UP_STAIRCASE)
+    if (tile != nullptr)
     {
-      tile_overlaps = true;
+      if (tile->has_feature())
+      {
+        tile_overlaps = true;
+      }
+      else
+      {
+        TileType type = tile->get_tile_type();
+
+        if (type == TileType::TILE_TYPE_ROAD ||
+          type == TileType::TILE_TYPE_ROCK ||
+          type == TileType::TILE_TYPE_EARTH ||
+          type == TileType::TILE_TYPE_DUNGEON ||
+          type == TileType::TILE_TYPE_RIVER ||
+          type == TileType::TILE_TYPE_SPRINGS ||
+          type == TileType::TILE_TYPE_DOWN_STAIRCASE ||
+          type == TileType::TILE_TYPE_UP_STAIRCASE)
+        {
+          tile_overlaps = true;
+        }
+      }
     }
 
     return tile_overlaps;
@@ -346,4 +354,49 @@ pair<bool, int> SettlementGeneratorUtils::generate_sector_feature_if_possible(Ma
     }
   }
   return placed;
+}
+
+bool SettlementGeneratorUtils::place_sign(MapPtr map, const int row, const int col, const std::string& settlement_name)
+{
+  bool placed_sign = false;
+
+  if (map != nullptr)
+  {
+    TilePtr tile = map->at(row, col);
+
+    if (tile != nullptr && !tile->has_feature())
+    {
+      if (!settlement_name.empty())
+      {
+        FeaturePtr sign = FeatureGenerator::generate_sign(settlement_name);
+        tile->set_feature(sign);
+
+        placed_sign = true;
+      }
+    }
+  }
+
+  return placed_sign;
+}
+
+bool SettlementGeneratorUtils::generate_perimeter_sign(MapPtr map, const std::string& settlement_name)
+{
+  bool placed_sign = false;
+
+  if (map != nullptr)
+  {
+    int cnt = 0;
+
+    while (cnt < 5 && placed_sign == false)
+    {
+      int max_y = map->size().get_y() - 1;
+      int max_x = map->size().get_x() - 1;
+      int s_row = RNG::percent_chance(50) ? RNG::range(1, 2) : RNG::range(max_y - 2, max_y - 1);
+      int s_col = RNG::percent_chance(50) ? RNG::range(1, 2) : RNG::range(max_x - 2, max_x - 1);
+
+      placed_sign = place_sign(map, s_row, s_col, settlement_name);
+    }
+  }
+
+  return placed_sign;
 }

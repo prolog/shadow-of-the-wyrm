@@ -28,7 +28,7 @@ VEGETABLE6_ID = "_vegetable_6"
 BLUE_WILDFLOWER_ID = "_wildflower_3"
 CYAN_WILDFLOWER_ID = "_wildflower_5"
 CREAM_WILDFLOWER_ID = "_wildflower_6"
-SHOVEL_ID = "shovel"
+SHOVEL_ID = "_shovel"
 GAIN_ATTRIBUTES_POTION_ID = "gain_attributes_potion"
 SPEED_POTION_ID = "speed_potion"
 HEALING_POTION_ID = "_healing_potion"
@@ -80,3 +80,7 @@ QUEST_ISEN_DUN_YEW_COMPLETE = "quest_isen_dun_yew_complete"
 QUEST_GOLGOA_WIZARD_COMPLETE = "quest_golgoa_wizard_complete"
 QUEST_STONEHEIM_RAID = "quest_stoneheim_raid_in_progress"
 QUEST_STONEHEIM_RAID_INITIATED = "quest_stoneheim_raid_initiated"
+
+-- Memberships
+WITCHLINGS_MEMBERSHIP_ID = "witchlings"
+

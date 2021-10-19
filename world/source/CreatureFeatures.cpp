@@ -24,6 +24,7 @@ CreatureEventScripts::~CreatureEventScripts()
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH = "CREATURE_EVENT_SCRIPT_DEATH";
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK = "CREATURE_EVENT_SCRIPT_ATTACK";
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT = "CREATURE_EVENT_SCRIPT_CHAT";
+const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT_NIGHT = "CREATURE_EVENT_SCRIPT_NIGHT";
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION = "CREATURE_EVENT_SCRIPT_DECISION";
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_DROP = "CREATURE_EVENT_SCRIPT_DROP";
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_ENTER_TILE = "CREATURE_EVENT_SCRIPT_ENTER_TILE";
@@ -38,6 +39,7 @@ CreatureID::~CreatureID()
 }
 
 const string CreatureID::CREATURE_ID_SHOPKEEPER = "_shopkeeper";
+const string CreatureID::CREATURE_ID_HERMIT = "_hermit";
 const string CreatureID::CREATURE_ID_FAIRY_SPIRIT = "_fairy_spirit";
 const string CreatureID::CREATURE_ID_MAGICAL_SPIRIT = "_magical_spirit";
 const string CreatureID::CREATURE_ID_VENDOR = "_vendor";
@@ -57,6 +59,9 @@ const string CreatureID::CREATURE_ID_SMALL_CHILD = "_small_child";
 const string CreatureID::CREATURE_ID_GUARD = "_guard";
 const string CreatureID::CREATURE_ID_BARTENDER = "_bartender";
 const string CreatureID::CREATURE_ID_DRUNK = "_drunk";
+const string CreatureID::CREATURE_ID_SHEEP = "_sheep";
+const string CreatureID::CREATURE_ID_CHICKEN = "_chicken";
+const string CreatureID::CREATURE_ID_WITCHLING = "_witchling";
 
 MembershipID::MembershipID()
 {

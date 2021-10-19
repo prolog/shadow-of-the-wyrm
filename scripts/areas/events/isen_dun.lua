@@ -14,8 +14,13 @@ local function init_seagarden(map_id)
   add_object_to_map(SHOVEL_ID, map_id, RNG_range(15, 16), 67)
 end
 
+local function init_pier_garden(map_id)
+  generate_vegetable_garden(map_id, 12, 15, 51, 54, true, 1, 1)
+end
+
 local function init_isen_dun(map_id)
   init_seagarden(map_id)
+  init_pier_garden(map_id)
 end
 
 map_events.set_map_fn(map_id, init_isen_dun)

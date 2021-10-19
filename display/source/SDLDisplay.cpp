@@ -1,6 +1,7 @@
 #ifdef ENABLE_SDL
 #include <boost/algorithm/string.hpp>
 #include <boost/tokenizer.hpp>
+#include "ActionTextKeys.hpp"
 #include "Conversion.hpp"
 #include "SDLKeyboardController.hpp"
 #include "SDLDisplay.hpp"
@@ -103,6 +104,26 @@ void SDLDisplay::tear_down()
 
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
+}
+
+string SDLDisplay::toggle_fullscreen()
+{
+  string result = ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_SDL_TRUE;
+  Settings& settings = Game::instance().get_settings_ref();
+  int fs_mode = String::to_int(settings.get_setting(Setting::DISPLAY_SDL_WINDOW_MODE));
+
+  // The toggle doesn't work in true fullscreen
+  if (fs_mode == 0 || fs_mode == 1)
+  {
+    fs_mode = SDL_WINDOW_FULLSCREEN_DESKTOP;
+
+    bool currently_fs = SDL_GetWindowFlags(window) & fs_mode;
+    result = currently_fs ? ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_SDL_WINDOWED : ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_SDL_DESKTOP;
+    SDL_SetWindowFullscreen(window, currently_fs ? 0 : fs_mode);
+    SDL_SetWindowSize(window, sdld.get_screen_width(), sdld.get_screen_height());
+  }
+
+  return result;
 }
 
 string SDLDisplay::get_name() const
@@ -354,17 +375,35 @@ bool SDLDisplay::create_window_and_renderer()
     }
     else
     {
-      // Set additional values
-      SDL_DisplayMode display_mode;
-      SDL_GetCurrentDisplayMode(0, &display_mode);
-      bool integer_scaling = settings.get_setting_as_bool(Setting::DISPLAY_SDL_INTEGER_SCALING);
+      // Setup fullscreen if requested.
+      string window_mode_s = get_property(Setting::DISPLAY_SDL_WINDOW_MODE);
+      if (!window_mode_s.empty())
+      {
+        SDLWindowMode window_mode = static_cast<SDLWindowMode>(String::to_int(window_mode_s));
 
-      SDL_RenderSetLogicalSize(renderer, sdld.get_screen_width(), sdld.get_screen_height());
-      SDL_RenderSetIntegerScale(renderer, integer_scaling ? SDL_bool::SDL_TRUE : SDL_bool::SDL_FALSE);
+        if (window_mode != SDLWindowMode::SDL_WINDOW_MODE_WINDOWED)
+        {
+          auto sdl_win_mode = (window_mode == SDLWindowMode::SDL_WINDOW_MODE_DESKTOP_FULLSCREEN) ? SDL_WINDOW_FULLSCREEN_DESKTOP : SDL_WINDOW_FULLSCREEN;
+
+          SDL_SetWindowFullscreen(window, sdl_win_mode);
+          SDL_RaiseWindow(window);
+        }
+      }
+
+      set_window_dimensions(settings);
     }
   }
 
   return wr_created;
+}
+
+void SDLDisplay::set_window_dimensions(const Settings& settings)
+{
+  // Set additional values
+  bool integer_scaling = settings.get_setting_as_bool(Setting::DISPLAY_SDL_INTEGER_SCALING);
+
+  SDL_RenderSetLogicalSize(renderer, sdld.get_screen_width(), sdld.get_screen_height());
+  SDL_RenderSetIntegerScale(renderer, integer_scaling ? SDL_bool::SDL_TRUE : SDL_bool::SDL_FALSE);
 }
 
 // width is in rows

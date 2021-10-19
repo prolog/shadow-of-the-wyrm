@@ -3,6 +3,7 @@
 using std::string;
 
 SerializationException::SerializationException()
+: msg("Serialization Exception")
 {
 }
 
@@ -15,13 +16,11 @@ SerializationException::SerializationException(const std::string& addl_details)
 // Serialization exception
 const char* SerializationException::what() const throw()
 {
-  string serialize_what = "Serialization Exception. ";
-
   if (!additional_desc.empty())
   {
-    serialize_what += additional_desc;
+    return additional_desc.c_str();
   }
 
-  return serialize_what.c_str();
+  return msg.c_str();
 }
 

@@ -42,3 +42,18 @@ TEST(SW_Engine_Creatures_CreatureGenerationIndex, get_danger_level)
   CreatureGenerationIndex cgi_empty;
   EXPECT_TRUE(cgi_empty.get(3).empty());
 }
+
+TEST(SW_Engine_Creatures_CreatureGenerationIndex, empty)
+{
+  CreatureGenerationList creature_list;
+
+  EXPECT_TRUE(creature_list.empty());
+
+  CreatureGenerationValues cgv;
+  cgv.set_danger_level(3);
+  CreatureGenerationListValue cglv("abc123", nullptr, cgv);
+
+  creature_list.push_back(cglv);
+
+  EXPECT_FALSE(creature_list.empty());
+}

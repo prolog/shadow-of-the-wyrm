@@ -15,6 +15,7 @@
 #include "EffectFactory.hpp"
 #include "ExperienceManager.hpp"
 #include "FeatureGenerator.hpp"
+#include "FruitVegetableGardenGenerator.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "GenerationProperties.hpp"
@@ -36,6 +37,7 @@
 #include "Naming.hpp"
 #include "OptionScreen.hpp"
 #include "OrderAction.hpp"
+#include "EnclosureSectorFeature.hpp"
 #include "PickupAction.hpp"
 #include "PrimordialCalculator.hpp"
 #include "RaceManager.hpp"
@@ -173,7 +175,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_message", add_message);
   lua_register(L, "add_fov_message", add_fov_message);
   lua_register(L, "add_message_direct", add_message_direct);
-  lua_register(L, "add_debug_message", add_debug_message);
+  lua_register(L, "add_debug_message", add_debug_message);  
   lua_register(L, "add_confirmation_message", add_confirmation_message);
   lua_register(L, "add_prompt_message", add_prompt_message);
   lua_register(L, "add_char_message", add_char_message);
@@ -186,6 +188,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_object_to_player_tile", add_object_to_player_tile);
   lua_register(L, "add_object_to_map", add_object_to_map);
   lua_register(L, "add_object_to_creature", add_object_to_creature);
+  lua_register(L, "add_object_on_tile_to_creature", add_object_on_tile_to_creature);
   lua_register(L, "add_object_to_tile", add_object_to_tile);
   lua_register(L, "add_key_to_player_tile", add_key_to_player_tile);
   lua_register(L, "add_configurable_feature_to_map", add_configurable_feature_to_map);
@@ -405,6 +408,10 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "generate_ancient_beast", generate_ancient_beast);
   lua_register(L, "generate_hireling", generate_hireling);
   lua_register(L, "generate_adventurer", generate_adventurer);
+  lua_register(L, "generate_vegetable_garden", generate_vegetable_garden);
+  lua_register(L, "generate_enclosure", generate_enclosure);
+  lua_register(L, "generate_hermitage", generate_hermitage);
+  lua_register(L, "remove_chat_script", remove_chat_script);
   lua_register(L, "set_colour", set_colour);
   lua_register(L, "add_npc_level_message", add_npc_level_message);
   lua_register(L, "set_leader", set_leader);
@@ -425,6 +432,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "count_creature_humanoid_followers", count_creature_humanoid_followers);
   lua_register(L, "set_chat_script", set_chat_script);
   lua_register(L, "count_creatures_with_race", count_creatures_with_race);
+  lua_register(L, "get_time_of_day", get_time_of_day);
 }
 
 // Lua API helper functions
@@ -1119,6 +1127,50 @@ int add_object_to_creature(lua_State* ls)
   }
 
   lua_pushboolean(ls, obj_added);
+  return 1;
+}
+
+int add_object_on_tile_to_creature(lua_State* ls)
+{
+  bool added_obj = false;
+
+  if (lua_gettop(ls) == 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3) && lua_isstring(ls, 4))
+  {
+    int y = lua_tointeger(ls, 1);
+    int x = lua_tointeger(ls, 2);
+    string item_id = lua_tostring(ls, 3);
+    string creature_id = lua_tostring(ls, 4);
+
+    MapPtr map = Game::instance().get_current_map();
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (map != nullptr && creature != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      if (tile != nullptr)
+      {
+        IInventoryPtr tile_items = tile->get_items();
+        ItemPtr i = tile_items->get_from_id(item_id);
+
+        if (i != nullptr)
+        {
+          added_obj = creature->get_inventory()->merge_or_add(i, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          
+          if (added_obj)
+          {
+            tile_items->remove(item_id);
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_object_on_tile_to_creature");
+  }
+
+  lua_pushboolean(ls, added_obj);
   return 1;
 }
 
@@ -2154,7 +2206,7 @@ int add_status_to_creature(lua_State* ls)
 
     if (creature && !creature->has_status(status_id))
     {
-      StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
+      StatusEffectPtr se = StatusEffectFactory::create_status_effect(/* don't know originator */ nullptr, status_id, "");
       se->apply_change(creature, danger_level);
 
       lua_pushboolean(ls, true);
@@ -2198,7 +2250,7 @@ int add_status_to_creature_at(lua_State* ls)
       {
         CreaturePtr creature = tile->get_creature();
 
-        StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
+        StatusEffectPtr se = StatusEffectFactory::create_status_effect(/* don't know originator */ nullptr, status_id, "");
         se->apply_change(creature, danger_level);
 
         added_status = true;
@@ -4586,12 +4638,20 @@ int clear_deities(lua_State* ls)
 
 int summon_monsters_around_creature(lua_State* ls)
 {
-  if (lua_gettop(ls) == 4 && lua_istable(ls, 1) && lua_isstring(ls, 2) && lua_isnumber(ls, 3))
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 4 && lua_istable(ls, 1) && lua_isstring(ls, 2) && lua_isnumber(ls, 3))
   {
     vector<string> monsters = LuaUtils::get_string_array_from_table(ls, 1);
     string creature_id = lua_tostring(ls, 2);
     int num_to_summon = lua_tointeger(ls, 3);
     bool override_hostility = lua_toboolean(ls, 4) != 0;
+    string deity_id;
+
+    if (num_args == 5 && lua_isstring(ls, 5))
+    {
+      deity_id = lua_tostring(ls, 5);
+    }
 
     if (!monsters.empty())
     {
@@ -4624,7 +4684,12 @@ int summon_monsters_around_creature(lua_State* ls)
             if (override_hostility)
             {
               HostilityManager hm;
-              hm.set_hostility_to_player(creature);
+              hm.set_hostility_to_player(creature, true, ThreatConstants::ACTIVE_THREAT_RATING);
+            }
+
+            if (!deity_id.empty())
+            {
+              creature->get_religion_ref().set_active_deity_id(deity_id);
             }
 
             GameUtils::add_new_creature_to_map(game, creature, current_map, c);
@@ -8246,6 +8311,125 @@ int generate_adventurer(lua_State* ls)
   return 0;
 }
 
+int generate_vegetable_garden(lua_State* ls)
+{
+  bool generated = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 5 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int y_start = lua_tointeger(ls, 2);
+    int y_end = lua_tointeger(ls, 3);
+    int x_start = lua_tointeger(ls, 4);
+    int x_end = lua_tointeger(ls, 5);
+    bool fence = false;
+    int row_spacing = 1;
+    int col_spacing = 1;
+
+    if (num_args >= 6 && lua_isboolean(ls, 6))
+    {
+      fence = lua_toboolean(ls, 6);
+    }
+
+    if (num_args >= 8 && lua_isnumber(ls, 7) && lua_isnumber(ls, 8))
+    {
+      row_spacing = lua_tointeger(ls, 7);
+      col_spacing = lua_tointeger(ls, 8);
+    }
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+    FruitVegetableGardenGenerator fvgg(FruitVegetableGardenType::FVG_TYPE_VEGETABLE, "", AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, col_spacing, row_spacing, fence);
+
+    if (map != nullptr)
+    {
+      fvgg.generate(map, { y_start, x_start }, { y_end, x_end });
+      generated = true;
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to generate_vegetable_garden");
+  }
+
+  lua_pushboolean(ls, generated);
+  return 1;
+}
+
+int generate_enclosure(lua_State* ls)
+{
+  bool generated = false;
+
+  if (lua_gettop(ls) == 5 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5))
+  {
+    Coordinate st_coord = { lua_tointeger(ls, 1), lua_tointeger(ls, 2) };
+    Coordinate end_coord = { lua_tointeger(ls, 3), lua_tointeger(ls, 4) };
+    EnclosureContentsType etype = static_cast<EnclosureContentsType>(lua_tointeger(ls, 5));
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      EnclosureSectorFeature esf(etype);
+      generated = esf.generate(map, st_coord, end_coord);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to generate_enclosure");
+  }
+
+  lua_pushboolean(ls, generated);
+  return 1;
+}
+
+int generate_hermitage(lua_State* ls)
+{
+  if (lua_gettop(ls) == 0)
+  {
+    MapPtr map = Game::instance().get_current_map();
+    
+    if (map != nullptr)
+    {
+      GeneratorUtils::generate_hermitage(map);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to generate_hermitage");
+  }
+
+  return 0;
+}
+
+int remove_chat_script(lua_State* ls)
+{
+  bool removed = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      EventScriptsMap& events = creature->get_event_scripts_ref();
+      auto e_it = events.find(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT);
+
+      if (e_it != events.end())
+      {
+        events.erase(e_it);
+        removed = true;
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to remove_chat_script");
+  }
+
+  lua_pushboolean(ls, removed);
+  return 1;
+}
 int set_colour(lua_State* ls)
 {
   if (lua_gettop(ls) == 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
@@ -8783,5 +8967,23 @@ int count_creatures_with_race(lua_State* ls)
   }
 
   lua_pushinteger(ls, cnt);
+  return 1;
+}
+
+int get_time_of_day(lua_State* ls)
+{
+  int tod = CTIME_OF_DAY_UNDEFINED;
+
+  if (lua_gettop(ls) == 0)
+  {
+    TimeOfDayType todt = GameUtils::get_date(Game::instance()).get_time_of_day();
+    tod = static_cast<int>(todt);
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_time_of_day");
+  }
+
+  lua_pushinteger(ls, tod);
   return 1;
 }

@@ -51,7 +51,7 @@ bool TimewalkEffect::timewalk(CreaturePtr creature)
 
   if (creature != nullptr)
   {
-    StatusEffectPtr tw = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_TIMEWALK, creature->get_id());
+    StatusEffectPtr tw = StatusEffectFactory::create_status_effect(this->get_originator(), StatusIdentifiers::STATUS_ID_TIMEWALK, creature->get_id());
     tw->apply_change(creature, creature->get_level().get_current());
 
     timewalked = true;

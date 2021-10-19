@@ -1,5 +1,13 @@
 #include "XMLSkillsReaders.hpp"
 
+XMLSkillsReader::XMLSkillsReader()
+{
+}
+
+XMLSkillsReader::~XMLSkillsReader()
+{
+}
+
 // XMLSkillsReader
 Skills XMLSkillsReader::get_skills(const XMLNode& skills_node)
 {
@@ -19,6 +27,10 @@ Skills XMLSkillsReader::get_skills(const XMLNode& skills_node)
 }
 
 // XMLGeneralSkillsReader
+XMLGeneralSkillsReader::XMLGeneralSkillsReader()
+{
+}
+
 void XMLGeneralSkillsReader::parse_general_skills(Skills& skills, const XMLNode& general_skills_node)
 {
   if (!general_skills_node.is_null())
@@ -128,6 +140,10 @@ void XMLGeneralSkillsReader::parse_general_skills(Skills& skills, const XMLNode&
 }
 
 // XMLWeaponSkillsReader
+XMLWeaponSkillsReader::XMLWeaponSkillsReader()
+{
+}
+
 void XMLWeaponSkillsReader::parse_weapon_skills(Skills& skills, const XMLNode& weapon_skills_node)
 {
   if (!weapon_skills_node.is_null())
@@ -155,6 +171,10 @@ void XMLWeaponSkillsReader::parse_weapon_skills(Skills& skills, const XMLNode& w
 }
 
 // XMLRangedWeaponSkillsReader
+XMLRangedWeaponSkillsReader::XMLRangedWeaponSkillsReader()
+{
+}
+
 void XMLRangedWeaponSkillsReader::parse_ranged_weapon_skills(Skills& skills, const XMLNode& ranged_weapon_skills_node)
 {
   if (!ranged_weapon_skills_node.is_null())
@@ -182,6 +202,10 @@ void XMLRangedWeaponSkillsReader::parse_ranged_weapon_skills(Skills& skills, con
 }
 
 // XMLMagicSkillsReader
+XMLMagicSkillsReader::XMLMagicSkillsReader()
+{
+}
+
 void XMLMagicSkillsReader::parse_magic_skills(Skills& skills, const XMLNode& magic_skills_node)
 {
   if (!magic_skills_node.is_null())

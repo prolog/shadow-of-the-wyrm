@@ -2653,10 +2653,10 @@
 				<Resistances>
 					<Cold>0.20</Cold>
 					<Acid>0.15</Acid>
-					<Poison>0.15</Poison>
+					<Poison>0.20</Poison>
 				</Resistances>
-				<Evade>5</Evade>
-				<Soak>10</Soak>
+				<Evade>8</Evade>
+				<Soak>8</Soak>
 			</Ring>
 			<Ring id="asturias">
 				<DescriptionSID>ASTURIAS_SID</DescriptionSID>
@@ -5659,6 +5659,42 @@
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="_board_with_nail_in_it">
+				<DescriptionSID>BOARD_WITH_NAIL_IN_IT_SID</DescriptionSID>
+				<UsageDescriptionSID>BOARD_WITH_NAIL_IN_IT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BOARD_WITH_NAIL_IN_IT_CODEX_SID</CodexDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>4</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>9</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>55</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>2</Modifier>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="lituus">
 				<DescriptionSID>LITUUS_SID</DescriptionSID>
 				<UsageDescriptionSID>LITUUS_USAGE_SID</UsageDescriptionSID>
@@ -7510,6 +7546,16 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>remains</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>CORPSE_RACE_ID</Name>
+						<Value>_humanoid</Value>
+					</Property>
+				</Properties>
 				<Nutrition>1950</Nutrition>
 				<FoodType>2</FoodType>
 			</Food>
@@ -7533,6 +7579,16 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>remains</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>CORPSE_RACE_ID</Name>
+						<Value>_humanoid</Value>
+					</Property>
+				</Properties>
 				<Nutrition>50</Nutrition>
 				<FoodType>2</FoodType>
 			</Food>
@@ -10897,6 +10953,32 @@
 				<Range>4</Range>
 				<Colour>7</Colour>
 			</Wand>
+			<Wand id="crumbling_wand">
+				<DescriptionSID>CRUMBLING_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_CRUMBLING_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>CRUMBLING_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_CRUMBLING_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>CRUMBLING_WAND_CODEX_SID</CodexDescriptionSID>
+				<Value>99</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<Symbol>
+					<Char>\</Char>
+					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>2</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>4</DangerLevel>
+				<Effect>26</Effect>
+				<BeamType>4</BeamType>
+				<Range>1</Range>
+				<Colour>7</Colour>
+			</Wand>
 			<Wand id="digging_wand">
 				<DescriptionSID>DIGGING_WAND_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_DIGGING_WAND_SID</UnidentifiedDescriptionSID>
@@ -10920,7 +11002,7 @@
 				<DangerLevel>2</DangerLevel>
 				<Effect>26</Effect>
 				<BeamType>1</BeamType>
-				<Range>4</Range>
+				<Range>5</Range>
 				<Colour>7</Colour>
 			</Wand>
 			<Wand id="inferno_wand">
@@ -12999,7 +13081,7 @@
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
-			<Item id="shovel">
+			<Item id="_shovel">
 				<DescriptionSID>SHOVEL_SID</DescriptionSID>
 				<UsageDescriptionSID>SHOVEL_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>SHOVEL_CODEX_SID</CodexDescriptionSID>
@@ -13045,6 +13127,16 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>remains</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>CORPSE_RACE_ID</Name>
+						<Value>_humanoid</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="mummified_corpse">
 				<DescriptionSID>MUMMIFIED_CORPSE_SID</DescriptionSID>
@@ -13065,6 +13157,16 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>remains</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>CORPSE_RACE_ID</Name>
+						<Value>_humanoid</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="mum_corpse_amaur_1">
 				<DescriptionSID>MUMMIFIED_CORPSE_AMAUR_1_SID</DescriptionSID>
@@ -13085,6 +13187,16 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>remains</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>CORPSE_RACE_ID</Name>
+						<Value>_humanoid</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="mum_corpse_amaur_2">
 				<DescriptionSID>MUMMIFIED_CORPSE_AMAUR_2_SID</DescriptionSID>
@@ -13105,6 +13217,16 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>remains</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>CORPSE_RACE_ID</Name>
+						<Value>_humanoid</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="mum_corpse_amaur_3">
 				<DescriptionSID>MUMMIFIED_CORPSE_AMAUR_3_SID</DescriptionSID>
@@ -13125,6 +13247,16 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>remains</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>CORPSE_RACE_ID</Name>
+						<Value>_humanoid</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="_pile_of_bones">
 				<DescriptionSID>PILE_OF_BONES_SID</DescriptionSID>

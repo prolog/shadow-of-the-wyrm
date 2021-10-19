@@ -288,15 +288,15 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
                !tile_creature->is_allied_to(attacking_creature->get_original_id()))
             {
               // Make them co-hostile to avoid hostility cascades.
-              hm.set_hostility_to_creature(tile_creature, attacking_creature->get_id());
-              hm.set_hostility_to_creature(attacking_creature, tile_creature->get_id());
+              hm.set_hostility_to_creature(tile_creature, attacking_creature->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
+              hm.set_hostility_to_creature(attacking_creature, tile_creature->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
             }
           }
         }
       }
     }
 
-    hm.set_hostility_to_creature(attacked_creature, attacking_creature->get_id());
+    hm.set_hostility_to_creature(attacked_creature, attacking_creature->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
   }
 }
 
@@ -488,6 +488,8 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
 
   if (sneak_attack)
   {
+    game.get_deity_action_manager_ref().notify_action(attacking_creature, current_map, CreatureActionKeys::ACTION_SNEAK_ATTACK, true);
+
     combat_message << StringTable::get(CombatTextKeys::COMBAT_SNEAK_ATTACK) << " ";
     
     if (attacked_creature)
@@ -836,13 +838,13 @@ void CombatManager::handle_damage_effects(CreaturePtr attacking_creature, Creatu
 
     for (const string& ailment : ailments)
     {
-      status_effect = StatusEffectFactory::create_status_effect(ailment, source_id);
+      status_effect = StatusEffectFactory::create_status_effect(attacking_creature, ailment, source_id);
       apply_damage_effect(creature, status_effect, effect_bonus, danger_level);
     }
   }
   else
   {
-    status_effect = StatusEffectFactory::create_effect_for_damage_type(damage_type, source_id);
+    status_effect = StatusEffectFactory::create_effect_for_damage_type(attacking_creature, damage_type, source_id);
     apply_damage_effect(creature, status_effect, effect_bonus, danger_level);
   }
 }
@@ -1204,7 +1206,7 @@ bool CombatManager::is_intimidate(CreaturePtr attacking_creature, CreaturePtr at
 
 bool CombatManager::is_close_miss(const int total_roll, const int target_number_value)
 {
-  return (is_miss(total_roll, target_number_value) && ((target_number_value - total_roll) < CombatConstants::CLOSE_MISS_THRESHOLD));
+  return (is_miss(total_roll, target_number_value) && (std::abs(total_roll - target_number_value) < CombatConstants::CLOSE_MISS_THRESHOLD));
 }
 
 bool CombatManager::is_automatic_miss(const int d100_roll)
@@ -1369,7 +1371,7 @@ bool CombatManager::knock_back_creature_if_necessary(const AttackType attack_typ
       for (const string& status_id : statuses)
       {
         string source_id = attacking_creature->get_id();
-        StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(status_id, source_id);
+        StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(attacking_creature, status_id, source_id);
 
         apply_damage_effect(attacked_creature, status_effect, 0, attacking_creature->get_level().get_current());
       }

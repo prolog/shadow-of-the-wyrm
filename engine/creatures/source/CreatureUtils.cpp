@@ -18,6 +18,7 @@
 #include "RaceManager.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
+#include "SacrificeTextKeys.hpp"
 #include "Serialize.hpp"
 #include "SpellAdditionalProperties.hpp"
 #include "StatisticTextKeys.hpp"
@@ -378,28 +379,36 @@ void CreatureUtils::incr_cha(CreaturePtr creature, const bool add_msg)
   }
 }
 
-pair<bool, string> CreatureUtils::can_pick_up(CreaturePtr c, ItemPtr i)
+tuple<bool, uint, string> CreatureUtils::can_pick_up(CreaturePtr c, ItemPtr i)
 {
-  pair<bool, string> can_pu;
-  can_pu.first = false;
+  tuple<bool, uint, string> can_pu;
+  get<0>(can_pu) = false;
+  get<1>(can_pu) = 0;
 
   if (c != nullptr && i != nullptr)
   {
     CarryingCapacityCalculator ccc;
     uint total_items = ccc.calculate_carrying_capacity_total_items(c);
-    can_pu.first = (i->get_type() == ItemType::ITEM_TYPE_CURRENCY || c->count_items() + i->get_quantity() <= total_items);
+    uint carried_items = c->count_items();
+    bool can_take = (i->get_type() == ItemType::ITEM_TYPE_CURRENCY || carried_items + i->get_quantity() <= total_items);
+    get<0>(can_pu) = can_take;
+    get<1>(can_pu) = static_cast<int>(i->get_quantity());
 
-    if (!can_pu.first)
+    if (!can_take)
     {
-      can_pu.second = ActionTextKeys::ACTION_PICK_UP_MAX_ITEMS;
+      get<1>(can_pu) = total_items - carried_items;
+      get<2>(can_pu) = ActionTextKeys::ACTION_PICK_UP_MAX_ITEMS;
     }
-    else
-    {
-      can_pu.first = c->get_weight_carried() < ccc.calculate_overburdened_weight(c);
 
-      if (!can_pu.first)
+    if (can_take)
+    {
+      can_take = c->get_weight_carried() < ccc.calculate_overburdened_weight(c);
+      get<0>(can_pu) = can_take;
+
+      if (!can_take)
       {
-        can_pu.second = ActionTextKeys::ACTION_PICK_UP_MAX_WEIGHT;
+        get<1>(can_pu) = 0;
+        get<2>(can_pu) = ActionTextKeys::ACTION_PICK_UP_MAX_WEIGHT;
       }
     }
   }
@@ -637,7 +646,7 @@ void CreatureUtils::process_creature_modifier(CreaturePtr creature, pair<string,
     if (creature->has_status(status_id))
     {
       Status st = creature->get_status(status_id);
-      StatusEffectPtr status_p = StatusEffectFactory::create_status_effect(status_id, st.get_source_id());
+      StatusEffectPtr status_p = StatusEffectFactory::create_status_effect(creature, status_id, st.get_source_id());
 
       if (sr == StatusRemovalType::STATUS_REMOVAL_FINALIZE)
       {
@@ -668,7 +677,7 @@ void CreatureUtils::apply_status_ailments(WearablePtr wearable, CreaturePtr crea
         ModifyStatisticsEffect mse;
         Modifier m;
 
-        StatusEffectPtr status = StatusEffectFactory::create_status_effect(ailment, "");
+        StatusEffectPtr status = StatusEffectFactory::create_status_effect(creature, ailment, "");
 
         if (!has_status)
         {
@@ -853,7 +862,7 @@ bool CreatureUtils::has_negative_status(CreaturePtr creature)
     for (const auto& csm_pair : csm)
     {
       string status_id = csm_pair.first;
-      StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
+      StatusEffectPtr se = StatusEffectFactory::create_status_effect(creature, status_id, "");
 
       if (se && se->is_negative())
       {
@@ -949,7 +958,7 @@ bool CreatureUtils::remove_negative_statuses_from_creature(CreaturePtr creature)
     for (const auto& csm_pair : csm)
     {
       string status_id = csm_pair.first;
-      StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id, "");
+      StatusEffectPtr se = StatusEffectFactory::create_status_effect(creature, status_id, "");
 
       if (se && se->is_negative())
       {
@@ -1095,6 +1104,21 @@ bool CreatureUtils::has_primordial_essence(CreaturePtr creature)
   }
 
   return has_essence;
+}
+
+void CreatureUtils::add_piety_message_if_player(CreaturePtr creature)
+{
+  if (creature != nullptr && creature->get_is_player())
+  {
+    ReligionManager rm;
+    int new_creature_piety = rm.get_piety_for_active_deity(creature);
+
+    IMessageManager& manager = MM::instance();
+    string sac_piety_message = SacrificeTextKeys::get_piety_message(new_creature_piety);
+
+    manager.add_new_message(sac_piety_message);
+    manager.send();
+  }
 }
 
 #ifdef UNIT_TESTS

@@ -9,6 +9,8 @@
 class XMLCreaturesReader : public XMLReader
 {
   public:
+    XMLCreaturesReader();
+
     std::pair<CreatureMap, CreatureGenerationValuesMap> get_creatures(const XMLNode& xml_configuration_creatures_node);
 
   protected:

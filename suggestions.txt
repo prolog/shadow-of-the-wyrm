@@ -1,5 +1,10 @@
 Me:
-- Get all scripts working with 1.3.2
+- get %p working on other add_message type calls
+- Asset release
+- Homesteads in fields
+- Use MapUtils::get_unblocked_door_dirs elsewhere
+- More dungeon item features:
+  - Hoard (weapons, armour, etc - trapped)
 - Houses:
   - Free from Emperor when arena cleared
   - Towns could have builders/masons
@@ -32,10 +37,8 @@ Me:
 - New sector features:
 - UndergroundSectorFeature (takes tile type - dungeoncomplex, mine, cavern,
   sewer)
-- Settlement names on signposts!
 - Kure: skinning/tanning
 - Other names: dungeons, caverns, sewers...
-- Add signposts to each random village
 - Generate tombs with keys outside door/doors locked
 - First urchin stone has no message!
 - Feature: fence, east_west_fence. Add some fenced areas to set locations.
@@ -156,9 +159,6 @@ Me:
 - Food rotting for caught fish, other foods?
 - Message when doing checkpoint saves to indicate why the delay happens.
 
-Sean McKeague:
-- Ability to pick up partial stacks.
-
 redfeek:
 - Add wide char support to more easily support UTF-8/Russian translation.
 
@@ -271,17 +271,11 @@ mission opossumable:
 - seconded ^^ (Valduk)
 
 YARD:
-- creatures of a certain deity (frostlings and shiver, black servants and
-  sceadugenga) shouldn't attack you if you worship that deity
 - spell details on shift+letter
-- corpse weight
 - wilderness, low level creatures, etc
 
 IceBox: 
 - can the confirm setting be allowed to change on load?
-
-Paul Blay:
-- Allow enchant to hit equipment too
 
 Josh Engdahl
 - Rebindable paging keys
@@ -306,10 +300,11 @@ Josh Engdahl
 - Warping out of levels doesn't put you back at the default entry position
 - Freeze not always working when hostile creatures in view or creatures 
   hostile to leader in view?
-- waterbreathing flag, similar to incorporeal, flying, etc
 - los code: .@..   can't see
             ####s
 
 - can lure ancient monsters into trap room and kill them via an unwillingness
   to move on to trapped tiles.
 
+TheGhostInTheMachine:
+- game segfaults if you put it on the path and then run it elsewhere?

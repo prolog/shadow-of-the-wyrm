@@ -1,4 +1,5 @@
 #include "DirectionUtils.hpp"
+#include "RNG.hpp"
 
 using namespace std;
 
@@ -136,6 +137,30 @@ CardinalDirection DirectionUtils::get_opposite_direction(const CardinalDirection
   }
 
   return o;
+}
+
+CardinalDirection DirectionUtils::get_random_cardinal_direction(const vector<CardinalDirection>& dirs)
+{
+  if (dirs.empty())
+  {
+    return get_random_cardinal_direction();
+  }
+  else
+  {
+    CardinalDirection cd = CardinalDirection::CARDINAL_DIRECTION_NULL;
+
+    if (!dirs.empty())
+    {
+      cd = dirs[RNG::range(0, dirs.size() - 1)];
+    }
+
+    return cd;
+  }
+}
+CardinalDirection DirectionUtils::get_random_cardinal_direction()
+{
+  vector<CardinalDirection> gate_dirs = { CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_SOUTH, CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_WEST };
+  return gate_dirs[RNG::range(0, gate_dirs.size() - 1)];
 }
 
 Direction DirectionUtils::get_opposite_direction(const Direction d)

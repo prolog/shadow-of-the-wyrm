@@ -11,6 +11,8 @@
 #include "ItemProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RaceManager.hpp"
+#include "ReligionManager.hpp"
 #include "RNG.hpp"
 #include "SeedCalculator.hpp"
 #include "TextMessages.hpp"
@@ -195,10 +197,16 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
       // If the item is a seed or a pit, don't actually set it on the tile,
       // and set the relevant tile and map properties.
       string tree_species_id = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_TREE_SPECIES_ID);
+      string remains = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_REMAINS);
+      Coordinate creature_coord = MapUtils::get_coordinate_for_creature(current_map, creature);
 
-      if (!tree_species_id.empty() && creatures_tile->has_been_dug())
+      if (!remains.empty() && creatures_tile->has_been_dug())
       {
-        bool planted = plant_seed(creature, tree_species_id, MapUtils::get_coordinate_for_creature(current_map, creature), creatures_tile, current_map);
+        bury_remains(creature, item_to_drop->get_additional_property(ConsumableConstants::CORPSE_RACE_ID), selected_quantity, creature_coord, creatures_tile, current_map);
+      }
+      else if (!tree_species_id.empty() && creatures_tile->has_been_dug())
+      {
+        bool planted = plant_seed(creature, tree_species_id, creature_coord, creatures_tile, current_map);
 
         if (planted)
         {
@@ -306,10 +314,47 @@ bool DropAction::plant_seed(CreaturePtr creature, const string& tree_species_id,
       {
         GameUtils::make_map_permanent(game, creature, current_map);
       }
+
+      game.get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_PLANT_SEEDS, true);
     }
   }
   
   return planted;
+}
+
+// Bury the remains of something once living
+bool DropAction::bury_remains(CreaturePtr creature, const string& remains_race_id, const uint selected_quantity, const Coordinate& coords, TilePtr tile, MapPtr current_map)
+{
+  bool buried = false;
+
+  if (creature != nullptr)
+  {
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(Game::instance(), creature->get_id()));
+    manager.add_new_message(TextMessages::get_burial_message(creature));
+    manager.send();
+
+    ReligionManager rm;
+    Deity* deity = rm.get_active_deity(creature);
+
+    if (deity != nullptr)
+    {
+      RaceManager racem;
+      vector<string> bury_race_ids = deity->get_burial_races();
+
+      for (const string& cur_race : bury_race_ids)
+      {
+        if (racem.is_race_or_descendent(remains_race_id, cur_race))
+        {
+          Game::instance().get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_BURY_REMAINS, true, selected_quantity);
+
+          buried = true;
+          break;
+        }
+      }
+    }
+  }
+
+  return buried;
 }
 
 void DropAction::handle_reacting_creature_drop_scripts(CreaturePtr creature, MapPtr current_map, ItemPtr new_item, const Coordinate& drop_coord)

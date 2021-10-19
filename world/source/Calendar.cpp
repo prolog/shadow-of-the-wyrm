@@ -27,7 +27,7 @@ bool Calendar::operator==(const Calendar& c) const
 
 void Calendar::set_date(const uint days_elapsed, const uint hours_elapsed)
 {
-  seconds = (days_elapsed) * 60 * 60 * 24 + (hours_elapsed * 60 * 60);
+  seconds = static_cast<double>(days_elapsed) * 60 * 60 * 24 + (static_cast<double>(hours_elapsed) * 60 * 60);
   uint month_of_year = (days_elapsed / DateValues::NUMBER_OF_DAYS_PER_MONTH);
   season = SeasonFactory::create_season(month_of_year);
 }
@@ -52,12 +52,12 @@ double Calendar::get_seconds_from_date(const Date& date) const
 {
   double secs = 0;
 
-  secs = static_cast<double>(date.get_seconds() +
-                             (date.get_minutes() * 60u) +
-                             (date.get_hours() * 60u * 60u) +
-                             (date.get_day_of_month() * 60u * 60u * 24u) +
-                             (date.get_month() * 60u * 60u * 24u * 30u) +
-                             ((date.get_year() - STARTING_YEAR) * 60u * 60u * 24u * 30u * 12u));
+  secs = static_cast<double>(static_cast<double>(date.get_seconds()) +
+                             (static_cast<double>(date.get_minutes()) * 60) +
+                             (static_cast<double>(date.get_hours()) * 60 * 60) +
+                             (static_cast<double>(date.get_day_of_month()) * 60 * 60 * 24) +
+                             (static_cast<double>(date.get_month()) * 60 * 60 * 24 * 30) +
+                             ((static_cast<double>(date.get_year()) - STARTING_YEAR) * 60 * 60 * 24 * 30 * 12));
 
   return secs;
 }

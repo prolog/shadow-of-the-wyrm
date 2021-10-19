@@ -49,7 +49,7 @@ bool GlowEffect::glow(CreaturePtr creature, ActionManager * const am, const bool
   {
     IInventoryPtr inv = creature->get_inventory();
     list<IItemFilterPtr> empty_filter = ItemFilterFactory::create_empty_filter();
-    ItemPtr item = am->inventory(creature, inv, empty_filter, {}, false, false);
+    ItemPtr item = am->select_equipment_or_inventory_item(creature);
 
     if (item)
     {

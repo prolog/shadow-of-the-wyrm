@@ -124,7 +124,7 @@ void CrowningDeityDecisionStrategyHandler::add_crowning_gift(CreaturePtr creatur
   }
 }
 
-int CrowningDeityDecisionStrategyHandler::get_piety_loss() const
+int CrowningDeityDecisionStrategyHandler::get_piety_amount() const
 {
   return (ReligionConstants::PIETY_CROWNING / 4);
 }

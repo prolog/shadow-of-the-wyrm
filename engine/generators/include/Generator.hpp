@@ -66,7 +66,9 @@ namespace SOTW
 
       virtual MapType get_map_type() const;
 
-  protected:
+    protected:
+   
+      virtual void generate_additional_structures(MapPtr map);
 
       virtual void set_map_permanence(MapPtr map);
       virtual bool get_permanence() const; // Check additional properties, and only then check the default

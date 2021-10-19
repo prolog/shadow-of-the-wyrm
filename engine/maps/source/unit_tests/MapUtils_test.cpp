@@ -1,6 +1,40 @@
 #include "gtest/gtest.h"
 #include "GeneratorUtils.hpp"
+#include "MobileDecisionStrategy.hpp"
 #include "TileGenerator.hpp"
+
+TEST(SW_Engine_Maps_MapUtils, does_hostile_creature_exist)
+{
+  Dimensions dim;
+  MapPtr map = std::make_shared<Map>(dim);
+
+  CreaturePtr player = std::make_shared<Creature>();
+  player->set_id(CreatureID::CREATURE_ID_PLAYER);
+
+  CreaturePtr c1 = std::make_shared<Creature>();
+  DecisionStrategyPtr dec1 = std::make_unique<MobileDecisionStrategy>(nullptr);
+  c1->set_decision_strategy(std::move(dec1));
+  c1->set_id("c1");
+
+  CreaturePtr c2 = std::make_shared<Creature>();
+  DecisionStrategyPtr dec2 = std::make_unique<MobileDecisionStrategy>(nullptr);
+  c2->set_decision_strategy(std::move(dec2));
+  c2->set_id("c2");
+
+  vector<string> ids = { "c1", "c2" };
+  HostilityManager hm;
+  hm.set_hostility_to_player(c2);
+
+  EXPECT_FALSE(MapUtils::does_hostile_creature_exist(map, ids, CreatureID::CREATURE_ID_PLAYER));
+
+  map->add_creature(c1);
+
+  EXPECT_FALSE(MapUtils::does_hostile_creature_exist(map, ids, CreatureID::CREATURE_ID_PLAYER));
+
+  map->add_creature(c2);
+
+  EXPECT_TRUE(MapUtils::does_hostile_creature_exist(map, ids, CreatureID::CREATURE_ID_PLAYER));
+}
 
 TEST(SW_Engine_Maps_MapUtils, get_dimensions)
 {

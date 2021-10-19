@@ -212,7 +212,7 @@ void FishingSkillProcessor::catch_fish(CreaturePtr creature, MapPtr map, const W
           GameUtils::make_map_permanent(game, creature, map);
 
           // Add the fish to the inventory, if possible.
-          if (CreatureUtils::can_pick_up(creature, fish).first)
+          if (get<0>(CreatureUtils::can_pick_up(creature, fish)))
           {
             IInventoryPtr inv = creature->get_inventory();
             if (!inv->merge(fish))
@@ -260,7 +260,7 @@ void FishingSkillProcessor::catch_item(CreaturePtr creature, MapPtr map)
 
       IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
-      if (CreatureUtils::can_pick_up(creature, generated_item).first)
+      if (get<0>(CreatureUtils::can_pick_up(creature, generated_item)))
       {
         IInventoryPtr inv = creature->get_inventory();
         inv->merge_or_add(generated_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);

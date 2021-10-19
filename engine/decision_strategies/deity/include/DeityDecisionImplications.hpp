@@ -13,7 +13,7 @@ class DeityDecisionImplications
     int adjust_creature_piety(CreaturePtr creature, FeaturePtr feature);
 
     void set_piety_loss(const int new_piety);
-    int get_piety_loss() const;
+    int get_piety_amount() const;
 
     // This is just (piety_loss * -1)
     int get_piety_gain() const;

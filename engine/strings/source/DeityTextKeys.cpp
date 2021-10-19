@@ -46,5 +46,6 @@ const string DeityTextKeys::PRAYER_COMPANION         = "PRAYER_COMPANION";
 const string DeityTextKeys::PRAYER_NO_DEITIES        = "PRAYER_NO_DEITIES";
 const string DeityTextKeys::DEITY_CANNOT_PRAY        = "DEITY_CANNOT_PRAY";
 const string DeityTextKeys::DEITY_ACTION_DISPLEASED  = "DEITY_ACTION_DISPLEASED"; 
+const string DeityTextKeys::DEITY_ACTION_PLEASED     = "DEITY_ACTION_PLEASED";
 const string DeityTextKeys::DEITY_FALLEN_CHAMPION    = "DEITY_FALLEN_CHAMPION";
 const string DeityTextKeys::DEITY_CHANGE_MESSAGE     = "DEITY_CHANGE_MESSAGE";

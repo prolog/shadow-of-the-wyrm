@@ -49,8 +49,12 @@ class ActionManager : public ISerializable
     // NPC version
     ActionCost drop(CreaturePtr creature, const std::string& drop_item_id);
 
+    // Equiment action used for selecting items/manipulating inventory
     ActionCost equipment(CreaturePtr creature);
     ActionCost equipment(CreaturePtr creature, ItemPtr i, const EquipmentWornLocation ewl);
+
+    // Equipment action used for selecting items only
+    ItemPtr select_equipment_or_inventory_item(CreaturePtr creature);
 
     // Display the inventory.  Potentially, select an item.
     ItemPtr inventory(CreaturePtr creature, IInventoryPtr inv, const std::list<IItemFilterPtr>& base_display_filter_list, const std::list<IItemFilterPtr>& additional_filter_list, const bool inventory_is_read_only, const bool allow_multiple_selected_items);
@@ -115,6 +119,8 @@ class ActionManager : public ISerializable
 
     // Switch between colour palettes.
     ActionCost switch_colour_palettes(CreaturePtr creature);
+
+    ActionCost toggle_window_mode(CreaturePtr creature);
 
     // Give orders to your followers.
     ActionCost order(CreaturePtr creature);

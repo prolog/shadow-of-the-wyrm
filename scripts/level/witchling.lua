@@ -1,3 +1,4 @@
+require('constants')
 require('level')
 
 local function witchling_stat_gain_fn(creature_id, level)
@@ -7,6 +8,12 @@ local function witchling_stat_gain_fn(creature_id, level)
 end
 
 local function witchling_level_fn(creature_id, lvl)
+  -- Witchlings always recognize their own, and form kind of a loose
+  -- association.
+  if lvl == 1 then
+    add_membership(creature_id, WITCHLINGS_MEMBERSHIP_ID, "WITCHLINGS_MEMBERSHIP_SID")
+  end
+
   -- Always add castings of Shadow Flame
   add_spell_castings(creature_id, "p_01_shadow_flame", get_primordial_castings(creature_id, 2 * lvl))
 

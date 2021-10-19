@@ -14,6 +14,8 @@ class DirectionUtils
     static CardinalDirection to_cardinal_direction(const Direction d);
     static CardinalDirection to_cardinal_direction(const Direction d, const Dimensions& dim, const Coordinate& c);
     static CardinalDirection get_opposite_direction(const CardinalDirection cd);
+    static CardinalDirection get_random_cardinal_direction(const std::vector<CardinalDirection>& cd);
+    static CardinalDirection get_random_cardinal_direction();
     static Direction get_opposite_direction(const Direction d);
     static bool direction_matches_category(const Direction d, const DirectionCategory dc);
     static std::set<Direction> get_all_directions_for_category(const DirectionCategory dc);

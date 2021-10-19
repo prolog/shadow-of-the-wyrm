@@ -33,6 +33,7 @@ int is_unique(lua_State* ls);
 int add_object_to_player_tile(lua_State* ls);
 int add_object_to_map(lua_State* ls);
 int add_object_to_creature(lua_State* ls);
+int add_object_on_tile_to_creature(lua_State* ls);
 int add_object_to_tile(lua_State* ls); // assumes current map
 int add_key_to_player_tile(lua_State* ls);
 int add_feature_to_map(lua_State* ls);
@@ -253,6 +254,8 @@ int genocide(lua_State* ls);
 int generate_ancient_beast(lua_State* ls);
 int generate_hireling(lua_State* ls);
 int generate_adventurer(lua_State* ls);
+int generate_vegetable_garden(lua_State* ls);
+int generate_pen(lua_State* ls);
 int set_colour(lua_State* ls);
 int add_npc_level_message(lua_State* ls);
 int set_leader(lua_State* ls);
@@ -273,6 +276,10 @@ int creature_has_humanoid_followers(lua_State* ls);
 int count_creature_humanoid_followers(lua_State* ls);
 int set_chat_script(lua_State* ls);
 int count_creatures_with_race(lua_State* ls);
+int get_time_of_day(lua_State* ls);
+int generate_enclosure(lua_State* ls);
+int generate_hermitage(lua_State* ls);
+int remove_chat_script(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

@@ -3,6 +3,7 @@
 Message::Message()
 : colour(Colour::COLOUR_WHITE)
 , importance(MessageImportance::MessageImportance_UNDEFINED)
+, id()
 , count(1)
 {
 }
@@ -16,6 +17,7 @@ Message::Message
 : content(new_content)
 , colour(new_colour)
 , importance(new_importance)
+, id()
 , count(1)
 {
 }

@@ -86,6 +86,8 @@ class ActionTextKeys
     static const std::string ACTION_GET_CARDINAL_DIRECTION;
     static const std::string ACTION_OPEN_DOOR;
     static const std::string ACTION_CLOSE_DOOR;
+    static const std::string ACTION_OPEN_GATE;
+    static const std::string ACTION_CLOSE_GATE;
     static const std::string ACTION_DOOR_BLOCKED;
     static const std::string ACTION_OPEN_SARCOPHAGUS;
     static const std::string ACTION_OPEN_SARCOPHAGUS_CONFIRM;
@@ -130,6 +132,10 @@ class ActionTextKeys
     static const std::string ACTION_KILN_NO_CLAY;
     static const std::string ACTION_KILN_CREATE_ITEM;
     static const std::string ACTION_KILN_CREATION_COMPLETE;
+    static const std::string ACTION_FENCE_WOBBLE_POST;
+    static const std::string ACTION_FENCE_KICK_SLAT;
+    static const std::string ACTION_FENCE_BREAK_SLAT;
+    static const std::string ACTION_FENCE_BOARD_WITH_NAIL;
     static const std::string ACTION_FORGE_NO_SUITABLE_HAMMER;
     static const std::string ACTION_FORGE_NO_SMITHING_SKILL;
     static const std::string ACTION_FORGE_NO_INGOTS;
@@ -234,6 +240,10 @@ class ActionTextKeys
     static const std::string ACTION_INCINERATE_NO_SPELLBOOKS;
     static const std::string ACTION_INCINERATE_NO_AP;
     static const std::string ACTION_INCINERATE_FULL_AP;
+    static const std::string ACTION_TOGGLE_FULLSCREEN_SDL_WINDOWED;
+    static const std::string ACTION_TOGGLE_FULLSCREEN_SDL_DESKTOP;
+    static const std::string ACTION_TOGGLE_FULLSCREEN_SDL_TRUE;
+    static const std::string ACTION_TOGGLE_FULLSCREEN_CURSES;
 
   protected:
     ActionTextKeys();

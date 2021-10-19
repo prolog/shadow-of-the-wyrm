@@ -17,6 +17,7 @@ Blood::Blood()
 }
 
 Blood::Blood(CreatureSize c_size)
+: litres(DEFAULT_LITRES_OF_BLOOD), grams_alcohol(0.0f), blood_alcohol_content(0.0f)
 {
   if (litres_by_size_map.empty())
   {

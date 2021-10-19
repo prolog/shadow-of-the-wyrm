@@ -245,12 +245,17 @@ class Entrance : public Feature
     virtual bool deserialize(std::istream& stream) override;
 
   protected:
+    virtual std::string get_open_message_sid() const = 0;
+    virtual std::string get_close_message_sid() const = 0;
+
     EntranceState state;
     CreatureSize maximum_size; // The maximum creature size for the entrance.  Dragons can't go in Hobbit holes.
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };
+
+using EntrancePtr = std::shared_ptr<Entrance>;
 
 // Doors are Features, but like Windows, will be re-used outside the
 // dungeon environment.
@@ -266,6 +271,9 @@ class Door : public Entrance
     virtual bool get_is_blocking() const override;
 
   private:
+    virtual std::string get_open_message_sid() const override;
+    virtual std::string get_close_message_sid() const override;
+
     virtual ClassIdentifier internal_class_identifier() const override;
  };
 
@@ -281,6 +289,9 @@ class Gate : public Entrance
     virtual bool get_is_blocking() const override;
 
   private:
+    virtual std::string get_open_message_sid() const override;
+    virtual std::string get_close_message_sid() const override;
+
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
@@ -303,6 +314,19 @@ class EastWestPew : public Pew
 {
   public:
     EastWestPew(const Symbol& new_symbol);
+    virtual Feature* clone() override;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const override;
+};
+
+class Fence : public Feature
+{
+  public:
+    Fence(const Symbol& new_symbol);
+
+    virtual bool get_is_blocking() const override;
+
     virtual Feature* clone() override;
 
   private:

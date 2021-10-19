@@ -23,6 +23,7 @@ Map::Map(const Map& new_map)
   {
     name_sid = new_map.name_sid;
     default_race_id = new_map.default_race_id;
+    default_deity_id = new_map.default_deity_id;
     map_id = new_map.map_id;
 
     Dimensions new_dimensions = new_map.size();
@@ -73,6 +74,7 @@ bool Map::operator==(const Map& map) const
 
   result = result && (name_sid == map.name_sid);
   result = result && (default_race_id == map.default_race_id);
+  result = result && (default_deity_id == map.default_deity_id);
   result = result && (dimensions == map.dimensions);
   result = result && (original_dimensions == map.original_dimensions);
   result = result && (locations == map.locations);
@@ -382,6 +384,16 @@ void Map::set_default_race_id(const string& new_race_id)
 string Map::get_default_race_id() const
 {
   return default_race_id;
+}
+
+void Map::set_default_deity_id(const string& new_deity_id)
+{
+  default_deity_id = new_deity_id;
+}
+
+string Map::get_default_deity_id() const
+{
+  return default_deity_id;
 }
 
 void Map::set_size(const Dimensions& new_dimensions)
@@ -853,6 +865,7 @@ bool Map::serialize(ostream& stream) const
 
   Serialize::write_string(stream, name_sid);
   Serialize::write_string(stream, default_race_id);
+  Serialize::write_string(stream, default_deity_id);
 
   dimensions.serialize(stream);
   original_dimensions.serialize(stream);
@@ -985,6 +998,7 @@ bool Map::deserialize(istream& stream)
 
   Serialize::read_string(stream, name_sid);
   Serialize::read_string(stream, default_race_id);
+  Serialize::read_string(stream, default_deity_id);
 
   dimensions.deserialize(stream);
   original_dimensions.deserialize(stream);

@@ -1,3 +1,157 @@
+Shadow of the Wyrm v1.3.6 "Valderrabano"
+- Version declared July 14, 2021.  Version finalized October 19, 2021.
+
+- A copy of swyrm.ini is now created in the user's .sotw directory, with some
+  hints on how to get started with overriding settings.
+
+- New swyrm.ini setting (display_sdl_window_mode) to allow the SDL display to
+  be either windowed (default) or fullscreen.
+
+- NPCs that start with spells now start with some skill in those categories,
+  plus Magic if the spell isn't Cantrips, to allow the NPC to pick up and
+  read appropriate spellbooks.
+
+- The spell Dig and digging wands are now range 5, rather than 4.  Crumble is
+  still range 1, but now a ball rather than a directional spell.
+
+- Dropping an item and refusing the shopkeeper's item now keeps the item in
+  your inventory (krwak).
+
+- Pickup all/pickup/autopickup now smartly pick up the right number of items.
+  If the stack is too large, the maximum quantity of items is selected (Sean
+  McKeague).
+
+- You can now occasionally stumble across the corpse of a hapless adventurer.
+
+- Artifact weapons are now more effective at inflicting status effects,
+  giving a minimum bonus even if not explicitly specified in the game
+  configuration.
+
+- Shops are closed for business at night.  More generally, the game now supports
+  night-time chat text and chat scripts.
+
+- Deities now have likes as well as disikes.  Doing something a deity likes
+  will grant a small amount of piety if you follow them.  This allows you to
+  gain piety passively, rather than having to camp out at an altar and
+  sacrifice repeatedly (though this can still be done to supplement your
+  piety as needed!).
+
+  - Burying remains (corpses, skeletons, etc) removes the remains and may give
+    piety depending on what you're burying and your active deity.
+
+  - The three good deities will give you piety when you heal your companions.
+
+  - The evil deities enjoy cruelty, and attacking friendly creatures will make
+    your god happy if you follow Shiver, Urgoth, or Sceadugenga.
+
+  - Additionally, Sceadugenga rewards cannibalism, desecration, and 
+    graverobbing.
+
+  - Aurelion and Celeste both like smiting.  Celeste likes it when her followers
+    learn spells, and Aurelion likes stunning.
+
+  - Urgoth likes stunning, and revels when his followers rage.
+
+  - Vedere enjoys the planting of seeds.
+
+  - Voros likes inflicting blinding.
+
+  - The Lady smiles on pacification via Beastmastery and Music.
+
+  - Shiver enjoys bloodletting, learning spells, and inflicting slowness.
+
+  - The Trickster likes sneak attacks and learning spells.
+
+- Shiver's artifact list has been pared down, and the weapons are now only
+  daggers and staves.
+
+- Dungeons can now have orchards and vegetation rooms.
+
+- The guidebook now includes information on how to read the equipment screen,
+  as well as detailing what each of the damage flags does (krwak).
+
+- Settlements now have signs at the perimeter with their names.
+
+- Added vegetable gardens to Isen Dun, Gnordvar, Yew.
+
+- Dwarves now start with a very small Smithing value, and smiths much more.
+
+- Settlements can now have pens with sheep or chicken.
+
+- World generation can now specify hermitages on certain types of terrain, 
+  where a hermit either lives, or used to.
+
+- World generation can also place storehouses, where large quantities of food
+  are kept for long-term storage, as well as cottages, where witchlings
+  retreat to live in peace, and welcome friendly visitors.
+
+- Witchlings (and sages, who also learn primordial spells) now form their own 
+  association, which other characters can automatically join by learning 
+  primordial spells.
+
+- Creatures who worship a particular deity and share that deity with you will
+  no longer be hostile.
+
+- When deities summon creatures around you, their deity ID now reflects who
+  summoned them.
+
+- Enchanting and glowing now start on the equipment screen, allowing you to
+  selected equipped items as well as inventory items (Paul Blay).
+
+- Added the ability to set custom scripts for a particular creature in its
+  placement details, and added another scholar to the library at Atua-Elar to
+  prove this out.
+
+- Multi-page chat speech is now available (split using "%") - the game will
+  split the text before displaying each page.
+
+- More name/settlement name combos.
+
+- Stanzas for "Tel and Floridel".
+
+- New creatures: chicken, hermit, witchling.
+
+- New features: fencing.
+
+- New items: board with a nail in it.
+
+- Bug fixes:
+
+  - Fixed a couple of cases where items would be added to a tile without
+    checking for stacking.
+
+  - Tree and weed species had an extra period at the end of their synopsis.
+
+  - There was a long-standing issue with gates not closing properly, or being
+    kickable.
+
+  - Special settlement features weren't being tracked properly and could be
+    partially overwritten on the map by other buildings and structures.
+
+  - Settlement generators are now better at placing new buildings and features
+    without colliding with previously placed structures.
+
+  - Bazaars were rarer than they should have been, due to a quirk in the world
+    generation algorithm.  This has been refactored a bit, and things like
+    bazaars, hermitages, etc., should now be slightly more common.
+
+  - Fixed an issue with the current danger level and bazaar item generation.
+
+  - The creature generation algorithm could lead to empty areas in some
+    circumstances.  Updated the algorithm so that when the creature list
+    is empty, the minimum danger level is halved, repeating until creatures
+    are generated or we hit danger level 1.
+
+  - Beastmastery anger was turning pets (RelicWraith).
+
+  - Hiding could be very difficult even if the only nearby creatures were
+    friendly/allied (RelicWraith).
+
+  - Pulsars were mapped to the wrong sprite.
+
+  - The logic around close misses was broken (and always had be), so now
+    periodically combat should generate "you barely miss <x>"-type messages.
+
 Shadow of the Wyrm v1.3.3 "de Sarlat"
 - Version declared June 13, 2021.  Version finalized July 14, 2021.
 

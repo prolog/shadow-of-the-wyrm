@@ -2,6 +2,7 @@
 #include <boost/uuid/uuid_io.hpp>
 #include "Conversion.hpp"
 #include "DirectionUtils.hpp"
+#include "GeneratorUtils.hpp"
 #include "Log.hpp"
 #include "MapCreatureGenerator.hpp"
 #include "MapExitUtils.hpp"
@@ -53,11 +54,41 @@ MapPtr Generator::generate_and_initialize(const int danger, const Dimensions& di
   danger_level = danger;
 
   MapPtr map = generate(dim);
+  map->set_danger(danger_level);
+
+  generate_additional_structures(map);
+
   initialize(map, danger_level);
   create_properties_and_copy_to_map(map);
   map->set_map_type(get_map_type());
     
   return map;
+}
+
+void Generator::generate_additional_structures(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    if (!get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR).empty())
+    {
+      GeneratorUtils::generate_bazaar(map);
+    }
+
+    if (!get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE).empty())
+    {
+      GeneratorUtils::generate_hermitage(map);
+    }
+
+    if (!get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE).empty())
+    {
+      GeneratorUtils::generate_storehouses(map);
+    }
+
+    if (!get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE).empty())
+    {
+      GeneratorUtils::generate_cottage(map);
+    }
+  }
 }
 
 // Initializes essential map properties like terrain type, ID, and permanence.
@@ -646,6 +677,37 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
   {
     bool ignore_creature_lvl_checks = get_ignore_creature_generation_level_checks();
     string ignore_creature_lvl_checks_val = std::to_string(ignore_creature_lvl_checks);
+  }
+
+  const DeityMap& deity_map = Game::instance().get_deities_cref();
+  bool set_def_id = false;
+
+  if (map->get_default_deity_id().empty())
+  {
+    for (const auto& d_it : deity_map)
+    {
+      Deity* deity = d_it.second.get();
+
+      if (deity != nullptr)
+      {
+        vector<string> dg_filters = deity->get_generator_filters();
+
+        for (const auto& gf : generator_filters)
+        {
+          if (std::find(dg_filters.begin(), dg_filters.end(), gf) != dg_filters.end())
+          {
+            map->set_default_deity_id(deity->get_id());
+            set_def_id = true;
+            break;
+          }
+        }
+      }
+
+      if (set_def_id)
+      {
+        break;
+      }
+    }
   }
 
   set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS, ignore_lvl_checks_val);

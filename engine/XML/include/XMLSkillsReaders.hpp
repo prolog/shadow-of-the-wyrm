@@ -6,7 +6,10 @@ class XMLSkillsReader;
 
 class XMLGeneralSkillsReader
 {
-  friend class XMLSkillsReader;
+  public:
+    XMLGeneralSkillsReader();
+
+    friend class XMLSkillsReader;
 
   protected:
     void parse_general_skills(Skills& skills, const XMLNode& general_skills_node);
@@ -14,7 +17,10 @@ class XMLGeneralSkillsReader
 
 class XMLWeaponSkillsReader
 {
-  friend class XMLSkillsReader;
+  public:
+    XMLWeaponSkillsReader();
+
+    friend class XMLSkillsReader;
 
   protected:
     void parse_weapon_skills(Skills& skills, const XMLNode& weapon_skills_node);
@@ -22,7 +28,10 @@ class XMLWeaponSkillsReader
 
 class XMLRangedWeaponSkillsReader
 {
-  friend class XMLSkillsReader;
+  public:
+    XMLRangedWeaponSkillsReader();
+  
+    friend class XMLSkillsReader;
 
   protected:
     void parse_ranged_weapon_skills(Skills& skills, const XMLNode& ranged_weapon_skills_node);
@@ -30,7 +39,10 @@ class XMLRangedWeaponSkillsReader
 
 class XMLMagicSkillsReader
 {
-  friend class XMLSkillsReader;
+  public:
+    XMLMagicSkillsReader();
+  
+    friend class XMLSkillsReader;
 
   protected:
     void parse_magic_skills(Skills& skills, const XMLNode& magic_skills_node);
@@ -39,6 +51,9 @@ class XMLMagicSkillsReader
 class XMLSkillsReader
 {
   public:
+    XMLSkillsReader();
+    virtual ~XMLSkillsReader();
+
     Skills get_skills(const XMLNode& skills_node);
 
   protected:

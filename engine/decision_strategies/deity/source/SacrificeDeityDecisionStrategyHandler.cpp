@@ -32,7 +32,7 @@ DeityDecisionImplications SacrificeDeityDecisionStrategyHandler::handle_decision
 
 // In this case, the piety loss is negative - so, a gain - due to the
 // creature sacrificing some item for the glory of the deity.
-int SacrificeDeityDecisionStrategyHandler::get_piety_loss() const
+int SacrificeDeityDecisionStrategyHandler::get_piety_amount() const
 {
   ItemPietyCalculator ipc;
 

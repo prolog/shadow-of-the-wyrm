@@ -1,24 +1,27 @@
 #include "global_prototypes.hpp"
 #include "ClassManager.hpp"
 #include "Conversion.hpp"
+#include "CreatureUtils.hpp"
 #include "DeityActionManager.hpp"
 #include "DeityDecisionImplications.hpp"
 #include "DislikeDeityDecisionStrategyHandler.hpp"
+#include "LikeDeityDecisionStrategyHandler.hpp"
 #include "Game.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "ReligionManager.hpp"
 
 using namespace std;
 
 // Check to see if the deity likes or dislikes (or simply doesn't care)
 // about the action just performed, and update the creature's piety
 // accordingly.
-void DeityActionManager::notify_action(CreaturePtr creature, MapPtr map, const string& action_key, bool active_deity_only)
+void DeityActionManager::notify_action(CreaturePtr creature, MapPtr map, const string& action_key, bool active_deity_only, const uint num_times)
 {
   Game& game = Game::instance();
 
-  if (creature != nullptr && map != nullptr && !game.get_deities_cref().empty())
+  if (creature != nullptr && map != nullptr && game.do_deities_exist())
   {
     bool cannot_pray = String::to_bool(map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_PRAY));
    
@@ -61,15 +64,18 @@ void DeityActionManager::notify_action(CreaturePtr creature, MapPtr map, const s
     {
       if (cur_deity->get_dislike(action_key))
       {
-        handle_displeasing_action(creature, cur_deity, action_key);
+        handle_displeasing_action(creature, cur_deity, action_key, num_times);
       }
-      // else if (active_deity->get_like(action_key)) { ... }
+      else if (cur_deity->get_like(action_key))
+      {
+        handle_pleasing_action(creature, cur_deity, action_key, num_times);
+      }
     }
   }
 }
 
 // Handle a displeasing action by decreasing piety.
-void DeityActionManager::handle_displeasing_action(CreaturePtr creature, Deity* deity, const string& action)
+void DeityActionManager::handle_displeasing_action(CreaturePtr creature, Deity* deity, const string& action, const uint num_times)
 {
   if (creature != nullptr && deity != nullptr)
   {
@@ -107,7 +113,7 @@ void DeityActionManager::handle_displeasing_action(CreaturePtr creature, Deity* 
       DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature, creature_tile);
 
       // This may have been updated as a result of the decision.
-      int new_piety = original_piety - static_cast<int>(decision_implications.get_piety_loss() * multiplier);
+      int new_piety = original_piety - static_cast<int>(decision_implications.get_piety_amount() * multiplier * num_times);
       status.set_piety(new_piety);
 
       if (creature->get_religion_ref().get_active_deity_id() == deity->get_id())
@@ -123,6 +129,25 @@ void DeityActionManager::handle_displeasing_action(CreaturePtr creature, Deity* 
         // may occur.
       }
     }
+  }
+}
+
+void DeityActionManager::handle_pleasing_action(CreaturePtr creature, Deity* deity, const string& action_key, const uint num_times)
+{
+  if (creature != nullptr)
+  {
+    ReligionManager rm;
+    Deity* deity = rm.get_active_deity(creature);
+    LikeDeityDecisionStrategyHandler like(deity);
+
+    int piety = like.get_piety_amount();
+    DeityRelations& relations = creature->get_religion_ref().get_deity_relations_ref();
+    DeityStatus& status = relations[deity->get_id()];
+
+    int new_piety = status.get_piety() + (piety * static_cast<int>(num_times));
+    status.set_piety(new_piety);
+
+    CreatureUtils::add_piety_message_if_player(creature);
   }
 }
 

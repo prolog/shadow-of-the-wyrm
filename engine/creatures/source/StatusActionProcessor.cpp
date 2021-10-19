@@ -9,7 +9,7 @@ void StatusActionProcessor::process_action(CreaturePtr creature, CreatureStatusM
 
   if (s_it != statuses_before_action.end() && s_it->second.get_value() == true && action.get_cost() > 0)
   {
-    StatusEffectPtr se = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_TIMEWALK, s_it->second.get_source_id());    
+    StatusEffectPtr se = StatusEffectFactory::create_status_effect(creature, StatusIdentifiers::STATUS_ID_TIMEWALK, s_it->second.get_source_id());    
     se->undo_change(creature);
   }
 }

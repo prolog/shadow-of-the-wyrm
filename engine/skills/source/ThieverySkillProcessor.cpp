@@ -291,15 +291,15 @@ void ThieverySkillProcessor::transfer_stolen_item(CreaturePtr stealing_creature,
 {
   if (stealing_creature != nullptr && stolen_item != nullptr && map != nullptr)
   {
-    pair<bool, string> steal = CreatureUtils::can_pick_up(stealing_creature, stolen_item);
+    tuple<bool, uint, string> steal = CreatureUtils::can_pick_up(stealing_creature, stolen_item);
 
-    if (steal.first)
+    if (get<0>(steal))
     {
       stealing_creature->get_inventory()->merge_or_add(stolen_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
     }
     else
     {
-      pl_manager.add_new_message(StringTable::get(steal.second));
+      pl_manager.add_new_message(StringTable::get(get<2>(steal)));
       pl_manager.send();
 
       TilePtr creature_tile = MapUtils::get_tile_for_creature(map, stealing_creature);
@@ -313,7 +313,7 @@ void ThieverySkillProcessor::set_flags_on_target_creature(CreaturePtr stealing_c
   if (stealing_creature != nullptr && steal_creature != nullptr)
   {
     HostilityManager hm;
-    hm.set_hostility_to_creature(steal_creature, stealing_creature->get_id());
+    hm.set_hostility_to_creature(steal_creature, stealing_creature->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
     steal_creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_STOLEN_FROM, to_string(true));
   }
 }

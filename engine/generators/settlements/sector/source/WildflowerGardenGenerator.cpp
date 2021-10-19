@@ -32,11 +32,26 @@ void WildflowerGardenGenerator::populate_wildflower_ids()
                                                    {6, ItemIdKeys::ITEM_ID_WILDFLOWER_6}};
 }
 
+void WildflowerGardenGenerator::plant_flower(TilePtr tile)
+{
+  if (tile != nullptr)
+  {
+    int rand_flower = RNG::range(wildflower_rand_min, wildflower_rand_max);
+    string flower_item_id = wildflower_item_ids[rand_flower];
+    ItemPtr flower = ItemManager::create_item(flower_item_id);
+
+    if (flower)
+    {
+      IInventoryPtr inv = tile->get_items();
+      inv->merge_or_add(flower, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+    }
+  }
+}
+
 bool WildflowerGardenGenerator::generate_garden(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
 {
   TilePtr flower_tile;
   TileGenerator tg;
-  int rand_flower;
   
   for (int row = start_coord.first; row <= end_coord.first; row++)
   {
@@ -44,19 +59,7 @@ bool WildflowerGardenGenerator::generate_garden(MapPtr map, const Coordinate& st
     {
       // Generate the field tile, and then "plant" the flower on top.
       flower_tile = tg.generate(TileType::TILE_TYPE_FIELD);
-
-      if (RNG::percent_chance(75))
-      {
-        rand_flower = RNG::range(wildflower_rand_min, wildflower_rand_max);
-        string flower_item_id = wildflower_item_ids[rand_flower];
-        ItemPtr flower = ItemManager::create_item(flower_item_id);
-        
-        if (flower)
-        {
-          IInventoryPtr inv = flower_tile->get_items();
-          inv->add(flower);
-        }
-      }
+      plant_flower(flower_tile);
       
       map->insert(row, col, flower_tile);
     }

@@ -28,7 +28,7 @@ class MusicSkillProcessor : public SkillProcessor
     bool get_charms_creature(ItemPtr item, CreaturePtr fov_creature);
 
     // Attempt pacification, updating the hostile/pacified counts as required
-    PacificationOutcome attempt_pacification(ItemPtr instr, CreaturePtr creature, CreaturePtr fov_creature, int& num_hostile, int& num_pacified);
+    PacificationOutcome attempt_pacification(ItemPtr instr, CreaturePtr creature, CreaturePtr fov_creature, MapPtr current_map, int& num_hostile, int& num_pacified);
 
     void add_unimpressed_message(CreaturePtr creature, CreaturePtr fov_creature);
     void enrage(CreaturePtr creature, CreaturePtr fov_creature);

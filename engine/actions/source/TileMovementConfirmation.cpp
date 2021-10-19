@@ -18,6 +18,7 @@ pair<bool, string> TileMovementConfirmation::get_confirmation_details(CreaturePt
   CurrentCreatureAbilities cca;
   bool is_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
   bool is_flying = creature && creature->has_status(StatusIdentifiers::STATUS_ID_FLYING);
+  bool can_move_safely = (is_incorporeal || is_flying);
   FeaturePtr new_tile_feature = new_tile->get_feature();
   bool feature_dangerous = new_tile_feature && new_tile_feature->get_is_dangerous();
 
@@ -25,8 +26,7 @@ pair<bool, string> TileMovementConfirmation::get_confirmation_details(CreaturePt
   {
     // Tile confirmation only happens if the creature can see.  Otherwise,
     // the creature has no idea that the place they're moving into is dangerous.
-    if ((new_tile->get_dangerous(creature) && !is_incorporeal && !is_flying) ||
-      (feature_dangerous && !is_flying))
+    if ((new_tile->get_dangerous(creature) || feature_dangerous) && !can_move_safely)
     {
       confirmation_details.first = true;
       string confirmation_sid = new_tile->get_danger_confirmation_sid();

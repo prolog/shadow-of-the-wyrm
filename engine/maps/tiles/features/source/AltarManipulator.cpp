@@ -40,7 +40,7 @@ bool AltarManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr
 {
   bool item_altered = false;
 
-  if (dropping_creature != nullptr && item != nullptr && !Game::instance().get_deities_cref().empty())
+  if (dropping_creature != nullptr && item != nullptr && Game::instance().do_deities_exist())
   {
     AltarPtr altar = dynamic_pointer_cast<Altar>(feature);
 

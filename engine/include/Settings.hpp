@@ -33,9 +33,10 @@ class Settings : public ISerializable
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
+    static const std::string SETTINGS_FILENAME;
+
   protected:
     boost::property_tree::ptree settings_tree;
-    static const std::string SETTINGS_FILENAME;
     static const std::string KEYBINDING_PREFIX;
 
   private:

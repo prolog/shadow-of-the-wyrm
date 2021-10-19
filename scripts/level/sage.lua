@@ -1,3 +1,4 @@
+require('constants')
 require('level')
 
 -- Sages require intelligence and willpower to command all spheres of
@@ -14,7 +15,10 @@ end
 -- Sages learn primordial spells, but at a slower rate than witchlings,
 -- and don't have access to the most powerful spells. 
 local function sage_level_fn(creature_id, lvl)
-  
+  if lvl == 1 then
+    add_membership(PLAYER_ID, WITCHLINGS_MEMBERSHIP_ID, "WITCHLINGS_MEMBERSHIP_SID")
+  end
+
   -- Sages start with shadow flame, and gain fewer castings.
   add_spell_castings(creature_id, "p_01_shadow_flame", get_primordial_castings(creature_id, 1.5 * lvl))
 

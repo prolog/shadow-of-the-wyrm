@@ -4067,9 +4067,6 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLTableReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\maps\tiles\features\include\TableManipulator.hpp">
-      <Filter>Header Files\engine\maps\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\generators\include\WellGenerator.hpp">
       <Filter>Header Files\engine\generators\include</Filter>
     </ClInclude>
@@ -4411,6 +4408,30 @@
     </ClInclude>
     <ClInclude Include="engine\strings\include\DeathSourceTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\DenseVegetationSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\LikeDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLFenceReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\FenceManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\FenceCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\TableManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\EnclosureSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\StorehouseSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -8919,6 +8940,33 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\DeathSourceTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\DenseVegetationSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\LikeDeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLFenceReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\FenceManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\FenceCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\FenceCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Fence_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\EnclosureSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\StorehouseSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

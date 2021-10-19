@@ -39,6 +39,8 @@ MapPtr ScatteredSettlementGenerator::generate()
   generate_wells(map);
   generate_special_inhabitants(map);
 
+  SettlementGeneratorUtils::generate_perimeter_sign(map, get_additional_property(TileProperties::TILE_PROPERTY_NAME));
+
   return map;
 }
 
@@ -106,11 +108,14 @@ void ScatteredSettlementGenerator::generate_scattered_settlement(MapPtr map)
         if (result.first)
         {
           sfeatures.erase(sfeatures.begin() + result.second);
+
+          // Keep a phantom building so another building doesn't build over it.
+          buildings.push_back({ {row, col}, {row_end, col_end}, {} });
         }
       }
       else
       {
-        if (!SettlementGeneratorUtils::does_building_overlap(map, row, row_end, col, col_end))
+        if (!SettlementGeneratorUtils::does_building_overlap(map, row, row_end, col, col_end, 1))
         {
           vector<ClassIdentifier> cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
           BuildingGenerationParameters bgp(row, row + height, col, col + width, door_direction, false, cl_ids, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids));

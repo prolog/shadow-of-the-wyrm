@@ -140,6 +140,26 @@ ItemGenerationMap ItemGenerationManager::generate_item_generation_map(const Item
   return generation_map;
 }
 
+vector<string> ItemGenerationManager::get_item_ids(const ItemGenerationMap& igm)
+{
+  vector<string> item_ids;
+
+  for (const auto& igm_pair : igm)
+  {
+    const map<Rarity, vector<ItemGenerationPair>>& ivec = igm_pair.second;
+
+    for (const auto& iid : ivec)
+    {
+      for (const auto& items : iid.second)
+      {
+        item_ids.push_back(items.first);
+      }
+    }
+  }
+
+  return item_ids;
+}
+
 // Get an item rarity.  This will be based on a general generational rarity.
 // Common items can only be generated for common rarities.  Uncommon items
 // have a good chance to generate an uncommon item, or else generate a

@@ -47,7 +47,7 @@ bool EnchantingEffect::effect_cursed(CreaturePtr creature, ActionManager * const
 }
 
 // Select an item to enchant.
-bool EnchantingEffect::enchant(CreaturePtr creature, ActionManager * const am, const ItemStatus item_status)
+bool EnchantingEffect::enchant(CreaturePtr creature, ActionManager* const am, const ItemStatus item_status)
 {
   if (creature == nullptr || am == nullptr)
   {
@@ -63,7 +63,7 @@ bool EnchantingEffect::enchant(CreaturePtr creature, ActionManager * const am, c
   }
 
   list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
-  ItemPtr item = am->inventory(creature, creature->get_inventory(), no_filter, {}, false, false);
+  ItemPtr item = am->select_equipment_or_inventory_item(creature);
 
   if (item != nullptr)
   {

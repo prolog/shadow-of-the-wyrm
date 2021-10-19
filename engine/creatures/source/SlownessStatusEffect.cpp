@@ -1,5 +1,6 @@
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
+#include "Game.hpp"
 #include "SlownessCalculator.hpp"
 #include "SlownessStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -11,6 +12,17 @@ using namespace std;
 SlownessStatusEffect::SlownessStatusEffect()
 {
   status_calc = std::make_shared<SlownessCalculator>();
+}
+
+void SlownessStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr affected_creature) const
+{
+  if (initiating != nullptr)
+  {
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+
+    game.get_deity_action_manager_ref().notify_action(initiating, current_map, CreatureActionKeys::ACTION_FREEZE, true);
+  }
 }
 
 bool SlownessStatusEffect::after_apply(CreaturePtr creature) const
@@ -26,7 +38,7 @@ bool SlownessStatusEffect::after_apply(CreaturePtr creature) const
       creature->remove_status(StatusIdentifiers::STATUS_ID_SLOWNESS);
 
       // Undo the haste status, adding a message if necessary:
-      StatusEffectPtr haste = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HASTE, source_id);
+      StatusEffectPtr haste = StatusEffectFactory::create_status_effect(initiating_creature, StatusIdentifiers::STATUS_ID_HASTE, source_id);
       haste->undo_change(creature);
 
       effect_applied = false;

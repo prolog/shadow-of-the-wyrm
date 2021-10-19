@@ -278,6 +278,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game.actions.switch_colour_palettes(creature);
       }
+      else if (command_name == CommandKeys::TOGGLE_WINDOW_MODE)
+      {
+        ac = game.actions.toggle_window_mode(creature);
+      }
       else if (command_name == CommandKeys::ORDER)
       {
         ac = game.actions.order(creature);

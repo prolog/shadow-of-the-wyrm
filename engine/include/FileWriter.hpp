@@ -5,7 +5,7 @@
 class FileWriter
 {
   public:
-    FileWriter(const std::string& filename_minus_extension);
+    FileWriter(const std::string& filename);
     ~FileWriter();
 
     void set_file_name(const std::string& filename);
