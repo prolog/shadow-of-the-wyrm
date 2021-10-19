@@ -7,10 +7,10 @@ class DoorBreakageCalculator
 {
   public:
     DoorBreakageCalculator();
-    int calculate_pct_chance_breakage(CreaturePtr creature, DoorPtr door);
+    int calculate_pct_chance_breakage(CreaturePtr creature, EntrancePtr entr);
 
   protected:
-    int get_base_strength_value(DoorPtr door);
+    int get_base_strength_value(EntrancePtr entr);
 
     const std::map<MaterialType, int> material_base_strength_values;
     static const int DEFAULT_STR_BASE;

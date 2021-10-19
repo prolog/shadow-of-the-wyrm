@@ -57,7 +57,7 @@ void FruitTreeTileConfiguration::configure_additional_features(TilePtr tile, con
 
       if (fruit != nullptr)
       {
-        tile->get_items()->add_front(fruit);
+        tile->get_items()->merge_or_add(fruit, InventoryAdditionType::INVENTORY_ADDITION_BACK);
       }
     }
   }

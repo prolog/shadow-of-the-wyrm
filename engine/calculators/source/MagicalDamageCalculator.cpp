@@ -62,6 +62,7 @@ Damage MagicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties(
     if (creature != nullptr)
     {
       int modifier = isk.get_bonus().get_base();
+      base_and_bonus.set_effect_bonus(base_and_bonus.get_effect_bonus() + modifier);
 
       modifier += get_skill_modifier(creature, spell.get_magic_category());
       modifier += get_stat_modifier(creature);

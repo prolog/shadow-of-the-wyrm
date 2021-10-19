@@ -47,6 +47,7 @@ const string ItemIdKeys::ITEM_ID_VEGETABLE_3      = "_vegetable_3";
 const string ItemIdKeys::ITEM_ID_VEGETABLE_4      = "_vegetable_4";
 const string ItemIdKeys::ITEM_ID_VEGETABLE_5      = "_vegetable_5";
 const string ItemIdKeys::ITEM_ID_VEGETABLE_6      = "_vegetable_6";
+const string ItemIdKeys::ITEM_ID_SHOVEL           = "_shovel";
 const string ItemIdKeys::ITEM_ID_ROOT             = "_root";
 const string ItemIdKeys::ITEM_ID_BERRIES          = "_berries";
 const string ItemIdKeys::ITEM_ID_KELP             = "_kelp";
@@ -83,6 +84,7 @@ const string ItemIdKeys::ITEM_ID_GOBLIN_MOONSHINE = "goblin_moonshine";
 const string ItemIdKeys::ITEM_ID_UNSTONING_POTION = "_unstoning_potion";
 const string ItemIdKeys::ITEM_ID_HEALING_POTION   = "_healing_potion";
 const string ItemIdKeys::ITEM_ID_ETHER_POTION     = "_ether_potion";
+const string ItemIdKeys::ITEM_ID_BOARD_WITH_NAIL_IN_IT = "_board_with_nail_in_it";
 
 // Item Scripts
 ItemEventScripts::ItemEventScripts()

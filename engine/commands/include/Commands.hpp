@@ -416,6 +416,13 @@ class SwitchColourPalettesCommand : public Command
     ~SwitchColourPalettesCommand();
 };
 
+class ToggleWindowModeCommand : public Command
+{
+  public:
+    ToggleWindowModeCommand(int key);
+    ~ToggleWindowModeCommand();
+};
+
 class OrderCommand : public Command
 {
   public:

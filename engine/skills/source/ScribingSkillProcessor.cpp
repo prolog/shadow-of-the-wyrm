@@ -140,7 +140,7 @@ ItemPtr ScribingSkillProcessor::create_scroll(CreaturePtr creature, const string
         {
           Spell spell = s_it->second;
 
-          if (spell.get_magic_category() == SkillType::SKILL_MAGIC_DIVINE && game.get_deities_cref().empty())
+          if (spell.get_magic_category() == SkillType::SKILL_MAGIC_DIVINE && !game.do_deities_exist())
           {
             IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
             manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_CRAFTING_NO_DEITIES));

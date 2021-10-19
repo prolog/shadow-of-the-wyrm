@@ -21,7 +21,7 @@ class DeityDecisionStrategyHandler
   protected:
     virtual DeityDecisionImplications get_deity_decision_implications(CreaturePtr creature, TilePtr tile) const;
 
-    virtual int get_piety_loss() const = 0;
+    virtual int get_piety_amount() const = 0;
 
     std::string deity_id;
 };

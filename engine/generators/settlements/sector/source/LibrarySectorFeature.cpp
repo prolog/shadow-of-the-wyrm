@@ -1,3 +1,4 @@
+#include "CoordUtils.hpp"
 #include "FeatureDescriptionTextKeys.hpp"
 #include "FeatureGenerator.hpp"
 #include "Game.hpp"
@@ -6,6 +7,7 @@
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "TileGenerator.hpp"
+#include "WildflowerGardenGenerator.hpp"
 
 using namespace std;
 
@@ -109,8 +111,26 @@ bool LibrarySectorFeature::generate_feature(MapPtr map, const Coordinate& start_
 }
 
 // Little Library
-LittleLibrarySectorFeature::LittleLibrarySectorFeature()
+const int LittleLibrarySectorFeature::DEFAULT_DANGER_LEVEL = 5;
+
+LittleLibrarySectorFeature::LittleLibrarySectorFeature(const bool new_generate_walls, const int new_danger_level)
+: generate_walls(new_generate_walls), danger_level(new_danger_level)
 {
+}
+
+void LittleLibrarySectorFeature::set_danger_level(const int new_danger_level)
+{
+  danger_level = new_danger_level;
+}
+
+int LittleLibrarySectorFeature::get_danger_level() const
+{
+  return danger_level;
+}
+
+int LittleLibrarySectorFeature::get_default_danger_level() const
+{
+  return DEFAULT_DANGER_LEVEL;
 }
 
 bool LittleLibrarySectorFeature::generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
@@ -131,32 +151,57 @@ bool LittleLibrarySectorFeature::generate_feature(MapPtr map, const Coordinate& 
       // Sign
       FeaturePtr sign = FeatureGenerator::generate_sign(SignTextKeys::SIGN_LITTLE_LIBRARY);
       map->at(start_row, start_col)->set_feature(sign);
+      int offset = 2;
 
       // Little library
-      vector<Coordinate> corners = { {start_row, start_col + 2}, {start_row, start_col + 4}, {end_row, start_col + 2}, {end_row, start_col + 4} };
-      vector<Coordinate> walls = { {start_row + 1, start_col + 2}, {start_row + 1, start_col + 4}, {start_row, start_col + 3}, {end_row, start_col + 3} };
-     
-      // Remove one of the walls to form an entrance
-      std::shuffle(walls.begin(), walls.end(), RNG::get_engine());
-      walls.pop_back();
-
-      walls.insert(walls.end(), corners.begin(), corners.end());
-      TileGenerator tg;
-
-      for (const Coordinate& c : walls)
+      if (generate_walls)
       {
-        TilePtr wall = tg.generate(TileType::TILE_TYPE_ROCK);
-        map->insert(c, wall);
+        vector<Coordinate> corners = { {start_row, start_col + 2}, {start_row, start_col + 4}, {end_row, start_col + 2}, {end_row, start_col + 4} };
+        vector<Coordinate> walls = { {start_row + 1, start_col + 2}, {start_row + 1, start_col + 4}, {start_row, start_col + 3}, {end_row, start_col + 3} };
+
+        // Remove one of the walls to form an entrance
+        std::shuffle(walls.begin(), walls.end(), RNG::get_engine());
+        walls.pop_back();
+
+        walls.insert(walls.end(), corners.begin(), corners.end());
+        TileGenerator tg;
+
+        for (const Coordinate& c : walls)
+        {
+          TilePtr wall = tg.generate(TileType::TILE_TYPE_ROCK);
+          map->insert(c, wall);
+        }
+
+        offset = 3;
       }
 
       // Books!
-      Coordinate book_c = { start_row + 1, start_col + 3 };
-      int num_books = RNG::range(1, 2);
+      Coordinate book_c = { start_row + 1, start_col + offset };
+
+      // If it's just books/scrolls on a tile, plant some flowers around
+      // to make it more welcoming.
+      if (!generate_walls)
+      {
+        vector<Coordinate> adj_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), book_c.first, book_c.second);
+        WildflowerGardenGenerator wgg;
+
+        for (const Coordinate& c : adj_coords)
+        {
+          TilePtr tile = map->at(c);
+
+          if (tile && !tile->get_is_blocking_for_item())
+          {
+            wgg.plant_flower(tile);
+          }
+        }
+      }
+
+      int num_books = RNG::range(1, 4);
       Game& game = Game::instance();
 
       ItemGenerationConstraints igc;
       igc.set_min_danger_level(1);
-      igc.set_max_danger_level(5);
+      igc.set_max_danger_level(danger_level);
       vector<ItemType> itype_restr = { ItemType::ITEM_TYPE_SCROLL, ItemType::ITEM_TYPE_SPELLBOOK };
       igc.set_item_type_restrictions(itype_restr);
       ItemGenerationManager igm;

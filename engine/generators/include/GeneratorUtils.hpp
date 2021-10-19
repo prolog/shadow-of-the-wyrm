@@ -41,9 +41,17 @@ class GeneratorUtils
     // Generates a random trap from the game at the given coordinates.
     static void generate_trap(const MapPtr map, const int row, const int col, const std::vector<TrapPtr>& traps, const bool trap_triggered = false);
 
-    // Generates a bazaar somewhere on the map assuming the bazaar property
-    // is not empty.
-    static void generate_bazaar_if_necessary(const MapPtr map, const std::string& bazaar_property);
+    // Generates a bazaar somewhere on the map.
+    static void generate_bazaar(const MapPtr map);
+
+    // Generates a hermitage somewhere on the map.
+    static void generate_hermitage(MapPtr map);
+
+    // Generates a witchling's cottage somewhere on the map.
+    static void generate_cottage(MapPtr map);
+
+    // Generates storehouses of food over the map.
+    static void generate_storehouses(MapPtr map);
 
     // Fill a subset of the map with a certain tile type.
     static void fill(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const TileType tile_type);
@@ -54,12 +62,12 @@ class GeneratorUtils
 
   protected:
     static bool position_in_range(const int min, const int max, const int actual);
-    static bool are_tiles_ok_for_bazaar(MapPtr map, const int y_start, const int x_start, const int height, const int width);
+    static bool are_tiles_ok_for_structure(MapPtr map, const int y_start, const int x_start, const int height, const int width);
 
-    static const int BAZAAR_MIN_WIDTH;
-    static const int BAZAAR_MAX_WIDTH;
-    static const int BAZAAR_MIN_HEIGHT;
-    static const int BAZAAR_MAX_HEIGHT;
+    static const int STRUCTURE_MIN_WIDTH;
+    static const int STRUCTURE_MAX_WIDTH;
+    static const int STRUCTURE_MIN_HEIGHT;
+    static const int STRUCTURE_MAX_HEIGHT;
 
     GeneratorUtils();
     ~GeneratorUtils();

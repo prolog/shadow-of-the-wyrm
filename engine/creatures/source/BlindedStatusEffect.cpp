@@ -14,6 +14,17 @@ BlindedStatusEffect::BlindedStatusEffect()
   status_calc = std::make_shared<BlindedCalculator>();
 }
 
+void BlindedStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr affected_creature) const
+{
+  if (initiating != nullptr)
+  {
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+
+    game.get_deity_action_manager_ref().notify_action(initiating, current_map, CreatureActionKeys::ACTION_BURN, true);
+  }
+}
+
 Modifier BlindedStatusEffect::get_base_modifier(CreaturePtr creature, const int danger_level) const
 {
   Modifier m;

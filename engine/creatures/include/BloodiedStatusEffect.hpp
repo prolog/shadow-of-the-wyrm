@@ -9,6 +9,8 @@ class BloodiedStatusEffect : public StatusEffect
   protected:
     virtual Modifier get_base_modifier(CreaturePtr creature, const int danger_level) const override;
 
+    virtual void notify_deities(CreaturePtr initiating_creature, CreaturePtr affected_creature) const override;
+
     virtual std::string get_player_application_message() const override;
     virtual std::string get_player_undo_message() const override;
     virtual std::string get_npc_application_message(std::shared_ptr<Creature> creature) const override;

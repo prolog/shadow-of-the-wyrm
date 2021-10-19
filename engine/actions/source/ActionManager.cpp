@@ -513,6 +513,21 @@ ActionCost ActionManager::switch_colour_palettes(CreaturePtr creature)
   return get_action_cost(creature, action_cost_value);
 }
 
+ActionCost ActionManager::toggle_window_mode(CreaturePtr creature)
+{
+  DisplayPtr display = Game::instance().get_display();
+
+  if (display != nullptr && creature != nullptr && creature->get_is_player())
+  {
+    string result_sid = display->toggle_fullscreen();
+    IMessageManager& manager = MM::instance();
+    manager.add_new_message(StringTable::get(result_sid));
+    manager.send();
+  }
+
+  return get_action_cost(creature, ActionCostConstants::NO_ACTION);
+}
+
 ActionCost ActionManager::order(CreaturePtr creature)
 {
   OrderAction oa;
@@ -684,6 +699,22 @@ ActionCost ActionManager::equipment(CreaturePtr creature, ItemPtr i, const Equip
   }
 
   return get_action_cost(creature, acv);
+}
+
+ItemPtr ActionManager::select_equipment_or_inventory_item(CreaturePtr creature)
+{
+  ItemPtr item;
+  Game& game = Game::instance();
+
+  if (creature != nullptr)
+  {
+    DisplayPtr game_display = game.get_display();
+
+    EquipmentManager equipment_manager(game_display, creature);
+    item = equipment_manager.select_item();
+  }
+
+  return item;
 }
 
 ActionCost ActionManager::pray(CreaturePtr creature)

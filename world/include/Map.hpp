@@ -68,6 +68,9 @@ class Map : public ISerializable
     void set_default_race_id(const std::string& new_default_race_id);
     std::string get_default_race_id() const;
 
+    void set_default_deity_id(const std::string& new_default_deity_id);
+    std::string get_default_deity_id() const;
+
 		void set_size(const Dimensions& new_dimensions);
 		Dimensions size() const;
     Dimensions& size_ref();
@@ -182,6 +185,7 @@ class Map : public ISerializable
     TilesContainer tiles;
     std::string name_sid;
     std::string default_race_id;
+    std::string default_deity_id;
     Dimensions dimensions;
     Dimensions original_dimensions;
     NamedMapLocations locations;

@@ -40,6 +40,12 @@ class Deity : public ISerializable
     void set_dislike(const std::string& dislike_key, const bool val);
     bool get_dislike(const std::string& dislike_key) const;
     
+    void set_like(const std::string& like_key, const bool val);
+    bool get_like(const std::string& like_key) const;
+
+    void set_burial_races(const std::vector<std::string>& new_burial_races);
+    std::vector<std::string> get_burial_races() const;
+
     void set_crowning_gifts(const std::vector<std::string>& new_crowning_gifts);
     std::vector<std::string> get_crowning_gifts() const;
 
@@ -61,6 +67,9 @@ class Deity : public ISerializable
     void set_user_playable(const bool new_user_playable);
     bool get_user_playable() const;
 
+    void set_generator_filters(const std::vector<std::string>& new_generator_filters);
+    std::vector<std::string> get_generator_filters() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -79,7 +88,10 @@ class Deity : public ISerializable
     std::string anger_script;
     Modifier initial_modifier; // only used for creature creation
     CreatureActions dislikes;
+    CreatureActions likes;
+    std::vector<std::string> burial_races;
     bool user_playable;
+    std::vector<std::string> generator_filters;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

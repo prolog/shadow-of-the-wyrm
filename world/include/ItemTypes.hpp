@@ -98,6 +98,7 @@ class ItemIdKeys
     static const std::string ITEM_ID_VEGETABLE_4;
     static const std::string ITEM_ID_VEGETABLE_5;
     static const std::string ITEM_ID_VEGETABLE_6;
+    static const std::string ITEM_ID_SHOVEL;
 
     // Foragables
     static const std::string ITEM_ID_ROOT;
@@ -153,6 +154,9 @@ class ItemIdKeys
     static const std::string ITEM_ID_UNSTONING_POTION;
     static const std::string ITEM_ID_HEALING_POTION;
     static const std::string ITEM_ID_ETHER_POTION;
+
+    // Misc
+    static const std::string ITEM_ID_BOARD_WITH_NAIL_IN_IT;
 
   protected:
     ItemIdKeys();

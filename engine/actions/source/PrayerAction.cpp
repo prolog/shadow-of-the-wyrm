@@ -93,7 +93,7 @@ bool PrayerAction::say_prayer(CreaturePtr creature)
     Game& game = Game::instance();
     IMessageManager& manager = MM::instance();
 
-    if (!game.get_deities_cref().empty())
+    if (game.do_deities_exist())
     {
       ReligionManager rm;
       string deity_name_sid = rm.get_deity_name_sid(creature->get_religion().get_active_deity_id());
@@ -118,7 +118,7 @@ bool PrayerAction::say_prayer(CreaturePtr creature)
 // Reduce the piety by the given amount, and update the player on the result
 void PrayerAction::finish_prayer(CreaturePtr creature, const DeityDecisionImplications& decision_implications)
 {
-  int piety_loss = decision_implications.get_piety_loss();
+  int piety_loss = decision_implications.get_piety_amount();
 
   // Get the deity and the creature's status with that deity.
   ReligionManager rm;

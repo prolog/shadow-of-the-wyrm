@@ -3,13 +3,15 @@
 #include "GardenGeneratorFactory.hpp"
 #include "LibrarySectorFeature.hpp"
 #include "ShopSectorFeature.hpp"
+#include "StorehouseSectorFeature.hpp"
 
 using namespace std;
 
 ReligiousCommercialSectorFeatureGenerator::ReligiousCommercialSectorFeatureGenerator()
-: features({{20, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_SHOP},
-            {40, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_OUTDOOR_SHRINE},
-            {60, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_LIBRARY},
+: features({{10, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_STOREHOUSE},
+            {30, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_SHOP},
+            {50, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_OUTDOOR_SHRINE},
+            {70, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_LIBRARY},
             {100, ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_GARDEN}})
 {
 }
@@ -46,6 +48,11 @@ bool ReligiousCommercialSectorFeatureGenerator::create_feature(MapPtr map, const
     case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_LIBRARY:
     {
       feature = std::make_unique<LibrarySectorFeature>();
+      break;
+    }
+    case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_STOREHOUSE:
+    {
+      feature = std::make_unique<StorehouseSectorFeature>();
       break;
     }
     case ReligiousCommercialSectorFeatureType::RC_SECTOR_FEATURE_OUTDOOR_SHRINE:

@@ -1,23 +1,30 @@
 #include "CoordUtils.hpp"
 #include "FeatureGenerator.hpp"
-#include "GeneratorUtils.hpp"
 #include "Game.hpp"
+#include "GardenGeneratorFactory.hpp"
+#include "GeneratorUtils.hpp"
+#include "ItemGenerationManager.hpp"
 #include "Log.hpp"
+#include "MapUtils.hpp"
 #include "RNG.hpp"
+#include "RockGardenGenerator.hpp"
+#include "SettlementGeneratorUtils.hpp"
 #include "ShopGenerator.hpp"
 #include "SpringsGenerator.hpp"
+#include "StorehouseSectorFeature.hpp"
 #include "StreamGenerator.hpp"
 #include "TileGenerator.hpp"
+#include "WildflowerGardenGenerator.hpp"
 
 using namespace std;
 
 // Implicit is an extra padding tile - when creating a shop/bazaar, there's
 // an "interior".  It's assumed that the bazaar coordinates define the exterior,
 // so the interior (where the items are laid out) will be slightly smaller.
-const int GeneratorUtils::BAZAAR_MIN_WIDTH = 4;
-const int GeneratorUtils::BAZAAR_MAX_WIDTH = 8;
-const int GeneratorUtils::BAZAAR_MIN_HEIGHT = 3;
-const int GeneratorUtils::BAZAAR_MAX_HEIGHT = 7;
+const int GeneratorUtils::STRUCTURE_MIN_WIDTH = 4;
+const int GeneratorUtils::STRUCTURE_MAX_WIDTH = 8;
+const int GeneratorUtils::STRUCTURE_MIN_HEIGHT = 3;
+const int GeneratorUtils::STRUCTURE_MAX_HEIGHT = 7;
 
 // Hidden away by protected access
 GeneratorUtils::GeneratorUtils()
@@ -338,23 +345,23 @@ void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int co
   }
 }
 
-void GeneratorUtils::generate_bazaar_if_necessary(const MapPtr map, const string& bazaar_property)
+void GeneratorUtils::generate_bazaar(const MapPtr map)
 {
-  if (map != nullptr && !bazaar_property.empty())
+  if (map != nullptr)
   {
     Dimensions d = map->size();
     int max_attempts = 15;
 
     for (int i = 0; i < max_attempts; i++)
     {
-      int width = RNG::range(BAZAAR_MIN_WIDTH, BAZAAR_MAX_WIDTH);
-      int height = RNG::range(BAZAAR_MIN_HEIGHT, BAZAAR_MAX_HEIGHT);
+      int width = RNG::range(STRUCTURE_MIN_WIDTH, STRUCTURE_MAX_WIDTH);
+      int height = RNG::range(STRUCTURE_MIN_HEIGHT, STRUCTURE_MAX_HEIGHT);
 
       // Try to place the bazaar somewhere on the map.
       int y_start = RNG::range(0, d.get_y() - height - 1);
       int x_start = RNG::range(0, d.get_x() - width - 1);
 
-      if (are_tiles_ok_for_bazaar(map, y_start, x_start, height, width))
+      if (are_tiles_ok_for_structure(map, y_start, x_start, height, width))
       {
         Building bazaar({ y_start, x_start }, { y_start + height, x_start + width }, { y_start, x_start });
         ShopGenerator sg;
@@ -368,7 +375,193 @@ void GeneratorUtils::generate_bazaar_if_necessary(const MapPtr map, const string
   }
 }
 
-bool GeneratorUtils::are_tiles_ok_for_bazaar(MapPtr map, const int y_start, const int x_start, const int height, const int width)
+void GeneratorUtils::generate_hermitage(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    Dimensions d = map->size();
+    int max_attempts = 15;
+
+    for (int i = 0; i < max_attempts; i++)
+    {
+      int width = RNG::range(STRUCTURE_MIN_WIDTH, STRUCTURE_MAX_WIDTH);
+      int height = RNG::range(STRUCTURE_MIN_HEIGHT, STRUCTURE_MAX_HEIGHT);
+
+      // Try to place the hermitage somewhere on the map.
+      int y_start = RNG::range(0, d.get_y() - height - 1);
+      int x_start = RNG::range(0, d.get_x() - width - 1);
+
+      if (are_tiles_ok_for_structure(map, y_start, x_start, height, width))
+      {
+        int offset = RNG::range(2, 3);
+        Coordinate garden_start = { y_start - offset, x_start - offset };
+        Coordinate garden_end = { y_start + height + offset, x_start + width + offset };
+        SectorFeaturePtr garden = std::make_unique<WildflowerGardenGenerator>();
+
+        if (RNG::percent_chance(30))
+        {
+          garden = std::make_unique<RockGardenGenerator>();
+        }
+        
+        if (garden != nullptr)
+        {
+          garden->generate(map, garden_start, garden_end);
+
+          Coordinate st_coord = { y_start, x_start };
+          Coordinate end_coord = { y_start + height, x_start + width };
+          vector<CardinalDirection> door_dirs = MapUtils::get_unblocked_door_dirs(map, st_coord, end_coord);
+
+          if (!door_dirs.empty())
+          {
+            vector<string> creatures = {};
+            vector<string> items = {};
+            vector<ClassIdentifier> features = { ClassIdentifier::CLASS_ID_BED };
+            vector<ClassIdentifier> potential_features = { ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, ClassIdentifier::CLASS_ID_TABLE };
+
+            for (const auto& pf : potential_features)
+            {
+              if (RNG::percent_chance(50))
+              {
+                features.push_back(pf);
+              }
+            }
+
+            // Hermit's long dead
+            if (RNG::percent_chance(50))
+            {
+              items.push_back(ItemIdKeys::ITEM_ID_INTACT_SKELETON);
+            }
+            else
+            {
+              creatures.push_back(CreatureID::CREATURE_ID_HERMIT);
+            }
+
+            ItemGenerationConstraints igc;
+            igc.set_item_type_restrictions({ ItemType::ITEM_TYPE_SPELLBOOK, ItemType::ITEM_TYPE_SCROLL });
+            igc.set_min_danger_level(1);
+            igc.set_max_danger_level(map->get_danger());
+            ItemGenerationManager igm;
+            vector<string> potential_items = igm.get_item_ids(igm.generate_item_generation_map(igc));
+
+            if (!potential_items.empty())
+            {
+              int num_readables = RNG::range(2, 4);
+              for (int i = 0; i < num_readables; i++)
+              {
+                items.push_back(potential_items[RNG::range(0, potential_items.size() - 1)]);
+              }
+            }
+
+            BuildingGenerationParameters bgp(y_start, y_start + height, x_start, x_start + width, door_dirs[RNG::range(0, door_dirs.size() - 1)], false, features, creatures, items, TileType::TILE_TYPE_EARTH);
+            vector<Building> buildings;
+            SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, 100, false);
+
+            map->set_permanent(true);
+            break;
+          }
+        }
+      }
+    }
+  }
+}
+
+void GeneratorUtils::generate_cottage(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    Dimensions d = map->size();
+    int max_attempts = 15;
+
+    for (int i = 0; i < max_attempts; i++)
+    {
+      int width = RNG::range(STRUCTURE_MIN_WIDTH, STRUCTURE_MAX_WIDTH);
+      int height = RNG::range(STRUCTURE_MIN_HEIGHT, STRUCTURE_MAX_HEIGHT);
+
+      // Place the cottage
+      int y_start = RNG::range(0, d.get_y() - height - 1);
+      int x_start = RNG::range(0, d.get_x() - width - 1);
+
+      if (are_tiles_ok_for_structure(map, y_start, x_start, height, width))
+      {
+        int offset = RNG::range(2, 3);
+
+        Coordinate st_coord = { y_start, x_start };
+        Coordinate end_coord = { y_start + height, x_start + width };
+
+        for (int i = 1; i <= offset; i++)
+        {
+          vector<Coordinate> fern_coords = CoordUtils::get_perimeter_coordinates({ y_start - i, x_start - i }, { y_start + height + i, x_start + width + i });
+
+          for (const Coordinate& c : fern_coords)
+          {
+            TilePtr tile = map->at(c);
+
+            if (tile != nullptr)
+            {
+              ItemPtr fern = ItemManager::create_item(ItemIdKeys::ITEM_ID_FERN);
+              tile->get_items()->merge_or_add(fern, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+            }
+          }
+        }
+
+        vector<CardinalDirection> door_dirs = MapUtils::get_unblocked_door_dirs(map, st_coord, end_coord);
+
+        if (!door_dirs.empty())
+        {
+          vector<string> creatures = {CreatureID::CREATURE_ID_WITCHLING};
+          vector<string> items = {};
+          vector<string> pot_items = {ItemIdKeys::ITEM_ID_STONEFLOWER, ItemIdKeys::ITEM_ID_WHITE_BASIL, ItemIdKeys::ITEM_ID_VOXFLOWER, ItemIdKeys::ITEM_ID_BLACKROOT};
+          vector<ClassIdentifier> features = { ClassIdentifier::CLASS_ID_BED, ClassIdentifier::CLASS_ID_TABLE };
+
+          for (const auto& item : pot_items)
+          {
+            if (RNG::percent_chance(75))
+            {
+              items.push_back(item);
+            }
+          }
+
+          BuildingGenerationParameters bgp(y_start, y_start + height, x_start, x_start + width, door_dirs[RNG::range(0, door_dirs.size() - 1)], false, features, creatures, items, TileType::TILE_TYPE_ROCK);
+          vector<Building> buildings;
+          SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, 100, false);
+
+          map->set_permanent(true);
+          break;
+        }
+      }
+    }
+  }
+}
+
+void GeneratorUtils::generate_storehouses(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    int max_attempts = 15;
+    Dimensions d = map->size();
+
+    for (int i = 0; i < max_attempts; i++)
+    {
+      int width = RNG::range(STRUCTURE_MIN_WIDTH, STRUCTURE_MAX_WIDTH);
+      int height = RNG::range(STRUCTURE_MIN_HEIGHT, STRUCTURE_MAX_HEIGHT);
+
+      // Try to place the storehouse somewhere on the map.
+      int y_start = RNG::range(0, d.get_y() - height - 1);
+      int x_start = RNG::range(0, d.get_x() - width - 1);
+
+      // Ensure some space around the buildings.
+      if (are_tiles_ok_for_structure(map, y_start-1, x_start-1, height+2, width+2))
+      {
+        StorehouseSectorFeature ssf;
+        ssf.generate(map, { y_start, x_start }, { y_start + height, x_start + width });
+      }
+    }
+
+    map->set_permanent(true);
+  }
+}
+
+bool GeneratorUtils::are_tiles_ok_for_structure(MapPtr map, const int y_start, const int x_start, const int height, const int width)
 {
   bool bzr_ok = true;
 

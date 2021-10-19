@@ -12,6 +12,19 @@ const string CreatureActionKeys::ACTION_DESECRATE_NEUTRAL = "DesecrateNeutral";
 const string CreatureActionKeys::ACTION_DESECRATE_EVIL = "DesecrateEvil";
 const string CreatureActionKeys::ACTION_GRAVEROBBING = "GraveRobbing";
 const string CreatureActionKeys::ACTION_SKIN_HUMANOID = "SkinHumanoid";
+const string CreatureActionKeys::ACTION_BURY_REMAINS = "BuryRemains";
+const string CreatureActionKeys::ACTION_PLANT_SEEDS = "PlantSeeds";
+const string CreatureActionKeys::ACTION_PACIFY = "Pacify";
+const string CreatureActionKeys::ACTION_BLOODLETTING = "Bloodletting";
+const string CreatureActionKeys::ACTION_SNEAK_ATTACK = "SneakAttack";
+const string CreatureActionKeys::ACTION_RAGE = "Rage";
+const string CreatureActionKeys::ACTION_SMITE = "Smite";
+const string CreatureActionKeys::ACTION_PETRIFY = "Petrify";
+const string CreatureActionKeys::ACTION_BURN = "Burn";
+const string CreatureActionKeys::ACTION_FREEZE = "Freeze";
+const string CreatureActionKeys::ACTION_STUN = "Stun";
+const string CreatureActionKeys::ACTION_LEARN_SPELL = "LearnSpell";
+const string CreatureActionKeys::ACTION_HEAL_COMPANION = "HealCompanion";
 
 bool CreatureActions::operator==(const CreatureActions& ca) const
 {

@@ -63,7 +63,7 @@ int PhysicalDamageCalculator::calculate(CreaturePtr defending_creature, const bo
       // Apply soak if damage is not negative.
       // Negative damage is permitted in extreme cases - it allows things like gaining HP from
       // fire damage, etc.
-      double total_soak = defending_creature->get_soak().get_current() * soak_mult;
+      double total_soak = static_cast<double>(defending_creature->get_soak().get_current()) * soak_mult;
 
       if (slays_creatures_race)
       {

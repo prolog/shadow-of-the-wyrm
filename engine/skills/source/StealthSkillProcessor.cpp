@@ -19,7 +19,7 @@ ActionCostValue StealthSkillProcessor::process(CreaturePtr creature, MapPtr map)
     // If no longer hidden, add an appropriate message.
     if (creature->get_free_hidden_actions() == 0)
     {
-      StatusEffectPtr hide = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HIDE, creature->get_id());
+      StatusEffectPtr hide = StatusEffectFactory::create_status_effect(creature, StatusIdentifiers::STATUS_ID_HIDE, creature->get_id());
 
       if (hide != nullptr)
       {

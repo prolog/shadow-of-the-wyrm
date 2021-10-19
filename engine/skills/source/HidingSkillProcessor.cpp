@@ -20,7 +20,7 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
     // Using hiding when hidden reveals the creature.
     if (creature->has_status(StatusIdentifiers::STATUS_ID_HIDE))
     {
-      StatusEffectPtr hide = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HIDE, creature->get_id());
+      StatusEffectPtr hide = StatusEffectFactory::create_status_effect(creature, StatusIdentifiers::STATUS_ID_HIDE, creature->get_id());
 
       if (hide != nullptr)
       {
@@ -47,7 +47,7 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
       }
       else if (RNG::percent_chance(hide_chance))
       {
-        StatusEffectPtr hide = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HIDE, creature->get_id());
+        StatusEffectPtr hide = StatusEffectFactory::create_status_effect(creature, StatusIdentifiers::STATUS_ID_HIDE, creature->get_id());
 
         if (hide != nullptr)
         {

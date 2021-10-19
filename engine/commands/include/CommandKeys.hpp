@@ -71,6 +71,7 @@ class CommandKeys
     static const std::string ITEM_CODEX;
     static const std::string SWITCH_GRAPHICS_MODE;
     static const std::string SWITCH_COLOUR_PALETTES;
+    static const std::string TOGGLE_WINDOW_MODE;
     static const std::string ORDER;
 
     // Helpful public functions

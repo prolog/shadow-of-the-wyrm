@@ -143,7 +143,7 @@ double ActionCostConverter::to_seconds(const ActionCostValue action_cost_value, 
 // of 50 would take 75 minutes.
 double ActionCostConverter::to_seconds_on_world_map(const ActionCostValue action_cost_value)
 {
-  return (action_cost_value * 60 * 1.5);
+  return (static_cast<double>(action_cost_value) * 60.0 * 1.5);
 }
 
 // Each action on a submap takes half the amount of action cost in seconds.  So moving at a base,

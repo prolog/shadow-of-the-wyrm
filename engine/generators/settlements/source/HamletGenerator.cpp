@@ -62,6 +62,11 @@ void HamletGenerator::generate_road(MapPtr map, const int start_col, const int e
   TileGenerator tg;
   int cur_col = start_col;
 
+  int sign_row = RNG::percent_chance(50) && row >= 2 ? row - 1 : row + 1;
+  int sign_col = RNG::range(start_col, end_col);
+
+  SettlementGeneratorUtils::place_sign(map, sign_row, sign_col, get_additional_property(TileProperties::TILE_PROPERTY_NAME));
+
   while (cur_col != end_col)
   {
     TilePtr road_tile = tg.generate(TileType::TILE_TYPE_ROAD);
@@ -199,7 +204,7 @@ void HamletGenerator::generate_additional_random_buildings(MapPtr map, const int
     int row_end = row+height;
     int col_end = col+width;
 
-    if (!SettlementGeneratorUtils::does_building_overlap(map, row, row_end, col, col_end))
+    if (!SettlementGeneratorUtils::does_building_overlap(map, row, row_end, col, col_end, 1))
     {
       if (!sfeatures.empty() && RNG::percent_chance(pct_chance_sector_feature))
       {
@@ -208,6 +213,9 @@ void HamletGenerator::generate_additional_random_buildings(MapPtr map, const int
         if (result.first)
         {
           sfeatures.erase(sfeatures.begin() + result.second);
+
+          // Keep a phantom building so another building doesn't build over it.
+          buildings.push_back({ {row, col}, {row_end, col_end}, {} });
         }
       }
       else
@@ -276,7 +284,12 @@ bool HamletGenerator::potentially_generate_vegetable_garden(MapPtr map, const in
           break;
       }
       
-      if (garden_generated) break;
+      if (garden_generated)
+      {
+        // Track the garden so we don't build over it.
+        buildings.push_back({ {start_row, start_col}, {end_row, end_col}, {} });
+        break;
+      }
     }
   }
   

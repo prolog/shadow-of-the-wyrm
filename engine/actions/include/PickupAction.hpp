@@ -35,7 +35,7 @@ class PickupAction : public IActionManager
 
     bool autopickup_passes_exclusions(ItemPtr i);
 
-    ActionCostValue take_item_and_give_to_creature(ItemPtr item, IInventoryPtr inv, CreaturePtr creature, const bool prompt_for_amount);
+    ActionCostValue take_item_and_give_to_creature(ItemPtr item, IInventoryPtr inv, CreaturePtr creature, const bool prompt_for_amount, const uint quantity);
     
     // Returns the item to pick up
     ItemPtr recalculate_stack_sizes(IInventoryPtr inv, ItemPtr item, const uint quantity, const uint amount_to_take);

@@ -1,6 +1,7 @@
 #include "TreeSpecies.hpp"
 
 TreeSpecies::TreeSpecies()
+: species_id(TreeSpeciesID::TREE_SPECIES_CYPRESS), tile_type(TileType::TILE_TYPE_EVERGREEN_TREE)
 {
 }
 

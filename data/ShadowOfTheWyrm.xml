@@ -18,6 +18,15 @@
 				<Action>GraveRobbing</Action>
 				<Action>SkinHumanoid</Action>
 			</Dislikes>
+			<Likes>
+				<Action>BuryRemains</Action>
+				<Action>HealCompanion</Action>
+				<Action>LearnSpell</Action>
+				<Action>Smite</Action>
+			</Likes>
+			<BurialRaces>
+				<RaceID>_humanoid</RaceID>
+			</BurialRaces>
 			<Crowning>
 				<Artifact>asturias</Artifact>
 				<Artifact>delver</Artifact>
@@ -61,6 +70,15 @@
 				<Action>GraveRobbing</Action>
 				<Action>SkinHumanoid</Action>
 			</Dislikes>
+			<Likes>
+				<Action>BuryRemains</Action>
+				<Action>HealCompanion</Action>
+				<Action>Smite</Action>
+				<Action>Stun</Action>
+			</Likes>
+			<BurialRaces>
+				<RaceID>_humanoid</RaceID>
+			</BurialRaces>
 			<Crowning>
 				<Artifact>delver</Artifact>
 				<Artifact>falcons_eye</Artifact>
@@ -105,6 +123,14 @@
 				<Action>GraveRobbing</Action>
 				<Action>SkinHumanoid</Action>
 			</Dislikes>
+			<Likes>
+				<Action>BuryRemains</Action>
+				<Action>HealCompanion</Action>
+				<Action>Pacify</Action>
+			</Likes>
+			<BurialRaces>
+				<RaceID>_humanoid</RaceID>
+			</BurialRaces>
 			<Crowning>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
@@ -143,11 +169,15 @@
 			</DeityInitialModifiers>
 			<Dislikes>
 				<Action>AttackFriendlyCreature</Action>
-				<Action>Cannibalism</Action>
 				<Action>DesecrateNeutral</Action>
-				<Action>GraveRobbing</Action>
-				<Action>SkinHumanoid</Action>
 			</Dislikes>
+			<Likes>
+				<Action>BuryRemains</Action>
+				<Action>PlantSeeds</Action>
+			</Likes>
+			<BurialRaces>
+				<RaceID>_animal</RaceID>
+			</BurialRaces>
 			<Crowning>
 				<Artifact>carpathos</Artifact>
 				<Artifact>delver</Artifact>
@@ -188,6 +218,13 @@
 				<Action>DesecrateNeutral</Action>
 				<Action>GraveRobbing</Action>
 			</Dislikes>
+			<Likes>
+				<Action>BuryRemains</Action>
+				<Action>Burn</Action>
+			</Likes>
+			<BurialRaces>
+				<RaceID>_dragon</RaceID>
+			</BurialRaces>
 			<Crowning>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
@@ -231,6 +268,10 @@
 				<Action>DesecrateNeutral</Action>
 				<Action>GraveRobbing</Action>
 			</Dislikes>
+			<Likes>
+				<Action>SneakAttack</Action>
+				<Action>LearnSpell</Action>
+			</Likes>
 			<Crowning>
 				<Artifact>carpathos</Artifact>
 				<Artifact>delver</Artifact>
@@ -274,23 +315,20 @@
 			<Dislikes>
 				<Action>DesecrateEvil</Action>
 			</Dislikes>
+			<Likes>
+				<Action>AttackFriendlyCreature</Action>
+				<Action>Bloodletting</Action>
+				<Action>Freeze</Action>
+				<Action>LearnSpell</Action>
+			</Likes>
 			<Crowning>
 				<Artifact>asturias</Artifact>
-				<Artifact>carpathos</Artifact>
-				<Artifact>delver</Artifact>
-				<Artifact>great_mace_torasin</Artifact>
-				<Artifact>erebus</Artifact>
-				<Artifact>pelter</Artifact>
 				<Artifact>shadow</Artifact>
-				<Artifact>kithslayer</Artifact>
-				<Artifact>skyslayer</Artifact>
 				<Artifact>staff_artificer</Artifact>
-				<Artifact>plate_mail_terror</Artifact>
 				<Artifact>crown_of_tyranny</Artifact>
 				<Artifact>athame_winter</Artifact>
 				<Artifact>akkar</Artifact>
 				<Artifact>akos_akari</Artifact>
-				<Artifact>whisperwind</Artifact>
 				<Artifact>vorpal_blade</Artifact>
 				<Artifact>elcrynn</Artifact>
 			</Crowning>
@@ -302,6 +340,9 @@
 			</Summons>
 			<WorshipSiteType>6</WorshipSiteType>
 			<AngerScript>deities/anger_common.lua</AngerScript>
+			<GeneratorFilters>
+				<Filter>IslandSacrificeSite</Filter>
+			</GeneratorFilters>
 		</Deity>
 		<Deity id="08_urgoth">
 			<UserPlayable>1</UserPlayable>
@@ -317,6 +358,11 @@
 			<Dislikes>
 				<Action>DesecrateEvil</Action>
 			</Dislikes>
+			<Likes>
+				<Action>AttackFriendlyCreature</Action>
+				<Action>Rage</Action>
+				<Action>Stun</Action>
+			</Likes>
 			<Crowning>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
@@ -342,6 +388,9 @@
 			</Summons>
 			<WorshipSiteType>7</WorshipSiteType>
 			<AngerScript>deities/anger_common.lua</AngerScript>
+			<GeneratorFilters>
+				<Filter>RockySacrificeSite</Filter>
+			</GeneratorFilters>
 		</Deity>
 		<Deity id="09_sceadugenga">
 			<UserPlayable>1</UserPlayable>
@@ -357,6 +406,14 @@
 			<Dislikes>
 				<Action>DesecrateEvil</Action>
 			</Dislikes>
+			<Likes>
+				<Action>AttackFriendlyCreature</Action>
+				<Action>Cannibalism</Action>
+				<Action>DesecrateGood</Action>
+				<Action>DesecrateNeutral</Action>
+				<Action>GraveRobbing</Action>
+				<Action>Petrify</Action>
+			</Likes>
 			<Crowning>
 				<Artifact>delver</Artifact>
 				<Artifact>great_mace_torasin</Artifact>
@@ -2032,7 +2089,7 @@
 					<DisarmTraps>10</DisarmTraps>
 					<MountainLore>20</MountainLore>
 					<NightSight>15</NightSight>
-					<Smithing>20</Smithing>
+					<Smithing>5</Smithing>
 					<Spelunking>20</Spelunking>
 				</GeneralSkills>
 				<WeaponSkills>
@@ -4222,7 +4279,7 @@
 					</InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
-			<StartingPetIDs>sheep</StartingPetIDs>
+			<StartingPetIDs>_sheep</StartingPetIDs>
 			<LevelScript>level/shepherd.lua</LevelScript>
 		</Class>
 		<Class id="smith">
@@ -4267,7 +4324,7 @@
 					<Intimidation>15</Intimidation>
 					<MountainLore>10</MountainLore>
 					<Skinning>15</Skinning>
-					<Smithing>15</Smithing>
+					<Smithing>30</Smithing>
 					<Tanning>10</Tanning>
 				</GeneralSkills>
 				<WeaponSkills>
@@ -5163,7 +5220,7 @@
 			<APCost>10</APCost>
 			<Speed>1</Speed>
 			<Range>1</Range>
-			<Shape>1</Shape>
+			<Shape>4</Shape>
 			<Effect>26</Effect>
 		</Spell>		
 		<Spell id="c_14_inferno">
@@ -5540,7 +5597,7 @@
 			<Colour>7</Colour>
 			<APCost>6</APCost>
 			<Speed>1</Speed>
-			<Range>4</Range>
+			<Range>5</Range>
 			<Shape>1</Shape>
 			<Effect>26</Effect>
 		</Spell>
@@ -7523,7 +7580,17 @@
 			</Bed>
 			<!-- Door and Gate are entrances and handled by the system-defined sys spritesheet.  No need to define them. -->
 			<Door><Symbol><Char>+</Char></Symbol></Door>
-			<Gate><Symbol><Char>+</Char></Symbol></Gate>
+			<Fence>
+				<Symbol>
+					<Char>|</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>1</Row>
+						<Col>3</Col>
+					</Sprite>
+				</Symbol>
+			</Fence>
+ 			<Gate><Symbol><Char>+</Char></Symbol></Gate>
 			<DecorativeStatue>
 				<Symbol>
 					<Char>I</Char>
@@ -7862,7 +7929,7 @@
 					<Sprite>
 						<ID>fea</ID>
 						<Row>1</Row>
-						<Col>2</Col>
+						<Col>1</Col>
 					</Sprite>
 				</Symbol>
 				<DescriptionSID>FEATURE_DESCRIPTION_PULSAR</DescriptionSID>

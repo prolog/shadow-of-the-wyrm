@@ -10,6 +10,7 @@ using namespace std;
 const int CreatureStatisticsMarkerChecker::PASSIVE_STATISTIC_THRESHOLD = 15;
 
 CreatureStatisticsMarkerChecker::CreatureStatisticsMarkerChecker()
+: minutes_interval(9999)
 {
 }
 

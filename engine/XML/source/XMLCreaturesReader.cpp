@@ -11,6 +11,10 @@
 
 using namespace std;
 
+XMLCreaturesReader::XMLCreaturesReader()
+{
+}
+
 pair<CreatureMap, CreatureGenerationValuesMap> XMLCreaturesReader::get_creatures(const XMLNode& xml_configuration_creatures_node)
 {
   pair<CreatureMap, CreatureGenerationValuesMap> creature_values;
@@ -68,6 +72,14 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     string class_id = XMLUtils::get_child_node_value(creature_node, "ClassID");
     creature->set_class_id(class_id);
 
+    // Deity, maybe.
+    string deity_id = XMLUtils::get_child_node_value(creature_node, "DeityID");
+
+    if (!deity_id.empty())
+    {
+      creature->get_religion_ref().set_active_deity_id(deity_id);
+    }
+
     // Whether the creature breathes air, or water.  Only set the value if
     // explicitly set on the creature - most things will breathe air, and some
     // races will set a number of options.
@@ -94,6 +106,15 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     // What the creature says when chatted with, if anything at all.
     string speech_text_sid = XMLUtils::get_child_node_value(creature_node, "SpeechTextSID");
     creature->set_speech_text_sid(speech_text_sid);
+
+    // What the creature says at night.  If nothing is provided, the engine
+    // will fall back on the regular speech text sid.
+    string night_speech_text_sid = XMLUtils::get_child_node_value(creature_node, "NightSpeechTextSID");
+
+    if (!night_speech_text_sid.empty())
+    {
+      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_NIGHT_SPEECH_TEXT_SID, night_speech_text_sid);
+    }
 
     // Size. May not be defined, in which case the game will use the race's
     // value.
@@ -211,6 +232,7 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     map<string, string> node_details = {{"DeathScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH},
                                          {"AttackScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK},
                                          {"ChatScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT},
+                                         {"NightChatScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT_NIGHT},
                                          {"DecisionScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION},
                                          {"DropScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DROP},
                                          {"TameScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_TAME}};

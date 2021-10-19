@@ -9,6 +9,8 @@ class RageStatusEffect : public StatusEffect
     virtual bool is_negative() const override;
 
   protected:
+    virtual void notify_deities(CreaturePtr initiating_creature, CreaturePtr affected_creature) const override;
+
     virtual std::string get_player_application_message() const override;
     virtual std::string get_player_undo_message() const override;
     virtual std::string get_player_finalize_message() const override;

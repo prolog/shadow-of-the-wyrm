@@ -117,7 +117,9 @@ int main(int argc, char* argv[])
 
       Log& log = Log::instance(&settings);
       log.set_log_level(LoggingLevel::LOG_ERROR);
+
       Environment::create_userdata_directory(&settings);
+      Environment::create_empty_user_settings_if_necessary(&settings);
 
       string display_id = settings.get_setting(Setting::DISPLAY);
 

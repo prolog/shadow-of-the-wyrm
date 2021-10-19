@@ -1,6 +1,7 @@
 #include <sstream>
 #include "XMLReader.hpp"
 #include "CombatConstants.hpp"
+#include "CreatureFeatures.hpp"
 #include "Log.hpp"
 #include "XMLScriptsReader.hpp"
 
@@ -342,6 +343,21 @@ map<string, pair<string, Dice>> XMLReader::get_racial_item_ids(const XMLNode& in
 
   return racial_ids;
 }
+
+// Parse in all allowable event scripts
+void XMLReader::parse_event_scripts(const XMLNode& event_scripts_node, EventScriptsMap& scripts)
+{
+  map<string, string> node_details = { {"DeathScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH},
+                                       {"AttackScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK},
+                                       {"ChatScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT},
+                                       {"NightChatScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT_NIGHT},
+                                       {"DecisionScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION},
+                                       {"DropScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DROP},
+                                       {"TameScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_TAME} };
+
+  parse_event_scripts(event_scripts_node, node_details, scripts);
+}
+
 
 // Parse in the list of event scripts, based on the mapping provided
 void XMLReader::parse_event_scripts(const XMLNode& event_scripts_node, const map<string, string>& node_mappings, EventScriptsMap& scripts)

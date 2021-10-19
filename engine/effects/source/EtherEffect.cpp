@@ -31,6 +31,7 @@ bool EtherEffect::heal(CreaturePtr creature, const double healing_multiplier) co
   if (creature)
   {
     int ether_amount = static_cast<int>(get_random_healing_amount() * healing_multiplier);
+    ether_amount += bonus;
 
     Statistic ap = creature->get_arcana_points();
 

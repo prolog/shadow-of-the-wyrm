@@ -20,7 +20,10 @@ protected:
 
     // Display the bestiary details.
     void display_bestiary_information(CreaturePtr beast) const;
+
     void display_race_information(std::vector<std::pair<Colour, std::string>>& bestiary_text, const TextDisplayFormatter& tdf, CreaturePtr beast) const;
+    void display_deity_information(std::vector<std::pair<Colour, std::string>>& bestiary_text, const TextDisplayFormatter& tdf, CreaturePtr beast) const;
+    void display_id_details(std::vector<std::pair<Colour, std::string>>& bestiary_text, const TextDisplayFormatter& tdf, CreaturePtr beast, const std::string& plural_sid, const std::string& singular_sid, const std::string& id, const bool is_for_race) const;
 
     const std::string separator;
 };

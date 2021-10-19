@@ -1,6 +1,7 @@
 #include "ActionTextKeys.hpp"
 #include "CombatManager.hpp"
 #include "Creature.hpp"
+#include "Game.hpp"
 #include "RageCalculator.hpp"
 #include "RageStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -46,6 +47,17 @@ string RageStatusEffect::get_npc_undo_message(CreaturePtr creature) const
 {
   string message = StatusAilmentTextKeys::get_npc_undo_rage_message(creature);
   return message;
+}
+
+void RageStatusEffect::notify_deities(CreaturePtr init_creature, CreaturePtr affected_creature) const
+{
+  if (affected_creature != nullptr)
+  {
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+    
+    game.get_deity_action_manager_ref().notify_action(affected_creature, current_map, CreatureActionKeys::ACTION_RAGE, true);
+  }
 }
 
 string RageStatusEffect::get_status_identifier() const

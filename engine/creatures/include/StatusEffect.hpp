@@ -33,6 +33,8 @@ class StatusEffect
     virtual void finalize_change(std::shared_ptr<Creature> creature) const;
     virtual void undo_change(std::shared_ptr<Creature> creature) const;
 
+    void set_initiating_creature(std::shared_ptr<Creature> new_creature);
+
     // By default, nothing happens each tick.  Subclasses should override
     // this behaviour as necessary.
     virtual void tick(std::shared_ptr<Creature> creature, const int danger_level) const;
@@ -40,6 +42,8 @@ class StatusEffect
     // Returns a modifier with any statistic changes, etc, that should be
     // applied as a part of this status effect.
     virtual Modifier get_base_modifier(std::shared_ptr<Creature> creature, const int danger_level) const;
+
+    virtual void notify_deities(std::shared_ptr<Creature> initiating_creature, std::shared_ptr<Creature> affected_creature) const;
 
     // These functions are boolean to indicate whether or not the status was
     // actually applied.  The status will be applied in almost all cases, but
@@ -73,6 +77,7 @@ class StatusEffect
 
     StatusEffectCalculatorPtr status_calc;
     std::string source_id;
+    std::shared_ptr<Creature> initiating_creature;
 };
 
 using StatusEffectPtr = std::shared_ptr<StatusEffect>;

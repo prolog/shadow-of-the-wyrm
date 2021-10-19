@@ -24,6 +24,7 @@ class DeityTextKeys
     static const std::string PRAYER_NO_DEITIES;
     static const std::string DEITY_CANNOT_PRAY;
     static const std::string DEITY_ACTION_DISPLEASED;
+    static const std::string DEITY_ACTION_PLEASED;
     static const std::string DEITY_FALLEN_CHAMPION;
     static const std::string DEITY_CHANGE_MESSAGE;
     

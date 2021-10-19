@@ -127,7 +127,7 @@ void RestoreStatusDeityDecisionStrategyHandler::uncurse_equipment_with_negative_
 
           for (const string& sa : ail)
           {
-            StatusEffectPtr status = StatusEffectFactory::create_status_effect(sa, "");
+            StatusEffectPtr status = StatusEffectFactory::create_status_effect(creature, sa, "");
 
             if (status != nullptr && status->is_negative())
             {
@@ -143,7 +143,7 @@ void RestoreStatusDeityDecisionStrategyHandler::uncurse_equipment_with_negative_
 
 // Piety loss is based on the number of statuses that were lifted by
 // the prayer.
-int RestoreStatusDeityDecisionStrategyHandler::get_piety_loss() const
+int RestoreStatusDeityDecisionStrategyHandler::get_piety_amount() const
 {
   return piety_loss;
 }

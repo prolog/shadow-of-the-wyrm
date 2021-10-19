@@ -53,24 +53,19 @@ TEST_F(SW_Engine_Combat_CombatManager, is_miss)
 
 TEST_F(SW_Engine_Combat_CombatManager, is_close_miss)
 {
-  int total_roll = 51;
   int target_number_value = 50;
 
-  EXPECT_FALSE(is_close_miss(total_roll, target_number_value));
-  
-  total_roll--;
+  EXPECT_FALSE(is_close_miss(45, target_number_value));
 
-  int roll;
-  int i;
-  for (i = 0; i <= CombatConstants::CLOSE_MISS_THRESHOLD; i++)
+  for (int i = 46; i <= 50; i++)
   {
-    roll = total_roll - i;
-    EXPECT_TRUE(is_close_miss(roll, target_number_value));
+    EXPECT_TRUE(is_close_miss(i, target_number_value));
   }
-  
-  roll = total_roll - CombatConstants::CLOSE_MISS_THRESHOLD - 1;
-  
-  EXPECT_FALSE(is_close_miss(roll, target_number_value));
+
+  for (int i = 51; i <= 55; i++)
+  {
+    EXPECT_FALSE(is_close_miss(i, target_number_value));
+  }
 }
 
 TEST_F(SW_Engine_Combat_CombatManager, is_automatic_miss)

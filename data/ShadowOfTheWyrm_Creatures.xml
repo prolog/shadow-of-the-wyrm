@@ -171,7 +171,44 @@
 			</Damage>
 			<Speed>40</Speed>
 		</Creature>
-		<Creature id="sheep">
+		<Creature id="_chicken">
+			<RaceID>_animal</RaceID>
+			<ShortDescriptionSID>CHICKEN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CHICKEN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CHICKEN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CHICKEN_SPEECH_TEXT_SID</SpeechTextSID>
+			<Sex>1</Sex>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>b</Char>
+				<Colour>15</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>22</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>2</NumSides>
+				</HP>
+				<Exp>1</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>2</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
+		<Creature id="_sheep">
 			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>SHEEP_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SHEEP_DESCRIPTION_SID</DescriptionSID>
@@ -1766,6 +1803,7 @@
 		</Creature>
 		<Creature id="pallas">
 			<RaceID>03_mountainelf</RaceID>
+			<DeityID>08_urgoth</DeityID>
 			<ShortDescriptionSID>PALLAS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>PALLAS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>PALLAS_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2005,6 +2043,7 @@
 		</Creature>
 		<Creature id="kith">
 			<RaceID>04_snakeling</RaceID>
+			<DeityID>06_thetrickster</DeityID>
 			<ShortDescriptionSID>KITH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>KITH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>KITH_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2110,6 +2149,7 @@
 		</Creature>
 		<Creature id="brimman">
 			<RaceID>01_human</RaceID>
+			<DeityID>07_shiver</DeityID>
 			<ShortDescriptionSID>BRIMMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BRIMMAN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BRIMMAN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2175,6 +2215,7 @@
 		</Creature>
 		<Creature id="gilirien">
 			<RaceID>02_woodelf</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>GILIRIEN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GILIRIEN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GILIRIEN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2239,6 +2280,7 @@
 		</Creature>
 		<Creature id="hord">
 			<RaceID>08_ogre</RaceID>
+			<DeityID>08_urgoth</DeityID>
 			<ShortDescriptionSID>HORD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HORD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>HORD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2292,6 +2334,7 @@
 		</Creature>
 		<Creature id="filch">
 			<RaceID>10_gnome</RaceID>
+			<DeityID>06_thetrickster</DeityID>
 			<ShortDescriptionSID>FILCH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FILCH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FILCH_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2344,6 +2387,7 @@
 		</Creature>
 		<Creature id="myrdin">
 			<RaceID>06_dwarf</RaceID>
+			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>MYRDIN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>MYRDIN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MYRDIN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2398,6 +2442,7 @@
 		</Creature>
 		<Creature id="alteus">
 			<RaceID>09_giant</RaceID>
+			<DeityID>02_aurelion</DeityID>
 			<ShortDescriptionSID>ALTEUS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ALTEUS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ALTEUS_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2449,6 +2494,7 @@
 		</Creature>
 		<Creature id="layal">
 			<RaceID>01_human</RaceID>
+			<DeityID>02_aurelion</DeityID>
 			<ShortDescriptionSID>LAYAL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>LAYAL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>LAYAL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2504,6 +2550,7 @@
 		</Creature>
 		<Creature id="bagra">
 			<RaceID>05_fae</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>BAGRA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BAGRA_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BAGRA_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2609,6 +2656,7 @@
 		</Creature>
 		<Creature id="alcien">
 			<RaceID>02_woodelf</RaceID>
+			<DeityID>01_celeste</DeityID>
 			<ShortDescriptionSID>ALCIEN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ALCIEN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ALCIEN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2663,6 +2711,7 @@
 		</Creature>
 		<Creature id="rukhala">
 			<RaceID>01_human</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>RUKHALA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>RUKHALA_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>RUKHALA_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3102,6 +3151,7 @@
 		</Creature>
 		<Creature id="crusader">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste,02_aurelion</DeityID>
 			<ShortDescriptionSID>CRUSADER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CRUSADER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CRUSADER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3554,6 +3604,7 @@
 		</Creature>
 		<Creature id="treow">
 			<RaceID>_plant</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>TREOW_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TREOW_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TREOW_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3703,6 +3754,7 @@
 		</Creature>
 		<Creature id="drakheen">
 			<RaceID>_demon</RaceID>
+			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>DRAKHEEN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DRAKHEEN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DRAKHEEN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3877,6 +3929,7 @@
 		</Creature>
 		<Creature id="whitebard">
 			<RaceID>03_mountainelf</RaceID>
+			<DeityID>03_thelady</DeityID>
 			<ShortDescriptionSID>WHITEBARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>WHITEBARD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>WHITEBARD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4309,6 +4362,7 @@
 		</Creature>
 		<Creature id="pirrha">
 			<RaceID>01_human</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>PIRRHA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>PIRRHA_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>PIRRHA_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4346,6 +4400,7 @@
 		</Creature>
 		<Creature id="wispe">
 			<RaceID>01_human</RaceID>
+			<DeityID>07_shiver</DeityID>
 			<ShortDescriptionSID>WISPE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>WISPE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>WISPE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4531,6 +4586,7 @@
 		</Creature>
 		<Creature id="black_servant">
 			<RaceID>01_human</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>BLACK_SERVANT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACK_SERVANT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_SERVANT_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4586,6 +4642,7 @@
 		</Creature>		
 		<Creature id="caravan_master">
 			<RaceID>05_fae</RaceID>
+			<DeityID>03_thelady</DeityID>
 			<ShortDescriptionSID>CARAVAN_MASTER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CARAVAN_MASTER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CARAVAN_MASTER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4631,6 +4688,7 @@
 		</Creature>
 		<Creature id="caravan_guard">
 			<RaceID>05_fae</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>CARAVAN_GUARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CARAVAN_GUARD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CARAVAN_GUARD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4670,6 +4728,7 @@
 		</Creature>
 		<Creature id="fae_musician">
 			<RaceID>05_fae</RaceID>
+			<DeityID>03_thelady</DeityID>
 			<ShortDescriptionSID>FAE_MUSICIAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FAE_MUSICIAN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FAE_MUSICIAN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4709,6 +4768,7 @@
 		</Creature>
 		<Creature id="fae_traveller">
 			<RaceID>05_fae</RaceID>
+			<DeityID>06_thetrickster</DeityID>
 			<ShortDescriptionSID>FAE_TRAVELLER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FAE_TRAVELLER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FAE_TRAVELLER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4747,6 +4807,7 @@
 		</Creature>
 		<Creature id="black_priest">
 			<RaceID>_demon</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>BLACK_PRIEST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACK_PRIEST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_PRIEST_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4873,6 +4934,7 @@
 		</Creature>
 		<Creature id="cave_troll">
 			<RaceID>_humanoid</RaceID>
+			<DeityID>08_urgoth</DeityID>
 			<ShortDescriptionSID>CAVE_TROLL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CAVE_TROLL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CAVE_TROLL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5233,6 +5295,7 @@
 		</Creature>
 		<Creature id="chaos_beast">
 			<RaceID>_monster</RaceID>
+			<DeityID>06_thetrickster</DeityID>
 			<ShortDescriptionSID>CHAOS_BEAST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CHAOS_BEAST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CHAOS_BEAST_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5486,6 +5549,7 @@
 		</Creature>
 		<Creature id="voidling">
 			<RaceID>_divine</RaceID>
+			<DeityID>07_shiver</DeityID>
 			<ShortDescriptionSID>VOIDLING_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>VOIDLING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>VOIDLING_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5606,6 +5670,7 @@
 		</Creature>
 		<Creature id="black_monk">
 			<RaceID>01_human</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>BLACK_MONK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACK_MONK_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_MONK_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5661,6 +5726,7 @@
 		</Creature>
 		<Creature id="black_summoner">
 			<RaceID>01_human</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>BLACK_SUMMONER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACK_SUMMONER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_SUMMONER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5851,6 +5917,7 @@
 		</Creature>
 		<Creature id="star_beast">
 			<RaceID>_divine</RaceID>
+			<DeityID>05_voros,09_sceadugenga</DeityID>
 			<ShortDescriptionSID>STAR_BEAST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>STAR_BEAST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>STAR_BEAST_TEXT_DETAILS_SID</TextDetailsSID>
@@ -6009,6 +6076,7 @@
 		</Creature>
 		<Creature id="black_devil">
 			<RaceID>_demon</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>BLACK_DEVIL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACK_DEVIL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_DEVIL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -6263,6 +6331,7 @@
 		</Creature>
 		<Creature id="skywing">
 			<RaceID>_dragon</RaceID>
+			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>SKYWING_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SKYWING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SKYWING_TEXT_DETAILS_SID</TextDetailsSID>
@@ -6414,6 +6483,7 @@
 		</Creature>
 		<Creature id="high_wizard">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>HIGH_WIZARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HIGH_WIZARD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>HIGH_WIZARD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -6487,6 +6557,7 @@
 		</Creature>
 		<Creature id="barrow_wyrm">
 			<RaceID>_dragon</RaceID>
+			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>BARROW_WYRM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BARROW_WYRM_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BARROW_WYRM_TEXT_DETAILS_SID</TextDetailsSID>
@@ -6537,6 +6608,7 @@
 		</Creature>
 		<Creature id="dracospawn">
 			<RaceID>_dragon</RaceID>
+			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>DRACOSPAWN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DRACOSPAWN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DRACOSPAWN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -6586,6 +6658,7 @@
 		</Creature>
 		<Creature id="skyborn">
 			<RaceID>_divine</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth,09_sceadugenga</DeityID>
 			<ShortDescriptionSID>SKYBORN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SKYBORN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SKYBORN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -8302,6 +8375,7 @@
 		</Creature>
 		<Creature id="chaosling">
 			<RaceID>_demon</RaceID>
+			<DeityID>06_thetrickster</DeityID>
 			<ShortDescriptionSID>CHAOSLING_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CHAOSLING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CHAOSLING_TEXT_DETAILS_SID</TextDetailsSID>
@@ -8953,6 +9027,7 @@
 		</Creature>
 		<Creature id="angel">
 			<RaceID>_divine</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady</DeityID>
 			<ShortDescriptionSID>ANGEL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ANGEL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ANGEL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -9367,6 +9442,7 @@
 		</Creature>
 		<Creature id="archangel">
 			<RaceID>_divine</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady</DeityID>
 			<ShortDescriptionSID>ARCHANGEL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ARCHANGEL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ARCHANGEL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -9431,6 +9507,7 @@
 		</Creature>
 		<Creature id="cosmic_inferno">
 			<RaceID>_divine</RaceID>
+			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>COSMIC_INFERNO_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>COSMIC_INFERNO_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>COSMIC_INFERNO_TEXT_DETAILS_SID</TextDetailsSID>
@@ -9523,6 +9600,7 @@
 		</Creature>
 		<Creature id="troll">
 			<RaceID>_humanoid</RaceID>
+			<DeityID>08_urgoth</DeityID>
 			<ShortDescriptionSID>TROLL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TROLL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TROLL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -9682,6 +9760,7 @@
 		</Creature>
 		<Creature id="fire_elemental">
 			<RaceID>_divine</RaceID>
+			<DeityID>02_aurelion,05_voros</DeityID>
 			<ShortDescriptionSID>FIRE_ELEMENTAL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FIRE_ELEMENTAL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FIRE_ELEMENTAL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -9732,6 +9811,7 @@
 		</Creature>
 		<Creature id="tentacled_horror">
 			<RaceID>_divine</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>TENTACLED_HORROR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TENTACLED_HORROR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TENTACLED_HORROR_TEXT_DETAILS_SID</TextDetailsSID>
@@ -9841,6 +9921,7 @@
 		</Creature>
 		<Creature id="sylph">
 			<RaceID>_humanoid</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>SYLPH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SYLPH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SYLPH_TEXT_DETAILS_SID</TextDetailsSID>
@@ -9944,6 +10025,7 @@
 		</Creature>
 		<Creature id="naiad">
 			<RaceID>_humanoid</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>NAIAD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>NAIAD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>NAIAD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -9995,6 +10077,7 @@
 		</Creature>
 		<Creature id="dryad">
 			<RaceID>_humanoid</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>DRYAD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DRYAD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DRYAD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -10146,6 +10229,7 @@
 		</Creature>
 		<Creature id="oread">
 			<RaceID>_humanoid</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>OREAD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>OREAD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>OREAD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -10196,7 +10280,8 @@
 			<Speed>42</Speed>
 		</Creature>
 		<Creature id="cleric">
-			<RaceID>01_human</RaceID>
+			<RaceID>01_human,02_woodelf,03_mountainelf,04_snakeling,05_fae,06_dwarf,07_goblin,08_ogre,09_giant,10_gnome</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>CLERIC_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CLERIC_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CLERIC_TEXT_DETAILS_SID</TextDetailsSID>
@@ -10437,6 +10522,7 @@
 		</Creature>
 		<Creature id="titan">
 			<RaceID>_divine</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>TITAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TITAN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TITAN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -10488,6 +10574,7 @@
 		</Creature>
 		<Creature id="air_elemental">
 			<RaceID>_divine</RaceID>
+			<DeityID>03_thelady,06_thetrickster</DeityID>
 			<ShortDescriptionSID>AIR_ELEMENTAL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>AIR_ELEMENTAL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>AIR_ELEMENTAL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -10802,6 +10889,7 @@
 		</Creature>
 		<Creature id="celestial">
 			<RaceID>_divine</RaceID>
+			<DeityID>01_celeste,03_thelady</DeityID>
 			<ShortDescriptionSID>CELESTIAL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CELESTIAL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CELESTIAL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -10917,6 +11005,7 @@
 		</Creature>
 		<Creature id="astral_horror">
 			<RaceID>_divine</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>ASTRAL_HORROR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ASTRAL_HORROR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ASTRAL_HORROR_TEXT_DETAILS_SID</TextDetailsSID>
@@ -12429,6 +12518,7 @@
 		</Creature>
 		<Creature id="earth_elemental">
 			<RaceID>_divine</RaceID>
+			<DeityID>08_urgoth,09_sceadugenga</DeityID>
 			<ShortDescriptionSID>EARTH_ELEMENTAL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>EARTH_ELEMENTAL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>EARTH_ELEMENTAL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -12532,6 +12622,7 @@
 		</Creature>
 		<Creature id="flare_beast">
 			<RaceID>_monster</RaceID>
+			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>FLARE_BEAST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FLARE_BEAST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FLARE_BEAST_TEXT_DETAILS_SID</TextDetailsSID>
@@ -12636,6 +12727,7 @@
 		</Creature>
 		<Creature id="zealot">
 			<RaceID>07_goblin</RaceID>
+			<DeityID>07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>ZEALOT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ZEALOT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ZEALOT_TEXT_DETAILS_SID</TextDetailsSID>
@@ -12693,6 +12785,7 @@
 		</Creature>
 		<Creature id="bloodletter">
 			<RaceID>04_snakeling</RaceID>
+			<DeityID>07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>BLOODLETTER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLOODLETTER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLOODLETTER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -12734,6 +12827,7 @@
 		</Creature>
 		<Creature id="dark_priest">
 			<RaceID>08_ogre</RaceID>
+			<DeityID>07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>DARK_PRIEST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DARK_PRIEST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DARK_PRIEST_TEXT_DETAILS_SID</TextDetailsSID>
@@ -12775,6 +12869,7 @@
 		</Creature>
 		<Creature id="believer">
 			<RaceID>07_goblin</RaceID>
+			<DeityID>07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>BELIEVER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BELIEVER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BELIEVER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -13551,6 +13646,7 @@
 		</Creature>
 		<Creature id="frostling">
 			<RaceID>_monster</RaceID>
+			<DeityID>07_shiver</DeityID>
 			<ShortDescriptionSID>FROSTLING_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FROSTLING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FROSTLING_TEXT_DETAILS_SID</TextDetailsSID>
@@ -14532,6 +14628,7 @@
 		</Creature>
 		<Creature id="water_elemental">
 			<RaceID>_divine</RaceID>
+			<DeityID>04_vedere,07_shiver</DeityID>
 			<BreatheType>1</BreatheType>
 			<ShortDescriptionSID>WATER_ELEMENTAL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>WATER_ELEMENTAL_DESCRIPTION_SID</DescriptionSID>
@@ -16097,6 +16194,7 @@
 		</Creature>
 		<Creature id="thesilea">
 			<RaceID>03_mountainelf</RaceID>
+			<DeityID>03_thelady</DeityID>
 			<ShortDescriptionSID>THESILEA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THESILEA_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>THESILEA_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18162,6 +18260,7 @@
 		</Creature>
 		<Creature id="crystalline_being">
 			<RaceID>_divine</RaceID>
+			<DeityID>01_celeste</DeityID>
 			<ShortDescriptionSID>CRYSTALLINE_BEING_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CRYSTALLINE_BEING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CRYSTALLINE_BEING_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18200,6 +18299,7 @@
 		</Creature>
 		<Creature id="seraph_highest_heavenly_order">
 			<RaceID>_divine</RaceID>
+			<DeityID>01_celeste</DeityID>
 			<ShortDescriptionSID>SERAPH_HIGHEST_HEAVENLY_ORDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SERAPH_HIGHEST_HEAVENLY_ORDER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SERAPH_HIGHEST_HEAVENLY_ORDER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18239,6 +18339,7 @@
 		</Creature>
 		<Creature id="gabar_clutching_first_holy_book">
 			<RaceID>_divine</RaceID>
+			<DeityID>01_celeste</DeityID>
 			<ShortDescriptionSID>GABAR_CLUTCHING_FIRST_HOLY_BOOK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GABAR_CLUTCHING_FIRST_HOLY_BOOK_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GABAR_CLUTCHING_FIRST_HOLY_BOOK_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18294,6 +18395,7 @@
 		</Creature>
 		<Creature id="knight_exemplar">
 			<RaceID>_divine</RaceID>
+			<DeityID>02_aurelion</DeityID>
 			<ShortDescriptionSID>KNIGHT_EXEMPLAR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>KNIGHT_EXEMPLAR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>KNIGHT_EXEMPLAR_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18340,6 +18442,7 @@
 		</Creature>
 		<Creature id="paragon_twenty_virtues">
 			<RaceID>_divine</RaceID>
+			<DeityID>02_aurelion</DeityID>
 			<ShortDescriptionSID>PARAGON_TWENTY_VIRTUES_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>PARAGON_TWENTY_VIRTUES_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>PARAGON_TWENTY_VIRTUES_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18384,6 +18487,7 @@
 		</Creature>
 		<Creature id="trio_shining_silver_dragons">
 			<RaceID>_dragon</RaceID>
+			<DeityID>02_aurelion</DeityID>
 			<ShortDescriptionSID>TRIO_SHINING_SILVER_DRAGONS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TRIO_SHINING_SILVER_DRAGONS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TRIO_SHINING_SILVER_DRAGONS_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18421,6 +18525,7 @@
 		</Creature>
 		<Creature id="howling_fury_first_love_lost">
 			<RaceID>_divine</RaceID>
+			<DeityID>03_thelady</DeityID>
 			<ShortDescriptionSID>HOWLING_FURY_FIRST_LOVE_LOST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HOWLING_FURY_FIRST_LOVE_LOST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>HOWLING_FURY_FIRST_LOVE_LOST_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18464,6 +18569,7 @@
 		</Creature>
 		<Creature id="luminous_angel">
 			<RaceID>_divine</RaceID>
+			<DeityID>03_thelady</DeityID>
 			<ShortDescriptionSID>LUMINOUS_ANGEL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>LUMINOUS_ANGEL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>LUMINOUS_ANGEL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18506,6 +18612,7 @@
 		</Creature>
 		<Creature id="saint_who_moves_in_perfect_grace">
 			<RaceID>_divine</RaceID>
+			<DeityID>03_thelady</DeityID>
 			<ShortDescriptionSID>SAINT_WHO_MOVES_IN_PERFECT_GRACE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SAINT_WHO_MOVES_IN_PERFECT_GRACE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SAINT_WHO_MOVES_IN_PERFECT_GRACE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18548,6 +18655,7 @@
 		</Creature>
 		<Creature id="pulsating_mass_primordial_ooze">
 			<RaceID>_jelly</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>PULSATING_MASS_PRIMORDIAL_OOZE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>PULSATING_MASS_PRIMORDIAL_OOZE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>PULSATING_MASS_PRIMORDIAL_OOZE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18585,6 +18693,7 @@
 		</Creature>
 		<Creature id="cloud_murderous_flesh_eating_scarabs">
 			<RaceID>_insect</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>CLOUD_MURDEROUS_FLESH_EATING_SCARABS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CLOUD_MURDEROUS_FLESH_EATING_SCARABS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CLOUD_MURDEROUS_FLESH_EATING_SCARABS_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18623,6 +18732,7 @@
 		</Creature>
 		<Creature id="thunderbird_low_steppes">
 			<RaceID>_bird</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>THUNDERBIRD_LOW_STEPPES_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THUNDERBIRD_LOW_STEPPES_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>THUNDERBIRD_LOW_STEPPES_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18661,6 +18771,7 @@
 		</Creature>
 		<Creature id="hundred_headed_hydra">
 			<RaceID>_monster</RaceID>
+			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>HUNDRED_HEADED_HYDRA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HUNDRED_HEADED_HYDRA_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>HUNDRED_HEADED_HYDRA_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18700,6 +18811,7 @@
 		</Creature>
 		<Creature id="drakkhar_carrying_massive_flaming_sword">
 			<RaceID>_divine</RaceID>
+			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>DRAKKHAR_CARRYING_MASSIVE_FLAMING_SWORD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DRAKKHAR_CARRYING_MASSIVE_FLAMING_SWORD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DRAKKHAR_CARRYING_MASSIVE_FLAMING_SWORD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18738,6 +18850,7 @@
 		</Creature>
 		<Creature id="early_dragon_first_age">
 			<RaceID>_dragon</RaceID>
+			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>EARLY_DRAGON_FIRST_AGE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>EARLY_DRAGON_FIRST_AGE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>EARLY_DRAGON_FIRST_AGE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18776,6 +18889,7 @@
 		</Creature>
 		<Creature id="eddic_crone">
 			<RaceID>_divine</RaceID>
+			<DeityID>06_thetrickster</DeityID>
 			<ShortDescriptionSID>EDDIC_CRONE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>EDDIC_CRONE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>EDDIC_CRONE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18828,6 +18942,7 @@
 		</Creature>
 		<Creature id="murder_thousand_crows">
 			<RaceID>_bird</RaceID>
+			<DeityID>06_thetrickster</DeityID>
 			<ShortDescriptionSID>MURDER_THOUSAND_CROWS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>MURDER_THOUSAND_CROWS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MURDER_THOUSAND_CROWS_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18865,6 +18980,7 @@
 		</Creature>
 		<Creature id="wraith_wan_dying_light">
 			<RaceID>_spirit</RaceID>
+			<DeityID>06_thetrickster</DeityID>
 			<ShortDescriptionSID>WRAITH_WAN_DYING_LIGHT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>WRAITH_WAN_DYING_LIGHT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>WRAITH_WAN_DYING_LIGHT_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18903,6 +19019,7 @@
 		</Creature>
 		<Creature id="blood_angel_white_queen">
 			<RaceID>_divine</RaceID>
+			<DeityID>07_shiver</DeityID>
 			<ShortDescriptionSID>BLOOD_ANGEL_WHITE_QUEEN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLOOD_ANGEL_WHITE_QUEEN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLOOD_ANGEL_WHITE_QUEEN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18942,6 +19059,7 @@
 		</Creature>
 		<Creature id="nether_hound">
 			<RaceID>_animal</RaceID>
+			<DeityID>07_shiver</DeityID>
 			<ShortDescriptionSID>NETHER_HOUND_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>NETHER_HOUND_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>NETHER_HOUND_TEXT_DETAILS_SID</TextDetailsSID>
@@ -18990,6 +19108,7 @@
 		</Creature>
 		<Creature id="ancient_shade">
 			<RaceID>_spirit</RaceID>
+			<DeityID>07_shiver</DeityID>
 			<ShortDescriptionSID>ANCIENT_SHADE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ANCIENT_SHADE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ANCIENT_SHADE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -19027,6 +19146,7 @@
 		</Creature>
 		<Creature id="black_ogre">
 			<RaceID>_humanoid</RaceID>
+			<DeityID>08_urgoth</DeityID>
 			<ShortDescriptionSID>BLACK_OGRE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACK_OGRE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_OGRE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -19065,6 +19185,7 @@
 		</Creature>
 		<Creature id="cyclonic_beast">
 			<RaceID>_monster</RaceID>
+			<DeityID>08_urgoth</DeityID>
 			<ShortDescriptionSID>CYCLONIC_BEAST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CYCLONIC_BEAST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CYCLONIC_BEAST_TEXT_DETAILS_SID</TextDetailsSID>
@@ -19103,6 +19224,7 @@
 		</Creature>
 		<Creature id="dark_rider_coming_horde">
 			<RaceID>_divine</RaceID>
+			<DeityID>08_urgoth</DeityID>
 			<ShortDescriptionSID>DARK_RIDER_COMING_HORDE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DARK_RIDER_COMING_HORDE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DARK_RIDER_COMING_HORDE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -19143,6 +19265,7 @@
 		</Creature>
 		<Creature id="teeming_mass_writhing_tentacles">
 			<RaceID>_divine</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>TEEMING_MASS_WRITHING_TENTACLES_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TEEMING_MASS_WRITHING_TENTACLES_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TEEMING_MASS_WRITHING_TENTACLES_TEXT_DETAILS_SID</TextDetailsSID>
@@ -19183,6 +19306,7 @@
 		</Creature>
 		<Creature id="beast_beyond_furthest_star">
 			<RaceID>_divine</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>BEAST_BEYOND_FURTHEST_STAR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BEAST_BEYOND_FURTHEST_STAR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BEAST_BEYOND_FURTHEST_STAR_TEXT_DETAILS_SID</TextDetailsSID>
@@ -19222,6 +19346,7 @@
 		</Creature>
 		<Creature id="apocalyptic_hell_bears_no_name">
 			<RaceID>_divine</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>APOCALYPTIC_HELL_BEARS_NO_NAME_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>APOCALYPTIC_HELL_BEARS_NO_NAME_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>APOCALYPTIC_HELL_BEARS_NO_NAME_TEXT_DETAILS_SID</TextDetailsSID>
@@ -19585,6 +19710,7 @@
 		</Creature>
 		<Creature id="acolyte">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth,09_sceadugenga</DeityID>
 			<ShortDescriptionSID>ACOLYTE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ACOLYTE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ACOLYTE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -20170,6 +20296,7 @@
 		</Creature>
 		<Creature id="gnordvar_priest">
 			<RaceID>10_gnome</RaceID>
+			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>GNORDVAR_PRIEST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GNORDVAR_PRIEST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GNORDVAR_PRIEST_TEXT_DETAILS_SID</TextDetailsSID>
@@ -20391,6 +20518,7 @@
 		</Creature>
 		<Creature id="frost_devil">
 			<RaceID>_demon</RaceID>
+			<DeityID>07_shiver</DeityID>
 			<ShortDescriptionSID>FROST_DEVIL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FROST_DEVIL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FROST_DEVIL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -20435,6 +20563,7 @@
 		</Creature>
 		<Creature id="fire_devil">
 			<RaceID>_demon</RaceID>
+			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>FIRE_DEVIL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FIRE_DEVIL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FIRE_DEVIL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -20479,6 +20608,7 @@
 		</Creature>
 		<Creature id="end_boss">
 			<RaceID>_dragon</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>AMAUROSIS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>AMAUROSIS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>AMAUROSIS_TEXT_DETAILS_SID</TextDetailsSID>
@@ -21011,6 +21141,7 @@
 		</Creature>
 		<Creature id="village_priest">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste</DeityID>
 			<ShortDescriptionSID>VILLAGE_PRIEST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>VILLAGE_PRIEST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>VILLAGE_PRIEST_TEXT_DETAILS_SID</TextDetailsSID>
@@ -21353,6 +21484,7 @@
 			<DescriptionSID>SHOPKEEPER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHOPKEEPER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SHOPKEEPER_SPEECH_TEXT_SID</SpeechTextSID>
+			<NightSpeechTextSID>SHOPKEEPER_NIGHT_SPEECH_TEXT_SID</NightSpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Pickup>0</Pickup>
@@ -21850,6 +21982,7 @@
 		</Creature>
 		<Creature id="layperson">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>LAYPERSON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>LAYPERSON_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>LAYPERSON_TEXT_DETAILS_SID</TextDetailsSID>
@@ -21890,6 +22023,7 @@
 		</Creature>
 		<Creature id="devotee">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>DEVOTEE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DEVOTEE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DEVOTEE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -21929,6 +22063,7 @@
 		</Creature>
 		<Creature id="follower">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>FOLLOWER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FOLLOWER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FOLLOWER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -21969,6 +22104,7 @@
 		</Creature>
 		<Creature id="apostle">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>APOSTLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>APOSTLE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>APOSTLE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -22008,6 +22144,7 @@
 		</Creature>
 		<Creature id="pilgrim">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>PILGRIM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>PILGRIM_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>PILGRIM_TEXT_DETAILS_SID</TextDetailsSID>
@@ -23124,6 +23261,121 @@
 				</Spell>
 			</Spells>
 		</Creature>
+		<Creature id="_hermit">
+			<RaceID>01_human,02_woodelf,03_mountainelf,04_snakeling,05_fae,06_dwarf,07_goblin,08_ogre,09_giant,10_gnome</RaceID>
+			<ShortDescriptionSID>HERMIT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HERMIT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HERMIT_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>HERMIT_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>t</Char>
+				<Colour>10</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>5</Row>
+					<Col>24</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>4</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<Evade>4</Evade>
+			<Spells>
+				<Spell>
+					<SpellID>c_02_flame_dart</SpellID>
+					<Castings>4</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_09_frost_bolt</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+			</Spells>
+		</Creature>
+		<Creature id="_witchling">
+			<RaceID>01_human,02_woodelf,03_mountainelf,04_snakeling,05_fae,06_dwarf,07_goblin,08_ogre,09_giant,10_gnome</RaceID>
+			<ShortDescriptionSID>WITCHLING_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WITCHLING_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WITCHLING_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WITCHLING_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>h</Char>
+				<Colour>4</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>23</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>20</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>20</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>220</Exp>
+			</CreatureGeneration>
+			<Level>20</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>40</NumSides>
+				<Type>8</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/witchling.lua</Script>
+				</ChatScript>
+			</EventScripts>
+			<Spells>
+				<Spell>
+					<SpellID>p_01_shadow_flame</SpellID>
+					<Castings>6</Castings>
+				</Spell>
+				<Spell>
+
+					<SpellID>p_02_curse_of_shadows</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_04_nether_bolt</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_05_chaos_aura</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_06_nightfire</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+			</Spells>
+		</Creature>
 		<Creature id="thaumaturge">
 			<RaceID>02_woodelf</RaceID>
 			<ShortDescriptionSID>THAUMATURGE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -24205,6 +24457,7 @@
 		</Creature>
 		<Creature id="urgrim">
 			<RaceID>08_ogre</RaceID>
+			<DeityID>08_urgoth</DeityID>
 			<ShortDescriptionSID>URGRIM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>URGRIM_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>URGRIM_TEXT_DETAILS_SID</TextDetailsSID>
@@ -24707,6 +24960,7 @@
 		</Creature>
 		<Creature id="holy_shade">
 			<RaceID>_spirit</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>HOLY_SHADE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HOLY_SHADE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>HOLY_SHADE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -24758,6 +25012,7 @@
 		</Creature>
 		<Creature id="divine_avenger">
 			<RaceID>_divine</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>DIVINE_AVENGER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DIVINE_AVENGER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DIVINE_AVENGER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -26622,6 +26877,7 @@
 		</Creature>
 		<Creature id="temple_tutor">
 			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste,02_aurelion,03_thelady,04_vedere,05_voros,06_thetrickster,07_shiver,08_urgoth</DeityID>
 			<ShortDescriptionSID>TEMPLE_TUTOR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TEMPLE_TUTOR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TEMPLE_TUTOR_TEXT_DETAILS_SID</TextDetailsSID>
@@ -26748,6 +27004,7 @@
 		</Creature>
 		<Creature id="axander">
 			<RaceID>01_human</RaceID>
+			<DeityID>02_aurelion</DeityID>
 			<ShortDescriptionSID>AXANDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>AXANDER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>AXANDER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -26792,6 +27049,7 @@
 		</Creature>
 		<Creature id="vorogil">
 			<RaceID>01_human</RaceID>
+			<DeityID>09_sceadugenga</DeityID>
 			<ShortDescriptionSID>VOROGIL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>VOROGIL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>VOROGIL_TEXT_DETAILS_SID</TextDetailsSID>

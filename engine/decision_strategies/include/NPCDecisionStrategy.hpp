@@ -41,6 +41,7 @@ class NPCDecisionStrategy : public DecisionStrategy
     virtual void update_threats_based_on_fov(const std::string& this_creature_id, MapPtr view_map);
     virtual void update_threats_with_contraband(const std::string& this_creature_id, MapPtr view_map);
     virtual void update_threats_to_leader(const std::string& this_creature_id, MapPtr view_map);
+    virtual void remove_threats_with_same_deity(const std::string& this_creature_id, MapPtr view_map);
     virtual void update_threats_if_shopkeeper(MapPtr current_fov_map);
     virtual std::vector<std::pair<std::string, int>> get_creatures_by_distance(CreaturePtr creature, MapPtr view_map, const std::set<std::string>& creature_ids);
 

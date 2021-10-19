@@ -60,7 +60,7 @@ DeityDecisionImplications UncurseDeityDecisionStrategyHandler::handle_decision(C
   return get_deity_decision_implications(creature, tile);
 }
 
-int UncurseDeityDecisionStrategyHandler::get_piety_loss() const
+int UncurseDeityDecisionStrategyHandler::get_piety_amount() const
 {
   return 800;
 }

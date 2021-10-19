@@ -12,6 +12,6 @@ class DoNothingDeityDecisionStrategyHandler : public DeityDecisionStrategyHandle
     virtual std::unique_ptr<DeityDecisionStrategyHandler> clone() override;
 
   protected:
-    int get_piety_loss() const override;
+    int get_piety_amount() const override;
     std::string get_message_sid() const override;
 };

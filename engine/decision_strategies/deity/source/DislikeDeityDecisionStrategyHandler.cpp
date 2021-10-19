@@ -67,7 +67,7 @@ DeityDecisionImplications DislikeDeityDecisionStrategyHandler::handle_decision(C
   return get_deity_decision_implications(creature, tile);
 }
 
-int DislikeDeityDecisionStrategyHandler::get_piety_loss() const
+int DislikeDeityDecisionStrategyHandler::get_piety_amount() const
 {
   return DISLIKE_DECISION_PIETY_LOSS;
 }

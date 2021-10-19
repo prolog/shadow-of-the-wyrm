@@ -6,6 +6,8 @@ class Environment
 {
   public:
     static bool create_userdata_directory(const Settings* settings);
+    static bool create_empty_user_settings_if_necessary(const Settings* settings);
+
     static std::string get_log_directory(const Settings* settings);
     static std::string get_userdata_directory(const Settings* settings); // saves and user-requested char dumps
     static std::string get_syschardump_directory(const Settings* settings); // system char dumps only

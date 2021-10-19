@@ -216,3 +216,26 @@ TEST(SW_Engine_ConversionRoutines, harmonize_dirname)
   EXPECT_EQ("C:\\temp" + fs_sep, File::harmonize_dirname("C:\\temp"));
   EXPECT_EQ("C:\\temp" + fs_sep, File::harmonize_dirname("C:\\temp" + fs_sep));
 }
+
+TEST(SW_Engine_ConversionRoutines, clean_and_trim)
+{
+
+}
+
+TEST(SW_Engine_ConversionRoutines, split)
+{
+  string str_ns = "abcdsa 123 1 jsklSJL 2 321 123 A";
+  string str_sp = "abc %p test";
+  string delim = "%p";
+
+  vector<string> strs = String::split(str_ns, delim);
+
+  EXPECT_EQ(1, strs.size());
+  EXPECT_EQ(str_ns, strs.at(0));
+
+  strs = String::split(str_sp, delim);
+
+  EXPECT_EQ(2, strs.size());
+  EXPECT_EQ("abc ", strs.at(0));
+  EXPECT_EQ(" test", strs.at(1));
+}

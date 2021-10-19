@@ -1,4 +1,5 @@
 #include "XMLWeaponsReaders.hpp"
+#include "CombatConstants.hpp"
 
 using namespace std;
 
@@ -39,6 +40,15 @@ void XMLWeaponsReader::parse(WeaponPtr weapon, GenerationValues& gv, const XMLNo
     
     Damage weapon_damage;
     parse_damage(weapon_damage, damage_node);
+
+    if (weapon->get_artifact())
+    {
+      int effect_bonus = weapon_damage.get_effect_bonus();
+      effect_bonus = std::max<int>(effect_bonus, CombatConstants::MIN_ARTIFACT_EFFECT_BONUS);
+     
+      weapon_damage.set_effect_bonus(effect_bonus);
+    }
+
     weapon->set_damage(weapon_damage);
   }
 }

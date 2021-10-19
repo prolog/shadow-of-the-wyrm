@@ -148,7 +148,7 @@ enum struct ClassIdentifier
   CLASS_ID_RESISTANCE = 141,
   CLASS_ID_WATER_INVENTORY = 142,
   CLASS_ID_KILN = 143,
-  // xx UNUSED = 144,
+  CLASS_ID_FENCE = 144,
   // xx UNUSED = 145,
   // xx UNUSED = 146,
   // xx UNUSED = 147,

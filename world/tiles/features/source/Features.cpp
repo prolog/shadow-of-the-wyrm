@@ -419,6 +419,16 @@ Door::Door(const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_
 {
 }
 
+string Door::get_open_message_sid() const
+{
+  return ActionTextKeys::ACTION_OPEN_DOOR;
+}
+
+string Door::get_close_message_sid() const
+{
+  return ActionTextKeys::ACTION_CLOSE_DOOR;
+}
+
 Feature* Door::clone()
 {
   return new Door(*this);
@@ -439,12 +449,12 @@ ClassIdentifier Door::internal_class_identifier() const
 
 // This constructor is only used by the serialization code
 Entrance::Entrance(const string& new_desc_sid, const Symbol& new_symbol)
-  : Feature(new_desc_sid, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
+: Feature(new_desc_sid, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), state(EntranceStateType::ENTRANCE_TYPE_OPEN), maximum_size(CreatureSize::CREATURE_SIZE_BEHEMOTH)
 {
 }
 
 Entrance::Entrance(const string& new_desc_sid, const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_state)
-  : Feature(new_desc_sid, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), state(new_state)
+: Feature(new_desc_sid, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol), state(new_state), maximum_size(CreatureSize::CREATURE_SIZE_BEHEMOTH)
 {
   set_lock(new_lock);
 }
@@ -554,11 +564,11 @@ string Entrance::get_handle_message_sid() const
     handle_message_sid = ActionTextKeys::ACTION_DOOR_DESTROYED;
     break;
   case EntranceStateType::ENTRANCE_TYPE_OPEN:
-    handle_message_sid = ActionTextKeys::ACTION_OPEN_DOOR;
+    handle_message_sid = get_open_message_sid();
     break;
   case EntranceStateType::ENTRANCE_TYPE_CLOSED:
   default:
-    handle_message_sid = ActionTextKeys::ACTION_CLOSE_DOOR;
+    handle_message_sid = get_close_message_sid();
     break;
   }
 
@@ -606,6 +616,16 @@ Gate::Gate(const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_
   set_material_type(MaterialType::MATERIAL_TYPE_IRON);
 }
 
+string Gate::get_open_message_sid() const
+{
+  return ActionTextKeys::ACTION_OPEN_GATE;
+}
+
+string Gate::get_close_message_sid() const
+{
+  return ActionTextKeys::ACTION_CLOSE_GATE;
+}
+
 Feature* Gate::clone()
 {
   return new Gate(*this);
@@ -619,6 +639,28 @@ bool Gate::get_is_blocking() const
 ClassIdentifier Gate::internal_class_identifier() const
 {
   return ClassIdentifier::CLASS_ID_GATE;
+}
+
+// Fence
+
+Fence::Fence(const Symbol& new_symbol)
+: Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_FENCE, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
+{
+}
+
+bool Fence::get_is_blocking() const
+{
+  return true;
+}
+
+Feature* Fence::clone()
+{
+  return new Fence(*this);
+}
+
+ClassIdentifier Fence::internal_class_identifier() const
+{
+  return ClassIdentifier::CLASS_ID_FENCE;
 }
 
 // FirePillar
@@ -1205,7 +1247,7 @@ bool Trap::get_is_dangerous() const
 bool Trap::apply_on_movement(std::shared_ptr<Creature> creature) const
 {
   // If the creature is flying, the trap won't be triggered on movement.
-  if (creature && creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
+  if (creature && (creature->has_status(StatusIdentifiers::STATUS_ID_FLYING) || creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL)))
   {
     return false;
   }
@@ -1408,6 +1450,7 @@ ClassIdentifier WheelAndLoom::internal_class_identifier() const
 #include "unit_tests/Bench_test.cpp"
 #include "unit_tests/DecorativeStatues_test.cpp"
 #include "unit_tests/EastWestPew_test.cpp"
+#include "unit_tests/Fence_test.cpp"
 #include "unit_tests/FirePillar_test.cpp"
 #include "unit_tests/Forge_test.cpp"
 #include "unit_tests/Fountain_test.cpp"

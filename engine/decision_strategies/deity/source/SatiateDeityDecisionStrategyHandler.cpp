@@ -42,7 +42,7 @@ DeityDecisionImplications SatiateDeityDecisionStrategyHandler::handle_decision(C
 }
 
 // It takes the Nine a while to gather the manna...
-int SatiateDeityDecisionStrategyHandler::get_piety_loss() const
+int SatiateDeityDecisionStrategyHandler::get_piety_amount() const
 {
   return 600;
 }

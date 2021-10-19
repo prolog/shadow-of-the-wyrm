@@ -12,7 +12,7 @@ class CreatureFactory
     CreatureFactory();
 
     void set_hostility_for_creatures(const bool override_host, const bool host);
-    std::string select_race_id(const std::vector<std::string>& race_ids, const std::string& default_race_id);
+    std::string select_id(const std::vector<std::string>& ids, const std::string& default_id);
 
     CreaturePtr create_by_creature_id(ActionManager& am, const std::string& creature_id, MapPtr current_map, CreaturePtr procgen_creature = nullptr, const bool ignore_maximum = false, const bool allow_pet_generation = true);
     CreaturePtr create_by_race_and_class(ActionManager& am, MapPtr current_map, const std::string& race_id, const std::string& class_id, const std::string& creature_name, const CreatureSex creature_sex, const CreatureSize creature_size, const std::string& deity_id = "", const bool allow_pet_generation = true, const bool is_player = false);
@@ -41,6 +41,10 @@ class CreatureFactory
 
     // Create a pet if the creature's class allows it.
     bool create_pet(CreaturePtr creature, ActionManager& am, MapPtr current_map);
+
+    // Update skills so that if the creature starts with spells, they also
+    // start with appropriate skills.
+    void set_magic_skills_based_on_spells(CreaturePtr creature);
 
     bool override_hostility_setting;
     bool create_hostile;

@@ -49,6 +49,9 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
 
           if (spell_learned)
           {
+            Game& game = Game::instance();
+            MapPtr current_map = game.get_current_map();
+            Game::instance().get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_LEARN_SPELL, true);
             learn_spell_from_spellbook(creature, spellbook, item_id, spell_id, magic_category);
 
             // Reading spellbooks trains intelligence.

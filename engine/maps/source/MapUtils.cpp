@@ -22,6 +22,7 @@
 #include "MovementTextKeys.hpp"
 #include "PickupAction.hpp"
 #include "RNG.hpp"
+#include "SettlementGeneratorUtils.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "TileDescriber.hpp"
@@ -437,6 +438,23 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
   return added_location;
 }
 
+bool MapUtils::does_hostile_creature_exist(MapPtr map, const vector<string>& creature_list, const string& hostile_to_id)
+{
+  if (map != nullptr)
+  {
+    for (const auto& c_id : creature_list)
+    {
+      CreaturePtr creature = map->get_creature(c_id);
+
+      if (creature != nullptr && creature->get_decision_strategy()->get_threats_ref().has_threat(hostile_to_id).first)
+      {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
 vector<string> MapUtils::get_creatures_with_creature_in_view(const MapPtr& map, const string& creature_id)
 {
   CreatureMap creatures = map->get_creatures();
@@ -1572,7 +1590,7 @@ void MapUtils::anger_shopkeeper_if_necessary(const Coordinate& c, MapPtr current
       {
         // The shopkeeper is justifiably pissed!
         HostilityManager hm;
-        hm.set_hostility_to_creature(current_map->get_creature(s_it->second.get_shopkeeper_id()), anger_creature->get_id());
+        hm.set_hostility_to_creature(current_map->get_creature(s_it->second.get_shopkeeper_id()), anger_creature->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
 
         IMessageManager& manager = MM::instance(MessageTransmit::MAP, anger_creature, true);
         manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ENRAGED_SHOPKEEPER));
@@ -2103,6 +2121,54 @@ string MapUtils::get_map_description(MapPtr map)
   }
 
   return ss.str();
+}
+
+vector<CardinalDirection> MapUtils::get_unblocked_door_dirs(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord)
+{
+  vector<CardinalDirection> filtered_door_dirs;
+
+  if (map != nullptr)
+  {
+    set<Direction> gate_dirs = DirectionUtils::get_all_directions_for_category(DirectionCategory::DIRECTION_CATEGORY_CARDINAL);
+
+    for (const Direction d : gate_dirs)
+    {
+      Coordinate possible_gate_coord = SettlementGeneratorUtils::get_door_location(st_coord.first, end_coord.first, st_coord.second, end_coord.second, DirectionUtils::to_cardinal_direction(d));
+      Coordinate space_in_front = CoordUtils::get_new_coordinate(possible_gate_coord, d);
+
+      TilePtr adj_tile = map->at(space_in_front);
+
+      if (adj_tile != nullptr && !adj_tile->get_is_blocking())
+      {
+        filtered_door_dirs.push_back(DirectionUtils::to_cardinal_direction(d));
+      }
+    }
+  }
+
+  return filtered_door_dirs;
+}
+
+bool MapUtils::add_item(MapPtr map, const vector<Coordinate>& possible_coords, ItemPtr item)
+{
+
+  if (map != nullptr && item != nullptr)
+  {
+    vector<Coordinate> coords = possible_coords;
+    std::shuffle(coords.begin(), coords.end(), RNG::get_engine());
+
+    for (const auto& c : coords)
+    {
+      TilePtr tile = map->at(c);
+
+      if (tile != nullptr && MapUtils::is_tile_available_for_item(tile))
+      {
+        tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+        return true;
+      }
+    }
+  }
+
+  return false;
 }
 
 #ifdef UNIT_TESTS

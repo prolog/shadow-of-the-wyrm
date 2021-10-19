@@ -2,6 +2,7 @@
 #include "Conversion.hpp"
 #include "CreationUtils.hpp"
 #include "Game.hpp"
+#include "GeneratorUtils.hpp"
 #include "ItemEnchantmentCalculator.hpp"
 #include "ItemGenerationManager.hpp"
 #include "MapProperties.hpp"
@@ -11,6 +12,9 @@
 using namespace std;
 
 const int MapItemGenerator::OUT_OF_DEPTH_ITEMS_CHANCE = 15;
+const int MapItemGenerator::PCT_CHANCE_ADVENTURER_SKELETON_TRAP = 20;
+const int MapItemGenerator::PCT_CHANCE_ADVENTURER_CORPSE = 5;
+const int MapItemGenerator::PCT_CHANCE_ADVENTURER_ITEMS = 75;
 
 // Generate items based on the provided danger level, and place them
 // on the given map.
@@ -97,6 +101,8 @@ bool MapItemGenerator::generate_items(MapPtr map, const int danger_level, const 
       unsuccessful_attempts++;
     }
   }
+
+  generate_dead_adventurer(map, danger_level);
 
   return items_generated;
 }
@@ -206,4 +212,79 @@ bool MapItemGenerator::repop_shop(MapPtr map, const string& shop_id)
   }
 
   return repop;
+}
+
+bool MapItemGenerator::generate_dead_adventurer(MapPtr map, const int danger_level)
+{
+  bool adv_created = false;
+
+  if (map != nullptr)
+  {
+    pair<Coordinate, Coordinate> g_coords = map->get_generation_coordinates();
+    uint unsuccessful_attempts = 0;
+
+    if (RNG::percent_chance(PCT_CHANCE_ADVENTURER_CORPSE))
+    {
+      ItemEnchantmentCalculator iec;
+      int danger_upper = danger_level + RNG::range(0,5);
+      Rarity rarity = Rarity::RARITY_COMMON;
+
+      while (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_ITEM_ATTEMPTS)
+      {
+        int item_row = RNG::range(g_coords.first.first, g_coords.second.first);
+        int item_col = RNG::range(g_coords.first.second, g_coords.second.second);
+
+        // Check to see if the tile isn't blocking
+        TilePtr tile = map->at(item_row, item_col);
+
+        if (!MapUtils::is_tile_available_for_item(tile))
+        {
+          unsuccessful_attempts++;
+        }
+        else
+        {
+          ItemPtr skeleton = ItemManager::create_item(ItemIdKeys::ITEM_ID_INTACT_SKELETON);
+          tile->get_items()->merge_or_add(skeleton, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+
+          if (RNG::percent_chance(PCT_CHANCE_ADVENTURER_ITEMS))
+          {
+            vector<ItemType> i_restr = { ItemType::ITEM_TYPE_WEAPON, ItemType::ITEM_TYPE_ARMOUR };
+            vector<ItemType> i_rand = { ItemType::ITEM_TYPE_WAND, ItemType::ITEM_TYPE_POTION, ItemType::ITEM_TYPE_RING, ItemType::ITEM_TYPE_SCROLL, ItemType::ITEM_TYPE_SPELLBOOK };
+            int num_extra = RNG::range(0, i_rand.size() - 1);
+
+            for (int i = 0; i < num_extra; i++)
+            {
+              i_restr.push_back(i_rand[RNG::range(0, i_rand.size() - 1)]);
+            }
+
+            for (const ItemType i_type : i_restr)
+            {
+              vector<ItemType> gen_type_restr = { i_type };
+
+              ItemGenerationManager igm;
+              ItemGenerationMap generation_map = igm.generate_item_generation_map({ 1, danger_upper, Rarity::RARITY_COMMON, gen_type_restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE });
+              int enchant_points = iec.calculate_enchantments(danger_level) + 1;
+              ItemPtr generated_item = igm.generate_item(Game::instance().get_action_manager_ref(), generation_map, rarity, gen_type_restr, enchant_points);
+
+              tile->get_items()->merge_or_add(generated_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+            }
+          }
+
+          // Some adventurers in dungeons/sewers/caverns were killed by 
+          // creatures - others were killed by traps.
+          if (!tile->has_feature() && 
+               map->size().depth().get_current() > 0 && 
+               RNG::percent_chance(PCT_CHANCE_ADVENTURER_SKELETON_TRAP))
+          {
+            GeneratorUtils::generate_trap(map, item_row, item_col, Game::instance().get_trap_info_ref());
+          }
+
+          adv_created = true;
+          break;
+        }
+      }
+    }
+  }
+
+  return adv_created;
 }

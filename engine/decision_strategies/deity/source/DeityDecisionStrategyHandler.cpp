@@ -10,7 +10,7 @@ DeityDecisionStrategyHandler::DeityDecisionStrategyHandler(const string& new_dei
 
 DeityDecisionImplications DeityDecisionStrategyHandler::get_deity_decision_implications(CreaturePtr creature, TilePtr tile) const
 {
-  int piety_loss = get_piety_loss();
+  int piety_loss = get_piety_amount();
   
   // Some tiles/features reduce the piety loss (e.g. when praying on an altar,
   // etc).  But this should affect only piety loss, and not piety gain.

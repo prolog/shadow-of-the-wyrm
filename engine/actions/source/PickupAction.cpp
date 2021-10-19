@@ -128,32 +128,31 @@ ActionCostValue PickupAction::handle_pickup_single(CreaturePtr creature, MapPtr 
   if (creature != nullptr && map != nullptr && tile != nullptr)
   {
     IInventoryPtr inv = tile->get_items();
-    vector<tuple<ItemPtr, bool, std::string>> items_to_take;
+    vector<tuple<ItemPtr, bool, uint, std::string>> items_to_take;
 
     if (inv != nullptr)
     {
       // If there is one item, pick it up.
       uint num_items = inv->size();
+
       bool can_pick_up = true;
+      uint num_able_to_pickup = 0;
       string pickup_sid;
 
       if (num_items == 1)
       {
         ItemPtr pick_up_item = inv->at(0);
 
-        pair<bool, string> pickup_details = CreatureUtils::can_pick_up(creature, pick_up_item);
+        tuple<bool, uint, string> pickup_details = CreatureUtils::can_pick_up(creature, pick_up_item);
+        can_pick_up = std::get<0>(pickup_details);
+        num_able_to_pickup = std::get<1>(pickup_details);
 
-        if (pickup_details.first)
+        if (!can_pick_up)
         {
-          can_pick_up = true;
-        }
-        else
-        {
-          can_pick_up = false;
-          pickup_sid = pickup_details.second;
+          pickup_sid = std::get<2>(pickup_details);
         }
 
-        items_to_take.push_back({pick_up_item, can_pick_up, pickup_sid});
+        items_to_take.push_back({pick_up_item, can_pick_up, num_able_to_pickup, pickup_sid});
       }
       // If there are many items, get one of them.
       else
@@ -163,11 +162,12 @@ ActionCostValue PickupAction::handle_pickup_single(CreaturePtr creature, MapPtr 
 
         for (ItemPtr i : items)
         {
-          pair<bool, string> pickup_details = CreatureUtils::can_pick_up(creature, i);
-          can_pick_up = pickup_details.first;
-          pickup_sid = pickup_details.second;
+          tuple<bool, uint, string> pickup_details = CreatureUtils::can_pick_up(creature, i);
+          can_pick_up = std::get<0>(pickup_details);
+          num_able_to_pickup = std::get<1>(pickup_details);
+          pickup_sid = std::get<2>(pickup_details);
 
-          items_to_take.push_back({i, can_pick_up, pickup_sid});
+          items_to_take.push_back({i, can_pick_up, num_able_to_pickup, pickup_sid});
         }
       }
 
@@ -175,16 +175,17 @@ ActionCostValue PickupAction::handle_pickup_single(CreaturePtr creature, MapPtr 
       {
         ItemPtr ic_item = std::get<0>(item_context);
         bool ic_can_take = std::get<1>(item_context);
-        string ic_pickup_sid = std::get<2>(item_context);
+        uint ic_quantity = std::get<2>(item_context);
+        string ic_pickup_sid = std::get<3>(item_context);
 
-        if (ic_item != nullptr && !ic_can_take)
+        if (ic_item != nullptr && (!ic_can_take && ic_quantity == 0))
         {
           handle_cannot_pickup(creature, ic_pickup_sid);
         }
         else
         {
           bool prompt_for_stacks = (items_to_take.size() == 1) && Game::instance().get_settings_ref().get_setting_as_bool(Setting::PROMPT_ON_STACK_PICKUP);
-          action_cost_value = take_item_and_give_to_creature(ic_item, inv, creature, prompt_for_stacks);
+          action_cost_value = take_item_and_give_to_creature(ic_item, inv, creature, prompt_for_stacks, ic_quantity);
         }
       }
     }
@@ -206,17 +207,16 @@ ActionCostValue PickupAction::handle_pickup_all(CreaturePtr creature, MapPtr map
 
     for (ItemPtr item : items)
     {
-      pair<bool, string> pickup_details = CreatureUtils::can_pick_up(creature, item);
-      
-      if (pickup_details.first == false)
+      tuple<bool, int, string> pickup_details = CreatureUtils::can_pick_up(creature, item);
+      if (get<0>(pickup_details) == false && get<1>(pickup_details) == 0)
       {
-        handle_cannot_pickup(creature, pickup_details.second);
+        handle_cannot_pickup(creature, get<2>(pickup_details));
         break;
       }
       else
       {
         picked_up = true;
-        take_item_and_give_to_creature(item, inv, creature, false);
+        take_item_and_give_to_creature(item, inv, creature, false, get<1>(pickup_details));
 
         addl_stacks_taken++;
       }
@@ -257,15 +257,15 @@ ActionCostValue PickupAction::handle_pickup_types(CreaturePtr creature, MapPtr m
       {
         // Candidate for autopickup.  Check to see if the creature can handle
         // the weight and the total number of items.
-        pair<bool, string> pickup_details = CreatureUtils::can_pick_up(creature, item);
+        tuple<bool, uint, string> pickup_details = CreatureUtils::can_pick_up(creature, item);
 
-        if (!pickup_details.first)
+        if (!get<0>(pickup_details) && get<1>(pickup_details) == 0)
         {
-          handle_cannot_pickup(creature, pickup_details.second);
+          handle_cannot_pickup(creature, get<2>(pickup_details));
         }
         else
         {
-          take_item_and_give_to_creature(item, inv, creature, false);
+          take_item_and_give_to_creature(item, inv, creature, false, get<1>(pickup_details));
         }
       }
     }
@@ -296,7 +296,7 @@ bool PickupAction::autopickup_passes_exclusions(ItemPtr item)
   return item_ok;
 }
 
-ActionCostValue PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_item, IInventoryPtr inv, CreaturePtr creature, const bool prompt_for_amount)
+ActionCostValue PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_item, IInventoryPtr inv, CreaturePtr creature, const bool prompt_for_amount, const uint max_quantity)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
@@ -305,7 +305,7 @@ ActionCostValue PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_ite
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
 
     uint quantity = pick_up_item->get_quantity();
-    uint amount_to_take = quantity;
+    uint amount_to_take = max_quantity;
 
     if (quantity > 1 && prompt_for_amount)
     {
@@ -315,10 +315,10 @@ ActionCostValue PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_ite
         manager.send();
       }
 
-      amount_to_take = creature->get_decision_strategy()->get_count(quantity);
+      amount_to_take = std::min<uint>(creature->get_decision_strategy()->get_count(quantity), max_quantity);
     }
 
-    if (!pick_up_item->is_valid_quantity(amount_to_take))
+    if (!pick_up_item->is_valid_quantity(amount_to_take) && amount_to_take > max_quantity)
     {
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_PICK_UP_INVALID_QUANTITY));
       manager.send();

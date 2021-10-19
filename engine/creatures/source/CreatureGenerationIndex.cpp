@@ -47,6 +47,11 @@ CreatureGenerationList CreatureGenerationIndex::get(const int danger) const
   return {};
 }
 
+bool CreatureGenerationIndex::empty() const
+{
+  return creature_list.empty();
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/CreatureGenerationIndex_test.cpp"
 #endif

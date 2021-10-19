@@ -21,7 +21,8 @@ enum struct ReligiousCommercialSectorFeatureType
   RC_SECTOR_FEATURE_SHOP = 3,
   RC_SECTOR_FEATURE_OUTDOOR_SHRINE = 4,
   RC_SECTOR_FEATURE_LIBRARY = 5,
-  RC_SECTOR_LAST = 6
+  RC_SECTOR_FEATURE_STOREHOUSE = 6,
+  RC_SECTOR_LAST = 7
 };
 
 enum struct LowIncomeResidentialSectorFeatureType

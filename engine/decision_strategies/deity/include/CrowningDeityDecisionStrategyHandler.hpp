@@ -18,6 +18,6 @@ class CrowningDeityDecisionStrategyHandler : public DeityDecisionStrategyHandler
     void add_crowning_gift(CreaturePtr creature, TilePtr tile);
     std::vector<std::string> select_crowning_gifts(CreaturePtr creature, Deity* deity);
 
-    int get_piety_loss() const override;
+    int get_piety_amount() const override;
     std::string get_message_sid() const override;
 };

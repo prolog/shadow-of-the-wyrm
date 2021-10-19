@@ -1,6 +1,11 @@
 <CustomMap id="forest_of_yew" xmlns="urn:shadow_of_the_wyrm:maps:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:shadow_of_the_wyrm:maps:1.0.0 ./CustomMap.xsd">
 	<NameSID>MAP_NAME_FORESTOFYEW</NameSID>
 	<DefaultRaceID>02_woodelf</DefaultRaceID>
+	<EventScripts>
+		<CreateScript>
+			<Script>areas/events/forest_of_yew.lua</Script>
+		</CreateScript>
+	</EventScripts>
 	<Dimensions>
 		<Rows>20</Rows>
 		<Columns>80</Columns>
@@ -12,10 +17,10 @@
 	<MapType>1</MapType>
 	<Tiles>
 	TT,TT,,T,TT,,TTT,,T,T,,TTT,TT,TTTTT,T,TT,TT,TT,TT,TT,T,T,TTT,T,TT,T,TTTTT,TT,TTT
-	T,,T,T,TT,,T,TT,TTT,TT,T,T,,,,,,,,,,,,,,,,####,T,TT####TT,,,T,TT,,TTTT,,TTTT,T,T
-	,,T,TT,,,T,TT,T,T,,T,,TT,T,,###########,,,#..#,,T,,...#,TTTT,TTT,T,TTT,,TT,,,T,T
-	,T,,,,T,,T,,T,TTT,TTT,TTTT,,#.........#,T,#.##,T,,T#..#TT,,TTTT,T,T,,,TT,,TT,,,,
-	,,,T,T,T,TTT,TT,T,,,TTT,,T,,#.........#,,,,,,,,,TTT#..#T,T,TT,,,,,TT,TT,TT,T,T,T
+	T,,T,T,TT,,T,TT,TTT,TT,T,T,,,,,,,,,,,,,,,,####,T,TT####TT,,,,,,T,,TTTT,,TTTT,T,T
+	,,T,TT,,,T,TT,T,T,,T,,TT,T,,###########,,,#..#,,T,,...#,T,,,,,,T,T,TTT,,TT,,,T,T
+	,T,,,,T,,T,,T,TTT,TTT,TTTT,,#.........#,T,#.##,T,,T#..#TT,,,,,,,T,T,,,TT,,TT,,,,
+	,,,T,T,T,TTT,TT,T,,,TTT,,T,,#.........#,,,,,,,,,TTT#..#T,,,,,,,T,,TT,TT,TT,T,T,T
 	T,,T,T,TT,,T,,TTTT,T,,TTTT,,#.........#,,,,,,T,,,,T####,T,,,,T,TT,,,T,,T,,TTT,,,
 	T,T,,T,T,T,,T,T,T,,,T,T,,T,,#.........#,T,######,,T,T,T,,,,TT,TT,,TTTT,,TT,T,,,T
 	T,,,T,,TT,,,,T,TTT,TT,,TT,,,#.........#,,,.....#,,,,,,T,T,TT,,,,TTT,,,TT,,,,TT,,

@@ -21,6 +21,12 @@ enum struct TimeOfDayType
   TIME_OF_DAY_NIGHT = 3
 };
 
+constexpr auto CTIME_OF_DAY_UNDEFINED = -1;
+constexpr auto CTIME_OF_DAY_DAWN = 0;
+constexpr auto CTIME_OF_DAY_DAY = 1;
+constexpr auto CTIME_OF_DAY_DUSK = 2;
+constexpr auto CTIME_OF_DAY_NIGHT = 3;
+
 class TimeOfDay
 {
   public:
