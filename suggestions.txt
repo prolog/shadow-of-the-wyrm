@@ -1,6 +1,4 @@
 Me:
-- get %p working on other add_message type calls
-- Asset release
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere
 - More dungeon item features:
@@ -308,3 +306,9 @@ Josh Engdahl
 
 TheGhostInTheMachine:
 - game segfaults if you put it on the path and then run it elsewhere?
+
+Brian Jeffears:
+- black market/something only open at night
+
+Larzid:
+- default_monitor option

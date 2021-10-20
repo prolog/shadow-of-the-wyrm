@@ -1,3 +1,8 @@
+Shadow of the Wyrm v1.3.8 "Pisador"
+- Version declared October 19, 2021.
+
+- New name and settlement name combinations.
+
 Shadow of the Wyrm v1.3.6 "Valderrabano"
 - Version declared July 14, 2021.  Version finalized October 19, 2021.
 
@@ -149,7 +154,7 @@ Shadow of the Wyrm v1.3.6 "Valderrabano"
 
   - Pulsars were mapped to the wrong sprite.
 
-  - The logic around close misses was broken (and always had be), so now
+  - The logic around close misses was broken (and always had been), so now
     periodically combat should generate "you barely miss <x>"-type messages.
 
 Shadow of the Wyrm v1.3.3 "de Sarlat"
