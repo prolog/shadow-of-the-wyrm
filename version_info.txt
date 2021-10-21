@@ -3,6 +3,11 @@ Shadow of the Wyrm v1.3.8 "Pisador"
 
 - New name and settlement name combinations.
 
+- Bug fixes:
+
+  - Pregenerated items weren't properly considering whether they'd persist
+    when placed on a particular tile (Gokajern).
+
 Shadow of the Wyrm v1.3.6 "Valderrabano"
 - Version declared July 14, 2021.  Version finalized October 19, 2021.
 

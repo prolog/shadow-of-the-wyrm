@@ -5,6 +5,8 @@
 class WaterInventory : public Inventory
 {
   public:
+    AllowsItemsType get_allows_items() const override;
+
     bool add_front(ItemPtr new_item) override;
     bool add(ItemPtr new_item) override;    
     bool merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc) override;

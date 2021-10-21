@@ -118,7 +118,7 @@ bool MapUtils::is_tile_available_for_creature(CreaturePtr creature, TilePtr tile
 // - if the inventory type isn't null
 bool MapUtils::is_tile_available_for_item(TilePtr tile)
 {
-  return (!tile->get_is_blocking() && tile->get_items()->get_allows_items());
+  return (!tile->get_is_blocking() && tile->get_items()->get_allows_items() == AllowsItemsType::ALLOWS_ITEMS);
 }
 
 // Swap two creatures on their tiles.

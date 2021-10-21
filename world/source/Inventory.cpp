@@ -45,9 +45,9 @@ bool Inventory::operator==(const IInventory& inv) const
   return result;
 }
 
-bool Inventory::get_allows_items() const
+AllowsItemsType Inventory::get_allows_items() const
 {
-  return true;
+  return AllowsItemsType::ALLOWS_ITEMS;
 }
 
 void Inventory::mark_for_restack()

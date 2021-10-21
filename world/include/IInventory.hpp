@@ -12,6 +12,13 @@ enum struct InventoryAdditionType
   INVENTORY_ADDITION_BACK = 1
 };
 
+enum struct AllowsItemsType
+{
+  DISALLOWS_ITEMS = 0,
+  ALLOWS_SOME_ITEMS = 1,
+  ALLOWS_ITEMS = 2
+};
+
 // Interface for Inventory classes.  Implementing classes are:
 //
 // - Inventory (a regular inventory, used almost everywhere)
@@ -27,7 +34,7 @@ class IInventory : public ISerializable
     virtual void mark_for_restack() = 0;
     virtual bool get_marked_for_restack() const = 0;
 
-    virtual bool get_allows_items() const = 0;
+    virtual AllowsItemsType get_allows_items() const = 0;
     virtual bool add_front(ItemPtr new_item) = 0;
     virtual bool add(ItemPtr new_item) = 0;
 
