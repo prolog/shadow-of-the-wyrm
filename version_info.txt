@@ -8,6 +8,9 @@ Shadow of the Wyrm v1.3.8 "Pisador"
   - Pregenerated items weren't properly considering whether they'd persist
     when placed on a particular tile (Gokajern).
 
+  - swyrm.ini gave incorrect instructions on how to set default_sex to prompt
+    the user to select their character's sex (RelicWraith).
+
 Shadow of the Wyrm v1.3.6 "Valderrabano"
 - Version declared July 14, 2021.  Version finalized October 19, 2021.
 
