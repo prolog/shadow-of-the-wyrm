@@ -1,6 +1,11 @@
 Shadow of the Wyrm v1.3.8 "Pisador"
 - Version declared October 19, 2021.
 
+- The display is now centered when started in SDL windowed mode.
+
+- Via swyrm.ini, you can now select the display the game should start on 
+  (Larzid).
+
 - New name and settlement name combinations.
 
 - Bug fixes:
