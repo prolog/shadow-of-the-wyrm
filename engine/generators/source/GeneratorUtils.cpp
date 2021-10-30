@@ -16,6 +16,7 @@
 #include "TileGenerator.hpp"
 #include "WildflowerGardenGenerator.hpp"
 
+using SOTW::Generator;
 using namespace std;
 
 // Implicit is an extra padding tile - when creating a shop/bazaar, there's
@@ -599,6 +600,22 @@ void GeneratorUtils::fill(MapPtr map, const Coordinate& start_coord, const Coord
         map->insert(row, col, tile);
       }
     }
+  }
+}
+
+void GeneratorUtils::potentially_generate_coastline(MapPtr map, const Generator * const generator)
+{
+  if (map != nullptr && generator != nullptr)
+  {
+    generate_coastline(map, generator);
+  }
+}
+
+void GeneratorUtils::generate_coastline(MapPtr map, const Generator * const generator)
+{
+  if (map != nullptr && generator != nullptr)
+  {
+    // ...
   }
 }
 

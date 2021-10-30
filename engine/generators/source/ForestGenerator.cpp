@@ -38,6 +38,7 @@ MapPtr ForestGenerator::generate(const Dimensions& dimensions)
   MapPtr result_map = std::make_shared<Map>(dimensions);
 
   fill(result_map, TileType::TILE_TYPE_FIELD);
+  GeneratorUtils::potentially_generate_coastline(result_map, this);
 
   add_random_bushes_and_weeds (result_map);
   GeneratorUtils::add_random_stream_or_springs(result_map, PCT_CHANCE_FOREST_STREAM, PCT_CHANCE_FOREST_STREAM);

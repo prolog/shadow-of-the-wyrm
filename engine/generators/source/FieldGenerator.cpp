@@ -32,6 +32,8 @@ MapPtr FieldGenerator::generate(const Dimensions& dimensions)
     }
   }
 
+  GeneratorUtils::potentially_generate_coastline(result_map, this);
+
   if (RNG::percent_chance(40))
   {
     StreamGenerator::generate(result_map);

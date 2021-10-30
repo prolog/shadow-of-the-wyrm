@@ -1,4 +1,5 @@
 Me:
+- Update spring generation to work with sea
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere
 - More dungeon item features:
