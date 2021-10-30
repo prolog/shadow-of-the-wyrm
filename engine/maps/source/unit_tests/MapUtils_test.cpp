@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "FieldGenerator.hpp"
 #include "GeneratorUtils.hpp"
 #include "MobileDecisionStrategy.hpp"
 #include "TileGenerator.hpp"
@@ -377,4 +378,25 @@ TEST(SW_Engine_Maps_MapUtils, get_coastline_dirs)
   // Case 4: landlocked
   dirs = MapUtils::get_coastline_directions(map, { 16, 16 });
   EXPECT_EQ(0, dirs.size());
+}
+
+TEST(SW_Engine_Maps_MapUtils, set_coastline_generator_dirs)
+{
+  FieldGenerator generator("test");
+
+  vector<Direction> dirs = { Direction::DIRECTION_EAST };
+  MapUtils::set_coastline_generator_dirs(&generator, dirs);
+
+  EXPECT_EQ(std::to_string(true), generator.get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST));
+  EXPECT_FALSE(generator.has_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST));
+  EXPECT_FALSE(generator.has_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH));
+  EXPECT_FALSE(generator.has_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH));
+
+  dirs = { Direction::DIRECTION_EAST, Direction::DIRECTION_WEST, Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH };
+  MapUtils::set_coastline_generator_dirs(&generator, dirs);
+
+  EXPECT_EQ(std::to_string(true), generator.get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH));
+  EXPECT_EQ(std::to_string(true), generator.get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH));
+  EXPECT_EQ(std::to_string(true), generator.get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST));
+  EXPECT_EQ(std::to_string(true), generator.get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST));
 }

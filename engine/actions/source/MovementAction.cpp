@@ -666,11 +666,7 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
       {
         Coordinate cr_coord = map->get_location(creature->get_id());
         vector<Direction> coast_dirs = MapUtils::get_coastline_directions(map, cr_coord);
-
-        for (const Direction cd : coast_dirs)
-        {
-          // Add the generator properties for each dir.
-        }
+        MapUtils::set_coastline_generator_dirs(generator.get(), coast_dirs);
       }
 
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_FORAGABLES, to_string(pct_chance_foragables));

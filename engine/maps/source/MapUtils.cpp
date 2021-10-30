@@ -2200,6 +2200,32 @@ vector<Direction> MapUtils::get_coastline_directions(MapPtr map, const Coordinat
   return dirs;
 }
 
+void MapUtils::set_coastline_generator_dirs(SOTW::Generator* generator, const vector<Direction>& dirs)
+{
+  if (generator != nullptr)
+  {
+    for (const Direction d : dirs)
+    {
+      if (d == Direction::DIRECTION_NORTH)
+      {
+        generator->set_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH, std::to_string(true));
+      }
+      else if (d == Direction::DIRECTION_SOUTH)
+      {
+        generator->set_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH, std::to_string(true));
+      }
+      else if (d == Direction::DIRECTION_EAST)
+      {
+        generator->set_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST, std::to_string(true));
+      }
+      else if (d == Direction::DIRECTION_WEST)
+      {
+        generator->set_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST, std::to_string(true));
+      }
+    }
+  }
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Map_test.cpp"
 #include "unit_tests/MapUtils_test.cpp"
