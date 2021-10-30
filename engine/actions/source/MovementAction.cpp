@@ -659,6 +659,20 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
       ForagablesCalculator fc;
       int pct_chance_foragables = fc.calculate_pct_chance_foragables(creature);
       int pct_chance_herbs = fc.calculate_pct_chance_herbs(creature);
+
+      // JCD FIXME refactor
+      // Add whether there's ocean in each direction, to guide procgen.
+      if (map->get_map_type() == MapType::MAP_TYPE_WORLD)
+      {
+        Coordinate cr_coord = map->get_location(creature->get_id());
+        vector<Direction> coast_dirs = MapUtils::get_coastline_directions(map, cr_coord);
+
+        for (const Direction cd : coast_dirs)
+        {
+          // Add the generator properties for each dir.
+        }
+      }
+
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_FORAGABLES, to_string(pct_chance_foragables));
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_HERBS, to_string(pct_chance_herbs));
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_EXIT_MOVEMENT_TYPE, to_string(static_cast<int>(emt)));

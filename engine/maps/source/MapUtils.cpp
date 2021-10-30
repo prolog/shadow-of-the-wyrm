@@ -2171,6 +2171,35 @@ bool MapUtils::add_item(MapPtr map, const vector<Coordinate>& possible_coords, I
   return false;
 }
 
+vector<Direction> MapUtils::get_coastline_directions(MapPtr map, const Coordinate& c)
+{
+  vector<Direction> dirs;
+
+  if (map != nullptr)
+  {
+    vector<Direction> check_dirs = {Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH, Direction::DIRECTION_EAST, Direction::DIRECTION_WEST};
+
+    for (const Direction cd : check_dirs)
+    {
+      Coordinate adj_c = CoordUtils::get_new_coordinate(c, cd);
+      TilePtr tile = map->at(adj_c);
+
+      // If we're off the end of the world, assume an endless and unyielding
+      // sea...
+      if (tile == nullptr)
+      {
+        dirs.push_back(cd);
+      }
+      else if (tile->get_tile_type() == TileType::TILE_TYPE_SEA)
+      {
+        dirs.push_back(cd);
+      }
+    }
+  }
+
+  return dirs;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Map_test.cpp"
 #include "unit_tests/MapUtils_test.cpp"
