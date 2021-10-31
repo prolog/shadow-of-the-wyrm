@@ -30,16 +30,16 @@ void StreamGenerator::generate_stream(MapPtr result_map, const int start_col)
 
   while (current_row >= 0 && current_col <= max_cols)
   {
+    int rand = RNG::range(1, 100);
+    if (rand < 40)
+    {
+      current_row--;
+    }
+
     TilePtr tile = result_map->at(current_row, current_col);
 
     if (tile != nullptr && tile->get_water_type() == WaterType::WATER_TYPE_UNDEFINED)
     {
-      int rand = RNG::range(1, 100);
-      if (rand < 40)
-      {
-        current_row--;
-      }
-
       result_map->insert(current_row, current_col, tg.generate(TileType::TILE_TYPE_RIVER));
     }
 

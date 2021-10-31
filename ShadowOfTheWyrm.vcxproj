@@ -727,6 +727,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\include\CavernGenerator.hpp" />
     <ClInclude Include="engine\generators\include\CellularAutomataGenerator.hpp" />
     <ClInclude Include="engine\generators\include\CellularAutomataTypes.hpp" />
+    <ClInclude Include="engine\generators\include\CoastlineGenerator.hpp" />
     <ClInclude Include="engine\generators\include\CrossPillarGenerator.hpp" />
     <ClInclude Include="engine\generators\include\CrossShrineGenerator.hpp" />
     <ClInclude Include="engine\generators\include\CustomAreaGenerator.hpp" />
@@ -2024,6 +2025,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\generators\settlements\source\WalledSettlementGenerator.cpp" />
+    <ClCompile Include="engine\generators\source\CoastlineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\CrossShrineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\FloatingTowerGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MapItemGenerator.cpp" />

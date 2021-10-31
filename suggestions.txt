@@ -1,4 +1,7 @@
 Me:
+- shoals in sea
+- Make sure flags are ignored on village gen
+- Ensure player placement is ok
 - Update spring generation to work with sea
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere

@@ -96,6 +96,7 @@ void test_bresenham_line();
 
 // Terrain generation function prototypes
 std::string generate_field();
+std::string generate_field_coast();
 std::string generate_field_ruins();
 std::string generate_field_settlement_ruins();
 std::string generate_forest();
@@ -136,7 +137,6 @@ void   settlement_maps();
 void   city_maps();
 void   church_maps();
 void   initialize_settings();
-void   print_skill_name();
 void   race_info();
 void   class_info();
 void   print_race_info(const RaceMap& race_map, const std::string& id);
@@ -431,6 +431,54 @@ std::string generate_overgrown_sacrifice_site()
 std::string generate_field()
 {
   GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
+  MapPtr map = field_gen->generate();
+  std::cout << map_to_string(map, false);
+  return map_to_string(map);
+}
+
+std::string generate_field_coast()
+{
+  std::cout << "Coast N? ";
+  bool north = false;
+  std::cin >> north;
+
+  std::cout << "Coast S? ";
+  bool south = false;
+  std::cin >> south;
+
+  std::cout << "Coast E? ";
+  bool east = false;
+  std::cin >> east;
+
+  std::cout << "Coast W? ";
+  bool west = false;
+  std::cin >> west;
+
+  std::vector<Direction> coastline_dirs;
+
+  if (north)
+  {
+    coastline_dirs.push_back(Direction::DIRECTION_NORTH);
+  }
+
+  if (south)
+  {
+    coastline_dirs.push_back(Direction::DIRECTION_SOUTH);
+  }
+
+  if (east)
+  {
+    coastline_dirs.push_back(Direction::DIRECTION_EAST);
+  }
+
+  if (west)
+  {
+    coastline_dirs.push_back(Direction::DIRECTION_WEST);
+  }
+
+  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
+  MapUtils::set_coastline_generator_dirs(field_gen.get(), coastline_dirs);
+
   MapPtr map = field_gen->generate();
   std::cout << map_to_string(map, false);
   return map_to_string(map);
@@ -1057,13 +1105,6 @@ void test_bresenham_line()
   }  
 }
 
-void print_skill_name()
-{
-  AwarenessSkill awareness;
-  std::string awareness_skill_name = StringTable::get(awareness.get_skill_name_sid());
-  std::cout << awareness_skill_name << std::endl;
-}
-
 void test_rng()
 {
   int option = 0;
@@ -1390,7 +1431,7 @@ int main(int argc, char* argv[])
     std::cout << "11. Sea" << std::endl;
     std::cout << "12. World" << std::endl;
     std::cout << "13. Cavern" << std::endl;
-    std::cout << "14. Quick skill name test" << std::endl;
+    std::cout << "14. Coastline" << std::endl;
     std::cout << "15. Display race info" << std::endl;
     std::cout << "16. Display class info" << std::endl;
     std::cout << "17. City-adjacent maps" << std::endl;
@@ -1455,7 +1496,8 @@ int main(int argc, char* argv[])
         output_map(map, "cavern_test.html");
         break;
       case 14:
-        print_skill_name();
+        map = generate_field_coast();
+        output_map(map, "field_coast_test.html");
         break;
       case 15:
         race_info();

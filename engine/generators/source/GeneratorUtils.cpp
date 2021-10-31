@@ -1,3 +1,5 @@
+#include "CoastlineGenerator.hpp"
+#include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "FeatureGenerator.hpp"
 #include "Game.hpp"
@@ -5,6 +7,7 @@
 #include "GeneratorUtils.hpp"
 #include "ItemGenerationManager.hpp"
 #include "Log.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
 #include "RockGardenGenerator.hpp"
@@ -615,7 +618,13 @@ void GeneratorUtils::generate_coastline(MapPtr map, const Generator * const gene
 {
   if (map != nullptr && generator != nullptr)
   {
-    // ...
+    bool generate_north = String::to_bool(generator->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH));
+    bool generate_south = String::to_bool(generator->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH));
+    bool generate_east = String::to_bool(generator->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST));
+    bool generate_west = String::to_bool(generator->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST));
+
+    CoastlineGenerator cg;
+    cg.generate(map, generate_north, generate_south, generate_east, generate_west);
   }
 }
 
