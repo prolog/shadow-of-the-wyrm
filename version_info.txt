@@ -6,6 +6,10 @@ Shadow of the Wyrm v1.3.8 "Pisador"
 - Via swyrm.ini, you can now select the display the game should start on 
   (Larzid).
 
+- Maps will now usually generate coastlines based on their placement on the 
+  world map, and your placement will vary based on where the most land is at
+  the edge.
+
 - New name and settlement name combinations.
 
 - Bug fixes:
@@ -15,6 +19,8 @@ Shadow of the Wyrm v1.3.8 "Pisador"
 
   - swyrm.ini gave incorrect instructions on how to set default_sex to prompt
     the user to select their character's sex (RelicWraith).
+
+  - Weather conditions no longer cause water to shimmer underwater.
 
 Shadow of the Wyrm v1.3.6 "Valderrabano"
 - Version declared July 14, 2021.  Version finalized October 19, 2021.

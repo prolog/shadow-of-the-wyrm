@@ -291,6 +291,7 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, co
   Game& game = Game::instance();
   Colour override_colour = tod_overrides.first;
   MapRegistry& mr = game.get_map_registry_ref();
+  MapPtr map = game.get_current_map();
 
   const vector<DisplayTile>& tiles_info = game.get_tile_display_info_ref();
   DisplayTile tile_info = tiles_info.at(static_cast<int>(tile->get_tile_type()));
@@ -301,12 +302,12 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile, co
   int pct_chance_shimmer = shimmer_colours.get_pct_chance_shimmer();
 
   WeatherCalculator wc;
-  WeatherPtr weather = MapUtils::get_weather(game.get_current_map(), tile);
+  WeatherPtr weather = MapUtils::get_weather(map, tile);
   int pct_chance_weathered = 0;
   
   if (weather != nullptr)
   {
-    pct_chance_weathered = wc.calculate_pct_chance_shimmer(weather->get_wind_speed());
+    pct_chance_weathered = wc.calculate_pct_chance_shimmer(map, weather->get_wind_speed());
   }
 
   string cache_key = MapUtils::convert_coordinate_to_map_key({row, col});

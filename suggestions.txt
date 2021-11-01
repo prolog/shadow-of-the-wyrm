@@ -1,4 +1,5 @@
 Me:
+- NPCs run away when missile attacked and can't reach
 - appropriate starting point based on coastline
 - sea creatures on sea tiles in other maps
 - Ensure player placement is ok

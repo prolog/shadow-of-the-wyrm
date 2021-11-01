@@ -33,14 +33,22 @@ int WeatherCalculator::calculate_new_wind_speed(const int wind_speed) const
   return new_ws;
 }
 
-int WeatherCalculator::calculate_pct_chance_shimmer(const int wind_speed) const
+int WeatherCalculator::calculate_pct_chance_shimmer(MapPtr map, const int wind_speed) const
 {
   int pct_chance_shimmer = 0;
 
-  if (wind_speed >= MIN_WIND_SPEED_FOR_SHIMMER)
+  if (map != nullptr)
   {
-    pct_chance_shimmer = wind_speed / 2;
-    pct_chance_shimmer = std::min<int>(pct_chance_shimmer, 100);
+    MapType map_type = map->get_map_type();
+
+    if (map_type == MapType::MAP_TYPE_WORLD || map_type == MapType::MAP_TYPE_OVERWORLD)
+    {
+      if (wind_speed >= MIN_WIND_SPEED_FOR_SHIMMER)
+      {
+        pct_chance_shimmer = wind_speed / 2;
+        pct_chance_shimmer = std::min<int>(pct_chance_shimmer, 100);
+      }
+    }
   }
   
   return pct_chance_shimmer;
