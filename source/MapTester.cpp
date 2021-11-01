@@ -512,7 +512,7 @@ std::string generate_coast()
       gen = std::make_unique<MarshGenerator>("");
       break;
     case 6:
-      gen = std::make_unique<HillsGenerator>("");
+      gen = std::make_unique<HillsGenerator>("");   
       break;
     default:
       return "";
