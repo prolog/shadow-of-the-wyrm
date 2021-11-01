@@ -1363,8 +1363,15 @@ Coordinate MapUtils::place_creature(MapPtr map, CreaturePtr creature, const stri
 {
   Coordinate coords(0,0);
 
+  if (map == nullptr)
+  {
+    return coords;
+  }
+
   if (CoordUtils::is_end(linked_location))
   {
+    bool set_coords = false;
+
     // First, check the generic "player location" coordinates.
     if (creature->get_is_player())
     {
@@ -1372,12 +1379,19 @@ Coordinate MapUtils::place_creature(MapPtr map, CreaturePtr creature, const stri
       if (map->has_location(current_player_loc))
       {
         coords = map->get_location(current_player_loc);
+        set_coords = true;
       }
     }
 
     if (map->has_location(player_loc))
     {
       coords = map->get_location(player_loc);
+      set_coords = true;
+    }
+
+    if (set_coords == false)
+    {
+      coords = map->get_starting_location();
     }
   }
   else

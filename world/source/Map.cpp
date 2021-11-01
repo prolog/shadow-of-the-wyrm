@@ -830,6 +830,41 @@ Weather& Map::get_weather_ref()
   return weather;
 }
 
+Coordinate Map::get_starting_location() const
+{
+  Coordinate c = { 0, 0 };
+
+  bool n = String::to_bool(get_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH));
+  bool s = String::to_bool(get_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH));
+  bool e = String::to_bool(get_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST));
+  bool w = String::to_bool(get_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST));
+
+  // If all are true (island) or none are true (inland), use 0,0.
+  // Otherwise, use a value bsaed on the dimensions and the first available
+  // non-coast of N, S, E, W
+  if (!((n && s && e && w) || (!n && !s && !e && !w)))
+  {
+    Dimensions d = size();
+    if (!n)
+    {
+      c = { 0, (d.get_x() - 1) / 2 };
+    }
+    else if (!s)
+    {
+      c = { d.get_y() - 1, (d.get_x() - 1) / 2 };
+    }
+    else if (!e)
+    {
+      c = { (d.get_y() - 1) / 2, d.get_x() - 1 };
+    }
+    else if (!w)
+    {
+      c = { (d.get_y() - 1) / 2, 0 };
+    }
+  }
+  return c;
+}
+
 bool Map::serialize(ostream& stream) const
 {
   // creatures - not serialized.  build up after deserialization.

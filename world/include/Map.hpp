@@ -166,6 +166,8 @@ class Map : public ISerializable
     Weather& get_weather_ref();
     Weather get_weather() const;
 
+    Coordinate get_starting_location() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 

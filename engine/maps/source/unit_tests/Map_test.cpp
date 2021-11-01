@@ -174,3 +174,45 @@ TEST_F(SW_Engine_Map, get_generation_coordinates)
 
   EXPECT_EQ(expected, map->get_generation_coordinates());
 }
+
+TEST_F(SW_Engine_Map, get_starting_location)
+{
+  MapPtr map = make_map();
+  Coordinate exp = { 0, 0 };
+  EXPECT_EQ(exp, map->get_starting_location());
+
+  std::map<string, string> props = { {MapProperties::MAP_PROPERTIES_COASTLINE_NORTH, std::to_string(true)},
+                                     {MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH, std::to_string(true)},
+                                     {MapProperties::MAP_PROPERTIES_COASTLINE_EAST, std::to_string(true)},
+                                     {MapProperties::MAP_PROPERTIES_COASTLINE_WEST, std::to_string(true)}};
+
+  for (const auto& p_pair : props)
+  {
+    map->set_property(p_pair.first, p_pair.second);
+  }
+
+  EXPECT_EQ(exp, map->get_starting_location());
+
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH, std::to_string(false));
+  exp = { 0, 39 };
+
+  EXPECT_EQ(exp, map->get_starting_location());
+
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH, std::to_string(true));
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH, std::to_string(false));
+  exp = { 19, 39 };
+
+  EXPECT_EQ(exp, map->get_starting_location());
+
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH, std::to_string(true));
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST, std::to_string(false));
+  exp = { 9, 0 };
+
+  EXPECT_EQ(exp, map->get_starting_location());
+
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST, std::to_string(true));
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST, std::to_string(false));
+  exp = { 9, 79 };
+
+  EXPECT_EQ(exp, map->get_starting_location());
+}
