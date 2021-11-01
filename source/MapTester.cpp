@@ -513,6 +513,7 @@ std::string generate_coast()
       break;
     case 6:
       gen = std::make_unique<HillsGenerator>("");
+      break;
     default:
       return "";
   }

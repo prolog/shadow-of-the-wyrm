@@ -37,22 +37,29 @@ TilePtr MarshGenerator::generate_tile(MapPtr current_map, const int row, const i
   TilePtr result_tile;
 
   int rand = RNG::range(1, 100);
+  TilePtr cur_tile = current_map->at(row, col);
+  bool sea = cur_tile->get_tile_type() == TileType::TILE_TYPE_SEA;
 
+  // Do a check for whether the current tile type is sea. Generating
+  // some terrain on the sea gives marshes an everglades-like feel,
+  // but should be limited to trees.
   if (rand <= 2)
   {
     result_tile = tg.generate(TileType::TILE_TYPE_WEEDS);
   }
   else if (rand <= 3)
   {
+    if (sea) return nullptr;
     result_tile = tg.generate(TileType::TILE_TYPE_BUSH);
   }
-  else if (rand <= 7)
+  else if (rand <= 13 && sea == false)
   {
-    result_tile = tg.generate(TileType::TILE_TYPE_TREE);
+    if (sea) return nullptr;
+    result_tile = tg.generate(TileType::TILE_TYPE_REEDS);
   }
   else if (rand <= 17)
   {
-    result_tile = tg.generate(TileType::TILE_TYPE_REEDS);
+    result_tile = tg.generate(TileType::TILE_TYPE_TREE);
   }
 
   if (result_tile != nullptr && RNG::x_in_y_chance(XY_CHANCE_BERRIES_X, XY_CHANCE_BERRIES_Y))
