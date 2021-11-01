@@ -1,6 +1,9 @@
 Me:
+- appropriate starting point based on coastline
+- sea creatures on sea tiles in other maps
+- vary bush params on sea tiles?
 - shoals in sea
-- Make sure flags are ignored on village gen
+- test flags are ignored on village gen
 - Ensure player placement is ok
 - Update spring generation to work with sea
 - Homesteads in fields

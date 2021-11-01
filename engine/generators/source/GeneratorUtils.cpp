@@ -577,6 +577,7 @@ bool GeneratorUtils::are_tiles_ok_for_structure(MapPtr map, const int y_start, c
       {
         TilePtr tile = map->at(y, x);
 
+        // Don't allow generation on water, etc.
         if (!(tile && tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_GROUND && tile->get_movement_multiplier() > 0))
         {
           bzr_ok = false;
@@ -610,7 +611,12 @@ void GeneratorUtils::potentially_generate_coastline(MapPtr map, const Generator 
 {
   if (map != nullptr && generator != nullptr)
   {
-    generate_coastline(map, generator);
+    bool skip_gen = String::to_bool(generator->get_additional_property(MapProperties::MAP_PROPERTIES_SKIP_COASTLINE_GENERATION));
+
+    if (skip_gen == false)
+    {
+      generate_coastline(map, generator);
+    }
   }
 }
 

@@ -22,6 +22,7 @@
 #include "CavernGenerator.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "CryptGenerator.hpp"
+#include "DesertGenerator.hpp"
 #include "DungeonGenerator.hpp"
 #include "FieldGenerator.hpp"
 #include "FileConstants.hpp"
@@ -31,6 +32,7 @@
 #include "Game.hpp"
 #include "GrandTempleGenerator.hpp"
 #include "GraveyardGeneratorFactory.hpp"
+#include "HillsGenerator.hpp"
 #include "IslandSacrificeSiteGenerator.hpp"
 #include "ItemGenerationManager.hpp"
 #include "RockySacrificeSiteGenerator.hpp"
@@ -39,6 +41,7 @@
 #include "RuinsGenerator.hpp"
 #include "MarshGenerator.hpp"
 #include "MineGenerator.hpp"
+#include "ScrubGenerator.hpp"
 #include "SeaGenerator.hpp"
 #include "SettlementGenerator.hpp"
 #include "HamletGenerator.hpp"
@@ -96,7 +99,7 @@ void test_bresenham_line();
 
 // Terrain generation function prototypes
 std::string generate_field();
-std::string generate_field_coast();
+std::string generate_coast();
 std::string generate_field_ruins();
 std::string generate_field_settlement_ruins();
 std::string generate_forest();
@@ -436,7 +439,7 @@ std::string generate_field()
   return map_to_string(map);
 }
 
-std::string generate_field_coast()
+std::string generate_coast()
 {
   std::cout << "Coast N? ";
   bool north = false;
@@ -476,10 +479,46 @@ std::string generate_field_coast()
     coastline_dirs.push_back(Direction::DIRECTION_WEST);
   }
 
-  GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
-  MapUtils::set_coastline_generator_dirs(field_gen.get(), coastline_dirs);
+  GeneratorPtr gen; 
 
-  MapPtr map = field_gen->generate();
+  int choice = 0;
+
+  std::cout << std::endl << "1. Field" << std::endl;
+  std::cout << "2. Forest" << std::endl;
+  std::cout << "3. Desert" << std::endl;
+  std::cout << "4. Scrub" << std::endl;
+  std::cout << "5. Marsh" << std::endl;
+  std::cout << "6. Hills" << std::endl;
+
+  std::cin >> choice;
+
+  switch (choice)
+  {
+    case -1:
+      return "";
+    case 1:
+      gen = std::make_unique<FieldGenerator>("");
+      break;
+    case 2:
+      gen = std::make_unique<ForestGenerator>("");
+      break;
+    case 3:
+      gen = std::make_unique<DesertGenerator>("");
+      break;
+    case 4:
+      gen = std::make_unique<ScrubGenerator>("");
+      break;
+    case 5:
+      gen = std::make_unique<MarshGenerator>("");
+      break;
+    case 6:
+      gen = std::make_unique<HillsGenerator>("");
+    default:
+      return "";
+  }
+
+  MapUtils::set_coastline_generator_dirs(gen.get(), coastline_dirs);
+  MapPtr map = gen->generate();
   std::cout << map_to_string(map, false);
   return map_to_string(map);
 }
@@ -1496,8 +1535,8 @@ int main(int argc, char* argv[])
         output_map(map, "cavern_test.html");
         break;
       case 14:
-        map = generate_field_coast();
-        output_map(map, "field_coast_test.html");
+        map = generate_coast();
+        output_map(map, "coast_test.html");
         break;
       case 15:
         race_info();
