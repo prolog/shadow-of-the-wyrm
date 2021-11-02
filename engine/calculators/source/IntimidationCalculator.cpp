@@ -13,6 +13,13 @@ int IntimidationCalculator::calculate_pct_chance_intimidated(CreaturePtr attacki
 
   if (attacking_creature != nullptr && attacked_creature != nullptr && cca.can_act(attacked_creature))
   {
+    bool attacking_raging = attacking_creature->has_status(StatusIdentifiers::STATUS_ID_RAGE);
+    
+    if (attacking_raging)
+    {
+      return 0;
+    }
+
     int attack_intim = attacking_creature->get_skills().get_value(SkillType::SKILL_GENERAL_INTIMIDATION);
     int attack_cha = attacking_creature->get_charisma().get_current();
     int attack_level = attacking_creature->get_level().get_current();
@@ -21,6 +28,8 @@ int IntimidationCalculator::calculate_pct_chance_intimidated(CreaturePtr attacki
     int attacked_cha = attacked_creature->get_charisma().get_current();
     int attacked_level = attacked_creature->get_level().get_current();
 
+    // Check to see if the attacked creature has intimidation - this can cause
+    // the attacker to pull back in fear.
     if (attacked_intim > 0)
     {
       int attack = (attack_intim / INTIMIDATION_DIVISOR) + (attack_cha / CHARISMA_DIVISOR) + (attack_level / LEVEL_DIVISOR);

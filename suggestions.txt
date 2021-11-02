@@ -1,9 +1,8 @@
 Me:
-- NPCs run away when missile attacked and can't reach
-- appropriate starting point based on coastline
+- Weird behaviour when character with same name already exists
+- NPCs run away when missile/spell/wand attacked and can't reach
+- spell arcana (bind to capitals in spell list)
 - sea creatures on sea tiles in other maps
-- Ensure player placement is ok
-- Update spring generation to work with sea
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere
 - More dungeon item features:
@@ -33,10 +32,6 @@ Me:
 - Test by generating these in Carcassia, Gnordvar
 - explosive damage should also trigger destr_pct_chance items on ground.
   e.g. set up explosive fields...
-- Long term, give a chance for coastal generators to produce coastline, maybe
-  with little islands, etc. Before generating, set booleans for coast in
-  the different directions and then pick one. Should be done after the initial
-  fill but before adding stuff
 - New sector features:
 - UndergroundSectorFeature (takes tile type - dungeoncomplex, mine, cavern,
   sewer)
@@ -65,10 +60,8 @@ Me:
   pack! OpenGameArt if new sprites.
 - Release after this: grond says tanning is complicated & dragon skins aren't
   what they should be.
-- Mode screen (F10): Game mode, graphics, palette
 - Additional profiling improvements
 - Beer halls in villages
-- spell arcana (bind to capitals in spell list)
 - Do creatures pause when no threats in FOV? Seems slow.
 - 2x draw?
 - Beastmastery: add mounts

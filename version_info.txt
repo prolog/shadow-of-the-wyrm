@@ -10,6 +10,8 @@ Shadow of the Wyrm v1.3.8 "Pisador"
   world map, and your placement will vary based on where the most land is at
   the edge.
 
+- The Rage status now provides immunity to Intimidation.
+
 - New name and settlement name combinations.
 
 - Bug fixes:
