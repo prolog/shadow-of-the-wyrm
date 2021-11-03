@@ -62,6 +62,13 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 {
   tuple<bool, int, Rarity> creatures_generated(false, 0, Rarity::RARITY_COMMON);
   TileType map_terrain_type = map->get_terrain_type();
+  set<TileType> map_terrain_types = { map_terrain_type };
+  vector<TileType> secondary_types = map->get_secondary_terrain();
+
+  for (const auto& tt : secondary_types)
+  {
+    map_terrain_types.insert(tt);
+  }
 
   Dimensions dim = map->size();
   CreatureGenerationManager cgm;
@@ -110,7 +117,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   
   while (generation_index.empty() && min_danger_level >= 1)
   {
-    generation_index = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger_level, max_danger_level, rarity, additional_properties);
+    generation_index = cgm.generate_creature_generation_map(map_terrain_types, map->get_permanent(), min_danger_level, max_danger_level, rarity, additional_properties);
 
     if (generation_index.empty())
     {

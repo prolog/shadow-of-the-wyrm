@@ -1,4 +1,5 @@
 Me:
+- Water NPCs being generated on land
 - NPCs run away when missile/spell/wand attacked and can't reach
 - spell arcana (bind to capitals in spell list)
 - sea creatures on sea tiles in other maps
