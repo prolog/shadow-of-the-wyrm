@@ -2222,7 +2222,7 @@ Coordinate MapUtils::get_random_coastline_coordinate(MapPtr map)
   {
     vector<Direction> dirs = map->get_coastline_directions();
 
-    if (!dirs.empty())
+    if (!dirs.empty())  
     {
       std::shuffle(dirs.begin(), dirs.end(), RNG::get_engine());
       Direction d = dirs[0];
@@ -2234,11 +2234,11 @@ Coordinate MapUtils::get_random_coastline_coordinate(MapPtr map)
 
         for (const Coordinate& ec : coords)
         {
-          TilePtr tile = map->at(c);
+          TilePtr tile = map->at(ec);
 
           if (tile && tile->get_water_type() != WaterType::WATER_TYPE_UNDEFINED)
           {
-            return c;
+            return ec;
           }
         }
       }

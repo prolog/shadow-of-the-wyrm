@@ -1,5 +1,5 @@
 Me:
-- Water NPCs being generated on land
+- Sea-related flavor text (4 or 5) when entering a map with coastline
 - NPCs run away when missile/spell/wand attacked and can't reach
 - spell arcana (bind to capitals in spell list)
 - sea creatures on sea tiles in other maps
