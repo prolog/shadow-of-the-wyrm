@@ -865,6 +865,84 @@ Coordinate Map::get_starting_location() const
   return c;
 }
 
+void Map::set_secondary_terrain(const vector<TileType>& new_secondary_terrain)
+{
+  ostringstream ss;
+
+  for (size_t i = 0; i < new_secondary_terrain.size(); i++)
+  {
+    ss << static_cast<int>(new_secondary_terrain[i]);
+
+    if (i < new_secondary_terrain.size() - 1)
+    {
+      ss << ",";
+    }
+  }
+
+  set_property(MapProperties::MAP_PROPERTIES_SECONDARY_TERRAIN, ss.str());
+}
+
+void Map::add_secondary_terrain(const TileType tt)
+{
+  vector<TileType> sec_ter = get_secondary_terrain();
+
+  if (std::find(sec_ter.begin(), sec_ter.end(), tt) == sec_ter.end())
+  {
+    sec_ter.push_back(tt);
+    set_secondary_terrain(sec_ter);
+  }
+}
+
+vector<TileType> Map::get_secondary_terrain() const
+{
+  vector<TileType> sec_ter;
+
+  string sec_ter_s = get_property(MapProperties::MAP_PROPERTIES_SECONDARY_TERRAIN);
+  if (!sec_ter_s.empty())
+  {
+    vector<string> sec_ter_v = String::create_string_vector_from_csv_string(sec_ter_s);
+
+    for (const auto& s : sec_ter_v)
+    {
+      sec_ter.push_back(static_cast<TileType>(String::to_int(s)));
+    }
+  }
+
+  return sec_ter;
+}
+
+vector<Direction> Map::get_coastline_directions() const
+{
+  vector<Direction> dirs;
+
+  bool n = String::to_bool(get_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH));
+  bool s = String::to_bool(get_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH));
+  bool e = String::to_bool(get_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST));
+  bool w = String::to_bool(get_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST));
+
+  if (n)
+  {
+    dirs.push_back(Direction::DIRECTION_NORTH);
+  }
+
+  if (s)
+  {
+    dirs.push_back(Direction::DIRECTION_SOUTH);
+  }
+
+  if (e)
+  {
+    dirs.push_back(Direction::DIRECTION_EAST);
+  }
+
+  if (w)
+  {
+    dirs.push_back(Direction::DIRECTION_WEST);
+  }
+
+  return dirs;
+}
+
 bool Map::serialize(ostream& stream) const
 {
   // creatures - not serialized.  build up after deserialization.

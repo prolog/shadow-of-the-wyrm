@@ -292,6 +292,50 @@ vector<Coordinate> CoordUtils::get_corner_coordinates(const Coordinate& top_left
   return corners;
 }
 
+vector<Coordinate> CoordUtils::get_edge_coordinates(const Dimensions& dim, const Direction d)
+{
+  vector<Coordinate> coords;
+  Coordinate c = end();
+  int rows = dim.get_y();
+  int cols = dim.get_x();
+
+  if (d == Direction::DIRECTION_NORTH)
+  {
+    for (int col = 0; col < cols; col++)
+    {
+      coords.push_back({ 0, col });
+    }
+  }
+  else if (d == Direction::DIRECTION_SOUTH)
+  {
+    for (int col = 0; col < cols; col++)
+    {
+      coords.push_back({ rows-1, col });
+    }
+  }
+  else if (d == Direction::DIRECTION_EAST)
+  {
+    for (int row = 0; row < rows; row++)
+    {
+      coords.push_back({ row, cols - 1 });
+    }
+  }
+  else if (d == Direction::DIRECTION_WEST)
+  {
+    for (int row = 0; row < rows; row++)
+    {
+      coords.push_back({ row, 0 });
+    }
+  }
+
+  if (coords.empty())
+  {
+    coords.push_back(c);
+  }
+
+  return coords;
+}
+
 vector<Coordinate> CoordUtils::get_perimeter_coordinates(const Coordinate& top_left, const Coordinate& bottom_right)
 {
   vector<Coordinate> perimeter_coordinates;

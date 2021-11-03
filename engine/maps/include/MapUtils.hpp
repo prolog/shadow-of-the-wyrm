@@ -124,6 +124,7 @@ class MapUtils
     static bool add_item(MapPtr map, const std::vector<Coordinate>& coords, ItemPtr item);
 
     static std::vector<Direction> get_coastline_directions(MapPtr map, const Coordinate& c);
+    static Coordinate get_random_coastline_coordinate(MapPtr map);
     static void set_coastline_generator_dirs(SOTW::Generator* generator, const std::vector<Direction>& coastline_dirs);
 
   protected: 

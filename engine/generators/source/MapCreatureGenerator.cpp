@@ -214,16 +214,29 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 // first of these that is unoccupied will be used.
 Coordinate MapCreatureGenerator::get_coordinate_for_creature(MapPtr map, CreaturePtr generated_creature, const pair<Coordinate, Coordinate>& coord_range)
 {
-  Coordinate c;
+  Coordinate c = CoordUtils::end();
 
-  if (map != nullptr)
+  if (map != nullptr && generated_creature != nullptr)
   {
     vector<Coordinate>& preset_locs = map->get_preset_locations_ref();
 
     if (preset_locs.empty())
     {
-      c.first = RNG::range(coord_range.first.first, coord_range.second.first);
-      c.second = RNG::range(coord_range.first.second, coord_range.second.second);
+      if (generated_creature->can_breathe(BreatheType::BREATHE_TYPE_WATER))
+      {
+        vector<TileType> secondary = map->get_secondary_terrain();
+
+        if (!secondary.empty() && std::find(secondary.begin(), secondary.end(), TileType::TILE_TYPE_SEA) != secondary.end())
+        {
+          c = MapUtils::get_random_coastline_coordinate(map);
+        }
+      }
+
+      if (CoordUtils::is_end(c))
+      {
+        c.first = RNG::range(coord_range.first.first, coord_range.second.first);
+        c.second = RNG::range(coord_range.first.second, coord_range.second.second);
+      }
     }
     else
     {

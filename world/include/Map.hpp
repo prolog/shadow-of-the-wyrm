@@ -168,6 +168,12 @@ class Map : public ISerializable
 
     Coordinate get_starting_location() const;
 
+    void set_secondary_terrain(const std::vector<TileType>& new_secondary_terrain);
+    void add_secondary_terrain(const TileType tt);
+    std::vector<Direction> get_coastline_directions() const;
+
+    std::vector<TileType> get_secondary_terrain() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 

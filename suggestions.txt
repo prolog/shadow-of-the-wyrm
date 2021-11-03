@@ -1,5 +1,4 @@
 Me:
-- Weird behaviour when character with same name already exists
 - NPCs run away when missile/spell/wand attacked and can't reach
 - spell arcana (bind to capitals in spell list)
 - sea creatures on sea tiles in other maps

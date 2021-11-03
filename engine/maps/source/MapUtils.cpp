@@ -2214,6 +2214,40 @@ vector<Direction> MapUtils::get_coastline_directions(MapPtr map, const Coordinat
   return dirs;
 }
 
+Coordinate MapUtils::get_random_coastline_coordinate(MapPtr map)
+{
+  Coordinate c = CoordUtils::end();
+
+  if (map != nullptr)
+  {
+    vector<Direction> dirs = map->get_coastline_directions();
+
+    if (!dirs.empty())
+    {
+      std::shuffle(dirs.begin(), dirs.end(), RNG::get_engine());
+      Direction d = dirs[0];
+      vector<Coordinate> coords = CoordUtils::get_edge_coordinates(map->size(), d);
+
+      if (!coords.empty())
+      {
+        std::shuffle(coords.begin(), coords.end(), RNG::get_engine());
+
+        for (const Coordinate& ec : coords)
+        {
+          TilePtr tile = map->at(c);
+
+          if (tile && tile->get_water_type() != WaterType::WATER_TYPE_UNDEFINED)
+          {
+            return c;
+          }
+        }
+      }
+    }
+  }
+
+  return c;
+}
+
 void MapUtils::set_coastline_generator_dirs(SOTW::Generator* generator, const vector<Direction>& dirs)
 {
   if (generator != nullptr)

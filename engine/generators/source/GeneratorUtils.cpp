@@ -639,6 +639,11 @@ void GeneratorUtils::generate_coastline(MapPtr map, const Generator * const gene
     if (generate_east) map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST, to_string(true));
     if (generate_west) map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST, to_string(true));
 
+    if (generate_north || generate_south || generate_east || generate_west)
+    {
+      map->add_secondary_terrain(TileType::TILE_TYPE_SEA);
+    }
+
     CoastlineGenerator cg;
     cg.generate(map, generate_north, generate_south, generate_east, generate_west);
   }

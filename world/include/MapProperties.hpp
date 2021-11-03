@@ -111,6 +111,7 @@ class MapProperties
     static const std::string MAP_PROPERTIES_COASTLINE_SOUTH;
     static const std::string MAP_PROPERTIES_COASTLINE_EAST;
     static const std::string MAP_PROPERTIES_COASTLINE_WEST;
+    static const std::string MAP_PROPERTIES_SECONDARY_TERRAIN;
 
   protected:
     MapProperties();
