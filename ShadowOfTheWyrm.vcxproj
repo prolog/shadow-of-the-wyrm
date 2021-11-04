@@ -1089,6 +1089,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\strings\include\StatisticTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\StatusAilmentTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\StringTable.hpp" />
+    <ClInclude Include="engine\strings\include\TerrainTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\TextKeys.hpp" />
     <ClInclude Include="engine\strings\include\TextMessages.hpp" />
     <ClInclude Include="engine\strings\include\TileDangerConfirmationKeys.hpp" />
@@ -2195,6 +2196,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\strings\source\PartyTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\SettingTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\SettlementTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\TerrainTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\unit_tests\DateTextKeys_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

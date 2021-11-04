@@ -14,6 +14,7 @@
 #include "ItemProperties.hpp"
 #include "LineOfSightCalculator.hpp"
 #include "Log.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MovementAccumulationChecker.hpp"

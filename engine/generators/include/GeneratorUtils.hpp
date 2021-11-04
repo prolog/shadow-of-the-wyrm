@@ -58,8 +58,8 @@ class GeneratorUtils
     static void fill(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const TileType tile_type);
 
     // Generate coastline on the map
-    static void potentially_generate_coastline(MapPtr map, const SOTW::Generator * const generator);
-    static void generate_coastline(MapPtr map, const SOTW::Generator * const generator);
+    static void potentially_generate_coastline(MapPtr map, SOTW::Generator * const generator);
+    static bool generate_coastline(MapPtr map, SOTW::Generator * const generator);
 
     static void add_random_stream_or_springs(MapPtr map, const int pct_chance_stream, const int pct_chance_springs);
     static void add_random_stream(MapPtr map);

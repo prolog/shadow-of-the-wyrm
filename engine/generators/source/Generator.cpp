@@ -910,3 +910,18 @@ bool Generator::get_place_on_down_staircase(const ExitMovementType emt) const
 
   return place_on_down;
 }
+
+void Generator::set_feature_entry_text_sids(const vector<string>& new_feature_entry_text_sids)
+{
+  feature_entry_text_sids = new_feature_entry_text_sids;
+}
+
+void Generator::add_feature_entry_text_sid(const std::string& new_sid)
+{
+  feature_entry_text_sids.push_back(new_sid);
+}
+
+void Generator::clear_feature_entry_text_sids()
+{
+  feature_entry_text_sids.clear();
+}

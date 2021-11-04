@@ -16,6 +16,7 @@
 #include "SpringsGenerator.hpp"
 #include "StorehouseSectorFeature.hpp"
 #include "StreamGenerator.hpp"
+#include "TerrainTextKeys.hpp"
 #include "TileGenerator.hpp"
 #include "WildflowerGardenGenerator.hpp"
 
@@ -607,7 +608,7 @@ void GeneratorUtils::fill(MapPtr map, const Coordinate& start_coord, const Coord
   }
 }
 
-void GeneratorUtils::potentially_generate_coastline(MapPtr map, const Generator * const generator)
+void GeneratorUtils::potentially_generate_coastline(MapPtr map, Generator * const generator)
 {
   if (map != nullptr && generator != nullptr)
   {
@@ -620,8 +621,10 @@ void GeneratorUtils::potentially_generate_coastline(MapPtr map, const Generator 
   }
 }
 
-void GeneratorUtils::generate_coastline(MapPtr map, const Generator * const generator)
+bool GeneratorUtils::generate_coastline(MapPtr map, Generator * const generator)
 {
+  bool return_val = false;
+
   if (map != nullptr && generator != nullptr)
   {
     string coast_n_s = generator->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH);
@@ -641,12 +644,23 @@ void GeneratorUtils::generate_coastline(MapPtr map, const Generator * const gene
 
     if (generate_north || generate_south || generate_east || generate_west)
     {
+      return_val = true;
       map->add_secondary_terrain(TileType::TILE_TYPE_SEA);
     }
 
     CoastlineGenerator cg;
     cg.generate(map, generate_north, generate_south, generate_east, generate_west);
+
+    if (return_val)
+    {
+      vector<string> coast_sids = {TerrainTextKeys::COASTLINE_MESSAGE1_SID, TerrainTextKeys::COASTLINE_MESSAGE2_SID, TerrainTextKeys::COASTLINE_MESSAGE3_SID};
+      string coastline_text_sid = coast_sids[RNG::range(0, coast_sids.size() - 1)];
+
+      generator->add_feature_entry_text_sid(coastline_text_sid);
+    }
   }
+
+  return return_val;
 }
 
 void GeneratorUtils::add_random_stream_or_springs(MapPtr result_map, const int pct_chance_stream, const int pct_chance_springs)
