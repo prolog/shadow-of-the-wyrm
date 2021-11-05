@@ -1,4 +1,7 @@
 Me:
+- Item duping gitch. When you pick up a stack of items, and the game prompts 
+  you for the amount, press escape. Rather than cancelling item pick-up, you 
+  will instead clone said stack into your inventory. (RelicWraith)
 - Sea-related flavor text (4 or 5) when entering a map with coastline
 - NPCs run away when missile/spell/wand attacked and can't reach
 - spell arcana (bind to capitals in spell list)

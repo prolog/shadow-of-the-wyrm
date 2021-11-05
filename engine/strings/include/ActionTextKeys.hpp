@@ -57,6 +57,7 @@ class ActionTextKeys
     static const std::string ACTION_SEARCH_BLIND;
     static const std::string ACTION_PICK_UP_NOT_ALLOWED;
     static const std::string ACTION_PICK_UP_STACK_SIZE;
+    static const std::string ACTION_PICK_UP_ZERO;
     static const std::string ACTION_PICK_UP_INVALID_QUANTITY;
     static const std::string ACTION_DROP_NOT_ALLOWED;
     static const std::string ACTION_DROP_NO_ITEM_SELECTED;

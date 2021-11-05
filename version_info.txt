@@ -24,6 +24,9 @@ Shadow of the Wyrm v1.3.8 "Pisador"
 
   - Weather conditions no longer cause water to shimmer underwater.
 
+  - Selecting 0 for a stack pickup size would duplicate the item into your
+    inventory (RelicWraith).
+
 Shadow of the Wyrm v1.3.6 "Valderrabano"
 - Version declared July 14, 2021.  Version finalized October 19, 2021.
 
