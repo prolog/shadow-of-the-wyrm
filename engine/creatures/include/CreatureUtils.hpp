@@ -89,6 +89,8 @@ class CreatureUtils
 
     static void add_piety_message_if_player(CreaturePtr creature);
 
+    static bool is_item_usable(CreaturePtr creature, ItemPtr item);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();

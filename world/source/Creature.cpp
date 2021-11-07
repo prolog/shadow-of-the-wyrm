@@ -718,6 +718,23 @@ Skills& Creature::get_skills()
   return skills;
 }
 
+bool Creature::can_learn_spells() const
+{
+  vector<SkillType> spell_categories = { SkillType::SKILL_MAGIC_CANTRIPS, SkillType::SKILL_MAGIC_ARCANE, SkillType::SKILL_MAGIC_DIVINE, SkillType::SKILL_MAGIC_MYSTIC, SkillType::SKILL_MAGIC_PRIMORDIAL };
+
+  for (const SkillType spell_cat : spell_categories)
+  {
+    int skill_val = skills.get_value(spell_cat);
+
+    if (skill_val > 0)
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 void Creature::set_movement_accumulation(const MovementAccumulation& new_accumulation)
 {
   movement_accumulation = new_accumulation;

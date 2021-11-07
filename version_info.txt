@@ -12,6 +12,13 @@ Shadow of the Wyrm v1.3.8 "Pisador"
 
 - The Rage status now provides immunity to Intimidation.
 
+- Total number of random items has been toned down.
+
+- For spellcasters, spellbook generation is now biased so that unusable
+  spellbooks are much less likely to be generated (but will still be allowed
+  by the item generation algorithm).  Spellbooks are generated as before for
+  non-spellcasters.
+
 - New name and settlement name combinations.
 
 - Bug fixes:

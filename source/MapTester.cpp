@@ -30,6 +30,7 @@
 #include "ForestGenerator.hpp"
 #include "FortifiedChurchGenerator.hpp"
 #include "Game.hpp"
+#include "GeneratorUtils.hpp"
 #include "GrandTempleGenerator.hpp"
 #include "GraveyardGeneratorFactory.hpp"
 #include "HillsGenerator.hpp"
@@ -85,6 +86,7 @@ void test_calendar();
 void test_item_generation();
 void test_creature_generation();
 void settlement_name_generation();
+void set_game_player();
 
 // Other maps
 void test_other_maps();
@@ -894,6 +896,7 @@ void misc()
     std::cout << "5. Load Custom Map" << std::endl;
     std::cout << "6. Creature Generation" << std::endl;
     std::cout << "7. Settlement Name Generation" << std::endl;
+    std::cout << "8. Set player on Game object" << std::endl;
 
     std::cin >> choice;
     
@@ -918,6 +921,10 @@ void misc()
         test_creature_generation();
       case 7:
         settlement_name_generation();
+        break;
+      case 8:
+        set_game_player();
+        break;
       default:
         break;
     }
@@ -960,7 +967,7 @@ void test_item_generation()
 
   while (item_count > -1 && danger_level > -1 && !filename.empty())
   {
-    std::cout << "Empty filename to quit" << std::endl;
+    std::cout << "-1 to any prompt to quit" << std::endl;
     std::cout << "Item Generation" << std::endl;
     std::cout << "Items to generate: ";
     std::cin >> item_count;
@@ -974,7 +981,7 @@ void test_item_generation()
     std::cout << "Filename: ";
     std::cin >> filename;
 
-    if (item_count > -1 && danger_level > -1 && !filename.empty())
+    if (item_count > -1 && danger_level > -1 && filename != "-1")
     {
       ItemGenerationManager igm;
       ItemGenerationConstraints igc(1, danger_level, rarity, {}, -1);
@@ -1111,6 +1118,52 @@ void settlement_name_generation()
   {
     std::cout << Naming::generate_settlement_name() << std::endl;
   }
+}
+
+void set_game_player()
+{
+  CreaturePtr player = std::make_shared<Creature>();
+  player->set_is_player(true, nullptr);
+
+  std::cout << "Cantrips: ";
+  int cantrips = 0;
+  std::cin >> cantrips;
+  player->get_skills().set_value(SkillType::SKILL_MAGIC_CANTRIPS, cantrips);
+
+  std::cout << "Arcane: ";
+  int arcane = 0;
+  std::cin >> arcane;
+  player->get_skills().set_value(SkillType::SKILL_MAGIC_ARCANE, arcane);
+
+  std::cout << "Divine: ";
+  int divine = 0;
+  std::cin >> divine;
+  player->get_skills().set_value(SkillType::SKILL_MAGIC_DIVINE, divine);
+
+  std::cout << "Mystic: ";
+  int mystic = 0;
+  std::cin >> mystic;
+  player->get_skills().set_value(SkillType::SKILL_MAGIC_MYSTIC, mystic);
+
+  std::cout << "Primordial: ";
+  int primordial = 0;
+  std::cin >> primordial;
+  player->get_skills().set_value(SkillType::SKILL_MAGIC_PRIMORDIAL, primordial);
+
+  Dimensions d;
+  MapPtr map = std::make_shared<Map>(d);
+  GeneratorUtils::fill(map, { 0,0 }, { d.get_y() - 1, d.get_x() - 1 }, TileType::TILE_TYPE_FIELD);
+  TilePtr tile = map->at(0, 0);
+  
+  if (tile != nullptr)
+  {
+    tile->set_creature(player);
+  }
+
+  map->set_map_id("default");
+  map->set_permanent(true);
+
+  Game::instance().set_current_map(map);
 }
 
 void test_bresenham_line()

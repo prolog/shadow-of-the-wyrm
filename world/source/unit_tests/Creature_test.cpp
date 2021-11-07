@@ -129,6 +129,22 @@ TEST(SW_World_Creature, age)
   EXPECT_EQ(age, c.get_age().get_current());
 }
 
+TEST(SW_World_Creature, can_learn_spells)
+{
+  CreaturePtr no_spells = std::make_shared<Creature>();
+  EXPECT_FALSE(no_spells->can_learn_spells());
+
+  vector<SkillType> spell_categories = { SkillType::SKILL_MAGIC_CANTRIPS, SkillType::SKILL_MAGIC_ARCANE, SkillType::SKILL_MAGIC_DIVINE, SkillType::SKILL_MAGIC_MYSTIC, SkillType::SKILL_MAGIC_PRIMORDIAL };
+
+  for (const SkillType spell_cat : spell_categories)
+  {
+    CreaturePtr s_creature = std::make_shared<Creature>();
+    s_creature->get_skills().set_value(spell_cat, 1);
+
+    EXPECT_TRUE(s_creature->can_learn_spells());
+  }
+}
+
 TEST(SW_World_Creature, size)
 {
   Creature c;

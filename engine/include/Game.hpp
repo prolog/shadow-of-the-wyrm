@@ -160,6 +160,9 @@ class Game : public ISerializable
 
     virtual void run_map_scripts();
 
+    // Set the map to be used as the current for the game's computational purposes.
+    void set_current_map(MapPtr map);
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 
@@ -194,10 +197,7 @@ class Game : public ISerializable
     void reload_map();
     
     void detect_creatures_if_necessary(CreaturePtr player, const std::string& original_map_id);
-    
-    // Set the map to be used as the current for the game's computational purposes.
-    void set_current_map(MapPtr map);
-    
+        
     // Process the elapsed time: update the calendar, and notify any time observers.
     void process_elapsed_time(Calendar& calendar, const ActionCost& next_action_cost);
 

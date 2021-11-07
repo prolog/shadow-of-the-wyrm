@@ -173,6 +173,7 @@ class Creature : public ISerializable
 
     void set_skills(const Skills& new_skills);
     Skills& get_skills();
+    bool can_learn_spells() const;
     
     void set_movement_accumulation(const MovementAccumulation& new_accumulation);
     MovementAccumulation& get_movement_accumulation_ref();

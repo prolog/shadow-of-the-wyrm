@@ -1,4 +1,6 @@
 Me:
+- unusable_spellbook_squelch_pct setting
+- Bias spellbook generation
 - Item duping gitch. When you pick up a stack of items, and the game prompts 
   you for the amount, press escape. Rather than cancelling item pick-up, you 
   will instead clone said stack into your inventory. (RelicWraith)

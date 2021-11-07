@@ -23,7 +23,7 @@ uint CreationUtils::random_maximum_creatures(const int map_height, const int map
 // The max number of items that can be created via random placement.
 uint CreationUtils::random_maximum_items(const int map_height, const int map_width)
 {
-  return (map_height / 4) + (map_width / 4) + 1;
+  return (map_height / 8) + (map_width / 8) + 1;
 }
 
 Rarity CreationUtils::generate_rarity()
