@@ -67,6 +67,7 @@ class Setting
     static const std::string CONFIGURATION_FILE_WORLD_MAP_AREAS;
     static const std::string NARRATIVE_MODE;
     static const std::string DISALLOW_SCORE_ON_EXPLORATION;
+    static const std::string SPELLCASTER_UNUSABLE_SPELLBOOK_SQUELCH_PCT;
 
   protected:
     Setting();

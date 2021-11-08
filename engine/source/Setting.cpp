@@ -74,3 +74,4 @@ const string Setting::CONFIGURATION_FILE_ITEMS = "_configuration_file_items";
 const string Setting::CONFIGURATION_FILE_WORLD_MAP_AREAS = "_configuration_file_world_map_areas";
 const string Setting::NARRATIVE_MODE = "narrative_mode";
 const string Setting::DISALLOW_SCORE_ON_EXPLORATION = "_disallow_score_on_exploration";
+const string Setting::SPELLCASTER_UNUSABLE_SPELLBOOK_SQUELCH_PCT = "spellcaster_unusable_spellbook_squelch_pct";
