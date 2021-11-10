@@ -943,6 +943,11 @@ vector<Direction> Map::get_coastline_directions() const
   return dirs;
 }
 
+bool Map::is_islet() const
+{
+  return (map_type == MapType::MAP_TYPE_OVERWORLD && get_coastline_directions().size() == 4);
+}
+
 bool Map::serialize(ostream& stream) const
 {
   // creatures - not serialized.  build up after deserialization.

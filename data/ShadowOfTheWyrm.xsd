@@ -341,6 +341,9 @@
 			<!-- When it's attacked, does it yell and draw other friendly creatures into the fight? -->
 			<xs:element name="HasVoice" type="xs:boolean"/> 
 			<xs:element name="HasHair" type="xs:boolean"/>
+			<!-- Natural includes flora and fauna that you'd find in
+			     unexplored places. -->
+			<xs:element name="Natural" type="xs:boolean"/>
 			<xs:element name="Drops" type="tns:DropsType" minOccurs="0"/>
 			<xs:element name="HasRandomVillages" type="xs:boolean" minOccurs="0"/>
 			<xs:element name="SettlementType" type="tns:SettlementType" minOccurs="0"/>

@@ -1,10 +1,6 @@
 Me:
-- unusable_spellbook_squelch_pct setting
-- Bias spellbook generation
-- Item duping gitch. When you pick up a stack of items, and the game prompts 
-  you for the amount, press escape. Rather than cancelling item pick-up, you 
-  will instead clone said stack into your inventory. (RelicWraith)
-- Sea-related flavor text (4 or 5) when entering a map with coastline
+- Islets should only generate: plant, bird, animal, insect, jelly, dragon.
+  Or: only humanoid, and a boat somewhere.
 - NPCs run away when missile/spell/wand attacked and can't reach
 - spell arcana (bind to capitals in spell list)
 - sea creatures on sea tiles in other maps
@@ -313,5 +309,6 @@ TheGhostInTheMachine:
 Brian Jeffears:
 - black market/something only open at night
 
-Larzid:
-- default_monitor option
+RelicWraith:
+- weapon/armour/fod vendor, yet only accepted tools/boats/food
+- two shopkeepers generated

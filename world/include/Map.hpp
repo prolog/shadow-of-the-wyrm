@@ -170,7 +170,9 @@ class Map : public ISerializable
 
     void set_secondary_terrain(const std::vector<TileType>& new_secondary_terrain);
     void add_secondary_terrain(const TileType tt);
+
     std::vector<Direction> get_coastline_directions() const;
+    bool is_islet() const;
 
     std::vector<TileType> get_secondary_terrain() const;
 
