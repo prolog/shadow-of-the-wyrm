@@ -117,7 +117,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   
   while (generation_index.empty() && min_danger_level >= 1)
   {
-    generation_index = cgm.generate_creature_generation_map(map_terrain_types, map->get_permanent(), min_danger_level, max_danger_level, rarity, additional_properties);
+    generation_index = cgm.generate_creature_generation_map(map_terrain_types, map->get_permanent(), map->is_islet(), min_danger_level, max_danger_level, rarity, additional_properties);
 
     if (generation_index.empty())
     {

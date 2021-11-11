@@ -364,7 +364,7 @@ void WorldGenerator::set_tile_depth_creature_details(TilePtr tile, const int max
       // Get a creature ID for the given tile/depth combination.
       // Cache it so that performance isn't brutal.
       CreatureGenerationManager cgm;
-      gindex = cgm.generate_creature_generation_map({ tile_type }, true /* assume permanent */, 1, MAX_DANGER_LEVEL_FOR_WORLD_GEN, Rarity::RARITY_COMMON, {});
+      gindex = cgm.generate_creature_generation_map({ tile_type }, true /* assume permanent */, false /* assume not islet */, 1, MAX_DANGER_LEVEL_FOR_WORLD_GEN, Rarity::RARITY_COMMON, {});
       generation_list = gindex.get(max_depth);
 
       creature_generation_map_cache.emplace(tile_type, gindex);

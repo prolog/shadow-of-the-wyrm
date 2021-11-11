@@ -33,7 +33,7 @@ CreatureGenerationManager::CreatureGenerationManager()
 {
 }
 
-CreatureGenerationIndex CreatureGenerationManager::generate_creature_generation_map(const set<TileType>& map_terrain_types, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const map<string, string>& additional_properties)
+CreatureGenerationIndex CreatureGenerationManager::generate_creature_generation_map(const set<TileType>& map_terrain_types, const bool permanent_map, const bool islet, const int min_danger_level, const int max_danger_level, const Rarity rarity, const map<string, string>& additional_properties)
 {
   int min_danger = min_danger_level;
   CreatureGenerationList generation_list;
@@ -80,6 +80,8 @@ CreatureGenerationIndex CreatureGenerationManager::generate_creature_generation_
     std::sort(generator_filters.begin(), generator_filters.end());
   }
     
+  RaceManager rm;
+
   // Build the map of creatures available for generation given the danger level and rarity
   for (auto c_it = creatures.begin(); c_it != creatures.end(); c_it++)
   {
