@@ -197,6 +197,7 @@ class TextKeys
     static const std::string TAMED;
     static const std::string REQUIRES;
     static const std::string THE_WORLD_MAP;
+    static const std::string NO_CREATURES_GENERATED;
 
   protected:
     TextKeys();

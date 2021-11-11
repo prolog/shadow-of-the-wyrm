@@ -10,6 +10,11 @@ Shadow of the Wyrm v1.3.8 "Pisador"
   world map, and your placement will vary based on where the most land is at
   the edge.
 
+- Islets (tiny islands surrounded by sea in the cardinal directions) are now
+  generally uninhabited, and random creature generation on these is restricted
+  to the naturally-occurring races: birds, animals, insects, plants, jellies, 
+  dragons...
+
 - The Rage status now provides immunity to Intimidation.
 
 - Total number of random items has been toned down.

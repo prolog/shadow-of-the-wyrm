@@ -314,7 +314,7 @@ int MapCreatureGenerator::get_num_creatures(MapPtr map, const int max_creatures)
 // generation.
 int MapCreatureGenerator::get_min_danger_level(MapPtr map, const int base_danger_level)
 {
-  int min_danger_level = RNG::range(base_danger_level / 2, base_danger_level);
+  int min_danger_level = RNG::range(std::max<int>(1, base_danger_level / 2), base_danger_level);
   
   if (map != nullptr)
   {

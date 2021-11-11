@@ -1,6 +1,6 @@
 Me:
-- Islets should only generate: plant, bird, animal, insect, jelly, dragon.
-  Or: only humanoid, and a boat somewhere.
+- When generating creatures, ensure the maximum isn't updated until the 
+  creature is placed!!!
 - NPCs run away when missile/spell/wand attacked and can't reach
 - spell arcana (bind to capitals in spell list)
 - sea creatures on sea tiles in other maps
@@ -257,9 +257,6 @@ Yan Zhang:
 - Do something interesting with flowers!
 - Climb up Telari: more NPCs
 
-Skjarl:
-- SDL resizing
-
 Stof:
 - mouse click pathfinding
 
@@ -311,4 +308,4 @@ Brian Jeffears:
 
 RelicWraith:
 - weapon/armour/fod vendor, yet only accepted tools/boats/food
-- two shopkeepers generated
+- two shopkeepers generated: random generation in villages, carcassia, etc

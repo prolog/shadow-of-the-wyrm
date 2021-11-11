@@ -201,5 +201,7 @@ const string TextKeys::PACIFIED = "PACIFIED";
 const string TextKeys::TAMED = "TAMED";
 const string TextKeys::REQUIRES = "REQUIRES";
 const string TextKeys::THE_WORLD_MAP = "THE_WORLD_MAP";
+const string TextKeys::NO_CREATURES_GENERATED = "NO_CREATURES_GENERATED";
+
 
 

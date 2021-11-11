@@ -15,6 +15,7 @@
 #include "Map.hpp"
 #include "MapUtils.hpp"
 #include "Serialize.hpp"
+#include "TextKeys.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
@@ -119,6 +120,13 @@ void Generator::create_entities(MapPtr map, const int danger_level, const bool c
   {
     MapCreatureGenerator mcg;
     creature_details = mcg.generate_creatures(map, danger_level, additional_properties);
+
+    if (std::get<1>(creature_details) == 0)
+    {
+      IMessageManager& manager = MM::instance();
+      manager.add_new_message(StringTable::get(TextKeys::NO_CREATURES_GENERATED));
+      manager.send();
+    }
   }
 
   if (create_items && can_create_initial_items())
