@@ -80,14 +80,12 @@ CreatureGenerationIndex CreatureGenerationManager::generate_creature_generation_
     std::sort(generator_filters.begin(), generator_filters.end());
   }
     
-  RaceManager rm;
-
   // Build the map of creatures available for generation given the danger level and rarity
   for (auto c_it = creatures.begin(); c_it != creatures.end(); c_it++)
   {
     const CreatureGenerationValues& cgvals = cgv_map[c_it->first];
 
-    if (does_creature_match_generation_criteria(cgvals, map_terrain_types, permanent_map, min_danger, max_danger_level, rarity, ignore_level_checks, required_race, generator_filters, preset_creature_ids))
+    if (does_creature_match_generation_criteria(cgvals, map_terrain_types, permanent_map, islet, min_danger, max_danger_level, rarity, ignore_level_checks, required_race, generator_filters, preset_creature_ids))
     {
       generation_list.push_back({c_it->first, c_it->second, cgvals});
     }
@@ -429,12 +427,24 @@ CreaturePtr CreatureGenerationManager::generate_adventurer(ActionManager& am, Ma
   return adv;
 }
 
-bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const set<TileType>& terrain_types, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const bool ignore_level_checks, const string& required_race, const vector<string>& generator_filters, const vector<string>& preset_creature_ids)
+bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const set<TileType>& terrain_types, const bool permanent_map, const bool islet, const int min_danger_level, const int max_danger_level, const Rarity rarity, const bool ignore_level_checks, const string& required_race, const vector<string>& generator_filters, const vector<string>& preset_creature_ids)
 {
   RaceManager rm;
   int cgv_danger_level = cgv.get_danger_level();
   int cgv_maximum = cgv.get_maximum();
   vector<string> cgv_generator_filters = cgv.get_generator_filters();
+  bool islet_race_natural = true;
+
+  if (islet)
+  {
+    RaceManager rm;
+    Race* race = rm.get_race(cgv.get_race_id());
+
+    if (race != nullptr)
+    {
+      islet_race_natural = race->get_natural();
+    }
+  }
 
   // Sort the vectors.  The assumption is that the input vector is sorted.
   std::sort(cgv_generator_filters.begin(), cgv_generator_filters.end());
@@ -443,6 +453,7 @@ bool CreatureGenerationManager::does_creature_match_generation_criteria(const Cr
     && cgv_danger_level >= 0 // Exclude danger level of -1, which means "don't generate"
     && (ignore_level_checks || cgv_danger_level >= min_danger_level)
     && (ignore_level_checks || cgv_danger_level <= max_danger_level)
+    && (!islet || islet_race_natural)
     && (required_race.empty() || rm.is_race_or_descendent(cgv.get_race_id(), required_race))
     && (cgv_maximum <= CreatureGenerationConstants::CREATURE_GENERATION_UNLIMITED || (cgv.get_current() < cgv_maximum)) // Either no max, or less than the > 0 maximum
     // If a list of preset creature IDs are present, filter out all creature
