@@ -73,19 +73,23 @@ DeityDecisionImplications CompanionDeityDecisionStrategyHandler::handle_decision
     }
 
     CreaturePtr gen_creature = cgm.generate_creature(game.get_action_manager_ref(), generation_list, map);
-    gen_creature->set_leader_and_follow(creature->get_id());
-    set_companion_bonuses(gen_creature);
 
-    HostilityManager hm;
-    hm.set_hostility_to_player(gen_creature, false);
-
-    auto avail_map = MapUtils::get_available_adjacent_tiles_to_creature(map, creature, gen_creature);
-
-    if (!avail_map.empty())
+    if (gen_creature != nullptr)
     {
-      auto pair = avail_map.begin();
-      Coordinate gc = CoordUtils::get_new_coordinate(map->get_location(creature->get_id()), pair->first);
-      GameUtils::add_new_creature_to_map(game, gen_creature, map, gc);
+      gen_creature->set_leader_and_follow(creature->get_id());
+      set_companion_bonuses(gen_creature);
+
+      HostilityManager hm;
+      hm.set_hostility_to_player(gen_creature, false);
+
+      auto avail_map = MapUtils::get_available_adjacent_tiles_to_creature(map, creature, gen_creature);
+
+      if (!avail_map.empty())
+      {
+        auto pair = avail_map.begin();
+        Coordinate gc = CoordUtils::get_new_coordinate(map->get_location(creature->get_id()), pair->first);
+        GameUtils::add_new_creature_to_map(game, gen_creature, map, gc);
+      }
     }
   }
 

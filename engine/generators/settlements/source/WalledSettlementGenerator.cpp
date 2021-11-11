@@ -207,15 +207,18 @@ void WalledSettlementGenerator::generate_guards(MapPtr map, const int north_wall
     }
 
     CreaturePtr creature = cf.create_by_creature_id(am, CreatureID::CREATURE_ID_GUARD, map);
-    GameUtils::add_new_creature_to_map(game, creature, map, c);
 
-    TilePtr tile = map->at(c);
-
-    // Wall guards are always sentries.
-    if (tile && tile->has_creature())
+    if (creature != nullptr)
     {
-      CreaturePtr c = tile->get_creature();
-      c->get_decision_strategy()->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, to_string(true));
+      GameUtils::add_new_creature_to_map(game, creature, map, c);
+      TilePtr tile = map->at(c);
+
+      // Wall guards are always sentries.
+      if (tile && tile->has_creature())
+      {
+        CreaturePtr c = tile->get_creature();
+        c->get_decision_strategy()->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, to_string(true));
+      }
     }
   }
 }

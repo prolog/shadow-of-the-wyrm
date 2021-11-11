@@ -8,6 +8,17 @@ TEST(SW_World_GenerationValues, rarity)
   EXPECT_EQ(Rarity::RARITY_RARE, gv.get_rarity());
 }
 
+TEST(SW_World_GenerationValues, maximum_nomax)
+{
+  GenerationValues gv;
+  gv.set_maximum(-1);
+
+  gv.incr_current();
+  gv.incr_current();
+
+  EXPECT_EQ(2, gv.get_current());
+}
+
 TEST(SW_World_GenerationValues, maximum)
 {
   GenerationValues gv;

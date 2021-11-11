@@ -34,7 +34,7 @@ void GenerationValues::set_current(const int new_current)
 
 int GenerationValues::incr_current()
 {
-  if (current < maximum)
+  if (maximum < 0 || current < maximum)
   {
     ++current;
   }

@@ -129,9 +129,12 @@ bool EnclosureSectorFeature::add_animals(MapPtr map, const Coordinate& st_coord,
 
       CreatureFactory cf;
       CreaturePtr animal = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id, map);
-      hm.clear_hostility(animal);
 
-      GameUtils::add_new_creature_to_map(game, animal, map, c);
+      if (animal != nullptr)
+      {
+        hm.clear_hostility(animal);
+        GameUtils::add_new_creature_to_map(game, animal, map, c);
+      }
     }
 
     generated = true;

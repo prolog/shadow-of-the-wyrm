@@ -39,6 +39,11 @@ Shadow of the Wyrm v1.3.8 "Pisador"
   - Selecting 0 for a stack pickup size would duplicate the item into your
     inventory (RelicWraith).
 
+  - When creatures were randomly placed in dungeons, if the creature couldn't
+    be placed due to eg a wall tile being selected, this would still count
+    against any maximums, with the effect that uniques could be generated,
+    not placed, and then you'd never see them.
+
 Shadow of the Wyrm v1.3.6 "Valderrabano"
 - Version declared July 14, 2021.  Version finalized October 19, 2021.
 

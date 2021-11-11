@@ -142,12 +142,15 @@ bool ParkSectorFeature::generate_feature(MapPtr map, const Coordinate& start_coo
       CreatureFactory cf;
       CreaturePtr vendor = cf.create_by_creature_id(Game::instance().get_action_manager_ref(), CreatureID::CREATURE_ID_VENDOR, map);
 
-      Coordinate vendor_coord = { start_coord.first + 1, start_coord.second + 1 };
-      TilePtr tile = map->at(vendor_coord);
-
-      if (tile && vendor && MapUtils::is_tile_available_for_creature(vendor, tile))
+      if (vendor != nullptr)
       {
-        GameUtils::add_new_creature_to_map(Game::instance(), vendor, map, vendor_coord);
+        Coordinate vendor_coord = { start_coord.first + 1, start_coord.second + 1 };
+        TilePtr tile = map->at(vendor_coord);
+
+        if (tile && vendor && MapUtils::is_tile_available_for_creature(vendor, tile))
+        {
+          GameUtils::add_new_creature_to_map(Game::instance(), vendor, map, vendor_coord);
+        }
       }
     }
   }

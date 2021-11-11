@@ -153,6 +153,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 
     if (generated_creature)
     {
+      auto c_it = cgvm.find(generated_creature->get_original_id());
       Coordinate c = get_coordinate_for_creature(map, generated_creature, coord_range);
 
       // Check to see if the spot is empty, and if a creature can be added there.
@@ -165,7 +166,6 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
         //  If pack creatures are generated, the maximum for the level is
         // adjusted as well.
         int addl_pack_creatures = 0;
-        auto c_it = cgvm.find(generated_creature->get_original_id());
         bool can_generate_pack = false;
 
         if (c_it != cgvm.end())
@@ -186,10 +186,19 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
             TilePtr tile = map->at(adj);
             CreaturePtr pack_creature = cf.create_by_creature_id(am, creature_id, map, generated_creature);
 
-            if (pack_creature != nullptr && MapUtils::is_tile_available_for_creature(pack_creature, tile) && RNG::percent_chance(PACK_TILE_CHANCE))
+            if (pack_creature != nullptr)
             {
-              addl_pack_creatures++;
-              add_creature_to_map(game, pack_creature, map, manager, base_danger_level, adj.first, adj.second, current_creatures_placed, creatures_generated);
+              if (MapUtils::is_tile_available_for_creature(pack_creature, tile) && RNG::percent_chance(PACK_TILE_CHANCE))
+              {
+                addl_pack_creatures++;
+                add_creature_to_map(game, pack_creature, map, manager, base_danger_level, adj.first, adj.second, current_creatures_placed, creatures_generated);
+              }
+              else
+              {
+                // Creature was generated, but we can't place it - decrement
+                // the creature count.
+                c_it->second.decr_current();
+              }
             }
           }
         }
@@ -204,6 +213,9 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
       }
       else
       {
+        // Creature was generated, but we can't place it - decrement
+        // the creature count so that uniques aren't suppressed.
+        c_it->second.decr_current();
         unsuccessful_attempts++;
       }
     }

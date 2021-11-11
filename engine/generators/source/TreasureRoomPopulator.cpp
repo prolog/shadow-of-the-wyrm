@@ -95,8 +95,12 @@ void TreasureRoomPopulator::generate_creatures(MapPtr current_map, const TileTyp
       coords.pop_back();
 
       TilePtr tile = current_map->at(c.first, c.second);
-      CreaturePtr creature = cgm.generate_creature(am, generation_list.get(), current_map);
-      GameUtils::add_new_creature_to_map(game, creature, current_map, c);
+
+      if (tile && !tile->has_creature())
+      {
+        CreaturePtr creature = cgm.generate_creature(am, generation_list.get(), current_map);
+        GameUtils::add_new_creature_to_map(game, creature, current_map, c);
+      }
     }
   }
 }

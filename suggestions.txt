@@ -1,6 +1,5 @@
 Me:
-- When generating creatures, ensure the maximum isn't updated until the 
-  creature is placed!!!
+- Effect messages going first?
 - NPCs run away when missile/spell/wand attacked and can't reach
 - spell arcana (bind to capitals in spell list)
 - sea creatures on sea tiles in other maps
