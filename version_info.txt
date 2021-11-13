@@ -44,6 +44,10 @@ Shadow of the Wyrm v1.3.8 "Pisador"
     against any maximums, with the effect that uniques could be generated,
     not placed, and then you'd never see them.
 
+  - Damage messages could get displayed in an unintuitive ordering - this has
+    been fixed so the damage-related message comes first ("You slash..."),
+    followed by any knockback or status effect related messages.
+
 Shadow of the Wyrm v1.3.6 "Valderrabano"
 - Version declared July 14, 2021.  Version finalized October 19, 2021.
 
