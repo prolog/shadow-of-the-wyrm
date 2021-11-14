@@ -1,5 +1,4 @@
 Me:
-- NPCs run away when missile/spell/wand attacked and can't reach
 - spell arcana (bind to capitals in spell list)
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere
@@ -306,3 +305,6 @@ Brian Jeffears:
 RelicWraith:
 - weapon/armour/fod vendor, yet only accepted tools/boats/food
 - two shopkeepers generated: random generation in villages, carcassia, etc
+
+Echo38:
+- make undead hostile to humanoids

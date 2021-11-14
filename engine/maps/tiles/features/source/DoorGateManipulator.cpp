@@ -6,6 +6,7 @@
 #include "Features.hpp"
 #include "Game.hpp"
 #include "HostilityManager.hpp"
+#include "IntelligenceConstants.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
 #include "StatisticsMarker.hpp"
@@ -17,7 +18,6 @@ const int DoorGateManipulator::PCT_CHANCE_SPRAIN_LEG_BUCKLE = 4;
 const int DoorGateManipulator::PCT_CHANCE_SPRAIN_LEG_UNMOVED = 15;
 const int DoorGateManipulator::SPRAIN_DAMAGE_MIN = 2;
 const int DoorGateManipulator::SPRAIN_DAMAGE_MAX = 10;
-const int DoorGateManipulator::MIN_INTELLIGENCE_OPERATE_DOOR = 2;
 
 DoorGateManipulator::DoorGateManipulator(FeaturePtr feature)
 : FeatureManipulator(feature)
@@ -116,7 +116,7 @@ bool DoorGateManipulator::handle(TilePtr tile, CreaturePtr creature)
 
   if (entr != nullptr && tile != nullptr && creature != nullptr)
   {
-    if (creature->get_intelligence().get_current() < MIN_INTELLIGENCE_OPERATE_DOOR)
+    if (creature->get_intelligence().get_current() < IntelligenceConstants::MIN_INTELLIGENCE_OPEN_DOORS)
     {
       self_mm.add_new_message(StringTable::get(ActionTextKeys::ACTION_OPEN_DOOR_UNINTELLIGENT));
       self_mm.send();

@@ -13,7 +13,7 @@ Shadow of the Wyrm v1.3.8 "Pisador"
 - Islets (tiny islands surrounded by sea in the cardinal directions) are now
   generally uninhabited, and random creature generation on these is restricted
   to the naturally-occurring races: birds, animals, insects, plants, jellies, 
-  dragons...
+  dragons.
 
 - The Rage status now provides immunity to Intimidation.
 
@@ -23,6 +23,9 @@ Shadow of the Wyrm v1.3.8 "Pisador"
   spellbooks are much less likely to be generated (but will still be allowed
   by the item generation algorithm).  Spellbooks are generated as before for
   non-spellcasters.
+
+- When deciding on a random movement direction, intelligent creatures will
+  look to move away from any threats they can't directly reach.
 
 - New name and settlement name combinations.
 
