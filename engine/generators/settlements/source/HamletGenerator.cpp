@@ -128,7 +128,7 @@ void HamletGenerator::generate_core_hamlet_buildings(MapPtr map, const int circl
   vector<ClassIdentifier> cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
   BuildingGenerationParameters bgpn(start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_SOUTH, false, cl_ids, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids), WALL_TILE_TYPE);
 
-  if (SettlementGeneratorUtils::generate_building_if_possible(map, bgpn, buildings, growth_rate))
+  if (SettlementGeneratorUtils::generate_building_if_possible(map, bgpn, buildings, growth_rate, true))
   {
     potentially_generate_vegetable_garden(map, start_row, end_row, start_col, end_col, 50);
   }
@@ -143,7 +143,7 @@ void HamletGenerator::generate_core_hamlet_buildings(MapPtr map, const int circl
   cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
   BuildingGenerationParameters bgps(start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_NORTH, false, cl_ids, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids), WALL_TILE_TYPE);
 
-  if (SettlementGeneratorUtils::generate_building_if_possible(map, bgps, buildings, growth_rate))
+  if (SettlementGeneratorUtils::generate_building_if_possible(map, bgps, buildings, growth_rate, true))
   {
     potentially_generate_vegetable_garden(map, start_row, end_row, start_col, end_col, 50);
   }
@@ -159,7 +159,7 @@ void HamletGenerator::generate_core_hamlet_buildings(MapPtr map, const int circl
   cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
   BuildingGenerationParameters bgpe(start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_WEST, false, cl_ids, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids), WALL_TILE_TYPE);
 
-  if (SettlementGeneratorUtils::generate_building_if_possible(map, bgpe, buildings, growth_rate))
+  if (SettlementGeneratorUtils::generate_building_if_possible(map, bgpe, buildings, growth_rate, true))
   {
     potentially_generate_vegetable_garden(map, start_row, end_row, start_col, end_col, 50);
   }
@@ -174,7 +174,7 @@ void HamletGenerator::generate_core_hamlet_buildings(MapPtr map, const int circl
   cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
   BuildingGenerationParameters bgpw(start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_EAST, false, cl_ids, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids), WALL_TILE_TYPE);
 
-  if (SettlementGeneratorUtils::generate_building_if_possible(map, bgpw, buildings, growth_rate))
+  if (SettlementGeneratorUtils::generate_building_if_possible(map, bgpw, buildings, growth_rate, true))
   {
     potentially_generate_vegetable_garden(map, start_row, end_row, start_col, end_col, 50);
   }

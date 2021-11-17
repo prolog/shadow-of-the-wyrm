@@ -18,7 +18,7 @@ bool ShopSectorFeature::generate_feature(MapPtr map, const Coordinate& start_coo
     ShopGenerator sg;
 
     vector<Building> buildings;
-    bool b_gen = SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, 100);
+    bool b_gen = SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, 100, false);
 
     if (b_gen)
     {

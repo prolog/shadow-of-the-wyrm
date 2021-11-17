@@ -35,7 +35,7 @@ bool BeerHallSectorFeature::generate_feature(MapPtr map, const Coordinate& start
     BuildingGenerationParameters bgp(start_coord.first, end_coord.first, start_coord.second, end_coord.second, door_dir, false, bcf.create_shop_features(), bcf.create_shop_creature_ids(), bcf.create_shop_item_ids());
 
     vector<Building> buildings;
-    generated = SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, 100);
+    generated = SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, 100, false);
 
     interior_start = {start_coord.first+1, start_coord.second+1};
     interior_end = {end_coord.first-1, end_coord.second-1};

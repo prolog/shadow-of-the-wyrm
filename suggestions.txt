@@ -1,4 +1,6 @@
 Me:
+- ShopSectorFeature is generating a shop and then a shop on the shop. What else
+  is calling this fn and needs to be checked?
 - spell arcana (bind to capitals in spell list)
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere
@@ -301,10 +303,6 @@ TheGhostInTheMachine:
 
 Brian Jeffears:
 - black market/something only open at night
-
-RelicWraith:
-- weapon/armour/fod vendor, yet only accepted tools/boats/food
-- two shopkeepers generated: random generation in villages, carcassia, etc
 
 Echo38:
 - make undead hostile to humanoids

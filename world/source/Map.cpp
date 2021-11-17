@@ -762,6 +762,11 @@ map<string, Shop> Map::get_shops() const
   return shops;
 }
 
+bool Map::has_shop(const string& shop_id) const
+{
+  return shops.find(shop_id) != shops.end();
+}
+
 void Map::clear_event_scripts()
 {
   event_scripts.clear();

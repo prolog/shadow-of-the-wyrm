@@ -360,6 +360,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_spellbooks", get_spellbooks);
   lua_register(L, "set_shop_shopkeeper_id", set_shop_shopkeeper_id);
   lua_register(L, "repop_shop", repop_shop);
+  lua_register(L, "repop_shops", repop_shops);
   lua_register(L, "get_num_unpaid_items", get_num_unpaid_items);
   lua_register(L, "get_unpaid_amount", get_unpaid_amount);
   lua_register(L, "set_items_paid", set_items_paid);
@@ -6534,6 +6535,35 @@ int repop_shop(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Incorrect arguments to repop_shop");
+  }
+
+  lua_pushboolean(ls, repopped);
+  return 1;
+}
+
+int repop_shops(lua_State* ls)
+{
+  bool repopped = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args == 0)
+  {
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      const auto& shops = map->get_shops_ref();
+      MapItemGenerator mig;
+
+      for (const auto& s_pair : shops)
+      {
+        repopped = mig.repop_shop(map, s_pair.first);
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to repop_shops");
   }
 
   lua_pushboolean(ls, repopped);

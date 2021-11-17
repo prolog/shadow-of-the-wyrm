@@ -51,6 +51,10 @@ Shadow of the Wyrm v1.3.8 "Pisador"
     been fixed so the damage-related message comes first ("You slash..."),
     followed by any knockback or status effect related messages.
 
+  - Shops could be generated over top of shops, leading to situations where
+    shopkeepers might not accept items of the types displayed in the shop,
+    or where two shopkeepers could be created (RelicWraith).
+
 Shadow of the Wyrm v1.3.6 "Valderrabano"
 - Version declared July 14, 2021.  Version finalized October 19, 2021.
 

@@ -153,7 +153,8 @@ class Map : public ISerializable
     void set_shops(const std::map<std::string, Shop>& new_shops);
     std::map<std::string, Shop>& get_shops_ref();
     std::map<std::string, Shop> get_shops() const;
-    
+    bool has_shop(const std::string& shop_id) const;
+
     void clear_event_scripts();
     void set_event_scripts(const EventScriptsMap& esm);
     EventScriptsMap get_event_scripts() const;

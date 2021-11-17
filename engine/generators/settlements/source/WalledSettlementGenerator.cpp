@@ -319,7 +319,7 @@ void WalledSettlementGenerator::generate_inner_settlement(MapPtr map)
         vector<ClassIdentifier> cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
         BuildingGenerationParameters bgp(row, row_end, col, col_end, dir, false, cl_ids, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids), TileType::TILE_TYPE_ROCK);
 
-        SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
+        SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate, true);
         cur_buildings_generated++;
       }
     }
