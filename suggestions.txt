@@ -211,7 +211,7 @@ aotdev
 happylisk:
 - more diverse artifact effects (HP/AP regen, stat bonuses, etc)
 
-naughtusername: 
+naughtyusername: 
 - Skill descriptions on shift+letter or something
 
 Timo:
@@ -286,7 +286,6 @@ Josh Engdahl
 - don't step out of shadows if creatures don't have you in LOS
 - weird age incrementing issue?
 - make undead hostile to e.g. all humanoids
-- Cancel prompts should clear text: kick, drop, etc
 - nearby guards/priests should get angry when altars are desecrated
 - Rocky earth generator 1n Carcassia
 - Warping out of levels doesn't put you back at the default entry position
