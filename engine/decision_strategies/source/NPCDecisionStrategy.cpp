@@ -903,6 +903,7 @@ vector<pair<string, int>> NPCDecisionStrategy::get_creatures_by_distance(Creatur
 Coordinate NPCDecisionStrategy::select_safest_random_coordinate(CreaturePtr this_cr, const vector<Coordinate>& choice_coordinates)
 {
   pair<Coordinate, int> rc = { CoordUtils::end(), -1 };
+  bool selected = false;
 
   if (this_cr != nullptr && !choice_coordinates.empty())
   {
@@ -910,31 +911,37 @@ Coordinate NPCDecisionStrategy::select_safest_random_coordinate(CreaturePtr this
     {
       DecisionStrategy* dec = this_cr->get_decision_strategy();
       set<string> true_threats = dec->get_threats_ref().get_true_threats_without_level();
-      MapPtr view_map = dec->get_fov_map();
-      vector<pair<string, int>> threat_distances = get_creatures_by_distance(this_cr, view_map, true_threats);
 
-      for (const auto& c : choice_coordinates)
+      if (!true_threats.empty())
       {
-        int total_dist = 0;
+        MapPtr view_map = dec->get_fov_map();
+        vector<pair<string, int>> threat_distances = get_creatures_by_distance(this_cr, view_map, true_threats);
 
-        for (const auto& td : threat_distances)
+        for (const auto& c : choice_coordinates)
         {
-          string creature_id = td.first;
+          int total_dist = 0;
 
-          if (view_map->has_creature(creature_id))
+          for (const auto& td : threat_distances)
           {
-            Coordinate tc = view_map->get_location(creature_id);
-            total_dist += CoordUtils::chebyshev_distance(c, tc);
-          }
-        }
+            string creature_id = td.first;
 
-        if (total_dist > rc.second)
-        {
-          rc = { c, total_dist };
+            if (view_map->has_creature(creature_id))
+            {
+              Coordinate tc = view_map->get_location(creature_id);
+              total_dist += CoordUtils::chebyshev_distance(c, tc);
+              selected = true;
+            }
+          }
+
+          if (total_dist > rc.second)
+          {
+            rc = { c, total_dist };
+          }
         }
       }
     }
-    else
+
+    if (!selected)
     {
       return choice_coordinates[RNG::range(0, choice_coordinates.size() - 1)];
     }

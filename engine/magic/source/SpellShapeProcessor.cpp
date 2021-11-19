@@ -155,7 +155,7 @@ bool SpellShapeProcessor::apply_effect(Effect* effect, CreaturePtr caster, const
   // Something went wrong; anyway, the spell can't be identified in this case.
   return false;
 }
-
+ 
 bool SpellShapeProcessor::is_coordinate_adjacent_to_coordinate_in_previous_frame(const Coordinate& c, const vector<Coordinate>& prev_frame)
 {
   for (const Coordinate& prev_frame_coord : prev_frame)
