@@ -127,6 +127,8 @@ class MapUtils
     static Coordinate get_random_coastline_coordinate(MapPtr map);
     static void set_coastline_generator_dirs(SOTW::Generator* generator, const std::vector<Direction>& coastline_dirs);
 
+    static void update_creatures(MapPtr map);
+
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
     static bool is_tile_contained_in_an_existing_component(const Coordinate&, const MapComponents& components);

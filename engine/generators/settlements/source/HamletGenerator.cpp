@@ -42,7 +42,14 @@ void HamletGenerator::initialize_constants()
 // Generate the farming hamlet.
 MapPtr HamletGenerator::generate(const Dimensions& dim)
 {
-  return generate();
+  MapPtr map = generate();
+
+  if (map != nullptr)
+  {
+    map->set_allow_creature_updates(false);
+  }
+
+  return map;
 }
 
 MapPtr HamletGenerator::generate()

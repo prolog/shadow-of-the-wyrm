@@ -434,6 +434,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_chat_script", set_chat_script);
   lua_register(L, "count_creatures_with_race", count_creatures_with_race);
   lua_register(L, "get_time_of_day", get_time_of_day);
+  lua_register(L, "update_creatures", update_creatures);
 }
 
 // Lua API helper functions
@@ -9016,4 +9017,12 @@ int get_time_of_day(lua_State* ls)
 
   lua_pushinteger(ls, tod);
   return 1;
+}
+
+int update_creatures(lua_State* ls)
+{
+  MapPtr map = Game::instance().get_current_map();
+  MapUtils::update_creatures(map);
+
+  return 0;
 }

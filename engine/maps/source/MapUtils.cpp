@@ -3,6 +3,7 @@
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "CreatureFactory.hpp"
+#include "CreatureGenerationConstants.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
@@ -14,6 +15,7 @@
 #include "ItemProperties.hpp"
 #include "LineOfSightCalculator.hpp"
 #include "Log.hpp"
+#include "MapCreatureGenerator.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
@@ -2271,6 +2273,27 @@ void MapUtils::set_coastline_generator_dirs(SOTW::Generator* generator, const ve
       {
         generator->set_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST, std::to_string(true));
       }
+    }
+  }
+}
+
+void MapUtils::update_creatures(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    uint num_creatures = map->get_creatures().size();
+    uint num_following = MapUtils::get_num_following_creatures(map);
+    uint num_nonfollow = num_creatures - num_following;
+
+    // Check to see if it can be updated with creatures
+    if (map != nullptr && map->get_allow_creature_updates() && (num_nonfollow < CreatureGenerationConstants::MIN_CREATURES_FOR_MAP_UPDATE))
+    {
+      // The map can be updated.
+      // Create the appropriate generator and call the update function.
+      MapCreatureGenerator mcg;
+
+      std::map<string, string> props;
+      mcg.generate_random_creatures(map, map->get_danger(), props);
     }
   }
 }

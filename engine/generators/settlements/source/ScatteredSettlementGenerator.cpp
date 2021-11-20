@@ -27,7 +27,14 @@ void ScatteredSettlementGenerator::initialize()
 // Generate the scattered settlement
 MapPtr ScatteredSettlementGenerator::generate(const Dimensions& dim)
 {
-  return generate();
+  MapPtr map = generate();
+
+  if (map != nullptr)
+  {
+    map->set_allow_creature_updates(false);
+  }
+
+  return map;
 }
 
 MapPtr ScatteredSettlementGenerator::generate()

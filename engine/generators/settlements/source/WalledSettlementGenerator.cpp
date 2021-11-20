@@ -59,7 +59,14 @@ void WalledSettlementGenerator::initialize()
 
 MapPtr WalledSettlementGenerator::generate(const Dimensions& dim)
 {
-  return generate();
+  MapPtr map = generate();
+
+  if (map != nullptr)
+  {
+    map->set_allow_creature_updates(false);
+  }
+
+  return map;
 }
 
 MapPtr WalledSettlementGenerator::generate()

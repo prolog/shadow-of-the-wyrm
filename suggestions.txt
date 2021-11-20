@@ -1,6 +1,11 @@
 Me:
-- ShopSectorFeature is generating a shop and then a shop on the shop. What else
-  is calling this fn and needs to be checked?
+- town repop race issue
+  - set a flag in the settlement generators to set a property on the map.
+  - when the property is set, set a vector<string> of creature ids as a
+    property on the map
+  - When running MapCreatureGenerator, check the map for that property.
+    If present, generate them all.
+  - Minus uniques, this will basically regenerate a village each time
 - spell arcana (bind to capitals in spell list)
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere
@@ -53,8 +58,6 @@ Me:
   - Caverns
   - Sewers
   - Mines
-  - fenced area with gate: pigs, chickens
-  - tavern with low-level adventuring party
 - Each version: make sure to update itch.io page for both SotW and the sprite
   pack! OpenGameArt if new sprites.
 - Release after this: grond says tanning is complicated & dragon skins aren't
@@ -120,7 +123,6 @@ Me:
   up/down stairs.
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
-- SDL: full screen
 - Cancellation effect type
 - Special rooms: magical workshop, armory.
 - More shops in set locations.
@@ -244,7 +246,6 @@ Grond:
 - Switching with townsfolk (in churches?) leads to weird behaviour
 - Adjacent creatures attack on load
 - Differentiate scribing and wandcraft - why use scribing?
-- Scything on ammo?
 - could magic skill affect spell duration
 - monster as a mount
 - "some ivory pieces shimmers in a radiant light"
