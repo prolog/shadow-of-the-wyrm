@@ -30,6 +30,7 @@ Skill& Skill::operator=(const Skill& skill)
     this->threshold = skill.threshold;
     this->skill_name_sid = skill.skill_name_sid;
     this->skill_increment_message_sid = skill.skill_increment_message_sid;
+    this->skill_description_sid = skill.skill_description_sid;
   }
 
   return *this;
@@ -45,6 +46,7 @@ bool Skill::operator==(const Skill& skill) const
   result = result && (threshold == skill.threshold);
   result = result && (skill_name_sid == skill.skill_name_sid);
   result = result && (skill_increment_message_sid == skill.skill_increment_message_sid);
+  result = result && (skill_description_sid == skill.skill_description_sid);
   result = result && (internal_class_identifier() == skill.internal_class_identifier());
 
   return result;
@@ -154,6 +156,16 @@ string Skill::get_skill_increment_message_sid() const
   return skill_increment_message_sid;
 }
 
+void Skill::set_skill_description_sid(const string& new_skill_description_sid)
+{
+  skill_description_sid = new_skill_description_sid;
+}
+
+string Skill::get_skill_description_sid() const
+{
+  return skill_description_sid;
+}
+
 // Shouldn't be used in-game - this is just a function for outputting the entire skill as a string.
 string Skill::str() const
 {
@@ -171,6 +183,7 @@ bool Skill::serialize(ostream& stream) const
   Serialize::write_enum(stream, category);
   Serialize::write_string(stream, skill_name_sid);
   Serialize::write_string(stream, skill_increment_message_sid);
+  Serialize::write_string(stream, skill_description_sid);
   marks.serialize(stream);
 
   return true;
@@ -183,6 +196,7 @@ bool Skill::deserialize(istream& stream)
   Serialize::read_enum(stream, category);
   Serialize::read_string(stream, skill_name_sid);
   Serialize::read_string(stream, skill_increment_message_sid);
+  Serialize::read_string(stream, skill_description_sid);
   marks.deserialize(stream);
 
   return true;
@@ -375,6 +389,7 @@ CantripsSkill::CantripsSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_CANTRIPS;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_CANTRIPS_INCREMENT;
+  skill_description_sid = SkillTextKeys::SKILL_GENERAL_CANTRIPS_DETAILS;
 }
 
 Skill* CantripsSkill::clone()
@@ -1348,6 +1363,7 @@ ThrownAxesSkill::ThrownAxesSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_AXES;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_AXES_INCREMENT;
+  skill_description_sid = SkillTextKeys::SKILL_RANGED_AXES_DETAILS;
 }
 
 Skill* ThrownAxesSkill::clone()
@@ -1366,6 +1382,7 @@ ThrownBladesSkill::ThrownBladesSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_BLADES;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_BLADES_INCREMENT;
+  skill_description_sid = SkillTextKeys::SKILL_RANGED_BLADES_DETAILS;
 }
 
 Skill* ThrownBladesSkill::clone()
@@ -1384,6 +1401,7 @@ ThrownBludgeonsSkill::ThrownBludgeonsSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_BLUDGEONS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_BLUDGEONS_INCREMENT;
+  skill_description_sid = SkillTextKeys::SKILL_RANGED_BLUDGEONS_DETAILS;
 }
 
 Skill* ThrownBludgeonsSkill::clone()
@@ -1402,6 +1420,7 @@ BowsSkill::BowsSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_BOWS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_BOWS_INCREMENT;
+  skill_description_sid = SkillTextKeys::SKILL_RANGED_BOWS_DETAILS;
 }
 
 Skill* BowsSkill::clone()
@@ -1420,6 +1439,7 @@ CrossbowsSkill::CrossbowsSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_CROSSBOWS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_CROSSBOWS_INCREMENT;
+  skill_description_sid = SkillTextKeys::SKILL_RANGED_CROSSBOWS_DETAILS;
 }
 
 Skill* CrossbowsSkill::clone()
@@ -1438,6 +1458,7 @@ ThrownDaggersSkill::ThrownDaggersSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_DAGGERS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_DAGGERS_INCREMENT;
+  skill_description_sid = SkillTextKeys::SKILL_RANGED_DAGGERS_DETAILS;
 }
 
 Skill* ThrownDaggersSkill::clone()
@@ -1456,6 +1477,7 @@ RocksSkill::RocksSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_ROCKS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_ROCKS_INCREMENT;
+  skill_description_sid = SkillTextKeys::SKILL_RANGED_ROCKS_DETAILS;
 }
 
 Skill* RocksSkill::clone()
@@ -1474,6 +1496,7 @@ SlingsSkill::SlingsSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_SLINGS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_SLINGS_INCREMENT;
+  skill_description_sid = SkillTextKeys::SKILL_RANGED_SLINGS_DETAILS;
 }
 
 Skill* SlingsSkill::clone()
@@ -1492,6 +1515,7 @@ ThrownSpearsSkill::ThrownSpearsSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_SPEARS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_SPEARS_INCREMENT;
+  skill_description_sid = SkillTextKeys::SKILL_RANGED_SPEARS_DETAILS;
 }
 
 Skill* ThrownSpearsSkill::clone()
@@ -1510,6 +1534,7 @@ ExoticRangedSkill::ExoticRangedSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_EXOTIC;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_EXOTIC_INCREMENT;
+  skill_description_sid = SkillTextKeys::SKILL_RANGED_EXOTIC_DETAILS;
 }
 
 float ExoticRangedSkill::get_threshold_multiplier() const
@@ -1535,6 +1560,7 @@ ArcaneMagicSkill::ArcaneMagicSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MAGIC_ARCANE;
   skill_increment_message_sid = SkillTextKeys::SKILL_MAGIC_ARCANE_INCREMENT;
+  skill_description_sid = SkillTextKeys::SKILL_MAGIC_ARCANE_DETAILS;
 }
 
 Skill* ArcaneMagicSkill::clone()
@@ -1553,6 +1579,7 @@ DivineMagicSkill::DivineMagicSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MAGIC_DIVINE;
   skill_increment_message_sid = SkillTextKeys::SKILL_MAGIC_DIVINE_INCREMENT;
+  skill_description_sid = SkillTextKeys::SKILL_MAGIC_DIVINE_DETAILS;
 }
 
 Skill* DivineMagicSkill::clone()
@@ -1571,6 +1598,7 @@ MysticMagicSkill::MysticMagicSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MAGIC_MYSTIC;
   skill_increment_message_sid = SkillTextKeys::SKILL_MAGIC_MYSTIC_INCREMENT;
+  skill_description_sid = SkillTextKeys::SKILL_MAGIC_MYSTIC_DETAILS;
 }
 
 Skill* MysticMagicSkill::clone()
@@ -1589,6 +1617,7 @@ PrimordialMagicSkill::PrimordialMagicSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MAGIC_PRIMORDIAL;
   skill_increment_message_sid = SkillTextKeys::SKILL_MAGIC_PRIMORDIAL_INCREMENT;
+  skill_description_sid = SkillTextKeys::SKILL_MAGIC_PRIMORDIAL_DETAILS;
 }
 
 Skill* PrimordialMagicSkill::clone()

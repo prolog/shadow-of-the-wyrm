@@ -1,12 +1,17 @@
 Me:
-- town repop race issue
-  - set a flag in the settlement generators to set a property on the map.
-  - when the property is set, set a vector<string> of creature ids as a
-    property on the map
-  - When running MapCreatureGenerator, check the map for that property.
-    If present, generate them all.
-  - Minus uniques, this will basically regenerate a village each time
-- spell arcana (bind to capitals in spell list)
+- skill details
+- spell arcana
+- 100 in each melee weapon: should do something.
+  - Spears, Whips, rods: +1 range
+  - Exotic, Bludgeons: +20 effect bonus
+  - Daggers: sneak attack bonus
+  - Short, long blades: chance to get piercing flag
+  - Axes: chance to get vorpal
+  - Unarmed: chance to mess with NPC's action?
+  - Add to docs
+- 100 in each ranged weapon:
+  - + lvl/2 damage
+  - add to docs
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere
 - More dungeon item features:
@@ -31,6 +36,13 @@ Me:
   - Deliver to Atua-Elar
   - Stage 1 of the uprising
 - Make taverns more distinctive
+- town repop race issue
+  - set a flag in the settlement generators to set a property on the map.
+  - when the property is set, set a vector<string> of creature ids as a
+    property on the map
+  - When running MapCreatureGenerator, check the map for that property.
+    If present, generate them all.
+  - Minus uniques, this will basically regenerate a village each time
 - Do a couple of quests that require a party
   - Isen Dun (Hrimgar): envoy to Forest of Yew (PoGA)
 - Test by generating these in Carcassia, Gnordvar

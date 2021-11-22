@@ -45,6 +45,9 @@ class Skill : public ISerializable
     virtual void set_skill_increment_message_sid(const std::string& new_skill_increment_message_sid);
     virtual std::string get_skill_increment_message_sid() const;
 
+    virtual void set_skill_description_sid(const std::string& new_skill_description_sid);
+    virtual std::string get_skill_description_sid() const;
+
     std::string str() const;
 
     virtual bool serialize(std::ostream& stream) const override;
@@ -59,6 +62,7 @@ class Skill : public ISerializable
     SkillCategory category;
     std::string skill_name_sid;
     std::string skill_increment_message_sid;
+    std::string skill_description_sid;
 
   private:
     ClassIdentifier internal_class_identifier() const = 0;

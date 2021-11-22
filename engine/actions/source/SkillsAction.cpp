@@ -7,6 +7,7 @@
 #include "SkillsCommandProcessorFactory.hpp"
 #include "SkillsKeyboardCommandMap.hpp"
 #include "SkillsScreen.hpp"
+#include "TextDisplayFormatter.hpp"
 #include "TextDisplayScreen.hpp"
 
 using namespace std;
@@ -131,7 +132,14 @@ ActionCostValue SkillsAction::describe_skill(CreaturePtr creature, const SkillTy
       skill_text.push_back(make_pair(Colour::COLOUR_WHITE, skill_name));
       skill_text.push_back(make_pair(Colour::COLOUR_BLACK, separator));
 
-      // ...
+      TextDisplayFormatter tdf;
+      string skill_details = StringTable::get(skill->get_skill_description_sid());
+      vector<string> sktext = tdf.format_text(skill_details);
+
+      for (const string& line_of_text : sktext)
+      {
+        skill_text.push_back(make_pair(Colour::COLOUR_WHITE, line_of_text));
+      }
 
       TextDisplayScreen tds(game.get_display(), ScreenTitleTextKeys::SCREEN_TITLE_SKILL_DETAILS, skill_text, true, {});
       tds.display();

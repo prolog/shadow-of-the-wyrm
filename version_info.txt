@@ -55,6 +55,8 @@ Shadow of the Wyrm v1.3.8 "Pisador"
     shopkeepers might not accept items of the types displayed in the shop,
     or where two shopkeepers could be created (RelicWraith).
 
+  - The Arcane skill increment message wasn't working properly.
+
 Shadow of the Wyrm v1.3.6 "Valderrabano"
 - Version declared July 14, 2021.  Version finalized October 19, 2021.
 

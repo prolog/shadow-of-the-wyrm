@@ -29,6 +29,7 @@ class SkillTextKeys
     static const std::string SKILL_GENERAL_BREWING_INCREMENT;
     static const std::string SKILL_GENERAL_CANTRIPS;
     static const std::string SKILL_GENERAL_CANTRIPS_INCREMENT;
+    static const std::string SKILL_GENERAL_CANTRIPS_DETAILS;
     static const std::string SKILL_GENERAL_CARRYING;
     static const std::string SKILL_GENERAL_CARRYING_INCREMENT;
     static const std::string SKILL_GENERAL_COMBAT;
@@ -143,36 +144,50 @@ class SkillTextKeys
     static const std::string SKILLS_IMPROVE_RANGED_WEAPON;
     static const std::string SKILL_RANGED_AXES;
     static const std::string SKILL_RANGED_AXES_INCREMENT;
+    static const std::string SKILL_RANGED_AXES_DETAILS;
     static const std::string SKILL_RANGED_BLADES;
     static const std::string SKILL_RANGED_BLADES_INCREMENT;
+    static const std::string SKILL_RANGED_BLADES_DETAILS;
     static const std::string SKILL_RANGED_BLUDGEONS;
     static const std::string SKILL_RANGED_BLUDGEONS_INCREMENT;
+    static const std::string SKILL_RANGED_BLUDGEONS_DETAILS;
     static const std::string SKILL_RANGED_BOWS;
     static const std::string SKILL_RANGED_BOWS_INCREMENT;
+    static const std::string SKILL_RANGED_BOWS_DETAILS;
     static const std::string SKILL_RANGED_CROSSBOWS;
     static const std::string SKILL_RANGED_CROSSBOWS_INCREMENT;
+    static const std::string SKILL_RANGED_CROSSBOWS_DETAILS;
     static const std::string SKILL_RANGED_DAGGERS;
     static const std::string SKILL_RANGED_DAGGERS_INCREMENT;
+    static const std::string SKILL_RANGED_DAGGERS_DETAILS;
     static const std::string SKILL_RANGED_ROCKS;
     static const std::string SKILL_RANGED_ROCKS_INCREMENT;
+    static const std::string SKILL_RANGED_ROCKS_DETAILS;
     static const std::string SKILL_RANGED_SLINGS;
     static const std::string SKILL_RANGED_SLINGS_INCREMENT;
+    static const std::string SKILL_RANGED_SLINGS_DETAILS;
     static const std::string SKILL_RANGED_SPEARS;
     static const std::string SKILL_RANGED_SPEARS_INCREMENT;
+    static const std::string SKILL_RANGED_SPEARS_DETAILS;
     static const std::string SKILL_RANGED_EXOTIC;
     static const std::string SKILL_RANGED_EXOTIC_INCREMENT;
+    static const std::string SKILL_RANGED_EXOTIC_DETAILS;
 
     // Magic
     static const std::string SKILLS_MAGIC;
     static const std::string SKILLS_IMPROVE_MAGIC;
     static const std::string SKILL_MAGIC_ARCANE;
     static const std::string SKILL_MAGIC_ARCANE_INCREMENT;
+    static const std::string SKILL_MAGIC_ARCANE_DETAILS;
     static const std::string SKILL_MAGIC_DIVINE;
     static const std::string SKILL_MAGIC_DIVINE_INCREMENT;
+    static const std::string SKILL_MAGIC_DIVINE_DETAILS;
     static const std::string SKILL_MAGIC_MYSTIC;
     static const std::string SKILL_MAGIC_MYSTIC_INCREMENT;
+    static const std::string SKILL_MAGIC_MYSTIC_DETAILS;
     static const std::string SKILL_MAGIC_PRIMORDIAL;
     static const std::string SKILL_MAGIC_PRIMORDIAL_INCREMENT;
+    static const std::string SKILL_MAGIC_PRIMORDIAL_DETAILS;
 
     // Skill usage - categories
     static const std::string SKILL_USAGE_WEAPON;
