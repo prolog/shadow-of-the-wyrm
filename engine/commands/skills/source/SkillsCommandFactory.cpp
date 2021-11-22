@@ -35,10 +35,11 @@ CommandPtr SkillsCommandFactory::create(const int key, const std::string& comman
   }
   else if (command_name == SkillsCommandKeys::SELECT_SKILL)
   {
-    if (!skill_selection_require_capitalization || isupper(key))
-    {
-      command = std::make_unique<SelectSkillCommand>(key);
-    }
+    command = std::make_unique<SelectSkillCommand>(key);
+  }
+  else if (command_name == SkillsCommandKeys::SKILL_DESCRIPTION)
+  {
+    command = std::make_unique<DescribeSkillCommand>(key);
   }
   else if (command_name == SkillsCommandKeys::EXIT_SKILLS)
   {

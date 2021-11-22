@@ -2,6 +2,8 @@
 
 #include "Conversion.hpp"
 #include "CursesConstants.hpp"
+#include "Game.hpp"
+#include "Setting.hpp"
 #include "SkillsCommandKeys.hpp"
 #include "SkillsKeyboardCommandMap.hpp"
 
@@ -40,10 +42,20 @@ void SkillsKeyboardCommandMap::initialize_command_mapping(const Settings& settin
   { std::to_string(NC_ESCAPE_KEY), SkillsCommandKeys::EXIT_SKILLS },
   { esc_key, SkillsCommandKeys::EXIT_SKILLS } };
 
+  bool req_caps = Game::instance().get_settings_ref().get_setting_as_bool(Setting::SKILL_SELECTION_REQUIRE_CAPITALIZATION);
+
   for (char i = 'a'; i <= 'y'; i++)
   {
-    command_mapping.insert(make_pair(std::to_string(i), SkillsCommandKeys::SELECT_SKILL));
-    command_mapping.insert(make_pair(std::to_string(toupper(i)), SkillsCommandKeys::SELECT_SKILL));
+    if (req_caps)
+    {
+      command_mapping.insert(make_pair(std::to_string(toupper(i)), SkillsCommandKeys::SELECT_SKILL));
+      command_mapping.insert(make_pair(std::to_string(i), SkillsCommandKeys::SKILL_DESCRIPTION));
+    }
+    else
+    {
+      command_mapping.insert(make_pair(std::to_string(i), SkillsCommandKeys::SELECT_SKILL));
+      command_mapping.insert(make_pair(std::to_string(toupper(i)), SkillsCommandKeys::SKILL_DESCRIPTION));
+    }
   }
 }
 

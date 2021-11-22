@@ -60,6 +60,10 @@ ActionCostValue ShowSkillsCommandProcessor::process(CreaturePtr creature, Comman
         }
       }
     }
+    else if (command_name == SkillsCommandKeys::SKILL_DESCRIPTION)
+    {
+      return sa.describe_skill(creature, st);
+    }
     else if (command_name == SkillsCommandKeys::EXIT_SKILLS)
     {
       process_result = -1;
