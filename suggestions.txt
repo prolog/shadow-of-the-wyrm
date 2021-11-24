@@ -1,6 +1,7 @@
 Me:
 - skill details
 - spell arcana
+- after Godslayer, divine spells gone/Divine skill 0
 - 100 in each melee weapon: should do something.
   - Spears, Whips, rods: +1 range
   - Exotic, Bludgeons: +20 effect bonus
