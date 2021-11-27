@@ -2,8 +2,10 @@ Me:
 - skill details
 - spell arcana
 - after Godslayer, divine spells gone/Divine skill 0
+- Wizard staff: +50 AP
 - 100 in each melee weapon: should do something.
   - Spears, Whips, rods: +1 range
+  - whips: chance to wrap
   - Exotic, Bludgeons: +20 effect bonus
   - Daggers: sneak attack bonus
   - Short, long blades: chance to get piercing flag
