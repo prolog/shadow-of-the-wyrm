@@ -1,4 +1,5 @@
 Me:
+- Escape should give +1 Ev/5 sk
 - skill details
 - spell arcana
 - after Godslayer, divine spells gone/Divine skill 0

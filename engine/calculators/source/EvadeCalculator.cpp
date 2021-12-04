@@ -5,6 +5,8 @@
 
 using namespace std;
 
+const int EvadeCalculator::ESCAPE_SKILL_DIVISOR = 5;
+
 EvadeCalculator::EvadeCalculator()
 {
 }
@@ -34,6 +36,7 @@ int EvadeCalculator::calculate_evade(const CreaturePtr& c)
     evade += get_modifier_bonus(c);
     evade += get_skill_bonus(c);
     evade += get_hide_bonus(c);
+    evade += get_escape_bonus(c);
     evade -= get_rage_penalty(c);
     evade += agility_bonus;
   }
@@ -129,6 +132,18 @@ int EvadeCalculator::get_hide_bonus(const CreaturePtr& c)
   }
 
   return hide_bonus;
+}
+
+int EvadeCalculator::get_escape_bonus(const CreaturePtr& c)
+{
+  int escape_bonus = 0;
+
+  if (c != nullptr)
+  {
+    escape_bonus = c->get_skills().get_value(SkillType::SKILL_GENERAL_ESCAPE) / ESCAPE_SKILL_DIVISOR;
+  }
+
+  return escape_bonus;
 }
 
 int EvadeCalculator::get_rage_penalty(const CreaturePtr& c)
