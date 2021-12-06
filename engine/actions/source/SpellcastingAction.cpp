@@ -10,6 +10,7 @@
 #include "MagicalAbilityChecker.hpp"
 #include "MagicCommandFactory.hpp"
 #include "MagicCommandProcessor.hpp"
+#include "MagicCommands.hpp"
 #include "MagicKeyboardCommandMap.hpp"
 #include "MagicCommandKeys.hpp"
 #include "MessageManagerFactory.hpp"
@@ -463,6 +464,13 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
     // input has been provided (don't try to get the input twice).
     CommandPtr magic_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), &input, false);
 
+    if (magic_command->get_name() == MagicCommandKeys::ARCANA)
+    {
+      screen_selection = std::tolower(screen_selection);
+      string arcana_id = sss.get_selected_spell(screen_selection);
+      magic_command->set_custom_value(ArcanaCommand::ARCANA_ID, arcana_id);
+    }
+
     action_cost_value = MagicCommandProcessor::process(creature, magic_command.get());
 
     if (action_cost_value > 0 && !spell_id.empty())
@@ -481,4 +489,21 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
 
   pair<bool, pair<string, ActionCostValue>> selection_and_cost(cast_spells, make_pair(spell_id, action_cost_value));
   return selection_and_cost;
+}
+
+ActionCostValue SpellcastingAction::describe_spell(const string& spell_id)
+{
+  if (!spell_id.empty())
+  {
+    const SpellMap& spells = Game::instance().get_spells_ref();
+    auto s_it = spells.find(spell_id);
+
+    if (s_it != spells.end())
+    {
+      int x = 1;
+      // ...
+    }
+  }
+
+  return ActionCostConstants::NO_ACTION;
 }

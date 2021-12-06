@@ -21,6 +21,8 @@ class ArcanaCommand : public SpellCommand
 {
   public:
     ArcanaCommand(const int spell_idx, const int key);
+
+    static const std::string ARCANA_ID;
 };
 
 class NextPageMagicCommand : public Command
