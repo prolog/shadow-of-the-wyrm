@@ -522,9 +522,16 @@ ActionCostValue SpellcastingAction::describe_spell(const string& spell_id)
       arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::RADIUS) + ": " + std::to_string(ss.get_radius())));
       arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::AP_COST) + ": " + std::to_string(spell.get_ap_cost())));
 
-      TextDisplayFormatter tdf;
+      arcana_text.push_back(make_pair(Colour::COLOUR_BLACK, separator));
 
-      // JCD TODO add: school, category, range, AP cost, details
+      TextDisplayFormatter tdf;
+      string description = StringTable::get(spell.get_spell_description_sid());
+      vector<string> artext = tdf.format_text(description);
+
+      for (const string& line_of_text : artext)
+      {
+        arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, line_of_text));
+      }
 
       TextDisplayScreen tds(game.get_display(), ScreenTitleTextKeys::SCREEN_TITLE_SPELL_DETAILS, arcana_text, true, {});
       tds.display();

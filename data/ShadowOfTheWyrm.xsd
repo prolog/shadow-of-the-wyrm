@@ -66,6 +66,7 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="NameSID" type="xs:string"/>
+			<xs:element name="DescriptionSID" type="xs:string"/>
 			<xs:element name="PlayerCastMessageSID" type="xs:string"/>
 			<xs:element name="MonsterCastMessageSID" type="xs:string"/>
 			<xs:element name="MagicCategory" type="tns:MagicSkillType"/>
