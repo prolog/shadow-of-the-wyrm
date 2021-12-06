@@ -1,4 +1,5 @@
 #include "ActionTextKeys.hpp"
+#include "ArcanaTextKeys.hpp"
 #include "Commands.hpp"
 #include "Conversion.hpp"
 #include "CreatureDescriber.hpp"
@@ -15,6 +16,7 @@
 #include "MagicCommandKeys.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
+#include "ScreenTitleTextKeys.hpp"
 #include "SkillManager.hpp"
 #include "SpellBonusUpdater.hpp"
 #include "SpellcastingTextKeys.hpp"
@@ -23,6 +25,8 @@
 #include "SpellShapeProcessorFactory.hpp"
 #include "StatisticsMarker.hpp"
 #include "StringTable.hpp"
+#include "TextDisplayFormatter.hpp"
+#include "TextDisplayScreen.hpp"
 
 using namespace std;
 
@@ -500,8 +504,30 @@ ActionCostValue SpellcastingAction::describe_spell(const string& spell_id)
 
     if (s_it != spells.end())
     {
-      int x = 1;
-      // ...
+      const Spell& spell = s_it->second;
+      Game& game = Game::instance();
+      vector<pair<Colour, string>> arcana_text;
+      uint width = Game::instance().get_display()->get_width();
+      string separator;
+
+      string spell_name = String::centre(StringTable::get(spell.get_spell_name_sid()), width);
+      arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, spell_name));
+      arcana_text.push_back(make_pair(Colour::COLOUR_BLACK, separator));
+      SpellShape ss = spell.get_shape();
+
+      arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::TYPE) + ": " + StringTable::get(ArcanaTextKeys::get_type_sid(spell.get_magic_category()))));
+      arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::CLASSIFICATION) + ": " + StringTable::get(ArcanaTextKeys::get_classification_sid(spell.get_magic_classification()))));
+      arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::SHAPE) + ": " + StringTable::get(ArcanaTextKeys::get_shape_sid(ss.get_spell_shape_type()))));
+      arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::RANGE) + ": " + std::to_string(spell.get_range())));
+      arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::RADIUS) + ": " + std::to_string(ss.get_radius())));
+      arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::AP_COST) + ": " + std::to_string(spell.get_ap_cost())));
+
+      TextDisplayFormatter tdf;
+
+      // JCD TODO add: school, category, range, AP cost, details
+
+      TextDisplayScreen tds(game.get_display(), ScreenTitleTextKeys::SCREEN_TITLE_SPELL_DETAILS, arcana_text, true, {});
+      tds.display();
     }
   }
 

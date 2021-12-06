@@ -1047,6 +1047,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\skills\include\WandcraftSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\WandCreationParameters.hpp" />
     <ClInclude Include="engine\strings\include\ActionTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\ArcanaTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ColourTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\CombatTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ConductTextKeys.hpp" />
@@ -2188,6 +2189,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\strings\source\ArcanaTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\DeathSourceTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\InscriptionTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MembershipTextKeys.cpp" />
