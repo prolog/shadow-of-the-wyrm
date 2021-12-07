@@ -6479,6 +6479,7 @@
 		</Spell>				
 		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
+			<DescriptionSID>SHADOW_FLAME_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>SHADOW_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>SHADOW_FLAME_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
@@ -6497,6 +6498,7 @@
 		</Spell>
 		<Spell id="p_02_curse_of_shadows">
 			<NameSID>CURSE_OF_SHADOWS_NAME_SID</NameSID>
+			<DescriptionSID>CURSE_OF_SHADOWS_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>CURSE_OF_SHADOWS_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>CURSE_OF_SHADOWS_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
@@ -6520,6 +6522,7 @@
 		</Spell>
 		<Spell id="p_03_cloak_of_shadows">
 			<NameSID>CLOAK_OF_SHADOWS_NAME_SID</NameSID>
+			<DescriptionSID>CLOAK_OF_SHADOWS_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>CLOAK_OF_SHADOWS_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>CLOAK_OF_SHADOWS_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
@@ -6551,6 +6554,7 @@
 		</Spell>
 		<Spell id="p_04_nether_bolt">
 			<NameSID>NETHER_BOLT_NAME_SID</NameSID>
+			<DescriptionSID>NETHER_BOLT_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>NETHER_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>NETHER_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
@@ -6570,6 +6574,7 @@
 		</Spell>
 		<Spell id="p_05_chaos_aura">
 			<NameSID>CHAOS_AURA_NAME_SID</NameSID>
+			<DescriptionSID>CHAOS_AURA_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>CHAOS_AURA_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>CHAOS_AURA_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
@@ -6589,6 +6594,7 @@
 		</Spell>
 		<Spell id="p_06_nightfire">
 			<NameSID>NIGHTFIRE_NAME_SID</NameSID>
+			<DescriptionSID>NIGHTFIRE_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>NIGHTFIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>NIGHTFIRE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
