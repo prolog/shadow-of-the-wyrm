@@ -468,7 +468,7 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
     // input has been provided (don't try to get the input twice).
     CommandPtr magic_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), &input, false);
 
-    if (magic_command->get_name() == MagicCommandKeys::ARCANA)
+    if (magic_command && magic_command->get_name() == MagicCommandKeys::ARCANA)
     {
       screen_selection = std::tolower(screen_selection);
       string arcana_id = sss.get_selected_spell(screen_selection);
@@ -521,6 +521,12 @@ ActionCostValue SpellcastingAction::describe_spell(const string& spell_id)
       arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::RANGE) + ": " + std::to_string(spell.get_range())));
       arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::RADIUS) + ": " + std::to_string(ss.get_radius())));
       arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::AP_COST) + ": " + std::to_string(spell.get_ap_cost())));
+
+      bool has_damage = spell.get_has_damage();
+      if (has_damage)
+      {
+        arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::DAMAGE) + ": " + spell.get_damage().str()));
+      }
 
       arcana_text.push_back(make_pair(Colour::COLOUR_BLACK, separator));
 

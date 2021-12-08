@@ -18,6 +18,7 @@ const string ArcanaTextKeys::AP_COST = "AP_COST";
 const string ArcanaTextKeys::SHAPE = "SHAPE";
 const string ArcanaTextKeys::RADIUS = "RADIUS";
 const string ArcanaTextKeys::RANGE = "RANGE";
+const string ArcanaTextKeys::DAMAGE = "DAMAGE";
 
 const string ArcanaTextKeys::ATTACK = "ATTACK";
 const string ArcanaTextKeys::HEALING = "HEALING";

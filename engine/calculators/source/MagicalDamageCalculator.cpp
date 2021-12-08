@@ -1,12 +1,24 @@
 #include "Game.hpp"
 #include "MagicalDamageCalculator.hpp"
 
+using namespace std;
+
 const int MagicalDamageCalculator::MAGICAL_DAMAGE_SKILL_DIVISOR = 10;
 const int MagicalDamageCalculator::MAGICAL_DAMAGE_STAT_DIVISOR = 5;
 
 MagicalDamageCalculator::MagicalDamageCalculator(const PhaseOfMoonType new_pom)
 : DamageCalculator(AttackType::ATTACK_TYPE_MAGICAL, new_pom)
 {
+}
+
+void MagicalDamageCalculator::set_spell_id(const string& new_spell_id)
+{
+  spell_id = new_spell_id;
+}
+
+string MagicalDamageCalculator::get_spell_id() const
+{
+  return spell_id;
 }
 
 // Magical damage =
@@ -36,14 +48,30 @@ int MagicalDamageCalculator::calculate(CreaturePtr defending_creature, const boo
 
 Damage MagicalDamageCalculator::calculate_base_damage_object(CreaturePtr creature)
 {
-  SpellKnowledge& sk = creature->get_spell_knowledge_ref();
-  Spell spell = Game::instance().get_spells_ref().find(sk.get_most_recently_cast_spell_id())->second;
-
   Damage d;
 
-  if (spell.get_has_damage())
+  if (creature != nullptr)
   {
-    d = spell.get_damage();
+    SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+    string id = spell_id;
+
+    if (id.empty())
+    {
+      id = sk.get_most_recently_cast_spell_id();
+    }
+
+    const SpellMap spells = Game::instance().get_spells_ref();
+    auto s_it = spells.find(id);
+
+    if (s_it != spells.end())
+    {
+      Spell spell = s_it->second;
+
+      if (spell.get_has_damage())
+      {
+        d = spell.get_damage();
+      }
+    }
   }
 
   return d;
@@ -53,21 +81,38 @@ Damage MagicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties(
 {
   Damage base_and_bonus = calculate_base_damage_object(creature);
 
-  SpellKnowledge& sk = creature->get_spell_knowledge_ref();
-  Spell spell = Game::instance().get_spells_ref().find(sk.get_most_recently_cast_spell_id())->second;
-  IndividualSpellKnowledge isk = sk.get_spell_knowledge(sk.get_most_recently_cast_spell_id());
-
-  if (spell.get_allows_bonus())
+  if (creature != nullptr)
   {
-    if (creature != nullptr)
+    SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+    string id = spell_id;
+
+    if (id.empty())
     {
-      int modifier = isk.get_bonus().get_base();
-      base_and_bonus.set_effect_bonus(base_and_bonus.get_effect_bonus() + modifier);
+      id = sk.get_most_recently_cast_spell_id();
+    }
 
-      modifier += get_skill_modifier(creature, spell.get_magic_category());
-      modifier += get_stat_modifier(creature);
+    const SpellMap spells = Game::instance().get_spells_ref();
+    auto s_it = spells.find(id);
 
-      base_and_bonus.set_modifier(modifier);
+    if (s_it != spells.end())
+    {
+      Spell spell = s_it->second;
+
+      IndividualSpellKnowledge isk = sk.get_spell_knowledge(sk.get_most_recently_cast_spell_id());
+
+      if (spell.get_allows_bonus())
+      {
+        if (creature != nullptr)
+        {
+          int modifier = isk.get_bonus().get_base();
+          base_and_bonus.set_effect_bonus(base_and_bonus.get_effect_bonus() + modifier);
+
+          modifier += get_skill_modifier(creature, spell.get_magic_category());
+          modifier += get_stat_modifier(creature);
+
+          base_and_bonus.set_modifier(modifier);
+        }
+      }
     }
   }
 

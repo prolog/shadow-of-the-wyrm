@@ -12,6 +12,7 @@ class ArcanaTextKeys
     static const std::string SHAPE;
     static const std::string RADIUS;
     static const std::string RANGE;
+    static const std::string DAMAGE;
 
     static std::string get_type_sid(const SkillType st);
     static std::string get_classification_sid(const MagicClassification mc);
