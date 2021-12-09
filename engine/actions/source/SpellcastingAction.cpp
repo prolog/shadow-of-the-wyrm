@@ -9,12 +9,14 @@
 #include "SpellcastingAction.hpp"
 #include "Game.hpp"
 #include "MagicalAbilityChecker.hpp"
+#include "MagicalDamageCalculator.hpp"
 #include "MagicCommandFactory.hpp"
 #include "MagicCommandProcessor.hpp"
 #include "MagicCommands.hpp"
 #include "MagicKeyboardCommandMap.hpp"
 #include "MagicCommandKeys.hpp"
 #include "MessageManagerFactory.hpp"
+#include "PhaseOfMoonCalculator.hpp"
 #include "RNG.hpp"
 #include "ScreenTitleTextKeys.hpp"
 #include "SkillManager.hpp"
@@ -495,9 +497,9 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
   return selection_and_cost;
 }
 
-ActionCostValue SpellcastingAction::describe_spell(const string& spell_id)
+ActionCostValue SpellcastingAction::describe_spell(CreaturePtr creature, const string& spell_id)
 {
-  if (!spell_id.empty())
+  if (creature != nullptr && !spell_id.empty())
   {
     const SpellMap& spells = Game::instance().get_spells_ref();
     auto s_it = spells.find(spell_id);
@@ -525,7 +527,12 @@ ActionCostValue SpellcastingAction::describe_spell(const string& spell_id)
       bool has_damage = spell.get_has_damage();
       if (has_damage)
       {
-        arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::DAMAGE) + ": " + spell.get_damage().str()));
+        PhaseOfMoonCalculator pomc;
+        PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());
+        MagicalDamageCalculator mdc(phase);
+        mdc.set_spell_id(spell_id);
+        Damage d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature);
+        arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::DAMAGE) + ": " + d.str()));
       }
 
       arcana_text.push_back(make_pair(Colour::COLOUR_BLACK, separator));

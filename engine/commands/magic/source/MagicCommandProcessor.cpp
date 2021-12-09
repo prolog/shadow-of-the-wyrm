@@ -28,7 +28,7 @@ ActionCostValue MagicCommandProcessor::process(CreaturePtr creature, Command* co
       SpellcastingAction sa;
 
       string arcana_id = command->get_custom_value(ArcanaCommand::ARCANA_ID);
-      return sa.describe_spell(arcana_id);
+      return sa.describe_spell(creature, arcana_id);
     }
     else if (command_name == MagicCommandKeys::EXIT_MAGIC)
     {

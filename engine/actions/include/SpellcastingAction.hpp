@@ -14,7 +14,7 @@ class SpellcastingAction : public IActionManager
     ActionCostValue cast_spell(CreaturePtr creature, const std::string& spell_id, const Direction direction = Direction::DIRECTION_NULL) const;
 
     // Show the arcana for a particular spell.
-    ActionCostValue describe_spell(const std::string& spell_id);
+    ActionCostValue describe_spell(CreaturePtr creature, const std::string& spell_id);
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 
