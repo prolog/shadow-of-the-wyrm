@@ -9,7 +9,6 @@ Me:
   - whips: chance to wrap
   - Exotic, Bludgeons: +20 effect bonus
   - Short, long blades: chance to get piercing flag
-  - Axes: chance to get vorpal
   - Unarmed: chance to mess with NPC's action?
   - Add to docs
 - Homesteads in fields

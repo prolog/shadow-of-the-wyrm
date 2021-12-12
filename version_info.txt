@@ -27,6 +27,9 @@ Shadow of the Wyrm v1.3.8 "Pisador"
 - Updates to weapons when a creature has 100 skill in a particular weapon
   skill:
 
+  - Axes give a chance at vorpal - half the chance as if the weapon had a
+    dedicated vorpal flag.
+
   - Daggers give an extra 30% chance to sneak attack
 
   - Ranged weapons add an additional level/2 damage

@@ -559,7 +559,9 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
     // to match the creature's remaining HP
     string source_id = attacking_creature != nullptr ? attacking_creature->get_id() : "";
 
-    handle_vorpal_if_necessary(attacking_creature, attacked_creature, combat_damage_fixed, damage_dealt); 
+    SkillType weapon_skill = wm.get_skill_type(attacking_creature, attack_type);
+
+    handle_vorpal_if_necessary(attacking_creature, attacked_creature, combat_damage_fixed, damage_dealt, weapon_skill); 
     handle_explosive_if_necessary(attacking_creature, attacked_creature, current_map, damage_dealt, combat_damage_fixed, attack_type);
     deal_damage(attacking_creature, attacked_creature, attack_type, source_id, damage_dealt, combat_damage_fixed);
 
@@ -586,11 +588,20 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   return damage_dealt;
 }
 
-void CombatManager::handle_vorpal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const Damage& damage_info, int& damage_dealt)
+void CombatManager::handle_vorpal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const Damage& damage_info, int& damage_dealt, const SkillType skill_type)
 {
   if (attacked_creature != nullptr)
   {
     bool vorpal = damage_info.get_vorpal();
+
+    if (!vorpal && 
+         skill_type == SkillType::SKILL_MELEE_AXES && 
+         attacking_creature && 
+         attacking_creature->get_skills().get_value(SkillType::SKILL_MELEE_AXES) == 100)
+    {
+      vorpal = RNG::percent_chance(50);
+    }
+
     bool attacked_creature_incorporeal = attacked_creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
 
     if ((damage_dealt > 0)
