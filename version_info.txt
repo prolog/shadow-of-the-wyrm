@@ -24,8 +24,22 @@ Shadow of the Wyrm v1.3.8 "Pisador"
   by the item generation algorithm).  Spellbooks are generated as before for
   non-spellcasters.
 
+- Updates to weapons when a creature has 100 skill in a particular weapon
+  skill:
+
+  - Daggers give an extra 30% chance to sneak attack
+
+  - Ranged weapons add an additional level/2 damage
+
+- The chance to sneak attack based on Stealth has been improved from 
+  <skill %>/10 to <skill %>/5.
+
 - When deciding on a random movement direction, intelligent creatures will
   look to move away from any threats they can't directly reach.
+
+- Both skills and spells now have descriptions similar to those of creatures
+  and items.  They can be accessed by using the associated capital letter
+  of a skill/spell on the respective screen.
 
 - New name and settlement name combinations.
 

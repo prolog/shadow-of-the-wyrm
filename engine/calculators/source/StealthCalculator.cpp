@@ -9,9 +9,15 @@
 //
 // Hidden creatures always sneak attack.
 //
-// When not hidden, there is a small (Stealth/10 %) chance of a creature 
+// When not hidden, there is a small (Stealth/5 %) chance of a creature 
 // getting in a sneak attack, if the creature has any Stealth skill.  The 
 // minimum value is always 1%.
+//
+// When the melee daggers skill is 100, there is a 30% chance of a sneak
+// attack.  This adds on to the existing chance from stealth.
+//
+// At 100 Stealth and 100 Daggers, the chance to sneak attack is therefore
+// 50%.
 int StealthCalculator::calculate_pct_chance_sneak_attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature) const
 {
   int pct_chance = 0;
@@ -30,7 +36,14 @@ int StealthCalculator::calculate_pct_chance_sneak_attack(CreaturePtr attacking_c
 
         if (stealth_val > 0)
         {
-          pct_chance = std::max<int>(stealth_val / 10, 1);
+          pct_chance = std::max<int>(stealth_val / 5, 1);
+        }
+
+        int daggers_val = attacking_creature->get_skills().get_value(SkillType::SKILL_MELEE_DAGGERS);
+
+        if (daggers_val == 100)
+        {
+          pct_chance += 30;
         }
       }
     }

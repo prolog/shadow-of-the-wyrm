@@ -166,6 +166,11 @@ int PhysicalDamageCalculator::get_skill_based_damage_modifier(CreaturePtr attack
     modifier += (dual_val / DAMAGE_GENERAL_DUAL_WIELD_DIVISOR);
     modifier += (val / DAMAGE_SKILL_DIVISOR);
     modifier += (general_val / DAMAGE_GENERAL_SKILL_DIVISOR);
+
+    if (general_skill == SkillType::SKILL_GENERAL_ARCHERY && val == 100)
+    {
+      modifier += attacking_creature->get_level().get_current() / 2;
+    }
   }
 
   return modifier;
