@@ -32,6 +32,8 @@ Shadow of the Wyrm v1.3.8 "Pisador"
 
   - Daggers give an extra 30% chance to sneak attack
 
+  - Short and long blades have a chance to make an attack piercing
+
   - Ranged weapons add an additional level/2 damage
 
 - The chance to sneak attack based on Stealth has been improved from 

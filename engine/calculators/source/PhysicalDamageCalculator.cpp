@@ -1,6 +1,7 @@
 #include <cmath>
 #include "CombatConstants.hpp"
 #include "PhysicalDamageCalculator.hpp"
+#include "RNG.hpp"
 #include "WeaponManager.hpp"
 
 // Always check to see if a stat is > 10 before considering it for a damage bonus.
@@ -113,6 +114,8 @@ Damage PhysicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties
     current_modifier += rage_modifier;
     
     base_damage.set_modifier(current_modifier);
+
+    set_skill_based_damage_flags(attacking_creature, attack_type, base_damage);
   }
   
   return base_damage;
@@ -202,6 +205,26 @@ SkillType PhysicalDamageCalculator::get_general_combat_skill() const
   return SkillType::SKILL_GENERAL_COMBAT;
 }
 
+void PhysicalDamageCalculator::set_skill_based_damage_flags(CreaturePtr attacking_creature, const AttackType attack_type, Damage& damage)
+{
+  if (attacking_creature != nullptr)
+  {
+    WeaponManager wm;
+    Skills& skills = attacking_creature->get_skills();
+    SkillType skill = wm.get_skill_type(attacking_creature, attack_type);
+    int val = skills.get_value(skill);
+
+    SkillType general_skill = get_general_combat_skill();
+
+    if (general_skill == SkillType::SKILL_GENERAL_COMBAT &&
+      (skill == SkillType::SKILL_MELEE_LONG_BLADES || skill == SkillType::SKILL_MELEE_SHORT_BLADES) &&
+      val == 100 &&
+      RNG::percent_chance(30))
+    {
+      damage.set_piercing(true);
+    }
+  }
+}
 #ifdef UNIT_TESTS
 #include "unit_tests/PhysicalDamageCalculator_test.cpp"
 #endif
