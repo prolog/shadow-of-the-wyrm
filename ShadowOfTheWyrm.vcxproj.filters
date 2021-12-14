@@ -4445,6 +4445,9 @@
     <ClInclude Include="engine\strings\include\ArcanaTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\MeleeWeaponRangeCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -8991,6 +8994,9 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\ArcanaTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\MeleeWeaponRangeCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

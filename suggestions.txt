@@ -1,4 +1,7 @@
 Me:
+- unit test for melee range calc
+- Ensure stunned works properly for NPCs
+- Dungeon gardens/orchards have weird bounds
 - Weaponmasteries in synopsis
 - Weaponmasteries in guidebook
 - Boating: move faster on water
@@ -7,10 +10,8 @@ Me:
 - after Godslayer, divine spells gone/Divine skill 0
 - Wizard staff: +50 AP
 - 100 in each melee weapon: should do something.
-  - Spears, Whips, rods: +1 range
-  - whips: chance to wrap
-  - Exotic, Bludgeons: +20 effect bonus
-  - Unarmed: chance to mess with NPC's action?
+  - Whips: chance tangle
+  - short and long blades: + evade
   - Add to docs
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere

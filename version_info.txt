@@ -30,11 +30,17 @@ Shadow of the Wyrm v1.3.8 "Pisador"
   - Axes give a chance at vorpal - half the chance as if the weapon had a
     dedicated vorpal flag.
 
+  - Spears add piercing to all attacks
+
   - Daggers give an extra 30% chance to sneak attack
 
-  - Short and long blades have a chance to make an attack piercing
+  - Bludgeons and exotic weapons give an increased chance to apply their
+    damage statuses
 
-  - Ranged weapons add an additional level/2 damage
+  - Unarmed attacks get a slight boost to their damage, and allow knockback
+    without explicitly kicking.
+
+  - Ranged weapons add an additional level/2 damage, as does unarmed combat
 
 - The chance to sneak attack based on Stealth has been improved from 
   <skill %>/10 to <skill %>/5.

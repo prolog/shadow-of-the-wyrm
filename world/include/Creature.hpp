@@ -362,8 +362,6 @@ class Creature : public ISerializable
 
     bool is_allied_to(const std::string& creature_original_id) const;
 
-    int get_primary_melee_range() const;
-
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 

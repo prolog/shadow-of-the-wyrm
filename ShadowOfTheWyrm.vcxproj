@@ -409,6 +409,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\ItemPietyCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\KilnCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\LineOfSightCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\MeleeWeaponRangeCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\MineCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ModifyStatisticsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\NullAttackSpeedCalculator.hpp" />
@@ -1532,6 +1533,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\ItemEnchantmentCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\KilnCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\LineOfSightCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\MeleeWeaponRangeCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MineCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\NullAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PacificationCalculator.cpp" />

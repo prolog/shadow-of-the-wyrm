@@ -1,5 +1,6 @@
 #include "CombatEffectsCalculator.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "WeaponManager.hpp"
 
 const int CombatEffectsCalculator::COMBAT_SKILL_DIVISOR = 10;
 const int CombatEffectsCalculator::DEXTERITY_DIVISOR = 5;
@@ -39,7 +40,19 @@ int CombatEffectsCalculator::calculate_knock_back_pct_chance(const AttackType at
   int base = -100;
   int bonus = 0;
 
-  if (attack_type == AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED)
+  if (attack_type == AttackType::ATTACK_TYPE_MELEE_PRIMARY)
+  {
+    WeaponManager wm;
+    SkillType skill = wm.get_skill_type(attacking_creature, attack_type);
+
+    if (skill == SkillType::SKILL_MELEE_UNARMED &&
+        attacking_creature && 
+        attacking_creature->get_skills().get_value(SkillType::SKILL_MELEE_UNARMED))
+    {
+      bonus += 100;
+    }
+  }
+  else if (attack_type == AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED)
   {
     bonus += 100;
   }

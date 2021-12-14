@@ -3,6 +3,7 @@
 #include "DamageCalculatorFactory.hpp"
 #include "EquipmentTextKeys.hpp"
 #include "Game.hpp"
+#include "MeleeWeaponRangeCalculator.hpp"
 #include "MessageManagerFactory.hpp"
 #include "PhaseOfMoonCalculator.hpp"
 #include "RangedAttackSpeedCalculator.hpp"
@@ -149,7 +150,8 @@ string WeaponInfoAction::get_melee_weapon_info(CreaturePtr creature, WeaponPtr w
 
       if (creature)
       {
-        range = creature->get_primary_melee_range();
+        MeleeWeaponRangeCalculator mwrc;
+        range = mwrc.get_primary_melee_range(creature);
       }
       
       if (weapon)

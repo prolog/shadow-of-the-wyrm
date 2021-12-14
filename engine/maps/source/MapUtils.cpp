@@ -18,6 +18,7 @@
 #include "MapCreatureGenerator.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
+#include "MeleeWeaponRangeCalculator.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MovementAccumulationChecker.hpp"
 #include "MovementAccumulationUpdater.hpp"
@@ -2061,7 +2062,8 @@ pair<bool, TilePtr> MapUtils::get_melee_attack_target(MapPtr map, CreaturePtr cr
 
   if (map != nullptr && creature != nullptr)
   {
-    int range = creature->get_primary_melee_range();
+    MeleeWeaponRangeCalculator mwrc;
+    int range = mwrc.get_primary_melee_range(creature);
     string c_id = creature->get_id();
     Coordinate creature_coords = map->get_location(c_id);
 

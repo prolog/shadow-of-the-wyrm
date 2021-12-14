@@ -17,6 +17,7 @@ class PhysicalDamageCalculator : public DamageCalculator
     
   protected:
     virtual void set_skill_based_damage_flags(CreaturePtr attacking_creature, const AttackType attack_type, Damage& damage);
+    virtual void set_skill_based_damage_modifiers(CreaturePtr attacking_creature, const AttackType attack_type, Damage& damage);
 
     static const int DAMAGE_STAT_BASELINE;
     static const int DAMAGE_STAT_DIVISOR;

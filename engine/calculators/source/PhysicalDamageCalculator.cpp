@@ -116,6 +116,7 @@ Damage PhysicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties
     base_damage.set_modifier(current_modifier);
 
     set_skill_based_damage_flags(attacking_creature, attack_type, base_damage);
+    set_skill_based_damage_modifiers(attacking_creature, attack_type, base_damage);
   }
   
   return base_damage;
@@ -174,6 +175,12 @@ int PhysicalDamageCalculator::get_skill_based_damage_modifier(CreaturePtr attack
     {
       modifier += attacking_creature->get_level().get_current() / 2;
     }
+    else if (general_skill == SkillType::SKILL_GENERAL_COMBAT && 
+             skill == SkillType::SKILL_MELEE_UNARMED && 
+             val == 100)
+    {
+      modifier += 10;
+    }
   }
 
   return modifier;
@@ -217,14 +224,35 @@ void PhysicalDamageCalculator::set_skill_based_damage_flags(CreaturePtr attackin
     SkillType general_skill = get_general_combat_skill();
 
     if (general_skill == SkillType::SKILL_GENERAL_COMBAT &&
-      (skill == SkillType::SKILL_MELEE_LONG_BLADES || skill == SkillType::SKILL_MELEE_SHORT_BLADES) &&
-      val == 100 &&
-      RNG::percent_chance(30))
+        skill == SkillType::SKILL_MELEE_SPEARS &&
+        val == 100)
     {
       damage.set_piercing(true);
     }
   }
 }
+
+void PhysicalDamageCalculator::set_skill_based_damage_modifiers(CreaturePtr attacking_creature, const AttackType attack_type, Damage& damage)
+{
+  if (attacking_creature != nullptr)
+  {
+    WeaponManager wm;
+    Skills& skills = attacking_creature->get_skills();
+    SkillType skill = wm.get_skill_type(attacking_creature, attack_type);
+    int val = skills.get_value(skill);
+
+    SkillType general_skill = get_general_combat_skill();
+
+    if (general_skill == SkillType::SKILL_GENERAL_COMBAT &&
+        (skill == SkillType::SKILL_MELEE_BLUDGEONS || skill == SkillType::SKILL_MELEE_EXOTIC) &&
+        val == 100)
+    {
+      damage.set_effect_bonus(damage.get_effect_bonus() + 50);
+    }
+  }
+}
+
+
 #ifdef UNIT_TESTS
 #include "unit_tests/PhysicalDamageCalculator_test.cpp"
 #endif
