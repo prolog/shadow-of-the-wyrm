@@ -38,6 +38,11 @@ set<string> StatusAilments::get_ailments() const
   return ailments;
 }
 
+set<string>& StatusAilments::get_ailments_ref()
+{
+  return ailments;
+}
+
 bool StatusAilments::has_ailments() const
 {
   return (ailments.empty() == false);

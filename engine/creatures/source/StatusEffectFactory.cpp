@@ -32,6 +32,25 @@ StatusEffectFactory::~StatusEffectFactory()
 {
 }
 
+string StatusEffectFactory::get_status_identifier_for_damage_type(const DamageType dt)
+{
+  string ident;
+
+  if (damage_status_ailments.empty())
+  {
+    initialize_damage_status_ailments();
+  }
+
+  auto s_it = damage_status_ailments.find(dt);
+
+  if (s_it != damage_status_ailments.end())
+  {
+    ident = s_it->second;
+  }
+
+  return ident;
+}
+
 void StatusEffectFactory::initialize_damage_status_ailments()
 {
   damage_status_ailments.clear();

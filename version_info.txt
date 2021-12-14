@@ -37,10 +37,17 @@ Shadow of the Wyrm v1.3.8 "Pisador"
   - Bludgeons and exotic weapons give an increased chance to apply their
     damage statuses
 
-  - Unarmed attacks get a slight boost to their damage, and allow knockback
-    without explicitly kicking.
+  - Short and long blades help to deflect attacks, increasing evade
 
-  - Ranged weapons add an additional level/2 damage, as does unarmed combat
+  - Rods and staves get +1 range
+
+  - Unarmed attacks get a slight boost to their damage, and allow knockback
+    without explicitly kicking
+
+  - Whips get the same slight damage boost and have a chance to inflict
+    Exposed and Bloodied statuses
+
+  - Ranged weapons add an additional level/2 damage
 
 - The chance to sneak attack based on Stealth has been improved from 
   <skill %>/10 to <skill %>/5.

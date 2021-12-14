@@ -2,7 +2,10 @@
 #include "CombatConstants.hpp"
 #include "PhysicalDamageCalculator.hpp"
 #include "RNG.hpp"
+#include "StatusEffectFactory.hpp"
 #include "WeaponManager.hpp"
+
+using namespace std;
 
 // Always check to see if a stat is > 10 before considering it for a damage bonus.
 const int PhysicalDamageCalculator::DAMAGE_STAT_BASELINE = 10;
@@ -115,6 +118,7 @@ Damage PhysicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties
     
     base_damage.set_modifier(current_modifier);
 
+    set_skill_based_statuses(attacking_creature, attack_type, base_damage);
     set_skill_based_damage_flags(attacking_creature, attack_type, base_damage);
     set_skill_based_damage_modifiers(attacking_creature, attack_type, base_damage);
   }
@@ -176,7 +180,7 @@ int PhysicalDamageCalculator::get_skill_based_damage_modifier(CreaturePtr attack
       modifier += attacking_creature->get_level().get_current() / 2;
     }
     else if (general_skill == SkillType::SKILL_GENERAL_COMBAT && 
-             skill == SkillType::SKILL_MELEE_UNARMED && 
+             (skill == SkillType::SKILL_MELEE_UNARMED || skill == SkillType::SKILL_MELEE_WHIPS) && 
              val == 100)
     {
       modifier += 10;
@@ -210,6 +214,34 @@ Damage PhysicalDamageCalculator::calculate_default_damage_for_improvised_weapon(
 SkillType PhysicalDamageCalculator::get_general_combat_skill() const
 {
   return SkillType::SKILL_GENERAL_COMBAT;
+}
+
+void PhysicalDamageCalculator::set_skill_based_statuses(CreaturePtr attacking_creature, const AttackType attack_type, Damage& damage)
+{
+  if (attacking_creature != nullptr)
+  {
+    WeaponManager wm;
+    Skills& skills = attacking_creature->get_skills();
+    SkillType skill = wm.get_skill_type(attacking_creature, attack_type);
+    int val = skills.get_value(skill);
+
+    SkillType general_skill = get_general_combat_skill();
+
+    if (general_skill == SkillType::SKILL_GENERAL_COMBAT &&
+        skill == SkillType::SKILL_MELEE_WHIPS &&
+        val == 100)
+    {
+      StatusAilments sa = damage.get_status_ailments();
+      set<string>& ailments = sa.get_ailments_ref();
+
+      sa.set_override_defaults(true);
+      ailments.insert(StatusEffectFactory::get_status_identifier_for_damage_type(damage.get_damage_type()));
+      ailments.insert(StatusIdentifiers::STATUS_ID_BLOODIED);
+      ailments.insert(StatusIdentifiers::STATUS_ID_EXPOSED);
+
+      damage.set_status_ailments(sa);
+    }
+  }
 }
 
 void PhysicalDamageCalculator::set_skill_based_damage_flags(CreaturePtr attacking_creature, const AttackType attack_type, Damage& damage)

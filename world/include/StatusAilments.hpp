@@ -15,6 +15,7 @@ class StatusAilments : public ISerializable
 
     void set_ailments(const std::set<std::string>& new_ailments);
     std::set<std::string> get_ailments() const;
+    std::set<std::string>& get_ailments_ref();
     bool has_ailments() const;
 
     bool serialize(std::ostream& stream) const override;
