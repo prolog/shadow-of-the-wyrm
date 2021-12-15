@@ -1,4 +1,5 @@
 Me:
+- 100 skill constants
 - unit test for melee range calc
 - Ensure stunned works properly for NPCs
 - Dungeon gardens/orchards have weird bounds

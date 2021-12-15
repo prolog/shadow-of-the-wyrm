@@ -31,6 +31,7 @@ Skill& Skill::operator=(const Skill& skill)
     this->skill_name_sid = skill.skill_name_sid;
     this->skill_increment_message_sid = skill.skill_increment_message_sid;
     this->skill_description_sid = skill.skill_description_sid;
+    this->mastery_sid = skill.mastery_sid;
   }
 
   return *this;
@@ -47,6 +48,8 @@ bool Skill::operator==(const Skill& skill) const
   result = result && (skill_name_sid == skill.skill_name_sid);
   result = result && (skill_increment_message_sid == skill.skill_increment_message_sid);
   result = result && (skill_description_sid == skill.skill_description_sid);
+  result = result && (mastery_sid == skill.mastery_sid);
+
   result = result && (internal_class_identifier() == skill.internal_class_identifier());
 
   return result;
@@ -166,6 +169,11 @@ string Skill::get_skill_description_sid() const
   return skill_description_sid;
 }
 
+string Skill::get_mastery_sid() const
+{
+  return mastery_sid;
+}
+
 // Shouldn't be used in-game - this is just a function for outputting the entire skill as a string.
 string Skill::str() const
 {
@@ -184,6 +192,8 @@ bool Skill::serialize(ostream& stream) const
   Serialize::write_string(stream, skill_name_sid);
   Serialize::write_string(stream, skill_increment_message_sid);
   Serialize::write_string(stream, skill_description_sid);
+  Serialize::write_string(stream, mastery_sid);
+
   marks.serialize(stream);
 
   return true;
@@ -197,6 +207,8 @@ bool Skill::deserialize(istream& stream)
   Serialize::read_string(stream, skill_name_sid);
   Serialize::read_string(stream, skill_increment_message_sid);
   Serialize::read_string(stream, skill_description_sid);
+  Serialize::read_string(stream, mastery_sid);
+
   marks.deserialize(stream);
 
   return true;
@@ -1227,6 +1239,7 @@ AxesSkill::AxesSkill()
   skill_name_sid = SkillTextKeys::SKILL_MELEE_AXES;
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_AXES_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_MELEE_AXES_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_MELEE_AXES_MASTERY;
 }
 
 Skill* AxesSkill::clone()
@@ -1246,6 +1259,7 @@ ShortBladesSkill::ShortBladesSkill()
   skill_name_sid = SkillTextKeys::SKILL_MELEE_SHORT_BLADES;
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_SHORT_BLADES_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_MELEE_SHORT_BLADES_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_MELEE_SHORT_BLADES_MASTERY;
 }
 
 Skill* ShortBladesSkill::clone()
@@ -1265,6 +1279,7 @@ LongBladesSkill::LongBladesSkill()
   skill_name_sid = SkillTextKeys::SKILL_MELEE_LONG_BLADES;
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_LONG_BLADES_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_MELEE_LONG_BLADES_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_MELEE_LONG_BLADES_MASTERY;
 }
 
 Skill* LongBladesSkill::clone()
@@ -1284,6 +1299,7 @@ BludgeonsSkill::BludgeonsSkill()
   skill_name_sid = SkillTextKeys::SKILL_MELEE_BLUDGEONS;
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_BLUDGEONS_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_MELEE_BLUDGEONS_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_MELEE_BLUDGEONS_MASTERY;
 }
 
 Skill* BludgeonsSkill::clone()
@@ -1303,6 +1319,7 @@ DaggersSkill::DaggersSkill()
   skill_name_sid = SkillTextKeys::SKILL_MELEE_DAGGERS;
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_DAGGERS_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_MELEE_DAGGERS_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_MELEE_DAGGERS_MASTERY;
 }
 
 Skill* DaggersSkill::clone()
@@ -1322,6 +1339,7 @@ RodsAndStavesSkill::RodsAndStavesSkill()
   skill_name_sid = SkillTextKeys::SKILL_MELEE_RODS_AND_STAVES;
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_RODS_AND_STAVES_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_MELEE_RODS_AND_STAVES_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_MELEE_RODS_AND_STAVES_MASTERY;
 }
 
 Skill* RodsAndStavesSkill::clone()
@@ -1341,6 +1359,7 @@ SpearsSkill::SpearsSkill()
   skill_name_sid = SkillTextKeys::SKILL_MELEE_SPEARS;
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_SPEARS_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_MELEE_SPEARS_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_MELEE_SPEARS_MASTERY;
 }
 
 Skill* SpearsSkill::clone()
@@ -1360,6 +1379,7 @@ UnarmedSkill::UnarmedSkill()
   skill_name_sid = SkillTextKeys::SKILL_MELEE_UNARMED;
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_UNARMED_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_MELEE_UNARMED_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_MELEE_UNARMED_MASTERY;
 }
 
 Skill* UnarmedSkill::clone()
@@ -1379,6 +1399,7 @@ WhipsSkill::WhipsSkill()
   skill_name_sid = SkillTextKeys::SKILL_MELEE_WHIPS;
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_WHIPS_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_MELEE_WHIPS_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_MELEE_WHIPS_MASTERY;
 }
 
 Skill* WhipsSkill::clone()
@@ -1398,6 +1419,7 @@ ExoticMeleeSkill::ExoticMeleeSkill()
   skill_name_sid = SkillTextKeys::SKILL_MELEE_EXOTIC;
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_EXOTIC_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_MELEE_EXOTIC_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_MELEE_EXOTIC_MASTERY;
 }
 
 float ExoticMeleeSkill::get_threshold_multiplier() const
@@ -1424,6 +1446,7 @@ ThrownAxesSkill::ThrownAxesSkill()
   skill_name_sid = SkillTextKeys::SKILL_RANGED_AXES;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_AXES_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_RANGED_AXES_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_RANGED_AXES_MASTERY;
 }
 
 Skill* ThrownAxesSkill::clone()
@@ -1443,6 +1466,7 @@ ThrownBladesSkill::ThrownBladesSkill()
   skill_name_sid = SkillTextKeys::SKILL_RANGED_BLADES;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_BLADES_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_RANGED_BLADES_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_RANGED_BLADES_MASTERY;
 }
 
 Skill* ThrownBladesSkill::clone()
@@ -1462,6 +1486,7 @@ ThrownBludgeonsSkill::ThrownBludgeonsSkill()
   skill_name_sid = SkillTextKeys::SKILL_RANGED_BLUDGEONS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_BLUDGEONS_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_RANGED_BLUDGEONS_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_RANGED_BLUDGEONS_MASTERY;
 }
 
 Skill* ThrownBludgeonsSkill::clone()
@@ -1481,6 +1506,7 @@ BowsSkill::BowsSkill()
   skill_name_sid = SkillTextKeys::SKILL_RANGED_BOWS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_BOWS_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_RANGED_BOWS_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_RANGED_BOWS_MASTERY;
 }
 
 Skill* BowsSkill::clone()
@@ -1500,6 +1526,7 @@ CrossbowsSkill::CrossbowsSkill()
   skill_name_sid = SkillTextKeys::SKILL_RANGED_CROSSBOWS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_CROSSBOWS_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_RANGED_CROSSBOWS_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_RANGED_CROSSBOWS_MASTERY;
 }
 
 Skill* CrossbowsSkill::clone()
@@ -1519,6 +1546,7 @@ ThrownDaggersSkill::ThrownDaggersSkill()
   skill_name_sid = SkillTextKeys::SKILL_RANGED_DAGGERS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_DAGGERS_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_RANGED_DAGGERS_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_RANGED_DAGGERS_MASTERY;
 }
 
 Skill* ThrownDaggersSkill::clone()
@@ -1538,6 +1566,7 @@ RocksSkill::RocksSkill()
   skill_name_sid = SkillTextKeys::SKILL_RANGED_ROCKS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_ROCKS_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_RANGED_ROCKS_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_RANGED_ROCKS_MASTERY;
 }
 
 Skill* RocksSkill::clone()
@@ -1557,6 +1586,7 @@ SlingsSkill::SlingsSkill()
   skill_name_sid = SkillTextKeys::SKILL_RANGED_SLINGS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_SLINGS_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_RANGED_SLINGS_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_RANGED_SLINGS_MASTERY;
 }
 
 Skill* SlingsSkill::clone()
@@ -1576,6 +1606,7 @@ ThrownSpearsSkill::ThrownSpearsSkill()
   skill_name_sid = SkillTextKeys::SKILL_RANGED_SPEARS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_SPEARS_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_RANGED_SPEARS_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_RANGED_SPEARS_MASTERY;
 }
 
 Skill* ThrownSpearsSkill::clone()
@@ -1595,6 +1626,7 @@ ExoticRangedSkill::ExoticRangedSkill()
   skill_name_sid = SkillTextKeys::SKILL_RANGED_EXOTIC;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_EXOTIC_INCREMENT;
   skill_description_sid = SkillTextKeys::SKILL_RANGED_EXOTIC_DETAILS;
+  mastery_sid = SkillTextKeys::SKILL_RANGED_EXOTIC_MASTERY;
 }
 
 float ExoticRangedSkill::get_threshold_multiplier() const

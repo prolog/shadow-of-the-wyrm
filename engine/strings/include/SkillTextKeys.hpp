@@ -7,6 +7,8 @@ class SkillTextKeys
     static const std::string SKILLS_EXIT_IMPROVEMENT_POINTS_REMAIN;
     static const std::string SKILLS_IMPROVEMENT_POINTS_REMAINING;
     static const std::string SKILLS_EXIT_MAX_LEVEL;
+    static const std::string SKILLS_MELEE_WEAPON_MASTERIES;
+    static const std::string SKILLS_THROWN_WEAPON_MASTERIES;
 
     // General (NWP)
     static const std::string SKILLS_GENERAL;
@@ -171,33 +173,43 @@ class SkillTextKeys
     static const std::string SKILL_MELEE_AXES;
     static const std::string SKILL_MELEE_AXES_INCREMENT;
     static const std::string SKILL_MELEE_AXES_DETAILS;
+    static const std::string SKILL_MELEE_AXES_MASTERY;
     static const std::string SKILL_MELEE_SHORT_BLADES;
     static const std::string SKILL_MELEE_SHORT_BLADES_INCREMENT;
     static const std::string SKILL_MELEE_SHORT_BLADES_DETAILS;
+    static const std::string SKILL_MELEE_SHORT_BLADES_MASTERY;
     static const std::string SKILL_MELEE_LONG_BLADES;
     static const std::string SKILL_MELEE_LONG_BLADES_INCREMENT;
+    static const std::string SKILL_MELEE_LONG_BLADES_MASTERY;
     static const std::string SKILL_MELEE_LONG_BLADES_DETAILS;
     static const std::string SKILL_MELEE_BLUDGEONS;
     static const std::string SKILL_MELEE_BLUDGEONS_INCREMENT;
     static const std::string SKILL_MELEE_BLUDGEONS_DETAILS;
+    static const std::string SKILL_MELEE_BLUDGEONS_MASTERY;
     static const std::string SKILL_MELEE_DAGGERS;
     static const std::string SKILL_MELEE_DAGGERS_INCREMENT;
     static const std::string SKILL_MELEE_DAGGERS_DETAILS;
+    static const std::string SKILL_MELEE_DAGGERS_MASTERY;
     static const std::string SKILL_MELEE_RODS_AND_STAVES;
     static const std::string SKILL_MELEE_RODS_AND_STAVES_INCREMENT;
     static const std::string SKILL_MELEE_RODS_AND_STAVES_DETAILS;
+    static const std::string SKILL_MELEE_RODS_AND_STAVES_MASTERY;
     static const std::string SKILL_MELEE_SPEARS;
     static const std::string SKILL_MELEE_SPEARS_INCREMENT;
     static const std::string SKILL_MELEE_SPEARS_DETAILS;
+    static const std::string SKILL_MELEE_SPEARS_MASTERY;
     static const std::string SKILL_MELEE_UNARMED;
     static const std::string SKILL_MELEE_UNARMED_INCREMENT;
     static const std::string SKILL_MELEE_UNARMED_DETAILS;
+    static const std::string SKILL_MELEE_UNARMED_MASTERY;
     static const std::string SKILL_MELEE_WHIPS;
     static const std::string SKILL_MELEE_WHIPS_INCREMENT;
     static const std::string SKILL_MELEE_WHIPS_DETAILS;
+    static const std::string SKILL_MELEE_WHIPS_MASTERY;
     static const std::string SKILL_MELEE_EXOTIC;
     static const std::string SKILL_MELEE_EXOTIC_INCREMENT;
     static const std::string SKILL_MELEE_EXOTIC_DETAILS;
+    static const std::string SKILL_MELEE_EXOTIC_MASTERY;
 
     // Weapon (Ranged)
     static const std::string SKILLS_RANGED_WEAPON;
@@ -205,33 +217,43 @@ class SkillTextKeys
     static const std::string SKILL_RANGED_AXES;
     static const std::string SKILL_RANGED_AXES_INCREMENT;
     static const std::string SKILL_RANGED_AXES_DETAILS;
+    static const std::string SKILL_RANGED_AXES_MASTERY;
     static const std::string SKILL_RANGED_BLADES;
     static const std::string SKILL_RANGED_BLADES_INCREMENT;
     static const std::string SKILL_RANGED_BLADES_DETAILS;
+    static const std::string SKILL_RANGED_BLADES_MASTERY;
     static const std::string SKILL_RANGED_BLUDGEONS;
     static const std::string SKILL_RANGED_BLUDGEONS_INCREMENT;
     static const std::string SKILL_RANGED_BLUDGEONS_DETAILS;
+    static const std::string SKILL_RANGED_BLUDGEONS_MASTERY;
     static const std::string SKILL_RANGED_BOWS;
     static const std::string SKILL_RANGED_BOWS_INCREMENT;
     static const std::string SKILL_RANGED_BOWS_DETAILS;
+    static const std::string SKILL_RANGED_BOWS_MASTERY;
     static const std::string SKILL_RANGED_CROSSBOWS;
     static const std::string SKILL_RANGED_CROSSBOWS_INCREMENT;
     static const std::string SKILL_RANGED_CROSSBOWS_DETAILS;
+    static const std::string SKILL_RANGED_CROSSBOWS_MASTERY;
     static const std::string SKILL_RANGED_DAGGERS;
     static const std::string SKILL_RANGED_DAGGERS_INCREMENT;
     static const std::string SKILL_RANGED_DAGGERS_DETAILS;
+    static const std::string SKILL_RANGED_DAGGERS_MASTERY;
     static const std::string SKILL_RANGED_ROCKS;
     static const std::string SKILL_RANGED_ROCKS_INCREMENT;
     static const std::string SKILL_RANGED_ROCKS_DETAILS;
+    static const std::string SKILL_RANGED_ROCKS_MASTERY;
     static const std::string SKILL_RANGED_SLINGS;
     static const std::string SKILL_RANGED_SLINGS_INCREMENT;
     static const std::string SKILL_RANGED_SLINGS_DETAILS;
+    static const std::string SKILL_RANGED_SLINGS_MASTERY;
     static const std::string SKILL_RANGED_SPEARS;
     static const std::string SKILL_RANGED_SPEARS_INCREMENT;
     static const std::string SKILL_RANGED_SPEARS_DETAILS;
+    static const std::string SKILL_RANGED_SPEARS_MASTERY;
     static const std::string SKILL_RANGED_EXOTIC;
     static const std::string SKILL_RANGED_EXOTIC_INCREMENT;
     static const std::string SKILL_RANGED_EXOTIC_DETAILS;
+    static const std::string SKILL_RANGED_EXOTIC_MASTERY;
 
     // Magic
     static const std::string SKILLS_MAGIC;
