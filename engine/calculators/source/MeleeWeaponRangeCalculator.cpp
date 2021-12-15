@@ -20,7 +20,7 @@ int MeleeWeaponRangeCalculator::get_primary_melee_range(CreaturePtr creature) co
 
       SkillType melee = weapon->get_trained_skill();
       int val = creature->get_skills().get_value(melee);
-      if (val == 100 &&
+      if (val == Skills::MAX_SKILL_VALUE &&
           melee == SkillType::SKILL_MELEE_RODS_AND_STAVES)
       {
         range++;

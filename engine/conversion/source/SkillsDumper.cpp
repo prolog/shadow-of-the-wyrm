@@ -169,7 +169,7 @@ string SkillsDumper::get_masteries(const string& header_sid, const SkillType beg
       {
         int sval = skill->get_value();
 
-        if (sval == 100)
+        if (sval == Skills::MAX_SKILL_VALUE)
         {
           string mastery_sid = skill->get_mastery_sid();
 

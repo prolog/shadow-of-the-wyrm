@@ -597,9 +597,9 @@ void CombatManager::handle_vorpal_if_necessary(CreaturePtr attacking_creature, C
     if (!vorpal && 
          skill_type == SkillType::SKILL_MELEE_AXES && 
          attacking_creature && 
-         attacking_creature->get_skills().get_value(SkillType::SKILL_MELEE_AXES) == 100)
+         attacking_creature->get_skills().get_value(SkillType::SKILL_MELEE_AXES) == Skills::MAX_SKILL_VALUE)
     {
-      vorpal = RNG::percent_chance(50);
+      vorpal = RNG::percent_chance(75);
     }
 
     bool attacked_creature_incorporeal = attacked_creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);

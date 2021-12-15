@@ -41,7 +41,7 @@ int StealthCalculator::calculate_pct_chance_sneak_attack(CreaturePtr attacking_c
 
         int daggers_val = attacking_creature->get_skills().get_value(SkillType::SKILL_MELEE_DAGGERS);
 
-        if (daggers_val == 100)
+        if (daggers_val == Skills::MAX_SKILL_VALUE)
         {
           pct_chance += 30;
         }

@@ -175,13 +175,13 @@ int PhysicalDamageCalculator::get_skill_based_damage_modifier(CreaturePtr attack
     modifier += (val / DAMAGE_SKILL_DIVISOR);
     modifier += (general_val / DAMAGE_GENERAL_SKILL_DIVISOR);
 
-    if (general_skill == SkillType::SKILL_GENERAL_ARCHERY && val == 100)
+    if (general_skill == SkillType::SKILL_GENERAL_ARCHERY && val == Skills::MAX_SKILL_VALUE)
     {
       modifier += attacking_creature->get_level().get_current() / 2;
     }
     else if (general_skill == SkillType::SKILL_GENERAL_COMBAT && 
              (skill == SkillType::SKILL_MELEE_UNARMED || skill == SkillType::SKILL_MELEE_WHIPS) && 
-             val == 100)
+             val == Skills::MAX_SKILL_VALUE)
     {
       modifier += 10;
     }
@@ -229,7 +229,7 @@ void PhysicalDamageCalculator::set_skill_based_statuses(CreaturePtr attacking_cr
 
     if (general_skill == SkillType::SKILL_GENERAL_COMBAT &&
         skill == SkillType::SKILL_MELEE_WHIPS &&
-        val == 100)
+        val == Skills::MAX_SKILL_VALUE)
     {
       StatusAilments sa = damage.get_status_ailments();
       set<string>& ailments = sa.get_ailments_ref();
@@ -257,7 +257,7 @@ void PhysicalDamageCalculator::set_skill_based_damage_flags(CreaturePtr attackin
 
     if (general_skill == SkillType::SKILL_GENERAL_COMBAT &&
         skill == SkillType::SKILL_MELEE_SPEARS &&
-        val == 100)
+        val == Skills::MAX_SKILL_VALUE)
     {
       damage.set_piercing(true);
     }
@@ -277,7 +277,7 @@ void PhysicalDamageCalculator::set_skill_based_damage_modifiers(CreaturePtr atta
 
     if (general_skill == SkillType::SKILL_GENERAL_COMBAT &&
         (skill == SkillType::SKILL_MELEE_BLUDGEONS || skill == SkillType::SKILL_MELEE_EXOTIC) &&
-        val == 100)
+        val == Skills::MAX_SKILL_VALUE)
     {
       damage.set_effect_bonus(damage.get_effect_bonus() + 50);
     }

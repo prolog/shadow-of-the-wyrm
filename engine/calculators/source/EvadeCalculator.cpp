@@ -178,8 +178,8 @@ int EvadeCalculator::get_blades_bonus(const CreaturePtr& c)
     int lblade = cskills.get_value(SkillType::SKILL_MELEE_LONG_BLADES);
     int sblade = cskills.get_value(SkillType::SKILL_MELEE_SHORT_BLADES);
 
-    if ((skill == SkillType::SKILL_MELEE_LONG_BLADES && lblade == 100) ||
-        (skill == SkillType::SKILL_MELEE_SHORT_BLADES && sblade == 100))
+    if ((skill == SkillType::SKILL_MELEE_LONG_BLADES && lblade == Skills::MAX_SKILL_VALUE) ||
+        (skill == SkillType::SKILL_MELEE_SHORT_BLADES && sblade == Skills::MAX_SKILL_VALUE))
     {
       bonus = BLADES_MASTERY_BONUS;
     }
