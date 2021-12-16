@@ -24,6 +24,9 @@ Shadow of the Wyrm v1.3.8 "Pisador"
   by the item generation algorithm).  Spellbooks are generated as before for
   non-spellcasters.
 
+- Ancient beasts now have some variation in their evade and soak, based on
+  the current danger level.
+
 - Updates to weapons when a creature has 100 skill in a particular weapon
   skill:
 

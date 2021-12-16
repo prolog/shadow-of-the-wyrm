@@ -142,8 +142,8 @@ CreatureGenerationIndex CreatureGenerationManager::generate_ancient_beasts(const
 
       ancient_beast = cf.create_by_race_and_class(Game::instance().get_action_manager_ref(), nullptr, RaceID::RACE_ID_UNKNOWN, "", "", CreatureSex::CREATURE_SEX_NOT_SPECIFIED, CreatureSize::CREATURE_SIZE_HUGE);
       ancient_beast->set_base_damage(dam);
-      ancient_beast->set_evade(danger_level);
-      ancient_beast->set_soak(danger_level);
+      ancient_beast->set_evade(RNG::range(static_cast<int>(danger_level * 0.75), static_cast<int>(danger_level * 1.25)));
+      ancient_beast->set_soak(RNG::range(static_cast<int>(danger_level * 0.75), static_cast<int>(danger_level * 1.25)));
       ancient_beast->set_arcana_points(Statistic(RNG::dice(ap_dice)));
       ancient_beast->set_hit_points(Statistic(RNG::dice(hp_dice)));
       ancient_beast->set_original_id(creature_id);
