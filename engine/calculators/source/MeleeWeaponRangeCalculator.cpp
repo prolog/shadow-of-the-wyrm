@@ -7,10 +7,12 @@ using namespace std;
 
 int MeleeWeaponRangeCalculator::get_primary_melee_range(CreaturePtr creature) const
 {
-  int range = 1;
+  int range = 0;
 
   if (creature != nullptr)
   {
+    range = 1;
+
     const Equipment& equipment = creature->get_equipment();
     WeaponPtr weapon = std::dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED));
 
@@ -40,3 +42,6 @@ int MeleeWeaponRangeCalculator::get_primary_melee_range(CreaturePtr creature) co
   return range;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/MeleeWeaponRangeCalculator_test.cpp"
+#endif

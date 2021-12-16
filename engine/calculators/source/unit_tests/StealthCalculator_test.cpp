@@ -7,7 +7,7 @@ TEST(SW_Engine_Calculators_StealthCalculator, calculate_pct_chance_sneak_attack)
   EXPECT_EQ(0, sc.calculate_pct_chance_sneak_attack(nullptr, nullptr));
 
   CreaturePtr c = std::make_shared<Creature>();
-  std::map<int, int> pct_chance_vals = {{0,0}, {7,1}, {11,1}, {46,4}};
+  std::map<int, int> pct_chance_vals = {{0,0}, {7,1}, {11,2}, {46,9}};
 
   for (const auto& val_pair : pct_chance_vals)
   {

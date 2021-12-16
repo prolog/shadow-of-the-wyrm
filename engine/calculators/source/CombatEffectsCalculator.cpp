@@ -47,12 +47,13 @@ int CombatEffectsCalculator::calculate_knock_back_pct_chance(const AttackType at
 
     if (skill == SkillType::SKILL_MELEE_UNARMED &&
         attacking_creature && 
-        attacking_creature->get_skills().get_value(SkillType::SKILL_MELEE_UNARMED))
+        attacking_creature->get_skills().get_value(SkillType::SKILL_MELEE_UNARMED) == Skills::MAX_SKILL_VALUE)
     {
       bonus += 100;
     }
   }
-  else if (attack_type == AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED)
+  
+  if (attack_type == AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED)
   {
     bonus += 100;
   }

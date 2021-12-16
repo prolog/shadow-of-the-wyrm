@@ -8998,5 +8998,8 @@
     <ClCompile Include="engine\calculators\source\MeleeWeaponRangeCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\MeleeWeaponRangeCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
