@@ -1,5 +1,4 @@
 Me:
-- +soak for ancient beasts?
 - unit test for melee range calc
 - Ensure stunned works properly for NPCs
 - Dungeon gardens/orchards have weird bounds
