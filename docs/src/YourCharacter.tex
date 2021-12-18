@@ -492,6 +492,10 @@ higher this score, the more spells the creature can cast before exhaustion.
 
 \subsection{Skills}
 
+Skills provide a way to interact with the world.  Whether that's scanning
+the depths of a dark dungeon, or skillfully wielding a sword, skills allow
+a character to specialize in many different ways.
+
 \subsubsection{General}
 \begin{itemize}
 \item {\bf Archery}: Skill and damage with ranged weapons.
@@ -552,9 +556,25 @@ $\dagger$ -- Not implemented yet.
 
 All melee weapons can be categorized as one of the following weapon skills: {\bf Axes}, {\bf Short Blades}, {\bf Long Blades}, {\bf Bludgeons}, {\bf Daggers}, {\bf Rods and Staves}, {\bf Spears}, {\bf Unarmed}, {\bf Whips}, {\bf Exotic}.
 
+At their maximum skill value, melee weapons give additional bonuses:
+
+\begin{itemize}
+\item{\bf Axes}: Chance to cleave the opponent in two.
+\item{\bf Short Blades, Long Blades}: +20 Evade.
+\item{\bf Bludgeons, Exotic}: Increased chance to apply status ailments.
+\item{\bf Daggers}: Extra chance to sneak attack.
+\item{\bf Rods and Staves}: +1 Range.
+\item{\bf Spears}: Piercing.
+\item{\bf Unarmed}: Small damage bonus and a chance to knock the opponent back.
+\item{\bf Whips}: Small damage bonus and a chance to apply bloodied and exposed statuses in addition to the whip's damage-based status.
+\end{itemize}
+
 \subsubsection{Ranged Weapons}
 
 All ranged weapons can be categorized as one of the following ranged weapon skills: {\bf Thrown Axes}, {\bf Thrown Blades}, {\bf Thrown Bludgeons}, {\bf Bows}, {\bf Crossbows}, {\bf Thrown Daggers}, {\bf Rocks}, {\bf Slings}, {\bf Thrown Spears}, {\bf Exotic Ranged}.
+
+At their maximum skill value, ranged weapons give an extra damage bonus equal 
+to half the character's level.
 
 \subsubsection{Magic}
 
