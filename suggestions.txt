@@ -1,8 +1,5 @@
 Me:
-- unit test for melee range calc
 - Ensure stunned works properly for NPCs
-- Dungeon gardens/orchards have weird bounds
-- Weaponmasteries in synopsis
 - Weaponmasteries in guidebook
 - Boating: move faster on water
 - Desert/Forest/etc Lore: to-hit, damage, speed bonuses on that terrain
