@@ -29,9 +29,9 @@ const SyllableMap Naming::syllables =
 const map<int, vector<string>> Naming::settlement_syllables =
 {
   {
-    { 1, { "Ad", "Adz", "Aed", "Aer", "Ak", "Alt", "Am", "Amn", "An", "Ap", "Ax", "Bac", "Bak", "Ban", "Cad", "Cam", "Caer", "Dam", "Dan", "Dar", "Den", "Dip", "El", "Ex", "Fan", "Far", "Gan", "Gel", "Gil", "Gon", "Had", "Hal", "Han", "Har", "Hear", "Ix", "Ip", "Kal", "Kan", "Kat", "Ket", "Kit", "Ox", "Pad", "Pan", "Ran", "Tam", "Tar", "Tet", "Sar", "Scar", "Skar", "Star", "Ux", "Var", "Vid", "Vir", "Yad", "Yan", "Yar"} },
+    { 1, { "Ad", "Adz", "Aed", "Aer", "Ak", "Alt", "Am", "Amn", "An", "Ap", "Ax", "Bac", "Bak", "Ban", "Bel", "Cad", "Cam", "Cael", "Caer", "Dam", "Dan", "Dar", "Den", "Dip", "El", "Ex", "Fan", "Far", "Gan", "Gel", "Gil", "Gon", "Had", "Hal", "Han", "Har", "Hear", "Ix", "Ip", "Kal", "Kan", "Kat", "Ket", "Kit", "Ox", "Pad", "Pan", "Ran", "Tam", "Tar", "Tet", "Sar", "Scar", "Skar", "Star", "Ux", "Var", "Vid", "Vir", "Yad", "Yan", "Yar", "Zo", "Zu", "Zy"}},
     { 2, { "a", "al", "ae", "e", "el", "i", "ii", "o", "da", "dae", "de", "di", "do", "du", "ga", "gae", "ge", "gi", "gil", "go", "la", "lae", "le", "li", "lo", "ra", "rae", "re", "ri", "ro", "ru", "sa", "sae", "se", "si", "so", "su", "ta", "te", "to"} },
-    { 3, { "bad", "bae", "bakh", "bal", "bag", "ban", "bar", "bek", "bax", "bex", "bil", "can", "car", "dae", "dan", "den", "dex", "dil", "dix", "el", "fil", "gal", "gan", "gap", "gel", "gen", "gil", "gon", "ham", "hem", "kha", "kam", "kan", "kar", "tam", "tan", "tap", "tax", "tem", "ya", "yar", "yil", "za", "ze"}}
+    { 3, { "bad", "bae", "bakh", "bal", "bag", "ban", "bar", "bek", "bax", "bex", "bil", "can", "car", "dae", "dan", "den", "dex", "dil", "dix", "dor", "el", "fil", "gal", "gan", "gap", "gel", "gen", "gil", "gon", "ham", "hem", "kha", "kam", "kan", "kar", "tam", "tan", "tap", "tax", "tem", "ya", "yar", "yil", "za", "ze"}}
   }
 };
 

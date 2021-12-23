@@ -1,4 +1,5 @@
 Me:
+- Look at Earthsea names?
 - Ensure stunned works properly for NPCs
 - Weaponmasteries in guidebook
 - Boating: move faster on water
