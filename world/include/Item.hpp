@@ -235,7 +235,7 @@ class Item : public ISerializable
 
     std::string id;
     std::string base_id;
-    uint quantity; // the number of items in the stack
+
     std::string usage_description_sid; // the description is usually of the form "a foo", "an eggplant" "the fabled sword x".
     std::string description_sid; // the short description is displayed on the inventory and equipment screens.
     std::string unidentified_usage_description_sid; // the usage description seen when unidentified
@@ -243,6 +243,7 @@ class Item : public ISerializable
     std::string codex_description_sid; // the description displayed in the codex
 
     uint value;
+    uint quantity; // the number of items in the stack
     Weight weight;
     bool readable;
     EquipmentWornLocation worn_location;
