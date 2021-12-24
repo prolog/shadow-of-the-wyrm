@@ -1,12 +1,17 @@
 Me:
+- Stone blocks (50 lbs), sod bricks (20 lbs)
+- Dig, drop: floor tile (floor or dirt floor)
+- Drop 3 stone: rock (based on base item only, not equality)
+- Drop 3 sod: earth
+- Allow wearables to give +HP, +AP
+- Enchanting should rarely up HP/AP. +25 per enchant. 1-5% chance?
+- Wizard staff: +50 AP
 - Look at Earthsea names?
 - Ensure stunned works properly for NPCs
 - Weaponmasteries in guidebook
 - Boating: move faster on water
 - Desert/Forest/etc Lore: to-hit, damage, speed bonuses on that terrain
-- non-uppercase causing crashes in spell list
 - after Godslayer, divine spells gone/Divine skill 0
-- Wizard staff: +50 AP
 - 100 in each melee weapon: should do something.
   - Whips: chance tangle
   - short and long blades: + evade
