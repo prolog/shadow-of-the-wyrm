@@ -28,6 +28,7 @@ Race::Race()
 , has_pockets(false)
 , has_voice(false)
 , has_hair(false)
+, natural(false)
 , has_random_villages(true)
 , settlement_type(SettlementType::SETTLEMENT_TYPE_ORDERLY_VILLAGE)
 , settlement_tile_subtype(TileType::TILE_TYPE_FIELD)
@@ -201,6 +202,16 @@ void Race::set_has_hair(const bool new_has_hair)
 bool Race::get_has_hair() const
 {
   return has_hair;
+}
+
+void Race::set_natural(const bool new_natural)
+{
+  natural = new_natural;
+}
+
+bool Race::get_natural() const
+{
+  return natural;
 }
 
 void Race::set_drops(const map<string, DropParameters>& new_drops)

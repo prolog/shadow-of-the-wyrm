@@ -9,6 +9,7 @@ class SkillsCommandKeys
     static const std::string RANGED_WEAPON_SKILLS;
     static const std::string MAGIC_SKILLS;
     static const std::string SELECT_SKILL;
+    static const std::string SKILL_DESCRIPTION;
     static const std::string EXIT_SKILLS;
 
   protected:

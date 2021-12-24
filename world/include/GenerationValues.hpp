@@ -16,6 +16,7 @@ class GenerationValues : public ISerializable
     bool operator==(const GenerationValues& cgv) const;
 
     void set_current(const int new_current);
+    int decr_current();
     int incr_current();
     int get_current() const;
 

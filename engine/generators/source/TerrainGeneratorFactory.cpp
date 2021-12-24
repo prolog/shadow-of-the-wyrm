@@ -33,7 +33,7 @@
 
 using namespace std;
 using std::dynamic_pointer_cast;
-
+  
 TerrainGeneratorFactory::TerrainGeneratorFactory()
 {
 }
@@ -105,6 +105,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TileType::TILE_TYPE_VILLAGE:
     {      
       GeneratorPtr base_generator = create_generator(tile, map_exit_id, terrain_subtype);
+      base_generator->set_additional_property(MapProperties::MAP_PROPERTIES_SKIP_COASTLINE_GENERATION, std::to_string(true));
       MapPtr base_map = base_generator->generate();
       
       SettlementType settlement_type = SettlementType::SETTLEMENT_TYPE_ORDERLY_VILLAGE;

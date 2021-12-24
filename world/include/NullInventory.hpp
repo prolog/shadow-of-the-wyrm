@@ -7,7 +7,7 @@ class NullInventory : public IInventory
   public:
     bool operator==(const IInventory& inv) const override;
 
-    bool get_allows_items() const override;
+    AllowsItemsType get_allows_items() const override;
     void mark_for_restack() override;
     bool get_marked_for_restack() const override;
 

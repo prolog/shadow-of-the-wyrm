@@ -30,7 +30,7 @@ class CreatureGenerationValues : public GenerationValues
     void clear_allowable_terrain_types();
     void set_allowable_terrain_types(const std::set<TileType>& new_allowable_terrain_types);
     std::set<TileType> get_allowable_terrain_types() const;
-    bool is_terrain_type_allowed(const TileType terrain_type) const;
+    bool is_terrain_types_allowed(const std::set<TileType>& terrain_types) const;
 
     void set_friendly(const bool new_friendly);
     bool get_friendly() const;

@@ -409,6 +409,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\ItemPietyCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\KilnCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\LineOfSightCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\MeleeWeaponRangeCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\MineCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ModifyStatisticsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\NullAttackSpeedCalculator.hpp" />
@@ -727,6 +728,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\include\CavernGenerator.hpp" />
     <ClInclude Include="engine\generators\include\CellularAutomataGenerator.hpp" />
     <ClInclude Include="engine\generators\include\CellularAutomataTypes.hpp" />
+    <ClInclude Include="engine\generators\include\CoastlineGenerator.hpp" />
     <ClInclude Include="engine\generators\include\CrossPillarGenerator.hpp" />
     <ClInclude Include="engine\generators\include\CrossShrineGenerator.hpp" />
     <ClInclude Include="engine\generators\include\CustomAreaGenerator.hpp" />
@@ -1046,6 +1048,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\skills\include\WandcraftSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\WandCreationParameters.hpp" />
     <ClInclude Include="engine\strings\include\ActionTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\ArcanaTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ColourTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\CombatTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ConductTextKeys.hpp" />
@@ -1088,6 +1091,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\strings\include\StatisticTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\StatusAilmentTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\StringTable.hpp" />
+    <ClInclude Include="engine\strings\include\TerrainTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\TextKeys.hpp" />
     <ClInclude Include="engine\strings\include\TextMessages.hpp" />
     <ClInclude Include="engine\strings\include\TileDangerConfirmationKeys.hpp" />
@@ -1244,6 +1248,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\include\DropParameters.hpp" />
     <ClInclude Include="world\include\GenerationProperties.hpp" />
     <ClInclude Include="world\include\IInventory.hpp" />
+    <ClInclude Include="world\include\IntelligenceConstants.hpp" />
     <ClInclude Include="world\include\InventoryFactory.hpp" />
     <ClInclude Include="world\include\ItemProperties.hpp" />
     <ClInclude Include="world\include\Marks.hpp" />
@@ -1528,6 +1533,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\ItemEnchantmentCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\KilnCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\LineOfSightCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\MeleeWeaponRangeCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MineCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\NullAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PacificationCalculator.cpp" />
@@ -1683,6 +1689,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\MeleeWeaponRangeCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\MineCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -2024,6 +2036,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\generators\settlements\source\WalledSettlementGenerator.cpp" />
+    <ClCompile Include="engine\generators\source\CoastlineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\CrossShrineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\FloatingTowerGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MapItemGenerator.cpp" />
@@ -2184,6 +2197,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\strings\source\ArcanaTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\DeathSourceTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\InscriptionTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MembershipTextKeys.cpp" />
@@ -2193,6 +2207,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\strings\source\PartyTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\SettingTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\SettlementTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\TerrainTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\unit_tests\DateTextKeys_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -3826,6 +3841,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\source\DamageFlagFactory.cpp" />
     <ClCompile Include="world\source\DropParameters.cpp" />
     <ClCompile Include="world\source\GenerationProperties.cpp" />
+    <ClCompile Include="world\source\IntelligenceConstants.cpp" />
     <ClCompile Include="world\source\InventoryFactory.cpp" />
     <ClCompile Include="world\source\ItemProperties.cpp" />
     <ClCompile Include="world\source\MapTypes.cpp" />

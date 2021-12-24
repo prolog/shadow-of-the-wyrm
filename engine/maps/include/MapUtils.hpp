@@ -1,6 +1,7 @@
 #pragma once
 #include "BoundingBox.hpp"
 #include "Directions.hpp"
+#include "Generator.hpp"
 #include "Map.hpp"
 #include "Dimensions.hpp"
 #include <set>
@@ -121,6 +122,12 @@ class MapUtils
     static std::vector<CardinalDirection> get_unblocked_door_dirs(MapPtr map, const Coordinate& st_coord, const Coordinate& end_coord);
 
     static bool add_item(MapPtr map, const std::vector<Coordinate>& coords, ItemPtr item);
+
+    static std::vector<Direction> get_coastline_directions(MapPtr map, const Coordinate& c);
+    static Coordinate get_random_coastline_coordinate(MapPtr map);
+    static void set_coastline_generator_dirs(SOTW::Generator* generator, const std::vector<Direction>& coastline_dirs);
+
+    static void update_creatures(MapPtr map);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);

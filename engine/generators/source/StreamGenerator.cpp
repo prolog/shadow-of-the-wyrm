@@ -36,7 +36,12 @@ void StreamGenerator::generate_stream(MapPtr result_map, const int start_col)
       current_row--;
     }
 
-    result_map->insert(current_row, current_col, tg.generate(TileType::TILE_TYPE_RIVER));
+    TilePtr tile = result_map->at(current_row, current_col);
+
+    if (tile != nullptr && tile->get_water_type() == WaterType::WATER_TYPE_UNDEFINED)
+    {
+      result_map->insert(current_row, current_col, tg.generate(TileType::TILE_TYPE_RIVER));
+    }
 
     current_col += modifier;
   }

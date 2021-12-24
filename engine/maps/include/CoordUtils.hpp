@@ -80,6 +80,9 @@ class CoordUtils
     // **  **
     static std::vector<Coordinate> get_border_coordinates(const Coordinate& top_left, const Coordinate& bottom_right, const int length = 0);
     static std::vector<Coordinate> get_corner_coordinates(const Coordinate& top_left, const Coordinate& bottom_right);
+    
+    // Get the coordinates along a particular edge of the map
+    static std::vector<Coordinate> get_edge_coordinates(const Dimensions& dim, const Direction d);
 
     // Are the two line segments "joinable"?  Two segments are joinable iff
     // there is a coordinate adjacent to both.

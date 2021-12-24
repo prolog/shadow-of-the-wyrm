@@ -4,6 +4,7 @@
 class MagicCommandKeys
 {
   public:
+    static const std::string ARCANA;
     static const std::string SELECT_SPELL;
     static const std::string NEXT_PAGE;
     static const std::string PREVIOUS_PAGE;

@@ -22,6 +22,7 @@
 #include "CavernGenerator.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "CryptGenerator.hpp"
+#include "DesertGenerator.hpp"
 #include "DungeonGenerator.hpp"
 #include "FieldGenerator.hpp"
 #include "FileConstants.hpp"
@@ -29,8 +30,10 @@
 #include "ForestGenerator.hpp"
 #include "FortifiedChurchGenerator.hpp"
 #include "Game.hpp"
+#include "GeneratorUtils.hpp"
 #include "GrandTempleGenerator.hpp"
 #include "GraveyardGeneratorFactory.hpp"
+#include "HillsGenerator.hpp"
 #include "IslandSacrificeSiteGenerator.hpp"
 #include "ItemGenerationManager.hpp"
 #include "RockySacrificeSiteGenerator.hpp"
@@ -39,6 +42,7 @@
 #include "RuinsGenerator.hpp"
 #include "MarshGenerator.hpp"
 #include "MineGenerator.hpp"
+#include "ScrubGenerator.hpp"
 #include "SeaGenerator.hpp"
 #include "SettlementGenerator.hpp"
 #include "HamletGenerator.hpp"
@@ -82,6 +86,7 @@ void test_calendar();
 void test_item_generation();
 void test_creature_generation();
 void settlement_name_generation();
+void set_game_player();
 
 // Other maps
 void test_other_maps();
@@ -96,6 +101,7 @@ void test_bresenham_line();
 
 // Terrain generation function prototypes
 std::string generate_field();
+std::string generate_coast();
 std::string generate_field_ruins();
 std::string generate_field_settlement_ruins();
 std::string generate_forest();
@@ -136,7 +142,6 @@ void   settlement_maps();
 void   city_maps();
 void   church_maps();
 void   initialize_settings();
-void   print_skill_name();
 void   race_info();
 void   class_info();
 void   print_race_info(const RaceMap& race_map, const std::string& id);
@@ -432,6 +437,91 @@ std::string generate_field()
 {
   GeneratorPtr field_gen = std::make_unique<FieldGenerator>("");
   MapPtr map = field_gen->generate();
+  std::cout << map_to_string(map, false);
+  return map_to_string(map);
+}
+
+std::string generate_coast()
+{
+  std::cout << "Coast N? ";
+  bool north = false;
+  std::cin >> north;
+
+  std::cout << "Coast S? ";
+  bool south = false;
+  std::cin >> south;
+
+  std::cout << "Coast E? ";
+  bool east = false;
+  std::cin >> east;
+
+  std::cout << "Coast W? ";
+  bool west = false;
+  std::cin >> west;
+
+  std::vector<Direction> coastline_dirs;
+
+  if (north)
+  {
+    coastline_dirs.push_back(Direction::DIRECTION_NORTH);
+  }
+
+  if (south)
+  {
+    coastline_dirs.push_back(Direction::DIRECTION_SOUTH);
+  }
+
+  if (east)
+  {
+    coastline_dirs.push_back(Direction::DIRECTION_EAST);
+  }
+
+  if (west)
+  {
+    coastline_dirs.push_back(Direction::DIRECTION_WEST);
+  }
+
+  GeneratorPtr gen; 
+
+  int choice = 0;
+
+  std::cout << std::endl << "1. Field" << std::endl;
+  std::cout << "2. Forest" << std::endl;
+  std::cout << "3. Desert" << std::endl;
+  std::cout << "4. Scrub" << std::endl;
+  std::cout << "5. Marsh" << std::endl;
+  std::cout << "6. Hills" << std::endl;
+
+  std::cin >> choice;
+
+  switch (choice)
+  {
+    case -1:
+      return "";
+    case 1:
+      gen = std::make_unique<FieldGenerator>("");
+      break;
+    case 2:
+      gen = std::make_unique<ForestGenerator>("");
+      break;
+    case 3:
+      gen = std::make_unique<DesertGenerator>("");
+      break;
+    case 4:
+      gen = std::make_unique<ScrubGenerator>("");
+      break;
+    case 5:
+      gen = std::make_unique<MarshGenerator>("");
+      break;
+    case 6:
+      gen = std::make_unique<HillsGenerator>("");   
+      break;
+    default:
+      return "";
+  }
+
+  MapUtils::set_coastline_generator_dirs(gen.get(), coastline_dirs);
+  MapPtr map = gen->generate();
   std::cout << map_to_string(map, false);
   return map_to_string(map);
 }
@@ -806,6 +896,7 @@ void misc()
     std::cout << "5. Load Custom Map" << std::endl;
     std::cout << "6. Creature Generation" << std::endl;
     std::cout << "7. Settlement Name Generation" << std::endl;
+    std::cout << "8. Set player on Game object" << std::endl;
 
     std::cin >> choice;
     
@@ -830,6 +921,10 @@ void misc()
         test_creature_generation();
       case 7:
         settlement_name_generation();
+        break;
+      case 8:
+        set_game_player();
+        break;
       default:
         break;
     }
@@ -872,7 +967,7 @@ void test_item_generation()
 
   while (item_count > -1 && danger_level > -1 && !filename.empty())
   {
-    std::cout << "Empty filename to quit" << std::endl;
+    std::cout << "-1 to any prompt to quit" << std::endl;
     std::cout << "Item Generation" << std::endl;
     std::cout << "Items to generate: ";
     std::cin >> item_count;
@@ -886,7 +981,7 @@ void test_item_generation()
     std::cout << "Filename: ";
     std::cin >> filename;
 
-    if (item_count > -1 && danger_level > -1 && !filename.empty())
+    if (item_count > -1 && danger_level > -1 && filename != "-1")
     {
       ItemGenerationManager igm;
       ItemGenerationConstraints igc(1, danger_level, rarity, {}, -1);
@@ -976,7 +1071,7 @@ void test_creature_generation()
     std::cout << "Filename: ";
     std::cin >> filename;
 
-    CreatureGenerationIndex generation_list = cgm.generate_creature_generation_map(static_cast<TileType>(tile_type), false, min_level, max_level, Rarity::RARITY_COMMON, {});
+    CreatureGenerationIndex generation_list = cgm.generate_creature_generation_map({ static_cast<TileType>(tile_type) }, false, false, min_level, max_level, Rarity::RARITY_COMMON, {});
     const auto& cgl = generation_list.get();
 
     std::map<std::string, int> creature_count;
@@ -1025,6 +1120,52 @@ void settlement_name_generation()
   }
 }
 
+void set_game_player()
+{
+  CreaturePtr player = std::make_shared<Creature>();
+  player->set_is_player(true, nullptr);
+
+  std::cout << "Cantrips: ";
+  int cantrips = 0;
+  std::cin >> cantrips;
+  player->get_skills().set_value(SkillType::SKILL_MAGIC_CANTRIPS, cantrips);
+
+  std::cout << "Arcane: ";
+  int arcane = 0;
+  std::cin >> arcane;
+  player->get_skills().set_value(SkillType::SKILL_MAGIC_ARCANE, arcane);
+
+  std::cout << "Divine: ";
+  int divine = 0;
+  std::cin >> divine;
+  player->get_skills().set_value(SkillType::SKILL_MAGIC_DIVINE, divine);
+
+  std::cout << "Mystic: ";
+  int mystic = 0;
+  std::cin >> mystic;
+  player->get_skills().set_value(SkillType::SKILL_MAGIC_MYSTIC, mystic);
+
+  std::cout << "Primordial: ";
+  int primordial = 0;
+  std::cin >> primordial;
+  player->get_skills().set_value(SkillType::SKILL_MAGIC_PRIMORDIAL, primordial);
+
+  Dimensions d;
+  MapPtr map = std::make_shared<Map>(d);
+  GeneratorUtils::fill(map, { 0,0 }, { d.get_y() - 1, d.get_x() - 1 }, TileType::TILE_TYPE_FIELD);
+  TilePtr tile = map->at(0, 0);
+  
+  if (tile != nullptr)
+  {
+    tile->set_creature(player);
+  }
+
+  map->set_map_id("default");
+  map->set_permanent(true);
+
+  Game::instance().set_current_map(map);
+}
+
 void test_bresenham_line()
 {
   int start_y, start_x, end_y, end_x;
@@ -1055,13 +1196,6 @@ void test_bresenham_line()
       }
     }
   }  
-}
-
-void print_skill_name()
-{
-  AwarenessSkill awareness;
-  std::string awareness_skill_name = StringTable::get(awareness.get_skill_name_sid());
-  std::cout << awareness_skill_name << std::endl;
 }
 
 void test_rng()
@@ -1390,7 +1524,7 @@ int main(int argc, char* argv[])
     std::cout << "11. Sea" << std::endl;
     std::cout << "12. World" << std::endl;
     std::cout << "13. Cavern" << std::endl;
-    std::cout << "14. Quick skill name test" << std::endl;
+    std::cout << "14. Coastline" << std::endl;
     std::cout << "15. Display race info" << std::endl;
     std::cout << "16. Display class info" << std::endl;
     std::cout << "17. City-adjacent maps" << std::endl;
@@ -1455,7 +1589,8 @@ int main(int argc, char* argv[])
         output_map(map, "cavern_test.html");
         break;
       case 14:
-        print_skill_name();
+        map = generate_coast();
+        output_map(map, "coast_test.html");
         break;
       case 15:
         race_info();

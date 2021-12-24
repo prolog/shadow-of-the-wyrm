@@ -2,6 +2,7 @@
 #include "Conversion.hpp"
 #include "SkillsDumper.hpp"
 #include "SkillTextKeys.hpp"
+
 using namespace std;
 
 SkillsDumper::SkillsDumper(CreaturePtr new_creature, const uint new_num_cols)
@@ -15,7 +16,29 @@ SkillsDumper::~SkillsDumper()
 
 string SkillsDumper::str() const
 {
-  return get_skills();
+  if (creature == nullptr)
+  {
+    return "";
+  }
+
+  ostringstream ss;
+
+  ss << get_skills();
+
+  string melee_masteries = get_masteries(SkillTextKeys::SKILLS_MELEE_WEAPON_MASTERIES, SkillType::SKILL_MELEE_BEGIN, SkillType::SKILL_MELEE_LAST);
+  string ranged_masteries = get_masteries(SkillTextKeys::SKILLS_THROWN_WEAPON_MASTERIES, SkillType::SKILL_RANGED_BEGIN, SkillType::SKILL_RANGED_LAST);
+
+  if (!melee_masteries.empty())
+  {
+    ss << melee_masteries;
+  }
+
+  if (!ranged_masteries.empty())
+  {
+    ss << ranged_masteries;
+  }
+
+  return ss.str();
 }
 
 string SkillsDumper::get_skills() const
@@ -127,5 +150,50 @@ string SkillsDumper::get_magical_skills() const
 {
   string magical_skills = get_skills_by_category(SkillCategory::SKILL_CATEGORY_MAGIC);
   return magical_skills;
+}
+
+string SkillsDumper::get_masteries(const string& header_sid, const SkillType begin_inclusive, const SkillType end_exclusive) const
+{
+  ostringstream ss;
+  vector<string> mastery_sids;
+
+  if (creature != nullptr)
+  {
+    Skills& skills = creature->get_skills();
+
+    for (int i = static_cast<int>(begin_inclusive); i < static_cast<int>(end_exclusive); i++)
+    {
+      Skill* skill = skills.get_skill(static_cast<SkillType>(i));
+
+      if (skill != nullptr)
+      {
+        int sval = skill->get_value();
+
+        if (sval == Skills::MAX_SKILL_VALUE)
+        {
+          string mastery_sid = skill->get_mastery_sid();
+
+          if (!mastery_sid.empty())
+          {
+            mastery_sids.push_back(mastery_sid);
+          }
+        }
+      }
+    }
+  }
+
+  if (!mastery_sids.empty())
+  {
+    ss << String::centre(StringTable::get(header_sid), num_cols) << endl << endl;
+    
+    for (const string& mastery_sid : mastery_sids)
+    {
+      ss << StringTable::get(mastery_sid) << endl << endl;
+    }
+
+    ss << endl;
+  }
+
+  return ss.str();
 }
 

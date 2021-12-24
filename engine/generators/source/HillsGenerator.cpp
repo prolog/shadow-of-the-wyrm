@@ -1,3 +1,4 @@
+#include "GeneratorUtils.hpp"
 #include "HillsGenerator.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
@@ -52,6 +53,8 @@ MapPtr HillsGenerator::generate(const Dimensions& dim)
       result_map->insert(row, col, tile);
     }
   }
+
+  GeneratorUtils::potentially_generate_coastline(result_map, this);
 
   // The early hill-people made barrows instead of using grave-markers.
   if (RNG::percent_chance(15))

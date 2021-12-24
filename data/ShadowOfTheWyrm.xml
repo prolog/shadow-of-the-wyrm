@@ -451,6 +451,7 @@
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
+			<Natural>0</Natural>
 			<NameSID>UNKNOWN_RACE_NAME</NameSID>
 			<Size>4</Size>
 			<AgeInfo>
@@ -521,6 +522,7 @@
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
+			<Natural>1</Natural>
 			<NameSID>ANIMAL_RACE_NAME</NameSID>
 			<Size>1</Size>
 			<AgeInfo>
@@ -591,6 +593,7 @@
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
+			<Natural>1</Natural>
 			<Drops>
 				<Drop>
 					<ID>_quill</ID>
@@ -667,6 +670,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
+			<Natural>0</Natural>
 			<Drops>
 				<Drop>
 					<ID>_magici_shard</ID>
@@ -742,6 +746,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
+			<Natural>0</Natural>
 			<NameSID>DEMON_RACE_NAME</NameSID>
 			<Size>3</Size>
 			<AgeInfo>
@@ -811,6 +816,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
+			<Natural>0</Natural>
 			<NameSID>DIVINE_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -880,6 +886,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
+			<Natural>0</Natural>
 			<Drops>
 				<Drop>
 					<ID>_currency</ID>
@@ -957,6 +964,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
+			<Natural>0</Natural>
 			<NameSID>ELYSIAN_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<Hungerless>1</Hungerless>
@@ -1030,6 +1038,7 @@
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
+			<Natural>1</Natural>
 			<NameSID>INSECT_RACE_NAME</NameSID>
 			<Size>1</Size>
 			<AgeInfo>
@@ -1101,6 +1110,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
+			<Natural>1</Natural>
 			<NameSID>JELLY_RACE_NAME</NameSID>
 			<Size>1</Size>
 			<AgeInfo>
@@ -1170,6 +1180,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>0</HasHair>
+			<Natural>0</Natural>
 			<NameSID>MONSTER_RACE_NAME</NameSID>
 			<Size>3</Size>
 			<AgeInfo>
@@ -1241,6 +1252,7 @@
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
+			<Natural>1</Natural>
 			<NameSID>PLANT_RACE_NAME</NameSID>
 			<Size>3</Size>
 			<AgeInfo>
@@ -1310,6 +1322,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
+			<Natural>0</Natural>
 			<NameSID>UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1375,6 +1388,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
+			<Natural>0</Natural>
 			<NameSID>CORPOREAL_UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1442,6 +1456,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
+			<Natural>0</Natural>
 			<NameSID>SPIRIT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1508,6 +1523,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>0</HasHair>
+			<Natural>1</Natural>
 			<Drops>
 				<Drop>
 					<ID>_magici_shard</ID>
@@ -1577,6 +1593,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
+			<Natural>0</Natural>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_1_NAME</NameSID>
@@ -1669,6 +1686,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
+			<Natural>0</Natural>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
 			<NameSID>RACE_2_NAME</NameSID>
@@ -1759,6 +1777,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
+			<Natural>0</Natural>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_3_NAME</NameSID>
@@ -1850,6 +1869,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>0</HasHair>
+			<Natural>0</Natural>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_4_NAME</NameSID>
@@ -1938,6 +1958,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
+			<Natural>0</Natural>
 			<HasRandomVillages>0</HasRandomVillages>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
@@ -2028,6 +2049,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
+			<Natural>0</Natural>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_6_NAME</NameSID>
@@ -2118,6 +2140,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
+			<Natural>0</Natural>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_7_NAME</NameSID>
@@ -2208,6 +2231,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
+			<Natural>0</Natural>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>1</SettlementTileSubtype>
 			<NameSID>RACE_8_NAME</NameSID>
@@ -2294,6 +2318,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
+			<Natural>0</Natural>
 			<SettlementType>1</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_9_NAME</NameSID>
@@ -2381,6 +2406,7 @@
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
+			<Natural>0</Natural>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_10_NAME</NameSID>
@@ -4989,6 +5015,7 @@
 	<Spells>
 		<Spell id="c_01_minor_healing">
 			<NameSID>MINOR_HEALING_NAME_SID</NameSID>
+			<DescriptionSID>MINOR_HEALING_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>MINOR_HEALING_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>MINOR_HEALING_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5012,6 +5039,7 @@
 		</Spell>
 		<Spell id="c_02_flame_dart">
 			<NameSID>FLAME_DART_NAME_SID</NameSID>
+			<DescriptionSID>FLAME_DART_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>FLAME_DART_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>FLAME_DART_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5030,6 +5058,7 @@
 		</Spell>
 		<Spell id="c_03_steel_wind">
 			<NameSID>STEEL_WIND_NAME_SID</NameSID>
+			<DescriptionSID>STEEL_WIND_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>STEEL_WIND_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>STEEL_WIND_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5057,6 +5086,7 @@
 		</Spell>
 		<Spell id="c_04_blink">
 			<NameSID>BLINK_NAME_SID</NameSID>
+			<DescriptionSID>BLINK_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>BLINK_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>BLINK_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5076,6 +5106,7 @@
 		</Spell>
 		<Spell id="c_05_spirit_bolt">
 			<NameSID>SPIRIT_BOLT_NAME_SID</NameSID>
+			<DescriptionSID>SPIRIT_BOLT_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>SPIRIT_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>SPIRIT_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5094,6 +5125,7 @@
 		</Spell>
 		<Spell id="c_06_purify">
 			<NameSID>PURIFY_NAME_SID</NameSID>
+			<DescriptionSID>PURIFY_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>PURIFY_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>PURIFY_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5107,6 +5139,7 @@
 		</Spell>
 		<Spell id="c_07_antimagic_shield">
 			<NameSID>ANTIMAGIC_SHIELD_NAME_SID</NameSID>
+			<DescriptionSID>ANTIMAGIC_SHIELD_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>ANTIMAGIC_SHIELD_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>ANTIMAGIC_SHIELD_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5126,6 +5159,7 @@
 		</Spell>
 		<Spell id="c_08_bravery">
 			<NameSID>BRAVERY_NAME_SID</NameSID>
+			<DescriptionSID>BRAVERY_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>BRAVERY_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>BRAVERY_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5149,6 +5183,7 @@
 		</Spell>
 		<Spell id="c_09_force_bolt">
 			<NameSID>FORCE_BOLT_NAME_SID</NameSID>
+			<DescriptionSID>FORCE_BOLT_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>FORCE_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>FORCE_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5167,6 +5202,7 @@
 		</Spell>
 		<Spell id="c_10_cleansing">
 			<NameSID>CLEANSING_NAME_SID</NameSID>
+			<DescriptionSID>CLEANING_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>CLEANSING_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>CLEANSING_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5180,6 +5216,7 @@
 		</Spell>
 		<Spell id="c_11_blast">
 			<NameSID>BLAST_NAME_SID</NameSID>
+			<DescriptionSID>BLAST_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>BLAST_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>BLAST_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5199,6 +5236,7 @@
 		</Spell>
 		<Spell id="c_12_mapping">
 			<NameSID>MAPPING_NAME_SID</NameSID>
+			<DescriptionSID>MAPPING_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>MAPPING_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>MAPPING_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5212,6 +5250,7 @@
 		</Spell>		
 		<Spell id="c_13_crumble">
 			<NameSID>CRUMBLE_NAME_SID</NameSID>
+			<DescriptionSID>CRUMBLE_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>CRUMBLE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>CRUMBLE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5225,6 +5264,7 @@
 		</Spell>		
 		<Spell id="c_14_inferno">
 			<NameSID>INFERNO_NAME_SID</NameSID>
+			<DescriptionSID>INFERNO_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>INFERNO_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>INFERNO_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5244,6 +5284,7 @@
 		</Spell>
 		<Spell id="c_15_shards">
 			<NameSID>SHARDS_NAME_SID</NameSID>
+			<DescriptionSID>SHARDS_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>SHARDS_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>SHARDS_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5263,6 +5304,7 @@
 		</Spell>
 		<Spell id="c_16_electric_arc">
 			<NameSID>ELECTRIC_ARC_NAME_SID</NameSID>
+			<DescriptionSID>ELECTRIC_ARC_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>ELECTRIC_ARC_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>ELECTRIC_ARC_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5282,6 +5324,7 @@
 		</Spell>
 		<Spell id="c_17_repel">
 			<NameSID>REPEL_NAME_SID</NameSID>
+			<DescriptionSID>REPEL_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>REPEL_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>REPEL_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5295,6 +5338,7 @@
 		</Spell>
 		<Spell id="c_18_glow">
 			<NameSID>GLOW_NAME_SID</NameSID>
+			<DescriptionSID>GLOW_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>GLOW_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>GLOW_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
@@ -5309,6 +5353,7 @@
 		</Spell>
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
+			<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>WREATH_OF_FIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>WREATH_OF_FIRE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5327,6 +5372,7 @@
 		</Spell>
 		<Spell id="a_02_dragon_breath">
 			<NameSID>DRAGON_BREATH_NAME_SID</NameSID>
+			<DescriptionSID>DRAGON_BREATH_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>DRAGON_BREATH_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>DRAGON_BREATH_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5345,6 +5391,7 @@
 		</Spell>		
 		<Spell id="a_03_lightning_bolt">
 			<NameSID>LIGHTNING_BOLT_NAME_SID</NameSID>
+			<DescriptionSID>LIGHTNING_BOLT_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>LIGHTNING_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>LIGHTNING_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5363,6 +5410,7 @@
 		</Spell>		
 		<Spell id="a_04_shockwave">
 			<NameSID>SHOCKWAVE_NAME_SID</NameSID>
+			<DescriptionSID>SHOCKWAVE_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>SHOCKWAVE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>SHOCKWAVE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5381,6 +5429,7 @@
 		</Spell>
 		<Spell id="a_05_flight">
 			<NameSID>FLIGHT_NAME_SID</NameSID>
+			<DescriptionSID>FLIGHT_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>FLIGHT_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>FLIGHT_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5394,6 +5443,7 @@
 		</Spell>		
 		<Spell id="a_06_cross_of_flame">
 			<NameSID>CROSS_OF_FLAME_NAME_SID</NameSID>
+			<DescriptionSID>CROSS_OF_FLAME_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>CROSS_OF_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>CROSS_OF_FLAME_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5413,6 +5463,7 @@
 		</Spell>
 		<Spell id="a_07_fireball">
 			<NameSID>FIREBALL_NAME_SID</NameSID>
+			<DescriptionSID>FIREBALL_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>FIREBALL_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>FIREBALL_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5432,6 +5483,7 @@
 		</Spell>
 		<Spell id="a_08_elemental_mastery">
 			<NameSID>ELEMENTAL_MASTERY_NAME_SID</NameSID>
+			<DescriptionSID>ELEMENTAL_MASTERY_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>ELEMENTAL_MASTERY_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>ELEMENTAL_MASTERY_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5459,6 +5511,7 @@
 		</Spell>
 		<Spell id="a_09_frost_bolt">
 			<NameSID>FROST_BOLT_NAME_SID</NameSID>
+			<DescriptionSID>FROST_BOLT_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>FROST_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>FROST_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5477,6 +5530,7 @@
 		</Spell>
 		<Spell id="a_10_fire_storm">
 			<NameSID>FIRE_STORM_NAME_SID</NameSID>
+			<DescriptionSID>FIRE_STORM_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>FIRE_STORM_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>FIRE_STORM_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5496,6 +5550,7 @@
 		</Spell>
 		<Spell id="a_11_ice_storm">
 			<NameSID>ICE_STORM_NAME_SID</NameSID>
+			<DescriptionSID>ICE_STORM_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>ICE_STORM_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>ICE_STORM_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5515,6 +5570,7 @@
 		</Spell>
 		<Spell id="a_12_lightning_storm">
 			<NameSID>LIGHTNING_STORM_NAME_SID</NameSID>
+			<DescriptionSID>LIGHTNING_STORM_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>LIGHTNING_STORM_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>LIGHTNING_STORM_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5534,6 +5590,7 @@
 		</Spell>
 		<Spell id="a_13_maelstrom">
 			<NameSID>MAELSTROM_NAME_SID</NameSID>
+			<DescriptionSID>MAELSTROM_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>MAELSTROM_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>MAELSTROM_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5553,6 +5610,7 @@
 		</Spell>
 		<Spell id="a_14_absolute_zero">
 			<NameSID>ABSOLUTE_ZERO_NAME_SID</NameSID>
+			<DescriptionSID>ABSOLUTE_ZERO_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>ABSOLUTE_ZERO_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>ABSOLUTE_ZERO_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5572,6 +5630,7 @@
 		</Spell>
 		<Spell id="a_15_vorpal_bolt">
 			<NameSID>VORPAL_BOLT_NAME_SID</NameSID>
+			<DescriptionSID>VORPAL_BOLT_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>VORPAL_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>VORPAL_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5590,6 +5649,7 @@
 		</Spell>
 		<Spell id="a_16_dig">
 			<NameSID>DIG_NAME_SID</NameSID>
+			<DescriptionSID>DIG_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>DIG_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>DIG_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5603,6 +5663,7 @@
 		</Spell>
 		<Spell id="a_17_holocaust">
 			<NameSID>HOLOCAUST_NAME_SID</NameSID>
+			<DescriptionSID>HOLOCAUST_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>HOLOCAUST_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>HOLOCAUST_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5621,6 +5682,7 @@
 		</Spell>
 		<Spell id="a_18_wyrmfire"> <!-- no spellbook -->
 			<NameSID>WYRMFIRE_NAME_SID</NameSID>
+			<DescriptionSID>WYRMFIRE_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>WYRMFIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>WYRMFIRE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5644,6 +5706,7 @@
 		</Spell>
 		<Spell id="a_19_meteor">
 			<NameSID>METEOR_NAME_SID</NameSID>
+			<DescriptionSID>METEOR_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>METEOR_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>METEOR_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5670,6 +5733,7 @@
 		</Spell>
 		<Spell id="a_20_teleport">
 			<NameSID>TELEPORT_NAME_SID</NameSID>
+			<DescriptionSID>TELEPORT_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>TELEPORT_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>TELEPORT_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5683,6 +5747,7 @@
 		</Spell>
 		<Spell id="a_21_warp">
 			<NameSID>WARP_NAME_SID</NameSID>
+			<DescriptionSID>WARP_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>WARP_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>WARP_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
@@ -5696,6 +5761,7 @@
 		</Spell>
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
+			<DescriptionSID>HEALING_WORD_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>HEALING_WORD_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>HEALING_WORD_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3001</MagicCategory>
@@ -5709,6 +5775,7 @@
 		</Spell>
 		<Spell id="d_02_smite">
 			<NameSID>SMITE_NAME_SID</NameSID>
+			<DescriptionSID>SMITE_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>SMITE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>SMITE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3001</MagicCategory>
@@ -5729,6 +5796,7 @@
 		</Spell>
 		<Spell id="d_03_holy">
 			<NameSID>HOLY_NAME_SID</NameSID>
+			<DescriptionSID>HOLY_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>HOLY_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>HOLY_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3001</MagicCategory>
@@ -5749,6 +5817,7 @@
 		</Spell>
 		<Spell id="d_04_divine_wind">
 			<NameSID>DIVINE_WIND_SID</NameSID>
+			<DescriptionSID>DIVINE_WIND_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>DIVINE_WIND_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>DIVINE_WIND_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3001</MagicCategory>
@@ -5772,6 +5841,7 @@
 		</Spell>
 		<Spell id="d_05_divine_shield">
 			<NameSID>DIVINE_SHIELD_SID</NameSID>
+			<DescriptionSID>DIVINE_SHIELD_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>DIVINE_SHIELD_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>DIVINE_SHIELD_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3001</MagicCategory>
@@ -5795,6 +5865,7 @@
 		</Spell>
 		<Spell id="d_06_cure">
 			<NameSID>CURE_NAME_SID</NameSID>
+			<DescriptionSID>CURE_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>CURE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>CURE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3001</MagicCategory>
@@ -5808,6 +5879,7 @@
 		</Spell>
 		<Spell id="d_07_soften">
 			<NameSID>SOFTEN_NAME_SID</NameSID>
+			<DescriptionSID>SOFTEN_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>SOFTEN_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>SOFTEN_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3001</MagicCategory>
@@ -5821,6 +5893,7 @@
 		</Spell>
 		<Spell id="d_08_benediction">
 			<NameSID>BENEDICTION_NAME_SID</NameSID>
+			<DescriptionSID>BENEDICTION_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>BENEDICTION_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>BENEDICTION_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3001</MagicCategory>
@@ -5844,6 +5917,7 @@
 		</Spell>
 		<Spell id="d_09_heavenly_hand">
 			<NameSID>HEAVENLY_HAND_NAME_SID</NameSID>
+			<DescriptionSID>HEAVENLY_HAND_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>HEAVENLY_HAND_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>HEAVENLY_HAND_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3001</MagicCategory>
@@ -5875,6 +5949,7 @@
 		</Spell>
 		<Spell id="d_10_radiant_beam">
 			<NameSID>RADIANT_BEAM_NAME_SID</NameSID>
+			<DescriptionSID>RADIANT_BEAM_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>RADIANT_BEAM_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>RADIANT_BEAM_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3001</MagicCategory>
@@ -5894,6 +5969,7 @@
 		</Spell>		
 		<Spell id="d_11_divine_form">
 			<NameSID>DIVINE_FORM_NAME_SID</NameSID>
+			<DescriptionSID>DIVINE_FORM_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>DIVINE_FORM_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>DIVINE_FORM_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3001</MagicCategory>
@@ -5953,6 +6029,7 @@
 		</Spell>
 		<Spell id="d_12_absolution">
 			<NameSID>ABSOLUTION_NAME_SID</NameSID>
+			<DescriptionSID>ABSOLUTION_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>ABSOLUTION_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>ABSOLUTION_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3001</MagicCategory>
@@ -5978,6 +6055,7 @@
 		</Spell>		
 		<Spell id="m_01_wraith_form">
 			<NameSID>WRAITH_FORM_NAME_SID</NameSID>
+			<DescriptionSID>WRAITH_FORM_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>WRAITH_FORM_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>WRAITH_FORM_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -5991,6 +6069,7 @@
 		</Spell>		
 		<Spell id="m_02_poison">
 			<NameSID>POISON_NAME_SID</NameSID>
+			<DescriptionSID>POISON_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>POISON_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>POISON_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6010,6 +6089,7 @@
 		</Spell>		
 		<Spell id="m_03_blind">
 			<NameSID>BLIND_NAME_SID</NameSID>
+			<DescriptionSID>BLIND_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>BLIND_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>BLIND_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6032,6 +6112,7 @@
 		</Spell>		
 		<Spell id="m_04_mute">
 			<NameSID>MUTE_NAME_SID</NameSID>
+			<DescriptionSID>MUTE_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>MUTE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>MUTE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6054,6 +6135,7 @@
 		</Spell>		
 		<Spell id="m_05_spellbind">
 			<NameSID>SPELLBIND_NAME_SID</NameSID>
+			<DescriptionSID>SPELLBIND_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>SPELLBIND_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>SPELLBIND_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6076,6 +6158,7 @@
 		</Spell>		
 		<Spell id="m_06_haste">
 			<NameSID>HASTE_NAME_SID</NameSID>
+			<DescriptionSID>HASTE_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>HASTE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>HASTE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6089,6 +6172,7 @@
 		</Spell>		
 		<Spell id="m_07_slow">
 			<NameSID>SLOW_NAME_SID</NameSID>
+			<DescriptionSID>SLOW_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>SLOW_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>SLOW_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6111,6 +6195,7 @@
 		</Spell>		
 		<Spell id="m_08_stone">
 			<NameSID>STONE_NAME_SID</NameSID>
+			<DescriptionSID>STONE_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>STONE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>STONE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6133,6 +6218,7 @@
 		</Spell>		
 		<Spell id="m_09_curse">
 			<NameSID>CURSE_NAME_SID</NameSID>
+			<DescriptionSID>CURSE_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>CURSE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>CURSE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6196,6 +6282,7 @@
 		</Spell>		
 		<Spell id="m_10_aim">
 			<NameSID>AIM_NAME_SID</NameSID>
+			<DescriptionSID>AIM_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>AIM_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>AIM_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6219,6 +6306,7 @@
 		</Spell>		
 		<Spell id="m_11_haze">
 			<NameSID>HAZE_NAME_SID</NameSID>
+			<DescriptionSID>HAZE_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>HAZE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>HAZE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6242,6 +6330,7 @@
 		</Spell>		
 		<Spell id="m_12_timewalk">
 			<NameSID>TIMEWALK_NAME_SID</NameSID>
+			<DescriptionSID>TIMEWALK_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>TIMEWALK_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>TIMEWALK_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6261,6 +6350,7 @@
 		</Spell>		
 		<Spell id="m_13_uncurse">
 			<NameSID>UNCURSE_NAME_SID</NameSID>
+			<DescriptionSID>UNCURSE_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>UNCURSE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>UNCURSE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6274,6 +6364,7 @@
 		</Spell>
 		<Spell id="m_14_detect_traps">
 			<NameSID>DETECT_TRAPS_NAME_SID</NameSID>
+			<DescriptionSID>DETECT_TRAPS_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>DETECT_TRAPS_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>DETECT_TRAPS_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6287,6 +6378,7 @@
 		</Spell>
 		<Spell id="m_15_bless">
 			<NameSID>BLESS_NAME_SID</NameSID>
+			<DescriptionSID>BLESS_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>BLESS_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>BLESS_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6300,6 +6392,7 @@
 		</Spell>
 		<Spell id="m_16_malediction">
 			<NameSID>MALEDICTION_NAME_SID</NameSID>
+			<DescriptionSID>MALEDICTION_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>MALEDICTION_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>MALEDICTION_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6332,6 +6425,7 @@
 		</Spell>
 		<Spell id="m_17_rage">
 			<NameSID>RAGE_NAME_SID</NameSID>
+			<DescriptionSID>RAGE_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>RAGE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>RAGE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6345,6 +6439,7 @@
 		</Spell>
 		<Spell id="m_18_stun_bolt">
 			<NameSID>STUN_BOLT_NAME_SID</NameSID>
+			<DescriptionSID>STUN_BOLT_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>STUN_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>STUN_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6364,6 +6459,7 @@
 		</Spell>				
 		<Spell id="m_19_paralyze">
 			<NameSID>PARALYZE_NAME_SID</NameSID>
+			<DescriptionSID>PARALYZE_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>PARALYZE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>PARALYZE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3002</MagicCategory>
@@ -6383,6 +6479,7 @@
 		</Spell>				
 		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
+			<DescriptionSID>SHADOW_FLAME_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>SHADOW_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>SHADOW_FLAME_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
@@ -6401,6 +6498,7 @@
 		</Spell>
 		<Spell id="p_02_curse_of_shadows">
 			<NameSID>CURSE_OF_SHADOWS_NAME_SID</NameSID>
+			<DescriptionSID>CURSE_OF_SHADOWS_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>CURSE_OF_SHADOWS_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>CURSE_OF_SHADOWS_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
@@ -6424,6 +6522,7 @@
 		</Spell>
 		<Spell id="p_03_cloak_of_shadows">
 			<NameSID>CLOAK_OF_SHADOWS_NAME_SID</NameSID>
+			<DescriptionSID>CLOAK_OF_SHADOWS_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>CLOAK_OF_SHADOWS_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>CLOAK_OF_SHADOWS_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
@@ -6455,6 +6554,7 @@
 		</Spell>
 		<Spell id="p_04_nether_bolt">
 			<NameSID>NETHER_BOLT_NAME_SID</NameSID>
+			<DescriptionSID>NETHER_BOLT_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>NETHER_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>NETHER_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
@@ -6474,6 +6574,7 @@
 		</Spell>
 		<Spell id="p_05_chaos_aura">
 			<NameSID>CHAOS_AURA_NAME_SID</NameSID>
+			<DescriptionSID>CHAOS_AURA_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>CHAOS_AURA_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>CHAOS_AURA_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
@@ -6493,6 +6594,7 @@
 		</Spell>
 		<Spell id="p_06_nightfire">
 			<NameSID>NIGHTFIRE_NAME_SID</NameSID>
+			<DescriptionSID>NIGHTFIRE_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>NIGHTFIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>NIGHTFIRE_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
@@ -6512,6 +6614,7 @@
 		</Spell>
 		<Spell id="p_07_umbra">
 			<NameSID>UMBRA_NAME_SID</NameSID>
+			<DescriptionSID>UMBRA_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>UMBRA_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>UMBRA_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
@@ -6531,6 +6634,7 @@
 		</Spell>
 		<Spell id="p_08_veil_of_shadows">
 			<NameSID>VEIL_OF_SHADOWS_NAME_SID</NameSID>
+			<DescriptionSID>VEIL_OF_SHADOWS_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>VEIL_OF_SHADOWS_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>VEIL_OF_SHADOWS_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
@@ -6550,6 +6654,7 @@
 		</Spell>
 		<Spell id="p_09_antimatter">
 			<NameSID>ANTIMATTER_NAME_SID</NameSID>
+			<DescriptionSID>ANTIMATTER_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>ANTIMATTER_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>ANTIMATTER_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
@@ -6569,6 +6674,7 @@
 		</Spell>
 		<Spell id="p_10_annihilation">
 			<NameSID>ANNIHILATION_NAME_SID</NameSID>
+			<DescriptionSID>ANNIHILATION_DESCRIPTION_SID</DescriptionSID>
 			<PlayerCastMessageSID>ANNIHILATION_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>ANNIHILATION_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>

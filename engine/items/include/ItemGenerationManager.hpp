@@ -24,10 +24,13 @@ class ItemGenerationManager
   protected:
     friend class SW_Engine_Items_ItemGenerationManager;
 
+    void initialize_spellbook_squelch_pct();
+
     ItemType generate_item_type_by_val(const int rng_val) const;
 
     bool does_item_match_generation_criteria(const GenerationValues& gv, const int min_danger_level, const int max_danger_level, const Rarity rarity, const std::vector<ItemType>& item_type_restrictions, const int min_value);
     Rarity get_item_rarity(const Rarity generation_rarity) const;
 
+    int spellbook_squelch_pct;
     std::map<Rarity, std::vector<std::pair<Rarity, int>>> rarity_chances;
 };

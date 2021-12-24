@@ -16,6 +16,7 @@ class SkillsAction : public IActionManager
     ActionCostValue show_magic_skills(CreaturePtr creature);
 
     ActionCostValue improve_skill(CreaturePtr creature, const SkillType st);
+    ActionCostValue describe_skill(CreaturePtr creature, const SkillType st);
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 

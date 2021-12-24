@@ -15,8 +15,14 @@ class SelectSpellCommand : public SpellCommand
 {
   public:
     SelectSpellCommand(const int spell_idx, const int key);
-    
-//    virtual EquipmentWornLocation get_equipment_worn_location() const = 0;
+};
+
+class ArcanaCommand : public SpellCommand
+{
+  public:
+    ArcanaCommand(const int spell_idx, const int key);
+
+    static const std::string ARCANA_ID;
 };
 
 class NextPageMagicCommand : public Command

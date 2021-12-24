@@ -40,6 +40,13 @@ void WildOrchardGenerator::add_map_features(MapPtr map)
   {
     for (int col = 0; col < cols; col++)
     {
+      TilePtr tile = map->at(row, col);
+
+      if (tile && tile->get_water_type() != WaterType::WATER_TYPE_UNDEFINED)
+      {
+        continue;
+      }
+
       TilePtr current_tile;
 
       int shrub = RNG::range(1, 100);

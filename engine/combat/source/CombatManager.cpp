@@ -186,7 +186,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     int target_number_value = ctn_calculator->calculate(attacking_creature, attacked_creature);
 
     Damage damage = determine_damage(attacking_creature, predefined_damage.get(), damage_calculator.get());
-        
+    
     // Automatic miss is checked first
     if (is_automatic_miss(d100_roll))
     {
@@ -231,8 +231,6 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     }
   }
 
-  send_combat_messages(attacking_creature);
-  
   return action_cost_value;
 }
 
@@ -517,15 +515,6 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   // If this is a tertiary unarmed attack (kicking), there is a chance that 
   // the creature is knocked back, given the existence of an open tile.
   int damage_dealt = 0;
-  knock_back_creature_if_necessary(attack_type, attacking_creature, attacked_creature, game, current_map);
-
-  // This may have killed the creature due to traps present and triggered on
-  // the new tile.  If so, be sure not to do the rest of the damage 
-  // application.
-  if (attacked_creature != nullptr && attacked_creature->is_dead())
-  {
-    return damage_dealt;
-  }
 
   // Deal damage.
   PhaseOfMoonCalculator pomc;
@@ -536,12 +525,21 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   float soak_multiplier = hit_calculator->get_soak_multiplier();
   damage_dealt = damage_calc->calculate(attacked_creature, sneak_attack, slays_race, combat_damage_fixed, base_damage, soak_multiplier);
 
-  bool highlight_damage_msg = check_highlight_damage(attacked_creature, hit_type_enum, damage_dealt);
-
   // Add the text so far.
+  bool highlight_damage_msg = check_highlight_damage(attacked_creature, hit_type_enum, damage_dealt);
   add_combat_message(attacking_creature, attacked_creature, combat_message.str(), highlight_damage_msg);
   add_any_necessary_damage_messages(attacking_creature, attacked_creature, damage_dealt, piercing, incorporeal);
-  
+
+  knock_back_creature_if_necessary(attack_type, attacking_creature, attacked_creature, game, current_map);
+
+  // This may have killed the creature due to traps present and triggered on
+  // the new tile.  If so, be sure not to do the rest of the damage 
+  // application.
+  if (attacked_creature != nullptr && attacked_creature->is_dead())
+  {
+    return damage_dealt;
+  }
+
   // Do damage effects if damage was dealt, or if there is a bonus to the
   // effect.
   if (damage_dealt > 0 || effect_bonus > 0)
@@ -561,7 +559,9 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
     // to match the creature's remaining HP
     string source_id = attacking_creature != nullptr ? attacking_creature->get_id() : "";
 
-    handle_vorpal_if_necessary(attacking_creature, attacked_creature, combat_damage_fixed, damage_dealt); 
+    SkillType weapon_skill = wm.get_skill_type(attacking_creature, attack_type);
+
+    handle_vorpal_if_necessary(attacking_creature, attacked_creature, combat_damage_fixed, damage_dealt, weapon_skill); 
     handle_explosive_if_necessary(attacking_creature, attacked_creature, current_map, damage_dealt, combat_damage_fixed, attack_type);
     deal_damage(attacking_creature, attacked_creature, attack_type, source_id, damage_dealt, combat_damage_fixed);
 
@@ -588,11 +588,20 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   return damage_dealt;
 }
 
-void CombatManager::handle_vorpal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const Damage& damage_info, int& damage_dealt)
+void CombatManager::handle_vorpal_if_necessary(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const Damage& damage_info, int& damage_dealt, const SkillType skill_type)
 {
   if (attacked_creature != nullptr)
   {
     bool vorpal = damage_info.get_vorpal();
+
+    if (!vorpal && 
+         skill_type == SkillType::SKILL_MELEE_AXES && 
+         attacking_creature && 
+         attacking_creature->get_skills().get_value(SkillType::SKILL_MELEE_AXES) == Skills::MAX_SKILL_VALUE)
+    {
+      vorpal = RNG::percent_chance(75);
+    }
+
     bool attacked_creature_incorporeal = attacked_creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
 
     if ((damage_dealt > 0)
@@ -1155,6 +1164,7 @@ void CombatManager::add_combat_message(CreaturePtr creature, CreaturePtr attacke
   Colour colour = highlight ? Colour::COLOUR_RED : dt.get_colour(attacked_creature);
 
   manager.add_new_message(combat_message, colour);
+  manager.send();
 }
 
 void CombatManager::send_combat_messages(CreaturePtr creature)

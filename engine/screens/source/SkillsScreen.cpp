@@ -141,9 +141,16 @@ void SkillsScreen::initialize()
 SkillType SkillsScreen::get_selected_skill(const char selection) const
 {
   SkillType st = SkillType::SKILL_UNDEFINED;
+  char selection_approp_case = tolower(selection);
+  bool req_caps = Game::instance().get_settings_ref().get_setting_as_bool(Setting::SKILL_SELECTION_REQUIRE_CAPITALIZATION);
+
+  if (req_caps)
+  {
+    selection_approp_case = toupper(selection);
+  }
 
   const auto& selection_map = screen_selection_to_skill_map.at(get_cur_page_idx());
-  map<char, SkillType>::const_iterator selection_map_it = selection_map.find(selection);
+  map<char, SkillType>::const_iterator selection_map_it = selection_map.find(selection_approp_case);
 
   if (selection_map_it != selection_map.end())
   {

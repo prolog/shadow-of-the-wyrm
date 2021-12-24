@@ -32,4 +32,8 @@ TEST(SW_Engine_Calculators_EvadeCalculator, calculate_evade_bonus)
   cp->set_status(StatusIdentifiers::STATUS_ID_RAGE, s);
 
   EXPECT_EQ(-7, EvadeCalculator::calculate_evade(cp));
+
+  cp->get_skills().set_value(SkillType::SKILL_GENERAL_ESCAPE, 18);
+
+  EXPECT_EQ(-4, EvadeCalculator::calculate_evade(cp));
 }

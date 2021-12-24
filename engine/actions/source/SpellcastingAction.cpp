@@ -1,4 +1,5 @@
 #include "ActionTextKeys.hpp"
+#include "ArcanaTextKeys.hpp"
 #include "Commands.hpp"
 #include "Conversion.hpp"
 #include "CreatureDescriber.hpp"
@@ -8,12 +9,16 @@
 #include "SpellcastingAction.hpp"
 #include "Game.hpp"
 #include "MagicalAbilityChecker.hpp"
+#include "MagicalDamageCalculator.hpp"
 #include "MagicCommandFactory.hpp"
 #include "MagicCommandProcessor.hpp"
+#include "MagicCommands.hpp"
 #include "MagicKeyboardCommandMap.hpp"
 #include "MagicCommandKeys.hpp"
 #include "MessageManagerFactory.hpp"
+#include "PhaseOfMoonCalculator.hpp"
 #include "RNG.hpp"
+#include "ScreenTitleTextKeys.hpp"
 #include "SkillManager.hpp"
 #include "SpellBonusUpdater.hpp"
 #include "SpellcastingTextKeys.hpp"
@@ -22,6 +27,8 @@
 #include "SpellShapeProcessorFactory.hpp"
 #include "StatisticsMarker.hpp"
 #include "StringTable.hpp"
+#include "TextDisplayFormatter.hpp"
+#include "TextDisplayScreen.hpp"
 
 using namespace std;
 
@@ -463,6 +470,13 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
     // input has been provided (don't try to get the input twice).
     CommandPtr magic_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), &input, false);
 
+    if (magic_command && magic_command->get_name() == MagicCommandKeys::ARCANA)
+    {
+      screen_selection = std::tolower(screen_selection);
+      string arcana_id = sss.get_selected_spell(screen_selection);
+      magic_command->set_custom_value(ArcanaCommand::ARCANA_ID, arcana_id);
+    }
+
     action_cost_value = MagicCommandProcessor::process(creature, magic_command.get());
 
     if (action_cost_value > 0 && !spell_id.empty())
@@ -481,4 +495,61 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
 
   pair<bool, pair<string, ActionCostValue>> selection_and_cost(cast_spells, make_pair(spell_id, action_cost_value));
   return selection_and_cost;
+}
+
+ActionCostValue SpellcastingAction::describe_spell(CreaturePtr creature, const string& spell_id)
+{
+  if (creature != nullptr && !spell_id.empty())
+  {
+    const SpellMap& spells = Game::instance().get_spells_ref();
+    auto s_it = spells.find(spell_id);
+
+    if (s_it != spells.end())
+    {
+      const Spell& spell = s_it->second;
+      Game& game = Game::instance();
+      vector<pair<Colour, string>> arcana_text;
+      uint width = Game::instance().get_display()->get_width();
+      string separator;
+
+      string spell_name = String::centre(StringTable::get(spell.get_spell_name_sid()), width);
+      arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, spell_name));
+      arcana_text.push_back(make_pair(Colour::COLOUR_BLACK, separator));
+      SpellShape ss = spell.get_shape();
+
+      arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::TYPE) + ": " + StringTable::get(ArcanaTextKeys::get_type_sid(spell.get_magic_category()))));
+      arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::CLASSIFICATION) + ": " + StringTable::get(ArcanaTextKeys::get_classification_sid(spell.get_magic_classification()))));
+      arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::SHAPE) + ": " + StringTable::get(ArcanaTextKeys::get_shape_sid(ss.get_spell_shape_type()))));
+      arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::RANGE) + ": " + std::to_string(spell.get_range())));
+      arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::RADIUS) + ": " + std::to_string(ss.get_radius())));
+      arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::AP_COST) + ": " + std::to_string(spell.get_ap_cost())));
+
+      bool has_damage = spell.get_has_damage();
+      if (has_damage)
+      {
+        PhaseOfMoonCalculator pomc;
+        PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());
+        MagicalDamageCalculator mdc(phase);
+        mdc.set_spell_id(spell_id);
+        Damage d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature);
+        arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::DAMAGE) + ": " + d.str()));
+      }
+
+      arcana_text.push_back(make_pair(Colour::COLOUR_BLACK, separator));
+
+      TextDisplayFormatter tdf;
+      string description = StringTable::get(spell.get_spell_description_sid());
+      vector<string> artext = tdf.format_text(description);
+
+      for (const string& line_of_text : artext)
+      {
+        arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, line_of_text));
+      }
+
+      TextDisplayScreen tds(game.get_display(), ScreenTitleTextKeys::SCREEN_TITLE_SPELL_DETAILS, arcana_text, true, {});
+      tds.display();
+    }
+  }
+
+  return ActionCostConstants::NO_ACTION;
 }

@@ -20,6 +20,7 @@
 #include "RNG.hpp"
 #include "SacrificeTextKeys.hpp"
 #include "Serialize.hpp"
+#include "Spellbook.hpp"
 #include "SpellAdditionalProperties.hpp"
 #include "StatisticTextKeys.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -1119,6 +1120,38 @@ void CreatureUtils::add_piety_message_if_player(CreaturePtr creature)
     manager.add_new_message(sac_piety_message);
     manager.send();
   }
+}
+
+bool CreatureUtils::is_item_usable(CreaturePtr creature, ItemPtr item)
+{
+  bool usable = true;
+
+  if (creature != nullptr && 
+      creature->can_learn_spells() && 
+      item != nullptr && 
+      item->get_type() == ItemType::ITEM_TYPE_SPELLBOOK)
+  {
+    SpellbookPtr spellbook = dynamic_pointer_cast<Spellbook>(item);
+
+    if (spellbook != nullptr)
+    {
+      string spell_id = spellbook->get_spell_id();
+
+      if (!spell_id.empty())
+      {
+        const SpellMap& spells = Game::instance().get_spells_ref();
+        auto s_it = spells.find(spell_id);
+
+        if (s_it != spells.end())
+        {
+          SkillType spell_cat = s_it->second.get_magic_category();
+          usable = creature->get_skills().get_value(spell_cat) > 0;
+        }
+      }
+    }
+  }
+
+  return usable;
 }
 
 #ifdef UNIT_TESTS

@@ -3,6 +3,7 @@
 #include "MagicCommands.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
+#include "SpellcastingAction.hpp"
 
 using namespace std;
 
@@ -22,7 +23,14 @@ ActionCostValue MagicCommandProcessor::process(CreaturePtr creature, Command* co
   {
     string command_name = command->get_name();
 
-    if (command_name == MagicCommandKeys::EXIT_MAGIC)
+    if (command_name == MagicCommandKeys::ARCANA)
+    {
+      SpellcastingAction sa;
+
+      string arcana_id = command->get_custom_value(ArcanaCommand::ARCANA_ID);
+      return sa.describe_spell(creature, arcana_id);
+    }
+    else if (command_name == MagicCommandKeys::EXIT_MAGIC)
     {
       // Special value that signifies to the spellcasting action to stop looping
       // and exit the spellcasting screen.

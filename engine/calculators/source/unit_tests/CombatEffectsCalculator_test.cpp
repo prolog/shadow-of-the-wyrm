@@ -84,6 +84,49 @@ TEST(SW_Engine_Calculators_CombatEffectsCalculator, calculate_knock_back_pct_cha
   EXPECT_EQ(0, cec.calculate_knock_back_pct_chance(AttackType::ATTACK_TYPE_MAGICAL, creature, creature2));
 }
 
+TEST(SW_Engine_Calculators_CombatEffectsCalculator, calculate_knock_back_pct_chance_primary_mastery)
+{
+  CreaturePtr creature;
+  CreaturePtr creature2;
+  CombatEffectsCalculator cec;
+
+  creature = CreaturePtr(new Creature());
+  creature2 = CreaturePtr(new Creature());
+  creature->get_skills().set_value(SkillType::SKILL_MELEE_UNARMED, Skills::MAX_SKILL_VALUE);
+
+  std::vector<int> str_values = { 8, 12, 23, 40, 86 };
+  std::vector<CreatureSize> sizes = { CreatureSize::CREATURE_SIZE_TINY, CreatureSize::CREATURE_SIZE_SMALL, CreatureSize::CREATURE_SIZE_MEDIUM, CreatureSize::CREATURE_SIZE_LARGE, CreatureSize::CREATURE_SIZE_HUGE, CreatureSize::CREATURE_SIZE_BEHEMOTH };
+
+  for (int str : str_values)
+  {
+    creature->set_strength(str);
+
+    for (const CreatureSize c1_size : sizes)
+    {
+      creature->set_size(c1_size);
+
+      for (const CreatureSize c2_size : sizes)
+      {
+        creature2->set_size(c2_size);
+        int diff = static_cast<int>(c1_size) - static_cast<int>(c2_size);
+        int exp_val = 0;
+
+        
+        if (diff < 2)
+        {
+          exp_val = str / 3;
+        }
+        else
+        {
+          exp_val = 100 + (str / 3);
+        }
+
+        EXPECT_EQ(exp_val, cec.calculate_knock_back_pct_chance(AttackType::ATTACK_TYPE_MELEE_PRIMARY, creature, creature2));
+      }
+    }
+  }
+}
+
 TEST(SW_Engine_Calculators_CombatEffectsCalculator, calculate_knock_back_pct_chance_physical_not_tertiary)
 {
   CreaturePtr creature;

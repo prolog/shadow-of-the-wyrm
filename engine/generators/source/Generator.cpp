@@ -15,6 +15,7 @@
 #include "Map.hpp"
 #include "MapUtils.hpp"
 #include "Serialize.hpp"
+#include "TextKeys.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
@@ -119,6 +120,13 @@ void Generator::create_entities(MapPtr map, const int danger_level, const bool c
   {
     MapCreatureGenerator mcg;
     creature_details = mcg.generate_creatures(map, danger_level, additional_properties);
+
+    if (std::get<1>(creature_details) == 0)
+    {
+      IMessageManager& manager = MM::instance();
+      manager.add_new_message(StringTable::get(TextKeys::NO_CREATURES_GENERATED));
+      manager.send();
+    }
   }
 
   if (create_items && can_create_initial_items())
@@ -909,4 +917,19 @@ bool Generator::get_place_on_down_staircase(const ExitMovementType emt) const
   }
 
   return place_on_down;
+}
+
+void Generator::set_feature_entry_text_sids(const vector<string>& new_feature_entry_text_sids)
+{
+  feature_entry_text_sids = new_feature_entry_text_sids;
+}
+
+void Generator::add_feature_entry_text_sid(const std::string& new_sid)
+{
+  feature_entry_text_sids.push_back(new_sid);
+}
+
+void Generator::clear_feature_entry_text_sids()
+{
+  feature_entry_text_sids.clear();
 }

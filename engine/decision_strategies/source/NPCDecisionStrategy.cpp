@@ -15,6 +15,7 @@
 #include "Game.hpp"
 #include "HostilityManager.hpp"
 #include "IMessageManager.hpp"
+#include "IntelligenceConstants.hpp"
 #include "ItemProperties.hpp"
 #include "Log.hpp"
 #include "MagicalAbilityChecker.hpp"
@@ -622,7 +623,8 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
       // Pick a random empty coordinate.
       if (!choice_coordinates.empty())
       {
-        Coordinate movement_coord = choice_coordinates.at(RNG::range(0, choice_coordinates.size() - 1));
+        Coordinate movement_coord = select_safest_random_coordinate(this_creature, choice_coordinates);
+
         Direction direction = CoordUtils::get_direction(this_creature_coords, movement_coord);
         movement_command = std::make_unique<MovementCommand>(direction, -1);
       }
@@ -898,5 +900,53 @@ vector<pair<string, int>> NPCDecisionStrategy::get_creatures_by_distance(Creatur
   return cdist;
 }
 
+Coordinate NPCDecisionStrategy::select_safest_random_coordinate(CreaturePtr this_cr, const vector<Coordinate>& choice_coordinates)
+{
+  pair<Coordinate, int> rc = { CoordUtils::end(), -1 };
+  bool selected = false;
 
+  if (this_cr != nullptr && !choice_coordinates.empty())
+  {
+    if (this_cr->get_intelligence().get_current() > IntelligenceConstants::MIN_INTELLIGENCE_UNDERSTAND_SAFETY)
+    {
+      DecisionStrategy* dec = this_cr->get_decision_strategy();
+      set<string> true_threats = dec->get_threats_ref().get_true_threats_without_level();
+
+      if (!true_threats.empty())
+      {
+        MapPtr view_map = dec->get_fov_map();
+        vector<pair<string, int>> threat_distances = get_creatures_by_distance(this_cr, view_map, true_threats);
+
+        for (const auto& c : choice_coordinates)
+        {
+          int total_dist = 0;
+
+          for (const auto& td : threat_distances)
+          {
+            string creature_id = td.first;
+
+            if (view_map->has_creature(creature_id))
+            {
+              Coordinate tc = view_map->get_location(creature_id);
+              total_dist += CoordUtils::chebyshev_distance(c, tc);
+              selected = true;
+            }
+          }
+
+          if (total_dist > rc.second)
+          {
+            rc = { c, total_dist };
+          }
+        }
+      }
+    }
+
+    if (!selected)
+    {
+      return choice_coordinates[RNG::range(0, choice_coordinates.size() - 1)];
+    }
+  }
+
+  return rc.first;
+}
 

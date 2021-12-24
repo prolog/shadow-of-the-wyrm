@@ -44,6 +44,7 @@ class StatusIdentifiers
     static const std::string STATUS_ID_WATER_BREATHING;
     static const std::string STATUS_ID_RAGE;
     static const std::string STATUS_ID_HIDE;
+    static const std::string STATUS_ID_BRAVE;
 
   protected:
     StatusIdentifiers();

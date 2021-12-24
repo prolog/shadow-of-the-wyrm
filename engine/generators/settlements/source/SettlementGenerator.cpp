@@ -31,6 +31,11 @@ MapPtr SettlementGenerator::generate()
 
   SettlementGeneratorUtils::generate_perimeter_sign(result_map, get_additional_property(TileProperties::TILE_PROPERTY_NAME));
 
+  if (result_map != nullptr)
+  {
+    result_map->set_allow_creature_updates(false);
+  }
+
   return result_map;
 }
 
