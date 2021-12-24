@@ -1,3 +1,8 @@
+Shadow of the Wyrm v1.4.3 "da Milano"
+- Version declared December 24, 2021.
+
+- New name and settlement name combinations.
+
 Shadow of the Wyrm v1.4.0 "Pisador"
 - Version declared October 19, 2021.  Version finalized December 24, 2021.
 
