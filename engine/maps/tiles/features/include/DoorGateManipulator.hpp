@@ -22,6 +22,5 @@ class DoorGateManipulator : public FeatureManipulator
     static const int PCT_CHANCE_SPRAIN_LEG_UNMOVED;
     static const int SPRAIN_DAMAGE_MIN;
     static const int SPRAIN_DAMAGE_MAX;
-    static const int MIN_INTELLIGENCE_OPERATE_DOOR;
 };
 

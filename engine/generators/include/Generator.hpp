@@ -64,6 +64,10 @@ namespace SOTW
       virtual ExitMovementType get_last_exit_movement_type() const;
       virtual bool get_place_on_down_staircase(const ExitMovementType emt) const;
 
+      virtual void add_feature_entry_text_sid(const std::string& new_sid);
+      virtual void set_feature_entry_text_sids(const std::vector<std::string>& new_feature_entry_text_sids);
+      virtual void clear_feature_entry_text_sids();
+
       virtual MapType get_map_type() const;
 
     protected:

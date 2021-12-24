@@ -175,6 +175,13 @@ TEST(SW_World_WaterInventory, get_drop_effect_sid)
   EXPECT_EQ(ActionTextKeys::ACTION_DROP_WATER, wi.get_drop_effect_sid());
 }
 
+TEST(SW_World_WaterInventory, get_allows_items)
+{
+  WaterInventory wi;
+
+  EXPECT_EQ(AllowsItemsType::ALLOWS_SOME_ITEMS, wi.get_allows_items());
+}
+
 TEST(SW_World_WaterInventory, serialization_id)
 {
   WaterInventory wi;

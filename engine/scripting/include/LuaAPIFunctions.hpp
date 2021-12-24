@@ -206,6 +206,7 @@ int ranged_attack(lua_State* ls);
 int get_spellbooks(lua_State* ls);
 int set_shop_shopkeeper_id(lua_State* ls);
 int repop_shop(lua_State* ls);
+int repop_shops(lua_State* ls);
 int get_num_unpaid_items(lua_State* ls);
 int get_unpaid_amount(lua_State* ls);
 int set_items_paid(lua_State* ls);
@@ -280,6 +281,7 @@ int get_time_of_day(lua_State* ls);
 int generate_enclosure(lua_State* ls);
 int generate_hermitage(lua_State* ls);
 int remove_chat_script(lua_State* ls);
+int update_creatures(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

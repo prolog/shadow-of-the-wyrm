@@ -76,9 +76,17 @@ set<TileType> CreatureGenerationValues::get_allowable_terrain_types() const
   return allowable_terrain_types;
 }
 
-bool CreatureGenerationValues::is_terrain_type_allowed(const TileType terrain_type) const
+bool CreatureGenerationValues::is_terrain_types_allowed(const std::set<TileType>& terrain_types) const
 {
-  return (allowable_terrain_types.find(terrain_type) != allowable_terrain_types.end());
+  for (const TileType tt : terrain_types)
+  {
+    if (allowable_terrain_types.find(tt) != allowable_terrain_types.end())
+    {
+      return true;
+    }
+  }
+  
+  return false;
 }
 
 void CreatureGenerationValues::set_friendly(const bool new_friendly)

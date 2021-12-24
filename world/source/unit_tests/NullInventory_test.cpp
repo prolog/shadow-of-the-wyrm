@@ -85,7 +85,7 @@ TEST(SW_World_NullInventory, get_allows_items)
 {
   NullInventory ni;
 
-  EXPECT_FALSE(ni.get_allows_items());
+  EXPECT_EQ(AllowsItemsType::DISALLOWS_ITEMS, ni.get_allows_items());
 }
 
 TEST(SW_World_NullInventory, add_items)

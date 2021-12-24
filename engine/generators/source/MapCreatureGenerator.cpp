@@ -62,6 +62,13 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 {
   tuple<bool, int, Rarity> creatures_generated(false, 0, Rarity::RARITY_COMMON);
   TileType map_terrain_type = map->get_terrain_type();
+  set<TileType> map_terrain_types = { map_terrain_type };
+  vector<TileType> secondary_types = map->get_secondary_terrain();
+
+  for (const auto& tt : secondary_types)
+  {
+    map_terrain_types.insert(tt);
+  }
 
   Dimensions dim = map->size();
   CreatureGenerationManager cgm;
@@ -110,7 +117,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   
   while (generation_index.empty() && min_danger_level >= 1)
   {
-    generation_index = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger_level, max_danger_level, rarity, additional_properties);
+    generation_index = cgm.generate_creature_generation_map(map_terrain_types, map->get_permanent(), map->is_islet(), min_danger_level, max_danger_level, rarity, additional_properties);
 
     if (generation_index.empty())
     {
@@ -146,6 +153,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 
     if (generated_creature)
     {
+      auto c_it = cgvm.find(generated_creature->get_original_id());
       Coordinate c = get_coordinate_for_creature(map, generated_creature, coord_range);
 
       // Check to see if the spot is empty, and if a creature can be added there.
@@ -158,7 +166,6 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
         //  If pack creatures are generated, the maximum for the level is
         // adjusted as well.
         int addl_pack_creatures = 0;
-        auto c_it = cgvm.find(generated_creature->get_original_id());
         bool can_generate_pack = false;
 
         if (c_it != cgvm.end())
@@ -179,10 +186,19 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
             TilePtr tile = map->at(adj);
             CreaturePtr pack_creature = cf.create_by_creature_id(am, creature_id, map, generated_creature);
 
-            if (pack_creature != nullptr && MapUtils::is_tile_available_for_creature(pack_creature, tile) && RNG::percent_chance(PACK_TILE_CHANCE))
+            if (pack_creature != nullptr)
             {
-              addl_pack_creatures++;
-              add_creature_to_map(game, pack_creature, map, manager, base_danger_level, adj.first, adj.second, current_creatures_placed, creatures_generated);
+              if (MapUtils::is_tile_available_for_creature(pack_creature, tile) && RNG::percent_chance(PACK_TILE_CHANCE))
+              {
+                addl_pack_creatures++;
+                add_creature_to_map(game, pack_creature, map, manager, base_danger_level, adj.first, adj.second, current_creatures_placed, creatures_generated);
+              }
+              else
+              {
+                // Creature was generated, but we can't place it - decrement
+                // the creature count.
+                c_it->second.decr_current();
+              }
             }
           }
         }
@@ -197,6 +213,9 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
       }
       else
       {
+        // Creature was generated, but we can't place it - decrement
+        // the creature count so that uniques aren't suppressed.
+        c_it->second.decr_current();
         unsuccessful_attempts++;
       }
     }
@@ -214,16 +233,29 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 // first of these that is unoccupied will be used.
 Coordinate MapCreatureGenerator::get_coordinate_for_creature(MapPtr map, CreaturePtr generated_creature, const pair<Coordinate, Coordinate>& coord_range)
 {
-  Coordinate c;
+  Coordinate c = CoordUtils::end();
 
-  if (map != nullptr)
+  if (map != nullptr && generated_creature != nullptr)
   {
     vector<Coordinate>& preset_locs = map->get_preset_locations_ref();
 
     if (preset_locs.empty())
     {
-      c.first = RNG::range(coord_range.first.first, coord_range.second.first);
-      c.second = RNG::range(coord_range.first.second, coord_range.second.second);
+      if (generated_creature->can_breathe(BreatheType::BREATHE_TYPE_WATER))
+      {
+        vector<TileType> secondary = map->get_secondary_terrain();
+
+        if (!secondary.empty() && std::find(secondary.begin(), secondary.end(), TileType::TILE_TYPE_SEA) != secondary.end())
+        {
+          c = MapUtils::get_random_coastline_coordinate(map);
+        }
+      }
+
+      if (CoordUtils::is_end(c))
+      {
+        c.first = RNG::range(coord_range.first.first, coord_range.second.first);
+        c.second = RNG::range(coord_range.first.second, coord_range.second.second);
+      }
     }
     else
     {
@@ -294,7 +326,7 @@ int MapCreatureGenerator::get_num_creatures(MapPtr map, const int max_creatures)
 // generation.
 int MapCreatureGenerator::get_min_danger_level(MapPtr map, const int base_danger_level)
 {
-  int min_danger_level = RNG::range(base_danger_level / 2, base_danger_level);
+  int min_danger_level = RNG::range(std::max<int>(1, base_danger_level / 2), base_danger_level);
   
   if (map != nullptr)
   {

@@ -172,7 +172,7 @@ TEST(SW_World_Inventory, allows_items)
 {
   Inventory i;
 
-  EXPECT_TRUE(i.get_allows_items());
+  EXPECT_EQ(AllowsItemsType::ALLOWS_ITEMS, i.get_allows_items());
 }
 
 TEST(SW_World_Inventory, add_items)

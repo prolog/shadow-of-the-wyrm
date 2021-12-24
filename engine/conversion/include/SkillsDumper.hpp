@@ -22,6 +22,7 @@ class SkillsDumper : public StringConverter
     std::string get_magical_skills_header() const;
     std::string get_magical_skills() const;
     std::string get_skills_by_category(const SkillCategory category) const;
+    std::string get_masteries(const std::string& header_sid, const SkillType begin_inclusive, const SkillType end_exclusive) const;
 
     CreaturePtr creature;
     const int num_cols;

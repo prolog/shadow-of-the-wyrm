@@ -174,3 +174,130 @@ TEST_F(SW_Engine_Map, get_generation_coordinates)
 
   EXPECT_EQ(expected, map->get_generation_coordinates());
 }
+
+TEST_F(SW_Engine_Map, get_starting_location)
+{
+  MapPtr map = make_map();
+  Coordinate exp = { 0, 0 };
+  EXPECT_EQ(exp, map->get_starting_location());
+
+  std::map<string, string> props = { {MapProperties::MAP_PROPERTIES_COASTLINE_NORTH, std::to_string(true)},
+                                     {MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH, std::to_string(true)},
+                                     {MapProperties::MAP_PROPERTIES_COASTLINE_EAST, std::to_string(true)},
+                                     {MapProperties::MAP_PROPERTIES_COASTLINE_WEST, std::to_string(true)}};
+
+  for (const auto& p_pair : props)
+  {
+    map->set_property(p_pair.first, p_pair.second);
+  }
+
+  EXPECT_EQ(exp, map->get_starting_location());
+
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH, std::to_string(false));
+  exp = { 0, 39 };
+
+  EXPECT_EQ(exp, map->get_starting_location());
+
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH, std::to_string(true));
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH, std::to_string(false));
+  exp = { 19, 39 };
+
+  EXPECT_EQ(exp, map->get_starting_location());
+
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH, std::to_string(true));
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST, std::to_string(false));
+  exp = { 9, 0 };
+
+  EXPECT_EQ(exp, map->get_starting_location());
+
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST, std::to_string(true));
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST, std::to_string(false));
+  exp = { 9, 79 };
+
+  EXPECT_EQ(exp, map->get_starting_location());
+}
+
+TEST_F(SW_Engine_Map, set_secondary_terrain)
+{
+  vector<TileType> tts = { TileType::TILE_TYPE_SEA, TileType::TILE_TYPE_DESERT };
+  MapPtr map = make_map();
+  map->set_secondary_terrain(tts);
+  vector<TileType> tts_new = map->get_secondary_terrain();
+
+  EXPECT_EQ(2, tts_new.size());
+
+  for (const auto tt : tts)
+  {
+    EXPECT_TRUE(std::find(tts_new.begin(), tts_new.end(), tt) != tts_new.end());
+  }
+}
+
+TEST_F(SW_Engine_Map, add_secondary_terrain)
+{
+  vector<TileType> tts = { TileType::TILE_TYPE_SEA, TileType::TILE_TYPE_DESERT };
+  MapPtr map = make_map();
+
+  for (int i = 0; i < 3; i++)
+  {
+    for (const auto tt : tts)
+    {
+      map->add_secondary_terrain(tt);
+    }
+  }
+
+  vector<TileType> tts_new = map->get_secondary_terrain();
+
+  EXPECT_EQ(2, tts_new.size());
+
+  for (const auto tt : tts)
+  {
+    EXPECT_TRUE(std::find(tts_new.begin(), tts_new.end(), tt) != tts_new.end());
+  }
+
+}
+
+TEST_F(SW_Engine_Map, get_secondary_terrain)
+{
+  MapPtr map = make_map();
+
+  EXPECT_TRUE(map->get_secondary_terrain().empty());
+
+  vector<TileType> ttv = { TileType::TILE_TYPE_SEA, TileType::TILE_TYPE_RIVER };
+
+  ostringstream ss;
+  ss << static_cast<int>(TileType::TILE_TYPE_SEA) << "," << static_cast<int>(TileType::TILE_TYPE_RIVER);
+  map->set_property(MapProperties::MAP_PROPERTIES_SECONDARY_TERRAIN, ss.str());
+
+  vector<TileType> sec_ter = map->get_secondary_terrain();
+
+  EXPECT_FALSE(sec_ter.empty());
+  EXPECT_EQ(2, sec_ter.size());
+  
+  for (const auto tt : ttv)
+  {
+    EXPECT_TRUE(std::find(sec_ter.begin(), sec_ter.end(), tt) != sec_ter.end());
+  }
+}
+
+TEST_F(SW_Engine_Map, get_coastline_directions)
+{
+  MapPtr map = make_map();
+
+  EXPECT_TRUE(map->get_coastline_directions().empty());
+
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH, std::to_string(true));
+
+  vector<Direction> dirs = map->get_coastline_directions();
+
+  EXPECT_EQ(1, dirs.size());
+  EXPECT_EQ(Direction::DIRECTION_NORTH, dirs[0]);
+
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH, std::to_string(true));
+  map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST, std::to_string(true));
+  dirs = map->get_coastline_directions();
+
+  EXPECT_EQ(3, dirs.size());
+  EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_NORTH) != dirs.end());
+  EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_SOUTH) != dirs.end());
+  EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_WEST) != dirs.end());
+}

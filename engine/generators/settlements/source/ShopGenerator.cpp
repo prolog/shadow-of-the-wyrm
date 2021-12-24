@@ -21,15 +21,12 @@ bool ShopGenerator::generate_shop(MapPtr map, const Building& building)
     // Create a shop by determining the item types, setting up the shop
     // details, creating a shopkeeper, and naming it.
     vector<ItemType> stocked_types = get_random_item_types();
-    string shopkeeper_name = Naming::generate_name(static_cast<CreatureSex>(RNG::range(0, 1)));
 
     CreatureFactory cf;
     CreaturePtr shopkeeper = cf.create_by_creature_id(game.get_action_manager_ref(), CreatureID::CREATURE_ID_SHOPKEEPER, map);
     
     if (shopkeeper != nullptr)
     {
-      shopkeeper->set_name(shopkeeper_name);
-
       pair<Coordinate, Coordinate> interior_coords = building.get_interior_coords();
       vector<Coordinate> ic = CoordUtils::get_coordinates_in_range(interior_coords.first, interior_coords.second);
 
@@ -40,32 +37,43 @@ bool ShopGenerator::generate_shop(MapPtr map, const Building& building)
         std::shuffle(ic.begin(), ic.end(), RNG::get_engine());
         Coordinate shopkeeper_coords = ic.at(RNG::range(0, ic.size()-1));
 
-        GameUtils::add_new_creature_to_map(game, shopkeeper, map, shopkeeper_coords);
-        Shop shop;
-        string shop_id = shopkeeper_name + "_shop";
+        for (int i = 0; i < 5; i++)
+        {
+          string shopkeeper_name = Naming::generate_name(static_cast<CreatureSex>(RNG::range(0, 1)));
+          string shop_id = shopkeeper_name + "_shop";
 
-        shop.set_start(interior_coords.first);
-        shop.set_end(interior_coords.second);
-        shop.set_shopkeeper_id(shopkeeper->get_id());
-        shop.set_stocked_item_types(stocked_types);
-        shop.set_shop_id(shop_id);
-        
-        map->get_shops_ref().insert(make_pair(shop_id, shop));
+          if (!map->has_shop(shop_id))
+          {
+            GameUtils::add_new_creature_to_map(game, shopkeeper, map, shopkeeper_coords);
+            shopkeeper->set_name(shopkeeper_name);
 
-        // Set a temporary danger level.  The danger level is typically not
-        // initialized until after the map has been generated, so creating
-        // a shop without doing this will result in an empty shop, because
-        // the danger level is 0.  Revert after so that the code calling the
-        // generator can set a danger level appropriately.
-        int old_danger_level = map->get_danger();
-        map->set_danger(RNG::range(2, 50));
+            Shop shop;
+            shop.set_start(interior_coords.first);
+            shop.set_end(interior_coords.second);
+            shop.set_shopkeeper_id(shopkeeper->get_id());
+            shop.set_stocked_item_types(stocked_types);
+            shop.set_shop_id(shop_id);
 
-        MapItemGenerator mig;
-        mig.repop_shop(map, shop_id);
+            map->get_shops_ref().insert(make_pair(shop_id, shop));
 
-        map->set_danger(old_danger_level);
+            // Set a temporary danger level.  The danger level is typically not
+            // initialized until after the map has been generated, so creating
+            // a shop without doing this will result in an empty shop, because
+            // the danger level is 0.  Revert after so that the code calling the
+            // generator can set a danger level appropriately.
+            int old_danger_level = map->get_danger();
+            map->set_danger(RNG::range(2, 50));
 
-        shop_created = true;
+            MapItemGenerator mig;
+            mig.repop_shop(map, shop_id);
+
+            map->set_danger(old_danger_level);
+
+            shop_created = true;
+
+            break;
+          }
+        }
       }
     }
   }

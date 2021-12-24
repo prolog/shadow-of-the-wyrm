@@ -28,6 +28,11 @@ SelectSkillCommand::SelectSkillCommand(const int key)
 {
 }
 
+DescribeSkillCommand::DescribeSkillCommand(const int key)
+: Command(SkillsCommandKeys::SKILL_DESCRIPTION, key)
+{
+}
+
 ExitSkillsCommand::ExitSkillsCommand(const int key)
   : Command(SkillsCommandKeys::EXIT_SKILLS, key)
 {

@@ -21,6 +21,10 @@ CommandPtr MagicCommandFactory::create(const int key, const std::string& command
     // to look up the spell ID.
     command = std::make_unique<SelectSpellCommand>(key - 'a', key);
   }
+  else if (command_name == MagicCommandKeys::ARCANA)
+  {
+    command = std::make_unique<ArcanaCommand>(key - 'a', key);
+  }
   else if (command_name == MagicCommandKeys::NEXT_PAGE)
   {
     command = std::make_unique<NextPageMagicCommand>(key);

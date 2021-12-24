@@ -318,7 +318,12 @@ ActionCostValue PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_ite
       amount_to_take = std::min<uint>(creature->get_decision_strategy()->get_count(quantity), max_quantity);
     }
 
-    if (!pick_up_item->is_valid_quantity(amount_to_take) && amount_to_take > max_quantity)
+    if (amount_to_take == 0)
+    {
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_PICK_UP_ZERO));
+      manager.send();
+    }
+    else if (!pick_up_item->is_valid_quantity(amount_to_take) || amount_to_take > max_quantity)
     {
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_PICK_UP_INVALID_QUANTITY));
       manager.send();

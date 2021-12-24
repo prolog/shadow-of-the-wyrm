@@ -1,6 +1,7 @@
 #include <iterator>
 #include "AmmunitionCalculator.hpp"
 #include "Conversion.hpp"
+#include "CreatureUtils.hpp"
 #include "Game.hpp"
 #include "GenerationProperties.hpp"
 #include "ItemEnchantmentCalculator.hpp"
@@ -8,15 +9,30 @@
 #include "ItemManager.hpp"
 #include "ItemProperties.hpp"
 #include "RNG.hpp"
+#include "Setting.hpp"
 
 using namespace std;
 
 ItemGenerationManager::ItemGenerationManager()
+: spellbook_squelch_pct(0)
 {
   rarity_chances = { { Rarity::RARITY_COMMON,   { { Rarity::RARITY_COMMON, 100 } } },
                      { Rarity::RARITY_UNCOMMON, { { Rarity::RARITY_UNCOMMON, 60 }, { Rarity::RARITY_COMMON, 100 } } },
                      { Rarity::RARITY_RARE,     { { Rarity::RARITY_RARE, 60 }, { Rarity::RARITY_UNCOMMON, 60 }, { Rarity::RARITY_COMMON, 100 } } },
                      { Rarity::RARITY_VERY_RARE,{ { Rarity::RARITY_VERY_RARE, 40 }, { Rarity::RARITY_RARE, 80 }, { Rarity::RARITY_UNCOMMON, 90 }, { Rarity::RARITY_COMMON, 100 } } } };
+
+  initialize_spellbook_squelch_pct();
+}
+
+void ItemGenerationManager::initialize_spellbook_squelch_pct()
+{
+  Game& game = Game::instance();
+  int squelch_pct = String::to_int(game.get_settings_ref().get_setting(Setting::SPELLCASTER_UNUSABLE_SPELLBOOK_SQUELCH_PCT));
+
+  if (squelch_pct >= 0 && squelch_pct <= 100)
+  {
+    spellbook_squelch_pct = squelch_pct;
+  }
 }
 
 // Item types have the following chances to be generated at random:
@@ -119,6 +135,9 @@ ItemGenerationMap ItemGenerationManager::generate_item_generation_map(const Item
   ItemMap items = game.get_items_ref();
   GenerationValuesMap igv_map = game.get_item_generation_values_ref();
 
+  CreaturePtr biasing_creature = Game::instance().get_current_player();
+  int pct_chance_gen = 100 - spellbook_squelch_pct;
+
   while (generation_map.empty() && min_danger > 0)
   {
     // Build the map of items available for generation given the danger level and rarity
@@ -128,9 +147,15 @@ ItemGenerationMap ItemGenerationManager::generate_item_generation_map(const Item
       ItemPtr item = i_it->second;
       GenerationValues igvals = igv_map[item_id];
 
-      if (item && does_item_match_generation_criteria(igvals, min_danger, igc.get_max_danger_level(), igc.get_rarity(), igc.get_item_type_restrictions(), igc.get_min_value()))
+      if (item && 
+          does_item_match_generation_criteria(igvals, min_danger, igc.get_max_danger_level(), igc.get_rarity(), igc.get_item_type_restrictions(), igc.get_min_value()))
       {
-        generation_map[item->get_type()][igvals.get_rarity()].push_back(make_pair(item_id, make_pair(item, igvals)));
+        bool item_usable = CreatureUtils::is_item_usable(biasing_creature, item);
+
+        if (item_usable || RNG::percent_chance(pct_chance_gen))
+        {
+          generation_map[item->get_type()][igvals.get_rarity()].push_back(make_pair(item_id, make_pair(item, igvals)));
+        }
       }
     }
 

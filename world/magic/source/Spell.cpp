@@ -21,6 +21,7 @@ bool Spell::operator==(const Spell& spell) const
 
   result = result && (spell_id == spell.spell_id);
   result = result && (spell_name_sid == spell.spell_name_sid);
+  result = result && (spell_description_sid == spell.spell_description_sid);
   result = result && (player_cast_message_sid == spell.player_cast_message_sid);
   result = result && (monster_cast_message_sid == spell.monster_cast_message_sid);
   result = result && (magic_category == spell.magic_category);
@@ -58,6 +59,16 @@ void Spell::set_spell_name_sid(const string& new_spell_name_sid)
 void Spell::set_player_cast_message_sid(const string& new_player_cast_message_sid)
 {
   player_cast_message_sid = new_player_cast_message_sid;
+}
+
+void Spell::set_spell_description_sid(const string& new_spell_description_sid)
+{
+  spell_description_sid = new_spell_description_sid;
+}
+
+string Spell::get_spell_description_sid() const
+{
+  return spell_description_sid;
 }
 
 string Spell::get_player_cast_message_sid() const

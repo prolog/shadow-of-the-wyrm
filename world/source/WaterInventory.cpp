@@ -3,6 +3,11 @@
 
 using namespace std;
 
+AllowsItemsType WaterInventory::get_allows_items() const
+{
+  return AllowsItemsType::ALLOWS_SOME_ITEMS;
+}
+
 bool WaterInventory::add_front(ItemPtr new_item)
 {
   if (new_item != nullptr && new_item->get_floats())

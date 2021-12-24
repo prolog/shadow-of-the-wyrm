@@ -33,7 +33,7 @@ CreatureGenerationManager::CreatureGenerationManager()
 {
 }
 
-CreatureGenerationIndex CreatureGenerationManager::generate_creature_generation_map(const TileType map_terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const map<string, string>& additional_properties)
+CreatureGenerationIndex CreatureGenerationManager::generate_creature_generation_map(const set<TileType>& map_terrain_types, const bool permanent_map, const bool islet, const int min_danger_level, const int max_danger_level, const Rarity rarity, const map<string, string>& additional_properties)
 {
   int min_danger = min_danger_level;
   CreatureGenerationList generation_list;
@@ -85,7 +85,7 @@ CreatureGenerationIndex CreatureGenerationManager::generate_creature_generation_
   {
     const CreatureGenerationValues& cgvals = cgv_map[c_it->first];
 
-    if (does_creature_match_generation_criteria(cgvals, map_terrain_type, permanent_map, min_danger, max_danger_level, rarity, ignore_level_checks, required_race, generator_filters, preset_creature_ids))
+    if (does_creature_match_generation_criteria(cgvals, map_terrain_types, permanent_map, islet, min_danger, max_danger_level, rarity, ignore_level_checks, required_race, generator_filters, preset_creature_ids))
     {
       generation_list.push_back({c_it->first, c_it->second, cgvals});
     }
@@ -142,8 +142,8 @@ CreatureGenerationIndex CreatureGenerationManager::generate_ancient_beasts(const
 
       ancient_beast = cf.create_by_race_and_class(Game::instance().get_action_manager_ref(), nullptr, RaceID::RACE_ID_UNKNOWN, "", "", CreatureSex::CREATURE_SEX_NOT_SPECIFIED, CreatureSize::CREATURE_SIZE_HUGE);
       ancient_beast->set_base_damage(dam);
-      ancient_beast->set_evade(danger_level);
-      ancient_beast->set_soak(danger_level);
+      ancient_beast->set_evade(RNG::range(static_cast<int>(danger_level * 0.75), static_cast<int>(danger_level * 1.25)));
+      ancient_beast->set_soak(RNG::range(static_cast<int>(danger_level * 0.75), static_cast<int>(danger_level * 1.25)));
       ancient_beast->set_arcana_points(Statistic(RNG::dice(ap_dice)));
       ancient_beast->set_hit_points(Statistic(RNG::dice(hp_dice)));
       ancient_beast->set_original_id(creature_id);
@@ -427,20 +427,33 @@ CreaturePtr CreatureGenerationManager::generate_adventurer(ActionManager& am, Ma
   return adv;
 }
 
-bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const TileType terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity, const bool ignore_level_checks, const string& required_race, const vector<string>& generator_filters, const vector<string>& preset_creature_ids)
+bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const set<TileType>& terrain_types, const bool permanent_map, const bool islet, const int min_danger_level, const int max_danger_level, const Rarity rarity, const bool ignore_level_checks, const string& required_race, const vector<string>& generator_filters, const vector<string>& preset_creature_ids)
 {
   RaceManager rm;
   int cgv_danger_level = cgv.get_danger_level();
   int cgv_maximum = cgv.get_maximum();
   vector<string> cgv_generator_filters = cgv.get_generator_filters();
+  bool islet_race_natural = true;
+
+  if (islet)
+  {
+    RaceManager rm;
+    Race* race = rm.get_race(cgv.get_race_id());
+
+    if (race != nullptr)
+    {
+      islet_race_natural = race->get_natural();
+    }
+  }
 
   // Sort the vectors.  The assumption is that the input vector is sorted.
   std::sort(cgv_generator_filters.begin(), cgv_generator_filters.end());
 
-  if ( cgv.is_terrain_type_allowed(terrain_type)
+  if ( cgv.is_terrain_types_allowed(terrain_types)
     && cgv_danger_level >= 0 // Exclude danger level of -1, which means "don't generate"
     && (ignore_level_checks || cgv_danger_level >= min_danger_level)
     && (ignore_level_checks || cgv_danger_level <= max_danger_level)
+    && (!islet || islet_race_natural)
     && (required_race.empty() || rm.is_race_or_descendent(cgv.get_race_id(), required_race))
     && (cgv_maximum <= CreatureGenerationConstants::CREATURE_GENERATION_UNLIMITED || (cgv.get_current() < cgv_maximum)) // Either no max, or less than the > 0 maximum
     // If a list of preset creature IDs are present, filter out all creature

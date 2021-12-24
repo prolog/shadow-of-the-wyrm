@@ -551,6 +551,7 @@ const string ActionTextKeys::ACTION_SEARCH_FOUND_MULTIPLE      = "ACTION_SEARCH_
 const string ActionTextKeys::ACTION_SEARCH_BLIND               = "ACTION_SEARCH_BLIND";
 const string ActionTextKeys::ACTION_PICK_UP_NOT_ALLOWED        = "ACTION_PICK_UP_NOT_ALLOWED";
 const string ActionTextKeys::ACTION_PICK_UP_STACK_SIZE         = "ACTION_PICK_UP_STACK_SIZE";
+const string ActionTextKeys::ACTION_PICK_UP_ZERO               = "ACTION_PICK_UP_ZERO";
 const string ActionTextKeys::ACTION_PICK_UP_INVALID_QUANTITY   = "ACTION_PICK_UP_INVALID_QUANTITY";
 const string ActionTextKeys::ACTION_DROP_NOT_ALLOWED           = "ACTION_DROP_NOT_ALLOWED";
 const string ActionTextKeys::ACTION_DROP_NO_ITEM_SELECTED      = "ACTION_DROP_NO_ITEM_SELECTED";

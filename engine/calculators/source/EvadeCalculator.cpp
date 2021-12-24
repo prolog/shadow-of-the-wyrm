@@ -1,9 +1,13 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "EvadeCalculator.hpp"
 #include "StatusEffectFactory.hpp"
+#include "WeaponManager.hpp"
 #include "Wearable.hpp"
 
 using namespace std;
+
+const int EvadeCalculator::ESCAPE_SKILL_DIVISOR = 5;
+const int EvadeCalculator::BLADES_MASTERY_BONUS = 20;
 
 EvadeCalculator::EvadeCalculator()
 {
@@ -18,6 +22,7 @@ EvadeCalculator::~EvadeCalculator()
 //       - 1 point for every two points of Agility under 10
 //       + 2 points per level if hidden
 //       - 1 point per level if enraged
+//       + 20 if 100 in short/long blades and wielding a short/long blade
 //       + any bonuses or penalties from modifiers
 int EvadeCalculator::calculate_evade(const CreaturePtr& c)
 {
@@ -34,6 +39,7 @@ int EvadeCalculator::calculate_evade(const CreaturePtr& c)
     evade += get_modifier_bonus(c);
     evade += get_skill_bonus(c);
     evade += get_hide_bonus(c);
+    evade += get_escape_bonus(c);
     evade -= get_rage_penalty(c);
     evade += agility_bonus;
   }
@@ -71,6 +77,8 @@ int EvadeCalculator::get_equipment_bonus(const CreaturePtr& c)
       }
     }
   }
+
+  equipment_evade_bonus += get_blades_bonus(c);
   
   return equipment_evade_bonus;
 }
@@ -131,6 +139,18 @@ int EvadeCalculator::get_hide_bonus(const CreaturePtr& c)
   return hide_bonus;
 }
 
+int EvadeCalculator::get_escape_bonus(const CreaturePtr& c)
+{
+  int escape_bonus = 0;
+
+  if (c != nullptr)
+  {
+    escape_bonus = c->get_skills().get_value(SkillType::SKILL_GENERAL_ESCAPE) / ESCAPE_SKILL_DIVISOR;
+  }
+
+  return escape_bonus;
+}
+
 int EvadeCalculator::get_rage_penalty(const CreaturePtr& c)
 {
   int penalty = 0;
@@ -144,6 +164,28 @@ int EvadeCalculator::get_rage_penalty(const CreaturePtr& c)
   }
 
   return penalty;
+}
+
+int EvadeCalculator::get_blades_bonus(const CreaturePtr& c)
+{
+  int bonus = 0;
+
+  if (c != nullptr)
+  {
+    WeaponManager wm;
+    Skills& cskills = c->get_skills();
+    SkillType skill = wm.get_skill_type(c, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
+    int lblade = cskills.get_value(SkillType::SKILL_MELEE_LONG_BLADES);
+    int sblade = cskills.get_value(SkillType::SKILL_MELEE_SHORT_BLADES);
+
+    if ((skill == SkillType::SKILL_MELEE_LONG_BLADES && lblade == Skills::MAX_SKILL_VALUE) ||
+        (skill == SkillType::SKILL_MELEE_SHORT_BLADES && sblade == Skills::MAX_SKILL_VALUE))
+    {
+      bonus = BLADES_MASTERY_BONUS;
+    }
+  }
+
+  return bonus;
 }
 
 #ifdef UNIT_TESTS

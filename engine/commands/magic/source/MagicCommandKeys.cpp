@@ -11,6 +11,7 @@ MagicCommandKeys::~MagicCommandKeys()
 }
 
 // The individual command key values
+const string MagicCommandKeys::ARCANA        = "ARCANA";
 const string MagicCommandKeys::SELECT_SPELL  = "SELECT_SPELL";
 const string MagicCommandKeys::NEXT_PAGE     = "MAGIC_NEXT_PAGE";
 const string MagicCommandKeys::PREVIOUS_PAGE = "MAGIC_PREVIOUS_PAGE";

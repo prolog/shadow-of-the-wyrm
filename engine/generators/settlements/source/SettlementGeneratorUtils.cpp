@@ -295,7 +295,11 @@ void SettlementGeneratorUtils::generate_building_creatures(MapPtr map, const Bui
             string creature_id = creature_ids.at(creature_ids.size() - 1);
             CreatureFactory cf;
             CreaturePtr creature = cf.create_by_creature_id(am, creature_id, map);
-            GameUtils::add_new_creature_to_map(game, creature, map, c);
+
+            if (creature != nullptr)
+            {
+              GameUtils::add_new_creature_to_map(game, creature, map, c);
+            }
 
             creature_ids.pop_back();
           }

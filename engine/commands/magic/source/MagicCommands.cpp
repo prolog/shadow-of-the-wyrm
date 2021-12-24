@@ -13,6 +13,15 @@ SelectSpellCommand::SelectSpellCommand(const int spell_idx, const int key)
 {  
 }
 
+// Get detailed info on a particular spell
+const string ArcanaCommand::ARCANA_ID = "arcana_id";
+
+ArcanaCommand::ArcanaCommand(const int spell_idx, const int key)
+: SpellCommand(spell_idx, key) 
+{
+  command_name = MagicCommandKeys::ARCANA;
+}
+
 // Go to the next page of spells
 NextPageMagicCommand::NextPageMagicCommand(const int key)
 : Command(MagicCommandKeys::NEXT_PAGE, key)

@@ -1,3 +1,5 @@
+#include "CoastlineGenerator.hpp"
+#include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "FeatureGenerator.hpp"
 #include "Game.hpp"
@@ -5,6 +7,7 @@
 #include "GeneratorUtils.hpp"
 #include "ItemGenerationManager.hpp"
 #include "Log.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
 #include "RockGardenGenerator.hpp"
@@ -13,9 +16,11 @@
 #include "SpringsGenerator.hpp"
 #include "StorehouseSectorFeature.hpp"
 #include "StreamGenerator.hpp"
+#include "TerrainTextKeys.hpp"
 #include "TileGenerator.hpp"
 #include "WildflowerGardenGenerator.hpp"
 
+using SOTW::Generator;
 using namespace std;
 
 // Implicit is an extra padding tile - when creating a shop/bazaar, there's
@@ -573,6 +578,7 @@ bool GeneratorUtils::are_tiles_ok_for_structure(MapPtr map, const int y_start, c
       {
         TilePtr tile = map->at(y, x);
 
+        // Don't allow generation on water, etc.
         if (!(tile && tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_GROUND && tile->get_movement_multiplier() > 0))
         {
           bzr_ok = false;
@@ -602,6 +608,61 @@ void GeneratorUtils::fill(MapPtr map, const Coordinate& start_coord, const Coord
   }
 }
 
+void GeneratorUtils::potentially_generate_coastline(MapPtr map, Generator * const generator)
+{
+  if (map != nullptr && generator != nullptr)
+  {
+    bool skip_gen = String::to_bool(generator->get_additional_property(MapProperties::MAP_PROPERTIES_SKIP_COASTLINE_GENERATION));
+
+    if (skip_gen == false)
+    {
+      generate_coastline(map, generator);
+    }
+  }
+}
+
+bool GeneratorUtils::generate_coastline(MapPtr map, Generator * const generator)
+{
+  bool return_val = false;
+
+  if (map != nullptr && generator != nullptr)
+  {
+    string coast_n_s = generator->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH);
+    string coast_s_s = generator->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH);
+    string coast_e_s = generator->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST);
+    string coast_w_s = generator->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST);
+
+    bool generate_north = String::to_bool(coast_n_s);
+    bool generate_south = String::to_bool(coast_s_s);
+    bool generate_east = String::to_bool(coast_e_s);
+    bool generate_west = String::to_bool(coast_w_s);
+
+    if (generate_north) map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH, to_string(true));
+    if (generate_south) map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH, to_string(true));
+    if (generate_east) map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST, to_string(true));
+    if (generate_west) map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST, to_string(true));
+
+    if (generate_north || generate_south || generate_east || generate_west)
+    {
+      return_val = true;
+      map->add_secondary_terrain(TileType::TILE_TYPE_SEA);
+    }
+
+    CoastlineGenerator cg;
+    cg.generate(map, generate_north, generate_south, generate_east, generate_west);
+
+    if (return_val)
+    {
+      vector<string> coast_sids = {TerrainTextKeys::COASTLINE_MESSAGE1_SID, TerrainTextKeys::COASTLINE_MESSAGE2_SID, TerrainTextKeys::COASTLINE_MESSAGE3_SID};
+      string coastline_text_sid = coast_sids[RNG::range(0, coast_sids.size() - 1)];
+
+      generator->add_feature_entry_text_sid(coastline_text_sid);
+    }
+  }
+
+  return return_val;
+}
+
 void GeneratorUtils::add_random_stream_or_springs(MapPtr result_map, const int pct_chance_stream, const int pct_chance_springs)
 {
   int additional_random_feature = RNG::range(1, 100);
@@ -623,11 +684,34 @@ void GeneratorUtils::add_random_stream_or_springs(MapPtr result_map, const int p
 
 void GeneratorUtils::add_random_springs(MapPtr result_map)
 {
+  if (result_map == nullptr) return;
+
   Dimensions dim = result_map->size();
   int springs_size = RNG::dice(3, 2); // min size should be 3.
-  int start_y = RNG::range(1, (dim.get_y() - springs_size - 1));
-  int start_x = RNG::range(1, (dim.get_x() - springs_size - 1));
-  int rand_type = RNG::dice(1, 2);
+  int start_y = 0;
+  int start_x = 0;
+  int rand_type = 1;
+  int attempts = 0;
+
+  for (int i = 0; i < 5; i++)
+  {
+    attempts++;
+
+    start_y = RNG::range(1, (dim.get_y() - springs_size - 1));
+    start_x = RNG::range(1, (dim.get_x() - springs_size - 1));
+    rand_type = RNG::dice(1, 2);
+
+    TilePtr tile = result_map->at(start_y, start_x);
+
+    if (tile && tile->get_water_type() != WaterType::WATER_TYPE_UNDEFINED)
+    {
+      // We've found suitable coords - use them.
+      break;
+    }
+  }
+
+  if (attempts == 5) return;
+
   SpringsType springs_type = SpringsType::SPRINGS_TYPE_TALL;
 
   if (rand_type == 2)

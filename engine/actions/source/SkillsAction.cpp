@@ -1,10 +1,13 @@
 #include <vector>
+#include "Conversion.hpp"
 #include "Game.hpp"
+#include "ScreenTitleTextKeys.hpp"
 #include "SkillsAction.hpp"
 #include "SkillsCommandFactory.hpp"
 #include "SkillsCommandProcessorFactory.hpp"
 #include "SkillsKeyboardCommandMap.hpp"
 #include "SkillsScreen.hpp"
+#include "TextDisplayFormatter.hpp"
 #include "TextDisplayScreen.hpp"
 
 using namespace std;
@@ -106,6 +109,40 @@ ActionCostValue SkillsAction::improve_skill(CreaturePtr creature, const SkillTyp
 
         creature->set_skill_points(creature->get_skill_points() - 1);
       }
+    }
+  }
+
+  return get_action_cost_value(creature);
+}
+
+ActionCostValue SkillsAction::describe_skill(CreaturePtr creature, const SkillType st)
+{
+  if (st != SkillType::SKILL_UNDEFINED && creature != nullptr)
+  {
+    Skill* skill = creature->get_skills().get_skill(st);
+
+    if (skill != nullptr)
+    {
+      Game& game = Game::instance();
+      vector<pair<Colour, string>> skill_text;
+      uint width = Game::instance().get_display()->get_width();
+      string separator;
+
+      string skill_name = String::centre(StringTable::get(skill->get_skill_name_sid()), width);
+      skill_text.push_back(make_pair(Colour::COLOUR_WHITE, skill_name));
+      skill_text.push_back(make_pair(Colour::COLOUR_BLACK, separator));
+
+      TextDisplayFormatter tdf;
+      string skill_details = StringTable::get(skill->get_skill_description_sid());
+      vector<string> sktext = tdf.format_text(skill_details);
+
+      for (const string& line_of_text : sktext)
+      {
+        skill_text.push_back(make_pair(Colour::COLOUR_WHITE, line_of_text));
+      }
+
+      TextDisplayScreen tds(game.get_display(), ScreenTitleTextKeys::SCREEN_TITLE_SKILL_DETAILS, skill_text, true, {});
+      tds.display();
     }
   }
 

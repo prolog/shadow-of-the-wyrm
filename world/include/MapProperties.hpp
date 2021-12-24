@@ -106,6 +106,13 @@ class MapProperties
     static const std::string MAP_PROPERTIES_DEFAULT_UP_STAIRCASE;
     static const std::string MAP_PROPERTIES_DEFAULT_DOWN_STAIRCASE;
 
+    static const std::string MAP_PROPERTIES_SKIP_COASTLINE_GENERATION;
+    static const std::string MAP_PROPERTIES_COASTLINE_NORTH;
+    static const std::string MAP_PROPERTIES_COASTLINE_SOUTH;
+    static const std::string MAP_PROPERTIES_COASTLINE_EAST;
+    static const std::string MAP_PROPERTIES_COASTLINE_WEST;
+    static const std::string MAP_PROPERTIES_SECONDARY_TERRAIN;
+
   protected:
     MapProperties();
     ~MapProperties();

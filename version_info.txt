@@ -1,3 +1,97 @@
+Shadow of the Wyrm v1.4.0 "Pisador"
+- Version declared October 19, 2021.  Version finalized December 24, 2021.
+
+- The display is now centered on the monitor when started in SDL windowed mode.
+
+- Via swyrm.ini, you can now select the display the game should start on 
+  in SDL (Larzid).
+
+- Maps will now usually generate coastlines based on their placement on the 
+  world map, and your placement will vary based on where the most land is at
+  the edge.
+
+- Islets (tiny islands surrounded by sea in the cardinal directions) are now
+  generally uninhabited, and random creature generation on these is restricted
+  to the naturally-occurring races: birds, animals, insects, plants, jellies, 
+  dragons.
+
+- The Rage status now provides immunity to Intimidation.
+
+- Total number of random items has been toned down.
+
+- For spellcasters, spellbook generation is now biased so that unusable
+  spellbooks are much less likely to be generated (but will still be allowed
+  by the item generation algorithm).  Spellbooks are generated as before for
+  non-spellcasters.
+
+- Ancient beasts now have some variation in their evade and soak, based on
+  the current danger level.
+
+- Updates to weapons when a creature has 100 skill in a particular weapon
+  skill:
+
+  - Axes give a chance at vorpal - half the chance as if the weapon had a
+    dedicated vorpal flag.
+
+  - Spears add piercing to all attacks
+
+  - Daggers give an extra 30% chance to sneak attack
+
+  - Bludgeons and exotic weapons give an increased chance to apply their
+    damage statuses
+
+  - Short and long blades help to deflect attacks, increasing evade
+
+  - Rods and staves get +1 range
+
+  - Unarmed attacks get a slight boost to their damage, and allow knockback
+    without explicitly kicking
+
+  - Whips get the same slight damage boost and have a chance to inflict
+    Exposed and Bloodied statuses
+
+  - Ranged weapons add an additional level/2 damage
+
+- The chance to sneak attack based on Stealth has been improved from 
+  <skill %>/10 to <skill %>/5.
+
+- When deciding on a random movement direction, intelligent creatures will
+  look to move away from any threats they can't directly reach.
+
+- Both skills and spells now have descriptions similar to those of creatures
+  and items.  They can be accessed by using the associated capital letter
+  of a skill/spell on the respective screen.
+
+- New name and settlement name combinations.
+
+- Bug fixes:
+
+  - Pregenerated items weren't properly considering whether they'd persist
+    when placed on a particular tile (Gokajern).
+
+  - swyrm.ini gave incorrect instructions on how to set default_sex to prompt
+    the user to select their character's sex (RelicWraith).
+
+  - Weather conditions no longer cause water to shimmer underwater.
+
+  - Selecting 0 for a stack pickup size would duplicate the item into your
+    inventory (RelicWraith).
+
+  - When creatures were randomly placed in dungeons, if the creature couldn't
+    be placed due to eg a wall tile being selected, this would still count
+    against any maximums, with the effect that uniques could be generated,
+    not placed, and then you'd never see them.
+
+  - Damage messages could get displayed in an unintuitive ordering - this has
+    been fixed so the damage-related message comes first ("You slash..."),
+    followed by any knockback or status effect related messages.
+
+  - Shops could be generated over top of shops, leading to situations where
+    shopkeepers might not accept items of the types displayed in the shop,
+    or where two shopkeepers could be created (RelicWraith).
+
+  - The Arcane skill increment message wasn't working properly.
+
 Shadow of the Wyrm v1.3.6 "Valderrabano"
 - Version declared July 14, 2021.  Version finalized October 19, 2021.
 
@@ -149,7 +243,7 @@ Shadow of the Wyrm v1.3.6 "Valderrabano"
 
   - Pulsars were mapped to the wrong sprite.
 
-  - The logic around close misses was broken (and always had be), so now
+  - The logic around close misses was broken (and always had been), so now
     periodically combat should generate "you barely miss <x>"-type messages.
 
 Shadow of the Wyrm v1.3.3 "de Sarlat"

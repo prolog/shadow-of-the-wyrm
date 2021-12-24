@@ -360,6 +360,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_spellbooks", get_spellbooks);
   lua_register(L, "set_shop_shopkeeper_id", set_shop_shopkeeper_id);
   lua_register(L, "repop_shop", repop_shop);
+  lua_register(L, "repop_shops", repop_shops);
   lua_register(L, "get_num_unpaid_items", get_num_unpaid_items);
   lua_register(L, "get_unpaid_amount", get_unpaid_amount);
   lua_register(L, "set_items_paid", set_items_paid);
@@ -433,6 +434,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_chat_script", set_chat_script);
   lua_register(L, "count_creatures_with_race", count_creatures_with_race);
   lua_register(L, "get_time_of_day", get_time_of_day);
+  lua_register(L, "update_creatures", update_creatures);
 }
 
 // Lua API helper functions
@@ -6540,6 +6542,35 @@ int repop_shop(lua_State* ls)
   return 1;
 }
 
+int repop_shops(lua_State* ls)
+{
+  bool repopped = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args == 0)
+  {
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      const auto& shops = map->get_shops_ref();
+      MapItemGenerator mig;
+
+      for (const auto& s_pair : shops)
+      {
+        repopped = mig.repop_shop(map, s_pair.first);
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to repop_shops");
+  }
+
+  lua_pushboolean(ls, repopped);
+  return 1;
+}
+
 int get_num_unpaid_items(lua_State* ls)
 {
   int num_unpaid = 0;
@@ -7855,7 +7886,7 @@ int get_random_hostile_creature_id(lua_State* ls)
     TileType tile_type = static_cast<TileType>(lua_tointeger(ls, 3));
 
     CreatureGenerationManager cgm;
-    CreatureGenerationIndex cgi = cgm.generate_creature_generation_map(tile_type, true, min_level, max_level, Rarity::RARITY_COMMON, {});
+    CreatureGenerationIndex cgi = cgm.generate_creature_generation_map({ tile_type }, true, false, min_level, max_level, Rarity::RARITY_COMMON, {});
     vector<string> possible_ids;
     CreatureGenerationList cgl = cgi.get();
 
@@ -7986,7 +8017,7 @@ int generate_creature(lua_State* ls)
       if (tile != nullptr && !tile->has_creature())
       {
         CreatureGenerationManager cgm;
-        CreatureGenerationList generation_list = cgm.generate_creature_generation_map(map_terrain_type, map->get_permanent(), min_danger, max_danger, Rarity::RARITY_COMMON /* hardcode for now */, {}).get();
+        CreatureGenerationList generation_list = cgm.generate_creature_generation_map({ map_terrain_type }, map->get_permanent(), map->is_islet(), min_danger, max_danger, Rarity::RARITY_COMMON /* hardcode for now */, {}).get();
         CreaturePtr creature = cgm.generate_creature(game.get_action_manager_ref(), generation_list, map);
 
         if (creature != nullptr)
@@ -8986,4 +9017,12 @@ int get_time_of_day(lua_State* ls)
 
   lua_pushinteger(ls, tod);
   return 1;
+}
+
+int update_creatures(lua_State* ls)
+{
+  MapPtr map = Game::instance().get_current_map();
+  MapUtils::update_creatures(map);
+
+  return 0;
 }

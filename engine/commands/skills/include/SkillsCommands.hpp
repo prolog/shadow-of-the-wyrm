@@ -31,6 +31,12 @@ class SelectSkillCommand : public Command
     SelectSkillCommand(int key);
 };
 
+class DescribeSkillCommand : public Command
+{
+  public:
+    DescribeSkillCommand(int key);
+};
+
 class ExitSkillsCommand : public Command
 {
   public:

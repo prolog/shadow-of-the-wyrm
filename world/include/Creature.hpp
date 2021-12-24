@@ -173,6 +173,7 @@ class Creature : public ISerializable
 
     void set_skills(const Skills& new_skills);
     Skills& get_skills();
+    bool can_learn_spells() const;
     
     void set_movement_accumulation(const MovementAccumulation& new_accumulation);
     MovementAccumulation& get_movement_accumulation_ref();
@@ -360,8 +361,6 @@ class Creature : public ISerializable
     int get_adventurers_joined() const;
 
     bool is_allied_to(const std::string& creature_original_id) const;
-
-    int get_primary_melee_range() const;
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;

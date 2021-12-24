@@ -730,7 +730,7 @@ bool DungeonGenerator::generate_orchard(MapPtr map, const int start_row, const i
   vector<TileType> vegetation_base_tiles = { TileType::TILE_TYPE_FRUIT_TREE, TileType::TILE_TYPE_FRUIT_TREE, TileType::TILE_TYPE_ROCKY_EARTH };
 
   DenseVegetationSectorFeature dvsg(vegetation_base_tiles, {}, 0);
-  return dvsg.generate(map, { start_row, start_col }, { end_row, end_col });
+  return dvsg.generate(map, { start_row, start_col }, { end_row-1, end_col-1 });
 }
 
 bool DungeonGenerator::generate_vegetation(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
@@ -739,7 +739,7 @@ bool DungeonGenerator::generate_vegetation(MapPtr map, const int start_row, cons
   vector<string> item_ids = { ItemIdKeys::ITEM_ID_STONEFLOWER, ItemIdKeys::ITEM_ID_BERRIES, ItemIdKeys::ITEM_ID_WHITE_BASIL, ItemIdKeys::ITEM_ID_VOXFLOWER, ItemIdKeys::ITEM_ID_VERBENA };
 
   DenseVegetationSectorFeature dvsg(vegetation_base_tiles, item_ids, 20);
-  return dvsg.generate(map, { start_row, start_col }, { end_row, end_col });
+  return dvsg.generate(map, { start_row, start_col }, { end_row-1, end_col-1 });
 }
 
 bool DungeonGenerator::generate_little_library(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)

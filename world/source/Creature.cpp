@@ -718,6 +718,23 @@ Skills& Creature::get_skills()
   return skills;
 }
 
+bool Creature::can_learn_spells() const
+{
+  vector<SkillType> spell_categories = { SkillType::SKILL_MAGIC_CANTRIPS, SkillType::SKILL_MAGIC_ARCANE, SkillType::SKILL_MAGIC_DIVINE, SkillType::SKILL_MAGIC_MYSTIC, SkillType::SKILL_MAGIC_PRIMORDIAL };
+
+  for (const SkillType spell_cat : spell_categories)
+  {
+    int skill_val = skills.get_value(spell_cat);
+
+    if (skill_val > 0)
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 void Creature::set_movement_accumulation(const MovementAccumulation& new_accumulation)
 {
   movement_accumulation = new_accumulation;
@@ -1736,28 +1753,6 @@ bool Creature::is_allied_to(const string& creature_id) const
   }
 
   return allied;
-}
-
-int Creature::get_primary_melee_range() const
-{
-  int range = 1;
-  WeaponPtr weapon = std::dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED));
-
-  if (weapon != nullptr)
-  {
-    range = weapon->get_range();
-  }
-  else
-  {
-    string range_prop = get_additional_property(CreatureProperties::CREATURE_PROPERTIES_PRIMARY_MELEE_RANGE);
-
-    if (!range_prop.empty())
-    {
-      range = String::to_int(range_prop);
-    }
-  }
-
-  return range;
 }
 
 // Swap values, no throw

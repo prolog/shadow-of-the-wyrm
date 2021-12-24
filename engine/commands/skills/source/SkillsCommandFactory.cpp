@@ -15,7 +15,6 @@ SkillsCommandFactory::~SkillsCommandFactory()
 CommandPtr SkillsCommandFactory::create(const int key, const std::string& command_name)
 {
   CommandPtr command;
-  bool skill_selection_require_capitalization = Game::instance().get_settings_ref().get_setting_as_bool(Setting::SKILL_SELECTION_REQUIRE_CAPITALIZATION);
   
   if (command_name == SkillsCommandKeys::GENERAL_SKILLS)
   {
@@ -35,10 +34,11 @@ CommandPtr SkillsCommandFactory::create(const int key, const std::string& comman
   }
   else if (command_name == SkillsCommandKeys::SELECT_SKILL)
   {
-    if (!skill_selection_require_capitalization || isupper(key))
-    {
-      command = std::make_unique<SelectSkillCommand>(key);
-    }
+    command = std::make_unique<SelectSkillCommand>(key);
+  }
+  else if (command_name == SkillsCommandKeys::SKILL_DESCRIPTION)
+  {
+    command = std::make_unique<DescribeSkillCommand>(key);
   }
   else if (command_name == SkillsCommandKeys::EXIT_SKILLS)
   {

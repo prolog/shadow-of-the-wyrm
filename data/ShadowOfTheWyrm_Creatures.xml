@@ -22772,7 +22772,7 @@
 			<TextDetailsSID>SWEET_OLD_DOG_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SWEET_OLD_DOG_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
-				<Strategy>mobile</Strategy>
+				<Strategy>immobile</Strategy>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>d</Char>

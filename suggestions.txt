@@ -1,6 +1,21 @@
 Me:
-- get %p working on other add_message type calls
-- Asset release
+- Stone blocks (50 lbs), sod bricks (20 lbs)
+- Dig, drop: floor tile (floor or dirt floor)
+- Drop 3 stone: rock (based on base item only, not equality)
+- Drop 3 sod: earth
+- Allow wearables to give +HP, +AP
+- Enchanting should rarely up HP/AP. +25 per enchant. 1-5% chance?
+- Wizard staff: +50 AP
+- Look at Earthsea names?
+- Ensure stunned works properly for NPCs
+- Weaponmasteries in guidebook
+- Boating: move faster on water
+- Desert/Forest/etc Lore: to-hit, damage, speed bonuses on that terrain
+- after Godslayer, divine spells gone/Divine skill 0
+- 100 in each melee weapon: should do something.
+  - Whips: chance tangle
+  - short and long blades: + evade
+  - Add to docs
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere
 - More dungeon item features:
@@ -25,15 +40,18 @@ Me:
   - Deliver to Atua-Elar
   - Stage 1 of the uprising
 - Make taverns more distinctive
+- town repop race issue
+  - set a flag in the settlement generators to set a property on the map.
+  - when the property is set, set a vector<string> of creature ids as a
+    property on the map
+  - When running MapCreatureGenerator, check the map for that property.
+    If present, generate them all.
+  - Minus uniques, this will basically regenerate a village each time
 - Do a couple of quests that require a party
   - Isen Dun (Hrimgar): envoy to Forest of Yew (PoGA)
 - Test by generating these in Carcassia, Gnordvar
 - explosive damage should also trigger destr_pct_chance items on ground.
   e.g. set up explosive fields...
-- Long term, give a chance for coastal generators to produce coastline, maybe
-  with little islands, etc. Before generating, set booleans for coast in
-  the different directions and then pick one. Should be done after the initial
-  fill but before adding stuff
 - New sector features:
 - UndergroundSectorFeature (takes tile type - dungeoncomplex, mine, cavern,
   sewer)
@@ -56,16 +74,12 @@ Me:
   - Caverns
   - Sewers
   - Mines
-  - fenced area with gate: pigs, chickens
-  - tavern with low-level adventuring party
 - Each version: make sure to update itch.io page for both SotW and the sprite
   pack! OpenGameArt if new sprites.
 - Release after this: grond says tanning is complicated & dragon skins aren't
   what they should be.
-- Mode screen (F10): Game mode, graphics, palette
 - Additional profiling improvements
 - Beer halls in villages
-- spell arcana (bind to capitals in spell list)
 - Do creatures pause when no threats in FOV? Seems slow.
 - 2x draw?
 - Beastmastery: add mounts
@@ -125,7 +139,6 @@ Me:
   up/down stairs.
 - Set a number of artifacts with danger levels > -1, so that they can be
   generated.
-- SDL: full screen
 - Cancellation effect type
 - Special rooms: magical workshop, armory.
 - More shops in set locations.
@@ -216,7 +229,7 @@ aotdev
 happylisk:
 - more diverse artifact effects (HP/AP regen, stat bonuses, etc)
 
-naughtusername: 
+naughtyusername: 
 - Skill descriptions on shift+letter or something
 
 Timo:
@@ -249,7 +262,6 @@ Grond:
 - Switching with townsfolk (in churches?) leads to weird behaviour
 - Adjacent creatures attack on load
 - Differentiate scribing and wandcraft - why use scribing?
-- Scything on ammo?
 - could magic skill affect spell duration
 - monster as a mount
 - "some ivory pieces shimmers in a radiant light"
@@ -259,9 +271,6 @@ Yan Zhang:
 - Dungeon symbol should generate that thing on the last level
 - Do something interesting with flowers!
 - Climb up Telari: more NPCs
-
-Skjarl:
-- SDL resizing
 
 Stof:
 - mouse click pathfinding
@@ -294,7 +303,6 @@ Josh Engdahl
 - don't step out of shadows if creatures don't have you in LOS
 - weird age incrementing issue?
 - make undead hostile to e.g. all humanoids
-- Cancel prompts should clear text: kick, drop, etc
 - nearby guards/priests should get angry when altars are desecrated
 - Rocky earth generator 1n Carcassia
 - Warping out of levels doesn't put you back at the default entry position
@@ -308,3 +316,9 @@ Josh Engdahl
 
 TheGhostInTheMachine:
 - game segfaults if you put it on the path and then run it elsewhere?
+
+Brian Jeffears:
+- black market/something only open at night
+
+Echo38:
+- make undead hostile to humanoids

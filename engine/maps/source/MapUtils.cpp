@@ -3,6 +3,7 @@
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "CreatureFactory.hpp"
+#include "CreatureGenerationConstants.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
@@ -14,7 +15,10 @@
 #include "ItemProperties.hpp"
 #include "LineOfSightCalculator.hpp"
 #include "Log.hpp"
+#include "MapCreatureGenerator.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
+#include "MeleeWeaponRangeCalculator.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MovementAccumulationChecker.hpp"
 #include "MovementAccumulationUpdater.hpp"
@@ -118,7 +122,7 @@ bool MapUtils::is_tile_available_for_creature(CreaturePtr creature, TilePtr tile
 // - if the inventory type isn't null
 bool MapUtils::is_tile_available_for_item(TilePtr tile)
 {
-  return (!tile->get_is_blocking() && tile->get_items()->get_allows_items());
+  return (!tile->get_is_blocking() && tile->get_items()->get_allows_items() == AllowsItemsType::ALLOWS_ITEMS);
 }
 
 // Swap two creatures on their tiles.
@@ -1363,8 +1367,15 @@ Coordinate MapUtils::place_creature(MapPtr map, CreaturePtr creature, const stri
 {
   Coordinate coords(0,0);
 
+  if (map == nullptr)
+  {
+    return coords;
+  }
+
   if (CoordUtils::is_end(linked_location))
   {
+    bool set_coords = false;
+
     // First, check the generic "player location" coordinates.
     if (creature->get_is_player())
     {
@@ -1372,12 +1383,19 @@ Coordinate MapUtils::place_creature(MapPtr map, CreaturePtr creature, const stri
       if (map->has_location(current_player_loc))
       {
         coords = map->get_location(current_player_loc);
+        set_coords = true;
       }
     }
 
     if (map->has_location(player_loc))
     {
       coords = map->get_location(player_loc);
+      set_coords = true;
+    }
+
+    if (set_coords == false)
+    {
+      coords = map->get_starting_location();
     }
   }
   else
@@ -2044,7 +2062,8 @@ pair<bool, TilePtr> MapUtils::get_melee_attack_target(MapPtr map, CreaturePtr cr
 
   if (map != nullptr && creature != nullptr)
   {
-    int range = creature->get_primary_melee_range();
+    MeleeWeaponRangeCalculator mwrc;
+    int range = mwrc.get_primary_melee_range(creature);
     string c_id = creature->get_id();
     Coordinate creature_coords = map->get_location(c_id);
 
@@ -2169,6 +2188,116 @@ bool MapUtils::add_item(MapPtr map, const vector<Coordinate>& possible_coords, I
   }
 
   return false;
+}
+
+vector<Direction> MapUtils::get_coastline_directions(MapPtr map, const Coordinate& c)
+{
+  vector<Direction> dirs;
+
+  if (map != nullptr)
+  {
+    vector<Direction> check_dirs = {Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH, Direction::DIRECTION_EAST, Direction::DIRECTION_WEST};
+
+    for (const Direction cd : check_dirs)
+    {
+      Coordinate adj_c = CoordUtils::get_new_coordinate(c, cd);
+      TilePtr tile = map->at(adj_c);
+
+      // If we're off the end of the world, assume an endless and unyielding
+      // sea...
+      if (tile == nullptr)
+      {
+        dirs.push_back(cd);
+      }
+      else if (tile->get_tile_type() == TileType::TILE_TYPE_SEA)
+      {
+        dirs.push_back(cd);
+      }
+    }
+  }
+
+  return dirs;
+}
+
+Coordinate MapUtils::get_random_coastline_coordinate(MapPtr map)
+{
+  Coordinate c = CoordUtils::end();
+
+  if (map != nullptr)
+  {
+    vector<Direction> dirs = map->get_coastline_directions();
+
+    if (!dirs.empty())  
+    {
+      std::shuffle(dirs.begin(), dirs.end(), RNG::get_engine());
+      Direction d = dirs[0];
+      vector<Coordinate> coords = CoordUtils::get_edge_coordinates(map->size(), d);
+
+      if (!coords.empty())
+      {
+        std::shuffle(coords.begin(), coords.end(), RNG::get_engine());
+
+        for (const Coordinate& ec : coords)
+        {
+          TilePtr tile = map->at(ec);
+
+          if (tile && tile->get_water_type() != WaterType::WATER_TYPE_UNDEFINED)
+          {
+            return ec;
+          }
+        }
+      }
+    }
+  }
+
+  return c;
+}
+
+void MapUtils::set_coastline_generator_dirs(SOTW::Generator* generator, const vector<Direction>& dirs)
+{
+  if (generator != nullptr)
+  {
+    for (const Direction d : dirs)
+    {
+      if (d == Direction::DIRECTION_NORTH)
+      {
+        generator->set_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH, std::to_string(true));
+      }
+      else if (d == Direction::DIRECTION_SOUTH)
+      {
+        generator->set_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH, std::to_string(true));
+      }
+      else if (d == Direction::DIRECTION_EAST)
+      {
+        generator->set_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST, std::to_string(true));
+      }
+      else if (d == Direction::DIRECTION_WEST)
+      {
+        generator->set_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST, std::to_string(true));
+      }
+    }
+  }
+}
+
+void MapUtils::update_creatures(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    uint num_creatures = map->get_creatures().size();
+    uint num_following = MapUtils::get_num_following_creatures(map);
+    uint num_nonfollow = num_creatures - num_following;
+
+    // Check to see if it can be updated with creatures
+    if (map != nullptr && map->get_allow_creature_updates() && (num_nonfollow < CreatureGenerationConstants::MIN_CREATURES_FOR_MAP_UPDATE))
+    {
+      // The map can be updated.
+      // Create the appropriate generator and call the update function.
+      MapCreatureGenerator mcg;
+
+      std::map<string, string> props;
+      mcg.generate_random_creatures(map, map->get_danger(), props);
+    }
+  }
 }
 
 #ifdef UNIT_TESTS

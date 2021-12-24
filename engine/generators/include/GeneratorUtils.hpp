@@ -1,5 +1,6 @@
 #pragma once
 #include "Features.hpp"
+#include "Generator.hpp"
 #include "Map.hpp"
 
 class GeneratorUtils
@@ -55,6 +56,10 @@ class GeneratorUtils
 
     // Fill a subset of the map with a certain tile type.
     static void fill(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const TileType tile_type);
+
+    // Generate coastline on the map
+    static void potentially_generate_coastline(MapPtr map, SOTW::Generator * const generator);
+    static bool generate_coastline(MapPtr map, SOTW::Generator * const generator);
 
     static void add_random_stream_or_springs(MapPtr map, const int pct_chance_stream, const int pct_chance_springs);
     static void add_random_stream(MapPtr map);

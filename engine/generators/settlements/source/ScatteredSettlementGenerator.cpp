@@ -27,7 +27,14 @@ void ScatteredSettlementGenerator::initialize()
 // Generate the scattered settlement
 MapPtr ScatteredSettlementGenerator::generate(const Dimensions& dim)
 {
-  return generate();
+  MapPtr map = generate();
+
+  if (map != nullptr)
+  {
+    map->set_allow_creature_updates(false);
+  }
+
+  return map;
 }
 
 MapPtr ScatteredSettlementGenerator::generate()
@@ -119,7 +126,7 @@ void ScatteredSettlementGenerator::generate_scattered_settlement(MapPtr map)
         {
           vector<ClassIdentifier> cl_ids = bcf.create_house_or_workshop_features(WORKSHOP_PROBABILITY);
           BuildingGenerationParameters bgp(row, row + height, col, col + width, door_direction, false, cl_ids, bcf.create_creature_ids(cl_ids), bcf.create_item_ids(cl_ids));
-          SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate);
+          SettlementGeneratorUtils::generate_building_if_possible(map, bgp, buildings, growth_rate, true);
 
           Room room(no_features, attempts, col, col_end, row, row_end);
           current_buildings.push_back(room);

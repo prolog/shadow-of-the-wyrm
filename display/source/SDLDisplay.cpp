@@ -335,9 +335,11 @@ bool SDLDisplay::create_window_and_renderer()
   Settings& settings = Game::instance().get_settings_ref();
 
   pair<int, int> window_size = get_calculated_or_requested_window_size(settings);
+  pair<int, int> window_loc = get_calculated_or_requested_window_location(settings);
 
   string window_title = StringTable::get(TextKeys::SW_TITLE);
-  window = SDL_CreateWindow(window_title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window_size.first, window_size.second, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+  window = SDL_CreateWindow(window_title.c_str(), window_loc.first, window_loc.second, window_size.first, window_size.second, SDL_WINDOW_ALLOW_HIGHDPI | SDL_WINDOW_RESIZABLE);
+
   if (window == NULL)
   {
     ss << "Window could not be created! SDL Error: " << SDL_GetError();
@@ -350,7 +352,7 @@ bool SDLDisplay::create_window_and_renderer()
     // By default, -1 will let SDL select the value
     int drv_index = -1;
 
-    string renderer_name = Game::instance().get_settings_ref().get_setting(Setting::DISPLAY_SDL_RENDERER);
+    string renderer_name = settings.get_setting(Setting::DISPLAY_SDL_RENDERER);
 
     for (int i = 0; i < SDL_GetNumRenderDrivers(); i++) 
     {
@@ -387,6 +389,10 @@ bool SDLDisplay::create_window_and_renderer()
 
           SDL_SetWindowFullscreen(window, sdl_win_mode);
           SDL_RaiseWindow(window);
+        }
+        else
+        {
+          SDL_SetWindowBordered(window, SDL_TRUE);
         }
       }
 
@@ -1364,6 +1370,27 @@ pair<int, int> SDLDisplay::get_calculated_or_requested_window_size(const Setting
   return window_size;
 }
 
+pair<int, int> SDLDisplay::get_calculated_or_requested_window_location(const Settings& settings)
+{
+  pair<int, int> window_loc = { SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED };
+  string display_loc_s = settings.get_setting(Setting::DISPLAY_LOCATION);
+
+  if (!display_loc_s.empty())
+  {
+    int display_num = String::to_int(display_loc_s);
+    int d_idx = display_num - 1;
+    int num_displays = SDL_GetNumVideoDisplays();
+
+    if (display_num > 0 && display_num <= num_displays)
+    {
+      window_loc.first = SDL_WINDOWPOS_CENTERED_DISPLAY(d_idx);
+      window_loc.second = SDL_WINDOWPOS_CENTERED_DISPLAY(d_idx);
+    }
+  }
+
+  return window_loc;
+}
+
 ClassIdentifier SDLDisplay::internal_class_identifier() const
 {
   return ClassIdentifier::CLASS_ID_SDL_DISPLAY;
@@ -1373,4 +1400,4 @@ ClassIdentifier SDLDisplay::internal_class_identifier() const
 #include "unit_tests/SDLDisplay_test.cpp"
 #endif
 
-#endif
+#endif // ENABLE_SDL

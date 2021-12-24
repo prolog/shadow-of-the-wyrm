@@ -153,7 +153,8 @@ class Map : public ISerializable
     void set_shops(const std::map<std::string, Shop>& new_shops);
     std::map<std::string, Shop>& get_shops_ref();
     std::map<std::string, Shop> get_shops() const;
-    
+    bool has_shop(const std::string& shop_id) const;
+
     void clear_event_scripts();
     void set_event_scripts(const EventScriptsMap& esm);
     EventScriptsMap get_event_scripts() const;
@@ -165,6 +166,16 @@ class Map : public ISerializable
     void set_weather(const Weather& new_weather);
     Weather& get_weather_ref();
     Weather get_weather() const;
+
+    Coordinate get_starting_location() const;
+
+    void set_secondary_terrain(const std::vector<TileType>& new_secondary_terrain);
+    void add_secondary_terrain(const TileType tt);
+
+    std::vector<Direction> get_coastline_directions() const;
+    bool is_islet() const;
+
+    std::vector<TileType> get_secondary_terrain() const;
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;

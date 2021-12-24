@@ -35,11 +35,12 @@ void MagicKeyboardCommandMap::initialize_command_mapping(const Settings& setting
                                               {std::to_string(NC_ESCAPE_KEY), MagicCommandKeys::EXIT_MAGIC},
                                               {esc_key, MagicCommandKeys::EXIT_MAGIC}};
 
-  // Select a spell
+  // Select a spell, or view that spell's arcana 
   for (char c = 'a'; c < 'z'; c++)
   {
     // a - y should select a spell (or do nothing, if there are not that many spells in the list).
     command_mapping.insert(make_pair(std::to_string(c), MagicCommandKeys::SELECT_SPELL));
+    command_mapping.insert(make_pair(std::to_string(toupper(c)), MagicCommandKeys::ARCANA));
   }
 }
 

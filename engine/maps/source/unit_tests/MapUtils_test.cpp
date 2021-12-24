@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "FieldGenerator.hpp"
 #include "GeneratorUtils.hpp"
 #include "MobileDecisionStrategy.hpp"
 #include "TileGenerator.hpp"
@@ -328,4 +329,74 @@ TEST(SW_Engine_Maps_MapUtils, get_available_adjacent_tiles_to_creature)
   {
     EXPECT_TRUE(avail_adj.find(d) != avail_adj.end());
   }
+}
+
+TEST(SW_Engine_Maps_MapUtils, get_coastline_dirs)
+{
+  Dimensions d;
+  MapPtr map = std::make_shared<Map>(d);
+  GeneratorUtils::fill(map, { 0,0 }, { d.get_y() - 1, d.get_x() - 1 }, TileType::TILE_TYPE_SEA);
+
+  // Case 1: sea in all directions.
+  // 
+  // Place a single field in the center.  It should be surrounded by sea.
+  TileGenerator tg;
+  TilePtr tile = tg.generate(TileType::TILE_TYPE_FIELD);
+  map->insert({ 10, 10 }, tile);
+  vector<Direction> dirs = MapUtils::get_coastline_directions(map, { 10, 10 });
+
+  EXPECT_EQ(4, dirs.size());
+  EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_NORTH) != dirs.end());
+  EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_SOUTH) != dirs.end());
+  EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_EAST) != dirs.end());
+  EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_WEST) != dirs.end());
+
+  // Case 2: sea in most directions
+  tile = tg.generate(TileType::TILE_TYPE_FIELD);
+  map->insert({ 10, 11 }, tile);
+  dirs = MapUtils::get_coastline_directions(map, { 10, 11 });
+
+  EXPECT_EQ(3, dirs.size());
+  EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_NORTH) != dirs.end());
+  EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_SOUTH) != dirs.end());
+  EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_EAST) != dirs.end());
+
+  // Case 3: sea in one direction
+  for (int y = 15; y < 18; y++)
+  {
+    for (int x = 15; x < 18; x++)
+    {
+      tile = tg.generate(TileType::TILE_TYPE_FIELD);
+      map->insert(y, x, tile);
+    }
+  }
+
+  dirs = MapUtils::get_coastline_directions(map, { 16, 17 });
+  EXPECT_EQ(1, dirs.size());
+  EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_EAST) != dirs.end());
+
+  // Case 4: landlocked
+  dirs = MapUtils::get_coastline_directions(map, { 16, 16 });
+  EXPECT_EQ(0, dirs.size());
+}
+
+TEST(SW_Engine_Maps_MapUtils, set_coastline_generator_dirs)
+{
+  FieldGenerator generator("test");
+
+  vector<Direction> dirs = { Direction::DIRECTION_EAST };
+  MapUtils::set_coastline_generator_dirs(&generator, dirs);
+
+  EXPECT_EQ(std::to_string(true), generator.get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST));
+  EXPECT_FALSE(generator.has_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST));
+  EXPECT_FALSE(generator.has_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH));
+  EXPECT_FALSE(generator.has_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH));
+
+  dirs = { Direction::DIRECTION_EAST, Direction::DIRECTION_WEST, Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH };
+  MapUtils::set_coastline_generator_dirs(&generator, dirs);
+
+  EXPECT_EQ(std::to_string(true), generator.get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH));
+  EXPECT_EQ(std::to_string(true), generator.get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH));
+  EXPECT_EQ(std::to_string(true), generator.get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST));
+  EXPECT_EQ(std::to_string(true), generator.get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST));
 }
