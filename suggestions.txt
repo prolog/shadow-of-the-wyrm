@@ -1,5 +1,7 @@
 Me:
-- Hook up sod to digging chances
+- Rework DigChances so it can handle multiple item %s, then readd edible roots
+  to fields.
+- Info on digging into the game - NPCs etc
 - ASSET RELEASE
 - Stone blocks (50 lbs), sod bricks (20 lbs)
 - Dig, drop: floor tile (floor or dirt floor)
