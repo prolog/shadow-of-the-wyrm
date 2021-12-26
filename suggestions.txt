@@ -1,4 +1,5 @@
 Me:
+- ASSET RELEASE
 - Stone blocks (50 lbs), sod bricks (20 lbs)
 - Dig, drop: floor tile (floor or dirt floor)
 - Drop 3 stone: rock (based on base item only, not equality)

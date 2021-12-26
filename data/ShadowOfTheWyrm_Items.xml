@@ -12980,6 +12980,45 @@
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
+			<Item id="_stone_block">
+				<DescriptionSID>STONE_BLOCK_SID</DescriptionSID>
+				<UsageDescriptionSID>STONE_BLOCK_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>STONE_BLOCK_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>40</Pounds>
+				</Weight>
+				<Material>7</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>10</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="_sod_brick">
+				<DescriptionSID>SOD_BRICK_SID</DescriptionSID>
+				<UsageDescriptionSID>SOD_BRICK_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SOD_BRICK_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>15</Pounds>
+				</Weight>
+				<Material>17</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Colour>10</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>10</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="_clay">
 				<DescriptionSID>CLAY_SID</DescriptionSID>
 				<UsageDescriptionSID>CLAY_USAGE_SID</UsageDescriptionSID>

@@ -3,6 +3,8 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - New name and settlement name combinations.
 
+- New items: stone block, sod brick.
+
 Shadow of the Wyrm v1.4.0 "Pisador"
 - Version declared October 19, 2021.  Version finalized December 24, 2021.
 
