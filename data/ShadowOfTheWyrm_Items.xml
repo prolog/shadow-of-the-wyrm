@@ -12998,6 +12998,16 @@
 					</Sprite>					
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>wall_tile_type</Name>
+						<Value>11</Value>
+					</Property>
+					<Property>
+						<Name>floor_tile_type</Name>
+						<Value>10</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="_sod_brick">
 				<DescriptionSID>SOD_BRICK_SID</DescriptionSID>
@@ -13018,6 +13028,16 @@
 					</Sprite>					
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>wall_tile_type</Name>
+						<Value>46</Value>
+					</Property>
+					<Property>
+						<Name>floor_tile_type</Name>
+						<Value>41</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="_clay">
 				<DescriptionSID>CLAY_SID</DescriptionSID>

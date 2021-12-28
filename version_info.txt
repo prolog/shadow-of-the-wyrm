@@ -1,6 +1,15 @@
 Shadow of the Wyrm v1.4.3 "da Milano"
 - Version declared December 24, 2021.
 
+- Stone blocks can be obtained by digging in solid rock, while sod can be
+  harvested by digging in fields.
+
+- You can now build, and only need building materials (stone blocks, sod
+  bricks, etc):
+
+  - Dig and drop the building material and you'll be asked if you want to
+    build a section of floor.
+
 - New name and settlement name combinations.
 
 - New items: stone block, sod brick.

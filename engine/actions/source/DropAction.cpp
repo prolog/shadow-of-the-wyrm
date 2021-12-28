@@ -17,6 +17,7 @@
 #include "SeedCalculator.hpp"
 #include "TextMessages.hpp"
 #include "Tile.hpp"
+#include "TileGenerator.hpp"
 #include "TreeSpeciesFactory.hpp"
 
 using namespace std;
@@ -172,7 +173,15 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
   {
     uint quantity = item_to_drop->get_quantity();
     uint selected_quantity = quantity;
+    string wall_tile_type = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_WALL_TILE_TYPE);
+    string floor_tile_type = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_FLOOR_TILE_TYPE);
+    bool building_material = !wall_tile_type.empty() || !floor_tile_type.empty();
 
+    if (building_material)
+    {
+      selected_quantity = 1;
+    }
+    
     if (quantity > 1)
     {
       if (!multi_item)
@@ -188,11 +197,26 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
     }
     else
     {
-      ItemPtr new_item = ItemPtr(item_to_drop->create_with_new_id());
-      new_item->set_quantity(selected_quantity);
-      
+      bool drop_item = true;
       uint old_item_quantity = item_to_drop->get_quantity() - selected_quantity;
       item_to_drop->set_quantity(old_item_quantity);
+
+      if (build_with_dropped_item(creature, current_map, creatures_tile, building_material, wall_tile_type, floor_tile_type))
+      {
+        selected_quantity--;
+
+        // If we built, reduce the stack size by 1. If a single item was
+        // selected, ensure we don't follow the regular drop logic.
+        if (selected_quantity == 0)
+        {
+          drop_item = false;
+        }
+
+        creatures_tile = MapUtils::get_tile_for_creature(current_map, creature);
+      }
+
+      ItemPtr new_item = ItemPtr(item_to_drop->create_with_new_id());
+      new_item->set_quantity(selected_quantity);
 
       // If the item is a seed or a pit, don't actually set it on the tile,
       // and set the relevant tile and map properties.
@@ -215,7 +239,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
       }
       else
       {
-        if (creatures_tile && creature)
+        if (creatures_tile && creature && drop_item)
         {
           Coordinate drop_coord = current_map->get_location(creature->get_id());
 
@@ -388,6 +412,63 @@ void DropAction::handle_reacting_creature_drop_scripts(CreaturePtr creature, Map
       }
     }
   }
+}
+
+bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const bool building_material, const string& wall_tile_type_s, const string& floor_tile_type_s)
+{
+  bool built = false;
+
+  if (!building_material || !tile || !map || !creature || !creature->get_is_player())
+  {
+    return false;
+  }
+
+  TileType wall_tile_type = static_cast<TileType>(String::to_int(wall_tile_type_s));
+  TileType floor_tile_type = static_cast<TileType>(String::to_int(floor_tile_type_s));
+
+  if (tile->has_been_dug())
+  {
+    built = build_floor_with_dropped_item(creature, map, tile, floor_tile_type);
+  }
+
+  if (!built)
+  {
+    built = build_wall_with_dropped_item(creature, map, tile, floor_tile_type);
+  }
+
+  return built;
+}
+
+bool DropAction::build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType wall_tile_type)
+{
+  return false;
+}
+
+bool DropAction::build_floor_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType floor_tile_type)
+{
+  // Check to see if building is intended.
+  bool built = false;
+  IMessageManager& manager = MM::instance();
+  manager.add_new_confirmation_message(TextMessages::get_confirmation_message(ActionTextKeys::ACTION_PROMPT_BUILD_FLOOR));
+  manager.send();
+
+  bool build_floor = creature->get_decision_strategy()->get_confirmation();
+
+  if (build_floor)
+  {
+    TileGenerator tg;
+    TilePtr new_tile = tg.generate(floor_tile_type);
+    Coordinate c = map->get_location(creature->get_id());
+    new_tile->transform_from(tile);
+    map->insert(c, new_tile);
+
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BUILD_FLOOR));
+    manager.send();
+
+    built = true;
+  }
+
+  return built;
 }
 
 // Dropping always has a base action cost of 1.

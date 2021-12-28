@@ -64,6 +64,8 @@ class ActionTextKeys
     static const std::string ACTION_DROP_QUANTITY_PROMPT;
     static const std::string ACTION_DROP_INVALID_QUANTITY;
     static const std::string ACTION_DROP_WATER;
+    static const std::string ACTION_PROMPT_BUILD_FLOOR;
+    static const std::string ACTION_BUILD_FLOOR;
     static const std::string ACTION_PICK_UP_NOTHING_ON_GROUND;
     static const std::string ACTION_PICK_UP_MAX_ITEMS;
     static const std::string ACTION_PICK_UP_MAX_WEIGHT;
