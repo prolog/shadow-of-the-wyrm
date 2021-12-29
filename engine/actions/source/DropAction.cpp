@@ -1,6 +1,8 @@
 #include "ActionManager.hpp"
 #include "ActionTextKeys.hpp"
+#include "Commands.hpp"
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DropAction.hpp"
 #include "DropScript.hpp"
@@ -212,6 +214,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
           drop_item = false;
         }
 
+        GameUtils::make_map_permanent(game, creature, current_map);
         creatures_tile = MapUtils::get_tile_for_creature(current_map, creature);
       }
 
@@ -433,7 +436,7 @@ bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TileP
 
   if (!built)
   {
-    built = build_wall_with_dropped_item(creature, map, tile, floor_tile_type);
+    built = build_wall_with_dropped_item(creature, map, tile, wall_tile_type);
   }
 
   return built;
@@ -441,7 +444,87 @@ bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TileP
 
 bool DropAction::build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType wall_tile_type)
 {
-  return false;
+  bool built = false;
+  IMessageManager& manager = MM::instance();
+  manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_PROMPT_BUILD_WALL));
+  manager.send();
+
+  CommandFactoryPtr command_factory = std::make_unique<CommandFactory>();
+  KeyboardCommandMapPtr kb_command_map = std::make_unique<KeyboardCommandMap>();
+  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0, false);
+  string build_msg_sid;
+
+  if (base_command != nullptr)
+  {
+    DirectionalCommand* dcommand;
+    dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
+
+    if (dcommand)
+    {
+      Direction d = dcommand->get_direction();
+      Coordinate pl_coord = map->get_location(creature->get_id());
+      Coordinate build_coord = CoordUtils::get_new_coordinate(pl_coord, d);
+      TilePtr build_tile = map->at(build_coord);
+
+      if (build_tile == nullptr)
+      {
+        build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_NO_TILE;
+      }
+      else if (build_tile->get_movement_multiplier() == 0)
+      {
+        build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_PRESENT;
+      }
+      else if (build_tile->has_creature())
+      {
+        build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_CREATURE_PRESENT;
+      }
+      else if (build_tile->has_feature())
+      {
+        build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_FEATURE_PRESENT;
+      }
+      else
+      {
+        IInventoryPtr build_tile_items = build_tile->get_items();
+        if (build_tile_items->has_items())
+        {
+          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BUILD_WALL_DISPLACE_ITEMS));
+          manager.send();
+
+          vector<Coordinate> adj_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), build_coord.first, build_coord.second);
+          std:shuffle(adj_coords.begin(), adj_coords.end(), RNG::get_engine());
+
+          for (const auto& ac : adj_coords)
+          {
+            TilePtr adj_tile = map->at(ac);
+
+            if (adj_tile && adj_tile->get_items()->get_allows_items() == AllowsItemsType::ALLOWS_ITEMS)
+            {
+              IInventoryPtr adj_items = adj_tile->get_items();
+              adj_items->merge_or_add(build_tile_items, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+              build_tile_items->clear();
+            }
+          }
+        }
+
+        TileGenerator tg;
+        TilePtr new_tile = tg.generate(wall_tile_type);
+        Coordinate c = map->get_location(creature->get_id());
+        new_tile->transform_from(build_tile);
+        map->insert(build_coord, new_tile);
+
+        build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL;
+        built = true;
+      }
+
+      if (!build_msg_sid.empty())
+      {
+        manager.add_new_message(StringTable::get(build_msg_sid));
+        manager.send();
+      }
+    }
+  }
+
+  return built;
 }
 
 bool DropAction::build_floor_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType floor_tile_type)

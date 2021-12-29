@@ -64,6 +64,15 @@ class ActionTextKeys
     static const std::string ACTION_DROP_QUANTITY_PROMPT;
     static const std::string ACTION_DROP_INVALID_QUANTITY;
     static const std::string ACTION_DROP_WATER;
+    static const std::string ACTION_PROMPT_BUILD_WALL;
+    static const std::string ACTION_BUILD_WALL;
+    static const std::string ACTION_BUILD_WALL_NO_TILE;
+    static const std::string ACTION_BUILD_WALL_PRESENT;
+    static const std::string ACTION_BUILD_WALL_CREATURE_PRESENT;
+    static const std::string ACTION_BUILD_WALL_FEATURE_PRESENT;
+    static const std::string ACTION_BUILD_WALL_WATER;
+    static const std::string ACTION_BUILD_WALL_AIR;
+    static const std::string ACTION_BUILD_WALL_DISPLACE_ITEMS;
     static const std::string ACTION_PROMPT_BUILD_FLOOR;
     static const std::string ACTION_BUILD_FLOOR;
     static const std::string ACTION_PICK_UP_NOTHING_ON_GROUND;

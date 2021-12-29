@@ -112,6 +112,23 @@ bool Inventory::merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_l
   return added;
 }
 
+bool Inventory::merge_or_add(IInventoryPtr items, const InventoryAdditionType inv_add_loc)
+{
+  if (items == nullptr)
+  {
+    return false;
+  }
+
+  const list<ItemPtr> raw_items = items->get_items_cref();
+
+  for (ItemPtr i : raw_items)
+  {
+    merge_or_add(i, inv_add_loc);
+  }
+
+  return true;
+}
+
 bool Inventory::merge(ItemPtr item)
 {
   for (ItemPtr inv_item : items)

@@ -10,6 +10,11 @@ Shadow of the Wyrm v1.4.3 "da Milano"
   - Dig and drop the building material and you'll be asked if you want to
     build a section of floor.
 
+  - Drop building material and if you can't/don't want to build a floor,
+    you'll be prompted to build a section of wall.
+
+- Lituus is now rods/staves rather than bludgeons.
+
 - New name and settlement name combinations.
 
 - New items: stone block, sod brick.

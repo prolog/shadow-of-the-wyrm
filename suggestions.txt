@@ -1,4 +1,5 @@
 Me:
+- Unit tests for new IInventory fn
 - Rework DigChances so it can handle multiple item %s, then readd edible roots
   to fields.
 - Info on digging into the game - NPCs etc
