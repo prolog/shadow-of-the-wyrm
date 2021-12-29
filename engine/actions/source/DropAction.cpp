@@ -465,6 +465,7 @@ bool DropAction::build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, 
       Coordinate pl_coord = map->get_location(creature->get_id());
       Coordinate build_coord = CoordUtils::get_new_coordinate(pl_coord, d);
       TilePtr build_tile = map->at(build_coord);
+      TileSuperType tst = build_tile->get_tile_base_super_type();
 
       if (build_tile == nullptr)
       {
@@ -481,6 +482,14 @@ bool DropAction::build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, 
       else if (build_tile->has_feature())
       {
         build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_FEATURE_PRESENT;
+      }
+      else if (tst == TileSuperType::TILE_SUPER_TYPE_AIR)
+      {
+        build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_AIR;
+      }
+      else if (tst == TileSuperType::TILE_SUPER_TYPE_WATER)
+      {
+        build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_WATER;
       }
       else
       {
