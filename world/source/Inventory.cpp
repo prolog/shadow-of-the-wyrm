@@ -114,7 +114,12 @@ bool Inventory::merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_l
 
 bool Inventory::merge_or_add(IInventoryPtr items, const InventoryAdditionType inv_add_loc)
 {
-  if (items == nullptr)
+  return merge_or_add(items.get(), inv_add_loc);
+}
+
+bool Inventory::merge_or_add(IInventory* items, const InventoryAdditionType inv_add_loc)
+{
+  if (items == nullptr || (*items == *this))
   {
     return false;
   }
@@ -127,6 +132,19 @@ bool Inventory::merge_or_add(IInventoryPtr items, const InventoryAdditionType in
   }
 
   return true;
+}
+
+bool Inventory::transfer_to(IInventoryPtr items)
+{
+  if (items == nullptr || (*items == *this))
+  {
+    return false;
+  }
+
+  bool merged = items->merge_or_add(this, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+  clear();
+
+  return merged;
 }
 
 bool Inventory::merge(ItemPtr item)

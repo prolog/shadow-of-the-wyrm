@@ -509,8 +509,7 @@ bool DropAction::build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, 
             if (adj_tile && adj_tile->get_items()->get_allows_items() == AllowsItemsType::ALLOWS_ITEMS)
             {
               IInventoryPtr adj_items = adj_tile->get_items();
-              adj_items->merge_or_add(build_tile_items, InventoryAdditionType::INVENTORY_ADDITION_BACK);
-              build_tile_items->clear();
+              build_tile_items->transfer_to(adj_items);
             }
           }
         }

@@ -43,6 +43,10 @@ class IInventory : public ISerializable
     // parameter provided.
     virtual bool merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc) = 0;
     virtual bool merge_or_add(std::shared_ptr<IInventory> items, const InventoryAdditionType inv_add_loc) = 0;
+    virtual bool merge_or_add(IInventory* items, const InventoryAdditionType inv_add_loc) = 0;
+
+    // Transfer all the items into the given inventory
+    virtual bool transfer_to(std::shared_ptr<IInventory> items) = 0;
 
     // Attempt to merge the item.  Return true if the item could be merged into an existing item
     // in the inventory, false otherwise.  When returning false, the item is not added to the inventory.

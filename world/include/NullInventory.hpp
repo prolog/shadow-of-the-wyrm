@@ -15,7 +15,10 @@ class NullInventory : public IInventory
     bool add(ItemPtr new_item) override;
     bool merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc) override;
     bool merge_or_add(IInventoryPtr items, const InventoryAdditionType inv_add_loc) override;
+    bool merge_or_add(IInventory* items, const InventoryAdditionType inv_add_loc) override;
     bool merge(ItemPtr new_item) override;
+
+    virtual bool transfer_to(std::shared_ptr<IInventory> items) override;
 
     bool remove(const std::string& id) override;
     ItemPtr remove_and_return(const std::string& id) override;
