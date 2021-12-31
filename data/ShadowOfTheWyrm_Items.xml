@@ -13043,6 +13043,27 @@
 					</Property>
 				</Properties>
 			</Item>
+			<Item id="_lumber">
+				<DescriptionSID>LUMBER_SID</DescriptionSID>
+				<UsageDescriptionSID>LUMBER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>LUMBER_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>20</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>11</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+				</Properties>
+			</Item>
 			<Item id="_clay">
 				<DescriptionSID>CLAY_SID</DescriptionSID>
 				<UsageDescriptionSID>CLAY_USAGE_SID</UsageDescriptionSID>
