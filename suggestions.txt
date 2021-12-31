@@ -1,4 +1,5 @@
 Me:
+- Floor building: menu (road, floor, rocky earth)
 - Carcassia mines (no creatures)
 - No-creature mines should only allow stone items generated (no magici, etc)
 - Rework DigChances so it can handle multiple item %s, then readd edible roots
@@ -7,9 +8,6 @@ Me:
 - When transforming the tile: displace items
 - ASSET RELEASE
 - Stone blocks (50 lbs), sod bricks (20 lbs)
-- Dig, drop: floor tile (floor or dirt floor)
-- Drop 3 stone: rock (based on base item only, not equality)
-- Drop 3 sod: earth
 - Allow wearables to give +HP, +AP
 - Enchanting should rarely up HP/AP. +25 per enchant. 1-5% chance?
 - Wizard staff: +50 AP

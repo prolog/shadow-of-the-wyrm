@@ -56,7 +56,9 @@ local chat_topics = {"KEW_SPEECH_TEXT_SID",
 	             "KEW_SPEECH_TEXT15_SID",
 	             "KEW_SPEECH_TEXT16_SID",
                      "KEW_SPEECH_TEXT17_SID",
-                     "KEW_SPEECH_TEXT18_SID"}
+                     "KEW_SPEECH_TEXT18_SID",
+                     "KEW_SPEECH_TEXT19_SID",
+                     "KEW_SPEECH_TEXT20_SID"}
 
 if is_item_generated("kew_key") == true then
   if kew_quest:execute() == false then
