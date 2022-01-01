@@ -6,6 +6,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "DropAction.hpp"
 #include "DropScript.hpp"
+#include "FeatureGenerator.hpp"
 #include "GameUtils.hpp"
 #include "IFeatureManipulatorFactory.hpp"
 #include "ItemFilterFactory.hpp"
@@ -177,7 +178,8 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
     uint selected_quantity = quantity;
     string wall_tile_type = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_WALL_TILE_TYPE);
     string floor_tile_type = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_FLOOR_TILE_TYPE);
-    bool building_material = !wall_tile_type.empty() || !floor_tile_type.empty();
+    string feature_ids = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_BUILD_FEATURE_CLASS_IDS);
+    bool building_material = !wall_tile_type.empty() || !floor_tile_type.empty() || !feature_ids.empty();
 
     if (building_material)
     {
@@ -203,7 +205,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
       uint old_item_quantity = item_to_drop->get_quantity() - selected_quantity;
       item_to_drop->set_quantity(old_item_quantity);
 
-      if (build_with_dropped_item(creature, current_map, creatures_tile, building_material, wall_tile_type, floor_tile_type))
+      if (build_with_dropped_item(creature, current_map, creatures_tile, building_material, wall_tile_type, floor_tile_type, feature_ids))
       {
         selected_quantity--;
 
@@ -417,7 +419,7 @@ void DropAction::handle_reacting_creature_drop_scripts(CreaturePtr creature, Map
   }
 }
 
-bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const bool building_material, const string& wall_tile_type_s, const string& floor_tile_type_s)
+bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const bool building_material, const string& wall_tile_type_s, const string& floor_tile_type_s, const string& feature_ids)
 {
   bool built = false;
 
@@ -426,17 +428,42 @@ bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TileP
     return false;
   }
 
-  TileType wall_tile_type = static_cast<TileType>(String::to_int(wall_tile_type_s));
-  TileType floor_tile_type = static_cast<TileType>(String::to_int(floor_tile_type_s));
-
-  if (tile->has_been_dug())
+  CurrentCreatureAbilities cca;
+  if (!cca.can_see(creature))
   {
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BUILD_BLIND));
+    manager.send();
+
+    return false;
+  }
+
+  if (tile->has_been_dug() && !floor_tile_type_s.empty())
+  {
+    TileType floor_tile_type = static_cast<TileType>(String::to_int(floor_tile_type_s));
     built = build_floor_with_dropped_item(creature, map, tile, floor_tile_type);
   }
 
   if (!built)
   {
-    built = build_wall_with_dropped_item(creature, map, tile, wall_tile_type);
+    if (!wall_tile_type_s.empty())
+    {
+      TileType wall_tile_type = static_cast<TileType>(String::to_int(wall_tile_type_s));
+      built = build_wall_with_dropped_item(creature, map, tile, wall_tile_type);
+    }
+
+    if (!feature_ids.empty())
+    {
+      vector<string> feature_s_ids = String::create_string_vector_from_csv_string(feature_ids);
+      vector<ClassIdentifier> class_ids;
+
+      for (const string& s : feature_s_ids)
+      {
+        class_ids.push_back(static_cast<ClassIdentifier>(String::to_int(s)));
+      }
+
+      built = build_feature_with_dropped_item(creature, map, tile, class_ids);
+    }
   }
 
   return built;
@@ -500,7 +527,7 @@ bool DropAction::build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, 
           manager.send();
 
           vector<Coordinate> adj_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), build_coord.first, build_coord.second);
-          std:shuffle(adj_coords.begin(), adj_coords.end(), RNG::get_engine());
+          std::shuffle(adj_coords.begin(), adj_coords.end(), RNG::get_engine());
 
           for (const auto& ac : adj_coords)
           {
@@ -560,6 +587,40 @@ bool DropAction::build_floor_with_dropped_item(CreaturePtr creature, MapPtr map,
   }
 
   return built;
+}
+
+bool DropAction::build_feature_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const vector<ClassIdentifier>& class_ids)
+{
+  if (creature == nullptr || map == nullptr || tile == nullptr || tile->has_feature() || class_ids.empty())
+  {
+    return false;
+  }
+
+  ClassIdentifier cl_id = ClassIdentifier::CLASS_ID_NULL;
+
+  if (class_ids.size() == 1)
+  {
+    cl_id = class_ids.at(0);
+  }
+  else
+  {
+    // ...
+  }
+
+  if (cl_id != ClassIdentifier::CLASS_ID_NULL)
+  {
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    FeaturePtr feature = FeatureGenerator::create_feature(cl_id);
+
+    if (feature != nullptr)
+    {
+      tile->set_feature(feature);
+
+      // JCD TODO: Add a message.
+    }
+  }
+
+  return false;
 }
 
 // Dropping always has a base action cost of 1.

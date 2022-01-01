@@ -65,6 +65,7 @@ class ActionTextKeys
     static const std::string ACTION_DROP_INVALID_QUANTITY;
     static const std::string ACTION_DROP_WATER;
     static const std::string ACTION_PROMPT_BUILD_WALL;
+    static const std::string ACTION_BUILD_BLIND;
     static const std::string ACTION_BUILD_WALL;
     static const std::string ACTION_BUILD_WALL_NO_TILE;
     static const std::string ACTION_BUILD_WALL_PRESENT;

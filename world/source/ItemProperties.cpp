@@ -34,4 +34,5 @@ const string ItemProperties::ITEM_PROPERTIES_SUPPRESS_ITEM_GENERATION_ON_DESTRUC
 const string ItemProperties::ITEM_PROPERTIES_REMAINS = "remains";
 const string ItemProperties::ITEM_PROPERTIES_WALL_TILE_TYPE = "wall_tile_type";
 const string ItemProperties::ITEM_PROPERTIES_FLOOR_TILE_TYPE = "floor_tile_type";
+const string ItemProperties::ITEM_PROPERTIES_BUILD_FEATURE_CLASS_IDS = "build_feature_class_ids";
 

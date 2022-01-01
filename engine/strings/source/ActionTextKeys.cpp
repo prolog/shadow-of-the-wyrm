@@ -559,6 +559,7 @@ const string ActionTextKeys::ACTION_DROP_QUANTITY_PROMPT       = "ACTION_DROP_QU
 const string ActionTextKeys::ACTION_DROP_INVALID_QUANTITY      = "ACTION_DROP_INVALID_QUANTITY";
 const string ActionTextKeys::ACTION_DROP_WATER                 = "ACTION_DROP_WATER";
 const string ActionTextKeys::ACTION_PROMPT_BUILD_WALL          = "ACTION_PROMPT_BUILD_WALL";
+const string ActionTextKeys::ACTION_BUILD_BLIND                = "ACTION_BUILD_BLIND";
 const string ActionTextKeys::ACTION_BUILD_WALL                 = "ACTION_BUILD_WALL";
 const string ActionTextKeys::ACTION_BUILD_WALL_NO_TILE         = "ACTION_BUILD_WALL_NO_TILE";
 const string ActionTextKeys::ACTION_BUILD_WALL_PRESENT         = "ACTION_BUILD_WALL_PRESENT";

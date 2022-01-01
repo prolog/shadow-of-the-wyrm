@@ -13062,6 +13062,12 @@
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
+				<Properties>
+					<Property>
+						<Name>build_feature_class_ids</Name>
+						<Value>108,269,283</Value>
+					</Property>
+				</Properties>
 				</Properties>
 			</Item>
 			<Item id="_clay">
