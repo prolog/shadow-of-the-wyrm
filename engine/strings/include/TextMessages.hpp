@@ -52,6 +52,7 @@ class TextMessages
     static std::string get_ending_message(const std::string& ending_time);
     static std::string get_killed_by_message(const std::string& killed_by_source);
     static std::string get_death_depth_location_message(const std::string& depth, const std::string& location);
+    static std::string get_build_message(const std::string& thing_built);
 
   protected:
     TextMessages();
@@ -92,4 +93,5 @@ class TextMessages
     static const std::string ENDING_MESSAGE;
     static const std::string KILLED_BY_MESSAGE;
     static const std::string DEATH_DEPTH_LOCATION_MESSAGE;
+    static const std::string BUILD_MESSAGE;
 };

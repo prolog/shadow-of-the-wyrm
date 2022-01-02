@@ -6,6 +6,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "DropAction.hpp"
 #include "DropScript.hpp"
+#include "FeatureDescriber.hpp"
 #include "FeatureGenerator.hpp"
 #include "GameUtils.hpp"
 #include "IFeatureManipulatorFactory.hpp"
@@ -616,7 +617,10 @@ bool DropAction::build_feature_with_dropped_item(CreaturePtr creature, MapPtr ma
     {
       tile->set_feature(feature);
 
-      // JCD TODO: Add a message.
+      FeatureDescriber fd(feature);
+      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      manager.add_new_message(TextMessages::get_build_message(fd.describe(false)));
+      manager.send();
     }
   }
 
