@@ -25,7 +25,8 @@ class DropAction : public IActionManager
     bool build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType wall_tile_type);
     bool build_floor_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType floor_tile_type);
     bool build_feature_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const std::vector<std::string>& feature_s_class_ids);
-    
+    size_t get_build_option(const std::vector<std::string>& options) const;
+
     ActionCostValue do_drop(CreaturePtr creature, MapPtr current_map, ItemPtr item, const bool multi_item);
     uint get_drop_quantity(CreaturePtr creature, const uint max_quantity) const;
 };

@@ -562,16 +562,29 @@ bool DropAction::build_floor_with_dropped_item(CreaturePtr creature, MapPtr map,
 {
   // Check to see if building is intended.
   bool built = false;
-  IMessageManager& manager = MM::instance();
-  manager.add_new_confirmation_message(TextMessages::get_confirmation_message(ActionTextKeys::ACTION_PROMPT_BUILD_FLOOR));
-  manager.send();
 
-  bool build_floor = creature->get_decision_strategy()->get_confirmation();
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  vector<TileType> tile_types = { floor_tile_type, TileType::TILE_TYPE_ROAD };
+  TileGenerator tg;
+  vector<string> descs;
 
-  if (build_floor)
+  for (int i = 0 ; i < tile_types.size(); i++)
   {
-    TileGenerator tg;
-    TilePtr new_tile = tg.generate(floor_tile_type);
+    const TileType tt = tile_types.at(i);
+    TilePtr new_tile = tg.generate(tt);
+
+    if (new_tile != nullptr)
+    {
+      descs.push_back(std::to_string(i) + "=" + StringTable::get(new_tile->get_tile_description_sid()));
+    }
+  }
+
+  size_t idx = get_build_option(descs);
+
+  if (idx < tile_types.size())
+  {
+    TileType tt = tile_types.at(idx);
+    TilePtr new_tile = tg.generate(tt);
     Coordinate c = map->get_location(creature->get_id());
     new_tile->transform_from(tile);
     map->insert(c, new_tile);
@@ -620,9 +633,7 @@ bool DropAction::build_feature_with_dropped_item(CreaturePtr creature, MapPtr ma
   }
   else
   {
-    OptionScreen os(Game::instance().get_display(), ScreenTitleTextKeys::SCREEN_TITLE_BUILD, {}, descs);
-    string option_s = os.display();
-    int idx = option_s[0] - 'a';
+    size_t idx = get_build_option(descs);
 
     if (idx < class_ids.size())
     {
@@ -649,6 +660,14 @@ bool DropAction::build_feature_with_dropped_item(CreaturePtr creature, MapPtr ma
   }
 
   return built;
+}
+
+size_t DropAction::get_build_option(const vector<string>& options) const
+{
+  OptionScreen os(Game::instance().get_display(), ScreenTitleTextKeys::SCREEN_TITLE_BUILD, {}, options);
+  string option_s = os.display();
+  
+  return static_cast<size_t>(option_s[0] - 'a');
 }
 
 // Dropping always has a base action cost of 1.
