@@ -15,9 +15,11 @@
 #include "ItemProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "OptionScreen.hpp"
 #include "RaceManager.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
+#include "ScreenTitleTextKeys.hpp"
 #include "SeedCalculator.hpp"
 #include "TextMessages.hpp"
 #include "Tile.hpp"
@@ -456,14 +458,7 @@ bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TileP
     if (!feature_ids.empty())
     {
       vector<string> feature_s_ids = String::create_string_vector_from_csv_string(feature_ids);
-      vector<ClassIdentifier> class_ids;
-
-      for (const string& s : feature_s_ids)
-      {
-        class_ids.push_back(static_cast<ClassIdentifier>(String::to_int(s)));
-      }
-
-      built = build_feature_with_dropped_item(creature, map, tile, class_ids);
+      built = build_feature_with_dropped_item(creature, map, tile, feature_s_ids);
     }
   }
 
@@ -590,11 +585,31 @@ bool DropAction::build_floor_with_dropped_item(CreaturePtr creature, MapPtr map,
   return built;
 }
 
-bool DropAction::build_feature_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const vector<ClassIdentifier>& class_ids)
+bool DropAction::build_feature_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const vector<string>& feature_ids)
 {
-  if (creature == nullptr || map == nullptr || tile == nullptr || tile->has_feature() || class_ids.empty())
+  bool built = false;
+
+  if (creature == nullptr || map == nullptr || tile == nullptr || tile->has_feature() || feature_ids.empty())
   {
     return false;
+  }
+
+  vector<ClassIdentifier> class_ids;
+  vector<string> descs;
+
+  for (int i = 0; i < feature_ids.size(); i++)
+  {
+    string s = feature_ids.at(i);
+    ClassIdentifier cl_id = static_cast<ClassIdentifier>(String::to_int(s));
+    FeaturePtr feature = FeatureGenerator::create_feature(cl_id);
+
+    if (feature != nullptr)
+    {
+      FeatureDescriber fd(feature);
+
+      descs.push_back(std::to_string(i) + "=" + fd.describe(false));
+      class_ids.push_back(cl_id);
+    }
   }
 
   ClassIdentifier cl_id = ClassIdentifier::CLASS_ID_NULL;
@@ -605,7 +620,14 @@ bool DropAction::build_feature_with_dropped_item(CreaturePtr creature, MapPtr ma
   }
   else
   {
-    // ...
+    OptionScreen os(Game::instance().get_display(), ScreenTitleTextKeys::SCREEN_TITLE_BUILD, {}, descs);
+    string option_s = os.display();
+    int idx = option_s[0] - 'a';
+
+    if (idx < class_ids.size())
+    {
+      cl_id = class_ids.at(idx);
+    }
   }
 
   if (cl_id != ClassIdentifier::CLASS_ID_NULL)
@@ -621,10 +643,12 @@ bool DropAction::build_feature_with_dropped_item(CreaturePtr creature, MapPtr ma
       IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
       manager.add_new_message(TextMessages::get_build_message(fd.describe(false)));
       manager.send();
+
+      built = true;
     }
   }
 
-  return false;
+  return built;
 }
 
 // Dropping always has a base action cost of 1.

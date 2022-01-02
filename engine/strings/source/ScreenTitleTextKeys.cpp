@@ -30,4 +30,4 @@ const string ScreenTitleTextKeys::SCREEN_TITLE_AUTO_ACTIONS = "SCREEN_TITLE_AUTO
 const string ScreenTitleTextKeys::SCREEN_TITLE_KILN = "SCREEN_TITLE_KILN";
 const string ScreenTitleTextKeys::SCREEN_TITLE_SKILL_DETAILS = "SCREEN_TITLE_SKILL_DETAILS";
 const string ScreenTitleTextKeys::SCREEN_TITLE_SPELL_DETAILS = "SCREEN_TITLE_SPELL_DETAILS";
-
+const string ScreenTitleTextKeys::SCREEN_TITLE_BUILD = "SCREEN_TITLE_BUILD";
