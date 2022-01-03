@@ -3941,7 +3941,7 @@ between this quiet calm and all the blood they sought.
 %p
 The tenth day out they walked the jagged hills %b
 north-east of Cithriel, and staying low, %b
-they traced its valleys roughly north until %b
+they walked its valleys roughly north until %b
 a campsite halted them, its traces stowed %b
 poorly.  They found some ashes under leaves, %b
 then sleeping spots, the grass still matted down %b
@@ -3950,7 +3950,7 @@ it might be unlings, but it seemed they'd found %b
 an indication where their quarry'd gone to ground.
 %p
 Assuming that they'd hoped to stay from sight, %b
-they traced a lazy route that followed through %b
+they took a lazy route that followed through %b
 the central valley, walking every night %b
 to scan the surrounding plains, that panoramic view %b
 empty each time, a trap that never came. %b
@@ -3958,4 +3958,14 @@ Three days of this.  Their nerves on edge.  They knew %b
 they'd been sent to kill, and as they followed the same %b
 trail the exiles made, they each withdrew, %b
 unspeaking, focused only on the long pursuit.
+%p
+Days later, the valley closed to prairie sun %b
+and grasses that sprung like loaded traps, the stems %b
+so firm and green it meant that anyone %b
+could pass without a trace, they way they mended %b
+and stitched themselves after passage.  But lower down, %b
+they saw a route in flowers, as the reds %b
+and violets had been crushed into the ground %b
+by wooden soles, and where their quarry'd tread %b
+they'd left a path like stitches made from coloured thread.
 %p

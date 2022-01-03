@@ -1,6 +1,8 @@
 Me:
-- Floor building: menu (road, floor, rocky earth)
-- Lumber (kicking doors, fences, digging through trees): bed, door
+- Where is lumber coming from?
+- Drop stone on buried remains: grave
+- Drop sod on buried remains: barrow
+- Lumber on water: pier
 - Carcassia mines (no creatures)
 - No-creature mines should only allow stone items generated (no magici, etc)
 - Rework DigChances so it can handle multiple item %s, then readd edible roots
