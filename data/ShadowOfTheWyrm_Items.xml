@@ -13064,6 +13064,10 @@
 				<Properties>
 				<Properties>
 					<Property>
+						<Name>water_tile_type</Name>
+						<Value>36</Value>
+					</Property>
+					<Property>
 						<Name>build_feature_class_ids</Name>
 						<Value>108,269,283</Value>
 					</Property>

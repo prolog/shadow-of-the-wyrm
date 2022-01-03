@@ -181,8 +181,13 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
     uint selected_quantity = quantity;
     string wall_tile_type = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_WALL_TILE_TYPE);
     string floor_tile_type = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_FLOOR_TILE_TYPE);
+    string water_tile_type = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_WATER_TILE_TYPE);
     string feature_ids = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_BUILD_FEATURE_CLASS_IDS);
-    bool building_material = !wall_tile_type.empty() || !floor_tile_type.empty() || !feature_ids.empty();
+
+    bool building_material = !wall_tile_type.empty() || 
+                             !floor_tile_type.empty() || 
+                             !water_tile_type.empty() || 
+                             !feature_ids.empty();
 
     if (building_material)
     {
@@ -208,7 +213,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
       uint old_item_quantity = item_to_drop->get_quantity() - selected_quantity;
       item_to_drop->set_quantity(old_item_quantity);
 
-      if (build_with_dropped_item(creature, current_map, creatures_tile, building_material, wall_tile_type, floor_tile_type, feature_ids))
+      if (build_with_dropped_item(creature, current_map, creatures_tile, building_material, wall_tile_type, floor_tile_type, water_tile_type, feature_ids))
       {
         selected_quantity--;
 
@@ -422,7 +427,7 @@ void DropAction::handle_reacting_creature_drop_scripts(CreaturePtr creature, Map
   }
 }
 
-bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const bool building_material, const string& wall_tile_type_s, const string& floor_tile_type_s, const string& feature_ids)
+bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const bool building_material, const string& wall_tile_type_s, const string& floor_tile_type_s, const string& water_tile_type_s, const string& feature_ids)
 {
   bool built = false;
 
@@ -441,25 +446,31 @@ bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TileP
     return false;
   }
 
+  // Can we build flooring/road?
   if (tile->has_been_dug() && !floor_tile_type_s.empty())
   {
     TileType floor_tile_type = static_cast<TileType>(String::to_int(floor_tile_type_s));
     built = build_floor_with_dropped_item(creature, map, tile, floor_tile_type);
   }
 
-  if (!built)
+  // Can we build a wall?
+  if (!built && !wall_tile_type_s.empty())
   {
-    if (!wall_tile_type_s.empty())
-    {
-      TileType wall_tile_type = static_cast<TileType>(String::to_int(wall_tile_type_s));
-      built = build_wall_with_dropped_item(creature, map, tile, wall_tile_type);
-    }
+    TileType wall_tile_type = static_cast<TileType>(String::to_int(wall_tile_type_s));
+    built = build_wall_with_dropped_item(creature, map, tile, wall_tile_type);
+  }
 
-    if (!feature_ids.empty())
-    {
-      vector<string> feature_s_ids = String::create_string_vector_from_csv_string(feature_ids);
-      built = build_feature_with_dropped_item(creature, map, tile, feature_s_ids);
-    }
+  // Can we build on adjacent water tiles?
+  if (!built && !water_tile_type_s.empty())
+  {
+    // ...
+  }
+
+  // Can we build a feature?
+  if (!built && !feature_ids.empty())
+  {
+    vector<string> feature_s_ids = String::create_string_vector_from_csv_string(feature_ids);
+    built = build_feature_with_dropped_item(creature, map, tile, feature_s_ids);
   }
 
   return built;
@@ -568,7 +579,7 @@ bool DropAction::build_floor_with_dropped_item(CreaturePtr creature, MapPtr map,
   TileGenerator tg;
   vector<string> descs;
 
-  for (int i = 0 ; i < tile_types.size(); i++)
+  for (size_t i = 0 ; i < tile_types.size(); i++)
   {
     const TileType tt = tile_types.at(i);
     TilePtr new_tile = tg.generate(tt);
@@ -610,7 +621,7 @@ bool DropAction::build_feature_with_dropped_item(CreaturePtr creature, MapPtr ma
   vector<ClassIdentifier> class_ids;
   vector<string> descs;
 
-  for (int i = 0; i < feature_ids.size(); i++)
+  for (size_t i = 0; i < feature_ids.size(); i++)
   {
     string s = feature_ids.at(i);
     ClassIdentifier cl_id = static_cast<ClassIdentifier>(String::to_int(s));
