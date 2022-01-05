@@ -30,6 +30,7 @@ class ItemProperties
     static const std::string ITEM_PROPERTIES_FLOOR_TILE_TYPE;
     static const std::string ITEM_PROPERTIES_BUILD_FEATURE_CLASS_IDS;
     static const std::string ITEM_PROPERTIES_WATER_TILE_TYPE;
+    static const std::string ITEM_PROPERTIES_PRISE;
 
   protected:
     ItemProperties();

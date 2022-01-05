@@ -1,5 +1,5 @@
 Me:
-- Where is lumber coming from?
+- Where is lumber coming from? (wand of digging: trees, too)
 - Drop stone on buried remains: grave
 - Drop sod on buried remains: barrow
 - Some kind of no-item flag for graves created this way

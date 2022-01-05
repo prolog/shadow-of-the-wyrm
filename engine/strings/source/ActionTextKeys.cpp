@@ -43,6 +43,11 @@ string ActionTextKeys::get_general_action_message(const string& desc_sid, const 
   return message;
 }
 
+string ActionTextKeys::get_prise_message(const string& desc_sid, const bool is_player)
+{
+  return get_general_action_message(desc_sid, "", ACTION_PRISE_PLAYER, ACTION_PRISE_MONSTER, is_player);
+}
+
 string ActionTextKeys::get_evoke_message(const string& desc_sid, const string& wand_desc, const bool is_player)
 {
   return get_general_action_message(desc_sid, wand_desc, ACTION_EVOKE_PLAYER, ACTION_EVOKE_MONSTER, is_player);
@@ -747,6 +752,8 @@ const string ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_SDL_TRUE = "ACTION_TOGGLE_
 const string ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_CURSES   = "ACTION_TOGGLE_FULLSCREEN_CURSES";
 
 // Protected
+const string ActionTextKeys::ACTION_PRISE_PLAYER               = "ACTION_PRISE_PLAYER";
+const string ActionTextKeys::ACTION_PRISE_MONSTER              = "ACTION_PRISE_MONSTER";
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";
 const string ActionTextKeys::ACTION_EVOKE_MONSTER              = "ACTION_EVOKE_MONSTER";
 const string ActionTextKeys::ACTION_QUAFF_PLAYER               = "ACTION_QUAFF_PLAYER";

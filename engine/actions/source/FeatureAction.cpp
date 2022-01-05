@@ -1,11 +1,13 @@
 #include "ActionTextKeys.hpp"
 #include "Commands.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "FeatureAction.hpp"
 #include "Game.hpp"
 #include "IFeatureManipulatorFactory.hpp"
 #include "KeyManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
 #include "StringTable.hpp"
 
 using namespace std;
@@ -95,8 +97,24 @@ void FeatureAction::send_application_messages(CreaturePtr creature)
 bool FeatureAction::handle(TilePtr tile, FeaturePtr feature, CreaturePtr creature, const bool tile_has_creature)
 {
   bool result = false;
+  CurrentCreatureAbilities cca;
+  MapPtr current_map = Game::instance().get_current_map();
 
-  if (feature && feature->can_handle(tile_has_creature))
+  if (creature && feature && feature->can_be_prised(tile_has_creature) && cca.can_prise(creature))
+  {
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    manager.add_new_message(ActionTextKeys::get_prise_message(creature->get_description_sid(), creature->get_is_player()));
+    manager.send();
+
+    FeatureManipulatorPtr feature_manipulator = IFeatureManipulatorFactory::create_manipulator(feature);
+    feature_manipulator->desecrate(creature, current_map);
+    tile->remove_feature();
+
+    ItemManager im;
+    ItemPtr lumber = im.create_item(ItemIdKeys::ITEM_ID_LUMBER, static_cast<uint>(RNG::range(1, 4)));
+    tile->get_items()->merge_or_add(lumber, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+  }
+  else if (feature && feature->can_handle(tile_has_creature))
   {
     // Check to see if the lock prevents the handling.
     LockPtr lock = feature->get_lock();

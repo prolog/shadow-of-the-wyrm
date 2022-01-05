@@ -3124,13 +3124,13 @@
 			</Ring>
 		</Rings>
 		<Weapons>
-			<Weapon id="crowbar">
+			<Weapon id="_crowbar">
 				<DescriptionSID>CROWBAR_SID</DescriptionSID>
 				<UsageDescriptionSID>CROWBAR_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>CROWBAR_CODEX_SID</CodexDescriptionSID>
 				<Value>3</Value>
 				<Weight>
-					<Pounds>1</Pounds>
+					<Pounds>3</Pounds>
 				</Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
@@ -3149,17 +3149,18 @@
 						<Value>1</Value>
 					</Property>
 					<Property>
-						<Name>prise_wood</Name>
+						<Name>prise</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2009</RangedSkill>
-				<Difficulty>50</Difficulty>
+				<Difficulty>52</Difficulty>
 				<Speed>3</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
-					<NumSides>6</NumSides>
+					<NumSides>4</NumSides>
+					<Modifier>1</Modifier>
 					<Type>2</Type>
 				</Damage>
 			</Weapon>

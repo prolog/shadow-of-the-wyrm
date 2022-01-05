@@ -8,6 +8,7 @@
 class ActionTextKeys
 {
   public:
+    static std::string get_prise_message(const std::string& desc_sid, const bool is_player);
     static std::string get_evoke_message(const std::string& desc_sid, const std::string& wand_desc, const bool is_player);
     static std::string get_quaff_message(const std::string& desc_sid, const std::string& potion_desc, const bool is_player);
     static std::string get_quaff_confirmation_message(const std::string& consumable_desc);
@@ -265,6 +266,8 @@ class ActionTextKeys
     static std::string get_general_message(const std::string& desc_sid, const std::string& player_message_sid, const std::string& monster_message_sid, const bool is_player);
     static std::string get_general_action_message(const std::string& desc_sid, const std::string& item_desc /* not a sid! */, const std::string& player_message_sid, const std::string& monster_message_sid, const bool is_player);
     
+    static const std::string ACTION_PRISE_PLAYER;
+    static const std::string ACTION_PRISE_MONSTER;
     static const std::string ACTION_EVOKE_PLAYER;
     static const std::string ACTION_EVOKE_MONSTER;
     static const std::string ACTION_QUAFF_PLAYER;
