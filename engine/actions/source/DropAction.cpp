@@ -457,13 +457,28 @@ bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TileP
   if (!built && !wall_tile_type_s.empty())
   {
     TileType wall_tile_type = static_cast<TileType>(String::to_int(wall_tile_type_s));
-    built = build_wall_with_dropped_item(creature, map, tile, wall_tile_type);
+    built = build_wall_with_dropped_item(creature, map, tile, wall_tile_type, false);
   }
 
   // Can we build on adjacent water tiles?
   if (!built && !water_tile_type_s.empty())
   {
-    // ...
+    TileDirectionMap tdm = MapUtils::get_adjacent_tiles_to_creature(map, creature);
+    bool water_nearby = false;
+
+    for (auto tdm_pair : tdm)
+    {
+      if (tdm_pair.second && tdm_pair.second->get_tile_base_super_type() == TileSuperType::TILE_SUPER_TYPE_WATER)
+      {
+        water_nearby = true;
+      }
+    }
+
+    if (water_nearby)
+    {
+      TileType water_tile_type = static_cast<TileType>(String::to_int(water_tile_type_s));
+      built = build_wall_with_dropped_item(creature, map, tile, water_tile_type, true);
+    }
   }
 
   // Can we build a feature?
@@ -476,7 +491,7 @@ bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TileP
   return built;
 }
 
-bool DropAction::build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType wall_tile_type)
+bool DropAction::build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType wall_tile_type, const bool allow_build_on_water)
 {
   bool built = false;
   IMessageManager& manager = MM::instance();
@@ -499,63 +514,68 @@ bool DropAction::build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, 
       Coordinate pl_coord = map->get_location(creature->get_id());
       Coordinate build_coord = CoordUtils::get_new_coordinate(pl_coord, d);
       TilePtr build_tile = map->at(build_coord);
-      TileSuperType tst = build_tile->get_tile_base_super_type();
 
       if (build_tile == nullptr)
       {
         build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_NO_TILE;
       }
-      else if (build_tile->get_movement_multiplier() == 0)
-      {
-        build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_PRESENT;
-      }
-      else if (build_tile->has_creature())
-      {
-        build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_CREATURE_PRESENT;
-      }
-      else if (build_tile->has_feature())
-      {
-        build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_FEATURE_PRESENT;
-      }
-      else if (tst == TileSuperType::TILE_SUPER_TYPE_AIR)
-      {
-        build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_AIR;
-      }
-      else if (tst == TileSuperType::TILE_SUPER_TYPE_WATER)
-      {
-        build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_WATER;
-      }
       else
       {
-        IInventoryPtr build_tile_items = build_tile->get_items();
-        if (build_tile_items->has_items())
+        TileSuperType tst = build_tile->get_tile_base_super_type();
+
+        if (build_tile->get_movement_multiplier() == 0)
         {
-          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BUILD_WALL_DISPLACE_ITEMS));
-          manager.send();
-
-          vector<Coordinate> adj_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), build_coord.first, build_coord.second);
-          std::shuffle(adj_coords.begin(), adj_coords.end(), RNG::get_engine());
-
-          for (const auto& ac : adj_coords)
+          build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_PRESENT;
+        }
+        else if (build_tile->has_creature())
+        {
+          build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_CREATURE_PRESENT;
+        }
+        else if (build_tile->has_feature())
+        {
+          build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_FEATURE_PRESENT;
+        }
+        else if (tst == TileSuperType::TILE_SUPER_TYPE_AIR)
+        {
+          build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_AIR;
+        }
+        else if (tst == TileSuperType::TILE_SUPER_TYPE_WATER && !allow_build_on_water)
+        {
+          build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_WATER;
+        }
+        else if ((tst == TileSuperType::TILE_SUPER_TYPE_GROUND && !allow_build_on_water) ||
+          (tst == TileSuperType::TILE_SUPER_TYPE_WATER && allow_build_on_water))
+        {
+          IInventoryPtr build_tile_items = build_tile->get_items();
+          if (build_tile_items->has_items())
           {
-            TilePtr adj_tile = map->at(ac);
+            manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BUILD_WALL_DISPLACE_ITEMS));
+            manager.send();
 
-            if (adj_tile && adj_tile->get_items()->get_allows_items() == AllowsItemsType::ALLOWS_ITEMS)
+            vector<Coordinate> adj_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), build_coord.first, build_coord.second);
+            std::shuffle(adj_coords.begin(), adj_coords.end(), RNG::get_engine());
+
+            for (const auto& ac : adj_coords)
             {
-              IInventoryPtr adj_items = adj_tile->get_items();
-              build_tile_items->transfer_to(adj_items);
+              TilePtr adj_tile = map->at(ac);
+
+              if (adj_tile && adj_tile->get_items()->get_allows_items() == AllowsItemsType::ALLOWS_ITEMS)
+              {
+                IInventoryPtr adj_items = adj_tile->get_items();
+                build_tile_items->transfer_to(adj_items);
+              }
             }
           }
+
+          TileGenerator tg;
+          TilePtr new_tile = tg.generate(wall_tile_type);
+          Coordinate c = map->get_location(creature->get_id());
+          new_tile->transform_from(build_tile);
+          map->insert(build_coord, new_tile);
+
+          build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL;
+          built = true;
         }
-
-        TileGenerator tg;
-        TilePtr new_tile = tg.generate(wall_tile_type);
-        Coordinate c = map->get_location(creature->get_id());
-        new_tile->transform_from(build_tile);
-        map->insert(build_coord, new_tile);
-
-        build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL;
-        built = true;
       }
 
       if (!build_msg_sid.empty())

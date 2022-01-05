@@ -62,6 +62,7 @@ enum struct ItemIdentificationType
 class ItemIdKeys
 {
   public:
+    static const std::string ITEM_ID_LUMBER;
     static const std::string ITEM_ID_STONE_BLOCK;
     static const std::string ITEM_ID_SOD_BRICK;
     static const std::string ITEM_ID_CLAY_POT;

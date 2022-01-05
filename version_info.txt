@@ -11,7 +11,9 @@ Shadow of the Wyrm v1.4.3 "da Milano"
     build a section of floor.
 
   - Drop building material and if you can't/don't want to build a floor,
-    you'll be prompted to build a section of wall.
+    you'll be prompted to build a section of wall.  Stone and sod let you build
+    rock/earth walls, respectively, while dropping lumber near water allows
+    you to build a pier.
 
 - Lituus is now rods/staves rather than bludgeons.
 
@@ -20,7 +22,7 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - New name and settlement name combinations.
 
-- New items: stone block, sod brick, lumber.
+- New items: stone block, sod brick, lumber, crowbar.
 
 - Stanzas for "Tel and Floridel".
 

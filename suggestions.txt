@@ -2,7 +2,7 @@ Me:
 - Where is lumber coming from?
 - Drop stone on buried remains: grave
 - Drop sod on buried remains: barrow
-- Lumber on water: pier
+- Some kind of no-item flag for graves created this way
 - Carcassia mines (no creatures)
 - No-creature mines should only allow stone items generated (no magici, etc)
 - Rework DigChances so it can handle multiple item %s, then readd edible roots
@@ -10,7 +10,6 @@ Me:
 - Info on digging into the game - NPCs etc
 - When transforming the tile: displace items
 - ASSET RELEASE
-- Stone blocks (50 lbs), sod bricks (20 lbs)
 - Allow wearables to give +HP, +AP
 - Enchanting should rarely up HP/AP. +25 per enchant. 1-5% chance?
 - Wizard staff: +50 AP

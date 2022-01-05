@@ -3124,6 +3124,45 @@
 			</Ring>
 		</Rings>
 		<Weapons>
+			<Weapon id="crowbar">
+				<DescriptionSID>CROWBAR_SID</DescriptionSID>
+				<UsageDescriptionSID>CROWBAR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CROWBAR_CODEX_SID</CodexDescriptionSID>
+				<Value>3</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>12</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>prise_wood</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Skill>1009</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>50</Difficulty>
+				<Speed>3</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="brass_knuckles">
 				<DescriptionSID>BRASS_KNUCKLES_SID</DescriptionSID>
 				<UsageDescriptionSID>BRASS_KNUCKLES_USAGE_SID</UsageDescriptionSID>
@@ -13062,7 +13101,6 @@
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
-				<Properties>
 					<Property>
 						<Name>water_tile_type</Name>
 						<Value>36</Value>
@@ -13071,7 +13109,6 @@
 						<Name>build_feature_class_ids</Name>
 						<Value>108,269,283</Value>
 					</Property>
-				</Properties>
 				</Properties>
 			</Item>
 			<Item id="_clay">
