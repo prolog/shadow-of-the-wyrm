@@ -569,7 +569,6 @@ bool DropAction::build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, 
 
           TileGenerator tg;
           TilePtr new_tile = tg.generate(wall_tile_type);
-          Coordinate c = map->get_location(creature->get_id());
           new_tile->transform_from(build_tile);
           map->insert(build_coord, new_tile);
 
@@ -674,7 +673,6 @@ bool DropAction::build_feature_with_dropped_item(CreaturePtr creature, MapPtr ma
 
   if (cl_id != ClassIdentifier::CLASS_ID_NULL)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     FeaturePtr feature = FeatureGenerator::create_feature(cl_id);
 
     if (feature != nullptr)
