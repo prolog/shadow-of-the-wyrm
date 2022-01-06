@@ -154,7 +154,7 @@ void CursesPromptProcessor::show_prompt(WINDOW* window, Prompt* prompt, int row,
   {
     Coordinate c = get_prompt_coords(prompt->get_location(), prompt->get_text(), row, col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
 
-    mvwprintw(window, c.first, c.second, prompt->get_text().c_str());
+    mvwprintw(window, c.first, c.second, "%s", prompt->get_text().c_str());
     wrefresh(window);
   }
 }
