@@ -366,6 +366,9 @@ bool DropAction::bury_remains(CreaturePtr creature, const string& remains_race_i
 
   if (creature != nullptr)
   {
+    // Mark the tile as containing remains and then do the deity notification.
+    tile->set_additional_property(TileProperties::TILE_PROPERTY_REMAINS, std::to_string(true));
+
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(Game::instance(), creature->get_id()));
     manager.add_new_message(TextMessages::get_burial_message(creature));
     manager.send();

@@ -7,6 +7,9 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 - You can now build, and only need building materials (stone blocks, sod
   bricks, etc):
 
+  - Dig and drop the building material on a tile containing buried remains
+    and you'll be asked if you want to make a grave.
+
   - Dig and drop the building material and you'll be asked if you want to
     build a section of floor.
 

@@ -46,6 +46,12 @@ string TileDescriber::describe() const
       description = description + " " + StringTable::get(TileTextKeys::TILE_DESC_PLANTED);
     }
 
+    string remains = tile->get_additional_property(TileProperties::TILE_PROPERTY_REMAINS);
+    if (!remains.empty() && (String::to_bool(remains) == true))
+    {
+      description = description + " " + StringTable::get(TileTextKeys::TILE_DESC_REMAINS);
+    }
+
     vector<string> extra_sids = tile->get_extra_description_sids();
     if (!extra_sids.empty())
     {

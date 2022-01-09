@@ -7,8 +7,6 @@ Me:
 - No-creature mines should only allow stone items generated (no magici, etc)
 - Rework DigChances so it can handle multiple item %s, then readd edible roots
   to fields.
-- Info on digging into the game - NPCs etc
-- When transforming the tile: displace items
 - ASSET RELEASE
 - Allow wearables to give +HP, +AP
 - Enchanting should rarely up HP/AP. +25 per enchant. 1-5% chance?
