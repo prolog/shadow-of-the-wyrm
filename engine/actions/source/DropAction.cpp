@@ -179,12 +179,14 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
   {
     uint quantity = item_to_drop->get_quantity();
     uint selected_quantity = quantity;
+    string grave_tile_type = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_GRAVE_TILE_TYPE);
     string wall_tile_type = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_WALL_TILE_TYPE);
     string floor_tile_type = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_FLOOR_TILE_TYPE);
     string water_tile_type = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_WATER_TILE_TYPE);
     string feature_ids = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_BUILD_FEATURE_CLASS_IDS);
 
-    bool building_material = !wall_tile_type.empty() || 
+    bool building_material = !grave_tile_type.empty() ||
+                             !wall_tile_type.empty() || 
                              !floor_tile_type.empty() || 
                              !water_tile_type.empty() || 
                              !feature_ids.empty();
@@ -213,7 +215,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
       uint old_item_quantity = item_to_drop->get_quantity() - selected_quantity;
       item_to_drop->set_quantity(old_item_quantity);
 
-      if (build_with_dropped_item(creature, current_map, creatures_tile, building_material, wall_tile_type, floor_tile_type, water_tile_type, feature_ids))
+      if (build_with_dropped_item(creature, current_map, creatures_tile, building_material, grave_tile_type, wall_tile_type, floor_tile_type, water_tile_type, feature_ids))
       {
         selected_quantity--;
 
@@ -430,7 +432,7 @@ void DropAction::handle_reacting_creature_drop_scripts(CreaturePtr creature, Map
   }
 }
 
-bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const bool building_material, const string& wall_tile_type_s, const string& floor_tile_type_s, const string& water_tile_type_s, const string& feature_ids)
+bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const bool building_material, const string& grave_tile_type_s, const string& wall_tile_type_s, const string& floor_tile_type_s, const string& water_tile_type_s, const string& feature_ids)
 {
   bool built = false;
 
@@ -449,8 +451,15 @@ bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TileP
     return false;
   }
 
+  // Can we build a grave?
+  if (tile->has_remains())
+  {
+    TileType grave_tile_type = static_cast<TileType>(String::to_int(grave_tile_type_s));
+    built = build_grave_with_dropped_item(creature, map, tile, grave_tile_type);
+  }
+
   // Can we build flooring/road?
-  if (tile->has_been_dug() && !floor_tile_type_s.empty())
+  if (!built && tile->has_been_dug() && !floor_tile_type_s.empty())
   {
     TileType floor_tile_type = static_cast<TileType>(String::to_int(floor_tile_type_s));
     built = build_floor_with_dropped_item(creature, map, tile, floor_tile_type);
@@ -586,6 +595,40 @@ bool DropAction::build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, 
         manager.send();
       }
     }
+  }
+
+  return built;
+}
+
+bool DropAction::build_grave_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType grave_tile_type)
+{
+  if (creature == nullptr || map == nullptr || tile == nullptr)
+  {
+    return false;
+  }
+
+  // Check to see if building is intended.
+  bool built = false;
+
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  manager.add_new_confirmation_message(TextMessages::get_confirmation_message(ActionTextKeys::ACTION_PROMPT_BUILD_GRAVE));
+  bool confirmation = creature->get_decision_strategy()->get_confirmation();
+
+  if (confirmation)
+  {
+    TileGenerator tg;
+    TilePtr new_tile = tg.generate(grave_tile_type);
+    Coordinate c = map->get_location(creature->get_id());
+    new_tile->transform_from(tile);
+    map->insert(c, new_tile);
+
+    new_tile->remove_additional_property(TileProperties::TILE_PROPERTY_REMAINS);
+    new_tile->set_additional_property(TileProperties::TILE_PROPERTY_GRAVE_PCT_CHANCE_ITEMS, to_string(0));
+
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BUILD_GRAVE));
+    manager.send();
+
+    built = true;
   }
 
   return built;

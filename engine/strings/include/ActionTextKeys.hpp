@@ -75,7 +75,8 @@ class ActionTextKeys
     static const std::string ACTION_BUILD_WALL_WATER;
     static const std::string ACTION_BUILD_WALL_AIR;
     static const std::string ACTION_BUILD_WALL_DISPLACE_ITEMS;
-    static const std::string ACTION_PROMPT_BUILD_FLOOR;
+    static const std::string ACTION_PROMPT_BUILD_GRAVE;
+    static const std::string ACTION_BUILD_GRAVE;
     static const std::string ACTION_BUILD_FLOOR;
     static const std::string ACTION_PICK_UP_NOTHING_ON_GROUND;
     static const std::string ACTION_PICK_UP_MAX_ITEMS;

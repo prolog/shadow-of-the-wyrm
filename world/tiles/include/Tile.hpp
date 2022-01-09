@@ -118,6 +118,7 @@ class Tile : public ISerializable
 
     virtual bool has_been_dug() const;
     virtual bool has_been_planted() const;
+    virtual bool has_remains() const;
 
     virtual bool has_creature() const;
     virtual void set_creature(const std::shared_ptr<Creature>& new_creature);

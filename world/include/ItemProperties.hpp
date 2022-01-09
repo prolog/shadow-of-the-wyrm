@@ -26,6 +26,7 @@ class ItemProperties
     static const std::string ITEM_PROPERTIES_METABOLIZES_ALCOHOL;
     static const std::string ITEM_PROPERTIES_SUPPRESS_ITEM_GENERATION_ON_DESTRUCTION;
     static const std::string ITEM_PROPERTIES_REMAINS;
+    static const std::string ITEM_PROPERTIES_GRAVE_TILE_TYPE;
     static const std::string ITEM_PROPERTIES_WALL_TILE_TYPE;
     static const std::string ITEM_PROPERTIES_FLOOR_TILE_TYPE;
     static const std::string ITEM_PROPERTIES_BUILD_FEATURE_CLASS_IDS;

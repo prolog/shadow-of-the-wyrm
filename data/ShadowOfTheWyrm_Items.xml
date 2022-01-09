@@ -13044,6 +13044,10 @@
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
 					<Property>
+						<Name>grave_tile_type</Name>
+						<Value>12</Value>
+					</Property>
+					<Property>
 						<Name>wall_tile_type</Name>
 						<Value>11</Value>
 					</Property>
@@ -13073,6 +13077,10 @@
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
+					<Property>
+						<Name>grave_tile_type</Name>
+						<Value>37</Value>
+					</Property>
 					<Property>
 						<Name>wall_tile_type</Name>
 						<Value>46</Value>

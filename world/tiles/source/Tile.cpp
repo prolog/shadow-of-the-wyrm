@@ -202,6 +202,13 @@ bool Tile::has_been_planted() const
   return (prop == to_string(true));
 }
 
+bool Tile::has_remains() const
+{
+  string prop = get_additional_property(TileProperties::TILE_PROPERTY_REMAINS);
+
+  return (prop == to_string(true));
+}
+
 void Tile::set_custom_map_id(const string& map_generator_id)
 {
   set_additional_property(TileProperties::TILE_PROPERTY_CUSTOM_MAP_ID, map_generator_id);
