@@ -77,7 +77,8 @@ class TileProperties
 
     // If a grave has been created by burying remains and nothing else,
     // there should be no chance at items/undead/etc.
-    static const std::string TILE_PROPERTY_GRAVE_PCT_CHANCE_ITEMS;
+    static const std::string TILE_PROPERTY_PCT_CHANCE_ITEMS;
+    static const std::string TILE_PROPERTY_PCT_CHANCE_UNDEAD;
 
     // Generates the map key that identifies the custom map ID for
     // a given depth.

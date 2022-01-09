@@ -32,7 +32,8 @@ const string TileProperties::TILE_PROPERTY_ALLOWED_CREATURE_IDS = "TILE_PROPERTY
 const string TileProperties::TILE_PROPERTY_CANNOT_DIG = "TILE_PROPERTY_CANNOT_DIG";
 const string TileProperties::TILE_PROPERTY_CLAY = "TILE_PROPERTY_CLAY";
 const string TileProperties::TILE_PROPERTY_REMAINS = "TILE_PROPERTY_REMAINS";
-const string TileProperties::TILE_PROPERTY_GRAVE_PCT_CHANCE_ITEMS = "TILE_PROPERTY_GRAVE_PCT_CHANCE_ITEMS";
+const string TileProperties::TILE_PROPERTY_PCT_CHANCE_ITEMS = "TILE_PROPERTY_PCT_CHANCE_ITEMS";
+const string TileProperties::TILE_PROPERTY_PCT_CHANCE_UNDEAD = "TILE_PROPERTY_PCT_CHANCE_UNDEAD";
 
 // Represents the non-number part of a depth custom map ID key.
 const string TileProperties::CUSTOM_MAP_ID_PART = "_CUSTOM_MAP_ID";

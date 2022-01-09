@@ -623,7 +623,8 @@ bool DropAction::build_grave_with_dropped_item(CreaturePtr creature, MapPtr map,
     map->insert(c, new_tile);
 
     new_tile->remove_additional_property(TileProperties::TILE_PROPERTY_REMAINS);
-    new_tile->set_additional_property(TileProperties::TILE_PROPERTY_GRAVE_PCT_CHANCE_ITEMS, to_string(0));
+    new_tile->set_additional_property(TileProperties::TILE_PROPERTY_PCT_CHANCE_ITEMS, to_string(0));
+    new_tile->set_additional_property(TileProperties::TILE_PROPERTY_PCT_CHANCE_UNDEAD, to_string(0));
 
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BUILD_GRAVE));
     manager.send();
