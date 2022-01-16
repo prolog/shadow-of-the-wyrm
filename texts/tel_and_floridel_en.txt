@@ -3969,3 +3969,13 @@ and violets had been crushed into the ground %b
 by wooden soles, and where their quarry'd tread %b
 they'd left a path like stitches made from coloured thread.
 %p
+Following, they cut their sleep each night %b
+an hour or two, to try to trim the span. %b
+They shortened meals.  They barely talked.  First light %b
+they'd rise and break camp quickly, make their plans, %b
+then walk until the moon was overhead. %b
+Their food was gone.  They hunted game.  Ate fox %b
+then rabbit, thankful to have that taste instead. %b
+Mid-day the tracks turned.  Following, they stopped %b
+when pressed down-grasses led the two to ash and rock.
+%p 
