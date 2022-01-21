@@ -1,8 +1,4 @@
 Me:
-- Where is lumber coming from? (wand of digging: trees, too)
-- Drop stone on buried remains: grave
-- Drop sod on buried remains: barrow
-- Some kind of no-item flag for graves created this way
 - Carcassia mines (no creatures)
 - No-creature mines should only allow stone items generated (no magici, etc)
 - Rework DigChances so it can handle multiple item %s, then readd edible roots
@@ -17,10 +13,6 @@ Me:
 - Boating: move faster on water
 - Desert/Forest/etc Lore: to-hit, damage, speed bonuses on that terrain
 - after Godslayer, divine spells gone/Divine skill 0
-- 100 in each melee weapon: should do something.
-  - Whips: chance tangle
-  - short and long blades: + evade
-  - Add to docs
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere
 - More dungeon item features:

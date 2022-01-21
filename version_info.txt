@@ -4,8 +4,10 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 - Stone blocks can be obtained by digging in solid rock, while sod can be
   harvested by digging in fields.
 
+- Digging through trees provides a source of lumber.
+
 - You can now build, and only need building materials (stone blocks, sod
-  bricks, etc):
+  bricks, lumber):
 
   - Dig and drop the building material on a tile containing buried remains
     and you'll be asked if you want to make a grave.
@@ -22,6 +24,9 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - Pick axes are now much less likely to break, and dwarven mattocks will not
   break at all.
+
+- Blessed weapons now make it a little easier to hit, and cursed weapons a
+  little harder.
 
 - New name and settlement name combinations.
 

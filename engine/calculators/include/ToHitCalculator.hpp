@@ -16,9 +16,12 @@ class ToHitCalculator
     virtual int get_weapon_bonus(CreaturePtr creature);
     virtual int get_modifier_bonus(CreaturePtr creature);
     virtual int get_skills_bonus(CreaturePtr creature);
-    
+    virtual int get_status_bonus(CreaturePtr creature);
+
     AttackType attack_type;
+
     static const int NWP_SKILL_BONUS_DIVISOR;
+    static const int BLESS_STATUS_BONUS;
 };
 
 using ToHitCalculatorPtr = std::unique_ptr<ToHitCalculator>;
