@@ -4,7 +4,8 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 - Stone blocks can be obtained by digging in solid rock, while sod can be
   harvested by digging in fields.
 
-- Digging through trees provides a source of lumber.
+- Digging through trees provides a source of lumber (as well as branches and
+  boughs).
 
 - You can now build, and only need building materials (stone blocks, sod
   bricks, lumber):

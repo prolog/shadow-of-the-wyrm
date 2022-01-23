@@ -31,7 +31,9 @@ TileType TreeTile::get_decomposition_tile_type() const
 
 vector<pair<pair<int, int>, std::string>> TreeTile::get_decomposition_item_ids() const
 {
-  vector<pair<pair<int, int>, string>> decomp_ids = { {{1,1}, ItemIdKeys::ITEM_ID_LUMBER} };
+  vector<pair<pair<int, int>, string>> decomp_ids = { {{2,3}, ItemIdKeys::ITEM_ID_LUMBER},
+                                                      {{2,3}, ItemIdKeys::ITEM_ID_BOUGH},
+                                                      {{2,3}, ItemIdKeys::ITEM_ID_BRANCH} };
 
   return decomp_ids;
 }
