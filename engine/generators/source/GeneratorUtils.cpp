@@ -220,29 +220,37 @@ int GeneratorUtils::generate_traps(const MapPtr map, const int num_traps)
 {
   int num_gen = 0;
 
-  int trap_y = 0, trap_x = 0;
-
-  Game& game = Game::instance();
-  vector<TrapPtr> traps = game.get_trap_info_ref();
-
-  Dimensions dim = map->size();
-  int max_y = dim.get_y() - 1;
-  int max_x = dim.get_x() - 1;
-
-  for (int i = 0; i < num_traps; i++)
+  if (map != nullptr)
   {
-    // Try a few attempts each
-    for (int j = 0; j < 2; j++)
+    if (map->get_danger() < 0)
     {
-      trap_y = RNG::range(0, max_y);
-      trap_x = RNG::range(0, max_x);
+      return 0;
+    }
 
-      TilePtr tile = map->at(trap_y, trap_x);
+    int trap_y = 0, trap_x = 0;
 
-      if ((tile != nullptr) && (tile->get_movement_multiplier() > 0) && !tile->has_feature())
+    Game& game = Game::instance();
+    vector<TrapPtr> traps = game.get_trap_info_ref();
+
+    Dimensions dim = map->size();
+    int max_y = dim.get_y() - 1;
+    int max_x = dim.get_x() - 1;
+
+    for (int i = 0; i < num_traps; i++)
+    {
+      // Try a few attempts each
+      for (int j = 0; j < 2; j++)
       {
-        GeneratorUtils::generate_trap(map, trap_y, trap_x, traps);
-        break;
+        trap_y = RNG::range(0, max_y);
+        trap_x = RNG::range(0, max_x);
+
+        TilePtr tile = map->at(trap_y, trap_x);
+
+        if ((tile != nullptr) && (tile->get_movement_multiplier() > 0) && !tile->has_feature())
+        {
+          GeneratorUtils::generate_trap(map, trap_y, trap_x, traps);
+          break;
+        }
       }
     }
   }
@@ -309,42 +317,45 @@ void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int co
 // Generate a random trap from the list and place it at the given coordinates.
 void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int col, const vector<TrapPtr>& traps, const bool trap_triggered)
 {
-  if (!traps.empty())
+  if (map != nullptr)
   {
-    size_t trap_size = traps.size();
-
-    uint idx = RNG::range(0, trap_size - 1);
-    TrapPtr trap = traps.at(idx);
-
-    if (trap != nullptr)
+    if (!traps.empty())
     {
-      const auto& shops = map->get_shops_ref();
+      size_t trap_size = traps.size();
 
-      if (!shops.empty())
+      uint idx = RNG::range(0, trap_size - 1);
+      TrapPtr trap = traps.at(idx);
+
+      if (trap != nullptr)
       {
-        for (auto s_it : shops)
+        const auto& shops = map->get_shops_ref();
+
+        if (!shops.empty())
         {
-          if (CoordUtils::is_contained(s_it.second.get_start(), s_it.second.get_end(), { row, col }))
+          for (auto s_it : shops)
           {
-            return;
+            if (CoordUtils::is_contained(s_it.second.get_start(), s_it.second.get_end(), { row, col }))
+            {
+              return;
+            }
           }
         }
-      }
 
-      // Make a copy of the one provided.
-      trap = TrapPtr(trap->clone_and_randomize_uses());
-      trap->set_triggered(trap_triggered);
+        // Make a copy of the one provided.
+        trap = TrapPtr(trap->clone_and_randomize_uses());
+        trap->set_triggered(trap_triggered);
 
-      // Set the new copy on to the tile.
-      TilePtr tile = map->at(row, col);
+        // Set the new copy on to the tile.
+        TilePtr tile = map->at(row, col);
 
-      if (tile != nullptr)
-      {
-        tile->set_feature(trap);
+        if (tile != nullptr)
+        {
+          tile->set_feature(trap);
 
-        ostringstream ss;
-        ss << "GeneratorUtils::generate_trap - trap generated at (" << row << "," << col << ").";
-        Log::instance().debug(ss.str());
+          ostringstream ss;
+          ss << "GeneratorUtils::generate_trap - trap generated at (" << row << "," << col << ").";
+          Log::instance().debug(ss.str());
+        }
       }
     }
   }

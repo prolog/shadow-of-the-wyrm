@@ -631,12 +631,26 @@ bool Map::get_permanent() const
 // Set/get the danger level used to generate the monsters and items on the map.
 void Map::set_danger(const int new_danger)
 {
-  danger = new_danger;
+  string dlvl_override = get_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE);
+
+  if (dlvl_override.empty())
+  {
+    danger = new_danger;
+  }
 }
 
 int Map::get_danger() const
 {
-  return danger;
+  string dlvl_override = get_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE);
+
+  if (dlvl_override.empty())
+  {
+    return danger;
+  }
+  else
+  {
+    return String::to_int(dlvl_override);
+  }
 }
 
 void Map::set_allow_creature_updates(const bool new_allow_creature_updates)

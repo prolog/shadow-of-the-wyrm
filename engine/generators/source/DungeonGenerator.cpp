@@ -882,6 +882,11 @@ bool DungeonGenerator::place_staircases(MapPtr map)
 // of having a second trap.
 bool DungeonGenerator::place_traps(MapPtr map, const Room& room)
 {
+  if (map->get_danger() <= 0)
+  {
+    return false;
+  }
+
   bool generated_trap = false;
   Game& game = Game::instance();
   vector<TrapPtr> traps = game.get_trap_info_ref();

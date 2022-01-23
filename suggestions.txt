@@ -1,4 +1,14 @@
 Me:
+- Traps are still generating in the safe mines
+- Mines should have piles of things
+- Need to do lots of tests to make sure the dlvl_override stuff hasn't broken
+  stuff:
+
+  - dungeons
+  - overland
+  - telari
+  - fixed map (wintersea, etc)
+
 - Carcassia mines (no creatures)
 - No-creature mines should only allow stone items generated (no magici, etc)
 - Rework DigChances so it can handle multiple item %s, then readd edible roots

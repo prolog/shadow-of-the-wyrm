@@ -58,12 +58,22 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_initial_set_creatures(Ma
   return creatures_generated;
 }
 
-tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr map, const int base_danger_level, const std::map<string, string>& additional_properties)
+tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr map, const int base_danger, const std::map<string, string>& additional_properties)
 {
   tuple<bool, int, Rarity> creatures_generated(false, 0, Rarity::RARITY_COMMON);
   TileType map_terrain_type = map->get_terrain_type();
   set<TileType> map_terrain_types = { map_terrain_type };
   vector<TileType> secondary_types = map->get_secondary_terrain();
+
+  int base_danger_level = base_danger;
+  if (map != nullptr)
+  {
+    string dlvl_override = map->get_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE);
+    if (!dlvl_override.empty())
+    {
+      base_danger_level = String::to_int(dlvl_override);
+    }
+  }
 
   for (const auto& tt : secondary_types)
   {

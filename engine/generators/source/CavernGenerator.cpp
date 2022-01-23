@@ -1,9 +1,11 @@
 #include <set>
 #include "CavernGenerator.hpp"
 #include "CellularAutomataGenerator.hpp"
+#include "Conversion.hpp"
 #include "Game.hpp"
 #include "GeneratorUtils.hpp"
 #include "MapExitUtils.hpp"
+#include "MapProperties.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
 #include "WorldMapLocationTextKeys.hpp"

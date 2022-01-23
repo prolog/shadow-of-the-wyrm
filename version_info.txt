@@ -20,6 +20,9 @@ Shadow of the Wyrm v1.4.3 "da Milano"
     rock/earth walls, respectively, while dropping lumber near water allows
     you to build a pier.
 
+- If maps have a very low danger level, traps will not be generated when
+  requested.
+
 - Lituus is now rods/staves rather than bludgeons.
 
 - Pick axes are now much less likely to break, and dwarven mattocks will not
