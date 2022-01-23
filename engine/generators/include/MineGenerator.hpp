@@ -21,11 +21,10 @@ class MineGenerator : public SOTW::Generator
     void generate_rock_feature(MapPtr map, const std::vector<Coordinate>& feature);
 
     void generate_traps(MapPtr map);
+    void generate_item_piles(MapPtr map);
     void place_staircases(MapPtr map);
     bool get_permanence_default() const override;
 
-    static const int MINE_MIN_TRAPS;
-    static const int MINE_MAX_TRAPS_DIVISOR;
     static const int MINE_MAX_SEGMENTS_MULTIPLIER;
 };
 
