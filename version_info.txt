@@ -32,6 +32,11 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 - Blessed weapons now make it a little easier to hit, and cursed weapons a
   little harder.
 
+- Rewrote the Hunting skill to be clearer that it's about corpse drops
+  (Wolpertinger).
+
+- Skinning now provides a chance to preserve the corpse afterward.
+
 - New name and settlement name combinations.
 
 - New items: stone block, sod brick, lumber, crowbar.

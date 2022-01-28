@@ -15,6 +15,7 @@ class SkinAction : public IActionManager
 
     void add_skin_world_map_message(CreaturePtr creature);
     void add_no_corpses_message(CreaturePtr creature);
+    void add_no_skin_message(CreaturePtr creature);
     void add_skin_successful_message(CreaturePtr creature);
     void add_mangled_corpse_skin_message(CreaturePtr creature);
 

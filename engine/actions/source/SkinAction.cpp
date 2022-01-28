@@ -91,44 +91,75 @@ ActionCostValue SkinAction::attempt_skin(CreaturePtr creature, ItemPtr item, Til
 
   if (creature && item && tile)
   {
-    Game& game = Game::instance();
-    MapPtr current_map = game.get_current_map();
-
-    CorpseCalculator cc;
-    int chance_skin = cc.calculate_chance_successful_skin(creature);
-
-    // Some deities don't like you skinning other humanoids...
-    string race_id = item->get_additional_property(ConsumableConstants::CORPSE_RACE_ID);
-    RaceManager rm;
-    if (rm.is_race_or_descendent(race_id, RaceConstants::RACE_CONSTANTS_RACE_ID_HUMANOID))
+    if (String::to_bool(item->get_additional_property(ConsumableConstants::CORPSE_SKINNED)))
     {
-      game.get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_SKIN_HUMANOID);
-    }
-
-    if (RNG::percent_chance(chance_skin))
-    {
-      creature->get_skills().mark(SkillType::SKILL_GENERAL_SKINNING);
-      add_skin_successful_message(creature); 
-      create_skin_and_add_to_tile(creature, item, tile);
+      add_no_skin_message(creature);
     }
     else
     {
-      add_mangled_corpse_skin_message(creature);
-    }
+      Game& game = Game::instance();
+      MapPtr current_map = game.get_current_map();
 
-    // Remove the corpse from the ground, or reduce the quantity appropriately.
-    uint item_quantity = item->get_quantity();
+      CorpseCalculator cc;
+      int chance_skin = cc.calculate_chance_successful_skin(creature);
 
-    if (item_quantity > 1)
-    {
-      item->set_quantity(item_quantity - 1);
-    }
-    else
-    {
-      tile->get_items()->remove(item->get_id());
-    }
+      // Some deities don't like you skinning other humanoids...
+      string race_id = item->get_additional_property(ConsumableConstants::CORPSE_RACE_ID);
+      RaceManager rm;
+      if (rm.is_race_or_descendent(race_id, RaceConstants::RACE_CONSTANTS_RACE_ID_HUMANOID))
+      {
+        game.get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_SKIN_HUMANOID);
+      }
 
-    acv = get_action_cost_value(creature);
+      bool corpse_preserved = RNG::percent_chance(creature->get_skills().get_value(SkillType::SKILL_GENERAL_SKINNING));
+
+      if (RNG::percent_chance(chance_skin))
+      {
+        creature->get_skills().mark(SkillType::SKILL_GENERAL_SKINNING);
+        add_skin_successful_message(creature);
+        create_skin_and_add_to_tile(creature, item, tile);
+      }
+      else
+      {
+        add_mangled_corpse_skin_message(creature);
+        corpse_preserved = false;
+      }
+
+      uint item_quantity = item->get_quantity();
+
+      if (corpse_preserved)
+      {
+        ItemPtr new_corpse = item;
+
+        if (item_quantity > 1)
+        {
+          // Copy the item, flag it, re-add it.
+          new_corpse = ItemPtr(item->clone_with_new_id());
+        }
+
+        // Flag the item as having already been skinned.
+        if (new_corpse != nullptr)
+        {
+          new_corpse->set_additional_property(ConsumableConstants::CORPSE_SKINNED, std::to_string(true));
+          tile->get_items()->remove(new_corpse->get_id());
+          tile->get_items()->merge_or_add(new_corpse, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+        }
+      }
+      else
+      {
+        // Remove the corpse from the ground, or reduce the quantity appropriately.
+        if (item_quantity > 1)
+        {
+          item->set_quantity(item_quantity - 1);
+        }
+        else
+        {
+          tile->get_items()->remove(item->get_id());
+        }
+      }
+
+      acv = get_action_cost_value(creature);
+    }
   }
 
   return acv;
@@ -175,6 +206,14 @@ void SkinAction::add_no_corpses_message(CreaturePtr creature)
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SKIN_NO_CORPSES));
+  manager.send();
+}
+
+void SkinAction::add_no_skin_message(CreaturePtr creature)
+{
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+
+  manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SKIN_NO_SKIN));
   manager.send();
 }
 

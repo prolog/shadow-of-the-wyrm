@@ -160,6 +160,7 @@ class ActionTextKeys
     static const std::string ACTION_JEWELER_WORKBENCH_NO_JEWELER_SKILL;
     static const std::string ACTION_SKIN_WORLD_MAP;
     static const std::string ACTION_SKIN_NO_CORPSES;
+    static const std::string ACTION_SKIN_NO_SKIN;
     static const std::string ACTION_SKIN_MANGLED_CORPSE;
     static const std::string ACTION_SKIN_SUCCESSFUL;
     static const std::string ACTION_SKIN_NO_SKINS;

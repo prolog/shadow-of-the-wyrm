@@ -329,3 +329,6 @@ Brian Jeffears:
 
 Echo38:
 - make undead hostile to humanoids
+
+Kenny:
+- repeat last command (!)
