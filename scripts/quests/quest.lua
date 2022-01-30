@@ -176,3 +176,56 @@ function Quest:execute()
 
   return true
 end
+
+-- Try to add some nice additional quest rewards. Most of the time this
+-- will do nothing.
+function Quest:try_additional_quest_reward()
+  local item_id = nil
+  
+  if RNG_percent_chance(10) then
+    if RNG_percent_chance(80) then
+      if RNG_percent_chance(50) then
+        item_id = GOLDEN_APPLE_ID
+      else
+        item_id = SILVER_APPLE_ID
+      end
+    else
+      if RNG_percent_chance(50) then
+        item_id = ENCHANTING_SCROLL_ID
+      else
+        item_id = GAIN_ATTRIBUTES_POTION_ID
+      end
+    end
+  end
+
+  if item_id ~= nil then
+    add_object_to_player_tile(item_id)
+  end
+end
+
+-- Quest:try_probabilistic_quest checks to see if a probabilistic quest
+-- has been run for the given creature. If it hasn't, it checks the given
+-- probability to see if it should be fun. The outcome of this (true or
+-- false) is saved as a property on the creature.
+function Quest:check_probabilistic_quest(cr_id, quest_p)
+  local cr_qid = get_creature_additional_property(cr_id, CREATURE_QUEST_GUID)
+  local run_quest = false
+  local chance = 15
+
+  if quest_p ~= nil then
+    chance = quest_p
+  end
+
+  if cr_qid == "" then
+    if RNG_percent_chance(chance) then
+      set_creature_additional_property(cr_id, CREATURE_QUEST_GUID, "1")
+      run_quest = true
+    else
+      set_creature_additional_property(cr_id, CREATURE_QUEST_GUID, "0")
+    end
+  else
+    run_quest = (cr_qid == "1")
+  end
+
+  return run_quest
+end
