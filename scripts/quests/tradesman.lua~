@@ -1,0 +1,30 @@
+require('constants')
+
+function run_probabilistic_quest(questor_id, quest_p)
+  local cr_id = args[SPEAKING_CREATURE_ID]
+  local cr_qid = get_creature_additional_property(CREATURE_QUEST_GUID)
+  local run_quest = false
+  local chance = 15
+
+  if quest_p ~= nil then
+    chance = quest_p
+  end
+
+  if cr_qid == nil then
+    if RNG_percent_chance(chance) then
+      set_creature_additional_property(CREATURE_QUEST_GUID, "1")
+      run_quest = true
+    end
+  else
+    run_quest = (cr_qid == "1")
+  end
+
+  return run_quest
+end
+
+if run_quest then
+  -- ...
+else
+  clear_and_add_message("TRADESMAN_SPEECH_TEXT_SID")
+end
+

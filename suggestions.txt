@@ -1,16 +1,6 @@
 Me:
-- Traps are still generating in the safe mines
-- Mines should have piles of things
-- Need to do lots of tests to make sure the dlvl_override stuff hasn't broken
-  stuff:
-
-  - dungeons
-  - overland
-  - telari
-  - fixed map (wintersea, etc)
-
-- Carcassia mines (no creatures)
-- No-creature mines should only allow stone items generated (no magici, etc)
+- Tradesman quest: # stone blocks???
+- PLAYTHROUGH TO TEST DLVL_OVERRIDE!!!
 - Rework DigChances so it can handle multiple item %s, then readd edible roots
   to fields.
 - ASSET RELEASE
@@ -312,7 +302,6 @@ Josh Engdahl
 - make undead hostile to e.g. all humanoids
 - nearby guards/priests should get angry when altars are desecrated
 - Rocky earth generator 1n Carcassia
-- Warping out of levels doesn't put you back at the default entry position
 - Freeze not always working when hostile creatures in view or creatures 
   hostile to leader in view?
 - los code: .@..   can't see

@@ -22257,6 +22257,11 @@
 				<NumSides>4</NumSides>
 				<Type>2</Type>
 			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/tradesman.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="merchant">
 			<RaceID>01_human</RaceID>
