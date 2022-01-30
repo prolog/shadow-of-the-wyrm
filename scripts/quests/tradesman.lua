@@ -57,7 +57,7 @@ local function tradesman_start_fn()
 end
 
 local function tradesman_completion_condition_fn()
-  return (player_has_item(STONE_BLOCK_ID, 4))
+  return (get_item_count(PLAYER_ID, STONE_BLOCK_ID) >= 4)
 end
 
 local function tradesman_completion_fn()
