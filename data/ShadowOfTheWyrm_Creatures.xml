@@ -21930,6 +21930,11 @@
 				<Type>1</Type>
 			</Damage>
 			<Evade>3</Evade>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/farmer.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="_potter">
 			<RaceID>01_human,02_woodelf,03_mountainelf,04_snakeling,05_fae,06_dwarf,07_goblin,08_ogre,09_giant,10_gnome</RaceID>
