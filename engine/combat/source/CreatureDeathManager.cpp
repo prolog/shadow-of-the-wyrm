@@ -216,6 +216,12 @@ void CreatureDeathManager::potentially_generate_corpse(CreaturePtr attacking_cre
 
     if (corpse != nullptr)
     {
+      // Train the attacker's Hunting.
+      if (attacking_creature != nullptr)
+      {
+        attacking_creature->get_skills().mark(SkillType::SKILL_GENERAL_HUNTING);
+      }
+
       // Poison it if applicable
       ConsumablePtr consum = std::dynamic_pointer_cast<Consumable>(corpse);
 

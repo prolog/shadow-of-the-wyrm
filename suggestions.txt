@@ -1,5 +1,4 @@
 Me:
-- Tradesman quest: # stone blocks???
 - PLAYTHROUGH TO TEST DLVL_OVERRIDE!!!
 - Rework DigChances so it can handle multiple item %s, then readd edible roots
   to fields.

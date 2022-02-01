@@ -41,6 +41,8 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - Skinning now provides a chance to preserve the corpse afterward.
 
+- Hunting is now passively trained each time you get a corpse.
+
 - Some creatures now have a small chance of providing a quest.  Right now,
   this is limited to townfolk-type NPCs, and includes tradesmen and farmers.
 
