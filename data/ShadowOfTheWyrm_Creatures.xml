@@ -21984,6 +21984,11 @@
 				<NumSides>4</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/potter.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="layperson">
 			<RaceID>01_human</RaceID>
