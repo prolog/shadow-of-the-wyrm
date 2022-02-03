@@ -1,4 +1,12 @@
 Me:
+so if you are crowned with trickster
+and you run into kith
+and talk to him
+hes friendly with you
+but his text
+is what hed say if he was aggressive
+
+- Kenny: sotw needs an icon
 - PLAYTHROUGH TO TEST DLVL_OVERRIDE!!!
 - Rework DigChances so it can handle multiple item %s, then readd edible roots
   to fields.

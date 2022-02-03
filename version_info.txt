@@ -44,7 +44,8 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 - Hunting is now passively trained each time you get a corpse.
 
 - Some creatures now have a small chance of providing a quest.  Right now,
-  this is limited to townfolk-type NPCs: tradesmen, farmers, potters.
+  this is limited to townfolk-type NPCs: tradesmen, farmers, potters,
+  travellers.
 
 - New name and settlement name combinations.
 
