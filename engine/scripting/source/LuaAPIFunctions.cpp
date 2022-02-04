@@ -7998,7 +7998,13 @@ int generate_creature(lua_State* ls)
 {
   bool creature_generated = false;
 
-  if (lua_gettop(ls) == 6 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5) && lua_isnumber(ls, 6))
+  if (lua_gettop(ls) >= 6 && 
+      lua_isstring(ls, 1) && 
+      lua_isnumber(ls, 2) && 
+      lua_isnumber(ls, 3) && 
+      lua_isnumber(ls, 4) && 
+      lua_isnumber(ls, 5) && 
+      lua_isnumber(ls, 6))
   {
     Game& game = Game::instance();
     string map_id = lua_tostring(ls, 1);
@@ -8007,6 +8013,12 @@ int generate_creature(lua_State* ls)
     int x = lua_tointeger(ls, 4);
     int min_danger = lua_tointeger(ls, 5);
     int max_danger = lua_tointeger(ls, 6);
+    int hostility_level = ThreatConstants::INITIAL_THREAT_RATING;
+    
+    if (lua_gettop(ls) >= 7 && lua_isnumber(ls, 7))
+    {
+      hostility_level = lua_tointeger(ls, 7);
+    }
 
     MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
 
@@ -8019,6 +8031,15 @@ int generate_creature(lua_State* ls)
         CreatureGenerationManager cgm;
         CreatureGenerationList generation_list = cgm.generate_creature_generation_map({ map_terrain_type }, map->get_permanent(), map->is_islet(), min_danger, max_danger, Rarity::RARITY_COMMON /* hardcode for now */, {}).get();
         CreaturePtr creature = cgm.generate_creature(game.get_action_manager_ref(), generation_list, map);
+        HostilityManager hm;
+        bool hostile = false;
+
+        if (hostility_level > ThreatConstants::DISLIKE_THREAT_RATING)
+        {
+          hostile = true;
+        }
+        
+        hm.set_hostility_to_player(creature, true, hostility_level);
 
         if (creature != nullptr)
         {

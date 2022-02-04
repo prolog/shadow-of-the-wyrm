@@ -30,7 +30,7 @@ local function ghara_quest_start_fn()
   local dl_min = math.min(player_level+2, 50)
   local dl_max = math.min(player_level+8, 50)
 
-  local generated = generate_creature(map_id, CTILE_TYPE_DUNGEON_COMPLEX, y, x, dl_min, dl_max)
+  local generated = generate_creature(map_id, CTILE_TYPE_DUNGEON_COMPLEX, y, x, dl_min, dl_max, CACTIVE_THREAT_RATING)
 
   if generated == true then
     -- Set the event script on the fighting pits opponent.

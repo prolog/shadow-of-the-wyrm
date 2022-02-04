@@ -286,6 +286,8 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CTIME_OF_DAY_DAY);
   lua_exportConst(ls, CTIME_OF_DAY_DUSK);
   lua_exportConst(ls, CTIME_OF_DAY_NIGHT);
+
+  lua_exportConst(ls, CACTIVE_THREAT_RATING);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)

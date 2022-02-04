@@ -53,6 +53,11 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - Stanzas for "Tel and Floridel".
 
+- Bug fixes:
+
+  - Opponents in the arena were generating friendly if they shared your
+    deity.
+
 Shadow of the Wyrm v1.4.0 "Pisador"
 - Version declared October 19, 2021.  Version finalized December 24, 2021.
 
