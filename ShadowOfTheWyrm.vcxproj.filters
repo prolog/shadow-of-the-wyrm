@@ -4448,6 +4448,9 @@
     <ClInclude Include="engine\calculators\include\MeleeWeaponRangeCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9001,5 +9004,11 @@
     <ClCompile Include="engine\calculators\source\unit_tests\MeleeWeaponRangeCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ShadowOfTheWyrm.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="sotw_icon.ico" />
   </ItemGroup>
 </Project>
