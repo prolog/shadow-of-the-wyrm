@@ -154,6 +154,8 @@ int main(int argc, char* argv[])
       if (display)
       {
         set_display_settings(display, settings);
+        display->display_splash(true);
+
         run_game(display, controller, settings);
       }
       else
@@ -257,7 +259,8 @@ void set_display_settings(DisplayPtr display, const Settings& settings)
 {
   if (display != nullptr)
   {
-    vector<string> setting_names = { Setting::DISPLAY_FONT, 
+    vector<string> setting_names = { Setting::DISPLAY_SPLASH_IMAGE,
+                                     Setting::DISPLAY_FONT, 
                                      Setting::DISPLAY_TILE_SIZE, 
                                      Setting::DISPLAY_TILE_GLYPHS_PER_LINE, 
                                      Setting::DISPLAY_NUM_GLYPHS };

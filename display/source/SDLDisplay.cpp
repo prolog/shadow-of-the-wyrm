@@ -106,6 +106,65 @@ void SDLDisplay::tear_down()
   SDL_DestroyWindow(window);
 }
 
+bool SDLDisplay::display_splash(const bool enabled)
+{
+  bool shown = false;
+  bool tear_down = !enabled;
+
+  if (enabled)
+  {
+    string filename = get_property(Setting::DISPLAY_SPLASH_IMAGE);
+
+    if (!filename.empty())
+    {
+      SDL_Surface* surface = IMG_Load(filename.c_str());
+
+      if (surface != NULL)
+      {
+        if (splash_window == NULL)
+        {
+          splash_window = SDL_CreateWindow("", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, surface->w, surface->h, SDL_WINDOW_ALLOW_HIGHDPI | SDL_WINDOW_BORDERLESS);
+        }
+
+        if (splash_renderer == NULL)
+        {
+          splash_renderer = SDL_CreateRenderer(splash_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE | SDL_RENDERER_PRESENTVSYNC);
+        }
+
+        SDL_Texture* splash = SDL_CreateTextureFromSurface(splash_renderer, surface);
+
+        if (splash == NULL)
+        {
+          Log::instance().error("Can't create splash from " + filename);
+          tear_down = true;
+        }
+        else
+        {
+          SDL_SetRenderTarget(splash_renderer, NULL);
+          SDL_RenderClear(splash_renderer);
+          SDL_RenderCopy(splash_renderer, splash, NULL, NULL);
+          SDL_RenderPresent(splash_renderer);
+
+          shown = true;
+        }
+
+        SDL_FreeSurface(surface);
+      }
+    }
+  }
+
+  if (tear_down)
+  {
+    SDL_DestroyRenderer(splash_renderer);
+    SDL_DestroyWindow(splash_window);
+
+    splash_renderer = NULL;
+    splash_window = NULL;
+  }
+
+  return shown;
+}
+
 string SDLDisplay::toggle_fullscreen()
 {
   string result = ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_SDL_TRUE;

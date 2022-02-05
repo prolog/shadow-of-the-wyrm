@@ -27,6 +27,8 @@ class Display : public ISerializable
 	  virtual bool create() = 0;
 	  virtual void tear_down() = 0;
 
+    virtual bool display_splash(const bool enabled) = 0;
+
     virtual std::string get_name() const = 0;
 
     virtual void set_force_ascii(const bool new_force_ascii);

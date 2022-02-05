@@ -322,6 +322,11 @@ void CursesDisplay::tear_down()
   endwin();
 }
 
+bool CursesDisplay::display_splash(const bool enabled)
+{
+  return false;
+}
+
 string CursesDisplay::get_name() const
 {
   return "curses";

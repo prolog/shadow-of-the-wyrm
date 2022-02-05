@@ -319,6 +319,8 @@ void ShadowOfTheWyrmEngine::setup_player_and_world()
     string game_option;
 
     {
+      display->display_splash(false);
+
       WelcomeScreen welcome(display);
       game_option = welcome.display();
     }

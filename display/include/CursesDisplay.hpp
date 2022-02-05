@@ -17,6 +17,8 @@ class CursesDisplay : public Display
 	  bool create() override;
 	  void tear_down() override;
 
+    virtual bool display_splash(const bool enabled) override;;
+
     virtual std::string get_name() const override;
 
     virtual std::string toggle_fullscreen() override;

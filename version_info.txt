@@ -47,7 +47,7 @@ Shadow of the Wyrm v1.4.3 "da Milano"
   this is limited to townfolk-type NPCs: tradesmen, farmers, potters,
   travellers.
 
-- New logo and pixel art icon created by Kenny Dalman.
+- Added a loading splash image and an .exe icon, courtesy of Kenny Dalman.
 
 - New name and settlement name combinations.
 

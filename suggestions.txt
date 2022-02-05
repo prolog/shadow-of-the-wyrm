@@ -330,3 +330,6 @@ Echo38:
 
 Kenny:
 - repeat last command (!)
+
+iakul:
+- spells for the nine

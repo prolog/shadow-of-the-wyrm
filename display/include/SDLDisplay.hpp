@@ -30,6 +30,8 @@ class SDLDisplay : public Display
 	  virtual bool create() override;
 	  virtual void tear_down() override;
 
+    virtual bool display_splash(const bool enabled) override;
+
     virtual std::string toggle_fullscreen() override;
 
     virtual std::string get_name() const override;
@@ -147,6 +149,8 @@ class SDLDisplay : public Display
 
     std::deque<SDLCursorLocation> screen_cursors;
 
+    SDL_Window* splash_window = NULL;
+    SDL_Renderer* splash_renderer = NULL;
     SDL_Renderer* renderer = NULL;
 
     SDLDisplayParameters sdld;
