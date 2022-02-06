@@ -22650,6 +22650,11 @@
 			</Damage>
 			<Evade>3</Evade>
 			<Soak>0</Soak>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/tanner.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="hrimgar">
 			<RaceID>01_human</RaceID>

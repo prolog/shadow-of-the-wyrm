@@ -977,6 +977,7 @@ int add_object_to_player_tile(lua_State* ls)
     string base_item_id = lua_tostring(ls, 1);
     uint quantity = 1;
     std::map<string, string> properties;
+    int num_enchants = 0;
 
     if (num_args >= 2 && lua_isnumber(ls, 2))
     {
@@ -986,6 +987,11 @@ int add_object_to_player_tile(lua_State* ls)
     if (num_args >= 3 && lua_isstring(ls, 3))
     {
       properties = String::create_properties_from_string(lua_tostring(ls, 3));
+    }
+
+    if (num_args >= 4 && lua_isstring(ls, 4))
+    {
+      num_enchants = lua_tointeger(ls, 4);
     }
 
     Game& game = Game::instance();
@@ -1004,6 +1010,8 @@ int add_object_to_player_tile(lua_State* ls)
         {
           item->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
         }
+
+        item->enchant(0, num_enchants);
 
         for (const auto& prop_pair : properties)
         {
