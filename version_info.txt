@@ -45,7 +45,7 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - Some creatures now have a small chance of providing a quest.  Right now,
   this is limited to townfolk-type NPCs: tradesmen, farmers, potters,
-  travellers.
+  travellers, tanners, commoners.
 
 - Added a loading splash image and an .exe icon, courtesy of Kenny Dalman.
 
