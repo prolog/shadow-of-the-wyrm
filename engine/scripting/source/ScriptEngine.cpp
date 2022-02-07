@@ -9,6 +9,7 @@
 #include "ReligionConstants.hpp"
 #include "ScriptEngine.hpp"
 #include "Serialize.hpp"
+#include "ThreatConstants.hpp"
 
 using namespace std;
 

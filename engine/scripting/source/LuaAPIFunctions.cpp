@@ -8047,7 +8047,7 @@ int generate_creature(lua_State* ls)
           hostile = true;
         }
         
-        hm.set_hostility_to_player(creature, true, hostility_level);
+        hm.set_hostility_to_player(creature, hostile, hostility_level);
 
         if (creature != nullptr)
         {
