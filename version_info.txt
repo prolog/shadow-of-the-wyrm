@@ -49,6 +49,8 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - Added a loading splash image and an .exe icon, courtesy of Kenny Dalman.
 
+- Long spears are now range 3.
+
 - New name and settlement name combinations.
 
 - New items: stone block, sod brick, lumber, crowbar.

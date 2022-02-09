@@ -5630,7 +5630,7 @@
 					<NumSides>10</NumSides>
 					<Type>1</Type>
 				</Damage>
-				<Range>2</Range>
+				<Range>3</Range>
 			</Weapon>
 			<Weapon id="scythe">
 				<DescriptionSID>SCYTHE_SID</DescriptionSID>

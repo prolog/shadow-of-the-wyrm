@@ -423,6 +423,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_adventurers_joined", set_adventurers_joined);
   lua_register(L, "get_adventurers_joined", get_adventurers_joined);
   lua_register(L, "get_trained_magic_skills", get_trained_magic_skills);
+  lua_register(L, "get_highest_melee_skill", get_highest_melee_skill);
   lua_register(L, "order_follow", order_follow);
   lua_register(L, "order_at_ease", order_at_ease);
   lua_register(L, "reset_creatures_and_creature_locations", reset_creatures_and_creature_locations);
@@ -978,6 +979,7 @@ int add_object_to_player_tile(lua_State* ls)
     uint quantity = 1;
     std::map<string, string> properties;
     int num_enchants = 0;
+    int num_smiths = 0;
 
     if (num_args >= 2 && lua_isnumber(ls, 2))
     {
@@ -989,9 +991,14 @@ int add_object_to_player_tile(lua_State* ls)
       properties = String::create_properties_from_string(lua_tostring(ls, 3));
     }
 
-    if (num_args >= 4 && lua_isstring(ls, 4))
+    if (num_args >= 4 && lua_isnumber(ls, 4))
     {
       num_enchants = lua_tointeger(ls, 4);
+    }
+
+    if (num_args >= 5 && lua_isnumber(ls, 5))
+    {
+      num_smiths = lua_tointeger(ls, 5);
     }
 
     Game& game = Game::instance();
@@ -1012,6 +1019,7 @@ int add_object_to_player_tile(lua_State* ls)
         }
 
         item->enchant(0, num_enchants);
+        item->smith(num_smiths);
 
         for (const auto& prop_pair : properties)
         {
@@ -8711,6 +8719,41 @@ int get_trained_magic_skills(lua_State* ls)
   }
 
   LuaUtils::create_return_table_from_int_vector(ls, mskills);
+  return 1;
+}
+
+int get_highest_melee_skill(lua_State* ls)
+{
+  SkillType highest_st = SkillType::SKILL_UNDEFINED;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      const Skills& skills = creature->get_skills();
+      int highest = -1;
+
+      for (int i = static_cast<int>(SkillType::SKILL_MELEE_BEGIN); i < static_cast<int>(SkillType::SKILL_MELEE_LAST); i++)
+      {
+        SkillType s = static_cast<SkillType>(i);
+        int val = skills.get_value(s);
+
+        if (val > highest)
+        {
+          highest = val;
+          highest_st = s;
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_highest_melee skill");
+  }
+
+  lua_pushinteger(ls, static_cast<int>(highest_st));
   return 1;
 }
 
