@@ -90,7 +90,6 @@ Me:
   becoming invalidated.)
 - Do additional profiling after shared_ptr cleanup
 - Look at race balance: stats, speed, skill points, etc
-- Shield punch!
 - Fruit trees should generate fruit annually.
 - Write script to check for any items without CodexDescriptionSID
 - The "descend to" functionality
@@ -200,9 +199,6 @@ Not bugs, but probably not working as intended:
   to. The useful buff spells that one might use regularly are currently 
   being distributed at random throughout the many non-buff spells that one 
   rarely uses. Even hotkeys would improve this by a great deal.
-
-Samildanach:
-- Make it more obvious what skills do and how they work.
 
 Esran:
 - Once monsters are smarter, create spells that allow hitting monsters
@@ -324,3 +320,6 @@ Kenny:
 
 iakul:
 - spells for the nine
+
+RelicWraith:
+- option to set age

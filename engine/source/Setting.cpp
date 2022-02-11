@@ -33,6 +33,7 @@ const string Setting::DAYS_ELAPSED = "days_elapsed";
 const string Setting::HOURS_ELAPSED = "hours_elapsed";
 const string Setting::CURRENT_MONTH_IS_START_MONTH = "current_month_is_start_month";
 const string Setting::PROMPT_FOR_CHARACTER_DUMP_ON_EXIT = "prompt_for_character_dump_on_exit";
+const string Setting::DEFAULT_AGE = "default_age";
 const string Setting::DEFAULT_SEX = "default_sex";
 const string Setting::DEFAULT_RACE_ID = "default_race_id";
 const string Setting::DEFAULT_CLASS_ID = "default_class_id";

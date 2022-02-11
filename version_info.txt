@@ -49,6 +49,10 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - Added a loading splash image and an .exe icon, courtesy of Kenny Dalman.
 
+- Character age can now be specified in swyrm.ini.  This lets you either
+  directly set an age, or set a value that triggers an age selection screen
+  (RelicWraith).
+
 - Long spears are now range 3.
 
 - New name and settlement name combinations.

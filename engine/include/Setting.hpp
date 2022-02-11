@@ -26,6 +26,7 @@ class Setting
     static const std::string HOURS_ELAPSED;
     static const std::string CURRENT_MONTH_IS_START_MONTH;
     static const std::string PROMPT_FOR_CHARACTER_DUMP_ON_EXIT;
+    static const std::string DEFAULT_AGE;
     static const std::string DEFAULT_SEX;
     static const std::string DEFAULT_RACE_ID;
     static const std::string DEFAULT_CLASS_ID;
