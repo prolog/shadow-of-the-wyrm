@@ -1,7 +1,7 @@
 #include <future>
 #include <thread>
 #include "ShadowOfTheWyrmEngine.hpp"
-#include "XMLConfigurationReader.hpp"
+#include "AgeSelectionScreen.hpp"
 #include "Class.hpp"
 #include "ClassSelectionScreen.hpp"
 #include "Conversion.hpp"
@@ -40,6 +40,7 @@
 #include "StartingLocationSelectionScreen.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
+#include "XMLConfigurationReader.hpp"
 #include "WelcomeScreen.hpp"
 
 using namespace std;
@@ -583,7 +584,19 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   if (show_age_screen)
   {
-    // ...
+    RaceManager rm;
+    Race* sel_race = rm.get_race(selected_race_id);
+    AgeInfo age_info = sel_race->get_age_info();
+    int min_select_age = age_info.get_starting_age().get_min();
+    int max_select_age = age_info.get_maximum_age().get_min() - 1;
+    AgeSelectionScreen ass(display, creature_synopsis, min_select_age, max_select_age);
+    bool valid_age = false;
+
+    while (!valid_age)
+    {
+      age = String::to_int(ass.display());
+      valid_age = selected_race->is_valid_starting_age(age);
+    }
   }
 
   string default_deity_id = settings.get_setting(Setting::DEFAULT_DEITY_ID);

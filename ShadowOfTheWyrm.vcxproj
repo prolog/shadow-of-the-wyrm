@@ -976,6 +976,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\maps\tiles\include\TileDamageProcessor.hpp" />
     <ClInclude Include="engine\maps\tiles\include\TileDamageProcessorFactory.hpp" />
     <ClInclude Include="engine\maps\tiles\include\TileManipulatorFactory.hpp" />
+    <ClInclude Include="engine\screens\include\AgeSelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\ClassSelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\ComponentAlignment.hpp" />
     <ClInclude Include="engine\screens\include\CreateItemScreen.hpp" />
@@ -2127,6 +2128,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\maps\tiles\source\PoisonTileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\TileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\TileDamageProcessorFactory.cpp" />
+    <ClCompile Include="engine\screens\source\AgeSelectionScreen.cpp" />
     <ClCompile Include="engine\screens\source\CreateItemScreen.cpp" />
     <ClCompile Include="engine\screens\source\EyeSelectionScreen.cpp" />
     <ClCompile Include="engine\screens\source\HairSelectionScreen.cpp" />

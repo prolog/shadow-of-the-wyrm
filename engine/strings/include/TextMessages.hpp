@@ -53,6 +53,7 @@ class TextMessages
     static std::string get_killed_by_message(const std::string& killed_by_source);
     static std::string get_death_depth_location_message(const std::string& depth, const std::string& location);
     static std::string get_build_message(const std::string& thing_built);
+    static std::string get_select_age_message(const int min_age, const int max_age);
 
   protected:
     TextMessages();
@@ -94,4 +95,5 @@ class TextMessages
     static const std::string KILLED_BY_MESSAGE;
     static const std::string DEATH_DEPTH_LOCATION_MESSAGE;
     static const std::string BUILD_MESSAGE;
+    static const std::string SELECT_AGE_MESSAGE;
 };

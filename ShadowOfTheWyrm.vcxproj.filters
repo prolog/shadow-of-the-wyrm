@@ -4451,6 +4451,9 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="engine\screens\include\AgeSelectionScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9003,6 +9006,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\MeleeWeaponRangeCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\AgeSelectionScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
