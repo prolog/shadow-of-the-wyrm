@@ -3939,9 +3939,9 @@ assassins set to work against the green %b
 that lit the days, the two of them now caught %b
 between this quiet calm and all the blood they sought.
 %p
-The tenth day out they walked the jagged hills %b
+The tenth day out they rode the jagged hills %b
 north-east of Cithriel, and staying low, %b
-they walked its valleys roughly north until %b
+they took its valleys roughly north until %b
 a campsite halted them, its traces stowed %b
 poorly.  They found some ashes under leaves, %b
 then sleeping spots, the grass still matted down %b
@@ -3951,7 +3951,7 @@ an indication where their quarry'd gone to ground.
 %p
 Assuming that they'd hoped to stay from sight, %b
 they took a lazy route that followed through %b
-the central valley, walking every night %b
+the central valley, rising every night %b
 to scan the surrounding plains, that panoramic view %b
 empty each time, a trap that never came. %b
 Three days of this.  Their nerves on edge.  They knew %b
@@ -3972,10 +3972,20 @@ they'd left a path like stitches made from coloured thread.
 Following, they cut their sleep each night %b
 an hour or two, to try to trim the span. %b
 They shortened meals.  They barely talked.  First light %b
-they'd rise and break camp quickly, make their plans, %b
-then walk until the moon was overhead. %b
+they'd rise, break camp, and quickly make their plans, %b
+then ride until the moon was overhead. %b
 Their food was gone.  They hunted game.  Ate fox %b
 then rabbit, thankful to have that taste instead. %b
 Mid-day the tracks turned.  Following, they stopped %b
 when pressed down-grasses led the two to ash and rock.
 %p 
+A turn to carelessness?  They combed the ash %b
+and found a pile of bones, a six-course feast %b
+for two.  They stopped and listened, till at last %b
+they were satisfied whoever'd stopped to eat %b
+was long gone.  Now the question of two trails %b
+besides theirs: they discussed it; the exiles met %b
+another group, then left with them.  The tale %b
+went cold after this.  The number or the heft %b
+of the companions that they'd picked up was a shaky bet.
+%p
