@@ -14,6 +14,17 @@ const int TanningCalculator::MAX_IMPROVEMENT_PCT = 100;
 const int TanningCalculator::BASE_RESIST_DIVISOR = 5;
 const vector<pair<int, double>> TanningCalculator::SKILL_VALUE_DIVISORS = {{100, 2.5}, {75, 3}, {50, 3.5}, {25, 4}, {0, 5.0}};
 const int TanningCalculator::PCT_CHANCE_EXTRA_POINT = 60;
+const int TanningCalculator::VALUE_BONUS_MULTIPLIER = 3;
+
+int TanningCalculator::calculate_value_bonus(const int bonus)
+{
+  if (bonus > 0)
+  {
+    return bonus * VALUE_BONUS_MULTIPLIER;
+  }
+
+  return 0;
+}
 
 int TanningCalculator::calculate_combat_bonus_min(CreaturePtr creature)
 {

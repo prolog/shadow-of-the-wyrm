@@ -12,6 +12,17 @@ void jiggle_tanning_bonus_skills(CreaturePtr creature)
     }
   }
 }
+
+TEST(SW_Engine_Calculator_TanningCalculator, value_bonus)
+{
+  TanningCalculator tc;
+
+  EXPECT_EQ(0, tc.calculate_value_bonus(-5));
+  EXPECT_EQ(0, tc.calculate_value_bonus(0));
+  EXPECT_EQ(3, tc.calculate_value_bonus(1));
+  EXPECT_EQ(150, tc.calculate_value_bonus(50));
+}
+
 TEST(SW_Engine_Calculator_TanningCalculator, combat_min)
 {
   CreaturePtr creature = std::make_shared<Creature>();

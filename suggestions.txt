@@ -321,5 +321,3 @@ Kenny:
 iakul:
 - spells for the nine
 
-RelicWraith:
-- option to set age

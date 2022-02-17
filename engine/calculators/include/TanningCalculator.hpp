@@ -7,6 +7,8 @@
 class TanningCalculator
 {
   public:
+    int calculate_value_bonus(const int bonus_pts);
+
     int calculate_combat_bonus_min(CreaturePtr creature);
     int calculate_combat_bonus_max(CreaturePtr creature);
 
@@ -39,6 +41,7 @@ class TanningCalculator
     static const int MAX_IMPROVEMENT_PCT;
     static const int BASE_RESIST_DIVISOR;
     static const int PCT_CHANCE_EXTRA_POINT;
+    static const int VALUE_BONUS_MULTIPLIER;
 
     static const std::vector<std::pair<int, double>> SKILL_VALUE_DIVISORS;
 };

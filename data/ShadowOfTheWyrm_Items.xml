@@ -1700,7 +1700,7 @@
 				<DescriptionSID>HIDE_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_ARMOUR_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>HIDE_CODEX_SID</CodexDescriptionSID>
-				<Value>10</Value>
+				<Value>40</Value>
 				<Weight>
 					<Pounds>5</Pounds>
 				</Weight>
@@ -2098,7 +2098,7 @@
 				<DescriptionSID>HIDE_CLOAK_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_CLOAK_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>HIDE_CODEX_SID</CodexDescriptionSID>
-				<Value>2</Value>
+				<Value>10</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
@@ -2352,7 +2352,7 @@
 				<DescriptionSID>HIDE_BOOTS_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_BOOTS_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>HIDE_CODEX_SID</CodexDescriptionSID>
-				<Value>50</Value>
+				<Value>15</Value>
 				<Weight>
 					<Pounds>5</Pounds>
 				</Weight>
@@ -5964,7 +5964,7 @@
 				<DescriptionSID>HIDE_WHIP_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_WHIP_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>HIDE_WHIP_CODEX_SID</CodexDescriptionSID>
-				<Value>10</Value>
+				<Value>20</Value>
 				<Weight>
 					<Pounds>6</Pounds>
 				</Weight>
@@ -6265,7 +6265,7 @@
 				<DescriptionSID>HIDE_SLING_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_SLING_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>HIDE_CODEX_SID</CodexDescriptionSID>
-				<Value>1</Value>
+				<Value>2</Value>
 				<Weight>
 					<Pounds>0</Pounds>
 					<Ounces>8</Ounces>

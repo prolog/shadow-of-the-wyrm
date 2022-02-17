@@ -53,6 +53,9 @@ Shadow of the Wyrm v1.4.3 "da Milano"
   directly set an age, or set a value that triggers an age selection screen
   (RelicWraith).
 
+- Creating items via tannery now properly adjusts their value based on the
+  quality of the crafted item (RelicWraith).
+
 - Long spears are now range 3.
 
 - New name and settlement name combinations.
