@@ -1,9 +1,14 @@
 Me:
+- ASSET RELEASE
+- thatcher: wants sod? or thatch materials?
+- dungeons with pictures: start at 50' but creatures are massively OOD
+- fisherman quest
+- more town NPCs/sprites
+- overlapping houses in settlement - temple over tavern?
 - need to retest arena fights
 - PLAYTHROUGH TO TEST DLVL_OVERRIDE!!!
 - Rework DigChances so it can handle multiple item %s, then readd edible roots
   to fields.
-- ASSET RELEASE
 - Allow wearables to give +HP, +AP
 - Enchanting should rarely up HP/AP. +25 per enchant. 1-5% chance?
 - Wizard staff: +50 AP
