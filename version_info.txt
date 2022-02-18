@@ -60,6 +60,8 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - New name and settlement name combinations.
 
+- New creatures: thatcher.
+
 - New items: stone block, sod brick, lumber, crowbar.
 
 - Stanzas for "Tel and Floridel".

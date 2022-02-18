@@ -1,7 +1,8 @@
 Me:
 - ASSET RELEASE
 - thatcher: wants sod? or thatch materials?
-- dungeons with pictures: start at 50' but creatures are massively OOD
+- dungeons with pictures: start at 50' but creatures are massively OOD. due to
+  the ambient danger level increase?
 - fisherman quest
 - more town NPCs/sprites
 - overlapping houses in settlement - temple over tavern?

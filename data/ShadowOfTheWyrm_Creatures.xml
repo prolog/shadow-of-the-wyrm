@@ -20793,6 +20793,11 @@
 				<Type>2</Type>
 			</Damage>
 			<Soak>3</Soak>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/thatcher.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="sea_captain">
 			<RaceID>01_human</RaceID>
