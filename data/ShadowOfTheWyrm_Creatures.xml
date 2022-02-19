@@ -21521,6 +21521,11 @@
 				<NumSides>16</NumSides>
 				<Type>1</Type>
 			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/whalings_end/scrimshander.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="_shopkeeper">
 			<RaceID>01_human,02_woodelf,03_mountainelf,04_snakeling,05_fae,06_dwarf,07_goblin,08_ogre,09_giant,10_gnome</RaceID>

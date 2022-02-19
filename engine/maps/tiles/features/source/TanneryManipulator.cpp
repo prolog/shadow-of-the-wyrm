@@ -184,7 +184,7 @@ ItemPtr TanneryManipulator::create_hide_equipment(CreaturePtr creature, ItemPtr 
         }
 
         item->set_resistances(tc.calculate_item_resistances(creature, selected_skin->get_resistances()));
-        bonus_pts += 100 * item->get_resistances().get_total();
+        bonus_pts += static_cast<int>(100 * item->get_resistances().get_total());
 
         item->set_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID));
     		item->set_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID));

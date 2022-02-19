@@ -47,6 +47,8 @@ Shadow of the Wyrm v1.4.3 "da Milano"
   this is limited to townfolk-type NPCs: tradesmen, farmers, potters,
   travellers, tanners, commoners, jewelers, smiths, weavers, scribes.
 
+- The scrimshander in Whaling's End now has a small quest as well.
+
 - Added a loading splash image and an .exe icon, courtesy of Kenny Dalman.
 
 - Character age can now be specified in swyrm.ini.  This lets you either
