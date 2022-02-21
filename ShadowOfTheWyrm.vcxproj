@@ -377,6 +377,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\DamageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DamageCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\DangerLevelCalculatorFactory.hpp" />
+    <ClInclude Include="engine\calculators\include\DangerLevelProperties.hpp" />
     <ClInclude Include="engine\calculators\include\DefaultStatusEffectCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DepthBasedDangerLevelCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DisarmTrapsCalculator.hpp" />
@@ -397,7 +398,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\HitPointsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HPRegenerationCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HungerCalculator.hpp" />
-    <ClInclude Include="engine\calculators\include\IDangerLevelCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\DangerLevelCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\IHitTypeCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\IHitTypeFactory.hpp" />
     <ClInclude Include="engine\calculators\include\IncorporealCalculator.hpp" />
@@ -1519,6 +1520,8 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\CreateItemCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreaturePietyCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureSplitCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\DangerLevelCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\DangerLevelProperties.cpp" />
     <ClCompile Include="engine\calculators\source\DepthBasedDangerLevelCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DisarmTrapsCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DivineCompanionCalculator.cpp" />
@@ -1585,6 +1588,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\CreatureCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\DangerLevelCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

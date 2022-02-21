@@ -738,3 +738,8 @@ void GeneratorUtils::add_random_stream(MapPtr map)
   StreamGenerator::generate(map);
 }
 
+bool GeneratorUtils::generates_complexes(const TileType tt)
+{
+  vector<TileType> complex_tile_types = { TileType::TILE_TYPE_DUNGEON_COMPLEX, TileType::TILE_TYPE_SEWER_COMPLEX, TileType::TILE_TYPE_MINE };
+  return std::find(complex_tile_types.begin(), complex_tile_types.end(), tt) != complex_tile_types.end();
+}

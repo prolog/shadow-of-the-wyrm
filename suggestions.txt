@@ -1,12 +1,15 @@
 Me:
 - ASSET RELEASE
-- dungeons with pictures: start at 50' but creatures are massively OOD. due to
-  the ambient danger level increase?
 - fisherman quest
 - more town NPCs/sprites
 - overlapping houses in settlement - temple over tavern?
 - need to retest arena fights
 - PLAYTHROUGH TO TEST DLVL_OVERRIDE!!!
+  - gnordvar mines
+  - telari
+  - regular dungeons/sewers/mines
+  - crypts (should take the ambient danger)
+  - regular overworld maps
 - Rework DigChances so it can handle multiple item %s, then readd edible roots
   to fields.
 - Allow wearables to give +HP, +AP

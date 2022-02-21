@@ -2012,7 +2012,7 @@
     <ClInclude Include="engine\calculators\include\DangerLevelCalculatorFactory.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\calculators\include\IDangerLevelCalculator.hpp">
+    <ClInclude Include="engine\calculators\include\DangerLevelCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\WorldMapDangerLevelCalculator.hpp">
@@ -4453,6 +4453,9 @@
     </ClInclude>
     <ClInclude Include="engine\screens\include\AgeSelectionScreen.hpp">
       <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\DangerLevelProperties.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -9009,6 +9012,15 @@
     </ClCompile>
     <ClCompile Include="engine\screens\source\AgeSelectionScreen.cpp">
       <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\DangerLevelCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\DangerLevelCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\DangerLevelProperties.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

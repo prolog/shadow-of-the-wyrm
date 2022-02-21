@@ -1,7 +1,7 @@
 #pragma once
-#include "IDangerLevelCalculator.hpp"
+#include "DangerLevelCalculator.hpp"
 
-class WorldMapDangerLevelCalculator : public IDangerLevelCalculator
+class WorldMapDangerLevelCalculator : public DangerLevelCalculator
 {
   public:
     int calculate(MapPtr old_map, MapPtr new_map) const override;
