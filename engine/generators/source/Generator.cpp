@@ -218,7 +218,7 @@ void Generator::set_map_permanence(MapPtr map)
 {
   if (map)
   {
-    // If the map has not already been made permanent, set hte value based
+    // If the map has not already been made permanent, set the value based
     // on the generator's default.
     if (map->get_permanent() == false)
     {

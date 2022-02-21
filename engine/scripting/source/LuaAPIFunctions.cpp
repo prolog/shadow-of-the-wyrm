@@ -1753,7 +1753,7 @@ int set_skill_value(lua_State* ls)
 // Three arguments are expected:
 // - creature_id of a creature on the current map
 // - skill enumeration value
-// Return value is hte current value (int) for that skill.
+// Return value is the current value (int) for that skill.
 int get_skill_value(lua_State* ls)
 {
   int skill_value = 0;
