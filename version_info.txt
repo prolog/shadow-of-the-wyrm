@@ -45,7 +45,8 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - Some creatures now have a small chance of providing a quest.  Right now,
   this is limited to townfolk-type NPCs: tradesmen, farmers, potters,
-  travellers, tanners, commoners, jewelers, smiths, weavers, scribes.
+  travellers, tanners, commoners, jewelers, smiths, weavers, scribes,
+  thatchers, fishermen.
 
 - The scrimshander in Whaling's End now has a small quest as well.
 
@@ -72,6 +73,12 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
   - Opponents in the arena were generating friendly if they shared your
     deity.
+
+  - The changes to the ambient danger level were messed up the danger levels
+    of mines, sewers, and dungeons - these were intended to give you 1 danger
+    level per 50' of depth, but the danger level was starting at the ambient
+    danger level, causing the first 50' to give you wildly different creatures
+    based on where the dungeon was.
 
 Shadow of the Wyrm v1.4.0 "Pisador"
 - Version declared October 19, 2021.  Version finalized December 24, 2021.

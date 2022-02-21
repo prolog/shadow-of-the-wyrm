@@ -20753,6 +20753,11 @@
 			</Damage>
 			<Evade>3</Evade>
 			<Soak>1</Soak>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/fisherman.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="_thatcher">
 			<RaceID>01_human,02_woodelf,03_mountainelf,04_snakeling,05_fae,06_dwarf,07_goblin,08_ogre,09_giant,10_gnome</RaceID>
