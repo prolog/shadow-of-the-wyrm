@@ -39,7 +39,9 @@ local function traveller_completion_fn()
   return true
 end
 
-traveller_quest = Quest:new("traveller_" .. cr_id, 
+local q_id = "traveller_" .. cr_id
+
+traveller_quest = Quest:new(q_id, 
                             "TRAVELLER_QUEST_TITLE_SID", 
                             "TRAVELLER_SHORT_DESCRIPTION_SID", 
                             "TRAVELLER_QUEST_DESCRIPTION_SID", 
@@ -50,7 +52,7 @@ traveller_quest = Quest:new("traveller_" .. cr_id,
                             traveller_completion_condition_fn, 
                             traveller_completion_fn)
 
-local do_quest = Quest:check_probabilistic_quest(cr_id, 30)
+local do_quest = Quest:check_probabilistic_quest(cr_id, q_id, 30)
 
 if do_quest == true then
   do_quest = traveller_quest:execute()

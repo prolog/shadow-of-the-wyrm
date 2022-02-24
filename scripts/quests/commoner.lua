@@ -21,7 +21,9 @@ local function commoner_completion_fn()
   return true
 end
 
-commoner_quest = Quest:new("commoner_" .. cr_id, 
+local q_id = "commoner_" .. cr_id
+
+commoner_quest = Quest:new(q_id, 
                            "COMMONER_QUEST_TITLE_SID", 
                            "COMMONER_SHORT_DESCRIPTION_SID", 
                            "COMMONER_QUEST_DESCRIPTION_SID", 
@@ -32,7 +34,7 @@ commoner_quest = Quest:new("commoner_" .. cr_id,
                            commoner_completion_condition_fn, 
                            commoner_completion_fn)
 
-local do_quest = Quest:check_probabilistic_quest(cr_id, 20)
+local do_quest = Quest:check_probabilistic_quest(cr_id, q_id, 20)
 
 if do_quest == true then
   do_quest = commoner_quest:execute()

@@ -28,7 +28,9 @@ local function farmer_completion_fn()
   return true
 end
 
-farmer_quest = Quest:new("farmer_" .. cr_id, 
+local q_id = "farmer_" .. cr_id
+
+farmer_quest = Quest:new(q_id, 
                          "FARMER_QUEST_TITLE_SID", 
                          "FARMER_SHORT_DESCRIPTION_SID", 
                          "FARMER_QUEST_DESCRIPTION_SID", 
@@ -39,7 +41,7 @@ farmer_quest = Quest:new("farmer_" .. cr_id,
                          farmer_completion_condition_fn, 
                          farmer_completion_fn)
 
-local do_quest = Quest:check_probabilistic_quest(cr_id, 20)
+local do_quest = Quest:check_probabilistic_quest(cr_id, q_id, 20)
 
 if do_quest == true then
   do_quest = farmer_quest:execute()

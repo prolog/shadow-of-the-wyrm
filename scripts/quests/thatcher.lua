@@ -36,7 +36,9 @@ local function thatcher_completion_fn()
   return true
 end
 
-thatcher_quest = Quest:new("thatcher_" .. cr_id, 
+local q_id = "thatcher_" .. cr_id
+
+thatcher_quest = Quest:new(q_id, 
                            "THATCHER_QUEST_TITLE_SID", 
                            "THATCHER_SHORT_DESCRIPTION_SID", 
                            "THATCHER_QUEST_DESCRIPTION_SID", 
@@ -47,7 +49,7 @@ thatcher_quest = Quest:new("thatcher_" .. cr_id,
                            thatcher_completion_condition_fn, 
                            thatcher_completion_fn)
 
-local do_quest = Quest:check_probabilistic_quest(cr_id, 20)
+local do_quest = Quest:check_probabilistic_quest(cr_id, q_id, 20)
 
 if do_quest == true then
   do_quest = thatcher_quest:execute()

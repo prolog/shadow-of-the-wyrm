@@ -21,10 +21,6 @@ Shadow of the Wyrm v1.4.3 "da Milano"
     rock/earth walls, respectively, while dropping lumber near water allows
     you to build a pier.
 
-- Bug fixes:
-
-  - Acey's imperial stash quest wasn't displaying the reminder string.
-
 - If maps have a very low danger level, traps will not be generated when
   requested.
 
@@ -50,6 +46,10 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - The scrimshander in Whaling's End now has a small quest as well.
 
+- Certain NPCs (generally, the ones listed above) now have a chance to run
+  some common quests as well.  These quests can be be repeated: you can do the
+  quest for a fisherman in Isen Dun, a tradesman in a random village, etc.
+
 - Added a loading splash image and an .exe icon, courtesy of Kenny Dalman.
 
 - Character age can now be specified in swyrm.ini.  This lets you either
@@ -71,6 +71,8 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - Bug fixes:
 
+  - Acey's imperial stash quest wasn't displaying the reminder string.
+  
   - Opponents in the arena were generating friendly if they shared your
     deity.
 

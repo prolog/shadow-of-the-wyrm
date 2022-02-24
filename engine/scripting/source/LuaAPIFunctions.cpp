@@ -316,6 +316,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_hostility", set_hostility);
   lua_register(L, "is_creature_hostile", is_creature_hostile);
   lua_register(L, "teleport", teleport);
+  lua_register(L, "get_creature_short_description_sid", get_creature_short_description_sid);
   lua_register(L, "get_creature_description", get_creature_description);
   lua_register(L, "get_creature_description_sids", get_creature_description_sids);
   lua_register(L, "transfer_item", transfer_item);
@@ -5121,6 +5122,28 @@ int teleport(lua_State* ls)
   return 1;
 }
 
+int get_creature_short_description_sid(lua_State* ls)
+{
+  string short_description_sid;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      short_description_sid = creature->get_short_description_sid();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_creature_short_description_sid");
+  }
+
+  lua_pushstring(ls, short_description_sid.c_str());
+  return 1;
+}
+
 // Get the appropriate creature description, based on whether the viewing
 // creature can actually see or not.
 int get_creature_description(lua_State* ls)
@@ -5178,7 +5201,8 @@ int get_creature_description_sids(lua_State* ls)
   if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
   {
     const CreatureMap& c_map = Game::instance().get_creatures_ref();
-    auto c_it = c_map.find(lua_tostring(ls, 1));
+    string base_id = lua_tostring(ls, 1);
+    auto c_it = c_map.find(base_id);
 
     if (c_it != c_map.end())
     {

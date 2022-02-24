@@ -207,8 +207,9 @@ end
 -- has been run for the given creature. If it hasn't, it checks the given
 -- probability to see if it should be fun. The outcome of this (true or
 -- false) is saved as a property on the creature.
-function Quest:check_probabilistic_quest(cr_id, quest_p)
-  local cr_qid = get_creature_additional_property(cr_id, CREATURE_QUEST_GUID)
+function Quest:check_probabilistic_quest(cr_id, quest_id, quest_p)
+  local cr_q_guid = CREATURE_QUEST_GUID .. "_" .. quest_id
+  local cr_qid = get_creature_additional_property(cr_id, cr_q_guid)
   local run_quest = false
   local chance = 15
 
@@ -218,10 +219,10 @@ function Quest:check_probabilistic_quest(cr_id, quest_p)
 
   if cr_qid == "" then
     if RNG_percent_chance(chance) then
-      set_creature_additional_property(cr_id, CREATURE_QUEST_GUID, "1")
+      set_creature_additional_property(cr_id, cr_q_guid, "1")
       run_quest = true
     else
-      set_creature_additional_property(cr_id, CREATURE_QUEST_GUID, "0")
+      set_creature_additional_property(cr_id, cr_q_guid, "0")
     end
   else
     run_quest = (cr_qid == "1")

@@ -28,7 +28,9 @@ local function jeweler_completion_fn()
   return true
 end
 
-jeweler_quest = Quest:new("jeweler_" .. cr_id, 
+local q_id = "jeweler_" .. cr_id
+
+jeweler_quest = Quest:new(q_id, 
                           "JEWELER_QUEST_TITLE_SID", 
                           "JEWELER_SHORT_DESCRIPTION_SID", 
                           "JEWELER_QUEST_DESCRIPTION_SID", 
@@ -39,7 +41,7 @@ jeweler_quest = Quest:new("jeweler_" .. cr_id,
                           jeweler_completion_condition_fn, 
                           jeweler_completion_fn)
 
-local do_quest = Quest:check_probabilistic_quest(cr_id, 20)
+local do_quest = Quest:check_probabilistic_quest(cr_id, q_id, 20)
 
 if do_quest == true then
   do_quest = jeweler_quest:execute()

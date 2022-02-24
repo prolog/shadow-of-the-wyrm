@@ -32,7 +32,9 @@ local function weaver_completion_fn()
   return true
 end
 
-weaver_quest = Quest:new("weaver_" .. cr_id, 
+local q_id = "weaver_" .. cr_id
+
+weaver_quest = Quest:new(q_id, 
                          "WEAVER_QUEST_TITLE_SID", 
                          "WEAVER_SHORT_DESCRIPTION_SID", 
                          "WEAVER_QUEST_DESCRIPTION_SID", 
@@ -43,7 +45,7 @@ weaver_quest = Quest:new("weaver_" .. cr_id,
                          weaver_completion_condition_fn, 
                          weaver_completion_fn)
 
-local do_quest = Quest:check_probabilistic_quest(cr_id, 20)
+local do_quest = Quest:check_probabilistic_quest(cr_id, q_id, 20)
 
 if do_quest == true then
   do_quest = weaver_quest:execute()

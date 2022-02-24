@@ -23,7 +23,9 @@ local function tradesman_completion_fn()
   return true
 end
 
-trades_quest = Quest:new("tradesman_" .. cr_id, 
+local q_id = "tradesman_" .. cr_id
+
+trades_quest = Quest:new(q_id, 
                          "TRADESMAN_QUEST_TITLE_SID", 
                          "TRADESMAN_SHORT_DESCRIPTION_SID", 
                          "TRADESMAN_QUEST_DESCRIPTION_SID", 
@@ -34,7 +36,7 @@ trades_quest = Quest:new("tradesman_" .. cr_id,
                          tradesman_completion_condition_fn, 
                          tradesman_completion_fn)
 
-local do_quest = Quest:check_probabilistic_quest(cr_id, 15)
+local do_quest = Quest:check_probabilistic_quest(cr_id, q_id, 15)
 
 if do_quest == true then
   do_quest = trades_quest:execute()

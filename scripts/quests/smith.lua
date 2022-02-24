@@ -48,7 +48,9 @@ local function smith_completion_fn()
   return true
 end
 
-smith_quest = Quest:new("smith_" .. cr_id, 
+local q_id = "smith_" .. cr_id
+
+smith_quest = Quest:new(q_id, 
                         "SMITH_QUEST_TITLE_SID", 
                         "SMITH_SHORT_DESCRIPTION_SID", 
                         "SMITH_QUEST_DESCRIPTION_SID", 
@@ -59,7 +61,7 @@ smith_quest = Quest:new("smith_" .. cr_id,
                         smith_completion_condition_fn, 
                         smith_completion_fn)
 
-local do_quest = Quest:check_probabilistic_quest(cr_id, 50)
+local do_quest = Quest:check_probabilistic_quest(cr_id, q_id, 50)
 
 if do_quest == true then
   do_quest = smith_quest:execute()

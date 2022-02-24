@@ -26,7 +26,9 @@ local function scribe_completion_fn()
   return true
 end
 
-scribe_quest = Quest:new("scribe_" .. cr_id, 
+local q_id = "scribe_" .. cr_id
+
+scribe_quest = Quest:new(q_id, 
                          "SCRIBE_QUEST_TITLE_SID", 
                          "SCRIBE_SHORT_DESCRIPTION_SID", 
                          "SCRIBE_QUEST_DESCRIPTION_SID", 
@@ -37,7 +39,7 @@ scribe_quest = Quest:new("scribe_" .. cr_id,
                          scribe_completion_condition_fn, 
                          scribe_completion_fn)
 
-local do_quest = Quest:check_probabilistic_quest(cr_id, 20)
+local do_quest = Quest:check_probabilistic_quest(cr_id, q_id, 20)
 
 if do_quest == true then
   do_quest = scribe_quest:execute()

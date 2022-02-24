@@ -25,7 +25,9 @@ local function tanner_completion_fn()
   return true
 end
 
-tanner_quest = Quest:new("tanner_" .. cr_id, 
+local q_id = "tanner_" .. cr_id
+
+tanner_quest = Quest:new(q_id, 
                          "TANNER_QUEST_TITLE_SID", 
                          "TANNER_SHORT_DESCRIPTION_SID", 
                          "TANNER_QUEST_DESCRIPTION_SID", 
@@ -36,7 +38,7 @@ tanner_quest = Quest:new("tanner_" .. cr_id,
                          tanner_completion_condition_fn, 
                          tanner_completion_fn)
 
-local do_quest = Quest:check_probabilistic_quest(cr_id, 20)
+local do_quest = Quest:check_probabilistic_quest(cr_id, q_id, 20)
 
 if do_quest == true then
   do_quest = tanner_quest:execute()

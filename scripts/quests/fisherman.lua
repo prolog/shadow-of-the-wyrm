@@ -27,7 +27,9 @@ local function fisherman_completion_fn()
 return true
 end
 
-fisherman_quest = Quest:new("fisherman_" .. cr_id, 
+local q_id = "fisherman_" .. cr_id
+
+fisherman_quest = Quest:new(q_id, 
                             "FISHERMAN_QUEST_TITLE_SID", 
                             "FISHERMAN_SHORT_DESCRIPTION_SID", 
                             "FISHERMAN_QUEST_DESCRIPTION_SID", 
@@ -38,7 +40,7 @@ fisherman_quest = Quest:new("fisherman_" .. cr_id,
                             fisherman_completion_condition_fn, 
                             fisherman_completion_fn)
 
-local do_quest = Quest:check_probabilistic_quest(cr_id, 20)
+local do_quest = Quest:check_probabilistic_quest(cr_id, q_id, 20)
 
 if do_quest == true then
   do_quest = fisherman_quest:execute()
