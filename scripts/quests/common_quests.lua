@@ -33,6 +33,27 @@ local function thirsty_completion_fn()
   return true
 end
 
+-- New rowboat to visit family quest.
+local function rowboat_start_fn()
+  add_message_with_pause("ROWBOAT_QUEST_START_SID")
+  clear_and_add_message("ROWBOAT_QUEST_START2_SID")
+end
+
+local function rowboat_completion_condition_fn()
+  return player_has_item(ROWBOAT_ID)
+end
+
+local function rowboat_completion_fn()
+  remove_object_from_player(ROWBOAT_ID)
+  
+  add_message("ROWBOAT_QUEST_COMPLETE_SID")
+  add_object_to_player_tile(SPEED_POTION_ID)
+  add_object_to_player_tile(CURRENCY_ID, RNG_range(50, 60))
+  Quest:try_additional_quest_reward()
+
+  return true
+end
+
 -- CommonQuest module.  Used to quests that can be used by a variety of
 -- NPCs.
 CommonQuests = {}
@@ -50,7 +71,19 @@ local function get_quests(cr_id, sdesc_sid)
                                   thirsty_completion_condition_fn, 
                                   thirsty_completion_fn)
 
-  local quests = {{thirsty_quest, 10}}
+  local rowboat_quest = Quest:new("rowboat_" .. cr_id, 
+                                  "ROWBOAT_QUEST_TITLE_SID", 
+                                  sdesc_sid,
+                                  "ROWBOAT_QUEST_DESCRIPTION_SID", 
+                                  "ROWBOAT_QUEST_COMPLETE_SID", 
+                                  "ROWBOAT_QUEST_REMINDER_SID", 
+                                  truefn,
+                                  rowboat_start_fn, 
+                                  rowboat_completion_condition_fn, 
+                                  rowboat_completion_fn)
+
+  local quests = {{thirsty_quest, 10},
+                  {rowboat_quest, 10}}
   return quests
 end
 

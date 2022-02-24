@@ -1,3 +1,4 @@
+require('common_quests')
 require('constants')
 require('quest')
 
@@ -45,6 +46,10 @@ local do_quest = Quest:check_probabilistic_quest(cr_id, q_id, 20)
 
 if do_quest == true then
   do_quest = farmer_quest:execute()
+end
+
+if do_quest == false then
+  do_quest = CommonQuests:do_quests(cr_id)
 end
 
 if do_quest == false then
