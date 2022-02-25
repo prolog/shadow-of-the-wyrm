@@ -1,3 +1,5 @@
+require('constants')
+require('fn')
 require('quest')
 
 -- Common quests for various NPCs.
@@ -54,6 +56,62 @@ local function rowboat_completion_fn()
   return true
 end
 
+-- Fish for feast quest
+local function fishfeast_start_fn()
+  add_message_with_pause("FISHFEAST_QUEST_START_SID")
+  add_message_with_pause("FISHFEAST_QUEST_START2_SID")
+  clear_and_add_message("FISHFEAST_QUEST_START3_SID")
+end
+
+local function fishfeast_completion_condition_fn()
+  return (player_has_item(SALMON_ID) and player_has_item(TROUT_ID))
+end
+
+local function fishfeast_completion_fn()
+  remove_object_from_player(SALMON_ID)
+  remove_object_from_player(TROUT_ID)
+  
+  add_message("FISHFEAST_QUEST_COMPLETE_SID")
+  add_object_to_player_tile(SILVERWEED_ID, RNG_range(2,4))
+  
+  Quest:try_additional_quest_reward()
+  
+  return true
+end
+
+-- Escort to a village from when they were young...
+local function villagevisit_start_fn()
+  add_message_with_pause("VILLAGEVISIT_QUEST_START_SID")
+  add_message_with_pause("VILLAGEVISIT_QUEST_START2_SID")
+  clear_and_add_message("VILLAGEVISIT_QUEST_START3_SID")
+
+  -- Pick a village
+  local v_y, v_x = get_random_village()
+  
+  -- Set the coordinates on the speaker
+  local cr_id = args[SPEAKING_CREATURE_ID]
+  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION", make_coordinate_key(v_y, v_x))
+  
+  -- Follow the player
+  order_follow(args[SPEAKING_CREATURE_ID], PLAYER_ID)
+end
+
+local function villagevisit_completion_condition_fn()
+  return false
+end
+
+local function villagevisit_completion_fn()
+  local objs = {ENCHANTING_SCROLL_ID, GAIN_ATTRIBUTES_POTION_ID}
+  local obj = objs[RNG_range(1 #objs)]
+  
+  add_object_to_player_tile(CURRENCY_ID, RNG_range(500, 600))
+  add_object_to_player_tile(obj)
+
+  clear_and_add_message("VISITVILLAGE_QUEST_COMPLETE_SID)
+
+  return true
+end
+
 -- CommonQuest module.  Used to quests that can be used by a variety of
 -- NPCs.
 CommonQuests = {}
@@ -82,8 +140,20 @@ local function get_quests(cr_id, sdesc_sid)
                                   rowboat_completion_condition_fn, 
                                   rowboat_completion_fn)
 
+  local fishfeast_quest = Quest:new("fishfeast_" .. cr_id, 
+                                    "FISHFEAST_QUEST_TITLE_SID", 
+                                    sdesc_sid,
+                                    "FISHFEAST_QUEST_DESCRIPTION_SID", 
+                                    "FISHFEAST_QUEST_COMPLETE_SID", 
+                                    "FISHFEAST_QUEST_REMINDER_SID", 
+                                    truefn,
+                                    fishfeast_start_fn, 
+                                    fishfeast_completion_condition_fn, 
+                                    fishfeast_completion_fn)
+				    
   local quests = {{thirsty_quest, 10},
-                  {rowboat_quest, 10}}
+                  {rowboat_quest, 10},
+		  {fishfeast_quest, 10}}
   return quests
 end
 

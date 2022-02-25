@@ -437,6 +437,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "count_creatures_with_race", count_creatures_with_race);
   lua_register(L, "get_time_of_day", get_time_of_day);
   lua_register(L, "update_creatures", update_creatures);
+  lua_register(L, "get_random_village", get_random_village);
 }
 
 // Lua API helper functions
@@ -9121,4 +9122,39 @@ int update_creatures(lua_State* ls)
   MapUtils::update_creatures(map);
 
   return 0;
+}
+
+int get_random_village(lua_State* ls)
+{
+  int y = -1;
+  int x = -1;
+
+  if (lua_gettop(ls) == 0)
+  {
+    Game& game = Game::instance();
+    MapPtr world_map = game.get_current_world()->get_world(game.get_map_registry_ref());
+
+    if (world_map != nullptr)
+    {
+      vector<string> coords = String::create_string_vector_from_csv_string(world_map->get_property(MapProperties::MAP_PROPERTIES_VILLAGE_COORDINATES));
+
+      if (!coords.empty())
+      {
+        string coord_s = coords.at(RNG::range(0, coords.size() - 1));
+        Coordinate c = MapUtils::convert_map_key_to_coordinate(coord_s);
+
+        y = c.first;
+        x = c.second;
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_random_village");
+  }
+
+  lua_pushinteger(ls, y);
+  lua_pushinteger(ls, x);
+
+  return 2;
 }

@@ -11,6 +11,7 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "MapProperties.hpp"
+#include "MapUtils.hpp"
 #include "Naming.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
@@ -91,6 +92,7 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   populate_race_information();
   set_village_races(result_map);
   generate_village_surroundings(result_map);    
+  set_village_coordinates(result_map);
 
   return result_map;
 }
@@ -754,6 +756,21 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
         }
       }    
     }    
+  }
+}
+
+void WorldGenerator::set_village_coordinates(MapPtr map)
+{
+  if (map != nullptr && !village_coordinates.empty())
+  {
+    vector<string> s_coords;
+
+    for (const Coordinate& vc : village_coordinates)
+    {
+      s_coords.push_back(MapUtils::convert_coordinate_to_map_key(vc));
+    }
+
+    map->set_property(MapProperties::MAP_PROPERTIES_VILLAGE_COORDINATES, String::create_csv_from_string_vector(s_coords));
   }
 }
 
