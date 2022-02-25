@@ -1059,6 +1059,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\strings\include\DeathSourceTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\DeityTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\DifficultyTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\DirectionLocationTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\DungeonFeatureTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\EffectTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\EntranceTextKeys.hpp" />
@@ -2211,6 +2212,7 @@ mkdir $(OutDir)logs
     </ClCompile>
     <ClCompile Include="engine\strings\source\ArcanaTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\DeathSourceTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\DirectionLocationTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\InscriptionTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MembershipTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MusicTextKeys.cpp" />

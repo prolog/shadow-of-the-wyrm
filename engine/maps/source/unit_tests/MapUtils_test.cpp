@@ -400,3 +400,29 @@ TEST(SW_Engine_Maps_MapUtils, set_coastline_generator_dirs)
   EXPECT_EQ(std::to_string(true), generator.get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST));
   EXPECT_EQ(std::to_string(true), generator.get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST));
 }
+
+TEST(SW_Engine_Maps_MapUtils, get_coordinate_location_sid)
+{
+  Dimensions d(100, 100);
+  vector<pair<Coordinate, string>> details = { {{0,0}, DirectionLocationTextKeys::DIRECTION_LOCATION_NORTH_WEST},
+                                               {{28, 28}, DirectionLocationTextKeys::DIRECTION_LOCATION_NORTH_WEST},
+                                               {{0, 50}, DirectionLocationTextKeys::DIRECTION_LOCATION_NORTH},
+                                               {{28, 41}, DirectionLocationTextKeys::DIRECTION_LOCATION_NORTH},
+                                               {{0, 99}, DirectionLocationTextKeys::DIRECTION_LOCATION_NORTH_EAST},
+                                               {{24, 83}, DirectionLocationTextKeys::DIRECTION_LOCATION_NORTH_EAST},
+                                               {{50, 0}, DirectionLocationTextKeys::DIRECTION_LOCATION_WEST},
+                                               {{60, 14}, DirectionLocationTextKeys::DIRECTION_LOCATION_WEST},
+                                               {{50, 50}, DirectionLocationTextKeys::DIRECTION_LOCATION_MIDDLE},
+                                               {{60, 43}, DirectionLocationTextKeys::DIRECTION_LOCATION_MIDDLE},
+                                               {{50, 99}, DirectionLocationTextKeys::DIRECTION_LOCATION_EAST},
+                                               {{66, 86}, DirectionLocationTextKeys::DIRECTION_LOCATION_EAST},
+                                               {{99, 0}, DirectionLocationTextKeys::DIRECTION_LOCATION_SOUTH_WEST},
+                                               {{73, 17}, DirectionLocationTextKeys::DIRECTION_LOCATION_SOUTH_WEST},
+                                               {{99,99}, DirectionLocationTextKeys::DIRECTION_LOCATION_SOUTH_EAST},
+                                               {{88,91}, DirectionLocationTextKeys::DIRECTION_LOCATION_SOUTH_EAST}};
+
+  for (const auto& d_pair : details)
+  {
+    EXPECT_EQ(d_pair.second, MapUtils::get_coordinate_location_sid(d_pair.first, d));
+  }
+}
