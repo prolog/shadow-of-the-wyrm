@@ -439,6 +439,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_time_of_day", get_time_of_day);
   lua_register(L, "update_creatures", update_creatures);
   lua_register(L, "get_random_village", get_random_village);
+  lua_register(L, "tokenize", tokenize);
 }
 
 // Lua API helper functions
@@ -9205,4 +9206,42 @@ int get_random_village(lua_State* ls)
   lua_pushstring(ls, map_location_sid.c_str());
 
   return 4;
+}
+
+int tokenize(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string str = lua_tostring(ls, 1);
+    string delim = lua_tostring(ls, 2);
+
+    bool keep_tokens = false;
+
+    if (num_args == 3 && lua_isboolean(ls, 3))
+    {
+      keep_tokens = lua_toboolean(ls, 3);
+    }
+
+    vector<string> tokens = String::tokenize(str, delim, keep_tokens);
+    size_t t_sz = tokens.size();
+
+    // Create an array with n-array elements and 0 non-array elements.
+    lua_createtable(ls, static_cast<int>(t_sz), 0);
+
+    for (uint i = 0; i < t_sz; i++)
+    {
+      string cur_tok = tokens.at(i);
+
+      lua_pushstring(ls, cur_tok.c_str());
+      lua_rawseti(ls, -2, i + 1);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to tokenize");
+  }
+
+  return 1;
 }

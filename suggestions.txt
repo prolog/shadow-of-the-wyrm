@@ -1,4 +1,7 @@
 Me:
+- ensure no-follow after escort quest complete
+- update the other NPCs to use get_creature_speech_text_sid()
+- went down a well in a far off village: crash
 - ASSET RELEASE
 - fisherman quest
 - more town NPCs/sprites

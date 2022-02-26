@@ -53,5 +53,5 @@ if do_quest == false then
 end
 
 if do_quest == false then
-  clear_and_add_message("FARMER_SPEECH_TEXT_SID")
+  clear_and_add_message(get_creature_speech_text_sid(cr_id))
 end

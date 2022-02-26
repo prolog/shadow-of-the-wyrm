@@ -90,28 +90,35 @@ local function villagevisit_start_fn()
   clear_and_add_message("VILLAGEVISIT_QUEST_START3_SID")
 
   -- Follow the player
+  set_leader(cr_id, PLAYER_ID)
   order_follow(cr_id, PLAYER_ID)
 end
 
 local function villagevisit_completion_condition_fn()
-  -- JCD FIXME: Check to see if the player's last location on the world map
-  -- matches that of the village we're supposed to visit.
+  local cr_id = args[SPEAKING_CREATURE_ID]
+  local pc_y, pc_x = get_player_world_map_coords()
+  local coords, name, location = Quest:get_escort_details(cr_id)
 
-  return false
+  coords = tokenize(coords, "-")
+  local cr_y = tonumber(coords[1])
+  local cr_x = tonumber(coords[2])
+
+  return (pc_y == cr_y and pc_x == cr_x)
 end
 
 local function villagevisit_completion_fn()
   local objs = {ENCHANTING_SCROLL_ID, GAIN_ATTRIBUTES_POTION_ID}
-  local obj = objs[RNG_range(1, #objs)]
   local cr_id = args[SPEAKING_CREATURE_ID]
 
   Quest:remove_escort_details(cr_id)
   order_follow(cr_id, cr_id)
 
-  add_object_to_player_tile(CURRENCY_ID, RNG_range(500, 600))
+  local obj = objs[RNG_range(1, #objs)]
   add_object_to_player_tile(obj)
+  add_object_to_player_tile(CURRENCY_ID, RNG_range(500, 600))
 
-  clear_and_add_message("VISITVILLAGE_QUEST_COMPLETE_SID")
+  clear_and_add_message("VILLAGEVISIT_QUEST_COMPLETE_SID")
+  set_creature_speech_text_sid(cr_id, "VILLAGEVISIT_SPEECH_RETURN_SID")
 
   return true
 end
@@ -155,12 +162,19 @@ local function get_quests(cr_id, sdesc_sid)
                                     fishfeast_completion_condition_fn, 
                                     fishfeast_completion_fn)
 
-  -- Pick a village
-  -- JCD FIXME: This fires EVERY TIME!
-  local v_y, v_x, name, location
-  v_y, v_x, name, location = get_random_village()
-  
-  Quest:set_escort_details(cr_id, v_y, v_x, name, location)
+  -- Get the village details
+  local c, name, location = Quest:get_escort_details(cr_id)
+  local v_y = -1
+  local v_x = -1
+
+  if #c > 0 and #name > 0 and #location > 0 then
+    local coords = tokenize(c, "-")
+    v_y = coords[1]
+    v_x = coords[2]
+  else
+    v_y, v_x, name, location = get_random_village()
+    Quest:set_escort_details(cr_id, v_y, v_x, name, location)
+  end
   
   local villagevisit_quest = Quest:new("villagevisit_" .. cr_id, 
                                        "VILLAGEVISIT_QUEST_TITLE_SID", 
@@ -176,7 +190,7 @@ local function get_quests(cr_id, sdesc_sid)
   local quests = {{thirsty_quest, 5},
                   {rowboat_quest, 5},
 		  {fishfeast_quest, 5},
-                  {villagevisit_quest, 100}}
+                  {villagevisit_quest, 5}}
   return quests
 end
 
