@@ -81,33 +81,37 @@ end
 
 -- Escort to a village from when they were young...
 local function villagevisit_start_fn()
-  add_message_with_pause("VILLAGEVISIT_QUEST_START_SID")
+  local cr_id = args[SPEAKING_CREATURE_ID]
+  local v_name = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME")
+  local v_loc = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION")
+  
+  add_message_with_pause("VILLAGEVISIT_QUEST_START_SID", {v_name, get_sid(v_loc)})
   add_message_with_pause("VILLAGEVISIT_QUEST_START2_SID")
   clear_and_add_message("VILLAGEVISIT_QUEST_START3_SID")
 
-  -- Pick a village
-  local v_y, v_x = get_random_village()
-  
-  -- Set the coordinates on the speaker
-  local cr_id = args[SPEAKING_CREATURE_ID]
-  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION", make_coordinate_key(v_y, v_x))
-  
   -- Follow the player
-  order_follow(args[SPEAKING_CREATURE_ID], PLAYER_ID)
+  order_follow(cr_id, PLAYER_ID)
 end
 
 local function villagevisit_completion_condition_fn()
+  -- JCD FIXME: Check to see if the player's last location on the world map
+  -- matches that of the village we're supposed to visit.
+
   return false
 end
 
 local function villagevisit_completion_fn()
   local objs = {ENCHANTING_SCROLL_ID, GAIN_ATTRIBUTES_POTION_ID}
-  local obj = objs[RNG_range(1 #objs)]
-  
+  local obj = objs[RNG_range(1, #objs)]
+  local cr_id = args[SPEAKING_CREATURE_ID]
+
+  Quest:remove_escort_details(cr_id)
+  order_follow(cr_id, cr_id)
+
   add_object_to_player_tile(CURRENCY_ID, RNG_range(500, 600))
   add_object_to_player_tile(obj)
 
-  clear_and_add_message("VISITVILLAGE_QUEST_COMPLETE_SID)
+  clear_and_add_message("VISITVILLAGE_QUEST_COMPLETE_SID")
 
   return true
 end
@@ -150,10 +154,29 @@ local function get_quests(cr_id, sdesc_sid)
                                     fishfeast_start_fn, 
                                     fishfeast_completion_condition_fn, 
                                     fishfeast_completion_fn)
-				    
-  local quests = {{thirsty_quest, 10},
-                  {rowboat_quest, 10},
-		  {fishfeast_quest, 10}}
+
+  -- Pick a village
+  -- JCD FIXME: This fires EVERY TIME!
+  local v_y, v_x, name, location
+  v_y, v_x, name, location = get_random_village()
+  
+  Quest:set_escort_details(cr_id, v_y, v_x, name, location)
+  
+  local villagevisit_quest = Quest:new("villagevisit_" .. cr_id, 
+                                       "VILLAGEVISIT_QUEST_TITLE_SID", 
+                                       sdesc_sid,
+                                       {"VILLAGEVISIT_QUEST_DESCRIPTION_SID", fn.array_to_csv({name, location})}, 
+                                       "VILLAGEVISIT_QUEST_COMPLETE_SID", 
+                                       {"VILLAGEVISIT_QUEST_REMINDER_SID", fn.array_to_csv({name, location})}, 
+                                       truefn,
+                                       villagevisit_start_fn, 
+                                       villagevisit_completion_condition_fn, 
+                                       villagevisit_completion_fn)
+
+  local quests = {{thirsty_quest, 5},
+                  {rowboat_quest, 5},
+		  {fishfeast_quest, 5},
+                  {villagevisit_quest, 100}}
   return quests
 end
 

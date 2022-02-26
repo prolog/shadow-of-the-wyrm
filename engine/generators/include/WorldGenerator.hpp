@@ -25,11 +25,12 @@ class WorldGenerator : public SOTW::Generator
     virtual MapPtr generate() override;
     virtual MapPtr generate(const Dimensions& dim) override;
 
+    virtual void   set_village_coordinates(MapPtr map);
+
   protected:
     virtual MapType get_map_type() const override;
     virtual MapPtr generate_random_islands(MapPtr map);
     virtual void   generate_village_surroundings(MapPtr map);
-    virtual void   set_village_coordinates(MapPtr map);
 
     virtual void populate_terrain_cell_maps(const Dimensions& dimensions, CellMap& field_cell_map, CellMap& forest_cell_map, CellMap& hills_cell_map, CellMap& mountains_cell_map, CellMap& marsh_cell_map, CellMap& scrub_cell_map, CellMap& desert_cell_map);
     

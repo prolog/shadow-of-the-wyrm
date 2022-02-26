@@ -4596,7 +4596,7 @@
 				<Damage>
 					<NumDice>10</NumDice>
 					<NumSides>20</NumSides>
-					<Modifier>50</Modifier>
+					<Modifier>200</Modifier>
 					<Type>1</Type>
 					<Slays>
 						<Slay>*</Slay>

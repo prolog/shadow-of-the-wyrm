@@ -61,6 +61,8 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - Long spears are now range 3.
 
+- Shard of Starlight deals more damage.
+
 - New name and settlement name combinations.
 
 - New creatures: thatcher.

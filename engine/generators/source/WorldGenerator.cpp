@@ -92,7 +92,6 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   populate_race_information();
   set_village_races(result_map);
   generate_village_surroundings(result_map);    
-  set_village_coordinates(result_map);
 
   return result_map;
 }
@@ -761,16 +760,28 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
 
 void WorldGenerator::set_village_coordinates(MapPtr map)
 {
-  if (map != nullptr && !village_coordinates.empty())
+  if (map != nullptr)
   {
+    const TilesContainer& tiles = map->get_tiles();
     vector<string> s_coords;
 
-    for (const Coordinate& vc : village_coordinates)
+    for (const auto& t_pair : tiles)
     {
-      s_coords.push_back(MapUtils::convert_coordinate_to_map_key(vc));
+      if (t_pair.second && t_pair.second->get_tile_type() == TileType::TILE_TYPE_VILLAGE)
+      {
+        VillageTilePtr vt = dynamic_pointer_cast<VillageTile>(t_pair.second);
+
+        if (vt != nullptr && !vt->get_name().empty())
+        {
+          s_coords.push_back(t_pair.first);
+        }
+      }
     }
 
-    map->set_property(MapProperties::MAP_PROPERTIES_VILLAGE_COORDINATES, String::create_csv_from_string_vector(s_coords));
+    if (!s_coords.empty())
+    {
+      map->set_property(MapProperties::MAP_PROPERTIES_VILLAGE_COORDINATES, String::create_csv_from_string_vector(s_coords));
+    }
   }
 }
 

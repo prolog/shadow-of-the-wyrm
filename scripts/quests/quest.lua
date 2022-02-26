@@ -15,6 +15,27 @@ end
 function emptyfn()
 end
 
+function Quest:get_escort_details(cr_id)
+  local coords = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION")
+  local name = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME")
+  local location = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION")
+
+  return coords, name, location
+end
+
+function Quest:set_escort_details(cr_id, v_y, v_x, name, location)
+  -- Set the coordinates on the speaker
+  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION", fn.make_coordinate_key(v_y, v_x))
+  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME", name)
+  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION", location)
+end
+
+function Quest:remove_escort_details(cr_id)
+  remove_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION")
+  remove_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME")
+  remove_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION")
+end
+
 -- Must be overridden on the table
 function Quest:quest_completion_condition_fn()
   return false

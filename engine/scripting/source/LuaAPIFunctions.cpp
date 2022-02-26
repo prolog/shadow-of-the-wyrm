@@ -8794,7 +8794,15 @@ int order_follow(lua_State* ls)
     if (creature != nullptr)
     {
       OrderAction oa;
-      oa.set_order(creature, DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID, cr_to_foll_id);
+
+      if (cr_id != cr_to_foll_id)
+      {
+        oa.set_order(creature, DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID, cr_to_foll_id);
+      }
+      else
+      {
+        oa.remove_orders(creature);
+      }
     }
   }
   else
@@ -9128,6 +9136,8 @@ int get_random_village(lua_State* ls)
 {
   int y = -1;
   int x = -1;
+  string village_name;
+  string map_location_sid;
 
   if (lua_gettop(ls) == 0)
   {
@@ -9145,6 +9155,13 @@ int get_random_village(lua_State* ls)
 
         y = c.first;
         x = c.second;
+
+        TilePtr tile = world_map->at(y, x);
+        if (tile != nullptr)
+        {
+          village_name = tile->get_additional_property(TileProperties::TILE_PROPERTY_NAME);
+          map_location_sid = MapUtils::get_coordinate_location_sid(c, world_map->size());
+        }
       }
     }
   }
@@ -9155,6 +9172,8 @@ int get_random_village(lua_State* ls)
 
   lua_pushinteger(ls, y);
   lua_pushinteger(ls, x);
+  lua_pushstring(ls, village_name.c_str());
+  lua_pushstring(ls, map_location_sid.c_str());
 
-  return 2;
+  return 4;
 }

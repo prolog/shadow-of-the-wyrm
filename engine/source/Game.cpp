@@ -411,6 +411,9 @@ void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
   string world_map_areas = settings.get_setting(Setting::CONFIGURATION_FILE_WORLD_MAP_AREAS);
   CustomAreaGenerator cag(world_map_areas);
   cag.overlay_custom_areas(current_world);
+  
+  WorldGenerator wg;
+  wg.set_village_coordinates(current_world);
 
   MapPtr world_map = get_map_registry_ref().get_map(MapID::MAP_ID_WORLD_MAP);
   if (world_map != nullptr)

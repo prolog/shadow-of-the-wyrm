@@ -14,11 +14,11 @@ class OrderAction : public IActionManager
     ActionCostValue order_at_ease(CreaturePtr creature);
 
     void set_order(CreaturePtr creature, const std::string& order_property, const std::string& value);
+    void remove_orders(CreaturePtr creature);
 
   protected:
     bool check_for_followers(CreaturePtr creature, IMessageManager& manager);
 
-    void remove_orders(CreaturePtr creature);
 
     ActionCostValue order_followers(CreaturePtr creature, IMessageManager& manager);
 };
