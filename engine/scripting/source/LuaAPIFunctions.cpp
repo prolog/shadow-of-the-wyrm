@@ -331,6 +331,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "calendar_add_years", calendar_add_years);
   lua_register(L, "add_kill_to_creature_mortuary", add_kill_to_creature_mortuary);
   lua_register(L, "report_coords", report_coords);
+  lua_register(L, "get_player_world_map_coords", get_player_world_map_coords);
   lua_register(L, "cast_spell", cast_spell);
   lua_register(L, "bless_equipment", bless_equipment);
   lua_register(L, "curse_equipment", curse_equipment);
@@ -5606,6 +5607,34 @@ int report_coords(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_player_world_map_coords(lua_State* ls)
+{
+  int y = -1;
+  int x = -1;
+
+  if (lua_gettop(ls) == 0)
+  {
+    Game& game = Game::instance();
+    MapPtr world_map = game.get_current_world()->get_world(game.get_map_registry_ref());
+
+    if (world_map != nullptr)
+    {
+      Coordinate c = world_map->get_location(CreatureID::CREATURE_ID_PLAYER);
+      y = c.first;
+      x = c.second;
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_player_world_map_coords");
+  }
+
+  lua_pushinteger(ls, y);
+  lua_pushinteger(ls, x);
+
+  return 2;
 }
 
 int cast_spell(lua_State* ls)
