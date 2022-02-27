@@ -111,7 +111,7 @@ local function villagevisit_completion_fn()
   local cr_id = args[SPEAKING_CREATURE_ID]
 
   Quest:remove_escort_details(cr_id)
-  order_follow(cr_id, cr_id)
+  rmeove_leader(cr_id)
 
   local obj = objs[RNG_range(1, #objs)]
   add_object_to_player_tile(obj)
@@ -119,6 +119,48 @@ local function villagevisit_completion_fn()
 
   clear_and_add_message("VILLAGEVISIT_QUEST_COMPLETE_SID")
   set_creature_speech_text_sid(cr_id, "VILLAGEVISIT_SPEECH_RETURN_SID")
+
+  return true
+end
+
+-- Bored, time for an adventure!  Somewhere underground!
+local function adventure_start_fn()
+  local cr_id = args[SPEAKING_CREATURE_ID]
+  
+  add_message_with_pause("ADVENTURE_QUEST_START_SID")
+  add_message_with_pause("ADVENTURE_QUEST_START2_SID")
+  clear_and_add_message("ADVENTURE_QUEST_START3_SID")
+
+  add_object_to_creature(get_current_map_id(), cr_id, SHORT_SWORD_ID)
+  add_object_to_creature(get_current_map_id(), cr_id, CHAIN_SCRAPS_ID)
+
+  -- Follow the player
+  set_leader(cr_id, PLAYER_ID)
+  order_follow(cr_id, PLAYER_ID)
+end
+
+local function adventure_completion_condition_fn()
+  local y, x = get_creature_yx(args[SPEAKING_CREATURE_ID])
+  local tile_table = map_get_tile(get_current_map_id(), y, x)
+  local map_type = tile_table["map_type"]
+
+  return map_type == CMAP_TYPE_UNDERWORLD
+end
+
+local function adventure_completion_fn()
+  local objs = {SPEED_POTION_ID, SHADOW_AMULET_ID, DRAGON_BREATH_WAND_ID, LIGHTNING_WAND_ID, TELEPORT_WAND_ID, FLAME_WAND_ID, IDENTIFY_SCROLL_ID, WARPING_SCROLL_ID, ENCHANTING_SCROLL_ID, GAIN_ATTRIBUTES_POTION_ID}
+  local apples = {GOLDEN_APPLE_ID, SILVER_APPLE_ID}
+  local cr_id = args[SPEAKING_CREATURE_ID]
+
+  remove_leader(cr_id)
+
+  local obj = objs[RNG_range(1, #objs)]
+  local apple = apples[RNG_range(1, #apples)]
+  add_object_to_player_tile(obj)
+  add_object_to_player_tile(apple)
+
+  clear_and_add_message("ADVENTURE_QUEST_COMPLETE_SID")
+  set_creature_speech_text_sid(cr_id, "ADVENTURE_SPEECH_RETURN_SID")
 
   return true
 end
@@ -187,10 +229,22 @@ local function get_quests(cr_id, sdesc_sid)
                                        villagevisit_completion_condition_fn, 
                                        villagevisit_completion_fn)
 
-  local quests = {{thirsty_quest, 5},
-                  {rowboat_quest, 5},
-		  {fishfeast_quest, 5},
-                  {villagevisit_quest, 5}}
+  local adventure_quest = Quest:new("adventure_" .. cr_id, 
+                                    "ADVENTURE_QUEST_TITLE_SID", 
+                                    sdesc_sid,
+                                    {"ADVENTURE_QUEST_DESCRIPTION_SID", fn.array_to_csv({name, location})}, 
+                                    "ADVENTURE_QUEST_COMPLETE_SID", 
+                                    {"ADVENTURE_QUEST_REMINDER_SID", fn.array_to_csv({name, location})}, 
+                                    truefn,
+                                    adventure_start_fn, 
+                                    adventure_completion_condition_fn, 
+                                    adventure_completion_fn)
+
+  local quests = {{thirsty_quest, 3},
+                  {rowboat_quest, 3},
+		  {fishfeast_quest, 3},
+                  {villagevisit_quest, 3},
+		  {adventure_quest, 3}}
   return quests
 end
 

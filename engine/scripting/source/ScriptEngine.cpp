@@ -110,6 +110,11 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CITEM_TYPE_CURRENCY);
   lua_exportConst(ls, CITEM_TYPE_TOOL);
 
+  lua_exportConst(ls, CTILE_SUPER_TYPE_UNDEFINED);
+  lua_exportConst(ls, CTILE_SUPER_TYPE_GROUND);
+  lua_exportConst(ls, CTILE_SUPER_TYPE_WATER);
+  lua_exportConst(ls, CTILE_SUPER_TYPE_AIR);
+
   lua_exportConst(ls, CTILE_TYPE_UNDEFINED);
   lua_exportConst(ls, CTILE_TYPE_FIRST);
   lua_exportConst(ls, CTILE_TYPE_FIELD);
@@ -289,6 +294,12 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CTIME_OF_DAY_NIGHT);
 
   lua_exportConst(ls, CACTIVE_THREAT_RATING);
+
+  lua_exportConst(ls, CMAP_TYPE_WORLD);
+  lua_exportConst(ls, CMAP_TYPE_OVERWORLD);
+  lua_exportConst(ls, CMAP_TYPE_UNDERWORLD);
+  lua_exportConst(ls, CMAP_TYPE_UNDERWATER);
+  lua_exportConst(ls, CMAP_TYPE_COSMOS);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)

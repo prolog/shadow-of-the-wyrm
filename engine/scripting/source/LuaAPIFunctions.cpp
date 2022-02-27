@@ -419,6 +419,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_npc_level_message", add_npc_level_message);
   lua_register(L, "set_leader", set_leader);
   lua_register(L, "get_leader_id", get_leader_id);
+  lua_register(L, "remove_leader", remove_leader);
   lua_register(L, "get_name", get_name);
   lua_register(L, "set_hirelings_hired", set_hirelings_hired);
   lua_register(L, "get_hirelings_hired", get_hirelings_hired);
@@ -4106,8 +4107,8 @@ int map_get_tile(lua_State* ls)
 {
   if (lua_gettop(ls) == 3 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
   {
-    // Create a table with 0 array elements and 1 keyed elements.
-    lua_createtable(ls, 0, 1);
+    // Create a table with 0 array elements and 3 keyed elements.
+    lua_createtable(ls, 0, 3);
 
     string map_id = lua_tostring(ls, 1);
     int row = lua_tointeger(ls, 2);
@@ -4125,6 +4126,8 @@ int map_get_tile(lua_State* ls)
       if (tile != nullptr)
       {
         LuaUtils::set_field(ls, "tile_type", static_cast<int>(tile->get_tile_type()));
+        LuaUtils::set_field(ls, "tile_super_type", static_cast<int>(tile->get_tile_super_type()));
+        LuaUtils::set_field(ls, "map_type", static_cast<int>(map->get_map_type()));
       }
     }
 
@@ -8621,6 +8624,7 @@ int set_leader(lua_State* ls)
   
   return 0;
 }
+
 int get_leader_id(lua_State* ls)
 {
   string leader_id;
@@ -8641,6 +8645,25 @@ int get_leader_id(lua_State* ls)
 
   lua_pushstring(ls, leader_id.c_str());
   return 1;
+}
+
+int remove_leader(lua_State* ls)
+{
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  { 
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      creature->remove_leader();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to remove_leader");
+  }
+
+  return 0;
 }
 
 int get_name(lua_State* ls)

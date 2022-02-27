@@ -1133,6 +1133,16 @@ void Creature::set_leader_and_follow(const std::string& leader_id)
   }
 }
 
+void Creature::remove_leader()
+{
+  remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+
+  if (decision_strategy != nullptr)
+  {
+    decision_strategy->remove_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID);
+  }
+}
+
 bool Creature::hostile_to(const string& creature_id)
 {
   DecisionStrategy* strategy = get_decision_strategy();
