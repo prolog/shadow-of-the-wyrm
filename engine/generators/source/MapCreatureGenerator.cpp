@@ -224,8 +224,14 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
       else
       {
         // Creature was generated, but we can't place it - decrement
-        // the creature count so that uniques aren't suppressed.
-        c_it->second.decr_current();
+        // the creature count so that uniques aren't suppressed.  Only
+        // do this if we're not dealing with an ancient beast, which
+        // can be generated in any quantity.
+        if (c_it != cgvm.end())
+        {
+          c_it->second.decr_current();
+        }
+
         unsuccessful_attempts++;
       }
     }
