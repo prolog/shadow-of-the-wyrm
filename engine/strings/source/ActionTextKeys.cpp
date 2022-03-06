@@ -679,6 +679,7 @@ const string ActionTextKeys::ACTION_DIG_STONE_DUST             = "ACTION_DIG_STO
 const string ActionTextKeys::ACTION_DIG_CANNOT_DIG             = "ACTION_DIG_CANNOT_DIG";
 const string ActionTextKeys::ACTION_DIG_CANNOT_DIG_ON_SUPER_TYPE = "ACTION_DIG_CANNOT_DIG_ON_SUPER_TYPE";
 const string ActionTextKeys::ACTION_DIG_TOO_HARD               = "ACTION_DIG_TOO_HARD";
+const string ActionTextKeys::ACTION_DIG_CEILING                = "ACTION_DIG_CEILING";
 const string ActionTextKeys::ACTION_RESTING                    = "ACTION_RESTING";
 const string ActionTextKeys::ACTION_HANDLE_DEFAULT             = "ACTION_HANDLE_DEFAULT";
 const string ActionTextKeys::ACTION_HANDLE_ALTAR               = "ACTION_HANDLE_ALTAR";

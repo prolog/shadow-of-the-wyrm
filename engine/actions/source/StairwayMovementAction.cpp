@@ -1,12 +1,14 @@
-#include "Game.hpp"
+#include "ActionTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "DigAction.hpp"
+#include "Game.hpp"
 #include "ItemProperties.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MovementTextKeys.hpp"
+#include "RockTile.hpp"
 #include "StairwayMovementAction.hpp"
 
 using namespace std;
@@ -34,7 +36,15 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
     TilePtr current_tile = MapUtils::get_tile_for_creature(current_map, creature);
     TileExitMap& tile_exit_map = current_tile->get_tile_exit_map_ref();
     TileExitMap::iterator t_it = tile_exit_map.find(Direction::DIRECTION_UP);
-      
+    ItemPtr wielded = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
+    string dig_hardness;
+    RockTile rock_tile;
+
+    if (wielded != nullptr)
+    {
+      dig_hardness = wielded->get_additional_property(ItemProperties::ITEM_PROPERTIES_DIG_HARDNESS);
+    }
+
     MapExitPtr map_exit;
       
     if (t_it != tile_exit_map.end())
@@ -52,6 +62,23 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
       else
       {
         ascend_success = ma->generate_and_move_to_new_map(creature, current_map, map_exit, current_tile, map_exit->get_terrain_type(), current_tile->get_tile_subtype(), map_exit->get_properties(), ExitMovementType::EXIT_MOVEMENT_ASCEND);
+      }
+    }
+    else if (current_map->get_map_type() == MapType::MAP_TYPE_UNDERWORLD &&
+             !dig_hardness.empty())
+    {
+      if (String::to_int(dig_hardness) >= rock_tile.get_hardness())
+      {
+        // Dig into the ceiling, scattering stones everywhere.
+        DigAction da;
+        ascend_success = da.dig_ceiling(creature, current_map);
+      }
+      else
+      {
+        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+        string too_hard = StringTable::get(ActionTextKeys::ACTION_DIG_TOO_HARD);
+        manager.add_new_message(too_hard);
+        manager.send();
       }
     }
     else
