@@ -17,5 +17,6 @@ class HidingCalculator
     static const int HIDING_DIVISOR_AFTER_ATTACKING;
     static const int MAX_DISTANCE_FOR_PENALTY;
     static const int MAX_PCT_CHANCE_HIDE_CREATURES_PRESENT;
+    static const int SMALL_CREATURE_PIT_BONUS;
 };
 

@@ -63,6 +63,12 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - Shard of Starlight deals more damage.
 
+- If you're wielding a pick axe or mattock, you can knock stones loose from
+  the ceiling when underground.
+
+- When a particular tile has been dug, small or tiny creatures get a bonus to 
+  their hiding checks (RelicWraith).
+
 - New name and settlement name combinations.
 
 - New creatures: thatcher.
