@@ -589,11 +589,11 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     AgeInfo age_info = sel_race->get_age_info();
     int min_select_age = age_info.get_starting_age().get_min();
     int max_select_age = age_info.get_maximum_age().get_min() - 1;
-    AgeSelectionScreen ass(display, creature_synopsis, min_select_age, max_select_age);
     bool valid_age = false;
 
     while (!valid_age)
     {
+      AgeSelectionScreen ass(display, creature_synopsis, min_select_age, max_select_age);
       age = String::to_int(ass.display());
       valid_age = selected_race->is_valid_starting_age(age);
     }
