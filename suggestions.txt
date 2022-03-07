@@ -1,6 +1,6 @@
 Me:
+- Message about hiding in hole
 - RelicWraith: some way of summoning your followers to you
-- went down a well in a far off village: crash
 - ASSET RELEASE
 - fisherman quest
 - more town NPCs/sprites
