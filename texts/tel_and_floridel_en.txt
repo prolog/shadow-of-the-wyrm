@@ -3909,7 +3909,7 @@ those sent to hunt were twinned and went to bleed %b
 what exiles they could find, and whom they'd show %b
 the short and sharpened mercy of the faerie throne.
 %p
-They moved through meadowlands, and each horse fed %b
+A pair now moved through the meadows; their horses fed %b
 on grasses as it walked.  An unling passed %b
 in silence; though they hailed her, she still said %b
 nothing, and they kept on until at last %b
@@ -3989,3 +3989,12 @@ another group, then left with them.  The tale %b
 went cold after this.  The number or the heft %b
 of the companions that they'd picked up was a shaky bet.
 %p
+"So what now?" said the second. "They're on foot %b
+but grouped up.  We've got bows and they'll have rocks, %b
+though who knows what kind of company they took. %b
+Our glamour's useless on our own.  We've stalked %b
+the pair of them this far.  So should we go %b
+on or return?"  He kicked a bit of ash. %b
+The other took a moment: "if they show %b
+themselves, we've got the range, and in this grass %b
+we can ride them down, or away; each way, the trouble's passed."
