@@ -73,6 +73,11 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - New name and settlement name combinations.
 
+- Dragonbane's range is now 3, keeping in line with other two-handed spears.
+
+- Divine companions get additional bonuses to HP, AP, and damage based on
+  your Religion skill (RelicWraith).
+
 - New creatures: thatcher.
 
 - New items: stone block, sod brick, lumber, crowbar.

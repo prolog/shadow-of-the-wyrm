@@ -4804,7 +4804,7 @@
 						<Slay>_dragon</Slay>
 					</Slays>
 				</Damage>
-				<Range>2</Range>
+				<Range>3</Range>
 			</Weapon>
 			<Weapon id="stonespear">
 				<DescriptionSID>STONESPEAR_SID</DescriptionSID>
