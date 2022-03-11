@@ -1,6 +1,5 @@
 #include <boost/range/adaptors.hpp>
 #include <boost/range/algorithm.hpp>
-#include "AdditionalEffectMessages.hpp"
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"
 #include "MessageManager.hpp"

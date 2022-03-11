@@ -1565,9 +1565,6 @@
     <ClInclude Include="engine\effects\include\AdditionalEffectMessage.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\effects\include\AdditionalEffectMessages.hpp">
-      <Filter>Header Files\engine\effects\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\effects\include\Effect.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
@@ -5162,9 +5159,6 @@
       <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\effects\source\AdditionalEffectMessage.cpp">
-      <Filter>Source Files\engine\effects\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\effects\source\AdditionalEffectMessages.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\effects\source\Effect.cpp">

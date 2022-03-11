@@ -209,7 +209,7 @@ string run_game(DisplayPtr display, ControllerPtr controller, Settings& settings
   engine.set_controller(controller);
 
   log.debug("Starting SotW.");
-  string msg = engine.start(settings);
+  msg = engine.start(settings);
 
   display->tear_down();
   return msg;

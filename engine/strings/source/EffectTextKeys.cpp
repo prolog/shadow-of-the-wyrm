@@ -186,6 +186,7 @@ const string EffectTextKeys::EFFECT_CLEANSING = "EFFECT_CLEANSING";
 const string EffectTextKeys::EFFECT_MAPPING = "EFFECT_MAPPING";
 const string EffectTextKeys::EFFECT_MAPPING_FORGET = "EFFECT_MAPPING_FORGET";
 const string EffectTextKeys::EFFECT_SUMMON_MONSTERS = "EFFECT_SUMMON_MONSTERS";
+const string EffectTextKeys::EFFECT_SUMMON_FOLLOWERS = "EFFECT_SUMMON_FOLLOWERS";
 const string EffectTextKeys::EFFECT_GLOW_SUCCESS = "EFFECT_GLOW_SUCCESS";
 const string EffectTextKeys::EFFECT_GLOW_DEAD = "EFFECT_GLOW_DEAD";
 const string EffectTextKeys::EFFECT_GLOW_ARTIFACT = "EFFECT_GLOW_ARTIFACT";

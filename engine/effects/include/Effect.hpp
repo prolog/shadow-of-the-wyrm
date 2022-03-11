@@ -63,7 +63,7 @@ class Effect
 
     // Additional messages that are displayed regardless of identification
     // success or failure.
-    std::vector<AdditionalEffectMessagePtr> additional_effect_messages;
+    std::vector<std::string> additional_effect_messages;
 
     // Where did the effect originally come from?
     std::string source_id;

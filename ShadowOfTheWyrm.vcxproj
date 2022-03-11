@@ -676,7 +676,6 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\description\include\TileDescriber.hpp" />
     <ClInclude Include="engine\description\include\TileDescription.hpp" />
     <ClInclude Include="engine\effects\include\AdditionalEffectMessage.hpp" />
-    <ClInclude Include="engine\effects\include\AdditionalEffectMessages.hpp" />
     <ClInclude Include="engine\effects\include\BlessEffect.hpp" />
     <ClInclude Include="engine\effects\include\CleansingEffect.hpp" />
     <ClInclude Include="engine\effects\include\DetectTrapsEffect.hpp" />
@@ -2943,7 +2942,6 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\description\source\TileDescriber.cpp" />
     <ClCompile Include="engine\description\source\TileDescription.cpp" />
     <ClCompile Include="engine\effects\source\AdditionalEffectMessage.cpp" />
-    <ClCompile Include="engine\effects\source\AdditionalEffectMessages.cpp" />
     <ClCompile Include="engine\effects\source\EnchantingEffect.cpp" />
     <ClCompile Include="engine\effects\source\FlyingEffect.cpp" />
     <ClCompile Include="engine\effects\source\GainAttributesEffect.cpp" />

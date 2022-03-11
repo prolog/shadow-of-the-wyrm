@@ -1,4 +1,3 @@
-#include "AdditionalEffectMessages.hpp"
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"
 #include "MessageManager.hpp"

@@ -69,6 +69,8 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 - When a particular tile has been dug, small or tiny creatures get a bonus to 
   their hiding checks (RelicWraith).
 
+- Blessed scrolls of monster summoning now provide you with companions.
+
 - New name and settlement name combinations.
 
 - New creatures: thatcher.

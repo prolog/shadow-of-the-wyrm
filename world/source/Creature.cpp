@@ -1129,6 +1129,14 @@ void Creature::set_leader_and_follow(const std::string& leader_id)
 
   if (decision_strategy != nullptr)
   {
+    ThreatRatings& threats = decision_strategy->get_threats_ref();
+    auto rating = threats.has_threat(leader_id);
+
+    if (rating.first)
+    {
+      decision_strategy->get_threats_ref().remove_threat(leader_id, rating.second);
+    }
+
     decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID, leader_id);
   }
 }

@@ -1,4 +1,3 @@
-#include "AdditionalEffectMessages.hpp"
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"
 #include "MessageManager.hpp"
@@ -9,8 +8,7 @@ using std::string;
 // Add an additional message about sweet taste
 FruitJuiceEffect::FruitJuiceEffect()
 {
-  AdditionalEffectMessagePtr sweet_taste = std::make_shared<SweetTasteEffectMessage>();
-  additional_effect_messages.push_back(sweet_taste);
+  additional_effect_messages.push_back(EffectTextKeys::EFFECT_SWEET_TASTE);
 }
 
 string FruitJuiceEffect::get_effect_identification_message(CreaturePtr creature) const
