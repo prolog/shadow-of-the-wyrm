@@ -285,9 +285,10 @@ void CursesDisplay::refresh_terminal_size()
 }
 
 // Set up the Curses-based display.
-bool CursesDisplay::create()
+pair<bool, string> CursesDisplay::create()
 {
   bool creation_success = true;
+  string error_msg;
 
   initscr();
   keypad(stdscr, TRUE);
@@ -306,13 +307,13 @@ bool CursesDisplay::create()
 
   if ((TERMINAL_MAX_ROWS < 25) || (TERMINAL_MAX_COLS < 80))
   {
-    printw("Shadow of the Wyrm requires a terminal of 80x25 or larger.\n");
+    error_msg = "Shadow of the Wyrm requires a terminal of 80x25 or larger.";
     creation_success = false;
   }
 
   refresh();
 
-  return creation_success;
+  return make_pair(creation_success, error_msg);
 }
 
 // Do anything necessary to tear down the Curses-based display.

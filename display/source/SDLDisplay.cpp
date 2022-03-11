@@ -46,9 +46,10 @@ SDLDisplay::~SDLDisplay()
 {
 }
 
-bool SDLDisplay::create()
+pair<bool, string> SDLDisplay::create()
 {
   bool init = true;
+  string error_msg;
 
   init = read_colours_from_settings();
   init = read_dimensions_from_settings();
@@ -67,22 +68,24 @@ bool SDLDisplay::create()
 
         if (!init)
         {
-          std::cerr << "Could not read font into texture" << std::endl;
+          error_msg = "Could not read font into texture";
         }
       }
       else
       {
-        std::cerr << "Could not read create window and renderer" << std::endl;
+        error_msg = "Could not read create window and renderer";
       }
     }
     else
     {
-      std::cerr << "Screen is smaller than required " << sdld.get_screen_width() << "x" << sdld.get_screen_height() << " - increase resolution and restart, or change to display=curses in swyrm.ini" << std::endl;
+      ostringstream ss;
+      ss << "Screen is smaller than required " << sdld.get_screen_width() << "x" << sdld.get_screen_height() << " - increase resolution and restart, or change to display=curses in swyrm.ini";
+      error_msg = ss.str();
     }
   }
   else
   {
-    std::cerr << "Could not read dimensions from settings" << std::endl;
+    error_msg = "Could not read dimensions from settings";
   }
 
   
@@ -94,7 +97,7 @@ bool SDLDisplay::create()
     setup_new_screen();
   }
 
-  return init;
+  return make_pair(init, error_msg);
 }
 
 void SDLDisplay::tear_down()

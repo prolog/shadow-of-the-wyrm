@@ -114,8 +114,9 @@ void ShadowOfTheWyrmEngine::initialize_game_flow_map()
   game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_STOP, &ShadowOfTheWyrmEngine::process_exit_game));
 }
 
-void ShadowOfTheWyrmEngine::start(const Settings& settings)
+string ShadowOfTheWyrmEngine::start(const Settings& settings)
 {
+  string msg;
   Game& game = Game::instance();
   Log& log = Log::instance();
 
@@ -137,7 +138,8 @@ void ShadowOfTheWyrmEngine::start(const Settings& settings)
 
     if (display)
     {
-      disp_ok = display->create();
+      auto d_details = display->create();
+      disp_ok = d_details.first;
 
       if (disp_ok)
       {
@@ -150,6 +152,7 @@ void ShadowOfTheWyrmEngine::start(const Settings& settings)
         // If we couldn't create the display, set the appropriate engine
         // state so we don't try to continue.
         state_manager.set_state(EngineStateEnum::ENGINE_STATE_STOP);
+        msg = d_details.second;
       }
     }
   }
@@ -163,6 +166,8 @@ void ShadowOfTheWyrmEngine::start(const Settings& settings)
       game.go();
     }
   }
+
+  return msg;
 }
 
 void ShadowOfTheWyrmEngine::set_controller(ControllerPtr new_controller)

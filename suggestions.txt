@@ -1,5 +1,8 @@
 Me:
-- Message about hiding in hole
+- relicwraith: curses too small
+- blessed summon monsters: companions
+- RelicWraith: Religion bonuses to divine companions
+- RelicWraith: leadership -> call followers command (val * 2% chance)
 - RelicWraith: some way of summoning your followers to you
 - ASSET RELEASE
 - fisherman quest

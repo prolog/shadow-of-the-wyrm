@@ -46,7 +46,7 @@ using namespace std;
 using namespace xercesc;
 
 void print_title();
-void run_game(DisplayPtr display, ControllerPtr controller, Settings& settings);
+std::string run_game(DisplayPtr display, ControllerPtr controller, Settings& settings);
 void remove_old_logfiles(const Settings& settings);
 bool check_write_permissions();
 int parse_command_line_arguments(int argc, char* argv[]);
@@ -122,6 +122,7 @@ int main(int argc, char* argv[])
       Environment::create_empty_user_settings_if_necessary(&settings);
 
       string display_id = settings.get_setting(Setting::DISPLAY);
+      string msg;
 
       #ifdef ENABLE_SDL
       SDLInit sdl;
@@ -140,7 +141,7 @@ int main(int argc, char* argv[])
 
       DisplayPtr display = display_details.first;
       ControllerPtr controller = display_details.second;
-
+      
       bool write_ok = check_write_permissions();
 
       if (!write_ok)
@@ -156,7 +157,12 @@ int main(int argc, char* argv[])
         set_display_settings(display, settings);
         display->display_splash(true);
 
-        run_game(display, controller, settings);
+        msg = run_game(display, controller, settings);
+
+        if (!msg.empty())
+        {
+          cout << msg << endl;
+        }
       }
       else
       {
@@ -164,22 +170,6 @@ int main(int argc, char* argv[])
         if (display)
         {
           display->tear_down();
-        }
-
-        log.error("main - Could not create display!");
-       
-        cerr << "Could not create display.  Resize terminal to 80x25 and hit enter." << endl;
-        string foo;
-        std::getline(cin, foo);
-
-        if (display && display->create())
-        {
-          run_game(display, controller, settings);
-        }
-        else
-        {
-          cerr << "\nCould not create display.";
-          throw "error";
         }
       }
 
@@ -208,8 +198,9 @@ int main(int argc, char* argv[])
   return 0;
 }
 
-void run_game(DisplayPtr display, ControllerPtr controller, Settings& settings)
+string run_game(DisplayPtr display, ControllerPtr controller, Settings& settings)
 {
+  string msg;
   Log& log = Log::instance();
   ShadowOfTheWyrmEngine engine;
 
@@ -218,9 +209,10 @@ void run_game(DisplayPtr display, ControllerPtr controller, Settings& settings)
   engine.set_controller(controller);
 
   log.debug("Starting SotW.");
-  engine.start(settings);
+  string msg = engine.start(settings);
 
   display->tear_down();
+  return msg;
 }
 
 bool check_write_permissions()
