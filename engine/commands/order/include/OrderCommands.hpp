@@ -25,6 +25,12 @@ class OrderAtEaseCommand : public Command
     OrderAtEaseCommand(const int key);
 };
 
+class OrderSummonCommand : public Command
+{
+  public:
+    OrderSummonCommand(const int key);
+};
+
 class OrderExitCommand : public Command
 {
   public:

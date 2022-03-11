@@ -4,7 +4,8 @@
 
 using namespace std;
 
-OrderKeyboardCommandMap::OrderKeyboardCommandMap()
+OrderKeyboardCommandMap::OrderKeyboardCommandMap(const bool new_followers_in_fov, const bool new_can_summon)
+: followers_in_fov(new_followers_in_fov), can_summon(new_can_summon)
 {
 }
 
@@ -27,14 +28,24 @@ void OrderKeyboardCommandMap::initialize_command_mapping(const Settings& setting
   esc_key = NC_ESCAPE_KEY;
 
   command_mapping.clear();
-  command_mapping = KeyboardCommandMappingMap{ { std::to_string('a'), OrderCommandKeys::ATTACK },
-  { std::to_string('b'), OrderCommandKeys::FOLLOW },
-  { std::to_string('c'), OrderCommandKeys::FREEZE },
-  { std::to_string('d'), OrderCommandKeys::AT_EASE },
+  command_mapping = KeyboardCommandMappingMap{
   { std::to_string('z'), OrderCommandKeys::EXIT_ORDER },
   { std::to_string('Z'), OrderCommandKeys::EXIT_ORDER },
   { std::to_string(NC_ESCAPE_KEY), OrderCommandKeys::EXIT_ORDER },
   { esc_key, OrderCommandKeys::EXIT_ORDER } };
+
+  if (followers_in_fov)
+  {
+    command_mapping[std::to_string('a')] = OrderCommandKeys::ATTACK;
+    command_mapping[std::to_string('b')] = OrderCommandKeys::FOLLOW;
+    command_mapping[std::to_string('c')] = OrderCommandKeys::FREEZE;
+    command_mapping[std::to_string('d')] = OrderCommandKeys::AT_EASE;
+  }
+
+  if (can_summon)
+  {
+    command_mapping[std::to_string('e')] = OrderCommandKeys::SUMMON;
+  }
 }
 
 KeyboardCommandMap* OrderKeyboardCommandMap::clone()

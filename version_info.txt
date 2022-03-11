@@ -78,6 +78,10 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 - Divine companions get additional bonuses to HP, AP, and damage based on
   your Religion skill (RelicWraith).
 
+- Characters with Leadership can now use a command in the order menu to summon
+  followers on the current map to nearby tiles.  This works even if the
+  followers can't currently be seen (RelicWraith).
+
 - New creatures: thatcher.
 
 - New items: stone block, sod brick, lumber, crowbar.
