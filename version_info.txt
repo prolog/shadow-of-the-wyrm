@@ -82,6 +82,10 @@ Shadow of the Wyrm v1.4.3 "da Milano"
   followers on the current map to nearby tiles.  This works even if the
   followers can't currently be seen (RelicWraith).
 
+- Tamed/summoned creatures now start out in the at-ease state, which will have
+  them decide what they want to do.  Generally, they'll follow you, attack
+  threats in range, and so on.
+
 - New creatures: thatcher.
 
 - New items: stone block, sod brick, lumber, crowbar.

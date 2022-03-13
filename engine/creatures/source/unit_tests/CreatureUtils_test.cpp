@@ -76,7 +76,7 @@ TEST(SW_Engine_CreatureUtils, has_followers_in_fov)
 
   EXPECT_TRUE(cm.empty());
 
-  c2->set_leader_and_follow(l_id);
+  c2->set_leader_and_at_ease(l_id);
 
   cm = CreatureUtils::get_followers_in_fov(c);
 

@@ -76,7 +76,7 @@ DeityDecisionImplications CompanionDeityDecisionStrategyHandler::handle_decision
 
     if (gen_creature != nullptr)
     {
-      gen_creature->set_leader_and_follow(creature->get_id());
+      gen_creature->set_leader_and_at_ease(creature->get_id());
       set_companion_bonuses(creature, gen_creature);
 
       HostilityManager hm;

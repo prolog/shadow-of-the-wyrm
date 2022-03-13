@@ -1,4 +1,6 @@
 Me:
+- Update creature AI so that threats are removed when no longer a threat to
+  themselves or leader.
 - ASSET RELEASE
 - fisherman quest
 - more town NPCs/sprites

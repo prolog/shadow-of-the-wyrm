@@ -1051,7 +1051,7 @@ void CreatureUtils::set_leadership(CreaturePtr creature, const string& leader_id
 
   if (creature != nullptr)
   {
-    creature->set_leader_and_follow(leader_id);
+    creature->set_leader_and_at_ease(leader_id);
 
     if (map != nullptr)
     {
