@@ -281,6 +281,7 @@ int creature_has_humanoid_followers(lua_State* ls);
 int count_creature_humanoid_followers(lua_State* ls);
 int set_chat_script(lua_State* ls);
 int count_creatures_with_race(lua_State* ls);
+int count_creatures_with_property(lua_State* ls);
 int get_time_of_day(lua_State* ls);
 int generate_enclosure(lua_State* ls);
 int generate_hermitage(lua_State* ls);

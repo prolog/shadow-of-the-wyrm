@@ -131,6 +131,7 @@ QUEST_ISEN_DUN_YEW_COMPLETE = "quest_isen_dun_yew_complete"
 QUEST_GOLGOA_WIZARD_COMPLETE = "quest_golgoa_wizard_complete"
 QUEST_STONEHEIM_RAID = "quest_stoneheim_raid_in_progress"
 QUEST_STONEHEIM_RAID_INITIATED = "quest_stoneheim_raid_initiated"
+QUEST_STONEHEIM_RAID_CREATURE = "quest_stoneheim_raid_creature"
 
 -- Memberships
 WITCHLINGS_MEMBERSHIP_ID = "witchlings"

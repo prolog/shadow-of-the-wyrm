@@ -1,10 +1,5 @@
 Me:
-- RelicWraith: Possible bug in the New Wizard quest. Said wizard could spawn 
-  as a goblin. This naturally becomes a problem during the goblin bashing 
-  phase. Actually, now that I look at the code, I'm pretty sure all goblins 
-  need to be cleared. Hostile or otherwise...
-  
-  - Update so it only checks hostile goblins
+- More archery for archers and goblin pelters
 - ASSET RELEASE
 - fisherman quest
 - more town NPCs/sprites

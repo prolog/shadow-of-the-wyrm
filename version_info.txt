@@ -112,6 +112,12 @@ Shadow of the Wyrm v1.4.3 "da Milano"
   - Display-related errors weren't being shown properly before exiting
     (RelicWraith).
 
+  - The Stoneheim wizard quest could require you to slaughter the new wizard
+    if they were generated as a goblin.  The quest is now smarter and sets
+    a flag on all the generated hostile creatures, with the quest completion 
+    condition now checking the value of this rather than relying on race
+    (RelicWraith)
+
 Shadow of the Wyrm v1.4.0 "Pisador"
 - Version declared October 19, 2021.  Version finalized December 24, 2021.
 

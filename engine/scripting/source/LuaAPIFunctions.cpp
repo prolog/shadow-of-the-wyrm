@@ -437,6 +437,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "count_creature_humanoid_followers", count_creature_humanoid_followers);
   lua_register(L, "set_chat_script", set_chat_script);
   lua_register(L, "count_creatures_with_race", count_creatures_with_race);
+  lua_register(L, "count_creatures_with_property", count_creatures_with_property);
   lua_register(L, "get_time_of_day", get_time_of_day);
   lua_register(L, "update_creatures", update_creatures);
   lua_register(L, "get_random_village", get_random_village);
@@ -9153,6 +9154,48 @@ int count_creatures_with_race(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Invalid arguments to count_creatures_with_race");
+  }
+
+  lua_pushinteger(ls, cnt);
+  return 1;
+}
+
+int count_creatures_with_property(lua_State* ls)
+{
+  int cnt = 0;
+
+  if (lua_gettop(ls) >= 1 && lua_isstring(ls, 1))
+  {
+    MapPtr map = Game::instance().get_current_map();
+    string prop_name = lua_tostring(ls, 1);
+    string prop_val;
+
+    if (lua_gettop(ls) >= 2 && lua_isstring(ls, 2))
+    {
+      prop_val = lua_tostring(ls, 2);
+    }
+
+    if (map != nullptr)
+    {
+      const CreatureMap& creatures = map->get_creatures_ref();
+
+      for (const auto& c_pair : creatures)
+      {
+        CreaturePtr creature = c_pair.second;
+        if (creature != nullptr)
+        {
+          if ((prop_val.empty() && creature->has_additional_property(prop_name)) || 
+              (!prop_val.empty() && creature->get_additional_property(prop_name) == prop_val))
+          {
+            cnt++;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to count_creatures_with_property");
   }
 
   lua_pushinteger(ls, cnt);
