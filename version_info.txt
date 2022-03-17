@@ -86,6 +86,10 @@ Shadow of the Wyrm v1.4.3 "da Milano"
   them decide what they want to do.  Generally, they'll follow you, attack
   threats in range, and so on.
 
+- NPC AI has been updated so that creatures that were once a threat to a
+  creature's leader, but aren't any longer (via taming, etc) are removed
+  as threats.
+
 - New creatures: thatcher.
 
 - New items: stone block, sod brick, lumber, crowbar.

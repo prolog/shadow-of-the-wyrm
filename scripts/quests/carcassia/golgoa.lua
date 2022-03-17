@@ -15,7 +15,7 @@ local function wizard_quest_start_fn()
   clear_and_add_message("GOLGOA_WIZARD_QUEST_START3_SID")
 
   local map_id = "stoneheim"
-  generate_adventurer(map_id, 5, 32, RNG_range(6,15), "", "wizard")
+  generate_adventurer(map_id, 5, 32, RNG_range(6,15), "01_human", "wizard")
   set_chat_script(map_id, 5, 32, "quests/stoneheim/new_wizard.lua")
 
   add_object_to_player_tile("wizard_staff", 1, "stoneheim_quest=1")

@@ -1,6 +1,10 @@
 Me:
-- Update creature AI so that threats are removed when no longer a threat to
-  themselves or leader.
+- RelicWraith: Possible bug in the New Wizard quest. Said wizard could spawn 
+  as a goblin. This naturally becomes a problem during the goblin bashing 
+  phase. Actually, now that I look at the code, I'm pretty sure all goblins 
+  need to be cleared. Hostile or otherwise...
+  
+  - Update so it only checks hostile goblins
 - ASSET RELEASE
 - fisherman quest
 - more town NPCs/sprites

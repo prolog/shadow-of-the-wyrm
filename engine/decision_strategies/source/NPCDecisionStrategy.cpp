@@ -809,6 +809,7 @@ void NPCDecisionStrategy::update_threats_to_leader(const std::string& this_creat
       string attack_threaten_id = get_property(DecisionStrategyProperties::DECISION_STRATEGY_ATTACK_CREATURES_THREATENING_ID);
       string leader_id = this_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
       string at_ease = get_property(DecisionStrategyProperties::DECISION_STRATEGY_AT_EASE);
+      HostilityManager hm;
 
       if (view_map != nullptr && (!attack_threaten_id.empty() || !at_ease.empty()))
       {
@@ -817,18 +818,22 @@ void NPCDecisionStrategy::update_threats_to_leader(const std::string& this_creat
 
         for (const pair<string, CreaturePtr>& c_pair : creatures)
         {
+          string threat_id = c_pair.second->get_id();
+
           if (c_pair.second->get_decision_strategy()->get_threats_ref().has_threat(leader_id).first)
           {
-            string threat_id = c_pair.second->get_id();
             if (!threat_ratings.has_threat(threat_id).first)
             {
-              HostilityManager hm;
               hm.set_hostility_to_creature(this_creature, threat_id, ThreatConstants::ACTIVE_THREAT_RATING);
             }
 
             // Break so that the creature is only focused on one creature
             // attacking their leader at a time.
             break;
+          }
+          else
+          {
+            hm.remove_hostility_to_creature(this_creature, threat_id);
           }
         }
       }
