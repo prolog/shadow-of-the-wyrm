@@ -94,7 +94,7 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - New creatures: thatcher.
 
-- New items: stone block, sod brick, lumber, crowbar.
+- New items: stone block, sod brick, lumber, crowbar, speed ring.
 
 - Stanzas for "Tel and Floridel".
 

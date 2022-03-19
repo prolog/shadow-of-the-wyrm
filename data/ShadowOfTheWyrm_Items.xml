@@ -2740,6 +2740,32 @@
 				<Soak>0</Soak>
 				<ToHit>15</ToHit>
 			</Ring>
+			<Ring id="speed_ring">
+				<DescriptionSID>SPEED_RING_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SPEED_RING_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SPEED_RING_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SPEED_RING_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SPEED_RING_CODEX_SID</CodexDescriptionSID>
+				<Value>133</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>2</WornLocation>
+				<Material>13</Material>
+				<Symbol>
+					<Char>=</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>31</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>3</DangerLevel>
+				<Evade>2</Evade>
+				<Soak>0</Soak>
+				<SpeedBonus>5</SpeedBonus>
+			</Ring>
 			<Ring id="withering_ring">
 				<DescriptionSID>WITHERING_RING_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_WITHERING_RING_SID</UnidentifiedDescriptionSID>
