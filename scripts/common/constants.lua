@@ -119,6 +119,14 @@ GOBLIN_IMPALER_ID = "goblin_impaler"
 GOBLIN_RAIDER_ID = "goblin_raider"
 GOBLIN_CHAMPION_ID = "goblin_champion"
 GOBLIN_RACE_ID = "07_goblin"
+FARMER_ID = "_farmer"
+PILGRIM_ID = "_pilgrim"
+TRADESMAN_ID = "_tradesman"
+SPEARMAN_ID = "spearman"
+ARCHER_ID = "archer"
+BLACKGUARD_ID = "blackguard"
+FISHERMAN_ID = "_fisherman"
+THATCHER_ID = "_thatcher"
 
 -- Item properties
 ITEM_PROPERTIES_SUPPRESS_ITEM_GENERATION_ON_DESTRUCTION = "no_item_on_destr"
@@ -132,6 +140,7 @@ QUEST_GOLGOA_WIZARD_COMPLETE = "quest_golgoa_wizard_complete"
 QUEST_STONEHEIM_RAID = "quest_stoneheim_raid_in_progress"
 QUEST_STONEHEIM_RAID_INITIATED = "quest_stoneheim_raid_initiated"
 QUEST_STONEHEIM_RAID_CREATURE = "quest_stoneheim_raid_creature"
+QUEST_CARCASSIAN_RECRUITER_REBEL_CREATURE = "quest_carcassian_recruiter_rebel_creature"
 
 -- Memberships
 WITCHLINGS_MEMBERSHIP_ID = "witchlings"

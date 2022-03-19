@@ -20427,11 +20427,11 @@
 				<Exp>2</Exp>
 				<Skills>
 					<GeneralSkills>
-						<Archery>10</Archery>
+						<Archery>25</Archery>
 					</GeneralSkills>
 					<RangedWeaponSkills>
 						<Rocks>20</Rocks>
-						<Slings>20</Slings>
+						<Slings>30</Slings>
 					</RangedWeaponSkills>
 				</Skills>
 				<InitialEquipmentAndInventory>
@@ -22587,10 +22587,10 @@
 				<Exp>10</Exp>
 				<Skills>
 					<GeneralSkills>
-						<Archery>20</Archery>
+						<Archery>30</Archery>
 					</GeneralSkills>
 					<RangedWeaponSkills>
-						<Bows>20</Bows>
+						<Bows>40</Bows>
 						<Crossbows>15</Crossbows>
 						<Rocks>20</Rocks>
 						<Slings>20</Slings>

@@ -1,4 +1,5 @@
 Me:
+- quest to quell a rebellion from Carcassia
 - More archery for archers and goblin pelters
 - ASSET RELEASE
 - fisherman quest

@@ -93,6 +93,8 @@ int get_creature_ids(lua_State* ls);
 int get_creature_base_id(lua_State* ls);
 int get_creature_num_broken_conducts(lua_State* ls);
 int get_current_map_id(lua_State* ls);
+int get_map_id(lua_State* ls);
+int get_map_exists(lua_State* ls);
 int incr_str(lua_State* ls);
 int incr_str_to_unburdened(lua_State* ls);
 int incr_dex(lua_State* ls);
@@ -285,10 +287,11 @@ int count_creatures_with_property(lua_State* ls);
 int get_time_of_day(lua_State* ls);
 int generate_enclosure(lua_State* ls);
 int generate_hermitage(lua_State* ls);
-int remove_chat_script(lua_State* ls);
 int update_creatures(lua_State* ls);
 int get_random_village(lua_State* ls);
 int tokenize(lua_State* ls);
+int generate_name(lua_State* ls);
+int remove_chat_script(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

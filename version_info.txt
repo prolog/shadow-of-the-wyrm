@@ -90,6 +90,8 @@ Shadow of the Wyrm v1.4.3 "da Milano"
   creature's leader, but aren't any longer (via taming, etc) are removed
   as threats.
 
+- The Carcassian recruiter has a new quest to put down a peasant uprising.
+
 - New creatures: thatcher.
 
 - New items: stone block, sod brick, lumber, crowbar.
