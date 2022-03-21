@@ -1,4 +1,5 @@
 Me:
+- speed should infuence sneak attack rate
 - quest to quell a rebellion from Carcassia
 - More archery for archers and goblin pelters
 - very small chance for enchant to give speed bonus
