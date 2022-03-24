@@ -169,6 +169,32 @@
 				<Evade>0</Evade>
 				<Soak>6</Soak>
 			</Amulet>
+			<Amulet id="speed_amulet">
+				<DescriptionSID>SPEED_AMULET_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SPEED_AMULET_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SPEED_AMULET_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SPEED_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SPEED_AMULET_CODEX_SID</CodexDescriptionSID>
+				<Value>200</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>4</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Material>13</Material>
+				<Symbol>
+					<Char>#</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>0</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>6</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>0</Soak>
+				<SpeedBonus>5</SpeedBonus>
+			</Amulet>
 			<Amulet id="evasive_amulet">
 				<DescriptionSID>EVASIVE_AMULET_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_EVASIVE_AMULET_SID</UnidentifiedDescriptionSID>
@@ -2764,7 +2790,7 @@
 				<DangerLevel>3</DangerLevel>
 				<Evade>2</Evade>
 				<Soak>0</Soak>
-				<SpeedBonus>5</SpeedBonus>
+				<SpeedBonus>4</SpeedBonus>
 			</Ring>
 			<Ring id="withering_ring">
 				<DescriptionSID>WITHERING_RING_SID</DescriptionSID>

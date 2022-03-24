@@ -92,9 +92,13 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 
 - The Carcassian recruiter has a new quest to put down a peasant uprising.
 
+- The speed difference between the attacker and defender now plays a part in
+  determining whether an attack becomes a sneak attack.
+
 - New creatures: thatcher.
 
-- New items: stone block, sod brick, lumber, crowbar, speed ring.
+- New items: stone block, sod brick, lumber, crowbar, speed ring, speed 
+  amulet.
 
 - Stanzas for "Tel and Floridel".
 
