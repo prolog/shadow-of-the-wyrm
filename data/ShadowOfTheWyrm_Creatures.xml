@@ -118,6 +118,12 @@
 				<Type>0</Type>
 			</Damage>
 			<Speed>30</Speed>
+			<EventScripts>
+				<CreateScript>
+					<Script>create/cat.lua</Script>
+					<Chance>100</Chance>
+				</CreateScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="owl">
 			<RaceID>_bird</RaceID>

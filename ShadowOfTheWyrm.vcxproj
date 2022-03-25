@@ -1009,6 +1009,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\screens\include\WornLocationScreenFactory.hpp" />
     <ClInclude Include="engine\screens\include\WornLocationSelectionScreen.hpp" />
     <ClInclude Include="engine\scripting\include\AttackScript.hpp" />
+    <ClInclude Include="engine\scripting\include\CreateScript.hpp" />
     <ClInclude Include="engine\scripting\include\DeathScript.hpp" />
     <ClInclude Include="engine\scripting\include\DecisionScript.hpp" />
     <ClInclude Include="engine\scripting\include\DropScript.hpp" />
@@ -2153,6 +2154,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\scripting\source\CreateScript.cpp" />
     <ClCompile Include="engine\scripting\source\DeathScript.cpp" />
     <ClCompile Include="engine\scripting\source\DropScript.cpp" />
     <ClCompile Include="engine\scripting\source\KillScript.cpp" />

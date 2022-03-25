@@ -4,6 +4,7 @@
 #include "ArcanaPointsCalculator.hpp"
 #include "ClassManager.hpp"
 #include "Conversion.hpp"
+#include "CreateScript.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureFactory.hpp"
 #include "CreatureGenerationConstants.hpp"
@@ -203,7 +204,27 @@ CreaturePtr CreatureFactory::create_by_creature_id
 
     CreatureUtils::adjust_str_until_unburdened(creature);
   }
-      
+
+  if (current_map != nullptr && creature != nullptr && creature->has_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CREATE))
+  {
+    ScriptDetails sd = creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CREATE);
+
+    if (RNG::percent_chance(sd.get_chance()))
+    {
+      // Briefly add the creature to the map's temp list of creatures so the 
+      // creature can be updated.  Do whatever needs to be done and then
+      // remove it after.
+      CreatureMap& creatures = current_map->get_creatures_ref();
+      creatures[creature->get_id()] = creature;
+
+      CreateScript create;
+      create.execute(Game::instance().get_script_engine_ref(), sd.get_script(), creature, current_map);
+
+      creatures.erase(creature->get_id());
+    }
+
+  }
+
   return creature;
 }
 

@@ -281,6 +281,7 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CCITY_SECTOR_RESIDENTIAL);
   lua_exportConst(ls, CCITY_SECTOR_RELIGIOUS_COMMERCIAL);
 
+  lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_CREATE);
   lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_DEATH);
   lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_ATTACK);
   lua_exportConstStr(ls, CCREATURE_EVENT_SCRIPT_CHAT);

@@ -95,6 +95,10 @@ Shadow of the Wyrm v1.4.3 "da Milano"
 - The speed difference between the attacker and defender now plays a part in
   determining whether an attack becomes a sneak attack.
 
+- Added support for running a script when a creature is created to allow for
+  more complex behaviours, if needed.  Added a creation script for cats to
+  randomize their colour between brown/grey/black/white.
+
 - New creatures: thatcher.
 
 - New items: stone block, sod brick, lumber, crowbar, speed ring, speed 

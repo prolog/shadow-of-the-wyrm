@@ -229,13 +229,14 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
 
     // Event scripts
     XMLNode event_scripts_node = XMLUtils::get_next_element_by_local_name(creature_node, "EventScripts");
-    map<string, string> node_details = {{"DeathScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH},
+    map<string, string> node_details = { {"CreateScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CREATE},
+                                         {"DeathScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH},
                                          {"AttackScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK},
                                          {"ChatScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT},
                                          {"NightChatScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT_NIGHT},
                                          {"DecisionScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION},
                                          {"DropScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DROP},
-                                         {"TameScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_TAME}};
+                                         {"TameScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_TAME} };
 
     parse_event_scripts(event_scripts_node, node_details, creature->get_event_scripts_ref());
   }

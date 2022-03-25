@@ -4457,6 +4457,9 @@
     <ClInclude Include="engine\strings\include\DirectionLocationTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\scripting\include\CreateScript.hpp">
+      <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9021,6 +9024,9 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\DirectionLocationTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripting\source\CreateScript.cpp">
+      <Filter>Source Files\engine\scripting\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
