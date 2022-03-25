@@ -99,6 +99,9 @@ Shadow of the Wyrm v1.4.3 "da Milano"
   more complex behaviours, if needed.  Added a creation script for cats to
   randomize their colour between brown/grey/black/white.
 
+- The manual, keybindings, and confirmation text now make it more clear that
+  quitting will abandon your character (Echo38).
+
 - New creatures: thatcher.
 
 - New items: stone block, sod brick, lumber, crowbar, speed ring, speed 
