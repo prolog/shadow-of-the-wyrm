@@ -751,6 +751,8 @@ void Game::update_score_file_if_necessary(CreaturePtr current_player)
         sf.write(current_player);
 
         Game& game = Game::instance();
+        game.get_display()->clear_display();
+
         HighScoreScreen hss(game.get_display(), sf.get_entries());
         auto val = hss.display();
 
