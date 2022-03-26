@@ -38,7 +38,6 @@ ActionCostValue DigAction::dig_ceiling(CreaturePtr creature, MapPtr map)
     for (auto& t_pair : tile_map)
     {
       TilePtr tile = t_pair.second;
-      bool added = false;
 
       if (tile != nullptr && !tile->get_is_blocking_for_item() && RNG::percent_chance(75))
       {
@@ -51,7 +50,6 @@ ActionCostValue DigAction::dig_ceiling(CreaturePtr creature, MapPtr map)
 
         ItemPtr item = ItemManager::create_item(item_id, RNG::range(1, 4));
         tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
-        added = true;
       }
     }
 

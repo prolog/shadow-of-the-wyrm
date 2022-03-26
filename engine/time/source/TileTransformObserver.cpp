@@ -51,7 +51,7 @@ void TileTransformObserver::process_tile_transforms(MapPtr cur_map, const double
       {
         vector<TileTransform> tt_vec = t_it->second;
 
-        for (const TileTransform tt : tt_vec)
+        for (const TileTransform& tt : tt_vec)
         {
           Coordinate c = tt.get_coordinate();
 
