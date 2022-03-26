@@ -216,6 +216,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
   {
     Dimensions dim;
     callback_map = std::make_shared<Map>(dim);
+    callback_map->set_map_id(callback_map_id);
     Game::instance().get_map_registry_ref().set_map(callback_map_id, callback_map);
     temp_map = true;
   }
