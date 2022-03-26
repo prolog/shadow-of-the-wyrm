@@ -765,7 +765,7 @@ void CreatureFactory::set_magic_skills_based_on_spells(CreaturePtr creature)
     map<SkillType, bool> spell_types;
     auto skm = sk.get_known_spells();
 
-    for (const auto sk_it : skm)
+    for (const auto& sk_it : skm)
     {
       const string& spell_id = sk_it.first;
       auto sp_it = spells.find(spell_id);
