@@ -858,7 +858,7 @@ void NPCDecisionStrategy::remove_threats_with_same_deity(const std::string& this
       {
         CreatureMap creatures = view_map->get_creatures();
 
-        for (const pair<string, CreaturePtr>& c_pair : creatures)
+        for (const auto& c_pair : creatures)
         {
           CreaturePtr creature = c_pair.second;
 
