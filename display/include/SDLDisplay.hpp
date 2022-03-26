@@ -27,7 +27,7 @@ class SDLDisplay : public Display
     SDLDisplay();
     virtual ~SDLDisplay();
     
-	  virtual std::pair<bool, string> create() override;
+	  virtual std::pair<bool, std::string> create() override;
 	  virtual void tear_down() override;
 
     virtual bool display_splash(const bool enabled) override;
