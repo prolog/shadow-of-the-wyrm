@@ -816,7 +816,7 @@ void NPCDecisionStrategy::update_threats_to_leader(const std::string& this_creat
         CreatureMap creatures = view_map->get_creatures();
         vector<string> leader_attackers;
 
-        for (const pair<string, CreaturePtr>& c_pair : creatures)
+        for (const auto& c_pair : creatures)
         {
           string threat_id = c_pair.second->get_id();
 
