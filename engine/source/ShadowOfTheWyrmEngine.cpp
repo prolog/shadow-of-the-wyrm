@@ -863,6 +863,7 @@ bool ShadowOfTheWyrmEngine::process_load_game()
     game.get_settings_ref().set_settings(keybinding_settings);
   }
 
+  game.set_requires_redraw(true);
   return result;
 }
 
