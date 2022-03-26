@@ -205,7 +205,22 @@ CreaturePtr CreatureFactory::create_by_creature_id
     CreatureUtils::adjust_str_until_unburdened(creature);
   }
 
-  if (current_map != nullptr && creature != nullptr && creature->has_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CREATE))
+  // If the current map is null, create a "callback map" to let the Lua scripts
+  // update the creature.  Temporarily add the callback map to the registry,
+  // and remove it after.
+  MapPtr callback_map = current_map;
+  bool temp_map = false;
+  string callback_map_id = "temp_callback_map";
+
+  if (callback_map == nullptr)
+  {
+    Dimensions dim;
+    callback_map = std::make_shared<Map>(dim);
+    Game::instance().get_map_registry_ref().set_map(callback_map_id, callback_map);
+    temp_map = true;
+  }
+
+  if (callback_map != nullptr && creature != nullptr && creature->has_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CREATE))
   {
     ScriptDetails sd = creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CREATE);
 
@@ -214,15 +229,19 @@ CreaturePtr CreatureFactory::create_by_creature_id
       // Briefly add the creature to the map's temp list of creatures so the 
       // creature can be updated.  Do whatever needs to be done and then
       // remove it after.
-      CreatureMap& creatures = current_map->get_creatures_ref();
+      CreatureMap& creatures = callback_map->get_creatures_ref();
       creatures[creature->get_id()] = creature;
 
       CreateScript create;
-      create.execute(Game::instance().get_script_engine_ref(), sd.get_script(), creature, current_map);
+      create.execute(Game::instance().get_script_engine_ref(), sd.get_script(), creature, callback_map);
 
       creatures.erase(creature->get_id());
     }
+  }
 
+  if (temp_map)
+  {
+    Game::instance().get_map_registry_ref().remove_map(callback_map_id);
   }
 
   return creature;

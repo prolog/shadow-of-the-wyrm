@@ -1,5 +1,5 @@
 Me:
-- speed should infuence sneak attack rate
+- cat colour bug for wizards
 - bookstore
 - quest to quell a rebellion from Carcassia
 - More archery for archers and goblin pelters

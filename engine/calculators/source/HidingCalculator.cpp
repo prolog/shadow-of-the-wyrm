@@ -40,7 +40,6 @@ int HidingCalculator::calculate_pct_chance_hide(CreaturePtr creature, MapPtr map
     else
     {
       int tod_modifier = get_tod_hide_modifier_for_map_type(tod, map->get_map_type());
-      CreatureSize size = creature->get_size();
       int size_bonus = 0;
       TilePtr creature_tile = map->at(map->get_location(creature->get_id()));
       
