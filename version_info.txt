@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.4.3 "da Milano"
-- Version declared December 24, 2021.
+- Version declared December 24, 2021.  Version finalized March 27, 2022.
 
 - Stone blocks can be obtained by digging in solid rock, while sod can be
   harvested by digging in fields.

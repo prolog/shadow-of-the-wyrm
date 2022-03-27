@@ -23191,6 +23191,12 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>6</Exp>
+				<Skills>
+					<RangedWeaponSkills>
+						<Rocks>20</Rocks>
+						<Slings>20</Slings>
+					</RangedWeaponSkills>
+				</Skills>
 				<InitialEquipmentAndInventory>
 					<Ranged>
 						<ID>sling</ID>

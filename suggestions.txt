@@ -1,5 +1,5 @@
 Me:
-- cat colour bug for wizards
+- spinach/str?
 - bookstore
 - quest to quell a rebellion from Carcassia
 - More archery for archers and goblin pelters
