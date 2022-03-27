@@ -1,9 +1,11 @@
+#include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "DirectionUtils.hpp"
 #include "GeneratorUtils.hpp"
 #include "ItemManager.hpp"
 #include "ItemProperties.hpp"
 #include "MapUtils.hpp"
+#include "MapProperties.hpp"
 #include "MineCalculator.hpp"
 #include "MineGenerator.hpp"
 #include "RNG.hpp"
@@ -11,8 +13,6 @@
 
 using namespace std;
 
-const int MineGenerator::MINE_MIN_TRAPS = 0;
-const int MineGenerator::MINE_MAX_TRAPS_DIVISOR = 6;
 const int MineGenerator::MINE_MAX_SEGMENTS_MULTIPLIER = 3;
 
 MineGenerator::MineGenerator(const std::string& map_exit_id)
@@ -26,8 +26,7 @@ MapPtr MineGenerator::generate(const Dimensions& dim)
 
   generate_room(map);
   generate_wall_segments(map);
-  generate_traps(map);
-  generate_magici_shards(map);
+  generate_item_piles(map);
 
   update_depth_details(map);
   place_staircases(map);
@@ -171,12 +170,45 @@ bool MineGenerator::get_permanence_default() const
   return true;
 }
 
-// Generate a few traps throughout the mines.
-void MineGenerator::generate_traps(MapPtr map)
+void MineGenerator::generate_item_piles(MapPtr map)
 {
-  int max_traps = map->size().get_x() / MINE_MAX_TRAPS_DIVISOR;
-  int num_traps = RNG::range(MINE_MIN_TRAPS, max_traps);
-  GeneratorUtils::generate_traps(map, num_traps);
+  vector<std::string> item_ids = { ItemIdKeys::ITEM_ID_ROCK, ItemIdKeys::ITEM_ID_STONE, ItemIdKeys::ITEM_ID_HUGE_ROCK, ItemIdKeys::ITEM_ID_STONE_BLOCK };
+  vector<std::string> rarer_items = { ItemIdKeys::ITEM_ID_COAL, ItemIdKeys::ITEM_ID_STEEL_INGOT, ItemIdKeys::ITEM_ID_IRON_INGOT };
+
+  for (const string& ri : rarer_items)
+  {
+    if (RNG::percent_chance(50))
+    {
+      item_ids.push_back(ri);
+    }
+  }
+
+  Dimensions dim = map->size();
+
+  for (const string& id : item_ids)
+  {
+    int num_items = RNG::range(2, 4);
+    for (int i = 0; i < num_items; i++)
+    {
+      for (int i = 0; i < 50; i++)
+      {
+        int sh_y = RNG::range(0, dim.get_y() - 1);
+        int sh_x = RNG::range(0, dim.get_x() - 1);
+
+        TilePtr tile = map->at(sh_y, sh_x);
+
+        if (tile != nullptr && tile->get_tile_type() == TileType::TILE_TYPE_DUNGEON)
+        {
+          ItemPtr shard = ItemManager::create_item(id, num_items);
+          tile->get_items()->merge_or_add(shard, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+
+          break;
+        }
+      }
+    }
+  }
+
+  generate_magici_shards(map);
 }
 
 void MineGenerator::generate_magici_shards(MapPtr map)
@@ -188,7 +220,7 @@ void MineGenerator::generate_magici_shards(MapPtr map)
     if (RNG::percent_chance(mc.calculate_pct_chance_magici_shards(danger_level)))
     {
       Dimensions dim = map->size();
-      int num_shards = RNG::range(1, 3);
+      int num_shards = RNG::range(3, 6);
 
       for (int i = 0; i < 50; i++)
       {

@@ -1,3 +1,136 @@
+Shadow of the Wyrm v1.4.3 "da Milano"
+- Version declared December 24, 2021.  Version finalized March 27, 2022.
+
+- Stone blocks can be obtained by digging in solid rock, while sod can be
+  harvested by digging in fields.
+
+- Digging through trees provides a source of lumber (as well as branches and
+  boughs).
+
+- You can now build, and only need building materials (stone blocks, sod
+  bricks, lumber):
+
+  - Dig and drop the building material on a tile containing buried remains
+    and you'll be asked if you want to make a grave.
+
+  - Dig and drop the building material and you'll be asked if you want to
+    build a section of floor.
+
+  - Drop building material and if you can't/don't want to build a floor,
+    you'll be prompted to build a section of wall.  Stone and sod let you build
+    rock/earth walls, respectively, while dropping lumber near water allows
+    you to build a pier.
+
+- If maps have a very low danger level, traps will not be generated when
+  requested.
+
+- Lituus is now rods/staves rather than bludgeons.
+
+- Pick axes are now much less likely to break, and dwarven mattocks will not
+  break at all.
+
+- Blessed weapons now make it a little easier to hit, and cursed weapons a
+  little harder.
+
+- Rewrote the Hunting skill to be clearer that it's about corpse drops
+  (Wolpertinger).
+
+- Skinning now provides a chance to preserve the corpse afterward.
+
+- Hunting is now passively trained each time you get a corpse.
+
+- Some creatures now have a small chance of providing a quest.  Right now,
+  this is limited to townfolk-type NPCs: tradesmen, farmers, potters,
+  travellers, tanners, commoners, jewelers, smiths, weavers, scribes,
+  thatchers, fishermen.
+
+- The scrimshander in Whaling's End now has a small quest as well.
+
+- Certain NPCs (generally, the ones listed above) now have a chance to run
+  some common quests as well.  These quests can be be repeated: you can do the
+  quest for a fisherman in Isen Dun, a tradesman in a random village, etc.
+
+- Added a loading splash image and an .exe icon, courtesy of Kenny Dalman.
+
+- Character age can now be specified in swyrm.ini.  This lets you either
+  directly set an age, or set a value that triggers an age selection screen
+  (RelicWraith).
+
+- Creating items via tannery now properly adjusts their value based on the
+  quality of the crafted item (RelicWraith).
+
+- Long spears are now range 3.
+
+- Shard of Starlight deals more damage.
+
+- If you're wielding a pick axe or mattock, you can knock stones loose from
+  the ceiling when underground.
+
+- When a particular tile has been dug, small or tiny creatures get a bonus to 
+  their hiding checks (RelicWraith).
+
+- Blessed scrolls of monster summoning now provide you with companions.
+
+- New name and settlement name combinations.
+
+- Dragonbane's range is now 3, keeping in line with other two-handed spears.
+
+- Divine companions get additional bonuses to HP, AP, and damage based on
+  your Religion skill (RelicWraith).
+
+- Characters with Leadership can now use a command in the order menu to summon
+  followers on the current map to nearby tiles.  This works even if the
+  followers can't currently be seen (RelicWraith).
+
+- Tamed/summoned creatures now start out in the at-ease state, which will have
+  them decide what they want to do.  Generally, they'll follow you, attack
+  threats in range, and so on.
+
+- NPC AI has been updated so that creatures that were once a threat to a
+  creature's leader, but aren't any longer (via taming, etc) are removed
+  as threats.
+
+- The Carcassian recruiter has a new quest to put down a peasant uprising.
+
+- The speed difference between the attacker and defender now plays a part in
+  determining whether an attack becomes a sneak attack.
+
+- Added support for running a script when a creature is created to allow for
+  more complex behaviours, if needed.  Added a creation script for cats to
+  randomize their colour between brown/grey/black/white.
+
+- The manual, keybindings, and confirmation text now make it more clear that
+  quitting will abandon your character (Echo38).
+
+- New creatures: thatcher.
+
+- New items: stone block, sod brick, lumber, crowbar, speed ring, speed 
+  amulet.
+
+- Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - Acey's imperial stash quest wasn't displaying the reminder string.
+  
+  - Opponents in the arena were generating friendly if they shared your
+    deity.
+
+  - The changes to the ambient danger level were messed up the danger levels
+    of mines, sewers, and dungeons - these were intended to give you 1 danger
+    level per 50' of depth, but the danger level was starting at the ambient
+    danger level, causing the first 50' to give you wildly different creatures
+    based on where the dungeon was.
+
+  - Display-related errors weren't being shown properly before exiting
+    (RelicWraith).
+
+  - The Stoneheim wizard quest could require you to slaughter the new wizard
+    if they were generated as a goblin.  The quest is now smarter and sets
+    a flag on all the generated hostile creatures, with the quest completion 
+    condition now checking the value of this rather than relying on race
+    (RelicWraith)
+
 Shadow of the Wyrm v1.4.0 "Pisador"
 - Version declared October 19, 2021.  Version finalized December 24, 2021.
 

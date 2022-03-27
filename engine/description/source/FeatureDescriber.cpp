@@ -12,6 +12,11 @@ FeatureDescriber::FeatureDescriber(FeaturePtr feat)
 
 string FeatureDescriber::describe() const
 {
+  return describe(true);
+}
+
+string FeatureDescriber::describe(const bool include_material_type) const
+{
   string description;
 
   if (feature)
@@ -27,7 +32,13 @@ string FeatureDescriber::describe() const
 
     ostringstream desc_s;
     string material;
-    desc_s << desc_feature << " (" << MaterialTextKeys::get_material(feature->get_material_type()) << ")";
+    desc_s << desc_feature;
+
+    if (include_material_type)
+    {
+      desc_s << " (" << MaterialTextKeys::get_material(feature->get_material_type()) << ")";
+    }
+
     description = desc_s.str();
   }
 

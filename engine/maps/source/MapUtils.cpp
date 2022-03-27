@@ -7,6 +7,7 @@
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "DirectionLocationTextKeys.hpp"
 #include "DirectionUtils.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
 #include "Game.hpp"
@@ -2298,6 +2299,63 @@ void MapUtils::update_creatures(MapPtr map)
       mcg.generate_random_creatures(map, map->get_danger(), props);
     }
   }
+}
+
+string MapUtils::get_coordinate_location_sid(const Coordinate& c, const Dimensions& d)
+{
+  string sid = DirectionLocationTextKeys::DIRECTION_LOCATION_MIDDLE;
+
+  int mid_y = (d.get_y() - 1) / 2;
+  int mid_x = (d.get_x() - 1) / 2;
+  int y_dist = static_cast<int>(d.get_y() * 0.2);
+  int x_dist = static_cast<int>(d.get_x() * 0.2);
+  int c_y = c.first;
+  int c_x = c.second;
+
+  if (c_y < (mid_y - y_dist))
+  {
+    if (c_x < (mid_x - x_dist))
+    {
+      sid = DirectionLocationTextKeys::DIRECTION_LOCATION_NORTH_WEST;
+    }
+    else if (c_x > mid_x + x_dist)
+    {
+      sid = DirectionLocationTextKeys::DIRECTION_LOCATION_NORTH_EAST;
+    }
+    else
+    {
+      sid = DirectionLocationTextKeys::DIRECTION_LOCATION_NORTH;
+    }
+  }
+  else if (c_y > (mid_y + y_dist))
+  {
+    if (c_x < (mid_x - x_dist))
+    {
+      sid = DirectionLocationTextKeys::DIRECTION_LOCATION_SOUTH_WEST;
+    }
+    else if (c_x > mid_x + x_dist)
+    {
+      sid = DirectionLocationTextKeys::DIRECTION_LOCATION_SOUTH_EAST;
+    }
+    else
+    {
+      sid = DirectionLocationTextKeys::DIRECTION_LOCATION_SOUTH;
+    }
+  }
+  else
+  {
+    if (c_x < (mid_x - x_dist))
+    {
+      sid = DirectionLocationTextKeys::DIRECTION_LOCATION_WEST;
+    }
+    else if (c_x > mid_x + x_dist)
+    {
+      sid = DirectionLocationTextKeys::DIRECTION_LOCATION_EAST;
+    }
+    // Middle handled above
+  }
+
+  return sid;
 }
 
 #ifdef UNIT_TESTS

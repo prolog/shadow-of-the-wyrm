@@ -87,6 +87,7 @@ class CreatureConstants
 class CreatureEventScripts
 {
   public:
+    static const std::string CREATURE_EVENT_SCRIPT_CREATE;
     static const std::string CREATURE_EVENT_SCRIPT_DEATH;
     static const std::string CREATURE_EVENT_SCRIPT_ATTACK;
     static const std::string CREATURE_EVENT_SCRIPT_CHAT;
@@ -101,6 +102,7 @@ class CreatureEventScripts
     ~CreatureEventScripts();
 };
 
+constexpr auto CCREATURE_EVENT_SCRIPT_CREATE = "CREATURE_EVENT_SCRIPT_CREATE";
 constexpr auto CCREATURE_EVENT_SCRIPT_DEATH = "CREATURE_EVENT_SCRIPT_DEATH";
 constexpr auto CCREATURE_EVENT_SCRIPT_ATTACK = "CREATURE_EVENT_SCRIPT_ATTACK";
 constexpr auto CCREATURE_EVENT_SCRIPT_CHAT = "CREATURE_EVENT_SCRIPT_CHAT";
@@ -129,6 +131,7 @@ class CreatureID
     static const std::string CREATURE_ID_NOBLE;
     static const std::string CREATURE_ID_FISHERMAN;
     static const std::string CREATURE_ID_FARMER;
+    static const std::string CREATURE_ID_THATCHER;
     static const std::string CREATURE_ID_SMALL_CHILD;
     static const std::string CREATURE_ID_GUARD;
     static const std::string CREATURE_ID_BARTENDER;

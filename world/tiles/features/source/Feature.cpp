@@ -96,6 +96,11 @@ bool Feature::can_handle(const bool feature_tile_occupied) const
   return true;
 }
 
+bool Feature::can_be_prised(const bool feature_tile_occupied) const
+{
+  return (!feature_tile_occupied && material == MaterialType::MATERIAL_TYPE_WOOD);
+}
+
 bool Feature::can_open() const
 {
   return false;

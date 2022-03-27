@@ -25,3 +25,5 @@ class ThreatConstants
     ThreatConstants();
     ~ThreatConstants();
 };
+
+constexpr auto CACTIVE_THREAT_RATING = 300;

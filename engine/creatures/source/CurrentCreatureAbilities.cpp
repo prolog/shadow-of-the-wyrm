@@ -1,6 +1,7 @@
 #include "ActionTextKeys.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "CarryingCapacityCalculator.hpp"
+#include "ItemProperties.hpp"
 #include "MessageManagerFactory.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StringTable.hpp"
@@ -123,6 +124,19 @@ void CurrentCreatureAbilities::add_ability_message_for_sid(CreaturePtr creature,
 
   manager.add_new_message(StringTable::get(status_ability_message_sid));
   manager.send();
+}
+
+bool CurrentCreatureAbilities::can_prise(CreaturePtr creature) const
+{
+  bool prise = false;
+
+  if (creature != nullptr)
+  {
+    ItemPtr item = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
+    prise = (item && item->get_additional_property(ItemProperties::ITEM_PROPERTIES_PRISE) == std::to_string(true));
+  }
+
+  return prise;
 }
 
 #ifdef UNIT_TESTS

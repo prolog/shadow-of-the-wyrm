@@ -12,6 +12,8 @@
 // When not hidden, there is a small (Stealth/5 %) chance of a creature 
 // getting in a sneak attack, if the creature has any Stealth skill.  The 
 // minimum value is always 1%.
+// 
+// Every difference of 1 pt in speed gives an extra 2% chance.
 //
 // When the melee daggers skill is 100, there is a 30% chance of a sneak
 // attack.  This adds on to the existing chance from stealth.
@@ -45,11 +47,18 @@ int StealthCalculator::calculate_pct_chance_sneak_attack(CreaturePtr attacking_c
         {
           pct_chance += 30;
         }
+
+        int speed_diff = attacked_creature->get_speed().get_current() - attacking_creature->get_speed().get_current();
+
+        if (speed_diff > 0)
+        {
+          pct_chance += (2 * speed_diff);
+        }
       }
     }
   }
 
-  return pct_chance;
+  return std::min<int>(100, pct_chance);
 }
 
 #ifdef UNIT_TESTS

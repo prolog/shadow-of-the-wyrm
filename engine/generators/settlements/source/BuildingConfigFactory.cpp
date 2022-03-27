@@ -20,15 +20,15 @@ BuildingConfigFactory::BuildingConfigFactory()
 
 void BuildingConfigFactory::initialize_feature_items()
 {
-  feature_items = {{ClassIdentifier::CLASS_ID_BED,            {{ItemIdKeys::ITEM_ID_CLAY_POT, 80},
-                                                               {ItemIdKeys::ITEM_ID_QUILL, 10},
-                                                               {ItemIdKeys::ITEM_ID_INKPOT, 10},
-                                                               {ItemIdKeys::ITEM_ID_BLANK_SCROLL, 5}}},
+  feature_items = {{ClassIdentifier::CLASS_ID_BED,            {{ItemIdKeys::ITEM_ID_CLAY_POT, 90},
+                                                               {ItemIdKeys::ITEM_ID_QUILL, 15},
+                                                               {ItemIdKeys::ITEM_ID_INKPOT, 15},
+                                                               {ItemIdKeys::ITEM_ID_BLANK_SCROLL, 10}}},
                    {ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, {{ItemIdKeys::ITEM_ID_WHITEFLOWER, 100}}},
-                   {ClassIdentifier::CLASS_ID_FORGE,          {{ItemIdKeys::ITEM_ID_STEEL_INGOT, 20},
+                   {ClassIdentifier::CLASS_ID_FORGE,          {{ItemIdKeys::ITEM_ID_STEEL_INGOT, 25},
                                                                {ItemIdKeys::ITEM_ID_IRON_INGOT, 80}}},
-                   {ClassIdentifier::CLASS_ID_KILN,           {{ItemIdKeys::ITEM_ID_CLAY, 50},
-                                                               {ItemIdKeys::ITEM_ID_CLAY_POT, 50}}},
+                   {ClassIdentifier::CLASS_ID_KILN,           {{ItemIdKeys::ITEM_ID_CLAY, 80},
+                                                               {ItemIdKeys::ITEM_ID_CLAY_POT, 80}}},
                    {ClassIdentifier::CLASS_ID_PULPER,         {{ItemIdKeys::ITEM_ID_BLANK_SCROLL, 100},
                                                                {ItemIdKeys::ITEM_ID_QUILL, 80},
                                                                {ItemIdKeys::ITEM_ID_INKPOT, 80}}}};
@@ -37,6 +37,8 @@ void BuildingConfigFactory::initialize_feature_items()
 void BuildingConfigFactory::initialize_feature_creatures()
 {
   feature_creatures = {{ClassIdentifier::CLASS_ID_BED,            {{CreatureID::CREATURE_ID_COMMONER, 80},
+                                                                   {CreatureID::CREATURE_ID_THATCHER, 20},
+                                                                   {CreatureID::CREATURE_ID_TANNER, 20},
                                                                    {CreatureID::CREATURE_ID_FARMER, 20},
                                                                    {CreatureID::CREATURE_ID_FISHERMAN, 20},
                                                                    {CreatureID::CREATURE_ID_NOBLE, 10},

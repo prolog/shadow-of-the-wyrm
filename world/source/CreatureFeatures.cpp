@@ -21,6 +21,7 @@ CreatureEventScripts::~CreatureEventScripts()
 {
 }
 
+const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_CREATE = "CREATURE_EVENT_SCRIPT_CREATE";
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH = "CREATURE_EVENT_SCRIPT_DEATH";
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK = "CREATURE_EVENT_SCRIPT_ATTACK";
 const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT = "CREATURE_EVENT_SCRIPT_CHAT";
@@ -55,6 +56,7 @@ const string CreatureID::CREATURE_ID_COMMONER = "_commoner";
 const string CreatureID::CREATURE_ID_NOBLE = "_noble";
 const string CreatureID::CREATURE_ID_FISHERMAN = "_fisherman";
 const string CreatureID::CREATURE_ID_FARMER = "_farmer";
+const string CreatureID::CREATURE_ID_THATCHER = "_thatcher";
 const string CreatureID::CREATURE_ID_SMALL_CHILD = "_small_child";
 const string CreatureID::CREATURE_ID_GUARD = "_guard";
 const string CreatureID::CREATURE_ID_BARTENDER = "_bartender";

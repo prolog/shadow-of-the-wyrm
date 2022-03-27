@@ -7,6 +7,7 @@
 using namespace std;
 
 const int ToHitCalculator::NWP_SKILL_BONUS_DIVISOR = 5;
+const int ToHitCalculator::BLESS_STATUS_BONUS = 10;
 
 ToHitCalculator::ToHitCalculator()
 : attack_type(AttackType::ATTACK_TYPE_MELEE_PRIMARY)
@@ -100,3 +101,38 @@ int ToHitCalculator::get_skills_bonus(CreaturePtr creature)
 
   return skills_bonus;
 }
+
+int ToHitCalculator::get_status_bonus(CreaturePtr creature)
+{
+  int status_bonus = 0;
+
+  if (creature != nullptr)
+  {
+    WeaponManager wm;
+    WeaponPtr weapon = wm.get_weapon(creature, attack_type);
+
+    if (weapon != nullptr)
+    {
+      ItemStatus status = weapon->get_status();
+
+      switch (status)
+      {
+        case ItemStatus::ITEM_STATUS_BLESSED:
+          status_bonus = BLESS_STATUS_BONUS;
+          break;
+        case ItemStatus::ITEM_STATUS_CURSED:
+          status_bonus = BLESS_STATUS_BONUS * -1;
+          break;
+        case ItemStatus::ITEM_STATUS_UNCURSED:
+        default:
+          break;
+      }
+    }
+    else
+    {
+      status_bonus = BLESS_STATUS_BONUS / 2;
+    }
+  }
+
+  return status_bonus;
+  }

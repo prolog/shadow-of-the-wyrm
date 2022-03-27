@@ -2,6 +2,7 @@
 // can be specified (curses-based, graphical tiles, etc).
 #pragma once
 #include <string>
+#include <utility>
 #include "Animation.hpp"
 #include "AnimationFactory.hpp"
 #include "DisplayConstants.hpp"
@@ -24,8 +25,10 @@ class Display : public ISerializable
     virtual ~Display() {};
     bool operator==(const Display& d) const;
 
-	  virtual bool create() = 0;
+	  virtual std::pair<bool, std::string> create() = 0;
 	  virtual void tear_down() = 0;
+
+    virtual bool display_splash(const bool enabled) = 0;
 
     virtual std::string get_name() const = 0;
 

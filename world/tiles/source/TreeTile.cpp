@@ -24,6 +24,20 @@ std::string TreeTile::get_default_tree_tile_description_sid() const
   return TileTextKeys::TILE_DESC_TREE;
 }
 
+TileType TreeTile::get_decomposition_tile_type() const
+{
+  return TileType::TILE_TYPE_FIELD;
+}
+
+vector<pair<pair<int, int>, std::string>> TreeTile::get_decomposition_item_ids() const
+{
+  vector<pair<pair<int, int>, string>> decomp_ids = { {{2,3}, ItemIdKeys::ITEM_ID_LUMBER},
+                                                      {{2,3}, ItemIdKeys::ITEM_ID_BOUGH},
+                                                      {{2,3}, ItemIdKeys::ITEM_ID_BRANCH} };
+
+  return decomp_ids;
+}
+
 Tile* TreeTile::clone()
 {
   return new TreeTile(*this);

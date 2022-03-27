@@ -27,6 +27,41 @@ DigAction::DigAction()
 {
 }
 
+// Knock a few stones loose on and around a particular tile
+ActionCostValue DigAction::dig_ceiling(CreaturePtr creature, MapPtr map)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
+  if (creature != nullptr && map != nullptr)
+  {
+    auto tile_map = MapUtils::get_adjacent_and_creature_tiles(map, creature);
+    for (auto& t_pair : tile_map)
+    {
+      TilePtr tile = t_pair.second;
+
+      if (tile != nullptr && !tile->get_is_blocking_for_item() && RNG::percent_chance(75))
+      {
+        string item_id = ItemIdKeys::ITEM_ID_STONE;
+
+        if (RNG::percent_chance(25))
+        {
+          item_id = ItemIdKeys::ITEM_ID_ROCK;
+        }
+
+        ItemPtr item = ItemManager::create_item(item_id, RNG::range(1, 4));
+        tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+      }
+    }
+
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_CEILING));
+
+    acv = ActionCostConstants::DEFAULT;
+  }
+
+  return acv;
+}
+
 // Dig on a particular tile.
 ActionCostValue DigAction::dig_within(CreaturePtr creature, ItemPtr dig_item, MapPtr map, TilePtr tile) const
 {

@@ -25,6 +25,8 @@ class WorldGenerator : public SOTW::Generator
     virtual MapPtr generate() override;
     virtual MapPtr generate(const Dimensions& dim) override;
 
+    virtual void   set_village_coordinates(MapPtr map);
+
   protected:
     virtual MapType get_map_type() const override;
     virtual MapPtr generate_random_islands(MapPtr map);

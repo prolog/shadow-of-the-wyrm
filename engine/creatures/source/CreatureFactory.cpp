@@ -4,6 +4,7 @@
 #include "ArcanaPointsCalculator.hpp"
 #include "ClassManager.hpp"
 #include "Conversion.hpp"
+#include "CreateScript.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureFactory.hpp"
 #include "CreatureGenerationConstants.hpp"
@@ -203,7 +204,47 @@ CreaturePtr CreatureFactory::create_by_creature_id
 
     CreatureUtils::adjust_str_until_unburdened(creature);
   }
-      
+
+  // If the current map is null, create a "callback map" to let the Lua scripts
+  // update the creature.  Temporarily add the callback map to the registry,
+  // and remove it after.
+  MapPtr callback_map = current_map;
+  bool temp_map = false;
+  string callback_map_id = "temp_callback_map";
+
+  if (callback_map == nullptr)
+  {
+    Dimensions dim;
+    callback_map = std::make_shared<Map>(dim);
+    callback_map->set_map_id(callback_map_id);
+    Game::instance().get_map_registry_ref().set_map(callback_map_id, callback_map);
+    temp_map = true;
+  }
+
+  if (callback_map != nullptr && creature != nullptr && creature->has_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CREATE))
+  {
+    ScriptDetails sd = creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CREATE);
+
+    if (RNG::percent_chance(sd.get_chance()))
+    {
+      // Briefly add the creature to the map's temp list of creatures so the 
+      // creature can be updated.  Do whatever needs to be done and then
+      // remove it after.
+      CreatureMap& creatures = callback_map->get_creatures_ref();
+      creatures[creature->get_id()] = creature;
+
+      CreateScript create;
+      create.execute(Game::instance().get_script_engine_ref(), sd.get_script(), creature, callback_map);
+
+      creatures.erase(creature->get_id());
+    }
+  }
+
+  if (temp_map)
+  {
+    Game::instance().get_map_registry_ref().remove_map(callback_map_id);
+  }
+
   return creature;
 }
 
@@ -724,7 +765,7 @@ void CreatureFactory::set_magic_skills_based_on_spells(CreaturePtr creature)
     map<SkillType, bool> spell_types;
     auto skm = sk.get_known_spells();
 
-    for (const auto sk_it : skm)
+    for (const auto& sk_it : skm)
     {
       const string& spell_id = sk_it.first;
       auto sp_it = spells.find(spell_id);

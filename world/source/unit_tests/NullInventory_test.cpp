@@ -125,6 +125,40 @@ TEST(SW_World_NullInventory, merge_or_add)
   EXPECT_EQ(0, ni.size());
 }
 
+TEST(SW_World_NullInventory, merge_or_add_whole_inventory)
+{
+  SpellbookPtr item = std::make_shared<Spellbook>();
+  item->set_base_id("abc212");
+  item->set_description_sid("ABC123");
+  item->set_effect_type(EffectType::EFFECT_TYPE_BLESS);
+
+  std::shared_ptr<NullInventory> ni = std::make_shared<NullInventory>();
+  ni->add(item);
+
+  NullInventory ni2;
+  ni2.merge_or_add(ni, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+
+  EXPECT_TRUE(ni->empty());
+  EXPECT_TRUE(ni2.empty());
+}
+
+TEST(SW_World_NullInventory, transfer_to)
+{
+  SpellbookPtr item = std::make_shared<Spellbook>();
+  item->set_base_id("abc212");
+  item->set_description_sid("ABC123");
+  item->set_effect_type(EffectType::EFFECT_TYPE_BLESS);
+
+  std::shared_ptr<NullInventory> ni = std::make_shared<NullInventory>();
+  ni->add(item);
+
+  std::shared_ptr<NullInventory> ni2 = std::make_shared<NullInventory>();
+  ni->transfer_to(ni2);
+
+  EXPECT_TRUE(ni->empty());
+  EXPECT_TRUE(ni2->empty());
+}
+
 TEST(SW_World_NullInventory, set_additional_property)
 {
   NullInventory ni;

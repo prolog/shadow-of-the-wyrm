@@ -334,6 +334,19 @@ AgeInfo Race::get_age_info() const
   return age_info;
 }
 
+bool Race::is_valid_starting_age(const int age) const
+{
+  auto max_age = age_info.get_maximum_age();
+  auto min_start = age_info.get_starting_age();
+
+  if (age >= min_start.get_min() && age < max_age.get_min())
+  {
+    return true;
+  }
+
+  return false;
+}
+
 void Race::set_starting_strength(const Statistic& new_starting_strength)
 {
   starting_strength = new_starting_strength;

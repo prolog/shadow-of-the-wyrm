@@ -1565,9 +1565,6 @@
     <ClInclude Include="engine\effects\include\AdditionalEffectMessage.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\effects\include\AdditionalEffectMessages.hpp">
-      <Filter>Header Files\engine\effects\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\effects\include\Effect.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
@@ -2012,7 +2009,7 @@
     <ClInclude Include="engine\calculators\include\DangerLevelCalculatorFactory.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\calculators\include\IDangerLevelCalculator.hpp">
+    <ClInclude Include="engine\calculators\include\DangerLevelCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\WorldMapDangerLevelCalculator.hpp">
@@ -4448,6 +4445,21 @@
     <ClInclude Include="engine\calculators\include\MeleeWeaponRangeCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\AgeSelectionScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\DangerLevelProperties.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\DirectionLocationTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\scripting\include\CreateScript.hpp">
+      <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5150,9 +5162,6 @@
       <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\effects\source\AdditionalEffectMessage.cpp">
-      <Filter>Source Files\engine\effects\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\effects\source\AdditionalEffectMessages.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\effects\source\Effect.cpp">
@@ -9001,5 +9010,29 @@
     <ClCompile Include="engine\calculators\source\unit_tests\MeleeWeaponRangeCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="engine\screens\source\AgeSelectionScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\DangerLevelCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\DangerLevelCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\DangerLevelProperties.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\DirectionLocationTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripting\source\CreateScript.cpp">
+      <Filter>Source Files\engine\scripting\source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ShadowOfTheWyrm.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="sotw_icon.ico" />
   </ItemGroup>
 </Project>

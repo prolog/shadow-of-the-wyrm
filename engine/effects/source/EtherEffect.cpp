@@ -1,4 +1,3 @@
-#include "AdditionalEffectMessages.hpp"
 #include "Creature.hpp"
 #include "EtherEffect.hpp"
 #include "EffectTextKeys.hpp"
@@ -6,8 +5,7 @@ using std::string;
 
 EtherEffect::EtherEffect()
 {
-  AdditionalEffectMessagePtr sweet_taste = std::make_shared<SweetTasteEffectMessage>();
-  additional_effect_messages.push_back(sweet_taste);
+  additional_effect_messages.push_back(EffectTextKeys::EFFECT_SWEET_TASTE);
 }
 
 string EtherEffect::get_effect_identification_message(std::shared_ptr<Creature> creature) const

@@ -2,10 +2,10 @@
 #include "ItemTypes.hpp"
 
 const int FIELD_TILE_UNDEAD_PCT = 1;
-const int FIELD_TILE_ITEM_PCT = 2;
+const int FIELD_TILE_ITEM_PCT = 50;
 
 FieldTile::FieldTile()
-: WorldMapTile({ FIELD_TILE_UNDEAD_PCT, FIELD_TILE_ITEM_PCT, {ItemIdKeys::ITEM_ID_ROOT} })
+: WorldMapTile({ FIELD_TILE_UNDEAD_PCT, FIELD_TILE_ITEM_PCT, {ItemIdKeys::ITEM_ID_SOD_BRICK} })
 {
 }
 

@@ -27,6 +27,10 @@ void FenceManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr fe
     {
       msg_sid = ActionTextKeys::ACTION_FENCE_BREAK_SLAT;
       feature_tile->remove_feature();
+
+      ItemManager im;
+      ItemPtr lumber = im.create_item(ItemIdKeys::ITEM_ID_LUMBER);
+      feature_tile->get_items()->merge_or_add(lumber, InventoryAdditionType::INVENTORY_ADDITION_BACK);
     }
     else
     {

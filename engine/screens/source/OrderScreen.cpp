@@ -9,8 +9,8 @@
 
 using namespace std;
 
-OrderScreen::OrderScreen(DisplayPtr new_display)
-: Screen(new_display)
+OrderScreen::OrderScreen(DisplayPtr new_display, const bool new_followers_exist_in_fov, const bool new_can_summon)
+: Screen(new_display), followers_exist_in_fov(new_followers_exist_in_fov), can_summon(new_can_summon)
 {
   initialize();
 }
@@ -22,8 +22,24 @@ void OrderScreen::initialize()
   vector<ScreenComponentPtr> order_screen;
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
-  vector<string> options_v = {OrderTextKeys::ORDER_ATTACK, OrderTextKeys::ORDER_FOLLOW, OrderTextKeys::ORDER_FREEZE, OrderTextKeys::ORDER_AT_EASE};
+  vector<string> options_v = {};
   int cur_id = 0;
+
+  if (followers_exist_in_fov)
+  {
+    options_v = {OrderTextKeys::ORDER_ATTACK, OrderTextKeys::ORDER_FOLLOW, OrderTextKeys::ORDER_FREEZE, OrderTextKeys::ORDER_AT_EASE};
+  }
+
+  if (can_summon)
+  {
+    // If there are no creatures in view, remove the options to attack/follow/freeze/etc.
+    if (options_v.empty())
+    {
+      cur_id = 4;
+    }
+
+    options_v.push_back(OrderTextKeys::ORDER_SUMMON);
+  }
 
   for (const auto& option_s : options_v)
   {

@@ -1123,13 +1123,31 @@ DecisionStrategyPtr Creature::get_decision_strategy_uptr()
   return std::move(decision_strategy);
 }
 
-void Creature::set_leader_and_follow(const std::string& leader_id)
+void Creature::set_leader_and_at_ease(const std::string& leader_id)
 {
   set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID, leader_id);
 
   if (decision_strategy != nullptr)
   {
-    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID, leader_id);
+    ThreatRatings& threats = decision_strategy->get_threats_ref();
+    auto rating = threats.has_threat(leader_id);
+
+    if (rating.first)
+    {
+      decision_strategy->get_threats_ref().remove_threat(leader_id, rating.second);
+    }
+
+    decision_strategy->set_property(DecisionStrategyProperties::DECISION_STRATEGY_AT_EASE, std::to_string(true));
+  }
+}
+
+void Creature::remove_leader()
+{
+  remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+
+  if (decision_strategy != nullptr)
+  {
+    decision_strategy->remove_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID);
   }
 }
 

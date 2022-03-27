@@ -1,5 +1,9 @@
 module(..., package.seeall)
 
+function make_coordinate_key(y, x)
+  return tostring(y) .. "-" .. tostring(x)
+end
+
 function make_coordinates(r1, r2, c1, c2)
   local coords = {}
   for y = r1, r2 do

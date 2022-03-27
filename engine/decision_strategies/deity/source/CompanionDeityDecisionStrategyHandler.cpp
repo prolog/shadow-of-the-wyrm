@@ -76,8 +76,8 @@ DeityDecisionImplications CompanionDeityDecisionStrategyHandler::handle_decision
 
     if (gen_creature != nullptr)
     {
-      gen_creature->set_leader_and_follow(creature->get_id());
-      set_companion_bonuses(gen_creature);
+      gen_creature->set_leader_and_at_ease(creature->get_id());
+      set_companion_bonuses(creature, gen_creature);
 
       HostilityManager hm;
       hm.set_hostility_to_player(gen_creature, false);
@@ -96,11 +96,11 @@ DeityDecisionImplications CompanionDeityDecisionStrategyHandler::handle_decision
   return get_deity_decision_implications(creature, tile);
 }
 
-void CompanionDeityDecisionStrategyHandler::set_companion_bonuses(CreaturePtr companion)
+void CompanionDeityDecisionStrategyHandler::set_companion_bonuses(CreaturePtr creature, CreaturePtr companion)
 {
   if (companion != nullptr)
   {
-    DivineCompanionCalculator dcc;
+    DivineCompanionCalculator dcc(creature);
     Damage d = companion->get_base_damage();
 
     Statistic calc_hp = dcc.calculate_hp(companion->get_hit_points());

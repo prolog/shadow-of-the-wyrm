@@ -115,6 +115,7 @@ class Race
     
     void set_age_info(const AgeInfo& age);
     AgeInfo get_age_info() const;
+    bool is_valid_starting_age(const int age) const;
 
     void set_starting_strength(const Statistic& new_starting_strength);
     Statistic get_starting_strength() const;

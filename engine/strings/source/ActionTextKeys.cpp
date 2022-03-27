@@ -43,6 +43,11 @@ string ActionTextKeys::get_general_action_message(const string& desc_sid, const 
   return message;
 }
 
+string ActionTextKeys::get_prise_message(const string& desc_sid, const bool is_player)
+{
+  return get_general_action_message(desc_sid, "", ACTION_PRISE_PLAYER, ACTION_PRISE_MONSTER, is_player);
+}
+
 string ActionTextKeys::get_evoke_message(const string& desc_sid, const string& wand_desc, const bool is_player)
 {
   return get_general_action_message(desc_sid, wand_desc, ACTION_EVOKE_PLAYER, ACTION_EVOKE_MONSTER, is_player);
@@ -558,6 +563,19 @@ const string ActionTextKeys::ACTION_DROP_NO_ITEM_SELECTED      = "ACTION_DROP_NO
 const string ActionTextKeys::ACTION_DROP_QUANTITY_PROMPT       = "ACTION_DROP_QUANTITY_PROMPT";
 const string ActionTextKeys::ACTION_DROP_INVALID_QUANTITY      = "ACTION_DROP_INVALID_QUANTITY";
 const string ActionTextKeys::ACTION_DROP_WATER                 = "ACTION_DROP_WATER";
+const string ActionTextKeys::ACTION_PROMPT_BUILD_WALL          = "ACTION_PROMPT_BUILD_WALL";
+const string ActionTextKeys::ACTION_BUILD_BLIND                = "ACTION_BUILD_BLIND";
+const string ActionTextKeys::ACTION_BUILD_WALL                 = "ACTION_BUILD_WALL";
+const string ActionTextKeys::ACTION_BUILD_WALL_NO_TILE         = "ACTION_BUILD_WALL_NO_TILE";
+const string ActionTextKeys::ACTION_BUILD_WALL_PRESENT         = "ACTION_BUILD_WALL_PRESENT";
+const string ActionTextKeys::ACTION_BUILD_WALL_CREATURE_PRESENT = "ACTION_BUILD_WALL_CREATURE_PRESENT";
+const string ActionTextKeys::ACTION_BUILD_WALL_FEATURE_PRESENT = "ACTION_BUILD_WALL_FEATURE_PRESENT";
+const string ActionTextKeys::ACTION_BUILD_WALL_WATER           = "ACTION_BUILD_WALL_WATER";
+const string ActionTextKeys::ACTION_BUILD_WALL_AIR             = "ACTION_BUILD_WALL_AIR";
+const string ActionTextKeys::ACTION_BUILD_WALL_DISPLACE_ITEMS  = "ACTION_BUILD_WALL_DISPLACE_ITEMS";
+const string ActionTextKeys::ACTION_PROMPT_BUILD_GRAVE         = "ACTION_PROMPT_BUILD_GRAVE";
+const string ActionTextKeys::ACTION_BUILD_GRAVE                = "ACTION_BUILD_GRAVE";
+const string ActionTextKeys::ACTION_BUILD_FLOOR                = "ACTION_BUILD_FLOOR";
 const string ActionTextKeys::ACTION_PICK_UP_NOTHING_ON_GROUND  = "ACTION_PICK_UP_NOTHING_ON_GROUND";
 const string ActionTextKeys::ACTION_PICK_UP_MAX_ITEMS          = "ACTION_PICK_UP_MAX_ITEMS";
 const string ActionTextKeys::ACTION_PICK_UP_MAX_WEIGHT         = "ACTION_PICK_UP_MAX_WEIGHT";
@@ -640,6 +658,7 @@ const string ActionTextKeys::ACTION_FORGE_SUCCESSFUL           = "ACTION_FORGE_S
 const string ActionTextKeys::ACTION_JEWELER_WORKBENCH_NO_JEWELER_SKILL = "ACTION_JEWELER_WORKBENCH_NO_JEWELER_SKILL";
 const string ActionTextKeys::ACTION_SKIN_WORLD_MAP             = "ACTION_SKIN_WORLD_MAP";
 const string ActionTextKeys::ACTION_SKIN_NO_CORPSES            = "ACTION_SKIN_NO_CORPSES";
+const string ActionTextKeys::ACTION_SKIN_NO_SKIN               = "ACTION_SKIN_NO_SKIN";
 const string ActionTextKeys::ACTION_SKIN_MANGLED_CORPSE        = "ACTION_SKIN_MANGLED_CORPSE";
 const string ActionTextKeys::ACTION_SKIN_SUCCESSFUL            = "ACTION_SKIN_SUCCESSFUL";
 const string ActionTextKeys::ACTION_SKIN_NO_SKINS              = "ACTION_SKIN_NO_SKINS";
@@ -660,6 +679,7 @@ const string ActionTextKeys::ACTION_DIG_STONE_DUST             = "ACTION_DIG_STO
 const string ActionTextKeys::ACTION_DIG_CANNOT_DIG             = "ACTION_DIG_CANNOT_DIG";
 const string ActionTextKeys::ACTION_DIG_CANNOT_DIG_ON_SUPER_TYPE = "ACTION_DIG_CANNOT_DIG_ON_SUPER_TYPE";
 const string ActionTextKeys::ACTION_DIG_TOO_HARD               = "ACTION_DIG_TOO_HARD";
+const string ActionTextKeys::ACTION_DIG_CEILING                = "ACTION_DIG_CEILING";
 const string ActionTextKeys::ACTION_RESTING                    = "ACTION_RESTING";
 const string ActionTextKeys::ACTION_HANDLE_DEFAULT             = "ACTION_HANDLE_DEFAULT";
 const string ActionTextKeys::ACTION_HANDLE_ALTAR               = "ACTION_HANDLE_ALTAR";
@@ -733,8 +753,11 @@ const string ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_SDL_WINDOWED = "ACTION_TOG
 const string ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_SDL_DESKTOP = "ACTION_TOGGLE_FULLSCREEN_SDL_DESKTOP";
 const string ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_SDL_TRUE = "ACTION_TOGGLE_FULLSCREEN_SDL_TRUE";
 const string ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_CURSES   = "ACTION_TOGGLE_FULLSCREEN_CURSES";
+const string ActionTextKeys::ACTION_HIDE_HOLE                  = "ACTION_HIDE_HOLE";
 
 // Protected
+const string ActionTextKeys::ACTION_PRISE_PLAYER               = "ACTION_PRISE_PLAYER";
+const string ActionTextKeys::ACTION_PRISE_MONSTER              = "ACTION_PRISE_MONSTER";
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";
 const string ActionTextKeys::ACTION_EVOKE_MONSTER              = "ACTION_EVOKE_MONSTER";
 const string ActionTextKeys::ACTION_QUAFF_PLAYER               = "ACTION_QUAFF_PLAYER";

@@ -32,6 +32,7 @@ vector<pair<pair<int, int>, string>> RockTile::get_decomposition_item_ids() cons
                                                  {{1,30}, ItemIdKeys::ITEM_ID_IRON_INGOT},
                                                  {{1,50}, ItemIdKeys::ITEM_ID_STEEL_INGOT},
                                                  {{1,10}, ItemIdKeys::ITEM_ID_COAL},
+                                                 {{1,6}, ItemIdKeys::ITEM_ID_STONE_BLOCK},
                                                  {{1,6}, ItemIdKeys::ITEM_ID_STONE},
                                                  {{1,6}, ItemIdKeys::ITEM_ID_ROCK}};
   return result;

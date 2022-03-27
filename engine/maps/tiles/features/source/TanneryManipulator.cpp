@@ -150,14 +150,17 @@ ItemPtr TanneryManipulator::create_hide_equipment(CreaturePtr creature, ItemPtr 
       if (wearable)
       {
         WeaponPtr weapon = dynamic_pointer_cast<Weapon>(item);
+        int bonus_pts = 0;
 
         if (weapon != nullptr)
         {
           int th_bonus = weapon->get_to_hit() + RNG::range(tc.calculate_combat_bonus_min(creature), tc.calculate_combat_bonus_max(creature));
+          bonus_pts += th_bonus;
 
           Damage d = weapon->get_damage();
           int damage_bonus = RNG::range(tc.calculate_combat_bonus_min(creature), tc.calculate_combat_bonus_max(creature));
           int damage_type_bonus = d.get_effect_bonus() + RNG::range(tc.calculate_combat_bonus_min(creature), tc.calculate_combat_bonus_max(creature));
+          bonus_pts += (2 * damage_bonus) + damage_type_bonus;
 
           weapon->set_to_hit(th_bonus);
           weapon->set_addl_damage(damage_bonus);
@@ -174,13 +177,18 @@ ItemPtr TanneryManipulator::create_hide_equipment(CreaturePtr creature, ItemPtr 
             hide_soak += RNG::range(0, String::to_int(selected_skin->get_additional_property(SkinningConstants::SKIN_SOAK)));
           }
 
+          bonus_pts += hide_evade + (2 * hide_soak);
+
           wearable->set_evade(hide_evade);
           wearable->set_soak(hide_soak);
         }
 
         item->set_resistances(tc.calculate_item_resistances(creature, selected_skin->get_resistances()));
+        bonus_pts += static_cast<int>(100 * item->get_resistances().get_total());
+
         item->set_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID));
     		item->set_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID));
+        item->set_value(item->get_value() + tc.calculate_value_bonus(bonus_pts));
 
         creature->get_skills().mark(SkillType::SKILL_GENERAL_TANNING);
 	    }

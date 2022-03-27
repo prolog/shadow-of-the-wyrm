@@ -8,6 +8,9 @@ class TreeTile : public Tile
     
     std::string get_tile_description_sid() const override;
 
+    virtual TileType get_decomposition_tile_type() const override;
+    virtual std::vector<std::pair<std::pair<int, int>, std::string>> get_decomposition_item_ids() const override;
+
     virtual Tile* clone() override;
 
   private:

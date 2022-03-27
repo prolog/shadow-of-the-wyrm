@@ -1,7 +1,7 @@
 #pragma once
-#include "IDangerLevelCalculator.hpp"
+#include "DangerLevelCalculator.hpp"
 
-class DepthBasedDangerLevelCalculator : public IDangerLevelCalculator
+class DepthBasedDangerLevelCalculator : public DangerLevelCalculator
 {
   public:
     DepthBasedDangerLevelCalculator(const ExitMovementType new_emt);

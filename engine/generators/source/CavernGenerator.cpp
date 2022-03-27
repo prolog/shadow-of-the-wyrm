@@ -1,17 +1,16 @@
 #include <set>
 #include "CavernGenerator.hpp"
 #include "CellularAutomataGenerator.hpp"
+#include "Conversion.hpp"
 #include "Game.hpp"
 #include "GeneratorUtils.hpp"
 #include "MapExitUtils.hpp"
+#include "MapProperties.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
-
-int CavernGenerator::MIN_NUM_TRAPS = 0;
-int CavernGenerator::MAX_NUM_TRAPS = 6;
 
 CavernGenerator::CavernGenerator(const string& new_map_exit_id)
 : Generator(new_map_exit_id, TileType::TILE_TYPE_CAVERN)
@@ -30,7 +29,6 @@ MapPtr CavernGenerator::generate(const Dimensions& dimensions)
   reset_cavern_edges(result_map);
   MapComponents cc = get_cavern_components(result_map);
   connect_cavern_components(result_map, cc);
-  generate_traps(result_map);
 
   update_depth_details(result_map);
   generate_staircases(result_map);
@@ -243,15 +241,6 @@ void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, c
       break;
     }
   }
-}
-
-// Goblins and other tricksy things that live underground can set traps 
-// almost anywhere.  Instead of generating them in rooms, like dungeons,
-// generate them in any accessible tile.
-void CavernGenerator::generate_traps(MapPtr map)
-{
-  int num_traps = RNG::range(MIN_NUM_TRAPS, MAX_NUM_TRAPS);
-  GeneratorUtils::generate_traps(map, num_traps);
 }
 
 MapType CavernGenerator::get_map_type() const

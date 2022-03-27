@@ -128,6 +128,8 @@ class MapUtils
     static void set_coastline_generator_dirs(SOTW::Generator* generator, const std::vector<Direction>& coastline_dirs);
 
     static void update_creatures(MapPtr map);
+    
+    static std::string get_coordinate_location_sid(const Coordinate& c, const Dimensions& size);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);

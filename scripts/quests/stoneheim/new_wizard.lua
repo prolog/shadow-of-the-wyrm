@@ -10,7 +10,11 @@ local function setup_raid()
   for i = 1, 60 do
     local y = RNG_range(1, 18)
     local x = RNG_range(1, 79)
-    add_creature_to_map(creature_ids[RNG_range(1, #creature_ids)], y, x)
+    local cr_id = add_creature_to_map(creature_ids[RNG_range(1, #creature_ids)], y, x)
+
+    if string.len(cr_id) > 0 then
+      set_creature_additional_property(cr_id, QUEST_STONEHEIM_RAID_CREATURE, "1")
+    end
   end
 
   set_creature_additional_property(PLAYER_ID, QUEST_STONEHEIM_RAID_INITIATED, "1")

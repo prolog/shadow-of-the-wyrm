@@ -8,6 +8,7 @@
 class ActionTextKeys
 {
   public:
+    static std::string get_prise_message(const std::string& desc_sid, const bool is_player);
     static std::string get_evoke_message(const std::string& desc_sid, const std::string& wand_desc, const bool is_player);
     static std::string get_quaff_message(const std::string& desc_sid, const std::string& potion_desc, const bool is_player);
     static std::string get_quaff_confirmation_message(const std::string& consumable_desc);
@@ -64,6 +65,19 @@ class ActionTextKeys
     static const std::string ACTION_DROP_QUANTITY_PROMPT;
     static const std::string ACTION_DROP_INVALID_QUANTITY;
     static const std::string ACTION_DROP_WATER;
+    static const std::string ACTION_PROMPT_BUILD_WALL;
+    static const std::string ACTION_BUILD_BLIND;
+    static const std::string ACTION_BUILD_WALL;
+    static const std::string ACTION_BUILD_WALL_NO_TILE;
+    static const std::string ACTION_BUILD_WALL_PRESENT;
+    static const std::string ACTION_BUILD_WALL_CREATURE_PRESENT;
+    static const std::string ACTION_BUILD_WALL_FEATURE_PRESENT;
+    static const std::string ACTION_BUILD_WALL_WATER;
+    static const std::string ACTION_BUILD_WALL_AIR;
+    static const std::string ACTION_BUILD_WALL_DISPLACE_ITEMS;
+    static const std::string ACTION_PROMPT_BUILD_GRAVE;
+    static const std::string ACTION_BUILD_GRAVE;
+    static const std::string ACTION_BUILD_FLOOR;
     static const std::string ACTION_PICK_UP_NOTHING_ON_GROUND;
     static const std::string ACTION_PICK_UP_MAX_ITEMS;
     static const std::string ACTION_PICK_UP_MAX_WEIGHT;
@@ -146,6 +160,7 @@ class ActionTextKeys
     static const std::string ACTION_JEWELER_WORKBENCH_NO_JEWELER_SKILL;
     static const std::string ACTION_SKIN_WORLD_MAP;
     static const std::string ACTION_SKIN_NO_CORPSES;
+    static const std::string ACTION_SKIN_NO_SKIN;
     static const std::string ACTION_SKIN_MANGLED_CORPSE;
     static const std::string ACTION_SKIN_SUCCESSFUL;
     static const std::string ACTION_SKIN_NO_SKINS;
@@ -166,6 +181,7 @@ class ActionTextKeys
     static const std::string ACTION_DIG_CANNOT_DIG;
     static const std::string ACTION_DIG_CANNOT_DIG_ON_SUPER_TYPE;
     static const std::string ACTION_DIG_TOO_HARD;
+    static const std::string ACTION_DIG_CEILING;
     static const std::string ACTION_RESTING;
     static const std::string ACTION_HANDLE_DEFAULT;
     static const std::string ACTION_HANDLE_ALTAR;
@@ -245,6 +261,7 @@ class ActionTextKeys
     static const std::string ACTION_TOGGLE_FULLSCREEN_SDL_DESKTOP;
     static const std::string ACTION_TOGGLE_FULLSCREEN_SDL_TRUE;
     static const std::string ACTION_TOGGLE_FULLSCREEN_CURSES;
+    static const std::string ACTION_HIDE_HOLE;
 
   protected:
     ActionTextKeys();
@@ -253,6 +270,8 @@ class ActionTextKeys
     static std::string get_general_message(const std::string& desc_sid, const std::string& player_message_sid, const std::string& monster_message_sid, const bool is_player);
     static std::string get_general_action_message(const std::string& desc_sid, const std::string& item_desc /* not a sid! */, const std::string& player_message_sid, const std::string& monster_message_sid, const bool is_player);
     
+    static const std::string ACTION_PRISE_PLAYER;
+    static const std::string ACTION_PRISE_MONSTER;
     static const std::string ACTION_EVOKE_PLAYER;
     static const std::string ACTION_EVOKE_MONSTER;
     static const std::string ACTION_QUAFF_PLAYER;

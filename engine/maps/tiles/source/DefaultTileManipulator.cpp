@@ -65,7 +65,15 @@ void DefaultTileManipulator::add_undead_if_necessary(CreaturePtr creature, MapPt
 {
   if (tile != nullptr)
   {
-    if (RNG::percent_chance(tile->get_dig_chances().get_pct_chance_undead()))
+    int pct_chance_undead = tile->get_dig_chances().get_pct_chance_undead();
+
+    string pct_chance_undead_override = tile->get_additional_property(TileProperties::TILE_PROPERTY_PCT_CHANCE_UNDEAD);
+    if (!pct_chance_undead_override.empty())
+    {
+      pct_chance_undead = String::to_int(pct_chance_undead_override);
+    }
+
+    if (RNG::percent_chance(pct_chance_undead))
     {
       int min_danger_level = std::max<int>(1, creature->get_level().get_current() / 2);
       int max_danger_level = std::max<int>(1, map->get_danger()) + UNDEAD_LEVEL_UPPER_BOUND_OFFSET;
@@ -135,7 +143,14 @@ void DefaultTileManipulator::add_item_if_necessary(CreaturePtr creature, MapPtr 
 
     add_detritus(creature, map, tile);
 
-    if (RNG::percent_chance(dc.get_pct_chance_item()))
+    int pct_chance_item = dc.get_pct_chance_item();
+    string pct_chance_item_override = tile->get_additional_property(TileProperties::TILE_PROPERTY_PCT_CHANCE_ITEMS);
+    if (!pct_chance_item_override.empty())
+    {
+      pct_chance_item = String::to_int(pct_chance_item_override);
+    }
+
+    if (RNG::percent_chance(pct_chance_item))
     {
       int danger_level = map->get_danger();
 
