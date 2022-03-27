@@ -1,6 +1,9 @@
 #include <algorithm>
+#include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "CreatureFeatures.hpp"
+#include "DangerLevelProperties.hpp"
+#include "GeneratorUtils.hpp"
 #include "WorldMapDangerLevelCalculator.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
@@ -13,10 +16,23 @@ using namespace std;
 // 
 // min(1, danger_(world)) gives the final value.
 //
-// The new map does not play into the calculations at all.
+// The new map only plays into the calculations if it's an underworld-type
+// map.  Underworld maps whose type generates a complex (dungeon, sewers,
+// mines) start off with a danger based on their current depth.
 int WorldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
 {
   int danger_level = 0;
+  string tile_type_s = get_property(DangerLevelProperties::DANGER_LEVEL_PROPERTIES_TILE_TYPE);
+
+  if (!tile_type_s.empty())
+  {
+    TileType ttype = static_cast<TileType>(String::to_int(tile_type_s));
+
+    if (GeneratorUtils::generates_complexes(ttype))
+    {
+      return 1;
+    }
+  }
 
   if (map)
   {

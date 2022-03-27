@@ -19,6 +19,10 @@ const string ConsumableConstants::CORPSE_SHORT_DESCRIPTION_SID = "CORPSE_SHORT_D
 // so that the race of the original creature can be tracked after death.
 const string ConsumableConstants::CORPSE_RACE_ID = "CORPSE_RACE_ID";
 
+// Used to mark that the skin has already been stripped from a particular
+// corpse.
+const string ConsumableConstants::CORPSE_SKINNED = "CORPSE_SKINNED";
+
 // Food poisoning is more of a sure thing than is getting hit by a 
 // poisoned blade.
 const int ConsumableConstants::FOOD_POISON_APPLICATION_BONUS = 30;

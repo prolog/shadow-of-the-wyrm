@@ -61,6 +61,8 @@ const string TextMessages::AFFECTED_BY                        = "AFFECTED_BY";
 const string TextMessages::ENDING_MESSAGE                     = "ENDING_MESSAGE";
 const string TextMessages::KILLED_BY_MESSAGE                  = "KILLED_BY_MESSAGE";
 const string TextMessages::DEATH_DEPTH_LOCATION_MESSAGE       = "DEATH_DEPTH_LOCATION_MESSAGE";
+const string TextMessages::BUILD_MESSAGE                      = "BUILD_MESSAGE";
+const string TextMessages::SELECT_AGE_MESSAGE                 = "SELECT_AGE_MESSAGE";
 
 string TextMessages::get_full_header_text(const string& header, const uint num_cols)
 {
@@ -798,6 +800,23 @@ string TextMessages::get_death_depth_location_message(const string& depth, const
   string msg = StringTable::get(DEATH_DEPTH_LOCATION_MESSAGE);
   boost::replace_first(msg, "%s1", depth);
   boost::replace_first(msg, "%s2", location);
+
+  return msg;
+}
+
+string TextMessages::get_build_message(const string& thing_built)
+{
+  string msg = StringTable::get(BUILD_MESSAGE);
+  boost::replace_first(msg, "%s", thing_built);
+
+  return msg;
+}
+
+string TextMessages::get_select_age_message(const int min_age, const int max_age)
+{
+  string msg = StringTable::get(SELECT_AGE_MESSAGE);
+  boost::replace_first(msg, "%s1", std::to_string(min_age));
+  boost::replace_first(msg, "%s2", std::to_string(max_age));
 
   return msg;
 }

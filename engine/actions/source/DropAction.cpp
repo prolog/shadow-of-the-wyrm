@@ -1,9 +1,13 @@
 #include "ActionManager.hpp"
 #include "ActionTextKeys.hpp"
+#include "Commands.hpp"
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DropAction.hpp"
 #include "DropScript.hpp"
+#include "FeatureDescriber.hpp"
+#include "FeatureGenerator.hpp"
 #include "GameUtils.hpp"
 #include "IFeatureManipulatorFactory.hpp"
 #include "ItemFilterFactory.hpp"
@@ -11,12 +15,15 @@
 #include "ItemProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "OptionScreen.hpp"
 #include "RaceManager.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
+#include "ScreenTitleTextKeys.hpp"
 #include "SeedCalculator.hpp"
 #include "TextMessages.hpp"
 #include "Tile.hpp"
+#include "TileGenerator.hpp"
 #include "TreeSpeciesFactory.hpp"
 
 using namespace std;
@@ -172,7 +179,23 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
   {
     uint quantity = item_to_drop->get_quantity();
     uint selected_quantity = quantity;
+    string grave_tile_type = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_GRAVE_TILE_TYPE);
+    string wall_tile_type = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_WALL_TILE_TYPE);
+    string floor_tile_type = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_FLOOR_TILE_TYPE);
+    string water_tile_type = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_WATER_TILE_TYPE);
+    string feature_ids = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_BUILD_FEATURE_CLASS_IDS);
 
+    bool building_material = !grave_tile_type.empty() ||
+                             !wall_tile_type.empty() || 
+                             !floor_tile_type.empty() || 
+                             !water_tile_type.empty() || 
+                             !feature_ids.empty();
+
+    if (building_material)
+    {
+      selected_quantity = 1;
+    }
+    
     if (quantity > 1)
     {
       if (!multi_item)
@@ -188,11 +211,27 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
     }
     else
     {
-      ItemPtr new_item = ItemPtr(item_to_drop->create_with_new_id());
-      new_item->set_quantity(selected_quantity);
-      
+      bool drop_item = true;
       uint old_item_quantity = item_to_drop->get_quantity() - selected_quantity;
       item_to_drop->set_quantity(old_item_quantity);
+
+      if (build_with_dropped_item(creature, current_map, creatures_tile, building_material, grave_tile_type, wall_tile_type, floor_tile_type, water_tile_type, feature_ids))
+      {
+        selected_quantity--;
+
+        // If we built, reduce the stack size by 1. If a single item was
+        // selected, ensure we don't follow the regular drop logic.
+        if (selected_quantity == 0)
+        {
+          drop_item = false;
+        }
+
+        GameUtils::make_map_permanent(game, creature, current_map);
+        creatures_tile = MapUtils::get_tile_for_creature(current_map, creature);
+      }
+
+      ItemPtr new_item = ItemPtr(item_to_drop->create_with_new_id());
+      new_item->set_quantity(selected_quantity);
 
       // If the item is a seed or a pit, don't actually set it on the tile,
       // and set the relevant tile and map properties.
@@ -215,7 +254,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
       }
       else
       {
-        if (creatures_tile && creature)
+        if (creatures_tile && creature && drop_item)
         {
           Coordinate drop_coord = current_map->get_location(creature->get_id());
 
@@ -329,6 +368,9 @@ bool DropAction::bury_remains(CreaturePtr creature, const string& remains_race_i
 
   if (creature != nullptr)
   {
+    // Mark the tile as containing remains and then do the deity notification.
+    tile->set_additional_property(TileProperties::TILE_PROPERTY_REMAINS, std::to_string(true));
+
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(Game::instance(), creature->get_id()));
     manager.add_new_message(TextMessages::get_burial_message(creature));
     manager.send();
@@ -388,6 +430,320 @@ void DropAction::handle_reacting_creature_drop_scripts(CreaturePtr creature, Map
       }
     }
   }
+}
+
+bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const bool building_material, const string& grave_tile_type_s, const string& wall_tile_type_s, const string& floor_tile_type_s, const string& water_tile_type_s, const string& feature_ids)
+{
+  bool built = false;
+
+  if (!building_material || !tile || !map || !creature || !creature->get_is_player())
+  {
+    return false;
+  }
+
+  CurrentCreatureAbilities cca;
+  if (!cca.can_see(creature))
+  {
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BUILD_BLIND));
+    manager.send();
+
+    return false;
+  }
+
+  // Can we build a grave?
+  if (tile->has_remains())
+  {
+    TileType grave_tile_type = static_cast<TileType>(String::to_int(grave_tile_type_s));
+    built = build_grave_with_dropped_item(creature, map, tile, grave_tile_type);
+  }
+
+  // Can we build flooring/road?
+  if (!built && tile->has_been_dug() && !floor_tile_type_s.empty())
+  {
+    TileType floor_tile_type = static_cast<TileType>(String::to_int(floor_tile_type_s));
+    built = build_floor_with_dropped_item(creature, map, tile, floor_tile_type);
+  }
+
+  // Can we build a wall?
+  if (!built && !wall_tile_type_s.empty())
+  {
+    TileType wall_tile_type = static_cast<TileType>(String::to_int(wall_tile_type_s));
+    built = build_wall_with_dropped_item(creature, map, tile, wall_tile_type, false);
+  }
+
+  // Can we build on adjacent water tiles?
+  if (!built && !water_tile_type_s.empty())
+  {
+    TileDirectionMap tdm = MapUtils::get_adjacent_tiles_to_creature(map, creature);
+    bool water_nearby = false;
+
+    for (auto tdm_pair : tdm)
+    {
+      if (tdm_pair.second && tdm_pair.second->get_tile_base_super_type() == TileSuperType::TILE_SUPER_TYPE_WATER)
+      {
+        water_nearby = true;
+      }
+    }
+
+    if (water_nearby)
+    {
+      TileType water_tile_type = static_cast<TileType>(String::to_int(water_tile_type_s));
+      built = build_wall_with_dropped_item(creature, map, tile, water_tile_type, true);
+    }
+  }
+
+  // Can we build a feature?
+  if (!built && !feature_ids.empty())
+  {
+    vector<string> feature_s_ids = String::create_string_vector_from_csv_string(feature_ids);
+    built = build_feature_with_dropped_item(creature, map, tile, feature_s_ids);
+  }
+
+  return built;
+}
+
+bool DropAction::build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType wall_tile_type, const bool allow_build_on_water)
+{
+  bool built = false;
+  IMessageManager& manager = MM::instance();
+  manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_PROMPT_BUILD_WALL));
+  manager.send();
+
+  CommandFactoryPtr command_factory = std::make_unique<CommandFactory>();
+  KeyboardCommandMapPtr kb_command_map = std::make_unique<KeyboardCommandMap>();
+  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0, false);
+  string build_msg_sid;
+
+  if (base_command != nullptr)
+  {
+    DirectionalCommand* dcommand;
+    dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
+
+    if (dcommand)
+    {
+      Direction d = dcommand->get_direction();
+      Coordinate pl_coord = map->get_location(creature->get_id());
+      Coordinate build_coord = CoordUtils::get_new_coordinate(pl_coord, d);
+      TilePtr build_tile = map->at(build_coord);
+
+      if (build_tile == nullptr)
+      {
+        build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_NO_TILE;
+      }
+      else
+      {
+        TileSuperType tst = build_tile->get_tile_base_super_type();
+
+        if (build_tile->get_movement_multiplier() == 0)
+        {
+          build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_PRESENT;
+        }
+        else if (build_tile->has_creature())
+        {
+          build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_CREATURE_PRESENT;
+        }
+        else if (build_tile->has_feature())
+        {
+          build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_FEATURE_PRESENT;
+        }
+        else if (tst == TileSuperType::TILE_SUPER_TYPE_AIR)
+        {
+          build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_AIR;
+        }
+        else if (tst == TileSuperType::TILE_SUPER_TYPE_WATER && !allow_build_on_water)
+        {
+          build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL_WATER;
+        }
+        else if ((tst == TileSuperType::TILE_SUPER_TYPE_GROUND && !allow_build_on_water) ||
+          (tst == TileSuperType::TILE_SUPER_TYPE_WATER && allow_build_on_water))
+        {
+          IInventoryPtr build_tile_items = build_tile->get_items();
+          if (build_tile_items->has_items())
+          {
+            manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BUILD_WALL_DISPLACE_ITEMS));
+            manager.send();
+
+            vector<Coordinate> adj_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), build_coord.first, build_coord.second);
+            std::shuffle(adj_coords.begin(), adj_coords.end(), RNG::get_engine());
+
+            for (const auto& ac : adj_coords)
+            {
+              TilePtr adj_tile = map->at(ac);
+
+              if (adj_tile && adj_tile->get_items()->get_allows_items() == AllowsItemsType::ALLOWS_ITEMS)
+              {
+                IInventoryPtr adj_items = adj_tile->get_items();
+                build_tile_items->transfer_to(adj_items);
+              }
+            }
+          }
+
+          TileGenerator tg;
+          TilePtr new_tile = tg.generate(wall_tile_type);
+          new_tile->transform_from(build_tile);
+          map->insert(build_coord, new_tile);
+
+          build_msg_sid = ActionTextKeys::ACTION_BUILD_WALL;
+          built = true;
+        }
+      }
+
+      if (!build_msg_sid.empty())
+      {
+        manager.add_new_message(StringTable::get(build_msg_sid));
+        manager.send();
+      }
+    }
+  }
+
+  return built;
+}
+
+bool DropAction::build_grave_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType grave_tile_type)
+{
+  if (creature == nullptr || map == nullptr || tile == nullptr)
+  {
+    return false;
+  }
+
+  // Check to see if building is intended.
+  bool built = false;
+
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  manager.add_new_confirmation_message(TextMessages::get_confirmation_message(ActionTextKeys::ACTION_PROMPT_BUILD_GRAVE));
+  bool confirmation = creature->get_decision_strategy()->get_confirmation();
+
+  if (confirmation)
+  {
+    TileGenerator tg;
+    TilePtr new_tile = tg.generate(grave_tile_type);
+    Coordinate c = map->get_location(creature->get_id());
+    new_tile->transform_from(tile);
+    map->insert(c, new_tile);
+
+    new_tile->remove_additional_property(TileProperties::TILE_PROPERTY_REMAINS);
+    new_tile->set_additional_property(TileProperties::TILE_PROPERTY_PCT_CHANCE_ITEMS, to_string(0));
+    new_tile->set_additional_property(TileProperties::TILE_PROPERTY_PCT_CHANCE_UNDEAD, to_string(0));
+
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BUILD_GRAVE));
+    manager.send();
+
+    built = true;
+  }
+
+  return built;
+}
+
+bool DropAction::build_floor_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType floor_tile_type)
+{
+  // Check to see if building is intended.
+  bool built = false;
+
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  vector<TileType> tile_types = { floor_tile_type, TileType::TILE_TYPE_ROAD };
+  TileGenerator tg;
+  vector<string> descs;
+
+  for (size_t i = 0 ; i < tile_types.size(); i++)
+  {
+    const TileType tt = tile_types.at(i);
+    TilePtr new_tile = tg.generate(tt);
+
+    if (new_tile != nullptr)
+    {
+      descs.push_back(std::to_string(i) + "=" + StringTable::get(new_tile->get_tile_description_sid()));
+    }
+  }
+
+  size_t idx = get_build_option(descs);
+
+  if (idx < tile_types.size())
+  {
+    TileType tt = tile_types.at(idx);
+    TilePtr new_tile = tg.generate(tt);
+    Coordinate c = map->get_location(creature->get_id());
+    new_tile->transform_from(tile);
+    map->insert(c, new_tile);
+
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BUILD_FLOOR));
+    manager.send();
+
+    built = true;
+  }
+
+  return built;
+}
+
+bool DropAction::build_feature_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const vector<string>& feature_ids)
+{
+  bool built = false;
+
+  if (creature == nullptr || map == nullptr || tile == nullptr || tile->has_feature() || feature_ids.empty())
+  {
+    return false;
+  }
+
+  vector<ClassIdentifier> class_ids;
+  vector<string> descs;
+
+  for (size_t i = 0; i < feature_ids.size(); i++)
+  {
+    string s = feature_ids.at(i);
+    ClassIdentifier cl_id = static_cast<ClassIdentifier>(String::to_int(s));
+    FeaturePtr feature = FeatureGenerator::create_feature(cl_id);
+
+    if (feature != nullptr)
+    {
+      FeatureDescriber fd(feature);
+
+      descs.push_back(std::to_string(i) + "=" + fd.describe(false));
+      class_ids.push_back(cl_id);
+    }
+  }
+
+  ClassIdentifier cl_id = ClassIdentifier::CLASS_ID_NULL;
+
+  if (class_ids.size() == 1)
+  {
+    cl_id = class_ids.at(0);
+  }
+  else
+  {
+    size_t idx = get_build_option(descs);
+
+    if (idx < class_ids.size())
+    {
+      cl_id = class_ids.at(idx);
+    }
+  }
+
+  if (cl_id != ClassIdentifier::CLASS_ID_NULL)
+  {
+    FeaturePtr feature = FeatureGenerator::create_feature(cl_id);
+
+    if (feature != nullptr)
+    {
+      tile->set_feature(feature);
+
+      FeatureDescriber fd(feature);
+      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      manager.add_new_message(TextMessages::get_build_message(fd.describe(false)));
+      manager.send();
+
+      built = true;
+    }
+  }
+
+  return built;
+}
+
+size_t DropAction::get_build_option(const vector<string>& options) const
+{
+  OptionScreen os(Game::instance().get_display(), ScreenTitleTextKeys::SCREEN_TITLE_BUILD, {}, options);
+  string option_s = os.display();
+  
+  return static_cast<size_t>(option_s[0] - 'a');
 }
 
 // Dropping always has a base action cost of 1.

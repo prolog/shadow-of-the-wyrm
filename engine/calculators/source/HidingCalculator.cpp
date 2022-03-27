@@ -8,7 +8,20 @@ using namespace std;
 const int HidingCalculator::HIDING_DIVISOR_AFTER_ATTACKING = 2;
 const int HidingCalculator::MAX_DISTANCE_FOR_PENALTY = 10;
 const int HidingCalculator::MAX_PCT_CHANCE_HIDE_CREATURES_PRESENT = 80;
+const int HidingCalculator::SMALL_CREATURE_HOLE_BONUS = 50;
 
+bool HidingCalculator::gets_hole_bonus(CreaturePtr creature) const
+{
+  bool bonus = false;
+
+  if (creature != nullptr)
+  {
+    CreatureSize size = creature->get_size();
+    bonus = (static_cast<int>(size) <= static_cast<int>(CreatureSize::CREATURE_SIZE_SMALL));
+  }
+
+  return bonus;
+}
 int HidingCalculator::calculate_pct_chance_hide(CreaturePtr creature, MapPtr map, const TimeOfDayType tod) const
 {
   int pct_chance_hide = 0;
@@ -27,9 +40,17 @@ int HidingCalculator::calculate_pct_chance_hide(CreaturePtr creature, MapPtr map
     else
     {
       int tod_modifier = get_tod_hide_modifier_for_map_type(tod, map->get_map_type());
+      int size_bonus = 0;
+      TilePtr creature_tile = map->at(map->get_location(creature->get_id()));
+      
+      if (creature_tile != nullptr && creature_tile->has_been_dug() && gets_hole_bonus(creature))
+      {
+        size_bonus = SMALL_CREATURE_HOLE_BONUS;
+      }
 
       pct_chance_hide += creature->get_skills().get_value(SkillType::SKILL_GENERAL_HIDING);
       pct_chance_hide += tod_modifier;
+      pct_chance_hide += size_bonus;
       pct_chance_hide += get_viewing_creatures_modifier(creature, map, creature_ids);
 
       pct_chance_hide = std::min<int>(pct_chance_hide, MAX_PCT_CHANCE_HIDE_CREATURES_PRESENT);

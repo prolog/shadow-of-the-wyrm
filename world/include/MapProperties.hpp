@@ -113,6 +113,12 @@ class MapProperties
     static const std::string MAP_PROPERTIES_COASTLINE_WEST;
     static const std::string MAP_PROPERTIES_SECONDARY_TERRAIN;
 
+    // Set a specified danger level
+    static const std::string MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE;
+
+    // Villages on this map
+    static const std::string MAP_PROPERTIES_VILLAGE_COORDINATES;
+
   protected:
     MapProperties();
     ~MapProperties();

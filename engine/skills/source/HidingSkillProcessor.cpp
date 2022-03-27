@@ -36,6 +36,14 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
       int hide_chance = hc.calculate_pct_chance_hide(creature, map, tod);
       CurrentCreatureAbilities cca;
 
+      TilePtr tile = map->at(map->get_location(creature->get_id()));
+      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, is_player);
+
+      if (tile != nullptr && tile->has_been_dug() && hc.gets_hole_bonus(creature))
+      {
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_HIDE_HOLE));
+      }
+
       if (world != nullptr)
       {
         tod = world->get_calendar().get_date().get_time_of_day();
@@ -57,8 +65,6 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
       else
       {
         string message = ActionTextKeys::get_hide_failure_message(creature->get_description_sid(), is_player);
-
-        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, is_player);
         manager.add_new_message(message);
         manager.send();
       }

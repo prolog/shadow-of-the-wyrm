@@ -388,5 +388,39 @@ TEST(SW_World_Inventory, merge_or_add)
   EXPECT_TRUE(i.merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK));
   EXPECT_EQ(2, i.size());
   EXPECT_EQ(2, i.get_from_base_id("abc212")->get_quantity());
-
 }
+
+TEST(SW_World_Inventory, merge_or_add_whole_inventory)
+{
+  SpellbookPtr item = std::make_shared<Spellbook>();
+  item->set_base_id("abc212");
+  item->set_description_sid("ABC123");
+  item->set_effect_type(EffectType::EFFECT_TYPE_BLESS);
+
+  std::shared_ptr<Inventory> inv = std::make_shared<Inventory>();
+  std::shared_ptr<Inventory> inv2 = std::make_shared<Inventory>();
+  inv->add(item);
+  inv2->merge_or_add(inv, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+
+  EXPECT_FALSE(inv->merge_or_add(inv, InventoryAdditionType::INVENTORY_ADDITION_FRONT));
+  EXPECT_EQ(1, inv->size());
+  EXPECT_EQ(1, inv2->size());
+}
+
+TEST(SW_World_Inventory, transfer_to)
+{
+  SpellbookPtr item = std::make_shared<Spellbook>();
+  item->set_base_id("abc212");
+  item->set_description_sid("ABC123");
+  item->set_effect_type(EffectType::EFFECT_TYPE_BLESS);
+
+  std::shared_ptr<Inventory> inv = std::make_shared<Inventory>();
+  std::shared_ptr<Inventory> inv2 = std::make_shared<Inventory>();
+  inv->add(item);
+  inv->transfer_to(inv2);
+
+  EXPECT_FALSE(inv->transfer_to(inv));
+  EXPECT_EQ(0, inv->size());
+  EXPECT_EQ(1, inv2->size());
+}
+

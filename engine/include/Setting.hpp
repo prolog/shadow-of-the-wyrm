@@ -26,6 +26,7 @@ class Setting
     static const std::string HOURS_ELAPSED;
     static const std::string CURRENT_MONTH_IS_START_MONTH;
     static const std::string PROMPT_FOR_CHARACTER_DUMP_ON_EXIT;
+    static const std::string DEFAULT_AGE;
     static const std::string DEFAULT_SEX;
     static const std::string DEFAULT_RACE_ID;
     static const std::string DEFAULT_CLASS_ID;
@@ -44,6 +45,7 @@ class Setting
     static const std::string DISPLAY_SDL_WINDOW_SIZE;
     static const std::string DISPLAY_SDL_INTEGER_SCALING;
     static const std::string DISPLAY_FONT;
+    static const std::string DISPLAY_SPLASH_IMAGE;
     static const std::string DISPLAY_TILE_SIZE;
     static const std::string DISPLAY_TILE_GLYPHS_PER_LINE;
     static const std::string DISPLAY_NUM_GLYPHS;

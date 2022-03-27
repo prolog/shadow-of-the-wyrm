@@ -30,8 +30,14 @@ void HostilityManager::set_hostility_to_creature(CreaturePtr creature, const str
 
       if (threat_exists.first)
       {
-        int new_threat_rating = std::max<int>(old_threat_rating, old_threat_rating + ThreatConstants::THREAT_RATING_INCREMENT);
-        threat_ratings.update_threat(hostile_to_creature_id, threat_exists.second, new_threat_rating);
+        int new_threat_rating = hostility_level;
+
+        if (new_threat_rating <= old_threat_rating)
+        {
+          new_threat_rating = std::max<int>(old_threat_rating, old_threat_rating + ThreatConstants::THREAT_RATING_INCREMENT);
+        }
+
+        threat_ratings.update_threat(hostile_to_creature_id, old_threat_rating, new_threat_rating);
       }
       else
       {

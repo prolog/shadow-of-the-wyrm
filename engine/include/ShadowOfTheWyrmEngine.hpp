@@ -42,7 +42,7 @@ class ShadowOfTheWyrmEngine
   public:    
     ShadowOfTheWyrmEngine();
  
-    void start(const Settings& settings);
+    std::string start(const Settings& settings);
 
     void set_controller(ControllerPtr new_controller);
     void set_display(DisplayPtr new_display);

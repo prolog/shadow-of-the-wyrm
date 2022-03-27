@@ -14,7 +14,7 @@ class CompanionDeityDecisionStrategyHandler : public DeityDecisionStrategyHandle
   protected:
     int get_piety_amount() const override;
     std::string get_message_sid() const override;
-    void set_companion_bonuses(CreaturePtr creature);
+    void set_companion_bonuses(CreaturePtr creature, CreaturePtr generated_creature);
 
     static const int MIN_PIETY_FOR_COMPANION;
 };

@@ -13,7 +13,7 @@ N - Inscribe                  q - Quests              z - Cast spell %b
 B - Bestiary                  v - Evoke wand          K - Kick %b
 O - Sacrifice                 o - Order followers     / - Skin corpse %b
 P - Show piety                c - Codex               X - Experience %b
-S - Save and quit             Q - Quit (no save)      M - Message buffer %b
+S - Save and exit             Q - Quit (abandon char) M - Message buffer %b
 W - Melee info                R - Ranged info         V - Version %b
 T - Game date/time            ! - Automatic Actions   @ - Character info %b
 # - Character dump            F1 - Resistances        F2 - Conducts %b

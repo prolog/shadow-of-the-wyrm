@@ -377,6 +377,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\DamageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DamageCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\DangerLevelCalculatorFactory.hpp" />
+    <ClInclude Include="engine\calculators\include\DangerLevelProperties.hpp" />
     <ClInclude Include="engine\calculators\include\DefaultStatusEffectCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DepthBasedDangerLevelCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DisarmTrapsCalculator.hpp" />
@@ -397,7 +398,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\HitPointsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HPRegenerationCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HungerCalculator.hpp" />
-    <ClInclude Include="engine\calculators\include\IDangerLevelCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\DangerLevelCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\IHitTypeCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\IHitTypeFactory.hpp" />
     <ClInclude Include="engine\calculators\include\IncorporealCalculator.hpp" />
@@ -675,7 +676,6 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\description\include\TileDescriber.hpp" />
     <ClInclude Include="engine\description\include\TileDescription.hpp" />
     <ClInclude Include="engine\effects\include\AdditionalEffectMessage.hpp" />
-    <ClInclude Include="engine\effects\include\AdditionalEffectMessages.hpp" />
     <ClInclude Include="engine\effects\include\BlessEffect.hpp" />
     <ClInclude Include="engine\effects\include\CleansingEffect.hpp" />
     <ClInclude Include="engine\effects\include\DetectTrapsEffect.hpp" />
@@ -976,6 +976,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\maps\tiles\include\TileDamageProcessor.hpp" />
     <ClInclude Include="engine\maps\tiles\include\TileDamageProcessorFactory.hpp" />
     <ClInclude Include="engine\maps\tiles\include\TileManipulatorFactory.hpp" />
+    <ClInclude Include="engine\screens\include\AgeSelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\ClassSelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\ComponentAlignment.hpp" />
     <ClInclude Include="engine\screens\include\CreateItemScreen.hpp" />
@@ -1008,6 +1009,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\screens\include\WornLocationScreenFactory.hpp" />
     <ClInclude Include="engine\screens\include\WornLocationSelectionScreen.hpp" />
     <ClInclude Include="engine\scripting\include\AttackScript.hpp" />
+    <ClInclude Include="engine\scripting\include\CreateScript.hpp" />
     <ClInclude Include="engine\scripting\include\DeathScript.hpp" />
     <ClInclude Include="engine\scripting\include\DecisionScript.hpp" />
     <ClInclude Include="engine\scripting\include\DropScript.hpp" />
@@ -1057,6 +1059,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\strings\include\DeathSourceTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\DeityTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\DifficultyTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\DirectionLocationTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\DungeonFeatureTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\EffectTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\EntranceTextKeys.hpp" />
@@ -1225,6 +1228,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="include\global_prototypes.hpp" />
     <ClInclude Include="include\ISerializable.hpp" />
     <ClInclude Include="include\UnhandledExceptions.hpp" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="world\include\AgeInfo.hpp" />
     <ClInclude Include="world\include\Alignment.hpp" />
     <ClInclude Include="world\include\AlignmentEnums.hpp" />
@@ -1517,6 +1521,8 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\CreateItemCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreaturePietyCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureSplitCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\DangerLevelCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\DangerLevelProperties.cpp" />
     <ClCompile Include="engine\calculators\source\DepthBasedDangerLevelCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DisarmTrapsCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DivineCompanionCalculator.cpp" />
@@ -1583,6 +1589,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\CreatureCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\DangerLevelCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -2126,6 +2138,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\maps\tiles\source\PoisonTileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\TileDamageProcessor.cpp" />
     <ClCompile Include="engine\maps\tiles\source\TileDamageProcessorFactory.cpp" />
+    <ClCompile Include="engine\screens\source\AgeSelectionScreen.cpp" />
     <ClCompile Include="engine\screens\source\CreateItemScreen.cpp" />
     <ClCompile Include="engine\screens\source\EyeSelectionScreen.cpp" />
     <ClCompile Include="engine\screens\source\HairSelectionScreen.cpp" />
@@ -2141,6 +2154,7 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\scripting\source\CreateScript.cpp" />
     <ClCompile Include="engine\scripting\source\DeathScript.cpp" />
     <ClCompile Include="engine\scripting\source\DropScript.cpp" />
     <ClCompile Include="engine\scripting\source\KillScript.cpp" />
@@ -2199,6 +2213,7 @@ mkdir $(OutDir)logs
     </ClCompile>
     <ClCompile Include="engine\strings\source\ArcanaTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\DeathSourceTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\DirectionLocationTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\InscriptionTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MembershipTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MusicTextKeys.cpp" />
@@ -2929,7 +2944,6 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\description\source\TileDescriber.cpp" />
     <ClCompile Include="engine\description\source\TileDescription.cpp" />
     <ClCompile Include="engine\effects\source\AdditionalEffectMessage.cpp" />
-    <ClCompile Include="engine\effects\source\AdditionalEffectMessages.cpp" />
     <ClCompile Include="engine\effects\source\EnchantingEffect.cpp" />
     <ClCompile Include="engine\effects\source\FlyingEffect.cpp" />
     <ClCompile Include="engine\effects\source\GainAttributesEffect.cpp" />
@@ -4918,6 +4932,12 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\tiles\source\WildOrchardTile.cpp" />
     <ClCompile Include="world\tiles\source\WorldMapTile.cpp" />
     <ClCompile Include="world\tiles\source\WorshipSiteTile.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ShadowOfTheWyrm.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="sotw_icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

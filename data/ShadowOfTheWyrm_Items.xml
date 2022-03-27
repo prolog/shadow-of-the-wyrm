@@ -169,6 +169,32 @@
 				<Evade>0</Evade>
 				<Soak>6</Soak>
 			</Amulet>
+			<Amulet id="speed_amulet">
+				<DescriptionSID>SPEED_AMULET_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SPEED_AMULET_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SPEED_AMULET_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SPEED_AMULET_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SPEED_AMULET_CODEX_SID</CodexDescriptionSID>
+				<Value>200</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>4</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Material>13</Material>
+				<Symbol>
+					<Char>#</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>0</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>6</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>0</Soak>
+				<SpeedBonus>5</SpeedBonus>
+			</Amulet>
 			<Amulet id="evasive_amulet">
 				<DescriptionSID>EVASIVE_AMULET_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_EVASIVE_AMULET_SID</UnidentifiedDescriptionSID>
@@ -1700,7 +1726,7 @@
 				<DescriptionSID>HIDE_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_ARMOUR_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>HIDE_CODEX_SID</CodexDescriptionSID>
-				<Value>10</Value>
+				<Value>40</Value>
 				<Weight>
 					<Pounds>5</Pounds>
 				</Weight>
@@ -2098,7 +2124,7 @@
 				<DescriptionSID>HIDE_CLOAK_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_CLOAK_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>HIDE_CODEX_SID</CodexDescriptionSID>
-				<Value>2</Value>
+				<Value>10</Value>
 				<Weight>
 					<Pounds>1</Pounds>
 				</Weight>
@@ -2352,7 +2378,7 @@
 				<DescriptionSID>HIDE_BOOTS_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_BOOTS_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>HIDE_CODEX_SID</CodexDescriptionSID>
-				<Value>50</Value>
+				<Value>15</Value>
 				<Weight>
 					<Pounds>5</Pounds>
 				</Weight>
@@ -2740,6 +2766,32 @@
 				<Soak>0</Soak>
 				<ToHit>15</ToHit>
 			</Ring>
+			<Ring id="speed_ring">
+				<DescriptionSID>SPEED_RING_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SPEED_RING_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SPEED_RING_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SPEED_RING_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SPEED_RING_CODEX_SID</CodexDescriptionSID>
+				<Value>133</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>2</WornLocation>
+				<Material>13</Material>
+				<Symbol>
+					<Char>=</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>31</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>3</DangerLevel>
+				<Evade>2</Evade>
+				<Soak>0</Soak>
+				<SpeedBonus>4</SpeedBonus>
+			</Ring>
 			<Ring id="withering_ring">
 				<DescriptionSID>WITHERING_RING_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_WITHERING_RING_SID</UnidentifiedDescriptionSID>
@@ -3124,6 +3176,46 @@
 			</Ring>
 		</Rings>
 		<Weapons>
+			<Weapon id="_crowbar">
+				<DescriptionSID>CROWBAR_SID</DescriptionSID>
+				<UsageDescriptionSID>CROWBAR_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CROWBAR_CODEX_SID</CodexDescriptionSID>
+				<Value>3</Value>
+				<Weight>
+					<Pounds>3</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<Symbol>
+					<Char>)</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>12</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>prise</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Skill>1009</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>52</Difficulty>
+				<Speed>3</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>1</Modifier>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="brass_knuckles">
 				<DescriptionSID>BRASS_KNUCKLES_SID</DescriptionSID>
 				<UsageDescriptionSID>BRASS_KNUCKLES_USAGE_SID</UsageDescriptionSID>
@@ -4556,7 +4648,7 @@
 				<Damage>
 					<NumDice>10</NumDice>
 					<NumSides>20</NumSides>
-					<Modifier>50</Modifier>
+					<Modifier>200</Modifier>
 					<Type>1</Type>
 					<Slays>
 						<Slay>*</Slay>
@@ -4764,7 +4856,7 @@
 						<Slay>_dragon</Slay>
 					</Slays>
 				</Damage>
-				<Range>2</Range>
+				<Range>3</Range>
 			</Weapon>
 			<Weapon id="stonespear">
 				<DescriptionSID>STONESPEAR_SID</DescriptionSID>
@@ -5196,7 +5288,7 @@
 					</Property>
 					<Property>
 						<Name>dig_breakage_pct_chance</Name>
-						<Value>4</Value>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Skill>1000</Skill>
@@ -5240,7 +5332,7 @@
 					</Property>
 					<Property>
 						<Name>dig_breakage_pct_chance</Name>
-						<Value>2</Value>
+						<Value>0</Value>
 					</Property>
 				</Properties>
 				<Skill>1000</Skill>
@@ -5503,6 +5595,10 @@
 						<Name>dig_hardness</Name>
 						<Value>100</Value>
 					</Property>
+					<Property>
+						<Name>dig_breakage_pct_chance</Name>
+						<Value>0</Value>
+					</Property>
 				</Properties>
 				<Skill>1000</Skill>
 				<RangedSkill>2000</RangedSkill>
@@ -5586,7 +5682,7 @@
 					<NumSides>10</NumSides>
 					<Type>1</Type>
 				</Damage>
-				<Range>2</Range>
+				<Range>3</Range>
 			</Weapon>
 			<Weapon id="scythe">
 				<DescriptionSID>SCYTHE_SID</DescriptionSID>
@@ -5720,7 +5816,7 @@
 						<Value>1</Value>
 					</Property>
 				</Properties>
-				<Skill>1003</Skill>
+				<Skill>1005</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>46</Difficulty>
 				<Speed>2</Speed>
@@ -5920,7 +6016,7 @@
 				<DescriptionSID>HIDE_WHIP_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_WHIP_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>HIDE_WHIP_CODEX_SID</CodexDescriptionSID>
-				<Value>10</Value>
+				<Value>20</Value>
 				<Weight>
 					<Pounds>6</Pounds>
 				</Weight>
@@ -6221,7 +6317,7 @@
 				<DescriptionSID>HIDE_SLING_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_SLING_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>HIDE_CODEX_SID</CodexDescriptionSID>
-				<Value>1</Value>
+				<Value>2</Value>
 				<Weight>
 					<Pounds>0</Pounds>
 					<Ounces>8</Ounces>
@@ -12980,6 +13076,102 @@
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
+			<Item id="_stone_block">
+				<DescriptionSID>STONE_BLOCK_SID</DescriptionSID>
+				<UsageDescriptionSID>STONE_BLOCK_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>STONE_BLOCK_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>40</Pounds>
+				</Weight>
+				<Material>7</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>10</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>grave_tile_type</Name>
+						<Value>12</Value>
+					</Property>
+					<Property>
+						<Name>wall_tile_type</Name>
+						<Value>11</Value>
+					</Property>
+					<Property>
+						<Name>floor_tile_type</Name>
+						<Value>10</Value>
+					</Property>
+				</Properties>
+			</Item>
+			<Item id="_sod_brick">
+				<DescriptionSID>SOD_BRICK_SID</DescriptionSID>
+				<UsageDescriptionSID>SOD_BRICK_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SOD_BRICK_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>15</Pounds>
+				</Weight>
+				<Material>17</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Colour>10</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>10</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>grave_tile_type</Name>
+						<Value>37</Value>
+					</Property>
+					<Property>
+						<Name>wall_tile_type</Name>
+						<Value>46</Value>
+					</Property>
+					<Property>
+						<Name>floor_tile_type</Name>
+						<Value>41</Value>
+					</Property>
+				</Properties>
+			</Item>
+			<Item id="_lumber">
+				<DescriptionSID>LUMBER_SID</DescriptionSID>
+				<UsageDescriptionSID>LUMBER_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>LUMBER_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>20</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>11</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>water_tile_type</Name>
+						<Value>36</Value>
+					</Property>
+					<Property>
+						<Name>build_feature_class_ids</Name>
+						<Value>108,269,283</Value>
+					</Property>
+				</Properties>
+			</Item>
 			<Item id="_clay">
 				<DescriptionSID>CLAY_SID</DescriptionSID>
 				<UsageDescriptionSID>CLAY_USAGE_SID</UsageDescriptionSID>

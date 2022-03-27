@@ -9,6 +9,7 @@ class OrderCommandKeys
     static const std::string FREEZE;
     static const std::string AT_EASE;
     static const std::string EXIT_ORDER;
+    static const std::string SUMMON;
 
   protected:
     OrderCommandKeys();

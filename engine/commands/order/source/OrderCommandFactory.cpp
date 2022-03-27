@@ -30,6 +30,10 @@ CommandPtr OrderCommandFactory::create(const int key, const std::string& command
   {
     command = std::make_unique<OrderAtEaseCommand>(key);
   }
+  else if (command_name == OrderCommandKeys::SUMMON)
+  {
+    command = std::make_unique<OrderSummonCommand>(key);
+  }
   else if (command_name == OrderCommandKeys::EXIT_ORDER)
   {
     command = std::make_unique<OrderExitCommand>(key);

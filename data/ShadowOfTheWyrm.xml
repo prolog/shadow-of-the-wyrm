@@ -4553,6 +4553,9 @@
 						</Quantity>
 					</InitialItem>
 					<InitialItem>
+						<ID>_crowbar</ID>
+					</InitialItem>
+					<InitialItem>
 						<ID>_currency</ID>
 						<Quantity>
 							<Random>

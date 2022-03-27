@@ -43,7 +43,22 @@ bool NullInventory::merge_or_add(ItemPtr item, const InventoryAdditionType inv_a
   return false;
 }
 
+bool NullInventory::merge_or_add(IInventoryPtr items, const InventoryAdditionType inv_add_loc)
+{
+  return false;
+}
+
+bool NullInventory::merge_or_add(IInventory* items, const InventoryAdditionType inv_add_loc)
+{
+  return false;
+}
+
 bool NullInventory::merge(ItemPtr item)
+{
+  return false;
+}
+
+bool NullInventory::transfer_to(IInventoryPtr items)
 {
   return false;
 }

@@ -27,6 +27,9 @@ class CurrentCreatureAbilities
     // is paralyzed.
     bool can_act(CreaturePtr creature, const bool add_message_if_player_and_cannot_act = false) const;
 
+    // Can the creature prise objects apart?
+    bool can_prise(CreaturePtr creature) const;
+
   protected:
     void add_ability_message_for_sid(CreaturePtr creature, const std::string& ability_message) const;
 };

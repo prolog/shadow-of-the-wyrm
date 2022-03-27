@@ -1,8 +1,23 @@
 Me:
-- Stone blocks (50 lbs), sod bricks (20 lbs)
-- Dig, drop: floor tile (floor or dirt floor)
-- Drop 3 stone: rock (based on base item only, not equality)
-- Drop 3 sod: earth
+- spinach/str?
+- bookstore
+- quest to quell a rebellion from Carcassia
+- More archery for archers and goblin pelters
+- very small chance for enchant to give speed bonus
+- ASSET RELEASE
+- random uniques (fighter-type, thief-type, spellcaster-type)
+- fisherman quest
+- more town NPCs/sprites
+- overlapping houses in settlement - temple over tavern?
+- need to retest arena fights
+- PLAYTHROUGH TO TEST DLVL_OVERRIDE!!!
+  - gnordvar mines
+  - telari
+  - regular dungeons/sewers/mines
+  - crypts (should take the ambient danger)
+  - regular overworld maps
+- Rework DigChances so it can handle multiple item %s, then readd edible roots
+  to fields.
 - Allow wearables to give +HP, +AP
 - Enchanting should rarely up HP/AP. +25 per enchant. 1-5% chance?
 - Wizard staff: +50 AP
@@ -12,10 +27,6 @@ Me:
 - Boating: move faster on water
 - Desert/Forest/etc Lore: to-hit, damage, speed bonuses on that terrain
 - after Godslayer, divine spells gone/Divine skill 0
-- 100 in each melee weapon: should do something.
-  - Whips: chance tangle
-  - short and long blades: + evade
-  - Add to docs
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere
 - More dungeon item features:
@@ -93,7 +104,6 @@ Me:
   becoming invalidated.)
 - Do additional profiling after shared_ptr cleanup
 - Look at race balance: stats, speed, skill points, etc
-- Shield punch!
 - Fruit trees should generate fruit annually.
 - Write script to check for any items without CodexDescriptionSID
 - The "descend to" functionality
@@ -204,9 +214,6 @@ Not bugs, but probably not working as intended:
   being distributed at random throughout the many non-buff spells that one 
   rarely uses. Even hotkeys would improve this by a great deal.
 
-Samildanach:
-- Make it more obvious what skills do and how they work.
-
 Esran:
 - Once monsters are smarter, create spells that allow hitting monsters
   past walls.
@@ -305,7 +312,6 @@ Josh Engdahl
 - make undead hostile to e.g. all humanoids
 - nearby guards/priests should get angry when altars are desecrated
 - Rocky earth generator 1n Carcassia
-- Warping out of levels doesn't put you back at the default entry position
 - Freeze not always working when hostile creatures in view or creatures 
   hostile to leader in view?
 - los code: .@..   can't see
@@ -322,3 +328,10 @@ Brian Jeffears:
 
 Echo38:
 - make undead hostile to humanoids
+
+Kenny:
+- repeat last command (!)
+
+iakul:
+- spells for the nine
+

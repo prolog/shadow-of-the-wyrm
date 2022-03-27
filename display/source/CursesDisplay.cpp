@@ -285,9 +285,10 @@ void CursesDisplay::refresh_terminal_size()
 }
 
 // Set up the Curses-based display.
-bool CursesDisplay::create()
+pair<bool, string> CursesDisplay::create()
 {
   bool creation_success = true;
+  string error_msg;
 
   initscr();
   keypad(stdscr, TRUE);
@@ -306,13 +307,13 @@ bool CursesDisplay::create()
 
   if ((TERMINAL_MAX_ROWS < 25) || (TERMINAL_MAX_COLS < 80))
   {
-    printw("Shadow of the Wyrm requires a terminal of 80x25 or larger.\n");
+    error_msg = "Shadow of the Wyrm requires a terminal of 80x25 or larger.";
     creation_success = false;
   }
 
   refresh();
 
-  return creation_success;
+  return make_pair(creation_success, error_msg);
 }
 
 // Do anything necessary to tear down the Curses-based display.
@@ -320,6 +321,11 @@ void CursesDisplay::tear_down()
 {
   refresh();
   endwin();
+}
+
+bool CursesDisplay::display_splash(const bool enabled)
+{
+  return false;
 }
 
 string CursesDisplay::get_name() const
@@ -442,7 +448,7 @@ void CursesDisplay::add_message(const string& to_add_message, const Colour colou
       }
     }
 
-    wprintw(screen, current_token.c_str());        
+    wprintw(screen, "%s", current_token.c_str());
   }
 
   // Ensure that the last coordinates from the message buffer are up to date.
@@ -610,7 +616,7 @@ void CursesDisplay::display_text_component(WINDOW* window, int* row, int* col, T
       }
 
       enable_colour(static_cast<int>(text_line.second), window);
-      mvwprintw(window, *row, cur_col, cur_text.c_str());
+      mvwprintw(window, *row, cur_col, "%s", cur_text.c_str());
       disable_colour(static_cast<int>(text_line.second), window);
 
       cur_col += cur_text.size();
@@ -675,7 +681,7 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
       string display_option_s = display_option.str();
       boost::replace_all(display_option_s, "%", "%%");
 
-      mvwprintw(window, *row, ocol, display_option_s.c_str());
+      mvwprintw(window, *row, ocol, "%s", display_option_s.c_str());
       
       getyx(window, *row, ocol);
 
@@ -724,7 +730,7 @@ void CursesDisplay::display_text(const int row, const int col, const string& tex
 {
   string txt = text;
   boost::replace_all(txt, "%", "%%");
-  mvprintw(row, col, txt.c_str());
+  mvprintw(row, col, "%s", txt.c_str());
 }
 
 void CursesDisplay::display_header(const string& header_text, WINDOW* window, const int display_line)
@@ -736,7 +742,7 @@ void CursesDisplay::display_header(const string& header_text, WINDOW* window, co
   boost::replace_all(header, "%", "%%");
   string full_header = TextMessages::get_full_header_text(header, get_max_cols());
 
-  mvwprintw(window, display_line, 0, full_header.c_str());
+  mvwprintw(window, display_line, 0, "%s", full_header.c_str());
 
   disable_colour(white, window);
 }

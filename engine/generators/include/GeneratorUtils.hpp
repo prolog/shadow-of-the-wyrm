@@ -65,6 +65,8 @@ class GeneratorUtils
     static void add_random_stream(MapPtr map);
     static void add_random_springs(MapPtr map);
 
+    static bool generates_complexes(const TileType tt);
+
   protected:
     static bool position_in_range(const int min, const int max, const int actual);
     static bool are_tiles_ok_for_structure(MapPtr map, const int y_start, const int x_start, const int height, const int width);

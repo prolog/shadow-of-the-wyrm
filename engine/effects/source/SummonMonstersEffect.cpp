@@ -2,6 +2,7 @@
 #include "CoordUtils.hpp"
 #include "Creature.hpp"
 #include "CreatureGenerationManager.hpp"
+#include "CreatureUtils.hpp"
 #include "EffectTextKeys.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
@@ -27,7 +28,7 @@ Effect* SummonMonstersEffect::clone()
   return new SummonMonstersEffect(*this);
 }
 
-bool SummonMonstersEffect::summon(CreaturePtr creature, MapPtr map, const int num_monsters)
+bool SummonMonstersEffect::summon(CreaturePtr creature, MapPtr map, const int num_monsters, bool make_followers)
 {
   bool effect_id = false;
 
@@ -76,11 +77,22 @@ bool SummonMonstersEffect::summon(CreaturePtr creature, MapPtr map, const int nu
           if (summoned_creature != nullptr)
           {
             GameUtils::add_new_creature_to_map(game, summoned_creature, map, coords);
+
+            if (make_followers)
+            {
+              CreatureUtils::set_leadership(summoned_creature, creature->get_id(), map);
+            }
+
             effect_id = true;
           }
         }
       }
     }
+  }
+
+  if (effect_id && make_followers)
+  {
+    additional_effect_messages.push_back(EffectTextKeys::EFFECT_SUMMON_FOLLOWERS);
   }
 
   return effect_id;
@@ -93,7 +105,7 @@ bool SummonMonstersEffect::effect_blessed(CreaturePtr creature, ActionManager * 
   if (creature)
   {
     MapPtr current_map = Game::instance().get_current_map();
-    id = summon(creature, current_map, RNG::dice(1,2));
+    id = summon(creature, current_map, RNG::dice(2,3), true);
   }
   
   return id;
@@ -106,7 +118,7 @@ bool SummonMonstersEffect::effect_uncursed(CreaturePtr creature, ActionManager *
   if (creature)
   {
     MapPtr current_map = Game::instance().get_current_map();
-    id = summon(creature, current_map, RNG::dice(1, 3));
+    id = summon(creature, current_map, RNG::dice(1, 3), false);
   }
   
   return id;
@@ -119,7 +131,7 @@ bool SummonMonstersEffect::effect_cursed(CreaturePtr creature, ActionManager * c
   if (creature)
   {
     MapPtr current_map = Game::instance().get_current_map();
-    id = summon(creature, current_map, RNG::dice(1,6));
+    id = summon(creature, current_map, RNG::dice(1,6), false);
   }
   
   return id;

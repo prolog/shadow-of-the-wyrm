@@ -12,6 +12,7 @@ TileTextKeys::~TileTextKeys()
 
 const string TileTextKeys::TILE_DESC_DUG            = "TILE_DESC_DUG";
 const string TileTextKeys::TILE_DESC_PLANTED        = "TILE_DESC_PLANTED";
+const string TileTextKeys::TILE_DESC_REMAINS        = "TILE_DESC_REMAINS";
 const string TileTextKeys::TILE_DESC_SUBMERGED      = "TILE_DESC_SUBMERGED";
 const string TileTextKeys::TILE_DESC_FROZEN         = "TILE_DESC_FROZEN";
 const string TileTextKeys::TILE_DESC_AIR            = "TILE_DESC_AIR";

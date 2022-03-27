@@ -21,6 +21,11 @@ OrderAtEaseCommand::OrderAtEaseCommand(const int key)
 {
 }
 
+OrderSummonCommand::OrderSummonCommand(const int key)
+: Command(OrderCommandKeys::SUMMON, key)
+{
+}
+
 OrderExitCommand::OrderExitCommand(const int key)
 : Command(OrderCommandKeys::EXIT_ORDER, key)
 { 

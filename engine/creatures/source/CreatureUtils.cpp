@@ -799,7 +799,7 @@ bool CreatureUtils::has_status_ailment_from_wearable(CreaturePtr creature, const
     Equipment& eq = creature->get_equipment();
     EquipmentMap em = eq.get_equipment();
 
-    for (const auto eq_pair : em)
+    for (const auto& eq_pair : em)
     {
       WearablePtr wearable = dynamic_pointer_cast<Wearable>(eq_pair.second);
 
@@ -1051,7 +1051,7 @@ void CreatureUtils::set_leadership(CreaturePtr creature, const string& leader_id
 
   if (creature != nullptr)
   {
-    creature->set_leader_and_follow(leader_id);
+    creature->set_leader_and_at_ease(leader_id);
 
     if (map != nullptr)
     {
@@ -1086,7 +1086,7 @@ bool CreatureUtils::has_primordial_essence(CreaturePtr creature)
       const SpellKnowledge& sk = creature->get_spell_knowledge_ref();
       const SpellMap& spells = Game::instance().get_spells_ref();
 
-      for (const auto sk_it : sk.get_known_spells())
+      for (const auto& sk_it : sk.get_known_spells())
       {
         auto sp_it = spells.find(sk_it.first);
 

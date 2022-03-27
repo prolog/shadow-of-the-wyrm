@@ -14,8 +14,10 @@ class CursesDisplay : public Display
     CursesDisplay();
     bool operator==(const CursesDisplay& cd) const;
 
-	  bool create() override;
+	  std::pair<bool, std::string> create() override;
 	  void tear_down() override;
+
+    virtual bool display_splash(const bool enabled) override;;
 
     virtual std::string get_name() const override;
 

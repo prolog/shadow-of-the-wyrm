@@ -7,6 +7,7 @@
 #include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DangerLevelCalculatorFactory.hpp"
+#include "DangerLevelProperties.hpp"
 #include "DecisionStrategyProperties.hpp"
 #include "DigAction.hpp"
 #include "DirectionUtils.hpp"
@@ -622,7 +623,8 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
     {
       // Otherwise, if there's no custom map ID, generate the map:
       pair<bool, bool> override_depth = generator->override_depth_update_defaults();
-      IDangerLevelCalculatorPtr calc = DangerLevelCalculatorFactory::create_danger_level_calculator(map->get_map_type(), override_depth.second, emt);
+      DangerLevelCalculatorPtr calc = DangerLevelCalculatorFactory::create_danger_level_calculator(map->get_map_type(), override_depth.second, emt);
+      calc->set_property(DangerLevelProperties::DANGER_LEVEL_PROPERTIES_TILE_TYPE, std::to_string(static_cast<int>(tile_type)));
       uint danger_level = calc->calculate(map);
 
       Dimensions dim = map->size();
@@ -669,6 +671,7 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
         MapUtils::set_coastline_generator_dirs(generator.get(), coast_dirs);
       }
 
+      generator->set_additional_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE, tile->get_additional_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE));
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_FORAGABLES, to_string(pct_chance_foragables));
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_HERBS, to_string(pct_chance_herbs));
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_EXIT_MOVEMENT_TYPE, to_string(static_cast<int>(emt)));

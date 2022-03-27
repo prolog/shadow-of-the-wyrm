@@ -25,6 +25,7 @@ string ItemDescriber::describe_for_tile_selection() const
 
   return ss.str();
 }
+
 string ItemDescriber::describe() const
 {
   string item_description;
@@ -35,7 +36,7 @@ string ItemDescriber::describe() const
 
     ItemIdentifier item_id;
     ss << item_id.get_appropriate_description(item);
-    ss << describe_tried();
+    ss << describe_properties();
     ss << describe_quantity_and_value();
 
     // Add weight
@@ -65,13 +66,21 @@ string ItemDescriber::describe_usage() const
   return item_description;
 }
 
-string ItemDescriber::describe_tried() const
+string ItemDescriber::describe_properties() const
 {
   ostringstream ss;
 
-  if (item && String::to_bool(item->get_additional_property(ItemTextKeys::ITEM_TRIED)))
+  if (item != nullptr)
   {
-    ss << " " << StringTable::get(ItemTextKeys::ITEM_TRIED);
+    if (String::to_bool(item->get_additional_property(ItemTextKeys::ITEM_TRIED)))
+    {
+      ss << " " << StringTable::get(ItemTextKeys::ITEM_TRIED);
+    }
+
+    if (String::to_bool(item->get_additional_property(ConsumableConstants::CORPSE_SKINNED)))
+    {
+      ss << " " << StringTable::get(ConsumableConstants::CORPSE_SKINNED);
+    }
   }
 
   return ss.str();

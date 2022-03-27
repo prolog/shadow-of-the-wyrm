@@ -62,7 +62,7 @@ Game::Game()
 : keep_playing(true)
 , reload_game_loop(false)
 , check_scores(true)
-, requires_redraw(false)
+, requires_redraw(true)
 , count_score(true)
 , total_seconds_played(0.0)
 , game_start_time(chrono::system_clock::now())
@@ -411,6 +411,9 @@ void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
   string world_map_areas = settings.get_setting(Setting::CONFIGURATION_FILE_WORLD_MAP_AREAS);
   CustomAreaGenerator cag(world_map_areas);
   cag.overlay_custom_areas(current_world);
+  
+  WorldGenerator wg;
+  wg.set_village_coordinates(current_world);
 
   MapPtr world_map = get_map_registry_ref().get_map(MapID::MAP_ID_WORLD_MAP);
   if (world_map != nullptr)
@@ -748,6 +751,8 @@ void Game::update_score_file_if_necessary(CreaturePtr current_player)
         sf.write(current_player);
 
         Game& game = Game::instance();
+        game.get_display()->clear_display();
+
         HighScoreScreen hss(game.get_display(), sf.get_entries());
         auto val = hss.display();
 

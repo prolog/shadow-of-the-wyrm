@@ -3909,7 +3909,7 @@ those sent to hunt were twinned and went to bleed %b
 what exiles they could find, and whom they'd show %b
 the short and sharpened mercy of the faerie throne.
 %p
-They moved through meadowlands, and each horse fed %b
+A pair now moved through the meadows; their horses fed %b
 on grasses as it walked.  An unling passed %b
 in silence; though they hailed her, she still said %b
 nothing, and they kept on until at last %b
@@ -3939,9 +3939,9 @@ assassins set to work against the green %b
 that lit the days, the two of them now caught %b
 between this quiet calm and all the blood they sought.
 %p
-The tenth day out they walked the jagged hills %b
+The tenth day out they rode the jagged hills %b
 north-east of Cithriel, and staying low, %b
-they traced its valleys roughly north until %b
+they took its valleys roughly north until %b
 a campsite halted them, its traces stowed %b
 poorly.  They found some ashes under leaves, %b
 then sleeping spots, the grass still matted down %b
@@ -3950,8 +3950,8 @@ it might be unlings, but it seemed they'd found %b
 an indication where their quarry'd gone to ground.
 %p
 Assuming that they'd hoped to stay from sight, %b
-they traced a lazy route that followed through %b
-the central valley, walking every night %b
+they took a lazy route that followed through %b
+the central valley, rising every night %b
 to scan the surrounding plains, that panoramic view %b
 empty each time, a trap that never came. %b
 Three days of this.  Their nerves on edge.  They knew %b
@@ -3959,3 +3959,42 @@ they'd been sent to kill, and as they followed the same %b
 trail the exiles made, they each withdrew, %b
 unspeaking, focused only on the long pursuit.
 %p
+Days later, the valley closed to prairie sun %b
+and grasses that sprung like loaded traps, the stems %b
+so firm and green it meant that anyone %b
+could pass without a trace, they way they mended %b
+and stitched themselves after passage.  But lower down, %b
+they saw a route in flowers, as the reds %b
+and violets had been crushed into the ground %b
+by wooden soles, and where their quarry'd tread %b
+they'd left a path like stitches made from coloured thread.
+%p
+Following, they cut their sleep each night %b
+an hour or two, to try to trim the span. %b
+They shortened meals.  They barely talked.  First light %b
+they'd rise, break camp, and quickly make their plans, %b
+then ride until the moon was overhead. %b
+Their food was gone.  They hunted game.  Ate fox %b
+then rabbit, thankful to have that taste instead. %b
+Mid-day the tracks turned.  Following, they stopped %b
+when pressed down-grasses led the two to ash and rock.
+%p 
+A turn to carelessness?  They combed the ash %b
+and found a pile of bones, a six-course feast %b
+for two.  They stopped and listened, till at last %b
+they were satisfied whoever'd stopped to eat %b
+was long gone.  Now the question of two trails %b
+besides theirs: they discussed it; the exiles met %b
+another group, then left with them.  The tale %b
+went cold after this.  The number or the heft %b
+of the companions that they'd picked up was a shaky bet.
+%p
+"So what now?" said the second. "They're on foot %b
+but grouped up.  We've got bows and they'll have rocks, %b
+though who knows what kind of company they took. %b
+Our glamour's useless on our own.  We've stalked %b
+the pair of them this far.  So should we go %b
+on or return?"  He kicked a bit of ash. %b
+The other took a moment: "if they show %b
+themselves, we've got the range, and in this grass %b
+we can ride them down, or away; each way, the trouble's passed."

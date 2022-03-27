@@ -4,6 +4,9 @@
 class DigAction : public IActionManager
 {
   public:
+    // Dig into the ceiling, scattering a few stones.
+    ActionCostValue dig_ceiling(CreaturePtr creature, MapPtr map);
+    
     // Dig within an existing tile.  Eg, dig up a grave, a barrow, etc.
     ActionCostValue dig_within(CreaturePtr creature, ItemPtr dig_item, MapPtr map, TilePtr tile) const;
 

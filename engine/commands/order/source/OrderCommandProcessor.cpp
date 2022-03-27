@@ -42,6 +42,10 @@ ActionCostValue OrderCommandProcessor::process(CreaturePtr creature, Command* co
     {
       return oa.order_at_ease(creature);
     }
+    else if (command_name == OrderCommandKeys::SUMMON)
+    {
+      return oa.order_summon(creature);
+    }
   }
 
   return process_result;

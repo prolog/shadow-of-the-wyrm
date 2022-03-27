@@ -21,8 +21,15 @@ class DropAction : public IActionManager
     void handle_reacting_creature_drop_scripts(CreaturePtr creature, MapPtr current_map, ItemPtr new_item, const Coordinate& drop_coord);
     bool plant_seed(CreaturePtr creature, const std::string& tree_species_id, const Coordinate& coords, TilePtr tile, MapPtr current_map);
     bool bury_remains(CreaturePtr creature, const std::string& remains_race_id, const uint quantity, const Coordinate& coords, TilePtr tile, MapPtr current_map);
-    void make_map_permanent(Game& game, CreaturePtr creature, MapPtr current_map);
     
+    bool build_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const bool building_material, const std::string& grave_tile_type_s, const std::string& wall_tile_type_s, const std::string& floor_tile_type_s, const std::string& water_tile_type, const std::string& feature_ids);
+    bool build_grave_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType grave_tile_type);
+    bool build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType wall_tile_type, const bool allow_build_on_water);
+    bool build_floor_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType floor_tile_type);
+    bool build_feature_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const std::vector<std::string>& feature_s_class_ids);
+    
+    size_t get_build_option(const std::vector<std::string>& options) const;
+
     ActionCostValue do_drop(CreaturePtr creature, MapPtr current_map, ItemPtr item, const bool multi_item);
     uint get_drop_quantity(CreaturePtr creature, const uint max_quantity) const;
 };

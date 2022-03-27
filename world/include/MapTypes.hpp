@@ -33,3 +33,10 @@ class MapEventScripts
 
 using NamedMapLocations = std::map<std::string, Coordinate>;
 
+// Map types for the Lua API
+constexpr auto CMAP_TYPE_WORLD = 0;
+constexpr auto CMAP_TYPE_OVERWORLD = 1;
+constexpr auto CMAP_TYPE_UNDERWORLD = 2;
+constexpr auto CMAP_TYPE_UNDERWATER = 3;
+constexpr auto CMAP_TYPE_COSMOS = 4;
+

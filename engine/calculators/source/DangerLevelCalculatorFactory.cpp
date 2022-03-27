@@ -11,9 +11,9 @@ DangerLevelCalculatorFactory::~DangerLevelCalculatorFactory()
 {
 }
 
-IDangerLevelCalculatorPtr DangerLevelCalculatorFactory::create_danger_level_calculator(const MapType map_type, const bool depth_based, const ExitMovementType emt)
+DangerLevelCalculatorPtr DangerLevelCalculatorFactory::create_danger_level_calculator(const MapType map_type, const bool depth_based, const ExitMovementType emt)
 {
-  IDangerLevelCalculatorPtr danger_level_calculator;
+  DangerLevelCalculatorPtr danger_level_calculator;
 
   if (depth_based)
   {

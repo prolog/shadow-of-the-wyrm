@@ -74,6 +74,9 @@ class Feature : public ISerializable
     // currently occupied?
     virtual bool can_handle(const bool feature_tile_occupied) const;
 
+    // Can the feature be prised apart?
+    virtual bool can_be_prised(const bool feature_tile_occupied) const;
+
     // Potential handle message for the current feature.
     // By default, returns the empty SID.
     virtual std::string get_handle_message_sid() const;

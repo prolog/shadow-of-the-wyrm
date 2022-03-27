@@ -11,6 +11,9 @@ ItemIdKeys::~ItemIdKeys()
 {
 }
 
+const string ItemIdKeys::ITEM_ID_LUMBER           = "_lumber";
+const string ItemIdKeys::ITEM_ID_STONE_BLOCK      = "_stone_block";
+const string ItemIdKeys::ITEM_ID_SOD_BRICK        = "_sod_brick";
 const string ItemIdKeys::ITEM_ID_CLAY_POT         = "_clay_pot";
 const string ItemIdKeys::ITEM_ID_CURRENCY         = "_currency";
 const string ItemIdKeys::ITEM_ID_BRANCH           = "_branch";
@@ -22,7 +25,7 @@ const string ItemIdKeys::ITEM_ID_FIRE_BOMB        = "_fire_bomb";
 const string ItemIdKeys::ITEM_ID_SHADOW_BOMB      = "_shadow_bomb";
 const string ItemIdKeys::ITEM_ID_ROCK             = "_rock";
 const string ItemIdKeys::ITEM_ID_STONE            = "_stone";
-const string ItemIdKeys::ITEM_ID_HUGE_ROCK        = "_huge_rock";
+const string ItemIdKeys::ITEM_ID_HUGE_ROCK        = "huge_rock";
 const string ItemIdKeys::ITEM_ID_MAGICI_SHARD     = "_magici_shard";
 const string ItemIdKeys::ITEM_ID_PRIMORDIAL_ESSENCE = "_primordial_essence";
 const string ItemIdKeys::ITEM_ID_COAL             = "_coal";

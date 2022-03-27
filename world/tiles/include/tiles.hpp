@@ -71,6 +71,12 @@ enum struct TileType
   TILE_TYPE_LAST      = 55
 };
 
+// Tile super types for the Lua API
+constexpr auto CTILE_SUPER_TYPE_UNDEFINED = -1;
+constexpr auto CTILE_SUPER_TYPE_GROUND = 0;
+constexpr auto CTILE_SUPER_TYPE_WATER = 1;
+constexpr auto CTILE_SUPER_TYPE_AIR = 2;
+
 // Tile types for the Lua API
 constexpr auto CTILE_TYPE_UNDEFINED = -1;
 constexpr auto CTILE_TYPE_FIRST = 0;

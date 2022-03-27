@@ -56,6 +56,7 @@ MapPtr Generator::generate_and_initialize(const int danger, const Dimensions& di
 
   MapPtr map = generate(dim);
   map->set_danger(danger_level);
+  map->set_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE, get_additional_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE));
 
   generate_additional_structures(map);
 
@@ -217,7 +218,7 @@ void Generator::set_map_permanence(MapPtr map)
 {
   if (map)
   {
-    // If the map has not already been made permanent, set hte value based
+    // If the map has not already been made permanent, set the value based
     // on the generator's default.
     if (map->get_permanent() == false)
     {
@@ -719,7 +720,13 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
   }
 
   set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS, ignore_lvl_checks_val);
-
+  
+  string dlvl_override = get_additional_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE);
+  if (!dlvl_override.empty())
+  {
+    set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE, dlvl_override);
+  }
+  
   // The depth properties will be copied to any stairs, allowing them to 
   // propagate.  Any properties that are specific for this depth will be
   // copied to the map.  We can safely call the function at this point

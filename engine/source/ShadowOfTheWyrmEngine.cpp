@@ -1,7 +1,7 @@
 #include <future>
 #include <thread>
 #include "ShadowOfTheWyrmEngine.hpp"
-#include "XMLConfigurationReader.hpp"
+#include "AgeSelectionScreen.hpp"
 #include "Class.hpp"
 #include "ClassSelectionScreen.hpp"
 #include "Conversion.hpp"
@@ -40,6 +40,7 @@
 #include "StartingLocationSelectionScreen.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
+#include "XMLConfigurationReader.hpp"
 #include "WelcomeScreen.hpp"
 
 using namespace std;
@@ -113,8 +114,9 @@ void ShadowOfTheWyrmEngine::initialize_game_flow_map()
   game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_STOP, &ShadowOfTheWyrmEngine::process_exit_game));
 }
 
-void ShadowOfTheWyrmEngine::start(const Settings& settings)
+string ShadowOfTheWyrmEngine::start(const Settings& settings)
 {
+  string msg;
   Game& game = Game::instance();
   Log& log = Log::instance();
 
@@ -136,7 +138,8 @@ void ShadowOfTheWyrmEngine::start(const Settings& settings)
 
     if (display)
     {
-      disp_ok = display->create();
+      auto d_details = display->create();
+      disp_ok = d_details.first;
 
       if (disp_ok)
       {
@@ -149,6 +152,7 @@ void ShadowOfTheWyrmEngine::start(const Settings& settings)
         // If we couldn't create the display, set the appropriate engine
         // state so we don't try to continue.
         state_manager.set_state(EngineStateEnum::ENGINE_STATE_STOP);
+        msg = d_details.second;
       }
     }
   }
@@ -162,6 +166,8 @@ void ShadowOfTheWyrmEngine::start(const Settings& settings)
       game.go();
     }
   }
+
+  return msg;
 }
 
 void ShadowOfTheWyrmEngine::set_controller(ControllerPtr new_controller)
@@ -319,6 +325,8 @@ void ShadowOfTheWyrmEngine::setup_player_and_world()
     string game_option;
 
     {
+      display->display_splash(false);
+
       WelcomeScreen welcome(display);
       game_option = welcome.display();
     }
@@ -350,7 +358,8 @@ bool ShadowOfTheWyrmEngine::process_new_game_random()
 
   // Random sex
   Game& game = Game::instance();
-  string default_sex = game.get_settings_ref().get_setting(Setting::DEFAULT_SEX);
+  const Settings& settings = game.get_settings_ref();
+  string default_sex = settings.get_setting(Setting::DEFAULT_SEX);
   CreatureSex sex = CreatureSex::CREATURE_SEX_NOT_SPECIFIED;
 
   if (default_sex != to_string(static_cast<int>(CreatureSex::CREATURE_SEX_NOT_SPECIFIED)))
@@ -394,6 +403,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   }
 
   Game& game = Game::instance();
+  const Settings& settings = game.get_settings_ref();
   CreatureSex sex = CreatureSex::CREATURE_SEX_MALE;
     
   const DeityMap& deities = game.get_deities_cref();
@@ -402,7 +412,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   
   Option opt;
 
-  string default_sex = game.get_settings_ref().get_setting(Setting::DEFAULT_SEX);
+  string default_sex = settings.get_setting(Setting::DEFAULT_SEX);
   bool prompt_user_for_sex = true;
 
   if (!default_sex.empty())
@@ -432,10 +442,11 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   auto r_it = races.find(default_race_id);
   bool prompt_user_for_race_selection = true;
   string selected_race_id;
+  Race* race = nullptr;
 
   if (r_it != races.end())
   {
-    Race* race = r_it->second.get();
+    race = r_it->second.get();
 
     if (race && race->get_user_playable())
     {
@@ -468,7 +479,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
   }
 
-  string default_class_id = game.get_settings_ref().get_setting(Setting::DEFAULT_CLASS_ID);
+  string default_class_id = settings.get_setting(Setting::DEFAULT_CLASS_ID);
   const auto c_it = classes.find(default_class_id);
   bool prompt_user_for_class_selection = true;
   string selected_class_id;
@@ -515,7 +526,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   creature_synopsis = TextMessages::get_character_creation_synopsis(sex, selected_race, selected_class, nullptr, nullptr);
 
   HairColour hair_colour = HairColour::HAIR_NA;
-  string default_hair = game.get_settings_ref().get_setting(Setting::DEFAULT_HAIR_COLOUR);
+  string default_hair = settings.get_setting(Setting::DEFAULT_HAIR_COLOUR);
 
   if (!default_hair.empty())
   {
@@ -538,7 +549,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   }
 
   EyeColour eye_colour = EyeColour::EYE_COLOUR_NA;
-  string default_eye = game.get_settings_ref().get_setting(Setting::DEFAULT_EYE_COLOUR);
+  string default_eye = settings.get_setting(Setting::DEFAULT_EYE_COLOUR);
   if (!default_eye.empty())
   {
     EyeColour ec = static_cast<EyeColour>(String::to_int(default_eye));
@@ -559,7 +570,41 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
   }
 
-  string default_deity_id = game.get_settings_ref().get_setting(Setting::DEFAULT_DEITY_ID);
+  string default_age = settings.get_setting(Setting::DEFAULT_AGE);
+  bool show_age_screen = false;
+  int age = -1;
+
+  if (race != nullptr)
+  {
+    if (!default_age.empty())
+    {
+      age = String::to_int(default_age);
+
+      if (age == -1)
+      {
+        show_age_screen = true;
+      }
+    }
+  }
+
+  if (show_age_screen)
+  {
+    RaceManager rm;
+    Race* sel_race = rm.get_race(selected_race_id);
+    AgeInfo age_info = sel_race->get_age_info();
+    int min_select_age = age_info.get_starting_age().get_min();
+    int max_select_age = age_info.get_maximum_age().get_min() - 1;
+    bool valid_age = false;
+
+    while (!valid_age)
+    {
+      AgeSelectionScreen ass(display, creature_synopsis, min_select_age, max_select_age);
+      age = String::to_int(ass.display());
+      valid_age = selected_race->is_valid_starting_age(age);
+    }
+  }
+
+  string default_deity_id = settings.get_setting(Setting::DEFAULT_DEITY_ID);
   bool prompt_user_for_deity_selection = true;
   vector<string> deity_ids = selected_race->get_initial_deity_ids();
   string selected_deity_id;
@@ -606,7 +651,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     selected_deity = d_it->second.get();
   }
 
-  string default_starting_location_id = game.get_settings_ref().get_setting(Setting::DEFAULT_STARTING_LOCATION_ID);
+  string default_starting_location_id = settings.get_setting(Setting::DEFAULT_STARTING_LOCATION_ID);
   StartingLocationMap sm = game.get_starting_locations();
   StartingLocation sl;
   auto sm_it = sm.find(default_starting_location_id);
@@ -634,7 +679,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
   }
 
-  CharacterCreationDetails ccd(sex, hair_colour, eye_colour, selected_race_id, selected_class_id, selected_deity_id, sl);
+  CharacterCreationDetails ccd(sex, hair_colour, eye_colour, age, selected_race_id, selected_class_id, selected_deity_id, sl);
   return process_name_and_start(ccd);
 }
 
@@ -695,6 +740,11 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
 
   CreatureFactory cf;
   CreaturePtr player = cf.create_by_race_and_class(game.get_action_manager_ref(), nullptr, ccd.get_race_id(), ccd.get_class_id(), name, ccd.get_sex(), CreatureSize::CREATURE_SIZE_NA, ccd.get_deity_id(), true, true);
+
+  if (selected_race != nullptr && selected_race->is_valid_starting_age(ccd.get_age()))
+  {
+    player->set_age(ccd.get_age());
+  }
 
   HairColour hc = ccd.get_hair_colour();
   EyeColour ec = ccd.get_eye_colour();
@@ -813,10 +863,7 @@ bool ShadowOfTheWyrmEngine::process_load_game()
     game.get_settings_ref().set_settings(keybinding_settings);
   }
 
-  display->clear_display();
-  display->refresh_current_window();
   game.set_requires_redraw(true);
-
   return result;
 }
 

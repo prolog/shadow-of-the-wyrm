@@ -113,13 +113,17 @@ void Effect::inform_unidentified_if_player(std::shared_ptr<Creature> creature) c
 
 void Effect::add_additional_effect_messages(CreaturePtr creature) const
 {
-  for (AdditionalEffectMessagePtr msg : additional_effect_messages)
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+
+  for (const string& msg : additional_effect_messages)
   {
-    if (msg)
+    if (!msg.empty())
     {
-      msg->add_effect_message(creature);
+      manager.add_new_message(StringTable::get(msg));
     }
   }
+
+  manager.send();
 }
 
 bool Effect::is_negative_effect() const

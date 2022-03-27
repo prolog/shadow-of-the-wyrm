@@ -46,9 +46,10 @@ SDLDisplay::~SDLDisplay()
 {
 }
 
-bool SDLDisplay::create()
+pair<bool, string> SDLDisplay::create()
 {
   bool init = true;
+  string error_msg;
 
   init = read_colours_from_settings();
   init = read_dimensions_from_settings();
@@ -67,22 +68,24 @@ bool SDLDisplay::create()
 
         if (!init)
         {
-          std::cerr << "Could not read font into texture" << std::endl;
+          error_msg = "Could not read font into texture";
         }
       }
       else
       {
-        std::cerr << "Could not read create window and renderer" << std::endl;
+        error_msg = "Could not read create window and renderer";
       }
     }
     else
     {
-      std::cerr << "Screen is smaller than required " << sdld.get_screen_width() << "x" << sdld.get_screen_height() << " - increase resolution and restart, or change to display=curses in swyrm.ini" << std::endl;
+      ostringstream ss;
+      ss << "Screen is smaller than required " << sdld.get_screen_width() << "x" << sdld.get_screen_height() << " - increase resolution and restart, or change to display=curses in swyrm.ini";
+      error_msg = ss.str();
     }
   }
   else
   {
-    std::cerr << "Could not read dimensions from settings" << std::endl;
+    error_msg = "Could not read dimensions from settings";
   }
 
   
@@ -94,7 +97,7 @@ bool SDLDisplay::create()
     setup_new_screen();
   }
 
-  return init;
+  return make_pair(init, error_msg);
 }
 
 void SDLDisplay::tear_down()
@@ -104,6 +107,65 @@ void SDLDisplay::tear_down()
 
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
+}
+
+bool SDLDisplay::display_splash(const bool enabled)
+{
+  bool shown = false;
+  bool tear_down = !enabled;
+
+  if (enabled)
+  {
+    string filename = get_property(Setting::DISPLAY_SPLASH_IMAGE);
+
+    if (!filename.empty())
+    {
+      SDL_Surface* surface = IMG_Load(filename.c_str());
+
+      if (surface != NULL)
+      {
+        if (splash_window == NULL)
+        {
+          splash_window = SDL_CreateWindow("", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, surface->w, surface->h, SDL_WINDOW_ALLOW_HIGHDPI | SDL_WINDOW_BORDERLESS);
+        }
+
+        if (splash_renderer == NULL)
+        {
+          splash_renderer = SDL_CreateRenderer(splash_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE | SDL_RENDERER_PRESENTVSYNC);
+        }
+
+        SDL_Texture* splash = SDL_CreateTextureFromSurface(splash_renderer, surface);
+
+        if (splash == NULL)
+        {
+          Log::instance().error("Can't create splash from " + filename);
+          tear_down = true;
+        }
+        else
+        {
+          SDL_SetRenderTarget(splash_renderer, NULL);
+          SDL_RenderClear(splash_renderer);
+          SDL_RenderCopy(splash_renderer, splash, NULL, NULL);
+          SDL_RenderPresent(splash_renderer);
+
+          shown = true;
+        }
+
+        SDL_FreeSurface(surface);
+      }
+    }
+  }
+
+  if (tear_down)
+  {
+    SDL_DestroyRenderer(splash_renderer);
+    SDL_DestroyWindow(splash_window);
+
+    splash_renderer = NULL;
+    splash_window = NULL;
+  }
+
+  return shown;
 }
 
 string SDLDisplay::toggle_fullscreen()

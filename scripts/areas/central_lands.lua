@@ -1,6 +1,13 @@
 require('constants')
 require('areas')
 
+-- The Carcassian mines
+local carcassia_mines = Area:new(44, 46)
+carcassia_mines:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_CARCASSIA_MINES")
+carcassia_mines:set_additional_property("MAP_PROPERTIES_MAX_DEPTH", "1")
+carcassia_mines:set_additional_property("MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED", "1")
+carcassia_mines:set_additional_property("MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE", "-1")
+
 -- Detail's for Asher's islet
 local asher_islet = Area:new(40,48)
 asher_islet:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_ASHER_ISLET")
@@ -23,6 +30,7 @@ carcassia:insert()
 
 local carcassia_island = {}
 
+table.insert(carcassia_island, carcassia_mines)
 table.insert(carcassia_island, asher_islet)
 table.insert(carcassia_island, dungeon)
 table.insert(carcassia_island, carcassia)
