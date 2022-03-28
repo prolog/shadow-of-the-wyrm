@@ -173,7 +173,7 @@ void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr attackin
     }
   }
 
-  for (const ItemPtr i : generated_items)
+  for (const auto& i : generated_items)
   {
     if (i != nullptr)
     {
