@@ -2188,7 +2188,7 @@ int remove_creature_from_map(lua_State* ls)
 
     if (!creature_id_or_base.empty())
     {
-      for (const auto creature_pair : creatures)
+      for (const auto& creature_pair : creatures)
       {
         CreaturePtr creature = creature_pair.second;
 
@@ -5485,7 +5485,7 @@ int identify_item_type(lua_State* ls)
 
     if (creature && creature->get_is_player())
     {
-      for (const pair<string, ItemPtr>& item_pair : items)
+      for (const auto& item_pair : items)
       {
         ItemIdentifier iid;
         ItemPtr item = item_pair.second;
@@ -6025,7 +6025,7 @@ int get_nearby_hostile_creatures(lua_State* ls)
     MapPtr view_map = creature->get_decision_strategy()->get_fov_map();
     const CreatureMap& creatures = view_map->get_creatures();
 
-    for (const auto creature_pair : creatures)
+    for (const auto& creature_pair : creatures)
     {
       CreaturePtr view_creature = creature_pair.second;
 
@@ -6184,7 +6184,7 @@ int is_creature_in_view_map(lua_State* ls)
     {
       map<string, CreaturePtr> creatures = creature->get_decision_strategy()->get_fov_map()->get_creatures();
 
-      for (const auto c_pair : creatures)
+      for (const auto& c_pair : creatures)
       {
         if (c_pair.first == map_creature_id)
         {
