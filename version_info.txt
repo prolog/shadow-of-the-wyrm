@@ -1,6 +1,10 @@
 Shadow of the Wyrm v1.4.4 "Fuenllana"
 - Version declared March 27, 2022.
 
+- Created a splash screen for curses mode.
+
+- Additional person/place names.
+
 Shadow of the Wyrm v1.4.3 "da Milano"
 - Version declared December 24, 2021.  Version finalized March 27, 2022.
 

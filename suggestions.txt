@@ -1,5 +1,8 @@
 Me:
+- Properly centre the curses splash!
+- Do a bunch of curses testing now that a curses splash has been added.
 - spinach/str?
+- splash screen for curses
 - bookstore
 - quest to quell a rebellion from Carcassia
 - More archery for archers and goblin pelters

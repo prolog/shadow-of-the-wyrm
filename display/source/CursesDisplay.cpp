@@ -74,7 +74,7 @@ Display* CursesDisplay::clone()
 }
 
 CursesDisplay::CursesDisplay()
-: message_buffer_screen(nullptr), can_use_colour(true)
+: message_buffer_screen(nullptr), can_use_colour(true), initialized(false)
 {
 }
 
@@ -290,28 +290,31 @@ pair<bool, string> CursesDisplay::create()
   bool creation_success = true;
   string error_msg;
 
-  initscr();
-  keypad(stdscr, TRUE);
-  nl();
-  noecho(); // Don't echo the user input.
-  raw(); // pass control characters to the program.
-  curs_set(0); // Cursor invisible.  Doesn't seem to work in Cygwin.  Just like colour redefinition.  Fucking Cygwin.
-
-  if (has_colors() == TRUE)
+  if (!initialized)
   {
-    start_color();
-    initialize_colours();
+    initscr();
+    keypad(stdscr, TRUE);
+    nl();
+    noecho(); // Don't echo the user input.
+    raw(); // pass control characters to the program.
+    curs_set(0); // Cursor invisible.  Doesn't seem to work in Cygwin.  Just like colour redefinition.  Fucking Cygwin.
+
+    if (has_colors() == TRUE)
+    {
+      start_color();
+      initialize_colours();
+    }
+
+    refresh_terminal_size();
+
+    if ((TERMINAL_MAX_ROWS < 25) || (TERMINAL_MAX_COLS < 80))
+    {
+      error_msg = "Shadow of the Wyrm requires a terminal of 80x25 or larger.";
+      creation_success = false;
+    }
+
+    refresh();
   }
-
-  refresh_terminal_size();
-
-  if ((TERMINAL_MAX_ROWS < 25) || (TERMINAL_MAX_COLS < 80))
-  {
-    error_msg = "Shadow of the Wyrm requires a terminal of 80x25 or larger.";
-    creation_success = false;
-  }
-
-  refresh();
 
   return make_pair(creation_success, error_msg);
 }
@@ -325,7 +328,54 @@ void CursesDisplay::tear_down()
 
 bool CursesDisplay::display_splash(const bool enabled)
 {
-  return false;
+  if (!initialized)
+  {
+    create();
+  }
+
+  clear_display();
+  enable_colour(static_cast<int>(Colour::COLOUR_BOLD_MAGENTA), stdscr);
+  vector<string> sotw_curses_splash{
+"                                                                              ",
+"                           &&&&/#   *&&&(((((                                 ",
+"                             (((((((((#(((((/(((((                            ",
+"  L                (((((((((((((((((((((((####((((((((((*                   L ",
+"                (#&&   (#(((((((((((#((((((#########  ((((                    ",
+"  O                 &(#(((((((((((##(((##$(##$#######((#(((((((&            O ",
+"                   &(((#####((#((((##(#&($###(#/(####$&((#(((((/((            ",
+"  A              #((((###########$        &&&&((#(#$    &$&((((((((         A ",
+"              ((( &(##(###(#####(              &&((##(##  & &  & &,           ",
+"  D          &   #####(##$##$($#(                 &&&(((( (                 D ",
+"                 &#####$$$$#####((##                  &&#$#(.                 ",
+"  I             &#(&#$$$$$$(###$$##$#(#/                                    I ",
+"                &$*&&$$$$$$$$####$##$#$#######$###$$#                         ",
+"  N             &/   &&#$&$$$$$$$$$#$########$############$#                N ",
+"                        &&$&&#$#$$$$$$$#$$$#######$$#$#$$####$                ",
+"  G                &&#&#, /    &&&###$&#&$$$$$$$#$$$$$$#$##$$$#             G ",
+"                &&#$$$$$$$$#$       & /  &&&&$$$$$$$##$#$$&&$$$               ",
+"  .          .#$$$$&&&&&$$$$$&$&               &( &&$$$##&#$#$$             . ",
+"            &&$#$$      &&$$$&$$&   .              $$$$#####$$#               ",
+"  .          &&$$#$       &$$$$$$#$&$.          $$$$$$$&$$$#$#              . ",
+"              &$#$$$$$     &$$$$$$$&&$$  & &&&&$$$$$$$$$#$$#$                 ",
+"  .           &&$$$$$$$$,   &$$$&$$$&&&@$&$&$$$$$$$$$$$#$##                 . ",
+"                (&#$&$$$$$/  /&&&&&$$$&&$$&#$$$$$$#$$$$/                      ",
+"                   #$##$$&&&       $$&&&$$$$$$$$$$$$$                         " };
+  
+  if (sotw_curses_splash.size() > TERMINAL_MAX_ROWS + 1)
+  {
+    mvprintw(0, 0, "Loading Shadow of the Wyrm...");
+  }
+  else
+  {
+    for (size_t i = 0; i < sotw_curses_splash.size(); i++)
+    {
+      mvprintw(i, 0, sotw_curses_splash.at(i).c_str());
+    }
+  }
+
+  refresh();
+
+  return true;
 }
 
 string CursesDisplay::get_name() const

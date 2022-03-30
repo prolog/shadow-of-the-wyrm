@@ -485,7 +485,7 @@ void Display::draw_animation(const Animation& animation, MapPtr player_fov_map)
 }
 
 // Get whether the terminal can support colour.  False by
-// default, until SL actually tries to detect the terminal's
+// default, until SotW actually tries to detect the terminal's
 // colour capabilities.  This can be turned off in the ini
 // settings, also.
 bool Display::uses_colour() const
