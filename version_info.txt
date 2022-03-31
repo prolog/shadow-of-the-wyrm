@@ -3,6 +3,8 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
 
 - Created a splash screen for curses mode.
 
+- Added another poem for the title screen.
+
 - Additional person/place names.
 
 Shadow of the Wyrm v1.4.3 "da Milano"
