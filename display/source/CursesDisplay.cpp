@@ -334,43 +334,72 @@ bool CursesDisplay::display_splash(const bool enabled)
   }
 
   clear_display();
-  enable_colour(static_cast<int>(Colour::COLOUR_BOLD_MAGENTA), stdscr);
   vector<string> sotw_curses_splash{
 "                                                                              ",
 "                           &&&&/#   *&&&(((((                                 ",
 "                             (((((((((#(((((/(((((                            ",
-"  L                (((((((((((((((((((((((####((((((((((*                   L ",
+"                   (((((((((((((((((((((((####((((((((((*                     ",
 "                (#&&   (#(((((((((((#((((((#########  ((((                    ",
-"  O                 &(#(((((((((((##(((##$(##$#######((#(((((&              O ",
+"                    &(#(((((((((((##(((##$(##$#######((#(((((&                ",
 "                   &(((#####((#((((##(#&($###(#/(####$&((#(((((               ",
-"  A              #((((###########$        &&&&((#(#$    &$&(((((            A ",
+"                 #((((###########$        &&&&((#(#$    &$&(((((              ",
 "              ((( &(##(###(#####(              &&((##(##  & & &,              ",
-"  D          &   #####(##$##$($#(                 &&&((((                   D ",
+"             &   #####(##$##$($#(                 &&&((((                     ",
 "                 &#####$$$$#####((##                  &&#$#(.                 ",
-"  I             &#(&#$$$$$$(###$$##$#(#/                                    I ",
+"                &#(&#$$$$$$(###$$##$#(#/                                      ",
 "                &$*&&$$$$$$$$####$##$#$#######$###$$#                         ",
-"  N             &/   &&#$&$$$$$$$$$#$########$############$#                N ",
+"                &/   &&#$&$$$$$$$$$#$########$############$#                  ",
 "                        &&$&&#$#$$$$$$$#$$$#######$$#$#$$####$                ",
-"  G                &&#&#, /    &&&###$&#&$$$$$$$#$$$$$$#$##$$$#             G ",
+"                   &&#&#, /    &&&###$&#&$$$$$$$#$$$$$$#$##$$$#               ",
 "                &&#$$$$$$$$#$       & /  &&&&$$$$$$$##$#$$&&$$$               ",
-"  .          .#$$$$&&&&&$$$$$&$&               &( &&$$$##&#$#$$             . ",
+"             .#$$$$&&&&&$$$$$&$&               &( &&$$$##&#$#$$               ",
 "            &&$#$$      &&$$$&$$&   .              $$$$#####$$#               ",
-"  .          &&$$#$       &$$$$$$#$&$.          $$$$$$$&$$$#$#              . ",
+"             &&$$#$       &$$$$$$#$&$.          $$$$$$$&$$$#$#                ",
 "              &$#$$$$$     &$$$$$$$&&$$  & &&&&$$$$$$$$$#$$#$                 ",
-"  .           &&$$$$$$$$,   &$$$&$$$&&&@$&$&$$$$$$$$$$$#$##                 . ",
+"              &&$$$$$$$$,   &$$$&$$$&&&@$&$&$$$$$$$$$$$#$##                   ",
 "                (&#$&$$$$$/  /&&&&&$$$&&$$&#$$$$$$#$$$$/                      ",
 "                   #$##$$&&&     &&$$&&&$$$$$$$$$$$$$                         " };
   
   if (sotw_curses_splash.size() > TERMINAL_MAX_ROWS + 1)
   {
+    enable_colour(static_cast<int>(Colour::COLOUR_BOLD_MAGENTA), stdscr);
     mvprintw(0, 0, "Loading Shadow of the Wyrm...");
+    disable_colour(static_cast<int>(Colour::COLOUR_BOLD_MAGENTA), stdscr);
   }
   else
   {
+    enable_colour(static_cast<int>(Colour::COLOUR_BOLD_MAGENTA), stdscr);
+
     for (size_t i = 0; i < sotw_curses_splash.size(); i++)
     {
       mvprintw(i, 0, sotw_curses_splash.at(i).c_str());
     }
+
+    disable_colour(static_cast<int>(Colour::COLOUR_BOLD_MAGENTA), stdscr);
+    enable_colour(static_cast<int>(Colour::COLOUR_BOLD_BLACK), stdscr);
+
+    string banner_text = "L O A D I N G . . .";
+    int banner_y = (TERMINAL_MAX_ROWS - 1) / 2 - banner_text.size() / 2;
+
+    for (size_t i = 0; i < banner_text.size(); i++)
+    {
+      char letter = banner_text[i];
+      mvaddch(banner_y + i, 1, letter);
+      mvaddch(banner_y + i, TERMINAL_MAX_COLS - 2, letter);
+    }
+
+    disable_colour(static_cast<int>(Colour::COLOUR_BOLD_BLACK), stdscr);
+    enable_colour(static_cast<int>(Colour::COLOUR_BOLD_WHITE), stdscr);
+
+    // Set the start of the banner
+    banner_text = "S  H  A  D  O  W      O  F      T  H  E      W  Y  R  M";
+    banner_y = (TERMINAL_MAX_ROWS - 1) / 2;
+    int banner_x = (TERMINAL_MAX_COLS - 1) / 2 - banner_text.size() / 2;
+
+    move(banner_y, banner_x);
+    printw(banner_text.c_str());
+
+    disable_colour(static_cast<int>(Colour::COLOUR_BOLD_WHITE), stdscr);
   }
 
   refresh();

@@ -1,5 +1,5 @@
 Me:
-- Properly centre the curses splash!
+- Properly centre the curses ASCII art
 - Do a bunch of curses testing now that a curses splash has been added.
 - spinach/str?
 - splash screen for curses
