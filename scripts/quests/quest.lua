@@ -73,6 +73,7 @@ function Quest:new(quest_id, quest_title_sid_or_table, questmaster_name_sid, que
     obj.quest_title_parameter_sids = ""
   end
 
+  obj.questmaster_id = args[SPEAKING_CREATURE_ID]
   obj.questmaster_name_sid = questmaster_name_sid
   obj.map_name_sid = map_name_sid
 

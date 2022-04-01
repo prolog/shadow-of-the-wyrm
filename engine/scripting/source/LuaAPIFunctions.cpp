@@ -835,6 +835,7 @@ int add_new_quest(lua_State* ls)
     string quest_id = lua_tostring(ls, 1);
     string quest_title_sid = se.get_table_str(ls, "quest_title_sid");
     vector<string> quest_title_parameter_sids = String::create_string_vector_from_csv_string(se.get_table_str(ls, "quest_title_parameter_sids"));
+    string questmaster_id = se.get_table_str(ls, "questmaster_id");
     string questmaster_name_sid = se.get_table_str(ls, "questmaster_name_sid");
     string map_name_sid = se.get_table_str(ls, "map_name_sid");
     string quest_description_sid = se.get_table_str(ls, "quest_description_sid");
@@ -844,6 +845,7 @@ int add_new_quest(lua_State* ls)
     Quest new_quest(quest_id, 
                     quest_title_sid, 
                     quest_title_parameter_sids, 
+                    questmaster_id,
                     questmaster_name_sid, 
                     map_name_sid, 
                     quest_description_sid, 

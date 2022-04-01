@@ -8,7 +8,7 @@ class Quest : public ISerializable
 {
   public:
     Quest();
-    Quest(const std::string& new_quest_id, const std::string& new_quest_title_sid, const std::vector<std::string>& new_qt_param_sids, const std::string& new_questmaster_name_sid, const std::string& new_map_name_sid, const std::string& new_quest_description_sid, const std::vector<std::string>& new_desc_param_sids);
+    Quest(const std::string& new_quest_id, const std::string& new_quest_title_sid, const std::vector<std::string>& new_qt_param_sids, const std::string& new_questmaster_id, const std::string& new_questmaster_name_sid, const std::string& new_map_name_sid, const std::string& new_quest_description_sid, const std::vector<std::string>& new_desc_param_sids);
     bool operator==(const Quest& q) const;
 
     void set_quest_id(const std::string& new_quest_id);
@@ -20,7 +20,10 @@ class Quest : public ISerializable
     void set_quest_title_parameter_sids(const std::vector<std::string>& new_qt_param_sids);
     std::vector<std::string> get_quest_title_parameter_sids() const;
 
-    void set_questmaster_name_sid(const std::string& new_quest_id);
+    void set_questmaster_id(const std::string& new_questmaster_id);
+    std::string get_questmaster_id() const;
+
+    void set_questmaster_name_sid(const std::string& new_questmaster_name_sid);
     std::string get_questmaster_name_sid() const;
 
     void set_map_name_sid(const std::string& new_map_name_sid);
@@ -39,6 +42,7 @@ class Quest : public ISerializable
     std::string quest_id;
     std::string quest_title_sid;
     std::vector<std::string> quest_title_parameter_sids;
+    std::string questmaster_id;
     std::string questmaster_name_sid;
     std::string map_name_sid;
     std::string quest_description_sid;

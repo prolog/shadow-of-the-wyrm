@@ -3,6 +3,9 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
 
 - Created a splash screen for curses mode.
 
+- Killing a questmaster will now remove their quests from your active list
+  (oooby).
+
 - Added another poem for the title screen.
 
 - Additional person/place names.
