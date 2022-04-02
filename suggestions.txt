@@ -1,13 +1,10 @@
 Me:
-- Properly centre the curses ASCII art
-- oooby: clear quests if creature killed
 - Do a bunch of curses testing now that a curses splash has been added.
 - spinach/str?
 - splash screen for curses
 - bookstore
 - quest to quell a rebellion from Carcassia
 - More archery for archers and goblin pelters
-- very small chance for enchant to give speed bonus
 - ASSET RELEASE
 - random uniques (fighter-type, thief-type, spellcaster-type)
 - fisherman quest

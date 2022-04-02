@@ -6,6 +6,9 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
 - Killing a questmaster will now remove their quests from your active list
   (oooby).
 
+- Improving items either by enchanting or smithing now has a very small
+  chance to add extra speed.
+
 - Added another poem for the title screen.
 
 - Additional person/place names.

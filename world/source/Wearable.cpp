@@ -19,6 +19,7 @@ const int Wearable::CSTAT_GOOD_THRESHOLD = 2;
 const double Wearable::RESISTS_GOOD_THRESHOLD = 0.1;
 const double Wearable::RESISTS_SCORE_MULTIPLIER = 40.0;
 const double Wearable::EVADE_SCORE_MULTIPLIER = 1.5;
+const int Wearable::ENCHANT_PCT_CHANCE_ADD_SPEED = 4;
 
 Wearable::Wearable()
 : evade(0), soak(0), speed_bonus(0), to_hit(0), addl_damage(0)
@@ -119,21 +120,30 @@ void Wearable::do_smith_item(const int points)
 
 void Wearable::do_improve_item(const int points)
 {
-  ImproveWearableType wearable_improve = static_cast<ImproveWearableType>(RNG::range(static_cast<int>(ImproveWearableType::IMPROVE_WEARABLE_EVADE), static_cast<int>(ImproveWearableType::IMPROVE_WEARABLE_BOTH)));
-
-  switch (wearable_improve)
+  if (RNG::percent_chance(ENCHANT_PCT_CHANCE_ADD_SPEED))
   {
+    // Small chance of adding speed.
+    speed_bonus++;
+    return;
+  }
+  else
+  {
+    ImproveWearableType wearable_improve = static_cast<ImproveWearableType>(RNG::range(static_cast<int>(ImproveWearableType::IMPROVE_WEARABLE_EVADE), static_cast<int>(ImproveWearableType::IMPROVE_WEARABLE_BOTH)));
+
+    switch (wearable_improve)
+    {
     case ImproveWearableType::IMPROVE_WEARABLE_EVADE:
       set_evade(get_evade() + static_cast<int>((points * 1.5)));
       break;
     case ImproveWearableType::IMPROVE_WEARABLE_SOAK:
       set_soak(get_soak() + points);
       break;
-    // We don't consider speed presently, as it's very powerful.
+      // We don't consider speed presently, as it's very powerful.
     case ImproveWearableType::IMPROVE_WEARABLE_BOTH:
       set_evade(get_evade() + points);
       set_soak(get_soak() + (points / 2));
       break;
+    }
   }
 }
 
