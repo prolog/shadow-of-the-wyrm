@@ -115,6 +115,11 @@ bool Statistic::get_full() const
   return (current == base);
 }
 
+int Statistic::get_percent() const
+{
+  return (100 * current) / base;
+}
+
 // True if the number of marks equals the base value.
 bool Statistic::get_max_marks() const
 {

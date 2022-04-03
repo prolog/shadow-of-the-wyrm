@@ -9,6 +9,9 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
 - Improving items either by enchanting or smithing now has a very small
   chance to add extra speed.
 
+- Creatures will now consider moving through traps if they think the damage
+  won't be too much (Josh Engdahl).
+
 - Added another poem for the title screen.
 
 - Additional person/place names.

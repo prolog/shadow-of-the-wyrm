@@ -802,17 +802,19 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Map
     Game& game = Game::instance();
     Settings& settings = game.get_settings_ref();
     bool never_move_to_danger = String::to_bool(settings.get_setting(Setting::NEVER_MOVE_TO_DANGER_TILES));
+    bool is_player = creature->get_is_player();
 
-    if (never_move_to_danger == false && is_automoving == false)
+    if (is_player && never_move_to_danger == false && is_automoving == false)
     {
-      if (creature->get_is_player())
-      {
-        IMessageManager& manager = MM::instance();
-        manager.add_new_confirmation_message(details.second);
+      IMessageManager& manager = MM::instance();
+      manager.add_new_confirmation_message(details.second);
 
-        confirmation = (creature->get_decision_strategy()->get_confirmation());
-        manager.clear_if_necessary();
-      }
+      confirmation = (creature->get_decision_strategy()->get_confirmation());
+      manager.clear_if_necessary();
+    }
+    else if (!is_player)
+    {
+      confirmation = creature->get_decision_strategy()->get_move_to_dangerous_tile(current_map, creature, creatures_new_tile);
     }
 
     return confirmation;      

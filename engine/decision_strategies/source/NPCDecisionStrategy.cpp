@@ -60,6 +60,39 @@ uint NPCDecisionStrategy::get_count(const uint max_count)
   return max_count;
 }
 
+bool NPCDecisionStrategy::get_move_to_dangerous_tile(MapPtr map, CreaturePtr creature, TilePtr tile) const
+{
+  bool do_move = false;
+
+  if (map != nullptr && creature != nullptr)
+  {
+    FeaturePtr feature = tile->get_feature();
+
+    if (feature != nullptr)
+    {
+      TrapPtr trap = dynamic_pointer_cast<Trap>(feature);
+
+      // Even tough creatures will avoid blackwater traps due to the instakill
+      // potential.
+      if (trap != nullptr && trap->get_damage().get_damage_type() != DamageType::DAMAGE_TYPE_SHADOW)
+      {
+        // If it's not a shadow trap, creatures will move past traps when
+        // they believe they can soak it and still have lots of HP left.
+        Statistic hp_copy = creature->get_hit_points();
+        int max_dmg = trap->get_damage().max();
+        hp_copy.set_current(hp_copy.get_current() - max_dmg);
+
+        if (hp_copy.get_percent() > 50)
+        {
+          do_move = true;
+        }
+      }
+    }
+  }
+
+  return do_move;
+}
+
 bool NPCDecisionStrategy::get_confirmation(const bool confirmation_default_value, const bool require_proper_selection)
 {
   return true;
