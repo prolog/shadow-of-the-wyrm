@@ -118,7 +118,7 @@ Shadow of the Wyrm v1.4.3 "da Milano"
   randomize their colour between brown/grey/black/white.
 
 - The manual, keybindings, and confirmation text now make it more clear that
-  quitting will abandon your character (Echo38).
+  quitting will abandon your character (Bentwing).
 
 - New creatures: thatcher.
 
@@ -443,10 +443,10 @@ Shadow of the Wyrm v1.3.3 "de Sarlat"
 - Bug fixes:
 
   - When automelee was off, the player was being prompted when NPCs were
-    attacking at range (Echo38).
+    attacking at range (Bentwing).
 
   - Digging gave a weird message when you used it over another creature
-    (Echo38).
+    (Bentwing).
 
   - Hide whips weren't being suppressed during regular item generation (Red).
 
@@ -454,14 +454,14 @@ Shadow of the Wyrm v1.3.3 "de Sarlat"
     max value.
   
   - Fireball traps were leaving fire bombs, when these had item destruction
-    percentages that should've prevented that (Echo38).
+    percentages that should've prevented that (Bentwing).
 
 Shadow of the Wyrm v1.3.2 "del Liuto"
 - Version declared April 23, 2021.  Version finalized June 13, 2021.
 
 - Default hair and eye colour can now be set in swyrm.ini, as well as an
   option that brings up a menu for each, in case you want to select these
-  values for each character (Echo38).
+  values for each character (Bentwing).
 
 - Damage messages will now be displayed in red when you are criticalled and 
   take damage, when you take >= 20% of your max HP, or when your HP falls 
@@ -524,7 +524,7 @@ Shadow of the Wyrm v1.3.2 "del Liuto"
 
   - The danger level of wilderness tiles was always intended to scale the
     further you got from your starting location, but due to a casting bug,
-    the danger was always being defaulted to 1 instead (Echo38).
+    the danger was always being defaulted to 1 instead (Bentwing).
 
   - The value of the saved ASCII mode setting wasn't being properly set 
     after loading a saved game, reverting things back to whatever the 

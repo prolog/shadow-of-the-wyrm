@@ -1,4 +1,6 @@
 Me:
+- When default_name is set and there's already a character of that name,
+  it's causing problems (Echo38).
 - Do a bunch of curses testing now that a curses splash has been added.
 - spinach/str?
 - splash screen for curses
