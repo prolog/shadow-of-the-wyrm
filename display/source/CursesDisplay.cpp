@@ -370,7 +370,7 @@ bool CursesDisplay::display_splash(const bool enabled)
   }
   else
   {
-    int banner_y = (TERMINAL_MAX_ROWS + 1) / 2 - sp_sz / 2;
+    int banner_y = (TERMINAL_MAX_ROWS) / 2 - sp_sz / 2;
     int banner_x = (TERMINAL_MAX_COLS + 1) / 2 - sotw_curses_splash.at(0).size() / 2;
 
     enable_colour(static_cast<int>(Colour::COLOUR_BOLD_MAGENTA), stdscr);
