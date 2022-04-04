@@ -1,4 +1,11 @@
 Me:
+- launchers should add their status bonus, and if branded should also set the
+  status ailment
+- Prompt for quest completion? setting
+- fantastic beast two away in corridor. ends up self-casting lightning bolt.
+  (Bentwing)
+- Land based creatures spawning in water on overworld, drowning (Bentwing)
+- after fixing this: bias by adding cardinal directions first
 - Ammo improvements:
   - Prompt equip on pickup
   - Merge picked up into ammo slot
@@ -325,17 +332,15 @@ Josh Engdahl
 - los code: .@..   can't see
             ####s
 
-- can lure ancient monsters into trap room and kill them via an unwillingness
-  to move on to trapped tiles.
-
 TheGhostInTheMachine:
 - game segfaults if you put it on the path and then run it elsewhere?
 
 Brian Jeffears:
 - black market/something only open at night
 
-Echo38:
+Bentwing:
 - make undead hostile to humanoids
+- way of creating lock for door
 
 Kenny:
 - repeat last command (!)

@@ -19,6 +19,8 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
 
 - Additional person/place names.
 
+- Various typo fixes/text improvement.
+
 - Bug fixes:
 
   - When default_name was set, and you already had a character of that name,

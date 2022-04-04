@@ -707,7 +707,7 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
   {
     Settings& settings = game.get_settings_ref();
     
-    if (username_is_character_name)
+    if (username_is_character_name && !warning_message.empty())
     {
       name = Environment::get_user_name();
     }
