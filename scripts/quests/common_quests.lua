@@ -111,7 +111,7 @@ local function villagevisit_completion_fn()
   local cr_id = args[SPEAKING_CREATURE_ID]
 
   Quest:remove_escort_details(cr_id)
-  rmeove_leader(cr_id)
+  remove_leader(cr_id)
 
   local obj = objs[RNG_range(1, #objs)]
   add_object_to_player_tile(obj)

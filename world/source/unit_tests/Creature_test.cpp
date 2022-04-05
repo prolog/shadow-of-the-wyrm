@@ -420,3 +420,12 @@ TEST(SW_World_Creature, ancient_beast)
   EXPECT_TRUE(Creature::is_ancient_beast(CreatureID::CREATURE_ID_PREFIX_ANCIENT_BEAST + "something"));
   EXPECT_FALSE(Creature::is_ancient_beast("a small kitty in a wizard hat"));
 }
+
+TEST(SW_World_Creature, has_leader)
+{
+  CreaturePtr c = std::make_shared<Creature>();
+  EXPECT_FALSE(c->has_leader());
+
+  c->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID, "some_cr_id");
+  EXPECT_TRUE(c->has_leader());
+}
