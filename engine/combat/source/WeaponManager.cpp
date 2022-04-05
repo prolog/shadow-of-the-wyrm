@@ -209,6 +209,7 @@ Damage WeaponManager::get_ranged_weapon_damage(CreaturePtr creature)
   WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
   vector<string> total_slays;
   vector<DamageFlagType> ranged_weapon_dflags;
+  int effect_bonus = 0;
 
   if (ranged_weapon)
   {
@@ -222,6 +223,7 @@ Damage WeaponManager::get_ranged_weapon_damage(CreaturePtr creature)
     // ammo.
     total_slays = d.get_slays_races();
     ranged_weapon_dflags = d.get_damage_flags_by_value(true);
+    effect_bonus += d.get_effect_bonus();
   }
 
   if (ammunition)
@@ -232,6 +234,7 @@ Damage WeaponManager::get_ranged_weapon_damage(CreaturePtr creature)
 
     vector<string> amm_slays = d.get_slays_races();
     total_slays.insert(total_slays.end(), amm_slays.begin(), amm_slays.end());
+    effect_bonus += d.get_effect_bonus();
   }
 
   if (ranged_weapon && String::to_bool(ranged_weapon->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED)))
@@ -243,6 +246,8 @@ Damage WeaponManager::get_ranged_weapon_damage(CreaturePtr creature)
   {
     d.set_slays_races(total_slays);
   }
+
+  d.set_effect_bonus(effect_bonus);
 
   if (!ranged_weapon_dflags.empty())
   {

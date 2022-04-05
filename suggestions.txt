@@ -1,6 +1,8 @@
 Me:
-- launchers should add their status bonus, and if branded should also set the
-  status ailment
+- No traps in dungeons (Bentwing)
+  - Changes to DungeonGenerator, the check for danger <= 0 return false
+  - Figure out something that'll work with the Carcassia mine and still
+    allow traps elsewhere.
 - Prompt for quest completion? setting
 - fantastic beast two away in corridor. ends up self-casting lightning bolt.
   (Bentwing)
