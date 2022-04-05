@@ -882,7 +882,8 @@ bool DungeonGenerator::place_staircases(MapPtr map)
 // of having a second trap.
 bool DungeonGenerator::place_traps(MapPtr map, const Room& room)
 {
-  if (map->get_danger() <= 0)
+  string danger_level_override = get_additional_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE);
+  if (!danger_level_override.empty() && String::to_int(danger_level_override) <= 0)
   {
     return false;
   }

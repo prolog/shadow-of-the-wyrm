@@ -13,6 +13,8 @@
 
 using namespace std;
 
+const int MineGenerator::MINE_MIN_TRAPS = 0;
+const int MineGenerator::MINE_MAX_TRAPS_DIVISOR = 6; 
 const int MineGenerator::MINE_MAX_SEGMENTS_MULTIPLIER = 3;
 
 MineGenerator::MineGenerator(const std::string& map_exit_id)
@@ -26,6 +28,7 @@ MapPtr MineGenerator::generate(const Dimensions& dim)
 
   generate_room(map);
   generate_wall_segments(map);
+  generate_traps(map);
   generate_item_piles(map);
 
   update_depth_details(map);
@@ -168,6 +171,20 @@ void MineGenerator::place_staircases(MapPtr map)
 bool MineGenerator::get_permanence_default() const
 {
   return true;
+}
+
+// Generate a few traps throughout the mines.
+void MineGenerator::generate_traps(MapPtr map)
+{
+  string danger_level_override = get_additional_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE);
+  if (!danger_level_override.empty() && String::to_int(danger_level_override) <= 0)
+  {
+    return;
+  }
+
+  int max_traps = map->size().get_x() / MINE_MAX_TRAPS_DIVISOR;
+  int num_traps = RNG::range(MINE_MIN_TRAPS, max_traps);
+  GeneratorUtils::generate_traps(map, num_traps);
 }
 
 void MineGenerator::generate_item_piles(MapPtr map)

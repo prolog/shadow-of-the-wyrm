@@ -17,7 +17,11 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
 - Removed the use_default_name setting - this was unnecessary and the game
   will now just check to see if the default_name setting is populated.
 
-- When calculating ranged damage, the 
+- When calculating ranged damage, the effect bonus of the launcher now
+  gets added to the total.
+
+- Re-added traps to caverns and mines (sewers will remain trap-free).
+
 - Additional person/place names.
 
 - Various typo fixes/text improvement.
@@ -28,6 +32,8 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
     the game would hang (Bentwing).
 
   - Fixed the same issue with the username_is_character_name setting.
+
+  - Traps weren't generating in dungeons (Bentwing).
 
 Shadow of the Wyrm v1.4.3 "da Milano"
 - Version declared December 24, 2021.  Version finalized March 27, 2022.
