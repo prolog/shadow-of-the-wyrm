@@ -106,7 +106,7 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
         // may have been knocked back.
         adjacent_creature = adjacent_tile->get_creature();
 
-        // If we're doing unarmed melee, there is a chance as well to kick.
+        // There is a chance as well to kick.
         UnarmedCombatCalculator ucc;
 
         if (adjacent_creature != nullptr)

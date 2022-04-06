@@ -5205,7 +5205,7 @@
 		</Spell>
 		<Spell id="c_10_cleansing">
 			<NameSID>CLEANSING_NAME_SID</NameSID>
-			<DescriptionSID>CLEANING_SPELLBOOK_CODEX_SID</DescriptionSID>
+			<DescriptionSID>CLEANSING_SPELLBOOK_CODEX_SID</DescriptionSID>
 			<PlayerCastMessageSID>CLEANSING_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>CLEANSING_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>

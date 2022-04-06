@@ -1,8 +1,5 @@
 Me:
-- No traps in dungeons (Bentwing)
-  - Changes to DungeonGenerator, the check for danger <= 0 return false
-  - Figure out something that'll work with the Carcassia mine and still
-    allow traps elsewhere.
+- Conduct for no hirelings/adventurers ("You have never hired help") (BW)
 - Prompt for quest completion? setting
 - fantastic beast two away in corridor. ends up self-casting lightning bolt.
   (Bentwing)
@@ -343,6 +340,7 @@ Brian Jeffears:
 Bentwing:
 - make undead hostile to humanoids
 - way of creating lock for door
+- restack on blessing eg books, all items, etc
 
 Kenny:
 - repeat last command (!)
