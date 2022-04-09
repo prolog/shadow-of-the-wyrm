@@ -35,6 +35,10 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
 
   - Traps weren't generating in dungeons (Bentwing).
 
+  - NPCs in corridors might try to cast a refective beam in such a way that
+    they thought it would hit the target, but it ends up just bouncing and
+    targetting themselves (Bentwing).
+
 Shadow of the Wyrm v1.4.3 "da Milano"
 - Version declared December 24, 2021.  Version finalized March 27, 2022.
 

@@ -1,8 +1,8 @@
 Me:
-- Conduct for no hirelings/adventurers ("You have never hired help") (BW)
+- does meat float? it should.
+- need to test pack generation...
+- is the witchling membership bugged?
 - Prompt for quest completion? setting
-- fantastic beast two away in corridor. ends up self-casting lightning bolt.
-  (Bentwing)
 - Land based creatures spawning in water on overworld, drowning (Bentwing)
 - after fixing this: bias by adding cardinal directions first
 - Ammo improvements:

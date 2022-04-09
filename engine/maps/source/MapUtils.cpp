@@ -1223,12 +1223,19 @@ bool MapUtils::is_moving_from_land_type_tile_to_water_type_tile(TilePtr old_tile
 {
   bool moving_from_land_to_water = false;
   
+  // General case: creature has an existing tile, and is moving into a new one.
   if (old_tile && new_tile)
   {
     TileSuperType old_st = old_tile->get_tile_super_type();
     TileSuperType new_st = new_tile->get_tile_super_type();
     
     moving_from_land_to_water = (old_st == TileSuperType::TILE_SUPER_TYPE_GROUND) && (new_st == TileSuperType::TILE_SUPER_TYPE_WATER);    
+  }
+  // Generation case: creature has no tile, moving to a new one.
+  else if (old_tile == nullptr && new_tile != nullptr)
+  {
+    TileSuperType new_st = new_tile->get_tile_super_type();
+    moving_from_land_to_water = (new_st == TileSuperType::TILE_SUPER_TYPE_WATER);
   }
   
   return moving_from_land_to_water;
