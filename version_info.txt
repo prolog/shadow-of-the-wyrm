@@ -20,6 +20,8 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
 - When calculating ranged damage, the effect bonus of the launcher now
   gets added to the total.
 
+- Meat now floats, so you can now get eg corpses generated on water tiles.
+
 - Re-added traps to caverns and mines (sewers will remain trap-free).
 
 - Additional person/place names.
@@ -38,6 +40,8 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
   - NPCs in corridors might try to cast a refective beam in such a way that
     they thought it would hit the target, but it ends up just bouncing and
     targetting themselves (Bentwing).
+
+  - Air-breathers could be generated on water (Bentwing).
 
 Shadow of the Wyrm v1.4.3 "da Milano"
 - Version declared December 24, 2021.  Version finalized March 27, 2022.
