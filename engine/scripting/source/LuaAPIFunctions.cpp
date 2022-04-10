@@ -445,6 +445,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "tokenize", tokenize);
   lua_register(L, "generate_name", generate_name);
   lua_register(L, "remove_chat_script", remove_chat_script);
+  lua_register(L, "get_setting", get_setting);
 }
 
 // Lua API helper functions
@@ -9407,5 +9408,23 @@ int remove_chat_script(lua_State* ls)
   }
 
   lua_pushboolean(ls, removed);
+  return 1;
+}
+
+int get_setting(lua_State* ls)
+{
+  string s_val;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string setting = lua_tostring(ls, 1);
+    s_val = Game::instance().get_settings_ref().get_setting(setting);
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_setting");
+  }
+
+  lua_pushstring(ls, s_val.c_str());
   return 1;
 }

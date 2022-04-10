@@ -143,9 +143,22 @@ function Quest:execute()
   -- Preconditions met?
   elseif self.quest_precond_fn() == false then
     return false
-  
+
   -- Quest is not complete, but condition is met.
   elseif self.quest_completion_condition_fn() == true then
+    -- The condition is met.  Check to see if we should prompt the player
+    -- for quest completion.
+    local prompt_for_complete = get_setting("prompt_before_quest_completion")
+    local complete_quest = true
+
+    if prompt_for_complete == "1" then
+      complete_quest = add_confirmation_message("QUEST_COMPLETE_CONFIRMATION")    
+    end
+
+    if complete_quest == false then
+      return false
+    end
+
     local should_mark_complete = self.quest_completion_fn()
 
     -- May not be on the quest.  Silently add the quest if not.

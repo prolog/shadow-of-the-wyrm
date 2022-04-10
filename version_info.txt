@@ -22,6 +22,9 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
 
 - Meat now floats, so you can now get eg corpses generated on water tiles.
 
+- There is now an optional setting to prompt prior to quest completion 
+  (Bentwing).
+
 - Re-added traps to caverns and mines (sewers will remain trap-free).
 
 - Additional person/place names.

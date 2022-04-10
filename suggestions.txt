@@ -1,8 +1,7 @@
 Me:
-- does meat float? it should.
+- revisit religion/shrines/etc
 - need to test pack generation...
 - is the witchling membership bugged?
-- Prompt for quest completion? setting
 - Land based creatures spawning in water on overworld, drowning (Bentwing)
 - after fixing this: bias by adding cardinal directions first
 - Ammo improvements:
