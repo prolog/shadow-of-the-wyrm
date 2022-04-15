@@ -1,6 +1,4 @@
 Me:
-- "It feels peaceful here" on cosmos?!
-- revisit religion/shrines/etc
 - eating a corpse should enrage all creatures of that ID in view
 - need to test pack generation...
 - is the witchling membership bugged?

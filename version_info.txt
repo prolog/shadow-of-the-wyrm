@@ -52,6 +52,9 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
 
   - Cosmos generation sometimes caused the game to hang in SDL mode.
 
+  - The "It feels peaceful here." message wasn't checking if there were any
+    pre-existing hostile creatures.
+
 Shadow of the Wyrm v1.4.3 "da Milano"
 - Version declared December 24, 2021.  Version finalized March 27, 2022.
 
