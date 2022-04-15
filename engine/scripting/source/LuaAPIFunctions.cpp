@@ -516,15 +516,30 @@ int add_message_with_pause(lua_State* ls)
       manager.clear_if_necessary();
     }
 
-    manager.add_new_message_with_pause(message);
+    bool interactive = (Game::instance().get_loading() == false);
+
+    if (interactive)
+    {
+      manager.add_new_message_with_pause(message);
+    }
+    else
+    {
+      manager.add_new_message(message);
+    }
+
     manager.send();
 
-    // Because this function can only be called in a quest context,
-    // where the speaking player is always assumed to be the player,
-    // directly getting the player and getting its decision is safe
-    // for now.
-    Game& game = Game::instance();
-    game.get_current_player()->get_decision_strategy()->get_confirmation();
+    // Check for interactive - most of the time, this function will be
+    // called in a quest context, and is safe. But it can also be
+    // called when eg generating the cosmos, and we shouldn't try to
+    // get confirmation in these cases. Generators typically run in
+    // their own threads and can't get events when running in SDL
+    // mode.
+    if (interactive)
+    {
+      Game& game = Game::instance();
+      game.get_current_player()->get_decision_strategy()->get_confirmation();
+    }
   }
   else
   {

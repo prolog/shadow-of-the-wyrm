@@ -737,6 +737,12 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
   // Set any special feature messages that should be displayed the first time
   // the player enters a level.
   set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_FEATURE_ENTRY_TEXT_SIDS, String::create_csv_from_string_vector(feature_entry_text_sids));
+
+  string divine_forbidden = get_additional_property(MapProperties::MAP_PROPERTIES_DIVINE_FORBIDDEN);
+  if (!divine_forbidden.empty())
+  {
+    set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_DIVINE_FORBIDDEN, divine_forbidden);
+  }
 }
 
 void Generator::set_property_to_generator_and_map(MapPtr map, const string& prop, const string& val)

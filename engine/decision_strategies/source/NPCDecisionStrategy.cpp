@@ -19,6 +19,7 @@
 #include "ItemProperties.hpp"
 #include "Log.hpp"
 #include "MagicalAbilityChecker.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "NPCDecisionStrategy.hpp"
@@ -882,6 +883,7 @@ void NPCDecisionStrategy::remove_threats_with_same_deity(const std::string& this
 
   if (current_map != nullptr && game.do_deities_exist())
   {
+    string divine_forbidden = current_map->get_property(MapProperties::MAP_PROPERTIES_DIVINE_FORBIDDEN);
     CreaturePtr this_creature = current_map->get_creature(this_creature_id);
 
     if (this_creature != nullptr && view_map != nullptr)
@@ -904,6 +906,7 @@ void NPCDecisionStrategy::remove_threats_with_same_deity(const std::string& this
             if (t_details.first
               && t_details.second < ThreatConstants::ACTIVE_THREAT_RATING
               && !apostate
+              && String::to_bool(divine_forbidden) == false
               && deity_id == c_pair.second->get_religion_ref().get_active_deity_id())
             {
               HostilityManager hm;

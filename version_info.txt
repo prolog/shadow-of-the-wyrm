@@ -25,6 +25,10 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
 - There is now an optional setting to prompt prior to quest completion 
   (Bentwing).
 
+- Created a new map flag, "divine forbidden".  This flag blocks NPCs not
+  considering other NPCs threats if they have the same deity, and is used
+  in the shrines.
+
 - Re-added traps to caverns and mines (sewers will remain trap-free).
 
 - Additional person/place names.
@@ -45,6 +49,8 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
     targetting themselves (Bentwing).
 
   - Air-breathers could be generated on water (Bentwing).
+
+  - Cosmos generation sometimes caused the game to hang in SDL mode.
 
 Shadow of the Wyrm v1.4.3 "da Milano"
 - Version declared December 24, 2021.  Version finalized March 27, 2022.

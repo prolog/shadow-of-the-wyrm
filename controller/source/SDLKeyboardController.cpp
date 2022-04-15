@@ -69,6 +69,10 @@ void SDLKeyboardController::poll_event()
   }
 }
 
+// Note that this function (and any other that relies on SDL events) must be
+// called from the thread that initialized the SDL video. If not, this may
+// hang due to blocking SDL_WaitEvent waiting for events that will never
+// come.
 int SDLKeyboardController::read_char_as_int()
 {
   int return_val = 0;
@@ -79,7 +83,14 @@ int SDLKeyboardController::read_char_as_int()
 
   while (!done)
   {
-    SDL_WaitEvent(&event);
+    int rval = SDL_WaitEvent(&event);
+
+    if (rval == 0)
+    {
+      string error = SDL_GetError();
+      Log::instance().error("Error in SDL_WaitEvent: " + error);
+    }
+
     int key = event.key.keysym.sym;
 
     if (event.type == SDL_TEXTINPUT)
