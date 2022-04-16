@@ -20,7 +20,7 @@ const string ConsumableConstants::CORPSE_SHORT_DESCRIPTION_SID = "CORPSE_SHORT_D
 const string ConsumableConstants::CORPSE_RACE_ID = "CORPSE_RACE_ID";
 
 // Used to determine if nearby creatures get angry.
-const string ConsumableConstants::CORPSE_CREATURE_ID = "CORPSE_CREATURE_ID";
+const string ConsumableConstants::CORPSE_BASE_CREATURE_ID = "CORPSE_BASE_CREATURE_ID";
 
 // Used to mark that the skin has already been stripped from a particular
 // corpse.

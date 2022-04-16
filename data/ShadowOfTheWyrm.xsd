@@ -329,6 +329,7 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="UserPlayable" type="xs:boolean"/>
+			<xs:element name="UmbrellaRace" type="xs:boolean"/>
 			<xs:element name="Sex" type="tns:Sex" minOccurs="0"/>
 			<xs:element name="PackMultiplier" type="xs:integer" minOccurs="0"/>
 			<xs:element name="Slayable" type="xs:boolean"/>

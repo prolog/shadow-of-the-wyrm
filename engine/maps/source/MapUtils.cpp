@@ -27,6 +27,7 @@
 #include "MoveScript.hpp"
 #include "MovementTextKeys.hpp"
 #include "PickupAction.hpp"
+#include "RaceManager.hpp"
 #include "RageEffect.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
@@ -2367,14 +2368,15 @@ string MapUtils::get_coordinate_location_sid(const Coordinate& c, const Dimensio
   return sid;
 }
 
-void MapUtils::enrage_nearby_creatures(MapPtr map, CreaturePtr creature, const string& creature_id, const string& race_id)
+void MapUtils::enrage_nearby_creatures(MapPtr map, CreaturePtr creature, const string& base_creature_id, const string& race_id)
 {
   if (map != nullptr && creature != nullptr)
   {
-    // Nearby creatures that can see the creature and match the creature_id or
-    // whose race matches the race_id are enraged!!
+    // Nearby creatures that can see the creature and match the 
+    // base_creature_id or whose race matches the race_id are enraged!!
     const CreatureMap& creatures = map->get_creatures_ref();
     HostilityManager hm;
+    RaceManager rm;
 
     for (const auto& cm_pair : creatures)
     {
@@ -2382,13 +2384,14 @@ void MapUtils::enrage_nearby_creatures(MapPtr map, CreaturePtr creature, const s
       {
         CreaturePtr cm_c = cm_pair.second;
         bool understands_corpses = (cm_c->get_intelligence().get_current() > IntelligenceConstants::MIN_INTELLIGENCE_UNDERSTAND_CORPSES);
+        Race* race = rm.get_race(cm_c->get_race_id());
 
         if (cm_c->get_id() != creature->get_id() &&
             understands_corpses &&
-            (cm_c->get_race_id() == race_id ||
-             cm_c->get_id() == creature_id))
+            ((cm_c->get_race_id() == race_id && (race && !race->get_umbrella_race())) ||
+             cm_c->get_original_id() == base_creature_id))
         {
-          hm.set_hostility_to_creature(cm_c, creature_id);
+          hm.set_hostility_to_creature(cm_c, creature->get_id());
 
           Coordinate cm_coord = map->get_location(cm_c->get_id());
           TilePtr cm_tile = map->at(cm_coord);
