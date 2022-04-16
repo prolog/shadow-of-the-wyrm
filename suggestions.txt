@@ -1,23 +1,15 @@
 Me:
-- smarten up the enrage-on-corpse code so that catch-all races like _monster
-  don't enrage.
 - need to test pack generation...
 - is the witchling membership bugged?
-- Land based creatures spawning in water on overworld, drowning (Bentwing)
-- after fixing this: bias by adding cardinal directions first
 - Ammo improvements:
   - Prompt equip on pickup
   - Merge picked up into ammo slot
   - When done, cycle through applicable inventory items to equip (allow Y/N/
     Z to exit)
-- When default_name is set and there's already a character of that name,
-  it's causing problems (Echo38).
 - Do a bunch of curses testing now that a curses splash has been added.
 - spinach/str?
-- splash screen for curses
 - bookstore
 - quest to quell a rebellion from Carcassia
-- More archery for archers and goblin pelters
 - ASSET RELEASE
 - random uniques (fighter-type, thief-type, spellcaster-type)
 - fisherman quest
