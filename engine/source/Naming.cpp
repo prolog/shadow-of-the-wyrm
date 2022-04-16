@@ -29,7 +29,7 @@ const SyllableMap Naming::syllables =
 const map<int, vector<string>> Naming::settlement_syllables =
 {
   {
-    { 1, { "Ach", "Ad", "Adz", "Aed", "Aer", "Al", "Ak", "Alt", "Am", "Amn", "An", "Ap", "Ax", "Bac", "Bak", "Ban", "Bel", "Cad", "Cam", "Cael", "Caer", "Dam", "Dan", "Dar", "Den", "Dip", "El", "Ex", "Fan", "Far", "Gan", "Gel", "Gil", "Gon", "Had", "Hal", "Han", "Har", "Hear", "Hur", "Ix", "Ip", "Kal", "Kan", "Kat", "Ket", "Kit", "Ox", "Pad", "Pan", "Ran", "Tam", "Tan", "Tar", "Tet", "Sar", "Scar", "Skar", "Star", "Ux", "Var", "Vid", "Vir", "Yad", "Yan", "Yar", "Zo", "Zu", "Zy"}},
+    { 1, { "Ach", "Ad", "Adz", "Aed", "Aer", "Al", "Ak", "Alt", "Am", "Amn", "An", "Ap", "Ax", "Bac", "Bak", "Ban", "Bel", "Cad", "Cam", "Cael", "Caer", "Dam", "Dan", "Dar", "Den", "Dip", "El", "Ex", "Fan", "Far", "Gael", "Gan", "Gel", "Gil", "Gon", "Had", "Hal", "Han", "Har", "Hear", "Hur", "Ix", "Ip", "Kal", "Kan", "Kat", "Ket", "Kit", "Ox", "Pad", "Pan", "Ran", "Tam", "Tan", "Tar", "Tet", "Sar", "Scar", "Skar", "Star", "Ux", "Var", "Vid", "Vir", "Yad", "Yan", "Yar", "Zo", "Zu", "Zy"}},
     { 2, { "a", "al", "ae", "ar", "e", "el", "er", "i", "ii", "da", "dae", "de", "di", "do", "du", "ga", "gae", "ge", "gi", "gil", "go", "la", "lae", "le", "li", "lo", "o", "or", "ra", "rae", "re", "ri", "ro", "ru", "sa", "sae", "se", "si", "so", "su", "ta", "te", "to"} },
     { 3, { "bad", "bae", "bakh", "bal", "bag", "ban", "bar", "bat", "bek", "bax", "bex", "bil", "cach", "can", "car", "crae", "dae", "dan", "den", "dex", "dil", "dix", "dor", "el", "fil", "gal", "gan", "gap", "gel", "gen", "gil", "gon", "ham", "hem", "kha", "kam", "kan", "kar", "tae", "tam", "tan", "tap", "tax", "tem", "ya", "yar", "yil", "za", "ze"}}
   }
@@ -260,9 +260,15 @@ string Naming::generate_base_random_settlement_name()
       const vector<string>& syllables = settlement_syllables.at(i);
       string syl = syllables.at(RNG::range(0, syllables.size() - 1));
 
-      if (i == 2 && num_syllables == 2 && RNG::percent_chance(10))
+      if (i == 2 && num_syllables == 2 && RNG::percent_chance(5))
       {
         rand_name += "-";
+      }
+
+      // Sometimes skip the middle syllable.
+      if (num_syllables == 3 && i == 2 && RNG::percent_chance(40))
+      {
+        continue;
       }
 
       rand_name += syl;
