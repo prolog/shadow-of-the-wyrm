@@ -162,11 +162,15 @@ string Naming::generate_settlement_name()
 {
   string settlement_name;
 
-  if (RNG::percent_chance(7))
+  if (RNG::percent_chance(4))
+  {
+    settlement_name = generate_single_settlement_name();
+  }
+  else if (RNG::percent_chance(6))
   {
     settlement_name = generate_locative_settlement_name();
   }
-  else if (RNG::percent_chance(15))
+  else if (RNG::percent_chance(13))
   {
     settlement_name = generate_possessive_settlement_name();
   } 
@@ -180,6 +184,21 @@ string Naming::generate_settlement_name()
   }
 
   return settlement_name;
+}
+
+string Naming::generate_single_settlement_name()
+{
+  string name = StringTable::get(SettlementTextKeys::SINGLE_SETTLEMENT_FORMAT);
+  vector<string> single_prefixes = String::create_string_vector_from_csv_string(StringTable::get(SettlementTextKeys::SETTLEMENT_NAME_SINGLE_PREFIX));
+  vector<string> single_suffixes = String::create_string_vector_from_csv_string(StringTable::get(SettlementTextKeys::SETTLEMENT_NAME_SINGLE_SUFFIX));
+
+  string prefix = single_prefixes.at(RNG::range(0, single_prefixes.size() - 1));
+  string suffix = single_suffixes.at(RNG::range(0, single_suffixes.size() - 1));
+
+  boost::replace_first(name, "%s1", prefix);
+  boost::replace_first(name, "%s2", suffix);
+
+  return name;
 }
 
 string Naming::generate_locative_settlement_name()
