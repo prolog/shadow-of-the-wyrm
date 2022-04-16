@@ -12,7 +12,7 @@ pair<bool, Direction> AttackNPCMagicDecision::decide(CreaturePtr caster, MapPtr 
   pair<bool, Direction> decision_details(false, Direction::DIRECTION_NULL);
   int threat_level_count = 0;
   int nonthreat_level_count = 0;
-  string leader_id = caster->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+  string leader_id = caster->get_leader_id();
   MapPtr current_map = Game::instance().get_current_map();
 
   CurrentCreatureAbilities cca;

@@ -573,7 +573,7 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
 
     if (this_creature != nullptr)
     {
-      leader_id = this_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+      leader_id = this_creature->get_leader_id();
     }
 
     if (!at_ease.empty())
@@ -842,7 +842,7 @@ void NPCDecisionStrategy::update_threats_to_leader(const std::string& this_creat
       // Have we been ordered to attack by our leader? If so, find all the
       // threats to that creature, and attack one.
       string attack_threaten_id = get_property(DecisionStrategyProperties::DECISION_STRATEGY_ATTACK_CREATURES_THREATENING_ID);
-      string leader_id = this_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+      string leader_id = this_creature->get_leader_id();
       string at_ease = get_property(DecisionStrategyProperties::DECISION_STRATEGY_AT_EASE);
       HostilityManager hm;
 

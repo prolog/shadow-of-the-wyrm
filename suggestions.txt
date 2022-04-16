@@ -1,5 +1,6 @@
 Me:
-- eating a corpse should enrage all creatures of that ID in view
+- smarten up the enrage-on-corpse code so that catch-all races like _monster
+  don't enrage.
 - need to test pack generation...
 - is the witchling membership bugged?
 - Land based creatures spawning in water on overworld, drowning (Bentwing)

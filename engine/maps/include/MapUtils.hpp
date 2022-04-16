@@ -131,6 +131,8 @@ class MapUtils
     
     static std::string get_coordinate_location_sid(const Coordinate& c, const Dimensions& size);
 
+    static void enrage_nearby_creatures(MapPtr map, CreaturePtr creature, const std::string& creature_id, const std::string& race_id);
+
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
     static bool is_tile_contained_in_an_existing_component(const Coordinate&, const MapComponents& components);

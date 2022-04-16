@@ -417,7 +417,7 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
 
     if (creature != nullptr)
     {
-      string leader_id = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+      string leader_id = creature->get_leader_id();
 
       if (leader_id == adjacent_creature->get_id())
       {

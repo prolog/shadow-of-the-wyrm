@@ -31,6 +31,8 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
 
 - Re-added traps to caverns and mines (sewers will remain trap-free).
 
+- Hostile creatures no longer follow and take orders.
+
 - Additional person/place names.
 
 - Various typo fixes/text improvement.

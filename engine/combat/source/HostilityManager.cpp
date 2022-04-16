@@ -44,6 +44,13 @@ void HostilityManager::set_hostility_to_creature(CreaturePtr creature, const str
         threat_ratings.add_threat(hostile_to_creature_id, hostility_level);
       }
     }
+
+    // Hostile creatures no longer follow.
+    string leader_id = creature->get_leader_id();
+    if (leader_id == hostile_to_creature_id)
+    {
+      creature->remove_leader();
+    }
   }
 }
 

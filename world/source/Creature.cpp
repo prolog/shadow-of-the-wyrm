@@ -1153,8 +1153,13 @@ void Creature::remove_leader()
 
 bool Creature::has_leader() const
 {
-  string leader_id = get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+  string leader_id = get_leader_id();
   return (!leader_id.empty());
+}
+
+string Creature::get_leader_id() const
+{
+  return get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
 }
 
 bool Creature::hostile_to(const string& creature_id)

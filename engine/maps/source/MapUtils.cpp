@@ -13,6 +13,7 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
+#include "IntelligenceConstants.hpp"
 #include "ItemProperties.hpp"
 #include "LineOfSightCalculator.hpp"
 #include "Log.hpp"
@@ -26,6 +27,7 @@
 #include "MoveScript.hpp"
 #include "MovementTextKeys.hpp"
 #include "PickupAction.hpp"
+#include "RageEffect.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "TextKeys.hpp"
@@ -1954,7 +1956,7 @@ void MapUtils::serialize_and_remove_followers(MapPtr map, CreaturePtr creature)
 
       if (c != nullptr)
       {
-        string leader_id = c->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+        string leader_id = c->get_leader_id();
 
         if (!leader_id.empty() && leader_id == creature->get_id())
         {
@@ -2363,6 +2365,40 @@ string MapUtils::get_coordinate_location_sid(const Coordinate& c, const Dimensio
   }
 
   return sid;
+}
+
+void MapUtils::enrage_nearby_creatures(MapPtr map, CreaturePtr creature, const string& creature_id, const string& race_id)
+{
+  if (map != nullptr && creature != nullptr)
+  {
+    // Nearby creatures that can see the creature and match the creature_id or
+    // whose race matches the race_id are enraged!!
+    const CreatureMap& creatures = map->get_creatures_ref();
+    HostilityManager hm;
+
+    for (const auto& cm_pair : creatures)
+    {
+      if (cm_pair.second && cm_pair.second->get_decision_strategy()->get_fov_map()->has_creature(creature->get_id()))
+      {
+        CreaturePtr cm_c = cm_pair.second;
+        bool understands_corpses = (cm_c->get_intelligence().get_current() > IntelligenceConstants::MIN_INTELLIGENCE_UNDERSTAND_CORPSES);
+
+        if (cm_c->get_id() != creature->get_id() &&
+            understands_corpses &&
+            (cm_c->get_race_id() == race_id ||
+             cm_c->get_id() == creature_id))
+        {
+          hm.set_hostility_to_creature(cm_c, creature_id);
+
+          Coordinate cm_coord = map->get_location(cm_c->get_id());
+          TilePtr cm_tile = map->at(cm_coord);
+
+          RageEffect rage;
+          rage.effect(cm_c, &Game::instance().get_action_manager_ref(), ItemStatus::ITEM_STATUS_BLESSED, cm_coord, cm_tile, false);
+        }
+      }
+    }
+  }
 }
 
 #ifdef UNIT_TESTS
