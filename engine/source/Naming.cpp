@@ -22,16 +22,16 @@ const SyllableMap Naming::syllables =
                                                } } } } } },
   { CreatureSex::CREATURE_SEX_FEMALE, { { 1, { {1, { "Aenn", "Ash", "Brig", "Bae", "Bea", "Belle", "Blue", "Bron", "Brie", "Bree", "Brea", "Cass", "Cat", "Catte", "Crea", "Cresse", "Cwen", "Dove", "Elf", "Fae", "Fay", "Fey", "Ferne", "Gaile", "Grace", "Gwen", "Hail", "Hil", "Hild", "Hilde", "Hope", "Ia", "Jade", "Jass", "Jil", "Joyce", "Joye", "Kat", "Joye", "Kai", "Kess", "Kell", "Kim", "Kish", "Lark", "Leah", "Lil", "Lish", "Liss", "Liv", "Lyn", "Mab", "Maeve", "Mer", "Mere", "Nan", "Nea", "Ness", "Page", "Pea", "Rae", "Rax", "Ros", "Rhenne", "Rue", "Sage", "Saye", "Scout", "Sea", "Shal", "Shae", "Shale", "Shan", "Shay", "Shaye", "Shel", "Shelle", "Shrike", "Skye", "South", "Starre", "Swan", "Swaye", "Syd", "Syl", "Taff", "Tal", "Tashe", "Teek", "Teel", "Tass", "Tesse", "Tish", "Vi", "West", "Winn", "Wysp", "Wenne", "Wrenne", "Wy", "Wynne", "Zaye"} } } },
                                         { 2, { {1, { "A", "Ae", "Ael", "Ai", "Al", "Am", "An", "Ash", "Ba", "Be", "Bi", "Ca", "Cae", "Ce", "Cen", "Cal", "Cha", "Chal", "Che", "Chel", "Cre", "Da", "Dal", "De", "Del", "E", "Ei", "El", "Fa", "Fal", "Fay", "Fae", "Fe", "Fea", "Fen", "Fey", "Fi", "Ga", "Gae", "Ge", "Gi", "Gie", "I", "Ie", "Je", "Ji", "Ka", "Kal", "Ke", "Kel", "Kem", "Ki", "Kie", "Key", "La", "Li", "Lu", "Ly", "Ma", "Mah", "Mar", "Mae", "Me", "Mea", "Mi", "Mie", "Mier", "Mir", "Na", "Ne", "O", "Pa", "Pae", "Pe", "Pi", "Ni", "Sa", "Se", "Sea", "Sha", "Shae", "Shan", "She", "Shee", "Sza", "Szi", "Ta", "Tah", "Tal", "Te", "Tea", "Tel", "Tem", "Tey", "Tha", "The", "Thi", "Thu", "Ti", "Tie", "Til", "Tra", "Tre", "Tri", "Tu", "U", "Vi", "Ve", "Wen", "Xi", "Ya", "Yu"} },
-                                               {2, { "a", "ba", "baea", "bea", "ca", "caea", "cea", "cey", "ci", "cie", "cy", "da", "daea", "dea", "di", "dia", "die", "dy", "ea", "fa", "ka", "ki", "kie", "key", "kha", "kka", "la", "laa", "lan", "las", "lea", "lenne", "ley", "lha", "li", "lia", "lie", "linne", "lis", "lise", "lisse", "lsa", "lse", "lsie", "lsey", "ly", "lya", "lyse", "lysse", "ma", "me", "mea", "mey", "mi", "mie", "my", "na", "nae", "nea", "ni", "nia", "nie", "ney", "ny", "phne", "ra", "rae", "rai", "re", "rea", "ri", "ria", "rie", "ry", "ryn", "sa", "sha", "she", "shi", "shie", "shy", "se", "sey", "si", "sie", "ssa", "ta", "tie", "ty", "va", "vie", "vy", "ya", "xa", "xe", "xi", "xie", "za", "zie", "zza"
+                                               {2, { "a", "ba", "baea", "bea", "ca", "caea", "cea", "cey", "ci", "cie", "cy", "da", "daea", "dea", "di", "dia", "die", "dy", "ea", "fa", "ka", "ki", "kie", "key", "kha", "kka", "la", "laa", "lan", "las", "lea", "lenne", "ley", "lha", "li", "lia", "lie", "linne", "lis", "lise", "lisse", "lsa", "lse", "lsie", "lsey", "ly", "lya", "lyse", "lysse", "ma", "maea", "me", "mea", "mey", "mi", "mie", "my", "na", "naea", "nae", "nea", "ni", "nia", "nie", "ney", "ny", "phne", "ra", "rae", "rai", "re", "rea", "ri", "ria", "rie", "ry", "ryn", "sa", "sha", "she", "shi", "shie", "shy", "se", "sey", "si", "sie", "ssa", "ta", "tie", "ty", "va", "vie", "vy", "ya", "xa", "xe", "xi", "xie", "za", "zie", "zza"
                                                } } } } } }
 };
 
 const map<int, vector<string>> Naming::settlement_syllables =
 {
   {
-    { 1, { "Ach", "Ad", "Adz", "Aed", "Aer", "Al", "Ak", "Alt", "Am", "Amn", "An", "Ap", "Ax", "Bac", "Bak", "Ban", "Bel", "Cad", "Cam", "Cael", "Caer", "Dam", "Dan", "Dar", "Den", "Dip", "El", "Ex", "Fan", "Far", "Gael", "Gan", "Gel", "Gil", "Gon", "Had", "Hal", "Han", "Har", "Hear", "Hur", "Ix", "Ip", "Kal", "Kan", "Kat", "Ket", "Kit", "Ox", "Pad", "Pan", "Ran", "Tam", "Tan", "Tar", "Tet", "Sar", "Scar", "Skar", "Star", "Ux", "Var", "Vid", "Vir", "Yad", "Yan", "Yar", "Zo", "Zu", "Zy"}},
-    { 2, { "a", "al", "ae", "ar", "e", "el", "er", "i", "ii", "da", "dae", "de", "di", "do", "du", "ga", "gae", "ge", "gi", "gil", "go", "la", "lae", "le", "li", "lo", "o", "or", "ra", "rae", "re", "ri", "ro", "ru", "sa", "sae", "se", "si", "so", "su", "ta", "te", "to"} },
-    { 3, { "bad", "bae", "bakh", "bal", "bag", "ban", "bar", "bat", "bek", "bax", "bex", "bil", "cach", "can", "car", "crae", "dae", "dan", "den", "dex", "dil", "dix", "dor", "el", "fil", "gal", "gan", "gap", "gel", "gen", "gil", "gon", "ham", "hem", "kha", "kam", "kan", "kar", "tae", "tam", "tan", "tap", "tax", "tem", "ya", "yar", "yil", "za", "ze"}}
+    { 1, { "Ach", "Ad", "Adz", "Aed", "Aer", "Al", "Ak", "Alt", "Am", "Amn", "An", "Ann", "Ap", "Ast", "At", "Atn", "Ax", "Bac", "Bak", "Ban", "Bel", "Cad", "Cam", "Cael", "Caer", "Dam", "Dan", "Dar", "Den", "Dip", "El", "Ex", "Ey", "Eye", "Eyx", "Fan", "Far", "Gael", "Gan", "Gel", "Gil", "Gon", "Had", "Hal", "Han", "Har", "Hear", "Hur", "Ix", "Ip", "Kal", "Kan", "Kat", "Ket", "Kit", "Ox", "Pad", "Pan", "Ran", "Tam", "Tan", "Tar", "Tet", "Sar", "Scar", "Sel", "Sen", "Skar", "Star", "Ux", "Var", "Vid", "Vir", "Yad", "Yan", "Yar", "Zo", "Zu", "Zy"}},
+    { 2, { "a", "e", "i", "o", "u"}},
+    { 3, { "bad", "bae", "bakh", "bal", "bag", "ban", "bar", "bat", "bek", "bax", "beck", "bil", "cach", "can", "car", "crae", "dae", "dan", "den", "dex", "dil", "dix", "dor", "el", "fil", "gal", "gan", "gap", "gel", "gen", "gil", "gon", "ham", "hel", "hem", "hen", "kha", "kam", "kan", "kar", "lan", "lin", "mi", "na", "nae", "ni", "tae", "tam", "tan", "tap", "tax", "tem", "wan", "well", "wen", "win", "ya", "yar", "ye", "yil", "za", "ze"}}
   }
 };
 
@@ -252,17 +252,24 @@ string Naming::generate_base_random_settlement_name()
 {
   string rand_name;
   int num_syllables = RNG::range(1, 3);
+  bool hyphen = false;
 
   for (int i = 1; i <= num_syllables; i++)
   {
     if (i == 1 || RNG::percent_chance(70))
     {
-      const vector<string>& syllables = settlement_syllables.at(i);
-      string syl = syllables.at(RNG::range(0, syllables.size() - 1));
+      vector<string> syllables = settlement_syllables.at(i);
 
       if (i == 2 && num_syllables == 2 && RNG::percent_chance(5))
       {
         rand_name += "-";
+        hyphen = true;
+      }
+
+      // Some hypenated names
+      if (num_syllables == 2 && hyphen && RNG::percent_chance(20))
+      {
+        syllables = settlement_syllables.at(1);
       }
 
       // Sometimes skip the middle syllable.
@@ -271,6 +278,7 @@ string Naming::generate_base_random_settlement_name()
         continue;
       }
 
+      string syl = syllables.at(RNG::range(0, syllables.size() - 1));
       rand_name += syl;
     }
   }
