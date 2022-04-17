@@ -1,3 +1,14 @@
-add_message_with_pause("MOUNTAIN_ELF_SCHOLAR_WORK_SID")
-add_message_with_pause("MOUNTAIN_ELF_SCHOLAR_WORK2_SID")
-clear_and_add_message("MOUNTAIN_ELF_SCHOLAR_WORK3_SID")
+local speeches = {{"MOUNTAIN_ELF_SCHOLAR_WORK_SID", "MOUNTAIN_ELF_SCHOLAR_WORK2_SID", "MOUNTAIN_ELF_SCHOLAR_WORK3_SID"}, {"MOUNTAIN_ELF_SCHOLAR_CARCASSIA_SID", "MOUNTAIN_ELF_SCHOLAR_CARCASSIA2_SID"}}
+
+local speech = speeches[RNG_range(1, #speeches)]
+
+for i = 1, #speech do
+  local fn = add_message_with_pause
+  
+  if i == #speech then
+    fn = clear_and_add_message
+  end
+
+  fn(speech[i])
+end
+
