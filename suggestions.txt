@@ -11,7 +11,7 @@ Me:
 - bookstore
 - quest to quell a rebellion from Carcassia
 - ASSET RELEASE
-- random uniques (fighter-type, thief-type, spellcaster-type)
+- random uniques (race, class)
 - fisherman quest
 - more town NPCs/sprites
 - overlapping houses in settlement - temple over tavern?
