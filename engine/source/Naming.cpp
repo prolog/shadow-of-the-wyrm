@@ -197,7 +197,7 @@ string Naming::generate_saint_settlement_name()
   string saint_name = generate_name(CreatureSex::CREATURE_SEX_NOT_SPECIFIED);
   string name = StringTable::get(SettlementTextKeys::SAINT_SETTLEMENT_FORMAT);
 
-  if (RNG::percent_chance(10))
+  if (RNG::percent_chance(20))
   {
     vector<string> saint_names = String::create_string_vector_from_csv_string(StringTable::get(SettlementTextKeys::SAINT_ADDITIONAL_SETTLEMENT_FORMAT));
     
