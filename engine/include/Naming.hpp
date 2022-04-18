@@ -26,6 +26,7 @@ class Naming
 
     static std::string create_name(const int num_syllables, const std::map<int, std::map<int, std::vector<std::string>>>& syl_map_entry);
 
+    static std::string generate_saint_settlement_name();
     static std::string generate_single_settlement_name();
     static std::string generate_locative_settlement_name();
     static std::string generate_possessive_settlement_name();

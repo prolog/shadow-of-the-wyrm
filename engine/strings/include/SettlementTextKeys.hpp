@@ -24,6 +24,9 @@ class SettlementTextKeys
     // y-field, etc.
     static const std::string SINGLE_SETTLEMENT_FORMAT;
 
+    // Places named after a long-dead saint.
+    static const std::string SAINT_SETTLEMENT_FORMAT;
+
   protected:
     SettlementTextKeys();
     ~SettlementTextKeys();

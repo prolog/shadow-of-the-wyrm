@@ -166,6 +166,10 @@ string Naming::generate_settlement_name()
 
   if (RNG::percent_chance(4))
   {
+    settlement_name = generate_saint_settlement_name();
+  }
+  else if (RNG::percent_chance(4))
+  {
     settlement_name = generate_single_settlement_name();
   }
   else if (RNG::percent_chance(6))
@@ -186,6 +190,16 @@ string Naming::generate_settlement_name()
   }
 
   return settlement_name;
+}
+
+string Naming::generate_saint_settlement_name()
+{
+  string saint_name = generate_name(CreatureSex::CREATURE_SEX_NOT_SPECIFIED);
+  string name = StringTable::get(SettlementTextKeys::SAINT_SETTLEMENT_FORMAT);
+
+  boost::replace_first(name, "%s", saint_name);
+
+  return name;
 }
 
 string Naming::generate_single_settlement_name()
