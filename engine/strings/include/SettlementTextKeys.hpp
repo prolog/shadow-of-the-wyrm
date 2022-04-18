@@ -26,6 +26,7 @@ class SettlementTextKeys
 
     // Places named after a long-dead saint.
     static const std::string SAINT_SETTLEMENT_FORMAT;
+    static const std::string SAINT_ADDITIONAL_SETTLEMENT_FORMAT;
 
   protected:
     SettlementTextKeys();

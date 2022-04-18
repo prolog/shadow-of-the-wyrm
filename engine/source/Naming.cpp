@@ -197,7 +197,18 @@ string Naming::generate_saint_settlement_name()
   string saint_name = generate_name(CreatureSex::CREATURE_SEX_NOT_SPECIFIED);
   string name = StringTable::get(SettlementTextKeys::SAINT_SETTLEMENT_FORMAT);
 
+  if (RNG::percent_chance(10))
+  {
+    vector<string> saint_names = String::create_string_vector_from_csv_string(StringTable::get(SettlementTextKeys::SAINT_ADDITIONAL_SETTLEMENT_FORMAT));
+    
+    if (!saint_names.empty())
+    {
+      name = saint_names.at(RNG::range(0, saint_names.size() - 1));
+    }
+  }
+
   boost::replace_first(name, "%s", saint_name);
+
 
   return name;
 }
