@@ -123,6 +123,44 @@ local function villagevisit_completion_fn()
   return true
 end
 
+-- Bored, time for an adventure!  A forest! (orchards allowed)
+local function adventure_forest_start_fn()
+  local cr_id = args[SPEAKING_CREATURE_ID]
+
+  add_message_with_pause("ADVENTURE_FOREST_QUEST_START_SID")
+  add_message_with_pause("ADVENTURE_FOREST_QUEST_START2_SID")
+  clear_and_add_message("ADVENTURE_FOREST_QUEST_START3_SID")
+
+  add_object_to_creature(get_current_map_id(), cr_id, SPEAR_ID)
+  add_object_to_creature(get_current_map_id(), cr_id, WAYFARER_CLOTHES_ID)
+
+  set_leader(cr_id, PLAYER_ID)
+  order_follow(cr_id, PLAYER_ID)
+end
+
+local function adventure_forest_completion_condition_fn()
+  local y, x = get_player_world_map_coords()
+  local tile_table = map_get_tile(WORLD_MAP_ID, y, x)
+  local map_type = tile_table["tile_type"]
+
+  return (map_type == CTILE_TYPE_FOREST or map_type == CTILE_TYPE_ORCHARD)
+end
+
+local function adventure_forest_completion_fn()
+  local apples = {GOLDEN_APPLE_ID, SILVER_APPLE_ID}
+  local cr_id = args[SPEAKING_CREATURE_ID]
+
+  remove_leader(cr_id)
+
+  local apple = apples[RNG_range(1, #apples)]
+  add_object_to_player_tile(apple)
+
+  clear_and_add_message("ADVENTURE_FOREST_QUEST_COMPLETE_SID")
+  set_creature_speech_text_sid(cr_id, "ADVENTURE_FOREST_SPEECH_RETURN_SID")
+
+  return true
+end
+
 -- Bored, time for an adventure!  Somewhere underground!
 local function adventure_start_fn()
   local cr_id = args[SPEAKING_CREATURE_ID]
@@ -229,6 +267,17 @@ local function get_quests(cr_id, sdesc_sid)
                                        villagevisit_completion_condition_fn, 
                                        villagevisit_completion_fn)
 
+  local fadventure_quest = Quest:new("adventure_forest_" .. cr_id, 
+                                     "ADVENTURE_FOREST_QUEST_TITLE_SID", 
+                                     sdesc_sid,
+                                     {"ADVENTURE_FOREST_QUEST_DESCRIPTION_SID", fn.array_to_csv({name, location})}, 
+                                     "ADVENTURE_FOREST_QUEST_COMPLETE_SID", 
+                                     {"ADVENTURE_FOREST_QUEST_REMINDER_SID", fn.array_to_csv({name, location})}, 
+                                     truefn,
+                                     adventure_forest_start_fn, 
+                                     adventure_forest_completion_condition_fn, 
+                                     adventure_forest_completion_fn)
+
   local adventure_quest = Quest:new("adventure_" .. cr_id, 
                                     "ADVENTURE_QUEST_TITLE_SID", 
                                     sdesc_sid,
@@ -240,11 +289,13 @@ local function get_quests(cr_id, sdesc_sid)
                                     adventure_completion_condition_fn, 
                                     adventure_completion_fn)
 
-  local quests = {{thirsty_quest, 3},
+  local quests = {{thirsty_quest, 2},
                   {rowboat_quest, 3},
-		  {fishfeast_quest, 3},
+		  {fishfeast_quest, 2},
                   {villagevisit_quest, 3},
+		  {fadventure_quest, 2},
 		  {adventure_quest, 3}}
+		  
   return quests
 end
 
