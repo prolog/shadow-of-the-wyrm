@@ -118,6 +118,7 @@ class MapProperties
 
     // Villages on this map
     static const std::string MAP_PROPERTIES_VILLAGE_COORDINATES;
+    static const std::string MAP_PROPERTIES_PRESET_VILLAGE_COORDINATES;
 
     // same-deity? friendly checks ignored if true.
     static const std::string MAP_PROPERTIES_DIVINE_FORBIDDEN;

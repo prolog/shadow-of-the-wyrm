@@ -1,4 +1,5 @@
 Me:
+- synopsis via 'x' should indicated follower
 - need to test pack generation...
 - is the witchling membership bugged?
 - Ammo improvements:

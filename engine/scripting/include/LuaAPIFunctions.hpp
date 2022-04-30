@@ -289,6 +289,7 @@ int generate_enclosure(lua_State* ls);
 int generate_hermitage(lua_State* ls);
 int update_creatures(lua_State* ls);
 int get_random_village(lua_State* ls);
+int get_random_preset_village(lua_State* ls);
 int tokenize(lua_State* ls);
 int generate_name(lua_State* ls);
 int remove_chat_script(lua_State* ls);

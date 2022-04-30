@@ -82,8 +82,9 @@ end
 -- Escort to a village from when they were young...
 local function villagevisit_start_fn()
   local cr_id = args[SPEAKING_CREATURE_ID]
-  local v_name = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME")
-  local v_loc = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION")
+  local q_id = "villagevisit"
+  local v_name = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME_" .. q_id)
+  local v_loc = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION_" .. q_id)
   
   add_message_with_pause("VILLAGEVISIT_QUEST_START_SID", {v_name, get_sid(v_loc)})
   add_message_with_pause("VILLAGEVISIT_QUEST_START2_SID")
@@ -97,7 +98,7 @@ end
 local function villagevisit_completion_condition_fn()
   local cr_id = args[SPEAKING_CREATURE_ID]
   local pc_y, pc_x = get_player_world_map_coords()
-  local coords, name, location = Quest:get_escort_details(cr_id)
+  local coords, name, location = Quest:get_escort_details(cr_id, "villagevisit")
 
   coords = tokenize(coords, "-")
   local cr_y = tonumber(coords[1])
@@ -110,7 +111,7 @@ local function villagevisit_completion_fn()
   local objs = {ENCHANTING_SCROLL_ID, GAIN_ATTRIBUTES_POTION_ID}
   local cr_id = args[SPEAKING_CREATURE_ID]
 
-  Quest:remove_escort_details(cr_id)
+  Quest:remove_escort_details(cr_id, "villagevisit")
   remove_leader(cr_id)
 
   local obj = objs[RNG_range(1, #objs)]
@@ -119,6 +120,49 @@ local function villagevisit_completion_fn()
 
   clear_and_add_message("VILLAGEVISIT_QUEST_COMPLETE_SID")
   set_creature_speech_text_sid(cr_id, "VILLAGEVISIT_SPEECH_RETURN_SID")
+
+  return true
+end
+
+-- Escort to one of the major settlements for a job.
+local function newjob_start_fn()
+  local cr_id = args[SPEAKING_CREATURE_ID]
+  local q_id = "newjob"
+  local v_name = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME_" .. q_id)
+  local v_loc = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION_" .. q_id)
+  
+  add_message_with_pause("NEWJOB_QUEST_START_SID")
+  add_message_with_pause("NEWJOB_QUEST_START2_SID")
+  clear_and_add_message("NEWJOB_QUEST_START3_SID", {v_name, get_sid(v_loc)})
+
+  -- Follow the player
+  set_leader(cr_id, PLAYER_ID)
+  order_follow(cr_id, PLAYER_ID)
+end
+
+local function newjob_completion_condition_fn()
+  local cr_id = args[SPEAKING_CREATURE_ID]
+  local pc_y, pc_x = get_player_world_map_coords()
+  local coords, name, location = Quest:get_escort_details(cr_id, "newjob")
+
+  coords = tokenize(coords, "-")
+  local cr_y = tonumber(coords[1])
+  local cr_x = tonumber(coords[2])
+
+  return (pc_y == cr_y and pc_x == cr_x)
+end
+
+local function newjob_completion_fn()
+  local cr_id = args[SPEAKING_CREATURE_ID]  
+  Quest:remove_escort_details(cr_id, "newjob")
+
+  remove_leader(cr_id)
+
+  add_object_to_player_tile(CURRENCY_ID, RNG_range(400, 900))
+  add_common_quest_reward()
+  
+  clear_and_add_message("NEWJOB_QUEST_COMPLETE_SID")
+  set_creature_speech_text_sid(cr_id, "NEWJOB_SPEECH_RETURN_SID")
 
   return true
 end
@@ -243,7 +287,7 @@ local function get_quests(cr_id, sdesc_sid)
                                     fishfeast_completion_fn)
 
   -- Get the village details
-  local c, name, location = Quest:get_escort_details(cr_id)
+  local c, name, location = Quest:get_escort_details(cr_id, "villagevisit")
   local v_y = -1
   local v_x = -1
 
@@ -253,7 +297,7 @@ local function get_quests(cr_id, sdesc_sid)
     v_x = coords[2]
   else
     v_y, v_x, name, location = get_random_village()
-    Quest:set_escort_details(cr_id, v_y, v_x, name, location)
+    Quest:set_escort_details(cr_id, v_y, v_x, name, location, "villagevisit")
   end
   
   local villagevisit_quest = Quest:new("villagevisit_" .. cr_id, 
@@ -267,6 +311,31 @@ local function get_quests(cr_id, sdesc_sid)
                                        villagevisit_completion_condition_fn, 
                                        villagevisit_completion_fn)
 
+  -- Get the job location details
+  local c, name, location = Quest:get_escort_details(cr_id, "newjob")
+  local v_y = -1
+  local v_x = -1
+
+  if #c > 0 and #name > 0 and #location > 0 then
+    local coords = tokenize(c, "-")
+    v_y = coords[1]
+    v_x = coords[2]
+  else
+    v_y, v_x, name, location = get_random_preset_village()
+    Quest:set_escort_details(cr_id, v_y, v_x, name, location, "newjob")
+  end
+
+  local newjob_quest = Quest:new("newjob_" .. cr_id, 
+                                 "NEWJOB_QUEST_TITLE_SID", 
+                                 sdesc_sid,
+                                 {"NEWJOB_QUEST_DESCRIPTION_SID", fn.array_to_csv({name, location})}, 
+                                 "NEWJOB_QUEST_COMPLETE_SID", 
+                                 {"NEWJOB_QUEST_REMINDER_SID", fn.array_to_csv({name, location})}, 
+                                 truefn,
+                                 newjob_start_fn, 
+                                 newjob_completion_condition_fn, 
+                                 newjob_completion_fn)
+  
   local fadventure_quest = Quest:new("adventure_forest_" .. cr_id, 
                                      "ADVENTURE_FOREST_QUEST_TITLE_SID", 
                                      sdesc_sid,
@@ -289,11 +358,12 @@ local function get_quests(cr_id, sdesc_sid)
                                     adventure_completion_condition_fn, 
                                     adventure_completion_fn)
 
-  local quests = {{thirsty_quest, 2},
+  local quests = {{thirsty_quest, 3},
                   {rowboat_quest, 3},
-		  {fishfeast_quest, 2},
+		  {fishfeast_quest, 3},
                   {villagevisit_quest, 3},
-		  {fadventure_quest, 2},
+		  {newjob_quest, 3},
+		  {fadventure_quest, 3},
 		  {adventure_quest, 3}}
 		  
   return quests

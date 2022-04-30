@@ -2404,6 +2404,66 @@ void MapUtils::enrage_nearby_creatures(MapPtr map, CreaturePtr creature, const s
   }
 }
 
+void MapUtils::add_preset_village(MapPtr map, const int row, const int col)
+{
+  if (map != nullptr)
+  {
+    string key = convert_coordinate_to_map_key({ row, col });
+    string preset_villages = map->get_property(MapProperties::MAP_PROPERTIES_PRESET_VILLAGE_COORDINATES);
+    vector<string> preset_coords = { key };
+
+    if (!preset_villages.empty())
+    {
+      preset_coords = String::create_string_vector_from_csv_string(preset_villages);
+      preset_coords.push_back(key);
+    }
+
+    map->set_property(MapProperties::MAP_PROPERTIES_PRESET_VILLAGE_COORDINATES, String::create_csv_from_string_vector(preset_coords));
+  }
+}
+
+std::tuple<int, int, std::string, std::string> MapUtils::get_random_village_by_property(MapPtr map, const std::string& prop)
+{
+  std::tuple<int, int, std::string, std::string> village = { -1, -1, "", "" };
+
+  if (map != nullptr)
+  {
+    vector<string> coords = String::create_string_vector_from_csv_string(map->get_property(prop));
+
+    if (!coords.empty())
+    {
+      string coord_s = coords.at(RNG::range(0, coords.size() - 1));
+      Coordinate c = MapUtils::convert_map_key_to_coordinate(coord_s);
+
+      TilePtr tile = map->at(c);
+
+      if (tile != nullptr)
+      {
+        string tile_name = tile->get_additional_property(TileProperties::TILE_PROPERTY_NAME);
+
+        if (tile_name.empty())
+        {
+          string map_id = tile->get_custom_map_id();
+
+          if (!map_id.empty())
+          {
+            MapPtr assoc_map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+            if (assoc_map != nullptr)
+            {
+              tile_name = StringTable::get(assoc_map->get_name_sid());
+            }
+          }
+        }
+
+        village = { c.first, c.second, tile_name, MapUtils::get_coordinate_location_sid(c, map->size()) };
+      }
+    }
+  }
+
+  return village;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Map_test.cpp"
 #include "unit_tests/MapUtils_test.cpp"

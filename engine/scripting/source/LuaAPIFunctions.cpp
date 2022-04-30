@@ -441,6 +441,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "count_creatures_with_property", count_creatures_with_property);
   lua_register(L, "get_time_of_day", get_time_of_day);
   lua_register(L, "update_creatures", update_creatures);
+  lua_register(L, "get_random_preset_village", get_random_preset_village);
   lua_register(L, "get_random_village", get_random_village);
   lua_register(L, "tokenize", tokenize);
   lua_register(L, "generate_name", generate_name);
@@ -9299,6 +9300,37 @@ int update_creatures(lua_State* ls)
   return 0;
 }
 
+int get_random_preset_village(lua_State* ls)
+{
+  int y = -1;
+  int x = -1;
+  string village_name;
+  string map_location_sid;
+
+  if (lua_gettop(ls) == 0)
+  {
+    Game& game = Game::instance();
+    MapPtr world_map = game.get_current_world()->get_world(game.get_map_registry_ref());
+    auto village = MapUtils::get_random_village_by_property(world_map, MapProperties::MAP_PROPERTIES_PRESET_VILLAGE_COORDINATES);
+
+    y = std::get<0>(village);
+    x = std::get<1>(village);
+    village_name = std::get<2>(village);
+    map_location_sid = std::get<3>(village);
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_random_preset_village");
+  }
+
+  lua_pushinteger(ls, y);
+  lua_pushinteger(ls, x);
+  lua_pushstring(ls, village_name.c_str());
+  lua_pushstring(ls, map_location_sid.c_str());
+
+  return 4;
+}
+
 int get_random_village(lua_State* ls)
 {
   int y = -1;
@@ -9310,27 +9342,12 @@ int get_random_village(lua_State* ls)
   {
     Game& game = Game::instance();
     MapPtr world_map = game.get_current_world()->get_world(game.get_map_registry_ref());
+    auto village = MapUtils::get_random_village_by_property(world_map, MapProperties::MAP_PROPERTIES_VILLAGE_COORDINATES);
 
-    if (world_map != nullptr)
-    {
-      vector<string> coords = String::create_string_vector_from_csv_string(world_map->get_property(MapProperties::MAP_PROPERTIES_VILLAGE_COORDINATES));
-
-      if (!coords.empty())
-      {
-        string coord_s = coords.at(RNG::range(0, coords.size() - 1));
-        Coordinate c = MapUtils::convert_map_key_to_coordinate(coord_s);
-
-        y = c.first;
-        x = c.second;
-
-        TilePtr tile = world_map->at(y, x);
-        if (tile != nullptr)
-        {
-          village_name = tile->get_additional_property(TileProperties::TILE_PROPERTY_NAME);
-          map_location_sid = MapUtils::get_coordinate_location_sid(c, world_map->size());
-        }
-      }
-    }
+    y = std::get<0>(village);
+    x = std::get<1>(village);
+    village_name = std::get<2>(village);
+    map_location_sid = std::get<3>(village);
   }
   else
   {

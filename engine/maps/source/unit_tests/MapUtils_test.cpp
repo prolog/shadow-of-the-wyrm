@@ -426,3 +426,14 @@ TEST(SW_Engine_Maps_MapUtils, get_coordinate_location_sid)
     EXPECT_EQ(d_pair.second, MapUtils::get_coordinate_location_sid(d_pair.first, d));
   }
 }
+
+TEST(SW_Engine_MapUtils, add_preset_village)
+{
+  Dimensions dim;
+  MapPtr map = std::make_shared<Map>(dim);
+
+  MapUtils::add_preset_village(map, 3, 4);
+  MapUtils::add_preset_village(map, 12, 5);
+
+  EXPECT_EQ("3-4,12-5", map->get_property(MapProperties::MAP_PROPERTIES_PRESET_VILLAGE_COORDINATES));
+}

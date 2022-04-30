@@ -63,6 +63,16 @@ MapPtr Generator::generate_and_initialize(const int danger, const Dimensions& di
   initialize(map, danger_level);
   create_properties_and_copy_to_map(map);
   map->set_map_type(get_map_type());
+
+  if (map->get_name_sid().empty())
+  {
+    string map_name = get_additional_property(TileProperties::TILE_PROPERTY_NAME);
+
+    if (!map_name.empty())
+    {
+      map->set_name_sid(map_name);
+    }
+  }
     
   return map;
 }

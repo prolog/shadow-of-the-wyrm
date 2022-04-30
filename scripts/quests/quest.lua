@@ -15,25 +15,28 @@ end
 function emptyfn()
 end
 
-function Quest:get_escort_details(cr_id)
-  local coords = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION")
-  local name = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME")
-  local location = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION")
+function Quest:get_escort_details(cr_id, quest_id)
+  local coords = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_" .. quest_id)
+  local name = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME_" .. quest_id)
+  local location = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION_" .. quest_id)
 
   return coords, name, location
 end
 
-function Quest:set_escort_details(cr_id, v_y, v_x, name, location)
+function Quest:set_escort_details(cr_id, v_y, v_x, name, location, quest_id)
   -- Set the coordinates on the speaker
-  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION", fn.make_coordinate_key(v_y, v_x))
-  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME", name)
-  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION", location)
+  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_" .. quest_id, fn.make_coordinate_key(v_y, v_x))
+  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME_" .. quest_id, name)
+  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION_" .. quest_id, location)
 end
 
-function Quest:remove_escort_details(cr_id)
-  remove_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION")
-  remove_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME")
-  remove_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION")
+-- Remove the escort details for the given quest_id
+function Quest:remove_escort_details(cr_id, quest_id)
+  log(CLOG_ERROR, "cr_id: " .. cr_id)
+  log(CLOG_ERROR, "q id : " .. quest_id)
+  remove_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_" .. quest_id)
+  remove_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME_" .. quest_id)
+  remove_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION_" .. quest_id)
 end
 
 -- Must be overridden on the table

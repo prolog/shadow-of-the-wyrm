@@ -1,4 +1,4 @@
-Shadow of the Wyrm v1.4.4 "Fuenllana"
+Shadow of the Wyrm v1.4.5 "Fuenllana"
 - Version declared March 27, 2022.
 
 - Created a splash screen for curses mode.
@@ -35,6 +35,8 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
 
 - Additional person/place names.
 
+- Additional townsfolk quests.
+
 - Various typo fixes/text improvement.
 
 - Bug fixes:
@@ -56,6 +58,9 @@ Shadow of the Wyrm v1.4.4 "Fuenllana"
 
   - The "It feels peaceful here." message wasn't checking if there were any
     pre-existing hostile creatures.
+
+  - Random villages' names weren't being set correctly, causing issues on the
+    quest list screen when receiving quests from NPCs in those villages.
 
 Shadow of the Wyrm v1.4.3 "da Milano"
 - Version declared December 24, 2021.  Version finalized March 27, 2022.
