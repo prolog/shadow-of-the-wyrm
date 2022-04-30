@@ -1162,6 +1162,18 @@ string Creature::get_leader_id() const
   return get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
 }
 
+bool Creature::is_leader(CreaturePtr cr) const
+{
+  bool leader = false;
+
+  if (cr != nullptr)
+  {
+    leader = (id == cr->get_leader_id());
+  }
+
+  return leader;
+}
+
 bool Creature::hostile_to(const string& creature_id)
 {
   DecisionStrategy* strategy = get_decision_strategy();

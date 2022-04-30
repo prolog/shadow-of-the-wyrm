@@ -37,6 +37,9 @@ Shadow of the Wyrm v1.4.5 "Fuenllana"
 
 - Additional townsfolk quests.
 
+- Updated creature description via 'x' so that Friendly and Follower show
+  outside the statuses section (since they're not technically statuses).
+
 - Various typo fixes/text improvement.
 
 - Bug fixes:

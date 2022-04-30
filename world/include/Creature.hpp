@@ -252,6 +252,7 @@ class Creature : public ISerializable
     void remove_leader();
     std::string get_leader_id() const;
     bool has_leader() const;
+    bool is_leader(std::shared_ptr<Creature> creature) const;
 
     // Is the creature hostile towards a given creature's ID?
     bool hostile_to(const std::string& creature_id);

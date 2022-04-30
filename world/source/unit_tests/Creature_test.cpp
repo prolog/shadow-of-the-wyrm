@@ -429,3 +429,21 @@ TEST(SW_World_Creature, has_leader)
   c->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID, "some_cr_id");
   EXPECT_TRUE(c->has_leader());
 }
+
+TEST(SW_World_Creature, is_leader)
+{
+  CreaturePtr c = std::make_shared<Creature>();
+  c->set_id("leader");
+
+  CreaturePtr c2 = std::make_shared<Creature>();
+  c2->set_id("c2");
+
+  CreaturePtr c3 = std::make_shared<Creature>();
+  c3->set_id("c3");
+
+  c2->set_leader_and_at_ease("leader");
+
+  EXPECT_TRUE(c->is_leader(c2));
+  EXPECT_FALSE(c->is_leader(c3));
+
+}

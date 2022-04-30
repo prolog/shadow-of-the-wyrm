@@ -125,8 +125,24 @@ string CreatureDescriber::describe_for_tile_selection() const
 
     string difficulty = cd.get_difficulty_text_sid(viewing_creature, creature);
     string hp_ind = cd.get_health_indicator_sid(creature);
+    bool hostile_to_viewer = creature->hostile_to(viewing_creature->get_id());
 
-    ss << creature_description << " (" << StringTable::get(difficulty) << "; " << StringTable::get(hp_ind) << "; " << StringTable::get(ActionTextKeys::ACTION_BESTIARY_DISPLAY_COMMAND_FOR_TILE_SELECTION) << ")";
+    ss << creature_description << " (";
+
+    // If the creature is one of the viewing creature's followers,
+    // add a flag.
+    if (viewing_creature->is_leader(creature) && !hostile_to_viewer)
+    {
+      ss << StringTable::get(TextKeys::FOLLOWER) << "; ";
+    }
+
+    // If the creature is friendly, be sure to note that!
+    if (!creature->is(viewing_creature) && !hostile_to_viewer)
+    {
+      ss << StringTable::get(TextKeys::FRIENDLY) << "; ";
+    }
+
+    ss << StringTable::get(difficulty) << "; " << StringTable::get(hp_ind) << "; " << StringTable::get(ActionTextKeys::ACTION_BESTIARY_DISPLAY_COMMAND_FOR_TILE_SELECTION) << ")";
   }
 
   return ss.str();
@@ -160,21 +176,14 @@ string CreatureDescriber::describe_statuses() const
   if (creature && viewing_creature)
   {
     vector<pair<string, Colour>> statuses = CreatureTranslator::get_display_status_ailments(creature);
-    bool hostile_to_viewer = creature->hostile_to(viewing_creature->get_id());
 
-    if (!statuses.empty() || (!creature->is(viewing_creature) && !hostile_to_viewer))
+    if (!statuses.empty())
     {
       ss << "[ ";
 
       for (const auto& status_pair : statuses)
       {
         ss << status_pair.first << " ";
-      }
-
-      // If the creature is friendly, be sure to note that!
-      if (!creature->is(viewing_creature) && !hostile_to_viewer)
-      {
-        ss << StringTable::get(TextKeys::FRIENDLY) << " ";
       }
 
       ss << "]";

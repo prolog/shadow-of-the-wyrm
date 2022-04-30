@@ -1,5 +1,5 @@
 Me:
-- synopsis via 'x' should indicated follower
+- the two escort quests should exclude the current map_id
 - need to test pack generation...
 - is the witchling membership bugged?
 - Ammo improvements:
