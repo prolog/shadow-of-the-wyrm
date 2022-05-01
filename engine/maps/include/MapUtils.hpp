@@ -135,7 +135,7 @@ class MapUtils
 
     static void add_preset_village(MapPtr map, const int row, const int col);
 
-    static std::tuple<int, int, std::string, std::string> get_random_village_by_property(MapPtr map, const std::string& prop);
+    static std::tuple<int, int, std::string, std::string> get_random_village_by_property(MapPtr map, const std::string& prop, const std::vector<std::string>& exclude_map_ids);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);

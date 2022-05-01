@@ -26,6 +26,7 @@
 #include "Log.hpp"
 #include "LogFiles.hpp"
 #include "Metadata.hpp"
+#include "RNG.hpp"
 #include "SDLInit.hpp"
 #include "ShadowOfTheWyrmEngine.hpp"
 #include "Settings.hpp"
@@ -103,6 +104,7 @@ int main(int argc, char* argv[])
 
   try
   {
+    std::srand(static_cast<unsigned int>(std::time(0)));
     print_title();
 
     if (argc > 1)

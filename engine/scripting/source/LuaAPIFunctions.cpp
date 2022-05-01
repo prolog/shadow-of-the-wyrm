@@ -186,6 +186,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_num_uniques_killed_global", get_num_uniques_killed_global);
   lua_register(L, "is_unique", is_unique);
   lua_register(L, "add_object_to_player_tile", add_object_to_player_tile);
+  lua_register(L, "add_objects_to_player_tile", add_objects_to_player_tile);
   lua_register(L, "add_object_to_map", add_object_to_map);
   lua_register(L, "add_object_to_creature", add_object_to_creature);
   lua_register(L, "add_object_on_tile_to_creature", add_object_on_tile_to_creature);
@@ -1069,6 +1070,47 @@ int add_object_to_player_tile(lua_State* ls)
   }
 
   lua_pushboolean(ls, added);
+  return 1;
+}
+
+// Add a number of objects to the player's tile. IDs are comma separated.
+// This function is really meant to be used for quicker debugging, though
+// it might also work if number of enchants/properties/etc aren't needed.
+int add_objects_to_player_tile(lua_State* ls)
+{
+  int added_cnt = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string object_ids = lua_tostring(ls, 1);
+    vector<string> ids = String::create_string_vector_from_csv_string(object_ids);
+    CreaturePtr player = Game::instance().get_current_player();
+    MapPtr map = Game::instance().get_current_map();
+    TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
+
+    if (player_tile != nullptr)
+    {
+      IInventoryPtr items = player_tile->get_items();
+
+      if (items != nullptr)
+      {
+        for (const string& id : ids)
+        {
+          string obj_id = boost::trim_copy(id);
+          ItemPtr item = ItemManager::create_item(obj_id);
+
+          items->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          added_cnt++;
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_objects_to_player_tile");
+  }
+
+  lua_pushboolean(ls, added_cnt > 0);
   return 1;
 }
 
@@ -9307,11 +9349,12 @@ int get_random_preset_village(lua_State* ls)
   string village_name;
   string map_location_sid;
 
-  if (lua_gettop(ls) == 0)
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
   {
+    string map_id = lua_tostring(ls, 1);
     Game& game = Game::instance();
     MapPtr world_map = game.get_current_world()->get_world(game.get_map_registry_ref());
-    auto village = MapUtils::get_random_village_by_property(world_map, MapProperties::MAP_PROPERTIES_PRESET_VILLAGE_COORDINATES);
+    auto village = MapUtils::get_random_village_by_property(world_map, MapProperties::MAP_PROPERTIES_PRESET_VILLAGE_COORDINATES, { map_id });
 
     y = std::get<0>(village);
     x = std::get<1>(village);
@@ -9338,11 +9381,12 @@ int get_random_village(lua_State* ls)
   string village_name;
   string map_location_sid;
 
-  if (lua_gettop(ls) == 0)
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
   {
+    string map_id = lua_tostring(ls, 1);
     Game& game = Game::instance();
     MapPtr world_map = game.get_current_world()->get_world(game.get_map_registry_ref());
-    auto village = MapUtils::get_random_village_by_property(world_map, MapProperties::MAP_PROPERTIES_VILLAGE_COORDINATES);
+    auto village = MapUtils::get_random_village_by_property(world_map, MapProperties::MAP_PROPERTIES_VILLAGE_COORDINATES, { map_id });
 
     y = std::get<0>(village);
     x = std::get<1>(village);

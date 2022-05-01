@@ -2349,20 +2349,20 @@ string MapUtils::get_coordinate_location_sid(const Coordinate& c, const Dimensio
     }
     else
     {
-      sid = DirectionLocationTextKeys::DIRECTION_LOCATION_SOUTH;
+    sid = DirectionLocationTextKeys::DIRECTION_LOCATION_SOUTH;
     }
   }
   else
   {
-    if (c_x < (mid_x - x_dist))
-    {
-      sid = DirectionLocationTextKeys::DIRECTION_LOCATION_WEST;
-    }
-    else if (c_x > mid_x + x_dist)
-    {
-      sid = DirectionLocationTextKeys::DIRECTION_LOCATION_EAST;
-    }
-    // Middle handled above
+  if (c_x < (mid_x - x_dist))
+  {
+    sid = DirectionLocationTextKeys::DIRECTION_LOCATION_WEST;
+  }
+  else if (c_x > mid_x + x_dist)
+  {
+    sid = DirectionLocationTextKeys::DIRECTION_LOCATION_EAST;
+  }
+  // Middle handled above
   }
 
   return sid;
@@ -2387,9 +2387,9 @@ void MapUtils::enrage_nearby_creatures(MapPtr map, CreaturePtr creature, const s
         Race* race = rm.get_race(cm_c->get_race_id());
 
         if (cm_c->get_id() != creature->get_id() &&
-            understands_corpses &&
-            ((cm_c->get_race_id() == race_id && (race && !race->get_umbrella_race())) ||
-             cm_c->get_original_id() == base_creature_id))
+          understands_corpses &&
+          ((cm_c->get_race_id() == race_id && (race && !race->get_umbrella_race())) ||
+            cm_c->get_original_id() == base_creature_id))
         {
           hm.set_hostility_to_creature(cm_c, creature->get_id());
 
@@ -2422,7 +2422,7 @@ void MapUtils::add_preset_village(MapPtr map, const int row, const int col)
   }
 }
 
-std::tuple<int, int, std::string, std::string> MapUtils::get_random_village_by_property(MapPtr map, const std::string& prop)
+std::tuple<int, int, std::string, std::string> MapUtils::get_random_village_by_property(MapPtr map, const std::string& prop, const vector<string>& exclude_map_ids)
 {
   std::tuple<int, int, std::string, std::string> village = { -1, -1, "", "" };
 
@@ -2432,31 +2432,46 @@ std::tuple<int, int, std::string, std::string> MapUtils::get_random_village_by_p
 
     if (!coords.empty())
     {
-      string coord_s = coords.at(RNG::range(0, coords.size() - 1));
-      Coordinate c = MapUtils::convert_map_key_to_coordinate(coord_s);
+      std::shuffle(coords.begin(), coords.end(), RNG::get_engine());
 
-      TilePtr tile = map->at(c);
-
-      if (tile != nullptr)
+      while (!coords.empty())
       {
-        string tile_name = tile->get_additional_property(TileProperties::TILE_PROPERTY_NAME);
+        string coord_s = coords.back();
+        Coordinate c = MapUtils::convert_map_key_to_coordinate(coord_s);
 
-        if (tile_name.empty())
+        TilePtr tile = map->at(c);
+
+        if (tile != nullptr)
         {
+          // Exclude any tile that links to a map with an ID that we want
+          // to exclude. Right now this is done to avoid creating quests
+          // to the same village or settlement.
           string map_id = tile->get_custom_map_id();
 
-          if (!map_id.empty())
+          if (std::find(exclude_map_ids.begin(), exclude_map_ids.end(), map_id) != exclude_map_ids.end())
           {
-            MapPtr assoc_map = Game::instance().get_map_registry_ref().get_map(map_id);
+            coords.pop_back();
+            continue;
+          }
 
-            if (assoc_map != nullptr)
+          string tile_name = tile->get_additional_property(TileProperties::TILE_PROPERTY_NAME);
+
+          if (tile_name.empty())
+          {
+            if (!map_id.empty())
             {
-              tile_name = StringTable::get(assoc_map->get_name_sid());
+              MapPtr assoc_map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+              if (assoc_map != nullptr)
+              {
+                tile_name = StringTable::get(assoc_map->get_name_sid());
+              }
             }
           }
-        }
 
-        village = { c.first, c.second, tile_name, MapUtils::get_coordinate_location_sid(c, map->size()) };
+          village = { c.first, c.second, tile_name, MapUtils::get_coordinate_location_sid(c, map->size()) };
+          break;
+        }
       }
     }
   }

@@ -296,7 +296,7 @@ local function get_quests(cr_id, sdesc_sid)
     v_y = coords[1]
     v_x = coords[2]
   else
-    v_y, v_x, name, location = get_random_village()
+    v_y, v_x, name, location = get_random_village(get_current_map_id())
     Quest:set_escort_details(cr_id, v_y, v_x, name, location, "villagevisit")
   end
   
@@ -321,7 +321,7 @@ local function get_quests(cr_id, sdesc_sid)
     v_y = coords[1]
     v_x = coords[2]
   else
-    v_y, v_x, name, location = get_random_preset_village()
+    v_y, v_x, name, location = get_random_preset_village(get_current_map_id())
     Quest:set_escort_details(cr_id, v_y, v_x, name, location, "newjob")
   end
 
