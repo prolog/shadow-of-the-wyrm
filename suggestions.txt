@@ -1,5 +1,6 @@
 Me:
-- 
+- test removal of QUEST_INITIATED
+- just generally test!
 - need to test pack generation...
 - is the witchling membership bugged?
 - Ammo improvements:

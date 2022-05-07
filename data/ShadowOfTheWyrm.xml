@@ -3442,6 +3442,9 @@
 				<Body>
 					<ID>leather_armour</ID>
 				</Body>
+				<RightFinger>
+					<ID>filigreed_ring</ID>
+				</RightFinger>
 				<Feet>
 					<ID>leather_boots</ID>
 				</Feet>

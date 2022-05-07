@@ -26195,7 +26195,7 @@
 				<Type>1</Type>
 			</Damage>
 			<Range>2</Range>
-			<Soak>5</Soak>
+			<Soak>7</Soak>
 		</Creature>
 		<Creature id="gambler">
 			<RaceID>01_human</RaceID>

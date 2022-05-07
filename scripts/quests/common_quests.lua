@@ -247,6 +247,77 @@ local function adventure_completion_fn()
   return true
 end
 
+-- On the lam, being chased by Carcassian guards
+local function carcassia_lam_precondition_fn()
+  local cr_id = args[SPEAKING_CREATURE_ID]
+  local qp_prop = "CARCASSIA_LAM_PRECONDITION_" .. cr_id
+  local agree_quest = get_creature_additional_property(PLAYER_ID, qp_prop)
+  local confirm = false
+
+  if agree_quest ~= "1" then
+    local desc = get_creature_description(PLAYER_ID, cr_id)
+    confirm = add_confirmation_message("CARCASSIA_LAM_CONFIRMATION", {desc})
+
+    if confirm == true then
+      set_creature_additional_property(PLAYER_ID, qp_prop, "1")
+      set_creature_additional_property(cr_id, QUEST_CARCASSIA_LAM_GUARD, dd"1")
+    end
+  else
+    return true
+  end
+
+  return confirm
+end
+
+local function carcassia_lam_start_fn()
+  local cr_id = args[SPEAKING_CREATURE_ID]
+  local cr_desc = get_creature_description(PLAYER_ID, cr_id)
+  add_message_with_pause("CARCASSIA_LAM_QUEST_START_SID", {cr_desc})
+  add_message_with_pause("CARCASSIA_LAM_QUEST_START2_SID")
+  add_message_with_pause("CARCASSIA_LAM_QUEST_START3_SID")
+  clear_and_add_message("CARCASSIA_LAM_QUEST_START4_SID")
+
+  -- Generate the guards
+  local num_guards = RNG_range(6,15)
+  local map_id = get_current_map_id()
+  local cnt = 0
+
+  while cnt < num_guards do
+    local y = RNG_range(0,19)
+    local x = RNG_range(0,79)
+
+    local grd_id = add_creature_to_map(CARCASSIAN_GUARD_ID, y, x, map_id, true)
+    
+    if string.len(grd_id) > 0 then
+      set_creature_additional_property(grd_id, QUEST_CARCASSIA_LAM_GUARD, "1")
+    end
+
+    cnt = cnt + 1
+  end
+end
+
+local function carcassia_lam_completion_condition_fn()
+  local cr_id = args[SPEAKING_CREATURE_ID]
+  local cr_prop = get_creature_additional_property(cr_id, QUEST_INITIATED)
+
+  return cr_prop == "1" and count_creatures_with_property(QUEST_CARCASSIA_LAM_GUARD, "1", get_current_map_id()) == 0
+end
+
+local function carcassia_lam_completion_fn()
+  local cr_id = args[SPEAKING_CREATURE_ID]
+  add_message_with_pause("CARCASSIA_LAM_QUEST_COMPLETE_SID")
+  remove_creature_additional_property(PLAYER_ID, "CARCASSIA_LAM_PRECONDITION_" .. cr_id)
+
+  -- Create the ring, then add it to the player's tile.
+  local main_dam_type = RNG_range(CDAMAGE_TYPE_SLASH, CDAMAGE_TYPE_LIGHTNING)
+  local sec_dam_type = RNG_range(CDAMAGE_TYPE_SLASH, CDAMAGE_TYPE_LIGHTNING)
+  local resists = {{main_dam_type, 0.20}, {sec_dam_type, 0.10}}
+  
+  -- JCD FIXME: This function not yet implemented
+  add_object_with_resists_to_player_tile(FILIGREED_RING_ID, resists)
+  return true
+end
+
 -- CommonQuest module.  Used to quests that can be used by a variety of
 -- NPCs.
 CommonQuests = {}
@@ -358,13 +429,25 @@ local function get_quests(cr_id, sdesc_sid)
                                     adventure_completion_condition_fn, 
                                     adventure_completion_fn)
 
-  local quests = {{thirsty_quest, 3},
-                  {rowboat_quest, 3},
-		  {fishfeast_quest, 3},
-                  {villagevisit_quest, 3},
-		  {newjob_quest, 3},
-		  {fadventure_quest, 3},
-		  {adventure_quest, 3}}
+  local carcassia_lam_quest = Quest:new("carcassia_lam_" .. cr_id,
+                                        "CARCASSIA_LAM_QUEST_TITLE_SID",
+					sdesc_sid,
+					{"CARCASSIA_LAM_QUEST_DESCRIPTION_SID", fn.array_to_csv({name, location})},
+					"CARCASSIA_LAM_QUEST_COMPLETE_SID",
+					{"CARCASSIA_LAM_QUEST_REMINDER_SID", fn.array_to_csv({name, location})},
+                                        carcassia_lam_precondition_fn,
+                                        carcassia_lam_start_fn,
+                                        carcassia_lam_completion_condition_fn,
+                                        carcassia_lam_completion_fn)
+
+  local quests = {{thirsty_quest, 2},
+                  {rowboat_quest, 2},
+		  {fishfeast_quest, 2},
+                  {villagevisit_quest, 2},
+		  {newjob_quest, 2},
+		  {fadventure_quest, 2},
+		  {adventure_quest, 2},
+                  {carcassia_lam_quest, 2}}
 		  
   return quests
 end
