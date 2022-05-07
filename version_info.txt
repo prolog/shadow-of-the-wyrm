@@ -42,6 +42,8 @@ Shadow of the Wyrm v1.4.5 "Fuenllana"
 
 - Various typo fixes/text improvement.
 
+- Sewers can now have drainage basins.
+
 - Bug fixes:
 
   - When default_name was set, and you already had a character of that name,

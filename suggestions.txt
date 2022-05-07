@@ -1,4 +1,7 @@
 Me:
+- add basins (see SpringGenerator::generate_tall)
+- very small chance of someone making their home in sewers (how about a sage/
+  hermit? bed, books)
 - test removal of QUEST_INITIATED
 - just generally test!
 - need to test pack generation...

@@ -42,7 +42,7 @@ GeneratorUtils::~GeneratorUtils()
 
 // Create a circle.  Check to ensure that the radius won't take us off
 // the boundaries.
-void GeneratorUtils::generate_circle(MapPtr map, const int row_centre, const int col_centre, const int radius, const TileType tile_type)
+void GeneratorUtils::generate_circle(MapPtr map, const int row_centre, const int col_centre, const int radius, const TileType tile_type, const bool check_for_entirely_contained)
 {
   Dimensions dim = map->size();
   int rows = dim.get_y();
@@ -52,12 +52,15 @@ void GeneratorUtils::generate_circle(MapPtr map, const int row_centre, const int
   vector<Coordinate> circle_coords = CoordUtils::get_circle_coordinates(row_centre, col_centre, radius);
 
   // Circle in range?
-  for (const Coordinate& c : circle_coords)
+  if (check_for_entirely_contained)
   {
-    if (!(c.first >= 0 && c.first <= rows - 1 && c.second >= 0 && c.second <= cols - 1))
+    for (const Coordinate& c : circle_coords)
     {
-      generate = false;
-      break;
+      if (!(c.first >= 0 && c.first <= rows - 1 && c.second >= 0 && c.second <= cols - 1))
+      {
+        generate = false;
+        break;
+      }
     }
   }
 
