@@ -186,6 +186,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_num_uniques_killed_global", get_num_uniques_killed_global);
   lua_register(L, "is_unique", is_unique);
   lua_register(L, "add_object_to_player_tile", add_object_to_player_tile);
+  lua_register(L, "add_object_with_resists_to_player_tile", add_object_with_resists_to_player_tile);
   lua_register(L, "add_objects_to_player_tile", add_objects_to_player_tile);
   lua_register(L, "add_object_to_map", add_object_to_map);
   lua_register(L, "add_object_to_creature", add_object_to_creature);
@@ -411,6 +412,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "creature_exists", creature_exists);
   lua_register(L, "set_weather", set_weather);
   lua_register(L, "genocide", genocide);
+  lua_register(L, "genocide_creature", genocide_creature);
   lua_register(L, "generate_ancient_beast", generate_ancient_beast);
   lua_register(L, "generate_hireling", generate_hireling);
   lua_register(L, "generate_adventurer", generate_adventurer);
@@ -1067,6 +1069,60 @@ int add_object_to_player_tile(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Incorrect arguments to add_object_to_player_tile");
+  }
+
+  lua_pushboolean(ls, added);
+  return 1;
+}
+
+int add_object_with_resists_to_player_tile(lua_State* ls)
+{
+  bool added = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+
+    if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
+    {
+      CreaturePtr player = game.get_current_player();
+      TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
+
+      string item_id = lua_tostring(ls, 1);
+      string rarray_csv = lua_tostring(ls, 2);
+      vector<string> resists = String::create_string_vector_from_csv_string(rarray_csv);
+
+      // Make sure it's the right format - dtype then resist val.
+      if (resists.size() % 2 == 0)
+      {
+        ItemPtr item = ItemManager::create_item(item_id);
+
+        if (item != nullptr)
+        {
+          Resistances& iresists = item->get_resistances_ref();
+
+          for (size_t i = 0; i < resists.size(); i += 2)
+          {
+            DamageType dtype = static_cast<DamageType>(String::to_int(resists.at(i)));
+            double val = String::to_double(resists.at(i + 1));
+
+            iresists.set_resistance_value(dtype, iresists.get_resistance_value(dtype) + val);
+          }
+        }
+
+        IInventoryPtr items = player_tile->get_items();
+
+        if (items != nullptr)
+        {
+          items->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_object_with_resists_to_player_tile");
   }
 
   lua_pushboolean(ls, added);
@@ -8423,6 +8479,7 @@ int set_weather(lua_State* ls)
 // If an argument is given, clear that race ID.
 int genocide(lua_State* ls)
 {
+  int num_removed = 0;
   MapPtr map = Game::instance().get_current_map();
   string race_id;
 
@@ -8444,11 +8501,49 @@ int genocide(lua_State* ls)
           (race_id.empty() || race_id == creature->get_race_id()))
       {
         MapUtils::remove_creature(map, creature);
+        num_removed++;
       }
     }
   }
 
-  return 0;
+  lua_pushboolean(ls, num_removed);
+  return 1;
+}
+
+int genocide_creature(lua_State* ls)
+{
+  int num_removed = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_original_id = lua_tostring(ls, 1);
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      const CreatureMap creatures = map->get_creatures();
+
+      for (auto cr_pair : creatures)
+      {
+        CreaturePtr creature = cr_pair.second;
+
+        if (creature != nullptr &&
+           !creature->get_is_player() &&
+            creature->get_original_id() == creature_original_id)
+        {
+          MapUtils::remove_creature(map, creature);
+          num_removed++;
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to genocide_creature");
+  }
+
+  lua_pushinteger(ls, num_removed);
+  return 1;
 }
 
 int generate_ancient_beast(lua_State* ls)

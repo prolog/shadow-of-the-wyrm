@@ -148,7 +148,7 @@ QUEST_STONEHEIM_RAID_INITIATED = "quest_stoneheim_raid_initiated"
 QUEST_STONEHEIM_RAID_CREATURE = "quest_stoneheim_raid_creature"
 QUEST_CARCASSIAN_RECRUITER_REBEL_CREATURE = "quest_carcassian_recruiter_rebel_creature"
 QUEST_CARCASSIA_LAM_GUARD = "quest_carcassia_lam_guard"
-QUEST_INITIATED = "quest_initiated"
+QUEST_IN_PROGRESS = "quest_in_progress"
 
 -- Memberships
 WITCHLINGS_MEMBERSHIP_ID = "witchlings"

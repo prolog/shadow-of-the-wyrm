@@ -173,7 +173,7 @@ function Quest:execute()
     -- if the completion function has indicated this.
     if should_mark_complete == true then
       mark_quest_completed(self.quest_id)
-      remove_creature_additional_property(self.questmaster_id, QUEST_INITIATED)
+      remove_creature_additional_property(self.questmaster_id, QUEST_IN_PROGRESS)
 
       -- Adventurers who complete lots of quest are kind of by definition
       -- charismatic.
@@ -205,7 +205,7 @@ function Quest:execute()
     -- quest to the player's list.
     if quest_started ~= false then
       add_new_quest(self.quest_id, self)
-      set_creature_additional_property(self.questmaster_id, QUEST_INITIATED, "1")
+      set_creature_additional_property(self.questmaster_id, QUEST_IN_PROGRESS, "1")
     end
     
     -- Starting a quest gets the player a few marks in Charisma.

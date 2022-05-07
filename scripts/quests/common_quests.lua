@@ -260,7 +260,6 @@ local function carcassia_lam_precondition_fn()
 
     if confirm == true then
       set_creature_additional_property(PLAYER_ID, qp_prop, "1")
-      set_creature_additional_property(cr_id, QUEST_CARCASSIA_LAM_GUARD, dd"1")
     end
   else
     return true
@@ -298,22 +297,21 @@ end
 
 local function carcassia_lam_completion_condition_fn()
   local cr_id = args[SPEAKING_CREATURE_ID]
-  local cr_prop = get_creature_additional_property(cr_id, QUEST_INITIATED)
+  local cr_prop = get_creature_additional_property(cr_id, QUEST_IN_PROGRESS)
 
   return cr_prop == "1" and count_creatures_with_property(QUEST_CARCASSIA_LAM_GUARD, "1", get_current_map_id()) == 0
 end
 
 local function carcassia_lam_completion_fn()
   local cr_id = args[SPEAKING_CREATURE_ID]
-  add_message_with_pause("CARCASSIA_LAM_QUEST_COMPLETE_SID")
+  clear_and_add_message("CARCASSIA_LAM_QUEST_COMPLETE_SID")
   remove_creature_additional_property(PLAYER_ID, "CARCASSIA_LAM_PRECONDITION_" .. cr_id)
 
   -- Create the ring, then add it to the player's tile.
   local main_dam_type = RNG_range(CDAMAGE_TYPE_SLASH, CDAMAGE_TYPE_LIGHTNING)
   local sec_dam_type = RNG_range(CDAMAGE_TYPE_SLASH, CDAMAGE_TYPE_LIGHTNING)
-  local resists = {{main_dam_type, 0.20}, {sec_dam_type, 0.10}}
+  local resists = fn.array_to_csv(fn.stringify_array({main_dam_type, 0.20, sec_dam_type, 0.10}))
   
-  -- JCD FIXME: This function not yet implemented
   add_object_with_resists_to_player_tile(FILIGREED_RING_ID, resists)
   return true
 end
