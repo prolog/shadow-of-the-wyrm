@@ -44,6 +44,8 @@ Shadow of the Wyrm v1.4.5 "Fuenllana"
 
 - Sewers can now have drainage basins.
 
+- Stanzas for "Tel and Floridel".
+
 - Bug fixes:
 
   - When default_name was set, and you already had a character of that name,

@@ -3998,3 +3998,24 @@ on or return?"  He kicked a bit of ash. %b
 The other took a moment: "if they show %b
 themselves, we've got the range, and in this grass %b
 we can ride them down, or away; each way, the trouble's passed."
+%p
+His companion nodded, fingering a knife %b
+as the wind picked up, the grasses leaning in %b
+to listen.  "We're outnumbered, but you're right. %b
+It's probably just some unlings and their slings. %b
+We can fire as we ride, and kill those left %b
+with our swords on horseback.  We can take a piece %b
+from each of them as proof, the king's own crest %b
+just gold to them, and claim a better seat %b
+further up the table when our lord next calls a feast.
+%p
+Decided, they mounted up and headed out %b
+immediately.  If evening came, they'd stop, %b
+wanting the mid-day sun to see if scouts %b
+might be sent against them.  As they rode, they swapped %b
+roles.  One hour, one of them would ride %b
+forward, while the other, right-to-left, %b
+rode arcs along the true path, side-to-side %b
+about its center.  As the day progressed, %b
+they felt their silence grow and watched the light compress.
+%p
