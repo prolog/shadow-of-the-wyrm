@@ -10,6 +10,9 @@ class GeneratorUtils
     // Bresenham's circle algorithm.
     static void generate_circle(MapPtr map, const int row_centre, const int col_centre, const int radius, const TileType tile_type, const bool check_for_entirely_contained);
 
+    // Generated a rounded rectangle.
+    static void generate_rounded_rectangle(MapPtr map, const Coordinate& start, const int height, const int width, const TileType tile_type, const bool check_for_entirely_contained);
+
     // Generates a building: walls are TileType::TILE_TYPE_ROCK, floor is TileType::TILE_TYPE_DUNGEON.
     static void generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width, const TileType tile_type = TileType::TILE_TYPE_ROCK);
     

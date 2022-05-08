@@ -74,6 +74,50 @@ void GeneratorUtils::generate_circle(MapPtr map, const int row_centre, const int
   }
 }
 
+void GeneratorUtils::generate_rounded_rectangle(MapPtr map, const Coordinate& start, const int height, const int width, const TileType tile_type, const bool check_for_entirely_contained)
+{
+  if (map != nullptr)
+  {
+    Dimensions dim = map->size();
+    int end_y = start.first + height;
+    int end_x = start.second + width;
+
+    if (check_for_entirely_contained &&
+        (end_y >= dim.get_y() ||
+         end_x >= dim.get_x()))
+    {
+      return;
+    }
+
+    for (int i = start.first; i <= end_y; i++)
+    {
+      for (int j = start.second; j <= end_x; j++)
+      {
+        // Make the rectangle rounded by skipping generation.
+        if ((i == start.first || i == end_y) &&
+            (j == start.second || j == end_x))
+        {
+          continue;
+        }
+
+        TilePtr tile = map->at(i, j);
+
+        // If a tile of the correct type is already generated, skip over it -
+        // it may have properties/etc in place that we don't want to overwrite.
+        if (tile && tile->get_tile_type() == tile_type)
+        {
+          continue;
+        }
+        else
+        {
+          // Generate the tiles in the rectangle.
+          generate_tile(map, i, j, tile_type);
+        }
+      }
+    }
+  }
+}
+
 bool GeneratorUtils::position_in_range(const int min, const int max, const int actual)
 {
   return (actual >= min) && (actual <= max);

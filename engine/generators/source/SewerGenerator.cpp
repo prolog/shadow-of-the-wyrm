@@ -36,7 +36,7 @@ MapPtr SewerGenerator::generate(const Dimensions& dimensions)
   // Generate the sewer sections, and then connect them together.
   generate_sewer_sections(result_map, y_incr);
   connect_sewer_sections(result_map, y_incr);
-  generate_curves(result_map);
+  generate_basins(result_map);
 
   // Place up and potentially down staircases as appropriate.
   place_staircases(result_map);
@@ -142,25 +142,26 @@ void SewerGenerator::place_staircases(MapPtr result_map)
   }
 }
 
-void SewerGenerator::generate_curves(MapPtr map)
+void SewerGenerator::generate_basins(MapPtr map)
 {
-  if (map != nullptr)
+  if (map != nullptr && RNG::percent_chance(75))
   {
-    bool has_curves = RNG::percent_chance(30);
+    Dimensions dim = map->size();
+    int max_y = dim.get_y() - 2;
+    int max_x = dim.get_x() - 2;
+    TileGenerator tg;
+    TilePtr sewer;
 
-    if (has_curves)
+    int b_height = RNG::range(5, 10);
+    int b_width = RNG::range(8, 22);
+    Coordinate start = { RNG::range(1, max_y - b_height), RNG::range(1, max_x - b_width) };
+
+    vector<Coordinate> coords = CoordUtils::get_coordinates_in_range(start, { start.first + b_height, start.second + b_width });
+
+    for (const Coordinate& c : coords)
     {
-      int num_basins = RNG::range(2, 8);
-      Dimensions dim = map->size();
-
-      for (int i = 0; i < num_basins; i++)
-      {
-        int y = RNG::range(0, dim.get_y() - 1);
-        int x = RNG::range(0, dim.get_x() - 1);
-        int radius = RNG::range(4, 8);
-
-        GeneratorUtils::generate_circle(map, y, x, radius, TileType::TILE_TYPE_SEWER, false);
-      }
+      sewer = tg.generate(TileType::TILE_TYPE_SEWER);
+      map->insert(c, sewer);
     }
   }
 }

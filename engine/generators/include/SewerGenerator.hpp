@@ -25,7 +25,7 @@ class SewerGenerator : public SOTW::Generator
     void connect_unconnected_sections(MapPtr result_map, const std::map<std::pair<Coordinate, Coordinate>, int>& incoming_connections);
     std::pair<Coordinate, Coordinate> retrieve_and_remove_random_section(std::map<int, std::vector<std::pair<Coordinate, Coordinate>>>& sections_copy);
 
-    void generate_curves(MapPtr result_map);
+    void generate_basins(MapPtr result_map);
 
     TileGenerator tg;
     std::map<int, std::vector<std::pair<Coordinate, Coordinate>>> sections;
