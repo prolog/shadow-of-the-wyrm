@@ -349,18 +349,12 @@ bool SDLDisplay::read_colours_from_settings()
 
         if (rgba.size() == 4)
         {
-          Uint8 r = String::to_int(rgba.at(0));
-          Uint8 g = String::to_int(rgba.at(1));
-          Uint8 b = String::to_int(rgba.at(2));
-          Uint8 a = String::to_int(rgba.at(3));
+          Uint8 r = static_cast<Uint8>(String::to_int(rgba.at(0)));
+          Uint8 g = static_cast<Uint8>(String::to_int(rgba.at(1)));
+          Uint8 b = static_cast<Uint8>(String::to_int(rgba.at(2)));
+          Uint8 a = static_cast<Uint8>(String::to_int(rgba.at(3)));
 
-          if (r >= 0 && r <= 255 &&
-            g >= 0 && g <= 255 &&
-            b >= 0 && b <= 255 &&
-            a >= 0 && a <= 255)
-          {
-            palette_colours.push_back({ r,g,b,a });
-          }
+          palette_colours.push_back({ r,g,b,a });
         }
       }
 
