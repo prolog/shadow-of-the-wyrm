@@ -39,6 +39,7 @@ class Game : public ISerializable
     void set_title_text(const std::string& new_title_text);
     void set_loading();
     void set_ready();
+    bool get_loading() const;
 
     void set_requires_redraw(const bool new_requires_redraw);
     bool get_requires_redraw() const;
@@ -306,6 +307,9 @@ class Game : public ISerializable
 
     // The time at which the game was started.
     std::chrono::system_clock::time_point game_start_time;
+
+    // Is the game currently loading/input blocked?
+    bool is_loading;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

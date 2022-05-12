@@ -15,25 +15,28 @@ end
 function emptyfn()
 end
 
-function Quest:get_escort_details(cr_id)
-  local coords = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION")
-  local name = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME")
-  local location = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION")
+function Quest:get_escort_details(cr_id, quest_id)
+  local coords = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_" .. quest_id)
+  local name = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME_" .. quest_id)
+  local location = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION_" .. quest_id)
 
   return coords, name, location
 end
 
-function Quest:set_escort_details(cr_id, v_y, v_x, name, location)
+function Quest:set_escort_details(cr_id, v_y, v_x, name, location, quest_id)
   -- Set the coordinates on the speaker
-  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION", fn.make_coordinate_key(v_y, v_x))
-  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME", name)
-  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION", location)
+  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_" .. quest_id, fn.make_coordinate_key(v_y, v_x))
+  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME_" .. quest_id, name)
+  set_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION_" .. quest_id, location)
 end
 
-function Quest:remove_escort_details(cr_id)
-  remove_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION")
-  remove_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME")
-  remove_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION")
+-- Remove the escort details for the given quest_id
+function Quest:remove_escort_details(cr_id, quest_id)
+  log(CLOG_ERROR, "cr_id: " .. cr_id)
+  log(CLOG_ERROR, "q id : " .. quest_id)
+  remove_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_" .. quest_id)
+  remove_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME_" .. quest_id)
+  remove_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION_" .. quest_id)
 end
 
 -- Must be overridden on the table
@@ -73,6 +76,7 @@ function Quest:new(quest_id, quest_title_sid_or_table, questmaster_name_sid, que
     obj.quest_title_parameter_sids = ""
   end
 
+  obj.questmaster_id = args[SPEAKING_CREATURE_ID]
   obj.questmaster_name_sid = questmaster_name_sid
   obj.map_name_sid = map_name_sid
 
@@ -142,9 +146,22 @@ function Quest:execute()
   -- Preconditions met?
   elseif self.quest_precond_fn() == false then
     return false
-  
+
   -- Quest is not complete, but condition is met.
   elseif self.quest_completion_condition_fn() == true then
+    -- The condition is met.  Check to see if we should prompt the player
+    -- for quest completion.
+    local prompt_for_complete = get_setting("prompt_before_quest_completion")
+    local complete_quest = true
+
+    if prompt_for_complete == "1" then
+      complete_quest = add_confirmation_message("QUEST_COMPLETE_CONFIRMATION")  
+    end
+
+    if complete_quest == false then
+      return false
+    end
+
     local should_mark_complete = self.quest_completion_fn()
 
     -- May not be on the quest.  Silently add the quest if not.
@@ -156,6 +173,7 @@ function Quest:execute()
     -- if the completion function has indicated this.
     if should_mark_complete == true then
       mark_quest_completed(self.quest_id)
+      remove_creature_additional_property(self.questmaster_id, QUEST_IN_PROGRESS)
 
       -- Adventurers who complete lots of quest are kind of by definition
       -- charismatic.
@@ -187,6 +205,7 @@ function Quest:execute()
     -- quest to the player's list.
     if quest_started ~= false then
       add_new_quest(self.quest_id, self)
+      set_creature_additional_property(self.questmaster_id, QUEST_IN_PROGRESS, "1")
     end
     
     -- Starting a quest gets the player a few marks in Charisma.

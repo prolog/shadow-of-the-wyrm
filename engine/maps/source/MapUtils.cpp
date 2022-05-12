@@ -13,6 +13,7 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
+#include "IntelligenceConstants.hpp"
 #include "ItemProperties.hpp"
 #include "LineOfSightCalculator.hpp"
 #include "Log.hpp"
@@ -26,6 +27,8 @@
 #include "MoveScript.hpp"
 #include "MovementTextKeys.hpp"
 #include "PickupAction.hpp"
+#include "RaceManager.hpp"
+#include "RageEffect.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "TextKeys.hpp"
@@ -1223,12 +1226,19 @@ bool MapUtils::is_moving_from_land_type_tile_to_water_type_tile(TilePtr old_tile
 {
   bool moving_from_land_to_water = false;
   
+  // General case: creature has an existing tile, and is moving into a new one.
   if (old_tile && new_tile)
   {
     TileSuperType old_st = old_tile->get_tile_super_type();
     TileSuperType new_st = new_tile->get_tile_super_type();
     
     moving_from_land_to_water = (old_st == TileSuperType::TILE_SUPER_TYPE_GROUND) && (new_st == TileSuperType::TILE_SUPER_TYPE_WATER);    
+  }
+  // Generation case: creature has no tile, moving to a new one.
+  else if (old_tile == nullptr && new_tile != nullptr)
+  {
+    TileSuperType new_st = new_tile->get_tile_super_type();
+    moving_from_land_to_water = (new_st == TileSuperType::TILE_SUPER_TYPE_WATER);
   }
   
   return moving_from_land_to_water;
@@ -1947,7 +1957,7 @@ void MapUtils::serialize_and_remove_followers(MapPtr map, CreaturePtr creature)
 
       if (c != nullptr)
       {
-        string leader_id = c->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+        string leader_id = c->get_leader_id();
 
         if (!leader_id.empty() && leader_id == creature->get_id())
         {
@@ -2339,23 +2349,134 @@ string MapUtils::get_coordinate_location_sid(const Coordinate& c, const Dimensio
     }
     else
     {
-      sid = DirectionLocationTextKeys::DIRECTION_LOCATION_SOUTH;
+    sid = DirectionLocationTextKeys::DIRECTION_LOCATION_SOUTH;
     }
   }
   else
   {
-    if (c_x < (mid_x - x_dist))
-    {
-      sid = DirectionLocationTextKeys::DIRECTION_LOCATION_WEST;
-    }
-    else if (c_x > mid_x + x_dist)
-    {
-      sid = DirectionLocationTextKeys::DIRECTION_LOCATION_EAST;
-    }
-    // Middle handled above
+  if (c_x < (mid_x - x_dist))
+  {
+    sid = DirectionLocationTextKeys::DIRECTION_LOCATION_WEST;
+  }
+  else if (c_x > mid_x + x_dist)
+  {
+    sid = DirectionLocationTextKeys::DIRECTION_LOCATION_EAST;
+  }
+  // Middle handled above
   }
 
   return sid;
+}
+
+void MapUtils::enrage_nearby_creatures(MapPtr map, CreaturePtr creature, const string& base_creature_id, const string& race_id)
+{
+  if (map != nullptr && creature != nullptr)
+  {
+    // Nearby creatures that can see the creature and match the 
+    // base_creature_id or whose race matches the race_id are enraged!!
+    const CreatureMap& creatures = map->get_creatures_ref();
+    HostilityManager hm;
+    RaceManager rm;
+
+    for (const auto& cm_pair : creatures)
+    {
+      if (cm_pair.second && cm_pair.second->get_decision_strategy()->get_fov_map()->has_creature(creature->get_id()))
+      {
+        CreaturePtr cm_c = cm_pair.second;
+        bool understands_corpses = (cm_c->get_intelligence().get_current() > IntelligenceConstants::MIN_INTELLIGENCE_UNDERSTAND_CORPSES);
+        Race* race = rm.get_race(cm_c->get_race_id());
+
+        if (cm_c->get_id() != creature->get_id() &&
+          understands_corpses &&
+          ((cm_c->get_race_id() == race_id && (race && !race->get_umbrella_race())) ||
+            cm_c->get_original_id() == base_creature_id))
+        {
+          hm.set_hostility_to_creature(cm_c, creature->get_id());
+
+          Coordinate cm_coord = map->get_location(cm_c->get_id());
+          TilePtr cm_tile = map->at(cm_coord);
+
+          RageEffect rage;
+          rage.effect(cm_c, &Game::instance().get_action_manager_ref(), ItemStatus::ITEM_STATUS_BLESSED, cm_coord, cm_tile, false);
+        }
+      }
+    }
+  }
+}
+
+void MapUtils::add_preset_village(MapPtr map, const int row, const int col)
+{
+  if (map != nullptr)
+  {
+    string key = convert_coordinate_to_map_key({ row, col });
+    string preset_villages = map->get_property(MapProperties::MAP_PROPERTIES_PRESET_VILLAGE_COORDINATES);
+    vector<string> preset_coords = { key };
+
+    if (!preset_villages.empty())
+    {
+      preset_coords = String::create_string_vector_from_csv_string(preset_villages);
+      preset_coords.push_back(key);
+    }
+
+    map->set_property(MapProperties::MAP_PROPERTIES_PRESET_VILLAGE_COORDINATES, String::create_csv_from_string_vector(preset_coords));
+  }
+}
+
+std::tuple<int, int, std::string, std::string> MapUtils::get_random_village_by_property(MapPtr map, const std::string& prop, const vector<string>& exclude_map_ids)
+{
+  std::tuple<int, int, std::string, std::string> village = { -1, -1, "", "" };
+
+  if (map != nullptr)
+  {
+    vector<string> coords = String::create_string_vector_from_csv_string(map->get_property(prop));
+
+    if (!coords.empty())
+    {
+      std::shuffle(coords.begin(), coords.end(), RNG::get_engine());
+
+      while (!coords.empty())
+      {
+        string coord_s = coords.back();
+        Coordinate c = MapUtils::convert_map_key_to_coordinate(coord_s);
+
+        TilePtr tile = map->at(c);
+
+        if (tile != nullptr)
+        {
+          // Exclude any tile that links to a map with an ID that we want
+          // to exclude. Right now this is done to avoid creating quests
+          // to the same village or settlement.
+          string map_id = tile->get_custom_map_id();
+
+          if (std::find(exclude_map_ids.begin(), exclude_map_ids.end(), map_id) != exclude_map_ids.end())
+          {
+            coords.pop_back();
+            continue;
+          }
+
+          string tile_name = tile->get_additional_property(TileProperties::TILE_PROPERTY_NAME);
+
+          if (tile_name.empty())
+          {
+            if (!map_id.empty())
+            {
+              MapPtr assoc_map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+              if (assoc_map != nullptr)
+              {
+                tile_name = StringTable::get(assoc_map->get_name_sid());
+              }
+            }
+          }
+
+          village = { c.first, c.second, tile_name, MapUtils::get_coordinate_location_sid(c, map->size()) };
+          break;
+        }
+      }
+    }
+  }
+
+  return village;
 }
 
 #ifdef UNIT_TESTS

@@ -106,7 +106,7 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
         // may have been knocked back.
         adjacent_creature = adjacent_tile->get_creature();
 
-        // If we're doing unarmed melee, there is a chance as well to kick.
+        // There is a chance as well to kick.
         UnarmedCombatCalculator ucc;
 
         if (adjacent_creature != nullptr)
@@ -1399,7 +1399,7 @@ void CombatManager::gain_experience(CreaturePtr attacking_creature, CreaturePtr 
     uint experience_value = attacked_creature->get_experience_value();
     em.gain_experience(attacking_creature, experience_value);
 
-    string leader_id = attacking_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+    string leader_id = attacking_creature->get_leader_id();
 
     if (!leader_id.empty())
     {
@@ -1435,7 +1435,7 @@ Damage CombatManager::determine_damage(CreaturePtr attacking_creature, Damage* p
       damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(attacking_creature);
     }
 
-    string leader_id = attacking_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+    string leader_id = attacking_creature->get_leader_id();
 
     if (!leader_id.empty())
     {

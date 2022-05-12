@@ -39,7 +39,7 @@ void RockySacrificeSiteGenerator::generate_stones(MapPtr map)
 {
   Dimensions dim = map->size();
   int radius = RNG::range(6, 8);
-  GeneratorUtils::generate_circle(map, dim.get_y() / 2, dim.get_x() / 2, radius, TileType::TILE_TYPE_CAIRN);  
+  GeneratorUtils::generate_circle(map, dim.get_y() / 2, dim.get_x() / 2, radius, TileType::TILE_TYPE_CAIRN, true);  
 }
 
 void RockySacrificeSiteGenerator::generate_features(MapPtr map)

@@ -39,8 +39,11 @@ class Race
     void set_parent_race_id(const std::string& parent_race_id);
     std::string get_parent_race_id() const;
 
-    void set_user_playable(const bool playable);
+    void set_user_playable(const bool new_playable);
     bool get_user_playable() const;
+
+    void set_umbrella_race(const bool new_umbrella_race);
+    bool get_umbrella_race() const;
 
     void set_sex(const CreatureSex sex);
     CreatureSex get_sex() const;
@@ -186,6 +189,7 @@ class Race
     std::string race_id;
     std::string parent_race_id;
     bool user_playable;
+    bool umbrella;
     CreatureSex sex;
     int pack_multiplier;
     bool slayable;

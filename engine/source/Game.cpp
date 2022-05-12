@@ -66,6 +66,7 @@ Game::Game()
 , count_score(true)
 , total_seconds_played(0.0)
 , game_start_time(chrono::system_clock::now())
+, is_loading(false)
 {
   // Setup the time keeper.  On a new game, this will initialize everything as
   // expected - when loading an existing game, this will be overwritten later,
@@ -88,6 +89,7 @@ void Game::set_title_text(const string& new_title_text)
 void Game::set_loading()
 {
   set_title_text(TextKeys::SW_TITLE_LOADING);
+  is_loading = true;
 }
 
 void Game::set_ready()
@@ -96,6 +98,13 @@ void Game::set_ready()
   {
     display->set_title(StringTable::get(TextKeys::SW_TITLE));
   }
+
+  is_loading = false;
+}
+
+bool Game::get_loading() const
+{
+  return is_loading;
 }
 
 void Game::set_requires_redraw(const bool new_requires_redraw)
@@ -1341,6 +1350,8 @@ bool Game::serialize(ostream& stream) const
   double total_elapsed_time = get_total_elapsed_game_time(std::chrono::system_clock::now());
   Serialize::write_double(stream, total_elapsed_time);
 
+  Serialize::write_bool(stream, is_loading);
+
   Log::instance().trace("Game::serialize - end");
 
   return true;
@@ -1613,8 +1624,8 @@ bool Game::deserialize(istream& stream)
   }
 
   Serialize::read_bool(stream, count_score);
-
   Serialize::read_double(stream, total_seconds_played);
+  Serialize::read_bool(stream, is_loading);
 
   Log::instance().trace("Game::deserialize - end");
   return true;

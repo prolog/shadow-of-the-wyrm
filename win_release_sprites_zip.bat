@@ -5,4 +5,4 @@ copy license dist_sprites
 cd dist_sprites
 7z.exe a -tzip ShadowOfTheWyrm-Sprites.zip * -r
 cd ..
-@ECHO assets\sprites\ShadowOfTheWyrm-Sprites.zip created!
+@ECHO dist_sprites\ShadowOfTheWyrm-Sprites.zip created!

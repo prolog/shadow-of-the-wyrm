@@ -9,8 +9,15 @@ Quest::Quest()
 {
 }
 
-Quest::Quest(const string& new_id, const string& new_qtitle, const vector<string>& new_qt_param_sids, const string& new_qmaster, const string& new_map_name_sid, const string& new_qdesc, const vector<string>& new_desc_params)
-: quest_id(new_id), quest_title_sid(new_qtitle), quest_title_parameter_sids(new_qt_param_sids), questmaster_name_sid(new_qmaster), map_name_sid(new_map_name_sid), quest_description_sid(new_qdesc), quest_description_parameter_sids(new_desc_params)
+Quest::Quest(const string& new_id, const string& new_qtitle, const vector<string>& new_qt_param_sids, const string& new_questmaster_id, const string& new_qmaster, const string& new_map_name_sid, const string& new_qdesc, const vector<string>& new_desc_params)
+: quest_id(new_id), 
+  quest_title_sid(new_qtitle), 
+  quest_title_parameter_sids(new_qt_param_sids), 
+  questmaster_id(new_questmaster_id),
+  questmaster_name_sid(new_qmaster), 
+  map_name_sid(new_map_name_sid), 
+  quest_description_sid(new_qdesc), 
+  quest_description_parameter_sids(new_desc_params)
 {
 }
 
@@ -21,6 +28,7 @@ bool Quest::operator==(const Quest& q) const
   result = result && (quest_id == q.quest_id);
   result = result && (quest_title_sid == q.quest_title_sid);
   result = result && (quest_title_parameter_sids == q.quest_title_parameter_sids);
+  result = result && (questmaster_id == q.questmaster_id);
   result = result && (questmaster_name_sid == q.questmaster_name_sid);
   result = result && (map_name_sid == q.map_name_sid);
   result = result && (quest_description_sid == q.quest_description_sid);
@@ -57,6 +65,16 @@ void Quest::set_quest_title_parameter_sids(const vector<string>& new_quest_title
 vector<string> Quest::get_quest_title_parameter_sids() const
 {
   return quest_title_parameter_sids;
+}
+
+void Quest::set_questmaster_id(const string& new_questmaster_id)
+{
+  questmaster_id = new_questmaster_id;
+}
+
+string Quest::get_questmaster_id() const
+{
+  return questmaster_id;
 }
 
 void Quest::set_questmaster_name_sid(const string& new_questmaster_name_sid)
@@ -104,6 +122,7 @@ bool Quest::serialize(ostream& stream) const
   Serialize::write_string(stream, quest_id);
   Serialize::write_string(stream, quest_title_sid);
   Serialize::write_string_vector(stream, quest_title_parameter_sids);
+  Serialize::write_string(stream, questmaster_id);
   Serialize::write_string(stream, questmaster_name_sid);
   Serialize::write_string(stream, map_name_sid);
   Serialize::write_string(stream, quest_description_sid);
@@ -117,6 +136,7 @@ bool Quest::deserialize(istream& stream)
   Serialize::read_string(stream, quest_id);
   Serialize::read_string(stream, quest_title_sid);
   Serialize::read_string_vector(stream, quest_title_parameter_sids);
+  Serialize::read_string(stream, questmaster_id);
   Serialize::read_string(stream, questmaster_name_sid);
   Serialize::read_string(stream, map_name_sid);
   Serialize::read_string(stream, quest_description_sid);

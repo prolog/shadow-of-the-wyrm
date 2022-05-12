@@ -16,24 +16,26 @@ const int Naming::MAX_NAME_SYL = 2;
 
 const SyllableMap Naming::syllables = 
 {
-  { CreatureSex::CREATURE_SEX_MALE,   { { 1, { {1, { "Aesche", "Arc", "Amn", "Arke", "Ashe", "Bal", "Bel", "Bane", "Bash", "Bek", "Birch", "Bonn", "Brae", "Cade", "Cael", "Cain", "Cal", "Carr", "Cas", "Cid", "Claye", "Clyne", "Creel", "Clyve", "Col", "Cole", "Corr", "Crane", "Cram", "Crim", "Crom", "Crow", "Crowe", "Cyd", "Dane", "Dax", "Dun", "East", "Elm", "Eorl", "Erne", "Falk", "Fayne", "Finn", "Fil", "Flick", "Forde", "Froste", "Gael", "Gan", "Garr", "Girn", "Gep", "Guy", "Heath", "Helm", "Holte", "Howa", "Howe", "Hume", "Hur", "Hymm", "Jak", "Jek", "Jax", "Jot", "Kharne", "Karr", "Kay", "Kael", "Kel", "Kerr", "Knot", "Kronk", "Krul", "Kyp", "Layne", "Lev", "Llew", "Lux", "Mace", "Marr", "Mak", "Mead", "Mill", "Mik", "Miles", "Mirk", "Myrr", "Nashe", "Nil", "Nodd", "North", "Null", "Nye", "Oak", "Orbe", "Pan", "Pat", "Pax", "Pearne", "Peart", "Pin", "Pine", "Pogg", "Puck", "Quip", "Quinn", "Ran", "Rain", "Rex", "Rhode", "Rhun", "Rhon", "Rock", "Rogue", "Rom", "Rone", "Rushe", "Ryne", "Scrip", "Serg", "Shaw", "Shere", "Slade", "Slemp", "Sloan", "Stave", "Stone", "Stork", "Storm", "Tave", "Tel", "Tep", "Tik", "Tir", "Tok", "Tooke", "Trayne", "Tull", "Tyg", "Varne", "Vayne", "Vel", "Vim", "Wart", "Wel", "Wink", "Wulf", "Wyl", "Wyld", "Zane", "Zann", "Zog", "Zoq" } } } },
-                                        { 2, { {1, { "A", "Ad", "Ae", "Ak", "Ar", "Ash", "Ax", "Az", "Ba", "Bad", "Bal", "Be", "Bel", "Ben", "Bi", "Bil", "Bo", "Bor", "Bra", "Bro", "Brae", "Bran", "Bren", "Bron", "Brun", "Bu", "Ca", "Cal", "Caed", "Cael", "Cap", "Cau", "Ce", "Ced", "Ci", "Cir", "Co", "Com", "Crae", "Cral", "Crel", "Da", "Dae", "De", "Dea", "Di", "Ea", "Ed", "Ek", "Do", "Fa", "Fau", "Fo", "Feu", "Fu", "Fue", "Ga", "Gad", "Gae", "Gea", "Gra", "Grae", "Gre", "Gu", "Gur", "Ha", "Hae", "Hak", "Haz", "He", "Hel", "I", "Ja", "Je", "Jel", "Jo", "Jul", "Ka", "Kal", "Kan", "Kap", "Kae", "Kau", "Ke", "Kea", "Ko", "Kord", "Kra", "La", "Lae", "Le", "Lla", "Lle", "Lli", "Llo", "Llu", "Lly", "Lo", "Li", "Ma", "Me", "Mu", "Myr", "Na", "Ne", "Nu", "O", "Oe", "Pa", "Pae", "Pal", "Pul", "Po", "Qui", "Ra", "Rae", "Re", "Ru", "Sa", "Se", "Sel", "Su", "Sul", "Ta", "Tau", "Tal", "Te", "Tel", "Teu", "Ti", "Tie", "Tik", "Til", "Tei", "Tu", "Tyg", "U", "Va", "Vi", "Wa", "Wau", "We", "Wi", "Xa", "Xe", "Xen", "Ya", "Ye", "Za", "Ze", "Zi", "Zo", "Zu" } },
-                                               {2, { "ac", "ag", "an", "as", "ax", "az", "ban", "bak", "bar", "bax", "baz", "bel", "ben", "berm", "bern", "bert", "bik", "cal", "cale", "cel", "den", "el", "es", "ex", "fan", "fax", "fae", "foe", "gan", "gen", "gew", "gon", "gonne", "gor", "gu", "gul", "iac", "ian", "ic", "im", "ix", "jax", "kal", "kam", "kan", "kel", "kin", "ko", "kul", "lac", "lal", "lan", "land", "las", "lale", "lel", "ling", "lon", "lec", "lic", "lone", "lul", "mak", "man", "mar", "max", "men", "mer", "mex", "min", "mon", "mor", "mux", "nak", "nel", "nex", "nul", "nuz", "on", "pa", "pan", "pas", "pul", "pol", "pog", "put", "ran", "rax", "rex", "rix", "ro", "rul", "ryx", "san", "sak", "sir", "sik", "sek", "some", "som", "son", "sz", "tag", "tar", "tal", "tel", "ten", "til", "tin", "ton", "tul", "uc", "uck", "us", "ux", "val", "van", "var", "vax", "ver", "vex", "wan", "wen", "win", "wo", "wu", "xar", "yak", "yen", "z", "zak", "zar", "zax", "zel", "zek", "zen", "zo", "zu", "zzo"
+  { CreatureSex::CREATURE_SEX_MALE,   { { 1, { {1, { "Aesche", "Arc", "Amn", "Arke", "Ashe", "Bal", "Bane", "Bash", "Bek", "Bel", "Bhel", "Birch", "Bonn", "Brae", "Cade", "Cael", "Cain", "Cal", "Caln", "Calt", "Carr", "Cas", "Cid", "Claye", "Clyne", "Creel", "Clyve", "Col", "Cole", "Colm", "Corr", "Crane", "Cram", "Crim", "Crom", "Cron", "Crow", "Crowe", "Cyd", "Dane", "Dax", "Dun", "East", "Elm", "Eorl", "Erne", "Falk", "Fayne", "Finn", "Fil", "Flick", "Forde", "Froste", "Gael", "Gan", "Garr", "Ged", "Gend", "Gep", "Girn", "Guy", "Heath", "Helm", "Hep", "Holte", "Howa", "Howe", "Hume", "Hur", "Hylt", "Hymm", "Jak", "Jek", "Jax", "Jot", "Kharne", "Karr", "Kay", "Kael", "Kel", "Kerr", "Knot", "Kronk", "Krul", "Kyp", "Layne", "Lev", "Llew", "Lux", "Mace", "Marr", "Mak", "Mead", "Mill", "Mik", "Miles", "Mirk", "Myrr", "Nashe", "Nil", "Nodd", "North", "Null", "Nye", "Oak", "Orbe", "Pan", "Pat", "Pax", "Pearne", "Peart", "Pin", "Pine", "Pogg", "Puck", "Quip", "Quinn", "Ran", "Rain", "Rex", "Rhode", "Rhun", "Rhon", "Rock", "Rogue", "Rom", "Rone", "Rushe", "Ryne", "Scrip", "Serg", "Shaw", "Shere", "Slade", "Slemp", "Sloan", "Stave", "Stone", "Stork", "Storm", "Tave", "Tel", "Tep", "Tik", "Tir", "Tok", "Tooke", "Trayne", "Tull", "Tyg", "Varne", "Vayne", "Vel", "Vim", "Wart", "Wel", "Wink", "Wulf", "Wyl", "Wyld", "Wyn", "Zane", "Zann", "Zog", "Zoq" } } } },
+                                        { 2, { {1, { "A", "Ad", "Ae", "Ak", "Ar", "Ash", "Ax", "Az", "Ba", "Bad", "Bal", "Be", "Bel", "Ben", "Bi", "Bil", "Bo", "Bor", "Bra", "Bro", "Brae", "Bran", "Bren", "Bron", "Brun", "Bu", "Ca", "Cal", "Caed", "Cael", "Cap", "Cau", "Ce", "Ced", "Ci", "Cir", "Co", "Com", "Crae", "Cral", "Crel", "Da", "Dae", "De", "Dea", "Di", "Do", "Dor", "Ea", "Eb", "Ec", "Ed", "Ek", "Em", "En", "Er", "Err", "Ey", "Ez", "Fa", "Fau", "Fei", "Feu", "Fi", "Fie", "Fo", "Fou", "Fu", "Fue", "Ga", "Gad", "Gae", "Gea", "Gra", "Grae", "Gre", "Gu", "Gur", "Ha", "Hae", "Hak", "Haz", "He", "Hel", "Hep", "I", "Ja", "Je", "Jel", "Jo", "Jul", "Ka", "Kal", "Kan", "Kap", "Kae", "Kau", "Ke", "Kea", "Ko", "Kord", "Kra", "La", "Lae", "Le", "Lla", "Lle", "Lli", "Llo", "Llu", "Lly", "Lo", "Li", "Ma", "Me", "Mu", "Myr", "Myz", "Na", "Ne", "Nu", "O", "Oe", "Pa", "Pae", "Pal", "Pul", "Po", "Qui", "Ra", "Rae", "Re", "Ru", "Sa", "Se", "Sel", "Su", "Sul", "Ta", "Tal", "Tau", "Tal", "Te", "Tel", "Teu", "Ti", "Tie", "Tik", "Til", "Tei", "Tu", "Tyg", "U", "Va", "Vi", "Wa", "Wau", "We", "Wi", "Xa", "Xe", "Xen", "Ya", "Ye", "Za", "Ze", "Zi", "Zo", "Zu" } },
+                                               {2, { "ab", "ac", "ad", "ael", "ag", "am", "an", "as", "ax", "az", "ban", "bak", "bar", "bax", "baz", "bel", "ben", "berm", "bern", "bert", "bik", "cal", "cale", "cel", "ch", "den", "el", "es", "ex", "fan", "fax", "fae", "foe", "gan", "gen", "gew", "gon", "gonne", "gor", "gu", "gul", "iac", "ian", "ic", "im", "ix", "jax", "kal", "kam", "kan", "kel", "ken", "kh", "kin", "ko", "kul", "lac", "lal", "lan", "land", "las", "lale", "lel", "ling", "lon", "lec", "lic", "lone", "lul", "mak", "man", "mar", "max", "men", "mer", "mex", "min", "mon", "mor", "mux", "nak", "nel", "nex", "nul", "nuz", "on", "pa", "pan", "pas", "pul", "pol", "pog", "put", "ran", "rax", "rex", "rix", "ro", "rul", "ryx", "san", "sak", "she", "sir", "sik", "sek", "some", "som", "son", "sz", "tag", "tar", "tal", "tel", "ten", "til", "tin", "ton", "tul", "uc", "uck", "us", "ux", "val", "van", "var", "vax", "ver", "vex", "wan", "wen", "win", "wo", "wu", "xar", "yak", "yen", "z", "zak", "zar", "zax", "zel", "zek", "zen", "zo", "zu", "zzo"
                                                } } } } } },
-  { CreatureSex::CREATURE_SEX_FEMALE, { { 1, { {1, { "Aenn", "Ash", "Brig", "Bae", "Bea", "Belle", "Blue", "Bron", "Brie", "Bree", "Brea", "Cass", "Cat", "Catte", "Crea", "Cresse", "Dove", "Fae", "Fay", "Fey", "Ferne", "Gaile", "Grace", "Hail", "Hil", "Hild", "Hilde", "Hope", "Ia", "Jade", "Jass", "Jil", "Joyce", "Joye", "Kat", "Joye", "Kai", "Kess", "Kell", "Kim", "Kish", "Lark", "Leah", "Lil", "Lish", "Liss", "Liv", "Lyn", "Mab", "Maeve", "Mer", "Mere", "Nan", "Nea", "Ness", "Page", "Pea", "Rae", "Rax", "Ros", "Rhenne", "Rue", "Sage", "Saye", "Scout", "Sea", "Shal", "Shae", "Shale", "Shan", "Shay", "Shaye", "Shel", "Shelle", "Shrike", "Skye", "South", "Starre", "Swan", "Swaye", "Syd", "Syl", "Taff", "Tal", "Tashe", "Teek", "Teel", "Tass", "Tesse", "Tish", "Vi", "West", "Winn", "Wysp", "Wenne", "Wrenne", "Wy", "Zaye"} } } },
-                                        { 2, { {1, { "A", "Ae", "Ai", "Al", "Am", "An", "Ash", "Ba", "Be", "Bi", "Ca", "Cae", "Ce", "Cen", "Cal", "Cha", "Chal", "Che", "Chel", "Cre", "Da", "De", "Del", "E", "Ei", "El", "Fa", "Fay", "Fae", "Fe", "Fea", "Fen", "Fey", "Fi", "Ga", "Gae", "Ge", "Gi", "Gie", "I", "Ie", "Je", "Ji", "Ka", "Kal", "Ke", "Kel", "Kem", "Ki", "Kie", "Key", "La", "Li", "Lu", "Ly", "Ma", "Mah", "Mar", "Mae", "Me", "Mea", "Mi", "Mie", "Mier", "Mir", "Na", "Ne", "O", "Pa", "Pae", "Pe", "Pi", "Ni", "Sa", "Se", "Sea", "Sha", "Shae", "Shan", "She", "Shee", "Sza", "Szi", "Ta", "Tah", "Tal", "Te", "Tea", "Tel", "Tem", "Tey", "Tha", "The", "Thi", "Thu", "Ti", "Tie", "Til", "Tra", "Tre", "Tri", "Tu", "U", "Vi", "Ve", "Wen", "Xi", "Ya", "Yu"} },
-                                               {2, { "a", "ba", "ca", "cea", "cey", "ci", "cie", "cy", "da", "dea", "di", "dia", "die", "dy", "ea", "fa", "ka", "ki", "kie", "key", "kha", "kka", "la", "laa", "lan", "las", "lea", "lenne", "ley", "lha", "li", "lia", "lie", "linne", "lis", "lise", "lisse", "lsa", "lse", "lsie", "lsey", "ly", "lya", "lyse", "lysse", "ma", "me", "mea", "mey", "mi", "mie", "my", "na", "nae", "nea", "ni", "nia", "nie", "ney", "ny", "phne", "ra", "rae", "rai", "re", "rea", "ri", "ria", "rie", "ry", "ryn", "sa", "sha", "she", "shi", "shie", "shy", "se", "sey", "si", "sie", "ssa", "ta", "tie", "ty", "va", "vie", "vy", "ya", "xa", "xe", "xi", "xie", "za", "zie", "zza"
+  { CreatureSex::CREATURE_SEX_FEMALE, { { 1, { {1, { "Aenn", "Ash", "Brig", "Bae", "Bea", "Belle", "Blue", "Bron", "Brie", "Bree", "Brea", "Cass", "Cat", "Catte", "Cea", "Cey", "Crea", "Cresse", "Cwen", "Dove", "Elf", "Fae", "Fay", "Fey", "Ferne", "Gaile", "Grace", "Gwen", "Hail", "Hil", "Hild", "Hilde", "Hope", "Hyld", "Ia", "Jade", "Jane", "Jass", "Jil", "Joyce", "Joye", "Jy", "Kat", "Joye", "Kai", "Kess", "Kell", "Kim", "Kish", "Lark", "Leah", "Lesse", "Lil", "Lish", "Liss", "Liv", "Lune", "Ly", "Lyn", "Mab", "Maeve", "Mer", "Mere", "Nan", "Nea", "Ness", "Nin", "Page", "Pea", "Rae", "Rax", "Ros", "Rhenne", "Rue", "Sage", "Saye", "Scout", "Sea", "Shal", "Shae", "Shale", "Shan", "Shay", "Shaye", "Shel", "Shelle", "Shrike", "Skye", "South", "Starre", "Swan", "Swaye", "Syd", "Syl", "Taff", "Tal", "Tashe", "Teek", "Teel", "Tass", "Tesse", "Tish", "Vi", "West", "Winn", "Wysp", "Wenne", "Wrenne", "Wy", "Wynne", "Zaye"} } } },
+                                        { 2, { {1, { "A", "Ae", "Ael", "Ai", "Al", "Am", "An", "Ash", "Ba", "Be", "Bi", "Ca", "Cae", "Ce", "Cea", "Cen", "Cal", "Cha", "Chal", "Che", "Chel", "Cre", "Da", "Dal", "De", "Del", "E", "Ei", "El", "Fa", "Fal", "Fay", "Fae", "Fe", "Fea", "Fen", "Fey", "Fi", "Ga", "Gae", "Ge", "Gi", "Gie", "I", "Ie", "Je", "Ji", "Ka", "Kae", "Kal", "Ke", "Kel", "Kem", "Ki", "Kie", "Key", "La", "Li", "Lu", "Ly", "Ma", "Mah", "Mar", "Mae", "Me", "Mea", "Mi", "Mie", "Mier", "Mir", "Na", "Ne", "Nea", "Ni", "Ny", "O", "Pa", "Pae", "Pe", "Pea", "Pi", "Ni", "Sa", "Se", "Sea", "Sha", "Shae", "Shan", "She", "Shee", "Shi", "Sza", "Szi", "Ta", "Tah", "Tal", "Te", "Tea", "Tel", "Tem", "Tey", "Tha", "The", "Thi", "Thu", "Ti", "Tie", "Til", "Tra", "Tre", "Tri", "Tu", "U", "Vi", "Ve", "We", "Wen", "Xi", "Y", "Ya", "Yu"} },
+                                               {2, { "a", "ba", "baea", "bea", "ca", "caea", "cea", "cey", "ci", "cie", "cy", "da", "daea", "dea", "di", "dia", "die", "dy", "ea", "fa", "faea", "fea", "ga", "gaea", "gea", "gie", "gy", "ka", "kaea", "kea", "ki", "kie", "key", "kha", "kka", "la", "laa", "lan", "las", "lea", "lenne", "ley", "lha", "li", "lii", "lia", "lie", "linne", "lis", "lise", "lisse", "lsa", "lse", "lsie", "lsey", "ly", "lya", "lyse", "lysse", "ma", "maea", "me", "mea", "mey", "mi", "mie", "my", "na", "naea", "nae", "nea", "ni", "nia", "nie", "ney", "ny", "phne", "ra", "rae", "rai", "re", "rea", "ri", "ria", "rie", "ry", "ryn", "sa", "sha", "she", "shi", "shie", "shy", "se", "sey", "si", "sie", "ssa", "ta", "tie", "ty", "va", "vie", "vy", "ya", "xa", "xe", "xi", "xie", "za", "zea", "zie", "zza"
                                                } } } } } }
 };
 
 const map<int, vector<string>> Naming::settlement_syllables =
 {
   {
-    { 1, { "Ad", "Adz", "Aed", "Aer", "Al", "Ak", "Alt", "Am", "Amn", "An", "Ap", "Ax", "Bac", "Bak", "Ban", "Bel", "Cad", "Cam", "Cael", "Caer", "Dam", "Dan", "Dar", "Den", "Dip", "El", "Ex", "Fan", "Far", "Gan", "Gel", "Gil", "Gon", "Had", "Hal", "Han", "Har", "Hear", "Hur", "Ix", "Ip", "Kal", "Kan", "Kat", "Ket", "Kit", "Ox", "Pad", "Pan", "Ran", "Tam", "Tan", "Tar", "Tet", "Sar", "Scar", "Skar", "Star", "Ux", "Var", "Vid", "Vir", "Yad", "Yan", "Yar", "Zo", "Zu", "Zy"}},
-    { 2, { "a", "al", "ae", "ar", "e", "el", "er", "i", "ii", "da", "dae", "de", "di", "do", "du", "ga", "gae", "ge", "gi", "gil", "go", "la", "lae", "le", "li", "lo", "o", "or", "ra", "rae", "re", "ri", "ro", "ru", "sa", "sae", "se", "si", "so", "su", "ta", "te", "to"} },
-    { 3, { "bad", "bae", "bakh", "bal", "bag", "ban", "bar", "bat", "bek", "bax", "bex", "bil", "can", "car", "crae", "dae", "dan", "den", "dex", "dil", "dix", "dor", "el", "fil", "gal", "gan", "gap", "gel", "gen", "gil", "gon", "ham", "hem", "kha", "kam", "kan", "kar", "tae", "tam", "tan", "tap", "tax", "tem", "ya", "yar", "yil", "za", "ze"}}
+    { 1, { "Ach", "Ad", "Adz", "Aed", "Ael", "Aer", "Al", "Ak", "Am", "Amn", "An", "Ann", "Ap", "Ar", "Arc", "Ard", "Ast", "At", "Atn", "Au", "Ax", "Az", "Bac", "Bak", "Bal", "Bek", "Ban", "Bel", "Cad", "Ced", "Cam", "Cael", "Caer", "Dam", "Dan", "Dar", "Den", "Dip", "El", "Ex", "Ey", "Eye", "Eyx", "Fan", "Far", "Gael", "Gan", "Gel", "Gil", "Gon", "Had", "Hal", "Han", "Har", "Hear", "Hu", "Hur", "Ix", "Ip", "Kal", "Kam", "Kan", "Kat", "Ket", "Kit", "Ox", "Pad", "Pan", "Ran", "Tam", "Tan", "Tar", "Tet", "Sar", "Scar", "Sel", "Sen", "Skar", "Star", "Ux", "Van", "Var", "Ven", "Vid", "Vir", "Y", "Yad", "Yan", "Yar", "Yd", "Ytt", "Zo", "Zu", "Zy"}},
+    { 2, { "a", "e", "i", "o", "u"}},
+    { 3, { "bad", "bae", "bakh", "bal", "bag", "ban", "bar", "bat", "bax", "beck", "bek", "bel", "bey", "bil", "cach", "cal", "can", "car", "crae", "dae", "dan", "den", "dex", "dil", "dix", "dor", "el", "fil", "gal", "gan", "gap", "gel", "gen", "gil", "gon", "ham", "han", "hel", "hem", "hen", "kha", "kam", "kan", "kar", "lan", "lin", "mar", "mi", "na", "nae", "nar", "ni", "ram", "ran", "tae", "tam", "tan", "tap", "tar", "tax", "tem", "wan", "well", "wen", "win", "ya", "yan", "yar", "ye", "yil", "za", "zar", "ze"}}
   }
 };
+
+const vector<string> Naming::kell_prefixes = { "Alt", "Caer", "Yl", "Yg", "Yr"};
 
 Naming::Naming()
 {
@@ -162,11 +164,19 @@ string Naming::generate_settlement_name()
 {
   string settlement_name;
 
-  if (RNG::percent_chance(7))
+  if (RNG::percent_chance(4))
+  {
+    settlement_name = generate_saint_settlement_name();
+  }
+  else if (RNG::percent_chance(4))
+  {
+    settlement_name = generate_single_settlement_name();
+  }
+  else if (RNG::percent_chance(6))
   {
     settlement_name = generate_locative_settlement_name();
   }
-  else if (RNG::percent_chance(15))
+  else if (RNG::percent_chance(13))
   {
     settlement_name = generate_possessive_settlement_name();
   } 
@@ -180,6 +190,42 @@ string Naming::generate_settlement_name()
   }
 
   return settlement_name;
+}
+
+string Naming::generate_saint_settlement_name()
+{
+  string saint_name = generate_name(CreatureSex::CREATURE_SEX_NOT_SPECIFIED);
+  string name = StringTable::get(SettlementTextKeys::SAINT_SETTLEMENT_FORMAT);
+
+  if (RNG::percent_chance(20))
+  {
+    vector<string> saint_names = String::create_string_vector_from_csv_string(StringTable::get(SettlementTextKeys::SAINT_ADDITIONAL_SETTLEMENT_FORMAT));
+    
+    if (!saint_names.empty())
+    {
+      name = saint_names.at(RNG::range(0, saint_names.size() - 1));
+    }
+  }
+
+  boost::replace_first(name, "%s", saint_name);
+
+
+  return name;
+}
+
+string Naming::generate_single_settlement_name()
+{
+  string name = StringTable::get(SettlementTextKeys::SINGLE_SETTLEMENT_FORMAT);
+  vector<string> single_prefixes = String::create_string_vector_from_csv_string(StringTable::get(SettlementTextKeys::SETTLEMENT_NAME_SINGLE_PREFIX));
+  vector<string> single_suffixes = String::create_string_vector_from_csv_string(StringTable::get(SettlementTextKeys::SETTLEMENT_NAME_SINGLE_SUFFIX));
+
+  string prefix = single_prefixes.at(RNG::range(0, single_prefixes.size() - 1));
+  string suffix = single_suffixes.at(RNG::range(0, single_suffixes.size() - 1));
+
+  boost::replace_first(name, "%s1", prefix);
+  boost::replace_first(name, "%s2", suffix);
+
+  return name;
 }
 
 string Naming::generate_locative_settlement_name()
@@ -233,19 +279,38 @@ string Naming::generate_base_random_settlement_name()
 {
   string rand_name;
   int num_syllables = RNG::range(1, 3);
+  bool hyphen = false;
 
   for (int i = 1; i <= num_syllables; i++)
   {
     if (i == 1 || RNG::percent_chance(70))
     {
-      const vector<string>& syllables = settlement_syllables.at(i);
-      string syl = syllables.at(RNG::range(0, syllables.size() - 1));
+      vector<string> syllables = settlement_syllables.at(i);
 
-      if (i == 2 && num_syllables == 2 && RNG::percent_chance(10))
+      if (num_syllables == 1 && RNG::percent_chance(10))
       {
-        rand_name += "-";
+        rand_name += kell_prefixes.at(RNG::range(0, kell_prefixes.size() - 1)) + " ";
       }
 
+      if (i == 2 && num_syllables == 2 && RNG::percent_chance(5))
+      {
+        rand_name += "-";
+        hyphen = true;
+      }
+
+      // Some hypenated names
+      if (num_syllables == 2 && hyphen && RNG::percent_chance(20))
+      {
+        syllables = settlement_syllables.at(1);
+      }
+
+      // Sometimes skip the middle syllable.
+      if (num_syllables == 3 && i == 2 && RNG::percent_chance(40))
+      {
+        continue;
+      }
+
+      string syl = syllables.at(RNG::range(0, syllables.size() - 1));
       rand_name += syl;
     }
   }

@@ -26,6 +26,8 @@ class Naming
 
     static std::string create_name(const int num_syllables, const std::map<int, std::map<int, std::vector<std::string>>>& syl_map_entry);
 
+    static std::string generate_saint_settlement_name();
+    static std::string generate_single_settlement_name();
     static std::string generate_locative_settlement_name();
     static std::string generate_possessive_settlement_name();
     static std::string generate_descriptive_settlement_name();
@@ -39,4 +41,5 @@ class Naming
     // Map from number of syllables to potential syllables for each place.
     static const SyllableMap syllables;
     static const std::map<int, std::vector<std::string>> settlement_syllables;
+    static const std::vector<std::string> kell_prefixes;
 };

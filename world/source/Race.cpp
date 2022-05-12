@@ -17,6 +17,7 @@ const string RaceID::RACE_ID_UNKNOWN = "_unknown";
 // Set the bare defaults for each race.
 Race::Race()
 : user_playable(false)
+, umbrella(false)
 , sex(CreatureSex::CREATURE_SEX_NA)
 , pack_multiplier(1)
 , slayable(false)
@@ -92,6 +93,16 @@ void Race::set_user_playable(const bool playable)
 bool Race::get_user_playable() const
 {
   return user_playable;
+}
+
+void Race::set_umbrella_race(const bool new_umbrella_race)
+{
+  umbrella = new_umbrella_race;
+}
+
+bool Race::get_umbrella_race() const
+{
+  return umbrella;
 }
 
 void Race::set_sex(const CreatureSex new_sex)

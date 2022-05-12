@@ -36,6 +36,7 @@ void CreatureDeathManager::die() const
     add_creature_death_messages(attacking_creature, dead_creature);
     run_death_event(dead_creature, attacking_creature, map);
     MapUtils::remove_creature(map, dead_creature);
+    remove_quests_from_player(map, dead_creature);
     remove_creature_equipment_and_drop_inventory_on_tile(map, dead_creature, ground);
     potentially_generate_random_drop(attacking_creature, dead_creature, ground);
     potentially_generate_corpse(attacking_creature, dead_creature, ground);
@@ -71,6 +72,35 @@ void CreatureDeathManager::add_creature_death_messages(CreaturePtr attacking_cre
 
   manager.add_new_message(death_message);
   manager.send();
+}
+
+// If the creature has given any quests, be sure to remove them from the
+// player.
+void CreatureDeathManager::remove_quests_from_player(MapPtr map, CreaturePtr dead_creature) const
+{
+  if (map != nullptr && dead_creature != nullptr)
+  {
+    Game& game = Game::instance();
+    Quests& quests = game.get_quests_ref();
+    QuestMap in_progress = quests.get_in_progress_quests();
+    vector<string> active_quests_to_remove;
+
+    for (const auto& quest_pair : in_progress)
+    {
+      Quest q = quest_pair.second;
+      string qm_id = q.get_questmaster_id();
+
+      if (qm_id == dead_creature->get_id())
+      {
+        active_quests_to_remove.push_back(q.get_quest_id());
+      }
+    }
+
+    for (const auto& remove_id : active_quests_to_remove)
+    {
+      quests.remove_active_quest(remove_id);
+    }
+  }
 }
 
 // Remove the creature's equipment, adding it to the creature's inventory.
@@ -173,7 +203,7 @@ void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr attackin
     }
   }
 
-  for (const ItemPtr i : generated_items)
+  for (const auto& i : generated_items)
   {
     if (i != nullptr)
     {

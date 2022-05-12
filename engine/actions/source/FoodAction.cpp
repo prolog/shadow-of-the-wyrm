@@ -104,8 +104,9 @@ bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInv
   bool turn_advanced = false;
 
   ConsumablePtr item_as_consumable = std::dynamic_pointer_cast<Consumable>(food);
+  MapPtr map = Game::instance().get_current_map();
 
-  if (food)
+  if (food != nullptr && map != nullptr)
   {
     ConsumableAction cm;
 
@@ -136,6 +137,9 @@ bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInv
         MapPtr current_map = Game::instance().get_current_map();
         Game::instance().get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_CANNIBALISM);
       }
+
+      string corpse_base_creature_id = food->get_additional_property(ConsumableConstants::CORPSE_BASE_CREATURE_ID);
+      MapUtils::enrage_nearby_creatures(map, creature, corpse_base_creature_id, corpse_race_id);
 
       // Likewise, eating undead is decidedly not kosher for many.
       if (!corpse_race_id.empty())

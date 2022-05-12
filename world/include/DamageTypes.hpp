@@ -20,6 +20,19 @@ enum struct DamageType
   DAMAGE_TYPE_MAX = 11
 };
 
+constexpr auto CDAMAGE_TYPE_SLASH = 0;
+constexpr auto CDAMAGE_TYPE_PIERCE = 1;
+constexpr auto CDAMAGE_TYPE_POUND = 2;
+constexpr auto CDAMAGE_TYPE_HEAT = 3;
+constexpr auto CDAMAGE_TYPE_COLD = 4;
+constexpr auto CDAMAGE_TYPE_ACID = 5;
+constexpr auto CDAMAGE_TYPE_POISON = 6;
+constexpr auto CDAMAGE_TYPE_HOLY = 7;
+constexpr auto CDAMAGE_TYPE_SHADOW = 8;
+constexpr auto CDAMAGE_TYPE_ARCANE = 9;
+constexpr auto CDAMAGE_TYPE_LIGHTNING = 10;
+
+
 enum struct DamageCategory
 {
   DAMAGE_CATEGORY_NULL = -1,

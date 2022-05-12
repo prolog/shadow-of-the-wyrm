@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include "MapUtils.hpp"
 #include "XMLWorldMapReader.hpp"
 
 using namespace std;
@@ -82,6 +83,11 @@ void XMLWorldMapReader::read_row(MapPtr map, const XMLNode& row_node)
           // Insert into map
           TilePtr tile = mapper.create_tile(ctile);
           map->insert(row, col, tile);
+
+          if (tile != nullptr && tile->get_tile_type() == TileType::TILE_TYPE_VILLAGE)
+          {
+            MapUtils::add_preset_village(map, row, col);
+          }
 
           col++;
         }

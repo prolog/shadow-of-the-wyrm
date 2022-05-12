@@ -67,7 +67,7 @@ bool HealingEffect::heal(CreaturePtr creature, const double healing_multiplier) 
     }
   }
 
-  string leader_id = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+  string leader_id = creature->get_leader_id();
 
   if (effect_identified && !leader_id.empty() && originator != nullptr)
   {

@@ -198,7 +198,9 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 
             if (pack_creature != nullptr)
             {
-              if (MapUtils::is_tile_available_for_creature(pack_creature, tile) && RNG::percent_chance(PACK_TILE_CHANCE))
+              if (RNG::percent_chance(PACK_TILE_CHANCE) &&
+                  MapUtils::is_tile_available_for_creature(pack_creature, tile) && 
+                 !tmc.get_confirmation_details(pack_creature, map, nullptr, adj, tile, adj).first)
               {
                 addl_pack_creatures++;
                 add_creature_to_map(game, pack_creature, map, manager, base_danger_level, adj.first, adj.second, current_creatures_placed, creatures_generated);

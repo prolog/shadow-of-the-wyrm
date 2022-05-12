@@ -123,6 +123,18 @@ TEST(SW_World_Statistic, IsFull)
   EXPECT_FALSE(stat.get_full());
 }
 
+TEST(SW_World_Statistic, get_percent)
+{
+  Statistic stat(50);
+  vector<pair<int, int>> val_and_expected = { {50, 100}, {25, 50}, {10, 20}, {100, 200} };
+
+  for (const auto& ve : val_and_expected)
+  {
+    stat.set_current(ve.first);
+    EXPECT_EQ(ve.second, stat.get_percent());
+  }
+}
+
 TEST(SW_World_Statistic, BaseValue)
 {
   Statistic stat;

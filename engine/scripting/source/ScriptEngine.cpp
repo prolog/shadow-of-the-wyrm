@@ -301,6 +301,18 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CMAP_TYPE_UNDERWORLD);
   lua_exportConst(ls, CMAP_TYPE_UNDERWATER);
   lua_exportConst(ls, CMAP_TYPE_COSMOS);
+
+  lua_exportConst(ls, CDAMAGE_TYPE_SLASH);
+  lua_exportConst(ls, CDAMAGE_TYPE_PIERCE);
+  lua_exportConst(ls, CDAMAGE_TYPE_POUND);
+  lua_exportConst(ls, CDAMAGE_TYPE_HEAT);
+  lua_exportConst(ls, CDAMAGE_TYPE_COLD);
+  lua_exportConst(ls, CDAMAGE_TYPE_ACID);
+  lua_exportConst(ls, CDAMAGE_TYPE_POISON);
+  lua_exportConst(ls, CDAMAGE_TYPE_HOLY);
+  lua_exportConst(ls, CDAMAGE_TYPE_SHADOW);
+  lua_exportConst(ls, CDAMAGE_TYPE_ARCANE);
+  lua_exportConst(ls, CDAMAGE_TYPE_LIGHTNING);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)

@@ -63,6 +63,16 @@ MapPtr Generator::generate_and_initialize(const int danger, const Dimensions& di
   initialize(map, danger_level);
   create_properties_and_copy_to_map(map);
   map->set_map_type(get_map_type());
+
+  if (map->get_name_sid().empty())
+  {
+    string map_name = get_additional_property(TileProperties::TILE_PROPERTY_NAME);
+
+    if (!map_name.empty())
+    {
+      map->set_name_sid(map_name);
+    }
+  }
     
   return map;
 }
@@ -122,7 +132,8 @@ void Generator::create_entities(MapPtr map, const int danger_level, const bool c
     MapCreatureGenerator mcg;
     creature_details = mcg.generate_creatures(map, danger_level, additional_properties);
 
-    if (std::get<1>(creature_details) == 0)
+    if (std::get<1>(creature_details) == 0 && 
+        MapUtils::get_hostile_creatures(CreatureID::CREATURE_ID_PLAYER, map).empty())
     {
       IMessageManager& manager = MM::instance();
       manager.add_new_message(StringTable::get(TextKeys::NO_CREATURES_GENERATED));
@@ -737,6 +748,12 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
   // Set any special feature messages that should be displayed the first time
   // the player enters a level.
   set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_FEATURE_ENTRY_TEXT_SIDS, String::create_csv_from_string_vector(feature_entry_text_sids));
+
+  string divine_forbidden = get_additional_property(MapProperties::MAP_PROPERTIES_DIVINE_FORBIDDEN);
+  if (!divine_forbidden.empty())
+  {
+    set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_DIVINE_FORBIDDEN, divine_forbidden);
+  }
 }
 
 void Generator::set_property_to_generator_and_map(MapPtr map, const string& prop, const string& val)

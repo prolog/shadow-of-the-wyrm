@@ -699,22 +699,21 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
   bool user_and_character_exist = true;
   StartingLocation sl = ccd.get_starting_location();
   string creature_synopsis = TextMessages::get_character_creation_synopsis(ccd.get_sex(), selected_race, selected_class, deity, &sl);
+  string default_name = game.get_settings_ref().get_setting(Setting::DEFAULT_NAME);
+  bool username_is_character_name = String::to_bool(game.get_settings_ref().get_setting(Setting::USERNAME_IS_CHARACTER_NAME));
   string warning_message;
 
   while (user_and_character_exist)
   {
     Settings& settings = game.get_settings_ref();
-    bool use_default_name = settings.get_setting_as_bool(Setting::USE_DEFAULT_NAME);
-    string default_name = settings.get_setting(Setting::DEFAULT_NAME);
-    bool username_is_character_name = String::to_bool(settings.get_setting(Setting::USERNAME_IS_CHARACTER_NAME));
     
-    if (username_is_character_name)
+    if (username_is_character_name && !warning_message.empty())
     {
       name = Environment::get_user_name();
     }
     else
     {
-      if (use_default_name == false)
+      if (default_name.empty() || !warning_message.empty())
       {
         NamingScreen naming(display, creature_synopsis, warning_message);
         name = naming.display();

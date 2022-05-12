@@ -68,10 +68,13 @@ STONE_BLOCK_ID = "_stone_block"
 PEACH_PIT_ID = "_peach_pit"
 CHERRY_PIT_ID = "_cherry_pit"
 SKIN_ID = "_skin"
+WAYFARER_CLOTHES_ID = "wayfarer_clothes"
+SPEAR_ID = "spear"
 LEATHER_HELM_ID = "leather_helm"
 LEATHER_BOOTS_ID = "leather_boots"
 HEAVY_CLOAK_ID = "heavy_cloak"
 BREAD_ID = "bread"
+FILIGREED_RING_ID = "filigreed_ring"
 RING_FLAME_ID = "ring_flame"
 RING_ICE_ID = "ring_ice"
 RING_ACID_ID = "ring_acid"
@@ -131,6 +134,9 @@ THATCHER_ID = "_thatcher"
 -- Item properties
 ITEM_PROPERTIES_SUPPRESS_ITEM_GENERATION_ON_DESTRUCTION = "no_item_on_destr"
 
+-- Map Properties
+MAP_PROPERTIES_DIVINE_FORBIDDEN = "MAP_PROPERTIES_DIVINE_FORBIDDEN"
+
 -- Quest constants
 CREATURE_QUEST_GUID = "creature_quest_guid"
 QUEST_ACEY_STOLEN_GOODS_COMPLETE = "quest_acey_stolen_goods_complete"
@@ -141,6 +147,8 @@ QUEST_STONEHEIM_RAID = "quest_stoneheim_raid_in_progress"
 QUEST_STONEHEIM_RAID_INITIATED = "quest_stoneheim_raid_initiated"
 QUEST_STONEHEIM_RAID_CREATURE = "quest_stoneheim_raid_creature"
 QUEST_CARCASSIAN_RECRUITER_REBEL_CREATURE = "quest_carcassian_recruiter_rebel_creature"
+QUEST_CARCASSIA_LAM_GUARD = "quest_carcassia_lam_guard"
+QUEST_IN_PROGRESS = "quest_in_progress"
 
 -- Memberships
 WITCHLINGS_MEMBERSHIP_ID = "witchlings"

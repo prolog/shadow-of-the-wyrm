@@ -60,6 +60,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool user_playable = XMLUtils::get_child_node_bool_value(race_node, "UserPlayable");
     race->set_user_playable(user_playable);
 
+    bool umbrella_race = XMLUtils::get_child_node_bool_value(race_node, "UmbrellaRace");
+    race->set_umbrella_race(umbrella_race);
+
     XMLNode sex_node = XMLUtils::get_next_element_by_local_name(race_node, "Sex");
     if (!sex_node.is_null())
     {
