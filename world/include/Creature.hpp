@@ -250,6 +250,9 @@ class Creature : public ISerializable
     std::unique_ptr<DecisionStrategy> get_decision_strategy_uptr();
     void set_leader_and_at_ease(const std::string& leader_id);
     void remove_leader();
+    std::string get_leader_id() const;
+    bool has_leader() const;
+    bool is_leader(std::shared_ptr<Creature> creature) const;
 
     // Is the creature hostile towards a given creature's ID?
     bool hostile_to(const std::string& creature_id);

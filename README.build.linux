@@ -11,7 +11,7 @@ start, ensure you have your distribution's developer packages for:
 - zlib-1.2.11
 - ncurses or equivalent
 - Lua 5.1
-- SDL 2.0.12
+- SDL 2.0.20
 
 The premake4 build script works for Fedora.  Other distros may require 
 updates to either the premake script or the generated makefiles to get 
@@ -32,7 +32,7 @@ include directories in the makefile, and also to set the appropriate link
 library.  For example, if the Lua 5.1 headers were in /usr/local/lua5.1
 and you wanted to link against lua5.1 instead of lua, you would use:
 
-premake4 --lua_include=/usr/local/lua5.1 --lua_link=lua5.1 gmake
+premake4 --lua_include=/usr/include/lua-5.1 --lua_link=lua-5.1 gmake
 
 The Linux build has been tested using g++.
 

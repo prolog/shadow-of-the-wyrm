@@ -1,3 +1,74 @@
+Shadow of the Wyrm v1.4.5 "Fuenllana"
+- Version declared March 27, 2022.  Version finalized May 12, 2022.
+
+- Created a splash screen for curses mode.
+
+- Killing a questmaster will now remove their quests from your active list
+  (oooby).
+
+- Improving items either by enchanting or smithing now has a very small
+  chance to add extra speed.
+
+- Creatures will now consider moving through traps if they think the damage
+  won't be too much (Josh Engdahl).
+
+- Added another poem for the title screen.
+
+- Removed the use_default_name setting - this was unnecessary and the game
+  will now just check to see if the default_name setting is populated.
+
+- When calculating ranged damage, the effect bonus of the launcher now
+  gets added to the total.
+
+- Meat now floats, so you can now get eg corpses generated on water tiles.
+
+- There is now an optional setting to prompt prior to quest completion 
+  (Bentwing).
+
+- Created a new map flag, "divine forbidden".  This flag blocks NPCs not
+  considering other NPCs threats if they have the same deity, and is used
+  in the shrines.
+
+- Re-added traps to caverns and mines (sewers will remain trap-free).
+
+- Hostile creatures no longer follow and take orders.
+
+- Additional person/place names.
+
+- Additional townsfolk quests.
+
+- Updated creature description via 'x' so that Friendly and Follower show
+  outside the statuses section (since they're not technically statuses).
+
+- Various typo fixes/text improvement.
+
+- Sewers can now have drainage basins.
+
+- Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - When default_name was set, and you already had a character of that name,
+    the game would hang (Bentwing).
+
+  - Fixed the same issue with the username_is_character_name setting.
+
+  - Traps weren't generating in dungeons (Bentwing).
+
+  - NPCs in corridors might try to cast a refective beam in such a way that
+    they thought it would hit the target, but it ends up just bouncing and
+    targetting themselves (Bentwing).
+
+  - Air-breathers could be generated on water (Bentwing).
+
+  - Cosmos generation sometimes caused the game to hang in SDL mode.
+
+  - The "It feels peaceful here." message wasn't checking if there were any
+    pre-existing hostile creatures.
+
+  - Random villages' names weren't being set correctly, causing issues on the
+    quest list screen when receiving quests from NPCs in those villages.
+
 Shadow of the Wyrm v1.4.3 "da Milano"
 - Version declared December 24, 2021.  Version finalized March 27, 2022.
 
@@ -100,7 +171,7 @@ Shadow of the Wyrm v1.4.3 "da Milano"
   randomize their colour between brown/grey/black/white.
 
 - The manual, keybindings, and confirmation text now make it more clear that
-  quitting will abandon your character (Echo38).
+  quitting will abandon your character (Bentwing).
 
 - New creatures: thatcher.
 
@@ -425,10 +496,10 @@ Shadow of the Wyrm v1.3.3 "de Sarlat"
 - Bug fixes:
 
   - When automelee was off, the player was being prompted when NPCs were
-    attacking at range (Echo38).
+    attacking at range (Bentwing).
 
   - Digging gave a weird message when you used it over another creature
-    (Echo38).
+    (Bentwing).
 
   - Hide whips weren't being suppressed during regular item generation (Red).
 
@@ -436,14 +507,14 @@ Shadow of the Wyrm v1.3.3 "de Sarlat"
     max value.
   
   - Fireball traps were leaving fire bombs, when these had item destruction
-    percentages that should've prevented that (Echo38).
+    percentages that should've prevented that (Bentwing).
 
 Shadow of the Wyrm v1.3.2 "del Liuto"
 - Version declared April 23, 2021.  Version finalized June 13, 2021.
 
 - Default hair and eye colour can now be set in swyrm.ini, as well as an
   option that brings up a menu for each, in case you want to select these
-  values for each character (Echo38).
+  values for each character (Bentwing).
 
 - Damage messages will now be displayed in red when you are criticalled and 
   take damage, when you take >= 20% of your max HP, or when your HP falls 
@@ -506,7 +577,7 @@ Shadow of the Wyrm v1.3.2 "del Liuto"
 
   - The danger level of wilderness tiles was always intended to scale the
     further you got from your starting location, but due to a casting bug,
-    the danger was always being defaulted to 1 instead (Echo38).
+    the danger was always being defaulted to 1 instead (Bentwing).
 
   - The value of the saved ASCII mode setting wasn't being properly set 
     after loading a saved game, reverting things back to whatever the 

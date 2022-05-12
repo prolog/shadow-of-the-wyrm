@@ -43,6 +43,12 @@ bool DecisionStrategy::operator==(const DecisionStrategy& ds) const
   return result;
 }
 
+// Get whether to move to a dangerous tile - generally, no.
+bool DecisionStrategy::get_move_to_dangerous_tile(MapPtr map, CreaturePtr creature, TilePtr tile) const
+{
+  return false;
+}
+
 // Get the threats - used to determine a course of action.
 ThreatRatings& DecisionStrategy::get_threats_ref()
 {

@@ -3,7 +3,7 @@
 Quest get_test_quest();
 Quest get_test_quest()
 {
-  Quest q("a", "b", {}, "c", "map", "d", {});
+  Quest q("a", "b", {}, "c", "d", "map", "e", {});
   return q;
 }
 
@@ -76,9 +76,9 @@ TEST(SW_World_Quests, saveload)
   Quests q;
   Quests q_deser;
 
-  Quest q1("a", "b", {}, "c", "map", "d", {});
-  Quest q2("e", "f", {}, "g", "map2", "h", {});
-  Quest q3("i", "j", {}, "k", "map3", "l", {});
+  Quest q1("a", "b", {}, "c", "d", "map", "e", {});
+  Quest q2("f", "g", {}, "h", "i", "map2", "j", {});
+  Quest q3("k", "l", {}, "m", "n", "map3", "o", {});
 
   q.add_new_quest("q1", q1);
   q.add_new_quest("q2", q2);

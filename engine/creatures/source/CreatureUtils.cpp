@@ -908,7 +908,7 @@ CreatureMap CreatureUtils::get_followers(CreaturePtr creature, MapPtr map)
 
     for (const auto& c_pair : creatures)
     {
-      if (c_pair.second && c_pair.second->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == c_id)
+      if (c_pair.second && c_pair.second->get_leader_id() == c_id)
       {
         followers.insert(c_pair);
       }
@@ -932,7 +932,7 @@ CreatureMap CreatureUtils::get_followers_in_fov(CreaturePtr creature)
 
       for (const auto& c_pair : creatures)
       {
-        if (c_pair.second && c_pair.second->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == creature->get_id())
+        if (c_pair.second && c_pair.second->get_leader_id() == creature->get_id())
         {
           followers.insert(c_pair);
         }
@@ -1061,7 +1061,7 @@ void CreatureUtils::set_leadership(CreaturePtr creature, const string& leader_id
       {
         if (c_pair.second != nullptr)
         {
-          if (c_pair.second->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == creature->get_id())
+          if (c_pair.second->get_leader_id() == creature->get_id())
           {
             set_leadership(c_pair.second, leader_id, map, cur_pass + 1);
           }

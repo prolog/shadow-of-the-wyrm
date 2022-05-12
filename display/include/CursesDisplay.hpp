@@ -133,4 +133,5 @@ class CursesDisplay : public Display
     // Used to process the prompt
     CursesPromptProcessor prompt_processor;
     bool can_use_colour;
+    bool initialized;
 };

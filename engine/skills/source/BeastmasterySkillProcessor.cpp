@@ -86,7 +86,7 @@ void BeastmasterySkillProcessor::tame_creatures(CreaturePtr taming_creature, con
 
         if (to_tame != nullptr)
         {
-          string leader_id = to_tame->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+          string leader_id = to_tame->get_leader_id();
 
           if (leader_id.empty() || (leader_id != taming_creature->get_id()))
           {

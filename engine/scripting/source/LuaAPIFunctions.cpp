@@ -186,6 +186,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_num_uniques_killed_global", get_num_uniques_killed_global);
   lua_register(L, "is_unique", is_unique);
   lua_register(L, "add_object_to_player_tile", add_object_to_player_tile);
+  lua_register(L, "add_object_with_resists_to_player_tile", add_object_with_resists_to_player_tile);
+  lua_register(L, "add_objects_to_player_tile", add_objects_to_player_tile);
   lua_register(L, "add_object_to_map", add_object_to_map);
   lua_register(L, "add_object_to_creature", add_object_to_creature);
   lua_register(L, "add_object_on_tile_to_creature", add_object_on_tile_to_creature);
@@ -410,6 +412,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "creature_exists", creature_exists);
   lua_register(L, "set_weather", set_weather);
   lua_register(L, "genocide", genocide);
+  lua_register(L, "genocide_creature", genocide_creature);
   lua_register(L, "generate_ancient_beast", generate_ancient_beast);
   lua_register(L, "generate_hireling", generate_hireling);
   lua_register(L, "generate_adventurer", generate_adventurer);
@@ -441,10 +444,12 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "count_creatures_with_property", count_creatures_with_property);
   lua_register(L, "get_time_of_day", get_time_of_day);
   lua_register(L, "update_creatures", update_creatures);
+  lua_register(L, "get_random_preset_village", get_random_preset_village);
   lua_register(L, "get_random_village", get_random_village);
   lua_register(L, "tokenize", tokenize);
   lua_register(L, "generate_name", generate_name);
   lua_register(L, "remove_chat_script", remove_chat_script);
+  lua_register(L, "get_setting", get_setting);
 }
 
 // Lua API helper functions
@@ -515,15 +520,30 @@ int add_message_with_pause(lua_State* ls)
       manager.clear_if_necessary();
     }
 
-    manager.add_new_message_with_pause(message);
+    bool interactive = (Game::instance().get_loading() == false);
+
+    if (interactive)
+    {
+      manager.add_new_message_with_pause(message);
+    }
+    else
+    {
+      manager.add_new_message(message);
+    }
+
     manager.send();
 
-    // Because this function can only be called in a quest context,
-    // where the speaking player is always assumed to be the player,
-    // directly getting the player and getting its decision is safe
-    // for now.
-    Game& game = Game::instance();
-    game.get_current_player()->get_decision_strategy()->get_confirmation();
+    // Check for interactive - most of the time, this function will be
+    // called in a quest context, and is safe. But it can also be
+    // called when eg generating the cosmos, and we shouldn't try to
+    // get confirmation in these cases. Generators typically run in
+    // their own threads and can't get events when running in SDL
+    // mode.
+    if (interactive)
+    {
+      Game& game = Game::instance();
+      game.get_current_player()->get_decision_strategy()->get_confirmation();
+    }
   }
   else
   {
@@ -835,6 +855,7 @@ int add_new_quest(lua_State* ls)
     string quest_id = lua_tostring(ls, 1);
     string quest_title_sid = se.get_table_str(ls, "quest_title_sid");
     vector<string> quest_title_parameter_sids = String::create_string_vector_from_csv_string(se.get_table_str(ls, "quest_title_parameter_sids"));
+    string questmaster_id = se.get_table_str(ls, "questmaster_id");
     string questmaster_name_sid = se.get_table_str(ls, "questmaster_name_sid");
     string map_name_sid = se.get_table_str(ls, "map_name_sid");
     string quest_description_sid = se.get_table_str(ls, "quest_description_sid");
@@ -844,6 +865,7 @@ int add_new_quest(lua_State* ls)
     Quest new_quest(quest_id, 
                     quest_title_sid, 
                     quest_title_parameter_sids, 
+                    questmaster_id,
                     questmaster_name_sid, 
                     map_name_sid, 
                     quest_description_sid, 
@@ -1050,6 +1072,101 @@ int add_object_to_player_tile(lua_State* ls)
   }
 
   lua_pushboolean(ls, added);
+  return 1;
+}
+
+int add_object_with_resists_to_player_tile(lua_State* ls)
+{
+  bool added = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+
+    if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
+    {
+      CreaturePtr player = game.get_current_player();
+      TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
+
+      string item_id = lua_tostring(ls, 1);
+      string rarray_csv = lua_tostring(ls, 2);
+      vector<string> resists = String::create_string_vector_from_csv_string(rarray_csv);
+
+      // Make sure it's the right format - dtype then resist val.
+      if (resists.size() % 2 == 0)
+      {
+        ItemPtr item = ItemManager::create_item(item_id);
+
+        if (item != nullptr)
+        {
+          Resistances& iresists = item->get_resistances_ref();
+
+          for (size_t i = 0; i < resists.size(); i += 2)
+          {
+            DamageType dtype = static_cast<DamageType>(String::to_int(resists.at(i)));
+            double val = String::to_double(resists.at(i + 1));
+
+            iresists.set_resistance_value(dtype, iresists.get_resistance_value(dtype) + val);
+          }
+        }
+
+        IInventoryPtr items = player_tile->get_items();
+
+        if (items != nullptr)
+        {
+          items->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_object_with_resists_to_player_tile");
+  }
+
+  lua_pushboolean(ls, added);
+  return 1;
+}
+
+// Add a number of objects to the player's tile. IDs are comma separated.
+// This function is really meant to be used for quicker debugging, though
+// it might also work if number of enchants/properties/etc aren't needed.
+int add_objects_to_player_tile(lua_State* ls)
+{
+  int added_cnt = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string object_ids = lua_tostring(ls, 1);
+    vector<string> ids = String::create_string_vector_from_csv_string(object_ids);
+    CreaturePtr player = Game::instance().get_current_player();
+    MapPtr map = Game::instance().get_current_map();
+    TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
+
+    if (player_tile != nullptr)
+    {
+      IInventoryPtr items = player_tile->get_items();
+
+      if (items != nullptr)
+      {
+        for (const string& id : ids)
+        {
+          string obj_id = boost::trim_copy(id);
+          ItemPtr item = ItemManager::create_item(obj_id);
+
+          items->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          added_cnt++;
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_objects_to_player_tile");
+  }
+
+  lua_pushboolean(ls, added_cnt > 0);
   return 1;
 }
 
@@ -2188,7 +2305,7 @@ int remove_creature_from_map(lua_State* ls)
 
     if (!creature_id_or_base.empty())
     {
-      for (const auto creature_pair : creatures)
+      for (const auto& creature_pair : creatures)
       {
         CreaturePtr creature = creature_pair.second;
 
@@ -5485,7 +5602,7 @@ int identify_item_type(lua_State* ls)
 
     if (creature && creature->get_is_player())
     {
-      for (const pair<string, ItemPtr>& item_pair : items)
+      for (const auto& item_pair : items)
       {
         ItemIdentifier iid;
         ItemPtr item = item_pair.second;
@@ -6025,7 +6142,7 @@ int get_nearby_hostile_creatures(lua_State* ls)
     MapPtr view_map = creature->get_decision_strategy()->get_fov_map();
     const CreatureMap& creatures = view_map->get_creatures();
 
-    for (const auto creature_pair : creatures)
+    for (const auto& creature_pair : creatures)
     {
       CreaturePtr view_creature = creature_pair.second;
 
@@ -6184,7 +6301,7 @@ int is_creature_in_view_map(lua_State* ls)
     {
       map<string, CreaturePtr> creatures = creature->get_decision_strategy()->get_fov_map()->get_creatures();
 
-      for (const auto c_pair : creatures)
+      for (const auto& c_pair : creatures)
       {
         if (c_pair.first == map_creature_id)
         {
@@ -8362,6 +8479,7 @@ int set_weather(lua_State* ls)
 // If an argument is given, clear that race ID.
 int genocide(lua_State* ls)
 {
+  int num_removed = 0;
   MapPtr map = Game::instance().get_current_map();
   string race_id;
 
@@ -8383,11 +8501,49 @@ int genocide(lua_State* ls)
           (race_id.empty() || race_id == creature->get_race_id()))
       {
         MapUtils::remove_creature(map, creature);
+        num_removed++;
       }
     }
   }
 
-  return 0;
+  lua_pushboolean(ls, num_removed);
+  return 1;
+}
+
+int genocide_creature(lua_State* ls)
+{
+  int num_removed = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_original_id = lua_tostring(ls, 1);
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      const CreatureMap creatures = map->get_creatures();
+
+      for (auto cr_pair : creatures)
+      {
+        CreaturePtr creature = cr_pair.second;
+
+        if (creature != nullptr &&
+           !creature->get_is_player() &&
+            creature->get_original_id() == creature_original_id)
+        {
+          MapUtils::remove_creature(map, creature);
+          num_removed++;
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to genocide_creature");
+  }
+
+  lua_pushinteger(ls, num_removed);
+  return 1;
 }
 
 int generate_ancient_beast(lua_State* ls)
@@ -8683,7 +8839,7 @@ int get_leader_id(lua_State* ls)
 
     if (creature != nullptr)
     {
-      leader_id = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+      leader_id = creature->get_leader_id();
     }
   }
   else
@@ -9058,7 +9214,7 @@ int creature_has_humanoid_followers(lua_State* ls)
       {
         CreaturePtr c = c_pair.second;
 
-        if (c != nullptr && c->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == creature_id)
+        if (c != nullptr && c->get_leader_id() == creature_id)
         {
           RaceManager rm;
 
@@ -9097,7 +9253,7 @@ int count_creature_humanoid_followers(lua_State* ls)
       {
         CreaturePtr c = c_pair.second;
 
-        if (c != nullptr && c->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == creature_id)
+        if (c != nullptr && c->get_leader_id() == creature_id)
         {
           RaceManager rm;
 
@@ -9281,6 +9437,38 @@ int update_creatures(lua_State* ls)
   return 0;
 }
 
+int get_random_preset_village(lua_State* ls)
+{
+  int y = -1;
+  int x = -1;
+  string village_name;
+  string map_location_sid;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string map_id = lua_tostring(ls, 1);
+    Game& game = Game::instance();
+    MapPtr world_map = game.get_current_world()->get_world(game.get_map_registry_ref());
+    auto village = MapUtils::get_random_village_by_property(world_map, MapProperties::MAP_PROPERTIES_PRESET_VILLAGE_COORDINATES, { map_id });
+
+    y = std::get<0>(village);
+    x = std::get<1>(village);
+    village_name = std::get<2>(village);
+    map_location_sid = std::get<3>(village);
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_random_preset_village");
+  }
+
+  lua_pushinteger(ls, y);
+  lua_pushinteger(ls, x);
+  lua_pushstring(ls, village_name.c_str());
+  lua_pushstring(ls, map_location_sid.c_str());
+
+  return 4;
+}
+
 int get_random_village(lua_State* ls)
 {
   int y = -1;
@@ -9288,31 +9476,17 @@ int get_random_village(lua_State* ls)
   string village_name;
   string map_location_sid;
 
-  if (lua_gettop(ls) == 0)
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
   {
+    string map_id = lua_tostring(ls, 1);
     Game& game = Game::instance();
     MapPtr world_map = game.get_current_world()->get_world(game.get_map_registry_ref());
+    auto village = MapUtils::get_random_village_by_property(world_map, MapProperties::MAP_PROPERTIES_VILLAGE_COORDINATES, { map_id });
 
-    if (world_map != nullptr)
-    {
-      vector<string> coords = String::create_string_vector_from_csv_string(world_map->get_property(MapProperties::MAP_PROPERTIES_VILLAGE_COORDINATES));
-
-      if (!coords.empty())
-      {
-        string coord_s = coords.at(RNG::range(0, coords.size() - 1));
-        Coordinate c = MapUtils::convert_map_key_to_coordinate(coord_s);
-
-        y = c.first;
-        x = c.second;
-
-        TilePtr tile = world_map->at(y, x);
-        if (tile != nullptr)
-        {
-          village_name = tile->get_additional_property(TileProperties::TILE_PROPERTY_NAME);
-          map_location_sid = MapUtils::get_coordinate_location_sid(c, world_map->size());
-        }
-      }
-    }
+    y = std::get<0>(village);
+    x = std::get<1>(village);
+    village_name = std::get<2>(village);
+    map_location_sid = std::get<3>(village);
   }
   else
   {
@@ -9405,5 +9579,23 @@ int remove_chat_script(lua_State* ls)
   }
 
   lua_pushboolean(ls, removed);
+  return 1;
+}
+
+int get_setting(lua_State* ls)
+{
+  string s_val;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string setting = lua_tostring(ls, 1);
+    s_val = Game::instance().get_settings_ref().get_setting(setting);
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_setting");
+  }
+
+  lua_pushstring(ls, s_val.c_str());
   return 1;
 }

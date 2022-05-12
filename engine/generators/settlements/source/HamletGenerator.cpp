@@ -93,7 +93,7 @@ void HamletGenerator::generate_circular_hamlet(MapPtr map)
   int hamlet_size = RNG::range(rows/7, rows/5);
   int circle_row = rows / 2;
   int circle_col = RNG::range(2 + hamlet_size, cols - 2 - hamlet_size);
-  GeneratorUtils::generate_circle(map, circle_row, circle_col, hamlet_size, TileType::TILE_TYPE_ROAD);
+  GeneratorUtils::generate_circle(map, circle_row, circle_col, hamlet_size, TileType::TILE_TYPE_ROAD, true);
   
   // Generate a road east or west depending which is the furthest.
   int road_start_col;

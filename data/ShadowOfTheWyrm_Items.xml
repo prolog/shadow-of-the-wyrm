@@ -2740,6 +2740,30 @@
 					<Status>_wb</Status>
 				</StatusAilments>
 			</Ring>
+			<Ring id="filigreed_ring">
+				<DescriptionSID>FILIGREED_RING_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_FILIGREED_RING_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>FILIGREED_RING_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_FILIGREED_RING_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>FILIGREED_RING_CODEX_SID</CodexDescriptionSID>
+				<Value>200</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>2</WornLocation>
+				<Material>13</Material>
+				<Symbol>
+					<Char>=</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>31</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Evade>5</Evade>
+			</Ring>
 			<Ring id="fencers_ring">
 				<DescriptionSID>FENCERS_RING_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_FENCERS_RING_SID</UnidentifiedDescriptionSID>

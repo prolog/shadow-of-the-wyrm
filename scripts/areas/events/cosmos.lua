@@ -51,7 +51,7 @@ function init_cosmos(map_id)
   -- Nine with associated followers.
   create_rift(map_id, rift_y, rift_x)
   cosmos_common.populate_rift(map_id, rift_y, rift_x)
-
+ 
   -- Generate lesser divine beings throughout the level.  The number of
   -- creatures should be half the number of columns.
   add_divine_creatures(map_id, r, c, c/2)

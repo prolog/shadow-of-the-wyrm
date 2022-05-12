@@ -27,5 +27,5 @@ TEST(SW_World_Material_Meat, get_material_floats)
 {
   Meat m;
 
-  EXPECT_FALSE(m.get_material_floats());
+  EXPECT_TRUE(m.get_material_floats());
 }

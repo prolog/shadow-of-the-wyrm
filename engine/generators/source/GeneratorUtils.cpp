@@ -42,7 +42,7 @@ GeneratorUtils::~GeneratorUtils()
 
 // Create a circle.  Check to ensure that the radius won't take us off
 // the boundaries.
-void GeneratorUtils::generate_circle(MapPtr map, const int row_centre, const int col_centre, const int radius, const TileType tile_type)
+void GeneratorUtils::generate_circle(MapPtr map, const int row_centre, const int col_centre, const int radius, const TileType tile_type, const bool check_for_entirely_contained)
 {
   Dimensions dim = map->size();
   int rows = dim.get_y();
@@ -52,12 +52,15 @@ void GeneratorUtils::generate_circle(MapPtr map, const int row_centre, const int
   vector<Coordinate> circle_coords = CoordUtils::get_circle_coordinates(row_centre, col_centre, radius);
 
   // Circle in range?
-  for (const Coordinate& c : circle_coords)
+  if (check_for_entirely_contained)
   {
-    if (!(c.first >= 0 && c.first <= rows - 1 && c.second >= 0 && c.second <= cols - 1))
+    for (const Coordinate& c : circle_coords)
     {
-      generate = false;
-      break;
+      if (!(c.first >= 0 && c.first <= rows - 1 && c.second >= 0 && c.second <= cols - 1))
+      {
+        generate = false;
+        break;
+      }
     }
   }
 
@@ -67,6 +70,50 @@ void GeneratorUtils::generate_circle(MapPtr map, const int row_centre, const int
     for (const Coordinate& c : circle_coords)
     {
       generate_tile(map, c.first, c.second, tile_type);
+    }
+  }
+}
+
+void GeneratorUtils::generate_rounded_rectangle(MapPtr map, const Coordinate& start, const int height, const int width, const TileType tile_type, const bool check_for_entirely_contained)
+{
+  if (map != nullptr)
+  {
+    Dimensions dim = map->size();
+    int end_y = start.first + height;
+    int end_x = start.second + width;
+
+    if (check_for_entirely_contained &&
+        (end_y >= dim.get_y() ||
+         end_x >= dim.get_x()))
+    {
+      return;
+    }
+
+    for (int i = start.first; i <= end_y; i++)
+    {
+      for (int j = start.second; j <= end_x; j++)
+      {
+        // Make the rectangle rounded by skipping generation.
+        if ((i == start.first || i == end_y) &&
+            (j == start.second || j == end_x))
+        {
+          continue;
+        }
+
+        TilePtr tile = map->at(i, j);
+
+        // If a tile of the correct type is already generated, skip over it -
+        // it may have properties/etc in place that we don't want to overwrite.
+        if (tile && tile->get_tile_type() == tile_type)
+        {
+          continue;
+        }
+        else
+        {
+          // Generate the tiles in the rectangle.
+          generate_tile(map, i, j, tile_type);
+        }
+      }
     }
   }
 }

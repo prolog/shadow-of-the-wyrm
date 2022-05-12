@@ -54,7 +54,7 @@ void IslandSacrificeSiteGenerator::generate_island(MapPtr map)
   int building_size = rows / 4;
   
   // Generate the island
-  GeneratorUtils::generate_circle(map, centre_row, centre_col, moat_size, TileType::TILE_TYPE_RIVER);
+  GeneratorUtils::generate_circle(map, centre_row, centre_col, moat_size, TileType::TILE_TYPE_RIVER, true);
   
   // Generate the small building
   GeneratorUtils::generate_building(map, centre_row - building_size / 2, centre_col - building_size / 2, building_size, building_size);

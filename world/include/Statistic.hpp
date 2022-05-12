@@ -32,6 +32,7 @@ class Statistic : public ISerializable
 
     int get_lowest() const;
 
+    int get_percent() const;
     bool get_full() const;
     bool get_max_marks() const;
 

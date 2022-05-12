@@ -1,5 +1,6 @@
 #include "SewerGenerator.hpp"
 #include "CoordUtils.hpp"
+#include "GeneratorUtils.hpp"
 #include "Log.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
@@ -35,6 +36,7 @@ MapPtr SewerGenerator::generate(const Dimensions& dimensions)
   // Generate the sewer sections, and then connect them together.
   generate_sewer_sections(result_map, y_incr);
   connect_sewer_sections(result_map, y_incr);
+  generate_basins(result_map);
 
   // Place up and potentially down staircases as appropriate.
   place_staircases(result_map);
@@ -137,6 +139,30 @@ void SewerGenerator::place_staircases(MapPtr result_map)
   else
   {
     Log::instance().error("Could not generate down staircase for sewer!");
+  }
+}
+
+void SewerGenerator::generate_basins(MapPtr map)
+{
+  if (map != nullptr && RNG::percent_chance(75))
+  {
+    Dimensions dim = map->size();
+    int max_y = dim.get_y() - 2;
+    int max_x = dim.get_x() - 2;
+    TileGenerator tg;
+    TilePtr sewer;
+
+    int b_height = RNG::range(5, 10);
+    int b_width = RNG::range(8, 22);
+    Coordinate start = { RNG::range(1, max_y - b_height), RNG::range(1, max_x - b_width) };
+
+    vector<Coordinate> coords = CoordUtils::get_coordinates_in_range(start, { start.first + b_height, start.second + b_width });
+
+    for (const Coordinate& c : coords)
+    {
+      sewer = tg.generate(TileType::TILE_TYPE_SEWER);
+      map->insert(c, sewer);
+    }
   }
 }
 

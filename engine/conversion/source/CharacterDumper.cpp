@@ -176,7 +176,7 @@ string CharacterDumper::get_party() const
         CreaturePtr f = c_pair.second;
         CharacterDumper cd(f);
 
-        if (f && f->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID) == creature->get_id())
+        if (f && f->get_leader_id() == creature->get_id())
         {
           string name = f->get_name();
           ss2 << " - ";

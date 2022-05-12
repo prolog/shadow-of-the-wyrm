@@ -16320,6 +16320,11 @@
 				<NumSides>24</NumSides>
 				<Type>9</Type>
 			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/atuaelar/mountain_elf_scholar.lua</Script>
+				</ChatScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="mountain_elf_youth">
 			<RaceID>03_mountainelf</RaceID>
@@ -26190,7 +26195,7 @@
 				<Type>1</Type>
 			</Damage>
 			<Range>2</Range>
-			<Soak>5</Soak>
+			<Soak>7</Soak>
 		</Creature>
 		<Creature id="gambler">
 			<RaceID>01_human</RaceID>

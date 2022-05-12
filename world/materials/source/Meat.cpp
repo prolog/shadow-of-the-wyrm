@@ -38,6 +38,11 @@ Colour Meat::get_colour() const
   return Colour::COLOUR_WHITE;
 }
 
+bool Meat::get_material_floats() const
+{
+  return true;
+}
+
 Material* Meat::clone()
 {
   return new Meat(*this);

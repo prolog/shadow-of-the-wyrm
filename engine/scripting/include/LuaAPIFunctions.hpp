@@ -31,6 +31,8 @@ int get_num_creature_killed_global(lua_State* ls);
 int get_num_uniques_killed_global(lua_State* ls);
 int is_unique(lua_State* ls);
 int add_object_to_player_tile(lua_State* ls);
+int add_object_with_resists_to_player_tile(lua_State* ls);
+int add_objects_to_player_tile(lua_State* ls);
 int add_object_to_map(lua_State* ls);
 int add_object_to_creature(lua_State* ls);
 int add_object_on_tile_to_creature(lua_State* ls);
@@ -256,6 +258,7 @@ int get_primordial_castings(lua_State* ls);
 int creature_exists(lua_State* ls);
 int set_weather(lua_State* ls);
 int genocide(lua_State* ls);
+int genocide_creature(lua_State* ls);
 int generate_ancient_beast(lua_State* ls);
 int generate_hireling(lua_State* ls);
 int generate_adventurer(lua_State* ls);
@@ -289,9 +292,11 @@ int generate_enclosure(lua_State* ls);
 int generate_hermitage(lua_State* ls);
 int update_creatures(lua_State* ls);
 int get_random_village(lua_State* ls);
+int get_random_preset_village(lua_State* ls);
 int tokenize(lua_State* ls);
 int generate_name(lua_State* ls);
 int remove_chat_script(lua_State* ls);
+int get_setting(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

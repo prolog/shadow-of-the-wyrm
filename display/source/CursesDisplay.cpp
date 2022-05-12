@@ -74,7 +74,7 @@ Display* CursesDisplay::clone()
 }
 
 CursesDisplay::CursesDisplay()
-: message_buffer_screen(nullptr), can_use_colour(true)
+: message_buffer_screen(nullptr), can_use_colour(true), initialized(false)
 {
 }
 
@@ -290,28 +290,31 @@ pair<bool, string> CursesDisplay::create()
   bool creation_success = true;
   string error_msg;
 
-  initscr();
-  keypad(stdscr, TRUE);
-  nl();
-  noecho(); // Don't echo the user input.
-  raw(); // pass control characters to the program.
-  curs_set(0); // Cursor invisible.  Doesn't seem to work in Cygwin.  Just like colour redefinition.  Fucking Cygwin.
-
-  if (has_colors() == TRUE)
+  if (!initialized)
   {
-    start_color();
-    initialize_colours();
+    initscr();
+    keypad(stdscr, TRUE);
+    nl();
+    noecho(); // Don't echo the user input.
+    raw(); // pass control characters to the program.
+    curs_set(0); // Cursor invisible.  Doesn't seem to work in Cygwin.  Just like colour redefinition.  Fucking Cygwin.
+
+    if (has_colors() == TRUE)
+    {
+      start_color();
+      initialize_colours();
+    }
+
+    refresh_terminal_size();
+
+    if ((TERMINAL_MAX_ROWS < 25) || (TERMINAL_MAX_COLS < 80))
+    {
+      error_msg = "Shadow of the Wyrm requires a terminal of 80x25 or larger.";
+      creation_success = false;
+    }
+
+    refresh();
   }
-
-  refresh_terminal_size();
-
-  if ((TERMINAL_MAX_ROWS < 25) || (TERMINAL_MAX_COLS < 80))
-  {
-    error_msg = "Shadow of the Wyrm requires a terminal of 80x25 or larger.";
-    creation_success = false;
-  }
-
-  refresh();
 
   return make_pair(creation_success, error_msg);
 }
@@ -325,7 +328,88 @@ void CursesDisplay::tear_down()
 
 bool CursesDisplay::display_splash(const bool enabled)
 {
-  return false;
+  if (!initialized)
+  {
+    create();
+  }
+
+  clear_display();
+  vector<string> sotw_curses_splash{
+"                                                                              ",
+"                           &&&&/#   *&&&(((((                                 ",
+"                             (((((((((#(((((/(((((                            ",
+"                   (((((((((((((((((((((((####((((((((((*                     ",
+"                (#&&   (#(((((((((((#((((((#########  ((((                    ",
+"                    &(#(((((((((((##(((##$(##$#######((#(((((&                ",
+"                   &(((#####((#((((##(#&($###(#/(####$&((#(((((               ",
+"                 #((((###########$        &&&&((#(#$    &$&(((((              ",
+"              ((( &(##(###(#####(              &&((##(##  & & &,              ",
+"             &   #####(##$##$($#(                 &&&((((                     ",
+"                 &#####$$$$#####((##                  &&#$#(.                 ",
+"                &#(&#$$$$$$(###$$##$#(#/                                      ",
+"                &$*&&$$$$$$$$####$##$#$#######$###$$#                         ",
+"                &/   &&#$&$$$$$$$$$#$########$############$#                  ",
+"                        &&$&&#$#$$$$$$$#$$$#######$$#$#$$####$                ",
+"                   &&#&#, /    &&&###$&#&$$$$$$$#$$$$$$#$##$$$#               ",
+"                &&#$$$$$$$$#$       & /  &&&&$$$$$$$##$#$$&&$$$               ",
+"             .#$$$$&&&&&$$$$$&$&               &( &&$$$##&#$#$$               ",
+"            &&$#$$      &&$$$&$$&   .              $$$$#####$$#               ",
+"             &&$$#$       &$$$$$$#$&$.          $$$$$$$&$$$#$#                ",
+"              &$#$$$$$     &$$$$$$$&&$$  & &&&&$$$$$$$$$#$$#$                 ",
+"              &&$$$$$$$$,   &$$$&$$$&&&@$&$&$$$$$$$$$$$#$##                   ",
+"                (&#$&$$$$$/  /&&&&&$$$&&$$&#$$$$$$#$$$$/                      ",
+"                   #$##$$&&&     &&$$&&&$$$$$$$$$$$$$                         " };
+
+  size_t sp_sz = sotw_curses_splash.size();
+
+  if (sp_sz > TERMINAL_MAX_ROWS)
+  {
+    enable_colour(static_cast<int>(Colour::COLOUR_BOLD_MAGENTA), stdscr);
+    mvprintw(0, 0, "Loading Shadow of the Wyrm...");
+    disable_colour(static_cast<int>(Colour::COLOUR_BOLD_MAGENTA), stdscr);
+  }
+  else
+  {
+    int banner_y = (TERMINAL_MAX_ROWS) / 2 - sp_sz / 2;
+    int banner_x = (TERMINAL_MAX_COLS + 1) / 2 - sotw_curses_splash.at(0).size() / 2;
+
+    enable_colour(static_cast<int>(Colour::COLOUR_BOLD_MAGENTA), stdscr);
+
+    for (size_t i = 0; i < sp_sz; i++)
+    {
+      mvprintw(i + banner_y, banner_x, sotw_curses_splash.at(i).c_str());
+    }
+
+    disable_colour(static_cast<int>(Colour::COLOUR_BOLD_MAGENTA), stdscr);
+    enable_colour(static_cast<int>(Colour::COLOUR_BOLD_BLACK), stdscr);
+
+    string banner_text = "L O A D I N G . . .";
+    banner_y = (TERMINAL_MAX_ROWS - 1) / 2 - banner_text.size() / 2;
+
+    for (size_t i = 0; i < banner_text.size(); i++)
+    {
+      char letter = banner_text[i];
+      mvaddch(banner_y + i, 1, letter);
+      mvaddch(banner_y + i, TERMINAL_MAX_COLS - 2, letter);
+    }
+
+    disable_colour(static_cast<int>(Colour::COLOUR_BOLD_BLACK), stdscr);
+    enable_colour(static_cast<int>(Colour::COLOUR_BOLD_WHITE), stdscr);
+
+    // Set the start of the banner
+    banner_text = "S  H  A  D  O  W      O  F      T  H  E      W  Y  R  M";
+    banner_y = (TERMINAL_MAX_ROWS - 1) / 2;
+    banner_x = (TERMINAL_MAX_COLS - 1) / 2 - banner_text.size() / 2;
+
+    move(banner_y, banner_x);
+    printw(banner_text.c_str());
+
+    disable_colour(static_cast<int>(Colour::COLOUR_BOLD_WHITE), stdscr);
+  }
+
+  refresh();
+
+  return true;
 }
 
 string CursesDisplay::get_name() const

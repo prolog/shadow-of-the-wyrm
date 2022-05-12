@@ -19,6 +19,7 @@
 #include "ItemProperties.hpp"
 #include "Log.hpp"
 #include "MagicalAbilityChecker.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "NPCDecisionStrategy.hpp"
@@ -58,6 +59,39 @@ NPCDecisionStrategy::NPCDecisionStrategy(ControllerPtr new_controller)
 uint NPCDecisionStrategy::get_count(const uint max_count)
 {
   return max_count;
+}
+
+bool NPCDecisionStrategy::get_move_to_dangerous_tile(MapPtr map, CreaturePtr creature, TilePtr tile) const
+{
+  bool do_move = false;
+
+  if (map != nullptr && creature != nullptr)
+  {
+    FeaturePtr feature = tile->get_feature();
+
+    if (feature != nullptr)
+    {
+      TrapPtr trap = dynamic_pointer_cast<Trap>(feature);
+
+      // Even tough creatures will avoid blackwater traps due to the instakill
+      // potential.
+      if (trap != nullptr && trap->get_damage().get_damage_type() != DamageType::DAMAGE_TYPE_SHADOW)
+      {
+        // If it's not a shadow trap, creatures will move past traps when
+        // they believe they can soak it and still have lots of HP left.
+        Statistic hp_copy = creature->get_hit_points();
+        int max_dmg = trap->get_damage().max();
+        hp_copy.set_current(hp_copy.get_current() - max_dmg);
+
+        if (hp_copy.get_percent() > 50)
+        {
+          do_move = true;
+        }
+      }
+    }
+  }
+
+  return do_move;
 }
 
 bool NPCDecisionStrategy::get_confirmation(const bool confirmation_default_value, const bool require_proper_selection)
@@ -525,7 +559,8 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
     // place, moving only to pursue when attacked.
     bool sentinel = String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL));
     bool ordered_sentinel = String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_ORDERED_SENTINEL));
-    if ((sentinel || ordered_sentinel) &&
+    if ((!this_creature->has_leader() &&
+         sentinel || ordered_sentinel) &&
          this_creature &&
          MapUtils::hostile_creature_exists(this_creature_id, view_map) == false)
     {
@@ -538,7 +573,7 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
 
     if (this_creature != nullptr)
     {
-      leader_id = this_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+      leader_id = this_creature->get_leader_id();
     }
 
     if (!at_ease.empty())
@@ -807,7 +842,7 @@ void NPCDecisionStrategy::update_threats_to_leader(const std::string& this_creat
       // Have we been ordered to attack by our leader? If so, find all the
       // threats to that creature, and attack one.
       string attack_threaten_id = get_property(DecisionStrategyProperties::DECISION_STRATEGY_ATTACK_CREATURES_THREATENING_ID);
-      string leader_id = this_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEADER_ID);
+      string leader_id = this_creature->get_leader_id();
       string at_ease = get_property(DecisionStrategyProperties::DECISION_STRATEGY_AT_EASE);
       HostilityManager hm;
 
@@ -848,6 +883,7 @@ void NPCDecisionStrategy::remove_threats_with_same_deity(const std::string& this
 
   if (current_map != nullptr && game.do_deities_exist())
   {
+    string divine_forbidden = current_map->get_property(MapProperties::MAP_PROPERTIES_DIVINE_FORBIDDEN);
     CreaturePtr this_creature = current_map->get_creature(this_creature_id);
 
     if (this_creature != nullptr && view_map != nullptr)
@@ -870,6 +906,7 @@ void NPCDecisionStrategy::remove_threats_with_same_deity(const std::string& this
             if (t_details.first
               && t_details.second < ThreatConstants::ACTIVE_THREAT_RATING
               && !apostate
+              && String::to_bool(divine_forbidden) == false
               && deity_id == c_pair.second->get_religion_ref().get_active_deity_id())
             {
               HostilityManager hm;

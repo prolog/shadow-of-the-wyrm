@@ -41,7 +41,6 @@ const string Setting::DEFAULT_DEITY_ID = "default_deity_id";
 const string Setting::DEFAULT_HAIR_COLOUR = "default_hair_colour";
 const string Setting::DEFAULT_EYE_COLOUR = "default_eye_colour";
 const string Setting::DEFAULT_STARTING_LOCATION_ID = "default_starting_location_id";
-const string Setting::USE_DEFAULT_NAME = "use_default_name";
 const string Setting::DEFAULT_NAME = "default_name";
 const string Setting::USERNAME_IS_CHARACTER_NAME = "username_is_character_name";
 const string Setting::MAX_CHARACTERS_PER_USER = "_max_characters_per_user";

@@ -1,11 +1,22 @@
 Me:
+- add basins (see SpringGenerator::generate_tall)
+- very small chance of someone making their home in sewers (how about a sage/
+  hermit? bed, books)
+- test removal of QUEST_INITIATED
+- just generally test!
+- need to test pack generation...
+- is the witchling membership bugged?
+- Ammo improvements:
+  - Prompt equip on pickup
+  - Merge picked up into ammo slot
+  - When done, cycle through applicable inventory items to equip (allow Y/N/
+    Z to exit)
+- Do a bunch of curses testing now that a curses splash has been added.
 - spinach/str?
 - bookstore
 - quest to quell a rebellion from Carcassia
-- More archery for archers and goblin pelters
-- very small chance for enchant to give speed bonus
 - ASSET RELEASE
-- random uniques (fighter-type, thief-type, spellcaster-type)
+- random uniques (race, class)
 - fisherman quest
 - more town NPCs/sprites
 - overlapping houses in settlement - temple over tavern?
@@ -16,6 +27,7 @@ Me:
   - regular dungeons/sewers/mines
   - crypts (should take the ambient danger)
   - regular overworld maps
+- Add Yahtzee to Carcassian casino
 - Rework DigChances so it can handle multiple item %s, then readd edible roots
   to fields.
 - Allow wearables to give +HP, +AP
@@ -317,17 +329,16 @@ Josh Engdahl
 - los code: .@..   can't see
             ####s
 
-- can lure ancient monsters into trap room and kill them via an unwillingness
-  to move on to trapped tiles.
-
 TheGhostInTheMachine:
 - game segfaults if you put it on the path and then run it elsewhere?
 
 Brian Jeffears:
 - black market/something only open at night
 
-Echo38:
+Bentwing:
 - make undead hostile to humanoids
+- way of creating lock for door
+- restack on blessing eg books, all items, etc
 
 Kenny:
 - repeat last command (!)

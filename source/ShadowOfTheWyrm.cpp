@@ -20,11 +20,13 @@
 #include "CursesDisplay.hpp"
 #include "DisplayConstants.hpp"
 #include "DisplayFactory.hpp"
+#include "DisplaySettings.hpp"
 #include "Environment.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
 #include "LogFiles.hpp"
 #include "Metadata.hpp"
+#include "RNG.hpp"
 #include "SDLInit.hpp"
 #include "ShadowOfTheWyrmEngine.hpp"
 #include "Settings.hpp"
@@ -102,6 +104,7 @@ int main(int argc, char* argv[])
 
   try
   {
+    std::srand(static_cast<unsigned int>(std::time(0)));
     print_title();
 
     if (argc > 1)
@@ -251,7 +254,8 @@ void set_display_settings(DisplayPtr display, const Settings& settings)
 {
   if (display != nullptr)
   {
-    vector<string> setting_names = { Setting::DISPLAY_SPLASH_IMAGE,
+    vector<string> setting_names = { DisplaySettings::DISPLAY_SETTING_COLOUR,
+                                     Setting::DISPLAY_SPLASH_IMAGE,
                                      Setting::DISPLAY_FONT, 
                                      Setting::DISPLAY_TILE_SIZE, 
                                      Setting::DISPLAY_TILE_GLYPHS_PER_LINE, 

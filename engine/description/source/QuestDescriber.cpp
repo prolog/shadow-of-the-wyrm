@@ -35,8 +35,10 @@ string QuestDescriber::describe() const
   
   if (!map_name.empty())
   {
-    ss << ", " << map_name << ")";
+    ss << ", " << map_name;
   }
+
+  ss << ")";
 
   // Most quests use a description SID, but dynamic quests have parameters
   // that need to be inserted into the string.  Insert any parameters after
