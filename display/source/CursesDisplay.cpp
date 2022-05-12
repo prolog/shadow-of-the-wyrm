@@ -377,7 +377,7 @@ bool CursesDisplay::display_splash(const bool enabled)
 
     for (size_t i = 0; i < sp_sz; i++)
     {
-      mvprintw(i + banner_y, banner_x, sotw_curses_splash.at(i).c_str());
+      mvprintw(i + banner_y, banner_x, "%s", sotw_curses_splash.at(i).c_str());
     }
 
     disable_colour(static_cast<int>(Colour::COLOUR_BOLD_MAGENTA), stdscr);
@@ -402,7 +402,7 @@ bool CursesDisplay::display_splash(const bool enabled)
     banner_x = (TERMINAL_MAX_COLS - 1) / 2 - banner_text.size() / 2;
 
     move(banner_y, banner_x);
-    printw(banner_text.c_str());
+    printw("%s", banner_text.c_str());
 
     disable_colour(static_cast<int>(Colour::COLOUR_BOLD_WHITE), stdscr);
   }
