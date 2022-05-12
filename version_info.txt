@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.4.5 "Fuenllana"
-- Version declared March 27, 2022.
+- Version declared March 27, 2022.  Version finalized May 12, 2022.
 
 - Created a splash screen for curses mode.
 
