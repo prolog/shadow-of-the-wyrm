@@ -83,6 +83,13 @@ float AlcoholCalculator::calculate_grams_to_absorb(CreaturePtr creature)
     float remaining = creature->get_grams_unabsorbed_alcohol();
     float base_rate = absorption_by_sex.find(creature->get_sex())->second;
     
+    // Absorb alcohol faster on an empty stomach.
+    HungerClock hc = creature->get_hunger_clock();
+    if (hc.is_stomach_empty())
+    {
+      base_rate = base_rate * 2;
+    }
+
     // Additional calculations (weight, etc.) will affect this later.
     to_absorb = base_rate;
 

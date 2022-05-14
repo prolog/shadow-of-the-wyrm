@@ -8,6 +8,8 @@ Shadow of the Wyrm v1.4.7 "Satoh"
 
 - The Detect Traps effect now trains Detection (Josh Engdahl).
 
+- Alcohol absorbs twice as fast on an empty stomach.
+
 - More names.
 
 Shadow of the Wyrm v1.4.5 "Fuenllana"
