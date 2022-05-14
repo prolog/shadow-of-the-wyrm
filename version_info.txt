@@ -6,6 +6,8 @@ Shadow of the Wyrm v1.4.7 "Satoh"
 
 - Hermits have also been given the no-pickup flag.
 
+- The Detect Traps effect now trains Detection (Josh Engdahl).
+
 - More names.
 
 Shadow of the Wyrm v1.4.5 "Fuenllana"
