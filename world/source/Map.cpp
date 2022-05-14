@@ -17,7 +17,7 @@ using namespace std;
 // This will likely need to be updated to include new fields at some
 // point.
 Map::Map(const Map& new_map)
-: terrain_type(TileType::TILE_TYPE_UNDEFINED), map_type(MapType::MAP_TYPE_OVERWORLD), permanent(new_map.permanent), danger(0), allow_creature_updates(true), weather(new_map.weather)
+: terrain_type(TileType::TILE_TYPE_UNDEFINED), map_type(MapType::MAP_TYPE_OVERWORLD), permanent(new_map.permanent), danger(0), allow_creature_creation(true), allow_creature_updates(true), weather(new_map.weather)
 {
   if (this != &new_map)
   {
@@ -38,7 +38,7 @@ Map::Map(const Map& new_map)
 }
 
 Map::Map(const Dimensions& new_dimensions, const Dimensions& orig_dimensions)
-: terrain_type(TileType::TILE_TYPE_UNDEFINED), map_type(MapType::MAP_TYPE_OVERWORLD), permanent(false), danger(0), allow_creature_updates(true), weather("")
+: terrain_type(TileType::TILE_TYPE_UNDEFINED), map_type(MapType::MAP_TYPE_OVERWORLD), permanent(false), danger(0), allow_creature_creation(true), allow_creature_updates(true), weather("")
 {
   dimensions = new_dimensions;
   original_dimensions = orig_dimensions;
@@ -92,6 +92,7 @@ bool Map::operator==(const Map& map) const
   result = result && (map_id == map.map_id);
   result = result && (permanent == map.permanent);
   result = result && (danger == map.danger);
+  result = result && (allow_creature_creation == map.allow_creature_creation);
   result = result && (allow_creature_updates == map.allow_creature_updates);
   result = result && (properties == map.properties);
   result = result && (tile_transforms == map.tile_transforms);
@@ -645,12 +646,32 @@ int Map::get_danger() const
 
   if (dlvl_override.empty())
   {
-    return danger;
+    // If danger's been set, return that. If it hasnt, estimate based on the
+    // current depth.
+    if (danger > 0)
+    {
+      return danger;
+    }
+    else
+    {
+      // JCD FIXME this is probably going to break tons of shit
+      return std::abs(dimensions.depth().get_current());
+    }
   }
   else
   {
     return String::to_int(dlvl_override);
   }
+}
+
+void Map::set_allow_creature_creation(const bool new_allow_creature_creation)
+{
+  allow_creature_creation = new_allow_creature_creation;
+}
+
+bool Map::get_allow_creature_creation() const
+{
+  return allow_creature_creation;
 }
 
 void Map::set_allow_creature_updates(const bool new_allow_creature_updates)
@@ -1041,6 +1062,7 @@ bool Map::serialize(ostream& stream) const
   Serialize::write_string(stream, map_id);
   Serialize::write_bool(stream, permanent);
   Serialize::write_int(stream, danger);
+  Serialize::write_bool(stream, allow_creature_creation);
   Serialize::write_bool(stream, allow_creature_updates);
   Serialize::write_string_map(stream, properties);
 
@@ -1186,6 +1208,7 @@ bool Map::deserialize(istream& stream)
   Serialize::read_string(stream, map_id);
   Serialize::read_bool(stream, permanent);
   Serialize::read_int(stream, danger);
+  Serialize::read_bool(stream, allow_creature_creation);
   Serialize::read_bool(stream, allow_creature_updates);
 
   properties.clear();

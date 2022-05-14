@@ -198,16 +198,13 @@ bool SettlementGeneratorUtils::generate_building_if_possible(MapPtr map, const B
       }
       else
       {
-        generate_building_features(map, bgp);
-        generate_building_creatures(map, bgp);
-        generate_building_objects(map, bgp);
+        generate_building_interior(map, bgp);
       }
     }
 
-    // Create door
+    // Create door if we're also creating walls.
     pair<int, int> door_location = SettlementGeneratorUtils::get_door_location(start_row, end_row, start_col, end_col, door_direction);
     TilePtr door_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
-
     FeaturePtr door = FeatureGenerator::generate_door();
     door_tile->set_feature(door);
 
@@ -230,6 +227,12 @@ bool SettlementGeneratorUtils::generate_building_if_possible(MapPtr map, const B
   return generated;
 }
 
+void SettlementGeneratorUtils::generate_building_interior(MapPtr map, const BuildingGenerationParameters& bgp)
+{
+  generate_building_features(map, bgp);
+  generate_building_creatures(map, bgp);
+  generate_building_objects(map, bgp);
+}
 
 void SettlementGeneratorUtils::generate_building_features(MapPtr map, const BuildingGenerationParameters& bgp)
 {
