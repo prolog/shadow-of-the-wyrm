@@ -1790,7 +1790,7 @@ int remove_object_from_player(lua_State* ls)
     CreaturePtr player = game.get_current_player();
 
     ItemManager im;
-    im.remove_item_from_eq_or_inv(player, object_base_id, quantity, properties);
+    im.remove_item_from_inv_or_eq(player, object_base_id, quantity, properties);
   }
   else
   {
@@ -5461,7 +5461,7 @@ int transfer_item(lua_State* ls)
     {
       // Transfer the items from one inventory to the other.
       ItemManager im;
-      pair<bool, vector<ItemPtr>> items = im.remove_item_from_eq_or_inv(transfer_from_creature, item_base_id, quantity);
+      pair<bool, vector<ItemPtr>> items = im.remove_item_from_inv_or_eq(transfer_from_creature, item_base_id, quantity);
 
       IInventoryPtr inv = transfer_to_creature->get_inventory();
 

@@ -1,6 +1,8 @@
 Me:
 - ensure various races (insects, constructs, jellies, etc) use "itself"
   (JE).
+- Grond: prompt for digging in shops
+- Let's finally do it: map ascension/descension
 - cavern towns/underground races (dw, gn)
 - need to test pack generation...
 - is the witchling membership bugged?

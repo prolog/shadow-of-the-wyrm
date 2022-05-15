@@ -1,6 +1,9 @@
 Shadow of the Wyrm v1.4.7 "Satoh"
 - Version started May 15, 2022.
 
+- When removing items from the player (typically for fetch-type quests), the
+  game now checks inventory first, then worn equipment.
+
 - More names.
 
 Shadow of the Wyrm v1.4.5.1 "Fuenllana"
