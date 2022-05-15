@@ -119,6 +119,8 @@ TEST_F(SW_Engine_Map, saveload)
   map->set_property("foo", "bar");
   vector<Coordinate> coords = {{0,1},{2,2},{3,3},{18,56}};
   map->set_preset_locations(coords);
+  map->set_allow_creature_creation(false);
+  map->set_allow_creature_updates(false);
 
   ScriptDetails sd;
   sd.set_chance(22);
@@ -136,6 +138,8 @@ TEST_F(SW_Engine_Map, saveload)
   EXPECT_TRUE(*map == *map2);
   EXPECT_EQ("bar", map2->get_property("foo"));
   EXPECT_EQ(coords, map2->get_preset_locations());
+  EXPECT_FALSE(map2->get_allow_creature_creation());
+  EXPECT_FALSE(map2->get_allow_creature_updates());
 }
 
 TEST_F(SW_Engine_Map, underwater_maps_submerge_tiles)

@@ -1,3 +1,27 @@
+Shadow of the Wyrm v1.4.5.1 "Fuenllana"
+- Version declared May 12, 2022.  Version finalized May 15, 2022.
+
+- Hermits sometimes make their homes in the dry drainage basins in old sewers.
+  It's very quiet.  Nobody tries to visit them.
+
+- Hermits have been given the no-pickup flag.
+
+- The Detect Traps effect now trains Detection (Josh Engdahl).
+
+- Alcohol absorbs twice as fast on an empty stomach.
+
+- More names.
+
+- Bug fixes:
+
+  - Eating most foods around adventurers and hirelings caused them to become
+    enraged, because the game considered adventurers and fruit to be
+    equivalent (Josh Engdahl).
+
+  - Food added via the Lua console with 0 enchants provided no nutrition.
+
+  - Added some additional 0-pt guards for enchanting and smithing.
+
 Shadow of the Wyrm v1.4.5 "Fuenllana"
 - Version declared March 27, 2022.  Version finalized May 12, 2022.
 
@@ -23,7 +47,7 @@ Shadow of the Wyrm v1.4.5 "Fuenllana"
 - Meat now floats, so you can now get eg corpses generated on water tiles.
 
 - There is now an optional setting to prompt prior to quest completion 
-  (Bentwing).
+  (Josh Engdahl).
 
 - Created a new map flag, "divine forbidden".  This flag blocks NPCs not
   considering other NPCs threats if they have the same deity, and is used
@@ -49,17 +73,17 @@ Shadow of the Wyrm v1.4.5 "Fuenllana"
 - Bug fixes:
 
   - When default_name was set, and you already had a character of that name,
-    the game would hang (Bentwing).
+    the game would hang (Josh Engdahl).
 
   - Fixed the same issue with the username_is_character_name setting.
 
-  - Traps weren't generating in dungeons (Bentwing).
+  - Traps weren't generating in dungeons (Josh Engdahl).
 
   - NPCs in corridors might try to cast a refective beam in such a way that
     they thought it would hit the target, but it ends up just bouncing and
-    targetting themselves (Bentwing).
+    targetting themselves (Josh Engdahl).
 
-  - Air-breathers could be generated on water (Bentwing).
+  - Air-breathers could be generated on water (Josh Engdahl).
 
   - Cosmos generation sometimes caused the game to hang in SDL mode.
 
@@ -171,7 +195,7 @@ Shadow of the Wyrm v1.4.3 "da Milano"
   randomize their colour between brown/grey/black/white.
 
 - The manual, keybindings, and confirmation text now make it more clear that
-  quitting will abandon your character (Bentwing).
+  quitting will abandon your character (Josh Engdahl).
 
 - New creatures: thatcher.
 
@@ -496,10 +520,10 @@ Shadow of the Wyrm v1.3.3 "de Sarlat"
 - Bug fixes:
 
   - When automelee was off, the player was being prompted when NPCs were
-    attacking at range (Bentwing).
+    attacking at range (Josh Engdahl).
 
   - Digging gave a weird message when you used it over another creature
-    (Bentwing).
+    (Josh Engdahl).
 
   - Hide whips weren't being suppressed during regular item generation (Red).
 
@@ -507,14 +531,14 @@ Shadow of the Wyrm v1.3.3 "de Sarlat"
     max value.
   
   - Fireball traps were leaving fire bombs, when these had item destruction
-    percentages that should've prevented that (Bentwing).
+    percentages that should've prevented that (Josh Engdahl).
 
 Shadow of the Wyrm v1.3.2 "del Liuto"
 - Version declared April 23, 2021.  Version finalized June 13, 2021.
 
 - Default hair and eye colour can now be set in swyrm.ini, as well as an
   option that brings up a menu for each, in case you want to select these
-  values for each character (Bentwing).
+  values for each character (Josh Engdahl).
 
 - Damage messages will now be displayed in red when you are criticalled and 
   take damage, when you take >= 20% of your max HP, or when your HP falls 
@@ -577,7 +601,7 @@ Shadow of the Wyrm v1.3.2 "del Liuto"
 
   - The danger level of wilderness tiles was always intended to scale the
     further you got from your starting location, but due to a casting bug,
-    the danger was always being defaulted to 1 instead (Bentwing).
+    the danger was always being defaulted to 1 instead (Josh Engdahl).
 
   - The value of the saved ASCII mode setting wasn't being properly set 
     after loading a saved game, reverting things back to whatever the 

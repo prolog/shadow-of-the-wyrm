@@ -7606,7 +7606,7 @@
 				<Speed>5</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
-					<NumSides>4</NumSides>
+					<NumSides>6</NumSides>
 					<Modifier>2</Modifier>
 					<Type>0</Type>
 				</Damage>

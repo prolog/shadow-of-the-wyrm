@@ -1,10 +1,16 @@
 #include "SewerGenerator.hpp"
 #include "CoordUtils.hpp"
+#include "CreatureFactory.hpp"
+#include "FeatureGenerator.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
 #include "GeneratorUtils.hpp"
+#include "ItemGenerationManager.hpp"
 #include "Log.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
+#include "SettlementGeneratorUtils.hpp"
 
 using namespace std;
 
@@ -15,6 +21,7 @@ const int SewerGenerator::MAX_HEIGHT = 7;
 const int SewerGenerator::X_INCR = 2;
 const int SewerGenerator::MIN_Y_INCR = 2;
 const int SewerGenerator::MAX_Y_INCR = 4;
+const int SewerGenerator::PCT_CHANCE_HERMIT = 5;
 
 SewerGenerator::SewerGenerator(const std::string& new_map_exit_id)
 : Generator(new_map_exit_id, TileType::TILE_TYPE_SEWER_COMPLEX)
@@ -36,7 +43,7 @@ MapPtr SewerGenerator::generate(const Dimensions& dimensions)
   // Generate the sewer sections, and then connect them together.
   generate_sewer_sections(result_map, y_incr);
   connect_sewer_sections(result_map, y_incr);
-  generate_basins(result_map);
+  generate_basin(result_map);
 
   // Place up and potentially down staircases as appropriate.
   place_staircases(result_map);
@@ -142,7 +149,7 @@ void SewerGenerator::place_staircases(MapPtr result_map)
   }
 }
 
-void SewerGenerator::generate_basins(MapPtr map)
+void SewerGenerator::generate_basin(MapPtr map)
 {
   if (map != nullptr && RNG::percent_chance(75))
   {
@@ -162,6 +169,45 @@ void SewerGenerator::generate_basins(MapPtr map)
     {
       sewer = tg.generate(TileType::TILE_TYPE_SEWER);
       map->insert(c, sewer);
+    }
+
+    if (RNG::percent_chance(PCT_CHANCE_HERMIT))
+    {
+      map->set_allow_creature_creation(false);
+      map->set_allow_creature_updates(false);
+
+      std::shuffle(coords.begin(), coords.end(), RNG::get_engine());
+
+      vector<string> creature_ids = { CreatureID::CREATURE_ID_HERMIT };
+      vector<ClassIdentifier> features = { ClassIdentifier::CLASS_ID_BED, ClassIdentifier::CLASS_ID_TABLE };
+      vector<string> items;
+
+      // Add scrolls and spellbooks
+      vector<ItemType> hermit_itypes = { ItemType::ITEM_TYPE_SPELLBOOK, ItemType::ITEM_TYPE_SCROLL };
+      
+      for (const auto& itype : hermit_itypes)
+      {
+        ItemGenerationConstraints igc;
+        igc.set_item_type_restrictions({ itype });
+        igc.set_min_danger_level(1);
+        igc.set_max_danger_level(map->get_danger() + 5);
+
+        ItemGenerationManager igm;
+        vector<string> potential_items = igm.get_item_ids(igm.generate_item_generation_map(igc));
+
+        if (!potential_items.empty())
+        {
+          int num_readables = RNG::range(2, 4);
+
+          for (int i = 0; i < num_readables; i++)
+          {
+            items.push_back(potential_items[RNG::range(0, potential_items.size() - 1)]);
+          }
+        }
+      }
+
+      BuildingGenerationParameters bgp(start.first-1, start.first + b_height, start.second-1, start.second + b_width, CardinalDirection::CARDINAL_DIRECTION_NORTH, false, features, creature_ids, items, TileType::TILE_TYPE_EARTH);
+      SettlementGeneratorUtils::generate_building_interior(map, bgp);
     }
   }
 }

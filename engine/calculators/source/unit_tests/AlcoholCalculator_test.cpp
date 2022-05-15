@@ -1,5 +1,38 @@
 #include "gtest/gtest.h"
+#include "EngineConversion.hpp"
 #include "Food.hpp"
+
+TEST(SW_Engine_Calculators_AlcoholCalculator, absorption_rate)
+{
+  CreaturePtr male = std::make_shared<Creature>();
+  male->set_sex(CreatureSex::CREATURE_SEX_MALE);
+  male->set_grams_unabsorbed_alcohol(100);
+
+  CreaturePtr female = std::make_shared<Creature>();
+  female->set_sex(CreatureSex::CREATURE_SEX_FEMALE);
+  female->set_grams_unabsorbed_alcohol(100);
+
+  AlcoholCalculator ac;
+
+  EXPECT_FLOAT_EQ(1.0f, ac.calculate_grams_to_absorb(male));
+  EXPECT_FLOAT_EQ(1.5f, ac.calculate_grams_to_absorb(female));
+
+  std::map<int, pair<float, float>> hunger_and_grams = { {HungerLevelConverter::INT_HUNGER_LEVEL_DYING, {2.0f, 3.0f}}, 
+                                                         {HungerLevelConverter::INT_HUNGER_LEVEL_STARVING, {2.0f, 3.0f}}, 
+                                                         {HungerLevelConverter::INT_HUNGER_LEVEL_HUNGRY, {2.0f, 3.0f}}, {10000, {1.0f, 1.5f}},
+                                                         {HungerLevelConverter::INT_HUNGER_LEVEL_NORMAL, {1.0f, 1.5f}},
+                                                         {HungerLevelConverter::INT_HUNGER_LEVEL_FULL, {1.0f, 1.5f}},
+                                                         {HungerLevelConverter::INT_HUNGER_LEVEL_STUFFED, {1.0f, 1.5f}} };
+
+  for (const auto& hg_pair : hunger_and_grams)
+  {
+    male->get_hunger_clock_ref().set_hunger(hg_pair.first);
+    female->get_hunger_clock_ref().set_hunger(hg_pair.first);
+
+    EXPECT_FLOAT_EQ(hg_pair.second.first, ac.calculate_grams_to_absorb(male));
+    EXPECT_FLOAT_EQ(hg_pair.second.second, ac.calculate_grams_to_absorb(female));
+  }
+}
 
 TEST(SW_Engine_Calculators_AlcoholCalculator, grams_to_cancel)
 {
