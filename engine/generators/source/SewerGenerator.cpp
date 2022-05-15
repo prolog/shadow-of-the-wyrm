@@ -173,7 +173,6 @@ void SewerGenerator::generate_basin(MapPtr map)
 
     if (RNG::percent_chance(PCT_CHANCE_HERMIT))
     {
-      Game& game = Game::instance();
       map->set_allow_creature_creation(false);
       map->set_allow_creature_updates(false);
 
