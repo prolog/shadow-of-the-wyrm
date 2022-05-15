@@ -163,12 +163,15 @@ void Weapon::do_enchant_item(const int points)
 
 void Weapon::do_smith_item(const int points)
 {
-  if (RNG::percent_chance(25))
+  if (points > 0)
   {
-    Item::do_smith_item(points);
-  }
+    if (RNG::percent_chance(25))
+    {
+      Item::do_smith_item(points);
+    }
 
-  do_improve_item(points);
+    do_improve_item(points);
+  }
 }
 
 void Weapon::do_improve_item(const int points)

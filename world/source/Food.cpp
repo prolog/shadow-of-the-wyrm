@@ -51,8 +51,11 @@ Item* Food::clone()
 
 void Food::do_enchant_item(const int points)
 {
-  Consumable::do_enchant_item(points);
-  nutrition *= points;
+  if (points > 0)
+  {
+    Consumable::do_enchant_item(points);
+    nutrition *= points;
+  }
 }
 
 ClassIdentifier Food::internal_class_identifier() const

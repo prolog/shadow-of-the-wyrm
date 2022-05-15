@@ -2368,38 +2368,42 @@ string MapUtils::get_coordinate_location_sid(const Coordinate& c, const Dimensio
   return sid;
 }
 
-void MapUtils::enrage_nearby_creatures(MapPtr map, CreaturePtr creature, const string& base_creature_id, const string& race_id)
+void MapUtils::enrage_nearby_creatures(MapPtr map, CreaturePtr creature, const string& base_creature_id, const string& corpse_race_id)
 {
   if (map != nullptr && creature != nullptr)
   {
-    // Nearby creatures that can see the creature and match the 
-    // base_creature_id or whose race matches the race_id are enraged!!
-    const CreatureMap& creatures = map->get_creatures_ref();
-    HostilityManager hm;
-    RaceManager rm;
-
-    for (const auto& cm_pair : creatures)
+    if (!corpse_race_id.empty() || !base_creature_id.empty())
     {
-      if (cm_pair.second && cm_pair.second->get_decision_strategy()->get_fov_map()->has_creature(creature->get_id()))
+      // Nearby creatures that can see the creature and match the 
+      // base_creature_id or whose race matches the race_id are enraged!!
+      const CreatureMap& creatures = map->get_creatures_ref();
+      HostilityManager hm;
+      RaceManager rm;
+
+      for (const auto& cm_pair : creatures)
       {
-        CreaturePtr cm_c = cm_pair.second;
-        bool understands_corpses = (cm_c->get_intelligence().get_current() > IntelligenceConstants::MIN_INTELLIGENCE_UNDERSTAND_CORPSES);
-        Race* race = rm.get_race(cm_c->get_race_id());
-
-        if (cm_c->get_id() != creature->get_id() &&
-          understands_corpses &&
-          ((cm_c->get_race_id() == race_id && (race && !race->get_umbrella_race())) ||
-            cm_c->get_original_id() == base_creature_id))
+        if (cm_pair.second && cm_pair.second->get_decision_strategy()->get_fov_map()->has_creature(creature->get_id()))
         {
-          hm.set_hostility_to_creature(cm_c, creature->get_id());
+          CreaturePtr cm_c = cm_pair.second;
+          bool understands_corpses = (cm_c->get_intelligence().get_current() > IntelligenceConstants::MIN_INTELLIGENCE_UNDERSTAND_CORPSES);
+          Race* race = rm.get_race(cm_c->get_race_id());
 
-          Coordinate cm_coord = map->get_location(cm_c->get_id());
-          TilePtr cm_tile = map->at(cm_coord);
+          if (cm_c->get_id() != creature->get_id() &&
+              understands_corpses &&
+              ((cm_c->get_race_id() == corpse_race_id && (race && !race->get_umbrella_race())) ||
+                cm_c->get_original_id() == base_creature_id))
+          {
+            hm.set_hostility_to_creature(cm_c, creature->get_id());
 
-          RageEffect rage;
-          rage.effect(cm_c, &Game::instance().get_action_manager_ref(), ItemStatus::ITEM_STATUS_BLESSED, cm_coord, cm_tile, false);
+            Coordinate cm_coord = map->get_location(cm_c->get_id());
+            TilePtr cm_tile = map->at(cm_coord);
+
+            RageEffect rage;
+            rage.effect(cm_c, &Game::instance().get_action_manager_ref(), ItemStatus::ITEM_STATUS_BLESSED, cm_coord, cm_tile, false);
+          }
         }
       }
+
     }
   }
 }

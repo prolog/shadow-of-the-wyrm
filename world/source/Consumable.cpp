@@ -130,7 +130,10 @@ bool Consumable::consumable_properties_match(const Consumable& cons) const
 // Any poison is removed when an item is enchanted.
 void Consumable::do_enchant_item(const int points)
 {
-  poisoned = false;
+  if (points > 0)
+  {
+    poisoned = false;
+  }
 }
 
 // Consumables don't vary in price with enchantments.

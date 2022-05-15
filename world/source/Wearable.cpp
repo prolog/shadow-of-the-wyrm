@@ -99,23 +99,29 @@ string Wearable::get_synopsis() const
 
 void Wearable::do_enchant_item(const int points)
 {
-  if (RNG::percent_chance(50))
+  if (points > 0)
   {
-    Item::do_enchant_item(points);
-  }
+    if (RNG::percent_chance(50))
+    {
+      Item::do_enchant_item(points);
+    }
 
-  do_improve_item(points);
+    do_improve_item(points);
+  }
 }
 
 
 void Wearable::do_smith_item(const int points)
 {
-  if (RNG::percent_chance(25))
+  if (points > 0)
   {
-    Item::do_smith_item(points);
-  }
+    if (RNG::percent_chance(25))
+    {
+      Item::do_smith_item(points);
+    }
 
-  do_improve_item(points);
+    do_improve_item(points);
+  }
 }
 
 void Wearable::do_improve_item(const int points)

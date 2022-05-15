@@ -1,16 +1,26 @@
-Shadow of the Wyrm v1.4.7 "Satoh"
-- Version declared May 12, 2022.
+Shadow of the Wyrm v1.4.5.1 "Fuenllana"
+- Version declared May 12, 2022.  Version finalized May 15, 2022.
 
 - Hermits sometimes make their homes in the dry drainage basins in old sewers.
   It's very quiet.  Nobody tries to visit them.
 
-- Hermits have also been given the no-pickup flag.
+- Hermits have been given the no-pickup flag.
 
 - The Detect Traps effect now trains Detection (Josh Engdahl).
 
 - Alcohol absorbs twice as fast on an empty stomach.
 
 - More names.
+
+- Bug fixes:
+
+  - Eating most foods around adventurers and hirelings caused them to become
+    enraged, because the game considered adventurers and fruit to be
+    equivalent (Josh Engdahl).
+
+  - Food added via the Lua console with 0 enchants provided no nutrition.
+
+  - Added some additional 0-pt guards for enchanting and smithing.
 
 Shadow of the Wyrm v1.4.5 "Fuenllana"
 - Version declared March 27, 2022.  Version finalized May 12, 2022.

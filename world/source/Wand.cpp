@@ -197,14 +197,17 @@ Colour Wand::get_spell_colour() const
 // Using enchantment on a wand restores its charges and adds more
 void Wand::do_enchant_item(const int points)
 {
-  if (RNG::percent_chance(50))
+  if (points > 0)
   {
-    Item::do_enchant_item(points);
-  }
+    if (RNG::percent_chance(50))
+    {
+      Item::do_enchant_item(points);
+    }
 
-  // Always get at least one additional charge.
-  int additional_charges = std::min<int>(points / 2, 1);
-  set_charges(charges.get_base() + additional_charges);
+    // Always get at least one additional charge.
+    int additional_charges = std::min<int>(points / 2, 1);
+    set_charges(charges.get_base() + additional_charges);
+  }
 }
 
 // In most cases, create and clone do the same thing.  But for wands, creating
