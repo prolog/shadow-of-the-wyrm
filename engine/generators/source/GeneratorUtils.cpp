@@ -479,11 +479,11 @@ void GeneratorUtils::generate_hermitage(MapPtr map)
             vector<string> creatures = {};
             vector<string> items = {};
             vector<ClassIdentifier> features = { ClassIdentifier::CLASS_ID_BED };
-            vector<ClassIdentifier> potential_features = { ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, ClassIdentifier::CLASS_ID_TABLE };
+            vector<ClassIdentifier> potential_features = { ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, ClassIdentifier::CLASS_ID_TABLE, ClassIdentifier::CLASS_ID_BARREL, ClassIdentifier::CLASS_ID_FIRE_PILLAR };
 
             for (const auto& pf : potential_features)
             {
-              if (RNG::percent_chance(50))
+              if (RNG::percent_chance(30))
               {
                 features.push_back(pf);
               }

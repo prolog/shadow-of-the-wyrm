@@ -122,6 +122,13 @@ class Map : public ISerializable
     void set_danger(const int new_danger);
     int get_danger() const;
 
+    // Set/get whether creature initialization is allowed.  Normally this is
+    // always true, but there are certain maps where we want to suppress
+    // creature generation altogether, and do so by setting a flag while
+    // the map is generating.  This is the flag that controls that.
+    void set_allow_creature_creation(const bool new_allow_creature_creation);
+    bool get_allow_creature_creation() const;
+
     // Set/get whether creature updates are allowed.  If this is true, then
     // the engine will periodically add additional creatures to the map while
     // this map is active.  This will generally be true of maps generated
@@ -206,6 +213,7 @@ class Map : public ISerializable
     std::string map_id;
     bool permanent;
     int danger;
+    bool allow_creature_creation;
     bool allow_creature_updates;
     std::map<std::string, std::string> properties;
     TileTransformContainer tile_transforms;

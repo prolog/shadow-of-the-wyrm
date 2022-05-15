@@ -25,11 +25,12 @@ class SewerGenerator : public SOTW::Generator
     void connect_unconnected_sections(MapPtr result_map, const std::map<std::pair<Coordinate, Coordinate>, int>& incoming_connections);
     std::pair<Coordinate, Coordinate> retrieve_and_remove_random_section(std::map<int, std::vector<std::pair<Coordinate, Coordinate>>>& sections_copy);
 
-    void generate_basins(MapPtr result_map);
+    void generate_basin(MapPtr result_map);
 
     TileGenerator tg;
     std::map<int, std::vector<std::pair<Coordinate, Coordinate>>> sections;
     static const int MIN_WIDTH, MAX_WIDTH, MIN_HEIGHT, MAX_HEIGHT;
     static const int MIN_Y_INCR, MAX_Y_INCR;
     static const int X_INCR;
+    static const int PCT_CHANCE_HERMIT;
 };

@@ -65,6 +65,13 @@ bool HungerClock::can_eat(const int nutr) const
   return true;
 }
 
+bool HungerClock::is_stomach_empty() const
+{
+  HungerLevel hl = HungerLevelConverter::to_hunger_level(hunger);
+
+  return (hl == HungerLevel::HUNGER_LEVEL_DYING || hl == HungerLevel::HUNGER_LEVEL_STARVING || hl == HungerLevel::HUNGER_LEVEL_HUNGRY);
+}
+
 // Check to see if the creature is so full that they cannot eat anything
 // else.  Stuffed creatures obviously don't need to eat for a while, but
 // they're naturally a lot slower, too.

@@ -18,6 +18,7 @@ class SettlementGeneratorUtils
     static std::pair<bool, int> generate_sector_feature_if_possible(MapPtr map, const Coordinate& start, const Coordinate& end, const std::vector<std::shared_ptr<SectorFeature>>& sfeatures);
     static bool place_sign(MapPtr map, const int row, const int col, const std::string& settlement_name);
     static bool generate_perimeter_sign(MapPtr map, const std::string& settlement_name);
+    static void generate_building_interior(MapPtr map, const BuildingGenerationParameters& bgp);
 
   protected:
     SettlementGeneratorUtils();

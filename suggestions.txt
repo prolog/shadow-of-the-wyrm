@@ -1,9 +1,7 @@
 Me:
-- add basins (see SpringGenerator::generate_tall)
-- very small chance of someone making their home in sewers (how about a sage/
-  hermit? bed, books)
-- test removal of QUEST_INITIATED
-- just generally test!
+- ensure various races (insects, constructs, jellies, etc) use "itself"
+  (JE).
+- cavern towns/underground races (dw, gn)
 - need to test pack generation...
 - is the witchling membership bugged?
 - Ammo improvements:

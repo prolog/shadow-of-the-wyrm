@@ -295,6 +295,7 @@ CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, MapP
 
   hireling->set_decision_strategy(std::move(ds));
 
+  hireling->set_original_id(CreatureID::CREATURE_ID_HIRELING);
   hireling->set_description_sid(PartyTextKeys::HIRELING_DESC_SID);
   hireling->set_short_description_sid(PartyTextKeys::HIRELING_SHORT_DESC_SID);
   hireling->set_text_details_sid(PartyTextKeys::HIRELING_TEXT_DETAILS_SID);
@@ -391,6 +392,7 @@ CreaturePtr CreatureGenerationManager::generate_adventurer(ActionManager& am, Ma
 
   adv->set_decision_strategy(std::move(ds));
 
+  adv->set_original_id(CreatureID::CREATURE_ID_ADVENTURER);
   adv->set_description_sid(PartyTextKeys::ADVENTURER_DESC_SID);
   adv->set_short_description_sid(PartyTextKeys::ADVENTURER_SHORT_DESC_SID);
   adv->set_text_details_sid(PartyTextKeys::ADVENTURER_TEXT_DETAILS_SID);

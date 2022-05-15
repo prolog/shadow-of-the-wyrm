@@ -24,14 +24,19 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_creatures(MapPtr map, co
 {
   tuple<bool, int, Rarity> creatures_generated(false, 0, Rarity::RARITY_COMMON);
 
-  if (additional_properties.find(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES) != additional_properties.end())
+  if (map && map->get_allow_creature_creation())
   {
-    return generate_initial_set_creatures(map, additional_properties);
+    if (additional_properties.find(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES) != additional_properties.end())
+    {
+      return generate_initial_set_creatures(map, additional_properties);
+    }
+    else
+    {
+      return generate_random_creatures(map, danger_level, additional_properties);
+    }
   }
-  else
-  {
-    return generate_random_creatures(map, danger_level, additional_properties);
-  }
+
+  return creatures_generated;
 }
 
 tuple<bool, int, Rarity> MapCreatureGenerator::generate_initial_set_creatures(MapPtr map, const std::map<string, string>& additional_properties)
