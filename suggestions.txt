@@ -1,6 +1,18 @@
 Me:
+- amulet of the sky
+- set something on the fov_map so we can know if it's stale (time?)
+  - set_as_of, get_as_of (use properties)
+  - if as-of is set and != current time, CreatureUtils::... then return map
+  - look at other ways
+- JE: no danger prompt on 100 climbing
+- JE: drank fortified wine in store, wine not owned by shopkeeper, shopkeeper
+  remained friendly but attacked
+- train climbing by moving over hills.
 - ensure various races (insects, constructs, jellies, etc) use "itself"
   (JE).
+- setting for not skipping quest intros (JE)
+- return item to pack when drop/shop doesn't want (JE)
+- the archery/range issue: nothing gets added to MM
 - Grond: prompt for digging in shops
 - Let's finally do it: map ascension/descension
 - cavern towns/underground races (dw, gn)

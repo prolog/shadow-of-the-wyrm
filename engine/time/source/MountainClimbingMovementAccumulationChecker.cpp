@@ -13,15 +13,18 @@ void MountainClimbingMovementAccumulationChecker::check(CreaturePtr creature)
     MovementAccumulation& movement_accumulation = creature->get_movement_accumulation_ref();
     ulonglong time_on_mt = movement_accumulation.get_minutes_on_tile_type_given_movement();
 
-    if (time_on_mt > max_climbing_time)
+    if (mountaineering_skill_value < Skills::MAX_SKILL_VALUE)
     {
-      mountaineering.process(creature, nullptr);
-    }
-    else
-    {
-      if (RNG::percent_chance(10))
+      if (time_on_mt > max_climbing_time)
       {
-        sm.check_skill(creature, SkillType::SKILL_GENERAL_MOUNTAINEERING);
+        mountaineering.process(creature, nullptr);
+      }
+      else
+      {
+        if (RNG::percent_chance(10))
+        {
+          sm.check_skill(creature, SkillType::SKILL_GENERAL_MOUNTAINEERING);
+        }
       }
     }
   }

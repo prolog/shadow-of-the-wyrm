@@ -26,7 +26,11 @@ string AirTile::get_tile_description_sid() const
 
 bool AirTile::get_dangerous(CreaturePtr creature) const
 {
-  // TODO: Update this to check status of Flying effect.
+  if (creature && creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
+  {
+    return false;
+  }
+
   return true;
 }
 

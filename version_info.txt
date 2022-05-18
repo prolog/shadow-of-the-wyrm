@@ -4,6 +4,10 @@ Shadow of the Wyrm v1.4.7 "Satoh"
 - When removing items from the player (typically for fetch-type quests), the
   game now checks inventory first, then worn equipment.
 
+- There are no longer climbing danger prompts at skill 100 (Josh Engdahl).
+  At 100 climbing there are no longer exhaustion/etc checks: you will be
+  safe to climb mountains indefinitely.
+
 - More names.
 
 Shadow of the Wyrm v1.4.5.1 "Fuenllana"

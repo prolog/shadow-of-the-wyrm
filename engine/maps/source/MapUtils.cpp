@@ -2385,13 +2385,14 @@ void MapUtils::enrage_nearby_creatures(MapPtr map, CreaturePtr creature, const s
         if (cm_pair.second && cm_pair.second->get_decision_strategy()->get_fov_map()->has_creature(creature->get_id()))
         {
           CreaturePtr cm_c = cm_pair.second;
+
           bool understands_corpses = (cm_c->get_intelligence().get_current() > IntelligenceConstants::MIN_INTELLIGENCE_UNDERSTAND_CORPSES);
           Race* race = rm.get_race(cm_c->get_race_id());
 
           if (cm_c->get_id() != creature->get_id() &&
-              understands_corpses &&
-              ((cm_c->get_race_id() == corpse_race_id && (race && !race->get_umbrella_race())) ||
-                cm_c->get_original_id() == base_creature_id))
+            understands_corpses &&
+            ((cm_c->get_race_id() == corpse_race_id && (race && !race->get_umbrella_race())) ||
+              cm_c->get_original_id() == base_creature_id))
           {
             hm.set_hostility_to_creature(cm_c, creature->get_id());
 
