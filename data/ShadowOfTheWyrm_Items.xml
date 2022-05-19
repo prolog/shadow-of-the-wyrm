@@ -418,7 +418,9 @@
 			<Amulet id="amulet_of_the_sea">
 				<DescriptionSID>AMULET_OF_THE_SEA_SID</DescriptionSID>
 				<UsageDescriptionSID>AMULET_OF_THE_SEA_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_AMULET_OF_THE_SEA_SID</UnidentifiedDescriptionSID>
 				<CodexDescriptionSID>AMULET_OF_THE_SEA_CODEX_SID</CodexDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_AMULET_OF_THE_SEA_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>120</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -441,6 +443,36 @@
 				<Evade>5</Evade>
 				<StatusAilments>
 					<Status>_wb</Status>
+				</StatusAilments>
+			</Amulet>
+			<Amulet id="amulet_of_the_sky">
+				<DescriptionSID>AMULET_OF_THE_SKY_SID</DescriptionSID>
+				<UsageDescriptionSID>AMULET_OF_THE_SKY_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_AMULET_OF_THE_SKY_SID</UnidentifiedDescriptionSID>
+				<CodexDescriptionSID>AMULET_OF_THE_SKY_CODEX_SID</CodexDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_AMULET_OF_THE_SKY_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>120</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Material>13</Material>
+				<Symbol>
+					<Char>#</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>0</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>6</DangerLevel>
+				<Resistances>
+					<Lightning>0.05</Lightning>
+				</Resistances>
+				<Evade>5</Evade>
+				<StatusAilments>
+					<Status>_flying</Status>
 				</StatusAilments>
 			</Amulet>
 		</Amulets>

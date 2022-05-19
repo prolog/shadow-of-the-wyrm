@@ -4,10 +4,8 @@ Me:
   - set_as_of, get_as_of (use properties)
   - if as-of is set and != current time, CreatureUtils::... then return map
   - look at other ways
-- JE: no danger prompt on 100 climbing
 - JE: drank fortified wine in store, wine not owned by shopkeeper, shopkeeper
   remained friendly but attacked
-- train climbing by moving over hills.
 - ensure various races (insects, constructs, jellies, etc) use "itself"
   (JE).
 - setting for not skipping quest intros (JE)
