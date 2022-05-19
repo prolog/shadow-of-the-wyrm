@@ -1922,7 +1922,7 @@
     <ClInclude Include="engine\time\include\MovementAccumulator.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\time\include\NullMovementAccumulationChecker.hpp">
+    <ClInclude Include="engine\time\include\DefaultMovementAccumulationChecker.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\time\include\RegenerationConstants.hpp">
@@ -5395,7 +5395,7 @@
     <ClCompile Include="engine\time\source\MovementAccumulator.cpp">
       <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\time\source\NullMovementAccumulationChecker.cpp">
+    <ClCompile Include="engine\time\source\DefaultMovementAccumulationChecker.cpp">
       <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\time\source\RegenerationConstants.cpp">

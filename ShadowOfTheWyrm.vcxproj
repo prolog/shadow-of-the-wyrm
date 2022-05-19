@@ -1124,7 +1124,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\time\include\MountainClimbingMovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\MovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\MovementAccumulator.hpp" />
-    <ClInclude Include="engine\time\include\NullMovementAccumulationChecker.hpp" />
+    <ClInclude Include="engine\time\include\DefaultMovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\RegenerationConstants.hpp" />
     <ClInclude Include="engine\time\include\SeasonsTimeObserver.hpp" />
     <ClInclude Include="engine\time\include\ShopsTimeObserver.hpp" />
@@ -3462,7 +3462,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\time\source\MountainClimbingMovementAccumulationChecker.cpp" />
     <ClCompile Include="engine\time\source\MovementAccumulationChecker.cpp" />
     <ClCompile Include="engine\time\source\MovementAccumulator.cpp" />
-    <ClCompile Include="engine\time\source\NullMovementAccumulationChecker.cpp" />
+    <ClCompile Include="engine\time\source\DefaultMovementAccumulationChecker.cpp" />
     <ClCompile Include="engine\time\source\RegenerationConstants.cpp" />
     <ClCompile Include="engine\time\source\SeasonsTimeObserver.cpp" />
     <ClCompile Include="engine\time\source\SwimmingMovementAccumulationChecker.cpp" />

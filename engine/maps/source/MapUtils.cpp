@@ -500,9 +500,14 @@ Coordinate MapUtils::get_coordinate_for_creature(const MapPtr& map, const Creatu
 
 TilePtr MapUtils::get_tile_for_creature(const MapPtr& map, const CreaturePtr& creature)
 {
-  string creature_id = creature->get_id();
-  Coordinate creature_location = map->get_location(creature_id);
-  TilePtr creatures_tile = map->at(creature_location.first, creature_location.second);
+  TilePtr creatures_tile;
+
+  if (map != nullptr && creature != nullptr)
+  {
+    string creature_id = creature->get_id();
+    Coordinate creature_location = map->get_location(creature_id);
+    creatures_tile = map->at(creature_location.first, creature_location.second);
+  }
   
   return creatures_tile;
 }
