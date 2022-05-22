@@ -1,5 +1,12 @@
 Me:
-- amulet of the sky
+- JE: wandcraft shd affect wand to-hit
+- JE: summoning logic: deities shouldn't summon: creatures of other
+  deities, undead for some, demons for some, etc.
+
+  maybe should be:
+    - allow divine, subject to the above
+    - allow monsters, subject to the above
+    - allow undead and demons, if config allows it
 - set something on the fov_map so we can know if it's stale (time?)
   - set_as_of, get_as_of (use properties)
   - if as-of is set and != current time, CreatureUtils::... then return map
@@ -28,6 +35,7 @@ Me:
 - ASSET RELEASE
 - random uniques (race, class)
 - fisherman quest
+- what will mountaineering do now that amulets of the sky exist?
 - more town NPCs/sprites
 - overlapping houses in settlement - temple over tavern?
 - need to retest arena fights

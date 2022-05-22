@@ -2,6 +2,7 @@
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "MessageManagerFactory.hpp"
+#include "Setting.hpp"
 #include "TileSelectionCommandProcessor.hpp"
 
 using std::list;
@@ -95,8 +96,6 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_cursor_direct
 
 pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selection_bestiary(CreaturePtr creature, TileSelectionAction* const tsa)
 {
-  pair<bool, ActionCostValue> result(false, 0);
-
   string search_text;
   TilePtr tile = tsa->get_cursor_tile();
   bool ok_to_consult_bestiary = false;
@@ -129,13 +128,11 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selectio
     game.get_action_manager_ref().bestiary(creature, search_text, tile_creature);
   }
 
-  return result;
+  return std::make_pair(Game::instance().get_settings_ref().get_setting_as_bool(Setting::CONTINUE_TILE_SELECTION_AFTER_LOOKUP), 0);
 }
 
 pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selection_item_codex(CreaturePtr creature, TileSelectionAction* const tsa)
 {
-  pair<bool, ActionCostValue> result(false, 0);
-
   string search_text;
   TilePtr tile = tsa->get_cursor_tile();
   bool ok_to_consult_codex = false;
@@ -176,7 +173,7 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selectio
     game.get_action_manager_ref().item_codex(creature, item, false);
   }
 
-  return result;
+  return std::make_pair(Game::instance().get_settings_ref().get_setting_as_bool(Setting::CONTINUE_TILE_SELECTION_AFTER_LOOKUP), 0);
 }
 
 // Pick the next or previous creature in the given creature's view map creature list.

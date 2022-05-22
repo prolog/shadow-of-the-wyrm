@@ -1824,7 +1824,7 @@
 				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<Resistances>
-					<Arcane>0.05</Arcane>
+					<Arcane>0.10</Arcane>
 				</Resistances>
 				<Properties>
 					<Property>

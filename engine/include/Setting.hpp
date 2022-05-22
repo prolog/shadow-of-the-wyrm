@@ -69,6 +69,7 @@ class Setting
     static const std::string NARRATIVE_MODE;
     static const std::string DISALLOW_SCORE_ON_EXPLORATION;
     static const std::string SPELLCASTER_UNUSABLE_SPELLBOOK_SQUELCH_PCT;
+    static const std::string CONTINUE_TILE_SELECTION_AFTER_LOOKUP;
 
   protected:
     Setting();

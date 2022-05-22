@@ -10,6 +10,11 @@ Shadow of the Wyrm v1.4.7 "Satoh"
 
 - More names.
 
+- Removed some wand enchantment code that was causing stack issues.
+
+- Exiting the codex or bestiary during tile selection no longer exits tile
+  selection.  This behaviour is configurable in swyrm.ini (Josh Engdahl).
+
 - New items: amulet of the sky.
 
 Shadow of the Wyrm v1.4.5.1 "Fuenllana"
