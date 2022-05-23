@@ -16549,6 +16549,7 @@
 			<TextDetailsSID>MAWGRAWL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MAWGRAWL_SPEECH_TEXT_SID</SpeechTextSID>
 			<Size>4</Size>
+			<Sex>2</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>

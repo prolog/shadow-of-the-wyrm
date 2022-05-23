@@ -443,6 +443,7 @@
 		<Race id="_unknown">
 			<UserPlayable>0</UserPlayable>
 			<UmbrellaRace>1</UmbrellaRace>
+			<Sex>2</Sex>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
@@ -514,6 +515,7 @@
 		<Race id="_animal">
 			<UserPlayable>0</UserPlayable>
 			<UmbrellaRace>1</UmbrellaRace>
+			<Sex>2</Sex>
 			<PackMultiplier>3</PackMultiplier>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
@@ -586,6 +588,7 @@
 		<Race id="_bird" parent_id="_animal">
 			<UserPlayable>0</UserPlayable>
 			<UmbrellaRace>1</UmbrellaRace>
+			<Sex>2</Sex>
 			<PackMultiplier>2</PackMultiplier>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>

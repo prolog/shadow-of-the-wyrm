@@ -13,9 +13,6 @@ Me:
   - look at other ways
 - JE: drank fortified wine in store, wine not owned by shopkeeper, shopkeeper
   remained friendly but attacked
-- ensure various races (insects, constructs, jellies, etc) use "itself"
-  (JE).
-- setting for not skipping quest intros (JE)
 - return item to pack when drop/shop doesn't want (JE)
 - the archery/range issue: nothing gets added to MM
 - Grond: prompt for digging in shops

@@ -15,6 +15,9 @@ Shadow of the Wyrm v1.4.7 "Satoh"
 - Exiting the codex or bestiary during tile selection no longer exits tile
   selection.  This behaviour is configurable in swyrm.ini (Josh Engdahl).
 
+- Updated mawgrawls to use "itself" (Josh Engdahl).  Set this flag as well on
+  birds and animals.
+
 - New items: amulet of the sky.
 
 - Bug fixes:
