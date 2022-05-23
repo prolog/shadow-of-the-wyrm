@@ -450,6 +450,9 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "generate_name", generate_name);
   lua_register(L, "remove_chat_script", remove_chat_script);
   lua_register(L, "get_setting", get_setting);
+  lua_register(L, "set_current_age", set_current_age);
+  lua_register(L, "set_max_age", set_max_age);
+  lua_register(L, "set_hungerless", set_hungerless);
 }
 
 // Lua API helper functions
@@ -9598,4 +9601,69 @@ int get_setting(lua_State* ls)
 
   lua_pushstring(ls, s_val.c_str());
   return 1;
+}
+
+int set_current_age(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+    int cur_age = lua_tointeger(ls, 2);
+
+    if (creature != nullptr)
+    {
+      Statistic age = creature->get_age();
+      age.set_current(cur_age);
+
+      creature->set_age(age);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_current_age");
+  }
+
+  return 0;
+}
+
+int set_max_age(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+    int max_age = lua_tointeger(ls, 2);
+
+    if (creature != nullptr)
+    {
+      Statistic age = creature->get_age();
+      age.set_base(max_age);
+
+      creature->set_age(age);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_max_age");
+  }
+
+  return 0;
+}
+
+int set_hungerless(lua_State* ls)
+{
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      creature->get_hunger_clock_ref().set_requires_food(false);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_hungerless");
+  }
+
+  return 0;
 }
