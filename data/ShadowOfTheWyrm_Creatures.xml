@@ -11114,12 +11114,12 @@
 				<Type>8</Type>
 			</Damage>
 		</Creature>
-		<Creature id="callara">
+		<Creature id="callisa">
 			<RaceID>01_human</RaceID>
-			<ShortDescriptionSID>CALLARA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
-			<DescriptionSID>CALLARA_DESCRIPTION_SID</DescriptionSID>
-			<TextDetailsSID>CALLARA_TEXT_DETAILS_SID</TextDetailsSID>
-			<SpeechTextSID>CALLARA_SPEECH_TEXT_SID</SpeechTextSID>
+			<ShortDescriptionSID>CALLISA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CALLISA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CALLISA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CALLISA_SPEECH_TEXT_SID</SpeechTextSID>
 			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
@@ -11178,6 +11178,10 @@
 				</Spell>
 				<Spell>
 					<SpellID>a_03_lightning_bolt</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_09_frost_bolt</SpellID>
 					<Castings>1</Castings>
 				</Spell>
 			</Spells>

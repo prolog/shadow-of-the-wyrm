@@ -25,6 +25,9 @@ Shadow of the Wyrm v1.4.7 "Satoh"
   - Setting age via swyrm.ini was also overriding the maximum, leading to
     death after one year (Josh Engdahl).
 
+  - The NPC Callara was too close to "Calara", used in Lish's quest.  Callara
+    is now called Callisa (YARD).
+
 Shadow of the Wyrm v1.4.5.1 "Fuenllana"
 - Version declared May 12, 2022.  Version finalized May 15, 2022.
 

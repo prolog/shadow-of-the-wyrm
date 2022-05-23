@@ -354,6 +354,7 @@ Bentwing:
 - make undead hostile to humanoids
 - way of creating lock for door
 - restack on blessing eg books, all items, etc
+- more fleshed out NPCs/hirelings/writing generally
 
 Kenny:
 - repeat last command (!)
