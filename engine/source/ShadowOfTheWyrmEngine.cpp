@@ -639,6 +639,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
         if (static_cast<int>(i) == deity_idx)
         {
           selected_deity_id = deity_ids.at(i);
+          break;
         }
       }
     }
@@ -737,10 +738,14 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
 
   CreatureFactory cf;
   CreaturePtr player = cf.create_by_race_and_class(game.get_action_manager_ref(), nullptr, ccd.get_race_id(), ccd.get_class_id(), name, ccd.get_sex(), CreatureSize::CREATURE_SIZE_NA, ccd.get_deity_id(), true, true);
+  int starting_age = ccd.get_age();
 
-  if (selected_race != nullptr && selected_race->is_valid_starting_age(ccd.get_age()))
+  if (selected_race != nullptr && selected_race->is_valid_starting_age(starting_age))
   {
-    player->set_age(ccd.get_age());
+    Statistic pl_age = player->get_age();
+    pl_age.set_current(starting_age);
+
+    player->set_age(pl_age);
   }
 
   HairColour hc = ccd.get_hair_colour();

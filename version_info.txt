@@ -17,6 +17,11 @@ Shadow of the Wyrm v1.4.7 "Satoh"
 
 - New items: amulet of the sky.
 
+- Bug fixes:
+
+  - Setting age via swyrm.ini was also overriding the maximum, leading to
+    death after one year (Josh Engdahl).
+
 Shadow of the Wyrm v1.4.5.1 "Fuenllana"
 - Version declared May 12, 2022.  Version finalized May 15, 2022.
 
