@@ -31,6 +31,9 @@ Shadow of the Wyrm v1.4.7 "Satoh"
   - The buy-in message for Blackjack wasn't clearing properly before starting
     the game.
 
+  - Turned off an SDL hint that was causing sprite blurriness on high
+    resolutions/large monitors.
+
 Shadow of the Wyrm v1.4.5.1 "Fuenllana"
 - Version declared May 12, 2022.  Version finalized May 15, 2022.
 
