@@ -54,6 +54,7 @@ class TextMessages
     static std::string get_death_depth_location_message(const std::string& depth, const std::string& location);
     static std::string get_build_message(const std::string& thing_built);
     static std::string get_select_age_message(const int min_age, const int max_age);
+    static std::string get_and_replace(const std::string& message_sid, const std::vector<std::string>& replacements);
 
   protected:
     TextMessages();

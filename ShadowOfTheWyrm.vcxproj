@@ -748,6 +748,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\include\MarshGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MineGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MountainsGenerator.hpp" />
+    <ClInclude Include="engine\generators\include\NPCBackgroundGenerator.hpp" />
     <ClInclude Include="engine\generators\include\OrderedGraveyardGenerator.hpp" />
     <ClInclude Include="engine\generators\include\PillarGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\include\PillarTypes.hpp" />
@@ -1074,6 +1075,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\strings\include\MaterialTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MembershipTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MusicTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\NPCBackgroundTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\OrderTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\PlayerTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\PartyTextKeys.hpp" />
@@ -2052,6 +2054,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\source\CrossShrineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\FloatingTowerGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MapItemGenerator.cpp" />
+    <ClCompile Include="engine\generators\source\NPCBackgroundGenerator.cpp" />
     <ClCompile Include="engine\generators\source\RectangularShrineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\SewerGenerator.cpp" />
     <ClCompile Include="engine\generators\source\ShrineGenerator.cpp" />
@@ -2217,6 +2220,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\strings\source\InscriptionTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MembershipTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MusicTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\NPCBackgroundTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\OrderTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\PlayerTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\PartyTextKeys.cpp" />

@@ -18,6 +18,10 @@ Shadow of the Wyrm v1.4.7 "Satoh"
 - Updated mawgrawls to use "itself" (Josh Engdahl).  Set this flag as well on
   birds and animals.
 
+- Hirelings and adventurers now have a good chance to have personalized
+  bestiary entries.  When they don't, they'll continue to use the existing
+  respective entry.
+
 - New items: amulet of the sky.
 
 - Bug fixes:

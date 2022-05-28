@@ -820,3 +820,26 @@ string TextMessages::get_select_age_message(const int min_age, const int max_age
 
   return msg;
 }
+
+string TextMessages::get_and_replace(const string& sid, const vector<string>& replacements)
+{
+  string msg = StringTable::get(sid);
+  size_t rs = replacements.size() + 1;
+
+  for (size_t i = 0; i < replacements.size(); i++)
+  {
+    size_t si = i + 1;
+    string to_replace = "%s" + std::to_string(si);
+
+    boost::replace_first(msg, to_replace, replacements.at(i));
+
+    // We replace numerical indices, but also replace the standard %s.
+    // This gives you a choice of whether to use %s or %s1.
+    if (i == 0)
+    {
+      boost::replace_first(msg, "%s", replacements.at(i));
+    }
+  }
+
+  return msg;
+}

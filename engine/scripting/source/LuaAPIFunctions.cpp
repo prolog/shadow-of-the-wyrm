@@ -1,4 +1,5 @@
 #include "LuaAPIFunctions.hpp"
+#include "BestiaryAction.hpp"
 #include "BuySellCalculator.hpp"
 #include "CitySectorGenerator.hpp"
 #include "ClassManager.hpp"
@@ -35,6 +36,7 @@
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "Naming.hpp"
+#include "NPCBackgroundGenerator.hpp"
 #include "OptionScreen.hpp"
 #include "OrderAction.hpp"
 #include "EnclosureSectorFeature.hpp"
@@ -453,6 +455,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_current_age", set_current_age);
   lua_register(L, "set_max_age", set_max_age);
   lua_register(L, "set_hungerless", set_hungerless);
+  lua_register(L, "generate_npc_background", generate_npc_background);
+  lua_register(L, "show_bestiary_text", show_bestiary_text);
 }
 
 // Lua API helper functions
@@ -9663,6 +9667,48 @@ int set_hungerless(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Invalid arguments to set_hungerless");
+  }
+
+  return 0;
+}
+
+int generate_npc_background(lua_State* ls)
+{
+  string background;
+
+  if (lua_gettop(ls) == 0)
+  {
+    CreatureGenerationManager cgm;
+    MapPtr current_map = Game::instance().get_current_map();
+
+    CreaturePtr creature = cgm.generate_follower(Game::instance().get_action_manager_ref(), current_map, FollowerType::FOLLOWER_TYPE_ADVENTURER, 1);
+
+    NPCBackgroundGenerator nbg;
+    background = nbg.generate_bestiary(creature);
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to generate_npc_background");
+  }
+
+  lua_pushstring(ls, background.c_str());
+  return 1;
+}
+
+int show_bestiary_text(lua_State* ls)
+{
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string bestiary_text = lua_tostring(ls, 1);
+    CreaturePtr placeholder = std::make_shared<Creature>();
+    placeholder->set_text_details_sid(bestiary_text);
+
+    BestiaryAction ba;
+    ba.display_bestiary_information(placeholder);
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to show_bestiary_text");
   }
 
   return 0;
