@@ -38,11 +38,20 @@ string NPCBackgroundGenerator::generate_bestiary(CreaturePtr creature) const
 			fragments.push_back(handedness);
 		}
 
+		string parents = generate_parents(creature);
+
+		if (!parents.empty())
+		{
+			fragments.push_back(parents);
+		}
+
 		std::random_shuffle(fragments.begin(), fragments.end());
 		bool full_stop = true;
 
-		for (const auto& f : fragments)
+		for (size_t i = 0; i < fragments.size(); i++)
 		{
+			string f = fragments.at(i);
+
 			if (!f.empty())
 			{
 				string fr = f;
@@ -53,8 +62,10 @@ string NPCBackgroundGenerator::generate_bestiary(CreaturePtr creature) const
 				}
 
 				ss << fr;
-				
-				if (RNG::percent_chance(85))
+
+				// Last item always uses a period.  Otherwise, it'll usually use a period
+				// but may use a semi-colon or comma for variation.
+				if ((i == fragments.size()-1) || RNG::percent_chance(85))
 				{
 					full_stop = true;
 					ss << ". ";
@@ -62,7 +73,15 @@ string NPCBackgroundGenerator::generate_bestiary(CreaturePtr creature) const
 				else
 				{
 					full_stop = false;
-					ss << RNG::percent_chance(65) ? "; " : ", ";
+
+					if (RNG::percent_chance(65))
+					{
+						ss << "; ";
+					}
+					else
+					{
+						ss << ", ";
+					}
 				}
 			}
 		}
@@ -111,4 +130,21 @@ string NPCBackgroundGenerator::generate_handedness(CreaturePtr creature) const
 	}
 
 	return handed.str();
+}
+
+string NPCBackgroundGenerator::generate_parents(CreaturePtr creature) const
+{
+	ostringstream parents;
+
+	if (creature && RNG::percent_chance(75))
+	{
+		vector<string> parent_details = String::create_string_vector_from_csv_string(StringTable::get(NPCBackgroundTextKeys::FRAGMENT_PARENTS));
+
+		if (!parent_details.empty())
+		{
+			parents << parent_details.at(RNG::range(0, parent_details.size() - 1));
+		}
+	}
+
+	return parents.str();
 }

@@ -10,4 +10,5 @@ class NPCBackgroundGenerator
 		std::string generate_hair(CreaturePtr creature) const;
 		std::string generate_eyes(CreaturePtr creature) const;
 		std::string generate_handedness(CreaturePtr creature) const;
+		std::string generate_parents(CreaturePtr creature) const;
 };

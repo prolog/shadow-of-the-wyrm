@@ -25,7 +25,7 @@ Me:
   - Merge picked up into ammo slot
   - When done, cycle through applicable inventory items to equip (allow Y/N/
     Z to exit)
-- Do a bunch of curses testing now that a curses splash has been added.
+- EACH VERSION: more NPC background stuff
 - spinach/str?
 - bookstore
 - quest to quell a rebellion from Carcassia
