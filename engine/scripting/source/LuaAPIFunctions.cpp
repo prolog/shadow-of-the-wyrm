@@ -9676,14 +9676,21 @@ int generate_npc_background(lua_State* ls)
 {
   string background;
 
-  if (lua_gettop(ls) == 0)
+  if (lua_gettop(ls) >= 0)
   {
+    bool include_all = true;
+
+    if (lua_gettop(ls) == 1 && lua_isboolean(ls, 1))
+    {
+      include_all = lua_toboolean(ls, 1);
+    }
+
     CreatureGenerationManager cgm;
     MapPtr current_map = Game::instance().get_current_map();
 
     CreaturePtr creature = cgm.generate_follower(Game::instance().get_action_manager_ref(), current_map, FollowerType::FOLLOWER_TYPE_ADVENTURER, 1);
 
-    NPCBackgroundGenerator nbg;
+    NPCBackgroundGenerator nbg(include_all);
     background = nbg.generate_bestiary(creature);
   }
   else

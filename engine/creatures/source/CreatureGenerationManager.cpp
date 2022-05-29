@@ -489,8 +489,9 @@ void CreatureGenerationManager::generate_follower_bestiary(CreaturePtr creature,
 
     if (RNG::percent_chance(75))
     {
-      NPCBackgroundGenerator nbg;
+      bool include_all = RNG::percent_chance(50);
 
+      NPCBackgroundGenerator nbg(include_all);
       text_details = nbg.generate_bestiary(creature);
     }
     else
