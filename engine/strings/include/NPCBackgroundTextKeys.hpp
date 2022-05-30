@@ -14,7 +14,11 @@ class NPCBackgroundTextKeys
 		static const std::string FRAGMENT_FORMER_JOBS;
 		static const std::string FORMER_JOBS;
 		static const std::string FRAGMENT_NEGATIVE_LIFE_EVENTS;
-		static const std::string HABITS;
+		static const std::string FRAGMENT_TRAVEL;
+		static const std::string TRAVEL;
+		static const std::string FRAGMENT_BORN;
+		static const std::string FRAGMENT_LOVE;
+		static const std::string FRAGMENT_HABITS;
 
 	protected:
 		NPCBackgroundTextKeys();

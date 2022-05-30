@@ -89,6 +89,27 @@ string NPCBackgroundGenerator::generate_bestiary(CreaturePtr creature) const
 			std::copy(habits.begin(), habits.end(), std::back_inserter(fragments));
 		}
 
+		string travel = generate_travel(creature);
+
+		if (!travel.empty())
+		{
+			fragments.push_back(travel);
+		}
+
+		string born = generate_born(creature);
+
+		if (!born.empty())
+		{
+			fragments.push_back(born);
+		}
+
+		string love = generate_love(creature);
+
+		if (!love.empty())
+		{
+			fragments.push_back(love);
+		}
+
 		ss << generate_bestiary_text(fragments);
 	}
 
@@ -271,7 +292,7 @@ vector<string> NPCBackgroundGenerator::generate_habits(CreaturePtr creature) con
 
 	if (creature != nullptr && (include_all || RNG::percent_chance(65)))
 	{
-		vector<string> habit_list = String::create_string_vector_from_csv_string(StringTable::get(NPCBackgroundTextKeys::HABITS));
+		vector<string> habit_list = String::create_string_vector_from_csv_string(StringTable::get(NPCBackgroundTextKeys::FRAGMENT_HABITS));
 		std::random_shuffle(habit_list.begin(), habit_list.end());
 
 		int num_habits = 0;
@@ -298,6 +319,71 @@ vector<string> NPCBackgroundGenerator::generate_habits(CreaturePtr creature) con
 	return habits;
 }
 
+string NPCBackgroundGenerator::generate_travel(CreaturePtr creature) const
+{
+	ostringstream ss;
+
+	if (creature != nullptr && (include_all || RNG::percent_chance(65)))
+	{
+		vector<string> travel_options = String::create_string_vector_from_csv_string(StringTable::get(NPCBackgroundTextKeys::TRAVEL));
+
+		if (!travel_options.empty())
+		{
+			string travel = travel_options.at(RNG::range(0, travel_options.size() - 1));
+
+			bool use_container = RNG::percent_chance(50);
+
+			if (use_container)
+			{
+				vector<string> travel_container_options = String::create_string_vector_from_csv_string(StringTable::get(NPCBackgroundTextKeys::FRAGMENT_TRAVEL));
+
+				if (!travel_container_options.empty())
+				{
+					travel = TextMessages::get_and_replace(travel_container_options.at(RNG::range(0, travel_container_options.size() - 1)), { travel });
+				}
+			}
+
+			ss << travel;
+		}
+	}
+
+	return ss.str();
+}
+
+string NPCBackgroundGenerator::generate_born(CreaturePtr creature) const
+{
+	ostringstream ss;
+
+	if (creature != nullptr && (include_all || RNG::percent_chance(65)))
+	{
+		vector<string> neg_events = String::create_string_vector_from_csv_string(StringTable::get(NPCBackgroundTextKeys::FRAGMENT_BORN));
+
+		if (!neg_events.empty())
+		{
+			ss << neg_events.at(RNG::range(0, neg_events.size() - 1));
+		}
+	}
+
+	return ss.str();
+}
+
+string NPCBackgroundGenerator::generate_love(CreaturePtr creature) const
+{
+	ostringstream ss;
+
+	if (creature != nullptr && (include_all || RNG::percent_chance(65)))
+	{
+		vector<string> neg_events = String::create_string_vector_from_csv_string(StringTable::get(NPCBackgroundTextKeys::FRAGMENT_LOVE));
+
+		if (!neg_events.empty())
+		{
+			ss << neg_events.at(RNG::range(0, neg_events.size() - 1));
+		}
+	}
+
+	return ss.str();
+}
+
 string NPCBackgroundGenerator::generate_bestiary_text(const vector<string>& frag) const
 {
 	ostringstream ss;
@@ -320,6 +406,7 @@ string NPCBackgroundGenerator::generate_bestiary_text(const vector<string>& frag
 				fr[0] = std::toupper(fr[0]);
 			}
 
+			fr = boost::trim_copy(fr);
 			ss << fr;
 
 			// Last item always uses a period.  Otherwise, it'll usually use a period

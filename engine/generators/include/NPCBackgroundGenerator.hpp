@@ -20,6 +20,9 @@ class NPCBackgroundGenerator
 		std::string generate_former_job(CreaturePtr creature) const;
 		std::string generate_negative_life_event(CreaturePtr creature) const;
 		std::vector<std::string> generate_habits(CreaturePtr creature) const;
+		std::string generate_travel(CreaturePtr creature) const;
+		std::string generate_born(CreaturePtr creature) const;
+		std::string generate_love(CreaturePtr creature) const;
 
 		std::string generate_bestiary_text(const std::vector<std::string>& fragments) const;
 
