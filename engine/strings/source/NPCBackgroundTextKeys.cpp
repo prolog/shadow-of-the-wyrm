@@ -17,3 +17,7 @@ const string NPCBackgroundTextKeys::TRAVEL = "TRAVEL";
 const string NPCBackgroundTextKeys::FRAGMENT_BORN = "FRAGMENT_BORN";
 const string NPCBackgroundTextKeys::FRAGMENT_LOVE = "FRAGMENT_LOVE";
 const string NPCBackgroundTextKeys::FRAGMENT_HABITS = "FRAGMENT_HABITS";
+const string NPCBackgroundTextKeys::FRAGMENT_PHOBIA = "FRAGMENT_PHOBIA";
+const string NPCBackgroundTextKeys::PHOBIA = "PHOBIA";
+const string NPCBackgroundTextKeys::FRAGMENT_MISC = "FRAGMENT_MISC";
+

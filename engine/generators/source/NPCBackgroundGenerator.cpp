@@ -110,6 +110,20 @@ string NPCBackgroundGenerator::generate_bestiary(CreaturePtr creature) const
 			fragments.push_back(love);
 		}
 
+		string phobia = generate_phobia(creature);
+
+		if (!phobia.empty())
+		{
+			fragments.push_back(phobia);
+		}
+
+		vector<string> misc = generate_misc(creature);
+
+		if (!misc.empty())
+		{
+			std::copy(misc.begin(), misc.end(), std::back_inserter(fragments));
+		}
+
 		ss << generate_bestiary_text(fragments);
 	}
 
@@ -382,6 +396,70 @@ string NPCBackgroundGenerator::generate_love(CreaturePtr creature) const
 	}
 
 	return ss.str();
+}
+
+string NPCBackgroundGenerator::generate_phobia(CreaturePtr creature) const
+{
+	ostringstream ss;
+
+	if (creature != nullptr && (include_all || RNG::percent_chance(50)))
+	{
+		vector<string> phobias = String::create_string_vector_from_csv_string(StringTable::get(NPCBackgroundTextKeys::PHOBIA));
+
+		if (!phobias.empty())
+		{
+			string phobia = phobias.at(RNG::range(0, phobias.size() - 1));
+			bool inc_container = RNG::percent_chance(100);
+
+			if (inc_container)
+			{
+					vector<string> container_options = String::create_string_vector_from_csv_string(StringTable::get(NPCBackgroundTextKeys::FRAGMENT_PHOBIA));
+
+					if (!container_options.empty())
+					{
+						string container = container_options.at(RNG::range(0, container_options.size() - 1));
+						phobia = TextMessages::get_and_replace(container, { phobia });
+					}
+			}
+
+			ss << phobia;
+		}
+	}
+
+	return ss.str();
+}
+
+vector<string> NPCBackgroundGenerator::generate_misc(CreaturePtr creature) const
+{
+	vector<string> misc;
+
+	if (creature != nullptr && (include_all || RNG::percent_chance(65)))
+	{
+		vector<string> misc_options = String::create_string_vector_from_csv_string(StringTable::get(NPCBackgroundTextKeys::FRAGMENT_MISC));
+
+		int num_misc = 0;
+
+		if (include_all)
+		{
+			num_misc = 3;
+		}
+		else
+		{
+			num_misc = RNG::range(1, 3);
+		}
+
+		std::shuffle(misc_options.begin(), misc_options.end(), RNG::get_engine());
+		int cnt = 0;
+
+		while (cnt < num_misc && !misc_options.empty())
+		{
+			misc.push_back(misc_options.back());
+			misc_options.pop_back();
+			cnt++;
+		}
+	}
+
+	return misc;
 }
 
 string NPCBackgroundGenerator::generate_bestiary_text(const vector<string>& frag) const

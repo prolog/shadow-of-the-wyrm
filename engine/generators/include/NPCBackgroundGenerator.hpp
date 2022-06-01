@@ -23,6 +23,8 @@ class NPCBackgroundGenerator
 		std::string generate_travel(CreaturePtr creature) const;
 		std::string generate_born(CreaturePtr creature) const;
 		std::string generate_love(CreaturePtr creature) const;
+		std::string generate_phobia(CreaturePtr creature) const;
+		std::vector<std::string> generate_misc(CreaturePtr creature) const;
 
 		std::string generate_bestiary_text(const std::vector<std::string>& fragments) const;
 

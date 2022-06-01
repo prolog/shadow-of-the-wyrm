@@ -19,6 +19,9 @@ class NPCBackgroundTextKeys
 		static const std::string FRAGMENT_BORN;
 		static const std::string FRAGMENT_LOVE;
 		static const std::string FRAGMENT_HABITS;
+		static const std::string FRAGMENT_PHOBIA;
+		static const std::string PHOBIA;
+		static const std::string FRAGMENT_MISC;
 
 	protected:
 		NPCBackgroundTextKeys();
