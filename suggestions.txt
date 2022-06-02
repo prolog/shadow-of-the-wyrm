@@ -1,4 +1,5 @@
 Me:
+- appearance: 1 selected
 - capitalization on gen'd bestiary
 - JE: wandcraft shd affect wand to-hit
 - JE: summoning logic: deities shouldn't summon: creatures of other
