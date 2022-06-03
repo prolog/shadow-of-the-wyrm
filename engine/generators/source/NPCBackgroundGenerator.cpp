@@ -222,7 +222,7 @@ string NPCBackgroundGenerator::generate_children(CreaturePtr creature) const
 {
 	ostringstream children;
 
-	if (creature != nullptr && (include_all || RNG::percent_chance(65)))
+	if (creature != nullptr && (include_all || RNG::percent_chance(40)))
 	{
 		vector<string> children_details = String::create_string_vector_from_csv_string(StringTable::get(NPCBackgroundTextKeys::FRAGMENT_CHILDREN));
 
@@ -501,6 +501,7 @@ string NPCBackgroundGenerator::generate_bestiary_text(const vector<string>& frag
 		if (!f.empty())
 		{
 			string fr = f;
+			fr = boost::trim_copy(fr);
 			fr[0] = std::tolower(fr[0]);
 
 			if (full_stop)
@@ -508,7 +509,6 @@ string NPCBackgroundGenerator::generate_bestiary_text(const vector<string>& frag
 				fr[0] = std::toupper(fr[0]);
 			}
 
-			fr = boost::trim_copy(fr);
 			ss << fr;
 
 			// Last item always uses a period.  Otherwise, it'll usually use a period
