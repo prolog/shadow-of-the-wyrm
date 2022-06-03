@@ -8,6 +8,7 @@ class NPCBackgroundTextKeys
 		static const std::string FRAGMENT_EYES;
 		static const std::string LEFTY;
 		static const std::string SOUTHPAW;
+		static const std::string FRAGMENT_APPEARANCE;
 		static const std::string FRAGMENT_PARENTS;
 		static const std::string FRAGMENT_CHILDREN;
 		static const std::string FRAGMENT_PERSONALITY;

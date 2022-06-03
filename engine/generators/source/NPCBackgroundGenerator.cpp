@@ -47,6 +47,13 @@ string NPCBackgroundGenerator::generate_bestiary(CreaturePtr creature) const
 			fragments.push_back(handedness);
 		}
 
+		string appearance = generate_appearance(creature);
+
+		if (!appearance.empty())
+		{
+			fragments.push_back(appearance);
+		}
+
 		string parents = generate_parents(creature);
 
 		if (!parents.empty())
@@ -175,6 +182,23 @@ string NPCBackgroundGenerator::generate_handedness(CreaturePtr creature) const
 	}
 
 	return handed.str();
+}
+
+string NPCBackgroundGenerator::generate_appearance(CreaturePtr creature) const
+{
+	ostringstream appearance;
+
+	if (creature != nullptr && (include_all || RNG::percent_chance(65)))
+	{
+		vector<string> app_options = String::create_string_vector_from_csv_string(StringTable::get(NPCBackgroundTextKeys::FRAGMENT_APPEARANCE));
+
+		if (!app_options.empty())
+		{
+			appearance << app_options.at(RNG::range(0, app_options.size() - 1));
+		}
+	}
+
+	return appearance.str();
 }
 
 string NPCBackgroundGenerator::generate_parents(CreaturePtr creature) const

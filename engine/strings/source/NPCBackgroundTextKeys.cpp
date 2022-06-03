@@ -6,6 +6,7 @@ const string NPCBackgroundTextKeys::FRAGMENT_HAIR = "FRAGMENT_HAIR";
 const string NPCBackgroundTextKeys::FRAGMENT_EYES = "FRAGMENT_EYES";
 const string NPCBackgroundTextKeys::LEFTY = "LEFTY";
 const string NPCBackgroundTextKeys::SOUTHPAW = "SOUTHPAW";
+const string NPCBackgroundTextKeys::FRAGMENT_APPEARANCE = "FRAGMENT_APPEARANCE";
 const string NPCBackgroundTextKeys::FRAGMENT_PARENTS = "FRAGMENT_PARENTS";
 const string NPCBackgroundTextKeys::FRAGMENT_CHILDREN = "FRAGMENT_CHILDREN";
 const string NPCBackgroundTextKeys::FRAGMENT_PERSONALITY = "FRAGMENT_PERSONALITY";
