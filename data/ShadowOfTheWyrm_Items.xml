@@ -466,7 +466,7 @@
 						<Col>0</Col>
 					</Sprite>
 				</Symbol>
-				<DangerLevel>6</DangerLevel>
+				<DangerLevel>8</DangerLevel>
 				<Resistances>
 					<Lightning>0.05</Lightning>
 				</Resistances>

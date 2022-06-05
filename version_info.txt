@@ -22,6 +22,10 @@ Shadow of the Wyrm v1.4.7 "Satoh"
   bestiary entries.  When they don't, they'll continue to use the existing
   respective entry.
 
+- When you drop an item a shopkeeper doesn't want, it's now added back to your
+  pack (Josh Engdahl).  This also happens if the shopkeeper wants to buy it
+  but can't afford it.
+
 - New items: amulet of the sky.
 
 - Bug fixes:
