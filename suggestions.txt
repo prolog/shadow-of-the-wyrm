@@ -16,7 +16,6 @@ Me:
 - JE: drank fortified wine in store, wine not owned by shopkeeper, shopkeeper
   remained friendly but attacked
 - the archery/range issue: nothing gets added to MM
-- Grond: prompt for digging in shops
 - Let's finally do it: map ascension/descension
 - cavern towns/underground races (dw, gn)
 - need to test pack generation...
