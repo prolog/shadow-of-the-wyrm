@@ -29,6 +29,8 @@ Shadow of the Wyrm v1.4.7 "Satoh"
 - When digging via non-magical means in a shop, the player is now prompted
   to continue (Grond).
 
+- Wandcraft now affects to-hit when evoking a wand (Josh Engdahl).
+
 - New items: amulet of the sky.
 
 - Bug fixes:

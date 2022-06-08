@@ -1,6 +1,7 @@
 #include "CombatTargetNumberCalculatorFactory.hpp"
 #include "MagicalCombatTargetNumberCalculator.hpp"
 #include "MeleeAndRangedCombatTargetNumberCalculator.hpp"
+#include "WandsCombatTargetNumberCalculator.hpp"
 
 CombatTargetNumberCalculatorFactory::CombatTargetNumberCalculatorFactory()
 {
@@ -26,6 +27,9 @@ CombatTargetNumberCalculatorPtr CombatTargetNumberCalculatorFactory::create_targ
       break;
     case AttackType::ATTACK_TYPE_MAGICAL:
       tn_calc = std::make_unique<MagicalCombatTargetNumberCalculator>();
+      break;
+    case AttackType::ATTACK_TYPE_MAGICAL_WANDS:
+      tn_calc = std::make_unique<WandsCombatTargetNumberCalculator>();
       break;
     default:
       break;

@@ -34,6 +34,7 @@ AttackSpeedCalculatorPtr AttackSpeedCalculatorFactory::create_speed_calculator(c
       speed_calculator = std::make_unique<RangedAttackSpeedCalculator>();
       break;
     case AttackType::ATTACK_TYPE_MAGICAL:
+    case AttackType::ATTACK_TYPE_MAGICAL_WANDS:
       speed_calculator = std::make_unique<MagicalAttackSpeedCalculator>();
       break;
     default:

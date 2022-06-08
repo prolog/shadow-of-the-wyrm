@@ -34,14 +34,14 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> SpellShapeProcessor::create_a
 
 // Process the shape.  This is done by generating all the affected tiles,
 // and then applying damage and spell effects to each.
-bool SpellShapeProcessor::process_damage_and_effect(CreaturePtr caster, const vector<pair<Coordinate, TilePtr>>& affected_coords_and_tiles, const Spell& spell, const int bonus, const ItemStatus effect_status, ActionManager * const am)
+bool SpellShapeProcessor::process_damage_and_effect(CreaturePtr caster, const vector<pair<Coordinate, TilePtr>>& affected_coords_and_tiles, const Spell& spell, const int bonus, const ItemStatus effect_status, ActionManager * const am, const AttackType attack_type)
 {
   // Apply the spell's damage/effect to the tiles in order.
-  return apply_damage_and_effect(caster, affected_coords_and_tiles, spell, bonus, effect_status, am);
+  return apply_damage_and_effect(caster, affected_coords_and_tiles, spell, bonus, effect_status, am, attack_type);
 }
 
 // Apply a spell to a particular tile by applying its damage and spell effect.
-bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vector<pair<Coordinate, TilePtr>>& affected_coords_and_tiles, const Spell& spell, const int bonus, const ItemStatus effect_status, ActionManager * const am)
+bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vector<pair<Coordinate, TilePtr>>& affected_coords_and_tiles, const Spell& spell, const int bonus, const ItemStatus effect_status, ActionManager * const am, const AttackType attack_type)
 {
   bool spell_identified = false;
 
@@ -55,7 +55,7 @@ bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vect
     Coordinate coord = ct_pair.first;
     TilePtr tile = ct_pair.second;
 
-    bool damage_identified = apply_damage(caster, coord, tile, spell, am);
+    bool damage_identified = apply_damage(caster, coord, tile, spell, am, attack_type);
     bool effect_identified = apply_effect(effect.get(), caster, coord, tile, spell, bonus, effect_status, am);
 
     if ((damage_identified || effect_identified) && !spell_identified)
@@ -68,7 +68,7 @@ bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vect
 }
 
 // Apply a spell's damage to a particular tile.
-bool SpellShapeProcessor::apply_damage(CreaturePtr caster, const Coordinate& c, TilePtr tile, const Spell& spell, ActionManager * const am)
+bool SpellShapeProcessor::apply_damage(CreaturePtr caster, const Coordinate& c, TilePtr tile, const Spell& spell, ActionManager * const am, const AttackType attack_type)
 {
   // A spell can be identified if the creature can see its damage type.
   // So, evoking a wand of frost, for example, identifies it.  Evoking
@@ -85,7 +85,7 @@ bool SpellShapeProcessor::apply_damage(CreaturePtr caster, const Coordinate& c, 
 
       if (spell.get_allows_bonus())
       {
-        cm.attack(caster, tile_creature, AttackType::ATTACK_TYPE_MAGICAL, AttackSequenceType::ATTACK_SEQUENCE_INITIAL, true);
+        cm.attack(caster, tile_creature, attack_type, AttackSequenceType::ATTACK_SEQUENCE_INITIAL, true);
       }
       else
       {
@@ -93,7 +93,7 @@ bool SpellShapeProcessor::apply_damage(CreaturePtr caster, const Coordinate& c, 
         // in the game's list, and so the magical damage calculator isn't
         // appropriate.  Pass the damage directly to the combat manager.
         DamagePtr dmg = std::make_shared<Damage>(spell.get_damage());
-        cm.attack(caster, tile_creature, AttackType::ATTACK_TYPE_MAGICAL, AttackSequenceType::ATTACK_SEQUENCE_INITIAL, false, dmg);
+        cm.attack(caster, tile_creature, attack_type, AttackSequenceType::ATTACK_SEQUENCE_INITIAL, false, dmg);
       }
 
       spell_identified = true;

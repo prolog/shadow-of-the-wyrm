@@ -2,6 +2,7 @@
 #include "MeleeCombatSkillMarker.hpp"
 #include "RangedCombatSkillMarker.hpp"
 #include "MagicalCombatSkillMarker.hpp"
+#include "WandsCombatSkillMarker.hpp"
 
 SkillMarkerFactory::SkillMarkerFactory()
 {
@@ -24,6 +25,9 @@ ISkillMarkerPtr SkillMarkerFactory::create_skill_marker(const AttackType attack_
       break;
     case AttackType::ATTACK_TYPE_RANGED:
       skill_marker = std::make_unique<RangedCombatSkillMarker>();
+      break;
+    case AttackType::ATTACK_TYPE_MAGICAL_WANDS:
+      skill_marker = std::make_unique<WandsCombatSkillMarker>();
       break;
     case AttackType::ATTACK_TYPE_MAGICAL:
     default:
