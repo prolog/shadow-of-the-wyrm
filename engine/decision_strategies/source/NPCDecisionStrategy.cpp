@@ -559,9 +559,11 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
     // place, moving only to pursue when attacked.
     bool sentinel = String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL));
     bool ordered_sentinel = String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_ORDERED_SENTINEL));
+    string order_follow = get_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID);
 
-    if (this_creature &&
-       (!this_creature->has_leader() && (sentinel || ordered_sentinel)) &&
+    if ((sentinel || ordered_sentinel) &&
+        order_follow.empty() &&
+        this_creature &&
         MapUtils::hostile_creature_exists(this_creature_id, view_map) == false)
     {
       return movement_command;

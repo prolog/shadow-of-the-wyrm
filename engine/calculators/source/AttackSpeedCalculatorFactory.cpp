@@ -5,6 +5,7 @@
 #include "RangedAttackSpeedCalculator.hpp"
 #include "SecondaryPhysicalAttackSpeedCalculator.hpp"
 #include "TertiaryUnarmedPhysicalAttackSpeedCalculator.hpp"
+#include "WandsAttackSpeedCalculator.hpp"
 
 AttackSpeedCalculatorFactory::AttackSpeedCalculatorFactory()
 {
@@ -33,8 +34,10 @@ AttackSpeedCalculatorPtr AttackSpeedCalculatorFactory::create_speed_calculator(c
     case AttackType::ATTACK_TYPE_RANGED:
       speed_calculator = std::make_unique<RangedAttackSpeedCalculator>();
       break;
-    case AttackType::ATTACK_TYPE_MAGICAL:
     case AttackType::ATTACK_TYPE_MAGICAL_WANDS:
+      speed_calculator = std::make_unique<WandsAttackSpeedCalculator>();
+      break;
+    case AttackType::ATTACK_TYPE_MAGICAL:
       speed_calculator = std::make_unique<MagicalAttackSpeedCalculator>();
       break;
     default:

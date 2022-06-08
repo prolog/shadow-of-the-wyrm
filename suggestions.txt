@@ -1,9 +1,4 @@
 Me:
-- WandSpeedCalculator
-- Wandcraft should also affect wand speed...
-- Wands not working now :(
-- Freeze not working? (owl)
-- NEED TO TEST WANDS IN DEBUGGER
 - mountaineering/lore: chance to find magici shard (+ mark tile), but only on
   world map
 - JE: if shopkeeper attacks but you pay him he stops being hostile but will

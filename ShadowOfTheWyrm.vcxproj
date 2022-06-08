@@ -471,6 +471,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\UnarmedCombatCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\UntimedStatusCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WandCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\WandsAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WandsCombatSkillMarker.hpp" />
     <ClInclude Include="engine\calculators\include\WandsCombatTargetNumberCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WandsToHitCalculator.hpp" />
@@ -1809,6 +1810,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\WandsAttackSpeedCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\WandsToHitCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
@@ -1835,6 +1842,7 @@ mkdir $(OutDir)logs
     </ClCompile>
     <ClCompile Include="engine\calculators\source\UntimedStatusCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\WandCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\WandsAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\WandsCombatSkillMarker.cpp" />
     <ClCompile Include="engine\calculators\source\WandsCombatTargetNumberCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\WandsToHitCalculator.cpp" />
