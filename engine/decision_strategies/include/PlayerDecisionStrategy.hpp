@@ -11,6 +11,7 @@ class PlayerDecisionStrategy : public DecisionStrategy
 
     uint get_count(const uint max_count);
     bool get_confirmation(const bool confirmation_default_value = false, const bool require_proper_selection = false) override;
+    bool get_attack_confirmation(CreaturePtr creature);
 
     DecisionStrategy* copy();
 

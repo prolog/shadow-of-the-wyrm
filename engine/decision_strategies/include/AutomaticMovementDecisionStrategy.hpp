@@ -21,6 +21,7 @@ class AutomaticMovementDecisionStrategy : public DecisionStrategy
 
     virtual uint get_count(const uint max_count) override;
     virtual bool get_confirmation(const bool confirmation_default_value = false, const bool require_proper_selection = false) override;
+    virtual bool get_attack_confirmation(CreaturePtr creature) override;
 
     virtual DecisionStrategy* copy() override;
 

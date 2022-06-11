@@ -99,6 +99,23 @@ bool NPCDecisionStrategy::get_confirmation(const bool confirmation_default_value
   return true;
 }
 
+bool NPCDecisionStrategy::get_attack_confirmation(CreaturePtr creature)
+{
+  bool confirm = false;
+
+  if (creature != nullptr)
+  {
+    auto threat = threat_ratings.has_threat(creature->get_id());
+
+    if (threat.first && threat.second > ThreatConstants::DISLIKE_THREAT_RATING)
+    {
+      confirm = true;
+    }
+  }
+
+  return confirm;
+}
+
 void NPCDecisionStrategy::set_fov_map(MapPtr new_fov_map)
 {
   current_fov_map = new_fov_map;

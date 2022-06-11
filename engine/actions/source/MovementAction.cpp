@@ -218,7 +218,8 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
     }
     else if (attack_at_range.first && 
              attack_at_range.second != nullptr && 
-             (automelee || confirm_ranged_melee_attack(creature)))
+             ((automelee && creature->get_is_player()) || 
+              confirm_ranged_melee_attack(creature, attack_at_range.second->get_creature())))
     {
       CombatManager cm;
       movement_acv = cm.attack(creature, attack_at_range.second->get_creature(), AttackType::ATTACK_TYPE_MELEE_PRIMARY);
@@ -972,7 +973,7 @@ ActionCostValue MovementAction::descend(CreaturePtr creature)
   return movement_acv;
 }
 
-bool MovementAction::confirm_ranged_melee_attack(CreaturePtr creature)
+bool MovementAction::confirm_ranged_melee_attack(CreaturePtr creature, CreaturePtr attacked_creature)
 {
   bool confirm = false;
 
@@ -984,13 +985,9 @@ bool MovementAction::confirm_ranged_melee_attack(CreaturePtr creature)
       string confirm_attack = TextMessages::get_confirmation_message(TextKeys::DECISION_CONFIRM_RANGED_MELEE_ATTACK);
       game.display->confirm(confirm_attack);
 
-      confirm = creature->get_decision_strategy()->get_confirmation();
     }
-    else
-    {
-      // NPCs always confirm.
-      confirm = true;
-    }
+
+    confirm = creature->get_decision_strategy()->get_attack_confirmation(attacked_creature);
   }
 
   return confirm;

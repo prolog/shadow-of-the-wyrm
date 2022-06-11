@@ -56,6 +56,9 @@ Shadow of the Wyrm v1.4.7 "Satoh"
     to use its own calculations, with Wandcraft positively affecting the speed
     at which you can evoke wands.
 
+  - Creatures with ranged weapons would sometimes attack you even when that
+    didn't make sense (Josh Engdahl).
+
 Shadow of the Wyrm v1.4.5.1 "Fuenllana"
 - Version declared May 12, 2022.  Version finalized May 15, 2022.
 

@@ -192,6 +192,11 @@ bool PlayerDecisionStrategy::get_confirmation(const bool confirmation_default_va
   return confirm;
 }
 
+bool PlayerDecisionStrategy::get_attack_confirmation(CreaturePtr creature)
+{
+  return get_confirmation();
+}
+
 ClassIdentifier PlayerDecisionStrategy::internal_class_identifier() const
 {
   return ClassIdentifier::CLASS_ID_PLAYER_DECISION_STRATEGY;
