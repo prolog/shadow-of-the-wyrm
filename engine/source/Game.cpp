@@ -436,6 +436,12 @@ void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
   {
     tile->set_creature(creature);
 
+    ostringstream ss;
+    Date d = get_current_world()->get_calendar().get_date();
+    d.serialize(ss);
+
+    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_START_DATE, ss.str());
+
     // Set the starting location.
     if (creature->get_is_player())
     {
@@ -613,6 +619,8 @@ void Game::go()
             }
           }
         }
+
+        update_player_dates();
 
         if (!current_creature)
         {
@@ -1172,6 +1180,27 @@ void Game::set_game_start_time(const std::chrono::system_clock::time_point& new_
 std::chrono::system_clock::time_point Game::get_game_start_time() const
 {
   return game_start_time;
+}
+
+void Game::update_player_dates()
+{
+  CreaturePtr player = Game::instance().get_current_player();
+
+  // Update the end date on the player every turn in case they end up dying, etc.
+  if (player != nullptr)
+  {
+    ostringstream ss;
+    Date d = get_current_world()->get_calendar().get_date();
+    d.serialize(ss);
+    string cur_date_str = ss.str();
+
+    if (player->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_START_DATE).empty())
+    {
+      player->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_START_DATE, cur_date_str);
+    }
+
+    player->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_CURRENT_DATE, cur_date_str);
+  }
 }
 
 bool Game::serialize(ostream& stream) const

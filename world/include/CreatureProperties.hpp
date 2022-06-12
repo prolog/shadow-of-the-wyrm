@@ -44,6 +44,8 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_ITEM_IN_USE;
     static const std::string CREATURE_PROPERTIES_NIGHT_SPEECH_TEXT_SID;
     static const std::string CREATURE_PROPERTIES_APOSTATE;
+    static const std::string CREATURE_PROPERTIES_START_DATE;
+    static const std::string CREATURE_PROPERTIES_CURRENT_DATE;
 
   protected:
     CreatureProperties();

@@ -12,6 +12,7 @@
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureTranslator.hpp"
+#include "DateTextKeys.hpp"
 #include "DeathDumper.hpp"
 #include "Environment.hpp"
 #include "EquipmentDumper.hpp"
@@ -134,6 +135,19 @@ string CharacterDumper::str() const
   ss << get_party() << endl << endl;
 
   ss << StringTable::get(TextKeys::MAXIMUM_DEPTH_REACHED) << ": " << creature->get_max_depth_reached().str(true) << endl << endl;
+
+  string p_date_started = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_START_DATE);
+  string p_current_date = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_CURRENT_DATE);
+
+  if (!p_date_started.empty() && !p_current_date.empty())
+  {
+    Date st_date(p_date_started);
+    Date cur_date(p_current_date);
+
+    ss << StringTable::get(TextKeys::DATE_STARTED) << ": " << DateTextKeys::get_date_time_message(st_date, false) << endl;
+    ss << StringTable::get(TextKeys::CURRENT_DATE) << ": " << DateTextKeys::get_date_time_message(cur_date, false) << endl << endl;
+  }
+
   ss << StringTable::get(TextKeys::TURNS) << ": " << creature->get_turns() << endl << endl;
 
   double seconds = game.get_total_elapsed_game_time(std::chrono::system_clock::now());

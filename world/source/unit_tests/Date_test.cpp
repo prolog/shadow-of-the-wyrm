@@ -1,5 +1,24 @@
 #include "gtest/gtest.h"
 
+TEST(SW_World_Date, get_class_identifier)
+{
+  Date d(1, 2, 3, 4, 5, 6, 6, 7);
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_DATE, d.get_class_identifier());
+}
+
+TEST(SW_World_Date, saveload)
+{
+  Date d(1, 2, 3, 4, 5, 6, 6, 7);
+  Date d2(2, 23, 33, 44, 55, 66, 86, 97);
+  ostringstream ss;
+
+  d.serialize(ss);
+  istringstream iss(ss.str());
+  d2.deserialize(iss);
+
+  EXPECT_EQ(d, d2);
+}
+
 TEST(SW_World_Date, get_time_of_day)
 {
   Date night_date1(0, 3, 6, 1,1,1,1,1);

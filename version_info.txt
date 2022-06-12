@@ -29,6 +29,10 @@ Shadow of the Wyrm v1.4.7 "Satoh"
 
 - Wandcraft now affects to-hit when evoking a wand (Josh Engdahl).
 
+- The in-game start date and current date are now shown in the character dump,
+  and the date message formats in-game have been tweaked to also show the
+  numerical month.
+
 - New items: amulet of the sky.
 
 - Bug fixes:

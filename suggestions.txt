@@ -1,6 +1,11 @@
 Me:
+- what if during world generation, treasure is 1-100 on various tiles? with
+  that particular lore skill finding it and there's a procgen thing like 
+  "buried by Hodan the Wise", "buried by pirates", etc
+- oceanography: same as above but the ability to stumble on to shipwrecks
+- boating!
 - mountaineering/lore: chance to find magici shard (+ mark tile), but only on
-  world map
+  world map, only if not flying
 - JE: summoning logic: deities shouldn't summon: creatures of other
   deities, undead for some, demons for some, etc.
 
@@ -50,7 +55,6 @@ Me:
 - Look at Earthsea names?
 - Ensure stunned works properly for NPCs
 - Weaponmasteries in guidebook
-- Boating: move faster on water
 - Desert/Forest/etc Lore: to-hit, damage, speed bonuses on that terrain
 - after Godslayer, divine spells gone/Divine skill 0
 - Homesteads in fields

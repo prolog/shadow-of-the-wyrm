@@ -38,6 +38,8 @@ class TextKeys
     static const std::string TOTAL;
     static const std::string MAXIMUM_LEVEL_DIFFERENCE;
     static const std::string TURNS;
+    static const std::string DATE_STARTED;
+    static const std::string CURRENT_DATE;
     static const std::string TOTAL_ELAPSED_TIME;
     static const std::string MAXIMUM_DEPTH_REACHED;
     static const std::string NPC_ESCAPES_MESSAGE;
