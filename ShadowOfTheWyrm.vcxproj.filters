@@ -4478,6 +4478,9 @@
     <ClInclude Include="engine\calculators\include\WandsAttackSpeedCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\TerrainSpeedMultiplierCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9068,6 +9071,12 @@
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\WandsAttackSpeedCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\TerrainSpeedMultiplierCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\TerrainSpeedMultiplierCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>

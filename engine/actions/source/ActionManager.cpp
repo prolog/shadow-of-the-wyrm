@@ -47,6 +47,7 @@
 #include "SkinAction.hpp"
 #include "SpellcastingAction.hpp"
 #include "StatusAilmentTextKeys.hpp"
+#include "TerrainSpeedMultiplierCalculator.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "VersionAction.hpp"
@@ -110,7 +111,11 @@ ActionCost ActionManager::search(CreaturePtr creature)
 
 ActionCost ActionManager::move(CreaturePtr creature, const Direction direction, const bool confirm_if_dangerous)
 {
-  return get_action_cost(creature, movement_action.move(creature, direction, confirm_if_dangerous));
+  TerrainSpeedMultiplierCalculator tsmc;
+  MapPtr map = Game::instance().get_current_map();
+  float total_mult = tsmc.calculate(creature, map);
+
+  return get_action_cost(creature, movement_action.move(creature, direction, confirm_if_dangerous), total_mult);
 }
 
 ActionCost ActionManager::automatic_movement(CreaturePtr creature)
@@ -868,14 +873,22 @@ ActionCost ActionManager::quit(CreaturePtr creature)
   return get_action_cost(creature, ega.quit(creature, true));
 }
 
-// Create an ActionCost based on the ActionCostValue already generated
+// Create an ActionCost based on the ActionCostValue already generated,
+// assuming no action multiplier.
 ActionCost ActionManager::get_action_cost(CreaturePtr creature, const ActionCostValue action_cost_value)
+{
+  return get_action_cost(creature, action_cost_value, 1.0);
+}
+
+// Create an ActionCost based on the ACV already generated, plus a multiplier.
+ActionCost ActionManager::get_action_cost(CreaturePtr creature, const ActionCostValue action_cost_value, const float total_multiplier)
 {
   ActionCostValue total_action_cost_value = ActionCostConstants::NO_ACTION;
   
   if (creature && (action_cost_value > 0))
   {
     total_action_cost_value = creature->get_speed().get_current() + action_cost_value;
+    total_action_cost_value = static_cast<ActionCostValue>(total_action_cost_value * total_multiplier);
   }
   
   ActionCost ac(total_action_cost_value);

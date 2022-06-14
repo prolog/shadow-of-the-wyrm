@@ -24,6 +24,9 @@ Shadow of the Wyrm v1.4.7 "Satoh"
   pack (Josh Engdahl).  This also happens if the shopkeeper wants to buy it
   but can't afford it.
 
+- Boating now has an initial implementation, and allows faster movement over 
+  water when not flying.
+
 - When digging via non-magical means in a shop, the player is now prompted
   to continue (Grond).
 

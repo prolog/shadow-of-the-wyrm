@@ -1,4 +1,5 @@
 Me:
+- timed quest for which boating would help a lot
 - what if during world generation, treasure is 1-100 on various tiles? with
   that particular lore skill finding it and there's a procgen thing like 
   "buried by Hodan the Wise", "buried by pirates", etc
