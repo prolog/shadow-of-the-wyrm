@@ -103,6 +103,11 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
   Dimensions dimensions = result_map->size();
   int rows = dimensions.get_y();
   int cols = dimensions.get_x();
+
+  NormalDistribution forest_treasures(40, 12);
+  NormalDistribution desert_treasures(50, 15);
+  NormalDistribution marsh_treasures(60, 12);
+  NormalDistribution mountain_treasures(80, 7);
   
   CellMap cell_map, forest_cell_map, hills_cell_map, mountains_cell_map, scrub_cell_map, marsh_cell_map, desert_cell_map;
   CellValue world_val, forest_val, hills_val, mountains_val, scrub_val, marsh_val, desert_val;
@@ -124,11 +129,11 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
       // Always add field, if available.  Add forests, scrub, marsh if the tile is not sea.  Add mountains if the tile is field.
       process_field_cell(result_map, row, col, world_val);
       process_hill_cell(result_map, row, col, hills_val, world_val);
-      process_marsh_cell(result_map, row, col, marsh_val, world_val);
-      process_forest_cell(result_map, row, col, forest_val, world_val);
+      process_marsh_cell(result_map, row, col, marsh_val, world_val, marsh_treasures);
+      process_forest_cell(result_map, row, col, forest_val, world_val, forest_treasures);
       process_scrub_cell(result_map, row, col, scrub_val, world_val);
-      process_desert_cell(result_map, row, col, desert_val, scrub_val, world_val);
-      process_mountain_cell(result_map, row, col, mountains_val, forest_val, world_val);
+      process_desert_cell(result_map, row, col, desert_val, scrub_val, world_val, desert_treasures);
+      process_mountain_cell(result_map, row, col, mountains_val, forest_val, world_val, mountain_treasures);
 
       post_process_cell(result_map, row, col);
     }
@@ -433,7 +438,7 @@ TilePtr WorldGenerator::generate_feature_or_default(const vector<pair<int, pair<
   return result;
 }
 
-void WorldGenerator::process_marsh_cell(MapPtr result_map, const int row, const int col, const CellValue marsh_val, const CellValue world_val)
+void WorldGenerator::process_marsh_cell(MapPtr result_map, const int row, const int col, const CellValue marsh_val, const CellValue world_val, NormalDistribution& marsh_treasures)
 {  
   if (marsh_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF)
   {
@@ -447,7 +452,7 @@ void WorldGenerator::process_marsh_cell(MapPtr result_map, const int row, const 
   }
 }
 
-void WorldGenerator::process_forest_cell(MapPtr result_map, const int row, const int col, const CellValue forest_val, const CellValue world_val)
+void WorldGenerator::process_forest_cell(MapPtr result_map, const int row, const int col, const CellValue forest_val, const CellValue world_val, NormalDistribution& forest_treasures)
 {  
   if (forest_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF)
   {
@@ -480,7 +485,7 @@ void WorldGenerator::process_scrub_cell(MapPtr result_map, const int row, const 
   }
 }
 
-void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const int col, const CellValue desert_val, const CellValue scrub_val, const CellValue world_val)
+void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const int col, const CellValue desert_val, const CellValue scrub_val, const CellValue world_val, NormalDistribution& desert_treasures)
 {
   TilePtr tile;
   
@@ -492,7 +497,7 @@ void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const
   }
 }
 
-void WorldGenerator::process_mountain_cell(MapPtr result_map, const int row, const int col, const CellValue mountains_val, const CellValue forest_val, const CellValue world_val)
+void WorldGenerator::process_mountain_cell(MapPtr result_map, const int row, const int col, const CellValue mountains_val, const CellValue forest_val, const CellValue world_val, NormalDistribution& mountain_treasures)
 {
   if (mountains_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF && forest_val == CellValue::CELL_ON)
   {

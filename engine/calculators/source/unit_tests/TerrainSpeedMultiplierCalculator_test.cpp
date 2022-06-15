@@ -33,12 +33,12 @@ TEST(SW_World_Calculators_TerrainSpeedMultiplierCalculator, calculate_water)
 
 		for (const auto& b_pair : boating_multipliers)
 		{
+			creature_and_map.first->get_inventory()->remove("b");
 			creature_and_map.first->get_skills().set_value(SkillType::SKILL_GENERAL_BOATING, b_pair.first);
 			EXPECT_FLOAT_EQ(1.0f, tsmc.calculate(creature_and_map.first, creature_and_map.second));
 
 			creature_and_map.first->get_inventory()->add(boat);
 			EXPECT_FLOAT_EQ(b_pair.second, tsmc.calculate(creature_and_map.first, creature_and_map.second));
-			creature_and_map.first->get_inventory()->remove("b");
 		}
 	}
 }

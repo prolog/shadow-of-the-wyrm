@@ -6,6 +6,7 @@
 #include "CellularAutomataTypes.hpp"
 #include "CreatureGenerationIndex.hpp"
 #include "Generator.hpp"
+#include "Random.hpp"
 #include "TileDepthOptions.hpp"
 #include "TileGenerator.hpp"
 
@@ -36,11 +37,11 @@ class WorldGenerator : public SOTW::Generator
     
     virtual void process_field_cell(MapPtr map, const int row, const int col, const CellValue cv);
     virtual void process_hill_cell(MapPtr map, const int row, const int col, const CellValue hill_val, const CellValue field_val);
-    virtual void process_marsh_cell(MapPtr map, const int row, const int col, const CellValue marsh_val, const CellValue field_val);
-    virtual void process_forest_cell(MapPtr map, const int row, const int col, const CellValue forest_val, const CellValue field_val);
-    virtual void process_desert_cell(MapPtr map, const int row, const int col, const CellValue desert_val, const CellValue scrub_val, const CellValue field_val);
+    virtual void process_marsh_cell(MapPtr map, const int row, const int col, const CellValue marsh_val, const CellValue field_val, NormalDistribution& marsh_treasure);
+    virtual void process_forest_cell(MapPtr map, const int row, const int col, const CellValue forest_val, const CellValue field_val, NormalDistribution& forest_treasure);
+    virtual void process_desert_cell(MapPtr map, const int row, const int col, const CellValue desert_val, const CellValue scrub_val, const CellValue field_val, NormalDistribution& desert_treasure);
     virtual void process_scrub_cell(MapPtr map, const int row, const int col, const CellValue scrub_val, const CellValue field_val);
-    virtual void process_mountain_cell(MapPtr map, const int row, const int col, const CellValue mountains_val, const CellValue forest_val, const CellValue field_val);
+    virtual void process_mountain_cell(MapPtr map, const int row, const int col, const CellValue mountains_val, const CellValue forest_val, const CellValue field_val, NormalDistribution& mountain_treasure);
 
     virtual void post_process_cell(MapPtr map, const int row, const int col);
     void potentially_add_properties(const int row, const int col, TilePtr tile, const std::vector<std::pair<int, std::pair<std::string, std::string>>>& prop_pairs);
