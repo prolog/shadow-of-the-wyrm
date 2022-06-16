@@ -55,6 +55,7 @@ class TextMessages
     static std::string get_build_message(const std::string& thing_built);
     static std::string get_select_age_message(const int min_age, const int max_age);
     static std::string get_and_replace(const std::string& message_sid, const std::vector<std::string>& replacements);
+    static std::string get_buried_treasure_message();
 
   protected:
     TextMessages();
@@ -97,4 +98,7 @@ class TextMessages
     static const std::string DEATH_DEPTH_LOCATION_MESSAGE;
     static const std::string BUILD_MESSAGE;
     static const std::string SELECT_AGE_MESSAGE;
+    static const std::string BURIED_TREASURE_MESSAGE;
+    static const std::string BURIED_TREASURE_SOURCE;
+    static const std::string BURIED_TREASURE_SOURCE_ADJECTIVE;
 };

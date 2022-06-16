@@ -16,6 +16,7 @@
 #include "RaceManager.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
+#include "TextMessages.hpp"
 #include "TileGenerator.hpp"
 #include "TileTextKeys.hpp"
 #include "VillageTile.hpp"
@@ -875,10 +876,15 @@ void WorldGenerator::potentially_add_treasure(const int row, const int col, Tile
 {
   if (tile != nullptr && RNG::x_in_y_chance(X_IN_Y_CHANCE_TREASURE.first, X_IN_Y_CHANCE_TREASURE.second))
   {
+    Log& log = Log::instance();
     int difficulty = nd.next_int_as_pct();
+    string source = TextMessages::get_buried_treasure_message();
 
-    ostringstream log_msg;
-    log_msg << "Buried treasure at " << std::to_string(row) << "," << std::to_string(col) << " (difficulty " << difficulty << ")";
-    Log::instance().debug(log_msg.str());
+    if (log.debug_enabled())
+    {
+      ostringstream log_msg;
+      log_msg << "Treasure: " << std::to_string(row) << "," << std::to_string(col) << " (difficulty " << difficulty << ") [" << source << "]";
+      log.debug(log_msg.str());
+    }
   }
 }

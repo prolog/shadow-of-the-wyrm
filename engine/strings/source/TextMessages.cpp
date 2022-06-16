@@ -5,16 +5,18 @@
 #include "ClassManager.hpp"
 #include "Conversion.hpp"
 #include "CreatureDescriber.hpp"
+#include "EntranceTextKeys.hpp"
 #include "EquipmentTextKeys.hpp"
 #include "Game.hpp"
 #include "ItemDescriberFactory.hpp"
-#include "TextMessages.hpp"
-#include "EntranceTextKeys.hpp"
 #include "ItemIdentifier.hpp"
+#include "Naming.hpp"
+#include "RNG.hpp"
 #include "Setting.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 
@@ -63,6 +65,9 @@ const string TextMessages::KILLED_BY_MESSAGE                  = "KILLED_BY_MESSA
 const string TextMessages::DEATH_DEPTH_LOCATION_MESSAGE       = "DEATH_DEPTH_LOCATION_MESSAGE";
 const string TextMessages::BUILD_MESSAGE                      = "BUILD_MESSAGE";
 const string TextMessages::SELECT_AGE_MESSAGE                 = "SELECT_AGE_MESSAGE";
+const string TextMessages::BURIED_TREASURE_MESSAGE            = "BURIED_TREASURE_MESSAGE";
+const string TextMessages::BURIED_TREASURE_SOURCE             = "BURIED_TREASURE_SOURCE";
+const string TextMessages::BURIED_TREASURE_SOURCE_ADJECTIVE   = "BURIED_TREASURE_SOURCE_ADJECTIVE";
 
 string TextMessages::get_full_header_text(const string& header, const uint num_cols)
 {
@@ -842,4 +847,35 @@ string TextMessages::get_and_replace(const string& sid, const vector<string>& re
   }
 
   return msg;
+}
+
+string TextMessages::get_buried_treasure_message()
+{
+  string t_msg = StringTable::get(BURIED_TREASURE_MESSAGE);
+  string source;
+
+  if (RNG::percent_chance(30))
+  {
+    vector<string> sources = String::create_string_vector_from_csv_string(StringTable::get(BURIED_TREASURE_SOURCE_ADJECTIVE));
+
+    if (!sources.empty())
+    {
+      string name = Naming::generate_name(CreatureSex::CREATURE_SEX_NOT_SPECIFIED);
+      source = boost::trim_copy(sources.at(RNG::range(0, sources.size() - 1)));
+
+      boost::replace_first(source, "%s", name);
+    }
+  }
+  else
+  {
+    vector<string> sources = String::create_string_vector_from_csv_string(StringTable::get(BURIED_TREASURE_SOURCE));
+
+    if (!sources.empty())
+    {
+      source = boost::trim_copy(sources.at(RNG::range(0, sources.size() - 1)));
+    }
+  }
+
+  boost::replace_first(t_msg, "%s", source);
+  return t_msg;
 }
