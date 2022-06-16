@@ -34,6 +34,7 @@ void async_worldgen(std::promise<MapPtr>&& mp)
 const int WorldGenerator::MIN_CREATURES_PER_VILLAGE = 12;
 const int WorldGenerator::MAX_CREATURES_PER_VILLAGE = 26;
 const int WorldGenerator::MAX_DANGER_LEVEL_FOR_WORLD_GEN = 50;
+const pair<int, int> WorldGenerator::X_IN_Y_CHANCE_TREASURE = { 1, 100 };
 
 // Even though the map_terrain_type parameter is used to generate creatures, and UNDEFINED would normally be bad, it
 // shouldn't matter for the world, since there will never be creatures generated on it.
@@ -438,7 +439,7 @@ TilePtr WorldGenerator::generate_feature_or_default(const vector<pair<int, pair<
   return result;
 }
 
-void WorldGenerator::process_marsh_cell(MapPtr result_map, const int row, const int col, const CellValue marsh_val, const CellValue world_val, NormalDistribution& marsh_treasures)
+void WorldGenerator::process_marsh_cell(MapPtr result_map, const int row, const int col, const CellValue marsh_val, const CellValue world_val, NormalDistribution& treasure_difficulty)
 {  
   if (marsh_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF)
   {
@@ -448,11 +449,12 @@ void WorldGenerator::process_marsh_cell(MapPtr result_map, const int row, const 
     marsh_special_types = { { 200, { TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_MARSH } } };
 
     tile = generate_feature_or_default(marsh_special_types, TileType::TILE_TYPE_MARSH, row, col);
+    potentially_add_treasure(row, col, tile, treasure_difficulty);
     result_map->insert(row, col, tile);
   }
 }
 
-void WorldGenerator::process_forest_cell(MapPtr result_map, const int row, const int col, const CellValue forest_val, const CellValue world_val, NormalDistribution& forest_treasures)
+void WorldGenerator::process_forest_cell(MapPtr result_map, const int row, const int col, const CellValue forest_val, const CellValue world_val, NormalDistribution& treasure_difficulty)
 {  
   if (forest_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF)
   {
@@ -465,6 +467,7 @@ void WorldGenerator::process_forest_cell(MapPtr result_map, const int row, const
                             { 650, { TileType::TILE_TYPE_GRAVEYARD, TileType::TILE_TYPE_UNDEFINED } } };
 
     tile = generate_feature_or_default(forest_special_types, TileType::TILE_TYPE_FOREST, row, col);
+    potentially_add_treasure(row, col, tile, treasure_difficulty);
     result_map->insert(row, col, tile);
   }
 }
@@ -485,7 +488,7 @@ void WorldGenerator::process_scrub_cell(MapPtr result_map, const int row, const 
   }
 }
 
-void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const int col, const CellValue desert_val, const CellValue scrub_val, const CellValue world_val, NormalDistribution& desert_treasures)
+void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const int col, const CellValue desert_val, const CellValue scrub_val, const CellValue world_val, NormalDistribution& treasure_difficulty)
 {
   TilePtr tile;
   
@@ -493,11 +496,12 @@ void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const
   if (desert_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF && scrub_val == CellValue::CELL_OFF)
   {
     tile = generate_feature_or_default({}, TileType::TILE_TYPE_DESERT, row, col);
+    potentially_add_treasure(row, col, tile, treasure_difficulty);
     result_map->insert(row, col, tile);
   }
 }
 
-void WorldGenerator::process_mountain_cell(MapPtr result_map, const int row, const int col, const CellValue mountains_val, const CellValue forest_val, const CellValue world_val, NormalDistribution& mountain_treasures)
+void WorldGenerator::process_mountain_cell(MapPtr result_map, const int row, const int col, const CellValue mountains_val, const CellValue forest_val, const CellValue world_val, NormalDistribution& treasure_difficulty)
 {
   if (mountains_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF && forest_val == CellValue::CELL_ON)
   {
@@ -512,6 +516,12 @@ void WorldGenerator::process_mountain_cell(MapPtr result_map, const int row, con
                                { 33, { TileType::TILE_TYPE_CAVERN, TileType::TILE_TYPE_UNDEFINED } } };
 
     tile = generate_feature_or_default(mountain_special_types, TileType::TILE_TYPE_MOUNTAINS, row, col);
+
+    if (tile != nullptr && tile->get_tile_type() == TileType::TILE_TYPE_MOUNTAINS)
+    {
+      potentially_add_treasure(row, col, tile, treasure_difficulty);
+    }
+
     result_map->insert(row, col, tile);
   }
 }
@@ -859,4 +869,16 @@ string WorldGenerator::get_race_village_extra_description_sid(const string& race
   }
 
   return sid;
+}
+
+void WorldGenerator::potentially_add_treasure(const int row, const int col, TilePtr tile, NormalDistribution& nd)
+{
+  if (tile != nullptr && RNG::x_in_y_chance(X_IN_Y_CHANCE_TREASURE.first, X_IN_Y_CHANCE_TREASURE.second))
+  {
+    int difficulty = nd.next_int_as_pct();
+
+    ostringstream log_msg;
+    log_msg << "Buried treasure at " << std::to_string(row) << "," << std::to_string(col) << " (difficulty " << difficulty << ")";
+    Log::instance().debug(log_msg.str());
+  }
 }
