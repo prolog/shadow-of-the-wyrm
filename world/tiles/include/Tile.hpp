@@ -11,6 +11,7 @@
 #include "Item.hpp"
 #include "ISerializable.hpp"
 #include "MapExit.hpp"
+#include "Skills.hpp"
 #include "TileProperties.hpp"
 #include "TileTextKeys.hpp"
 #include "WaterTypes.hpp"
@@ -193,6 +194,9 @@ class Tile : public ISerializable
 
     virtual bool has_creature_id_restrictions() const;
     virtual bool is_creature_id_allowed(const std::string& creature_id) const;
+
+    virtual SkillType get_treasure_skill() const;
+    virtual bool has_treasure() const;
 
     virtual Tile* clone() = 0;
 

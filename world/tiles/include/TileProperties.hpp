@@ -89,6 +89,11 @@ class TileProperties
     // Villages can have names - other places too, eventually...
     static const std::string TILE_PROPERTY_NAME;
 
+    // The score needed in a particular X Lore skill before the treasure
+    // can be found
+    static const std::string TILE_PROPERTY_MIN_LORE_REQUIRED;
+    static const std::string TILE_PROPERTY_TREASURE_SOURCE;
+
     // Checks to see if a given string reprensents a depth-based
     // custom map ID.
     static bool is_depth_custom_map_id(const std::string& key);

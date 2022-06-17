@@ -781,6 +781,22 @@ bool Tile::is_creature_id_allowed(const std::string& creature_id) const
   return allowed;
 }
 
+SkillType Tile::get_treasure_skill() const
+{
+  return SkillType::SKILL_UNDEFINED;
+}
+
+bool Tile::has_treasure() const
+{
+  string treasure_difficulty_s = get_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED);
+
+  if (!treasure_difficulty_s.empty() && String::to_int(treasure_difficulty_s) > 0)
+  {
+    return true;
+  }
+
+  return false;
+}
 
 bool Tile::serialize(ostream& stream) const
 {

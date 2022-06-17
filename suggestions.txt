@@ -1,4 +1,5 @@
 Me:
+- don't transform tiles when they have treasure
 - timed quest for which boating would help a lot
 - what if during world generation, treasure is 1-100 on various tiles? with
   that particular lore skill finding it and there's a procgen thing like 
@@ -30,7 +31,7 @@ Me:
   - Merge picked up into ammo slot
   - When done, cycle through applicable inventory items to equip (allow Y/N/
     Z to exit)
-- EACH VERSION: more NPC background stuff
+- EACH VERSION: more NPC background stuff, more treasure stuff
 - spinach/str?
 - bookstore
 - quest to quell a rebellion from Carcassia

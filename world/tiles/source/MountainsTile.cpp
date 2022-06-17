@@ -36,6 +36,11 @@ bool MountainsTile::get_is_blocking_visually(CreaturePtr creature) const
   return true;
 }
 
+SkillType MountainsTile::get_treasure_skill() const
+{
+  return SkillType::SKILL_GENERAL_MOUNTAIN_LORE;
+}
+
 Tile* MountainsTile::clone()
 {
   return new MountainsTile(*this);

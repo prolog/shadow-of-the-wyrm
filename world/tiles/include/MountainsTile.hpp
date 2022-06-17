@@ -9,6 +9,7 @@ class MountainsTile : public WorldMapTile
     bool get_dangerous(CreaturePtr creature) const override;
     std::string get_danger_confirmation_sid() const override;
     virtual bool get_is_blocking_visually(std::shared_ptr<Creature> perspective_creature = nullptr) const override;
+    SkillType get_treasure_skill() const;
 
     virtual Tile* clone() override;
 

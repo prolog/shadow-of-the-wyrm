@@ -886,5 +886,8 @@ void WorldGenerator::potentially_add_treasure(const int row, const int col, Tile
       log_msg << "Treasure: " << std::to_string(row) << "," << std::to_string(col) << " (difficulty " << difficulty << ") [" << source << "]";
       log.debug(log_msg.str());
     }
+
+    tile->set_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED, std::to_string(difficulty));
+    tile->set_additional_property(TileProperties::TILE_PROPERTY_TREASURE_SOURCE, source);
   }
 }
