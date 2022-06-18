@@ -2493,7 +2493,7 @@ bool MapUtils::has_known_treasure(TilePtr tile, CreaturePtr creature)
 {
   bool has_treasure = false;
 
-  if (tile != nullptr && creature != nullptr)
+  if (tile != nullptr && creature != nullptr && !creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
   {
     string difficulty = tile->get_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED);
 
