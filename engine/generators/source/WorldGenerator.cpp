@@ -800,7 +800,9 @@ void WorldGenerator::set_treasure(MapPtr map)
     
     for (const auto& tc_pair : tc)
     {
-      if (tc_pair.second != nullptr)
+      // Ensure we're not adding treasure specifiers to tiles that already link
+      // to another map.
+      if (tc_pair.second != nullptr && tc_pair.second->get_custom_map_id().empty())
       {
         TileType tt = tc_pair.second->get_tile_type();
 

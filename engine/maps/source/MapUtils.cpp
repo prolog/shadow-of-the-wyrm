@@ -1854,7 +1854,7 @@ bool MapUtils::add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr
   {
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
-    if (tile->display_description_on_arrival() || tile->has_extra_description())
+    if (tile->display_description_on_arrival() || tile->has_extra_description() || has_known_treasure(tile, creature))
     {
       TileDescriber td(creature, tile, is_world_map);
       manager.add_new_message(td.describe());
@@ -2487,6 +2487,29 @@ std::tuple<int, int, std::string, std::string> MapUtils::get_random_village_by_p
   }
 
   return village;
+}
+
+bool MapUtils::has_known_treasure(TilePtr tile, CreaturePtr creature)
+{
+  bool has_treasure = false;
+
+  if (tile != nullptr && creature != nullptr)
+  {
+    string difficulty = tile->get_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED);
+
+    if (!difficulty.empty())
+    {
+      int diff = String::to_int(difficulty);
+      SkillType required_skill = tile->get_treasure_skill();
+
+      if (creature->get_skills().get_value(required_skill) >= diff)
+      {
+        has_treasure = true;
+      }
+    }
+  }
+
+  return has_treasure;
 }
 
 #ifdef UNIT_TESTS
