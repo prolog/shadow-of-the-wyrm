@@ -24,7 +24,7 @@ void WorldWeatherUpdater::update_world_map_weather(World* world)
 
     if (world_map != nullptr)
     {
-      TilesContainer tiles = world_map->get_tiles();
+      TilesContainer& tiles = world_map->get_tiles_ref();
 
       // Update the weather for the tiles around the player.
       Coordinate player_coord = world_map->get_location(CreatureID::CREATURE_ID_PLAYER);

@@ -27,6 +27,7 @@ class WorldGenerator : public SOTW::Generator
     virtual MapPtr generate(const Dimensions& dim) override;
 
     virtual void   set_village_coordinates(MapPtr map);
+    virtual void   set_treasure(MapPtr map);
 
   protected:
     virtual MapType get_map_type() const override;
@@ -37,11 +38,11 @@ class WorldGenerator : public SOTW::Generator
     
     virtual void process_field_cell(MapPtr map, const int row, const int col, const CellValue cv);
     virtual void process_hill_cell(MapPtr map, const int row, const int col, const CellValue hill_val, const CellValue field_val);
-    virtual void process_marsh_cell(MapPtr map, const int row, const int col, const CellValue marsh_val, const CellValue field_val, NormalDistribution& marsh_treasure);
-    virtual void process_forest_cell(MapPtr map, const int row, const int col, const CellValue forest_val, const CellValue field_val, NormalDistribution& forest_treasure);
-    virtual void process_desert_cell(MapPtr map, const int row, const int col, const CellValue desert_val, const CellValue scrub_val, const CellValue field_val, NormalDistribution& desert_treasure);
+    virtual void process_marsh_cell(MapPtr map, const int row, const int col, const CellValue marsh_val, const CellValue field_val);
+    virtual void process_forest_cell(MapPtr map, const int row, const int col, const CellValue forest_val, const CellValue field_val);
+    virtual void process_desert_cell(MapPtr map, const int row, const int col, const CellValue desert_val, const CellValue scrub_val, const CellValue field_val);
     virtual void process_scrub_cell(MapPtr map, const int row, const int col, const CellValue scrub_val, const CellValue field_val);
-    virtual void process_mountain_cell(MapPtr map, const int row, const int col, const CellValue mountains_val, const CellValue forest_val, const CellValue field_val, NormalDistribution& mountain_treasure);
+    virtual void process_mountain_cell(MapPtr map, const int row, const int col, const CellValue mountains_val, const CellValue forest_val, const CellValue field_val);
 
     virtual void post_process_cell(MapPtr map, const int row, const int col);
     void potentially_add_properties(const int row, const int col, TilePtr tile, const std::vector<std::pair<int, std::pair<std::string, std::string>>>& prop_pairs);
@@ -73,7 +74,7 @@ class WorldGenerator : public SOTW::Generator
 
     std::string get_race_village_extra_description_sid(const std::string& race_id);
 
-    void potentially_add_treasure(const int row, const int col, TilePtr tile, NormalDistribution& treasure_difficulty);
+    void potentially_add_treasure(const std::string& map_key, TilePtr tile, NormalDistribution& treasure_difficulty);
 
     // A map containing pointers to member functions - used to set up special
     // sets of properties on particular tile types.

@@ -270,7 +270,7 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
 
       if (fov_map != nullptr)
       {
-        TilesContainer tiles = fov_map->get_tiles();
+        TilesContainer& tiles = fov_map->get_tiles_ref();
 
         for (const auto& t_pair : tiles)
         {

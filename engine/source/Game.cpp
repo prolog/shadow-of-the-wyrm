@@ -423,6 +423,7 @@ void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
   
   WorldGenerator wg;
   wg.set_village_coordinates(current_world);
+  wg.set_treasure(current_world);
 
   MapPtr world_map = get_map_registry_ref().get_map(MapID::MAP_ID_WORLD_MAP);
   if (world_map != nullptr)

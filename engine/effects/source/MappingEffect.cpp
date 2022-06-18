@@ -21,7 +21,7 @@ void MappingEffect::map(MapPtr map, const MappingType mt)
 {
   if (map != nullptr)
   {
-    TilesContainer tc = map->get_tiles();
+    TilesContainer& tc = map->get_tiles_ref();
     bool explored = (mt != MappingType::MAPPING_TYPE_FORGET);
     int chance_map = (mt == MappingType::MAPPING_TYPE_MAP_ALL) ? 100 : 30;
 

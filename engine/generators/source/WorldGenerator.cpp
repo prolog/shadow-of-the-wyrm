@@ -105,11 +105,6 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
   Dimensions dimensions = result_map->size();
   int rows = dimensions.get_y();
   int cols = dimensions.get_x();
-
-  NormalDistribution forest_treasures(40, 12);
-  NormalDistribution desert_treasures(50, 15);
-  NormalDistribution marsh_treasures(60, 12);
-  NormalDistribution mountain_treasures(80, 7);
   
   CellMap cell_map, forest_cell_map, hills_cell_map, mountains_cell_map, scrub_cell_map, marsh_cell_map, desert_cell_map;
   CellValue world_val, forest_val, hills_val, mountains_val, scrub_val, marsh_val, desert_val;
@@ -131,11 +126,11 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
       // Always add field, if available.  Add forests, scrub, marsh if the tile is not sea.  Add mountains if the tile is field.
       process_field_cell(result_map, row, col, world_val);
       process_hill_cell(result_map, row, col, hills_val, world_val);
-      process_marsh_cell(result_map, row, col, marsh_val, world_val, marsh_treasures);
-      process_forest_cell(result_map, row, col, forest_val, world_val, forest_treasures);
+      process_marsh_cell(result_map, row, col, marsh_val, world_val);
+      process_forest_cell(result_map, row, col, forest_val, world_val);
       process_scrub_cell(result_map, row, col, scrub_val, world_val);
-      process_desert_cell(result_map, row, col, desert_val, scrub_val, world_val, desert_treasures);
-      process_mountain_cell(result_map, row, col, mountains_val, forest_val, world_val, mountain_treasures);
+      process_desert_cell(result_map, row, col, desert_val, scrub_val, world_val);
+      process_mountain_cell(result_map, row, col, mountains_val, forest_val, world_val);
 
       post_process_cell(result_map, row, col);
     }
@@ -440,7 +435,7 @@ TilePtr WorldGenerator::generate_feature_or_default(const vector<pair<int, pair<
   return result;
 }
 
-void WorldGenerator::process_marsh_cell(MapPtr result_map, const int row, const int col, const CellValue marsh_val, const CellValue world_val, NormalDistribution& treasure_difficulty)
+void WorldGenerator::process_marsh_cell(MapPtr result_map, const int row, const int col, const CellValue marsh_val, const CellValue world_val)
 {  
   if (marsh_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF)
   {
@@ -450,12 +445,11 @@ void WorldGenerator::process_marsh_cell(MapPtr result_map, const int row, const 
     marsh_special_types = { { 200, { TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_MARSH } } };
 
     tile = generate_feature_or_default(marsh_special_types, TileType::TILE_TYPE_MARSH, row, col);
-    potentially_add_treasure(row, col, tile, treasure_difficulty);
     result_map->insert(row, col, tile);
   }
 }
 
-void WorldGenerator::process_forest_cell(MapPtr result_map, const int row, const int col, const CellValue forest_val, const CellValue world_val, NormalDistribution& treasure_difficulty)
+void WorldGenerator::process_forest_cell(MapPtr result_map, const int row, const int col, const CellValue forest_val, const CellValue world_val)
 {  
   if (forest_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF)
   {
@@ -468,7 +462,6 @@ void WorldGenerator::process_forest_cell(MapPtr result_map, const int row, const
                             { 650, { TileType::TILE_TYPE_GRAVEYARD, TileType::TILE_TYPE_UNDEFINED } } };
 
     tile = generate_feature_or_default(forest_special_types, TileType::TILE_TYPE_FOREST, row, col);
-    potentially_add_treasure(row, col, tile, treasure_difficulty);
     result_map->insert(row, col, tile);
   }
 }
@@ -489,7 +482,7 @@ void WorldGenerator::process_scrub_cell(MapPtr result_map, const int row, const 
   }
 }
 
-void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const int col, const CellValue desert_val, const CellValue scrub_val, const CellValue world_val, NormalDistribution& treasure_difficulty)
+void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const int col, const CellValue desert_val, const CellValue scrub_val, const CellValue world_val)
 {
   TilePtr tile;
   
@@ -497,12 +490,11 @@ void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const
   if (desert_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF && scrub_val == CellValue::CELL_OFF)
   {
     tile = generate_feature_or_default({}, TileType::TILE_TYPE_DESERT, row, col);
-    potentially_add_treasure(row, col, tile, treasure_difficulty);
     result_map->insert(row, col, tile);
   }
 }
 
-void WorldGenerator::process_mountain_cell(MapPtr result_map, const int row, const int col, const CellValue mountains_val, const CellValue forest_val, const CellValue world_val, NormalDistribution& treasure_difficulty)
+void WorldGenerator::process_mountain_cell(MapPtr result_map, const int row, const int col, const CellValue mountains_val, const CellValue forest_val, const CellValue world_val)
 {
   if (mountains_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF && forest_val == CellValue::CELL_ON)
   {
@@ -517,12 +509,6 @@ void WorldGenerator::process_mountain_cell(MapPtr result_map, const int row, con
                                { 33, { TileType::TILE_TYPE_CAVERN, TileType::TILE_TYPE_UNDEFINED } } };
 
     tile = generate_feature_or_default(mountain_special_types, TileType::TILE_TYPE_MOUNTAINS, row, col);
-
-    if (tile != nullptr && tile->get_tile_type() == TileType::TILE_TYPE_MOUNTAINS)
-    {
-      potentially_add_treasure(row, col, tile, treasure_difficulty);
-    }
-
     result_map->insert(row, col, tile);
   }
 }
@@ -778,7 +764,7 @@ void WorldGenerator::set_village_coordinates(MapPtr map)
 {
   if (map != nullptr)
   {
-    const TilesContainer& tiles = map->get_tiles();
+    const TilesContainer& tiles = map->get_tiles_ref();
     vector<string> s_coords;
 
     for (const auto& t_pair : tiles)
@@ -797,6 +783,44 @@ void WorldGenerator::set_village_coordinates(MapPtr map)
     if (!s_coords.empty())
     {
       map->set_property(MapProperties::MAP_PROPERTIES_VILLAGE_COORDINATES, String::create_csv_from_string_vector(s_coords));
+    }
+  }
+}
+
+void WorldGenerator::set_treasure(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    NormalDistribution forest_treasures(40, 12);
+    NormalDistribution desert_treasures(50, 15);
+    NormalDistribution marsh_treasures(60, 12);
+    NormalDistribution mountain_treasures(80, 7);
+
+    TilesContainer& tc = map->get_tiles_ref();
+    
+    for (const auto& tc_pair : tc)
+    {
+      if (tc_pair.second != nullptr)
+      {
+        TileType tt = tc_pair.second->get_tile_type();
+
+        if (tt == TileType::TILE_TYPE_DESERT)
+        {
+          potentially_add_treasure(tc_pair.first, tc_pair.second, desert_treasures);
+        }
+        else if (tt == TileType::TILE_TYPE_FOREST)
+        {
+          potentially_add_treasure(tc_pair.first, tc_pair.second, forest_treasures);
+        }
+        else if (tt == TileType::TILE_TYPE_MARSH)
+        {
+          potentially_add_treasure(tc_pair.first, tc_pair.second, marsh_treasures);
+        }
+        else if (tt == TileType::TILE_TYPE_MOUNTAINS)
+        {
+          potentially_add_treasure(tc_pair.first, tc_pair.second, mountain_treasures);
+        }
+      }
     }
   }
 }
@@ -872,7 +896,7 @@ string WorldGenerator::get_race_village_extra_description_sid(const string& race
   return sid;
 }
 
-void WorldGenerator::potentially_add_treasure(const int row, const int col, TilePtr tile, NormalDistribution& nd)
+void WorldGenerator::potentially_add_treasure(const string& key, TilePtr tile, NormalDistribution& nd)
 {
   if (tile != nullptr && RNG::x_in_y_chance(X_IN_Y_CHANCE_TREASURE.first, X_IN_Y_CHANCE_TREASURE.second))
   {
@@ -883,7 +907,7 @@ void WorldGenerator::potentially_add_treasure(const int row, const int col, Tile
     if (log.debug_enabled())
     {
       ostringstream log_msg;
-      log_msg << "Treasure: " << std::to_string(row) << "," << std::to_string(col) << " (difficulty " << difficulty << ") [" << source << "]";
+      log_msg << "Treasure: " << key << " (difficulty " << difficulty << ") [" << source << "]";
       log.debug(log_msg.str());
     }
 

@@ -148,7 +148,7 @@ bool TeleportEffect::blink(CreaturePtr creature, MapPtr current_map, TilePtr old
     
     if (fov_map != nullptr)
     {
-      tiles = current_map->get_tiles();
+      tiles = current_map->get_tiles_ref();
     }
 
     while (!keys.empty() && !teleported)
@@ -218,7 +218,7 @@ vector<string> TeleportEffect::get_appropriate_keys(MapPtr map, const pair<bool,
   }
   else
   {
-    TilesContainer tiles = map->get_tiles();
+    TilesContainer& tiles = map->get_tiles_ref();
 
     for (const auto& pair : tiles)
     {

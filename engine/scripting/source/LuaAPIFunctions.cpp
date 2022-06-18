@@ -4150,7 +4150,7 @@ int map_set_explored(lua_State* ls)
 
     if (cur_map != nullptr)
     {
-      TilesContainer tiles = cur_map->get_tiles();
+      TilesContainer& tiles = cur_map->get_tiles_ref();
 
       for (const auto& tile_pair : tiles)
       {

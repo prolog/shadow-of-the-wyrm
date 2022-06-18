@@ -26,12 +26,9 @@ Map::Map(const Map& new_map)
     default_deity_id = new_map.default_deity_id;
     map_id = new_map.map_id;
 
-    Dimensions new_dimensions = new_map.size();
-    TilesContainer new_tiles = new_map.get_tiles();
-
-    dimensions = new_dimensions;
-    original_dimensions = new_dimensions;
-    tiles = new_tiles;
+    dimensions = new_map.size();
+    original_dimensions = dimensions;
+    tiles = new_map.get_tiles();
 
     map_id = new_map.map_id;
   }
@@ -448,6 +445,11 @@ MapType Map::get_map_type() const
 }
 
 TilesContainer Map::get_tiles() const
+{
+  return tiles;
+}
+
+TilesContainer& Map::get_tiles_ref()
 {
   return tiles;
 }

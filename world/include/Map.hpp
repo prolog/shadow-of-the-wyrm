@@ -88,7 +88,8 @@ class Map : public ISerializable
 		void set_map_type(const MapType& new_type);
 		MapType get_map_type() const;
 		
-		TilesContainer get_tiles() const;
+    TilesContainer get_tiles() const;
+		TilesContainer& get_tiles_ref();
 
     void clear_locations();
     void add_or_update_location(const std::string& location, const Coordinate& coordinate);

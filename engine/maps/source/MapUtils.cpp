@@ -1571,7 +1571,7 @@ map<TileType, vector<TilePtr>> MapUtils::partition_tiles(MapPtr current_map)
 
   if (current_map != nullptr)
   {
-    TilesContainer tc = current_map->get_tiles();
+    TilesContainer& tc = current_map->get_tiles_ref();
 
     for (const auto& tc_pair : tc)
     {
@@ -1596,7 +1596,7 @@ vector<TilePtr> MapUtils::get_tiles_supporting_items(MapPtr map)
     // Be optimistic about how many tiles might be returned.
     tiles.reserve(map->size().get_y() * map->size().get_x());
 
-    TilesContainer tc = map->get_tiles();
+    TilesContainer& tc = map->get_tiles_ref();
     for (auto& tc_pair : tc)
     {
       TilePtr tile = tc_pair.second;
