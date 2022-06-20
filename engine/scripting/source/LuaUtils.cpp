@@ -14,6 +14,10 @@ LuaUtils::~LuaUtils()
 
 vector<string> LuaUtils::get_string_array_from_table(lua_State* ls, int lua_index)
 {
+  Log& log = Log::instance();
+  log.trace("LuaUtils::get_string_array_from_table - starting");
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+
   vector<string> str_array;
 
   size_t sid_size = lua_objlen(ls, lua_index);
@@ -43,11 +47,16 @@ vector<string> LuaUtils::get_string_array_from_table(lua_State* ls, int lua_inde
     lua_pop(ls, 1);
   }
 
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+  log.trace("LuaUtils::get_string_array_from_table - exiting");
   return str_array;
 }
 
 void LuaUtils::create_return_table_from_string_vector(lua_State* ls, const vector<string>& str_vec)
 {
+  Log& log = Log::instance();
+  log.trace("LuaUtils::create_return_table_from_string_vector - starting");
+
   lua_newtable(ls);
   size_t str_vec_size = str_vec.size();
 
@@ -60,10 +69,17 @@ void LuaUtils::create_return_table_from_string_vector(lua_State* ls, const vecto
     lua_pushstring(ls, cur_item.c_str());
     lua_rawseti(ls, -2, i + 1);
   }
+
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+  log.trace("LuaUtils::create_return_table_from_string_vector - exiting");
 }
 
 void LuaUtils::create_return_table_from_int_vector(lua_State* ls, const vector<int>& int_vec)
 {
+  Log& log = Log::instance();
+  log.trace("LuaUtils::create_return_table_from_int_vector - starting");
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+
   lua_newtable(ls);
   size_t int_vec_size = int_vec.size();
 
@@ -76,44 +92,72 @@ void LuaUtils::create_return_table_from_int_vector(lua_State* ls, const vector<i
     lua_pushinteger(ls, cur_item);
     lua_rawseti(ls, -2, i + 1);
   }
+
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+  log.trace("LuaUtils::create_return_table_from_int_vector - exiting");
 }
 
 void LuaUtils::set_field(lua_State* ls, const char* name, const bool val)
 {
+  Log& log = Log::instance();
+  log.trace("LuaUtils::set_field - starting");
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+
   if (ls != nullptr)
   {
     lua_pushstring(ls, name);
     lua_pushboolean(ls, val);
     lua_settable(ls, -3);
   }
+
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+  log.trace("LuaUtils::set_field - exiting");
 }
 
 void LuaUtils::set_field(lua_State* ls, const char* name, const int val)
 {
+  Log& log = Log::instance();
+  log.trace("LuaUtils::set_field - starting");
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+
   if (ls != nullptr)
   {
     lua_pushstring(ls, name);
     lua_pushinteger(ls, val);
     lua_settable(ls, -3);
   }
+
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+  log.trace("LuaUtils::set_field - exiting");
 }
 
 void LuaUtils::log_and_raise(lua_State* ls, const string& error_message)
 {
-  Log::instance().error(error_message);
+  Log& log = Log::instance();
+  log.trace("LuaUtils::log_and_raise - starting");
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+
+  log.error(error_message);
   
   string traceback = get_traceback(ls);
-  Log::instance().error("Traceback: " + traceback);
+  log.error("Traceback: " + traceback);
 
   // Push the error
   lua_pushstring(ls, error_message.c_str());
   lua_error(ls);
+
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+  log.trace("LuaUtils::log_and_raise - exiting");
 }
 
 // Get the result of calling Lua's debug.traceback() - useful for debugging
 // purposes.
 string LuaUtils::get_traceback(lua_State* ls)
 {
+  Log& log = Log::instance();
+  log.trace("LuaUtils::get_traceback - starting");
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+
   string debug_module = "debug";
   string traceback_fn = "traceback";
   string traceback;
@@ -136,5 +180,9 @@ string LuaUtils::get_traceback(lua_State* ls)
   }
 
   lua_pop(ls, 1);
+
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+  log.trace("LuaUtils::get_traceback - exiting");
+
   return traceback;
 }

@@ -19,6 +19,9 @@ const string DecisionScript::DECIDE_FUNCTION_NAME = "decide";
 // false otherwise.
 int DecisionScript::execute(ScriptEngine& se, const string& decision_script, CreaturePtr creature)
 {
+  Log& log = Log::instance();
+  log.trace("DecisionScript::execute - begin");
+
   // By default, the return value will be false.
   // It only gets set to true if the script execution returns true.
   int acv = 0;
@@ -50,7 +53,7 @@ int DecisionScript::execute(ScriptEngine& se, const string& decision_script, Cre
   {
     string l_err = lua_tostring(L, -1);
     string error_msg = "DecisionScript::execute - could not run Lua function `" + DECIDE_FUNCTION_NAME + "': " + l_err;
-    Log::instance().error(error_msg);
+    log.error(error_msg);
     lua_pop(L, 1);
   }
   else
@@ -58,7 +61,7 @@ int DecisionScript::execute(ScriptEngine& se, const string& decision_script, Cre
     // Parse the integer return value.
     if (!lua_isnumber(L, -1))
     {
-      Log::instance().error("Return value from call to Lua function " + DECIDE_FUNCTION_NAME + " is not an action cost value!");
+      log.error("Return value from call to Lua function " + DECIDE_FUNCTION_NAME + " is not an action cost value!");
     }
     else
     {
@@ -68,6 +71,7 @@ int DecisionScript::execute(ScriptEngine& se, const string& decision_script, Cre
     lua_pop(L, 1);
   }
 
+  log.trace("DecisionScript::execute - exiting");
   return acv;
 }
 

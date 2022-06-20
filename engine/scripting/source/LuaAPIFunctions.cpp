@@ -459,7 +459,6 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "generate_npc_background", generate_npc_background);
   lua_register(L, "show_bestiary_text", show_bestiary_text);
   lua_register(L, "get_stack_size_current_state", get_stack_size_current_state);
-  lua_register(L, "get_stack_size", get_stack_size);
   lua_register(L, "bad_fn_do_not_call", bad_fn_do_not_call);
 }
 
@@ -4263,6 +4262,10 @@ int map_get_dimensions(lua_State* ls)
 
 int map_get_available_creature_coords(lua_State* ls)
 {
+  Log& log = Log::instance();
+  log.trace("map_get_available_creature_coords - starting");
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+
   int num_args = lua_gettop(ls);
 
   lua_newtable(ls);
@@ -4308,6 +4311,8 @@ int map_get_available_creature_coords(lua_State* ls)
     LuaUtils::log_and_raise(ls, "Incorrect arguments to map_get_available_creature_coords");
   }
 
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+  log.trace("map_get_available_creature_coords - exiting");
   return 1;
 }
 
@@ -6575,6 +6580,10 @@ int get_map_dimensions(lua_State* ls)
 
 int get_coords_with_tile_type_in_range(lua_State* ls)
 {
+  Log& log = Log::instance();
+  log.trace("get_coords_with_tile_type_in_range - starting");
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+
   // Get the args before creating the return table.
   int num_args = lua_gettop(ls);
 
@@ -6629,6 +6638,8 @@ int get_coords_with_tile_type_in_range(lua_State* ls)
     LuaUtils::log_and_raise(ls, "Incorrect arguments to get_coords_with_tile_type_in_range");
   }
 
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+  log.trace("get_coords_with_tile_type_in_range - exiting");
   return 1;
 }
 
@@ -7879,6 +7890,10 @@ int is_membership_excluded(lua_State* ls)
 
 int dig_rectangles(lua_State* ls)
 {
+  Log& log = Log::instance();
+  log.trace("dig_rectangles - starting");
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+
   int num_args = lua_gettop(ls);
   lua_newtable(ls);
 
@@ -7920,6 +7935,8 @@ int dig_rectangles(lua_State* ls)
     LuaUtils::log_and_raise(ls, "Incorrect arguments to dig_rectangles");
   }
 
+  log.debug("Lua stack size: " + to_string(Game::instance().get_script_engine_ref().get_stack_size()));
+  log.trace("dig_rectangles - exiting");
   return 1;
 }
 
@@ -9746,12 +9763,6 @@ int get_stack_size_current_state(lua_State* ls)
   lua_State* L = Game::instance().get_script_engine_ref().get_current_state();
   int stack_size = lua_gettop(L);
   lua_pushinteger(L, stack_size);
-  return 1;
-}
-
-int get_stack_size(lua_State* ls)
-{
-  lua_pushinteger(ls, lua_gettop(ls));
   return 1;
 }
 

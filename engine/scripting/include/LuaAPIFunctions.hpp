@@ -304,7 +304,6 @@ int set_hungerless(lua_State* ls);
 int generate_npc_background(lua_State* ls);
 int show_bestiary_text(lua_State* ls);
 int get_stack_size_current_state(lua_State* ls);
-int get_stack_size(lua_State* ls);
 int bad_fn_do_not_call(lua_State* ls);
 
 // helper functions for the Lua API functions.

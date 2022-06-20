@@ -317,6 +317,10 @@ void ScriptEngine::set_constants(lua_State* ls)
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)
 {
+  Log& log = Log::instance();
+  log.trace("ScriptEngine::get_table_str - starting");
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+
   string value;
   lua_pushstring(ls, key.c_str());
   lua_gettable(ls, -2); // get table[key]
@@ -330,6 +334,8 @@ string ScriptEngine::get_table_str(lua_State* ls, const string& key)
 
   lua_pop(ls, 1); // remove value from stack
   
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::get_table_str - exiting");
   return value;
 }
 
@@ -337,6 +343,10 @@ string ScriptEngine::get_table_str(lua_State* ls, const string& key)
 // As we're just running a script, pass any desired arguments as a table.
 bool ScriptEngine::execute(const string& script, const map<string, string>& script_args)
 {
+  Log& log = Log::instance();
+  log.trace("ScriptEngine::execute - starting");
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+
   bool ret_val = false;
 
   try
@@ -385,6 +395,8 @@ bool ScriptEngine::execute(const string& script, const map<string, string>& scri
     log_error();
   }
 
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::execute - exiting");
   return ret_val;
 }
 
@@ -401,6 +413,10 @@ void ScriptEngine::run_command(const string& command)
 // Call a function in the Lua environment.
 void ScriptEngine::call_function(const string& fn_name, const vector<string>& param_types, const vector<string>& param_values, const int n_return_vals)
 {
+  Log& log = Log::instance();
+  log.trace("ScriptEngine::call_function - starting");
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+
   if (param_types.size() != param_values.size())
   {
     return;
@@ -414,11 +430,18 @@ void ScriptEngine::call_function(const string& fn_name, const vector<string>& pa
 
   // JCD FIXME: update this whenever I need to actually use return values.
   lua_pop(L, n_return_vals);
+
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::call_function - exiting");
 }
 
 // Handle arguments to a Lua function.
 void ScriptEngine::process_function_arguments(const vector<string>& param_types, const vector<string>& param_values)
 {
+  Log& log = Log::instance();
+  log.trace("ScriptEngine::process_function_arguments - starting");
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+
   for (uint i = 0; i < param_types.size(); i++)
   {
     string param_type = param_types.at(i);
@@ -447,6 +470,9 @@ void ScriptEngine::process_function_arguments(const vector<string>& param_types,
       log.error("ScriptEngine::process_function_arguments - Unrecognized type \"" + param_type + "\" with value \"" + param_value + "\"");
     }
   }
+
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::process_function_arguments - exiting");
 }
 
 lua_State* ScriptEngine::get_current_state()
@@ -457,8 +483,11 @@ lua_State* ScriptEngine::get_current_state()
 // Log the most recently-occurred error.
 void ScriptEngine::log_error()
 {
-  // An error occurred: pop the error off the stack, and log the message.
   Log& log = Log::instance();
+  log.trace("ScriptEngine::log_error - starting");
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+
+  // An error occurred: pop the error off the stack, and log the message.
   string error(lua_tostring(L, -1));
 
   log.error("ScriptEngine::log_error - Error in execution: " + error);
@@ -468,6 +497,9 @@ void ScriptEngine::log_error()
   IMessageManager& manager = MM::instance();
   manager.add_new_message(ui_error);
   manager.send();
+
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::log_error - exiting");
 }
 
 // Set the last executed command
@@ -479,6 +511,11 @@ void ScriptEngine::set_last_executed(const string& new_last_executed)
 string ScriptEngine::get_last_executed() const
 {
   return last_executed;
+}
+
+int ScriptEngine::get_stack_size() const
+{
+  return lua_gettop(L);
 }
 
 bool ScriptEngine::serialize(ostream& stream) const

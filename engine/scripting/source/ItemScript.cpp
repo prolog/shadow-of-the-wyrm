@@ -20,6 +20,10 @@ const string ItemScript::GET_TREASURE_ITEMS_FUNCTION_NAME = "get_treasure_items"
 // Return true if the script executed successfully, false otherwise.
 bool ItemScript::execute(ScriptEngine& se, const string& item_script, const string& item_event, const string& base_item_id, const map<string, string>& properties, const string& original_creature_id, const int row, const int col)
 {
+  Log& log = Log::instance();
+  log.trace("ItemScript::execute - begin");
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+
   bool result = true;
   
   if (se.execute(item_script, {}))
@@ -40,21 +44,27 @@ bool ItemScript::execute(ScriptEngine& se, const string& item_script, const stri
     {
       string l_err = lua_tostring(L, -1);
       string error_msg = "ItemScript::execute - error running Lua function `" + ITEM_FUNCTION_NAME + "': " + l_err;
-      Log::instance().error(error_msg);
+      log.error(error_msg);
       lua_pop(L, 1);
       result = false;
     }
   }
   else
   {
-    Log::instance().error("ItemScript::execute - did not run Lua function due to errors in the item script: " + item_script);
+    log.error("ItemScript::execute - did not run Lua function due to errors in the item script: " + item_script);
   }
 
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+  log.trace("ItemScript::execute - exiting");
   return result;
 }
 
 vector<string> ItemScript::execute_get_treasure_items(ScriptEngine& se)
 {
+  Log& log = Log::instance();
+  log.trace("ItemScript::execute_get_treasure_items - begin");
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+
   vector<string> item_ids;
 
   if (se.execute("items/treasure.lua", {}))
@@ -68,7 +78,7 @@ vector<string> ItemScript::execute_get_treasure_items(ScriptEngine& se)
     {
       string l_err = lua_tostring(L, -1);
       string error_msg = "ItemScript::execute_get_treasure_items - error running Lua function `" + GET_TREASURE_ITEMS_FUNCTION_NAME + "': " + l_err;
-      Log::instance().error(error_msg);
+      log.error(error_msg);
       lua_pop(L, 1);
     }
     else
@@ -87,5 +97,7 @@ vector<string> ItemScript::execute_get_treasure_items(ScriptEngine& se)
     }
   }
 
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+  log.trace("ItemScript::execute_get_treasure_items - exiting");
   return item_ids;
 }

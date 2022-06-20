@@ -18,6 +18,10 @@ const string LevelScript::LEVEL_FUNCTION_NAME = "level";
 // appropriately with the creature information.
 void LevelScript::execute(ScriptEngine& se, const vector<string>& setup_scripts, CreaturePtr creature)
 {
+  Log& log = Log::instance();
+  log.trace("LevelScript::execute - begin");
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+
   if (!setup_scripts.empty())
   {
     string race_id  = creature->get_race_id();
@@ -52,13 +56,16 @@ void LevelScript::execute(ScriptEngine& se, const vector<string>& setup_scripts,
       {
         string l_err = lua_tostring(L, -1);
         string error_msg = "LevelScript::execute - error running Lua function `" + LEVEL_FUNCTION_NAME + "': " + l_err;
-        Log::instance().error(error_msg);
+        log.error(error_msg);
         lua_pop(L, 1);
       }
     }
     else
     {
-      Log::instance().error("LevelScript::execute - Did not run level function due to failure in level setup scripts.");
+      log.error("LevelScript::execute - Did not run level function due to failure in level setup scripts.");
     }
   }
+
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+  log.trace("LevelScript::execute - exiting");
 }
