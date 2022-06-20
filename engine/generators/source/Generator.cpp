@@ -1,8 +1,10 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "DirectionUtils.hpp"
 #include "GeneratorUtils.hpp"
+#include "ItemScript.hpp"
 #include "Log.hpp"
 #include "MapCreatureGenerator.hpp"
 #include "MapExitUtils.hpp"
@@ -59,6 +61,7 @@ MapPtr Generator::generate_and_initialize(const int danger, const Dimensions& di
   map->set_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE, get_additional_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE));
 
   generate_additional_structures(map);
+  generate_treasure(map);
 
   initialize(map, danger_level);
   create_properties_and_copy_to_map(map);
@@ -100,6 +103,92 @@ void Generator::generate_additional_structures(MapPtr map)
     {
       GeneratorUtils::generate_cottage(map);
     }
+  }
+}
+
+void Generator::generate_treasure(MapPtr map)
+{
+  string min_lore_s = get_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED);
+
+  if (!min_lore_s.empty())
+  {
+    int min_lore = String::to_int(min_lore_s);
+
+    Dimensions dim = map->size();
+    int rand_y = 0;
+    int rand_x = 0;
+    vector<Coordinate> coords;
+    TilePtr tile;
+    ItemScript is;
+
+    for (int i = 0; i < 50; i++)
+    {
+      rand_y = RNG::range(1, dim.get_y() - 1);
+      rand_x = RNG::range(1, dim.get_x() - 1);
+
+      tile = map->at(rand_y, rand_x);
+
+      if (!MapUtils::is_tile_available_for_item(tile))
+      {
+        continue;
+      }
+
+      coords = CoordUtils::get_adjacent_map_coordinates(dim, rand_y, rand_x);
+      TilePtr adj_tile;
+
+      for (const Coordinate& c : coords)
+      {
+        adj_tile = map->at(c);
+
+        if (!MapUtils::is_tile_available_for_item(adj_tile))
+        {
+          continue;
+        }
+      }
+
+      break;
+    }
+
+    if (tile == nullptr || coords.empty())
+    {
+      return;
+    }
+
+    vector<string> item_ids = is.execute_get_treasure_items(Game::instance().get_script_engine_ref());
+    GeneratorUtils::generate_item_per_coord(map, coords, item_ids);
+
+    bool generate_randart = false;
+    
+    if (min_lore > 65)
+    {
+      generate_randart = true;
+    }
+
+    // The centerpiece of the trove is either an artifact, or a lot of ivory.
+    if (generate_randart)
+    {
+      int num_randarts = 1;
+
+      if (min_lore == 100)
+      {
+        num_randarts = 3;
+      }
+      else if (min_lore > 90 || RNG::percent_chance(min_lore / 4))
+      {
+        num_randarts = 2;
+      }
+
+      GeneratorUtils::generate_randarts(map, { rand_y, rand_x }, num_randarts);
+    }
+    else
+    {
+      int max_ivory = min_lore * 100;
+      ItemPtr ivory = ItemManager::create_item(ItemIdKeys::ITEM_ID_CURRENCY, RNG::range(max_ivory / 2, max_ivory));
+      tile->get_items()->merge_or_add(ivory, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+    }
+
+    // Once the treasure is found, the map becomes permanent.
+    map->set_permanent(true);
   }
 }
 

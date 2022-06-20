@@ -73,6 +73,7 @@ namespace SOTW
     protected:
    
       virtual void generate_additional_structures(MapPtr map);
+      virtual void generate_treasure(MapPtr map);
 
       virtual void set_map_permanence(MapPtr map);
       virtual bool get_permanence() const; // Check additional properties, and only then check the default

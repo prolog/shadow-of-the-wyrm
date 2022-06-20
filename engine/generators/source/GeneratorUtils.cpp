@@ -596,6 +596,44 @@ void GeneratorUtils::generate_cottage(MapPtr map)
   }
 }
 
+void GeneratorUtils::generate_randarts(MapPtr map, const Coordinate& c, const int num_randarts)
+{
+  if (map != nullptr)
+  {
+    for (int i = 0; i < num_randarts; i++)
+    {
+      // ...
+    }
+  }
+}
+
+void GeneratorUtils::generate_item_per_coord(MapPtr map, const vector<Coordinate>& coords, const vector<string>& item_ids)
+{
+  if (map != nullptr && !coords.empty() && !item_ids.empty())
+  {
+    for (const Coordinate& c : coords)
+    {
+      string item_id = item_ids.at(RNG::range(0, item_ids.size() - 1));
+      ItemPtr item = ItemManager::create_item(item_id);
+
+      if (item != nullptr)
+      {
+        if (item->get_type() == ItemType::ITEM_TYPE_AMMUNITION)
+        {
+          item->set_quantity(RNG::range(15, 25));
+        }
+
+        TilePtr c_tile = map->at(c);
+
+        if (c_tile != nullptr)
+        {
+          c_tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+        }
+      }
+    }
+  }
+}
+
 void GeneratorUtils::generate_storehouses(MapPtr map)
 {
   if (map != nullptr)

@@ -194,6 +194,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_object_to_creature", add_object_to_creature);
   lua_register(L, "add_object_on_tile_to_creature", add_object_on_tile_to_creature);
   lua_register(L, "add_object_to_tile", add_object_to_tile);
+  lua_register(L, "add_randart_to_player_tile", add_randart_to_player_tile);
   lua_register(L, "add_key_to_player_tile", add_key_to_player_tile);
   lua_register(L, "add_configurable_feature_to_map", add_configurable_feature_to_map);
   lua_register(L, "add_feature_to_map", add_feature_to_map);
@@ -457,6 +458,9 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_hungerless", set_hungerless);
   lua_register(L, "generate_npc_background", generate_npc_background);
   lua_register(L, "show_bestiary_text", show_bestiary_text);
+  lua_register(L, "get_stack_size_current_state", get_stack_size_current_state);
+  lua_register(L, "get_stack_size", get_stack_size);
+  lua_register(L, "bad_fn_do_not_call", bad_fn_do_not_call);
 }
 
 // Lua API helper functions
@@ -1368,6 +1372,22 @@ int add_object_to_tile(lua_State* ls)
 
   lua_pushboolean(ls, result);
   return 1;
+}
+
+int add_randart_to_player_tile(lua_State* ls)
+{
+  if (lua_gettop(ls) == 0)
+  {
+    MapPtr map = Game::instance().get_current_map();
+    Coordinate c = map->get_location(CreatureID::CREATURE_ID_PLAYER);
+    GeneratorUtils::generate_randarts(map, c, 1);
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_randart_to_player_tile");
+  }
+
+  return 0;
 }
 
 // Add a key to the player tile.
@@ -9720,3 +9740,33 @@ int show_bestiary_text(lua_State* ls)
 
   return 0;
 }
+
+int get_stack_size_current_state(lua_State* ls)
+{
+  lua_State* L = Game::instance().get_script_engine_ref().get_current_state();
+  int stack_size = lua_gettop(L);
+  lua_pushinteger(L, stack_size);
+  return 1;
+}
+
+int get_stack_size(lua_State* ls)
+{
+  lua_pushinteger(ls, lua_gettop(ls));
+  return 1;
+}
+
+// BAD FN DO NOT CALL
+// BAD FN DO NOT CALL
+// BAD FN DO NOT CALL
+int bad_fn_do_not_call(lua_State* ls)
+{
+  lua_pushinteger(ls, 1);
+  lua_pushinteger(ls, 7);
+  lua_pushinteger(ls, 5);
+  lua_pushinteger(ls, 3);
+
+  return 0;
+}
+// BAD FN DO NOT CALL
+// BAD FN DO NOT CALL
+// BAD FN DO NOT CALL

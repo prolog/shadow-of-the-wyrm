@@ -57,6 +57,13 @@ class GeneratorUtils
     // Generates storehouses of food over the map.
     static void generate_storehouses(MapPtr map);
 
+    // Generates a random artifact and places it at a particular location.
+    static void generate_randarts(MapPtr map, const Coordinate& c, const int num_randarts);
+
+    // Creates and item from the given list of IDs for each of the specified
+    // coordinates.
+    static void generate_item_per_coord(MapPtr map, const std::vector<Coordinate>& coords, const std::vector<std::string>& item_ids);
+
     // Fill a subset of the map with a certain tile type.
     static void fill(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const TileType tile_type);
 

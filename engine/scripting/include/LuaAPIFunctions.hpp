@@ -37,6 +37,7 @@ int add_object_to_map(lua_State* ls);
 int add_object_to_creature(lua_State* ls);
 int add_object_on_tile_to_creature(lua_State* ls);
 int add_object_to_tile(lua_State* ls); // assumes current map
+int add_randart_to_player_tile(lua_State* ls);
 int add_key_to_player_tile(lua_State* ls);
 int add_feature_to_map(lua_State* ls);
 int add_all_base_features_to_map(lua_State* ls);
@@ -302,6 +303,9 @@ int set_max_age(lua_State* ls);
 int set_hungerless(lua_State* ls);
 int generate_npc_background(lua_State* ls);
 int show_bestiary_text(lua_State* ls);
+int get_stack_size_current_state(lua_State* ls);
+int get_stack_size(lua_State* ls);
+int bad_fn_do_not_call(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

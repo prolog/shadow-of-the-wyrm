@@ -1,5 +1,8 @@
 module(..., package.seeall)
 
+require('constants')
+require('fn')
+
 -- Per-creature item functions.
 item_fns = {}
 

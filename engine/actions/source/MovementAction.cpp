@@ -678,6 +678,11 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_EXIT_MOVEMENT_TYPE, to_string(static_cast<int>(emt)));
       generator->set_additional_property(TileProperties::TILE_PROPERTY_NAME, tile->get_additional_property(TileProperties::TILE_PROPERTY_NAME));
 
+      if (MapUtils::has_known_treasure(tile, creature))
+      {
+        generator->set_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED, tile->get_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED));
+      }
+
       new_map = generator->generate_and_initialize(danger_level, depth);
 
       // If a map exit's been provided, check to see if there's an event
