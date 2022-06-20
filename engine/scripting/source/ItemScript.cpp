@@ -48,6 +48,8 @@ bool ItemScript::execute(ScriptEngine& se, const string& item_script, const stri
       lua_pop(L, 1);
       result = false;
     }
+
+    lua_pop(L, 1);
   }
   else
   {

@@ -35,7 +35,7 @@ vector<string> LuaUtils::get_string_array_from_table(lua_State* ls, int lua_inde
       lua_pushstring(ls, msg.c_str());
       lua_error(ls);
 
-      Log::instance().error(msg);
+      log.error(msg);
     }
     else
     {
@@ -171,12 +171,12 @@ string LuaUtils::get_traceback(lua_State* ls)
   {
     string l_err = lua_tostring(L, -1);
     string error_msg = "LuaUtils::log_and_raise - error running Lua function debug.traceback(): " + l_err;
-    Log::instance().error(error_msg);
+    log.error(error_msg);
   }
   else
   {
     traceback = lua_tostring(ls, -1);
-    Log::instance().error("Traceback: " + traceback);
+    log.error("Traceback: " + traceback);
   }
 
   lua_pop(ls, 1);
@@ -185,4 +185,48 @@ string LuaUtils::get_traceback(lua_State* ls)
   log.trace("LuaUtils::get_traceback - exiting");
 
   return traceback;
+}
+
+string LuaUtils::get_stack_dump(lua_State* ls)
+{
+  ostringstream dump;
+  int n = lua_gettop(ls);
+
+  for (int i = 1; i <= n; i++) 
+  {
+    int type = lua_type(ls, i);
+
+    switch (type) {
+      case LUA_TSTRING:
+        dump << lua_tostring(ls, i);
+        break;
+
+      case LUA_TBOOLEAN:
+      {
+        bool b = lua_toboolean(ls, i);
+
+        if (b)
+        {
+          dump << "true";
+        }
+        else
+        {
+          dump << "false";
+        }
+
+        break;
+      }
+
+      case LUA_TNUMBER:
+        dump << lua_tonumber(ls, i);
+        break;
+
+      default:
+        dump << lua_typename(ls, type);
+        break;
+    }
+    dump << "\t";
+  }
+
+  return dump.str();
 }

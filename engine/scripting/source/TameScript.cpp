@@ -70,6 +70,8 @@ bool TameScript::execute(ScriptEngine& se, const string& event_script, CreatureP
       lua_pop(L, 1);
       result = false;
     }
+
+    lua_pop(L, 1);
   }
   else
   {

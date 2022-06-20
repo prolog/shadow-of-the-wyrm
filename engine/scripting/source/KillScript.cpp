@@ -24,6 +24,7 @@ bool KillScript::execute(ScriptEngine& se, const string& event_script, CreatureP
 
   if (event_script.empty())
   {
+    log.trace("KillScript::execute - no script - exiting");
     return false;
   }
 
@@ -66,6 +67,8 @@ bool KillScript::execute(ScriptEngine& se, const string& event_script, CreatureP
       lua_pop(L, 1);
       result = false;
     }
+
+    lua_pop(L, 1);
   }
   else
   {

@@ -51,6 +51,8 @@ bool MapScript::execute(ScriptEngine& se, const string& map_script, MapPtr map)
       lua_pop(L, 1);
       result = false;
     }
+
+    lua_pop(L, 1);
   }
   else
   {

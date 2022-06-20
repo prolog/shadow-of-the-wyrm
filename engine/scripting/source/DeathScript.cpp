@@ -69,6 +69,8 @@ bool DeathScript::execute(ScriptEngine& se, const string& event_script, Creature
       lua_pop(L, 1);
       result = false;
     }
+
+    lua_pop(L, 1);
   }
   else
   {

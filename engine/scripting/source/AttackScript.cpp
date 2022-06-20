@@ -58,6 +58,8 @@ bool AttackScript::execute(ScriptEngine& se, const string& attack_script, Creatu
       lua_pop(L, 1);
       result = false;
     }
+
+    lua_pop(L, 1);
   }
   else
   {

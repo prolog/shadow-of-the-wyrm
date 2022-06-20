@@ -7,6 +7,7 @@ extern "C"
 
 #include "LevelScript.hpp"
 #include "Log.hpp"
+#include "LuaUtils.hpp"
 #include "ScriptEngine.hpp"
 
 using namespace std;
@@ -51,6 +52,9 @@ void LevelScript::execute(ScriptEngine& se, const vector<string>& setup_scripts,
       lua_pushstring(L, creature_id.c_str());
       lua_pushnumber(L, creature_level);
 
+      log.trace("LevelScript::execute - params for call: " + race_id + ", " + class_id + ", " + creature_id + ", " + to_string(creature_level));
+      log.debug("Lua stack size before level script run: " + to_string(se.get_stack_size()));
+
       // Do the function call.  The level function returns nothing.
       if (lua_pcall(L, 4, 0, 0) != 0)
       {
@@ -59,6 +63,10 @@ void LevelScript::execute(ScriptEngine& se, const vector<string>& setup_scripts,
         log.error(error_msg);
         lua_pop(L, 1);
       }
+
+      lua_pop(L, 1);
+      log.debug("Lua stack size after level script run: " + to_string(se.get_stack_size()));
+      log.debug("Stack contents: " + LuaUtils::get_stack_dump(L));
     }
     else
     {

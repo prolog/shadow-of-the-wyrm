@@ -52,14 +52,39 @@ bool ScriptEngine::clear_state()
 
 void ScriptEngine::initialize_state()
 {
-   L = lua_open();
-   
-   luaL_openlibs(L);
-   luaopen_base(L);
-   
-   set_constants(L);
-   load_modules();
-   register_api_functions();
+  Log& log = Log::instance();
+  log.trace("ScriptEngine::initialize_state - starting");
+  log.trace("ScriptEngine::initialize_state - opening state");
+
+  L = lua_open();
+
+  log.trace("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::initialize_state - opening libs");
+
+  luaL_openlibs(L);
+
+  log.trace("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::initialize_state - opening base");
+
+  luaopen_base(L);
+
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::initialize_state - setting constants");
+
+  set_constants(L);
+
+  log.trace("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::initialize_state - loading modules");
+
+  load_modules();
+
+  log.trace("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::initialize_state - registering API functions");
+
+  register_api_functions();
+
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::initialize_state- exiting");
 }
 
 void ScriptEngine::load_modules()

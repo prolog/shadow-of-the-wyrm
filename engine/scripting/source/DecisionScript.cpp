@@ -71,6 +71,8 @@ int DecisionScript::execute(ScriptEngine& se, const string& decision_script, Cre
     lua_pop(L, 1);
   }
 
+  lua_pop(L, 1);
+
   log.trace("DecisionScript::execute - exiting");
   return acv;
 }

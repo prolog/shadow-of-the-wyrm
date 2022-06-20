@@ -24,6 +24,7 @@ class LuaUtils
 
     static void log_and_raise(lua_State* ls, const std::string& error_message);
     static std::string get_traceback(lua_State* ls);
+    static std::string get_stack_dump(lua_State* ls);
 
   protected:
     LuaUtils();
