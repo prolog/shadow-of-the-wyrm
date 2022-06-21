@@ -37,6 +37,15 @@ const map<int, vector<string>> Naming::settlement_syllables =
 
 const vector<string> Naming::kell_prefixes = { "Alt", "Caer", "Yl", "Yg", "Yr"};
 
+const map<int, vector<string>> Naming::artifact_syllables =
+{
+  {
+    { 1, {"Ad", "Al", "Alt", "As", "Ast", "At", "Bad", "Bal", "Bel", "Cad", "Cal", "Cet", "Dab", "Dal", "Dam", "Dan", "Fab", "Fad", "Fag", "Fam", "Fan", "Fang", "Fas", "Gan", "Gol", "Gon", "Has", "I", "Il", "Jad", "Jan", "Kal", "Kam", "Kamn", "Kan", "Kat", "Lil", "Lis", "Mad", "Mag", "Mel", "Mol", "Mul", "Nad", "Nal", "Nag", "Nat", "Oth", "Pad", "Pag", "Pal", "Quid", "Quil", "Quin", "Rad", "Ral", "Ram", "Ran", "Ras", "Sad", "Sal", "Sag", "Samn", "Sed", "Sul", "Tag", "Tal", "Tam", "Ux", "Vad", "Vex", "Yg", "Yl" }},
+    { 2, {"a", "e", "i", "o", "u"}},
+    { 3, {"bad", "bal", "ban", "dal", "del", "fal", "fen", "ful", "rad", "rag", "ran", "rin", "run", "sen", "sin", "tan", "tat", "ten", "tet", "van", "vin", "vix", "yan", "yar" }}
+  }
+};
+
 Naming::Naming()
 {
 }
@@ -337,4 +346,17 @@ string Naming::generate_random_settlement_name()
   }
 
   return rand_name;
+}
+
+string Naming::generate_artifact_name()
+{
+  string name;
+
+  for (int i = 1; i <= 3; i++)
+  {
+    vector<string> syllables = artifact_syllables.at(i);
+    name = name + syllables.at(RNG::range(0, syllables.size() - 1));
+  }
+
+  return name;
 }

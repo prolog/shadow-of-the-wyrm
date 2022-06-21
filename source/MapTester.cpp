@@ -87,6 +87,7 @@ void test_item_generation();
 void test_creature_generation();
 void settlement_name_generation();
 void set_game_player();
+void artifact_name_generation();
 
 // Other maps
 void test_other_maps();
@@ -897,6 +898,7 @@ void misc()
     std::cout << "6. Creature Generation" << std::endl;
     std::cout << "7. Settlement Name Generation" << std::endl;
     std::cout << "8. Set player on Game object" << std::endl;
+    std::cout << "9. Artifact Name Generation" << std::endl;
 
     std::cin >> choice;
     
@@ -924,6 +926,9 @@ void misc()
         break;
       case 8:
         set_game_player();
+        break;
+      case 9:
+        artifact_name_generation();
         break;
       default:
         break;
@@ -1117,6 +1122,14 @@ void settlement_name_generation()
   for (int i = 0; i < 15; i++)
   {
     std::cout << Naming::generate_settlement_name() << std::endl;
+  }
+}
+
+void artifact_name_generation()
+{
+  for (int i = 0; i < 15; i++)
+  {
+    std::cout << Naming::generate_artifact_name() << std::endl;
   }
 }
 
