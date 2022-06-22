@@ -40,7 +40,7 @@ const vector<string> Naming::kell_prefixes = { "Alt", "Caer", "Yl", "Yg", "Yr"};
 const map<int, vector<string>> Naming::artifact_syllables =
 {
   {
-    { 1, {"Ad", "Al", "Alt", "As", "Ast", "At", "Bad", "Bal", "Bel", "Cad", "Cal", "Cet", "Dab", "Dal", "Dam", "Dan", "Fab", "Fad", "Fag", "Fam", "Fan", "Fang", "Fas", "Gan", "Gol", "Gon", "Has", "I", "Il", "Jad", "Jan", "Kal", "Kam", "Kamn", "Kan", "Kat", "Lil", "Lis", "Mad", "Mag", "Mel", "Mol", "Mul", "Nad", "Nal", "Nag", "Nat", "Oth", "Pad", "Pag", "Pal", "Quid", "Quil", "Quin", "Rad", "Ral", "Ram", "Ran", "Ras", "Sad", "Sal", "Sag", "Samn", "Sed", "Sul", "Tag", "Tal", "Tam", "Ux", "Vad", "Vex", "Yg", "Yl" }},
+    { 1, {"Ad", "Al", "Alt", "As", "Ast", "At", "Bad", "Bal", "Balg", "Bel", "Cad", "Cal", "Cet", "Dab", "Dal", "Dam", "Dan", "Fab", "Fad", "Fag", "Fam", "Fan", "Fang", "Fas", "Gan", "Gol", "Gon", "Has", "I", "Il", "Jad", "Jan", "Kal", "Kam", "Kamn", "Kan", "Kat", "Lil", "Lis", "Mad", "Mag", "Mel", "Mol", "Mul", "Nad", "Nal", "Nag", "Nat", "Oth", "Pad", "Pag", "Pal", "Quid", "Quil", "Quin", "Rad", "Ral", "Ram", "Ran", "Ras", "Sad", "Sal", "Sag", "Samn", "Sed", "Sul", "Tag", "Tal", "Tam", "Ux", "Vad", "Vex", "Yg", "Yl" }},
     { 2, {"a", "e", "i", "o", "u"}},
     { 3, {"bad", "bal", "ban", "dal", "del", "fal", "fen", "ful", "rad", "rag", "ran", "rin", "run", "sen", "sin", "tan", "tat", "ten", "tet", "van", "vin", "vix", "yan", "yar" }}
   }

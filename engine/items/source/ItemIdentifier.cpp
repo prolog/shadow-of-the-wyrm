@@ -245,6 +245,12 @@ string ItemIdentifier::get_appropriate_description(ItemPtr item, const bool show
       desc << StringTable::get(item->get_description_sid());
     }
 
+    string randart_name = item->get_additional_property(ItemProperties::ITEM_PROPERTIES_RANDART_NAME);
+    if (!randart_name.empty())
+    {
+      desc << " \"" << randart_name << "\"";
+    }
+
     // If we're supposed to show the synopsis, show it whenever the item is 
     // identified or has no hidden info.
     if (show_synopsis && (item_identified || item->get_unidentified_description_sid().empty()))
@@ -349,6 +355,12 @@ string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
   else
   {
     appropriate_usage_desc = full_desc;
+  }
+
+  string randart_name = item->get_additional_property(ItemProperties::ITEM_PROPERTIES_RANDART_NAME);
+  if (!randart_name.empty())
+  {
+    appropriate_usage_desc += " \"" + randart_name + "\"";
   }
 
   return appropriate_usage_desc;

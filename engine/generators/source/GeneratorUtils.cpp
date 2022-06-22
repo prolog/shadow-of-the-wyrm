@@ -6,9 +6,11 @@
 #include "GardenGeneratorFactory.hpp"
 #include "GeneratorUtils.hpp"
 #include "ItemGenerationManager.hpp"
+#include "ItemProperties.hpp"
 #include "Log.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
+#include "Naming.hpp"
 #include "RNG.hpp"
 #include "RockGardenGenerator.hpp"
 #include "SettlementGeneratorUtils.hpp"
@@ -600,9 +602,26 @@ void GeneratorUtils::generate_randarts(MapPtr map, const Coordinate& c, const in
 {
   if (map != nullptr)
   {
-    for (int i = 0; i < num_randarts; i++)
+    TilePtr tile = map->at(c);
+
+    if (tile != nullptr)
     {
-      // ...
+      ActionManager& am = Game::instance().get_action_manager_ref();
+      ItemGenerationManager igm;
+      vector<ItemType> restr = { ItemType::ITEM_TYPE_WEAPON, ItemType::ITEM_TYPE_ARMOUR };
+      ItemGenerationConstraints igc(1, 50 /* JCD FIXME */, Rarity::RARITY_VERY_RARE, restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE);
+      ItemGenerationMap generation_map = igm.generate_item_generation_map(igc);
+
+      for (int i = 0; i < num_randarts; i++)
+      {
+        ItemPtr randart = igm.generate_item(am, generation_map, Rarity::RARITY_VERY_RARE, restr, 0);
+        string name = Naming::generate_artifact_name();
+
+        randart->set_additional_property(ItemProperties::ITEM_PROPERTIES_RANDART_NAME, name);
+        randart->set_artifact(true);
+
+        tile->get_items()->merge_or_add(randart, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+      }
     }
   }
 }
