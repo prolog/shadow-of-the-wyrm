@@ -82,6 +82,11 @@ Damage::~Damage()
 {
 }
 
+vector<DamageType> Damage::get_all_damage_types()
+{
+  return { DamageType::DAMAGE_TYPE_SLASH, DamageType::DAMAGE_TYPE_PIERCE, DamageType::DAMAGE_TYPE_POUND, DamageType::DAMAGE_TYPE_HEAT, DamageType::DAMAGE_TYPE_COLD, DamageType::DAMAGE_TYPE_ACID, DamageType::DAMAGE_TYPE_POISON, DamageType::DAMAGE_TYPE_HOLY, DamageType::DAMAGE_TYPE_SHADOW, DamageType::DAMAGE_TYPE_ARCANE, DamageType::DAMAGE_TYPE_LIGHTNING };
+}
+
 void Damage::set_damage_type(const DamageType new_damage_type)
 {
   damage_type = new_damage_type;

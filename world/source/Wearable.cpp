@@ -1,4 +1,5 @@
 #include <sstream>
+#include "Damage.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
 #include "Wearable.hpp"
@@ -110,6 +111,53 @@ void Wearable::do_enchant_item(const int points)
   }
 }
 
+void Wearable::do_enchant_randart()
+{
+  int num_nr_adjustments = 3;
+
+  if (RNG::percent_chance(80))
+  {
+    double rval = 0.30;
+    if (RNG::percent_chance(50))
+    {
+      rval = 0.20;
+      num_nr_adjustments++;
+    }
+
+    vector<DamageType> damage_types = Damage::get_all_damage_types();
+    vector<pair<double, int>> chances = { {rval, 100}, {rval / 2, 50}, {rval / 3, 25}, {rval / 4, 13} };
+
+    for (const auto& c_pair : chances)
+    {
+      if (RNG::percent_chance(c_pair.second))
+      {
+        DamageType dt = damage_types.at(RNG::range(0, damage_types.size() - 1));
+        resistances.set_resistance_value(dt, resistances.get_resistance_value(dt) + c_pair.first);
+      }
+      else
+      {
+        num_nr_adjustments++;
+      }
+    }
+  }
+  else
+  {
+    speed_bonus += 4;
+    num_nr_adjustments += 4;
+  }
+
+  num_nr_adjustments += RNG::range(1, 3);
+
+  for (int i = 0; i < num_nr_adjustments; i++)
+  {
+    do_enchant_randart_non_resists();
+  }
+}
+
+void Wearable::do_enchant_randart_non_resists()
+{
+  // ...
+}
 
 void Wearable::do_smith_item(const int points)
 {

@@ -20,6 +20,8 @@ class Damage : public Dice
     
     ~Damage();
 
+    static std::vector<DamageType> get_all_damage_types();
+
     void set_damage_type(const DamageType new_damage_type);
     DamageType get_damage_type() const;
     DamageCategory get_damage_category() const;

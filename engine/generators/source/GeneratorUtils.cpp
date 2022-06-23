@@ -616,9 +616,7 @@ void GeneratorUtils::generate_randarts(MapPtr map, const Coordinate& c, const in
       {
         ItemPtr randart = igm.generate_item(am, generation_map, Rarity::RARITY_VERY_RARE, restr, 0);
         string name = Naming::generate_artifact_name();
-
-        randart->set_additional_property(ItemProperties::ITEM_PROPERTIES_RANDART_NAME, name);
-        randart->set_artifact(true);
+        randart->create_randart(name);
 
         tile->get_items()->merge_or_add(randart, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
       }

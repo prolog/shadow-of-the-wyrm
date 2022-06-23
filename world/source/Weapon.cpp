@@ -161,6 +161,11 @@ void Weapon::do_enchant_item(const int points)
   }
 }
 
+void Weapon::do_enchant_randart_non_resists()
+{
+  // ...
+}
+
 void Weapon::do_smith_item(const int points)
 {
   if (points > 0)
