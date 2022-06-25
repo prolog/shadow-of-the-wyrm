@@ -21,6 +21,7 @@ const double Wearable::RESISTS_GOOD_THRESHOLD = 0.1;
 const double Wearable::RESISTS_SCORE_MULTIPLIER = 40.0;
 const double Wearable::EVADE_SCORE_MULTIPLIER = 1.5;
 const int Wearable::ENCHANT_PCT_CHANCE_ADD_SPEED = 4;
+const int Wearable::RANDART_PCT_CHANCE_ADD_SPEED = 6;
 
 Wearable::Wearable()
 : evade(0), soak(0), speed_bonus(0), to_hit(0), addl_damage(0)
@@ -156,7 +157,23 @@ void Wearable::do_enchant_randart()
 
 void Wearable::do_enchant_randart_non_resists()
 {
-  // ...
+  if (RNG::percent_chance(RANDART_PCT_CHANCE_ADD_SPEED))
+  {
+    speed_bonus += 2;
+  }
+  else
+  {
+    int ev_sk_total = evade + soak;
+
+    if (RNG::x_in_y_chance(evade, ev_sk_total))
+    {
+      evade += RNG::range(3, 5);
+    }
+    else
+    {
+      soak += RNG::range(2, 3);
+    }
+  }
 }
 
 void Wearable::do_smith_item(const int points)

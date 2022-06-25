@@ -59,6 +59,9 @@ class Weapon : public Wearable
     SkillType trained_ranged_skill;
     bool requires_ranged_weapon;
     int range;
+
+    static const int RANDART_PCT_CHANCE_INCREASE_MODIFIER;
+    static const int RANDART_PCT_CHANCE_INCREASE_TOHIT;
 };
 
 class MeleeWeapon : public Weapon

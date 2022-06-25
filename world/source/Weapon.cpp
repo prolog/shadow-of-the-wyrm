@@ -16,6 +16,9 @@ enum struct ImproveWeaponType
   IMPROVE_WEAPON_BOTH   = 3
 };
 
+const int Weapon::RANDART_PCT_CHANCE_INCREASE_MODIFIER = 15;
+const int Weapon::RANDART_PCT_CHANCE_INCREASE_TOHIT = 20;
+
 // WEAPON
 Weapon::Weapon()
 : difficulty(0), speed(0), trained_skill(SkillType::SKILL_MELEE_EXOTIC), trained_ranged_skill(SkillType::SKILL_MELEE_EXOTIC), requires_ranged_weapon(false), range(1)
@@ -163,7 +166,22 @@ void Weapon::do_enchant_item(const int points)
 
 void Weapon::do_enchant_randart_non_resists()
 {
-  // ...
+  if (RNG::percent_chance(Wearable::RANDART_PCT_CHANCE_ADD_SPEED))
+  {
+    speed_bonus += 2;
+  }
+  else if (RNG::percent_chance(RANDART_PCT_CHANCE_INCREASE_MODIFIER))
+  {
+    addl_damage += RNG::range(3, 5);
+  }
+  else if (RNG::percent_chance(RANDART_PCT_CHANCE_INCREASE_TOHIT))
+  {
+    to_hit += RNG::range(4, 8);
+  }
+  else
+  {
+    damage.set_num_dice(damage.get_num_dice() + 1);
+  }
 }
 
 void Weapon::do_smith_item(const int points)
