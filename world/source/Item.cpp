@@ -557,9 +557,9 @@ bool Item::enchant(const int pct_chance_brand, const int enchant_points)
   return true;
 }
 
-void Item::create_randart(const string& name)
+void Item::create_randart(const string& name, const vector<string>& slayable_race_ids)
 {
-  do_enchant_randart();
+  do_enchant_randart(slayable_race_ids);
   set_additional_property(ItemProperties::ITEM_PROPERTIES_RANDART_NAME, name);
   set_artifact(true);
 }
@@ -751,11 +751,11 @@ void Item::do_enchant_item(const int points)
   }
 }
 
-void Item::do_enchant_randart()
+void Item::do_enchant_randart(const std::vector<std::string>& slayable_race_ids)
 {
 }
 
-void Item::do_enchant_randart_non_resists()
+void Item::do_enchant_randart_non_resists(const std::vector<std::string>& slayable_race_ids)
 {
 }
 

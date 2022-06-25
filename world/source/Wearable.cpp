@@ -22,6 +22,7 @@ const double Wearable::RESISTS_SCORE_MULTIPLIER = 40.0;
 const double Wearable::EVADE_SCORE_MULTIPLIER = 1.5;
 const int Wearable::ENCHANT_PCT_CHANCE_ADD_SPEED = 4;
 const int Wearable::RANDART_PCT_CHANCE_ADD_SPEED = 6;
+const int Wearable::RANDART_ADDL_PCT_CHANCE_SOAK = 10;
 
 Wearable::Wearable()
 : evade(0), soak(0), speed_bonus(0), to_hit(0), addl_damage(0)
@@ -112,7 +113,7 @@ void Wearable::do_enchant_item(const int points)
   }
 }
 
-void Wearable::do_enchant_randart()
+void Wearable::do_enchant_randart(const std::vector<std::string>& slayable_race_ids)
 {
   int num_nr_adjustments = 3;
 
@@ -151,11 +152,11 @@ void Wearable::do_enchant_randart()
 
   for (int i = 0; i < num_nr_adjustments; i++)
   {
-    do_enchant_randart_non_resists();
+    do_enchant_randart_non_resists(slayable_race_ids);
   }
 }
 
-void Wearable::do_enchant_randart_non_resists()
+void Wearable::do_enchant_randart_non_resists(const std::vector<std::string>& slayable_race_ids)
 {
   if (RNG::percent_chance(RANDART_PCT_CHANCE_ADD_SPEED))
   {
@@ -165,13 +166,13 @@ void Wearable::do_enchant_randart_non_resists()
   {
     int ev_sk_total = evade + soak;
 
-    if (RNG::x_in_y_chance(evade, ev_sk_total))
+    if (RNG::x_in_y_chance(soak, ev_sk_total) || RNG::percent_chance(RANDART_ADDL_PCT_CHANCE_SOAK))
     {
-      evade += RNG::range(3, 5);
+      soak += RNG::range(1, 2);
     }
     else
     {
-      soak += RNG::range(2, 3);
+      evade += RNG::range(2, 4);
     }
   }
 }

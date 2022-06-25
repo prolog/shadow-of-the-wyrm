@@ -24,6 +24,28 @@ Race* RaceManager::get_race(const string& race_id)
   return race;
 }
 
+vector<string> RaceManager::get_race_ids(const bool include_user_playable, const bool include_non_slayable)
+{
+  Game& game = Game::instance();
+  const RaceMap& rm = game.instance().get_races_ref();
+  vector<string> race_ids;
+
+  for (const auto& race_pair : rm)
+  {
+    Race* race = race_pair.second.get();
+
+    if (race != nullptr &&
+      !race_pair.first.empty() &&
+      (include_user_playable || !race->get_user_playable()) &&
+      (include_non_slayable || race->get_slayable()))
+    {
+      race_ids.push_back(race_pair.first);
+    }
+  }
+
+  return race_ids;
+}
+
 // Checks to see if one race is related to another
 bool RaceManager::is_race_or_descendent(const string& race_id, const string& race_to_match)
 {

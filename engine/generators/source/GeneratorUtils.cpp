@@ -11,6 +11,7 @@
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
 #include "Naming.hpp"
+#include "RaceManager.hpp"
 #include "RNG.hpp"
 #include "RockGardenGenerator.hpp"
 #include "SettlementGeneratorUtils.hpp"
@@ -611,12 +612,14 @@ void GeneratorUtils::generate_randarts(MapPtr map, const Coordinate& c, const in
       vector<ItemType> restr = { ItemType::ITEM_TYPE_WEAPON, ItemType::ITEM_TYPE_ARMOUR };
       ItemGenerationConstraints igc(1, 50 /* JCD FIXME */, Rarity::RARITY_VERY_RARE, restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE);
       ItemGenerationMap generation_map = igm.generate_item_generation_map(igc);
+      RaceManager rm;
 
       for (int i = 0; i < num_randarts; i++)
       {
         ItemPtr randart = igm.generate_item(am, generation_map, Rarity::RARITY_VERY_RARE, restr, 0);
         string name = Naming::generate_artifact_name();
-        randart->create_randart(name);
+        vector<string> race_ids = rm.get_race_ids(false, false);
+        randart->create_randart(name, race_ids);
 
         tile->get_items()->merge_or_add(randart, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
       }

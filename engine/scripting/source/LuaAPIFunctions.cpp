@@ -6387,21 +6387,13 @@ int get_race_ids(lua_State* ls)
       include_non_slayable = (lua_toboolean(ls, 2) != 0);
     }
 
-    Game& game = Game::instance();
-    const RaceMap& rm = game.instance().get_races_ref();
+    RaceManager rm;
+    vector<string> race_ids = rm.get_race_ids(include_user_playable, include_non_slayable);
 
-    for (const auto& race_pair : rm)
+    for (const auto& race_id : race_ids)
     {
-      Race* race = race_pair.second.get();
-
-      if (race != nullptr && 
-          !race_pair.first.empty() && 
-          (include_user_playable || !race->get_user_playable()) &&
-          (include_non_slayable || race->get_slayable()))
-      {
-        lua_pushstring(ls, race_pair.first.c_str());
-        race_cnt++;
-      }
+      lua_pushstring(ls, race_id.c_str());
+      race_cnt++;
     }
   }
   else

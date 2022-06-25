@@ -41,8 +41,8 @@ class Wearable : public Item
     
   protected:
     virtual void do_enchant_item(const int points) override;
-    virtual void do_enchant_randart() override;
-    virtual void do_enchant_randart_non_resists() override;
+    virtual void do_enchant_randart(const std::vector<std::string>& slayable_race_ids) override;
+    virtual void do_enchant_randart_non_resists(const std::vector<std::string>& slayable_race_ids) override;
     virtual void do_smith_item(const int smith_points) override;
     virtual void do_improve_item(const int points);
 
@@ -53,6 +53,8 @@ class Wearable : public Item
     static const double EVADE_SCORE_MULTIPLIER;
     static const int ENCHANT_PCT_CHANCE_ADD_SPEED;
     static const int RANDART_PCT_CHANCE_ADD_SPEED;
+    static const int RANDART_ADDL_PCT_CHANCE_SOAK;
+
     StatusAilments status_ailments;
 };
 
