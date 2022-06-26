@@ -2,6 +2,8 @@
 #include "Skills.hpp"
 #include "SkillsCalculator.hpp"
 
+const int SkillsCalculator::HIDDEN_TREASURE_DUNGEONEERING_DIVISOR = 10;
+
 SkillsCalculator::SkillsCalculator()
 {
 }
@@ -68,6 +70,21 @@ Skills SkillsCalculator::calculate_skills_in_given_range(CreaturePtr creature, R
   }
 
   return calculated_skills;
+}
+
+int SkillsCalculator::calculate_hidden_treasure_total_skill_value(CreaturePtr creature, const int lore_val)
+{
+  int total = lore_val;
+
+  if (creature != nullptr)
+  {
+    int dungeoneering = creature->get_skills().get_value(SkillType::SKILL_GENERAL_DUNGEONEERING);
+    total += (dungeoneering / HIDDEN_TREASURE_DUNGEONEERING_DIVISOR);
+  }
+
+  total = std::max<int>(total, 0);
+  total = std::min<int>(total, 100);
+  return total;
 }
 
 #ifdef UNIT_TESTS

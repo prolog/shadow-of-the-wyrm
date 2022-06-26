@@ -795,6 +795,11 @@ void WorldGenerator::set_treasure(MapPtr map)
     NormalDistribution desert_treasures(50, 15);
     NormalDistribution marsh_treasures(60, 12);
     NormalDistribution mountain_treasures(80, 7);
+    
+    bool desert_override = true;
+    bool forest_override = true;
+    bool marsh_override = true;
+    bool mountain_override = true;
 
     TilesContainer& tc = map->get_tiles_ref();
     
@@ -808,19 +813,19 @@ void WorldGenerator::set_treasure(MapPtr map)
 
         if (tt == TileType::TILE_TYPE_DESERT)
         {
-          potentially_add_treasure(tc_pair.first, tc_pair.second, desert_treasures);
+          potentially_add_treasure(tc_pair.first, tc_pair.second, desert_treasures, desert_override);
         }
         else if (tt == TileType::TILE_TYPE_FOREST)
         {
-          potentially_add_treasure(tc_pair.first, tc_pair.second, forest_treasures);
+          potentially_add_treasure(tc_pair.first, tc_pair.second, forest_treasures, forest_override);
         }
         else if (tt == TileType::TILE_TYPE_MARSH)
         {
-          potentially_add_treasure(tc_pair.first, tc_pair.second, marsh_treasures);
+          potentially_add_treasure(tc_pair.first, tc_pair.second, marsh_treasures, marsh_override);
         }
         else if (tt == TileType::TILE_TYPE_MOUNTAINS)
         {
-          potentially_add_treasure(tc_pair.first, tc_pair.second, mountain_treasures);
+          potentially_add_treasure(tc_pair.first, tc_pair.second, mountain_treasures, mountain_override);
         }
       }
     }
@@ -898,13 +903,24 @@ string WorldGenerator::get_race_village_extra_description_sid(const string& race
   return sid;
 }
 
-void WorldGenerator::potentially_add_treasure(const string& key, TilePtr tile, NormalDistribution& nd)
+void WorldGenerator::potentially_add_treasure(const string& key, TilePtr tile, NormalDistribution& nd, bool& terrain_override)
 {
-  if (tile != nullptr && RNG::x_in_y_chance(X_IN_Y_CHANCE_TREASURE.first, X_IN_Y_CHANCE_TREASURE.second))
+  if (tile != nullptr && (terrain_override || RNG::x_in_y_chance(X_IN_Y_CHANCE_TREASURE.first, X_IN_Y_CHANCE_TREASURE.second)))
   {
     Log& log = Log::instance();
     int difficulty = nd.next_int_as_pct();
     string source = TextMessages::get_buried_treasure_message();
+
+    if (terrain_override)
+    {
+      terrain_override = false;
+      int override_difficulty = RNG::range(85, 100);
+
+      if (override_difficulty > difficulty)
+      {
+        difficulty = override_difficulty;
+      }
+    }
 
     if (log.debug_enabled())
     {

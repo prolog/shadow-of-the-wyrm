@@ -1,7 +1,7 @@
 Me:
-- figure out the stack issues. why does stack size = 0 in most places? why is
-  it high when running eg itemscript?
+- work in dungeoneering to treasure gen
 - timed quest for which boating would help a lot
+- guaranteed one 80-100 treasure for each lore type
 - what if during world generation, treasure is 1-100 on various tiles? with
   that particular lore skill finding it and there's a procgen thing like 
   "buried by Hodan the Wise", "buried by pirates", etc

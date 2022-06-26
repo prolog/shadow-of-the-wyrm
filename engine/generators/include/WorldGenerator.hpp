@@ -74,7 +74,7 @@ class WorldGenerator : public SOTW::Generator
 
     std::string get_race_village_extra_description_sid(const std::string& race_id);
 
-    void potentially_add_treasure(const std::string& map_key, TilePtr tile, NormalDistribution& treasure_difficulty);
+    void potentially_add_treasure(const std::string& map_key, TilePtr tile, NormalDistribution& treasure_difficulty, bool& terrain_override);
 
     // A map containing pointers to member functions - used to set up special
     // sets of properties on particular tile types.

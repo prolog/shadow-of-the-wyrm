@@ -36,6 +36,14 @@ Shadow of the Wyrm v1.4.7 "Satoh"
   and the date message formats in-game have been tweaked to also show the
   numerical month.
 
+- Random artifact (randart) generation.
+
+- The terrain lore skills (Desert Lore, Forest Lore, Marsh Lore, Mountain Lore)
+  will now help you find treasure hidden across the world. These treasure
+  caches contain a variety of useful items, the centrepiece being either a
+  huge sum of ivory or a randart.  Dungeoneering can also help improve the
+  quality of the cache.
+
 - New items: amulet of the sky.
 
 - Bug fixes:

@@ -32,6 +32,7 @@
 #include "SearchAction.hpp"
 #include "Setting.hpp"
 #include "SkillManager.hpp"
+#include "SkillsCalculator.hpp"
 #include "StairwayMovementAction.hpp"
 #include "TerrainGeneratorFactory.hpp"
 #include "TextKeys.hpp"
@@ -680,7 +681,8 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
 
       if (MapUtils::has_known_treasure(tile, creature))
       {
-        generator->set_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED, tile->get_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED));
+        int treasure_total_skill_value = SkillsCalculator::calculate_hidden_treasure_total_skill_value(creature, String::to_int(tile->get_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED)));
+        generator->set_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED, std::to_string(treasure_total_skill_value));
       }
 
       new_map = generator->generate_and_initialize(danger_level, depth);
