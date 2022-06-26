@@ -1,7 +1,10 @@
 #include "MountainsGenerator.hpp"
+#include "CoastlineGenerator.hpp"
 #include "ItemManager.hpp"
 #include "ItemTypes.hpp"
 #include "RNG.hpp"
+#include "SpringsGenerator.hpp"
+#include "StreamGenerator.hpp"
 #include "TileGenerator.hpp"
 
 using namespace std;
@@ -42,11 +45,15 @@ MapPtr MountainsGenerator::generate(const Dimensions& dimensions)
       {
         tile_type = TileType::TILE_TYPE_BUSH;
       }
-      else if (rand < 39)
+      else if (rand < 54)
+      {
+        tile_type = TileType::TILE_TYPE_ROCKY_EARTH;
+      }
+      else if (rand < 60)
       {
         tile_type = TileType::TILE_TYPE_CAIRN;
       }
-      else if (rand < 53)
+      else if (rand < 80)
       {
        tile_type = TileType::TILE_TYPE_SCRUB;
       }
@@ -79,6 +86,33 @@ MapPtr MountainsGenerator::generate(const Dimensions& dimensions)
       result_map->insert(row, col, tile);
     }
   }
+
+  generate_stream(result_map);
+  generate_cliffs(result_map);
   
   return result_map;
+}
+
+void MountainsGenerator::generate_stream(MapPtr map)
+{
+  if (RNG::percent_chance(50))
+  {
+    StreamGenerator sg;
+    sg.generate(map);
+  }
+  else
+  {
+    Dimensions dim = map->size();
+    int row = RNG::range(1, dim.get_y() - 2);
+    int col = RNG::range(1, dim.get_x() - 2);
+
+    SpringsGenerator sg;
+    sg.generate_wide(map, row, col, RNG::range(3, 4), 20);
+  }
+}
+
+void MountainsGenerator::generate_cliffs(MapPtr map)
+{
+  CoastlineGenerator cg(TileType::TILE_TYPE_AIR, TileType::TILE_TYPE_UNDEFINED);
+  cg.generate(map, false, RNG::percent_chance(50), RNG::percent_chance(50), false);
 }

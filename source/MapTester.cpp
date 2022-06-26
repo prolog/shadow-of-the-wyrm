@@ -33,40 +33,41 @@
 #include "GeneratorUtils.hpp"
 #include "GrandTempleGenerator.hpp"
 #include "GraveyardGeneratorFactory.hpp"
+#include "HamletGenerator.hpp"
 #include "HillsGenerator.hpp"
 #include "IslandSacrificeSiteGenerator.hpp"
 #include "ItemGenerationManager.hpp"
-#include "RockySacrificeSiteGenerator.hpp"
-#include "OvergrownSacrificeSiteGenerator.hpp"
-#include "RoadGenerator.hpp"
-#include "RuinsGenerator.hpp"
+#include "KeepRuinsGenerator.hpp"
+#include "MapTranslator.hpp"
 #include "MarshGenerator.hpp"
 #include "MineGenerator.hpp"
+#include "MountainsGenerator.hpp"
+#include "Naming.hpp"
+#include "OvergrownSacrificeSiteGenerator.hpp"
+#include "RockySacrificeSiteGenerator.hpp"
+#include "RoadGenerator.hpp"
+#include "RuinsGenerator.hpp"
+#include "ScatteredSettlementGenerator.hpp"
 #include "ScrubGenerator.hpp"
 #include "SeaGenerator.hpp"
 #include "SettlementGenerator.hpp"
-#include "HamletGenerator.hpp"
-#include "WalledSettlementGenerator.hpp"
-#include "ScatteredSettlementGenerator.hpp"
-#include "SewerGenerator.hpp"
-#include "SimpleChurchGenerator.hpp"
-#include "KeepRuinsGenerator.hpp"
-#include "MapTranslator.hpp"
-#include "Naming.hpp"
-#include "ShadowOfTheWyrmEngine.hpp"
 #include "SettlementRuinsGenerator.hpp"
+#include "SewerGenerator.hpp"
+#include "ShadowOfTheWyrmEngine.hpp"
 #include "ShrineGeneratorFactory.hpp"
+#include "SimpleChurchGenerator.hpp"
 #include "SimpleTempleGenerator.hpp"
+#include "Skills.hpp"
 #include "SnakingTempleGenerator.hpp"
 #include "SpiralDungeonGenerator.hpp"
+#include "StringTable.hpp"
 #include "VoidGenerator.hpp"
+#include "WalledSettlementGenerator.hpp"
 #include "WellGenerator.hpp"
 #include "WorldGenerator.hpp"
 #include "XMLDataStructures.hpp"
 #include "XMLConfigurationReader.hpp"
 #include "XMLFileReader.hpp"
-#include "StringTable.hpp"
-#include "Skills.hpp"
 #include "common.hpp"
 
 std::string map_to_string(MapPtr map, bool html=true);
@@ -92,6 +93,7 @@ void artifact_name_generation();
 // Other maps
 void test_other_maps();
 std::string generate_void();
+std::string generate_mountains();
 
 // Custom maps
 void load_custom_maps();
@@ -1248,6 +1250,7 @@ void test_other_maps()
   {
     std::cout << "Other Maps" << std::endl << std::endl;
     std::cout << "0. Void" << std::endl;
+    std::cout << "1. Mountains" << std::endl;
     std::cout << "-1. Quit" << std::endl << std::endl;
     std::cin >> option;
 
@@ -1257,6 +1260,9 @@ void test_other_maps()
         map = generate_void();
         output_map(map, "void_test.html");
         break;
+      case 1:
+        map = generate_mountains();
+        output_map(map, "mountains_test.html");
       default: 
         break;
     }
@@ -1322,6 +1328,14 @@ std::string generate_void()
 {
   GeneratorPtr void_gen = std::make_unique<VoidGenerator>("");
   MapPtr map = void_gen->generate();
+  std::cout << map_to_string(map, false);
+  return map_to_string(map);
+}
+
+std::string generate_mountains()
+{
+  GeneratorPtr mt_gen = std::make_unique<MountainsGenerator>("");
+  MapPtr map = mt_gen->generate();
   std::cout << map_to_string(map, false);
   return map_to_string(map);
 }

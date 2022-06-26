@@ -44,6 +44,9 @@ Shadow of the Wyrm v1.4.7 "Satoh"
   huge sum of ivory or a randart.  Dungeoneering can also help improve the
   quality of the cache.
 
+- Mountains can now be generated with southern and eastern clifflines that
+  drop off into nothing.  Mountains may now also have streams and springs.
+
 - New items: amulet of the sky.
 
 - Bug fixes:
