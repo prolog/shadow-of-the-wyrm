@@ -31,6 +31,8 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     
     MapPtr current_map = game.get_current_map();
+    Coordinate c = current_map->get_location(creature->get_id());
+    TilePtr tile = current_map->at(c);
 
     // Otherwise, check to see if the creature is on a tile with DIRECTION_UP defined.
     TilePtr current_tile = MapUtils::get_tile_for_creature(current_map, creature);
@@ -84,7 +86,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
     else
     {
       // Let the player know there is no exit.
-      string no_exit = StringTable::get(MovementTextKeys::ACTION_MOVE_NO_EXIT);
+      string no_exit = StringTable::get(tile->get_no_exit_up_message_sid());
           
       manager.add_new_message(no_exit);
       manager.send();                
@@ -166,7 +168,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
             else
             {
               IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-              string no_exit = StringTable::get(MovementTextKeys::ACTION_MOVE_NO_EXIT_DOWN);
+              string no_exit = StringTable::get(tile->get_no_exit_down_message_sid());
               manager.add_new_message(no_exit);
 
               manager.send();

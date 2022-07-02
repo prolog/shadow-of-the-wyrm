@@ -8,6 +8,7 @@
 #include "InventoryFactory.hpp"
 #include "Log.hpp"
 #include "MapFactory.hpp"
+#include "MovementTextKeys.hpp"
 #include "NullInventory.hpp"
 #include "Serialize.hpp"
 #include "Tile.hpp"
@@ -611,6 +612,28 @@ int Tile::get_hardness() const
 TileExitMap& Tile::get_tile_exit_map_ref()
 {
   return map_exits;
+}
+
+string Tile::get_no_exit_message_sid(const Direction dir) const
+{
+  if (dir == Direction::DIRECTION_UP)
+  {
+    return get_no_exit_up_message_sid();
+  }
+  else
+  {
+    return get_no_exit_down_message_sid();
+  }
+}
+
+string Tile::get_no_exit_up_message_sid() const
+{
+  return MovementTextKeys::ACTION_MOVE_NO_EXIT;
+}
+
+string Tile::get_no_exit_down_message_sid() const
+{
+  return MovementTextKeys::ACTION_MOVE_NO_EXIT_DOWN;
 }
 
 bool Tile::get_is_blocking_visually(CreaturePtr creature) const

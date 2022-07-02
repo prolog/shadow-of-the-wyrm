@@ -163,6 +163,9 @@ class Tile : public ISerializable
     int get_hardness() const;
     
     virtual TileExitMap& get_tile_exit_map_ref();
+    virtual std::string get_no_exit_message_sid(const Direction dir) const;
+    virtual std::string get_no_exit_up_message_sid() const;
+    virtual std::string get_no_exit_down_message_sid() const;
     
     virtual bool get_dangerous(std::shared_ptr<Creature> creature) const;
     virtual std::string get_danger_confirmation_sid() const;

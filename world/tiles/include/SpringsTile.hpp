@@ -18,6 +18,7 @@ class SpringsTile : public Tile
     WaterType get_water_type() const override;
     
     std::string get_tile_description_sid() const override;
+    virtual std::string get_no_exit_down_message_sid() const;
 
     virtual Tile* clone() override;
 
