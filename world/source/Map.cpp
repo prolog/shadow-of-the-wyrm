@@ -459,6 +459,18 @@ void Map::clear_locations()
   locations.clear();
 }
 
+bool Map::get_is_water_shallow() const
+{
+  auto p_it = properties.find(MapProperties::MAP_PROPERTIES_SHALLOW_WATER);
+
+  if (p_it != properties.end())
+  {
+    return String::to_bool(p_it->second);
+  }
+
+  return true;
+}
+
 void Map::add_or_update_location(const string& location, const Coordinate& coordinate)
 {
   locations[location] = coordinate;

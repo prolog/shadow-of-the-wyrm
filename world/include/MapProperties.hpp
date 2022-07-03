@@ -123,6 +123,10 @@ class MapProperties
     // same-deity? friendly checks ignored if true.
     static const std::string MAP_PROPERTIES_DIVINE_FORBIDDEN;
 
+    // when maps have shallow water, descending will allow you to go
+    // underwater. most maps have shallow water - open sea maps don't.
+    static const std::string MAP_PROPERTIES_SHALLOW_WATER;
+
   protected:
     MapProperties();
     ~MapProperties();

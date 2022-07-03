@@ -6,6 +6,7 @@ using namespace std;
 CreatureGenerationValues::CreatureGenerationValues()
 : GenerationValues(),
 friendly(false),
+breathes(BreatheType::BREATHE_TYPE_AIR),
 base_experience_value(0)
 {
 }
@@ -22,6 +23,7 @@ bool CreatureGenerationValues::operator==(const CreatureGenerationValues& cgv) c
 
   result = result && (id == cgv.id);
   result = result && (race_id == cgv.race_id);
+  result = result && (breathes == cgv.breathes);
   result = result && (allowable_terrain_types == cgv.allowable_terrain_types);
   result = result && (friendly == cgv.friendly);
   result = result && (initial_hit_points == cgv.initial_hit_points);
@@ -54,6 +56,16 @@ void CreatureGenerationValues::set_race_id(const string& new_race_id)
 string CreatureGenerationValues::get_race_id() const
 {
   return race_id;
+}
+
+void CreatureGenerationValues::set_breathe_type(const BreatheType new_breathe_type)
+{
+  breathes = new_breathe_type;
+}
+
+BreatheType CreatureGenerationValues::get_breathe_type() const
+{
+  return breathes;
 }
 
 void CreatureGenerationValues::add_allowable_terrain_type(const TileType additional_terrain_type)
@@ -185,6 +197,7 @@ bool CreatureGenerationValues::serialize(ostream& stream) const
 
   Serialize::write_string(stream, id);
   Serialize::write_string(stream, race_id);
+  Serialize::write_enum(stream, breathes);
 
   size_t terrain_types_size = allowable_terrain_types.size();
   Serialize::write_size_t(stream, terrain_types_size);
@@ -233,6 +246,7 @@ bool CreatureGenerationValues::deserialize(istream& stream)
 
   Serialize::read_string(stream, id);
   Serialize::read_string(stream, race_id);
+  Serialize::read_enum(stream, breathes);
 
   size_t terrain_types_size = 0;
   Serialize::read_size_t(stream, terrain_types_size);

@@ -222,7 +222,7 @@ string String::create_string_from_coordinate(const Coordinate& c)
 Coordinate String::create_coordinate_from_string(const std::string& coord_s)
 {
   Coordinate c = CoordUtils::end();
-  vector<string> parts = tokenize(coord_s, ", ", false);
+  vector<string> parts = tokenize(coord_s, ",- ", false);
 
   if (parts.size() >= 2)
   {

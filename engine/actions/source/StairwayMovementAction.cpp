@@ -58,7 +58,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
     {
       if (map_exit->is_using_map_id())
       {
-        move_to_custom_map(current_tile, current_map, map_exit, creature, game, ma);        
+        move_to_custom_map(current_tile, current_map, map_exit, creature, game, ma, Direction::DIRECTION_UP);        
         ascend_success = get_action_cost_value(creature);
       }
       else
@@ -134,7 +134,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
           {
             if (map_exit->is_using_map_id())
             {
-              move_to_custom_map(tile, map, map_exit, creature, game, ma);        
+              move_to_custom_map(tile, map, map_exit, creature, game, ma, Direction::DIRECTION_DOWN);
               descend_success = get_action_cost_value(creature);
             }
             else
@@ -158,20 +158,30 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
           }
           else
           {
-            // Does the creature have something to dig with?
-            ItemPtr wielded = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
-            if (wielded != nullptr && wielded->has_additional_property(ItemProperties::ITEM_PROPERTIES_DIG_HARDNESS))
+            if (tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_WATER && map->get_is_water_shallow())
             {
-              DigAction da;
-              descend_success = da.dig_within(creature, wielded, map, tile);
+              // Set the map as permanent so we can come back to it later.
+              map->set_permanent(true);
+              tile->set_additional_property(TileProperties::TILE_PROPERTY_LINKED_COORD, MapUtils::convert_coordinate_to_map_key(c));
+              descend_success = ma->generate_and_move_to_new_map(creature, map, nullptr, tile, ExitMovementType::EXIT_MOVEMENT_DESCEND);
             }
             else
             {
-              IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-              string no_exit = StringTable::get(tile->get_no_exit_down_message_sid());
-              manager.add_new_message(no_exit);
+              // Does the creature have something to dig with?
+              ItemPtr wielded = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
+              if (wielded != nullptr && wielded->has_additional_property(ItemProperties::ITEM_PROPERTIES_DIG_HARDNESS))
+              {
+                DigAction da;
+                descend_success = da.dig_within(creature, wielded, map, tile);
+              }
+              else
+              {
+                IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+                string no_exit = StringTable::get(tile->get_no_exit_down_message_sid());
+                manager.add_new_message(no_exit);
 
-              manager.send();
+                manager.send();
+              }
             }
           }
         }  
@@ -200,13 +210,19 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
   return descend_success;
 }
 
-void StairwayMovementAction::move_to_custom_map(TilePtr current_tile, MapPtr current_map, MapExitPtr map_exit, CreaturePtr creature, Game& game, MovementAction* const ma)
+void StairwayMovementAction::move_to_custom_map(TilePtr current_tile, MapPtr current_map, MapExitPtr map_exit, CreaturePtr creature, Game& game, MovementAction* const ma, const Direction d)
 {
   // JCD FIXME: For now, stairway movement isn't part of multi-map movement
   // (assume everything's on the same rough z-level), so pass in a null
   // coordinate to allow the game to use either the pre-set location,
   // or the pre-existing one.
-  ma->handle_properties_and_move(creature, current_tile, current_map, map_exit, CoordUtils::end());
+  if (creature != nullptr && current_map != nullptr && current_tile != nullptr)
+  {
+    Coordinate current_coord = current_map->get_location(creature->get_id());
+    Coordinate proposed_new_coord = MapUtils::calculate_new_coord_for_multimap_movement(current_coord, d, map_exit);
+
+    ma->handle_properties_and_move(creature, current_tile, current_map, map_exit, proposed_new_coord);
+  }
 }
 
 ActionCostValue StairwayMovementAction::get_action_cost_value(CreaturePtr creature) const

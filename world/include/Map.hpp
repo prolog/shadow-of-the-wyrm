@@ -91,6 +91,8 @@ class Map : public ISerializable
     TilesContainer get_tiles() const;
 		TilesContainer& get_tiles_ref();
 
+    bool get_is_water_shallow() const;
+
     void clear_locations();
     void add_or_update_location(const std::string& location, const Coordinate& coordinate);
     void remove_location(const std::string& location);

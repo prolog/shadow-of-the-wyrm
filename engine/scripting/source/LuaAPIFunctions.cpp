@@ -8184,12 +8184,20 @@ int get_random_hostile_creature_id(lua_State* ls)
 
   if (lua_gettop(ls) == 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
   {
+    MapType mt = MapType::MAP_TYPE_OVERWORLD;
+    MapPtr current_map = Game::instance().get_current_map();
+
+    if (current_map != nullptr)
+    {
+      mt = current_map->get_map_type();
+    }
+
     int min_level = lua_tointeger(ls, 1);
     int max_level = lua_tointeger(ls, 2);
     TileType tile_type = static_cast<TileType>(lua_tointeger(ls, 3));
 
     CreatureGenerationManager cgm;
-    CreatureGenerationIndex cgi = cgm.generate_creature_generation_map({ tile_type }, true, false, min_level, max_level, Rarity::RARITY_COMMON, {});
+    CreatureGenerationIndex cgi = cgm.generate_creature_generation_map({ tile_type }, true, false, mt, min_level, max_level, Rarity::RARITY_COMMON, {});
     vector<string> possible_ids;
     CreatureGenerationList cgl = cgi.get();
 
@@ -8332,7 +8340,7 @@ int generate_creature(lua_State* ls)
       if (tile != nullptr && !tile->has_creature())
       {
         CreatureGenerationManager cgm;
-        CreatureGenerationList generation_list = cgm.generate_creature_generation_map({ map_terrain_type }, map->get_permanent(), map->is_islet(), min_danger, max_danger, Rarity::RARITY_COMMON /* hardcode for now */, {}).get();
+        CreatureGenerationList generation_list = cgm.generate_creature_generation_map({ map_terrain_type }, map->get_permanent(), map->is_islet(), map->get_map_type(), min_danger, max_danger, Rarity::RARITY_COMMON /* hardcode for now */, {}).get();
         CreaturePtr creature = cgm.generate_creature(game.get_action_manager_ref(), generation_list, map);
         HostilityManager hm;
         bool hostile = false;

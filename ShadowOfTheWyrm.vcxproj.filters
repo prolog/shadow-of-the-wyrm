@@ -4481,6 +4481,9 @@
     <ClInclude Include="engine\calculators\include\TerrainSpeedMultiplierCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\include\UnderwaterGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9078,6 +9081,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\TerrainSpeedMultiplierCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\UnderwaterGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

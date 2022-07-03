@@ -11,7 +11,7 @@ CastleGenerator::CastleGenerator(const string& map_exit_id, const TileType base_
 
 MapPtr CastleGenerator::generate(const Dimensions& dim)
 {
-  GeneratorPtr gen = TerrainGeneratorFactory::create_generator(nullptr, map_exit_id, base_tile_type);
+  GeneratorPtr gen = TerrainGeneratorFactory::create_generator(nullptr, nullptr, map_exit_id, base_tile_type);
   MapPtr result_map = gen->generate(dim);
 
   generate_castle(result_map);

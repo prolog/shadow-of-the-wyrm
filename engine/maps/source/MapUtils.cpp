@@ -794,6 +794,11 @@ Coordinate MapUtils::calculate_new_coord_for_multimap_movement(const Coordinate&
         
         switch (exit_direction)
         {
+          // For up/down, we arrive in the exact same location.
+          case Direction::DIRECTION_UP:
+          case Direction::DIRECTION_DOWN:
+            c = current_coord;
+            break;
           // Arriving from the south
           case Direction::DIRECTION_NORTH_WEST:
             // Arriving from north
@@ -890,8 +895,6 @@ Coordinate MapUtils::calculate_new_coord_for_multimap_movement(const Coordinate&
             c.second = dim.get_x() - 1;
             break;
           case Direction::DIRECTION_NULL:
-          case Direction::DIRECTION_UP:
-          case Direction::DIRECTION_DOWN:
           default:
             c = CoordUtils::end();
             break;

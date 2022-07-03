@@ -23,6 +23,7 @@
 #include "SewerGenerator.hpp"
 #include "ShrineGeneratorFactory.hpp"
 #include "TerrainGeneratorFactory.hpp"
+#include "UnderwaterGenerator.hpp"
 #include "VoidGenerator.hpp"
 #include "WellGenerator.hpp"
 #include "WildOrchardGenerator.hpp"
@@ -45,13 +46,19 @@ TerrainGeneratorFactory::~TerrainGeneratorFactory()
 // Create a generator based on the tile passed in.  The world map uses a limited
 // subset of the overall tiles (field, forest, sea, desert, etc., but not grave, 
 // reeds, etc).  Any unsupported tile for terrain generation will get a null GeneratorPtr back.
-GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const string& map_exit_id, const TileType terrain_type, const TileType terrain_subtype)
+GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, MapPtr map, const string& map_exit_id, const TileType terrain_type, const TileType terrain_subtype)
 {
   static_assert(TileType::TILE_TYPE_LAST == TileType(55), "Unexpected TileType::TILE_TYPE_LAST");
   GeneratorPtr generator;
-  
-  switch(terrain_type)
+
+  if (map && map->get_map_type() == MapType::MAP_TYPE_OVERWORLD && tile && tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_WATER)
   {
+    generator = std::make_unique<UnderwaterGenerator>(map, map_exit_id);
+  }
+  else
+  {
+    switch (terrain_type)
+    {
     case TileType::TILE_TYPE_FIELD:
     {
       generator = std::make_unique<FieldGenerator>(map_exit_id);
@@ -103,11 +110,11 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       break;
     }
     case TileType::TILE_TYPE_VILLAGE:
-    {      
-      GeneratorPtr base_generator = create_generator(tile, map_exit_id, terrain_subtype);
+    {
+      GeneratorPtr base_generator = create_generator(tile, map, map_exit_id, terrain_subtype);
       base_generator->set_additional_property(MapProperties::MAP_PROPERTIES_SKIP_COASTLINE_GENERATION, std::to_string(true));
       MapPtr base_map = base_generator->generate();
-      
+
       SettlementType settlement_type = SettlementType::SETTLEMENT_TYPE_ORDERLY_VILLAGE;
 
       // Override if a value's been set on the tile.
@@ -115,18 +122,18 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       {
         settlement_type = static_cast<SettlementType>(String::to_int(tile->get_additional_property(TileProperties::TILE_PROPERTY_SETTLEMENT_TYPE)));
       }
-      
+
       VillageTilePtr village_tile = dynamic_pointer_cast<VillageTile>(tile);
-      
+
       if (village_tile)
       {
         RaceManager rm;
         string race_id = village_tile->get_village_race_id();
         Race* race = rm.get_race(race_id);
-        
+
         if (race)
         {
-          settlement_type = race->get_settlement_type();          
+          settlement_type = race->get_settlement_type();
         }
 
         base_map->set_default_race_id(race_id);
@@ -147,7 +154,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     }
     case TileType::TILE_TYPE_SHRINE:
     {
-      GeneratorPtr base_generator = create_generator(tile, map_exit_id, terrain_subtype);
+      GeneratorPtr base_generator = create_generator(tile, map, map_exit_id, terrain_subtype);
       MapPtr base_map = base_generator->generate();
 
       generator = ShrineGeneratorFactory::create_random_shrine_generator(base_map);
@@ -159,15 +166,15 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TileType::TILE_TYPE_TEMPLE:
     {
       WorshipSiteTilePtr worship_site_tile = dynamic_pointer_cast<WorshipSiteTile>(tile);
-      
+
       if (worship_site_tile)
       {
-        GeneratorPtr base_generator = create_generator(tile, map_exit_id, terrain_subtype);
+        GeneratorPtr base_generator = create_generator(tile, map, map_exit_id, terrain_subtype);
         MapPtr base_map = base_generator->generate();
         generator = WorshipSiteGenerator::generate_worship_site(worship_site_tile->get_worship_site_type(), worship_site_tile->get_deity_id(), base_map);
       }
 
-      break;      
+      break;
     }
     case TileType::TILE_TYPE_MINE:
     {
@@ -186,7 +193,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       {
         // The subtype will function as the terrain type.  The idea is that if we have a set of stairs,
         // the subtype can be dungeon, cavern, etc., and guide the generation process.
-        generator = TerrainGeneratorFactory::create_generator(tile, map_exit_id, terrain_subtype);
+        generator = TerrainGeneratorFactory::create_generator(tile, map, map_exit_id, terrain_subtype);
       }
 
       break;
@@ -194,12 +201,12 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TileType::TILE_TYPE_KEEP:
     {
       bool ruined_keep = String::to_bool(tile->get_additional_property(TileProperties::TILE_PROPERTY_RUINED));
-      
+
       if (ruined_keep)
       {
-        generator = std::make_unique<RuinsGenerator>(map_exit_id, 
-                                                     TileType::TILE_TYPE_FIELD /* if you need to change this, RuinsGenerator needs to be updated - currently a placeholder */, 
-                                                     RuinsType::RUINS_TYPE_KEEP);
+        generator = std::make_unique<RuinsGenerator>(map_exit_id,
+          TileType::TILE_TYPE_FIELD /* if you need to change this, RuinsGenerator needs to be updated - currently a placeholder */,
+          RuinsType::RUINS_TYPE_KEEP);
       }
       else
       {
@@ -219,7 +226,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       break;
     }
     case TileType::TILE_TYPE_FLOATING_TOWER:
-    { 
+    {
       generator = std::make_unique<FloatingTowerGenerator>(map_exit_id);
       break;
     }
@@ -266,6 +273,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       // Right now, everything generates a field.  Change this once testing is complete.
       generator = std::make_unique<FieldGenerator>(map_exit_id);
       break;
+    }
   }
 
   copy_properties(tile, generator.get());

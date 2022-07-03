@@ -50,6 +50,8 @@ Shadow of the Wyrm v1.4.7 "Satoh"
 - There are now different messages for using > and < on springs, open sea, 
   and the cosmos.
 
+- Pelicans have a better sprite.
+
 - New items: amulet of the sky.
 
 - Bug fixes:

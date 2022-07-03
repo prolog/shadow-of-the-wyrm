@@ -776,6 +776,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\include\TileDepthOptions.hpp" />
     <ClInclude Include="engine\generators\include\TileGenerator.hpp" />
     <ClInclude Include="engine\generators\include\TreasureRoomPopulator.hpp" />
+    <ClInclude Include="engine\generators\include\UnderwaterGenerator.hpp" />
     <ClInclude Include="engine\generators\include\VaultPopulator.hpp" />
     <ClInclude Include="engine\generators\include\VoidGenerator.hpp" />
     <ClInclude Include="engine\generators\include\WellGenerator.hpp" />
@@ -2088,6 +2089,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\source\ShrineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\ShrineGeneratorFactory.cpp" />
     <ClCompile Include="engine\generators\source\TileDepthOptions.cpp" />
+    <ClCompile Include="engine\generators\source\UnderwaterGenerator.cpp" />
     <ClCompile Include="engine\generators\source\unit_tests\TileDepthOptions_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

@@ -602,7 +602,7 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
   // they can be properly re-applied to the map, potentially.
   TileUtils::copy_exit_properties_to_tile(tile);
 
-  GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map->get_map_id(), tile_type, tile_subtype);
+  GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map, map->get_map_id(), tile_type, tile_subtype);
 
   // Ensure that the overworld map ID is always available to the generator!
   map->get_map_type() == MapType::MAP_TYPE_WORLD ? generator->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, map->get_map_id())

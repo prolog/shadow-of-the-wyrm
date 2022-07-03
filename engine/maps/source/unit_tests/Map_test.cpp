@@ -305,3 +305,18 @@ TEST_F(SW_Engine_Map, get_coastline_directions)
   EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_SOUTH) != dirs.end());
   EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_WEST) != dirs.end());
 }
+
+TEST_F(SW_Engine_Map, get_is_water_shallow)
+{
+  MapPtr map = make_map();
+  
+  EXPECT_TRUE(map->get_is_water_shallow());
+
+  map->set_property(MapProperties::MAP_PROPERTIES_SHALLOW_WATER, to_string(true));
+
+  EXPECT_TRUE(map->get_is_water_shallow());
+
+  map->set_property(MapProperties::MAP_PROPERTIES_SHALLOW_WATER, to_string(false));
+
+  EXPECT_FALSE(map->get_is_water_shallow());
+}
