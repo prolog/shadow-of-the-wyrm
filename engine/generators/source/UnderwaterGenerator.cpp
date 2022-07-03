@@ -13,7 +13,6 @@ UnderwaterGenerator::UnderwaterGenerator(MapPtr above_map, const string& map_exi
 MapPtr UnderwaterGenerator::generate(const Dimensions& dim)
 {
 	MapPtr result_map = std::make_shared<Map>(dim);
-	result_map->set_map_type(MapType::MAP_TYPE_UNDERWATER);
 	result_map->set_permanent(true);
 
 	if (above_water_map == nullptr)
@@ -29,6 +28,10 @@ MapPtr UnderwaterGenerator::generate(const Dimensions& dim)
 	}
 	else
 	{
+		MapExitPtr map_exit = std::make_shared<MapExit>();
+		map_exit->set_map_id(above_water_map->get_map_id());
+		result_map->set_map_exit(Direction::DIRECTION_UP, map_exit);
+
 		TilesContainer& tc = above_water_map->get_tiles_ref();
 		
 		for (auto& tc_pair : tc)
@@ -60,4 +63,9 @@ MapPtr UnderwaterGenerator::generate(const Dimensions& dim)
 	}
 
 	return result_map;
+}
+
+MapType UnderwaterGenerator::get_map_type() const
+{
+	return MapType::MAP_TYPE_UNDERWATER;
 }

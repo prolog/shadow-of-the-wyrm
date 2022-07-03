@@ -1,5 +1,14 @@
 Me:
 - ASSET RELEASE
+- go to forest. enter. go down, generate map. go up. go down again: not landing
+  on right location.
+- test all kinds of exits:
+  - world to custom
+  - world to terrain
+  - exit terrain
+  - exit custom
+  - down/up custom
+  - down/up others like cathedral
 - ensure only water breathers appear in submerged maps
 - oceanography: find vortices that lead to sunken shipwrecks
 - seas generated next to land (ie on a forest map, etc) should get a flag that 

@@ -53,6 +53,29 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
     {
       map_exit = t_it->second;        
     }
+
+    if (map_exit == nullptr)
+    {
+      auto map_exits = current_map->get_map_exits();
+      auto me_it = map_exits.find(Direction::DIRECTION_UP);
+
+      if (me_it != map_exits.end())
+      {
+        if (MapUtils::can_exit_map(current_map, creature, me_it->second, c))
+        {
+          map_exit = me_it->second;
+        }
+        else
+        {
+          string movement_message = StringTable::get(MovementTextKeys::ACTION_MOVE_OFF_BLOCKED);
+
+          manager.add_new_message(movement_message);
+          manager.send();
+
+          return ascend_success;
+        }
+      }
+    }
   
     if (map_exit)
     {
@@ -108,7 +131,8 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
   {
     // If we're on the world map, we can always descend.
     Game& game = Game::instance();
-    
+    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+
     MapPtr map = game.get_current_map();
     ExitMovementType movement_type = ExitMovementType::EXIT_MOVEMENT_DESCEND;
 
@@ -124,6 +148,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
       {
         TileExitMap& exit_map = tile->get_tile_exit_map_ref();
         TileExitMap::const_iterator t_it = exit_map.find(Direction::DIRECTION_DOWN);
+        MapExitPtr map_exit;
         
         // If there is an exit in the down direction, do the appropriate action.
         if (t_it != exit_map.end())
@@ -158,12 +183,37 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
           }
           else
           {
-            if (tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_WATER && map->get_is_water_shallow())
+            MapExitPtr map_exit = map->get_map_exit(Direction::DIRECTION_DOWN);
+
+            if (MapUtils::can_change_zlevel(creature, map, tile, Direction::DIRECTION_DOWN))
             {
-              // Set the map as permanent so we can come back to it later.
-              map->set_permanent(true);
-              tile->set_additional_property(TileProperties::TILE_PROPERTY_LINKED_COORD, MapUtils::convert_coordinate_to_map_key(c));
-              descend_success = ma->generate_and_move_to_new_map(creature, map, nullptr, tile, ExitMovementType::EXIT_MOVEMENT_DESCEND);
+              if (map_exit == nullptr || MapUtils::can_exit_map(map, creature, map_exit, c))
+              {
+                if (map_exit != nullptr && map_exit->is_using_map_id())
+                {
+                  move_to_custom_map(tile, map, map_exit, creature, game, ma, Direction::DIRECTION_DOWN);
+                  descend_success = get_action_cost_value(creature);
+                }
+                else
+                {
+                  // Set the map as permanent so we can come back to it later.
+                  map->set_permanent(true);
+                  tile->set_additional_property(TileProperties::TILE_PROPERTY_LINKED_COORD, MapUtils::convert_coordinate_to_map_key(c));
+                  descend_success = ma->generate_and_move_to_new_map(creature, map, nullptr, tile, ExitMovementType::EXIT_MOVEMENT_DESCEND);
+
+                  MapPtr new_map = Game::instance().get_current_map();
+                  MapExitPtr new_map_linkage = std::make_shared<MapExit>();
+                  new_map_linkage->set_map_id(new_map->get_map_id());
+                  map->set_map_exit(Direction::DIRECTION_DOWN, new_map_linkage);
+                }
+              }
+              else
+              {
+                string movement_message = StringTable::get(MovementTextKeys::ACTION_MOVE_OFF_BLOCKED);
+
+                manager.add_new_message(movement_message);
+                manager.send();
+              }
             }
             else
             {
@@ -176,7 +226,6 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
               }
               else
               {
-                IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
                 string no_exit = StringTable::get(tile->get_no_exit_down_message_sid());
                 manager.add_new_message(no_exit);
 

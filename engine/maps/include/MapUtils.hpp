@@ -139,6 +139,8 @@ class MapUtils
 
     static bool has_known_treasure(TilePtr tile, CreaturePtr creature);
 
+    static bool can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d);
+
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
     static bool is_tile_contained_in_an_existing_component(const Coordinate&, const MapComponents& components);

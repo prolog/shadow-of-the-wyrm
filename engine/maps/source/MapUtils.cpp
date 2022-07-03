@@ -2515,6 +2515,40 @@ bool MapUtils::has_known_treasure(TilePtr tile, CreaturePtr creature)
   return has_treasure;
 }
 
+bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d)
+{
+  bool can_change = false;
+
+  if (creature != nullptr && map != nullptr && tile != nullptr)
+  {
+    MapType map_type = map->get_map_type();
+    TileSuperType tst = tile->get_tile_super_type();
+    bool can_breathe_water = creature->has_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING);
+    bool can_swim = creature->get_skills().get_value(SkillType::SKILL_GENERAL_SWIMMING) > 0;
+
+    if (tst == TileSuperType::TILE_SUPER_TYPE_WATER)
+    {
+      if (d == Direction::DIRECTION_DOWN)
+      {
+        if (map_type != MapType::MAP_TYPE_UNDERWATER &&
+           (can_breathe_water || can_swim))
+        {
+          can_change = true;
+        }
+      }
+      else if (d == Direction::DIRECTION_UP)
+      {
+        if (map_type == MapType::MAP_TYPE_UNDERWATER)
+        {
+          can_change = true;
+        }
+      }
+    }
+  }
+
+  return can_change;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Map_test.cpp"
 #include "unit_tests/MapUtils_test.cpp"
