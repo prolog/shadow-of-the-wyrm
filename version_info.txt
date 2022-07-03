@@ -47,6 +47,9 @@ Shadow of the Wyrm v1.4.7 "Satoh"
 - Mountains can now be generated with southern and eastern clifflines that
   drop off into nothing.  Mountains may now also have streams and springs.
 
+- There are now different messages for using > and < on springs, open sea, 
+  and the cosmos.
+
 - New items: amulet of the sky.
 
 - Bug fixes:

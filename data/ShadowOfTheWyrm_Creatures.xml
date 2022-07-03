@@ -13800,8 +13800,8 @@
 				<Colour>15</Colour>
 				<Sprite>
 					<ID>cr</ID>
-					<Row>0</Row>
-					<Col>15</Col>
+					<Row>13</Row>
+					<Col>25</Col>
 				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
