@@ -12,3 +12,8 @@ bool UnderworldMapTypeQuery::should_update_depth() const
   return true;
 }
 
+// General underwater queries
+bool UnderwaterMapTypeQuery::should_update_depth() const
+{
+  return true;
+}

@@ -1,7 +1,6 @@
 Me:
 - ASSET RELEASE
-- decrement depth when descending to water
-- items: drop through
+- items: drop through!
 - test all kinds of exits:
   - world to custom
   - world to terrain

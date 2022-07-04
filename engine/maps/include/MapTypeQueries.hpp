@@ -13,3 +13,8 @@ class UnderworldMapTypeQuery : public IMapTypeQuery
     virtual bool should_update_depth() const override;
 };
 
+class UnderwaterMapTypeQuery : public IMapTypeQuery
+{
+  public:
+    virtual bool should_update_depth() const override;
+};
