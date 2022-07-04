@@ -1,7 +1,7 @@
 Me:
 - ASSET RELEASE
-- go to forest. enter. go down, generate map. go up. go down again: not landing
-  on right location.
+- decrement depth when descending to water
+- items: drop through
 - test all kinds of exits:
   - world to custom
   - world to terrain

@@ -1700,7 +1700,7 @@ int MapUtils::calculate_depth_delta(MapPtr map, TilePtr tile, const ExitMovement
 
 bool MapUtils::should_link_entry_point(MapType map_type)
 {
-  if (map_type == MapType::MAP_TYPE_OVERWORLD)
+  if (map_type == MapType::MAP_TYPE_OVERWORLD || map_type == MapType::MAP_TYPE_UNDERWATER)
   {
     return false;
   }

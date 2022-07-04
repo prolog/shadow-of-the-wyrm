@@ -1,6 +1,7 @@
 #include "UnderwaterGenerator.hpp"
 #include "RockyEarthTile.hpp"
 #include "RockTile.hpp"
+#include "MapProperties.hpp"
 #include "MapUtils.hpp"
 
 using namespace std;
@@ -31,7 +32,7 @@ MapPtr UnderwaterGenerator::generate(const Dimensions& dim)
 		MapExitPtr map_exit = std::make_shared<MapExit>();
 		map_exit->set_map_id(above_water_map->get_map_id());
 		result_map->set_map_exit(Direction::DIRECTION_UP, map_exit);
-
+		result_map->set_property(MapProperties::MAP_PROPERTIES_CANNOT_DIG, std::to_string(true));
 		TilesContainer& tc = above_water_map->get_tiles_ref();
 		
 		for (auto& tc_pair : tc)
