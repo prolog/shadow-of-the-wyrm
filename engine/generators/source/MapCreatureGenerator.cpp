@@ -426,7 +426,7 @@ void MapCreatureGenerator::place_followers(MapPtr map, const pair<Coordinate, Co
   const int num_attempts = 20;
   MapType map_type = map ? map->get_map_type() : MapType::MAP_TYPE_OVERWORLD;
 
-  if (map_type == MapType::MAP_TYPE_OVERWORLD || map_type == MapType::MAP_TYPE_UNDERWORLD)
+  if ((map_type == MapType::MAP_TYPE_OVERWORLD && !(map && map->get_is_open_sky())) || map_type == MapType::MAP_TYPE_UNDERWORLD)
   {
     if (RNG::x_in_y_chance(fc.calculate_x_in_y_chance_adventurer(d)))
     {
