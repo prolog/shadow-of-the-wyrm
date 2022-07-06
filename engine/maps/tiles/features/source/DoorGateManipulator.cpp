@@ -97,7 +97,7 @@ void DoorGateManipulator::kick_closed_door(IMessageManager& manager, EntrancePtr
         handle_sprain_if_necessary(creature, PCT_CHANCE_SPRAIN_LEG_BUCKLE);
       }
     }
-    else
+      else
     {
       // If there was no chance at all of breaking the door, add a message to
       // that effect.

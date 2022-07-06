@@ -471,6 +471,18 @@ bool Map::get_is_water_shallow() const
   return true;
 }
 
+bool Map::get_is_open_sky() const
+{
+  auto p_it = properties.find(MapProperties::MAP_PROPERTIES_OPEN_SKY);
+
+  if (p_it != properties.end())
+  {
+    return String::to_bool(p_it->second);
+  }
+
+  return false;
+}
+
 void Map::add_or_update_location(const string& location, const Coordinate& coordinate)
 {
   locations[location] = coordinate;

@@ -768,6 +768,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\include\SewerGenerator.hpp" />
     <ClInclude Include="engine\generators\include\ShrineGenerator.hpp" />
     <ClInclude Include="engine\generators\include\ShrineGeneratorFactory.hpp" />
+    <ClInclude Include="engine\generators\include\SkyGenerator.hpp" />
     <ClInclude Include="engine\generators\include\SpiralDungeonGenerator.hpp" />
     <ClInclude Include="engine\generators\include\SpringsGenerator.hpp" />
     <ClInclude Include="engine\generators\include\SquarePillarGenerator.hpp" />
@@ -2088,6 +2089,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\source\SewerGenerator.cpp" />
     <ClCompile Include="engine\generators\source\ShrineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\ShrineGeneratorFactory.cpp" />
+    <ClCompile Include="engine\generators\source\SkyGenerator.cpp" />
     <ClCompile Include="engine\generators\source\TileDepthOptions.cpp" />
     <ClCompile Include="engine\generators\source\UnderwaterGenerator.cpp" />
     <ClCompile Include="engine\generators\source\unit_tests\TileDepthOptions_test.cpp">

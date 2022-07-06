@@ -2523,24 +2523,38 @@ bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile,
   {
     MapType map_type = map->get_map_type();
     TileSuperType tst = tile->get_tile_super_type();
-    bool can_breathe_water = creature->has_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING);
+    bool can_breathe_water = creature->can_breathe(BreatheType::BREATHE_TYPE_WATER);
+    bool can_fly = creature->has_status(StatusIdentifiers::STATUS_ID_FLYING);
     bool can_swim = creature->get_skills().get_value(SkillType::SKILL_GENERAL_SWIMMING) > 0;
 
-    if (tst == TileSuperType::TILE_SUPER_TYPE_WATER)
+    // Air
+    if (map_type == MapType::MAP_TYPE_OVERWORLD && d == Direction::DIRECTION_UP)
     {
-      if (d == Direction::DIRECTION_DOWN)
+      can_change = can_fly && !map->get_is_open_sky();
+    }
+    else if (map_type == MapType::MAP_TYPE_OVERWORLD && (d == Direction::DIRECTION_DOWN && tst == TileSuperType::TILE_SUPER_TYPE_AIR))
+    {
+      can_change = can_fly;
+    }
+    else
+    {
+      // Water
+      if (tst == TileSuperType::TILE_SUPER_TYPE_WATER)
       {
-        if (map_type != MapType::MAP_TYPE_UNDERWATER &&
-           (can_breathe_water || can_swim))
+        if (d == Direction::DIRECTION_DOWN)
         {
-          can_change = true;
+          if (map_type != MapType::MAP_TYPE_UNDERWATER &&
+            (can_breathe_water || can_swim))
+          {
+            can_change = true;
+          }
         }
-      }
-      else if (d == Direction::DIRECTION_UP)
-      {
-        if (map_type == MapType::MAP_TYPE_UNDERWATER)
+        else if (d == Direction::DIRECTION_UP)
         {
-          can_change = true;
+          if (map_type == MapType::MAP_TYPE_UNDERWATER)
+          {
+            can_change = true;
+          }
         }
       }
     }

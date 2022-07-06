@@ -2,6 +2,7 @@
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "DigAction.hpp"
+#include "DirectionUtils.hpp"
 #include "Game.hpp"
 #include "ItemProperties.hpp"
 #include "Log.hpp"
@@ -100,7 +101,6 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
       }
       else
       {
-        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
         string too_hard = StringTable::get(ActionTextKeys::ACTION_DIG_TOO_HARD);
         manager.add_new_message(too_hard);
         manager.send();
@@ -108,11 +108,18 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
     }
     else
     {
-      // Let the player know there is no exit.
-      string no_exit = StringTable::get(tile->get_no_exit_up_message_sid());
-          
-      manager.add_new_message(no_exit);
-      manager.send();                
+      if (MapUtils::can_change_zlevel(creature, current_map, tile, Direction::DIRECTION_UP))
+      {
+        ascend_success = generate_or_move_to_zlevel(game, ma, manager, creature, current_map, tile, c, map_exit, ExitMovementType::EXIT_MOVEMENT_ASCEND, Direction::DIRECTION_UP);
+      }
+      else
+      {
+        // Let the player know there is no exit.
+        string no_exit = StringTable::get(tile->get_no_exit_up_message_sid());
+
+        manager.add_new_message(no_exit);
+        manager.send();
+      }
     }
   }
   else
@@ -187,33 +194,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
 
             if (MapUtils::can_change_zlevel(creature, map, tile, Direction::DIRECTION_DOWN))
             {
-              if (map_exit == nullptr || MapUtils::can_exit_map(map, creature, map_exit, c))
-              {
-                if (map_exit != nullptr && map_exit->is_using_map_id())
-                {
-                  move_to_custom_map(tile, map, map_exit, creature, game, ma, Direction::DIRECTION_DOWN);
-                  descend_success = get_action_cost_value(creature);
-                }
-                else
-                {
-                  // Set the map as permanent so we can come back to it later.
-                  map->set_permanent(true);
-                  tile->set_additional_property(TileProperties::TILE_PROPERTY_LINKED_COORD, MapUtils::convert_coordinate_to_map_key(c));
-                  descend_success = ma->generate_and_move_to_new_map(creature, map, nullptr, tile, ExitMovementType::EXIT_MOVEMENT_DESCEND);
-
-                  MapPtr new_map = Game::instance().get_current_map();
-                  MapExitPtr new_map_linkage = std::make_shared<MapExit>();
-                  new_map_linkage->set_map_id(new_map->get_map_id());
-                  map->set_map_exit(Direction::DIRECTION_DOWN, new_map_linkage);
-                }
-              }
-              else
-              {
-                string movement_message = StringTable::get(MovementTextKeys::ACTION_MOVE_OFF_BLOCKED);
-
-                manager.add_new_message(movement_message);
-                manager.send();
-              }
+              descend_success = generate_or_move_to_zlevel(game, ma, manager, creature, map, tile, c, map_exit, ExitMovementType::EXIT_MOVEMENT_DESCEND, Direction::DIRECTION_DOWN);
             }
             else
             {
@@ -272,6 +253,45 @@ void StairwayMovementAction::move_to_custom_map(TilePtr current_tile, MapPtr cur
 
     ma->handle_properties_and_move(creature, current_tile, current_map, map_exit, proposed_new_coord);
   }
+}
+
+ActionCostValue StairwayMovementAction::generate_or_move_to_zlevel(Game& game, MovementAction* const ma, IMessageManager& manager, CreaturePtr creature, MapPtr map, TilePtr tile, const Coordinate& c, MapExitPtr map_exit, const ExitMovementType emt, const Direction d)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
+  if (map_exit == nullptr || MapUtils::can_exit_map(map, creature, map_exit, c))
+  {
+    if (map_exit != nullptr && map_exit->is_using_map_id())
+    {
+      move_to_custom_map(tile, map, map_exit, creature, game, ma, d);
+      acv = get_action_cost_value(creature);
+    }
+    else
+    {
+      // Set the map as permanent so we can come back to it later.
+      map->set_permanent(true);
+      tile->set_additional_property(TileProperties::TILE_PROPERTY_LINKED_COORD, MapUtils::convert_coordinate_to_map_key(c));
+      acv = ma->generate_and_move_to_new_map(creature, map, nullptr, tile, emt);
+
+      MapPtr new_map = Game::instance().get_current_map();
+      MapExitPtr new_map_linkage = std::make_shared<MapExit>();
+      new_map_linkage->set_map_id(new_map->get_map_id());
+      map->set_map_exit(d, new_map_linkage);
+
+      MapExitPtr original_map_linkage = std::make_shared<MapExit>();
+      original_map_linkage->set_map_id(map->get_map_id());
+      new_map->set_map_exit(DirectionUtils::get_opposite_direction(d), original_map_linkage);
+    }
+  }
+  else
+  {
+    string movement_message = StringTable::get(MovementTextKeys::ACTION_MOVE_OFF_BLOCKED);
+
+    manager.add_new_message(movement_message);
+    manager.send();
+  }
+
+  return acv;
 }
 
 ActionCostValue StairwayMovementAction::get_action_cost_value(CreaturePtr creature) const

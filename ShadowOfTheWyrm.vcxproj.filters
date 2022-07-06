@@ -4484,6 +4484,9 @@
     <ClInclude Include="engine\generators\include\UnderwaterGenerator.hpp">
       <Filter>Header Files\engine\generators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\include\SkyGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9083,6 +9086,9 @@
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\generators\source\UnderwaterGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\SkyGenerator.cpp">
       <Filter>Source Files\engine\generators\source</Filter>
     </ClCompile>
   </ItemGroup>

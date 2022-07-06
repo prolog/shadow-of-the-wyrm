@@ -1,4 +1,4 @@
-Shadow of the Wyrm v1.4.7 "Satoh"
+Shadow of the Wyrm v1.4.8 "Satoh"
 - Version started May 15, 2022.
 
 - When removing items from the player (typically for fetch-type quests), the

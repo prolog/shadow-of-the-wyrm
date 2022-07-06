@@ -24,7 +24,7 @@ class EntranceTextKeys
     static const std::string ENTRANCE_SITE_OF_DEATH;
     static const std::string ENTRANCE_TEMPLE;
     static const std::string ENTRANCE_SHRINE;
-    
+    static const std::string ENTRANCE_AIR;
   protected:
     EntranceTextKeys();
     ~EntranceTextKeys();

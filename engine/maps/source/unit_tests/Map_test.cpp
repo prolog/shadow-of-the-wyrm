@@ -320,3 +320,19 @@ TEST_F(SW_Engine_Map, get_is_water_shallow)
 
   EXPECT_FALSE(map->get_is_water_shallow());
 }
+
+TEST_F(SW_Engine_Map, get_is_open_sky)
+{
+  MapPtr map = make_map();
+
+  EXPECT_FALSE(map->get_is_open_sky());
+
+  map->set_property(MapProperties::MAP_PROPERTIES_OPEN_SKY, to_string(true));
+
+  EXPECT_TRUE(map->get_is_open_sky());
+
+  map->set_property(MapProperties::MAP_PROPERTIES_OPEN_SKY, to_string(false));
+
+  EXPECT_FALSE(map->get_is_open_sky());
+}
+

@@ -602,7 +602,7 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
   // they can be properly re-applied to the map, potentially.
   TileUtils::copy_exit_properties_to_tile(tile);
 
-  GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map, map->get_map_id(), tile_type, tile_subtype);
+  GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map, map->get_map_id(), tile_type, tile_subtype, emt);
 
   // Ensure that the overworld map ID is always available to the generator!
   map->get_map_type() == MapType::MAP_TYPE_WORLD ? generator->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, map->get_map_id())
@@ -753,7 +753,7 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
     // to a brand-new map, as tile properties will be automatically 
     // handled during map generation, and will be removed after creating
     // items and creatures.
-    add_initial_map_messages(creature, new_map, tile_type);
+    add_initial_map_messages(creature, new_map, generator->get_terrain_type());
     handle_properties_and_move_to_new_map(creature, tile, map, new_map, map_exit);
     action_cost_value = get_action_cost_value(creature);
   }

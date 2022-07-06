@@ -127,6 +127,9 @@ class MapProperties
     // underwater. most maps have shallow water - open sea maps don't.
     static const std::string MAP_PROPERTIES_SHALLOW_WATER;
 
+    // Similarly, sky and ascension
+    static const std::string MAP_PROPERTIES_OPEN_SKY;
+
   protected:
     MapProperties();
     ~MapProperties();

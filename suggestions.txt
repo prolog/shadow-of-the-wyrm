@@ -1,5 +1,7 @@
 Me:
 - ASSET RELEASE
+- JovanM: items blocking gate...
+- Depth for sky
 - items: drop through!
 - test all kinds of exits:
   - world to custom
