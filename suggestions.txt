@@ -1,7 +1,13 @@
 Me:
 - ASSET RELEASE
+- TOD, weather for sky
+- test exit messages
+- a custom up message when in open sky might be nice
+- new map type: Air
+- set air map type for various custom maps
+- ensure multi floor custom maps line up properly, link them as expected
+- followers shouldn't follow underwater or into the air!
 - JovanM: items blocking gate...
-- Depth for sky
 - items: drop through!
 - test all kinds of exits:
   - world to custom

@@ -141,6 +141,9 @@ class MapUtils
 
     static bool can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d);
 
+    static bool get_supports_time_of_day(const MapType map_type);
+    static bool get_supports_weather(const MapType map_type);
+
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
     static bool is_tile_contained_in_an_existing_component(const Coordinate&, const MapComponents& components);

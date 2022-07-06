@@ -51,7 +51,7 @@ void WorldWeatherUpdater::update_weather_for_map(MapPtr old_map, TilePtr old_til
 {
   if (old_map != nullptr && old_tile != nullptr && new_map != nullptr)
   {
-    if (old_map->get_map_type() == MapType::MAP_TYPE_WORLD && new_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
+    if (old_map->get_map_type() == MapType::MAP_TYPE_WORLD && MapUtils::get_supports_weather(new_map->get_map_type()))
     {
       WeatherPtr weather = MapUtils::get_weather(old_map, old_tile);
 
@@ -73,7 +73,7 @@ void WorldWeatherUpdater::set_weather(MapPtr map, TilePtr tile, const Weather& w
     {
       tile->set_weather(w);
     }
-    else if (mt == MapType::MAP_TYPE_OVERWORLD)
+    else if (mt == MapType::MAP_TYPE_OVERWORLD || mt == MapType::MAP_TYPE_AIR)
     {
       map->set_weather(w);
     }

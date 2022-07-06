@@ -18,7 +18,7 @@ int LineOfSightCalculator::calculate_los_length(CreaturePtr creature, const MapT
   int los_len = DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH;
 
   // Only the overworld is affected by TOD values
-  if (creature != nullptr && map_type == MapType::MAP_TYPE_OVERWORLD)
+  if (creature != nullptr && (map_type == MapType::MAP_TYPE_OVERWORLD || map_type == MapType::MAP_TYPE_AIR))
   {
     auto btp_it = base_tod_penalty.find(tod);
 

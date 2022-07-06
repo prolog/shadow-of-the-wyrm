@@ -7,5 +7,5 @@ class SkyGenerator : public SOTW::Generator
 		SkyGenerator(const std::string& map_exit_id);
 
 		virtual MapPtr generate(const Dimensions& dim) override;
-
+		virtual MapType get_map_type() const override;
 };

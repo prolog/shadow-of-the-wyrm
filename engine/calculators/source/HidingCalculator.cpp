@@ -82,6 +82,7 @@ int HidingCalculator::get_tod_hide_modifier_for_map_type(const TimeOfDayType tod
 
   switch (map_type)
   {
+    case MapType::MAP_TYPE_AIR:
     case MapType::MAP_TYPE_COSMOS:
       tod_mod = -50;
       break;

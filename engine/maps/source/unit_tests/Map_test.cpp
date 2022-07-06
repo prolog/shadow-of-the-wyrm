@@ -103,6 +103,14 @@ TEST_F(SW_Engine_Map, map_type_allows_updates)
 
   EXPECT_TRUE(map->get_allow_creature_updates());
 
+  map->set_map_type(MapType::MAP_TYPE_COSMOS);
+
+  EXPECT_TRUE(map->get_allow_creature_updates());
+
+  map->set_map_type(MapType::MAP_TYPE_AIR);
+
+  EXPECT_TRUE(map->get_allow_creature_updates());
+
   map->set_allow_creature_updates(false);
 
   EXPECT_FALSE(map->get_allow_creature_updates());
@@ -336,3 +344,32 @@ TEST_F(SW_Engine_Map, get_is_open_sky)
   EXPECT_FALSE(map->get_is_open_sky());
 }
 
+TEST_F(SW_Engine_Map, get_supports_time_of_day)
+{
+  std::map<MapType, bool> supports_tod = {{MapType::MAP_TYPE_AIR, true},
+                                          {MapType::MAP_TYPE_COSMOS, false},
+                                          {MapType::MAP_TYPE_OVERWORLD, true},
+                                          {MapType::MAP_TYPE_UNDERWATER, false},
+                                          {MapType::MAP_TYPE_UNDERWORLD, false},
+                                          {MapType::MAP_TYPE_WORLD, false}};
+
+  for (const auto& tod_pair : supports_tod)
+  {
+    EXPECT_EQ(tod_pair.second, MapUtils::get_supports_time_of_day(tod_pair.first));
+  }
+}
+
+TEST_F(SW_Engine_Map, get_supports_weather)
+{
+  std::map<MapType, bool> supports_wea = {{MapType::MAP_TYPE_AIR, true},
+                                          {MapType::MAP_TYPE_COSMOS, false},
+                                          {MapType::MAP_TYPE_OVERWORLD, true},
+                                          {MapType::MAP_TYPE_UNDERWATER, false},
+                                          {MapType::MAP_TYPE_UNDERWORLD, false},
+                                          {MapType::MAP_TYPE_WORLD, true}};
+
+  for (const auto& wea_pair : supports_wea)
+  {
+    EXPECT_EQ(wea_pair.second, MapUtils::get_supports_weather(wea_pair.first));
+  }
+}

@@ -22,6 +22,9 @@ TEST(SW_Engine_Calculators_LineOfSightCalculator, tod_penalty)
 
   los_length = losc.calculate_los_length(creature, MapType::MAP_TYPE_COSMOS, TimeOfDayType::TIME_OF_DAY_NIGHT);
   EXPECT_EQ(6, los_length);
+
+  los_length = losc.calculate_los_length(creature, MapType::MAP_TYPE_AIR, TimeOfDayType::TIME_OF_DAY_NIGHT);
+  EXPECT_EQ(3, los_length);
 }
 
 TEST(SW_Engine_Calculators_LineOfSightCalculator, night_vision_bonus)

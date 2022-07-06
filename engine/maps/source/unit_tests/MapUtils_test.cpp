@@ -166,11 +166,12 @@ TEST(SW_Engine_Maps_MapUtils, calculate_depth_delta_tile)
 
 TEST(SW_Engine_Maps_MapUtils, should_link_entry_point)
 {
+  EXPECT_FALSE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_AIR));
   EXPECT_FALSE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_OVERWORLD));
   EXPECT_TRUE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_WORLD));
   EXPECT_TRUE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_UNDERWORLD));
-  EXPECT_TRUE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_UNDERWATER));
-  EXPECT_TRUE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_COSMOS));
+  EXPECT_FALSE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_UNDERWATER));
+  EXPECT_FALSE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_COSMOS));
 }
 
 TEST(SW_Engine_Maps_MapUtils, does_area_around_tile_contain_staircase)
@@ -289,11 +290,16 @@ TEST(SW_Engine_Maps_MapUtils, get_weather)
   MapPtr cosmos_map = std::make_shared<Map>(d);
   cosmos_map->set_map_type(MapType::MAP_TYPE_COSMOS);
 
+  MapPtr air_map = std::make_shared<Map>(d);
+  air_map->set_map_type(MapType::MAP_TYPE_AIR);
+  air_map->set_weather(map_weather);
+
   EXPECT_EQ(tile_weather, *MapUtils::get_weather(world_map, tile));
   EXPECT_EQ(map_weather, *MapUtils::get_weather(overworld_map, tile));
   EXPECT_EQ(no_weather, MapUtils::get_weather(underworld_map, tile));
   EXPECT_EQ(no_weather, MapUtils::get_weather(underwater_map, tile));
   EXPECT_EQ(no_weather, MapUtils::get_weather(cosmos_map, tile));
+  EXPECT_EQ(map_weather, *MapUtils::get_weather(air_map, tile));
 }
 
 TEST(SW_Engine_Maps_MapUtils, get_available_adjacent_tiles_to_creature)

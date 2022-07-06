@@ -1,6 +1,7 @@
 #include "WorldTimeObserver.hpp"
 #include "DateTextKeys.hpp"
 #include "Game.hpp"
+#include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "Serialize.hpp"
 #include "WorldWeatherUpdater.hpp"
@@ -53,7 +54,7 @@ void WorldTimeObserver::redraw_and_update_time_of_day(const TimeOfDayType tod)
   // We only care about map transitions on the overworld.
   // On the world map, it would occur too frequently when moving around.
   // Underground, it's always semi-night.
-  if (map != nullptr && map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
+  if (map != nullptr && MapUtils::get_supports_time_of_day(map->get_map_type()))
   {
     auto t_it = tod_transition_sids.find(tod);
 

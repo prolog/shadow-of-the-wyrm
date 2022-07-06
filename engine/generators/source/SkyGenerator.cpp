@@ -17,3 +17,8 @@ MapPtr SkyGenerator::generate(const Dimensions& dim)
 
 	return result_map;
 }
+
+MapType SkyGenerator::get_map_type() const
+{
+	return MapType::MAP_TYPE_AIR;
+}

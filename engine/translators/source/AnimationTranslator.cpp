@@ -4,6 +4,7 @@
 #include "Game.hpp"
 #include "MapProperties.hpp"
 #include "MapTranslator.hpp"
+#include "MapUtils.hpp"
 #include "Setting.hpp"
 
 using namespace std;
@@ -29,7 +30,7 @@ Animation AnimationTranslator::create_movement_animation(const bool player_blind
   MapPtr map = game.get_current_map();
   Calendar& calendar = game.get_current_world()->get_calendar();
   Settings& settings = game.get_settings_ref();
-  pair<Colour, Colour> tod_overrides = TimeOfDay::get_time_of_day_colours(calendar.get_date().get_time_of_day(), map->get_map_type() == MapType::MAP_TYPE_OVERWORLD, settings.get_setting_as_bool(Setting::SHADE_TERRAIN), settings.get_setting_as_bool(Setting::SHADE_CREATURES_AND_ITEMS));
+  pair<Colour, Colour> tod_overrides = TimeOfDay::get_time_of_day_colours(calendar.get_date().get_time_of_day(), MapUtils::get_supports_time_of_day(map->get_map_type()), settings.get_setting_as_bool(Setting::SHADE_TERRAIN), settings.get_setting_as_bool(Setting::SHADE_CREATURES_AND_ITEMS));
   vector<Colour> scv = String::create_colour_vector_from_csv_string(map->get_property(MapProperties::MAP_PROPERTIES_SHIMMER_COLOURS));
   ShimmerColours shimmer_colours(scv);
 

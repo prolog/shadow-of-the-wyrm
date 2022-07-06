@@ -1700,7 +1700,7 @@ int MapUtils::calculate_depth_delta(MapPtr map, TilePtr tile, const ExitMovement
 
 bool MapUtils::should_link_entry_point(MapType map_type)
 {
-  if (map_type == MapType::MAP_TYPE_OVERWORLD || map_type == MapType::MAP_TYPE_UNDERWATER)
+  if (map_type == MapType::MAP_TYPE_OVERWORLD || map_type == MapType::MAP_TYPE_AIR || map_type == MapType::MAP_TYPE_UNDERWATER || map_type == MapType::MAP_TYPE_COSMOS)
   {
     return false;
   }
@@ -1714,13 +1714,15 @@ WeatherPtr MapUtils::get_weather(MapPtr map, TilePtr tile)
 
   if (map != nullptr)
   {
-    if (map->get_map_type() == MapType::MAP_TYPE_WORLD && tile != nullptr)
+    MapType mt = map->get_map_type();
+
+    if (mt == MapType::MAP_TYPE_WORLD && tile != nullptr)
     {
       Weather w = tile->get_weather();
       weather = std::make_unique<Weather>(w);
     }
 
-    if (map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
+    if (mt == MapType::MAP_TYPE_OVERWORLD || mt == MapType::MAP_TYPE_AIR)
     {
       Weather w = map->get_weather();
       weather = std::make_unique<Weather>(w);
@@ -2561,6 +2563,16 @@ bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile,
   }
 
   return can_change;
+}
+
+bool MapUtils::get_supports_time_of_day(const MapType map_type)
+{
+  return (map_type == MapType::MAP_TYPE_OVERWORLD || map_type == MapType::MAP_TYPE_AIR);
+}
+
+bool MapUtils::get_supports_weather(const MapType map_type)
+{
+  return (map_type == MapType::MAP_TYPE_WORLD || map_type == MapType::MAP_TYPE_OVERWORLD || map_type == MapType::MAP_TYPE_AIR);
 }
 
 #ifdef UNIT_TESTS

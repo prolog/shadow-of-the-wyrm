@@ -14,7 +14,8 @@ MovementTextKeys::~MovementTextKeys()
 
 string MovementTextKeys::get_cannot_exit_map_message(const MapType mt)
 {
-  static_assert(MapType::MAP_TYPE_LAST_INC == MapType(4), "Unrecognized MapType::MAP_TYPE_LAST_INC");
+  static_assert(MapType::MAP_TYPE_LAST_INC == MapType(5), "Unrecognized MapType::MAP_TYPE_LAST_INC");
+
   string msg = ACTION_MOVE_OFF_BLOCKED;
 
   if (mt == MapType::MAP_TYPE_UNDERWATER)
@@ -32,6 +33,10 @@ string MovementTextKeys::get_cannot_exit_map_message(const MapType mt)
   else if (mt == MapType::MAP_TYPE_COSMOS)
   {
     msg = ACTION_MOVE_OFF_COSMOS_MAP;
+  }
+  else if (mt == MapType::MAP_TYPE_AIR)
+  {
+    msg = ACTION_MOVE_OFF_AIR_MAP;
   }
 
   msg = StringTable::get(msg);
@@ -51,6 +56,7 @@ const string MovementTextKeys::ACTION_MOVE_OFF_OVERWORLD_MAP     = "ACTION_MOVE_
 const string MovementTextKeys::ACTION_MOVE_OFF_UNDERWORLD_MAP    = "ACTION_MOVE_OFF_UNDERWORLD_MAP";
 const string MovementTextKeys::ACTION_MOVE_OFF_UNDERWATER_MAP    = "ACTION_MOVE_OFF_UNDERWATER_MAP";
 const string MovementTextKeys::ACTION_MOVE_OFF_COSMOS_MAP        = "ACTION_MOVE_OFF_COSMOS_MAP";
+const string MovementTextKeys::ACTION_MOVE_OFF_AIR_MAP           = "ACTION_MOVE_OFF_AIR_MAP";
 const string MovementTextKeys::ACTION_MOVE_OFF_BLOCKED           = "ACTION_MOVE_OFF_BLOCKED";
 const string MovementTextKeys::ACTION_MOVE_DANGEROUS_FEATURE     = "ACTION_MOVE_DANGEROUS_FEATURE";
 const string MovementTextKeys::ACTION_MOVE_RACE_NOT_ALLOWED      = "ACTION_MOVE_RACE_NOT_ALLOWED";
