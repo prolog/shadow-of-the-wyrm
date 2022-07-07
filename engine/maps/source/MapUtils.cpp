@@ -2528,15 +2528,19 @@ bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile,
     bool can_breathe_water = creature->can_breathe(BreatheType::BREATHE_TYPE_WATER);
     bool can_fly = creature->has_status(StatusIdentifiers::STATUS_ID_FLYING);
     bool can_swim = creature->get_skills().get_value(SkillType::SKILL_GENERAL_SWIMMING) > 0;
+    bool map_supports_flying = (map_type == MapType::MAP_TYPE_OVERWORLD || map_type == MapType::MAP_TYPE_AIR);
 
-    // Air
-    if (map_type == MapType::MAP_TYPE_OVERWORLD && d == Direction::DIRECTION_UP)
+    // Air - only have to check up movement. Can always go down!
+    if (map_supports_flying)
     {
-      can_change = can_fly && !map->get_is_open_sky();
-    }
-    else if (map_type == MapType::MAP_TYPE_OVERWORLD && (d == Direction::DIRECTION_DOWN && tst == TileSuperType::TILE_SUPER_TYPE_AIR))
-    {
-      can_change = can_fly;
+      if (d == Direction::DIRECTION_UP)
+      {
+        can_change = can_fly && !map->get_is_open_sky();
+      }
+      else
+      {
+        can_change = true;
+      }
     }
     else
     {

@@ -1,6 +1,7 @@
 Me:
 - ASSET RELEASE
-- Down linkage from sky
+- unit tests for MapUtils::can_change_zlevel
+- ascend/descend shop hostility checks
 - TOD, weather for sky
 - test exit messages
 - a custom up message when in open sky might be nice
