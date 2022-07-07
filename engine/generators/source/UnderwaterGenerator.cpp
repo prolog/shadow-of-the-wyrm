@@ -31,12 +31,13 @@ MapPtr UnderwaterGenerator::generate(const Dimensions& dim)
 	{
 		result_map->set_property(MapProperties::MAP_PROPERTIES_CANNOT_DIG, std::to_string(true));
 		TilesContainer& tc = above_water_map->get_tiles_ref();
-		
+		TilePtr tile;
+		Coordinate c;
+
 		for (auto& tc_pair : tc)
 		{
 			if (tc_pair.second != nullptr)
 			{
-				TilePtr tile;
 				TilePtr above_tile = tc_pair.second;
 				TileType att = above_tile->get_tile_type();
 				TileSuperType atst = above_tile->get_tile_super_type();
@@ -54,7 +55,7 @@ MapPtr UnderwaterGenerator::generate(const Dimensions& dim)
 
 				tile->set_submerged(true);
 
-				Coordinate c = MapUtils::convert_map_key_to_coordinate(tc_pair.first);
+				c = MapUtils::convert_map_key_to_coordinate(tc_pair.first);
 				result_map->insert(c, tile);
 			}
 		}

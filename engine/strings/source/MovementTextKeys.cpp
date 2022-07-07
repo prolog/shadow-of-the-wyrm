@@ -46,6 +46,7 @@ string MovementTextKeys::get_cannot_exit_map_message(const MapType mt)
 
 const string MovementTextKeys::ACTION_MOVE_NO_EXIT               = "ACTION_MOVE_NO_EXIT";
 const string MovementTextKeys::ACTION_MOVE_NO_EXIT_COSMOS        = "ACTION_MOVE_NO_EXIT_COSMOS";
+const string MovementTextKeys::ACTION_MOVE_NO_EXIT_UP_AIR        = "ACTION_MOVE_NO_EXIT_UP_AIR";
 const string MovementTextKeys::ACTION_MOVE_NO_EXIT_DOWN          = "ACTION_MOVE_NO_EXIT_DOWN";
 const string MovementTextKeys::ACTION_MOVE_NO_EXIT_DOWN_SEA      = "ACTION_MOVE_NO_EXIT_DOWN_SEA";
 const string MovementTextKeys::ACTION_MOVE_NO_EXIT_DOWN_SPRINGS  = "ACTION_MOVE_NO_EXIT_DOWN_SPRINGS";

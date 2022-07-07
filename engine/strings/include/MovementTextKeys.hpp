@@ -9,6 +9,7 @@ class MovementTextKeys
 
     static const std::string ACTION_MOVE_NO_EXIT;
     static const std::string ACTION_MOVE_NO_EXIT_COSMOS;
+    static const std::string ACTION_MOVE_NO_EXIT_UP_AIR;
     static const std::string ACTION_MOVE_NO_EXIT_DOWN;
     static const std::string ACTION_MOVE_NO_EXIT_DOWN_SEA;
     static const std::string ACTION_MOVE_NO_EXIT_DOWN_SPRINGS;

@@ -1,5 +1,6 @@
 #include "AirTile.hpp"
 #include "NullInventory.hpp"
+#include "MovementTextKeys.hpp"
 #include "TileDangerConfirmationKeys.hpp"
 
 using namespace std;
@@ -37,6 +38,11 @@ bool AirTile::get_dangerous(CreaturePtr creature) const
 string AirTile::get_danger_confirmation_sid() const
 {
   return TileDangerConfirmationKeys::TILE_DANGER_AIR;
+}
+
+string AirTile::get_no_exit_up_message_sid() const
+{
+  return MovementTextKeys::ACTION_MOVE_NO_EXIT_UP_AIR;
 }
 
 Tile* AirTile::clone()
