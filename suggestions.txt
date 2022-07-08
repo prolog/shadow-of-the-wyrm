@@ -1,6 +1,7 @@
 Me:
 - ASSET RELEASE
 - unit tests for MapUtils::can_change_zlevel
+- inside/outside flying...
 - ascend/descend shop hostility checks
 - TOD, weather for sky
 - test exit messages

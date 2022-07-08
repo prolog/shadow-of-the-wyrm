@@ -61,6 +61,9 @@ Shadow of the Wyrm v1.4.8 "Satoh"
   - Setting age via swyrm.ini was also overriding the maximum, leading to
     death after one year (Josh Engdahl).
 
+  - When sentries were considering allies, they weren't considering their own
+    ID, leading to e.g. Carcassian guards attacking each other.
+
   - After paying off shopkeepers, hostility was removed from the shopkeeper
     but not the player.
 
