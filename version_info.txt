@@ -52,6 +52,9 @@ Shadow of the Wyrm v1.4.8 "Satoh"
 
 - Pelicans have a better sprite.
 
+- The Forest of Yew is a reasonably well-known place and its tile message has
+  been updated to be slightly more specific about what's there.
+
 - New items: amulet of the sky.
 
 - Bug fixes:
