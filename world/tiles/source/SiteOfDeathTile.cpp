@@ -21,6 +21,11 @@ std::string SiteOfDeathTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_SITE_OF_DEATH;
 }
 
+bool SiteOfDeathTile::is_interior() const
+{
+  return true;
+}
+
 Tile* SiteOfDeathTile::clone()
 {
   return new SiteOfDeathTile(*this);

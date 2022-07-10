@@ -1086,7 +1086,21 @@ bool MapUtils::tiles_in_range_match_type(MapPtr map, const BoundingBox& bb, cons
   return match;
 }
 
-bool MapUtils::can_exit_map(MapPtr map, CreaturePtr creature, MapExitPtr map_exit, const Coordinate& proposed_new_coord)
+bool MapUtils::is_creature_flying(MapPtr map, CreaturePtr creature)
+{
+  bool is_flying = false;
+
+  if (map != nullptr && creature != nullptr)
+  {
+    TilePtr tile = MapUtils::get_tile_for_creature(map, creature);
+
+    is_flying = (tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_AIR);
+  }
+
+  return is_flying;
+}
+
+bool MapUtils::can_exit_map(MapPtr map, CreaturePtr creature, const bool is_creature_flying, MapExitPtr map_exit, const Direction d, const Coordinate& proposed_new_coord)
 {
   if (!map || map->get_map_type() == MapType::MAP_TYPE_WORLD)
   {
@@ -1105,12 +1119,36 @@ bool MapUtils::can_exit_map(MapPtr map, CreaturePtr creature, MapExitPtr map_exi
   // Second check: if this is for a set map, is the new tile available/open?
   if (map_exit && map_exit->is_using_map_id() && !CoordUtils::is_end(proposed_new_coord))
   {
-    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_exit->get_map_id());
+    MapPtr new_map = Game::instance().get_map_registry_ref().get_map(map_exit->get_map_id());
 
-    if (map != nullptr)
+    if (new_map != nullptr)
     {
-      TilePtr tile = map->at(proposed_new_coord);
+      TilePtr old_tile = MapUtils::get_tile_for_creature(map, creature);
+      TilePtr tile = new_map->at(proposed_new_coord);
+
       if (!is_tile_available_for_creature(creature, tile))
+      {
+        can_exit = false;
+      }
+
+      // The purpose here is to, basically, pretend a roof exists and prevent
+      // the player from being able to fly in and out of buildings, bypassing
+      // doors, shopkeepers, etc.
+      if (can_exit && is_creature_flying && (d == Direction::DIRECTION_UP || d == Direction::DIRECTION_DOWN))
+      {
+        // Disallow moving from air to interior
+        if (old_tile->is_interior())
+        {
+          can_exit = false;
+        }
+        else
+        {
+          can_exit = !tile->is_interior();
+        }
+      }
+
+      // Disallow moving from interior to air
+      if (can_exit && old_tile->is_interior() && tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_AIR && DirectionUtils::is_zlevel(d))
       {
         can_exit = false;
       }
@@ -2531,16 +2569,13 @@ bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile,
     bool map_supports_flying = (map_type == MapType::MAP_TYPE_OVERWORLD || map_type == MapType::MAP_TYPE_AIR);
 
     // Air - only have to check up movement. Can always go down!
-    if (map_supports_flying)
+    if (map_supports_flying && d == Direction::DIRECTION_UP)
     {
-      if (d == Direction::DIRECTION_UP)
-      {
-        can_change = can_fly && !map->get_is_open_sky();
-      }
-      else
-      {
-        can_change = true;
-      }
+      can_change = can_fly && !map->get_is_open_sky();
+    }
+    else if (map_type == MapType::MAP_TYPE_AIR && d == Direction::DIRECTION_DOWN)
+    {
+      can_change = true;
     }
     else
     {
@@ -2550,7 +2585,7 @@ bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile,
         if (d == Direction::DIRECTION_DOWN)
         {
           if (map_type != MapType::MAP_TYPE_UNDERWATER &&
-            (can_breathe_water || can_swim))
+             (can_breathe_water || can_swim))
           {
             can_change = true;
           }

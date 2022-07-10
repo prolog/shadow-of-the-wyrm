@@ -5,6 +5,18 @@
 
 using namespace std;
 
+TEST(SW_Engine_Maps_DirectionUtils, is_zlevel)
+{
+  EXPECT_FALSE(DirectionUtils::is_zlevel(Direction::DIRECTION_NORTH));
+  EXPECT_FALSE(DirectionUtils::is_zlevel(Direction::DIRECTION_SOUTH));
+  EXPECT_FALSE(DirectionUtils::is_zlevel(Direction::DIRECTION_EAST));
+  EXPECT_FALSE(DirectionUtils::is_zlevel(Direction::DIRECTION_WEST));
+  EXPECT_FALSE(DirectionUtils::is_zlevel(Direction::DIRECTION_NORTH_EAST));
+  EXPECT_FALSE(DirectionUtils::is_zlevel(Direction::DIRECTION_NORTH_WEST));
+  EXPECT_TRUE(DirectionUtils::is_zlevel(Direction::DIRECTION_UP));
+  EXPECT_TRUE(DirectionUtils::is_zlevel(Direction::DIRECTION_DOWN));
+}
+
 TEST(SW_Engine_Maps_DirectionUtils, is_cardinal)
 {
   EXPECT_TRUE(DirectionUtils::is_cardinal(Direction::DIRECTION_NORTH));

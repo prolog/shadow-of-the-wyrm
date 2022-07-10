@@ -11,6 +11,11 @@ std::string DungeonTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_DUNGEON;
 }
 
+bool DungeonTile::is_interior() const
+{
+  return true;
+}
+
 Tile* DungeonTile::clone()
 {
   return new DungeonTile(*this);

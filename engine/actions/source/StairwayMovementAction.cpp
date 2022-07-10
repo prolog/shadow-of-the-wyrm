@@ -62,7 +62,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
 
       if (me_it != map_exits.end())
       {
-        if (MapUtils::can_exit_map(current_map, creature, me_it->second, c))
+        if (MapUtils::can_exit_map(current_map, creature, MapUtils::is_creature_flying(current_map, creature), me_it->second, Direction::DIRECTION_UP, c))
         {
           map_exit = me_it->second;
         }
@@ -242,10 +242,6 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
 
 void StairwayMovementAction::move_to_custom_map(TilePtr current_tile, MapPtr current_map, MapExitPtr map_exit, CreaturePtr creature, Game& game, MovementAction* const ma, const Direction d)
 {
-  // JCD FIXME: For now, stairway movement isn't part of multi-map movement
-  // (assume everything's on the same rough z-level), so pass in a null
-  // coordinate to allow the game to use either the pre-set location,
-  // or the pre-existing one.
   if (creature != nullptr && current_map != nullptr && current_tile != nullptr)
   {
     Coordinate current_coord = current_map->get_location(creature->get_id());
@@ -259,7 +255,7 @@ ActionCostValue StairwayMovementAction::generate_or_move_to_zlevel(Game& game, M
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
-  if (map_exit == nullptr || MapUtils::can_exit_map(map, creature, map_exit, c))
+  if (map_exit == nullptr || MapUtils::can_exit_map(map, creature, MapUtils::is_creature_flying(map, creature), map_exit, d, c))
   {
     if (map_exit != nullptr && map_exit->is_using_map_id())
     {

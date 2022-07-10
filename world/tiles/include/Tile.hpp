@@ -201,6 +201,11 @@ class Tile : public ISerializable
     virtual SkillType get_treasure_skill() const;
     virtual bool has_treasure() const;
 
+    // Some tiles that aren't blocking (floors, stairs, etc) are assumed to
+    // have a roof over them to prevent flying from letting you land on 
+    // them.
+    virtual bool is_interior() const;
+
     virtual Tile* clone() = 0;
 
   protected:

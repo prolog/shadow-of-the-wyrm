@@ -21,6 +21,11 @@ std::string ChurchTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_CHURCH;
 }
 
+bool ChurchTile::is_interior() const
+{
+  return true;
+}
+
 Tile* ChurchTile::clone()
 {
   return new ChurchTile(*this);

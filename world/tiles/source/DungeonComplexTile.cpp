@@ -11,6 +11,11 @@ std::string DungeonComplexTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_DUNGEON_COMPLEX;
 }
 
+bool DungeonComplexTile::is_interior() const
+{
+  return true;
+}
+
 Tile* DungeonComplexTile::clone()
 {
   return new DungeonComplexTile(*this);

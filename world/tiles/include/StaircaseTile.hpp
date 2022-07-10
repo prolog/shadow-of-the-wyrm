@@ -15,6 +15,7 @@ class StaircaseTile : public Tile
     virtual StaircaseType get_staircase_type() const = 0;
     
     virtual bool display_description_on_arrival() const override { return true; }
+    bool is_interior() const override { return true; }
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

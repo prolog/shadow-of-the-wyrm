@@ -821,6 +821,11 @@ bool Tile::has_treasure() const
   return false;
 }
 
+bool Tile::is_interior() const
+{
+  return false;
+}
+
 bool Tile::serialize(ostream& stream) const
 {
   Serialize::write_bool(stream, illuminated);

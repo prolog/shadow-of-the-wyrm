@@ -1,4 +1,5 @@
 Me:
+- Need to hook in is_interior() into the blocked movement code
 - ASSET RELEASE
 - unit tests for MapUtils::can_change_zlevel
 - inside/outside flying...

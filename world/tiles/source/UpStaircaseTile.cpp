@@ -15,6 +15,11 @@ std::string UpStaircaseTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_UP_STAIRCASE;
 }
 
+bool UpStaircaseTile::is_interior() const
+{
+  return true;
+}
+
 Tile* UpStaircaseTile::clone()
 {
   return new UpStaircaseTile(*this);

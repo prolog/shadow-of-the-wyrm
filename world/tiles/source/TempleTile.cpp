@@ -21,6 +21,11 @@ std::string TempleTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_TEMPLE;
 }
 
+bool TempleTile::is_interior() const
+{
+  return true;
+}
+
 Tile* TempleTile::clone()
 {
   return new TempleTile(*this);
