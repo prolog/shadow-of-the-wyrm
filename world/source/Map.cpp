@@ -40,6 +40,8 @@ Map::Map(const Dimensions& new_dimensions, const Dimensions& orig_dimensions)
   dimensions = new_dimensions;
   original_dimensions = orig_dimensions;
   
+  tiles.reserve(dimensions.get_y() * dimensions.get_x());
+
   // Generate a default unique identifier for this map
   boost::uuids::uuid id = boost::uuids::random_generator()();
   map_id = Uuid::to_string(id);
