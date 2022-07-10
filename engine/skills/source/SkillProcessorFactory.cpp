@@ -36,6 +36,7 @@ void SkillProcessorFactory::populate_skill_map()
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_BOWYER, make_unique<BowyerSkillProcessor>()));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_CARRYING, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_CARRYING)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_COMBAT, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_COMBAT)));
+  skill_map.insert(make_pair(SkillType::SKILL_GENERAL_DESERT_LORE, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_DESERT_LORE)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_DETECTION, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_DETECTION)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_DISARM_TRAPS, make_unique<DisarmTrapsSkillProcessor>()));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_DUAL_WIELD, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_DUAL_WIELD)));
@@ -44,6 +45,7 @@ void SkillProcessorFactory::populate_skill_map()
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_FISHING, make_unique<FishingSkillProcessor>()));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_FLETCHERY, make_unique<FletcherySkillProcessor>()));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_FORAGING, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_FORAGING)));
+  skill_map.insert(make_pair(SkillType::SKILL_GENERAL_FOREST_LORE, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_FOREST_LORE)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_HERBALISM, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_HERBALISM)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_HIDING, make_unique<HidingSkillProcessor>()));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_HUNTING, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_HUNTING)));
@@ -53,8 +55,10 @@ void SkillProcessorFactory::populate_skill_map()
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_LITERACY, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_LITERACY)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_LORE, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_LORE)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MAGIC, make_unique<GeneralMagicSkillProcessor>()));
+  skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MARSH_LORE, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_MARSH_LORE)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MEDICINE, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_MEDICINE)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MOUNTAINEERING, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_MOUNTAINEERING)));
+  skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MOUNTAIN_LORE, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_MOUNTAIN_LORE)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MUSIC, make_unique<MusicSkillProcessor>()));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_NIGHT_SIGHT, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_NIGHT_SIGHT)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_PAPERCRAFT, make_unique<PapercraftSkillProcessor>()));

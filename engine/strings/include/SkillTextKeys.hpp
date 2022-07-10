@@ -285,11 +285,13 @@ class SkillTextKeys
     static const std::string SKILL_USAGE_CARRYING;
     static const std::string SKILL_USAGE_COMBAT;
     static const std::string SKILL_USAGE_CRAFTING;
+    static const std::string SKILL_USAGE_DESERT_LORE;
     static const std::string SKILL_USAGE_DETECTION;
     static const std::string SKILL_USAGE_DUAL_WIELD;
     static const std::string SKILL_USAGE_DUNGEONEERING;
     static const std::string SKILL_USAGE_ESCAPE;
     static const std::string SKILL_USAGE_FORAGING;
+    static const std::string SKILL_USAGE_FOREST_LORE;
     static const std::string SKILL_USAGE_HERBALISM;
     static const std::string SKILL_USAGE_HUNTING;
     static const std::string SKILL_USAGE_INTIMIDATION;
@@ -297,8 +299,10 @@ class SkillTextKeys
     static const std::string SKILL_USAGE_LEADERSHIP;
     static const std::string SKILL_USAGE_LITERACY;
     static const std::string SKILL_USAGE_LORE;
+    static const std::string SKILL_USAGE_MARSH_LORE;
     static const std::string SKILL_USAGE_MEDICINE;
     static const std::string SKILL_USAGE_MOUNTAINEERING;
+    static const std::string SKILL_USAGE_MOUNTAIN_LORE;
     static const std::string SKILL_USAGE_NIGHT_SIGHT;
     static const std::string SKILL_USAGE_RELIGION;
     static const std::string SKILL_USAGE_SKINNING;

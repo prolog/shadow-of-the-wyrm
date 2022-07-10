@@ -1,7 +1,6 @@
 Me:
 - ASSET RELEASE
 - Music shouldn't work underwater
-- Lore skills still showing as unimplemented in skill list
 - unit tests for MapUtils::can_change_zlevel
 - inside/outside flying...
 - ascend/descend shop hostility checks
