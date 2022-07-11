@@ -1,6 +1,5 @@
 Me:
 - ASSET RELEASE
-- Music shouldn't work underwater
 - unit tests for MapUtils::can_change_zlevel
 - inside/outside flying...
 - ascend/descend shop hostility checks

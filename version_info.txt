@@ -13,6 +13,8 @@ Shadow of the Wyrm v1.4.8 "Satoh"
 - Exiting the codex or bestiary during tile selection no longer exits tile
   selection.  This behaviour is configurable in swyrm.ini (Josh Engdahl).
 
+- You can no longer use the Music skill underwater.
+
 - Updated mawgrawls to use "itself" (Josh Engdahl).  Set this flag as well on
   birds and animals.
 
