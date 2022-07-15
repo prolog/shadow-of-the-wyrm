@@ -9,10 +9,8 @@ local function adjust_hireling_fee(creature_id, hire_fee_s)
   if bargaining_val > 0 then
     local divisor = 1 + (bargaining_val / 100)
 
-    log(CLOG_INFO, "Old fee: " .. hire_fee_s)
     new_hireling_fee = math.floor(new_hireling_fee / divisor)
     new_hireling_fee_s = tostring(new_hireling_fee)
-    log(CLOG_INFO, "New fee: " .. new_hireling_fee_s)
   end
 
   return new_hireling_fee_s, new_hireling_fee
