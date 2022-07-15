@@ -52,6 +52,8 @@ Shadow of the Wyrm v1.4.8 "Satoh"
 - There are now different messages for using > and < on springs, open sea, 
   and the cosmos.
 
+- Bargaining reduces the cost of hirelings (RelicWraith).
+
 - Pelicans have a better sprite.
 
 - The Forest of Yew is a reasonably well-known place and its tile message has

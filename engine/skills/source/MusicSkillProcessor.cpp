@@ -134,6 +134,11 @@ void MusicSkillProcessor::perform(CreaturePtr creature, MapPtr map, ItemPtr inst
     }
     else
     {
+      if (creature_tile && creature_tile->get_tile_type() == TileType::TILE_TYPE_VOID)
+      {
+        add_performance_details_message(creature, MusicTextKeys::MUSIC_PERFORMANCE_COSMOS);
+      }
+
       CreatureMap fov_creatures = creature->get_decision_strategy()->get_fov_map()->get_creatures();
       int num_hostile = 0;
       int num_pacified = 0;

@@ -1,5 +1,15 @@
 Me:
+- Need a thorough test of exits:
+  - into, out of map
+  - multi-map
+  - up/down regular dungeons
+  - up/down world maps
+  - up/down infinite dungeon and sewer
+  - traverse Telari
 - ASSET RELEASE
+- can't go up from telari_top without dying - it's loading an air map?
+- JovanM: initial pets not counting as followers, inkpots
+- RelicWraith: bargaining should reduce price of hirelings a lot
 - unit tests for MapUtils::can_change_zlevel
 - inside/outside flying...
 - ascend/descend shop hostility checks

@@ -1,5 +1,23 @@
 require('constants')
 
+-- Adjust the hireling's fee based on the Bargaining skill.
+local function adjust_hireling_fee(creature_id, hire_fee_s)
+  local new_hireling_fee_s = hire_fee_s
+  local new_hireling_fee = tonumber(hire_fee_s)
+  local bargaining_val = get_skill_value(creature_id, CSKILL_GENERAL_BARGAINING)
+
+  if bargaining_val > 0 then
+    local divisor = 1 + (bargaining_val / 100)
+
+    log(CLOG_INFO, "Old fee: " .. hire_fee_s)
+    new_hireling_fee = math.floor(new_hireling_fee / divisor)
+    new_hireling_fee_s = tostring(new_hireling_fee)
+    log(CLOG_INFO, "New fee: " .. new_hireling_fee_s)
+  end
+
+  return new_hireling_fee_s, new_hireling_fee
+end
+
 -- Ignore witchling spells - these will be automatically gained by witchling
 -- NPCs as part of the class scripts.
 local function hireling_gain_spells(creature_id)
@@ -26,7 +44,10 @@ end
 local function request_hire(this_cr_id, name)
   local currency = count_currency(PLAYER_ID)
   local hire_fee_s = get_creature_additional_property(this_cr_id, "CREATURE_PROPERTIES_HIRE_FEE")
-  local hire_fee = tonumber(hire_fee_s)
+  local hire_fee = 0
+
+  hire_fee_s, hire_fee = adjust_hireling_fee(PLAYER_ID, hire_fee_s)
+
   local hire_msg = get_creature_additional_property(this_cr_id, "CREATURE_PROPERTIES_HIRELING_CHAT_SID")
   local map_id = get_current_map_id()
 
