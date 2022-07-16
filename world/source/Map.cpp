@@ -461,6 +461,11 @@ void Map::clear_locations()
   locations.clear();
 }
 
+void Map::set_is_water_shallow(const bool new_shallow)
+{
+  properties[MapProperties::MAP_PROPERTIES_SHALLOW_WATER] = std::to_string(new_shallow);
+}
+
 bool Map::get_is_water_shallow() const
 {
   auto p_it = properties.find(MapProperties::MAP_PROPERTIES_SHALLOW_WATER);
@@ -471,6 +476,11 @@ bool Map::get_is_water_shallow() const
   }
 
   return true;
+}
+
+void Map::set_is_open_sky(const bool new_open_sky)
+{
+  properties[MapProperties::MAP_PROPERTIES_OPEN_SKY] = std::to_string(new_open_sky);
 }
 
 bool Map::get_is_open_sky() const

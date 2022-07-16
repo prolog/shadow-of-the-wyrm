@@ -2,7 +2,9 @@
 #include "FieldGenerator.hpp"
 #include "GeneratorUtils.hpp"
 #include "MobileDecisionStrategy.hpp"
+#include "SeaGenerator.hpp"
 #include "TileGenerator.hpp"
+#include "UnderwaterGenerator.hpp"
 
 TEST(SW_Engine_Maps_MapUtils, does_hostile_creature_exist)
 {
@@ -442,4 +444,62 @@ TEST(SW_Engine_MapUtils, add_preset_village)
   MapUtils::add_preset_village(map, 12, 5);
 
   EXPECT_EQ("3-4,12-5", map->get_property(MapProperties::MAP_PROPERTIES_PRESET_VILLAGE_COORDINATES));
+}
+
+TEST(SW_Engine_MapUtils, can_change_zlevel)
+{
+  CreaturePtr c = std::make_shared<Creature>();
+  CreaturePtr fly = std::make_shared<Creature>();
+  Status status(StatusIdentifiers::STATUS_ID_FLYING, true, 50, "some_spell");
+  fly->set_status(StatusIdentifiers::STATUS_ID_FLYING, status);
+
+  Dimensions dim;
+  MapPtr ground = std::make_shared<Map>(dim);
+  MapPtr air = std::make_shared<Map>(dim);
+
+  ground->set_is_water_shallow(true);
+  air->set_is_open_sky(true);
+  air->set_map_type(MapType::MAP_TYPE_AIR);
+
+  GeneratorUtils::fill(ground, { 0,0 }, { 19, 79 }, TileType::TILE_TYPE_FIELD);
+  TileGenerator tg;
+  TilePtr tile = tg.generate(TileType::TILE_TYPE_SEA);
+  ground->insert({ 0,0 }, tile);
+
+  GeneratorUtils::fill(air, { 0,0 }, { 19, 79 }, TileType::TILE_TYPE_AIR);
+
+  UnderwaterGenerator ug(ground, "some_id");
+  MapPtr uw = ug.generate(dim);
+  uw->set_map_type(ug.get_map_type());
+
+  SeaGenerator sea_gen("fdsa");
+  MapPtr sea = sea_gen.generate(dim);
+
+  // Down/up on ground map
+  tile = ground->at(0, 0);
+  EXPECT_FALSE(MapUtils::can_change_zlevel(c, ground, tile, Direction::DIRECTION_DOWN));
+  c->get_skills().set_value(SkillType::SKILL_GENERAL_SWIMMING, 10);
+  EXPECT_TRUE(MapUtils::can_change_zlevel(c, ground, tile, Direction::DIRECTION_DOWN));
+
+  EXPECT_FALSE(MapUtils::can_change_zlevel(c, ground, tile, Direction::DIRECTION_UP));
+  EXPECT_TRUE(MapUtils::can_change_zlevel(fly, ground, tile, Direction::DIRECTION_UP));
+
+  // Down/up on underwater
+  tile = uw->at(0, 0);
+  EXPECT_FALSE(MapUtils::can_change_zlevel(c, uw, tile, Direction::DIRECTION_DOWN));
+  EXPECT_FALSE(MapUtils::can_change_zlevel(fly, uw, tile, Direction::DIRECTION_DOWN));
+  EXPECT_TRUE(MapUtils::can_change_zlevel(c, uw, tile, Direction::DIRECTION_UP));
+  EXPECT_TRUE(MapUtils::can_change_zlevel(fly, uw, tile, Direction::DIRECTION_UP));
+
+  // Can't go down in open sea
+  tile = sea->at(3, 3);
+  EXPECT_FALSE(MapUtils::can_change_zlevel(c, uw, tile, Direction::DIRECTION_DOWN));
+  EXPECT_FALSE(MapUtils::can_change_zlevel(fly, uw, tile, Direction::DIRECTION_DOWN));
+
+  // Down/up for open air
+  tile = air->at(0, 0);
+  EXPECT_TRUE(MapUtils::can_change_zlevel(c, air, tile, Direction::DIRECTION_DOWN));
+  EXPECT_TRUE(MapUtils::can_change_zlevel(fly, air, tile, Direction::DIRECTION_DOWN));
+  EXPECT_FALSE(MapUtils::can_change_zlevel(c, air, tile, Direction::DIRECTION_UP));
+  EXPECT_FALSE(MapUtils::can_change_zlevel(fly, air, tile, Direction::DIRECTION_UP));
 }

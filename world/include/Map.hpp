@@ -91,7 +91,9 @@ class Map : public ISerializable
     TilesContainer get_tiles() const;
 		TilesContainer& get_tiles_ref();
 
+    void set_is_water_shallow(const bool new_shallow);
     bool get_is_water_shallow() const;
+    void set_is_open_sky(const bool new_open_sky);
     bool get_is_open_sky() const;
 
     void clear_locations();

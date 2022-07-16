@@ -2585,6 +2585,7 @@ bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile,
         if (d == Direction::DIRECTION_DOWN)
         {
           if (map_type != MapType::MAP_TYPE_UNDERWATER &&
+              map->get_is_water_shallow() &&
              (can_breathe_water || can_swim))
           {
             can_change = true;
