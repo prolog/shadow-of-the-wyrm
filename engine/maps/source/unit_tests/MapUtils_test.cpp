@@ -503,3 +503,31 @@ TEST(SW_Engine_MapUtils, can_change_zlevel)
   EXPECT_FALSE(MapUtils::can_change_zlevel(c, air, tile, Direction::DIRECTION_UP));
   EXPECT_FALSE(MapUtils::can_change_zlevel(fly, air, tile, Direction::DIRECTION_UP));
 }
+
+TEST(SW_Engine_MapUtils, should_creature_move_to_new_map)
+{
+  CreaturePtr c = std::make_shared<Creature>();
+
+  CreaturePtr water = std::make_shared<Creature>();
+  water->set_breathes(BreatheType::BREATHE_TYPE_ALL);
+
+  CreaturePtr air = std::make_shared<Creature>();
+  Status status(StatusIdentifiers::STATUS_ID_FLYING, true, 50, "some_spell");
+  air->set_status(StatusIdentifiers::STATUS_ID_FLYING, status);
+
+  map<MapType, std::map<CreaturePtr, bool>> outcomes = { {MapType::MAP_TYPE_AIR, {{nullptr, false}, {c, false}, {water, false}, {air, true}}},
+                                                         {MapType::MAP_TYPE_COSMOS, {{nullptr, false}, {c, true}, {water, true}, {air, true}}},
+                                                         {MapType::MAP_TYPE_OVERWORLD, {{nullptr, false}, {c, true}, {water, true}, {air, true}}},
+                                                         {MapType::MAP_TYPE_UNDERWORLD, {{nullptr, false}, {c, true}, {water, true}, {air, true}}},
+                                                         {MapType::MAP_TYPE_UNDERWATER, {{nullptr, false}, {c, false}, {water, true}, {air, false}}} };
+
+  for (const auto& o_pair : outcomes)
+  {
+    std::map<CreaturePtr, bool> creature_checks = o_pair.second;
+
+    for (const auto& c_pair : creature_checks)
+    {
+      EXPECT_EQ(c_pair.second, MapUtils::should_creature_move_to_new_map_type(c_pair.first, o_pair.first));
+    }
+  }
+}

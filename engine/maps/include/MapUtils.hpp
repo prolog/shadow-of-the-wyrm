@@ -113,7 +113,8 @@ class MapUtils
 
     static bool is_intersection(MapPtr map, CreaturePtr cr, const Coordinate& c);
     static std::vector<std::string> place_followers(MapPtr map, CreaturePtr cr, const Coordinate& c);
-    static void serialize_and_remove_followers(MapPtr map, CreaturePtr creature);
+    static void serialize_and_remove_followers(MapPtr old_map, MapPtr new_map, CreaturePtr creature);
+    static bool should_creature_move_to_new_map_type(CreaturePtr creature, const MapType map_type);
 
     // Returns true for the first parameter if a melee attack at range is
     // possible, false otherwise. The second parameter will be populated

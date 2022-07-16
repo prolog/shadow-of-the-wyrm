@@ -1992,16 +1992,22 @@ void MapUtils::run_movement_scripts(CreaturePtr creature, const string& map_id, 
 // If the creature has any adjacent followers that should follow them around,
 // save these as serialized strings so they can be restored on the next map
 // that isn't the world map.
-void MapUtils::serialize_and_remove_followers(MapPtr map, CreaturePtr creature)
+void MapUtils::serialize_and_remove_followers(MapPtr old_map, MapPtr new_map, CreaturePtr creature)
 {
-  if (creature != nullptr && map != nullptr && map->get_map_type() != MapType::MAP_TYPE_WORLD)
+  if (creature != nullptr && old_map != nullptr && new_map != nullptr && old_map->get_map_type() != MapType::MAP_TYPE_WORLD)
   {
-    CreatureDirectionMap cdm = MapUtils::get_adjacent_creatures(map, creature);
+    MapType new_map_type = new_map->get_map_type();
+    CreatureDirectionMap cdm = MapUtils::get_adjacent_creatures(old_map, creature);
     int cnt = 1;
 
     for (auto cdm_pair : cdm)
     {
       CreaturePtr c = cdm_pair.second;
+
+      if (!MapUtils::should_creature_move_to_new_map_type(c, new_map_type))
+      {
+        continue;
+      }
 
       if (c != nullptr)
       {
@@ -2023,7 +2029,7 @@ void MapUtils::serialize_and_remove_followers(MapPtr map, CreaturePtr creature)
           }
 
           // Remove and serialize to a property on the leader.
-          MapUtils::remove_creature(map, c);
+          MapUtils::remove_creature(old_map, c);
 
           ostringstream ss;
           c->serialize(ss);
@@ -2040,6 +2046,24 @@ void MapUtils::serialize_and_remove_followers(MapPtr map, CreaturePtr creature)
       }
     }
   }
+}
+
+bool MapUtils::should_creature_move_to_new_map_type(CreaturePtr creature, const MapType map_type)
+{
+  bool should_move = false;
+
+  if (creature != nullptr)
+  {
+    should_move = true;
+
+    if ((map_type == MapType::MAP_TYPE_UNDERWATER && !creature->can_breathe(BreatheType::BREATHE_TYPE_WATER)) ||
+        (map_type == MapType::MAP_TYPE_AIR && !creature->has_status(StatusIdentifiers::STATUS_ID_FLYING)))
+    {
+      should_move = false;
+    }
+  }
+
+  return should_move;
 }
 
 vector<string> MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinate& c)
