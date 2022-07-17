@@ -7,15 +7,12 @@ Me:
   - up/down infinite dungeon and sewer
   - traverse Telari
 - ASSET RELEASE
-- can you go down in deepwater sea?
-- can't go up from telari_top without dying - it's loading an air map?
-- unit tests for MapUtils::can_change_zlevel
-- inside/outside flying...
+- shouldn't be able to go up from Telari sea level
+
 - test exit messages
 - a custom up message when in open sky might be nice
 - set air map type for various custom maps
 - ensure multi floor custom maps line up properly, link them as expected
-- followers shouldn't follow underwater or into the air!
 - JovanM: items blocking gate...
 - items: drop through!
 - test all kinds of exits:

@@ -51,12 +51,13 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, MapPtr map,
 {
   static_assert(TileType::TILE_TYPE_LAST == TileType(55), "Unexpected TileType::TILE_TYPE_LAST");
   GeneratorPtr generator;
+  bool exterior = tile == nullptr ? false : !tile->is_interior();
 
-  if (map && map->get_map_type() == MapType::MAP_TYPE_OVERWORLD && tile && tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_WATER && emt == ExitMovementType::EXIT_MOVEMENT_DESCEND)
+  if (map && map->get_map_type() == MapType::MAP_TYPE_OVERWORLD && exterior && tile && tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_WATER && emt == ExitMovementType::EXIT_MOVEMENT_DESCEND)
   {
     generator = std::make_unique<UnderwaterGenerator>(map, map_exit_id);
   }
-  else if (map && map->get_map_type() == MapType::MAP_TYPE_OVERWORLD && tile && emt == ExitMovementType::EXIT_MOVEMENT_ASCEND)
+  else if (map && map->get_map_type() == MapType::MAP_TYPE_OVERWORLD && exterior && tile && emt == ExitMovementType::EXIT_MOVEMENT_ASCEND)
   {
     generator = std::make_unique<SkyGenerator>(map_exit_id);
   }
