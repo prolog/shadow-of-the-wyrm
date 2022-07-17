@@ -572,6 +572,11 @@ void Map::set_map_exit(const Direction d, MapExitPtr new_map_exit)
   map_exits[d] = new_map_exit;
 }
 
+void Map::set_map_exits(const std::map<Direction, MapExitPtr>& new_map_exits)
+{
+  map_exits = new_map_exits;
+}
+
 map<Direction, MapExitPtr> Map::get_map_exits() const
 {
   return map_exits;

@@ -460,6 +460,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "show_bestiary_text", show_bestiary_text);
   lua_register(L, "get_stack_size_current_state", get_stack_size_current_state);
   lua_register(L, "bad_fn_do_not_call", bad_fn_do_not_call);
+  lua_register(L, "erase_map_linkage", erase_map_linkage);
 }
 
 // Lua API helper functions
@@ -9781,3 +9782,31 @@ int bad_fn_do_not_call(lua_State* ls)
 // BAD FN DO NOT CALL
 // BAD FN DO NOT CALL
 // BAD FN DO NOT CALL
+
+// good fn maybe call
+int erase_map_linkage(lua_State* ls)
+{
+  bool erased = false;
+
+  if (lua_gettop(ls) == 1 && lua_isnumber(ls, 1))
+  {
+    MapPtr current_map = Game::instance().get_current_map();
+    Direction d = static_cast<Direction>(lua_tointeger(ls, 1));
+
+    if (current_map != nullptr)
+    {
+      TileExitMap tem = current_map->get_map_exits();
+      tem.erase(d);
+
+      current_map->set_map_exits(tem);
+      erased = true;
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to erase_map_linkage");
+  }
+
+  lua_pushboolean(ls, erased);
+  return 1;
+}

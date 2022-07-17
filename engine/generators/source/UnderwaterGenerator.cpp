@@ -1,8 +1,9 @@
 #include "UnderwaterGenerator.hpp"
-#include "RockyEarthTile.hpp"
-#include "RockTile.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
+#include "RockTile.hpp"
+#include "RockyEarthTile.hpp"
+#include "SeabedTile.hpp"
 
 using namespace std;
 
@@ -46,10 +47,13 @@ MapPtr UnderwaterGenerator::generate(const Dimensions& dim)
 					  att != TileType::TILE_TYPE_PIER)
 				{
 					tile = std::make_shared<RockTile>();
-				}
-				else
+				}	
+				else if (att == TileType::TILE_TYPE_SEA)
 				{
-					// JCD FIXME variation!
+					tile = std::make_shared<SeabedTile>();
+				}
+				else 
+				{
 					tile = std::make_shared<RockyEarthTile>();
 				}
 

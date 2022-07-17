@@ -7,6 +7,7 @@
 #include "ItemProperties.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
+#include "MapProperties.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MovementTextKeys.hpp"
 #include "RockTile.hpp"
@@ -265,9 +266,10 @@ ActionCostValue StairwayMovementAction::generate_or_move_to_zlevel(Game& game, M
     else
     {
       // Set the map as permanent so we can come back to it later.
+      std::map<string, string> map_properties = { {MapProperties::MAP_PROPERTIES_PERMANENCE, std::to_string(true)} };
       map->set_permanent(true);
       tile->set_additional_property(TileProperties::TILE_PROPERTY_LINKED_COORD, MapUtils::convert_coordinate_to_map_key(c));
-      acv = ma->generate_and_move_to_new_map(creature, map, nullptr, tile, emt);
+      acv = ma->generate_and_move_to_new_map(creature, map, nullptr, tile, tile->get_tile_type(), TileType::TILE_TYPE_UNDEFINED, map_properties, emt);
 
       MapPtr new_map = Game::instance().get_current_map();
       MapExitPtr new_map_linkage = std::make_shared<MapExit>();

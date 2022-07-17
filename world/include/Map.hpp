@@ -109,6 +109,7 @@ class Map : public ISerializable
     void set_default_map_exit(MapExitPtr new_map_exit);
     void set_map_exit(MapExitPtr new_map_exit);
     void set_map_exit(const Direction d, MapExitPtr new_map_exit);
+    void set_map_exits(const std::map<Direction, MapExitPtr>& new_map_exits); 
     std::map<Direction, MapExitPtr> get_map_exits() const;
     MapExitPtr get_map_exit() const;
     MapExitPtr get_map_exit(const Direction d) const;
