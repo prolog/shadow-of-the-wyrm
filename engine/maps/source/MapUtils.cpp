@@ -2591,6 +2591,7 @@ bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile,
     bool can_fly = creature->has_status(StatusIdentifiers::STATUS_ID_FLYING);
     bool can_swim = creature->get_skills().get_value(SkillType::SKILL_GENERAL_SWIMMING) > 0;
     bool map_supports_flying = (map_type == MapType::MAP_TYPE_OVERWORLD || map_type == MapType::MAP_TYPE_AIR);
+    bool is_interior = tile->is_interior();
 
     // Air - only have to check up movement. Can always go down!
     if (map_supports_flying && d == Direction::DIRECTION_UP)
@@ -2617,7 +2618,7 @@ bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile,
         }
         else if (d == Direction::DIRECTION_UP)
         {
-          if (map_type == MapType::MAP_TYPE_UNDERWATER)
+          if (map_type == MapType::MAP_TYPE_UNDERWATER && !is_interior)
           {
             can_change = true;
           }

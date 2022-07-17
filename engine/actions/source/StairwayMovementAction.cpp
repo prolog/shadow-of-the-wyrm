@@ -277,6 +277,11 @@ ActionCostValue StairwayMovementAction::generate_or_move_to_zlevel(Game& game, M
       MapExitPtr original_map_linkage = std::make_shared<MapExit>();
       original_map_linkage->set_map_id(map->get_map_id());
       new_map->set_map_exit(DirectionUtils::get_opposite_direction(d), original_map_linkage);
+
+      if (map->get_map_type() == MapType::MAP_TYPE_UNDERWATER)
+      {
+        new_map->set_is_water_shallow(true);
+      }
     }
   }
   else
