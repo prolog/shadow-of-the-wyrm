@@ -7,10 +7,9 @@ Me:
   - up/down infinite dungeon and sewer
   - traverse Telari
 - ASSET RELEASE
-- shouldn't be able to leave sea level up from telari
+- water breathing cantrip
 - make level no-dig
 - test exit messages
-- a custom up message when in open sky might be nice
 - set air map type for various custom maps
 - ensure multi floor custom maps line up properly, link them as expected
 - JovanM: items blocking gate...

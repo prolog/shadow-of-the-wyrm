@@ -23,6 +23,8 @@ class MapProperties
     // proportion of evergreen vs. broadleaf trees).
     static const std::string MAP_PROPERTIES_WORLD_MAP_LOCATION;
     static const std::string MAP_PROPERTIES_WORLD_MAP_HEIGHT;
+    // For maps that exist outside the generated world
+    static const std::string MAP_PROPERTIES_NO_WORLD_LINKAGE;
 
     // CSV string of filters used to filter out creatures for a particular
     // tile type.

@@ -192,5 +192,9 @@
 			<Name>MAP_PROPERTIES_CANNOT_PRAY</Name>
 			<Value>1</Value>
 		</Property>
+		<Property>
+			<Name>MAP_PROPERTIES_NO_WORLD_LINKAGE</Name>
+			<Value>1</Value>
+		</Property>
 	</Properties>
 </CustomMap>

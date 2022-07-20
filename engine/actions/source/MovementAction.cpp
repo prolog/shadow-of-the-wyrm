@@ -750,7 +750,8 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
     // it's an overworld map.  Underworld maps (dungeons, sewers, etc)
     // will have stairway exits.  Underwater maps (Telari and others)
     // TBD.
-    if (new_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
+    if (new_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD && 
+        map->get_property(MapProperties::MAP_PROPERTIES_NO_WORLD_LINKAGE) != std::to_string(true))
     {
       MapExitUtils::add_exit_to_map(new_map, map->get_map_id());
     }

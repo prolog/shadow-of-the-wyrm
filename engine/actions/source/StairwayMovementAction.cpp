@@ -247,7 +247,7 @@ void StairwayMovementAction::move_to_custom_map(TilePtr current_tile, MapPtr cur
   {
     Coordinate current_coord = current_map->get_location(creature->get_id());
     Coordinate proposed_new_coord = MapUtils::calculate_new_coord_for_multimap_movement(current_coord, d, map_exit);
-
+    
     ma->handle_properties_and_move(creature, current_tile, current_map, map_exit, proposed_new_coord);
   }
 }
@@ -260,7 +260,10 @@ ActionCostValue StairwayMovementAction::generate_or_move_to_zlevel(Game& game, M
   {
     if (map_exit != nullptr && map_exit->is_using_map_id())
     {
+      Coordinate old_c = map_exit->get_coordinate();
+      map_exit->set_coordinate(c);
       move_to_custom_map(tile, map, map_exit, creature, game, ma, d);
+      map_exit->set_coordinate(old_c);
       acv = get_action_cost_value(creature);
     }
     else
