@@ -242,6 +242,10 @@
 			</Coord>
 			<Direction>11</Direction>
 			<MapID>zaedas_tower</MapID>
+			<LinkTo>
+				<Row>10</Row>
+				<Col>40</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>

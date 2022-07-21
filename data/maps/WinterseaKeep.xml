@@ -198,6 +198,10 @@
 			</Coord>
 			<Direction>11</Direction>
 			<MapID>wintersea_keep_b1</MapID>
+			<LinkTo>
+				<Row>15</Row>
+				<Col>40</Col>
+			</LinkTo>
 		</Exit>
 		<Exit>
 			<Coord>
@@ -206,6 +210,10 @@
 			</Coord>
 			<Direction>11</Direction>
 			<MapID>wintersea_keep_b2</MapID>
+			<LinkTo>
+				<Row>2</Row>
+				<Col>2</Col>
+			</LinkTo>
 		</Exit>
 		<Exit>
 			<Coord>
@@ -214,6 +222,10 @@
 			</Coord>
 			<Direction>10</Direction>
 			<MapID>wintersea_keep_t1</MapID>
+			<LinkTo>
+				<Row>10</Row>
+				<Col>39</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>

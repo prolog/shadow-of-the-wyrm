@@ -2,12 +2,28 @@ Me:
 - Need a thorough test of exits:
   - into, out of map
   - multi-map
+  - up/down sewer in carcassia
   - up/down regular dungeons
   - up/down world maps
   - up/down infinite dungeon and sewer
+  - into map via air/stairs, down the same way
+  - into map via air/stairs, down the other way
   - traverse Telari
 - ASSET RELEASE
+- update xsd, update xml, add and test linkages for all direction 10/11
+  custom maps
+  
+  - still need to do wyrmeswraec/Ws/etc
+  - pay attention to Fae caravan, since it's dynamic
 - water breathing cantrip
+- When map exit up is defined, should still check zlevels/etc
+- Keep a vector<pair<Direction, TileType>> for stairs on the map for fast
+- lookup
+- Zaeda tower:
+  - go up via flying
+  - enter tower
+  - go down stairs
+  - wrong place
 - make level no-dig
 - test exit messages
 - set air map type for various custom maps

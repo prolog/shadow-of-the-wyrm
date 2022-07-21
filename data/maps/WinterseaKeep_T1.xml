@@ -120,6 +120,10 @@
 			</Coord>
 			<Direction>11</Direction>
 			<MapID>wintersea_keep</MapID>
+			<LinkTo>
+				<Row>10</Row>
+				<Col>56</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>

@@ -228,6 +228,10 @@
 			</Coord>
 			<Direction>11</Direction>
 			<MapID>carcassia_guild_of_thieves</MapID>
+			<LinkTo>
+				<Row>16</Row>
+				<Col>3</Col>
+			</LinkTo>
 		</Exit>
 		<Exit>
 			<Coord>
@@ -236,6 +240,10 @@
 			</Coord>
 			<Direction>10</Direction>
 			<MapID>carcassia_tower_top</MapID>
+			<LinkTo>
+				<Row>10</Row>
+				<Col>43</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>

@@ -132,6 +132,10 @@
 			</Coord>
 			<Direction>11</Direction>
 			<MapID>carcassia_a1</MapID>
+			<LinkTo>
+				<Row>10</Row>
+				<Col>43</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>

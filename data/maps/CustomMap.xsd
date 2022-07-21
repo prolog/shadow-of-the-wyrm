@@ -167,6 +167,7 @@
 					<xs:element name="TileType" type="sw:TileType"/>
 				</xs:sequence>
 			</xs:choice>
+			<xs:element name="LinkTo" type="tns:Coord" minOccurs="0"/>
 			<xs:element name="Depth" type="xs:integer" minOccurs="0"/>
 			<xs:element name="MinDepth" type="xs:integer" minOccurs="0"/>
 			<xs:element name="MaxDepth" type="xs:integer" minOccurs="0"/>

@@ -91,6 +91,10 @@
 			</Coord>
 			<Direction>10</Direction>
 			<MapID>zaedas_tower_top</MapID>
+			<LinkTo>
+				<Row>10</Row>
+				<Col>11</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>
