@@ -295,6 +295,10 @@
 			</Coord>
 			<Direction>11</Direction>
 			<MapID>wyrmeswraec</MapID>
+			<LinkTo>
+				<Row>4</Row>
+				<Col>5</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>
