@@ -12,7 +12,7 @@ Me:
 - ASSET RELEASE
 - update xsd, update xml, add and test linkages for all direction 10/11
   custom maps
-  
+  - test sceadugenga
   - still need to do wyrmeswraec/Ws/etc
   - pay attention to Fae caravan, since it's dynamic
 - water breathing cantrip

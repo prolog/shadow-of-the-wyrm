@@ -4129,13 +4129,23 @@ int map_add_tile_exit(lua_State* ls)
 {
   int result = false;
 
-  if (lua_gettop(ls) == 5
+  if (lua_gettop(ls) >= 5
     && lua_isstring(ls, 1)
     && lua_isnumber(ls, 2)
     && lua_isnumber(ls, 3)
     && lua_isnumber(ls, 4)
     && lua_isstring(ls, 5))
   {
+    Coordinate link_to = { -1, -1 };
+    bool apply_coordinate = false;
+
+    if (lua_gettop(ls) == 7 && lua_isnumber(ls, 6) && lua_isnumber(ls, 7))
+    {
+      link_to.first = lua_tointeger(ls, 6);
+      link_to.second = lua_tointeger(ls, 7);
+      apply_coordinate = true;
+    }
+
     string map_id = lua_tostring(ls, 1);
     Coordinate c(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
     int lua_direction = lua_tointeger(ls, 4);
@@ -4147,7 +4157,13 @@ int map_add_tile_exit(lua_State* ls)
 
       if (map != nullptr)
       {
-        MapExitUtils::add_exit_to_tile(map, c, static_cast<Direction>(lua_direction), exit_map_id);
+        Direction d = static_cast<Direction>(lua_direction);
+        MapExitPtr exit = MapExitUtils::add_exit_to_tile(map, c, d, exit_map_id);
+
+        if (apply_coordinate && exit != nullptr)
+        {
+          exit->set_coordinate(link_to);
+        }
       }
     }
   }

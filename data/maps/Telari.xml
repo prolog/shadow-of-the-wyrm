@@ -141,6 +141,10 @@
 			</Coord>
 			<Direction>10</Direction>
 			<MapID>telari_base</MapID>
+			<LinkTo>
+				<Row>8</Row>
+				<Col>40</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>
