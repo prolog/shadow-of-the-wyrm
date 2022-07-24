@@ -421,3 +421,7 @@ JovanM:
 - create inkpots
 - paper making from anything made of wood
 
+Sabrecam: 
+- pay guards for peace
+- should be able to see full statuses in full description
+- trainer for skills

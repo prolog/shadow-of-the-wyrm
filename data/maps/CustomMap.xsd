@@ -454,13 +454,13 @@
 			1 = Overworld (forests, fields, villages, etc)
 			2 = Underworld (caverns, dungeons, etc)
 			3 = Underwater/Submerged
+			4 = Cosmos
+			5 = Air
 			</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:int">
-			<xs:enumeration value="0"/>
-			<xs:enumeration value="1"/>
-			<xs:enumeration value="2"/>
-			<xs:enumeration value="3"/>
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="5"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="Direction">
