@@ -2585,6 +2585,14 @@ bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile,
 
   if (creature != nullptr && map != nullptr && tile != nullptr)
   {
+    TileType tt = tile->get_tile_type();
+
+    if ((d == Direction::DIRECTION_DOWN && tt == TileType::TILE_TYPE_DOWN_STAIRCASE) ||
+        (d == Direction::DIRECTION_UP && tt == TileType::TILE_TYPE_UP_STAIRCASE))
+    {
+      return true;
+    }
+
     MapType map_type = map->get_map_type();
     TileSuperType tst = tile->get_tile_super_type();
     bool can_breathe_water = creature->can_breathe(BreatheType::BREATHE_TYPE_WATER);

@@ -146,7 +146,8 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
 ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAction * const ma)
 {
   ActionCostValue descend_success = ActionCostConstants::NO_ACTION;
-   
+  bool show_no_exit_message = false;
+
   if (creature && creature->get_is_player())
   {
     // If we're on the world map, we can always descend.
@@ -179,8 +180,15 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
           {
             if (map_exit->is_using_map_id())
             {
-              move_to_custom_map(tile, map, map_exit, creature, game, ma, Direction::DIRECTION_DOWN);
-              descend_success = get_action_cost_value(creature);
+              if (MapUtils::can_change_zlevel(creature, map, tile, Direction::DIRECTION_DOWN))
+              {
+                move_to_custom_map(tile, map, map_exit, creature, game, ma, Direction::DIRECTION_DOWN);
+                descend_success = get_action_cost_value(creature);
+              }
+              else
+              {
+                show_no_exit_message = true;
+              }
             }
             else
             {
@@ -220,14 +228,19 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
               }
               else
               {
-                string no_exit = StringTable::get(tile->get_no_exit_down_message_sid());
-                manager.add_new_message(no_exit);
-
-                manager.send();
+                show_no_exit_message = true;
               }
             }
           }
         }  
+      }
+
+      if (show_no_exit_message)
+      {
+        string no_exit = StringTable::get(tile->get_no_exit_down_message_sid());
+        manager.add_new_message(no_exit);
+
+        manager.send();
       }
     }
 
