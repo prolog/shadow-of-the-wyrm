@@ -1,5 +1,6 @@
 Me:
 - Need a thorough test of exits:
+  - down/up/down in dungeon
   - into, out of map
   - multi-map
   - up/down sewer in carcassia
@@ -10,11 +11,10 @@ Me:
   - into map via air/stairs, down the other way
   - traverse Telari
 - ASSET RELEASE
+- all the wintersea tower mobs need to fly
+- need to test the wintersea map key on the tower post-refactor
 - update xsd, update xml, add and test linkages for all direction 10/11
   custom maps
-  - test sceadugenga
-  - still need to do wyrmeswraec/Ws/etc
-  - pay attention to Fae caravan, since it's dynamic
 - water breathing cantrip
 - When map exit up is defined, should still check zlevels/etc
 - Keep a vector<pair<Direction, TileType>> for stairs on the map for fast
