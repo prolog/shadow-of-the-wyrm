@@ -726,7 +726,8 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
         }
       }
 
-      if (new_map->get_permanent() && map->get_map_type() == MapType::MAP_TYPE_WORLD)
+      // Set a link back to the old tile.
+      if (new_map->get_permanent())
       {
         // If it's a permanent map, set up a link between
         // the tile and the new map.

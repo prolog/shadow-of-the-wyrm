@@ -11,6 +11,10 @@ Me:
   - into map via air/stairs, down the other way
   - traverse Telari
 - ASSET RELEASE
+- Skillmaster, in Carcassia
+  - 400 ivory/train
+  - At maxed out, should be told to talk to the emperor
+  - Emperor grants a home/pension/retirement (victory condition)
 - all the wintersea tower mobs need to fly
 - need to test the wintersea map key on the tower post-refactor
 - update xsd, update xml, add and test linkages for all direction 10/11
