@@ -63,6 +63,9 @@ Shadow of the Wyrm v1.4.8 "Satoh"
 
 - Bug fixes:
 
+  - Some of the Nine's special creatures were unable to spawn in the rift in
+    the cosmos.
+
   - Removed some wand enchantment code that was causing stack issues.
   
   - Setting age via swyrm.ini was also overriding the maximum, leading to

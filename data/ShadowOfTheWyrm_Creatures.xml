@@ -18502,7 +18502,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="trio_shining_silver_dragons">
-			<RaceID>_dragon</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>02_aurelion</DeityID>
 			<ShortDescriptionSID>TRIO_SHINING_SILVER_DRAGONS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TRIO_SHINING_SILVER_DRAGONS_DESCRIPTION_SID</DescriptionSID>
@@ -18670,7 +18670,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="pulsating_mass_primordial_ooze">
-			<RaceID>_jelly</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>PULSATING_MASS_PRIMORDIAL_OOZE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>PULSATING_MASS_PRIMORDIAL_OOZE_DESCRIPTION_SID</DescriptionSID>
@@ -18708,7 +18708,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="cloud_murderous_flesh_eating_scarabs">
-			<RaceID>_insect</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>CLOUD_MURDEROUS_FLESH_EATING_SCARABS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CLOUD_MURDEROUS_FLESH_EATING_SCARABS_DESCRIPTION_SID</DescriptionSID>
@@ -18747,7 +18747,7 @@
 			<Speed>35</Speed>
 		</Creature>
 		<Creature id="thunderbird_low_steppes">
-			<RaceID>_bird</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>THUNDERBIRD_LOW_STEPPES_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THUNDERBIRD_LOW_STEPPES_DESCRIPTION_SID</DescriptionSID>
@@ -18786,7 +18786,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="hundred_headed_hydra">
-			<RaceID>_monster</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>HUNDRED_HEADED_HYDRA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HUNDRED_HEADED_HYDRA_DESCRIPTION_SID</DescriptionSID>
@@ -18865,7 +18865,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="early_dragon_first_age">
-			<RaceID>_dragon</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>EARLY_DRAGON_FIRST_AGE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>EARLY_DRAGON_FIRST_AGE_DESCRIPTION_SID</DescriptionSID>
@@ -18957,7 +18957,7 @@
 			<Speed>80</Speed>
 		</Creature>
 		<Creature id="murder_thousand_crows">
-			<RaceID>_bird</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>06_thetrickster</DeityID>
 			<ShortDescriptionSID>MURDER_THOUSAND_CROWS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>MURDER_THOUSAND_CROWS_DESCRIPTION_SID</DescriptionSID>
@@ -18995,7 +18995,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="wraith_wan_dying_light">
-			<RaceID>_spirit</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>06_thetrickster</DeityID>
 			<ShortDescriptionSID>WRAITH_WAN_DYING_LIGHT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>WRAITH_WAN_DYING_LIGHT_DESCRIPTION_SID</DescriptionSID>
@@ -19074,7 +19074,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="nether_hound">
-			<RaceID>_animal</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>07_shiver</DeityID>
 			<ShortDescriptionSID>NETHER_HOUND_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>NETHER_HOUND_DESCRIPTION_SID</DescriptionSID>
@@ -19123,7 +19123,7 @@
 			</Spells>
 		</Creature>
 		<Creature id="ancient_shade">
-			<RaceID>_spirit</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>07_shiver</DeityID>
 			<ShortDescriptionSID>ANCIENT_SHADE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ANCIENT_SHADE_DESCRIPTION_SID</DescriptionSID>
@@ -19161,7 +19161,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="black_ogre">
-			<RaceID>_humanoid</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>08_urgoth</DeityID>
 			<ShortDescriptionSID>BLACK_OGRE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACK_OGRE_DESCRIPTION_SID</DescriptionSID>
@@ -19200,7 +19200,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="cyclonic_beast">
-			<RaceID>_monster</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>08_urgoth</DeityID>
 			<ShortDescriptionSID>CYCLONIC_BEAST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CYCLONIC_BEAST_DESCRIPTION_SID</DescriptionSID>

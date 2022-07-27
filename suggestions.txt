@@ -11,6 +11,9 @@ Me:
   - into map via air/stairs, down the other way
   - traverse Telari
 - ASSET RELEASE
+- in do_generate... can that linkage function be hidden behind a check for
+  either world map or interior tile? test!
+- after going back to the world map, entering the barrows takes you to telari
 - Skillmaster, in Carcassia
   - 400 ivory/train
   - At maxed out, should be told to talk to the emperor
