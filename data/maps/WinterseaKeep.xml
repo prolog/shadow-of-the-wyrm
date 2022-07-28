@@ -228,7 +228,7 @@
 			<MapID>wintersea_keep_t1</MapID>
 			<LinkTo>
 				<Row>10</Row>
-				<Col>39</Col>
+				<Col>56</Col>
 			</LinkTo>
 		</Exit>
 	</Exits>

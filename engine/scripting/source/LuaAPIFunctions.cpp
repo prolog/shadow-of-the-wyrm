@@ -7342,8 +7342,9 @@ int is_item_unpaid(lua_State* ls)
 int load_map(lua_State* ls)
 {
   bool loaded_map = false;
+  int num_args = lua_gettop(ls);
 
-  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  if (num_args == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
   {
     string creature_id = lua_tostring(ls, 1);
     string map_id = lua_tostring(ls, 2);
