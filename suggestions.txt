@@ -11,6 +11,11 @@ Me:
   - into map via air/stairs, down the other way
   - traverse Telari
 - ASSET RELEASE
+- set flying for spirit, bird, divine
+- sea generator: chance for islands:
+  - desert island with spring
+  - rocky island
+  - etc
 - in do_generate... can that linkage function be hidden behind a check for
   either world map or interior tile? test!
 - after going back to the world map, entering the barrows takes you to telari

@@ -59,6 +59,14 @@ Shadow of the Wyrm v1.4.8 "Satoh"
 - The Forest of Yew is a reasonably well-known place and its tile message has
   been updated to be slightly more specific about what's there.
 
+- If you now have a way of flying, you can move up to open sky.  Losing the
+  ability to fly in such cases is not recommended, and deadly. If you have
+  some swimming, you can go underwater, assuming you're in shallow water,
+  though you can only hold your breath so long.
+
+- Set the flying flag on creatures where it made sense, so long as they didn't
+  get it already from their race.
+
 - New items: amulet of the sky.
 
 - Bug fixes:
