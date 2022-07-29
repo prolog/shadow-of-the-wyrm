@@ -11,7 +11,6 @@ Me:
   - into map via air/stairs, down the other way
   - traverse Telari
 - ASSET RELEASE
-- set flying for spirit, bird, divine
 - sea generator: chance for islands:
   - desert island with spring
   - rocky island
@@ -23,6 +22,7 @@ Me:
   - 400 ivory/train
   - At maxed out, should be told to talk to the emperor
   - Emperor grants a home/pension/retirement (victory condition)
+- training for Lore skills
 - all the wintersea tower mobs need to fly
 - need to test the wintersea map key on the tower post-refactor
 - update xsd, update xml, add and test linkages for all direction 10/11

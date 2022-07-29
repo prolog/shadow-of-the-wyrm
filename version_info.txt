@@ -1,6 +1,8 @@
 Shadow of the Wyrm v1.4.8 "Satoh"
 - Version started May 15, 2022.
 
+- Deserts have a small chance to generate a spring.
+
 - When removing items from the player (typically for fetch-type quests), the
   game now checks inventory first, then worn equipment.
 
