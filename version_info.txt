@@ -69,7 +69,12 @@ Shadow of the Wyrm v1.4.8 "Satoh"
 - Set the flying flag on creatures where it made sense, so long as they didn't
   get it already from their race.
 
+- There is now a skill trainer located by the fighting pits in Carcassia.  He
+  will let you train any of your skills - for a price.
+
 - New items: amulet of the sky.
+
+- New creatures: Pern.
 
 - Bug fixes:
 
