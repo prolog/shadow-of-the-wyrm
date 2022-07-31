@@ -461,6 +461,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_stack_size_current_state", get_stack_size_current_state);
   lua_register(L, "bad_fn_do_not_call", bad_fn_do_not_call);
   lua_register(L, "erase_map_linkage", erase_map_linkage);
+  lua_register(L, "has_trainable_skill", has_trainable_skill);
 }
 
 // Lua API helper functions
@@ -9825,5 +9826,27 @@ int erase_map_linkage(lua_State* ls)
   }
 
   lua_pushboolean(ls, erased);
+  return 1;
+}
+
+int has_trainable_skill(lua_State* ls)
+{
+  bool has_skill = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      has_skill = creature->get_skills().has_trainable_skill();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to has_trainable_skill");
+  }
+
+  lua_pushboolean(ls, has_skill);
   return 1;
 }

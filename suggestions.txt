@@ -12,6 +12,8 @@ Me:
   - traverse Telari
   - Telari back to the world map then immediately go down again
 - ASSET RELEASE
+- test order ex gladiatores guild ID pitmistress ghara
+- up/down Carcassia A1 to tower lets you hit floor, etc
 - sea generator: chance for islands:
   - desert island with spring
   - rocky island
