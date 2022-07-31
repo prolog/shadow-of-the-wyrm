@@ -14,7 +14,7 @@
 		<Min>24</Min>
 		<Max>27</Max>
 	</LevelRange>
-	<MapType>1</MapType>
+	<MapType>5</MapType>
 	<Tiles>
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -125,6 +125,10 @@
 		</Items>
 	</InitialPlacements>
 	<Exits>
+		<Exit>
+			<Direction>11</Direction>
+			<MapID>carcassia_a1</MapID>
+		</Exit>
 		<Exit>
 			<Coord>
 				<Row>10</Row>

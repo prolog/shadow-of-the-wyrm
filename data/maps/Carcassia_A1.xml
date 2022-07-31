@@ -222,6 +222,10 @@
 			<MapID>carcassia_a2</MapID>
 		</Exit>
 		<Exit>
+			<Direction>10</Direction>
+			<MapID>carcassia_tower_top</MapID>
+		</Exit>
+		<Exit>
 			<Coord>
 				<Row>16</Row>
 				<Col>5</Col>
