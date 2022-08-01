@@ -462,6 +462,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "bad_fn_do_not_call", bad_fn_do_not_call);
   lua_register(L, "erase_map_linkage", erase_map_linkage);
   lua_register(L, "has_trainable_skill", has_trainable_skill);
+  lua_register(L, "train_skills", train_skills);
 }
 
 // Lua API helper functions
@@ -9848,5 +9849,26 @@ int has_trainable_skill(lua_State* ls)
   }
 
   lua_pushboolean(ls, has_skill);
+  return 1;
+}
+
+int train_skills(lua_State* ls)
+{
+  bool trained = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    int num_trains = lua_tointeger(ls, 2);
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      creature->set_skill_points(creature->get_skill_points() + num_trains);
+      Game::instance().get_action_manager_ref().show_skills(creature, SkillsSelectionType::SKILLS_SELECTION_IMPROVE_SKILL);
+      trained = true;
+    }
+  }
+
+  lua_pushboolean(ls, trained);
   return 1;
 }
