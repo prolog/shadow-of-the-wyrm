@@ -50,9 +50,7 @@ class MapUtils
 
     static bool place_creature_randomly(MapPtr map, const std::string& creature_id);
     
-    static bool is_creature_flying(MapPtr map, CreaturePtr creature);
-
-    static bool can_exit_map(MapPtr map, CreaturePtr creature, const bool creature_is_flying, MapExitPtr map_exit, const Direction d, const Coordinate& proposed_new_coord);
+    static bool can_exit_map(MapPtr map, CreaturePtr creature, MapExitPtr map_exit, const Direction d, const Coordinate& proposed_new_coord);
     
     static bool is_blocking_feature_present(TilePtr tile);
     static bool is_creature_present(TilePtr tile);

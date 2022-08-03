@@ -58,7 +58,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, MapPtr map,
   {
     generator = std::make_unique<UnderwaterGenerator>(map, map_exit_id);
   }
-  else if (map_type == MapType::MAP_TYPE_OVERWORLD && exterior && tile && emt == ExitMovementType::EXIT_MOVEMENT_ASCEND)
+  else if ((map_type == MapType::MAP_TYPE_OVERWORLD || map_type == MapType::MAP_TYPE_AIR) && exterior && tile && emt == ExitMovementType::EXIT_MOVEMENT_ASCEND)
   {
     generator = std::make_unique<SkyGenerator>(map_exit_id);
   }

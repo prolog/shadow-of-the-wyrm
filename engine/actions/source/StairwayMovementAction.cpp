@@ -64,7 +64,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
 
       if (me_it != map_exits.end())
       {
-        if (MapUtils::can_exit_map(current_map, creature, MapUtils::is_creature_flying(current_map, creature), me_it->second, Direction::DIRECTION_UP, c))
+        if (MapUtils::can_exit_map(current_map, creature, me_it->second, Direction::DIRECTION_UP, c))
         {
           map_exit = me_it->second;
         }
@@ -281,7 +281,7 @@ ActionCostValue StairwayMovementAction::generate_or_move_to_zlevel(Game& game, M
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
-  if (map_exit == nullptr || MapUtils::can_exit_map(map, creature, MapUtils::is_creature_flying(map, creature), map_exit, d, c))
+  if (map_exit == nullptr || MapUtils::can_exit_map(map, creature, map_exit, d, c))
   {
     if (map_exit != nullptr && map_exit->is_using_map_id())
     {

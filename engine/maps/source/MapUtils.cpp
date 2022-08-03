@@ -1086,21 +1086,7 @@ bool MapUtils::tiles_in_range_match_type(MapPtr map, const BoundingBox& bb, cons
   return match;
 }
 
-bool MapUtils::is_creature_flying(MapPtr map, CreaturePtr creature)
-{
-  bool is_flying = false;
-
-  if (map != nullptr && creature != nullptr)
-  {
-    TilePtr tile = MapUtils::get_tile_for_creature(map, creature);
-
-    is_flying = (tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_AIR);
-  }
-
-  return is_flying;
-}
-
-bool MapUtils::can_exit_map(MapPtr map, CreaturePtr creature, const bool is_creature_flying, MapExitPtr map_exit, const Direction d, const Coordinate& proposed_new_coord)
+bool MapUtils::can_exit_map(MapPtr map, CreaturePtr creature, MapExitPtr map_exit, const Direction d, const Coordinate& proposed_new_coord)
 {
   if (!map || map->get_map_type() == MapType::MAP_TYPE_WORLD)
   {
@@ -1134,7 +1120,7 @@ bool MapUtils::can_exit_map(MapPtr map, CreaturePtr creature, const bool is_crea
       // The purpose here is to, basically, pretend a roof exists and prevent
       // the player from being able to fly in and out of buildings, bypassing
       // doors, shopkeepers, etc.
-      if (can_exit && is_creature_flying && (d == Direction::DIRECTION_UP || d == Direction::DIRECTION_DOWN))
+      if (can_exit && creature->has_status(StatusIdentifiers::STATUS_ID_FLYING) && (d == Direction::DIRECTION_UP || d == Direction::DIRECTION_DOWN))
       {
         // Disallow moving from air to interior
         if (old_tile->is_interior())
