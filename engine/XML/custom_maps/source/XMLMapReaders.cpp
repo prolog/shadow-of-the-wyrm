@@ -90,6 +90,12 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
 
     parse_shops(shops_node, custom_map);
     parse_properties(properties_node, custom_map);
+
+    if (map_type == MapType::MAP_TYPE_AIR && !custom_map->has_property(MapProperties::MAP_PROPERTIES_OPEN_SKY))
+    {
+      custom_map->set_property(MapProperties::MAP_PROPERTIES_OPEN_SKY, std::to_string(true));
+    }
+
     parse_event_scripts(event_scripts_node, node_details, custom_map->get_event_scripts_ref());
 
     // Custom maps currently don't allow creature updates.
