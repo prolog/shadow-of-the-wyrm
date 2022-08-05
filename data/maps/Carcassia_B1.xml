@@ -35,7 +35,7 @@
 	,,#,,#.........#..........#.........#,,,,,,,,,,,,,,,,,,,,rrr,,,,,,,,,,,,,,,,,,,,
 	,,#,,#####.#########..#########.#####,,,,,,,,,,,,,,,,,,,,rrr,,,,,,,,,,,,,,,,,,,,
 	,,#,,#..............................#,,,,,,,,,,,,,,,,,,,,rrr,,,,,,,,,,,,,,,,,,,,
-	,,####..............................#####################...####################
+	,,####..............&lt;...............#####################...####################
 	</Tiles>
 	<InitialPlacements>
 		<Creatures>
@@ -140,6 +140,22 @@
 		<Exit>
 			<Direction>9</Direction>
 			<MapID>carcassia_a2</MapID>
+		</Exit>
+		<Exit>
+			<Direction>10</Direction>
+			<MapID>carcassia_b1a</MapID>
+		</Exit>
+		<Exit>
+			<Coord>
+				<Row>19</Row>
+				<Col>20</Col>
+			</Coord>
+			<Direction>10</Direction>
+			<MapID>carcassia_b1a</MapID>
+			<LinkTo>
+				<Row>18</Row>
+				<Col>20</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>

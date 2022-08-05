@@ -126,6 +126,10 @@
 	</InitialPlacements>
 	<Exits>
 		<Exit>
+			<Direction>2</Direction>
+			<MapID>carcassia_b1a</MapID>
+		</Exit>
+		<Exit>
 			<Direction>11</Direction>
 			<MapID>carcassia_a1</MapID>
 		</Exit>
