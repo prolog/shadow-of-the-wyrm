@@ -130,6 +130,14 @@
 			<MapID>carcassia_b1a</MapID>
 		</Exit>
 		<Exit>
+			<Direction>3</Direction>
+			<MapID>carcassia_b2a</MapID>
+		</Exit>
+		<Exit>
+			<Direction>6</Direction>
+			<MapID>carcassia_a2a</MapID>
+		</Exit>
+		<Exit>
 			<Direction>11</Direction>
 			<MapID>carcassia_a1</MapID>
 		</Exit>

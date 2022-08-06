@@ -18,6 +18,9 @@ Me:
 - Carcassia B2A
 - Carcassia C1A
 - Carcassia C2A
+- Need to check all the exits for the sky
+- Exits: when something's blocking, "open air" message. When nothing's
+  blocking, can exit
 - What kinds of creatures/quests/features should be up in the air?
 - How about a hungry ascetic sage on a platform (put the platform somewhere in
   B1 where it won't get overwritten by procgen).  Quest can just be for food

@@ -30,7 +30,7 @@
 	AAAAA#..............................#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAA#..............................#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAA#..............&gt;...............#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAA#..............................#####################...####################
+	AAAAA#..............................############################################
 	</Tiles>
 	<InitialPlacements>
 		<Creatures/>
@@ -38,8 +38,20 @@
 	</InitialPlacements>
 	<Exits>
 		<Exit>
+			<Direction>2</Direction>
+			<MapID>carcassia_c1a</MapID>
+		</Exit>
+		<Exit>
+			<Direction>6</Direction>
+			<MapID>carcassia_b2a</MapID>
+		</Exit>
+		<Exit>
 			<Direction>8</Direction>
 			<MapID>carcassia_tower_top</MapID>
+		</Exit>
+		<Exit>
+			<Direction>9</Direction>
+			<MapID>carcassia_a2a</MapID>
 		</Exit>
 		<Exit>
 			<Direction>11</Direction>
