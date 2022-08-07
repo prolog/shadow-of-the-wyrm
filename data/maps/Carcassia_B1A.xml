@@ -33,7 +33,57 @@
 	AAAAA#..............................############################################
 	</Tiles>
 	<InitialPlacements>
-		<Creatures/>
+		<Creatures>
+			<Placement>
+				<ID>carcassian_guard</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>7</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>carcassian_guard</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>11</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>carcassian_guard</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>15</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>carcassian_guard</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>20</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>carcassian_guard</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>25</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>carcassian_guard</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>29</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>carcassian_guard</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>33</Col>
+				</Coord>
+			</Placement>
+		</Creatures>
 		<Items/>
 	</InitialPlacements>
 	<Exits>
