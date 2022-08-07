@@ -27310,6 +27310,94 @@
 				<Type>2</Type>
 			</Damage>
 		</Creature>
+		<Creature id="ancient_sage">
+			<RaceID>03_mountainelf</RaceID>
+			<ShortDescriptionSID>ANCIENT_SAGE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ANCIENT_SAGE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ANCIENT_SAGE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ANCIENT_SAGE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>e</Char>
+				<Colour>13</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>27</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>12</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>30</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>50</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>10000</Exp>
+			</CreatureGeneration>
+			<Level>12</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>24</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/ancient_sage.lua</Script>
+				</ChatScript>
+			</EventScripts>
+			<Spells>
+				<Spell>
+					<SpellID>a_01_wreath_of_fire</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_03_lightning_bolt</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_09_frost_bolt</SpellID>
+					<Castings>4</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>c_02_flame_dart</SpellID>
+					<Castings>3</Castings>
+				</Spell>				
+				<Spell>
+					<SpellID>c_09_force_bolt</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>m_02_poison</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>m_03_blind</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_01_shadow_flame</SpellID>
+					<Castings>6</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_02_curse_of_shadows</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_04_nether_bolt</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+			</Spells>
+		</Creature>
 		<Creature id="blind_oracle">
 			<RaceID>05_fae</RaceID>
 			<ShortDescriptionSID>BLIND_ORACLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -27679,7 +27767,7 @@
 					<Row>6</Row>
 					<Col>15</Col>
 				</Sprite>
-		</Symbol>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>

@@ -42,6 +42,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>ancient_sage</ID>
+				<Coord>
+					<Row>3</Row>
+					<Col>46</Col>
+				</Coord>
+			</Placement>			
+			<Placement>
 				<ID>stylite</ID>
 				<Coord>
 					<Row>5</Row>
