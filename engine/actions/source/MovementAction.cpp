@@ -144,12 +144,13 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
 
     Coordinate current_coord = map->get_location(creature->get_id());
     Coordinate proposed_new_coord = MapUtils::calculate_new_coord_for_multimap_movement(current_coord, direction, map_exit);
+    MapExitOutcome exit_outcome = MapUtils::can_exit_map(map, creature, map_exit, direction, proposed_new_coord);
 
-    if (!MapUtils::can_exit_map(map, creature, map_exit, direction, proposed_new_coord))
+    if (exit_outcome != MapExitOutcome::CAN_EXIT)
     {
       if (creature->get_is_player())
       {
-        string movement_message = MovementTextKeys::get_cannot_exit_map_message(map->get_map_type());
+        string movement_message = MovementTextKeys::get_cannot_exit_map_message(map->get_map_type(), exit_outcome);
 
         pl_man.add_new_message(movement_message);
         pl_man.send();

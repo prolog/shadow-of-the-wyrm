@@ -1086,20 +1086,20 @@ bool MapUtils::tiles_in_range_match_type(MapPtr map, const BoundingBox& bb, cons
   return match;
 }
 
-bool MapUtils::can_exit_map(MapPtr map, CreaturePtr creature, MapExitPtr map_exit, const Direction d, const Coordinate& proposed_new_coord)
+MapExitOutcome MapUtils::can_exit_map(MapPtr map, CreaturePtr creature, MapExitPtr map_exit, const Direction d, const Coordinate& proposed_new_coord)
 {
   if (!map || map->get_map_type() == MapType::MAP_TYPE_WORLD)
   {
-    return false;
+    return MapExitOutcome::NO_EXIT;
   }
- 
-  bool can_exit = false;
+
+  MapExitOutcome exit = MapExitOutcome::NO_EXIT;
 
   // First check: is the map_exit non-null and contain the information
   // necessary for the exit?
   if (map_exit && (map_exit->is_using_map_id() || map_exit->is_using_terrain_type()))
   {
-    can_exit = true;
+    exit = MapExitOutcome::CAN_EXIT;
   }
 
   // Second check: if this is for a set map, is the new tile available/open?
@@ -1112,36 +1112,45 @@ bool MapUtils::can_exit_map(MapPtr map, CreaturePtr creature, MapExitPtr map_exi
       TilePtr old_tile = MapUtils::get_tile_for_creature(map, creature);
       TilePtr tile = new_map->at(proposed_new_coord);
 
-      if (!is_tile_available_for_creature(creature, tile))
+      if (tile == nullptr)
       {
-        can_exit = false;
+        exit = MapExitOutcome::NO_EXIT;
+      }
+      else if (!is_tile_available_for_creature(creature, tile))
+      {
+        exit = MapExitOutcome::EXIT_BLOCKED;
       }
 
       // The purpose here is to, basically, pretend a roof exists and prevent
       // the player from being able to fly in and out of buildings, bypassing
       // doors, shopkeepers, etc.
-      if (can_exit && creature->has_status(StatusIdentifiers::STATUS_ID_FLYING) && (d == Direction::DIRECTION_UP || d == Direction::DIRECTION_DOWN))
+      if (exit == MapExitOutcome::CAN_EXIT && 
+          creature->has_status(StatusIdentifiers::STATUS_ID_FLYING) && 
+          (d == Direction::DIRECTION_UP || d == Direction::DIRECTION_DOWN))
       {
         // Disallow moving from air to interior
         if (old_tile->is_interior())
         {
-          can_exit = false;
+          exit = MapExitOutcome::EXIT_BLOCKED;
         }
         else
         {
-          can_exit = !tile->is_interior();
+          exit = tile->is_interior() ? MapExitOutcome::EXIT_BLOCKED : MapExitOutcome::CAN_EXIT;
         }
       }
 
       // Disallow moving from interior to air
-      if (can_exit && old_tile->is_interior() && tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_AIR && DirectionUtils::is_zlevel(d))
+      if (exit == MapExitOutcome::CAN_EXIT && 
+          old_tile->is_interior() && 
+          tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_AIR && 
+          DirectionUtils::is_zlevel(d))
       {
-        can_exit = false;
+        exit = MapExitOutcome::NO_EXIT;
       }
     }
   }
 
-  return can_exit;
+  return exit;
 }
 
 // Is there a feature on the tile, and does it block movement?

@@ -74,7 +74,7 @@ Shadow of the Wyrm v1.5.0 "Satoh"
 
 - New items: amulet of the sky.
 
-- New creatures: Pern, stylite.
+- New creatures: Pern, stylite, ancient sage.
 
 - Bug fixes:
 

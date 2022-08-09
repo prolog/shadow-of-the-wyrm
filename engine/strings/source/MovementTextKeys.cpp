@@ -12,35 +12,42 @@ MovementTextKeys::~MovementTextKeys()
 {
 }
 
-string MovementTextKeys::get_cannot_exit_map_message(const MapType mt)
+string MovementTextKeys::get_cannot_exit_map_message(const MapType mt, const MapExitOutcome exit_outcome)
 {
   static_assert(MapType::MAP_TYPE_LAST_INC == MapType(5), "Unrecognized MapType::MAP_TYPE_LAST_INC");
 
   string msg = ACTION_MOVE_OFF_BLOCKED;
 
-  if (mt == MapType::MAP_TYPE_UNDERWATER)
+  if (exit_outcome == MapExitOutcome::EXIT_BLOCKED)
   {
-    msg = ACTION_MOVE_OFF_UNDERWATER_MAP;
+    return StringTable::get(msg);
   }
-  else if (mt == MapType::MAP_TYPE_UNDERWORLD)
+  else
   {
-    msg = ACTION_MOVE_OFF_UNDERWORLD_MAP;
-  }
-  else if (mt == MapType::MAP_TYPE_WORLD)
-  {
-    msg = ACTION_MOVE_OFF_WORLD_MAP;
-  }
-  else if (mt == MapType::MAP_TYPE_COSMOS)
-  {
-    msg = ACTION_MOVE_OFF_COSMOS_MAP;
-  }
-  else if (mt == MapType::MAP_TYPE_AIR)
-  {
-    msg = ACTION_MOVE_OFF_AIR_MAP;
-  }
+    if (mt == MapType::MAP_TYPE_UNDERWATER)
+    {
+      msg = ACTION_MOVE_OFF_UNDERWATER_MAP;
+    }
+    else if (mt == MapType::MAP_TYPE_UNDERWORLD)
+    {
+      msg = ACTION_MOVE_OFF_UNDERWORLD_MAP;
+    }
+    else if (mt == MapType::MAP_TYPE_WORLD)
+    {
+      msg = ACTION_MOVE_OFF_WORLD_MAP;
+    }
+    else if (mt == MapType::MAP_TYPE_COSMOS)
+    {
+      msg = ACTION_MOVE_OFF_COSMOS_MAP;
+    }
+    else if (mt == MapType::MAP_TYPE_AIR)
+    {
+      msg = ACTION_MOVE_OFF_AIR_MAP;
+    }
 
-  msg = StringTable::get(msg);
-  return msg;
+    msg = StringTable::get(msg);
+    return msg;
+  }
 }
 
 

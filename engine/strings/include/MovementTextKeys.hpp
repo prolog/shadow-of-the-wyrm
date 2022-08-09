@@ -1,11 +1,12 @@
 #pragma once
 #include <string>
+#include "MapExit.hpp"
 #include "MapTypes.hpp"
 
 class MovementTextKeys
 {
   public:
-    static std::string get_cannot_exit_map_message(const MapType mt);
+    static std::string get_cannot_exit_map_message(const MapType mt, const MapExitOutcome exit_outcome);
 
     static const std::string ACTION_MOVE_NO_EXIT;
     static const std::string ACTION_MOVE_NO_EXIT_COSMOS;
