@@ -72,6 +72,9 @@ Shadow of the Wyrm v1.5.0 "Satoh"
 - There is now a skill trainer located by the fighting pits in Carcassia.  He
   will let you train any of your skills - for a price.
 
+- The inner teleporter in Carcassia A1 now has unlimited uses, so you won't
+  get stuck in an exitless room (JovanM).
+
 - New items: amulet of the sky.
 
 - New creatures: Pern, stylite, ancient sage.

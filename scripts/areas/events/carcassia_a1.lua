@@ -75,6 +75,7 @@ local function setup_nodig_treasure_room_and_traps(map_id)
   -- Set the teleporter from the closed room to just outside the gate.
   set_trap(4, 8, false, teleport_trap_id, map_id)
   set_feature_additional_property(map_id, 4, 8, teleport_loc_prop, "10,1")
+  set_feature_uses(map_id, 4, 8, -1)
 end
 
 local function setup_dynamic_content(map_id)

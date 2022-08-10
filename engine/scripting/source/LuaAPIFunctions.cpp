@@ -463,6 +463,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "erase_map_linkage", erase_map_linkage);
   lua_register(L, "has_trainable_skill", has_trainable_skill);
   lua_register(L, "train_skills", train_skills);
+  lua_register(L, "set_feature_uses", set_feature_uses);
 }
 
 // Lua API helper functions
@@ -9870,5 +9871,43 @@ int train_skills(lua_State* ls)
   }
 
   lua_pushboolean(ls, trained);
+  return 1;
+}
+
+int set_feature_uses(lua_State* ls)
+{
+  bool set_val = false;
+
+  if (lua_gettop(ls) == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int y = lua_tointeger(ls, 2);
+    int x = lua_tointeger(ls, 3);
+    int uses = lua_tointeger(ls, 4);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      if (tile != nullptr)
+      {
+        FeaturePtr feature = tile->get_feature();
+
+        if (feature != nullptr)
+        {
+          feature->set_uses(uses);
+          set_val = true;
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_feature_uses");
+  }
+
+  lua_pushboolean(ls, set_val);
   return 1;
 }

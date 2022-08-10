@@ -308,6 +308,7 @@ int bad_fn_do_not_call(lua_State* ls);
 int erase_map_linkage(lua_State* ls);
 int has_trainable_skill(lua_State* ls);
 int train_skills(lua_State* ls);
+int set_feature_uses(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);
