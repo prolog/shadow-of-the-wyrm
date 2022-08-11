@@ -1163,6 +1163,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLAltarReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLBarrelReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLBedReader.hpp" />
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLBenchReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLConfigurableFeatureCMReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLDecorativeStatueReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLDoorReader.hpp" />
@@ -2299,6 +2300,7 @@ mkdir $(OutDir)logs
     </ClCompile>
     <ClCompile Include="engine\time\source\WorldTimeObserver.cpp" />
     <ClCompile Include="engine\time\source\WorldWeatherUpdater.cpp" />
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLBenchReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLConfigurableFeatureCMReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLDecorativeStatueReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLFenceReader.cpp" />

@@ -22,7 +22,7 @@
 	,,#,,,,....#......................#,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 	,,#,,,,#.........#................#,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 	,,#,,,,####################.#######,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-	,,#,,,,#.........#................#,,,,,,,,rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+	,,#,,,,#....&gt;....#................#,,,,,,,,rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
 	,,#,,###.........#................#,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,
 	,,#,,..#..........................#,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,
 	,,#,,#.#.........#................#,,,,,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,,,,,,,,,,,,
@@ -78,7 +78,7 @@
 				<ID>praetor_dantus</ID>
 				<Coord>
 					<Row>6</Row>
-					<Col>12</Col>
+					<Col>10</Col>
 				</Coord>
 			</Placement>
 			<Placement>
@@ -157,6 +157,18 @@
 				<Col>20</Col>
 			</LinkTo>
 		</Exit>
+		<Exit>
+			<Coord>
+				<Row>6</Row>
+				<Col>12</Col>
+			</Coord>
+			<Direction>10</Direction>
+			<MapID>carcassia_b1a</MapID>
+			<LinkTo>
+				<Row>6</Row>
+				<Col>12</Col>
+			</LinkTo>
+		</Exit>
 	</Exits>
 	<Features>
 		<FeaturePlacement>
@@ -196,7 +208,7 @@
 				<Row>9</Row>
 				<Col>12</Col>
 			</Coord>
-			<Bed/>
+			<Bench/>
 		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>

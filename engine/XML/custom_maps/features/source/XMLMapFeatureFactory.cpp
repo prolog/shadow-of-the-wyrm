@@ -6,6 +6,7 @@
 #include "XMLAltarReader.hpp"
 #include "XMLBedReader.hpp"
 #include "XMLBarrelReader.hpp"
+#include "XMLBenchReader.hpp"
 #include "XMLConfigurableFeatureCMReader.hpp"
 #include "XMLDecorativeStatueReader.hpp"
 #include "XMLDoorReader.hpp"
@@ -53,6 +54,10 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Barrel")).is_null())
     {
       feature_creator = std::make_unique<XMLBarrelReader>();
+    }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Bench")).is_null())
+    {
+      feature_creator = std::make_unique<XMLBenchReader>();
     }
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Door")).is_null())
     {

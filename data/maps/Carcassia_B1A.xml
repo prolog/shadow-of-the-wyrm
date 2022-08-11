@@ -13,15 +13,15 @@
 	<Tiles>
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAA............................AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAA............................AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAA............................AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAA............................AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAA............................AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAA..............................AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAA..............................AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAA..............................AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAA..............................AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAA############################AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAA#........#.................#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAA#........#.................#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAA#........#....................AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAA#....&lt;........................AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAA#........#....................AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAA#........#.................#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAA#........#.................#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAA############################AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAA##..##..##..###..###..##..##..##AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -119,6 +119,99 @@
 				<Col>20</Col>
 			</LinkTo>
 		</Exit>
+		<Exit>
+			<Coord>
+				<Row>6</Row>
+				<Col>12</Col>
+			</Coord>
+			<Direction>11</Direction>
+			<MapID>carcassia_b1</MapID>
+			<LinkTo>
+				<Row>6</Row>
+				<Col>12</Col>
+			</LinkTo>
+		</Exit>
 	</Exits>
-	<Features/>
+	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>3</Row>
+				<Col>8</Col>
+			</Coord>
+			<DecorativeStatue>
+				<Type>3</Type>
+			</DecorativeStatue>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>3</Row>
+				<Col>15</Col>
+			</Coord>
+			<DecorativeStatue>
+				<Type>3</Type>
+			</DecorativeStatue>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>9</Row>
+				<Col>8</Col>
+			</Coord>
+			<DecorativeStatue>
+				<Type>3</Type>
+			</DecorativeStatue>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>9</Row>
+				<Col>15</Col>
+			</Coord>
+			<DecorativeStatue>
+				<Type>3</Type>
+			</DecorativeStatue>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>6</Row>
+				<Col>25</Col>
+			</Coord>
+			<Bed/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>3</Row>
+				<Col>19</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>3</Row>
+				<Col>31</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>9</Row>
+				<Col>19</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>9</Row>
+				<Col>31</Col>
+			</Coord>
+			<FirePillar/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>6</Row>
+				<Col>8</Col>
+			</Coord>
+			<Altar>
+				<DeityID>02_aurelion</DeityID>
+				<Alignment>2</Alignment>
+			</Altar>
+	</Features>
 </CustomMap>
