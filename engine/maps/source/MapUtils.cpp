@@ -2582,10 +2582,17 @@ bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile,
   {
     TileType tt = tile->get_tile_type();
 
+    // Can always go up and up staircase, down a down staircase.
     if ((d == Direction::DIRECTION_DOWN && tt == TileType::TILE_TYPE_DOWN_STAIRCASE) ||
         (d == Direction::DIRECTION_UP && tt == TileType::TILE_TYPE_UP_STAIRCASE))
     {
       return true;
+    }
+    // Can never go down an up staircase, up a down staircase.
+    else if ((d == Direction::DIRECTION_UP && tt == TileType::TILE_TYPE_DOWN_STAIRCASE) ||
+             (d == Direction::DIRECTION_DOWN && tt == TileType::TILE_TYPE_UP_STAIRCASE))
+    {
+      return false;
     }
 
     MapType map_type = map->get_map_type();
