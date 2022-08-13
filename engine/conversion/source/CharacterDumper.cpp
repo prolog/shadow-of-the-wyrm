@@ -136,16 +136,26 @@ string CharacterDumper::str() const
 
   ss << StringTable::get(TextKeys::MAXIMUM_DEPTH_REACHED) << ": " << creature->get_max_depth_reached().str(true) << endl << endl;
 
-  string p_date_started = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_START_DATE);
-  string p_current_date = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_CURRENT_DATE);
+  string p_character_started = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_CHARACTER_STARTED);
+  string p_game_date = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_GAME_DATE);
 
-  if (!p_date_started.empty() && !p_current_date.empty())
+  if (!p_character_started.empty() && !p_game_date.empty())
   {
-    Date st_date(p_date_started);
-    Date cur_date(p_current_date);
+    Date st_date(p_character_started);
+    Date cur_date(p_game_date);
 
-    ss << StringTable::get(TextKeys::DATE_STARTED) << ": " << DateTextKeys::get_date_time_message(st_date, false) << endl;
-    ss << StringTable::get(TextKeys::CURRENT_DATE) << ": " << DateTextKeys::get_date_time_message(cur_date, false) << endl << endl;
+    ss << StringTable::get(TextKeys::CHARACTER_STARTED) << ": " << DateTextKeys::get_date_time_message(st_date, false) << endl;
+    ss << StringTable::get(TextKeys::GAME_DATE) << ": " << DateTextKeys::get_date_time_message(cur_date, false) << endl << endl;
+  }
+
+  string game_started = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_GAME_STARTED);
+
+  if (!game_started.empty())
+  {
+    std::time_t cur_time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+
+    ss << StringTable::get(TextKeys::GAME_STARTED) << ": " << game_started;
+    ss << StringTable::get(TextKeys::CURRENT_DATE) << ": " << std::ctime(&cur_time) << endl;
   }
 
   ss << StringTable::get(TextKeys::TURNS) << ": " << creature->get_turns() << endl << endl;

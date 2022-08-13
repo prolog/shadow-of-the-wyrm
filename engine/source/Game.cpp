@@ -441,7 +441,10 @@ void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
     Date d = get_current_world()->get_calendar().get_date();
     d.serialize(ss);
 
-    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_START_DATE, ss.str());
+    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_CHARACTER_STARTED, ss.str());
+    
+    std::time_t start_time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_GAME_STARTED, std::ctime(&start_time));
 
     // Set the starting location.
     if (creature->get_is_player())
@@ -1195,12 +1198,12 @@ void Game::update_player_dates()
     d.serialize(ss);
     string cur_date_str = ss.str();
 
-    if (player->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_START_DATE).empty())
+    if (player->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_CHARACTER_STARTED).empty())
     {
-      player->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_START_DATE, cur_date_str);
+      player->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_CHARACTER_STARTED, cur_date_str);
     }
 
-    player->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_CURRENT_DATE, cur_date_str);
+    player->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_GAME_DATE, cur_date_str);
   }
 }
 

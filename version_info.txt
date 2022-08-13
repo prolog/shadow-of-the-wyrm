@@ -75,6 +75,9 @@ Shadow of the Wyrm v1.5.0 "Satoh"
 - The inner teleporter in Carcassia A1 now has unlimited uses, so you won't
   get stuck in an exitless room (JovanM).
 
+- Character dumps now show the date and time when you started your character,
+  as well as the current time.
+
 - New items: amulet of the sky.
 
 - New creatures: Pern, stylite, ancient sage.
