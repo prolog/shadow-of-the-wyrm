@@ -4039,3 +4039,13 @@ the king would use against them like a drum %b
 to call their deaths, percussion of the cruel %b
 that split by force the self-named righteous from their fools.
 %p
+The first one threw a fist-sized, heavy stone %b
+towards the pair, but aimed it at the horse %b
+nearest to him.  It struck the anklebone, %b
+buckled and broke the beast, and as the force %b
+sent the rider tumbling back, he yelled out, "Home!" %b
+His companion galloped past, and lashing out, %b
+slashed his small sword against the exiles as the thrown %b
+rider struggled to find a way from out %b
+beneath the horse that crushed him as it thrashed about.
+%p
