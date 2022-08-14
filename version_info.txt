@@ -82,6 +82,8 @@ Shadow of the Wyrm v1.5.0 "Satoh"
 
 - New creatures: Pern, stylite, ancient sage.
 
+- Stanzas for "Tel and Floridel".
+
 - Bug fixes:
 
   - Some of the Nine's special creatures were unable to spawn in the rift in
