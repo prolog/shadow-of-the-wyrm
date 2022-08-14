@@ -25,7 +25,7 @@
 	,,#,,#####,,r,,,,,,,,,,,,,,,,,,,r,#########.#########,r,,,,,,,,,,,,,,,,,,,,,,,,,
 	,,#,,,,,,,,,r,,,,,,,,,,,,,,,,,,,r,#..#...........#..#,r,,,,,,,,,,,,,,,,,,,,,,,,,
 	,,#,####,,,,r,,,,,,,,,,,,,,,,,,,r,#.##.w.......w.##.#,r,,,,,,,,,,,,,,,,,,,,,,,,,
-	,,#r...#,,,,r,,,,,,,,,,,,,,,,,,,r,#.................#,r,,,,,,,,,,,,,,,,,,,,,,,,,
+	,,#r..&lt;#,,,,r,,,,,,,,,,,,,,,,,,,r,#.................#,r,,,,,,,,,,,,,,,,,,,,,,,,,
 	,,rr####,,,,r,,,,,,,,,,,,,,,,,,,r,#.................#,r,,,,,,,,,,,,,,,,,,,,,,,,,
 	rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr.........&lt;.........rrrrrrrrrrrrrrrrrrrrrrrrrrr
 	,,r,,,,,r,,,,,,,,,,,,,,,,,,,,,,,r,#.................#,r,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -125,13 +125,6 @@
 				<Coord>
 					<Row>8</Row>
 					<Col>1</Col>
-				</Coord>
-			</Placement>
-			<Placement>
-				<ID>carcassian_guard</ID>
-				<Coord>
-					<Row>8</Row>
-					<Col>6</Col>
 				</Coord>
 			</Placement>
 			<Placement>
@@ -247,6 +240,18 @@
 			<LinkTo>
 				<Row>10</Row>
 				<Col>43</Col>
+			</LinkTo>
+		</Exit>
+		<Exit>
+			<Coord>
+				<Row>8</Row>
+				<Col>6</Col>
+			</Coord>
+			<Direction>10</Direction>
+			<MapID>carcassia_tower_top</MapID>
+			<LinkTo>
+				<Row>8</Row>
+				<Col>6</Col>
 			</LinkTo>
 		</Exit>
 	</Exits>

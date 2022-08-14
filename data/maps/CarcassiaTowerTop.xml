@@ -23,9 +23,9 @@
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAA#..AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAA#..AAA####..#############AAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#........#........#AAAA#..#AAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#........#........#AAAA#..#AAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAA#..AAAAAAA..AAAAAAA####..#######..####AAAA#..#AAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAA#..AAAAAAA..AAAAAAA#.................#AAAAAAAAAA###AAAAAAAAAAAAAA
+	AAAA#..#AAAAAAAAAAAAAAAAAAAAAAAAAA#........#........#AAAA#..#AAAAAAAAAAAAAAAAAAA
+	AAAA..&gt;.AAAAAAA#..AAAAAAA..AAAAAAA####..#######..####AAAA#..#AAAAAAAAAAAAAAAAAAA
+	AAAA#..#AAAAAAA#..AAAAAAA..AAAAAAA#.................#AAAAAAAAAA###AAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAA###AAAAAAAAAAAAAAAA#........&gt;........#AAAAAAA..##AAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#.................#AAAAAAAAAAA..#AAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAA..AAA####..########..###AAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -69,6 +69,13 @@
 				<Coord>
 					<Row>13</Row>
 					<Col>38</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>carcassian_guard</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>6</Col>
 				</Coord>
 			</Placement>
 		</Creatures>
@@ -151,6 +158,18 @@
 			<LinkTo>
 				<Row>10</Row>
 				<Col>43</Col>
+			</LinkTo>
+		</Exit>
+		<Exit>
+			<Coord>
+				<Row>8</Row>
+				<Col>6</Col>
+			</Coord>
+			<Direction>11</Direction>
+			<MapID>carcassia_a1</MapID>
+			<LinkTo>
+				<Row>8</Row>
+				<Col>6</Col>
 			</LinkTo>
 		</Exit>
 	</Exits>
