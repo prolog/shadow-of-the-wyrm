@@ -36,7 +36,7 @@ local function init_flying_creatures(map_id)
   local num_creatures = RNG_range(10, 15)
   local hostile = true
 
-  generate.add_creatures(map_id, {0, 7}, {18, 34}, cr_ids, num_creatures, hostile)
+  generate.add_creatures(map_id, {0, 15}, {18, 34}, cr_ids, num_creatures, hostile)
   generate.add_creatures(map_id, {0, 54}, {18, 75}, cr_ids, num_creatures, hostile)
 end
 

@@ -29,12 +29,12 @@
 	AAAAAAAAAAAAAAA###AAAAAAAAAAAAAAAA#........&gt;........#AAAAAAA..##AAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#.................#AAAAAAAAAAA..#AAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAA..AAA####..########..###AAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAA..AAA#........#........#AAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#........#...#..#.#AAAAAAAAAAAA..#AAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA##############.####AAA####AAAAA..#AAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA....AAAAA..#AAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAA#....AAAAAAAAAAAAA....#AAAAAAAAAAAAAAA..#AAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAA#####AAAAAAAAAAAAA#####AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAA#########AAAAAAAAAAAAAAAA..AAA#........#........#AAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAA#&gt;......#AAAAAAAAAAAAAAAAAAAAA#........#...#..#.#AAAAAAAAAAAA..#AAAAAAAAAAAA
+	AAAA#.......#AAAAAAAAAAAAAAAAAAAAA##############.####AAA####AAAAA..#AAAAAAAAAAAA
+	AAAA#.......#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA....AAAAA..#AAAAAAAAAAAA
+	AAAA#.......#AAAAAAAAAAAAAA#....AAAAAAAAAAAAA....#AAAAAAAAAAAAAAA..#AAAAAAAAAAAA
+	AAAA#########AAAAAAAAAAAAAA#####AAAAAAAAAAAAA#####AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	</Tiles>
 	<PlayerStart>
@@ -129,6 +129,42 @@
 					<Col>58</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>dagger</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>9</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>sling</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>9</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>_stone</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>9</Col>
+				</Coord>
+				<Quantity>12</Quantity>
+			</Placement>
+			<Placement>
+				<ID>leather_boots</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>7</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>_cloak</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>7</Col>
+				</Coord>
+			</Placement>
 		</Items>
 	</InitialPlacements>
 	<Exits>
@@ -147,6 +183,18 @@
 		<Exit>
 			<Direction>11</Direction>
 			<MapID>carcassia_a1</MapID>
+		</Exit>
+		<Exit>
+			<Coord>
+				<Row>14</Row>
+				<Col>5</Col>
+			</Coord>
+			<Direction>11</Direction>
+			<MapID>carcassia_a1</MapID>
+			<LinkTo>
+				<Row>14</Row>
+				<Col>5</Col>
+			</LinkTo>
 		</Exit>
 		<Exit>
 			<Coord>
@@ -174,6 +222,13 @@
 		</Exit>
 	</Exits>
 	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>16</Row>
+				<Col>8</Col>
+			</Coord>
+			<Bed/>
+		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>
 				<Row>13</Row>
