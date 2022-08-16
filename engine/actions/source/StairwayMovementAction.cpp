@@ -271,7 +271,7 @@ void StairwayMovementAction::move_to_custom_map(TilePtr current_tile, MapPtr cur
   if (creature != nullptr && current_map != nullptr && current_tile != nullptr)
   {
     Coordinate current_coord = current_map->get_location(creature->get_id());
-    Coordinate proposed_new_coord = MapUtils::calculate_new_coord_for_multimap_movement(current_coord, d, map_exit);
+    Coordinate proposed_new_coord = MapUtils::calculate_new_coord_for_multimap_movement(current_coord, current_tile, d, map_exit);
     
     ma->handle_properties_and_move(creature, current_tile, current_map, map_exit, proposed_new_coord);
   }

@@ -772,10 +772,24 @@ void MapUtils::set_up_transitive_exits_as_necessary(MapPtr old_map, MapExitPtr m
   }
 }
 
-Coordinate MapUtils::calculate_new_coord_for_multimap_movement(const Coordinate& current_coord, const Direction exit_direction, MapExitPtr map_exit)
+Coordinate MapUtils::calculate_new_coord_for_multimap_movement(const Coordinate& current_coord, TilePtr tile, const Direction exit_direction, MapExitPtr map_exit)
 {
   Coordinate c = CoordUtils::end();
 
+  // If we're on a staircase, and trying to go up or down, don't try to calculate
+  // the zlevel!
+  if (tile != nullptr)
+  {
+    TileType tt = tile->get_tile_type();
+
+    if (tt == TileType::TILE_TYPE_UP_STAIRCASE || tt == TileType::TILE_TYPE_DOWN_STAIRCASE)
+    {
+      if (DirectionUtils::is_zlevel(exit_direction))
+      {
+        return c;
+      }
+    }
+  }
   if (map_exit != nullptr && map_exit->is_using_map_id())
   {
     MapPtr map = Game::instance().get_map_registry_ref().get_map(map_exit->get_map_id());
