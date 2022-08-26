@@ -78,6 +78,8 @@ Shadow of the Wyrm v1.5.0 "Satoh"
 - Character dumps now show the date and time when you started your character,
   as well as the current time.
 
+- More weeds.
+
 - New items: amulet of the sky.
 
 - New creatures: Pern, stylite, ancient sage.

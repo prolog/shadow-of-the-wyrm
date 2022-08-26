@@ -22,7 +22,13 @@ void WeedsTileConfiguration::initialize_tree_species_details()
                        TreeSpeciesID::TREE_SPECIES_WEED17, 
                        TreeSpeciesID::TREE_SPECIES_WEED18, 
                        TreeSpeciesID::TREE_SPECIES_WEED19, 
-                       TreeSpeciesID::TREE_SPECIES_WEED20 };
+                       TreeSpeciesID::TREE_SPECIES_WEED20,
+                       TreeSpeciesID::TREE_SPECIES_WEED21,
+                       TreeSpeciesID::TREE_SPECIES_WEED22,
+                       TreeSpeciesID::TREE_SPECIES_WEED23,
+                       TreeSpeciesID::TREE_SPECIES_WEED24,
+                       TreeSpeciesID::TREE_SPECIES_WEED25,
+  };
 
   tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_WEED1, TileDescriptionKeys::FLORA_TILE_DESC_WEED1));
   tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_WEED2, TileDescriptionKeys::FLORA_TILE_DESC_WEED2));
@@ -45,5 +51,9 @@ void WeedsTileConfiguration::initialize_tree_species_details()
   tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_WEED19, TileDescriptionKeys::FLORA_TILE_DESC_WEED19));
   tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_WEED20, TileDescriptionKeys::FLORA_TILE_DESC_WEED20));
   tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_WEED21, TileDescriptionKeys::FLORA_TILE_DESC_WEED21));
+  tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_WEED22, TileDescriptionKeys::FLORA_TILE_DESC_WEED22));
+  tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_WEED23, TileDescriptionKeys::FLORA_TILE_DESC_WEED23));
+  tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_WEED24, TileDescriptionKeys::FLORA_TILE_DESC_WEED24));
+  tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_WEED25, TileDescriptionKeys::FLORA_TILE_DESC_WEED25));
 }
 
