@@ -1054,6 +1054,8 @@ void test_creature_generation()
   int max_level = 1;
   int tile_type = -1;
   int num_creatures = 1;
+  int map_type = static_cast<int>(MapType::MAP_TYPE_UNDERWORLD);
+
   std::string filename;
 
   Game& game = Game::instance();
@@ -1072,13 +1074,16 @@ void test_creature_generation()
     std::cout << "Tile Type: ";
     std::cin >> tile_type;
 
+    std::cout << "Map Type: ";
+    std::cin >> map_type;
+
     std::cout << "Number of creatures: ";
     std::cin >> num_creatures;
 
     std::cout << "Filename: ";
     std::cin >> filename;
 
-    CreatureGenerationIndex generation_list = cgm.generate_creature_generation_map({ static_cast<TileType>(tile_type) }, false, false, min_level, max_level, Rarity::RARITY_COMMON, {});
+    CreatureGenerationIndex generation_list = cgm.generate_creature_generation_map({ static_cast<TileType>(tile_type) }, false, false, static_cast<MapType>(map_type), min_level, max_level, Rarity::RARITY_COMMON, {});
     const auto& cgl = generation_list.get();
 
     std::map<std::string, int> creature_count;
