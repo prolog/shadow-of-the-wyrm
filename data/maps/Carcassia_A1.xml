@@ -45,6 +45,15 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>thief</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>9</Col>
+				</Coord>
+				<Friendly>1</Friendly>
+				<SpeechTextSID>CARCASSIA_THIEF_HOUSE2_SID</SpeechTextSID>
+			</Placement>
+			<Placement>
 				<ID>glich</ID>
 				<Random>
 					<Coord>
