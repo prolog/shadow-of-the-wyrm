@@ -154,9 +154,22 @@ void Generator::generate_treasure(MapPtr map)
       return;
     }
 
+    // Generate bits of treasure
     vector<string> item_ids = is.execute_get_treasure_items(Game::instance().get_script_engine_ref());
     GeneratorUtils::generate_item_per_coord(map, coords, item_ids);
 
+    // Generate some minor amounts of ivory
+    int mini_piles = RNG::range(0, coords.size() / 3);
+
+    for (int i = 0; i < mini_piles; i++)
+    {
+      TilePtr ivory_tile = map->at(coords.at(RNG::range(0, coords.size() - 1)));
+      int ivory_cnt = std::min<int>(min_lore, 50);
+      ItemPtr ivory = ItemManager::create_item(ItemIdKeys::ITEM_ID_CURRENCY, RNG::range(ivory_cnt / 2, ivory_cnt));
+      ivory_tile->get_items()->merge_or_add(ivory, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+    }
+
+    // Generate either a randart, or a lot of ivory.
     bool generate_randart = false;
     
     if (min_lore > 65)
@@ -164,7 +177,6 @@ void Generator::generate_treasure(MapPtr map)
       generate_randart = true;
     }
 
-    // The centerpiece of the trove is either an artifact, or a lot of ivory.
     if (generate_randart)
     {
       int num_randarts = 1;

@@ -61,15 +61,14 @@ Me:
   - down/up others like cathedral
 - ensure only water breathers appear in submerged maps
 - oceanography: find vortices that lead to sunken shipwrecks
-- seas generated next to land (ie on a forest map, etc) should get a flag that 
-  lets you go to the sea floor
+- controller support - this could also allow menu support for newer players
 - ascension/descension should take you to the right place on the map
 - anything not sea on the upper map should be rock
 - map should be undiggable
 - a few ivory in springs - wishing wells :)
 - all other seas should have a message about the bottom being too deep to
   reach (unless you have WB?)
-- fields north of carcassia
+- fields north of carcassia: new generator type? finally use wheat?
 - timed quest for which boating would help a lot
 - guaranteed one 80-100 treasure for each lore type
 - what if during world generation, treasure is 1-100 on various tiles? with
