@@ -66,6 +66,10 @@ Shadow of the Wyrm v1.5.0 "Satoh"
   some swimming, you can go underwater, assuming you're in shallow water,
   though you can only hold your breath so long.
 
+- Carcassia now has "sky maps" above the ground-level maps, that can be 
+  accessed either via stairs from the appropriate place, or ascending while
+  flying.
+
 - Set the flying flag on creatures where it made sense, so long as they didn't
   get it already from their race.
 
@@ -82,7 +86,7 @@ Shadow of the Wyrm v1.5.0 "Satoh"
 
 - New items: amulet of the sky.
 
-- New creatures: Pern, stylite, ancient sage.
+- New creatures: Pern, stylite, ancient sage, Carcassian magistrate.
 
 - Stanzas for "Tel and Floridel".
 

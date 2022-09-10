@@ -83,6 +83,13 @@
 					<Col>33</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>carcassian_magistrate</ID>
+				<Coord>
+					<Row>18</Row>
+					<Col>7</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items/>
 	</InitialPlacements>
