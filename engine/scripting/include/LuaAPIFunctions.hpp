@@ -164,6 +164,7 @@ int is_item_identified(lua_State* ls);
 int get_item_value(lua_State* ls);
 int select_item(lua_State* ls);
 int set_hostility(lua_State* ls);
+int set_map_hostility(lua_State* ls);
 int is_creature_hostile(lua_State* ls);
 int teleport(lua_State* ls);
 int get_creature_short_description_sid(lua_State* ls);

@@ -1,4 +1,5 @@
 Me:
+- Counter-attacks should only be for physical
 - Carcassia: down to inf. sewers in A2, back up, wrong location
 - Need a thorough test of exits:
   - down/up/down in dungeon

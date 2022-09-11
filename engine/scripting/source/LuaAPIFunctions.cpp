@@ -321,6 +321,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_item_value", get_item_value);
   lua_register(L, "select_item", select_item);
   lua_register(L, "set_hostility", set_hostility);
+  lua_register(L, "set_map_hostility", set_map_hostility);
   lua_register(L, "is_creature_hostile", is_creature_hostile);
   lua_register(L, "teleport", teleport);
   lua_register(L, "get_creature_short_description_sid", get_creature_short_description_sid);
@@ -5200,39 +5201,39 @@ int select_item(lua_State* ls)
 
   if (lua_gettop(ls) >= 1 && lua_isstring(ls, 1))
   {
-    string creature_id = lua_tostring(ls, 1);
-    CreaturePtr creature = get_creature(creature_id);
+  string creature_id = lua_tostring(ls, 1);
+  CreaturePtr creature = get_creature(creature_id);
 
-    if (creature != nullptr)
+  if (creature != nullptr)
+  {
+    int item_filter = CITEM_FILTER_NONE;
+
+    if (lua_gettop(ls) == 2 && lua_isnumber(ls, 2))
     {
-      int item_filter = CITEM_FILTER_NONE;
-
-      if (lua_gettop(ls) == 2 && lua_isnumber(ls, 2))
-      {
-        item_filter = lua_tointeger(ls, 2);
-      }
-
-      Game& game = Game::instance();
-      list<IItemFilterPtr> selected_filter = ItemFilterFactory::create_script_filter(item_filter);
-      ItemPtr item = game.get_action_manager_ref().inventory(creature, creature->get_inventory(), selected_filter, {}, false, false);
-
-      if (item != nullptr)
-      {
-        selected_item = true;
-        item_id = item->get_id();
-        item_base_id = item->get_base_id();
-      }
-
-      // Redraw the screen, since we will have moved from the inventory
-      // back to the main map, and need to redraw before any confirmation
-      // messages.
-      game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
-      game.get_display()->redraw();
+      item_filter = lua_tointeger(ls, 2);
     }
+
+    Game& game = Game::instance();
+    list<IItemFilterPtr> selected_filter = ItemFilterFactory::create_script_filter(item_filter);
+    ItemPtr item = game.get_action_manager_ref().inventory(creature, creature->get_inventory(), selected_filter, {}, false, false);
+
+    if (item != nullptr)
+    {
+      selected_item = true;
+      item_id = item->get_id();
+      item_base_id = item->get_base_id();
+    }
+
+    // Redraw the screen, since we will have moved from the inventory
+    // back to the main map, and need to redraw before any confirmation
+    // messages.
+    game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
+    game.get_display()->redraw();
+  }
   }
   else
   {
-    LuaUtils::log_and_raise(ls, "Incorrect arguments to select_item");
+  LuaUtils::log_and_raise(ls, "Incorrect arguments to select_item");
   }
 
   lua_pushboolean(ls, selected_item);
@@ -5271,7 +5272,7 @@ int set_hostility(lua_State* ls)
     {
       hostile = lua_toboolean(ls, 4);
     }
-    
+
     if (creature != nullptr)
     {
       HostilityManager hm;
@@ -5292,6 +5293,53 @@ int set_hostility(lua_State* ls)
   }
 
   return 0;
+}
+
+int set_map_hostility(lua_State* ls)
+{
+  int num_made_hostile = 0;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string map_id = lua_tostring(ls, 1);
+    string hostile_to = lua_tostring(ls, 2);
+    bool apply_to_followers = false;
+
+    if (num_args == 3 && lua_isboolean(ls, 3))
+    {
+      apply_to_followers = lua_toboolean(ls, 3);
+    }
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      const CreatureMap& creatures = map->get_creatures_ref();
+      HostilityManager hm;
+
+      for (const auto& c_pair : creatures)
+      {
+        if (c_pair.second != nullptr)
+        {
+          CreaturePtr creature = c_pair.second;
+
+          if (creature->get_leader_id() != hostile_to || apply_to_followers)
+          {
+            hm.set_hostility_to_creature(creature, hostile_to, ThreatConstants::ACTIVE_THREAT_RATING);
+            num_made_hostile++;
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_map_hostility");
+  }
+
+  lua_pushinteger(ls, num_made_hostile);
+  return 1;
 }
 
 int is_creature_hostile(lua_State* ls)
