@@ -26007,6 +26007,28 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>2000</Exp>
+				<InitialEquipmentAndInventory>
+					<Head>
+						<ID>guildmasters_cap</ID>
+					</Head>
+					<Body>
+						<ID>elven_robes</ID>
+					</Body>
+					<AroundBody>
+						<ID>heavy_cloak</ID>
+					</AroundBody>
+					<Ammunition>
+						<ID>whisper_thin_dagger</ID>
+						<Quantity>
+							<Amount>6</Amount>
+						</Quantity>
+					</Ammunition>
+					<InitialInventory>
+						<InitialItem>
+							<ID>flame_wand</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
 			</CreatureGeneration>
 			<Level>25</Level>
 			<Damage>
