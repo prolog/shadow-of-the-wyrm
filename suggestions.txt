@@ -1,6 +1,7 @@
 Me:
-- Counter-attacks should only be for physical
-- Carcassia: down to inf. sewers in A2, back up, wrong location
+- small chance to generate good items underwater
+- need to test springs/ivory gen
+- Flying shop in Carcassia A2A
 - Need a thorough test of exits:
   - down/up/down in dungeon
   - into, out of map
@@ -16,13 +17,8 @@ Me:
 - ASSET RELEASE
 - need to be able to move around sky above Carcassia (make sure NW, NE, SW,
   SE all work as expected)
-- Carcassia A1A
-- Carcassia B2A
-- Carcassia C1A
-- Carcassia C2A
 - Need to check all the exits for the sky
 - What kinds of creatures/quests/features should be up in the air?
-- How do we get to the top of the praetor's house? What should be up there
 - sea generator: chance for islands:
   - desert island with spring
   - rocky island
@@ -60,7 +56,6 @@ Me:
   - exit custom
   - down/up custom
   - down/up others like cathedral
-- ensure only water breathers appear in submerged maps
 - oceanography: find vortices that lead to sunken shipwrecks
 - controller support - this could also allow menu support for newer players
 - ascension/descension should take you to the right place on the map
