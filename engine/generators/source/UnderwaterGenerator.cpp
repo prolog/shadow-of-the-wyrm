@@ -9,11 +9,14 @@
 
 using namespace std;
 
+const int UnderwaterGenerator::PCT_CHANCE_ROCKY_BOTTOM = 25;
 const int UnderwaterGenerator::PCT_CHANCE_CORPSES = 5;
 const int UnderwaterGenerator::PCT_CHANCE_SPRINGS_IVORY = 10;
 const int UnderwaterGenerator::PCT_CHANCE_UNDERWATER_ITEMS = 20;
 const int UnderwaterGenerator::PCT_CHANCE_UNDERWATER_ITEMS_LOWER = 2;
 const int UnderwaterGenerator::PCT_CHANCE_UNDERWATER_ITEMS_UPPER = 8;
+const int UnderwaterGenerator::PCT_CHANCE_ROCK_LOWER = 10;
+const int UnderwaterGenerator::PCT_CHANCE_ROCK_UPPER = 80;
 
 UnderwaterGenerator::UnderwaterGenerator(MapPtr above_map, const string& map_exit_id)
 : above_water_map(above_map), Generator(map_exit_id, TileType::TILE_TYPE_SEA)
@@ -35,8 +38,18 @@ MapPtr UnderwaterGenerator::generate(const Dimensions& dim)
 {
 	MapPtr result_map = std::make_shared<Map>(dim);
 	result_map->set_permanent(true);
-	bool generate_underwater_items = RNG::percent_chance(PCT_CHANCE_UNDERWATER_ITEMS);
-	int generation_rate = RNG::range(PCT_CHANCE_UNDERWATER_ITEMS_LOWER, PCT_CHANCE_UNDERWATER_ITEMS_UPPER);
+	int generation_rate = 0;
+	int rock_generation_rate = 0;
+
+	if (RNG::percent_chance(PCT_CHANCE_UNDERWATER_ITEMS))
+	{
+		generation_rate = RNG::range(PCT_CHANCE_UNDERWATER_ITEMS_LOWER, PCT_CHANCE_UNDERWATER_ITEMS_UPPER);
+	}
+
+	if (RNG::percent_chance(PCT_CHANCE_ROCKY_BOTTOM))
+	{
+		rock_generation_rate = RNG::range(PCT_CHANCE_ROCK_LOWER, PCT_CHANCE_ROCK_UPPER);
+	}
 
 	if (above_water_map == nullptr)
 	{
@@ -86,9 +99,9 @@ MapPtr UnderwaterGenerator::generate(const Dimensions& dim)
 
 				tile->set_submerged(true);
 
-				if (generate_underwater_items && should_generate_items)
+				if (should_generate_items)
 				{
-					add_items(tile, att, generation_rate);
+					add_items(tile, att, generation_rate, rock_generation_rate);
 				}
 
 				c = MapUtils::convert_map_key_to_coordinate(tc_pair.first);
@@ -100,9 +113,30 @@ MapPtr UnderwaterGenerator::generate(const Dimensions& dim)
 	return result_map;
 }
 
-void UnderwaterGenerator::add_items(TilePtr tile, const TileType att, const int generation_rate)
+void UnderwaterGenerator::add_items(TilePtr tile, const TileType att, const int generation_rate, const int rock_generation_rate)
 {
-	if (att == TileType::TILE_TYPE_SPRINGS)
+	if (RNG::percent_chance(rock_generation_rate))
+	{
+		string item_id = ItemIdKeys::ITEM_ID_STONE;
+
+		if (RNG::percent_chance(20))
+		{
+			item_id = ItemIdKeys::ITEM_ID_ROCK;
+		}
+
+		ItemPtr rock = ItemManager::create_item(item_id);
+		tile->get_items()->merge_or_add(rock, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+	}
+
+	if (att == TileType::TILE_TYPE_SHOALS)
+	{
+		if (RNG::percent_chance(30))
+		{
+			ItemPtr rock = ItemManager::create_item(ItemIdKeys::ITEM_ID_HUGE_ROCK);
+			tile->get_items()->merge_or_add(rock, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+		}
+	}
+	else if (att == TileType::TILE_TYPE_SPRINGS)
 	{
 		if (RNG::percent_chance(PCT_CHANCE_SPRINGS_IVORY))
 		{
@@ -112,6 +146,15 @@ void UnderwaterGenerator::add_items(TilePtr tile, const TileType att, const int 
 	}
 	else
 	{
+		if (att == TileType::TILE_TYPE_RIVER)
+		{
+			if (RNG::percent_chance(15))
+			{
+				ItemPtr clay = ItemManager::create_item(ItemIdKeys::ITEM_ID_CLAY, RNG::range(1, 2));
+				tile->get_items()->merge_or_add(clay, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+			}
+		}
+
 		if (RNG::percent_chance(generation_rate))
 		{
 			pair<string, int> gen_pair = underwater_item_ids.at(RNG::range(0, underwater_item_ids.size() - 1));

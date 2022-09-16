@@ -1,4 +1,8 @@
 Me:
+- At the northern and southern extremes, muskeg and shield
+- Wild orchard not respecting sea
+- Sea shell (worth an ivory)
+- can be dropped by a hermit crab!
 - small chance to generate good items underwater
 - need to test springs/ivory gen
 - Flying shop in Carcassia A2A
