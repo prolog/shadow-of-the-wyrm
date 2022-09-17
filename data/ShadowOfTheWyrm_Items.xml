@@ -13546,6 +13546,26 @@
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
+			<Item id="conch">
+				<DescriptionSID>CONCH_SID</DescriptionSID>
+				<UsageDescriptionSID>CONCH_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CONCH_CODEX_SID</CodexDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>4</Pounds>
+				</Weight>
+				<Material>12</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>13</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="_bog_iron">
 				<DescriptionSID>BOG_IRON_SID</DescriptionSID>
 				<UsageDescriptionSID>BOG_IRON_USAGE_SID</UsageDescriptionSID>
