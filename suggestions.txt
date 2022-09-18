@@ -1,6 +1,5 @@
 Me:
 - At the northern and southern extremes, muskeg and shield
-- Wild orchard not respecting sea
 - small chance for shipwreck: some lumber, items, etc. Tie into oceanography.
   should generate a msg.
 - small chance to generate good items underwater
