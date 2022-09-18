@@ -1,8 +1,8 @@
 Me:
 - At the northern and southern extremes, muskeg and shield
 - Wild orchard not respecting sea
-- Conch should be dropped by hermit crab
-- can be dropped by a hermit crab!
+- small chance for shipwreck: some lumber, items, etc. Tie into oceanography.
+  should generate a msg.
 - small chance to generate good items underwater
 - need to test springs/ivory gen
 - Flying shop in Carcassia A2A

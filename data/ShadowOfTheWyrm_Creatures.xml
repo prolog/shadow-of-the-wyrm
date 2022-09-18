@@ -13928,6 +13928,13 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>2</Exp>
+				<InitialEquipmentAndInventory>
+					<InitialInventory>
+						<InitialItem>
+							<ID>conch</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
 			</CreatureGeneration>
 			<Level>3</Level>
 			<Damage piercing="1">
