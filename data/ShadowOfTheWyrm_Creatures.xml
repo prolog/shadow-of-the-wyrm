@@ -13897,6 +13897,46 @@
 			</Damage>
 			<Speed>60</Speed>
 		</Creature>
+		<Creature id="hermit_crab">
+			<RaceID>_insect</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>HERMIT_CRAB_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HERMIT_CRAB_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HERMIT_CRAB_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>HERMIT_CRAB_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>c</Char>
+				<Colour>9</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>29</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>3</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>2</Exp>
+			</CreatureGeneration>
+			<Level>3</Level>
+			<Damage piercing="1">
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Soak>4</Soak>
+		</Creature>
 		<Creature id="seal">
 			<RaceID>_animal</RaceID>
 			<BreatheType>1</BreatheType>

@@ -1,7 +1,7 @@
 Me:
 - At the northern and southern extremes, muskeg and shield
 - Wild orchard not respecting sea
-- Sea shell (worth an ivory)
+- Conch should be dropped by hermit crab
 - can be dropped by a hermit crab!
 - small chance to generate good items underwater
 - need to test springs/ivory gen
