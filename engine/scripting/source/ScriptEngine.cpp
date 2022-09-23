@@ -287,6 +287,13 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CCREATURE_WIN_EVIL);
   lua_exportConst(ls, CCREATURE_WIN_GODSLAYER);
 
+  lua_exportConst(ls, CCREATURE_SIZE_NA);
+  lua_exportConst(ls, CCREATURE_SIZE_TINY);
+  lua_exportConst(ls, CCREATURE_SIZE_SMALL);
+  lua_exportConst(ls, CCREATURE_SIZE_MEDIUM);
+  lua_exportConst(ls, CCREATURE_SIZE_LARGE);
+  lua_exportConst(ls, CCREATURE_SIZE_BEHEMOTH);
+
   lua_exportConst(ls, CCLASS_ID_KING_DECORATIVE_STATUE);
   lua_exportConst(ls, CCLASS_ID_QUEEN_DECORATIVE_STATUE);
   lua_exportConst(ls, CCLASS_ID_WARLORD_DECORATIVE_STATUE);

@@ -465,6 +465,9 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "has_trainable_skill", has_trainable_skill);
   lua_register(L, "train_skills", train_skills);
   lua_register(L, "set_feature_uses", set_feature_uses);
+  lua_register(L, "set_creature_size", set_creature_size);
+  lua_register(L, "get_creature_size", get_creature_size);
+  lua_register(L, "get_nutrition", get_nutrition);
 }
 
 // Lua API helper functions
@@ -9957,5 +9960,80 @@ int set_feature_uses(lua_State* ls)
   }
 
   lua_pushboolean(ls, set_val);
+  return 1;
+}
+
+int set_creature_size(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreatureSize cs = static_cast<CreatureSize>(lua_tointeger(ls, 2));
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      creature->set_size(cs);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_creature_size");
+  }
+
+  return 0;
+}
+
+int get_creature_size(lua_State* ls)
+{
+  CreatureSize cs = CreatureSize::CREATURE_SIZE_NA;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      cs = creature->get_size();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_creature_size");
+  }
+
+  lua_pushinteger(ls, static_cast<int>(cs));
+  return 1;
+}
+
+int get_nutrition(lua_State* ls)
+{
+  int nutrition = 0;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    CreaturePtr creature = get_creature(lua_tostring(ls, 1));
+
+    if (creature != nullptr)
+    {
+      ItemPtr item = creature->get_inventory()->get_from_id(lua_tostring(ls, 2));
+
+      if (item != nullptr)
+      {
+        ConsumablePtr cons = dynamic_pointer_cast<Consumable>(item);
+
+        if (cons != nullptr)
+        {
+          nutrition = cons->get_nutrition();
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_nutrition");
+  }
+
+  lua_pushinteger(ls, nutrition);
   return 1;
 }

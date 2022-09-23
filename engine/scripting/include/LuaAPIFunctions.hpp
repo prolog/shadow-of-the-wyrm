@@ -310,6 +310,9 @@ int erase_map_linkage(lua_State* ls);
 int has_trainable_skill(lua_State* ls);
 int train_skills(lua_State* ls);
 int set_feature_uses(lua_State* ls);
+int set_creature_size(lua_State* ls);
+int get_creature_size(lua_State* ls);
+int get_nutrition(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);
