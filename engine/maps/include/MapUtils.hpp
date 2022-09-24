@@ -30,6 +30,7 @@ class MapUtils
     static TileDirectionMap get_adjacent_tiles_to_creature(const MapPtr& map, const CreaturePtr& creature);
     static std::vector<TilePtr> get_adjacent_tiles_to_creature_unsorted(const MapPtr& map, const CreaturePtr& creature, const int offset = 1);
     static bool adjacent_tiles_match_type(const MapPtr& map, const Coordinate& c, const std::vector<Direction>& directions, const TileType tile_type_to_match);
+    static bool adjacent_tiles_contain_type(const MapPtr& map, const Coordinate& c, const std::vector<Direction>& directions, const TileType tile_type_to_contain);
     static uint get_num_adjacent_movement_directions(const MapPtr& map, const CreaturePtr& creature);
     static TilePtr get_adjacent_tile(const MapPtr& map, const CreaturePtr& creature, const Direction d, const int offset = 1);
     static TileDirectionMap get_adjacent_and_creature_tiles(const MapPtr& map, const CreaturePtr& creature);

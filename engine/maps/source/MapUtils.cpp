@@ -613,6 +613,22 @@ bool MapUtils::adjacent_tiles_match_type(const MapPtr& map, const Coordinate& c,
   return all_match;
 }
 
+// Do the adjacent tiles in the given direction contain a particular tile type?
+bool MapUtils::adjacent_tiles_contain_type(const MapPtr& map, const Coordinate& c, const vector<Direction>& directions, const TileType type_to_match)
+{
+  for (const Direction d : directions)
+  {
+    TilePtr tile = map->at(CoordUtils::get_new_coordinate(c, d));
+
+    if (tile && tile->get_tile_type() == type_to_match)
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 // Determine how many adjacent tiles are available to the creature
 uint MapUtils::get_num_adjacent_movement_directions(const MapPtr& map, const CreaturePtr& creature)
 {

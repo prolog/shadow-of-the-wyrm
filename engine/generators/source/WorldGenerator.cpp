@@ -794,11 +794,13 @@ void WorldGenerator::set_treasure(MapPtr map)
     NormalDistribution forest_treasures(40, 12);
     NormalDistribution desert_treasures(50, 15);
     NormalDistribution marsh_treasures(60, 12);
+    NormalDistribution underwater_treasure(70, 15);
     NormalDistribution mountain_treasures(80, 7);
     
     bool desert_override = true;
     bool forest_override = true;
     bool marsh_override = true;
+    bool underwater_override = true;
     bool mountain_override = true;
 
     TilesContainer& tc = map->get_tiles_ref();
@@ -810,6 +812,21 @@ void WorldGenerator::set_treasure(MapPtr map)
       if (tc_pair.second != nullptr && tc_pair.second->get_custom_map_id().empty())
       {
         TileType tt = tc_pair.second->get_tile_type();
+
+        if (tt == TileType::TILE_TYPE_SEA)
+        {
+          continue;
+        }
+
+        // Shipwrecks can appear underwater around any of the other treasure-
+        // generating tile types. Determining if they can be placed requires
+        // at least one cardinally-adjacent sea tile.
+        Coordinate c = MapUtils::convert_map_key_to_coordinate(tc_pair.first);
+
+        if (MapUtils::adjacent_tiles_contain_type(map, c, { Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH, Direction::DIRECTION_EAST, Direction::DIRECTION_WEST }, TileType::TILE_TYPE_SEA))
+        {
+          // potentially_add__treasure(tc_pair.first, tc_pair.second, underwater_treasures, underwater_override, true /* underwater */);
+        }
 
         if (tt == TileType::TILE_TYPE_DESERT)
         {
