@@ -241,7 +241,7 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CSKILL_GENERAL_MOUNTAIN_LORE);
   lua_exportConst(ls, CSKILL_GENERAL_MUSIC);
   lua_exportConst(ls, CSKILL_GENERAL_NIGHT_SIGHT);
-  lua_exportConst(ls, CSKILL_GENERAL_OCEANOGRAPHY);
+  lua_exportConst(ls, CSKILL_GENERAL_OCEAN_LORE);
   lua_exportConst(ls, CSKILL_GENERAL_PAPERCRAFT);
   lua_exportConst(ls, CSKILL_GENERAL_RELIGION);
   lua_exportConst(ls, CSKILL_GENERAL_SCRIBING);

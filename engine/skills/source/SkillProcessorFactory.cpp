@@ -61,6 +61,7 @@ void SkillProcessorFactory::populate_skill_map()
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MOUNTAIN_LORE, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_MOUNTAIN_LORE)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MUSIC, make_unique<MusicSkillProcessor>()));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_NIGHT_SIGHT, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_NIGHT_SIGHT)));
+  skill_map.insert(make_pair(SkillType::SKILL_GENERAL_OCEAN_LORE, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_OCEAN_LORE)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_PAPERCRAFT, make_unique<PapercraftSkillProcessor>()));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_RELIGION, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_RELIGION)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_SCRIBING, make_unique<ScribingSkillProcessor>()));

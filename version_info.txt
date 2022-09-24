@@ -84,6 +84,9 @@ Shadow of the Wyrm v1.5.0 "Satoh"
 
 - More weeds.
 
+- Oceanography has been renamed to Ocean Lore, and given to goblins.
+  Snakelings will now also start with Desert Lore, in addition to Marsh Lore.
+
 - Added some additional Lua functions for modding: set_creature_size, 
   get_creature_size, get_nutrition.
 

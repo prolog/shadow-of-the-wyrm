@@ -523,10 +523,10 @@ class NightSightSkill : public GeneralSkill
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-class OceanographySkill : public GeneralSkill
+class OceanLoreSkill : public GeneralSkill
 {
   public:
-    OceanographySkill();
+    OceanLoreSkill();
 
     virtual Skill* clone() override;
 

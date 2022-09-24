@@ -1952,6 +1952,7 @@
 					<Awareness>15</Awareness>
 					<Boating>15</Boating>
 					<Carrying>10</Carrying>
+					<DesertLore>15</DesertLore>
 					<Detection>10</Detection>
 					<MarshLore>20</MarshLore>
 					<NightSight>10</NightSight>
@@ -2229,6 +2230,7 @@
 					<Dungeoneering>15</Dungeoneering>
 					<Escape>10</Escape>
 					<Hiding>15</Hiding>
+					<OceanLore>5</OceanLore>
 					<Stealth>15</Stealth>
 					<Swimming>15</Swimming>
 				</GeneralSkills>
@@ -4149,7 +4151,7 @@
 					<Fishing>20</Fishing>
 					<Foraging>15</Foraging>
 					<MarshLore>10</MarshLore>
-					<Oceanography>20</Oceanography>
+					<OceanLore>20</OceanLore>
 					<Skinning>15</Skinning>
 					<Swimming>25</Swimming>
 					<Tanning>15</Tanning>

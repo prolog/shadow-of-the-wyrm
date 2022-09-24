@@ -127,9 +127,9 @@ class SkillTextKeys
     static const std::string SKILL_GENERAL_NIGHT_SIGHT;
     static const std::string SKILL_GENERAL_NIGHT_SIGHT_INCREMENT;
     static const std::string SKILL_GENERAL_NIGHT_SIGHT_DETAILS;
-    static const std::string SKILL_GENERAL_OCEANOGRAPHY;
-    static const std::string SKILL_GENERAL_OCEANOGRAPHY_INCREMENT;
-    static const std::string SKILL_GENERAL_OCEANOGRAPHY_DETAILS;
+    static const std::string SKILL_GENERAL_OCEAN_LORE;
+    static const std::string SKILL_GENERAL_OCEAN_LORE_INCREMENT;
+    static const std::string SKILL_GENERAL_OCEAN_LORE_DETAILS;
     static const std::string SKILL_GENERAL_PAPERCRAFT;
     static const std::string SKILL_GENERAL_PAPERCRAFT_INCREMENT;
     static const std::string SKILL_GENERAL_PAPERCRAFT_DETAILS;
@@ -304,6 +304,7 @@ class SkillTextKeys
     static const std::string SKILL_USAGE_MOUNTAINEERING;
     static const std::string SKILL_USAGE_MOUNTAIN_LORE;
     static const std::string SKILL_USAGE_NIGHT_SIGHT;
+    static const std::string SKILL_USAGE_OCEAN_LORE;
     static const std::string SKILL_USAGE_RELIGION;
     static const std::string SKILL_USAGE_SKINNING;
     static const std::string SKILL_USAGE_SMITHING;
