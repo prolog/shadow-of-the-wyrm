@@ -794,7 +794,7 @@ void WorldGenerator::set_treasure(MapPtr map)
     NormalDistribution forest_treasures(40, 12);
     NormalDistribution desert_treasures(50, 15);
     NormalDistribution marsh_treasures(60, 12);
-    NormalDistribution underwater_treasure(70, 15);
+    NormalDistribution underwater_treasures(70, 15);
     NormalDistribution mountain_treasures(80, 7);
     
     bool desert_override = true;
@@ -825,24 +825,24 @@ void WorldGenerator::set_treasure(MapPtr map)
 
         if (MapUtils::adjacent_tiles_contain_type(map, c, { Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH, Direction::DIRECTION_EAST, Direction::DIRECTION_WEST }, TileType::TILE_TYPE_SEA))
         {
-          // potentially_add__treasure(tc_pair.first, tc_pair.second, underwater_treasures, underwater_override, true /* underwater */);
+          potentially_add_treasure(tc_pair.first, tc_pair.second, underwater_treasures, underwater_override, true);
         }
 
         if (tt == TileType::TILE_TYPE_DESERT)
         {
-          potentially_add_treasure(tc_pair.first, tc_pair.second, desert_treasures, desert_override);
+          potentially_add_treasure(tc_pair.first, tc_pair.second, desert_treasures, desert_override, false);
         }
         else if (tt == TileType::TILE_TYPE_FOREST)
         {
-          potentially_add_treasure(tc_pair.first, tc_pair.second, forest_treasures, forest_override);
+          potentially_add_treasure(tc_pair.first, tc_pair.second, forest_treasures, forest_override, false);
         }
         else if (tt == TileType::TILE_TYPE_MARSH)
         {
-          potentially_add_treasure(tc_pair.first, tc_pair.second, marsh_treasures, marsh_override);
+          potentially_add_treasure(tc_pair.first, tc_pair.second, marsh_treasures, marsh_override, false);
         }
         else if (tt == TileType::TILE_TYPE_MOUNTAINS)
         {
-          potentially_add_treasure(tc_pair.first, tc_pair.second, mountain_treasures, mountain_override);
+          potentially_add_treasure(tc_pair.first, tc_pair.second, mountain_treasures, mountain_override, false);
         }
       }
     }
@@ -920,13 +920,13 @@ string WorldGenerator::get_race_village_extra_description_sid(const string& race
   return sid;
 }
 
-void WorldGenerator::potentially_add_treasure(const string& key, TilePtr tile, NormalDistribution& nd, bool& terrain_override)
+void WorldGenerator::potentially_add_treasure(const string& key, TilePtr tile, NormalDistribution& nd, bool& terrain_override, const bool treasure_is_underwater)
 {
   if (tile != nullptr && (terrain_override || RNG::x_in_y_chance(X_IN_Y_CHANCE_TREASURE.first, X_IN_Y_CHANCE_TREASURE.second)))
   {
     Log& log = Log::instance();
     int difficulty = nd.next_int_as_pct();
-    string source = TextMessages::get_buried_treasure_message();
+    string source = TextMessages::get_hidden_treasure_message(treasure_is_underwater);
 
     if (terrain_override)
     {
@@ -942,11 +942,18 @@ void WorldGenerator::potentially_add_treasure(const string& key, TilePtr tile, N
     if (log.debug_enabled())
     {
       ostringstream log_msg;
-      log_msg << "Treasure: " << key << " (difficulty " << difficulty << ") [" << source << "]";
+      log_msg << "Treasure: " << key << " (difficulty " << difficulty << ", uw=" << treasure_is_underwater << ")[" << source << "]";
       log.debug(log_msg.str());
     }
 
-    tile->set_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED, std::to_string(difficulty));
-    tile->set_additional_property(TileProperties::TILE_PROPERTY_TREASURE_SOURCE, source);
+    if (treasure_is_underwater)
+    {
+      // ...
+    }
+    else
+    {
+      tile->set_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED, std::to_string(difficulty));
+      tile->set_additional_property(TileProperties::TILE_PROPERTY_TREASURE_SOURCE, source);
+    }
   }
 }

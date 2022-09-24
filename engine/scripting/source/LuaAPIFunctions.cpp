@@ -468,6 +468,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_size", set_creature_size);
   lua_register(L, "get_creature_size", get_creature_size);
   lua_register(L, "get_nutrition", get_nutrition);
+  lua_register(L, "get_hidden_treasure_message", get_hidden_treasure_message);
 }
 
 // Lua API helper functions
@@ -10035,5 +10036,22 @@ int get_nutrition(lua_State* ls)
   }
 
   lua_pushinteger(ls, nutrition);
+  return 1;
+}
+
+int get_hidden_treasure_message(lua_State* ls)
+{
+  string msg;
+
+  if (lua_gettop(ls) == 1 && lua_isboolean(ls, 1))
+  {
+    msg = TextMessages::get_hidden_treasure_message(lua_toboolean(ls, 1));
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_hidden_treasure_message");
+  }
+
+  lua_pushstring(ls, msg.c_str());
   return 1;
 }

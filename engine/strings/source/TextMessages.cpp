@@ -68,6 +68,9 @@ const string TextMessages::SELECT_AGE_MESSAGE                 = "SELECT_AGE_MESS
 const string TextMessages::BURIED_TREASURE_MESSAGE            = "BURIED_TREASURE_MESSAGE";
 const string TextMessages::BURIED_TREASURE_SOURCE             = "BURIED_TREASURE_SOURCE";
 const string TextMessages::BURIED_TREASURE_SOURCE_ADJECTIVE   = "BURIED_TREASURE_SOURCE_ADJECTIVE";
+const string TextMessages::SHIPWRECK_MESSAGE                  = "SHIPWRECK_MESSAGE";
+const string TextMessages::SHIPWRECK_SHIP_NAME                = "SHIPWRECK_SHIP_NAME";
+const string TextMessages::SHIPWRECK_REASON                   = "SHIPWRECK_REASON";
 
 string TextMessages::get_full_header_text(const string& header, const uint num_cols)
 {
@@ -852,6 +855,18 @@ string TextMessages::get_and_replace(const string& sid, const vector<string>& re
   return msg;
 }
 
+string TextMessages::get_hidden_treasure_message(const bool is_underwater)
+{
+  if (is_underwater)
+  {
+    return get_shipwreck_message();
+  }
+  else
+  {
+    return get_buried_treasure_message();
+  }
+}
+
 string TextMessages::get_buried_treasure_message()
 {
   string t_msg = StringTable::get(BURIED_TREASURE_MESSAGE);
@@ -881,4 +896,19 @@ string TextMessages::get_buried_treasure_message()
 
   boost::replace_first(t_msg, "%s", source);
   return t_msg;
+}
+
+string TextMessages::get_shipwreck_message()
+{
+  string shipwreck_msg = StringTable::get(SHIPWRECK_MESSAGE);
+  vector<string> ships = String::create_string_vector_from_csv_string(StringTable::get(SHIPWRECK_SHIP_NAME));
+  vector<string> reasons = String::create_string_vector_from_csv_string(StringTable::get(SHIPWRECK_REASON));
+
+  if (!ships.empty() && !reasons.empty())
+  {
+    boost::replace_first(shipwreck_msg, "%s1", ships.at(RNG::range(0, ships.size() - 1)));
+    boost::replace_first(shipwreck_msg, "%s2", reasons.at(RNG::range(0, reasons.size() - 1)));
+  }
+
+  return shipwreck_msg;
 }
