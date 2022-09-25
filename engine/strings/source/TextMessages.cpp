@@ -906,8 +906,11 @@ string TextMessages::get_shipwreck_message()
 
   if (!ships.empty() && !reasons.empty())
   {
-    boost::replace_first(shipwreck_msg, "%s1", ships.at(RNG::range(0, ships.size() - 1)));
-    boost::replace_first(shipwreck_msg, "%s2", reasons.at(RNG::range(0, reasons.size() - 1)));
+    string ship = boost::trim_copy(ships.at(RNG::range(0, ships.size() - 1)));
+    string reason = boost::trim_copy(reasons.at(RNG::range(0, reasons.size() - 1)));
+
+    boost::replace_first(shipwreck_msg, "%s1", ship);
+    boost::replace_first(shipwreck_msg, "%s2", reason);
   }
 
   return shipwreck_msg;
