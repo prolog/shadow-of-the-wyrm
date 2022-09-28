@@ -106,7 +106,7 @@ void FletcherySkillProcessor::create_projectiles(const string& item_base_id, Cre
     // Check the branch and the item to be created to determine how much
     // ammunition is created.
     ItemPtr component_item = creature->get_inventory()->get_from_base_id(ItemIdKeys::ITEM_ID_BRANCH);
-    uint quantity = cic.calc_quantity(item, component_item);
+    uint quantity = cic.calc_quantity(item, component_item, creature, SkillType::SKILL_GENERAL_FLETCHERY);
 
     if (quantity > 0)
     {

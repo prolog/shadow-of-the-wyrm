@@ -1,4 +1,5 @@
 Me:
+- Apply a similar concept to fletchery/more items to clay shot
 - At the northern and southern extremes, muskeg and shield
 - small chance for shipwreck: some lumber, items, etc. Tie into oceanography.
   should generate a msg.
