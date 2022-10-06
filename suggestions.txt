@@ -1,5 +1,5 @@
 Me:
-- Apply a similar concept to fletchery/more items to clay shot
+- need to finish shipwrecks!
 - At the northern and southern extremes, muskeg and shield
 - small chance for shipwreck: some lumber, items, etc. Tie into oceanography.
   should generate a msg.

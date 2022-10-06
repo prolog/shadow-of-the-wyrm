@@ -93,6 +93,8 @@ class TileProperties
     // can be found
     static const std::string TILE_PROPERTY_MIN_LORE_REQUIRED;
     static const std::string TILE_PROPERTY_TREASURE_SOURCE;
+    static const std::string TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED;
+    static const std::string TILE_PROPERTY_UNDERWATER_TREASURE_SOURCE;
 
     // Checks to see if a given string reprensents a depth-based
     // custom map ID.

@@ -948,7 +948,8 @@ void WorldGenerator::potentially_add_treasure(const string& key, TilePtr tile, N
 
     if (treasure_is_underwater)
     {
-      // ...
+      tile->set_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED, std::to_string(difficulty));
+      tile->set_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_TREASURE_SOURCE, source);
     }
     else
     {

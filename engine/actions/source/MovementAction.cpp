@@ -693,6 +693,12 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
         generator->set_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED, std::to_string(treasure_total_skill_value));
       }
 
+      if (MapUtils::has_known_shipwreck(tile, creature))
+      {
+        int treasure_total_skill_value = SkillsCalculator::calculate_hidden_treasure_total_skill_value(creature, String::to_int(tile->get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED)));
+        generator->set_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED, std::to_string(treasure_total_skill_value));
+      }
+
       new_map = generator->generate_and_initialize(danger_level, depth);
 
       // If a map exit's been provided, check to see if there's an event

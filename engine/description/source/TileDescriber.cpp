@@ -67,6 +67,11 @@ string TileDescriber::describe() const
       description = description + " " + tile->get_additional_property(TileProperties::TILE_PROPERTY_TREASURE_SOURCE);
     }
 
+    if (MapUtils::has_known_shipwreck(tile, viewing_creature))
+    {
+      description = description + " " + tile->get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_TREASURE_SOURCE);
+    }
+
     if (tile->has_engraving())
     {
       description = description + " " + TextMessages::get_engraving_message(tile->get_engraving_sid());

@@ -2604,6 +2604,29 @@ bool MapUtils::has_known_treasure(TilePtr tile, CreaturePtr creature)
   return has_treasure;
 }
 
+bool MapUtils::has_known_shipwreck(TilePtr tile, CreaturePtr creature)
+{
+  bool has_shipwreck = false;
+
+  if (tile != nullptr && creature != nullptr)
+  {
+    string difficulty = tile->get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED);
+
+    if (!difficulty.empty())
+    {
+      int diff = String::to_int(difficulty);
+      SkillType required_skill = SkillType::SKILL_GENERAL_OCEAN_LORE;
+
+      if (creature->get_skills().get_value(required_skill) >= diff)
+      {
+        has_shipwreck = true;
+      }
+    }
+  }
+
+  return has_shipwreck;
+}
+
 bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d)
 {
   bool can_change = false;

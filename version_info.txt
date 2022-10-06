@@ -82,7 +82,9 @@ Shadow of the Wyrm v1.5.0 "Satoh"
 - Character dumps now show the date and time when you started your character,
   as well as the current time.
 
-- The Fletchery skill now influences how many items get created.
+- The Fletchery skill now influences how many items get created when using
+  Fletchery.  A similar calculation is applied to the creation of clay shot,
+  with the key skill being Crafting.
 
 - More weeds.
 

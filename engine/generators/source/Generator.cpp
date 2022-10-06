@@ -108,6 +108,15 @@ void Generator::generate_additional_structures(MapPtr map)
 
 void Generator::generate_treasure(MapPtr map)
 {
+  string min_underwater_lore_s = get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED);
+
+  // If there's a shipwreck, copy the lore details to the map so it can be used
+  // by the underwater generator.
+  if (!min_underwater_lore_s.empty())
+  {
+    map->set_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED, min_underwater_lore_s);
+  }
+
   string min_lore_s = get_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED);
 
   if (!min_lore_s.empty())

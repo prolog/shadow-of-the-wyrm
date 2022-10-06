@@ -140,6 +140,7 @@ class MapUtils
     static std::tuple<int, int, std::string, std::string> get_random_village_by_property(MapPtr map, const std::string& prop, const std::vector<std::string>& exclude_map_ids);
 
     static bool has_known_treasure(TilePtr tile, CreaturePtr creature);
+    static bool has_known_shipwreck(TilePtr tile, CreaturePtr creature);
 
     static bool can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d);
 
