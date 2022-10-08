@@ -106,6 +106,32 @@ void Generator::generate_additional_structures(MapPtr map)
   }
 }
 
+void Generator::generate_shipwreck(MapPtr map, const vector<Coordinate>& shipwreck_coords, const vector<std::string>& addl_items, const int min_lore)
+{
+  if (!shipwreck_coords.empty() && map != nullptr)
+  {
+    ItemManager im;
+    Coordinate rand = shipwreck_coords.at(RNG::range(0, shipwreck_coords.size() - 1));
+
+    generate_treasure_on_coords(map, shipwreck_coords, min_lore);
+    generate_randarts(map, rand.first, rand.second, min_lore);
+
+    for (const auto& addl_item : addl_items)
+    {
+      rand = shipwreck_coords.at(RNG::range(0, shipwreck_coords.size() - 1));
+      TilePtr tile = map->at(rand);
+
+      if (tile != nullptr)
+      {
+        ItemPtr item = im.create_item(addl_item);
+        tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      }
+    }
+
+    map->set_permanent(true);
+  }
+}
+
 void Generator::generate_treasure(MapPtr map)
 {
   string min_underwater_lore_s = get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED);
@@ -128,7 +154,6 @@ void Generator::generate_treasure(MapPtr map)
     int rand_x = 0;
     vector<Coordinate> coords;
     TilePtr tile;
-    ItemScript is;
 
     for (int i = 0; i < 50; i++)
     {
@@ -163,53 +188,68 @@ void Generator::generate_treasure(MapPtr map)
       return;
     }
 
-    // Generate bits of treasure
-    vector<string> item_ids = is.execute_get_treasure_items(Game::instance().get_script_engine_ref());
-    GeneratorUtils::generate_item_per_coord(map, coords, item_ids);
-
-    // Generate some minor amounts of ivory
-    int mini_piles = RNG::range(0, coords.size() / 3);
-
-    for (int i = 0; i < mini_piles; i++)
-    {
-      TilePtr ivory_tile = map->at(coords.at(RNG::range(0, coords.size() - 1)));
-      int ivory_cnt = std::min<int>(min_lore, 50);
-      ItemPtr ivory = ItemManager::create_item(ItemIdKeys::ITEM_ID_CURRENCY, RNG::range(ivory_cnt / 2, ivory_cnt));
-      ivory_tile->get_items()->merge_or_add(ivory, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
-    }
-
-    // Generate either a randart, or a lot of ivory.
-    bool generate_randart = false;
-    
-    if (min_lore > 65)
-    {
-      generate_randart = true;
-    }
-
-    if (generate_randart)
-    {
-      int num_randarts = 1;
-
-      if (min_lore == 100)
-      {
-        num_randarts = 3;
-      }
-      else if (min_lore > 90 || RNG::percent_chance(min_lore / 4))
-      {
-        num_randarts = 2;
-      }
-
-      GeneratorUtils::generate_randarts(map, { rand_y, rand_x }, num_randarts);
-    }
-    else
-    {
-      int max_ivory = min_lore * 100;
-      ItemPtr ivory = ItemManager::create_item(ItemIdKeys::ITEM_ID_CURRENCY, RNG::range(max_ivory / 2, max_ivory));
-      tile->get_items()->merge_or_add(ivory, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
-    }
+    generate_treasure_on_coords(map, coords, min_lore);
+    generate_randarts(map, rand_y, rand_x, min_lore);
 
     // Once the treasure is found, the map becomes permanent.
     map->set_permanent(true);
+  }
+}
+
+void Generator::generate_treasure_on_coords(MapPtr map, const vector<Coordinate>& coords, const int min_lore)
+{
+  // Generate bits of treasure
+  ItemScript is;
+  vector<string> item_ids = is.execute_get_treasure_items(Game::instance().get_script_engine_ref());
+  GeneratorUtils::generate_item_per_coord(map, coords, item_ids);
+
+  // Generate some minor amounts of ivory
+  int mini_piles = RNG::range(0, coords.size() / 3);
+
+  for (int i = 0; i < mini_piles; i++)
+  {
+    TilePtr ivory_tile = map->at(coords.at(RNG::range(0, coords.size() - 1)));
+    int ivory_cnt = std::min<int>(min_lore, 50);
+    ItemPtr ivory = ItemManager::create_item(ItemIdKeys::ITEM_ID_CURRENCY, RNG::range(ivory_cnt / 2, ivory_cnt));
+    ivory_tile->get_items()->merge_or_add(ivory, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+  }
+}
+
+void Generator::generate_randarts(MapPtr map, const int rand_y, const int rand_x, const int min_lore)
+{
+  // Generate either a randart, or a lot of ivory.
+  bool generate_randart = false;
+
+  if (min_lore > 65)
+  {
+    generate_randart = true;
+  }
+
+  if (generate_randart)
+  {
+    int num_randarts = 1;
+
+    if (min_lore == 100)
+    {
+      num_randarts = 3;
+    }
+    else if (min_lore > 90 || RNG::percent_chance(min_lore / 4))
+    {
+      num_randarts = 2;
+    }
+
+    GeneratorUtils::generate_randarts(map, { rand_y, rand_x }, num_randarts);
+  }
+  else
+  {
+    int max_ivory = min_lore * 100;
+    ItemPtr ivory = ItemManager::create_item(ItemIdKeys::ITEM_ID_CURRENCY, RNG::range(max_ivory / 2, max_ivory));
+    TilePtr tile = map->at(rand_y, rand_x);
+
+    if (tile != nullptr)
+    {
+      tile->get_items()->merge_or_add(ivory, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+    }
   }
 }
 

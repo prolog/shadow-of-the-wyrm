@@ -73,7 +73,11 @@ namespace SOTW
     protected:
    
       virtual void generate_additional_structures(MapPtr map);
+
+      virtual void generate_shipwreck(MapPtr map, const std::vector<Coordinate>& shipwreck_coords, const std::vector<std::string>& addl_items, const int min_lore);
       virtual void generate_treasure(MapPtr map);
+      virtual void generate_treasure_on_coords(MapPtr map, const std::vector<Coordinate>& treasure_coords, const int min_lore);
+      virtual void generate_randarts(MapPtr map, int y, int x, int min_lore);
 
       virtual void set_map_permanence(MapPtr map);
       virtual bool get_permanence() const; // Check additional properties, and only then check the default

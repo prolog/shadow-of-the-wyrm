@@ -1,4 +1,5 @@
 #include "UnderwaterGenerator.hpp"
+#include "Conversion.hpp"
 #include "ItemManager.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
@@ -40,6 +41,9 @@ MapPtr UnderwaterGenerator::generate(const Dimensions& dim)
 	result_map->set_permanent(true);
 	int generation_rate = 0;
 	int rock_generation_rate = 0;
+	string shipwreck_val = get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED);
+	bool has_shipwreck = !shipwreck_val.empty();
+	vector<Coordinate> water_coords;
 
 	if (RNG::percent_chance(PCT_CHANCE_UNDERWATER_ITEMS))
 	{
@@ -98,16 +102,27 @@ MapPtr UnderwaterGenerator::generate(const Dimensions& dim)
 				}
 
 				tile->set_submerged(true);
+				c = MapUtils::convert_map_key_to_coordinate(tc_pair.first);
 
 				if (should_generate_items)
 				{
 					add_items(tile, att, generation_rate, rock_generation_rate);
+
+					if (has_shipwreck)
+					{
+						water_coords.push_back(c);
+					}
 				}
 
-				c = MapUtils::convert_map_key_to_coordinate(tc_pair.first);
 				result_map->insert(c, tile);
 			}
 		}
+	}
+
+	if (has_shipwreck)
+	{
+		int shipwreck_value = String::to_int(shipwreck_val);
+		create_shipwreck(result_map, water_coords, shipwreck_value);
 	}
 
 	return result_map;
@@ -165,6 +180,53 @@ void UnderwaterGenerator::add_items(TilePtr tile, const TileType att, const int 
 				tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
 			}
 		}
+	}
+}
+
+void UnderwaterGenerator::create_shipwreck(MapPtr uw_map, const vector<Coordinate>& water_coords, const int shipwreck_value)
+{
+	if (!water_coords.empty() && shipwreck_value > 0)
+	{
+		vector<string> addl_items = {};
+		map<string, int> addl_item_chances = { {ItemIdKeys::ITEM_ID_BOARD_WITH_NAIL_IN_IT, 6}, 
+			                                     {ItemIdKeys::ITEM_ID_CLAY_POT, 7}, 
+			                                     {ItemIdKeys::ITEM_ID_FISHING_ROD, 4}, 
+			                                     {ItemIdKeys::ITEM_ID_INKPOT,5}, 
+			                                     {ItemIdKeys::ITEM_ID_MAGICI_SHARD, 2}, 
+			                                     {ItemIdKeys::ITEM_ID_PILE_OF_BONES, 5}, 
+			                                     {ItemIdKeys::ITEM_ID_INTACT_SKELETON, 3}, 
+			                                     {ItemIdKeys::ITEM_ID_LUMBER, 80} };
+		int extra_passes = RNG::range(3, 5);
+
+		for (int i = 0; i < extra_passes; i++)
+		{
+			for (const auto& ai_pair : addl_item_chances)
+			{
+				if (RNG::percent_chance(ai_pair.second))
+				{
+					addl_items.push_back(ai_pair.first);
+				}
+			}
+		}
+
+		vector<Coordinate> shipwreck_coords;
+
+		if (water_coords.size() > 15)
+		{
+			int wreck_size = RNG::range(5, 15);
+			int wreck_start = RNG::range(0, water_coords.size() - wreck_size - 1);
+
+			for (int i = 0; i < wreck_size; i++)
+			{
+				shipwreck_coords.push_back(water_coords.at(wreck_start + i));
+			}
+		}
+		else
+		{
+			shipwreck_coords = water_coords;
+		}
+
+		generate_shipwreck(uw_map, shipwreck_coords, addl_items, shipwreck_value);
 	}
 }
 

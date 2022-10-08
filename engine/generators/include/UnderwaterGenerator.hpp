@@ -11,6 +11,7 @@ class UnderwaterGenerator : public SOTW::Generator
 
 protected:
 		void add_items(TilePtr tile, const TileType above_tile_type, const int generation_rate, const int rock_generation_rate);
+		void create_shipwreck(MapPtr map, const std::vector<Coordinate>& water_coords, const int shipwreck_val);
 
 		void init_underwater_item_ids();
 
