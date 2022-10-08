@@ -1,6 +1,6 @@
 Me:
 - Elenor and Verra
-- Mountains should respect coastlines too
+- Tweak shipwrecks - the dungeoneering bonus is being applied 2x
 - need to finish shipwrecks!
 - At the northern and southern extremes, muskeg and shield
 - small chance for shipwreck: some lumber, items, etc. Tie into oceanography.

@@ -1922,7 +1922,7 @@ bool MapUtils::add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr
   {
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
-    if (tile->display_description_on_arrival() || tile->has_extra_description() || has_known_treasure(tile, creature) || has_known_shipwreck(tile, creature))
+    if (tile->display_description_on_arrival() || tile->has_extra_description() || has_known_treasure(tile, creature) || has_known_shipwreck(nullptr, tile, creature))
     {
       TileDescriber td(creature, tile, is_world_map);
       manager.add_new_message(td.describe());
@@ -2604,13 +2604,13 @@ bool MapUtils::has_known_treasure(TilePtr tile, CreaturePtr creature)
   return has_treasure;
 }
 
-bool MapUtils::has_known_shipwreck(TilePtr tile, CreaturePtr creature)
+bool MapUtils::has_known_shipwreck(MapPtr map, TilePtr tile, CreaturePtr creature)
 {
   bool has_shipwreck = false;
 
   if (tile != nullptr && creature != nullptr)
   {
-    string difficulty = tile->get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED);
+    string difficulty = get_shipwreck_min_lore(map, tile);
 
     if (!difficulty.empty())
     {
@@ -2625,6 +2625,23 @@ bool MapUtils::has_known_shipwreck(TilePtr tile, CreaturePtr creature)
   }
 
   return has_shipwreck;
+}
+
+string MapUtils::get_shipwreck_min_lore(MapPtr map, TilePtr tile)
+{
+  string min_lore;
+
+  if (tile != nullptr)
+  {
+    min_lore = tile->get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED);
+
+    if (min_lore.empty() && map != nullptr && map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
+    {
+      min_lore = map->get_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED);
+    }
+  }
+
+  return min_lore;
 }
 
 bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d)
