@@ -1,5 +1,6 @@
 #include "MountainsGenerator.hpp"
 #include "CoastlineGenerator.hpp"
+#include "GeneratorUtils.hpp"
 #include "ItemManager.hpp"
 #include "ItemTypes.hpp"
 #include "RNG.hpp"
@@ -87,6 +88,7 @@ MapPtr MountainsGenerator::generate(const Dimensions& dimensions)
     }
   }
 
+  GeneratorUtils::potentially_generate_coastline(result_map, this);
   generate_stream(result_map);
   generate_cliffs(result_map);
   
