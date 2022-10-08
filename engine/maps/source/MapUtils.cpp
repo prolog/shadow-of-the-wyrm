@@ -1922,7 +1922,7 @@ bool MapUtils::add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr
   {
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
-    if (tile->display_description_on_arrival() || tile->has_extra_description() || has_known_treasure(tile, creature))
+    if (tile->display_description_on_arrival() || tile->has_extra_description() || has_known_treasure(tile, creature) || has_known_shipwreck(tile, creature))
     {
       TileDescriber td(creature, tile, is_world_map);
       manager.add_new_message(td.describe());
