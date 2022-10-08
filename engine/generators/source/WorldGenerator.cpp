@@ -181,9 +181,13 @@ void WorldGenerator::post_process_cell(MapPtr map, const int row, const int col)
     prop_pairs = { {100, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}},
                    {600, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}} };
   }
+  else if (tt == TileType::TILE_TYPE_MOUNTAINS)
+  {
+    prop_pairs = { {700, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}},
+                   {700, {TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE}} };
+  }
   // else { ... }
-  // Mountains and all other terrain types don't have properties currently
-  // defined.
+  // other terrain types don't have properties currently defined.
 
   potentially_add_properties(row, col, tile, prop_pairs);
 }
