@@ -74,7 +74,7 @@ namespace SOTW
    
       virtual void generate_additional_structures(MapPtr map);
 
-      virtual void generate_shipwreck(MapPtr map, const std::vector<Coordinate>& shipwreck_coords, const std::vector<std::string>& addl_items, const int min_lore);
+      virtual void generate_shipwreck(MapPtr map, const Coordinate& shipwreck_coord, const std::vector<std::string>& addl_items, const int min_lore);
       virtual void generate_treasure(MapPtr map);
       virtual void generate_treasure_on_coords(MapPtr map, const std::vector<Coordinate>& treasure_coords, const int min_lore);
       virtual void generate_randarts(MapPtr map, int y, int x, int min_lore);

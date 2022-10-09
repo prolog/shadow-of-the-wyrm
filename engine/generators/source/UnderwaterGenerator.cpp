@@ -1,5 +1,6 @@
 #include "UnderwaterGenerator.hpp"
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "ItemManager.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
@@ -209,24 +210,14 @@ void UnderwaterGenerator::create_shipwreck(MapPtr uw_map, const vector<Coordinat
 			}
 		}
 
-		vector<Coordinate> shipwreck_coords;
+		Coordinate shipwreck_coord = CoordUtils::end();
 
-		if (water_coords.size() > 15)
+		if (!water_coords.empty())
 		{
-			int wreck_size = RNG::range(5, 15);
-			int wreck_start = RNG::range(0, water_coords.size() - wreck_size - 1);
-
-			for (int i = 0; i < wreck_size; i++)
-			{
-				shipwreck_coords.push_back(water_coords.at(wreck_start + i));
-			}
-		}
-		else
-		{
-			shipwreck_coords = water_coords;
+			shipwreck_coord = water_coords.at(RNG::range(0, water_coords.size() - 1));
 		}
 
-		generate_shipwreck(uw_map, shipwreck_coords, addl_items, shipwreck_value);
+		generate_shipwreck(uw_map, shipwreck_coord, addl_items, shipwreck_value);
 	}
 }
 

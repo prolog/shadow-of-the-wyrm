@@ -48,6 +48,9 @@ Shadow of the Wyrm v1.5.0 "Satoh"
   huge sum of ivory or a randart.  Dungeoneering can also help improve the
   quality of the cache.
 
+- Ocean Lore lets you find sunken shipwrecks.  These are located on the ocean
+  floor near coastlines - you'll need to dive down to find them.
+
 - Mountains can now be generated with southern and eastern clifflines that
   drop off into nothing.  Mountains may now also have streams and springs.
 

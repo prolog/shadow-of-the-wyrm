@@ -106,25 +106,30 @@ void Generator::generate_additional_structures(MapPtr map)
   }
 }
 
-void Generator::generate_shipwreck(MapPtr map, const vector<Coordinate>& shipwreck_coords, const vector<std::string>& addl_items, const int min_lore)
+void Generator::generate_shipwreck(MapPtr map, const Coordinate& sw, const vector<std::string>& addl_items, const int min_lore)
 {
-  if (!shipwreck_coords.empty() && map != nullptr)
+  if (map != nullptr)
   {
     ItemManager im;
-    Coordinate rand = shipwreck_coords.at(RNG::range(0, shipwreck_coords.size() - 1));
+
+    vector<Coordinate> shipwreck_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), sw.first, sw.second);
+    vector<Coordinate> detritus = CoordUtils::get_perimeter_coordinates({ sw.first - 2, sw.second - 2 }, { sw.first + 2, sw.second + 2 });
 
     generate_treasure_on_coords(map, shipwreck_coords, min_lore);
-    generate_randarts(map, rand.first, rand.second, min_lore);
+    generate_randarts(map, sw.first, sw.second, min_lore);
 
-    for (const auto& addl_item : addl_items)
+    if (!addl_items.empty())
     {
-      rand = shipwreck_coords.at(RNG::range(0, shipwreck_coords.size() - 1));
-      TilePtr tile = map->at(rand);
-
-      if (tile != nullptr)
+      for (const auto& dc : detritus)
       {
-        ItemPtr item = im.create_item(addl_item);
-        tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        TilePtr tile = map->at(dc);
+
+        if (tile != nullptr)
+        {
+          string detritus_id = addl_items.at(RNG::range(0, addl_items.size() - 1));
+          ItemPtr item = im.create_item(detritus_id);
+          tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        }
       }
     }
 
