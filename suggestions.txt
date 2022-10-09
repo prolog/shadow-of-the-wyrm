@@ -1,8 +1,6 @@
 Me:
 - Elenor and Verra
-- Tweak shipwrecks - the dungeoneering bonus is being applied 2x
-- need to finish shipwrecks!
-- At the northern and southern extremes, muskeg and shield
+- At the northern and southern extremes, muskeg
 - small chance for shipwreck: some lumber, items, etc. Tie into oceanography.
   should generate a msg.
 - small chance to generate good items underwater

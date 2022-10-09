@@ -87,6 +87,7 @@ namespace SOTW
 
       virtual void initialize(MapPtr map, const int danger_level);
       virtual void fill(const MapPtr map, const TileType& tile_type);
+      virtual void fill(const MapPtr map, const std::vector<std::pair<TileType, int>>& tiles);
       virtual bool place_staircase(MapPtr current_map, const int row, const int col, const TileType tile_type, const TileType tile_subtype, const Direction direction, const bool link_to_map_exit_id, const bool set_as_player_default_location);
       virtual bool place_up_staircase(MapPtr current_map, const int row, const int col, const TileType tile_subtype, const Direction direction, const bool link_to_map_exit_id, const bool set_as_player_default_location);
       virtual bool place_down_staircase(MapPtr current_map, const int row, const int col, const TileType tile_subtype, const Direction direction, const bool link_to_map_exit_id, const bool set_as_player_default_location);

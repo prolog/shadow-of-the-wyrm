@@ -364,6 +364,32 @@ void Generator::fill(const MapPtr map, const TileType& tile_type)
   }
 }
 
+void Generator::fill(const MapPtr map, const vector<pair<TileType, int>>& tile_p)
+{
+  TileGenerator tg;
+  Dimensions dim = map->size();
+
+  int rows = dim.get_y();
+  int cols = dim.get_x();
+
+  for (int row = 0; row < rows; row++)
+  {
+    for (int col = 0; col < cols; col++)
+    {
+      for (const auto& tp_pair : tile_p)
+      {
+        if (RNG::percent_chance(tp_pair.second))
+        {
+          TilePtr current_tile = tg.generate(tp_pair.first);
+          map->insert(row, col, current_tile);
+
+          break;
+        }
+      }
+    }
+  }
+}
+
 // Seed the initial items.  Returns true if the items were created, false otherwise.
 // By default, no initial items are generated.  This function should be overridden
 // for generators where this is expected (dungeons, maybe villages, etc).
