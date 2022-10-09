@@ -9,7 +9,7 @@ class SkillsCalculator
 {
   public:
     static Skills calculate_skills(CreaturePtr creature, Race* race, Class* char_class);
-    static int calculate_hidden_treasure_total_skill_value(CreaturePtr creature, const int lore_val);
+    static int calculate_hidden_treasure_total_skill_value(CreaturePtr creature, const MapType map_type, const int lore_val);
 
   protected:
     SkillsCalculator();

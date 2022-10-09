@@ -72,11 +72,16 @@ Skills SkillsCalculator::calculate_skills_in_given_range(CreaturePtr creature, R
   return calculated_skills;
 }
 
-int SkillsCalculator::calculate_hidden_treasure_total_skill_value(CreaturePtr creature, const int lore_val)
+int SkillsCalculator::calculate_hidden_treasure_total_skill_value(CreaturePtr creature, const MapType map_type, const int lore_val)
 {
   int total = lore_val;
 
-  if (creature != nullptr)
+  // Esure the dungeoneering bonus is only applied when on the world map.  Some
+  // treasure types (eg shipwrecks) aren't on a new map, but are connected to
+  // them.  Without this check, the dungeoneering bonus gets applied twice -
+  // once when descending to the overworld map, and again when descending to
+  // the associated underwater map.
+  if (creature != nullptr && map_type == MapType::MAP_TYPE_WORLD)
   {
     int dungeoneering = creature->get_skills().get_value(SkillType::SKILL_GENERAL_DUNGEONEERING);
     total += (dungeoneering / HIDDEN_TREASURE_DUNGEONEERING_DIVISOR);

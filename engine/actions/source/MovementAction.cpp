@@ -689,13 +689,13 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
 
       if (MapUtils::has_known_treasure(tile, creature))
       {
-        int treasure_total_skill_value = SkillsCalculator::calculate_hidden_treasure_total_skill_value(creature, String::to_int(tile->get_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED)));
+        int treasure_total_skill_value = SkillsCalculator::calculate_hidden_treasure_total_skill_value(creature, map->get_map_type(), String::to_int(tile->get_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED)));
         generator->set_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED, std::to_string(treasure_total_skill_value));
       }
 
       if (MapUtils::has_known_shipwreck(map, tile, creature))
       {
-        int treasure_total_skill_value = SkillsCalculator::calculate_hidden_treasure_total_skill_value(creature, String::to_int(MapUtils::get_shipwreck_min_lore(map, tile)));
+        int treasure_total_skill_value = SkillsCalculator::calculate_hidden_treasure_total_skill_value(creature, map->get_map_type(), String::to_int(MapUtils::get_shipwreck_min_lore(map, tile)));
         generator->set_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED, std::to_string(treasure_total_skill_value));
       }
 

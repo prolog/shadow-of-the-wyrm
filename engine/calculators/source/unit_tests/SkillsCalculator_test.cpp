@@ -114,14 +114,15 @@ TEST(SW_Engine_Calculators_SkillsCalculator, calculate_magic_skills)
 
 TEST(SW_Engine_Calculators_SkillsCalculator, calculate_total_treasure_val)
 {
-  EXPECT_EQ(0, SkillsCalculator::calculate_hidden_treasure_total_skill_value(nullptr, -10));
-  EXPECT_EQ(100, SkillsCalculator::calculate_hidden_treasure_total_skill_value(nullptr, 9999));
+  EXPECT_EQ(0, SkillsCalculator::calculate_hidden_treasure_total_skill_value(nullptr, MapType::MAP_TYPE_WORLD, -10));
+  EXPECT_EQ(100, SkillsCalculator::calculate_hidden_treasure_total_skill_value(nullptr, MapType::MAP_TYPE_WORLD, 9999));
 
   CreaturePtr creature = std::make_shared<Creature>();
 
-  EXPECT_EQ(50, SkillsCalculator::calculate_hidden_treasure_total_skill_value(creature, 50));
+  EXPECT_EQ(50, SkillsCalculator::calculate_hidden_treasure_total_skill_value(creature, MapType::MAP_TYPE_WORLD, 50));
 
   creature->get_skills().set_value(SkillType::SKILL_GENERAL_DUNGEONEERING, 50);
 
-  EXPECT_EQ(55, SkillsCalculator::calculate_hidden_treasure_total_skill_value(creature, 50));
+  EXPECT_EQ(55, SkillsCalculator::calculate_hidden_treasure_total_skill_value(creature, MapType::MAP_TYPE_WORLD, 50));
+  EXPECT_EQ(50, SkillsCalculator::calculate_hidden_treasure_total_skill_value(creature, MapType::MAP_TYPE_OVERWORLD, 50));
 }
