@@ -42,6 +42,11 @@ int ForestCalculator::calculate_pct_chance_deciduous(const int world_height, con
   return (100 - calculate_pct_chance_evergreen(world_height, world_loc));
 }
 
+int ForestCalculator::calculate_pct_chance_shield(const int world_height, const Coordinate& world_loc)
+{
+  return calculate_pct_chance_evergreen(world_height, world_loc);
+}
+
 int ForestCalculator::calculate_pct_chance_evergreen(const int world_height, const Coordinate& world_loc)
 {
   int pct_chance_evergreen = 0;

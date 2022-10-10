@@ -40,7 +40,7 @@ MapPtr ForestGenerator::generate(const Dimensions& dimensions)
   string world_location_map_key = get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_LOCATION);
   int world_map_height = String::to_int(get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_HEIGHT));
   Coordinate world_location = MapUtils::convert_map_key_to_coordinate(world_location_map_key);
-  int pct_chance_shield = fc.calculate_pct_chance_evergreen(world_map_height, world_location);
+  int pct_chance_shield = fc.calculate_pct_chance_shield(world_map_height, world_location);
 
   fill(result_map, { {TileType::TILE_TYPE_ROCKY_EARTH, pct_chance_shield}, {TileType::TILE_TYPE_FIELD, 100} });
 

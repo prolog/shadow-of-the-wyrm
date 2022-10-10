@@ -95,7 +95,8 @@ Shadow of the Wyrm v1.5.0 "Satoh"
   Snakelings will now also start with Desert Lore, in addition to Marsh Lore.
 
 - Forests at the northern and southern extremes are now rockier, their
-  appearance closer to something like the Canadian shield.
+  appearance closer to something like the Canadian shield. Fields and 
+  scrublands, too.
 
 - Added some additional Lua functions for modding: set_creature_size, 
   get_creature_size, get_nutrition.

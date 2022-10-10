@@ -1,8 +1,12 @@
 #include "ScrubGenerator.hpp"
-#include "TileGenerator.hpp"
+#include "Conversion.hpp"
+#include "ForestGenerator.hpp"
 #include "GameUtils.hpp"
 #include "GeneratorUtils.hpp"
+#include "MapProperties.hpp"
+#include "MapUtils.hpp"
 #include "RNG.hpp"
+#include "TileGenerator.hpp"
 
 ScrubGenerator::ScrubGenerator(const std::string& new_map_exit_id)
 : Generator(new_map_exit_id, TileType::TILE_TYPE_SCRUB)
@@ -16,11 +20,18 @@ MapPtr ScrubGenerator::generate(const Dimensions& dimensions)
   int rows = dimensions.get_y();
   int cols = dimensions.get_x();
 
+  ForestCalculator fc;
+
+  int world_map_height = String::to_int(get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_HEIGHT));
+  Coordinate world_location = MapUtils::convert_map_key_to_coordinate(get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_LOCATION));
+
+  int pct_chance_shield = fc.calculate_pct_chance_shield(world_map_height, world_location);
+
   for (int row = 0; row < rows; row++)
   {
     for (int col = 0; col < cols; col++)
     {
-      TilePtr current_tile = generate_tile(result_map, row, col);
+      TilePtr current_tile = generate_tile(result_map, row, col, pct_chance_shield);
       result_map->insert(row, col, current_tile);
     }
   }
@@ -41,7 +52,7 @@ MapPtr ScrubGenerator::generate(const Dimensions& dimensions)
 }
 
 // Scrubland is mostly dead grass with a few small bushes thrown in.
-TilePtr ScrubGenerator::generate_tile(MapPtr result_map, const int row, const int col)
+TilePtr ScrubGenerator::generate_tile(MapPtr result_map, const int row, const int col, const int pct_chance_shield)
 {
   TilePtr generated_tile;
 
@@ -49,7 +60,14 @@ TilePtr ScrubGenerator::generate_tile(MapPtr result_map, const int row, const in
 
   if (rand < 98)
   {
-    generated_tile = tg.generate(TileType::TILE_TYPE_SCRUB);
+    if (RNG::percent_chance(pct_chance_shield))
+    {
+      generated_tile = tg.generate(TileType::TILE_TYPE_ROCKY_EARTH);
+    }
+    else
+    {
+      generated_tile = tg.generate(TileType::TILE_TYPE_SCRUB);
+    }
   }
   else
   {

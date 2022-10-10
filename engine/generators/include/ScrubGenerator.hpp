@@ -9,7 +9,7 @@ class ScrubGenerator : public SOTW::Generator
     virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:
-    virtual TilePtr generate_tile(MapPtr result_map, const int row, const int col);
+    virtual TilePtr generate_tile(MapPtr result_map, const int row, const int col, const int pct_chance_shield);
 
     TileGenerator tg;
 };

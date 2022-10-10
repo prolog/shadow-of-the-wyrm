@@ -1,5 +1,6 @@
 Me:
-- Elenor and Verra
+- Elinor and Verra
+- in villages: retired cartographers?
 - At the northern and southern extremes, muskeg
 - small chance for shipwreck: some lumber, items, etc. Tie into oceanography.
   should generate a msg.
