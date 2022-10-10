@@ -61,6 +61,7 @@
 #include "SnakingTempleGenerator.hpp"
 #include "SpiralDungeonGenerator.hpp"
 #include "StringTable.hpp"
+#include "TextMessages.hpp"
 #include "VoidGenerator.hpp"
 #include "WalledSettlementGenerator.hpp"
 #include "WellGenerator.hpp"
@@ -89,6 +90,7 @@ void test_creature_generation();
 void settlement_name_generation();
 void set_game_player();
 void artifact_name_generation();
+void treasure_description(const bool is_underwater);
 
 // Other maps
 void test_other_maps();
@@ -901,6 +903,8 @@ void misc()
     std::cout << "7. Settlement Name Generation" << std::endl;
     std::cout << "8. Set player on Game object" << std::endl;
     std::cout << "9. Artifact Name Generation" << std::endl;
+    std::cout << "10. Treasure Description Generation" << std::endl;
+    std::cout << "11. Shipwreck Description Generation" << std::endl;
 
     std::cin >> choice;
     
@@ -932,10 +936,26 @@ void misc()
       case 9:
         artifact_name_generation();
         break;
+      case 10:
+        treasure_description(false);
+        break;
+      case 11:
+        treasure_description(true);
+        break;
       default:
         break;
     }
   }
+}
+
+void treasure_description(const bool is_underwater)
+{
+  for (int i = 0; i < 10; i++)
+  {
+    std::cout << TextMessages::get_hidden_treasure_message(is_underwater) << std::endl;
+  }
+
+  std::cout << std::endl;
 }
 
 void test_calendar()
