@@ -1922,7 +1922,7 @@ bool MapUtils::add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr
   {
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
-    if (tile->display_description_on_arrival() || tile->has_extra_description() || has_known_treasure(tile, creature) || has_known_shipwreck(nullptr, tile, creature))
+    if (tile->display_description_on_arrival() || tile->has_extra_description() || has_known_treasure(tile, creature, true) || has_known_shipwreck(nullptr, tile, creature, true))
     {
       TileDescriber td(creature, tile, is_world_map);
       manager.add_new_message(td.describe());
@@ -2581,7 +2581,7 @@ std::tuple<int, int, std::string, std::string> MapUtils::get_random_village_by_p
   return village;
 }
 
-bool MapUtils::has_known_treasure(TilePtr tile, CreaturePtr creature)
+bool MapUtils::has_known_treasure(TilePtr tile, CreaturePtr creature, const bool mark_skill)
 {
   bool has_treasure = false;
 
@@ -2598,13 +2598,30 @@ bool MapUtils::has_known_treasure(TilePtr tile, CreaturePtr creature)
       {
         has_treasure = true;
       }
+      else
+      {
+        if (mark_skill)
+        {
+          int num_marks = RNG::range(4, 8);
+          Skills& skills = creature->get_skills();
+          SkillType train_skill = MapUtils::get_lore_skill_for_terrain(tile);
+
+          if (train_skill != SkillType::SKILL_UNDEFINED)
+          {
+            for (int i = 0; i < num_marks; i++)
+            {
+              skills.mark(train_skill);
+            }
+          }
+        }
+      }
     }
   }
 
   return has_treasure;
 }
 
-bool MapUtils::has_known_shipwreck(MapPtr map, TilePtr tile, CreaturePtr creature)
+bool MapUtils::has_known_shipwreck(MapPtr map, TilePtr tile, CreaturePtr creature, const bool mark_skill)
 {
   bool has_shipwreck = false;
 
@@ -2620,6 +2637,19 @@ bool MapUtils::has_known_shipwreck(MapPtr map, TilePtr tile, CreaturePtr creatur
       if (creature->get_skills().get_value(required_skill) >= diff)
       {
         has_shipwreck = true;
+      }
+      else
+      {
+        if (mark_skill)
+        {
+          int num_marks = RNG::range(4, 8);
+          Skills& skills = creature->get_skills();
+
+          for (int i = 0; i < num_marks; i++)
+          {
+            skills.mark(SkillType::SKILL_GENERAL_OCEAN_LORE);
+          }
+        }
       }
     }
   }
@@ -2718,6 +2748,41 @@ bool MapUtils::get_supports_time_of_day(const MapType map_type)
 bool MapUtils::get_supports_weather(const MapType map_type)
 {
   return (map_type == MapType::MAP_TYPE_WORLD || map_type == MapType::MAP_TYPE_OVERWORLD || map_type == MapType::MAP_TYPE_AIR);
+}
+
+SkillType MapUtils::get_lore_skill_for_terrain(TilePtr tile)
+{
+  SkillType st = SkillType::SKILL_UNDEFINED;
+
+  if (tile != nullptr)
+  {
+    if (tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_WATER)
+    {
+      st = SkillType::SKILL_GENERAL_OCEAN_LORE;
+    }
+    else
+    {
+      TileType tt = tile->get_tile_type();
+
+      switch (tt)
+      {
+        case TileType::TILE_TYPE_DESERT:
+          st = SkillType::SKILL_GENERAL_DESERT_LORE;
+          break;
+        case TileType::TILE_TYPE_FOREST:
+          st = SkillType::SKILL_GENERAL_FOREST_LORE;
+          break;
+        case TileType::TILE_TYPE_MARSH:
+          st = SkillType::SKILL_GENERAL_MARSH_LORE;
+          break;
+        case TileType::TILE_TYPE_MOUNTAINS:
+          st = SkillType::SKILL_GENERAL_MOUNTAIN_LORE;
+          break;
+      }
+    }
+  }
+
+  return st;
 }
 
 #ifdef UNIT_TESTS

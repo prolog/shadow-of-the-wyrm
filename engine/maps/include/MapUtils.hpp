@@ -139,14 +139,16 @@ class MapUtils
 
     static std::tuple<int, int, std::string, std::string> get_random_village_by_property(MapPtr map, const std::string& prop, const std::vector<std::string>& exclude_map_ids);
 
-    static bool has_known_treasure(TilePtr tile, CreaturePtr creature);
-    static bool has_known_shipwreck(MapPtr map, TilePtr tile, CreaturePtr creature);
+    static bool has_known_treasure(TilePtr tile, CreaturePtr creature, const bool mark_skill);
+    static bool has_known_shipwreck(MapPtr map, TilePtr tile, CreaturePtr creature, const bool mark_skill);
     static std::string get_shipwreck_min_lore(MapPtr map, TilePtr tile);
 
     static bool can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d);
 
     static bool get_supports_time_of_day(const MapType map_type);
     static bool get_supports_weather(const MapType map_type);
+
+    static SkillType get_lore_skill_for_terrain(TilePtr tile);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);

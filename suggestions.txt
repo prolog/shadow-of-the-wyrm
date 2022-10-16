@@ -31,11 +31,6 @@ Me:
   - etc
 - in do_generate... can that linkage function be hidden behind a check for
   either world map or interior tile? test!
-- Skillmaster, in Carcassia
-  - 400 ivory/train
-  - At maxed out, should be told to talk to the emperor
-  - Emperor grants a home/pension/retirement (victory condition)
-- training for Lore skills
 - all the wintersea tower mobs need to fly
 - need to test the wintersea map key on the tower post-refactor
 - update xsd, update xml, add and test linkages for all direction 10/11

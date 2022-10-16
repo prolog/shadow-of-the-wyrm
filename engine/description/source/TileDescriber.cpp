@@ -62,12 +62,12 @@ string TileDescriber::describe() const
       }
     }
 
-    if (MapUtils::has_known_treasure(tile, viewing_creature))
+    if (MapUtils::has_known_treasure(tile, viewing_creature, false))
     {
       description = description + " " + tile->get_additional_property(TileProperties::TILE_PROPERTY_TREASURE_SOURCE);
     }
 
-    if (MapUtils::has_known_shipwreck(nullptr, tile, viewing_creature))
+    if (MapUtils::has_known_shipwreck(nullptr, tile, viewing_creature, false))
     {
       description = description + " " + tile->get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_TREASURE_SOURCE);
     }

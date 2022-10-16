@@ -531,3 +531,21 @@ TEST(SW_Engine_MapUtils, should_creature_move_to_new_map)
     }
   }
 }
+
+TEST(SW_Engine_MapUtils, get_lore_skill_for_terrain)
+{
+  std::map<TileType, SkillType> skills = { {TileType::TILE_TYPE_DESERT, SkillType::SKILL_GENERAL_DESERT_LORE}, 
+                                           {TileType::TILE_TYPE_FOREST, SkillType::SKILL_GENERAL_FOREST_LORE}, 
+                                           {TileType::TILE_TYPE_MARSH, SkillType::SKILL_GENERAL_MARSH_LORE}, 
+                                           {TileType::TILE_TYPE_MOUNTAINS, SkillType::SKILL_GENERAL_MOUNTAIN_LORE},
+                                           {TileType::TILE_TYPE_SEA, SkillType::SKILL_GENERAL_OCEAN_LORE},
+                                           {TileType::TILE_TYPE_BARROW, SkillType::SKILL_UNDEFINED} };
+
+  TileGenerator tg;
+
+  for (const auto& s_pair : skills)
+  {
+    TilePtr tile = tg.generate(s_pair.first);
+    EXPECT_EQ(s_pair.second, MapUtils::get_lore_skill_for_terrain(tile));
+  }
+}
