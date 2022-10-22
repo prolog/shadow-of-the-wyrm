@@ -71,6 +71,9 @@ const string TextMessages::BURIED_TREASURE_SOURCE_ADJECTIVE   = "BURIED_TREASURE
 const string TextMessages::SHIPWRECK_MESSAGE                  = "SHIPWRECK_MESSAGE";
 const string TextMessages::SHIPWRECK_SHIP_NAME                = "SHIPWRECK_SHIP_NAME";
 const string TextMessages::SHIPWRECK_REASON                   = "SHIPWRECK_REASON";
+const string TextMessages::SHIPWRECK_SHIP_NAME_POSSESSIVE     = "SHIPWRECK_SHIP_NAME_POSSESSIVE";
+const string TextMessages::SHIPWRECK_SHIP_NAME_POSSESSOR      = "SHIPWRECK_SHIP_NAME_POSSESSOR";
+const string TextMessages::SHIPWRECK_SHIP_NAME_POSSESSEE      = "SHIPWRECK_SHIP_NAME_POSSESSEE";
 
 string TextMessages::get_full_header_text(const string& header, const uint num_cols)
 {
@@ -906,7 +909,22 @@ string TextMessages::get_shipwreck_message()
 
   if (!ships.empty() && !reasons.empty())
   {
-    string ship = boost::trim_copy(ships.at(RNG::range(0, ships.size() - 1)));
+    string ship;
+    
+    if (RNG::percent_chance(75))
+    {
+      ship = boost::trim_copy(ships.at(RNG::range(0, ships.size() - 1)));
+    }
+    else
+    {
+      ship = StringTable::get(SHIPWRECK_SHIP_NAME_POSSESSIVE);
+      vector<string> possessors = String::create_string_vector_from_csv_string(StringTable::get(SHIPWRECK_SHIP_NAME_POSSESSOR));
+      vector<string> possessees = String::create_string_vector_from_csv_string(StringTable::get(SHIPWRECK_SHIP_NAME_POSSESSEE));
+
+      boost::replace_first(ship, "%s1", possessors.at(RNG::range(0, possessors.size() - 1)));
+      boost::replace_first(ship, "%s2", possessees.at(RNG::range(0, possessees.size() - 1)));
+    }
+
     string reason = boost::trim_copy(reasons.at(RNG::range(0, reasons.size() - 1)));
 
     boost::replace_first(shipwreck_msg, "%s1", ship);

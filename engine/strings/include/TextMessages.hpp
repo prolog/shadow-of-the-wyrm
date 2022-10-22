@@ -106,4 +106,7 @@ class TextMessages
     static const std::string SHIPWRECK_MESSAGE;
     static const std::string SHIPWRECK_SHIP_NAME;
     static const std::string SHIPWRECK_REASON;
+    static const std::string SHIPWRECK_SHIP_NAME_POSSESSIVE;
+    static const std::string SHIPWRECK_SHIP_NAME_POSSESSOR;
+    static const std::string SHIPWRECK_SHIP_NAME_POSSESSEE;
 };
