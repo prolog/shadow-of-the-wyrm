@@ -1,6 +1,4 @@
 Me:
-- write a blankify.py script that takes the English resource strings and 
-  writes empty versions to the blank.ini
 - Possessive ship's name: Heart's Rest, etc
 - Elinor and Verra
 - in villages: retired cartographers?
