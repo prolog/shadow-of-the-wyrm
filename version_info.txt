@@ -101,6 +101,10 @@ Shadow of the Wyrm v1.5.0 "Satoh"
 - Added some additional Lua functions for modding: set_creature_size, 
   get_creature_size, get_nutrition.
 
+- Wrote a Python script for checking the blank resource strings against the
+  English ones, to ensure everything from the latter is in the former.
+  Updated the blank strings to add a few dozen missing resource strings.
+
 - New items: amulet of the sky, conch.
 
 - New creatures: Pern, stylite, ancient sage, Carcassian magistrate, hermit
