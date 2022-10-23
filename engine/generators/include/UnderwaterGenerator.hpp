@@ -1,3 +1,4 @@
+#pragma once
 #include "Generator.hpp"
 #include "Map.hpp"
 

@@ -921,8 +921,8 @@ string TextMessages::get_shipwreck_message()
       vector<string> possessors = String::create_string_vector_from_csv_string(StringTable::get(SHIPWRECK_SHIP_NAME_POSSESSOR));
       vector<string> possessees = String::create_string_vector_from_csv_string(StringTable::get(SHIPWRECK_SHIP_NAME_POSSESSEE));
 
-      boost::replace_first(ship, "%s1", possessors.at(RNG::range(0, possessors.size() - 1)));
-      boost::replace_first(ship, "%s2", possessees.at(RNG::range(0, possessees.size() - 1)));
+      boost::replace_first(ship, "%s1", boost::trim_copy(possessors.at(RNG::range(0, possessors.size() - 1))));
+      boost::replace_first(ship, "%s2", boost::trim_copy(possessees.at(RNG::range(0, possessees.size() - 1))));
     }
 
     string reason = boost::trim_copy(reasons.at(RNG::range(0, reasons.size() - 1)));
