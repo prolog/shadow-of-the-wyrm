@@ -21,7 +21,7 @@ const int UnderwaterGenerator::PCT_CHANCE_ROCK_LOWER = 10;
 const int UnderwaterGenerator::PCT_CHANCE_ROCK_UPPER = 80;
 
 UnderwaterGenerator::UnderwaterGenerator(MapPtr above_map, const string& map_exit_id)
-: above_water_map(above_map), Generator(map_exit_id, TileType::TILE_TYPE_SEA)
+: Generator(map_exit_id, TileType::TILE_TYPE_SEA), above_water_map(above_map)
 {
 	init_underwater_item_ids();
 }

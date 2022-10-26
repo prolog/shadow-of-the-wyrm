@@ -5,8 +5,8 @@ using namespace std;
 
 CreatureGenerationValues::CreatureGenerationValues()
 : GenerationValues(),
-friendly(false),
 breathes(BreatheType::BREATHE_TYPE_AIR),
+friendly(false),
 base_experience_value(0)
 {
 }

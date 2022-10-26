@@ -93,5 +93,5 @@ class WorldGenerator : public SOTW::Generator
     static const int MIN_CREATURES_PER_VILLAGE;
     static const int MAX_CREATURES_PER_VILLAGE;
     static const int MAX_DANGER_LEVEL_FOR_WORLD_GEN;
-    static const pair<int, int> X_IN_Y_CHANCE_TREASURE;
+    static const std::pair<int, int> X_IN_Y_CHANCE_TREASURE;
 };

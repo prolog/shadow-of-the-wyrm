@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <sstream>
 #include "BrandConstants.hpp"
 #include "DamageFlagFactory.hpp"

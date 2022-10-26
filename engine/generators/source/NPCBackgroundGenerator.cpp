@@ -282,7 +282,6 @@ string NPCBackgroundGenerator::generate_former_job(CreaturePtr creature) const
 			vector<string> job_details = String::create_string_vector_from_csv_string(StringTable::get(NPCBackgroundTextKeys::FORMER_JOBS));
 			std::random_shuffle(job_details.begin(), job_details.end());
 
-			bool more_jobs = true;
 			string former_job;
 
 			while (!job_details.empty())

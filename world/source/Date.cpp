@@ -1,3 +1,4 @@
+#include <sstream>
 #include "Date.hpp"
 #include "Serialize.hpp"
 
@@ -79,7 +80,7 @@ Date::Date(const uint sec, const uint min, const uint hrs, const uint day_week, 
 
 Date::Date(const string& serialized_date_str)
 {
-  istringstream iss(serialized_date_str);
+  std::istringstream iss(serialized_date_str);
   Date d = Date::null();
   d.deserialize(iss);
 
