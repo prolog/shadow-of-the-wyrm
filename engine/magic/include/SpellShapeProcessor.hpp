@@ -2,6 +2,7 @@
 #include <vector>
 #include <memory>
 #include "Animation.hpp"
+#include "AttackTypes.hpp"
 #include "common.hpp"
 #include "Directions.hpp"
 #include "DisplayTile.hpp"
