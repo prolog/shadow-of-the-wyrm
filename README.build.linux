@@ -34,6 +34,9 @@ and you wanted to link against lua5.1 instead of lua, you would use:
 
 premake4 --lua_include=/usr/include/lua-5.1 --lua_link=lua-5.1 gmake
 
+"lua-5.1" might be named differently on various distros - e.g. it might be
+"lua5.1".
+
 The Linux build has been tested using g++.
 
 Happy hacking!
