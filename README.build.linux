@@ -37,7 +37,14 @@ premake4 --lua_include=/usr/include/lua-5.1 --lua_link=lua-5.1 gmake
 "lua-5.1" might be named differently on various distros - e.g. it might be
 "lua5.1".
 
-The Linux build has been tested using g++.
+The Linux build has been tested using g++. You can build with:
+
+make config=release
+
+You may also want to use additional cores, if you have them, to speed up the
+build:
+
+make config=release -j=8
 
 Happy hacking!
 

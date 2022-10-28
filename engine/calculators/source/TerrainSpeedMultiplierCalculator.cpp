@@ -12,8 +12,6 @@ float TerrainSpeedMultiplierCalculator::calculate(CreaturePtr creature, MapPtr m
 
 		if (tile != nullptr)
 		{
-			TileSuperType tst = tile->get_tile_super_type();
-
 			mult *= calculate_for_tile_type(creature, tile->get_tile_type());
 			mult *= calculate_for_super_type(creature, tile->get_tile_super_type(), tile->get_submerged());
 		}
