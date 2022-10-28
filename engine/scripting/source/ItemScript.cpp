@@ -87,8 +87,6 @@ vector<string> ItemScript::execute_get_treasure_items(ScriptEngine& se)
     {
       string item_ids_s;
       
-      int st_size = lua_gettop(L);
-
       if (lua_isstring(L, -1))
       {
         item_ids_s = lua_tostring(L, -1);
