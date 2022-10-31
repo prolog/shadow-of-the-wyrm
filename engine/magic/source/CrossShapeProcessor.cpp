@@ -83,7 +83,7 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> CrossShapeProcessor::get_affe
 
   // Create the animation, not redrawing the previous frame at each
   // step, as that will give the desired "beam" shape.
-  animation = at.create_movement_animation(!cca.can_see(player), game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, map, fov_map);
+  animation = at.create_movement_animation(caster, !cca.can_see(player), game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, map, fov_map);
 
   pair<vector<pair<Coordinate, TilePtr>>, Animation> affected_coords_and_tiles_and_animation(affected_coords_and_tiles, animation);
   return affected_coords_and_tiles_and_animation;

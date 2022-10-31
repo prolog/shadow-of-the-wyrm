@@ -6,6 +6,7 @@ using namespace std;
 // SpritesheetIndices
 const string SpritesheetIndex::SPRITESHEET_INDEX_SYSTEM = "sys";
 const string SpritesheetIndex::SPRITESHEET_INDEX_CREATURE = "cr";
+const string SpritesheetIndex::SPRITESHEET_INDEX_TERRAIN = "til";
 
 SpritesheetIndex::SpritesheetIndex()
 {
@@ -24,6 +25,8 @@ const string SpritesheetReference::SPRITESHEET_REFERENCE_BEAM_EW = "_beam_ew";
 const string SpritesheetReference::SPRITESHEET_ENTRANCE_CLOSED = "_entrance_closed";
 const string SpritesheetReference::SPRITESHEET_ENTRANCE_OPEN = "_entrance_open";
 const string SpritesheetReference::SPRITESHEET_ENTRANCE_DESTROYED = "_entrance_destroyed";
+const string SpritesheetReference::SPRITESHEET_REFERENCE_TREASURE = "_treasure";
+const string SpritesheetReference::SPRITESHEET_REFERENCE_SHIPWRECK = "_shipwreck";
 
 SpritesheetReference::SpritesheetReference()
 {

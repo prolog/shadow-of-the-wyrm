@@ -8220,6 +8220,16 @@
 		</Spritesheet>
 		<Spritesheet id="til">
 			<Location>assets/sprites/terrain_sprites.png</Location>
+			<References>
+				<Reference id="_treasure">
+					<Row>0</Row>
+					<Col>31</Col>
+				</Reference>
+				<Reference id="_shipwreck">
+					<Row>1</Row>
+					<Col>0</Col>
+				</Reference>
+			</References>
 		</Spritesheet>
 		<Spritesheet id="fea">
 			<Location>assets/sprites/feature_sprites.png</Location>

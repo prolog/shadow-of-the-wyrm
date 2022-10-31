@@ -26,7 +26,7 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> SpellShapeProcessor::create_a
   CurrentCreatureAbilities cca;
   CreaturePtr player = game.get_current_player();
 
-  Animation animation = at.create_movement_animation(!cca.can_see(player), game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, map, fov_map);
+  Animation animation = at.create_movement_animation(caster, !cca.can_see(player), game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, map, fov_map);
   pair<vector<pair<Coordinate, TilePtr>>, Animation> affected_tiles_and_animation(affected_coords_and_tiles, animation);
 
   return affected_tiles_and_animation;

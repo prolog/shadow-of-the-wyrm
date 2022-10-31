@@ -1,5 +1,9 @@
 Me:
-- bold cyan for shipwrecks and treasure hoards
+- ASSET RELEASE
+- combine mountaineering and mountain lore?
+- shipwrecks/treasure not working when player directly in view? it has to do
+  with Display::draw_update_map calling Display::draw_coordinate(). This
+  should probably call the MapTranslator function at some point...
 - Elinor and Verra
 - in villages: retired cartographers?
 - At the northern and southern extremes, muskeg
@@ -20,7 +24,6 @@ Me:
   - into map via air/stairs, down the other way
   - traverse Telari
   - Telari back to the world map then immediately go down again
-- ASSET RELEASE
 - need to be able to move around sky above Carcassia (make sure NW, NE, SW,
   SE all work as expected)
 - Need to check all the exits for the sky
