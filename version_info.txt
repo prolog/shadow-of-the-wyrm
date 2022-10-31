@@ -98,6 +98,9 @@ Shadow of the Wyrm v1.5.0 "Satoh"
   appearance closer to something like the Canadian shield. Fields and 
   scrublands, too.
 
+- Mountaineering as a separate skill has been eliminated, and has been folded
+  into Mountain Lore (RelicWraith).
+
 - Added some additional Lua functions for modding: set_creature_size, 
   get_creature_size, get_nutrition.
 

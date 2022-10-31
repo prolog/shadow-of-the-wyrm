@@ -490,17 +490,6 @@ class MountainLoreSkill : public GeneralSkill
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-class MountaineeringSkill : public GeneralSkill
-{
-  public:
-    MountaineeringSkill();
-
-    virtual Skill* clone() override;
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const override;
-};
-
 class MusicSkill : public GeneralSkill
 {
   public:

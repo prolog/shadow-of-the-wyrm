@@ -1861,7 +1861,6 @@
 					<Carrying>10</Carrying>
 					<Detection>10</Detection>
 					<MountainLore>20</MountainLore>
-					<Mountaineering>20</Mountaineering>
 					<NightSight>10</NightSight>
 					<Spelunking>10</Spelunking>
 					<Swimming>15</Swimming>
@@ -3900,7 +3899,6 @@
 					<Leadership>15</Leadership>
 					<MarshLore>20</MarshLore>
 					<MountainLore>20</MountainLore>
-					<Mountaineering>15</Mountaineering>
 					<Skinning>15</Skinning>
 					<Swimming>20</Swimming>
 					<Tanning>15</Tanning>

@@ -1,6 +1,5 @@
 Me:
 - ASSET RELEASE
-- combine mountaineering and mountain lore?
 - shipwrecks/treasure not working when player directly in view? it has to do
   with Display::draw_update_map calling Display::draw_coordinate(). This
   should probably call the MapTranslator function at some point...

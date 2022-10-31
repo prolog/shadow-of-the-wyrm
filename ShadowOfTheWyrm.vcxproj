@@ -1044,7 +1044,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\skills\include\FletcherySkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\HidingSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\GeneralMagicSkillProcessor.hpp" />
-    <ClInclude Include="engine\skills\include\MountaineeringSkillProcessor.hpp" />
+    <ClInclude Include="engine\skills\include\MountainLoreSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\MusicSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\PapercraftSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\ScribingSkillProcessor.hpp" />
@@ -2205,7 +2205,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\skills\source\FletcherySkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\HidingSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\GeneralMagicSkillProcessor.cpp" />
-    <ClCompile Include="engine\skills\source\MountaineeringSkillProcessor.cpp" />
+    <ClCompile Include="engine\skills\source\MountainLoreSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\MusicSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\PapercraftSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\ScribingSkillProcessor.cpp" />

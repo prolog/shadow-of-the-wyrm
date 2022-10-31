@@ -103,7 +103,6 @@ TEST(SW_World_Skills, serialization_ids_general_skills)
   MarshLoreSkill marsh_lore;
   MedicineSkill medicine;
   MountainLoreSkill mountain_lore;
-  MountaineeringSkill mountaineering;
   MusicSkill music;
   NightSightSkill night_sight;
   OceanLoreSkill ocean_lore;
@@ -155,7 +154,6 @@ TEST(SW_World_Skills, serialization_ids_general_skills)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_MARSH_LORE, marsh_lore.get_class_identifier());
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_MEDICINE, medicine.get_class_identifier());
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_MOUNTAIN_LORE, mountain_lore.get_class_identifier());
-  EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_MOUNTAINEERING, mountaineering.get_class_identifier());
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_MUSIC, music.get_class_identifier());
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_NIGHT_SIGHT, night_sight.get_class_identifier());
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_OCEAN_LORE, ocean_lore.get_class_identifier());
@@ -242,15 +240,18 @@ void serialize_test_skills(ClassIdentifier skill_ci)
   skill = SkillFactory::create_skill(skill_ci);
   skill2 = SkillFactory::create_skill(skill_ci);
 
-  ostringstream ss;
+  if (skill != nullptr && skill2 != nullptr)
+  {
+    ostringstream ss;
 
-  skill->serialize(ss);
+    skill->serialize(ss);
 
-  istringstream iss(ss.str());
+    istringstream iss(ss.str());
 
-  skill2->deserialize(iss);
+    skill2->deserialize(iss);
 
-  EXPECT_TRUE(*skill == *skill2);
+    EXPECT_TRUE(*skill == *skill2);
+  }
 }
 
 TEST(SW_World_Skills, saveload_general_skills)

@@ -3563,9 +3563,6 @@
     <ClInclude Include="engine\skills\include\DetectionSkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\skills\include\MountaineeringSkillProcessor.hpp">
-      <Filter>Header Files\engine\skills\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\skills\include\SwimmingSkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
@@ -4489,6 +4486,9 @@
     </ClInclude>
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLBenchReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\MountainLoreSkillProcessor.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -7828,9 +7828,6 @@
     <ClCompile Include="engine\skills\source\DetectionSkillProcessor.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\skills\source\MountaineeringSkillProcessor.cpp">
-      <Filter>Source Files\engine\skills\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\skills\source\SwimmingSkillProcessor.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
@@ -9096,6 +9093,9 @@
     </ClCompile>
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLBenchReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\MountainLoreSkillProcessor.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -118,9 +118,6 @@ class SkillTextKeys
     static const std::string SKILL_GENERAL_MOUNTAIN_LORE;
     static const std::string SKILL_GENERAL_MOUNTAIN_LORE_INCREMENT;
     static const std::string SKILL_GENERAL_MOUNTAIN_LORE_DETAILS;
-    static const std::string SKILL_GENERAL_MOUNTAINEERING;
-    static const std::string SKILL_GENERAL_MOUNTAINEERING_INCREMENT;
-    static const std::string SKILL_GENERAL_MOUNTAINEERING_DETAILS;
     static const std::string SKILL_GENERAL_MUSIC;
     static const std::string SKILL_GENERAL_MUSIC_INCREMENT;
     static const std::string SKILL_GENERAL_MUSIC_DETAILS;
@@ -301,7 +298,6 @@ class SkillTextKeys
     static const std::string SKILL_USAGE_LORE;
     static const std::string SKILL_USAGE_MARSH_LORE;
     static const std::string SKILL_USAGE_MEDICINE;
-    static const std::string SKILL_USAGE_MOUNTAINEERING;
     static const std::string SKILL_USAGE_MOUNTAIN_LORE;
     static const std::string SKILL_USAGE_NIGHT_SIGHT;
     static const std::string SKILL_USAGE_OCEAN_LORE;

@@ -57,7 +57,6 @@ void SkillProcessorFactory::populate_skill_map()
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MAGIC, make_unique<GeneralMagicSkillProcessor>()));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MARSH_LORE, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_MARSH_LORE)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MEDICINE, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_MEDICINE)));
-  skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MOUNTAINEERING, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_MOUNTAINEERING)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MOUNTAIN_LORE, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_MOUNTAIN_LORE)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_MUSIC, make_unique<MusicSkillProcessor>()));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_NIGHT_SIGHT, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_NIGHT_SIGHT)));

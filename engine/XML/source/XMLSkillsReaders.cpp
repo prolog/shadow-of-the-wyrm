@@ -69,7 +69,6 @@ void XMLGeneralSkillsReader::parse_general_skills(Skills& skills, const XMLNode&
     int marsh_lore_value       = XMLUtils::get_child_node_int_value(general_skills_node, "MarshLore");
     int medicine_value         = XMLUtils::get_child_node_int_value(general_skills_node, "Medicine");
     int mountain_lore_value    = XMLUtils::get_child_node_int_value(general_skills_node, "MountainLore");
-    int mountaineering_value   = XMLUtils::get_child_node_int_value(general_skills_node, "Mountaineering");
     int music_value            = XMLUtils::get_child_node_int_value(general_skills_node, "Music");
     int night_sight_value      = XMLUtils::get_child_node_int_value(general_skills_node, "NightSight");
     int ocean_lore_value       = XMLUtils::get_child_node_int_value(general_skills_node, "OceanLore");
@@ -120,7 +119,6 @@ void XMLGeneralSkillsReader::parse_general_skills(Skills& skills, const XMLNode&
     skills.set_value(SkillType::SKILL_GENERAL_MARSH_LORE, marsh_lore_value);
     skills.set_value(SkillType::SKILL_GENERAL_MEDICINE, medicine_value);
     skills.set_value(SkillType::SKILL_GENERAL_MOUNTAIN_LORE, mountain_lore_value);
-    skills.set_value(SkillType::SKILL_GENERAL_MOUNTAINEERING, mountaineering_value);
     skills.set_value(SkillType::SKILL_GENERAL_MUSIC, music_value);
     skills.set_value(SkillType::SKILL_GENERAL_NIGHT_SIGHT, night_sight_value);
     skills.set_value(SkillType::SKILL_GENERAL_OCEAN_LORE, ocean_lore_value);

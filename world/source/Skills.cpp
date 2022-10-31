@@ -926,25 +926,6 @@ ClassIdentifier MountainLoreSkill::internal_class_identifier() const
   return ClassIdentifier::CLASS_ID_SKILL_MOUNTAIN_LORE;
 }
 
-// Mountaineering
-MountaineeringSkill::MountaineeringSkill()
-: GeneralSkill()
-{
-  skill_name_sid = SkillTextKeys::SKILL_GENERAL_MOUNTAINEERING;
-  skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_MOUNTAINEERING_INCREMENT;
-  skill_description_sid = SkillTextKeys::SKILL_GENERAL_MOUNTAINEERING_DETAILS;
-}
-
-Skill* MountaineeringSkill::clone()
-{
-  return new MountaineeringSkill(*this);
-}
-
-ClassIdentifier MountaineeringSkill::internal_class_identifier() const
-{
-  return ClassIdentifier::CLASS_ID_SKILL_MOUNTAINEERING;
-}
-
 // Music
 MusicSkill::MusicSkill()
 : GeneralSkill()
@@ -2058,7 +2039,6 @@ void Skills::initialize_general_skills()
   std::unique_ptr<MarshLoreSkill> marsh_lore = std::make_unique<MarshLoreSkill>();
   std::unique_ptr<MedicineSkill> medicine = std::make_unique<MedicineSkill>();
   std::unique_ptr<MountainLoreSkill> mountain_lore = std::make_unique<MountainLoreSkill>();
-  std::unique_ptr<MountaineeringSkill> mountaineering = std::make_unique<MountaineeringSkill>();
   std::unique_ptr<MusicSkill> music = std::make_unique<MusicSkill>();
   std::unique_ptr<NightSightSkill> night_sight = std::make_unique<NightSightSkill>();
   std::unique_ptr<OceanLoreSkill> ocean_lore = std::make_unique<OceanLoreSkill>();
@@ -2109,7 +2089,6 @@ void Skills::initialize_general_skills()
   skills.insert(make_pair(SkillType::SKILL_GENERAL_MARSH_LORE, std::move(marsh_lore)));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_MEDICINE, std::move(medicine)));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_MOUNTAIN_LORE, std::move(mountain_lore)));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_MOUNTAINEERING, std::move(mountaineering)));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_MUSIC, std::move(music)));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_NIGHT_SIGHT, std::move(night_sight)));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_OCEAN_LORE, std::move(ocean_lore)));

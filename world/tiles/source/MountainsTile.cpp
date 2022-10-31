@@ -15,7 +15,7 @@ std::string MountainsTile::get_tile_description_sid() const
 
 bool MountainsTile::get_dangerous(CreaturePtr creature) const
 {
-  if (creature && creature->get_skills().get_value(SkillType::SKILL_GENERAL_MOUNTAINEERING) == Skills::MAX_SKILL_VALUE)
+  if (creature && creature->get_skills().get_value(SkillType::SKILL_GENERAL_MOUNTAIN_LORE) == Skills::MAX_SKILL_VALUE)
   {
     return false;
   }

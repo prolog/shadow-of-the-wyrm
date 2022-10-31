@@ -49,8 +49,6 @@ Skills SkillsCalculator::calculate_magic_skills(CreaturePtr creature, Race* race
 
 Skills SkillsCalculator::calculate_skills_in_given_range(CreaturePtr creature, Race* race, Class* char_class, const Skills& current_skills, const int first_skill, const int last_skill)
 {
-  // JCD FIXME: Do something with Creature, here!
-
   Skills calculated_skills = current_skills;
 
   Skills race_skills  = race->get_skills();
@@ -58,15 +56,20 @@ Skills SkillsCalculator::calculate_skills_in_given_range(CreaturePtr creature, R
 
   for (int st = first_skill; st < last_skill; st++)
   {
+    if (st == 34) continue; // Ignore old mountaineering skill
+
     SkillType skill_name = static_cast<SkillType>(st);
     Skill* race_skill  = race_skills.get_skill(skill_name);
     Skill* class_skill = class_skills.get_skill(skill_name);
 
-    int race_value  = race_skill->get_value();
-    int class_value = class_skill->get_value();
+    if (race_skill != nullptr && class_skill != nullptr)
+    {
+      int race_value = race_skill->get_value();
+      int class_value = class_skill->get_value();
 
-    int skill_total = race_value + class_value;
-    calculated_skills.set_value(skill_name, skill_total);
+      int skill_total = race_value + class_value;
+      calculated_skills.set_value(skill_name, skill_total);
+    }
   }
 
   return calculated_skills;

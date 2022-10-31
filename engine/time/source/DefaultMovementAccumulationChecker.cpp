@@ -27,7 +27,7 @@ void DefaultMovementAccumulationChecker::mark_skills(CreaturePtr creature, TileP
 		{
 			if (RNG::percent_chance(2))
 			{
-				creature->get_skills().mark(SkillType::SKILL_GENERAL_MOUNTAINEERING);
+				creature->get_skills().mark(SkillType::SKILL_GENERAL_MOUNTAIN_LORE);
 			}
 		}
 	}

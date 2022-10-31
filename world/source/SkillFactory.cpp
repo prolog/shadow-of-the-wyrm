@@ -72,7 +72,6 @@ void SkillFactory::initialize_skill_map()
   std::unique_ptr<MarshLoreSkill> marsh_lore = std::make_unique<MarshLoreSkill>();
   std::unique_ptr<MedicineSkill> medicine = std::make_unique<MedicineSkill>();
   std::unique_ptr<MountainLoreSkill> mountain_lore = std::make_unique<MountainLoreSkill>();
-  std::unique_ptr<MountaineeringSkill> mountaineering = std::make_unique<MountaineeringSkill>();
   std::unique_ptr<MusicSkill> music = std::make_unique<MusicSkill>();
   std::unique_ptr<NightSightSkill> night_sight = std::make_unique<NightSightSkill>();
   std::unique_ptr<OceanLoreSkill> ocean_lore = std::make_unique<OceanLoreSkill>();
@@ -148,7 +147,6 @@ void SkillFactory::initialize_skill_map()
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_MARSH_LORE, std::move(marsh_lore)));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_MEDICINE, std::move(medicine)));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_MOUNTAIN_LORE, std::move(mountain_lore)));
-  skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_MOUNTAINEERING, std::move(mountaineering)));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_MUSIC, std::move(music)));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_NIGHT_SIGHT, std::move(night_sight)));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_OCEAN_LORE, std::move(ocean_lore)));

@@ -13,7 +13,7 @@ TEST(SW_Engine_Calculators_SkillsCalculator, calculate_general_skills)
   race_skills.set_value(SkillType::SKILL_GENERAL_BOWYER, 5);
   class_skills.set_value(SkillType::SKILL_GENERAL_BOWYER, 7);
 
-  race_skills.set_value(SkillType::SKILL_GENERAL_MOUNTAINEERING, 27);
+  race_skills.set_value(SkillType::SKILL_GENERAL_MOUNTAIN_LORE, 27);
 
   class_skills.set_value(SkillType::SKILL_GENERAL_WEAVING, 46);
 
@@ -24,7 +24,7 @@ TEST(SW_Engine_Calculators_SkillsCalculator, calculate_general_skills)
 
   EXPECT_EQ(0,  calculated_skills.get_value(SkillType::SKILL_GENERAL_COMBAT));
   EXPECT_EQ(12, calculated_skills.get_value(SkillType::SKILL_GENERAL_BOWYER));
-  EXPECT_EQ(27, calculated_skills.get_value(SkillType::SKILL_GENERAL_MOUNTAINEERING));
+  EXPECT_EQ(27, calculated_skills.get_value(SkillType::SKILL_GENERAL_MOUNTAIN_LORE));
   EXPECT_EQ(46, calculated_skills.get_value(SkillType::SKILL_GENERAL_WEAVING));
 }
 
