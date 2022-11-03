@@ -150,7 +150,7 @@ DisplayTile MapTranslator::translate_coordinate_into_display_tile(const Creature
 // not the player's been blinded.  If the player's been blinded, the tile will
 // be black, unless it is the player's tile, in which case the player will be
 // displayed.
-DisplayTile MapTranslator::create_display_tile(const CreaturePtr& creature, const bool player_blinded, const bool timewalking, const pair<Colour, Colour>& tod_overrides, const ShimmerColours& shimmer_colours, const TilePtr& actual_tile, const TilePtr& fov_tile, const int row, const int col)
+DisplayTile MapTranslator::create_display_tile(const CreaturePtr& perspective_creature, const bool player_blinded, const bool timewalking, const pair<Colour, Colour>& tod_overrides, const ShimmerColours& shimmer_colours, const TilePtr& actual_tile, const TilePtr& fov_tile, const int row, const int col)
 {
   DisplayTile display_tile;
 
@@ -185,20 +185,20 @@ DisplayTile MapTranslator::create_display_tile(const CreaturePtr& creature, cons
     }
     else // Nothing else, or the player is blind - display the tile only.
     {
-      display_tile = create_display_tile_from_tile(creature, actual_tile, timewalking, tod_overrides, shimmer_colours, row, col);
+      display_tile = create_display_tile_from_tile(perspective_creature, actual_tile, timewalking, tod_overrides, shimmer_colours, row, col);
     }      
   }
   else
   {
     if (actual_tile && actual_tile->get_explored() && !player_blinded)
     {
-      display_tile = create_unseen_and_explored_display_tile(creature, actual_tile, timewalking, tod_overrides, shimmer_colours, row, col);
+      display_tile = create_unseen_and_explored_display_tile(perspective_creature, actual_tile, timewalking, tod_overrides, shimmer_colours, row, col);
     }
     else
     {
       if (actual_tile && actual_tile->get_viewed() && !player_blinded)
       {
-        display_tile = create_unseen_and_previously_viewed_display_tile(creature, actual_tile, timewalking, tod_overrides, shimmer_colours, row, col);
+        display_tile = create_unseen_and_previously_viewed_display_tile(perspective_creature, actual_tile, timewalking, tod_overrides, shimmer_colours, row, col);
       }
       else
       {
