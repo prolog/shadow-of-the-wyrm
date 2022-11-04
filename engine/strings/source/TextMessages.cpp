@@ -838,7 +838,6 @@ string TextMessages::get_select_age_message(const int min_age, const int max_age
 string TextMessages::get_and_replace(const string& sid, const vector<string>& replacements)
 {
   string msg = StringTable::get(sid);
-  size_t rs = replacements.size() + 1;
 
   for (size_t i = 0; i < replacements.size(); i++)
   {

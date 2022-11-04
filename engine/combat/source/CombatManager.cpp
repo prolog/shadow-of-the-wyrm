@@ -1205,6 +1205,7 @@ bool CombatManager::is_intimidate(CreaturePtr attacking_creature, CreaturePtr at
         }
         case AttackType::ATTACK_TYPE_MAGICAL:
         case AttackType::ATTACK_TYPE_RANGED:
+        case AttackType::ATTACK_TYPE_MAGICAL_WANDS:
         case AttackType::ATTACK_TYPE_UNDEFINED:
           break;
       }
