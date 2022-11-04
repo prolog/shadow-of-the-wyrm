@@ -281,7 +281,7 @@ void tile_to_string(TilePtr tile, std::string& tile_ascii, std::string& map_s, c
   else
   {
     ShimmerColours sc({ Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED });
-    DisplayTile dt = MapTranslator::create_display_tile(false /* player blinded? not in the map tester */, false /*not timewalking*/, { Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED } /* ditto for colour overrides */, sc, tile, tile, row, col);
+    DisplayTile dt = MapTranslator::create_display_tile(nullptr /* no perspective creature */, false /* player blinded? not in the map tester */, false /*not timewalking*/, {Colour::COLOUR_UNDEFINED, Colour::COLOUR_UNDEFINED} /* ditto for colour overrides */, sc, tile, tile, row, col);
     if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(static_cast<Colour>(dt.get_colour())) + "\">";
     std::ostringstream ss;
 

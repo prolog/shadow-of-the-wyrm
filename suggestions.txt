@@ -1,8 +1,6 @@
 Me:
 - ASSET RELEASE
-- shipwrecks/treasure not working when player directly in view? it has to do
-  with Display::draw_update_map calling Display::draw_coordinate(). This
-  should probably call the MapTranslator function at some point...
+- shipwrecks/treasure can be generated on eg the shrines - add add'l checks
 - Elinor and Verra
 - in villages: retired cartographers?
 - At the northern and southern extremes, muskeg
