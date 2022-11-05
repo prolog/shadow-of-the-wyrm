@@ -926,7 +926,7 @@ string WorldGenerator::get_race_village_extra_description_sid(const string& race
 
 void WorldGenerator::potentially_add_treasure(const string& key, TilePtr tile, NormalDistribution& nd, bool& terrain_override, const bool treasure_is_underwater)
 {
-  if (tile != nullptr && (terrain_override || RNG::x_in_y_chance(X_IN_Y_CHANCE_TREASURE.first, X_IN_Y_CHANCE_TREASURE.second)))
+  if (tile != nullptr && tile->get_custom_map_id().empty() && (terrain_override || RNG::x_in_y_chance(X_IN_Y_CHANCE_TREASURE.first, X_IN_Y_CHANCE_TREASURE.second)))
   {
     Log& log = Log::instance();
     int difficulty = nd.next_int_as_pct();
