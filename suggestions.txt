@@ -1,11 +1,8 @@
 Me:
 - ASSET RELEASE
-- shipwrecks/treasure can be generated on eg the shrines - add add'l checks
 - Elinor and Verra
 - in villages: retired cartographers?
 - At the northern and southern extremes, muskeg
-- small chance for shipwreck: some lumber, items, etc. Tie into oceanography.
-  should generate a msg.
 - small chance to generate good items underwater
 - need to test springs/ivory gen
 - Flying shop in Carcassia A2A
