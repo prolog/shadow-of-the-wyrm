@@ -1,6 +1,7 @@
 #include "CoastlineGenerator.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
+#include "DirectionUtils.hpp"
 #include "FeatureGenerator.hpp"
 #include "Game.hpp"
 #include "GardenGeneratorFactory.hpp"
@@ -841,6 +842,25 @@ void GeneratorUtils::add_random_springs(MapPtr result_map)
 void GeneratorUtils::add_random_stream(MapPtr map)
 {
   StreamGenerator::generate(map);
+}
+
+void GeneratorUtils::generate_dolmen(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    CardinalDirection cd = DirectionUtils::get_random_cardinal_direction({CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_SOUTH});
+    Dimensions d = map->size();
+    int size = RNG::range(4, 9);
+    int width = RNG::range(3, 7);
+
+    int start_row = RNG::range(1, d.get_y() - 2 - size);
+    int start_col = RNG::range(1, d.get_x() - 2 - width);
+
+    for (int i = 0; i < size; i++)
+    {
+
+    }
+  }
 }
 
 bool GeneratorUtils::generates_complexes(const TileType tt)

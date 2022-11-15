@@ -77,21 +77,23 @@ int CoordUtils::get_width(const Coordinate& c1, const Coordinate& c2)
 // Check to see if movement in a given direction is valid.
 bool CoordUtils::is_valid_move(const Dimensions& dim, const Coordinate& c, const Direction d)
 {
-  bool valid_move = true;
+  Coordinate new_coord = get_new_coordinate(c, d);
+  return is_valid_coord(dim, new_coord);
+}
 
+bool CoordUtils::is_valid_coord(const Dimensions& dim, const Coordinate& c)
+{
   int max_row = dim.get_y();
   int max_col = dim.get_x();
 
-  Coordinate new_coord = get_new_coordinate(c, d);
-  int new_row = new_coord.first;
-  int new_col = new_coord.second;
+  bool valid_coord = true;
 
-  if (new_row < 0 || new_row >= max_row || new_col < 0 || new_col >= max_col)
+  if (c.first < 0 || c.first >= max_row || c.second < 0 || c.second >= max_col)
   {
-    valid_move = false;
+    valid_coord = false;
   }
 
-  return valid_move;
+  return valid_coord;
 }
 
 bool CoordUtils::is_in_range(const Dimensions& dim, const Coordinate& start_coord, const Coordinate& end_coord)
@@ -252,6 +254,23 @@ vector<Coordinate> CoordUtils::get_adjacent_map_coordinates(const Dimensions& di
   }
 
   return adjacent_coordinates;
+}
+
+vector<Coordinate> CoordUtils::get_cardinally_adjacent_coordinates(const Dimensions& dim, const int row, const int col, const vector<CardinalDirection>& dirs, const int steps)
+{
+  vector<Coordinate> coords;
+
+  for (const CardinalDirection d : dirs)
+  {
+    Coordinate card_adj_coord = get_new_coordinate({ row, col }, DirectionUtils::to_direction(d), steps);
+
+    if (is_valid_coord(dim, card_adj_coord))
+    {
+      coords.push_back(card_adj_coord);
+    }
+  }
+
+  return coords;
 }
 
 vector<Coordinate> CoordUtils::get_border_coordinates(const Coordinate& top_left, const Coordinate& bottom_right, const int length)

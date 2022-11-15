@@ -75,6 +75,8 @@ class GeneratorUtils
     static void add_random_stream(MapPtr map);
     static void add_random_springs(MapPtr map);
 
+    static void generate_dolmen(MapPtr map);
+
     static bool generates_complexes(const TileType tt);
 
   protected:

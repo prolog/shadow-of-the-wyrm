@@ -54,18 +54,27 @@ MapPtr HillsGenerator::generate(const Dimensions& dim)
     }
   }
 
-  GeneratorUtils::potentially_generate_coastline(result_map, this);
-
   // The early hill-people made barrows instead of using grave-markers.
   if (RNG::percent_chance(15))
   {
-    int gr_row = RNG::range(0, rows - 1);
-    int gr_col = RNG::range(0, cols - 1);
+    int num_barrows = RNG::range(1, 4);
+    
+    for (int i = 0; i < num_barrows; i++)
+    {
+      int gr_row = RNG::range(0, rows - 1);
+      int gr_col = RNG::range(0, cols - 1);
 
-    TilePtr barrow = tg.generate(TileType::TILE_TYPE_BARROW);
-    result_map->insert(gr_row, gr_col, barrow);
-    result_map->set_permanent(true);
+      TilePtr barrow = tg.generate(TileType::TILE_TYPE_BARROW);
+      result_map->insert(gr_row, gr_col, barrow);
+      result_map->set_permanent(true);
+    }
   }
+  else if (RNG::percent_chance(100))
+  {
+    GeneratorUtils::generate_dolmen(result_map);
+  }
+
+  GeneratorUtils::potentially_generate_coastline(result_map, this);
 
   return result_map;
 }
