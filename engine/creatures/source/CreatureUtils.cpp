@@ -561,6 +561,7 @@ void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const stri
 {
   if (creature != nullptr && !identifier.empty())
   {
+    vector<string> status_ids_to_process_after;
     map<double, vector<pair<string, Modifier>>>& creature_modifiers = creature->get_modifiers_ref();
 
     for (auto& cm_pair : creature_modifiers)
@@ -571,9 +572,15 @@ void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const stri
       {
         if (mod.first == identifier)
         {
-          process_creature_modifier(creature, mod, sr);
+          vector<string> status_ids = process_creature_modifier(creature, mod);
+          std::copy(status_ids.begin(), status_ids.end(), std::back_inserter(status_ids_to_process_after));
         }
       }
+    }
+
+    for (const string& status_id : status_ids_to_process_after)
+    {
+      CreatureUtils::process_and_remove_status_ids(creature, status_ids_to_process_after, sr);
     }
   }
 }
@@ -581,6 +588,8 @@ void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const stri
 // Finalize all the modifiers after a certain min expiry
 void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const double current_seconds, const double min_expiry, const StatusRemovalType sr)
 {
+  vector<string> status_ids_to_process_after;
+
   if (creature != nullptr)
   {
     map<double, vector<pair<string, Modifier>>>& creature_modifiers = creature->get_modifiers_ref();
@@ -592,7 +601,8 @@ void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const doub
 
       if ((modifier_expiry >= min_expiry) && (modifier_expiry <= current_seconds))
       {
-        process_creature_modifiers(creature, m_it->second, sr);
+        vector<string> status_ids = process_creature_modifiers(creature, m_it->second);
+        std::copy(status_ids.begin(), status_ids.end(), std::back_inserter(status_ids_to_process_after));
       }
       
       if (modifier_expiry > current_seconds)
@@ -607,21 +617,33 @@ void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const doub
 
       m_it++;
     }
+
+    for (const string& status_id : status_ids_to_process_after)
+    {
+      CreatureUtils::process_and_remove_status_ids(creature, status_ids_to_process_after, sr);
+    }
   }
 }
 
 // Process the current set of modifiers for the given second.
 // Mark them as deleted, as well as any modifiers they're linked to.
-void CreatureUtils::process_creature_modifiers(CreaturePtr creature, vector<pair<string, Modifier>>& modifiers, const StatusRemovalType sr)
+vector<string> CreatureUtils::process_creature_modifiers(CreaturePtr creature, vector<pair<string, Modifier>>& modifiers)
 {
+  vector<string> status_ids_to_process_after;
+
   for (auto& mod_pair : modifiers)
   {
-    process_creature_modifier(creature, mod_pair, sr);
+    vector<string> status_ids = process_creature_modifier(creature, mod_pair);
+    std::copy(status_ids.begin(), status_ids.end(), std::back_inserter(status_ids_to_process_after));
   }
+  
+  return status_ids_to_process_after;
 }
 
-void CreatureUtils::process_creature_modifier(CreaturePtr creature, pair<string, Modifier>& mod_pair, const StatusRemovalType sr, const string& item_id)
+vector<string> CreatureUtils::process_creature_modifier(CreaturePtr creature, pair<string, Modifier>& mod_pair, const string& item_id)
 {
+  vector<string> status_ids_to_process_after;
+
   // Don't process/remove permanent modifiers, and also don't attempt to
   // double-process a modifier already marked for deletion.
   //
@@ -629,7 +651,7 @@ void CreatureUtils::process_creature_modifier(CreaturePtr creature, pair<string,
   // Those modifiers remain as long as the item is being worn.
   if (mod_pair.second.get_permanent() == true || (item_id != mod_pair.second.get_item_id()) || mod_pair.second.get_delete())
   {
-    return;
+    return {};
   }
   
   string spell_id = mod_pair.first;
@@ -642,20 +664,31 @@ void CreatureUtils::process_creature_modifier(CreaturePtr creature, pair<string,
 
   for (const auto& status : statuses)
   {
-    string status_id = status.first;
+    status_ids_to_process_after.push_back(status.first);
+  }
 
-    if (creature->has_status(status_id))
+  return status_ids_to_process_after;
+}
+
+void CreatureUtils::process_and_remove_status_ids(CreaturePtr creature, const vector<string>& status_ids, const StatusRemovalType sr)
+{
+  if (creature != nullptr && !status_ids.empty())
+  {
+    for (const auto& status : status_ids)
     {
-      Status st = creature->get_status(status_id);
-      StatusEffectPtr status_p = StatusEffectFactory::create_status_effect(creature, status_id, st.get_source_id());
+      if (creature->has_status(status))
+      {
+        Status st = creature->get_status(status);
+        StatusEffectPtr status_p = StatusEffectFactory::create_status_effect(creature, status, st.get_source_id());
 
-      if (sr == StatusRemovalType::STATUS_REMOVAL_FINALIZE)
-      {
-        status_p->finalize_change(creature);
-      }
-      else
-      {
-        status_p->undo_change(creature);
+        if (sr == StatusRemovalType::STATUS_REMOVAL_FINALIZE)
+        {
+          status_p->finalize_change(creature);
+        }
+        else
+        {
+          status_p->undo_change(creature);
+        }
       }
     }
   }
@@ -706,6 +739,7 @@ void CreatureUtils::remove_status_ailments_from_wearable(WearablePtr wearable, C
 {
   if (wearable != nullptr && creature != nullptr)
   {
+    vector<string> status_ids_to_process_after;
     string wearable_id = wearable->get_id();
     StatusAilments sa = wearable->get_status_ailments();
     set<string> ailments = sa.get_ailments();
@@ -721,13 +755,15 @@ void CreatureUtils::remove_status_ailments_from_wearable(WearablePtr wearable, C
       {
         if (mod_pair.second.get_item_id() == wearable_id)
         {
-          CreatureUtils::process_creature_modifier(creature, mod_pair, StatusRemovalType::STATUS_REMOVAL_UNDO, wearable_id);
+          vector<string> status_ids = CreatureUtils::process_creature_modifier(creature, mod_pair, wearable_id);
+          std::copy(status_ids.begin(), status_ids.end(), std::back_inserter(status_ids_to_process_after));
           mod_pair.second.set_delete(true);
         }
       }
     }
 
     CreatureUtils::remove_modifiers(creature);
+    CreatureUtils::process_and_remove_status_ids(creature, status_ids_to_process_after, StatusRemovalType::STATUS_REMOVAL_UNDO);
   }
 }
 

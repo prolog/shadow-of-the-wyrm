@@ -1,5 +1,6 @@
 Me:
 - ASSET RELEASE
+- "last killed by" in narrative mode
 - dolmens, w/ bones
 - Elinor and Verra
 - in villages: retired cartographers?

@@ -158,6 +158,9 @@ Shadow of the Wyrm v1.5.0 "Satoh"
   - Wild orchards and mountains weren't generating coastlines like fields, 
     forests, etc.
 
+  - A bug with death-causing statuses was causing crashes in narrative mode,
+    where the player is immediately revived (Azathoth).
+
 Shadow of the Wyrm v1.4.5.1 "Fuenllana"
 - Version declared May 12, 2022.  Version finalized May 15, 2022.
 

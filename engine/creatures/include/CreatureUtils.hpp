@@ -56,8 +56,9 @@ class CreatureUtils
 
     // Remove any marked modifiers
     static void remove_modifiers(CreaturePtr creature);
-    static void process_creature_modifiers(CreaturePtr creature, std::vector<std::pair<std::string, Modifier>>& modifiers, const StatusRemovalType sr);
-    static void process_creature_modifier(CreaturePtr creature, std::pair<std::string, Modifier>& modifier, const StatusRemovalType sr, const std::string& item_id = "");
+    static std::vector<std::string> process_creature_modifiers(CreaturePtr creature, std::vector<std::pair<std::string, Modifier>>& modifiers);
+    static std::vector<std::string> process_creature_modifier(CreaturePtr creature, std::pair<std::string, Modifier>& modifier, const std::string& item_id = "");
+    static void process_and_remove_status_ids(CreaturePtr creature, const std::vector<std::string>& status_ids, const StatusRemovalType sr);
 
     // Apply/remove status ailments from the wearable to the creature
     static void apply_status_ailments(WearablePtr wearable, CreaturePtr creature);
