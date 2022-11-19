@@ -1,5 +1,9 @@
 Me:
 - ASSET RELEASE
+- autopickup unpaid setting
+- Azathoth: "After using the sorcerer's help to exit Telari, subsequent 
+  attempts to return to the Barrows send the player straight to Telari, 
+  even after slaying the gods"
 - "last killed by" in narrative mode
 - dolmens, w/ bones
 - Elinor and Verra

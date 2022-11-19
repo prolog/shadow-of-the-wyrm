@@ -162,7 +162,7 @@ Shadow of the Wyrm v1.5.0 "Satoh"
     forests, etc.
 
   - A bug with death-causing statuses was causing crashes in narrative mode,
-    where the player is immediately revived (Azathoth).
+    where the player is immediately revived. 
 
 Shadow of the Wyrm v1.4.5.1 "Fuenllana"
 - Version declared May 12, 2022.  Version finalized May 15, 2022.
