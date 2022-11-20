@@ -1,4 +1,4 @@
-Shadow of the Wyrm v1.5.0 "Satoh"
+Shadow of the Wyrm v1.5.2 "Satoh"
 - Version started May 15, 2022.
 
 - Deserts have a small chance to generate a spring.
