@@ -446,3 +446,16 @@ JovanM:
 Sabrecam: 
 - pay guards for peace
 - should be able to see full statuses in full description
+
+Azathoth:
+The pager used for texts could also be improved by:
+- enabling one line shifts with up/down (8/2) keys;
+- implementing less-like search:
+  - / starts search mode
+  - characters and BACKSPACE edit the search string
+  - ESC exits search mode
+  - ENTER exits it and updates the search string
+  - in normal mode, if the search string is not empty, n moves to the next match and N moves to the previous one
+  - in status line, the number of matches and the current match are displayed like this: [3/17]
+
+Similar search for inventory (filtering the items and without n/N) would also be helpful when you're looking for a particular item

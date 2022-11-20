@@ -111,7 +111,7 @@ int SDLKeyboardController::read_char_as_int()
     }
     else if (event.type == SDL_WINDOWEVENT)
     {
-      if (event.window.event == SDL_WINDOWEVENT_SIZE_CHANGED)
+      if (event.window.event == SDL_WINDOWEVENT_SIZE_CHANGED || event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED)
       {
         Game::instance().get_display()->refresh_current_window();
       }
