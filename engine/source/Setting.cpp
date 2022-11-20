@@ -63,6 +63,7 @@ const string Setting::SKIP_SAVEFILE_METADATA_VERIFICATION = "_skip_savefile_meta
 const string Setting::AUTOPICKUP = "autopickup";
 const string Setting::AUTOPICKUP_TYPES = "autopickup_types";
 const string Setting::AUTOPICKUP_IGNORE_CORPSES = "autopickup_ignore_corpses";
+const string Setting::AUTOPICKUP_IGNORE_UNPAID = "autopickup_ignore_unpaid";
 const string Setting::PROMPT_ON_STACK_PICKUP = "prompt_on_stack_pickup";
 const string Setting::AUTOMELEE = "automelee";
 const string Setting::CHECKPOINT_SAVE = "checkpoint_save";

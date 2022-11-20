@@ -107,6 +107,9 @@ Shadow of the Wyrm v1.5.0 "Satoh"
 - Updated the spell ending descriptions to "Ending after" instead of "Ending
   at", to better indicate that the spell doesn't end at exactly that time.
 
+- Autopickup now excludes unpaid items by default. This is configurable in
+  swyrm.ini and in-game via '!'.
+
 - Wrote a Python script for checking the blank resource strings against the
   English ones, to ensure everything from the latter is in the former.
   Updated the blank strings to add a few dozen missing resource strings.

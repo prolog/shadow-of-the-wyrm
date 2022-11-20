@@ -56,6 +56,7 @@ class Setting
     static const std::string AUTOPICKUP;
     static const std::string AUTOPICKUP_TYPES;
     static const std::string AUTOPICKUP_IGNORE_CORPSES;
+    static const std::string AUTOPICKUP_IGNORE_UNPAID;
     static const std::string PROMPT_ON_STACK_PICKUP;
     static const std::string AUTOMELEE;
     static const std::string CHECKPOINT_SAVE;
