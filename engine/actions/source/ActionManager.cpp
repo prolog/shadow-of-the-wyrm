@@ -142,9 +142,15 @@ ActionCost ActionManager::ascend(CreaturePtr creature)
   if (map_type == MapType::MAP_TYPE_WORLD && creature && creature->get_is_player())
   {
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
-    string search_message = StringTable::get(MovementTextKeys::ACTION_NO_WAY_UP_WORLD_MAP);
 
-    manager.add_new_message(search_message);
+    string ascend_message = StringTable::get(MovementTextKeys::ACTION_NO_WAY_UP_WORLD_MAP);
+
+    if (!game.do_deities_exist())
+    {
+      ascend_message = StringTable::get(MovementTextKeys::ACTION_NO_WAY_UP_WORLD_MAP_NO_GODS);
+    }
+
+    manager.add_new_message(ascend_message);
     manager.send();
       
     return get_action_cost(creature, 0);
