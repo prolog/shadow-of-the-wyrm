@@ -12,8 +12,6 @@ Me:
   coordinates set on it somewhere...
 - Az: up from caldera/down from prison: field
 - can use warp in telari ocean
-- dive in water in well: field
-- "last killed by" in narrative mode
 - dolmens, w/ bones
 - Elinor and Verra
 - in villages: retired cartographers?

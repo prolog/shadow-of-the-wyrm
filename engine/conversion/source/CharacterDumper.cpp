@@ -29,6 +29,7 @@
 #include "RaceManager.hpp"
 #include "ReligionManager.hpp"
 #include "ResistancesDumper.hpp"
+#include "Setting.hpp"
 #include "SizeTextKeys.hpp"
 #include "SkillsDumper.hpp"
 #include "SpellsDumper.hpp"
@@ -79,7 +80,9 @@ string CharacterDumper::str() const
   ModifiersDumper mod_dumper(creature, num_cols);
   ss << mod_dumper.str() << endl << endl;
 
-  DeathDumper death_dumper(creature, num_cols);
+  bool narrative_mode = Game::instance().get_settings_ref().get_setting_as_bool(Setting::NARRATIVE_MODE);
+  DeathDumper death_dumper(creature, narrative_mode, num_cols);
+
   string death = death_dumper.str();
 
   if (!death.empty())

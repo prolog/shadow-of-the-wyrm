@@ -46,6 +46,7 @@ const string TextKeys::MORTUARY = "MORTUARY";
 const string TextKeys::MORTUARY_FIRST_KILL = "MORTUARY_FIRST_KILL";
 const string TextKeys::MODIFIERS = "MODIFIERS";
 const string TextKeys::DEATH_DETAILS = "DEATH_DETAILS";
+const string TextKeys::DEATH_DETAILS_NARRATIVE_MODE = "DEATH_DETAILS_NARRATIVE_MODE";
 const string TextKeys::INDEFINITELY = "INDEFINITELY";
 const string TextKeys::STATUSES = "STATUSES";
 const string TextKeys::NPC_ESCAPES_MESSAGE = "NPC_ESCAPES_MESSAGE";

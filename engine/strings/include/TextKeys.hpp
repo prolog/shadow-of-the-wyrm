@@ -33,6 +33,7 @@ class TextKeys
     static const std::string MORTUARY_FIRST_KILL;
     static const std::string MODIFIERS;
     static const std::string DEATH_DETAILS;
+    static const std::string DEATH_DETAILS_NARRATIVE_MODE;
     static const std::string INDEFINITELY;
     static const std::string STATUSES;
     static const std::string TOTAL;
