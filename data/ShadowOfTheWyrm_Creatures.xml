@@ -25482,6 +25482,10 @@
 				<ChatScript>
 					<Script>quests/telari/the_sorceror.lua</Script>
 				</ChatScript>
+				<DeathScript>
+					<Script>death/the_sorceror.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
 			</EventScripts>
 		</Creature>
 		<Creature id="the_sentry">

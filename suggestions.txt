@@ -7,9 +7,8 @@ Me:
   - return down
   - give an artifact to the sorcerer
   - try entering the Barrows again
-- when killing the sorceror, should be transported back, lose some hp/ap
-- for the well river bug, the map exit for the underwater map is getting
-  coordinates set on it somewhere...
+- 2022-Nov-27 11:40:03    MapScript::execute - did not run Lua function due 
+  to script failure: areas/events/carcassia_a2a.lua
 - Az: up from caldera/down from prison: field
 - can use warp in telari ocean
 - dolmens, w/ bones

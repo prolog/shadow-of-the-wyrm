@@ -110,3 +110,25 @@ function area(c1, c2)
   return ((c2[1] - c1[1]) * (c2[2] - c1[2]))
 end
 
+function drain_hp_and_ap(cr_id)
+  local new_base_hp = get_creature_base_hp(cr_id) * 0.75
+  local cur_hp = get_creature_current_hp(cr_id)
+  local new_base_ap = get_creature_base_ap(cr_id) * 0.75
+  local cur_ap = get_creature_current_ap(cr_id)
+
+  if new_base_hp >= 1 then
+    set_creature_base_hp(cr_id, new_base_hp)
+
+    if new_base_hp < cur_hp then
+      set_creature_current_hp(cr_id, new_base_hp)
+    end
+  end
+
+  if new_base_ap >= 1 then
+    set_creature_base_ap(cr_id, new_base_ap)
+
+    if new_base_ap < cur_ap then
+      set_creature_current_ap(cr_id, new_base_ap)
+    end
+  end
+end

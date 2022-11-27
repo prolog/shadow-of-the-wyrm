@@ -1,29 +1,7 @@
 require('constants')
+require('fn')
 
 add_message_with_pause("THE_SORCEROR_GATEWAY_TEXT_SID")
-
-local function drain_hp_and_ap(cr_id)
-  local new_base_hp = get_creature_base_hp(cr_id) * 0.75
-  local cur_hp = get_creature_current_hp(cr_id)
-  local new_base_ap = get_creature_base_ap(cr_id) * 0.75
-  local cur_ap = get_creature_current_ap(cr_id)
-
-  if new_base_hp >= 1 then
-    set_creature_base_hp(cr_id, new_base_hp)
-
-    if new_base_hp < cur_hp then
-      set_creature_current_hp(cr_id, new_base_hp)
-    end
-  end
-
-  if new_base_ap >= 1 then
-    set_creature_base_ap(cr_id, new_base_ap)
-
-    if new_base_ap < cur_ap then
-      set_creature_current_ap(cr_id, new_base_ap)
-    end
-  end
-end
 
 if has_artifact_in_inventory(PLAYER_ID) then
   add_message_with_pause("THE_SORCEROR_ARTIFACT_TEXT_SID")
@@ -43,7 +21,7 @@ if has_artifact_in_inventory(PLAYER_ID) then
 
   if selected then
     if drain == true then
-      drain_hp_and_ap(PLAYER_ID)
+      fn.drain_hp_and_ap(PLAYER_ID)
     end
 
     remove_object_from_player(base_id)

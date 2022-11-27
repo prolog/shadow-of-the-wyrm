@@ -4,6 +4,8 @@ require('constants')
 -- between the worlds are gone.
 if get_num_deities() == 0 then
   clear_and_add_message("EAD_TELARI_GODSLAYER_TEXT_SID")
+elseif get_creature_additional_property(PLAYER_ID, "TELARI_THE_SORCEROR_DEAD") == tostring(true) then
+  clear_and_add_message("EAD_TELARI_THE_SORCEROR_DEAD_SID")
 else
   -- If the player has a source of water breathing, Ead will offer to send
   -- him or her elsewhere...
