@@ -1,9 +1,18 @@
 Me:
 - ASSET RELEASE
-- autopickup unpaid setting
-- Azathoth: "After using the sorcerer's help to exit Telari, subsequent 
-  attempts to return to the Barrows send the player straight to Telari, 
-  even after slaying the gods"
+  - new game
+  - get artifacts & the amulet of the sea
+  - go to Telari
+  - swim upwards into the ocean
+  - return down
+  - give an artifact to the sorcerer
+  - try entering the Barrows again
+- when killing the sorceror, should be transported back, lose some hp/ap
+- for the well river bug, the map exit for the underwater map is getting
+  coordinates set on it somewhere...
+- Az: up from caldera/down from prison: field
+- can use warp in telari ocean
+- dive in water in well: field
 - "last killed by" in narrative mode
 - dolmens, w/ bones
 - Elinor and Verra

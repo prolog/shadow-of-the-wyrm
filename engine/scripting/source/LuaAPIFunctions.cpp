@@ -469,6 +469,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_creature_size", get_creature_size);
   lua_register(L, "get_nutrition", get_nutrition);
   lua_register(L, "get_hidden_treasure_message", get_hidden_treasure_message);
+  lua_register(L, "get_map_type", get_map_type);
 }
 
 // Lua API helper functions
@@ -10053,5 +10054,27 @@ int get_hidden_treasure_message(lua_State* ls)
   }
 
   lua_pushstring(ls, msg.c_str());
+  return 1;
+}
+
+int get_map_type(lua_State* ls)
+{
+  MapType mt = MapType::MAP_TYPE_WORLD;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(lua_tostring(ls, 1));
+
+    if (map != nullptr)
+    {
+      mt = map->get_map_type();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_map_type");
+  }
+
+  lua_pushinteger(ls, static_cast<int>(mt));
   return 1;
 }

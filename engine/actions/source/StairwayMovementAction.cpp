@@ -285,10 +285,7 @@ ActionCostValue StairwayMovementAction::generate_or_move_to_zlevel(Game& game, M
   {
     if (map_exit != nullptr && map_exit->is_using_map_id())
     {
-      Coordinate old_c = map_exit->get_coordinate();
-      map_exit->set_coordinate(c);
       move_to_custom_map(tile, map, map_exit, creature, game, ma, d);
-      map_exit->set_coordinate(old_c);
       acv = get_action_cost_value(creature);
     }
     else
