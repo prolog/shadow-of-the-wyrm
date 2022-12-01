@@ -9,6 +9,7 @@ Me:
   - try entering the Barrows again
 - 2022-Nov-27 11:40:03    MapScript::execute - did not run Lua function due 
   to script failure: areas/events/carcassia_a2a.lua
+- ensure world_id gets propagated on generation
 - Az: up from caldera/down from prison: field
 - can use warp in telari ocean
 - dolmens, w/ bones

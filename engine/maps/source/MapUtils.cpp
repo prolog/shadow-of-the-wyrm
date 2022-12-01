@@ -1512,16 +1512,17 @@ Coordinate MapUtils::place_creature(MapPtr map, CreaturePtr creature, const stri
 
 void MapUtils::set_multi_map_entry_details(MapPtr new_map, MapPtr old_map, const Coordinate& new_map_prev_loc)
 {
-  if (new_map != nullptr && old_map != nullptr)
+  if (old_map != nullptr &&
+      new_map != nullptr &&
+      new_map->get_map_type() == MapType::MAP_TYPE_WORLD && 
+      old_map->get_is_multi_map() &&
+      (old_map->get_world_id() == new_map->get_world_id()))
   {
-    if (new_map->get_map_type() == MapType::MAP_TYPE_WORLD && old_map->get_is_multi_map())
-    {
-      TilePtr tile = new_map->at(new_map_prev_loc);
+    TilePtr tile = new_map->at(new_map_prev_loc);
 
-      if (tile != nullptr)
-      {
-        tile->set_custom_map_id(old_map->get_map_id());
-      }
+    if (tile != nullptr)
+    {
+      tile->set_custom_map_id(old_map->get_map_id());
     }
   }
 }

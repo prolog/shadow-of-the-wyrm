@@ -132,6 +132,7 @@ class MapProperties
     // Similarly, sky and ascension
     static const std::string MAP_PROPERTIES_OPEN_SKY;
 
+    static const std::string MAP_PROPERTIES_WORLD_ID;
   protected:
     MapProperties();
     ~MapProperties();

@@ -373,3 +373,16 @@ TEST_F(SW_Engine_Map, get_supports_weather)
     EXPECT_EQ(wea_pair.second, MapUtils::get_supports_weather(wea_pair.first));
   }
 }
+
+TEST_F(SW_Engine_Map, set_world_id)
+{
+  MapPtr map = make_map();
+
+  vector<string> ids = { "fdsa", "", "", "33", "a", "" };
+
+  for (const auto& id : ids)
+  {
+    map->set_world_id(id);
+    EXPECT_EQ(id, map->get_world_id());
+  }
+}

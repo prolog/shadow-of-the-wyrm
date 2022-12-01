@@ -191,6 +191,9 @@ class Map : public ISerializable
 
     std::vector<TileType> get_secondary_terrain() const;
 
+    void set_world_id(const std::string& new_world_id);
+    std::string get_world_id() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 

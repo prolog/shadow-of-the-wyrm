@@ -1031,6 +1031,24 @@ bool Map::is_islet() const
   return (map_type == MapType::MAP_TYPE_OVERWORLD && get_coastline_directions().size() == 4);
 }
 
+void Map::set_world_id(const string& new_world_id)
+{
+  properties[MapProperties::MAP_PROPERTIES_WORLD_ID] = new_world_id;
+}
+
+string Map::get_world_id() const
+{
+  string id;
+  auto world_it = properties.find(MapProperties::MAP_PROPERTIES_WORLD_ID);
+
+  if (world_it != properties.end())
+  {
+    id = world_it->second;
+  }
+
+  return id;
+}
+
 bool Map::serialize(ostream& stream) const
 {
   // creatures - not serialized.  build up after deserialization.

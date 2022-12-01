@@ -114,6 +114,9 @@ Shadow of the Wyrm v1.5.2 "Satoh"
   English ones, to ensure everything from the latter is in the former.
   Updated the blank strings to add a few dozen missing resource strings.
 
+- Killing The Sorceror transports you back from Telari, and prevents you from
+  re-entering.
+
 - New items: amulet of the sky, conch.
 
 - New creatures: Pern, stylite, ancient sage, Carcassian magistrate, hermit

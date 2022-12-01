@@ -171,7 +171,7 @@ TEST(SW_Engine_Maps_MapUtils, should_link_entry_point)
   EXPECT_FALSE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_AIR));
   EXPECT_FALSE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_OVERWORLD));
   EXPECT_TRUE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_WORLD));
-  EXPECT_TRUE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_UNDERWORLD));
+  EXPECT_FALSE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_UNDERWORLD));
   EXPECT_FALSE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_UNDERWATER));
   EXPECT_FALSE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_COSMOS));
 }
