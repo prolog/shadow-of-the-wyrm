@@ -1,4 +1,6 @@
 Me:
+- Ancient beasts are broken because of the update to keep halving danger
+  level (MapCreatureGenerator:139)
 - ASSET RELEASE
   - new game
   - get artifacts & the amulet of the sea
