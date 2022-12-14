@@ -129,6 +129,13 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   }
 
   CreatureGenerationIndex generation_index;
+  bool allow_ancient_beasts = false;
+  auto ab_it = additional_properties.find(MapProperties::MAP_PROPERTIES_ANCIENT_BEASTS);
+  
+  if (ab_it != additional_properties.end())
+  {
+    allow_ancient_beasts = String::to_bool(ab_it->second);
+  }
 
   while (generation_index.empty() && min_danger_level >= 1)
   {
@@ -136,6 +143,11 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 
     if (generation_index.empty())
     {
+      if (allow_ancient_beasts)
+      {
+        break;
+      }
+
       min_danger_level /= 2;
     }
   }

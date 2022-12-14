@@ -13,6 +13,7 @@ class DungeonGenerator : public SOTW::Generator
     virtual MapPtr generate(const Dimensions& dim) override;
 
     virtual bool can_create_initial_items() const override;
+    virtual bool get_allow_ancient_beasts() const;
 
   protected:
 

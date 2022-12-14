@@ -133,6 +133,10 @@ class MapProperties
     static const std::string MAP_PROPERTIES_OPEN_SKY;
 
     static const std::string MAP_PROPERTIES_WORLD_ID;
+
+    // Does the map allow ancient beasts?
+    static const std::string MAP_PROPERTIES_ANCIENT_BEASTS;
+
   protected:
     MapProperties();
     ~MapProperties();

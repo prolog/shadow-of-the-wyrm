@@ -70,6 +70,8 @@ namespace SOTW
 
       virtual MapType get_map_type() const;
 
+      virtual bool get_allow_ancient_beasts() const;
+
     protected:
    
       virtual void generate_additional_structures(MapPtr map);

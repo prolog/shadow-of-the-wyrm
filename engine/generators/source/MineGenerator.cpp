@@ -22,6 +22,11 @@ MineGenerator::MineGenerator(const std::string& map_exit_id)
 {
 }
 
+bool MineGenerator::get_allow_ancient_beasts() const
+{
+  return true;
+}
+
 MapPtr MineGenerator::generate(const Dimensions& dim)
 {
   MapPtr map = std::make_shared<Map>(dim);

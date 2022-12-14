@@ -1,4 +1,6 @@
 Me:
+- MapUtils::update_creatures - this should probably source the props from the
+  map, but needs testing.
 - Ancient beasts are broken because of the update to keep halving danger
   level (MapCreatureGenerator:139)
 - ASSET RELEASE

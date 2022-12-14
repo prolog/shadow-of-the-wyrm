@@ -268,6 +268,9 @@ void Generator::initialize(MapPtr map, const int danger_level)
   // that call can take precedence.
   set_map_permanence(map);
 
+  // If the map is an underworld-type map, ancient beasts can be generated.
+  set_additional_property(MapProperties::MAP_PROPERTIES_ANCIENT_BEASTS, std::to_string(get_allow_ancient_beasts()));
+
   // If a generated map ID has been set, update the map ID with that.
   string generated_map_id = get_additional_property(MapProperties::MAP_PROPERTIES_GENERATED_MAP_ID);
   if (!generated_map_id.empty())
@@ -1137,4 +1140,9 @@ void Generator::add_feature_entry_text_sid(const std::string& new_sid)
 void Generator::clear_feature_entry_text_sids()
 {
   feature_entry_text_sids.clear();
+}
+
+bool Generator::get_allow_ancient_beasts() const
+{
+  return false;
 }
