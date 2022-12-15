@@ -2403,7 +2403,7 @@ void MapUtils::update_creatures(MapPtr map)
       // Create the appropriate generator and call the update function.
       MapCreatureGenerator mcg;
 
-      std::map<string, string> props;
+      std::map<string, string> props = map->get_properties();
       mcg.generate_random_creatures(map, map->get_danger(), props);
     }
   }
