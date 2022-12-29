@@ -292,7 +292,13 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const CreaturePtr& crea
   Colour override_colour = tod_overrides.first;
   MapRegistry& mr = game.get_map_registry_ref();
   MapPtr map = game.get_current_map();
-  MapType mt = map->get_map_type();
+  MapType mt = MapType::MAP_TYPE_OVERWORLD;
+  
+  // Almost always not null, except when using the MapTester config.
+  if (map != nullptr)
+  {
+    map->get_map_type();
+  }
 
   const vector<DisplayTile>& tiles_info = game.get_tile_display_info_ref();
   DisplayTile tile_info = tiles_info.at(static_cast<int>(tile->get_tile_type()));

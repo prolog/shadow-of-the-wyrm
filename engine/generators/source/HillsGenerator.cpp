@@ -71,7 +71,7 @@ MapPtr HillsGenerator::generate(const Dimensions& dim)
   }
   else if (RNG::percent_chance(100))
   {
-    GeneratorUtils::generate_dolmen(result_map);
+    GeneratorUtils::generate_dolmen(result_map, this);
   }
 
   GeneratorUtils::potentially_generate_coastline(result_map, this);

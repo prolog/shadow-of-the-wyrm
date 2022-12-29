@@ -14,7 +14,7 @@ class GeneratorUtils
     static void generate_rounded_rectangle(MapPtr map, const Coordinate& start, const int height, const int width, const TileType tile_type, const bool check_for_entirely_contained);
 
     // Generates a building: walls are TileType::TILE_TYPE_ROCK, floor is TileType::TILE_TYPE_DUNGEON.
-    static void generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width, const TileType tile_type = TileType::TILE_TYPE_ROCK);
+    static void generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width, const TileType tile_type = TileType::TILE_TYPE_ROCK, const TileType floor_type = TileType::TILE_TYPE_DUNGEON, const bool fancy_corners = false);
     
     // Generate a series of overlapping squares on a map to simulate a dug passage.
     static std::vector<std::pair<Coordinate, Coordinate>> generate_rectangles(const MapPtr map, const int start_row, const int start_col, const int end_row, const int end_col, const int num_rectangles, const TileType rect_fill_type);
@@ -75,7 +75,8 @@ class GeneratorUtils
     static void add_random_stream(MapPtr map);
     static void add_random_springs(MapPtr map);
 
-    static void generate_dolmen(MapPtr map);
+    static std::vector<CardinalDirection> get_non_coastline_directions(SOTW::Generator* const gen);
+    static void generate_dolmen(MapPtr map, SOTW::Generator * const gen);
 
     static bool generates_complexes(const TileType tt);
 

@@ -130,7 +130,7 @@ bool GeneratorUtils::position_in_range(const int min, const int max, const int a
 // I was using this sort of thing a lot, so I'm moving it here...
 // Generates a building without any additional feature - useful for generating
 // an empty building when you don't want house features like beds, pots, etc
-void GeneratorUtils::generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width, const TileType wall_tile_type)
+void GeneratorUtils::generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width, const TileType wall_tile_type, const TileType floor_tile_type, const bool fancy_corners)
 {
   TileGenerator tg;
 
@@ -151,10 +151,32 @@ void GeneratorUtils::generate_building(const MapPtr map, const int start_row, co
       }
       else
       {
-        current_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
+        current_tile = tg.generate(floor_tile_type);
       }
 
       map->insert(row, col, current_tile);
+    }
+  }
+
+  // fancy_corners produces rooms that look like this:
+  //
+  // ########
+  // ##    ##
+  // #      #
+  // ##    ##
+  // ########
+  //
+  // Most buildings don't look like this, but exterior structures that call
+  // this function might use this flag. It gives the building a slightly
+  // different look.
+  if (fancy_corners)
+  {
+    vector<Coordinate> inner_corners = { {start_row + 1, start_col + 1}, {start_row + 1, end_col - 2}, {end_row - 2, start_col + 1}, {end_row - 2, end_col - 2} };
+
+    for (const Coordinate& ic : inner_corners)
+    {
+      current_tile = tg.generate(wall_tile_type);
+      map->insert(ic, current_tile);
     }
   }
 }
@@ -844,22 +866,56 @@ void GeneratorUtils::add_random_stream(MapPtr map)
   StreamGenerator::generate(map);
 }
 
-void GeneratorUtils::generate_dolmen(MapPtr map)
+vector<CardinalDirection> GeneratorUtils::get_non_coastline_directions(SOTW::Generator* const gen)
 {
-  if (map != nullptr)
+  vector<CardinalDirection> dirs = { CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_SOUTH, CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_WEST };
+
+  if (gen != nullptr)
   {
-    CardinalDirection cd = DirectionUtils::get_random_cardinal_direction({CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_SOUTH});
-    Dimensions d = map->size();
-    int size = RNG::range(4, 9);
-    int width = RNG::range(3, 7);
+    string coast_n_s = gen->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH);
+    string coast_s_s = gen->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH);
+    string coast_e_s = gen->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST);
+    string coast_w_s = gen->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST);
 
-    int start_row = RNG::range(1, d.get_y() - 2 - size);
-    int start_col = RNG::range(1, d.get_x() - 2 - width);
+    bool generate_north = String::to_bool(coast_n_s);
+    bool generate_south = String::to_bool(coast_s_s);
+    bool generate_east = String::to_bool(coast_e_s);
+    bool generate_west = String::to_bool(coast_w_s);
 
-    for (int i = 0; i < size; i++)
+    vector<pair<bool, CardinalDirection>> check_dirs = { {generate_north, CardinalDirection::CARDINAL_DIRECTION_NORTH}, {generate_south, CardinalDirection::CARDINAL_DIRECTION_SOUTH}, {generate_east, CardinalDirection::CARDINAL_DIRECTION_EAST}, {generate_west, CardinalDirection::CARDINAL_DIRECTION_WEST} };
+
+    for (const auto& check_pair : check_dirs)
     {
-
+      if (check_pair.first)
+      {
+        dirs.erase(std::remove(dirs.begin(), dirs.end(), check_pair.second), dirs.end());
+      }
     }
+  }
+
+  return dirs;
+}
+
+void GeneratorUtils::generate_dolmen(MapPtr map, SOTW::Generator * const gen)
+{
+  if (map != nullptr && gen != nullptr)
+  {
+    Dimensions d = map->size();
+    int height = RNG::range(5, 10);
+    int width = RNG::range(5, 10);
+
+    Coordinate start_coord = { RNG::range(1, d.get_y() - 2 - height), RNG::range(1, d.get_x() - 2 - width) };
+    Coordinate end_coord = { start_coord.first + height, start_coord.second + width };
+
+    GeneratorUtils::generate_building(map, start_coord.first, start_coord.second, height+1, width+1, TileType::TILE_TYPE_ROCK, TileType::TILE_TYPE_ROCKY_EARTH, true);
+    std::map<CardinalDirection, Coordinate> midway_points = CoordUtils::get_midway_coordinates(start_coord, end_coord);
+    Coordinate c = midway_points[DirectionUtils::get_random_cardinal_direction()];
+
+    TileGenerator tg;
+    TilePtr rocky_earth = tg.generate(TileType::TILE_TYPE_ROCKY_EARTH);
+    map->insert(c, rocky_earth);
+
+    // JCD FIXME: add grave goods.
   }
 }
 
