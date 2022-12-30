@@ -101,6 +101,8 @@ class ItemIdKeys
     static const std::string ITEM_ID_VEGETABLE_4;
     static const std::string ITEM_ID_VEGETABLE_5;
     static const std::string ITEM_ID_VEGETABLE_6;
+    static const std::string ITEM_ID_GOLDEN_APPLE;
+    static const std::string ITEM_ID_SILVER_APPLE;
     static const std::string ITEM_ID_SHOVEL;
 
     // Foragables
@@ -114,7 +116,7 @@ class ItemIdKeys
     static const std::string ITEM_ID_VERBENA; // increases AP
     static const std::string ITEM_ID_BLACKROOT; // increases HP
     static const std::string ITEM_ID_VOXFLOWER; // restores the voice
-
+    
     // Fishing stuff
     static const std::string ITEM_ID_FISHING_ROD;
     static const std::string ITEM_ID_CORACLE;

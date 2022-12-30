@@ -907,7 +907,7 @@ void GeneratorUtils::generate_dolmen(MapPtr map, SOTW::Generator * const gen)
     Coordinate start_coord = { RNG::range(1, d.get_y() - 2 - height), RNG::range(1, d.get_x() - 2 - width) };
     Coordinate end_coord = { start_coord.first + height, start_coord.second + width };
 
-    GeneratorUtils::generate_building(map, start_coord.first, start_coord.second, height+1, width+1, TileType::TILE_TYPE_ROCK, TileType::TILE_TYPE_ROCKY_EARTH, true);
+    GeneratorUtils::generate_building(map, start_coord.first, start_coord.second, height+1, width+1, TileType::TILE_TYPE_ROCK, TileType::TILE_TYPE_DUNGEON, true);
     std::map<CardinalDirection, Coordinate> midway_points = CoordUtils::get_midway_coordinates(start_coord, end_coord);
     Coordinate c = midway_points[DirectionUtils::get_random_cardinal_direction()];
 
@@ -915,7 +915,78 @@ void GeneratorUtils::generate_dolmen(MapPtr map, SOTW::Generator * const gen)
     TilePtr rocky_earth = tg.generate(TileType::TILE_TYPE_ROCKY_EARTH);
     map->insert(c, rocky_earth);
 
-    // JCD FIXME: add grave goods.
+    // Dolmens in SotW are ancient gathering places to drink to the dead,
+    // both remembered and forgotten. They're not tombs. Nobody is buried
+    // inside. But offerings are left in memory of those who have come
+    // before and passed.
+    vector<Coordinate> interior = CoordUtils::get_interior_coordinates(start_coord, end_coord);
+    std::shuffle(interior.begin(), interior.end(), RNG::get_engine());
+
+    // Food for the returning dead:
+    if (RNG::percent_chance(30))
+    {
+      vector<string> apple_ids = { ItemIdKeys::ITEM_ID_GOLDEN_APPLE, ItemIdKeys::ITEM_ID_SILVER_APPLE };
+      string apple_id = apple_ids.at(RNG::range(0, apple_ids.size() - 1));
+      ItemPtr apple = ItemManager::create_item(apple_id, RNG::range(1, 3));
+
+      for (const Coordinate& ic : interior)
+      {
+        TilePtr itile = map->at(ic);
+
+        if (!itile->get_is_blocking_for_item(apple))
+        {
+          itile->get_items()->merge_or_add(apple, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          break;
+        }
+      }
+    }
+
+    int num_items = RNG::range(1, 3);
+
+    // Perhaps a wearable?
+    {
+      Rarity rarity = Rarity::RARITY_COMMON;
+      vector<ItemType> grave_item_types = { ItemType::ITEM_TYPE_ARMOUR, ItemType::ITEM_TYPE_WEAPON };
+
+      for (int i = 0; i < num_items; i++)
+      {
+        if (RNG::percent_chance(75))
+        {
+          ItemGenerationManager igm;
+          ItemGenerationMap generation_map = igm.generate_item_generation_map({ 1, 5, rarity, grave_item_types, ItemValues::DEFAULT_MIN_SHOP_VALUE });
+
+          ItemPtr grave_item = igm.generate_item(Game::instance().get_action_manager_ref(), generation_map, rarity, grave_item_types, RNG::range(1, 3));
+          
+          for (int j = 0; j < 3; j++)
+          {
+            Coordinate c = interior.at(RNG::range(0, interior.size() - 1));
+            TilePtr tic = map->at(c);
+
+            if (tic != nullptr && !tic->get_is_blocking_for_item(grave_item))
+            {
+              tic->get_items()->merge_or_add(grave_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+              break;
+            }
+          }
+        }
+      }
+    }
+
+    // Very small chance of an artifact.
+    if (RNG::percent_chance(2))
+    {
+      for (int i = 0; i < 10; i++)
+      {
+        Coordinate c = interior.at(RNG::range(0, interior.size() - 1));
+        TilePtr tile = map->at(c);
+
+        if (tile != nullptr && !tile->get_is_blocking_for_item())
+        {
+          GeneratorUtils::generate_randarts(map, c, 1);
+          break;
+        }
+      }
+    }
   }
 }
 

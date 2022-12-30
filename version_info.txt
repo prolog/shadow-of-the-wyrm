@@ -91,6 +91,8 @@ Shadow of the Wyrm v1.5.2 "Satoh"
 
 - More weeds.
 
+- Dolmens can be generated in the hills.
+
 - Oceanography has been renamed to Ocean Lore, and given to goblins.
   Snakelings will now also start with Desert Lore, in addition to Marsh Lore.
 

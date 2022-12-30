@@ -54,6 +54,8 @@ MapPtr HillsGenerator::generate(const Dimensions& dim)
     }
   }
 
+  bool set_permanence = false;
+
   // The early hill-people made barrows instead of using grave-markers.
   if (RNG::percent_chance(15))
   {
@@ -66,12 +68,20 @@ MapPtr HillsGenerator::generate(const Dimensions& dim)
 
       TilePtr barrow = tg.generate(TileType::TILE_TYPE_BARROW);
       result_map->insert(gr_row, gr_col, barrow);
-      result_map->set_permanent(true);
+      set_permanence = true;
     }
   }
-  else if (RNG::percent_chance(100))
+  // But some long-gone people made stone dolmens, not as tombs, but as
+  // gathering places, where communities could come to remember the dead.
+  else if (RNG::percent_chance(10))
   {
     GeneratorUtils::generate_dolmen(result_map, this);
+    set_permanence = true;
+  }
+
+  if (set_permanence)
+  {
+    result_map->set_permanent(true);
   }
 
   GeneratorUtils::potentially_generate_coastline(result_map, this);
