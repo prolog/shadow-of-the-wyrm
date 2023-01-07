@@ -35,7 +35,7 @@ void ShrineGenerator::add_dungeon_tiles_to_preset_locations(MapPtr map)
 
   if (map != nullptr)
   {
-    TilesContainer tc = map->get_tiles();
+    TilesContainer& tc = map->get_tiles_ref();
 
     for (const auto& tile_pair : tc)
     {

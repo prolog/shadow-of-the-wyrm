@@ -14,27 +14,27 @@
 		<Min>24</Min>
 		<Max>27</Max>
 	</LevelRange>
-	<MapType>1</MapType>
+	<MapType>5</MapType>
 	<Tiles>
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####AAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAA###AAAAAAAAAAAAAAAAAAAAAAA...#AAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAA#..AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAA#..AAA####..#############AAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#........#........#AAAA#..#AAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#........#........#AAAA#..#AAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAA#..AAAAAAA..AAAAAAA####..#######..####AAAA#..#AAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAA#..AAAAAAA..AAAAAAA#.................#AAAAAAAAAA###AAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAA#..AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA##..##AAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAA#..AAA####..#############AAAAAAAAAAAAAAAAA......AAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#........#........#AAAA#..#AAAAAAAAA......AAAA
+	AAAA#..#AAAAAAAAAAAAAAAAAAAAAAAAAA#........#........#AAAA#..#AAAAAAAAA##..##AAAA
+	AAAA..&gt;.AAAAAAA#..AAAAAAA..AAAAAAA####..#######..####AAAA#..#AAAAAAAAAAAAAAAAAAA
+	AAAA#..#AAAAAAA#..AAAAAAA..AAAAAAA#.................#AAAAAAAAAA###AAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAA###AAAAAAAAAAAAAAAA#........&gt;........#AAAAAAA..##AAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#.................#AAAAAAAAAAA..#AAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAA..AAA####..########..###AAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAA..AAA#........#........#AAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#........#...#..#.#AAAAAAAAAAAA..#AAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA##############.####AAA####AAAAA..#AAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA....AAAAA..#AAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAA#....AAAAAAAAAAAAA....#AAAAAAAAAAAAAAA..#AAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAA#####AAAAAAAAAAAAA#####AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAA#########AAAAAAAAAAAAAAAA..AAA#........#........#AAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAA#&gt;......#AAAAAAAAAAAAAAAAAAAAA#........#...#..#.#AAAAAAAAAAAA..#AAAAAAAAAAAA
+	AAAA#.......#AAAAAAAAAAAAAAAAAAAAA##############.####AAA####AAAAA..#AAAAAAAAAAAA
+	AAAA#.......#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA....AAAAA..#AAAAAAAAAAAA
+	AAAA#.......#AAAAAAAAAAAAAA#....AAAAAAAAAAAAA....#AAAAAAAAAAAAAAA..#AAAAAAAAAAAA
+	AAAA#########AAAAAAAAAAAAAA#####AAAAAAAAAAAAA#####AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	</Tiles>
 	<PlayerStart>
@@ -43,6 +43,15 @@
 	</PlayerStart>
 	<InitialPlacements>
 		<Creatures>
+			<Placement>
+				<ID>thief</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>5</Col>
+				</Coord>
+				<Friendly>1</Friendly>
+				<SpeechTextSID>CARCASSIA_THIEF_HOUSE_SID</SpeechTextSID>
+			</Placement>
 			<Placement>
 				<ID>golgoa</ID>
 				<Coord>
@@ -69,6 +78,13 @@
 				<Coord>
 					<Row>13</Row>
 					<Col>38</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>carcassian_guard</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>6</Col>
 				</Coord>
 			</Placement>
 		</Creatures>
@@ -122,9 +138,73 @@
 					<Col>58</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>dagger</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>9</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>sling</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>9</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>_stone</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>9</Col>
+				</Coord>
+				<Quantity>12</Quantity>
+			</Placement>
+			<Placement>
+				<ID>leather_boots</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>7</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>_cloak</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>7</Col>
+				</Coord>
+			</Placement>
 		</Items>
 	</InitialPlacements>
 	<Exits>
+		<Exit>
+			<Direction>2</Direction>
+			<MapID>carcassia_b1a</MapID>
+		</Exit>
+		<Exit>
+			<Direction>3</Direction>
+			<MapID>carcassia_b2a</MapID>
+		</Exit>
+		<Exit>
+			<Direction>6</Direction>
+			<MapID>carcassia_a2a</MapID>
+		</Exit>
+		<Exit>
+			<Direction>11</Direction>
+			<MapID>carcassia_a1</MapID>
+		</Exit>
+		<Exit>
+			<Coord>
+				<Row>14</Row>
+				<Col>5</Col>
+			</Coord>
+			<Direction>11</Direction>
+			<MapID>carcassia_a1</MapID>
+			<LinkTo>
+				<Row>14</Row>
+				<Col>5</Col>
+			</LinkTo>
+		</Exit>
 		<Exit>
 			<Coord>
 				<Row>10</Row>
@@ -132,9 +212,32 @@
 			</Coord>
 			<Direction>11</Direction>
 			<MapID>carcassia_a1</MapID>
+			<LinkTo>
+				<Row>10</Row>
+				<Col>43</Col>
+			</LinkTo>
+		</Exit>
+		<Exit>
+			<Coord>
+				<Row>8</Row>
+				<Col>6</Col>
+			</Coord>
+			<Direction>11</Direction>
+			<MapID>carcassia_a1</MapID>
+			<LinkTo>
+				<Row>8</Row>
+				<Col>6</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>16</Row>
+				<Col>8</Col>
+			</Coord>
+			<Bed/>
+		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>
 				<Row>13</Row>

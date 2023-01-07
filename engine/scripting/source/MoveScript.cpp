@@ -17,6 +17,10 @@ const string MoveScript::MOVE_FUNCTION_NAME = "enter_tile";
 // Return true if the script executed successfully, false otherwise.
 bool MoveScript::execute(ScriptEngine& se, const string& event_script, CreaturePtr moving_creature, const string& map_id, const Coordinate& new_coords)
 {
+  Log& log = Log::instance();
+  log.trace("MoveScript::execute - begin");
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+
   if (event_script.empty() || moving_creature == nullptr)
   {
     return false;
@@ -43,17 +47,21 @@ bool MoveScript::execute(ScriptEngine& se, const string& event_script, CreatureP
     {
       string l_err = lua_tostring(L, -1);
       string error_msg = "MoveScript::execute - error running Lua function `" + MOVE_FUNCTION_NAME + "': " + l_err;
-      Log::instance().error(error_msg);
+      log.error(error_msg);
       lua_pop(L, 1);
       result = false;
     }
+
+    lua_pop(L, 1);
   }
   else
   {
-    Log::instance().error("MoveScript::execute - did not run Lua function due to script failure: " + event_script);
+    log.error("MoveScript::execute - did not run Lua function due to script failure: " + event_script);
     result = false;
   }
 
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+  log.trace("MoveScript::execute - exiting");
   return result;
 }
 

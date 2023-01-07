@@ -15,6 +15,11 @@ std::string MountainsTile::get_tile_description_sid() const
 
 bool MountainsTile::get_dangerous(CreaturePtr creature) const
 {
+  if (creature && creature->get_skills().get_value(SkillType::SKILL_GENERAL_MOUNTAIN_LORE) == Skills::MAX_SKILL_VALUE)
+  {
+    return false;
+  }
+
   return true;
 }
 
@@ -29,6 +34,11 @@ string MountainsTile::get_danger_confirmation_sid() const
 bool MountainsTile::get_is_blocking_visually(CreaturePtr creature) const
 {
   return true;
+}
+
+SkillType MountainsTile::get_treasure_skill() const
+{
+  return SkillType::SKILL_GENERAL_MOUNTAIN_LORE;
 }
 
 Tile* MountainsTile::clone()

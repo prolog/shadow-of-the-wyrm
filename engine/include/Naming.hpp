@@ -16,6 +16,7 @@ class Naming
     static uint get_max_name_size();
 
     static std::string generate_settlement_name();
+    static std::string generate_artifact_name();
 
   protected:
     Naming();
@@ -42,4 +43,5 @@ class Naming
     static const SyllableMap syllables;
     static const std::map<int, std::vector<std::string>> settlement_syllables;
     static const std::vector<std::string> kell_prefixes;
+    static const std::map<int, std::vector<std::string>> artifact_syllables;
 };

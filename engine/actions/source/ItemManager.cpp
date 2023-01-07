@@ -204,9 +204,9 @@ ItemPtr ItemManager::create_item(const std::string& item_id, const uint quantity
   return item;
 }
 
-// Remove an item or reduce the quantity by 1.  First check the equipment, and
-// then the inventory.
-pair<bool, vector<ItemPtr>> ItemManager::remove_item_from_eq_or_inv(CreaturePtr creature, const string& base_item_id, const int quantity, const map<string, string>& properties)
+// Remove an item or reduce the quantity by 1.  First check the inventory, and
+// then the equipment.
+pair<bool, vector<ItemPtr>> ItemManager::remove_item_from_inv_or_eq(CreaturePtr creature, const string& base_item_id, const int quantity, const map<string, string>& properties)
 {
   pair<bool, vector<ItemPtr>> result;
   result.first = false;
@@ -217,59 +217,61 @@ pair<bool, vector<ItemPtr>> ItemManager::remove_item_from_eq_or_inv(CreaturePtr 
   IInventoryPtr inv = creature->get_inventory();
 
   EquipmentMap eq_map = eq.get_equipment();
+  pair<bool, vector<ItemPtr>> inv_items = inv->remove_by_base_id(base_item_id, rem_quantity, properties);
 
-  for(const EquipmentMap::value_type& eq_pair : eq_map)
+  for (const auto& inv_it_it : inv_items.second)
   {
-    ItemPtr item = eq_pair.second;
+    rem_quantity -= static_cast<int>(inv_it_it->get_quantity());
+  }
 
-    if (item && item->get_base_id() == base_item_id && item->has_additional_properties(properties))
+  if (rem_quantity > 0)
+  {
+    for (const EquipmentMap::value_type& eq_pair : eq_map)
     {
-      int i_quantity = item->get_quantity();
-      bool remove_item = (i_quantity <= rem_quantity);
+      ItemPtr item = eq_pair.second;
 
-      rem_quantity -= i_quantity;
-
-      if (remove_item)
+      if (item && item->get_base_id() == base_item_id && item->has_additional_properties(properties))
       {
-        // Subtract the current quantity from what's remaining, and
-        // remove the item.
+        int i_quantity = item->get_quantity();
+        bool remove_item = (i_quantity <= rem_quantity);
+        int num_to_remove = (i_quantity >= rem_quantity ? rem_quantity : i_quantity);
+        rem_quantity -= (i_quantity >= rem_quantity ? rem_quantity : i_quantity);
 
-        // Don't transfer to inventory
-        ItemPtr item = remove(creature, eq_pair.first, false);
-        result.second.push_back(item);
-      }
-      else
-      {
-        // There are more items than are needed for removal.
-        // Reduce the quantity accordingly.
-        int existing_item_new_quantity = i_quantity - rem_quantity;
-        int new_item_quantity = rem_quantity;
+        if (remove_item)
+        {
+          // Subtract the current quantity from what's remaining, and
+          // remove the item.
 
-        ItemPtr new_item = ItemPtr(item->clone_with_new_id());
-        item->set_quantity(existing_item_new_quantity);
-        new_item->set_quantity(new_item_quantity);
+          // Don't transfer to inventory
+          ItemPtr item = remove(creature, eq_pair.first, false);
+          result.second.push_back(item);
+        }
+        else
+        {
+          // There are more items than are needed for removal.
+          // Reduce the quantity accordingly.
+          int existing_item_new_quantity = i_quantity - num_to_remove;
+          int new_item_quantity = num_to_remove;
 
-        result.second.push_back(new_item);
-      }
+          ItemPtr new_item = ItemPtr(item->clone_with_new_id());
+          item->set_quantity(existing_item_new_quantity);
+          new_item->set_quantity(new_item_quantity);
 
-      result.first = true;
+          result.second.push_back(new_item);
+        }
 
-      if (rem_quantity <= 0)
-      {
-        break;
+        result.first = true;
+
+        if (rem_quantity <= 0)
+        {
+          break;
+        }
       }
     }
   }
 
-  pair<bool, vector<ItemPtr>> inv_items;
-
-  if (rem_quantity > 0)
-  {
-    inv_items = inv->remove_by_base_id(base_item_id, rem_quantity, properties);
-  }
-
   result.first = inv_items.first;
-  copy(inv_items.second.begin(), inv_items.second.end(), back_inserter(result.second));
+  result.second = inv_items.second;
 
   return result;
 }

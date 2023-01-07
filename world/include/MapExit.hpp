@@ -7,6 +7,13 @@
 #include "tiles.hpp"
 #include "ScriptDetails.hpp"
 
+enum struct MapExitOutcome
+{
+  CAN_EXIT = 0,
+  NO_EXIT = 1,
+  EXIT_BLOCKED = 2
+};
+
 class MapExit : public ISerializable
 {
   public:

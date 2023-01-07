@@ -22,6 +22,7 @@ class CoordUtils
 
     // Check to see if the direction is a valid move.
     static bool is_valid_move(const Dimensions& dim, const Coordinate& c, const Direction d);
+    static bool is_valid_coord(const Dimensions& dim, const Coordinate& c);
     static bool is_in_range(const Dimensions& dim, const Coordinate& start_coord, const Coordinate& end_coord);
 
     // Get new coordinates.  "is_valid_move" should always be called first!
@@ -68,6 +69,7 @@ class CoordUtils
 
     // Get all the adjacent coordinates for the current row and column, given the map's dimensions.
     static std::vector<Coordinate> get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col, const int steps = 1);
+    static std::vector<Coordinate> get_cardinally_adjacent_coordinates(const Dimensions& dim, const int row, const int col, const std::vector<CardinalDirection>& dirs, const int steps = 1);
 
     // Get the corner coordinates and the "partial wall", plus any bordering
     // wall coordinates based on the length.  With length 0, this is just the

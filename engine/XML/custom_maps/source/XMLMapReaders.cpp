@@ -44,7 +44,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     string name_sid = XMLUtils::get_child_node_value(custom_map_node, "NameSID");
     string default_race_id = XMLUtils::get_child_node_value(custom_map_node, "DefaultRaceID");
     string default_deity_id = XMLUtils::get_child_node_value(custom_map_node, "DefaultDeityID");
-    
+
     Dimensions dim = parse_dimensions(dimensions_node);
     custom_map = MapPtr(new Map(dim));
 
@@ -75,6 +75,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     custom_map->set_name_sid(name_sid);
     custom_map->set_default_race_id(default_race_id);
     custom_map->set_default_deity_id(default_deity_id);
+
     custom_map->set_tiles(tiles);
     custom_map->set_permanent(true); // custom maps are always permanent.
     custom_map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, player_start_location);
@@ -90,6 +91,12 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
 
     parse_shops(shops_node, custom_map);
     parse_properties(properties_node, custom_map);
+
+    if (map_type == MapType::MAP_TYPE_AIR && !custom_map->has_property(MapProperties::MAP_PROPERTIES_OPEN_SKY))
+    {
+      custom_map->set_property(MapProperties::MAP_PROPERTIES_OPEN_SKY, std::to_string(true));
+    }
+
     parse_event_scripts(event_scripts_node, node_details, custom_map->get_event_scripts_ref());
 
     // Custom maps currently don't allow creature updates.

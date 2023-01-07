@@ -158,6 +158,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -717,6 +718,7 @@
 			<TextDetailsSID>ANCIENT_TERROR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>ANCIENT_TERROR_SPEECH_TEXT_SID</SpeechTextSID>
 			<Size>4</Size>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -1202,6 +1204,7 @@
 			<DescriptionSID>KALATH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>KALATH_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>KALATH_SPEECH_TEXT_SID</SpeechTextSID>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -1243,6 +1246,7 @@
 			<DescriptionSID>MIRSHI_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MIRSHI_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MIRSHI_SPEECH_TEXT_SID</SpeechTextSID>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -1756,6 +1760,7 @@
 			<DescriptionSID>GLOAMING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GLOAMING_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GLOAMING_SPEECH_TEXT_SID</SpeechTextSID>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -3369,6 +3374,7 @@
 			<DescriptionSID>MANTICORE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MANTICORE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MANTICORE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -4143,6 +4149,7 @@
 					<TileType>38</TileType>
 					<TileType>42</TileType>
 					<TileType>44</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -5151,6 +5158,7 @@
 			<TextDetailsSID>FIREBIRD_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>FIREBIRD_SPEECH_TEXT_SID</SpeechTextSID>
 			<Size>4</Size>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -5176,6 +5184,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -5848,6 +5857,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -6342,6 +6352,7 @@
 			<DescriptionSID>SKYWING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SKYWING_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SKYWING_SPEECH_TEXT_SID</SpeechTextSID>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -6367,6 +6378,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -7295,6 +7307,7 @@
 			<TextDetailsSID>TIAMAT_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>TIAMAT_SPEECH_TEXT_SID</SpeechTextSID>
 			<Size>4</Size>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -8964,6 +8977,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -9663,6 +9677,7 @@
 			<TextDetailsSID>BEHOLDER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>BEHOLDER_SPEECH_TEXT_SID</SpeechTextSID>
 			<Size>2</Size>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -9872,6 +9887,7 @@
 			<DescriptionSID>DRAGON_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DRAGON_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>DRAGON_SPEECH_TEXT_SID</SpeechTextSID>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -9897,6 +9913,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -9960,6 +9977,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -10141,6 +10159,7 @@
 			<SpeechTextSID>HARPY_SPEECH_TEXT_SID</SpeechTextSID>
 			<Size>2</Size>
 			<Sex>1</Sex>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -10166,6 +10185,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -10507,6 +10527,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -10586,6 +10607,7 @@
 			<TextDetailsSID>AIR_ELEMENTAL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>AIR_ELEMENTAL_SPEECH_TEXT_SID</SpeechTextSID>
 			<Size>3</Size>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -10611,6 +10633,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -11017,6 +11040,7 @@
 			<TextDetailsSID>ASTRAL_HORROR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>ASTRAL_HORROR_SPEECH_TEXT_SID</SpeechTextSID>
 			<Size>3</Size>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -11114,12 +11138,12 @@
 				<Type>8</Type>
 			</Damage>
 		</Creature>
-		<Creature id="callara">
+		<Creature id="callisa">
 			<RaceID>01_human</RaceID>
-			<ShortDescriptionSID>CALLARA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
-			<DescriptionSID>CALLARA_DESCRIPTION_SID</DescriptionSID>
-			<TextDetailsSID>CALLARA_TEXT_DETAILS_SID</TextDetailsSID>
-			<SpeechTextSID>CALLARA_SPEECH_TEXT_SID</SpeechTextSID>
+			<ShortDescriptionSID>CALLISA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CALLISA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CALLISA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CALLISA_SPEECH_TEXT_SID</SpeechTextSID>
 			<Sex>1</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
@@ -11178,6 +11202,10 @@
 				</Spell>
 				<Spell>
 					<SpellID>a_03_lightning_bolt</SpellID>
+					<Castings>1</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_09_frost_bolt</SpellID>
 					<Castings>1</Castings>
 				</Spell>
 			</Spells>
@@ -12427,6 +12455,7 @@
 			<DescriptionSID>DRAKELING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DRAKELING_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>DRAKELING_SPEECH_TEXT_SID</SpeechTextSID>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -12452,6 +12481,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -12634,6 +12664,7 @@
 			<TextDetailsSID>FLARE_BEAST_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>FLARE_BEAST_SPEECH_TEXT_SID</SpeechTextSID>
 			<Size>4</Size>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -13228,6 +13259,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -13406,7 +13438,8 @@
 			<TextDetailsSID>ASTER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>ASTER_SPEECH_TEXT_SID</SpeechTextSID>
 			<Size>4</Size>
-			<DecisionStrategy>
+			<Flying>1</Flying>
+  			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
 			<Symbol>
@@ -13556,6 +13589,7 @@
 			<DescriptionSID>FLOATING_EYE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FLOATING_EYE_TEXT_DETAILS_SID</TextDetailsSID>
 			<Size>0</Size>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -13632,6 +13666,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -13766,6 +13801,7 @@
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
 					<TileType>9</TileType>
+					<TileType>45</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -13796,14 +13832,15 @@
 				<Colour>15</Colour>
 				<Sprite>
 					<ID>cr</ID>
-					<Row>0</Row>
-					<Col>15</Col>
+					<Row>13</Row>
+					<Col>25</Col>
 				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
 					<TileType>8</TileType>
 					<TileType>9</TileType>
+					<TileType>45</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>3</DangerLevel>
 				<Rarity>0</Rarity>
@@ -13859,6 +13896,53 @@
 				<Type>6</Type>
 			</Damage>
 			<Speed>60</Speed>
+		</Creature>
+		<Creature id="hermit_crab">
+			<RaceID>_insect</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>HERMIT_CRAB_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HERMIT_CRAB_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HERMIT_CRAB_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>HERMIT_CRAB_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>c</Char>
+				<Colour>9</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>29</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>3</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>2</Exp>
+				<InitialEquipmentAndInventory>
+					<InitialInventory>
+						<InitialItem>
+							<ID>conch</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
+			</CreatureGeneration>
+			<Level>3</Level>
+			<Damage piercing="1">
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Soak>4</Soak>
 		</Creature>
 		<Creature id="seal">
 			<RaceID>_animal</RaceID>
@@ -14706,6 +14790,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -14758,6 +14843,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -14810,6 +14896,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -14862,6 +14949,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -16052,6 +16140,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -16549,6 +16638,7 @@
 			<TextDetailsSID>MAWGRAWL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>MAWGRAWL_SPEECH_TEXT_SID</SpeechTextSID>
 			<Size>4</Size>
+			<Sex>2</Sex>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -16591,6 +16681,7 @@
 			<TextDetailsSID>QUEEN_BEE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>QUEEN_BEE_SPEECH_TEXT_SID</SpeechTextSID>
 			<Sex>1</Sex>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -18497,7 +18588,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="trio_shining_silver_dragons">
-			<RaceID>_dragon</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>02_aurelion</DeityID>
 			<ShortDescriptionSID>TRIO_SHINING_SILVER_DRAGONS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TRIO_SHINING_SILVER_DRAGONS_DESCRIPTION_SID</DescriptionSID>
@@ -18665,7 +18756,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="pulsating_mass_primordial_ooze">
-			<RaceID>_jelly</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>PULSATING_MASS_PRIMORDIAL_OOZE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>PULSATING_MASS_PRIMORDIAL_OOZE_DESCRIPTION_SID</DescriptionSID>
@@ -18703,7 +18794,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="cloud_murderous_flesh_eating_scarabs">
-			<RaceID>_insect</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>CLOUD_MURDEROUS_FLESH_EATING_SCARABS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CLOUD_MURDEROUS_FLESH_EATING_SCARABS_DESCRIPTION_SID</DescriptionSID>
@@ -18742,7 +18833,7 @@
 			<Speed>35</Speed>
 		</Creature>
 		<Creature id="thunderbird_low_steppes">
-			<RaceID>_bird</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>04_vedere</DeityID>
 			<ShortDescriptionSID>THUNDERBIRD_LOW_STEPPES_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THUNDERBIRD_LOW_STEPPES_DESCRIPTION_SID</DescriptionSID>
@@ -18781,7 +18872,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="hundred_headed_hydra">
-			<RaceID>_monster</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>HUNDRED_HEADED_HYDRA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HUNDRED_HEADED_HYDRA_DESCRIPTION_SID</DescriptionSID>
@@ -18860,7 +18951,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="early_dragon_first_age">
-			<RaceID>_dragon</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>05_voros</DeityID>
 			<ShortDescriptionSID>EARLY_DRAGON_FIRST_AGE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>EARLY_DRAGON_FIRST_AGE_DESCRIPTION_SID</DescriptionSID>
@@ -18952,7 +19043,7 @@
 			<Speed>80</Speed>
 		</Creature>
 		<Creature id="murder_thousand_crows">
-			<RaceID>_bird</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>06_thetrickster</DeityID>
 			<ShortDescriptionSID>MURDER_THOUSAND_CROWS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>MURDER_THOUSAND_CROWS_DESCRIPTION_SID</DescriptionSID>
@@ -18990,7 +19081,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="wraith_wan_dying_light">
-			<RaceID>_spirit</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>06_thetrickster</DeityID>
 			<ShortDescriptionSID>WRAITH_WAN_DYING_LIGHT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>WRAITH_WAN_DYING_LIGHT_DESCRIPTION_SID</DescriptionSID>
@@ -19069,7 +19160,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="nether_hound">
-			<RaceID>_animal</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>07_shiver</DeityID>
 			<ShortDescriptionSID>NETHER_HOUND_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>NETHER_HOUND_DESCRIPTION_SID</DescriptionSID>
@@ -19118,7 +19209,7 @@
 			</Spells>
 		</Creature>
 		<Creature id="ancient_shade">
-			<RaceID>_spirit</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>07_shiver</DeityID>
 			<ShortDescriptionSID>ANCIENT_SHADE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ANCIENT_SHADE_DESCRIPTION_SID</DescriptionSID>
@@ -19156,7 +19247,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="black_ogre">
-			<RaceID>_humanoid</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>08_urgoth</DeityID>
 			<ShortDescriptionSID>BLACK_OGRE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACK_OGRE_DESCRIPTION_SID</DescriptionSID>
@@ -19195,7 +19286,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="cyclonic_beast">
-			<RaceID>_monster</RaceID>
+			<RaceID>_divine</RaceID>
 			<DeityID>08_urgoth</DeityID>
 			<ShortDescriptionSID>CYCLONIC_BEAST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CYCLONIC_BEAST_DESCRIPTION_SID</DescriptionSID>
@@ -19429,6 +19520,7 @@
 					<TileType>31</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -19481,6 +19573,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -19506,6 +19599,7 @@
 			<DescriptionSID>QUAALIS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>QUAALIS_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>QUAALIS_SPEECH_TEXT_SID</SpeechTextSID>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -19532,6 +19626,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -19605,6 +19700,7 @@
 			<DescriptionSID>BLACK_MANTICORE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_MANTICORE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>BLACK_MANTICORE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -24080,6 +24176,7 @@
 			<DescriptionSID>GIANT_GRIFFINRIDER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GIANT_GRIFFINRIDER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GIANT_GRIFFINRIDER_SPEECH_TEXT_SID</SpeechTextSID>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -24106,6 +24203,7 @@
 					<TileType>26</TileType>
 					<TileType>38</TileType>
 					<TileType>42</TileType>
+					<TileType>45</TileType>
 					<TileType>47</TileType>
 					<TileType>49</TileType>
 				</AllowableTerrainTypes>
@@ -24961,6 +25059,7 @@
 			<ShortDescriptionSID>ANIMATED_ARMOUR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ANIMATED_ARMOUR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ANIMATED_ARMOUR_TEXT_DETAILS_SID</TextDetailsSID>
+			<Flying>1</Flying>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
@@ -25383,6 +25482,10 @@
 				<ChatScript>
 					<Script>quests/telari/the_sorceror.lua</Script>
 				</ChatScript>
+				<DeathScript>
+					<Script>death/the_sorceror.lua</Script>
+					<Chance>100</Chance>
+				</DeathScript>
 			</EventScripts>
 		</Creature>
 		<Creature id="the_sentry">
@@ -25955,6 +26058,28 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>2000</Exp>
+				<InitialEquipmentAndInventory>
+					<Head>
+						<ID>guildmasters_cap</ID>
+					</Head>
+					<Body>
+						<ID>elven_robes</ID>
+					</Body>
+					<AroundBody>
+						<ID>heavy_cloak</ID>
+					</AroundBody>
+					<Ammunition>
+						<ID>whisper_thin_dagger</ID>
+						<Quantity>
+							<Amount>6</Amount>
+						</Quantity>
+					</Ammunition>
+					<InitialInventory>
+						<InitialItem>
+							<ID>flame_wand</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
 			</CreatureGeneration>
 			<Level>25</Level>
 			<Damage>
@@ -25962,7 +26087,8 @@
 				<NumSides>50</NumSides>
 				<Type>1</Type>
 			</Damage>
-			<Speed>35</Speed>
+			<Evade>40</Evade>
+			<Speed>30</Speed>
 			<EventScripts>
 				<ChatScript>
 					<Script>quests/carcassia/guildmaster_caro.lua</Script>
@@ -26067,6 +26193,52 @@
 			<EventScripts>
 				<ChatScript>
 					<Script>quests/carcassia/balabin.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="carcassian_magistrate">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>CARCASSIAN_MAGISTRATE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CARCASSIAN_MAGISTRATE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CARCASSIAN_MAGISTRATE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CARCASSIAN_MAGISTRATE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>t</Char>
+				<Colour>15</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>28</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>10</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>10</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>40</Exp>
+			</CreatureGeneration>
+			<Level>10</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>20</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Evade>0</Evade>
+			<Soak>3</Soak>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/carcassian_magistrate.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>
@@ -27220,6 +27392,132 @@
 				<Type>1</Type>
 			</Damage>
 		</Creature>
+		<Creature id="stylite">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>STYLITE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>STYLITE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>STYLITE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>STYLITE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>t</Char>
+				<Colour>15</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>27</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10</Exp>
+			</CreatureGeneration>
+			<Level>4</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
+		<Creature id="ancient_sage">
+			<RaceID>03_mountainelf</RaceID>
+			<ShortDescriptionSID>ANCIENT_SAGE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ANCIENT_SAGE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ANCIENT_SAGE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ANCIENT_SAGE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>e</Char>
+				<Colour>13</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>27</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>12</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>30</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<AP>
+					<NumDice>50</NumDice>
+					<NumSides>6</NumSides>
+				</AP>
+				<Exp>10000</Exp>
+			</CreatureGeneration>
+			<Level>12</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>24</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/ancient_sage.lua</Script>
+				</ChatScript>
+			</EventScripts>
+			<Spells>
+				<Spell>
+					<SpellID>a_01_wreath_of_fire</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_03_lightning_bolt</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>a_09_frost_bolt</SpellID>
+					<Castings>4</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>c_02_flame_dart</SpellID>
+					<Castings>3</Castings>
+				</Spell>				
+				<Spell>
+					<SpellID>c_09_force_bolt</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>m_02_poison</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>m_03_blind</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_01_shadow_flame</SpellID>
+					<Castings>6</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_02_curse_of_shadows</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_04_nether_bolt</SpellID>
+					<Castings>3</Castings>
+				</Spell>
+			</Spells>
+		</Creature>
 		<Creature id="blind_oracle">
 			<RaceID>05_fae</RaceID>
 			<ShortDescriptionSID>BLIND_ORACLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -27589,7 +27887,7 @@
 					<Row>6</Row>
 					<Col>15</Col>
 				</Sprite>
-		</Symbol>
+			</Symbol>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
@@ -27908,6 +28206,50 @@
 			<EventScripts>
 				<ChatScript>
 					<Script>quests/carcassia/pitmistress_ghara.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
+		<Creature id="pern">
+			<RaceID>02_woodelf</RaceID>
+			<ShortDescriptionSID>PERN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>PERN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>PERN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>PERN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+				<Pickup>0</Pickup>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>@</Char>
+				<Colour>10</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>26</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>50</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>50</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>200000</Exp>
+			</CreatureGeneration>
+			<Level>50</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>100</NumSides>
+				<Type>0</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/pern.lua</Script>
 				</ChatScript>
 			</EventScripts>
 		</Creature>

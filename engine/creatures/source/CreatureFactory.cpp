@@ -748,6 +748,7 @@ bool CreatureFactory::create_pet(CreaturePtr creature, ActionManager& am, MapPtr
           pet->serialize(ss);
 
           creature->set_additional_property(pet_prop, ss.str());
+          pet_created = true;
         }
       }
     }

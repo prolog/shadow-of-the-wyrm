@@ -18,6 +18,7 @@
 #include "ItemEnchantmentCalculator.hpp"
 #include "MapProperties.hpp"
 #include "Naming.hpp"
+#include "NPCBackgroundGenerator.hpp"
 #include "PartyTextKeys.hpp"
 #include "RaceManager.hpp"
 #include "RNG.hpp"
@@ -33,7 +34,7 @@ CreatureGenerationManager::CreatureGenerationManager()
 {
 }
 
-CreatureGenerationIndex CreatureGenerationManager::generate_creature_generation_map(const set<TileType>& map_terrain_types, const bool permanent_map, const bool islet, const int min_danger_level, const int max_danger_level, const Rarity rarity, const map<string, string>& additional_properties)
+CreatureGenerationIndex CreatureGenerationManager::generate_creature_generation_map(const set<TileType>& map_terrain_types, const bool permanent_map, const bool islet, const MapType map_type, const int min_danger_level, const int max_danger_level, const Rarity rarity, const map<string, string>& additional_properties)
 {
   int min_danger = min_danger_level;
   CreatureGenerationList generation_list;
@@ -85,7 +86,7 @@ CreatureGenerationIndex CreatureGenerationManager::generate_creature_generation_
   {
     const CreatureGenerationValues& cgvals = cgv_map[c_it->first];
 
-    if (does_creature_match_generation_criteria(cgvals, map_terrain_types, permanent_map, islet, min_danger, max_danger_level, rarity, ignore_level_checks, required_race, generator_filters, preset_creature_ids))
+    if (does_creature_match_generation_criteria(cgvals, map_terrain_types, permanent_map, islet, map_type, min_danger, max_danger_level, rarity, ignore_level_checks, required_race, generator_filters, preset_creature_ids))
     {
       generation_list.push_back({c_it->first, c_it->second, cgvals});
     }
@@ -133,7 +134,7 @@ CreatureGenerationIndex CreatureGenerationManager::generate_ancient_beasts(const
       DecisionStrategyPtr ds = DecisionStrategyFactory::create_decision_strategy(DecisionStrategyID::DECISION_STRATEGY_MOBILE);
       string desc_sid = "ANCIENT_BEAST" + std::to_string(i) + "_DESCRIPTION_SID";
       string short_desc_sid = "ANCIENT_BEAST" + std::to_string(i) + "_SHORT_DESCRIPTION_SID";
-      string text_details_sid = "ANCIENT_BEAST_TEXT_DETAILS_SID";
+
       string ref_id = "ancient_beast_" + std::to_string(i);
 
       ExperienceManager em;
@@ -150,8 +151,11 @@ CreatureGenerationIndex CreatureGenerationManager::generate_ancient_beasts(const
       ancient_beast->set_decision_strategy(std::move(ds));
       ancient_beast->set_description_sid(desc_sid);
       ancient_beast->set_short_description_sid(short_desc_sid);
-      ancient_beast->set_text_details_sid(text_details_sid);
       ancient_beast->set_level(danger_level);
+
+      // Set bestiary info.
+      string text_details_sid = "ANCIENT_BEAST_TEXT_DETAILS_SID";
+      ancient_beast->set_text_details_sid(text_details_sid);
 
       Symbol s('X', static_cast<Colour>(i + 1));
       SpritesheetLocation& ssl = s.get_spritesheet_location_ref();
@@ -298,7 +302,9 @@ CreaturePtr CreatureGenerationManager::generate_hireling(ActionManager& am, MapP
   hireling->set_original_id(CreatureID::CREATURE_ID_HIRELING);
   hireling->set_description_sid(PartyTextKeys::HIRELING_DESC_SID);
   hireling->set_short_description_sid(PartyTextKeys::HIRELING_SHORT_DESC_SID);
-  hireling->set_text_details_sid(PartyTextKeys::HIRELING_TEXT_DETAILS_SID);
+
+  // Generate hireling bestiary info
+  generate_follower_bestiary(hireling, FollowerType::FOLLOWER_TYPE_HIRELING);
   
   string lua_script = StringTable::get(PartyTextKeys::HIRELING_LUA_SCRIPT_SID);
   EventScriptsMap scripts;
@@ -395,7 +401,8 @@ CreaturePtr CreatureGenerationManager::generate_adventurer(ActionManager& am, Ma
   adv->set_original_id(CreatureID::CREATURE_ID_ADVENTURER);
   adv->set_description_sid(PartyTextKeys::ADVENTURER_DESC_SID);
   adv->set_short_description_sid(PartyTextKeys::ADVENTURER_SHORT_DESC_SID);
-  adv->set_text_details_sid(PartyTextKeys::ADVENTURER_TEXT_DETAILS_SID);
+
+  generate_follower_bestiary(adv, FollowerType::FOLLOWER_TYPE_ADVENTURER);
 
   string lua_script = StringTable::get(PartyTextKeys::ADVENTURER_LUA_SCRIPT_SID);
   EventScriptsMap scripts;
@@ -429,10 +436,11 @@ CreaturePtr CreatureGenerationManager::generate_adventurer(ActionManager& am, Ma
   return adv;
 }
 
-bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const set<TileType>& terrain_types, const bool permanent_map, const bool islet, const int min_danger_level, const int max_danger_level, const Rarity rarity, const bool ignore_level_checks, const string& required_race, const vector<string>& generator_filters, const vector<string>& preset_creature_ids)
+bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const set<TileType>& terrain_types, const bool permanent_map, const bool islet, const MapType map_type, const int min_danger_level, const int max_danger_level, const Rarity rarity, const bool ignore_level_checks, const string& required_race, const vector<string>& generator_filters, const vector<string>& preset_creature_ids)
 {
   RaceManager rm;
   int cgv_danger_level = cgv.get_danger_level();
+  BreatheType bt = cgv.get_breathe_type();
   int cgv_maximum = cgv.get_maximum();
   vector<string> cgv_generator_filters = cgv.get_generator_filters();
   bool islet_race_natural = true;
@@ -451,7 +459,8 @@ bool CreatureGenerationManager::does_creature_match_generation_criteria(const Cr
   // Sort the vectors.  The assumption is that the input vector is sorted.
   std::sort(cgv_generator_filters.begin(), cgv_generator_filters.end());
 
-  if ( cgv.is_terrain_types_allowed(terrain_types)
+  if (cgv.is_terrain_types_allowed(terrain_types)
+    && (map_type != MapType::MAP_TYPE_UNDERWATER || bt != BreatheType::BREATHE_TYPE_AIR)
     && cgv_danger_level >= 0 // Exclude danger level of -1, which means "don't generate"
     && (ignore_level_checks || cgv_danger_level >= min_danger_level)
     && (ignore_level_checks || cgv_danger_level <= max_danger_level)
@@ -472,4 +481,34 @@ bool CreatureGenerationManager::does_creature_match_generation_criteria(const Cr
   }
   
   return false;
+}
+
+void CreatureGenerationManager::generate_follower_bestiary(CreaturePtr creature, const FollowerType ft)
+{
+  if (creature != nullptr)
+  {
+    string text_details;
+
+    if (RNG::percent_chance(75))
+    {
+      bool include_all = RNG::percent_chance(50);
+
+      NPCBackgroundGenerator nbg(include_all);
+      text_details = nbg.generate_bestiary(creature);
+    }
+    else
+    {
+      if (ft == FollowerType::FOLLOWER_TYPE_HIRELING)
+      {
+        text_details = PartyTextKeys::HIRELING_TEXT_DETAILS_SID;
+      }
+      else
+      {
+        text_details = PartyTextKeys::ADVENTURER_TEXT_DETAILS_SID;
+      }
+
+    }
+
+    creature->set_text_details_sid(text_details);
+  }
 }

@@ -14,7 +14,7 @@
 #include "SDLPromptProcessor.hpp"
 #include "Settings.hpp"
 
-enum class SDLWindowMode
+enum struct SDLWindowMode
 {
   SDL_WINDOW_MODE_WINDOWED = 0,
   SDL_WINDOW_MODE_DESKTOP_FULLSCREEN = 1,

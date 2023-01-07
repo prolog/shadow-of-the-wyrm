@@ -1,14 +1,18 @@
 #include "CoastlineGenerator.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
+#include "DirectionUtils.hpp"
 #include "FeatureGenerator.hpp"
 #include "Game.hpp"
 #include "GardenGeneratorFactory.hpp"
 #include "GeneratorUtils.hpp"
 #include "ItemGenerationManager.hpp"
+#include "ItemProperties.hpp"
 #include "Log.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
+#include "Naming.hpp"
+#include "RaceManager.hpp"
 #include "RNG.hpp"
 #include "RockGardenGenerator.hpp"
 #include "SettlementGeneratorUtils.hpp"
@@ -126,7 +130,7 @@ bool GeneratorUtils::position_in_range(const int min, const int max, const int a
 // I was using this sort of thing a lot, so I'm moving it here...
 // Generates a building without any additional feature - useful for generating
 // an empty building when you don't want house features like beds, pots, etc
-void GeneratorUtils::generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width, const TileType wall_tile_type)
+void GeneratorUtils::generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width, const TileType wall_tile_type, const TileType floor_tile_type, const bool fancy_corners)
 {
   TileGenerator tg;
 
@@ -147,10 +151,32 @@ void GeneratorUtils::generate_building(const MapPtr map, const int start_row, co
       }
       else
       {
-        current_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
+        current_tile = tg.generate(floor_tile_type);
       }
 
       map->insert(row, col, current_tile);
+    }
+  }
+
+  // fancy_corners produces rooms that look like this:
+  //
+  // ########
+  // ##    ##
+  // #      #
+  // ##    ##
+  // ########
+  //
+  // Most buildings don't look like this, but exterior structures that call
+  // this function might use this flag. It gives the building a slightly
+  // different look.
+  if (fancy_corners)
+  {
+    vector<Coordinate> inner_corners = { {start_row + 1, start_col + 1}, {start_row + 1, end_col - 2}, {end_row - 2, start_col + 1}, {end_row - 2, end_col - 2} };
+
+    for (const Coordinate& ic : inner_corners)
+    {
+      current_tile = tg.generate(wall_tile_type);
+      map->insert(ic, current_tile);
     }
   }
 }
@@ -596,6 +622,61 @@ void GeneratorUtils::generate_cottage(MapPtr map)
   }
 }
 
+void GeneratorUtils::generate_randarts(MapPtr map, const Coordinate& c, const int num_randarts)
+{
+  if (map != nullptr)
+  {
+    TilePtr tile = map->at(c);
+
+    if (tile != nullptr)
+    {
+      ActionManager& am = Game::instance().get_action_manager_ref();
+      ItemGenerationManager igm;
+      vector<ItemType> restr = { ItemType::ITEM_TYPE_WEAPON, ItemType::ITEM_TYPE_ARMOUR };
+      ItemGenerationConstraints igc(1, 50 /* JCD FIXME */, Rarity::RARITY_VERY_RARE, restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE);
+      ItemGenerationMap generation_map = igm.generate_item_generation_map(igc);
+      RaceManager rm;
+
+      for (int i = 0; i < num_randarts; i++)
+      {
+        ItemPtr randart = igm.generate_item(am, generation_map, Rarity::RARITY_VERY_RARE, restr, 0);
+        string name = Naming::generate_artifact_name();
+        vector<string> race_ids = rm.get_race_ids(false, false);
+        randart->create_randart(name, race_ids);
+
+        tile->get_items()->merge_or_add(randart, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+      }
+    }
+  }
+}
+
+void GeneratorUtils::generate_item_per_coord(MapPtr map, const vector<Coordinate>& coords, const vector<string>& item_ids)
+{
+  if (map != nullptr && !coords.empty() && !item_ids.empty())
+  {
+    for (const Coordinate& c : coords)
+    {
+      string item_id = item_ids.at(RNG::range(0, item_ids.size() - 1));
+      ItemPtr item = ItemManager::create_item(item_id);
+
+      if (item != nullptr)
+      {
+        if (item->get_type() == ItemType::ITEM_TYPE_AMMUNITION)
+        {
+          item->set_quantity(RNG::range(15, 25));
+        }
+
+        TilePtr c_tile = map->at(c);
+
+        if (c_tile != nullptr)
+        {
+          c_tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+        }
+      }
+    }
+  }
+}
+
 void GeneratorUtils::generate_storehouses(MapPtr map)
 {
   if (map != nullptr)
@@ -783,6 +864,130 @@ void GeneratorUtils::add_random_springs(MapPtr result_map)
 void GeneratorUtils::add_random_stream(MapPtr map)
 {
   StreamGenerator::generate(map);
+}
+
+vector<CardinalDirection> GeneratorUtils::get_non_coastline_directions(SOTW::Generator* const gen)
+{
+  vector<CardinalDirection> dirs = { CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_SOUTH, CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_WEST };
+
+  if (gen != nullptr)
+  {
+    string coast_n_s = gen->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH);
+    string coast_s_s = gen->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH);
+    string coast_e_s = gen->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_EAST);
+    string coast_w_s = gen->get_additional_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST);
+
+    bool generate_north = String::to_bool(coast_n_s);
+    bool generate_south = String::to_bool(coast_s_s);
+    bool generate_east = String::to_bool(coast_e_s);
+    bool generate_west = String::to_bool(coast_w_s);
+
+    vector<pair<bool, CardinalDirection>> check_dirs = { {generate_north, CardinalDirection::CARDINAL_DIRECTION_NORTH}, {generate_south, CardinalDirection::CARDINAL_DIRECTION_SOUTH}, {generate_east, CardinalDirection::CARDINAL_DIRECTION_EAST}, {generate_west, CardinalDirection::CARDINAL_DIRECTION_WEST} };
+
+    for (const auto& check_pair : check_dirs)
+    {
+      if (check_pair.first)
+      {
+        dirs.erase(std::remove(dirs.begin(), dirs.end(), check_pair.second), dirs.end());
+      }
+    }
+  }
+
+  return dirs;
+}
+
+void GeneratorUtils::generate_dolmen(MapPtr map, SOTW::Generator * const gen)
+{
+  if (map != nullptr && gen != nullptr)
+  {
+    Dimensions d = map->size();
+    int height = RNG::range(5, 10);
+    int width = RNG::range(5, 10);
+
+    Coordinate start_coord = { RNG::range(1, d.get_y() - 2 - height), RNG::range(1, d.get_x() - 2 - width) };
+    Coordinate end_coord = { start_coord.first + height, start_coord.second + width };
+
+    GeneratorUtils::generate_building(map, start_coord.first, start_coord.second, height+1, width+1, TileType::TILE_TYPE_ROCK, TileType::TILE_TYPE_DUNGEON, true);
+    std::map<CardinalDirection, Coordinate> midway_points = CoordUtils::get_midway_coordinates(start_coord, end_coord);
+    Coordinate c = midway_points[DirectionUtils::get_random_cardinal_direction()];
+
+    TileGenerator tg;
+    TilePtr rocky_earth = tg.generate(TileType::TILE_TYPE_ROCKY_EARTH);
+    map->insert(c, rocky_earth);
+
+    // Dolmens in SotW are ancient gathering places to drink to the dead,
+    // both remembered and forgotten. They're not tombs. Nobody is buried
+    // inside. But offerings are left in memory of those who have come
+    // before and passed.
+    vector<Coordinate> interior = CoordUtils::get_interior_coordinates(start_coord, end_coord);
+    std::shuffle(interior.begin(), interior.end(), RNG::get_engine());
+
+    // Food for the returning dead:
+    if (RNG::percent_chance(30))
+    {
+      vector<string> apple_ids = { ItemIdKeys::ITEM_ID_GOLDEN_APPLE, ItemIdKeys::ITEM_ID_SILVER_APPLE };
+      string apple_id = apple_ids.at(RNG::range(0, apple_ids.size() - 1));
+      ItemPtr apple = ItemManager::create_item(apple_id, RNG::range(1, 3));
+
+      for (const Coordinate& ic : interior)
+      {
+        TilePtr itile = map->at(ic);
+
+        if (!itile->get_is_blocking_for_item(apple))
+        {
+          itile->get_items()->merge_or_add(apple, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          break;
+        }
+      }
+    }
+
+    int num_items = RNG::range(1, 3);
+
+    // Perhaps a wearable?
+    {
+      Rarity rarity = Rarity::RARITY_COMMON;
+      vector<ItemType> grave_item_types = { ItemType::ITEM_TYPE_ARMOUR, ItemType::ITEM_TYPE_WEAPON };
+
+      for (int i = 0; i < num_items; i++)
+      {
+        if (RNG::percent_chance(75))
+        {
+          ItemGenerationManager igm;
+          ItemGenerationMap generation_map = igm.generate_item_generation_map({ 1, 5, rarity, grave_item_types, ItemValues::DEFAULT_MIN_SHOP_VALUE });
+
+          ItemPtr grave_item = igm.generate_item(Game::instance().get_action_manager_ref(), generation_map, rarity, grave_item_types, RNG::range(1, 3));
+          
+          for (int j = 0; j < 3; j++)
+          {
+            Coordinate c = interior.at(RNG::range(0, interior.size() - 1));
+            TilePtr tic = map->at(c);
+
+            if (tic != nullptr && !tic->get_is_blocking_for_item(grave_item))
+            {
+              tic->get_items()->merge_or_add(grave_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+              break;
+            }
+          }
+        }
+      }
+    }
+
+    // Very small chance of an artifact.
+    if (RNG::percent_chance(2))
+    {
+      for (int i = 0; i < 10; i++)
+      {
+        Coordinate c = interior.at(RNG::range(0, interior.size() - 1));
+        TilePtr tile = map->at(c);
+
+        if (tile != nullptr && !tile->get_is_blocking_for_item())
+        {
+          GeneratorUtils::generate_randarts(map, c, 1);
+          break;
+        }
+      }
+    }
+  }
 }
 
 bool GeneratorUtils::generates_complexes(const TileType tt)

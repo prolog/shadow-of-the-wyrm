@@ -17,6 +17,10 @@ const string MapScript::MAP_FUNCTION_NAME = "init_map";
 // Return true if the script executed successfully, false otherwise.
 bool MapScript::execute(ScriptEngine& se, const string& map_script, MapPtr map)
 {
+  Log& log = Log::instance();
+  log.trace("MapScript::execute - begin");
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+
   if (map_script.empty())
   {
     return false;
@@ -43,17 +47,21 @@ bool MapScript::execute(ScriptEngine& se, const string& map_script, MapPtr map)
     {
       string l_err = lua_tostring(L, -1);
       string error_msg = "MapScript::execute - error running Lua function `" + MAP_FUNCTION_NAME + "': " + l_err;
-      Log::instance().error(error_msg);
+      log.error(error_msg);
       lua_pop(L, 1);
       result = false;
     }
+
+    lua_pop(L, 1);
   }
   else
   {
-    Log::instance().error("MapScript::execute - did not run Lua function due to script failure: " + map_script);
+    log.error("MapScript::execute - did not run Lua function due to script failure: " + map_script);
     result = false;
   }
 
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+  log.trace("MapScript::execute - exiting");
   return result;
 }
 

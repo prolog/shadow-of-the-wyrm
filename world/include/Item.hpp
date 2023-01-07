@@ -149,6 +149,11 @@ class Item : public ISerializable
     // number of allowable enchantments/smithings by one.
     virtual bool enchant(const int pct_chance_brand, const float enchant_mult);
 
+    // Enchant the item as a randart: set the number of enchants arbitrarily
+    // high, adjust the resists/damage/evade/soak/speed/to-hit, then set
+    // enchants to 0 and set the artifact flag.
+    virtual void create_randart(const std::string& name, const std::vector<std::string>& slayable_race_ids);
+
     // Brand the item, typically if it's a weapon or armour.  Reduce the number
     // of allowable enchantments/smithings by one.
     virtual bool brand();
@@ -228,6 +233,9 @@ class Item : public ISerializable
     // works for wearables and weapons.
     virtual void do_enchant_item(const int points);
     virtual void do_smith_item(const int points);
+    virtual void do_enchant_randart(const std::vector<std::string>& slayable_race_ids);
+    virtual void do_enchant_randart_non_resists(const std::vector<std::string>& slayable_race_ids);
+
     virtual DamageType do_brand();
     DamageType get_random_brand();
 

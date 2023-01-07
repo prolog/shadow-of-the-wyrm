@@ -33,11 +33,16 @@ class TextKeys
     static const std::string MORTUARY_FIRST_KILL;
     static const std::string MODIFIERS;
     static const std::string DEATH_DETAILS;
+    static const std::string DEATH_DETAILS_NARRATIVE_MODE;
     static const std::string INDEFINITELY;
     static const std::string STATUSES;
     static const std::string TOTAL;
     static const std::string MAXIMUM_LEVEL_DIFFERENCE;
     static const std::string TURNS;
+    static const std::string GAME_STARTED;
+    static const std::string CURRENT_DATE;
+    static const std::string CHARACTER_STARTED;
+    static const std::string GAME_DATE;
     static const std::string TOTAL_ELAPSED_TIME;
     static const std::string MAXIMUM_DEPTH_REACHED;
     static const std::string NPC_ESCAPES_MESSAGE;

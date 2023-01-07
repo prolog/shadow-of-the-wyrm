@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <sstream>
 #include "BrandConstants.hpp"
 #include "DamageFlagFactory.hpp"
@@ -15,6 +16,10 @@ enum struct ImproveWeaponType
   IMPROVE_WEAPON_DAMAGE = 2,
   IMPROVE_WEAPON_BOTH   = 3
 };
+
+const int Weapon::RANDART_PCT_CHANCE_INCREASE_MODIFIER = 15;
+const int Weapon::RANDART_PCT_CHANCE_INCREASE_TOHIT = 20;
+const int Weapon::RANDART_PCT_CHANCE_ADD_SLAY = 10;
 
 // WEAPON
 Weapon::Weapon()
@@ -158,6 +163,43 @@ void Weapon::do_enchant_item(const int points)
 
     // To-hit, damage, etc.  Shared by both enchanting and smithing.
     do_improve_item(rem_points);
+  }
+}
+
+void Weapon::do_enchant_randart_non_resists(const std::vector<std::string>& slayable_race_ids)
+{
+  if (RNG::percent_chance(Wearable::RANDART_PCT_CHANCE_ADD_SPEED))
+  {
+    speed_bonus += 2;
+  }
+  else if (RNG::percent_chance(RANDART_PCT_CHANCE_ADD_SLAY))
+  {
+    vector<string> slayable_races = slayable_race_ids;
+    std::shuffle(slayable_races.begin(), slayable_races.end(), RNG::get_engine());
+    vector<string> dam_slays = damage.get_slays_races();
+
+    for (const auto& sr : slayable_races)
+    {
+      if (std::find(dam_slays.begin(), dam_slays.end(), sr) == dam_slays.end())
+      {
+        dam_slays.push_back(sr);
+        damage.set_slays_races(dam_slays);
+
+        break;
+      }
+    }
+  }
+  else if (RNG::percent_chance(RANDART_PCT_CHANCE_INCREASE_MODIFIER))
+  {
+    addl_damage += RNG::range(2, 4);
+  }
+  else if (RNG::percent_chance(RANDART_PCT_CHANCE_INCREASE_TOHIT))
+  {
+    to_hit += RNG::range(3, 5);
+  }
+  else
+  {
+    damage.set_num_dice(damage.get_num_dice() + 1);
   }
 }
 

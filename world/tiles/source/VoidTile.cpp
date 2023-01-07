@@ -1,4 +1,5 @@
 #include "VoidTile.hpp"
+#include "MovementTextKeys.hpp"
 
 TileType VoidTile::get_tile_type() const
 {
@@ -8,6 +9,16 @@ TileType VoidTile::get_tile_type() const
 std::string VoidTile::get_tile_description_sid() const
 {
   return TileTextKeys::TILE_DESC_VOID;
+}
+
+std::string VoidTile::get_no_exit_up_message_sid() const
+{
+  return MovementTextKeys::ACTION_MOVE_NO_EXIT_COSMOS;
+}
+
+std::string VoidTile::get_no_exit_down_message_sid() const
+{
+  return MovementTextKeys::ACTION_MOVE_NO_EXIT_COSMOS;
 }
 
 Tile* VoidTile::clone()

@@ -98,8 +98,8 @@ void RayCastingFieldOfViewStrategy::add_points_to_map_as_appropriate(CreaturePtr
 // Credit where credit is due: this is based on jice's "piece of cake visibility determination" page.
 void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(CreaturePtr fov_creature, const Coordinate& centre_coord, MapPtr view_map, MapPtr fov_map, const PassType type)
 {
-  TilesContainer tile_cont = view_map->get_tiles();
-  TilesContainer fov_tile_cont = fov_map->get_tiles();
+  TilesContainer& tile_cont = view_map->get_tiles_ref();
+  TilesContainer& fov_tile_cont = fov_map->get_tiles_ref();
   TilesContainer::iterator t_it;
   
   Log::instance().debug("RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts - centre coord: " + std::to_string(centre_coord.first) + "," + std::to_string(centre_coord.second));

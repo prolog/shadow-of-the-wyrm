@@ -9,7 +9,7 @@
 		<Min>24</Min>
 		<Max>27</Max>
 	</LevelRange>
-	<MapType>1</MapType>
+	<MapType>5</MapType>
 	<Tiles>
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -232,12 +232,20 @@
 	</InitialPlacements>
 	<Exits>
 		<Exit>
+			<Direction>11</Direction>
+			<MapID>zaedas_tower</MapID>
+		</Exit>
+		<Exit>
 			<Coord>
 				<Row>10</Row>
 				<Col>11</Col>
 			</Coord>
 			<Direction>11</Direction>
 			<MapID>zaedas_tower</MapID>
+			<LinkTo>
+				<Row>10</Row>
+				<Col>40</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>

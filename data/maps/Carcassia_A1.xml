@@ -25,13 +25,13 @@
 	,,#,,#####,,r,,,,,,,,,,,,,,,,,,,r,#########.#########,r,,,,,,,,,,,,,,,,,,,,,,,,,
 	,,#,,,,,,,,,r,,,,,,,,,,,,,,,,,,,r,#..#...........#..#,r,,,,,,,,,,,,,,,,,,,,,,,,,
 	,,#,####,,,,r,,,,,,,,,,,,,,,,,,,r,#.##.w.......w.##.#,r,,,,,,,,,,,,,,,,,,,,,,,,,
-	,,#r...#,,,,r,,,,,,,,,,,,,,,,,,,r,#.................#,r,,,,,,,,,,,,,,,,,,,,,,,,,
+	,,#r..&lt;#,,,,r,,,,,,,,,,,,,,,,,,,r,#.................#,r,,,,,,,,,,,,,,,,,,,,,,,,,
 	,,rr####,,,,r,,,,,,,,,,,,,,,,,,,r,#.................#,r,,,,,,,,,,,,,,,,,,,,,,,,,
 	rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr.........&lt;.........rrrrrrrrrrrrrrrrrrrrrrrrrrr
 	,,r,,,,,r,,,,,,,,,,,,,,,,,,,,,,,r,#.................#,r,,,,,,,,,,,,,,,,,,,,,,,,,
 	,,#,,,,,r,,,,,,,,,,,,,,,,,,,,,,,r,#.................#,r,,############.#####.###,
 	,,#,####.####,,,,,,,,,,,,,,,,,,,r,#.##.w.......w.##.#,r,,#........#.....#.....#,
-	,,#,#.......#,,,,,,,,,,,,,,,,,,,r,#..#...........#..#,rrr.........#############,
+	,,#,#&lt;......#,,,,,,,,,,,,,,,,,,,r,#..#...........#..#,rrr.........#############,
 	,,#,####....#,,,,,,,,,,,,,,,,,,,r,#########.#########,r,,#....................#,
 	,,#,#&gt;.#....#,,,,,,,,,,,,,,,,,,,r,,,,,,,,,,r,,,,,,,,,,r,,#....................#,
 	,,#,#.......#,,,,,,,,,,,,,,,,,,,rrrrrrrrrrrrrrrrrrrrrrr,,#....................#,
@@ -44,6 +44,15 @@
 	</PlayerStart>
 	<InitialPlacements>
 		<Creatures>
+			<Placement>
+				<ID>thief</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>9</Col>
+				</Coord>
+				<Friendly>1</Friendly>
+				<SpeechTextSID>CARCASSIA_THIEF_HOUSE2_SID</SpeechTextSID>
+			</Placement>
 			<Placement>
 				<ID>glich</ID>
 				<Random>
@@ -125,13 +134,6 @@
 				<Coord>
 					<Row>8</Row>
 					<Col>1</Col>
-				</Coord>
-			</Placement>
-			<Placement>
-				<ID>carcassian_guard</ID>
-				<Coord>
-					<Row>8</Row>
-					<Col>6</Col>
 				</Coord>
 			</Placement>
 			<Placement>
@@ -222,12 +224,32 @@
 			<MapID>carcassia_a2</MapID>
 		</Exit>
 		<Exit>
+			<Direction>10</Direction>
+			<MapID>carcassia_tower_top</MapID>
+		</Exit>
+		<Exit>
 			<Coord>
 				<Row>16</Row>
 				<Col>5</Col>
 			</Coord>
 			<Direction>11</Direction>
 			<MapID>carcassia_guild_of_thieves</MapID>
+			<LinkTo>
+				<Row>16</Row>
+				<Col>3</Col>
+			</LinkTo>
+		</Exit>
+		<Exit>
+			<Coord>
+				<Row>14</Row>
+				<Col>5</Col>
+			</Coord>
+			<Direction>10</Direction>
+			<MapID>carcassia_tower_top</MapID>
+			<LinkTo>
+				<Row>14</Row>
+				<Col>5</Col>
+			</LinkTo>
 		</Exit>
 		<Exit>
 			<Coord>
@@ -236,6 +258,22 @@
 			</Coord>
 			<Direction>10</Direction>
 			<MapID>carcassia_tower_top</MapID>
+			<LinkTo>
+				<Row>10</Row>
+				<Col>43</Col>
+			</LinkTo>
+		</Exit>
+		<Exit>
+			<Coord>
+				<Row>8</Row>
+				<Col>6</Col>
+			</Coord>
+			<Direction>10</Direction>
+			<MapID>carcassia_tower_top</MapID>
+			<LinkTo>
+				<Row>8</Row>
+				<Col>6</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>

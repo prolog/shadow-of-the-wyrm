@@ -6,7 +6,12 @@ const int CoastlineGenerator::PCT_CHANCE_SHIFT_DIR = 33;
 const int CoastlineGenerator::MAX_COAST_OFFSET = 3;
 
 CoastlineGenerator::CoastlineGenerator()
-: chance_shoals_y(100)
+: fill_tile_type(TileType::TILE_TYPE_SEA), secondary_tile_type(TileType::TILE_TYPE_SHOALS), chance_sectype_y(100)
+{
+}
+
+CoastlineGenerator::CoastlineGenerator(const TileType new_tile_type, const TileType new_sec_type)
+: fill_tile_type(new_tile_type), secondary_tile_type(new_sec_type), chance_sectype_y(100)
 {
 }
 
@@ -38,14 +43,14 @@ void CoastlineGenerator::generate(MapPtr map, const bool north, const bool south
 
 void CoastlineGenerator::generate_north(MapPtr map)
 {
-  chance_shoals_y = get_random_chance_shoals();
+  chance_sectype_y = get_random_chance_shoals();
   int y = RNG::range(0, MAX_COAST_OFFSET);
   Dimensions dim = map->size();
   int cols = dim.get_x();
 
   for (int x = 0; x < cols; x++)
   {
-    fill_sea(map, 0, y, x, x);
+    fill(map, 0, y, x, x);
 
     if (RNG::percent_chance(PCT_CHANCE_SHIFT_DIR))
     {
@@ -56,7 +61,7 @@ void CoastlineGenerator::generate_north(MapPtr map)
 
 void CoastlineGenerator::generate_south(MapPtr map)
 {
-  chance_shoals_y = get_random_chance_shoals();
+  chance_sectype_y = get_random_chance_shoals();
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
@@ -64,7 +69,7 @@ void CoastlineGenerator::generate_south(MapPtr map)
 
   for (int x = 0; x < cols; x++)
   {
-    fill_sea(map, y, rows-1, x, x);
+    fill(map, y, rows-1, x, x);
 
     if (RNG::percent_chance(PCT_CHANCE_SHIFT_DIR))
     {
@@ -75,7 +80,7 @@ void CoastlineGenerator::generate_south(MapPtr map)
 
 void CoastlineGenerator::generate_east(MapPtr map)
 {
-  chance_shoals_y = get_random_chance_shoals();
+  chance_sectype_y = get_random_chance_shoals();
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
@@ -83,7 +88,7 @@ void CoastlineGenerator::generate_east(MapPtr map)
 
   for (int y = 0; y < rows; y++)
   {
-    fill_sea(map, y, y, x, cols-1);
+    fill(map, y, y, x, cols-1);
 
     if (RNG::percent_chance(PCT_CHANCE_SHIFT_DIR))
     {
@@ -94,14 +99,14 @@ void CoastlineGenerator::generate_east(MapPtr map)
 
 void CoastlineGenerator::generate_west(MapPtr map)
 {
-  chance_shoals_y = get_random_chance_shoals();
+  chance_sectype_y = get_random_chance_shoals();
   int x = RNG::range(0, MAX_COAST_OFFSET);
   Dimensions dim = map->size();
   int rows = dim.get_y();
 
   for (int y = 0; y < rows; y++)
   {
-    fill_sea(map, y, y, 0, x);
+    fill(map, y, y, 0, x);
 
     if (RNG::percent_chance(PCT_CHANCE_SHIFT_DIR))
     {
@@ -134,7 +139,7 @@ int CoastlineGenerator::jiggle(const int val, const int min_val, const int max_v
   return val;
 }
 
-void CoastlineGenerator::fill_sea(MapPtr map, const int y_s, const int y_e, const int x_s, const int x_e)
+void CoastlineGenerator::fill(MapPtr map, const int y_s, const int y_e, const int x_s, const int x_e)
 {
   TileGenerator tg;
   TilePtr tile;
@@ -145,11 +150,11 @@ void CoastlineGenerator::fill_sea(MapPtr map, const int y_s, const int y_e, cons
     {
       for (int x = x_s; x <= x_e; x++)
       {
-        TileType tt = TileType::TILE_TYPE_SEA;
+        TileType tt = fill_tile_type;
 
-        if (RNG::x_in_y_chance(1, chance_shoals_y))
+        if (secondary_tile_type != TileType::TILE_TYPE_UNDEFINED && RNG::x_in_y_chance(1, chance_sectype_y))
         {
-          tt = TileType::TILE_TYPE_SHOALS;
+          tt = secondary_tile_type;
         }
 
         tile = tg.generate(tt);

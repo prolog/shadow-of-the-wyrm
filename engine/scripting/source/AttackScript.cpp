@@ -18,6 +18,10 @@ const string AttackScript::ATTACK_FUNCTION_NAME = "attack";
 // Return true if the script executed successfully, false otherwise.
 bool AttackScript::execute(ScriptEngine& se, const string& attack_script, CreaturePtr attacking_creature, const string& attacked_creature_id, const bool creatures_adjacent)
 {
+  Log& log = Log::instance();
+  log.trace("AttackScript::execute - begin");
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+
   if (attack_script.empty())
   {
     return false;
@@ -50,18 +54,21 @@ bool AttackScript::execute(ScriptEngine& se, const string& attack_script, Creatu
     {
       string l_err = lua_tostring(L, -1);
       string error_msg = "AttackScript::execute - error running Lua function `" + ATTACK_FUNCTION_NAME + "': " + l_err;
-      Log::instance().error(error_msg);
+      log.error(error_msg);
       lua_pop(L, 1);
       result = false;
     }
+
+    lua_pop(L, 1);
   }
   else
   {
-    Log::instance().error("AttackScript::execute - did not run Lua function due to script failure: " + attack_script);
+    log.error("AttackScript::execute - did not run Lua function due to script failure: " + attack_script);
     result = false;
   }
 
-
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+  log.trace("AttackScript::execute - exiting");
   return result;
 }
 

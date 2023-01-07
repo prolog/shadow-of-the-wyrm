@@ -7,6 +7,7 @@
 class DirectionUtils
 {
   public:
+    static bool is_zlevel(const Direction d);
     static bool is_cardinal(const Direction d);
     static std::vector<CardinalDirection> get_perpendicular_directions(const CardinalDirection cd);
     static bool is_ordinal(const Direction d);

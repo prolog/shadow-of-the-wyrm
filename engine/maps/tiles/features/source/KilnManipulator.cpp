@@ -1,5 +1,6 @@
 #include "KilnManipulator.hpp"
 #include "ActionTextKeys.hpp"
+#include "CreateItemCalculator.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "KilnCalculator.hpp"
@@ -279,7 +280,22 @@ bool KilnManipulator::create_clay_pot(CreaturePtr creature, TilePtr tile)
 
 bool KilnManipulator::create_clay_shot(CreaturePtr creature, TilePtr tile)
 {
-  return create_clay_item(&KilnManipulator::verify_clay_shot, { ItemIdKeys::ITEM_ID_CLAY }, ItemIdKeys::ITEM_ID_CLAY_SHOT, {}, 12, 30, creature, tile);
+  CreateItemCalculator cic;
+  ItemPtr clay;
+  ItemPtr clay_shot;
+
+  const ItemMap& items = Game::instance().get_items_ref();
+
+  auto clay_it = items.find(ItemIdKeys::ITEM_ID_CLAY);
+  auto cshot_it = items.find(ItemIdKeys::ITEM_ID_CLAY_SHOT);
+
+  if (clay_it != items.end() && cshot_it != items.end())
+  {
+    int quantity = cic.calc_quantity(cshot_it->second, clay_it->second, creature, SkillType::SKILL_GENERAL_CRAFTING);
+    return create_clay_item(&KilnManipulator::verify_clay_shot, { ItemIdKeys::ITEM_ID_CLAY }, ItemIdKeys::ITEM_ID_CLAY_SHOT, {}, quantity, quantity, creature, tile);
+  }
+
+  return false;
 }
 
 bool KilnManipulator::create_fire_bomb(CreaturePtr creature, TilePtr tile)

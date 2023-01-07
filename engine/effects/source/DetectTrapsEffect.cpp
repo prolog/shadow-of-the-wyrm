@@ -61,7 +61,7 @@ void DetectTrapsEffect::show_or_hide_traps(MapPtr trap_map, const DetectTrapsEff
 {
   if (trap_map != nullptr)
   {
-    TilesContainer tc = trap_map->get_tiles();
+    TilesContainer& tc = trap_map->get_tiles_ref();
 
     for (auto& tile_pair : tc)
     {

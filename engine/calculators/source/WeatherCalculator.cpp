@@ -41,7 +41,7 @@ int WeatherCalculator::calculate_pct_chance_shimmer(MapPtr map, const int wind_s
   {
     MapType map_type = map->get_map_type();
 
-    if (map_type == MapType::MAP_TYPE_WORLD || map_type == MapType::MAP_TYPE_OVERWORLD)
+    if (map_type == MapType::MAP_TYPE_WORLD || map_type == MapType::MAP_TYPE_OVERWORLD /* || map_type == MapType::MAP_TYPE_AIR ? */)
     {
       if (wind_speed >= MIN_WIND_SPEED_FOR_SHIMMER)
       {

@@ -10,6 +10,11 @@ std::string CastleTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_CASTLE;
 }
 
+bool CastleTile::is_interior() const
+{
+  return true;
+}
+
 Tile* CastleTile::clone()
 {
   return new CastleTile(*this);

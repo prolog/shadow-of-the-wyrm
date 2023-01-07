@@ -10,6 +10,11 @@ std::string CryptTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_CRYPT;
 }
 
+bool CryptTile::is_interior() const
+{
+  return true;
+}
+
 Tile* CryptTile::clone()
 {
   return new CryptTile(*this);

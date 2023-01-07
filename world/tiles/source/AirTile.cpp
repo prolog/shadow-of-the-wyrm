@@ -1,5 +1,6 @@
 #include "AirTile.hpp"
 #include "NullInventory.hpp"
+#include "MovementTextKeys.hpp"
 #include "TileDangerConfirmationKeys.hpp"
 
 using namespace std;
@@ -26,13 +27,22 @@ string AirTile::get_tile_description_sid() const
 
 bool AirTile::get_dangerous(CreaturePtr creature) const
 {
-  // TODO: Update this to check status of Flying effect.
+  if (creature && creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
+  {
+    return false;
+  }
+
   return true;
 }
 
 string AirTile::get_danger_confirmation_sid() const
 {
   return TileDangerConfirmationKeys::TILE_DANGER_AIR;
+}
+
+string AirTile::get_no_exit_up_message_sid() const
+{
+  return MovementTextKeys::ACTION_MOVE_NO_EXIT_UP_AIR;
 }
 
 Tile* AirTile::clone()

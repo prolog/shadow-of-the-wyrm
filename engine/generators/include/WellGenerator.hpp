@@ -7,6 +7,7 @@ class WellGenerator : public SOTW::Generator
     WellGenerator(const std::string& map_exit_id);
     
     virtual MapPtr generate(const Dimensions& dim) override;
+    virtual bool get_allow_ancient_beasts() const;
 
   protected:
     virtual bool get_permanence_default() const override;

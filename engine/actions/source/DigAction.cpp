@@ -16,6 +16,7 @@
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "StatisticsMarker.hpp"
+#include "TextMessages.hpp"
 #include "TileGenerator.hpp"
 #include "TileManipulatorFactory.hpp"
 
@@ -125,6 +126,9 @@ ActionCostValue DigAction::dig_through(const string& creature_id, ItemPtr dig_it
     {
       bool added_msg = add_cannot_dig_message_if_necessary(creature, map, adjacent_tile);
       if (added_msg) return acv;
+
+      bool confirm = add_shop_confirmation_message_if_necessary(creature, map, dig_coord);
+      if (!confirm) return acv;
     }
 
     // If we're digging into a shop, that is not appreciated, not at all.
@@ -352,6 +356,26 @@ bool DigAction::tile_super_type_supports_digging(const TileSuperType tst) const
   return (tst == TileSuperType::TILE_SUPER_TYPE_GROUND);
 }
 
+bool DigAction::add_shop_confirmation_message_if_necessary(CreaturePtr creature, MapPtr map, const Coordinate& dig_coord) const
+{
+  bool confirm = true;
+
+  if (creature != nullptr && map != nullptr)
+  {
+    pair<bool, string> shop_adj = MapUtils::is_in_shop_or_adjacent(map, dig_coord);
+    
+    if (shop_adj.first)
+    {
+      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      manager.add_new_confirmation_message(TextMessages::get_confirmation_message(ActionTextKeys::ACTION_DIG_SHOP));
+      manager.send();
+
+      confirm = creature->get_decision_strategy()->get_confirmation();
+    }
+  }
+
+  return confirm;
+}
 ActionCostValue DigAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 20;

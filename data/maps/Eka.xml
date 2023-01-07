@@ -168,6 +168,10 @@
 			</Coord>
 			<Direction>10</Direction>
 			<MapID>world_map</MapID>
+			<LinkTo>
+				<Row>4</Row>
+				<Col>53</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>

@@ -17,6 +17,9 @@ const string DeathScript::DEATH_FUNCTION_NAME = "die";
 // Return true if the script executed successfully, false otherwise.
 bool DeathScript::execute(ScriptEngine& se, const string& event_script, CreaturePtr dead_creature, CreaturePtr attacking_creature, MapPtr map)
 {
+  Log& log = Log::instance();
+  log.trace("DeathScript::execute - begin");
+
   if (event_script.empty())
   {
     return false;
@@ -62,16 +65,19 @@ bool DeathScript::execute(ScriptEngine& se, const string& event_script, Creature
     {
       string l_err = lua_tostring(L, -1);
       string error_msg = "DeathScript::execute - error running Lua function `" + DEATH_FUNCTION_NAME + "': " + l_err;
-      Log::instance().error(error_msg);
+      log.error(error_msg);
       lua_pop(L, 1);
       result = false;
     }
+
+    lua_pop(L, 1);
   }
   else
   {
-    Log::instance().error("DeathScript::execute - did not run Lua function due to script failure: " + event_script);
+    log.error("DeathScript::execute - did not run Lua function due to script failure: " + event_script);
     result = false;
   }
 
+  log.trace("DeathScript::execute - exiting");
   return result;
 }

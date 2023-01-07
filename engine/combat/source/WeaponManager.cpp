@@ -30,6 +30,7 @@ ItemPtr WeaponManager::remove_weapon(CreaturePtr creature, const AttackType atta
         break;
       case AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
       case AttackType::ATTACK_TYPE_MAGICAL:
+      case AttackType::ATTACK_TYPE_MAGICAL_WANDS:
       default:
         break;
     }
@@ -86,6 +87,7 @@ ItemPtr WeaponManager::get_item(CreaturePtr creature, const AttackType attack_ty
         item = creature->get_equipment().get_item(static_cast<EquipmentWornLocation>(creature->get_off_handedness()));
         break;
       }
+      case AttackType::ATTACK_TYPE_MAGICAL_WANDS:
       case AttackType::ATTACK_TYPE_MAGICAL:
       case AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
       default:
@@ -137,6 +139,7 @@ vector<string> WeaponManager::get_slays_races(CreaturePtr creature, const Attack
 
       break;
     }
+    case AttackType::ATTACK_TYPE_MAGICAL_WANDS:
     case AttackType::ATTACK_TYPE_MAGICAL:
     default:
       break;
@@ -160,6 +163,7 @@ Damage WeaponManager::get_damage(CreaturePtr creature, const AttackType attack_t
     case AttackType::ATTACK_TYPE_RANGED:
       return get_ranged_weapon_damage(creature);
       break;
+    case AttackType::ATTACK_TYPE_MAGICAL_WANDS:
     case AttackType::ATTACK_TYPE_MAGICAL:
     default:
       break;

@@ -2,7 +2,9 @@
 #include "FieldGenerator.hpp"
 #include "GeneratorUtils.hpp"
 #include "MobileDecisionStrategy.hpp"
+#include "SeaGenerator.hpp"
 #include "TileGenerator.hpp"
+#include "UnderwaterGenerator.hpp"
 
 TEST(SW_Engine_Maps_MapUtils, does_hostile_creature_exist)
 {
@@ -166,11 +168,12 @@ TEST(SW_Engine_Maps_MapUtils, calculate_depth_delta_tile)
 
 TEST(SW_Engine_Maps_MapUtils, should_link_entry_point)
 {
+  EXPECT_FALSE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_AIR));
   EXPECT_FALSE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_OVERWORLD));
   EXPECT_TRUE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_WORLD));
-  EXPECT_TRUE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_UNDERWORLD));
-  EXPECT_TRUE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_UNDERWATER));
-  EXPECT_TRUE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_COSMOS));
+  EXPECT_FALSE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_UNDERWORLD));
+  EXPECT_FALSE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_UNDERWATER));
+  EXPECT_FALSE(MapUtils::should_link_entry_point(MapType::MAP_TYPE_COSMOS));
 }
 
 TEST(SW_Engine_Maps_MapUtils, does_area_around_tile_contain_staircase)
@@ -289,11 +292,16 @@ TEST(SW_Engine_Maps_MapUtils, get_weather)
   MapPtr cosmos_map = std::make_shared<Map>(d);
   cosmos_map->set_map_type(MapType::MAP_TYPE_COSMOS);
 
+  MapPtr air_map = std::make_shared<Map>(d);
+  air_map->set_map_type(MapType::MAP_TYPE_AIR);
+  air_map->set_weather(map_weather);
+
   EXPECT_EQ(tile_weather, *MapUtils::get_weather(world_map, tile));
   EXPECT_EQ(map_weather, *MapUtils::get_weather(overworld_map, tile));
   EXPECT_EQ(no_weather, MapUtils::get_weather(underworld_map, tile));
   EXPECT_EQ(no_weather, MapUtils::get_weather(underwater_map, tile));
   EXPECT_EQ(no_weather, MapUtils::get_weather(cosmos_map, tile));
+  EXPECT_EQ(map_weather, *MapUtils::get_weather(air_map, tile));
 }
 
 TEST(SW_Engine_Maps_MapUtils, get_available_adjacent_tiles_to_creature)
@@ -436,4 +444,108 @@ TEST(SW_Engine_MapUtils, add_preset_village)
   MapUtils::add_preset_village(map, 12, 5);
 
   EXPECT_EQ("3-4,12-5", map->get_property(MapProperties::MAP_PROPERTIES_PRESET_VILLAGE_COORDINATES));
+}
+
+TEST(SW_Engine_MapUtils, can_change_zlevel)
+{
+  CreaturePtr c = std::make_shared<Creature>();
+  CreaturePtr fly = std::make_shared<Creature>();
+  Status status(StatusIdentifiers::STATUS_ID_FLYING, true, 50, "some_spell");
+  fly->set_status(StatusIdentifiers::STATUS_ID_FLYING, status);
+
+  Dimensions dim;
+  MapPtr ground = std::make_shared<Map>(dim);
+  MapPtr air = std::make_shared<Map>(dim);
+
+  ground->set_is_water_shallow(true);
+  air->set_is_open_sky(true);
+  air->set_map_type(MapType::MAP_TYPE_AIR);
+
+  GeneratorUtils::fill(ground, { 0,0 }, { 19, 79 }, TileType::TILE_TYPE_FIELD);
+  TileGenerator tg;
+  TilePtr tile = tg.generate(TileType::TILE_TYPE_SEA);
+  ground->insert({ 0,0 }, tile);
+
+  GeneratorUtils::fill(air, { 0,0 }, { 19, 79 }, TileType::TILE_TYPE_AIR);
+
+  UnderwaterGenerator ug(ground, "some_id");
+  MapPtr uw = ug.generate(dim);
+  uw->set_map_type(ug.get_map_type());
+
+  SeaGenerator sea_gen("fdsa");
+  MapPtr sea = sea_gen.generate(dim);
+
+  // Down/up on ground map
+  tile = ground->at(0, 0);
+  EXPECT_FALSE(MapUtils::can_change_zlevel(c, ground, tile, Direction::DIRECTION_DOWN));
+  c->get_skills().set_value(SkillType::SKILL_GENERAL_SWIMMING, 10);
+  EXPECT_TRUE(MapUtils::can_change_zlevel(c, ground, tile, Direction::DIRECTION_DOWN));
+
+  EXPECT_FALSE(MapUtils::can_change_zlevel(c, ground, tile, Direction::DIRECTION_UP));
+  EXPECT_TRUE(MapUtils::can_change_zlevel(fly, ground, tile, Direction::DIRECTION_UP));
+
+  // Down/up on underwater
+  tile = uw->at(0, 0);
+  EXPECT_FALSE(MapUtils::can_change_zlevel(c, uw, tile, Direction::DIRECTION_DOWN));
+  EXPECT_FALSE(MapUtils::can_change_zlevel(fly, uw, tile, Direction::DIRECTION_DOWN));
+  EXPECT_TRUE(MapUtils::can_change_zlevel(c, uw, tile, Direction::DIRECTION_UP));
+  EXPECT_TRUE(MapUtils::can_change_zlevel(fly, uw, tile, Direction::DIRECTION_UP));
+
+  // Can't go down in open sea
+  tile = sea->at(3, 3);
+  EXPECT_FALSE(MapUtils::can_change_zlevel(c, uw, tile, Direction::DIRECTION_DOWN));
+  EXPECT_FALSE(MapUtils::can_change_zlevel(fly, uw, tile, Direction::DIRECTION_DOWN));
+
+  // Down/up for open air
+  tile = air->at(0, 0);
+  EXPECT_TRUE(MapUtils::can_change_zlevel(c, air, tile, Direction::DIRECTION_DOWN));
+  EXPECT_TRUE(MapUtils::can_change_zlevel(fly, air, tile, Direction::DIRECTION_DOWN));
+  EXPECT_FALSE(MapUtils::can_change_zlevel(c, air, tile, Direction::DIRECTION_UP));
+  EXPECT_FALSE(MapUtils::can_change_zlevel(fly, air, tile, Direction::DIRECTION_UP));
+}
+
+TEST(SW_Engine_MapUtils, should_creature_move_to_new_map)
+{
+  CreaturePtr c = std::make_shared<Creature>();
+
+  CreaturePtr water = std::make_shared<Creature>();
+  water->set_breathes(BreatheType::BREATHE_TYPE_ALL);
+
+  CreaturePtr air = std::make_shared<Creature>();
+  Status status(StatusIdentifiers::STATUS_ID_FLYING, true, 50, "some_spell");
+  air->set_status(StatusIdentifiers::STATUS_ID_FLYING, status);
+
+  map<MapType, std::map<CreaturePtr, bool>> outcomes = { {MapType::MAP_TYPE_AIR, {{nullptr, false}, {c, false}, {water, false}, {air, true}}},
+                                                         {MapType::MAP_TYPE_COSMOS, {{nullptr, false}, {c, true}, {water, true}, {air, true}}},
+                                                         {MapType::MAP_TYPE_OVERWORLD, {{nullptr, false}, {c, true}, {water, true}, {air, true}}},
+                                                         {MapType::MAP_TYPE_UNDERWORLD, {{nullptr, false}, {c, true}, {water, true}, {air, true}}},
+                                                         {MapType::MAP_TYPE_UNDERWATER, {{nullptr, false}, {c, false}, {water, true}, {air, false}}} };
+
+  for (const auto& o_pair : outcomes)
+  {
+    std::map<CreaturePtr, bool> creature_checks = o_pair.second;
+
+    for (const auto& c_pair : creature_checks)
+    {
+      EXPECT_EQ(c_pair.second, MapUtils::should_creature_move_to_new_map_type(c_pair.first, o_pair.first));
+    }
+  }
+}
+
+TEST(SW_Engine_MapUtils, get_lore_skill_for_terrain)
+{
+  std::map<TileType, SkillType> skills = { {TileType::TILE_TYPE_DESERT, SkillType::SKILL_GENERAL_DESERT_LORE}, 
+                                           {TileType::TILE_TYPE_FOREST, SkillType::SKILL_GENERAL_FOREST_LORE}, 
+                                           {TileType::TILE_TYPE_MARSH, SkillType::SKILL_GENERAL_MARSH_LORE}, 
+                                           {TileType::TILE_TYPE_MOUNTAINS, SkillType::SKILL_GENERAL_MOUNTAIN_LORE},
+                                           {TileType::TILE_TYPE_SEA, SkillType::SKILL_GENERAL_OCEAN_LORE},
+                                           {TileType::TILE_TYPE_BARROW, SkillType::SKILL_UNDEFINED} };
+
+  TileGenerator tg;
+
+  for (const auto& s_pair : skills)
+  {
+    TilePtr tile = tg.generate(s_pair.first);
+    EXPECT_EQ(s_pair.second, MapUtils::get_lore_skill_for_terrain(tile));
+  }
 }

@@ -22,7 +22,6 @@ class Convert
     friend class String;
     friend class Integer;
     friend class Char;
-    friend class Bool;
 
     Convert();
     template <class T> static T from_string(const std::string& str);

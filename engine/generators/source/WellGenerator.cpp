@@ -13,6 +13,11 @@ WellGenerator::WellGenerator(const std::string& new_map_exit_id)
 {
 }
 
+bool WellGenerator::get_allow_ancient_beasts() const
+{
+  return true;
+}
+
 MapPtr WellGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = std::make_shared<Map>(dimensions);

@@ -37,6 +37,7 @@ int add_object_to_map(lua_State* ls);
 int add_object_to_creature(lua_State* ls);
 int add_object_on_tile_to_creature(lua_State* ls);
 int add_object_to_tile(lua_State* ls); // assumes current map
+int add_randart_to_player_tile(lua_State* ls);
 int add_key_to_player_tile(lua_State* ls);
 int add_feature_to_map(lua_State* ls);
 int add_all_base_features_to_map(lua_State* ls);
@@ -163,6 +164,7 @@ int is_item_identified(lua_State* ls);
 int get_item_value(lua_State* ls);
 int select_item(lua_State* ls);
 int set_hostility(lua_State* ls);
+int set_map_hostility(lua_State* ls);
 int is_creature_hostile(lua_State* ls);
 int teleport(lua_State* ls);
 int get_creature_short_description_sid(lua_State* ls);
@@ -297,6 +299,22 @@ int tokenize(lua_State* ls);
 int generate_name(lua_State* ls);
 int remove_chat_script(lua_State* ls);
 int get_setting(lua_State* ls);
+int set_current_age(lua_State* ls);
+int set_max_age(lua_State* ls);
+int set_hungerless(lua_State* ls);
+int generate_npc_background(lua_State* ls);
+int show_bestiary_text(lua_State* ls);
+int get_stack_size_current_state(lua_State* ls);
+int bad_fn_do_not_call(lua_State* ls);
+int erase_map_linkage(lua_State* ls);
+int has_trainable_skill(lua_State* ls);
+int train_skills(lua_State* ls);
+int set_feature_uses(lua_State* ls);
+int set_creature_size(lua_State* ls);
+int get_creature_size(lua_State* ls);
+int get_nutrition(lua_State* ls);
+int get_hidden_treasure_message(lua_State* ls);
+int get_map_type(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

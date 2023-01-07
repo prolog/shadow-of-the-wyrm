@@ -38,3 +38,4 @@ const string ItemProperties::ITEM_PROPERTIES_FLOOR_TILE_TYPE = "floor_tile_type"
 const string ItemProperties::ITEM_PROPERTIES_BUILD_FEATURE_CLASS_IDS = "build_feature_class_ids";
 const string ItemProperties::ITEM_PROPERTIES_WATER_TILE_TYPE = "water_tile_type";
 const string ItemProperties::ITEM_PROPERTIES_PRISE = "prise";
+const string ItemProperties::ITEM_PROPERTIES_RANDART_NAME = "randart_name";

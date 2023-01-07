@@ -3,6 +3,7 @@
 #include "LightMeleeAndRangedWeaponToHitCalculator.hpp"
 #include "HeavyWeaponToHitCalculator.hpp"
 #include "MagicToHitCalculator.hpp"
+#include "WandsToHitCalculator.hpp"
 #include "WeaponManager.hpp"
 
 ToHitCalculatorFactory::ToHitCalculatorFactory()
@@ -34,6 +35,9 @@ ToHitCalculatorPtr ToHitCalculatorFactory::create_to_hit_calculator(CreaturePtr 
     }
     case AttackType::ATTACK_TYPE_RANGED:
       calculator = std::make_unique<LightMeleeAndRangedWeaponToHitCalculator>(attack_type);
+      break;
+    case AttackType::ATTACK_TYPE_MAGICAL_WANDS:
+      calculator = std::make_unique<WandsToHitCalculator>();
       break;
     case AttackType::ATTACK_TYPE_MAGICAL: // fall through intentionally
     default:

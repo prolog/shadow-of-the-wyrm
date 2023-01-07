@@ -1,4 +1,4 @@
-#!/usr/bin/env/python
+#!/usr/bin/env python
 #
 # Creates a CSV with level info: area ID, min, max.
 import os

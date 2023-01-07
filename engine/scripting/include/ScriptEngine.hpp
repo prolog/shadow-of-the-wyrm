@@ -41,6 +41,7 @@ class ScriptEngine : public ISerializable
 
     void set_last_executed(const std::string& new_last_executed);
     std::string get_last_executed() const;
+    int get_stack_size() const;
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;

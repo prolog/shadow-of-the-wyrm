@@ -60,6 +60,7 @@ int CombatEffectsCalculator::calculate_knock_back_pct_chance(const AttackType at
   else
   {
     if (attack_type != AttackType::ATTACK_TYPE_MAGICAL &&
+        attack_type != AttackType::ATTACK_TYPE_MAGICAL_WANDS &&
         attack_type != AttackType::ATTACK_TYPE_RANGED &&
         attacking_creature != nullptr && 
         attacked_creature != nullptr)

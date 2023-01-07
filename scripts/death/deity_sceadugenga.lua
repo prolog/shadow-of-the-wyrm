@@ -33,12 +33,16 @@ local function generate_telari_staircase(creature_id, attacking_creature_id, map
 
     -- Link from the cosmos back to the top of Telari
     map_transform_tile(cur_map_id, pl_y, pl_x, CTILE_TYPE_DOWN_STAIRCASE)
-    map_add_tile_exit(cur_map_id, pl_y, pl_x, CDIRECTION_DOWN, telari_top_map_id)
+    map_add_tile_exit(cur_map_id, pl_y, pl_x, CDIRECTION_DOWN, telari_top_map_id, 9, 39)
 
     -- Create a staircase back from the base of Telari to the undersea
     -- world.
     map_transform_tile(telari_base_map_id, 14, 40, CTILE_TYPE_DOWN_STAIRCASE)
-    map_add_tile_exit(telari_base_map_id, 14, 40, CDIRECTION_DOWN, telari_map_id)
+    map_add_tile_exit(telari_base_map_id, 14, 40, CDIRECTION_DOWN, telari_map_id, 6, 16)
+
+    -- Change the link from the staircase of submerged Telari to the new
+    -- stair location.
+    map_add_tile_exit(telari_map_id, 6, 16, CDIRECTION_UP, telari_base_map_id, 14, 40)
 
     -- Remove the staircase at the top of the Cloudspire.  The shrine is now
     -- inert.

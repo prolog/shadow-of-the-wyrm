@@ -32,6 +32,7 @@
 #include "SearchAction.hpp"
 #include "Setting.hpp"
 #include "SkillManager.hpp"
+#include "SkillsCalculator.hpp"
 #include "StairwayMovementAction.hpp"
 #include "TerrainGeneratorFactory.hpp"
 #include "TextKeys.hpp"
@@ -142,13 +143,14 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
     }
 
     Coordinate current_coord = map->get_location(creature->get_id());
-    Coordinate proposed_new_coord = MapUtils::calculate_new_coord_for_multimap_movement(current_coord, direction, map_exit);
+    Coordinate proposed_new_coord = MapUtils::calculate_new_coord_for_multimap_movement(current_coord, creatures_old_tile, direction, map_exit);
+    MapExitOutcome exit_outcome = MapUtils::can_exit_map(map, creature, map_exit, direction, proposed_new_coord);
 
-    if (!MapUtils::can_exit_map(map, creature, map_exit, proposed_new_coord))
+    if (exit_outcome != MapExitOutcome::CAN_EXIT)
     {
       if (creature->get_is_player())
       {
-        string movement_message = MovementTextKeys::get_cannot_exit_map_message(map->get_map_type());
+        string movement_message = MovementTextKeys::get_cannot_exit_map_message(map->get_map_type(), exit_outcome);
 
         pl_man.add_new_message(movement_message);
         pl_man.send();
@@ -218,7 +220,8 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
     }
     else if (attack_at_range.first && 
              attack_at_range.second != nullptr && 
-             (automelee || confirm_ranged_melee_attack(creature)))
+             ((automelee && creature->get_is_player()) || 
+              confirm_ranged_melee_attack(creature, attack_at_range.second->get_creature())))
     {
       CombatManager cm;
       movement_acv = cm.attack(creature, attack_at_range.second->get_creature(), AttackType::ATTACK_TYPE_MELEE_PRIMARY);
@@ -600,7 +603,7 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
   // they can be properly re-applied to the map, potentially.
   TileUtils::copy_exit_properties_to_tile(tile);
 
-  GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map->get_map_id(), tile_type, tile_subtype);
+  GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map, map->get_map_id(), tile_type, tile_subtype, emt);
 
   // Ensure that the overworld map ID is always available to the generator!
   map->get_map_type() == MapType::MAP_TYPE_WORLD ? generator->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, map->get_map_id())
@@ -671,11 +674,30 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
         MapUtils::set_coastline_generator_dirs(generator.get(), coast_dirs);
       }
 
+      auto perm_it = map_exit_properties.find(MapProperties::MAP_PROPERTIES_PERMANENCE);
+
+      if (perm_it != map_exit_properties.end())
+      {
+        generator->set_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE, perm_it->second);
+      }
+
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE, tile->get_additional_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE));
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_FORAGABLES, to_string(pct_chance_foragables));
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_HERBS, to_string(pct_chance_herbs));
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_EXIT_MOVEMENT_TYPE, to_string(static_cast<int>(emt)));
       generator->set_additional_property(TileProperties::TILE_PROPERTY_NAME, tile->get_additional_property(TileProperties::TILE_PROPERTY_NAME));
+
+      if (MapUtils::has_known_treasure(tile, creature, true))
+      {
+        int treasure_total_skill_value = SkillsCalculator::calculate_hidden_treasure_total_skill_value(creature, map->get_map_type(), String::to_int(tile->get_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED)));
+        generator->set_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED, std::to_string(treasure_total_skill_value));
+      }
+
+      if (MapUtils::has_known_shipwreck(map, tile, creature, true))
+      {
+        int treasure_total_skill_value = SkillsCalculator::calculate_hidden_treasure_total_skill_value(creature, map->get_map_type(), String::to_int(MapUtils::get_shipwreck_min_lore(map, tile)));
+        generator->set_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED, std::to_string(treasure_total_skill_value));
+      }
 
       new_map = generator->generate_and_initialize(danger_level, depth);
 
@@ -711,6 +733,7 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
         }
       }
 
+      // Set a link back to the old tile.
       if (new_map->get_permanent())
       {
         // If it's a permanent map, set up a link between
@@ -735,7 +758,8 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
     // it's an overworld map.  Underworld maps (dungeons, sewers, etc)
     // will have stairway exits.  Underwater maps (Telari and others)
     // TBD.
-    if (new_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
+    if (new_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD && 
+        map->get_property(MapProperties::MAP_PROPERTIES_NO_WORLD_LINKAGE) != std::to_string(true))
     {
       MapExitUtils::add_exit_to_map(new_map, map->get_map_id());
     }
@@ -745,7 +769,7 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
     // to a brand-new map, as tile properties will be automatically 
     // handled during map generation, and will be removed after creating
     // items and creatures.
-    add_initial_map_messages(creature, new_map, tile_type);
+    add_initial_map_messages(creature, new_map, generator->get_terrain_type());
     handle_properties_and_move_to_new_map(creature, tile, map, new_map, map_exit);
     action_cost_value = get_action_cost_value(creature);
   }
@@ -972,7 +996,7 @@ ActionCostValue MovementAction::descend(CreaturePtr creature)
   return movement_acv;
 }
 
-bool MovementAction::confirm_ranged_melee_attack(CreaturePtr creature)
+bool MovementAction::confirm_ranged_melee_attack(CreaturePtr creature, CreaturePtr attacked_creature)
 {
   bool confirm = false;
 
@@ -984,13 +1008,9 @@ bool MovementAction::confirm_ranged_melee_attack(CreaturePtr creature)
       string confirm_attack = TextMessages::get_confirmation_message(TextKeys::DECISION_CONFIRM_RANGED_MELEE_ATTACK);
       game.display->confirm(confirm_attack);
 
-      confirm = creature->get_decision_strategy()->get_confirmation();
     }
-    else
-    {
-      // NPCs always confirm.
-      confirm = true;
-    }
+
+    confirm = creature->get_decision_strategy()->get_attack_confirmation(attacked_creature);
   }
 
   return confirm;

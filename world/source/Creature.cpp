@@ -1786,6 +1786,7 @@ bool Creature::is_allied_to(const string& creature_id) const
   if (decision_strategy != nullptr)
   {
     vector<string> allies = String::create_string_vector_from_csv_string(decision_strategy->get_property(DecisionStrategyProperties::DECISION_STRATEGY_ALLIES_IDS));
+    allies.push_back(get_original_id());
 
     if (std::find(allies.begin(), allies.end(), creature_id) != allies.end())
     {

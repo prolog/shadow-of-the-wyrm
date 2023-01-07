@@ -26,12 +26,9 @@ Map::Map(const Map& new_map)
     default_deity_id = new_map.default_deity_id;
     map_id = new_map.map_id;
 
-    Dimensions new_dimensions = new_map.size();
-    TilesContainer new_tiles = new_map.get_tiles();
-
-    dimensions = new_dimensions;
-    original_dimensions = new_dimensions;
-    tiles = new_tiles;
+    dimensions = new_map.size();
+    original_dimensions = dimensions;
+    tiles = new_map.get_tiles();
 
     map_id = new_map.map_id;
   }
@@ -43,6 +40,8 @@ Map::Map(const Dimensions& new_dimensions, const Dimensions& orig_dimensions)
   dimensions = new_dimensions;
   original_dimensions = orig_dimensions;
   
+  tiles.reserve(dimensions.get_y() * dimensions.get_x());
+
   // Generate a default unique identifier for this map
   boost::uuids::uuid id = boost::uuids::random_generator()();
   map_id = Uuid::to_string(id);
@@ -452,9 +451,48 @@ TilesContainer Map::get_tiles() const
   return tiles;
 }
 
+TilesContainer& Map::get_tiles_ref()
+{
+  return tiles;
+}
+
 void Map::clear_locations()
 {
   locations.clear();
+}
+
+void Map::set_is_water_shallow(const bool new_shallow)
+{
+  properties[MapProperties::MAP_PROPERTIES_SHALLOW_WATER] = std::to_string(new_shallow);
+}
+
+bool Map::get_is_water_shallow() const
+{
+  auto p_it = properties.find(MapProperties::MAP_PROPERTIES_SHALLOW_WATER);
+
+  if (p_it != properties.end())
+  {
+    return String::to_bool(p_it->second);
+  }
+
+  return true;
+}
+
+void Map::set_is_open_sky(const bool new_open_sky)
+{
+  properties[MapProperties::MAP_PROPERTIES_OPEN_SKY] = std::to_string(new_open_sky);
+}
+
+bool Map::get_is_open_sky() const
+{
+  auto p_it = properties.find(MapProperties::MAP_PROPERTIES_OPEN_SKY);
+
+  if (p_it != properties.end())
+  {
+    return String::to_bool(p_it->second);
+  }
+
+  return false;
 }
 
 void Map::add_or_update_location(const string& location, const Coordinate& coordinate)
@@ -532,6 +570,11 @@ void Map::set_map_exit(MapExitPtr new_map_exit)
 void Map::set_map_exit(const Direction d, MapExitPtr new_map_exit)
 {
   map_exits[d] = new_map_exit;
+}
+
+void Map::set_map_exits(const std::map<Direction, MapExitPtr>& new_map_exits)
+{
+  map_exits = new_map_exits;
 }
 
 map<Direction, MapExitPtr> Map::get_map_exits() const
@@ -986,6 +1029,24 @@ vector<Direction> Map::get_coastline_directions() const
 bool Map::is_islet() const
 {
   return (map_type == MapType::MAP_TYPE_OVERWORLD && get_coastline_directions().size() == 4);
+}
+
+void Map::set_world_id(const string& new_world_id)
+{
+  properties[MapProperties::MAP_PROPERTIES_WORLD_ID] = new_world_id;
+}
+
+string Map::get_world_id() const
+{
+  string id;
+  auto world_it = properties.find(MapProperties::MAP_PROPERTIES_WORLD_ID);
+
+  if (world_it != properties.end())
+  {
+    id = world_it->second;
+  }
+
+  return id;
 }
 
 bool Map::serialize(ostream& stream) const

@@ -16,6 +16,7 @@
 #include "RaceManager.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
+#include "TextMessages.hpp"
 #include "TileGenerator.hpp"
 #include "TileTextKeys.hpp"
 #include "VillageTile.hpp"
@@ -34,6 +35,7 @@ void async_worldgen(std::promise<MapPtr>&& mp)
 const int WorldGenerator::MIN_CREATURES_PER_VILLAGE = 12;
 const int WorldGenerator::MAX_CREATURES_PER_VILLAGE = 26;
 const int WorldGenerator::MAX_DANGER_LEVEL_FOR_WORLD_GEN = 50;
+const pair<int, int> WorldGenerator::X_IN_Y_CHANCE_TREASURE = { 1, 100 };
 
 // Even though the map_terrain_type parameter is used to generate creatures, and UNDEFINED would normally be bad, it
 // shouldn't matter for the world, since there will never be creatures generated on it.
@@ -179,9 +181,13 @@ void WorldGenerator::post_process_cell(MapPtr map, const int row, const int col)
     prop_pairs = { {100, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}},
                    {600, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}} };
   }
+  else if (tt == TileType::TILE_TYPE_MOUNTAINS)
+  {
+    prop_pairs = { {700, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}},
+                   {700, {TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE}} };
+  }
   // else { ... }
-  // Mountains and all other terrain types don't have properties currently
-  // defined.
+  // other terrain types don't have properties currently defined.
 
   potentially_add_properties(row, col, tile, prop_pairs);
 }
@@ -365,7 +371,7 @@ void WorldGenerator::set_tile_depth_creature_details(TilePtr tile, const int max
       // Get a creature ID for the given tile/depth combination.
       // Cache it so that performance isn't brutal.
       CreatureGenerationManager cgm;
-      gindex = cgm.generate_creature_generation_map({ tile_type }, true /* assume permanent */, false /* assume not islet */, 1, MAX_DANGER_LEVEL_FOR_WORLD_GEN, Rarity::RARITY_COMMON, {});
+      gindex = cgm.generate_creature_generation_map({ tile_type }, true /* assume permanent */, false /* assume not islet */, MapType::MAP_TYPE_UNDERWORLD /* assume not underwater */, 1, MAX_DANGER_LEVEL_FOR_WORLD_GEN, Rarity::RARITY_COMMON, {});
       generation_list = gindex.get(max_depth);
 
       creature_generation_map_cache.emplace(tile_type, gindex);
@@ -762,7 +768,7 @@ void WorldGenerator::set_village_coordinates(MapPtr map)
 {
   if (map != nullptr)
   {
-    const TilesContainer& tiles = map->get_tiles();
+    const TilesContainer& tiles = map->get_tiles_ref();
     vector<string> s_coords;
 
     for (const auto& t_pair : tiles)
@@ -781,6 +787,68 @@ void WorldGenerator::set_village_coordinates(MapPtr map)
     if (!s_coords.empty())
     {
       map->set_property(MapProperties::MAP_PROPERTIES_VILLAGE_COORDINATES, String::create_csv_from_string_vector(s_coords));
+    }
+  }
+}
+
+void WorldGenerator::set_treasure(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    NormalDistribution forest_treasures(40, 12);
+    NormalDistribution desert_treasures(50, 15);
+    NormalDistribution marsh_treasures(60, 12);
+    NormalDistribution underwater_treasures(70, 15);
+    NormalDistribution mountain_treasures(80, 7);
+    
+    bool desert_override = true;
+    bool forest_override = true;
+    bool marsh_override = true;
+    bool underwater_override = true;
+    bool mountain_override = true;
+
+    TilesContainer& tc = map->get_tiles_ref();
+    
+    for (const auto& tc_pair : tc)
+    {
+      // Ensure we're not adding treasure specifiers to tiles that already link
+      // to another map.
+      if (tc_pair.second != nullptr && tc_pair.second->get_custom_map_id().empty())
+      {
+        TileType tt = tc_pair.second->get_tile_type();
+
+        if (tt == TileType::TILE_TYPE_SEA)
+        {
+          continue;
+        }
+
+        // Shipwrecks can appear underwater around any of the other treasure-
+        // generating tile types. Determining if they can be placed requires
+        // at least one cardinally-adjacent sea tile.
+        Coordinate c = MapUtils::convert_map_key_to_coordinate(tc_pair.first);
+
+        if (MapUtils::adjacent_tiles_contain_type(map, c, { Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH, Direction::DIRECTION_EAST, Direction::DIRECTION_WEST }, TileType::TILE_TYPE_SEA))
+        {
+          potentially_add_treasure(tc_pair.first, tc_pair.second, underwater_treasures, underwater_override, true);
+        }
+
+        if (tt == TileType::TILE_TYPE_DESERT)
+        {
+          potentially_add_treasure(tc_pair.first, tc_pair.second, desert_treasures, desert_override, false);
+        }
+        else if (tt == TileType::TILE_TYPE_FOREST)
+        {
+          potentially_add_treasure(tc_pair.first, tc_pair.second, forest_treasures, forest_override, false);
+        }
+        else if (tt == TileType::TILE_TYPE_MARSH)
+        {
+          potentially_add_treasure(tc_pair.first, tc_pair.second, marsh_treasures, marsh_override, false);
+        }
+        else if (tt == TileType::TILE_TYPE_MOUNTAINS)
+        {
+          potentially_add_treasure(tc_pair.first, tc_pair.second, mountain_treasures, mountain_override, false);
+        }
+      }
     }
   }
 }
@@ -854,4 +922,43 @@ string WorldGenerator::get_race_village_extra_description_sid(const string& race
   }
 
   return sid;
+}
+
+void WorldGenerator::potentially_add_treasure(const string& key, TilePtr tile, NormalDistribution& nd, bool& terrain_override, const bool treasure_is_underwater)
+{
+  if (tile != nullptr && tile->get_custom_map_id().empty() && (terrain_override || RNG::x_in_y_chance(X_IN_Y_CHANCE_TREASURE.first, X_IN_Y_CHANCE_TREASURE.second)))
+  {
+    Log& log = Log::instance();
+    int difficulty = nd.next_int_as_pct();
+    string source = TextMessages::get_hidden_treasure_message(treasure_is_underwater);
+
+    if (terrain_override)
+    {
+      terrain_override = false;
+      int override_difficulty = RNG::range(85, 100);
+
+      if (override_difficulty > difficulty)
+      {
+        difficulty = override_difficulty;
+      }
+    }
+
+    if (log.debug_enabled())
+    {
+      ostringstream log_msg;
+      log_msg << "Treasure: " << key << " (difficulty " << difficulty << ", uw=" << treasure_is_underwater << ")[" << source << "]";
+      log.debug(log_msg.str());
+    }
+
+    if (treasure_is_underwater)
+    {
+      tile->set_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED, std::to_string(difficulty));
+      tile->set_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_TREASURE_SOURCE, source);
+    }
+    else
+    {
+      tile->set_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED, std::to_string(difficulty));
+      tile->set_additional_property(TileProperties::TILE_PROPERTY_TREASURE_SOURCE, source);
+    }
+  }
 }

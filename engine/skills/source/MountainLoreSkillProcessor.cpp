@@ -1,22 +1,22 @@
 #include "ActionTextKeys.hpp"
 #include "CombatManager.hpp"
 #include "DeathSourceTextKeys.hpp"
-#include "MountaineeringSkillProcessor.hpp"
+#include "MountainLoreSkillProcessor.hpp"
 #include "MountainClimbingCalculator.hpp"
 #include "SkillManager.hpp"
 
 using std::string;
 
-ActionCostValue MountaineeringSkillProcessor::process(CreaturePtr creature, MapPtr map /* unused, will be nullptr */)
+ActionCostValue MountainLoreSkillProcessor::process(CreaturePtr creature, MapPtr map /* unused, will be nullptr */)
 {
   if (creature)
   {
     SkillManager sm;
     MountainClimbingCalculator mcc;
 
-    int mountaineering_skill_value = sm.get_skill_value(creature, SkillType::SKILL_GENERAL_MOUNTAINEERING);
+    int mountain_lore_skill_value = sm.get_skill_value(creature, SkillType::SKILL_GENERAL_MOUNTAIN_LORE);
     
-    if (mcc.generate_does_fall_from_exhaustion(mountaineering_skill_value, creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL)))
+    if (mcc.generate_does_fall_from_exhaustion(mountain_lore_skill_value, creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL)))
     {
       string fall_message_sid;
       
@@ -38,15 +38,15 @@ ActionCostValue MountaineeringSkillProcessor::process(CreaturePtr creature, MapP
     }
     else
     {
-      creature->get_skills().mark(SkillType::SKILL_GENERAL_MOUNTAINEERING);
+      creature->get_skills().mark(SkillType::SKILL_GENERAL_MOUNTAIN_LORE);
     }
   }
 
   return get_default_skill_action_cost_value(creature);
 }
 
-SkillProcessorPtr MountaineeringSkillProcessor::clone()
+SkillProcessorPtr MountainLoreSkillProcessor::clone()
 {
-  SkillProcessorPtr proc = std::make_unique<MountaineeringSkillProcessor>();
+  SkillProcessorPtr proc = std::make_unique<MountainLoreSkillProcessor>();
   return proc;
 }

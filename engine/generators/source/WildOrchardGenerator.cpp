@@ -1,8 +1,9 @@
 #include <vector>
-#include "WildOrchardGenerator.hpp"
-#include "TileGenerator.hpp"
-#include "RNG.hpp"
 #include "Directions.hpp"
+#include "GeneratorUtils.hpp"
+#include "RNG.hpp"
+#include "TileGenerator.hpp"
+#include "WildOrchardGenerator.hpp"
 
 using namespace std;
 
@@ -24,6 +25,7 @@ MapPtr WildOrchardGenerator::generate(const Dimensions& dimensions)
   MapPtr result_map = std::make_shared<Map>(dimensions);
 
   add_map_features(result_map);
+  GeneratorUtils::potentially_generate_coastline(result_map, this);
 
   return result_map;
 }

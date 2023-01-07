@@ -17,6 +17,9 @@ const string CreateScript::CREATE_FUNCTION_NAME = "create";
 // Return true if the script executed successfully, false otherwise.
 bool CreateScript::execute(ScriptEngine& se, const string& create_script, CreaturePtr new_creature, MapPtr map)
 {
+  Log& log = Log::instance();
+  log.trace("CreateScript::execute - begin");
+
   if (create_script.empty())
   {
     return false;
@@ -54,16 +57,19 @@ bool CreateScript::execute(ScriptEngine& se, const string& create_script, Creatu
     {
       string l_err = lua_tostring(L, -1);
       string error_msg = "CreateScript::execute - error running Lua function `" + CREATE_FUNCTION_NAME + "': " + l_err;
-      Log::instance().error(error_msg);
+      log.error(error_msg);
       lua_pop(L, 1);
       result = false;
     }
+
+    lua_pop(L, 1);
   }
   else
   {
-    Log::instance().error("CreateScript::execute - did not run Lua function due to script failure: " + create_script);
+    log.error("CreateScript::execute - did not run Lua function due to script failure: " + create_script);
     result = false;
   }
 
+  log.trace("CreateScript::execute - exiting");
   return result;
 }

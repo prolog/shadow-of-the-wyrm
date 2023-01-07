@@ -1,12 +1,16 @@
 #include <iostream>
+#include "Conversion.hpp"
 #include "Dimensions.hpp"
 #include "FieldGenerator.hpp"
+#include "ForestCalculator.hpp"
 #include "Game.hpp"
 #include "GeneratorUtils.hpp"
-#include "tiles.hpp"
+#include "MapProperties.hpp"
+#include "MapUtils.hpp"
 #include "RNG.hpp"
 #include "StreamGenerator.hpp"
 #include "TileGenerator.hpp"
+#include "tiles.hpp"
 
 using namespace std;
 
@@ -23,11 +27,18 @@ MapPtr FieldGenerator::generate(const Dimensions& dimensions)
   int rows = dimensions.get_y();
   int columns = dimensions.get_x();
 
+  ForestCalculator fc;
+
+  int world_map_height = String::to_int(get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_HEIGHT));
+  Coordinate world_location = MapUtils::convert_map_key_to_coordinate(get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_LOCATION));
+
+  int pct_chance_shield = fc.calculate_pct_chance_shield(world_map_height, world_location);
+
   for (int row = 0; row < rows; row++)
   {
     for (int col = 0; col < columns; col++)
     {
-      TilePtr current_tile = generate_tile(result_map, row, col);
+      TilePtr current_tile = generate_tile(result_map, row, col, pct_chance_shield);
       result_map->insert(row, col, current_tile);
     }
   }
@@ -52,7 +63,7 @@ MapPtr FieldGenerator::generate(const Dimensions& dimensions)
   return result_map;
 }
 
-TilePtr FieldGenerator::generate_tile(MapPtr map, int row, int col)
+TilePtr FieldGenerator::generate_tile(MapPtr map, const int row, const int col, const int pct_chance_shield)
 {
   TilePtr generated_tile;
   
@@ -67,7 +78,21 @@ TilePtr FieldGenerator::generate_tile(MapPtr map, int row, int col)
 
     if (rand < 96)
     {
-      generated_tile = tg.generate(TileType::TILE_TYPE_FIELD);
+      if (RNG::percent_chance(pct_chance_shield))
+      {
+        if (RNG::percent_chance(90))
+        {
+          generated_tile = tg.generate(TileType::TILE_TYPE_ROCKY_EARTH);
+        }
+        else
+        {
+          generated_tile = tg.generate(TileType::TILE_TYPE_MARSH);
+        }
+      }
+      else
+      {
+        generated_tile = tg.generate(TileType::TILE_TYPE_FIELD);
+      }
     }
     else if (rand < 97)
     {

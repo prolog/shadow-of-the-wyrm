@@ -2,6 +2,8 @@
 #include "Skills.hpp"
 #include "SkillsCalculator.hpp"
 
+const int SkillsCalculator::HIDDEN_TREASURE_DUNGEONEERING_DIVISOR = 10;
+
 SkillsCalculator::SkillsCalculator()
 {
 }
@@ -47,8 +49,6 @@ Skills SkillsCalculator::calculate_magic_skills(CreaturePtr creature, Race* race
 
 Skills SkillsCalculator::calculate_skills_in_given_range(CreaturePtr creature, Race* race, Class* char_class, const Skills& current_skills, const int first_skill, const int last_skill)
 {
-  // JCD FIXME: Do something with Creature, here!
-
   Skills calculated_skills = current_skills;
 
   Skills race_skills  = race->get_skills();
@@ -56,18 +56,43 @@ Skills SkillsCalculator::calculate_skills_in_given_range(CreaturePtr creature, R
 
   for (int st = first_skill; st < last_skill; st++)
   {
+    if (st == 34) continue; // Ignore old mountaineering skill
+
     SkillType skill_name = static_cast<SkillType>(st);
     Skill* race_skill  = race_skills.get_skill(skill_name);
     Skill* class_skill = class_skills.get_skill(skill_name);
 
-    int race_value  = race_skill->get_value();
-    int class_value = class_skill->get_value();
+    if (race_skill != nullptr && class_skill != nullptr)
+    {
+      int race_value = race_skill->get_value();
+      int class_value = class_skill->get_value();
 
-    int skill_total = race_value + class_value;
-    calculated_skills.set_value(skill_name, skill_total);
+      int skill_total = race_value + class_value;
+      calculated_skills.set_value(skill_name, skill_total);
+    }
   }
 
   return calculated_skills;
+}
+
+int SkillsCalculator::calculate_hidden_treasure_total_skill_value(CreaturePtr creature, const MapType map_type, const int lore_val)
+{
+  int total = lore_val;
+
+  // Esure the dungeoneering bonus is only applied when on the world map.  Some
+  // treasure types (eg shipwrecks) aren't on a new map, but are connected to
+  // them.  Without this check, the dungeoneering bonus gets applied twice -
+  // once when descending to the overworld map, and again when descending to
+  // the associated underwater map.
+  if (creature != nullptr && map_type == MapType::MAP_TYPE_WORLD)
+  {
+    int dungeoneering = creature->get_skills().get_value(SkillType::SKILL_GENERAL_DUNGEONEERING);
+    total += (dungeoneering / HIDDEN_TREASURE_DUNGEONEERING_DIVISOR);
+  }
+
+  total = std::max<int>(total, 0);
+  total = std::min<int>(total, 100);
+  return total;
 }
 
 #ifdef UNIT_TESTS

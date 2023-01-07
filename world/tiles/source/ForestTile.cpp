@@ -10,6 +10,11 @@ std::string ForestTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_FOREST;
 }
 
+SkillType ForestTile::get_treasure_skill() const
+{
+  return SkillType::SKILL_GENERAL_FOREST_LORE;
+}
+
 Tile* ForestTile::clone()
 {
   return new ForestTile(*this);

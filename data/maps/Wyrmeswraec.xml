@@ -99,6 +99,10 @@
 			</Coord>
 			<Direction>10</Direction>
 			<MapID>world_map</MapID>
+			<LinkTo>
+				<Row>6</Row>
+				<Col>9</Col>
+			</LinkTo>
 		</Exit>
 		<Exit>
 			<Coord>
@@ -107,6 +111,10 @@
 			</Coord>
 			<Direction>10</Direction>
 			<MapID>wyrmeswraec_temple</MapID>
+			<LinkTo>
+				<Row>13</Row>
+				<Col>39</Col>
+			</LinkTo>
 		</Exit>
 		<Exit>
 			<Coord>
@@ -115,6 +123,10 @@
 			</Coord>
 			<Direction>11</Direction>
 			<MapID>wyrmeswraec_lair</MapID>
+			<LinkTo>
+				<Row>1</Row>
+				<Col>1</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>

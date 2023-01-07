@@ -1,4 +1,6 @@
 #include "CreateItemCalculator.hpp"
+#include "Creature.hpp"
+#include "RNG.hpp"
 
 const int CreateItemCalculator::PRIMARY_SKILL_DIVISOR = 6;
 const int CreateItemCalculator::CRAFTING_SKILL_DIVISOR = 15;
@@ -16,6 +18,24 @@ int CreateItemCalculator::calc_potential_improvement_points(CreaturePtr creature
   }
 
   return improve_points;
+}
+
+// Determine a base quantity, plus a bonus based on the creation skill.
+uint CreateItemCalculator::calc_quantity(ItemPtr creation_item, ItemPtr component_item, CreaturePtr creature, const SkillType creation_skill)
+{
+  int quantity = calc_quantity(creation_item, component_item);
+
+  if (quantity > 0 && creature != nullptr)
+  {
+    int skill_val = creature->get_skills().get_value(creation_skill);
+
+    if (skill_val > 0)
+    {
+      quantity += RNG::range(1, std::max<int>(1, skill_val / 10));
+    }
+  }
+
+  return quantity;
 }
 
 // Determine how many items can be created, by dividing the weight of the

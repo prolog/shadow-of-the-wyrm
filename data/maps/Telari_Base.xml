@@ -129,5 +129,9 @@
 			<Name>MAP_PROPERTIES_CANNOT_PRAY</Name>
 			<Value>1</Value>
 		</Property>
+		<Property>
+			<Name>MAP_PROPERTIES_WORLD_ID</Name>
+			<Value>ocea</Value>
+		</Property>
 	</Properties>
 </CustomMap>

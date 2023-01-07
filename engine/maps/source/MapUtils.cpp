@@ -500,9 +500,14 @@ Coordinate MapUtils::get_coordinate_for_creature(const MapPtr& map, const Creatu
 
 TilePtr MapUtils::get_tile_for_creature(const MapPtr& map, const CreaturePtr& creature)
 {
-  string creature_id = creature->get_id();
-  Coordinate creature_location = map->get_location(creature_id);
-  TilePtr creatures_tile = map->at(creature_location.first, creature_location.second);
+  TilePtr creatures_tile;
+
+  if (map != nullptr && creature != nullptr)
+  {
+    string creature_id = creature->get_id();
+    Coordinate creature_location = map->get_location(creature_id);
+    creatures_tile = map->at(creature_location.first, creature_location.second);
+  }
   
   return creatures_tile;
 }
@@ -606,6 +611,22 @@ bool MapUtils::adjacent_tiles_match_type(const MapPtr& map, const Coordinate& c,
   }
 
   return all_match;
+}
+
+// Do the adjacent tiles in the given direction contain a particular tile type?
+bool MapUtils::adjacent_tiles_contain_type(const MapPtr& map, const Coordinate& c, const vector<Direction>& directions, const TileType type_to_match)
+{
+  for (const Direction d : directions)
+  {
+    TilePtr tile = map->at(CoordUtils::get_new_coordinate(c, d));
+
+    if (tile && tile->get_tile_type() == type_to_match)
+    {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 // Determine how many adjacent tiles are available to the creature
@@ -767,10 +788,24 @@ void MapUtils::set_up_transitive_exits_as_necessary(MapPtr old_map, MapExitPtr m
   }
 }
 
-Coordinate MapUtils::calculate_new_coord_for_multimap_movement(const Coordinate& current_coord, const Direction exit_direction, MapExitPtr map_exit)
+Coordinate MapUtils::calculate_new_coord_for_multimap_movement(const Coordinate& current_coord, TilePtr tile, const Direction exit_direction, MapExitPtr map_exit)
 {
   Coordinate c = CoordUtils::end();
 
+  // If we're on a staircase, and trying to go up or down, don't try to calculate
+  // the zlevel!
+  if (tile != nullptr)
+  {
+    TileType tt = tile->get_tile_type();
+
+    if (tt == TileType::TILE_TYPE_UP_STAIRCASE || tt == TileType::TILE_TYPE_DOWN_STAIRCASE)
+    {
+      if (DirectionUtils::is_zlevel(exit_direction))
+      {
+        return c;
+      }
+    }
+  }
   if (map_exit != nullptr && map_exit->is_using_map_id())
   {
     MapPtr map = Game::instance().get_map_registry_ref().get_map(map_exit->get_map_id());
@@ -789,6 +824,11 @@ Coordinate MapUtils::calculate_new_coord_for_multimap_movement(const Coordinate&
         
         switch (exit_direction)
         {
+          // For up/down, we arrive in the exact same location.
+          case Direction::DIRECTION_UP:
+          case Direction::DIRECTION_DOWN:
+            c = current_coord;
+            break;
           // Arriving from the south
           case Direction::DIRECTION_NORTH_WEST:
             // Arriving from north
@@ -885,8 +925,6 @@ Coordinate MapUtils::calculate_new_coord_for_multimap_movement(const Coordinate&
             c.second = dim.get_x() - 1;
             break;
           case Direction::DIRECTION_NULL:
-          case Direction::DIRECTION_UP:
-          case Direction::DIRECTION_DOWN:
           default:
             c = CoordUtils::end();
             break;
@@ -1078,38 +1116,71 @@ bool MapUtils::tiles_in_range_match_type(MapPtr map, const BoundingBox& bb, cons
   return match;
 }
 
-bool MapUtils::can_exit_map(MapPtr map, CreaturePtr creature, MapExitPtr map_exit, const Coordinate& proposed_new_coord)
+MapExitOutcome MapUtils::can_exit_map(MapPtr map, CreaturePtr creature, MapExitPtr map_exit, const Direction d, const Coordinate& proposed_new_coord)
 {
   if (!map || map->get_map_type() == MapType::MAP_TYPE_WORLD)
   {
-    return false;
+    return MapExitOutcome::NO_EXIT;
   }
- 
-  bool can_exit = false;
+
+  MapExitOutcome exit = MapExitOutcome::NO_EXIT;
 
   // First check: is the map_exit non-null and contain the information
   // necessary for the exit?
   if (map_exit && (map_exit->is_using_map_id() || map_exit->is_using_terrain_type()))
   {
-    can_exit = true;
+    exit = MapExitOutcome::CAN_EXIT;
   }
 
   // Second check: if this is for a set map, is the new tile available/open?
   if (map_exit && map_exit->is_using_map_id() && !CoordUtils::is_end(proposed_new_coord))
   {
-    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_exit->get_map_id());
+    MapPtr new_map = Game::instance().get_map_registry_ref().get_map(map_exit->get_map_id());
 
-    if (map != nullptr)
+    if (new_map != nullptr)
     {
-      TilePtr tile = map->at(proposed_new_coord);
-      if (!is_tile_available_for_creature(creature, tile))
+      TilePtr old_tile = MapUtils::get_tile_for_creature(map, creature);
+      TilePtr tile = new_map->at(proposed_new_coord);
+
+      if (tile == nullptr)
       {
-        can_exit = false;
+        exit = MapExitOutcome::NO_EXIT;
+      }
+      else if (!is_tile_available_for_creature(creature, tile))
+      {
+        exit = MapExitOutcome::EXIT_BLOCKED;
+      }
+
+      // The purpose here is to, basically, pretend a roof exists and prevent
+      // the player from being able to fly in and out of buildings, bypassing
+      // doors, shopkeepers, etc.
+      if (exit == MapExitOutcome::CAN_EXIT && 
+          creature->has_status(StatusIdentifiers::STATUS_ID_FLYING) && 
+          (d == Direction::DIRECTION_UP || d == Direction::DIRECTION_DOWN))
+      {
+        // Disallow moving from air to interior
+        if (old_tile->is_interior())
+        {
+          exit = MapExitOutcome::EXIT_BLOCKED;
+        }
+        else
+        {
+          exit = tile->is_interior() ? MapExitOutcome::EXIT_BLOCKED : MapExitOutcome::CAN_EXIT;
+        }
+      }
+
+      // Disallow moving from interior to air
+      if (exit == MapExitOutcome::CAN_EXIT && 
+          old_tile->is_interior() && 
+          tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_AIR && 
+          DirectionUtils::is_zlevel(d))
+      {
+        exit = MapExitOutcome::NO_EXIT;
       }
     }
   }
 
-  return can_exit;
+  return exit;
 }
 
 // Is there a feature on the tile, and does it block movement?
@@ -1441,16 +1512,17 @@ Coordinate MapUtils::place_creature(MapPtr map, CreaturePtr creature, const stri
 
 void MapUtils::set_multi_map_entry_details(MapPtr new_map, MapPtr old_map, const Coordinate& new_map_prev_loc)
 {
-  if (new_map != nullptr && old_map != nullptr)
+  if (old_map != nullptr &&
+      new_map != nullptr &&
+      new_map->get_map_type() == MapType::MAP_TYPE_WORLD && 
+      old_map->get_is_multi_map() &&
+      (old_map->get_world_id() == new_map->get_world_id()))
   {
-    if (new_map->get_map_type() == MapType::MAP_TYPE_WORLD && old_map->get_is_multi_map())
-    {
-      TilePtr tile = new_map->at(new_map_prev_loc);
+    TilePtr tile = new_map->at(new_map_prev_loc);
 
-      if (tile != nullptr)
-      {
-        tile->set_custom_map_id(old_map->get_map_id());
-      }
+    if (tile != nullptr)
+    {
+      tile->set_custom_map_id(old_map->get_map_id());
     }
   }
 }
@@ -1566,7 +1638,7 @@ map<TileType, vector<TilePtr>> MapUtils::partition_tiles(MapPtr current_map)
 
   if (current_map != nullptr)
   {
-    TilesContainer tc = current_map->get_tiles();
+    TilesContainer& tc = current_map->get_tiles_ref();
 
     for (const auto& tc_pair : tc)
     {
@@ -1591,7 +1663,7 @@ vector<TilePtr> MapUtils::get_tiles_supporting_items(MapPtr map)
     // Be optimistic about how many tiles might be returned.
     tiles.reserve(map->size().get_y() * map->size().get_x());
 
-    TilesContainer tc = map->get_tiles();
+    TilesContainer& tc = map->get_tiles_ref();
     for (auto& tc_pair : tc)
     {
       TilePtr tile = tc_pair.second;
@@ -1692,12 +1764,12 @@ int MapUtils::calculate_depth_delta(MapPtr map, TilePtr tile, const ExitMovement
 
 bool MapUtils::should_link_entry_point(MapType map_type)
 {
-  if (map_type == MapType::MAP_TYPE_OVERWORLD)
+  if (map_type == MapType::MAP_TYPE_WORLD)
   {
-    return false;
+    return true;
   }
 
-  return true;
+  return false;
 }
 
 WeatherPtr MapUtils::get_weather(MapPtr map, TilePtr tile)
@@ -1706,13 +1778,15 @@ WeatherPtr MapUtils::get_weather(MapPtr map, TilePtr tile)
 
   if (map != nullptr)
   {
-    if (map->get_map_type() == MapType::MAP_TYPE_WORLD && tile != nullptr)
+    MapType mt = map->get_map_type();
+
+    if (mt == MapType::MAP_TYPE_WORLD && tile != nullptr)
     {
       Weather w = tile->get_weather();
       weather = std::make_unique<Weather>(w);
     }
 
-    if (map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
+    if (mt == MapType::MAP_TYPE_OVERWORLD || mt == MapType::MAP_TYPE_AIR)
     {
       Weather w = map->get_weather();
       weather = std::make_unique<Weather>(w);
@@ -1849,7 +1923,7 @@ bool MapUtils::add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr
   {
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
-    if (tile->display_description_on_arrival() || tile->has_extra_description())
+    if (tile->display_description_on_arrival() || tile->has_extra_description() || has_known_treasure(tile, creature, true) || has_known_shipwreck(nullptr, tile, creature, true))
     {
       TileDescriber td(creature, tile, is_world_map);
       manager.add_new_message(td.describe());
@@ -1944,16 +2018,22 @@ void MapUtils::run_movement_scripts(CreaturePtr creature, const string& map_id, 
 // If the creature has any adjacent followers that should follow them around,
 // save these as serialized strings so they can be restored on the next map
 // that isn't the world map.
-void MapUtils::serialize_and_remove_followers(MapPtr map, CreaturePtr creature)
+void MapUtils::serialize_and_remove_followers(MapPtr old_map, MapPtr new_map, CreaturePtr creature)
 {
-  if (creature != nullptr && map != nullptr && map->get_map_type() != MapType::MAP_TYPE_WORLD)
+  if (creature != nullptr && old_map != nullptr && new_map != nullptr && old_map->get_map_type() != MapType::MAP_TYPE_WORLD)
   {
-    CreatureDirectionMap cdm = MapUtils::get_adjacent_creatures(map, creature);
+    MapType new_map_type = new_map->get_map_type();
+    CreatureDirectionMap cdm = MapUtils::get_adjacent_creatures(old_map, creature);
     int cnt = 1;
 
     for (auto cdm_pair : cdm)
     {
       CreaturePtr c = cdm_pair.second;
+
+      if (!MapUtils::should_creature_move_to_new_map_type(c, new_map_type))
+      {
+        continue;
+      }
 
       if (c != nullptr)
       {
@@ -1975,7 +2055,7 @@ void MapUtils::serialize_and_remove_followers(MapPtr map, CreaturePtr creature)
           }
 
           // Remove and serialize to a property on the leader.
-          MapUtils::remove_creature(map, c);
+          MapUtils::remove_creature(old_map, c);
 
           ostringstream ss;
           c->serialize(ss);
@@ -1992,6 +2072,24 @@ void MapUtils::serialize_and_remove_followers(MapPtr map, CreaturePtr creature)
       }
     }
   }
+}
+
+bool MapUtils::should_creature_move_to_new_map_type(CreaturePtr creature, const MapType map_type)
+{
+  bool should_move = false;
+
+  if (creature != nullptr)
+  {
+    should_move = true;
+
+    if ((map_type == MapType::MAP_TYPE_UNDERWATER && !creature->can_breathe(BreatheType::BREATHE_TYPE_WATER)) ||
+        (map_type == MapType::MAP_TYPE_AIR && !creature->has_status(StatusIdentifiers::STATUS_ID_FLYING)))
+    {
+      should_move = false;
+    }
+  }
+
+  return should_move;
 }
 
 vector<string> MapUtils::place_followers(MapPtr map, CreaturePtr creature, const Coordinate& c)
@@ -2305,7 +2403,7 @@ void MapUtils::update_creatures(MapPtr map)
       // Create the appropriate generator and call the update function.
       MapCreatureGenerator mcg;
 
-      std::map<string, string> props;
+      std::map<string, string> props = map->get_properties();
       mcg.generate_random_creatures(map, map->get_danger(), props);
     }
   }
@@ -2385,13 +2483,14 @@ void MapUtils::enrage_nearby_creatures(MapPtr map, CreaturePtr creature, const s
         if (cm_pair.second && cm_pair.second->get_decision_strategy()->get_fov_map()->has_creature(creature->get_id()))
         {
           CreaturePtr cm_c = cm_pair.second;
+
           bool understands_corpses = (cm_c->get_intelligence().get_current() > IntelligenceConstants::MIN_INTELLIGENCE_UNDERSTAND_CORPSES);
           Race* race = rm.get_race(cm_c->get_race_id());
 
           if (cm_c->get_id() != creature->get_id() &&
-              understands_corpses &&
-              ((cm_c->get_race_id() == corpse_race_id && (race && !race->get_umbrella_race())) ||
-                cm_c->get_original_id() == base_creature_id))
+            understands_corpses &&
+            ((cm_c->get_race_id() == corpse_race_id && (race && !race->get_umbrella_race())) ||
+              cm_c->get_original_id() == base_creature_id))
           {
             hm.set_hostility_to_creature(cm_c, creature->get_id());
 
@@ -2481,6 +2580,210 @@ std::tuple<int, int, std::string, std::string> MapUtils::get_random_village_by_p
   }
 
   return village;
+}
+
+bool MapUtils::has_known_treasure(TilePtr tile, CreaturePtr creature, const bool mark_skill)
+{
+  bool has_treasure = false;
+
+  if (tile != nullptr && creature != nullptr && !creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
+  {
+    string difficulty = tile->get_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED);
+
+    if (!difficulty.empty())
+    {
+      int diff = String::to_int(difficulty);
+      SkillType required_skill = tile->get_treasure_skill();
+
+      if (creature->get_skills().get_value(required_skill) >= diff)
+      {
+        has_treasure = true;
+      }
+      else
+      {
+        if (mark_skill)
+        {
+          int num_marks = RNG::range(4, 8);
+          Skills& skills = creature->get_skills();
+          SkillType train_skill = MapUtils::get_lore_skill_for_terrain(tile);
+
+          if (train_skill != SkillType::SKILL_UNDEFINED)
+          {
+            for (int i = 0; i < num_marks; i++)
+            {
+              skills.mark(train_skill);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return has_treasure;
+}
+
+bool MapUtils::has_known_shipwreck(MapPtr map, TilePtr tile, CreaturePtr creature, const bool mark_skill)
+{
+  bool has_shipwreck = false;
+
+  if (tile != nullptr && creature != nullptr)
+  {
+    string difficulty = get_shipwreck_min_lore(map, tile);
+
+    if (!difficulty.empty())
+    {
+      int diff = String::to_int(difficulty);
+      SkillType required_skill = SkillType::SKILL_GENERAL_OCEAN_LORE;
+
+      if (creature->get_skills().get_value(required_skill) >= diff)
+      {
+        has_shipwreck = true;
+      }
+      else
+      {
+        if (mark_skill)
+        {
+          int num_marks = RNG::range(4, 8);
+          Skills& skills = creature->get_skills();
+
+          for (int i = 0; i < num_marks; i++)
+          {
+            skills.mark(SkillType::SKILL_GENERAL_OCEAN_LORE);
+          }
+        }
+      }
+    }
+  }
+
+  return has_shipwreck;
+}
+
+string MapUtils::get_shipwreck_min_lore(MapPtr map, TilePtr tile)
+{
+  string min_lore;
+
+  if (tile != nullptr)
+  {
+    min_lore = tile->get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED);
+
+    if (min_lore.empty() && map != nullptr && map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
+    {
+      min_lore = map->get_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED);
+    }
+  }
+
+  return min_lore;
+}
+
+bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d)
+{
+  bool can_change = false;
+
+  if (creature != nullptr && map != nullptr && tile != nullptr)
+  {
+    TileType tt = tile->get_tile_type();
+
+    // Can always go up and up staircase, down a down staircase.
+    if ((d == Direction::DIRECTION_DOWN && tt == TileType::TILE_TYPE_DOWN_STAIRCASE) ||
+        (d == Direction::DIRECTION_UP && tt == TileType::TILE_TYPE_UP_STAIRCASE))
+    {
+      return true;
+    }
+    // Can never go down an up staircase, up a down staircase.
+    else if ((d == Direction::DIRECTION_UP && tt == TileType::TILE_TYPE_DOWN_STAIRCASE) ||
+             (d == Direction::DIRECTION_DOWN && tt == TileType::TILE_TYPE_UP_STAIRCASE))
+    {
+      return false;
+    }
+
+    MapType map_type = map->get_map_type();
+    TileSuperType tst = tile->get_tile_super_type();
+    bool can_breathe_water = creature->can_breathe(BreatheType::BREATHE_TYPE_WATER);
+    bool can_fly = creature->has_status(StatusIdentifiers::STATUS_ID_FLYING);
+    bool can_swim = creature->get_skills().get_value(SkillType::SKILL_GENERAL_SWIMMING) > 0;
+    bool map_supports_flying = (map_type == MapType::MAP_TYPE_OVERWORLD || map_type == MapType::MAP_TYPE_AIR);
+    bool is_interior = tile->is_interior();
+
+    // Air - only have to check up movement. Can always go down!
+    if (map_supports_flying && d == Direction::DIRECTION_UP)
+    {
+      can_change = can_fly && !map->get_is_open_sky();
+    }
+    else if (map_type == MapType::MAP_TYPE_AIR && d == Direction::DIRECTION_DOWN)
+    {
+      can_change = true;
+    }
+    else
+    {
+      // Water
+      if (tst == TileSuperType::TILE_SUPER_TYPE_WATER)
+      {
+        if (d == Direction::DIRECTION_DOWN)
+        {
+          if (map_type != MapType::MAP_TYPE_UNDERWATER &&
+              map->get_is_water_shallow() &&
+             (can_breathe_water || can_swim))
+          {
+            can_change = true;
+          }
+        }
+        else if (d == Direction::DIRECTION_UP)
+        {
+          if (map_type == MapType::MAP_TYPE_UNDERWATER && !is_interior)
+          {
+            can_change = true;
+          }
+        }
+      }
+    }
+  }
+
+  return can_change;
+}
+
+bool MapUtils::get_supports_time_of_day(const MapType map_type)
+{
+  return (map_type == MapType::MAP_TYPE_OVERWORLD || map_type == MapType::MAP_TYPE_AIR);
+}
+
+bool MapUtils::get_supports_weather(const MapType map_type)
+{
+  return (map_type == MapType::MAP_TYPE_WORLD || map_type == MapType::MAP_TYPE_OVERWORLD || map_type == MapType::MAP_TYPE_AIR);
+}
+
+SkillType MapUtils::get_lore_skill_for_terrain(TilePtr tile)
+{
+  SkillType st = SkillType::SKILL_UNDEFINED;
+
+  if (tile != nullptr)
+  {
+    if (tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_WATER)
+    {
+      st = SkillType::SKILL_GENERAL_OCEAN_LORE;
+    }
+    else
+    {
+      TileType tt = tile->get_tile_type();
+
+      switch (tt)
+      {
+        case TileType::TILE_TYPE_DESERT:
+          st = SkillType::SKILL_GENERAL_DESERT_LORE;
+          break;
+        case TileType::TILE_TYPE_FOREST:
+          st = SkillType::SKILL_GENERAL_FOREST_LORE;
+          break;
+        case TileType::TILE_TYPE_MARSH:
+          st = SkillType::SKILL_GENERAL_MARSH_LORE;
+          break;
+        case TileType::TILE_TYPE_MOUNTAINS:
+          st = SkillType::SKILL_GENERAL_MOUNTAIN_LORE;
+          break;
+      }
+    }
+  }
+
+  return st;
 }
 
 #ifdef UNIT_TESTS

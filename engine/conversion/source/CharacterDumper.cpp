@@ -12,6 +12,7 @@
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureTranslator.hpp"
+#include "DateTextKeys.hpp"
 #include "DeathDumper.hpp"
 #include "Environment.hpp"
 #include "EquipmentDumper.hpp"
@@ -28,6 +29,7 @@
 #include "RaceManager.hpp"
 #include "ReligionManager.hpp"
 #include "ResistancesDumper.hpp"
+#include "Setting.hpp"
 #include "SizeTextKeys.hpp"
 #include "SkillsDumper.hpp"
 #include "SpellsDumper.hpp"
@@ -78,7 +80,9 @@ string CharacterDumper::str() const
   ModifiersDumper mod_dumper(creature, num_cols);
   ss << mod_dumper.str() << endl << endl;
 
-  DeathDumper death_dumper(creature, num_cols);
+  bool narrative_mode = Game::instance().get_settings_ref().get_setting_as_bool(Setting::NARRATIVE_MODE);
+  DeathDumper death_dumper(creature, narrative_mode, num_cols);
+
   string death = death_dumper.str();
 
   if (!death.empty())
@@ -134,6 +138,29 @@ string CharacterDumper::str() const
   ss << get_party() << endl << endl;
 
   ss << StringTable::get(TextKeys::MAXIMUM_DEPTH_REACHED) << ": " << creature->get_max_depth_reached().str(true) << endl << endl;
+
+  string p_character_started = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_CHARACTER_STARTED);
+  string p_game_date = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_GAME_DATE);
+
+  if (!p_character_started.empty() && !p_game_date.empty())
+  {
+    Date st_date(p_character_started);
+    Date cur_date(p_game_date);
+
+    ss << StringTable::get(TextKeys::CHARACTER_STARTED) << ": " << DateTextKeys::get_date_time_message(st_date, false) << endl;
+    ss << StringTable::get(TextKeys::GAME_DATE) << ": " << DateTextKeys::get_date_time_message(cur_date, false) << endl << endl;
+  }
+
+  string game_started = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_GAME_STARTED);
+
+  if (!game_started.empty())
+  {
+    std::time_t cur_time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+
+    ss << StringTable::get(TextKeys::GAME_STARTED) << ": " << game_started;
+    ss << StringTable::get(TextKeys::CURRENT_DATE) << ": " << std::ctime(&cur_time) << endl;
+  }
+
   ss << StringTable::get(TextKeys::TURNS) << ": " << creature->get_turns() << endl << endl;
 
   double seconds = game.get_total_elapsed_game_time(std::chrono::system_clock::now());

@@ -51,6 +51,11 @@ void DungeonGenerator::initialize_and_seed_cheat_vectors(const Dimensions& dimen
   y2_cheaty_vector.push_back(dimensions.get_y()-2);  
 }
 
+bool DungeonGenerator::get_allow_ancient_beasts() const
+{
+  return true;
+}
+
 MapPtr DungeonGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr null_map; // needed to compile - should never get hit.

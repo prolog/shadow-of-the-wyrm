@@ -7,6 +7,11 @@ DirectionUtils::DirectionUtils()
 {
 }
 
+bool DirectionUtils::is_zlevel(const Direction d)
+{
+  return (d == Direction::DIRECTION_UP || d == Direction::DIRECTION_DOWN);
+}
+
 bool DirectionUtils::is_cardinal(const Direction d)
 {
   switch(d)

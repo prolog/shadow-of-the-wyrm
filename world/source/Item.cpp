@@ -557,6 +557,13 @@ bool Item::enchant(const int pct_chance_brand, const int enchant_points)
   return true;
 }
 
+void Item::create_randart(const string& name, const vector<string>& slayable_race_ids)
+{
+  do_enchant_randart(slayable_race_ids);
+  set_additional_property(ItemProperties::ITEM_PROPERTIES_RANDART_NAME, name);
+  set_artifact(true);
+}
+
 bool Item::smith(const int smith_points)
 {
   if (remaining_smithings.get_current() > 0)
@@ -742,6 +749,14 @@ void Item::do_enchant_item(const int points)
       j++;
     }
   }
+}
+
+void Item::do_enchant_randart(const std::vector<std::string>& slayable_race_ids)
+{
+}
+
+void Item::do_enchant_randart_non_resists(const std::vector<std::string>& slayable_race_ids)
+{
 }
 
 void Item::do_smith_item(const int points)

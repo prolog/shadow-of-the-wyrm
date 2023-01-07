@@ -11,6 +11,11 @@ std::string DaisTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_DAIS;
 }
 
+bool DaisTile::is_interior() const
+{
+  return true;
+}
+
 Tile* DaisTile::clone()
 {
   return new DaisTile(*this);

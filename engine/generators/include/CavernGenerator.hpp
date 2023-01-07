@@ -11,6 +11,7 @@ class CavernGenerator : public SOTW::Generator
     virtual MapPtr generate(const Dimensions& dimensions) override;
 
     virtual bool can_create_initial_items() const override;
+    virtual bool get_allow_ancient_beasts() const;
 
   protected:
     virtual bool get_permanence_default() const override;

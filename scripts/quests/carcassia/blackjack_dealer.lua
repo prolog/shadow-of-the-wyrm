@@ -171,6 +171,7 @@ if dealer.buy_in("BLACKJACK_DEALER_SPEECH_TEXT_SID", "BLACKJACK_DEALER_NSF_MESSA
   local game_over = false
   local option = ""
 
+  clear_messages()
   deal(cards, p_hand, d_hand)
 
   while game_over == false do

@@ -1,4 +1,5 @@
 #include "SeaTile.hpp"
+#include "MovementTextKeys.hpp"
 #include "WaterInventory.hpp"
 #include "WaterTypes.hpp"
 
@@ -25,6 +26,11 @@ WaterType SeaTile::get_water_type() const
 std::string SeaTile::get_tile_description_sid() const
 {
   return TileTextKeys::TILE_DESC_SEA;
+}
+
+std::string SeaTile::get_no_exit_down_message_sid() const
+{
+  return MovementTextKeys::ACTION_MOVE_NO_EXIT_DOWN_SEA;
 }
 
 Tile* SeaTile::clone()

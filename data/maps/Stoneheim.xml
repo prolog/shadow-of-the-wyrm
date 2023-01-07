@@ -208,6 +208,10 @@
 			</Coord>
 			<Direction>10</Direction>
 			<MapID>world_map</MapID>
+			<LinkTo>
+				<Row>9</Row>
+				<Col>19</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>

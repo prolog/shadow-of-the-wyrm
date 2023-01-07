@@ -1,7 +1,7 @@
 #include "BoatingMovementAccumulationChecker.hpp"
+#include "DefaultMovementAccumulationChecker.hpp"
 #include "FallingMovementAccumulationChecker.hpp"
 #include "MountainClimbingMovementAccumulationChecker.hpp"
-#include "NullMovementAccumulationChecker.hpp"
 #include "SwimmingMovementAccumulationChecker.hpp"
 #include "TerrainMovementAccumulationCheckerFactory.hpp"
 
@@ -43,7 +43,7 @@ ITerrainMovementAccumulationCheckerPtr TerrainMovementAccumulationCheckerFactory
   }
   else
   {
-    checker = std::make_unique<NullMovementAccumulationChecker>();
+    checker = std::make_unique<DefaultMovementAccumulationChecker>();
   }
   
   return checker;

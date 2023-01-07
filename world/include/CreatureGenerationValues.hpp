@@ -2,6 +2,7 @@
 #include <map>
 #include <set>
 #include <string>
+#include "CreatureFeatures.hpp"
 #include "Dice.hpp"
 #include "EquipmentTypes.hpp"
 #include "GenerationValues.hpp"
@@ -25,6 +26,9 @@ class CreatureGenerationValues : public GenerationValues
 
     void set_race_id(const std::string& new_race_id);
     std::string get_race_id() const;
+
+    void set_breathe_type(const BreatheType new_bt);
+    BreatheType get_breathe_type() const;
 
     void add_allowable_terrain_type(const TileType additional_terrain_type);
     void clear_allowable_terrain_types();
@@ -67,6 +71,10 @@ class CreatureGenerationValues : public GenerationValues
 
     // The creature's race, used for filtering in certain situations.
     std::string race_id;
+
+    // Whether the creature breathes air, water, etc.  Used to determine
+    // creature generation for underwater maps.
+    BreatheType breathes;
 
     // The terrain types in which the creature can be generated
     std::set<TileType> allowable_terrain_types;

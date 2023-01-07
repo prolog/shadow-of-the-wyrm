@@ -164,6 +164,8 @@ class Game : public ISerializable
     // Set the map to be used as the current for the game's computational purposes.
     void set_current_map(MapPtr map);
 
+    void update_player_dates();
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 

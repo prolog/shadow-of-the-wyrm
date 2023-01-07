@@ -3,6 +3,7 @@
 #include <string>
 #include "common.hpp"
 #include "Colours.hpp"
+#include "ISerializable.hpp"
 
 namespace DateValues
 {
@@ -46,11 +47,13 @@ class TimeOfDay
     static std::map<TimeOfDayType, std::pair<Colour, Colour>> time_of_day_colour_overrides;
 };
 
-class Date
+class Date : public ISerializable
 {
   public:
     Date(const uint sec, const uint min, const uint hrs, const uint day_week, const uint day_month, const uint day_year, const uint month, const uint year);
+    Date(const std::string& serialized_date_str);
     static Date null();
+    bool operator==(const Date& d) const;
 
     bool get_days_equal(const Date& d) const;
 
@@ -66,6 +69,9 @@ class Date
     std::string get_month_sid() const;
     uint get_year() const;
 
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
+
   protected:
     uint seconds;
     uint minutes;
@@ -78,4 +84,6 @@ class Date
     
     static std::string month_sids[DateValues::NUMBER_OF_MONTHS];
     static std::string day_of_week_sids[DateValues::NUMBER_OF_DAYS];
+
+    ClassIdentifier internal_class_identifier() const override;
 };

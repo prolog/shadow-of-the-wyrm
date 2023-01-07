@@ -182,6 +182,7 @@ class ActionTextKeys
     static const std::string ACTION_DIG_CANNOT_DIG_ON_SUPER_TYPE;
     static const std::string ACTION_DIG_TOO_HARD;
     static const std::string ACTION_DIG_CEILING;
+    static const std::string ACTION_DIG_SHOP;
     static const std::string ACTION_RESTING;
     static const std::string ACTION_HANDLE_DEFAULT;
     static const std::string ACTION_HANDLE_ALTAR;

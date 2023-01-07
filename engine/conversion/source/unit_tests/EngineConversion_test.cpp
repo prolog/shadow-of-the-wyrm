@@ -71,4 +71,6 @@ TEST(SW_Engine_EngineConversion_MapTileTypes, default_tile_type)
   EXPECT_EQ(TileType::TILE_TYPE_FIELD, MapTileTypes::map_type_to_default_tile_type(MapType::MAP_TYPE_OVERWORLD));
   EXPECT_EQ(TileType::TILE_TYPE_DUNGEON_COMPLEX, MapTileTypes::map_type_to_default_tile_type(MapType::MAP_TYPE_UNDERWORLD));
   EXPECT_EQ(TileType::TILE_TYPE_SEA, MapTileTypes::map_type_to_default_tile_type(MapType::MAP_TYPE_UNDERWATER));
+  EXPECT_EQ(TileType::TILE_TYPE_AIR, MapTileTypes::map_type_to_default_tile_type(MapType::MAP_TYPE_AIR));
+  EXPECT_EQ(TileType::TILE_TYPE_VOID, MapTileTypes::map_type_to_default_tile_type(MapType::MAP_TYPE_COSMOS));
 }

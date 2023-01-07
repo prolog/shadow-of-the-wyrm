@@ -1,7 +1,11 @@
 #include "gtest/gtest.h"
 #include "Amulet.hpp"
+#include "DesertTile.hpp"
 #include "DungeonTile.hpp"
 #include "FeatureGenerator.hpp"
+#include "ForestTile.hpp"
+#include "MarshTile.hpp"
+#include "MountainsTile.hpp"
 #include "RockTile.hpp"
 #include "RockyEarthTile.hpp"
 #include "TileGenerator.hpp"
@@ -196,7 +200,7 @@ TEST(SW_World_Tiles_Tile, saveload)
   }
 }
 
-TEST(SW_World_Tile, set_items)
+TEST(SW_World_Tiles_Tile, set_items)
 {
   TileGenerator tg;
   TilePtr tile = tg.generate(TileType::TILE_TYPE_FIELD);
@@ -241,7 +245,7 @@ TEST(SW_World_Tile, add_items)
   EXPECT_EQ(4, items->count_items());
 }
 
-TEST(SW_World_Tile, copy_entities)
+TEST(SW_World_Tiles_Tile, copy_entities)
 {
   TileGenerator tg;
   TilePtr tile = tg.generate(TileType::TILE_TYPE_FIELD);
@@ -265,4 +269,30 @@ TEST(SW_World_Tile, copy_entities)
   EXPECT_TRUE(tile2->has_creature());
   EXPECT_TRUE(tile2->has_feature());
   EXPECT_EQ(2, tile2->get_items()->count_items());
+}
+
+TEST(SW_World_Tiles_Tile, has_treasure)
+{
+  MountainsTile m;
+
+  EXPECT_FALSE(m.has_treasure());
+
+  m.set_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED, std::to_string(40));
+
+  EXPECT_TRUE(m.has_treasure());
+}
+
+TEST(SW_World_Tiles_Tile, get_treasure_skill)
+{
+  DesertTile d;
+  ForestTile f;
+  MarshTile ma;
+  MountainsTile mo;
+  DungeonTile du;
+
+  EXPECT_EQ(SkillType::SKILL_UNDEFINED, du.get_treasure_skill());
+  EXPECT_EQ(SkillType::SKILL_GENERAL_DESERT_LORE, d.get_treasure_skill());
+  EXPECT_EQ(SkillType::SKILL_GENERAL_FOREST_LORE, f.get_treasure_skill());
+  EXPECT_EQ(SkillType::SKILL_GENERAL_MARSH_LORE, ma.get_treasure_skill());
+  EXPECT_EQ(SkillType::SKILL_GENERAL_MOUNTAIN_LORE, mo.get_treasure_skill());
 }

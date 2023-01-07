@@ -30,6 +30,7 @@ class MapUtils
     static TileDirectionMap get_adjacent_tiles_to_creature(const MapPtr& map, const CreaturePtr& creature);
     static std::vector<TilePtr> get_adjacent_tiles_to_creature_unsorted(const MapPtr& map, const CreaturePtr& creature, const int offset = 1);
     static bool adjacent_tiles_match_type(const MapPtr& map, const Coordinate& c, const std::vector<Direction>& directions, const TileType tile_type_to_match);
+    static bool adjacent_tiles_contain_type(const MapPtr& map, const Coordinate& c, const std::vector<Direction>& directions, const TileType tile_type_to_contain);
     static uint get_num_adjacent_movement_directions(const MapPtr& map, const CreaturePtr& creature);
     static TilePtr get_adjacent_tile(const MapPtr& map, const CreaturePtr& creature, const Direction d, const int offset = 1);
     static TileDirectionMap get_adjacent_and_creature_tiles(const MapPtr& map, const CreaturePtr& creature);
@@ -38,7 +39,7 @@ class MapUtils
     static CreatureDirectionMap get_adjacent_creatures(const MapPtr& map, const CreaturePtr& creature);
     static std::vector<CreaturePtr> get_adjacent_creatures_unsorted(const MapPtr& map, const CreaturePtr& creature);
     static void set_up_transitive_exits_as_necessary(MapPtr old_map, MapExitPtr map_exit);
-    static Coordinate calculate_new_coord_for_multimap_movement(const Coordinate& current_coord, const Direction exit_direction, MapExitPtr map_exit);
+    static Coordinate calculate_new_coord_for_multimap_movement(const Coordinate& current_coord, TilePtr tile, const Direction exit_direction, MapExitPtr map_exit);
     static Direction get_exit_direction(const Direction d, const Dimensions& dim, const Coordinate& c);
 
     // When removing a creature, we generally want to leave the player's
@@ -50,7 +51,7 @@ class MapUtils
 
     static bool place_creature_randomly(MapPtr map, const std::string& creature_id);
     
-    static bool can_exit_map(MapPtr map, CreaturePtr creature, MapExitPtr map_exit, const Coordinate& proposed_new_coord);
+    static MapExitOutcome can_exit_map(MapPtr map, CreaturePtr creature, MapExitPtr map_exit, const Direction d, const Coordinate& proposed_new_coord);
     
     static bool is_blocking_feature_present(TilePtr tile);
     static bool is_creature_present(TilePtr tile);
@@ -111,7 +112,8 @@ class MapUtils
 
     static bool is_intersection(MapPtr map, CreaturePtr cr, const Coordinate& c);
     static std::vector<std::string> place_followers(MapPtr map, CreaturePtr cr, const Coordinate& c);
-    static void serialize_and_remove_followers(MapPtr map, CreaturePtr creature);
+    static void serialize_and_remove_followers(MapPtr old_map, MapPtr new_map, CreaturePtr creature);
+    static bool should_creature_move_to_new_map_type(CreaturePtr creature, const MapType map_type);
 
     // Returns true for the first parameter if a melee attack at range is
     // possible, false otherwise. The second parameter will be populated
@@ -136,6 +138,17 @@ class MapUtils
     static void add_preset_village(MapPtr map, const int row, const int col);
 
     static std::tuple<int, int, std::string, std::string> get_random_village_by_property(MapPtr map, const std::string& prop, const std::vector<std::string>& exclude_map_ids);
+
+    static bool has_known_treasure(TilePtr tile, CreaturePtr creature, const bool mark_skill);
+    static bool has_known_shipwreck(MapPtr map, TilePtr tile, CreaturePtr creature, const bool mark_skill);
+    static std::string get_shipwreck_min_lore(MapPtr map, TilePtr tile);
+
+    static bool can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d);
+
+    static bool get_supports_time_of_day(const MapType map_type);
+    static bool get_supports_weather(const MapType map_type);
+
+    static SkillType get_lore_skill_for_terrain(TilePtr tile);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);

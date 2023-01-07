@@ -81,7 +81,7 @@ void BowyerSkillProcessor::create_bowyer_item(const string& item_base_id, Creatu
   // Remove the bough and create the item, adding a message about its
   // creation.
   ItemManager im;
-  im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_BOUGH);
+  im.remove_item_from_inv_or_eq(creature, ItemIdKeys::ITEM_ID_BOUGH);
   ItemPtr item = ItemManager::create_item(item_base_id);
   TilePtr tile = MapUtils::get_tile_for_creature(map, creature);
 

@@ -17,6 +17,10 @@ const string TameScript::TAME_FUNCTION_NAME = "tame";
 // Return true if the script executed successfully, false otherwise.
 bool TameScript::execute(ScriptEngine& se, const string& event_script, CreaturePtr tamed_creature, CreaturePtr taming_creature, MapPtr map)
 {
+  Log& log = Log::instance();
+  log.trace("TameScript::execute - begin");
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+
   if (event_script.empty())
   {
     return false;
@@ -62,16 +66,20 @@ bool TameScript::execute(ScriptEngine& se, const string& event_script, CreatureP
     {
       string l_err = lua_tostring(L, -1);
       string error_msg = "TameScript::execute - error running Lua function `" + TAME_FUNCTION_NAME + "': " + l_err;
-      Log::instance().error(error_msg);
+      log.error(error_msg);
       lua_pop(L, 1);
       result = false;
     }
+
+    lua_pop(L, 1);
   }
   else
   {
-    Log::instance().error("TameScript::execute - did not run Lua function due to script failure: " + event_script);
+    log.error("TameScript::execute - did not run Lua function due to script failure: " + event_script);
     result = false;
   }
 
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+  log.trace("TameScript::execute - exiting");
   return result;
 }

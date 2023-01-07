@@ -1,3 +1,177 @@
+Shadow of the Wyrm v1.5.2 "Satoh"
+- Version started May 15, 2022.
+
+- Deserts have a small chance to generate a spring.
+
+- When removing items from the player (typically for fetch-type quests), the
+  game now checks inventory first, then worn equipment.
+
+- There are no longer climbing danger prompts at skill 100 (Josh Engdahl).
+  At 100 climbing there are no longer exhaustion/etc checks: you will be
+  safe to climb mountains indefinitely.
+
+- More names.
+
+- Exiting the codex or bestiary during tile selection no longer exits tile
+  selection.  This behaviour is configurable in swyrm.ini (Josh Engdahl).
+
+- You can no longer use the Music skill underwater.
+
+- Updated mawgrawls to use "itself" (Josh Engdahl).  Set this flag as well on
+  birds and animals.
+
+- Hirelings and adventurers now have a good chance to have personalized
+  bestiary entries.  When they don't, they'll continue to use the existing
+  respective entry.
+
+- When you drop an item a shopkeeper doesn't want, it's now added back to your
+  pack (Josh Engdahl).  This also happens if the shopkeeper wants to buy it
+  but can't afford it.
+
+- Boating now has an initial implementation, and allows faster movement over 
+  water when not flying.
+
+- When digging via non-magical means in a shop, the player is now prompted
+  to continue (Grond).
+
+- Wandcraft now affects to-hit when evoking a wand (Josh Engdahl).
+
+- The in-game start date and current date are now shown in the character dump,
+  and the date message formats in-game have been tweaked to also show the
+  numerical month.
+
+- Random artifact (randart) generation.
+
+- The terrain lore skills (Desert Lore, Forest Lore, Marsh Lore, Mountain Lore)
+  will now help you find treasure hidden across the world. These treasure
+  caches contain a variety of useful items, the centrepiece being either a
+  huge sum of ivory or a randart.  Dungeoneering can also help improve the
+  quality of the cache.
+
+- Ocean Lore lets you find sunken shipwrecks.  These are located on the ocean
+  floor near coastlines - you'll need to dive down to find them.
+
+- Mountains can now be generated with southern and eastern clifflines that
+  drop off into nothing.  Mountains may now also have streams and springs.
+
+- There are now different messages for using > and < on springs, open sea, 
+  and the cosmos.
+
+- Bargaining reduces the cost of hirelings (RelicWraith).
+
+- Pelicans have a better sprite.
+
+- The Forest of Yew is a reasonably well-known place and its tile message has
+  been updated to be slightly more specific about what's there.
+
+- If you now have a way of flying, you can move up to open sky.  Losing the
+  ability to fly in such cases is not recommended, and deadly. If you have
+  some swimming, you can go underwater, assuming you're in shallow water,
+  though you can only hold your breath so long.
+
+- Carcassia now has "sky maps" above the ground-level maps, that can be 
+  accessed either via stairs from the appropriate place, or ascending while
+  flying.
+
+- Set the flying flag on creatures where it made sense, so long as they didn't
+  get it already from their race.
+
+- There is now a skill trainer located by the fighting pits in Carcassia.  He
+  will let you train any of your skills - for a price.
+
+- The inner teleporter in Carcassia A1 now has unlimited uses, so you won't
+  get stuck in an exitless room (JovanM).
+
+- Character dumps now show the date and time when you started your character,
+  as well as the current time.
+
+- The Fletchery skill now influences how many items get created when using
+  Fletchery.  A similar calculation is applied to the creation of clay shot,
+  with the key skill being Crafting.
+
+- More weeds.
+
+- Dolmens can be generated in the hills.
+
+- Oceanography has been renamed to Ocean Lore, and given to goblins.
+  Snakelings will now also start with Desert Lore, in addition to Marsh Lore.
+
+- Forests at the northern and southern extremes are now rockier, their
+  appearance closer to something like the Canadian shield. Fields and 
+  scrublands, too.
+
+- Mountaineering as a separate skill has been eliminated, and has been folded
+  into Mountain Lore (RelicWraith).
+
+- Added some additional Lua functions for modding: set_creature_size, 
+  get_creature_size, get_nutrition.
+
+- Updated the spell ending descriptions to "Ending after" instead of "Ending
+  at", to better indicate that the spell doesn't end at exactly that time.
+
+- Autopickup now excludes unpaid items by default. This is configurable in
+  swyrm.ini and in-game via '!'.
+
+- Wrote a Python script for checking the blank resource strings against the
+  English ones, to ensure everything from the latter is in the former.
+  Updated the blank strings to add a few dozen missing resource strings.
+
+- Killing The Sorceror transports you back from Telari, and prevents you from
+  re-entering.
+
+- New items: amulet of the sky, conch.
+
+- New creatures: Pern, stylite, ancient sage, Carcassian magistrate, hermit
+  crab.
+
+- Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - Some of the Nine's special creatures were unable to spawn in the rift in
+    the cosmos.
+
+  - Removed some wand enchantment code that was causing stack issues.
+  
+  - Setting age via swyrm.ini was also overriding the maximum, leading to
+    death after one year (Josh Engdahl).
+
+  - When sentries were considering allies, they weren't considering their own
+    ID, leading to e.g. Carcassian guards attacking each other.
+
+  - After paying off shopkeepers, hostility was removed from the shopkeeper
+    but not the player.
+
+  - The NPC Callara was too close to "Calara", used in Lish's quest.  Callara
+    is now called Callisa (YARD).
+
+  - The buy-in message for Blackjack wasn't clearing properly before starting
+    the game.
+
+  - Turned off an SDL hint that was causing sprite blurriness on high
+    resolutions/large monitors.
+
+  - Wand speed was using the magical speed calculator, so wand speed would
+    unintentionally vary based on the last spell cast.  If you had never cast
+    a spell, the wand speed would be very fast.  Wand speed has been updated
+    to use its own calculations, with Wandcraft positively affecting the speed
+    at which you can evoke wands.
+
+  - Creatures with ranged weapons would sometimes attack you even when that
+    didn't make sense (Josh Engdahl).
+
+  - Fixed an issue with elements not being cleared from the Lua stack after
+    a call into the Lua code from the engine.
+
+  - Wintersea Tower is now properly connected/situated to the main Wintersea
+    map, allowing you to either take the stairs or fly up to the top level.
+
+  - Wild orchards and mountains weren't generating coastlines like fields, 
+    forests, etc.
+
+  - A bug with death-causing statuses was causing crashes in narrative mode,
+    where the player is immediately revived. 
+
 Shadow of the Wyrm v1.4.5.1 "Fuenllana"
 - Version declared May 12, 2022.  Version finalized May 15, 2022.
 

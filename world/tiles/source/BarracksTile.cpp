@@ -10,6 +10,11 @@ std::string BarracksTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_BARRACKS;
 }
 
+bool BarracksTile::is_interior() const
+{
+  return true;
+}
+
 Tile* BarracksTile::clone()
 {
   return new BarracksTile(*this);

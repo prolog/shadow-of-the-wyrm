@@ -8,6 +8,7 @@ class DungeonTile : public Tile
     TileType get_tile_type() const override;
     
     std::string get_tile_description_sid() const override;
+    bool is_interior() const override;
 
     virtual Tile* clone() override;
 

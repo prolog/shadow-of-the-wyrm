@@ -1,5 +1,22 @@
 #include "gtest/gtest.h"
 
+TEST(SW_Engine_ForestCalculator, pct_chance_shield)
+{
+  ForestCalculator fc;
+
+  int world_height = 100;
+  Coordinate c(48, 48);
+
+  EXPECT_EQ(0, fc.calculate_pct_chance_shield(world_height, c));
+
+  // Should be 7.5 - becomes 7.
+  c.first = 65;
+  EXPECT_EQ(7, fc.calculate_pct_chance_shield(world_height, c));
+
+  c.first = 80;
+  EXPECT_EQ(30, fc.calculate_pct_chance_shield(world_height, c));
+}
+
 TEST(SW_Engine_Calculators_ForestCalculator, pct_chance_fruit)
 {
   ForestCalculator fc;
@@ -18,7 +35,6 @@ TEST(SW_Engine_Calculators_ForestCalculator, pct_chance_evergreen)
 
   EXPECT_EQ(0, fc.calculate_pct_chance_evergreen(world_height, c));
 
-  // Should be 7.5 - becomes 7.
   c.first = 65;
   EXPECT_EQ(7, fc.calculate_pct_chance_evergreen(world_height, c));
 

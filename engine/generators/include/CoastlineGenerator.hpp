@@ -7,6 +7,7 @@ class CoastlineGenerator
 {
   public:
     CoastlineGenerator();
+    CoastlineGenerator(const TileType new_tile_type, const TileType new_sec_type);
 
     void generate(MapPtr map, const bool north, const bool south, const bool east, const bool west);
   
@@ -19,9 +20,11 @@ class CoastlineGenerator
     int get_random_chance_shoals() const;
 
     int jiggle(const int y_val, const int min, const int max) const;
-    void fill_sea(MapPtr map, const int y_start, const int y_end, const int x_start, const int x_end);
+    void fill(MapPtr map, const int y_start, const int y_end, const int x_start, const int x_end);
 
-    int chance_shoals_y;
+    TileType fill_tile_type;
+    TileType secondary_tile_type;
+    int chance_sectype_y;
     static const int PCT_CHANCE_SHIFT_DIR;
     static const int MAX_COAST_OFFSET;
 };

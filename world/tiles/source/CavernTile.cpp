@@ -10,6 +10,11 @@ std::string CavernTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_CAVERN;
 }
 
+bool CavernTile::is_interior() const
+{
+  return true;
+}
+
 Tile* CavernTile::clone()
 {
   return new CavernTile(*this);

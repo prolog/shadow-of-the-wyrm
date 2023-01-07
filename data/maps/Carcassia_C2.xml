@@ -54,6 +54,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>pern</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>72</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>_vendor</ID>
 				<Coord>
 					<Row>6</Row>

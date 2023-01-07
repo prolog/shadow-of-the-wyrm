@@ -8,6 +8,7 @@ class MineGenerator : public SOTW::Generator
     MineGenerator(const std::string& map_exit_id);
 
     virtual MapPtr generate(const Dimensions& dim) override;
+    virtual bool get_allow_ancient_beasts() const;
 
   protected:
     virtual MapType get_map_type() const override;

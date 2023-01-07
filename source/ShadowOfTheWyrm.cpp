@@ -3,6 +3,8 @@
 #define __MSXML_LIBRARY_DEFINED__
 #endif
 
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include <iostream>
 

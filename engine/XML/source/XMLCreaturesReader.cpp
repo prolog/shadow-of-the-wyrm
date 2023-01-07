@@ -84,9 +84,11 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     // explicitly set on the creature - most things will breathe air, and some
     // races will set a number of options.
     XMLNode breathetype_node = XMLUtils::get_next_element_by_local_name(creature_node, "BreatheType");
+    BreatheType breathes = BreatheType::BREATHE_TYPE_AIR;
+
     if (!breathetype_node.is_null())
     {
-      BreatheType breathes = static_cast<BreatheType>(XMLUtils::get_node_int_value(breathetype_node));
+      breathes = static_cast<BreatheType>(XMLUtils::get_node_int_value(breathetype_node));
       creature->set_breathes(breathes);
     }
 
@@ -170,6 +172,10 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
       // Set the creature's race. Needed occasionally for filtering so that 
       // only creatures of a particular race are generated.
       cgv.set_race_id(race_id);
+
+      // Set the breathe type so that air breathers aren't generated
+      // underwater.
+      cgv.set_breathe_type(breathes);
     }
     
     uint level = XMLUtils::get_child_node_int_value(creature_node, "Level");

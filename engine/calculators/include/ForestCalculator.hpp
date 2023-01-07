@@ -14,6 +14,11 @@ class ForestCalculator
   public:
     ForestCalculator();
 
+    // Returns the same value as calculate_pct_chance_evergreen, but is
+    // more appropriate for checking for shield/muskeg-type bimes, rather
+    // than checking on a specific type of tree.
+    int calculate_pct_chance_shield(const int world_height, const Coordinate& world_loc);
+
     // Given a total pct chance of 100, P(evergreen) + P(deciduous) = 100.
     int calculate_pct_chance_evergreen(const int world_height, const Coordinate& world_loc);
     int calculate_pct_chance_deciduous(const int world_height, const Coordinate& world_loc);

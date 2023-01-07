@@ -26,6 +26,7 @@ DamageCalculatorPtr DamageCalculatorFactory::create_damage_calculator(const Atta
       calculator = std::make_unique<PhysicalDamageCalculator>(attack_type, pom);
       break;
     case AttackType::ATTACK_TYPE_MAGICAL:
+    case AttackType::ATTACK_TYPE_MAGICAL_WANDS:
       calculator = std::make_unique<MagicalDamageCalculator>(pom);
       break;
     default: break;

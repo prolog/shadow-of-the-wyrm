@@ -30,3 +30,4 @@ const string EntranceTextKeys::ENTRANCE_LIBRARY         = "ENTRANCE_LIBRARY";
 const string EntranceTextKeys::ENTRANCE_SITE_OF_DEATH   = "ENTRANCE_SITE_OF_DEATH";
 const string EntranceTextKeys::ENTRANCE_TEMPLE          = "ENTRANCE_TEMPLE";
 const string EntranceTextKeys::ENTRANCE_SHRINE          = "ENTRANCE_SHRINE";
+const string EntranceTextKeys::ENTRANCE_AIR             = "ENTRANCE_AIR";

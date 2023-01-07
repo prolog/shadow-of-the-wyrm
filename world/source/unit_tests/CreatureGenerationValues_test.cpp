@@ -21,6 +21,7 @@ TEST(SW_World_CreatureGenerationValues, saveload)
   cgv.set_generator_filters(g_v);
   cgv.set_race_id("fatratcatbat");
   cgv.set_id("blargho");
+  cgv.set_breathe_type(BreatheType::BREATHE_TYPE_WATER);
 
   cgv.add_allowable_terrain_type(TileType::TILE_TYPE_BARRACKS);
   cgv.add_allowable_terrain_type(TileType::TILE_TYPE_MARSH);
@@ -60,5 +61,6 @@ TEST(SW_World_CreatureGenerationValues, saveload)
   EXPECT_TRUE(find(generator_filters.begin(), generator_filters.end(), "asdf") != generator_filters.end());
   EXPECT_EQ("fatratcatbat", cgv2.get_race_id());
   EXPECT_EQ("blargho", cgv2.get_id());
+  EXPECT_EQ(BreatheType::BREATHE_TYPE_WATER, cgv2.get_breathe_type());
 }
 

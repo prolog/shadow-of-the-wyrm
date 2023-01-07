@@ -9,7 +9,7 @@
 // a particularly long time.  As a result, the system needs to track how long they've been on a
 // water-type tile when not using a boat.
 //
-// Another example is mountaineering: a character with a reasonable mountaineering score can cross
+// Another example is mountain lore: a character with a reasonable mountain lore score can cross
 // mountains, but attempting to scale an entire range without resting (by loading one of the mountain
 // maps) will likely lead to certain doom.
 class MovementAccumulation : public ISerializable

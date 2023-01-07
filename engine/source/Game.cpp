@@ -423,6 +423,7 @@ void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
   
   WorldGenerator wg;
   wg.set_village_coordinates(current_world);
+  wg.set_treasure(current_world);
 
   MapPtr world_map = get_map_registry_ref().get_map(MapID::MAP_ID_WORLD_MAP);
   if (world_map != nullptr)
@@ -435,6 +436,15 @@ void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
   if (tile)
   {
     tile->set_creature(creature);
+
+    ostringstream ss;
+    Date d = get_current_world()->get_calendar().get_date();
+    d.serialize(ss);
+
+    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_CHARACTER_STARTED, ss.str());
+    
+    std::time_t start_time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_GAME_STARTED, std::ctime(&start_time));
 
     // Set the starting location.
     if (creature->get_is_player())
@@ -613,6 +623,8 @@ void Game::go()
             }
           }
         }
+
+        update_player_dates();
 
         if (!current_creature)
         {
@@ -1172,6 +1184,27 @@ void Game::set_game_start_time(const std::chrono::system_clock::time_point& new_
 std::chrono::system_clock::time_point Game::get_game_start_time() const
 {
   return game_start_time;
+}
+
+void Game::update_player_dates()
+{
+  CreaturePtr player = Game::instance().get_current_player();
+
+  // Update the end date on the player every turn in case they end up dying, etc.
+  if (player != nullptr)
+  {
+    ostringstream ss;
+    Date d = get_current_world()->get_calendar().get_date();
+    d.serialize(ss);
+    string cur_date_str = ss.str();
+
+    if (player->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_CHARACTER_STARTED).empty())
+    {
+      player->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_CHARACTER_STARTED, cur_date_str);
+    }
+
+    player->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_GAME_DATE, cur_date_str);
+  }
 }
 
 bool Game::serialize(ostream& stream) const

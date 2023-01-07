@@ -129,13 +129,25 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
   }
 
   CreatureGenerationIndex generation_index;
+  bool allow_ancient_beasts = false;
+  auto ab_it = additional_properties.find(MapProperties::MAP_PROPERTIES_ANCIENT_BEASTS);
   
+  if (ab_it != additional_properties.end())
+  {
+    allow_ancient_beasts = String::to_bool(ab_it->second);
+  }
+
   while (generation_index.empty() && min_danger_level >= 1)
   {
-    generation_index = cgm.generate_creature_generation_map(map_terrain_types, map->get_permanent(), map->is_islet(), min_danger_level, max_danger_level, rarity, additional_properties);
+    generation_index = cgm.generate_creature_generation_map(map_terrain_types, map->get_permanent(), map->is_islet(), map->get_map_type(), min_danger_level, max_danger_level, rarity, additional_properties);
 
     if (generation_index.empty())
     {
+      if (allow_ancient_beasts)
+      {
+        break;
+      }
+
       min_danger_level /= 2;
     }
   }
@@ -424,38 +436,42 @@ void MapCreatureGenerator::place_followers(MapPtr map, const pair<Coordinate, Co
   FollowerCalculator fc;
   Depth d = map->size().depth();
   const int num_attempts = 20;
+  MapType map_type = map ? map->get_map_type() : MapType::MAP_TYPE_OVERWORLD;
 
-  if (RNG::x_in_y_chance(fc.calculate_x_in_y_chance_adventurer(d)))
+  if (map_type == MapType::MAP_TYPE_OVERWORLD || map_type == MapType::MAP_TYPE_UNDERWORLD)
   {
-    int num_adv = RNG::range(1, 2);
-
-    for (int adv = 0; adv < num_adv; adv++)
+    if (RNG::x_in_y_chance(fc.calculate_x_in_y_chance_adventurer(d)))
     {
-      CreaturePtr adventurer = cgm.generate_follower(am, map, FollowerType::FOLLOWER_TYPE_ADVENTURER, CreatureGenerationManager::ADVENTURER_DEFAULT_LEVEL);
+      int num_adv = RNG::range(1, 2);
+
+      for (int adv = 0; adv < num_adv; adv++)
+      {
+        CreaturePtr adventurer = cgm.generate_follower(am, map, FollowerType::FOLLOWER_TYPE_ADVENTURER, CreatureGenerationManager::ADVENTURER_DEFAULT_LEVEL);
+
+        for (int i = 0; i < num_attempts; i++)
+        {
+          bool placed = place_follower(adventurer, map, coord_range, game, am, manager, base_danger_level, current_creatures_placed, creatures_generated);
+
+          if (placed)
+          {
+            break;
+          }
+        }
+      }
+    }
+
+    if (RNG::x_in_y_chance(fc.calculate_x_in_y_chance_hireling(d)))
+    {
+      CreaturePtr hireling = cgm.generate_follower(am, map, FollowerType::FOLLOWER_TYPE_HIRELING, RNG::range(CreatureGenerationManager::HIRELING_MIN_LEVEL, CreatureGenerationManager::HIRELING_MAX_LEVEL));
 
       for (int i = 0; i < num_attempts; i++)
       {
-        bool placed = place_follower(adventurer, map, coord_range, game, am, manager, base_danger_level, current_creatures_placed, creatures_generated);
+        bool placed = place_follower(hireling, map, coord_range, game, am, manager, base_danger_level, current_creatures_placed, creatures_generated);
 
         if (placed)
         {
           break;
         }
-      }
-    }
-  }
-
-  if (RNG::x_in_y_chance(fc.calculate_x_in_y_chance_hireling(d)))
-  {
-    CreaturePtr hireling = cgm.generate_follower(am, map, FollowerType::FOLLOWER_TYPE_HIRELING, RNG::range(CreatureGenerationManager::HIRELING_MIN_LEVEL, CreatureGenerationManager::HIRELING_MAX_LEVEL));
-
-    for (int i = 0; i < num_attempts; i++)
-    {
-      bool placed = place_follower(hireling, map, coord_range, game, am, manager, base_danger_level, current_creatures_placed, creatures_generated);
-
-      if (placed)
-      {
-        break;
       }
     }
   }

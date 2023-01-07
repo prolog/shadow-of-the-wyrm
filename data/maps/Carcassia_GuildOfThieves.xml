@@ -76,6 +76,10 @@
 			</Coord>
 			<Direction>10</Direction>
 			<MapID>carcassia_a1</MapID>
+			<LinkTo>
+				<Row>16</Row>
+				<Col>5</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 </CustomMap>

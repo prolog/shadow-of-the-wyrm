@@ -17,7 +17,7 @@ void SDLInit::set_up()
   else
   {
     SDL_SetHint(SDL_HINT_VIDEO_X11_NET_WM_PING, "0");
-    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
   }
 }
 

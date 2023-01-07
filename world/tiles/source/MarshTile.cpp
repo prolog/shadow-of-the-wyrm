@@ -15,6 +15,11 @@ int MarshTile::get_movement_multiplier() const
   return 2;
 }
 
+SkillType MarshTile::get_treasure_skill() const
+{
+  return SkillType::SKILL_GENERAL_MARSH_LORE;
+}
+
 Tile* MarshTile::clone()
 {
   return new MarshTile(*this);
