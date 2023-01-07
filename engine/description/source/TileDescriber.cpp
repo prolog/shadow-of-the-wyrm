@@ -2,6 +2,7 @@
 #include "Conversion.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
+#include "MapUtils.hpp"
 #include "StringTable.hpp"
 #include "TextMessages.hpp"
 #include "TileTextKeys.hpp"
@@ -59,6 +60,16 @@ string TileDescriber::describe() const
       {
         description = description + " " + StringTable::get(sid);
       }
+    }
+
+    if (MapUtils::has_known_treasure(tile, viewing_creature, false))
+    {
+      description = description + " " + tile->get_additional_property(TileProperties::TILE_PROPERTY_TREASURE_SOURCE);
+    }
+
+    if (MapUtils::has_known_shipwreck(nullptr, tile, viewing_creature, false))
+    {
+      description = description + " " + tile->get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_TREASURE_SOURCE);
     }
 
     if (tile->has_engraving())

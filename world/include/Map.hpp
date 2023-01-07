@@ -88,7 +88,13 @@ class Map : public ISerializable
 		void set_map_type(const MapType& new_type);
 		MapType get_map_type() const;
 		
-		TilesContainer get_tiles() const;
+    TilesContainer get_tiles() const;
+		TilesContainer& get_tiles_ref();
+
+    void set_is_water_shallow(const bool new_shallow);
+    bool get_is_water_shallow() const;
+    void set_is_open_sky(const bool new_open_sky);
+    bool get_is_open_sky() const;
 
     void clear_locations();
     void add_or_update_location(const std::string& location, const Coordinate& coordinate);
@@ -103,6 +109,7 @@ class Map : public ISerializable
     void set_default_map_exit(MapExitPtr new_map_exit);
     void set_map_exit(MapExitPtr new_map_exit);
     void set_map_exit(const Direction d, MapExitPtr new_map_exit);
+    void set_map_exits(const std::map<Direction, MapExitPtr>& new_map_exits); 
     std::map<Direction, MapExitPtr> get_map_exits() const;
     MapExitPtr get_map_exit() const;
     MapExitPtr get_map_exit(const Direction d) const;
@@ -183,6 +190,9 @@ class Map : public ISerializable
     bool is_islet() const;
 
     std::vector<TileType> get_secondary_terrain() const;
+
+    void set_world_id(const std::string& new_world_id);
+    std::string get_world_id() const;
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;

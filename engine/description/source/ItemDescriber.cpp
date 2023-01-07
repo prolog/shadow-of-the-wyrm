@@ -39,9 +39,10 @@ string ItemDescriber::describe() const
     ss << describe_properties();
     ss << describe_quantity_and_value();
 
+    string item_so_far = boost::trim_copy(ss.str());
+
     // Add weight
-    ss << " [" << item->get_total_weight().str() << "]";
-    item_description = ss.str();
+    item_description = item_so_far + " [" + item->get_total_weight().str() + "]";
   }
 
   return item_description;

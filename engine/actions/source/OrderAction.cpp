@@ -14,6 +14,7 @@
 #include "OrderScreen.hpp"
 #include "OrderTextKeys.hpp"
 #include "RNG.hpp"
+#include "TileMovementConfirmation.hpp"
 
 using std::string;
 using std::vector;
@@ -225,19 +226,29 @@ ActionCostValue OrderAction::order_summon(CreaturePtr creature)
 
       if (follower != nullptr)
       {
-        while (!summon_coords.empty())
+        for (size_t i = 0; i < summon_coords.size(); i++)
         {
-          Coordinate sc = summon_coords.back();
-          summon_coords.pop_back();
-
+          Coordinate sc = summon_coords.at(i);
           TilePtr tile = map->at(sc);
 
           if (tile != nullptr && tile->get_is_available_for_creature(c_pair.second))
           {
+            Coordinate sum_old_location = map->get_location(follower->get_id());
             TilePtr sum_old_tile = MapUtils::get_tile_for_creature(map, follower);
-            MapUtils::add_or_update_location(map, follower, sc, sum_old_tile);
+            TileMovementConfirmation tmc;
 
-            break;
+            auto movement_details = tmc.get_confirmation_details(follower, map, sum_old_tile, sum_old_location, tile, sc);
+
+            // If moving to this tile would trigger confirmation (eg, trying
+            // to move an aquatic creature out of water), skip it and move
+            // to the next creature.
+            if (!movement_details.first)
+            {
+              MapUtils::add_or_update_location(map, follower, sc, sum_old_tile);
+              summon_coords.erase(summon_coords.begin() + i);
+
+              break;
+            }
           }
         }
       }

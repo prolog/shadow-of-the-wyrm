@@ -37,11 +37,16 @@ MapPtr ForestGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = std::make_shared<Map>(dimensions);
 
-  fill(result_map, TileType::TILE_TYPE_FIELD);
+  string world_location_map_key = get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_LOCATION);
+  int world_map_height = String::to_int(get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_HEIGHT));
+  Coordinate world_location = MapUtils::convert_map_key_to_coordinate(world_location_map_key);
+  int pct_chance_shield = fc.calculate_pct_chance_shield(world_map_height, world_location);
+
+  fill(result_map, { {TileType::TILE_TYPE_ROCKY_EARTH, pct_chance_shield}, {TileType::TILE_TYPE_FIELD, 100} });
 
   if (RNG::percent_chance(80))
   {
-    add_random_bushes_and_weeds(result_map);
+    add_random_bushes_and_weeds(result_map, pct_chance_shield);
     GeneratorUtils::potentially_generate_coastline(result_map, this);
   }
   else
@@ -50,7 +55,7 @@ MapPtr ForestGenerator::generate(const Dimensions& dimensions)
     // with lots of little bushy islands.  This was originally a bug,
     // but it looks good!
     GeneratorUtils::potentially_generate_coastline(result_map, this);
-    add_random_bushes_and_weeds(result_map);
+    add_random_bushes_and_weeds(result_map, pct_chance_shield);
   }
 
   GeneratorUtils::add_random_stream_or_springs(result_map, PCT_CHANCE_FOREST_STREAM, PCT_CHANCE_FOREST_STREAM);
@@ -64,14 +69,13 @@ TilePtr ForestGenerator::generate_tile(MapPtr current_map, int row, int col)
   return result_tile;
 }
 
-void ForestGenerator::add_random_bushes_and_weeds(MapPtr result_map)
+void ForestGenerator::add_random_bushes_and_weeds(MapPtr result_map, const int pct_chance_evergreen)
 {
   TileGenerator tg;
 
   string world_location_map_key = get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_LOCATION);
   int world_map_height = String::to_int(get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_HEIGHT));
   Coordinate world_location = MapUtils::convert_map_key_to_coordinate(world_location_map_key);
-  int pct_chance_evergreen = fc.calculate_pct_chance_evergreen(world_map_height, world_location);
 
   Dimensions dim = result_map->size();
   int rows = dim.get_y();

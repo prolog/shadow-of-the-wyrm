@@ -7,6 +7,7 @@ class ForestTile : public WorldMapTile
     TileType get_tile_type() const override;
     
     std::string get_tile_description_sid() const override;
+    SkillType get_treasure_skill() const override;
 
     virtual Tile* clone() override;
 

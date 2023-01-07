@@ -18,8 +18,13 @@ const string KillScript::KILL_FUNCTION_NAME = "kill";
 // Return true if the script executed successfully, false otherwise.
 bool KillScript::execute(ScriptEngine& se, const string& event_script, CreaturePtr dead_creature, CreaturePtr attacking_creature)
 {
+  Log& log = Log::instance();
+  log.trace("KillScript::execute - begin");
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+
   if (event_script.empty())
   {
+    log.trace("KillScript::execute - no script - exiting");
     return false;
   }
 
@@ -58,17 +63,21 @@ bool KillScript::execute(ScriptEngine& se, const string& event_script, CreatureP
     {
       string l_err = lua_tostring(L, -1);
       string error_msg = "KillScript::execute - error running Lua function `" + KILL_FUNCTION_NAME + "': " + l_err;
-      Log::instance().error(error_msg);
+      log.error(error_msg);
       lua_pop(L, 1);
       result = false;
     }
+
+    lua_pop(L, 1);
   }
   else
   {
-    Log::instance().error("KillScript::execute - did not run Lua function due to script failure: " + event_script);
+    log.error("KillScript::execute - did not run Lua function due to script failure: " + event_script);
     result = false;
   }
 
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+  log.trace("KillScript::execute - exiting");
   return result;
 }
 

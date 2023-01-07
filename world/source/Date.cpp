@@ -1,4 +1,6 @@
+#include <sstream>
 #include "Date.hpp"
+#include "Serialize.hpp"
 
 using namespace std;
 
@@ -76,12 +78,39 @@ Date::Date(const uint sec, const uint min, const uint hrs, const uint day_week, 
 {
 }
 
+Date::Date(const string& serialized_date_str)
+{
+  std::istringstream iss(serialized_date_str);
+  Date d = Date::null();
+  d.deserialize(iss);
+
+  *this = d;
+}
+
 Date Date::null()
 {
   Date null_d(0, 0, 0, 0, 0, 0, 0, 0);
   return null_d;
 }
 
+bool Date::operator==(const Date& d) const
+{
+  bool result = true;
+
+  if (this != &d)
+  {
+    result = result && (seconds == d.seconds);
+    result = result && (minutes == d.minutes);
+    result = result && (hours == d.hours);
+    result = result && (day_of_week == d.day_of_week);
+    result = result && (day_of_month == d.day_of_month);
+    result = result && (day_of_year == d.day_of_year);
+    result = result && (month == d.month);
+    result = result && (year == d.year);
+  }
+
+  return result;
+}
 bool Date::get_days_equal(const Date& d) const
 {
   return ((day_of_year == d.get_day_of_year()) && (year == d.get_year()));
@@ -156,6 +185,40 @@ uint Date::get_year() const
 {
   return year;
 }
+
+bool Date::serialize(std::ostream& stream) const
+{
+  Serialize::write_uint(stream, seconds);
+  Serialize::write_uint(stream, minutes);
+  Serialize::write_uint(stream, hours);
+  Serialize::write_uint(stream, day_of_week);
+  Serialize::write_uint(stream, day_of_month);
+  Serialize::write_uint(stream, day_of_year);
+  Serialize::write_uint(stream, month);
+  Serialize::write_uint(stream, year);
+
+  return true;
+}
+
+bool Date::deserialize(std::istream& stream)
+{
+  Serialize::read_uint(stream, seconds);
+  Serialize::read_uint(stream, minutes);
+  Serialize::read_uint(stream, hours);
+  Serialize::read_uint(stream, day_of_week);
+  Serialize::read_uint(stream, day_of_month);
+  Serialize::read_uint(stream, day_of_year);
+  Serialize::read_uint(stream, month);
+  Serialize::read_uint(stream, year);
+
+  return true;
+}
+
+ClassIdentifier Date::internal_class_identifier() const
+{
+  return ClassIdentifier::CLASS_ID_DATE;
+}
+
 
 #ifdef UNIT_TESTS
 #include "unit_tests/Date_test.cpp"

@@ -14,7 +14,7 @@ class GeneratorUtils
     static void generate_rounded_rectangle(MapPtr map, const Coordinate& start, const int height, const int width, const TileType tile_type, const bool check_for_entirely_contained);
 
     // Generates a building: walls are TileType::TILE_TYPE_ROCK, floor is TileType::TILE_TYPE_DUNGEON.
-    static void generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width, const TileType tile_type = TileType::TILE_TYPE_ROCK);
+    static void generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width, const TileType tile_type = TileType::TILE_TYPE_ROCK, const TileType floor_type = TileType::TILE_TYPE_DUNGEON, const bool fancy_corners = false);
     
     // Generate a series of overlapping squares on a map to simulate a dug passage.
     static std::vector<std::pair<Coordinate, Coordinate>> generate_rectangles(const MapPtr map, const int start_row, const int start_col, const int end_row, const int end_col, const int num_rectangles, const TileType rect_fill_type);
@@ -57,6 +57,13 @@ class GeneratorUtils
     // Generates storehouses of food over the map.
     static void generate_storehouses(MapPtr map);
 
+    // Generates a random artifact and places it at a particular location.
+    static void generate_randarts(MapPtr map, const Coordinate& c, const int num_randarts);
+
+    // Creates and item from the given list of IDs for each of the specified
+    // coordinates.
+    static void generate_item_per_coord(MapPtr map, const std::vector<Coordinate>& coords, const std::vector<std::string>& item_ids);
+
     // Fill a subset of the map with a certain tile type.
     static void fill(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const TileType tile_type);
 
@@ -67,6 +74,9 @@ class GeneratorUtils
     static void add_random_stream_or_springs(MapPtr map, const int pct_chance_stream, const int pct_chance_springs);
     static void add_random_stream(MapPtr map);
     static void add_random_springs(MapPtr map);
+
+    static std::vector<CardinalDirection> get_non_coastline_directions(SOTW::Generator* const gen);
+    static void generate_dolmen(MapPtr map, SOTW::Generator * const gen);
 
     static bool generates_complexes(const TileType tt);
 

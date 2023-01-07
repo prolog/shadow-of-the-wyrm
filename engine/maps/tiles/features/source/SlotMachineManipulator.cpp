@@ -77,7 +77,7 @@ bool SlotMachineManipulator::handle(TilePtr tile, CreaturePtr creature)
           // Remove the necessary amount of ivory from the player.
           string outcome_sid = ActionTextKeys::ACTION_DEALER_LOSE_SID;
           ItemManager im;
-          im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_CURRENCY, cost);
+          im.remove_item_from_inv_or_eq(creature, ItemIdKeys::ITEM_ID_CURRENCY, cost);
 
           manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SLOT_MACHINE_USE));
 

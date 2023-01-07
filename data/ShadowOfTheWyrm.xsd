@@ -638,10 +638,9 @@
 			<xs:element name="MarshLore" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Medicine" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="MountainLore" type="tns:PercentageStatistic" minOccurs="0"/>
-			<xs:element name="Mountaineering" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Music" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="NightSight" type="tns:PercentageStatistic" minOccurs="0"/>
-			<xs:element name="Oceanography" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="OceanLore" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Papercraft" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Religion" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Scribing" type="tns:PercentageStatistic" minOccurs="0"/>

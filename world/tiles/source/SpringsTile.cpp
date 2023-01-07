@@ -1,4 +1,5 @@
 #include "SpringsTile.hpp"
+#include "MovementTextKeys.hpp"
 #include "Serialize.hpp"
 #include "WaterInventory.hpp"
 #include "WaterTypes.hpp"
@@ -45,6 +46,11 @@ std::string SpringsTile::get_tile_description_sid() const
   {
     return TileTextKeys::TILE_DESC_SPRINGS;
   }
+}
+
+std::string SpringsTile::get_no_exit_down_message_sid() const
+{
+  return MovementTextKeys::ACTION_MOVE_NO_EXIT_DOWN_SPRINGS;
 }
 
 void SpringsTile::set_temperature(const int new_temperature)

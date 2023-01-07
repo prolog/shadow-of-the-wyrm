@@ -10,7 +10,8 @@ enum struct MapType
 , MAP_TYPE_UNDERWORLD = 2
 , MAP_TYPE_UNDERWATER = 3
 , MAP_TYPE_COSMOS = 4
-, MAP_TYPE_LAST_INC = 4
+, MAP_TYPE_AIR = 5
+, MAP_TYPE_LAST_INC = 5
 };
 
 class MapID

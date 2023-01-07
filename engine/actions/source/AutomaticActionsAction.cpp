@@ -15,6 +15,7 @@ vector<pair<string, string>> AutomaticActionsAction::get_auto_action_settings(Cr
 
   vector<pair<string, string>> action_set = { { Setting::AUTOPICKUP, Setting::AUTOPICKUP + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOPICKUP) + " " + get_autopickup_type_string(c) + ": " + StringTable::get(TextMessages::get_bool_sid(c->get_decision_strategy()->get_autopickup())) },
                                               { Setting::AUTOPICKUP_IGNORE_CORPSES, Setting::AUTOPICKUP_IGNORE_CORPSES + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOPICKUP_EXCLUDE_CORPSES) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_CORPSES))) },
+                                              { Setting::AUTOPICKUP_IGNORE_UNPAID, Setting::AUTOPICKUP_IGNORE_UNPAID + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOPICKUP_EXCLUDE_UNPAID) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_UNPAID))) },
                                               { Setting::AUTOMELEE, Setting::AUTOMELEE + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOMELEE_AT_RANGE) + ": " + StringTable::get(TextMessages::get_bool_sid(c->get_decision_strategy()->get_automelee())) } };
   return action_set;
 }

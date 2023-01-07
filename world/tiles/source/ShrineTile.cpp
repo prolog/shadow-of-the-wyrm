@@ -10,6 +10,11 @@ std::string ShrineTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_SHRINE;
 }
 
+bool ShrineTile::is_interior() const
+{
+  return true;
+}
+
 Tile* ShrineTile::clone()
 {
   return new ShrineTile(*this);

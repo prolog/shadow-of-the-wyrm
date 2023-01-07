@@ -8,6 +8,7 @@ class CreateItemCalculator
 {
   public:
     int calc_potential_improvement_points(CreaturePtr creature, const SkillType create_skill);
+    uint calc_quantity(ItemPtr creation_item, ItemPtr component_item, CreaturePtr creature, const SkillType create_skill);
     uint calc_quantity(ItemPtr creation_item, ItemPtr component_item);
 
   protected:

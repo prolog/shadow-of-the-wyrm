@@ -162,7 +162,7 @@ void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreatureP
         // Use the generic spell processor, which is also used for "regular"
         // spellcasting.
         SpellcastingProcessor sp;
-        effect_identified = sp.process(spell_processor.get(), caster, map, caster_coord, Direction::DIRECTION_NULL, potion_spell, 0, potion->get_status());
+        effect_identified = sp.process(spell_processor.get(), caster, map, caster_coord, Direction::DIRECTION_NULL, potion_spell, 0, potion->get_status(), AttackType::ATTACK_TYPE_MAGICAL);
       }
 
       // Was the item identified?

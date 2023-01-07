@@ -54,6 +54,7 @@ BLESS_SCROLL_ID = "bless_scroll"
 IDENTIFY_SCROLL_ID = "identify_scroll"
 WARPING_SCROLL_ID = "warping_scroll"
 AMULET_OF_THE_SEA_ID = "amulet_of_the_sea"
+AMULET_OF_THE_SKY_ID = "amulet_of_the_sky"
 WIZARD_ROBES_ID = "wizard_robes"
 WIZARD_STAFF_ID = "wizard_staff"
 QUILL_ID = "_quill"
@@ -106,6 +107,7 @@ CLASS_ID_NOBLE = "noble"
 CLASS_ID_THIEF = "thief"
 HIGH_TOWER_GUILD_ID = "high_tower"
 THIEVES_GUILD_ID = "carcassia_guild_thieves"
+ORDER_EX_GLADIATORES_GUILD_ID = "order_ex_gladiatores"
 MIN_GEN_VALUE = 10
 
 -- Creature constants

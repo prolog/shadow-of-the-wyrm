@@ -106,7 +106,7 @@ void FletcherySkillProcessor::create_projectiles(const string& item_base_id, Cre
     // Check the branch and the item to be created to determine how much
     // ammunition is created.
     ItemPtr component_item = creature->get_inventory()->get_from_base_id(ItemIdKeys::ITEM_ID_BRANCH);
-    uint quantity = cic.calc_quantity(item, component_item);
+    uint quantity = cic.calc_quantity(item, component_item, creature, SkillType::SKILL_GENERAL_FLETCHERY);
 
     if (quantity > 0)
     {
@@ -115,7 +115,7 @@ void FletcherySkillProcessor::create_projectiles(const string& item_base_id, Cre
 
     // Now that we have no need for the branch, use it up.
     ItemManager im;
-    im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_BRANCH);
+    im.remove_item_from_inv_or_eq(creature, ItemIdKeys::ITEM_ID_BRANCH);
 
     tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
   }

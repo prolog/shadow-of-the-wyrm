@@ -6,6 +6,7 @@
 #include "CellularAutomataTypes.hpp"
 #include "CreatureGenerationIndex.hpp"
 #include "Generator.hpp"
+#include "Random.hpp"
 #include "TileDepthOptions.hpp"
 #include "TileGenerator.hpp"
 
@@ -26,6 +27,7 @@ class WorldGenerator : public SOTW::Generator
     virtual MapPtr generate(const Dimensions& dim) override;
 
     virtual void   set_village_coordinates(MapPtr map);
+    virtual void   set_treasure(MapPtr map);
 
   protected:
     virtual MapType get_map_type() const override;
@@ -72,6 +74,8 @@ class WorldGenerator : public SOTW::Generator
 
     std::string get_race_village_extra_description_sid(const std::string& race_id);
 
+    void potentially_add_treasure(const std::string& map_key, TilePtr tile, NormalDistribution& treasure_difficulty, bool& terrain_override, const bool treasure_is_underwater);
+
     // A map containing pointers to member functions - used to set up special
     // sets of properties on particular tile types.
     std::map<TileType, void (WorldGenerator::*)(TilePtr tile)> tile_property_fns;
@@ -89,4 +93,5 @@ class WorldGenerator : public SOTW::Generator
     static const int MIN_CREATURES_PER_VILLAGE;
     static const int MAX_CREATURES_PER_VILLAGE;
     static const int MAX_DANGER_LEVEL_FOR_WORLD_GEN;
+    static const std::pair<int, int> X_IN_Y_CHANCE_TREASURE;
 };

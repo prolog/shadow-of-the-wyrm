@@ -36,6 +36,7 @@ int WeaponDifficultyCalculator::calculate_base_difficulty(CreaturePtr creature, 
         difficulty += get_difficulty_penalty_for_dual_wield(creature, primary_weapon, secondary_weapon);
         break;
       case AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
+      case AttackType::ATTACK_TYPE_MAGICAL_WANDS:
       case AttackType::ATTACK_TYPE_MAGICAL:
       default:
         difficulty = get_difficulty_for_weapon(primary_weapon);

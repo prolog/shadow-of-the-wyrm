@@ -230,7 +230,7 @@ void TrapManipulator::create_and_draw_animation(TrapPtr trap, CreaturePtr creatu
       player_blind = !cca.can_see(creature);
     }
 
-    Animation animation = at.create_movement_animation(player_blind, game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, current_map, fov_map);
+    Animation animation = at.create_movement_animation(creature, player_blind, game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, current_map, fov_map);
 
     // Draw the animation.
     DisplayPtr display = game.get_display();

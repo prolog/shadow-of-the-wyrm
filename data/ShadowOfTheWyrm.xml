@@ -443,6 +443,7 @@
 		<Race id="_unknown">
 			<UserPlayable>0</UserPlayable>
 			<UmbrellaRace>1</UmbrellaRace>
+			<Sex>2</Sex>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>0</LeavesCorpse>
 			<CorpsePoisoned>0</CorpsePoisoned>
@@ -514,6 +515,7 @@
 		<Race id="_animal">
 			<UserPlayable>0</UserPlayable>
 			<UmbrellaRace>1</UmbrellaRace>
+			<Sex>2</Sex>
 			<PackMultiplier>3</PackMultiplier>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
@@ -586,6 +588,7 @@
 		<Race id="_bird" parent_id="_animal">
 			<UserPlayable>0</UserPlayable>
 			<UmbrellaRace>1</UmbrellaRace>
+			<Sex>2</Sex>
 			<PackMultiplier>2</PackMultiplier>
 			<Slayable>1</Slayable>
 			<LeavesCorpse>1</LeavesCorpse>
@@ -1858,7 +1861,6 @@
 					<Carrying>10</Carrying>
 					<Detection>10</Detection>
 					<MountainLore>20</MountainLore>
-					<Mountaineering>20</Mountaineering>
 					<NightSight>10</NightSight>
 					<Spelunking>10</Spelunking>
 					<Swimming>15</Swimming>
@@ -1949,6 +1951,7 @@
 					<Awareness>15</Awareness>
 					<Boating>15</Boating>
 					<Carrying>10</Carrying>
+					<DesertLore>15</DesertLore>
 					<Detection>10</Detection>
 					<MarshLore>20</MarshLore>
 					<NightSight>10</NightSight>
@@ -2226,6 +2229,7 @@
 					<Dungeoneering>15</Dungeoneering>
 					<Escape>10</Escape>
 					<Hiding>15</Hiding>
+					<OceanLore>5</OceanLore>
 					<Stealth>15</Stealth>
 					<Swimming>15</Swimming>
 				</GeneralSkills>
@@ -3895,7 +3899,6 @@
 					<Leadership>15</Leadership>
 					<MarshLore>20</MarshLore>
 					<MountainLore>20</MountainLore>
-					<Mountaineering>15</Mountaineering>
 					<Skinning>15</Skinning>
 					<Swimming>20</Swimming>
 					<Tanning>15</Tanning>
@@ -4146,7 +4149,7 @@
 					<Fishing>20</Fishing>
 					<Foraging>15</Foraging>
 					<MarshLore>10</MarshLore>
-					<Oceanography>20</Oceanography>
+					<OceanLore>20</OceanLore>
 					<Skinning>15</Skinning>
 					<Swimming>25</Swimming>
 					<Tanning>15</Tanning>
@@ -8215,6 +8218,16 @@
 		</Spritesheet>
 		<Spritesheet id="til">
 			<Location>assets/sprites/terrain_sprites.png</Location>
+			<References>
+				<Reference id="_treasure">
+					<Row>0</Row>
+					<Col>31</Col>
+				</Reference>
+				<Reference id="_shipwreck">
+					<Row>1</Row>
+					<Col>0</Col>
+				</Reference>
+			</References>
 		</Spritesheet>
 		<Spritesheet id="fea">
 			<Location>assets/sprites/feature_sprites.png</Location>

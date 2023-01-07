@@ -75,6 +75,14 @@ void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
       MapExitUtils::add_exit_to_tile(map, c, dir, map_exit);
     }
 
+    XMLNode link_to = XMLUtils::get_next_element_by_local_name(exit_node, "LinkTo");
+    if (!link_to.is_null())
+    {
+      XMLMapCoordinateReader coord_reader;
+      Coordinate link_coord = coord_reader.parse_fixed_coordinate(link_to);
+      map_exit->set_coordinate(link_coord);
+    }
+
     map_exit->set_event_scripts(scripts);
   }
 }

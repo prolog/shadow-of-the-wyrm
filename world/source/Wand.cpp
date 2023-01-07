@@ -199,11 +199,6 @@ void Wand::do_enchant_item(const int points)
 {
   if (points > 0)
   {
-    if (RNG::percent_chance(50))
-    {
-      Item::do_enchant_item(points);
-    }
-
     // Always get at least one additional charge.
     int additional_charges = std::min<int>(points / 2, 1);
     set_charges(charges.get_base() + additional_charges);

@@ -748,6 +748,10 @@
 			</Coord>
 			<Direction>10</Direction>
 			<MapID>world_map</MapID>
+			<LinkTo>
+				<Row>2</Row>
+				<Col>2</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Properties>

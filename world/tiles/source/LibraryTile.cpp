@@ -10,6 +10,11 @@ std::string LibraryTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_LIBRARY;
 }
 
+bool LibraryTile::is_interior() const
+{
+  return true;
+}
+
 Tile* LibraryTile::clone()
 {
   return new LibraryTile(*this);

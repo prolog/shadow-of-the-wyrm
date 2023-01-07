@@ -25,6 +25,7 @@ string DateTextKeys::get_date_time_message(const Date& date, const bool day_is_c
   string time = DateTextKeys::get_time(date);
   string day = std::to_string(date.get_day_of_month());
   string month = StringTable::get(date.get_month_sid());
+  string month_number = to_string(date.get_month() + 1);
   string year = std::to_string(date.get_year());
 
 
@@ -37,7 +38,8 @@ string DateTextKeys::get_date_time_message(const Date& date, const bool day_is_c
     boost::replace_first(dt, "%s1", time);
     boost::replace_first(dt, "%s2", day);
     boost::replace_first(dt, "%s3", month);
-    boost::replace_first(dt, "%s4", year);
+    boost::replace_first(dt, "%s4", month_number);
+    boost::replace_first(dt, "%s5", year);
   }
 
   return dt;
@@ -53,12 +55,14 @@ string DateTextKeys::get_date_time_weather_message(const Date& date, const strin
   string day_or_night = StringTable::get(tod_sids[date.get_time_of_day()]);
   string day_of_week = StringTable::get(date.get_day_of_week_sid());
   string month = StringTable::get(date.get_month_sid());  
+  string month_number = to_string(date.get_month() + 1);
 
   boost::replace_first(dtw_message, "%s", time);
   boost::replace_first(dtw_message, "%s", day_or_night);
   boost::replace_first(dtw_message, "%s", day_of_week);
   boost::replace_first(dtw_message, "%s", std::to_string(date.get_day_of_month()));
   boost::replace_first(dtw_message, "%s", month);
+  boost::replace_first(dtw_message, "%s", month_number);
   boost::replace_first(dtw_message, "%s", std::to_string(date.get_year()));
   boost::replace_first(dtw_message, "%s", season);
   boost::replace_first(dtw_message, "%s", StringTable::get(get_phase_of_moon_sid(pom)));

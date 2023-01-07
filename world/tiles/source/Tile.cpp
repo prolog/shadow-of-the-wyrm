@@ -8,6 +8,7 @@
 #include "InventoryFactory.hpp"
 #include "Log.hpp"
 #include "MapFactory.hpp"
+#include "MovementTextKeys.hpp"
 #include "NullInventory.hpp"
 #include "Serialize.hpp"
 #include "Tile.hpp"
@@ -613,6 +614,28 @@ TileExitMap& Tile::get_tile_exit_map_ref()
   return map_exits;
 }
 
+string Tile::get_no_exit_message_sid(const Direction dir) const
+{
+  if (dir == Direction::DIRECTION_UP)
+  {
+    return get_no_exit_up_message_sid();
+  }
+  else
+  {
+    return get_no_exit_down_message_sid();
+  }
+}
+
+string Tile::get_no_exit_up_message_sid() const
+{
+  return MovementTextKeys::ACTION_MOVE_NO_EXIT;
+}
+
+string Tile::get_no_exit_down_message_sid() const
+{
+  return MovementTextKeys::ACTION_MOVE_NO_EXIT_DOWN;
+}
+
 bool Tile::get_is_blocking_visually(CreaturePtr creature) const
 {
   return get_is_blocking(creature);
@@ -781,6 +804,27 @@ bool Tile::is_creature_id_allowed(const std::string& creature_id) const
   return allowed;
 }
 
+SkillType Tile::get_treasure_skill() const
+{
+  return SkillType::SKILL_UNDEFINED;
+}
+
+bool Tile::has_treasure() const
+{
+  string treasure_difficulty_s = get_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED);
+
+  if (!treasure_difficulty_s.empty() && String::to_int(treasure_difficulty_s) > 0)
+  {
+    return true;
+  }
+
+  return false;
+}
+
+bool Tile::is_interior() const
+{
+  return false;
+}
 
 bool Tile::serialize(ostream& stream) const
 {

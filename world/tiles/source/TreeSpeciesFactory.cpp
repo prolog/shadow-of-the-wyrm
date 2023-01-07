@@ -2,7 +2,7 @@
 
 TreeSpecies TreeSpeciesFactory::create_tree_species(const TreeSpeciesID species_id)
 {
-  static_assert(TreeSpeciesID::TREE_SPECIES_LAST == TreeSpeciesID(42), "Unrecognized TREE_SPECIES_ID_LAST");
+  static_assert(TreeSpeciesID::TREE_SPECIES_LAST == TreeSpeciesID(46), "Unrecognized TREE_SPECIES_ID_LAST");
 
   TreeSpecies ts;
 
@@ -55,6 +55,10 @@ TreeSpecies TreeSpeciesFactory::create_tree_species(const TreeSpeciesID species_
     case TreeSpeciesID::TREE_SPECIES_WEED19:
     case TreeSpeciesID::TREE_SPECIES_WEED20:
     case TreeSpeciesID::TREE_SPECIES_WEED21:
+    case TreeSpeciesID::TREE_SPECIES_WEED22:
+    case TreeSpeciesID::TREE_SPECIES_WEED23:
+    case TreeSpeciesID::TREE_SPECIES_WEED24:
+    case TreeSpeciesID::TREE_SPECIES_WEED25:
       tt = TileType::TILE_TYPE_WEEDS;
       break;
     case TreeSpeciesID::TREE_SPECIES_GOLDEN_APPLE:

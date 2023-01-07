@@ -13,6 +13,7 @@ class AirTile : public Tile
 
     bool get_dangerous(CreaturePtr creature) const override;
     std::string get_danger_confirmation_sid() const override;
+    virtual std::string get_no_exit_up_message_sid() const;
 
     virtual Tile* clone() override;
 

@@ -41,6 +41,11 @@ bool AutomaticMovementDecisionStrategy::get_confirmation(const bool confirmation
   return true;
 }
 
+bool AutomaticMovementDecisionStrategy::get_attack_confirmation(CreaturePtr creature)
+{
+  return (creature != nullptr);
+}
+
 DecisionStrategy* AutomaticMovementDecisionStrategy::copy()
 {
   return new AutomaticMovementDecisionStrategy(*this);

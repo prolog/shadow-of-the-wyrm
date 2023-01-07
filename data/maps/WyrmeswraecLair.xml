@@ -69,6 +69,10 @@
 			</Coord>
 			<Direction>10</Direction>
 			<MapID>wyrmeswraec</MapID>
+			<LinkTo>
+				<Row>4</Row>
+				<Col>24</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features/>

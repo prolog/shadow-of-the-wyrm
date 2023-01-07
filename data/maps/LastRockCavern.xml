@@ -64,6 +64,10 @@
 			</Coord>
 			<Direction>10</Direction>
 			<MapID>last_rock</MapID>
+			<LinkTo>
+				<Row>4</Row>
+				<Col>52</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 </CustomMap>

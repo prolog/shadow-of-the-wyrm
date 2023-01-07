@@ -82,7 +82,7 @@ void DefaultTileManipulator::add_undead_if_necessary(CreaturePtr creature, MapPt
       CreaturePtr undead;
       CreatureGenerationManager cgm;
       std::map<string, string> additional_properties = { { MapProperties::MAP_PROPERTIES_GENERATED_CREATURE_RACE_ID, "_undead" } };
-      CreatureGenerationIndex generation_index = cgm.generate_creature_generation_map({ tile->get_tile_type() }, map->get_permanent(), map->is_islet(), min_danger_level, max_danger_level, Rarity::RARITY_VERY_RARE, additional_properties);
+      CreatureGenerationIndex generation_index = cgm.generate_creature_generation_map({ tile->get_tile_type() }, map->get_permanent(), map->is_islet(), map->get_map_type(), min_danger_level, max_danger_level, Rarity::RARITY_VERY_RARE, additional_properties);
 
       undead = cgm.generate_creature(game.get_action_manager_ref(), generation_index.get(), map);
       

@@ -270,7 +270,7 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
 
       if (fov_map != nullptr)
       {
-        TilesContainer tiles = fov_map->get_tiles();
+        TilesContainer& tiles = fov_map->get_tiles_ref();
 
         for (const auto& t_pair : tiles)
         {
@@ -1205,6 +1205,7 @@ bool CombatManager::is_intimidate(CreaturePtr attacking_creature, CreaturePtr at
         }
         case AttackType::ATTACK_TYPE_MAGICAL:
         case AttackType::ATTACK_TYPE_RANGED:
+        case AttackType::ATTACK_TYPE_MAGICAL_WANDS:
         case AttackType::ATTACK_TYPE_UNDEFINED:
           break;
       }

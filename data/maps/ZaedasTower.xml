@@ -81,12 +81,20 @@
 	</InitialPlacements>
 	<Exits>
 		<Exit>
+			<Direction>10</Direction>
+			<MapID>zaedas_tower_top</MapID>
+		</Exit>
+		<Exit>
 			<Coord>
 				<Row>10</Row>
 				<Col>40</Col>
 			</Coord>
 			<Direction>10</Direction>
 			<MapID>zaedas_tower_top</MapID>
+			<LinkTo>
+				<Row>10</Row>
+				<Col>11</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>

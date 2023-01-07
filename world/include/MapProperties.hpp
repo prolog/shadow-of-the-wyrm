@@ -23,6 +23,8 @@ class MapProperties
     // proportion of evergreen vs. broadleaf trees).
     static const std::string MAP_PROPERTIES_WORLD_MAP_LOCATION;
     static const std::string MAP_PROPERTIES_WORLD_MAP_HEIGHT;
+    // For maps that exist outside the generated world
+    static const std::string MAP_PROPERTIES_NO_WORLD_LINKAGE;
 
     // CSV string of filters used to filter out creatures for a particular
     // tile type.
@@ -122,6 +124,18 @@ class MapProperties
 
     // same-deity? friendly checks ignored if true.
     static const std::string MAP_PROPERTIES_DIVINE_FORBIDDEN;
+
+    // when maps have shallow water, descending will allow you to go
+    // underwater. most maps have shallow water - open sea maps don't.
+    static const std::string MAP_PROPERTIES_SHALLOW_WATER;
+
+    // Similarly, sky and ascension
+    static const std::string MAP_PROPERTIES_OPEN_SKY;
+
+    static const std::string MAP_PROPERTIES_WORLD_ID;
+
+    // Does the map allow ancient beasts?
+    static const std::string MAP_PROPERTIES_ANCIENT_BEASTS;
 
   protected:
     MapProperties();

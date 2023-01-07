@@ -1,4 +1,5 @@
 #include <sstream>
+#include "Damage.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
 #include "Wearable.hpp"
@@ -20,6 +21,8 @@ const double Wearable::RESISTS_GOOD_THRESHOLD = 0.1;
 const double Wearable::RESISTS_SCORE_MULTIPLIER = 40.0;
 const double Wearable::EVADE_SCORE_MULTIPLIER = 1.5;
 const int Wearable::ENCHANT_PCT_CHANCE_ADD_SPEED = 4;
+const int Wearable::RANDART_PCT_CHANCE_ADD_SPEED = 6;
+const int Wearable::RANDART_ADDL_PCT_CHANCE_SOAK = 10;
 
 Wearable::Wearable()
 : evade(0), soak(0), speed_bonus(0), to_hit(0), addl_damage(0)
@@ -110,6 +113,69 @@ void Wearable::do_enchant_item(const int points)
   }
 }
 
+void Wearable::do_enchant_randart(const std::vector<std::string>& slayable_race_ids)
+{
+  int num_nr_adjustments = 3;
+
+  if (RNG::percent_chance(80))
+  {
+    double rval = 0.30;
+    if (RNG::percent_chance(50))
+    {
+      rval = 0.20;
+      num_nr_adjustments++;
+    }
+
+    vector<DamageType> damage_types = Damage::get_all_damage_types();
+    vector<pair<double, int>> chances = { {rval, 100}, {rval / 2, 50}, {rval / 3, 25}, {rval / 4, 13} };
+
+    for (const auto& c_pair : chances)
+    {
+      if (RNG::percent_chance(c_pair.second))
+      {
+        DamageType dt = damage_types.at(RNG::range(0, damage_types.size() - 1));
+        resistances.set_resistance_value(dt, resistances.get_resistance_value(dt) + c_pair.first);
+      }
+      else
+      {
+        num_nr_adjustments++;
+      }
+    }
+  }
+  else
+  {
+    speed_bonus += 4;
+    num_nr_adjustments += 4;
+  }
+
+  num_nr_adjustments += RNG::range(1, 3);
+
+  for (int i = 0; i < num_nr_adjustments; i++)
+  {
+    do_enchant_randart_non_resists(slayable_race_ids);
+  }
+}
+
+void Wearable::do_enchant_randart_non_resists(const std::vector<std::string>& slayable_race_ids)
+{
+  if (RNG::percent_chance(RANDART_PCT_CHANCE_ADD_SPEED))
+  {
+    speed_bonus += 2;
+  }
+  else
+  {
+    int ev_sk_total = evade + soak;
+
+    if (RNG::x_in_y_chance(soak, ev_sk_total) || RNG::percent_chance(RANDART_ADDL_PCT_CHANCE_SOAK))
+    {
+      soak += RNG::range(1, 2);
+    }
+    else
+    {
+      evade += RNG::range(2, 4);
+    }
+  }
+}
 
 void Wearable::do_smith_item(const int points)
 {

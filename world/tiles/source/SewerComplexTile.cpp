@@ -10,6 +10,11 @@ std::string SewerComplexTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_SEWER_COMPLEX;
 }
 
+bool SewerComplexTile::is_interior() const
+{
+  return true;
+}
+
 Tile* SewerComplexTile::clone()
 {
   return new SewerComplexTile(*this);

@@ -136,6 +136,10 @@
 			</Coord>
 			<Direction>10</Direction>
 			<MapID>wintersea_keep_b1</MapID>
+			<LinkTo>
+				<Row>5</Row>
+				<Col>40</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 </CustomMap>

@@ -8,6 +8,8 @@ class RaceManager
 
     Race* get_race(const std::string& race_id);
 
+    std::vector<std::string> get_race_ids(const bool include_user_playable, const bool include_non_slayable);
+
     // Returns true if race_id = race_to_match, or if the race identified
     // by race_id is a descendent in the race hierarchy of the race represented
     // by race_to_match.

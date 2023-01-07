@@ -11,6 +11,7 @@
 #include "Item.hpp"
 #include "ISerializable.hpp"
 #include "MapExit.hpp"
+#include "Skills.hpp"
 #include "TileProperties.hpp"
 #include "TileTextKeys.hpp"
 #include "WaterTypes.hpp"
@@ -162,6 +163,9 @@ class Tile : public ISerializable
     int get_hardness() const;
     
     virtual TileExitMap& get_tile_exit_map_ref();
+    virtual std::string get_no_exit_message_sid(const Direction dir) const;
+    virtual std::string get_no_exit_up_message_sid() const;
+    virtual std::string get_no_exit_down_message_sid() const;
     
     virtual bool get_dangerous(std::shared_ptr<Creature> creature) const;
     virtual std::string get_danger_confirmation_sid() const;
@@ -193,6 +197,14 @@ class Tile : public ISerializable
 
     virtual bool has_creature_id_restrictions() const;
     virtual bool is_creature_id_allowed(const std::string& creature_id) const;
+
+    virtual SkillType get_treasure_skill() const;
+    virtual bool has_treasure() const;
+
+    // Some tiles that aren't blocking (floors, stairs, etc) are assumed to
+    // have a roof over them to prevent flying from letting you land on 
+    // them.
+    virtual bool is_interior() const;
 
     virtual Tile* clone() = 0;
 

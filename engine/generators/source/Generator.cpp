@@ -1,8 +1,10 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "DirectionUtils.hpp"
 #include "GeneratorUtils.hpp"
+#include "ItemScript.hpp"
 #include "Log.hpp"
 #include "MapCreatureGenerator.hpp"
 #include "MapExitUtils.hpp"
@@ -59,6 +61,7 @@ MapPtr Generator::generate_and_initialize(const int danger, const Dimensions& di
   map->set_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE, get_additional_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE));
 
   generate_additional_structures(map);
+  generate_treasure(map);
 
   initialize(map, danger_level);
   create_properties_and_copy_to_map(map);
@@ -99,6 +102,158 @@ void Generator::generate_additional_structures(MapPtr map)
     if (!get_additional_property(TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE).empty())
     {
       GeneratorUtils::generate_cottage(map);
+    }
+  }
+}
+
+void Generator::generate_shipwreck(MapPtr map, const Coordinate& sw, const vector<std::string>& addl_items, const int min_lore)
+{
+  if (map != nullptr)
+  {
+    ItemManager im;
+
+    vector<Coordinate> shipwreck_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), sw.first, sw.second);
+    vector<Coordinate> detritus = CoordUtils::get_perimeter_coordinates({ sw.first - 2, sw.second - 2 }, { sw.first + 2, sw.second + 2 });
+
+    generate_treasure_on_coords(map, shipwreck_coords, min_lore);
+    generate_randarts(map, sw.first, sw.second, min_lore);
+
+    if (!addl_items.empty())
+    {
+      for (const auto& dc : detritus)
+      {
+        TilePtr tile = map->at(dc);
+
+        if (tile != nullptr)
+        {
+          string detritus_id = addl_items.at(RNG::range(0, addl_items.size() - 1));
+          ItemPtr item = im.create_item(detritus_id);
+          tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        }
+      }
+    }
+
+    map->set_permanent(true);
+  }
+}
+
+void Generator::generate_treasure(MapPtr map)
+{
+  string min_underwater_lore_s = get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED);
+
+  // If there's a shipwreck, copy the lore details to the map so it can be used
+  // by the underwater generator.
+  if (!min_underwater_lore_s.empty())
+  {
+    map->set_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED, min_underwater_lore_s);
+  }
+
+  string min_lore_s = get_additional_property(TileProperties::TILE_PROPERTY_MIN_LORE_REQUIRED);
+
+  if (!min_lore_s.empty())
+  {
+    int min_lore = String::to_int(min_lore_s);
+
+    Dimensions dim = map->size();
+    int rand_y = 0;
+    int rand_x = 0;
+    vector<Coordinate> coords;
+    TilePtr tile;
+
+    for (int i = 0; i < 50; i++)
+    {
+      rand_y = RNG::range(1, dim.get_y() - 1);
+      rand_x = RNG::range(1, dim.get_x() - 1);
+
+      tile = map->at(rand_y, rand_x);
+
+      if (!MapUtils::is_tile_available_for_item(tile))
+      {
+        continue;
+      }
+
+      coords = CoordUtils::get_adjacent_map_coordinates(dim, rand_y, rand_x);
+      TilePtr adj_tile;
+
+      for (const Coordinate& c : coords)
+      {
+        adj_tile = map->at(c);
+
+        if (!MapUtils::is_tile_available_for_item(adj_tile))
+        {
+          continue;
+        }
+      }
+
+      break;
+    }
+
+    if (tile == nullptr || coords.empty())
+    {
+      return;
+    }
+
+    generate_treasure_on_coords(map, coords, min_lore);
+    generate_randarts(map, rand_y, rand_x, min_lore);
+
+    // Once the treasure is found, the map becomes permanent.
+    map->set_permanent(true);
+  }
+}
+
+void Generator::generate_treasure_on_coords(MapPtr map, const vector<Coordinate>& coords, const int min_lore)
+{
+  // Generate bits of treasure
+  ItemScript is;
+  vector<string> item_ids = is.execute_get_treasure_items(Game::instance().get_script_engine_ref());
+  GeneratorUtils::generate_item_per_coord(map, coords, item_ids);
+
+  // Generate some minor amounts of ivory
+  int mini_piles = RNG::range(0, coords.size() / 3);
+
+  for (int i = 0; i < mini_piles; i++)
+  {
+    TilePtr ivory_tile = map->at(coords.at(RNG::range(0, coords.size() - 1)));
+    int ivory_cnt = std::min<int>(min_lore, 50);
+    ItemPtr ivory = ItemManager::create_item(ItemIdKeys::ITEM_ID_CURRENCY, RNG::range(ivory_cnt / 2, ivory_cnt));
+    ivory_tile->get_items()->merge_or_add(ivory, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+  }
+}
+
+void Generator::generate_randarts(MapPtr map, const int rand_y, const int rand_x, const int min_lore)
+{
+  // Generate either a randart, or a lot of ivory.
+  bool generate_randart = false;
+
+  if (min_lore > 65)
+  {
+    generate_randart = true;
+  }
+
+  if (generate_randart)
+  {
+    int num_randarts = 1;
+
+    if (min_lore == 100)
+    {
+      num_randarts = 3;
+    }
+    else if (min_lore > 90 || RNG::percent_chance(min_lore / 4))
+    {
+      num_randarts = 2;
+    }
+
+    GeneratorUtils::generate_randarts(map, { rand_y, rand_x }, num_randarts);
+  }
+  else
+  {
+    int max_ivory = min_lore * 100;
+    ItemPtr ivory = ItemManager::create_item(ItemIdKeys::ITEM_ID_CURRENCY, RNG::range(max_ivory / 2, max_ivory));
+    TilePtr tile = map->at(rand_y, rand_x);
+
+    if (tile != nullptr)
+    {
+      tile->get_items()->merge_or_add(ivory, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
     }
   }
 }
@@ -205,6 +360,32 @@ void Generator::fill(const MapPtr map, const TileType& tile_type)
     {
       TilePtr current_tile = tg.generate(tile_type);
       map->insert(row, col, current_tile);
+    }
+  }
+}
+
+void Generator::fill(const MapPtr map, const vector<pair<TileType, int>>& tile_p)
+{
+  TileGenerator tg;
+  Dimensions dim = map->size();
+
+  int rows = dim.get_y();
+  int cols = dim.get_x();
+
+  for (int row = 0; row < rows; row++)
+  {
+    for (int col = 0; col < cols; col++)
+    {
+      for (const auto& tp_pair : tile_p)
+      {
+        if (RNG::percent_chance(tp_pair.second))
+        {
+          TilePtr current_tile = tg.generate(tp_pair.first);
+          map->insert(row, col, current_tile);
+
+          break;
+        }
+      }
     }
   }
 }
@@ -689,6 +870,9 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
     set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_GENERATOR_FILTERS, generator_filter_csv);
   }
 
+  // If the map is an underworld-type map, ancient beasts can be generated.
+  set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_ANCIENT_BEASTS, std::to_string(get_allow_ancient_beasts()));
+
   string ignore_lvl_checks_val = get_additional_property(MapProperties::MAP_PROPERTIES_IGNORE_CREATURE_LVL_CHECKS);
 
   // If there isn't a value defined at the map level, and there usually isn't,
@@ -956,4 +1140,9 @@ void Generator::add_feature_entry_text_sid(const std::string& new_sid)
 void Generator::clear_feature_entry_text_sids()
 {
   feature_entry_text_sids.clear();
+}
+
+bool Generator::get_allow_ancient_beasts() const
+{
+  return false;
 }

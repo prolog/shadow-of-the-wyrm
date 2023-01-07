@@ -52,14 +52,39 @@ bool ScriptEngine::clear_state()
 
 void ScriptEngine::initialize_state()
 {
-   L = lua_open();
-   
-   luaL_openlibs(L);
-   luaopen_base(L);
-   
-   set_constants(L);
-   load_modules();
-   register_api_functions();
+  Log& log = Log::instance();
+  log.trace("ScriptEngine::initialize_state - starting");
+  log.trace("ScriptEngine::initialize_state - opening state");
+
+  L = lua_open();
+
+  log.trace("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::initialize_state - opening libs");
+
+  luaL_openlibs(L);
+
+  log.trace("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::initialize_state - opening base");
+
+  luaopen_base(L);
+
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::initialize_state - setting constants");
+
+  set_constants(L);
+
+  log.trace("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::initialize_state - loading modules");
+
+  load_modules();
+
+  log.trace("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::initialize_state - registering API functions");
+
+  register_api_functions();
+
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::initialize_state- exiting");
 }
 
 void ScriptEngine::load_modules()
@@ -212,11 +237,10 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CSKILL_GENERAL_MAGIC);
   lua_exportConst(ls, CSKILL_GENERAL_MARSH_LORE);
   lua_exportConst(ls, CSKILL_GENERAL_MEDICINE);
-  lua_exportConst(ls, CSKILL_GENERAL_MOUNTAINEERING);
   lua_exportConst(ls, CSKILL_GENERAL_MOUNTAIN_LORE);
   lua_exportConst(ls, CSKILL_GENERAL_MUSIC);
   lua_exportConst(ls, CSKILL_GENERAL_NIGHT_SIGHT);
-  lua_exportConst(ls, CSKILL_GENERAL_OCEANOGRAPHY);
+  lua_exportConst(ls, CSKILL_GENERAL_OCEAN_LORE);
   lua_exportConst(ls, CSKILL_GENERAL_PAPERCRAFT);
   lua_exportConst(ls, CSKILL_GENERAL_RELIGION);
   lua_exportConst(ls, CSKILL_GENERAL_SCRIBING);
@@ -261,6 +285,13 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CCREATURE_WIN_REGULAR);
   lua_exportConst(ls, CCREATURE_WIN_EVIL);
   lua_exportConst(ls, CCREATURE_WIN_GODSLAYER);
+
+  lua_exportConst(ls, CCREATURE_SIZE_NA);
+  lua_exportConst(ls, CCREATURE_SIZE_TINY);
+  lua_exportConst(ls, CCREATURE_SIZE_SMALL);
+  lua_exportConst(ls, CCREATURE_SIZE_MEDIUM);
+  lua_exportConst(ls, CCREATURE_SIZE_LARGE);
+  lua_exportConst(ls, CCREATURE_SIZE_BEHEMOTH);
 
   lua_exportConst(ls, CCLASS_ID_KING_DECORATIVE_STATUE);
   lua_exportConst(ls, CCLASS_ID_QUEEN_DECORATIVE_STATUE);
@@ -317,6 +348,10 @@ void ScriptEngine::set_constants(lua_State* ls)
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)
 {
+  Log& log = Log::instance();
+  log.trace("ScriptEngine::get_table_str - starting");
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+
   string value;
   lua_pushstring(ls, key.c_str());
   lua_gettable(ls, -2); // get table[key]
@@ -330,6 +365,8 @@ string ScriptEngine::get_table_str(lua_State* ls, const string& key)
 
   lua_pop(ls, 1); // remove value from stack
   
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::get_table_str - exiting");
   return value;
 }
 
@@ -337,6 +374,10 @@ string ScriptEngine::get_table_str(lua_State* ls, const string& key)
 // As we're just running a script, pass any desired arguments as a table.
 bool ScriptEngine::execute(const string& script, const map<string, string>& script_args)
 {
+  Log& log = Log::instance();
+  log.trace("ScriptEngine::execute - starting");
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+
   bool ret_val = false;
 
   try
@@ -385,6 +426,8 @@ bool ScriptEngine::execute(const string& script, const map<string, string>& scri
     log_error();
   }
 
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::execute - exiting");
   return ret_val;
 }
 
@@ -401,6 +444,10 @@ void ScriptEngine::run_command(const string& command)
 // Call a function in the Lua environment.
 void ScriptEngine::call_function(const string& fn_name, const vector<string>& param_types, const vector<string>& param_values, const int n_return_vals)
 {
+  Log& log = Log::instance();
+  log.trace("ScriptEngine::call_function - starting");
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+
   if (param_types.size() != param_values.size())
   {
     return;
@@ -414,11 +461,18 @@ void ScriptEngine::call_function(const string& fn_name, const vector<string>& pa
 
   // JCD FIXME: update this whenever I need to actually use return values.
   lua_pop(L, n_return_vals);
+
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::call_function - exiting");
 }
 
 // Handle arguments to a Lua function.
 void ScriptEngine::process_function_arguments(const vector<string>& param_types, const vector<string>& param_values)
 {
+  Log& log = Log::instance();
+  log.trace("ScriptEngine::process_function_arguments - starting");
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+
   for (uint i = 0; i < param_types.size(); i++)
   {
     string param_type = param_types.at(i);
@@ -447,6 +501,9 @@ void ScriptEngine::process_function_arguments(const vector<string>& param_types,
       log.error("ScriptEngine::process_function_arguments - Unrecognized type \"" + param_type + "\" with value \"" + param_value + "\"");
     }
   }
+
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::process_function_arguments - exiting");
 }
 
 lua_State* ScriptEngine::get_current_state()
@@ -457,8 +514,11 @@ lua_State* ScriptEngine::get_current_state()
 // Log the most recently-occurred error.
 void ScriptEngine::log_error()
 {
-  // An error occurred: pop the error off the stack, and log the message.
   Log& log = Log::instance();
+  log.trace("ScriptEngine::log_error - starting");
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+
+  // An error occurred: pop the error off the stack, and log the message.
   string error(lua_tostring(L, -1));
 
   log.error("ScriptEngine::log_error - Error in execution: " + error);
@@ -468,6 +528,9 @@ void ScriptEngine::log_error()
   IMessageManager& manager = MM::instance();
   manager.add_new_message(ui_error);
   manager.send();
+
+  log.debug("Lua stack size: " + to_string(get_stack_size()));
+  log.trace("ScriptEngine::log_error - exiting");
 }
 
 // Set the last executed command
@@ -479,6 +542,11 @@ void ScriptEngine::set_last_executed(const string& new_last_executed)
 string ScriptEngine::get_last_executed() const
 {
   return last_executed;
+}
+
+int ScriptEngine::get_stack_size() const
+{
+  return lua_gettop(L);
 }
 
 bool ScriptEngine::serialize(ostream& stream) const

@@ -1,15 +1,14 @@
 #pragma once
 #include "IMapTypeQuery.hpp"
 
-class OverworldMapTypeQuery : public IMapTypeQuery
+class DepthlessMapTypeQuery : public IMapTypeQuery
 {
   public:
     virtual bool should_update_depth() const override;
 };
 
-class UnderworldMapTypeQuery : public IMapTypeQuery
+class DepthMapTypeQuery : public IMapTypeQuery
 {
   public:
     virtual bool should_update_depth() const override;
 };
-

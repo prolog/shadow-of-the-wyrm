@@ -84,7 +84,7 @@ void GameUtils::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new
     // Remove the creature from its present tile, and from the temporary
     // vector of creatures as well.
     CreaturePtr current_creature = current_tile->get_creature();
-    MapUtils::serialize_and_remove_followers(old_map, current_creature);
+    MapUtils::serialize_and_remove_followers(old_map, new_map, current_creature);
     MapUtils::remove_creature(old_map, current_creature);
 
     Coordinate c = CoordUtils::end();

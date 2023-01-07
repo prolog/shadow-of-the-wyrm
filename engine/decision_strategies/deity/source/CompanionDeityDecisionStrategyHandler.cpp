@@ -62,7 +62,7 @@ DeityDecisionImplications CompanionDeityDecisionStrategyHandler::handle_decision
     int clvl = creature->get_level().get_current() + 2;
     int max_clvl = clvl + 10;
 
-    auto generation_list = cgm.generate_creature_generation_map({ map->get_terrain_type() }, true /* assume permanent */, map && map->is_islet(), clvl, max_clvl, Rarity::RARITY_COMMON, {}).get();
+    auto generation_list = cgm.generate_creature_generation_map({ map->get_terrain_type() }, true /* assume permanent */, map && map->is_islet(), map->get_map_type(), clvl, max_clvl, Rarity::RARITY_COMMON, {}).get();
 
     if (generation_list.empty())
     {

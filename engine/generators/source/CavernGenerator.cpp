@@ -20,6 +20,11 @@ CavernGenerator::CavernGenerator(const string& new_map_exit_id)
 {
 }
 
+bool CavernGenerator::get_allow_ancient_beasts() const
+{
+  return true;
+}
+
 // Generate a cellular automata based cavern, connecting the individual components in a second pass afterwards.
 // JCD FIXME refactor as necessary
 MapPtr CavernGenerator::generate(const Dimensions& dimensions)

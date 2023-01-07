@@ -281,19 +281,25 @@ ActionCostValue PickupAction::handle_pickup_types(CreaturePtr creature, MapPtr m
 
 bool PickupAction::autopickup_passes_exclusions(ItemPtr item)
 {
-  bool item_ok = true;
-
   if (item != nullptr)
   {
-    bool ignore_corpses = Game::instance().get_settings_ref().get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_CORPSES);
+    const Settings& settings = Game::instance().get_settings_ref();
+    bool ignore_corpses = settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_CORPSES);
 
     if (item->has_additional_property(ConsumableConstants::CORPSE_RACE_ID) && ignore_corpses)
     {
-      item_ok = false;
+      return false;
+    }
+
+    bool ignore_unpaid = settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_UNPAID);
+
+    if (item->get_unpaid() && ignore_unpaid)
+    {
+      return false;
     }
   }
  
-  return item_ok;
+  return true;
 }
 
 ActionCostValue PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_item, IInventoryPtr inv, CreaturePtr creature, const bool prompt_for_amount, const uint max_quantity)

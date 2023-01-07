@@ -5,16 +5,18 @@
 #include "ClassManager.hpp"
 #include "Conversion.hpp"
 #include "CreatureDescriber.hpp"
+#include "EntranceTextKeys.hpp"
 #include "EquipmentTextKeys.hpp"
 #include "Game.hpp"
 #include "ItemDescriberFactory.hpp"
-#include "TextMessages.hpp"
-#include "EntranceTextKeys.hpp"
 #include "ItemIdentifier.hpp"
+#include "Naming.hpp"
+#include "RNG.hpp"
 #include "Setting.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 
@@ -63,6 +65,15 @@ const string TextMessages::KILLED_BY_MESSAGE                  = "KILLED_BY_MESSA
 const string TextMessages::DEATH_DEPTH_LOCATION_MESSAGE       = "DEATH_DEPTH_LOCATION_MESSAGE";
 const string TextMessages::BUILD_MESSAGE                      = "BUILD_MESSAGE";
 const string TextMessages::SELECT_AGE_MESSAGE                 = "SELECT_AGE_MESSAGE";
+const string TextMessages::BURIED_TREASURE_MESSAGE            = "BURIED_TREASURE_MESSAGE";
+const string TextMessages::BURIED_TREASURE_SOURCE             = "BURIED_TREASURE_SOURCE";
+const string TextMessages::BURIED_TREASURE_SOURCE_ADJECTIVE   = "BURIED_TREASURE_SOURCE_ADJECTIVE";
+const string TextMessages::SHIPWRECK_MESSAGE                  = "SHIPWRECK_MESSAGE";
+const string TextMessages::SHIPWRECK_SHIP_NAME                = "SHIPWRECK_SHIP_NAME";
+const string TextMessages::SHIPWRECK_REASON                   = "SHIPWRECK_REASON";
+const string TextMessages::SHIPWRECK_SHIP_NAME_POSSESSIVE     = "SHIPWRECK_SHIP_NAME_POSSESSIVE";
+const string TextMessages::SHIPWRECK_SHIP_NAME_POSSESSOR      = "SHIPWRECK_SHIP_NAME_POSSESSOR";
+const string TextMessages::SHIPWRECK_SHIP_NAME_POSSESSEE      = "SHIPWRECK_SHIP_NAME_POSSESSEE";
 
 string TextMessages::get_full_header_text(const string& header, const uint num_cols)
 {
@@ -339,6 +350,9 @@ string TextMessages::get_area_entrance_message_given_terrain_type(const TileType
       break;
     case TileType::TILE_TYPE_SHRINE:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_SHRINE);
+      break;
+    case TileType::TILE_TYPE_AIR:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_AIR);
       break;
     case TileType::TILE_TYPE_UNDEFINED:
     case TileType::TILE_TYPE_WHEAT:
@@ -819,4 +833,102 @@ string TextMessages::get_select_age_message(const int min_age, const int max_age
   boost::replace_first(msg, "%s2", std::to_string(max_age));
 
   return msg;
+}
+
+string TextMessages::get_and_replace(const string& sid, const vector<string>& replacements)
+{
+  string msg = StringTable::get(sid);
+
+  for (size_t i = 0; i < replacements.size(); i++)
+  {
+    size_t si = i + 1;
+    string to_replace = "%s" + std::to_string(si);
+
+    boost::replace_first(msg, to_replace, replacements.at(i));
+
+    // We replace numerical indices, but also replace the standard %s.
+    // This gives you a choice of whether to use %s or %s1.
+    if (i == 0)
+    {
+      boost::replace_first(msg, "%s", replacements.at(i));
+    }
+  }
+
+  return msg;
+}
+
+string TextMessages::get_hidden_treasure_message(const bool is_underwater)
+{
+  if (is_underwater)
+  {
+    return get_shipwreck_message();
+  }
+  else
+  {
+    return get_buried_treasure_message();
+  }
+}
+
+string TextMessages::get_buried_treasure_message()
+{
+  string t_msg = StringTable::get(BURIED_TREASURE_MESSAGE);
+  string source;
+
+  if (RNG::percent_chance(30))
+  {
+    vector<string> sources = String::create_string_vector_from_csv_string(StringTable::get(BURIED_TREASURE_SOURCE_ADJECTIVE));
+
+    if (!sources.empty())
+    {
+      string name = Naming::generate_name(CreatureSex::CREATURE_SEX_NOT_SPECIFIED);
+      source = boost::trim_copy(sources.at(RNG::range(0, sources.size() - 1)));
+
+      boost::replace_first(source, "%s", name);
+    }
+  }
+  else
+  {
+    vector<string> sources = String::create_string_vector_from_csv_string(StringTable::get(BURIED_TREASURE_SOURCE));
+
+    if (!sources.empty())
+    {
+      source = boost::trim_copy(sources.at(RNG::range(0, sources.size() - 1)));
+    }
+  }
+
+  boost::replace_first(t_msg, "%s", source);
+  return t_msg;
+}
+
+string TextMessages::get_shipwreck_message()
+{
+  string shipwreck_msg = StringTable::get(SHIPWRECK_MESSAGE);
+  vector<string> ships = String::create_string_vector_from_csv_string(StringTable::get(SHIPWRECK_SHIP_NAME));
+  vector<string> reasons = String::create_string_vector_from_csv_string(StringTable::get(SHIPWRECK_REASON));
+
+  if (!ships.empty() && !reasons.empty())
+  {
+    string ship;
+    
+    if (RNG::percent_chance(75))
+    {
+      ship = boost::trim_copy(ships.at(RNG::range(0, ships.size() - 1)));
+    }
+    else
+    {
+      ship = StringTable::get(SHIPWRECK_SHIP_NAME_POSSESSIVE);
+      vector<string> possessors = String::create_string_vector_from_csv_string(StringTable::get(SHIPWRECK_SHIP_NAME_POSSESSOR));
+      vector<string> possessees = String::create_string_vector_from_csv_string(StringTable::get(SHIPWRECK_SHIP_NAME_POSSESSEE));
+
+      boost::replace_first(ship, "%s1", boost::trim_copy(possessors.at(RNG::range(0, possessors.size() - 1))));
+      boost::replace_first(ship, "%s2", boost::trim_copy(possessees.at(RNG::range(0, possessees.size() - 1))));
+    }
+
+    string reason = boost::trim_copy(reasons.at(RNG::range(0, reasons.size() - 1)));
+
+    boost::replace_first(shipwreck_msg, "%s1", ship);
+    boost::replace_first(shipwreck_msg, "%s2", reason);
+  }
+
+  return shipwreck_msg;
 }

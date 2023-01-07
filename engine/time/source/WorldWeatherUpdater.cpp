@@ -24,8 +24,6 @@ void WorldWeatherUpdater::update_world_map_weather(World* world)
 
     if (world_map != nullptr)
     {
-      TilesContainer tiles = world_map->get_tiles();
-
       // Update the weather for the tiles around the player.
       Coordinate player_coord = world_map->get_location(CreatureID::CREATURE_ID_PLAYER);
       vector<Coordinate> weather_update_coords = CoordUtils::get_adjacent_map_coordinates(world_map->size(), player_coord.first, player_coord.second, WEATHER_UPDATE_RADIUS);
@@ -51,7 +49,7 @@ void WorldWeatherUpdater::update_weather_for_map(MapPtr old_map, TilePtr old_til
 {
   if (old_map != nullptr && old_tile != nullptr && new_map != nullptr)
   {
-    if (old_map->get_map_type() == MapType::MAP_TYPE_WORLD && new_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
+    if (old_map->get_map_type() == MapType::MAP_TYPE_WORLD && MapUtils::get_supports_weather(new_map->get_map_type()))
     {
       WeatherPtr weather = MapUtils::get_weather(old_map, old_tile);
 
@@ -73,7 +71,7 @@ void WorldWeatherUpdater::set_weather(MapPtr map, TilePtr tile, const Weather& w
     {
       tile->set_weather(w);
     }
-    else if (mt == MapType::MAP_TYPE_OVERWORLD)
+    else if (mt == MapType::MAP_TYPE_OVERWORLD || mt == MapType::MAP_TYPE_AIR)
     {
       map->set_weather(w);
     }

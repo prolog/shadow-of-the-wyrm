@@ -11,6 +11,7 @@
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
 #include "ItemProperties.hpp"
+#include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MusicTextKeys.hpp"
 #include "PacificationCalculator.hpp"
@@ -121,12 +122,23 @@ void MusicSkillProcessor::perform(CreaturePtr creature, MapPtr map, ItemPtr inst
   if (creature != nullptr && map != nullptr)
   {
     CurrentCreatureAbilities cca;
+    TilePtr creature_tile = MapUtils::get_tile_for_creature(map, creature);
+
     if (is_vocal_performance(instr) && !cca.can_speak(creature))
     {
       add_performance_details_message(creature, MusicTextKeys::MUSIC_PERFORMANCE_VOICE_MUTE);
     }
+    else if (creature_tile && creature_tile->get_submerged())
+    {
+      add_performance_details_message(creature, MusicTextKeys::MUSIC_PERFORMANCE_UNDERWATER);
+    }
     else
     {
+      if (creature_tile && creature_tile->get_tile_type() == TileType::TILE_TYPE_VOID)
+      {
+        add_performance_details_message(creature, MusicTextKeys::MUSIC_PERFORMANCE_COSMOS);
+      }
+
       CreatureMap fov_creatures = creature->get_decision_strategy()->get_fov_map()->get_creatures();
       int num_hostile = 0;
       int num_pacified = 0;

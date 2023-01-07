@@ -56,6 +56,7 @@ class Setting
     static const std::string AUTOPICKUP;
     static const std::string AUTOPICKUP_TYPES;
     static const std::string AUTOPICKUP_IGNORE_CORPSES;
+    static const std::string AUTOPICKUP_IGNORE_UNPAID;
     static const std::string PROMPT_ON_STACK_PICKUP;
     static const std::string AUTOMELEE;
     static const std::string CHECKPOINT_SAVE;
@@ -69,6 +70,7 @@ class Setting
     static const std::string NARRATIVE_MODE;
     static const std::string DISALLOW_SCORE_ON_EXPLORATION;
     static const std::string SPELLCASTER_UNUSABLE_SPELLBOOK_SQUELCH_PCT;
+    static const std::string CONTINUE_TILE_SELECTION_AFTER_LOOKUP;
 
   protected:
     Setting();

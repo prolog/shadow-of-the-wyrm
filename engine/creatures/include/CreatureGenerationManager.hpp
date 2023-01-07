@@ -15,7 +15,7 @@ class CreatureGenerationManager
   public:
     CreatureGenerationManager();
     
-    CreatureGenerationIndex generate_creature_generation_map(const std::set<TileType>& map_terrain_types, const bool permanent_map, const bool islet, const int min_danger_level, const int max_danger_level, const Rarity rarity, const std::map<std::string, std::string>& additional_properties);
+    CreatureGenerationIndex generate_creature_generation_map(const std::set<TileType>& map_terrain_types, const bool permanent_map, const bool islet, const MapType map_type, const int min_danger_level, const int max_danger_level, const Rarity rarity, const std::map<std::string, std::string>& additional_properties);
     CreatureGenerationIndex generate_ancient_beasts(const int max_danger_level, const MapType map_type, const TileType map_terrain_type);
 
     std::string select_creature_id_for_generation(ActionManager& am, const CreatureGenerationList& creature_generation_list);
@@ -32,6 +32,7 @@ class CreatureGenerationManager
   protected:
     std::shared_ptr<Creature> generate_hireling(ActionManager& am, MapPtr map, const int level, const std::string& race_id, const std::string& class_id);
     std::shared_ptr<Creature> generate_adventurer(ActionManager& am, MapPtr map, const int level, const std::string& race_id, const std::string& class_id);
+    void generate_follower_bestiary(CreaturePtr creature, const FollowerType ft);
 
-    bool does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const std::set<TileType>& map_terrain_types, const bool permanent_map, const bool islet, const int min_danger_level, const int max_danger_level, const Rarity rarity, const bool ignore_level_checks, const std::string& required_race, const std::vector<std::string>& generator_filters, const std::vector<std::string>& preset_creature_ids);
+    bool does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const std::set<TileType>& map_terrain_types, const bool permanent_map, const bool islet, const MapType map_type, const int min_danger_level, const int max_danger_level, const Rarity rarity, const bool ignore_level_checks, const std::string& required_race, const std::vector<std::string>& generator_filters, const std::vector<std::string>& preset_creature_ids);
 };

@@ -10,6 +10,11 @@ std::string DesertTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_DESERT;
 }
 
+SkillType DesertTile::get_treasure_skill() const
+{
+  return SkillType::SKILL_GENERAL_DESERT_LORE;
+}
+
 Tile* DesertTile::clone()
 {
   return new DesertTile(*this);

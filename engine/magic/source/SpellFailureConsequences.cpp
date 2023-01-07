@@ -52,7 +52,7 @@ bool SpellFailureConsequences::summon_creatures(CreaturePtr caster)
   MapPtr current_map = game.get_current_map();
 
   MapPtr map = caster->get_decision_strategy()->get_fov_map();
-  TilesContainer tiles = map->get_tiles();
+  TilesContainer& tiles = map->get_tiles_ref();
 
   vector<pair<string, TilePtr>> free_tiles;
 

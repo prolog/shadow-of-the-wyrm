@@ -13,6 +13,8 @@ local function shopkeeper_lacks_funds(dropping_creature_id)
 end
 
 local function purchase_item(price, cash_on_hand, dropping_creature_id, shopkeeper_id, item_id, coords)
+  local purchased = false
+
   -- Make the offer
   local confirm = add_confirmation_message("SHOPKEEPER_DROP_BUY_OFFER_SID", {tostring(price)})
 
@@ -40,15 +42,18 @@ local function purchase_item(price, cash_on_hand, dropping_creature_id, shopkeep
     -- set the item to be unpaid.
     set_item_unpaid(coords[1], coords[2], item_id)
     transfer_item(dropping_creature_id, shopkeeper_id, CURRENCY_ID, final_price)
+    purchased = true
   else
-    -- Offer rejected.  The player takes the item back.
+    -- Offer rejected.
     clear_and_add_message("SHOPKEEPER_DROP_BUY_DECLINE_SID")
-    add_object_on_tile_to_creature(coords[1], coords[2], item_id, dropping_creature_id)
   end
+
+  return purchased
 end
 
 local function shopkeeper_buy(dropping_creature_id, shopkeeper_id, item_id, item_base_id, drop_y, drop_x)
   local shop_id = get_shop_id(shopkeeper_id)
+  local readd_to_dropping_creature = true
 
   -- Ignore any shop items that the creature has picked up, and then
   -- dropped again.
@@ -70,13 +75,18 @@ local function shopkeeper_buy(dropping_creature_id, shopkeeper_id, item_id, item
         if price > cash_on_hand then
           shopkeeper_lacks_funds(dropping_creature_id)
         else
-          purchase_item(price, cash_on_hand, dropping_creature_id, shopkeeper_id, item_id, {drop_y, drop_x})
+          local purchased = purchase_item(price, cash_on_hand, dropping_creature_id, shopkeeper_id, item_id, {drop_y, drop_x})
+          readd_to_dropping_creature = (purchased == false)
         end
       end
     else 
       -- Shop doesn't sell that sort of thing.
       shopkeeper_uninterested()
     end
+  end
+
+  if readd_to_dropping_creature == true then
+    add_object_on_tile_to_creature(drop_y, drop_x, item_id, dropping_creature_id)
   end
 end
 

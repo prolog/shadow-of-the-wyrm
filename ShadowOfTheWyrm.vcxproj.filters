@@ -1922,7 +1922,7 @@
     <ClInclude Include="engine\time\include\MovementAccumulator.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\time\include\NullMovementAccumulationChecker.hpp">
+    <ClInclude Include="engine\time\include\DefaultMovementAccumulationChecker.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\time\include\RegenerationConstants.hpp">
@@ -3563,9 +3563,6 @@
     <ClInclude Include="engine\skills\include\DetectionSkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\skills\include\MountaineeringSkillProcessor.hpp">
-      <Filter>Header Files\engine\skills\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\skills\include\SwimmingSkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
@@ -4459,6 +4456,39 @@
     </ClInclude>
     <ClInclude Include="engine\scripting\include\CreateScript.hpp">
       <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\NPCBackgroundGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\NPCBackgroundTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\WandsCombatTargetNumberCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\WandsCombatSkillMarker.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\WandsToHitCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\WandsAttackSpeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\TerrainSpeedMultiplierCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\UnderwaterGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\SkyGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLBenchReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\MountainLoreSkillProcessor.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -5395,7 +5425,7 @@
     <ClCompile Include="engine\time\source\MovementAccumulator.cpp">
       <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\time\source\NullMovementAccumulationChecker.cpp">
+    <ClCompile Include="engine\time\source\DefaultMovementAccumulationChecker.cpp">
       <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\time\source\RegenerationConstants.cpp">
@@ -7798,9 +7828,6 @@
     <ClCompile Include="engine\skills\source\DetectionSkillProcessor.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\skills\source\MountaineeringSkillProcessor.cpp">
-      <Filter>Source Files\engine\skills\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\skills\source\SwimmingSkillProcessor.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
@@ -9027,6 +9054,48 @@
     </ClCompile>
     <ClCompile Include="engine\scripting\source\CreateScript.cpp">
       <Filter>Source Files\engine\scripting\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\NPCBackgroundGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\NPCBackgroundTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\WandsCombatTargetNumberCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\WandsCombatSkillMarker.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\WandsToHitCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\WandsToHitCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\WandsAttackSpeedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\WandsAttackSpeedCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\TerrainSpeedMultiplierCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\TerrainSpeedMultiplierCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\UnderwaterGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\SkyGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLBenchReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\MountainLoreSkillProcessor.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

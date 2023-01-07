@@ -26,6 +26,14 @@ enum struct CreatureSize
   CREATURE_SIZE_LAST = 6
 };
 
+constexpr auto CCREATURE_SIZE_NA = -1;
+constexpr auto CCREATURE_SIZE_TINY = 0;
+constexpr auto CCREATURE_SIZE_SMALL = 1;
+constexpr auto CCREATURE_SIZE_MEDIUM = 2;
+constexpr auto CCREATURE_SIZE_LARGE = 3;
+constexpr auto CCREATURE_SIZE_HUGE = 4;
+constexpr auto CCREATURE_SIZE_BEHEMOTH = 5;
+
 enum struct CreatureSex
 {
   CREATURE_SEX_NA = -1,

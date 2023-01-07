@@ -29,6 +29,8 @@ DangerLevelCalculatorPtr DangerLevelCalculatorFactory::create_danger_level_calcu
       case MapType::MAP_TYPE_OVERWORLD:
         danger_level_calculator = std::make_unique<BaseDangerLevelCalculator>();
         break;
+      case MapType::MAP_TYPE_AIR:
+      case MapType::MAP_TYPE_COSMOS:
       case MapType::MAP_TYPE_UNDERWORLD:
       default:
         danger_level_calculator = std::make_unique<DepthBasedDangerLevelCalculator>(emt);

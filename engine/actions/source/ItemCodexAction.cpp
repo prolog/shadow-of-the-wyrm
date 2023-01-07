@@ -164,7 +164,7 @@ void ItemCodexAction::add_symbol_and_description_to_codex(ItemPtr item, CodexDes
     codex_text.push_back(make_pair(item_colour, symbol_details));
     codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
 
-    string item_desc = StringTable::get(item->get_description_sid());
+    string item_desc = iid.get_appropriate_description(item, false);
 
     codex_text.push_back(make_pair(Colour::COLOUR_WHITE, item_desc));
     codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));

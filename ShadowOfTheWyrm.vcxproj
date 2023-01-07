@@ -463,6 +463,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\StunnedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SwimmingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\TanningCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\TerrainSpeedMultiplierCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\TertiaryUnarmedPhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ThieveryCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\TimewalkCalculator.hpp" />
@@ -471,6 +472,10 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\UnarmedCombatCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\UntimedStatusCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WandCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\WandsAttackSpeedCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\WandsCombatSkillMarker.hpp" />
+    <ClInclude Include="engine\calculators\include\WandsCombatTargetNumberCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\WandsToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WeaponDifficultyCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WeatherCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WeavingCalculator.hpp" />
@@ -748,6 +753,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\include\MarshGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MineGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MountainsGenerator.hpp" />
+    <ClInclude Include="engine\generators\include\NPCBackgroundGenerator.hpp" />
     <ClInclude Include="engine\generators\include\OrderedGraveyardGenerator.hpp" />
     <ClInclude Include="engine\generators\include\PillarGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\include\PillarTypes.hpp" />
@@ -762,6 +768,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\include\SewerGenerator.hpp" />
     <ClInclude Include="engine\generators\include\ShrineGenerator.hpp" />
     <ClInclude Include="engine\generators\include\ShrineGeneratorFactory.hpp" />
+    <ClInclude Include="engine\generators\include\SkyGenerator.hpp" />
     <ClInclude Include="engine\generators\include\SpiralDungeonGenerator.hpp" />
     <ClInclude Include="engine\generators\include\SpringsGenerator.hpp" />
     <ClInclude Include="engine\generators\include\SquarePillarGenerator.hpp" />
@@ -770,6 +777,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\include\TileDepthOptions.hpp" />
     <ClInclude Include="engine\generators\include\TileGenerator.hpp" />
     <ClInclude Include="engine\generators\include\TreasureRoomPopulator.hpp" />
+    <ClInclude Include="engine\generators\include\UnderwaterGenerator.hpp" />
     <ClInclude Include="engine\generators\include\VaultPopulator.hpp" />
     <ClInclude Include="engine\generators\include\VoidGenerator.hpp" />
     <ClInclude Include="engine\generators\include\WellGenerator.hpp" />
@@ -1036,7 +1044,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\skills\include\FletcherySkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\HidingSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\GeneralMagicSkillProcessor.hpp" />
-    <ClInclude Include="engine\skills\include\MountaineeringSkillProcessor.hpp" />
+    <ClInclude Include="engine\skills\include\MountainLoreSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\MusicSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\PapercraftSkillProcessor.hpp" />
     <ClInclude Include="engine\skills\include\ScribingSkillProcessor.hpp" />
@@ -1074,6 +1082,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\strings\include\MaterialTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MembershipTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MusicTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\NPCBackgroundTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\OrderTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\PlayerTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\PartyTextKeys.hpp" />
@@ -1124,7 +1133,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\time\include\MountainClimbingMovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\MovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\MovementAccumulator.hpp" />
-    <ClInclude Include="engine\time\include\NullMovementAccumulationChecker.hpp" />
+    <ClInclude Include="engine\time\include\DefaultMovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\RegenerationConstants.hpp" />
     <ClInclude Include="engine\time\include\SeasonsTimeObserver.hpp" />
     <ClInclude Include="engine\time\include\ShopsTimeObserver.hpp" />
@@ -1154,6 +1163,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLAltarReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLBarrelReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLBedReader.hpp" />
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLBenchReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLConfigurableFeatureCMReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLDecorativeStatueReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLDoorReader.hpp" />
@@ -1555,6 +1565,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\SmithingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\StatisticsMarker.cpp" />
     <ClCompile Include="engine\calculators\source\StealthCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\TerrainSpeedMultiplierCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ThieveryCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\TimewalkCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\UnarmedCombatCalculator.cpp" />
@@ -1786,6 +1797,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\TerrainSpeedMultiplierCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ThieveryCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -1803,6 +1820,18 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\WandsAttackSpeedCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\WandsToHitCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\WeaponDifficultyCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1824,6 +1853,10 @@ mkdir $(OutDir)logs
     </ClCompile>
     <ClCompile Include="engine\calculators\source\UntimedStatusCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\WandCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\WandsAttackSpeedCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\WandsCombatSkillMarker.cpp" />
+    <ClCompile Include="engine\calculators\source\WandsCombatTargetNumberCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\WandsToHitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\WeatherCalculator.cpp" />
     <ClCompile Include="engine\combat\source\PointsTransfer.cpp" />
     <ClCompile Include="engine\combat\source\unit_tests\PointsTransfer_test.cpp">
@@ -2052,11 +2085,14 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\source\CrossShrineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\FloatingTowerGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MapItemGenerator.cpp" />
+    <ClCompile Include="engine\generators\source\NPCBackgroundGenerator.cpp" />
     <ClCompile Include="engine\generators\source\RectangularShrineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\SewerGenerator.cpp" />
     <ClCompile Include="engine\generators\source\ShrineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\ShrineGeneratorFactory.cpp" />
+    <ClCompile Include="engine\generators\source\SkyGenerator.cpp" />
     <ClCompile Include="engine\generators\source\TileDepthOptions.cpp" />
+    <ClCompile Include="engine\generators\source\UnderwaterGenerator.cpp" />
     <ClCompile Include="engine\generators\source\unit_tests\TileDepthOptions_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -2169,7 +2205,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\skills\source\FletcherySkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\HidingSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\GeneralMagicSkillProcessor.cpp" />
-    <ClCompile Include="engine\skills\source\MountaineeringSkillProcessor.cpp" />
+    <ClCompile Include="engine\skills\source\MountainLoreSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\MusicSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\PapercraftSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\ScribingSkillProcessor.cpp" />
@@ -2217,6 +2253,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\strings\source\InscriptionTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MembershipTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MusicTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\NPCBackgroundTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\OrderTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\PlayerTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\PartyTextKeys.cpp" />
@@ -2263,6 +2300,7 @@ mkdir $(OutDir)logs
     </ClCompile>
     <ClCompile Include="engine\time\source\WorldTimeObserver.cpp" />
     <ClCompile Include="engine\time\source\WorldWeatherUpdater.cpp" />
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLBenchReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLConfigurableFeatureCMReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLDecorativeStatueReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLFenceReader.cpp" />
@@ -3462,7 +3500,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\time\source\MountainClimbingMovementAccumulationChecker.cpp" />
     <ClCompile Include="engine\time\source\MovementAccumulationChecker.cpp" />
     <ClCompile Include="engine\time\source\MovementAccumulator.cpp" />
-    <ClCompile Include="engine\time\source\NullMovementAccumulationChecker.cpp" />
+    <ClCompile Include="engine\time\source\DefaultMovementAccumulationChecker.cpp" />
     <ClCompile Include="engine\time\source\RegenerationConstants.cpp" />
     <ClCompile Include="engine\time\source\SeasonsTimeObserver.cpp" />
     <ClCompile Include="engine\time\source\SwimmingMovementAccumulationChecker.cpp" />

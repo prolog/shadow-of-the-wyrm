@@ -9,6 +9,7 @@ class SpritesheetIndex
   public:
     static const std::string SPRITESHEET_INDEX_SYSTEM;
     static const std::string SPRITESHEET_INDEX_CREATURE;
+    static const std::string SPRITESHEET_INDEX_TERRAIN;
 
   protected:
     SpritesheetIndex();
@@ -26,6 +27,8 @@ class SpritesheetReference
     static const std::string SPRITESHEET_ENTRANCE_OPEN;
     static const std::string SPRITESHEET_ENTRANCE_CLOSED;
     static const std::string SPRITESHEET_ENTRANCE_DESTROYED;
+    static const std::string SPRITESHEET_REFERENCE_TREASURE;
+    static const std::string SPRITESHEET_REFERENCE_SHIPWRECK;
   
   protected:
     SpritesheetReference();

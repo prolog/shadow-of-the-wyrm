@@ -10,6 +10,11 @@ std::string KeepTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_KEEP;
 }
 
+bool KeepTile::is_interior() const
+{
+  return true;
+}
+
 Tile* KeepTile::clone()
 {
   return new KeepTile(*this);

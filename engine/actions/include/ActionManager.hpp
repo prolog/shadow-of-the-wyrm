@@ -183,6 +183,7 @@ class ActionManager : public ISerializable
     bool deserialize(std::istream& istream);
 
     ActionCost get_action_cost(CreaturePtr creature, const ActionCostValue action_cost_value);
+    ActionCost get_action_cost(CreaturePtr creature, const ActionCostValue action_cost_value, const float total_multiplier);
 
   protected:    
     CombatManager combat_manager;

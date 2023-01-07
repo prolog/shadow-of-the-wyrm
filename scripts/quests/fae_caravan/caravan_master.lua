@@ -17,7 +17,9 @@ local function caravan_master_cithriel_start_fn()
   -- Add the necessary properties to the tile.
   -- 23 == TILE_TYPE_DOWN_STAIRCASE
   map_transform_tile(cur_map_id, pl_y, pl_x, 23)
-  map_add_tile_exit(cur_map_id, pl_y, pl_x, CDIRECTION_DOWN, "cithriel")
+  map_add_tile_exit(cur_map_id, pl_y, pl_x, CDIRECTION_DOWN, "cithriel", 1, 75)
+  -- Also add the exit back!
+  map_add_tile_exit("cithriel", 1, 75, CDIRECTION_UP, cur_map_id, pl_y, pl_x)
 
   -- Additional creatures should be added to Cithriel: these wander the
   -- halls, and aren't part of the creatures surrounding each summoner.

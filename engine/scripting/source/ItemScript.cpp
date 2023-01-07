@@ -14,11 +14,16 @@ using namespace std;
 
 const string ItemScript::ITEM_MODULE_NAME = "items";
 const string ItemScript::ITEM_FUNCTION_NAME = "item_event_fn";
+const string ItemScript::GET_TREASURE_ITEMS_FUNCTION_NAME = "get_treasure_items";
 
 // Execute an item script.
 // Return true if the script executed successfully, false otherwise.
 bool ItemScript::execute(ScriptEngine& se, const string& item_script, const string& item_event, const string& base_item_id, const map<string, string>& properties, const string& original_creature_id, const int row, const int col)
 {
+  Log& log = Log::instance();
+  log.trace("ItemScript::execute - begin");
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+
   bool result = true;
   
   if (se.execute(item_script, {}))
@@ -34,21 +39,65 @@ bool ItemScript::execute(ScriptEngine& se, const string& item_script, const stri
     lua_pushinteger(L, row);
     lua_pushinteger(L, col);
 
-    // Do the function call.  The attack function returns nothing.
+    // Do the function call.  The item function returns nothing.
     if (lua_pcall(L, 6, 0, 0) != 0)
     {
       string l_err = lua_tostring(L, -1);
       string error_msg = "ItemScript::execute - error running Lua function `" + ITEM_FUNCTION_NAME + "': " + l_err;
-      Log::instance().error(error_msg);
+      log.error(error_msg);
       lua_pop(L, 1);
       result = false;
     }
+
+    lua_pop(L, 1);
   }
   else
   {
-    Log::instance().error("ItemScript::execute - did not run Lua function due to errors in the item script: " + item_script);
+    log.error("ItemScript::execute - did not run Lua function due to errors in the item script: " + item_script);
   }
 
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+  log.trace("ItemScript::execute - exiting");
   return result;
 }
 
+vector<string> ItemScript::execute_get_treasure_items(ScriptEngine& se)
+{
+  Log& log = Log::instance();
+  log.trace("ItemScript::execute_get_treasure_items - begin");
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+
+  vector<string> item_ids;
+
+  if (se.execute("items/treasure.lua", {}))
+  {
+    // Set up the function call parameters.
+    lua_State* L = se.get_current_state();
+    lua_getglobal(L, GET_TREASURE_ITEMS_FUNCTION_NAME.c_str());
+
+    // Do the function call.  get_treasure_items returns nothing.
+    if (lua_pcall(L, 0, 1, 0) != 0)
+    {
+      string l_err = lua_tostring(L, -1);
+      string error_msg = "ItemScript::execute_get_treasure_items - error running Lua function `" + GET_TREASURE_ITEMS_FUNCTION_NAME + "': " + l_err;
+      log.error(error_msg);
+      lua_pop(L, 1);
+    }
+    else
+    {
+      string item_ids_s;
+      
+      if (lua_isstring(L, -1))
+      {
+        item_ids_s = lua_tostring(L, -1);
+      } 
+
+      item_ids = String::create_string_vector_from_csv_string(item_ids_s);
+      lua_pop(L, 1);
+    }
+  }
+
+  log.debug("Lua stack size: " + to_string(se.get_stack_size()));
+  log.trace("ItemScript::execute_get_treasure_items - exiting");
+  return item_ids;
+}

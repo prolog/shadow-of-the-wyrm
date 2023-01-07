@@ -211,7 +211,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
               creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_SPELL_IN_PROGRESS, spell_id);
 
               // Spells always use the "uncursed" effect status.
-              sp.process(spell_processor.get(), creature, current_map, caster_coord, spell_direction, spell, isk.get_bonus().get_base(), ItemStatus::ITEM_STATUS_UNCURSED);
+              sp.process(spell_processor.get(), creature, current_map, caster_coord, spell_direction, spell, isk.get_bonus().get_base(), ItemStatus::ITEM_STATUS_UNCURSED, AttackType::ATTACK_TYPE_MAGICAL);
 
               creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_SPELL_IN_PROGRESS);
 

@@ -10,6 +10,11 @@ std::string MineTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_MINE;
 }
 
+bool MineTile::is_interior() const
+{
+  return true;
+}
+
 Tile* MineTile::clone()
 {
   return new MineTile(*this);

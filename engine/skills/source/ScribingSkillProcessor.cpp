@@ -152,8 +152,8 @@ ItemPtr ScribingSkillProcessor::create_scroll(CreaturePtr creature, const string
           // First, remove the items needed to create the scroll.
           // Quills can be reused over and over.
           ItemManager im;
-          auto ink_rem = im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_INKPOT);
-          auto scroll_rem = im.remove_item_from_eq_or_inv(creature, ItemIdKeys::ITEM_ID_BLANK_SCROLL);
+          auto ink_rem = im.remove_item_from_inv_or_eq(creature, ItemIdKeys::ITEM_ID_INKPOT);
+          auto scroll_rem = im.remove_item_from_inv_or_eq(creature, ItemIdKeys::ITEM_ID_BLANK_SCROLL);
 
           // Next, add the necessary effects, properties, and so on.
           SpellTransfer st;

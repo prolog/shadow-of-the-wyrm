@@ -9,27 +9,27 @@
 		<Min>1</Min>
 		<Max>50</Max>
 	</LevelRange>
-	<MapType>1</MapType>
+	<MapType>5</MapType>
 	<Tiles>
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA################AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#..................#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#..................#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#########.##########AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#..................AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#........&gt;.........#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#########.##########AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#..................#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA..................#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####################AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA###########.#.#########################AAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA###..########.##########.######.#######AAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA##....................................#AAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.....................................##AAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA##...................................##AAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA##...................................#.AAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA##...................................##AAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA###################.###################AAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA##..................&gt;................##AAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA###################.###################AAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA##...................................##AAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA##...................................##AAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA##.....................................AAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA##...................................##AAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA##...................................##AAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#####..#########..#####.###########..##AAAAA
+	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#########.######.##########.####.######AAAAA
 	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	</Tiles>
 	<PlayerStart>
@@ -41,57 +41,113 @@
 			<Placement>
 				<ID>drakeling</ID>
 				<Coord>
-					<Row>7</Row>
-					<Col>39</Col>
+					<Row>5</Row>
+					<Col>48</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>drakeling</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>50</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>drakeling</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>52</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>drakeling</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>54</Col>
 				</Coord>
 			</Placement>
 			<Placement>
 				<ID>drakeling</ID>
 				<Coord>
 					<Row>7</Row>
-					<Col>40</Col>
+					<Col>47</Col>
 				</Coord>
 			</Placement>
 			<Placement>
 				<ID>drakeling</ID>
 				<Coord>
 					<Row>7</Row>
-					<Col>41</Col>
+					<Col>49</Col>
 				</Coord>
 			</Placement>
 			<Placement>
 				<ID>drakeling</ID>
 				<Coord>
 					<Row>7</Row>
-					<Col>42</Col>
+					<Col>51</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>drakeling</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>53</Col>
 				</Coord>
 			</Placement>
 			<Placement>
 				<ID>firebird</ID>
 				<Coord>
 					<Row>13</Row>
-					<Col>39</Col>
+					<Col>47</Col>
 				</Coord>
 			</Placement>
 			<Placement>
 				<ID>quaalis</ID>
 				<Coord>
 					<Row>13</Row>
-					<Col>40</Col>
+					<Col>49</Col>
 				</Coord>
 			</Placement>
 			<Placement>
 				<ID>quaalis</ID>
 				<Coord>
 					<Row>13</Row>
-					<Col>41</Col>
+					<Col>51</Col>
 				</Coord>
 			</Placement>
 			<Placement>
 				<ID>firebird</ID>
 				<Coord>
 					<Row>13</Row>
-					<Col>42</Col>
+					<Col>53</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>firebird</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>48</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>quaalis</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>50</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>quaalis</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>52</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>firebird</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>54</Col>
 				</Coord>
 			</Placement>
 		</Creatures>
@@ -99,34 +155,202 @@
 			<Placement>
 				<ID>ironsword</ID>
 				<Coord>
-					<Row>6</Row>
-					<Col>42</Col>
+					<Row>4</Row>
+					<Col>55</Col>
 				</Coord>
 			</Placement>
 			<Placement>
 				<ID>stormstaff</ID>
 				<Coord>
-					<Row>13</Row>
-					<Col>35</Col>
+					<Row>16</Row>
+					<Col>55</Col>
 				</Coord>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>38</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>72</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>38</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>72</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>38</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>72</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>38</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>72</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>38</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>72</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>38</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>72</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>38</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>72</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>38</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>72</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>38</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>72</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>38</Col>
+				</Coord>
+				<Quantity>50</Quantity>
+			</Placement>
+			<Placement>
+				<ID>_currency</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>72</Col>
+				</Coord>
+				<Quantity>50</Quantity>
 			</Placement>
 		</Items>
 	</InitialPlacements>
 	<Exits>
 		<Exit>
+			<Direction>11</Direction>
+			<MapID>wintersea_keep</MapID>
+		</Exit>
+		<Exit>
 			<Coord>
 				<Row>10</Row>
-				<Col>39</Col>
+				<Col>56</Col>
 			</Coord>
 			<Direction>11</Direction>
 			<MapID>wintersea_keep</MapID>
+			<LinkTo>
+				<Row>10</Row>
+				<Col>56</Col>
+			</LinkTo>
 		</Exit>
 	</Exits>
 	<Features>
 		<FeaturePlacement>
 			<Coord>
-				<Row>8</Row>
-				<Col>39</Col>
+				<Row>9</Row>
+				<Col>55</Col>
 			</Coord>
 			<Door>
 				<Material>3</Material>
@@ -139,7 +363,7 @@
 		<FeaturePlacement>
 			<Coord>
 				<Row>11</Row>
-				<Col>39</Col>
+				<Col>55</Col>
 			</Coord>
 			<Door>
 				<Material>3</Material>

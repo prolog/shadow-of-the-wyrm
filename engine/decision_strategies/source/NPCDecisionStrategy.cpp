@@ -99,6 +99,23 @@ bool NPCDecisionStrategy::get_confirmation(const bool confirmation_default_value
   return true;
 }
 
+bool NPCDecisionStrategy::get_attack_confirmation(CreaturePtr creature)
+{
+  bool confirm = false;
+
+  if (creature != nullptr)
+  {
+    auto threat = threat_ratings.has_threat(creature->get_id());
+
+    if (threat.first && threat.second > ThreatConstants::DISLIKE_THREAT_RATING)
+    {
+      confirm = true;
+    }
+  }
+
+  return confirm;
+}
+
 void NPCDecisionStrategy::set_fov_map(MapPtr new_fov_map)
 {
   current_fov_map = new_fov_map;
@@ -559,9 +576,11 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
     // place, moving only to pursue when attacked.
     bool sentinel = String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL));
     bool ordered_sentinel = String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_ORDERED_SENTINEL));
+    string order_follow = get_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID);
 
-    if (this_creature &&
-       (!this_creature->has_leader() && (sentinel || ordered_sentinel)) &&
+    if ((sentinel || ordered_sentinel) &&
+        order_follow.empty() &&
+        this_creature &&
         MapUtils::hostile_creature_exists(this_creature_id, view_map) == false)
     {
       return movement_command;
