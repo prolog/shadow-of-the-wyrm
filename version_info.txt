@@ -1,6 +1,8 @@
 Shadow of the Wyrm v1.5.4 "Testagrossa"
 - Version started January 7, 2023.
 
+- Additional names for things.
+
 Shadow of the Wyrm v1.5.2 "Satoh"
 - Version started May 15, 2022. Version finalized January 7, 2023.
 
