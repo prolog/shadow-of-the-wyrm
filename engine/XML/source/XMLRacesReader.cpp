@@ -91,6 +91,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool splits = XMLUtils::get_child_node_bool_value(race_node, "Splits");
     race->set_splits(splits);
 
+    bool allow_flee = XMLUtils::get_child_node_bool_value(race_node, "AllowFlee", false);
+    race->set_allow_flee(allow_flee);
+
     bool has_pockets = XMLUtils::get_child_node_bool_value(race_node, "HasPockets");
     race->set_has_pockets(has_pockets);
 

@@ -1,4 +1,5 @@
 Me:
+- Fleeing behaviour for humanoids (JE)
 - ensure world_id gets propagated on generation
 - Az: up from caldera/down from prison: field
 - can use warp in telari ocean
@@ -394,7 +395,6 @@ IceBox:
 
 Josh Engdahl
 - Rebindable paging keys
-- Fleeing behaviour for humanoids
 - User macros
 - Add info on the weapon synopsis to the manual
 - max fire res on fire spirits, etc
@@ -427,6 +427,7 @@ Bentwing:
 - way of creating lock for door
 - restack on blessing eg books, all items, etc
 - more fleshed out NPCs/hirelings/writing generally
+- keybinding for toggling reach mode
 
 Kenny:
 - repeat last command (!)

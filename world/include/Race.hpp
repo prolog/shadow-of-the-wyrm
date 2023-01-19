@@ -71,6 +71,9 @@ class Race
     void set_splits(const bool new_splits);
     bool get_splits() const;
 
+    void set_allow_flee(const bool allow_flee);
+    bool get_allow_flee() const;
+
     void set_has_pockets(const bool new_has_pockets);
     bool get_has_pockets() const;
 
@@ -198,6 +201,7 @@ class Race
     bool pacifiable;
     bool tameable;
     bool splits;
+    bool allow_flee;
     bool has_pockets;
     bool has_voice;
     bool has_hair;

@@ -26,6 +26,7 @@ Race::Race()
 , pacifiable(true)
 , tameable(true)
 , splits(false)
+, allow_flee(false)
 , has_pockets(false)
 , has_voice(false)
 , has_hair(false)
@@ -183,6 +184,16 @@ void Race::set_splits(const bool new_splits)
 bool Race::get_splits() const
 {
   return splits;
+}
+
+void Race::set_allow_flee(const bool new_allow_flee)
+{
+  allow_flee = new_allow_flee;
+}
+
+bool Race::get_allow_flee() const
+{
+  return allow_flee;
 }
 
 void Race::set_has_pockets(const bool new_has_pockets)
