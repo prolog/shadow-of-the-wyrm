@@ -26,7 +26,7 @@ Race::Race()
 , pacifiable(true)
 , tameable(true)
 , splits(false)
-, allow_flee(false)
+, pct_flee(0)
 , has_pockets(false)
 , has_voice(false)
 , has_hair(false)
@@ -186,14 +186,14 @@ bool Race::get_splits() const
   return splits;
 }
 
-void Race::set_allow_flee(const bool new_allow_flee)
+void Race::set_pct_flee(const int new_pct_flee)
 {
-  allow_flee = new_allow_flee;
+  pct_flee = new_pct_flee;
 }
 
-bool Race::get_allow_flee() const
+int Race::get_pct_flee() const
 {
-  return allow_flee;
+  return pct_flee;
 }
 
 void Race::set_has_pockets(const bool new_has_pockets)

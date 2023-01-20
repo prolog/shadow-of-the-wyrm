@@ -450,7 +450,7 @@
 			<Pacifiable>0</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>0</AllowFlee>
+			<PctFlee>0</PctFlee>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
@@ -524,7 +524,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>1</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>1</AllowFlee>
+			<PctFlee>25</PctFlee>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
@@ -598,7 +598,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>1</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>1</AllowFlee>
+			<PctFlee>35</PctFlee>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
@@ -677,7 +677,7 @@
 			<Pacifiable>0</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>0</AllowFlee>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
@@ -755,7 +755,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>0</AllowFlee>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
@@ -827,7 +827,7 @@
 			<Pacifiable>0</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>0</AllowFlee>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
@@ -899,7 +899,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>1</AllowFlee>
+			<PctFlee>25</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
@@ -979,7 +979,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>0</AllowFlee>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
@@ -1055,7 +1055,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>1</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>0</AllowFlee>
+			<PctFlee>0</PctFlee>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
@@ -1129,7 +1129,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>1</Tameable>
 			<Splits>1</Splits>
-			<AllowFlee>1</AllowFlee>
+			<PctFlee>35</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
@@ -1201,7 +1201,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>1</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>0</AllowFlee>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>0</HasHair>
@@ -1275,7 +1275,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>0</AllowFlee>
+			<PctFlee>0</PctFlee>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
@@ -1347,7 +1347,7 @@
 			<Pacifiable>0</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>0</AllowFlee>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
@@ -1415,7 +1415,7 @@
 			<Pacifiable>0</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>0</AllowFlee>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
@@ -1485,7 +1485,7 @@
 			<Pacifiable>0</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>0</AllowFlee>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
@@ -1554,7 +1554,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>1</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>0</AllowFlee>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>0</HasHair>
@@ -1626,7 +1626,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>1</AllowFlee>
+			<PctFlee>25</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
@@ -1721,7 +1721,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>1</AllowFlee>
+			<PctFlee>25</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
@@ -1814,7 +1814,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>1</AllowFlee>
+			<PctFlee>25</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
@@ -1907,7 +1907,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>1</AllowFlee>
+			<PctFlee>25</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>0</HasHair>
@@ -1999,7 +1999,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>1</AllowFlee>
+			<PctFlee>25</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
@@ -2092,7 +2092,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>0</AllowFlee>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
@@ -2185,7 +2185,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>1</AllowFlee>
+			<PctFlee>25</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
@@ -2279,7 +2279,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>0</AllowFlee>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
@@ -2368,7 +2368,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>0</AllowFlee>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
@@ -2458,7 +2458,7 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
-			<AllowFlee>1</AllowFlee>
+			<PctFlee>25</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>

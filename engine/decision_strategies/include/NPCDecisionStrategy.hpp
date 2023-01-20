@@ -34,6 +34,7 @@ class NPCDecisionStrategy : public DecisionStrategy
     virtual CommandPtr get_drop_decision(const std::string& this_creature_id, MapPtr view_map);
     virtual CommandPtr get_use_item_decision(const std::string& this_creature_id, MapPtr view_map);
     virtual CommandPtr get_movement_decision(const std::string& this_creature_id, MapPtr view_map);
+    virtual CommandPtr get_flee_decision(const std::string& this_creature_id, MapPtr view_map);
     virtual std::vector<Coordinate> get_adjacent_safe_coordinates_without_creatures(MapPtr current_map, const std::vector<Coordinate>& all_adjacent_coordinates, std::shared_ptr<Creature> creature);
 
     virtual CommandPtr get_decision_for_inventory(CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands) = 0;
@@ -48,6 +49,7 @@ class NPCDecisionStrategy : public DecisionStrategy
     virtual void update_threats_if_shopkeeper(MapPtr current_fov_map);
     virtual std::vector<std::pair<std::string, int>> get_creatures_by_distance(CreaturePtr creature, MapPtr view_map, const std::set<std::string>& creature_ids);
 
+    virtual bool should_flee(CreaturePtr this_creature, MapPtr view_map);
     virtual Coordinate select_safest_random_coordinate(CreaturePtr creature, const std::vector<Coordinate>& c);
 
     static const int PERCENT_CHANCE_USE_ITEM;

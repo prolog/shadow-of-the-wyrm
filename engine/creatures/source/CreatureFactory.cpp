@@ -190,6 +190,16 @@ CreaturePtr CreatureFactory::create_by_creature_id
       hm.set_hostility_to_player(creature, h_it->second);
     }
 
+    // Determine if the creature is a coward...
+    RaceManager rm;
+    Race* race = rm.get_race(race_id);
+
+    int pct_chance_flee = race->get_pct_flee();
+    if (race != nullptr && RNG::percent_chance(pct_chance_flee))
+    {
+      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_COWARD, std::to_string(true));
+    }
+
     initialize(creature);
     creature->set_original_id(creature_id);
 

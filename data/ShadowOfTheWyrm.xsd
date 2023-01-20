@@ -338,7 +338,7 @@
 			<xs:element name="Pacifiable" type="xs:boolean"/>
 			<xs:element name="Tameable" type="xs:boolean"/>
 			<xs:element name="Splits" type="xs:boolean"/>
-			<xs:element name="AllowFlee" type="xs:boolean"/>
+			<xs:element name="PctFlee" type="tns:PercentageStatistic"/>
 			<!-- Can we steal from the creature? -->
 			<xs:element name="HasPockets" type="xs:boolean"/> 
 			<!-- When it's attacked, does it yell and draw other friendly creatures into the fight? -->

@@ -87,6 +87,7 @@ class CreatureConstants
   public:
     static const unsigned int MAX_CREATURE_LEVEL;
     static const int MAX_CREATURE_PRIMARY_STATISTIC_VALUE; // str, dex, etc, but not speed, hp, etc.
+    static const int COWARDLY_CREATURE_HP_PCT_FLEE;
   protected:
     CreatureConstants();
     ~CreatureConstants();

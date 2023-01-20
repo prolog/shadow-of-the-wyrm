@@ -47,6 +47,7 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_GAME_STARTED;
     static const std::string CREATURE_PROPERTIES_CHARACTER_STARTED;
     static const std::string CREATURE_PROPERTIES_GAME_DATE;
+    static const std::string CREATURE_PROPERTIES_COWARD;
 
   protected:
     CreatureProperties();

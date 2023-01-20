@@ -197,7 +197,15 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
 
     if (has_movement_orders() == false)
     {
-      command = get_use_item_decision(this_creature_id, view_map);
+      command = get_flee_decision(this_creature_id, view_map);
+    }
+
+    if (has_movement_orders() == false)
+    {
+      if (command != nullptr)
+      {
+        command = get_use_item_decision(this_creature_id, view_map);
+      }
     }
 
     if (has_movement_orders() == false)
@@ -736,6 +744,31 @@ CommandPtr NPCDecisionStrategy::get_drop_decision(const string& this_creature_id
   return drop_cmd;
 }
 
+CommandPtr NPCDecisionStrategy::get_flee_decision(const string& this_creature_id, MapPtr view_map)
+{
+  CommandPtr flee_command;
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+
+  CreaturePtr creature = map->get_creature(this_creature_id);
+  if (creature != nullptr)
+  {
+    // Is the creature cowardly?
+    string coward_p = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_COWARD);
+    if (!coward_p.empty() && String::to_bool(coward_p))
+    {
+      // Is it time to get out?
+      if (should_flee(creature, view_map))
+      {
+        // Pick the direction that looks safest
+        // ...
+      }
+    }
+  }
+
+  return flee_command;
+}
+
 CommandPtr NPCDecisionStrategy::get_use_item_decision(const string& this_creature_id, MapPtr view_map)
 {
   CommandPtr use_cmd;
@@ -961,6 +994,30 @@ vector<pair<string, int>> NPCDecisionStrategy::get_creatures_by_distance(Creatur
   return cdist;
 }
 
+bool NPCDecisionStrategy::should_flee(CreaturePtr this_creature, MapPtr view_map)
+{
+  bool flee = false;
+
+  if (this_creature != nullptr && view_map != nullptr)
+  {
+    Statistic hp = this_creature->get_hit_points();
+
+    if (hp.get_percent() <= CreatureConstants::COWARDLY_CREATURE_HP_PCT_FLEE)
+    {
+      const CreatureMap& creatures = view_map->get_creatures_ref();
+
+      for (const auto& cr_pair : creatures)
+      {
+        if (cr_pair.second != nullptr && cr_pair.second->get_decision_strategy()->get_threats_ref().has_threat(this_creature->get_id()).first)
+        {
+          flee = true;
+        }
+      }
+    }
+  }
+
+  return flee;
+}
 Coordinate NPCDecisionStrategy::select_safest_random_coordinate(CreaturePtr this_cr, const vector<Coordinate>& choice_coordinates)
 {
   pair<Coordinate, int> rc = { CoordUtils::end(), -1 };

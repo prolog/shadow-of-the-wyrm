@@ -1,5 +1,8 @@
 Me:
 - Fleeing behaviour for humanoids (JE)
+  - when damaged in combat, chance to flee should be inverse of % hp left
+  - fleeing should pick the direction that maximizes distance from threats
+  - if cornered/threat adjacent, remove flag
 - ensure world_id gets propagated on generation
 - Az: up from caldera/down from prison: field
 - can use warp in telari ocean
