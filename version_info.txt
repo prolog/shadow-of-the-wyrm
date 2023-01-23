@@ -3,6 +3,10 @@ Shadow of the Wyrm v1.5.4 "Testagrossa"
 
 - Additional names for things.
 
+- Added an option "full_stop_after_options" (off by default) which, when the
+  game is running in curses-mode, will add a period to allow screenreaders to
+  read the text with pauses (George White).
+
 - Bug fixes:
 
   - A missing Lua script was causing an error to be emitted to the logs.

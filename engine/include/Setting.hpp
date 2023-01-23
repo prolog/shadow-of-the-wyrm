@@ -37,6 +37,7 @@ class Setting
     static const std::string DEFAULT_NAME;
     static const std::string USERNAME_IS_CHARACTER_NAME;
     static const std::string MAX_CHARACTERS_PER_USER;
+    static const std::string FULL_STOP_AFTER_OPTIONS;
     static const std::string DISPLAY_LOCATION;
     static const std::string DISPLAY;
     static const std::string DISPLAY_SDL_RENDERER;

@@ -44,6 +44,7 @@ const string Setting::DEFAULT_STARTING_LOCATION_ID = "default_starting_location_
 const string Setting::DEFAULT_NAME = "default_name";
 const string Setting::USERNAME_IS_CHARACTER_NAME = "username_is_character_name";
 const string Setting::MAX_CHARACTERS_PER_USER = "_max_characters_per_user";
+const string Setting::FULL_STOP_AFTER_OPTIONS = "full_stop_after_options";
 const string Setting::DISPLAY_LOCATION = "display_location";
 const string Setting::DISPLAY = "display";
 const string Setting::DISPLAY_SDL_RENDERER = "display_sdl_renderer";

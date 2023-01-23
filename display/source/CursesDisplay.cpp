@@ -772,6 +772,14 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
       TextComponentPtr text = current_option.get_description();
 
       display_text_component(window, row, &ocol, text, DisplayConstants::OPTION_SPACING);
+
+      bool full_stop = Game::instance().get_settings_ref().get_setting_as_bool(Setting::FULL_STOP_AFTER_OPTIONS);
+
+      if (full_stop)
+      {
+        wprintw(window, ".");
+      }
+
       disable_colour(static_cast<int>(option_colour), window);
 
       options_added++;
