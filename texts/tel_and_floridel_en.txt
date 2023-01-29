@@ -4049,3 +4049,33 @@ slashed his small sword against the exiles as the thrown %b
 rider struggled to find a way from out %b
 beneath the horse that crushed him as it thrashed about.
 %p
+The tip just grazed the shoulder, but then leapt %b
+across the throat.  Not deep, but still enough %b
+to startle him, to force his sleeve direct %b
+against the flow and see the severed cuff %b
+of his shirt turn red and drip.  The horseman turned %b
+and didn't see his companion clubbed to death %b
+or his brains against the grass.  He kicked and spurred %b
+his horse faster, faster, knowing this a test %b
+he'd only pass if he could outrun all the rest.
+%p
+Against a single man, he liked his odds. %b
+Against the pair of exiles, he might live, %b
+but add a group of giants and he saw %b
+no way but back.  Any gallantry would give %b
+his entrails to the sun.  His body low %b
+against the horse, he felt a rock sail past. %b
+A parting shot.  He knew that even though %b
+there'd be no more, he hadn't had the last. %b
+The giants started running, coming at him fast.
+%p
+Twenty seconds: if he could live that long, %b
+he'd make it back to Cithriel alive. %b
+A sprinting giant was as fast and strong %b
+as a horse at speed, but time was on his side %b
+and he knew their pace was unsustainable. %b
+He saw them running hard, so he dug in, %b
+his horse now galloping, and hit its full %b
+stride as he looked back and saw them dim, %b
+their shouts a fading clamour in the rushing wind.
+%p
