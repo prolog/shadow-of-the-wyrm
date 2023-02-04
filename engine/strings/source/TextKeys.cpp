@@ -50,6 +50,7 @@ const string TextKeys::DEATH_DETAILS_NARRATIVE_MODE = "DEATH_DETAILS_NARRATIVE_M
 const string TextKeys::INDEFINITELY = "INDEFINITELY";
 const string TextKeys::STATUSES = "STATUSES";
 const string TextKeys::NPC_ESCAPES_MESSAGE = "NPC_ESCAPES_MESSAGE";
+const string TextKeys::NPC_FLEES_MESSAGE = "NPC_FLEES_MESSAGE";
 const string TextKeys::SELECT_RACE = "SELECT_RACE";
 const string TextKeys::CLASS = "CLASS";
 const string TextKeys::SELECT_CLASS = "SELECT_CLASS";

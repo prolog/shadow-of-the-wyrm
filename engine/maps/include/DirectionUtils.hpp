@@ -20,6 +20,7 @@ class DirectionUtils
     static Direction get_opposite_direction(const Direction d);
     static bool direction_matches_category(const Direction d, const DirectionCategory dc);
     static std::set<Direction> get_all_directions_for_category(const DirectionCategory dc);
+    static std::vector<Direction> get_in_map_movement_directions();
 
   protected:
     DirectionUtils();

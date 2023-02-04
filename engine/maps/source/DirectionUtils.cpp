@@ -251,6 +251,11 @@ set<Direction> DirectionUtils::get_all_directions_for_category(DirectionCategory
   return directions;
 }
 
+vector<Direction> DirectionUtils::get_in_map_movement_directions()
+{
+  return { Direction::DIRECTION_NORTH_WEST, Direction::DIRECTION_NORTH, Direction::DIRECTION_NORTH_EAST, Direction::DIRECTION_WEST, Direction::DIRECTION_EAST, Direction::DIRECTION_SOUTH_WEST, Direction::DIRECTION_SOUTH, Direction::DIRECTION_SOUTH_EAST };
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/DirectionUtils_test.cpp"
 #endif

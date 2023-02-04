@@ -149,6 +149,7 @@ class MapUtils
     static bool get_supports_weather(const MapType map_type);
 
     static SkillType get_lore_skill_for_terrain(TilePtr tile);
+    static int get_threat_distance_score_for_direction(CreaturePtr creature, const Direction d, MapPtr map, MapPtr view_map);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
@@ -160,4 +161,5 @@ class MapUtils
     static void run_movement_scripts(CreaturePtr creature, const std::string& map_id, const Coordinate& c);
 
     static const int PLAYER_RESTRICTED_ZONE_RADIUS;
+    static const int CANNOT_MOVE_SCORE;
 };

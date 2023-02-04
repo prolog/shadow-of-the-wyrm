@@ -12,6 +12,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "DecisionScript.hpp"
 #include "DecisionStrategyProperties.hpp"
+#include "DirectionUtils.hpp"
 #include "Game.hpp"
 #include "HostilityManager.hpp"
 #include "IMessageManager.hpp"
@@ -36,6 +37,7 @@
 #include "SearchStrategyFactory.hpp"
 #include "Spellbook.hpp"
 #include "SpellShapeFactory.hpp"
+#include "TextMessages.hpp"
 #include "ThreatConstants.hpp"
 #include "Wand.hpp"
 #include "WeaponManager.hpp"
@@ -202,7 +204,7 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
 
     if (has_movement_orders() == false)
     {
-      if (command != nullptr)
+      if (command == nullptr)
       {
         command = get_use_item_decision(this_creature_id, view_map);
       }
@@ -760,8 +762,39 @@ CommandPtr NPCDecisionStrategy::get_flee_decision(const string& this_creature_id
       // Is it time to get out?
       if (should_flee(creature, view_map))
       {
+        // Get the movement directions and then randomize them, so that if there are
+        // multiple directions that look good, the creature doesn't always try to flee
+        // the same way.
+        vector<Direction> move_dirs = DirectionUtils::get_in_map_movement_directions();
+        std::shuffle(move_dirs.begin(), move_dirs.end(), RNG::get_engine()); 
+
+        const CreatureMap& creatures = view_map->get_creatures_ref();
+        const auto& c_locs = view_map->get_locations_with_creatures();
+        int lowest_tscore = -1;
         // Pick the direction that looks safest
-        // ...
+        for (const Direction d : move_dirs)
+        {
+          int tscore = MapUtils::get_threat_distance_score_for_direction(creature, d, map, view_map);
+
+          if (tscore > lowest_tscore)
+          {
+            lowest_tscore = tscore;
+            flee_command = std::make_unique<MovementCommand>(d, -1);
+          }
+        }
+
+        if (!creature->has_additional_property(CreatureProperties::CREATURE_PROPERTIES_FLEEING))
+        {
+          IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, false);
+          manager.add_new_message(TextMessages::get_npc_flees_message(StringTable::get(creature->get_description_sid())));
+          manager.send();
+
+          creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_FLEEING, std::to_string(true));
+        }
+      }
+      else
+      {
+        creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_FLEEING);
       }
     }
   }

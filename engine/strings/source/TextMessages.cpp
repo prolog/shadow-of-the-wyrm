@@ -142,6 +142,15 @@ string TextMessages::get_npc_escapes_message(const string& creature_description)
   return escapes_message;
 }
 
+// Get a message for a creature who has just started to flee
+string TextMessages::get_npc_flees_message(const string& creature_description)
+{
+  string flees_message = StringTable::get(TextKeys::NPC_FLEES_MESSAGE);
+  boost::replace_first(flees_message, "%s", creature_description);
+  flees_message[0] = toupper(flees_message[0]);
+  return flees_message;
+}
+
 string TextMessages::get_npc_level_message(const string& creature_description)
 {
   string level_message = StringTable::get(NPC_LEVEL_MESSAGE);

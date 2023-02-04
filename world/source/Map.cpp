@@ -529,6 +529,23 @@ pair<Coordinate, TilePtr> Map::get_location_and_tile(const std::string& creature
   return result_pair;
 }
 
+map<string, pair<Coordinate, CreaturePtr>> Map::get_locations_with_creatures() const
+{
+  map<string, pair<Coordinate, CreaturePtr>> clocs;
+  
+  for (const auto& loc : locations)
+  {
+    map<string, CreaturePtr>::const_iterator c_it = creatures.find(loc.first);
+
+    if (c_it != creatures.end())
+    {
+      clocs[loc.first] = make_pair(loc.second, c_it->second);
+    }
+  }
+
+  return clocs;
+}
+
 map<string, Coordinate> Map::get_locations() const
 {
   return locations;
