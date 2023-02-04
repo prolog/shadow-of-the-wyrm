@@ -297,7 +297,7 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const CreaturePtr& crea
   // Almost always not null, except when using the MapTester config.
   if (map != nullptr)
   {
-    map->get_map_type();
+    mt = map->get_map_type();
   }
 
   const vector<DisplayTile>& tiles_info = game.get_tile_display_info_ref();
