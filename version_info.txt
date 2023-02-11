@@ -18,6 +18,9 @@ Shadow of the Wyrm v1.5.4 "Testagrossa"
 
   - Hoard/shipwreck tiles weren't displaying correctly (Grond).
 
+  - Fix an issue with being unable to drop items in shops when overburdened,
+    which would lead to a slow and ignominous death (Benjamin Derge).
+
 Shadow of the Wyrm v1.5.2 "Satoh"
 - Version started May 15, 2022. Version finalized January 7, 2023.
 

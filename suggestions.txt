@@ -1,7 +1,8 @@
 Me:
 - Benjamin Derge:
   - ID crash issue
-  - burdened/reappear in pack issue
+  - burdened/reappear in pack issue (now fixed but eg wands don't seem to be
+    stacking correctly?)
 - Fleeing behaviour for humanoids (JE)
   - when damaged in combat, chance to flee should be inverse of % hp left
   - fleeing should pick the direction that maximizes distance from threats
