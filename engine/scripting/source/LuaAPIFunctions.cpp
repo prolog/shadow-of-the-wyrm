@@ -369,6 +369,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_custom_map_id", get_custom_map_id);
   lua_register(L, "ranged_attack", ranged_attack);
   lua_register(L, "get_spellbooks", get_spellbooks);
+  lua_register(L, "generate_shop", generate_shop);
   lua_register(L, "set_shop_shopkeeper_id", set_shop_shopkeeper_id);
   lua_register(L, "repop_shop", repop_shop);
   lua_register(L, "repop_shops", repop_shops);
@@ -6848,7 +6849,7 @@ int generate_shop(lua_State* ls)
 {
   bool generated = false;
 
-  if (lua_gettop(ls) == 6 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls 3) && lua_isnumber(ls, 4) && lua_isstring(ls, 5) && lua_isboolean(ls, 6))
+  if (lua_gettop(ls) == 6 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isstring(ls, 5) && lua_isboolean(ls, 6))
   {
     generated = true;
   }
@@ -6860,6 +6861,7 @@ int generate_shop(lua_State* ls)
   lua_pushboolean(ls, generated);
   return 1;
 }
+
 int set_shop_shopkeeper_id(lua_State* ls)
 {
   int num_args = lua_gettop(ls);

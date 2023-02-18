@@ -12,7 +12,7 @@ function init_sky_high_deals(map_id)
   local shopkeeper_name = "Sal"
   local gen_walls_and_door = false
 
-  generate_shop(RNG_range(0, max_y), RNG_range(0, max_width), height, width, shopkeeper_name, gen_walls_and_door)
+  generate_shop(RNG_range(0, max_y), RNG_range(0, max_x), height, width, shopkeeper_name, gen_walls_and_door)
 end
 
 function init_carcassia_a2a(map_id)
