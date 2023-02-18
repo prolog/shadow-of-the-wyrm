@@ -6844,6 +6844,22 @@ int get_spellbooks(lua_State* ls)
   return 1;
 }
 
+int generate_shop(lua_State* ls)
+{
+  bool generated = false;
+
+  if (lua_gettop(ls) == 6 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls 3) && lua_isnumber(ls, 4) && lua_isstring(ls, 5) && lua_isboolean(ls, 6))
+  {
+    generated = true;
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to generate_shop");
+  }
+
+  lua_pushboolean(ls, generated);
+  return 1;
+}
 int set_shop_shopkeeper_id(lua_State* ls)
 {
   int num_args = lua_gettop(ls);

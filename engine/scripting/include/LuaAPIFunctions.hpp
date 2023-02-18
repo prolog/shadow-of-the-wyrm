@@ -212,6 +212,7 @@ int get_coords_with_tile_type_in_range(lua_State* ls);
 int get_custom_map_id(lua_State* ls);
 int ranged_attack(lua_State* ls);
 int get_spellbooks(lua_State* ls);
+int generate_shop(lua_State* ls);
 int set_shop_shopkeeper_id(lua_State* ls);
 int repop_shop(lua_State* ls);
 int repop_shops(lua_State* ls);
