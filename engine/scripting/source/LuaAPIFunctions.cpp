@@ -13,6 +13,7 @@
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "DecisionStrategyProperties.hpp"
+#include "DirectionUtils.hpp"
 #include "EngineConversion.hpp"
 #include "EffectFactory.hpp"
 #include "ExperienceManager.hpp"
@@ -48,6 +49,8 @@
 #include "RaceConstants.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
+#include "SettlementGeneratorUtils.hpp"
+#include "ShopGenerator.hpp"
 #include "SkillManager.hpp"
 #include "Spellbook.hpp"
 #include "SpellcastingAction.hpp"
@@ -6849,8 +6852,29 @@ int generate_shop(lua_State* ls)
 {
   bool generated = false;
 
-  if (lua_gettop(ls) == 6 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isstring(ls, 5) && lua_isboolean(ls, 6))
+  if (lua_gettop(ls) == 7 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5) && lua_isnumber(ls, 6) && lua_isboolean(ls, 7))
   {
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(lua_tostring(ls, 1));
+    int start_y = lua_tointeger(ls, 2);
+    int start_x = lua_tointeger(ls, 3);
+    int height = lua_tointeger(ls, 4);
+    int width = lua_tointeger(ls, 5);
+    int wall_tile_type = lua_tointeger(ls, 6);
+    TileType wall_type = static_cast<TileType>(lua_tointeger(ls, 6));
+    bool gen_door = lua_toboolean(ls, 7);
+
+    Coordinate door_coords = SettlementGeneratorUtils::get_door_location(start_y, start_y + height, start_x, start_x + width, DirectionUtils::get_random_cardinal_direction());
+    Building bldg({ start_y, start_x }, { start_y + height, start_x + width }, door_coords);
+    GeneratorUtils::generate_building(map, start_y, start_x, height, width, wall_type, TileType::TILE_TYPE_DUNGEON, false);
+
+    if (gen_door)
+    {
+      GeneratorUtils::generate_door(map, door_coords.first, door_coords.second);
+    }
+
+    ShopGenerator sg;
+    sg.generate_shop(map, bldg);
+    
     generated = true;
   }
   else

@@ -1,10 +1,15 @@
 Me:
 - Benjamin Derge:
   - ID crash issue
+- Fill out Carcassia A2A
+  - What's on the platform?
+  - Shrink the shop a bit
+  - Allow setting the shopkeeper name and setting the item types
 - Fleeing behaviour for humanoids (JE)
   - when damaged in combat, chance to flee should be inverse of % hp left
   - fleeing should pick the direction that maximizes distance from threats
-  - if cornered/threat adjacent, remove flag
+  - if cornered/threat adjacent (all directions give the same value), 
+    remove flag
 - can use warp in telari ocean
 - Elinor and Verra
 - in villages: retired cartographers?
