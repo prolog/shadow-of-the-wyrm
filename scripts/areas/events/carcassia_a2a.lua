@@ -18,8 +18,6 @@ function init_sky_high_deals(map_id)
   -- Since we've generated air around the shop, reconnect the shop with the
   -- walkway.
   map_transform_tile(map_id, 9, walkway_end_x, CTILE_TYPE_DUNGEON)
-
-  log(CLOG_ERROR, "Transformed tile at 9," .. tostring(walkway_end_x))
 end
 
 function init_carcassia_a2a(map_id)
