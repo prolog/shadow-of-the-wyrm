@@ -1,8 +1,12 @@
 Me:
 - Benjamin Derge:
   - ID crash issue
+  - inspecting the loop after checking out release-1.5.2, it seems that the 
+    player isn't on the map, so the game is just iterating over the rest of 
+    the creatures.
 - Fill out Carcassia A2A
   - What's on the platform?
+  - Lancer's Walk
   - Shrink the shop a bit
   - Allow setting the shopkeeper name and setting the item types
 - Fleeing behaviour for humanoids (JE)
