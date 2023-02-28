@@ -7,7 +7,7 @@ local map_id = "carcassia_a2a"
 function init_sky_high_deals(map_id)
   local y_start = RNG_range(5, 6)
   local height = (9 - y_start) * 2 + 1
-  local x_start = 55, 56
+  local x_start = 56, 57
   local width = (62 - x_start) * 2
   local gen_door = false
 

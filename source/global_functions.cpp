@@ -86,13 +86,14 @@ std::string html_encode(const std::string& str)
   string replace = str;
   
   using boost::algorithm::replace_all;
-  replace_all(replace, " ",  "&nbsp;");
+
   replace_all(replace, "&",  "&amp;");
   replace_all(replace, "\"", "&quot;");
   replace_all(replace, "\'", "&apos;");
   replace_all(replace, "<",  "&lt;");
   replace_all(replace, ">",  "&gt;");
-  
+  replace_all(replace, " ",  "&nbsp;");
+
   return replace;
 }
 

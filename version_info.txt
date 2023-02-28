@@ -26,6 +26,9 @@ Shadow of the Wyrm v1.5.4 "Testagrossa"
 
   - Shop generation wasn't checking the safety of the shopkeeper tile.
 
+  - Carcassia C1A and C2A didn't have an east-west linkage (though they
+    currently can't be co-reached in these directions).
+
 Shadow of the Wyrm v1.5.2 "Satoh"
 - Version started May 15, 2022. Version finalized January 7, 2023.
 
