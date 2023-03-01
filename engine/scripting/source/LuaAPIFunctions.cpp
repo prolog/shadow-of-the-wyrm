@@ -6604,14 +6604,17 @@ int get_race_name(lua_State* ls)
 
 int set_inscription(lua_State* ls)
 {
-  if (lua_gettop(ls) == 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3))
+  int num_args = lua_gettop(ls);
+
+  if (num_args == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4))
   {
-    int row = lua_tointeger(ls, 1);
-    int col = lua_tointeger(ls, 2);
-    string inscription = lua_tostring(ls, 3);
+    string map_id = lua_tostring(ls, 1);
+    int row = lua_tointeger(ls, 2);
+    int col = lua_tointeger(ls, 3);
+    string inscription = lua_tostring(ls, 4);
 
     Game& game = Game::instance();
-    MapPtr map = game.get_current_map();
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
 
     if (map != nullptr)
     {

@@ -10,6 +10,8 @@ Shadow of the Wyrm v1.5.4 "Testagrossa"
 - Some creatures are generated cowardly, and will try to flee when their HP
   becomes too low (Josh Engdahl).
 
+- Small memorial in Gnordvar for an old friend.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
