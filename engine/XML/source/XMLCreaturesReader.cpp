@@ -27,17 +27,21 @@ pair<CreatureMap, CreatureGenerationValuesMap> XMLCreaturesReader::get_creatures
 
     for (const XMLNode& creature_node : creature_nodes)
     {
-      pair<CreaturePtr, CreatureGenerationValues> creature_details = parse_creature(creature_node);
-      CreaturePtr creature = creature_details.first;
-      CreatureGenerationValues cgv = creature_details.second;
-      string creature_id = creature->get_id();
-      
-      if (creature)
+      vector<pair<CreaturePtr, CreatureGenerationValues>> creature_details = parse_creature(creature_node);
+
+      for (const auto& c_pair : creature_details)
       {
-        creatures.insert(make_pair(creature_id, creature));
+        CreaturePtr creature = c_pair.first;
+        CreatureGenerationValues cgv = c_pair.second;
+        string creature_id = creature->get_id();
+
+        if (creature)
+        {
+          creatures.insert(make_pair(creature_id, creature));
+        }
+
+        cgv_map.insert(make_pair(creature_id, cgv));
       }
-      
-      cgv_map.insert(make_pair(creature_id, cgv));
     }
   }
   
@@ -48,208 +52,230 @@ pair<CreatureMap, CreatureGenerationValuesMap> XMLCreaturesReader::get_creatures
 }
 
 // Parse the details of the Creature node into a shared Creature pointer.
-pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(const XMLNode& creature_node)
+vector<pair<CreaturePtr, CreatureGenerationValues>> XMLCreaturesReader::parse_creature(const XMLNode& creature_node)
 {
-  pair<CreaturePtr, CreatureGenerationValues> creature_data;
-  CreaturePtr creature;
-  CreatureGenerationValues cgv;
+  vector<pair<CreaturePtr, CreatureGenerationValues>> creatures_data;
 
   if (!creature_node.is_null())
   {
-    creature = std::make_shared<Creature>();
-    creature_data.first = creature;
-
-    // The creature ID for the templates gives a unique value - for each individual
-    // creature, a GUID will be genreated during creation of that creature.
+    // Template creatures are those with multiple ids, short descs, descs, 
+    // text details, and speech text. When these are vectorized and are
+    // the same length, iterate through the arrays, creating a new
+    // creature for each.
     string id = XMLUtils::get_attribute_value(creature_node, "id");
-    creature->set_id(id);
-
-    // Creature's race.  
-    string race_id = XMLUtils::get_child_node_value(creature_node, "RaceID");
-    creature->set_race_id(race_id);
-
-    // Creature's class.
-    string class_id = XMLUtils::get_child_node_value(creature_node, "ClassID");
-    creature->set_class_id(class_id);
-
-    // Deity, maybe.
-    string deity_id = XMLUtils::get_child_node_value(creature_node, "DeityID");
-
-    if (!deity_id.empty())
-    {
-      creature->get_religion_ref().set_active_deity_id(deity_id);
-    }
-
-    // Whether the creature breathes air, or water.  Only set the value if
-    // explicitly set on the creature - most things will breathe air, and some
-    // races will set a number of options.
-    XMLNode breathetype_node = XMLUtils::get_next_element_by_local_name(creature_node, "BreatheType");
-    BreatheType breathes = BreatheType::BREATHE_TYPE_AIR;
-
-    if (!breathetype_node.is_null())
-    {
-      breathes = static_cast<BreatheType>(XMLUtils::get_node_int_value(breathetype_node));
-      creature->set_breathes(breathes);
-    }
-
-    // Typically a single word or phrase: bat, orc child, troll pedestrian, etc.
     string short_description_sid = XMLUtils::get_child_node_value(creature_node, "ShortDescriptionSID");
-    creature->set_short_description_sid(short_description_sid);
-
-    // A longer description, which can be used as part of a sentence:
-    // "a goblin warrior", "some grey ooze", etc.
     string description_sid = XMLUtils::get_child_node_value(creature_node, "DescriptionSID");
-    creature->set_description_sid(description_sid);
-
-    // The text used to describe the creature in the bestiary.
     string text_details_sid = XMLUtils::get_child_node_value(creature_node, "TextDetailsSID");
-    creature->set_text_details_sid(text_details_sid);
-
-    // What the creature says when chatted with, if anything at all.
     string speech_text_sid = XMLUtils::get_child_node_value(creature_node, "SpeechTextSID");
-    creature->set_speech_text_sid(speech_text_sid);
-
-    // What the creature says at night.  If nothing is provided, the engine
-    // will fall back on the regular speech text sid.
     string night_speech_text_sid = XMLUtils::get_child_node_value(creature_node, "NightSpeechTextSID");
 
-    if (!night_speech_text_sid.empty())
+    vector<string> id_vec = String::create_string_vector_from_csv_string(id);
+    vector<string> sdesc_vec = String::create_string_vector_from_csv_string(short_description_sid);
+    vector<string> desc_vec = String::create_string_vector_from_csv_string(description_sid);
+    vector<string> td_vec = String::create_string_vector_from_csv_string(text_details_sid);
+    vector<string> stext_vec = String::create_string_vector_from_csv_string(speech_text_sid);
+    vector<string> ntext_vec = String::create_string_vector_from_csv_string(night_speech_text_sid);
+    bool length_ok = (id_vec.size() == sdesc_vec.size() == desc_vec.size() == td_vec.size() == stext_vec.size());
+
+    for (size_t i = 0; i < id_vec.size(); i++)
     {
-      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_NIGHT_SPEECH_TEXT_SID, night_speech_text_sid);
-    }
+      pair<CreaturePtr, CreatureGenerationValues> creature_data;
+      CreatureGenerationValues cgv;
+      CreaturePtr creature = std::make_shared<Creature>();
+      creature_data.first = creature;
 
-    // Size. May not be defined, in which case the game will use the race's
-    // value.
-    creature->set_size(static_cast<CreatureSize>(XMLUtils::get_child_node_int_value(creature_node, "Size", -1)));
+      // The creature ID for the templates gives a unique value - for each individual
+      // creature, a GUID will be genreated during creation of that creature.
+      string id = id_vec.at(i);
+      creature->set_id(id);
 
-    // What sex is the creature?  If unspecified, default to male.
-    CreatureSex sex = static_cast<CreatureSex>(XMLUtils::get_child_node_int_value(creature_node, "Sex"));
-    creature->set_sex(sex);
+      // Creature's race.  
+      string race_id = XMLUtils::get_child_node_value(creature_node, "RaceID");
+      creature->set_race_id(race_id);
 
-    // Read any permanent statuses that override the race values.
-    vector<pair<string, string>> element_and_id = { {"Flying", StatusIdentifiers::STATUS_ID_FLYING}, {"WaterBreathing", StatusIdentifiers::STATUS_ID_WATER_BREATHING} };
+      // Creature's class.
+      string class_id = XMLUtils::get_child_node_value(creature_node, "ClassID");
+      creature->set_class_id(class_id);
 
-    for (const auto& ei : element_and_id)
-    {
-      bool node_val = XMLUtils::get_child_node_bool_value(creature_node, ei.first);
+      // Deity, maybe.
+      string deity_id = XMLUtils::get_child_node_value(creature_node, "DeityID");
 
-      if (node_val)
+      if (!deity_id.empty())
       {
-        Modifier m;
-        ModifyStatisticsEffect mse;
-        m.set_status(ei.second, true);
-        mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
+        creature->get_religion_ref().set_active_deity_id(deity_id);
       }
-    }
 
-    // A decision strategy for the creature, which provides a set of actions (move, attack, and so on)
-    // as appropriate.  ImmobileDecisionStrategy, for example, disallows movement, and is used for
-    // immobile creatures (such as slimes, etc.)
-    XMLNode decision_strategy_node = XMLUtils::get_next_element_by_local_name(creature_node, "DecisionStrategy");
+      // Whether the creature breathes air, or water.  Only set the value if
+      // explicitly set on the creature - most things will breathe air, and some
+      // races will set a number of options.
+      XMLNode breathetype_node = XMLUtils::get_next_element_by_local_name(creature_node, "BreatheType");
+      BreatheType breathes = BreatheType::BREATHE_TYPE_AIR;
 
-    if (!decision_strategy_node.is_null())
-    {
-      parse_decision_strategy(decision_strategy_node, creature);
-    }
-    
-    XMLNode symbol_node = XMLUtils::get_next_element_by_local_name(creature_node, "Symbol");
-    Symbol s('?', Colour::COLOUR_WHITE);
-    parse_symbol(s, symbol_node);
-    creature->set_symbol(s);
-    
-    XMLNode creature_generation_node = XMLUtils::get_next_element_by_local_name(creature_node, "CreatureGeneration");
-    if (!creature_generation_node.is_null())
-    {
-      cgv = parse_creature_generation_values(creature_generation_node);
+      if (!breathetype_node.is_null())
+      {
+        breathes = static_cast<BreatheType>(XMLUtils::get_node_int_value(breathetype_node));
+        creature->set_breathes(breathes);
+      }
 
-      // Set any additional values found outside the CreatureGeneration node.
-      
-      // Set the creature's ID. Set on the generation values, as it's needed 
-      // in some situations for ensuring only creatures from a certain set
-      // of IDs are generated.
-      cgv.set_id(id);
+      // Typically a single word or phrase: bat, orc child, troll pedestrian, etc.
+      short_description_sid = sdesc_vec.at(sdesc_vec.size() == id_vec.size() ? i : 0);
+      creature->set_short_description_sid(short_description_sid);
 
-      // Set the creature's race. Needed occasionally for filtering so that 
-      // only creatures of a particular race are generated.
-      cgv.set_race_id(race_id);
+      // A longer description, which can be used as part of a sentence:
+      // "a goblin warrior", "some grey ooze", etc.
+      description_sid = desc_vec.at(desc_vec.size() == id_vec.size() ? i : 0);
+      creature->set_description_sid(description_sid);
 
-      // Set the breathe type so that air breathers aren't generated
-      // underwater.
-      cgv.set_breathe_type(breathes);
-    }
-    
-    uint level = XMLUtils::get_child_node_int_value(creature_node, "Level");
-    creature->set_level(level);
+      // The text used to describe the creature in the bestiary.
+      text_details_sid = td_vec.at(td_vec.size() == id_vec.size() ? i : 0);
+      creature->set_text_details_sid(text_details_sid);
 
-    // Properties
-    XMLNode properties_node = XMLUtils::get_next_element_by_local_name(creature_node, "Properties");
-    if (!properties_node.is_null())
-    {
-      map<string, string> addl_props;
-      parse_properties(addl_props, properties_node);
-      creature->set_additional_properties_map(addl_props);
-    }
+      // What the creature says when chatted with, if anything at all.
+      speech_text_sid = stext_vec.at(stext_vec.size() == id_vec.size() ? i : 0);
+      creature->set_speech_text_sid(speech_text_sid);
 
-    // Spells
-    XMLNode spells_node = XMLUtils::get_next_element_by_local_name(creature_node, "Spells");
-    if (!spells_node.is_null())
-    {
-      parse_spells(spells_node, creature);
-    }
-    
-    // Set the creature's base damage - this is the damage dealt if a weapon is not used.
-    // If a weapon is to be used (for humanoid-types), consider leaving this empty in the
-    // configuration XML.
-    XMLNode base_damage_node = XMLUtils::get_next_element_by_local_name(creature_node, "Damage");
-    Damage base_damage;
-    // The base damage type may or may not be overridden.  For most creatures (goblins, humans, etc.)
-    // it will be POUND from punching/etc.
-    base_damage.set_damage_type(CombatConstants::DEFAULT_UNARMED_DAMAGE_TYPE);
-    parse_damage(base_damage, base_damage_node);
-    creature->set_base_damage(base_damage);
+      // What the creature says at night.  If nothing is provided, the engine
+      // will fall back on the regular speech text sid.
+      night_speech_text_sid = ntext_vec.at(ntext_vec.size() == id_vec.size() ? i : 0);
 
-    XMLNode range_node = XMLUtils::get_next_element_by_local_name(creature_node, "Range");
-    if (!range_node.is_null())
-    {
-      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_PRIMARY_MELEE_RANGE, XMLUtils::get_node_value(range_node));
-    }
-    
-    // Read the base evade and soak for the creature.  For most creatures, this will be 0,
-    // but some creatures (armoured beetles, dragons, etc) will have higher than usual values.
-    // Evade
-    int base_evade = XMLUtils::get_child_node_int_value(creature_node, "Evade", 0);
-    creature->set_base_evade(base_evade);
-    
-    // Soak
-    int base_soak = XMLUtils::get_child_node_int_value(creature_node, "Soak", 0);
-    creature->set_base_soak(base_soak);
+      if (!night_speech_text_sid.empty())
+      {
+        creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_NIGHT_SPEECH_TEXT_SID, night_speech_text_sid);
+      }
 
-    // Speed - optionally override the race/class speed.
-    XMLNode speed_node = XMLUtils::get_next_element_by_local_name(creature_node, "Speed");
-    
-    if (!speed_node.is_null())
-    {
-      int base_speed = XMLUtils::get_node_int_value(speed_node, 0);
-      creature->set_speed(base_speed);
-    }
+      // Size. May not be defined, in which case the game will use the race's
+      // value.
+      creature->set_size(static_cast<CreatureSize>(XMLUtils::get_child_node_int_value(creature_node, "Size", -1)));
 
-    // Event scripts
-    XMLNode event_scripts_node = XMLUtils::get_next_element_by_local_name(creature_node, "EventScripts");
-    map<string, string> node_details = { {"CreateScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CREATE},
-                                         {"DeathScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH},
-                                         {"AttackScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK},
-                                         {"ChatScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT},
-                                         {"NightChatScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT_NIGHT},
-                                         {"DecisionScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION},
-                                         {"DropScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DROP},
-                                         {"TameScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_TAME} };
+      // What sex is the creature?  If unspecified, default to male.
+      CreatureSex sex = static_cast<CreatureSex>(XMLUtils::get_child_node_int_value(creature_node, "Sex"));
+      creature->set_sex(sex);
 
-    parse_event_scripts(event_scripts_node, node_details, creature->get_event_scripts_ref());
+      // Read any permanent statuses that override the race values.
+      vector<pair<string, string>> element_and_id = { {"Flying", StatusIdentifiers::STATUS_ID_FLYING}, {"WaterBreathing", StatusIdentifiers::STATUS_ID_WATER_BREATHING} };
+
+      for (const auto& ei : element_and_id)
+      {
+        bool node_val = XMLUtils::get_child_node_bool_value(creature_node, ei.first);
+
+        if (node_val)
+        {
+          Modifier m;
+          ModifyStatisticsEffect mse;
+          m.set_status(ei.second, true);
+          mse.apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
+        }
+      }
+
+      // A decision strategy for the creature, which provides a set of actions (move, attack, and so on)
+      // as appropriate.  ImmobileDecisionStrategy, for example, disallows movement, and is used for
+      // immobile creatures (such as slimes, etc.)
+      XMLNode decision_strategy_node = XMLUtils::get_next_element_by_local_name(creature_node, "DecisionStrategy");
+
+      if (!decision_strategy_node.is_null())
+      {
+        parse_decision_strategy(decision_strategy_node, creature);
+      }
+
+      XMLNode symbol_node = XMLUtils::get_next_element_by_local_name(creature_node, "Symbol");
+      Symbol s('?', Colour::COLOUR_WHITE);
+      parse_symbol(s, symbol_node, true, i);
+      creature->set_symbol(s);
+
+      XMLNode creature_generation_node = XMLUtils::get_next_element_by_local_name(creature_node, "CreatureGeneration");
+      if (!creature_generation_node.is_null())
+      {
+        cgv = parse_creature_generation_values(creature_generation_node);
+
+        // Set any additional values found outside the CreatureGeneration node.
+
+        // Set the creature's ID. Set on the generation values, as it's needed 
+        // in some situations for ensuring only creatures from a certain set
+        // of IDs are generated.
+        cgv.set_id(id);
+
+        // Set the creature's race. Needed occasionally for filtering so that 
+        // only creatures of a particular race are generated.
+        cgv.set_race_id(race_id);
+
+        // Set the breathe type so that air breathers aren't generated
+        // underwater.
+        cgv.set_breathe_type(breathes);
+      }
+
+      uint level = XMLUtils::get_child_node_int_value(creature_node, "Level");
+      creature->set_level(level);
+
+      // Properties
+      XMLNode properties_node = XMLUtils::get_next_element_by_local_name(creature_node, "Properties");
+      if (!properties_node.is_null())
+      {
+        map<string, string> addl_props;
+        parse_properties(addl_props, properties_node);
+        creature->set_additional_properties_map(addl_props);
+      }
+
+      // Spells
+      XMLNode spells_node = XMLUtils::get_next_element_by_local_name(creature_node, "Spells");
+      if (!spells_node.is_null())
+      {
+        parse_spells(spells_node, creature);
+      }
+
+      // Set the creature's base damage - this is the damage dealt if a weapon is not used.
+      // If a weapon is to be used (for humanoid-types), consider leaving this empty in the
+      // configuration XML.
+      XMLNode base_damage_node = XMLUtils::get_next_element_by_local_name(creature_node, "Damage");
+      Damage base_damage;
+      // The base damage type may or may not be overridden.  For most creatures (goblins, humans, etc.)
+      // it will be POUND from punching/etc.
+      base_damage.set_damage_type(CombatConstants::DEFAULT_UNARMED_DAMAGE_TYPE);
+      parse_damage(base_damage, base_damage_node);
+      creature->set_base_damage(base_damage);
+
+      XMLNode range_node = XMLUtils::get_next_element_by_local_name(creature_node, "Range");
+      if (!range_node.is_null())
+      {
+        creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_PRIMARY_MELEE_RANGE, XMLUtils::get_node_value(range_node));
+      }
+
+      // Read the base evade and soak for the creature.  For most creatures, this will be 0,
+      // but some creatures (armoured beetles, dragons, etc) will have higher than usual values.
+      // Evade
+      int base_evade = XMLUtils::get_child_node_int_value(creature_node, "Evade", 0);
+      creature->set_base_evade(base_evade);
+
+      // Soak
+      int base_soak = XMLUtils::get_child_node_int_value(creature_node, "Soak", 0);
+      creature->set_base_soak(base_soak);
+
+      // Speed - optionally override the race/class speed.
+      XMLNode speed_node = XMLUtils::get_next_element_by_local_name(creature_node, "Speed");
+
+      if (!speed_node.is_null())
+      {
+        int base_speed = XMLUtils::get_node_int_value(speed_node, 0);
+        creature->set_speed(base_speed);
+      }
+
+      // Event scripts
+      XMLNode event_scripts_node = XMLUtils::get_next_element_by_local_name(creature_node, "EventScripts");
+      map<string, string> node_details = { {"CreateScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CREATE},
+                                           {"DeathScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH},
+                                           {"AttackScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_ATTACK},
+                                           {"ChatScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT},
+                                           {"NightChatScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT_NIGHT},
+                                           {"DecisionScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DECISION},
+                                           {"DropScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_DROP},
+                                           {"TameScript", CreatureEventScripts::CREATURE_EVENT_SCRIPT_TAME} };
+
+      parse_event_scripts(event_scripts_node, node_details, creature->get_event_scripts_ref());
+      creature_data.second = cgv;
+      creatures_data.push_back(creature_data);
   }
-  
-  creature_data.second = cgv;
-  
-  return creature_data;
+  }
+    
+  return creatures_data;
 }
 
 // Parse the details about the creature's generation values

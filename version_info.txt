@@ -12,6 +12,15 @@ Shadow of the Wyrm v1.5.4 "Testagrossa"
 
 - Small memorial in Gnordvar for an old friend.
 
+- Allowed "template creatures", which are creatures for which the ID, short
+  description, description, speech text, night speech text, and text details
+  are CSV strings. This makes it easier to specify a number of variations of
+  the same sort of creature without having to copy-paste the rest of the
+  specification in the configuration. To see an example of this, search for
+  "seagull" in ShadowOfTheWyrm_Creatures.xml.
+
+- New creatures: guillemot, puffin.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

@@ -1,7 +1,10 @@
 Me:
+- what other creatures can be templated now?
 - Killing creature on stairs should allow dropping items but not corpse,
   and should generate a message
-- Make keeps more interesting?`
+- guillemots
+- Make keeps more interesting?
+- Check the hireling code - found a L35 hireling on L1?`
 - Fill out Carcassia A2A
   - What's on the platform?
   - Lancer's Walk

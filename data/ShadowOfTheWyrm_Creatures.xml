@@ -13779,22 +13779,22 @@
 				<Type>1</Type>
 			</Damage>
 		</Creature>
-		<Creature id="seagull">
+		<Creature id="seagull,guillemot,puffin">
 			<RaceID>_bird</RaceID>
-			<ShortDescriptionSID>SEAGULL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
-			<DescriptionSID>SEAGULL_DESCRIPTION_SID</DescriptionSID>
-			<TextDetailsSID>SEAGULL_TEXT_DETAILS_SID</TextDetailsSID>
-			<SpeechTextSID>SEAGULL_SPEECH_TEXT_SID</SpeechTextSID>
+			<ShortDescriptionSID>SEAGULL_SHORT_DESCRIPTION_SID,GUILLEMOT_SHORT_DESCRIPTION_SID,PUFFIN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SEAGULL_DESCRIPTION_SID,GUILLEMOT_DESCRIPTION_SID,PUFFIN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SEAGULL_TEXT_DETAILS_SID,GUILLEMOT_TEXT_DETAILS_SID,PUFFIN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SEAGULL_SPEECH_TEXT_SID,GUILLEMOT_SPEECH_TEXT_SID,PUFFIN_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
 			<Symbol>
 				<Char>b</Char>
-				<Colour>15</Colour>
+				<Colour>15,8,9</Colour>
 				<Sprite>
 					<ID>cr</ID>
-					<Row>1</Row>
-					<Col>1</Col>
+					<Row>1,13,13</Row>
+					<Col>1,30,31</Col>
 				</Sprite>
 			</Symbol>
 			<CreatureGeneration>

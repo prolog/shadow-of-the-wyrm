@@ -519,7 +519,7 @@
 			<xs:element name="Spells" type="tns:SpellsType" minOccurs="0"/>
 			<xs:element name="Properties" type="tns:Properties" minOccurs="0"/>
 		</xs:sequence>
-		<xs:attribute name="id" type="tns:Identifier" use="required"/>
+		<xs:attribute name="id" type="tns:ListIdentifier" use="required"/>
 	</xs:complexType>
 </xs:element>
 <xs:element name="EventScripts">
@@ -1264,8 +1264,10 @@
 	</xs:annotation>
 	<xs:sequence>
 		<xs:element name="Char" type="xs:string" minOccurs="1"/>
-		<!-- Indicates that the colour will be used regardless of the season. -->
-		<xs:element name="Colour" type="tns:ColourType" minOccurs="0"/>
+		<!-- Indicates that the colour will be used regardless of the season.
+		     Colour should be either a numeric colour as defined in the game,
+			 or a list of such, comma-separated. -->
+		<xs:element name="Colour" type="xs:string" minOccurs="0"/>
 		<!-- Indicates that colours will be provided for each season. -->
 		<xs:element name="Colours" type="tns:SeasonColoursType" minOccurs="0"/>
 		<!-- Indicates that weather colours will be provided - high wind speed
@@ -1280,9 +1282,9 @@
 		<xs:documentation>Contains spritesheet info for a particular symbol.</xs:documentation>
 	</xs:annotation>
 	<xs:sequence>
-		<xs:element name="ID" type="tns:NonEmptyIdentifier"/>
-		<xs:element name="Row" type="xs:integer"/>
-		<xs:element name="Col" type="xs:integer"/>
+		<xs:element name="ID" type="tns:NonEmptyListIdentifier"/>
+		<xs:element name="Row" type="tns:NonEmptyIntegerListIdentifier"/>
+		<xs:element name="Col" type="tns:NonEmptyIntegerListIdentifier"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="SeasonColoursType">
@@ -1904,11 +1906,28 @@
 		<xs:pattern value="[\*a-zA-Z0-9_]*"/>
 	</xs:restriction>
 </xs:simpleType>
+<xs:simpleType name="ListIdentifier">
+	<xs:restriction base="xs:string">
+		<xs:pattern value="[\*a-zA-Z0-9_,]*"/>
+	</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="NonEmptyIdentifier">
 	<xs:restriction base="xs:string">
 		<xs:pattern value="[\*a-zA-Z0-9_]*"/>
 		<xs:minLength value="1"/>
 		<xs:maxLength value="50"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="NonEmptyListIdentifier">
+	<xs:restriction base="xs:string">
+		<xs:pattern value="[\*a-zA-Z0-9_,]*"/>
+		<xs:minLength value="1"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="NonEmptyIntegerListIdentifier">
+	<xs:restriction base="xs:string">
+		<xs:pattern value="[\*0-9_,]*"/>
+		<xs:minLength value="1"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="StatusAilmentType">

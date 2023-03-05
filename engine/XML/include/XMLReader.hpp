@@ -11,8 +11,8 @@
 class XMLReader
 {
   public:
-    void parse_symbol(Symbol& symbol, const XMLNode& symbol_node) const;
-    void parse_spritesheet_location(SpritesheetLocation& ssl, const XMLNode& ssloc_node) const;
+    void parse_symbol(Symbol& symbol, const XMLNode& symbol_node, const bool use_idx = false, const size_t idx = 0) const;
+    void parse_spritesheet_location(SpritesheetLocation& ssl, const XMLNode& ssloc_node, const bool use_idx, const size_t i) const;
     void parse_dice(Dice& dice, const XMLNode& dice_node) const;
     void parse_damage(Damage& damage, const XMLNode& damage_node) const;
     void parse_status_ailments(StatusAilments& ailments, const XMLNode& status_ailments_node) const;
