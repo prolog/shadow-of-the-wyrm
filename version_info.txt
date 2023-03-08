@@ -19,7 +19,7 @@ Shadow of the Wyrm v1.5.4 "Testagrossa"
   specification in the configuration. To see an example of this, search for
   "seagull" in ShadowOfTheWyrm_Creatures.xml.
 
-- New creatures: guillemot, puffin.
+- New creatures: guillemot, puffin, barn centipede.
 
 - Stanzas for "Tel and Floridel".
 

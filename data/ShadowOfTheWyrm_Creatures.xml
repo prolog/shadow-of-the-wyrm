@@ -19880,22 +19880,22 @@
 			</Damage>
 			<Soak>2</Soak>
 		</Creature>
-		<Creature id="large_ant">
+		<Creature id="large_ant,barn_centipede">
 			<RaceID>_insect</RaceID>
-			<ShortDescriptionSID>LARGE_ANT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
-			<DescriptionSID>LARGE_ANT_DESCRIPTION_SID</DescriptionSID>
-			<TextDetailsSID>LARGE_ANT_TEXT_DETAILS_SID</TextDetailsSID>
-			<SpeechTextSID>LARGE_ANT_SPEECH_TEXT_SID</SpeechTextSID>
+			<ShortDescriptionSID>LARGE_ANT_SHORT_DESCRIPTION_SID,BARN_CENTIPEDE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>LARGE_ANT_DESCRIPTION_SID,BARN_CENTIPEDE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>LARGE_ANT_TEXT_DETAILS_SID,BARN_CENTIPEDE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>LARGE_ANT_SPEECH_TEXT_SID,BARN_CENTIPEDE_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
 			<Symbol>
-				<Char>a</Char>
-				<Colour>1</Colour>
+				<Char>a,c</Char>
+				<Colour>1,2</Colour>
 				<Sprite>
 					<ID>cr</ID>
-					<Row>12</Row>
-					<Col>27</Col>
+					<Row>12,14</Row>
+					<Col>27,0</Col>
 				</Sprite>
 			</Symbol>
 			<CreatureGeneration>

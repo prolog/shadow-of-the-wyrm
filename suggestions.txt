@@ -1,4 +1,5 @@
 Me:
+- ASSET RELEASE
 - what other creatures can be templated now?
 - Killing creature on stairs should allow dropping items but not corpse,
   and should generate a message
