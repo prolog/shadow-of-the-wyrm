@@ -1,7 +1,7 @@
 Me:
 - ASSET RELEASE. git push --tags
 - Marcin Puc: asset, data dir
-- metallic centipede, colossal centipede
+- colossal centipede
 - what other creatures can be templated now?
 - Killing creature on stairs should allow dropping items but not corpse,
   and should generate a message
@@ -474,4 +474,9 @@ Similar search for inventory (filtering the items and without n/N) would also be
 
 Marcin Puc:
 - asset, data dir
+- "For context how configuring the dirs could work: either swyrm.ini gets a 
+   field for pointing to the root game directory, 
+   like /usr/share/shadow-of-the-wyrm/ that holds all dirs like assets, data 
+   etc, or reads it from an env variable e.g. SOTW_ROOT_DIR and then distros 
+   provide a wrapper script that sets it before running the game"
 - switch to cmake? for automatic install

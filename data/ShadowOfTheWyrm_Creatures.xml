@@ -19930,6 +19930,60 @@
 			</Damage>
 			<Soak>1</Soak>
 		</Creature>
+		<Creature id="metallic_centipede">
+			<RaceID>_insect</RaceID>
+			<ShortDescriptionSID>METALLIC_CENTIPEDE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>METALLIC_CENTIPEDE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>METALLIC_CENTIPEDE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>METALLIC_CENTIPEDE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>3</Size>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>c</Char>
+				<Colour>14</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>14</Row>
+					<Col>0</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>25</TileType>
+					<TileType>26</TileType>
+					<TileType>28</TileType>
+					<TileType>31</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+					<TileType>47</TileType>
+					<TileType>49</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>17</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>17</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>125</Exp>
+			</CreatureGeneration>
+			<Level>17</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>34</NumSides>
+				<Type>6</Type>
+			</Damage>
+			<Soak>12</Soak>
+		</Creature>
 		<Creature id="christof">
 			<RaceID>10_gnome</RaceID>
 			<ShortDescriptionSID>CHRISTOF_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
