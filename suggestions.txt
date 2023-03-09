@@ -1,5 +1,7 @@
 Me:
-- ASSET RELEASE
+- ASSET RELEASE. git push --tags
+- Marcin Puc: asset, data dir
+- metallic centipede, colossal centipede
 - what other creatures can be templated now?
 - Killing creature on stairs should allow dropping items but not corpse,
   and should generate a message
@@ -469,3 +471,7 @@ The pager used for texts could also be improved by:
   - in status line, the number of matches and the current match are displayed like this: [3/17]
 
 Similar search for inventory (filtering the items and without n/N) would also be helpful when you're looking for a particular item
+
+Marcin Puc:
+- asset, data dir
+- switch to cmake? for automatic install
