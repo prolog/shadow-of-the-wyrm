@@ -770,7 +770,10 @@ CommandPtr NPCDecisionStrategy::get_flee_decision(const string& this_creature_id
 
         const CreatureMap& creatures = view_map->get_creatures_ref();
         const auto& c_locs = view_map->get_locations_with_creatures();
+
+        int current_tscore = MapUtils::get_threat_distance_score_for_direction(creature, Direction::DIRECTION_NULL, map, view_map);
         int lowest_tscore = -1;
+
         // Pick the direction that looks safest
         for (const Direction d : move_dirs)
         {

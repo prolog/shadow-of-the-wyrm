@@ -139,6 +139,7 @@ int map_do_tiles_in_range_match_type(lua_State* ls);
 int map_creature_ids_have_substring(lua_State* ls);
 int log(lua_State* ls);
 int get_player_title(lua_State* ls);
+int set_creature_at_fleeing(lua_State* ls);
 int set_creature_current_hp(lua_State* ls);
 int get_creature_current_hp(lua_State* ls);
 int set_creature_base_hp(lua_State* ls);

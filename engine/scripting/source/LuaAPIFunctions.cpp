@@ -300,6 +300,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_creature_ids_have_substring", map_creature_ids_have_substring);
   lua_register(L, "log", log);
   lua_register(L, "get_player_title", get_player_title);
+  lua_register(L, "set_creature_at_fleeing", set_creature_at_fleeing);
   lua_register(L, "set_creature_current_hp", set_creature_current_hp);
   lua_register(L, "get_creature_current_hp", get_creature_current_hp);
   lua_register(L, "set_creature_base_hp", set_creature_base_hp);
@@ -4530,6 +4531,50 @@ int get_player_title(lua_State* ls)
   }
 
   lua_pushstring(ls, title.c_str());
+  return 1;
+}
+
+// Set the fleeing flag on a creature. This bypasses the usual checks and
+// doesn't give any notifications. It is only intended for debugging.
+int set_creature_at_fleeing(lua_State* ls)
+{
+  bool set_flag = false;
+
+  if (lua_gettop(ls) == 2 && lua_isnumber(ls, 2) && lua_isnumber(ls, 2))
+  {
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+    
+    if (current_map != nullptr)
+    {
+      int row = lua_tointeger(ls, 1);
+      int col = lua_tointeger(ls, 2);
+
+      TilePtr tile = current_map->at(row, col);
+
+      if (tile != nullptr)
+      {
+        CreaturePtr creature = tile->get_creature();
+
+        if (creature != nullptr)
+        {
+          // Set the fleeing flag and set HP arbitrarily low.
+          creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_COWARD, std::to_string(true));
+          creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_FLEEING, std::to_string(true));
+          Statistic& hp = creature->get_hit_points_ref();
+          hp.set_current(1);
+
+          set_flag = true;
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_at_fleeing");
+  }
+
+  lua_pushboolean(ls, set_flag);
   return 1;
 }
 
