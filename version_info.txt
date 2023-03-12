@@ -20,7 +20,7 @@ Shadow of the Wyrm v1.5.4 "Testagrossa"
   "seagull" in ShadowOfTheWyrm_Creatures.xml.
 
 - New creatures: guillemot, puffin, barn centipede, metallic centipede, great
-  centipede.
+  centipede, smallsailor.
 
 - Stanzas for "Tel and Floridel".
 
