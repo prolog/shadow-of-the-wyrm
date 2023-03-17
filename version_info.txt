@@ -10,7 +10,8 @@ Shadow of the Wyrm v1.5.4 "Testagrossa"
 - Some creatures are generated cowardly, and will try to flee when their HP
   becomes too low (Josh Engdahl).
 
-- Small memorial in Gnordvar for an old friend.
+- The table of contents in the guidebook now contains links to each section
+  (Dimm_ddr).
 
 - Allowed "template creatures", which are creatures for which the ID, short
   description, description, speech text, night speech text, and text details
@@ -21,6 +22,8 @@ Shadow of the Wyrm v1.5.4 "Testagrossa"
 
 - New creatures: guillemot, puffin, barn centipede, metallic centipede, great
   centipede, smallsailor.
+
+- Small memorial in Gnordvar for an old friend.
 
 - Stanzas for "Tel and Floridel".
 

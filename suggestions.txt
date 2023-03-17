@@ -480,3 +480,4 @@ Marcin Puc:
    etc, or reads it from an env variable e.g. SOTW_ROOT_DIR and then distros 
    provide a wrapper script that sets it before running the game"
 - switch to cmake? for automatic install
+
