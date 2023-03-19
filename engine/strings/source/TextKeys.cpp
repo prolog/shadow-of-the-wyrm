@@ -51,6 +51,7 @@ const string TextKeys::INDEFINITELY = "INDEFINITELY";
 const string TextKeys::STATUSES = "STATUSES";
 const string TextKeys::NPC_ESCAPES_MESSAGE = "NPC_ESCAPES_MESSAGE";
 const string TextKeys::NPC_FLEES_MESSAGE = "NPC_FLEES_MESSAGE";
+const string TextKeys::NPC_TURNS_TO_FIGHT_MESSAGE = "NPC_TURNS_TO_FIGHT_MESSAGE";
 const string TextKeys::SELECT_RACE = "SELECT_RACE";
 const string TextKeys::CLASS = "CLASS";
 const string TextKeys::SELECT_CLASS = "SELECT_CLASS";

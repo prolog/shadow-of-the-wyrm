@@ -1,4 +1,4 @@
-Shadow of the Wyrm v1.5.4 "Testagrossa"
+Shadow of the Wyrm v1.5.7 "Testagrossa"
 - Version started January 7, 2023.
 
 - Additional names for things.

@@ -2809,7 +2809,7 @@ int MapUtils::get_threat_distance_score_for_direction(CreaturePtr creature, cons
       {
         CreaturePtr cr = c_pair.second;
 
-        if (cr != nullptr && cr->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()).first)
+        if (cr != nullptr && CreatureUtils::either_creature_threatens(creature, cr))
         {
           Coordinate c = map->get_location(cr->get_id());
           score += CoordUtils::chebyshev_distance(c, new_loc);

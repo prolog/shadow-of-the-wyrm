@@ -1,7 +1,7 @@
 Me:
+- Turning to fight should be a probabilistic thing
+- Uniques and fleeing?
 - ASSET RELEASE. git push --tags
-- Marcin Puc: asset, data dir
-- colossal centipede
 - what other creatures can be templated now?
 - Killing creature on stairs should allow dropping items but not corpse,
   and should generate a message

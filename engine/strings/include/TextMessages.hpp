@@ -18,6 +18,7 @@ class TextMessages
     static std::string get_player_description(const std::string& player_name);
     static std::string get_npc_escapes_message(const std::string& creature_description);
     static std::string get_npc_flees_message(const std::string& creature_description);
+    static std::string get_npc_turns_to_fight_message(const std::string& creature_description);
     static std::string get_npc_level_message(const std::string& creature_description);
     static std::string get_action_not_found_message(const std::string& command_action);
     static std::string get_dumping_character_message(const std::string& char_name, const std::string& dir);

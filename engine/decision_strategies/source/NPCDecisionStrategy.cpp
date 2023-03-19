@@ -771,8 +771,8 @@ CommandPtr NPCDecisionStrategy::get_flee_decision(const string& this_creature_id
         const CreatureMap& creatures = view_map->get_creatures_ref();
         const auto& c_locs = view_map->get_locations_with_creatures();
 
-        int current_tscore = MapUtils::get_threat_distance_score_for_direction(creature, Direction::DIRECTION_NULL, map, view_map);
-        int lowest_tscore = -1;
+        int lowest_tscore = MapUtils::get_threat_distance_score_for_direction(creature, Direction::DIRECTION_NULL, map, view_map);
+        Direction proposed_direction = Direction::DIRECTION_NULL;
 
         // Pick the direction that looks safest
         for (const Direction d : move_dirs)
@@ -782,6 +782,7 @@ CommandPtr NPCDecisionStrategy::get_flee_decision(const string& this_creature_id
           if (tscore > lowest_tscore)
           {
             lowest_tscore = tscore;
+            proposed_direction = d;
             flee_command = std::make_unique<MovementCommand>(d, -1);
           }
         }
@@ -794,10 +795,16 @@ CommandPtr NPCDecisionStrategy::get_flee_decision(const string& this_creature_id
 
           creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_FLEEING, std::to_string(true));
         }
+
+        if (proposed_direction == Direction::DIRECTION_NULL)
+        {
+          turn_to_fight(creature);
+          flee_command = nullptr;
+        }
       }
       else
       {
-        creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_FLEEING);
+        turn_to_fight(creature);
       }
     }
   }
@@ -877,6 +884,25 @@ CommandPtr NPCDecisionStrategy::get_follow_direction(MapPtr view_map, CreaturePt
   }
 
   return command;
+}
+
+void NPCDecisionStrategy::turn_to_fight(CreaturePtr creature)
+{
+  if (creature != nullptr)
+  {
+    if (creature->has_additional_property(CreatureProperties::CREATURE_PROPERTIES_FLEEING))
+    {
+      // Once a creature recovers their courage, they will no longer ever be
+      // cowardly.
+      creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_COWARD);
+      creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_FLEEING);
+
+      // Add a message that the creature is now fighting instead of fleeing.
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature->get_is_player());
+      manager.add_new_message(TextMessages::get_npc_turns_to_fight_message(StringTable::get(creature->get_description_sid())));
+      manager.send();
+    }
+  }
 }
 
 void NPCDecisionStrategy::update_threats_based_on_fov(const std::string& this_creature_id, MapPtr view_map)
@@ -1032,28 +1058,19 @@ vector<pair<string, int>> NPCDecisionStrategy::get_creatures_by_distance(Creatur
 
 bool NPCDecisionStrategy::should_flee(CreaturePtr this_creature, MapPtr view_map)
 {
-  bool flee = false;
-
   if (this_creature != nullptr && view_map != nullptr)
   {
     Statistic hp = this_creature->get_hit_points();
 
     if (hp.get_percent() <= CreatureConstants::COWARDLY_CREATURE_HP_PCT_FLEE)
     {
-      const CreatureMap& creatures = view_map->get_creatures_ref();
-
-      for (const auto& cr_pair : creatures)
-      {
-        if (cr_pair.second != nullptr && cr_pair.second->get_decision_strategy()->get_threats_ref().has_threat(this_creature->get_id()).first)
-        {
-          flee = true;
-        }
-      }
+      return true;
     }
   }
 
-  return flee;
+  return false;
 }
+
 Coordinate NPCDecisionStrategy::select_safest_random_coordinate(CreaturePtr this_cr, const vector<Coordinate>& choice_coordinates)
 {
   pair<Coordinate, int> rc = { CoordUtils::end(), -1 };

@@ -47,6 +47,7 @@ class TextKeys
     static const std::string MAXIMUM_DEPTH_REACHED;
     static const std::string NPC_ESCAPES_MESSAGE;
     static const std::string NPC_FLEES_MESSAGE;
+    static const std::string NPC_TURNS_TO_FIGHT_MESSAGE;
     static const std::string SEX;
     static const std::string SELECT_SEX;
     static const std::string SEX_MALE;
