@@ -1,6 +1,9 @@
 Me:
 - Turning to fight should be a probabilistic thing
+- small chance of turning to fight triggering rage (Dimm_ddr)
+- Directions: tiebreaker?
 - Uniques and fleeing?
+- ON RELEASE: email George.
 - ASSET RELEASE. git push --tags
 - what other creatures can be templated now?
 - Killing creature on stairs should allow dropping items but not corpse,

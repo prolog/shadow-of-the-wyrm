@@ -8,7 +8,8 @@ Shadow of the Wyrm v1.5.7 "Testagrossa"
   read the text with pauses (George White).
 
 - Some creatures are generated cowardly, and will try to flee when their HP
-  becomes too low (Josh Engdahl).
+  becomes too low (Josh Engdahl). Fleeing creatures may turn to fight when
+  cornered.
 
 - The table of contents in the guidebook now contains links to each section
   (Dimm_ddr).
