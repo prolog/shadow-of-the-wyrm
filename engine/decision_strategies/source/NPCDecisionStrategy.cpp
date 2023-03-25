@@ -6,6 +6,7 @@
 #include "CommandCustomValues.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
+#include "CowardiceCalculator.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureTileSafetyChecker.hpp"
 #include "CreatureUtils.hpp"
@@ -32,6 +33,7 @@
 #include "RangedCombatApplicabilityChecker.hpp"
 #include "RangedCombatUtils.hpp"
 #include "RaceManager.hpp"
+#include "RageStatusEffect.hpp"
 #include "Ring.hpp"
 #include "RNG.hpp"
 #include "SearchStrategyFactory.hpp"
@@ -798,8 +800,19 @@ CommandPtr NPCDecisionStrategy::get_flee_decision(const string& this_creature_id
 
         if (proposed_direction == Direction::DIRECTION_NULL)
         {
-          turn_to_fight(creature);
-          flee_command = nullptr;
+          CowardiceCalculator cc;
+
+          if (RNG::percent_chance(cc.get_pct_chance_turn_to_fight(creature)))
+          {
+            if (RNG::percent_chance(cc.get_pct_chance_rage_fight(creature)))
+            {
+              RageStatusEffect rse;
+              rse.apply_change(creature, creature->get_level().get_current());
+            }
+
+            turn_to_fight(creature);
+            flee_command = nullptr;
+          }
         }
       }
       else

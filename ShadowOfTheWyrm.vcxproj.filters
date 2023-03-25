@@ -4490,6 +4490,9 @@
     <ClInclude Include="engine\skills\include\MountainLoreSkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\CowardiceCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9096,6 +9099,12 @@
     </ClCompile>
     <ClCompile Include="engine\skills\source\MountainLoreSkillProcessor.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\CowardiceCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\CowardiceCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
