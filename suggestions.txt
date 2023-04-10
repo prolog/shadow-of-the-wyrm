@@ -1,4 +1,7 @@
 Me:
+- jovanM: at pulper, turn wooden object into paper pulp
+- Desert/Forest/etc Lore (+ dungeoneering?): to-hit, damage, speed bonuses on 
+  that terrain
 - creature-specific turn-to-fight/rage values`
 - Directions: tiebreaker?
 - Uniques and fleeing?
@@ -45,6 +48,7 @@ Me:
 - sea generator: chance for islands:
   - desert island with spring
   - rocky island
+  - shallow water/shoals
   - etc
 - in do_generate... can that linkage function be hidden behind a check for
   either world map or interior tile? test!
@@ -142,7 +146,6 @@ Me:
 - Look at Earthsea names?
 - Ensure stunned works properly for NPCs
 - Weaponmasteries in guidebook
-- Desert/Forest/etc Lore: to-hit, damage, speed bonuses on that terrain
 - after Godslayer, divine spells gone/Divine skill 0
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere
