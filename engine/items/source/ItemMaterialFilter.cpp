@@ -2,8 +2,8 @@
 
 using namespace std;
 
-ItemMaterialFilter::ItemMaterialFilter(const MaterialType new_material)
-: material(new_material)
+ItemMaterialFilter::ItemMaterialFilter(const vector<MaterialType>& new_materials)
+: materials(new_materials)
 {
 }
 
@@ -14,9 +14,9 @@ bool ItemMaterialFilter::passes_filter(ItemPtr item) const
 {
   bool passes = false;
 
-  if (item)
+  if (item && !materials.empty())
   {
-    passes = (material == item->get_material_type());
+    passes = std::find(materials.begin(), materials.end(), item->get_material_type()) != materials.end();
   }
 
   return passes;
