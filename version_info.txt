@@ -21,6 +21,12 @@ Shadow of the Wyrm v1.5.7 "Testagrossa"
   specification in the configuration. To see an example of this, search for
   "seagull" in ShadowOfTheWyrm_Creatures.xml.
 
+- Wooden items can now be transformed into paper pulp (JovanM).
+
+- New material type, plant. "Wooden" items (clubs, crossbows, coracles, etc)
+  are now specified properly as wood, with plant-type items (vegetables,
+  wildflowers, etc) specified as plants.
+
 - New creatures: guillemot, puffin, barn centipede, metallic centipede, great
   centipede, smallsailor.
 

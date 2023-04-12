@@ -1555,11 +1555,12 @@
 			15 = Unknown
 			16 = Meat
 			17 = Clay
+			18 = Plant
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="17"/>
+		<xs:maxInclusive value="18"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="ColourType">
