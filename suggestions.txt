@@ -1,6 +1,4 @@
 Me:
-- suggestions: exclude certain item ids from autopickup, setting for always
-  stopping automove over items.
 - JovanM/Bentwing: godless
 - mushrooms with randomized effects, descs like wildflowers. eat scripts?
 - Desert/Forest/etc Lore (+ dungeoneering?): to-hit, damage, speed bonuses on 

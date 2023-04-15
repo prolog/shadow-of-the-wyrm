@@ -23,7 +23,10 @@ Shadow of the Wyrm v1.5.7 "Testagrossa"
 
 - Wooden items can now be transformed into paper pulp (JovanM).
 
-- Added a setting to always stop on items when using automove.
+- Added a setting to always stop on items when using automove (Xvordan).
+
+- Set a weight limit allowing the player to exclude heavier items from
+  autopickup (Xvordan).
 
 - New material type, plant. "Wooden" items (clubs, crossbows, coracles, etc)
   are now specified properly as wood, with plant-type items (vegetables,
@@ -52,6 +55,9 @@ Shadow of the Wyrm v1.5.7 "Testagrossa"
 
   - Carcassia C1A and C2A didn't have an east-west linkage (though they
     currently can't be co-reached in these directions).
+
+  - Having autopickup include rings would cause an issue with displaying that
+    option in the automatic actions menu.
 
 Shadow of the Wyrm v1.5.2 "Satoh"
 - Version started May 15, 2022. Version finalized January 7, 2023.
