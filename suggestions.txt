@@ -1,7 +1,8 @@
 Me:
-- jovanM: at pulper, turn wooden object into paper pulp
-- new material for plant, set appropriately, adjust wood material type name,
-  do a review
+- suggestions: exclude certain item ids from autopickup, setting for always
+  stopping automove over items.
+- JovanM/Bentwing: godless
+- mushrooms with randomized effects, descs like wildflowers. eat scripts?
 - Desert/Forest/etc Lore (+ dungeoneering?): to-hit, damage, speed bonuses on 
   that terrain
 - creature-specific turn-to-fight/rage values`
@@ -12,7 +13,6 @@ Me:
 - what other creatures can be templated now?
 - Killing creature on stairs should allow dropping items but not corpse,
   and should generate a message
-- guillemots
 - Make keeps more interesting?
 - Check the hireling code - found a L35 hireling on L1?`
 - Fill out Carcassia A2A
@@ -461,6 +461,7 @@ JovanM:
 - create inkpots
 - paper making from anything made of wood
 - long shops eg in Carcassia allow free thievery
+- combine Fletchery & Bowyer
 
 Sabrecam: 
 - pay guards for peace

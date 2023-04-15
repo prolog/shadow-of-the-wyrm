@@ -23,6 +23,8 @@ Shadow of the Wyrm v1.5.7 "Testagrossa"
 
 - Wooden items can now be transformed into paper pulp (JovanM).
 
+- Added a setting to always stop on items when using automove.
+
 - New material type, plant. "Wooden" items (clubs, crossbows, coracles, etc)
   are now specified properly as wood, with plant-type items (vegetables,
   wildflowers, etc) specified as plants.
