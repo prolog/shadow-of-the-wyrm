@@ -1,4 +1,5 @@
 Me:
+- JovanM: divine spells for prayer
 - JovanM/Bentwing: godless
 - mushrooms with randomized effects, descs like wildflowers. eat scripts?
 - Desert/Forest/etc Lore (+ dungeoneering?): to-hit, damage, speed bonuses on 
@@ -487,3 +488,5 @@ Marcin Puc:
    provide a wrapper script that sets it before running the game"
 - switch to cmake? for automatic install
 
+Xvordan:
+- in-map waypoint system

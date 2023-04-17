@@ -59,6 +59,9 @@ Shadow of the Wyrm v1.5.7 "Testagrossa"
   - Having autopickup include rings would cause an issue with displaying that
     option in the automatic actions menu.
 
+  - The boating skill wasn't showing a proper description when selected on
+    the skill screen (Xvordan).
+
 Shadow of the Wyrm v1.5.2 "Satoh"
 - Version started May 15, 2022. Version finalized January 7, 2023.
 
