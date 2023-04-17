@@ -37,6 +37,9 @@ Shadow of the Wyrm v1.5.7 "Testagrossa"
 
 - Small memorial in Gnordvar for an old friend.
 
+- The naming screen now references your selected class instead of just
+  "adventurer" (Xvordan).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
