@@ -40,6 +40,9 @@ Shadow of the Wyrm v1.5.7 "Testagrossa"
 - The naming screen now references your selected class instead of just
   "adventurer" (Xvordan).
 
+- Unimplemented skills are now disabled and can't be improved after levelling
+  (Josh Engdahl).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

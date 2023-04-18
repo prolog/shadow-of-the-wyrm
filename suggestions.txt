@@ -1,4 +1,5 @@
 Me:
+- repeated descs when using an invalid key on menu options with descriptions
 - JovanM: divine spells for prayer
 - JovanM/Bentwing: godless
 - mushrooms with randomized effects, descs like wildflowers. eat scripts?

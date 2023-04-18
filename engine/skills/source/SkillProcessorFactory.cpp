@@ -87,7 +87,7 @@ SkillProcessorPtr SkillProcessorFactory::create(const SkillType st)
     populate_skill_map();
   }
 
-  SkillProcessorPtr sp = std::make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_UNIMPLEMENTED);
+  SkillProcessorPtr sp = std::make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_UNIMPLEMENTED, false);
 
   if (st >= SkillType::SKILL_GENERAL_ARCHERY && st < SkillType::SKILL_GENERAL_LAST)
   {

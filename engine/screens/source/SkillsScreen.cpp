@@ -6,6 +6,7 @@
 #include "Setting.hpp"
 #include "TextComponent.hpp"
 #include "PromptTextKeys.hpp"
+#include "SkillProcessorFactory.hpp"
 #include "SkillTextKeys.hpp"
 
 using namespace std;
@@ -95,12 +96,24 @@ void SkillsScreen::initialize()
           sk_screen.clear();
         }
 
+        bool enabled = true;
+
+        if (sst == SkillsSelectionType::SKILLS_SELECTION_IMPROVE_SKILL)
+        {
+          SkillProcessorPtr sp = SkillProcessorFactory::create(st);
+          if (sp && !sp->is_skill_implemented())
+          {
+            enabled = false;
+          }
+        }
+
         // Set the ID after we've done a check on whether or not we can
         // add the component so that if a new page was added, and the
         // current id updated, we aren't setting the old value.
         current_option.set_id(current_id);
         current_option.set_external_id(to_string(i));
         current_option.set_uppercase(selection_require_uppercase);
+        current_option.set_enabled(enabled);
         options->add_option(current_option);
 
         add_options_component(sk_screen, options, cnt, current_id);
