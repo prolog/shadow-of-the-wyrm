@@ -966,7 +966,7 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
     for (unsigned int i = 0; i < num_options; i++)
     {
       Option current_option = options.at(i);
-      TextComponentPtr option_text = current_option.get_description();
+      TextComponentPtr option_text =  std::make_shared<TextComponent>(*current_option.get_description());
       string option_desc;
 
       // Only get the description if we should show one and if one has been set.
@@ -996,7 +996,6 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
       
       display_option << "] ";
       string display_option_s = display_option.str();
-      TextComponentPtr text = current_option.get_description();
       SDL_Color original_color = sdld.get_fg_colour();
 
       if (!option_enabled)
@@ -1008,7 +1007,7 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
 
       int ocol = *col + display_option_s.size();
 
-      display_text_component(window, row, &ocol, text, DisplayConstants::OPTION_SPACING);
+      display_text_component(window, row, &ocol, option_text, DisplayConstants::OPTION_SPACING);
 
       if (!option_enabled)
       {
