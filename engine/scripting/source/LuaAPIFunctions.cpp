@@ -1306,13 +1306,6 @@ int add_object_on_tile_to_creature(lua_State* ls)
 
   if (lua_gettop(ls) >= 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3) && lua_isstring(ls, 4))
   {
-    bool allow_overburdened = true;
-
-    if (lua_gettop(ls) >= 5 && lua_isboolean(ls, 5))
-    {
-      allow_overburdened = lua_toboolean(ls, 5);
-    }
-
     int y = lua_tointeger(ls, 1);
     int x = lua_tointeger(ls, 2);
     string item_id = lua_tostring(ls, 3);
@@ -6912,7 +6905,6 @@ int generate_shop(lua_State* ls)
     int start_x = lua_tointeger(ls, 3);
     int height = lua_tointeger(ls, 4);
     int width = lua_tointeger(ls, 5);
-    int wall_tile_type = lua_tointeger(ls, 6);
     TileType wall_type = static_cast<TileType>(lua_tointeger(ls, 6));
     bool gen_door = lua_toboolean(ls, 7);
 
