@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "ItemMaterialFilter.hpp"
 
 using namespace std;
