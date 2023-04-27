@@ -43,6 +43,8 @@ Shadow of the Wyrm v1.5.7 "Testagrossa"
 - Unimplemented skills are now disabled and can't be improved after levelling
   (Josh Engdahl).
 
+- Deities may now grant knowledge of divine magic after prayer (JovanM).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

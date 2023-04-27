@@ -53,6 +53,7 @@
 #include "ShopGenerator.hpp"
 #include "SkillManager.hpp"
 #include "Spellbook.hpp"
+#include "SpellbookReadStrategy.hpp"
 #include "SpellcastingAction.hpp"
 #include "StatisticsMarker.hpp"
 #include "StatisticTextKeys.hpp"
@@ -2135,11 +2136,8 @@ int add_spell_castings(lua_State* ls)
     if (creature != nullptr)
     {
       SpellKnowledge& sk = creature->get_spell_knowledge_ref();
-
-      IndividualSpellKnowledge isk = sk.get_spell_knowledge(spell_id);
-      uint new_castings = isk.get_castings() + addl_castings;
-      isk.set_castings(new_castings);
-      sk.set_spell_knowledge(spell_id, isk);
+      SpellbookReadStrategy srs;
+      srs.add_spell_castings(creature, spell_id, addl_castings);
     }
   }
   else
@@ -2170,11 +2168,8 @@ int add_all_spells_castings(lua_State* ls)
       for (auto& sp_pair : spells)
       {
         string spell_id = sp_pair.first;
-
-        IndividualSpellKnowledge isk = sk.get_spell_knowledge(spell_id);
-        uint new_castings = isk.get_castings() + addl_castings;
-        isk.set_castings(new_castings);
-        sk.set_spell_knowledge(spell_id, isk);
+        SpellbookReadStrategy srs;
+        srs.add_spell_castings(creature, spell_id, addl_castings);
       }
     }
  }

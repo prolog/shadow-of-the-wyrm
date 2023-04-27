@@ -4496,6 +4496,9 @@
     <ClInclude Include="world\materials\include\PlantMaterial.hpp">
       <Filter>Header Files\world\materials\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\GrantSpellDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9114,6 +9117,9 @@
     </ClCompile>
     <ClCompile Include="world\materials\source\unit_tests\PlantMaterial_test.cpp">
       <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\GrantSpellDeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

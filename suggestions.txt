@@ -1,5 +1,5 @@
 Me:
-- JovanM: divine spells for prayer
+- issue with too many save files, but there's only one? -1
 - JovanM/Bentwing: godless
 - mushrooms with randomized effects, descs like wildflowers. eat scripts?
 - Desert/Forest/etc Lore (+ dungeoneering?): to-hit, damage, speed bonuses on 
