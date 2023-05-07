@@ -45,6 +45,8 @@ Shadow of the Wyrm v1.5.7 "Testagrossa"
 
 - Deities may now grant knowledge of divine magic after prayer (JovanM).
 
+- Added a small write-up to the docs around map permanence (Josh Engdahl).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

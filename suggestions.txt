@@ -1,11 +1,11 @@
 Me:
+- mountaineering/lore: chance to find magici shard (+ mark tile), but only on
 - issue with too many save files, but there's only one? -1
 - JovanM/Bentwing: godless
 - mushrooms with randomized effects, descs like wildflowers. eat scripts?
 - Desert/Forest/etc Lore (+ dungeoneering?): to-hit, damage, speed bonuses on 
   that terrain
 - creature-specific turn-to-fight/rage values`
-- Directions: tiebreaker?
 - Uniques and fleeing?
 - ON RELEASE: email George.
 - ASSET RELEASE. git push --tags
@@ -90,12 +90,7 @@ Me:
 - fields north of carcassia: new generator type? finally use wheat?
 - timed quest for which boating would help a lot
 - guaranteed one 80-100 treasure for each lore type
-- what if during world generation, treasure is 1-100 on various tiles? with
-  that particular lore skill finding it and there's a procgen thing like 
-  "buried by Hodan the Wise", "buried by pirates", etc
-- oceanography: same as above but the ability to stumble on to shipwrecks
 - boating!
-- mountaineering/lore: chance to find magici shard (+ mark tile), but only on
   world map, only if not flying
 - JE: summoning logic: deities shouldn't summon: creatures of other
   deities, undead for some, demons for some, etc.
