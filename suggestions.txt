@@ -1,5 +1,7 @@
 Me:
-- mountaineering/lore: chance to find magici shard (+ mark tile), but only on
+- quantities for guard wall items
+- mountaineering/lore: chance to find magici shards (+ mark tile) and also to
+  generate a down staircase that leads to passageways that lead to a cavern
 - issue with too many save files, but there's only one? -1
 - JovanM/Bentwing: godless
 - mushrooms with randomized effects, descs like wildflowers. eat scripts?
