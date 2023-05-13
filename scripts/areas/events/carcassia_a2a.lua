@@ -3,6 +3,7 @@ require('constants')
 require('map_events')
 
 local map_id = "carcassia_a2a"
+local walkway_features = {{CCLASS_ID_FIRE_PILLAR}, {CCLASS_ID_FOUNTAIN}}
 
 function init_sky_high_deals(map_id)
   local y_start = RNG_range(5, 6)
@@ -30,6 +31,8 @@ end
 
 local function add_equipment_to_station(map_id, row, col_start, col_end)
   local ammo = {ARROW_ID, BOLT_ID, JAVELIN_ID, BARBED_SPEAR_ID, THROWING_CLUB_ID}
+  local rng_min = 6
+  local rng_max = 12
   local rare_ammo = {EXPLODING_ARROW_ID, WINGED_JAVELIN_ID}
   for x = col_start, col_end do
     if RNG_percent_chance(60) then
@@ -37,14 +40,27 @@ local function add_equipment_to_station(map_id, row, col_start, col_end)
 
       if RNG_percent_chance(7) then
         ammo_id = rare_ammo[RNG_range(1, #rare_ammo)]
+        rng_min = 4
+        rng_max = 6
       end
 
-      add_object_to_map(ammo_id, map_id, row, x)
+      add_object_to_map(ammo_id, map_id, row, x, RNG_range(rng_min, rng_max))
     end
   end
 end
 
-local function init_first_row(map_id, first_row)
+local function add_walkway_features(map_id, row, col_start, col_end, ww_idx)
+  local features = walkway_features[ww_idx]
+
+  for x = col_start, col_end do
+    if x % 6 == 0 then
+      local feature_id = features[RNG_range(1, #features)]
+      add_feature_to_map(row, x, feature_id, map_id)
+    end
+  end
+end
+
+local function init_north_walk(map_id, first_row)
   local guard_station = RNG_percent_chance(100)
 
   local start_x = 6
@@ -52,27 +68,37 @@ local function init_first_row(map_id, first_row)
     map_transform_tile(map_id, first_row, x, CTILE_TYPE_DUNGEON)
   end
 
-  if guard_station == true then
-    local offsets = {-1, 1}
+  local offsets = {-1, 1}
+  local feature_idx = RNG_range(1, #walkway_features)
 
-    for idx = 1, #offsets do
-      offset = offsets[idx]
+  for idx = 1, #offsets do
+    offset = offsets[idx]
 
-      for x = 8, 61 do
-        map_transform_tile(map_id, first_row + offset, x, CTILE_TYPE_DUNGEON)
-      end
+    for x = 8, 61 do
+      map_transform_tile(map_id, first_row + offset, x, CTILE_TYPE_DUNGEON)
     end
 
-    add_guards_to_station(map_id, first_row-1, 8, 61)
-    add_equipment_to_station(map_id, first_row+1, 8, 61)
+    if guard_station == true then
+      if offset == -1 then
+        add_guards_to_station(map_id, first_row+offset, 8, 61)
+      else
+        add_equipment_to_station(map_id, first_row+offset, 8, 61)
+      end
+    else
+      add_walkway_features(map_id, first_row+offset, 8, 61, feature_idx)
+    end
   end
+end
+
+local function init_southern_area(map_id, first_row)
 end
 
 function init_carcassia_a2a(map_id)
   local first_row = 2
  
   init_sky_high_deals(map_id)
-  init_first_row(map_id, first_row)
+  init_north_walk(map_id, first_row)
+  init_southern_area(map_id, first_row)
 end
 
 map_events.set_map_fn(map_id, init_carcassia_a2a)

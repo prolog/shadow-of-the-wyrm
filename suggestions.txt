@@ -1,5 +1,7 @@
 Me:
 - quantities for guard wall items
+- the curses rocky earth display bug (not preset in 1.5.2 - RelicWraith)
+- picking up an item - prompt (with swyrm option) re whether to equip it?
 - mountaineering/lore: chance to find magici shards (+ mark tile) and also to
   generate a down staircase that leads to passageways that lead to a cavern
 - issue with too many save files, but there's only one? -1
