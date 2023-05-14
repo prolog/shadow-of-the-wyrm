@@ -14,7 +14,19 @@ void XMLReader::parse_symbol(Symbol& symbol, const XMLNode& symbol_node, const b
   {
     uchar symbol_char = '?';
     string symbol_text = XMLUtils::get_child_node_value(symbol_node, "Char");
-    vector<string> symbol_vec = String::create_string_vector_from_csv_string(symbol_text);
+    vector<string> symbol_vec;
+    
+    if (symbol_text.size() >= 3)
+    {
+      symbol_vec = String::create_string_vector_from_csv_string(symbol_text);
+    }
+    else
+    {
+      if (!symbol_text.empty())
+      {
+        symbol_char = symbol_text[0];
+      }
+    }
 
     if (!symbol_vec.empty())
     {
