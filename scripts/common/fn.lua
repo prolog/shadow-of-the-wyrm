@@ -4,6 +4,10 @@ function make_coordinate_key(y, x)
   return tostring(y) .. "-" .. tostring(x)
 end
 
+function coord_tostring(y, x)
+  return "(" .. tostring(y) .. "," .. tostring(x) .. ")"
+end
+
 function make_corners(r1, r2, c1, c2)
   local dirs_and_coords = {}
   

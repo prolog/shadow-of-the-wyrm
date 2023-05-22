@@ -117,9 +117,28 @@ local function init_southern_plaza_gaps(map_id, start_y, end_y, start_x, end_x)
 end
 
 local function init_southern_plaza_features(map_id, start_y, end_y, start_x, end_x)
+  local mid_y = (start_y + end_y) / 2
+  local mid_x = (start_x + end_x) / 2
+  local max_y = (end_y - start_y) / 2
+  local x_offset = RNG_range(2,3)
+  local x_vals = {mid_x - x_offset, mid_x + x_offset}
+  local features = {CCLASS_ID_KNIGHT_DECORATIVE_STATUE, CCLASS_ID_FOUNTAIN, CCLASS_ID_FIRE_PILLAR}
+  local feature = features[RNG_range(1, #features)]
+ 
+  for i = 1, max_y - 1, 2 do
+    local y_vals = {mid_y - i, mid_y + i}
+
+    for i, val1 in ipairs(y_vals) do
+      for j, val2 in ipairs(x_vals) do
+        add_feature_to_map(feature, val1, val2, map_id)
+      end
+    end
+  end
 end
 
 local function init_southern_plaza_creatures(map_id, start_y, end_y, start_x, end_x)
+  local guaranteed_creatures = {}
+  local filler_creatures = {}
 end
 
 local function init_southern_plaza(map_id)
