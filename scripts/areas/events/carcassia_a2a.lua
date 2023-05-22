@@ -90,7 +90,47 @@ local function init_north_walk(map_id, first_row)
   end
 end
 
-local function init_southern_area(map_id, first_row)
+local function init_southern_plaza_gaps(map_id, start_y, end_y, start_x, end_x)
+  -- Small chance it's just a straight-up open plaza. Otherwise, it will
+  -- have gaps/drops that if I'm being honest are only so it looks interesting
+  -- when rendered on the map.
+  local incr = RNG_range(1,2)
+
+  if RNG_percent_chance(90) then
+    for i = 0, 4, incr do
+      local cur_sy = start_y + i
+      local cur_ey = end_y - i
+      local cur_sx = start_x + i
+      local cur_ex = end_x - i
+
+      -- Good chance of decorative corners
+      if RNG_percent_chance(70) then
+        corners = fn.make_corners(cur_sy, cur_ey, cur_sx, cur_ex)
+
+        for k,v in pairs(corners) do
+          -- Turn the corner into an air tile.
+          map_transform_tile(map_id, v[1], v[2], CTILE_TYPE_AIR)
+        end
+      end
+    end
+  end
+end
+
+local function init_southern_plaza_features(map_id, start_y, end_y, start_x, end_x)
+end
+
+local function init_southern_plaza_creatures(map_id, start_y, end_y, start_x, end_x)
+end
+
+local function init_southern_plaza(map_id)
+  local start_y = 5
+  local end_y = 17
+  local start_x = 10
+  local end_x = 38
+  
+  init_southern_plaza_gaps(map_id, start_y, end_y, start_x, end_x)
+  init_southern_plaza_features(map_id, start_y, end_y, start_x, end_x)
+  init_southern_plaza_creatures(map_id, start_y, end_y, start_x, end_x)
 end
 
 function init_carcassia_a2a(map_id)
@@ -98,7 +138,7 @@ function init_carcassia_a2a(map_id)
  
   init_sky_high_deals(map_id)
   init_north_walk(map_id, first_row)
-  init_southern_area(map_id, first_row)
+  init_southern_plaza(map_id)
 end
 
 map_events.set_map_fn(map_id, init_carcassia_a2a)
