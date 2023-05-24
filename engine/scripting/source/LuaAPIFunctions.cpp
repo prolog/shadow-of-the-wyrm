@@ -477,6 +477,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_nutrition", get_nutrition);
   lua_register(L, "get_hidden_treasure_message", get_hidden_treasure_message);
   lua_register(L, "get_map_type", get_map_type);
+  lua_register(L, "is_tile_available_for_creature", is_tile_available_for_creature);
 }
 
 // Lua API helper functions
@@ -10173,5 +10174,36 @@ int get_map_type(lua_State* ls)
   }
 
   lua_pushinteger(ls, static_cast<int>(mt));
+  return 1;
+}
+
+int is_tile_available_for_creature(lua_State* ls)
+{
+  bool avail = false;
+
+  if (lua_gettop(ls) == 3 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int y = lua_tointeger(ls, 2);
+    int x = lua_tointeger(ls, 3);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      if (tile != nullptr && MapUtils::is_tile_available_for_creature(nullptr, tile))
+      {
+        avail = true;
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to is_tile_available_for_creature");
+  }
+
+  lua_pushboolean(ls, avail);
   return 1;
 }

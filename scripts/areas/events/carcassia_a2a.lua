@@ -138,7 +138,24 @@ end
 
 local function init_southern_plaza_creatures(map_id, start_y, end_y, start_x, end_x)
   local guaranteed_creatures = {}
-  local filler_creatures = {}
+  local addl_creatures = {THIEF_ID, URCHIN_ID, PILGRIM_ID, FARMER_ID, FISHERMAN_ID, TRAVELLER_ID, CARCASSIAN_GUARD_ID, SMALL_CHILD_ID}
+  local num_addl = RNG_range(5, 8)
+
+  for i = 1, num_addl do
+    -- Try a few times for each possible additional creature just in case
+    -- uninhabitable tiles in range are selected.
+    for x = 1, 3 do
+      local cr_id = addl_creatures[RNG_range(1, #addl_creatures)]
+      local y = RNG_range(start_y, end_y)
+      local x = RNG_range(start_x, end_x)
+      local tile_info = map_get_tile(map_id, y, x)
+
+      if tile_info ~= nil and tile_info["tile_type"] == CTILE_TYPE_DUNGEON and is_tile_available_for_creature(map_id, y, x) then
+        add_creature_to_map(cr_id, y, x, map_id)
+        break
+      end
+    end
+  end
 end
 
 local function init_southern_plaza(map_id)

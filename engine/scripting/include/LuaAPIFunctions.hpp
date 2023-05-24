@@ -317,6 +317,7 @@ int get_creature_size(lua_State* ls);
 int get_nutrition(lua_State* ls);
 int get_hidden_treasure_message(lua_State* ls);
 int get_map_type(lua_State* ls);
+int is_tile_available_for_creature(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);
