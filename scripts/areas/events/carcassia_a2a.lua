@@ -137,15 +137,19 @@ local function init_southern_plaza_features(map_id, start_y, end_y, start_x, end
 end
 
 local function init_southern_plaza_creatures(map_id, start_y, end_y, start_x, end_x)
-  local guaranteed_creatures = {}
-  local addl_creatures = {THIEF_ID, URCHIN_ID, PILGRIM_ID, FARMER_ID, FISHERMAN_ID, TRAVELLER_ID, CARCASSIAN_GUARD_ID, SMALL_CHILD_ID}
+  local creatures = {VARRA_ID}
+  local addl_creature_ids = {THIEF_ID, URCHIN_ID, PILGRIM_ID, FARMER_ID, FISHERMAN_ID, TRAVELLER_ID, CARCASSIAN_GUARD_ID, SMALL_CHILD_ID}
   local num_addl = RNG_range(5, 8)
 
   for i = 1, num_addl do
+    table.insert(creatures, addl_creature_ids[RNG_range(1, #addl_creature_ids)])
+  end
+
+  for i = 1, #creatures do
     -- Try a few times for each possible additional creature just in case
     -- uninhabitable tiles in range are selected.
-    for x = 1, 3 do
-      local cr_id = addl_creatures[RNG_range(1, #addl_creatures)]
+    for x = 1, 20 do
+      local cr_id = creatures[i]
       local y = RNG_range(start_y, end_y)
       local x = RNG_range(start_x, end_x)
       local tile_info = map_get_tile(map_id, y, x)

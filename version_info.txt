@@ -1,4 +1,4 @@
-Shadow of the Wyrm v1.5.7 "Testagrossa"
+Shadow of the Wyrm v1.5.8 "Testagrossa"
 - Version started January 7, 2023.
 
 - Additional names for things.
@@ -33,7 +33,7 @@ Shadow of the Wyrm v1.5.7 "Testagrossa"
   wildflowers, etc) specified as plants.
 
 - New creatures: guillemot, puffin, barn centipede, metallic centipede, great
-  centipede, smallsailor, peddlar.
+  centipede, smallsailor, peddlar, Varra.
 
 - Small memorial in Gnordvar for an old friend.
 

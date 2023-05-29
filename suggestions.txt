@@ -1,5 +1,6 @@
 Me:
-- quantities for guard wall items
+- ASSET RELEASE. git push --tags
+- Varra and Sorscia
 - the curses rocky earth display bug (not preset in 1.5.2 - RelicWraith)
 - picking up an item - prompt (with swyrm option) re whether to equip it?
 - mountaineering/lore: chance to find magici shards (+ mark tile) and also to
@@ -12,7 +13,6 @@ Me:
 - creature-specific turn-to-fight/rage values`
 - Uniques and fleeing?
 - ON RELEASE: email George.
-- ASSET RELEASE. git push --tags
 - what other creatures can be templated now?
 - Killing creature on stairs should allow dropping items but not corpse,
   and should generate a message
