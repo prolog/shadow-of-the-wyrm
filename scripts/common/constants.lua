@@ -151,6 +151,9 @@ ITEM_PROPERTIES_SUPPRESS_ITEM_GENERATION_ON_DESTRUCTION = "no_item_on_destr"
 -- Map Properties
 MAP_PROPERTIES_DIVINE_FORBIDDEN = "MAP_PROPERTIES_DIVINE_FORBIDDEN"
 
+-- Map IDs
+MAP_ID_FAE_CARAVAN = "fae_caravan"
+
 -- Quest constants
 CREATURE_QUEST_GUID = "creature_quest_guid"
 QUEST_ACEY_STOLEN_GOODS_COMPLETE = "quest_acey_stolen_goods_complete"
