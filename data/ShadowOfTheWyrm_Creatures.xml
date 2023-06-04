@@ -26302,6 +26302,49 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="athel">
+			<RaceID>01_human</RaceID>
+			<DeityID>02_aurelion</DeityID>
+			<ShortDescriptionSID>ATHEL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ATHEL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ATHEL_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ATHEL_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>t</Char>
+				<Colour>9</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>14</Row>
+					<Col>2</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<DangerLevel>9</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>13</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>43</Exp>
+			</CreatureGeneration>
+			<Level>13</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>26</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<Soak>6</Soak>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/athel.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 		<Creature id="carcassian_magistrate">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>CARCASSIAN_MAGISTRATE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

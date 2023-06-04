@@ -144,6 +144,7 @@ URCHIN_ID = "urchin"
 TRAVELLER_ID = "traveller"
 SMALL_CHILD_ID = "_small_child"
 VARRA_ID = "varra"
+ATHEL_ID = "athel"
 
 -- Item properties
 ITEM_PROPERTIES_SUPPRESS_ITEM_GENERATION_ON_DESTRUCTION = "no_item_on_destr"
