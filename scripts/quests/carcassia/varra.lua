@@ -25,7 +25,7 @@ local function varra_fae_completion_fn()
   clear_and_add_message("VARRA_FAE_QUEST_COMPLETE2_SID")
 
   add_object_to_player_tile(GOLDEN_APPLE_ID, num_golden)
-  add_object_to_player_tile(SILVER_APPLE_ID, num_silve)
+  add_object_to_player_tile(SILVER_APPLE_ID, num_silver)
 
   local varra_id = args[SPEAKING_CREATURE_ID]
   remove_leader(varra_id)
