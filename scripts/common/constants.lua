@@ -154,6 +154,7 @@ MAP_PROPERTIES_DIVINE_FORBIDDEN = "MAP_PROPERTIES_DIVINE_FORBIDDEN"
 
 -- Map IDs
 MAP_ID_FAE_CARAVAN = "fae_caravan"
+MAP_ID_ISEN_DUN = "isen_dun"
 
 -- Quest constants
 CREATURE_QUEST_GUID = "creature_quest_guid"
