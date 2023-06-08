@@ -318,10 +318,12 @@ class LatestMessagesCommand : public Command
     ~LatestMessagesCommand();
 };
 
-class KickCommand : public Command
+class KickCommand : public DirectionalCommand
 {
   public:
     KickCommand(int key);
+    KickCommand(const Direction kick_dir, const int key);
+
     ~KickCommand();
 };
 

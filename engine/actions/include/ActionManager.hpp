@@ -140,7 +140,7 @@ class ActionManager : public ISerializable
     ActionCost latest_messages(CreaturePtr creature);
 
     // Kick in a particular direction
-    ActionCost kick(CreaturePtr creature);
+    ActionCost kick(CreaturePtr creature, const Direction kick_dir = Direction::DIRECTION_NULL);
 
     // Offer a sacrifice
     ActionCost offer(CreaturePtr creature);

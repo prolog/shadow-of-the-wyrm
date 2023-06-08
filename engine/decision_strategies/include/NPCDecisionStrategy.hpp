@@ -27,6 +27,7 @@ class NPCDecisionStrategy : public DecisionStrategy
     bool has_movement_orders() const;
     virtual CommandPtr get_magic_decision(const std::string& this_creature_id, MapPtr view_map);
     virtual CommandPtr get_breed_decision(const std::string& this_creature_id, MapPtr view_map);
+    virtual CommandPtr get_kick_decision(const std::string& this_creature_id, MapPtr view_map);
     virtual CommandPtr get_attack_decision(const std::string& this_creature_id, MapPtr view_map);
     virtual CommandPtr get_ranged_attack_decision(const std::string& this_creature_id, MapPtr view_map);
     virtual CommandPtr get_custom_decision(const std::string& this_creature_id, MapPtr view_map);
@@ -60,4 +61,5 @@ class NPCDecisionStrategy : public DecisionStrategy
     static const int PERCENT_CHANCE_CONSIDER_USING_MAGIC;
     static const int PERCENT_CHANCE_CONSIDER_RANGED_COMBAT;
     static const int PERCENT_CHANCE_BREED;
+    static const int PERCENT_CHANCE_KICK_OFF_LEDGE;
 };

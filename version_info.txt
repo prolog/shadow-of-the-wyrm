@@ -25,6 +25,8 @@ Shadow of the Wyrm v1.5.8 "Testagrossa"
 
 - Added a setting to always stop on items when using automove (Xvordan).
 
+- Creatures may decide to kick if doing so could insta-kill their opponent.
+
 - Set a weight limit allowing the player to exclude heavier items from
   autopickup (Xvordan).
 
@@ -33,7 +35,7 @@ Shadow of the Wyrm v1.5.8 "Testagrossa"
   wildflowers, etc) specified as plants.
 
 - New creatures: guillemot, puffin, barn centipede, metallic centipede, great
-  centipede, smallsailor, peddlar, Varra.
+  centipede, smallsailor, peddlar, Varra, Athel.
 
 - Small memorial in Gnordvar for an old friend.
 

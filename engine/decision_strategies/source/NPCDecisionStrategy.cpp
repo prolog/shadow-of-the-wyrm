@@ -53,6 +53,7 @@ const int NPCDecisionStrategy::PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET = 85;
 const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_USING_MAGIC = 75;
 const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_RANGED_COMBAT = 80;
 const int NPCDecisionStrategy::PERCENT_CHANCE_BREED = 15;
+const int NPCDecisionStrategy::PERCENT_CHANCE_KICK_OFF_LEDGE = 65;
 
 NPCDecisionStrategy::NPCDecisionStrategy(ControllerPtr new_controller)
 : DecisionStrategy(new_controller)
@@ -260,6 +261,14 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
     {
       if (command == nullptr)
       {
+        command = get_kick_decision(this_creature_id, view_map);
+      }
+    }
+
+    if (has_movement_orders() == false)
+    {
+      if (command == nullptr)
+      {
         command = get_attack_decision(this_creature_id, view_map);
       }
     }
@@ -366,6 +375,82 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
   }
 
   return magic_command;
+}
+
+// Get the decision whether or not to kick.
+CommandPtr NPCDecisionStrategy::get_kick_decision(const string& this_creature_id, MapPtr view_map)
+{
+  CommandPtr no_kick;
+
+  // Iterate through the threats in order of threatiness
+  ThreatMap threat_map = threat_ratings.get_all_threats();
+  ThreatMap::const_reverse_iterator t_it = threat_map.rbegin();
+
+  if (view_map != nullptr)
+  {
+    Coordinate c_this = view_map->get_location(this_creature_id);
+    TilePtr this_tile = view_map->at(c_this);
+
+    if (this_tile != nullptr)
+    {
+      CreaturePtr this_cr = this_tile->get_creature();
+
+      // Ensure that we only attack legitimate threats.
+      // Creatures may dislike other creatures, but that won't cause them to attack.
+      while (t_it != threat_map.rend() && t_it->first > ThreatConstants::DISLIKE_THREAT_RATING)
+      {
+        set<string> creature_ids = t_it->second;
+        vector<pair<string, int>> threat_distances = get_creatures_by_distance(this_cr, view_map, creature_ids);
+
+        for (const auto& td_pair : threat_distances)
+        {
+          if (td_pair.second > 1)
+          {
+            break;
+          }
+
+          string threatening_creature_id = td_pair.first;
+
+          // Check the view map to see if the creature exists
+          if (view_map->has_creature(threatening_creature_id))
+          {
+            // Check if adjacent to this_creature_id
+            Coordinate c_threat = view_map->get_location(threatening_creature_id);
+            
+            // Only kick if we're right next to the threat.
+            if (CoordUtils::are_coordinates_adjacent(c_this, c_threat))
+            {
+              CreaturePtr threatening_creature = view_map->get_creature(threatening_creature_id);
+
+              // In general, kicking is a weak/poor decision. It's almost
+              // always better to attack instead. But if the kick would
+              // knock back the threat over a ledge, well...
+              Direction direction = CoordUtils::get_direction(c_this, c_threat);
+              Coordinate kick_into_coord = CoordUtils::get_new_coordinate(c_threat, direction, 1);
+              TilePtr tile = view_map->at(kick_into_coord);
+
+              if (tile &&
+                  this_cr &&
+                  threatening_creature &&
+                  tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_AIR &&
+                  !threatening_creature->has_status(StatusIdentifiers::STATUS_ID_FLYING) &&
+                  this_cr->get_size() >= threatening_creature->get_size() &&
+                  RNG::percent_chance(PERCENT_CHANCE_KICK_OFF_LEDGE))
+              {
+                CommandPtr command = std::make_unique<KickCommand>(direction, -1);
+                return command;
+              }
+            }
+          }
+        }
+
+        // Try the next threat level.
+        t_it++;
+      }
+    }
+  }
+
+  return no_kick;
 }
 
 // Get the decision for what to attack.

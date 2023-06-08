@@ -341,6 +341,10 @@ ActionCost CommandProcessor::process_directional_command(CreaturePtr creature, D
     {
       return game.actions.attack(creature, direction);
     }
+    else if (command_name == CommandKeys::KICK)
+    {
+      return game.actions.kick(creature, direction);
+    }
   }
   
   return ac;
