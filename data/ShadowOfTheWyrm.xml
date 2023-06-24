@@ -4212,7 +4212,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
-					<ID>_cap</ID>
+					<ID>bandana</ID>
 				</Head>
 				<Wielded>
 					<ID>long_spear</ID>
@@ -4583,7 +4583,7 @@
 			</DeityDislikeMultipliers>
 			<InitialEquipmentAndInventory>
 				<Head>
-					<ID>_cap</ID>
+					<ID>bandana</ID>
 				</Head>
 				<Wielded>
 					<ID>dagger</ID>

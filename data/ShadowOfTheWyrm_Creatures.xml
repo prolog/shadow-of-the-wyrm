@@ -26345,6 +26345,60 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="thera">
+			<RaceID>02_woodelf</RaceID>
+			<ShortDescriptionSID>THENA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THENA_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THENA_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THENA_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>e</Char>
+				<Colour>10</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>13</Row>
+					<Col>14</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>5</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>5</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9</Exp>
+				<InitialEquipmentAndInventory>
+					<Body>
+						<ID>elven_robes</ID>
+					</Body>
+					<Wielded>
+						<ID>long_spear</ID>
+					</Wielded>
+					<InitialInventory>
+						<InitialItem>
+							<ID>flame_wand</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>
+			</CreatureGeneration>
+			<Level>5</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>10</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/thena.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 		<Creature id="carcassian_magistrate">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>CARCASSIAN_MAGISTRATE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

@@ -25,6 +25,9 @@ Shadow of the Wyrm v1.5.8 "Testagrossa"
 
 - Added a setting to always stop on items when using automove (Xvordan).
 
+- Thieves and seafarers now start with bandanas. This is purely flavour:
+  bandanas are basically the same as caps.
+
 - Creatures may decide to kick if doing so could insta-kill their opponent.
 
 - Set a weight limit allowing the player to exclude heavier items from
@@ -34,8 +37,10 @@ Shadow of the Wyrm v1.5.8 "Testagrossa"
   are now specified properly as wood, with plant-type items (vegetables,
   wildflowers, etc) specified as plants.
 
+- New items: Selrin's bandana.
+
 - New creatures: guillemot, puffin, barn centipede, metallic centipede, great
-  centipede, smallsailor, peddlar, Varra, Athel.
+  centipede, smallsailor, peddlar, Varra, Athel, Thena.
 
 - Small memorial in Gnordvar for an old friend.
 

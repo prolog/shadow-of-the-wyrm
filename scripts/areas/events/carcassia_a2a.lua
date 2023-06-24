@@ -137,7 +137,7 @@ local function init_southern_plaza_features(map_id, start_y, end_y, start_x, end
 end
 
 local function init_southern_plaza_creatures(map_id, start_y, end_y, start_x, end_x)
-  local creatures = {VARRA_ID, ATHEL_ID}
+  local creatures = {VARRA_ID, ATHEL_ID, THENA_ID}
   local addl_creature_ids = {THIEF_ID, URCHIN_ID, PILGRIM_ID, FARMER_ID, FISHERMAN_ID, TRAVELLER_ID, CARCASSIAN_GUARD_ID, SMALL_CHILD_ID}
   local num_addl = RNG_range(5, 8)
 
