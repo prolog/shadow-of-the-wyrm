@@ -185,7 +185,7 @@ ActionCostValue KickAction::kick_creature(CreaturePtr kicking_creature, Creature
     // confirmation.
     if (!kicked_creature->get_decision_strategy()->get_threats_ref().has_threat(kicking_creature->get_id()).first)
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, kicking_creature, kicking_creature && kicking_creature->get_is_player());
+      IMessageManager& manager = MM::instance(MessageTransmit::SELF, kicking_creature, kicking_creature && kicking_creature->get_is_player());
       manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
       attack = kicking_creature->get_decision_strategy()->get_confirmation();
     }

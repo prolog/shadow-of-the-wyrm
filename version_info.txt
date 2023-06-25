@@ -81,6 +81,9 @@ Shadow of the Wyrm v1.5.8 "Testagrossa"
 
   - Option descriptions would repeat when an invalid key was pressed.
 
+  - A player-specific confirmation message was showing when enemies decided
+    whether to kick you or not.
+
 Shadow of the Wyrm v1.5.2 "Satoh"
 - Version started May 15, 2022. Version finalized January 7, 2023.
 
