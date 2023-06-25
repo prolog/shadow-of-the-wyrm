@@ -26345,7 +26345,7 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
-		<Creature id="thera">
+		<Creature id="thena">
 			<RaceID>02_woodelf</RaceID>
 			<ShortDescriptionSID>THENA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THENA_DESCRIPTION_SID</DescriptionSID>

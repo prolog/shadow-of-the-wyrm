@@ -9,6 +9,7 @@ Me:
   generate a down staircase that leads to passageways that lead to a cavern
 - issue with too many save files, but there's only one? -1
 - JovanM/Bentwing: godless
+- Branding should give a base 20% resist
 - mushrooms with randomized effects, descs like wildflowers. eat scripts?
 - Desert/Forest/etc Lore (+ dungeoneering?): to-hit, damage, speed bonuses on 
   that terrain
