@@ -31,6 +31,7 @@ Race::Race()
 , has_voice(false)
 , has_hair(false)
 , natural(false)
+, can_kick(false)
 , has_random_villages(true)
 , settlement_type(SettlementType::SETTLEMENT_TYPE_ORDERLY_VILLAGE)
 , settlement_tile_subtype(TileType::TILE_TYPE_FIELD)
@@ -234,6 +235,16 @@ void Race::set_natural(const bool new_natural)
 bool Race::get_natural() const
 {
   return natural;
+}
+
+void Race::set_can_kick(const bool new_can_kick)
+{
+  can_kick = new_can_kick;
+}
+
+bool Race::get_can_kick() const
+{
+  return can_kick;
 }
 
 void Race::set_drops(const map<string, DropParameters>& new_drops)

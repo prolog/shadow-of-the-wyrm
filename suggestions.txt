@@ -1,7 +1,7 @@
 Me:
-- Kicking humanoid only for NPCs?
 - There's an "Are you sure you want to attack?" that periodically shows up
-  when NPCs decide to kicK?
+  when NPCs decide to kick?
+- Kicks should probably always take a Pound damage type! see: wrecker
 - ASSET RELEASE. git push --tags
 - YARD: let NPCs pray in desperation as well
 - picking up an item - prompt (with swyrm option) re whether to equip it?

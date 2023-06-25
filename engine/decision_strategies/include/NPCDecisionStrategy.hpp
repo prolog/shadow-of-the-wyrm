@@ -62,4 +62,5 @@ class NPCDecisionStrategy : public DecisionStrategy
     static const int PERCENT_CHANCE_CONSIDER_RANGED_COMBAT;
     static const int PERCENT_CHANCE_BREED;
     static const int PERCENT_CHANCE_KICK_OFF_LEDGE;
+    static const int PERCENT_CHANCE_KICK_REGULAR_COMBAT;
 };

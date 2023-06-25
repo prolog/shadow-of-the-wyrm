@@ -106,6 +106,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool natural = XMLUtils::get_child_node_bool_value(race_node, "Natural");
     race->set_natural(natural);
 
+    bool can_kick = XMLUtils::get_child_node_bool_value(race_node, "CanKick");
+    race->set_can_kick(can_kick);
+
     XMLNode drops_node = XMLUtils::get_next_element_by_local_name(race_node, "Drops");
     parse_race_drops(race.get(), drops_node);
 
