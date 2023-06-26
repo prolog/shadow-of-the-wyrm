@@ -25535,13 +25535,13 @@
 				<Type>9</Type>
 			</Damage>
 			<EventScripts>
-				<ChatScript>
-					<Script>quests/telari/the_sorceror.lua</Script>
-				</ChatScript>
 				<DeathScript>
 					<Script>death/the_sorceror.lua</Script>
 					<Chance>100</Chance>
 				</DeathScript>
+				<ChatScript>
+					<Script>quests/telari/the_sorceror.lua</Script>
+				</ChatScript>
 			</EventScripts>
 		</Creature>
 		<Creature id="the_sentry">
@@ -26374,12 +26374,12 @@
 				</HP>
 				<Exp>9</Exp>
 				<InitialEquipmentAndInventory>
-					<Body>
-						<ID>elven_robes</ID>
-					</Body>
 					<Wielded>
 						<ID>long_spear</ID>
 					</Wielded>
+					<Body>
+						<ID>elven_robes</ID>
+					</Body>
 					<InitialInventory>
 						<InitialItem>
 							<ID>flame_wand</ID>
