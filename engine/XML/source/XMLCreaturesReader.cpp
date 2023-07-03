@@ -75,7 +75,10 @@ vector<pair<CreaturePtr, CreatureGenerationValues>> XMLCreaturesReader::parse_cr
     vector<string> td_vec = String::create_string_vector_from_csv_string(text_details_sid);
     vector<string> stext_vec = String::create_string_vector_from_csv_string(speech_text_sid);
     vector<string> ntext_vec = String::create_string_vector_from_csv_string(night_speech_text_sid);
-    bool length_ok = (id_vec.size() == sdesc_vec.size() == desc_vec.size() == td_vec.size() == stext_vec.size());
+    bool length_ok = (id_vec.size() == sdesc_vec.size() && 
+                      sdesc_vec.size() == desc_vec.size() && 
+                      desc_vec.size() == td_vec.size() && 
+                      td_vec.size() == stext_vec.size());
 
     for (size_t i = 0; i < id_vec.size(); i++)
     {
