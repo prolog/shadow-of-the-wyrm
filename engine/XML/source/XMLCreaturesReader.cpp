@@ -5,6 +5,7 @@
 #include "CreatureProperties.hpp"
 #include "DecisionStrategyFactory.hpp"
 #include "DecisionStrategyProperties.hpp"
+#include "Log.hpp"
 #include "ModifyStatisticsEffect.hpp"
 #include "XMLCreaturesReader.hpp"
 #include "XMLModifierReader.hpp"
@@ -79,6 +80,11 @@ vector<pair<CreaturePtr, CreatureGenerationValues>> XMLCreaturesReader::parse_cr
                       sdesc_vec.size() == desc_vec.size() && 
                       desc_vec.size() == td_vec.size() && 
                       td_vec.size() == stext_vec.size());
+
+    if (!length_ok)
+    {
+      Log::instance().error("Incorrect vector lengths for creature with id_vec=" + id);
+    }
 
     for (size_t i = 0; i < id_vec.size(); i++)
     {
