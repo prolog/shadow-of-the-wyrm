@@ -2136,7 +2136,6 @@ int add_spell_castings(lua_State* ls)
 
     if (creature != nullptr)
     {
-      SpellKnowledge& sk = creature->get_spell_knowledge_ref();
       SpellbookReadStrategy srs;
       srs.add_spell_castings(creature, spell_id, addl_castings);
     }
@@ -2163,8 +2162,6 @@ int add_all_spells_castings(lua_State* ls)
     {
       Game& game = Game::instance();
       const SpellMap& spells = game.get_spells_ref();
-
-      SpellKnowledge& sk = creature->get_spell_knowledge_ref();
 
       for (auto& sp_pair : spells)
       {
