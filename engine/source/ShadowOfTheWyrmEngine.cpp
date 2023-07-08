@@ -714,7 +714,15 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
     {
       if (default_name.empty() || !warning_message.empty())
       {
-        NamingScreen naming(display, creature_synopsis, warning_message);
+        string class_sid = TextKeys::DEFAULT_CLASS_NAME_SID;
+
+        auto cl_it = classes.find(ccd.get_class_id());
+        if (cl_it != classes.end())
+        {
+          class_sid = cl_it->second->get_class_name_sid();
+        }
+
+        NamingScreen naming(display, StringTable::get(class_sid), creature_synopsis, warning_message);
         name = naming.display();
       }
     }

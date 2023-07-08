@@ -170,7 +170,7 @@ list<IItemFilterPtr> ItemFilterFactory::create_hands_required_filter(const Equip
 }
 
 // Create a filter by material type.
-list<IItemFilterPtr> ItemFilterFactory::create_material_type_filter(const MaterialType material)
+list<IItemFilterPtr> ItemFilterFactory::create_material_type_filter(const std::vector<MaterialType>& material)
 {
   list<IItemFilterPtr> material_filters;
 

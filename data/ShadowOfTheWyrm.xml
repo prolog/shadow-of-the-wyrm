@@ -450,10 +450,12 @@
 			<Pacifiable>0</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>0</PctFlee>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
 			<Natural>0</Natural>
+			<CanKick>0</CanKick>
 			<NameSID>UNKNOWN_RACE_NAME</NameSID>
 			<Size>4</Size>
 			<AgeInfo>
@@ -523,10 +525,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>1</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>25</PctFlee>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
 			<Natural>1</Natural>
+			<CanKick>1</CanKick>
 			<NameSID>ANIMAL_RACE_NAME</NameSID>
 			<Size>1</Size>
 			<AgeInfo>
@@ -596,10 +600,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>1</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>35</PctFlee>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
 			<Natural>1</Natural>
+			<CanKick>0</CanKick>
 			<Drops>
 				<Drop>
 					<ID>_quill</ID>
@@ -674,10 +680,12 @@
 			<Pacifiable>0</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
 			<Natural>0</Natural>
+			<CanKick>0</CanKick>
 			<Drops>
 				<Drop>
 					<ID>_magici_shard</ID>
@@ -751,10 +759,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
+			<CanKick>0</CanKick>
 			<NameSID>DEMON_RACE_NAME</NameSID>
 			<Size>3</Size>
 			<AgeInfo>
@@ -822,10 +832,12 @@
 			<Pacifiable>0</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
+			<CanKick>0</CanKick>
 			<NameSID>DIVINE_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -893,10 +905,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>25</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
+			<CanKick>1</CanKick>
 			<Drops>
 				<Drop>
 					<ID>_currency</ID>
@@ -972,10 +986,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
+			<CanKick>1</CanKick>
 			<NameSID>ELYSIAN_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<Hungerless>1</Hungerless>
@@ -1047,10 +1063,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>1</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>0</PctFlee>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
 			<Natural>1</Natural>
+			<CanKick>0</CanKick>
 			<NameSID>INSECT_RACE_NAME</NameSID>
 			<Size>1</Size>
 			<AgeInfo>
@@ -1120,10 +1138,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>1</Tameable>
 			<Splits>1</Splits>
+			<PctFlee>35</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
 			<Natural>1</Natural>
+			<CanKick>0</CanKick>
 			<NameSID>JELLY_RACE_NAME</NameSID>
 			<Size>1</Size>
 			<AgeInfo>
@@ -1191,10 +1211,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>1</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>0</HasHair>
 			<Natural>0</Natural>
+			<CanKick>0</CanKick>
 			<NameSID>MONSTER_RACE_NAME</NameSID>
 			<Size>3</Size>
 			<AgeInfo>
@@ -1264,10 +1286,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>0</PctFlee>
 			<HasPockets>0</HasPockets>
 			<HasVoice>0</HasVoice>
 			<HasHair>0</HasHair>
 			<Natural>1</Natural>
+			<CanKick>0</CanKick>
 			<NameSID>PLANT_RACE_NAME</NameSID>
 			<Size>3</Size>
 			<AgeInfo>
@@ -1335,10 +1359,12 @@
 			<Pacifiable>0</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
+			<CanKick>0</CanKick>
 			<NameSID>UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1402,10 +1428,12 @@
 			<Pacifiable>0</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
+			<CanKick>0</CanKick>
 			<NameSID>CORPOREAL_UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1471,10 +1499,12 @@
 			<Pacifiable>0</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
+			<CanKick>0</CanKick>
 			<NameSID>SPIRIT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1539,10 +1569,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>1</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>0</HasHair>
 			<Natural>1</Natural>
+			<CanKick>0</CanKick>
 			<Drops>
 				<Drop>
 					<ID>_magici_shard</ID>
@@ -1610,10 +1642,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>25</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
+			<CanKick>1</CanKick>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_1_NAME</NameSID>
@@ -1704,10 +1738,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>25</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
+			<CanKick>1</CanKick>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
 			<NameSID>RACE_2_NAME</NameSID>
@@ -1796,10 +1832,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>25</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
+			<CanKick>1</CanKick>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_3_NAME</NameSID>
@@ -1888,10 +1926,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>25</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>0</HasHair>
 			<Natural>0</Natural>
+			<CanKick>1</CanKick>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_4_NAME</NameSID>
@@ -1979,10 +2019,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>25</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
+			<CanKick>1</CanKick>
 			<HasRandomVillages>0</HasRandomVillages>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
@@ -2071,10 +2113,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
+			<CanKick>1</CanKick>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_6_NAME</NameSID>
@@ -2163,10 +2207,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>25</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
+			<CanKick>1</CanKick>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_7_NAME</NameSID>
@@ -2256,10 +2302,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
+			<CanKick>1</CanKick>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>1</SettlementTileSubtype>
 			<NameSID>RACE_8_NAME</NameSID>
@@ -2344,10 +2392,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>0</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
+			<CanKick>1</CanKick>
 			<SettlementType>1</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_9_NAME</NameSID>
@@ -2433,10 +2483,12 @@
 			<Pacifiable>1</Pacifiable>
 			<Tameable>0</Tameable>
 			<Splits>0</Splits>
+			<PctFlee>25</PctFlee>
 			<HasPockets>1</HasPockets>
 			<HasVoice>1</HasVoice>
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
+			<CanKick>1</CanKick>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_10_NAME</NameSID>
@@ -4186,7 +4238,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head>
-					<ID>_cap</ID>
+					<ID>bandana</ID>
 				</Head>
 				<Wielded>
 					<ID>long_spear</ID>
@@ -4557,7 +4609,7 @@
 			</DeityDislikeMultipliers>
 			<InitialEquipmentAndInventory>
 				<Head>
-					<ID>_cap</ID>
+					<ID>bandana</ID>
 				</Head>
 				<Wielded>
 					<ID>dagger</ID>

@@ -91,6 +91,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool splits = XMLUtils::get_child_node_bool_value(race_node, "Splits");
     race->set_splits(splits);
 
+    int pct_flee = XMLUtils::get_child_node_int_value(race_node, "PctFlee", 0);
+    race->set_pct_flee(pct_flee);
+
     bool has_pockets = XMLUtils::get_child_node_bool_value(race_node, "HasPockets");
     race->set_has_pockets(has_pockets);
 
@@ -102,6 +105,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
 
     bool natural = XMLUtils::get_child_node_bool_value(race_node, "Natural");
     race->set_natural(natural);
+
+    bool can_kick = XMLUtils::get_child_node_bool_value(race_node, "CanKick");
+    race->set_can_kick(can_kick);
 
     XMLNode drops_node = XMLUtils::get_next_element_by_local_name(race_node, "Drops");
     parse_race_drops(race.get(), drops_node);

@@ -1,3 +1,89 @@
+Shadow of the Wyrm v1.5.8 "Testagrossa"
+- Version started January 7, 2023. Version finalized July 8, 2023.
+
+- Additional names for things.
+
+- Added an option "full_stop_after_options" (off by default) which, when the
+  game is running in curses-mode, will add a period to allow screenreaders to
+  read the text with pauses (George White).
+
+- Some creatures are generated cowardly, and will try to flee when their HP
+  becomes too low (Josh Engdahl). Fleeing creatures may turn to fight when
+  cornered.
+
+- The table of contents in the guidebook now contains links to each section
+  (Dimm_ddr).
+
+- Allowed "template creatures", which are creatures for which the ID, short
+  description, description, speech text, night speech text, and text details
+  are CSV strings. This makes it easier to specify a number of variations of
+  the same sort of creature without having to copy-paste the rest of the
+  specification in the configuration. To see an example of this, search for
+  "seagull" in ShadowOfTheWyrm_Creatures.xml.
+
+- Wooden items can now be transformed into paper pulp (JovanM).
+
+- Added a setting to always stop on items when using automove (Xvordan).
+
+- Thieves and seafarers now start with bandanas. This is purely flavour:
+  bandanas are basically the same as caps.
+
+- Creatures may decide to kick if doing so could insta-kill their opponent.
+
+- Set a weight limit allowing the player to exclude heavier items from
+  autopickup (Xvordan).
+
+- New material type, plant. "Wooden" items (clubs, crossbows, coracles, etc)
+  are now specified properly as wood, with plant-type items (vegetables,
+  wildflowers, etc) specified as plants.
+
+- New items: Selrin's bandana.
+
+- New creatures: guillemot, puffin, barn centipede, metallic centipede, great
+  centipede, smallsailor, peddlar, Varra, Athel, Thena.
+
+- Small memorial in Gnordvar for an old friend.
+
+- The naming screen now references your selected class instead of just
+  "adventurer" (Xvordan).
+
+- Unimplemented skills are now disabled and can't be improved after levelling
+  (Josh Engdahl).
+
+- Deities may now grant knowledge of divine magic after prayer (JovanM).
+
+- Added a small write-up to the docs around map permanence (Josh Engdahl).
+
+- Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - A missing Lua script was causing an error to be emitted to the logs.
+
+  - Hoard/shipwreck tiles weren't displaying correctly (Grond).
+
+  - Fix an issue with being unable to drop items in shops when overburdened,
+    which would lead to a slow and ignominous death (Benjamin Derge).
+
+  - Wands weren't restacking properly when dropped from a larger stack - 
+    the wand was being given a new charge as if it were a newly-created item.
+
+  - Shop generation wasn't checking the safety of the shopkeeper tile.
+
+  - Carcassia C1A and C2A didn't have an east-west linkage (though they
+    currently can't be co-reached in these directions).
+
+  - Having autopickup include rings would cause an issue with displaying that
+    option in the automatic actions menu.
+
+  - The boating skill wasn't showing a proper description when selected on
+    the skill screen (Xvordan).
+
+  - Option descriptions would repeat when an invalid key was pressed.
+
+  - A player-specific confirmation message was showing when enemies decided
+    whether to kick you or not.
+
 Shadow of the Wyrm v1.5.2 "Satoh"
 - Version started May 15, 2022. Version finalized January 7, 2023.
 

@@ -1,5 +1,6 @@
 #pragma once
 #include <utility>
+#include <vector>
 #include "Creature.hpp"
 #include "CreatureGenerationValues.hpp"
 #include "XMLDataStructures.hpp"
@@ -14,7 +15,7 @@ class XMLCreaturesReader : public XMLReader
     std::pair<CreatureMap, CreatureGenerationValuesMap> get_creatures(const XMLNode& xml_configuration_creatures_node);
 
   protected:
-    std::pair<CreaturePtr, CreatureGenerationValues> parse_creature(const XMLNode& creature_node);
+    std::vector<std::pair<CreaturePtr, CreatureGenerationValues>> parse_creature(const XMLNode& creature_node);
     CreatureGenerationValues parse_creature_generation_values(const XMLNode& creature_generation_values_node);
 
     void parse_spells(const XMLNode& spells_node, CreaturePtr creature);

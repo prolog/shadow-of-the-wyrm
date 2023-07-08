@@ -471,8 +471,15 @@ LatestMessagesCommand::~LatestMessagesCommand()
 
 // Kick
 KickCommand::KickCommand(const int key)
-: Command(CommandKeys::KICK, key)
+: DirectionalCommand(Direction::DIRECTION_NULL,key)
 {
+  command_name = CommandKeys::KICK;
+}
+
+KickCommand::KickCommand(const Direction kick_dir, const int key)
+: DirectionalCommand(kick_dir, key)
+{
+  command_name = CommandKeys::KICK;
 }
 
 KickCommand::~KickCommand()

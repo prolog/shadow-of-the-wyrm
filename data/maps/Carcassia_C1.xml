@@ -234,6 +234,10 @@
 	</InitialPlacements>
 	<Exits>
 		<Exit>
+			<Direction>4</Direction>
+			<MapID>world_map</MapID>
+		</Exit>
+		<Exit>
 			<Direction>8</Direction>
 			<MapID>carcassia_b1</MapID>
 		</Exit>

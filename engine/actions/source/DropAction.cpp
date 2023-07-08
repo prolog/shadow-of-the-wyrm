@@ -230,7 +230,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
         creatures_tile = MapUtils::get_tile_for_creature(current_map, creature);
       }
 
-      ItemPtr new_item = ItemPtr(item_to_drop->create_with_new_id());
+      ItemPtr new_item = ItemPtr(item_to_drop->clone_with_new_id());
       new_item->set_quantity(selected_quantity);
 
       // If the item is a seed or a pit, don't actually set it on the tile,

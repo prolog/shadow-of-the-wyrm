@@ -80,7 +80,7 @@ ItemPtr JewelerWorkbenchManipulator::get_selected_ingot(CreaturePtr creature, Ac
 ItemPtr JewelerWorkbenchManipulator::get_selected_item(CreaturePtr creature, ItemPtr ingot, ActionManager& am)
 {
   MaterialType ingot_material = static_cast<MaterialType>(String::to_int(ingot->get_additional_property(SmithingConstants::SMITHING_CONSTANTS_JEWELRY_MATERIAL_TYPE)));
-  list<IItemFilterPtr> smithable_item_list = ItemFilterFactory::create_material_type_filter(ingot_material);
+  list<IItemFilterPtr> smithable_item_list = ItemFilterFactory::create_material_type_filter({ingot_material});
   list<IItemFilterPtr> ring_or_amulet_filter = ItemFilterFactory::create_item_type_filter(list<ItemType>{ItemType::ITEM_TYPE_RING, ItemType::ITEM_TYPE_AMULET});
 
   // Create a filter list that contains all weapons and armour that match the material type.

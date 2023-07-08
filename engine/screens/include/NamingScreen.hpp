@@ -6,11 +6,12 @@
 class NamingScreen : public Screen
 {
   public:
-    NamingScreen(DisplayPtr current_display, const std::string& creature_synopsis, const std::string& new_warning_message);
+    NamingScreen(DisplayPtr current_display, const std::string& creature_class, const std::string& creature_synopsis, const std::string& new_warning_message);
 
   protected:
     void initialize() override;
 
+    std::string creature_class;
     std::string creature_synopsis;
     std::string warning_message;
     std::string default_name;

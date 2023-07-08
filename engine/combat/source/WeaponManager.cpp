@@ -194,9 +194,21 @@ Damage WeaponManager::get_melee_weapon_damage(CreaturePtr creature, const Attack
     else
     {
       dmg = creature->get_base_damage();
+
       if (creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
       {
         dmg.set_incorporeal(true);
+      }
+
+      // Most creatures are defined in the XML to have a damage type that makes
+      // sense based on what they are - spearmen have pierce, mages have
+      // arcane, that kind of thing. Because "tertiary_unarmed" represents
+      // (essentially) a kicking attack, this should always be set to
+      // DAMAGE_TYPE_POUND, or else you'll get "The wrecker kicks savagely! /
+      // The wrecker slashes you!", which doesn't make any sense.
+      if (attack_type == AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED)
+      {
+        dmg.set_damage_type(DamageType::DAMAGE_TYPE_POUND);
       }
     }
   }

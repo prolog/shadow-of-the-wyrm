@@ -12,6 +12,7 @@ CreatureConstants::~CreatureConstants()
 
 const unsigned int CreatureConstants::MAX_CREATURE_LEVEL = 50;
 const int CreatureConstants::MAX_CREATURE_PRIMARY_STATISTIC_VALUE = 99;
+const int CreatureConstants::COWARDLY_CREATURE_HP_PCT_FLEE = 30;
 
 CreatureEventScripts::CreatureEventScripts()
 {

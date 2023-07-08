@@ -6,12 +6,14 @@
 #include "CommandCustomValues.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
+#include "CowardiceCalculator.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureTileSafetyChecker.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DecisionScript.hpp"
 #include "DecisionStrategyProperties.hpp"
+#include "DirectionUtils.hpp"
 #include "Game.hpp"
 #include "HostilityManager.hpp"
 #include "IMessageManager.hpp"
@@ -31,11 +33,13 @@
 #include "RangedCombatApplicabilityChecker.hpp"
 #include "RangedCombatUtils.hpp"
 #include "RaceManager.hpp"
+#include "RageStatusEffect.hpp"
 #include "Ring.hpp"
 #include "RNG.hpp"
 #include "SearchStrategyFactory.hpp"
 #include "Spellbook.hpp"
 #include "SpellShapeFactory.hpp"
+#include "TextMessages.hpp"
 #include "ThreatConstants.hpp"
 #include "Wand.hpp"
 #include "WeaponManager.hpp"
@@ -49,6 +53,8 @@ const int NPCDecisionStrategy::PERCENT_CHANCE_ADVANCE_TOWARDS_TARGET = 85;
 const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_USING_MAGIC = 75;
 const int NPCDecisionStrategy::PERCENT_CHANCE_CONSIDER_RANGED_COMBAT = 80;
 const int NPCDecisionStrategy::PERCENT_CHANCE_BREED = 15;
+const int NPCDecisionStrategy::PERCENT_CHANCE_KICK_OFF_LEDGE = 65;
+const int NPCDecisionStrategy::PERCENT_CHANCE_KICK_REGULAR_COMBAT = 5;
 
 NPCDecisionStrategy::NPCDecisionStrategy(ControllerPtr new_controller)
 : DecisionStrategy(new_controller)
@@ -197,7 +203,15 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
 
     if (has_movement_orders() == false)
     {
-      command = get_use_item_decision(this_creature_id, view_map);
+      command = get_flee_decision(this_creature_id, view_map);
+    }
+
+    if (has_movement_orders() == false)
+    {
+      if (command == nullptr)
+      {
+        command = get_use_item_decision(this_creature_id, view_map);
+      }
     }
 
     if (has_movement_orders() == false)
@@ -241,6 +255,14 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
       if (command == nullptr)
       {
         command = get_ranged_attack_decision(this_creature_id, view_map);
+      }
+    }
+
+    if (has_movement_orders() == false)
+    {
+      if (command == nullptr)
+      {
+        command = get_kick_decision(this_creature_id, view_map);
       }
     }
 
@@ -354,6 +376,99 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
   }
 
   return magic_command;
+}
+
+// Get the decision whether or not to kick.
+CommandPtr NPCDecisionStrategy::get_kick_decision(const string& this_creature_id, MapPtr view_map)
+{
+  CommandPtr no_kick;
+
+  // Iterate through the threats in order of threatiness
+  ThreatMap threat_map = threat_ratings.get_all_threats();
+  ThreatMap::const_reverse_iterator t_it = threat_map.rbegin();
+
+  if (view_map != nullptr)
+  {
+    Coordinate c_this = view_map->get_location(this_creature_id);
+    TilePtr this_tile = view_map->at(c_this);
+
+    if (this_tile != nullptr)
+    {
+      CreaturePtr this_cr = this_tile->get_creature();
+
+      if (this_cr != nullptr)
+      {
+        RaceManager rm;
+        Race* race = rm.get_race(this_cr->get_race_id());
+
+        // If we can't even kick, exit out of here.
+        if (race == nullptr || !race->get_can_kick())
+        {
+          return no_kick;
+        }
+
+        // Ensure that we only attack legitimate threats.
+        // Creatures may dislike other creatures, but that won't cause them to attack.
+        while (t_it != threat_map.rend() && t_it->first > ThreatConstants::DISLIKE_THREAT_RATING)
+        {
+          set<string> creature_ids = t_it->second;
+          vector<pair<string, int>> threat_distances = get_creatures_by_distance(this_cr, view_map, creature_ids);
+
+          for (const auto& td_pair : threat_distances)
+          {
+            if (td_pair.second > 1)
+            {
+              break;
+            }
+
+            string threatening_creature_id = td_pair.first;
+
+            // Check the view map to see if the creature exists
+            if (view_map->has_creature(threatening_creature_id))
+            {
+              // Check if adjacent to this_creature_id
+              Coordinate c_threat = view_map->get_location(threatening_creature_id);
+
+              // Only kick if we're right next to the threat.
+              if (CoordUtils::are_coordinates_adjacent(c_this, c_threat))
+              {
+                CreaturePtr threatening_creature = view_map->get_creature(threatening_creature_id);
+
+                // In general, kicking is a weak/poor decision. It's almost
+                // always better to attack instead. But if the kick would
+                // knock back the threat over a ledge, well...
+                Direction direction = CoordUtils::get_direction(c_this, c_threat);
+                Coordinate kick_into_coord = CoordUtils::get_new_coordinate(c_threat, direction, 1);
+                TilePtr tile = view_map->at(kick_into_coord);
+
+                // Normally, creatures will want to kick creatures off a ledge. But if the
+                // kick-into tile is null (eg, the threat is standing on an edge tile), that's
+                // fine, too - there'll just be no knock-back, and the decision to kick might
+                // still be made, though with less probability.
+                if (threatening_creature &&
+                    ((tile &&
+                      tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_AIR &&
+                      !threatening_creature->has_status(StatusIdentifiers::STATUS_ID_FLYING) &&
+                      this_cr->get_size() >= threatening_creature->get_size() &&
+                      RNG::percent_chance(PERCENT_CHANCE_KICK_OFF_LEDGE)) 
+                        ||
+                     (RNG::percent_chance(PERCENT_CHANCE_KICK_REGULAR_COMBAT))))
+                {
+                  CommandPtr command = std::make_unique<KickCommand>(direction, -1);
+                  return command;
+                }
+              }
+            }
+          }
+
+          // Try the next threat level.
+          t_it++;
+        }
+      }
+    }
+  }
+
+  return no_kick;
 }
 
 // Get the decision for what to attack.
@@ -736,6 +851,83 @@ CommandPtr NPCDecisionStrategy::get_drop_decision(const string& this_creature_id
   return drop_cmd;
 }
 
+CommandPtr NPCDecisionStrategy::get_flee_decision(const string& this_creature_id, MapPtr view_map)
+{
+  CommandPtr flee_command;
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+
+  CreaturePtr creature = map->get_creature(this_creature_id);
+  if (creature != nullptr)
+  {
+    // Is the creature cowardly?
+    string coward_p = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_COWARD);
+    if (!coward_p.empty() && String::to_bool(coward_p))
+    {
+      // Is it time to get out?
+      if (should_flee(creature, view_map))
+      {
+        // Get the movement directions and then randomize them, so that if there are
+        // multiple directions that look good, the creature doesn't always try to flee
+        // the same way.
+        vector<Direction> move_dirs = DirectionUtils::get_in_map_movement_directions();
+        std::shuffle(move_dirs.begin(), move_dirs.end(), RNG::get_engine()); 
+
+        const CreatureMap& creatures = view_map->get_creatures_ref();
+        const auto& c_locs = view_map->get_locations_with_creatures();
+
+        int lowest_tscore = MapUtils::get_threat_distance_score_for_direction(creature, Direction::DIRECTION_NULL, map, view_map);
+        Direction proposed_direction = Direction::DIRECTION_NULL;
+
+        // Pick the direction that looks safest
+        for (const Direction d : move_dirs)
+        {
+          int tscore = MapUtils::get_threat_distance_score_for_direction(creature, d, map, view_map);
+
+          if (tscore > lowest_tscore)
+          {
+            lowest_tscore = tscore;
+            proposed_direction = d;
+            flee_command = std::make_unique<MovementCommand>(d, -1);
+          }
+        }
+
+        if (!creature->has_additional_property(CreatureProperties::CREATURE_PROPERTIES_FLEEING))
+        {
+          IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, false);
+          manager.add_new_message(TextMessages::get_npc_flees_message(StringTable::get(creature->get_description_sid())));
+          manager.send();
+
+          creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_FLEEING, std::to_string(true));
+        }
+
+        if (proposed_direction == Direction::DIRECTION_NULL)
+        {
+          CowardiceCalculator cc;
+
+          if (RNG::percent_chance(cc.get_pct_chance_turn_to_fight(creature)))
+          {
+            if (RNG::percent_chance(cc.get_pct_chance_rage_fight(creature)))
+            {
+              RageStatusEffect rse;
+              rse.apply_change(creature, creature->get_level().get_current());
+            }
+
+            turn_to_fight(creature);
+            flee_command = nullptr;
+          }
+        }
+      }
+      else
+      {
+        turn_to_fight(creature);
+      }
+    }
+  }
+
+  return flee_command;
+}
+
 CommandPtr NPCDecisionStrategy::get_use_item_decision(const string& this_creature_id, MapPtr view_map)
 {
   CommandPtr use_cmd;
@@ -808,6 +1000,25 @@ CommandPtr NPCDecisionStrategy::get_follow_direction(MapPtr view_map, CreaturePt
   }
 
   return command;
+}
+
+void NPCDecisionStrategy::turn_to_fight(CreaturePtr creature)
+{
+  if (creature != nullptr)
+  {
+    if (creature->has_additional_property(CreatureProperties::CREATURE_PROPERTIES_FLEEING))
+    {
+      // Once a creature recovers their courage, they will no longer ever be
+      // cowardly.
+      creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_COWARD);
+      creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_FLEEING);
+
+      // Add a message that the creature is now fighting instead of fleeing.
+      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature->get_is_player());
+      manager.add_new_message(TextMessages::get_npc_turns_to_fight_message(StringTable::get(creature->get_description_sid())));
+      manager.send();
+    }
+  }
 }
 
 void NPCDecisionStrategy::update_threats_based_on_fov(const std::string& this_creature_id, MapPtr view_map)
@@ -959,6 +1170,21 @@ vector<pair<string, int>> NPCDecisionStrategy::get_creatures_by_distance(Creatur
   }
 
   return cdist;
+}
+
+bool NPCDecisionStrategy::should_flee(CreaturePtr this_creature, MapPtr view_map)
+{
+  if (this_creature != nullptr && view_map != nullptr)
+  {
+    Statistic hp = this_creature->get_hit_points();
+
+    if (hp.get_percent() <= CreatureConstants::COWARDLY_CREATURE_HP_PCT_FLEE)
+    {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 Coordinate NPCDecisionStrategy::select_safest_random_coordinate(CreaturePtr this_cr, const vector<Coordinate>& choice_coordinates)

@@ -7,6 +7,7 @@
 #include "DoNothingDeityDecisionStrategyHandler.hpp"
 #include "FullAPDeityDecisionStrategyHandler.hpp"
 #include "FullHPDeityDecisionStrategyHandler.hpp"
+#include "GrantSpellDeityDecisionStrategyHandler.hpp"
 #include "HaltBreedingDeityDecisionStrategyHandler.hpp"
 #include "ReligionConstants.hpp"
 #include "ReligionManager.hpp"
@@ -60,6 +61,9 @@ void DeityDecisionStrategy::initialize_decisions()
   decisions.push_back(std::move(cur_decision));
 
   cur_decision = std::make_unique<SatiateDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(std::move(cur_decision));
+
+  cur_decision = std::make_unique<GrantSpellDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(std::move(cur_decision));
 }
 

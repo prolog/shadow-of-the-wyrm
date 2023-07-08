@@ -1,21 +1,38 @@
 Me:
-- ASSET RELEASE
-  - new game
-  - get artifacts & the amulet of the sea
-  - go to Telari
-  - swim upwards into the ocean
-  - return down
-  - give an artifact to the sorcerer
-  - try entering the Barrows again
-- 2022-Nov-27 11:40:03    MapScript::execute - did not run Lua function due 
-  to script failure: areas/events/carcassia_a2a.lua
-- ensure world_id gets propagated on generation
-- Az: up from caldera/down from prison: field
+- There's an "Are you sure you want to attack?" that periodically shows up
+  when NPCs decide to kick? over air?
+- ASSET RELEASE. git push --tags
+- YARD: let NPCs pray in desperation as well
+- picking up an item - prompt (with swyrm option) re whether to equip it?
+- mountaineering/lore: chance to find magici shards (+ mark tile) and also to
+  generate a down staircase that leads to passageways that lead to a cavern
+- issue with too many save files, but there's only one? -1
+- JovanM/Bentwing: godless
+- Branding should give a base 20% resist
+- mushrooms with randomized effects, descs like wildflowers. eat scripts?
+- Desert/Forest/etc Lore (+ dungeoneering?): to-hit, damage, speed bonuses on 
+  that terrain
+- creature-specific turn-to-fight/rage values`
+- Uniques and fleeing?
+- ON RELEASE: email George.
+- what other creatures can be templated now?
+- Killing creature on stairs should allow dropping items but not corpse,
+  and should generate a message
+- Make keeps more interesting?
+- Check the hireling code - found a L35 hireling on L1?`
+- Fill out Carcassia A2A
+  - What's on the platform?
+  - Lancer's Walk
+  - Shrink the shop a bit
+  - Allow setting the shopkeeper name and setting the item types
+- Fleeing behaviour for humanoids (JE)
+  - when damaged in combat, chance to flee should be inverse of % hp left
+  - fleeing should pick the direction that maximizes distance from threats
+  - if cornered/threat adjacent (all directions give the same value), 
+    remove flag
 - can use warp in telari ocean
-- dolmens, w/ bones
 - Elinor and Verra
 - in villages: retired cartographers?
-- At the northern and southern extremes, muskeg
 - small chance to generate good items underwater
 - need to test springs/ivory gen
 - Flying shop in Carcassia A2A
@@ -38,6 +55,7 @@ Me:
 - sea generator: chance for islands:
   - desert island with spring
   - rocky island
+  - shallow water/shoals
   - etc
 - in do_generate... can that linkage function be hidden behind a check for
   either world map or interior tile? test!
@@ -78,12 +96,7 @@ Me:
 - fields north of carcassia: new generator type? finally use wheat?
 - timed quest for which boating would help a lot
 - guaranteed one 80-100 treasure for each lore type
-- what if during world generation, treasure is 1-100 on various tiles? with
-  that particular lore skill finding it and there's a procgen thing like 
-  "buried by Hodan the Wise", "buried by pirates", etc
-- oceanography: same as above but the ability to stumble on to shipwrecks
 - boating!
-- mountaineering/lore: chance to find magici shard (+ mark tile), but only on
   world map, only if not flying
 - JE: summoning logic: deities shouldn't summon: creatures of other
   deities, undead for some, demons for some, etc.
@@ -135,7 +148,6 @@ Me:
 - Look at Earthsea names?
 - Ensure stunned works properly for NPCs
 - Weaponmasteries in guidebook
-- Desert/Forest/etc Lore: to-hit, damage, speed bonuses on that terrain
 - after Godslayer, divine spells gone/Divine skill 0
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere
@@ -405,7 +417,6 @@ IceBox:
 
 Josh Engdahl
 - Rebindable paging keys
-- Fleeing behaviour for humanoids
 - User macros
 - Add info on the weapon synopsis to the manual
 - max fire res on fire spirits, etc
@@ -438,6 +449,7 @@ Bentwing:
 - way of creating lock for door
 - restack on blessing eg books, all items, etc
 - more fleshed out NPCs/hirelings/writing generally
+- keybinding for toggling reach mode
 
 Kenny:
 - repeat last command (!)
@@ -449,6 +461,7 @@ JovanM:
 - create inkpots
 - paper making from anything made of wood
 - long shops eg in Carcassia allow free thievery
+- combine Fletchery & Bowyer
 
 Sabrecam: 
 - pay guards for peace
@@ -466,3 +479,15 @@ The pager used for texts could also be improved by:
   - in status line, the number of matches and the current match are displayed like this: [3/17]
 
 Similar search for inventory (filtering the items and without n/N) would also be helpful when you're looking for a particular item
+
+Marcin Puc:
+- asset, data dir
+- "For context how configuring the dirs could work: either swyrm.ini gets a 
+   field for pointing to the root game directory, 
+   like /usr/share/shadow-of-the-wyrm/ that holds all dirs like assets, data 
+   etc, or reads it from an env variable e.g. SOTW_ROOT_DIR and then distros 
+   provide a wrapper script that sets it before running the game"
+- switch to cmake? for automatic install
+
+Xvordan:
+- in-map waypoint system

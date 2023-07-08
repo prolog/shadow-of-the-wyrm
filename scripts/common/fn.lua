@@ -4,6 +4,21 @@ function make_coordinate_key(y, x)
   return tostring(y) .. "-" .. tostring(x)
 end
 
+function coord_tostring(y, x)
+  return "(" .. tostring(y) .. "," .. tostring(x) .. ")"
+end
+
+function make_corners(r1, r2, c1, c2)
+  local dirs_and_coords = {}
+  
+  dirs_and_coords[CDIRECTION_NORTH_WEST] = {r1, c1}
+  dirs_and_coords[CDIRECTION_NORTH_EAST] = {r1, c2}
+  dirs_and_coords[CDIRECTION_SOUTH_WEST] = {r2, c1}
+  dirs_and_coords[CDIRECTION_SOUTH_EAST] = {r2, c2}
+
+  return dirs_and_coords
+end
+
 function make_coordinates(r1, r2, c1, c2)
   local coords = {}
   for y = r1, r2 do

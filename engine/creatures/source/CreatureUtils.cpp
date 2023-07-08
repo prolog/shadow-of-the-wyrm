@@ -380,6 +380,17 @@ void CreatureUtils::incr_cha(CreaturePtr creature, const bool add_msg)
   }
 }
 
+bool CreatureUtils::either_creature_threatens(CreaturePtr c1, CreaturePtr c2)
+{
+  if (c1 != nullptr && c2 != nullptr)
+  {
+    return (c1->get_decision_strategy()->get_threats_ref().has_threat(c2->get_id()).first ||
+            c2->get_decision_strategy()->get_threats_ref().has_threat(c1->get_id()).first);
+  }
+
+  return false;
+}
+
 tuple<bool, uint, string> CreatureUtils::can_pick_up(CreaturePtr c, ItemPtr i)
 {
   tuple<bool, uint, string> can_pu;

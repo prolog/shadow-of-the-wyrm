@@ -42,6 +42,7 @@
 using namespace std;
 
 const int MapUtils::PLAYER_RESTRICTED_ZONE_RADIUS = 8;
+const int MapUtils::CANNOT_MOVE_SCORE = -1;
 
 // Does the area around a tile allow creature generation?
 // Creatures can't be generated within a couple of steps of a stairway.
@@ -2784,6 +2785,40 @@ SkillType MapUtils::get_lore_skill_for_terrain(TilePtr tile)
   }
 
   return st;
+}
+
+int MapUtils::get_threat_distance_score_for_direction(CreaturePtr creature, const Direction d, MapPtr map, MapPtr view_map)
+{
+  int score = 0;
+
+  if (creature != nullptr && map != nullptr && view_map != nullptr)
+  {
+    Coordinate cur_loc = map->get_location(creature->get_id());
+    Coordinate new_loc = CoordUtils::get_new_coordinate(cur_loc, d);
+    TilePtr new_tile = map->at(new_loc);
+
+    if (new_tile != nullptr)
+    {
+      if (!new_tile->get_is_available_for_creature(creature))
+      {
+        return CANNOT_MOVE_SCORE;
+      }
+
+      const auto creatures = view_map->get_creatures();
+      for (const auto& c_pair : creatures)
+      {
+        CreaturePtr cr = c_pair.second;
+
+        if (cr != nullptr && CreatureUtils::either_creature_threatens(creature, cr))
+        {
+          Coordinate c = map->get_location(cr->get_id());
+          score += CoordUtils::chebyshev_distance(c, new_loc);
+        }
+      }
+    }
+  }
+
+  return score;
 }
 
 #ifdef UNIT_TESTS
