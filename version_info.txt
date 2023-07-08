@@ -1,3 +1,6 @@
+Shadow of the Wyrm v1.6.0 "Daca"
+- Version started July 8, 2023.
+
 Shadow of the Wyrm v1.5.8 "Testagrossa"
 - Version started January 7, 2023. Version finalized July 8, 2023.
 
