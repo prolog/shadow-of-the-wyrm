@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 // This is set up as a define so that it can be easily exported to the Lua
 // scripts.
@@ -21,6 +22,7 @@ class ReligionConstants
     static const int PIETY_TIER_3;
     static const int PIETY_TIER_4;
     static const int PIETY_CROWNING = CPIETY_CROWNING;
+    static const std::string DEITY_ID_GODLESS;
 
   protected:
     ReligionConstants();
