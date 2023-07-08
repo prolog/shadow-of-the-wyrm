@@ -19,7 +19,7 @@ KickAction::KickAction()
 {
 }
 
-ActionCostValue KickAction::kick(CreaturePtr creature)
+ActionCostValue KickAction::kick(CreaturePtr creature, const Direction kick_dir)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
@@ -41,7 +41,7 @@ ActionCostValue KickAction::kick(CreaturePtr creature)
       }
       else
       {
-        acv = kick_on_regular_map(creature, current_map);
+        acv = kick_on_regular_map(creature, current_map, kick_dir);
       }
     }
   }
@@ -66,11 +66,10 @@ ActionCostValue KickAction::kick_on_world_map(CreaturePtr creature, MapPtr curre
 }
 
 // Handle kicking on a regular map: prompt the creature for a direction, then go from there.
-ActionCostValue KickAction::kick_on_regular_map(CreaturePtr creature, MapPtr current_map)
+ActionCostValue KickAction::kick_on_regular_map(CreaturePtr creature, MapPtr current_map, const Direction kick_dir)
 {
   if (creature)
   {
-
     // If the creature is the player, get the kicking direction.
     if (creature->get_is_player())
     {
@@ -79,24 +78,31 @@ ActionCostValue KickAction::kick_on_regular_map(CreaturePtr creature, MapPtr cur
       manager.send();
     }
 
-    // Try to get a direction.
-    //
-    // If automatic movement is engaged, use the direction that has already been
-    // selected.  Otherwise, prompt the creature.
-    CommandFactoryPtr command_factory = std::make_unique<CommandFactory>();
-    KeyboardCommandMapPtr kb_command_map = std::make_unique<KeyboardCommandMap>();
-    CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0, true);
+    Direction d = kick_dir;
 
-    if (base_command)
+    if (d == Direction::DIRECTION_NULL)
     {
-      DirectionalCommand* dcommand;
-      dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
+      // Try to get a direction.
+      //
+      // If automatic movement is engaged, use the direction that has already been
+      // selected.  Otherwise, prompt the creature.
+      CommandFactoryPtr command_factory = std::make_unique<CommandFactory>();
+      KeyboardCommandMapPtr kb_command_map = std::make_unique<KeyboardCommandMap>();
+      CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), 0, true);
 
-      if (dcommand)
+      if (base_command)
       {
-        return kick_in_direction(creature, current_map, dcommand->get_direction());
+        DirectionalCommand* dcommand;
+        dcommand = dynamic_cast<DirectionalCommand*>(base_command.get());
+
+        if (dcommand)
+        {
+          d = dcommand->get_direction();
+        }
       }
     }
+
+    return kick_in_direction(creature, current_map, d);
   }
 
   return 0;
@@ -179,7 +185,7 @@ ActionCostValue KickAction::kick_creature(CreaturePtr kicking_creature, Creature
     // confirmation.
     if (!kicked_creature->get_decision_strategy()->get_threats_ref().has_threat(kicking_creature->get_id()).first)
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, kicking_creature, kicking_creature && kicking_creature->get_is_player());
+      IMessageManager& manager = MM::instance(MessageTransmit::SELF, kicking_creature, kicking_creature && kicking_creature->get_is_player());
       manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
       attack = kicking_creature->get_decision_strategy()->get_confirmation();
     }

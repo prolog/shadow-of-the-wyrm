@@ -1,4 +1,6 @@
 require('areas')
+require('constants')
+
 local creature = require('creature')
 
 -- The caravan has no fixed location, appearing instead on one of the
@@ -22,7 +24,7 @@ local fae_caravan = Area:new(coords[1], coords[2])
 -- generated map.
 fae_caravan:set_permanence(true)
 fae_caravan:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_FAE_CARAVAN")
-fae_caravan:set_additional_properties({["MAP_PROPERTIES_INITIAL_CREATURES"] = creatures_csv, ["MAP_PROPERTIES_GENERATED_MAP_ID"] = "fae_caravan"})
+fae_caravan:set_additional_properties({["MAP_PROPERTIES_INITIAL_CREATURES"] = creatures_csv, ["MAP_PROPERTIES_GENERATED_MAP_ID"] = MAP_ID_FAE_CARAVAN})
 
 fae_caravan:insert()
 

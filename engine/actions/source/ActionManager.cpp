@@ -585,11 +585,11 @@ ActionCost ActionManager::latest_messages(CreaturePtr creature)
   return get_action_cost(creature, lma.latest_messages(creature));
 }
 
-ActionCost ActionManager::kick(CreaturePtr creature)
+ActionCost ActionManager::kick(CreaturePtr creature, const Direction kick_dir)
 {
   KickAction ka;
 
-  return get_action_cost(creature, ka.kick(creature));
+  return get_action_cost(creature, ka.kick(creature, kick_dir));
 }
 
 ActionCost ActionManager::offer(CreaturePtr creature)

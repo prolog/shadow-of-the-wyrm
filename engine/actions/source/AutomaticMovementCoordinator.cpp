@@ -10,6 +10,7 @@
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MovementAction.hpp"
+#include "Setting.hpp"
 
 using namespace std;
 
@@ -233,6 +234,7 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::controller_allows_auto_
 pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allows_auto_move(CreaturePtr creature, TilePtr tile, MapPtr map, const AutomaticMovementFlags& amf)
 {
   pair<bool, vector<string>> move_details = {false, {}};
+  Game& game = Game::instance();
 
   TilePtr current_tile = MapUtils::get_tile_for_creature(map, creature);
 
@@ -247,7 +249,9 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::creature_position_allow
 
   // Stop auto-movement when moving to a tile that has items that we haven't
   // seen before.
-  if (amf.get_ignore_items() || (current_tile && current_tile->get_items()->count_items_without_property(ItemProperties::ITEM_PROPERTIES_MARK_AUTOMOVE) == 0))
+  if (amf.get_ignore_items() || (current_tile && 
+                                (current_tile->get_items()->empty() || !game.get_settings_ref().get_setting_as_bool(Setting::AUTOMOVE_ALWAYS_STOP_ON_ITEMS)) &&
+                                 current_tile->get_items()->count_items_without_property(ItemProperties::ITEM_PROPERTIES_MARK_AUTOMOVE) == 0))
   {
     items_allow_move = true;
   }

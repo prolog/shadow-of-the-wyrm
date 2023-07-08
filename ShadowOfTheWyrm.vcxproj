@@ -366,6 +366,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\CombatEffectsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CombatTargetNumberCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CombatTargetNumberCalculatorFactory.hpp" />
+    <ClInclude Include="engine\calculators\include\CowardiceCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CreateItemCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CreatureAdditionalDamageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CreatureCalculator.hpp" />
@@ -621,6 +622,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\decision_strategies\deity\include\DoNothingDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\FullAPDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\FullHPDeityDecisionStrategyHandler.hpp" />
+    <ClInclude Include="engine\decision_strategies\deity\include\GrantSpellDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\HaltBreedingDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\IDeityDecisionStrategy.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategyHandler.hpp" />
@@ -1370,6 +1372,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\materials\include\Meat.hpp" />
     <ClInclude Include="world\materials\include\Onyx.hpp" />
     <ClInclude Include="world\materials\include\Paper.hpp" />
+    <ClInclude Include="world\materials\include\PlantMaterial.hpp" />
     <ClInclude Include="world\materials\include\Steel.hpp" />
     <ClInclude Include="world\materials\include\Stone.hpp" />
     <ClInclude Include="world\materials\include\UnknownMaterial.hpp" />
@@ -1528,6 +1531,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\BuySellCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CalcUtils.cpp" />
     <ClCompile Include="engine\calculators\source\CombatEffectsCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\CowardiceCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreateItemCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreaturePietyCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureSplitCalculator.cpp" />
@@ -1592,6 +1596,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\CowardiceCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\CreateItemCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1997,6 +2007,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\creatures\source\WaterBreathingStatusEffect.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\AltarDropDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\CompanionDeityDecisionStrategyHandler.cpp" />
+    <ClCompile Include="engine\decision_strategies\deity\source\GrantSpellDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\HaltBreedingDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\LikeDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\UncurseDeityDecisionStrategyHandler.cpp" />
@@ -3695,6 +3706,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\materials\source\Meat.cpp" />
     <ClCompile Include="world\materials\source\Onyx.cpp" />
     <ClCompile Include="world\materials\source\Paper.cpp" />
+    <ClCompile Include="world\materials\source\PlantMaterial.cpp" />
     <ClCompile Include="world\materials\source\Steel.cpp" />
     <ClCompile Include="world\materials\source\Stone.cpp" />
     <ClCompile Include="world\materials\source\unit_tests\Bone_test.cpp">
@@ -3782,6 +3794,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\materials\source\unit_tests\Paper_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\PlantMaterial_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

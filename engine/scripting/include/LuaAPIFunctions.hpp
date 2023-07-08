@@ -139,6 +139,7 @@ int map_do_tiles_in_range_match_type(lua_State* ls);
 int map_creature_ids_have_substring(lua_State* ls);
 int log(lua_State* ls);
 int get_player_title(lua_State* ls);
+int set_creature_at_fleeing(lua_State* ls);
 int set_creature_current_hp(lua_State* ls);
 int get_creature_current_hp(lua_State* ls);
 int set_creature_base_hp(lua_State* ls);
@@ -212,6 +213,7 @@ int get_coords_with_tile_type_in_range(lua_State* ls);
 int get_custom_map_id(lua_State* ls);
 int ranged_attack(lua_State* ls);
 int get_spellbooks(lua_State* ls);
+int generate_shop(lua_State* ls);
 int set_shop_shopkeeper_id(lua_State* ls);
 int repop_shop(lua_State* ls);
 int repop_shops(lua_State* ls);
@@ -315,6 +317,7 @@ int get_creature_size(lua_State* ls);
 int get_nutrition(lua_State* ls);
 int get_hidden_treasure_message(lua_State* ls);
 int get_map_type(lua_State* ls);
+int is_tile_available_for_creature(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

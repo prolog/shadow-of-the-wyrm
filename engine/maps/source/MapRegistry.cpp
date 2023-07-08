@@ -17,10 +17,22 @@ MapRegistry::~MapRegistry()
 }
 
 // Add a map to the registry.  Return false if a map with the given
-// ID already exists.
+// ID already exists. If the ID is empty (a temporary map)
+// always overwrite what's there.
 bool MapRegistry::set_map(const string& map_id, const MapPtr& map)
 {
-  bool inserted = (map_registry.insert(make_pair(map_id, map))).second;
+  bool inserted = false;
+
+  if (map_id.empty())
+  {
+    map_registry[map_id] = map;
+    inserted = true;
+  }
+  else
+  {
+    inserted = (map_registry.insert(make_pair(map_id, map))).second;
+  }
+
   return inserted;
 }
 

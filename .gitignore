@@ -26,6 +26,7 @@ dist_sprites
 docs/src/*.aux
 docs/src/*.log
 docs/src/*.toc
+docs/src/*.out
 Release
 Release - Curses Only
 MapTester

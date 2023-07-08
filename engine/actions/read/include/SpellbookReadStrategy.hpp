@@ -8,6 +8,7 @@ class SpellbookReadStrategy : public ReadStrategy
 {
   public:
     ActionCostValue read(CreaturePtr creature, ActionManager * const am, ReadablePtr readable) override;
+    bool add_spell_castings(CreaturePtr creature, const std::string& spell_id, const int num_castings);
 
   protected:
     void learn_spell_from_spellbook(CreaturePtr creature, SpellbookPtr spellbook, const ItemIdentifier& item_id, const std::string& spell_id, const SkillType magic_category);

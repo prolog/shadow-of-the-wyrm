@@ -729,7 +729,7 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
     {
       Option current_option = options.at(i);
       Colour option_colour = current_option.get_colour();
-      TextComponentPtr option_text = current_option.get_description();
+      TextComponentPtr option_text = std::make_shared<TextComponent>(*current_option.get_description());
       string option_desc;
       
       // Only get the description if we should show one and if one has been set.
@@ -769,9 +769,15 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
       
       getyx(window, *row, ocol);
 
-      TextComponentPtr text = current_option.get_description();
+      display_text_component(window, row, &ocol, option_text, DisplayConstants::OPTION_SPACING);
 
-      display_text_component(window, row, &ocol, text, DisplayConstants::OPTION_SPACING);
+      bool full_stop = Game::instance().get_settings_ref().get_setting_as_bool(Setting::FULL_STOP_AFTER_OPTIONS);
+
+      if (full_stop)
+      {
+        wprintw(window, ".");
+      }
+
       disable_colour(static_cast<int>(option_colour), window);
 
       options_added++;

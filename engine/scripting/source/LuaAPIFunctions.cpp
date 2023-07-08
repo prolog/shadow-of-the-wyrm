@@ -1,6 +1,7 @@
 #include "LuaAPIFunctions.hpp"
 #include "BestiaryAction.hpp"
 #include "BuySellCalculator.hpp"
+#include "CarryingCapacityCalculator.hpp"
 #include "CitySectorGenerator.hpp"
 #include "ClassManager.hpp"
 #include "CombatManager.hpp"
@@ -12,6 +13,7 @@
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "DecisionStrategyProperties.hpp"
+#include "DirectionUtils.hpp"
 #include "EngineConversion.hpp"
 #include "EffectFactory.hpp"
 #include "ExperienceManager.hpp"
@@ -47,8 +49,11 @@
 #include "RaceConstants.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
+#include "SettlementGeneratorUtils.hpp"
+#include "ShopGenerator.hpp"
 #include "SkillManager.hpp"
 #include "Spellbook.hpp"
+#include "SpellbookReadStrategy.hpp"
 #include "SpellcastingAction.hpp"
 #include "StatisticsMarker.hpp"
 #include "StatisticTextKeys.hpp"
@@ -296,6 +301,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_creature_ids_have_substring", map_creature_ids_have_substring);
   lua_register(L, "log", log);
   lua_register(L, "get_player_title", get_player_title);
+  lua_register(L, "set_creature_at_fleeing", set_creature_at_fleeing);
   lua_register(L, "set_creature_current_hp", set_creature_current_hp);
   lua_register(L, "get_creature_current_hp", get_creature_current_hp);
   lua_register(L, "set_creature_base_hp", set_creature_base_hp);
@@ -368,6 +374,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_custom_map_id", get_custom_map_id);
   lua_register(L, "ranged_attack", ranged_attack);
   lua_register(L, "get_spellbooks", get_spellbooks);
+  lua_register(L, "generate_shop", generate_shop);
   lua_register(L, "set_shop_shopkeeper_id", set_shop_shopkeeper_id);
   lua_register(L, "repop_shop", repop_shop);
   lua_register(L, "repop_shops", repop_shops);
@@ -470,6 +477,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_nutrition", get_nutrition);
   lua_register(L, "get_hidden_treasure_message", get_hidden_treasure_message);
   lua_register(L, "get_map_type", get_map_type);
+  lua_register(L, "is_tile_available_for_creature", is_tile_available_for_creature);
 }
 
 // Lua API helper functions
@@ -1298,7 +1306,7 @@ int add_object_on_tile_to_creature(lua_State* ls)
 {
   bool added_obj = false;
 
-  if (lua_gettop(ls) == 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3) && lua_isstring(ls, 4))
+  if (lua_gettop(ls) >= 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3) && lua_isstring(ls, 4))
   {
     int y = lua_tointeger(ls, 1);
     int x = lua_tointeger(ls, 2);
@@ -1317,13 +1325,20 @@ int add_object_on_tile_to_creature(lua_State* ls)
         IInventoryPtr tile_items = tile->get_items();
         ItemPtr i = tile_items->get_from_id(item_id);
 
-        if (i != nullptr)
+        // Get the item weight. See if this would push the creature
+        // to Overburdened. If so, don't add it.
+        CarryingCapacityCalculator ccc;
+
+        if (creature->get_weight_carried() + i->get_total_weight().get_weight() < ccc.calculate_overburdened_weight(creature))
         {
-          added_obj = creature->get_inventory()->merge_or_add(i, InventoryAdditionType::INVENTORY_ADDITION_BACK);
-          
-          if (added_obj)
+          if (i != nullptr)
           {
-            tile_items->remove(item_id);
+            added_obj = creature->get_inventory()->merge_or_add(i, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+
+            if (added_obj)
+            {
+              tile_items->remove(item_id);
+            }
           }
         }
       }
@@ -2121,12 +2136,8 @@ int add_spell_castings(lua_State* ls)
 
     if (creature != nullptr)
     {
-      SpellKnowledge& sk = creature->get_spell_knowledge_ref();
-
-      IndividualSpellKnowledge isk = sk.get_spell_knowledge(spell_id);
-      uint new_castings = isk.get_castings() + addl_castings;
-      isk.set_castings(new_castings);
-      sk.set_spell_knowledge(spell_id, isk);
+      SpellbookReadStrategy srs;
+      srs.add_spell_castings(creature, spell_id, addl_castings);
     }
   }
   else
@@ -2152,16 +2163,11 @@ int add_all_spells_castings(lua_State* ls)
       Game& game = Game::instance();
       const SpellMap& spells = game.get_spells_ref();
 
-      SpellKnowledge& sk = creature->get_spell_knowledge_ref();
-
       for (auto& sp_pair : spells)
       {
         string spell_id = sp_pair.first;
-
-        IndividualSpellKnowledge isk = sk.get_spell_knowledge(spell_id);
-        uint new_castings = isk.get_castings() + addl_castings;
-        isk.set_castings(new_castings);
-        sk.set_spell_knowledge(spell_id, isk);
+        SpellbookReadStrategy srs;
+        srs.add_spell_castings(creature, spell_id, addl_castings);
       }
     }
  }
@@ -4514,6 +4520,55 @@ int get_player_title(lua_State* ls)
   return 1;
 }
 
+// Set the fleeing flag on a creature. This bypasses the usual checks and
+// doesn't give any notifications. It is only intended for debugging.
+int set_creature_at_fleeing(lua_State* ls)
+{
+  bool set_flag = false;
+
+  if (lua_gettop(ls) == 2 && lua_isnumber(ls, 2) && lua_isnumber(ls, 2))
+  {
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+    
+    if (current_map != nullptr)
+    {
+      int row = lua_tointeger(ls, 1);
+      int col = lua_tointeger(ls, 2);
+
+      TilePtr tile = current_map->at(row, col);
+
+      if (tile != nullptr)
+      {
+        CreaturePtr creature = tile->get_creature();
+
+        if (creature != nullptr)
+        {
+          // Set the fleeing flag and set HP arbitrarily low.
+          creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_COWARD, std::to_string(true));
+          creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_FLEEING, std::to_string(true));
+
+          // Ensure they're set hostile to the player
+          HostilityManager hm;
+          hm.set_hostility_to_player(creature, true, ThreatConstants::ACTIVE_THREAT_RATING);
+
+          Statistic& hp = creature->get_hit_points_ref();
+          hp.set_current(1);
+
+          set_flag = true;
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to set_creature_at_fleeing");
+  }
+
+  lua_pushboolean(ls, set_flag);
+  return 1;
+}
+
 int set_creature_current_hp(lua_State* ls)
 {
   if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
@@ -6585,14 +6640,17 @@ int get_race_name(lua_State* ls)
 
 int set_inscription(lua_State* ls)
 {
-  if (lua_gettop(ls) == 3 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isstring(ls, 3))
+  int num_args = lua_gettop(ls);
+
+  if (num_args == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4))
   {
-    int row = lua_tointeger(ls, 1);
-    int col = lua_tointeger(ls, 2);
-    string inscription = lua_tostring(ls, 3);
+    string map_id = lua_tostring(ls, 1);
+    int row = lua_tointeger(ls, 2);
+    int col = lua_tointeger(ls, 3);
+    string inscription = lua_tostring(ls, 4);
 
     Game& game = Game::instance();
-    MapPtr map = game.get_current_map();
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
 
     if (map != nullptr)
     {
@@ -6826,6 +6884,43 @@ int get_spellbooks(lua_State* ls)
     lua_rawseti(ls, -2, i + 1);
   }
 
+  return 1;
+}
+
+int generate_shop(lua_State* ls)
+{
+  bool generated = false;
+
+  if (lua_gettop(ls) == 7 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isnumber(ls, 5) && lua_isnumber(ls, 6) && lua_isboolean(ls, 7))
+  {
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(lua_tostring(ls, 1));
+    int start_y = lua_tointeger(ls, 2);
+    int start_x = lua_tointeger(ls, 3);
+    int height = lua_tointeger(ls, 4);
+    int width = lua_tointeger(ls, 5);
+    TileType wall_type = static_cast<TileType>(lua_tointeger(ls, 6));
+    bool gen_door = lua_toboolean(ls, 7);
+
+    Coordinate door_coords = SettlementGeneratorUtils::get_door_location(start_y, start_y + height, start_x, start_x + width, DirectionUtils::get_random_cardinal_direction());
+    Building bldg({ start_y, start_x }, { start_y + height, start_x + width }, door_coords);
+    GeneratorUtils::generate_building(map, start_y, start_x, height, width, wall_type, TileType::TILE_TYPE_DUNGEON, false);
+
+    if (gen_door)
+    {
+      GeneratorUtils::generate_door(map, door_coords.first, door_coords.second);
+    }
+
+    ShopGenerator sg;
+    sg.generate_shop(map, bldg);
+    
+    generated = true;
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to generate_shop");
+  }
+
+  lua_pushboolean(ls, generated);
   return 1;
 }
 
@@ -10076,5 +10171,36 @@ int get_map_type(lua_State* ls)
   }
 
   lua_pushinteger(ls, static_cast<int>(mt));
+  return 1;
+}
+
+int is_tile_available_for_creature(lua_State* ls)
+{
+  bool avail = false;
+
+  if (lua_gettop(ls) == 3 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int y = lua_tointeger(ls, 2);
+    int x = lua_tointeger(ls, 3);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      if (tile != nullptr && MapUtils::is_tile_available_for_creature(nullptr, tile))
+      {
+        avail = true;
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to is_tile_available_for_creature");
+  }
+
+  lua_pushboolean(ls, avail);
   return 1;
 }

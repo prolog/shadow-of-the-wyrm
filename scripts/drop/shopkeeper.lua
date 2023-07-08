@@ -86,7 +86,11 @@ local function shopkeeper_buy(dropping_creature_id, shopkeeper_id, item_id, item
   end
 
   if readd_to_dropping_creature == true then
-    add_object_on_tile_to_creature(drop_y, drop_x, item_id, dropping_creature_id)
+    local added_back = add_object_on_tile_to_creature(drop_y, drop_x, item_id, dropping_creature_id, false)
+    
+    if added_back == true then
+      add_message("BACK_IN_PACK_SID")
+    end
   end
 end
 

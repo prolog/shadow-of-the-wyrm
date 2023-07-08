@@ -40,6 +40,20 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>smallsailor</ID>
+				<Coord>
+					<Row>3</Row>
+					<Col>52</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>smallsailor</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>60</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>seal</ID>
 				<Coord>
 					<Row>19</Row>

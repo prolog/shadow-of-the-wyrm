@@ -477,6 +477,69 @@
 			</Amulet>
 		</Amulets>
 		<Armours>
+			<Armour id="bandana">
+				<DescriptionSID>BANDANA_SID</DescriptionSID>
+				<UsageDescriptionSID>BANDANA_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>BANDANA_CODEX_SID</CodexDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>7</Ounces>
+				</Weight>
+				<WornLocation>0</WornLocation>
+				<Material>0</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Colour>9</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>14</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Evade>4</Evade>
+				<Soak>0</Soak>
+			</Armour>
+			<Armour id="selrin_bandana">
+				<DescriptionSID>SELRIN_BANDANA_SID</DescriptionSID>
+				<UsageDescriptionSID>SELRIN_BANDANA_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SELRIN_BANDANA_CODEX_SID</CodexDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>7</Ounces>
+				</Weight>
+				<WornLocation>0</WornLocation>
+				<Material>0</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Colour>4</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>14</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Arcane>0.10</Arcane>
+				</Resistances>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Evade>4</Evade>
+				<Soak>0</Soak>
+			</Armour>
 			<Armour id="_cap">
 				<DescriptionSID>CAP_SID</DescriptionSID>
 				<UsageDescriptionSID>CAP_USAGE_SID</UsageDescriptionSID>
@@ -7754,7 +7817,7 @@
 					<Ounces>6</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>10</Colour>
@@ -7784,7 +7847,7 @@
 					<Ounces>2</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>1</Colour>
@@ -7808,7 +7871,7 @@
 					<Ounces>6</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>1</Colour>
@@ -7838,7 +7901,7 @@
 					<Ounces>6</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>11</Colour>
@@ -7868,7 +7931,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>2</Colour>
@@ -7898,7 +7961,7 @@
 					<Ounces>6</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>5</Colour>
@@ -7928,7 +7991,7 @@
 					<Ounces>6</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
@@ -7958,7 +8021,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>11</Colour>
@@ -7989,7 +8052,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>15</Colour>
@@ -8020,7 +8083,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>10</Colour>
@@ -8044,7 +8107,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>9</Colour>
@@ -8068,7 +8131,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
@@ -8092,7 +8155,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>11</Colour>
@@ -8116,7 +8179,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>2</Colour>
@@ -8140,7 +8203,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>1</Colour>
@@ -8163,7 +8226,7 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>	 
+				<Material>18</Material>	 
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
@@ -8186,7 +8249,7 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
@@ -8209,7 +8272,7 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
@@ -8232,7 +8295,7 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>11</Colour>
@@ -8395,7 +8458,7 @@
 					<Ounces>8</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
@@ -8467,7 +8530,7 @@
 					<Ounces>3</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
@@ -8517,7 +8580,7 @@
 					<Ounces>4</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>3</Colour>
@@ -8540,7 +8603,7 @@
 					<Pounds>1</Pounds>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>2</Colour>
@@ -8564,7 +8627,7 @@
 					<Ounces>6</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>%</Char>
 					<Colour>7</Colour>
@@ -8589,7 +8652,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>w</Char>
 					<Colour>5</Colour>
@@ -8614,7 +8677,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>w</Char>
 					<Colour>15</Colour>
@@ -8639,7 +8702,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>w</Char>
 					<Colour>8</Colour>
@@ -8664,7 +8727,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>w</Char>
 					<Colour>12</Colour>
@@ -8689,7 +8752,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>w</Char>
 					<Colour>9</Colour>
@@ -8714,7 +8777,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>w</Char>
 					<Colour>11</Colour>
@@ -8739,7 +8802,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>w</Char>
 					<Colour>12</Colour>
@@ -8764,7 +8827,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>w</Char>
 					<Colour>13</Colour>
@@ -8789,7 +8852,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>w</Char>
 					<Colour>14</Colour>
@@ -8814,7 +8877,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>w</Char>
 					<Colour>7</Colour>
@@ -8839,7 +8902,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>f</Char>
 					<Colour>10</Colour>
@@ -8863,7 +8926,7 @@
 					<Ounces>8</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>f</Char>
 					<Colour>2</Colour>
@@ -8887,7 +8950,7 @@
 					<Ounces>8</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>w</Char>
 					<Colour>15</Colour>
@@ -8919,7 +8982,7 @@
 					<Ounces>1</Ounces>
 				</Weight>
 				<WornLocation>-1</WornLocation>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>w</Char>
 					<Colour>15</Colour>
@@ -13318,7 +13381,7 @@
 					<Pounds>0</Pounds>
 					<Ounces>1</Ounces>
 				</Weight>
-				<Material>8</Material>
+				<Material>18</Material>
 				<Symbol>
 					<Char>]</Char>
 					<Sprite>

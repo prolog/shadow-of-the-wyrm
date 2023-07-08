@@ -63,6 +63,14 @@
 				</Coord>
 			</Placement>
 		</Creatures>
-		<Items/>
+		<Items>
+			<Placement>
+				<ID>selrin_bandana</ID>
+				<Coord>
+					<Row>1</Row>
+					<Col>15</Col>
+				</Coord>
+			</Placement>
+		</Items>
 	</InitialPlacements>
 </CustomMap>

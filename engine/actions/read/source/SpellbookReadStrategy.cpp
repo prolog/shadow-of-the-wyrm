@@ -96,6 +96,24 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
   return acv;
 }
 
+bool SpellbookReadStrategy::add_spell_castings(CreaturePtr creature, const string& spell_id, const int additional_castings)
+{
+  bool added_castings = false;
+
+  if (creature != nullptr)
+  {
+    // Update the number of successful castings.
+    SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+    IndividualSpellKnowledge isk = sk.get_spell_knowledge(spell_id);
+    isk.set_castings(isk.get_castings() + additional_castings);
+    sk.set_spell_knowledge(spell_id, isk);
+
+    added_castings = true;
+  }
+
+  return added_castings;
+}
+
 void SpellbookReadStrategy::learn_spell_from_spellbook(CreaturePtr creature, SpellbookPtr spellbook, const ItemIdentifier& item_id, const string& spell_id, const SkillType magic_category)
 {
   SpellbookCalculator sc;
@@ -106,13 +124,8 @@ void SpellbookReadStrategy::learn_spell_from_spellbook(CreaturePtr creature, Spe
 
   // Add a message about this.
   add_read_message(get_player_and_monster_read_sids(), creature, spellbook, item_id);
-
-  // Update the number of successful castings.
-  SpellKnowledge& sk = creature->get_spell_knowledge_ref();
-  IndividualSpellKnowledge isk = sk.get_spell_knowledge(spell_id);
   int additional_castings = sc.get_num_castings(creature, magic_category, spellbook->get_status(), spellbook->get_difficulty());
-  isk.set_castings(isk.get_castings() + additional_castings);
-  sk.set_spell_knowledge(spell_id, isk);
+  add_spell_castings(creature, spell_id, additional_castings);
 }
 
 // Check to see if the creature can actually read the runes on the page.

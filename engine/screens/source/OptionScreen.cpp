@@ -36,10 +36,13 @@ void OptionScreen::initialize()
   for (const auto& option : options)
   {
     vector<string> props;
-    boost::split(props, option, boost::is_any_of("="));
+    const auto equals_idx = option.find_first_of('=');
 
-    if (props.size() == 2)
+    if (equals_idx != std::string::npos)
     {
+      string key = option.substr(0, equals_idx);
+      string value = option.substr(equals_idx + 1);
+
       scr_options->set_show_option_descriptions(false);
       int line_number = i + 1;
 
@@ -54,7 +57,7 @@ void OptionScreen::initialize()
         opt_screen.clear();
       }
 
-      selection_map.insert(make_pair('a' + opt_idx, props.at(0)));
+      selection_map.insert(make_pair('a' + opt_idx, key));
 
       Option current_option;
       current_option.set_id(opt_idx);
@@ -62,7 +65,7 @@ void OptionScreen::initialize()
       // Assumption is that the value in the map is always translated
       // (or dynamic, or whatever) and therefore no need to look it up
       // in the StringTable.
-      current_option.set_description(props.at(1));
+      current_option.set_description(value);
 
       scr_options->add_option(current_option);
       add_component(opt_screen, scr_options, line_number);

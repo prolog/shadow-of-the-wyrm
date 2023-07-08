@@ -35,10 +35,23 @@ bool ShopGenerator::generate_shop(MapPtr map, const Building& building)
       if (!ic.empty())
       {
         std::shuffle(ic.begin(), ic.end(), RNG::get_engine());
-        Coordinate shopkeeper_coords = ic.at(RNG::range(0, ic.size()-1));
 
         for (int i = 0; i < 5; i++)
         {
+          Coordinate shopkeeper_coords = ic.back();
+
+          if (!ic.empty())
+          {
+            ic.pop_back();
+          }
+
+          TilePtr tile = map->at(shopkeeper_coords);
+
+          if (tile->get_dangerous(shopkeeper))
+          {
+            continue;
+          }
+
           string shopkeeper_name = Naming::generate_name(static_cast<CreatureSex>(RNG::range(0, 1)));
           string shop_id = shopkeeper_name + "_shop";
 

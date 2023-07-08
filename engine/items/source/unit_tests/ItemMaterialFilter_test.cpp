@@ -3,7 +3,7 @@
 
 TEST(SW_Engine_Items_ItemMaterialFilter, passes_test)
 {
-  ItemMaterialFilter imf(MaterialType::MATERIAL_TYPE_WOOD);
+  ItemMaterialFilter imf({MaterialType::MATERIAL_TYPE_WOOD, MaterialType::MATERIAL_TYPE_CLAY});
   
   ItemPtr no_item;
   ItemPtr amulet = std::make_shared<Amulet>();
@@ -13,6 +13,10 @@ TEST(SW_Engine_Items_ItemMaterialFilter, passes_test)
   EXPECT_FALSE(imf.passes_filter(amulet));
 
   amulet->set_material_type(MaterialType::MATERIAL_TYPE_WOOD);
+
+  EXPECT_TRUE(imf.passes_filter(amulet));
+
+  amulet->set_material_type(MaterialType::MATERIAL_TYPE_CLAY);
 
   EXPECT_TRUE(imf.passes_filter(amulet));
 }

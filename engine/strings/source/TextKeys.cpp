@@ -50,6 +50,8 @@ const string TextKeys::DEATH_DETAILS_NARRATIVE_MODE = "DEATH_DETAILS_NARRATIVE_M
 const string TextKeys::INDEFINITELY = "INDEFINITELY";
 const string TextKeys::STATUSES = "STATUSES";
 const string TextKeys::NPC_ESCAPES_MESSAGE = "NPC_ESCAPES_MESSAGE";
+const string TextKeys::NPC_FLEES_MESSAGE = "NPC_FLEES_MESSAGE";
+const string TextKeys::NPC_TURNS_TO_FIGHT_MESSAGE = "NPC_TURNS_TO_FIGHT_MESSAGE";
 const string TextKeys::SELECT_RACE = "SELECT_RACE";
 const string TextKeys::CLASS = "CLASS";
 const string TextKeys::SELECT_CLASS = "SELECT_CLASS";
@@ -208,6 +210,7 @@ const string TextKeys::TAMED = "TAMED";
 const string TextKeys::REQUIRES = "REQUIRES";
 const string TextKeys::THE_WORLD_MAP = "THE_WORLD_MAP";
 const string TextKeys::NO_CREATURES_GENERATED = "NO_CREATURES_GENERATED";
+const string TextKeys::DEFAULT_CLASS_NAME_SID = "DEFAULT_CLASS_NAME_SID";
 
 
 

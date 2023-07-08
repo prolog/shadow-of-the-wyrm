@@ -103,6 +103,7 @@ class Map : public ISerializable
     Coordinate get_location(const std::string& location) const;
     std::pair<Coordinate, std::shared_ptr<Tile>> get_location_and_tile(const std::string& location) const;
     std::map<std::string, Coordinate> get_locations() const;
+    std::map<std::string, std::pair<Coordinate, std::shared_ptr<Creature>>> get_locations_with_creatures() const;
     std::shared_ptr<Tile> get_tile_at_location(const std::string& location);
     
     // "Edge" map directions.  Cardinal directions only for now.

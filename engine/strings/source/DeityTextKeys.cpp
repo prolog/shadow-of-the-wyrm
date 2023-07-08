@@ -34,6 +34,7 @@ const string DeityTextKeys::PRAYER_INITIAL_MESSAGE   = "PRAYER_INITIAL_MESSAGE";
 const string DeityTextKeys::PRAYER_DO_NOTHING        = "PRAYER_DO_NOTHING";
 const string DeityTextKeys::PRAYER_FULL_HP           = "PRAYER_FULL_HP";
 const string DeityTextKeys::PRAYER_FULL_AP           = "PRAYER_FULL_AP";
+const string DeityTextKeys::PRAYER_LEARN_SPELL       = "PRAYER_LEARN_SPELL";
 const string DeityTextKeys::PRAYER_SATIATE           = "PRAYER_SATIATE";
 const string DeityTextKeys::PRAYER_RESTORE_STATUS    = "PRAYER_RESTORE_STATUS";
 const string DeityTextKeys::PRAYER_CROWNING          = "PRAYER_CROWNING";

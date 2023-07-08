@@ -4,45 +4,75 @@
 #include "CreatureFeatures.hpp"
 #include "Log.hpp"
 #include "XMLScriptsReader.hpp"
-
+#include "Conversion.hpp"
 using namespace std;
 
 // Parse the symbol information out of an XML node
-void XMLReader::parse_symbol(Symbol& symbol, const XMLNode& symbol_node) const
+void XMLReader::parse_symbol(Symbol& symbol, const XMLNode& symbol_node, const bool use_idx, const size_t i) const
 {
   if (!symbol_node.is_null())
   {
     uchar symbol_char = '?';
     string symbol_text = XMLUtils::get_child_node_value(symbol_node, "Char");
-
-    if (!symbol_text.empty())
+    vector<string> symbol_vec;
+    
+    if (symbol_text.size() >= 3)
     {
-      symbol_char = symbol_text[0];
-      symbol.set_symbol(symbol_char);
+      symbol_vec = String::create_string_vector_from_csv_string(symbol_text);
     }
+    else
+    {
+      if (!symbol_text.empty())
+      {
+        symbol_char = symbol_text[0];
+      }
+    }
+
+    if (!symbol_vec.empty())
+    {
+      symbol_text = symbol_vec.at(use_idx && i < symbol_vec.size() ? i : 0);
+      symbol_char = symbol_text[0];
+    }
+
+    symbol.set_symbol(symbol_char);
 
     XMLNode colour_node = XMLUtils::get_next_element_by_local_name(symbol_node, "Colour");
     if (!colour_node.is_null())
     {
-      Colour colour = static_cast<Colour>(XMLUtils::get_node_int_value(colour_node, 0));
-      symbol.set_colour(colour);
+      string colour_s = XMLUtils::get_node_value(colour_node);
+      vector<string> colour_vec = String::create_string_vector_from_csv_string(colour_s);
+      Colour colour = Colour::COLOUR_BLACK;
+
+      if (!colour_vec.empty())
+      {
+        colour = static_cast<Colour>(String::to_int(colour_vec.at(use_idx && i < colour_vec.size() ? i : 0)));
+        symbol.set_colour(colour);
+      }
     }
 
     XMLNode ss_loc_node = XMLUtils::get_next_element_by_local_name(symbol_node, "Sprite");
 
     SpritesheetLocation ssl;
-    parse_spritesheet_location(ssl, ss_loc_node);
+    parse_spritesheet_location(ssl, ss_loc_node, use_idx, i);
     symbol.set_spritesheet_location(ssl);
   }
 }
 
-void XMLReader::parse_spritesheet_location(SpritesheetLocation& ssl, const XMLNode& ssl_node) const
+void XMLReader::parse_spritesheet_location(SpritesheetLocation& ssl, const XMLNode& ssl_node, const bool use_idx, const size_t i) const
 {
   if (!ssl_node.is_null())
   {
     string id = XMLUtils::get_child_node_value(ssl_node, "ID");
-    int row = XMLUtils::get_child_node_int_value(ssl_node, "Row");
-    int col = XMLUtils::get_child_node_int_value(ssl_node, "Col");
+    string row_s = XMLUtils::get_child_node_value(ssl_node, "Row");
+    string col_s = XMLUtils::get_child_node_value(ssl_node, "Col");
+
+    vector<string> id_vec = String::create_string_vector_from_csv_string(id);
+    vector<string> row_vec = String::create_string_vector_from_csv_string(row_s);
+    vector<string> col_vec = String::create_string_vector_from_csv_string(col_s);
+
+    id = id_vec.at(use_idx && i < id_vec.size() ? i : 0);
+    int row = String::to_int(row_vec.at(use_idx && i < row_vec.size() ? i : 0));
+    int col = String::to_int(col_vec.at(use_idx && i < col_vec.size() ? i : 0));
 
     ssl.set_index(id);
     ssl.set_coordinate(make_pair(row, col));

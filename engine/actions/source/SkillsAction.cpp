@@ -2,6 +2,7 @@
 #include "Conversion.hpp"
 #include "Game.hpp"
 #include "ScreenTitleTextKeys.hpp"
+#include "SkillProcessorFactory.hpp"
 #include "SkillsAction.hpp"
 #include "SkillsCommandFactory.hpp"
 #include "SkillsCommandProcessorFactory.hpp"
@@ -96,9 +97,10 @@ ActionCostValue SkillsAction::improve_skill(CreaturePtr creature, const SkillTyp
 {
   if (creature != nullptr)
   {
+    SkillProcessorPtr sp = SkillProcessorFactory::create(st);
     Skill* skill = creature->get_skills().get_skill(st);
 
-    if (skill != nullptr)
+    if (skill != nullptr && sp && sp->is_skill_implemented())
     {
       int val = skill->get_value();
 

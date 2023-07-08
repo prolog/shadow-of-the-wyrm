@@ -122,3 +122,15 @@ TEST(SW_Engine_Maps_DirectionUtils, to_cardinal_direction)
   }
 }
 
+TEST(SW_Engine_Maps_DirectionUtils, get_in_map_dirs)
+{
+  vector<Direction> dirs = { Direction::DIRECTION_NORTH_WEST, Direction::DIRECTION_NORTH, Direction::DIRECTION_NORTH_EAST, Direction::DIRECTION_WEST, Direction::DIRECTION_EAST, Direction::DIRECTION_SOUTH_WEST, Direction::DIRECTION_SOUTH, Direction::DIRECTION_SOUTH_EAST };
+  vector<Direction> move_dirs = DirectionUtils::get_in_map_movement_directions();
+
+  EXPECT_EQ(move_dirs.size(), dirs.size());
+
+  for (const auto d : dirs)
+  {
+    EXPECT_TRUE(std::find(move_dirs.begin(), move_dirs.end(), d) != move_dirs.end());
+  }
+}

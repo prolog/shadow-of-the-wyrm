@@ -37,6 +37,7 @@ class Setting
     static const std::string DEFAULT_NAME;
     static const std::string USERNAME_IS_CHARACTER_NAME;
     static const std::string MAX_CHARACTERS_PER_USER;
+    static const std::string FULL_STOP_AFTER_OPTIONS;
     static const std::string DISPLAY_LOCATION;
     static const std::string DISPLAY;
     static const std::string DISPLAY_SDL_RENDERER;
@@ -57,8 +58,11 @@ class Setting
     static const std::string AUTOPICKUP_TYPES;
     static const std::string AUTOPICKUP_IGNORE_CORPSES;
     static const std::string AUTOPICKUP_IGNORE_UNPAID;
+    static const std::string AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT;
+    static const std::string AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT_LBS;
     static const std::string PROMPT_ON_STACK_PICKUP;
     static const std::string AUTOMELEE;
+    static const std::string AUTOMOVE_ALWAYS_STOP_ON_ITEMS;
     static const std::string CHECKPOINT_SAVE;
     static const std::string ALLOW_CURSED_AMMUNITION_USE;
     static const std::string SKILL_SELECTION_REQUIRE_CAPITALIZATION;

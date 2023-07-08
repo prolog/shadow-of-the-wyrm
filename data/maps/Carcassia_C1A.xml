@@ -45,6 +45,10 @@
 			<Direction>8</Direction>
 			<MapID>carcassia_b1a</MapID>
 		</Exit>
+		<Exit>
+			<Direction>6</Direction>
+			<MapID>carcassia_c2a</MapID>
+		</Exit>
 	</Exits>
 	<Features/>
 </CustomMap>

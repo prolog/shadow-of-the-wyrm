@@ -4490,6 +4490,15 @@
     <ClInclude Include="engine\skills\include\MountainLoreSkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\CowardiceCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\PlantMaterial.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\GrantSpellDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9096,6 +9105,21 @@
     </ClCompile>
     <ClCompile Include="engine\skills\source\MountainLoreSkillProcessor.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\CowardiceCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\CowardiceCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\PlantMaterial.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\PlantMaterial_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\GrantSpellDeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

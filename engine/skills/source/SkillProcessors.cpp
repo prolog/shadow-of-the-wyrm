@@ -4,8 +4,8 @@
 
 using namespace std;
 
-DefaultSkillProcessor::DefaultSkillProcessor(const string& new_message_sid)
-: message_sid(new_message_sid)
+DefaultSkillProcessor::DefaultSkillProcessor(const string& new_message_sid, const bool new_implemented)
+: message_sid(new_message_sid), implemented(new_implemented)
 {
 }
 
@@ -28,6 +28,11 @@ SkillProcessorPtr DefaultSkillProcessor::clone()
 {
   SkillProcessorPtr proc = std::make_unique<DefaultSkillProcessor>(message_sid);
   return proc;
+}
+
+bool DefaultSkillProcessor::is_skill_implemented() const
+{
+  return implemented;
 }
 
 WeaponSkillProcessor::WeaponSkillProcessor()

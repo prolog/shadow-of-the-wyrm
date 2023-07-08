@@ -1,12 +1,19 @@
 #include <sstream>
+#include <boost/algorithm/string/replace.hpp>
 #include "NamingScreen.hpp"
 #include "PromptTextKeys.hpp"
+#include "StringTable.hpp"
 
 using namespace std;
 
-NamingScreen::NamingScreen(DisplayPtr new_display, const string& synop, const string& warning)
-: Screen(new_display), creature_synopsis(synop), warning_message(warning)
+NamingScreen::NamingScreen(DisplayPtr new_display, const string& new_class, const string& synop, const string& warning)
+: Screen(new_display), creature_class(new_class), creature_synopsis(synop), warning_message(warning)
 {
+  if (!creature_class.empty())
+  {
+    creature_class[0] = std::tolower(creature_class[0]);
+  }
+
   initialize();
 }
 
@@ -39,7 +46,10 @@ void NamingScreen::initialize()
   }
 
   user_prompt = std::make_unique<TextPrompt>();
-  user_prompt->set_text_sid(PromptTextKeys::PROMPT_ENTER_YOUR_NAME);
+
+  string prompt_text = StringTable::get(PromptTextKeys::PROMPT_ENTER_YOUR_NAME);
+  boost::replace_first(prompt_text, "%s", creature_class);
+  user_prompt->set_text_sid(prompt_text);
 
   add_page(naming_screen);
 }

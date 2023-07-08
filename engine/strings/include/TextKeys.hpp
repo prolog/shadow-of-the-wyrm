@@ -46,6 +46,8 @@ class TextKeys
     static const std::string TOTAL_ELAPSED_TIME;
     static const std::string MAXIMUM_DEPTH_REACHED;
     static const std::string NPC_ESCAPES_MESSAGE;
+    static const std::string NPC_FLEES_MESSAGE;
+    static const std::string NPC_TURNS_TO_FIGHT_MESSAGE;
     static const std::string SEX;
     static const std::string SELECT_SEX;
     static const std::string SEX_MALE;
@@ -204,6 +206,7 @@ class TextKeys
     static const std::string REQUIRES;
     static const std::string THE_WORLD_MAP;
     static const std::string NO_CREATURES_GENERATED;
+    static const std::string DEFAULT_CLASS_NAME_SID;
 
   protected:
     TextKeys();
