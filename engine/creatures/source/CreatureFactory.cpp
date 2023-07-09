@@ -329,21 +329,20 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
   Game& game = Game::instance();
 
-  const DeityMap& deities = game.get_deities_cref();
-
   RaceManager rm;
   ClassManager cm;
   Race* race = rm.get_race(race_id);
   Class* char_class = cm.get_class(class_id);
   
   Deity* deity = nullptr;
+  const auto& deities = game.get_deities_cref();
   auto d_it = deities.find(deity_id);
   if (d_it != deities.end())
   {
     deity = d_it->second.get();
   }
 
-  if (race && char_class && deity)
+  if (race && char_class)
   {
     // This'll probably be blank at this point.
     // But for permanent statuses, such as incorporeal/flying, it doesn't
@@ -399,7 +398,14 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     creaturep->set_religion(religion);
 
     Alignment alignment;
-    alignment.set_alignment(alignment.get_default_alignment_for_range(deity->get_alignment_range()));
+    AlignmentRange ar = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL;
+
+    if (deity != nullptr)
+    {
+      ar = deity->get_alignment_range();
+    }
+
+    alignment.set_alignment(alignment.get_default_alignment_for_range(ar));
     creaturep->set_alignment(alignment);
   }
 
@@ -487,7 +493,14 @@ void CreatureFactory::set_initial_statistics(CreaturePtr creature, Race* race, C
 {
   Modifier race_m = race->get_modifier();
   Modifier class_m = char_class->get_modifier();
-  Modifier deity_m = deity->get_initial_modifier();
+  Modifier deity_m;
+
+  deity_m.set_willpower_modifier(2);
+
+  if (deity != nullptr)
+  {
+    deity_m = deity->get_initial_modifier();
+  }
   
   Statistic strength     = race->get_starting_strength().get_base()     
                          + class_m.get_strength_modifier()

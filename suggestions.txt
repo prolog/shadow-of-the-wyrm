@@ -1,4 +1,11 @@
 Me:
+- Godlessness:
+  - Praying
+  - Divine magic resistance
+  - Learning Divine should be harder
+  - Update manual
+  - How should piety work?
+  - update version_info
 - ASSET RELEASE. git push --tags
 - YARD: let NPCs pray in desperation as well
 - picking up an item - prompt (with swyrm option) re whether to equip it?

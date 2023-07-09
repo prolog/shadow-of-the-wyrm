@@ -11,6 +11,7 @@
 #include "ItemDescriberFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "Naming.hpp"
+#include "ReligionManager.hpp"
 #include "RNG.hpp"
 #include "Setting.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -664,7 +665,7 @@ string TextMessages::get_bool_sid(const bool val)
   }
 }
 
-string TextMessages::get_character_creation_synopsis(const CreatureSex cs, Race* race, Class* cur_class, Deity* cur_deity, StartingLocation* sl)
+string TextMessages::get_character_creation_synopsis(const CreatureSex cs, Race* race, Class* cur_class, const string& deity_id, StartingLocation* sl)
 {
   vector<string> details;
 
@@ -684,9 +685,10 @@ string TextMessages::get_character_creation_synopsis(const CreatureSex cs, Race*
   }
 
   // Deity should always be separated from what comes before.
-  if (cur_deity != nullptr)
+  if (!deity_id.empty())
   {
-    details.push_back("(" + StringTable::get(cur_deity->get_name_sid()) + ")");
+    ReligionManager rm;
+    details.push_back("(" + StringTable::get(rm.get_deity_name_sid(deity_id)) + ")");
   }
 
   if (sl != nullptr)

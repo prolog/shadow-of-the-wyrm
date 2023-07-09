@@ -4,6 +4,8 @@ Shadow of the Wyrm v1.6.0 "Daca"
 - The game now shows "a vanished god" if you worship one of the Nine and they
   are gone from the game.
 
+- More name combinations.
+
 Shadow of the Wyrm v1.5.8 "Testagrossa"
 - Version started January 7, 2023. Version finalized July 8, 2023.
 

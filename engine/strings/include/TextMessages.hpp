@@ -43,7 +43,7 @@ class TextMessages
     static std::string get_inscription_message(const std::string& inscription_sid, const bool is_world_map);
     static std::string get_replacement_message(const std::string& message, const std::string& replace);
     static std::string get_bool_sid(const bool val);
-    static std::string get_character_creation_synopsis(const CreatureSex cs, Race* race, Class* cur_class, Deity* cur_deity, StartingLocation* sl);
+    static std::string get_character_creation_synopsis(const CreatureSex cs, Race* race, Class* cur_class, const std::string& deity_id, StartingLocation* sl);
     static std::string get_slot_machine_message(const int cost, const int pct_chance_win, const int payout_amount);
     static std::string get_slot_machine_outcome_message(const std::string& first_sid, const std::string& second_sid, const std::string& third_sid);
     static std::string get_damage_message(const Damage& damage);
