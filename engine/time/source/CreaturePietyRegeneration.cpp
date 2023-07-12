@@ -10,7 +10,7 @@ int CreaturePietyRegeneration::MINUTES_PER_POINT_OF_PIETY = 10;
 
 void CreaturePietyRegeneration::tick(CreaturePtr creature, TilePtr tile, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
 {
-  if (creature)
+  if (creature && !creature->is_godless())
   {
     ClassManager cm;
     CreaturePietyCalculator cpc;
