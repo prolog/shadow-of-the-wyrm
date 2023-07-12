@@ -30,6 +30,7 @@ string DeityTextKeys::get_deity_change_message(const string& deity_sid)
 }
 
 const string DeityTextKeys::ALTAR_SENSE_CROSSALIGNED = "ALTAR_SENSE_CROSSALIGNED";
+const string DeityTextKeys::PRAYER_GODLESS           = "PRAYER_GODLESS";
 const string DeityTextKeys::PRAYER_INITIAL_MESSAGE   = "PRAYER_INITIAL_MESSAGE";
 const string DeityTextKeys::PRAYER_DO_NOTHING        = "PRAYER_DO_NOTHING";
 const string DeityTextKeys::PRAYER_FULL_HP           = "PRAYER_FULL_HP";

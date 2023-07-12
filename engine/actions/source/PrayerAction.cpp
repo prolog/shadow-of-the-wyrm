@@ -88,6 +88,8 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
 // If the creature is the player, say a prayer (add a message).
 bool PrayerAction::say_prayer(CreaturePtr creature)
 {
+  bool prayer_said = false;;
+
   if (creature && creature->get_is_player())
   {
     Game& game = Game::instance();
@@ -95,14 +97,19 @@ bool PrayerAction::say_prayer(CreaturePtr creature)
 
     if (game.do_deities_exist())
     {
-      ReligionManager rm;
-      string deity_name_sid = rm.get_deity_name_sid(creature->get_religion().get_active_deity_id());
-      string prayer_message = DeityTextKeys::get_prayer_message(deity_name_sid);
+      string prayer_message = StringTable::get(DeityTextKeys::PRAYER_GODLESS);
+
+      if (!creature->is_godless())
+      {
+        ReligionManager rm;
+        string deity_name_sid = rm.get_deity_name_sid(creature->get_religion().get_active_deity_id());
+        prayer_message = DeityTextKeys::get_prayer_message(deity_name_sid);
+        
+        prayer_said = true;
+      }
 
       manager.add_new_message(prayer_message);
       manager.send();
-
-      return true;
     }
     else
     {
@@ -112,7 +119,7 @@ bool PrayerAction::say_prayer(CreaturePtr creature)
     }
   }
 
-  return false;
+  return prayer_said;
 }
 
 // Reduce the piety by the given amount, and update the player on the result

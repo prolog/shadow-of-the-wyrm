@@ -47,6 +47,7 @@
 #include "RaceManager.hpp"
 #include "Quests.hpp"
 #include "RaceConstants.hpp"
+#include "ReligionConstants.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
@@ -478,6 +479,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_hidden_treasure_message", get_hidden_treasure_message);
   lua_register(L, "get_map_type", get_map_type);
   lua_register(L, "is_tile_available_for_creature", is_tile_available_for_creature);
+  lua_register(L, "set_creature_godless", set_creature_godless);
 }
 
 // Lua API helper functions
@@ -10203,4 +10205,27 @@ int is_tile_available_for_creature(lua_State* ls)
 
   lua_pushboolean(ls, avail);
   return 1;
+}
+
+int set_creature_godless(lua_State* ls)
+{
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      Religion r;
+      r.set_active_deity_id(ReligionConstants::DEITY_ID_GODLESS);
+
+      creature->set_religion(r);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_creature_godless");
+  }
+
+  return 0;
 }
