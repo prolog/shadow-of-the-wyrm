@@ -52,3 +52,4 @@ const string DeityTextKeys::DEITY_ACTION_PLEASED     = "DEITY_ACTION_PLEASED";
 const string DeityTextKeys::DEITY_FALLEN_CHAMPION    = "DEITY_FALLEN_CHAMPION";
 const string DeityTextKeys::DEITY_CHANGE_MESSAGE     = "DEITY_CHANGE_MESSAGE";
 const string DeityTextKeys::DEITY_GODLESS            = "DEITY_GODLESS";
+const string DeityTextKeys::DEITY_OFFER_GODLESS      = "DEITY_OFFER_GODLESS";

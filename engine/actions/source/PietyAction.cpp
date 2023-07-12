@@ -46,7 +46,7 @@ ActionCostValue PietyAction::piety(CreaturePtr creature, MapPtr map, ActionManag
 
 void PietyAction::check_piety(CreaturePtr creature, IMessageManager& manager) const
 {
-  if (creature != nullptr)
+  if (creature != nullptr && !creature->is_godless())
   {
     ReligionManager rm;
     int piety = rm.get_piety_for_active_deity(creature);

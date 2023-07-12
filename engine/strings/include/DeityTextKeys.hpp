@@ -30,6 +30,7 @@ class DeityTextKeys
     static const std::string DEITY_FALLEN_CHAMPION;
     static const std::string DEITY_CHANGE_MESSAGE;
     static const std::string DEITY_GODLESS;
+    static const std::string DEITY_OFFER_GODLESS;
 
   protected:
     DeityTextKeys();
