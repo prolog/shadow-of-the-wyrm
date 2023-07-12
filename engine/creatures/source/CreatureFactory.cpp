@@ -386,16 +386,16 @@ CreaturePtr CreatureFactory::create_by_race_and_class
       mse.apply_modifiers(creaturep, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
     }
 
+    // Religion & Alignment
+    Religion religion = ReligionFactory::create_religion(deities);
+    religion.set_active_deity_id(deity_id);
+    creaturep->set_religion(religion);
+
     // Resistances
     set_initial_resistances(creaturep, race, char_class);
 
     // Skills
     set_initial_skills(creaturep, race, char_class);
-
-    // Religion & Alignment
-    Religion religion = ReligionFactory::create_religion(deities);
-    religion.set_active_deity_id(deity_id);
-    creaturep->set_religion(religion);
 
     Alignment alignment;
     AlignmentRange ar = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL;

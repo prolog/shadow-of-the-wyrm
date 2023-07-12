@@ -8,7 +8,8 @@ Shadow of the Wyrm v1.6.0 "Daca"
   receive no divine help via prayer, and cannot be crowned. They are still
   subject to divine wrath if they do particular disliked things, such as
   kicking altars. Godless characters have a much harder time learning divine
-  magic, and receive far fewer castings.
+  magic, and receive far fewer castings. When they drop items on altars, those
+  items will be cursed, as when doing this on a cross-aligned altar.
 
 - More name combinations.
 
