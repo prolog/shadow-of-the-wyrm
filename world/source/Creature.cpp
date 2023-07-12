@@ -6,6 +6,7 @@
 #include "DecisionStrategyProperties.hpp"
 #include "InventoryFactory.hpp"
 #include "PlayerDecisionStrategy.hpp"
+#include "ReligionConstants.hpp"
 #include "Serialize.hpp"
 #include "ThreatConstants.hpp"
 #include "Weapon.hpp"
@@ -1188,6 +1189,11 @@ bool Creature::hostile_to(const string& creature_id)
   }
 
   return false;
+}
+
+bool Creature::is_godless() const
+{
+  return religion.get_active_deity_id() == ReligionConstants::DEITY_ID_GODLESS;
 }
 
 void Creature::set_religion(const Religion& new_religion)

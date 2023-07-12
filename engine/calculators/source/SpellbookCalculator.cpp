@@ -1,3 +1,4 @@
+#include "ReligionConstants.hpp"
 #include "RNG.hpp"
 #include "SpellbookCalculator.hpp"
 #include "SpellConstants.hpp"
@@ -6,6 +7,8 @@ using namespace std;
 
 const int SpellbookCalculator::BASE_PCT_CHANCE_WILD_INCINERATION = 5;
 const int SpellbookCalculator::MAX_PCT_CHANCE_WILD_INCINERATION = 80;
+const int SpellbookCalculator::DIVINE_DIFFICULTY_GODLESS_MODIFIER = -100;
+const int SpellbookCalculator::DIVINE_CASTINGS_GODLESS_DIVISOR = 5;
 
 SpellbookCalculator::SpellbookCalculator()
 {
@@ -60,6 +63,7 @@ void SpellbookCalculator::initialize_status_casting_multipliers()
 // - Add (Int / 5)
 // - Add (Will / 5)
 // - Subtract 10 for every 0.01 BAC
+// - Subtract 100 if it's divine magic and the creature is godless
 //
 // If the resultant number is > Difficulty, the spell is learned.
 pair<bool, int> SpellbookCalculator::learn_spell(CreaturePtr creature, const SkillType magic_category, const int difficulty)
@@ -80,13 +84,21 @@ pair<bool, int> SpellbookCalculator::learn_spell(CreaturePtr creature, const Ski
     int will_stat = creature->get_willpower().get_current();
     int bac_modifier = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100) * 10;
 
+    int godless_modifier = 0;
+
+    if (magic_category == SkillType::SKILL_MAGIC_DIVINE && creature->is_godless())
+    {
+      godless_modifier = DIVINE_DIFFICULTY_GODLESS_MODIFIER;
+    }
+
     int i = (rand
           + (magic_general_skill / 2)
           + (literacy_skill / 4)
           + magic_category_skill
           + (int_stat / 5)
           + (will_stat / 5))
-          - bac_modifier;
+          - bac_modifier
+          + godless_modifier;
 
     if (i > difficulty)
     {
@@ -104,35 +116,50 @@ pair<bool, int> SpellbookCalculator::learn_spell(CreaturePtr creature, const Ski
 // This is calculated as:
 //
 // min(SpellConstants::MIN_CASTINGS,
-//      spellbook status factor * 
+//      (spellbook status factor * 
 //         (Random value between SpellConstants::MIN_CASTINGS, SpellConstants::MAX_CASTINGS
 //       + (Creature's intelligence / 2)
 //       + Creature's willpower
 //       + (Creature's magic general skill / 4)
 //       + (Creature's magic category skill / 2)
 //       + (Creature's literacy score / 3)
-//       - (Difficulty / 3))
+//       - (Difficulty / 3)))) 
+//               / 1 if not godless, 5 if divine magic and godless
+//
+//  If the creature is 
 int SpellbookCalculator::get_num_castings(CreaturePtr creature, const SkillType magic_category, const ItemStatus spellbook_status, const int difficulty)
 {
-  Skills& skills = creature->get_skills();
-  int int_score = creature->get_intelligence().get_current();
-  int will_score = creature->get_willpower().get_current();
-  int magic_general_score = skills.get_skill(SkillType::SKILL_GENERAL_MAGIC)->get_value();
-  int magic_category_score = skills.get_skill(magic_category)->get_value();
-  int literacy_score = skills.get_skill(SkillType::SKILL_GENERAL_LITERACY)->get_value();
-  int random_factor = RNG::range(SpellConstants::BASE_MIN_CASTINGS, SpellConstants::BASE_MAX_CASTINGS);
+  int castings = 0;
 
-  int calculated_castings = random_factor
-                          + (int_score / 2)
-                          + will_score
-                          + (magic_general_score / 4)
-                          + (magic_category_score / 2)
-                          + (literacy_score / 3)
-                          - (difficulty / 3);
+  if (creature != nullptr) 
+  {
+    Skills& skills = creature->get_skills();
+    int int_score = creature->get_intelligence().get_current();
+    int will_score = creature->get_willpower().get_current();
+    int magic_general_score = skills.get_skill(SkillType::SKILL_GENERAL_MAGIC)->get_value();
+    int magic_category_score = skills.get_skill(magic_category)->get_value();
+    int literacy_score = skills.get_skill(SkillType::SKILL_GENERAL_LITERACY)->get_value();
+    int random_factor = RNG::range(SpellConstants::BASE_MIN_CASTINGS, SpellConstants::BASE_MAX_CASTINGS);
+    int divisor = 1;
 
-  calculated_castings = static_cast<int>(calculated_castings * status_casting_multipliers[spellbook_status]);
+    if (magic_category == SkillType::SKILL_MAGIC_DIVINE && creature->is_godless())
+    {
+      divisor = DIVINE_CASTINGS_GODLESS_DIVISOR;
+    }
 
-  int castings = std::max<int>(SpellConstants::MIN_CASTINGS, calculated_castings);
+    int calculated_castings = random_factor
+      + (int_score / 2)
+      + will_score
+      + (magic_general_score / 4)
+      + (magic_category_score / 2)
+      + (literacy_score / 3)
+      - (difficulty / 3);
+
+    calculated_castings = static_cast<int>(calculated_castings * status_casting_multipliers[spellbook_status]);
+    calculated_castings = calculated_castings / divisor;
+
+    castings = std::max<int>(SpellConstants::MIN_CASTINGS, calculated_castings);
+  }
 
   return castings;
 }

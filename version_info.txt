@@ -4,6 +4,12 @@ Shadow of the Wyrm v1.6.0 "Daca"
 - The game now shows "a vanished god" if you worship one of the Nine and they
   are gone from the game.
 
+- Added a new religion option, godlessness (Josh Engdahl). Godless characters
+  receive no divine help via prayer, and cannot be crowned. They are still
+  subject to divine wrath if they do particular disliked things, such as
+  kicking altars. Godless characters have a much harder time learning divine
+  magic, and receive far fewer castings.
+
 - More name combinations.
 
 Shadow of the Wyrm v1.5.8 "Testagrossa"
