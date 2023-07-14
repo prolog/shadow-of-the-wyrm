@@ -11,6 +11,11 @@ Shadow of the Wyrm v1.6.0 "Daca"
   magic, and receive far fewer castings. When they drop items on altars, those
   items will be cursed, as when doing this on a cross-aligned altar.
 
+- A while ago, the breakage chance of regular pickaxes was reduced to 1%, and
+  that of dwarven mattocks to 0%. Tthis made Delver less useful, so it's been 
+  buffed up: it now offers resistances to all the physical damage types, does 
+  a bit more damage, and has the piercing flag.
+
 - More name combinations.
 
 - Bug fixes:

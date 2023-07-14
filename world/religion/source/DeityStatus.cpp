@@ -6,7 +6,7 @@
 using namespace std;
 
 DeityStatus::DeityStatus()
-: piety(100), piety_regen_bonus(0), champion_type(ChampionType::CHAMPION_TYPE_UNCROWNED)
+: piety(100), piety_regen_bonus(0), champion_type(ChampionType::CHAMPION_TYPE_UNCROWNED), null(false)
 {
 }
 
@@ -21,13 +21,17 @@ bool DeityStatus::operator==(const DeityStatus& status) const
   result = result && (piety == status.piety);
   result = result && (piety_regen_bonus == status.piety_regen_bonus);
   result = result && (champion_type == status.champion_type);
+  result = result && (null == status.null);
 
   return result;
 }
 
 void DeityStatus::set_piety(const int new_piety)
 {
-  piety = new_piety;
+  if (!null)
+  {
+    piety = new_piety;
+  }
 }
 
 int DeityStatus::get_piety() const
@@ -81,11 +85,25 @@ ChampionType DeityStatus::get_champion_type() const
   return champion_type;
 }
 
+void DeityStatus::set_null(const bool new_null)
+{
+  null = new_null;
+  piety = 0;
+  piety_regen_bonus = 0;
+  champion_type = ChampionType::CHAMPION_TYPE_UNCROWNED;
+}
+
+bool DeityStatus::get_null() const
+{
+  return null;
+}
+
 bool DeityStatus::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, piety);
   Serialize::write_int(stream, piety_regen_bonus);
   Serialize::write_enum(stream, champion_type);
+  Serialize::write_bool(stream, null);
 
   return true;
 }
@@ -95,6 +113,7 @@ bool DeityStatus::deserialize(istream& stream)
   Serialize::read_int(stream, piety);
   Serialize::read_int(stream, piety_regen_bonus);
   Serialize::read_enum(stream, champion_type);
+  Serialize::read_bool(stream, null);
 
   return true;
 }
