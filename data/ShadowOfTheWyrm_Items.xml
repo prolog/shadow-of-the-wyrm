@@ -5706,8 +5706,9 @@
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
-					<Slash>0.10</Slash>
-					<Pierce>0.15</Pierce>
+					<Slash>0.15</Slash>
+					<Pierce>0.20</Pierce>
+					<Pound>0.15</Pound>
 				</Resistances>
 				<Properties>
 					<Property>
@@ -5723,10 +5724,10 @@
 				<RangedSkill>2000</RangedSkill>
 				<Difficulty>45</Difficulty>
 				<Speed>3</Speed>
-				<Damage>
-					<NumDice>4</NumDice>
+				<Damage piercing="1">
+					<NumDice>5</NumDice>
 					<NumSides>6</NumSides>
-					<Modifier>10</Modifier>
+					<Modifier>12</Modifier>
 					<Type>1</Type>
 				</Damage>
 			</Weapon>			
