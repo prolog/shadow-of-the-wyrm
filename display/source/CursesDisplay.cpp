@@ -715,6 +715,7 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
   vector<Option> options = oc->get_options();
   vector<string> option_descriptions = oc->get_option_descriptions();
   bool show_desc = oc->get_show_option_descriptions();
+  bool full_stop = Game::instance().get_settings_ref().get_setting_as_bool(Setting::FULL_STOP_AFTER_OPTIONS);
 
   size_t num_options = options.size();
   size_t num_option_desc = option_descriptions.size();
@@ -739,7 +740,9 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
 
         if (!option_desc.empty())
         {
-          option_text->add_text(" - ");
+          if (full_stop) option_text->add_text(". ");
+          else option_text->add_text(" - ");
+
           option_text->add_text(option_desc);
         }
       }
@@ -747,7 +750,10 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
       enable_colour(static_cast<int>(option_colour), window);
 
       ostringstream display_option;
-      display_option << "  [";
+
+      display_option << "  ";
+
+      if (!full_stop) display_option << "[";
 
       if (current_option.get_enabled())
       {
@@ -758,7 +764,8 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
         display_option << "-";
       }
         
-      display_option << "] ";
+      if (!full_stop) display_option << "] ";
+      else display_option << ". ";
 
       int ocol = *col;
 
@@ -770,8 +777,6 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
       getyx(window, *row, ocol);
 
       display_text_component(window, row, &ocol, option_text, DisplayConstants::OPTION_SPACING);
-
-      bool full_stop = Game::instance().get_settings_ref().get_setting_as_bool(Setting::FULL_STOP_AFTER_OPTIONS);
 
       if (full_stop)
       {

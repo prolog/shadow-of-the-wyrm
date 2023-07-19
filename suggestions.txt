@@ -1,4 +1,5 @@
 Me:
+- Curses mode: Comestibles showing %% instead of %
 - Godlessness:
   - Praying
   - Divine magic resistance
