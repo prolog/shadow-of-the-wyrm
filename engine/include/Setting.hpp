@@ -51,6 +51,7 @@ class Setting
     static const std::string DISPLAY_NUM_GLYPHS;
     static const std::string DISPLAY_FORCE_ASCII;
     static const std::string DISPLAY_SDL_PREFIX;
+    static const std::string DISPLAY_SIMPLIFIED_SPLASH_SCREEN;
     static const std::string REMOVE_LOGS_DAYS_OLD;
     static const std::string SINGLE_USER_MODE;
     static const std::string SKIP_SAVEFILE_METADATA_VERIFICATION;

@@ -58,6 +58,7 @@ const string Setting::DISPLAY_TILE_GLYPHS_PER_LINE = "display_tile_glyphs_per_li
 const string Setting::DISPLAY_NUM_GLYPHS = "display_num_glyphs";
 const string Setting::DISPLAY_FORCE_ASCII = "display_force_ascii";
 const string Setting::DISPLAY_SDL_PREFIX = "display_sdl_";
+const string Setting::DISPLAY_SIMPLIFIED_SPLASH_SCREEN = "display_simplified_splash_screen";
 const string Setting::REMOVE_LOGS_DAYS_OLD = "remove_logs_days_old";
 const string Setting::SINGLE_USER_MODE = "_single_user_mode";
 const string Setting::SKIP_SAVEFILE_METADATA_VERIFICATION = "_skip_savefile_metadata_verification";

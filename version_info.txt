@@ -16,6 +16,14 @@ Shadow of the Wyrm v1.6.0 "Daca"
   buffed up: it now offers resistances to all the physical damage types, does 
   a bit more damage, and has the piercing flag.
 
+- Made some improvements to the menu options in curses mode when 
+  "full_stop_after_options" is set, so that they sound better when read by a
+  screen reader.
+
+- Added a "display_simplified_splash_screen" setting which in curses-mode will
+  present a much simpler splash screen suitable for screen readers (no ASCII
+  art).
+
 - More name combinations.
 
 - Bug fixes:

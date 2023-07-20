@@ -362,7 +362,7 @@ bool CursesDisplay::display_splash(const bool enabled)
 
   size_t sp_sz = sotw_curses_splash.size();
 
-  if (sp_sz > TERMINAL_MAX_ROWS)
+  if (sp_sz > TERMINAL_MAX_ROWS || get_property(Setting::DISPLAY_SIMPLIFIED_SPLASH_SCREEN) == std::to_string(true))
   {
     enable_colour(static_cast<int>(Colour::COLOUR_BOLD_MAGENTA), stdscr);
     mvprintw(0, 0, "Loading Shadow of the Wyrm...");
