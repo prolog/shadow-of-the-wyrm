@@ -54,6 +54,9 @@ class GeneratorUtils
     // Generates a witchling's cottage somewhere on the map.
     static void generate_cottage(MapPtr map);
 
+    // Generates a (possibly abandoned) open pit mine on the map.
+    static void generate_open_pit_mine(MapPtr map);
+
     // Generates storehouses of food over the map.
     static void generate_storehouses(MapPtr map);
 

@@ -12809,6 +12809,12 @@
 				<NumSides>10</NumSides>
 				<Type>0</Type>
 			</Damage>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_MINER</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="zealot">
 			<RaceID>07_goblin</RaceID>
@@ -13031,6 +13037,12 @@
 				<NumSides>10</NumSides>
 				<Type>0</Type>
 			</Damage>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_MINER</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="dwarven_stonecarver">
 			<RaceID>06_dwarf</RaceID>
@@ -13069,6 +13081,12 @@
 				<NumSides>10</NumSides>
 				<Type>0</Type>
 			</Damage>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_MINER</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="dwarven_anklebiter">
 			<RaceID>06_dwarf</RaceID>
@@ -15155,6 +15173,12 @@
 				<NumSides>14</NumSides>
 				<Type>2</Type>
 			</Damage>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_MINER</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="mountain_elf_topographer">
 			<RaceID>03_mountainelf</RaceID>
@@ -20303,6 +20327,12 @@
 			</Damage>
 			<Evade>5</Evade>
 			<Soak>0</Soak>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_MINER</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="gnomish_adventurer">
 			<RaceID>10_gnome</RaceID>
@@ -20449,6 +20479,12 @@
 			</Damage>
 			<Evade>5</Evade>
 			<Soak>2</Soak>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_MINER</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="gnordvar_priest">
 			<RaceID>10_gnome</RaceID>
@@ -28567,6 +28603,12 @@
 					<Script>quests/commoner.lua</Script>
 				</ChatScript>
 			</EventScripts>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_MINER</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="_smith">
 			<RaceID>01_human,02_woodelf,03_mountainelf,04_snakeling,05_fae,06_dwarf,07_goblin,08_ogre,09_giant,10_gnome</RaceID>

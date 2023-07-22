@@ -150,13 +150,16 @@ void WorldGenerator::post_process_cell(MapPtr map, const int row, const int col)
     prop_pairs = { {250, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}},
                    {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}},
                    {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE}},
-                   {250, {TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE, TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE}}};
+                   {250, {TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE, TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE}},
+                   {500, {TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE, TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE}}
+    };
   }
   else if (tt == TileType::TILE_TYPE_HILLS)
   {
     prop_pairs = { {400, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}},
                    {500, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}},
-                   {350, {TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE, TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE}}};
+                   {350, {TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE, TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE}},
+                   {400, {TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE, TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE}}};
   }
   else if (tt == TileType::TILE_TYPE_MARSH)
   {
@@ -168,6 +171,7 @@ void WorldGenerator::post_process_cell(MapPtr map, const int row, const int col)
   {
     prop_pairs = { {300, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}},
                    {300, {TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE}},
+                   {600, {TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE, TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE}}
     };
   }
   else if (tt == TileType::TILE_TYPE_SCRUB)
@@ -184,7 +188,8 @@ void WorldGenerator::post_process_cell(MapPtr map, const int row, const int col)
   else if (tt == TileType::TILE_TYPE_MOUNTAINS)
   {
     prop_pairs = { {700, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}},
-                   {700, {TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE}} };
+                   {700, {TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE}},
+                   {700, {TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE, TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE}}};
   }
   // else { ... }
   // other terrain types don't have properties currently defined.

@@ -103,6 +103,11 @@ void Generator::generate_additional_structures(MapPtr map)
     {
       GeneratorUtils::generate_cottage(map);
     }
+
+    if (!get_additional_property(TileTextKeys::TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE).empty())
+    {
+      GeneratorUtils::generate_open_pit_mine(map);
+    }
   }
 }
 

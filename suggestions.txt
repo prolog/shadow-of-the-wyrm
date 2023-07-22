@@ -1,5 +1,6 @@
 Me:
-- Curses mode: Comestibles showing %% instead of %
+- open pit mine (pick axes or mattocks, gold, stone, magici...). may or may not
+  be abandoned.
 - Notify GB re new version?
 - ASSET RELEASE. git push --tags
 - YARD: let NPCs pray in desperation as well

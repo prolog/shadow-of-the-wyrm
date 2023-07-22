@@ -622,6 +622,14 @@ void GeneratorUtils::generate_cottage(MapPtr map)
   }
 }
 
+void GeneratorUtils::generate_open_pit_mine(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    // ...
+  }
+}
+
 void GeneratorUtils::generate_randarts(MapPtr map, const Coordinate& c, const int num_randarts)
 {
   if (map != nullptr)
