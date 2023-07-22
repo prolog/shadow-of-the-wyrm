@@ -458,8 +458,6 @@ void CursesDisplay::add_message(const string& to_add_message, const Colour colou
 
   // Replace any single instances of "%", as these will cause a crash when
   // the corresponding parameters are not present in printw.
-  boost::replace_all(message, "%", "%%");
-
   int orig_curs_y, orig_curs_x;
   getyx(screen, orig_curs_y, orig_curs_x);
 
@@ -692,11 +690,9 @@ void CursesDisplay::display_text_component(WINDOW* window, int* row, int* col, T
     {  
       string cur_text = text_line.first;
 
-      boost::replace_all(cur_text, "%", "%%");
-
       for (const Symbol& s : symbols)
       {
-        boost::replace_first(cur_text, "%%s", string(1, s.get_symbol()));
+        boost::replace_first(cur_text, "%s", string(1, s.get_symbol()));
       }
 
       enable_colour(static_cast<int>(text_line.second), window);
@@ -770,8 +766,6 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
       int ocol = *col;
 
       string display_option_s = display_option.str();
-      boost::replace_all(display_option_s, "%", "%%");
-
       mvwprintw(window, *row, ocol, "%s", display_option_s.c_str());
       
       getyx(window, *row, ocol);
@@ -824,7 +818,6 @@ void CursesDisplay::clear_screen()
 void CursesDisplay::display_text(const int row, const int col, const string& text)
 {
   string txt = text;
-  boost::replace_all(txt, "%", "%%");
   mvprintw(row, col, "%s", txt.c_str());
 }
 
@@ -834,7 +827,6 @@ void CursesDisplay::display_header(const string& header_text, WINDOW* window, co
   enable_colour(white, window);
 
   string header = header_text;
-  boost::replace_all(header, "%", "%%");
   string full_header = TextMessages::get_full_header_text(header, get_max_cols());
 
   mvwprintw(window, display_line, 0, "%s", full_header.c_str());

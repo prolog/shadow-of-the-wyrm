@@ -31,6 +31,8 @@ Shadow of the Wyrm v1.6.0 "Daca"
   - When notifying a deity about a pleasing action, the piety was incorrectly
     always getting applied to the creature's active deity.
 
+  - The '%' character was being duplicated on screen in curses mode.
+
 Shadow of the Wyrm v1.5.8 "Testagrossa"
 - Version started January 7, 2023. Version finalized July 8, 2023.
 
