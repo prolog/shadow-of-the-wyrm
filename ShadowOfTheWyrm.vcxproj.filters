@@ -4499,6 +4499,9 @@
     <ClInclude Include="engine\decision_strategies\deity\include\GrantSpellDeityDecisionStrategyHandler.hpp">
       <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\SurfaceMineSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9120,6 +9123,9 @@
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\deity\source\GrantSpellDeityDecisionStrategyHandler.cpp">
       <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\SurfaceMineSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

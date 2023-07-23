@@ -187,6 +187,22 @@ CreatureGenerationIndex CreatureGenerationManager::generate_ancient_beasts(const
   return cgi;
 }
 
+vector<string> CreatureGenerationManager::get_creature_ids_with_property(const string& property_name)
+{
+  vector<string> c_ids;
+  const CreatureMap& creatures = Game::instance().get_creatures_ref();
+
+  for (const auto& c_pair : creatures)
+  {
+    if (c_pair.second != nullptr && c_pair.second->has_additional_property(property_name))
+    {
+      c_ids.push_back(c_pair.first);
+    }
+  }
+
+  return c_ids;
+}
+
 string CreatureGenerationManager::select_creature_id_for_generation(ActionManager& am, const CreatureGenerationList& generation_list)
 {
   string creature_id;
