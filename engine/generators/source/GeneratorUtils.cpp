@@ -34,6 +34,7 @@ const int GeneratorUtils::STRUCTURE_MIN_WIDTH = 4;
 const int GeneratorUtils::STRUCTURE_MAX_WIDTH = 8;
 const int GeneratorUtils::STRUCTURE_MIN_HEIGHT = 3;
 const int GeneratorUtils::STRUCTURE_MAX_HEIGHT = 7;
+const int GeneratorUtils::STRUCTURE_NUM_ATTEMPTS = 15;
 
 // Hidden away by protected access
 GeneratorUtils::GeneratorUtils()
@@ -439,9 +440,8 @@ void GeneratorUtils::generate_bazaar(const MapPtr map)
   if (map != nullptr)
   {
     Dimensions d = map->size();
-    int max_attempts = 15;
 
-    for (int i = 0; i < max_attempts; i++)
+    for (int i = 0; i < STRUCTURE_NUM_ATTEMPTS; i++)
     {
       int width = RNG::range(STRUCTURE_MIN_WIDTH, STRUCTURE_MAX_WIDTH);
       int height = RNG::range(STRUCTURE_MIN_HEIGHT, STRUCTURE_MAX_HEIGHT);
@@ -469,9 +469,8 @@ void GeneratorUtils::generate_hermitage(MapPtr map)
   if (map != nullptr)
   {
     Dimensions d = map->size();
-    int max_attempts = 15;
 
-    for (int i = 0; i < max_attempts; i++)
+    for (int i = 0; i < STRUCTURE_NUM_ATTEMPTS; i++)
     {
       int width = RNG::range(STRUCTURE_MIN_WIDTH, STRUCTURE_MAX_WIDTH);
       int height = RNG::range(STRUCTURE_MIN_HEIGHT, STRUCTURE_MAX_HEIGHT);
@@ -559,9 +558,8 @@ void GeneratorUtils::generate_cottage(MapPtr map)
   if (map != nullptr)
   {
     Dimensions d = map->size();
-    int max_attempts = 15;
 
-    for (int i = 0; i < max_attempts; i++)
+    for (int i = 0; i < STRUCTURE_NUM_ATTEMPTS; i++)
     {
       int width = RNG::range(STRUCTURE_MIN_WIDTH, STRUCTURE_MAX_WIDTH);
       int height = RNG::range(STRUCTURE_MIN_HEIGHT, STRUCTURE_MAX_HEIGHT);
@@ -622,7 +620,7 @@ void GeneratorUtils::generate_cottage(MapPtr map)
   }
 }
 
-void GeneratorUtils::generate_open_pit_mine(MapPtr map)
+void GeneratorUtils::generate_surface_mine(MapPtr map)
 {
   if (map != nullptr)
   {
@@ -689,10 +687,9 @@ void GeneratorUtils::generate_storehouses(MapPtr map)
 {
   if (map != nullptr)
   {
-    int max_attempts = 15;
     Dimensions d = map->size();
 
-    for (int i = 0; i < max_attempts; i++)
+    for (int i = 0; i < STRUCTURE_NUM_ATTEMPTS; i++)
     {
       int width = RNG::range(STRUCTURE_MIN_WIDTH, STRUCTURE_MAX_WIDTH);
       int height = RNG::range(STRUCTURE_MIN_HEIGHT, STRUCTURE_MAX_HEIGHT);

@@ -54,8 +54,8 @@ class GeneratorUtils
     // Generates a witchling's cottage somewhere on the map.
     static void generate_cottage(MapPtr map);
 
-    // Generates a (possibly abandoned) open pit mine on the map.
-    static void generate_open_pit_mine(MapPtr map);
+    // Generates a (possibly abandoned) surface mine on the map.
+    static void generate_surface_mine(MapPtr map);
 
     // Generates storehouses of food over the map.
     static void generate_storehouses(MapPtr map);
@@ -87,6 +87,7 @@ class GeneratorUtils
     static bool position_in_range(const int min, const int max, const int actual);
     static bool are_tiles_ok_for_structure(MapPtr map, const int y_start, const int x_start, const int height, const int width);
 
+    static const int STRUCTURE_NUM_ATTEMPTS;
     static const int STRUCTURE_MIN_WIDTH;
     static const int STRUCTURE_MAX_WIDTH;
     static const int STRUCTURE_MIN_HEIGHT;
