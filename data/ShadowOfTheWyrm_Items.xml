@@ -13385,6 +13385,7 @@
 				<Material>18</Material>
 				<Symbol>
 					<Char>]</Char>
+					<Colour>3</Colour>
 					<Sprite>
 						<ID>it</ID>
 						<Row>1</Row>
