@@ -1,8 +1,14 @@
 Me:
+- ASSET RELEASE. git push --tags
 - open pit mine (pick axes or mattocks, gold, stone, magici...). may or may not
   be abandoned.
+- generic miner npc
+- mushrooms: regular (a few types), poisoned (a few types), magical (effects) 
+  - regular and poisoned should appear rarely in fields, more often in forests,
+    marshes
+  - magical should appear much more rarely, though have a chance to be generated
+    with regular items in dungeons
 - Notify GB re new version?
-- ASSET RELEASE. git push --tags
 - YARD: let NPCs pray in desperation as well
 - picking up an item - prompt (with swyrm option) re whether to equip it?
 - mountaineering/lore: chance to find magici shards (+ mark tile) and also to
