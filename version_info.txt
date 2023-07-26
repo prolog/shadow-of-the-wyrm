@@ -26,6 +26,8 @@ Shadow of the Wyrm v1.6.0 "Daca"
 
 - More name combinations.
 
+- New items: mushroom, shelf fungus.
+
 - Bug fixes:
  
   - When notifying a deity about a pleasing action, the piety was incorrectly
