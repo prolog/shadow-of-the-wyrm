@@ -7838,6 +7838,30 @@
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
+			<Food id="_mushroom">
+				<DescriptionSID>MUSHROOM_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>9</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
 			<Food id="_berries">
 				<DescriptionSID>BERRIES_SID</DescriptionSID>
 				<UsageDescriptionSID>BERRIES_USAGE_SID</UsageDescriptionSID>
