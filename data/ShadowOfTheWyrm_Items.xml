@@ -7911,10 +7911,35 @@
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
-			<Food id="_spirits_kiss_mushroom">
-				<DescriptionSID>SPIRITS_KISS_MUSHROOM_SID</DescriptionSID>
-				<UsageDescriptionSID>SPIRITS_KISS_MUSHROOM_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>SPIRITS_KISS_MUSHROOM_CODEX_SID</CodexDescriptionSID>
+			<Food id="_deathbloom_mushroom">
+				<DescriptionSID>DEATHBLOOM_MUSHROOM_SID</DescriptionSID>
+				<UsageDescriptionSID>DEATHBLOOM_MUSHROOM_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>DEATHBLOOM_MUSHROOM_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
+				<Poisoned>1</Poisoned>
+			</Food>
+			<Food id="_shivers_kiss_mushroom">
+				<DescriptionSID>SHIVERS_KISS_MUSHROOM_SID</DescriptionSID>
+				<UsageDescriptionSID>SHIVERS_KISS_MUSHROOM_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SHIVERS_KISS_MUSHROOM_CODEX_SID</CodexDescriptionSID>
 				<Value>10</Value>
 				<Weight>
 					<Pounds>0</Pounds>
