@@ -7,6 +7,7 @@
 #include "MessageManagerFactory.hpp"
 #include "SelectionUtils.hpp"
 #include "Serialize.hpp"
+#include "Setting.hpp"
 #include "TileDescription.hpp"
 #include "TileSelectionAction.hpp"
 #include "TileSelectionCommandProcessor.hpp"
@@ -221,7 +222,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Dir
 
     if (creature->get_is_player())
     {
-      describe_current_tile(creature, selected_tile, tile_exists_in_fov_map, current_map->get_map_type() == MapType::MAP_TYPE_WORLD);
+      describe_current_tile(creature, c, selected_tile, tile_exists_in_fov_map, current_map->get_map_type() == MapType::MAP_TYPE_WORLD);
     }    
   }
   
@@ -239,8 +240,9 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Sel
     
     if (fov_map != nullptr && current_map != nullptr)
     {
+      Coordinate c = current_map->get_location(selected_creature_id);
       TilePtr selected_creature_tile = fov_map->at(fov_map->get_location(selected_creature_id));
-      describe_current_tile(creature, selected_creature_tile, selected_creature_tile != nullptr, current_map->get_map_type() == MapType::MAP_TYPE_WORLD);
+      describe_current_tile(creature, c, selected_creature_tile, selected_creature_tile != nullptr, current_map->get_map_type() == MapType::MAP_TYPE_WORLD);
     }
   }
 
@@ -273,13 +275,24 @@ ActionCostValue TileSelectionAction::get_action_cost_value(CreaturePtr creature)
 }
 
 // Describe the currently selected tile.
-void TileSelectionAction::describe_current_tile(CreaturePtr creature, TilePtr selected_tile, const bool tile_exists_in_fov_map, const bool is_world_map)
+void TileSelectionAction::describe_current_tile(CreaturePtr creature, const Coordinate& selected_coord, TilePtr selected_tile, const bool tile_exists_in_fov_map, const bool is_world_map)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-  TileDescription td(show_tile_description, show_feature_description, show_creature_description, show_item_descriptions);
-  string tile_desc = td.describe(creature, selected_tile, tile_exists_in_fov_map, is_world_map);
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+  Coordinate source = { 0,0 };
 
-  if (creature->get_is_player())
+  if (map != nullptr && creature != nullptr)
+  {
+    source = map->get_location(creature->get_id());
+  }
+
+  bool show_distance = game.get_settings_ref().get_setting_as_bool(Setting::SHOW_DISTANCE_ON_EXAMINE);
+
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  TileDescription td(show_distance, show_tile_description, show_feature_description, show_creature_description, show_item_descriptions);
+  string tile_desc = td.describe(creature, source, selected_coord, selected_tile, tile_exists_in_fov_map, is_world_map);
+
+  if (creature && creature->get_is_player())
   {
     manager.clear_if_necessary();
     manager.add_new_message(tile_desc);

@@ -1,4 +1,5 @@
 Me:
+- unit tests for CoordUtils::get_distance type functions and DLTK
 - ASSET RELEASE. git push --tags
 - trap trap
 - always: mushrooms in the wet rooms in the dungeon
@@ -501,3 +502,7 @@ Marcin Puc:
 
 Xvordan:
 - in-map waypoint system
+
+Stevie-3:
+- tab cycles through creatures, items, (+ features?) in view
+- setting for distance info in examine

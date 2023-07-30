@@ -1,11 +1,14 @@
 #pragma once
 #include <string>
+#include "common.hpp"
 
 // Keys for tile descriptions - used for when a single tile type (e.g.,
 // TileType::TILE_TYPE_TREE) can have different descriptions.
 class TileDescriptionKeys
 {
   public:
+    static const std::string get_tile_direction_description(const Coordinate& source, const Coordinate& dest);
+
     // Used by TileType::TILE_TYPE_TREE:
     static const std::string FLORA_TILE_DESC_ASPEN;
     static const std::string FLORA_TILE_DESC_MAPLE;
@@ -64,5 +67,7 @@ class TileDescriptionKeys
 
   protected:
     TileDescriptionKeys();
+
+    static const std::string TILE_DESCRIPTION_DISTANCE_FROM;
 };
 

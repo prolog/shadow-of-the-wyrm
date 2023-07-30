@@ -24,6 +24,9 @@ Shadow of the Wyrm v1.6.0 "Daca"
   present a much simpler splash screen suitable for screen readers (no ASCII
   art).
 
+- Added a "show_distance_on_examine" setting (off by default) to display the 
+  distance of the selected tile from your current position when examining.
+
 - More name combinations.
 
 - New items: mushroom, shelf fungus, Shiver's kiss, deathbloom.

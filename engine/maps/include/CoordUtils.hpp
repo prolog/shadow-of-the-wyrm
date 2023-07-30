@@ -109,6 +109,10 @@ class CoordUtils
     // Is the coordinate contained in the given bounds, inclusive?
     static bool is_contained(const Coordinate& top_left, const Coordinate& bottom_right, const Coordinate& c);
 
+    static std::pair<Direction, int> get_y_distance(const Coordinate& base, const Coordinate& dest);
+    static std::pair<Direction, int> get_x_distance(const Coordinate& base, const Coordinate& dest);
+    static std::pair<Direction, int> get_distance(const Coordinate& base, const Coordinate& dest, const bool is_ns);
+
   protected:
     CoordUtils();
     ~CoordUtils();

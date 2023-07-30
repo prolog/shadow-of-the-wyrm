@@ -989,6 +989,59 @@ bool CoordUtils::is_contained(const Coordinate& top_left, const Coordinate& bott
   return contained;
 }
 
+pair<Direction, int> CoordUtils::get_y_distance(const Coordinate& base, const Coordinate& dest)
+{
+  return get_distance(base, dest, true);
+}
+
+pair<Direction, int> CoordUtils::get_x_distance(const Coordinate& base, const Coordinate& dest)
+{
+  return get_distance(base, dest, false);
+}
+
+pair<Direction, int> CoordUtils::get_distance(const Coordinate& base, const Coordinate& dest, const bool is_ns)
+{
+  Direction dir = Direction::DIRECTION_NULL;
+  int dist = 0;
+
+  if (is_ns)
+  {
+    dist = base.first - dest.first;
+
+    if (dist < 0)
+    {
+      dir = Direction::DIRECTION_SOUTH;
+    }
+    else if (dist == 0)
+    {
+      dir = Direction::DIRECTION_NULL;
+    }
+    else
+    {
+      dir = Direction::DIRECTION_NORTH;
+    }
+  }
+  else
+  {
+    dist = base.second - dest.second;
+
+    if (dist < 0)
+    {
+      dir = Direction::DIRECTION_EAST;
+    }
+    else if (dist == 0)
+    {
+      dir = Direction::DIRECTION_NULL;
+    }
+    else
+    {
+      dir = Direction::DIRECTION_WEST;
+    }
+  }
+
+  return std::make_pair(dir, std::abs(dist));
+}
+
 string CoordUtils::to_string(const Coordinate& c)
 {
   ostringstream ss;

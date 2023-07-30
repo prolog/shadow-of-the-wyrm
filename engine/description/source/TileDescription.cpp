@@ -4,11 +4,12 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "DescriberFactory.hpp"
 #include "TileDescription.hpp"
+#include "TileDescriptionKeys.hpp"
 
 using namespace std;
 
-TileDescription::TileDescription(const bool tile, const bool feature, const bool creature, const bool items)
-: show_tile(tile), show_feature(feature), show_creature(creature), show_items(items)
+TileDescription::TileDescription(const bool show_dist, const bool tile, const bool feature, const bool creature, const bool items)
+: show_distance(show_dist), show_tile(tile), show_feature(feature), show_creature(creature), show_items(items)
 {
 }
 
@@ -17,12 +18,17 @@ TileDescription::TileDescription(const bool tile, const bool feature, const bool
 // - Whether it contains a creature (with the corresponding option for the bestiary)
 // - Whether it contains a feature
 // - Whether it contains items
-string TileDescription::describe(CreaturePtr viewing_creature, TilePtr tile, const bool tile_is_in_fov, const bool is_world_map)
+string TileDescription::describe(CreaturePtr viewing_creature, const Coordinate& source, const Coordinate& dest, TilePtr tile, const bool tile_is_in_fov, const bool is_world_map)
 {
   vector<string> tile_info_strings;
 
   if (tile)
   {
+    if (show_distance)
+    {
+      tile_info_strings.push_back(TileDescriptionKeys::get_tile_direction_description(source, dest));
+    }
+
     // If the tile hasn't been seen (still dark), get a message saying so.
     if (show_tile && !tile->get_viewed())
     {

@@ -1,9 +1,49 @@
+#include <sstream>
 #include "TileDescriptionKeys.hpp"
+#include "CoordUtils.hpp"
+#include "DirectionLocationTextKeys.hpp"
+#include "StringTable.hpp"
 
 using namespace std;
 
 TileDescriptionKeys::TileDescriptionKeys()
 {
+}
+
+const string TileDescriptionKeys::get_tile_direction_description(const Coordinate& base, const Coordinate& dest)
+{
+	string desc = StringTable::get(TILE_DESCRIPTION_DISTANCE_FROM);
+
+	pair<Direction, int> ns = CoordUtils::get_y_distance(base, dest);
+	pair<Direction, int> ew = CoordUtils::get_x_distance(base, dest);
+
+	ostringstream direction_info;
+
+	if (ns.first == Direction::DIRECTION_NULL && ew.first == Direction::DIRECTION_NULL)
+	{
+		direction_info << "0";
+	}
+	else if (ns.first == Direction::DIRECTION_NULL)
+	{
+		string dir_sid = DirectionLocationTextKeys::get_direction_location_sid(ew.first);
+		direction_info << ew.second << " " << StringTable::get(dir_sid);
+	}
+	else if (ew.first == Direction::DIRECTION_NULL)
+	{
+		string dir_sid = DirectionLocationTextKeys::get_direction_location_sid(ns.first);
+		direction_info << ns.second << " " << StringTable::get(dir_sid);
+	}
+	else
+	{
+		string ns_dir_sid = DirectionLocationTextKeys::get_direction_location_sid(ns.first);
+		direction_info << ns.second << " " << StringTable::get(ns_dir_sid) << ", ";
+
+		string ew_dir_sid = DirectionLocationTextKeys::get_direction_location_sid(ew.first);
+		direction_info << ew.second << " " << StringTable::get(ew_dir_sid);
+	}
+
+	boost::replace_first(desc, "%s", direction_info.str());
+	return desc;
 }
 
 const string TileDescriptionKeys::FLORA_TILE_DESC_ASPEN = "FLORA_TILE_DESC_ASPEN";
@@ -56,3 +96,5 @@ const string TileDescriptionKeys::FLORA_TILE_DESC_WEED22 = "FLORA_TILE_DESC_WEED
 const string TileDescriptionKeys::FLORA_TILE_DESC_WEED23 = "FLORA_TILE_DESC_WEED23";
 const string TileDescriptionKeys::FLORA_TILE_DESC_WEED24 = "FLORA_TILE_DESC_WEED24";
 const string TileDescriptionKeys::FLORA_TILE_DESC_WEED25 = "FLORA_TILE_DESC_WEED25";
+
+const string TileDescriptionKeys::TILE_DESCRIPTION_DISTANCE_FROM = "TILE_DESCRIPTION_DISTANCE_FROM";
