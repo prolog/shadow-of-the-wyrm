@@ -3,6 +3,7 @@
 #include "CreatureDescriber.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DescriberFactory.hpp"
+#include "MapUtils.hpp"
 #include "TileDescription.hpp"
 #include "TileDescriptionKeys.hpp"
 
@@ -26,7 +27,7 @@ string TileDescription::describe(CreaturePtr viewing_creature, const Coordinate&
   {
     if (show_distance)
     {
-      tile_info_strings.push_back(TileDescriptionKeys::get_tile_direction_description(source, dest));
+      tile_info_strings.push_back(MapUtils::get_tile_direction_description(source, dest));
     }
 
     // If the tile hasn't been seen (still dark), get a message saying so.

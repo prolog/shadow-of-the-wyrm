@@ -9127,6 +9127,9 @@
     <ClCompile Include="engine\generators\settlements\sector\source\SurfaceMineSectorFeature.cpp">
       <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\strings\source\unit_tests\DirectionLocationTextKeys_test.cpp">
+      <Filter>Source Files\engine\strings\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShadowOfTheWyrm.rc" />

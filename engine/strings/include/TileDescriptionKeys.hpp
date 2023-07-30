@@ -7,8 +7,6 @@
 class TileDescriptionKeys
 {
   public:
-    static const std::string get_tile_direction_description(const Coordinate& source, const Coordinate& dest);
-
     // Used by TileType::TILE_TYPE_TREE:
     static const std::string FLORA_TILE_DESC_ASPEN;
     static const std::string FLORA_TILE_DESC_MAPLE;
@@ -65,9 +63,9 @@ class TileDescriptionKeys
     static const std::string FLORA_TILE_DESC_WEED24;
     static const std::string FLORA_TILE_DESC_WEED25;
 
+    static const std::string TILE_DESCRIPTION_DISTANCE_FROM;
+
   protected:
     TileDescriptionKeys();
-
-    static const std::string TILE_DESCRIPTION_DISTANCE_FROM;
 };
 

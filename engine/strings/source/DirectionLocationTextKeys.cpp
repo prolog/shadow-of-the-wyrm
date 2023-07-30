@@ -60,3 +60,7 @@ const string DirectionLocationTextKeys::DIRECTION_LOCATION_EAST = "DIRECTION_LOC
 const string DirectionLocationTextKeys::DIRECTION_LOCATION_SOUTH_WEST = "DIRECTION_LOCATION_SOUTH_WEST";
 const string DirectionLocationTextKeys::DIRECTION_LOCATION_SOUTH = "DIRECTION_LOCATION_SOUTH";
 const string DirectionLocationTextKeys::DIRECTION_LOCATION_SOUTH_EAST = "DIRECTION_LOCATION_SOUTH_EAST";
+
+#ifdef UNIT_TESTS
+#include "unit_tests/DirectionLocationTextKeys_test.cpp"
+#endif
