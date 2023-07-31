@@ -22,7 +22,7 @@ Shadow of the Wyrm v1.6.0 "Daca"
 
 - Added a "display_simplified_splash_screen" setting which in curses-mode will
   present a much simpler splash screen suitable for screen readers (no ASCII
-  art).
+  art) (Stephen Shaffer).
 
 - Added a "show_distance_on_examine" setting (off by default) to display the 
   distance of the selected tile from your current position when examining.
