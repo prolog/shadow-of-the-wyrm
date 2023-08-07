@@ -53,6 +53,7 @@ const string ItemIdKeys::ITEM_ID_VEGETABLE_6      = "_vegetable_6";
 const string ItemIdKeys::ITEM_ID_GOLDEN_APPLE     = "_golden_apple";
 const string ItemIdKeys::ITEM_ID_SILVER_APPLE     = "_silver_apple";
 const string ItemIdKeys::ITEM_ID_SHOVEL           = "_shovel";
+const string ItemIdKeys::ITEM_ID_PICK_AXE         = "pick_axe";
 const string ItemIdKeys::ITEM_ID_ROOT             = "_root";
 const string ItemIdKeys::ITEM_ID_BERRIES          = "_berries";
 const string ItemIdKeys::ITEM_ID_KELP             = "_kelp";

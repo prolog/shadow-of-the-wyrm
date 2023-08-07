@@ -1,5 +1,5 @@
 Me:
-- unit tests for CoordUtils::get_distance type functions and DLTK
+- item templates: combine wildflowers first, then mushrooms
 - ASSET RELEASE. git push --tags
 - trap trap
 - always: mushrooms in the wet rooms in the dungeon
@@ -505,4 +505,6 @@ Xvordan:
 
 Stevie-3:
 - tab cycles through creatures, items, (+ features?) in view
-- setting for distance info in examine
+
+davethehun: 
+- witchling house might not be generated?

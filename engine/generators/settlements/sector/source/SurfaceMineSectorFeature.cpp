@@ -35,7 +35,7 @@ void SurfaceMineSectorFeature::generate_mine(MapPtr map, const Coordinate& start
   if (map != nullptr)
   {
     GeneratorUtils::fill(map, start_coord, end_coord, TileType::TILE_TYPE_ROCKY_EARTH);
-    vector<string> mine_item_ids = { ItemIdKeys::ITEM_ID_LUMP_GOLD, ItemIdKeys::ITEM_ID_MAGICI_SHARD, ItemIdKeys::ITEM_ID_IRON_INGOT, ItemIdKeys::ITEM_ID_STEEL_INGOT, ItemIdKeys::ITEM_ID_SHOVEL };
+    vector<string> mine_item_ids = { ItemIdKeys::ITEM_ID_LUMP_GOLD, ItemIdKeys::ITEM_ID_MAGICI_SHARD, ItemIdKeys::ITEM_ID_IRON_INGOT, ItemIdKeys::ITEM_ID_STEEL_INGOT, ItemIdKeys::ITEM_ID_SHOVEL, ItemIdKeys::ITEM_ID_PICK_AXE };
 
     vector<Coordinate> coords = CoordUtils::get_coordinates_in_range(start_coord, end_coord);
     vector<Coordinate> creature_coords = coords;
