@@ -7887,6 +7887,79 @@
 				<FoodType>0</FoodType>
 				<Poisoned>1</Poisoned>
 			</Food>
+			<Food id="_mushroom_3">
+				<DescriptionSID>MUSHROOM_3_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_3_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_3_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_mushroom_4">
+				<DescriptionSID>MUSHROOM_4_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_4_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_4_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>8</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_mushroom_5">
+				<DescriptionSID>MUSHROOM_5_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_5_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_5_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>12</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
+				<Poisoned>1</Poisoned>
+			</Food>
 			<Food id="_fungus_1">
 				<DescriptionSID>FUNGUS_1_SID</DescriptionSID>
 				<UsageDescriptionSID>FUNGUS_1_USAGE_SID</UsageDescriptionSID>
