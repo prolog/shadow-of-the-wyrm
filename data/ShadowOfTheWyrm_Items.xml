@@ -7838,59 +7838,10 @@
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
-			<Food id="_shelf_fungus">
-				<DescriptionSID>SHELF_FUNGUS_SID</DescriptionSID>
-				<UsageDescriptionSID>SHELF_FUNGUS_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>SHELF_FUNGUS_CODEX_SID</CodexDescriptionSID>
-				<Value>0</Value>
-				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>9</Ounces>
-				</Weight>
-				<WornLocation>-1</WornLocation>
-				<Material>18</Material>
-				<Symbol>
-					<Char>%</Char>
-					<Colour>11</Colour>
-					<Sprite>
-						<ID>it</ID>
-						<Row>4</Row>
-						<Col>15</Col>
-					</Sprite>
-				</Symbol>
-				<DangerLevel>-1</DangerLevel>
-				<Nutrition>500</Nutrition>
-				<FoodType>0</FoodType>
-				<Poisoned>1</Poisoned>
-			</Food>
-			<Food id="_bread_and_butter_fungus">
-				<DescriptionSID>BREAD_AND_BUTTER_FUNGUS_SID</DescriptionSID>
-				<UsageDescriptionSID>BREAD_AND_BUTTER_FUNGUS_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>BREAD_AND_BUTTER_FUNGUS_CODEX_SID</CodexDescriptionSID>
-				<Value>0</Value>
-				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>9</Ounces>
-				</Weight>
-				<WornLocation>-1</WornLocation>
-				<Material>18</Material>
-				<Symbol>
-					<Char>%</Char>
-					<Colour>11</Colour>
-					<Sprite>
-						<ID>it</ID>
-						<Row>4</Row>
-						<Col>15</Col>
-					</Sprite>
-				</Symbol>
-				<DangerLevel>-1</DangerLevel>
-				<Nutrition>500</Nutrition>
-				<FoodType>0</FoodType>
-			</Food>
-			<Food id="_mushroom">
-				<DescriptionSID>MUSHROOM_SID</DescriptionSID>
-				<UsageDescriptionSID>MUSHROOM_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>MUSHROOM_CODEX_SID</CodexDescriptionSID>
+			<Food id="_mushroom_1">
+				<DescriptionSID>MUSHROOM_1_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_1_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_1_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -7911,10 +7862,10 @@
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
-			<Food id="_deathbloom_mushroom">
-				<DescriptionSID>DEATHBLOOM_MUSHROOM_SID</DescriptionSID>
-				<UsageDescriptionSID>DEATHBLOOM_MUSHROOM_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>DEATHBLOOM_MUSHROOM_CODEX_SID</CodexDescriptionSID>
+			<Food id="_mushroom_2">
+				<DescriptionSID>MUSHROOM_2_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_2_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_2_CODEX_SID</CodexDescriptionSID>
 				<Value>0</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -7936,10 +7887,59 @@
 				<FoodType>0</FoodType>
 				<Poisoned>1</Poisoned>
 			</Food>
-			<Food id="_shivers_kiss_mushroom">
-				<DescriptionSID>SHIVERS_KISS_MUSHROOM_SID</DescriptionSID>
-				<UsageDescriptionSID>SHIVERS_KISS_MUSHROOM_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>SHIVERS_KISS_MUSHROOM_CODEX_SID</CodexDescriptionSID>
+			<Food id="_fungus_1">
+				<DescriptionSID>FUNGUS_1_SID</DescriptionSID>
+				<UsageDescriptionSID>FUNGUS_1_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FUNGUS_1_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>9</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>15</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>500</Nutrition>
+				<FoodType>0</FoodType>
+				<Poisoned>1</Poisoned>
+			</Food>
+			<Food id="_fungus_2">
+				<DescriptionSID>FUNGUS_2_SID</DescriptionSID>
+				<UsageDescriptionSID>FUNGUS_2_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FUNGUS_2_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>9</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>15</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>500</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_mushroom_rare_1">
+				<DescriptionSID>MUSHROOM_RARE_1_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_RARE_1_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_RARE_1_CODEX_SID</CodexDescriptionSID>
 				<Value>10</Value>
 				<Weight>
 					<Pounds>0</Pounds>

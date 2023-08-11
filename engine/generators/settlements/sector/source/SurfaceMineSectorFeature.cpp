@@ -35,7 +35,15 @@ void SurfaceMineSectorFeature::generate_mine(MapPtr map, const Coordinate& start
   if (map != nullptr)
   {
     GeneratorUtils::fill(map, start_coord, end_coord, TileType::TILE_TYPE_ROCKY_EARTH);
-    vector<string> mine_item_ids = { ItemIdKeys::ITEM_ID_LUMP_GOLD, ItemIdKeys::ITEM_ID_MAGICI_SHARD, ItemIdKeys::ITEM_ID_IRON_INGOT, ItemIdKeys::ITEM_ID_STEEL_INGOT, ItemIdKeys::ITEM_ID_SHOVEL, ItemIdKeys::ITEM_ID_PICK_AXE };
+    vector<string> mine_item_ids = { ItemIdKeys::ITEM_ID_LUMP_GOLD, ItemIdKeys::ITEM_ID_MAGICI_SHARD, ItemIdKeys::ITEM_ID_IRON_INGOT, ItemIdKeys::ITEM_ID_STEEL_INGOT };
+    vector<string> digging_implements = { ItemIdKeys::ITEM_ID_SHOVEL, ItemIdKeys::ITEM_ID_PICK_AXE };
+    bool single_item_type = false;
+    string item_id = mine_item_ids.at(RNG::range(0, mine_item_ids.size() - 1));
+
+    if (RNG::percent_chance(20))
+    {
+      single_item_type = true;
+    }
 
     vector<Coordinate> coords = CoordUtils::get_coordinates_in_range(start_coord, end_coord);
     vector<Coordinate> creature_coords = coords;
@@ -48,11 +56,19 @@ void SurfaceMineSectorFeature::generate_mine(MapPtr map, const Coordinate& start
       if (!coords.empty())
       {
         Coordinate c = coords.back();
-        int num_items = RNG::range(1, 3);
 
-        for (int j = 0; j < num_items; j++)
+        for (int j = 0; j < num_piles; j++)
         {
-          string item_id = mine_item_ids.at(RNG::range(0, mine_item_ids.size() - 1));
+          if (!single_item_type)
+          {
+            item_id = mine_item_ids.at(RNG::range(0, mine_item_ids.size() - 1));
+          }
+
+          if (RNG::percent_chance(20))
+          {
+            item_id = digging_implements.at(RNG::range(0, digging_implements.size() - 1));
+          }
+
           ItemPtr item = ItemManager::create_item(item_id);
           TilePtr tile = map->at(c);
 
