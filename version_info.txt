@@ -32,7 +32,7 @@ Shadow of the Wyrm v1.6.0 "Daca"
 - More name combinations.
 
 - New items: mushroom, shelf fungus, Shiver's kiss, deathbloom, chanterelle,
-  morel, elfcap.
+  morel, elfcap, pufftop, elfland's exit.
 
 - Bug fixes:
  

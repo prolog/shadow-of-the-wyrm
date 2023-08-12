@@ -7981,7 +7981,7 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
-				<Nutrition>500</Nutrition>
+				<Nutrition>300</Nutrition>
 				<FoodType>0</FoodType>
 				<Poisoned>1</Poisoned>
 			</Food>
@@ -8033,6 +8033,56 @@
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 				<Effect>14</Effect>
+			</Food>
+			<Food id="_mushroom_rare_2">
+				<DescriptionSID>MUSHROOM_RARE_2_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_RARE_2_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_RARE_2_CODEX_SID</CodexDescriptionSID>
+				<Value>12</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>14</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
+				<Effect>16</Effect>
+			</Food>
+			<Food id="_mushroom_rare_3">
+				<DescriptionSID>MUSHROOM_RARE_3_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_RARE_3_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_RARE_3_CODEX_SID</CodexDescriptionSID>
+				<Value>11</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>10</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
+				<Effect>31</Effect>
 			</Food>
 			<Food id="_berries">
 				<DescriptionSID>BERRIES_SID</DescriptionSID>
