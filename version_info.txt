@@ -27,6 +27,8 @@ Shadow of the Wyrm v1.6.0 "Daca"
 - Added a "show_distance_on_examine" setting (off by default) to display the 
   distance of the selected tile from your current position when examining.
 
+- Added mushrooms to fields, and fungus to tree generation.
+
 - More name combinations.
 
 - New items: mushroom, shelf fungus, Shiver's kiss, deathbloom, chanterelle,

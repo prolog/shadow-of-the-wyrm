@@ -7891,7 +7891,7 @@
 				<DescriptionSID>MUSHROOM_3_SID</DescriptionSID>
 				<UsageDescriptionSID>MUSHROOM_3_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>MUSHROOM_3_CODEX_SID</CodexDescriptionSID>
-				<Value>0</Value>
+				<Value>2</Value>
 				<Weight>
 					<Pounds>0</Pounds>
 					<Ounces>3</Ounces>
@@ -7915,7 +7915,7 @@
 				<DescriptionSID>MUSHROOM_4_SID</DescriptionSID>
 				<UsageDescriptionSID>MUSHROOM_4_USAGE_SID</UsageDescriptionSID>
 				<CodexDescriptionSID>MUSHROOM_4_CODEX_SID</CodexDescriptionSID>
-				<Value>0</Value>
+				<Value>2</Value>
 				<Weight>
 					<Pounds>0</Pounds>
 					<Ounces>3</Ounces>

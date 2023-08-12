@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include <string>
 
 // Item types for the C++ code.
@@ -163,6 +164,19 @@ class ItemIdKeys
 
     // Misc
     static const std::string ITEM_ID_BOARD_WITH_NAIL_IN_IT;
+
+    // Mushrooms and fungus
+    static const std::string ITEM_ID_MUSHROOM_1;
+    static const std::string ITEM_ID_MUSHROOM_2;
+    static const std::string ITEM_ID_MUSHROOM_3;
+    static const std::string ITEM_ID_MUSHROOM_4;
+    static const std::string ITEM_ID_MUSHROOM_5;
+    static const std::string ITEM_ID_FUNGUS_1;
+    static const std::string ITEM_ID_FUNGUS_2;
+
+    // make sure any collections are initialized at the bottom
+    static const std::vector<std::string> ITEM_IDS_MUSHROOM;
+    static const std::vector<std::string> ITEM_IDS_FUNGUS;
 
   protected:
     ItemIdKeys();
