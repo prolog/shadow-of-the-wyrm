@@ -97,11 +97,15 @@ const string ItemIdKeys::ITEM_ID_MUSHROOM_2       = "_mushroom_2";
 const string ItemIdKeys::ITEM_ID_MUSHROOM_3       = "_mushroom_3";
 const string ItemIdKeys::ITEM_ID_MUSHROOM_4       = "_mushroom_4";
 const string ItemIdKeys::ITEM_ID_MUSHROOM_5       = "_mushroom_5";
+const string ItemIdKeys::ITEM_ID_MUSHROOM_RARE_1  = "_mushroom_rare_1";
+const string ItemIdKeys::ITEM_ID_MUSHROOM_RARE_2  = "_mushroom_rare_2";
+const string ItemIdKeys::ITEM_ID_MUSHROOM_RARE_3  = "_mushroom_rare_3";
 const string ItemIdKeys::ITEM_ID_FUNGUS_1         = "_fungus_1";
 const string ItemIdKeys::ITEM_ID_FUNGUS_2					= "_fungus_2";
 
 // collections
 const vector<string> ItemIdKeys::ITEM_IDS_MUSHROOM = { ItemIdKeys::ITEM_ID_MUSHROOM_1, ItemIdKeys::ITEM_ID_MUSHROOM_2, ItemIdKeys::ITEM_ID_MUSHROOM_3, ItemIdKeys::ITEM_ID_MUSHROOM_4, ItemIdKeys::ITEM_ID_MUSHROOM_5 };
+const vector<string> ItemIdKeys::ITEM_IDS_MUSHROOM_RARE = { ItemIdKeys::ITEM_ID_MUSHROOM_RARE_1, ItemIdKeys::ITEM_ID_MUSHROOM_RARE_2, ItemIdKeys::ITEM_ID_MUSHROOM_RARE_3 };
 const vector<string> ItemIdKeys::ITEM_IDS_FUNGUS = { ItemIdKeys::ITEM_ID_FUNGUS_1, ItemIdKeys::ITEM_ID_FUNGUS_2 };
 
 // Item Scripts

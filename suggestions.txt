@@ -1,4 +1,5 @@
 Me:
+- Sofistico: pov game bug
 - item templates: combine wildflowers first, then mushrooms
 - ASSET RELEASE. git push --tags
 - trap trap

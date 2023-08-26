@@ -29,6 +29,8 @@ Shadow of the Wyrm v1.6.0 "Daca"
 
 - Added mushrooms to fields, and fungus to tree generation.
 
+- Added a special mushrooms room type to dungeons.
+
 - More name combinations.
 
 - New items: mushroom, shelf fungus, Shiver's kiss, deathbloom, chanterelle,

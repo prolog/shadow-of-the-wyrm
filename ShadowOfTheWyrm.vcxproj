@@ -789,6 +789,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\rooms\include\CaveInRoomGenerator.hpp" />
     <ClInclude Include="engine\generators\rooms\include\DankRoomGenerator.hpp" />
     <ClInclude Include="engine\generators\rooms\include\IRoomGenerator.hpp" />
+    <ClInclude Include="engine\generators\rooms\include\MushRoomGenerator.hpp" />
     <ClInclude Include="engine\generators\rooms\include\NullRoomGenerator.hpp" />
     <ClInclude Include="engine\generators\rooms\include\RoomGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\rooms\include\RoomTypes.hpp" />
@@ -2045,6 +2046,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\crypts\source\GraveInscriptionGenerator.cpp" />
     <ClCompile Include="engine\generators\rooms\source\CaveInRoomGenerator.cpp" />
     <ClCompile Include="engine\generators\rooms\source\DankRoomGenerator.cpp" />
+    <ClCompile Include="engine\generators\rooms\source\MushRoomGenerator.cpp" />
     <ClCompile Include="engine\generators\rooms\source\WetRoomGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\BeerHallSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\CitySectorGenerator.cpp" />

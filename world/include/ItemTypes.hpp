@@ -171,11 +171,15 @@ class ItemIdKeys
     static const std::string ITEM_ID_MUSHROOM_3;
     static const std::string ITEM_ID_MUSHROOM_4;
     static const std::string ITEM_ID_MUSHROOM_5;
+    static const std::string ITEM_ID_MUSHROOM_RARE_1;
+    static const std::string ITEM_ID_MUSHROOM_RARE_2;
+    static const std::string ITEM_ID_MUSHROOM_RARE_3;
     static const std::string ITEM_ID_FUNGUS_1;
     static const std::string ITEM_ID_FUNGUS_2;
 
     // make sure any collections are initialized at the bottom
     static const std::vector<std::string> ITEM_IDS_MUSHROOM;
+    static const std::vector<std::string> ITEM_IDS_MUSHROOM_RARE;
     static const std::vector<std::string> ITEM_IDS_FUNGUS;
 
   protected:

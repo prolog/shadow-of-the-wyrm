@@ -4502,6 +4502,9 @@
     <ClInclude Include="engine\generators\settlements\sector\include\SurfaceMineSectorFeature.hpp">
       <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\rooms\include\MushRoomGenerator.hpp">
+      <Filter>Header Files\engine\generators\rooms\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9129,6 +9132,9 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\unit_tests\DirectionLocationTextKeys_test.cpp">
       <Filter>Source Files\engine\strings\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\rooms\source\MushRoomGenerator.cpp">
+      <Filter>Source Files\engine\generators\rooms\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
