@@ -1,5 +1,5 @@
 Me:
-- Sofistico: pov game bug
+- Sofistico: pov game bug, went up on telari and game crashed
 - item templates: combine wildflowers first, then mushrooms
 - ASSET RELEASE. git push --tags
 - trap trap

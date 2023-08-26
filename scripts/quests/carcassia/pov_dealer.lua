@@ -4,6 +4,10 @@ require('constants')
 if dealer.buy_in("POV_DEALER_SPEECH_TEXT_SID", "POV_DEALER_NSF_MESSAGE_SID", "POV_DEALER_DECLINE_MESSAGE_SID", 2) then
   local bet_val = tonumber(add_char_message("POV_DEALER_WHICH_NUMBER_SID"))
 
+  if type(bet_val) ~= "number" then
+    bet_val = 0
+  end
+
   if bet_val >= 1 and bet_val <= 6 then
     add_message_with_pause("POV_DEALER_ROLLING_SID")
 

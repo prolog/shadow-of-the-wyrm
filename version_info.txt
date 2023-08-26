@@ -37,7 +37,9 @@ Shadow of the Wyrm v1.6.0 "Daca"
   morel, elfcap, pufftop, elfland's exit.
 
 - Bug fixes:
- 
+
+  - Pov wasn't handling invalid input nicely (Sofistico).
+
   - When notifying a deity about a pleasing action, the piety was incorrectly
     always getting applied to the creature's active deity.
 
