@@ -31,6 +31,9 @@ Shadow of the Wyrm v1.6.0 "Daca"
 
 - Added a special mushrooms room type to dungeons.
 
+- Amaurosis has been buffed up a bit: he can now cast spells, has a greater
+  chance to blind on a successful hit, and is faster.
+
 - More name combinations.
 
 - New items: mushroom, shelf fungus, Shiver's kiss, deathbloom, chanterelle,

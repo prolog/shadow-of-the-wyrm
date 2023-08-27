@@ -20827,6 +20827,10 @@
 					<NumDice>1000</NumDice>
 					<NumSides>1</NumSides>
 				</HP>
+				<AP>
+					<NumDice>1000</NumDice>
+					<NumSides>1</NumSides>
+				</AP>
 				<Exp>2000000</Exp>
 			</CreatureGeneration>
 			<Level>50</Level>
@@ -20835,9 +20839,11 @@
 				<NumSides>220</NumSides>
 				<Modifier>25</Modifier>
 				<Type>3</Type>
+				<EffectBonus>50</EffectBonus>
 			</Damage>
 			<Evade>30</Evade>
 			<Soak>35</Soak>
+			<Speed>30</Speed>
 			<EventScripts>
 				<DeathScript>
 					<Script>death/amaurosis.lua</Script>
@@ -20850,6 +20856,16 @@
 					<Script>tame/amaurosis.lua</Script>
 				</TameScript>
 			</EventScripts>
+			<Spells>
+				<Spell>
+					<SpellID>a_02_dragon_breath</SpellID>
+					<Castings>5</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_06_nightfire</SpellID>
+					<Castings>5</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="super_boss">
 			<RaceID>_divine</RaceID>
