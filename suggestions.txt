@@ -1,5 +1,7 @@
 Me:
-- Sofistico: pov game bug, went up on telari and game crashed
+- ranged buc bonus? wand?
+- ways in which blessed item status can be tied into benefits
+- Sofistico: went up on telari and game crashed
 - item templates: combine wildflowers first, then mushrooms
 - ASSET RELEASE. git push --tags
 - trap trap

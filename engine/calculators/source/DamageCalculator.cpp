@@ -21,6 +21,27 @@ double DamageCalculator::get_sneak_attack_multiplier(const bool sneak_attack) co
   return mult;
 }
 
+int DamageCalculator::get_item_status_effect_bonus(const ItemStatus status)
+{
+  int bonus;
+
+  switch (status)
+  {
+    case ItemStatus::ITEM_STATUS_BLESSED:
+      bonus = 10;
+      break;
+    case ItemStatus::ITEM_STATUS_UNCURSED:
+      bonus = 0;
+      break;
+    case ItemStatus::ITEM_STATUS_CURSED:
+    default:
+      bonus = -10;
+      break;
+  }
+
+  return bonus;
+}
+
 double DamageCalculator::get_phase_of_moon_multiplier(const DamageType dt, const PhaseOfMoonType pom) const
 {
   double mult = 1.0;
