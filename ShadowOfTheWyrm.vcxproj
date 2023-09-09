@@ -391,6 +391,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\FishingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\FlyingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\FollowerCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\FoodCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ForagablesCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ForestCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HasteCalculator.hpp" />
@@ -1546,6 +1547,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\FenceCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\FishingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\FollowerCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\FoodCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ForagablesCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HidingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HungerCalculator.cpp" />
@@ -1660,6 +1662,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\FollowerCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\FoodCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

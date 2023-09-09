@@ -4505,6 +4505,9 @@
     <ClInclude Include="engine\generators\rooms\include\MushRoomGenerator.hpp">
       <Filter>Header Files\engine\generators\rooms\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\FoodCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9135,6 +9138,12 @@
     </ClCompile>
     <ClCompile Include="engine\generators\rooms\source\MushRoomGenerator.cpp">
       <Filter>Source Files\engine\generators\rooms\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\FoodCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\FoodCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

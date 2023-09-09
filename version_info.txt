@@ -37,6 +37,9 @@ Shadow of the Wyrm v1.6.0 "Daca"
 - A weapon's status now affects whether it gives a bonus or penalty to the 
   application of the damage type's status.
 
+- A consumable's status now affects its nutrition, though this does not affect
+  what the item is worth to the divine.
+
 - More name combinations.
 
 - New items: mushroom, shelf fungus, Shiver's kiss, deathbloom, chanterelle,
