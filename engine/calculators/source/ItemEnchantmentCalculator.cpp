@@ -29,22 +29,47 @@ int ItemEnchantmentCalculator::calculate_pct_chance_brand(const float pct_chance
   
   if (item != nullptr)
   {
-    chance = static_cast<int>(BASE_CHANCE_BRAND * pct_chance_multiplier);
-
-    chance = std::max<int>(chance, 0);
-    chance = std::min<int>(chance, 100);
-
     bool brandable = String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDABLE));
     bool already_branded = String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED));
     bool artifact = item->get_artifact();
 
     if (!brandable || artifact || already_branded)
     {
-      chance = 0;
+      return 0;
     }
+
+    int chance_to_brand = BASE_CHANCE_BRAND + get_item_status_bonus(item);
+    chance = static_cast<int>(chance_to_brand * pct_chance_multiplier);
+
+    chance = std::max<int>(chance, 0);
+    chance = std::min<int>(chance, 100);
   }
 
   return chance;
+}
+
+int ItemEnchantmentCalculator::get_item_status_bonus(ItemPtr item) const
+{
+  int bonus = 0;
+
+  if (item != nullptr)
+  {
+    switch (item->get_status())
+    {
+      case ItemStatus::ITEM_STATUS_BLESSED:
+        bonus = 10;
+        break;
+      case ItemStatus::ITEM_STATUS_CURSED:
+        bonus = -4;
+        break;
+      case ItemStatus::ITEM_STATUS_UNCURSED:
+      default:
+        break;
+
+    }
+  }
+
+  return bonus;
 }
 
 #ifdef UNIT_TESTS

@@ -11,6 +11,8 @@ class ItemEnchantmentCalculator
     int calculate_pct_chance_brand(const float pct_chance_multiplier, ItemPtr item) const;
 
   protected:
+    int get_item_status_bonus(ItemPtr item) const;
+
     static const int BASE_CHANCE_BRAND;
 };
 

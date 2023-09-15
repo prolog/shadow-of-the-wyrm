@@ -36,6 +36,9 @@ Shadow of the Wyrm v1.6.0 "Daca"
 - Amaurosis has been buffed up a bit: he can now cast spells, has a greater
   chance to blind on a successful hit, and is faster.
 
+- A weapon/armour's status now affects the chance of that piece being branded
+  when enchanted.
+
 - A weapon's status now affects whether it gives a bonus or penalty to the 
   application of the damage type's status.
 
