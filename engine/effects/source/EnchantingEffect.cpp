@@ -11,7 +11,7 @@
 using namespace std;
 
 EnchantingEffect::EnchantingEffect()
-: item_status_multipliers({ { ItemStatus::ITEM_STATUS_BLESSED, 1.5f }, { ItemStatus::ITEM_STATUS_UNCURSED, 1.0f }, { ItemStatus::ITEM_STATUS_CURSED, -1.0f } })
+: item_status_multipliers({ { ItemStatus::ITEM_STATUS_BLESSED, 1.5f }, { ItemStatus::ITEM_STATUS_UNCURSED, 1.0f }, { ItemStatus::ITEM_STATUS_CURSED, 0.25f } })
 {
 }
 

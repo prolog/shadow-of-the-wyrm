@@ -4,7 +4,7 @@
 #include "Random.hpp"
 #include "RNG.hpp"
 
-const int ItemEnchantmentCalculator::BASE_CHANCE_BRAND = 15;
+const int ItemEnchantmentCalculator::BASE_CHANCE_BRAND = 8;
 
 // Poisson distributions must have a non-zero mean (1, 2, etc).  Because of
 // this, Poisson is only used when the danger level gets to a point where

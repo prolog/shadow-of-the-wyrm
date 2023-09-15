@@ -31,6 +31,8 @@ Shadow of the Wyrm v1.6.0 "Daca"
 
 - Added a special mushrooms room type to dungeons.
 
+- The base chance for an enchantment to brand a wearable has been halved.
+
 - Amaurosis has been buffed up a bit: he can now cast spells, has a greater
   chance to blind on a successful hit, and is faster.
 
@@ -55,6 +57,8 @@ Shadow of the Wyrm v1.6.0 "Daca"
     always getting applied to the creature's active deity.
 
   - The '%' character was being duplicated on screen in curses mode.
+
+  - Cursed scrolls of enchanting completely prevented branding.
 
 Shadow of the Wyrm v1.5.8 "Testagrossa"
 - Version started January 7, 2023. Version finalized July 8, 2023.
