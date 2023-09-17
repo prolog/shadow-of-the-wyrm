@@ -63,6 +63,9 @@ Shadow of the Wyrm v1.6.0 "Daca"
 
   - Cursed scrolls of enchanting completely prevented branding.
 
+  - You could farm piety with Sceadugenga by continually digging on the same
+    grave tile (Quartzartine).
+
 Shadow of the Wyrm v1.5.8 "Testagrossa"
 - Version started January 7, 2023. Version finalized July 8, 2023.
 
