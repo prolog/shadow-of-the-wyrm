@@ -150,7 +150,7 @@ enum struct ClassIdentifier
   CLASS_ID_KILN = 143,
   CLASS_ID_FENCE = 144,
   CLASS_ID_DATE = 145,
-  // xx UNUSED = 146,
+  CLASS_ID_TILE_ITEM_TRANSFORM = 146,
   // xx UNUSED = 147,
   // xx UNUSED = 148,
   // xx UNUSED = 149,

@@ -1457,6 +1457,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\tiles\include\Tile.hpp" />
     <ClInclude Include="world\tiles\include\TileFactory.hpp" />
     <ClInclude Include="world\tiles\include\TileIDs.hpp" />
+    <ClInclude Include="world\tiles\include\TileItemTransform.hpp" />
     <ClInclude Include="world\tiles\include\TileProperties.hpp" />
     <ClInclude Include="world\tiles\include\tiles.hpp" />
     <ClInclude Include="world\tiles\include\TileTransform.hpp" />
@@ -4624,6 +4625,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\tiles\source\TempleTile.cpp" />
     <ClCompile Include="world\tiles\source\Tile.cpp" />
     <ClCompile Include="world\tiles\source\TileFactory.cpp" />
+    <ClCompile Include="world\tiles\source\TileItemTransform.cpp" />
     <ClCompile Include="world\tiles\source\TileProperties.cpp" />
     <ClCompile Include="world\tiles\source\TileTransform.cpp" />
     <ClCompile Include="world\tiles\source\TreeSpecies.cpp" />
@@ -4922,6 +4924,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\TileItemTransform_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\TileProperties_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

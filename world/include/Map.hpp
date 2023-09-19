@@ -11,6 +11,7 @@
 #include "ScriptDetails.hpp"
 #include "Shop.hpp"
 #include "Tile.hpp"
+#include "TileItemTransform.hpp"
 #include "TileTransform.hpp"
 #include "Weather.hpp"
 
@@ -20,6 +21,7 @@ class Tile;
 
 using TilesContainer = std::unordered_map<std::string, std::shared_ptr<Tile>>;
 using TileTransformContainer = std::map<double, std::vector<TileTransform>>;
+using ItemTransformContainer = std::map<double, std::vector<TileItemTransform>>;
 
 class Map : public ISerializable
 {
