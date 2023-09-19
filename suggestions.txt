@@ -1,6 +1,6 @@
 Me:
-- Quartzartine: worship sc, get pickaxe, go to barrows, equip, stand over
-  barrow, hold > 
+- tile item transforms: drop items, test save and load.
+- Tile-based item transforms: potato, tomato. 
 - ranged buc bonus? wand?
 - ways in which blessed item status can be tied into benefits
 - Sofistico: went up on telari and game crashed

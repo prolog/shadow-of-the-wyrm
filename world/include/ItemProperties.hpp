@@ -33,6 +33,9 @@ class ItemProperties
     static const std::string ITEM_PROPERTIES_WATER_TILE_TYPE;
     static const std::string ITEM_PROPERTIES_PRISE;
     static const std::string ITEM_PROPERTIES_RANDART_NAME;
+    static const std::string ITEM_PROPERTIES_PLANTABLE_FOOD;
+    static const std::string ITEM_PROPERTIES_PLANTABLE_FOOD_MIN_QUANTITY;
+    static const std::string ITEM_PROPERTIES_PLANTABLE_FOOD_MAX_QUANTITY;
 
   protected:
     ItemProperties();

@@ -47,6 +47,9 @@ Shadow of the Wyrm v1.6.0 "Daca"
 
 - Your fishing rod or spear's status now influences your fishing outcome.
 
+- Most plants and vegetables are now plantable, and when dropped in a hole 
+  will yield more of the same the next summer.
+
 - More name combinations.
 
 - New items: mushroom, shelf fungus, Shiver's kiss, deathbloom, chanterelle,

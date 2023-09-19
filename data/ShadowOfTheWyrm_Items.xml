@@ -417,10 +417,10 @@
 			</Amulet>
 			<Amulet id="amulet_of_the_sea">
 				<DescriptionSID>AMULET_OF_THE_SEA_SID</DescriptionSID>
-				<UsageDescriptionSID>AMULET_OF_THE_SEA_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_AMULET_OF_THE_SEA_SID</UnidentifiedDescriptionSID>
-				<CodexDescriptionSID>AMULET_OF_THE_SEA_CODEX_SID</CodexDescriptionSID>
+				<UsageDescriptionSID>AMULET_OF_THE_SEA_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_AMULET_OF_THE_SEA_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>AMULET_OF_THE_SEA_CODEX_SID</CodexDescriptionSID>
 				<Value>120</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -447,10 +447,10 @@
 			</Amulet>
 			<Amulet id="amulet_of_the_sky">
 				<DescriptionSID>AMULET_OF_THE_SKY_SID</DescriptionSID>
-				<UsageDescriptionSID>AMULET_OF_THE_SKY_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_AMULET_OF_THE_SKY_SID</UnidentifiedDescriptionSID>
-				<CodexDescriptionSID>AMULET_OF_THE_SKY_CODEX_SID</CodexDescriptionSID>
+				<UsageDescriptionSID>AMULET_OF_THE_SKY_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_AMULET_OF_THE_SKY_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>AMULET_OF_THE_SKY_CODEX_SID</CodexDescriptionSID>
 				<Value>120</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -7859,6 +7859,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>4</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>12</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -7883,6 +7897,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>4</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>12</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 				<Poisoned>1</Poisoned>
@@ -7908,6 +7936,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>4</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>12</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -7932,6 +7974,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>4</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>12</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -7956,6 +8012,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>4</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>12</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 				<Poisoned>1</Poisoned>
@@ -7981,6 +8051,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>300</Nutrition>
 				<FoodType>0</FoodType>
 				<Poisoned>1</Poisoned>
@@ -8006,6 +8090,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>500</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -8030,6 +8128,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 				<Effect>14</Effect>
@@ -8055,6 +8167,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 				<Effect>16</Effect>
@@ -8080,6 +8206,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 				<Effect>31</Effect>
@@ -8105,6 +8245,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>12</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>36</Value>
+					</Property>
+				</Properties>
 				<Nutrition>110</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -8365,6 +8519,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>500</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -8389,6 +8557,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>8</Value>
+					</Property>
+				</Properties>
 				<Nutrition>500</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -8461,6 +8643,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>12</Value>
+					</Property>
+				</Properties>
 				<Nutrition>500</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -8838,6 +9034,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>200</Nutrition>
 				<FoodType>0</FoodType>
 			</Plant>
@@ -8885,6 +9095,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>200</Nutrition>
 				<FoodType>0</FoodType>
 				<Effect>1</Effect>
@@ -8910,6 +9134,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>30</Nutrition>
 				<FoodType>0</FoodType>
 				<Effect>3</Effect>
@@ -8935,6 +9173,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>60</Nutrition>
 				<FoodType>0</FoodType>
 				<Effect>6</Effect>
@@ -8960,6 +9212,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>40</Nutrition>
 				<FoodType>0</FoodType>
 				<Effect>9</Effect>
@@ -8985,6 +9251,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>40</Nutrition>
 				<FoodType>0</FoodType>
 				<Effect>7</Effect>
@@ -9010,6 +9290,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
 				<MetabolizesAlcohol>1</MetabolizesAlcohol>
@@ -9035,6 +9329,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
 				<MetabolizesAlcohol>1</MetabolizesAlcohol>
@@ -9060,6 +9368,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
 				<MetabolizesAlcohol>1</MetabolizesAlcohol>
@@ -9085,6 +9407,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
 				<MetabolizesAlcohol>1</MetabolizesAlcohol>
@@ -9110,6 +9446,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
 				<MetabolizesAlcohol>1</MetabolizesAlcohol>
@@ -9135,6 +9485,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
 				<MetabolizesAlcohol>1</MetabolizesAlcohol>
@@ -9160,6 +9524,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>6</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Plant>
@@ -9184,6 +9562,20 @@
 					</Sprite>
 				</Symbol>	
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>2</Value>
+					</Property>
+				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
 			</Plant>
@@ -9213,6 +9605,18 @@
 						<Name>weav_con_mat_type</Name>
 						<Value>0</Value>
 					</Property>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -9240,6 +9644,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>12000</Nutrition>
 				<FoodType>0</FoodType>
 			</Plant>

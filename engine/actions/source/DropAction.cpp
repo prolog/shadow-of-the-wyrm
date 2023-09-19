@@ -237,11 +237,17 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
       // and set the relevant tile and map properties.
       string tree_species_id = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_TREE_SPECIES_ID);
       string remains = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_REMAINS);
+      string plantable_food = item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD);
       Coordinate creature_coord = MapUtils::get_coordinate_for_creature(current_map, creature);
 
       if (!remains.empty() && creatures_tile->has_been_dug())
       {
         bury_remains(creature, item_to_drop->get_additional_property(ConsumableConstants::CORPSE_RACE_ID), selected_quantity, creature_coord, creatures_tile, current_map);
+      }
+      else if (String::to_bool(plantable_food) && creatures_tile->has_been_dug())
+      {
+        // JCD FIXME PLANTABLE FOOD CODE HERE
+        // Make sure it sets permanent on the map.
       }
       else if (!tree_species_id.empty() && creatures_tile->has_been_dug())
       {

@@ -39,3 +39,6 @@ const string ItemProperties::ITEM_PROPERTIES_BUILD_FEATURE_CLASS_IDS = "build_fe
 const string ItemProperties::ITEM_PROPERTIES_WATER_TILE_TYPE = "water_tile_type";
 const string ItemProperties::ITEM_PROPERTIES_PRISE = "prise";
 const string ItemProperties::ITEM_PROPERTIES_RANDART_NAME = "randart_name";
+const string ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD = "plantable_food";
+const string ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MIN_QUANTITY = "plantable_food_min_quantity";
+const string ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MAX_QUANTITY = "plantable_food_max_quantity";
