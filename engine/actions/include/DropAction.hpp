@@ -19,7 +19,14 @@ class DropAction : public IActionManager
     void handle_no_item_dropped(CreaturePtr creature);
     void handle_invalid_drop_quantity(CreaturePtr creature);
     void handle_reacting_creature_drop_scripts(CreaturePtr creature, MapPtr current_map, ItemPtr new_item, const Coordinate& drop_coord);
-    bool plant_seed(CreaturePtr creature, const std::string& tree_species_id, const Coordinate& coords, TilePtr tile, MapPtr current_map);
+    
+    // plant_food generates more of the same item the next summer.
+    // plant_seed transforms the tile into a tree of the correct
+    // species and generates fruit.
+    bool plant_food_or_seed(CreaturePtr creature, const std::map<std::string, std::string>& item_properties, const Coordinate& coords, TilePtr tile, MapPtr current_map, const bool is_food);
+    bool plant_food(CreaturePtr creature, const std::map<std::string, std::string>& item_properties, const Coordinate& coords, TilePtr tile, MapPtr current_map);
+    bool plant_seed(CreaturePtr creature, const std::map<std::string, std::string>& item_properties, const Coordinate& coords, TilePtr tile, MapPtr current_map);
+    
     bool bury_remains(CreaturePtr creature, const std::string& remains_race_id, const uint quantity, const Coordinate& coords, TilePtr tile, MapPtr current_map);
     
     bool build_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const bool building_material, const std::string& grave_tile_type_s, const std::string& wall_tile_type_s, const std::string& floor_tile_type_s, const std::string& water_tile_type, const std::string& feature_ids);

@@ -1,4 +1,5 @@
 Me:
+- need to very thoroughly test dropped food, seeds
 - tile item transforms: drop items, test save and load.
 - Tile-based item transforms: potato, tomato. 
 - ranged buc bonus? wand?

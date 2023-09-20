@@ -246,12 +246,20 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
       }
       else if (String::to_bool(plantable_food) && creatures_tile->has_been_dug())
       {
-        // JCD FIXME PLANTABLE FOOD CODE HERE
-        // Make sure it sets permanent on the map.
+        std::map<string, string> food_planting_properties = { {ItemProperties::ITEM_PROPERTIES_ID, item_to_drop->get_base_id()}, 
+                                                              {ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MIN_QUANTITY, item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MIN_QUANTITY)}, 
+                                                              {ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MAX_QUANTITY, item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MAX_QUANTITY)} };
+
+        bool planted = plant_food(creature, food_planting_properties, creature_coord, creatures_tile, current_map);
+
+        if (planted)
+        {
+          handle_seed_planted_message(creature, item_to_drop);
+        }
       }
       else if (!tree_species_id.empty() && creatures_tile->has_been_dug())
       {
-        bool planted = plant_seed(creature, tree_species_id, creature_coord, creatures_tile, current_map);
+        bool planted = plant_seed(creature, { {ItemProperties::ITEM_PROPERTIES_TREE_SPECIES_ID, tree_species_id} }, creature_coord, creatures_tile, current_map);
 
         if (planted)
         {
@@ -324,25 +332,74 @@ uint DropAction::get_drop_quantity(CreaturePtr creature, const uint max_quantity
   return creature->get_decision_strategy()->get_count(max_quantity);
 }
 
-// Plant a seed for a particular type of tree.
-bool DropAction::plant_seed(CreaturePtr creature, const string& tree_species_id, const Coordinate& coords, TilePtr tile, MapPtr current_map)
+bool DropAction::plant_food_or_seed(CreaturePtr creature, const map<string, string>& props, const Coordinate& coords, TilePtr tile, MapPtr current_map, const bool is_food)
 {
   bool planted = false;
 
-  if (!tree_species_id.empty() && current_map)
+  if (!props.empty() && creature != nullptr && tile != nullptr && current_map != nullptr)
   {
     Game& game = Game::instance();
     World* world = game.get_current_world();
-    planted = true;
-
-    // Regardless of whether anything can actually grow on the tile, mark
-    // it as planted.
     tile->set_additional_property(TileProperties::TILE_PROPERTY_PLANTED, to_string(true));
 
-    if (world && current_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
+    if (world != nullptr && current_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
     {
-      TreeSpeciesFactory tsf;
+      planted = is_food ? plant_food(creature, props, coords, tile, current_map) : plant_seed(creature, props, coords, tile, current_map);
+    }
 
+    if (!current_map->get_permanent())
+    {
+      GameUtils::make_map_permanent(game, creature, current_map);
+    }
+
+    game.get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_PLANT_SEEDS, true);
+    planted = true;
+  }
+
+  return planted;
+}
+
+bool DropAction::plant_food(CreaturePtr creature, const map<string, string>& props, const Coordinate& coords, TilePtr tile, MapPtr current_map)
+{
+  bool planted = false;
+
+  if (creature != nullptr && tile != nullptr && current_map != nullptr)
+  {
+    auto item_id_it = props.find(ItemProperties::ITEM_PROPERTIES_ID);
+    auto min_q_it = props.find(ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MIN_QUANTITY);
+    auto max_q_it = props.find(ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MAX_QUANTITY);
+
+    if (item_id_it != props.end() && min_q_it != props.end() && max_q_it != props.end())
+    {
+      string item_id = item_id_it->second;
+      string min_q = min_q_it->second;
+      string max_q = max_q_it->second;
+
+      // ...
+
+      planted = true;
+    }
+  }
+
+  return planted;
+}
+
+// Plant a seed for a particular type of tree.
+bool DropAction::plant_seed(CreaturePtr creature, const map<string, string>& props, const Coordinate& coords, TilePtr tile, MapPtr current_map)
+{
+  bool planted = false;
+
+  if (creature != nullptr && tile != nullptr && current_map != nullptr)
+  {
+    Game& game = Game::instance();
+    World* world = game.get_current_world();
+    TreeSpeciesFactory tsf;
+
+    auto t_it = props.find(ItemProperties::ITEM_PROPERTIES_TREE_SPECIES_ID);
+
+    if (t_it != props.end())
+    {
+      string tree_species_id = t_it->second;
       TreeSpecies ts = tsf.create_tree_species(static_cast<TreeSpeciesID>(String::to_int(tree_species_id)));
       TileTransform tt(coords, ts.get_tile_type(), TileType::TILE_TYPE_UNDEFINED, { { ItemProperties::ITEM_PROPERTIES_TREE_SPECIES_ID, tree_species_id } });
 
@@ -352,15 +409,6 @@ bool DropAction::plant_seed(CreaturePtr creature, const string& tree_species_id,
       vector<TileTransform>& tt_v = current_map->get_tile_transforms_ref()[sprout_time];
 
       tt_v.push_back(tt);
-
-      // Planting a tree alters the world by making the map permanent, if it 
-      // was not already so.
-      if (!current_map->get_permanent())
-      {
-        GameUtils::make_map_permanent(game, creature, current_map);
-      }
-
-      game.get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_PLANT_SEEDS, true);
     }
   }
   

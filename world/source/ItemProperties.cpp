@@ -10,6 +10,7 @@ ItemProperties::~ItemProperties()
 {
 }
 
+const string ItemProperties::ITEM_PROPERTIES_ID = "id";
 const string ItemProperties::ITEM_PROPERTIES_DIG_HARDNESS = "dig_hardness";
 const string ItemProperties::ITEM_PROPERTIES_BLANK = "blank";
 const string ItemProperties::ITEM_PROPERTIES_DIG_BREAKAGE_PCT_CHANCE = "dig_breakage_pct_chance";
