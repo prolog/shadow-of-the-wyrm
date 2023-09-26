@@ -16,6 +16,9 @@
 
 using namespace std;
 
+const int Tile::PLANTABLE_ITEMS_GROUND = 2;
+const int Tile::PLANTABLE_ITEMS_DEFAULT = 0;
+
 // Routines for creating and setting/getting attributes of a given Tile.
 Tile::Tile(const int new_hardness)
 : hardness(new_hardness)
@@ -208,6 +211,19 @@ bool Tile::has_remains() const
   string prop = get_additional_property(TileProperties::TILE_PROPERTY_REMAINS);
 
   return (prop == to_string(true));
+}
+
+uint Tile::get_num_plantable_items() const
+{
+  switch (get_tile_super_type())
+  {
+    case TileSuperType::TILE_SUPER_TYPE_GROUND:
+      return PLANTABLE_ITEMS_GROUND;
+    case TileSuperType::TILE_SUPER_TYPE_AIR:
+    case TileSuperType::TILE_SUPER_TYPE_WATER:
+    case TileSuperType::TILE_SUPER_TYPE_UNDEFINED:
+      return PLANTABLE_ITEMS_DEFAULT;
+  }
 }
 
 void Tile::set_custom_map_id(const string& map_generator_id)

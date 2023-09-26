@@ -120,6 +120,7 @@ class Tile : public ISerializable
     virtual bool has_been_dug() const;
     virtual bool has_been_planted() const;
     virtual bool has_remains() const;
+    virtual uint get_num_plantable_items() const;
 
     virtual bool has_creature() const;
     virtual void set_creature(const std::shared_ptr<Creature>& new_creature);
@@ -249,6 +250,9 @@ class Tile : public ISerializable
     // When digging on this tile, what're the probabilities of certain
     // things happening?
     DigChances dig_chances;
+
+    static const int PLANTABLE_ITEMS_GROUND;
+    static const int PLANTABLE_ITEMS_DEFAULT;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

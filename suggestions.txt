@@ -2,6 +2,7 @@ Me:
 - need to very thoroughly test dropped food, seeds
 - tile item transforms: drop items, test save and load.
 - Tile-based item transforms: potato, tomato. 
+- Hidden PCs are never found via bumping (Josh Engdahl)
 - ranged buc bonus? wand?
 - ways in which blessed item status can be tied into benefits
 - Sofistico: went up on telari and game crashed
@@ -440,20 +441,23 @@ Josh Engdahl
 - support for "extending" good status effects via drinking multiple potions,
   etc
 - tile selection keys not reloading with others
-- Hidden PCs are never found via bumping (Josh Engdahl)
-- when hiding and checking stuff, spirits in walls don't seem to count against
-  the checks
 - when hiding and checking stuff, spirits in walls don't seem to count against
   the checks
 - don't step out of shadows if creatures don't have you in LOS
 - weird age incrementing issue?
-- make undead hostile to e.g. all humanoids
+- make undead hostile to e.g. all humanoids who don't worship shiver/urgoth/
+  sceadugenga.
 - nearby guards/priests should get angry when altars are desecrated
 - Rocky earth generator 1n Carcassia
 - Freeze not always working when hostile creatures in view or creatures 
   hostile to leader in view?
 - los code: .@..   can't see
             ####s
+- "switch" equipment - if wearing a piece of armour that's not as good as
+  something on the ground, remove it, flag it as to-discard, pick up the new
+  piece, wear it. There's a lot here: how do we ensure we pick up the best
+  piece of armour? How do we ensure that eg other NPCs can pick up the
+  discarded piece? etc
 
 TheGhostInTheMachine:
 - game segfaults if you put it on the path and then run it elsewhere?
