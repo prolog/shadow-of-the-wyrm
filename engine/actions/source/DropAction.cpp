@@ -250,7 +250,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
                                                               {ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MIN_QUANTITY, item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MIN_QUANTITY)}, 
                                                               {ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MAX_QUANTITY, item_to_drop->get_additional_property(ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MAX_QUANTITY)} };
 
-        bool planted = plant_food(creature, food_planting_properties, creature_coord, creatures_tile, current_map);
+        bool planted = plant_food_or_seed(creature, food_planting_properties, creature_coord, creatures_tile, current_map, new_item, true);
 
         if (planted)
         {
@@ -259,7 +259,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
       }
       else if (!tree_species_id.empty() && creatures_tile->has_been_dug())
       {
-        bool planted = plant_seed(creature, { {ItemProperties::ITEM_PROPERTIES_TREE_SPECIES_ID, tree_species_id} }, creature_coord, creatures_tile, current_map);
+        bool planted = plant_food_or_seed(creature, { {ItemProperties::ITEM_PROPERTIES_TREE_SPECIES_ID, tree_species_id} }, creature_coord, creatures_tile, current_map, nullptr, false);
 
         if (planted)
         {
@@ -332,7 +332,7 @@ uint DropAction::get_drop_quantity(CreaturePtr creature, const uint max_quantity
   return creature->get_decision_strategy()->get_count(max_quantity);
 }
 
-bool DropAction::plant_food_or_seed(CreaturePtr creature, const map<string, string>& props, const Coordinate& coords, TilePtr tile, MapPtr current_map, const bool is_food)
+bool DropAction::plant_food_or_seed(CreaturePtr creature, const map<string, string>& props, const Coordinate& coords, TilePtr tile, MapPtr current_map, ItemPtr item_to_plant, const bool is_food)
 {
   bool planted = false;
 
@@ -344,22 +344,24 @@ bool DropAction::plant_food_or_seed(CreaturePtr creature, const map<string, stri
 
     if (world != nullptr && current_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
     {
-      planted = is_food ? plant_food(creature, props, coords, tile, current_map) : plant_seed(creature, props, coords, tile, current_map);
+      planted = is_food ? plant_food(creature, props, coords, tile, current_map, item_to_plant) : plant_seed(creature, props, coords, tile, current_map);
     }
 
-    if (!current_map->get_permanent())
+    if (planted)
     {
-      GameUtils::make_map_permanent(game, creature, current_map);
-    }
+      game.get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_PLANT_SEEDS, true);
 
-    game.get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_PLANT_SEEDS, true);
-    planted = true;
+      if (!current_map->get_permanent())
+      {
+        GameUtils::make_map_permanent(game, creature, current_map);
+      }
+    }
   }
 
   return planted;
 }
 
-bool DropAction::plant_food(CreaturePtr creature, const map<string, string>& props, const Coordinate& coords, TilePtr tile, MapPtr current_map)
+bool DropAction::plant_food(CreaturePtr creature, const map<string, string>& props, const Coordinate& coords, TilePtr tile, MapPtr current_map, ItemPtr item_to_plant)
 {
   bool planted = false;
 
@@ -379,13 +381,19 @@ bool DropAction::plant_food(CreaturePtr creature, const map<string, string>& pro
       if (current_map->count_tile_item_transforms(coords) <= tile->get_num_plantable_items())
       {
         // OK: add to transforms
+
+        planted = true;
       }
       else
       {
-        // ... msg ...
-      }
+        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature->get_is_player());
+        string ground_full = StringTable::get(ActionTextKeys::ACTION_GROUND_FULL);
 
-      planted = true;
+        manager.add_new_message(ground_full);
+        manager.send();
+
+        tile->get_items()->merge_or_add(item_to_plant, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      }
     }
   }
 

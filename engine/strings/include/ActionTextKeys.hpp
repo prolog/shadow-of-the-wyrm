@@ -263,6 +263,7 @@ class ActionTextKeys
     static const std::string ACTION_TOGGLE_FULLSCREEN_SDL_TRUE;
     static const std::string ACTION_TOGGLE_FULLSCREEN_CURSES;
     static const std::string ACTION_HIDE_HOLE;
+    static const std::string ACTION_GROUND_FULL;
 
   protected:
     ActionTextKeys();

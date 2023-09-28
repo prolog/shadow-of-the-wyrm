@@ -23,8 +23,8 @@ class DropAction : public IActionManager
     // plant_food generates more of the same item the next summer.
     // plant_seed transforms the tile into a tree of the correct
     // species and generates fruit.
-    bool plant_food_or_seed(CreaturePtr creature, const std::map<std::string, std::string>& item_properties, const Coordinate& coords, TilePtr tile, MapPtr current_map, const bool is_food);
-    bool plant_food(CreaturePtr creature, const std::map<std::string, std::string>& item_properties, const Coordinate& coords, TilePtr tile, MapPtr current_map);
+    bool plant_food_or_seed(CreaturePtr creature, const std::map<std::string, std::string>& item_properties, const Coordinate& coords, TilePtr tile, MapPtr current_map, ItemPtr item_to_plant, const bool is_food);
+    bool plant_food(CreaturePtr creature, const std::map<std::string, std::string>& item_properties, const Coordinate& coords, TilePtr tile, MapPtr current_map, ItemPtr item_to_plant);
     bool plant_seed(CreaturePtr creature, const std::map<std::string, std::string>& item_properties, const Coordinate& coords, TilePtr tile, MapPtr current_map);
     
     bool bury_remains(CreaturePtr creature, const std::string& remains_race_id, const uint quantity, const Coordinate& coords, TilePtr tile, MapPtr current_map);
