@@ -365,7 +365,7 @@ bool DropAction::plant_food(CreaturePtr creature, const map<string, string>& pro
 {
   bool planted = false;
 
-  if (creature != nullptr && tile != nullptr && current_map != nullptr)
+  if (creature != nullptr && tile != nullptr && current_map != nullptr && item_to_plant != nullptr)
   {
     auto item_id_it = props.find(ItemProperties::ITEM_PROPERTIES_ID);
     auto min_q_it = props.find(ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MIN_QUANTITY);
@@ -373,14 +373,24 @@ bool DropAction::plant_food(CreaturePtr creature, const map<string, string>& pro
 
     if (item_id_it != props.end() && min_q_it != props.end() && max_q_it != props.end())
     {
+      Game& game = Game::instance();
+      World* world = game.get_current_world();
+
       string item_id = item_id_it->second;
       string min_q = min_q_it->second;
       string max_q = max_q_it->second;
 
       auto& transforms = current_map->get_tile_item_transforms_ref();
-      if (current_map->count_tile_item_transforms(coords) <= tile->get_num_plantable_items())
+      if (current_map->count_tile_item_transforms(coords) <= tile->get_num_plantable_items() && world != nullptr)
       {
         // OK: add to transforms
+        SeedCalculator sc;
+        Date current_date = world->get_calendar().get_date();
+        double sprout_time = sc.calculate_sprouting_seconds(current_date);
+
+        TileItemTransform tit(coords, item_to_plant->get_base_id(), String::to_int(min_q), String::to_int(max_q));
+        vector<TileItemTransform>& tt_v = current_map->get_tile_item_transforms_ref()[sprout_time];
+        tt_v.push_back(tit);
 
         planted = true;
       }
