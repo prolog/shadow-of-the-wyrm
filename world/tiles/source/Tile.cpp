@@ -222,6 +222,7 @@ uint Tile::get_num_plantable_items() const
     case TileSuperType::TILE_SUPER_TYPE_AIR:
     case TileSuperType::TILE_SUPER_TYPE_WATER:
     case TileSuperType::TILE_SUPER_TYPE_UNDEFINED:
+    default:
       return PLANTABLE_ITEMS_DEFAULT;
   }
 }

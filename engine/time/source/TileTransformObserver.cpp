@@ -1,7 +1,9 @@
 #include "AgeTimeObserver.hpp"
-#include "TileTransformObserver.hpp"
 #include "Game.hpp"
+#include "ItemManager.hpp"
+#include "RNG.hpp"
 #include "TileGenerator.hpp"
+#include "TileTransformObserver.hpp"
 
 using namespace std;
 
@@ -25,6 +27,7 @@ void TileTransformObserver::notify(const ulonglong minutes_passed)
       if (cur_map != nullptr)
       {
         process_tile_transforms(cur_map, cur_seconds);
+        process_item_transforms(cur_map, cur_seconds);
       }
     }
   }
@@ -68,6 +71,49 @@ void TileTransformObserver::process_tile_transforms(MapPtr cur_map, const double
           }
 
           cur_map->insert(c, new_tile);
+        }
+
+        ttc.erase(t_it++);
+      }
+    }
+  }
+}
+
+// Iterate over the tile transforms for this map, and if any have passed
+// the minimum required time, add the items in the required quantities
+// to the tiles.
+void TileTransformObserver::process_item_transforms(MapPtr cur_map, const double cur_seconds)
+{
+  if (cur_map != nullptr)
+  {
+    TileItemTransformContainer& ttc = cur_map->get_tile_item_transforms_ref();
+    ItemManager im;
+
+    for (auto t_it = ttc.begin(); t_it != ttc.end(); )
+    {
+      double seconds = t_it->first;
+
+      if (cur_seconds < seconds)
+      {
+        break;
+      }
+      else
+      {
+        vector<TileItemTransform> tit_vec = t_it->second;
+
+        for (const TileItemTransform& tit : tit_vec)
+        {
+          Coordinate c = tit.get_coordinate();
+          string item_id = tit.get_item_id();
+          int min_q = tit.get_min_quantity();
+          int max_q = tit.get_max_quantity();
+          TilePtr tile = cur_map->at(c);
+
+          if (tile != nullptr)
+          {
+            ItemPtr item = im.create_item(item_id, RNG::range(min_q, max_q));
+            tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          }
         }
 
         ttc.erase(t_it++);

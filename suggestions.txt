@@ -1,5 +1,7 @@
 Me:
 - need to very thoroughly test dropped food, seeds
+- test plant, wait, plant, wait, plant, wait...
+- test both seed and food planting on same tile
 - tile item transforms: drop items, test save and load.
 - Tile-based item transforms: potato, tomato. 
 - Hidden PCs are never found via bumping (Josh Engdahl)

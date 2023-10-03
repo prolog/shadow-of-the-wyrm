@@ -9,7 +9,7 @@ TileItemTransform::TileItemTransform()
 }
 
 TileItemTransform::TileItemTransform(const Coordinate& new_coord, const string& new_item_id, const int new_min_quantity, const int new_max_quantity)
-: coord(new_coord), item_id(""), min_quantity(new_min_quantity), max_quantity(new_max_quantity)
+: coord(new_coord), item_id(new_item_id), min_quantity(new_min_quantity), max_quantity(new_max_quantity)
 {
 }
 

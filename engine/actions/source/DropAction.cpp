@@ -367,16 +367,14 @@ bool DropAction::plant_food(CreaturePtr creature, const map<string, string>& pro
 
   if (creature != nullptr && tile != nullptr && current_map != nullptr && item_to_plant != nullptr)
   {
-    auto item_id_it = props.find(ItemProperties::ITEM_PROPERTIES_ID);
     auto min_q_it = props.find(ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MIN_QUANTITY);
     auto max_q_it = props.find(ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MAX_QUANTITY);
 
-    if (item_id_it != props.end() && min_q_it != props.end() && max_q_it != props.end())
+    if (min_q_it != props.end() && max_q_it != props.end())
     {
       Game& game = Game::instance();
       World* world = game.get_current_world();
 
-      string item_id = item_id_it->second;
       string min_q = min_q_it->second;
       string max_q = max_q_it->second;
 
