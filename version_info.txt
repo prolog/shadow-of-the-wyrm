@@ -50,6 +50,10 @@ Shadow of the Wyrm v1.6.0 "Daca"
 - Most plants and vegetables are now plantable, and when dropped in a hole 
   will yield more of the same the next summer.
 
+- Non-weapons that you can wield (such as shovels and fishing rods) and now
+  properly treated as exotic weapons when using them in combat. Previously,
+  the game treated you as unarmed.
+
 - More name combinations.
 
 - New items: mushroom, shelf fungus, Shiver's kiss, deathbloom, chanterelle,

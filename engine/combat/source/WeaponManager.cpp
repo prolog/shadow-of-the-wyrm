@@ -55,6 +55,14 @@ WeaponPtr WeaponManager::get_weapon(CreaturePtr creature, const AttackType attac
   ItemPtr item = get_item(creature, attack_type);
   WeaponPtr weapon = dynamic_pointer_cast<Weapon>(item);
 
+  if (weapon == nullptr && 
+      item != nullptr && 
+      (attack_type == AttackType::ATTACK_TYPE_MELEE_PRIMARY || attack_type == AttackType::ATTACK_TYPE_MELEE_SECONDARY) &&
+      item->get_type() != ItemType::ITEM_TYPE_ARMOUR)
+  {
+    weapon = create_improvised_weapon(item);
+  }
+
   return weapon;
 }
 
@@ -369,4 +377,31 @@ bool WeaponManager::do_trained_ranged_skills_match(WeaponPtr ranged_weapon, Weap
   }
   
   return false;
+}
+
+WeaponPtr WeaponManager::create_improvised_weapon(ItemPtr item)
+{
+  WeaponPtr weapon;
+
+  if (item != nullptr)
+  {
+    weapon = std::make_shared<MeleeWeapon>();
+    int weight_modifier = static_cast<int>(item->get_weight().get_weight_in_lbs() / 3);
+
+    weapon->set_description_sid(item->get_description_sid());
+    weapon->set_trained_skill(SkillType::SKILL_MELEE_EXOTIC);
+    weapon->set_trained_ranged_skill(SkillType::SKILL_RANGED_EXOTIC);
+    weapon->set_difficulty(15 + weight_modifier);
+
+    Damage dam;
+    dam.set_damage_type(DamageType::DAMAGE_TYPE_POUND);
+    dam.set_num_dice(1);
+    dam.set_dice_sides(2);
+    dam.set_modifier(weight_modifier);
+
+    weapon->set_speed(3 + weight_modifier);
+    weapon->set_damage(dam);
+  }
+
+  return weapon;
 }

@@ -93,7 +93,8 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
 
       if (adjacent_creature)
       {
-        WeaponPtr off_hand_weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND));
+        WeaponManager wm;
+        WeaponPtr off_hand_weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_SECONDARY);
 
         // Secondary attacks fire only if the creature is wielding a weapon in
         // its off hand.  Shields, potions, etc., don't count!
