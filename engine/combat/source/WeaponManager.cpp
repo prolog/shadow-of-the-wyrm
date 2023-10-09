@@ -1,6 +1,7 @@
 #include "Ammunition.hpp"
 #include "CombatConstants.hpp"
 #include "Conversion.hpp"
+#include "ExoticWeaponCalculator.hpp"
 #include "ItemProperties.hpp"
 #include "PhysicalDamageCalculator.hpp"
 #include "WeaponDifficultyCalculator.hpp"
@@ -385,21 +386,19 @@ WeaponPtr WeaponManager::create_improvised_weapon(ItemPtr item)
 
   if (item != nullptr)
   {
+    ExoticWeaponCalculator ewc;
     weapon = std::make_shared<MeleeWeapon>();
-    int weight_modifier = static_cast<int>(item->get_weight().get_weight_in_lbs() / 3);
+    int weight_modifier = ewc.get_general_modifier(item->get_weight().get_weight_in_lbs());
 
     weapon->set_description_sid(item->get_description_sid());
     weapon->set_trained_skill(SkillType::SKILL_MELEE_EXOTIC);
     weapon->set_trained_ranged_skill(SkillType::SKILL_RANGED_EXOTIC);
-    weapon->set_difficulty(15 + weight_modifier);
+    weapon->set_difficulty(ewc.get_base_difficulty_for_improvised_exotic_weapon() + weight_modifier);
 
-    Damage dam;
-    dam.set_damage_type(DamageType::DAMAGE_TYPE_POUND);
-    dam.set_num_dice(1);
-    dam.set_dice_sides(2);
+    Damage dam = ewc.get_base_damage_for_improvised_exotic_weapon();
     dam.set_modifier(weight_modifier);
 
-    weapon->set_speed(3 + weight_modifier);
+    weapon->set_speed(ewc.get_base_speed_for_improvised_exotic_weapon() + weight_modifier);
     weapon->set_damage(dam);
   }
 

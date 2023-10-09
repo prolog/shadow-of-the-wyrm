@@ -386,6 +386,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\DivineCompanionCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DoorBreakageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\EvadeCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\ExoticWeaponCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ExposedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\FenceCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\FishingCalculator.hpp" />
@@ -1545,6 +1546,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\DisarmTrapsCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DivineCompanionCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DoorBreakageCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\ExoticWeaponCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\FenceCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\FishingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\FollowerCalculator.cpp" />
@@ -1649,6 +1651,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\ExoticWeaponCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\FenceCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
