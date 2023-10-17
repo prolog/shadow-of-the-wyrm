@@ -11,7 +11,7 @@ const int AmmunitionCalculator::BASE_PCT_CHANCE_BREAKAGE = 1;
 const int AmmunitionCalculator::BASE_PCT_CHANCE_SURVIVAL = 40;
 const int AmmunitionCalculator::ARCHERY_SKILL_SURVIVAL_DIVISOR = 2;
 const int AmmunitionCalculator::ITEM_WEIGHT_SURVIVAL_DIVISOR = 6;
-const int AmmunitionCalculator::HAS_SLAYS_SURVIVAL_MODIFIER = 20;
+const int AmmunitionCalculator::HAS_SLAYS_SURVIVAL_MODIFIER = 25;
 
 const map<Weight, pair<int, int>> AmmunitionCalculator::AMMUNITION_STACK_RANGES = 
 {{Weight(0), {1, 50}},
@@ -22,7 +22,7 @@ const map<Weight, pair<int, int>> AmmunitionCalculator::AMMUNITION_STACK_RANGES 
 const map<ItemStatus, int> AmmunitionCalculator::STATUS_SURVIVAL_MODIFIERS =
 {{ItemStatus::ITEM_STATUS_CURSED, -20},
  {ItemStatus::ITEM_STATUS_UNCURSED, 0},
- {ItemStatus::ITEM_STATUS_BLESSED, 20}};
+ {ItemStatus::ITEM_STATUS_BLESSED, 25}};
 
 // Whether or not ammunition survives is determined by:
 //
@@ -47,11 +47,7 @@ bool AmmunitionCalculator::survives(CreaturePtr creature, ItemPtr ammunition)
     {
       // The chance for an item to survive is based on a base survival percentage, plus modifiers
       // due to skill in archery and how heavy the item is.
-      int chance_survive = BASE_PCT_CHANCE_SURVIVAL
-                         + (creature->get_skills().get_skill(SkillType::SKILL_GENERAL_ARCHERY)->get_value() / ARCHERY_SKILL_SURVIVAL_DIVISOR)
-                         + get_slays_survival_modifier(ammunition)
-                         + get_item_status_survival_modifier(ammunition)
-                         + (ammunition->get_weight().get_weight() / ITEM_WEIGHT_SURVIVAL_DIVISOR);
+      int chance_survive = calculate_pct_chance_survival(creature, ammunition);
 
       string item_destruction_s = ammunition->get_additional_property(ItemProperties::ITEM_PROPERTIES_DESTRUCTION_PCT_CHANCE);
       int item_destruction_pct = item_destruction_s.empty() ? 0 : String::to_int(item_destruction_s);
@@ -71,6 +67,22 @@ bool AmmunitionCalculator::survives(CreaturePtr creature, ItemPtr ammunition)
   }
 
   return survive;
+}
+
+int AmmunitionCalculator::calculate_pct_chance_survival(CreaturePtr creature, ItemPtr ammunition)
+{
+  int pct_chance_survival = 0;
+
+  if (creature != nullptr && ammunition != nullptr)
+  {
+    pct_chance_survival = BASE_PCT_CHANCE_SURVIVAL
+                        + (creature->get_skills().get_skill(SkillType::SKILL_GENERAL_ARCHERY)->get_value() / ARCHERY_SKILL_SURVIVAL_DIVISOR)
+                        + get_slays_survival_modifier(ammunition)
+                        + get_item_status_survival_modifier(ammunition)
+                        + (ammunition->get_weight().get_weight() / ITEM_WEIGHT_SURVIVAL_DIVISOR);
+  }
+
+  return pct_chance_survival;
 }
 
 pair<int, int> AmmunitionCalculator::calculate_stack_size(ItemPtr ammo)
@@ -130,3 +142,7 @@ int AmmunitionCalculator::get_item_status_survival_modifier(ItemPtr ammunition)
 
   return status_mod;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/AmmunitionCalculator_test.cpp"
+#endif

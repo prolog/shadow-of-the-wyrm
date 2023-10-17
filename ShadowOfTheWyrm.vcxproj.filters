@@ -9163,6 +9163,9 @@
     <ClCompile Include="engine\calculators\source\unit_tests\ExoticWeaponCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\AmmunitionCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShadowOfTheWyrm.rc" />
