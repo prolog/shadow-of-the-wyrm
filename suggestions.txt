@@ -1,7 +1,6 @@
 Me:
-- move the constants in WeaponManager into an exotic weapons calculator
-- non-weapons (like shovels) that are wielded don't seem to be picking up the
-  Exotic bonus. they're also showing as unarmed.
+- ammo: blessed: breakage%?
+- trap trap
 - double check the max-things-planted code? was able to plant quite a few
   items...
 - need to very thoroughly test dropped food, seeds
@@ -15,7 +14,6 @@ Me:
 - Sofistico: went up on telari and game crashed
 - item templates: combine wildflowers first, then mushrooms
 - ASSET RELEASE. git push --tags
-- trap trap
 - always: mushrooms in the wet rooms in the dungeon
 - sometimes: mushroom generation in dungeons (rare), caverns (more frequent)
 - open pit mine (pick axes or mattocks, gold, stone, magici...). may or may not
