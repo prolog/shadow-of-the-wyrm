@@ -84,12 +84,14 @@ int WandCalculator::calc_max_recharge_charges(CreaturePtr creature, ItemStatus i
     switch (item_status)
     {
       case ItemStatus::ITEM_STATUS_BLESSED:
-        num_charges = 2;
+        num_charges = 3;
         break;
       case ItemStatus::ITEM_STATUS_CURSED:
+        num_charges = 1;
+        break;
       case ItemStatus::ITEM_STATUS_UNCURSED:
       default:
-        num_charges = 1;
+        num_charges = 2;
         break;
     }
 

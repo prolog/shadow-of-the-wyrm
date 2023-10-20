@@ -1,5 +1,6 @@
 Me:
-- ammo: blessed: breakage%?
+- Empty filter messages? (eg, no food, nothing to read, etc). Is it worth it?
+- JovanM: enchanter that removes curse
 - trap trap
 - double check the max-things-planted code? was able to plant quite a few
   items...

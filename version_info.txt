@@ -44,6 +44,10 @@ Shadow of the Wyrm v1.6.0 "Daca"
 
 - When digging, an item's status now affects its breakage chance.
 
+- Blessed scrolls of recharging now increase the minimum number of charges
+  when recharging a wand. The wand's status now affects the potential number 
+  of extra charges.
+
 - A consumable's status now affects its nutrition, though this does not affect
   what the item is worth to the divine.
 
