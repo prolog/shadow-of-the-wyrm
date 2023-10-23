@@ -1,0 +1,1 @@
+clear_and_add_message("TEMPLE_MASTER_SPEECH_TEXT_SID")
