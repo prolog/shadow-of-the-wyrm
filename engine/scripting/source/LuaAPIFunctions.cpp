@@ -72,6 +72,7 @@ CreaturePtr local_creature;
 
 void add_seconds_to_calendar(const int seconds, int& add_successful);
 bool set_all_eq_to(CreaturePtr creature, const ItemStatus status);
+bool set_all_inv_to(CreaturePtr creature, const ItemStatus status);
 
 void add_seconds_to_calendar(const int seconds, int& added_time)
 {
@@ -350,6 +351,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "cast_spell", cast_spell);
   lua_register(L, "bless_equipment", bless_equipment);
   lua_register(L, "curse_equipment", curse_equipment);
+  lua_register(L, "bless_inventory", bless_inventory);
   lua_register(L, "curse_inventory", curse_inventory);
   lua_register(L, "set_winner", set_winner);
   lua_register(L, "get_winner", get_winner);
@@ -6067,6 +6069,29 @@ int curse_equipment(lua_State* ls)
   return 1;
 }
 
+int bless_inventory(lua_State* ls)
+{
+  int blessed_inv = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      blessed_inv = set_all_inv_to(creature, ItemStatus::ITEM_STATUS_BLESSED);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to curse_inventory");
+  }
+
+  lua_pushboolean(ls, blessed_inv);
+  return 1;
+}
+
 int curse_inventory(lua_State* ls)
 {
   int cursed_inv = false;
@@ -6078,21 +6103,7 @@ int curse_inventory(lua_State* ls)
 
     if (creature != nullptr)
     {
-      IInventoryPtr inv = creature->get_inventory();
-
-      if (inv != nullptr)
-      {
-        list<ItemPtr> items = inv->get_items_ref();
-
-        for (ItemPtr item : items)
-        {
-          if (item != nullptr)
-          {
-            item->set_status(ItemStatus::ITEM_STATUS_CURSED);
-            cursed_inv = true;
-          }
-        }
-      }
+      cursed_inv = set_all_inv_to(creature, ItemStatus::ITEM_STATUS_CURSED);
     }
   }
   else
@@ -7836,6 +7847,32 @@ bool set_all_eq_to(CreaturePtr creature, const ItemStatus status)
   }
 
   return eq_set;
+}
+
+bool set_all_inv_to(CreaturePtr creature, const ItemStatus status)
+{
+  bool inv_set = false;
+
+  if (creature != nullptr)
+  {
+    IInventoryPtr inv = creature->get_inventory();
+
+    if (inv != nullptr)
+    {
+      list<ItemPtr> items = inv->get_items_ref();
+
+      for (ItemPtr item : items)
+      {
+        if (item != nullptr)
+        {
+          item->set_status(status);
+          inv_set = true;
+        }
+      }
+    }
+  }
+
+  return inv_set;
 }
 
 int generate_city_feature(lua_State* ls)

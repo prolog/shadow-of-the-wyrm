@@ -186,6 +186,7 @@ int report_coords(lua_State* ls);
 int get_player_world_map_coords(lua_State* ls);
 int cast_spell(lua_State* ls);
 int bless_equipment(lua_State* ls);
+int bless_inventory(lua_State* ls);
 int curse_equipment(lua_State* ls);
 int curse_inventory(lua_State* ls);
 int set_winner(lua_State* ls);

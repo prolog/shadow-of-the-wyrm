@@ -1,4 +1,4 @@
-Shadow of the Wyrm v1.6.0 "Daca"
+Shadow of the Wyrm v1.6.1 "Daca"
 - Version started July 8, 2023.
 
 - The game now shows "a vanished god" if you worship one of the Nine and they
@@ -60,7 +60,13 @@ Shadow of the Wyrm v1.6.0 "Daca"
   properly treated as exotic weapons when using them in combat. Previously,
   the game treated you as unarmed.
 
+- Added a temple master to the top of the temple in Carcassia - she takes
+  donations to the temple, which are rewarded with piety; particularly large
+  donations will bless the player's equipment, or inventory.
+
 - More name combinations.
+
+- New creatures: temple master.
 
 - New items: mushroom, shelf fungus, Shiver's kiss, deathbloom, chanterelle,
   morel, elfcap, pufftop, elfland's exit.
