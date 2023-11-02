@@ -71,8 +71,24 @@ void XMLReader::parse_spritesheet_location(SpritesheetLocation& ssl, const XMLNo
     vector<string> col_vec = String::create_string_vector_from_csv_string(col_s);
 
     id = id_vec.at(use_idx && i < id_vec.size() ? i : 0);
-    int row = String::to_int(row_vec.at(use_idx && i < row_vec.size() ? i : 0));
-    int col = String::to_int(col_vec.at(use_idx && i < col_vec.size() ? i : 0));
+
+    string row_val_s = row_vec.at(use_idx && i < row_vec.size() ? i : 0);
+
+    if (row_val_s.empty())
+    {
+      row_val_s = "0";
+    }
+
+    int row = String::to_int(row_val_s);
+
+    string col_val_s = col_vec.at(use_idx && i < col_vec.size() ? i : 0);
+
+    if (col_val_s.empty())
+    {
+      col_val_s = "0";
+    }
+
+    int col = String::to_int(col_val_s);
 
     ssl.set_index(id);
     ssl.set_coordinate(make_pair(row, col));

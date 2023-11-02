@@ -1280,12 +1280,12 @@
 </xs:complexType>
 <xs:complexType name="Sprite">
 	<xs:annotation>
-		<xs:documentation>Contains spritesheet info for a particular symbol.</xs:documentation>
+		<xs:documentation>Contains spritesheet info for a particular symbol. If no row and col are provided, they are both assumed to be 0 (this might be done eg if the "spritesheet" is just an individual/single sprite).</xs:documentation>
 	</xs:annotation>
 	<xs:sequence>
 		<xs:element name="ID" type="tns:NonEmptyListIdentifier"/>
-		<xs:element name="Row" type="tns:NonEmptyIntegerListIdentifier"/>
-		<xs:element name="Col" type="tns:NonEmptyIntegerListIdentifier"/>
+		<xs:element name="Row" type="tns:NonEmptyIntegerListIdentifier" minOccurs="0"/>
+		<xs:element name="Col" type="tns:NonEmptyIntegerListIdentifier" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="SeasonColoursType">

@@ -64,6 +64,9 @@ Shadow of the Wyrm v1.6.1 "Daca"
   donations to the temple, which are rewarded with piety; particularly large
   donations will bless the player's equipment, or inventory.
 
+- When specifying symbol information in the configuration file, if no Row and
+  Col are provided, a default of 0 for each is assumed.
+
 - More name combinations.
 
 - New creatures: temple master.

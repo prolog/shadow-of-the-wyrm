@@ -1,6 +1,6 @@
 Me:
 - Fix power curve: ID vs Carc
-- JovanM: enchanter that removes curse
+- world generation parameters settable in swyrm.ini
 - trap trap
 - double check the max-things-planted code? was able to plant quite a few
   items...
