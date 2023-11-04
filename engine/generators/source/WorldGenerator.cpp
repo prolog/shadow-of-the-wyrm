@@ -36,7 +36,6 @@ void async_worldgen(std::promise<MapPtr>&& mp)
 const int WorldGenerator::MIN_CREATURES_PER_VILLAGE = 12;
 const int WorldGenerator::MAX_CREATURES_PER_VILLAGE = 26;
 const int WorldGenerator::MAX_DANGER_LEVEL_FOR_WORLD_GEN = 50;
-const pair<int, int> WorldGenerator::X_IN_Y_CHANCE_TREASURE = { 1, 100 };
 
 // Even though the map_terrain_type parameter is used to generate creatures, and UNDEFINED would normally be bad, it
 // shouldn't matter for the world, since there will never be creatures generated on it.
@@ -56,11 +55,16 @@ WorldGenerator::WorldGenerator()
                       {TileType::TILE_TYPE_CAVERN, TileDepthOptions(1, 50)},
                       {TileType::TILE_TYPE_MINE, TileDepthOptions(5, 50, vector<int>({50,30}))}})
   , tg(false)
+  , x_in_y_chance_treasure({1,100})
 {
+  const Settings& settings = Game::instance().get_settings_ref();
+  x_in_y_chance_treasure.first = String::to_int(settings.get_setting(Setting::WORLD_MAP_TREASURE_X_IN_Y_X));
+  x_in_y_chance_treasure.second = String::to_int(settings.get_setting(Setting::WORLD_MAP_TREASURE_X_IN_Y_Y));
 }
 
 WorldGenerator::WorldGenerator(const string& new_map_exit_id)
 : Generator(new_map_exit_id, TileType::TILE_TYPE_UNDEFINED)
+
 {
   // Worlds don't do anything with the map exit id.
 }
@@ -948,7 +952,7 @@ string WorldGenerator::get_race_village_extra_description_sid(const string& race
 
 void WorldGenerator::potentially_add_treasure(const string& key, TilePtr tile, NormalDistribution& nd, bool& terrain_override, const bool treasure_is_underwater)
 {
-  if (tile != nullptr && tile->get_custom_map_id().empty() && (terrain_override || RNG::x_in_y_chance(X_IN_Y_CHANCE_TREASURE.first, X_IN_Y_CHANCE_TREASURE.second)))
+  if (tile != nullptr && tile->get_custom_map_id().empty() && (terrain_override || RNG::x_in_y_chance(x_in_y_chance_treasure.first, x_in_y_chance_treasure.second)))
   {
     Log& log = Log::instance();
     int difficulty = nd.next_int_as_pct();

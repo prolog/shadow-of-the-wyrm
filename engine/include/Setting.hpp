@@ -79,6 +79,8 @@ class Setting
     static const std::string SHOW_DISTANCE_ON_EXAMINE;
     static const std::string WORLD_MAP_ROWS;
     static const std::string WORLD_MAP_COLS;
+    static const std::string WORLD_MAP_TREASURE_X_IN_Y_X;
+    static const std::string WORLD_MAP_TREASURE_X_IN_Y_Y;
 
   protected:
     Setting();

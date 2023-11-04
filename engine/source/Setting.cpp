@@ -86,3 +86,5 @@ const string Setting::CONTINUE_TILE_SELECTION_AFTER_LOOKUP = "continue_tile_sele
 const string Setting::SHOW_DISTANCE_ON_EXAMINE = "show_distance_on_examine";
 const string Setting::WORLD_MAP_ROWS = "_world_map_rows";
 const string Setting::WORLD_MAP_COLS = "_world_map_cols";
+const string Setting::WORLD_MAP_TREASURE_X_IN_Y_X = "_world_map_treasure_x_in_y_x";
+const string Setting::WORLD_MAP_TREASURE_X_IN_Y_Y = "_world_map_treasure_x_in_y_y";
