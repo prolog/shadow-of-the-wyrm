@@ -255,40 +255,30 @@ void WorldGenerator::populate_terrain_cell_maps
 , CellMap& desert_cell_map
 )
 {
-  // Field-Islands
-  CellularAutomataSettings cas(55, 50000, 4, 54, CellValue::CELL_OFF);
-  CellularAutomataGenerator cag(cas, dimensions);
-  field_cell_map = cag.generate();
+  string prefix = "_world_map_ca_";
 
-  // Forests
-  CellularAutomataSettings cas_forest(52, 50000, 4, 54, CellValue::CELL_OFF);
-  CellularAutomataGenerator cag_forest(cas_forest, dimensions);
-  forest_cell_map = cag_forest.generate();
-  
-  // Hills
-  CellularAutomataSettings cas_hills(51, 50000, 4, 54, CellValue::CELL_OFF);
-  CellularAutomataGenerator cag_hills(cas_hills, dimensions);
-  hills_cell_map = cag_hills.generate();
+  vector<pair<string, CellMap&>> terrain_types = { {"field", field_cell_map},
+                                                   {"forest", forest_cell_map},
+                                                   {"hills", hills_cell_map},
+                                                   {"mountains", mountains_cell_map},
+                                                   {"scrubland", scrub_cell_map},
+                                                   {"marshes", marsh_cell_map},
+                                                   {"desert", desert_cell_map} };
 
-  // Mountains
-  CellularAutomataSettings cas_mountains(45, 50000, 4, 45, CellValue::CELL_ON);
-  CellularAutomataGenerator cag_mountains(cas_mountains, dimensions);
-  mountains_cell_map = cag_mountains.generate();
+  const Settings& settings = Game::instance().get_settings_ref();
 
-  // Scrubland
-  CellularAutomataSettings cas_scrub(53, 50000, 4, 53, CellValue::CELL_OFF);
-  CellularAutomataGenerator cag_scrub(cas_scrub, dimensions);
-  scrub_cell_map = cag_scrub.generate();
-  
-  // Marshes
-  CellularAutomataSettings cas_marsh(20, 100, 4, 20, CellValue::CELL_OFF);
-  CellularAutomataGenerator cag_marsh(cas_marsh, dimensions);
-  marsh_cell_map = cag_marsh.generate();
-  
-  // Desert
-  CellularAutomataSettings cas_desert(20, 100, 4, 20, CellValue::CELL_OFF);
-  CellularAutomataGenerator cag_desert(cas_desert, dimensions);
-  desert_cell_map = cag_desert.generate();
+  for (auto& tt_pair : terrain_types)
+  {
+    int p_close_cell = String::to_int(settings.get_setting(prefix + tt_pair.first + "_p_close_cell"));
+    int iterations = String::to_int(settings.get_setting(prefix + tt_pair.first + "_iterations"));
+    int neighbour_threshold = String::to_int(settings.get_setting(prefix + tt_pair.first + "_neighbour_threshold"));
+    int offset = String::to_int(settings.get_setting(prefix + tt_pair.first + "_offset"));
+    CellValue cell_val = static_cast<CellValue>(String::to_int(settings.get_setting(prefix + tt_pair.first + "_flip_value")));
+
+    CellularAutomataSettings cas(p_close_cell, iterations, neighbour_threshold, offset, cell_val);
+    CellularAutomataGenerator cag(cas, dimensions);
+    tt_pair.second = cag.generate();
+  }
 }
 
 // Handle generation of field terrain

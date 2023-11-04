@@ -83,6 +83,14 @@ class Setting
     static const std::string WORLD_MAP_TREASURE_X_IN_Y_Y;
     static const std::string WORLD_MAP_FILL_TILE_TYPE;
 
+    // world map cellular automata terrain has the form below: as well as FIELD,
+    // there is also FOREST, HILLS, MOUNTAINS, SCRUBLAND, MARSHES, DESERT.
+    /* static const std::string WORLD_MAP_CA_FIELD_P_CLOSE_CELL;
+    static const std::string WORLD_MAP_CA_FIELD_ITERATIONS;
+    static const std::string WORLD_MAP_CA_FIELD_NEIGHBOUR_THRESHOLD;
+    static const std::string WORLD_MAP_CA_FIELD_OFFSET;
+    static const std::string WORLD_MAP_CA_FIELD_FLIP_VALUE; */
+
   protected:
     Setting();
     ~Setting();
