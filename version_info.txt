@@ -67,6 +67,9 @@ Shadow of the Wyrm v1.6.1 "Daca"
 - When specifying symbol information in the configuration file, if no Row and
   Col are provided, a default of 0 for each is assumed.
 
+- Externalized a bunch of world-generation settings into swyrm.ini for modding
+  and/or just messing around.
+
 - More name combinations.
 
 - New creatures: temple master.

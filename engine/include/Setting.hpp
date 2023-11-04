@@ -77,6 +77,8 @@ class Setting
     static const std::string SPELLCASTER_UNUSABLE_SPELLBOOK_SQUELCH_PCT;
     static const std::string CONTINUE_TILE_SELECTION_AFTER_LOOKUP;
     static const std::string SHOW_DISTANCE_ON_EXAMINE;
+    static const std::string WORLD_MAP_ROWS;
+    static const std::string WORLD_MAP_COLS;
 
   protected:
     Setting();

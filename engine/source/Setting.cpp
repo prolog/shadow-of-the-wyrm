@@ -84,4 +84,5 @@ const string Setting::DISALLOW_SCORE_ON_EXPLORATION = "_disallow_score_on_explor
 const string Setting::SPELLCASTER_UNUSABLE_SPELLBOOK_SQUELCH_PCT = "spellcaster_unusable_spellbook_squelch_pct";
 const string Setting::CONTINUE_TILE_SELECTION_AFTER_LOOKUP = "continue_tile_selection_after_lookup";
 const string Setting::SHOW_DISTANCE_ON_EXAMINE = "show_distance_on_examine";
-
+const string Setting::WORLD_MAP_ROWS = "_world_map_rows";
+const string Setting::WORLD_MAP_COLS = "_world_map_cols";

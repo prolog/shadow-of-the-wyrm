@@ -16,6 +16,7 @@
 #include "RaceManager.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
+#include "Setting.hpp"
 #include "TextMessages.hpp"
 #include "TileGenerator.hpp"
 #include "TileTextKeys.hpp"
@@ -67,8 +68,24 @@ WorldGenerator::WorldGenerator(const string& new_map_exit_id)
 
 MapPtr WorldGenerator::generate()
 {
+  const Settings& settings = Game::instance().get_settings_ref();;
+  string world_map_rows_s = settings.get_setting(Setting::WORLD_MAP_ROWS);
+  string world_map_cols_s = settings.get_setting(Setting::WORLD_MAP_COLS);
+  int rows = 100;
+  int cols = 100;
+
+  if (!world_map_rows_s.empty())
+  {
+    rows = String::to_int(world_map_rows_s);
+  }
+
+  if (!world_map_cols_s.empty())
+  {
+    cols = String::to_int(world_map_cols_s);
+  }
+
   // Default is 100x100
-  Dimensions default_dimensions(100, 100);
+  Dimensions default_dimensions(rows, cols);
   return generate(default_dimensions);
 }
 

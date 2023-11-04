@@ -1,6 +1,6 @@
 Me:
 - Fix power curve: ID vs Carc
-- world generation parameters settable in swyrm.ini
+- world generation parameters settable in swyrm.ini. make them not-overridable
 - trap trap
 - double check the max-things-planted code? was able to plant quite a few
   items...
