@@ -8495,6 +8495,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>

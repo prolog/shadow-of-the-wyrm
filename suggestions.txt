@@ -1,6 +1,5 @@
 Me:
 - Fix power curve: ID vs Carc
-- world generation parameters settable in swyrm.ini. make them not-overridable
 - trap trap
 - double check the max-things-planted code? was able to plant quite a few
   items...
@@ -8,7 +7,6 @@ Me:
 - test plant, wait, plant, wait, plant, wait...
 - test both seed and food planting on same tile
 - tile item transforms: drop items, test save and load.
-- Tile-based item transforms: potato, tomato. 
 - Hidden PCs are never found via bumping (Josh Engdahl)
 - ranged buc bonus? wand?
 - ways in which blessed item status can be tied into benefits
