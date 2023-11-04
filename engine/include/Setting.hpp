@@ -81,6 +81,7 @@ class Setting
     static const std::string WORLD_MAP_COLS;
     static const std::string WORLD_MAP_TREASURE_X_IN_Y_X;
     static const std::string WORLD_MAP_TREASURE_X_IN_Y_Y;
+    static const std::string WORLD_MAP_FILL_TILE_TYPE;
 
   protected:
     Setting();

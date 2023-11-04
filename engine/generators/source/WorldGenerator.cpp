@@ -105,8 +105,9 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   village_coordinates.clear();
   initial_race_ids.clear();
   
-  // Fill the world with water.
-  fill(result_map, TileType::TILE_TYPE_SEA);
+  // Fill the world with the base type.
+  TileType tt = static_cast<TileType>(String::to_int(Game::instance().get_settings_ref().get_setting(Setting::WORLD_MAP_FILL_TILE_TYPE)));
+  fill(result_map, tt);
 
   // Generate the random world
   result_map = generate_random_islands(result_map);
