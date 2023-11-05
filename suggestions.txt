@@ -1,6 +1,5 @@
 Me:
 - Fix power curve: ID vs Carc
-- trap trap
 - double check the max-things-planted code? was able to plant quite a few
   items...
 - need to very thoroughly test dropped food, seeds

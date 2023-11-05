@@ -10646,6 +10646,29 @@
 				<DangerLevel>2</DangerLevel>
 				<Effect>25</Effect>
 			</Scroll>
+			<Scroll id="summon_traps_scroll">
+				<DescriptionSID>SUMMON_TRAPS_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SUMMON_TRAPS_SCROLL_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SUMMON_TRAPS_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SUMMON_TRAPS_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SUMMON_TRAPS_SCROLL_CODEX_SID</CodexDescriptionSID>
+				<Value>15</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<Symbol>
+					<Char>?</Char>
+					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>2</DangerLevel>
+				<Effect>33</Effect>
+			</Scroll>
 			<Scroll id="repel_scroll">
 				<DescriptionSID>REPEL_SCROLL_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_REPEL_SCROLL_SID</UnidentifiedDescriptionSID>

@@ -70,12 +70,14 @@ Shadow of the Wyrm v1.6.1 "Daca"
 - Externalized a bunch of world-generation settings into swyrm.ini for modding
   and/or just messing around.
 
+- Created trap traps, which are traps that generate other traps nearby.
+
 - More name combinations.
 
 - New creatures: temple master.
 
 - New items: mushroom, shelf fungus, Shiver's kiss, deathbloom, chanterelle,
-  morel, elfcap, pufftop, elfland's exit.
+  morel, elfcap, pufftop, elfland's exit, scroll of trap summoning.
 
 - Bug fixes:
 

@@ -1770,11 +1770,12 @@
 				Repel = 30
 				Warp = 31
 				Glow = 32
+				Summon Traps = 33
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="32"/>
+		<xs:maxInclusive value="33"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

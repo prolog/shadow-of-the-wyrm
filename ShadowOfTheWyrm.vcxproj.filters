@@ -4514,6 +4514,9 @@
     <ClInclude Include="engine\calculators\include\ExoticWeaponCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\effects\include\SummonTrapsEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9165,6 +9168,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\AmmunitionCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\SummonTrapsEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
