@@ -1,4 +1,5 @@
 Me:
+- Sprite based on player class (Spectral)
 - Fix power curve: ID vs Carc
 - double check the max-things-planted code? was able to plant quite a few
   items...

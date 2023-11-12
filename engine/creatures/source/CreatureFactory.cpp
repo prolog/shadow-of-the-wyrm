@@ -463,6 +463,18 @@ void CreatureFactory::setup_player(CreaturePtr player, ControllerPtr controller)
       player->set_symbol(pl_cr_it->second->get_symbol());
     }
 
+    ClassManager cm;
+    Class* char_class = cm.get_class(player->get_class_id());
+    if (char_class != nullptr)
+    {
+      Symbol* symbol = char_class->get_symbol();
+
+      if (symbol != nullptr)
+      {
+        player->set_symbol(*symbol);
+      }
+    }
+
     player->set_description_sid(TextKeys::YOU);
     player->set_short_description_sid(TextKeys::YOU);
     player->set_text_details_sid(PlayerTextKeys::PLAYER_TEXT_DETAILS_SID);

@@ -4,7 +4,8 @@
 using namespace std;
 
 Class::Class()
-: piety_cost_multiplier(1)
+: symbol(nullptr)
+, piety_cost_multiplier(1)
 , piety_regen_bonus(0)
 , user_playable(false)
 , experience_multiplier(1)
@@ -13,6 +14,86 @@ Class::Class()
 , hit_dice(1)
 , ap_dice(0)
 {
+}
+
+// Need to define these because of the ControllerPtr and DecisionStrategyPtr
+// defined in the class - without it, a shared_ptr to a decision strategy 
+// doesn't always do what you expect!
+Class::Class(const Class& cl)
+{
+  if (cl.symbol != nullptr)
+  {
+    symbol = std::make_unique<Symbol>(*cl.symbol);
+  }
+
+  class_id = cl.class_id;
+  class_name_sid = cl.class_name_sid;
+  class_short_description_sid = cl.class_short_description_sid;
+  class_description_sid = cl.class_description_sid;
+  class_abbreviation_sid = cl.class_abbreviation_sid;
+  modifier = cl.modifier;
+  resistances = cl.resistances;
+  skills = cl.skills;
+  crowning_gifts = cl.crowning_gifts;
+  initial_equipment = cl.initial_equipment;
+  initial_inventory = cl.initial_inventory;
+  level_script = cl.level_script;
+  kill_script = cl.kill_script;
+  titles = cl.titles;
+  deity_dislike_multipliers = cl.deity_dislike_multipliers;
+  starting_pet_ids = cl.starting_pet_ids;
+  piety_cost_multiplier = cl.piety_cost_multiplier;
+  piety_regen_bonus = cl.piety_regen_bonus;
+  user_playable = cl.user_playable;
+  experience_multiplier = cl.experience_multiplier;
+  hp_regen_multiplier = cl.hp_regen_multiplier;
+  ap_regen_multiplier = cl.ap_regen_multiplier;
+  hit_dice = cl.hit_dice;
+  ap_dice = cl.ap_dice;
+}
+
+Class& Class::operator=(const Class& cl)
+{
+  if (this != &cl)
+  {
+    Class temp(cl);
+    temp.swap(*this);
+  }
+
+  return *this;
+}
+
+bool Class::operator==(const Class& cl) const
+{
+  bool result = true;
+
+  result = result && class_id == cl.class_id;
+  result = result && ((symbol == nullptr && cl.symbol == nullptr) || (symbol != nullptr && cl.symbol != nullptr && (*symbol == *cl.symbol)));
+  result = result && class_name_sid == cl.class_name_sid;
+  result = result && class_short_description_sid == cl.class_short_description_sid;
+  result = result && class_description_sid == cl.class_description_sid;
+  result = result && class_abbreviation_sid == cl.class_abbreviation_sid;
+  result = result && modifier == cl.modifier;
+  result = result && resistances == cl.resistances;
+  result = result && skills == cl.skills;
+  result = result && crowning_gifts == cl.crowning_gifts;
+  result = result && initial_equipment == cl.initial_equipment;
+  result = result && initial_inventory == cl.initial_inventory;
+  result = result && level_script == cl.level_script;
+  result = result && kill_script == cl.kill_script;
+  result = result && titles == cl.titles;
+  result = result && deity_dislike_multipliers == cl.deity_dislike_multipliers;
+  result = result && starting_pet_ids == cl.starting_pet_ids;
+  result = result && piety_cost_multiplier == cl.piety_cost_multiplier;
+  result = result && piety_regen_bonus == cl.piety_regen_bonus;
+  result = result && user_playable == cl.user_playable;
+  result = result && experience_multiplier == cl.experience_multiplier;
+  result = result && hp_regen_multiplier == cl.hp_regen_multiplier;
+  result = result && ap_regen_multiplier == cl.ap_regen_multiplier;
+  result = result && hit_dice == cl.hit_dice;
+  result = result && ap_dice == cl.ap_dice;
+
+  return result;
 }
 
 Class::~Class()
@@ -67,6 +148,16 @@ void Class::set_class_abbreviation_sid(const string& new_class_abbreviation_sid)
 string Class::get_class_abbreviation_sid() const
 {
   return class_abbreviation_sid;
+}
+
+void Class::set_symbol(const Symbol& new_symbol)
+{
+  symbol = std::make_unique<Symbol>(new_symbol);
+}
+
+Symbol* Class::get_symbol()
+{
+  return symbol.get();
 }
 
 void Class::set_modifier(const Modifier& new_modifier)
@@ -297,3 +388,36 @@ string Class::str() const
 
   return class_details.str();
 }
+
+void Class::swap(Class& cl) throw ()
+{
+  std::swap(this->class_id, cl.class_id);
+  std::swap(this->class_name_sid, cl.class_name_sid);
+  std::swap(this->class_short_description_sid, cl.class_description_sid);
+  std::swap(this->class_description_sid, cl.class_description_sid);
+  std::swap(this->class_abbreviation_sid, cl.class_abbreviation_sid);
+  std::swap(this->modifier, cl.modifier);
+  std::swap(this->resistances, cl.resistances);
+  std::swap(this->skills, cl.skills);
+  std::swap(this->crowning_gifts, cl.crowning_gifts);
+  std::swap(this->initial_equipment, cl.initial_equipment);
+  std::swap(this->initial_inventory, cl.initial_inventory);
+  std::swap(this->level_script, cl.level_script);
+  std::swap(this->kill_script, cl.kill_script);
+  std::swap(this->titles, cl.titles);
+  std::swap(this->deity_dislike_multipliers, cl.deity_dislike_multipliers);
+  std::swap(this->starting_pet_ids, cl.starting_pet_ids);
+  std::swap(this->symbol, cl.symbol);
+  std::swap(this->piety_cost_multiplier, cl.piety_cost_multiplier);
+  std::swap(this->piety_regen_bonus, cl.piety_regen_bonus);
+  std::swap(this->user_playable, cl.user_playable);
+  std::swap(this->experience_multiplier, cl.experience_multiplier);
+  std::swap(this->hp_regen_multiplier, cl.hp_regen_multiplier);
+  std::swap(this->ap_regen_multiplier, cl.ap_regen_multiplier);
+  std::swap(this->hit_dice, cl.hit_dice);
+  std::swap(this->ap_dice, cl.ap_dice);
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Class_test.cpp"
+#endif

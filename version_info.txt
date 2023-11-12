@@ -1,4 +1,4 @@
-Shadow of the Wyrm v1.6.1 "Daca"
+Shadow of the Wyrm v1.6.2 "Daca"
 - Version started July 8, 2023.
 
 - The game now shows "a vanished god" if you worship one of the Nine and they
@@ -71,6 +71,9 @@ Shadow of the Wyrm v1.6.1 "Daca"
   and/or just messing around.
 
 - Created trap traps, which are traps that generate other traps nearby.
+
+- Allowed for a per-class symbol which overrides the defaults applied to the
+  player (Spectre).
 
 - More name combinations.
 

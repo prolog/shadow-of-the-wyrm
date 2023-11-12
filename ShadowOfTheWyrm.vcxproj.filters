@@ -9172,6 +9172,9 @@
     <ClCompile Include="engine\effects\source\SummonTrapsEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Class_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShadowOfTheWyrm.rc" />

@@ -561,6 +561,9 @@
 			<xs:element name="ShortDescriptionSID" type="xs:string"/>
 			<xs:element name="DescriptionSID" type="xs:string"/>
 			<xs:element name="DisplayAbbreviationSID" type="xs:string"/>
+			<!-- If a symbol is defined for the class, it gets used over the default
+			     from the 'player' creature. -->
+			<xs:element name="Symbol" type="tns:Symbol" minOccurs="0"/>
 			<xs:element name="ClassInitialModifiers" type="tns:InitialStatisticsModifiers"/>
 			<xs:element name="HitDice" type="xs:unsignedInt"/>
 			<xs:element name="APDice" type="xs:unsignedInt"/>
