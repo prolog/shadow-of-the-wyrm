@@ -43,3 +43,4 @@ const string ItemProperties::ITEM_PROPERTIES_RANDART_NAME = "randart_name";
 const string ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD = "plantable_food";
 const string ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MIN_QUANTITY = "plantable_food_min_quantity";
 const string ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MAX_QUANTITY = "plantable_food_max_quantity";
+const string ItemProperties::ITEM_PROPERTIES_STATUS = "status";

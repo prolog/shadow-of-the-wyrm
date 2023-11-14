@@ -38,11 +38,12 @@ void CreateItemScreen::initialize()
     if (item != nullptr)
     {
       string base_id = item->get_base_id();
-
       Option current_option;
+
       current_option.set_external_id(base_id);
       current_option.set_id(current_id);
       current_option.set_description(StringTable::get(item->get_description_sid()));
+      current_option.set_property(ItemProperties::ITEM_PROPERTIES_STATUS, std::to_string(static_cast<int>(item->get_status())));
 
       options->add_option(current_option);
       current_id++;

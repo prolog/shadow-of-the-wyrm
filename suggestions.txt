@@ -1,5 +1,7 @@
 Me:
-- Sprite based on player class (Spectral)
+- unit tests for properties in Option
+- set item status property in CreateItemScreen
+- Use this for fletchery, bowyer, etc, to improve item & quantity
 - Fix power curve: ID vs Carc
 - double check the max-things-planted code? was able to plant quite a few
   items...
@@ -8,7 +10,6 @@ Me:
 - test both seed and food planting on same tile
 - tile item transforms: drop items, test save and load.
 - Hidden PCs are never found via bumping (Josh Engdahl)
-- ranged buc bonus? wand?
 - ways in which blessed item status can be tied into benefits
 - Sofistico: went up on telari and game crashed
 - item templates: combine wildflowers first, then mushrooms

@@ -37,6 +37,7 @@ class ItemProperties
     static const std::string ITEM_PROPERTIES_PLANTABLE_FOOD;
     static const std::string ITEM_PROPERTIES_PLANTABLE_FOOD_MIN_QUANTITY;
     static const std::string ITEM_PROPERTIES_PLANTABLE_FOOD_MAX_QUANTITY;
+    static const std::string ITEM_PROPERTIES_STATUS;
 
   protected:
     ItemProperties();
