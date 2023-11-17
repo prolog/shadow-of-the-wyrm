@@ -1,4 +1,7 @@
 Me:
+- With 100 Mountain Lore, fell to death. Suspect the issue is air or
+  something on the player's starting tile?
+- still need to hook up item status to fletchery quantity
 - unit tests for properties in Option
 - set item status property in CreateItemScreen
 - Use this for fletchery, bowyer, etc, to improve item & quantity

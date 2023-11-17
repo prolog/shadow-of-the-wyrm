@@ -9,7 +9,7 @@ class FletcherySkillProcessor : public SkillProcessor
 
   protected:
     bool check_for_branch(CreaturePtr creature);
-    void create_projectiles(const std::string& item_base_id, CreaturePtr creature, MapPtr map);
+    void create_projectiles(const std::string& item_base_id, const ItemStatus item_status, CreaturePtr creature, MapPtr map);
 };
 
 

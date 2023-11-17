@@ -51,6 +51,10 @@ Shadow of the Wyrm v1.6.2 "Daca"
 - A consumable's status now affects its nutrition, though this does not affect
   what the item is worth to the divine.
 
+- The status of the item selected for the Bowyer/Fletchery skill now affects
+  both the quality of the item produced, as well as (for fletchery) the
+  quantity.
+
 - Your fishing rod or spear's status now influences your fishing outcome.
 
 - Most plants and vegetables are now plantable, and when dropped in a hole 

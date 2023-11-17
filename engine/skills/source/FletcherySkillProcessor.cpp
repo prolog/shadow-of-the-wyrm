@@ -1,9 +1,11 @@
 #include "ActionTextKeys.hpp"
 #include "FletcherySkillProcessor.hpp"
+#include "Conversion.hpp"
 #include "CreateItemCalculator.hpp"
 #include "CreateItemScreen.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
+#include "ItemProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
@@ -33,8 +35,10 @@ ActionCostValue FletcherySkillProcessor::process(CreaturePtr creature, MapPtr ma
         if (option != nullptr)
         {
           string item_base_id = option->get_external_id();
-          create_projectiles(item_base_id, creature, map);
+          string item_status_s = option->get_property(ItemProperties::ITEM_PROPERTIES_STATUS);
+          ItemStatus item_status = (item_status_s.empty() ? ItemStatus::ITEM_STATUS_UNCURSED : static_cast<ItemStatus>(String::to_int(item_status_s)));
 
+          create_projectiles(item_base_id, item_status, creature, map);
           acv = get_default_skill_action_cost_value(creature);
         }
       }
@@ -75,7 +79,7 @@ bool FletcherySkillProcessor::check_for_branch(CreaturePtr creature)
   return has_branch;
 }
 
-void FletcherySkillProcessor::create_projectiles(const string& item_base_id, CreaturePtr creature, MapPtr map)
+void FletcherySkillProcessor::create_projectiles(const string& item_base_id, const ItemStatus item_status, CreaturePtr creature, MapPtr map)
 {
   // Remove the branch, and create a number of projectiles proportional to
   // the weight of the branch divided by the weight of the projectiles.
@@ -89,8 +93,9 @@ void FletcherySkillProcessor::create_projectiles(const string& item_base_id, Cre
     // Item's created.  Improve it appropriately.  Smith it
     // based on the improvement points;
     CreateItemCalculator cic;
-    int potential_points = cic.calc_potential_improvement_points(creature, SkillType::SKILL_GENERAL_FLETCHERY);
-    int improvement_points = 0;
+    int potential_points = cic.calc_potential_improvement_points(creature, SkillType::SKILL_GENERAL_FLETCHERY, item_status);
+
+    int improvement_points = (item_status == ItemStatus::ITEM_STATUS_BLESSED ? 1 : 0);
 
     if (potential_points > 0)
     {

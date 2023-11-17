@@ -1,9 +1,11 @@
 #include "ActionTextKeys.hpp"
 #include "BowyerSkillProcessor.hpp"
+#include "Conversion.hpp"
 #include "CreateItemCalculator.hpp"
 #include "CreateItemScreen.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
+#include "ItemProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
@@ -33,7 +35,10 @@ ActionCostValue BowyerSkillProcessor::process(CreaturePtr creature, MapPtr map)
         if (option != nullptr)
         {
           string item_base_id = option->get_external_id();
-          create_bowyer_item(item_base_id, creature, map);
+          string item_status_s = option->get_property(ItemProperties::ITEM_PROPERTIES_STATUS);
+          ItemStatus item_status = (item_status_s.empty() ? ItemStatus::ITEM_STATUS_UNCURSED : static_cast<ItemStatus>(String::to_int(item_status_s)));
+
+          create_bowyer_item(item_base_id, item_status, creature, map);
           creature->get_skills().mark(SkillType::SKILL_GENERAL_BOWYER);
 
           acv = get_default_skill_action_cost_value(creature);
@@ -76,7 +81,7 @@ bool BowyerSkillProcessor::check_for_bough(CreaturePtr creature)
   return has_bough;
 }
 
-void BowyerSkillProcessor::create_bowyer_item(const string& item_base_id, CreaturePtr creature, MapPtr map)
+void BowyerSkillProcessor::create_bowyer_item(const string& item_base_id, const ItemStatus item_status, CreaturePtr creature, MapPtr map)
 {
   // Remove the bough and create the item, adding a message about its
   // creation.
@@ -90,8 +95,8 @@ void BowyerSkillProcessor::create_bowyer_item(const string& item_base_id, Creatu
     // Item's created.  Improve it appropriately.  Smith it
     // based on the improvement points;
     CreateItemCalculator cic;
-    int potential_points = cic.calc_potential_improvement_points(creature, SkillType::SKILL_GENERAL_BOWYER);
-    int improvement_points = 0;
+    int potential_points = cic.calc_potential_improvement_points(creature, SkillType::SKILL_GENERAL_BOWYER, item_status);
+    int improvement_points = (item_status == ItemStatus::ITEM_STATUS_BLESSED ? 1 : 0);
     Statistic remaining_smithings = item->get_remaining_smithings();
 
     if (potential_points > 0)

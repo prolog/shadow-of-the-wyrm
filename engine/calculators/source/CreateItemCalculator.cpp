@@ -5,7 +5,7 @@
 const int CreateItemCalculator::PRIMARY_SKILL_DIVISOR = 6;
 const int CreateItemCalculator::CRAFTING_SKILL_DIVISOR = 15;
 
-int CreateItemCalculator::calc_potential_improvement_points(CreaturePtr creature, const SkillType create_skill)
+int CreateItemCalculator::calc_potential_improvement_points(CreaturePtr creature, const SkillType create_skill, const ItemStatus item_status)
 {
   int improve_points = 0;
 
@@ -15,9 +15,18 @@ int CreateItemCalculator::calc_potential_improvement_points(CreaturePtr creature
 
     improve_points += (skills.get_value_incr_marks(create_skill) / PRIMARY_SKILL_DIVISOR);
     improve_points += (skills.get_value_incr_marks(SkillType::SKILL_GENERAL_CRAFTING) / CRAFTING_SKILL_DIVISOR);
+
+    if (item_status == ItemStatus::ITEM_STATUS_BLESSED)
+    {
+      improve_points += 2;
+    }
+    else if (item_status == ItemStatus::ITEM_STATUS_CURSED)
+    {
+      improve_points -= 2;
+    }
   }
 
-  return improve_points;
+  return std::max<int>(improve_points, 0);
 }
 
 // Determine a base quantity, plus a bonus based on the creation skill.
@@ -27,6 +36,8 @@ uint CreateItemCalculator::calc_quantity(ItemPtr creation_item, ItemPtr componen
 
   if (quantity > 0 && creature != nullptr)
   {
+    quantity = static_cast<int>(quantity * get_quantity_multiplier(component_item));
+
     int skill_val = creature->get_skills().get_value(creation_skill);
 
     if (skill_val > 0)
@@ -53,6 +64,29 @@ uint CreateItemCalculator::calc_quantity(ItemPtr creation_item, ItemPtr componen
   }
 
   return quantity;
+}
+
+float CreateItemCalculator::get_quantity_multiplier(ItemPtr item)
+{
+  float multiplier = 1.0f;
+
+  if (item != nullptr)
+  {
+    switch (item->get_status())
+    {
+      case ItemStatus::ITEM_STATUS_CURSED:
+        multiplier = 0.50f;
+        break;
+      case ItemStatus::ITEM_STATUS_BLESSED:
+        multiplier = 1.25f;
+        break;
+      case ItemStatus::ITEM_STATUS_UNCURSED:
+      default:
+        break;
+    }
+  }
+
+  return multiplier;
 }
 
 #ifdef UNIT_TESTS
