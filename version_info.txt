@@ -88,6 +88,9 @@ Shadow of the Wyrm v1.6.2 "Daca"
 
 - Bug fixes:
 
+  - The game would crash if an invalid race was specified for a creature being
+    generated.
+
   - Pov wasn't handling invalid input nicely (Sofistico).
 
   - When notifying a deity about a pleasing action, the piety was incorrectly

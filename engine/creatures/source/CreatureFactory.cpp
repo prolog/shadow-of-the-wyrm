@@ -194,10 +194,13 @@ CreaturePtr CreatureFactory::create_by_creature_id
     RaceManager rm;
     Race* race = rm.get_race(race_id);
 
-    int pct_chance_flee = race->get_pct_flee();
-    if (race != nullptr && RNG::percent_chance(pct_chance_flee))
+    if (race != nullptr)
     {
-      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_COWARD, std::to_string(true));
+      int pct_chance_flee = race->get_pct_flee();
+      if (RNG::percent_chance(pct_chance_flee))
+      {
+        creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_COWARD, std::to_string(true));
+      }
     }
 
     initialize(creature);

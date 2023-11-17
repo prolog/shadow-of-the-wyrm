@@ -17071,7 +17071,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="sea_serpent">
-			<RaceID>_sea_serpent</RaceID>
+			<RaceID>_monster</RaceID>
 			<BreatheType>1</BreatheType>
 			<ShortDescriptionSID>SEA_SERPENT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SEA_SERPENT_DESCRIPTION_SID</DescriptionSID>
