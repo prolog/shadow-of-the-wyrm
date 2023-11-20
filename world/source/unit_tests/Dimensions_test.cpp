@@ -32,3 +32,16 @@ TEST(SW_World_Dimensions, serialization_id)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_DIMENSIONS, dim.get_class_identifier());
 }
 
+TEST(SW_World_Dimensions, contains)
+{
+  Dimensions dim;
+
+  for (int y = -1; y < DEFAULT_DIMENSIONS_Y + 1; y++)
+  {
+    for (int x = -1; x < DEFAULT_DIMENSIONS_X + 1; x++)
+    {
+      bool exp_val = (y >= 0 && y <= (DEFAULT_DIMENSIONS_Y - 1) && x >= 0 && x <= (DEFAULT_DIMENSIONS_X - 1));
+      EXPECT_EQ(exp_val, dim.contains({ y,x }));
+    }
+  }
+}

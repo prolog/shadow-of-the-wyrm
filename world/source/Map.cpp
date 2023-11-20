@@ -968,7 +968,10 @@ Weather& Map::get_weather_ref()
 
 Coordinate Map::get_starting_location() const
 {
-  Coordinate c = { 0, 0 };
+  Coordinate base = { 0, 0 };
+  Coordinate c = base;
+  int dy = 0;
+  int dx = 0;
 
   bool n = String::to_bool(get_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH));
   bool s = String::to_bool(get_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH));
@@ -984,20 +987,47 @@ Coordinate Map::get_starting_location() const
     if (!n)
     {
       c = { 0, (d.get_x() - 1) / 2 };
+      dy++;
     }
     else if (!s)
     {
       c = { d.get_y() - 1, (d.get_x() - 1) / 2 };
+      dy--;
     }
     else if (!e)
     {
       c = { (d.get_y() - 1) / 2, d.get_x() - 1 };
+      dx--;
     }
     else if (!w)
     {
       c = { (d.get_y() - 1) / 2, 0 };
+      dx++;
     }
   }
+
+  if (dy == 0 && dx == 0)
+  {
+    dy++;
+    dx++;
+  }
+
+  while (dimensions.contains(c))
+  {
+    TilePtr tile = at(c);
+
+    if (tile != nullptr)
+    {
+      if (!tile->get_is_blocking_or_dangerous(nullptr))
+      {
+        break;
+      }
+    } 
+
+    c.first += dy;
+    c.second += dx;
+  }
+
   return c;
 }
 

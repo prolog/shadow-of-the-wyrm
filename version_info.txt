@@ -91,6 +91,9 @@ Shadow of the Wyrm v1.6.2 "Daca"
   - The game would crash if an invalid race was specified for a creature being
     generated.
 
+  - Fixed an auto-death issue involving mountains where you could be generated
+    on an air tile, instantly killing you if you didn't have flying.
+
   - Pov wasn't handling invalid input nicely (Sofistico).
 
   - When notifying a deity about a pleasing action, the piety was incorrectly
