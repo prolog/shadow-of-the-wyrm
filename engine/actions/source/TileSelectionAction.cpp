@@ -157,15 +157,25 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const str
 void TileSelectionAction::reset_cursor_appropriately(CreaturePtr creature, MapPtr current_map, const TileReset tre)
 {
   Game& game = Game::instance();
+  bool selected = false;
 
-  if (tre == TileReset::TILE_RESET_ON_CREATURE)
+  if (creature != nullptr && tre == TileReset::TILE_RESET_ON_PREV_TARGET)
+  {
+    MapPtr fov_map;
+    DecisionStrategy* dec = creature->get_decision_strategy();
+
+    if (dec != nullptr)
+    {
+      fov_map = dec->get_fov_map();
+    }
+
+    selected = SelectionUtils::select_existing_target(creature, fov_map);
+  }
+    
+  if (!selected /* tre == TileReset::TILE_RESET_ON_CREATURE */)
   {
     MapCursor mc;
     mc.set_cursor_location(current_map, current_map->get_location(creature->get_id()));
-  }
-  else if (tre == TileReset::TILE_RESET_ON_PREV_TARGET)
-  {
-    SelectionUtils::select_existing_target(creature, current_map);
   }
 
   game.update_display(creature, current_map, creature->get_decision_strategy()->get_fov_map(), false);

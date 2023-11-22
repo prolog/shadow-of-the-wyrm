@@ -106,6 +106,12 @@ Shadow of the Wyrm v1.6.2 "Daca"
   - You could farm piety with Sceadugenga by continually digging on the same
     grave tile (Quartzartine).
 
+  - The HP indicator (when using e'x'amine) sometimes wouldn't return a valid
+    description.
+
+  - Targetting via ranged combat could target a creature outside the field of
+    view if they move (hemsio).
+
 Shadow of the Wyrm v1.5.8 "Testagrossa"
 - Version started January 7, 2023. Version finalized July 8, 2023.
 

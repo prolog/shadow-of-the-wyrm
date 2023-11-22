@@ -102,6 +102,11 @@ string CreatureDifficulty::get_health_indicator_sid(CreaturePtr target_creature)
     }
   }
 
+  if (sid.empty())
+  {
+    sid = DifficultyTextKeys::HP_INDICATOR_UNCERTAIN;
+  }
+
   return sid;
 }
 
