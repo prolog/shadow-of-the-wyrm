@@ -110,7 +110,7 @@ Shadow of the Wyrm v1.6.2 "Daca"
     description.
 
   - Targetting via ranged combat could target a creature outside the field of
-    view if they move (hemsio).
+    view if they move (Hems).
 
 Shadow of the Wyrm v1.5.8 "Testagrossa"
 - Version started January 7, 2023. Version finalized July 8, 2023.
