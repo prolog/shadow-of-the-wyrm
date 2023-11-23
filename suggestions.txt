@@ -1,4 +1,8 @@
 Me:
+- ASSET RELEASE
+- git push --tags
+- Need to release sprites
+- option to allow "save and prompt to exit"
 - hemsio: thievery crashes?
           autosave not working?
 - With 100 Mountain Lore, fell to death. Suspect the issue is air or
@@ -18,7 +22,6 @@ Me:
 - ways in which blessed item status can be tied into benefits
 - Sofistico: went up on telari and game crashed
 - item templates: combine wildflowers first, then mushrooms
-- ASSET RELEASE. git push --tags
 - always: mushrooms in the wet rooms in the dungeon
 - sometimes: mushroom generation in dungeons (rare), caverns (more frequent)
 - open pit mine (pick axes or mattocks, gold, stone, magici...). may or may not
@@ -154,7 +157,6 @@ Me:
 - spinach/str?
 - bookstore
 - quest to quell a rebellion from Carcassia
-- ASSET RELEASE
 - random uniques (race, class)
 - fisherman quest
 - what will mountaineering do now that amulets of the sky exist?
