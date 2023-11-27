@@ -357,10 +357,13 @@ string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
     appropriate_usage_desc = full_desc;
   }
 
-  string randart_name = item->get_additional_property(ItemProperties::ITEM_PROPERTIES_RANDART_NAME);
-  if (!randart_name.empty())
+  if (item)
   {
-    appropriate_usage_desc += " \"" + randart_name + "\"";
+    string randart_name = item->get_additional_property(ItemProperties::ITEM_PROPERTIES_RANDART_NAME);
+    if (!randart_name.empty())
+    {
+      appropriate_usage_desc += " \"" + randart_name + "\"";
+    }
   }
 
   return appropriate_usage_desc;
