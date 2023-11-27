@@ -3,10 +3,7 @@ Me:
 - git push --tags
 - Need to release sprites
 - option to allow "save and prompt to exit"
-- hemsio: thievery crashes?
-          autosave not working?
-- With 100 Mountain Lore, fell to death. Suspect the issue is air or
-  something on the player's starting tile?
+- hemsio: autosave not working?
 - still need to hook up item status to fletchery quantity
 - unit tests for properties in Option
 - set item status property in CreateItemScreen
