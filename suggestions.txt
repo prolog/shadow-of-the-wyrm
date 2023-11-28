@@ -4,7 +4,6 @@ Me:
 - Need to release sprites
 - option to allow "save and prompt to exit"
 - hemsio: autosave not working?
-- still need to hook up item status to fletchery quantity
 - unit tests for properties in Option
 - set item status property in CreateItemScreen
 - Use this for fletchery, bowyer, etc, to improve item & quantity
