@@ -88,6 +88,8 @@ Shadow of the Wyrm v1.6.2 "Daca"
 - New items: mushroom, shelf fungus, Shiver's kiss, deathbloom, chanterelle,
   morel, elfcap, pufftop, elfland's exit, scroll of trap summoning.
 
+- Stanzas for "Tel and Floridel".
+
 - Bug fixes:
 
   - The game would crash if an invalid race was specified for a creature being
