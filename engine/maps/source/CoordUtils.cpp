@@ -232,7 +232,7 @@ Direction CoordUtils::get_direction(const Coordinate& start, const Coordinate& e
 vector<Coordinate> CoordUtils::get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col, const int step_size)
 {
   vector<Coordinate> adjacent_coordinates;
-  adjacent_coordinates.reserve(static_cast<int>((1 + 2*step_size), 2));
+  adjacent_coordinates.reserve(static_cast<int>(1 + 2*step_size));
 
   int max_rows = dim.get_y();
   int max_cols = dim.get_x();

@@ -2818,6 +2818,9 @@ SkillType MapUtils::get_lore_skill_for_terrain(TilePtr tile)
         case TileType::TILE_TYPE_MOUNTAINS:
           st = SkillType::SKILL_GENERAL_MOUNTAIN_LORE;
           break;
+        default:
+          st = SkillType::SKILL_UNDEFINED;
+          break;
       }
     }
   }
