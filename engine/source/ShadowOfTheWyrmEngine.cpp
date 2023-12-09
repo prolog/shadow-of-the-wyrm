@@ -407,7 +407,6 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   const Settings& settings = game.get_settings_ref();
   CreatureSex sex = CreatureSex::CREATURE_SEX_MALE;
     
-  const DeityMap& deities = game.get_deities_cref();
   const RaceMap& races   = game.get_races_ref();
   const ClassMap& classes = game.get_classes_ref();
   
@@ -690,7 +689,6 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
 
   const RaceMap& races = game.get_races_ref();
   const ClassMap& classes = game.get_classes_ref();
-  const DeityMap& deities = game.get_deities_cref();
 
   Race* selected_race = races.at(ccd.get_race_id()).get();
   Class* selected_class = classes.at(ccd.get_class_id()).get();
