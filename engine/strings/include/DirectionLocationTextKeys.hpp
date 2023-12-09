@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Directions.hpp"
 
 class DirectionLocationTextKeys
 {
