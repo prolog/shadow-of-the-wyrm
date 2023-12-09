@@ -71,7 +71,20 @@ ActionCostValue ExitGameAction::save(CreaturePtr creature, const bool quit_after
 
   if (quit_after_save)
   {
-    quit(creature, false);
+    bool save_then_prompt_to_quit = Game::instance().get_settings_ref().get_setting_as_bool(Setting::SAVE_THEN_PROMPT_TO_QUIT);
+    bool quit_game = true;
+
+    if (save_then_prompt_to_quit && creature)
+    {
+      IMessageManager& manager = MessageManagerFactory::instance();
+      manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_SAVE_AND_THEN_QUIT));
+      quit_game = creature->get_decision_strategy()->get_confirmation();
+    }
+
+    if (quit_game)
+    {
+      quit(creature, false);
+    }
   }
 
   return get_action_cost_value(creature);

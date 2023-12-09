@@ -79,6 +79,9 @@ Shadow of the Wyrm v1.6.2 "Daca"
 - Allowed for a per-class symbol which overrides the defaults applied to the
   player (Paddy).
 
+- Added an option (off by default) that allows the game to save and then
+  prompt for quitting.
+
 - Tweaked a few sprites.
 
 - More name combinations.
