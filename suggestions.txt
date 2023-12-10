@@ -1,7 +1,33 @@
 Me:
-- There's an "Are you sure you want to attack?" that periodically shows up
-  when NPCs decide to kick? over air?
-- ASSET RELEASE. git push --tags
+- ASSET RELEASE
+- git push --tags
+- Need to release sprites
+- hemsio: autosave not working?
+- unit tests for properties in Option
+- set item status property in CreateItemScreen
+- Use this for fletchery, bowyer, etc, to improve item & quantity
+- Fix power curve: ID vs Carc
+- double check the max-things-planted code? was able to plant quite a few
+  items...
+- need to very thoroughly test dropped food, seeds
+- test plant, wait, plant, wait, plant, wait...
+- test both seed and food planting on same tile
+- tile item transforms: drop items, test save and load.
+- Hidden PCs are never found via bumping (Josh Engdahl)
+- ways in which blessed item status can be tied into benefits
+- Sofistico: went up on telari and game crashed
+- item templates: combine wildflowers first, then mushrooms
+- always: mushrooms in the wet rooms in the dungeon
+- sometimes: mushroom generation in dungeons (rare), caverns (more frequent)
+- open pit mine (pick axes or mattocks, gold, stone, magici...). may or may not
+  be abandoned.
+- generic miner npc
+- mushrooms: regular (a few types), poisoned (a few types), magical (effects) 
+  - regular and poisoned should appear rarely in fields, more often in forests,
+    marshes
+  - magical should appear much more rarely, though have a chance to be generated
+    with regular items in dungeons
+- Notify GB re new version?
 - YARD: let NPCs pray in desperation as well
 - picking up an item - prompt (with swyrm option) re whether to equip it?
 - mountaineering/lore: chance to find magici shards (+ mark tile) and also to
@@ -126,7 +152,6 @@ Me:
 - spinach/str?
 - bookstore
 - quest to quell a rebellion from Carcassia
-- ASSET RELEASE
 - random uniques (race, class)
 - fisherman quest
 - what will mountaineering do now that amulets of the sky exist?
@@ -423,20 +448,23 @@ Josh Engdahl
 - support for "extending" good status effects via drinking multiple potions,
   etc
 - tile selection keys not reloading with others
-- Hidden PCs are never found via bumping (Josh Engdahl)
-- when hiding and checking stuff, spirits in walls don't seem to count against
-  the checks
 - when hiding and checking stuff, spirits in walls don't seem to count against
   the checks
 - don't step out of shadows if creatures don't have you in LOS
 - weird age incrementing issue?
-- make undead hostile to e.g. all humanoids
+- make undead hostile to e.g. all humanoids who don't worship shiver/urgoth/
+  sceadugenga.
 - nearby guards/priests should get angry when altars are desecrated
 - Rocky earth generator 1n Carcassia
 - Freeze not always working when hostile creatures in view or creatures 
   hostile to leader in view?
 - los code: .@..   can't see
             ####s
+- "switch" equipment - if wearing a piece of armour that's not as good as
+  something on the ground, remove it, flag it as to-discard, pick up the new
+  piece, wear it. There's a lot here: how do we ensure we pick up the best
+  piece of armour? How do we ensure that eg other NPCs can pick up the
+  discarded piece? etc
 
 TheGhostInTheMachine:
 - game segfaults if you put it on the path and then run it elsewhere?
@@ -491,3 +519,15 @@ Marcin Puc:
 
 Xvordan:
 - in-map waypoint system
+
+Stevie-3:
+- tab cycles through creatures, items, (+ features?) in view
+
+davethehun: 
+- witchling house might not be generated?
+
+EruditeFigglebottom:
+- customizable letterbox border colour
+
+RelicWraith:
+- Suggestion: Praying during a deity's specific holy day grants the player a gift, once per holy day. Could be just flavor items rather than anything that gives significant power (eg. a themed companion or food item). Even low piety worshipers get gifts, if not just junk...

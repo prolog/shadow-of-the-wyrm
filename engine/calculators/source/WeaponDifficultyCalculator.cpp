@@ -18,8 +18,8 @@ int WeaponDifficultyCalculator::calculate_base_difficulty(CreaturePtr creature, 
   if (creature)
   {
     WeaponManager wm;
-    primary_weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED));
-    secondary_weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND));
+    primary_weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
+    secondary_weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_SECONDARY);
 
     switch(attack_type)
     {

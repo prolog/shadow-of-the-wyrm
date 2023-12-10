@@ -17,8 +17,6 @@ class Religion : public ISerializable
     Religion(const std::string& new_deity_id = "");
     virtual bool operator==(const Religion& religion) const;
 
-    bool is_atheist() const;
-    
     void set_active_deity_id(const std::string& new_deity_id);
     std::string get_active_deity_id() const;
 

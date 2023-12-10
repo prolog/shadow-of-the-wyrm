@@ -5,6 +5,7 @@
 #include "CreatureUtils.hpp"
 #include "Food.hpp"
 #include "FoodAction.hpp"
+#include "FoodCalculator.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
@@ -112,7 +113,8 @@ bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInv
 
     // Is the character full?  If not, eat the food.
     HungerClock& hunger = creature->get_hunger_clock_ref();
-    int nutrition = item_as_consumable->get_nutrition();
+    FoodCalculator fc;
+    int nutrition = fc.calculate_nutrition(item_as_consumable);
 
     if (hunger.can_eat(nutrition))
     {

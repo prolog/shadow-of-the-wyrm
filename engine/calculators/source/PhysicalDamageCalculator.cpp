@@ -118,6 +118,7 @@ Damage PhysicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties
     
     base_damage.set_modifier(current_modifier);
 
+    set_item_status_based_damage_modifiers(attacking_creature, attack_type, base_damage);
     set_skill_based_statuses(attacking_creature, attack_type, base_damage);
     set_skill_based_damage_flags(attacking_creature, attack_type, base_damage);
     set_skill_based_damage_modifiers(attacking_creature, attack_type, base_damage);
@@ -214,6 +215,20 @@ Damage PhysicalDamageCalculator::calculate_default_damage_for_improvised_weapon(
 SkillType PhysicalDamageCalculator::get_general_combat_skill() const
 {
   return SkillType::SKILL_GENERAL_COMBAT;
+}
+
+void PhysicalDamageCalculator::set_item_status_based_damage_modifiers(CreaturePtr attacking_creature, const AttackType attack_type, Damage& damage)
+{
+  if (attacking_creature != nullptr)
+  {
+    WeaponManager wm;
+    WeaponPtr weapon = wm.get_weapon(attacking_creature, attack_type);
+
+    if (weapon != nullptr)
+    {
+      damage.set_effect_bonus(damage.get_effect_bonus() + get_item_status_effect_bonus(weapon->get_status()));
+    }
+  }
 }
 
 void PhysicalDamageCalculator::set_skill_based_statuses(CreaturePtr attacking_creature, const AttackType attack_type, Damage& damage)

@@ -22,6 +22,8 @@ class Dimensions : public ISerializable
     Depth depth() const;
     Depth& depth_ref();
 
+    bool contains(const Coordinate& c) const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 

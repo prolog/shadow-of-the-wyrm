@@ -58,6 +58,14 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
     current_class->set_class_description_sid(class_description_sid);
     current_class->set_class_abbreviation_sid(class_abbreviation_sid);
 
+    XMLNode symbol_node = XMLUtils::get_next_element_by_local_name(class_node, "Symbol");
+    if (!symbol_node.is_null())
+    {
+      Symbol s('@', Colour::COLOUR_WHITE);
+      parse_symbol(s, symbol_node);
+      current_class->set_symbol(s);
+    }
+
     XMLNode initial_statistics_node = XMLUtils::get_next_element_by_local_name(class_node, "ClassInitialStatistics");
     XMLNode initial_modifiers_node = XMLUtils::get_next_element_by_local_name(class_node, "ClassInitialModifiers");
 

@@ -80,7 +80,7 @@ TEST(SW_Engine_Calculators_WandCalculator, calc_max_recharge_charges)
 {
   WandCalculator wc;
   CreaturePtr creature = std::make_shared<Creature>();
-  std::vector<std::pair<ItemStatus, int>> status_base_charges = { {ItemStatus::ITEM_STATUS_CURSED, 1}, {ItemStatus::ITEM_STATUS_UNCURSED, 1}, {ItemStatus::ITEM_STATUS_BLESSED, 2} };
+  std::vector<std::pair<ItemStatus, int>> status_base_charges = { {ItemStatus::ITEM_STATUS_CURSED, 1}, {ItemStatus::ITEM_STATUS_UNCURSED, 2}, {ItemStatus::ITEM_STATUS_BLESSED, 3} };
 
   for (const auto& sbase : status_base_charges)
   {

@@ -89,9 +89,9 @@ class WorldGenerator : public SOTW::Generator
 
     TileGenerator tg;
     std::unordered_map<TileType, CreatureGenerationIndex> creature_generation_map_cache;
+    std::pair<int, int> x_in_y_chance_treasure;
 
     static const int MIN_CREATURES_PER_VILLAGE;
     static const int MAX_CREATURES_PER_VILLAGE;
     static const int MAX_DANGER_LEVEL_FOR_WORLD_GEN;
-    static const std::pair<int, int> X_IN_Y_CHANCE_TREASURE;
 };

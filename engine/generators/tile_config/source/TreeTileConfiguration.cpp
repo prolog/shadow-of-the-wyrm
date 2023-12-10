@@ -65,6 +65,12 @@ void TreeTileConfiguration::configure(TilePtr tile, const Season season) const
       ItemManager::create_item_with_probability(1, 400, tile_inv, ItemIdKeys::ITEM_ID_BOUGH);
     }
 
+    if (RNG::x_in_y_chance(1, 300))
+    {
+      string fungus_id = ItemIdKeys::ITEM_IDS_FUNGUS.at(RNG::range(0, ItemIdKeys::ITEM_IDS_FUNGUS.size() - 1));
+      ItemManager::create_item_with_probability(1, 1, tile_inv, fungus_id);
+    }
+
     // If a species ID has already been provided, use that; otherwise, generate
     // a random allowable species.
     TreeSpeciesID species_id = get_species(tile);

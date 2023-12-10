@@ -95,6 +95,7 @@ bool Map::operator==(const Map& map) const
   result = result && (allow_creature_updates == map.allow_creature_updates);
   result = result && (properties == map.properties);
   result = result && (tile_transforms == map.tile_transforms);
+  result = result && (tile_item_transforms == map.tile_item_transforms);
   result = result && (preset_locations == map.preset_locations);
   result = result && (shops == map.shops);
   result = result && (event_scripts == map.event_scripts);
@@ -808,6 +809,41 @@ TileTransformContainer Map::get_tile_transforms() const
   return tile_transforms;
 }
 
+void Map::set_tile_item_transforms(const TileItemTransformContainer& new_tile_item_transforms)
+{
+  tile_item_transforms = new_tile_item_transforms;
+}
+
+TileItemTransformContainer& Map::get_tile_item_transforms_ref()
+{
+  return tile_item_transforms;
+}
+
+TileItemTransformContainer Map::get_tile_item_transforms() const
+{
+  return tile_item_transforms;
+}
+
+size_t Map::count_tile_item_transforms(const Coordinate& c) const
+{
+  size_t tr = 0;
+
+  for (const auto& t_pair : tile_item_transforms)
+  {
+    const auto& t_vec = t_pair.second;
+
+    for (const auto& it_tr : t_vec)
+    {
+      if (it_tr.get_coordinate() == c)
+      {
+        tr++;
+      }
+    }
+  }
+
+  return tr;
+}
+
 void Map::set_preset_locations(const vector<Coordinate>& new_preset_locations)
 {
   preset_locations = new_preset_locations;
@@ -932,7 +968,10 @@ Weather& Map::get_weather_ref()
 
 Coordinate Map::get_starting_location() const
 {
-  Coordinate c = { 0, 0 };
+  Coordinate base = { 0, 0 };
+  Coordinate c = base;
+  int dy = 0;
+  int dx = 0;
 
   bool n = String::to_bool(get_property(MapProperties::MAP_PROPERTIES_COASTLINE_NORTH));
   bool s = String::to_bool(get_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH));
@@ -948,20 +987,47 @@ Coordinate Map::get_starting_location() const
     if (!n)
     {
       c = { 0, (d.get_x() - 1) / 2 };
+      dy++;
     }
     else if (!s)
     {
       c = { d.get_y() - 1, (d.get_x() - 1) / 2 };
+      dy--;
     }
     else if (!e)
     {
       c = { (d.get_y() - 1) / 2, d.get_x() - 1 };
+      dx--;
     }
     else if (!w)
     {
       c = { (d.get_y() - 1) / 2, 0 };
+      dx++;
     }
   }
+
+  if (dy == 0 && dx == 0)
+  {
+    dy++;
+    dx++;
+  }
+
+  while (dimensions.contains(c))
+  {
+    TilePtr tile = at(c);
+
+    if (tile != nullptr)
+    {
+      if (!tile->get_is_blocking_or_dangerous(nullptr))
+      {
+        break;
+      }
+    } 
+
+    c.first += dy;
+    c.second += dx;
+  }
+
   return c;
 }
 
@@ -1158,6 +1224,20 @@ bool Map::serialize(ostream& stream) const
     }
   }
 
+  Serialize::write_size_t(stream, tile_item_transforms.size());
+  for (const auto& t_pair : tile_item_transforms)
+  {
+    Serialize::write_double(stream, t_pair.first);
+
+    vector<TileItemTransform> t_trans = t_pair.second;
+    Serialize::write_size_t(stream, t_trans.size());
+
+    for (const TileItemTransform& tit : t_trans)
+    {
+      tit.serialize(stream);
+    }
+  }
+
   Serialize::write_size_t(stream, preset_locations.size());
   for (const auto& c : preset_locations)
   {
@@ -1298,15 +1378,14 @@ bool Map::deserialize(istream& stream)
 
   for (size_t i = 0; i < trans_size; i++)
   {
-    double seconds;
-
+    double seconds = 0.0;
     Serialize::read_double(stream, seconds);
 
     size_t v_size = 0;
     Serialize::read_size_t(stream, v_size);
     vector<TileTransform> t_trans;
 
-    for (size_t i = 0; i < v_size; i++)
+    for (size_t j = 0; j < v_size; j++)
     {
       TileTransform tt;
       tt.deserialize(stream);
@@ -1315,6 +1394,30 @@ bool Map::deserialize(istream& stream)
     }
 
     tile_transforms.insert(make_pair(seconds, t_trans));
+  }
+
+  tile_item_transforms.clear();
+  size_t it_trans_size = 0;
+  Serialize::read_size_t(stream, it_trans_size);
+
+  for (size_t i = 0; i < it_trans_size; i++)
+  {
+    double seconds = 0.0;
+    Serialize::read_double(stream, seconds);
+
+    size_t v_size = 0;
+    Serialize::read_size_t(stream, v_size);
+    vector<TileItemTransform> ti_trans;
+
+    for (size_t j = 0; j < v_size; j++)
+    {
+      TileItemTransform tit;
+      tit.deserialize(stream);
+
+      ti_trans.push_back(tit);
+    }
+
+    tile_item_transforms.insert(make_pair(seconds, ti_trans));
   }
 
   preset_locations.clear();

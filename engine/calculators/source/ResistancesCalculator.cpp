@@ -3,6 +3,8 @@
 
 using namespace std;
 
+const double ResistancesCalculator::GODLESSNESS_HOLY_RESISTANCE_VAL = 0.3;
+
 Resistances ResistancesCalculator::default_resistances()
 {
   Resistances resists;
@@ -80,6 +82,14 @@ Resistances ResistancesCalculator::calculate_non_equipment_resistances(CreatureP
     // Any intrinsics?
     Resistances intr_res = creature->get_intrinsic_resistances();
 
+    // Godlessness?
+    Resistances godlessness_res;
+
+    if (creature->is_godless())
+    {
+      godlessness_res.set_resistance_value(DamageType::DAMAGE_TYPE_HOLY, GODLESSNESS_HOLY_RESISTANCE_VAL);
+    }
+
     for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
     {
       DamageType dt = static_cast<DamageType>(d);
@@ -87,7 +97,8 @@ Resistances ResistancesCalculator::calculate_non_equipment_resistances(CreatureP
       double non_eq_value = race_res.get_resistance_value(dt)
                           + class_res.get_resistance_value(dt)
                           + modifier_res.get_resistance_value(dt)
-                          + intr_res.get_resistance_value(dt);
+                          + intr_res.get_resistance_value(dt)
+                          + godlessness_res.get_resistance_value(dt);
 
       res.set_resistance_value(dt, non_eq_value);
     }

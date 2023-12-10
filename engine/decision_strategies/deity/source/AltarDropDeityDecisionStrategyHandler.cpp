@@ -63,7 +63,7 @@ DeityDecisionImplications AltarDropDeityDecisionStrategyHandler::handle_decision
   string decision_msg;
   AlignmentRange creature_range = creature->get_alignment().get_alignment_range();
   AlignmentRange altar_range = altar->get_alignment_range();
-  bool cross_aligned = (creature_range != altar_range);
+  bool cross_aligned = (creature && creature->is_godless()) || (creature_range != altar_range);
 
   // Bless/curse the item as necessary
   if (drop_item)

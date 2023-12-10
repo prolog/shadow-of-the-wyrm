@@ -37,6 +37,12 @@ class Option
     void set_uppercase(const bool new_uppercase);
     bool get_uppercase() const;
 
+    void set_property(const std::string& prop, const std::string& val);
+    void set_properties(const std::map<std::string, std::string>& new_properties);
+    bool has_property(const std::string& prop) const;
+    std::string get_property(const std::string& prop) const;
+    std::map<std::string, std::string> get_properties() const;
+
   protected:
     // May have to map this to another ID in another class.  But for the actual Option object, a
     // numerical value should be OK...
@@ -46,6 +52,8 @@ class Option
     Colour colour;
     bool enabled;
     bool uppercase;
+
+    std::map<std::string, std::string> properties;
 };
 
 class OptionsComponent : public ScreenComponent

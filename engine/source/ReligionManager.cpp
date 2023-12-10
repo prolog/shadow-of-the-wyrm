@@ -1,5 +1,8 @@
 #include "ReligionManager.hpp"
+#include "DeityTextKeys.hpp"
 #include "Game.hpp"
+#include "ReligionConstants.hpp"
+#include "TextKeys.hpp"
 
 using std::string;
 
@@ -56,6 +59,14 @@ string ReligionManager::get_deity_name_sid(const string& deity_id) const
   if (deity != nullptr)
   {
     deity_name_sid = deity->get_name_sid();
+  }
+  else if (deity_id == ReligionConstants::DEITY_ID_GODLESS)
+  {
+    deity_name_sid = DeityTextKeys::DEITY_GODLESS;
+  }
+  else
+  {
+    deity_name_sid = TextKeys::DEITY_GONE;
   }
   
   return deity_name_sid;

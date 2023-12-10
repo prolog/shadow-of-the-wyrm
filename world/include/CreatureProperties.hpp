@@ -49,6 +49,7 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_GAME_DATE;
     static const std::string CREATURE_PROPERTIES_COWARD;
     static const std::string CREATURE_PROPERTIES_FLEEING;
+    static const std::string CREATURE_PROPERTIES_MINER;
 
   protected:
     CreatureProperties();

@@ -51,6 +51,7 @@ class Setting
     static const std::string DISPLAY_NUM_GLYPHS;
     static const std::string DISPLAY_FORCE_ASCII;
     static const std::string DISPLAY_SDL_PREFIX;
+    static const std::string DISPLAY_SIMPLIFIED_SPLASH_SCREEN;
     static const std::string REMOVE_LOGS_DAYS_OLD;
     static const std::string SINGLE_USER_MODE;
     static const std::string SKIP_SAVEFILE_METADATA_VERIFICATION;
@@ -75,6 +76,21 @@ class Setting
     static const std::string DISALLOW_SCORE_ON_EXPLORATION;
     static const std::string SPELLCASTER_UNUSABLE_SPELLBOOK_SQUELCH_PCT;
     static const std::string CONTINUE_TILE_SELECTION_AFTER_LOOKUP;
+    static const std::string SHOW_DISTANCE_ON_EXAMINE;
+    static const std::string WORLD_MAP_ROWS;
+    static const std::string WORLD_MAP_COLS;
+    static const std::string WORLD_MAP_TREASURE_X_IN_Y_X;
+    static const std::string WORLD_MAP_TREASURE_X_IN_Y_Y;
+    static const std::string WORLD_MAP_FILL_TILE_TYPE;
+    static const std::string SAVE_THEN_PROMPT_TO_QUIT;
+
+    // world map cellular automata terrain has the form below: as well as FIELD,
+    // there is also FOREST, HILLS, MOUNTAINS, SCRUBLAND, MARSHES, DESERT.
+    /* static const std::string WORLD_MAP_CA_FIELD_P_CLOSE_CELL;
+    static const std::string WORLD_MAP_CA_FIELD_ITERATIONS;
+    static const std::string WORLD_MAP_CA_FIELD_NEIGHBOUR_THRESHOLD;
+    static const std::string WORLD_MAP_CA_FIELD_OFFSET;
+    static const std::string WORLD_MAP_CA_FIELD_FLIP_VALUE; */
 
   protected:
     Setting();

@@ -9,11 +9,12 @@ class AmmunitionCalculator
     bool survives(CreaturePtr creature, ItemPtr ammunition);
 
     std::pair<int, int> calculate_stack_size(ItemPtr ammunition);
-    
-  protected:
+
+    int calculate_pct_chance_survival(CreaturePtr creature, ItemPtr ammunition);
     int get_item_status_survival_modifier(ItemPtr ammunition);
     int get_slays_survival_modifier(ItemPtr ammunition);
 
+  protected:
     static const int BASE_PCT_CHANCE_BREAKAGE;
     static const int BASE_PCT_CHANCE_SURVIVAL;
     static const int ARCHERY_SKILL_SURVIVAL_DIVISOR;

@@ -2,6 +2,7 @@
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "Weapon.hpp"
+#include "WeaponManager.hpp"
 
 using namespace std;
 
@@ -13,8 +14,8 @@ int MeleeWeaponRangeCalculator::get_primary_melee_range(CreaturePtr creature) co
   {
     range = 1;
 
-    const Equipment& equipment = creature->get_equipment();
-    WeaponPtr weapon = std::dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED));
+    WeaponManager wm;
+    WeaponPtr weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
 
     if (weapon != nullptr)
     {

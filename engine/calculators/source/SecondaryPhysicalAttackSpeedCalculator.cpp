@@ -1,5 +1,6 @@
 #include "SecondaryPhysicalAttackSpeedCalculator.hpp"
 #include "Weapon.hpp"
+#include "WeaponManager.hpp"
 
 using std::dynamic_pointer_cast;
 
@@ -11,7 +12,8 @@ ActionCostValue SecondaryPhysicalAttackSpeedCalculator::calculate_weapon_speed(C
   
   if (creature)
   {
-    WeaponPtr weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND));
+    WeaponManager wm;
+    WeaponPtr weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_SECONDARY);
 
     if (weapon)
     {
@@ -26,7 +28,8 @@ bool SecondaryPhysicalAttackSpeedCalculator::has_weapon_equipped(CreaturePtr cre
 {
   if (creature)
   {
-    WeaponPtr weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND));
+    WeaponManager wm;
+    WeaponPtr weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_SECONDARY);
 
     return (weapon != nullptr);
   }

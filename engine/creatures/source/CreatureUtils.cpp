@@ -1156,7 +1156,7 @@ bool CreatureUtils::has_primordial_essence(CreaturePtr creature)
 
 void CreatureUtils::add_piety_message_if_player(CreaturePtr creature)
 {
-  if (creature != nullptr && creature->get_is_player())
+  if (creature != nullptr && creature->get_is_player() && !creature->is_godless())
   {
     ReligionManager rm;
     int new_creature_piety = rm.get_piety_for_active_deity(creature);

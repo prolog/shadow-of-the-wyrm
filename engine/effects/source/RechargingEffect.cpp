@@ -92,7 +92,9 @@ bool RechargingEffect::recharge(CreaturePtr creature, ActionManager * const am, 
     if (wand)
     {
       WandCalculator wc;
-      int additional_charges = RNG::range(1, wc.calc_max_recharge_charges(creature, item_status));
+      int min_new_charges = (item_status != ItemStatus::ITEM_STATUS_BLESSED ? 1 : 2);
+
+      int additional_charges = RNG::range(min_new_charges, std::max<int>(min_new_charges, wc.calc_max_recharge_charges(creature, wand->get_status())));
       Statistic num_charges = wand->get_charges();
 
       if (num_charges.get_current() == num_charges.get_base())

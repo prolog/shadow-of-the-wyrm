@@ -20,6 +20,9 @@ class DeityStatus : public ISerializable
     void set_champion_type(const ChampionType new_champion_type);
     ChampionType get_champion_type() const;
 
+    void set_null(const bool new_null);
+    bool get_null() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
     
@@ -27,6 +30,7 @@ class DeityStatus : public ISerializable
     int piety; // Base relations with the deity
     int piety_regen_bonus; // Per-tick bonus for regenerating piety - higher is better
     ChampionType champion_type;
+    bool null; // Does this represent a deity for which piety shouldn't apply (ie, godlessness)
 
   private:
     ClassIdentifier internal_class_identifier() const override;

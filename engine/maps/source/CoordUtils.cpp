@@ -232,7 +232,7 @@ Direction CoordUtils::get_direction(const Coordinate& start, const Coordinate& e
 vector<Coordinate> CoordUtils::get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col, const int step_size)
 {
   vector<Coordinate> adjacent_coordinates;
-  adjacent_coordinates.reserve(static_cast<int>((1 + 2*step_size), 2));
+  adjacent_coordinates.reserve(static_cast<int>(1 + 2*step_size));
 
   int max_rows = dim.get_y();
   int max_cols = dim.get_x();
@@ -987,6 +987,59 @@ bool CoordUtils::is_contained(const Coordinate& top_left, const Coordinate& bott
                (c.second <= bottom_right.second));
 
   return contained;
+}
+
+pair<Direction, int> CoordUtils::get_y_distance(const Coordinate& base, const Coordinate& dest)
+{
+  return get_distance(base, dest, true);
+}
+
+pair<Direction, int> CoordUtils::get_x_distance(const Coordinate& base, const Coordinate& dest)
+{
+  return get_distance(base, dest, false);
+}
+
+pair<Direction, int> CoordUtils::get_distance(const Coordinate& base, const Coordinate& dest, const bool is_ns)
+{
+  Direction dir = Direction::DIRECTION_NULL;
+  int dist = 0;
+
+  if (is_ns)
+  {
+    dist = base.first - dest.first;
+
+    if (dist < 0)
+    {
+      dir = Direction::DIRECTION_SOUTH;
+    }
+    else if (dist == 0)
+    {
+      dir = Direction::DIRECTION_NULL;
+    }
+    else
+    {
+      dir = Direction::DIRECTION_NORTH;
+    }
+  }
+  else
+  {
+    dist = base.second - dest.second;
+
+    if (dist < 0)
+    {
+      dir = Direction::DIRECTION_EAST;
+    }
+    else if (dist == 0)
+    {
+      dir = Direction::DIRECTION_NULL;
+    }
+    else
+    {
+      dir = Direction::DIRECTION_WEST;
+    }
+  }
+
+  return std::make_pair(dir, std::abs(dist));
 }
 
 string CoordUtils::to_string(const Coordinate& c)

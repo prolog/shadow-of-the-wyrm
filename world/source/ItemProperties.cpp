@@ -10,6 +10,7 @@ ItemProperties::~ItemProperties()
 {
 }
 
+const string ItemProperties::ITEM_PROPERTIES_ID = "id";
 const string ItemProperties::ITEM_PROPERTIES_DIG_HARDNESS = "dig_hardness";
 const string ItemProperties::ITEM_PROPERTIES_BLANK = "blank";
 const string ItemProperties::ITEM_PROPERTIES_DIG_BREAKAGE_PCT_CHANCE = "dig_breakage_pct_chance";
@@ -39,3 +40,7 @@ const string ItemProperties::ITEM_PROPERTIES_BUILD_FEATURE_CLASS_IDS = "build_fe
 const string ItemProperties::ITEM_PROPERTIES_WATER_TILE_TYPE = "water_tile_type";
 const string ItemProperties::ITEM_PROPERTIES_PRISE = "prise";
 const string ItemProperties::ITEM_PROPERTIES_RANDART_NAME = "randart_name";
+const string ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD = "plantable_food";
+const string ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MIN_QUANTITY = "plantable_food_min_quantity";
+const string ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MAX_QUANTITY = "plantable_food_max_quantity";
+const string ItemProperties::ITEM_PROPERTIES_STATUS = "status";

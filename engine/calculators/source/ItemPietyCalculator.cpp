@@ -52,6 +52,8 @@ int ItemPietyCalculator::get_base_value(ItemPtr item)
 
       if (consumable)
       {
+        // Base nutrition is used here, not calculated nutrition - the divine aren't
+        // influenced by an item's status.
         int nutrition = consumable->get_nutrition();
 
         if (nutrition >= MINIMUM_NUTRITION_FOR_PIETY || consumable->get_effect_type() != EffectType::EFFECT_TYPE_NULL)

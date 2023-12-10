@@ -1,4 +1,5 @@
 #include "Religion.hpp"
+#include "ReligionConstants.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
@@ -37,16 +38,24 @@ bool Religion::operator==(const Religion& r) const
   return result;
 }
 
-// If the creature does not worship any deity, the creature is an atheist.
-bool Religion::is_atheist() const
-{
-  return deity_id.empty();
-}
-
 // Set/get the information about the deity currently worshipped, using the deity_id
-// as the identifer.
+// as the identifer. If the active deity ID is the godless ID, and if there is no
+// DeityStatus set up for this yet, set one up and set the null flag - this will
+// prevent piety from being accumulated.
 void Religion::set_active_deity_id(const string& new_deity_id)
 {
+  if (deity_relations.find(new_deity_id) == deity_relations.end())
+  {
+    DeityStatus ds;
+
+    if (new_deity_id == ReligionConstants::DEITY_ID_GODLESS)
+    {
+      ds.set_null(true);
+    }
+
+    set_deity_status(new_deity_id, ds);
+  }
+
   deity_id = new_deity_id;
 }
 
@@ -74,6 +83,12 @@ DeityRelations& Religion::get_deity_relations_ref()
 void Religion::set_deity_status(const std::string& new_deity_id, const DeityStatus& new_deity_status)
 {
   deity_relations[new_deity_id] = new_deity_status;
+
+  if (new_deity_id == ReligionConstants::DEITY_ID_GODLESS)
+  {
+    DeityStatus& ds = deity_relations[new_deity_id];
+    ds.set_null(true);
+  }
 }
 
 DeityStatus Religion::get_deity_status(const std::string& find_deity_id) const

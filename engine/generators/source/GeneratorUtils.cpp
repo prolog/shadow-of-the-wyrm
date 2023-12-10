@@ -20,6 +20,7 @@
 #include "SpringsGenerator.hpp"
 #include "StorehouseSectorFeature.hpp"
 #include "StreamGenerator.hpp"
+#include "SurfaceMineSectorFeature.hpp"
 #include "TerrainTextKeys.hpp"
 #include "TileGenerator.hpp"
 #include "WildflowerGardenGenerator.hpp"
@@ -34,6 +35,7 @@ const int GeneratorUtils::STRUCTURE_MIN_WIDTH = 4;
 const int GeneratorUtils::STRUCTURE_MAX_WIDTH = 8;
 const int GeneratorUtils::STRUCTURE_MIN_HEIGHT = 3;
 const int GeneratorUtils::STRUCTURE_MAX_HEIGHT = 7;
+const int GeneratorUtils::STRUCTURE_NUM_ATTEMPTS = 15;
 
 // Hidden away by protected access
 GeneratorUtils::GeneratorUtils()
@@ -439,9 +441,8 @@ void GeneratorUtils::generate_bazaar(const MapPtr map)
   if (map != nullptr)
   {
     Dimensions d = map->size();
-    int max_attempts = 15;
 
-    for (int i = 0; i < max_attempts; i++)
+    for (int i = 0; i < STRUCTURE_NUM_ATTEMPTS; i++)
     {
       int width = RNG::range(STRUCTURE_MIN_WIDTH, STRUCTURE_MAX_WIDTH);
       int height = RNG::range(STRUCTURE_MIN_HEIGHT, STRUCTURE_MAX_HEIGHT);
@@ -469,9 +470,8 @@ void GeneratorUtils::generate_hermitage(MapPtr map)
   if (map != nullptr)
   {
     Dimensions d = map->size();
-    int max_attempts = 15;
 
-    for (int i = 0; i < max_attempts; i++)
+    for (int i = 0; i < STRUCTURE_NUM_ATTEMPTS; i++)
     {
       int width = RNG::range(STRUCTURE_MIN_WIDTH, STRUCTURE_MAX_WIDTH);
       int height = RNG::range(STRUCTURE_MIN_HEIGHT, STRUCTURE_MAX_HEIGHT);
@@ -559,9 +559,8 @@ void GeneratorUtils::generate_cottage(MapPtr map)
   if (map != nullptr)
   {
     Dimensions d = map->size();
-    int max_attempts = 15;
 
-    for (int i = 0; i < max_attempts; i++)
+    for (int i = 0; i < STRUCTURE_NUM_ATTEMPTS; i++)
     {
       int width = RNG::range(STRUCTURE_MIN_WIDTH, STRUCTURE_MAX_WIDTH);
       int height = RNG::range(STRUCTURE_MIN_HEIGHT, STRUCTURE_MAX_HEIGHT);
@@ -617,6 +616,33 @@ void GeneratorUtils::generate_cottage(MapPtr map)
           map->set_permanent(true);
           break;
         }
+      }
+    }
+  }
+}
+
+void GeneratorUtils::generate_surface_mine(MapPtr map)
+{
+  if (map != nullptr)
+  {
+    Dimensions d = map->size();
+
+    for (int i = 0; i < STRUCTURE_NUM_ATTEMPTS; i++)
+    {
+      int width = RNG::range(STRUCTURE_MIN_WIDTH, STRUCTURE_MAX_WIDTH);
+      int height = RNG::range(STRUCTURE_MIN_HEIGHT, STRUCTURE_MAX_HEIGHT);
+
+      // Try to place the storehouse somewhere on the map.
+      int y_start = RNG::range(0, d.get_y() - height - 1);
+      int x_start = RNG::range(0, d.get_x() - width - 1);
+
+      if (are_tiles_ok_for_structure(map, y_start, x_start, height + 1, width + 1))
+      {
+        SurfaceMineSectorFeature smsf;
+        smsf.generate(map, { y_start, x_start }, { y_start + height + 1, x_start + width + 1 });
+        map->set_permanent(true);
+
+        break;
       }
     }
   }
@@ -681,10 +707,9 @@ void GeneratorUtils::generate_storehouses(MapPtr map)
 {
   if (map != nullptr)
   {
-    int max_attempts = 15;
     Dimensions d = map->size();
 
-    for (int i = 0; i < max_attempts; i++)
+    for (int i = 0; i < STRUCTURE_NUM_ATTEMPTS; i++)
     {
       int width = RNG::range(STRUCTURE_MIN_WIDTH, STRUCTURE_MAX_WIDTH);
       int height = RNG::range(STRUCTURE_MIN_HEIGHT, STRUCTURE_MAX_HEIGHT);

@@ -1,3 +1,124 @@
+Shadow of the Wyrm v1.6.2 "Daca"
+- Version started July 8, 2023.  Version finalized December 10, 2023.
+
+- The game now shows "a vanished god" if you worship one of the Nine and they
+  are gone from the game.
+
+- Added a new religion option, godlessness (Josh Engdahl). Godless characters
+  receive no divine help via prayer, and cannot be crowned. They are still
+  subject to divine wrath if they do particular disliked things, such as
+  kicking altars. Godless characters have a much harder time learning divine
+  magic, and receive far fewer castings. When they drop items on altars, those
+  items will be cursed, as when doing this on a cross-aligned altar.
+
+- A while ago, the breakage chance of regular pickaxes was reduced to 1%, and
+  that of dwarven mattocks to 0%. Tthis made Delver less useful, so it's been 
+  buffed up: it now offers resistances to all the physical damage types, does 
+  a bit more damage, and has the piercing flag.
+
+- Made some improvements to the menu options in curses mode when 
+  "full_stop_after_options" is set, so that they sound better when read by a
+  screen reader.
+
+- Added a "display_simplified_splash_screen" setting which in curses-mode will
+  present a much simpler splash screen suitable for screen readers (no ASCII
+  art) (Stephen Shaffer).
+
+- Added a "show_distance_on_examine" setting (off by default) to display the 
+  distance of the selected tile from your current position when examining.
+
+- Added mushrooms to fields, and fungus to tree generation.
+
+- Added a special mushrooms room type to dungeons.
+
+- The base chance for an enchantment to brand a wearable has been halved.
+
+- Amaurosis has been buffed up a bit: he can now cast spells, has a greater
+  chance to blind on a successful hit, and is faster.
+
+- A weapon/armour's status now affects the chance of that piece being branded
+  when enchanted.
+
+- A weapon's status now affects whether it gives a bonus or penalty to the 
+  application of the damage type's status.
+
+- When digging, an item's status now affects its breakage chance.
+
+- Blessed scrolls of recharging now increase the minimum number of charges
+  when recharging a wand. The wand's status now affects the potential number 
+  of extra charges.
+
+- A consumable's status now affects its nutrition, though this does not affect
+  what the item is worth to the divine.
+
+- The status of the item selected for the Bowyer/Fletchery skill now affects
+  both the quality of the item produced, as well as (for fletchery) the
+  quantity.
+
+- Your fishing rod or spear's status now influences your fishing outcome.
+
+- Most plants and vegetables are now plantable, and when dropped in a hole 
+  will yield more of the same the next summer.
+
+- Non-weapons that you can wield (such as shovels and fishing rods) and now
+  properly treated as exotic weapons when using them in combat. Previously,
+  the game treated you as unarmed.
+
+- Added a temple master to the top of the temple in Carcassia - she takes
+  donations to the temple, which are rewarded with piety; particularly large
+  donations will bless the player's equipment, or inventory.
+
+- When specifying symbol information in the configuration file, if no Row and
+  Col are provided, a default of 0 for each is assumed.
+
+- Externalized a bunch of world-generation settings into swyrm.ini for modding
+  and/or just messing around.
+
+- Created trap traps, which are traps that generate other traps nearby.
+
+- Allowed for a per-class symbol which overrides the defaults applied to the
+  player (Paddy).
+
+- Added an option (off by default) that allows the game to save and then
+  prompt for quitting.
+
+- Tweaked a few sprites.
+
+- More name combinations.
+
+- New creatures: temple master.
+
+- New items: mushroom, shelf fungus, Shiver's kiss, deathbloom, chanterelle,
+  morel, elfcap, pufftop, elfland's exit, scroll of trap summoning.
+
+- Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - The game would crash if an invalid race was specified for a creature being
+    generated.
+
+  - Fixed an auto-death issue involving mountains where you could be generated
+    on an air tile, instantly killing you if you didn't have flying.
+
+  - Pov wasn't handling invalid input nicely (Sofistico).
+
+  - When notifying a deity about a pleasing action, the piety was incorrectly
+    always getting applied to the creature's active deity.
+
+  - The '%' character was being duplicated on screen in curses mode.
+
+  - Cursed scrolls of enchanting completely prevented branding.
+
+  - You could farm piety with Sceadugenga by continually digging on the same
+    grave tile (Quartzartine).
+
+  - The HP indicator (when using e'x'amine) sometimes wouldn't return a valid
+    description.
+
+  - Targetting via ranged combat could target a creature outside the field of
+    view if they move (Hems).
+
 Shadow of the Wyrm v1.5.8 "Testagrossa"
 - Version started January 7, 2023. Version finalized July 8, 2023.
 

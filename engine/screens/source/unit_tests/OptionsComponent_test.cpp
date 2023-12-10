@@ -42,3 +42,15 @@ TEST(SW_World_Option, enabled)
     EXPECT_EQ(ov, o.get_enabled());
   }
 }
+
+TEST(SW_World_Option, properties)
+{
+  Option o;
+
+  EXPECT_TRUE(o.get_properties().empty());
+
+  o.set_property("prop", "val");
+
+  EXPECT_TRUE(o.has_property("prop"));
+  EXPECT_EQ("val", o.get_property("prop"));
+}

@@ -9,12 +9,17 @@
 #include "Skills.hpp"
 #include "Statistic.hpp"
 #include "Modifier.hpp"
+#include "Symbol.hpp"
 
 class Class
 {
   public:
     Class();
-    ~Class();
+    virtual ~Class();
+
+    Class(const Class& cl);
+    Class& operator=(const Class& cl);
+    bool operator==(const Class& cl) const;
 
     void set_class_id(const std::string& id);
     std::string get_class_id() const;
@@ -30,6 +35,10 @@ class Class
 
     void set_class_abbreviation_sid(const std::string& new_class_abbreviation_sid);
     std::string get_class_abbreviation_sid() const;
+
+    // Basic display info
+    void set_symbol(const Symbol& new_symbol);
+    Symbol* get_symbol();
 
     void set_modifier(const Modifier& new_modifier);
     Modifier get_modifier() const;
@@ -101,8 +110,8 @@ class Class
     std::string class_description_sid;
     std::string class_abbreviation_sid;
 
+    std::unique_ptr<Symbol> symbol;
     Modifier modifier;
-
     Resistances resistances;
     Skills skills;
     std::vector<std::string> crowning_gifts;
@@ -146,6 +155,10 @@ class Class
     // Some classes can start with pets.  An ID is selected
     // at random from the starting list.
     std::vector<std::string> starting_pet_ids;
+
+  private:
+    void swap(Class& cl) throw ();
+
 };
 
 using ClassPtr = std::unique_ptr<Class>;

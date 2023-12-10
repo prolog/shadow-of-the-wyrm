@@ -1,9 +1,12 @@
 #pragma once
 #include <string>
+#include "Directions.hpp"
 
 class DirectionLocationTextKeys
 {
   public:
+    static const std::string get_direction_location_sid(const Direction dir);
+
     static const std::string DIRECTION_LOCATION_NORTH_WEST;
     static const std::string DIRECTION_LOCATION_NORTH;
     static const std::string DIRECTION_LOCATION_NORTH_EAST;

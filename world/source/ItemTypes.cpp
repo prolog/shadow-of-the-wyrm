@@ -1,6 +1,7 @@
 #include "ItemTypes.hpp"
 
 using std::string;
+using std::vector;
 
 // Item IDs
 ItemIdKeys::ItemIdKeys()
@@ -53,6 +54,7 @@ const string ItemIdKeys::ITEM_ID_VEGETABLE_6      = "_vegetable_6";
 const string ItemIdKeys::ITEM_ID_GOLDEN_APPLE     = "_golden_apple";
 const string ItemIdKeys::ITEM_ID_SILVER_APPLE     = "_silver_apple";
 const string ItemIdKeys::ITEM_ID_SHOVEL           = "_shovel";
+const string ItemIdKeys::ITEM_ID_PICK_AXE         = "pick_axe";
 const string ItemIdKeys::ITEM_ID_ROOT             = "_root";
 const string ItemIdKeys::ITEM_ID_BERRIES          = "_berries";
 const string ItemIdKeys::ITEM_ID_KELP             = "_kelp";
@@ -90,6 +92,21 @@ const string ItemIdKeys::ITEM_ID_UNSTONING_POTION = "_unstoning_potion";
 const string ItemIdKeys::ITEM_ID_HEALING_POTION   = "_healing_potion";
 const string ItemIdKeys::ITEM_ID_ETHER_POTION     = "_ether_potion";
 const string ItemIdKeys::ITEM_ID_BOARD_WITH_NAIL_IN_IT = "_board_with_nail_in_it";
+const string ItemIdKeys::ITEM_ID_MUSHROOM_1       = "_mushroom_1";
+const string ItemIdKeys::ITEM_ID_MUSHROOM_2       = "_mushroom_2";
+const string ItemIdKeys::ITEM_ID_MUSHROOM_3       = "_mushroom_3";
+const string ItemIdKeys::ITEM_ID_MUSHROOM_4       = "_mushroom_4";
+const string ItemIdKeys::ITEM_ID_MUSHROOM_5       = "_mushroom_5";
+const string ItemIdKeys::ITEM_ID_MUSHROOM_RARE_1  = "_mushroom_rare_1";
+const string ItemIdKeys::ITEM_ID_MUSHROOM_RARE_2  = "_mushroom_rare_2";
+const string ItemIdKeys::ITEM_ID_MUSHROOM_RARE_3  = "_mushroom_rare_3";
+const string ItemIdKeys::ITEM_ID_FUNGUS_1         = "_fungus_1";
+const string ItemIdKeys::ITEM_ID_FUNGUS_2					= "_fungus_2";
+
+// collections
+const vector<string> ItemIdKeys::ITEM_IDS_MUSHROOM = { ItemIdKeys::ITEM_ID_MUSHROOM_1, ItemIdKeys::ITEM_ID_MUSHROOM_2, ItemIdKeys::ITEM_ID_MUSHROOM_3, ItemIdKeys::ITEM_ID_MUSHROOM_4, ItemIdKeys::ITEM_ID_MUSHROOM_5 };
+const vector<string> ItemIdKeys::ITEM_IDS_MUSHROOM_RARE = { ItemIdKeys::ITEM_ID_MUSHROOM_RARE_1, ItemIdKeys::ITEM_ID_MUSHROOM_RARE_2, ItemIdKeys::ITEM_ID_MUSHROOM_RARE_3 };
+const vector<string> ItemIdKeys::ITEM_IDS_FUNGUS = { ItemIdKeys::ITEM_ID_FUNGUS_1, ItemIdKeys::ITEM_ID_FUNGUS_2 };
 
 // Item Scripts
 ItemEventScripts::ItemEventScripts()

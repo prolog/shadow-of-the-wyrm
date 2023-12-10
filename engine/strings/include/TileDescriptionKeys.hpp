@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "common.hpp"
 
 // Keys for tile descriptions - used for when a single tile type (e.g.,
 // TileType::TILE_TYPE_TREE) can have different descriptions.
@@ -61,6 +62,8 @@ class TileDescriptionKeys
     static const std::string FLORA_TILE_DESC_WEED23;
     static const std::string FLORA_TILE_DESC_WEED24;
     static const std::string FLORA_TILE_DESC_WEED25;
+
+    static const std::string TILE_DESCRIPTION_DISTANCE_FROM;
 
   protected:
     TileDescriptionKeys();

@@ -40,7 +40,12 @@ ActionCostValue OfferAction::offer(CreaturePtr creature, ActionManager * const a
     FeaturePtr feature = tile->get_feature();
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
-    if (String::to_bool(current_map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_PRAY)))
+    if (creature->is_godless())
+    {
+      manager.add_new_message(StringTable::get(DeityTextKeys::DEITY_OFFER_GODLESS));
+      manager.send();
+    }
+    else if (String::to_bool(current_map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_PRAY)))
     {
       manager.add_new_message(StringTable::get(DeityTextKeys::DEITY_CANNOT_PRAY));
       manager.send();
