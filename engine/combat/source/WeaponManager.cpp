@@ -1,6 +1,7 @@
 #include "Ammunition.hpp"
 #include "CombatConstants.hpp"
 #include "Conversion.hpp"
+#include "ExoticWeaponCalculator.hpp"
 #include "ItemProperties.hpp"
 #include "PhysicalDamageCalculator.hpp"
 #include "WeaponDifficultyCalculator.hpp"
@@ -54,6 +55,14 @@ WeaponPtr WeaponManager::get_weapon(CreaturePtr creature, const AttackType attac
 {
   ItemPtr item = get_item(creature, attack_type);
   WeaponPtr weapon = dynamic_pointer_cast<Weapon>(item);
+
+  if (weapon == nullptr && 
+      item != nullptr && 
+      (attack_type == AttackType::ATTACK_TYPE_MELEE_PRIMARY || attack_type == AttackType::ATTACK_TYPE_MELEE_SECONDARY) &&
+      item->get_type() != ItemType::ITEM_TYPE_ARMOUR)
+  {
+    weapon = create_improvised_weapon(item);
+  }
 
   return weapon;
 }
@@ -369,4 +378,29 @@ bool WeaponManager::do_trained_ranged_skills_match(WeaponPtr ranged_weapon, Weap
   }
   
   return false;
+}
+
+WeaponPtr WeaponManager::create_improvised_weapon(ItemPtr item)
+{
+  WeaponPtr weapon;
+
+  if (item != nullptr)
+  {
+    ExoticWeaponCalculator ewc;
+    weapon = std::make_shared<MeleeWeapon>();
+    int weight_modifier = ewc.get_general_modifier(item->get_weight().get_weight_in_lbs());
+
+    weapon->set_description_sid(item->get_description_sid());
+    weapon->set_trained_skill(SkillType::SKILL_MELEE_EXOTIC);
+    weapon->set_trained_ranged_skill(SkillType::SKILL_RANGED_EXOTIC);
+    weapon->set_difficulty(ewc.get_base_difficulty_for_improvised_exotic_weapon() + weight_modifier);
+
+    Damage dam = ewc.get_base_damage_for_improvised_exotic_weapon();
+    dam.set_modifier(weight_modifier);
+
+    weapon->set_speed(ewc.get_base_speed_for_improvised_exotic_weapon() + weight_modifier);
+    weapon->set_damage(dam);
+  }
+
+  return weapon;
 }

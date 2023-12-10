@@ -167,16 +167,21 @@ ActionCostValue ThieverySkillProcessor::process_steal(CreaturePtr stealing_creat
 
       if (RNG::percent_chance(tc.calculate_pct_chance_steal(stealing_creature, steal_creature)))
       {
-        steal_result = true;
         ItemPtr stolen_item = create_stolen_item(steal_creature);
-        transfer_stolen_item(stealing_creature, stolen_item, map, pl_manager, manager);
-        set_flags_on_target_creature(stealing_creature, steal_creature);
 
-        ItemIdentifier iid;
-        manager.add_new_message(ActionTextKeys::get_steal_successful_message(cd.describe(), iid.get_appropriate_usage_description(stolen_item), stealing_creature->get_is_player()));
-        manager.send();
+        if (stolen_item != nullptr)
+        {
+          steal_result = true;
+          transfer_stolen_item(stealing_creature, stolen_item, map, pl_manager, manager);
+          set_flags_on_target_creature(stealing_creature, steal_creature);
+
+          ItemIdentifier iid;
+          manager.add_new_message(ActionTextKeys::get_steal_successful_message(cd.describe(), iid.get_appropriate_usage_description(stolen_item), stealing_creature->get_is_player()));
+          manager.send();
+        }
       }
-      else
+
+      if (steal_result == false)
       {
         pl_manager.add_new_message(ActionTextKeys::get_steal_unsuccessful_message(stealing_creature->get_description_sid(), steal_creature->get_description_sid(), stealing_creature->get_is_player()));
         pl_manager.send();

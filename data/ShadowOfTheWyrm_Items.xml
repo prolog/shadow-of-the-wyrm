@@ -417,10 +417,10 @@
 			</Amulet>
 			<Amulet id="amulet_of_the_sea">
 				<DescriptionSID>AMULET_OF_THE_SEA_SID</DescriptionSID>
-				<UsageDescriptionSID>AMULET_OF_THE_SEA_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_AMULET_OF_THE_SEA_SID</UnidentifiedDescriptionSID>
-				<CodexDescriptionSID>AMULET_OF_THE_SEA_CODEX_SID</CodexDescriptionSID>
+				<UsageDescriptionSID>AMULET_OF_THE_SEA_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_AMULET_OF_THE_SEA_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>AMULET_OF_THE_SEA_CODEX_SID</CodexDescriptionSID>
 				<Value>120</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -447,10 +447,10 @@
 			</Amulet>
 			<Amulet id="amulet_of_the_sky">
 				<DescriptionSID>AMULET_OF_THE_SKY_SID</DescriptionSID>
-				<UsageDescriptionSID>AMULET_OF_THE_SKY_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_AMULET_OF_THE_SKY_SID</UnidentifiedDescriptionSID>
-				<CodexDescriptionSID>AMULET_OF_THE_SKY_CODEX_SID</CodexDescriptionSID>
+				<UsageDescriptionSID>AMULET_OF_THE_SKY_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_AMULET_OF_THE_SKY_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>AMULET_OF_THE_SKY_CODEX_SID</CodexDescriptionSID>
 				<Value>120</Value>
 				<Weight>
 					<Pounds>0</Pounds>
@@ -5706,8 +5706,9 @@
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
-					<Slash>0.10</Slash>
-					<Pierce>0.15</Pierce>
+					<Slash>0.15</Slash>
+					<Pierce>0.20</Pierce>
+					<Pound>0.15</Pound>
 				</Resistances>
 				<Properties>
 					<Property>
@@ -5723,10 +5724,10 @@
 				<RangedSkill>2000</RangedSkill>
 				<Difficulty>45</Difficulty>
 				<Speed>3</Speed>
-				<Damage>
-					<NumDice>4</NumDice>
+				<Damage piercing="1">
+					<NumDice>5</NumDice>
 					<NumSides>6</NumSides>
-					<Modifier>10</Modifier>
+					<Modifier>12</Modifier>
 					<Type>1</Type>
 				</Damage>
 			</Weapon>			
@@ -7837,6 +7838,392 @@
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
+			<Food id="_mushroom_1">
+				<DescriptionSID>MUSHROOM_1_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_1_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_1_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>9</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>4</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>12</Value>
+					</Property>
+				</Properties>
+				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_mushroom_2">
+				<DescriptionSID>MUSHROOM_2_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_2_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_2_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>7</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>4</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>12</Value>
+					</Property>
+				</Properties>
+				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
+				<Poisoned>1</Poisoned>
+			</Food>
+			<Food id="_mushroom_3">
+				<DescriptionSID>MUSHROOM_3_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_3_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_3_CODEX_SID</CodexDescriptionSID>
+				<Value>2</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>4</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>12</Value>
+					</Property>
+				</Properties>
+				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_mushroom_4">
+				<DescriptionSID>MUSHROOM_4_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_4_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_4_CODEX_SID</CodexDescriptionSID>
+				<Value>2</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>8</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>4</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>12</Value>
+					</Property>
+				</Properties>
+				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_mushroom_5">
+				<DescriptionSID>MUSHROOM_5_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_5_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_5_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>12</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>4</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>12</Value>
+					</Property>
+				</Properties>
+				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
+				<Poisoned>1</Poisoned>
+			</Food>
+			<Food id="_fungus_1">
+				<DescriptionSID>FUNGUS_1_SID</DescriptionSID>
+				<UsageDescriptionSID>FUNGUS_1_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FUNGUS_1_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>9</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>15</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
+				<Nutrition>300</Nutrition>
+				<FoodType>0</FoodType>
+				<Poisoned>1</Poisoned>
+			</Food>
+			<Food id="_fungus_2">
+				<DescriptionSID>FUNGUS_2_SID</DescriptionSID>
+				<UsageDescriptionSID>FUNGUS_2_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>FUNGUS_2_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>9</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>15</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
+				<Nutrition>500</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_mushroom_rare_1">
+				<DescriptionSID>MUSHROOM_RARE_1_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_RARE_1_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_RARE_1_CODEX_SID</CodexDescriptionSID>
+				<Value>10</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
+				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
+				<Effect>14</Effect>
+			</Food>
+			<Food id="_mushroom_rare_2">
+				<DescriptionSID>MUSHROOM_RARE_2_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_RARE_2_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_RARE_2_CODEX_SID</CodexDescriptionSID>
+				<Value>12</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>14</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
+				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
+				<Effect>16</Effect>
+			</Food>
+			<Food id="_mushroom_rare_3">
+				<DescriptionSID>MUSHROOM_RARE_3_SID</DescriptionSID>
+				<UsageDescriptionSID>MUSHROOM_RARE_3_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>MUSHROOM_RARE_3_CODEX_SID</CodexDescriptionSID>
+				<Value>11</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>10</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>16</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
+				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
+				<Effect>31</Effect>
+			</Food>
 			<Food id="_berries">
 				<DescriptionSID>BERRIES_SID</DescriptionSID>
 				<UsageDescriptionSID>BERRIES_USAGE_SID</UsageDescriptionSID>
@@ -7858,6 +8245,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>12</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>36</Value>
+					</Property>
+				</Properties>
 				<Nutrition>110</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -8094,6 +8495,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -8118,6 +8533,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>500</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -8142,6 +8571,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>8</Value>
+					</Property>
+				</Properties>
 				<Nutrition>500</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -8166,6 +8609,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>700</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -8190,6 +8647,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>500</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -8214,6 +8685,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>12</Value>
+					</Property>
+				</Properties>
 				<Nutrition>500</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
@@ -8591,6 +9076,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>200</Nutrition>
 				<FoodType>0</FoodType>
 			</Plant>
@@ -8638,6 +9137,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>200</Nutrition>
 				<FoodType>0</FoodType>
 				<Effect>1</Effect>
@@ -8663,6 +9176,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>30</Nutrition>
 				<FoodType>0</FoodType>
 				<Effect>3</Effect>
@@ -8688,6 +9215,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>60</Nutrition>
 				<FoodType>0</FoodType>
 				<Effect>6</Effect>
@@ -8713,6 +9254,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>40</Nutrition>
 				<FoodType>0</FoodType>
 				<Effect>9</Effect>
@@ -8738,6 +9293,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>40</Nutrition>
 				<FoodType>0</FoodType>
 				<Effect>7</Effect>
@@ -8763,6 +9332,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
 				<MetabolizesAlcohol>1</MetabolizesAlcohol>
@@ -8788,6 +9371,20 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
 				<MetabolizesAlcohol>1</MetabolizesAlcohol>
@@ -8813,6 +9410,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
 				<MetabolizesAlcohol>1</MetabolizesAlcohol>
@@ -8838,6 +9449,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
 				<MetabolizesAlcohol>1</MetabolizesAlcohol>
@@ -8863,6 +9488,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
 				<MetabolizesAlcohol>1</MetabolizesAlcohol>
@@ -8888,6 +9527,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
 				<MetabolizesAlcohol>1</MetabolizesAlcohol>
@@ -8913,6 +9566,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>6</Value>
+					</Property>
+				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
 			</Plant>
@@ -8937,6 +9604,20 @@
 					</Sprite>
 				</Symbol>	
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>2</Value>
+					</Property>
+				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
 			</Plant>
@@ -8966,6 +9647,18 @@
 						<Name>weav_con_mat_type</Name>
 						<Value>0</Value>
 					</Property>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -8993,6 +9686,20 @@
 					</Sprite>
 				</Symbol>				
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>2</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
 				<Nutrition>12000</Nutrition>
 				<FoodType>0</FoodType>
 			</Plant>
@@ -9938,6 +10645,29 @@
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Effect>25</Effect>
+			</Scroll>
+			<Scroll id="summon_traps_scroll">
+				<DescriptionSID>SUMMON_TRAPS_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SUMMON_TRAPS_SCROLL_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SUMMON_TRAPS_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SUMMON_TRAPS_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>SUMMON_TRAPS_SCROLL_CODEX_SID</CodexDescriptionSID>
+				<Value>15</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<Symbol>
+					<Char>?</Char>
+					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>5</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>2</DangerLevel>
+				<Effect>33</Effect>
 			</Scroll>
 			<Scroll id="repel_scroll">
 				<DescriptionSID>REPEL_SCROLL_SID</DescriptionSID>
@@ -13384,6 +14114,7 @@
 				<Material>18</Material>
 				<Symbol>
 					<Char>]</Char>
+					<Colour>3</Colour>
 					<Sprite>
 						<ID>it</ID>
 						<Row>1</Row>

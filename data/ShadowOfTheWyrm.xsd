@@ -561,6 +561,9 @@
 			<xs:element name="ShortDescriptionSID" type="xs:string"/>
 			<xs:element name="DescriptionSID" type="xs:string"/>
 			<xs:element name="DisplayAbbreviationSID" type="xs:string"/>
+			<!-- If a symbol is defined for the class, it gets used over the default
+			     from the 'player' creature. -->
+			<xs:element name="Symbol" type="tns:Symbol" minOccurs="0"/>
 			<xs:element name="ClassInitialModifiers" type="tns:InitialStatisticsModifiers"/>
 			<xs:element name="HitDice" type="xs:unsignedInt"/>
 			<xs:element name="APDice" type="xs:unsignedInt"/>
@@ -1280,12 +1283,12 @@
 </xs:complexType>
 <xs:complexType name="Sprite">
 	<xs:annotation>
-		<xs:documentation>Contains spritesheet info for a particular symbol.</xs:documentation>
+		<xs:documentation>Contains spritesheet info for a particular symbol. If no row and col are provided, they are both assumed to be 0 (this might be done eg if the "spritesheet" is just an individual/single sprite).</xs:documentation>
 	</xs:annotation>
 	<xs:sequence>
 		<xs:element name="ID" type="tns:NonEmptyListIdentifier"/>
-		<xs:element name="Row" type="tns:NonEmptyIntegerListIdentifier"/>
-		<xs:element name="Col" type="tns:NonEmptyIntegerListIdentifier"/>
+		<xs:element name="Row" type="tns:NonEmptyIntegerListIdentifier" minOccurs="0"/>
+		<xs:element name="Col" type="tns:NonEmptyIntegerListIdentifier" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="SeasonColoursType">
@@ -1770,11 +1773,12 @@
 				Repel = 30
 				Warp = 31
 				Glow = 32
+				Summon Traps = 33
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="32"/>
+		<xs:maxInclusive value="33"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

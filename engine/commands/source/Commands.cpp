@@ -1,6 +1,8 @@
 #include "Commands.hpp"
 #include "CommandKeys.hpp"
 #include "EngineConversion.hpp"
+#include "Game.hpp"
+#include "Setting.hpp"
 #include "TextKeys.hpp"
 
 using namespace std;
@@ -316,8 +318,14 @@ CheckCurrencyCommand::~CheckCurrencyCommand()
 
 // 'S'ave the game
 SaveGameCommand::SaveGameCommand(const int key)
-: Command(CommandKeys::SAVE_GAME, key, TextKeys::DECISION_SAVE_GAME)
+: Command(CommandKeys::SAVE_GAME, key)
 {
+  bool save_and_then_quit = Game::instance().get_settings_ref().get_setting_as_bool(Setting::SAVE_THEN_PROMPT_TO_QUIT);
+
+  if (save_and_then_quit == false)
+  {
+    command_confirmation = TextKeys::DECISION_SAVE_GAME;
+  }
 }
 
 SaveGameCommand::~SaveGameCommand()

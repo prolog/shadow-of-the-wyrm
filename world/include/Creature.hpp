@@ -257,6 +257,8 @@ class Creature : public ISerializable
     // Is the creature hostile towards a given creature's ID?
     bool hostile_to(const std::string& creature_id);
     
+    bool is_godless() const;
+
     // Religion info
     void set_religion(const Religion& new_religion);
     Religion get_religion() const;

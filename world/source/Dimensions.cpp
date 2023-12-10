@@ -63,6 +63,11 @@ Depth& Dimensions::depth_ref()
   return dim_depth;
 }
 
+bool Dimensions::contains(const Coordinate& c) const
+{
+  return (c.first >= 0 && c.first <= (y-1) && c.second >= 0 && c.second <= (x-1));
+}
+
 bool Dimensions::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, y);

@@ -1,4 +1,5 @@
 #include "DeitySelectionScreen.hpp"
+#include "DeityTextKeys.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
 #include "OptionsComponent.hpp"
@@ -64,6 +65,15 @@ void DeitySelectionScreen::initialize()
         Log::instance().log(error_msg);
       }
     }
+
+    Option godless_option;
+    godless_option.set_id(current_id);
+    godless_option.set_description(StringTable::get(DeityTextKeys::DEITY_GODLESS));
+
+    options->add_option(godless_option);
+    options->add_option_description("");
+
+    current_id++;
 
     // Random selection (use '*')
     Option random_option;

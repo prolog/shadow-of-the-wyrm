@@ -1,4 +1,8 @@
+#include <sstream>
 #include "TileDescriptionKeys.hpp"
+#include "CoordUtils.hpp"
+#include "DirectionLocationTextKeys.hpp"
+#include "StringTable.hpp"
 
 using namespace std;
 
@@ -56,3 +60,5 @@ const string TileDescriptionKeys::FLORA_TILE_DESC_WEED22 = "FLORA_TILE_DESC_WEED
 const string TileDescriptionKeys::FLORA_TILE_DESC_WEED23 = "FLORA_TILE_DESC_WEED23";
 const string TileDescriptionKeys::FLORA_TILE_DESC_WEED24 = "FLORA_TILE_DESC_WEED24";
 const string TileDescriptionKeys::FLORA_TILE_DESC_WEED25 = "FLORA_TILE_DESC_WEED25";
+
+const string TileDescriptionKeys::TILE_DESCRIPTION_DISTANCE_FROM = "TILE_DESCRIPTION_DISTANCE_FROM";

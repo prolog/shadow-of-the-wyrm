@@ -35,6 +35,13 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>temple_master</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>28</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>stylite</ID>
 				<Coord>
 					<Row>1</Row>

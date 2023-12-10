@@ -103,6 +103,41 @@ bool Option::get_uppercase() const
   return uppercase;
 }
 
+void Option::set_property(const string& prop, const string& val)
+{
+  properties[prop] = val;
+}
+
+void Option::set_properties(const map<string, string>& new_properties)
+{
+  properties = new_properties;
+}
+
+bool Option::has_property(const string& prop) const
+{
+  const auto p_it = properties.find(prop);
+
+  return (p_it != properties.end());
+}
+
+string Option::get_property(const string& prop) const
+{
+  string val;
+  auto p_it = properties.find(prop);
+
+  if (p_it != properties.end())
+  {
+    val = p_it->second;
+  }
+
+  return val;
+}
+
+map<string, string> Option::get_properties() const
+{
+  return properties;
+}
+
 // Options - a container for Option menu objects.
 
 OptionsComponent::OptionsComponent()

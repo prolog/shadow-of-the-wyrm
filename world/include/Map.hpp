@@ -11,6 +11,7 @@
 #include "ScriptDetails.hpp"
 #include "Shop.hpp"
 #include "Tile.hpp"
+#include "TileItemTransform.hpp"
 #include "TileTransform.hpp"
 #include "Weather.hpp"
 
@@ -20,6 +21,7 @@ class Tile;
 
 using TilesContainer = std::unordered_map<std::string, std::shared_ptr<Tile>>;
 using TileTransformContainer = std::map<double, std::vector<TileTransform>>;
+using TileItemTransformContainer = std::map<double, std::vector<TileItemTransform>>;
 
 class Map : public ISerializable
 {
@@ -155,6 +157,11 @@ class Map : public ISerializable
     TileTransformContainer& get_tile_transforms_ref();
     TileTransformContainer get_tile_transforms() const;
 
+    void set_tile_item_transforms(const TileItemTransformContainer& new_tile_item_transforms);
+    TileItemTransformContainer& get_tile_item_transforms_ref();
+    TileItemTransformContainer get_tile_item_transforms() const;
+    size_t count_tile_item_transforms(const Coordinate& c) const;
+
     void set_preset_locations(const std::vector<Coordinate>& new_preset_locations);
     std::vector<Coordinate> get_preset_locations() const;
     std::vector<Coordinate>& get_preset_locations_ref();
@@ -228,6 +235,7 @@ class Map : public ISerializable
     bool allow_creature_updates;
     std::map<std::string, std::string> properties;
     TileTransformContainer tile_transforms;
+    TileItemTransformContainer tile_item_transforms;
     std::vector<Coordinate> preset_locations; // used for generating creatures onto specific locations
     std::map<std::string, Shop> shops;
     EventScriptsMap event_scripts;

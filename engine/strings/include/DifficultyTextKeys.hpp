@@ -12,6 +12,7 @@ class DifficultyTextKeys
     static const std::string DIFFICULTY_EASY;
     static const std::string DIFFICULTY_HARMLESS;
 
+    static const std::string HP_INDICATOR_UNCERTAIN;
     static const std::string HP_INDICATOR_UNHARMED;
     static const std::string HP_INDICATOR_SCRATCHES;
     static const std::string HP_INDICATOR_WOUNDED;

@@ -134,10 +134,9 @@ void DeityActionManager::handle_displeasing_action(CreaturePtr creature, Deity* 
 
 void DeityActionManager::handle_pleasing_action(CreaturePtr creature, Deity* deity, const string& action_key, const uint num_times)
 {
-  if (creature != nullptr)
+  if (creature != nullptr && deity != nullptr)
   {
     ReligionManager rm;
-    Deity* deity = rm.get_active_deity(creature);
     LikeDeityDecisionStrategyHandler like(deity);
 
     int piety = like.get_piety_amount();

@@ -4,6 +4,7 @@
 #include "CreatureUtils.hpp"
 #include "EffectFactory.hpp"
 #include "EngineConversion.hpp"
+#include "FoodCalculator.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
@@ -30,7 +31,8 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
     HungerClock& hunger = creature->get_hunger_clock_ref();
     int hunger_before = hunger.get_hunger();
 
-    int nutrition = consumable->get_nutrition();
+    FoodCalculator fc;
+    int nutrition = fc.calculate_nutrition(consumable);
     hunger.set_hunger(hunger.get_hunger() + nutrition);
 
     int hunger_after = hunger.get_hunger();

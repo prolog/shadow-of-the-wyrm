@@ -16,6 +16,7 @@
 #include "RaceManager.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
+#include "Setting.hpp"
 #include "TextMessages.hpp"
 #include "TileGenerator.hpp"
 #include "TileTextKeys.hpp"
@@ -35,7 +36,6 @@ void async_worldgen(std::promise<MapPtr>&& mp)
 const int WorldGenerator::MIN_CREATURES_PER_VILLAGE = 12;
 const int WorldGenerator::MAX_CREATURES_PER_VILLAGE = 26;
 const int WorldGenerator::MAX_DANGER_LEVEL_FOR_WORLD_GEN = 50;
-const pair<int, int> WorldGenerator::X_IN_Y_CHANCE_TREASURE = { 1, 100 };
 
 // Even though the map_terrain_type parameter is used to generate creatures, and UNDEFINED would normally be bad, it
 // shouldn't matter for the world, since there will never be creatures generated on it.
@@ -55,11 +55,16 @@ WorldGenerator::WorldGenerator()
                       {TileType::TILE_TYPE_CAVERN, TileDepthOptions(1, 50)},
                       {TileType::TILE_TYPE_MINE, TileDepthOptions(5, 50, vector<int>({50,30}))}})
   , tg(false)
+  , x_in_y_chance_treasure({1,100})
 {
+  const Settings& settings = Game::instance().get_settings_ref();
+  x_in_y_chance_treasure.first = String::to_int(settings.get_setting(Setting::WORLD_MAP_TREASURE_X_IN_Y_X));
+  x_in_y_chance_treasure.second = String::to_int(settings.get_setting(Setting::WORLD_MAP_TREASURE_X_IN_Y_Y));
 }
 
 WorldGenerator::WorldGenerator(const string& new_map_exit_id)
 : Generator(new_map_exit_id, TileType::TILE_TYPE_UNDEFINED)
+
 {
   // Worlds don't do anything with the map exit id.
 }
@@ -67,8 +72,24 @@ WorldGenerator::WorldGenerator(const string& new_map_exit_id)
 
 MapPtr WorldGenerator::generate()
 {
+  const Settings& settings = Game::instance().get_settings_ref();;
+  string world_map_rows_s = settings.get_setting(Setting::WORLD_MAP_ROWS);
+  string world_map_cols_s = settings.get_setting(Setting::WORLD_MAP_COLS);
+  int rows = 100;
+  int cols = 100;
+
+  if (!world_map_rows_s.empty())
+  {
+    rows = String::to_int(world_map_rows_s);
+  }
+
+  if (!world_map_cols_s.empty())
+  {
+    cols = String::to_int(world_map_cols_s);
+  }
+
   // Default is 100x100
-  Dimensions default_dimensions(100, 100);
+  Dimensions default_dimensions(rows, cols);
   return generate(default_dimensions);
 }
 
@@ -84,8 +105,9 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   village_coordinates.clear();
   initial_race_ids.clear();
   
-  // Fill the world with water.
-  fill(result_map, TileType::TILE_TYPE_SEA);
+  // Fill the world with the base type.
+  TileType tt = static_cast<TileType>(String::to_int(Game::instance().get_settings_ref().get_setting(Setting::WORLD_MAP_FILL_TILE_TYPE)));
+  fill(result_map, tt);
 
   // Generate the random world
   result_map = generate_random_islands(result_map);
@@ -150,13 +172,16 @@ void WorldGenerator::post_process_cell(MapPtr map, const int row, const int col)
     prop_pairs = { {250, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}},
                    {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}},
                    {450, {TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE}},
-                   {250, {TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE, TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE}}};
+                   {250, {TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE, TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE}},
+                   {500, {TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE, TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE}}
+    };
   }
   else if (tt == TileType::TILE_TYPE_HILLS)
   {
     prop_pairs = { {400, {TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR, TileTextKeys::TILE_EXTRA_DESCRIPTION_BAZAAR}},
                    {500, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}},
-                   {350, {TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE, TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE}}};
+                   {350, {TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE, TileTextKeys::TILE_EXTRA_DESCRIPTION_STOREHOUSE}},
+                   {400, {TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE, TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE}}};
   }
   else if (tt == TileType::TILE_TYPE_MARSH)
   {
@@ -168,6 +193,7 @@ void WorldGenerator::post_process_cell(MapPtr map, const int row, const int col)
   {
     prop_pairs = { {300, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}},
                    {300, {TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE}},
+                   {600, {TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE, TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE}}
     };
   }
   else if (tt == TileType::TILE_TYPE_SCRUB)
@@ -184,7 +210,8 @@ void WorldGenerator::post_process_cell(MapPtr map, const int row, const int col)
   else if (tt == TileType::TILE_TYPE_MOUNTAINS)
   {
     prop_pairs = { {700, {TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_HERMITAGE}},
-                   {700, {TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE}} };
+                   {700, {TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE, TileTextKeys::TILE_EXTRA_DESCRIPTION_COTTAGE}},
+                   {700, {TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE, TileTextKeys::TILE_EXTRA_DESCRIPTION_SURFACE_MINE}}};
   }
   // else { ... }
   // other terrain types don't have properties currently defined.
@@ -228,40 +255,30 @@ void WorldGenerator::populate_terrain_cell_maps
 , CellMap& desert_cell_map
 )
 {
-  // Field-Islands
-  CellularAutomataSettings cas(55, 50000, 4, 54, CellValue::CELL_OFF);
-  CellularAutomataGenerator cag(cas, dimensions);
-  field_cell_map = cag.generate();
+  string prefix = "_world_map_ca_";
 
-  // Forests
-  CellularAutomataSettings cas_forest(52, 50000, 4, 54, CellValue::CELL_OFF);
-  CellularAutomataGenerator cag_forest(cas_forest, dimensions);
-  forest_cell_map = cag_forest.generate();
-  
-  // Hills
-  CellularAutomataSettings cas_hills(51, 50000, 4, 54, CellValue::CELL_OFF);
-  CellularAutomataGenerator cag_hills(cas_hills, dimensions);
-  hills_cell_map = cag_hills.generate();
+  vector<pair<string, CellMap&>> terrain_types = { {"field", field_cell_map},
+                                                   {"forest", forest_cell_map},
+                                                   {"hills", hills_cell_map},
+                                                   {"mountains", mountains_cell_map},
+                                                   {"scrubland", scrub_cell_map},
+                                                   {"marshes", marsh_cell_map},
+                                                   {"desert", desert_cell_map} };
 
-  // Mountains
-  CellularAutomataSettings cas_mountains(45, 50000, 4, 45, CellValue::CELL_ON);
-  CellularAutomataGenerator cag_mountains(cas_mountains, dimensions);
-  mountains_cell_map = cag_mountains.generate();
+  const Settings& settings = Game::instance().get_settings_ref();
 
-  // Scrubland
-  CellularAutomataSettings cas_scrub(53, 50000, 4, 53, CellValue::CELL_OFF);
-  CellularAutomataGenerator cag_scrub(cas_scrub, dimensions);
-  scrub_cell_map = cag_scrub.generate();
-  
-  // Marshes
-  CellularAutomataSettings cas_marsh(20, 100, 4, 20, CellValue::CELL_OFF);
-  CellularAutomataGenerator cag_marsh(cas_marsh, dimensions);
-  marsh_cell_map = cag_marsh.generate();
-  
-  // Desert
-  CellularAutomataSettings cas_desert(20, 100, 4, 20, CellValue::CELL_OFF);
-  CellularAutomataGenerator cag_desert(cas_desert, dimensions);
-  desert_cell_map = cag_desert.generate();
+  for (auto& tt_pair : terrain_types)
+  {
+    int p_close_cell = String::to_int(settings.get_setting(prefix + tt_pair.first + "_p_close_cell"));
+    int iterations = String::to_int(settings.get_setting(prefix + tt_pair.first + "_iterations"));
+    int neighbour_threshold = String::to_int(settings.get_setting(prefix + tt_pair.first + "_neighbour_threshold"));
+    int offset = String::to_int(settings.get_setting(prefix + tt_pair.first + "_offset"));
+    CellValue cell_val = static_cast<CellValue>(String::to_int(settings.get_setting(prefix + tt_pair.first + "_flip_value")));
+
+    CellularAutomataSettings cas(p_close_cell, iterations, neighbour_threshold, offset, cell_val);
+    CellularAutomataGenerator cag(cas, dimensions);
+    tt_pair.second = cag.generate();
+  }
 }
 
 // Handle generation of field terrain
@@ -926,7 +943,7 @@ string WorldGenerator::get_race_village_extra_description_sid(const string& race
 
 void WorldGenerator::potentially_add_treasure(const string& key, TilePtr tile, NormalDistribution& nd, bool& terrain_override, const bool treasure_is_underwater)
 {
-  if (tile != nullptr && tile->get_custom_map_id().empty() && (terrain_override || RNG::x_in_y_chance(X_IN_Y_CHANCE_TREASURE.first, X_IN_Y_CHANCE_TREASURE.second)))
+  if (tile != nullptr && tile->get_custom_map_id().empty() && (terrain_override || RNG::x_in_y_chance(x_in_y_chance_treasure.first, x_in_y_chance_treasure.second)))
   {
     Log& log = Log::instance();
     int difficulty = nd.next_int_as_pct();

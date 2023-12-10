@@ -12809,6 +12809,12 @@
 				<NumSides>10</NumSides>
 				<Type>0</Type>
 			</Damage>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_MINER</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="zealot">
 			<RaceID>07_goblin</RaceID>
@@ -13031,6 +13037,12 @@
 				<NumSides>10</NumSides>
 				<Type>0</Type>
 			</Damage>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_MINER</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="dwarven_stonecarver">
 			<RaceID>06_dwarf</RaceID>
@@ -13069,6 +13081,12 @@
 				<NumSides>10</NumSides>
 				<Type>0</Type>
 			</Damage>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_MINER</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="dwarven_anklebiter">
 			<RaceID>06_dwarf</RaceID>
@@ -15155,6 +15173,12 @@
 				<NumSides>14</NumSides>
 				<Type>2</Type>
 			</Damage>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_MINER</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="mountain_elf_topographer">
 			<RaceID>03_mountainelf</RaceID>
@@ -17047,7 +17071,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="sea_serpent">
-			<RaceID>_sea_serpent</RaceID>
+			<RaceID>_monster</RaceID>
 			<BreatheType>1</BreatheType>
 			<ShortDescriptionSID>SEA_SERPENT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SEA_SERPENT_DESCRIPTION_SID</DescriptionSID>
@@ -20303,6 +20327,12 @@
 			</Damage>
 			<Evade>5</Evade>
 			<Soak>0</Soak>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_MINER</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="gnomish_adventurer">
 			<RaceID>10_gnome</RaceID>
@@ -20449,6 +20479,12 @@
 			</Damage>
 			<Evade>5</Evade>
 			<Soak>2</Soak>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_MINER</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="gnordvar_priest">
 			<RaceID>10_gnome</RaceID>
@@ -20791,6 +20827,10 @@
 					<NumDice>1000</NumDice>
 					<NumSides>1</NumSides>
 				</HP>
+				<AP>
+					<NumDice>1000</NumDice>
+					<NumSides>1</NumSides>
+				</AP>
 				<Exp>2000000</Exp>
 			</CreatureGeneration>
 			<Level>50</Level>
@@ -20799,9 +20839,11 @@
 				<NumSides>220</NumSides>
 				<Modifier>25</Modifier>
 				<Type>3</Type>
+				<EffectBonus>50</EffectBonus>
 			</Damage>
 			<Evade>30</Evade>
 			<Soak>35</Soak>
+			<Speed>30</Speed>
 			<EventScripts>
 				<DeathScript>
 					<Script>death/amaurosis.lua</Script>
@@ -20814,6 +20856,16 @@
 					<Script>tame/amaurosis.lua</Script>
 				</TameScript>
 			</EventScripts>
+			<Spells>
+				<Spell>
+					<SpellID>a_02_dragon_breath</SpellID>
+					<Castings>5</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>p_06_nightfire</SpellID>
+					<Castings>5</Castings>
+				</Spell>
+			</Spells>
 		</Creature>
 		<Creature id="super_boss">
 			<RaceID>_divine</RaceID>
@@ -27393,6 +27445,60 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="temple_master">
+			<RaceID>01_human</RaceID>
+			<DeityID>01_celeste</DeityID>
+			<ShortDescriptionSID>TEMPLE_MASTER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>TEMPLE_MASTER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>TEMPLE_MASTER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>TEMPLE_MASTER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>t</Char>
+				<Colour>15</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>14</Row>
+					<Col>3</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>35</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>35</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>20000</Exp>
+			</CreatureGeneration>
+			<Level>35</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>70</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/carcassia/temple_master.lua</Script>
+				</ChatScript>
+			</EventScripts>
+			<Spells>
+				<Spell>
+					<SpellID>d_03_holy</SpellID>
+					<Castings>4</Castings>
+				</Spell>
+				<Spell>
+					<SpellID>d_10_radiant_beam</SpellID>
+					<Castings>2</Castings>
+				</Spell>
+			</Spells>
+		</Creature>
 		<Creature id="hedge_wizard">
 			<RaceID>03_mountainelf</RaceID>
 			<ShortDescriptionSID>HEDGE_WIZARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -28567,6 +28673,12 @@
 					<Script>quests/commoner.lua</Script>
 				</ChatScript>
 			</EventScripts>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_MINER</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="_smith">
 			<RaceID>01_human,02_woodelf,03_mountainelf,04_snakeling,05_fae,06_dwarf,07_goblin,08_ogre,09_giant,10_gnome</RaceID>

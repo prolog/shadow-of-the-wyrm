@@ -47,3 +47,16 @@ TEST(SW_Engine_Calculator_ItemBreakageCalculator, calculate_skill_breakage_multi
   EXPECT_FLOAT_EQ(0.15f, ibc.calculate_skill_breakage_multiplier(creature));
 }
 
+TEST(SW_Engine_Calculator_ItemBreakageCalculator, get_status_breakage_multiplier)
+{
+  ItemBreakageCalculator ibc;
+
+  ItemPtr amulet = std::make_shared<Amulet>();
+  std::map<ItemStatus, float> mults = { {ItemStatus::ITEM_STATUS_CURSED, 2.0f}, {ItemStatus::ITEM_STATUS_UNCURSED, 1.0f}, {ItemStatus::ITEM_STATUS_BLESSED, 0.5f} };
+
+  for (const auto& m_pair : mults)
+  {
+    amulet->set_status(m_pair.first);
+    EXPECT_FLOAT_EQ(m_pair.second, ibc.get_status_breakage_multiplier(amulet->get_status()));
+  }
+}

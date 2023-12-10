@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "FieldTile.hpp"
+#include "GeneratorUtils.hpp"
 #include "MapProperties.hpp"
 
 class SW_Engine_Map : public ::testing::Test
@@ -191,6 +192,8 @@ TEST_F(SW_Engine_Map, get_starting_location)
 {
   MapPtr map = make_map();
   Coordinate exp = { 0, 0 };
+  GeneratorUtils::fill(map, { 0,0 }, { 19, 79 }, TileType::TILE_TYPE_SEA);
+
   EXPECT_EQ(exp, map->get_starting_location());
 
   std::map<string, string> props = { {MapProperties::MAP_PROPERTIES_COASTLINE_NORTH, std::to_string(true)},

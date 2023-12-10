@@ -83,12 +83,10 @@ pair<string, string> WeaponInfoAction::get_wielded_and_offhand_text(CreaturePtr 
   {
     Equipment& eq = creature->get_equipment();
     Damage base_damage = creature->get_base_damage();
+    WeaponManager wm;
 
-    ItemPtr wielded_item = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
-    WeaponPtr wielded_weapon = dynamic_pointer_cast<Weapon>(wielded_item);
-
-    ItemPtr off_hand_item = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND);
-    WeaponPtr off_hand_weapon = dynamic_pointer_cast<Weapon>(off_hand_item);
+    WeaponPtr wielded_weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
+    WeaponPtr off_hand_weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_SECONDARY);
 
     wo_text.first = get_melee_weapon_info(creature, wielded_weapon, AttackType::ATTACK_TYPE_MELEE_PRIMARY, base_damage);
     wo_text.second = get_melee_weapon_info(creature, off_hand_weapon, AttackType::ATTACK_TYPE_MELEE_SECONDARY, base_damage);

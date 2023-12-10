@@ -7,9 +7,10 @@ using namespace std;
 const int ItemBreakageCalculator::BASE_PCT_CHANCE_DIGGING_BREAKAGE = 50;
 const float ItemBreakageCalculator::MIN_SKILL_BREAKAGE_MULTIPLIER = 0.15f;
 
-int ItemBreakageCalculator::calculate_pct_chance_digging_breakage(CreaturePtr creature, TilePtr tile, ItemPtr item)
+int ItemBreakageCalculator::calculate_pct_chance_digging_breakage(CreaturePtr creature, TilePtr tile, ItemPtr item) const
 {
   int result = BASE_PCT_CHANCE_DIGGING_BREAKAGE;
+  float item_status_mult = 1.0f;
 
   if (item != nullptr)
   {
@@ -19,6 +20,8 @@ int ItemBreakageCalculator::calculate_pct_chance_digging_breakage(CreaturePtr cr
     {
       result = String::to_int(breakage_pct_chance);
     }
+
+    item_status_mult = get_status_breakage_multiplier(item->get_status());
   }
 
   pair<bool, int> override = get_override_pct_chance_breakage(item);
@@ -30,13 +33,13 @@ int ItemBreakageCalculator::calculate_pct_chance_digging_breakage(CreaturePtr cr
 
   float skill_break_mult = calculate_skill_breakage_multiplier(creature);
   float tile_break_mult  = calculate_tile_breakage_multiplier(tile);
-
-  result = static_cast<int>(result * skill_break_mult * tile_break_mult);
+  
+  result = static_cast<int>(result * skill_break_mult * tile_break_mult * item_status_mult);
 
   return result;
 }
 
-pair<bool, int> ItemBreakageCalculator::get_override_pct_chance_breakage(ItemPtr item)
+pair<bool, int> ItemBreakageCalculator::get_override_pct_chance_breakage(ItemPtr item) const
 {
   pair<bool, int> result = make_pair(false, 0);
 
@@ -52,7 +55,7 @@ pair<bool, int> ItemBreakageCalculator::get_override_pct_chance_breakage(ItemPtr
   return result;
 }
 
-float ItemBreakageCalculator::calculate_skill_breakage_multiplier(CreaturePtr creature)
+float ItemBreakageCalculator::calculate_skill_breakage_multiplier(CreaturePtr creature) const
 {
   float skill_mult = 1.0f;
 
@@ -69,7 +72,7 @@ float ItemBreakageCalculator::calculate_skill_breakage_multiplier(CreaturePtr cr
   return skill_mult;
 }
 
-float ItemBreakageCalculator::calculate_tile_breakage_multiplier(TilePtr tile)
+float ItemBreakageCalculator::calculate_tile_breakage_multiplier(TilePtr tile) const
 {
   float tile_mult = 1.0f;
 
@@ -79,6 +82,20 @@ float ItemBreakageCalculator::calculate_tile_breakage_multiplier(TilePtr tile)
   }
 
   return tile_mult;
+}
+
+float ItemBreakageCalculator::get_status_breakage_multiplier(const ItemStatus item_status) const
+{
+  switch (item_status)
+  {
+    case ItemStatus::ITEM_STATUS_CURSED:
+      return 2.0f;
+    case ItemStatus::ITEM_STATUS_UNCURSED:
+      return 1.0f;
+    case ItemStatus::ITEM_STATUS_BLESSED:
+    default:
+      return 0.5f;
+  }
 }
 
 #ifdef UNIT_TESTS

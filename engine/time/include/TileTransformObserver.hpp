@@ -11,8 +11,9 @@ class TileTransformObserver : public ITimeObserver
 
   protected:
     void process_tile_transforms(MapPtr current_map, const double cur_seconds);
+    void process_item_transforms(MapPtr current_map, const double cur_seconds);
 
-  private:
+private:
     ClassIdentifier internal_class_identifier() const override;
 };
 

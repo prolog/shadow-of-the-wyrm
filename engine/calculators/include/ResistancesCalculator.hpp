@@ -17,4 +17,6 @@ class ResistancesCalculator
   protected:
     Resistances calculate_equipment_resistances(CreaturePtr creature);
     Resistances calculate_modifier_resistances(CreaturePtr creature);
+
+    static const double GODLESSNESS_HOLY_RESISTANCE_VAL;
 };

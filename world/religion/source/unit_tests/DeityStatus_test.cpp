@@ -59,3 +59,13 @@ TEST(SW_World_Religion_DeityStatus, saveload)
 
   EXPECT_TRUE(ds1 == ds2);
 }
+
+TEST(SW_World_Religion_DeityStatus, set_godless)
+{
+  DeityStatus ds1;
+
+  ds1.set_null(true);
+  EXPECT_EQ(0, ds1.get_piety());
+  EXPECT_EQ(0, ds1.get_piety_regen_bonus());
+  EXPECT_EQ(ChampionType::CHAMPION_TYPE_UNCROWNED, ds1.get_champion_type());
+}

@@ -3,6 +3,7 @@
 #include "GeneratorUtils.hpp"
 #include "MobileDecisionStrategy.hpp"
 #include "SeaGenerator.hpp"
+#include "DirectionLocationTextKeys.hpp"
 #include "TileGenerator.hpp"
 #include "UnderwaterGenerator.hpp"
 

@@ -55,7 +55,7 @@ TEST(SW_Engine_Creatures_CreatureDifficulty, hp_indicator_sids)
 
   CreatureDifficulty cd;
 
-  EXPECT_EQ("", cd.get_health_indicator_sid(nullptr));
+  EXPECT_EQ(DifficultyTextKeys::HP_INDICATOR_UNCERTAIN, cd.get_health_indicator_sid(nullptr));
   EXPECT_EQ(DifficultyTextKeys::HP_INDICATOR_UNHARMED, cd.get_health_indicator_sid(creature));
   
   hp.set_current(45);

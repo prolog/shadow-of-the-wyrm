@@ -34,5 +34,7 @@ class SpellbookCalculator
 
     static const int BASE_PCT_CHANCE_WILD_INCINERATION;
     static const int MAX_PCT_CHANCE_WILD_INCINERATION;
+    static const int DIVINE_DIFFICULTY_GODLESS_MODIFIER;
+    static const int DIVINE_CASTINGS_GODLESS_DIVISOR;
 };
 

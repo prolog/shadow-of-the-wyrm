@@ -18,6 +18,7 @@ class CreatureGenerationManager
     CreatureGenerationIndex generate_creature_generation_map(const std::set<TileType>& map_terrain_types, const bool permanent_map, const bool islet, const MapType map_type, const int min_danger_level, const int max_danger_level, const Rarity rarity, const std::map<std::string, std::string>& additional_properties);
     CreatureGenerationIndex generate_ancient_beasts(const int max_danger_level, const MapType map_type, const TileType map_terrain_type);
 
+    std::vector<std::string> get_creature_ids_with_property(const std::string& property_name);
     std::string select_creature_id_for_generation(ActionManager& am, const CreatureGenerationList& creature_generation_list);
 
     std::shared_ptr<Creature> generate_creature(ActionManager& am, const CreatureGenerationList& creature_generation_list, MapPtr map);

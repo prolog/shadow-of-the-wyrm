@@ -31,6 +31,7 @@
 #include "PlayerDecisionStrategy.hpp"
 #include "RaceManager.hpp"
 #include "RaceSelectionScreen.hpp"
+#include "ReligionConstants.hpp"
 #include "RNG.hpp"
 #include "ScriptConstants.hpp"
 #include "Serialization.hpp"
@@ -406,7 +407,6 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   const Settings& settings = game.get_settings_ref();
   CreatureSex sex = CreatureSex::CREATURE_SEX_MALE;
     
-  const DeityMap& deities = game.get_deities_cref();
   const RaceMap& races   = game.get_races_ref();
   const ClassMap& classes = game.get_classes_ref();
   
@@ -459,7 +459,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   if (prompt_user_for_race_selection)
   {
-    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, nullptr, nullptr, nullptr, nullptr);
+    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, nullptr, nullptr, "", nullptr);
     RaceSelectionScreen race_selection(display, creature_synopsis);
     string race_index = race_selection.display();
 
@@ -499,7 +499,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   {
     RaceManager rm;
     Race* sel_race = rm.get_race(selected_race_id);
-    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, nullptr, nullptr, nullptr);
+    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, nullptr, "", nullptr);
     
     ClassSelectionScreen class_selection(display, creature_synopsis);
     string class_index = class_selection.display();
@@ -523,7 +523,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   Race* selected_race = races.find(selected_race_id)->second.get();
   Class* selected_class = classes.find(selected_class_id)->second.get();
 
-  creature_synopsis = TextMessages::get_character_creation_synopsis(sex, selected_race, selected_class, nullptr, nullptr);
+  creature_synopsis = TextMessages::get_character_creation_synopsis(sex, selected_race, selected_class, "", nullptr);
 
   HairColour hair_colour = HairColour::HAIR_NA;
   string default_hair = settings.get_setting(Setting::DEFAULT_HAIR_COLOUR);
@@ -642,14 +642,14 @@ bool ShadowOfTheWyrmEngine::process_new_game()
           break;
         }
       }
-    }
-  }
 
-  Deity* selected_deity = nullptr;
-  auto d_it = deities.find(selected_deity_id);
-  if (d_it != deities.end())
-  {
-    selected_deity = d_it->second.get();
+      // If we selected something, but we didn't find the ID, assume it's
+      // the Godless ID.
+      if (selected_deity_id.empty())
+      {
+        selected_deity_id = ReligionConstants::DEITY_ID_GODLESS;
+      }
+    }
   }
 
   string default_starting_location_id = settings.get_setting(Setting::DEFAULT_STARTING_LOCATION_ID);
@@ -663,8 +663,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   }
   else
   {
-    string deity_sid = selected_deity->get_name_sid();    
-    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, selected_race, selected_class, selected_deity, nullptr);
+    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, selected_race, selected_class, selected_deity_id, nullptr);
     StartingLocationSelectionScreen sl_selection(display, creature_synopsis, sm);
     string sl_sidx = sl_selection.display();
 
@@ -690,16 +689,14 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
 
   const RaceMap& races = game.get_races_ref();
   const ClassMap& classes = game.get_classes_ref();
-  const DeityMap& deities = game.get_deities_cref();
 
   Race* selected_race = races.at(ccd.get_race_id()).get();
   Class* selected_class = classes.at(ccd.get_class_id()).get();
-  Deity* deity = deities.at(ccd.get_deity_id()).get();
   string name;
 
   bool user_and_character_exist = true;
   StartingLocation sl = ccd.get_starting_location();
-  string creature_synopsis = TextMessages::get_character_creation_synopsis(ccd.get_sex(), selected_race, selected_class, deity, &sl);
+  string creature_synopsis = TextMessages::get_character_creation_synopsis(ccd.get_sex(), selected_race, selected_class, ccd.get_deity_id(), &sl);
   string default_name = game.get_settings_ref().get_setting(Setting::DEFAULT_NAME);
   bool username_is_character_name = String::to_bool(game.get_settings_ref().get_setting(Setting::USERNAME_IS_CHARACTER_NAME));
   string warning_message;

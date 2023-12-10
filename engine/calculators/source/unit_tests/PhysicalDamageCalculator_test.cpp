@@ -130,3 +130,14 @@ TEST(SW_World_Calculators_PhysicalDamageCalculator, get_drunkenness_modifier)
 
   EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature));
 }
+
+TEST(SW_World_Calculators_PhysicalDamageCalculator, get_item_status_modifier)
+{
+  PhysicalDamageCalculator pdc(AttackType::ATTACK_TYPE_MELEE_PRIMARY, PhaseOfMoonType::PHASE_OF_MOON_NEW);
+  std::map<ItemStatus, int> statuses = { {ItemStatus::ITEM_STATUS_CURSED, -10}, {ItemStatus::ITEM_STATUS_UNCURSED, 0}, {ItemStatus::ITEM_STATUS_BLESSED, 10} };
+
+  for (const auto& st_pair : statuses)
+  {
+    EXPECT_EQ(st_pair.second, pdc.get_item_status_effect_bonus(st_pair.first));
+  }
+}

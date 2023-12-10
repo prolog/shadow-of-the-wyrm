@@ -261,7 +261,8 @@ void set_display_settings(DisplayPtr display, const Settings& settings)
                                      Setting::DISPLAY_FONT, 
                                      Setting::DISPLAY_TILE_SIZE, 
                                      Setting::DISPLAY_TILE_GLYPHS_PER_LINE, 
-                                     Setting::DISPLAY_NUM_GLYPHS };
+                                     Setting::DISPLAY_NUM_GLYPHS,
+                                     Setting::DISPLAY_SIMPLIFIED_SPLASH_SCREEN };
 
     for (const string& s : setting_names)
     {

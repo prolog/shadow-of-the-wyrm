@@ -4499,6 +4499,24 @@
     <ClInclude Include="engine\decision_strategies\deity\include\GrantSpellDeityDecisionStrategyHandler.hpp">
       <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\settlements\sector\include\SurfaceMineSectorFeature.hpp">
+      <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\rooms\include\MushRoomGenerator.hpp">
+      <Filter>Header Files\engine\generators\rooms\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\FoodCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\TileItemTransform.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\ExoticWeaponCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\SummonTrapsEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9120,6 +9138,42 @@
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\deity\source\GrantSpellDeityDecisionStrategyHandler.cpp">
       <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\sector\source\SurfaceMineSectorFeature.cpp">
+      <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\unit_tests\DirectionLocationTextKeys_test.cpp">
+      <Filter>Source Files\engine\strings\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\rooms\source\MushRoomGenerator.cpp">
+      <Filter>Source Files\engine\generators\rooms\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\FoodCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\FoodCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\TileItemTransform.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\TileItemTransform_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\ExoticWeaponCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\ExoticWeaponCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\AmmunitionCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\SummonTrapsEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Class_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
