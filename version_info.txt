@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.6.2 "Daca"
-- Version started July 8, 2023.
+- Version started July 8, 2023.  Version finalized December 10, 2023.
 
 - The game now shows "a vanished god" if you worship one of the Nine and they
   are gone from the game.
