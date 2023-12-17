@@ -1,7 +1,8 @@
 Me:
-- ASSET RELEASE
+- ASSET RELEASE (images, sounds)
 - git push --tags
 - Need to release sprites
+- Xvordan: sound effects
 - hemsio: autosave not working?
 - unit tests for properties in Option
 - set item status property in CreateItemScreen
@@ -519,6 +520,7 @@ Marcin Puc:
 
 Xvordan:
 - in-map waypoint system
+- Would you consider adding in a sound playback system, kind of like how DCSS does it? They use regular expressions to match to a game event to play a sound.
 
 Stevie-3:
 - tab cycles through creatures, items, (+ features?) in view
