@@ -230,6 +230,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_unique<AutomaticActionsCommand>(key);
   }
+  else if (command_name == CommandKeys::SOUND_ACTIONS)
+  {
+    command = std::make_unique<SoundActionsCommand>(key);
+  }
   else if (command_name == CommandKeys::BREED)
   {
     command = std::make_unique<BreedCommand>(key);

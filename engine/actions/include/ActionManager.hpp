@@ -164,6 +164,9 @@ class ActionManager : public ISerializable
     // melee at range, etc
     ActionCost automatic_actions(CreaturePtr creature);
 
+    // Toggle sound effects and music
+    ActionCost sound_actions(CreaturePtr creature);
+
     // Breed by spawning into an adjacent tile
     ActionCost breed(CreaturePtr creature);
 

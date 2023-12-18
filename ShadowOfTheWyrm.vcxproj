@@ -338,6 +338,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\actions\include\ShowResistancesAction.hpp" />
     <ClInclude Include="engine\actions\include\SkillsAction.hpp" />
     <ClInclude Include="engine\actions\include\SkinAction.hpp" />
+    <ClInclude Include="engine\actions\include\SoundActionsAction.hpp" />
     <ClInclude Include="engine\actions\include\SpellcastingAction.hpp" />
     <ClInclude Include="engine\actions\include\StairwayMovementAction.hpp" />
     <ClInclude Include="engine\actions\include\TileMovementConfirmation.hpp" />
@@ -1524,6 +1525,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\actions\source\OrderAction.cpp" />
     <ClCompile Include="engine\actions\source\RangedCombatUtils.cpp" />
     <ClCompile Include="engine\actions\source\SkillsAction.cpp" />
+    <ClCompile Include="engine\actions\source\SoundActionsAction.cpp" />
     <ClCompile Include="engine\actions\source\unit_tests\AutomaticMovementFlags_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

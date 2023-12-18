@@ -8,7 +8,7 @@ using namespace std;
 void SDLInit::set_up()
 {
   // Temporary code, will be moved elsewhere once the display is working.
-  if (SDL_Init(SDL_INIT_VIDEO) != 0)
+  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)
   {
     ostringstream ss;
     ss << "Unable to initialize SDL: " << SDL_GetError();
