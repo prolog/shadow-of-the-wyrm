@@ -66,6 +66,7 @@ const string CommandKeys::HELP           = "HELP";
 const string CommandKeys::BREED          = "BREED";
 const string CommandKeys::INSCRIBE       = "INSCRIBE";
 const string CommandKeys::AUTOMATIC_ACTIONS = "AUTOMATIC_ACTIONS";
+const string CommandKeys::SOUND_ACTIONS  = "SOUND_ACTIONS";
 const string CommandKeys::ITEM_CODEX     = "ITEM_CODEX";
 const string CommandKeys::SWITCH_GRAPHICS_MODE = "SWITCH_GRAPHICS_MODE";
 const string CommandKeys::SWITCH_COLOUR_PALETTES = "SWITCH_COLOUR_PALETTES";

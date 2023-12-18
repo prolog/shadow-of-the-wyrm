@@ -596,6 +596,16 @@ AutomaticActionsCommand::~AutomaticActionsCommand()
 {
 }
 
+// Toggle sound effects and music
+SoundActionsCommand::SoundActionsCommand(int key)
+: Command(CommandKeys::SOUND_ACTIONS, key)
+{
+}
+
+SoundActionsCommand::~SoundActionsCommand()
+{
+}
+
 // Item codex
 ItemCodexCommand::ItemCodexCommand(int key)
 : Command(CommandKeys::ITEM_CODEX, key)
