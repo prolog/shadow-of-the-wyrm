@@ -7,6 +7,9 @@ class SDLSound : public Sound
 		SDLSound();
 		virtual ~SDLSound();
 
+	protected:
+		virtual void tear_down();
+
 	private:
 		virtual ClassIdentifier internal_class_identifier() const override;
 };
