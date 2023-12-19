@@ -13,6 +13,14 @@ void SDLInit::set_up()
     ostringstream ss;
     ss << "Unable to initialize SDL: " << SDL_GetError();
     Log::instance().error(ss.str());
+
+    ostringstream ss_audio;
+
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+    {
+      ss_audio << "SDL_mixer init error: " << Mix_GetError();
+      Log::instance().error(ss_audio.str());
+    }
   }
   else
   {
@@ -23,6 +31,7 @@ void SDLInit::set_up()
 
 void SDLInit::tear_down()
 {
+  Mix_Quit();
   SDL_Quit();
 }
 #endif

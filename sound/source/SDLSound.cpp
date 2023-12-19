@@ -1,10 +1,20 @@
+#include <sstream>
 #include "SDLSound.hpp"
+#include "Log.hpp"
+#include "SDLInit.hpp"
+
+using namespace std;
 
 SDLSound::SDLSound()
 {
 }
 
 SDLSound::~SDLSound()
+{
+	tear_down();
+}
+
+void SDLSound::tear_down()
 {
 }
 
