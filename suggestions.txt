@@ -1,6 +1,7 @@
 Me:
 - ASSET RELEASE (images, sounds)
 - git push --tags
+- need to add sound to linux premake config
 - Need to release sprites
 - Xvordan: sound effects
 - hemsio: autosave not working?

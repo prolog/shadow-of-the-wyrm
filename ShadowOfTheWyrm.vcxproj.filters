@@ -831,6 +831,21 @@
     <Filter Include="Source Files\engine\conversion\source\unit_tests">
       <UniqueIdentifier>{0e99037b-4b54-48f3-858f-0e29cdda3eed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\sound">
+      <UniqueIdentifier>{5aca529d-05fb-40cc-b004-ec877ef84dd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\sound\include">
+      <UniqueIdentifier>{8d44aa47-53fa-4f5b-9919-5720bf366b05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sound">
+      <UniqueIdentifier>{b4188867-bb68-4196-b07e-dd15240b5f5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sound\source">
+      <UniqueIdentifier>{db15f7ac-715f-4d8a-bba1-c6fdf054ed6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sound\source\unit_tests">
+      <UniqueIdentifier>{1400f48f-f57d-4ef2-b084-cd602ac88619}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -4519,6 +4534,18 @@
     </ClInclude>
     <ClInclude Include="engine\actions\include\SoundActionsAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="sound\include\SDLSound.hpp">
+      <Filter>Header Files\sound\include</Filter>
+    </ClInclude>
+    <ClInclude Include="sound\include\Sound.hpp">
+      <Filter>Header Files\sound\include</Filter>
+    </ClInclude>
+    <ClInclude Include="sound\include\SoundFactory.hpp">
+      <Filter>Header Files\sound\include</Filter>
+    </ClInclude>
+    <ClInclude Include="sound\include\NullSound.hpp">
+      <Filter>Header Files\sound\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -9180,6 +9207,24 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\SoundActionsAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="sound\source\SDLSound.cpp">
+      <Filter>Source Files\sound\source</Filter>
+    </ClCompile>
+    <ClCompile Include="sound\source\SoundFactory.cpp">
+      <Filter>Source Files\sound\source</Filter>
+    </ClCompile>
+    <ClCompile Include="sound\source\NullSound.cpp">
+      <Filter>Source Files\sound\source</Filter>
+    </ClCompile>
+    <ClCompile Include="sound\source\Sound.cpp">
+      <Filter>Source Files\sound\source</Filter>
+    </ClCompile>
+    <ClCompile Include="sound\source\unit_tests\NullSound_test.cpp">
+      <Filter>Source Files\sound\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="sound\source\unit_tests\SDLSound_test.cpp">
+      <Filter>Source Files\sound\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

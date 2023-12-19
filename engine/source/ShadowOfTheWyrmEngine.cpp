@@ -181,6 +181,11 @@ void ShadowOfTheWyrmEngine::set_display(DisplayPtr new_display)
   display = new_display;
 }
 
+void ShadowOfTheWyrmEngine::set_sound(SoundPtr new_sound)
+{
+  sound = new_sound;
+}
+
 // Set up the Display based on the ini settings.
 void ShadowOfTheWyrmEngine::setup_display(const Settings& settings)
 {
@@ -222,6 +227,7 @@ void ShadowOfTheWyrmEngine::setup_game()
   // Custom maps are read last because they rely on creatures (which rely on races
   // and classes), and items.
   game.set_display(display);
+  game.set_sound(sound);
 
   log.debug("Reading items.");
 
