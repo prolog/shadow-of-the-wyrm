@@ -463,6 +463,8 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   MapPtr current_map = game.get_current_map();
   ostringstream combat_message;
 
+  Game::instance().get_sound()->play("assets/sound/effects/hit.wav");
+
   if (wm.is_using_weapon(attacking_creature, attack_type))
   {
     attacking_creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_WEAPONLESS);

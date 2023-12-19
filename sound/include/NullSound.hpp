@@ -7,6 +7,8 @@ class NullSound : public Sound
 		NullSound();
 		~NullSound();
 
+		void play(const std::string& path) override;
+
 	private:
 		virtual ClassIdentifier internal_class_identifier() const override;
 };
