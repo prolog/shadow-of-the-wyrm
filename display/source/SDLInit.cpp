@@ -13,19 +13,19 @@ void SDLInit::set_up()
     ostringstream ss;
     ss << "Unable to initialize SDL: " << SDL_GetError();
     Log::instance().error(ss.str());
-
-    ostringstream ss_audio;
-
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
-    {
-      ss_audio << "SDL_mixer init error: " << Mix_GetError();
-      Log::instance().error(ss_audio.str());
-    }
   }
   else
   {
     SDL_SetHint(SDL_HINT_VIDEO_X11_NET_WM_PING, "0");
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
+  }
+
+  if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+  {
+    ostringstream ss_audio;
+
+    ss_audio << "SDL_mixer init error: " << Mix_GetError();
+    Log::instance().error(ss_audio.str());
   }
 }
 

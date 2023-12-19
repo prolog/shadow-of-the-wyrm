@@ -1,10 +1,16 @@
 #include "NullSound.hpp"
 
+using namespace std;
+
 NullSound::NullSound()
 {
 }
 
 NullSound::~NullSound()
+{
+}
+
+void NullSound::play(const string& path)
 {
 }
 

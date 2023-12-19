@@ -7,6 +7,8 @@ class Sound : public ISerializable
 	public:
 		virtual ~Sound();
 
+		virtual void play(const std::string& path) = 0;
+
 		virtual bool serialize(std::ostream& stream) const override;
 		virtual bool deserialize(std::istream& stream) override;
 
