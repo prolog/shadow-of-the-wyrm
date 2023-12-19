@@ -42,6 +42,7 @@
 #include "Serialize.hpp"
 #include "Serialization.hpp"
 #include "Setting.hpp"
+#include "SoundFactory.hpp"
 #include "StatusActionProcessor.hpp"
 #include "StealthSkillProcessor.hpp"
 #include "TextKeys.hpp"
@@ -191,6 +192,16 @@ void Game::set_display(DisplayPtr game_display)
 DisplayPtr Game::get_display() const
 {
   return display;
+}
+
+void Game::set_sound(SoundPtr game_sound)
+{
+  sound = game_sound;
+}
+
+SoundPtr Game::get_sound() const
+{
+  return sound;
 }
 
 void Game::set_map_registry(const MapRegistry& new_map_registry)
@@ -1221,6 +1232,9 @@ bool Game::serialize(ostream& stream) const
   Serialize::write_class_id(stream, display->get_class_identifier());
   display->serialize(stream);
 
+  Serialize::write_class_id(stream, sound->get_class_identifier());
+  sound->serialize(stream);
+
   map_registry.serialize(stream);
 
   Serialize::write_size_t(stream, deities.size());
@@ -1446,6 +1460,13 @@ bool Game::deserialize(istream& stream)
 
   // We also need the value of ASCII mode.
   display->set_force_ascii(dc_pair.first->get_force_ascii());
+
+  ClassIdentifier sound_ci;
+  Serialize::read_class_id(stream, sound_ci);
+
+  SoundFactory sf;
+  SoundPtr sound = sf.create_sound(sound_ci);
+  sound->deserialize(stream);
 
   map_registry.deserialize(stream);
 

@@ -86,7 +86,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)\engine\commands\skills\include;$(ProjectDir)\engine\commands\help\include;$(ProjectDir)\engine\decision_strategies\magic\include;$(ProjectDir)\engine\generators\rooms\include;$(ProjectDir)\engine\generators\fortresses\include;$(ProjectDir)\engine\generators\settlements\sector\include;$(ProjectDir)\engine\maps\tiles\features\include;$(ProjectDir)\engine\maps\tiles\include;$(SDL_DIR)\include;$(ZLIB_DIR)\zlib-1.2.11\include;$(ProjectDir)\engine\generators\crypts\include;$(ProjectDir)\engine\commands\screens\include;$(ProjectDir)\engine\XML\custom_maps\world\include;$(ProjectDir)\engine\XML\custom_maps\features\include;$(ProjectDir)\engine\creatures\include;$(ProjectDir)\engine\generators\tile_config\include;$(ProjectDir)\engine\actions\read\include;$(ProjectDir)\engine\commands\magic\include;$(ProjectDir)\engine\magic\include;$(ProjectDir)\engine\strings\include;$(ProjectDir)\world\magic\include;$(LUA_DEV)\include;$(ProjectDir)\engine\scripting\include;$(ProjectDir)\engine\maps\include;$(ProjectDir)\engine\XML\custom_maps\include;$(ProjectDir)\world\tiles\include;$(ProjectDir)\world\tiles\features\include;$(ProjectDir)\world\seasons\include;$(ProjectDir)\engine\commands\order\include;$(ProjectDir)\world\religion\include;$(ProjectDir)\world\materials\include;$(ProjectDir)\world\include;$(ProjectDir)\include;$(ProjectDir)\engine\XML\include;$(ProjectDir)\engine\translators\include;$(ProjectDir)\engine\time\include;$(ProjectDir)\engine\skills\include;$(ProjectDir)\engine\serialization\include;$(ProjectDir)\engine\screens\include;$(ProjectDir)\engine\items\include;$(ProjectDir)\engine\include;$(ProjectDir)\engine\generators\worship_sites\include;$(ProjectDir)\engine\generators\settlements\include;$(ProjectDir)\engine\generators\include;$(ProjectDir)\engine\generators\gardens\include;$(ProjectDir)\engine\field_of_view\include;$(ProjectDir)\engine\effects\include;$(ProjectDir)\engine\description\codex\include;$(ProjectDir)\engine\description\include;$(ProjectDir)\engine\description\codex\include;$(ProjectDir)\engine\decision_strategies\search\include;$(ProjectDir)\engine\decision_strategies\include;$(ProjectDir)\engine\decision_strategies\deity\include;$(ProjectDir)\engine\conversion\include;$(ProjectDir)\engine\commands\select_tile\include;$(ProjectDir)\engine\commands\inventory\include;$(ProjectDir)\engine\commands\include;$(ProjectDir)\engine\commands\equipment\include;$(ProjectDir)\engine\combat\include;$(ProjectDir)\engine\calculators\include;$(ProjectDir)\engine\actions\include;$(ProjectDir)\display\include;$(ProjectDir)\display\animation\include;$(ProjectDir)\controller\include;$(BOOST_DIR);$(XERCES_DIR)\xerces-c-3.2.1\src;$(CURSES_DIR)\pdcurses;$(GTEST_DIR)\gtest-1.8.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\engine\commands\skills\include;$(ProjectDir)\engine\commands\help\include;$(ProjectDir)\engine\decision_strategies\magic\include;$(ProjectDir)\engine\generators\rooms\include;$(ProjectDir)\engine\generators\fortresses\include;$(ProjectDir)\engine\generators\settlements\sector\include;$(ProjectDir)\engine\maps\tiles\features\include;$(ProjectDir)\engine\maps\tiles\include;$(SDL_DIR)\include;$(ZLIB_DIR)\zlib-1.2.11\include;$(ProjectDir)\engine\generators\crypts\include;$(ProjectDir)\engine\commands\screens\include;$(ProjectDir)\engine\XML\custom_maps\world\include;$(ProjectDir)\engine\XML\custom_maps\features\include;$(ProjectDir)\engine\creatures\include;$(ProjectDir)\engine\generators\tile_config\include;$(ProjectDir)\engine\actions\read\include;$(ProjectDir)\engine\commands\magic\include;$(ProjectDir)\engine\magic\include;$(ProjectDir)\engine\strings\include;$(ProjectDir)\world\magic\include;$(LUA_DEV)\include;$(ProjectDir)\engine\scripting\include;$(ProjectDir)\engine\maps\include;$(ProjectDir)\engine\XML\custom_maps\include;$(ProjectDir)\world\tiles\include;$(ProjectDir)\world\tiles\features\include;$(ProjectDir)\world\seasons\include;$(ProjectDir)\engine\commands\order\include;$(ProjectDir)\world\religion\include;$(ProjectDir)\world\materials\include;$(ProjectDir)\world\include;$(ProjectDir)\include;$(ProjectDir)\engine\XML\include;$(ProjectDir)\engine\translators\include;$(ProjectDir)\engine\time\include;$(ProjectDir)\engine\skills\include;$(ProjectDir)\engine\serialization\include;$(ProjectDir)\engine\screens\include;$(ProjectDir)\engine\items\include;$(ProjectDir)\engine\include;$(ProjectDir)\engine\generators\worship_sites\include;$(ProjectDir)\engine\generators\settlements\include;$(ProjectDir)\engine\generators\include;$(ProjectDir)\engine\generators\gardens\include;$(ProjectDir)\engine\field_of_view\include;$(ProjectDir)\engine\effects\include;$(ProjectDir)\engine\description\codex\include;$(ProjectDir)\engine\description\include;$(ProjectDir)\engine\description\codex\include;$(ProjectDir)\engine\decision_strategies\search\include;$(ProjectDir)\engine\decision_strategies\include;$(ProjectDir)\engine\decision_strategies\deity\include;$(ProjectDir)\engine\conversion\include;$(ProjectDir)\engine\commands\select_tile\include;$(ProjectDir)\engine\commands\inventory\include;$(ProjectDir)\engine\commands\include;$(ProjectDir)\engine\commands\equipment\include;$(ProjectDir)\engine\combat\include;$(ProjectDir)\engine\calculators\include;$(ProjectDir)\engine\actions\include;$(ProjectDir)\display\include;$(ProjectDir)\sound\include;$(ProjectDir)\display\animation\include;$(ProjectDir)\controller\include;$(BOOST_DIR);$(XERCES_DIR)\xerces-c-3.2.1\src;$(CURSES_DIR)\pdcurses;$(GTEST_DIR)\gtest-1.8.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>false</TreatWarningAsError>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
@@ -1247,6 +1247,10 @@ mkdir $(OutDir)logs
     <ClInclude Include="include\ISerializable.hpp" />
     <ClInclude Include="include\UnhandledExceptions.hpp" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="sound\include\NullSound.hpp" />
+    <ClInclude Include="sound\include\SDLSound.hpp" />
+    <ClInclude Include="sound\include\Sound.hpp" />
+    <ClInclude Include="sound\include\SoundFactory.hpp" />
     <ClInclude Include="world\include\AgeInfo.hpp" />
     <ClInclude Include="world\include\Alignment.hpp" />
     <ClInclude Include="world\include\AlignmentEnums.hpp" />
@@ -2362,6 +2366,22 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\XML\source\XMLCalendarReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLSpritesheetsReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLStartingLocationsReader.cpp" />
+    <ClCompile Include="sound\source\NullSound.cpp" />
+    <ClCompile Include="sound\source\SDLSound.cpp" />
+    <ClCompile Include="sound\source\Sound.cpp" />
+    <ClCompile Include="sound\source\SoundFactory.cpp" />
+    <ClCompile Include="sound\source\unit_tests\NullSound_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="sound\source\unit_tests\SDLSound_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="source\ColourUtils.cpp" />
     <ClCompile Include="source\CompilationDetails.cpp" />
     <ClCompile Include="controller\source\Controller.cpp" />
