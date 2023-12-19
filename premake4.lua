@@ -109,6 +109,7 @@ project "ShadowOfTheWyrm"
                 "engine/XML/custom_maps/include",
                 "engine/XML/custom_maps/features/include",
                 "engine/XML/custom_maps/world/include",
+		"sound/include",
                 "world/include",
                 "world/magic/include",
                 "world/materials/include",
