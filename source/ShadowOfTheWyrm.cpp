@@ -131,11 +131,7 @@ int main(int argc, char* argv[])
 
       #ifdef ENABLE_SDL
       SDLInit sdl;
-
-      if (display_id == DisplayIdentifier::DISPLAY_IDENTIFIER_SDL)
-      {
-        sdl.set_up();
-      }
+      sdl.set_up();
       #endif
 
       remove_old_logfiles(settings);
@@ -178,12 +174,9 @@ int main(int argc, char* argv[])
         }
       }
 
-      if (display_id == DisplayIdentifier::DISPLAY_IDENTIFIER_SDL)
-      {
-        #ifdef ENABLE_SDL
-        sdl.tear_down();
-        #endif
-      }
+      #ifdef ENABLE_SDL
+      sdl.tear_down();
+      #endif
     }
   }
   catch(std::exception& e)
