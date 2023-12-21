@@ -3492,15 +3492,15 @@
 			</Crowning>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
+				<RightFinger>
+					<ID>filigreed_ring</ID>
+				</RightFinger>
 				<Wielded>
 					<ID>rapier</ID>
 				</Wielded>
 				<Body>
 					<ID>leather_armour</ID>
 				</Body>
-				<RightFinger>
-					<ID>filigreed_ring</ID>
-				</RightFinger>
 				<Feet>
 					<ID>leather_boots</ID>
 				</Feet>
@@ -8343,4 +8343,11 @@
 			</References>
 		</Spritesheet>
 	</Spritesheets>
+	<Sounds>
+		<Effects>
+			<Effect id="hit">
+				<Location>assets/sounds/effects/hit.wav</Location>
+			</Effect>
+		</Effects>
+	</Sounds>
 </ShadowOfTheWyrm>
