@@ -4547,6 +4547,12 @@
     <ClInclude Include="sound\include\NullSound.hpp">
       <Filter>Header Files\sound\include</Filter>
     </ClInclude>
+    <ClInclude Include="sound\include\SoundEffectID.hpp">
+      <Filter>Header Files\sound\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLSoundsReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9225,6 +9231,12 @@
     </ClCompile>
     <ClCompile Include="sound\source\unit_tests\SDLSound_test.cpp">
       <Filter>Source Files\sound\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="sound\source\SoundEffectID.cpp">
+      <Filter>Source Files\sound\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLSoundsReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

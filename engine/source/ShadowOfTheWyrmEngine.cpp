@@ -229,6 +229,12 @@ void ShadowOfTheWyrmEngine::setup_game()
   game.set_display(display);
   game.set_sound(sound);
 
+  log.debug("Reading sound effects and music.");
+
+  // Set all sound-related assets into the game, pre-loading them if it
+  // makes sense (ie for effects but not music).
+  game.get_sound()->set_effects(reader.get_sound_effects());
+
   log.debug("Reading items.");
 
   pair<ItemMap, GenerationValuesMap> items = reader.get_items();

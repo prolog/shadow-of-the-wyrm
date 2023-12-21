@@ -10,7 +10,11 @@ NullSound::~NullSound()
 {
 }
 
-void NullSound::play(const string& path)
+void NullSound::set_effects(const map<string, string>& new_effects)
+{
+}
+
+void NullSound::play(const string& id)
 {
 }
 

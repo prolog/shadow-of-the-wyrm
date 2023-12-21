@@ -1208,6 +1208,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\XML\include\XMLCalendarReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLModifierReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLScriptsReader.hpp" />
+    <ClInclude Include="engine\XML\include\XMLSoundsReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLSpellbookReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLClassesReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLConfigurationReader.hpp" />
@@ -1251,6 +1252,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="sound\include\NullSound.hpp" />
     <ClInclude Include="sound\include\SDLSound.hpp" />
     <ClInclude Include="sound\include\Sound.hpp" />
+    <ClInclude Include="sound\include\SoundEffectID.hpp" />
     <ClInclude Include="sound\include\SoundFactory.hpp" />
     <ClInclude Include="world\include\AgeInfo.hpp" />
     <ClInclude Include="world\include\Alignment.hpp" />
@@ -2365,11 +2367,13 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\XML\source\XMLBaseFeatureReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLConfigurableFeatureReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLCalendarReader.cpp" />
+    <ClCompile Include="engine\XML\source\XMLSoundsReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLSpritesheetsReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLStartingLocationsReader.cpp" />
     <ClCompile Include="sound\source\NullSound.cpp" />
     <ClCompile Include="sound\source\SDLSound.cpp" />
     <ClCompile Include="sound\source\Sound.cpp" />
+    <ClCompile Include="sound\source\SoundEffectID.cpp" />
     <ClCompile Include="sound\source\SoundFactory.cpp" />
     <ClCompile Include="sound\source\unit_tests\NullSound_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
