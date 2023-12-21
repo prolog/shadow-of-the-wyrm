@@ -43,6 +43,7 @@
 #include "Setting.hpp"
 #include "SkillManager.hpp"
 #include "SkillMarkerFactory.hpp"
+#include "SoundEffectID.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StealthCalculator.hpp"
 #include "StatisticsMarker.hpp"
@@ -463,7 +464,7 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   MapPtr current_map = game.get_current_map();
   ostringstream combat_message;
 
-  Game::instance().get_sound()->play("assets/sound/effects/hit.wav");
+  Game::instance().get_sound()->play(SoundEffectID::HIT);
 
   if (wm.is_using_weapon(attacking_creature, attack_type))
   {

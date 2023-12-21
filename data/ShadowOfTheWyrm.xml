@@ -8346,7 +8346,7 @@
 	<Sounds>
 		<Effects>
 			<Effect id="hit">
-				<Location>assets/sounds/effects/hit.wav</Location>
+				<Location>assets/sound/effects/hit.wav</Location>
 			</Effect>
 		</Effects>
 	</Sounds>

@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include "Sound.hpp"
 
 class SDLSound : public Sound
@@ -7,12 +8,14 @@ class SDLSound : public Sound
 		SDLSound();
 		virtual ~SDLSound();
 
-		void play(const std::string& path) override;
+		virtual void set_effects(const std::map<std::string, std::string>& new_effects) override;
+		virtual void play(const std::string& path) override;
 
 	protected:
 		virtual void tear_down();
+		virtual void clear_effects();
 
-		Mix_Chunk* gScratch;
+		std::map<std::string, Mix_Chunk*> effects;
 
 	private:
 		virtual ClassIdentifier internal_class_identifier() const override;

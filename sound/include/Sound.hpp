@@ -1,5 +1,7 @@
 #pragma once
+#include <map>
 #include <memory>
+#include <string>
 #include "ISerializable.hpp"
 
 class Sound : public ISerializable
@@ -7,7 +9,8 @@ class Sound : public ISerializable
 	public:
 		virtual ~Sound();
 
-		virtual void play(const std::string& path) = 0;
+		virtual void set_effects(const std::map<std::string, std::string>& new_effects) = 0;
+		virtual void play(const std::string& id) = 0;
 
 		virtual bool serialize(std::ostream& stream) const override;
 		virtual bool deserialize(std::istream& stream) override;
