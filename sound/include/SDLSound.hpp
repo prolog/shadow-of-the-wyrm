@@ -1,5 +1,6 @@
 #pragma once
 #include <map>
+#include "SDLInit.hpp"
 #include "Sound.hpp"
 
 class SDLSound : public Sound
