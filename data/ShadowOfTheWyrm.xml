@@ -8360,6 +8360,9 @@
 			<Effect id="_shop">
 				<Location>assets/sound/effects/shop.wav</Location>
 			</Effect>
+			<Effect id="_bump">
+				<Location>assets/sound/effects/bump.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>
