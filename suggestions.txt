@@ -4,6 +4,9 @@ Me:
 - need to add sound to linux premake config
 - The SDLSound initialization via factory etc probably needs to be hidden in
   an ifdef.
+- Other system-defined sounds: effect (good - maybe can use the current cast 
+  sound?), effect (bad), can't move/bump wall, level up, quest given, 
+  quest complete
 - could I use a horn call for repop?
 - Need to release sprites
 - Xvordan: sound effects

@@ -13,6 +13,7 @@ local function complete_purchase(purchase_amount, unpaid_amount, shopkeeper_id)
   -- Set all unpaid items on the player to paid
   set_items_paid(PLAYER_ID)
   add_message("SHOPKEEPER_THANKS_SID")
+  play_sound_effect(CSOUND_EFFECT_SHOP)
 
   -- Paying for unpaid items mollifies angry shopkeepers throughout
   -- the game.
