@@ -589,10 +589,7 @@ void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const stri
       }
     }
 
-    for (const string& status_id : status_ids_to_process_after)
-    {
-      CreatureUtils::process_and_remove_status_ids(creature, status_ids_to_process_after, sr);
-    }
+    CreatureUtils::process_and_remove_status_ids(creature, status_ids_to_process_after, sr);
   }
 }
 
@@ -629,10 +626,7 @@ void CreatureUtils::mark_modifiers_for_deletion(CreaturePtr creature, const doub
       m_it++;
     }
 
-    for (const string& status_id : status_ids_to_process_after)
-    {
-      CreatureUtils::process_and_remove_status_ids(creature, status_ids_to_process_after, sr);
-    }
+    CreatureUtils::process_and_remove_status_ids(creature, status_ids_to_process_after, sr);
   }
 }
 
