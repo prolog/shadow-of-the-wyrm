@@ -81,7 +81,6 @@ pair<string, string> WeaponInfoAction::get_wielded_and_offhand_text(CreaturePtr 
 
   if (creature != nullptr)
   {
-    Equipment& eq = creature->get_equipment();
     Damage base_damage = creature->get_base_damage();
     WeaponManager wm;
 
