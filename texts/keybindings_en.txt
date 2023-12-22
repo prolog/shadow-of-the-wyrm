@@ -17,5 +17,6 @@ S - Save and exit             Q - Quit (abandon char) M - Message buffer %b
 W - Melee info                R - Ranged info         V - Version %b
 T - Game date/time            ! - Automatic Actions   @ - Character info %b
 # - Character dump            F1 - Resistances        F2 - Conducts %b
-F3 - Skills                   F8 - Window mode (SDL)  F9 - Palette (SDL)      
-F10 - Mode (SDL)              F11 - Script console    F12 - Reload strings
+F3 - Skills                   F7 - Sound Settings     F8 - Window mode (SDL) %b
+F9 - Palette (SDL)            F10 - Mode (SDL)        F11 - Script console %b
+F12 - Reload strings

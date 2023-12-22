@@ -1,6 +1,13 @@
 Shadow of the Wyrm v1.6.5 "Reusner"
 - Version started December 10, 2023.
 
+- Added sound support. The game has support for a number of events (hit, miss,
+  etc) and the sounds for each can be configured in the game's main XML config.
+  Future support is planned for playing sound effects on arbitrary regex
+  matches on in-game messages.
+
+- Various new name, ship name, etc possibilities.
+
 Shadow of the Wyrm v1.6.2 "Daca"
 - Version started July 8, 2023.  Version finalized December 10, 2023.
 
