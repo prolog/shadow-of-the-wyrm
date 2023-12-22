@@ -482,6 +482,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_map_type", get_map_type);
   lua_register(L, "is_tile_available_for_creature", is_tile_available_for_creature);
   lua_register(L, "set_creature_godless", set_creature_godless);
+  lua_register(L, "play_sound_effect", play_sound_effect);
 }
 
 // Lua API helper functions
@@ -10265,4 +10266,28 @@ int set_creature_godless(lua_State* ls)
   }
 
   return 0;
+}
+
+int play_sound_effect(lua_State* ls)
+{
+  bool played = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string sound_id = lua_tostring(ls, 1);
+    SoundPtr sound = Game::instance().get_sound();
+
+    if (sound != nullptr)
+    {
+      sound->play(sound_id);
+      played = true;
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to play_sound_effect");
+  }
+
+  lua_pushboolean(ls, played);
+  return 1;
 }

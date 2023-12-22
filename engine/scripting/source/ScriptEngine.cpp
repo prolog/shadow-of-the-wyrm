@@ -9,6 +9,7 @@
 #include "ReligionConstants.hpp"
 #include "ScriptEngine.hpp"
 #include "Serialize.hpp"
+#include "SoundEffectID.hpp"
 #include "ThreatConstants.hpp"
 
 using namespace std;
@@ -344,6 +345,12 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CDAMAGE_TYPE_SHADOW);
   lua_exportConst(ls, CDAMAGE_TYPE_ARCANE);
   lua_exportConst(ls, CDAMAGE_TYPE_LIGHTNING);
+
+  lua_exportConstStr(ls, CSOUND_EFFECT_HIT);
+  lua_exportConstStr(ls, CSOUND_EFFECT_MISS);
+  lua_exportConstStr(ls, CSOUND_EFFECT_CAST);
+  lua_exportConstStr(ls, CSOUND_EFFECT_ZAP);
+  lua_exportConstStr(ls, CSOUND_EFFECT_SHOP);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)
