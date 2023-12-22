@@ -1084,6 +1084,8 @@ bool CombatManager::miss(CreaturePtr attacking_creature, CreaturePtr attacked_cr
 {
   StatisticsMarker sm;
 
+  Game::instance().get_sound()->play(SoundEffectID::MISS);
+
   if (RNG::percent_chance(PCT_CHANCE_MARK_STATISTIC_ON_MISS))
   {
     sm.mark_agility(attacked_creature);
@@ -1099,6 +1101,8 @@ bool CombatManager::miss(CreaturePtr attacking_creature, CreaturePtr attacked_cr
 bool CombatManager::close_miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
   StatisticsMarker sm;
+
+  Game::instance().get_sound()->play(SoundEffectID::MISS);
 
   // Close misses are considered misses that the creature narrowly avoided
   // due to quick reflexes - always mark Agility.

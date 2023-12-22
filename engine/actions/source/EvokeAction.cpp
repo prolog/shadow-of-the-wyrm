@@ -13,6 +13,7 @@
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "SkillManager.hpp"
+#include "SoundEffectID.hpp"
 #include "SpellConstants.hpp"
 #include "SpellcastingProcessor.hpp"
 #include "SpellShapeFactory.hpp"
@@ -331,6 +332,8 @@ void EvokeAction::reduce_wand_charges_if_necessary(CreaturePtr creature, WandPtr
 bool EvokeAction::process_wand_damage_and_effect(CreaturePtr creature, MapPtr map, const Coordinate& caster_coord, const Direction direction, const Spell& wand_spell, const ItemStatus wand_status, const Statistic& original_charges)
 {
   bool wand_identified = false;
+
+  Game::instance().get_sound()->play(SoundEffectID::ZAP);
 
   if (original_charges.get_current() > 0)
   {

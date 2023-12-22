@@ -20,6 +20,7 @@
 #include "RNG.hpp"
 #include "ScreenTitleTextKeys.hpp"
 #include "SkillManager.hpp"
+#include "SoundEffectID.hpp"
 #include "SpellBonusUpdater.hpp"
 #include "SpellcastingTextKeys.hpp"
 #include "SpellSelectionScreen.hpp"
@@ -186,6 +187,8 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
             // Silent conduct.
             creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_SILENT);
             CreaturePtr player = Game::instance().get_current_player();
+
+            Game::instance().get_sound()->play(SoundEffectID::CAST);
 
             // Add an appropriate casting message.
             string cast_message = ActionTextKeys::get_spellcasting_message(spell, player, creature, creature->get_is_player());
