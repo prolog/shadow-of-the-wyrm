@@ -10,5 +10,8 @@ SoundEffectID::~SoundEffectID()
 {
 }
 
-const string SoundEffectID::HIT = "hit";
+const string SoundEffectID::HIT = "_hit";
+const string SoundEffectID::MISS = "_miss";
+const string SoundEffectID::CAST = "_cast";
+const string SoundEffectID::ZAP = "_zap";
 

@@ -8345,8 +8345,17 @@
 	</Spritesheets>
 	<Sounds>
 		<Effects>
-			<Effect id="hit">
+			<Effect id="_hit">
 				<Location>assets/sound/effects/hit.wav</Location>
+			</Effect>
+			<Effect id="_miss">
+				<Location>assets/sound/effects/miss.wav</Location>
+			</Effect>
+			<Effect id="_cast">
+				<Location>assets/sound/effects/cast.wav</Location>
+			</Effect>
+			<Effect id="_zap">
+				<Location>assets/sound/effects/zap.wav</Location>
 			</Effect>
 		</Effects>
 	</Sounds>
