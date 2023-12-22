@@ -1352,6 +1352,8 @@
 	<xs:sequence>
 		<xs:element name="Location" type="xs:string"/>
 	</xs:sequence>
+	<!-- id is intentionally left as a string for user-defined regex matches.
+	     For a list of system IDs the game uses, see SoundEffectID.hpp/cpp. -->
 	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="required"/>
 </xs:complexType>
 <xs:complexType name="SoundEffects">
