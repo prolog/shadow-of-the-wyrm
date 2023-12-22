@@ -378,7 +378,6 @@ bool DropAction::plant_food(CreaturePtr creature, const map<string, string>& pro
       string min_q = min_q_it->second;
       string max_q = max_q_it->second;
 
-      auto& transforms = current_map->get_tile_item_transforms_ref();
       if (current_map->count_tile_item_transforms(coords) <= tile->get_num_plantable_items() && world != nullptr)
       {
         // OK: add to transforms

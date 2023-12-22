@@ -12,8 +12,6 @@ using namespace std;
 ActionCostValue SoundActionsAction::sound_actions(CreaturePtr creature) const
 {
   Game& game = Game::instance();
-  Settings& set = game.get_settings_ref();
-  auto do_aa = true;
 
   vector<string> options;
   OptionScreen os(game.get_display(), ScreenTitleTextKeys::SCREEN_TITLE_SOUND_ACTIONS, {}, options);
