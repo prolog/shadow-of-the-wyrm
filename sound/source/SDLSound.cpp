@@ -1,7 +1,6 @@
 #include <sstream>
 #include "SDLSound.hpp"
 #include "Log.hpp"
-#include "SDLInit.hpp"
 
 using namespace std;
 
