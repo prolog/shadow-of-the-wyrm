@@ -204,6 +204,24 @@ SoundPtr Game::get_sound() const
   return sound;
 }
 
+// Returns the real sound pointer if the creature is null or the player (if 
+// the sound should always be played), or else a NullSound pointer, which
+// suppresses the sound effect.
+SoundPtr Game::get_sound(CreaturePtr creature)
+{
+  if (creature == nullptr || creature->get_is_player())
+  {
+    return sound;
+  }
+  else
+  {
+    SoundFactory sf;
+    SoundPtr sound = sf.create_null_sound();
+
+    return sound;
+  }
+}
+
 void Game::set_map_registry(const MapRegistry& new_map_registry)
 {
   map_registry = new_map_registry;
