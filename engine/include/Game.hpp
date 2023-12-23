@@ -55,6 +55,7 @@ class Game : public ISerializable
 
     void set_sound(SoundPtr sound);
     SoundPtr get_sound() const;
+    SoundPtr get_sound(CreaturePtr creature);
 
     void set_map_registry(const MapRegistry& new_map_registry);
     MapRegistry& get_map_registry_ref();

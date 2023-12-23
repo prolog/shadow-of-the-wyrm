@@ -15,6 +15,7 @@ class SoundID
 class SoundFactory
 {
 	public:
+		SoundPtr create_null_sound();
 		SoundPtr create_sound(const std::string& sound_id);
 		SoundPtr create_sound(const ClassIdentifier sound_ci);
 };

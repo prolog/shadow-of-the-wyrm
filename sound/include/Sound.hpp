@@ -2,7 +2,7 @@
 #include <map>
 #include <memory>
 #include <string>
-#include "ISerializable.hpp"
+#include "Creature.hpp"
 
 class Sound : public ISerializable
 {

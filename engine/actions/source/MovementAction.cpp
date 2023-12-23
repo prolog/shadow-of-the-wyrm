@@ -33,6 +33,7 @@
 #include "Setting.hpp"
 #include "SkillManager.hpp"
 #include "SkillsCalculator.hpp"
+#include "SoundEffectID.hpp"
 #include "StairwayMovementAction.hpp"
 #include "TerrainGeneratorFactory.hpp"
 #include "TextKeys.hpp"
@@ -251,6 +252,8 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
     {
       // Can the creature dig through the tile?
       ItemPtr wielded = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
+      int tile_hardness = creatures_new_tile->get_hardness();
+      bool dug = false;
 
       if (wielded != nullptr)
       {
@@ -258,10 +261,11 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
 
         if (!dig_hardness.empty())
         {
-          if (String::to_int(dig_hardness) >= creatures_new_tile->get_hardness())
+          if (String::to_int(dig_hardness) >= tile_hardness)
           {
             DigAction da;
             movement_acv = da.dig_through(creature->get_id(), wielded, map, creatures_new_tile, new_coords, true, true);
+            dug = true;
           }
           else
           {
@@ -278,6 +282,11 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
         //
         // Do nothing.  Don't advance the turn.
         movement_acv = ActionCostConstants::NO_ACTION;
+      }
+
+      if (tile_hardness > 0 && !dug)
+      {
+        Game().instance().get_sound(creature)->play(SoundEffectID::BUMP);
       }
     }
     else if (!creatures_new_tile->get_is_available_for_creature(creature))

@@ -15,6 +15,12 @@ SoundID::~SoundID()
 {
 }
 
+SoundPtr SoundFactory::create_null_sound()
+{
+	SoundPtr null_sound = create_sound("");
+	return null_sound;
+}
+
 SoundPtr SoundFactory::create_sound(const string& sound_id)
 {
 	SoundPtr sound;
