@@ -8366,6 +8366,9 @@
 			<Effect id="_teleport">
 				<Location>assets/sound/effects/teleport.wav</Location>
 			</Effect>
+			<Effect id="_timewalk">
+				<Location>assets/sound/effects/timewalk.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>
