@@ -8369,6 +8369,12 @@
 			<Effect id="_timewalk">
 				<Location>assets/sound/effects/timewalk.wav</Location>
 			</Effect>
+			<Effect id="_recharging">
+				<Location>assets/sound/effects/recharging.wav</Location>
+			</Effect>
+			<Effect id="_rage">
+				<Location>assets/sound/effects/rage.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>

@@ -1,6 +1,7 @@
 #include "ActionManager.hpp"
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"
+#include "Game.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemFilterFactory.hpp"
 #include "MessageManagerFactory.hpp"
@@ -117,6 +118,7 @@ bool RechargingEffect::recharge(CreaturePtr creature, ActionManager * const am, 
         creature->get_skills().get_value_incr_marks(SkillType::SKILL_GENERAL_WANDCRAFT);
       }
 
+      Game::instance().get_sound()->play(SoundEffectID::RECHARGING);
       effect_identified = true;
     }
   }
