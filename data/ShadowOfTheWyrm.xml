@@ -8375,6 +8375,12 @@
 			<Effect id="_rage">
 				<Location>assets/sound/effects/rage.wav</Location>
 			</Effect>
+			<Effect id="_healing">
+				<Location>assets/sound/effects/healing.wav</Location>
+			</Effect>
+			<Effect id="_ether">
+				<Location>assets/sound/effects/ether.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>
