@@ -8381,6 +8381,9 @@
 			<Effect id="_ether">
 				<Location>assets/sound/effects/ether.wav</Location>
 			</Effect>
+			<Effect id="_dig">
+				<Location>assets/sound/effects/dig.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>

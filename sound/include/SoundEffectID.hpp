@@ -16,6 +16,7 @@ class SoundEffectID
     static const std::string RAGE;
     static const std::string HEALING;
     static const std::string ETHER;
+    static const std::string DIG;
 
   protected:
     SoundEffectID();
@@ -34,3 +35,4 @@ constexpr auto CSOUND_EFFECT_RECHARGING = "_recharging";
 constexpr auto CSOUND_EFFECT_RAGE = "_rage";
 constexpr auto CSOUND_EFFECT_HEALING = "_healing";
 constexpr auto CSOUND_EFFECT_ETHER = "_ether";
+constexpr auto CSOUND_EFFECT_DIG = "_dig";
