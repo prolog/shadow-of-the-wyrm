@@ -86,6 +86,7 @@ class Setting
     static const std::string SOUND;
     static const std::string SOUND_ENABLED;
     static const std::string SOUND_EFFECTS;
+    static const std::string DISABLE_SOUND_EFFECT_IDS;
 
     // world map cellular automata terrain has the form below: as well as FIELD,
     // there is also FOREST, HILLS, MOUNTAINS, SCRUBLAND, MARSHES, DESERT.

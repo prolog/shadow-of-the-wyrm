@@ -233,7 +233,10 @@ void ShadowOfTheWyrmEngine::setup_game()
 
   // Set all sound-related assets into the game, pre-loading them if it
   // makes sense (ie for effects but not music).
-  game.get_sound()->set_effects(reader.get_sound_effects());
+  string disabled_sound_ids = game.get_settings_ref().get_setting(Setting::DISABLE_SOUND_EFFECT_IDS);
+  SoundPtr sound = game.get_sound();
+  sound->set_effects(reader.get_sound_effects());
+  sound->set_disabled_sound_ids(disabled_sound_ids);
 
   log.debug("Reading items.");
 

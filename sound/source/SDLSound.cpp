@@ -1,6 +1,9 @@
 #include <sstream>
 #include "SDLSound.hpp"
+#include "Conversion.hpp"
+#include "Game.hpp"
 #include "Log.hpp"
+#include "Setting.hpp"
 
 using namespace std;
 
@@ -35,20 +38,34 @@ void SDLSound::set_effects(const map<string, string>& new_effects)
 	}
 }
 
+void SDLSound::set_disabled_sound_ids(const string& new_disabled_sound_csv)
+{
+	disabled_sound_ids.clear();
+	vector<string> disabled_ids = String::create_string_vector_from_csv_string(new_disabled_sound_csv);
+
+	for (const auto& d_id : disabled_ids)
+	{
+		disabled_sound_ids.insert(d_id);
+	}
+}
+
 void SDLSound::play(const string& id)
 {
 	auto e_it = effects.find(id);
 
-	if (e_it != effects.end())
+	if (disabled_sound_ids.find(id) == disabled_sound_ids.end())
 	{
-		// Ensure that sound effects don't overlap.
-		while (Mix_Playing(0) != 0) 
+		if (e_it != effects.end())
 		{
-			SDL_Delay(200);
-		}
+			// Ensure that sound effects don't overlap.
+			while (Mix_Playing(0) != 0)
+			{
+				SDL_Delay(200);
+			}
 
-		Mix_Chunk* effect = e_it->second;
-		Mix_PlayChannel(-1, effect, 0);
+			Mix_Chunk* effect = e_it->second;
+			Mix_PlayChannel(-1, effect, 0);
+		}
 	}
 }
 
