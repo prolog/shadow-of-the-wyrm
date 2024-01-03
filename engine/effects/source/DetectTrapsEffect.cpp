@@ -50,6 +50,7 @@ bool DetectTrapsEffect::detect_traps(CreaturePtr creature, const DetectTrapsEffe
 
     show_or_hide_traps(trap_map, dtet);
     creature->get_skills().mark(SkillType::SKILL_GENERAL_DETECTION);
+    game.get_sound()->play(SoundEffectID::DETECT_TRAPS);
 
     effect_identified = true;
   }
