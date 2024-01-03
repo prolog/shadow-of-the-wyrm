@@ -1,6 +1,7 @@
 Me:
 - ASSET RELEASE (images, sounds)
 - git push --tags
+- disabled_sound_effects setting
 - need to add sound to linux premake config
 - The SDLSound initialization via factory etc probably needs to be hidden in
   an ifdef.

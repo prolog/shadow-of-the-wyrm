@@ -93,3 +93,4 @@ const string Setting::SAVE_THEN_PROMPT_TO_QUIT = "save_then_prompt_to_quit";
 const string Setting::SOUND = "sound";
 const string Setting::SOUND_ENABLED = "sound_enabled";
 const string Setting::SOUND_EFFECTS = "sound_effects";
+const string Setting::DISABLE_SOUND_EFFECT_IDS = "disable_sound_effect_ids";
