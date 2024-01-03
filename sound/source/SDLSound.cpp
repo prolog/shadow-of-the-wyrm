@@ -41,6 +41,12 @@ void SDLSound::play(const string& id)
 
 	if (e_it != effects.end())
 	{
+		// Ensure that sound effects don't overlap.
+		while (Mix_Playing(0) != 0) 
+		{
+			SDL_Delay(200);
+		}
+
 		Mix_Chunk* effect = e_it->second;
 		Mix_PlayChannel(-1, effect, 0);
 	}
