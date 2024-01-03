@@ -18,3 +18,5 @@ const string SoundEffectID::SHOP = "_shop";
 const string SoundEffectID::BUMP = "_bump";
 const string SoundEffectID::TELEPORT = "_teleport";
 const string SoundEffectID::TIMEWALK = "_timewalk";
+const string SoundEffectID::RECHARGING = "_recharging";
+const string SoundEffectID::RAGE = "_rage";
