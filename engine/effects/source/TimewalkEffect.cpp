@@ -2,6 +2,7 @@
 #include <boost/range/algorithm.hpp>
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"
+#include "Game.hpp"
 #include "MessageManager.hpp"
 #include "StatusEffectFactory.hpp"
 #include "TimewalkEffect.hpp"
@@ -52,6 +53,7 @@ bool TimewalkEffect::timewalk(CreaturePtr creature)
   {
     StatusEffectPtr tw = StatusEffectFactory::create_status_effect(this->get_originator(), StatusIdentifiers::STATUS_ID_TIMEWALK, creature->get_id());
     tw->apply_change(creature, creature->get_level().get_current());
+    Game::instance().get_sound()->play(SoundEffectID::TIMEWALK);
 
     timewalked = true;
   }

@@ -3,6 +3,7 @@
 #include <memory>
 #include <string>
 #include "Creature.hpp"
+#include "SoundEffectID.hpp"
 
 class Sound : public ISerializable
 {
