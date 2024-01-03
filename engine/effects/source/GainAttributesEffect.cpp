@@ -2,6 +2,7 @@
 #include "CreatureUtils.hpp"
 #include "EffectTextKeys.hpp"
 #include "GainAttributesEffect.hpp"
+#include "Game.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
 
@@ -62,6 +63,7 @@ bool GainAttributesEffect::gain_attributes(CreaturePtr creature, const vector<Ga
     }
   }
 
+  Game::instance().get_sound()->play(SoundEffectID::GAIN_ATTRIBUTES);
   return effect_identified;
 }
 

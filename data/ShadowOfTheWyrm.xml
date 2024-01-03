@@ -8387,6 +8387,9 @@
 			<Effect id="_detect_traps">
 				<Location>assets/sound/effects/detect_traps.wav</Location>
 			</Effect>
+			<Effect id="_gain_attributes">
+				<Location>assets/sound/effects/gain_attributes.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>
