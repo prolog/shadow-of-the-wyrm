@@ -8384,6 +8384,9 @@
 			<Effect id="_dig">
 				<Location>assets/sound/effects/dig.wav</Location>
 			</Effect>
+			<Effect id="_detect_traps">
+				<Location>assets/sound/effects/detect_traps.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>
