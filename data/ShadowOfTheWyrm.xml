@@ -8363,6 +8363,9 @@
 			<Effect id="_bump">
 				<Location>assets/sound/effects/bump.wav</Location>
 			</Effect>
+			<Effect id="_teleport">
+				<Location>assets/sound/effects/teleport.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>

@@ -53,6 +53,7 @@
 #include "SettlementGeneratorUtils.hpp"
 #include "ShopGenerator.hpp"
 #include "SkillManager.hpp"
+#include "SoundEffectID.hpp"
 #include "Spellbook.hpp"
 #include "SpellbookReadStrategy.hpp"
 #include "SpellcastingAction.hpp"
@@ -7526,7 +7527,7 @@ int load_map(lua_State* ls)
     MapPtr new_map = game.get_map_registry_ref().get_map(map_id);
     TilePtr creature_tile = MapUtils::get_tile_for_creature(old_map, creature);
     GameUtils::move_to_new_map(creature_tile, old_map, new_map);
-
+    Game::instance().get_sound()->play(SoundEffectID::TELEPORT);
     loaded_map = true;
   }
   else

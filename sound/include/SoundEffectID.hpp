@@ -10,6 +10,7 @@ class SoundEffectID
     static const std::string ZAP;
     static const std::string SHOP;
     static const std::string BUMP;
+    static const std::string TELEPORT;
 
   protected:
     SoundEffectID();
@@ -22,3 +23,4 @@ constexpr auto CSOUND_EFFECT_CAST = "_cast";
 constexpr auto CSOUND_EFFECT_ZAP = "_zap";
 constexpr auto CSOUND_EFFECT_SHOP = "_shop";
 constexpr auto CSOUND_EFFECT_BUMP = "_bump";
+constexpr auto CSOUND_EFFECT_TELEPORT = "_teleport";

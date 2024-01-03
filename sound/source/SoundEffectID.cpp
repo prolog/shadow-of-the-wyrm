@@ -16,4 +16,5 @@ const string SoundEffectID::CAST = "_cast";
 const string SoundEffectID::ZAP = "_zap";
 const string SoundEffectID::SHOP = "_shop";
 const string SoundEffectID::BUMP = "_bump";
+const string SoundEffectID::TELEPORT = "_teleport";
 
