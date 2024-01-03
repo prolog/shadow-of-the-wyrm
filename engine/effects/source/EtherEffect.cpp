@@ -1,5 +1,6 @@
 #include "Creature.hpp"
 #include "EtherEffect.hpp"
+#include "Game.hpp"
 #include "EffectTextKeys.hpp"
 using std::string;
 
@@ -43,6 +44,11 @@ bool EtherEffect::heal(CreaturePtr creature, const double healing_multiplier) co
 
       // Some magical healing was performed; return true.
       effect_identified = true;
+    }
+
+    if (effect_identified)
+    {
+      Game::instance().get_sound()->play(SoundEffectID::ETHER);
     }
   }
 

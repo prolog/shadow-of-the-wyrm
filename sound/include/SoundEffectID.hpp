@@ -14,6 +14,8 @@ class SoundEffectID
     static const std::string TIMEWALK;
     static const std::string RECHARGING;
     static const std::string RAGE;
+    static const std::string HEALING;
+    static const std::string ETHER;
 
   protected:
     SoundEffectID();
@@ -30,3 +32,5 @@ constexpr auto CSOUND_EFFECT_TELEPORT = "_teleport";
 constexpr auto CSOUND_EFFECT_TIMEWALK = "_timewalk";
 constexpr auto CSOUND_EFFECT_RECHARGING = "_recharging";
 constexpr auto CSOUND_EFFECT_RAGE = "_rage";
+constexpr auto CSOUND_EFFECT_HEALING = "_healing";
+constexpr auto CSOUND_EFFECT_ETHER = "_ether";

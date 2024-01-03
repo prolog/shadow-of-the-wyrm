@@ -20,3 +20,5 @@ const string SoundEffectID::TELEPORT = "_teleport";
 const string SoundEffectID::TIMEWALK = "_timewalk";
 const string SoundEffectID::RECHARGING = "_recharging";
 const string SoundEffectID::RAGE = "_rage";
+const string SoundEffectID::HEALING = "_healing";
+const string SoundEffectID::ETHER = "_ether";
