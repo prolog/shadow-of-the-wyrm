@@ -16,22 +16,40 @@ SDLSound::~SDLSound()
 	tear_down();
 }
 
-void SDLSound::set_effects(const map<string, string>& new_effects)
+void SDLSound::set_effects(const map<pair<string, string>, string>& new_effects)
 {
 	clear_effects();
 
 	for (const auto& e_pair : new_effects)
 	{
-		Mix_Chunk* effect = Mix_LoadWAV(e_pair.second.c_str());
-		
-		if (effect != NULL)
+		string id = e_pair.first.first;
+		string match = e_pair.first.second;
+
+		if (!id.empty())
 		{
-			effects[e_pair.first] = effect;
+			Mix_Chunk* effect = Mix_LoadWAV(e_pair.second.c_str());
+
+			if (effect != NULL)
+			{
+				effects[id] = effect;
+
+				if (!match.empty())
+				{
+					effect_regex[id] = match;
+				}
+			}
+			else
+			{
+				ostringstream ss;
+				ss << "Cannot load sound effect: " << Mix_GetError();
+				string error = ss.str();
+				Log::instance().error(error);
+			}
 		}
 		else
 		{
 			ostringstream ss;
-			ss << "Cannot load sound effect: " << Mix_GetError();
+			ss << "Sound effect specified but no id or match parameter.";
 			string error = ss.str();
 			Log::instance().error(error);
 		}

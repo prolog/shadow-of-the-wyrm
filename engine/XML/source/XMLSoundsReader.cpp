@@ -2,9 +2,9 @@
 
 using namespace std;
 
-map<string, string> XMLSoundsReader::get_effects(const XMLNode& xml_config_sounds_node)
+map<pair<string, string>, string> XMLSoundsReader::get_effects(const XMLNode& xml_config_sounds_node)
 {
-  map<string, string> effects;
+  map<pair<string, string>, string> effects;
 
   if (!xml_config_sounds_node.is_null())
   {
@@ -16,9 +16,8 @@ map<string, string> XMLSoundsReader::get_effects(const XMLNode& xml_config_sound
 
       for (const auto& effect_node : effect_nodes)
       {
-        pair<string, string> effect_details;
+        pair<pair<string, string>, string> effect_details;
         parse_effect(effect_node, effect_details);
-
         effects[effect_details.first] = effect_details.second;
       }
     }
@@ -27,11 +26,12 @@ map<string, string> XMLSoundsReader::get_effects(const XMLNode& xml_config_sound
   return effects;
 }
 
-void XMLSoundsReader::parse_effect(const XMLNode& effect_node, pair<string, string>& effect_details)
+void XMLSoundsReader::parse_effect(const XMLNode& effect_node, pair<pair<string, string>, string>& effect_details)
 {
   if (!effect_node.is_null())
   {
-    effect_details.first = XMLUtils::get_attribute_value(effect_node, "id");
+    effect_details.first.first = XMLUtils::get_attribute_value(effect_node, "id");
+    effect_details.first.second = XMLUtils::get_attribute_value(effect_node, "match");
     effect_details.second = XMLUtils::get_child_node_value(effect_node, "Location");
   }
 }

@@ -80,10 +80,10 @@ map<string, pair<string, unordered_map<string, Coordinate>>> XMLConfigurationRea
   return spritesheets;
 }
 
-map<string, string> XMLConfigurationReader::get_sound_effects()
+map<pair<string, string>, string> XMLConfigurationReader::get_sound_effects()
 {
   XMLNode sounds_node = XMLUtils::get_next_element_by_local_name(root, "Sounds");
-  map<string, string> effects = sounds_reader.get_effects(sounds_node);
+  map<pair<string, string>, string> effects = sounds_reader.get_effects(sounds_node);
   return effects;
 }
 

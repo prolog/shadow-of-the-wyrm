@@ -40,7 +40,7 @@ class XMLConfigurationReader
     std::pair<CreatureMap, CreatureGenerationValuesMap> get_creatures();
     SpellMap get_spells();
     std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>> get_spritesheets();
-    std::map<std::string, std::string> get_sound_effects();
+    std::map<std::pair<std::string, std::string>, std::string> get_sound_effects();
     std::pair<ItemMap, GenerationValuesMap> get_items();    
     FeatureSymbolMap get_feature_symbols();
     FeatureMap get_configurable_features();
