@@ -10,12 +10,17 @@ class Sound : public ISerializable
 	public:
 		virtual ~Sound();
 
-		virtual void set_effects(const std::map<std::string, std::string>& new_effects) = 0;
+		virtual void set_effects(const std::map<std::pair<std::string, std::string>, std::string>& new_effects) = 0;
 		virtual void set_disabled_sound_ids(const std::string& new_disabled_ids_csv) = 0;
+		virtual const std::map<std::string, std::string>& get_effect_regex_cref() const;
+
 		virtual void play(const std::string& id) = 0;
 
 		virtual bool serialize(std::ostream& stream) const override;
 		virtual bool deserialize(std::istream& stream) override;
+
+	protected:
+		std::map<std::string, std::string> effect_regex;
 
 	private:
 		virtual ClassIdentifier internal_class_identifier() const override = 0;

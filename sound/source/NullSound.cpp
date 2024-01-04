@@ -10,7 +10,7 @@ NullSound::~NullSound()
 {
 }
 
-void NullSound::set_effects(const map<string, string>& new_effects)
+void NullSound::set_effects(const map<pair<string, string>, string>& new_effects)
 {
 }
 

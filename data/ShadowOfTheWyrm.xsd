@@ -1352,9 +1352,18 @@
 	<xs:sequence>
 		<xs:element name="Location" type="xs:string"/>
 	</xs:sequence>
-	<!-- id is intentionally left as a string for user-defined regex matches.
-	     For a list of system IDs the game uses, see SoundEffectID.hpp/cpp. -->
-	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="required"/>
+	<!-- id is used to reference loaded sound effects. For defining your own
+	     sounds (with a regex match), avoid using an id with an underscore.
+		 For a list of IDs the game uses, see SoundEffectID.hpp/cpp. 
+		 
+		 match takes a regex and is used to test against text sent to the
+		 message area. On a match, a particular sound is played. The basic
+		 POSIX regular expression grammar is used. Eg to match snoo,
+		 snooo, ..., you could use:
+		 
+		 <Effect id="snoo" match="snoo[o]*">...</Effect> -->
+	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="optional"/>
+	<xs:attribute name="match" type="tns:NonEmptyIdentifier" use="optional"/>
 </xs:complexType>
 <xs:complexType name="SoundEffects">
 	<xs:annotation><xs:documentation>Identifier/file location information for sound effects.</xs:documentation></xs:annotation>
