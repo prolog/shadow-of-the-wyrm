@@ -3,8 +3,8 @@ Shadow of the Wyrm v1.6.5 "Reusner"
 
 - Added sound support. The game has support for a number of events (hit, miss,
   etc) and the sounds for each can be configured in the game's main XML config.
-  Future support is planned for playing sound effects on arbitrary regex
-  matches on in-game messages.
+  Sound effects can also be played on arbitrary regex matches on in-game 
+  messages.
 
 - Various new name, ship name, etc possibilities.
 

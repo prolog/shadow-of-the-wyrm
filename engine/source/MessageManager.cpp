@@ -219,7 +219,7 @@ void MessageManager::check_message_text_for_sound_matches(const string& message_
 
   for (const auto& r_pair : regex_id_and_match)
   {
-    std::regex sound_regex(r_pair.second, std::regex_constants::basic);
+    std::regex sound_regex(r_pair.second, std::regex_constants::ECMAScript);
 
     if (std::regex_search(message_text, sound_regex))
     {
