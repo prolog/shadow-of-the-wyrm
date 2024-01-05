@@ -47,7 +47,7 @@ class CommandKeys
     static const std::string CHAT;
     static const std::string APPLY_FEATURE;
     static const std::string QUEST_LIST;
-    static const std::string RELOAD_SCRIPTS_TEXTURES_AND_SIDS;
+    static const std::string RELOAD_SCRIPTS_ASSETS_AND_SIDS;
     static const std::string RUN_SCRIPT;
     static const std::string CAST_SPELL;
     static const std::string BESTIARY;
