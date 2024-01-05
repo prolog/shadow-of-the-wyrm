@@ -1,3 +1,4 @@
+#ifdef ENABLE_SDL
 #include <sstream>
 #include "SDLSound.hpp"
 #include "Conversion.hpp"
@@ -115,4 +116,6 @@ ClassIdentifier SDLSound::internal_class_identifier() const
 
 #ifdef UNIT_TESTS
 #include "unit_tests/SDLSound_test.cpp"
+#endif
+
 #endif

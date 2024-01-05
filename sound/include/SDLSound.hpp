@@ -1,4 +1,5 @@
 #pragma once
+#ifdef ENABLE_SDL
 #include <map>
 #include <set>
 #include "SDLInit.hpp"
@@ -25,3 +26,5 @@ class SDLSound : public Sound
 	private:
 		virtual ClassIdentifier internal_class_identifier() const override;
 };
+
+#endif

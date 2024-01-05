@@ -3,8 +3,6 @@ Me:
 - git push --tags
 - F12 should also reload sound effects
 - need to add sound to linux premake config
-- The SDLSound initialization via factory etc probably needs to be hidden in
-  an ifdef.
 - Other system-defined sounds: effect (good - maybe can use the current cast 
   sound?), effect (bad), can't move/bump wall, level up, quest given, 
   quest complete
