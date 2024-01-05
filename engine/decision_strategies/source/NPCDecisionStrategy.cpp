@@ -873,9 +873,7 @@ CommandPtr NPCDecisionStrategy::get_flee_decision(const string& this_creature_id
         vector<Direction> move_dirs = DirectionUtils::get_in_map_movement_directions();
         std::shuffle(move_dirs.begin(), move_dirs.end(), RNG::get_engine()); 
 
-        const CreatureMap& creatures = view_map->get_creatures_ref();
         const auto& c_locs = view_map->get_locations_with_creatures();
-
         int lowest_tscore = MapUtils::get_threat_distance_score_for_direction(creature, Direction::DIRECTION_NULL, map, view_map);
         Direction proposed_direction = Direction::DIRECTION_NULL;
 
