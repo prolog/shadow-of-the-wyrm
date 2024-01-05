@@ -122,7 +122,7 @@ string ShadowOfTheWyrmEngine::start(const Settings& settings)
   Log& log = Log::instance();
 
   game.set_settings(settings);
-  game.actions.reload_scripts_textures_and_sids();
+  game.actions.reload_scripts_assets_and_sids();
   bool disp_ok = true;
 
   if (state_manager.start_new_game())

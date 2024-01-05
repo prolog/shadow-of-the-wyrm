@@ -168,9 +168,9 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game.actions.quest_list(creature);
       }
-      else if (command_name == CommandKeys::RELOAD_SCRIPTS_TEXTURES_AND_SIDS)
+      else if (command_name == CommandKeys::RELOAD_SCRIPTS_ASSETS_AND_SIDS)
       {
-        ac = game.actions.reload_scripts_textures_and_sids(creature);
+        ac = game.actions.reload_scripts_assets_and_sids(creature);
       }
       else if (command_name == CommandKeys::RUN_SCRIPT)
       {

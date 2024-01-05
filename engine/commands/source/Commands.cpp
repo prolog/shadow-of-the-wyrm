@@ -374,7 +374,7 @@ QuestListCommand::~QuestListCommand()
 
 // Clear the Lua state (scripts will reload)
 ReloadScriptsCommand::ReloadScriptsCommand(const int key)
-: Command(CommandKeys::RELOAD_SCRIPTS_TEXTURES_AND_SIDS, key)
+: Command(CommandKeys::RELOAD_SCRIPTS_ASSETS_AND_SIDS, key)
 {
 }
 
