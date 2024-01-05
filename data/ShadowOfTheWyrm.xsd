@@ -1357,11 +1357,11 @@
 		 For a list of IDs the game uses, see SoundEffectID.hpp/cpp. 
 		 
 		 match takes a regex and is used to test against text sent to the
-		 message area. On a match, a particular sound is played. The basic
-		 POSIX regular expression grammar is used. Eg to match snoo,
+		 message area. On a match, a particular sound is played. The 
+		 ECMAscript regular expression grammar is used. Eg to match snoo,
 		 snooo, ..., you could use:
 		 
-		 <Effect id="snoo" match="snoo[o]*">...</Effect> -->
+		 <Effect id="snoo" match="sno[o]+">...</Effect> -->
 	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="optional"/>
 	<xs:attribute name="match" type="tns:NonEmptyIdentifier" use="optional"/>
 </xs:complexType>
