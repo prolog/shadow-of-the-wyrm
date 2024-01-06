@@ -346,6 +346,12 @@ ActionCost ActionManager::reload_scripts_assets_and_sids(CreaturePtr creature)
     game.set_requires_redraw(true);
   }
 
+  SoundPtr sound = game.get_sound();
+  if (sound != nullptr)
+  {
+    sound->set_effects(game.get_sound_effects_cref());
+  }
+
   StringTable::load(game.get_sid_ini_filename());
 
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
