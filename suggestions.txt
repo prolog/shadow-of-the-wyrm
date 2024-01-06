@@ -1,7 +1,6 @@
 Me:
 - ASSET RELEASE (images, sounds)
 - git push --tags
-- F12 should also reload sound effects
 - need to add sound to linux premake config
 - Other system-defined sounds: effect (good - maybe can use the current cast 
   sound?), effect (bad), can't move/bump wall, level up, quest given, 
