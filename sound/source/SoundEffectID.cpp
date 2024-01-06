@@ -10,6 +10,7 @@ SoundEffectID::~SoundEffectID()
 {
 }
 
+const string SoundEffectID::SHOOT = "_shoot";
 const string SoundEffectID::HIT = "_hit";
 const string SoundEffectID::MISS = "_miss";
 const string SoundEffectID::CAST = "_cast";

@@ -8345,6 +8345,9 @@
 	</Spritesheets>
 	<Sounds>
 		<Effects>
+			<Effect id="_shoot">
+				<Location>assets/sound/effects/shoot.wav</Location>
+			</Effect>
 			<Effect id="_hit">
 				<Location>assets/sound/effects/hit.wav</Location>
 			</Effect>
