@@ -222,6 +222,16 @@ SoundPtr Game::get_sound(CreaturePtr creature)
   }
 }
 
+void Game::set_sound_effects(const map<pair<string, string>, string>& new_sound_effects)
+{
+  sound_effects = new_sound_effects;
+}
+
+const map<pair<string, string>, string>& Game::get_sound_effects_cref() const
+{
+  return sound_effects;
+}
+
 void Game::set_map_registry(const MapRegistry& new_map_registry)
 {
   map_registry = new_map_registry;
@@ -1255,6 +1265,15 @@ bool Game::serialize(ostream& stream) const
 
   map_registry.serialize(stream);
 
+  Serialize::write_size_t(stream, sound_effects.size());
+  for (const auto& se_pair : sound_effects)
+  {
+    Serialize::write_string(stream, se_pair.first.first);
+    Serialize::write_string(stream, se_pair.first.second);
+
+    Serialize::write_string(stream, se_pair.second);
+  }
+
   Serialize::write_size_t(stream, deities.size());
   for (const auto& deity_pair : deities)
   {
@@ -1487,6 +1506,23 @@ bool Game::deserialize(istream& stream)
   sound->deserialize(stream);
 
   map_registry.deserialize(stream);
+
+  size_t se_size = 0;
+  Serialize::read_size_t(stream, se_size);
+
+  for (size_t i = 0; i < se_size; i++)
+  {
+    string id;
+    string match;
+    string location;
+
+    Serialize::read_string(stream, id);
+    Serialize::read_string(stream, match);
+    Serialize::read_string(stream, location);
+
+    pair<string, string> id_and_match = std::make_pair(id, match);
+    sound_effects[id_and_match] = location;
+  }
 
   size_t size = 0;
   Serialize::read_size_t(stream, size);
