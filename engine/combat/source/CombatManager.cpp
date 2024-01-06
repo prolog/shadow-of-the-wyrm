@@ -188,7 +188,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     int target_number_value = ctn_calculator->calculate(attacking_creature, attacked_creature);
 
     Damage damage = determine_damage(attacking_creature, predefined_damage.get(), damage_calculator.get());
-    
+
     // Automatic miss is checked first
     if (is_automatic_miss(d100_roll))
     {
