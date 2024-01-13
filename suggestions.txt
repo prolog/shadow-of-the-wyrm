@@ -4,6 +4,7 @@ Me:
 - Other system-defined sounds: effect (good - maybe can use the current cast 
   sound?), effect (bad), can't move/bump wall, level up, quest given, 
   quest complete
+- jump into water
 - could I use a horn call for repop?
 - should be able to turn on/off individual sound effects via F7, as well as
   specify lists to disable in swyrm.ini

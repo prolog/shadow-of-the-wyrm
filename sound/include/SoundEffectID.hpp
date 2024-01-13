@@ -20,6 +20,7 @@ class SoundEffectID
     static const std::string DIG;
     static const std::string DETECT_TRAPS;
     static const std::string GAIN_ATTRIBUTES;
+    static const std::string EXIT_MAP;
 
   protected:
     SoundEffectID();
@@ -42,3 +43,4 @@ constexpr auto CSOUND_EFFECT_ETHER = "_ether";
 constexpr auto CSOUND_EFFECT_DIG = "_dig";
 constexpr auto CSOUND_EFFECT_DETECT_TRAPS = "_detect_traps";
 constexpr auto CSOUND_EFFECT_GAIN_ATTRIBUTES = "_gain_attributes";
+constexpr auto CSOUND_EFFECT_EXIT_MAP = "_exit_map";
