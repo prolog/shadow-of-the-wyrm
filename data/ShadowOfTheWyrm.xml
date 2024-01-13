@@ -8393,6 +8393,9 @@
 			<Effect id="_gain_attributes">
 				<Location>assets/sound/effects/gain_attributes.wav</Location>
 			</Effect>
+			<Effect id="_exit_map">
+				<Location>assets/sound/effects/exit_map.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>

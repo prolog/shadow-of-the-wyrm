@@ -118,6 +118,8 @@ void GameUtils::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new
     Game& game = Game::instance();
     game.set_current_map(new_map);
     game.reload_map();
+
+    game.get_sound()->play(SoundEffectID::EXIT_MAP);
   }
 }
 
