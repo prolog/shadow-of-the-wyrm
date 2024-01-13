@@ -8396,6 +8396,12 @@
 			<Effect id="_exit_map">
 				<Location>assets/sound/effects/exit_map.wav</Location>
 			</Effect>
+			<Effect id="_splash">
+				<Location>assets/sound/effects/splash.wav</Location>
+			</Effect>
+			<Effect id="_drop">
+				<Location>assets/sound/effects/drop.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>

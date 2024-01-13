@@ -21,6 +21,8 @@ class SoundEffectID
     static const std::string DETECT_TRAPS;
     static const std::string GAIN_ATTRIBUTES;
     static const std::string EXIT_MAP;
+    static const std::string SPLASH;
+    static const std::string DROP;
 
   protected:
     SoundEffectID();
@@ -44,3 +46,5 @@ constexpr auto CSOUND_EFFECT_DIG = "_dig";
 constexpr auto CSOUND_EFFECT_DETECT_TRAPS = "_detect_traps";
 constexpr auto CSOUND_EFFECT_GAIN_ATTRIBUTES = "_gain_attributes";
 constexpr auto CSOUND_EFFECT_EXIT_MAP = "_exit_map";
+constexpr auto CSOUND_EFFECT_SPLASH = "_splash";
+constexpr auto CSOUND_EFFECT_DROP = "_drop";
