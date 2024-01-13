@@ -2862,6 +2862,27 @@ int MapUtils::get_threat_distance_score_for_direction(CreaturePtr creature, cons
   return score;
 }
 
+string MapUtils::get_drop_sound(TileSuperType tst)
+{
+  string sound_id = SoundEffectID::DROP;
+
+  switch (tst)
+  {
+    case TileSuperType::TILE_SUPER_TYPE_AIR:
+      sound_id = SoundEffectID::MISS;
+      break;
+    case TileSuperType::TILE_SUPER_TYPE_WATER:
+      sound_id = SoundEffectID::SPLASH;
+      break;
+    case TileSuperType::TILE_SUPER_TYPE_GROUND:
+    case TileSuperType::TILE_SUPER_TYPE_UNDEFINED:
+    default:
+      break;
+  }
+
+  return sound_id;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Map_test.cpp"
 #include "unit_tests/MapUtils_test.cpp"

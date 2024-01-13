@@ -273,6 +273,9 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
           Coordinate drop_coord = current_map->get_location(creature->get_id());
 
           IInventoryPtr inv = creatures_tile->get_items();
+          string sound_id = MapUtils::get_drop_sound(creatures_tile->get_tile_super_type());
+
+          Game::instance().get_sound()->play(sound_id);
           inv->merge_or_add(new_item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
 
           // Display a message if appropriate.

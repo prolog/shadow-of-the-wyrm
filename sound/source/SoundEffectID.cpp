@@ -27,3 +27,5 @@ const string SoundEffectID::DIG = "_dig";
 const string SoundEffectID::DETECT_TRAPS = "_detect_traps";
 const string SoundEffectID::GAIN_ATTRIBUTES = "_gain_attributes";
 const string SoundEffectID::EXIT_MAP = "_exit_map";
+const string SoundEffectID::SPLASH = "_splash";
+const string SoundEffectID::DROP = "_drop";
