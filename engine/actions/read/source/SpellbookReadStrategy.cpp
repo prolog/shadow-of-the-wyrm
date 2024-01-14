@@ -62,7 +62,7 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
             // Determine whether the spellbook is destroyed afterwards.
             spellbook_destroyed = sc.get_is_spellbook_destroyed(spellbook_status);
 
-            sound_id = SoundEffectID::LEARN_SPELL;
+            sound_id = SoundEffectID::SPELL;
           }
           else
           {

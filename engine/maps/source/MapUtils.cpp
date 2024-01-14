@@ -2867,7 +2867,7 @@ int MapUtils::get_threat_distance_score_for_direction(CreaturePtr creature, cons
 
 string MapUtils::get_drop_sound(TileSuperType tst)
 {
-  string sound_id = SoundEffectID::DROP;
+  string sound_id;
 
   switch (tst)
   {

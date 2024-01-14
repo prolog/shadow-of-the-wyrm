@@ -7,7 +7,7 @@ class SoundEffectID
     static const std::string SHOOT;
     static const std::string HIT;
     static const std::string MISS;
-    static const std::string CAST;
+    static const std::string SPELL;
     static const std::string ZAP;
     static const std::string SHOP;
     static const std::string BUMP;
@@ -22,11 +22,9 @@ class SoundEffectID
     static const std::string GAIN_ATTRIBUTES;
     static const std::string EXIT_MAP;
     static const std::string SPLASH;
-    static const std::string DROP;
     static const std::string ALARM;
-    static const std::string LEARN_SPELL;
-    static const std::string DRINK;
-    static const std::string EAT;
+    static const std::string DEAD;
+    static const std::string ENCHANT;
 
   protected:
     SoundEffectID();
@@ -36,7 +34,7 @@ class SoundEffectID
 constexpr auto CSOUND_EFFECT_SHOOT = "_shoot";
 constexpr auto CSOUND_EFFECT_HIT = "_hit";
 constexpr auto CSOUND_EFFECT_MISS = "_miss";
-constexpr auto CSOUND_EFFECT_CAST = "_cast";
+constexpr auto CSOUND_EFFECT_SPELL = "_spell";
 constexpr auto CSOUND_EFFECT_ZAP = "_zap";
 constexpr auto CSOUND_EFFECT_SHOP = "_shop";
 constexpr auto CSOUND_EFFECT_BUMP = "_bump";
@@ -51,8 +49,6 @@ constexpr auto CSOUND_EFFECT_DETECT_TRAPS = "_detect_traps";
 constexpr auto CSOUND_EFFECT_GAIN_ATTRIBUTES = "_gain_attributes";
 constexpr auto CSOUND_EFFECT_EXIT_MAP = "_exit_map";
 constexpr auto CSOUND_EFFECT_SPLASH = "_splash";
-constexpr auto CSOUND_EFFECT_DROP = "_drop";
 constexpr auto CSOUND_EFFECT_ALARM = "_alarm";
-constexpr auto CSOUND_EFFECT_LEARN_SPELL = "_learn_spell";
-constexpr auto CSOUND_EFFECT_DRINK = "_drink";
-constexpr auto CSOUND_EFFECT_EAT = "_eat";
+constexpr auto CSOUND_EFFECT_DEAD = "_dead";
+constexpr auto CSOUND_EFFECT_ENCHANT = "_enchant";

@@ -188,7 +188,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
             creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_SILENT);
             CreaturePtr player = Game::instance().get_current_player();
 
-            Game::instance().get_sound()->play(SoundEffectID::CAST);
+            Game::instance().get_sound()->play(SoundEffectID::SPELL);
 
             // Add an appropriate casting message.
             string cast_message = ActionTextKeys::get_spellcasting_message(spell, player, creature, creature->get_is_player());
