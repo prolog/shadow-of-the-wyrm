@@ -56,6 +56,8 @@ void PlayerDeathManager::die() const
       string death_message = TextMessages::get_death_message(deity_message_sid);
       manager.add_new_message(death_message);
 
+      Game::instance().get_sound()->play(SoundEffectID::DEAD);
+
       // Run any death scripts.
       run_death_event(dead_creature, attacking_creature, map);
 

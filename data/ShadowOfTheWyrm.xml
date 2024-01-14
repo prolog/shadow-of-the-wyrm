@@ -8354,8 +8354,8 @@
 			<Effect id="_miss">
 				<Location>assets/sound/effects/miss.wav</Location>
 			</Effect>
-			<Effect id="_cast">
-				<Location>assets/sound/effects/cast.wav</Location>
+			<Effect id="_spell">
+				<Location>assets/sound/effects/spell.wav</Location>
 			</Effect>
 			<Effect id="_zap">
 				<Location>assets/sound/effects/zap.wav</Location>
@@ -8399,20 +8399,14 @@
 			<Effect id="_splash">
 				<Location>assets/sound/effects/splash.wav</Location>
 			</Effect>
-			<Effect id="_drop">
-				<Location>assets/sound/effects/drop.wav</Location>
-			</Effect>
 			<Effect id="_alarm">
 				<Location>assets/sound/effects/alarm.wav</Location>
 			</Effect>
-			<Effect id="_learn_spell">
-				<Location>assets/sound/effects/learn_spell.wav</Location>
+			<Effect id="_dead">
+				<Location>assets/sound/effects/dead.wav</Location>
 			</Effect>
-			<Effect id="_drink">
-				<Location>assets/sound/effects/drink.wav</Location>
-			</Effect>
-			<Effect id="_eat">
-				<Location>assets/sound/effects/eat.wav</Location>
+			<Effect id="_enchant">
+				<Location>assets/sound/effects/enchant.wav</Location>
 			</Effect>
 		</Effects>
 	</Sounds>

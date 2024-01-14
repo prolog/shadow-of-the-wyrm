@@ -47,6 +47,8 @@ ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ActionManager * c
 
       if (spell_processor != nullptr)
       {
+        Game::instance().get_sound()->play(SoundEffectID::SPELL);
+
         // Use the generic spell processor, which is also used for "regular"
         // spellcasting.
         SpellcastingProcessor sp;
