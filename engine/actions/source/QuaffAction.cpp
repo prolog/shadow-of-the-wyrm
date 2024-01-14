@@ -144,7 +144,9 @@ void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreatureP
 
       // Add a message about quaffing.
       add_quaff_message(creature, message);
-      
+
+      Game::instance().get_sound(creature)->play(SoundEffectID::DRINK);
+
       // Reduce the quantity, removing it from the inventory if necessary
       potion->set_quantity(potion->get_quantity() - 1);
       if (potion->get_quantity() == 0) inventory->remove(potion->get_id());

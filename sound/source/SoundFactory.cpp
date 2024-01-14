@@ -43,7 +43,7 @@ SoundPtr SoundFactory::create_sound(ClassIdentifier sound_ci)
 	{
 		sound = std::make_shared<NullSound>();
 	}
-	#ifdef ENABLE_SDL_SOUND
+	#ifdef ENABLE_SDL
 	else if (sound_ci == ClassIdentifier::CLASS_ID_SDL_SOUND)
 	{
 		sound = std::make_shared<SDLSound>();

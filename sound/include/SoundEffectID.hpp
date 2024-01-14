@@ -25,6 +25,8 @@ class SoundEffectID
     static const std::string DROP;
     static const std::string ALARM;
     static const std::string LEARN_SPELL;
+    static const std::string DRINK;
+    static const std::string EAT;
 
   protected:
     SoundEffectID();
@@ -52,3 +54,5 @@ constexpr auto CSOUND_EFFECT_SPLASH = "_splash";
 constexpr auto CSOUND_EFFECT_DROP = "_drop";
 constexpr auto CSOUND_EFFECT_ALARM = "_alarm";
 constexpr auto CSOUND_EFFECT_LEARN_SPELL = "_learn_spell";
+constexpr auto CSOUND_EFFECT_DRINK = "_drink";
+constexpr auto CSOUND_EFFECT_EAT = "_eat";
