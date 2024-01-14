@@ -8408,6 +8408,12 @@
 			<Effect id="_learn_spell">
 				<Location>assets/sound/effects/learn_spell.wav</Location>
 			</Effect>
+			<Effect id="_drink">
+				<Location>assets/sound/effects/drink.wav</Location>
+			</Effect>
+			<Effect id="_eat">
+				<Location>assets/sound/effects/eat.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>

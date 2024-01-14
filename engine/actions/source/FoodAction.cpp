@@ -169,6 +169,7 @@ bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInv
         create_seed_on_tile(creature, tile, seed_item_id);
       }
 
+      Game::instance().get_sound(creature)->play(SoundEffectID::EAT);
       cm.consume(creature, item_as_consumable, true /* apply any effects on the food */);
     }
     else
