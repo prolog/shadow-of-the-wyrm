@@ -173,6 +173,11 @@ bool TeleportEffect::blink(CreaturePtr creature, MapPtr current_map, TilePtr old
     }
   }
 
+  if (teleported)
+  {
+    Game::instance().get_sound()->play(SoundEffectID::TELEPORT);
+  }
+
   return teleported;
 }
 

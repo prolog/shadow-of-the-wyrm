@@ -25,6 +25,7 @@ class SoundEffectID
     static const std::string ALARM;
     static const std::string DEAD;
     static const std::string ENCHANT;
+    static const std::string HASTE;
 
   protected:
     SoundEffectID();
@@ -52,3 +53,4 @@ constexpr auto CSOUND_EFFECT_SPLASH = "_splash";
 constexpr auto CSOUND_EFFECT_ALARM = "_alarm";
 constexpr auto CSOUND_EFFECT_DEAD = "_dead";
 constexpr auto CSOUND_EFFECT_ENCHANT = "_enchant";
+constexpr auto CSOUND_EFFECT_HASTE = "_haste";

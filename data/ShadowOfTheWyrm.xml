@@ -8408,6 +8408,9 @@
 			<Effect id="_enchant">
 				<Location>assets/sound/effects/enchant.wav</Location>
 			</Effect>
+			<Effect id="_haste">
+				<Location>assets/sound/effects/haste.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>

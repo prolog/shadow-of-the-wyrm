@@ -53,6 +53,7 @@ bool WarpEffect::warp(CreaturePtr creature)
     {
       MapPtr new_map = game.get_map_registry_ref().get_map(MapID::MAP_ID_WORLD_MAP);
       TilePtr creature_tile = MapUtils::get_tile_for_creature(old_map, creature);
+      Game::instance().get_sound()->play(SoundEffectID::TELEPORT);
       GameUtils::move_to_new_map(creature_tile, old_map, new_map);
 
       warped = true;
