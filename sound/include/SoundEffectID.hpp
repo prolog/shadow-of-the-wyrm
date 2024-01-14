@@ -23,6 +23,7 @@ class SoundEffectID
     static const std::string EXIT_MAP;
     static const std::string SPLASH;
     static const std::string DROP;
+    static const std::string ALARM;
 
   protected:
     SoundEffectID();
@@ -48,3 +49,4 @@ constexpr auto CSOUND_EFFECT_GAIN_ATTRIBUTES = "_gain_attributes";
 constexpr auto CSOUND_EFFECT_EXIT_MAP = "_exit_map";
 constexpr auto CSOUND_EFFECT_SPLASH = "_splash";
 constexpr auto CSOUND_EFFECT_DROP = "_drop";
+constexpr auto CSOUND_EFFECT_ALARM = "_alarm";

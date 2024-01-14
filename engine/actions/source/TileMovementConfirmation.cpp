@@ -45,7 +45,7 @@ tuple<bool, string, string> TileMovementConfirmation::get_confirmation_details(C
             !MapUtils::is_in_shop_or_adjacent(map, new_tile_coords).first &&
              creature->has_unpaid_items())
     {
-      confirmation_details = {true, TextMessages::get_confirmation_message(ActionTextKeys::ACTION_LEAVE_WITH_UNPAID_GOODS_CONFIRM), ""};
+      confirmation_details = {true, TextMessages::get_confirmation_message(ActionTextKeys::ACTION_LEAVE_WITH_UNPAID_GOODS_CONFIRM), SoundEffectID::ALARM};
     }
     else
     {

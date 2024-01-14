@@ -8402,6 +8402,9 @@
 			<Effect id="_drop">
 				<Location>assets/sound/effects/drop.wav</Location>
 			</Effect>
+			<Effect id="_alarm">
+				<Location>assets/sound/effects/alarm.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>
