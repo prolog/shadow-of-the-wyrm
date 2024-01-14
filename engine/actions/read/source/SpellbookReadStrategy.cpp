@@ -46,6 +46,7 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
           pair<bool, int> learning_result = sc.learn_spell(creature, magic_category, spellbook->get_difficulty());
           bool spell_learned = learning_result.first;
           int difference = learning_result.second;
+          string sound_id;
 
           if (spell_learned)
           {
@@ -60,6 +61,8 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
 
             // Determine whether the spellbook is destroyed afterwards.
             spellbook_destroyed = sc.get_is_spellbook_destroyed(spellbook_status);
+
+            sound_id = SoundEffectID::LEARN_SPELL;
           }
           else
           {
@@ -77,7 +80,11 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
             // bad happens" realm. (spellbook explodes, big unfriendly creatures
             // summoned, etc.)
             spellbook_destroyed = handle_fallout_if_necessary(creature, difference);
+
+            sound_id = SoundEffectID::MISS;
           }
+
+          Game::instance().get_sound(creature)->play(sound_id);
 
           if (spellbook_destroyed)
           {

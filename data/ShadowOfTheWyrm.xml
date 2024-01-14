@@ -8405,6 +8405,9 @@
 			<Effect id="_alarm">
 				<Location>assets/sound/effects/alarm.wav</Location>
 			</Effect>
+			<Effect id="_learn_spell">
+				<Location>assets/sound/effects/learn_spell.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>

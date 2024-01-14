@@ -6,7 +6,6 @@ Me:
   quest complete
 - dig in water
 - super_type_message_sids -> super_type_sound_id?
-- could I use a horn call for repop?
 - should be able to turn on/off individual sound effects via F7, as well as
   specify lists to disable in swyrm.ini
 - Need to release sprites
