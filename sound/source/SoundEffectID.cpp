@@ -30,4 +30,4 @@ const string SoundEffectID::EXIT_MAP = "_exit_map";
 const string SoundEffectID::SPLASH = "_splash";
 const string SoundEffectID::DROP = "_drop";
 const string SoundEffectID::ALARM = "_alarm";
-
+const string SoundEffectID::LEARN_SPELL = "_learn_spell";
