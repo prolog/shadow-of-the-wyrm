@@ -242,7 +242,7 @@ ActionCostValue OrderAction::order_summon(CreaturePtr creature)
             // If moving to this tile would trigger confirmation (eg, trying
             // to move an aquatic creature out of water), skip it and move
             // to the next creature.
-            if (!movement_details.first)
+            if (!std::get<0>(movement_details))
             {
               MapUtils::add_or_update_location(map, follower, sc, sum_old_tile);
               summon_coords.erase(summon_coords.begin() + i);
