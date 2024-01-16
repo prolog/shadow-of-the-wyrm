@@ -75,6 +75,10 @@ bool StatusEffect::should_apply_change(CreaturePtr creature, const int effect_bo
 
         status_should_apply = false;
       }
+      else
+      {
+        Game::instance().get_sound(creature)->play(SoundEffectID::NEGATIVE_EFFECT);
+      }
     }
   }
 
