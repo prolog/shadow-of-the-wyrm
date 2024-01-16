@@ -1,6 +1,7 @@
 #include "ActionTextKeys.hpp"
 #include "Creature.hpp"
 #include "Effect.hpp"
+#include "Game.hpp"
 #include "Serialize.hpp"
 #include "MessageManagerFactory.hpp"
 
@@ -64,6 +65,11 @@ bool Effect::effect(std::shared_ptr<Creature> creature, ActionManager * const am
   }
 
   identify_effect_as_necessary(creature, effect_identified, show_msg_on_unid);
+
+  if (is_negative_effect())
+  {
+    Game::instance().get_sound(creature)->play(SoundEffectID::NEGATIVE_EFFECT);
+  }
 
   return effect_identified;
 }

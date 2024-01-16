@@ -8411,6 +8411,9 @@
 			<Effect id="_haste">
 				<Location>assets/sound/effects/haste.wav</Location>
 			</Effect>
+			<Effect id="_negative_effect">
+				<Location>assets/sound/effects/negative_effect.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>

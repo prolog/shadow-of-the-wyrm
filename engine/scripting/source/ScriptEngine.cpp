@@ -367,6 +367,7 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConstStr(ls, CSOUND_EFFECT_DEAD);
   lua_exportConstStr(ls, CSOUND_EFFECT_ENCHANT);
   lua_exportConstStr(ls, CSOUND_EFFECT_HASTE);
+  lua_exportConstStr(ls, CSOUND_EFFECT_NEGATIVE_EFFECT);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)
