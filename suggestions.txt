@@ -5,7 +5,7 @@ Me:
   sound?), effect (bad), can't move/bump wall, level up, quest given, 
   quest complete
 - dig in water
-- death scream for player
+- need sound effects for all status ailments!
 - super_type_message_sids -> super_type_sound_id?
 - should be able to turn on/off individual sound effects via F7, as well as
   specify lists to disable in swyrm.ini

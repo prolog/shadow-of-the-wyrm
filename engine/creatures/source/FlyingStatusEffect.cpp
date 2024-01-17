@@ -3,6 +3,7 @@
 #include "Creature.hpp"
 #include "FlyingCalculator.hpp"
 #include "FlyingStatusEffect.hpp"
+#include "SoundEffectID.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StatusTypes.hpp"
@@ -17,6 +18,11 @@ FlyingStatusEffect::FlyingStatusEffect()
 bool FlyingStatusEffect::is_negative() const
 {
   return false;
+}
+
+string FlyingStatusEffect::get_sound_effect() const
+{
+  return SoundEffectID::FLYING;
 }
 
 string FlyingStatusEffect::get_player_application_message() const

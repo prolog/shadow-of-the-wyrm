@@ -143,6 +143,9 @@ bool StatusEffect::apply(CreaturePtr creature, const int danger_level) const
     mse.set_source_id(source_id);
     mse.set_spell_id(status_identifier);
     mse.apply_modifiers(creature, modifier, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, eff_dur_sec);
+
+    string sound_effect = get_sound_effect();
+    Game::instance().get_sound(creature)->play(sound_effect);
   }
 
   return true;
@@ -334,6 +337,12 @@ string StatusEffect::get_npc_undo_message(CreaturePtr creature) const
 {
   string no_message;
   return no_message;
+}
+
+string StatusEffect::get_sound_effect() const
+{
+  string no_effect;
+  return no_effect;
 }
 
 void StatusEffect::tick(CreaturePtr creature, const int danger_level) const
