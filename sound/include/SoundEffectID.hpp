@@ -27,6 +27,7 @@ class SoundEffectID
     static const std::string ENCHANT;
     static const std::string HASTE;
     static const std::string NEGATIVE_EFFECT;
+    static const std::string FLYING;
 
   protected:
     SoundEffectID();
@@ -56,4 +57,4 @@ constexpr auto CSOUND_EFFECT_DEAD = "_dead";
 constexpr auto CSOUND_EFFECT_ENCHANT = "_enchant";
 constexpr auto CSOUND_EFFECT_HASTE = "_haste";
 constexpr auto CSOUND_EFFECT_NEGATIVE_EFFECT = "_negative_effect";
-
+constexpr auto CSOUND_EFFECT_FLYING = "_flying";

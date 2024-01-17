@@ -8414,6 +8414,9 @@
 			<Effect id="_negative_effect">
 				<Location>assets/sound/effects/negative_effect.wav</Location>
 			</Effect>
+			<Effect id="_flying">
+				<Location>assets/sound/effects/flying.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>

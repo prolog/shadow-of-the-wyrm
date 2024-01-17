@@ -70,14 +70,17 @@ void SDLSound::set_disabled_sound_ids(const string& new_disabled_sound_csv)
 
 void SDLSound::play(const string& id)
 {
-	auto e_it = effects.find(id);
-
-	if (disabled_sound_ids.find(id) == disabled_sound_ids.end())
+	if (!id.empty())
 	{
-		if (e_it != effects.end())
+		auto e_it = effects.find(id);
+
+		if (disabled_sound_ids.find(id) == disabled_sound_ids.end())
 		{
-			Mix_Chunk* effect = e_it->second;
-			Mix_PlayChannel(-1, effect, 0);
+			if (e_it != effects.end())
+			{
+				Mix_Chunk* effect = e_it->second;
+				Mix_PlayChannel(-1, effect, 0);
+			}
 		}
 	}
 }

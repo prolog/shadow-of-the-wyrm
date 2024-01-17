@@ -731,6 +731,11 @@ void CreatureUtils::apply_status_ailments(WearablePtr wearable, CreaturePtr crea
 
         if (status != nullptr)
         {
+          // CreatureUtils::apply_status_ailments doesn't directly call the
+          // usual StatusEffect function that would play a sound effect, so
+          // play its sound effect here.
+          Game::instance().get_sound(creature)->play(status->get_sound_effect());
+
           IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
           manager.add_new_message(status->get_application_message(creature));
           manager.send();
