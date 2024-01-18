@@ -48,7 +48,7 @@ bool EtherEffect::heal(CreaturePtr creature, const double healing_multiplier) co
 
     if (effect_identified)
     {
-      Game::instance().get_sound()->play(SoundEffectID::ETHER);
+      Game::instance().get_sound()->play(SoundEffectID::HEALING);
     }
   }
 
