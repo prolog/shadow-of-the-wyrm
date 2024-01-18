@@ -8378,9 +8378,6 @@
 			<Effect id="_rage">
 				<Location>assets/sound/effects/rage.wav</Location>
 			</Effect>
-			<Effect id="_healing">
-				<Location>assets/sound/effects/healing.wav</Location>
-			</Effect>
 			<Effect id="_dig">
 				<Location>assets/sound/effects/dig.wav</Location>
 			</Effect>
@@ -8407,6 +8404,9 @@
 			</Effect>
 			<Effect id="_haste">
 				<Location>assets/sound/effects/haste.wav</Location>
+			</Effect>
+			<Effect id="_positive_effect">
+				<Location>assets/sound/effects/positive_effect.wav</Location>
 			</Effect>
 			<Effect id="_negative_effect">
 				<Location>assets/sound/effects/negative_effect.wav</Location>

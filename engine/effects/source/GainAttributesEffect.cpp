@@ -63,7 +63,7 @@ bool GainAttributesEffect::gain_attributes(CreaturePtr creature, const vector<Ga
     }
   }
 
-  Game::instance().get_sound()->play(SoundEffectID::GAIN_ATTRIBUTES);
+  Game::instance().get_sound()->play(SoundEffectID::POSITIVE_EFFECT);
   return effect_identified;
 }
 

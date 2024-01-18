@@ -75,6 +75,5 @@ void HasteEffect::apply_haste(CreaturePtr creature, StatusEffectPtr haste)
   if (creature != nullptr && haste != nullptr)
   {
     haste->apply_change(creature, creature->get_level().get_current());
-    Game::instance().get_sound()->play(SoundEffectID::HASTE);
   }
 }
