@@ -7,7 +7,6 @@ class FlyingStatusEffect : public FloatingStatusEffect
     FlyingStatusEffect();
 
     virtual bool is_negative() const override;
-    virtual std::string get_sound_effect() const override;
 
   protected:
     virtual std::string get_player_application_message() const override;

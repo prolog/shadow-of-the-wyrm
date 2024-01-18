@@ -8384,9 +8384,6 @@
 			<Effect id="_detect_traps">
 				<Location>assets/sound/effects/detect_traps.wav</Location>
 			</Effect>
-			<Effect id="_gain_attributes">
-				<Location>assets/sound/effects/gain_attributes.wav</Location>
-			</Effect>
 			<Effect id="_exit_map">
 				<Location>assets/sound/effects/exit_map.wav</Location>
 			</Effect>
@@ -8402,17 +8399,11 @@
 			<Effect id="_enchant">
 				<Location>assets/sound/effects/enchant.wav</Location>
 			</Effect>
-			<Effect id="_haste">
-				<Location>assets/sound/effects/haste.wav</Location>
-			</Effect>
 			<Effect id="_positive_effect">
 				<Location>assets/sound/effects/positive_effect.wav</Location>
 			</Effect>
 			<Effect id="_negative_effect">
 				<Location>assets/sound/effects/negative_effect.wav</Location>
-			</Effect>
-			<Effect id="_flying">
-				<Location>assets/sound/effects/flying.wav</Location>
 			</Effect>
 		</Effects>
 	</Sounds>

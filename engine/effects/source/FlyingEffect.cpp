@@ -44,8 +44,7 @@ bool FlyingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const a
   mse.effect(creature, am, ItemStatus::ITEM_STATUS_UNCURSED, affected_coordinate, affected_tile);
 
   StatusEffectPtr fly = StatusEffectFactory::create_status_effect(creature, StatusIdentifiers::STATUS_ID_FLYING, source_id);
-
-  Game::instance().get_sound()->play(SoundEffectID::FLYING);
+  fly->apply_change(creature, creature->get_level().get_current());
 
   return true;
 }

@@ -20,11 +20,6 @@ bool FlyingStatusEffect::is_negative() const
   return false;
 }
 
-string FlyingStatusEffect::get_sound_effect() const
-{
-  return SoundEffectID::FLYING;
-}
-
 string FlyingStatusEffect::get_player_application_message() const
 {
   string message = StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_FLYING);
