@@ -357,7 +357,6 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConstStr(ls, CSOUND_EFFECT_RECHARGING);
   lua_exportConstStr(ls, CSOUND_EFFECT_RAGE);
   lua_exportConstStr(ls, CSOUND_EFFECT_HEALING);
-  lua_exportConstStr(ls, CSOUND_EFFECT_ETHER);
   lua_exportConstStr(ls, CSOUND_EFFECT_DIG);
   lua_exportConstStr(ls, CSOUND_EFFECT_DETECT_TRAPS);
   lua_exportConstStr(ls, CSOUND_EFFECT_GAIN_ATTRIBUTES);

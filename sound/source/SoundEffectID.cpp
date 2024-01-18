@@ -22,7 +22,6 @@ const string SoundEffectID::TIMEWALK = "_timewalk";
 const string SoundEffectID::RECHARGING = "_recharging";
 const string SoundEffectID::RAGE = "_rage";
 const string SoundEffectID::HEALING = "_healing";
-const string SoundEffectID::ETHER = "_ether";
 const string SoundEffectID::DIG = "_dig";
 const string SoundEffectID::DETECT_TRAPS = "_detect_traps";
 const string SoundEffectID::GAIN_ATTRIBUTES = "_gain_attributes";

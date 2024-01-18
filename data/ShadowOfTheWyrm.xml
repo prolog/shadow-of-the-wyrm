@@ -8381,9 +8381,6 @@
 			<Effect id="_healing">
 				<Location>assets/sound/effects/healing.wav</Location>
 			</Effect>
-			<Effect id="_ether">
-				<Location>assets/sound/effects/ether.wav</Location>
-			</Effect>
 			<Effect id="_dig">
 				<Location>assets/sound/effects/dig.wav</Location>
 			</Effect>
