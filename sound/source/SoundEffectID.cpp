@@ -30,5 +30,4 @@ const string SoundEffectID::DEAD = "_dead";
 const string SoundEffectID::ENCHANT = "_enchant";
 const string SoundEffectID::POSITIVE_EFFECT = "_positive_effect";
 const string SoundEffectID::NEGATIVE_EFFECT = "_negative_effect";
-const string SoundEffectID::FLYING = "_flying";
 
