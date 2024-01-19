@@ -45,11 +45,6 @@ bool EtherEffect::heal(CreaturePtr creature, const double healing_multiplier) co
       // Some magical healing was performed; return true.
       effect_identified = true;
     }
-
-    if (effect_identified)
-    {
-      Game::instance().get_sound()->play(SoundEffectID::POSITIVE_EFFECT);
-    }
   }
 
   return effect_identified;

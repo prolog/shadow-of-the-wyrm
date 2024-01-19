@@ -41,8 +41,6 @@ bool IncreaseMaxHPAPEffect::increase(CreaturePtr creature, int incr_amount)
     }
   }
 
-  Game::instance().get_sound(creature)->play(SoundEffectID::POSITIVE_EFFECT);
-
   return eff_ident;
 }
 

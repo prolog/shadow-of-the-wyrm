@@ -98,8 +98,6 @@ bool EnchantingEffect::enchant(CreaturePtr creature, ActionManager* const am, co
         {
           add_message(creature, EffectTextKeys::get_enchant_message(iid.get_appropriate_usage_description(item)));
         }
-
-        Game::instance().get_sound()->play(SoundEffectID::ITEM_EFFECT);
       }
     }
 

@@ -8378,9 +8378,6 @@
 			<Effect id="_dig">
 				<Location>assets/sound/effects/dig.wav</Location>
 			</Effect>
-			<Effect id="_map_effect">
-				<Location>assets/sound/effects/map_effect.wav</Location>
-			</Effect>
 			<Effect id="_exit_map">
 				<Location>assets/sound/effects/exit_map.wav</Location>
 			</Effect>
@@ -8392,12 +8389,6 @@
 			</Effect>
 			<Effect id="_dead">
 				<Location>assets/sound/effects/dead.wav</Location>
-			</Effect>
-			<Effect id="_item_effect">
-				<Location>assets/sound/effects/item_effect.wav</Location>
-			</Effect>
-			<Effect id="_positive_effect">
-				<Location>assets/sound/effects/positive_effect.wav</Location>
 			</Effect>
 			<Effect id="_negative_effect">
 				<Location>assets/sound/effects/negative_effect.wav</Location>

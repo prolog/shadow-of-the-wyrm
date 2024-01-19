@@ -41,7 +41,6 @@ void MappingEffect::map(CreaturePtr creature, MapPtr map, const MappingType mt)
       // Indicate that a full redraw is needed, and play the relevant sound.
       Game& game = Game::instance();
       game.get_loaded_map_details_ref().update_spell_cast(true);
-      game.get_sound(creature)->play(SoundEffectID::MAP_EFFECT);
     }
   }
 }

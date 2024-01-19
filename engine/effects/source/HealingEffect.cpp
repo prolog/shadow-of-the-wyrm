@@ -78,11 +78,6 @@ bool HealingEffect::heal(CreaturePtr creature, const double healing_multiplier) 
     }
   }
 
-  if (effect_identified)
-  {
-    Game::instance().get_sound()->play(SoundEffectID::POSITIVE_EFFECT);
-  }
-
   return effect_identified;
 }
 

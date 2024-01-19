@@ -19,9 +19,6 @@ class SoundEffectID
     static const std::string SPLASH;
     static const std::string ALARM;
     static const std::string DEAD;
-    static const std::string MAP_EFFECT;
-    static const std::string ITEM_EFFECT;
-    static const std::string POSITIVE_EFFECT;
     static const std::string NEGATIVE_EFFECT;
 
   protected:
@@ -44,7 +41,4 @@ constexpr auto CSOUND_EFFECT_EXIT_MAP = "_exit_map";
 constexpr auto CSOUND_EFFECT_SPLASH = "_splash";
 constexpr auto CSOUND_EFFECT_ALARM = "_alarm";
 constexpr auto CSOUND_EFFECT_DEAD = "_dead";
-constexpr auto CSOUND_EFFECT_MAP_EFFECT = "_map_effect";
-constexpr auto CSOUND_EFFECT_ITEM_EFFECT = "_item_effect";
-constexpr auto CSOUND_EFFECT_POSITIVE_EFFECT = "_positive_effect";
 constexpr auto CSOUND_EFFECT_NEGATIVE_EFFECT = "_negative_effect";
