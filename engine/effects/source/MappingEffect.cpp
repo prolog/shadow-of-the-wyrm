@@ -17,7 +17,7 @@ Effect* MappingEffect::clone()
   return new MappingEffect(*this);
 }
 
-void MappingEffect::map(MapPtr map, const MappingType mt)
+void MappingEffect::map(CreaturePtr creature, MapPtr map, const MappingType mt)
 {
   if (map != nullptr)
   {
@@ -38,8 +38,10 @@ void MappingEffect::map(MapPtr map, const MappingType mt)
         }
       }
 
-      // Indicate that a full redraw is needed.
-      Game::instance().get_loaded_map_details_ref().update_spell_cast(true);
+      // Indicate that a full redraw is needed, and play the relevant sound.
+      Game& game = Game::instance();
+      game.get_loaded_map_details_ref().update_spell_cast(true);
+      game.get_sound(creature)->play(SoundEffectID::MAP_EFFECT);
     }
   }
 }
@@ -50,7 +52,7 @@ bool MappingEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionMan
   {
     Game& game = Game::instance();
     MapPtr current_map = game.get_current_map();
-    map(current_map, MappingType::MAPPING_TYPE_MAP_ALL);
+    map(creature, current_map, MappingType::MAPPING_TYPE_MAP_ALL);
 
     mapping_msg = StringTable::get(EffectTextKeys::EFFECT_MAPPING);
   }
@@ -64,7 +66,7 @@ bool MappingEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionMa
   {
     Game& game = Game::instance();
     MapPtr current_map = game.get_current_map();
-    map(current_map, MappingType::MAPPING_TYPE_MAP);
+    map(creature, current_map, MappingType::MAPPING_TYPE_MAP);
 
     mapping_msg = StringTable::get(EffectTextKeys::EFFECT_MAPPING);
   }
@@ -78,7 +80,7 @@ bool MappingEffect::effect_cursed(std::shared_ptr<Creature> creature, ActionMana
   {
     Game& game = Game::instance();
     MapPtr current_map = game.get_current_map();
-    map(current_map, MappingType::MAPPING_TYPE_FORGET);
+    map(creature, current_map, MappingType::MAPPING_TYPE_FORGET);
 
     mapping_msg = StringTable::get(EffectTextKeys::EFFECT_MAPPING_FORGET);
   }

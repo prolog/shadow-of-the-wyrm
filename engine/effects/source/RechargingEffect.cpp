@@ -118,7 +118,7 @@ bool RechargingEffect::recharge(CreaturePtr creature, ActionManager * const am, 
         creature->get_skills().get_value_incr_marks(SkillType::SKILL_GENERAL_WANDCRAFT);
       }
 
-      Game::instance().get_sound()->play(SoundEffectID::RECHARGING);
+      Game::instance().get_sound()->play(SoundEffectID::ITEM_EFFECT);
       effect_identified = true;
     }
   }

@@ -1,6 +1,7 @@
 #include "ActionManager.hpp"
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"
+#include "Game.hpp"
 #include "IdentifyEffect.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
@@ -28,7 +29,9 @@ bool IdentifyEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionMa
     item_id.set_possessions_identified(creature);    
     identification_msg = StringTable::get(EffectTextKeys::EFFECT_IDENTIFY_ALL_ITEMS);
   }
-  
+
+  play_identify_sound(creature);
+
   return true;
 }
 
@@ -51,6 +54,8 @@ bool IdentifyEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionM
     }
   }
   
+  play_identify_sound(creature);
+
   return false;
 }
 
@@ -73,6 +78,13 @@ bool IdentifyEffect::effect_cursed(std::shared_ptr<Creature> creature, ActionMan
     }
   }
   
+  play_identify_sound(creature);
+
   return false;
+}
+
+void IdentifyEffect::play_identify_sound(CreaturePtr creature)
+{
+  Game::instance().get_sound(creature)->play(SoundEffectID::ITEM_EFFECT);
 }
 

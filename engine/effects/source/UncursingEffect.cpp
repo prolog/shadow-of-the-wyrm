@@ -108,6 +108,11 @@ bool UncursingEffect::uncurse(CreaturePtr creature, const UncursingEffectType ue
     creature->get_inventory()->mark_for_restack();
   }
 
+  if (uncursed)
+  {
+    Game::instance().get_sound(creature)->play(SoundEffectID::ITEM_EFFECT);
+  }
+
   return uncursed;
 }
 
