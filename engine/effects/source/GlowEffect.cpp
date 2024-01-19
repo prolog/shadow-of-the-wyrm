@@ -67,11 +67,6 @@ bool GlowEffect::glow(CreaturePtr creature, ActionManager * const am, const bool
     }
   }
 
-  if (glow_effect)
-  {
-    Game::instance().get_sound(creature)->play(SoundEffectID::ITEM_EFFECT);
-  }
-
   return glow_effect;
 }
 

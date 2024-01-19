@@ -66,10 +66,6 @@ bool SummonTrapsEffect::summon(CreaturePtr creature, MapPtr map, const int num_t
     }
   }
 
-  if (effect_id)
-  {
-    Game::instance().get_sound(creature)->play(SoundEffectID::MAP_EFFECT);
-  }
   return effect_id;
 }
 

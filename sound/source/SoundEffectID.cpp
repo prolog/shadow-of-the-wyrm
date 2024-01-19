@@ -25,8 +25,5 @@ const string SoundEffectID::EXIT_MAP = "_exit_map";
 const string SoundEffectID::SPLASH = "_splash";
 const string SoundEffectID::ALARM = "_alarm";
 const string SoundEffectID::DEAD = "_dead";
-const string SoundEffectID::MAP_EFFECT = "_map_effect";
-const string SoundEffectID::ITEM_EFFECT = "_item_effect";
-const string SoundEffectID::POSITIVE_EFFECT = "_positive_effect";
 const string SoundEffectID::NEGATIVE_EFFECT = "_negative_effect";
 

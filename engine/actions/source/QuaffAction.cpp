@@ -184,6 +184,8 @@ void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreatureP
       {
         StatisticsMarker sm;
         sm.mark_willpower(creature);
+
+        Game::instance().get_sound()->play(SoundEffectID::SPELL);
       }
     }
   }

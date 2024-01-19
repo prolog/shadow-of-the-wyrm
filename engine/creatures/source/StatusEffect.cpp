@@ -341,7 +341,7 @@ string StatusEffect::get_npc_undo_message(CreaturePtr creature) const
 
 string StatusEffect::get_sound_effect() const
 {
-  string effect = SoundEffectID::POSITIVE_EFFECT;
+  string effect;
 
   if (is_negative())
   {

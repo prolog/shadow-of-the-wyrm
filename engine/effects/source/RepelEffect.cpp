@@ -84,7 +84,6 @@ bool RepelEffect::repel(CreaturePtr creature, const Coordinate& affected_coordin
     }
 
     effect = true;
-    Game::instance().get_sound(creature)->play(SoundEffectID::MAP_EFFECT);
   }
 
   return effect;
