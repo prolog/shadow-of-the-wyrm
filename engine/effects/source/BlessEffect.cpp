@@ -95,6 +95,11 @@ bool BlessEffect::bless(CreaturePtr creature, const BlessEffectType bless_type, 
     }
   }
 
+  if (effect_identified)
+  {
+    Game::instance().get_sound(creature)->play(SoundEffectID::ITEM_EFFECT);
+  }
+
   return effect_identified;
 }
 

@@ -57,6 +57,8 @@ bool CleansingEffect::cleansing(CreaturePtr creature, const float map_creature_r
 
     // Set the multiplier on the current map.
     current_map->set_property(MapProperties::MAP_PROPERTIES_CREATURE_GENERATION_RATE, to_string(map_creature_regen_multiplier));
+    game.get_sound(creature)->play(SoundEffectID::MAP_EFFECT);
+
     cleansed = true;
   }
 

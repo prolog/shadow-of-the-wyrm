@@ -8372,17 +8372,14 @@
 			<Effect id="_timewalk">
 				<Location>assets/sound/effects/timewalk.wav</Location>
 			</Effect>
-			<Effect id="_recharging">
-				<Location>assets/sound/effects/recharging.wav</Location>
-			</Effect>
 			<Effect id="_rage">
 				<Location>assets/sound/effects/rage.wav</Location>
 			</Effect>
 			<Effect id="_dig">
 				<Location>assets/sound/effects/dig.wav</Location>
 			</Effect>
-			<Effect id="_detect_traps">
-				<Location>assets/sound/effects/detect_traps.wav</Location>
+			<Effect id="_map_effect">
+				<Location>assets/sound/effects/map_effect.wav</Location>
 			</Effect>
 			<Effect id="_exit_map">
 				<Location>assets/sound/effects/exit_map.wav</Location>
@@ -8396,8 +8393,8 @@
 			<Effect id="_dead">
 				<Location>assets/sound/effects/dead.wav</Location>
 			</Effect>
-			<Effect id="_enchant">
-				<Location>assets/sound/effects/enchant.wav</Location>
+			<Effect id="_item_effect">
+				<Location>assets/sound/effects/item_effect.wav</Location>
 			</Effect>
 			<Effect id="_positive_effect">
 				<Location>assets/sound/effects/positive_effect.wav</Location>

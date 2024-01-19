@@ -1,6 +1,7 @@
 #include "IncreaseMaxHPAPEffect.hpp"
 #include "Conversion.hpp"
 #include "EffectTextKeys.hpp"
+#include "Game.hpp"
 
 using namespace std;
 // HPAP common code
@@ -39,6 +40,8 @@ bool IncreaseMaxHPAPEffect::increase(CreaturePtr creature, int incr_amount)
       eff_ident = true;
     }
   }
+
+  Game::instance().get_sound(creature)->play(SoundEffectID::POSITIVE_EFFECT);
 
   return eff_ident;
 }

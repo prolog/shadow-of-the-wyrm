@@ -19,15 +19,14 @@ const string SoundEffectID::SHOP = "_shop";
 const string SoundEffectID::BUMP = "_bump";
 const string SoundEffectID::TELEPORT = "_teleport";
 const string SoundEffectID::TIMEWALK = "_timewalk";
-const string SoundEffectID::RECHARGING = "_recharging";
 const string SoundEffectID::RAGE = "_rage";
 const string SoundEffectID::DIG = "_dig";
-const string SoundEffectID::DETECT_TRAPS = "_detect_traps";
 const string SoundEffectID::EXIT_MAP = "_exit_map";
 const string SoundEffectID::SPLASH = "_splash";
 const string SoundEffectID::ALARM = "_alarm";
 const string SoundEffectID::DEAD = "_dead";
-const string SoundEffectID::ENCHANT = "_enchant";
+const string SoundEffectID::MAP_EFFECT = "_map_effect";
+const string SoundEffectID::ITEM_EFFECT = "_item_effect";
 const string SoundEffectID::POSITIVE_EFFECT = "_positive_effect";
 const string SoundEffectID::NEGATIVE_EFFECT = "_negative_effect";
 

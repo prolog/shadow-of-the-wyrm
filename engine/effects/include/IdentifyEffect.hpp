@@ -12,6 +12,8 @@ class IdentifyEffect : public Effect
     virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
     virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
     
+    virtual void play_identify_sound(std::shared_ptr<Creature> creature);
+
     // The actual identification message
     std::string identification_msg;
 };

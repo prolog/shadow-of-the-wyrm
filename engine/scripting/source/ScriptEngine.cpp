@@ -354,15 +354,14 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConstStr(ls, CSOUND_EFFECT_BUMP);
   lua_exportConstStr(ls, CSOUND_EFFECT_TELEPORT);
   lua_exportConstStr(ls, CSOUND_EFFECT_TIMEWALK);
-  lua_exportConstStr(ls, CSOUND_EFFECT_RECHARGING);
   lua_exportConstStr(ls, CSOUND_EFFECT_RAGE);
   lua_exportConstStr(ls, CSOUND_EFFECT_DIG);
-  lua_exportConstStr(ls, CSOUND_EFFECT_DETECT_TRAPS);
   lua_exportConstStr(ls, CSOUND_EFFECT_EXIT_MAP);
   lua_exportConstStr(ls, CSOUND_EFFECT_SPLASH);
   lua_exportConstStr(ls, CSOUND_EFFECT_ALARM);
   lua_exportConstStr(ls, CSOUND_EFFECT_DEAD);
-  lua_exportConstStr(ls, CSOUND_EFFECT_ENCHANT);
+  lua_exportConstStr(ls, CSOUND_EFFECT_MAP_EFFECT);
+  lua_exportConstStr(ls, CSOUND_EFFECT_ITEM_EFFECT);
   lua_exportConstStr(ls, CSOUND_EFFECT_POSITIVE_EFFECT);
   lua_exportConstStr(ls, CSOUND_EFFECT_NEGATIVE_EFFECT);
 }
