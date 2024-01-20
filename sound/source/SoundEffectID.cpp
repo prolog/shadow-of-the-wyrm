@@ -26,4 +26,5 @@ const string SoundEffectID::SPLASH = "_splash";
 const string SoundEffectID::ALARM = "_alarm";
 const string SoundEffectID::DEAD = "_dead";
 const string SoundEffectID::NEGATIVE_EFFECT = "_negative_effect";
+const string SoundEffectID::LEVEL_UP = "_level_up";
 

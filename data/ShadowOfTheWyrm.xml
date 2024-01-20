@@ -8393,6 +8393,9 @@
 			<Effect id="_negative_effect">
 				<Location>assets/sound/effects/negative_effect.wav</Location>
 			</Effect>
+			<Effect id="_level_up">
+				<Location>assets/sound/effects/level_up.wav</Location>
+			</Effect>
 		</Effects>
 	</Sounds>
 </ShadowOfTheWyrm>
