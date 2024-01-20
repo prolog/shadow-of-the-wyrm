@@ -1362,7 +1362,7 @@
 		 snooo, ..., you could use:
 		 
 		 <Effect id="snoo" match="sno[o]+">...</Effect> -->
-	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="optional"/>
+	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="required"/>
 	<xs:attribute name="match" type="tns:NonEmptyIdentifier" use="optional"/>
 </xs:complexType>
 <xs:complexType name="SoundEffects">

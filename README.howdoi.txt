@@ -10,6 +10,23 @@ A Brief Guide to Basic Modding for Shadow of the Wyrm
   where the details of those types can be found in the engine's C++
   code.
 
+- If you want to add your own sound effects, open data/ShadowOfTheWyrm.xml,
+  and navigate to the <Sounds><Effects> node. YOu'll see a list of Effect
+  elements, with ids starting with underscores. These are the system sound
+  effects, referenced in code. You can add your own sound effects to these:
+  the game will try to match them to in-game messages.
+
+  1. Add a new Effect element, and specify an id attribute.  This attribute
+     needs to be unique among all the other Effects.
+
+  2. Add a match attribute, and specify its value.  The value of this element
+     is an ECMAscript regex the game will use to try to match whenever a
+     message is send to the display in-game.  If it matches, the effect will
+     be played.
+
+  3. Specify the Location element under the effect.  This is the location of
+     your sound effect.
+
 - Adding sprites is a bit more effort, but not particularly hard.  You'll
   need Gimp.  Open up the appropriate file (creature_sprites.xcf,
   item_sprites.xcf, etc) in Gimp.
