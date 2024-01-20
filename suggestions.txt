@@ -5,12 +5,11 @@ Me:
   sound?), effect (bad), can't move/bump wall, level up, quest given, 
   quest complete
 - dig in water
-- need sound effects for all status ailments!
+- sound actions menu
 - super_type_message_sids -> super_type_sound_id?
 - should be able to turn on/off individual sound effects via F7, as well as
   specify lists to disable in swyrm.ini
-- Need to release sprites
-- Xvordan: sound effects
+- Need to release sprites, sound effects
 - hemsio: autosave not working?
 - unit tests for properties in Option
 - set item status property in CreateItemScreen
