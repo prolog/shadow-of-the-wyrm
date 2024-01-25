@@ -6,6 +6,7 @@ Me:
   quest complete
 - dig in water
 - sound actions menu
+- negative sounds should only fire if a creature is affected
 - super_type_message_sids -> super_type_sound_id?
 - should be able to turn on/off individual sound effects via F7, as well as
   specify lists to disable in swyrm.ini
