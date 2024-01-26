@@ -8351,6 +8351,9 @@
 			<Effect id="_hit">
 				<Location>assets/sound/effects/hit.wav</Location>
 			</Effect>
+			<Effect id="_heavy_hit">
+				<Location>assets/sound/effects/heavy_hit.wav</Location>
+			</Effect>
 			<Effect id="_miss">
 				<Location>assets/sound/effects/miss.wav</Location>
 			</Effect>

@@ -12,6 +12,7 @@ SoundEffectID::~SoundEffectID()
 
 const string SoundEffectID::SHOOT = "_shoot";
 const string SoundEffectID::HIT = "_hit";
+const string SoundEffectID::HEAVY_HIT = "_heavy_hit";
 const string SoundEffectID::MISS = "_miss";
 const string SoundEffectID::SPELL = "_spell";
 const string SoundEffectID::ZAP = "_zap";

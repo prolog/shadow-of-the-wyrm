@@ -6,6 +6,7 @@ class SoundEffectID
   public:
     static const std::string SHOOT;
     static const std::string HIT;
+    static const std::string HEAVY_HIT;
     static const std::string MISS;
     static const std::string SPELL;
     static const std::string ZAP;
@@ -29,6 +30,7 @@ class SoundEffectID
 
 constexpr auto CSOUND_EFFECT_SHOOT = "_shoot";
 constexpr auto CSOUND_EFFECT_HIT = "_hit";
+constexpr auto CSOUND_EFFECT_HEAVY_HIT = "_heavy_hit";
 constexpr auto CSOUND_EFFECT_MISS = "_miss";
 constexpr auto CSOUND_EFFECT_SPELL = "_spell";
 constexpr auto CSOUND_EFFECT_ZAP = "_zap";

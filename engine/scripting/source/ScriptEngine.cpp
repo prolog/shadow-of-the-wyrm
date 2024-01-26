@@ -347,6 +347,7 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CDAMAGE_TYPE_LIGHTNING);
 
   lua_exportConstStr(ls, CSOUND_EFFECT_HIT);
+  lua_exportConstStr(ls, CSOUND_EFFECT_HEAVY_HIT);
   lua_exportConstStr(ls, CSOUND_EFFECT_MISS);
   lua_exportConstStr(ls, CSOUND_EFFECT_SPELL);
   lua_exportConstStr(ls, CSOUND_EFFECT_ZAP);
