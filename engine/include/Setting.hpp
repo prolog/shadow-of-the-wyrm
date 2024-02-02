@@ -85,7 +85,7 @@ class Setting
     static const std::string SAVE_THEN_PROMPT_TO_QUIT;
     static const std::string SOUND;
     static const std::string SOUND_ENABLED;
-    static const std::string SOUND_EFFECTS;
+    static const std::string SOUND_EFFECTS_ENABLED;
     static const std::string DISABLE_SOUND_EFFECT_IDS;
 
     // world map cellular automata terrain has the form below: as well as FIELD,

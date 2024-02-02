@@ -45,7 +45,7 @@
 #include "ShowConductsAction.hpp"
 #include "ShowResistancesAction.hpp"
 #include "SkinAction.hpp"
-#include "SoundActionsAction.hpp"
+#include "SoundSettingsAction.hpp"
 #include "SpellcastingAction.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "TerrainSpeedMultiplierCalculator.hpp"
@@ -867,8 +867,8 @@ ActionCost ActionManager::automatic_actions(CreaturePtr creature)
 
 ActionCost ActionManager::sound_actions(CreaturePtr creature)
 {
-  SoundActionsAction saa;
-  return get_action_cost(creature, saa.sound_actions(creature));
+  SoundSettingsAction ssa;
+  return get_action_cost(creature, ssa.sound_actions(creature));
 }
 
 ActionCost ActionManager::breed(CreaturePtr creature)
