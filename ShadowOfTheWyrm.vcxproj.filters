@@ -4553,6 +4553,9 @@
     <ClInclude Include="engine\XML\include\XMLSoundsReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\actions\include\ToggleSettingsAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9237,6 +9240,9 @@
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLSoundsReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\ToggleSettingsAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
