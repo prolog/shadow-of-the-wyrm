@@ -15,7 +15,7 @@ ActionCostValue SoundSettingsAction::sound_actions(CreaturePtr creature)
   return get_action_cost_value(nullptr);
 }
 
-vector<pair<string, string>> SoundSettingsAction::get_settings_to_display() const
+vector<pair<string, string>> SoundSettingsAction::get_settings_to_display(CreaturePtr creature) const
 {
   const Settings& settings = Game::instance().get_settings_ref();
 
