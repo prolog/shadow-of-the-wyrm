@@ -9,7 +9,16 @@
 
 using namespace std;
 
-vector<pair<string, string>> AutomaticActionsAction::get_auto_action_settings(CreaturePtr c) const
+ActionCostValue AutomaticActionsAction::automatic_actions(CreaturePtr creature)
+{
+  show_settings(creature, ScreenTitleTextKeys::SCREEN_TITLE_AUTO_ACTIONS);
+
+  // Display the Automatic Actions screen, which allows toggling autopickup,
+  // automelee, etc.
+  return get_action_cost_value(nullptr);
+}
+
+vector<pair<string, string>> AutomaticActionsAction::get_settings_to_display(CreaturePtr c) const
 {
   Settings& settings = Game::instance().get_settings_ref();
   string weight_limit = settings.get_setting(Setting::AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT_LBS);
@@ -21,59 +30,6 @@ vector<pair<string, string>> AutomaticActionsAction::get_auto_action_settings(Cr
                                               { Setting::AUTOMELEE, Setting::AUTOMELEE + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOMELEE_AT_RANGE) + ": " + StringTable::get(TextMessages::get_bool_sid(c->get_decision_strategy()->get_automelee())) },
                                               { Setting::AUTOMOVE_ALWAYS_STOP_ON_ITEMS, Setting::AUTOMOVE_ALWAYS_STOP_ON_ITEMS + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOMOVE_ALWAYS_STOP_ON_ITEMS) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::AUTOMOVE_ALWAYS_STOP_ON_ITEMS))) } };
   return action_set;
-}
-
-ActionCostValue AutomaticActionsAction::automatic_actions(CreaturePtr creature) const
-{
-  Game& game = Game::instance();
-  Settings& set = game.get_settings_ref();
-  auto do_aa = true;
-
-  while (creature != nullptr && do_aa)
-  {
-    auto settings = get_auto_action_settings(creature);
-    vector<string> options;
-
-    for (const auto& s : settings)
-    {
-      options.push_back(s.second);
-    }
-
-    OptionScreen os(game.get_display(), ScreenTitleTextKeys::SCREEN_TITLE_AUTO_ACTIONS, {}, options);
-    string display_s = os.display();
-    int idx = -1;
-
-    if (!display_s.empty())
-    {
-      idx = display_s[0] - 'a';
-    }
-
-    if (idx >= 0 && idx < static_cast<int>(settings.size()))
-    {
-      auto s_val = settings[idx];
-
-      string setting_id = s_val.first;
-      bool new_set_value = !set.get_setting_as_bool(setting_id);
-      set.set_setting(setting_id, std::to_string(new_set_value));
-
-      if (setting_id == Setting::AUTOPICKUP)
-      {
-        creature->get_decision_strategy()->set_autopickup(new_set_value);
-      }
-      else if (setting_id == Setting::AUTOMELEE)
-      {
-        creature->get_decision_strategy()->set_automelee(new_set_value);
-      }
-    }
-    else
-    {
-      do_aa = false;
-    }
-  }
-
-  // Display the Automatic Actions screen, which allows toggling autopickup,
-  // automelee, etc.
-  return get_action_cost_value(nullptr);
 }
 
 string AutomaticActionsAction::get_autopickup_type_string(CreaturePtr creature) const
@@ -105,6 +61,17 @@ string AutomaticActionsAction::get_autopickup_type_string(CreaturePtr creature) 
   return ss.str();
 }
 
+void AutomaticActionsAction::process_setting_if_necessary(CreaturePtr creature, const string& setting_name, const bool new_set_val)
+{
+  if (setting_name == Setting::AUTOPICKUP)
+  {
+    creature->get_decision_strategy()->set_autopickup(new_set_val);
+  }
+  else if (setting_name == Setting::AUTOMELEE)
+  {
+    creature->get_decision_strategy()->set_automelee(new_set_val);
+  }
+}
 ActionCostValue AutomaticActionsAction::get_action_cost_value(CreaturePtr c) const
 {
   return ActionCostConstants::NO_ACTION;

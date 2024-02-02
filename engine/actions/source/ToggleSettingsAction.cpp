@@ -12,7 +12,7 @@ void ToggleSettingsAction::show_settings(CreaturePtr creature, const string& scr
 
   while (creature != nullptr && do_settings)
   {
-    auto settings = get_settings_to_display();
+    auto settings = get_settings_to_display(creature);
     vector<string> options;
 
     for (const auto& s : settings)
