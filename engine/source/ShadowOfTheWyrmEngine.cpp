@@ -209,10 +209,11 @@ void ShadowOfTheWyrmEngine::setup_game()
 {
   Game& game = Game::instance();
   Log& log = Log::instance();
+  Settings& settings = game.get_settings_ref();
 
-  string config_file = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_BASE);
-  string config_file_creatures = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_CREATURES);
-  string config_file_items = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_ITEMS);
+  string config_file = settings.get_setting(Setting::CONFIGURATION_FILE_BASE);
+  string config_file_creatures = settings.get_setting(Setting::CONFIGURATION_FILE_CREATURES);
+  string config_file_items = settings.get_setting(Setting::CONFIGURATION_FILE_ITEMS);
 
   XMLConfigurationReader reader(config_file, config_file_creatures, config_file_items);
 
@@ -232,12 +233,12 @@ void ShadowOfTheWyrmEngine::setup_game()
   log.debug("Reading sound effects and music.");
 
   // Set all sound-related assets into the game, pre-loading them if it
-  // makes sense (ie for effects but not music).
+  // makes sense (ie for effects but not music). Set the settings as well.
   string disabled_sound_ids = game.get_settings_ref().get_setting(Setting::DISABLE_SOUND_EFFECT_IDS);
   SoundPtr sound = game.get_sound();
   auto sound_effects = reader.get_sound_effects();
-  game.set_sound_effects(sound_effects);
 
+  game.set_sound_effects(sound_effects);
   sound->set_effects(sound_effects);
   sound->set_disabled_sound_ids(disabled_sound_ids);
 

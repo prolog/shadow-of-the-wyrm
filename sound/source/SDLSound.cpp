@@ -70,7 +70,7 @@ void SDLSound::set_disabled_sound_ids(const string& new_disabled_sound_csv)
 
 void SDLSound::play(const string& id)
 {
-	if (!id.empty())
+	if (enable_sound && enable_sound_effects && !id.empty())
 	{
 		auto e_it = effects.find(id);
 

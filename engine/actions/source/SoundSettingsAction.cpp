@@ -29,3 +29,20 @@ ActionCostValue SoundSettingsAction::get_action_cost_value(CreaturePtr c) const
 {
   return ActionCostConstants::NO_ACTION;
 }
+
+void SoundSettingsAction::process_setting_if_necessary(CreaturePtr creature, const string& setting_name, const bool new_set_val)
+{
+  SoundPtr sound = Game::instance().get_sound();
+
+  if (sound != nullptr)
+  {
+    if (setting_name == Setting::SOUND_ENABLED)
+    {
+      sound->set_enable_sound(new_set_val);
+    }
+    else if (setting_name == Setting::SOUND_EFFECTS_ENABLED)
+    {
+      sound->set_enable_sound_effects(new_set_val);
+    }
+  }
+}
