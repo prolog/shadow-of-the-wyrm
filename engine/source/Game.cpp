@@ -1502,8 +1502,13 @@ bool Game::deserialize(istream& stream)
   Serialize::read_class_id(stream, sound_ci);
 
   SoundFactory sf;
-  SoundPtr sound = sf.create_sound(sound_ci);
-  sound->deserialize(stream);
+  SoundPtr old_sound = sf.create_sound(sound_ci);
+  old_sound->deserialize(stream);
+
+  // Likewise with display and the palette ID/etc: get various sound
+  // settings so these can persist between saves.
+  sound->set_enable_sound(old_sound->get_enable_sound());
+  sound->set_enable_sound_effects(old_sound->get_enable_sound_effects());
 
   map_registry.deserialize(stream);
 
