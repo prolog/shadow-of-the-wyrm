@@ -19,6 +19,9 @@ const string SettingTextKeys::SETTING_AUTOPICKUP_EXCLUDE_OVER_WEIGHT = "SETTING_
 const string SettingTextKeys::SETTING_AUTOMELEE_AT_RANGE = "SETTING_AUTOMELEE_AT_RANGE";
 const string SettingTextKeys::SETTING_AUTOMOVE_ALWAYS_STOP_ON_ITEMS = "SETTING_AUTOMOVE_ALWAYS_STOP_ON_ITEMS";
 
+const string SettingTextKeys::SETTING_SOUND_ENABLED = "SETTING_SOUND_ENABLED";
+const string SettingTextKeys::SETTING_SOUND_EFFECTS_ENABLED = "SETTING_SOUND_EFFECTS_ENABLED";
+
 string SettingTextKeys::get_autopickup_exclude_over_weight_message(const string& weight_in_lbs)
 {
 	string msg = StringTable::get(SETTING_AUTOPICKUP_EXCLUDE_OVER_WEIGHT);

@@ -4532,7 +4532,7 @@
     <ClInclude Include="engine\effects\include\SummonTrapsEffect.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\actions\include\SoundActionsAction.hpp">
+    <ClInclude Include="engine\actions\include\SoundSettingsAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
     <ClInclude Include="sound\include\SDLSound.hpp">
@@ -9211,7 +9211,7 @@
     <ClCompile Include="world\source\unit_tests\Class_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="engine\actions\source\SoundActionsAction.cpp">
+    <ClCompile Include="engine\actions\source\SoundSettingsAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
     <ClCompile Include="sound\source\SDLSound.cpp">
