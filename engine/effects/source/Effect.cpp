@@ -66,7 +66,7 @@ bool Effect::effect(std::shared_ptr<Creature> creature, ActionManager * const am
 
   identify_effect_as_necessary(creature, effect_identified, show_msg_on_unid);
 
-  if (is_negative_effect())
+  if (effect_identified && is_negative_effect())
   {
     Game::instance().get_sound(creature)->play(SoundEffectID::NEGATIVE_EFFECT);
   }
