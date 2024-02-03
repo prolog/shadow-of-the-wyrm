@@ -8345,6 +8345,18 @@
 	</Spritesheets>
 	<Sounds>
 		<Effects>
+			<!-- User-defined effects can be added by specifying regexes.
+			     Regexes are in ECMAScript format. The regexes are checked 
+				 whenever a message is added to the message area. The id
+				 for a regex should be unique within the Effects element. 
+				 Eg:
+				 
+			<Effect id="u1" match="You hit">
+				<Location>assets/sound/effects/hit.wav</Location>
+			</Effect>
+			<Effect id="u2" match="You miss">
+				<Location>assets/sound/effects/shoot.wav</Location>
+			</Effect> -->
 			<Effect id="_shoot">
 				<Location>assets/sound/effects/shoot.wav</Location>
 			</Effect>
