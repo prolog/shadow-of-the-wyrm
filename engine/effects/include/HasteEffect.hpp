@@ -1,5 +1,6 @@
 #pragma once
 #include "Effect.hpp"
+#include "StatusEffect.hpp"
 
 class HasteEffect : public Effect
 {
