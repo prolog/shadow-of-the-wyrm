@@ -20,7 +20,7 @@ void SDLInit::set_up()
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
   }
 
-  if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+  if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) < 0)
   {
     ostringstream ss_audio;
 
