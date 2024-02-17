@@ -13,6 +13,8 @@ Shadow of the Wyrm v1.6.5 "Reusner"
   - Digging and dropping a stone block/etc would allow you to build over
     stairs (RelicWraith).
 
+  - Made certain API functions safer to call without checks.
+
 Shadow of the Wyrm v1.6.2 "Daca"
 - Version started July 8, 2023.  Version finalized December 10, 2023.
 
