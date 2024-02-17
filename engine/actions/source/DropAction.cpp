@@ -522,10 +522,19 @@ bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TileP
   }
 
   CurrentCreatureAbilities cca;
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+
   if (!cca.can_see(creature))
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BUILD_BLIND));
+    manager.send();
+
+    return false;
+  }
+
+  if (tile->get_is_staircase())
+  {
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BUILD_STAIRCASE));
     manager.send();
 
     return false;

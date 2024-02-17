@@ -8,6 +8,11 @@ Shadow of the Wyrm v1.6.5 "Reusner"
 
 - Various new name, ship name, etc possibilities.
 
+- Bug fixes:
+
+  - Digging and dropping a stone block/etc would allow you to build over
+    stairs (RelicWraith).
+
 Shadow of the Wyrm v1.6.2 "Daca"
 - Version started July 8, 2023.  Version finalized December 10, 2023.
 
