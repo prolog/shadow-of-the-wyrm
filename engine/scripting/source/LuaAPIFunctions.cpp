@@ -1178,7 +1178,7 @@ int add_objects_to_player_tile(lua_State* ls)
     MapPtr map = Game::instance().get_current_map();
     TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
 
-    if (player_tile != nullptr)
+    if (player_tile != nullptr && map != nullptr && map->get_map_type() != MapType::MAP_TYPE_WORLD)
     {
       IInventoryPtr items = player_tile->get_items();
 
