@@ -1,3 +1,6 @@
+Shadow of the Wyrm v1.6.7 "Michelagnolo Galilei"
+- Version started February 18, 2024.
+
 Shadow of the Wyrm v1.6.5 "Reusner"
 - Version started December 10, 2023. Version finalized February 18, 2024.
 
