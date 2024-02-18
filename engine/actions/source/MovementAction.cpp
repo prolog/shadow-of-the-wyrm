@@ -33,6 +33,7 @@
 #include "Setting.hpp"
 #include "SkillManager.hpp"
 #include "SkillsCalculator.hpp"
+#include "SoundEffectID.hpp"
 #include "StairwayMovementAction.hpp"
 #include "TerrainGeneratorFactory.hpp"
 #include "TextKeys.hpp"
@@ -251,6 +252,8 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
     {
       // Can the creature dig through the tile?
       ItemPtr wielded = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
+      int tile_hardness = creatures_new_tile->get_hardness();
+      bool dug = false;
 
       if (wielded != nullptr)
       {
@@ -258,10 +261,11 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
 
         if (!dig_hardness.empty())
         {
-          if (String::to_int(dig_hardness) >= creatures_new_tile->get_hardness())
+          if (String::to_int(dig_hardness) >= tile_hardness)
           {
             DigAction da;
             movement_acv = da.dig_through(creature->get_id(), wielded, map, creatures_new_tile, new_coords, true, true);
+            dug = true;
           }
           else
           {
@@ -278,6 +282,11 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
         //
         // Do nothing.  Don't advance the turn.
         movement_acv = ActionCostConstants::NO_ACTION;
+      }
+
+      if (tile_hardness > 0 && !dug)
+      {
+        Game().instance().get_sound(creature)->play(SoundEffectID::BUMP);
       }
     }
     else if (!creatures_new_tile->get_is_available_for_creature(creature))
@@ -816,8 +825,8 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Map
     is_automoving = creature->get_automatic_movement_ref().get_engaged();
   }
 
-  pair<bool, string> details = tmc.get_confirmation_details(creature, current_map, creatures_old_tile, old_tile_coords, creatures_new_tile, creatures_new_tile_coords);
-  bool needs_confirmation = details.first;
+  tuple<bool, string, string> details = tmc.get_confirmation_details(creature, current_map, creatures_old_tile, old_tile_coords, creatures_new_tile, creatures_new_tile_coords);
+  bool needs_confirmation = std::get<0>(details);
 
   if (needs_confirmation)
   {
@@ -831,7 +840,7 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Map
     if (is_player && never_move_to_danger == false && is_automoving == false)
     {
       IMessageManager& manager = MM::instance();
-      manager.add_new_confirmation_message(details.second);
+      manager.add_new_confirmation_message(std::get<1>(details));
 
       confirmation = (creature->get_decision_strategy()->get_confirmation());
       manager.clear_if_necessary();
@@ -839,6 +848,16 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Map
     else if (!is_player)
     {
       confirmation = creature->get_decision_strategy()->get_move_to_dangerous_tile(current_map, creature, creatures_new_tile);
+    }
+
+    if (confirmation)
+    {
+      string sound_id = std::get<2>(details);
+
+      if (is_player && !sound_id.empty())
+      {
+        Game::instance().get_sound()->play(sound_id);
+      }
     }
 
     return confirmation;      

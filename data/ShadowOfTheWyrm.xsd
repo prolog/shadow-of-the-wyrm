@@ -18,6 +18,7 @@
 			<xs:element ref="tns:StartingLocations" minOccurs="0"/>
 			<xs:element ref="tns:Scripts" minOccurs="0"/>
 			<xs:element ref="tns:Spritesheets" minOccurs="0"/>
+			<xs:element ref="tns:Sounds" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -296,6 +297,14 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="Spritesheet" type="tns:Spritesheet" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Sounds">
+	<xs:annotation><xs:documentation>Sound effects and music and their location on disk.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Effects" type="tns:SoundEffects" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -1337,6 +1346,30 @@
 		<xs:element name="References" type="tns:SpritesheetReferences" minOccurs="0"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="required"/>
+</xs:complexType>
+<xs:complexType name="SoundEffect">
+	<xs:annotation><xs:documentation>An individual sound effect (ID and location)</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Location" type="xs:string"/>
+	</xs:sequence>
+	<!-- id is used to reference loaded sound effects. For defining your own
+	     sounds (with a regex match), avoid using an id with an underscore.
+		 For a list of IDs the game uses, see SoundEffectID.hpp/cpp. 
+		 
+		 match takes a regex and is used to test against text sent to the
+		 message area. On a match, a particular sound is played. The 
+		 ECMAscript regular expression grammar is used. Eg to match snoo,
+		 snooo, ..., you could use:
+		 
+		 <Effect id="snoo" match="sno[o]+">...</Effect> -->
+	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="required"/>
+	<xs:attribute name="match" type="tns:NonEmptyIdentifier" use="optional"/>
+</xs:complexType>
+<xs:complexType name="SoundEffects">
+	<xs:annotation><xs:documentation>Identifier/file location information for sound effects.</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Effect" type="tns:SoundEffect" minOccurs="0" maxOccurs="unbounded"/>
+	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="SpritesheetReferences">
 	<xs:sequence>

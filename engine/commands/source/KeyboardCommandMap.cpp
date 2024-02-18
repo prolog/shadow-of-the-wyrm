@@ -121,10 +121,10 @@ vector<string> KeyboardCommandMap::get_remappable_commands() const
   CommandKeys::EAT, CommandKeys::CHAT, CommandKeys::APPLY_FEATURE,
   CommandKeys::QUEST_LIST, CommandKeys::CAST_SPELL, CommandKeys::BESTIARY,
   CommandKeys::EVOKE, CommandKeys::LATEST_MESSAGES, CommandKeys::KICK,
-  CommandKeys::OFFER, CommandKeys::SKIN, CommandKeys::PIETY,
-  CommandKeys::EXPERIENCE, CommandKeys::REST, CommandKeys::VIEW_ITEMS,
-  CommandKeys::CHAR_DETAILS, CommandKeys::HELP, CommandKeys::INSCRIBE,
-  CommandKeys::AUTOMATIC_ACTIONS, CommandKeys::ITEM_CODEX, CommandKeys::ORDER};
+  CommandKeys::OFFER, CommandKeys::SKIN, CommandKeys::PIETY, CommandKeys::EXPERIENCE, 
+  CommandKeys::REST, CommandKeys::VIEW_ITEMS, CommandKeys::CHAR_DETAILS, CommandKeys::HELP, 
+  CommandKeys::INSCRIBE, CommandKeys::AUTOMATIC_ACTIONS, CommandKeys::SOUND_ACTIONS, 
+  CommandKeys::ITEM_CODEX, CommandKeys::ORDER};
 }
 
 void KeyboardCommandMap::parse_keybindings(const Settings& settings, const vector<string>& remappable_commands)
@@ -177,7 +177,7 @@ void KeyboardCommandMap::initialize_command_mapping(const Settings& settings)
   command_mapping.insert(make_pair(std::to_string(KEY_F(9)), CommandKeys::SWITCH_COLOUR_PALETTES));
   command_mapping.insert(make_pair(std::to_string(KEY_F(10)), CommandKeys::SWITCH_GRAPHICS_MODE));
   command_mapping.insert(make_pair(std::to_string(KEY_F(11)), CommandKeys::RUN_SCRIPT));
-  command_mapping.insert(make_pair(std::to_string(KEY_F(12)), CommandKeys::RELOAD_SCRIPTS_TEXTURES_AND_SIDS));
+  command_mapping.insert(make_pair(std::to_string(KEY_F(12)), CommandKeys::RELOAD_SCRIPTS_ASSETS_AND_SIDS));
 }
 
 // Handle serialization of the keyboard/command-key map.  Any additional values added by subclasses

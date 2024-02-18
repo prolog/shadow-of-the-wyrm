@@ -2,6 +2,7 @@
 #include "CreatureUtils.hpp"
 #include "EffectTextKeys.hpp"
 #include "GainAttributesEffect.hpp"
+#include "Game.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
 

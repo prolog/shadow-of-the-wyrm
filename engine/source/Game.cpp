@@ -42,6 +42,7 @@
 #include "Serialize.hpp"
 #include "Serialization.hpp"
 #include "Setting.hpp"
+#include "SoundFactory.hpp"
 #include "StatusActionProcessor.hpp"
 #include "StealthSkillProcessor.hpp"
 #include "TextKeys.hpp"
@@ -191,6 +192,44 @@ void Game::set_display(DisplayPtr game_display)
 DisplayPtr Game::get_display() const
 {
   return display;
+}
+
+void Game::set_sound(SoundPtr game_sound)
+{
+  sound = game_sound;
+}
+
+SoundPtr Game::get_sound() const
+{
+  return sound;
+}
+
+// Returns the real sound pointer if the creature is null or the player (if 
+// the sound should always be played), or else a NullSound pointer, which
+// suppresses the sound effect.
+SoundPtr Game::get_sound(CreaturePtr creature)
+{
+  if (creature == nullptr || creature->get_is_player())
+  {
+    return sound;
+  }
+  else
+  {
+    SoundFactory sf;
+    SoundPtr sound = sf.create_null_sound();
+
+    return sound;
+  }
+}
+
+void Game::set_sound_effects(const map<pair<string, string>, string>& new_sound_effects)
+{
+  sound_effects = new_sound_effects;
+}
+
+const map<pair<string, string>, string>& Game::get_sound_effects_cref() const
+{
+  return sound_effects;
 }
 
 void Game::set_map_registry(const MapRegistry& new_map_registry)
@@ -1221,7 +1260,19 @@ bool Game::serialize(ostream& stream) const
   Serialize::write_class_id(stream, display->get_class_identifier());
   display->serialize(stream);
 
+  Serialize::write_class_id(stream, sound->get_class_identifier());
+  sound->serialize(stream);
+
   map_registry.serialize(stream);
+
+  Serialize::write_size_t(stream, sound_effects.size());
+  for (const auto& se_pair : sound_effects)
+  {
+    Serialize::write_string(stream, se_pair.first.first);
+    Serialize::write_string(stream, se_pair.first.second);
+
+    Serialize::write_string(stream, se_pair.second);
+  }
 
   Serialize::write_size_t(stream, deities.size());
   for (const auto& deity_pair : deities)
@@ -1447,7 +1498,36 @@ bool Game::deserialize(istream& stream)
   // We also need the value of ASCII mode.
   display->set_force_ascii(dc_pair.first->get_force_ascii());
 
+  ClassIdentifier sound_ci;
+  Serialize::read_class_id(stream, sound_ci);
+
+  SoundFactory sf;
+  SoundPtr old_sound = sf.create_sound(sound_ci);
+  old_sound->deserialize(stream);
+
+  // Likewise with display and the palette ID/etc: get various sound
+  // settings so these can persist between saves.
+  sound->set_enable_sound(old_sound->get_enable_sound());
+  sound->set_enable_sound_effects(old_sound->get_enable_sound_effects());
+
   map_registry.deserialize(stream);
+
+  size_t se_size = 0;
+  Serialize::read_size_t(stream, se_size);
+
+  for (size_t i = 0; i < se_size; i++)
+  {
+    string id;
+    string match;
+    string location;
+
+    Serialize::read_string(stream, id);
+    Serialize::read_string(stream, match);
+    Serialize::read_string(stream, location);
+
+    pair<string, string> id_and_match = std::make_pair(id, match);
+    sound_effects[id_and_match] = location;
+  }
 
   size_t size = 0;
   Serialize::read_size_t(stream, size);

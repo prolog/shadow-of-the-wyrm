@@ -122,7 +122,7 @@ string ShadowOfTheWyrmEngine::start(const Settings& settings)
   Log& log = Log::instance();
 
   game.set_settings(settings);
-  game.actions.reload_scripts_textures_and_sids();
+  game.actions.reload_scripts_assets_and_sids();
   bool disp_ok = true;
 
   if (state_manager.start_new_game())
@@ -181,6 +181,11 @@ void ShadowOfTheWyrmEngine::set_display(DisplayPtr new_display)
   display = new_display;
 }
 
+void ShadowOfTheWyrmEngine::set_sound(SoundPtr new_sound)
+{
+  sound = new_sound;
+}
+
 // Set up the Display based on the ini settings.
 void ShadowOfTheWyrmEngine::setup_display(const Settings& settings)
 {
@@ -204,10 +209,11 @@ void ShadowOfTheWyrmEngine::setup_game()
 {
   Game& game = Game::instance();
   Log& log = Log::instance();
+  Settings& settings = game.get_settings_ref();
 
-  string config_file = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_BASE);
-  string config_file_creatures = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_CREATURES);
-  string config_file_items = game.get_settings_ref().get_setting(Setting::CONFIGURATION_FILE_ITEMS);
+  string config_file = settings.get_setting(Setting::CONFIGURATION_FILE_BASE);
+  string config_file_creatures = settings.get_setting(Setting::CONFIGURATION_FILE_CREATURES);
+  string config_file_items = settings.get_setting(Setting::CONFIGURATION_FILE_ITEMS);
 
   XMLConfigurationReader reader(config_file, config_file_creatures, config_file_items);
 
@@ -222,6 +228,19 @@ void ShadowOfTheWyrmEngine::setup_game()
   // Custom maps are read last because they rely on creatures (which rely on races
   // and classes), and items.
   game.set_display(display);
+  game.set_sound(sound);
+
+  log.debug("Reading sound effects and music.");
+
+  // Set all sound-related assets into the game, pre-loading them if it
+  // makes sense (ie for effects but not music). Set the settings as well.
+  string disabled_sound_ids = game.get_settings_ref().get_setting(Setting::DISABLE_SOUND_EFFECT_IDS);
+  SoundPtr sound = game.get_sound();
+  auto sound_effects = reader.get_sound_effects();
+
+  game.set_sound_effects(sound_effects);
+  sound->set_effects(sound_effects);
+  sound->set_disabled_sound_ids(disabled_sound_ids);
 
   log.debug("Reading items.");
 

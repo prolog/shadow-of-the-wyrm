@@ -33,6 +33,7 @@
 #include "ShadowOfTheWyrmEngine.hpp"
 #include "Settings.hpp"
 #include "Setting.hpp"
+#include "SoundFactory.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
 #include "XMLDataStructures.hpp"
@@ -50,7 +51,7 @@ using namespace std;
 using namespace xercesc;
 
 void print_title();
-std::string run_game(DisplayPtr display, ControllerPtr controller, Settings& settings);
+std::string run_game(DisplayPtr display, SoundPtr sound, ControllerPtr controller, Settings& settings);
 void remove_old_logfiles(const Settings& settings);
 bool check_write_permissions();
 int parse_command_line_arguments(int argc, char* argv[]);
@@ -131,11 +132,7 @@ int main(int argc, char* argv[])
 
       #ifdef ENABLE_SDL
       SDLInit sdl;
-
-      if (display_id == DisplayIdentifier::DISPLAY_IDENTIFIER_SDL)
-      {
-        sdl.set_up();
-      }
+      sdl.set_up();
       #endif
 
       remove_old_logfiles(settings);
@@ -146,7 +143,16 @@ int main(int argc, char* argv[])
 
       DisplayPtr display = display_details.first;
       ControllerPtr controller = display_details.second;
-      
+
+      string sound_id = settings.get_setting(Setting::SOUND);
+      bool enable_sound = settings.get_setting_as_bool(Setting::SOUND_ENABLED);
+      bool enable_sound_effects = settings.get_setting_as_bool(Setting::SOUND_EFFECTS_ENABLED);
+
+      SoundFactory sf;
+      SoundPtr sound = sf.create_sound(sound_id);
+      sound->set_enable_sound(enable_sound);
+      sound->set_enable_sound_effects(enable_sound_effects);
+
       bool write_ok = check_write_permissions();
 
       if (!write_ok)
@@ -162,7 +168,7 @@ int main(int argc, char* argv[])
         set_display_settings(display, settings);
         display->display_splash(true);
 
-        msg = run_game(display, controller, settings);
+        msg = run_game(display, sound, controller, settings);
 
         if (!msg.empty())
         {
@@ -178,12 +184,9 @@ int main(int argc, char* argv[])
         }
       }
 
-      if (display_id == DisplayIdentifier::DISPLAY_IDENTIFIER_SDL)
-      {
-        #ifdef ENABLE_SDL
-        sdl.tear_down();
-        #endif
-      }
+      #ifdef ENABLE_SDL
+      sdl.tear_down();
+      #endif
     }
   }
   catch(std::exception& e)
@@ -203,7 +206,7 @@ int main(int argc, char* argv[])
   return 0;
 }
 
-string run_game(DisplayPtr display, ControllerPtr controller, Settings& settings)
+string run_game(DisplayPtr display, SoundPtr sound, ControllerPtr controller, Settings& settings)
 {
   string msg;
   Log& log = Log::instance();
@@ -212,6 +215,7 @@ string run_game(DisplayPtr display, ControllerPtr controller, Settings& settings
   // set the default display into the engine
   engine.set_display(display);
   engine.set_controller(controller);
+  engine.set_sound(sound);
 
   log.debug("Starting SotW.");
   msg = engine.start(settings);

@@ -90,4 +90,7 @@ const string Setting::WORLD_MAP_TREASURE_X_IN_Y_X = "_world_map_treasure_x_in_y_
 const string Setting::WORLD_MAP_TREASURE_X_IN_Y_Y = "_world_map_treasure_x_in_y_y";
 const string Setting::WORLD_MAP_FILL_TILE_TYPE = "_world_map_fill_tile_type";
 const string Setting::SAVE_THEN_PROMPT_TO_QUIT = "save_then_prompt_to_quit";
-
+const string Setting::SOUND = "sound";
+const string Setting::SOUND_ENABLED = "sound_enabled";
+const string Setting::SOUND_EFFECTS_ENABLED = "sound_effects_enabled";
+const string Setting::DISABLE_SOUND_EFFECT_IDS = "disable_sound_effect_ids";

@@ -2,6 +2,7 @@
 #include "Conversion.hpp"
 #include "EffectTextKeys.hpp"
 #include "EnchantingEffect.hpp"
+#include "Game.hpp"
 #include "ItemEnchantmentCalculator.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"

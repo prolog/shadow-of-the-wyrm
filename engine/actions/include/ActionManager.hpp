@@ -101,8 +101,8 @@ class ActionManager : public ISerializable
 
     // Clear the Lua state so that any script changes will be applied on
     // the next load.
-    void reload_scripts_textures_and_sids(); // generic version.
-    ActionCost reload_scripts_textures_and_sids(CreaturePtr creature); // creature's-command-version
+    void reload_scripts_assets_and_sids(); // generic version.
+    ActionCost reload_scripts_assets_and_sids(CreaturePtr creature); // creature's-command-version
     ActionCost run_script_command(CreaturePtr creature); // should only be available in debug mode!
 
     ActionCost cast_spell(CreaturePtr creature, const std::string& spell_id, const Direction d);
@@ -163,6 +163,9 @@ class ActionManager : public ISerializable
     // Toggle various automatic actions: pickup,
     // melee at range, etc
     ActionCost automatic_actions(CreaturePtr creature);
+
+    // Toggle sound effects and music
+    ActionCost sound_actions(CreaturePtr creature);
 
     // Breed by spawning into an adjacent tile
     ActionCost breed(CreaturePtr creature);

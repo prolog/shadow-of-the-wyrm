@@ -61,6 +61,8 @@ bool ExperienceManager::gain_experience(CreaturePtr creature, const uint experie
   // If we've gained at least one level, display the skill advancement screen.
   if (levels_gained > 0)
   {
+    Game::instance().get_sound(creature)->play(SoundEffectID::LEVEL_UP);
+
     if (creature != nullptr && creature->get_is_player())
     {
       int skill_pts = creature->get_skill_points();

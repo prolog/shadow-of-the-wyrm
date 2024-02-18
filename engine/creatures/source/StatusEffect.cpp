@@ -75,6 +75,10 @@ bool StatusEffect::should_apply_change(CreaturePtr creature, const int effect_bo
 
         status_should_apply = false;
       }
+      else
+      {
+        Game::instance().get_sound(creature)->play(SoundEffectID::NEGATIVE_EFFECT);
+      }
     }
   }
 
@@ -91,6 +95,9 @@ void StatusEffect::apply_change(CreaturePtr creature, const int danger_level) co
 
   if (status_applied)
   {
+    string sound_effect = get_sound_effect();
+    Game::instance().get_sound(creature)->play(sound_effect);
+
     notify_deities(initiating_creature, creature);
 
     string message = get_application_message(creature);
@@ -330,6 +337,18 @@ string StatusEffect::get_npc_undo_message(CreaturePtr creature) const
 {
   string no_message;
   return no_message;
+}
+
+string StatusEffect::get_sound_effect() const
+{
+  string effect;
+
+  if (is_negative())
+  {
+    effect = SoundEffectID::NEGATIVE_EFFECT;
+  }
+
+  return effect;
 }
 
 void StatusEffect::tick(CreaturePtr creature, const int danger_level) const

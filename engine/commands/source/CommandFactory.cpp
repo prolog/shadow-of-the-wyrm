@@ -154,7 +154,7 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_unique<QuestListCommand>(key);
   }
-  else if (command_name == CommandKeys::RELOAD_SCRIPTS_TEXTURES_AND_SIDS)
+  else if (command_name == CommandKeys::RELOAD_SCRIPTS_ASSETS_AND_SIDS)
   {
     command = std::make_unique<ReloadScriptsCommand>(key);
   }
@@ -229,6 +229,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   else if (command_name == CommandKeys::AUTOMATIC_ACTIONS)
   {
     command = std::make_unique<AutomaticActionsCommand>(key);
+  }
+  else if (command_name == CommandKeys::SOUND_ACTIONS)
+  {
+    command = std::make_unique<SoundActionsCommand>(key);
   }
   else if (command_name == CommandKeys::BREED)
   {

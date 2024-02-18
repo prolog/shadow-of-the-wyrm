@@ -45,6 +45,7 @@
 #include "ShowConductsAction.hpp"
 #include "ShowResistancesAction.hpp"
 #include "SkinAction.hpp"
+#include "SoundSettingsAction.hpp"
 #include "SpellcastingAction.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "TerrainSpeedMultiplierCalculator.hpp"
@@ -324,15 +325,15 @@ ActionCost ActionManager::quest_list(CreaturePtr creature)
   return get_action_cost(creature, qla.quest_list());
 }
 
-void ActionManager::reload_scripts_textures_and_sids()
+void ActionManager::reload_scripts_assets_and_sids()
 {
   CreaturePtr nullcr;
-  reload_scripts_textures_and_sids(nullcr);
+  reload_scripts_assets_and_sids(nullcr);
 }
 
 // Clear the Lua state so scripts can be reloaded.
 // Reload the strings.
-ActionCost ActionManager::reload_scripts_textures_and_sids(CreaturePtr creature)
+ActionCost ActionManager::reload_scripts_assets_and_sids(CreaturePtr creature)
 {
   Game& game = Game::instance();
   ScriptEngine& se = game.get_script_engine_ref();
@@ -343,6 +344,12 @@ ActionCost ActionManager::reload_scripts_textures_and_sids(CreaturePtr creature)
   {
     display->set_spritesheets(game.get_spritesheets());
     game.set_requires_redraw(true);
+  }
+
+  SoundPtr sound = game.get_sound();
+  if (sound != nullptr)
+  {
+    sound->set_effects(game.get_sound_effects_cref());
   }
 
   StringTable::load(game.get_sid_ini_filename());
@@ -856,6 +863,12 @@ ActionCost ActionManager::automatic_actions(CreaturePtr creature)
 {
   AutomaticActionsAction aaa;
   return get_action_cost(creature, aaa.automatic_actions(creature));
+}
+
+ActionCost ActionManager::sound_actions(CreaturePtr creature)
+{
+  SoundSettingsAction ssa;
+  return get_action_cost(creature, ssa.sound_actions(creature));
 }
 
 ActionCost ActionManager::breed(CreaturePtr creature)

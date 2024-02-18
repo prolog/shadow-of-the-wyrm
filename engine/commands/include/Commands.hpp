@@ -397,6 +397,13 @@ class AutomaticActionsCommand : public Command
     ~AutomaticActionsCommand();
 };
 
+class SoundActionsCommand : public Command
+{
+  public:
+    SoundActionsCommand(int key);
+    ~SoundActionsCommand();
+};
+
 class ItemCodexCommand : public Command
 {
   public:

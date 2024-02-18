@@ -1,6 +1,7 @@
 #include "RageEffect.hpp"
 #include "ActionTextKeys.hpp"
 #include "EffectTextKeys.hpp"
+#include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "StatusEffectFactory.hpp"
 
@@ -32,6 +33,11 @@ bool RageEffect::rage(CreaturePtr creature)
     {
       rage->apply_change(creature, creature->get_level().get_current());
       effect_applied = true;
+    }
+
+    if (effect_applied)
+    {
+      Game::instance().get_sound()->play(SoundEffectID::RAGE);
     }
   }
 

@@ -1,5 +1,6 @@
 #include "Creature.hpp"
 #include "EtherEffect.hpp"
+#include "Game.hpp"
 #include "EffectTextKeys.hpp"
 using std::string;
 

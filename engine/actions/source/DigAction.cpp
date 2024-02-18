@@ -155,6 +155,7 @@ ActionCostValue DigAction::dig_through(const string& creature_id, ItemPtr dig_it
       sm.mark_strength(creature);
     }
 
+    Game::instance().get_sound()->play(SoundEffectID::DIG);
     acv = get_action_cost_value(creature);
   }
 

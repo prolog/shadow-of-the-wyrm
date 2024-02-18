@@ -1,5 +1,6 @@
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"
+#include "Game.hpp"
 #include "MessageManager.hpp"
 #include "HasteEffect.hpp"
 #include "StatusEffectFactory.hpp"
@@ -35,7 +36,7 @@ bool HasteEffect::effect_blessed(CreaturePtr creature, ActionManager * const am,
   }
 
   StatusEffectPtr haste = StatusEffectFactory::create_status_effect(this->get_originator(), StatusIdentifiers::STATUS_ID_HASTE, source_id);
-  haste->apply_change(creature, creature->get_level().get_current());
+  apply_haste(creature, haste);
 
   return true;
 }
@@ -57,7 +58,7 @@ bool HasteEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am
   else
   {
     StatusEffectPtr haste = StatusEffectFactory::create_status_effect(this->get_originator(), StatusIdentifiers::STATUS_ID_HASTE, source_id);
-    haste->apply_change(creature, creature->get_level().get_current());
+    apply_haste(creature, haste);
   }
 
   return true;
@@ -69,3 +70,10 @@ bool HasteEffect::effect_cursed(CreaturePtr creature, ActionManager * am, const 
   return false;
 }
 
+void HasteEffect::apply_haste(CreaturePtr creature, StatusEffectPtr haste)
+{
+  if (creature != nullptr && haste != nullptr)
+  {
+    haste->apply_change(creature, creature->get_level().get_current());
+  }
+}

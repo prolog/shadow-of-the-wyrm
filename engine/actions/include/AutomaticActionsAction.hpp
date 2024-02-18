@@ -1,14 +1,15 @@
 #pragma once
-#include "IActionManager.hpp"
+#include "ToggleSettingsAction.hpp"
 
-class AutomaticActionsAction : public IActionManager
+class AutomaticActionsAction : public ToggleSettingsAction
 {
   public:
-    std::vector<std::pair<std::string, std::string>> get_auto_action_settings(CreaturePtr creature) const;
-    ActionCostValue automatic_actions(CreaturePtr creature) const;
+    ActionCostValue automatic_actions(CreaturePtr creature);
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 
   protected:
+    std::vector<std::pair<std::string, std::string>> get_settings_to_display(CreaturePtr creature) const;
     std::string get_autopickup_type_string(CreaturePtr creature) const;
+    void process_setting_if_necessary(CreaturePtr creature, const std::string& setting_name, const bool new_set_value);
 };
 

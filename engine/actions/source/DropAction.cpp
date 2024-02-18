@@ -273,6 +273,9 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
           Coordinate drop_coord = current_map->get_location(creature->get_id());
 
           IInventoryPtr inv = creatures_tile->get_items();
+          string sound_id = MapUtils::get_drop_sound(creatures_tile->get_tile_super_type());
+
+          Game::instance().get_sound()->play(sound_id);
           inv->merge_or_add(new_item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
 
           // Display a message if appropriate.
@@ -378,7 +381,6 @@ bool DropAction::plant_food(CreaturePtr creature, const map<string, string>& pro
       string min_q = min_q_it->second;
       string max_q = max_q_it->second;
 
-      auto& transforms = current_map->get_tile_item_transforms_ref();
       if (current_map->count_tile_item_transforms(coords) <= tile->get_num_plantable_items() && world != nullptr)
       {
         // OK: add to transforms
@@ -520,10 +522,19 @@ bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TileP
   }
 
   CurrentCreatureAbilities cca;
+  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+
   if (!cca.can_see(creature))
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BUILD_BLIND));
+    manager.send();
+
+    return false;
+  }
+
+  if (tile->get_is_staircase())
+  {
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BUILD_STAIRCASE));
     manager.send();
 
     return false;

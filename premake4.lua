@@ -109,6 +109,7 @@ project "ShadowOfTheWyrm"
                 "engine/XML/custom_maps/include",
                 "engine/XML/custom_maps/features/include",
                 "engine/XML/custom_maps/world/include",
+		"sound/include",
                 "world/include",
                 "world/magic/include",
                 "world/materials/include",
@@ -126,7 +127,7 @@ project "ShadowOfTheWyrm"
   configuration "Debug"
     defines { "_DEBUG", "DEBUG", "UNIT_TESTS", "ENABLE_SDL" }
     flags { "Symbols" }
-    links { "SDL2", "SDL2_image", "gtest" }
+    links { "SDL2", "SDL2_image", "SDL2_mixer", "gtest" }
     excludes { "source/MapTester.cpp", "source/SaveConverter.cpp" }
 
   configuration "CursesDebug"
@@ -138,7 +139,7 @@ project "ShadowOfTheWyrm"
   configuration "Release"
     defines { "NDEBUG", "ENABLE_SDL" }
     flags { "Optimize" }
-    links { "SDL2", "SDL2_image" }
+    links { "SDL2", "SDL2_image", "SDL2_mixer" }
     postbuildcommands { "mkdir sotw",
                         "cp $(TARGETDIR)/ShadowOfTheWyrm sotw/sotw",
                         "cp -R data sotw",

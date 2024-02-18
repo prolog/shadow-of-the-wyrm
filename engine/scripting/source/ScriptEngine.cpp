@@ -9,6 +9,7 @@
 #include "ReligionConstants.hpp"
 #include "ScriptEngine.hpp"
 #include "Serialize.hpp"
+#include "SoundEffectID.hpp"
 #include "ThreatConstants.hpp"
 
 using namespace std;
@@ -344,6 +345,25 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CDAMAGE_TYPE_SHADOW);
   lua_exportConst(ls, CDAMAGE_TYPE_ARCANE);
   lua_exportConst(ls, CDAMAGE_TYPE_LIGHTNING);
+
+  lua_exportConstStr(ls, CSOUND_EFFECT_HIT);
+  lua_exportConstStr(ls, CSOUND_EFFECT_HEAVY_HIT);
+  lua_exportConstStr(ls, CSOUND_EFFECT_MISS);
+  lua_exportConstStr(ls, CSOUND_EFFECT_SPELL);
+  lua_exportConstStr(ls, CSOUND_EFFECT_ZAP);
+  lua_exportConstStr(ls, CSOUND_EFFECT_SHOP);
+  lua_exportConstStr(ls, CSOUND_EFFECT_BUMP);
+  lua_exportConstStr(ls, CSOUND_EFFECT_TELEPORT);
+  lua_exportConstStr(ls, CSOUND_EFFECT_TIMEWALK);
+  lua_exportConstStr(ls, CSOUND_EFFECT_RAGE);
+  lua_exportConstStr(ls, CSOUND_EFFECT_DIG);
+  lua_exportConstStr(ls, CSOUND_EFFECT_EXIT_MAP);
+  lua_exportConstStr(ls, CSOUND_EFFECT_SPLASH);
+  lua_exportConstStr(ls, CSOUND_EFFECT_ALARM);
+  lua_exportConstStr(ls, CSOUND_EFFECT_DEAD);
+  lua_exportConstStr(ls, CSOUND_EFFECT_NEGATIVE_EFFECT);
+  lua_exportConstStr(ls, CSOUND_EFFECT_LEVEL_UP);
+  lua_exportConstStr(ls, CSOUND_EFFECT_CROWNING);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)

@@ -374,7 +374,7 @@ QuestListCommand::~QuestListCommand()
 
 // Clear the Lua state (scripts will reload)
 ReloadScriptsCommand::ReloadScriptsCommand(const int key)
-: Command(CommandKeys::RELOAD_SCRIPTS_TEXTURES_AND_SIDS, key)
+: Command(CommandKeys::RELOAD_SCRIPTS_ASSETS_AND_SIDS, key)
 {
 }
 
@@ -593,6 +593,16 @@ AutomaticActionsCommand::AutomaticActionsCommand(int key)
 }
 
 AutomaticActionsCommand::~AutomaticActionsCommand()
+{
+}
+
+// Toggle sound effects and music
+SoundActionsCommand::SoundActionsCommand(int key)
+: Command(CommandKeys::SOUND_ACTIONS, key)
+{
+}
+
+SoundActionsCommand::~SoundActionsCommand()
 {
 }
 

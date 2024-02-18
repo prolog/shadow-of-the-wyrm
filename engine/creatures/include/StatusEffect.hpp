@@ -33,6 +33,8 @@ class StatusEffect
     virtual void finalize_change(std::shared_ptr<Creature> creature) const;
     virtual void undo_change(std::shared_ptr<Creature> creature) const;
 
+    virtual std::string get_sound_effect() const;
+
     void set_initiating_creature(std::shared_ptr<Creature> new_creature);
 
     // By default, nothing happens each tick.  Subclasses should override

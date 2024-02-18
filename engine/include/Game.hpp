@@ -20,6 +20,7 @@
 #include "Race.hpp"
 #include "ScriptEngine.hpp"
 #include "Settings.hpp"
+#include "Sound.hpp"
 #include "Spell.hpp"
 #include "StartingLocation.hpp"
 #include "World.hpp"
@@ -51,6 +52,13 @@ class Game : public ISerializable
 
     void set_display(DisplayPtr display);
     DisplayPtr get_display() const;
+
+    void set_sound(SoundPtr sound);
+    SoundPtr get_sound() const;
+    SoundPtr get_sound(CreaturePtr creature);
+
+    void set_sound_effects(const std::map<std::pair<std::string, std::string>, std::string>& sound_effects);
+    const std::map<std::pair<std::string, std::string>, std::string>& get_sound_effects_cref() const;
 
     void set_map_registry(const MapRegistry& new_map_registry);
     MapRegistry& get_map_registry_ref();
@@ -220,7 +228,9 @@ class Game : public ISerializable
     bool requires_redraw;
     Settings settings;
     DisplayPtr display;
+    SoundPtr sound;
     MapRegistry map_registry;
+    std::map<std::pair<std::string, std::string>, std::string> sound_effects;
     DeityMap deities;
     RaceMap races;
     ClassMap classes;

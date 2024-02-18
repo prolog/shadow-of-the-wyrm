@@ -1,6 +1,7 @@
 #include "ActionManager.hpp"
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"
+#include "Game.hpp"
 #include "IdentifyEffect.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
@@ -28,7 +29,7 @@ bool IdentifyEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionMa
     item_id.set_possessions_identified(creature);    
     identification_msg = StringTable::get(EffectTextKeys::EFFECT_IDENTIFY_ALL_ITEMS);
   }
-  
+
   return true;
 }
 

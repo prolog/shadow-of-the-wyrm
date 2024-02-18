@@ -1,6 +1,7 @@
 #include "ActionManager.hpp"
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"
+#include "Game.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemFilterFactory.hpp"
 #include "MessageManagerFactory.hpp"

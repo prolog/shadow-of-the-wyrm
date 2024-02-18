@@ -1,5 +1,6 @@
 #pragma once
 #include "Effect.hpp"
+#include "StatusEffect.hpp"
 
 class HasteEffect : public Effect
 {
@@ -11,5 +12,7 @@ class HasteEffect : public Effect
     virtual bool effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
     virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
     virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile) override;
+
+    virtual void apply_haste(CreaturePtr creature, StatusEffectPtr haste);
 };
 

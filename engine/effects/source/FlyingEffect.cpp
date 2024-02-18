@@ -1,5 +1,6 @@
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"
+#include "Game.hpp"
 #include "MessageManager.hpp"
 #include "ModifyStatisticsEffect.hpp"
 #include "FlyingEffect.hpp"

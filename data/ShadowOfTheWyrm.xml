@@ -3492,15 +3492,15 @@
 			</Crowning>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
+				<RightFinger>
+					<ID>filigreed_ring</ID>
+				</RightFinger>
 				<Wielded>
 					<ID>rapier</ID>
 				</Wielded>
 				<Body>
 					<ID>leather_armour</ID>
 				</Body>
-				<RightFinger>
-					<ID>filigreed_ring</ID>
-				</RightFinger>
 				<Feet>
 					<ID>leather_boots</ID>
 				</Feet>
@@ -8343,4 +8343,77 @@
 			</References>
 		</Spritesheet>
 	</Spritesheets>
+	<Sounds>
+		<Effects>
+			<!-- User-defined effects can be added by specifying regexes.
+			     Regexes are in ECMAScript format. The regexes are checked 
+				 whenever a message is added to the message area. The id
+				 for a regex should be unique within the Effects element. 
+				 Eg:
+				 
+			<Effect id="u1" match="You hit">
+				<Location>assets/sound/effects/hit.wav</Location>
+			</Effect>
+			<Effect id="u2" match="You miss">
+				<Location>assets/sound/effects/shoot.wav</Location>
+			</Effect> -->
+			<Effect id="_shoot">
+				<Location>assets/sound/effects/shoot.wav</Location>
+			</Effect>
+			<Effect id="_hit">
+				<Location>assets/sound/effects/hit.wav</Location>
+			</Effect>
+			<Effect id="_heavy_hit">
+				<Location>assets/sound/effects/heavy_hit.wav</Location>
+			</Effect>
+			<Effect id="_miss">
+				<Location>assets/sound/effects/miss.wav</Location>
+			</Effect>
+			<Effect id="_spell">
+				<Location>assets/sound/effects/spell.wav</Location>
+			</Effect>
+			<Effect id="_zap">
+				<Location>assets/sound/effects/zap.wav</Location>
+			</Effect>
+			<Effect id="_shop">
+				<Location>assets/sound/effects/shop.wav</Location>
+			</Effect>
+			<Effect id="_bump">
+				<Location>assets/sound/effects/bump.wav</Location>
+			</Effect>
+			<Effect id="_teleport">
+				<Location>assets/sound/effects/teleport.wav</Location>
+			</Effect>
+			<Effect id="_timewalk">
+				<Location>assets/sound/effects/timewalk.wav</Location>
+			</Effect>
+			<Effect id="_rage">
+				<Location>assets/sound/effects/rage.wav</Location>
+			</Effect>
+			<Effect id="_dig">
+				<Location>assets/sound/effects/dig.wav</Location>
+			</Effect>
+			<Effect id="_exit_map">
+				<Location>assets/sound/effects/exit_map.wav</Location>
+			</Effect>
+			<Effect id="_splash">
+				<Location>assets/sound/effects/splash.wav</Location>
+			</Effect>
+			<Effect id="_alarm">
+				<Location>assets/sound/effects/alarm.wav</Location>
+			</Effect>
+			<Effect id="_dead">
+				<Location>assets/sound/effects/dead.wav</Location>
+			</Effect>
+			<Effect id="_negative_effect">
+				<Location>assets/sound/effects/negative_effect.wav</Location>
+			</Effect>
+			<Effect id="_level_up">
+				<Location>assets/sound/effects/level_up.wav</Location>
+			</Effect>
+			<Effect id="_crowning">
+				<Location>assets/sound/effects/crowning.wav</Location>
+			</Effect>
+		</Effects>
+	</Sounds>
 </ShadowOfTheWyrm>

@@ -1,4 +1,6 @@
+#include <regex>
 #include "Conversion.hpp"
+#include "Game.hpp"
 #include "MessageManager.hpp"
 
 using namespace std;
@@ -31,6 +33,7 @@ void MessageManager::clear_if_necessary()
 // Send the currently-unread messages to the display.
 bool MessageManager::send(const MessageSpacing ms, const bool halt_after, const bool reset_cursor_after)
 {
+  Game& game = Game::instance();
   Messages unread_messages = get_unread_messages_and_mark_as_read();
   string message_text;
 
@@ -49,6 +52,8 @@ bool MessageManager::send(const MessageSpacing ms, const bool halt_after, const 
       }
 
       message_text = message.str();
+      const map<string, string>& regex_id_and_match = game.get_sound()->get_effect_regex_cref();
+      check_message_text_for_sound_matches(message_text, regex_id_and_match);
 
       // Don't immediately clear, and only send text if the message buffer has something.
       if (!message_text.empty())
@@ -206,6 +211,21 @@ void MessageManager::set_message_buffer(const MessageBuffer& new_message_buffer)
 MessageBuffer MessageManager::get_message_buffer() const
 {
   return message_buffer;
+}
+
+void MessageManager::check_message_text_for_sound_matches(const string& message_text, const map<string, string>& regex_id_and_match) const
+{
+  Game& game = Game::instance();
+
+  for (const auto& r_pair : regex_id_and_match)
+  {
+    std::regex sound_regex(r_pair.second, std::regex_constants::ECMAScript);
+
+    if (std::regex_search(message_text, sound_regex))
+    {
+      game.get_sound()->play(r_pair.first);
+    }
+  }
 }
 
 #ifdef UNIT_TESTS

@@ -23,6 +23,7 @@ local function purchase_item(price, cash_on_hand, dropping_creature_id, shopkeep
   if confirm == true then
     -- Offer accepted
     add_message("SHOPKEEPER_THANKS_SID")
+    play_sound_effect(CSOUND_EFFECT_SHOP)
 
     -- See if the creature can wheedle some extra cash
     local bargain, prem = bargain_premium(dropping_creature_id)

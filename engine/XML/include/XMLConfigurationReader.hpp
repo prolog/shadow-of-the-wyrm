@@ -10,12 +10,13 @@
 #include "XMLFileReader.hpp"
 #include "XMLItemsReaders.hpp"
 #include "XMLRacesReader.hpp"
+#include "XMLScriptsReader.hpp"
 #include "XMLSpellsReader.hpp"
+#include "XMLSoundsReader.hpp"
 #include "XMLSpritesheetsReader.hpp"
 #include "XMLStartingLocationsReader.hpp"
 #include "XMLTilesReader.hpp"
 #include "XMLTrapsReader.hpp"
-#include "XMLScriptsReader.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
 #include "ConfigurableFeature.hpp"
@@ -39,6 +40,7 @@ class XMLConfigurationReader
     std::pair<CreatureMap, CreatureGenerationValuesMap> get_creatures();
     SpellMap get_spells();
     std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>> get_spritesheets();
+    std::map<std::pair<std::string, std::string>, std::string> get_sound_effects();
     std::pair<ItemMap, GenerationValuesMap> get_items();    
     FeatureSymbolMap get_feature_symbols();
     FeatureMap get_configurable_features();
@@ -67,6 +69,7 @@ class XMLConfigurationReader
     XMLRacesReader races_reader;
     XMLSpellsReader spells_reader;
     XMLSpritesheetsReader spritesheets_reader;
+    XMLSoundsReader sounds_reader;
     XMLTilesReader tiles_reader;
     XMLTrapsReader traps_reader;
     XMLScriptsReader scripts_reader;

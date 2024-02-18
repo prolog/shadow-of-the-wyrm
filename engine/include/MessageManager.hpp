@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include "IMessageManager.hpp"
 
 class MessageManager : public IMessageManager
@@ -24,7 +25,10 @@ class MessageManager : public IMessageManager
     void set_message_buffer(const MessageBuffer& new_message_buffer) override;
     MessageBuffer get_message_buffer() const override;
 
-private:
+  protected:
+    void check_message_text_for_sound_matches(const std::string& message_text, const std::map<std::string, std::string>& regex_id_and_match) const;
+
+  private:
     std::string get_count_indicator(const Message& m);
     
     friend class MessageManagerFactory;

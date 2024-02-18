@@ -3,6 +3,7 @@
 #include "Creature.hpp"
 #include "FlyingCalculator.hpp"
 #include "FlyingStatusEffect.hpp"
+#include "SoundEffectID.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StatusTypes.hpp"

@@ -2,6 +2,7 @@
 #include "CreatureFeatures.hpp"
 #include "CrowningDeityDecisionStrategyHandler.hpp"
 #include "DeityTextKeys.hpp"
+#include "Game.hpp"
 #include "ItemManager.hpp"
 #include "Memberships.hpp"
 #include "ReligionConstants.hpp"
@@ -66,6 +67,8 @@ void CrowningDeityDecisionStrategyHandler::crown_champion(CreaturePtr creature)
     MembershipFactory mf;
     Membership champion = mf.create_holy_champion();
     creature->get_memberships_ref().add_membership(champion.get_membership_id(), champion);
+
+    Game::instance().get_sound(creature)->play(SoundEffectID::CROWNING);
   }
 }
 

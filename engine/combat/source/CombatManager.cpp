@@ -43,6 +43,7 @@
 #include "Setting.hpp"
 #include "SkillManager.hpp"
 #include "SkillMarkerFactory.hpp"
+#include "SoundEffectID.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StealthCalculator.hpp"
 #include "StatisticsMarker.hpp"
@@ -187,7 +188,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     int target_number_value = ctn_calculator->calculate(attacking_creature, attacked_creature);
 
     Damage damage = determine_damage(attacking_creature, predefined_damage.get(), damage_calculator.get());
-    
+
     // Automatic miss is checked first
     if (is_automatic_miss(d100_roll))
     {
@@ -500,6 +501,15 @@ int CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_crea
   combat_message << CombatTextKeys::get_hit_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), damage_type, StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc, use_mult_dam_type_msgs);
 
   HitTypeEnum hit_type_enum = HitTypeEnumConverter::from_successful_to_hit_roll(d100_roll);
+  string sound_id = SoundEffectID::HIT;
+
+  if (hit_type_enum != HitTypeEnum::HIT_TYPE_REGULAR)
+  {
+    sound_id = SoundEffectID::HEAVY_HIT;
+  }
+
+  Game::instance().get_sound()->play(sound_id);
+
   IHitTypeCalculatorPtr hit_calculator = IHitTypeFactory::create_hit_type(hit_type_enum);
   string hit_specific_msg = hit_calculator->get_combat_message();
   
@@ -1081,6 +1091,8 @@ bool CombatManager::miss(CreaturePtr attacking_creature, CreaturePtr attacked_cr
 {
   StatisticsMarker sm;
 
+  Game::instance().get_sound()->play(SoundEffectID::MISS);
+
   if (RNG::percent_chance(PCT_CHANCE_MARK_STATISTIC_ON_MISS))
   {
     sm.mark_agility(attacked_creature);
@@ -1096,6 +1108,8 @@ bool CombatManager::miss(CreaturePtr attacking_creature, CreaturePtr attacked_cr
 bool CombatManager::close_miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
   StatisticsMarker sm;
+
+  Game::instance().get_sound()->play(SoundEffectID::MISS);
 
   // Close misses are considered misses that the creature narrowly avoided
   // due to quick reflexes - always mark Agility.

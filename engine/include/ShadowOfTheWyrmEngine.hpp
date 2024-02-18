@@ -3,6 +3,7 @@
 #include "Controller.hpp"
 #include "Display.hpp"
 #include "Settings.hpp"
+#include "Sound.hpp"
 
 class Creature;
 
@@ -44,6 +45,7 @@ class ShadowOfTheWyrmEngine
  
     std::string start(const Settings& settings);
 
+    void set_sound(SoundPtr new_sound);
     void set_controller(ControllerPtr new_controller);
     void set_display(DisplayPtr new_display);
 
@@ -75,6 +77,7 @@ class ShadowOfTheWyrmEngine
     EngineStateManager state_manager;
     ControllerPtr controller;
     DisplayPtr display;
+    SoundPtr sound;
     GameOptionMap game_option_map;
     std::map<EngineStateEnum, bool (ShadowOfTheWyrmEngine::*)(void)> game_flow_functions;
 };

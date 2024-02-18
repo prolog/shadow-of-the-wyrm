@@ -1,6 +1,7 @@
 #include "IncreaseMaxHPAPEffect.hpp"
 #include "Conversion.hpp"
 #include "EffectTextKeys.hpp"
+#include "Game.hpp"
 
 using namespace std;
 // HPAP common code

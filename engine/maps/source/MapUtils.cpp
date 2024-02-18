@@ -1722,6 +1722,7 @@ void MapUtils::anger_shopkeeper_if_necessary(const Coordinate& c, MapPtr current
   if (current_map != nullptr && anger_creature != nullptr)
   {
     pair<bool, string> shop_adjacency = MapUtils::is_in_shop_or_adjacent(current_map, c);
+
     if (shop_adjacency.first)
     {
       std::map<string, Shop> shops = current_map->get_shops();
@@ -1735,6 +1736,8 @@ void MapUtils::anger_shopkeeper_if_necessary(const Coordinate& c, MapPtr current
         IMessageManager& manager = MM::instance(MessageTransmit::MAP, anger_creature, true);
         manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ENRAGED_SHOPKEEPER));
         manager.send();
+
+        Game::instance().get_sound()->play(SoundEffectID::ALARM);
       }
     }
   }
@@ -2860,6 +2863,27 @@ int MapUtils::get_threat_distance_score_for_direction(CreaturePtr creature, cons
   }
 
   return score;
+}
+
+string MapUtils::get_drop_sound(TileSuperType tst)
+{
+  string sound_id;
+
+  switch (tst)
+  {
+    case TileSuperType::TILE_SUPER_TYPE_AIR:
+      sound_id = SoundEffectID::MISS;
+      break;
+    case TileSuperType::TILE_SUPER_TYPE_WATER:
+      sound_id = SoundEffectID::SPLASH;
+      break;
+    case TileSuperType::TILE_SUPER_TYPE_GROUND:
+    case TileSuperType::TILE_SUPER_TYPE_UNDEFINED:
+    default:
+      break;
+  }
+
+  return sound_id;
 }
 
 #ifdef UNIT_TESTS

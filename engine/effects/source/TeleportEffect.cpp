@@ -11,6 +11,7 @@
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
+#include "SoundEffectID.hpp"
 #include "TeleportEffect.hpp"
 
 using namespace std;
@@ -84,6 +85,11 @@ bool TeleportEffect::teleport(CreaturePtr creature)
       {
         // Proper teleporting can go anywhere on the map.
         teleported = teleport(creature, map, old_tile);
+      }
+
+      if (teleported)
+      {
+        Game::instance().get_sound()->play(SoundEffectID::TELEPORT);
       }
     }
     else
@@ -165,6 +171,11 @@ bool TeleportEffect::blink(CreaturePtr creature, MapPtr current_map, TilePtr old
 
       keys.pop_back();
     }
+  }
+
+  if (teleported)
+  {
+    Game::instance().get_sound()->play(SoundEffectID::TELEPORT);
   }
 
   return teleported;
