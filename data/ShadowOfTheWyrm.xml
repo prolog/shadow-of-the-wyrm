@@ -7280,7 +7280,12 @@
 		<EvergreenTreeTile>
 			<Symbol>
 				<Char>T</Char>
-				<Colour>2</Colour>
+				<Colours>
+					<Spring>2</Spring>
+					<Summer>2</Summer>
+					<Autumn>2</Autumn>
+					<Winter>14</Winter>
+				</Colours>
 				<Sprite>
 					<ID>til</ID>
 					<Row>0</Row>
