@@ -4170,3 +4170,13 @@ that bloody day internal, let it steep %b
 in silence and cool weather.  When he slept, %b
 it paused, resuming when he woke, broke camp, and left.
 %p
+He rode, he stopped, he ate, he drank, he slept. %b
+And throughout, the days a knife-tip at his back: %b
+whether his pursuers came and swept %b
+across the plains, a sharp scythe in the grass, %b
+or if their course had wandered someplace else. %b
+Unanswerable.  To see them, to be done. %b
+He rode, cast glances back, and kept himself %b
+occupied beneath the silent sun, %b
+just hoping for his course to not be overrun.
+%p

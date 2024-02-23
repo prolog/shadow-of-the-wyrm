@@ -4,6 +4,11 @@ Shadow of the Wyrm v1.6.7 "Michelagnolo Galilei"
 - Evergreen trees are now cyan in winter, to mimic the appearance of snow on
   their branches.
 
+- New names, etc.
+
+- Stanzas for "Tel and Floridel".
+
+
 Shadow of the Wyrm v1.6.5 "Reusner"
 - Version started December 10, 2023. Version finalized February 18, 2024.
 
