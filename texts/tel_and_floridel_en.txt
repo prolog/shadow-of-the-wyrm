@@ -4180,3 +4180,13 @@ He rode, cast glances back, and kept himself %b
 occupied beneath the silent sun, %b
 just hoping for his course to not be overrun.
 %p
+Eleven days until he reached the hall, %b
+finding his way through clever doors and gaps %b
+hidden by hillsides, by glamour and deadfall, %b
+false rocks; and down the tunnels, wandered past %b
+those traps he knew were waiting.  If not him, %b
+the pitch would pour, the arrows snap behind %b
+the murder holes whose placement seemed just slim %b
+slits between the stones, but whose design %b
+felt like unblinking eyes within those tight confines.
+%p
