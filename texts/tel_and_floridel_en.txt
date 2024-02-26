@@ -4190,3 +4190,13 @@ the murder holes whose placement seemed just slim %b
 slits between the stones, but whose design %b
 felt like unblinking eyes within those tight confines.
 %p
+That passage took him downward, and his horse %b
+moved slowly on the floor whose pitch and tilt %b
+took turns to make them stumble on their course. %b
+They wandered through the strange, unearthly lilt %b
+of footsteps mixed with distant water drops %b
+from rocky resevoirs, past jagged bends %b
+with hidden pits of snakes whose bite would stop %b
+your heart. He felt the two of them descend %b
+until they reached the wall that marked the tunnel's end.
+%p
