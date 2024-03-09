@@ -20,6 +20,7 @@
 #include "Race.hpp"
 #include "Class.hpp"
 #include "ConfigurableFeature.hpp"
+#include "Music.hpp"
 
 // The XMLConfigurationReader provides methods for reading in data structures
 // based on XML configuration files of various sorts.  It is the responsibility
@@ -41,6 +42,7 @@ class XMLConfigurationReader
     SpellMap get_spells();
     std::map<std::string, std::pair<std::string, std::unordered_map<std::string, Coordinate>>> get_spritesheets();
     std::map<std::pair<std::string, std::string>, std::string> get_sound_effects();
+    Music get_music();
     std::pair<ItemMap, GenerationValuesMap> get_items();    
     FeatureSymbolMap get_feature_symbols();
     FeatureMap get_configurable_features();
