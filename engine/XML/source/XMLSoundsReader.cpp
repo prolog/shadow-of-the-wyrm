@@ -1,4 +1,5 @@
 #include "XMLSoundsReader.hpp"
+#include "Conversion.hpp"
 
 using namespace std;
 
@@ -26,6 +27,32 @@ map<pair<string, string>, string> XMLSoundsReader::get_effects(const XMLNode& xm
   return effects;
 }
 
+Music XMLSoundsReader::get_music(const XMLNode& xml_config_sounds_node)
+{
+  vector<Song> songs;
+
+  if (!xml_config_sounds_node.is_null())
+  {
+    XMLNode music_node = XMLUtils::get_next_element_by_local_name(xml_config_sounds_node, "Music");
+
+    if (!music_node.is_null())
+    {
+      vector<XMLNode> song_nodes = XMLUtils::get_elements_by_local_name(music_node, "Song");
+
+      for (const auto& song_node : song_nodes)
+      {
+        Song song;
+        parse_song(song_node, song);
+
+        songs.push_back(song);
+      }
+    }
+  }
+
+  Music music(songs);
+  return music;
+}
+
 void XMLSoundsReader::parse_effect(const XMLNode& effect_node, pair<pair<string, string>, string>& effect_details)
 {
   if (!effect_node.is_null())
@@ -33,5 +60,26 @@ void XMLSoundsReader::parse_effect(const XMLNode& effect_node, pair<pair<string,
     effect_details.first.first = XMLUtils::get_attribute_value(effect_node, "id");
     effect_details.first.second = XMLUtils::get_attribute_value(effect_node, "match");
     effect_details.second = XMLUtils::get_child_node_value(effect_node, "Location");
+  }
+}
+
+void XMLSoundsReader::parse_song(const XMLNode& song_node, Song& song)
+{
+  if (!song_node.is_null())
+  {
+    string id = XMLUtils::get_attribute_value(song_node, "id");
+    string map_type_s = XMLUtils::get_attribute_value(song_node, "map_type");
+    MapType map_type = MapType::MAP_TYPE_NULL;
+
+    if (!map_type_s.empty())
+    {
+      map_type = static_cast<MapType>(String::to_int(map_type_s));
+    }
+
+    string location = XMLUtils::get_child_node_value(song_node, "Location");
+
+    song.set_id(id);
+    song.set_map_type(map_type);
+    song.set_location(location);
   }
 }

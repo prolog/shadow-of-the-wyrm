@@ -8420,5 +8420,10 @@
 				<Location>assets/sound/effects/crowning.wav</Location>
 			</Effect>
 		</Effects>
+		<Music>
+			<Song map_type="0">
+				<Location>assets/sound/music/overworld.ogg</Location>
+			</Song>
+		</Music>
 	</Sounds>
 </ShadowOfTheWyrm>

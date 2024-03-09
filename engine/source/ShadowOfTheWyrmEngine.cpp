@@ -237,6 +237,8 @@ void ShadowOfTheWyrmEngine::setup_game()
   string disabled_sound_ids = game.get_settings_ref().get_setting(Setting::DISABLE_SOUND_EFFECT_IDS);
   SoundPtr sound = game.get_sound();
   auto sound_effects = reader.get_sound_effects();
+  auto music = reader.get_music(); 
+  // ...
 
   game.set_sound_effects(sound_effects);
   sound->set_effects(sound_effects);
