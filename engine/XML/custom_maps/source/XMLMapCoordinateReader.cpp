@@ -17,7 +17,7 @@ Coordinate XMLMapCoordinateReader::parse_coordinate(const XMLNode& parent_node)
   }
   else
   {
-    child_node = XMLUtils::get_next_element_by_local_name(parent_node, "Random");
+    child_node = XMLUtils::get_next_element_by_local_name(parent_node, "RandomCoord");
 
     if (!child_node.is_null())
     {

@@ -42,7 +42,7 @@
 			<!-- Carthos has summoned an antlion, great serpent, and spectral wizard. -->
 			<Placement>
 				<ID>black_summoner</ID>
-				<Random>
+				<RandomCoord>
 					<Coord>
 						<Row>2</Row>
 						<Col>1</Col>
@@ -51,7 +51,7 @@
 						<Row>6</Row>
 						<Col>1</Col>
 					</Coord>
-				</Random>
+				</RandomCoord>
 				<Name>Carthos</Name>
 			</Placement>
 			<Placement>

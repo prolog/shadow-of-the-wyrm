@@ -55,7 +55,7 @@
 			</Placement>
 			<Placement>
 				<ID>glich</ID>
-				<Random>
+				<RandomCoord>
 					<Coord>
 						<Row>0</Row>
 						<Col>78</Col>
@@ -64,7 +64,7 @@
 						<Row>19</Row>
 						<Col>1</Col>
 					</Coord>
-				</Random>
+				</RandomCoord>
 			</Placement>
 			<Placement>
 				<ID>_bartender</ID>
