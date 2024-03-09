@@ -1,6 +1,8 @@
 Me:
 - ASSET RELEASE (images, sounds)
 - git push --tags
+- look at eg the fae caravan - creatures getting generated in water on coast
+  lines
 - dig in water
 - super_type_message_sids -> super_type_sound_id?
 - Need to release sprites, sound effects
