@@ -2,7 +2,7 @@
 #include <map>
 #include <memory>
 #include <string>
-#include "Creature.hpp"
+#include "Map.hpp"
 #include "Music.hpp"
 #include "SoundEffectID.hpp"
 
@@ -28,6 +28,9 @@ class Sound : public ISerializable
 		virtual void set_music(const Music& new_music) = 0;
 
 		virtual void play(const std::string& id) = 0;
+
+		virtual void play_music(MapPtr map) = 0;
+		virtual void stop_music() = 0;
 
 		virtual bool serialize(std::ostream& stream) const override;
 		virtual bool deserialize(std::istream& stream) override;

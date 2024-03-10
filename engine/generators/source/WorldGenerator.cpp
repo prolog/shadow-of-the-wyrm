@@ -269,6 +269,7 @@ void WorldGenerator::populate_terrain_cell_maps
 
   for (auto& tt_pair : terrain_types)
   {
+
     int p_close_cell = String::to_int(settings.get_setting(prefix + tt_pair.first + "_p_close_cell"));
     int iterations = String::to_int(settings.get_setting(prefix + tt_pair.first + "_iterations"));
     int neighbour_threshold = String::to_int(settings.get_setting(prefix + tt_pair.first + "_neighbour_threshold"));

@@ -17,6 +17,9 @@ class SDLSound : public Sound
 
 		virtual void play(const std::string& path) override;
 
+		virtual void play_music(MapPtr map) override;
+		virtual void stop_music() override;
+
 	protected:
 		virtual void tear_down();
 		virtual void clear_effects();
@@ -24,6 +27,7 @@ class SDLSound : public Sound
 		std::map<std::string, Mix_Chunk*> effects;
 		Music music;
 		std::set<std::string> disabled_sound_ids;
+		Mix_Music* cur_music;
 
 	private:
 		virtual ClassIdentifier internal_class_identifier() const override;

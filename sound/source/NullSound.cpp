@@ -26,6 +26,14 @@ void NullSound::play(const string& id)
 {
 }
 
+void NullSound::play_music(MapPtr map)
+{
+}
+
+void NullSound::stop_music()
+{
+}
+
 ClassIdentifier NullSound::internal_class_identifier() const
 {
 	return ClassIdentifier::CLASS_ID_NULL_SOUND;
