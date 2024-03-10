@@ -629,6 +629,8 @@ void Game::go()
     cc.update_calculated_values(current_player);
     string map_id = "";
 
+    sound->play_music(current_map);
+
     // Main game loop.
     while (keep_playing)
     {

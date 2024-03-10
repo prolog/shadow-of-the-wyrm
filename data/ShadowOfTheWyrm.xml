@@ -8421,7 +8421,7 @@
 			</Effect>
 		</Effects>
 		<Music>
-			<Song id="overworld" map_type="0">
+			<Song id="world_map" map_type="0">
 				<Location>assets/sound/music/overworld.ogg</Location>
 			</Song>
 		</Music>

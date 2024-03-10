@@ -12,6 +12,9 @@ class NullSound : public Sound
 		virtual void set_disabled_sound_ids(const std::string& new_disabled_ids_csv) override;
 
 		virtual void play(const std::string& id) override;
+		
+		virtual void play_music(MapPtr map) override;
+		virtual void stop_music() override;
 
 	private:
 		virtual ClassIdentifier internal_class_identifier() const override;

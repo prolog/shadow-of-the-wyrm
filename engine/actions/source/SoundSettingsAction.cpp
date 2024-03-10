@@ -45,5 +45,19 @@ void SoundSettingsAction::process_setting_if_necessary(CreaturePtr creature, con
     {
       sound->set_enable_sound_effects(new_set_val);
     }
+    else if (setting_name == Setting::MUSIC_ENABLED)
+    {
+      if (new_set_val)
+      {
+        MapPtr map = Game::instance().get_current_map();
+        sound->play_music(map);
+      }
+      else
+      {
+        sound->stop_music();
+      }
+
+      sound->set_enable_music(new_set_val);
+    }
   }
 }

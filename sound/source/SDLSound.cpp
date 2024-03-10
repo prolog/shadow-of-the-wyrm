@@ -10,6 +10,7 @@ using namespace std;
 
 SDLSound::SDLSound()
 {
+	cur_music = NULL;
 }
 
 SDLSound::~SDLSound()
@@ -90,8 +91,54 @@ void SDLSound::play(const string& id)
 	}
 }
 
+void SDLSound::play_music(MapPtr map)
+{
+	if (enable_sound && enable_music)
+	{
+		if (map != nullptr)
+		{
+			string id = map->get_map_id();
+			MapType mt = map->get_map_type();
+			string location = music.get_song(id);
+
+			if (location.empty())
+			{
+				location = music.get_song(mt);
+			}
+
+			if (cur_music != NULL)
+			{
+				Mix_FadeOutMusic(750);
+				Mix_FreeMusic(cur_music);
+				cur_music = NULL;
+			}
+
+			if (!location.empty())
+			{
+				cur_music = Mix_LoadMUS(location.c_str());
+				Mix_PlayMusic(cur_music, -1);
+			}
+		}
+	}
+}
+
+void SDLSound::stop_music()
+{
+	if (cur_music != NULL)
+	{
+		Mix_HaltMusic();
+		Mix_FreeMusic(cur_music);
+		cur_music = NULL;
+	}
+}
+
 void SDLSound::tear_down()
 {
+	if (cur_music != NULL)
+	{
+		Mix_FreeMusic(cur_music);
+	}
+
 	clear_effects();
 }
 

@@ -243,6 +243,7 @@ void ShadowOfTheWyrmEngine::setup_game()
   game.set_music(music);
   sound->set_effects(sound_effects);
   sound->set_disabled_sound_ids(disabled_sound_ids);
+  sound->set_music(music);
 
   log.debug("Reading items.");
 
