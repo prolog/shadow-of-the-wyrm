@@ -75,6 +75,19 @@ void SDLSound::set_disabled_sound_ids(const string& new_disabled_sound_csv)
 	}
 }
 
+void SDLSound::toggle_music(const bool new_val)
+{
+	if (new_val)
+	{
+		MapPtr map = Game::instance().get_current_map();
+		play_music(map);
+	}
+	else
+	{
+		stop_music();
+	}
+}
+
 void SDLSound::play(const string& id)
 {
 	if (enable_sound && enable_sound_effects && !id.empty())

@@ -15,6 +15,7 @@ Sound::~Sound()
 void Sound::set_enable_sound(const bool new_enable_sound)
 {
 	enable_sound = new_enable_sound;
+	toggle_music(enable_sound);
 }
 
 bool Sound::get_enable_sound() const
@@ -35,6 +36,7 @@ bool Sound::get_enable_sound_effects() const
 void Sound::set_enable_music(const bool new_enable_music)
 {
 	enable_music = new_enable_music;
+	toggle_music(enable_music);
 }
 
 bool Sound::get_enable_music() const

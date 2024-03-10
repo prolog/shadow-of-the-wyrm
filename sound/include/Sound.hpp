@@ -21,6 +21,8 @@ class Sound : public ISerializable
 		virtual void set_enable_music(const bool new_enable_music);
 		virtual bool get_enable_music() const;
 
+		virtual void toggle_music(const bool new_val) = 0;
+
 		virtual void set_effects(const std::map<std::pair<std::string, std::string>, std::string>& new_effects) = 0;
 		virtual void set_disabled_sound_ids(const std::string& new_disabled_ids_csv) = 0;
 		virtual const std::map<std::string, std::string>& get_effect_regex_cref() const;
