@@ -1036,6 +1036,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
 void Game::stop_playing(CreaturePtr creature, const bool show_quit_actions, const bool delete_savefile)
 {
   keep_playing = false;
+  sound->stop_music(true);
 
   if (show_quit_actions && creature != nullptr && creature->get_is_player())
   {

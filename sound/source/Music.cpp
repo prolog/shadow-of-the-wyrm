@@ -12,12 +12,18 @@ Music::Music(const vector<Song>& songs)
 	for (const auto& song : songs)
 	{
 		string id = song.get_id();
+		TileType tile_type = song.get_tile_type();
 		MapType map_type = song.get_map_type();
 		string location = song.get_location();
 
 		if (!id.empty())
 		{
 			id_locations[id] = location;
+		}
+
+		if (tile_type != TileType::TILE_TYPE_UNDEFINED)
+		{
+			tile_type_locations[tile_type] = location;
 		}
 
 		if (map_type != MapType::MAP_TYPE_NULL)
@@ -32,6 +38,7 @@ bool Music::operator==(const Music& rhs) const
 	bool eq = true;
 
 	eq = (id_locations == rhs.id_locations);
+	eq = eq && (tile_type_locations == rhs.tile_type_locations);
 	eq = eq && (map_type_locations == rhs.map_type_locations);
 
 	return eq;
@@ -43,6 +50,19 @@ string Music::get_song(const string& id) const
 	auto l_it = id_locations.find(id);
 
 	if (l_it != id_locations.end())
+	{
+		song = l_it->second;
+	}
+
+	return song;
+}
+
+string Music::get_song(const TileType tile_type) const
+{
+	string song;
+	auto l_it = tile_type_locations.find(tile_type);
+
+	if (l_it != tile_type_locations.end())
 	{
 		song = l_it->second;
 	}
@@ -73,6 +93,14 @@ bool Music::serialize(ostream& stream) const
 		Serialize::write_string(stream, id_pair.second);
 	}
 
+	Serialize::write_size_t(stream, tile_type_locations.size());
+
+	for (const auto tt_pair : tile_type_locations) 
+	{
+		Serialize::write_enum(stream, tt_pair.first);
+		Serialize::write_string(stream, tt_pair.second);
+	}
+
 	Serialize::write_size_t(stream, map_type_locations.size());
 
 	for (const auto& mt_pair : map_type_locations)
@@ -101,6 +129,20 @@ bool Music::deserialize(istream& stream)
 		Serialize::read_string(stream, location);
 
 		id_locations[id] = location;
+	}
+
+	size_t tt_l_s = 0;
+	Serialize::read_size_t(stream, tt_l_s);
+
+	for (size_t tt_idx = 0; tt_idx < tt_l_s; tt_idx++)
+	{
+		TileType tile_type = TileType::TILE_TYPE_UNDEFINED;
+		string location;
+
+		Serialize::read_enum(stream, tile_type);
+		Serialize::read_string(stream, location);
+
+		tile_type_locations[tile_type] = location;
 	}
 
 	size_t mt_l_s = 0;

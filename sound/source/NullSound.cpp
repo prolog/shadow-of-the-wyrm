@@ -34,7 +34,7 @@ void NullSound::play_music(MapPtr map)
 {
 }
 
-void NullSound::stop_music()
+void NullSound::stop_music(const bool fade)
 {
 }
 

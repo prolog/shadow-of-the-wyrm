@@ -1353,7 +1353,9 @@
 	<xs:sequence>
 		<xs:element name="Location" type="xs:string"/>
 	</xs:sequence>
+	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="optional"/>
 	<xs:attribute name="map_type" type="xs:integer" use="optional"/>
+	<xs:attribute name="tile_type" type="xs:integer" use="optional"/>
 </xs:complexType>
 <xs:complexType name="SoundEffect">
 	<xs:annotation><xs:documentation>An individual sound effect (ID and location)</xs:documentation></xs:annotation>
