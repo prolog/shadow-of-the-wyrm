@@ -4,6 +4,7 @@
 #include "Conversion.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
+#include "MapProperties.hpp"
 #include "Setting.hpp"
 
 using namespace std;
@@ -91,6 +92,12 @@ void SDLSound::play(const string& id)
 	}
 }
 
+// Play music for the map.
+//
+// Order checked:
+// - the MAP_PROPERTIES_SONG_LOCATION map property
+// - the ID specified in the game configuration
+// - the map type specified in the game configuration
 void SDLSound::play_music(MapPtr map)
 {
 	if (enable_sound && enable_music)
@@ -99,7 +106,12 @@ void SDLSound::play_music(MapPtr map)
 		{
 			string id = map->get_map_id();
 			MapType mt = map->get_map_type();
-			string location = music.get_song(id);
+			string location = map->get_property(MapProperties::MAP_PROPERTIES_SONG_LOCATION);
+
+			if (location.empty())
+			{
+				location = music.get_song(id);
+			}
 
 			if (location.empty())
 			{
