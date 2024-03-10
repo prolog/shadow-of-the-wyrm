@@ -153,7 +153,7 @@ enum struct ClassIdentifier
   CLASS_ID_TILE_ITEM_TRANSFORM = 146,
   CLASS_ID_NULL_SOUND = 147,
   CLASS_ID_SDL_SOUND = 148,
-  // xx UNUSED = 149,
+  CLASS_ID_MUSIC = 149,
   // xx UNUSED = 150,
   // xx UNUSED = 151,
   CLASS_ID_SKILLS = 152,

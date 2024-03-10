@@ -20,7 +20,8 @@ vector<pair<string, string>> SoundSettingsAction::get_settings_to_display(Creatu
   const Settings& settings = Game::instance().get_settings_ref();
 
   vector<pair<string, string>> sound_settings = { { Setting::SOUND_ENABLED, Setting::SOUND_ENABLED  + "=" + StringTable::get(SettingTextKeys::SETTING_SOUND_ENABLED) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::SOUND_ENABLED)))},
-                                                  { Setting::SOUND_EFFECTS_ENABLED, Setting::SOUND_EFFECTS_ENABLED + "=" + StringTable::get(SettingTextKeys::SETTING_SOUND_EFFECTS_ENABLED) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::SOUND_EFFECTS_ENABLED))) } };
+                                                  { Setting::SOUND_EFFECTS_ENABLED, Setting::SOUND_EFFECTS_ENABLED + "=" + StringTable::get(SettingTextKeys::SETTING_SOUND_EFFECTS_ENABLED) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::SOUND_EFFECTS_ENABLED))) },
+                                                  { Setting::MUSIC_ENABLED, Setting::MUSIC_ENABLED + "=" + StringTable::get(SettingTextKeys::SETTING_MUSIC_ENABLED) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::MUSIC_ENABLED))) }  };
 
   return sound_settings;
 }
