@@ -16,6 +16,7 @@
 #include "LoadedMapDetails.hpp"
 #include "MapRegistry.hpp"
 #include "Mortuary.hpp"
+#include "Music.hpp"
 #include "Quests.hpp"
 #include "Race.hpp"
 #include "ScriptEngine.hpp"
@@ -59,6 +60,10 @@ class Game : public ISerializable
 
     void set_sound_effects(const std::map<std::pair<std::string, std::string>, std::string>& sound_effects);
     const std::map<std::pair<std::string, std::string>, std::string>& get_sound_effects_cref() const;
+
+    void set_music(const Music& new_music);
+    Music get_music() const;
+    const Music& get_music_cref() const;
 
     void set_map_registry(const MapRegistry& new_map_registry);
     MapRegistry& get_map_registry_ref();
@@ -231,6 +236,7 @@ class Game : public ISerializable
     SoundPtr sound;
     MapRegistry map_registry;
     std::map<std::pair<std::string, std::string>, std::string> sound_effects;
+    Music music;
     DeityMap deities;
     RaceMap races;
     ClassMap classes;

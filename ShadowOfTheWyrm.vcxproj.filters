@@ -9256,6 +9256,9 @@
     <ClCompile Include="sound\source\Music.cpp">
       <Filter>Source Files\sound\source</Filter>
     </ClCompile>
+    <ClCompile Include="sound\source\unit_tests\Music_test.cpp">
+      <Filter>Source Files\sound\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShadowOfTheWyrm.rc" />

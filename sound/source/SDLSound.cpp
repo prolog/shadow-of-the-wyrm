@@ -57,6 +57,11 @@ void SDLSound::set_effects(const map<pair<string, string>, string>& new_effects)
 	}
 }
 
+void SDLSound::set_music(const Music& new_music)
+{
+	music = new_music;
+}
+
 void SDLSound::set_disabled_sound_ids(const string& new_disabled_sound_csv)
 {
 	disabled_sound_ids.clear();

@@ -14,6 +14,10 @@ void NullSound::set_effects(const map<pair<string, string>, string>& new_effects
 {
 }
 
+void NullSound::set_music(const Music& new_music)
+{
+}
+
 void NullSound::set_disabled_sound_ids(const string& new_disabled_ids_csv)
 {
 }
