@@ -22,6 +22,10 @@ void NullSound::set_disabled_sound_ids(const string& new_disabled_ids_csv)
 {
 }
 
+void NullSound::toggle_music(const bool new_val)
+{
+}
+
 void NullSound::play(const string& id)
 {
 }

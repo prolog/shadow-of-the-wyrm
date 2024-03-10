@@ -15,6 +15,8 @@ class SDLSound : public Sound
 		virtual void set_music(const Music& new_music);
 		virtual void set_disabled_sound_ids(const std::string& new_disabled_ids_csv) override;
 
+		virtual void toggle_music(const bool new_val) override;
+
 		virtual void play(const std::string& path) override;
 
 		virtual void play_music(MapPtr map) override;

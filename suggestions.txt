@@ -3,8 +3,6 @@ Me:
 - git push --tags
 - look at eg the fae caravan - creatures getting generated in water on coast
   lines
-- music is still playing when the sound setting is off - need a common hook
-  so that setting any of these settings appropriately halts or restarts music
 - test orb placement in wyrmeswraec
 - dig in water
 - super_type_message_sids -> super_type_sound_id?
