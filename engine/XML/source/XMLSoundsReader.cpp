@@ -76,9 +76,18 @@ void XMLSoundsReader::parse_song(const XMLNode& song_node, Song& song)
       map_type = static_cast<MapType>(String::to_int(map_type_s));
     }
 
+    string tile_type_s = XMLUtils::get_attribute_value(song_node, "tile_type");
+    TileType tile_type = TileType::TILE_TYPE_UNDEFINED;
+
+    if (!tile_type_s.empty())
+    {
+      tile_type = static_cast<TileType>(String::to_int(tile_type_s));
+    }
+
     string location = XMLUtils::get_child_node_value(song_node, "Location");
 
     song.set_id(id);
+    song.set_tile_type(tile_type);
     song.set_map_type(map_type);
     song.set_location(location);
   }

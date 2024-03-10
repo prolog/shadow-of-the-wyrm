@@ -9,6 +9,8 @@
 
 using namespace std;
 
+const int SDLSound::FADE_MS = 750;
+
 SDLSound::SDLSound()
 {
 	cur_music = NULL;
@@ -118,6 +120,7 @@ void SDLSound::play_music(MapPtr map)
 		if (map != nullptr)
 		{
 			string id = map->get_map_id();
+			TileType tt = map->get_terrain_type();
 			MapType mt = map->get_map_type();
 			string location = map->get_property(MapProperties::MAP_PROPERTIES_SONG_LOCATION);
 
@@ -128,12 +131,17 @@ void SDLSound::play_music(MapPtr map)
 
 			if (location.empty())
 			{
+				location = music.get_song(tt);
+			}
+
+			if (location.empty())
+			{
 				location = music.get_song(mt);
 			}
 
 			if (cur_music != NULL)
 			{
-				Mix_FadeOutMusic(750);
+				Mix_FadeOutMusic(FADE_MS);
 				Mix_FreeMusic(cur_music);
 				cur_music = NULL;
 			}
@@ -147,11 +155,19 @@ void SDLSound::play_music(MapPtr map)
 	}
 }
 
-void SDLSound::stop_music()
+void SDLSound::stop_music(const bool fade)
 {
 	if (cur_music != NULL)
 	{
-		Mix_HaltMusic();
+		if (fade)
+		{
+			Mix_FadeOutMusic(FADE_MS);
+		}
+		else
+		{
+			Mix_HaltMusic();
+		}
+
 		Mix_FreeMusic(cur_music);
 		cur_music = NULL;
 	}
