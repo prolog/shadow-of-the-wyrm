@@ -149,7 +149,16 @@ void SDLSound::play_music(MapPtr map)
 			if (!location.empty())
 			{
 				cur_music = Mix_LoadMUS(location.c_str());
-				Mix_PlayMusic(cur_music, -1);
+
+				if (cur_music != NULL)
+				{
+					Mix_PlayMusic(cur_music, -1);
+				}
+				else
+				{
+					string err = Mix_GetError();
+					Log::instance().error("Could not play music: " + err);
+				}
 			}
 		}
 	}
