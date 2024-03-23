@@ -14,6 +14,7 @@ class Music : public ISerializable
 
 		bool operator==(const Music& rhs) const;
 
+		std::string get_event_song(const std::string& event) const;
 		std::string get_song(const std::string& id) const;
 		std::string get_song(const TileType tile_type) const;
 		std::string get_song(const MapType map_type) const;
@@ -22,6 +23,7 @@ class Music : public ISerializable
 		virtual bool deserialize(std::istream& stream) override;
 
 	protected:
+		std::map<std::string, std::string> event_locations;
 		std::map<std::string, std::string> id_locations;
 		std::map<TileType, std::string> tile_type_locations;
 		std::map<MapType, std::string> map_type_locations;

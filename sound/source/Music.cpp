@@ -11,10 +11,16 @@ Music::Music(const vector<Song>& songs)
 {
 	for (const auto& song : songs)
 	{
+		string event = song.get_event();
 		string id = song.get_id();
 		TileType tile_type = song.get_tile_type();
 		MapType map_type = song.get_map_type();
 		string location = song.get_location();
+
+		if (!event.empty())
+		{
+			event_locations[event] = location;
+		}
 
 		if (!id.empty())
 		{
@@ -37,11 +43,25 @@ bool Music::operator==(const Music& rhs) const
 {
 	bool eq = true;
 
-	eq = (id_locations == rhs.id_locations);
+	eq = (event_locations == rhs.event_locations);
+	eq = eq && (id_locations == rhs.id_locations);
 	eq = eq && (tile_type_locations == rhs.tile_type_locations);
 	eq = eq && (map_type_locations == rhs.map_type_locations);
 
 	return eq;
+}
+
+string Music::get_event_song(const string& event) const
+{
+	string song;
+	auto l_it = event_locations.find(event);
+
+	if (l_it != event_locations.end())
+	{
+		song = l_it->second;
+	}
+
+	return song;
 }
 
 string Music::get_song(const string& id) const
@@ -85,6 +105,14 @@ string Music::get_song(const MapType mt) const
 
 bool Music::serialize(ostream& stream) const
 {
+	Serialize::write_size_t(stream, event_locations.size());
+
+	for (const auto& event_pair : event_locations)
+	{
+		Serialize::write_string(stream, event_pair.first);
+		Serialize::write_string(stream, event_pair.second);
+	}
+
 	Serialize::write_size_t(stream, id_locations.size());
 
 	for (const auto& id_pair : id_locations)
@@ -114,8 +142,23 @@ bool Music::serialize(ostream& stream) const
 
 bool Music::deserialize(istream& stream)
 {
+	event_locations.clear();
 	id_locations.clear();
 	map_type_locations.clear();
+
+	size_t ev_l_s = 0;
+	Serialize::read_size_t(stream, ev_l_s);
+
+	for (size_t ev_idx = 0; ev_idx < ev_l_s; ev_idx++)
+	{
+		string event;
+		string location;
+
+		Serialize::read_string(stream, event);
+		Serialize::read_string(stream, location);
+
+		event_locations[event] = location;
+	}
 
 	size_t id_l_s = 0;
 	Serialize::read_size_t(stream, id_l_s);

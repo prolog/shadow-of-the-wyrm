@@ -4,11 +4,11 @@ Music create_testing_music();
 
 Music create_testing_music()
 {
-	Song s("id1", TileType::TILE_TYPE_UNDEFINED, MapType::MAP_TYPE_NULL, "path/file");
-	Song s2("", TileType::TILE_TYPE_UNDEFINED, MapType::MAP_TYPE_WORLD, "path/file2");
-	Song s3("", TileType::TILE_TYPE_UNDEFINED, MapType::MAP_TYPE_OVERWORLD, "path/file3");
-	Song s4("id2", TileType::TILE_TYPE_UNDEFINED, MapType::MAP_TYPE_NULL, "path/file4");
-	Song s5("", TileType::TILE_TYPE_FIELD, MapType::MAP_TYPE_NULL, "path/file5");
+	Song s("ev1", "id1", TileType::TILE_TYPE_UNDEFINED, MapType::MAP_TYPE_NULL, "path/file");
+	Song s2("", "", TileType::TILE_TYPE_UNDEFINED, MapType::MAP_TYPE_WORLD, "path/file2");
+	Song s3("ev3", "", TileType::TILE_TYPE_UNDEFINED, MapType::MAP_TYPE_OVERWORLD, "path/file3");
+	Song s4("", "id2", TileType::TILE_TYPE_UNDEFINED, MapType::MAP_TYPE_NULL, "path/file4");
+	Song s5("", "", TileType::TILE_TYPE_FIELD, MapType::MAP_TYPE_NULL, "path/file5");
 
 	vector<Song> songs = { s, s2, s3, s4, s5 };
 	Music m(songs);
@@ -21,9 +21,15 @@ TEST(SW_Sound_Music, songs)
 	Music m = create_testing_music();
 
 	EXPECT_EQ("path/file", m.get_song("id1"));
+	EXPECT_EQ("path/file1", m.get_event_song("ev1"));
+
 	EXPECT_EQ("path/file2", m.get_song(MapType::MAP_TYPE_WORLD));
+	
 	EXPECT_EQ("path/file3", m.get_song(MapType::MAP_TYPE_OVERWORLD));
+	EXPECT_EQ("path/file3", m.get_song("ev3"));
+
 	EXPECT_EQ("path/file4", m.get_song("id2"));
+	
 	EXPECT_EQ("path/file5", m.get_song(TileType::TILE_TYPE_FIELD));
 }
 

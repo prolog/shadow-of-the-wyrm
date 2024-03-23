@@ -107,6 +107,14 @@ void SDLSound::play(const string& id)
 	}
 }
 
+void SDLSound::play_music_for_event(const string& event)
+{
+	if (enable_sound && enable_music)
+	{
+		string location = music.get_event_song(event);
+		play_music_location(location);
+	}
+}
 // Play music for the map.
 //
 // Order checked:
@@ -139,39 +147,8 @@ void SDLSound::play_music(MapPtr map)
 				location = music.get_song(mt);
 			}
 
-			bool new_music = !location.empty() && location != playing_music_location;
+			play_music_location(location);
 
-			// Stop playing the current music if we've entered on to a new map and
-			// there should be no music, or, if there's new music and it's different.
-			// Basically, if there's music to play, and it's the same, don't stop
-			// the music.
-			if (location.empty() || new_music)
-			{
-				if (cur_music != NULL)
-				{
-					Mix_FadeOutMusic(FADE_MS);
-					Mix_FreeMusic(cur_music);
-					cur_music = NULL;
-				}
-			}
-
-			// If we've got a piece of music to play, play it, unless it's what's
-			// currently playing. 
-			if (new_music)
-			{
-				cur_music = Mix_LoadMUS(location.c_str());
-
-				if (cur_music != NULL)
-				{
-					playing_music_location = location;
-					Mix_PlayMusic(cur_music, -1);
-				}
-				else
-				{
-					string err = Mix_GetError();
-					Log::instance().error("Could not play music: " + err);
-				}
-			}
 		}
 	}
 }
@@ -223,6 +200,46 @@ void SDLSound::clear_effects()
 	}
 
 	effects.clear();
+}
+
+void SDLSound::play_music_location(const string& location)
+{
+	if (enable_sound && enable_music)
+	{
+		bool new_music = !location.empty() && location != playing_music_location;
+
+		// Stop playing the current music if we've entered on to a new map and
+		// there should be no music, or, if there's new music and it's different.
+		// Basically, if there's music to play, and it's the same, don't stop
+		// the music.
+		if (location.empty() || new_music)
+		{
+			if (cur_music != NULL)
+			{
+				Mix_FadeOutMusic(FADE_MS);
+				Mix_FreeMusic(cur_music);
+				cur_music = NULL;
+			}
+		}
+
+		// If we've got a piece of music to play, play it, unless it's what's
+		// currently playing. 
+		if (new_music)
+		{
+			cur_music = Mix_LoadMUS(location.c_str());
+
+			if (cur_music != NULL)
+			{
+				playing_music_location = location;
+				Mix_PlayMusic(cur_music, -1);
+			}
+			else
+			{
+				string err = Mix_GetError();
+				Log::instance().error("Could not play music: " + err);
+			}
+		}
+	}
 }
 
 ClassIdentifier SDLSound::internal_class_identifier() const

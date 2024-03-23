@@ -1251,6 +1251,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="include\UnhandledExceptions.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="sound\include\Music.hpp" />
+    <ClInclude Include="sound\include\MusicEvent.hpp" />
     <ClInclude Include="sound\include\NullSound.hpp" />
     <ClInclude Include="sound\include\SDLSound.hpp" />
     <ClInclude Include="sound\include\Song.hpp" />
@@ -2375,6 +2376,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\XML\source\XMLSpritesheetsReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLStartingLocationsReader.cpp" />
     <ClCompile Include="sound\source\Music.cpp" />
+    <ClCompile Include="sound\source\MusicEvent.cpp" />
     <ClCompile Include="sound\source\NullSound.cpp" />
     <ClCompile Include="sound\source\SDLSound.cpp" />
     <ClCompile Include="sound\source\Song.cpp" />
