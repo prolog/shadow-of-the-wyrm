@@ -38,6 +38,12 @@ void NullSound::stop_music(const bool fade)
 {
 }
 
+string NullSound::get_playing_music_location() const
+{
+	string no_music;
+	return no_music;
+}
+
 ClassIdentifier NullSound::internal_class_identifier() const
 {
 	return ClassIdentifier::CLASS_ID_NULL_SOUND;

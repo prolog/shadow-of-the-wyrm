@@ -21,6 +21,7 @@ class SDLSound : public Sound
 
 		virtual void play_music(MapPtr map) override;
 		virtual void stop_music(const bool fade = false) override;
+		virtual std::string get_playing_music_location() const override;
 
 	protected:
 		virtual void tear_down();
@@ -30,6 +31,7 @@ class SDLSound : public Sound
 		Music music;
 		std::set<std::string> disabled_sound_ids;
 		Mix_Music* cur_music;
+		std::string playing_music_location;
 
 		static const int FADE_MS;
 
