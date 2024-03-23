@@ -33,6 +33,7 @@ class Sound : public ISerializable
 
 		virtual void play_music(MapPtr map) = 0;
 		virtual void stop_music(const bool fade = false) = 0;
+		virtual std::string get_playing_music_location() const = 0;
 
 		virtual bool serialize(std::ostream& stream) const override;
 		virtual bool deserialize(std::istream& stream) override;

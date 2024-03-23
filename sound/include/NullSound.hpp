@@ -17,6 +17,7 @@ class NullSound : public Sound
 		
 		virtual void play_music(MapPtr map) override;
 		virtual void stop_music(const bool fade = false) override;
+		virtual std::string get_playing_music_location() const override;
 
 	private:
 		virtual ClassIdentifier internal_class_identifier() const override;

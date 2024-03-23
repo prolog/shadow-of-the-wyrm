@@ -139,19 +139,31 @@ void SDLSound::play_music(MapPtr map)
 				location = music.get_song(mt);
 			}
 
-			if (cur_music != NULL)
+			bool new_music = !location.empty() && location != playing_music_location;
+
+			// Stop playing the current music if we've entered on to a new map and
+			// there should be no music, or, if there's new music and it's different.
+			// Basically, if there's music to play, and it's the same, don't stop
+			// the music.
+			if (location.empty() || new_music)
 			{
-				Mix_FadeOutMusic(FADE_MS);
-				Mix_FreeMusic(cur_music);
-				cur_music = NULL;
+				if (cur_music != NULL)
+				{
+					Mix_FadeOutMusic(FADE_MS);
+					Mix_FreeMusic(cur_music);
+					cur_music = NULL;
+				}
 			}
 
-			if (!location.empty())
+			// If we've got a piece of music to play, play it, unless it's what's
+			// currently playing. 
+			if (new_music)
 			{
 				cur_music = Mix_LoadMUS(location.c_str());
 
 				if (cur_music != NULL)
 				{
+					playing_music_location = location;
 					Mix_PlayMusic(cur_music, -1);
 				}
 				else
@@ -180,6 +192,11 @@ void SDLSound::stop_music(const bool fade)
 		Mix_FreeMusic(cur_music);
 		cur_music = NULL;
 	}
+}
+
+string SDLSound::get_playing_music_location() const
+{
+	return playing_music_location;
 }
 
 void SDLSound::tear_down()
