@@ -484,6 +484,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "is_tile_available_for_creature", is_tile_available_for_creature);
   lua_register(L, "set_creature_godless", set_creature_godless);
   lua_register(L, "play_sound_effect", play_sound_effect);
+  lua_register(L, "play_event_music", play_event_music);
 }
 
 // Lua API helper functions
@@ -10287,6 +10288,30 @@ int play_sound_effect(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Invalid arguments to play_sound_effect");
+  }
+
+  lua_pushboolean(ls, played);
+  return 1;
+}
+
+int play_event_music(lua_State* ls)
+{
+  bool played = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string event_id = lua_tostring(ls, 1);
+    SoundPtr sound = Game::instance().get_sound();
+
+    if (sound != nullptr && !event_id.empty())
+    {
+      sound->play_music_for_event(event_id);
+      played = true;
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to play_event_music");
   }
 
   lua_pushboolean(ls, played);

@@ -321,6 +321,7 @@ int get_map_type(lua_State* ls);
 int is_tile_available_for_creature(lua_State* ls);
 int set_creature_godless(lua_State* ls);
 int play_sound_effect(lua_State* ls);
+int play_event_music(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

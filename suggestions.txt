@@ -8,6 +8,7 @@ Me:
 - super_type_message_sids -> super_type_sound_id?
 - Need to release sprites, sound effects
 - hemsio: autosave not working?
+- what about per-deity songs? triggered when altar on level?
 - set item status property in CreateItemScreen
 - Use this for fletchery, bowyer, etc, to improve item & quantity
 - Fix power curve: ID vs Carc
