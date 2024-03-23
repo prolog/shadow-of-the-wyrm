@@ -6,9 +6,19 @@ Song::Song() : tile_type(TileType::TILE_TYPE_UNDEFINED), map_type(MapType::MAP_T
 {
 }
 
-Song::Song(const string& new_id, const TileType new_tile_type, const MapType new_map_type, const string& new_location)
-: id(new_id), tile_type(new_tile_type), map_type(new_map_type), location(new_location)
+Song::Song(const string& new_event, const string& new_id, const TileType new_tile_type, const MapType new_map_type, const string& new_location)
+: event(new_event), id(new_id), tile_type(new_tile_type), map_type(new_map_type), location(new_location)
 {
+}
+
+void Song::set_event(const string& new_event)
+{
+	event = new_event;
+}
+
+string Song::get_event() const
+{
+	return event;
 }
 
 void Song::set_id(const string& new_id)

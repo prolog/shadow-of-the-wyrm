@@ -67,6 +67,7 @@ void XMLSoundsReader::parse_song(const XMLNode& song_node, Song& song)
 {
   if (!song_node.is_null())
   {
+    string event = XMLUtils::get_attribute_value(song_node, "event");
     string id = XMLUtils::get_attribute_value(song_node, "id");
     string map_type_s = XMLUtils::get_attribute_value(song_node, "map_type");
     MapType map_type = MapType::MAP_TYPE_NULL;
@@ -86,6 +87,7 @@ void XMLSoundsReader::parse_song(const XMLNode& song_node, Song& song)
 
     string location = XMLUtils::get_child_node_value(song_node, "Location");
 
+    song.set_event(event);
     song.set_id(id);
     song.set_tile_type(tile_type);
     song.set_map_type(map_type);

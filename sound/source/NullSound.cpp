@@ -30,6 +30,10 @@ void NullSound::play(const string& id)
 {
 }
 
+void NullSound::play_music_for_event(const string& event)
+{
+}
+
 void NullSound::play_music(MapPtr map)
 {
 }

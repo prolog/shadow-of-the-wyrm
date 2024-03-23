@@ -19,6 +19,7 @@ class SDLSound : public Sound
 
 		virtual void play(const std::string& path) override;
 
+		virtual void play_music_for_event(const std::string& event) override;
 		virtual void play_music(MapPtr map) override;
 		virtual void stop_music(const bool fade = false) override;
 		virtual std::string get_playing_music_location() const override;
@@ -26,6 +27,8 @@ class SDLSound : public Sound
 	protected:
 		virtual void tear_down();
 		virtual void clear_effects();
+
+		void play_music_location(const string& location);
 
 		std::map<std::string, Mix_Chunk*> effects;
 		Music music;

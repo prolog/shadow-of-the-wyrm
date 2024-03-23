@@ -31,6 +31,7 @@ class Sound : public ISerializable
 
 		virtual void play(const std::string& id) = 0;
 
+		virtual void play_music_for_event(const std::string& event) = 0;
 		virtual void play_music(MapPtr map) = 0;
 		virtual void stop_music(const bool fade = false) = 0;
 		virtual std::string get_playing_music_location() const = 0;

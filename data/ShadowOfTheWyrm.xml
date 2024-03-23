@@ -8421,6 +8421,9 @@
 			</Effect>
 		</Effects>
 		<Music>
+			<Song event="_title">
+				<Location>assets/sound/music/o_aurelion_o_celeste.ogg</Location>
+			</Song>
 			<Song id="world_map" map_type="0">
 				<Location>assets/sound/music/overworld.ogg</Location>
 			</Song>

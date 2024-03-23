@@ -26,6 +26,7 @@
 #include "Log.hpp"
 #include "MapProperties.hpp"
 #include "MessageManagerFactory.hpp"
+#include "MusicEvent.hpp"
 #include "NamingScreen.hpp"
 #include "Naming.hpp"
 #include "PlayerDecisionStrategy.hpp"
@@ -350,6 +351,7 @@ void ShadowOfTheWyrmEngine::setup_player_and_world()
     {
       display->display_splash(false);
 
+      Game::instance().get_sound()->play_music_for_event(MusicEvent::MUSIC_EVENT_TITLE);
       WelcomeScreen welcome(display);
       game_option = welcome.display();
     }
