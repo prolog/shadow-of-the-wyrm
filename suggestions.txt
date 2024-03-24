@@ -1,6 +1,9 @@
 Me:
 - ASSET RELEASE (images, sounds)
 - git push --tags
+- there's an issue going from eg carcassia (music) to air (no music currently)
+  and back to carcassia (should have music, but not playing) then overworld
+  (not playing)
 - look at eg the fae caravan - creatures getting generated in water on coast
   lines
 - test orb placement in wyrmeswraec
