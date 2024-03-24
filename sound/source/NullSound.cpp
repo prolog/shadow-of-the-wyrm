@@ -18,6 +18,12 @@ void NullSound::set_music(const Music& new_music)
 {
 }
 
+Music NullSound::get_music() const
+{
+	Music m;
+	return m;
+}
+
 void NullSound::set_disabled_sound_ids(const string& new_disabled_ids_csv)
 {
 }
@@ -35,6 +41,10 @@ void NullSound::play_music_for_event(const string& event)
 }
 
 void NullSound::play_music(MapPtr map)
+{
+}
+
+void NullSound::play_music_location(const string& location)
 {
 }
 

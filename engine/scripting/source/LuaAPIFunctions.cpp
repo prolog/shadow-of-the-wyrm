@@ -485,6 +485,11 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_godless", set_creature_godless);
   lua_register(L, "play_sound_effect", play_sound_effect);
   lua_register(L, "play_event_music", play_event_music);
+  lua_register(L, "play_map_music", play_map_music);
+  lua_register(L, "set_map_music", set_map_music);
+  lua_register(L, "play_music_location", play_music_location);
+  lua_register(L, "get_music_location_for_event", get_music_location_for_event);
+  lua_register(L, "get_music_location_for_map_type", get_music_location_for_map_type);
 }
 
 // Lua API helper functions
@@ -10315,5 +10320,142 @@ int play_event_music(lua_State* ls)
   }
 
   lua_pushboolean(ls, played);
+  return 1;
+}
+
+int play_map_music(lua_State* ls)
+{
+  bool played = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args == 0 || (num_args == 1 && lua_isstring(ls, 1)))
+  {
+    MapPtr map;
+
+    if (num_args == 0)
+    {
+      map = Game::instance().get_current_map();
+    }
+    else
+    {
+      map = Game::instance().get_map_registry_ref().get_map(lua_tostring(ls, 1));
+    }
+
+    if (map != nullptr)
+    {
+      SoundPtr sound = Game::instance().get_sound();
+
+      if (sound != nullptr)
+      {
+        sound->play_music(map);
+        played = true;
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to play_map_music");
+  }
+
+  lua_pushboolean(ls, played);
+  return 1;
+}
+
+int set_map_music(lua_State* ls)
+{
+  bool added = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string map_id = lua_tostring(ls, 1);
+    string music_location = lua_tostring(ls, 2);
+    SoundPtr sound = Game::instance().get_sound();
+
+    if (sound != nullptr && !map_id.empty())
+    {
+      MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+      if (map != nullptr)
+      {
+        map->set_property(MapProperties::MAP_PROPERTIES_SONG_LOCATION, music_location);
+        sound->play_music(map);
+        added = true;
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_map_music");
+  }
+
+  lua_pushboolean(ls, added);
+  return 1;
+}
+
+int play_music_location(lua_State* ls)
+{
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string location = lua_tostring(ls, 1);
+    SoundPtr sound = Game::instance().get_sound();
+
+    if (sound != nullptr)
+    {
+      sound->play_music_location(location);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to play_music_location");
+  }
+
+  return 0;
+}
+
+int get_music_location_for_event(lua_State* ls)
+{
+  string location;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string event = lua_tostring(ls, 1);
+    SoundPtr sound = Game::instance().get_sound();
+
+    if (sound != nullptr)
+    {
+      Music music = sound->get_music();
+      location = music.get_event_song(event);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_music_location_for_event");
+  }
+
+  lua_pushstring(ls, location.c_str());
+  return 1;
+}
+
+int get_music_location_for_map_type(lua_State* ls)
+{
+  string location;
+
+  if (lua_gettop(ls) == 1 && lua_isnumber(ls, 1))
+  {
+    MapType mt = static_cast<MapType>(lua_tointeger(ls, 1));
+    SoundPtr sound = Game::instance().get_sound();
+
+    if (sound != nullptr)
+    {
+      Music music = sound->get_music();
+      location = music.get_song(mt);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_music_location_for_map_type");
+  }
+
+  lua_pushstring(ls, location.c_str());
   return 1;
 }
