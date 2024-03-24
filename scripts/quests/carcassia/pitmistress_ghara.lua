@@ -40,6 +40,7 @@ local function ghara_quest_start_fn()
 
     local cr_id = get_creature_id(y, x)
     teleport(PLAYER_ID, pl_y, pl_x)
+    set_map_music(get_current_map_id(), get_music_location_for_event(CMUSIC_EVENT_ARENA))
   end
 
   return generated
@@ -52,6 +53,7 @@ end
 local function ghara_quest_completion_fn()
   remove_creature_additional_property(PLAYER_ID, pg_cur_q_complete)
   remove_creature_additional_property(PLAYER_ID, pg_on_quest)
+  set_map_music(get_current_map_id(), get_music_location_for_event(CMUSIC_EVENT_OVERWORLD))
   
   local new_quest_count = get_ghara_quest_count() + 1
   set_creature_additional_property(PLAYER_ID, pg_quest_count, tostring(new_quest_count))

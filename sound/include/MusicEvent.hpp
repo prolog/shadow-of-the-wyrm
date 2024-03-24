@@ -10,3 +10,7 @@ class MusicEvent
 		MusicEvent();
 		~MusicEvent();
 };
+
+// For the Lua scripts
+constexpr auto CMUSIC_EVENT_ARENA = "_arena";
+constexpr auto CMUSIC_EVENT_OVERWORLD = "_overworld";
