@@ -219,6 +219,7 @@ void SDLSound::play_music_location(const string& location)
 				Mix_FadeOutMusic(FADE_MS);
 				Mix_FreeMusic(cur_music);
 				cur_music = NULL;
+				playing_music_location = "";
 			}
 		}
 
