@@ -8424,6 +8424,9 @@
 			<Song event="_arena">
 				<Location>assets/sound/music/arena.ogg</Location>
 			</Song>
+			<Song event="_arena_victory">
+				<Location>assets/sound/music/horns.ogg</Location>
+			</Song>
 			<Song event="_title" tile_type="49">
 				<Location>assets/sound/music/o_aurelion_o_celeste.ogg</Location>
 			</Song>

@@ -36,15 +36,15 @@ void NullSound::play(const string& id)
 {
 }
 
-void NullSound::play_music_for_event(const string& event)
+void NullSound::play_music_for_event(const string& event, const bool loop)
 {
 }
 
-void NullSound::play_music(MapPtr map)
+void NullSound::play_music(MapPtr map, const bool loop)
 {
 }
 
-void NullSound::play_music_location(const string& location)
+void NullSound::play_music_location(const string& location, const bool loop)
 {
 }
 

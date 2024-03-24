@@ -20,9 +20,9 @@ class SDLSound : public Sound
 
 		virtual void play(const std::string& path) override;
 
-		virtual void play_music_for_event(const std::string& event) override;
-		virtual void play_music(MapPtr map) override;
-		virtual void play_music_location(const std::string& location) override;
+		virtual void play_music_for_event(const std::string& event, const bool loop = true) override;
+		virtual void play_music(MapPtr map, const bool loop = true) override;
+		virtual void play_music_location(const std::string& location, const bool loop = true) override;
 		virtual void stop_music(const bool fade = false) override;
 		virtual std::string get_playing_music_location() const override;
 
