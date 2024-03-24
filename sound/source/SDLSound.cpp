@@ -112,12 +112,12 @@ void SDLSound::play(const string& id)
 	}
 }
 
-void SDLSound::play_music_for_event(const string& event)
+void SDLSound::play_music_for_event(const string& event, const bool loop)
 {
 	if (enable_sound && enable_music)
 	{
 		string location = music.get_event_song(event);
-		play_music_location(location);
+		play_music_location(location, loop);
 	}
 }
 // Play music for the map.
@@ -126,7 +126,7 @@ void SDLSound::play_music_for_event(const string& event)
 // - the MAP_PROPERTIES_SONG_LOCATION map property
 // - the ID specified in the game configuration
 // - the map type specified in the game configuration
-void SDLSound::play_music(MapPtr map)
+void SDLSound::play_music(MapPtr map, const bool loop)
 {
 	if (enable_sound && enable_music)
 	{
@@ -152,7 +152,7 @@ void SDLSound::play_music(MapPtr map)
 				location = music.get_song(mt);
 			}
 
-			play_music_location(location);
+			play_music_location(location, loop);
 
 		}
 	}
@@ -207,7 +207,7 @@ void SDLSound::clear_effects()
 	effects.clear();
 }
 
-void SDLSound::play_music_location(const string& location)
+void SDLSound::play_music_location(const string& location, const bool loop)
 {
 	if (enable_sound && enable_music)
 	{
@@ -236,8 +236,9 @@ void SDLSound::play_music_location(const string& location)
 
 			if (cur_music != NULL)
 			{
+				int num_loops = loop ? -1 : 0;
 				playing_music_location = location;
-				Mix_PlayMusic(cur_music, -1);
+				Mix_PlayMusic(cur_music, num_loops);
 			}
 			else
 			{

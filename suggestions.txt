@@ -2,6 +2,8 @@ Me:
 - ASSET RELEASE (images, sounds)
 - git push --tags
 - "A hundred horns..."
+- Air music
+- Music off. Move between maps with music change. Music/sound on.
 - look at eg the fae caravan - creatures getting generated in water on coast
   lines
 - test orb placement in wyrmeswraec

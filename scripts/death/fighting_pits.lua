@@ -7,6 +7,7 @@ local pg_cur_q_complete = "pitmistress_ghara_current_quest_complete"
 -- killed the creature, as creatures can kill themselves via stunning
 -- attacks, etc.
 local function exit_pits(creature_id, attacking_creature_id, map_id)
+  play_music_event(CMUSIC_EVENT_ARENA_VICTORY, false)
   add_message_with_pause("EXIT_FIGHTING_PITS_SID", false)
   teleported = teleport(PLAYER_ID, 9, 47)
   

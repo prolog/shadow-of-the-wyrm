@@ -487,6 +487,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "play_event_music", play_event_music);
   lua_register(L, "play_map_music", play_map_music);
   lua_register(L, "set_map_music", set_map_music);
+  lua_register(L, "play_music_event", play_music_event);
   lua_register(L, "play_music_location", play_music_location);
   lua_register(L, "get_music_location_for_event", get_music_location_for_event);
   lua_register(L, "get_music_location_for_map_type", get_music_location_for_map_type);
@@ -10390,6 +10391,35 @@ int set_map_music(lua_State* ls)
 
   lua_pushboolean(ls, added);
   return 1;
+}
+
+int play_music_event(lua_State* ls)
+{
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 1 && lua_isstring(ls, 1))
+  {
+    string event_id = lua_tostring(ls, 1);
+    bool loop = true;
+
+    if (num_args == 2 && lua_isboolean(ls, 2))
+    {
+      loop = lua_toboolean(ls, 2);
+    }
+
+    SoundPtr sound = Game::instance().get_sound();
+
+    if (sound != nullptr)
+    {
+      sound->play_music_for_event(event_id, loop);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to play_music_event");
+  }
+
+  return 0;
 }
 
 int play_music_location(lua_State* ls)
