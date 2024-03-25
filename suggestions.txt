@@ -1,15 +1,14 @@
 Me:
 - ASSET RELEASE (images, sounds)
 - git push --tags
-- "A hundred horns..."
 - Air music
-- Music off. Move between maps with music change. Music/sound on.
+- Better arena music
 - look at eg the fae caravan - creatures getting generated in water on coast
   lines
 - test orb placement in wyrmeswraec
 - dig in water
 - super_type_message_sids -> super_type_sound_id?
-- Need to release sprites, sound effects
+- Need to release sprites, sound effects, music
 - hemsio: autosave not working?
 - what about per-deity songs? triggered when altar on level?
 - set item status property in CreateItemScreen
