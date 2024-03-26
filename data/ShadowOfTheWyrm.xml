@@ -8436,6 +8436,12 @@
 			<Song event="_overworld" map_type="1">
 				<Location>assets/sound/music/water_music_1.ogg</Location>
 			</Song>
+			<Song id="world_map" map_type="3">
+				<Location>assets/sound/music/water_music_1.ogg</Location>
+			</Song>
+			<Song id="world_map" map_type="5">
+				<Location>assets/sound/music/water_music_1.ogg</Location>
+			</Song>
 			<Song map_type="2">
 				<Location>assets/sound/music/underworld.ogg</Location>
 			</Song>
