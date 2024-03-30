@@ -264,6 +264,7 @@ int creature_exists(lua_State* ls);
 int set_weather(lua_State* ls);
 int genocide(lua_State* ls);
 int genocide_creature(lua_State* ls);
+int genocide_hostile(lua_State* ls);
 int generate_ancient_beast(lua_State* ls);
 int generate_hireling(lua_State* ls);
 int generate_adventurer(lua_State* ls);

@@ -428,6 +428,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_weather", set_weather);
   lua_register(L, "genocide", genocide);
   lua_register(L, "genocide_creature", genocide_creature);
+  lua_register(L, "genocide_hostile", genocide_hostile);
   lua_register(L, "generate_ancient_beast", generate_ancient_beast);
   lua_register(L, "generate_hireling", generate_hireling);
   lua_register(L, "generate_adventurer", generate_adventurer);
@@ -8801,6 +8802,41 @@ int genocide_creature(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Invalid arguments to genocide_creature");
+  }
+
+  lua_pushinteger(ls, num_removed);
+  return 1;
+}
+
+int genocide_hostile(lua_State* ls)
+{
+  int num_removed = 0;
+  MapPtr map = Game::instance().get_current_map();
+  string race_id;
+
+  if (lua_gettop(ls) == 0)
+  {
+    if (map != nullptr)
+    {
+      const CreatureMap creatures = map->get_creatures();
+
+      for (auto cr_pair : creatures)
+      {
+        CreaturePtr creature = cr_pair.second;
+
+        if (creature != nullptr && 
+            !creature->get_is_player() &&
+            creature->hostile_to(CreatureID::CREATURE_ID_PLAYER))
+        {
+          MapUtils::remove_creature(map, creature);
+          num_removed++;
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to genocide_hostile");
   }
 
   lua_pushinteger(ls, num_removed);
