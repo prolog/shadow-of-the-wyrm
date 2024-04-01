@@ -21,12 +21,12 @@ TEST(SW_Sound_Music, songs)
 	Music m = create_testing_music();
 
 	EXPECT_EQ("path/file", m.get_song("id1"));
-	EXPECT_EQ("path/file1", m.get_event_song("ev1"));
+	EXPECT_EQ("path/file", m.get_event_song("ev1"));
 
 	EXPECT_EQ("path/file2", m.get_song(MapType::MAP_TYPE_WORLD));
 	
 	EXPECT_EQ("path/file3", m.get_song(MapType::MAP_TYPE_OVERWORLD));
-	EXPECT_EQ("path/file3", m.get_song("ev3"));
+	EXPECT_EQ("path/file3", m.get_event_song("ev3"));
 
 	EXPECT_EQ("path/file4", m.get_song("id2"));
 	
