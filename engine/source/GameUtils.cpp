@@ -105,12 +105,6 @@ void GameUtils::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new
 
     if (MapUtils::should_link_entry_point(new_map->get_map_type()))
     {
-      if (old_map->get_permanent())
-      {
-        TilePtr new_map_tile = new_map->at(new_map_prev_loc);
-        new_map_tile->set_custom_map_id(old_map->get_map_id());
-      }
-
       // If there's an exit, link it to the creature's location on the new map
       // so it can be easily found later.
       if (map_exit != nullptr)

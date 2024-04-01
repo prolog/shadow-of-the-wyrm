@@ -1120,7 +1120,8 @@ void MapUtils::potentially_set_permanence_if_leaving_followers_behind(const MapP
       !map->get_permanent() &&
       map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
     {
-      map->set_permanent(true);
+      Game& game = Game::instance();
+      GameUtils::make_map_permanent(game, creature, map);
     }
   }
 }
