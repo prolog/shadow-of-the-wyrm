@@ -1,6 +1,21 @@
 #include "gtest/gtest.h"
 #include "Wand.hpp"
 
+TEST(SW_Engine_Calculator_WandCalculator, explosion_damage)
+{
+  WandCalculator wc;
+
+  EXPECT_EQ(0, wc.calc_explosion_damage(nullptr));
+
+  WandPtr wand = std::make_shared<Wand>();
+
+  EXPECT_EQ(0, wc.calc_explosion_damage(wand));
+
+  wand->set_charges(4);
+
+  EXPECT_EQ(12, wc.calc_explosion_damage(wand));
+}
+
 TEST(SW_Engine_Calculator_WandCalculator, explode_chance)
 {
   CreaturePtr creature = std::make_shared<Creature>();

@@ -8,6 +8,11 @@ Shadow of the Wyrm v1.6.7 "Michelagnolo Galilei"
   random forest, etc), that map will be flipped to permanent if you leave any
   followers behind when exiting the map (dionje5).
 
+- Cursed wands now have a chance to explode, lessened by Wandcraft, which can
+  also (for higher values) prevent this altogether.
+
+- For this reason, NPCs won't chance using cursed wands.
+
 - New names, etc.
 
 - Stanzas for "Tel and Floridel".

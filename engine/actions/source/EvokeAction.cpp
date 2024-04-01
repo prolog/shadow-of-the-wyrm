@@ -71,27 +71,37 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
           new_wand = wand;
         }
 
-        // Try to evoke the item
-        action_cost_value = evoke_wand(creature, new_wand, Direction::DIRECTION_NULL);
+        WandCalculator wc;
+        auto explode_xy_chance = wc.calc_x_in_y_chance_explode(creature, wand);
 
-        // If we're in a shop, anger the shopkeeper.
-        // Using charges is theft!
-        if (new_wand->get_unpaid())
+        if (RNG::x_in_y_chance(explode_xy_chance))
         {
-          MapUtils::anger_shopkeeper_if_necessary(map->get_location(creature->get_id()), map, creature);
+          return explode_wand(creature, wand);
         }
-
-        // Remove the item before re-adding it: used when there is only
-        // a single wand.
-        if (need_to_remove_before_adding_or_merging)
+        else
         {
-          creature->get_inventory()->remove(new_wand->get_id());
-        }
+          // Try to evoke the item
+          action_cost_value = evoke_wand(creature, new_wand, Direction::DIRECTION_NULL);
 
-        // Insert the item back into the inventory.
-        // This will take care of de-stacking/re-stacking and ensuring that
-        // like-items are grouped together.
-        creature->get_inventory()->merge_or_add(new_wand, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+          // If we're in a shop, anger the shopkeeper.
+          // Using charges is theft!
+          if (new_wand->get_unpaid())
+          {
+            MapUtils::anger_shopkeeper_if_necessary(map->get_location(creature->get_id()), map, creature);
+          }
+
+          // Remove the item before re-adding it: used when there is only
+          // a single wand.
+          if (need_to_remove_before_adding_or_merging)
+          {
+            creature->get_inventory()->remove(new_wand->get_id());
+          }
+
+          // Insert the item back into the inventory.
+          // This will take care of de-stacking/re-stacking and ensuring that
+          // like-items are grouped together.
+          creature->get_inventory()->merge_or_add(new_wand, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+        }
       }
     }
   }
@@ -112,6 +122,28 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, const string& wand_id, 
     {
       acv = evoke_wand(creature, wand, d);
     }
+  }
+
+  return acv;
+}
+
+ActionCostValue EvokeAction::explode_wand(CreaturePtr creature, WandPtr wand)
+{
+  ActionCostValue acv = ActionCostConstants::DEFAULT;
+
+  if (creature && wand)
+  {
+    // Apply the damage
+    WandCalculator wc;
+    CombatManager cm;
+    Damage damage;
+    damage.set_damage_type(DamageType::DAMAGE_TYPE_ARCANE);
+    int dam = wc.calc_explosion_damage(wand);
+
+    cm.deal_damage(nullptr, creature, AttackType::ATTACK_TYPE_MAGICAL_WANDS, "", dam, damage, ActionTextKeys::ACTION_WAND_EXPLODE);
+
+    // Destroy the wand: remove it from the player's inventory.
+    creature->get_inventory()->remove(wand->get_id());
   }
 
   return acv;

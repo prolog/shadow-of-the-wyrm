@@ -42,6 +42,18 @@ pair<int, int> WandCalculator::calc_x_in_y_chance_explode(CreaturePtr creature, 
   return chance;
 }
 
+int WandCalculator::calc_explosion_damage(WandPtr wand)
+{
+  int dam = 0;
+
+  if (wand != nullptr)
+  {
+    dam = 3 * wand->get_charges().get_current();
+  }
+
+  return dam;
+}
+
 // The evoker of a wand gets a damage bonus influenced largely by Wandcraft,
 // but also to a lesser extent by Willpower.
 int WandCalculator::calc_damage_bonus(CreaturePtr creature)
