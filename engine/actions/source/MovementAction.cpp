@@ -5,6 +5,7 @@
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "CreatureProperties.hpp"
+#include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DangerLevelCalculatorFactory.hpp"
 #include "DangerLevelProperties.hpp"
@@ -166,6 +167,7 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
 
         if (creature->get_decision_strategy()->get_confirmation())
         {
+          MapUtils::potentially_set_permanence_if_leaving_followers_behind(map, creature);
           MapUtils::set_up_transitive_exits_as_necessary(map, map_exit);
           handle_properties_and_move(creature, creatures_old_tile, map, map_exit, proposed_new_coord);
           movement_acv = get_action_cost_value(creature);

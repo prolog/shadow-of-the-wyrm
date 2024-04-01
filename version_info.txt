@@ -4,6 +4,10 @@ Shadow of the Wyrm v1.6.7 "Michelagnolo Galilei"
 - Evergreen trees are now cyan in winter, to mimic the appearance of snow on
   their branches.
 
+- If you leave followers behind on an overworld map that isn't permanent (a 
+  random forest, etc), that map will be flipped to permanent if you leave any
+  followers behind when exiting the map (dionje5).
+
 - New names, etc.
 
 - Stanzas for "Tel and Floridel".

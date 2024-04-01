@@ -943,6 +943,12 @@ int CreatureUtils::adjust_str_until_unburdened(CreaturePtr creature)
   return incr_cnt;
 }
 
+bool CreatureUtils::has_followers(CreaturePtr creature, MapPtr map)
+{
+  bool followers = !get_followers(creature, map).empty();
+  return followers;
+}
+
 CreatureMap CreatureUtils::get_followers(CreaturePtr creature, MapPtr map)
 {
   CreatureMap followers;

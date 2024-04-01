@@ -103,15 +103,24 @@ void GameUtils::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new
 
     MapUtils::place_followers(new_map, current_creature, new_map_prev_loc);
 
-    // If there's an exit, link it to the creature's location on the new map
-    // so it can be easily found later.
-    if (map_exit != nullptr && MapUtils::should_link_entry_point(new_map->get_map_type()))
+    if (MapUtils::should_link_entry_point(new_map->get_map_type()))
     {
-      map_exit->set_coordinate(new_map_prev_loc);
-    }
-    else if (map_exit == nullptr && MapUtils::should_link_entry_point(new_map->get_map_type()))
-    {
-      current_tile->set_additional_property(TileProperties::TILE_PROPERTY_LINKED_COORD, String::create_string_from_coordinate(new_map_prev_loc));
+      if (old_map->get_permanent())
+      {
+        TilePtr new_map_tile = new_map->at(new_map_prev_loc);
+        new_map_tile->set_custom_map_id(old_map->get_map_id());
+      }
+
+      // If there's an exit, link it to the creature's location on the new map
+      // so it can be easily found later.
+      if (map_exit != nullptr)
+      {
+        map_exit->set_coordinate(new_map_prev_loc);
+      }
+      else
+      {
+        current_tile->set_additional_property(TileProperties::TILE_PROPERTY_LINKED_COORD, String::create_string_from_coordinate(new_map_prev_loc));
+      }
     }
 
     // Set the new map to be loaded in the next iteration of the game loop.
