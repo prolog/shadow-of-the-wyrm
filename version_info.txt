@@ -1,3 +1,23 @@
+Shadow of the Wyrm v1.6.7 "Michelagnolo Galilei"
+- Version started February 18, 2024.
+
+- Evergreen trees are now cyan in winter, to mimic the appearance of snow on
+  their branches.
+
+- If you leave followers behind on an overworld map that isn't permanent (a 
+  random forest, etc), that map will be flipped to permanent if you leave any
+  followers behind when exiting the map (dionje5).
+
+- Cursed wands now have a chance to explode, lessened by Wandcraft, which can
+  also (for higher values) prevent this altogether.
+
+- For this reason, NPCs won't chance using cursed wands.
+
+- New names, etc.
+
+- Stanzas for "Tel and Floridel".
+
+
 Shadow of the Wyrm v1.6.5 "Reusner"
 - Version started December 10, 2023. Version finalized February 18, 2024.
 

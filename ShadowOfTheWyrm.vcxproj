@@ -1250,8 +1250,11 @@ mkdir $(OutDir)logs
     <ClInclude Include="include\ISerializable.hpp" />
     <ClInclude Include="include\UnhandledExceptions.hpp" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="sound\include\Music.hpp" />
+    <ClInclude Include="sound\include\MusicEvent.hpp" />
     <ClInclude Include="sound\include\NullSound.hpp" />
     <ClInclude Include="sound\include\SDLSound.hpp" />
+    <ClInclude Include="sound\include\Song.hpp" />
     <ClInclude Include="sound\include\Sound.hpp" />
     <ClInclude Include="sound\include\SoundEffectID.hpp" />
     <ClInclude Include="sound\include\SoundFactory.hpp" />
@@ -2372,11 +2375,20 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\XML\source\XMLSoundsReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLSpritesheetsReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLStartingLocationsReader.cpp" />
+    <ClCompile Include="sound\source\Music.cpp" />
+    <ClCompile Include="sound\source\MusicEvent.cpp" />
     <ClCompile Include="sound\source\NullSound.cpp" />
     <ClCompile Include="sound\source\SDLSound.cpp" />
+    <ClCompile Include="sound\source\Song.cpp" />
     <ClCompile Include="sound\source\Sound.cpp" />
     <ClCompile Include="sound\source\SoundEffectID.cpp" />
     <ClCompile Include="sound\source\SoundFactory.cpp" />
+    <ClCompile Include="sound\source\unit_tests\Music_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="sound\source\unit_tests\NullSound_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>

@@ -137,6 +137,9 @@ class MapProperties
     // Does the map allow ancient beasts?
     static const std::string MAP_PROPERTIES_ANCIENT_BEASTS;
 
+    // Does the map have a custom song defined?
+    static const std::string MAP_PROPERTIES_SONG_LOCATION;
+
   protected:
     MapProperties();
     ~MapProperties();

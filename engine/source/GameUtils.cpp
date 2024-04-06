@@ -103,15 +103,18 @@ void GameUtils::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new
 
     MapUtils::place_followers(new_map, current_creature, new_map_prev_loc);
 
-    // If there's an exit, link it to the creature's location on the new map
-    // so it can be easily found later.
-    if (map_exit != nullptr && MapUtils::should_link_entry_point(new_map->get_map_type()))
+    if (MapUtils::should_link_entry_point(new_map->get_map_type()))
     {
-      map_exit->set_coordinate(new_map_prev_loc);
-    }
-    else if (map_exit == nullptr && MapUtils::should_link_entry_point(new_map->get_map_type()))
-    {
-      current_tile->set_additional_property(TileProperties::TILE_PROPERTY_LINKED_COORD, String::create_string_from_coordinate(new_map_prev_loc));
+      // If there's an exit, link it to the creature's location on the new map
+      // so it can be easily found later.
+      if (map_exit != nullptr)
+      {
+        map_exit->set_coordinate(new_map_prev_loc);
+      }
+      else
+      {
+        current_tile->set_additional_property(TileProperties::TILE_PROPERTY_LINKED_COORD, String::create_string_from_coordinate(new_map_prev_loc));
+      }
     }
 
     // Set the new map to be loaded in the next iteration of the game loop.
@@ -119,7 +122,9 @@ void GameUtils::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new
     game.set_current_map(new_map);
     game.reload_map();
 
-    game.get_sound()->play(SoundEffectID::EXIT_MAP);
+    SoundPtr sound = game.get_sound();
+    sound->play(SoundEffectID::EXIT_MAP);
+    sound->play_music(new_map);
   }
 }
 

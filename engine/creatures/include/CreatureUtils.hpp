@@ -70,6 +70,7 @@ class CreatureUtils
     // Returns the number of times str was incremented
     static int adjust_str_until_unburdened(CreaturePtr creature);
 
+    static bool has_followers(CreaturePtr creature, MapPtr map);
     static CreatureMap get_followers(CreaturePtr creature, MapPtr map);
     static CreatureMap get_followers_in_fov(CreaturePtr creature);
     static std::string get_follower_property_prefix();

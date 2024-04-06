@@ -232,6 +232,21 @@ const map<pair<string, string>, string>& Game::get_sound_effects_cref() const
   return sound_effects;
 }
 
+void Game::set_music(const Music& new_music)
+{
+  music = new_music;
+}
+
+Music Game::get_music() const
+{
+  return music;
+}
+
+const Music& Game::get_music_cref() const
+{
+  return music;
+}
+
 void Game::set_map_registry(const MapRegistry& new_map_registry)
 {
   map_registry = new_map_registry;
@@ -613,6 +628,8 @@ void Game::go()
     CreatureCalculator cc;
     cc.update_calculated_values(current_player);
     string map_id = "";
+
+    sound->play_music(current_map);
 
     // Main game loop.
     while (keep_playing)
@@ -1019,6 +1036,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
 void Game::stop_playing(CreaturePtr creature, const bool show_quit_actions, const bool delete_savefile)
 {
   keep_playing = false;
+  sound->stop_music(true);
 
   if (show_quit_actions && creature != nullptr && creature->get_is_player())
   {
@@ -1274,6 +1292,8 @@ bool Game::serialize(ostream& stream) const
     Serialize::write_string(stream, se_pair.second);
   }
 
+  music.serialize(stream);
+
   Serialize::write_size_t(stream, deities.size());
   for (const auto& deity_pair : deities)
   {
@@ -1509,6 +1529,7 @@ bool Game::deserialize(istream& stream)
   // settings so these can persist between saves.
   sound->set_enable_sound(old_sound->get_enable_sound());
   sound->set_enable_sound_effects(old_sound->get_enable_sound_effects());
+  sound->set_enable_music(old_sound->get_enable_music());
 
   map_registry.deserialize(stream);
 
@@ -1528,6 +1549,8 @@ bool Game::deserialize(istream& stream)
     pair<string, string> id_and_match = std::make_pair(id, match);
     sound_effects[id_and_match] = location;
   }
+
+  music.deserialize(stream);
 
   size_t size = 0;
   Serialize::read_size_t(stream, size);

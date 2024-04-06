@@ -1,5 +1,7 @@
 #include "WandCalculator.hpp"
 
+using namespace std;
+
 const int WandCalculator::DAMAGE_BONUS_STAT_DIVISOR = 15;
 const int WandCalculator::DAMAGE_BONUS_SKILL_DIVISOR = 5;
 const int WandCalculator::FREE_CHARGE_SKILL_DIVISOR = 10;
@@ -7,6 +9,50 @@ const int WandCalculator::DEFAULT_SPELL_CASTINGS_PER_CHARGE = 10;
 const int WandCalculator::MIN_SPELL_CASTINGS_PER_CHARGE = 2;
 const int WandCalculator::NUM_CHARGE_DIVISOR = 15;
 const int WandCalculator::WANDCRAFT_RECHARGE_DIVISOR = 33;
+const int WandCalculator::BASE_PCT_CHANCE_EXPLODE_CURSED = 1;
+const int WandCalculator::WANDCRAFT_THRESHOLD_CAN_EXPLODE = 50;
+
+// Wands have a 1% chance of exploding when cursed, further modified by the
+// Wandcraft skill.
+pair<int, int> WandCalculator::calc_x_in_y_chance_explode(CreaturePtr creature, ItemPtr wand)
+{
+  pair<int, int> no_explode = { 0,1 };
+  auto chance = no_explode;
+
+  if (wand != nullptr && wand->get_status() == ItemStatus::ITEM_STATUS_CURSED)
+  {
+    chance = { 1, 100 };
+    float wandcraft_mult = 1.0f;
+
+    if (creature != nullptr)
+    {
+      int wandcraft = creature->get_skills().get_value(SkillType::SKILL_GENERAL_WANDCRAFT);
+
+      if (wandcraft <= WANDCRAFT_THRESHOLD_CAN_EXPLODE)
+      {
+        chance.second += (4 * wandcraft);
+      }
+      else
+      {
+        chance = no_explode;
+      }
+    }
+  }
+
+  return chance;
+}
+
+int WandCalculator::calc_explosion_damage(WandPtr wand)
+{
+  int dam = 0;
+
+  if (wand != nullptr)
+  {
+    dam = 3 * wand->get_charges().get_current();
+  }
+
+  return dam;
+}
 
 // The evoker of a wand gets a damage bonus influenced largely by Wandcraft,
 // but also to a lesser extent by Willpower.

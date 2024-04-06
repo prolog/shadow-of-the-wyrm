@@ -258,7 +258,7 @@ CommandPtr NPCUseEquipItemDecisionStrategy::get_use_wand_decision(CreaturePtr cr
   CommandPtr use_cmd;
   WandPtr wand = std::dynamic_pointer_cast<Wand>(item);
 
-  if (wand != nullptr && wand->get_charges().get_current() > 0 && wand->get_has_damage())
+  if (wand != nullptr && wand->get_charges().get_current() > 0 && wand->get_has_damage() && wand->get_status() != ItemStatus::ITEM_STATUS_CURSED)
   {
     AttackNPCMagicDecision anmd;
     Spell spell;

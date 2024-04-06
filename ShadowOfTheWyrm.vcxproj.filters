@@ -4556,6 +4556,15 @@
     <ClInclude Include="engine\actions\include\ToggleSettingsAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
+    <ClInclude Include="sound\include\Song.hpp">
+      <Filter>Header Files\sound\include</Filter>
+    </ClInclude>
+    <ClInclude Include="sound\include\Music.hpp">
+      <Filter>Header Files\sound\include</Filter>
+    </ClInclude>
+    <ClInclude Include="sound\include\MusicEvent.hpp">
+      <Filter>Header Files\sound\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9243,6 +9252,18 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\ToggleSettingsAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="sound\source\Song.cpp">
+      <Filter>Source Files\sound\source</Filter>
+    </ClCompile>
+    <ClCompile Include="sound\source\Music.cpp">
+      <Filter>Source Files\sound\source</Filter>
+    </ClCompile>
+    <ClCompile Include="sound\source\unit_tests\Music_test.cpp">
+      <Filter>Source Files\sound\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="sound\source\MusicEvent.cpp">
+      <Filter>Source Files\sound\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -7280,7 +7280,12 @@
 		<EvergreenTreeTile>
 			<Symbol>
 				<Char>T</Char>
-				<Colour>2</Colour>
+				<Colours>
+					<Spring>2</Spring>
+					<Summer>2</Summer>
+					<Autumn>2</Autumn>
+					<Winter>14</Winter>
+				</Colours>
 				<Sprite>
 					<ID>til</ID>
 					<Row>0</Row>
@@ -8415,5 +8420,34 @@
 				<Location>assets/sound/effects/crowning.wav</Location>
 			</Effect>
 		</Effects>
+		<Music>
+			<Song event="_arena">
+				<Location>assets/sound/music/arena.ogg</Location>
+			</Song>
+			<Song event="_arena_victory">
+				<Location>assets/sound/music/horns.ogg</Location>
+			</Song>
+			<Song event="_broken_house">
+				<Location>assets/sound/music/the_broken_house.ogg</Location>
+			</Song>
+			<Song event="_overworld" map_type="1">
+				<Location>assets/sound/music/water_music_1.ogg</Location>
+			</Song>
+			<Song event="_underwater" map_type="3">
+				<Location>assets/sound/music/water_music_2.ogg</Location>
+			</Song>
+			<Song event="_title" tile_type="49">
+				<Location>assets/sound/music/o_aurelion_o_celeste.ogg</Location>
+			</Song>
+			<Song id="world_map" map_type="0">
+				<Location>assets/sound/music/water_music_1.ogg</Location>
+			</Song>
+			<Song map_type="5">
+				<Location>assets/sound/music/water_music_1.ogg</Location>
+			</Song>
+			<Song map_type="2">
+				<Location>assets/sound/music/underworld.ogg</Location>
+			</Song>
+		</Music>
 	</Sounds>
 </ShadowOfTheWyrm>

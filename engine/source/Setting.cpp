@@ -94,3 +94,4 @@ const string Setting::SOUND = "sound";
 const string Setting::SOUND_ENABLED = "sound_enabled";
 const string Setting::SOUND_EFFECTS_ENABLED = "sound_effects_enabled";
 const string Setting::DISABLE_SOUND_EFFECT_IDS = "disable_sound_effect_ids";
+const string Setting::MUSIC_ENABLED = "music_enabled";

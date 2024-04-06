@@ -264,6 +264,7 @@ int creature_exists(lua_State* ls);
 int set_weather(lua_State* ls);
 int genocide(lua_State* ls);
 int genocide_creature(lua_State* ls);
+int genocide_hostile(lua_State* ls);
 int generate_ancient_beast(lua_State* ls);
 int generate_hireling(lua_State* ls);
 int generate_adventurer(lua_State* ls);
@@ -321,6 +322,13 @@ int get_map_type(lua_State* ls);
 int is_tile_available_for_creature(lua_State* ls);
 int set_creature_godless(lua_State* ls);
 int play_sound_effect(lua_State* ls);
+int play_event_music(lua_State* ls);
+int play_map_music(lua_State* ls);
+int set_map_music(lua_State* ls);
+int play_music_event(lua_State* ls);
+int play_music_location(lua_State* ls);
+int get_music_location_for_event(lua_State* ls);
+int get_music_location_for_map_type(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

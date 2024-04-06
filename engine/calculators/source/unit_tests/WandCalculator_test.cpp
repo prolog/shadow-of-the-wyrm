@@ -1,4 +1,50 @@
 #include "gtest/gtest.h"
+#include "Wand.hpp"
+
+TEST(SW_Engine_Calculator_WandCalculator, explosion_damage)
+{
+  WandCalculator wc;
+
+  EXPECT_EQ(0, wc.calc_explosion_damage(nullptr));
+
+  WandPtr wand = std::make_shared<Wand>();
+
+  EXPECT_EQ(0, wc.calc_explosion_damage(wand));
+
+  wand->set_charges(4);
+
+  EXPECT_EQ(12, wc.calc_explosion_damage(wand));
+}
+
+TEST(SW_Engine_Calculator_WandCalculator, explode_chance)
+{
+  CreaturePtr creature = std::make_shared<Creature>();
+  WandCalculator wc;
+  
+  WandPtr wand = std::make_shared<Wand>();
+
+  wand->set_status(ItemStatus::ITEM_STATUS_BLESSED);
+  pair<int, int> chance = make_pair(0, 1);
+
+  EXPECT_EQ(chance, wc.calc_x_in_y_chance_explode(creature, wand));
+  
+  wand->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
+
+  EXPECT_EQ(chance, wc.calc_x_in_y_chance_explode(creature, wand));
+
+  wand->set_status(ItemStatus::ITEM_STATUS_CURSED);
+  chance = { 1, 100 };
+
+  EXPECT_EQ(chance, wc.calc_x_in_y_chance_explode(creature, wand));
+
+  vector<pair<int, pair<int, int>>> wc_and_xy = { {1, {1, 104}}, {10, {1, 140}}, {31, {1, 224}}, {50, {1, 300}}, {51, {0, 1}} };
+
+  for (const auto& wc_pair : wc_and_xy)
+  {
+    creature->get_skills().set_value(SkillType::SKILL_GENERAL_WANDCRAFT, wc_pair.first);
+    EXPECT_EQ(wc_pair.second, wc.calc_x_in_y_chance_explode(creature, wand));
+  }
+}
 
 TEST(SW_Engine_Calculators_WandCalculator, damage_bonus)
 {

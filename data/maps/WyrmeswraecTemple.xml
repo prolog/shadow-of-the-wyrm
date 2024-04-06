@@ -280,10 +280,10 @@
 		<Items>
 			<Placement>
 				<ID>black_orb</ID>
-				<Random>
+				<RandomCoord>
 					<Coord><Row>9</Row><Col>7</Col></Coord>
 					<Coord><Row>10</Row><Col>72</Col></Coord>
-				</Random>
+				</RandomCoord>
 			</Placement>
 		</Items>
 	</InitialPlacements>

@@ -34,6 +34,7 @@ class MapUtils
     static uint get_num_adjacent_movement_directions(const MapPtr& map, const CreaturePtr& creature);
     static TilePtr get_adjacent_tile(const MapPtr& map, const CreaturePtr& creature, const Direction d, const int offset = 1);
     static TileDirectionMap get_adjacent_and_creature_tiles(const MapPtr& map, const CreaturePtr& creature);
+    static bool are_all_followers_adjacent(const MapPtr& map, const CreaturePtr& leader);
     static TileDirectionMap get_tiles_with_features(MapPtr& map, CreaturePtr& creature);
     static uint get_num_adjacent_creatures(const TileDirectionMap& adjacency_map);
     static CreatureDirectionMap get_adjacent_creatures(const MapPtr& map, const CreaturePtr& creature);
@@ -41,6 +42,7 @@ class MapUtils
     static void set_up_transitive_exits_as_necessary(MapPtr old_map, MapExitPtr map_exit);
     static Coordinate calculate_new_coord_for_multimap_movement(const Coordinate& current_coord, TilePtr tile, const Direction exit_direction, MapExitPtr map_exit);
     static Direction get_exit_direction(const Direction d, const Dimensions& dim, const Coordinate& c);
+    static void potentially_set_permanence_if_leaving_followers_behind(const MapPtr& map, const CreaturePtr& creature);
 
     // When removing a creature, we generally want to leave the player's
     // location intact, for returning later.  However, in certain cases,

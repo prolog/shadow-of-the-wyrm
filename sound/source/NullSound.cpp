@@ -14,12 +14,48 @@ void NullSound::set_effects(const map<pair<string, string>, string>& new_effects
 {
 }
 
+void NullSound::set_music(const Music& new_music)
+{
+}
+
+Music NullSound::get_music() const
+{
+	Music m;
+	return m;
+}
+
 void NullSound::set_disabled_sound_ids(const string& new_disabled_ids_csv)
+{
+}
+
+void NullSound::toggle_music(const bool new_val)
 {
 }
 
 void NullSound::play(const string& id)
 {
+}
+
+void NullSound::play_music_for_event(const string& event, const bool loop)
+{
+}
+
+void NullSound::play_music(MapPtr map, const bool loop)
+{
+}
+
+void NullSound::play_music_location(const string& location, const bool loop)
+{
+}
+
+void NullSound::stop_music(const bool fade)
+{
+}
+
+string NullSound::get_playing_music_location() const
+{
+	string no_music;
+	return no_music;
 }
 
 ClassIdentifier NullSound::internal_class_identifier() const

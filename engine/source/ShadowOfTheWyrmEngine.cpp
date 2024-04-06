@@ -26,6 +26,7 @@
 #include "Log.hpp"
 #include "MapProperties.hpp"
 #include "MessageManagerFactory.hpp"
+#include "MusicEvent.hpp"
 #include "NamingScreen.hpp"
 #include "Naming.hpp"
 #include "PlayerDecisionStrategy.hpp"
@@ -237,10 +238,13 @@ void ShadowOfTheWyrmEngine::setup_game()
   string disabled_sound_ids = game.get_settings_ref().get_setting(Setting::DISABLE_SOUND_EFFECT_IDS);
   SoundPtr sound = game.get_sound();
   auto sound_effects = reader.get_sound_effects();
+  auto music = reader.get_music(); 
 
   game.set_sound_effects(sound_effects);
+  game.set_music(music);
   sound->set_effects(sound_effects);
   sound->set_disabled_sound_ids(disabled_sound_ids);
+  sound->set_music(music);
 
   log.debug("Reading items.");
 
@@ -347,6 +351,7 @@ void ShadowOfTheWyrmEngine::setup_player_and_world()
     {
       display->display_splash(false);
 
+      Game::instance().get_sound()->play_music_for_event(MusicEvent::MUSIC_EVENT_TITLE);
       WelcomeScreen welcome(display);
       game_option = welcome.display();
     }

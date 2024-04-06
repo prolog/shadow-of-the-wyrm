@@ -40,6 +40,7 @@ local function ghara_quest_start_fn()
 
     local cr_id = get_creature_id(y, x)
     teleport(PLAYER_ID, pl_y, pl_x)
+    set_map_music(get_current_map_id(), get_music_location_for_event(CMUSIC_EVENT_ARENA))
   end
 
   return generated

@@ -712,6 +712,34 @@ TileDirectionMap MapUtils::get_adjacent_and_creature_tiles(const MapPtr& map, co
   return direction_map;
 }
 
+// Returns true if the leader has 0 followers, or has > 1 follower and all of
+// them are adjacent.
+bool MapUtils::are_all_followers_adjacent(const MapPtr& map, const CreaturePtr& leader)
+{
+  if (leader != nullptr && map != nullptr)
+  {
+    const CreatureMap& creatures = CreatureUtils::get_followers(leader, map);
+    Coordinate l_coord = map->get_location(leader->get_id());
+
+    for (const auto& c_pair : creatures)
+    {
+      CreaturePtr follower = c_pair.second;
+
+      if (follower != nullptr)
+      {
+        Coordinate f_coord = map->get_location(follower->get_id());
+
+        if (!CoordUtils::are_coordinates_adjacent(l_coord, f_coord))
+        {
+          return false;
+        }
+      }
+    }
+  }
+
+  return true;
+}
+
 // Get all the tiles the creature can access (its own tile, and those adjacent) 
 // that have terrain features.
 TileDirectionMap MapUtils::get_tiles_with_features(MapPtr& map, CreaturePtr& creature)
@@ -1083,6 +1111,20 @@ Direction MapUtils::get_exit_direction(const Direction d, const Dimensions& dim,
   return dir;
 }
 
+void MapUtils::potentially_set_permanence_if_leaving_followers_behind(const MapPtr& map, const CreaturePtr& creature)
+{
+  if (creature != nullptr && map != nullptr)
+  {
+    if (CreatureUtils::has_followers(creature, map) &&
+      !MapUtils::are_all_followers_adjacent(map, creature) &&
+      !map->get_permanent() &&
+      map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
+    {
+      Game& game = Game::instance();
+      GameUtils::make_map_permanent(game, creature, map);
+    }
+  }
+}
 
 bool MapUtils::remove_creature(const MapPtr& map, const CreaturePtr& creature, const bool force_player_removal)
 {

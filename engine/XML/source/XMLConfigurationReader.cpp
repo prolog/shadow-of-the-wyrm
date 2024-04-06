@@ -87,6 +87,14 @@ map<pair<string, string>, string> XMLConfigurationReader::get_sound_effects()
   return effects;
 }
 
+Music XMLConfigurationReader::get_music()
+{
+  XMLNode sounds_node = XMLUtils::get_next_element_by_local_name(root, "Sounds");
+  auto music = sounds_reader.get_music(sounds_node);
+  return music;
+
+}
+
 pair<ItemMap, GenerationValuesMap> XMLConfigurationReader::get_items()
 {
   XMLNode prev_config = root;

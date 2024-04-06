@@ -305,6 +305,7 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="Effects" type="tns:SoundEffects" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Music" type="tns:Music" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -1347,6 +1348,16 @@
 	</xs:sequence>
 	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="required"/>
 </xs:complexType>
+<xs:complexType name="Song">
+	<xs:annotation><xs:documentation>An individual song's info</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Location" type="xs:string"/>
+	</xs:sequence>
+	<xs:attribute name="event" type="tns:NonEmptyIdentifier" use="optional"/>
+	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="optional"/>
+	<xs:attribute name="map_type" type="xs:integer" use="optional"/>
+	<xs:attribute name="tile_type" type="xs:integer" use="optional"/>
+</xs:complexType>
 <xs:complexType name="SoundEffect">
 	<xs:annotation><xs:documentation>An individual sound effect (ID and location)</xs:documentation></xs:annotation>
 	<xs:sequence>
@@ -1369,6 +1380,12 @@
 	<xs:annotation><xs:documentation>Identifier/file location information for sound effects.</xs:documentation></xs:annotation>
 	<xs:sequence>
 		<xs:element name="Effect" type="tns:SoundEffect" minOccurs="0" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Music">
+	<xs:annotation><xs:documentation>Identifier/file location information for in-game music.</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Song" type="tns:Song" minOccurs="0" maxOccurs="unbounded"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="SpritesheetReferences">
