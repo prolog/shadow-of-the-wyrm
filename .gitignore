@@ -20,6 +20,7 @@ MapTester.ilk
 MapTester.pdb
 xerces-c_3_1D.dll
 Debug
+assets/sound/music
 dist
 dist_sprites
 dist_sounds
