@@ -8433,16 +8433,16 @@
 			<Song event="_overworld" map_type="1">
 				<Location>assets/sound/music/water_music_1.ogg</Location>
 			</Song>
+			<Song event="_underwater" map_type="3">
+				<Location>assets/sound/music/water_music_2.ogg</Location>
+			</Song>
 			<Song event="_title" tile_type="49">
 				<Location>assets/sound/music/o_aurelion_o_celeste.ogg</Location>
 			</Song>
 			<Song id="world_map" map_type="0">
 				<Location>assets/sound/music/water_music_1.ogg</Location>
 			</Song>
-			<Song id="world_map" map_type="3">
-				<Location>assets/sound/music/water_music_1.ogg</Location>
-			</Song>
-			<Song id="world_map" map_type="5">
+			<Song map_type="5">
 				<Location>assets/sound/music/water_music_1.ogg</Location>
 			</Song>
 			<Song map_type="2">
