@@ -3,7 +3,6 @@ Me:
 - git push --tags
 - Air music
 - underwater cavern? something like that?
-- Arena: turn music off, then on: not working
 - look at eg the fae caravan - creatures getting generated in water on coast
   lines
 - test orb placement in wyrmeswraec
