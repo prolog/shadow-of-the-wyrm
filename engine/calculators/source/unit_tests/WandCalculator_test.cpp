@@ -8,8 +8,9 @@ TEST(SW_Engine_Calculator_WandCalculator, explosion_damage)
   EXPECT_EQ(0, wc.calc_explosion_damage(nullptr));
 
   WandPtr wand = std::make_shared<Wand>();
+  int cur_charges = wand->get_charges().get_current();
 
-  EXPECT_EQ(0, wc.calc_explosion_damage(wand));
+  EXPECT_EQ(cur_charges * 3, wc.calc_explosion_damage(wand));
 
   wand->set_charges(4);
 

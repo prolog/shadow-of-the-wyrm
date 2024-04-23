@@ -1,4 +1,4 @@
-Shadow of the Wyrm v1.6.7 "Michelagnolo Galilei"
+Shadow of the Wyrm v1.7.0 "Michelagnolo Galilei"
 - Version started February 18, 2024.
 
 - Evergreen trees are now cyan in winter, to mimic the appearance of snow on
@@ -12,6 +12,9 @@ Shadow of the Wyrm v1.6.7 "Michelagnolo Galilei"
   also (for higher values) prevent this altogether.
 
 - For this reason, NPCs won't chance using cursed wands.
+
+- You can now dig through non-blocking diggable tiles (trees, etc) if you have
+  a digging implement equipped (sr.mafioso).
 
 - Music.
 

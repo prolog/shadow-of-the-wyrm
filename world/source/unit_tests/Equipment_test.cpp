@@ -85,6 +85,22 @@ TEST(SW_World_Equipment, has_item)
   EXPECT_TRUE(e.has_item(EquipmentWornLocation::EQUIPMENT_WORN_NECK));
 }
 
+TEST(SW_World_Equipment, is_digging_implement_equipped)
+{
+  Equipment e;
+
+  EXPECT_FALSE(e.is_digging_implement_equipped());
+
+  ItemPtr weapon = ItemPtr(new MeleeWeapon());
+  e.set_item(weapon, EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
+
+  EXPECT_FALSE(e.is_digging_implement_equipped());
+
+  weapon->set_additional_property(ItemProperties::ITEM_PROPERTIES_DIG_HARDNESS, "7");
+
+  EXPECT_TRUE(e.is_digging_implement_equipped());
+}
+
 TEST(SW_World_Equipment, serialization_id)
 {
   Equipment eq;

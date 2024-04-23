@@ -22,6 +22,8 @@ class Equipment : public ISerializable
     ItemPtr remove_item(const EquipmentWornLocation location);
     uint count_items() const;
 
+    bool is_digging_implement_equipped() const;
+
     // Used to determine if a single item must be equipped (most slots), or if
     // multiple items are allowed (ammunition).
     bool can_equip_multiple_items(const EquipmentWornLocation location) const;

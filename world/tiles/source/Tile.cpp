@@ -564,6 +564,11 @@ TileSuperType Tile::get_tile_super_type() const
   }
 }
 
+bool Tile::get_is_diggable() const
+{
+  return (get_decomposition_tile_type() != TileType::TILE_TYPE_UNDEFINED);
+}
+
 // All tiles are assumed to be ground tiles, unless the derived class declares otherwise.
 TileSuperType Tile::get_tile_base_super_type() const
 {

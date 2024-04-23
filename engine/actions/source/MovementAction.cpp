@@ -250,7 +250,8 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
       // an action.
       movement_acv = ActionCostConstants::DEFAULT;
     }
-    else if (creatures_new_tile->get_is_blocking(creature) && !creature_incorporeal)
+    else if ((creatures_new_tile->get_is_blocking() && !creature_incorporeal) ||
+             (creatures_new_tile->get_is_diggable() && creature->get_equipment().is_digging_implement_equipped()))
     {
       // Can the creature dig through the tile?
       ItemPtr wielded = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
