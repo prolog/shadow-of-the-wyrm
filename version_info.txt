@@ -19,6 +19,8 @@ Shadow of the Wyrm v1.7.0 "Michelagnolo Galilei"
 - Axes can now be used to cut down trees. Axes more suited to this purpose
   (woodsman's axe, briar axe) will not break, though others might.
 
+- Digging through weeds no longer gives lumber, branches, and boughs.
+
 - Music.
 
 - New names, etc.

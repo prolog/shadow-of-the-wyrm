@@ -6,7 +6,8 @@ class WeedsTile : public TreeTile
 {
   public:
     TileType get_tile_type() const override;
-    
+    virtual std::vector<std::pair<std::pair<int, int>, std::string>> get_decomposition_item_ids() const override;
+
     virtual Tile* clone() override;
 
   private:
