@@ -16,6 +16,9 @@ Shadow of the Wyrm v1.7.0 "Michelagnolo Galilei"
 - You can now dig through non-blocking diggable tiles (trees, etc) if you have
   a digging implement equipped (sr.mafioso).
 
+- Axes can now be used to cut down trees. Axes more suited to this purpose
+  (woodsman's axe, briar axe) will not break, though others might.
+
 - Music.
 
 - New names, etc.
