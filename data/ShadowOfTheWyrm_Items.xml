@@ -4579,6 +4579,12 @@
 					<Slash>0.15</Slash>
 					<Cold>0.10</Cold>
 				</Resistances>
+				<Properties>
+					<Property>
+						<Name>dig_hardness</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Skill>1009</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>48</Difficulty>
@@ -5570,7 +5576,7 @@
 					</Property>
 					<Property>
 						<Name>dig_hardness</Name>
-						<Value>1</Value>
+						<Value></Value>
 					</Property>
 					<Property>
 						<Name>dig_breakage_pct_chance</Name>
@@ -5859,6 +5865,10 @@
 				<Properties>
 					<Property>
 						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>dig_hardness</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
