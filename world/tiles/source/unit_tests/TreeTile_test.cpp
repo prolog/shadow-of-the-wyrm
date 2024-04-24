@@ -7,6 +7,13 @@ TEST(SW_World_Tiles_TreeTile, type_is_TILE_TYPE_TREE)
   EXPECT_EQ(TileType::TILE_TYPE_TREE, tree_tile.get_tile_type());
 }
 
+TEST(SW_World_Tiles_TreeTile, decomposes_to_field)
+{
+  TreeTile tree_tile;
+
+  EXPECT_EQ(TileType::TILE_TYPE_FIELD, tree_tile.get_decomposition_tile_type());
+}
+
 TEST(SW_World_Tiles_TreeTile, serialization_id)
 {
   TreeTile tree_tile;

@@ -92,3 +92,8 @@ const string TileTextKeys::TILE_DAMAGE_ARCANE = "TILE_DAMAGE_ARCANE";
 const string TileTextKeys::TILE_DAMAGE_ARCANE_ENCHANT = "TILE_DAMAGE_ARCANE_ENCHANT";
 
 const string TileTextKeys::TILE_INSCRIPTION_ILLITERATE = "TILE_INSCRIPTION_ILLITERATE";
+
+const string TileTextKeys::TILE_DIG_DEFAULT = "TILE_DIG_DEFAULT";
+const string TileTextKeys::TILE_DIG_TREE = "TILE_DIG_TREE";
+const string TileTextKeys::TILE_DIG_WEEDS = "TILE_DIG_WEEDS";
+const string TileTextKeys::TILE_DIG_BUSH = "TILE_DIG_BUSH";

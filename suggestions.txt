@@ -1,6 +1,7 @@
 Me:
 - ASSET RELEASE (images, sounds)
 - git push --tags
+- make trees "harder" (2?), weeds 1, set all the axes to 2, scythes to 1
 - Air music
 - underwater cavern? something like that?
 - look at eg the fae caravan - creatures getting generated in water on coast

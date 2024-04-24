@@ -21,6 +21,9 @@ Shadow of the Wyrm v1.7.0 "Michelagnolo Galilei"
 
 - Digging through weeds no longer gives lumber, branches, and boughs.
 
+- Digging through trees, bushes, and weeds gives different messages than when
+  digging through earth and rock.
+
 - Music.
 
 - New names, etc.
