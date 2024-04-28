@@ -8442,6 +8442,9 @@
 			<Song id="world_map" map_type="0">
 				<Location>assets/sound/music/water_music_1.ogg</Location>
 			</Song>
+			<Song id="fae_caravan">
+				<Location>assets/sound/music/caravan.ogg</Location>
+			</Song>
 			<Song map_type="5">
 				<Location>assets/sound/music/water_music_1.ogg</Location>
 			</Song>
