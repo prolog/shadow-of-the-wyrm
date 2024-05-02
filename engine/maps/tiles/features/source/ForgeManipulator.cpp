@@ -250,18 +250,23 @@ void ForgeManipulator::improve_item(CreaturePtr creature, ItemPtr selected_item,
   // If the creature's good at smithing, there's a chance it gets an extra
   // point to work with.
   SmithingCalculator sc;
-  vector<int> pct_chances = sc.calculate_pct_chances_extra_point(creature, get_primary_crafting_skill());
+  SkillType pcrafting = get_primary_crafting_skill();
+  vector<int> pct_chances = sc.calculate_pct_chances_extra_point(creature, pcrafting);
 
   for (int chance : pct_chances)
   {
     if (RNG::percent_chance(chance))
     {
-      creature->get_skills().mark(get_primary_crafting_skill());
       num_points++;
     }
   }
 
-  selected_item->smith(num_points);
+  bool smithed = selected_item->smith(num_points);
+
+  if (smithed)
+  {
+    creature->get_skills().mark(pcrafting);
+  }
 
   // Let the player know the smithing was successful.
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FORGE_SUCCESSFUL));
