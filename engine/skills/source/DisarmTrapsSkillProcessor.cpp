@@ -188,6 +188,8 @@ void DisarmTrapsSkillProcessor::disarm_trap_success(CreaturePtr creature, MapPtr
     {
       tile->remove_feature();
     }
+
+    creature->get_skills().mark(SkillType::SKILL_GENERAL_DISARM_TRAPS);
   }
 }
 
@@ -221,9 +223,11 @@ void DisarmTrapsSkillProcessor::disarm_trap_dismantle(CreaturePtr creature, MapP
       }
     }
 
-    // Successfully and usefully dismantling a trap marks Dexterity.
+    // Successfully and usefully dismantling a trap marks Dexterity
+    // and Disarm Traps itself.
     StatisticsMarker sm;
     sm.mark_dexterity(creature);
+    creature->get_skills().mark(SkillType::SKILL_GENERAL_DISARM_TRAPS);
   }
 }
 
@@ -233,6 +237,8 @@ void DisarmTrapsSkillProcessor::disarm_trap_fail(CreaturePtr creature, MapPtr ma
   {
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DISARM_TRAPS_OUTCOME_FAIL));
     manager.send();
+
+    creature->get_skills().mark(SkillType::SKILL_GENERAL_DISARM_TRAPS);
   }
 }
 
