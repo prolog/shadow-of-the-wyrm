@@ -24,7 +24,10 @@ Shadow of the Wyrm v1.7.0 "Michelagnolo Galilei"
 - Digging through trees, bushes, and weeds gives different messages than when
   digging through earth and rock.
 
-- Working with traps now trains Disarm Traps.
+- Working with traps now trains Disarm Traps (hemsio).
+
+- Improved the way in which Foraging and Herbalism train: these now train when
+  herbs or foragables are generated during map creation.
 
 - Music.
 

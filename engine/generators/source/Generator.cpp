@@ -309,7 +309,7 @@ void Generator::create_entities(MapPtr map, const int danger_level, const bool c
   string foragables = get_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_FORAGABLES);
   string herbs = get_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_HERBS);
 
-  std::map<ForagableType, string> foragable_chances = {{ForagableType::FORAGABLE_TYPE_FORAGABLES, foragables}, {ForagableType::FORAGABLE_TYPE_HERBS, herbs}};
+  std::map<std::pair<ForagableType, SkillType>, string> foragable_chances = { {{ForagableType::FORAGABLE_TYPE_FORAGABLES, SkillType::SKILL_GENERAL_FORAGING}, foragables}, {{ForagableType::FORAGABLE_TYPE_HERBS, SkillType::SKILL_GENERAL_HERBALISM}, herbs} };
 
   for (const auto& f_pair : foragable_chances)
   {
@@ -321,7 +321,13 @@ void Generator::create_entities(MapPtr map, const int danger_level, const bool c
 
       if (map->get_map_type() == MapType::MAP_TYPE_OVERWORLD && RNG::percent_chance(pct_chance))
       {
-        generate_foragables(map, f_pair.first);
+        generate_foragables(map, f_pair.first.first);
+        
+        CreaturePtr creature = Game::instance().get_current_player();
+        if (creature != nullptr)
+        {
+          creature->get_skills().mark(f_pair.first.second);
+        }
       }
     }
   }
