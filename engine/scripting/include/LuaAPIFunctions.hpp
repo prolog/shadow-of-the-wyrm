@@ -329,6 +329,7 @@ int play_music_event(lua_State* ls);
 int play_music_location(lua_State* ls);
 int get_music_location_for_event(lua_State* ls);
 int get_music_location_for_map_type(lua_State* ls);
+int does_item_exist_on_map(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

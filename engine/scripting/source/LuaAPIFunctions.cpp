@@ -492,6 +492,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "play_music_location", play_music_location);
   lua_register(L, "get_music_location_for_event", get_music_location_for_event);
   lua_register(L, "get_music_location_for_map_type", get_music_location_for_map_type);
+  lua_register(L, "does_item_exist_on_map", does_item_exist_on_map);
 }
 
 // Lua API helper functions
@@ -10523,5 +10524,47 @@ int get_music_location_for_map_type(lua_State* ls)
   }
 
   lua_pushstring(ls, location.c_str());
+  return 1;
+}
+
+int does_item_exist_on_map(lua_State* ls)
+{
+  bool exists = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string item_id = lua_tostring(ls, 1);
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      const TilesContainer& tiles = map->get_tiles_ref();
+
+      for (const auto& t_pair : tiles)
+      {
+        TilePtr tile = t_pair.second;
+
+        if (tile != nullptr)
+        {
+          IInventoryPtr inv = tile->get_items();
+
+          if (inv != nullptr)
+          {
+            if (inv->has_item(item_id))
+            {
+              exists = true;
+              break;
+            }
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to does_item_exist_on_map");
+  }
+
+  lua_pushboolean(ls, exists);
   return 1;
 }
