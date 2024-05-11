@@ -614,5 +614,9 @@
 			<Name>MAP_PROPERTIES_CANNOT_DIG</Name>
 			<Value>1</Value>
 		</Property>
+		<Property>
+			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
+			<Value>assets/sound/music/at_waters_edge.ogg</Value>
+		</Property>
 	</Properties>
 </CustomMap>

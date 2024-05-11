@@ -15,6 +15,8 @@ class DeityDecisionStrategyHandler
     // Returns the base piety loss as a result of handling the decision.
     virtual DeityDecisionImplications handle_decision(CreaturePtr creature, TilePtr tile) = 0;
     virtual std::string get_message_sid() const = 0;
+    virtual bool get_add_message_with_pause() const;
+    virtual bool get_reload_map_music() const;
 
     virtual std::unique_ptr<DeityDecisionStrategyHandler> clone() = 0;
 

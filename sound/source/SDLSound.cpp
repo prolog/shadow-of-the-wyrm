@@ -124,6 +124,7 @@ void SDLSound::play_music_for_event(const string& event, const bool loop)
 		play_music_location(location, loop);
 	}
 }
+
 // Play music for the map.
 //
 // Order checked:

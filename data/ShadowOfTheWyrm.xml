@@ -8430,6 +8430,15 @@
 			<Song event="_broken_house">
 				<Location>assets/sound/music/the_broken_house.ogg</Location>
 			</Song>
+			<Song event="_crowning_good">
+				<Location>assets/sound/music/crowning_good.ogg</Location>
+			</Song>
+			<Song event="_crowning_neutral">
+				<Location>assets/sound/music/crowning_neutral.ogg</Location>
+			</Song>
+			<Song event="_crowning_evil">
+				<Location>assets/sound/music/crowning_evil.ogg</Location>
+			</Song>
 			<Song event="_overworld" map_type="1">
 				<Location>assets/sound/music/water_music_1.ogg</Location>
 			</Song>

@@ -5,6 +5,7 @@
 #include "Game.hpp"
 #include "ItemManager.hpp"
 #include "Memberships.hpp"
+#include "MusicEvent.hpp"
 #include "ReligionConstants.hpp"
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
@@ -12,7 +13,10 @@
 using namespace std;
 
 CrowningDeityDecisionStrategyHandler::CrowningDeityDecisionStrategyHandler(const string& deity_id)
-: DeityDecisionStrategyHandler(deity_id)
+: DeityDecisionStrategyHandler(deity_id),
+  alignment_crowning_events{{AlignmentRange::ALIGNMENT_RANGE_GOOD, MusicEvent::MUSIC_EVENT_CROWNING_GOOD},
+                            {AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, MusicEvent::MUSIC_EVENT_CROWNING_NEUTRAL},
+                            {AlignmentRange::ALIGNMENT_RANGE_EVIL, MusicEvent::MUSIC_EVENT_CROWNING_EVIL} }
 {
 }
 
@@ -60,6 +64,7 @@ void CrowningDeityDecisionStrategyHandler::crown_champion(CreaturePtr creature)
     ReligionManager rm;
     Religion& religion = creature->get_religion_ref();
     DeityStatus status = rm.get_active_deity_status(creature);
+    Deity* deity = rm.get_deity(deity_id);
 
     status.set_champion_type(ChampionType::CHAMPION_TYPE_CROWNED);
     religion.set_deity_status(deity_id, status);
@@ -68,7 +73,7 @@ void CrowningDeityDecisionStrategyHandler::crown_champion(CreaturePtr creature)
     Membership champion = mf.create_holy_champion();
     creature->get_memberships_ref().add_membership(champion.get_membership_id(), champion);
 
-    Game::instance().get_sound(creature)->play(SoundEffectID::CROWNING);
+    Game::instance().get_sound(creature)->play_music_for_event(alignment_crowning_events[deity->get_alignment_range()], false);
   }
 }
 
@@ -136,6 +141,16 @@ string CrowningDeityDecisionStrategyHandler::get_message_sid() const
 {
   string message_sid = DeityTextKeys::PRAYER_CROWNING;
   return message_sid;
+}
+
+bool CrowningDeityDecisionStrategyHandler::get_add_message_with_pause() const
+{
+  return true;
+}
+
+bool CrowningDeityDecisionStrategyHandler::get_reload_map_music() const
+{
+  return true;
 }
 
 vector<string> CrowningDeityDecisionStrategyHandler::select_crowning_gifts(CreaturePtr creature, Deity* deity)

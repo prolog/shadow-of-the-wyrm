@@ -34,7 +34,17 @@ DeityDecisionImplications DeityDecisionStrategyHandler::get_deity_decision_impli
     piety_loss = static_cast<int>(piety_loss * cp_mult);
   }
 
-  DeityDecisionImplications decision_implications(piety_loss, get_message_sid());
+  DeityDecisionImplications decision_implications(piety_loss, get_message_sid(), get_add_message_with_pause(), get_reload_map_music());
 
   return decision_implications;
+}
+
+bool DeityDecisionStrategyHandler::get_add_message_with_pause() const
+{
+  return false;
+}
+
+bool DeityDecisionStrategyHandler::get_reload_map_music() const
+{
+  return false;
 }

@@ -5,6 +5,9 @@ class MusicEvent
 {
 	public:
 		static const std::string MUSIC_EVENT_TITLE;
+		static const std::string MUSIC_EVENT_CROWNING_GOOD;
+		static const std::string MUSIC_EVENT_CROWNING_NEUTRAL;
+		static const std::string MUSIC_EVENT_CROWNING_EVIL;
 
 	protected:
 		MusicEvent();
