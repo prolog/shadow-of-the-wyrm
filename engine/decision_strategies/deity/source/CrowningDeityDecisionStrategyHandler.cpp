@@ -127,6 +127,7 @@ void CrowningDeityDecisionStrategyHandler::add_crowning_gift(CreaturePtr creatur
 
   if (crowning_gift != nullptr)
   {
+    crowning_gift->set_status(ItemStatus::ITEM_STATUS_BLESSED);
     IInventoryPtr inv = tile->get_items();
     inv->add_front(crowning_gift);
   }

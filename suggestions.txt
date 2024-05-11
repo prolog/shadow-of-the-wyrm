@@ -2,7 +2,6 @@ Me:
 - ASSET RELEASE (images, sounds)
 - git push --tags
 - praying on a tile that doesn't allow items shouldn't give crowning
-- all crowning gifts should be blessed
 - hemsio: shopkeepers should get more ivory on repop
 - Air music
 - underwater cavern? something like that?

@@ -29,6 +29,8 @@ Shadow of the Wyrm v1.7.0 "Michelagnolo Galilei"
 - Improved the way in which Foraging and Herbalism train: these now train when
   herbs or foragables are generated during map creation.
 
+- Crowning gifts are now generated blessed.
+
 - Music.
 
 - New names, etc.
