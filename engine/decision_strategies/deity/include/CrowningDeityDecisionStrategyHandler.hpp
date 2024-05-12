@@ -23,4 +23,6 @@ class CrowningDeityDecisionStrategyHandler : public DeityDecisionStrategyHandler
     bool get_add_message_with_pause() const override;
     bool get_reload_map_music() const override;
     std::map<AlignmentRange, std::string> alignment_crowning_events;
+
+    static const int PIETY_LOSS_CROWNING_UNSTABLE_GROUND;
 };

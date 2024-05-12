@@ -39,6 +39,7 @@ const string DeityTextKeys::PRAYER_LEARN_SPELL       = "PRAYER_LEARN_SPELL";
 const string DeityTextKeys::PRAYER_SATIATE           = "PRAYER_SATIATE";
 const string DeityTextKeys::PRAYER_RESTORE_STATUS    = "PRAYER_RESTORE_STATUS";
 const string DeityTextKeys::PRAYER_CROWNING          = "PRAYER_CROWNING";
+const string DeityTextKeys::PRAYER_CROWNING_SOLID_GROUND = "PRAYER_CROWNING_SOLID_GROUND";
 const string DeityTextKeys::PRAYER_WORLD_MAP         = "PRAYER_WORLD_MAP";
 const string DeityTextKeys::PRAYER_PROTECTION        = "PRAYER_PROTECTION";
 const string DeityTextKeys::PRAYER_SMITE             = "PRAYER_SMITE";

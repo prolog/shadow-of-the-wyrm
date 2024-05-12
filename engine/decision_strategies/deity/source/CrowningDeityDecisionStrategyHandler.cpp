@@ -12,6 +12,8 @@
 
 using namespace std;
 
+const int CrowningDeityDecisionStrategyHandler::PIETY_LOSS_CROWNING_UNSTABLE_GROUND = 500;
+
 CrowningDeityDecisionStrategyHandler::CrowningDeityDecisionStrategyHandler(const string& deity_id)
 : DeityDecisionStrategyHandler(deity_id),
   alignment_crowning_events{{AlignmentRange::ALIGNMENT_RANGE_GOOD, MusicEvent::MUSIC_EVENT_CROWNING_GOOD},
@@ -49,11 +51,20 @@ bool CrowningDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 
 DeityDecisionImplications CrowningDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature, TilePtr tile)
 {
-  crown_champion(creature);
-  fortify_champion(creature);
-  add_crowning_gift(creature, tile);
+  DeityDecisionImplications implications = get_deity_decision_implications(creature, tile);
 
-  return get_deity_decision_implications(creature, tile);
+  if (tile != nullptr && tile->get_items()->get_allows_items() == AllowsItemsType::ALLOWS_ITEMS)
+  {
+    crown_champion(creature);
+    fortify_champion(creature);
+    add_crowning_gift(creature, tile);
+  }
+  else
+  {
+    implications = DeityDecisionImplications(PIETY_LOSS_CROWNING_UNSTABLE_GROUND, DeityTextKeys::PRAYER_CROWNING_SOLID_GROUND, false, false);
+  }
+
+  return implications;
 }
 
 // Set the creature to be the champion of this deity.

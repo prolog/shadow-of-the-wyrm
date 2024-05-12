@@ -29,6 +29,9 @@ Shadow of the Wyrm v1.7.0 "Michelagnolo Galilei"
 - Improved the way in which Foraging and Herbalism train: these now train when
   herbs or foragables are generated during map creation.
 
+- You will no longer be crowned if standing over a tile (eg, open water) that
+  would cause your crowning gift to disappear.
+
 - Crowning gifts are now generated blessed.
 
 - Music.
