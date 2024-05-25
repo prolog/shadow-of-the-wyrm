@@ -12,15 +12,18 @@ CommandPtr NPCDropDecisionStrategy::decide(CreaturePtr creature, MapPtr map)
 
     for (ItemPtr item : items)
     {
-      if (item && item->get_type() == ItemType::ITEM_TYPE_WAND)
+      if (item != nullptr)
       {
-        WandPtr wand = std::dynamic_pointer_cast<Wand>(item);
-
-        if (wand != nullptr)
+        if (item->get_type() == ItemType::ITEM_TYPE_WAND)
         {
-          if (wand->get_charges().get_current() == 0)
+          WandPtr wand = std::dynamic_pointer_cast<Wand>(item);
+
+          if (wand != nullptr)
           {
-            drop_cmd = std::make_unique<DropCommand>(wand->get_id());
+            if (wand->get_charges().get_current() == 0)
+            {
+              drop_cmd = std::make_unique<DropCommand>(wand->get_id());
+            }
           }
         }
       }
