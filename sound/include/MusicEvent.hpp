@@ -18,3 +18,4 @@ class MusicEvent
 constexpr auto CMUSIC_EVENT_ARENA = "_arena";
 constexpr auto CMUSIC_EVENT_ARENA_VICTORY = "_arena_victory";
 constexpr auto CMUSIC_EVENT_OVERWORLD = "_overworld";
+constexpr auto CMUSIC_EVENT_PLANETARY_TELEPORT = "_planetary_teleport";
