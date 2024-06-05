@@ -8457,6 +8457,8 @@
 			<Song id="fae_caravan">
 				<Location>assets/sound/music/caravan.ogg</Location>
 			</Song>
+			<!-- Intentionally blank for cosmos - should be quiet. -->
+			<Song map_type="4"><Location/></Song>
 			<Song map_type="5">
 				<Location>assets/sound/music/water_music_1.ogg</Location>
 			</Song>
