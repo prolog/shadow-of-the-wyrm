@@ -1,8 +1,8 @@
 Me:
 - ASSET RELEASE (images, sounds)
 - git push --tags
+- the grotto by yew needs a black mark or similar
 - hemsio: shopkeepers should get more ivory on repop
-- Air music
 - underwater cavern? something like that?
 - look at eg the fae caravan - creatures getting generated in water on coast
   lines
