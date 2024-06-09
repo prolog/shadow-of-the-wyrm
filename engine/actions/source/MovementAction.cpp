@@ -763,6 +763,13 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
         // and items on the new map.
         generator->create_entities(new_map, new_danger);
         tile->remove_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES);
+
+        string song_location = tile->get_additional_property(MapProperties::MAP_PROPERTIES_SONG_LOCATION);
+
+        if (!song_location.empty())
+        {
+          new_map->set_property(MapProperties::MAP_PROPERTIES_SONG_LOCATION, song_location);
+        }
       }
     }
                 
