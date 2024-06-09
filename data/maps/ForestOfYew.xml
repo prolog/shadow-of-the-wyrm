@@ -245,4 +245,10 @@
 			</StockedItemTypes>
 		</Shop>
 	</Shops>
+	<Properties>
+		<Property>
+			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
+			<Value>assets/sound/music/yew.ogg</Value>
+		</Property>
+	</Properties>
 </CustomMap>
