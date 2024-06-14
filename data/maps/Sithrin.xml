@@ -250,4 +250,10 @@
 	</InitialPlacements>
 	<Exits/>
 	<Features/>
+	<Properties>
+		<Property>
+			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
+			<Value>assets/sound/music/sithrin.ogg</Value>
+		</Property>
+	</Properties>
 </CustomMap>
