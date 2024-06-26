@@ -117,6 +117,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>chamber_ensemble</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>19</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>balabin</ID>
 				<Coord>
 					<Row>12</Row>

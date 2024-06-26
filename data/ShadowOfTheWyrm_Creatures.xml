@@ -28296,6 +28296,66 @@
 				<Type>2</Type>
 			</Damage>
 		</Creature>
+		<Creature id="chamber_ensemble">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>CHAMBER_ENSEMBLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CHAMBER_ENSEMBLE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CHAMBER_ENSEMBLE_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>t</Char>
+				<Colour>11</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>14</Row>
+					<Col>4</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>3</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Evade>3</Evade>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/musician.lua</Script>
+				</ChatScript>
+			</EventScripts>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_SONG1</Name>
+					<Value>MY_LOVES_GONE_AWAY_SID,assets/sound/music/mylove.ogg</Value>
+				</Property>
+				<Property>
+					<Name>CREATURE_PROPERTIES_SONG2</Name>
+					<Value>ELVEN_FOLK_SONGS_SID,assets/sound/music/yew.ogg</Value>
+				</Property>
+				<Property>
+					<Name>CREATURE_PROPERTIES_SONG3</Name>
+					<Value>ANDANTE_MARE_SID,assets/sound/music/andantemare.ogg</Value>
+				</Property>
+				<Property>
+					<Name>CREATURE_PROPERTIES_SONG4</Name>
+					<Value>EMPIRE_SETS_SAIL_SID,assets/sound/music/empire.ogg</Value>
+				</Property>
+			</Properties>
+		</Creature>
 		<Creature id="magici_merchant">
 			<RaceID>10_gnome</RaceID>
 			<ShortDescriptionSID>MAGICI_MERCHANT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

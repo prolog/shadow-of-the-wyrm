@@ -38,6 +38,8 @@ Shadow of the Wyrm v1.7.0 "Michelagnolo Galilei"
 
 - New names, etc.
 
+- New creatures: chamber ensemble.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
