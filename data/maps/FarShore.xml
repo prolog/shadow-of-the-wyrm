@@ -133,7 +133,7 @@
 	<Properties>
 		<Property>
 			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
-			<Value>assets/sound/music/the_broken_house.ogg</Value>
+			<Value>assets/sound/music/torches.ogg</Value>
 		</Property>
 	</Properties>
 </CustomMap>

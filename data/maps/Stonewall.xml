@@ -237,4 +237,10 @@
 			</Altar>
 		</FeaturePlacement>
 	</Features>
+	<Properties>
+		<Property>
+			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
+			<Value>assets/sound/music/torches.ogg</Value>
+		</Property>
+	</Properties>
 </CustomMap>
