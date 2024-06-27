@@ -10,6 +10,8 @@ Changes to allow building on Mac OS courtesy of alphabetr.
 %p
 The S-shaped Wyrm image and pixel art were designed by Federico Dalman.
 %p
+For years, Brian Jeffears nudged me to write music for the game.  It's thanks to him and people from the roguelikes Discord that I finally took that off my long-term to do list.  I owe each person who's pushed me on this a debt of gratitude for making the game that much more immersive and real.
+%p
 Localizations take a large amount of time and effort.  The Russian localization was provided by Redfeek.
 %p
 Finally, SDL support wouldn't be possible without the excellent help and advice provided by people in #roguelike-help on the roguelikes Discord server - HexDecimal, Stof, Smartledore, and others.

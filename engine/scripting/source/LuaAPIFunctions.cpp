@@ -485,6 +485,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "is_tile_available_for_creature", is_tile_available_for_creature);
   lua_register(L, "set_creature_godless", set_creature_godless);
   lua_register(L, "play_sound_effect", play_sound_effect);
+  lua_register(L, "is_sound_enabled", is_sound_enabled);
   lua_register(L, "is_music_enabled", is_music_enabled);
   lua_register(L, "play_event_music", play_event_music);
   lua_register(L, "play_map_music", play_map_music);
@@ -10338,6 +10339,24 @@ int play_sound_effect(lua_State* ls)
   return 1;
 }
 
+int is_sound_enabled(lua_State* ls)
+{
+  bool enabled = false;
+
+  if (lua_gettop(ls) == 0)
+  {
+    SoundPtr sound = Game::instance().get_sound();
+
+    if (sound != nullptr)
+    {
+      enabled = sound->get_enable_sound();
+    }
+  }
+
+  lua_pushboolean(ls, enabled);
+  return 1;
+}
+
 int is_music_enabled(lua_State* ls)
 {
   bool enabled = false;
@@ -10480,14 +10499,22 @@ int play_music_event(lua_State* ls)
 
 int play_music_location(lua_State* ls)
 {
-  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 1 && lua_isstring(ls, 1))
   {
     string location = lua_tostring(ls, 1);
     SoundPtr sound = Game::instance().get_sound();
+    bool loop = true;
+
+    if (num_args == 2 && lua_isboolean(ls, 2))
+    {
+      loop = lua_toboolean(ls, 2);
+    }
 
     if (sound != nullptr)
     {
-      sound->play_music_location(location);
+      sound->play_music_location(location, loop);
     }
   }
   else

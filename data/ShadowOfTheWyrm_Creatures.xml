@@ -28348,11 +28348,23 @@
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG3</Name>
-					<Value>ANDANTE_MARE_SID,assets/sound/music/andantemare.ogg</Value>
+					<Value>ANDANTE_MARE_SID,assets/sound/music/andante_mare.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG4</Name>
 					<Value>EMPIRE_SETS_SAIL_SID,assets/sound/music/empire.ogg</Value>
+				</Property>
+				<Property>
+					<Name>CREATURE_PROPERTIES_SONG5</Name>
+					<Value>AT_WATERS_EDGE_SID,assets/sound/music/at_waters_edge.ogg</Value>
+				</Property>
+				<Property>
+					<Name>CREATURE_PROPERTIES_SONG6</Name>
+					<Value>THE_MISTY_MOUNTAIN_SID,assets/sound/music/atuaelar.ogg</Value>
+				</Property>
+				<Property>
+					<Name>CREATURE_PROPERTIES_SONG7</Name>
+					<Value>THE_BROKEN_HOUSE_SID,assets/sound/music/the_broken_house.ogg</Value>
 				</Property>
 			</Properties>
 		</Creature>
