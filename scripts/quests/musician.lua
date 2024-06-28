@@ -36,14 +36,23 @@ local function select_music(songs)
   local loc = ""
   local song_menu = {}
 
-  for i,v in ipairs(songs) do
-    local name_sid = v[1]
-    local location = v[2]
+  -- If there's only one song, play it automatically
+  if #songs == 1 then
+    loc = songs[1][2]
+  -- Otherwise, prompt the player to pick something.
+  else
+    for i,v in ipairs(songs) do
+      local name_sid = v[1]
+      local location = v[2]
 
-    table.insert(song_menu, location .. "=" .. get_sid(name_sid))
+      table.insert(song_menu, location .. "=" .. get_sid(name_sid))
+    end
   end
 
-  loc = create_menu("MUSICIAN_REQUEST_MUSIC", song_menu)
+  if #loc == 0 then
+    loc = create_menu("MUSICIAN_REQUEST_MUSIC", song_menu)
+  end
+
   return loc
 end
 
