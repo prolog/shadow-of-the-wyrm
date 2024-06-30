@@ -19,6 +19,7 @@ local function setup_raid()
 
   set_creature_additional_property(PLAYER_ID, QUEST_STONEHEIM_RAID_INITIATED, "1")
   set_creature_additional_property(PLAYER_ID, QUEST_STONEHEIM_RAID, "1")
+  play_music_location("assets/sound/music/torches.ogg", true)
 end
 
 local raid_initiated = (get_creature_additional_property(PLAYER_ID, QUEST_STONEHEIM_RAID_INITIATED) == "1")

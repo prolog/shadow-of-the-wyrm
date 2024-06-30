@@ -1,11 +1,6 @@
 Me:
 - ASSET RELEASE (images, sounds!)
 - git push --tags
-- chamber orchestra: need curses/no sound case
-- the grotto by yew needs a black mark or similar
-- could there be a woodwind group somewhere that plays my love's gone away?
-  and the other whaling's end theme? music stops when you stand up (press a 
-  key)
 - incorporate Torches into the ambush in stoneheim
 - hemsio: shopkeepers should get more ivory on repop
 - underwater cavern? something like that?
