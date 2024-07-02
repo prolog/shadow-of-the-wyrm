@@ -32,6 +32,9 @@ Shadow of the Wyrm v1.7.0 "Michelagnolo Galilei"
 - You will no longer be crowned if standing over a tile (eg, open water) that
   would cause your crowning gift to disappear.
 
+- Shopkeepers now get additional ivory when shops repop and they're below a
+  certain threshold (hemsio).
+
 - Crowning gifts are now generated blessed.
 
 - Music.

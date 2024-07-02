@@ -15,6 +15,9 @@ const int MapItemGenerator::OUT_OF_DEPTH_ITEMS_CHANCE = 15;
 const int MapItemGenerator::PCT_CHANCE_ADVENTURER_SKELETON_TRAP = 20;
 const int MapItemGenerator::PCT_CHANCE_ADVENTURER_CORPSE = 5;
 const int MapItemGenerator::PCT_CHANCE_ADVENTURER_ITEMS = 75;
+const int MapItemGenerator::SHOPKEEPER_ADDITIONAL_IVORY_THRESOLD = 100;
+const int MapItemGenerator::MIN_REPOP_IVORY = 50;
+const int MapItemGenerator::MAX_REPOP_IVORY = 700;
 
 // Generate items based on the provided danger level, and place them
 // on the given map.
@@ -107,6 +110,29 @@ bool MapItemGenerator::generate_items(MapPtr map, const int danger_level, const 
   return items_generated;
 }
 
+bool MapItemGenerator::generate_ivory_on_shopkeeper(MapPtr map, const Shop& shop)
+{
+  bool ivory_added = false;
+
+  if (map != nullptr)
+  {
+    // Assume the shopkeeper's sold a few things, and add more ivory if
+    // currently out.
+    CreaturePtr shopkeeper = map->get_creature(shop.get_shopkeeper_id());
+
+    if (shopkeeper != nullptr)
+    {
+      if (shopkeeper->get_inventory()->count_currency() < SHOPKEEPER_ADDITIONAL_IVORY_THRESOLD)
+      {
+        ItemPtr currency = ItemManager::create_item(ItemIdKeys::ITEM_ID_CURRENCY, RNG::range(MIN_REPOP_IVORY, MAX_REPOP_IVORY));
+        shopkeeper->get_inventory()->merge_or_add(currency, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      }
+    }
+  }
+
+  return ivory_added;
+}
+
 bool MapItemGenerator::generate_initial_set_items(MapPtr map, const std::map<string, string>& properties)
 {
   bool items_generated = false;
@@ -162,7 +188,9 @@ bool MapItemGenerator::repop_shop(MapPtr map, const string& shop_id)
       int danger_level = map->get_danger();
       Rarity rarity = Rarity::RARITY_VERY_RARE;
 
-      // Repopulate...
+      generate_ivory_on_shopkeeper(map, shop);
+
+      // Repopulate the shop...
       ItemGenerationManager igm;
       ItemGenerationMap generation_map = igm.generate_item_generation_map({1, danger_level, rarity, stocked_types, ItemValues::DEFAULT_MIN_SHOP_VALUE});
       ItemEnchantmentCalculator iec;

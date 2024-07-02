@@ -2,7 +2,8 @@ Me:
 - ASSET RELEASE (images, sounds!)
 - git push --tags
 - repop music
-- hemsio: shopkeepers should get more ivory on repop
+- click effect before trap
+- set background color for splash
 - underwater cavern? something like that?
 - test orb placement in wyrmeswraec
 - dig in water
