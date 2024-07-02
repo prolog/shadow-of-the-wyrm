@@ -37,7 +37,9 @@ Shadow of the Wyrm v1.7.0 "Michelagnolo Galilei"
 
 - Crowning gifts are now generated blessed.
 
-- Music.
+- Creature respawns now generate a message (with associated music effect).
+
+- Full support for music and an initial soundtrack.
 
 - New names, etc.
 

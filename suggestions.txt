@@ -2,7 +2,6 @@ Me:
 - ASSET RELEASE (images, sounds!)
 - git push --tags
 - repop music
-- click effect before trap
 - underwater cavern? something like that?
 - test orb placement in wyrmeswraec
 - dig in water

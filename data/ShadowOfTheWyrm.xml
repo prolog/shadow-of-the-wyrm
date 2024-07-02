@@ -8442,6 +8442,9 @@
 			<Song event="_planetary_teleport">
 				<Location>assets/sound/music/planetary_teleport.ogg</Location>
 			</Song>
+			<Song event="_respawn">
+				<Location>assets/sound/music/respawn.ogg</Location>
+			</Song>
 			<Song event="_overworld" map_type="1">
 				<Location>assets/sound/music/water_music_1.ogg</Location>
 			</Song>

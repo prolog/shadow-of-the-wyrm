@@ -27,6 +27,7 @@
 #include "MovementAccumulationUpdater.hpp"
 #include "MoveScript.hpp"
 #include "MovementTextKeys.hpp"
+#include "MusicEvent.hpp"
 #include "PickupAction.hpp"
 #include "RaceManager.hpp"
 #include "RageEffect.hpp"
@@ -2493,6 +2494,15 @@ void MapUtils::update_creatures(MapPtr map)
 
       std::map<string, string> props = map->get_properties();
       mcg.generate_random_creatures(map, map->get_danger(), props);
+
+      Game& game = Game::instance();
+      game.get_sound()->play_music_for_event(MusicEvent::MUSIC_EVENT_RESPAWN, false);
+
+      IMessageManager& manager = MM::instance();
+      manager.add_new_message_with_pause(StringTable::get(TextKeys::RESPAWN_MESSAGE));
+      game.get_current_player()->get_decision_strategy()->get_confirmation();
+
+      Game::instance().get_sound()->play_music(map);
     }
   }
 }

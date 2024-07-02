@@ -208,6 +208,7 @@ class TextKeys
     static const std::string THE_WORLD_MAP;
     static const std::string NO_CREATURES_GENERATED;
     static const std::string DEFAULT_CLASS_NAME_SID;
+    static const std::string RESPAWN_MESSAGE;
 
   protected:
     TextKeys();
