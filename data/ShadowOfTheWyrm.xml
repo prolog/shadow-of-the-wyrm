@@ -8416,8 +8416,8 @@
 			<Effect id="_level_up">
 				<Location>assets/sound/effects/level_up.wav</Location>
 			</Effect>
-			<Effect id="_crowning">
-				<Location>assets/sound/effects/crowning.wav</Location>
+			<Effect id="_click">
+				<Location>assets/sound/effects/click.wav</Location>
 			</Effect>
 		</Effects>
 		<Music>

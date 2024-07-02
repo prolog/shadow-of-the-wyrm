@@ -22,7 +22,7 @@ class SoundEffectID
     static const std::string DEAD;
     static const std::string NEGATIVE_EFFECT;
     static const std::string LEVEL_UP;
-    static const std::string CROWNING;
+    static const std::string CLICK;
 
   protected:
     SoundEffectID();
@@ -47,4 +47,4 @@ constexpr auto CSOUND_EFFECT_ALARM = "_alarm";
 constexpr auto CSOUND_EFFECT_DEAD = "_dead";
 constexpr auto CSOUND_EFFECT_NEGATIVE_EFFECT = "_negative_effect";
 constexpr auto CSOUND_EFFECT_LEVEL_UP = "_level_up";
-constexpr auto CSOUND_EFFECT_CROWNING = "_crowning";
+constexpr auto CSOUND_EFFECT_CLICK = "_click";
