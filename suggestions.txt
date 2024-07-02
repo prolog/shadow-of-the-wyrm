@@ -1,11 +1,9 @@
 Me:
 - ASSET RELEASE (images, sounds!)
 - git push --tags
-- incorporate Torches into the ambush in stoneheim
+- repop music
 - hemsio: shopkeepers should get more ivory on repop
 - underwater cavern? something like that?
-- look at eg the fae caravan - creatures getting generated in water on coast
-  lines
 - test orb placement in wyrmeswraec
 - dig in water
 - super_type_message_sids -> super_type_sound_id?

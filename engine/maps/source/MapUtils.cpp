@@ -5,6 +5,7 @@
 #include "CreatureFactory.hpp"
 #include "CreatureGenerationConstants.hpp"
 #include "CreatureProperties.hpp"
+#include "CreatureTileSafetyChecker.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DirectionLocationTextKeys.hpp"
@@ -299,16 +300,19 @@ bool MapUtils::place_creature_randomly(MapPtr map, const string& creature_id)
 
   if (creature != nullptr)
   {
+    CreatureTileSafetyChecker ctsc;
+
     // Place the creature
     for (int attempts = 0; attempts < 200; attempts++)
     {
       int creature_row = RNG::range(0, rows - 1);
       int creature_col = RNG::range(0, cols - 1);
 
-      // Check to see if the spot is empty, and if a creature can be added there.
+      // Check to see if the spot is empty, if it's safe (eg don't generate
+      // air-breathers on water) and if a creature can be added there.
       TilePtr tile = map->at(creature_row, creature_col);
 
-      if (MapUtils::is_tile_available_for_creature(creature, tile))
+      if (ctsc.is_tile_safe_for_creature(creature, tile) && MapUtils::is_tile_available_for_creature(creature, tile))
       {
         ostringstream ss;
         ss << "Placing creature " << creature->get_id() << " randomly at " << creature_row << "," << creature_col;
