@@ -4371,6 +4371,15 @@
 				<Feet>
 					<ID>shoes</ID>
 				</Feet>
+				<Ranged>
+					<ID>sling</ID>
+				</Ranged>
+				<Ammunition>
+					<ID>_stone</ID>
+					<Quantity>
+						<Amount>6</Amount>
+					</Quantity>
+				</Ammunition>
 				<InitialInventory>
 					<InitialItem>
 						<ID>trail_ration</ID>

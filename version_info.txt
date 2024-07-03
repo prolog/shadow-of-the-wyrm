@@ -35,6 +35,8 @@ Shadow of the Wyrm v1.7.0 "Michelagnolo Galilei"
 - Shopkeepers now get additional ivory when shops repop and they're below a
   certain threshold (hemsio).
 
+- Shepherds start with slings and a few stones (Paul RR).
+
 - Crowning gifts are now generated blessed.
 
 - Creature respawns now generate a message (with associated music effect).
