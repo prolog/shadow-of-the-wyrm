@@ -535,5 +535,6 @@ EruditeFigglebottom:
 RelicWraith:
 - Suggestion: Praying during a deity's specific holy day grants the player a gift, once per holy day. Could be just flavor items rather than anything that gives significant power (eg. a themed companion or food item). Even low piety worshipers get gifts, if not just junk...
 
-Paul RR:
+Paul Raymond-Robichaud:
 - be able to exit game to main screen
+- sheep generate tame for shepherds (sheep need to actually generate then)

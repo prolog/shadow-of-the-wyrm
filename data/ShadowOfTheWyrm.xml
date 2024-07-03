@@ -4326,6 +4326,9 @@
 				<WeaponSkills>
 					<RodsAndStaves>5</RodsAndStaves>
 				</WeaponSkills>
+				<RangedWeaponSkills>
+					<Slings>5</Slings>
+				</RangedWeaponSkills>
 			</Skills>
 			<Titles>
 				<Default>SHEPHERD_DEFAULT_TITLE</Default>
