@@ -53,6 +53,9 @@ Shadow of the Wyrm v1.7.0 "Michelagnolo Galilei"
 
   - Smithing was training far less frequently than it should (hemsio).
 
+  - The message for NPCs kicking objects wasn't working correctly (Paul 
+    Raymond-Robichaud).
+
 Shadow of the Wyrm v1.6.5 "Reusner"
 - Version started December 10, 2023. Version finalized February 18, 2024.
 

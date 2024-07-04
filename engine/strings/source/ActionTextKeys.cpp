@@ -210,8 +210,9 @@ string ActionTextKeys::get_kick_object_message(const string& desc_sid, const str
   else
   {
     kick_msg = StringTable::get(ACTION_KICK_OBJECT_MONSTER);
-    boost::replace_first(kick_msg, "%s1", desc_sid);
+    boost::replace_first(kick_msg, "%s1", StringTable::get(desc_sid));
     boost::replace_first(kick_msg, "%s2", object_desc);
+    kick_msg[0] = toupper(kick_msg[0]);
   }
 
   return kick_msg;
