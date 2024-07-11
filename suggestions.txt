@@ -3,6 +3,7 @@ Me:
 - git push --tags
 - repop music
 - underwater cavern? something like that?
+- is the username check on savefiles still needed?
 - test orb placement in wyrmeswraec
 - dig in water
 - super_type_message_sids -> super_type_sound_id?
@@ -538,3 +539,4 @@ RelicWraith:
 Paul Raymond-Robichaud:
 - be able to exit game to main screen
 - sheep generate tame for shepherds (sheep need to actually generate then)
+- shift+letter for race, class, religion help on start
