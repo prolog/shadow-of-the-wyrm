@@ -87,7 +87,7 @@ local properties = {{"MAP_PROPERTIES_CREATURE_DANGER_LEVEL_FIXED", "1"},
                     {"MAP_PROPERTIES_CANNOT_PRAY_RECURSIVE", "1"},
                     {"MAP_PROPERTIES_CANNOT_DIG", "1"},
                     {"MAP_PROPERTIES_CANNOT_DIG_RECURSIVE", "1"},
-                    {"MAP_PROPERTIES_SONG_LOCATION", "assets/sound/music/water_music_3.ogg"},
+                    {"MAP_PROPERTIES_SONG_LOCATION", "assets/sound/music/to_heaven.ogg"},
                     {"MAP_PROPERTIES_SONG_LOCATION_RECURSIVE", "1"}}
 
 for i,p_pair in ipairs(properties) do
