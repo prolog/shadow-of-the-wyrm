@@ -11,7 +11,7 @@ A Brief Guide to Basic Modding for Shadow of the Wyrm
   code.
 
 - If you want to add your own sound effects, open data/ShadowOfTheWyrm.xml,
-  and navigate to the <Sounds><Effects> node. YOu'll see a list of Effect
+  and navigate to the <Sounds><Effects> node. You'll see a list of Effect
   elements, with ids starting with underscores. These are the system sound
   effects, referenced in code. You can add your own sound effects to these:
   the game will try to match them to in-game messages.
@@ -51,6 +51,39 @@ A Brief Guide to Basic Modding for Shadow of the Wyrm
   - Finally, when you're done, save the project, then do a File -> Export and 
     export to assets/sprites.
 
+- If you want to add your own music:
+
+  - The SotW engine uses SDL for playback, and can handle MP3, WAV, and most
+    Ogg Vorbis (I say "most" because direct ogg export in my notation program,
+    MuseScore, doesn't work, but exporting to .wav, and then converting .wav
+    to .ogg in Audacity, works fine).
+
+  - How to actually create music from an idea is far beyond the scope of this
+    textfile (I obsessively listen to classical music for at least a few hours
+    a day, and have for most of my life). But in terms of actually creating
+    the music files, I use MuseScore for notation, and MuseSounds for
+    soundfonts that actually sound like real instruments instead of cheap
+    MIDI.  A DAW is probably more powerful and flexible, but for my purposes,
+    MuseScore is good enough, easy, and quick.  I notate everything in
+    MuseScore, tweak levels in the mixer, and when I'm happy, export to .wav.
+    Then I use Audacity to convert this to a .ogg file.
+
+  - Once you have a .ogg/.mp3 file, put it in assets/sound/music, and then
+    update ShadowOfTheWyrm.xml, or one of the maps.
+
+  - If the music is event-driven, or is meant to play on certain terrain (eg,
+    the overworld map, all forests, all dungeons), put it in
+    ShadowOfTheWyrm.xml.  If it's meant for a particular map, like Isen Dun
+    or Carcassia, it should go in the respective map file.  There are
+    examples in both of how to hook in music files.
+
+  - If the music is event-driven:
+
+    - If it's for the title screen, ShadowOfTheWyrm.xml
+
+    - If something triggers it in-game, you'll need to update the Lua scripts.
+      See scripts/quest/isen_dun/ead.lua for an example.
+  
 - Resource strings are defined in shadowofthewyrm_blank.ini, and also
   in each language-specific resource strings file.  So if you were
   wanting to edit a resource string, edit shadowofthewyrm_en.ini.  To

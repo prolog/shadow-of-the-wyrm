@@ -540,3 +540,4 @@ Paul Raymond-Robichaud:
 - be able to exit game to main screen
 - sheep generate tame for shepherds (sheep need to actually generate then)
 - shift+letter for race, class, religion help on start
+- special events/festivities on certain days? (feasts, etc)
