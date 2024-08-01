@@ -1,6 +1,7 @@
 Me:
 - ASSET RELEASE (images, sounds!)
 - git push --tags
+- hook up carcassia music to all the carcassia maps
 - repop music
 - underwater cavern? something like that?
 - is the username check on savefiles still needed?
@@ -522,7 +523,6 @@ Marcin Puc:
 
 Xvordan:
 - in-map waypoint system
-- Would you consider adding in a sound playback system, kind of like how DCSS does it? They use regular expressions to match to a game event to play a sound.
 
 Stevie-3:
 - tab cycles through creatures, items, (+ features?) in view
