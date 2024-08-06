@@ -287,6 +287,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_set_custom_map_id", map_set_custom_map_id);
   lua_register(L, "map_set_edesc", map_set_edesc);
   lua_register(L, "map_set_property", map_set_property);
+  lua_register(L, "map_get_property", map_get_property);
   lua_register(L, "map_set_tile_subtype", map_set_tile_subtype);
   lua_register(L, "map_set_tile_property", map_set_tile_property);
   lua_register(L, "map_add_location", map_add_location);
@@ -3905,6 +3906,32 @@ int map_set_property(lua_State* ls)
   }
 
   return 0;
+}
+
+// Get a property on the given map.
+int map_get_property(lua_State* ls)
+{
+  string prop_val;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string map_id = lua_tostring(ls, 1);
+    string k = lua_tostring(ls, 2);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      prop_val = map->get_property(k);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_get_property");
+  }
+
+  lua_pushstring(ls, prop_val.c_str());
+  return 1;
 }
 
 // Set the tile subtype appropriately.
