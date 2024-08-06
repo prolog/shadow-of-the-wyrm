@@ -220,5 +220,12 @@
 				<DeityID>02_aurelion</DeityID>
 				<Alignment>2</Alignment>
 			</Altar>
+		</FeaturePlacement>
 	</Features>
+	<Properties>
+		<Property>
+			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
+			<Value>assets/sound/music/carcassia.ogg</Value>
+		</Property>
+	</Properties>
 </CustomMap>
