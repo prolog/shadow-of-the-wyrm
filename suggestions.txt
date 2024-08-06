@@ -1,8 +1,7 @@
 Me:
 - ASSET RELEASE (images, sounds!)
 - git push --tags
-- hook up carcassia music to all the carcassia maps
-- repop music
+- hook up music to the two musician npcs
 - underwater cavern? something like that?
 - is the username check on savefiles still needed?
 - test orb placement in wyrmeswraec

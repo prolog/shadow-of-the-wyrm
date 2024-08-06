@@ -1,4 +1,4 @@
-Shadow of the Wyrm v1.7.0 "Michelagnolo Galilei"
+Shadow of the Wyrm v1.7.2 "Michelagnolo Galilei"
 - Version started February 18, 2024.
 
 - Evergreen trees are now cyan in winter, to mimic the appearance of snow on
