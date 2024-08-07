@@ -28370,44 +28370,48 @@
 					<Name>CREATURE_PROPERTIES_SONG6</Name>
 					<Value>EMPIRE_SETS_SAIL_SID,assets/sound/music/empire.ogg</Value>
 				</Property>
-				<Property>
+\				<Property>
 					<Name>CREATURE_PROPERTIES_SONG7</Name>
-					<Value>GNORDVAR_SID,assets/sound/music/gnordvar.ogg</Value>
+					<Value>ELVEN_FOLK_SONGS_SID,assets/sound/music/yew.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG8</Name>
-					<Value>THE_MISTY_MOUNTAIN_SID,assets/sound/music/atuaelar.ogg</Value>
+					<Value>GNORDVAR_SID,assets/sound/music/gnordvar.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG9</Name>
-					<Value>SETTLEMENT_SID,assets/sound/music/settlement.ogg</Value>
+					<Value>THE_MISTY_MOUNTAIN_SID,assets/sound/music/atuaelar.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG10</Name>
-					<Value>SITHRIN_SID,assets/sound/music/sithrin.ogg</Value>
+					<Value>SETTLEMENT_SID,assets/sound/music/settlement.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG11</Name>
-					<Value>STONEHEIM_SID,assets/sound/music/stoneheim.ogg</Value>
+					<Value>SITHRIN_SID,assets/sound/music/sithrin.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG12</Name>
-					<Value>O_AURELION_O_CELESTE_SID,assets/sound/music/o_aurelion_o_celeste.ogg</Value>
+					<Value>STONEHEIM_SID,assets/sound/music/stoneheim.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG13</Name>
-					<Value>ONLY_THE_HOLY_AND_THE_DEAD_SID,assets/sound/music/only_the_holy_and_the_dead.ogg</Value>
+					<Value>O_AURELION_O_CELESTE_SID,assets/sound/music/o_aurelion_o_celeste.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG14</Name>
-					<Value>WATER_MUSIC_SID,assets/sound/music/water_music.ogg</Value>
+					<Value>ONLY_THE_HOLY_AND_THE_DEAD_SID,assets/sound/music/only_the_holy_and_the_dead.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG15</Name>
-					<Value>WATER_MUSIC_2_SID,assets/sound/music/water_music_2.ogg</Value>
+					<Value>WATER_MUSIC_SID,assets/sound/music/water_music.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG16</Name>
+					<Value>WATER_MUSIC_2_SID,assets/sound/music/water_music_2.ogg</Value>
+				</Property>
+				<Property>
+					<Name>CREATURE_PROPERTIES_SONG17</Name>
 					<Value>WATER_MUSIC_3_SID,assets/sound/music/water_music_3.ogg</Value>
 				</Property>
 			</Properties>
