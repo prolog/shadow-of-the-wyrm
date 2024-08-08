@@ -133,8 +133,11 @@ ActionCostValue SkinAction::attempt_skin(CreaturePtr creature, ItemPtr item, Til
 
         if (item_quantity > 1)
         {
-          // Copy the item, flag it, re-add it.
+          // Separate the item from the stack by cloning it, reducing the size
+          // of the stack, and setting the quantity of the cloned item to 1.
+          item->set_quantity(item_quantity - 1);
           new_corpse = ItemPtr(item->clone_with_new_id());
+          new_corpse->set_quantity(1);
         }
 
         // Flag the item as having already been skinned.
