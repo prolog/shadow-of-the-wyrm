@@ -21,3 +21,4 @@ constexpr auto CMUSIC_EVENT_ARENA_VICTORY = "_arena_victory";
 constexpr auto CMUSIC_EVENT_OVERWORLD = "_overworld";
 constexpr auto CMUSIC_EVENT_PLANETARY_TELEPORT = "_planetary_teleport";
 constexpr auto CMUSIC_EVENT_RESPAWN = "_respawn";
+constexpr auto CMUSIC_EVENT_CARCASSIA = "_carcassia";

@@ -8460,6 +8460,9 @@
 			<Song event="_overworld" map_type="1">
 				<Location>assets/sound/music/water_music_1.ogg</Location>
 			</Song>
+			<Song event="_carcassia">
+				<Location>assets/sound/music/carcassia.ogg</Location>
+			</Song>
 			<Song event="_underwater" map_type="3">
 				<Location>assets/sound/music/water_music_2.ogg</Location>
 			</Song>

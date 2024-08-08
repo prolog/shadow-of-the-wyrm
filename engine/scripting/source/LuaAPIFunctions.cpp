@@ -10467,12 +10467,20 @@ int play_map_music(lua_State* ls)
 int set_map_music(lua_State* ls)
 {
   bool added = false;
+  int num_args = lua_gettop(ls);
 
-  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  if (num_args >= 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
   {
     string map_id = lua_tostring(ls, 1);
     string music_location = lua_tostring(ls, 2);
     SoundPtr sound = Game::instance().get_sound();
+
+    bool play_music = false;
+
+    if (num_args == 3 && lua_isboolean(ls, 3))
+    {
+      play_music = lua_toboolean(ls, 3);
+    }
 
     if (sound != nullptr && !map_id.empty())
     {
@@ -10481,8 +10489,12 @@ int set_map_music(lua_State* ls)
       if (map != nullptr)
       {
         map->set_property(MapProperties::MAP_PROPERTIES_SONG_LOCATION, music_location);
-        sound->play_music(map);
         added = true;
+
+        if (play_music)
+        {
+          sound->play_music(map);
+        }
       }
     }
   }
