@@ -758,6 +758,7 @@ const string ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_SDL_TRUE = "ACTION_TOGGLE_
 const string ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_CURSES   = "ACTION_TOGGLE_FULLSCREEN_CURSES";
 const string ActionTextKeys::ACTION_HIDE_HOLE                  = "ACTION_HIDE_HOLE";
 const string ActionTextKeys::ACTION_GROUND_FULL                = "ACTION_GROUND_FULL";
+const string ActionTextKeys::ACTION_SEED_ALREADY_PLANTED       = "ACTION_SEED_ALREADY_PLANTED";
 const string ActionTextKeys::ACTION_WAND_EXPLODE               = "ACTION_WAND_EXPLODE";
 
 // Protected

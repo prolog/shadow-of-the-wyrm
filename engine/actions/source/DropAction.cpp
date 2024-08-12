@@ -259,7 +259,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
       }
       else if (!tree_species_id.empty() && creatures_tile->has_been_dug())
       {
-        bool planted = plant_food_or_seed(creature, { {ItemProperties::ITEM_PROPERTIES_TREE_SPECIES_ID, tree_species_id} }, creature_coord, creatures_tile, current_map, nullptr, false);
+        bool planted = plant_food_or_seed(creature, { {ItemProperties::ITEM_PROPERTIES_TREE_SPECIES_ID, tree_species_id} }, creature_coord, creatures_tile, current_map, new_item, false);
 
         if (planted)
         {
@@ -347,7 +347,7 @@ bool DropAction::plant_food_or_seed(CreaturePtr creature, const map<string, stri
 
     if (world != nullptr && current_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
     {
-      planted = is_food ? plant_food(creature, props, coords, tile, current_map, item_to_plant) : plant_seed(creature, props, coords, tile, current_map);
+      planted = is_food ? plant_food(creature, props, coords, tile, current_map, item_to_plant) : plant_seed(creature, props, coords, tile, current_map, item_to_plant);
     }
 
     if (planted)
@@ -380,8 +380,10 @@ bool DropAction::plant_food(CreaturePtr creature, const map<string, string>& pro
 
       string min_q = min_q_it->second;
       string max_q = max_q_it->second;
+      uint tile_plantable = tile->get_num_plantable_items();
+      uint current_item_transforms = current_map->count_tile_item_transforms(coords);
 
-      if (current_map->count_tile_item_transforms(coords) <= tile->get_num_plantable_items() && world != nullptr)
+      if (current_item_transforms <= tile_plantable && world != nullptr)
       {
         // OK: add to transforms
         SeedCalculator sc;
@@ -393,6 +395,8 @@ bool DropAction::plant_food(CreaturePtr creature, const map<string, string>& pro
         tt_v.push_back(tit);
 
         planted = true;
+
+        add_remainder_of_plantable_if_necessary(current_map, tile, item_to_plant);
       }
       else
       {
@@ -411,34 +415,67 @@ bool DropAction::plant_food(CreaturePtr creature, const map<string, string>& pro
 }
 
 // Plant a seed for a particular type of tree.
-bool DropAction::plant_seed(CreaturePtr creature, const map<string, string>& props, const Coordinate& coords, TilePtr tile, MapPtr current_map)
+bool DropAction::plant_seed(CreaturePtr creature, const map<string, string>& props, const Coordinate& coords, TilePtr tile, MapPtr current_map, ItemPtr seed_to_plant)
 {
   bool planted = false;
 
-  if (creature != nullptr && tile != nullptr && current_map != nullptr)
+  if (creature != nullptr && tile != nullptr && current_map != nullptr && seed_to_plant != nullptr)
   {
     Game& game = Game::instance();
     World* world = game.get_current_world();
-    TreeSpeciesFactory tsf;
+    string tree_species_property_name = ItemProperties::ITEM_PROPERTIES_TREE_SPECIES_ID;
 
-    auto t_it = props.find(ItemProperties::ITEM_PROPERTIES_TREE_SPECIES_ID);
-
-    if (t_it != props.end())
+    if (current_map->count_tile_transforms_with_property(coords, tree_species_property_name) == 0)
     {
-      string tree_species_id = t_it->second;
-      TreeSpecies ts = tsf.create_tree_species(static_cast<TreeSpeciesID>(String::to_int(tree_species_id)));
-      TileTransform tt(coords, ts.get_tile_type(), TileType::TILE_TYPE_UNDEFINED, { { ItemProperties::ITEM_PROPERTIES_TREE_SPECIES_ID, tree_species_id } });
+      TreeSpeciesFactory tsf;
 
-      SeedCalculator sc;
-      Date current_date = world->get_calendar().get_date();
-      double sprout_time = sc.calculate_sprouting_seconds(current_date);
-      vector<TileTransform>& tt_v = current_map->get_tile_transforms_ref()[sprout_time];
+      auto t_it = props.find(ItemProperties::ITEM_PROPERTIES_TREE_SPECIES_ID);
 
-      tt_v.push_back(tt);
+      if (t_it != props.end())
+      {
+        string tree_species_id = t_it->second;
+        TreeSpecies ts = tsf.create_tree_species(static_cast<TreeSpeciesID>(String::to_int(tree_species_id)));
+        TileTransform tt(coords, ts.get_tile_type(), TileType::TILE_TYPE_UNDEFINED, { { tree_species_property_name, tree_species_id } });
+
+        SeedCalculator sc;
+        Date current_date = world->get_calendar().get_date();
+        double sprout_time = sc.calculate_sprouting_seconds(current_date);
+        vector<TileTransform>& tt_v = current_map->get_tile_transforms_ref()[sprout_time];
+
+        tt_v.push_back(tt);
+        planted = true;
+
+        add_remainder_of_plantable_if_necessary(current_map, tile, seed_to_plant);
+      }
+    }
+    else
+    {
+      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature->get_is_player());
+      string ground_full = StringTable::get(ActionTextKeys::ACTION_SEED_ALREADY_PLANTED);
+
+      manager.add_new_message(ground_full);
+      manager.send();
+
+      tile->get_items()->merge_or_add(seed_to_plant, InventoryAdditionType::INVENTORY_ADDITION_BACK);
     }
   }
   
   return planted;
+}
+
+bool DropAction::add_remainder_of_plantable_if_necessary(MapPtr current_map, TilePtr tile, ItemPtr item_to_plant)
+{
+  bool added_items = false;
+
+  if (current_map != nullptr && tile != nullptr && item_to_plant != nullptr && item_to_plant->get_quantity() > 1)
+  {
+    item_to_plant->set_quantity(item_to_plant->get_quantity() - 1);
+    tile->get_items()->merge_or_add(item_to_plant, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+
+    added_items = true;
+  }
+
+  return added_items;
 }
 
 // Bury the remains of something once living

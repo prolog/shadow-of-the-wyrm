@@ -156,6 +156,7 @@ class Map : public ISerializable
     void set_tile_transforms(const TileTransformContainer& new_tile_transforms);
     TileTransformContainer& get_tile_transforms_ref();
     TileTransformContainer get_tile_transforms() const;
+    size_t count_tile_transforms_with_property(const Coordinate& c, const std::string& prop_name) const;
 
     void set_tile_item_transforms(const TileItemTransformContainer& new_tile_item_transforms);
     TileItemTransformContainer& get_tile_item_transforms_ref();

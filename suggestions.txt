@@ -8,7 +8,6 @@ Me:
 - super_type_message_sids -> super_type_sound_id?
 - Need to release sprites, sound effects, music
 - hemsio: autosave not working?
-- what about per-deity songs? triggered when altar on level?
 - set item status property in CreateItemScreen
 - Use this for fletchery, bowyer, etc, to improve item & quantity
 - test both seed and food planting on same tile
