@@ -48,7 +48,7 @@ int WorldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
     if (distance > 0)
     {
       float danger_calc = (distance /
-                      (static_cast<float>(max(world_dimensions.get_x(), world_dimensions.get_y()))));
+                          (static_cast<float>(get_max_distance(starting_location, map->size().get_y(), map->size().get_x()))));
       danger_level = static_cast<int>(danger_calc * CreatureConstants::MAX_CREATURE_LEVEL);
     }
 
@@ -56,6 +56,17 @@ int WorldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
   }
 
   return danger_level;
+}
+
+int WorldMapDangerLevelCalculator::get_max_distance(const Coordinate& starting_location, const int map_max_y, const int map_max_x) const
+{
+  const int map_min_y = 0;
+  const int map_min_x = 0;
+
+  return std::max<int>({std::abs(starting_location.first - map_min_y),
+                        std::abs(starting_location.first - map_max_y),
+                        std::abs(starting_location.second - map_min_x),
+                        std::abs(starting_location.second - map_max_x)});
 }
 
 #ifdef UNIT_TESTS

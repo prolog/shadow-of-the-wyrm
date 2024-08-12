@@ -47,6 +47,11 @@ Shadow of the Wyrm v1.7.2 "Michelagnolo Galilei"
 
 - New creatures: chamber ensemble.
 
+- The danger level now scales properly from Isen Dun or Carcassia to its 
+  furthest point at the edge of the map (previously, a fixed value was used,
+  and Carcassia starts resulted in slightly less powerful creatures at the
+  furthest point).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

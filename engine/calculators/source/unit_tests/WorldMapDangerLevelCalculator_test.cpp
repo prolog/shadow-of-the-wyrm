@@ -21,3 +21,19 @@ TEST(SW_Engine_Calculators_WorldMapDangerLevelCalculator, calculate)
     EXPECT_EQ(exp_value, wmdlc.calculate(map1, nullptr /* the second map is unused in this class' overload */));
   }
 }
+
+TEST(SW_Engine_Calculators_WorldMapDangerLevelCalculator, get_max_distance)
+{
+  Coordinate c = { 0, 0 };
+  WorldMapDangerLevelCalculator wmc;
+
+  EXPECT_EQ(10, wmc.get_max_distance(c, 10, 10));
+
+  c = { 25, 13 };
+
+  EXPECT_EQ(87, wmc.get_max_distance(c, 100, 100));
+
+  c = { 36, 42 };
+
+  EXPECT_EQ(64, wmc.get_max_distance(c, 100, 100));
+}
