@@ -383,7 +383,7 @@ bool DropAction::plant_food(CreaturePtr creature, const map<string, string>& pro
       uint tile_plantable = tile->get_num_plantable_items();
       uint current_item_transforms = current_map->count_tile_item_transforms(coords);
 
-      if (current_item_transforms <= tile_plantable && world != nullptr)
+      if (current_item_transforms < tile_plantable && world != nullptr)
       {
         // OK: add to transforms
         SeedCalculator sc;
