@@ -28396,22 +28396,26 @@
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG13</Name>
-					<Value>O_AURELION_O_CELESTE_SID,assets/sound/music/o_aurelion_o_celeste.ogg</Value>
+					<Value>THE_SHIPS_RETURN_SID,assets/sound/music/ships_return.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG14</Name>
-					<Value>ONLY_THE_HOLY_AND_THE_DEAD_SID,assets/sound/music/only_the_holy_and_the_dead.ogg</Value>
+					<Value>O_AURELION_O_CELESTE_SID,assets/sound/music/o_aurelion_o_celeste.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG15</Name>
-					<Value>WATER_MUSIC_SID,assets/sound/music/water_music.ogg</Value>
+					<Value>ONLY_THE_HOLY_AND_THE_DEAD_SID,assets/sound/music/only_the_holy_and_the_dead.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG16</Name>
-					<Value>WATER_MUSIC_2_SID,assets/sound/music/water_music_2.ogg</Value>
+					<Value>WATER_MUSIC_SID,assets/sound/music/water_music_1.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG17</Name>
+					<Value>WATER_MUSIC_2_SID,assets/sound/music/water_music_2.ogg</Value>
+				</Property>
+				<Property>
+					<Name>CREATURE_PROPERTIES_SONG18</Name>
 					<Value>WATER_MUSIC_3_SID,assets/sound/music/water_music_3.ogg</Value>
 				</Property>
 			</Properties>
