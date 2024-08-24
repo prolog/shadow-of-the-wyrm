@@ -8489,6 +8489,9 @@
 			<Song map_type="5">
 				<Location>assets/sound/music/water_music_1.ogg</Location>
 			</Song>
+			<Song map_type="5" winner="1">
+				<Location>assets/sound/music/ships_return.ogg</Location>
+			</Song>
 			<Song map_type="2">
 				<Location>assets/sound/music/underworld.ogg</Location>
 			</Song>
