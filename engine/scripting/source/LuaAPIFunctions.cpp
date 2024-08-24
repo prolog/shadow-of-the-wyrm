@@ -6178,6 +6178,10 @@ int set_winner(lua_State* ls)
       // whether a particular win condition is satisfied.
       string win_property = CreatureProperties::CREATURE_PROPERTIES_WINNER + "_" + to_string(win_type);
       creature->set_additional_property(win_property, to_string(true));
+
+      Game& game = Game::instance();
+      MapPtr cur_map = game.get_current_map();
+      game.get_sound()->play_music(cur_map);
     }
   }
   else
