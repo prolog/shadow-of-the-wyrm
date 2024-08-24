@@ -2,13 +2,26 @@
 
 using namespace std;
 
-Song::Song() : tile_type(TileType::TILE_TYPE_UNDEFINED), map_type(MapType::MAP_TYPE_NULL)
+Song::Song() 
+: winner(ternary::TERNARY_UNDEFINED),
+  tile_type(TileType::TILE_TYPE_UNDEFINED), 
+	map_type(MapType::MAP_TYPE_NULL)
 {
 }
 
-Song::Song(const string& new_event, const string& new_id, const TileType new_tile_type, const MapType new_map_type, const string& new_location)
-: event(new_event), id(new_id), tile_type(new_tile_type), map_type(new_map_type), location(new_location)
+Song::Song(const ternary new_winner, const string& new_event, const string& new_id, const TileType new_tile_type, const MapType new_map_type, const string& new_location)
+: winner(new_winner), event(new_event), id(new_id), tile_type(new_tile_type), map_type(new_map_type), location(new_location)
 {
+}
+
+void Song::set_winner(const ternary new_winner)
+{
+	winner = new_winner;
+}
+
+ternary Song::get_winner() const
+{
+	return winner;
 }
 
 void Song::set_event(const string& new_event)

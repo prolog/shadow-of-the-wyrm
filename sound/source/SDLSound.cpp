@@ -120,7 +120,7 @@ void SDLSound::play_music_for_event(const string& event, const bool loop)
 {
 	if (enable_sound && enable_music)
 	{
-		string location = music.get_event_song(event);
+		string location = music.get_event_song(event, Game::instance().get_winner());
 		play_music_location(location, loop);
 	}
 }
@@ -141,20 +141,21 @@ void SDLSound::play_music(MapPtr map, const bool loop)
 			TileType tt = map->get_terrain_type();
 			MapType mt = map->get_map_type();
 			string location = map->get_property(MapProperties::MAP_PROPERTIES_SONG_LOCATION);
+			ternary winner = Game::instance().get_winner();
 
 			if (location.empty())
 			{
-				location = music.get_song(id);
+				location = music.get_song(id, winner);
 			}
 
 			if (location.empty())
 			{
-				location = music.get_song(tt);
+				location = music.get_song(tt, winner);
 			}
 
 			if (location.empty())
 			{
-				location = music.get_song(mt);
+				location = music.get_song(mt, winner);
 			}
 
 			play_music_location(location, loop);

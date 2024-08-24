@@ -7,7 +7,10 @@ class Song
 {
   public:
     Song();
-    Song(const std::string& event, const std::string& id, const TileType tile_type, const MapType map_type, const std::string& location);
+    Song(const ternary winner, const std::string& event, const std::string& id, const TileType tile_type, const MapType map_type, const std::string& location);
+
+    void set_winner(const ternary new_winner);
+    ternary get_winner() const;
 
     void set_event(const std::string& new_event);
     std::string get_event() const;
@@ -25,6 +28,7 @@ class Song
     std::string get_location() const;
 
   protected:
+    ternary winner;
     std::string event;
     std::string id;
     TileType tile_type;

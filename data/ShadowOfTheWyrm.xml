@@ -8460,6 +8460,9 @@
 			<Song event="_overworld" map_type="1">
 				<Location>assets/sound/music/water_music_1.ogg</Location>
 			</Song>
+			<Song event="_overworld" map_type="1" winner="1">
+				<Location>assets/sound/music/ships_return.ogg</Location>
+			</Song>
 			<Song event="_carcassia">
 				<Location>assets/sound/music/carcassia.ogg</Location>
 			</Song>
@@ -8474,6 +8477,9 @@
 			</Song>
 			<Song id="world_map" map_type="0">
 				<Location>assets/sound/music/water_music_1.ogg</Location>
+			</Song>
+			<Song id="world_map" map_type="0" winner="1">
+				<Location>assets/sound/music/ships_return.ogg</Location>
 			</Song>
 			<Song id="fae_caravan">
 				<Location>assets/sound/music/caravan.ogg</Location>

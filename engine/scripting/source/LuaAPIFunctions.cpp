@@ -10571,12 +10571,15 @@ int get_music_location_for_event(lua_State* ls)
   if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
   {
     string event = lua_tostring(ls, 1);
-    SoundPtr sound = Game::instance().get_sound();
+    Game& game = Game::instance();
+    SoundPtr sound = game.get_sound();
+    CreaturePtr player = game.get_current_player();
+    ternary winner = game.get_winner();
 
     if (sound != nullptr)
     {
       Music music = sound->get_music();
-      location = music.get_event_song(event);
+      location = music.get_event_song(event, winner);
     }
   }
   else
@@ -10595,12 +10598,14 @@ int get_music_location_for_map_type(lua_State* ls)
   if (lua_gettop(ls) == 1 && lua_isnumber(ls, 1))
   {
     MapType mt = static_cast<MapType>(lua_tointeger(ls, 1));
-    SoundPtr sound = Game::instance().get_sound();
+    Game& game = Game::instance();
+    SoundPtr sound = game.get_sound();
+    ternary winner = ternary::TERNARY_UNDEFINED;
 
     if (sound != nullptr)
     {
       Music music = sound->get_music();
-      location = music.get_song(mt);
+      location = music.get_song(mt, winner);
     }
   }
   else

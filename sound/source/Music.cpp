@@ -11,6 +11,7 @@ Music::Music(const vector<Song>& songs)
 {
 	for (const auto& song : songs)
 	{
+		ternary winner = song.get_winner();
 		string event = song.get_event();
 		string id = song.get_id();
 		TileType tile_type = song.get_tile_type();
@@ -19,22 +20,22 @@ Music::Music(const vector<Song>& songs)
 
 		if (!event.empty())
 		{
-			event_locations[event] = location;
+			event_locations[{event, winner}] = location;
 		}
 
 		if (!id.empty())
 		{
-			id_locations[id] = location;
+			id_locations[{id, winner}] = location;
 		}
 
 		if (tile_type != TileType::TILE_TYPE_UNDEFINED)
 		{
-			tile_type_locations[tile_type] = location;
+			tile_type_locations[{tile_type, winner}] = location;
 		}
 
 		if (map_type != MapType::MAP_TYPE_NULL)
 		{
-			map_type_locations[map_type] = location;
+			map_type_locations[{map_type, winner}] = location;
 		}
 	}
 }
@@ -51,53 +52,101 @@ bool Music::operator==(const Music& rhs) const
 	return eq;
 }
 
-string Music::get_event_song(const string& event) const
+string Music::get_event_song(const string& event, const ternary winner) const
 {
 	string song;
-	auto l_it = event_locations.find(event);
 
-	if (l_it != event_locations.end())
+	// First, try an exact match.
+	auto ev_it = event_locations.find({ event, winner });
+
+	if (ev_it != event_locations.end())
 	{
-		song = l_it->second;
+		song = ev_it->second;
+	}
+	else
+	{
+		// If exact match fails, look for a match based on any win condition.
+		ev_it = event_locations.find({ event, ternary::TERNARY_UNDEFINED });
+
+		if (ev_it != event_locations.end())
+		{
+			song = ev_it->second;
+		}
 	}
 
 	return song;
 }
 
-string Music::get_song(const string& id) const
+string Music::get_song(const string& id, const ternary winner) const
 {
-	string song;
-	auto l_it = id_locations.find(id);
+	string song; 
+	
+	// First, try an exact match.
+	auto id_it = id_locations.find({ id, winner });
 
-	if (l_it != id_locations.end())
+	if (id_it != id_locations.end())
 	{
-		song = l_it->second;
+		song = id_it->second;
+	}
+	else
+	{
+		// If exact match fails, look for a match based on any win condition.
+		id_it = id_locations.find({ id, ternary::TERNARY_UNDEFINED });
+
+		if (id_it != id_locations.end())
+		{
+			song = id_it->second;
+		}
 	}
 
 	return song;
 }
 
-string Music::get_song(const TileType tile_type) const
+string Music::get_song(const TileType tile_type, const ternary winner) const
 {
 	string song;
-	auto l_it = tile_type_locations.find(tile_type);
 
-	if (l_it != tile_type_locations.end())
+	// First, try an exact match.
+	auto tt_it = tile_type_locations.find({ tile_type, winner });
+
+	if (tt_it != tile_type_locations.end())
 	{
-		song = l_it->second;
+		song = tt_it->second;
+	}
+	else
+	{
+		// If exact match fails, look for a match based on any win condition.
+		tt_it = tile_type_locations.find({ tile_type, ternary::TERNARY_UNDEFINED });
+
+		if (tt_it != tile_type_locations.end())
+		{
+			song = tt_it->second;
+		}
 	}
 
 	return song;
 }
 
-string Music::get_song(const MapType mt) const
+string Music::get_song(const MapType mt, const ternary winner) const
 {
 	string song;
-	auto l_it = map_type_locations.find(mt);
 
-	if (l_it != map_type_locations.end())
+	// First, try an exact match.
+	auto mt_it = map_type_locations.find({ mt, winner });
+
+	if (mt_it != map_type_locations.end())
 	{
-		song = l_it->second;
+		song = mt_it->second;
+	}
+	else
+	{
+		// If exact match fails, look for a match based on any win condition.
+		mt_it = map_type_locations.find({ mt, ternary::TERNARY_UNDEFINED });
+
+		if (mt_it != map_type_locations.end())
+		{
+			song = mt_it->second;
+		}
 	}
 
 	return song;
@@ -109,7 +158,8 @@ bool Music::serialize(ostream& stream) const
 
 	for (const auto& event_pair : event_locations)
 	{
-		Serialize::write_string(stream, event_pair.first);
+		Serialize::write_string(stream, event_pair.first.first);
+		Serialize::write_enum(stream, event_pair.first.second);
 		Serialize::write_string(stream, event_pair.second);
 	}
 
@@ -117,7 +167,8 @@ bool Music::serialize(ostream& stream) const
 
 	for (const auto& id_pair : id_locations)
 	{
-		Serialize::write_string(stream, id_pair.first);
+		Serialize::write_string(stream, id_pair.first.first);
+		Serialize::write_enum(stream, id_pair.first.second);
 		Serialize::write_string(stream, id_pair.second);
 	}
 
@@ -125,7 +176,8 @@ bool Music::serialize(ostream& stream) const
 
 	for (const auto tt_pair : tile_type_locations) 
 	{
-		Serialize::write_enum(stream, tt_pair.first);
+		Serialize::write_enum(stream, tt_pair.first.first);
+		Serialize::write_enum(stream, tt_pair.first.second);
 		Serialize::write_string(stream, tt_pair.second);
 	}
 
@@ -133,7 +185,8 @@ bool Music::serialize(ostream& stream) const
 
 	for (const auto& mt_pair : map_type_locations)
 	{
-		Serialize::write_enum(stream, mt_pair.first);
+		Serialize::write_enum(stream, mt_pair.first.first);
+		Serialize::write_enum(stream, mt_pair.first.second);
 		Serialize::write_string(stream, mt_pair.second);
 	}
 
@@ -152,12 +205,14 @@ bool Music::deserialize(istream& stream)
 	for (size_t ev_idx = 0; ev_idx < ev_l_s; ev_idx++)
 	{
 		string event;
+		ternary winner;
 		string location;
 
 		Serialize::read_string(stream, event);
+		Serialize::read_enum(stream, winner);
 		Serialize::read_string(stream, location);
 
-		event_locations[event] = location;
+		event_locations[{event, winner}] = location;
 	}
 
 	size_t id_l_s = 0;
@@ -166,12 +221,14 @@ bool Music::deserialize(istream& stream)
 	for (size_t id_idx = 0; id_idx < id_l_s; id_idx++)
 	{
 		string id;
+		ternary winner;
 		string location;
 
 		Serialize::read_string(stream, id);
+		Serialize::read_enum(stream, winner);
 		Serialize::read_string(stream, location);
 
-		id_locations[id] = location;
+		id_locations[{id, winner}] = location;
 	}
 
 	size_t tt_l_s = 0;
@@ -180,12 +237,14 @@ bool Music::deserialize(istream& stream)
 	for (size_t tt_idx = 0; tt_idx < tt_l_s; tt_idx++)
 	{
 		TileType tile_type = TileType::TILE_TYPE_UNDEFINED;
+		ternary winner;
 		string location;
 
 		Serialize::read_enum(stream, tile_type);
+		Serialize::read_enum(stream, winner);
 		Serialize::read_string(stream, location);
 
-		tile_type_locations[tile_type] = location;
+		tile_type_locations[{tile_type, winner}] = location;
 	}
 
 	size_t mt_l_s = 0;
@@ -194,12 +253,14 @@ bool Music::deserialize(istream& stream)
 	for (size_t mt_idx = 0; mt_idx < mt_l_s; mt_idx++)
 	{
 		MapType mt = MapType::MAP_TYPE_NULL;
+		ternary winner;
 		string location;
 
 		Serialize::read_enum(stream, mt);
+		Serialize::read_enum(stream, winner);
 		Serialize::read_string(stream, location);
 
-		map_type_locations[mt] = location;
+		map_type_locations[{mt, winner}] = location;
 	}
 
 	return true;

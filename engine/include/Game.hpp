@@ -117,6 +117,7 @@ class Game : public ISerializable
     StartingLocationMap get_starting_locations() const;
 
     CreaturePtr get_current_player() const;
+    ternary get_winner() const;
 
     void create_new_world(CreaturePtr creature, const StartingLocation& sl);
     void go(); // main game loop

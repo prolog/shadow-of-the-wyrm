@@ -2,6 +2,8 @@ Me:
 - ASSET RELEASE (images, sounds!)
 - git push --tags
 - ship's return: overworld when game is won
+- fix broken unit test
+- Caldera's water should be death - swimming or descending
 - underwater cavern? something like that?
 - is the username check on savefiles still needed?
 - test orb placement in wyrmeswraec

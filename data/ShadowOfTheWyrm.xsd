@@ -1357,6 +1357,7 @@
 	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="optional"/>
 	<xs:attribute name="map_type" type="xs:integer" use="optional"/>
 	<xs:attribute name="tile_type" type="xs:integer" use="optional"/>
+	<xs:attribute name="winner" type="tns:Ternary" use="optional"/>
 </xs:complexType>
 <xs:complexType name="SoundEffect">
 	<xs:annotation><xs:documentation>An individual sound effect (ID and location)</xs:documentation></xs:annotation>
@@ -2026,6 +2027,15 @@
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
 		<xs:maxInclusive value="4"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="Ternary">
+	<xs:annotation>
+		<xs:documentation>A logic value in which 0 is false, 1 is true, and -1 is "either". Used for things like songs which can play when a win condition is true, false, or either.</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:integer">
+		<xs:minInclusive value="-1"/>
+		<xs:maxInclusive value="1"/>
 	</xs:restriction>
 </xs:simpleType>
 </xs:schema>
