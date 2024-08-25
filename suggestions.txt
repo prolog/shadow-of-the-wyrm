@@ -1,6 +1,8 @@
 Me:
 - ASSET RELEASE (images, sounds!)
 - git push --tags
+- ebalster: down/up in ponds in ID; followers shouldn't accidentally target
+  leader eg with rock throw on something else in tight quarters
 - Caldera's water should be death - swimming or descending
 - underwater cavern? something like that?
 - is the username check on savefiles still needed?

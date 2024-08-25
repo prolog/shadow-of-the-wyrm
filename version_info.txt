@@ -64,7 +64,7 @@ Shadow of the Wyrm v1.7.2 "Michelagnolo Galilei"
   - The guidebook didn't note that Shepherds get Weaving (Paul Raymond-
     Robichaud).
 
-  - Skinning stacks of corpses of the same type led to duplicatoin (Paul
+  - Skinning stacks of corpses of the same type led to duplication (Paul
     Raymond-Robichaud).
 
   - Planting seeds wasn't displaying a message.
