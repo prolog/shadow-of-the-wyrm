@@ -1,3 +1,6 @@
+Shadow of the Wyrm v1.7.3 "Assad"
+- Version started August 25, 2024.
+
 Shadow of the Wyrm v1.7.2 "Michelagnolo Galilei"
 - Version started February 18, 2024. Version finalized August 25, 2024.
 
