@@ -138,7 +138,7 @@ ActionCostValue DigAction::dig_through(const string& creature_id, ItemPtr dig_it
     // breakage, and add an appropriate message.
     if (add_messages)
     {
-      add_successful_dig_message(creature);
+      add_successful_dig_message(creature, adjacent_tile);
     }
 
     TilePtr new_tile = dig_tile(creature, adjacent_tile, dig_tile_only);
@@ -298,13 +298,20 @@ bool DigAction::dig_items(IInventoryPtr items) const
   return dug;
 }
 
-void DigAction::add_successful_dig_message(CreaturePtr creature) const
+void DigAction::add_successful_dig_message(CreaturePtr creature, TilePtr adjacent_tile) const
 {
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
-  if (creature->get_is_player())
+  if (adjacent_tile != nullptr && creature != nullptr && creature->get_is_player())
   {
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_THROUGH_TILE));
+    string msg_sid = adjacent_tile->get_dig_message_sid();
+
+    if (msg_sid.empty())
+    {
+      msg_sid = ActionTextKeys::ACTION_DIG_THROUGH_TILE;
+    }
+
+    manager.add_new_message(StringTable::get(msg_sid));
     manager.send();
   }
 }

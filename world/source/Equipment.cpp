@@ -1,4 +1,5 @@
 #include "Equipment.hpp"
+#include "ItemProperties.hpp"
 #include "ItemSerializationFactory.hpp"
 #include "Serialize.hpp"
 
@@ -130,6 +131,19 @@ uint Equipment::count_items() const
   }
 
   return count;
+}
+
+bool Equipment::is_digging_implement_equipped() const
+{
+  bool is_digger = false;
+  ItemPtr item = get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
+
+  if (item != nullptr)
+  {
+    is_digger = !item->get_additional_property(ItemProperties::ITEM_PROPERTIES_DIG_HARDNESS).empty();
+  }
+
+  return is_digger;
 }
 
 // Initialize the internal map of items.

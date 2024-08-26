@@ -25,8 +25,10 @@ class DropAction : public IActionManager
     // species and generates fruit.
     bool plant_food_or_seed(CreaturePtr creature, const std::map<std::string, std::string>& item_properties, const Coordinate& coords, TilePtr tile, MapPtr current_map, ItemPtr item_to_plant, const bool is_food);
     bool plant_food(CreaturePtr creature, const std::map<std::string, std::string>& item_properties, const Coordinate& coords, TilePtr tile, MapPtr current_map, ItemPtr item_to_plant);
-    bool plant_seed(CreaturePtr creature, const std::map<std::string, std::string>& item_properties, const Coordinate& coords, TilePtr tile, MapPtr current_map);
+    bool plant_seed(CreaturePtr creature, const std::map<std::string, std::string>& item_properties, const Coordinate& coords, TilePtr tile, MapPtr current_map, ItemPtr seed_to_plant);
     
+    bool add_remainder_of_plantable_if_necessary(MapPtr current_map, TilePtr tile, ItemPtr item_to_plant);
+
     bool bury_remains(CreaturePtr creature, const std::string& remains_race_id, const uint quantity, const Coordinate& coords, TilePtr tile, MapPtr current_map);
     
     bool build_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const bool building_material, const std::string& grave_tile_type_s, const std::string& wall_tile_type_s, const std::string& floor_tile_type_s, const std::string& water_tile_type, const std::string& feature_ids);

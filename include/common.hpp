@@ -17,3 +17,10 @@ using Coordinate = std::pair<int, int>;
 using uchar = unsigned char;
 using uint = unsigned int;
 using ulonglong = unsigned long long;
+
+enum struct ternary
+{
+	TERNARY_UNDEFINED = -1,
+	TERNARY_FALSE = 0,
+	TERNARY_TRUE = 1
+};

@@ -4326,6 +4326,9 @@
 				<WeaponSkills>
 					<RodsAndStaves>5</RodsAndStaves>
 				</WeaponSkills>
+				<RangedWeaponSkills>
+					<Slings>5</Slings>
+				</RangedWeaponSkills>
 			</Skills>
 			<Titles>
 				<Default>SHEPHERD_DEFAULT_TITLE</Default>
@@ -4371,6 +4374,15 @@
 				<Feet>
 					<ID>shoes</ID>
 				</Feet>
+				<Ranged>
+					<ID>sling</ID>
+				</Ranged>
+				<Ammunition>
+					<ID>_stone</ID>
+					<Quantity>
+						<Amount>6</Amount>
+					</Quantity>
+				</Ammunition>
 				<InitialInventory>
 					<InitialItem>
 						<ID>trail_ration</ID>
@@ -8416,8 +8428,8 @@
 			<Effect id="_level_up">
 				<Location>assets/sound/effects/level_up.wav</Location>
 			</Effect>
-			<Effect id="_crowning">
-				<Location>assets/sound/effects/crowning.wav</Location>
+			<Effect id="_click">
+				<Location>assets/sound/effects/click.wav</Location>
 			</Effect>
 		</Effects>
 		<Music>
@@ -8430,8 +8442,29 @@
 			<Song event="_broken_house">
 				<Location>assets/sound/music/the_broken_house.ogg</Location>
 			</Song>
+			<Song event="_crowning_good">
+				<Location>assets/sound/music/crowning_good.ogg</Location>
+			</Song>
+			<Song event="_crowning_neutral">
+				<Location>assets/sound/music/crowning_neutral.ogg</Location>
+			</Song>
+			<Song event="_crowning_evil">
+				<Location>assets/sound/music/crowning_evil.ogg</Location>
+			</Song>
+			<Song event="_planetary_teleport">
+				<Location>assets/sound/music/planetary_teleport.ogg</Location>
+			</Song>
+			<Song event="_respawn">
+				<Location>assets/sound/music/respawn.ogg</Location>
+			</Song>
 			<Song event="_overworld" map_type="1">
 				<Location>assets/sound/music/water_music_1.ogg</Location>
+			</Song>
+			<Song event="_overworld" map_type="1" winner="1">
+				<Location>assets/sound/music/ships_return.ogg</Location>
+			</Song>
+			<Song event="_carcassia">
+				<Location>assets/sound/music/carcassia.ogg</Location>
 			</Song>
 			<Song event="_underwater" map_type="3">
 				<Location>assets/sound/music/water_music_2.ogg</Location>
@@ -8439,11 +8472,25 @@
 			<Song event="_title" tile_type="49">
 				<Location>assets/sound/music/o_aurelion_o_celeste.ogg</Location>
 			</Song>
+			<Song tile_type="25">
+				<Location>assets/sound/music/settlement.ogg</Location>
+			</Song>
 			<Song id="world_map" map_type="0">
 				<Location>assets/sound/music/water_music_1.ogg</Location>
 			</Song>
+			<Song id="world_map" map_type="0" winner="1">
+				<Location>assets/sound/music/ships_return.ogg</Location>
+			</Song>
+			<Song id="fae_caravan">
+				<Location>assets/sound/music/caravan.ogg</Location>
+			</Song>
+			<!-- Intentionally blank for cosmos - should be quiet. -->
+			<Song map_type="4"><Location/></Song>
 			<Song map_type="5">
 				<Location>assets/sound/music/water_music_1.ogg</Location>
+			</Song>
+			<Song map_type="5" winner="1">
+				<Location>assets/sound/music/ships_return.ogg</Location>
 			</Song>
 			<Song map_type="2">
 				<Location>assets/sound/music/underworld.ogg</Location>

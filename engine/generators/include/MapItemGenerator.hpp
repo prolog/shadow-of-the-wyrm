@@ -11,10 +11,14 @@ class MapItemGenerator
 
   protected:
     bool generate_dead_adventurer(MapPtr map, const int danger_level);
+    bool generate_ivory_on_shopkeeper(MapPtr map, const Shop& shop);
 
     static const int OUT_OF_DEPTH_ITEMS_CHANCE;
     static const int PCT_CHANCE_ADVENTURER_SKELETON_TRAP;
     static const int PCT_CHANCE_ADVENTURER_CORPSE;
     static const int PCT_CHANCE_ADVENTURER_ITEMS;
+    static const int SHOPKEEPER_ADDITIONAL_IVORY_THRESOLD;
+    static const int MIN_REPOP_IVORY;
+    static const int MAX_REPOP_IVORY;
 };
 

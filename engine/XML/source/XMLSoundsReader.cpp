@@ -85,8 +85,17 @@ void XMLSoundsReader::parse_song(const XMLNode& song_node, Song& song)
       tile_type = static_cast<TileType>(String::to_int(tile_type_s));
     }
 
+    string winner_s = XMLUtils::get_attribute_value(song_node, "winner");
+    ternary winner = ternary::TERNARY_UNDEFINED;
+
+    if (!winner_s.empty())
+    {
+      winner = static_cast<ternary>(String::to_int(winner_s));
+    }
+
     string location = XMLUtils::get_child_node_value(song_node, "Location");
 
+    song.set_winner(winner);
     song.set_event(event);
     song.set_id(id);
     song.set_tile_type(tile_type);

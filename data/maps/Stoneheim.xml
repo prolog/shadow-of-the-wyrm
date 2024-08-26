@@ -271,4 +271,10 @@
 			</StockedItemTypes>
 		</Shop>
 	</Shops>
+	<Properties>
+		<Property>
+			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
+			<Value>assets/sound/music/stoneheim.ogg</Value>
+		</Property>
+	</Properties>
 </CustomMap>

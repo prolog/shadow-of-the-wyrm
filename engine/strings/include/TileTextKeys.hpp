@@ -87,6 +87,11 @@ class TileTextKeys
 
     static const std::string TILE_INSCRIPTION_ILLITERATE;
 
+    static const std::string TILE_DIG_DEFAULT;
+    static const std::string TILE_DIG_TREE;
+    static const std::string TILE_DIG_WEEDS;
+    static const std::string TILE_DIG_BUSH;
+
   protected:
     TileTextKeys();
     ~TileTextKeys();

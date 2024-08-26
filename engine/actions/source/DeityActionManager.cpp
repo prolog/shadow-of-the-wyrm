@@ -122,7 +122,7 @@ void DeityActionManager::handle_displeasing_action(CreaturePtr creature, Deity* 
         // below zero, show the deity's anger.
         if ((original_piety >= 0) && (new_piety < 0) && creature->get_is_player())
         {
-          add_displeasure_message(creature, deity_decision_handler->get_message_sid());
+          add_displeasure_message(creature, deity_decision_handler->get_message_sid(), deity_decision_handler->get_add_message_with_pause(), deity_decision_handler->get_reload_map_music());
         }
 
         // TODO: If the creature follows the deity, something other than anger
@@ -152,11 +152,28 @@ void DeityActionManager::handle_pleasing_action(CreaturePtr creature, Deity* dei
 
 // Add a message about the deity being angry.  This is typically only done when
 // piety has dropped from being positive to negative.
-void DeityActionManager::add_displeasure_message(CreaturePtr creature, const string& displeasure_message_sid)
+void DeityActionManager::add_displeasure_message(CreaturePtr creature, const string& displeasure_message_sid, const bool add_new_message_with_pause, const bool reload_map_music)
 {
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   string displeasure = StringTable::get(displeasure_message_sid);
-  
-  manager.add_new_message(displeasure);
+  Game& game = Game::instance();
+
+  if (add_new_message_with_pause)
+  {
+    manager.add_new_message_with_pause(displeasure);
+    game.get_current_player()->get_decision_strategy()->get_confirmation();
+  }
+  else
+  {
+    manager.add_new_message(displeasure);
+  }
+
   manager.send();
+
+  if (reload_map_music)
+  {
+    MapPtr map = game.get_current_map();
+    SoundPtr sound = game.get_sound();
+    sound->play_music(map);
+  }
 }

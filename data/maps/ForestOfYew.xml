@@ -28,10 +28,10 @@
 	T,T,TT,,T,T,T,TT,T,,,,,,,,,,,####.####,,,,#....#,,,,,,T,TTT,,,,T,T,,,,T,,,,TT,,T
 	,T,TT,T,T,T,,,T,TT,,,#####,,,,,,,,,,T,T,,,######,,T,T,T,T,,,TT,TT,T,T,,,TTT,,T,T
 	T,T,,,T,T,,,,,T,T,,,,#....,,,T,,,,T,,,,,T,,,,,,,,,TT,,,,,,TT,TT,,T,T,T,,TT,,,T,,
-	,TT,,,T,,,T,T,TTTT,,,#...#,,##.##,,,,#####,T,,,,,,TTT,T,T,,T,,,TT,,TT,TTTT,T,T,T
-	T,,,T,,,T,T,,,T,,T,,,#####,,#...#,,,,....#,,,,T,,,T,,,,,,,TT,,T,,TT,,T,,,TT,,,,T
+	,TT,,,T,,,T,T,TTTT,,,#...#,,##.##,,,,#####,T,,,,T,TTT,T,T,,T,,,TT,,TT,TTTT,T,T,T
+	T,,,T,,,T,T,,,T,,T,,,#####,,#...#,,,,....#,,,,,,,,T,,,,,,,TT,,T,,TT,,T,,,TT,,,,T
 	T,T,,,TTTT,,,,TTTTT,,,,,,T,,#...#,,T,#...#,,,,,,,,,,,,T,T,,TT,,,,,T,,,,,TTT,,T,,
-	,,T,T,T,,TT,,,T,,T,TT,,,,T,,#####,TT,#####,T,T,,,,w,T,T,TT,T,T,,T,T,,TT,,T,,,T,T
+	,,T,T,T,,TT,,,T,,T,TT,,,,T,,#####,TT,#####,T,,,,T,w,T,T,TT,T,T,,T,T,,TT,,T,,,T,T
 	T,,,,,T,T,,TTTT,,TTT,TTT,,,,,,,,,,,,,,,,,,,,,,,,,,,,T,T,,,,TT,,,,,,T,,T,,,,TTT,,
 	T,T,T,,,T,T,TTT,TT,,TT,TTTT,T,T,TTT,T,T,TTTTT,TT,TT,,,T,TTT,,,T,T,TT,T,,TT,,,T,T
 	,,T,,,T,T,,TT,,,T,TT,T,T,T,,TTT,,TT,T,TT,TTT,TT,T,T,T,,,T,,,TTT,,T,,T,,,T,T,,T,T
@@ -67,6 +67,13 @@
 				<Coord>
 					<Row>16</Row>
 					<Col>49</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>woodwind_quartet</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>46</Col>
 				</Coord>
 			</Placement>
 			<Placement>
@@ -245,4 +252,10 @@
 			</StockedItemTypes>
 		</Shop>
 	</Shops>
+	<Properties>
+		<Property>
+			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
+			<Value>assets/sound/music/yew.ogg</Value>
+		</Property>
+	</Properties>
 </CustomMap>

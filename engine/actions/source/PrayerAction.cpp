@@ -139,6 +139,7 @@ void PrayerAction::finish_prayer(CreaturePtr creature, const DeityDecisionImplic
   float piety_cost_multiplier = cur_class->get_piety_cost_multiplier();
   int piety_cost = static_cast<int>(piety_loss * piety_cost_multiplier);
   int initial_piety = status.get_piety();
+  Game& game = Game::instance();
 
   status.decrement_piety(piety_cost);
   religion.set_deity_status(deity_id, status);
@@ -147,9 +148,27 @@ void PrayerAction::finish_prayer(CreaturePtr creature, const DeityDecisionImplic
   {
     IMessageManager& manager = MM::instance();    
     string prayer_message = StringTable::get(decision_implications.get_message_sid());
-      
-    manager.add_new_message(prayer_message);
+    bool add_new_message_with_pause = decision_implications.get_add_message_with_pause();
+    bool reload_map_music = decision_implications.get_reload_map_music();
+
+    if (add_new_message_with_pause)
+    {
+      manager.add_new_message_with_pause(prayer_message);
+      game.get_current_player()->get_decision_strategy()->get_confirmation();
+    }
+    else
+    {
+      manager.add_new_message(prayer_message);
+    }
+
     manager.send();
+
+    if (reload_map_music)
+    {
+      MapPtr map = game.get_current_map();
+      SoundPtr sound = game.get_sound();
+      sound->play_music(map);
+    }
   }
 
   // If in the deity's good books, praying can increase charisma.

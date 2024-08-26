@@ -4200,3 +4200,13 @@ with hidden pits of snakes whose bite would stop %b
 your heart. He felt the two of them descend %b
 until they reached the wall that marked the tunnel's end.
 %p
+Unknowable, except of course by the feel %b
+drilled into all of them since they were small - %b
+the passage back, its touch - so if they'd steal %b
+away, they'd know the route to find the hall. %b
+He felt the stone, and found the hidden gap %b
+which moved constantly - by magic - took a breath, %b
+and shimmied through the rock which would have trapped him %b
+had he panicked, but didn't.  His movements quick and deft, %b
+he entered in the torch-lit halls, then stopped, and wept.
+%p

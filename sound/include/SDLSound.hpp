@@ -36,6 +36,7 @@ class SDLSound : public Sound
 		std::set<std::string> disabled_sound_ids;
 		Mix_Music* cur_music;
 		std::string playing_music_location;
+		bool restart_music;
 
 		static const int FADE_MS;
 

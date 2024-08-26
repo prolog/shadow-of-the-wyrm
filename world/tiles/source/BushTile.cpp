@@ -19,6 +19,21 @@ std::string BushTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_BUSH;
 }
 
+std::string BushTile::get_dig_message_sid() const
+{
+  return TileTextKeys::TILE_DIG_BUSH;
+}
+
+TileType BushTile::get_decomposition_tile_type() const
+{
+  return TileType::TILE_TYPE_FIELD;
+}
+
+std::vector<std::pair<std::pair<int, int>, std::string>> BushTile::get_decomposition_item_ids() const
+{
+  return { {{1, 2}, ItemIdKeys::ITEM_ID_BRANCH} };
+}
+
 Tile* BushTile::clone()
 {
   return new BushTile(*this);

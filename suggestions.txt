@@ -1,22 +1,18 @@
 Me:
-- ASSET RELEASE (images, sounds)
+- ASSET RELEASE (images, sounds!)
 - git push --tags
-- Air music
+- ebalster: down/up in ponds in ID; followers shouldn't accidentally target
+  leader eg with rock throw on something else in tight quarters
+- Caldera's water should be death - swimming or descending
 - underwater cavern? something like that?
-- Arena: turn music off, then on: not working
-- look at eg the fae caravan - creatures getting generated in water on coast
-  lines
+- is the username check on savefiles still needed?
 - test orb placement in wyrmeswraec
 - dig in water
 - super_type_message_sids -> super_type_sound_id?
 - Need to release sprites, sound effects, music
 - hemsio: autosave not working?
-- what about per-deity songs? triggered when altar on level?
 - set item status property in CreateItemScreen
 - Use this for fletchery, bowyer, etc, to improve item & quantity
-- Fix power curve: ID vs Carc
-- double check the max-things-planted code? was able to plant quite a few
-  items...
 - test both seed and food planting on same tile
 - tile item transforms: drop items, test save and load.
 - Hidden PCs are never found via bumping (Josh Engdahl)
@@ -27,25 +23,17 @@ Me:
 - open pit mine (pick axes or mattocks, gold, stone, magici...). may or may not
   be abandoned.
 - generic miner npc
-- mushrooms: regular (a few types), poisoned (a few types), magical (effects) 
-  - regular and poisoned should appear rarely in fields, more often in forests,
-    marshes
-  - magical should appear much more rarely, though have a chance to be generated
-    with regular items in dungeons
-- Notify GB re new version?
 - YARD: let NPCs pray in desperation as well
 - picking up an item - prompt (with swyrm option) re whether to equip it?
 - mountaineering/lore: chance to find magici shards (+ mark tile) and also to
   generate a down staircase that leads to passageways that lead to a cavern
 - issue with too many save files, but there's only one? -1
-- JovanM/Bentwing: godless
 - Branding should give a base 20% resist
 - mushrooms with randomized effects, descs like wildflowers. eat scripts?
 - Desert/Forest/etc Lore (+ dungeoneering?): to-hit, damage, speed bonuses on 
   that terrain
 - creature-specific turn-to-fight/rage values`
 - Uniques and fleeing?
-- ON RELEASE: email George.
 - what other creatures can be templated now?
 - Killing creature on stairs should allow dropping items but not corpse,
   and should generate a message
@@ -56,11 +44,6 @@ Me:
   - Lancer's Walk
   - Shrink the shop a bit
   - Allow setting the shopkeeper name and setting the item types
-- Fleeing behaviour for humanoids (JE)
-  - when damaged in combat, chance to flee should be inverse of % hp left
-  - fleeing should pick the direction that maximizes distance from threats
-  - if cornered/threat adjacent (all directions give the same value), 
-    remove flag
 - can use warp in telari ocean
 - Elinor and Verra
 - in villages: retired cartographers?
@@ -116,7 +99,6 @@ Me:
   - exit custom
   - down/up custom
   - down/up others like cathedral
-- oceanography: find vortices that lead to sunken shipwrecks
 - controller support - this could also allow menu support for newer players
 - ascension/descension should take you to the right place on the map
 - anything not sea on the upper map should be rock
@@ -143,7 +125,6 @@ Me:
 - JE: drank fortified wine in store, wine not owned by shopkeeper, shopkeeper
   remained friendly but attacked
 - the archery/range issue: nothing gets added to MM
-- Let's finally do it: map ascension/descension
 - cavern towns/underground races (dw, gn)
 - need to test pack generation...
 - is the witchling membership bugged?
@@ -524,7 +505,6 @@ Marcin Puc:
 
 Xvordan:
 - in-map waypoint system
-- Would you consider adding in a sound playback system, kind of like how DCSS does it? They use regular expressions to match to a game event to play a sound.
 
 Stevie-3:
 - tab cycles through creatures, items, (+ features?) in view
@@ -537,3 +517,9 @@ EruditeFigglebottom:
 
 RelicWraith:
 - Suggestion: Praying during a deity's specific holy day grants the player a gift, once per holy day. Could be just flavor items rather than anything that gives significant power (eg. a themed companion or food item). Even low piety worshipers get gifts, if not just junk...
+
+Paul Raymond-Robichaud:
+- be able to exit game to main screen
+- sheep generate tame for shepherds (sheep need to actually generate then)
+- shift+letter for race, class, religion help on start
+- special events/festivities on certain days? (feasts, etc)

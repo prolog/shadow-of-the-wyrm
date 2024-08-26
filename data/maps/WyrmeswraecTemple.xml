@@ -339,4 +339,10 @@
 			</FirePillar>
 		</FeaturePlacement>
 	</Features>
+	<Properties>
+		<Property>
+			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
+			<Value>assets/sound/music/a_black_mark.ogg</Value>
+		</Property>
+	</Properties>
 </CustomMap>

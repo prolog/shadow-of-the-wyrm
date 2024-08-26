@@ -279,4 +279,10 @@
 			</Placement>
 		</Items>
 	</InitialPlacements>
+	<Properties>
+		<Property>
+			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
+			<Value>assets/sound/music/only_the_holy_and_the_dead.ogg</Value>
+		</Property>
+	</Properties>
 </CustomMap>

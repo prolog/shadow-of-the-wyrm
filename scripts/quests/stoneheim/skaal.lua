@@ -42,6 +42,10 @@ local function check_defense()
     clear_and_add_message("SKAAL_RAID2_SID")
 
     add_object_to_player_tile("protector")
+    
+    -- Stop playing the ambush/battle music and go back to the Stoneheim
+    -- theme.
+    play_map_music()
   else
     clear_and_add_message("SKAAL_RAID_IN_PROGRESS_SID")
   end

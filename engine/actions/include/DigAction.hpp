@@ -31,7 +31,7 @@ class DigAction : public IActionManager
     void add_cannot_dig_on_tile_super_type_message(CreaturePtr creature) const;
     bool tile_super_type_supports_digging(const TileSuperType tst) const;
     void handle_potential_item_breakage(CreaturePtr creature, TilePtr adjacent_tile, ItemPtr item) const;
-    void add_successful_dig_message(CreaturePtr creature) const;
+    void add_successful_dig_message(CreaturePtr creature, TilePtr adjacent_tile) const;
     void add_stone_dust_message(CreaturePtr creature) const;
     bool add_shop_confirmation_message_if_necessary(CreaturePtr creature, MapPtr map, const Coordinate& dig_coord) const;
 

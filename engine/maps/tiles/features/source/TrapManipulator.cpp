@@ -100,6 +100,8 @@ void TrapManipulator::trigger_trap(TrapPtr trap, CreaturePtr creature)
       manager.add_new_message(trigger_message);
       manager.send();
     }
+
+    Game::instance().get_sound()->play(SoundEffectID::CLICK);
   }
 
   trap->set_triggered(true);

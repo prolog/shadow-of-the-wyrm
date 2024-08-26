@@ -5,6 +5,7 @@
 #include "CreatureFactory.hpp"
 #include "CreatureGenerationConstants.hpp"
 #include "CreatureProperties.hpp"
+#include "CreatureTileSafetyChecker.hpp"
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DirectionLocationTextKeys.hpp"
@@ -26,6 +27,7 @@
 #include "MovementAccumulationUpdater.hpp"
 #include "MoveScript.hpp"
 #include "MovementTextKeys.hpp"
+#include "MusicEvent.hpp"
 #include "PickupAction.hpp"
 #include "RaceManager.hpp"
 #include "RageEffect.hpp"
@@ -299,16 +301,19 @@ bool MapUtils::place_creature_randomly(MapPtr map, const string& creature_id)
 
   if (creature != nullptr)
   {
+    CreatureTileSafetyChecker ctsc;
+
     // Place the creature
     for (int attempts = 0; attempts < 200; attempts++)
     {
       int creature_row = RNG::range(0, rows - 1);
       int creature_col = RNG::range(0, cols - 1);
 
-      // Check to see if the spot is empty, and if a creature can be added there.
+      // Check to see if the spot is empty, if it's safe (eg don't generate
+      // air-breathers on water) and if a creature can be added there.
       TilePtr tile = map->at(creature_row, creature_col);
 
-      if (MapUtils::is_tile_available_for_creature(creature, tile))
+      if (ctsc.is_tile_safe_for_creature(creature, tile) && MapUtils::is_tile_available_for_creature(creature, tile))
       {
         ostringstream ss;
         ss << "Placing creature " << creature->get_id() << " randomly at " << creature_row << "," << creature_col;
@@ -2489,6 +2494,15 @@ void MapUtils::update_creatures(MapPtr map)
 
       std::map<string, string> props = map->get_properties();
       mcg.generate_random_creatures(map, map->get_danger(), props);
+
+      Game& game = Game::instance();
+      game.get_sound()->play_music_for_event(MusicEvent::MUSIC_EVENT_RESPAWN, false);
+
+      IMessageManager& manager = MM::instance();
+      manager.add_new_message_with_pause(StringTable::get(TextKeys::RESPAWN_MESSAGE));
+      game.get_current_player()->get_decision_strategy()->get_confirmation();
+
+      Game::instance().get_sound()->play_music(map);
     }
   }
 }

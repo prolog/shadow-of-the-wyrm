@@ -1,5 +1,5 @@
-Shadow of the Wyrm v1.6.7 "Michelagnolo Galilei"
-- Version started February 18, 2024.
+Shadow of the Wyrm v1.7.2 "Michelagnolo Galilei"
+- Version started February 18, 2024. Version finalized August 25, 2024.
 
 - Evergreen trees are now cyan in winter, to mimic the appearance of snow on
   their branches.
@@ -13,10 +13,61 @@ Shadow of the Wyrm v1.6.7 "Michelagnolo Galilei"
 
 - For this reason, NPCs won't chance using cursed wands.
 
+- You can now dig through non-blocking diggable tiles (trees, etc) if you have
+  a digging implement equipped (sr.mafioso).
+
+- Axes can now be used to cut down trees. Axes more suited to this purpose
+  (woodsman's axe, briar axe) will not break, though others might.
+
+- Digging through weeds no longer gives lumber, branches, and boughs.
+
+- Digging through trees, bushes, and weeds gives different messages than when
+  digging through earth and rock.
+
+- Working with traps now trains Disarm Traps (hemsio).
+
+- Improved the way in which Foraging and Herbalism train: these now train when
+  herbs or foragables are generated during map creation.
+
+- You will no longer be crowned if standing over a tile (eg, open water) that
+  would cause your crowning gift to disappear.
+
+- Shopkeepers now get additional ivory when shops repop and they're below a
+  certain threshold (hemsio).
+
+- Shepherds start with slings and a few stones (Paul Raymond-Robichaud).
+
+- Crowning gifts are now generated blessed.
+
+- Creature respawns now generate a message (with associated music effect).
+
+- Full support for music and an initial soundtrack.
+
 - New names, etc.
+
+- New creatures: chamber ensemble.
+
+- The danger level now scales properly from Isen Dun or Carcassia to its 
+  furthest point at the edge of the map (previously, a fixed value was used,
+  and Carcassia starts resulted in slightly less powerful creatures at the
+  furthest point).
 
 - Stanzas for "Tel and Floridel".
 
+- Bug fixes:
+
+  - Smithing was training far less frequently than it should (hemsio).
+
+  - The message for NPCs kicking objects wasn't working correctly (Paul 
+    Raymond-Robichaud).
+
+  - The guidebook didn't note that Shepherds get Weaving (Paul Raymond-
+    Robichaud).
+
+  - Skinning stacks of corpses of the same type led to duplication (Paul
+    Raymond-Robichaud).
+
+  - Planting seeds wasn't displaying a message.
 
 Shadow of the Wyrm v1.6.5 "Reusner"
 - Version started December 10, 2023. Version finalized February 18, 2024.

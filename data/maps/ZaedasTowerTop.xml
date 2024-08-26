@@ -295,5 +295,9 @@
 			<Name>MAP_PROPERTIES_CANNOT_TELEPORT</Name>
 			<Value>1</Value>
 		</Property>
+		<Property>
+			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
+			<Value>assets/sound/music/water_music_3.ogg</Value>
+		</Property>
 	</Properties>
 </CustomMap>

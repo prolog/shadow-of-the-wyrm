@@ -14,6 +14,7 @@ const int SDLSound::FADE_MS = 750;
 SDLSound::SDLSound()
 {
 	cur_music = NULL;
+	restart_music = false;
 }
 
 SDLSound::~SDLSound()
@@ -87,7 +88,10 @@ void SDLSound::toggle_music(const bool new_val)
 	if (new_val)
 	{
 		MapPtr map = Game::instance().get_current_map();
+
+		restart_music = true;
 		play_music(map);
+		restart_music = false;
 	}
 	else
 	{
@@ -116,10 +120,11 @@ void SDLSound::play_music_for_event(const string& event, const bool loop)
 {
 	if (enable_sound && enable_music)
 	{
-		string location = music.get_event_song(event);
+		string location = music.get_event_song(event, Game::instance().get_winner());
 		play_music_location(location, loop);
 	}
 }
+
 // Play music for the map.
 //
 // Order checked:
@@ -136,20 +141,21 @@ void SDLSound::play_music(MapPtr map, const bool loop)
 			TileType tt = map->get_terrain_type();
 			MapType mt = map->get_map_type();
 			string location = map->get_property(MapProperties::MAP_PROPERTIES_SONG_LOCATION);
+			ternary winner = Game::instance().get_winner();
 
 			if (location.empty())
 			{
-				location = music.get_song(id);
+				location = music.get_song(id, winner);
 			}
 
 			if (location.empty())
 			{
-				location = music.get_song(tt);
+				location = music.get_song(tt, winner);
 			}
 
 			if (location.empty())
 			{
-				location = music.get_song(mt);
+				location = music.get_song(mt, winner);
 			}
 
 			play_music_location(location, loop);
@@ -229,8 +235,9 @@ void SDLSound::play_music_location(const string& location, const bool loop)
 		}
 
 		// If we've got a piece of music to play, play it, unless it's what's
-		// currently playing. 
-		if (new_music)
+		// currently playing, or if the sound player has set a flag to override
+		// this logic and restart it.
+		if (new_music || restart_music)
 		{
 			cur_music = Mix_LoadMUS(location.c_str());
 

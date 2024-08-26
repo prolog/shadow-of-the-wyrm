@@ -21,6 +21,7 @@ class TileTransform : public ISerializable
 
     void set_properties(const std::map<std::string, std::string>& new_properties);
     std::map<std::string, std::string> get_properties() const;
+    const std::map<std::string, std::string>& get_properties_cref() const;
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;

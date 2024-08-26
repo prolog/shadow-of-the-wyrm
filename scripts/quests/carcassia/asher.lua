@@ -18,6 +18,7 @@ local function asher_islet_completion_fn()
   clear_and_add_message("ASHER_ISLET_QUEST_COMPLETE3_SID")
 
   add_piety(PLAYER_ID, CPIETY_CROWNING)
+  set_map_music("asher_islet", "assets/sound/music/psalm.ogg")
 
   return true
 end

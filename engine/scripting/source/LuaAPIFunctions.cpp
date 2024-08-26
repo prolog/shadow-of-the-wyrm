@@ -287,6 +287,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_set_custom_map_id", map_set_custom_map_id);
   lua_register(L, "map_set_edesc", map_set_edesc);
   lua_register(L, "map_set_property", map_set_property);
+  lua_register(L, "map_get_property", map_get_property);
   lua_register(L, "map_set_tile_subtype", map_set_tile_subtype);
   lua_register(L, "map_set_tile_property", map_set_tile_property);
   lua_register(L, "map_add_location", map_add_location);
@@ -485,6 +486,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "is_tile_available_for_creature", is_tile_available_for_creature);
   lua_register(L, "set_creature_godless", set_creature_godless);
   lua_register(L, "play_sound_effect", play_sound_effect);
+  lua_register(L, "is_sound_enabled", is_sound_enabled);
+  lua_register(L, "is_music_enabled", is_music_enabled);
   lua_register(L, "play_event_music", play_event_music);
   lua_register(L, "play_map_music", play_map_music);
   lua_register(L, "set_map_music", set_map_music);
@@ -492,6 +495,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "play_music_location", play_music_location);
   lua_register(L, "get_music_location_for_event", get_music_location_for_event);
   lua_register(L, "get_music_location_for_map_type", get_music_location_for_map_type);
+  lua_register(L, "does_item_exist_on_map", does_item_exist_on_map);
 }
 
 // Lua API helper functions
@@ -3904,6 +3908,32 @@ int map_set_property(lua_State* ls)
   return 0;
 }
 
+// Get a property on the given map.
+int map_get_property(lua_State* ls)
+{
+  string prop_val;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string map_id = lua_tostring(ls, 1);
+    string k = lua_tostring(ls, 2);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      prop_val = map->get_property(k);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to map_get_property");
+  }
+
+  lua_pushstring(ls, prop_val.c_str());
+  return 1;
+}
+
 // Set the tile subtype appropriately.
 int map_set_tile_subtype(lua_State* ls)
 {
@@ -6148,6 +6178,10 @@ int set_winner(lua_State* ls)
       // whether a particular win condition is satisfied.
       string win_property = CreatureProperties::CREATURE_PROPERTIES_WINNER + "_" + to_string(win_type);
       creature->set_additional_property(win_property, to_string(true));
+
+      Game& game = Game::instance();
+      MapPtr cur_map = game.get_current_map();
+      game.get_sound()->play_music(cur_map);
     }
   }
   else
@@ -10336,6 +10370,42 @@ int play_sound_effect(lua_State* ls)
   return 1;
 }
 
+int is_sound_enabled(lua_State* ls)
+{
+  bool enabled = false;
+
+  if (lua_gettop(ls) == 0)
+  {
+    SoundPtr sound = Game::instance().get_sound();
+
+    if (sound != nullptr)
+    {
+      enabled = sound->get_enable_sound();
+    }
+  }
+
+  lua_pushboolean(ls, enabled);
+  return 1;
+}
+
+int is_music_enabled(lua_State* ls)
+{
+  bool enabled = false;
+
+  if (lua_gettop(ls) == 0)
+  {
+    SoundPtr sound = Game::instance().get_sound();
+
+    if (sound != nullptr)
+    {
+      enabled = sound->get_enable_music();
+    }
+  }
+
+  lua_pushboolean(ls, enabled);
+  return 1;
+}
+
 int play_event_music(lua_State* ls)
 {
   bool played = false;
@@ -10401,12 +10471,20 @@ int play_map_music(lua_State* ls)
 int set_map_music(lua_State* ls)
 {
   bool added = false;
+  int num_args = lua_gettop(ls);
 
-  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  if (num_args >= 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
   {
     string map_id = lua_tostring(ls, 1);
     string music_location = lua_tostring(ls, 2);
     SoundPtr sound = Game::instance().get_sound();
+
+    bool play_music = false;
+
+    if (num_args == 3 && lua_isboolean(ls, 3))
+    {
+      play_music = lua_toboolean(ls, 3);
+    }
 
     if (sound != nullptr && !map_id.empty())
     {
@@ -10415,8 +10493,12 @@ int set_map_music(lua_State* ls)
       if (map != nullptr)
       {
         map->set_property(MapProperties::MAP_PROPERTIES_SONG_LOCATION, music_location);
-        sound->play_music(map);
         added = true;
+
+        if (play_music)
+        {
+          sound->play_music(map);
+        }
       }
     }
   }
@@ -10460,14 +10542,22 @@ int play_music_event(lua_State* ls)
 
 int play_music_location(lua_State* ls)
 {
-  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 1 && lua_isstring(ls, 1))
   {
     string location = lua_tostring(ls, 1);
     SoundPtr sound = Game::instance().get_sound();
+    bool loop = true;
+
+    if (num_args == 2 && lua_isboolean(ls, 2))
+    {
+      loop = lua_toboolean(ls, 2);
+    }
 
     if (sound != nullptr)
     {
-      sound->play_music_location(location);
+      sound->play_music_location(location, loop);
     }
   }
   else
@@ -10485,12 +10575,15 @@ int get_music_location_for_event(lua_State* ls)
   if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
   {
     string event = lua_tostring(ls, 1);
-    SoundPtr sound = Game::instance().get_sound();
+    Game& game = Game::instance();
+    SoundPtr sound = game.get_sound();
+    CreaturePtr player = game.get_current_player();
+    ternary winner = game.get_winner();
 
     if (sound != nullptr)
     {
       Music music = sound->get_music();
-      location = music.get_event_song(event);
+      location = music.get_event_song(event, winner);
     }
   }
   else
@@ -10509,12 +10602,14 @@ int get_music_location_for_map_type(lua_State* ls)
   if (lua_gettop(ls) == 1 && lua_isnumber(ls, 1))
   {
     MapType mt = static_cast<MapType>(lua_tointeger(ls, 1));
-    SoundPtr sound = Game::instance().get_sound();
+    Game& game = Game::instance();
+    SoundPtr sound = game.get_sound();
+    ternary winner = ternary::TERNARY_UNDEFINED;
 
     if (sound != nullptr)
     {
       Music music = sound->get_music();
-      location = music.get_song(mt);
+      location = music.get_song(mt, winner);
     }
   }
   else
@@ -10523,5 +10618,47 @@ int get_music_location_for_map_type(lua_State* ls)
   }
 
   lua_pushstring(ls, location.c_str());
+  return 1;
+}
+
+int does_item_exist_on_map(lua_State* ls)
+{
+  bool exists = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string item_id = lua_tostring(ls, 1);
+    MapPtr map = Game::instance().get_current_map();
+
+    if (map != nullptr)
+    {
+      const TilesContainer& tiles = map->get_tiles_ref();
+
+      for (const auto& t_pair : tiles)
+      {
+        TilePtr tile = t_pair.second;
+
+        if (tile != nullptr)
+        {
+          IInventoryPtr inv = tile->get_items();
+
+          if (inv != nullptr)
+          {
+            if (inv->has_item(item_id))
+            {
+              exists = true;
+              break;
+            }
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to does_item_exist_on_map");
+  }
+
+  lua_pushboolean(ls, exists);
   return 1;
 }

@@ -12,6 +12,7 @@
 #include "NullInventory.hpp"
 #include "Serialize.hpp"
 #include "Tile.hpp"
+#include "TileTextKeys.hpp"
 #include "WeatherProperties.hpp"
 
 using namespace std;
@@ -562,6 +563,16 @@ TileSuperType Tile::get_tile_super_type() const
   {
     return get_tile_base_super_type();
   }
+}
+
+bool Tile::get_is_diggable() const
+{
+  return (get_decomposition_tile_type() != TileType::TILE_TYPE_UNDEFINED);
+}
+
+string Tile::get_dig_message_sid() const
+{
+  return TileTextKeys::TILE_DIG_DEFAULT;
 }
 
 // All tiles are assumed to be ground tiles, unless the derived class declares otherwise.

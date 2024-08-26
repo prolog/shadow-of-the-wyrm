@@ -73,4 +73,10 @@
 			</Placement>
 		</Items>
 	</InitialPlacements>
+	<Properties>
+		<Property>
+			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
+			<Value>assets/sound/music/caldera.ogg</Value>
+		</Property>
+	</Properties>
 </CustomMap>

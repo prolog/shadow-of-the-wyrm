@@ -441,6 +441,19 @@ CreaturePtr Game::get_current_player() const
   return current_player;
 }
 
+ternary Game::get_winner() const 
+{
+  CreaturePtr player = get_current_player();
+  ternary winner = ternary::TERNARY_UNDEFINED;
+
+  if (player != nullptr)
+  {
+    winner = player->get_satisfied_win_conditions().empty() ? ternary::TERNARY_FALSE : ternary::TERNARY_TRUE;
+  }
+
+  return winner;
+}
+
 // Create the new world, and set the player at the special "player's starting location" point.
 // Then, read in the XML areas, and overlay that on top.
 void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)

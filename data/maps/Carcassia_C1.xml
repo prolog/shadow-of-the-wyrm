@@ -117,6 +117,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>chamber_ensemble</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>19</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>balabin</ID>
 				<Coord>
 					<Row>12</Row>
@@ -411,4 +418,10 @@
 			</Altar>
 		</FeaturePlacement>
 	</Features>
+	<Properties>
+		<Property>
+			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
+			<Value>assets/sound/music/carcassia.ogg</Value>
+		</Property>
+	</Properties>
 </CustomMap>

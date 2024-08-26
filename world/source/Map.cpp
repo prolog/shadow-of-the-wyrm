@@ -809,6 +809,31 @@ TileTransformContainer Map::get_tile_transforms() const
   return tile_transforms;
 }
 
+size_t Map::count_tile_transforms_with_property(const Coordinate& c, const string& prop_name) const
+{
+  size_t tr = 0;
+
+  for (const auto& t_pair : tile_transforms)
+  {
+    const auto& t_vec = t_pair.second;
+
+    for (const auto& it_tr : t_vec)
+    {
+      if (it_tr.get_coordinate() == c)
+      {
+        map<string, string> props = it_tr.get_properties_cref();
+
+        if (props.find(prop_name) != props.end())
+        {
+          tr++;
+        }
+      }
+    }
+  }
+
+  return tr;
+}
+
 void Map::set_tile_item_transforms(const TileItemTransformContainer& new_tile_item_transforms)
 {
   tile_item_transforms = new_tile_item_transforms;

@@ -65,6 +65,11 @@ map<string, string> TileTransform::get_properties() const
   return properties;
 }
 
+const map<string, string>& TileTransform::get_properties_cref() const
+{
+  return properties;
+}
+
 bool TileTransform::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, coord.first);

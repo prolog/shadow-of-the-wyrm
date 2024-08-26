@@ -122,6 +122,7 @@ int is_player(lua_State* ls);
 int map_set_custom_map_id(lua_State* ls);
 int map_set_edesc(lua_State* ls);
 int map_set_property(lua_State* ls);
+int map_get_property(lua_State* ls);
 int map_set_tile_subtype(lua_State* ls);
 int map_set_tile_property(lua_State* ls);
 int map_add_location(lua_State* ls);
@@ -322,6 +323,8 @@ int get_map_type(lua_State* ls);
 int is_tile_available_for_creature(lua_State* ls);
 int set_creature_godless(lua_State* ls);
 int play_sound_effect(lua_State* ls);
+int is_sound_enabled(lua_State* ls);
+int is_music_enabled(lua_State* ls);
 int play_event_music(lua_State* ls);
 int play_map_music(lua_State* ls);
 int set_map_music(lua_State* ls);
@@ -329,6 +332,7 @@ int play_music_event(lua_State* ls);
 int play_music_location(lua_State* ls);
 int get_music_location_for_event(lua_State* ls);
 int get_music_location_for_map_type(lua_State* ls);
+int does_item_exist_on_map(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);
