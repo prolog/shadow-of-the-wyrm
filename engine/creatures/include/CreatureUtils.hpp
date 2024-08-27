@@ -91,6 +91,10 @@ class CreatureUtils
 
     static bool is_item_usable(CreaturePtr creature, ItemPtr item);
 
+    // Check to see if two creatures are grouped (if one leads the other, or 
+    // they share a common leader)
+    static bool is_grouped(CreaturePtr creature1, CreaturePtr creature2);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();
