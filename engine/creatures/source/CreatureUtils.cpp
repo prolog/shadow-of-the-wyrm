@@ -1206,6 +1206,32 @@ bool CreatureUtils::is_item_usable(CreaturePtr creature, ItemPtr item)
   return usable;
 }
 
+bool CreatureUtils::is_grouped(CreaturePtr creature1, CreaturePtr creature2)
+{
+  bool grouped = false;
+
+  if (creature1 != nullptr && creature2 != nullptr)
+  {
+    string c1_lid = creature1->get_leader_id();
+    string c1_id  = creature1->get_id();
+    string c2_lid = creature2->get_leader_id();
+    string c2_id  = creature2->get_id();
+
+    if (!(c1_id.empty() && c2_id.empty()) &&
+        !(c1_lid.empty() && c2_lid.empty()))
+    {
+      if (c1_lid == c2_id ||
+          c2_lid == c1_id ||
+          c1_lid == c2_lid)
+      {
+        grouped = true;
+      }
+    }
+  }
+
+  return grouped;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/CreatureUtils_test.cpp"
 #endif

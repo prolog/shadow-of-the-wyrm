@@ -92,7 +92,7 @@ bool CursesDisplay::operator==(const CursesDisplay& cd) const
       WINDOW* screen = screens.at(i);
       WINDOW* cd_screen = cd.screens.at(i);
 
-      result = result && screen && cd_screen && (memcmp(screen, cd_screen, sizeof(*screen)) == 0);
+      result = result && screen && cd_screen;
     }
   }
 

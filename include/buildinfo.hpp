@@ -3,4 +3,4 @@
 static const int MAJOR_VERSION = 1;
 static const int MINOR_VERSION = 7;
 static const int REVISION = 2;
-static const int REVISION_PATCH = 0;
+static const int REVISION_PATCH = 1;

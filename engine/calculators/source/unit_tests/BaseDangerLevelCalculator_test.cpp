@@ -7,7 +7,7 @@ TEST(SW_Engine_Calculators_BaseDangerLevelCalculator, calculate_danger_level)
   FieldGenerator generator("test!");
   MapPtr map = generator.generate(dim);
   MapPtr map2 = generator.generate(dim);
-  vector<int> dangers = {17, 3, 6, 45, 4, 2};
+  std::vector<int> dangers = {17, 3, 6, 45, 4, 2};
 
   for (int danger : dangers)
   {

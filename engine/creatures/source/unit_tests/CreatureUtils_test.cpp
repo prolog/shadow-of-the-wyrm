@@ -120,3 +120,28 @@ TEST(SW_Engine_Creatures_CreatureUtils, has_primordial_essence)
 
   game.set_spells(old_spells);
 }
+
+TEST(SW_Engine_Creatures_CreatureUtils, is_grouped)
+{
+  CreaturePtr c1 = std::make_shared<Creature>();
+  CreaturePtr c2 = std::make_shared<Creature>();
+  string leader_id = "bob";
+
+  EXPECT_FALSE(CreatureUtils::is_grouped(nullptr, nullptr));
+  EXPECT_FALSE(CreatureUtils::is_grouped(c1, nullptr));
+  EXPECT_FALSE(CreatureUtils::is_grouped(nullptr, c1));
+  EXPECT_FALSE(CreatureUtils::is_grouped(c1, c2));
+
+  c1->set_leader_and_at_ease(leader_id);
+
+  EXPECT_FALSE(CreatureUtils::is_grouped(c1, c2));
+
+  c2->set_id("bob");
+
+  EXPECT_TRUE(CreatureUtils::is_grouped(c1, c2));
+
+  c2->set_id("not_bob");
+  c2->set_leader_and_at_ease(leader_id);
+
+  EXPECT_TRUE(CreatureUtils::is_grouped(c1, c2));
+}
