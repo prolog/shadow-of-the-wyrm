@@ -1,8 +1,13 @@
 Me:
 - ASSET RELEASE (images, sounds!)
 - git push --tags
-- ebalster: down/up in ponds in ID; followers shouldn't accidentally target
-  leader eg with rock throw on something else in tight quarters
+- in and out of carcassia: memory keeps going up? shouldn't this be freed?
+- this is happening regardless of whether sound is enabled or not - and in
+  v1.5.8 - do profiling
+- ebalster: down/up in ponds in ID
+- ebalster: followers shouldn't accidentally target leader eg with rock throw 
+  on something else in tight quarters. seems like this might occur only with
+  high Awareness, otherwise they won't fire through.
 - Caldera's water should be death - swimming or descending
 - underwater cavern? something like that?
 - is the username check on savefiles still needed?
