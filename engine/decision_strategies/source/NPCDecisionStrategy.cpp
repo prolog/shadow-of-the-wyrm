@@ -617,7 +617,8 @@ CommandPtr NPCDecisionStrategy::get_ranged_attack_decision(const string& this_cr
             string threatening_creature_id = td_pair.first;
             Coordinate threat_c = view_map->get_location(threatening_creature_id);
 
-            if (RangedCombatUtils::is_coord_in_range(threat_c, view_map) && RangedCombatUtils::is_coordinate_obstacle_free(this_cr, c_this, threat_c, view_map))
+            if (RangedCombatUtils::is_coord_in_range(threat_c, view_map) && 
+                RangedCombatUtils::is_coordinate_obstacle_free(this_cr, c_this, threat_c, view_map))
             {
               TargetMap& tm = this_cr->get_target_map_ref();
               tm[to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED))] = make_pair(threatening_creature_id, threat_c);
