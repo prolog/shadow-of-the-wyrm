@@ -26,7 +26,7 @@ StairwayMovementAction::~StairwayMovementAction()
 ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAction * const ma)
 {
   ActionCostValue ascend_success = ActionCostConstants::NO_ACTION;
-  bool show_no_exit_message = false;
+  bool show_noexit_message = false;
 
   if (creature->get_is_player())
   {
@@ -84,14 +84,16 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
     {
       if (map_exit->is_using_map_id())
       {
-        if (MapUtils::can_change_zlevel(creature, current_map, tile, Direction::DIRECTION_UP))
+        auto zl = MapUtils::can_change_zlevel(creature, current_map, tile, Direction::DIRECTION_UP);
+
+        if (zl.first)
         {
           move_to_custom_map(current_tile, current_map, map_exit, creature, game, ma, Direction::DIRECTION_UP);
           ascend_success = get_action_cost_value(creature);
         }
         else
         {
-          show_no_exit_message = true;
+          show_noexit_message = true;
         }
       }
       else
@@ -117,17 +119,19 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
     }
     else
     {
-      if (MapUtils::can_change_zlevel(creature, current_map, tile, Direction::DIRECTION_UP))
+      auto zl = MapUtils::can_change_zlevel(creature, current_map, tile, Direction::DIRECTION_UP);
+
+      if (zl.first)
       {
         ascend_success = generate_or_move_to_zlevel(game, ma, manager, creature, current_map, tile, c, map_exit, ExitMovementType::EXIT_MOVEMENT_ASCEND, Direction::DIRECTION_UP);
       }
       else
       {
-        show_no_exit_message = true;
+        show_noexit_message = true;
       }
     }
 
-    if (show_no_exit_message)
+    if (show_noexit_message)
     {
       string no_exit = StringTable::get(tile->get_no_exit_up_message_sid());
 
@@ -146,7 +150,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
 ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAction * const ma)
 {
   ActionCostValue descend_success = ActionCostConstants::NO_ACTION;
-  bool show_no_exit_message = false;
+  bool show_noexit_message = false;
 
   if (creature && creature->get_is_player())
   {
@@ -180,14 +184,16 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
           {
             if (map_exit->is_using_map_id())
             {
-              if (MapUtils::can_change_zlevel(creature, map, tile, Direction::DIRECTION_DOWN))
+              auto zl = MapUtils::can_change_zlevel(creature, map, tile, Direction::DIRECTION_DOWN);
+
+              if (zl.first)
               {
                 move_to_custom_map(tile, map, map_exit, creature, game, ma, Direction::DIRECTION_DOWN);
                 descend_success = get_action_cost_value(creature);
               }
               else
               {
-                show_no_exit_message = true;
+                show_noexit_message = true;
               }
             }
             else
@@ -212,8 +218,9 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
           else
           {
             MapExitPtr map_exit = map->get_map_exit(Direction::DIRECTION_DOWN);
+            auto zl = MapUtils::can_change_zlevel(creature, map, tile, Direction::DIRECTION_DOWN);
 
-            if (MapUtils::can_change_zlevel(creature, map, tile, Direction::DIRECTION_DOWN))
+            if (zl.first)
             {
               descend_success = generate_or_move_to_zlevel(game, ma, manager, creature, map, tile, c, map_exit, ExitMovementType::EXIT_MOVEMENT_DESCEND, Direction::DIRECTION_DOWN);
             }
@@ -228,14 +235,14 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
               }
               else
               {
-                show_no_exit_message = true;
+                show_noexit_message = true;
               }
             }
           }
         }  
       }
 
-      if (show_no_exit_message)
+      if (show_noexit_message)
       {
         string no_exit = StringTable::get(tile->get_no_exit_down_message_sid());
         manager.add_new_message(no_exit);

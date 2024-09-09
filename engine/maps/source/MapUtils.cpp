@@ -2773,9 +2773,10 @@ string MapUtils::get_shipwreck_min_lore(MapPtr map, TilePtr tile)
   return min_lore;
 }
 
-bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d)
+pair<bool, string> MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d)
 {
   bool can_change = false;
+  string msg;
 
   if (creature != nullptr && map != nullptr && tile != nullptr)
   {
@@ -2785,13 +2786,13 @@ bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile,
     if ((d == Direction::DIRECTION_DOWN && tt == TileType::TILE_TYPE_DOWN_STAIRCASE) ||
         (d == Direction::DIRECTION_UP && tt == TileType::TILE_TYPE_UP_STAIRCASE))
     {
-      return true;
+      return make_pair(true, "");
     }
     // Can never go down an up staircase, up a down staircase.
     else if ((d == Direction::DIRECTION_UP && tt == TileType::TILE_TYPE_DOWN_STAIRCASE) ||
              (d == Direction::DIRECTION_DOWN && tt == TileType::TILE_TYPE_UP_STAIRCASE))
     {
-      return false;
+      return make_pair(false, "");
     }
 
     MapType map_type = map->get_map_type();
@@ -2836,7 +2837,7 @@ bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile,
     }
   }
 
-  return can_change;
+  return make_pair(can_change, msg);
 }
 
 bool MapUtils::get_supports_time_of_day(const MapType map_type)

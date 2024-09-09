@@ -1,6 +1,8 @@
 Me:
-- ASSET RELEASE (images, sounds!)
+- ASSET RELEASE (sounds!)
 - git push --tags
+- add custom messages for can_change_zlevel
+- update unit tests for can_change_zlevel
 - in and out of carcassia: memory keeps going up? shouldn't this be freed?
 - this is happening regardless of whether sound is enabled or not - and in
   v1.5.8 - do profiling

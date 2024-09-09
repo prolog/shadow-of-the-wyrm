@@ -147,7 +147,7 @@ class MapUtils
     static bool has_known_shipwreck(MapPtr map, TilePtr tile, CreaturePtr creature, const bool mark_skill);
     static std::string get_shipwreck_min_lore(MapPtr map, TilePtr tile);
 
-    static bool can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d);
+    static std::pair<bool, std::string> can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d);
 
     static bool get_supports_time_of_day(const MapType map_type);
     static bool get_supports_weather(const MapType map_type);
