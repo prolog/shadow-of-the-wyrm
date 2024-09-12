@@ -44,6 +44,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
     ItemPtr wielded = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
     string dig_hardness;
     RockTile rock_tile;
+    string no_exit = tile->get_no_exit_up_message_sid();
 
     if (wielded != nullptr)
     {
@@ -94,6 +95,11 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
         else
         {
           show_noexit_message = true;
+
+          if (!zl.second.empty())
+          {
+            no_exit = zl.second;
+          }
         }
       }
       else
@@ -128,14 +134,18 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
       else
       {
         show_noexit_message = true;
+
+        if (!zl.second.empty())
+        {
+          no_exit = zl.second;
+
+        }
       }
     }
 
     if (show_noexit_message)
     {
-      string no_exit = StringTable::get(tile->get_no_exit_up_message_sid());
-
-      manager.add_new_message(no_exit);
+      manager.add_new_message(StringTable::get(no_exit));
       manager.send();
     }
   }
@@ -160,6 +170,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
 
     MapPtr map = game.get_current_map();
     ExitMovementType movement_type = ExitMovementType::EXIT_MOVEMENT_DESCEND;
+    string no_exit; 
 
     if (map)
     {
@@ -168,7 +179,8 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
       
       // Get the creature's tile's MapExitPtr
       TilePtr tile = map->at(c);
-        
+      no_exit = tile->get_no_exit_down_message_sid();
+
       if (tile)
       {
         TileExitMap& exit_map = tile->get_tile_exit_map_ref();
@@ -194,6 +206,11 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
               else
               {
                 show_noexit_message = true;
+
+                if (!zl.second.empty())
+                {
+                  no_exit = zl.second;
+                }
               }
             }
             else
@@ -236,6 +253,11 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
               else
               {
                 show_noexit_message = true;
+
+                if (!zl.second.empty())
+                {
+                  no_exit = zl.second;
+                }
               }
             }
           }
@@ -244,9 +266,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
 
       if (show_noexit_message)
       {
-        string no_exit = StringTable::get(tile->get_no_exit_down_message_sid());
-        manager.add_new_message(no_exit);
-
+        manager.add_new_message(StringTable::get(no_exit));
         manager.send();
       }
     }

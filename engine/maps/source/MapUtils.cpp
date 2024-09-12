@@ -2792,7 +2792,7 @@ pair<bool, string> MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map,
     else if ((d == Direction::DIRECTION_UP && tt == TileType::TILE_TYPE_DOWN_STAIRCASE) ||
              (d == Direction::DIRECTION_DOWN && tt == TileType::TILE_TYPE_UP_STAIRCASE))
     {
-      return make_pair(false, "");
+      return make_pair(false, MovementTextKeys::ACTION_MOVE_WRONG_STAIRS_DIRECTION);
     }
 
     MapType map_type = map->get_map_type();
