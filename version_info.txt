@@ -6,12 +6,16 @@ Shadow of the Wyrm v1.7.3 "Sergio Assad"
 
 - More names.
 
+- Enabled Address Sanitizer in Debug mode (Windows).
+
 - Bug fixes:
 
   - Followers with ranged attacks will no longer fire through a square that
     contains a grouped creature (ebalster).
 
   - Diving is no longer possible in the infinite dungeon/sewer (ebalster).
+
+  - Fixed new/delete mismatches with the terrain generators.
 
 Shadow of the Wyrm v1.7.2 "Michelagnolo Galilei"
 - Version started February 18, 2024. Version finalized August 25, 2024.

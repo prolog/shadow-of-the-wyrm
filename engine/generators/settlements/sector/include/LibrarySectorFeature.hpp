@@ -5,6 +5,7 @@ class LibrarySectorFeature : public SectorFeature
 {
   public:
     LibrarySectorFeature();
+    virtual ~LibrarySectorFeature() = default;
 
     bool generate_interior(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const Coordinate& door_coord);
 

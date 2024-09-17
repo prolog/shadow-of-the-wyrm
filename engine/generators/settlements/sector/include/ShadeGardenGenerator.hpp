@@ -7,6 +7,8 @@ class ShadeGardenGenerator : public GardenSectorFeature
 {
   public:
     ShadeGardenGenerator(const std::string& deity_id = "", const AlignmentRange ar = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL);
+    virtual ~ShadeGardenGenerator() = default;
+
   protected:
     virtual bool generate_garden(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
 

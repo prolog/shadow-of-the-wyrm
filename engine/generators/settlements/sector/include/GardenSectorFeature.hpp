@@ -4,6 +4,8 @@
 class GardenSectorFeature : public SectorFeature
 {
   public:
+    virtual ~GardenSectorFeature() = default;
+
     GardenSectorFeature(const std::string& deity_id = "", const AlignmentRange ar = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL);
 
     virtual bool generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;

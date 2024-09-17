@@ -7,6 +7,8 @@
 class SectorFeature
 {
   public:
+    virtual ~SectorFeature() = default;
+
     // Performs safety checks before generation.
     virtual bool generate(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);
 

@@ -5,6 +5,8 @@ class WildflowerGardenGenerator : public GardenSectorFeature
 {
   public:
     WildflowerGardenGenerator(const std::string& deity_id = "", const AlignmentRange ar = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL);
+    virtual ~WildflowerGardenGenerator() = default;
+
     std::pair<std::pair<int, int>, std::map<int, std::string>> get_wildflower_details() const;
 
     virtual void plant_flower(TilePtr tile);
