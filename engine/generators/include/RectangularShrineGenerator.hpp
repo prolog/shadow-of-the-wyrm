@@ -5,6 +5,7 @@ class RectangularShrineGenerator : public ShrineGenerator
 {
   public:
     RectangularShrineGenerator(MapPtr base_map);
+    virtual ~RectangularShrineGenerator() = default;
 
   protected:
     virtual MapPtr generate_shrine() override;

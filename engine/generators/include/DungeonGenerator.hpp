@@ -9,6 +9,7 @@ class DungeonGenerator : public SOTW::Generator
 {
   public:
     DungeonGenerator(const std::string& map_exit_id);
+    virtual ~DungeonGenerator() = default;
     
     virtual MapPtr generate(const Dimensions& dim) override;
 

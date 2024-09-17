@@ -6,6 +6,8 @@ class ScrubGenerator : public SOTW::Generator
 {
   public:
     ScrubGenerator(const std::string& map_exit_id);
+    virtual ~ScrubGenerator() = default;
+
     virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:

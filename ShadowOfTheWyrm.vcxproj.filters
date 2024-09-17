@@ -3842,9 +3842,6 @@
     <ClInclude Include="world\tiles\include\SeabedTile.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\generators\tile_config\include\KelpTileConfiguration.hpp">
-      <Filter>Header Files\engine\generators\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\generators\tile_config\include\AquaticVegetationTileConfiguration.hpp">
       <Filter>Header Files\engine\generators\tile_config\include</Filter>
     </ClInclude>

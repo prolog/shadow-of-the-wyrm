@@ -7,6 +7,7 @@ class NPCBackgroundGenerator
 	public:
 		NPCBackgroundGenerator();
 		NPCBackgroundGenerator(const bool include_all);
+		virtual ~NPCBackgroundGenerator() = default;
 
 		std::string generate_bestiary(CreaturePtr creature) const;
 

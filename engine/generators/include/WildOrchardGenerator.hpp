@@ -5,6 +5,7 @@ class WildOrchardGenerator : public SOTW::Generator
 {
   public:
     WildOrchardGenerator(const std::string& map_exit_id);
+    virtual ~WildOrchardGenerator() = default;
 
     virtual MapPtr generate() override;
     virtual MapPtr generate(const Dimensions& dimensions) override;

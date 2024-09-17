@@ -5,6 +5,7 @@ class CrossShrineGenerator : public ShrineGenerator
 {
   public:
     CrossShrineGenerator(MapPtr base_map);
+    virtual ~CrossShrineGenerator() = default;
 
   protected:
     virtual MapPtr generate_shrine() override;

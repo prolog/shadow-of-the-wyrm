@@ -28,7 +28,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <EnableASAN>true</EnableASAN>
+    <EnableASAN>false</EnableASAN>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -856,7 +856,6 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\tile_config\include\FieldTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\FruitTreeTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\ITileConfiguration.hpp" />
-    <ClInclude Include="engine\generators\tile_config\include\KelpTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\MagicalTreeTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\TileConfigurationFactory.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\TreeTileConfiguration.hpp" />

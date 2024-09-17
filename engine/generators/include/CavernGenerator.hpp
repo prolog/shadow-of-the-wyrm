@@ -7,6 +7,7 @@ class CavernGenerator : public SOTW::Generator
 {
   public:
     CavernGenerator(const std::string& map_exit_id);
+    virtual ~CavernGenerator() = default;
     
     virtual MapPtr generate(const Dimensions& dimensions) override;
 

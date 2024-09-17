@@ -12,6 +12,8 @@ enum struct SpringsType
 class SpringsGenerator
 {
   public:
+    virtual ~SpringsGenerator() = default;
+
     static void generate(MapPtr map, const int start_row, const int start_col, const int springs_size, const SpringsType springs_type);
     static void generate(MapPtr map, const int start_row, const int start_col, const int springs_size, const SpringsType springs_type, const int pct_chance);
 

@@ -9,6 +9,8 @@
 class CrossPillarGenerator : public IPillarGenerator
 {
   public:
+    virtual ~CrossPillarGenerator() = default;
+
     virtual int get_height() const override;
     virtual int get_width() const override;
 

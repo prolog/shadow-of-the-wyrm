@@ -9,6 +9,8 @@ class SewerGenerator : public SOTW::Generator
 {
   public:
     SewerGenerator(const std::string& map_exit_id);
+    virtual ~SewerGenerator() = default;
+
     virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:

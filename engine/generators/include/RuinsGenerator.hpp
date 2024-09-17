@@ -14,6 +14,7 @@ class RuinsGenerator : public SOTW::Generator
 {
   public:
     RuinsGenerator(const std::string& map_exit_id, const TileType tile_type, const RuinsType new_rt);
+    virtual ~RuinsGenerator() = default;
 
     // MapTester version:
     MapPtr generate(MapPtr map, const RuinsType& = RuinsType::RUINS_TYPE_SETTLEMENT);

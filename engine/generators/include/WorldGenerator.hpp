@@ -22,6 +22,7 @@ class WorldGenerator : public SOTW::Generator
   public:
     WorldGenerator();
     WorldGenerator(const std::string& map_exit_id);
+    virtual ~WorldGenerator() = default;
     
     virtual MapPtr generate() override;
     virtual MapPtr generate(const Dimensions& dim) override;

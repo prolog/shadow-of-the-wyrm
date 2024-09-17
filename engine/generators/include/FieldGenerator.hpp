@@ -6,6 +6,7 @@ class FieldGenerator : public SOTW::Generator
 {
   public:
     FieldGenerator(const std::string& map_exit_id);
+    virtual ~FieldGenerator() = default;
     
     virtual MapPtr generate(const Dimensions& dimensions) override;
 

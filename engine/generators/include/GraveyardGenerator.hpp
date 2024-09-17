@@ -7,6 +7,7 @@ class GraveyardGenerator : public SOTW::Generator
 {
   public:
     GraveyardGenerator(const std::string& new_map_exit_id);
+    virtual ~GraveyardGenerator() = default;
     
     virtual MapPtr generate(const Dimensions& dim) override;
     virtual void generate(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);

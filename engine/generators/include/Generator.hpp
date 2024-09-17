@@ -19,6 +19,7 @@ namespace SOTW
 
     public:
       Generator(const std::string& new_map_exit_id, TileType new_map_terrain_type);
+      virtual ~Generator() = default;
 
       // Generate the map and its contents (creatures, features, items, etc.)
       virtual MapPtr generate_and_initialize(const int danger_level);

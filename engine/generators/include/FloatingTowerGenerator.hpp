@@ -5,6 +5,7 @@ class FloatingTowerGenerator : public SOTW::Generator
 {
   public:
     FloatingTowerGenerator(const std::string& map_exit_id);
+    virtual ~FloatingTowerGenerator() = default;
     
     virtual MapPtr generate(const Dimensions& dim) override;
 

@@ -6,6 +6,7 @@ class ShrineGenerator : public SOTW::Generator
 {
   public:
     ShrineGenerator(MapPtr base_map);
+    virtual ~ShrineGenerator() = default;
 
     virtual MapPtr generate();
     virtual MapPtr generate(const Dimensions& dim);
