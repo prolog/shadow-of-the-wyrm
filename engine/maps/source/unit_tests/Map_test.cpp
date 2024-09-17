@@ -389,3 +389,29 @@ TEST_F(SW_Engine_Map, set_world_id)
     EXPECT_EQ(id, map->get_world_id());
   }
 }
+
+TEST_F(SW_Engine_Map, get_allow_diving)
+{
+  MapPtr map = make_map();
+
+  vector<MapType> map_types = { MapType::MAP_TYPE_AIR, MapType::MAP_TYPE_COSMOS, MapType::MAP_TYPE_OVERWORLD, MapType::MAP_TYPE_UNDERWATER, MapType::MAP_TYPE_UNDERWORLD, MapType::MAP_TYPE_WORLD };
+  vector<string> map_ids = { "some_map", "" };
+
+  for (const auto mt : map_types)
+  {
+    for (const auto& mid : map_ids)
+    {
+      map->set_map_type(mt);
+      map->set_map_id(mid);
+
+      if (mt == MapType::MAP_TYPE_UNDERWORLD && mid.empty())
+      {
+        EXPECT_FALSE(map->get_allow_diving());
+      }
+      else
+      {
+        EXPECT_TRUE(map->get_allow_diving());
+      }
+    }
+  }
+}
