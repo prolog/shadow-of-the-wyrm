@@ -6,6 +6,8 @@
 class TreeTileConfiguration : public DefaultTileConfiguration
 {
   public:
+    virtual ~TreeTileConfiguration() = default;
+
     virtual void configure(TilePtr tile, const Season season) const override;
     virtual void initialize() override;
 

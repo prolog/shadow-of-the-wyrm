@@ -8,6 +8,7 @@ class FruitTreeTileConfiguration : public TreeTileConfiguration
   public:
     FruitTreeTileConfiguration();
     FruitTreeTileConfiguration(const FruitProductionMap& preset_map);
+    virtual ~FruitTreeTileConfiguration() = default;
 
   protected:
     virtual void initialize_tree_species_details() override;

@@ -7,6 +7,7 @@ class IslandSacrificeSiteGenerator : public ChurchGenerator
 {
   public:
     IslandSacrificeSiteGenerator(const std::string& new_deity_id, MapPtr new_base_map);
+    virtual ~IslandSacrificeSiteGenerator() = default;
 
     MapPtr generate(const Dimensions& dim) override;
     MapPtr generate() override;

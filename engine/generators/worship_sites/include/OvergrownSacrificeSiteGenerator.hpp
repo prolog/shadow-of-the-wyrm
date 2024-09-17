@@ -10,6 +10,7 @@ class OvergrownSacrificeSiteGenerator : public ChurchGenerator
 {
   public:
     OvergrownSacrificeSiteGenerator(const std::string& new_deity_id, MapPtr new_base_map);
+    virtual ~OvergrownSacrificeSiteGenerator() = default;
 
     MapPtr generate(const Dimensions& dim) override;
     MapPtr generate() override;

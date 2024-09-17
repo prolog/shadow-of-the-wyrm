@@ -9,6 +9,7 @@ class SimpleChurchGenerator : public ChurchGenerator
 {
   public:
     SimpleChurchGenerator(const std::string& deity_id, MapPtr base_map);
+    virtual ~SimpleChurchGenerator() = default;
 
     virtual MapPtr generate() override;
     virtual MapPtr generate(const Dimensions& dim) override;

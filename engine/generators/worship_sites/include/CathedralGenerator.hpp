@@ -7,6 +7,7 @@ class CathedralGenerator : public ChurchGenerator
 {
   public:
     CathedralGenerator(const std::string& new_deity_id, MapPtr base_map);
+    virtual ~CathedralGenerator() = default;
 
     virtual MapPtr generate() override;
     virtual MapPtr generate(const Dimensions& dim) override;

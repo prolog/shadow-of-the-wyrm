@@ -5,4 +5,5 @@ class KeepRuinsGenerator : public KeepGenerator
 {
  public:
     KeepRuinsGenerator(MapPtr new_base_map);
+    virtual ~KeepRuinsGenerator() = default;
 };
