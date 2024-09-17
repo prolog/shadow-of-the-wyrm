@@ -4,5 +4,7 @@
 class NullAttackSpeedCalculator : public AttackSpeedCalculator
 {
   public:
+    virtual ~NullAttackSpeedCalculator() = default;
+
     ActionCostValue calculate(CreaturePtr creature) override;
 };

@@ -5,6 +5,7 @@ class MagicalDamageCalculator : public DamageCalculator
 {
   public:
     MagicalDamageCalculator(const PhaseOfMoonType new_pom);
+    virtual ~MagicalDamageCalculator() = default;
     
     virtual int calculate(CreaturePtr defending_creature, const bool sneak_attack, const bool slays_creatures_race, const Damage& damage, const int base_damage, const float soak_multiplier) override;
     virtual Damage calculate_base_damage_object(CreaturePtr creature) override;

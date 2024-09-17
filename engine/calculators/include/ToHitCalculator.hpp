@@ -7,6 +7,7 @@ class ToHitCalculator
   public:
     ToHitCalculator();
     ToHitCalculator(const AttackType new_attack_type);
+    virtual ~ToHitCalculator() = default;
     
     virtual int calculate(CreaturePtr creature) = 0;
     virtual Statistic& get_statistic(CreaturePtr creature) = 0;

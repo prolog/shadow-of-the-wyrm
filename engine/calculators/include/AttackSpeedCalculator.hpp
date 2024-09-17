@@ -8,6 +8,7 @@ class AttackSpeedCalculator
 {
   public:
     virtual ActionCostValue calculate(CreaturePtr creature) = 0;
+    virtual ~AttackSpeedCalculator() = default;
 
   protected:
     virtual ActionCostValue calculate_speed_for_weapon(CreaturePtr creature, WeaponPtr weapon, const bool ranged = false);
