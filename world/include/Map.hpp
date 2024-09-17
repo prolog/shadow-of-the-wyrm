@@ -95,6 +95,7 @@ class Map : public ISerializable
 
     void set_is_water_shallow(const bool new_shallow);
     bool get_is_water_shallow() const;
+    bool get_allow_diving() const;
     void set_is_open_sky(const bool new_open_sky);
     bool get_is_open_sky() const;
 

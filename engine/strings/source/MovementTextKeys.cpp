@@ -70,4 +70,5 @@ const string MovementTextKeys::ACTION_MOVE_OFF_BLOCKED           = "ACTION_MOVE_
 const string MovementTextKeys::ACTION_MOVE_DANGEROUS_FEATURE     = "ACTION_MOVE_DANGEROUS_FEATURE";
 const string MovementTextKeys::ACTION_MOVE_RACE_NOT_ALLOWED      = "ACTION_MOVE_RACE_NOT_ALLOWED";
 const string MovementTextKeys::ACTION_MOVE_WRONG_STAIRS_DIRECTION = "ACTION_MOVE_WRONG_STAIRS_DIRECTION";
+const string MovementTextKeys::ACTION_MOVE_DIVE_TOO_SHALLOW      = "ACTION_MOVE_DIVE_TOO_SHALLOW";
 const string MovementTextKeys::ITEMS_ON_TILE                     = "ITEMS_ON_TILE";

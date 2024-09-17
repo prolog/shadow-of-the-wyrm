@@ -2823,7 +2823,14 @@ pair<bool, string> MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map,
               map->get_is_water_shallow() &&
              (can_breathe_water || can_swim))
           {
-            can_change = true;
+            if (map->get_allow_diving())
+            {
+              can_change = true;
+            }
+            else
+            {
+              msg = MovementTextKeys::ACTION_MOVE_DIVE_TOO_SHALLOW;
+            }
           }
         }
         else if (d == Direction::DIRECTION_UP)
