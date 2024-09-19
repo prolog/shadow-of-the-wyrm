@@ -22,7 +22,7 @@ class Display : public ISerializable
 {
 	public:
     Display();
-    virtual ~Display() {};
+    virtual ~Display() = default;
     bool operator==(const Display& d) const;
 
 	  virtual std::pair<bool, std::string> create() = 0;

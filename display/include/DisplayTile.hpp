@@ -17,6 +17,7 @@ class DisplayTile
     DisplayTile();
     DisplayTile(const Symbol& new_symbol); // Sets all seasons to the given colour
     DisplayTile(const Symbol& new_symbol, const SeasonTileColourMap& new_colours);
+    virtual ~DisplayTile() = default;
 
     void  set_symbol(const Symbol& new_symbol);
     Symbol get_symbol() const;

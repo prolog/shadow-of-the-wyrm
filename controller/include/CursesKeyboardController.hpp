@@ -6,6 +6,7 @@ class CursesKeyboardController : public Controller
 {
   public:
     virtual Controller* clone() override;
+    virtual ~CursesKeyboardController() = default;
 
   protected:
     int read_char_as_int() override;

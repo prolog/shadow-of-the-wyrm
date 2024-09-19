@@ -14,6 +14,7 @@ class SDLPromptProcessor : public PromptProcessor
 {
   public:
     SDLPromptProcessor();
+    virtual ~SDLPromptProcessor() = default;
 
     bool operator==(const SDLPromptProcessor& cpp) const;
 

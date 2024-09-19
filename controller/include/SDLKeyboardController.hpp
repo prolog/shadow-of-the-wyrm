@@ -7,6 +7,7 @@ class SDLKeyboardController : public Controller
 {
   public:
     SDLKeyboardController();
+    virtual ~SDLKeyboardController() = default;
 
     void poll_event() override;
 

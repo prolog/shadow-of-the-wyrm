@@ -10,6 +10,7 @@
 class CursesPromptProcessor : public PromptProcessor
 {
   public:
+    virtual ~CursesPromptProcessor() = default;
     bool operator==(const CursesPromptProcessor& cpp) const;
 
     int get_prompt(WINDOW* window);

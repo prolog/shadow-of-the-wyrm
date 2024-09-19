@@ -7,6 +7,8 @@
 class DrawAnimationInstruction : public AnimationInstruction
 {
   public:
+    virtual ~DrawAnimationInstruction() = default;
+
     DrawAnimationInstruction(const Coordinate& new_coords, const DisplayTile& disp);
 
     virtual void execute(Display* const display) override = 0;

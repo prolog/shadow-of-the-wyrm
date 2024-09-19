@@ -12,6 +12,8 @@ class CursesDisplay : public Display
 {
   public:
     CursesDisplay();
+    virtual ~CursesDisplay() = default;
+
     bool operator==(const CursesDisplay& cd) const;
 
 	  std::pair<bool, std::string> create() override;
