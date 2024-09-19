@@ -9,6 +9,6 @@
 class StringConverter
 {
   public:
-    virtual ~StringConverter() {};
+    virtual ~StringConverter() = default;
     virtual std::string str() const = 0;
 };

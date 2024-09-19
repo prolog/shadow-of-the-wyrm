@@ -8,6 +8,7 @@ class NPCDecisionStrategy : public DecisionStrategy
 {
   public:
     NPCDecisionStrategy(ControllerPtr new_controller);
+    virtual ~NPCDecisionStrategy() = default;
 
     virtual bool get_move_to_dangerous_tile(MapPtr map, CreaturePtr creature, TilePtr tile) const override;
 

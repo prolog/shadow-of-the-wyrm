@@ -5,6 +5,8 @@
 class HasteEffect : public Effect
 {
   public:
+    virtual ~HasteEffect() = default;
+
     virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const override;
     virtual Effect* clone() override;
 

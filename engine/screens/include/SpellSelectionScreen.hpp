@@ -10,6 +10,8 @@
 class SpellScreenDisplayStrategy
 {
   public:
+    virtual ~SpellScreenDisplayStrategy() = default;
+
     virtual bool display_spell(const Spell& spell) const = 0;
 };
 

@@ -6,6 +6,7 @@ class FieldOfViewStrategy
 {
   public:
     FieldOfViewStrategy(const bool set_view_property);
+    virtual ~FieldOfViewStrategy() = default;
     
     virtual MapPtr calculate(CreaturePtr fov_creaure, MapPtr view_map, const Coordinate& centre_coordinate, const int los_length) = 0;
     

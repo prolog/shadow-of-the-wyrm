@@ -6,6 +6,7 @@ class WandCodexDescriber : public CodexDescriber
 {
   public:
     WandCodexDescriber(WandPtr wand);
+    virtual ~WandCodexDescriber() = default;
 
     std::string describe_details() const override;
 

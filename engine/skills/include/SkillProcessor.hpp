@@ -9,6 +9,8 @@
 class SkillProcessor
 {
   public:
+    virtual ~SkillProcessor() = default;
+
     virtual ActionCostValue process(CreaturePtr creature, MapPtr map) = 0;
     virtual std::unique_ptr<SkillProcessor> clone() = 0;
     virtual bool is_skill_implemented() const;

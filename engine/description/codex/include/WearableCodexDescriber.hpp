@@ -7,6 +7,7 @@ class WearableCodexDescriber : public CodexDescriber
   public:
     WearableCodexDescriber(WearablePtr wearable);
     WearableCodexDescriber(WearablePtr wearable, const bool desc_protect);
+    virtual ~WearableCodexDescriber() = default;
 
     std::string describe_speed_bonus() const override;
     std::string describe_details() const override;

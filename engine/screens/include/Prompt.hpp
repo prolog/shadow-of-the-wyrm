@@ -19,6 +19,7 @@ class Prompt
 {
   public:
     Prompt(const PromptLocation = PromptLocation::PROMPT_LOCATION_DEFAULT);
+    virtual ~Prompt() = default;
 
     void set_text_sid(const std::string& new_prompt_text_sid);
     std::string get_text_sid() const;

@@ -10,6 +10,7 @@ class FeatureManipulator
 {
   public:
     FeatureManipulator(FeaturePtr new_feature) : feature(new_feature) {};
+    virtual ~FeatureManipulator() = default;
 
     // Kicking returns void because kicking something and getting to the point
     // of using a manipulator is always an action.  

@@ -9,6 +9,7 @@ class DeityDecisionStrategy : public IDeityDecisionStrategy
 {
   public:
     DeityDecisionStrategy(const std::string& new_deity_id);
+    virtual ~DeityDecisionStrategy() = default;
     
     DeityDecisionStrategyHandlerPtr get_decision(CreaturePtr creature) override;
     DeityDecisionStrategyHandlerPtr get_decision_for_sacrifice(CreaturePtr creature, ItemPtr item) override;

@@ -6,6 +6,7 @@ class ImmobileDecisionStrategy : public NPCDecisionStrategy
 {
   public:
     ImmobileDecisionStrategy(ControllerPtr new_controller);
+    virtual ~ImmobileDecisionStrategy() = default;
 
     DecisionStrategy* copy() override;
         

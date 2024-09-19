@@ -5,6 +5,7 @@ class RemoveStatusEffect : public Effect
 {
   public:
     RemoveStatusEffect(const std::string& status_identifier);
+    virtual ~RemoveStatusEffect() = default;
     
     virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const override;
     virtual Effect* clone() override;

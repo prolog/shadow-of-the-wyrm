@@ -3,6 +3,9 @@
 
 class MarginalSpellFailureConsequences : public SpellFailureConsequences
 {
+  public:
+    virtual ~MarginalSpellFailureConsequences() = default;
+
   protected:
     virtual float get_damage_pct() const override;
     virtual std::string get_damage_message_sid() const override;

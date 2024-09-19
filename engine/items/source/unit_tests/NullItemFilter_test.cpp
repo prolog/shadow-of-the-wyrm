@@ -3,7 +3,7 @@
 
 TEST(SW_Engine_Items_NullItemFilter, passes_test)
 {
-  NullFilter nif;
+  NullItemFilter nif;
 
   ItemPtr no_item;
   ItemPtr amulet = std::make_shared<Amulet>();

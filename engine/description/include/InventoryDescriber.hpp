@@ -6,6 +6,7 @@ class InventoryDescriber : public IDescriber
 {
   public:
     InventoryDescriber(const bool blind, const IInventoryPtr inv);
+    virtual ~InventoryDescriber() = default;
 
     std::string describe_for_tile_selection() const override;
     std::string describe(const bool for_tile_selection) const;

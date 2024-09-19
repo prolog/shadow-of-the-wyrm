@@ -7,6 +7,7 @@ class CreatureDescriber : public IDescriber
   public:
     CreatureDescriber(CreaturePtr viewing_creature, CreaturePtr new_creature);
     CreatureDescriber(CreaturePtr viewing_creature, CreaturePtr new_creature, bool short_description);
+    virtual ~CreatureDescriber() = default;
 
     std::string describe() const override;
     std::string describe_for_tile_selection() const;

@@ -9,6 +9,7 @@ class SquishyEquipWornLocationFilter : public IItemFilter
 {
   public:
     SquishyEquipWornLocationFilter(const EquipmentWornLocation ewl);
+    virtual ~SquishyEquipWornLocationFilter() = default;
 
     bool passes_filter(ItemPtr item) const override;
 

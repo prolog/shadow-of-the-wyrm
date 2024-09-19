@@ -11,6 +11,8 @@
 class XMLReader
 {
   public:
+    virtual ~XMLReader() = default;
+
     void parse_symbol(Symbol& symbol, const XMLNode& symbol_node, const bool use_idx = false, const size_t idx = 0) const;
     void parse_spritesheet_location(SpritesheetLocation& ssl, const XMLNode& ssloc_node, const bool use_idx, const size_t i) const;
     void parse_dice(Dice& dice, const XMLNode& dice_node) const;

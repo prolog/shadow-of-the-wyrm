@@ -7,6 +7,7 @@ class DeityDecisionStrategyHandler
 {
   public:
     DeityDecisionStrategyHandler(const std::string& deity_id);
+    virtual ~DeityDecisionStrategyHandler() = default;
 
     // Should this strategy be considered, based on the current state
     // of the creature?

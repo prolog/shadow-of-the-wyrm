@@ -14,6 +14,7 @@ class UncursingEffect : public Effect
 {
   public:
     UncursingEffect();
+    virtual ~UncursingEffect() = default;
     
     virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const override;
     virtual Effect* clone() override;

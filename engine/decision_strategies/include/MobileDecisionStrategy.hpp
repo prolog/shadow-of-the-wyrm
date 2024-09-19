@@ -6,6 +6,7 @@ class MobileDecisionStrategy : public NPCDecisionStrategy
 {
   public:
     MobileDecisionStrategy(ControllerPtr new_controller);
+    virtual ~MobileDecisionStrategy() = default;
 
     DecisionStrategy* copy() override;
         

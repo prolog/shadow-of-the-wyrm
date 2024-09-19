@@ -6,6 +6,7 @@
 class ReadableItemFilter : public IItemFilter
 {
   public:
+    virtual ~ReadableItemFilter() = default;
     bool passes_filter(ItemPtr item) const override;
 };
 

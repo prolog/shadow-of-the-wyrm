@@ -12,6 +12,7 @@ class ScreenComponent
     ScreenComponent();
     ScreenComponent(const std::string& new_text, const std::vector<Symbol>& symbols);
     ScreenComponent(const std::string& new_text, const Colour new_colour, const std::vector<Symbol>& symbols);
+    virtual ~ScreenComponent() = default;
 
     virtual void set_colour(const Colour c);
     virtual void set_text(const std::vector<std::pair<std::string, Colour>>& new_text);

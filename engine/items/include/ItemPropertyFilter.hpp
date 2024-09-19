@@ -9,6 +9,7 @@ class ItemPropertyFilter : public IItemFilter
 {
   public:
     ItemPropertyFilter(const std::pair<std::string, std::string>& prop_pair);
+    virtual ~ItemPropertyFilter() = default;
 
     bool passes_filter(ItemPtr item) const override;
 

@@ -11,6 +11,8 @@ enum struct MappingType
 class MappingEffect : public Effect
 {
   public:
+    virtual ~MappingEffect() = default;
+
     virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const override;
     virtual Effect* clone() override;
       

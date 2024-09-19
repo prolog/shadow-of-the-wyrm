@@ -18,9 +18,10 @@ class DecisionStrategy : public ISerializable
 {
   public:
     DecisionStrategy(ControllerPtr new_controller);
+    virtual ~DecisionStrategy() = default;
+
     virtual bool operator==(const DecisionStrategy& ds) const;
 
-    virtual ~DecisionStrategy() {};
     virtual CommandPtr get_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, std::shared_ptr<Map> view_map = nullptr /* optional - only used when getting a decision on the main map, and only for non-player characters. */, int* key_p = 0) = 0;
     virtual CommandPtr get_nonmap_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, int* key_p = 0, const bool refresh_window=true) = 0;
 
