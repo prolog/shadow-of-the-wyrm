@@ -7,7 +7,7 @@ class DeathManager
 {
   public:
     DeathManager(CreaturePtr attack_creature, CreaturePtr dead_creature, MapPtr current_map);
-    ~DeathManager();
+    virtual ~DeathManager();
 
     virtual void die() const = 0;
     
