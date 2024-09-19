@@ -1,8 +1,8 @@
 Me:
 - ASSET RELEASE (sounds!)
 - git push --tags
-- add unit test for Map::get_allow_diving()
 - in and out of carcassia: memory keeps going up? shouldn't this be freed?
+- virt destr sweep in other parts of the code
 - this is happening regardless of whether sound is enabled or not - and in
   v1.5.8 - do profiling
 - let's work on recall/coming back if you go down a water tile...

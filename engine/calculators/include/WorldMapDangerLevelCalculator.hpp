@@ -4,6 +4,8 @@
 class WorldMapDangerLevelCalculator : public DangerLevelCalculator
 {
   public:
+    virtual ~WorldMapDangerLevelCalculator() = default;
+
     int calculate(MapPtr old_map, MapPtr new_map) const override;
 
     // Get the max distance from the given (starting) coordinate to the

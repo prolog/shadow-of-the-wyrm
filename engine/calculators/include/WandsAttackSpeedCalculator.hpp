@@ -4,6 +4,8 @@
 class WandsAttackSpeedCalculator : public AttackSpeedCalculator
 {
   public:
+    virtual ~WandsAttackSpeedCalculator() = default;
+
     ActionCostValue calculate(CreaturePtr creature) override;
 
   protected:

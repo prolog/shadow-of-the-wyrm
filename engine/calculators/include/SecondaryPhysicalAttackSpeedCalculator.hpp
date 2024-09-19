@@ -4,6 +4,8 @@
 class SecondaryPhysicalAttackSpeedCalculator : public PhysicalAttackSpeedCalculator
 {
   public:
+    virtual ~SecondaryPhysicalAttackSpeedCalculator() = default;
+
     ActionCostValue calculate_weapon_speed(CreaturePtr creature) override;
 
   protected:

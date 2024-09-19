@@ -5,6 +5,8 @@
 class TimewalkCalculator : public StatusEffectCalculator
 {
   public:
+    virtual ~TimewalkCalculator() = default;
+
     int calculate_pct_chance_effect(CreaturePtr creature) const override;
     int calculate_duration_in_minutes(CreaturePtr creature) const override;
     int calculate_pct_chance_wear_off_per_turn(CreaturePtr creature) const;

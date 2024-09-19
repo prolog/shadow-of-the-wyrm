@@ -9,6 +9,8 @@
 class UntimedStatusCalculator : public StatusEffectCalculator
 {
   public:
+    virtual ~UntimedStatusCalculator() = default;
+
     int calculate_duration_in_minutes(CreaturePtr creature) const override;
 
   protected:

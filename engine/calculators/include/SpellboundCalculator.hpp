@@ -7,6 +7,8 @@
 class SpellboundCalculator : public StatusEffectCalculator
 {
   public:
+    virtual ~SpellboundCalculator() = default;
+
     int calculate_pct_chance_effect(CreaturePtr creature) const override;
     int calculate_duration_in_minutes(CreaturePtr creature) const override;
 

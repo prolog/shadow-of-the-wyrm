@@ -5,6 +5,7 @@ class WandsCombatTargetNumberCalculator : public MagicalCombatTargetNumberCalcul
 {
   public:
     WandsCombatTargetNumberCalculator();
+    virtual ~WandsCombatTargetNumberCalculator() = default;
 
   protected:
     SkillType get_attacker_skill() const override;

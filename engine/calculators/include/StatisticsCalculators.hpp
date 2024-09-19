@@ -4,6 +4,8 @@
 class StatisticsCalculator
 {
   public:
+    virtual ~StatisticsCalculator() = default;
+
     int calculate_current(CreaturePtr creature) const;
 
   protected:
@@ -17,6 +19,9 @@ class StatisticsCalculator
 
 class StrengthCalculator : public StatisticsCalculator
 {
+  public:
+    virtual ~StrengthCalculator() = default;
+
   protected:
     virtual int get_base_statistic_value(CreaturePtr creature) const override;
     virtual int get_modifier_statistic_value(const Modifier& modifier) const override;
@@ -24,6 +29,9 @@ class StrengthCalculator : public StatisticsCalculator
 
 class DexterityCalculator : public StatisticsCalculator
 {
+  public:
+    virtual ~DexterityCalculator() = default;
+
   protected:
     virtual int get_base_statistic_value(CreaturePtr creature) const override;
     virtual int get_modifier_statistic_value(const Modifier& modifier) const override;
@@ -31,6 +39,9 @@ class DexterityCalculator : public StatisticsCalculator
 
 class AgilityCalculator : public StatisticsCalculator
 {
+  public:
+    virtual ~AgilityCalculator() = default;
+
   protected:
     virtual int get_base_statistic_value(CreaturePtr creature) const override;
     virtual int get_modifier_statistic_value(const Modifier& modifier) const override;
@@ -38,6 +49,9 @@ class AgilityCalculator : public StatisticsCalculator
 
 class HealthCalculator : public StatisticsCalculator
 {
+  public:
+    virtual ~HealthCalculator() = default;
+
   protected:
     virtual int get_base_statistic_value(CreaturePtr creature) const override;
     virtual int get_modifier_statistic_value(const Modifier& modifier) const override;
@@ -45,6 +59,9 @@ class HealthCalculator : public StatisticsCalculator
 
 class IntelligenceCalculator : public StatisticsCalculator
 {
+  public:
+    virtual ~IntelligenceCalculator() = default;
+
   protected:
     virtual int get_base_statistic_value(CreaturePtr creature) const override;
     virtual int get_modifier_statistic_value(const Modifier& modifier) const override;
@@ -52,6 +69,9 @@ class IntelligenceCalculator : public StatisticsCalculator
 
 class WillpowerCalculator : public StatisticsCalculator
 {
+  public:
+    virtual ~WillpowerCalculator() = default;
+
   protected:
     virtual int get_base_statistic_value(CreaturePtr creature) const override;
     virtual int get_modifier_statistic_value(const Modifier& modifier) const override;
@@ -59,6 +79,9 @@ class WillpowerCalculator : public StatisticsCalculator
 
 class CharismaCalculator : public StatisticsCalculator
 {
+  public:
+    virtual ~CharismaCalculator() = default;
+
   protected:
     virtual int get_base_statistic_value(CreaturePtr creature) const override;
     virtual int get_modifier_statistic_value(const Modifier& modifier) const override;
@@ -66,6 +89,9 @@ class CharismaCalculator : public StatisticsCalculator
 
 class SpeedCalculator : public StatisticsCalculator
 {
+  public:
+    virtual ~SpeedCalculator() = default;
+
   protected:
     virtual int get_base_statistic_value(CreaturePtr creature) const override;
     virtual int get_modifier_statistic_value(const Modifier& modifier) const override;
