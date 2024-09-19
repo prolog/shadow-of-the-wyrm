@@ -5,7 +5,7 @@ class PlayerDeathManager : public DeathManager
 {
   public:
     PlayerDeathManager(CreaturePtr attacking_creature, CreaturePtr dead_creature, MapPtr map);
-    ~PlayerDeathManager();
+    virtual ~PlayerDeathManager();
   
     void die() const override;
 };

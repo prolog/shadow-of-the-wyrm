@@ -20,7 +20,7 @@ class TileSelectionCommandProcessor
 
   protected:
     TileSelectionCommandProcessor();
-    ~TileSelectionCommandProcessor();
+    virtual ~TileSelectionCommandProcessor();
     
     static std::pair<bool, ActionCostValue> process_cursor_directional_command(CreaturePtr creature, CursorDirectionalCommand* cursor_command, TileSelectionAction* const tsa);
     static std::pair<bool, ActionCostValue> process_tile_selection_bestiary(CreaturePtr creature, TileSelectionAction* const tsa);

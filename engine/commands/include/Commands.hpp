@@ -46,7 +46,7 @@ class MovementCommand : public DirectionalCommand
 {
   public:
     MovementCommand(const Direction direction, int key);
-    ~MovementCommand();
+    virtual ~MovementCommand();
 
     virtual bool get_allow_clear_message_buffer() const override;
 };
