@@ -6,6 +6,8 @@ Shadow of the Wyrm v1.7.3 "Sergio Assad"
 
 - More names.
 
+- Wrote a new piece of music for the Barrows/Asher's Islet/Siriath's Lair.
+
 - Enabled Address Sanitizer in Debug mode (Windows).
 
 - Bug fixes:
@@ -15,7 +17,9 @@ Shadow of the Wyrm v1.7.3 "Sergio Assad"
 
   - Diving is no longer possible in the infinite dungeon/sewer (ebalster).
 
-  - Fixed new/delete mismatches with the terrain generators.
+  - Fixed new/delete mismatches throughout the codebase. These were causing
+    small but persistent memory leaks in terrain generation and in other
+    scenarios.
 
 Shadow of the Wyrm v1.7.2 "Michelagnolo Galilei"
 - Version started February 18, 2024. Version finalized August 25, 2024.

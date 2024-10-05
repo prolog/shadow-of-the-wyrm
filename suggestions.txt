@@ -1,11 +1,9 @@
 Me:
-- ASSET RELEASE (sounds!)
+- ASSET RELEASE: sounds!
 - git push --tags
-- in and out of carcassia: memory keeps going up? shouldn't this be freed?
-- virt destr sweep in other parts of the code
-- this is happening regardless of whether sound is enabled or not - and in
-  v1.5.8 - do profiling
 - let's work on recall/coming back if you go down a water tile...
+- gghana2: corpse piety infuenced by level
+- once the new OTHATD music is done - add it to the Siriath level too
 - Caldera's water should be death - swimming or descending
 - underwater cavern? something like that?
 - is the username check on savefiles still needed?
