@@ -12741,6 +12741,30 @@
 				<SpellID>c_18_glow</SpellID>
 				<Difficulty>35</Difficulty>
 			</Spellbook>
+			<Spellbook id="water_breathing_spellbook">
+				<DescriptionSID>WATER_BREATHING_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_WATER_BREATHING_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>WATER_BREATHING_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_WATER_BREATHING_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>WATER_BREATHING_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
+				<Value>150</Value>
+				<Weight>
+					<Pounds>5</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<Symbol>
+					<Char>"</Char>
+					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>6</DangerLevel>
+				<SpellID>c_19_water_breathing</SpellID>
+				<Difficulty>50</Difficulty>
+			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_WREATH_OF_FIRE_SPELLBOOK_SID</UnidentifiedDescriptionSID>

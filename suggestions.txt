@@ -1,16 +1,17 @@
 Me:
 - ASSET RELEASE: sounds!
 - git push --tags
+- why is water breathing time so low?
+- NPCs should cast water breathing when there is water in view and can't
+  breathe water.
 - let's work on recall/coming back if you go down a water tile...
 - gghana2: corpse piety infuenced by level
-- once the new OTHATD music is done - add it to the Siriath level too
 - Caldera's water should be death - swimming or descending
 - underwater cavern? something like that?
 - is the username check on savefiles still needed?
 - test orb placement in wyrmeswraec
 - dig in water
 - super_type_message_sids -> super_type_sound_id?
-- Need to release sprites, sound effects, music
 - hemsio: autosave not working?
 - set item status property in CreateItemScreen
 - Use this for fletchery, bowyer, etc, to improve item & quantity
@@ -36,33 +37,18 @@ Me:
 - creature-specific turn-to-fight/rage values`
 - Uniques and fleeing?
 - what other creatures can be templated now?
-- Killing creature on stairs should allow dropping items but not corpse,
-  and should generate a message
 - Make keeps more interesting?
-- Check the hireling code - found a L35 hireling on L1?`
 - Fill out Carcassia A2A
   - What's on the platform?
   - Lancer's Walk
   - Shrink the shop a bit
   - Allow setting the shopkeeper name and setting the item types
 - can use warp in telari ocean
-- Elinor and Verra
+- Elinor and Varra
 - in villages: retired cartographers?
 - small chance to generate good items underwater
 - need to test springs/ivory gen
 - Flying shop in Carcassia A2A
-- Need a thorough test of exits:
-  - down/up/down in dungeon
-  - into, out of map
-  - multi-map
-  - up/down sewer in carcassia
-  - up/down regular dungeons
-  - up/down world maps
-  - up/down infinite dungeon and sewer
-  - into map via air/stairs, down the same way
-  - into map via air/stairs, down the other way
-  - traverse Telari
-  - Telari back to the world map then immediately go down again
 - need to be able to move around sky above Carcassia (make sure NW, NE, SW,
   SE all work as expected)
 - Need to check all the exits for the sky
@@ -74,11 +60,8 @@ Me:
   - etc
 - in do_generate... can that linkage function be hidden behind a check for
   either world map or interior tile? test!
-- all the wintersea tower mobs need to fly
-- need to test the wintersea map key on the tower post-refactor
 - update xsd, update xml, add and test linkages for all direction 10/11
   custom maps
-- water breathing cantrip
 - When map exit up is defined, should still check zlevels/etc
 - Keep a vector<pair<Direction, TileType>> for stairs on the map for fast
 - lookup

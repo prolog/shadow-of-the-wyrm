@@ -1825,11 +1825,12 @@
 				Warp = 31
 				Glow = 32
 				Summon Traps = 33
+				Water Breathing = 34
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="33"/>
+		<xs:maxInclusive value="34"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

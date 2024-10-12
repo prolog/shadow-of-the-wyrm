@@ -4562,6 +4562,12 @@
     <ClInclude Include="sound\include\MusicEvent.hpp">
       <Filter>Header Files\sound\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\effects\include\WaterBreathingEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\WaterBreathingCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9261,6 +9267,12 @@
     </ClCompile>
     <ClCompile Include="sound\source\MusicEvent.cpp">
       <Filter>Source Files\sound\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\WaterBreathingEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\WaterBreathingCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

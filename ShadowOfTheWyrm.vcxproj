@@ -484,6 +484,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\WandsCombatSkillMarker.hpp" />
     <ClInclude Include="engine\calculators\include\WandsCombatTargetNumberCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WandsToHitCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\WaterBreathingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WeaponDifficultyCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WeatherCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WeavingCalculator.hpp" />
@@ -721,6 +722,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\effects\include\TimewalkEffect.hpp" />
     <ClInclude Include="engine\effects\include\UncursingEffect.hpp" />
     <ClInclude Include="engine\effects\include\WarpEffect.hpp" />
+    <ClInclude Include="engine\effects\include\WaterBreathingEffect.hpp" />
     <ClInclude Include="engine\field_of_view\include\BresenhamLine.hpp" />
     <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategy.hpp" />
     <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp" />
@@ -1908,6 +1910,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\WandsCombatSkillMarker.cpp" />
     <ClCompile Include="engine\calculators\source\WandsCombatTargetNumberCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\WandsToHitCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\WaterBreathingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\WeatherCalculator.cpp" />
     <ClCompile Include="engine\combat\source\PointsTransfer.cpp" />
     <ClCompile Include="engine\combat\source\unit_tests\PointsTransfer_test.cpp">
@@ -2083,6 +2086,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\effects\source\TimewalkEffect.cpp" />
     <ClCompile Include="engine\effects\source\UncursingEffect.cpp" />
     <ClCompile Include="engine\effects\source\WarpEffect.cpp" />
+    <ClCompile Include="engine\effects\source\WaterBreathingEffect.cpp" />
     <ClCompile Include="engine\generators\crypts\source\GraveInscriptionGenerator.cpp" />
     <ClCompile Include="engine\generators\rooms\source\CaveInRoomGenerator.cpp" />
     <ClCompile Include="engine\generators\rooms\source\DankRoomGenerator.cpp" />

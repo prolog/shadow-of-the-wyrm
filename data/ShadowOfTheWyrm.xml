@@ -5450,6 +5450,20 @@
 			<Radius>1</Radius>
 			<Effect>32</Effect>
 		</Spell>
+		<Spell id="c_19_water_breathing">
+			<NameSID>WATER_BREATHING_NAME_SID</NameSID>
+			<DescriptionSID>WATER_BREATHING_SPELLBOOK_CODEX_SID</DescriptionSID>
+			<PlayerCastMessageSID>WATER_BREATHING_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>WATER_BREATHING_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>3</MagicClassification>
+			<Colour>4</Colour>
+			<APCost>30</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>34</Effect>
+		</Spell>
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
 			<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_CODEX_SID</DescriptionSID>

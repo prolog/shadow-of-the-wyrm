@@ -2,11 +2,13 @@
 #include "WaterBreathingStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StatusTypes.hpp"
+#include "WaterBreathingCalculator.hpp"
 
 using namespace std;
 
 WaterBreathingStatusEffect::WaterBreathingStatusEffect()
 {
+  status_calc = std::make_shared<WaterBreathingCalculator>();
 }
 
 bool WaterBreathingStatusEffect::is_negative() const
