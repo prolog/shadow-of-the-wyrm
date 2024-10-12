@@ -4,11 +4,11 @@ Shadow of the Wyrm v1.7.3 "Sergio Assad"
 - Made a couple of tweaks to "A Black Mark" so that there was less of a high,
   shrill violin sound in Violin 1.
 
-- More names.
-
 - Wrote a new piece of music for the Barrows/Asher's Islet/Siriath's Lair.
 
-- Enabled Address Sanitizer in Debug mode (Windows).
+- More names.
+
+- There is now a Water Breathing cantrip/spellbook.
 
 - Bug fixes:
 

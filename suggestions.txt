@@ -1,7 +1,6 @@
 Me:
 - ASSET RELEASE: sounds!
 - git push --tags
-- why is water breathing time so low?
 - NPCs should cast water breathing when there is water in view and can't
   breathe water.
 - let's work on recall/coming back if you go down a water tile...
