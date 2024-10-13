@@ -2,7 +2,8 @@ Shadow of the Wyrm v1.7.3 "Sergio Assad"
 - Version started August 25, 2024.
 
 - Made a couple of tweaks to "A Black Mark" so that there was less of a high,
-  shrill violin sound in Violin 1.
+  shrill violin sound in Violin 1, and a small update to "My Love's Gone 
+  Away".
 
 - Wrote a new piece of music for the Barrows/Asher's Islet/Siriath's Lair.
 
