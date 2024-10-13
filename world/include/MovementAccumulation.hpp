@@ -18,7 +18,12 @@ class MovementAccumulation : public ISerializable
     MovementAccumulation();
     virtual bool operator==(const MovementAccumulation& movement) const;
 
+    // Reset all the MovementAccumulation variables
     void reset();
+
+    // Reset only the time-related variables (used when things like water
+    // breathing wear off so the PC doesn't immediately start drowning.
+    void reset_minutes();
     
     void set_minutes_on_super_type_given_movement(const ulonglong new_minutes);
     ulonglong get_minutes_on_super_type_given_movement() const;

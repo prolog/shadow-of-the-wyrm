@@ -3,6 +3,9 @@ Me:
 - git push --tags
 - NPCs should cast water breathing when there is water in view and can't
   breathe water.
+- Flying: reset counter same as for swimming? This could give the user a
+  turn to react.
+- Moving up/down when ice frozen?
 - let's work on recall/coming back if you go down a water tile...
 - gghana2: corpse piety infuenced by level
 - Caldera's water should be death - swimming or descending

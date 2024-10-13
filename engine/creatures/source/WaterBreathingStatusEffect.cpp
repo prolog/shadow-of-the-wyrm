@@ -51,3 +51,10 @@ string WaterBreathingStatusEffect::get_status_identifier() const
   return StatusIdentifiers::STATUS_ID_WATER_BREATHING;
 }
 
+void WaterBreathingStatusEffect::after_finalize(std::shared_ptr<Creature> creature) const
+{
+  if (creature != nullptr)
+  {
+    creature->get_movement_accumulation_ref().reset_minutes();
+  }
+}

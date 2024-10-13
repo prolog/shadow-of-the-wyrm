@@ -10,6 +10,10 @@ Shadow of the Wyrm v1.7.3 "Sergio Assad"
 
 - There is now a Water Breathing cantrip/spellbook.
 
+- When water breathing wears off, the time-in-water counter is reset so that
+  if you've been swimming for a long time, you don't immediately start to
+  drown.
+
 - Bug fixes:
 
   - Followers with ranged attacks will no longer fire through a square that
