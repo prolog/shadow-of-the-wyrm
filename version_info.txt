@@ -15,6 +15,10 @@ Shadow of the Wyrm v1.7.3 "Sergio Assad"
   if you've been swimming for a long time, you don't immediately start to
   drown.
 
+- When the floating effect wears off, it'll no longer potentially kill you:
+  the player will have one turn to react. (if automatic movement is engaged,
+  it becomes disengaged at this point)
+
 - Bug fixes:
 
   - Followers with ranged attacks will no longer fire through a square that
