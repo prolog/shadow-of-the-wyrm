@@ -1,10 +1,10 @@
 Me:
 - ASSET RELEASE: sounds!
 - git push --tags
+- Add CoW into game, make YT video, update site
 - NPCs should cast water breathing when there is water in view and can't
   breathe water.
-- Flying: reset counter same as for swimming? This could give the user a
-  turn to react.
+- The Ybari/Asturias?
 - Moving up/down when ice frozen?
 - let's work on recall/coming back if you go down a water tile...
 - gghana2: corpse piety infuenced by level
@@ -239,7 +239,6 @@ Me:
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
 - Penalties from bloodied, exposed should also scale with level.
-- The Ybari/Asturias?
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Buildings generated in towns should automatically get inhabitants.
