@@ -19,6 +19,9 @@ Shadow of the Wyrm v1.7.3 "Sergio Assad"
   the player will have one turn to react. (if automatic movement is engaged,
   it becomes disengaged at this point)
 
+- NPCs will now cast water breathing and flying when it makes sense, and when
+  they are not following other orders.
+
 - Bug fixes:
 
   - Followers with ranged attacks will no longer fire through a square that

@@ -1,9 +1,10 @@
 Me:
 - ASSET RELEASE: sounds!
 - git push --tags
-- Add CoW into game, make YT video, update site
-- NPCs should cast water breathing when there is water in view and can't
-  breathe water.
+- eat and drink sound effects
+- should sound effects play on a particular channel?
+- splash sound effect when moving from ground to water
+- NPCs shouldn't follow underwater unless they currently are in water breathing
 - The Ybari/Asturias?
 - Moving up/down when ice frozen?
 - let's work on recall/coming back if you go down a water tile...

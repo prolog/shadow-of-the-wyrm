@@ -4568,6 +4568,9 @@
     <ClInclude Include="engine\calculators\include\WaterBreathingCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\decision_strategies\magic\include\EffectTypeTerrainChecker.hpp">
+      <Filter>Header Files\engine\decision_strategies\magic\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9273,6 +9276,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\WaterBreathingCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\magic\source\EffectTypeTerrainChecker.cpp">
+      <Filter>Source Files\engine\decision_strategies\magic\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
