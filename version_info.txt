@@ -9,6 +9,8 @@ Shadow of the Wyrm v1.7.3 "Sergio Assad"
 
 - There are now sound effects for eating and drinking.
 
+- Jumping into water now yields a "Splash!" in addition to the sound effect.
+
 - More names.
 
 - There is now a Water Breathing cantrip/spellbook.

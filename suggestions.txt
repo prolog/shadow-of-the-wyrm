@@ -1,10 +1,9 @@
 Me:
 - ASSET RELEASE: sounds!
 - git push --tags
-- eat and drink sound effects
-- should sound effects play on a particular channel?
-- splash sound effect when moving from ground to water
+- TileMovementConfirmationDetails instead of weird tuple
 - NPCs shouldn't follow underwater unless they currently are in water breathing
+- single piece of music swyrm.ini option
 - The Ybari/Asturias?
 - Moving up/down when ice frozen?
 - let's work on recall/coming back if you go down a water tile...
@@ -14,6 +13,7 @@ Me:
 - is the username check on savefiles still needed?
 - test orb placement in wyrmeswraec
 - dig in water
+- pre-brewing: wheat fields
 - super_type_message_sids -> super_type_sound_id?
 - hemsio: autosave not working?
 - set item status property in CreateItemScreen

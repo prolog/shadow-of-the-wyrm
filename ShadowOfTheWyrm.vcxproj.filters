@@ -4571,6 +4571,9 @@
     <ClInclude Include="engine\decision_strategies\magic\include\EffectTypeTerrainChecker.hpp">
       <Filter>Header Files\engine\decision_strategies\magic\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\actions\include\TileMovementConfirmationDetails.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9279,6 +9282,12 @@
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\magic\source\EffectTypeTerrainChecker.cpp">
       <Filter>Source Files\engine\decision_strategies\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\TileMovementConfirmationDetails.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\unit_tests\TileMovementConfirmationDetails_test.cpp">
+      <Filter>Source Files\engine\actions\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
