@@ -142,6 +142,8 @@ void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreatureP
       string potion_base_id = potion->get_base_id();
       bool potion_originally_identified = item_id.get_item_identified(potion_base_id);
 
+      Game::instance().get_sound()->play(SoundEffectID::DRINK);
+
       // Add a message about quaffing.
       add_quaff_message(creature, message);
 

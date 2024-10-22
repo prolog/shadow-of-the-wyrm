@@ -8445,6 +8445,12 @@
 			<Effect id="_click">
 				<Location>assets/sound/effects/click.wav</Location>
 			</Effect>
+			<Effect id="_eat">
+				<Location>assets/sound/effects/eat.wav</Location>
+			</Effect>
+			<Effect id="_drink">
+				<Location>assets/sound/effects/drink.wav</Location>
+			</Effect>
 		</Effects>
 		<Music>
 			<Song event="_arena">

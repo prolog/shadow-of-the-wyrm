@@ -7,6 +7,8 @@ Shadow of the Wyrm v1.7.3 "Sergio Assad"
 
 - Wrote a new piece of music for the Barrows/Asher's Islet/Siriath's Lair.
 
+- There are now sound effects for eating and drinking.
+
 - More names.
 
 - There is now a Water Breathing cantrip/spellbook.

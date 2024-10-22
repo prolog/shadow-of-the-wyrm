@@ -118,6 +118,8 @@ bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInv
 
     if (hunger.can_eat(nutrition))
     {
+      Game::instance().get_sound()->play(SoundEffectID::EAT);
+
       // First add the message about eating the food, because eating can in
       // turn generate other messages (if the food is poisoned, or the creature
       // gets resists, etc).

@@ -23,6 +23,8 @@ class SoundEffectID
     static const std::string NEGATIVE_EFFECT;
     static const std::string LEVEL_UP;
     static const std::string CLICK;
+    static const std::string EAT;
+    static const std::string DRINK;
 
   protected:
     SoundEffectID();
@@ -48,3 +50,5 @@ constexpr auto CSOUND_EFFECT_DEAD = "_dead";
 constexpr auto CSOUND_EFFECT_NEGATIVE_EFFECT = "_negative_effect";
 constexpr auto CSOUND_EFFECT_LEVEL_UP = "_level_up";
 constexpr auto CSOUND_EFFECT_CLICK = "_click";
+constexpr auto CSOUND_EFFECT_EAT = "_eat";
+constexpr auto CSOUND_EFFECT_DRINK = "_drink";
