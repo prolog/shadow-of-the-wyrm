@@ -862,11 +862,22 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Map
 
     if (confirmation)
     {
+      // Play a sound, if specified.
       string sound_id = details.get_sound_effect_id();
 
       if (is_player && !sound_id.empty())
       {
         Game::instance().get_sound()->play(sound_id);
+      }
+
+      // Add any post-movement message.
+      string post_movement_message_sid = details.get_post_movement_message_sid();
+
+      if (!post_movement_message_sid.empty())
+      {
+        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+        manager.add_new_message(StringTable::get(post_movement_message_sid));
+        manager.send();
       }
     }
 
