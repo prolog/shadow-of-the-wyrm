@@ -187,7 +187,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
       TilePtr tile = map->at(c.first, c.second);
 
       if (MapUtils::is_tile_available_for_creature(generated_creature, tile) &&
-          !std::get<0>(tmc.get_confirmation_details(generated_creature, map, nullptr, c, tile, c)) &&
+          !tmc.get_confirmation_details(generated_creature, map, nullptr, c, tile, c).get_require_prompt() &&
           MapUtils::does_area_around_tile_allow_creature_generation(map, c))
       {
         //  If pack creatures are generated, the maximum for the level is
@@ -217,7 +217,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
             {
               if (RNG::percent_chance(PACK_TILE_CHANCE) &&
                   MapUtils::is_tile_available_for_creature(pack_creature, tile) && 
-                 !std::get<0>(tmc.get_confirmation_details(pack_creature, map, nullptr, adj, tile, adj)))
+                 !tmc.get_confirmation_details(pack_creature, map, nullptr, adj, tile, adj).get_require_prompt())
               {
                 addl_pack_creatures++;
                 add_creature_to_map(game, pack_creature, map, manager, base_danger_level, adj.first, adj.second, current_creatures_placed, creatures_generated);

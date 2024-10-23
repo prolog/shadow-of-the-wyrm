@@ -835,8 +835,8 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Map
     is_automoving = creature->get_automatic_movement_ref().get_engaged();
   }
 
-  tuple<bool, string, string> details = tmc.get_confirmation_details(creature, current_map, creatures_old_tile, old_tile_coords, creatures_new_tile, creatures_new_tile_coords);
-  bool needs_confirmation = std::get<0>(details);
+  auto details = tmc.get_confirmation_details(creature, current_map, creatures_old_tile, old_tile_coords, creatures_new_tile, creatures_new_tile_coords);
+  bool needs_confirmation = details.get_require_prompt();
 
   if (needs_confirmation)
   {
@@ -850,7 +850,7 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Map
     if (is_player && never_move_to_danger == false && is_automoving == false)
     {
       IMessageManager& manager = MM::instance();
-      manager.add_new_confirmation_message(std::get<1>(details));
+      manager.add_new_confirmation_message(details.get_confirmation_message());
 
       confirmation = (creature->get_decision_strategy()->get_confirmation());
       manager.clear_if_necessary();
@@ -862,7 +862,7 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Map
 
     if (confirmation)
     {
-      string sound_id = std::get<2>(details);
+      string sound_id = details.get_sound_effect_id();
 
       if (is_player && !sound_id.empty())
       {

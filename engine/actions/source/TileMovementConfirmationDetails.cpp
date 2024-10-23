@@ -8,8 +8,8 @@ TileMovementConfirmationDetails::TileMovementConfirmationDetails()
 {
 }
 
-TileMovementConfirmationDetails::TileMovementConfirmationDetails(const bool new_require_prompt, const string& new_confirmation_message_sid, const string& new_sound_effect_id, const string& new_post_movement_message_sid)
-: require_prompt(new_require_prompt), confirmation_message_sid(new_confirmation_message_sid), sound_effect_id(new_sound_effect_id), post_movement_message_sid(new_post_movement_message_sid)
+TileMovementConfirmationDetails::TileMovementConfirmationDetails(const bool new_require_prompt, const string& new_confirmation_message, const string& new_sound_effect_id, const string& new_post_movement_message_sid)
+: require_prompt(new_require_prompt), confirmation_message(new_confirmation_message), sound_effect_id(new_sound_effect_id), post_movement_message_sid(new_post_movement_message_sid)
 {
 }
 
@@ -18,9 +18,9 @@ bool TileMovementConfirmationDetails::get_require_prompt() const
 	return require_prompt;
 }
 
-string TileMovementConfirmationDetails::get_confirmation_message_sid() const
+string TileMovementConfirmationDetails::get_confirmation_message() const
 {
-	return confirmation_message_sid;
+	return confirmation_message;
 }
 
 string TileMovementConfirmationDetails::get_sound_effect_id() const
