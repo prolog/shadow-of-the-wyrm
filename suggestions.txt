@@ -1,10 +1,9 @@
 Me:
 - ASSET RELEASE: sounds!
 - git push --tags
-- TileMovementConfirmationDetails instead of weird tuple
-- NPCs shouldn't follow underwater unless they currently are in water breathing
-- single piece of music swyrm.ini option
 - The Ybari/Asturias?
+- Unit test for new item piety code
+- Nerf nutrition for piety a bit?
 - Moving up/down when ice frozen?
 - let's work on recall/coming back if you go down a water tile...
 - gghana2: corpse piety infuenced by level

@@ -9,6 +9,7 @@ class ConsumableConstants
     static const std::string CORPSE_RACE_ID;
     static const std::string CORPSE_BASE_CREATURE_ID;
     static const std::string CORPSE_SKINNED;
+    static const std::string CORPSE_LEVEL;
 
     static const int FOOD_POISON_APPLICATION_BONUS;
     static const int ALCOHOL_POISON_APPLICATION_BONUS;

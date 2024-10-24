@@ -11,6 +11,8 @@ class ItemPietyCalculator
   protected:
     friend class ItemPietyCalculatorTestFixture;
 
+    float get_corpse_level_multiplier(ItemPtr item);
+
     int get_base_value(ItemPtr item);
     int get_base_divisor(ItemPtr item);
 
@@ -37,5 +39,7 @@ class ItemPietyCalculator
     // Artifacts are valuable, and are reflected as such in the piety 
     // calculations.
     static const int ARTIFACT_DIVISOR;
+
+    static const float CORPSE_PIETY_BASE_MULTIPLIER;
 };
 

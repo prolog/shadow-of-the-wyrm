@@ -101,6 +101,10 @@ void CorpseFactory::set_internal_details(CreaturePtr dead_creature, ItemPtr corp
 
     // Set the corpse's creature ID so that nearby creatures can get mad.
     corpse->set_additional_property(ConsumableConstants::CORPSE_BASE_CREATURE_ID, dead_creature->get_original_id());
+
+    // Set the level so its level relative to the player can influence piety
+    // gain.
+    corpse->set_additional_property(ConsumableConstants::CORPSE_LEVEL, std::to_string(dead_creature->get_level().get_current()));
   }
 }
 
