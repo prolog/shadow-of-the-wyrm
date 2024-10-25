@@ -11,6 +11,9 @@ Shadow of the Wyrm v1.7.3 "Sergio Assad"
 
 - Jumping into water now yields a "Splash!" in addition to the sound effect.
 
+- The level of the corpse's original creature now influences the amount of
+  piety received (gghana2).
+
 - More names.
 
 - There is now a Water Breathing cantrip/spellbook.

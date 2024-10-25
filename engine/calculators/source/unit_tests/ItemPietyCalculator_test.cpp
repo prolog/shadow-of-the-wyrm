@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "Amulet.hpp"
+#include "Food.hpp"
 
 class ItemPietyCalculatorTestFixture : public ::testing::Test
 {
@@ -63,4 +64,31 @@ TEST(SW_Engine_Calculators_ItemPietyCalculator, calculated_piety_value)
   item->set_quantity(3);
 
   EXPECT_EQ(300, ipc.calculate_piety(item));
+}
+
+TEST(SW_Engine_Calculators_ItemPietyCalculator, corpse_level_multiplier)
+{
+  ItemPietyCalculator ipc;
+  FoodPtr corpse = std::make_shared<Food>();
+
+  corpse->set_nutrition(3000);
+
+  // When there's no race_id, it's just regular food
+  EXPECT_EQ(300, ipc.calculate_piety(corpse));
+
+  corpse->set_additional_property(ConsumableConstants::CORPSE_RACE_ID, "01_human");
+
+  // When there's no level, the multiplier should be 1.
+  EXPECT_EQ(1000, ipc.calculate_piety(corpse));
+
+  std::vector<int> corpse_level = { 1, 3, 17, 19, 38, 49, 50 };
+  int exp_val = 0;
+
+  for (const auto& cl : corpse_level)
+  {
+    corpse->set_additional_property(ConsumableConstants::CORPSE_LEVEL, std::to_string(cl));
+    exp_val = static_cast<int>(1000 * (0.25f + (0.02f * cl)));
+    
+    EXPECT_EQ(exp_val, ipc.calculate_piety(corpse));
+  }
 }
