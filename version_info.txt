@@ -29,6 +29,9 @@ Shadow of the Wyrm v1.7.3 "Sergio Assad"
 - NPCs will now cast water breathing and flying when it makes sense, and when
   they are not following other orders.
 
+- NPCs may choose to cast statistic buff spells when there are hostiles in 
+  their FOV.
+
 - Bug fixes:
 
   - Followers with ranged attacks will no longer fire through a square that

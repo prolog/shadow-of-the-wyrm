@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const int DefaultNPCMagicDecision::PCT_CHANCE_CAST_WHILE_UNDER_THREAT = 5;
+const int DefaultNPCMagicDecision::PCT_CHANCE_CAST_WHILE_UNDER_THREAT = 10;
 
 pair<bool, Direction> DefaultNPCMagicDecision::decide(CreaturePtr caster, MapPtr view_map, const Spell& spell, const set<string>& creature_threats) const
 {
@@ -27,8 +27,17 @@ pair<bool, Direction> DefaultNPCMagicDecision::decide(CreaturePtr caster, MapPtr
 
       decision = ettc.does_effect_match_terrain(caster, view_map, et);
 
-      // Later: return true if decision is true, and otherwise continue
-      // checking other conditions...
+      // Check to see if it's a buff - targets self, modifies stats
+      if (!decision)
+      {
+        if (spell.get_shape().get_spell_shape_type() == SpellShapeType::SPELL_SHAPE_TARGET_SELF &&
+            spell.get_effect() == EffectType::EFFECT_TYPE_MODIFY_STATISTICS)
+        {
+          decision = threats_exist;
+        }
+      }
+
+      // Any other checks...
     }
   }
 
