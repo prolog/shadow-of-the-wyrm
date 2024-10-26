@@ -2,8 +2,7 @@ Me:
 - ASSET RELEASE: sounds!
 - git push --tags
 - The Ybari/Asturias?
-- Unit test for new item piety code
-- Nerf nutrition for piety a bit? have a map of per-item-type piety divisors
+- Nerf nutrition for piety a bit? 
 - NPCs: cast buffs when hostiles in fov
 - Moving up/down when ice frozen?
 - let's work on recall/coming back if you go down a water tile...

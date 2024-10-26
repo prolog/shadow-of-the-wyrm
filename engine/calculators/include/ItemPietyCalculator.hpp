@@ -6,15 +6,21 @@
 class ItemPietyCalculator
 {
   public:
+    ItemPietyCalculator();
     int calculate_piety(ItemPtr item);
 
   protected:
     friend class ItemPietyCalculatorTestFixture;
+    void init_item_type_pieties();
 
     float get_corpse_level_multiplier(ItemPtr item);
 
+    int get_item_type_piety_divisor(ItemPtr item);
     int get_base_value(ItemPtr item);
     int get_base_divisor(ItemPtr item);
+
+    // Any item type-specific mappings live here.
+    static std::map<ItemType, int> ITEM_TYPE_PIETY_DIVISORS;
 
     // The minimum piety required before calculate_piety will return a non-zero
     // value.  Deities don't like pitiful offerings.

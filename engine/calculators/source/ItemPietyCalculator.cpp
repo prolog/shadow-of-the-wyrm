@@ -11,7 +11,20 @@ const int ItemPietyCalculator::CORPSE_DIVISOR = 3;
 const int ItemPietyCalculator::CURRENCY_DIVISOR = 3;
 const int ItemPietyCalculator::ARTIFACT_DIVISOR = 2;
 const float ItemPietyCalculator::CORPSE_PIETY_BASE_MULTIPLIER = 0.25f;
+std::map<ItemType, int> ItemPietyCalculator::ITEM_TYPE_PIETY_DIVISORS = {};
 
+ItemPietyCalculator::ItemPietyCalculator()
+{
+  if (ITEM_TYPE_PIETY_DIVISORS.empty())
+  {
+    init_item_type_pieties();
+  }
+}
+
+void ItemPietyCalculator::init_item_type_pieties()
+{
+  ITEM_TYPE_PIETY_DIVISORS = { {ItemType::ITEM_TYPE_CURRENCY, 3} };
+}
 
 // Calculate the piety granted for the sacrifice of a particular item.
 // - If the item's piety is less than the minimum piety, a piety of 0
@@ -40,6 +53,23 @@ int ItemPietyCalculator::calculate_piety(ItemPtr item)
   }
 
   return piety;
+}
+
+int ItemPietyCalculator::get_item_type_piety_divisor(ItemPtr item)
+{
+  int divisor = BASE_DIVISOR;
+
+  if (item != nullptr)
+  {
+    auto d_it = ITEM_TYPE_PIETY_DIVISORS.find(item->get_type());
+
+    if (d_it != ITEM_TYPE_PIETY_DIVISORS.end())
+    {
+      divisor = d_it->second;
+    }
+  }
+
+  return divisor;
 }
 
 float ItemPietyCalculator::get_corpse_level_multiplier(ItemPtr item)
@@ -111,18 +141,13 @@ int ItemPietyCalculator::get_base_value(ItemPtr item)
 // corpses is much lower than for any other item.
 int ItemPietyCalculator::get_base_divisor(ItemPtr item)
 {
-  int divisor = BASE_DIVISOR;
+  int divisor = get_item_type_piety_divisor(item);
 
   if (item)
   {
     if (item->has_additional_property(ConsumableConstants::CORPSE_RACE_ID))
     {
       divisor = CORPSE_DIVISOR;
-    }
-
-    if (item->get_type() == ItemType::ITEM_TYPE_CURRENCY)
-    {
-      divisor = CURRENCY_DIVISOR;
     }
 
     if (item->get_artifact())
