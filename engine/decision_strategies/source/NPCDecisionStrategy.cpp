@@ -29,6 +29,7 @@
 #include "NPCMagicDecisionFactory.hpp"
 #include "NPCPickupDecisionStrategy.hpp"
 #include "NPCUseEquipItemDecisionStrategy.hpp"
+#include "OrderTextKeys.hpp"
 #include "RaceConstants.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
 #include "RangedCombatUtils.hpp"
@@ -972,6 +973,34 @@ vector<Coordinate> NPCDecisionStrategy::get_adjacent_safe_coordinates_without_cr
   }
   
   return coords_without_creatures;
+}
+
+string NPCDecisionStrategy::get_orders_description_sid() const
+{
+  string follow = get_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID);
+
+  if (!follow.empty())
+  {
+    return OrderTextKeys::ORDER_FOLLOW;
+  }
+
+  string attack = get_property(DecisionStrategyProperties::DECISION_STRATEGY_ATTACK_CREATURES_THREATENING_ID);
+
+  if (!attack.empty())
+  {
+    return OrderTextKeys::ORDER_ATTACK;
+  }
+
+  string freeze = get_property(DecisionStrategyProperties::DECISION_STRATEGY_ORDERED_SENTINEL);
+
+  if (!freeze.empty())
+  {
+    return OrderTextKeys::ORDER_FREEZE;
+  }
+
+  // JCD FIXME: Need to do summon!!!
+
+  return OrderTextKeys::ORDER_AT_EASE;
 }
 
 bool NPCDecisionStrategy::has_movement_orders() const

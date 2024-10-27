@@ -10,6 +10,7 @@ OrderTextKeys::~OrderTextKeys()
 {
 }
 
+const string OrderTextKeys::ORDER_ORDERS = "ORDER_ORDERS";
 const string OrderTextKeys::ORDER_ATTACK = "ORDER_ATTACK";
 const string OrderTextKeys::ORDER_FOLLOW = "ORDER_FOLLOW";
 const string OrderTextKeys::ORDER_FREEZE = "ORDER_FREEZE";

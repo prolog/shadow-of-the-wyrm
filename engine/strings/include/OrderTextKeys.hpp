@@ -4,6 +4,8 @@
 class OrderTextKeys
 {
   public:
+    // If you update any of these, remember to also update NPCDecisionStrategy.
+    static const std::string ORDER_ORDERS;
     static const std::string ORDER_ATTACK;
     static const std::string ORDER_FOLLOW;
     static const std::string ORDER_FREEZE;

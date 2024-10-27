@@ -145,6 +145,11 @@ map<string, string> DecisionStrategy::get_properties() const
   return properties;
 }
 
+string DecisionStrategy::get_orders_description_sid() const
+{
+  return "";
+}
+
 void DecisionStrategy::set_automelee(const bool new_automelee)
 {
   automelee = new_automelee;

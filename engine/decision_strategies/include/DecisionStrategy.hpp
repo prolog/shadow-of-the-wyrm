@@ -67,6 +67,8 @@ class DecisionStrategy : public ISerializable
     std::map<std::string, std::string>& get_properties_ref();
     std::map<std::string, std::string> get_properties() const;
 
+    virtual std::string get_orders_description_sid() const;
+
     virtual DecisionStrategy* copy() = 0;
 
     virtual bool serialize(std::ostream& stream) const override;
