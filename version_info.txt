@@ -37,6 +37,8 @@ Shadow of the Wyrm v1.7.3 "Sergio Assad"
   - Followers with ranged attacks will no longer fire through a square that
     contains a grouped creature (ebalster).
 
+  - There was an inconsistency around Cynwise's background (sc95837).
+
   - Diving is no longer possible in the infinite dungeon/sewer (ebalster).
 
   - Fixed new/delete mismatches throughout the codebase. These were causing
