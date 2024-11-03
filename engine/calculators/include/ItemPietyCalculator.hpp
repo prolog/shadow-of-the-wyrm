@@ -35,6 +35,10 @@ class ItemPietyCalculator
     // corpses, which deities especially like).
     static const int BASE_DIVISOR;
 
+    // The divisor used on the base nutrition value (before any other divisors
+    // are applied) to lower it a little.
+    static const float BASE_NUTRITION_DIVISOR;
+
     // The divisor used for corpses, which are appreciated by deities more
     // than any other item.
     static const int CORPSE_DIVISOR;

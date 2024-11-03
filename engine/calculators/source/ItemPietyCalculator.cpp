@@ -7,6 +7,7 @@
 const int ItemPietyCalculator::MINIMUM_PIETY = 10;
 const int ItemPietyCalculator::MINIMUM_NUTRITION_FOR_PIETY = 1000;
 const int ItemPietyCalculator::BASE_DIVISOR = 10;
+const float ItemPietyCalculator::BASE_NUTRITION_DIVISOR = 1.15f;
 const int ItemPietyCalculator::CORPSE_DIVISOR = 3;
 const int ItemPietyCalculator::CURRENCY_DIVISOR = 3;
 const int ItemPietyCalculator::ARTIFACT_DIVISOR = 2;
@@ -121,6 +122,12 @@ int ItemPietyCalculator::get_base_value(ItemPtr item)
         // Base nutrition is used here, not calculated nutrition - the divine aren't
         // influenced by an item's status.
         int nutrition = consumable->get_nutrition();
+        
+        // Non-corpse food is adjusted a bit.
+        if (!item->has_additional_property(ConsumableConstants::CORPSE_RACE_ID))
+        {
+          nutrition = static_cast<int>(consumable->get_nutrition() / BASE_NUTRITION_DIVISOR);
+        }
 
         if (nutrition >= MINIMUM_NUTRITION_FOR_PIETY || consumable->get_effect_type() != EffectType::EFFECT_TYPE_NULL)
         {

@@ -53,6 +53,11 @@ TEST_F(ItemPietyCalculatorTestFixture, get_base_value)
   item->set_value(1);
 
   EXPECT_EQ(1, get_base_value(item));
+
+  FoodPtr food = std::make_shared<Food>();
+  food->set_nutrition(2000);
+
+  EXPECT_EQ(1739, get_base_value(food));
 }
 
 TEST(SW_Engine_Calculators_ItemPietyCalculator, calculated_piety_value)
@@ -72,6 +77,16 @@ TEST(SW_Engine_Calculators_ItemPietyCalculator, calculated_piety_value)
   EXPECT_EQ(300, ipc.calculate_piety(item));
 }
 
+TEST(SW_Engine_Calculators_ItemPietyCalculator, food_piety)
+{
+  ItemPietyCalculator ipc;
+  FoodPtr food = std::make_shared<Food>();
+  food->set_nutrition(800);
+
+  // Doesn't meet min piety requirements
+  EXPECT_EQ(0, ipc.calculate_piety(food));
+}
+
 TEST(SW_Engine_Calculators_ItemPietyCalculator, corpse_level_multiplier)
 {
   ItemPietyCalculator ipc;
@@ -79,8 +94,9 @@ TEST(SW_Engine_Calculators_ItemPietyCalculator, corpse_level_multiplier)
 
   corpse->set_nutrition(3000);
 
-  // When there's no race_id, it's just regular food
-  EXPECT_EQ(300, ipc.calculate_piety(corpse));
+  // When there's no race_id, it's just regular food and should get the
+  // nutrition divisor applied.
+  EXPECT_EQ(260, ipc.calculate_piety(corpse));
 
   corpse->set_additional_property(ConsumableConstants::CORPSE_RACE_ID, "01_human");
 
@@ -109,7 +125,7 @@ TEST(ItemPietyCalculatorTest, piety_by_item_type)
 
   FoodPtr food = std::make_shared<Food>();
   food->set_nutrition(3000);
-  EXPECT_EQ(300, ipc.calculate_piety(food));
+  EXPECT_EQ(260, ipc.calculate_piety(food));
 
   FoodPtr corpse = std::make_shared<Food>();
   corpse->set_nutrition(3000);
