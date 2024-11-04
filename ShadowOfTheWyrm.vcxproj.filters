@@ -846,6 +846,9 @@
     <Filter Include="Source Files\sound\source\unit_tests">
       <UniqueIdentifier>{1400f48f-f57d-4ef2-b084-cd602ac88619}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\decision_strategies\magic\source\unit_tests">
+      <UniqueIdentifier>{88ac272e-333e-4b79-9000-e626555b2058}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -9303,6 +9306,9 @@
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\magic\source\NPCEffectDeciders.cpp">
       <Filter>Source Files\engine\decision_strategies\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\magic\source\unit_tests\NPCEffectDeciderFactory_test.cpp">
+      <Filter>Source Files\engine\decision_strategies\magic\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -32,3 +32,7 @@ INPCEffectDeciderPtr NPCEffectDeciderFactory::create_effect_decider(CreaturePtr 
 
 	return decider;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/NPCEffectDeciderFactory_test.cpp"
+#endif
