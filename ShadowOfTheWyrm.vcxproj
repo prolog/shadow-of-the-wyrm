@@ -659,7 +659,10 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\decision_strategies\magic\include\DefaultNPCMagicDecision.hpp" />
     <ClInclude Include="engine\decision_strategies\magic\include\EffectTypeTerrainChecker.hpp" />
     <ClInclude Include="engine\decision_strategies\magic\include\HealingNPCMagicDecision.hpp" />
+    <ClInclude Include="engine\decision_strategies\magic\include\INPCEffectDecider.hpp" />
     <ClInclude Include="engine\decision_strategies\magic\include\INPCMagicDecision.hpp" />
+    <ClInclude Include="engine\decision_strategies\magic\include\NPCEffectDeciderFactory.hpp" />
+    <ClInclude Include="engine\decision_strategies\magic\include\NPCEffectDeciders.hpp" />
     <ClInclude Include="engine\decision_strategies\magic\include\NPCMagicDecisionFactory.hpp" />
     <ClInclude Include="engine\decision_strategies\magic\include\NullNPCMagicDecision.hpp" />
     <ClInclude Include="engine\decision_strategies\search\include\AStarSearchStrategy.hpp" />
@@ -2068,6 +2071,8 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\decision_strategies\magic\source\DefaultNPCMagicDecision.cpp" />
     <ClCompile Include="engine\decision_strategies\magic\source\EffectTypeTerrainChecker.cpp" />
     <ClCompile Include="engine\decision_strategies\magic\source\HealingNPCMagicDecision.cpp" />
+    <ClCompile Include="engine\decision_strategies\magic\source\NPCEffectDeciderFactory.cpp" />
+    <ClCompile Include="engine\decision_strategies\magic\source\NPCEffectDeciders.cpp" />
     <ClCompile Include="engine\decision_strategies\magic\source\NPCMagicDecisionFactory.cpp" />
     <ClCompile Include="engine\decision_strategies\magic\source\NullNPCMagicDecision.cpp" />
     <ClCompile Include="engine\decision_strategies\source\DecisionStrategyProperties.cpp" />

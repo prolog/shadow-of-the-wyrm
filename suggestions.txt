@@ -2,7 +2,9 @@ Me:
 - ASSET RELEASE: sounds!
 - git push --tags
 - The Ybari/Asturias?
-- Nerf nutrition for piety a bit? 
+- unit tests for effect terrain checker, npc effect deciders, eff dec fac
+- water breathing decisions will repeat because it's storing the effect and
+  not the spell ID
 - NPCs: cleansing when breeders in view
 - Moving up/down when ice frozen?
 - let's work on recall/coming back if you go down a water tile...
@@ -454,6 +456,14 @@ Kenny:
 
 iakul:
 - spells for the nine
+- Consuming the corpse of the same race aggros the entire map, regardless of 
+  whether they are in LOS, or whether they are your followers.
+- Attacking a friendly doesn't provoke aggro from nearby friendlies. The 
+  friendly that's attacked does get aggro-ed, and guards nearby will attack 
+  this former friendly for their act of self-defense while ignoring you.
+- (2) Leads to some counterintuitive approaches. The second mission that Acey 
+  gives you is easier if you attack and kill off the guardians one by one 
+  before you pick up the quest item. 
 
 JovanM:
 - create inkpots

@@ -1,5 +1,6 @@
 #include "DefaultNPCMagicDecision.hpp"
 #include "EffectTypeTerrainChecker.hpp"
+#include "NPCEffectDeciderFactory.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -23,21 +24,12 @@ pair<bool, Direction> DefaultNPCMagicDecision::decide(CreaturePtr caster, MapPtr
         threat_check)
     {
       EffectType et = spell.get_effect();
-      EffectTypeTerrainChecker ettc;
+      INPCEffectDeciderPtr decider = NPCEffectDeciderFactory::create_effect_decider(caster, view_map, et, spell.get_shape().get_spell_shape_type(), threats_exist);
 
-      decision = ettc.does_effect_match_terrain(caster, view_map, et);
-
-      // Check to see if it's a buff - targets self, modifies stats
-      if (!decision)
+      if (decider != nullptr)
       {
-        if (spell.get_shape().get_spell_shape_type() == SpellShapeType::SPELL_SHAPE_TARGET_SELF &&
-            spell.get_effect() == EffectType::EFFECT_TYPE_MODIFY_STATISTICS)
-        {
-          decision = threats_exist;
-        }
+        decision = decider->decide();
       }
-
-      // Any other checks...
     }
   }
 

@@ -4574,6 +4574,15 @@
     <ClInclude Include="engine\actions\include\TileMovementConfirmationDetails.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\decision_strategies\magic\include\NPCEffectDeciderFactory.hpp">
+      <Filter>Header Files\engine\decision_strategies\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\magic\include\INPCEffectDecider.hpp">
+      <Filter>Header Files\engine\decision_strategies\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\magic\include\NPCEffectDeciders.hpp">
+      <Filter>Header Files\engine\decision_strategies\magic\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9288,6 +9297,12 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\unit_tests\TileMovementConfirmationDetails_test.cpp">
       <Filter>Source Files\engine\actions\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\magic\source\NPCEffectDeciderFactory.cpp">
+      <Filter>Source Files\engine\decision_strategies\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\magic\source\NPCEffectDeciders.cpp">
+      <Filter>Source Files\engine\decision_strategies\magic\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

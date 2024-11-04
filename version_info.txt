@@ -45,6 +45,8 @@ Shadow of the Wyrm v1.7.3 "Sergio Assad"
     small but persistent memory leaks in terrain generation and in other
     scenarios.
 
+  - Athel was incorrectly generating as hostile (iakul).
+
 Shadow of the Wyrm v1.7.2 "Michelagnolo Galilei"
 - Version started February 18, 2024. Version finalized August 25, 2024.
 
