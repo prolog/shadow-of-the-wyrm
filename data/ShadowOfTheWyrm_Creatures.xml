@@ -26376,6 +26376,7 @@
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
 				<DangerLevel>9</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
