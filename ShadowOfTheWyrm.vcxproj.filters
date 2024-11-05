@@ -9313,6 +9313,9 @@
     <ClCompile Include="engine\decision_strategies\magic\source\unit_tests\EffectTypeTerrainChecker_test.cpp">
       <Filter>Source Files\engine\decision_strategies\magic\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="engine\decision_strategies\magic\source\unit_tests\NPCEffectDeciders_test.cpp">
+      <Filter>Source Files\engine\decision_strategies\magic\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShadowOfTheWyrm.rc" />

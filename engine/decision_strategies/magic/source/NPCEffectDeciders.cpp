@@ -62,3 +62,7 @@ bool ModifyStatisticsNPCEffectDecider::decide() const
 	// modify statistics spells.
 	return false;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/NPCEffectDeciders_test.cpp"
+#endif
