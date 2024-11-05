@@ -1223,6 +1223,7 @@ int add_objects_to_player_tile(lua_State* ls)
 //          3: row
 //          4: col
 //          5: quantity (optional, 1 assumed)
+//          6: disallow cursed (defaults to false)
 //
 // Return value: true if added, false otherwise.
 int add_object_to_map(lua_State* ls)
@@ -1230,7 +1231,7 @@ int add_object_to_map(lua_State* ls)
   bool result = false;
   int num_args = lua_gettop(ls);
 
-  if (lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && (num_args == 4 || (num_args == 5 && lua_isnumber(ls, 5))))
+  if (num_args >= 4 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
   {
     string base_item_id = lua_tostring(ls, 1);
     string map_id = lua_tostring(ls, 2);
@@ -1240,9 +1241,15 @@ int add_object_to_map(lua_State* ls)
     uint quantity = 1;
 
     // Set the quantity if it was specified.    
-    if (num_args == 5)
+    if (num_args >= 5 && lua_isnumber(ls, 5))
     {
       quantity = static_cast<uint>(lua_tointeger(ls, 5));
+    }
+
+    bool disallow_cursed = false;
+    if (num_args >= 6 && lua_isboolean(ls, 6))
+    {
+      disallow_cursed = lua_toboolean(ls, 6);
     }
 
     Game& game = Game::instance();
@@ -1251,7 +1258,7 @@ int add_object_to_map(lua_State* ls)
     if (map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
     {
       TilePtr tile = map->at(row, col);
-      result = ItemManager::create_item_with_probability(100, 100, tile->get_items(), base_item_id, quantity);
+      result = ItemManager::create_item_with_probability(100, 100, tile->get_items(), base_item_id, quantity, disallow_cursed);
     }
   }
   else

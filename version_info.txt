@@ -11,6 +11,8 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
 
 - Jumping into water now yields a "Splash!" in addition to the sound effect.
 
+- Kew's special items will no longer generate cursed (iakul).
+
 - The level of the corpse's original creature now influences the amount of
   piety received (gghana2).
 

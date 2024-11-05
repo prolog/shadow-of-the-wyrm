@@ -2,8 +2,6 @@ Me:
 - ASSET RELEASE: sounds!
 - git push --tags
 - The Ybari/Asturias?
-- iakul: godless unable to join thief guild after godslayer
-- iakul: kew's items can generate as cursed
 - unit tests for effect terrain checker, npc effect deciders
 - water breathing decisions will repeat because it's storing the effect and
   not the spell ID
