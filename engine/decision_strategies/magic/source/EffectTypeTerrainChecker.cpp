@@ -41,3 +41,7 @@ bool EffectTypeTerrainChecker::does_effect_match_terrain(CreaturePtr caster, Map
 
 	return matches;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/EffectTypeTerrainChecker_test.cpp"
+#endif
