@@ -8,6 +8,7 @@
 #include "DirectionUtils.hpp"
 #include "SpellcastingAction.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "MagicalAbilityChecker.hpp"
 #include "MagicalDamageCalculator.hpp"
 #include "MagicCommandFactory.hpp"
@@ -133,7 +134,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
       spell = s_it->second;
 
       MagicalAbilityChecker mac;
-      if (spell.get_magic_category() == SkillType::SKILL_MAGIC_DIVINE && !game.do_deities_exist())
+      if (!GameUtils::is_magic_category_possible(spell.get_magic_category(), game))
       {
         add_no_deities_message(creature);
       }

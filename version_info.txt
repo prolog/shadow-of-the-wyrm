@@ -28,6 +28,9 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
   the player will have one turn to react. (if automatic movement is engaged,
   it becomes disengaged at this point)
 
+- NPCs will no longer try to cast divine magic once the Nine have been
+  destroyed.
+
 - NPCs will now cast water breathing and flying when it makes sense, and when
   they are not following other orders.
 
