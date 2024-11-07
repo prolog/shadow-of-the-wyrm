@@ -1,5 +1,11 @@
+#include "global_prototypes.hpp"
 #include "NPCEffectDeciders.hpp"
+#include "Conversion.hpp"
 #include "EffectTypeTerrainChecker.hpp"
+#include "Game.hpp"
+#include "MapProperties.hpp"
+
+using std::string;
 
 // DefaultNPCEffectDecider
 DefaultNPCEffectDecider::DefaultNPCEffectDecider()
@@ -61,6 +67,40 @@ bool ModifyStatisticsNPCEffectDecider::decide() const
 	// Modify later if need be, but for now, NPCs only cast self-targetting
 	// modify statistics spells.
 	return false;
+}
+
+// CleansingNPCEffectDecider
+CleansingNPCEffectDecider::CleansingNPCEffectDecider(CreaturePtr new_caster, MapPtr new_map)
+: DefaultNPCEffectDecider(new_caster, new_map)
+{
+}
+
+CleansingNPCEffectDecider::~CleansingNPCEffectDecider()
+{
+}
+
+bool CleansingNPCEffectDecider::decide() const
+{
+	bool dec = true;
+	Game& game = Game::instance();
+	MapPtr current_map = game.get_current_map();
+
+	if (current_map != nullptr)
+	{
+		string regen_rate = current_map->get_property(MapProperties::MAP_PROPERTIES_CREATURE_GENERATION_RATE);
+
+		if (!regen_rate.empty())
+		{
+			float rr = String::to_float(regen_rate);
+
+			if (fequal(rr, 0.0f))
+			{
+				dec = false;
+			}
+		}
+	}
+
+	return dec;
 }
 
 #ifdef UNIT_TESTS

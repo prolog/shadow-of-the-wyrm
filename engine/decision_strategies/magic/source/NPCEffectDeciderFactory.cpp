@@ -25,6 +25,10 @@ INPCEffectDeciderPtr NPCEffectDeciderFactory::create_effect_decider(CreaturePtr 
 	{
 		decider = std::make_unique<ModifyStatisticsNPCEffectDecider>(caster, view_map, sst, threats_exist);
 	}
+	else if (et == EffectType::EFFECT_TYPE_CLEANSING)
+	{
+		decider = std::make_unique<CleansingNPCEffectDecider>(caster, view_map);
+	}
 	else
 	{
 		decider = std::make_unique<DefaultNPCEffectDecider>();

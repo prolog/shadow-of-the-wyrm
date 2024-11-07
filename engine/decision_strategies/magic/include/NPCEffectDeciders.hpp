@@ -48,3 +48,13 @@ class ModifyStatisticsNPCEffectDecider : public DefaultNPCEffectDecider
 		SpellShapeType sst;
 		bool threats_exist;
 };
+
+// Cleansing
+class CleansingNPCEffectDecider : public DefaultNPCEffectDecider
+{
+	public:
+		CleansingNPCEffectDecider(CreaturePtr new_caster, MapPtr new_view_map);
+		~CleansingNPCEffectDecider();
+
+		bool decide() const override;
+};

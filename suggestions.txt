@@ -2,10 +2,10 @@ Me:
 - ASSET RELEASE: sounds!
 - git push --tags
 - The Ybari/Asturias?
-- how about having NPCs heal their leaders?
+- cleansing UT
 - water breathing decisions will repeat because it's storing the effect and
   not the spell ID
-- NPCs: cleansing when breeders in view
+- NPCs: cleansing when map lacks flag
 - Moving up/down when ice frozen?
 - let's work on recall/coming back if you go down a water tile...
 - Caldera's water should be death - swimming or descending
