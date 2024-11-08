@@ -9,7 +9,7 @@ NPCEffectDeciderFactory::~NPCEffectDeciderFactory()
 {
 }
 
-INPCEffectDeciderPtr NPCEffectDeciderFactory::create_effect_decider(CreaturePtr caster, MapPtr view_map, const EffectType et, const SpellShapeType sst, const bool threats_exist)
+INPCEffectDeciderPtr NPCEffectDeciderFactory::create_effect_decider(CreaturePtr caster, MapPtr view_map, MapPtr current_game_map, const EffectType et, const SpellShapeType sst, const bool threats_exist)
 {
 	INPCEffectDeciderPtr decider;
 	
@@ -27,7 +27,7 @@ INPCEffectDeciderPtr NPCEffectDeciderFactory::create_effect_decider(CreaturePtr 
 	}
 	else if (et == EffectType::EFFECT_TYPE_CLEANSING)
 	{
-		decider = std::make_unique<CleansingNPCEffectDecider>(caster, view_map);
+		decider = std::make_unique<CleansingNPCEffectDecider>(caster, current_game_map);
 	}
 	else
 	{

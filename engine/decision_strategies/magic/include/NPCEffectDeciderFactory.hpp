@@ -6,7 +6,7 @@
 class NPCEffectDeciderFactory
 {
 	public:
-		static INPCEffectDeciderPtr create_effect_decider(CreaturePtr caster, MapPtr view_map, const EffectType et, const SpellShapeType sst, const bool threats_exist);
+		static INPCEffectDeciderPtr create_effect_decider(CreaturePtr caster, MapPtr view_map, MapPtr current_game_game, const EffectType et, const SpellShapeType sst, const bool threats_exist);
 
 	protected:
 		NPCEffectDeciderFactory();

@@ -82,12 +82,11 @@ CleansingNPCEffectDecider::~CleansingNPCEffectDecider()
 bool CleansingNPCEffectDecider::decide() const
 {
 	bool dec = true;
-	Game& game = Game::instance();
-	MapPtr current_map = game.get_current_map();
 
-	if (current_map != nullptr)
+	// view_map is in this case the current game map
+	if (view_map != nullptr)
 	{
-		string regen_rate = current_map->get_property(MapProperties::MAP_PROPERTIES_CREATURE_GENERATION_RATE);
+		string regen_rate = view_map->get_property(MapProperties::MAP_PROPERTIES_CREATURE_GENERATION_RATE);
 
 		if (!regen_rate.empty())
 		{

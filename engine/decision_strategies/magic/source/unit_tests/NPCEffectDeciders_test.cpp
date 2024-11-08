@@ -47,3 +47,22 @@ TEST(SW_Engine_DecisionStrategies_Magic_NPCEffectDeciders, decide_modify_statist
 		EXPECT_EQ(v.first, msned.decide());
 	}
 }
+
+TEST(SW_Engine_DecisionStrategies_Magic_NPCEffectDeciders, decide_cleansing)
+{
+	CreaturePtr creature = std::make_shared<Creature>();
+	Dimensions dim;
+	MapPtr map = std::make_shared<Map>(dim);
+
+	CleansingNPCEffectDecider cned(creature, map);
+
+	EXPECT_TRUE(cned.decide());
+
+	map->set_property(MapProperties::MAP_PROPERTIES_CREATURE_GENERATION_RATE, "1.000");
+
+	EXPECT_TRUE(cned.decide());
+
+	map->set_property(MapProperties::MAP_PROPERTIES_CREATURE_GENERATION_RATE, "0.000");
+
+	EXPECT_FALSE(cned.decide());
+}
