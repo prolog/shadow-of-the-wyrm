@@ -2,7 +2,6 @@ Me:
 - ASSET RELEASE: sounds!
 - git push --tags
 - The Ybari/Asturias?
-- cleansing UT
 - water breathing decisions will repeat because it's storing the effect and
   not the spell ID
 - NPCs: cleansing when map lacks flag

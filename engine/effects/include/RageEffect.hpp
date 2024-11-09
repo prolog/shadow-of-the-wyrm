@@ -9,6 +9,8 @@ class RageEffect : public Effect
     virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const override;
     virtual Effect* clone() override;
 
+    virtual std::string get_status_id() const override;
+
   protected:
     virtual bool rage(std::shared_ptr<Creature> creature);
 

@@ -5,6 +5,7 @@
 #include "ModifyStatisticsEffect.hpp"
 #include "FlyingEffect.hpp"
 #include "StatusEffectFactory.hpp"
+#include "StatusTypes.hpp"
 
 using std::string;
 
@@ -15,6 +16,11 @@ string FlyingEffect::get_effect_identification_message(CreaturePtr creature) con
   string no_effect_msg;
 
   return no_effect_msg;
+}
+
+string FlyingEffect::get_status_id() const
+{
+  return StatusIdentifiers::STATUS_ID_FLYING;
 }
 
 Effect* FlyingEffect::clone()
@@ -38,12 +44,12 @@ bool FlyingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const a
   Modifier m;
 
   m.set_evade_modifier(EVADE_BONUS);
-  m.set_status(StatusIdentifiers::STATUS_ID_FLYING, true, creature->get_level().get_current());
+  m.set_status(get_status_id(), true, creature->get_level().get_current());
 
   mse.set_modifier(m);
   mse.effect(creature, am, ItemStatus::ITEM_STATUS_UNCURSED, affected_coordinate, affected_tile);
 
-  StatusEffectPtr fly = StatusEffectFactory::create_status_effect(creature, StatusIdentifiers::STATUS_ID_FLYING, source_id);
+  StatusEffectPtr fly = StatusEffectFactory::create_status_effect(creature, get_status_id(), source_id);
   fly->apply_change(creature, creature->get_level().get_current());
 
   return true;

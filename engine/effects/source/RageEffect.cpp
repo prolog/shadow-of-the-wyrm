@@ -20,6 +20,11 @@ Effect* RageEffect::clone()
   return new RageEffect(*this);
 }
 
+string RageEffect::get_status_id() const
+{
+  return StatusIdentifiers::STATUS_ID_RAGE;
+}
+
 bool RageEffect::rage(CreaturePtr creature)
 {
   bool effect_applied = false;

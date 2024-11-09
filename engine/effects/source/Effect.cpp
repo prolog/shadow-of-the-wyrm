@@ -22,6 +22,12 @@ string Effect::get_source_id() const
   return source_id;
 }
 
+string Effect::get_status_id() const
+{
+  string no_id;
+  return no_id;
+}
+
 void Effect::set_bonus(const int new_bonus)
 {
   bonus = new_bonus;

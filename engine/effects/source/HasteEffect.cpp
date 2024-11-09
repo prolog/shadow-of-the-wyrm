@@ -19,6 +19,11 @@ Effect* HasteEffect::clone()
   return new HasteEffect(*this);
 }
 
+string HasteEffect::get_status_id() const
+{
+  return StatusIdentifiers::STATUS_ID_HASTE;
+}
+
 // When blessed, cure any slowness, and add the haste effect.
 // Don't allow "double hasting" (being able to cast haste while hasted),
 // or else the game becomes ludicrously easy!

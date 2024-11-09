@@ -19,6 +19,11 @@ Effect* WaterBreathingEffect::clone()
   return new WaterBreathingEffect(*this);
 }
 
+string WaterBreathingEffect::get_status_id() const
+{
+  return StatusIdentifiers::STATUS_ID_WATER_BREATHING;
+}
+
 // When blessed, cure any slowness, and add the WaterBreathing effect.
 // Don't allow "double hasting" (being able to cast WaterBreathing while WaterBreathingd),
 // or else the game becomes ludicrously easy!
