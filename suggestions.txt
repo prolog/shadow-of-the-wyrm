@@ -3,6 +3,7 @@ Me:
 - git push --tags
 - The Ybari/Asturias?
 - order screen
+- unit test for create_string_set_from...
 - Moving up/down when ice frozen?
 - let's work on recall/coming back if you go down a water tile...
 - Caldera's water should be death - swimming or descending

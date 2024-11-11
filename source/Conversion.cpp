@@ -91,11 +91,11 @@ vector<string> String::split(const string& split_str, const string& split_on)
   return vals;
 }
 
-set<string> String::create_string_set_from_csv_string(const string& csv_str)
+set<string> String::create_string_set_from_csv_string(const string& csv_str, const bool include_empty_str)
 {
   set<string> str_set;
 
-  if (!csv_str.empty())
+  if (include_empty_str || !csv_str.empty())
   {
     boost::split(str_set, csv_str, boost::is_any_of(","));
   }

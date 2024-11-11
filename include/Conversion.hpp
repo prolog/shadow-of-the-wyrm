@@ -34,7 +34,7 @@ class String
     static std::string clean(const std::string& str);
     static std::vector<std::string> clean_and_trim(const std::vector<std::string>& strs);
     static std::vector<std::string> split(const std::string& split_str, const std::string& split_on);
-    static std::set<std::string> create_string_set_from_csv_string(const std::string& csv_str);
+    static std::set<std::string> create_string_set_from_csv_string(const std::string& csv_str, const bool include_empty_str = false);
     static std::vector<std::string> create_string_vector_from_csv_string(const std::string& csv_str);
     static std::map<std::string,std::string> create_properties_from_string(const std::string& properties_str);
     static std::map<std::string,std::string> create_properties_from_string_vector(const std::vector<std::string>& properties_v);
