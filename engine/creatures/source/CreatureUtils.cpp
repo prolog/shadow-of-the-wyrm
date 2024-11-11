@@ -970,9 +970,12 @@ CreatureMap CreatureUtils::get_followers(CreaturePtr creature, MapPtr map)
   return followers;
 }
 
-CreatureMap CreatureUtils::get_followers_in_fov(CreaturePtr creature)
+// Get the followers in the FOV whose IDs are in follower_ids (a csv string).
+// If follower_ids is empty, return all followers in FOV.
+CreatureMap CreatureUtils::get_followers_in_fov(CreaturePtr creature, const string& follower_ids)
 {
   CreatureMap followers;
+  set<string> ids = String::create_string_set_from_csv_string(follower_ids);
 
   if (creature != nullptr)
   {
@@ -986,7 +989,10 @@ CreatureMap CreatureUtils::get_followers_in_fov(CreaturePtr creature)
       {
         if (c_pair.second && c_pair.second->get_leader_id() == creature->get_id())
         {
-          followers.insert(c_pair);
+          if (ids.empty() || (ids.find(c_pair.second->get_id()) != ids.end()))
+          {
+            followers.insert(c_pair);
+          }
         }
       }
     }

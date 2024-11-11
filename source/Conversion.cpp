@@ -91,6 +91,18 @@ vector<string> String::split(const string& split_str, const string& split_on)
   return vals;
 }
 
+set<string> String::create_string_set_from_csv_string(const string& csv_str)
+{
+  set<string> str_set;
+
+  if (!csv_str.empty())
+  {
+    boost::split(str_set, csv_str, boost::is_any_of(","));
+  }
+
+  return str_set;
+}
+
 vector<string> String::create_string_vector_from_csv_string(const string& csv_str)
 {
   vector<string> str_vec;
