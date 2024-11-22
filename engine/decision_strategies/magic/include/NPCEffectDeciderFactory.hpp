@@ -1,6 +1,8 @@
 #pragma once
 #include "INPCEffectDecider.hpp"
+#include "Creature.hpp"
 #include "EffectTypes.hpp"
+#include "Map.hpp"
 #include "SpellTypes.hpp"
 
 class NPCEffectDeciderFactory
