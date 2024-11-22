@@ -64,6 +64,7 @@ Me:
   either world map or interior tile? test!
 - update xsd, update xml, add and test linkages for all direction 10/11
   custom maps
+- std::filesystem requires C++20 for converting last_write times
 - When map exit up is defined, should still check zlevels/etc
 - Keep a vector<pair<Direction, TileType>> for stairs on the map for fast
 - lookup
