@@ -248,8 +248,6 @@ bool Serialization::does_savefile_exist_for_user_and_character(const string& use
   return (exists(save_file_filter));
 }
 
-// JCD FIXME SPLIT THESE INTO THEIR OWN CLASS.
-
 // Get a list of savefile names for the current user.
 vector<pair<string, string>> Serialization::get_save_file_names(const bool single_user_mode, const bool skip_metadata_verification)
 {

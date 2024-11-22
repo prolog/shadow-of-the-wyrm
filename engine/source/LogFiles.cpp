@@ -1,4 +1,5 @@
 #include <ctime>
+#include <boost/filesystem/directory.hpp>
 #include <boost/filesystem/operations.hpp>
 #include "LogFiles.hpp"
 #include "Log.hpp"

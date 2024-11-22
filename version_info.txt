@@ -52,6 +52,9 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
 
   - Athel was incorrectly generating as hostile (iakul).
 
+  - Newer versions of boost::filesystem weren't including directory_iterator
+    (sxnwlfkk)
+
 Shadow of the Wyrm v1.7.2 "Michelagnolo Galilei"
 - Version started February 18, 2024. Version finalized August 25, 2024.
 
