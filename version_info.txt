@@ -37,6 +37,8 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
 - NPCs may choose to cast statistic buff spells when there are hostiles in 
   their FOV.
 
+- Updated premake script for v5.
+
 - Bug fixes:
 
   - Followers with ranged attacks will no longer fire through a square that

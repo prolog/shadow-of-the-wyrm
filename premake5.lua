@@ -121,24 +121,27 @@ project "ShadowOfTheWyrm"
                 }
   excludes { "**_test.cpp" }
   links { "pthread", "dl", "z", "boost_system", "boost_filesystem", "boost_date_time", _OPTIONS["boost_thread"], "boost_regex", _OPTIONS["lua_link"], "xerces-c", "tinfo", "ncurses" }
-  flags { "ExtraWarnings" }
+  warnings "Extra"
 
   -- Ignore SaveConverter, MapTester configs.
-  configuration "Debug"
+  filter "configurations:Debug"
+    symbols "On"
+    optimize "Off"
     defines { "_DEBUG", "DEBUG", "UNIT_TESTS", "ENABLE_SDL" }
-    flags { "Symbols" }
     links { "SDL2", "SDL2_image", "SDL2_mixer", "gtest" }
     excludes { "source/MapTester.cpp", "source/SaveConverter.cpp" }
 
-  configuration "CursesDebug"
+  filter "configurations:CursesDebug"
+    symbols "On"
+    optimize "Off"
     defines { "_DEBUG", "DEBUG", "UNIT_TESTS" }
-    flags { "Symbols" }
     links { "gtest" }
     excludes { "source/MapTester.cpp", "source/SaveConverter.cpp" }
   
-  configuration "Release"
+  filter "configurations:Release"
+    symbols "Off"
+    optimize "On"
     defines { "NDEBUG", "ENABLE_SDL" }
-    flags { "Optimize" }
     links { "SDL2", "SDL2_image", "SDL2_mixer" }
     postbuildcommands { "mkdir sotw",
                         "cp $(TARGETDIR)/ShadowOfTheWyrm sotw/sotw",
@@ -156,9 +159,10 @@ project "ShadowOfTheWyrm"
                         "cp LICENSE sotw",
                         "tar cvzf ShadowOfTheWyrm-Linux.tar.gz sotw"}
 
-  configuration "CursesRelease"
+  filter "configurations:CursesRelease"
+    symbols "Off"
+    optimize "On"
     defines { "NDEBUG" }
-    flags { "Optimize" }
     postbuildcommands { "mkdir sotw",
                         "cp $(TARGETDIR)/ShadowOfTheWyrm sotw/sotw",
                         "cp -R data sotw",
