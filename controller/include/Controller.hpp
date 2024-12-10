@@ -22,8 +22,8 @@ class Controller : public ISerializable
     // -1.
     virtual std::pair<bool, int> get_char_as_int_nb();
 
-    virtual bool serialize(std::ostream& stream) const override;
-    virtual bool deserialize(std::istream& stream) override;
+    virtual bool serialize(std::ostream&) const override;
+    virtual bool deserialize(std::istream&) override;
 
     virtual Controller* clone() = 0;
 

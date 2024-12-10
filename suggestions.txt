@@ -3,7 +3,6 @@ Me:
 - git push --tags
 - The Ybari/Asturias?
 - order screen
-- premake5 & coordinate with Larzid
 - change boost::filesystem directory_iterator over to std
 - unit test for create_string_set_from...
 - Moving up/down when ice frozen?
