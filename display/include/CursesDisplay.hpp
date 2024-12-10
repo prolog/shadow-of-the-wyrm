@@ -19,7 +19,7 @@ class CursesDisplay : public Display
 	  std::pair<bool, std::string> create() override;
 	  void tear_down() override;
 
-    virtual bool display_splash(const bool enabled) override;;
+    virtual bool display_splash(const bool) override;;
 
     virtual std::string get_name() const override;
 
@@ -50,7 +50,7 @@ class CursesDisplay : public Display
 
     void display_header(const std::string& header_text, WINDOW* cur_window, const int display_line = 0);
 
-    void set_title(const std::string& title) override;
+    void set_title(const std::string&) override;
     void show() override;
     void hide() override;
 	  void clear_screen() override;
@@ -97,7 +97,7 @@ class CursesDisplay : public Display
     // Without a WINDOW* argument, stdscr is used.
     virtual void enable_colour(const Colour colour) override;
     virtual void disable_colour(const Colour colour) override;
-    virtual void set_colour(const int colour, const int r, const int g, const int b) override;
+    virtual void set_colour(const int, const int, const int, const int) override;
 
     void enable_colour(const int colour, WINDOW* window);
     void disable_colour(const int colour, WINDOW* window);

@@ -312,14 +312,14 @@ bool Display::display_statistic_and_update_row_and_column(const unsigned int ini
   string stat = current_stat;
   enable_colour(print_colour);
   display_text(*current_row, *current_col, current_stat);
-  can_print = update_synopsis_row_and_column(initial_row, current_row, current_col, current_stat, next_stat);
+  can_print = update_synopsis_row_and_column(current_row, current_col, current_stat, next_stat);
   disable_colour(print_colour);
   return can_print;
 }
 
 // Update the row/col for the player synopsis.  Return false if we've run out of space
 // and can't print anything else.
-bool Display::update_synopsis_row_and_column(const unsigned int initial_row, unsigned int* row, unsigned int* col, const string& previous_field, const string& next_field)
+bool Display::update_synopsis_row_and_column(unsigned int* row, unsigned int* col, const string& previous_field, const string& next_field)
 {
   bool can_update = true;
   int field_space = static_cast<uint>(get_field_space());
@@ -427,10 +427,6 @@ string Display::get_property(const string& property) const
   }
 
   return value;
-}
-
-void Display::redraw_cursor(const DisplayMap& dm, const CursorSettings& cs, const uint max_rows)
-{
 }
 
 void Display::draw_tile_init()

@@ -170,7 +170,7 @@ void CursesDisplay::disable_colour(const Colour colour)
   disable_colour(static_cast<int>(colour), stdscr);
 }
 
-void CursesDisplay::set_colour(const int colour, const int r, const int g, const int b)
+void CursesDisplay::set_colour(const int, const int, const int, const int)
 {
 }
 
@@ -326,7 +326,7 @@ void CursesDisplay::tear_down()
   endwin();
 }
 
-bool CursesDisplay::display_splash(const bool enabled)
+bool CursesDisplay::display_splash(const bool)
 {
   if (!initialized)
   {
@@ -789,7 +789,7 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
 }
 
 // set_title() does nothing. curses can't set the terminal title.
-void CursesDisplay::set_title(const string& title)
+void CursesDisplay::set_title(const string&)
 {
 }
 

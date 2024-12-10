@@ -122,7 +122,7 @@ class Display : public ISerializable
 
     // Update the row/column position for the synopsis details.  Return false if we can't do any more updates (have run off the screen).
     // Though, ideally that will never happen.
-    bool update_synopsis_row_and_column(const unsigned int initial_row, unsigned int* row, unsigned int* column, const std::string& previous_printed_field, const std::string& next_field);
+    bool update_synopsis_row_and_column(unsigned int* row, unsigned int* column, const std::string& previous_printed_field, const std::string& next_field);
 
     virtual void display_text(int row, int col, const std::string& s) = 0;
     virtual void enable_colour(const Colour colour) = 0;
