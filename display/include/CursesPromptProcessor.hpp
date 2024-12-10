@@ -11,7 +11,7 @@ class CursesPromptProcessor : public PromptProcessor
 {
   public:
     virtual ~CursesPromptProcessor() = default;
-    bool operator==(const CursesPromptProcessor& cpp) const;
+    bool operator==(const CursesPromptProcessor&) const;
 
     int get_prompt(WINDOW* window);
     std::string get_prompt(WINDOW* window, const MenuWrapper& menu_wrapper, Prompt* prompt);

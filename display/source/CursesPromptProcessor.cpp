@@ -6,7 +6,7 @@
 
 using namespace std;
 
-bool CursesPromptProcessor::operator==(const CursesPromptProcessor& cpp) const
+bool CursesPromptProcessor::operator==(const CursesPromptProcessor&) const
 {
   // Stateless, return true.
   return true;
