@@ -38,17 +38,17 @@ string CursesDisplay::toggle_fullscreen()
   return result;
 }
 
-void CursesDisplay::set_spritesheets(const map<string, pair<string, unordered_map<string, Coordinate>>>& spritesheets)
+void CursesDisplay::set_spritesheets(const map<string, pair<string, unordered_map<string, Coordinate>>>&)
 {
   // Curses doesn't use sprites.
 }
 
-void CursesDisplay::set_palette_id(const string& new_palette_id)
+void CursesDisplay::set_palette_id(const string&)
 {
   // Curses doesn't use sprites.
 }
 
-void CursesDisplay::set_palette(const std::string& new_palette_id)
+void CursesDisplay::set_palette(const std::string&)
 {
   // Curses doesn't use sprites.
 }
@@ -59,7 +59,7 @@ std::string CursesDisplay::get_palette_id() const
   return no_id;
 }
 
-pair<bool, pair<string, string>> CursesDisplay::switch_colour_palette(const std::string& current_palette_id)
+pair<bool, pair<string, string>> CursesDisplay::switch_colour_palette(const std::string&)
 {
   pair<bool, pair<string, string>> palette;
   palette.first = false;

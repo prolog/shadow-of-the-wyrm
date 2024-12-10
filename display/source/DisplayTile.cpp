@@ -73,7 +73,7 @@ int DisplayTile::get_colour(const Season season) const
 {
   int colour = 0;
 
-  SeasonTileColourMap::const_iterator c_it = colours.find(current_season);
+  SeasonTileColourMap::const_iterator c_it = colours.find(season);
 
   if (c_it != colours.end())
   {

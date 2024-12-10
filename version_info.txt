@@ -41,6 +41,8 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
 
 - Bug fixes:
 
+  - Fixed an internal issue with getting the season colour.
+
   - Followers with ranged attacks will no longer fire through a square that
     contains a grouped creature (ebalster).
 
