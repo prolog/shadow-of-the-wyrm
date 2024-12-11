@@ -25,7 +25,7 @@ int BlindedCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
   return pct_chance;
 }
 
-int BlindedCalculator::calculate_duration_in_minutes(CreaturePtr creature) const
+int BlindedCalculator::calculate_duration_in_minutes(CreaturePtr /*creature*/) const
 {
   PoissonDistribution p(BASE_BLINDED_DURATION_MEAN);
   int duration = p.next();
