@@ -89,7 +89,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
 
         if (zl.first)
         {
-          move_to_custom_map(current_tile, current_map, map_exit, creature, game, ma, Direction::DIRECTION_UP);
+          move_to_custom_map(current_tile, current_map, map_exit, creature, ma, Direction::DIRECTION_UP);
           ascend_success = get_action_cost_value(creature);
         }
         else
@@ -200,7 +200,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
 
               if (zl.first)
               {
-                move_to_custom_map(tile, map, map_exit, creature, game, ma, Direction::DIRECTION_DOWN);
+                move_to_custom_map(tile, map, map_exit, creature, ma, Direction::DIRECTION_DOWN);
                 descend_success = get_action_cost_value(creature);
               }
               else
@@ -293,7 +293,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
   return descend_success;
 }
 
-void StairwayMovementAction::move_to_custom_map(TilePtr current_tile, MapPtr current_map, MapExitPtr map_exit, CreaturePtr creature, Game& game, MovementAction* const ma, const Direction d)
+void StairwayMovementAction::move_to_custom_map(TilePtr current_tile, MapPtr current_map, MapExitPtr map_exit, CreaturePtr creature,  MovementAction* const ma, const Direction d)
 {
   if (creature != nullptr && current_map != nullptr && current_tile != nullptr)
   {
@@ -312,7 +312,7 @@ ActionCostValue StairwayMovementAction::generate_or_move_to_zlevel(Game& game, M
   {
     if (map_exit != nullptr && map_exit->is_using_map_id())
     {
-      move_to_custom_map(tile, map, map_exit, creature, game, ma, d);
+      move_to_custom_map(tile, map, map_exit, creature, ma, d);
       acv = get_action_cost_value(creature);
     }
     else
