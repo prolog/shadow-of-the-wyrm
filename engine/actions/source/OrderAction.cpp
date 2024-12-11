@@ -32,7 +32,7 @@ ActionCostValue OrderAction::order(CreaturePtr creature)
 
     if (leader_and_followers_exist || check_for_followers(creature, manager))
     {
-      acv = order_followers(creature, manager);
+      acv = order_followers(creature);
     }
 
     manager.send();
@@ -58,7 +58,7 @@ bool OrderAction::check_for_followers(CreaturePtr creature, IMessageManager& man
   return has_followers_in_fov;
 }
 
-ActionCostValue OrderAction::order_followers(CreaturePtr creature, IMessageManager& manager)
+ActionCostValue OrderAction::order_followers(CreaturePtr creature)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
  
@@ -207,7 +207,7 @@ ActionCostValue OrderAction::order_at_ease(CreaturePtr creature, const string& f
   return acv;
 }
 
-ActionCostValue OrderAction::order_summon(CreaturePtr creature, const string& follower_ids)
+ActionCostValue OrderAction::order_summon(CreaturePtr creature, const string& /* follower_ids */)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 

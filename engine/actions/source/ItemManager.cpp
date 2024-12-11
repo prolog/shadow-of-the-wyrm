@@ -11,7 +11,7 @@
 
 using namespace std;
 
-bool ItemManager::operator==(const ItemManager& im) const
+bool ItemManager::operator==(const ItemManager& /* im */) const
 {
   return true;
 }
@@ -502,7 +502,7 @@ ItemPtr ItemManager::remove(CreaturePtr creature, const EquipmentWornLocation lo
   return item;
 }
 
-ActionCostValue ItemManager::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue ItemManager::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

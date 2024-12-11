@@ -266,7 +266,7 @@ void ItemCodexAction::add_item_details_to_codex(ItemPtr item, CodexDescriber* co
 
 void ItemCodexAction::add_description_to_codex(ItemPtr item, CodexDescriber* codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
 {
-  if (item != nullptr)
+  if (item != nullptr && codex_desc != nullptr)
   {
     // Item codex description
     TextDisplayFormatter tdf;

@@ -53,7 +53,7 @@ ActionCostValue KickAction::kick(CreaturePtr creature, const Direction kick_dir)
 // nonetheless.
 ActionCostValue KickAction::kick_on_world_map(CreaturePtr creature, MapPtr current_map)
 {
-  if (creature && creature->get_is_player())
+  if (creature != nullptr && creature->get_is_player() && current_map != nullptr)
   {
     IMessageManager& manager = MM::instance();
 
@@ -139,7 +139,7 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
       {
         // Kick the top item in the pile in the given direction.
         TilePtr new_tile = MapUtils::get_adjacent_tile(current_map, creature, direction, 2);
-        acv = kick_item(creature, current_map, k_tile, new_tile, direction);
+        acv = kick_item(creature, current_map, k_tile, new_tile);
       }
       // No creature to kick.  Is there a feature?
       else if (k_tile->has_feature())
@@ -232,7 +232,7 @@ ActionCostValue KickAction::kick_feature(CreaturePtr creature, MapPtr current_ma
 
 // Kick an item in the given tile.  Kicking moves the top item over by one
 // tile, assuming that's a legal move (the new tile isn't null, etc).
-ActionCostValue KickAction::kick_item(CreaturePtr creature, MapPtr current_map, TilePtr kick_tile, TilePtr new_tile, const Direction direction)
+ActionCostValue KickAction::kick_item(CreaturePtr creature, MapPtr current_map, TilePtr kick_tile, TilePtr new_tile)
 {
   ActionCostValue acv = get_action_cost_value(creature);
 

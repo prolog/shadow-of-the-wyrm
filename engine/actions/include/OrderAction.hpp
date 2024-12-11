@@ -21,6 +21,6 @@ class OrderAction : public IActionManager
     bool check_for_followers(CreaturePtr creature, IMessageManager& manager);
 
 
-    ActionCostValue order_followers(CreaturePtr creature, IMessageManager& manager);
+    ActionCostValue order_followers(CreaturePtr creature);
 };
 
