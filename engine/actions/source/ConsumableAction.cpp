@@ -199,7 +199,7 @@ bool ConsumableAction::add_consumable_message_if_necessary(CreaturePtr creature,
   return added_msg;
 }
 
-ActionCostValue ConsumableAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue ConsumableAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

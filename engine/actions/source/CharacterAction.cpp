@@ -107,7 +107,7 @@ ActionCostValue CharacterAction::dump_character(CreaturePtr creature, const Char
 }
 
 
-ActionCostValue CharacterAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue CharacterAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }
