@@ -6,6 +6,6 @@
 class XMLMapTilesReader
 {
   public:
-    TilesContainer parse_tiles(const XMLNode& tiles_node, const int rows, const int cols);
+    TilesContainer parse_tiles(const XMLNode& tiles_node, const int cols);
 };
 
