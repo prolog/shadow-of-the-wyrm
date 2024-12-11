@@ -1,4 +1,3 @@
-#pragma once
 #include "TileMovementConfirmationDetails.hpp"
 
 using std::string;

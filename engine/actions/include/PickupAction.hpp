@@ -31,7 +31,7 @@ class PickupAction : public IActionManager
     ActionCostValue handle_pickup(CreaturePtr creature, MapPtr map, ActionManager * const am, const PickUpType pick_up, const std::set<ItemType>& pickup_types);
     ActionCostValue handle_pickup_single(CreaturePtr creature, MapPtr map, ActionManager * const am, TilePtr tile);
     ActionCostValue handle_pickup_all(CreaturePtr creature, MapPtr map, TilePtr tile);
-    ActionCostValue handle_pickup_types(CreaturePtr creature, MapPtr map, ActionManager * const am, TilePtr tile, const std::set<ItemType>& pickup_types);
+    ActionCostValue handle_pickup_types(CreaturePtr creature, MapPtr map, TilePtr tile, const std::set<ItemType>& pickup_types);
 
     bool autopickup_passes_exclusions(ItemPtr i);
 

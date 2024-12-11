@@ -35,7 +35,7 @@ RangedCombatAction::RangedCombatAction()
 {
 }
 
-bool RangedCombatAction::operator==(const RangedCombatAction& rca) const
+bool RangedCombatAction::operator==(const RangedCombatAction& /* rca */) const
 {
   return true;
 }

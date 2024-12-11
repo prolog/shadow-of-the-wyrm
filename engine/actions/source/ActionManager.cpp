@@ -619,7 +619,7 @@ ActionCost ActionManager::piety(CreaturePtr creature)
   MapPtr map = game.get_current_map();
 
   PietyAction pa;
-  return get_action_cost(creature, pa.piety(creature, map, this));
+  return get_action_cost(creature, pa.piety(creature, map));
 }
 
 ActionCost ActionManager::experience(CreaturePtr creature)

@@ -6,7 +6,7 @@ class ActionManager;
 class PietyAction : public IActionManager
 {
   public:
-    ActionCostValue piety(CreaturePtr creature, MapPtr map, ActionManager * const am) const;
+    ActionCostValue piety(CreaturePtr creature, MapPtr map) const;
     void check_piety(CreaturePtr creature, IMessageManager& manager) const;
     void remove_all_piety(CreaturePtr creature, IMessageManager& manager) const;
 

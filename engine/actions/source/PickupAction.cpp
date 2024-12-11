@@ -108,7 +108,7 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
         }
         else if (pick_up == PickUpType::PICK_UP_TYPES)
         {
-          action_cost_value = handle_pickup_types(creature, map, am, tile, pickup_types);
+          action_cost_value = handle_pickup_types(creature, map, tile, pickup_types);
         }
         else
         {
@@ -241,7 +241,7 @@ ActionCostValue PickupAction::handle_pickup_all(CreaturePtr creature, MapPtr map
   return action_cost_value;
 }
 
-ActionCostValue PickupAction::handle_pickup_types(CreaturePtr creature, MapPtr map, ActionManager * const am, TilePtr tile, const set<ItemType>& pickup_types)
+ActionCostValue PickupAction::handle_pickup_types(CreaturePtr creature, MapPtr map, TilePtr tile, const set<ItemType>& pickup_types)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
   bool picked_up = false;

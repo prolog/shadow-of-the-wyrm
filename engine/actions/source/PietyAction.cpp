@@ -15,7 +15,7 @@ PietyAction::PietyAction()
 
 // Check to see how pious the creature is, displaying a message with
 // the result.
-ActionCostValue PietyAction::piety(CreaturePtr creature, MapPtr map, ActionManager * const am) const
+ActionCostValue PietyAction::piety(CreaturePtr creature, MapPtr map) const
 {
   if (creature != nullptr)
   {

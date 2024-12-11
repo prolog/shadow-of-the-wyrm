@@ -117,7 +117,7 @@ ActionCostValue SkinAction::attempt_skin(CreaturePtr creature, ItemPtr item, Til
       {
         creature->get_skills().mark(SkillType::SKILL_GENERAL_SKINNING);
         add_skin_successful_message(creature);
-        create_skin_and_add_to_tile(creature, item, tile);
+        create_skin_and_add_to_tile(item, tile);
       }
       else
       {
@@ -170,7 +170,7 @@ ActionCostValue SkinAction::attempt_skin(CreaturePtr creature, ItemPtr item, Til
 
 // Create the skin and add it to the tile.  The skin's resistances should
 // be based off the corpse of the creature skinned.
-void SkinAction::create_skin_and_add_to_tile(CreaturePtr creature, ItemPtr corpse, TilePtr tile)
+void SkinAction::create_skin_and_add_to_tile(ItemPtr corpse, TilePtr tile)
 {
   if (corpse && tile)
   {

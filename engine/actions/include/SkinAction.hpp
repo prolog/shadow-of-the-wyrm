@@ -20,5 +20,5 @@ class SkinAction : public IActionManager
     void add_mangled_corpse_skin_message(CreaturePtr creature);
 
     ActionCostValue attempt_skin(CreaturePtr creature, ItemPtr corpse, TilePtr tile);
-    void create_skin_and_add_to_tile(CreaturePtr creature, ItemPtr corpse, TilePtr tile);
+    void create_skin_and_add_to_tile(ItemPtr corpse, TilePtr tile);
 };

@@ -18,7 +18,7 @@
 using namespace std;
 using std::dynamic_pointer_cast;
 
-bool QuaffAction::operator==(const QuaffAction& qm) const
+bool QuaffAction::operator==(const QuaffAction& /* qm */) const
 {
   return true;
 }
