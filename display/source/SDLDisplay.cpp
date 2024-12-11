@@ -845,11 +845,6 @@ int SDLDisplay::get_max_cols() const
   return SCREEN_COLS;
 }
 
-void SDLDisplay::display_options_component(int* row, int* col, OptionsComponentPtr oc)
-{
-  display_options_component(window, row, col, oc);
-}
-
 string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& menu_wrapper, const int row, const int col)
 {
   string prompt_val;
@@ -943,7 +938,7 @@ void SDLDisplay::display_text(const int row, const int col, const string& s)
   }
 }
 
-void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* col, OptionsComponentPtr oc)
+void SDLDisplay::display_options_component(int* row, int* col, OptionsComponentPtr oc)
 {
   vector<Option> options = oc->get_options();
   vector<string> option_descriptions = oc->get_option_descriptions();
@@ -1062,7 +1057,7 @@ void SDLDisplay::enable_colour(const Colour colour)
   sdld.set_bg_colour(get_colour(colour_bg_curses, false));
 }
 
-void SDLDisplay::disable_colour(const Colour colour)
+void SDLDisplay::disable_colour(const Colour)
 {
   if (uses_colour())
   {
@@ -1381,7 +1376,7 @@ void SDLDisplay::free_screens()
   }
 }
 
-void SDLDisplay::redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows)
+void SDLDisplay::redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint /* map_rows */)
 {
   if (!screens.empty() && !screen_cursors.empty())
   {

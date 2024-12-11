@@ -22,7 +22,7 @@ void SDLPromptProcessor::init_int_mappings()
                    {KEY_NPAGE, to_string(KEY_NPAGE)} };
 }
 
-bool SDLPromptProcessor::operator==(const SDLPromptProcessor& cpp) const
+bool SDLPromptProcessor::operator==(const SDLPromptProcessor&) const
 {
   return true;
 }
@@ -137,7 +137,7 @@ string SDLPromptProcessor::get_user_string(const SDLDisplayParameters& display_p
 }
 
 // Gets the item index of the selected menu item.
-int SDLPromptProcessor::get_prompt(SDL_Window* window)
+int SDLPromptProcessor::get_prompt(SDL_Window*)
 {
   int prompt_val;
 

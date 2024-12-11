@@ -87,7 +87,7 @@ class SDLDisplay : public Display
     SDL_Colour get_colour(const Colour curses_colour, const bool fg_colour = true) const;
     SDL_Color get_colour(const int curses_colour, const bool fg_colour = true) const;
     void enable_colour(const Colour colour) override;
-    void disable_colour(const Colour colour) override;
+    void disable_colour(const Colour) override;
     virtual void set_colour(const int colour, const int r, const int g, const int b) override;
 
     virtual std::string display_screen(const Screen& current_screen) override;
@@ -121,7 +121,6 @@ class SDLDisplay : public Display
 
     bool check_available_screen_dimensions();
 
-    void display_options_component(SDL_Window* window, int* row, int* col, OptionsComponentPtr options_component);
     std::pair<int, int> get_glyph_location_from_spritesheet(const char c);
     
     bool load_spritesheet_from_file(const std::string& path, SDL_Renderer* renderer);
@@ -129,7 +128,7 @@ class SDLDisplay : public Display
     void free_spritesheets();
     void free_screens();
 
-    virtual void redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows) override;
+    virtual void redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint /* map_rows */) override;
 
     std::pair<int, int> get_calculated_or_requested_window_size(const Settings& settings);
     std::pair<int, int> get_calculated_or_requested_window_location(const Settings& settings);

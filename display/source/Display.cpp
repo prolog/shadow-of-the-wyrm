@@ -247,7 +247,6 @@ void Display::display(const DisplayStatistics& player_stats)
   uint max_rows = static_cast<uint>(get_max_rows());
   unsigned int PLAYER_SYNOPSIS_START_ROW = max_rows - 3;
   unsigned int current_row = PLAYER_SYNOPSIS_START_ROW;
-  unsigned int initial_row = current_row;
   unsigned int current_col = 0;
   bool can_print = true;
 
