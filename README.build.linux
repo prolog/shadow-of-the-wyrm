@@ -3,7 +3,7 @@ Building Shadow of the Wyrm, Linux Edition
 Shadow of the Wyrm can be built using premake5 and makefiles.  Before you
 start, ensure you have your distribution's developer packages for:
 
-- premake5
+- premake5 or premake4
 - Boost (1.72)
 - Google Test 1.8, if you want to build debug mode, which includes unit 
   tests
@@ -13,13 +13,16 @@ start, ensure you have your distribution's developer packages for:
 - Lua 5.1
 - SDL 2.0.20, plus SDL2_mixer, SDL2_image
 
-The premake5 build script works for Fedora.  Other distros may require 
-updates to either the premake script or the generated makefiles to get 
+The premake build scripts work for Fedora.  Other distros may require 
+updates to either the premake scripts or the generated makefiles to get 
 things working.
 
 You will also need to know where your libraries are installed, and update
 the location in "copy_libs.lua" appropriately.  The values in that file are
 valid for 64-bit Fedora 24 (/usr/lib64).
+
+(In the examples ahead, if you're using premake4 instead of premake5, just
+substitute that instead.)
 
 To create the makefile, run "premake5 gmake".  Build the makefile with
 "make config=release".  This should build the game and copy the necessary
