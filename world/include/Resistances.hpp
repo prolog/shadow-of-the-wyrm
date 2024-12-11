@@ -64,6 +64,7 @@ class Resistances : public ISerializable
   public:
     Resistances();
     Resistances(const Resistances& r);
+    Resistances& operator=(const Resistances& r);
     bool operator==(const Resistances& r) const;
 
     void clear();
