@@ -29,7 +29,7 @@ string MagicalDamageCalculator::get_spell_id() const
 // (Soak is not considered for magical damage - resistances become far more powerful.
 //  In essence, all magical attacks are piercing, and we don't need to
 //  consider whether an attack is incorporeal.)
-int MagicalDamageCalculator::calculate(CreaturePtr defending_creature, const bool sneak_attack, const bool slays_creatures_race, const Damage& magical_damage, const int base_damage, const float soak_multiplier)
+int MagicalDamageCalculator::calculate(CreaturePtr defending_creature, const bool sneak_attack, const bool /*slays_creatures_race*/, const Damage& magical_damage, const int base_damage, const float /*soak_multiplier*/)
 {
   int damage = base_damage;
 

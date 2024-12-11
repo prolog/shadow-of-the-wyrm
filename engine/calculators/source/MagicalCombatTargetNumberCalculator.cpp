@@ -33,7 +33,7 @@ int MagicalCombatTargetNumberCalculator::calculate(CreaturePtr attacking_creatur
   return target_number;
 }
 
-int MagicalCombatTargetNumberCalculator::calculate_pct_chance_pass_through_untargetted_square(CreaturePtr attacking_creature, CreaturePtr defending_creature)
+int MagicalCombatTargetNumberCalculator::calculate_pct_chance_pass_through_untargetted_square(CreaturePtr /*attacking_creature*/, CreaturePtr /*defending_creature*/)
 {
   return 100;
 }
