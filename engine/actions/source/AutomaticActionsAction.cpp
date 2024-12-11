@@ -72,7 +72,7 @@ void AutomaticActionsAction::process_setting_if_necessary(CreaturePtr creature, 
     creature->get_decision_strategy()->set_automelee(new_set_val);
   }
 }
-ActionCostValue AutomaticActionsAction::get_action_cost_value(CreaturePtr c) const
+ActionCostValue AutomaticActionsAction::get_action_cost_value(CreaturePtr) const
 {
   return ActionCostConstants::NO_ACTION;
 }

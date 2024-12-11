@@ -15,7 +15,7 @@ class ReadStrategy : public IActionManager
     virtual ~ReadStrategy() {};
 
     // Attempt to read the scroll, spellbook, etc.
-    virtual ActionCostValue read(CreaturePtr creature, ActionManager * const am, ReadablePtr readable) = 0;
+    virtual ActionCostValue read(CreaturePtr creature, ReadablePtr readable) = 0;
 
     // Add a message indicating that reading the scroll, spellbook, etc.,
     // was successful.

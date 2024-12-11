@@ -78,7 +78,7 @@ ActionCostValue ReadAction::read(CreaturePtr creature, ReadablePtr readable, Act
       MapPtr map = game.get_current_map();
 
       // Cast or learn the spell from the scroll/spellbook/etc.
-      action_cost_value = read_strategy->read(creature, am, readable);
+      action_cost_value = read_strategy->read(creature, readable);
 
       // Break the illiterate conduct.
       creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_ILLITERATE);
