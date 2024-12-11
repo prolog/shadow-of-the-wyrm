@@ -47,14 +47,14 @@ bool AlcoholCalculator::is_immediately_sick(CreaturePtr creature, const float st
 
 // Number of minutes required to pass before some alcohol is absorbed
 // into the blood.
-uint AlcoholCalculator::calculate_minutes_for_absorption(CreaturePtr creature)
+uint AlcoholCalculator::calculate_minutes_for_absorption(CreaturePtr /*creature*/)
 {
   return BASE_MINUTES_FOR_ABSORPTION;
 }
 
 // Number of minutes required to pass before some alcohol is metabolized
 // and removed from the bloodstream.
-uint AlcoholCalculator::calculate_minutes_for_metabolization(CreaturePtr creature)
+uint AlcoholCalculator::calculate_minutes_for_metabolization(CreaturePtr /*creature*/)
 {
   return BASE_MINUTES_FOR_METABOLIZATION;
 }
@@ -104,7 +104,7 @@ float AlcoholCalculator::calculate_grams_to_absorb(CreaturePtr creature)
 
 // Grams of alcohol to metabolize per tick.  All creatures metabolize
 // at approximately the same rate.
-float AlcoholCalculator::calculate_grams_to_metabolize(CreaturePtr creature)
+float AlcoholCalculator::calculate_grams_to_metabolize(CreaturePtr /*creature*/)
 {
   return BASE_METABOLISM_RATE;
 }

@@ -129,7 +129,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
 
       if (zl.first)
       {
-        ascend_success = generate_or_move_to_zlevel(game, ma, manager, creature, current_map, tile, c, map_exit, ExitMovementType::EXIT_MOVEMENT_ASCEND, Direction::DIRECTION_UP);
+        ascend_success = generate_or_move_to_zlevel(ma, manager, creature, current_map, tile, c, map_exit, ExitMovementType::EXIT_MOVEMENT_ASCEND, Direction::DIRECTION_UP);
       }
       else
       {
@@ -239,7 +239,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
 
             if (zl.first)
             {
-              descend_success = generate_or_move_to_zlevel(game, ma, manager, creature, map, tile, c, map_exit, ExitMovementType::EXIT_MOVEMENT_DESCEND, Direction::DIRECTION_DOWN);
+              descend_success = generate_or_move_to_zlevel(ma, manager, creature, map, tile, c, map_exit, ExitMovementType::EXIT_MOVEMENT_DESCEND, Direction::DIRECTION_DOWN);
             }
             else
             {
@@ -304,7 +304,7 @@ void StairwayMovementAction::move_to_custom_map(TilePtr current_tile, MapPtr cur
   }
 }
 
-ActionCostValue StairwayMovementAction::generate_or_move_to_zlevel(Game& game, MovementAction* const ma, IMessageManager& manager, CreaturePtr creature, MapPtr map, TilePtr tile, const Coordinate& c, MapExitPtr map_exit, const ExitMovementType emt, const Direction d)
+ActionCostValue StairwayMovementAction::generate_or_move_to_zlevel(MovementAction* const ma, IMessageManager& manager, CreaturePtr creature, MapPtr map, TilePtr tile, const Coordinate& c, MapExitPtr map_exit, const ExitMovementType emt, const Direction d)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
