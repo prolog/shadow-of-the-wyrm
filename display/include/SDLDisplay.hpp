@@ -121,9 +121,6 @@ class SDLDisplay : public Display
 
     bool check_available_screen_dimensions();
 
-    // Game-related functions
-    void display_text_component(SDL_Window* window, int* row, int* col, TextComponentPtr text_component, const uint line_increment);
-
     void display_options_component(SDL_Window* window, int* row, int* col, OptionsComponentPtr options_component);
     std::pair<int, int> get_glyph_location_from_spritesheet(const char c);
     

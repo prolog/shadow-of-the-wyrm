@@ -845,11 +845,6 @@ int SDLDisplay::get_max_cols() const
   return SCREEN_COLS;
 }
 
-void SDLDisplay::display_text_component(int* row, int* col, TextComponentPtr text, const uint line_incr)
-{
-  display_text_component(window, row, col, text, line_incr);
-}
-
 void SDLDisplay::display_options_component(int* row, int* col, OptionsComponentPtr oc)
 {
   display_options_component(window, row, col, oc);
@@ -886,7 +881,7 @@ void SDLDisplay::display_header(const string& header_text, const int row)
   }
 }
 
-void SDLDisplay::display_text_component(SDL_Window* window, int* row, int* col, TextComponentPtr tc, const uint line_incr)
+void SDLDisplay::display_text_component(int* row, int* col, TextComponentPtr tc, const uint line_incr)
 {
   if (!screens.empty() && !screen_cursors.empty())
   {
@@ -1007,7 +1002,7 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
 
       int ocol = *col + display_option_s.size();
 
-      display_text_component(window, row, &ocol, option_text, DisplayConstants::OPTION_SPACING);
+      display_text_component(row, &ocol, option_text, DisplayConstants::OPTION_SPACING);
 
       if (!option_enabled)
       {
