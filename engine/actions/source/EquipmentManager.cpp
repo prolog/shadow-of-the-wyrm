@@ -149,7 +149,7 @@ ItemPtr EquipmentManager::select_item()
   return item;
 }
 
-ActionCostValue EquipmentManager::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue EquipmentManager::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

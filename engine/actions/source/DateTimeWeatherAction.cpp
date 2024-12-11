@@ -48,7 +48,7 @@ ActionCostValue DateTimeWeatherAction::date_and_time_and_weather()
 }
 
 // Displaying the date/time/weather is a non-advancing action.
-ActionCostValue DateTimeWeatherAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue DateTimeWeatherAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }

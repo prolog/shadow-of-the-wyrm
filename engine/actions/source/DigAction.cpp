@@ -384,7 +384,7 @@ bool DigAction::add_shop_confirmation_message_if_necessary(CreaturePtr creature,
 
   return confirm;
 }
-ActionCostValue DigAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue DigAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 20;
 }
