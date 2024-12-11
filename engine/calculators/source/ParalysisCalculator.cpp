@@ -27,7 +27,7 @@ int ParalysisCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
   return pct_chance;
 }
 
-int ParalysisCalculator::calculate_duration_in_minutes(CreaturePtr creature) const
+int ParalysisCalculator::calculate_duration_in_minutes(CreaturePtr /*creature*/) const
 {
   // Paralysis duration is described by a Poisson distribution, with the
   // average lasting a few minutes (otherwise, the character is basically

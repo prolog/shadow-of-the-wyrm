@@ -676,8 +676,7 @@ void CreatureFactory::set_initial_resistances(CreaturePtr creature, Race* race, 
 
 void CreatureFactory::set_initial_skills(CreaturePtr creature, Race* race, Class* char_class)
 {
-  // Create a SkillCalculator class!
-  Skills skills = SkillsCalculator::calculate_skills(creature, race, char_class);
+  Skills skills = SkillsCalculator::calculate_skills(race, char_class);
 
   creature->set_skills(skills);
 }

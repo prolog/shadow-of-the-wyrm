@@ -8,7 +8,7 @@ ActionCostValue TertiaryUnarmedPhysicalAttackSpeedCalculator::calculate_weapon_s
   return nsc.calculate(creature);
 }
 
-bool TertiaryUnarmedPhysicalAttackSpeedCalculator::has_weapon_equipped(CreaturePtr creature)
+bool TertiaryUnarmedPhysicalAttackSpeedCalculator::has_weapon_equipped(CreaturePtr /*creature*/)
 {
   return false;
 }

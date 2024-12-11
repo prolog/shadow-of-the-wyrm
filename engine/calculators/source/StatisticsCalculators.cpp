@@ -36,12 +36,12 @@ int StatisticsCalculator::calculate_current(CreaturePtr creature) const
 
 // JCD FIXME Eventually I'll want to implement equipment with stats
 // bonuses.  When that happens, implement this.
-int StatisticsCalculator::get_equipment_value(CreaturePtr creature) const
+int StatisticsCalculator::get_equipment_value(CreaturePtr /*creature*/) const
 {
   return 0;
 }
 
-float StatisticsCalculator::get_burden_multiplier(CreaturePtr creature) const
+float StatisticsCalculator::get_burden_multiplier(CreaturePtr /*creature*/) const
 {
   return 1.0f;
 }

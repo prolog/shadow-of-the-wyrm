@@ -6,7 +6,7 @@ using namespace std;
 const int SwimmingCalculator::MAXIMUM_SWIMMING_TIME_MULTIPLIER = 7;
 const int SwimmingCalculator::HOLD_BREATH_HEALTH_DIVISOR = 3;
 
-int SwimmingCalculator::calculate_maximum_swimming_time(const bool submerged, CreaturePtr creature, const vector<BreatheType>& breathes) const
+int SwimmingCalculator::calculate_maximum_swimming_time(const bool submerged, CreaturePtr creature) const
 {
   int max_swimming_time = 0;
 

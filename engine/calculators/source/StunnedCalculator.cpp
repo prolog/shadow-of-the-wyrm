@@ -25,7 +25,7 @@ int StunnedCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
   return pct_chance;
 }
 
-int StunnedCalculator::calculate_duration_in_minutes(CreaturePtr creature) const
+int StunnedCalculator::calculate_duration_in_minutes(CreaturePtr /*creature*/) const
 {
   PoissonDistribution p(BASE_STUNNED_DURATION_MEAN);
   int duration = p.next();

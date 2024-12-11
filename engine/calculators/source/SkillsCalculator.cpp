@@ -12,42 +12,42 @@ SkillsCalculator::~SkillsCalculator()
 {
 }
 
-Skills SkillsCalculator::calculate_skills(CreaturePtr creature, Race* race, Class* char_class)
+Skills SkillsCalculator::calculate_skills(Race* race, Class* char_class)
 {
   Skills skills_calculated;
 
   if (race && char_class)
   {
-    skills_calculated = calculate_general_skills      (creature, race, char_class, skills_calculated);
-    skills_calculated = calculate_melee_weapon_skills (creature, race, char_class, skills_calculated);
-    skills_calculated = calculate_ranged_weapon_skills(creature, race, char_class, skills_calculated);
-    skills_calculated = calculate_magic_skills        (creature, race, char_class, skills_calculated);
+    skills_calculated = calculate_general_skills      (race, char_class, skills_calculated);
+    skills_calculated = calculate_melee_weapon_skills (race, char_class, skills_calculated);
+    skills_calculated = calculate_ranged_weapon_skills(race, char_class, skills_calculated);
+    skills_calculated = calculate_magic_skills        (race, char_class, skills_calculated);
   }
 
   return skills_calculated;
 }
 
-Skills SkillsCalculator::calculate_general_skills(CreaturePtr creature, Race* race, Class* char_class, const Skills& current_skills)
+Skills SkillsCalculator::calculate_general_skills(Race* race, Class* char_class, const Skills& current_skills)
 {
-  return calculate_skills_in_given_range(creature, race, char_class, current_skills, static_cast<int>(SkillType::SKILL_GENERAL_BEGIN), static_cast<int>(SkillType::SKILL_GENERAL_LAST));
+  return calculate_skills_in_given_range(race, char_class, current_skills, static_cast<int>(SkillType::SKILL_GENERAL_BEGIN), static_cast<int>(SkillType::SKILL_GENERAL_LAST));
 }
 
-Skills SkillsCalculator::calculate_melee_weapon_skills(CreaturePtr creature, Race* race, Class* char_class, const Skills& current_skills)
+Skills SkillsCalculator::calculate_melee_weapon_skills(Race* race, Class* char_class, const Skills& current_skills)
 {
-  return calculate_skills_in_given_range(creature, race, char_class, current_skills, static_cast<int>(SkillType::SKILL_MELEE_BEGIN), static_cast<int>(SkillType::SKILL_MELEE_LAST));
+  return calculate_skills_in_given_range(race, char_class, current_skills, static_cast<int>(SkillType::SKILL_MELEE_BEGIN), static_cast<int>(SkillType::SKILL_MELEE_LAST));
 }
 
-Skills SkillsCalculator::calculate_ranged_weapon_skills(CreaturePtr creature, Race* race, Class* char_class, const Skills& current_skills)
+Skills SkillsCalculator::calculate_ranged_weapon_skills(Race* race, Class* char_class, const Skills& current_skills)
 {
-  return calculate_skills_in_given_range(creature, race, char_class, current_skills, static_cast<int>(SkillType::SKILL_RANGED_BEGIN), static_cast<int>(SkillType::SKILL_RANGED_LAST));
+  return calculate_skills_in_given_range(race, char_class, current_skills, static_cast<int>(SkillType::SKILL_RANGED_BEGIN), static_cast<int>(SkillType::SKILL_RANGED_LAST));
 }
 
-Skills SkillsCalculator::calculate_magic_skills(CreaturePtr creature, Race* race, Class* char_class, const Skills& current_skills)
+Skills SkillsCalculator::calculate_magic_skills(Race* race, Class* char_class, const Skills& current_skills)
 {
-  return calculate_skills_in_given_range(creature, race, char_class, current_skills, static_cast<int>(SkillType::SKILL_MAGIC_BEGIN), static_cast<int>(SkillType::SKILL_MAGIC_LAST));
+  return calculate_skills_in_given_range(race, char_class, current_skills, static_cast<int>(SkillType::SKILL_MAGIC_BEGIN), static_cast<int>(SkillType::SKILL_MAGIC_LAST));
 }
 
-Skills SkillsCalculator::calculate_skills_in_given_range(CreaturePtr creature, Race* race, Class* char_class, const Skills& current_skills, const int first_skill, const int last_skill)
+Skills SkillsCalculator::calculate_skills_in_given_range(Race* race, Class* char_class, const Skills& current_skills, const int first_skill, const int last_skill)
 {
   Skills calculated_skills = current_skills;
 

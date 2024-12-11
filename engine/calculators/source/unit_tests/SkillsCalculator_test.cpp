@@ -20,7 +20,7 @@ TEST(SW_Engine_Calculators_SkillsCalculator, calculate_general_skills)
   racep->set_skills(race_skills);
   classp->set_skills(class_skills);
 
-  Skills calculated_skills = SkillsCalculator::calculate_skills(creature, racep.get(), classp.get());
+  Skills calculated_skills = SkillsCalculator::calculate_skills(racep.get(), classp.get());
 
   EXPECT_EQ(0,  calculated_skills.get_value(SkillType::SKILL_GENERAL_COMBAT));
   EXPECT_EQ(12, calculated_skills.get_value(SkillType::SKILL_GENERAL_BOWYER));
@@ -48,7 +48,7 @@ TEST(SW_Engine_Calculators_SkillsCalculator, calculate_melee_weapon_skills)
   racep->set_skills(race_skills);
   classp->set_skills(class_skills);
 
-  Skills calculated_skills = SkillsCalculator::calculate_skills(creature, racep.get(), classp.get());
+  Skills calculated_skills = SkillsCalculator::calculate_skills(racep.get(), classp.get());
 
   EXPECT_EQ(35, calculated_skills.get_value(SkillType::SKILL_MELEE_AXES));
   EXPECT_EQ(25, calculated_skills.get_value(SkillType::SKILL_MELEE_DAGGERS));
@@ -76,7 +76,7 @@ TEST(SW_Engine_Calculators_SkillsCalculator, calculate_ranged_weapon_skills)
   racep->set_skills(race_skills);
   classp->set_skills(class_skills);
 
-  Skills calculated_skills = SkillsCalculator::calculate_skills(creature, racep.get(), classp.get());
+  Skills calculated_skills = SkillsCalculator::calculate_skills(racep.get(), classp.get());
 
   EXPECT_EQ(0, calculated_skills.get_value(SkillType::SKILL_RANGED_BOWS));
   EXPECT_EQ(54, calculated_skills.get_value(SkillType::SKILL_RANGED_BLUDGEONS));
@@ -104,7 +104,7 @@ TEST(SW_Engine_Calculators_SkillsCalculator, calculate_magic_skills)
   racep->set_skills(race_skills);
   classp->set_skills(class_skills);
 
-  Skills calculated_skills = SkillsCalculator::calculate_skills(creature, racep.get(), classp.get());
+  Skills calculated_skills = SkillsCalculator::calculate_skills(racep.get(), classp.get());
 
   EXPECT_EQ(22, calculated_skills.get_value(SkillType::SKILL_MAGIC_ARCANE));
   EXPECT_EQ(12, calculated_skills.get_value(SkillType::SKILL_MAGIC_DIVINE));

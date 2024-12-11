@@ -39,7 +39,7 @@ int MutenessCalculator::calculate_duration_in_minutes(CreaturePtr creature) cons
 
 // Calculate the mean of the Muteness Poisson distribution, which is affected
 // by the creature's health.
-int MutenessCalculator::calculate_muteness_duration_mean(CreaturePtr creature) const
+int MutenessCalculator::calculate_muteness_duration_mean(CreaturePtr /*creature*/) const
 {
   int base_mean = BASE_MUTENESS_DURATION_MEAN;
   return base_mean;
