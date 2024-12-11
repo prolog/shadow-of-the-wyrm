@@ -179,7 +179,7 @@ void PrayerAction::finish_prayer(CreaturePtr creature, const DeityDecisionImplic
   }
 }
 
-ActionCostValue PrayerAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue PrayerAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

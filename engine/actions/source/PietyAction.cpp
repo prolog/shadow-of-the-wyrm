@@ -70,7 +70,7 @@ void PietyAction::remove_all_piety(CreaturePtr creature, IMessageManager& manage
 }
 
 // Checking piety is a free action.
-ActionCostValue PietyAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue PietyAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }

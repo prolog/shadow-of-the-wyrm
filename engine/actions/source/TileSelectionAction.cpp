@@ -279,7 +279,7 @@ ActionCostValue TileSelectionAction::select_tile_cancel(CreaturePtr creature)
 }
 
 // Looking is always free.
-ActionCostValue TileSelectionAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue TileSelectionAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }

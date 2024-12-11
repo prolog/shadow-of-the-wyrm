@@ -44,7 +44,7 @@ ActionCostValue ExperienceAction::experience(CreaturePtr creature) const
   return get_action_cost_value(nullc);
 }
 
-ActionCostValue ExperienceAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue ExperienceAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }

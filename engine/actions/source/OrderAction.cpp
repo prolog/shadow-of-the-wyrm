@@ -307,7 +307,7 @@ void OrderAction::set_order(CreaturePtr creature, const string& order_id, const 
   }
 }
 
-ActionCostValue OrderAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue OrderAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return ActionCostConstants::DEFAULT;
 }

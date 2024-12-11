@@ -22,7 +22,7 @@ ActionCostValue VersionAction::version() const
   return get_action_cost_value(nullc);
 }
 
-ActionCostValue VersionAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue VersionAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }

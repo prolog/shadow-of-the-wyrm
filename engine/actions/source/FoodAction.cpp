@@ -235,7 +235,7 @@ void FoodAction::create_seed_on_tile(CreaturePtr creature, TilePtr tile, const s
   }
 }
 
-ActionCostValue FoodAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue FoodAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

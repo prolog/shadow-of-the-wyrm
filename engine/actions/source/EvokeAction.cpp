@@ -259,7 +259,7 @@ void EvokeAction::add_evocation_message(CreaturePtr creature, WandPtr wand, cons
 }
 
 // Get the basic cost of evoking a wand.
-ActionCostValue EvokeAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue EvokeAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

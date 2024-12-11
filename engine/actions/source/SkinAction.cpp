@@ -237,7 +237,7 @@ void SkinAction::add_mangled_corpse_skin_message(CreaturePtr creature)
   manager.send();
 }
 
-ActionCostValue SkinAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue SkinAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

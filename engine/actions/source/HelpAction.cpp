@@ -106,7 +106,7 @@ ActionCostValue HelpAction::display_text(const string& title_sid, const string& 
 }
 
 
-ActionCostValue HelpAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue HelpAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }

@@ -152,7 +152,7 @@ ActionCostValue SkillsAction::describe_skill(CreaturePtr creature, const SkillTy
 }
 
 // Looking at/improving skills is always free.
-ActionCostValue SkillsAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue SkillsAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }

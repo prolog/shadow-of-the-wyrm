@@ -38,7 +38,7 @@ ActionCostValue LatestMessagesAction::latest_messages(CreaturePtr creature)
   return get_action_cost_value(creature);
 }
 
-ActionCostValue LatestMessagesAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue LatestMessagesAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }

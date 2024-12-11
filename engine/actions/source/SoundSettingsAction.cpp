@@ -26,7 +26,7 @@ vector<pair<string, string>> SoundSettingsAction::get_settings_to_display(Creatu
   return sound_settings;
 }
 
-ActionCostValue SoundSettingsAction::get_action_cost_value(CreaturePtr c) const
+ActionCostValue SoundSettingsAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return ActionCostConstants::NO_ACTION;
 }

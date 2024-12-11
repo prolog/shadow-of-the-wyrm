@@ -279,7 +279,7 @@ void ItemCodexAction::add_description_to_codex(ItemPtr item, CodexDescriber* cod
   }
 }
 
-ActionCostValue ItemCodexAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue ItemCodexAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return ActionCostConstants::NO_ACTION;
 }

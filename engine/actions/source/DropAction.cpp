@@ -873,7 +873,7 @@ size_t DropAction::get_build_option(const vector<string>& options) const
 }
 
 // Dropping always has a base action cost of 1.
-ActionCostValue DropAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue DropAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

@@ -304,7 +304,7 @@ ActionCostValue KickAction::kick_tile(CreaturePtr creature, TilePtr kick_tile)
   return acv;
 }
 
-ActionCostValue KickAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue KickAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

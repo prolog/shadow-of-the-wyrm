@@ -538,7 +538,7 @@ ItemPtr PickupAction::recalculate_stack_sizes(IInventoryPtr inv, ItemPtr pick_up
 }
 
 // Base action cost value is 1.
-ActionCostValue PickupAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue PickupAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

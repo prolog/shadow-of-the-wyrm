@@ -334,7 +334,7 @@ void SpellcastingAction::add_no_deities_message(CreaturePtr creature) const
   manager.send();
 }
 
-ActionCostValue SpellcastingAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue SpellcastingAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

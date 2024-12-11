@@ -114,7 +114,7 @@ bool ReadAction::check_on_world_map(CreaturePtr creature)
   return false;
 }
 
-ActionCostValue ReadAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue ReadAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

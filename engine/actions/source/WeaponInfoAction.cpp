@@ -204,7 +204,7 @@ string WeaponInfoAction::get_ranged_weapon_info(CreaturePtr creature, WeaponPtr 
 }
 
 // Getting weapon info is always no-cost
-ActionCostValue WeaponInfoAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue WeaponInfoAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }

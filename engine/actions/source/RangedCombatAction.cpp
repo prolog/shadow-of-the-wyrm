@@ -398,7 +398,7 @@ pair<bool, bool> RangedCombatAction::check_target_tile_for_friendly_creature(Cre
   return firing_details;
 }
 
-ActionCostValue RangedCombatAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue RangedCombatAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

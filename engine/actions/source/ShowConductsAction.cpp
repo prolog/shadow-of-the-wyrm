@@ -37,7 +37,7 @@ ActionCostValue ShowConductsAction::show_conducts(CreaturePtr creature)
   return get_action_cost_value(creature);
 }
 
-ActionCostValue ShowConductsAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue ShowConductsAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }

@@ -220,7 +220,7 @@ void QuaffAction::add_quaff_message(CreaturePtr creature, const string& quaff_me
   manager.send();
 }
 
-ActionCostValue QuaffAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue QuaffAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

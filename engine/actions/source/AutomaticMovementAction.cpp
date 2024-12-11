@@ -134,7 +134,7 @@ ActionCostValue AutomaticMovementAction::automatic_movement_in_direction(Creatur
   return amc.auto_move(creature, map, d, amf);
 }
 
-ActionCostValue AutomaticMovementAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue AutomaticMovementAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }
