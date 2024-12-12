@@ -23,7 +23,7 @@ MapPtr CryptGenerator::generate(const Dimensions& dim)
   return map;
 }
 
-TilePtr CryptGenerator::generate_tile(MapPtr current_map, const int row, const int col)
+TilePtr CryptGenerator::generate_tile(MapPtr /*current_map*/, const int /*row*/, const int /*col*/)
 {
   TilePtr grave_tile = tg.generate(TileType::TILE_TYPE_CRYPT);
 

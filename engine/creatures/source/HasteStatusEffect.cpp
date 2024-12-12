@@ -43,7 +43,7 @@ bool HasteStatusEffect::after_apply(CreaturePtr creature) const
   return effect_applied;
 }
 
-Modifier HasteStatusEffect::get_base_modifier(CreaturePtr creature, const int danger_level) const
+Modifier HasteStatusEffect::get_base_modifier(CreaturePtr creature, const int /*danger_level*/) const
 {
   Modifier m;
 

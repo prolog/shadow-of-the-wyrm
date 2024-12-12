@@ -34,15 +34,15 @@ string SpellsDumper::get_spells() const
 
   for (const SpellKnowledgeMap::value_type& spell_pair : known_spells)
   {
-    string spell_id = spell_pair.first;
+    string sp_id = spell_pair.first;
 
-    if (sk.get_spell_knowledge(spell_id).get_castings() > 0)
+    if (sk.get_spell_knowledge(sp_id).get_castings() > 0)
     {
-      auto s_it = spells.find(spell_id);
+      auto s_it = spells.find(sp_id);
 
       if (s_it != spells.end())
       {
-        Spell spell = spells.find(spell_id)->second;
+        Spell spell = spells.find(sp_id)->second;
         IDescriberPtr describer = DescriberFactory::create_describer(creature, spell);
         string spell_desc = describer->describe();
 

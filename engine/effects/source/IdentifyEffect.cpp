@@ -34,7 +34,7 @@ bool IdentifyEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionMa
 }
 
 // Uncursed identify identifies all items of a particular type.
-bool IdentifyEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool IdentifyEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& /*affected_coordinate*/, TilePtr affected_tile)
 {
   if (creature)
   {
@@ -57,7 +57,7 @@ bool IdentifyEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionM
 
 // Cursed identify still helps, but not as much as the other statuses.  It only identifies the
 // item selected by the player.
-bool IdentifyEffect::effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr /*affected_tile*/)
+bool IdentifyEffect::effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   if (creature)
   {

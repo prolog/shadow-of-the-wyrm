@@ -27,7 +27,7 @@ void InventoryKeyboardCommandMap::command_not_found(const std::string& keyboard_
 }
 
 // Settings currently does nothing here.
-void InventoryKeyboardCommandMap::initialize_command_mapping(const Settings& settings)
+void InventoryKeyboardCommandMap::initialize_command_mapping(const Settings& /*settings*/)
 {
   string esc_key;
   esc_key = NC_ESCAPE_KEY;

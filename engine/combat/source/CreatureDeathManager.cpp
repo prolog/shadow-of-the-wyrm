@@ -45,7 +45,7 @@ void CreatureDeathManager::die() const
 }
 
 // If necessary, add messages about the creature's death.
-void CreatureDeathManager::add_creature_death_messages(CreaturePtr attacking_creature, CreaturePtr dead_creature) const
+void CreatureDeathManager::add_creature_death_messages(CreaturePtr attack_creature, CreaturePtr death_creature) const
 {
   // Add the message about the creature's death.
   //
@@ -53,15 +53,15 @@ void CreatureDeathManager::add_creature_death_messages(CreaturePtr attacking_cre
   // removing it from the map, so that view map checks work as expected.
   // Otherwise, the creature will already be gone from the other creatures'
   // view maps.
-  IMessageManager& manager = MM::instance(MessageTransmit::FOV, dead_creature, GameUtils::is_player_among_creatures(attacking_creature, dead_creature));
+  IMessageManager& manager = MM::instance(MessageTransmit::FOV, death_creature, GameUtils::is_player_among_creatures(attack_creature, death_creature));
 
   // If the creature was killed by another creature, get a message of the form
   // "the foo is killed!".  Otherwise, if the creature was killed by something
   // other than a creature (poison, falling, etc), use "the foo dies!".
   string death_message;
-  string creature_desc = StringTable::get(dead_creature->get_description_sid());
+  string creature_desc = StringTable::get(death_creature->get_description_sid());
 
-  if (attacking_creature)
+  if (attack_creature)
   {
     death_message = CombatTextKeys::get_monster_killed_message(creature_desc);
   }
@@ -76,9 +76,9 @@ void CreatureDeathManager::add_creature_death_messages(CreaturePtr attacking_cre
 
 // If the creature has given any quests, be sure to remove them from the
 // player.
-void CreatureDeathManager::remove_quests_from_player(MapPtr map, CreaturePtr dead_creature) const
+void CreatureDeathManager::remove_quests_from_player(MapPtr cur_map, CreaturePtr death_creature) const
 {
-  if (map != nullptr && dead_creature != nullptr)
+  if (cur_map != nullptr && death_creature != nullptr)
   {
     Game& game = Game::instance();
     Quests& quests = game.get_quests_ref();
@@ -90,7 +90,7 @@ void CreatureDeathManager::remove_quests_from_player(MapPtr map, CreaturePtr dea
       Quest q = quest_pair.second;
       string qm_id = q.get_questmaster_id();
 
-      if (qm_id == dead_creature->get_id())
+      if (qm_id == death_creature->get_id())
       {
         active_quests_to_remove.push_back(q.get_quest_id());
       }
@@ -105,12 +105,12 @@ void CreatureDeathManager::remove_quests_from_player(MapPtr map, CreaturePtr dea
 
 // Remove the creature's equipment, adding it to the creature's inventory.
 // Then, drop all the items on the tile.
-void CreatureDeathManager::remove_creature_equipment_and_drop_inventory_on_tile(MapPtr map, CreaturePtr dead_creature, IInventoryPtr ground) const
+void CreatureDeathManager::remove_creature_equipment_and_drop_inventory_on_tile(MapPtr cur_map, CreaturePtr death_creature, IInventoryPtr ground) const
 {
   Game& game = Game::instance();
 
   bool drop_eq = true;
-  string drop_eq_prop = dead_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEAVES_EQUIPMENT);
+  string drop_eq_prop = death_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEAVES_EQUIPMENT);
 
   if (!drop_eq_prop.empty())
   {
@@ -123,11 +123,11 @@ void CreatureDeathManager::remove_creature_equipment_and_drop_inventory_on_tile(
     for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
     {
       EquipmentWornLocation worn_slot = static_cast<EquipmentWornLocation>(e);
-      game.actions.remove_item(dead_creature, static_cast<EquipmentWornLocation>(worn_slot));
+      game.actions.remove_item(death_creature, static_cast<EquipmentWornLocation>(worn_slot));
     }
 
     // Drop inventory on to the creature's tile.
-    IInventoryPtr inv = dead_creature->get_inventory();
+    IInventoryPtr inv = death_creature->get_inventory();
 
     while (!inv->empty())
     {
@@ -139,7 +139,7 @@ void CreatureDeathManager::remove_creature_equipment_and_drop_inventory_on_tile(
 }
 
 // With some probability, create a random item drop when the creature dies.
-void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr attacking_creature, CreaturePtr dead_creature, IInventoryPtr ground) const
+void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr attack_creature, CreaturePtr death_creature, IInventoryPtr ground) const
 {
   Game& game = Game::instance();
   vector<ItemPtr> generated_items;
@@ -149,9 +149,9 @@ void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr attackin
   ItemDropRateCalculator idrc;
   bool consider_random_drop = true;
 
-  if (dead_creature)
+  if (death_creature)
   {
-    string consider_random_drop_prop = dead_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_ALLOWS_RANDOM_DROPS);
+    string consider_random_drop_prop = death_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_ALLOWS_RANDOM_DROPS);
 
     if (!consider_random_drop_prop.empty())
     {
@@ -162,8 +162,7 @@ void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr attackin
     {
       // Go through all the drops for the creature's race and parent races.
       // See if any items should be generated.
-      RaceManager rm;
-      std::map<string, DropParameters> items = rm.get_all_drops(dead_creature->get_race_id());
+      std::map<string, DropParameters> items = rm.get_all_drops(death_creature->get_race_id());
 
       for (const auto& item_gen_pair : items)
       {
@@ -171,7 +170,7 @@ void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr attackin
         DropParameters dp = item_gen_pair.second;
         int item_base_chance = dp.get_percent_chance();
 
-        if (RNG::percent_chance(idrc.calculate_pct_chance_item_drop(attacking_creature, item_base_chance)))
+        if (RNG::percent_chance(idrc.calculate_pct_chance_item_drop(attack_creature, item_base_chance)))
         {
           ItemPtr racial_item = ItemManager::create_item(item_base_id, RNG::dice(dp.get_min(), dp.get_max()));
 
@@ -187,10 +186,10 @@ void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr attackin
   // When a creature in general dies, there is a small chance it will drop 
   // a randomly generated item that is not part of a set of pre-specified
   // racial items.
-  if (consider_random_drop && RNG::percent_chance(idrc.calculate_pct_chance_item_drop(attacking_creature)))
+  if (consider_random_drop && RNG::percent_chance(idrc.calculate_pct_chance_item_drop(attack_creature)))
   {
     Rarity rarity = CreationUtils::generate_rarity();
-    int danger_level = dead_creature->get_level().get_current();
+    int danger_level = death_creature->get_level().get_current();
     vector<ItemType> i_restr = {};
     ItemGenerationMap generation_map = igm.generate_item_generation_map({1, danger_level, rarity, i_restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE});
 
@@ -213,23 +212,23 @@ void CreatureDeathManager::potentially_generate_random_drop(CreaturePtr attackin
 }
 
 // With some probability, create a creature corpse.
-void CreatureDeathManager::potentially_generate_corpse(CreaturePtr attacking_creature, CreaturePtr dead_creature, IInventoryPtr ground) const
+void CreatureDeathManager::potentially_generate_corpse(CreaturePtr attack_creature, CreaturePtr death_creature, IInventoryPtr ground) const
 {
   bool leaves_corpse = false;
   bool corpse_poisoned = false;
 
-  if (dead_creature)
+  if (death_creature)
   {
     RaceManager rm;
-    Race* race = rm.get_race(dead_creature->get_race_id());
+    Race* race = rm.get_race(death_creature->get_race_id());
 
     if (race)
     {
       leaves_corpse = race->get_leaves_corpse();
-      corpse_poisoned = (dead_creature->get_base_damage().get_damage_type() == DamageType::DAMAGE_TYPE_POISON || race->get_corpse_poisoned());
+      corpse_poisoned = (death_creature->get_base_damage().get_damage_type() == DamageType::DAMAGE_TYPE_POISON || race->get_corpse_poisoned());
     }
 
-    string leaves_corpse_prop = dead_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEAVES_CORPSE);
+    string leaves_corpse_prop = death_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LEAVES_CORPSE);
 
     if (!leaves_corpse_prop.empty())
     {
@@ -239,17 +238,17 @@ void CreatureDeathManager::potentially_generate_corpse(CreaturePtr attacking_cre
 
   // Potentially generate a corpse as well.
   CorpseCalculator cc;
-  if (RNG::percent_chance(cc.calculate_chance_corpse(attacking_creature)) && leaves_corpse)
+  if (RNG::percent_chance(cc.calculate_chance_corpse(attack_creature)) && leaves_corpse)
   {
     CorpseFactory cf;
-    ItemPtr corpse = cf.create_corpse(attacking_creature, dead_creature);
+    ItemPtr corpse = cf.create_corpse(attack_creature, death_creature);
 
     if (corpse != nullptr)
     {
       // Train the attacker's Hunting.
-      if (attacking_creature != nullptr)
+      if (attack_creature != nullptr)
       {
-        attacking_creature->get_skills().mark(SkillType::SKILL_GENERAL_HUNTING);
+        attack_creature->get_skills().mark(SkillType::SKILL_GENERAL_HUNTING);
       }
 
       // Poison it if applicable
@@ -266,13 +265,13 @@ void CreatureDeathManager::potentially_generate_corpse(CreaturePtr attacking_cre
 }
 
 // Creatures with primordial attacks might leave primordial essence.
-void CreatureDeathManager::potentially_generate_primordial_essence(CreaturePtr attacking_creature, CreaturePtr attacked_creature, IInventoryPtr ground) const
+void CreatureDeathManager::potentially_generate_primordial_essence(CreaturePtr attack_creature, CreaturePtr attacked_creature, IInventoryPtr ground) const
 {
   if (attacked_creature != nullptr && ground != nullptr)
   {
     CorpseCalculator cc;
 
-    if (RNG::percent_chance(cc.calculate_chance_primordial_essence(attacking_creature, attacked_creature)))
+    if (RNG::percent_chance(cc.calculate_chance_primordial_essence(attack_creature, attacked_creature)))
     {
       ItemPtr essence = ItemManager::create_item(ItemIdKeys::ITEM_ID_PRIMORDIAL_ESSENCE);
 

@@ -48,7 +48,7 @@ bool SlownessStatusEffect::after_apply(CreaturePtr creature) const
   return effect_applied;
 }
 
-Modifier SlownessStatusEffect::get_base_modifier(CreaturePtr creature, const int danger_level) const
+Modifier SlownessStatusEffect::get_base_modifier(CreaturePtr creature, const int /*danger_level*/) const
 {
   Modifier m;
 

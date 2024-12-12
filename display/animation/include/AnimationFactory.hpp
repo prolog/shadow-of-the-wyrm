@@ -10,6 +10,8 @@
 class AnimationFactory
 {
   public:
+    virtual ~AnimationFactory() = default;
+
     virtual AnimationInstructionPtr create_draw_instruction(const Coordinate& c, const DisplayTile& display_tile) const = 0;
     virtual AnimationInstructionPtr create_pause_instruction() const;
 };

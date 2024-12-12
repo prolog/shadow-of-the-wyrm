@@ -301,7 +301,7 @@ ActionCost CommandProcessor::process_spell_casting_command(CreaturePtr creature,
 {
   // Get the spell ID and direction out of the command's properties.
   // These will be present when an NPC is casting the spell.
-  string spell_id = command->get_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_SELECTED_SPELL_ID);
+  string sp_id = command->get_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_SELECTED_SPELL_ID);
   string direction_s = command->get_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_DIRECTION);
   Direction dir = Direction::DIRECTION_NULL;
 
@@ -310,7 +310,7 @@ ActionCost CommandProcessor::process_spell_casting_command(CreaturePtr creature,
     dir = static_cast<Direction>(String::to_int(direction_s));
   }
 
-  return game.actions.cast_spell(creature, spell_id, dir);
+  return game.actions.cast_spell(creature, sp_id, dir);
 }
 
 // Process the DirectionalCommand

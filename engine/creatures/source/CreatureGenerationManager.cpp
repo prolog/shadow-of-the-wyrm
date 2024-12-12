@@ -203,7 +203,7 @@ vector<string> CreatureGenerationManager::get_creature_ids_with_property(const s
   return c_ids;
 }
 
-string CreatureGenerationManager::select_creature_id_for_generation(ActionManager& am, const CreatureGenerationList& generation_list)
+string CreatureGenerationManager::select_creature_id_for_generation(ActionManager& /*am*/, const CreatureGenerationList& generation_list)
 {
   string creature_id;
 
@@ -463,7 +463,6 @@ bool CreatureGenerationManager::does_creature_match_generation_criteria(const Cr
 
   if (islet)
   {
-    RaceManager rm;
     Race* race = rm.get_race(cgv.get_race_id());
 
     if (race != nullptr)

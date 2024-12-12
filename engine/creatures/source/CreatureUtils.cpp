@@ -472,7 +472,7 @@ Race* CreatureUtils::get_random_user_playable_race()
 
   for (const auto& race_pair : races)
   {
-    Race* race = race_pair.second.get();
+    race = race_pair.second.get();
 
     if (race && race->get_user_playable())
     {
@@ -498,7 +498,7 @@ Class* CreatureUtils::get_random_user_playable_class()
 
   for (const auto& class_pair : classes)
   {
-    Class* cur_class = class_pair.second.get();
+    cur_class = class_pair.second.get();
 
     if (cur_class && cur_class->get_user_playable())
     {
@@ -548,9 +548,9 @@ bool CreatureUtils::has_spell_for_situation_type(CreaturePtr creature, const Spe
 
     for (const auto& skm_pair : skm)
     {
-      string spell_id = skm_pair.first;
+      string sp_id = skm_pair.first;
 
-      const auto sm_it = sm.find(spell_id);
+      const auto sm_it = sm.find(sp_id);
       if (sm_it != sm.end())
       {
         SpellShape ss = sm_it->second.get_shape();
@@ -659,13 +659,13 @@ vector<string> CreatureUtils::process_creature_modifier(CreaturePtr creature, pa
     return {};
   }
   
-  string spell_id = mod_pair.first;
+  string sp_id = mod_pair.first;
   mod_pair.second.set_delete(true);
 
   Modifier m = mod_pair.second;
   vector<pair<string, int>> statuses = m.get_affected_statuses();
 
-  add_removal_message(creature, spell_id);
+  add_removal_message(creature, sp_id);
 
   for (const auto& status : statuses)
   {
@@ -799,15 +799,15 @@ void CreatureUtils::remove_modifiers(CreaturePtr creature)
   }
 }
 
-void CreatureUtils::add_removal_message(CreaturePtr creature, const string& spell_id)
+void CreatureUtils::add_removal_message(CreaturePtr creature, const string& sp_id)
 {
-  if (!spell_id.empty() && creature != nullptr)
+  if (!sp_id.empty() && creature != nullptr)
   {
     Game& game = Game::instance();
     string creature_id = creature->get_id();
 
     const SpellMap& spells = game.get_spells_ref();
-    auto spell_it = spells.find(spell_id);
+    auto spell_it = spells.find(sp_id);
 
     if (spell_it != spells.end())
     {
@@ -1032,18 +1032,18 @@ bool CreatureUtils::remove_negative_statuses_from_creature(CreaturePtr creature)
   return removed;
 }
 
-bool CreatureUtils::has_skill_for_spell(CreaturePtr creature, const string& spell_id)
+bool CreatureUtils::has_skill_for_spell(CreaturePtr creature, const string& sp_id)
 {
   bool has_skill = false;
 
   if (creature != nullptr)
   {
     const SpellMap& spells = Game::instance().get_spells_ref();
-    auto sp_it = spells.find(spell_id);
+    auto sp_it = spells.find(sp_id);
 
     if (sp_it != spells.end())
     {
-      Spell spell = Game::instance().get_spells_ref().find(spell_id)->second;
+      Spell spell = Game::instance().get_spells_ref().find(sp_id)->second;
 
       SkillType mskill = spell.get_magic_category();
       if (creature->get_skills().get_value(mskill) > 0)
@@ -1193,12 +1193,12 @@ bool CreatureUtils::is_item_usable(CreaturePtr creature, ItemPtr item)
 
     if (spellbook != nullptr)
     {
-      string spell_id = spellbook->get_spell_id();
+      string sp_id = spellbook->get_spell_id();
 
-      if (!spell_id.empty())
+      if (!sp_id.empty())
       {
         const SpellMap& spells = Game::instance().get_spells_ref();
-        auto s_it = spells.find(spell_id);
+        auto s_it = spells.find(sp_id);
 
         if (s_it != spells.end())
         {

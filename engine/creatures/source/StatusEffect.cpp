@@ -351,17 +351,17 @@ string StatusEffect::get_sound_effect() const
   return effect;
 }
 
-void StatusEffect::tick(CreaturePtr creature, const int danger_level) const
+void StatusEffect::tick(CreaturePtr /*creature*/, const int /*danger_level*/) const
 {
 }
 
-Modifier StatusEffect::get_base_modifier(CreaturePtr creature, const int danger_level) const
+Modifier StatusEffect::get_base_modifier(CreaturePtr /*creature*/, const int /*danger_level*/) const
 {
   Modifier m;
   return m;
 }
 
-void StatusEffect::notify_deities(CreaturePtr initiating_creature, CreaturePtr affected_creature) const
+void StatusEffect::notify_deities(CreaturePtr /*initiating_creature*/, CreaturePtr /*affected_creature*/) const
 {
 }
 

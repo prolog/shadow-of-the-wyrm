@@ -805,8 +805,8 @@ void CreatureFactory::set_magic_skills_based_on_spells(CreaturePtr creature)
 
     for (const auto& sk_it : skm)
     {
-      const string& spell_id = sk_it.first;
-      auto sp_it = spells.find(spell_id);
+      const string& sp_id = sk_it.first;
+      auto sp_it = spells.find(sp_id);
 
       if (sp_it != spells.end())
       {

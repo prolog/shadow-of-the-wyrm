@@ -60,7 +60,7 @@ CombatManager::CombatManager()
 {
 }
 
-bool CombatManager::operator==(const CombatManager& cm) const
+bool CombatManager::operator==(const CombatManager& /*cm*/) const
 {
   return true;
 }
@@ -842,7 +842,7 @@ bool CombatManager::does_attack_slay_creature_race(CreaturePtr attacking_creatur
 // poison, etc.  Take into account whether or not the damage has overridden the status
 // effects.  If so, get the set of ailments off the status ailments, and use those
 // instead.
-void CombatManager::handle_damage_effects(CreaturePtr attacking_creature, CreaturePtr creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments, const int danger_level)
+void CombatManager::handle_damage_effects(CreaturePtr attacking_creature, CreaturePtr creature, const int /*damage_dealt*/, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments, const int danger_level)
 {
   StatusEffectPtr status_effect;
   string source_id;
@@ -869,7 +869,7 @@ void CombatManager::handle_damage_effects(CreaturePtr attacking_creature, Creatu
   }
 }
 
-void CombatManager::record_death_info_for_dump(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const string& dmg_source_id, const string& death_source_sid, MapPtr map)
+void CombatManager::record_death_info_for_dump(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const string& /*dmg_source_id*/, const string& death_source_sid, MapPtr map)
 {
   if (map != nullptr && attacked_creature != nullptr && attacked_creature->get_is_player())
   {
@@ -931,10 +931,10 @@ string CombatManager::get_dump_magical_death_details(CreaturePtr source_creature
 
   if (source_creature != nullptr)
   {
-    string spell_id = source_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_SPELL_IN_PROGRESS);
+    string sp_id = source_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_SPELL_IN_PROGRESS);
     const SpellMap& spells = Game::instance().get_spells_ref();
 
-    auto s_it = spells.find(spell_id);
+    auto s_it = spells.find(sp_id);
 
     if (s_it != spells.end())
     {
@@ -1143,7 +1143,7 @@ bool CombatManager::intimidate(CreaturePtr attacking_creature, CreaturePtr attac
 // 
 // JCD FIXME Need to have the usual player vs. monster checks here
 // so that these are only added when the target is not the player.
-void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, CreaturePtr attacked_creature, const int damage, const bool piercing, const bool incorporeal)
+void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, CreaturePtr attacked_creature, const int /*damage*/, const bool piercing, const bool incorporeal)
 {
   vector<string> additional_messages;  
   string attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);

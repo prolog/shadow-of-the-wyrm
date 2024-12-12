@@ -22,7 +22,7 @@ KeepGenerator::KeepGenerator(MapPtr new_base_map, const int chance_decay)
 {
 }
 
-MapPtr KeepGenerator::generate(const Dimensions& dim)
+MapPtr KeepGenerator::generate(const Dimensions& /*dim*/)
 {
   // Ignore the dimensions, since we have a base map already!
   return generate();

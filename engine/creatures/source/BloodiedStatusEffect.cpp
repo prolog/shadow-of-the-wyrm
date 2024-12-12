@@ -39,7 +39,7 @@ string BloodiedStatusEffect::get_npc_undo_message(CreaturePtr creature) const
   return message;
 }
 
-Modifier BloodiedStatusEffect::get_base_modifier(CreaturePtr creature, const int danger_level) const
+Modifier BloodiedStatusEffect::get_base_modifier(CreaturePtr /*creature*/, const int /*danger_level*/) const
 {
   Modifier m;
 
@@ -48,7 +48,7 @@ Modifier BloodiedStatusEffect::get_base_modifier(CreaturePtr creature, const int
   return m;
 }
 
-void BloodiedStatusEffect::notify_deities(CreaturePtr init_creature, CreaturePtr affected_creature) const
+void BloodiedStatusEffect::notify_deities(CreaturePtr init_creature, CreaturePtr /*affected_creature*/) const
 {
   if (initiating_creature != nullptr)
   {

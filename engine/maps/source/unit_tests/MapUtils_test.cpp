@@ -334,9 +334,9 @@ TEST(SW_Engine_Maps_MapUtils, get_available_adjacent_tiles_to_creature)
 
   EXPECT_EQ(8, avail_adj.size());
 
-  for (const Direction d : dirs)
+  for (const Direction dir : dirs)
   {
-    EXPECT_TRUE(avail_adj.find(d) != avail_adj.end());
+    EXPECT_TRUE(avail_adj.find(dir) != avail_adj.end());
   }
 }
 

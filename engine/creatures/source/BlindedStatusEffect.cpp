@@ -25,7 +25,7 @@ void BlindedStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr aff
   }
 }
 
-Modifier BlindedStatusEffect::get_base_modifier(CreaturePtr creature, const int danger_level) const
+Modifier BlindedStatusEffect::get_base_modifier(CreaturePtr /*creature*/, const int /*danger_level*/) const
 {
   Modifier m;
 
