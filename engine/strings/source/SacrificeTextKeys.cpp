@@ -35,7 +35,7 @@ string SacrificeTextKeys::get_sacrifice_message(const AlignmentRange align, Item
 
   message = StringTable::get(message);
   boost::replace_first(message, "%s", id->describe_usage());
-  message[0] = toupper(message[0]);
+  message[0] = static_cast<char>(toupper(message[0]));
 
   return message;
 }

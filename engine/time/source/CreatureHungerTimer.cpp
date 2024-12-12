@@ -13,7 +13,7 @@ using namespace std;
 
 // If the creature requires food, then reduce the hunger clock by 1 per
 // every minute this tick.
-void CreatureHungerTimer::tick(CreaturePtr creature, TilePtr tile, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
+void CreatureHungerTimer::tick(CreaturePtr creature, TilePtr tile, const ulonglong minutes_this_tick, const ulonglong /*total_minutes_elapsed*/)
 {
   if (creature)
   {
@@ -24,8 +24,6 @@ void CreatureHungerTimer::tick(CreaturePtr creature, TilePtr tile, const ulonglo
     //
     // Only do hunger checks for the player.  Other creatures currently do not
     // have to eat...
-    HungerCalculator hc;
-
     if (creature->get_is_player() && 
        (!creature->has_status(StatusIdentifiers::STATUS_ID_SATED) || RNG::percent_chance(hc.calculate_pct_chance_hunger_while_sated())) && 
        (hunger_clock.get_requires_food() || hunger_clock.is_normal_or_worse() == false))

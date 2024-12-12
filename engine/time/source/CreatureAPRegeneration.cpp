@@ -4,7 +4,7 @@
 
 const int CreatureAPRegeneration::PCT_CHANCE_MARK_STATISTIC = 5;
 
-void CreatureAPRegeneration::tick(CreaturePtr creature, TilePtr tile, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
+void CreatureAPRegeneration::tick(CreaturePtr creature, TilePtr tile, const ulonglong /*minutes_this_tick*/, const ulonglong total_minutes_elapsed)
 {
   if (creature && !creature->is_ap_full())
   {

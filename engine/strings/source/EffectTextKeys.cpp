@@ -49,7 +49,7 @@ string EffectTextKeys::get_general_effect_message(const string& monster_desc_sid
     }
 
     boost::replace_first(message, "%s", monster_desc);
-    message[0] = toupper(message[0]);
+    message[0] = static_cast<char>(toupper(message[0]));
   }
   
   return message;  
@@ -70,7 +70,7 @@ string EffectTextKeys::get_wand_recharge_already_full_message(const string& wand
   string recharge_msg = StringTable::get(EFFECT_RECHARGING_ALREADY_FULL);
 
   boost::replace_first(recharge_msg, "%s", wand_desc);
-  recharge_msg[0] = toupper(recharge_msg[0]);
+  recharge_msg[0] = static_cast<char>(toupper(recharge_msg[0]));
 
   return recharge_msg;
 }
@@ -80,7 +80,7 @@ string EffectTextKeys::get_wand_recharge_message(const string& wand_desc)
   string recharge_msg = StringTable::get(EFFECT_RECHARGING);
 
   boost::replace_first(recharge_msg, "%s", wand_desc);
-  recharge_msg[0] = toupper(recharge_msg[0]);
+  recharge_msg[0] = static_cast<char>(toupper(recharge_msg[0]));
 
   return recharge_msg;
 }
@@ -89,7 +89,7 @@ string EffectTextKeys::get_max_enchanted_message(const string& item_desc)
 {
   string msg = StringTable::get(EffectTextKeys::EFFECT_ENCHANT_ITEM_MAX);
   boost::replace_first(msg, "%s", item_desc);
-  msg[0] = toupper(msg[0]);
+  msg[0] = static_cast<char>(toupper(msg[0]));
 
   return msg;
 }
@@ -98,7 +98,7 @@ string EffectTextKeys::get_enchant_message(const string& item_desc)
 {
   string msg = StringTable::get(EffectTextKeys::EFFECT_ENCHANT);
   boost::replace_first(msg, "%s", item_desc);
-  msg[0] = toupper(msg[0]);
+  msg[0] = static_cast<char>(toupper(msg[0]));
 
   return msg;
 
@@ -108,7 +108,7 @@ string EffectTextKeys::get_cursed_enchant_message(const string& item_desc)
 {
   string msg = StringTable::get(EffectTextKeys::EFFECT_CURSED_ENCHANT);
   boost::replace_first(msg, "%s", item_desc);
-  msg[0] = toupper(msg[0]);
+  msg[0] = static_cast<char>(toupper(msg[0]));
 
   return msg;
 }
