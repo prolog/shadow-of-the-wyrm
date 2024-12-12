@@ -16,7 +16,7 @@ ForgeManipulator::ForgeManipulator(FeaturePtr feature)
 {
 }
 
-void ForgeManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+void ForgeManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/)
 {
   if (creature && creature->get_is_player())
   {

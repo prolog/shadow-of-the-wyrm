@@ -12,7 +12,7 @@ PewManipulator::PewManipulator(FeaturePtr feature)
 
 // Pews are a good feature, and only the good deities care about the
 // desecration of pews.
-void PewManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+void PewManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/)
 {
   desecrate(creature, current_map);
 }
@@ -23,7 +23,7 @@ bool PewManipulator::desecrate(CreaturePtr creature, MapPtr current_map)
   return true;
 }
 
-bool PewManipulator::handle(TilePtr tile, CreaturePtr creature)
+bool PewManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
 {
   if (creature && creature->get_is_player())
   {
