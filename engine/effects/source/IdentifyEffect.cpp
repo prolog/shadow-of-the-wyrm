@@ -21,7 +21,7 @@ Effect* IdentifyEffect::clone()
 
 // A blessed identify effect identifies everything in the character's inventory, as well as its
 // worn equipment.
-bool IdentifyEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool IdentifyEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   if (creature)
   {
@@ -57,7 +57,7 @@ bool IdentifyEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionM
 
 // Cursed identify still helps, but not as much as the other statuses.  It only identifies the
 // item selected by the player.
-bool IdentifyEffect::effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool IdentifyEffect::effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr /*affected_tile*/)
 {
   if (creature)
   {

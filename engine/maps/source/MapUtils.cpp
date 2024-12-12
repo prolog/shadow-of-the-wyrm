@@ -799,12 +799,12 @@ CreatureDirectionMap MapUtils::get_adjacent_creatures(const MapPtr& map, const C
     {
       Direction d = CoordUtils::get_direction(creature_coord, c);
       TilePtr tile = map->at(c);
-      CreaturePtr creature;
+      CreaturePtr cr;
 
       if (tile && tile->has_creature())
       {
-        creature = tile->get_creature();
-        adjacent_creatures.insert(make_pair(d, creature));
+        cr = tile->get_creature();
+        adjacent_creatures.insert(make_pair(d, cr));
       }
     }
   }

@@ -63,7 +63,7 @@ bool ModifyStatisticsEffect::is_negative_effect() const
   return m.is_negative();
 }
 
-bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifier& m, const ModifyStatisticsDuration msd, const double preset_duration) const
+bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifier& mod, const ModifyStatisticsDuration msd, const double preset_duration) const
 {
   bool result = false;
 
@@ -100,7 +100,7 @@ bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifie
     cr_sm[duration_end] = v_m;
 
     // Add any statuses on the modifier to the creature
-    vector<pair<string, int>> statuses = m.get_affected_statuses();
+    vector<pair<string, int>> statuses = mod.get_affected_statuses();
 
     for (const auto& status : statuses)
     {
@@ -120,7 +120,7 @@ bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifie
   return result;
 }
 
-bool ModifyStatisticsEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool ModifyStatisticsEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr affected_tile)
 {
   vector<int> blessed_sm_v = m.get_raw_values();
   std::transform(blessed_sm_v.begin(), blessed_sm_v.end(), blessed_sm_v.begin(), 
@@ -140,12 +140,12 @@ bool ModifyStatisticsEffect::effect_blessed(std::shared_ptr<Creature> creature, 
   return apply_modifiers(creature, blessed_m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_CALCULATE);
 }
 
-bool ModifyStatisticsEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool ModifyStatisticsEffect::effect_uncursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr affected_tile)
 {
   return apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_CALCULATE);
 }
 
-bool ModifyStatisticsEffect::effect_cursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool ModifyStatisticsEffect::effect_cursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr affected_tile)
 {
   vector<int> blessed_sm_v = m.get_raw_values();
   std::transform(blessed_sm_v.begin(), blessed_sm_v.end(), blessed_sm_v.begin(),

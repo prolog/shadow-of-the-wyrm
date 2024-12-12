@@ -81,17 +81,17 @@ bool HealingEffect::heal(CreaturePtr creature, const double healing_multiplier) 
   return effect_identified;
 }
 
-bool HealingEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool HealingEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return heal(creature, BLESSED_MULTIPLIER);
 }
 
-bool HealingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool HealingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return heal(creature, UNCURSED_MULTIPLIER);
 }
 
-bool HealingEffect::effect_cursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool HealingEffect::effect_cursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return heal(creature, CURSED_MULTIPLIER);
 }

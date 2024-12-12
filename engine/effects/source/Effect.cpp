@@ -143,7 +143,7 @@ bool Effect::is_negative_effect() const
   return false;
 }
 
-void Effect::read_properties(const map<string, string>& properties)
+void Effect::read_properties(const map<string, string>& /*properties*/)
 {
 }
 
