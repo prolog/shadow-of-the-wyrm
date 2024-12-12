@@ -48,7 +48,7 @@ void LoadGameScreen::initialize()
     options->add_option(current_option);
     options->add_option_description("");
 
-    char option_c = 'a' + current_id;
+    char option_c = 'a' + static_cast<char>(current_id);
     string option_s = string(1, option_c);
     screen_selection_to_filename_map.insert(make_pair(option_s, save_file_name));
 

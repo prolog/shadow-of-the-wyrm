@@ -10,7 +10,7 @@
 
 using namespace std;
 
-bool DefaultSpellScreenDisplayStrategy::display_spell(const Spell& spell) const
+bool DefaultSpellScreenDisplayStrategy::display_spell(const Spell& /*spell*/) const
 {
   return true;
 }

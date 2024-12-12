@@ -190,7 +190,7 @@ double GameUtils::get_seconds(Game& game)
   return sec;
 }
 
-bool GameUtils::is_magic_category_possible(const SkillType magic_category, const Game& game)
+bool GameUtils::is_magic_category_possible(const SkillType magic_category)
 {
   std::set<SkillType> possible_categories = { SkillType::SKILL_MAGIC_CANTRIPS, SkillType::SKILL_MAGIC_ARCANE, SkillType::SKILL_MAGIC_MYSTIC, SkillType::SKILL_MAGIC_PRIMORDIAL };
 

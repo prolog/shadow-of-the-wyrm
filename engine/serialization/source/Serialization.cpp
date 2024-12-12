@@ -68,7 +68,6 @@ string Serialization::save(CreaturePtr creature)
       // Save the metadata
       meta.serialize(stream);
 
-      Settings& settings = game.get_settings_ref();
       bool use_compression = String::to_bool(settings.get_setting(Setting::SAVEFILE_COMPRESSION));
       int compression_level = String::to_int(settings.get_setting(Setting::COMPRESSION_LEVEL));
       Serialize::write_bool(stream, use_compression);

@@ -526,8 +526,6 @@ void ScriptEngine::process_function_arguments(const vector<string>& param_types,
     }
     else
     {
-      Log& log = Log::instance();
-
       log.error("ScriptEngine::process_function_arguments - Unrecognized type \"" + param_type + "\" with value \"" + param_value + "\"");
     }
   }

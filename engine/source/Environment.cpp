@@ -63,7 +63,7 @@ bool Environment::create_userdata_directory(const Settings* settings)
   return created;
 }
 
-bool Environment::create_empty_user_settings_if_necessary(const Settings* settings)
+bool Environment::create_empty_user_settings_if_necessary(const Settings* /*settings*/)
 {
   bool created = false;
 

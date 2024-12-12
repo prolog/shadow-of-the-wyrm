@@ -41,11 +41,11 @@ bool Option::is_random_option(const int opt) const
 
 char Option::get_id_char() const
 {
-  char id_char = id + 'a';
+  char id_char = static_cast<char>(id) + 'a';
 
   if (uppercase)
   {
-    id_char = toupper(id_char);
+    id_char = static_cast<char>(toupper(id_char));
   }
 
   return id_char;

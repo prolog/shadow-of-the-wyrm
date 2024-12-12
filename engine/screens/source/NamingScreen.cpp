@@ -11,7 +11,7 @@ NamingScreen::NamingScreen(DisplayPtr new_display, const string& new_class, cons
 {
   if (!creature_class.empty())
   {
-    creature_class[0] = std::tolower(creature_class[0]);
+    creature_class[0] = static_cast<char>(std::tolower(creature_class[0]));
   }
 
   initialize();

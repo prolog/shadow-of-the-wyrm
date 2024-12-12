@@ -346,7 +346,7 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
               // Only consider the spell if the creature actually has enough
               // AP to cast it!
               if (mac.has_sufficient_power(creature, spell) && 
-                  GameUtils::is_magic_category_possible(spell.get_magic_category(), game))
+                  GameUtils::is_magic_category_possible(spell.get_magic_category()))
               {
                 npc_magic_decision = NPCMagicDecisionFactory::create_npc_magic_decision(spell.get_magic_classification());
 

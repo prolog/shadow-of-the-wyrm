@@ -184,7 +184,7 @@ bool SelectionUtils::has_target(CreaturePtr creature, const AttackType attack_ty
 }
 
 // Set targetting/selection information.
-void SelectionUtils::set_target(CreaturePtr creature, const AttackType attack_type, const std::pair<std::string, Coordinate>& target_pair, MapPtr map)
+void SelectionUtils::set_target(CreaturePtr creature, const AttackType /*attack_type*/, const std::pair<std::string, Coordinate>& target_pair, MapPtr map)
 {
   Coordinate target_coordinates = target_pair.second;
 

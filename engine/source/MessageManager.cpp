@@ -127,7 +127,7 @@ bool MessageManager::add_new_message(const std::string& message_text, const Colo
 
 // This is a simpler method than add_new_message - it doesn't queue the message, and instead
 // displays it directly.
-bool MessageManager::add_new_confirmation_message(const std::string& message_text, const Colour colour, const MessageImportance& importance)
+bool MessageManager::add_new_confirmation_message(const std::string& message_text, const Colour colour, const MessageImportance& /*importance*/)
 {
   buffer_has_messages = true;
   
@@ -141,7 +141,7 @@ bool MessageManager::add_new_confirmation_message(const std::string& message_tex
   return true;
 }
 
-bool MessageManager::add_new_message_with_pause(const std::string& message_text, const Colour colour, const MessageImportance& importance)
+bool MessageManager::add_new_message_with_pause(const std::string& message_text, const Colour colour, const MessageImportance& /*importance*/)
 {
   buffer_has_messages = true;
 
@@ -155,7 +155,7 @@ bool MessageManager::add_new_message_with_pause(const std::string& message_text,
   return true;
 }
 
-string MessageManager::add_new_message_with_prompt(const std::string& message_text, const Colour colour, const MessageImportance& importance)
+string MessageManager::add_new_message_with_prompt(const std::string& message_text, const Colour colour, const MessageImportance& /*importance*/)
 {
   string prompt_text;
 

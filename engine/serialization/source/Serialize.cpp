@@ -447,8 +447,8 @@ void Serialize::read_string(istream& stream, string& val)
 // the actual read of the game data.)
 void Serialize::consume_string(istream& stream)
 {
-  string ignore;
-  Serialize::read_string(stream, ignore);
+  string ignore_val;
+  Serialize::read_string(stream, ignore_val);
 }
 
 void Serialize::write_string_vector(ostream& stream, const vector<string>& val)

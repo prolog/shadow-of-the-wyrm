@@ -526,7 +526,7 @@ string read_sid_and_replace_values(lua_State* ls, int offset)
 
     if (!message.empty())
     {
-      message[0] = toupper(message[0]);
+      message[0] = static_cast<char>(toupper(message[0]));
     }
   }
 
@@ -9767,7 +9767,7 @@ int get_time_of_day(lua_State* ls)
   return 1;
 }
 
-int update_creatures(lua_State* ls)
+int update_creatures(lua_State* /*ls*/)
 {
   MapPtr map = Game::instance().get_current_map();
   MapUtils::update_creatures(map);
@@ -10052,7 +10052,7 @@ int show_bestiary_text(lua_State* ls)
   return 0;
 }
 
-int get_stack_size_current_state(lua_State* ls)
+int get_stack_size_current_state(lua_State* /*ls*/)
 {
   lua_State* L = Game::instance().get_script_engine_ref().get_current_state();
   int stack_size = lua_gettop(L);
