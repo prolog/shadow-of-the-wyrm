@@ -10,7 +10,7 @@ SimpleTempleGenerator::SimpleTempleGenerator(const string& new_deity_id, MapPtr 
 {
 }
 
-MapPtr SimpleTempleGenerator::generate(const Dimensions& dim)
+MapPtr SimpleTempleGenerator::generate(const Dimensions& /*dim*/)
 {
   return generate();
 }

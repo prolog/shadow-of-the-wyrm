@@ -14,7 +14,7 @@ start_row(0), start_col(0), church_height(0), church_width(0), altar_row(0)
 
 // Generate a simple stone church on the base map.
 // Ignore dimensions for now.
-MapPtr SimpleChurchGenerator::generate(const Dimensions& dim)
+MapPtr SimpleChurchGenerator::generate(const Dimensions& /*dim*/)
 {
   return generate();
 }

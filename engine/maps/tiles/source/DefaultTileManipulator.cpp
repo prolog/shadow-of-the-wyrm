@@ -158,7 +158,6 @@ void DefaultTileManipulator::add_item_if_necessary(CreaturePtr creature, MapPtr 
       vector<ItemType> i_restr = {};
       ItemGenerationMap igmap = igm.generate_item_generation_map({1, std::max<int>(danger_level, creature->get_level().get_current()), Rarity::RARITY_VERY_RARE, i_restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE});
 
-      Game& game = Game::instance();
       ActionManager& am = game.get_action_manager_ref();
 
       bool items_placed = false;

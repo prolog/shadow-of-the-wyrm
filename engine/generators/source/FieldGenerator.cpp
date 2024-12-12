@@ -63,7 +63,7 @@ MapPtr FieldGenerator::generate(const Dimensions& dimensions)
   return result_map;
 }
 
-TilePtr FieldGenerator::generate_tile(MapPtr map, const int row, const int col, const int pct_chance_shield)
+TilePtr FieldGenerator::generate_tile(MapPtr map, const int row, const int /*col*/, const int pct_chance_shield)
 {
   TilePtr generated_tile;
   

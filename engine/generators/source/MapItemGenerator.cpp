@@ -222,7 +222,7 @@ bool MapItemGenerator::repop_shop(MapPtr map, const string& shop_id)
           {
             shop_item->set_unpaid(true);
 
-            TilePtr tile = map->at(row, col);
+            tile = map->at(row, col);
 
             if (tile != nullptr)
             {

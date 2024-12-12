@@ -13,8 +13,6 @@ void StringTable::load(const string& filename)
 {
   std::ifstream string_file(filename.c_str());
   string current_line;
-  string key;
-  string value;
   boost::char_separator<char> separator("=");
 
   if (string_file.is_open())

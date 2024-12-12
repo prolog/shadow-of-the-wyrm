@@ -177,7 +177,7 @@ ActionCostValue DisarmTrapsSkillProcessor::get_default_skill_action_cost_value(C
   return 30;
 }
 
-void DisarmTrapsSkillProcessor::disarm_trap_success(CreaturePtr creature, MapPtr map, const Direction d, TilePtr tile, IMessageManager& manager)
+void DisarmTrapsSkillProcessor::disarm_trap_success(CreaturePtr creature, MapPtr map, const Direction /*d*/, TilePtr tile, IMessageManager& manager)
 {
   if (creature != nullptr && map != nullptr)
   {
@@ -193,7 +193,7 @@ void DisarmTrapsSkillProcessor::disarm_trap_success(CreaturePtr creature, MapPtr
   }
 }
 
-void DisarmTrapsSkillProcessor::disarm_trap_dismantle(CreaturePtr creature, MapPtr map, const Direction d, TilePtr tile, IMessageManager& manager)
+void DisarmTrapsSkillProcessor::disarm_trap_dismantle(CreaturePtr creature, MapPtr map, const Direction /*d*/, TilePtr tile, IMessageManager& manager)
 {
   if (creature != nullptr && map != nullptr)
   {
@@ -231,7 +231,7 @@ void DisarmTrapsSkillProcessor::disarm_trap_dismantle(CreaturePtr creature, MapP
   }
 }
 
-void DisarmTrapsSkillProcessor::disarm_trap_fail(CreaturePtr creature, MapPtr map, const Direction d, TilePtr tile, IMessageManager& manager)
+void DisarmTrapsSkillProcessor::disarm_trap_fail(CreaturePtr creature, MapPtr map, const Direction /*d*/, TilePtr tile, IMessageManager& manager)
 {
   if (creature != nullptr && map != nullptr)
   {

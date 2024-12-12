@@ -13,7 +13,7 @@ OvergrownSacrificeSiteGenerator::OvergrownSacrificeSiteGenerator(const string& n
 }
 
 // Generate the overgrown sacrifice site
-MapPtr OvergrownSacrificeSiteGenerator::generate(const Dimensions& dim)
+MapPtr OvergrownSacrificeSiteGenerator::generate(const Dimensions& /*dim*/)
 {
   return generate();
 }

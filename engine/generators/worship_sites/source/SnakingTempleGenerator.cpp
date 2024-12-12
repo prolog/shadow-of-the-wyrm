@@ -14,7 +14,7 @@ temple_middle_start_row(0), temple_middle_end_row(0), temple_middle_start_col(0)
 {
 }
 
-MapPtr SnakingTempleGenerator::generate(const Dimensions& dim)
+MapPtr SnakingTempleGenerator::generate(const Dimensions& /*dim*/)
 {
   return generate();
 }

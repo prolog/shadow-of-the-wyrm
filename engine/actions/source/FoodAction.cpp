@@ -156,7 +156,6 @@ bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInv
           if (corpse_race->get_undead().get_current())
           {
             DeityActionManager& dam = Game::instance().get_deity_action_manager_ref();
-            MapPtr map = Game::instance().get_current_map();
 
             dam.notify_action(creature, map, CreatureActionKeys::ACTION_DESECRATE_GOOD);
             dam.notify_action(creature, map, CreatureActionKeys::ACTION_DESECRATE_NEUTRAL);

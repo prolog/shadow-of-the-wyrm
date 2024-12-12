@@ -80,7 +80,7 @@ MapPtr DungeonGenerator::generate(const Dimensions& dimensions)
   return null_map;
 }
 
-TilePtr DungeonGenerator::generate_tile(MapPtr current_map, const int row, const int col)
+TilePtr DungeonGenerator::generate_tile(MapPtr current_map, const int /*row*/, const int /*col*/)
 {
   TilePtr result_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
   return result_tile;
@@ -279,12 +279,12 @@ bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& 
   int start_col = 0;
   for (start_col = r1_c_second; start_col != r2_c_second; start_col+=col_inc)
   {
-    TilePtr cur_tile = map->at(start_row, start_col);
+    TilePtr ct = map->at(start_row, start_col);
 
-    if (cur_tile && !cur_tile->has_additional_property(TileProperties::TILE_PROPERTY_NO_OVERWRITE))
+    if (ct && !ct->has_additional_property(TileProperties::TILE_PROPERTY_NO_OVERWRITE))
     {
       TilePtr floor_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
-      floor_tile->copy_entities(cur_tile);
+      floor_tile->copy_entities(ct);
 
       map->insert(start_row, start_col, floor_tile);
     }
@@ -598,7 +598,7 @@ bool DungeonGenerator::generate_grave(MapPtr map, const int start_row, const int
   return place_details.first;
 }
 
-bool DungeonGenerator::generate_spring(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+bool DungeonGenerator::generate_spring(MapPtr map, const int start_row, const int end_row, const int start_col, const int /*end_col*/)
 {  
   int springs_size = RNG::range(3, 4);
   int y_start = RNG::range(start_row, (end_row - 1 - springs_size));
@@ -773,7 +773,7 @@ bool DungeonGenerator::generate_treasure_room(MapPtr map, const int start_row, c
   return true;
 }
 
-bool DungeonGenerator::place_doorway(MapPtr map, int row, int col)
+bool DungeonGenerator::place_doorway(MapPtr map, int /*row*/, int /*col*/)
 {
   return false;
 }

@@ -14,7 +14,7 @@ IslandSacrificeSiteGenerator::IslandSacrificeSiteGenerator(const string& new_dei
 }
 
 // Generate the patch of land and the moat.
-MapPtr IslandSacrificeSiteGenerator::generate(const Dimensions& dim)
+MapPtr IslandSacrificeSiteGenerator::generate(const Dimensions& /*dim*/)
 {
   return generate();
 }

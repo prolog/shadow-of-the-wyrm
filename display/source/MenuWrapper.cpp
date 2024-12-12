@@ -43,7 +43,7 @@ void MenuWrapper::add_options(OptionsComponentPtr options)
     {
       if (o.get_enabled())
       {
-        char option = o.get_id() + 'a';
+        char option = static_cast<char>(o.get_id()) + 'a';
         add_option(option);
       }
     }

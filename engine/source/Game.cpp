@@ -149,8 +149,8 @@ void Game::set_display_settings()
   {
     if (cm >= CursorMode::CURSOR_MODE_MIN && cm <= CursorMode::CURSOR_MODE_MAX)
     {
-      DisplayPtr display = get_display();
-      display->set_property(DisplaySettings::DISPLAY_SETTING_CURSOR_MODE, cursor_mode);
+      DisplayPtr disp = get_display();
+      disp->set_property(DisplaySettings::DISPLAY_SETTING_CURSOR_MODE, cursor_mode);
     }
   }
 }
@@ -169,12 +169,12 @@ void Game::set_world_settings()
     days_elapsed = (parts->tm_mon * 30);
   }
 
-  World* world = get_current_world();
+  World* wrld = get_current_world();
 
   // If we're just starting up, the world may not have been instantiated yet.
-  if (world != nullptr)
+  if (wrld != nullptr)
   {
-    world->get_calendar().set_date(days_elapsed, hours_elapsed);
+    wrld->get_calendar().set_date(days_elapsed, hours_elapsed);
   }
 }
 
@@ -216,9 +216,9 @@ SoundPtr Game::get_sound(CreaturePtr creature)
   else
   {
     SoundFactory sf;
-    SoundPtr sound = sf.create_null_sound();
+    SoundPtr snd = sf.create_null_sound();
 
-    return sound;
+    return snd;
   }
 }
 
@@ -625,7 +625,6 @@ void Game::go()
 
     if (reloaded_game)
     {
-      MapPtr current_map = get_current_map();
       MapUtils::calculate_fov_maps_for_all_creatures(current_map);
     }
 
@@ -752,7 +751,6 @@ void Game::go()
     // information, it is me coding this, after all) can be shown.
     if (!should_count_score())
     {
-      IMessageManager& manager = MM::instance();
       manager.add_new_message_with_pause(StringTable::get(TextKeys::SCORE_SUPPRESSED_LUA_NARRATIVE));
       manager.send();
       get_current_player()->get_decision_strategy()->get_confirmation();
@@ -891,10 +889,10 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
     CurrentCreatureAbilities cca;
     if (cca.can_act(current_creature) == false)
     {
-      ActionCost ac;
-      ac.set_cost(current_creature->get_speed().get_current());
+      ActionCost acost;
+      acost.set_cost(current_creature->get_speed().get_current());
 
-      return ac;
+      return acost;
     }
 
     DecisionStrategy* strategy = current_creature->get_decision_strategy();

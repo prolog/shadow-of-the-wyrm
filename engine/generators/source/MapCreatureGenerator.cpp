@@ -210,14 +210,14 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
 
           for (const Coordinate& adj : coords)
           {
-            TilePtr tile = map->at(adj);
+            TilePtr ptile = map->at(adj);
             CreaturePtr pack_creature = cf.create_by_creature_id(am, creature_id, map, generated_creature);
 
             if (pack_creature != nullptr)
             {
               if (RNG::percent_chance(PACK_TILE_CHANCE) &&
-                  MapUtils::is_tile_available_for_creature(pack_creature, tile) && 
-                 !tmc.get_confirmation_details(pack_creature, map, nullptr, adj, tile, adj).get_require_prompt())
+                  MapUtils::is_tile_available_for_creature(pack_creature, ptile) && 
+                 !tmc.get_confirmation_details(pack_creature, map, nullptr, adj, ptile, adj).get_require_prompt())
               {
                 addl_pack_creatures++;
                 add_creature_to_map(game, pack_creature, map, manager, base_danger_level, adj.first, adj.second, current_creatures_placed, creatures_generated);
@@ -319,7 +319,7 @@ Coordinate MapCreatureGenerator::get_coordinate_for_creature(MapPtr map, Creatur
 
 // Add the creature to the map.  Update necessary values/counters surrounding
 // creature generation.
-void MapCreatureGenerator::add_creature_to_map(Game& game, CreaturePtr generated_creature, MapPtr map, IMessageManager& manager, const int danger_level, const int creature_row, const int creature_col, unsigned int& current_creatures_placed, tuple<bool, int, Rarity>& creatures_generated)
+void MapCreatureGenerator::add_creature_to_map(Game& game, CreaturePtr generated_creature, MapPtr map, IMessageManager& /*manager*/, const int /*danger_level*/, const int creature_row, const int creature_col, unsigned int& current_creatures_placed, tuple<bool, int, Rarity>& creatures_generated)
 {
   Coordinate coords(creature_row, creature_col);
   GameUtils::add_new_creature_to_map(game, generated_creature, map, coords);
@@ -477,7 +477,7 @@ void MapCreatureGenerator::place_followers(MapPtr map, const pair<Coordinate, Co
   }
 }
 
-bool MapCreatureGenerator::place_follower(CreaturePtr creature, MapPtr map, const pair<Coordinate, Coordinate>& coord_range, Game& game, ActionManager& am, IMessageManager& manager, const int base_danger_level, uint& current_creatures_placed, tuple<bool, int, Rarity>& creatures_generated)
+bool MapCreatureGenerator::place_follower(CreaturePtr creature, MapPtr map, const pair<Coordinate, Coordinate>& coord_range, Game& game, ActionManager& /*am*/, IMessageManager& manager, const int base_danger_level, uint& current_creatures_placed, tuple<bool, int, Rarity>& creatures_generated)
 {
   bool placed = false;
 

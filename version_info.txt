@@ -39,6 +39,8 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
 
 - Updated premake script for v5.
 
+- Increased MSVC warning level from /W3 to /W4.
+
 - Bug fixes:
 
   - Fixed an internal issue with getting the season colour.

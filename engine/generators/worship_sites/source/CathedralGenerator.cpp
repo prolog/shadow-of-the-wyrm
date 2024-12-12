@@ -176,14 +176,14 @@ void CathedralGenerator::generate_back_rooms(MapPtr map, const int room_start_co
 }
 
 // Generate the priest's quarters in the back of the Cathedral
-void CathedralGenerator::generate_priest_quarters(MapPtr map, const int room_start_col, const int start_row, const int end_row, const int end_col, int back_room_wall_row)
+void CathedralGenerator::generate_priest_quarters(MapPtr map, const int room_start_col, const int srow, const int end_row, const int end_col, int back_room_wall_row)
 {
   TileGenerator tg;
   TilePtr current_tile;
 
-  for (int row = start_row + 1; row < start_row + church_height; row++)
+  for (int row = srow + 1; row < srow + church_height; row++)
   {
-    if (row != start_row+2)
+    if (row != srow+2)
     {
       current_tile = tg.generate(TileType::TILE_TYPE_ROCK);
       map->insert(row, room_start_col, current_tile);
@@ -197,12 +197,12 @@ void CathedralGenerator::generate_priest_quarters(MapPtr map, const int room_sta
   }
 
   // Always a bed.
-  int row = RNG::range(start_row + 1, back_room_wall_row - 2);
+  int row = RNG::range(srow + 1, back_room_wall_row - 2);
   FeaturePtr bed = FeatureGenerator::generate_bed();
   map->at({ row, room_start_col + 2 })->set_feature(bed);
 
   // A couple of fire pillars in two corners.
-  vector<Coordinate> corners = { {start_row + 1, end_col - 2}, {back_room_wall_row - 1, room_start_col + 1} };
+  vector<Coordinate> corners = { {srow + 1, end_col - 2}, {back_room_wall_row - 1, room_start_col + 1} };
   for (const Coordinate& c : corners)
   {
     FeaturePtr fp = FeatureGenerator::generate_fire_pillar();
@@ -213,22 +213,22 @@ void CathedralGenerator::generate_priest_quarters(MapPtr map, const int room_sta
   if (RNG::percent_chance(65))
   {
     FeaturePtr table = FeatureGenerator::generate_table();
-    add_feature_to_middle_of_priest_quarters(map, room_start_col, start_row, end_row, end_col, back_room_wall_row, table);
+    add_feature_to_middle_of_priest_quarters(map, room_start_col, srow, end_row, end_col, back_room_wall_row, table);
   }
 
   if (RNG::percent_chance(65))
   {
     FeaturePtr bench = FeatureGenerator::generate_bench();
-    add_feature_to_middle_of_priest_quarters(map, room_start_col, start_row, end_row, end_col, back_room_wall_row, bench);
+    add_feature_to_middle_of_priest_quarters(map, room_start_col, srow, end_row, end_col, back_room_wall_row, bench);
   }
 }
 
-void CathedralGenerator::add_feature_to_middle_of_priest_quarters(MapPtr map, const int room_start_col, const int start_row, const int end_row, const int end_col, const int back_room_wall_row, FeaturePtr feature)
+void CathedralGenerator::add_feature_to_middle_of_priest_quarters(MapPtr map, const int room_start_col, const int srow, const int /*end_row*/, const int ecol, const int back_room_wall_row, FeaturePtr feature)
 {
   if (map != nullptr)
   {
-    int row = RNG::range(start_row + 2, back_room_wall_row - 2);
-    int col = RNG::range(start_col + 2, end_col - 2);
+    int row = RNG::range(srow + 2, back_room_wall_row - 2);
+    int col = RNG::range(room_start_col + 2, ecol - 2);
 
     map->at({ row, col })->set_feature(feature);
   }

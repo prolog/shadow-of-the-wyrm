@@ -129,8 +129,8 @@ ActionCostValue AutomaticMovementAction::automatic_movement_in_direction(Creatur
   // movement chain, the "engaged" flag will be set, and we'll properly
   // consider items, features, and so on, during the automatic movement
   // checks.
-  bool ignore = !(creature->get_automatic_movement_ref().get_engaged());
-  AutomaticMovementFlags amf(ignore, ignore, ignore, ignore);
+  bool ignore_val = !(creature->get_automatic_movement_ref().get_engaged());
+  AutomaticMovementFlags amf(ignore_val, ignore_val, ignore_val, ignore_val);
   return amc.auto_move(creature, map, d, amf);
 }
 

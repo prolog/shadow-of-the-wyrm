@@ -264,7 +264,7 @@ void Generator::generate_randarts(MapPtr map, const int rand_y, const int rand_x
 }
 
 // Initializes essential map properties like terrain type, ID, and permanence.
-void Generator::initialize(MapPtr map, const int danger_level)
+void Generator::initialize(MapPtr map, const int /*dl*/)
 {
   map->set_terrain_type(map_terrain_type);
 
@@ -283,14 +283,14 @@ void Generator::initialize(MapPtr map, const int danger_level)
 
 // Creates the initial set of entities (creatures and items) present
 // on the map.
-void Generator::create_entities(MapPtr map, const int danger_level, const bool create_creatures, const bool create_items)
+void Generator::create_entities(MapPtr map, const int dl, const bool create_creatures, const bool create_items)
 {
   tuple<bool, int, Rarity> creature_details(false, -1, Rarity::RARITY_COMMON);
 
   if (create_creatures)
   {
     MapCreatureGenerator mcg;
-    creature_details = mcg.generate_creatures(map, danger_level, additional_properties);
+    creature_details = mcg.generate_creatures(map, dl, additional_properties);
 
     if (std::get<1>(creature_details) == 0 && 
         MapUtils::get_hostile_creatures(CreatureID::CREATURE_ID_PLAYER, map).empty())
@@ -303,7 +303,7 @@ void Generator::create_entities(MapPtr map, const int danger_level, const bool c
 
   if (create_items && can_create_initial_items())
   {
-    generate_initial_items(map, danger_level, creature_details);
+    generate_initial_items(map, dl, creature_details);
   }
 
   string foragables = get_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_FORAGABLES);
@@ -404,13 +404,13 @@ void Generator::fill(const MapPtr map, const vector<pair<TileType, int>>& tile_p
 // Seed the initial items.  Returns true if the items were created, false otherwise.
 // By default, no initial items are generated.  This function should be overridden
 // for generators where this is expected (dungeons, maybe villages, etc).
-bool Generator::generate_initial_items(MapPtr map, const int danger_level, const tuple<bool, int, Rarity>& creature_details)
+bool Generator::generate_initial_items(MapPtr map, const int dl, const tuple<bool, int, Rarity>& creature_details)
 {
   MapItemGenerator mig;
-  return mig.generate_items(map, danger_level, creature_details);
+  return mig.generate_items(map, dl, creature_details);
 }
 
-bool Generator::update_items(MapPtr map, const int danger_level)
+bool Generator::update_items(MapPtr map, const int /*dl*/)
 {
   // Do nothing.  Items should never be generated after the initial seeding -
   // they should only be dropped by creatures after that.

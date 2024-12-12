@@ -20,7 +20,7 @@ float TerrainSpeedMultiplierCalculator::calculate(CreaturePtr creature, MapPtr m
 	return mult;
 }
 
-float TerrainSpeedMultiplierCalculator::calculate_for_tile_type(CreaturePtr creature, const TileType tt) const
+float TerrainSpeedMultiplierCalculator::calculate_for_tile_type(CreaturePtr creature, const TileType /*tt*/) const
 {
 	return 1.0;
 }

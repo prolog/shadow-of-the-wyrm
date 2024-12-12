@@ -22,7 +22,7 @@ BallShapeProcessor::BallShapeProcessor()
 {
 }
 
-pair<vector<pair<Coordinate, TilePtr>>, Animation> BallShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
+pair<vector<pair<Coordinate, TilePtr>>, Animation> BallShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction /*d*/, const Spell& spell)
 {
   pair<vector<pair<Coordinate, TilePtr>>, MovementPath> affected_coords_and_tiles = get_affected_coords_and_tiles(map, spell, caster_coord);
 
@@ -66,9 +66,9 @@ pair<vector<pair<Coordinate, TilePtr>>, MovementPath> BallShapeProcessor::get_af
 
   if (include_centre_tile)
   {
-    TilePtr caster_tile = map->at(caster_coord);
+    TilePtr ctile = map->at(caster_coord);
     current_coords.push_back(caster_coord);
-    affected_coords_and_tiles.push_back(make_pair(caster_coord, caster_tile));
+    affected_coords_and_tiles.push_back(make_pair(caster_coord, ctile));
   }
 
   for (uint i = 0; i < spell_range; i++)

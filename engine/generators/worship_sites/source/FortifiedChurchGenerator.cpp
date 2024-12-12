@@ -12,7 +12,7 @@ start_row(0), start_col(0), church_height(0), church_width(0), altar_row(0), alt
 {
 }
 
-MapPtr FortifiedChurchGenerator::generate(const Dimensions& dim)
+MapPtr FortifiedChurchGenerator::generate(const Dimensions& /*dim*/)
 {
   return generate();
 }

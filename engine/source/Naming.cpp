@@ -294,7 +294,7 @@ string Naming::generate_base_random_settlement_name()
   {
     if (i == 1 || RNG::percent_chance(70))
     {
-      vector<string> syllables = settlement_syllables.at(i);
+      vector<string> syls = settlement_syllables.at(i);
 
       if (num_syllables == 1 && RNG::percent_chance(10))
       {
@@ -310,7 +310,7 @@ string Naming::generate_base_random_settlement_name()
       // Some hypenated names
       if (num_syllables == 2 && hyphen && RNG::percent_chance(20))
       {
-        syllables = settlement_syllables.at(1);
+        syls = settlement_syllables.at(1);
       }
 
       // Sometimes skip the middle syllable.
@@ -319,7 +319,7 @@ string Naming::generate_base_random_settlement_name()
         continue;
       }
 
-      string syl = syllables.at(RNG::range(0, syllables.size() - 1));
+      string syl = syls.at(RNG::range(0, syls.size() - 1));
       rand_name += syl;
     }
   }
@@ -354,14 +354,14 @@ string Naming::generate_artifact_name()
 
   for (int i = 1; i <= 3; i++)
   {
-    vector<string> syllables = artifact_syllables.at(i);
+    vector<string> syls = artifact_syllables.at(i);
 
     if (i == 2 && RNG::percent_chance(20))
     {
       continue;
     }
 
-    name = name + syllables.at(RNG::range(0, syllables.size() - 1));
+    name = name + syls.at(RNG::range(0, syls.size() - 1));
   }
 
   return name;

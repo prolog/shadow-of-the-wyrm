@@ -10,14 +10,11 @@ SettlementRuinsGenerator::SettlementRuinsGenerator(MapPtr new_base_map)
 MapPtr SettlementRuinsGenerator::generate()
 {
   MapPtr result_map = SettlementGenerator::generate();
-
   return result_map;
 }
 
-MapPtr SettlementRuinsGenerator::generate(const Dimensions& dim)
+MapPtr SettlementRuinsGenerator::generate(const Dimensions& /*dim*/)
 {
-  // JCD FIXME
-  MapPtr result_map = SettlementGenerator::generate();
-  
+  MapPtr result_map = SettlementGenerator::generate();  
   return result_map;
 }

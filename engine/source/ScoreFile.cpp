@@ -36,17 +36,17 @@ void ScoreFile::read_score_file()
 
   if (boost::filesystem::exists(HighScoreConstants::FILENAME))
   {
-    std::ifstream score_file;
+    std::ifstream sf;
 
-    score_file.open(HighScoreConstants::FILENAME, ios_base::binary);
+    sf.open(HighScoreConstants::FILENAME, ios_base::binary);
 
-    if (!(score_file.is_open() && score_file.good()))
+    if (!(sf.is_open() && sf.good()))
     {
       throw std::runtime_error("Problem opening existing score file.");
     }
     else
     {
-      bool read_ok = read_file(score_file);
+      bool read_ok = read_file(sf);
       if (!read_ok) throw std::runtime_error("Exception while reading the score file.");
     }
   }
