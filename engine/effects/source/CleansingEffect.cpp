@@ -31,17 +31,17 @@ Effect* CleansingEffect::clone()
   return new CleansingEffect(*this);
 }
 
-bool CleansingEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool CleansingEffect::effect_blessed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return cleansing(creature, 0.0f);
 }
 
-bool CleansingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool CleansingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return cleansing(creature, 0.0f);
 }
 
-bool CleansingEffect::effect_cursed(CreaturePtr creature, ActionManager * am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool CleansingEffect::effect_cursed(CreaturePtr creature, ActionManager * /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return cleansing(creature, 1.5f);
 }

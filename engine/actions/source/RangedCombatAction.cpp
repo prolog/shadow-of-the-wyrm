@@ -132,9 +132,9 @@ ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, co
 {
   Game& game = Game::instance();
   Calendar& calendar = game.get_current_world()->get_calendar();
-  MapPtr map = game.get_current_map();
   Settings& settings = game.get_settings_ref();
-  pair<Colour, Colour> tod_overrides = TimeOfDay::get_time_of_day_colours(calendar.get_date().get_time_of_day(), MapUtils::get_supports_time_of_day(map->get_map_type()), settings.get_setting_as_bool(Setting::SHADE_TERRAIN), settings.get_setting_as_bool(Setting::SHADE_CREATURES_AND_ITEMS));
+  MapPtr current_map = game.get_current_map();
+  pair<Colour, Colour> tod_overrides = TimeOfDay::get_time_of_day_colours(calendar.get_date().get_time_of_day(), MapUtils::get_supports_time_of_day(current_map->get_map_type()), settings.get_setting_as_bool(Setting::SHADE_TERRAIN), settings.get_setting_as_bool(Setting::SHADE_CREATURES_AND_ITEMS));
 
   if (creature)
   {
@@ -145,7 +145,6 @@ ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, co
     
     if (t_it != tile_map.end())
     {
-      MapPtr current_map = game.get_current_map();
       pair<string, Coordinate> target_info = t_it->second;
       Coordinate creature_coords = current_map->get_location(creature->get_id());
       Coordinate target_coords = target_info.second;
@@ -176,7 +175,6 @@ ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, co
 
             // Create the animation showing the flight of the projectile.
             AnimationTranslator anim_tr(display);
-            MapPtr current_map = game.get_current_map();
             MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
             CurrentCreatureAbilities cca;
             CreaturePtr player = game.get_current_player();
@@ -194,9 +192,9 @@ ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, co
           // of the action, but only if the creature is now unfriendly.
           if (firing_details.second)
           {
-            TilePtr target_tile = current_map->at(target_coords);
+            TilePtr t_tile = current_map->at(target_coords);
 
-            if (target_tile != nullptr && target_tile->has_creature() && target_tile->get_creature()->hostile_to(creature->get_id()))
+            if (t_tile != nullptr && t_tile->has_creature() && t_tile->get_creature()->hostile_to(creature->get_id()))
             {
               game.get_deity_action_manager_ref().notify_action(creature, current_map, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
             }

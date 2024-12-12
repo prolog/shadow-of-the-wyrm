@@ -339,7 +339,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ranged_weapons(const XMLN
 
 pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ammunition(const XMLNode& ammunition_node)
 {
-  pair<ItemMap, GenerationValuesMap> ammunition;
+  pair<ItemMap, GenerationValuesMap> ammunition_vals;
   ItemMap ammunition_map;
   GenerationValuesMap igv_map;
   
@@ -357,9 +357,9 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ammunition(const XMLNode&
     }
   }
   
-  ammunition.first = ammunition_map;
-  ammunition.second = igv_map;
-  return ammunition;
+  ammunition_vals.first = ammunition_map;
+  ammunition_vals.second = igv_map;
+  return ammunition_vals;
 }
 
 pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_food(const XMLNode& food_node)

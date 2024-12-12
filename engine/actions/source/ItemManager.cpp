@@ -243,8 +243,8 @@ pair<bool, vector<ItemPtr>> ItemManager::remove_item_from_inv_or_eq(CreaturePtr 
           // remove the item.
 
           // Don't transfer to inventory
-          ItemPtr item = remove(creature, eq_pair.first, false);
-          result.second.push_back(item);
+          ItemPtr cur_item = remove(creature, eq_pair.first, false);
+          result.second.push_back(cur_item);
         }
         else
         {

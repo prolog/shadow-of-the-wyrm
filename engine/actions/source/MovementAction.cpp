@@ -115,8 +115,8 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
     // assuming this is the player.
     if (creature->get_is_player())
     {
-      Coordinate creature_location = map->get_location(creature->get_id());
-      Game::instance().get_loaded_map_details_ref().update_engine_coord(creature_location);
+      Coordinate cloc = map->get_location(creature->get_id());
+      Game::instance().get_loaded_map_details_ref().update_engine_coord(cloc);
     }
   }
   

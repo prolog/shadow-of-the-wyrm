@@ -92,7 +92,7 @@ vector<ItemPtr> InventoryManager::manage_inventory(IInventoryPtr inv, const list
   return selected_items;
 }
 
-ActionCostValue InventoryManager::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue InventoryManager::get_action_cost_value(CreaturePtr /*cr*/) const
 {
   return 1;
 }

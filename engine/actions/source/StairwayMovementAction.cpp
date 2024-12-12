@@ -185,7 +185,6 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
       {
         TileExitMap& exit_map = tile->get_tile_exit_map_ref();
         TileExitMap::const_iterator t_it = exit_map.find(Direction::DIRECTION_DOWN);
-        MapExitPtr map_exit;
         
         // If there is an exit in the down direction, do the appropriate action.
         if (t_it != exit_map.end())

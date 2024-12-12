@@ -457,7 +457,7 @@ File::~File()
 {
 }
 
-string File::to_string(const string& filename, const map<string, string>& char_replacements)
+string File::to_string(const string& filename, const map<string, string>& /*char_replacements*/)
 {
   try
   {
