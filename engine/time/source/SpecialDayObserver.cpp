@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void SpecialDayObserver::notify(const ulonglong minutes_passed)
+void SpecialDayObserver::notify(const ulonglong /*minutes_passed*/)
 {
   Game& game = Game::instance();
   World* world = game.get_current_world();

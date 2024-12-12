@@ -59,7 +59,7 @@ bool Feature::operator==(const Feature& feature) const
 }
 
 // At the moment, only traps are hidden - everything else is visible.
-void Feature::set_is_hidden(const bool new_hidden)
+void Feature::set_is_hidden(const bool /*new_hidden*/)
 {
 }
 
@@ -91,7 +91,7 @@ pair<string, vector<string>> Feature::get_description_and_replacement_sids() con
   return make_pair(base_description_sid, no_replacements);
 }
 
-bool Feature::can_handle(const bool feature_tile_occupied) const
+bool Feature::can_handle(const bool /*feature_tile_occupied*/) const
 {
   return true;
 }

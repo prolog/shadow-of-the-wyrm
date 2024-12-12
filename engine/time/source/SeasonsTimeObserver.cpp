@@ -11,7 +11,7 @@ SeasonsTimeObserver::SeasonsTimeObserver()
 // Call the calendar to update the season if necessary.
 // If the season has been updated, add the appropriate season
 // transition message.
-void SeasonsTimeObserver::notify(const ulonglong minutes_passed)
+void SeasonsTimeObserver::notify(const ulonglong /*minutes_passed*/)
 {
   Game& game = Game::instance();
   

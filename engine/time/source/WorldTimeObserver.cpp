@@ -16,7 +16,7 @@ WorldTimeObserver::WorldTimeObserver()
 {
 }
 
-void WorldTimeObserver::notify(const ulonglong minutes_this_tick)
+void WorldTimeObserver::notify(const ulonglong /*minutes_this_tick*/)
 {
   Game& game = Game::instance();
 

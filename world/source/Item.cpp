@@ -203,10 +203,10 @@ Weight Item::get_weight() const
   return weight;
 }
 
-Weight Item::get_weight(const uint quantity) const
+Weight Item::get_weight(const uint quant) const
 {
   Weight new_weight = weight;
-  new_weight.set_weight(weight.get_weight() * quantity);
+  new_weight.set_weight(weight.get_weight() * quant);
   return new_weight;
 }
 
@@ -751,11 +751,11 @@ void Item::do_enchant_item(const int points)
   }
 }
 
-void Item::do_enchant_randart(const std::vector<std::string>& slayable_race_ids)
+void Item::do_enchant_randart(const std::vector<std::string>& /*slayable_race_ids*/)
 {
 }
 
-void Item::do_enchant_randart_non_resists(const std::vector<std::string>& slayable_race_ids)
+void Item::do_enchant_randart_non_resists(const std::vector<std::string>& /*slayable_race_ids*/)
 {
 }
 
@@ -805,15 +805,15 @@ void Item::set_additional_property(const string& property_name, const string& pr
 
 string Item::get_additional_property(const string& property_name) const
 {
-  string value;
+  string val;
 
   auto p_it = additional_properties.find(property_name);
   if (p_it != additional_properties.end())
   {
-    value = p_it->second;
+    val = p_it->second;
   }
 
-  return value;
+  return val;
 }
 
 map<string, string> Item::get_additional_properties() const

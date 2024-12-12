@@ -1266,7 +1266,7 @@ bool SDLDisplay::deserialize(std::istream& stream)
     size_t palette_size = 0;
     Serialize::read_size_t(stream, palette_size);
 
-    vector<SDL_Colour> colours;
+    vector<SDL_Colour> clrs;
     for (size_t j = 0; j < palette_size; j++)
     {
       uint r = 0;
@@ -1280,10 +1280,10 @@ bool SDLDisplay::deserialize(std::istream& stream)
       Serialize::read_uint(stream, a);
 
       SDL_Colour c = {static_cast<Uint8>(r), static_cast<Uint8>(g), static_cast<Uint8>(b), static_cast<Uint8>(a)};
-      colours.push_back(c);
+      clrs.push_back(c);
     }
 
-    palettes.insert(make_pair(palette_id, make_pair(palette_name_sid, colours)));
+    palettes.insert(make_pair(palette_id, make_pair(palette_name_sid, clrs)));
   }
 
   // After reading palettes, update the palette based on the currently selected
@@ -1304,7 +1304,7 @@ Display* SDLDisplay::clone()
   return new SDLDisplay(*this);
 }
 
-bool SDLDisplay::load_spritesheet_from_file(const string& path, SDL_Renderer* renderer)
+bool SDLDisplay::load_spritesheet_from_file(const string& path, SDL_Renderer* rend)
 {
   auto ss_it = spritesheets.find("");
 
@@ -1315,18 +1315,18 @@ bool SDLDisplay::load_spritesheet_from_file(const string& path, SDL_Renderer* re
     spritesheets.erase(ss_it);
   }
 
-  if (renderer == nullptr)
+  if (rend == nullptr)
   {
     return false;
   }
 
-  SDL_Texture* new_texture = load_texture(path, renderer);
+  SDL_Texture* new_texture = load_texture(path, rend);
 
   spritesheets[""] = new_texture;
   return new_texture != nullptr;
 }
 
-SDL_Texture* SDLDisplay::load_texture(const string& path, SDL_Renderer* renderer)
+SDL_Texture* SDLDisplay::load_texture(const string& path, SDL_Renderer* rend)
 {
   ostringstream ss;
   SDL_Texture* new_texture = NULL;
@@ -1344,7 +1344,7 @@ SDL_Texture* SDLDisplay::load_texture(const string& path, SDL_Renderer* renderer
     SDL_SetColorKey(surface, SDL_TRUE, SDL_MapRGB(surface->format, 0, 0xFF, 0xFF));
 
     //Create texture from surface pixels
-    new_texture = SDL_CreateTextureFromSurface(renderer, surface);
+    new_texture = SDL_CreateTextureFromSurface(rend, surface);
 
     if (new_texture == NULL)
     {

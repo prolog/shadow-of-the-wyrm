@@ -69,7 +69,7 @@ bool SummonTrapsEffect::summon(CreaturePtr creature, MapPtr map, const int num_t
   return effect_id;
 }
 
-bool SummonTrapsEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool SummonTrapsEffect::effect_blessed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr affected_tile)
 {
   bool id = false;
 
@@ -82,7 +82,7 @@ bool SummonTrapsEffect::effect_blessed(CreaturePtr creature, ActionManager * con
   return id;
 }
 
-bool SummonTrapsEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool SummonTrapsEffect::effect_uncursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr affected_tile)
 {
   bool id = false;
 
@@ -95,7 +95,7 @@ bool SummonTrapsEffect::effect_uncursed(CreaturePtr creature, ActionManager * co
   return id;
 }
 
-bool SummonTrapsEffect::effect_cursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool SummonTrapsEffect::effect_cursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr affected_tile)
 {
   bool id = false;
 

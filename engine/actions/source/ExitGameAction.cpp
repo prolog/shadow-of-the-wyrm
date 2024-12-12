@@ -123,7 +123,6 @@ void ExitGameAction::create_dump_if_necessary(IMessageManager& manager, ActionMa
 
   for (const auto cdt : dump_types)
   {
-    Game& game = Game::instance();
     MapPtr current_map = game.get_current_map();
     pair<Coordinate, TilePtr> creature_loc = current_map->get_location_and_tile(creature->get_id());
 

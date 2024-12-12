@@ -86,7 +86,6 @@ TEST(SW_Display_SDLCursorLocation, decr)
 {
   SDLCursorLocation curs(5, 5);
 
-  int max_y = 5;
   int max_x = 5;
 
   int y = 4;

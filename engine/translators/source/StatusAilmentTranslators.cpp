@@ -155,12 +155,12 @@ bool StatusAilmentTranslator::has_ailment(const CreaturePtr& creature) const
   return ailment;
 }
 
-string StatusAilmentTranslator::get_status_ailment_text(const CreaturePtr& creature) const
+string StatusAilmentTranslator::get_status_ailment_text(const CreaturePtr& /*creature*/) const
 {
   return StringTable::get(text_sid);
 }
 
-Colour StatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& creature) const
+Colour StatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& /*creature*/) const
 {
   return colour;
 }

@@ -49,19 +49,19 @@ bool RageEffect::rage(CreaturePtr creature)
   return effect_applied;
 }
 
-bool RageEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool RageEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr affected_tile)
 {
   return rage(creature);
 }
 
-bool RageEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool RageEffect::effect_uncursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr affected_tile)
 {
   return rage(creature);
 }
 
 // When cursed, the rage effect doesn't take hold properly - add a message
 // about being angry, but that's it.
-bool RageEffect::effect_cursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool RageEffect::effect_cursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr affected_tile)
 {
   IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ANGRY));

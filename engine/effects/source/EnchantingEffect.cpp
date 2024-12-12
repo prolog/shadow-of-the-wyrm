@@ -32,17 +32,17 @@ Effect* EnchantingEffect::clone()
   return new EnchantingEffect(*this);
 }
 
-bool EnchantingEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool EnchantingEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return enchant(creature, am, ItemStatus::ITEM_STATUS_BLESSED);
 }
 
-bool EnchantingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool EnchantingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return enchant(creature, am, ItemStatus::ITEM_STATUS_UNCURSED);
 }
 
-bool EnchantingEffect::effect_cursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool EnchantingEffect::effect_cursed(CreaturePtr creature, ActionManager * const am, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return enchant(creature, am, ItemStatus::ITEM_STATUS_CURSED);
 }

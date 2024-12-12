@@ -527,11 +527,11 @@ bool Entrance::open()
 {
   bool result = false;
 
-  EntranceState& state = get_state_ref();
+  EntranceState& st = get_state_ref();
 
-  if (state.get_state() == EntranceStateType::ENTRANCE_TYPE_CLOSED)
+  if (st.get_state() == EntranceStateType::ENTRANCE_TYPE_CLOSED)
   {
-    state.set_state(EntranceStateType::ENTRANCE_TYPE_OPEN);
+    st.set_state(EntranceStateType::ENTRANCE_TYPE_OPEN);
     result = true;
   }
 
@@ -542,11 +542,11 @@ bool Entrance::close()
 {
   bool result = false;
 
-  EntranceState& state = get_state_ref();
+  EntranceState& st = get_state_ref();
 
-  if (state.get_state() == EntranceStateType::ENTRANCE_TYPE_OPEN)
+  if (st.get_state() == EntranceStateType::ENTRANCE_TYPE_OPEN)
   {
-    state.set_state(EntranceStateType::ENTRANCE_TYPE_CLOSED);
+    st.set_state(EntranceStateType::ENTRANCE_TYPE_CLOSED);
     result = true;
   }
 
@@ -560,16 +560,16 @@ string Entrance::get_handle_message_sid() const
 
   switch (entrance_state)
   {
-  case EntranceStateType::ENTRANCE_TYPE_DESTROYED:
-    handle_message_sid = ActionTextKeys::ACTION_DOOR_DESTROYED;
-    break;
-  case EntranceStateType::ENTRANCE_TYPE_OPEN:
-    handle_message_sid = get_open_message_sid();
-    break;
-  case EntranceStateType::ENTRANCE_TYPE_CLOSED:
-  default:
-    handle_message_sid = get_close_message_sid();
-    break;
+    case EntranceStateType::ENTRANCE_TYPE_DESTROYED:
+      handle_message_sid = ActionTextKeys::ACTION_DOOR_DESTROYED;
+      break;
+    case EntranceStateType::ENTRANCE_TYPE_OPEN:
+      handle_message_sid = get_open_message_sid();
+      break;
+    case EntranceStateType::ENTRANCE_TYPE_CLOSED:
+    default:
+      handle_message_sid = get_close_message_sid();
+      break;
   }
 
   return handle_message_sid;
@@ -855,14 +855,14 @@ string PetrifiedCorpseStatue::get_corpse_description_sid() const
 pair<string, vector<string>> PetrifiedCorpseStatue::get_description_and_replacement_sids() const
 {
   vector<string> replacement_sids;
-  string description_sid = get_description_sid();
+  string desc_sid = get_description_sid();
 
   if (!corpse_description_sid.empty())
   {
     replacement_sids.push_back(corpse_description_sid);
   }
 
-  return make_pair(description_sid, replacement_sids);
+  return make_pair(desc_sid, replacement_sids);
 }
 
 Feature* PetrifiedCorpseStatue::clone()
@@ -1205,21 +1205,21 @@ Trap* Trap::clone_and_randomize_uses()
   if (trap)
   {
     // Jiggle the number of uses.
-    int uses = trap->get_uses();
+    int num_uses = trap->get_uses();
 
-    if (uses > 1)
+    if (num_uses > 1)
     {
       // 20% chance of +1 use.  5% chance of -1.
       if (RNG::percent_chance(20))
       {
-        uses++;
+        num_uses++;
       }
       else if (RNG::percent_chance(5))
       {
-        uses--;
+        num_uses--;
       }
 
-      trap->set_uses(uses);
+      trap->set_uses(num_uses);
     }
   }
 

@@ -19,24 +19,24 @@ bool AutomaticMovementDecisionStrategy::operator==(const AutomaticMovementDecisi
 }
 
 // Translate the automatic movement details into an actual command ptr.
-CommandPtr AutomaticMovementDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, std::shared_ptr<Map> view_map, int* key_p)
+CommandPtr AutomaticMovementDecisionStrategy::get_decision(const bool /*reprompt_on_cmd_not_found*/, const std::string& /*this_creature_id*/, CommandFactory* /*command_factory*/, KeyboardCommandMap* /*keyboard_commands*/, std::shared_ptr<Map> view_map, int* /*key_p*/)
 {
   CommandPtr movement_decision = std::make_unique<AutomaticMovementCommand>(-1);
   return movement_decision;
 }
 
-CommandPtr AutomaticMovementDecisionStrategy::get_nonmap_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, int* key_p, const bool refresh_window)
+CommandPtr AutomaticMovementDecisionStrategy::get_nonmap_decision(const bool /*reprompt_on_cmd_not_found*/, const std::string& /*this_creature_id*/, CommandFactory* /*command_factory*/, KeyboardCommandMap* /*keyboard_commands*/, int* /*key_p*/, const bool /*refresh_window*/)
 {
   CommandPtr movement_decision = std::make_unique<AutomaticMovementCommand>(-1);
   return movement_decision;
 }
 
-uint AutomaticMovementDecisionStrategy::get_count(const uint max_count)
+uint AutomaticMovementDecisionStrategy::get_count(const uint /*max_count*/)
 {
   return 0;
 }
 
-bool AutomaticMovementDecisionStrategy::get_confirmation(const bool confirmation_default_value, const bool require_proper_selection)
+bool AutomaticMovementDecisionStrategy::get_confirmation(const bool /*confirmation_default_value*/, const bool /*require_proper_selection*/)
 {
   return true;
 }

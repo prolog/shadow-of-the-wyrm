@@ -14,7 +14,7 @@ AgeTimeObserver::AgeTimeObserver()
 {
 }
 
-void AgeTimeObserver::notify(const ulonglong minutes_passed)
+void AgeTimeObserver::notify(const ulonglong /*minutes_passed*/)
 {
   Game& game = Game::instance();
   MapRegistry& mr = game.get_map_registry_ref();

@@ -102,7 +102,7 @@ bool NPCDecisionStrategy::get_move_to_dangerous_tile(MapPtr map, CreaturePtr cre
   return do_move;
 }
 
-bool NPCDecisionStrategy::get_confirmation(const bool confirmation_default_value, const bool require_proper_selection)
+bool NPCDecisionStrategy::get_confirmation(const bool /*confirmation_default_value*/, const bool /*require_proper_selection*/)
 {
   return true;
 }
@@ -130,11 +130,11 @@ void NPCDecisionStrategy::set_fov_map(MapPtr new_fov_map)
   update_threats_if_shopkeeper(current_fov_map);
 }
 
-void NPCDecisionStrategy::update_threats_if_shopkeeper(MapPtr current_fov_map)
+void NPCDecisionStrategy::update_threats_if_shopkeeper(MapPtr fov_map)
 {
-  if (current_fov_map != nullptr && String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_SHOPKEEPER)))
+  if (fov_map != nullptr && String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_SHOPKEEPER)))
   {
-    CreatureMap potential_thieves = current_fov_map->get_creatures();
+    CreatureMap potential_thieves = fov_map->get_creatures();
 
     for (const auto& pt_pair : potential_thieves)
     {
@@ -162,13 +162,13 @@ void NPCDecisionStrategy::update_threats_if_shopkeeper(MapPtr current_fov_map)
 
 // The basic decision structure for NPCs.  The individual get_decision_for functions are pure virtual within this class,
 // and implemented by concrete decision strategies.
-CommandPtr NPCDecisionStrategy::get_nonmap_decision(const bool reprompt_on_cmd_not_found, const string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, int* key_p, const bool refresh_window)
+CommandPtr NPCDecisionStrategy::get_nonmap_decision(const bool reprompt_on_cmd_not_found, const string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, int* key_p, const bool /*refresh_window*/)
 {
   MapPtr nullmap;
   return get_decision(reprompt_on_cmd_not_found, this_creature_id, command_factory, keyboard_commands, nullmap, key_p);
 }
 
-CommandPtr NPCDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_found, const string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, MapPtr view_map, int* key_p)
+CommandPtr NPCDecisionStrategy::get_decision(const bool /*reprompt_on_cmd_not_found*/, const string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, MapPtr view_map, int* /*key_p*/)
 {
   CommandPtr command;
   
@@ -195,7 +195,7 @@ CommandPtr NPCDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_foun
   return command;
 }
 
-CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, MapPtr view_map)
+CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_creature_id, CommandFactory* /*command_factory*/, KeyboardCommandMap* /*keyboard_commands*/, MapPtr view_map)
 {
   CommandPtr command;
   
@@ -877,7 +877,6 @@ CommandPtr NPCDecisionStrategy::get_flee_decision(const string& this_creature_id
         vector<Direction> move_dirs = DirectionUtils::get_in_map_movement_directions();
         std::shuffle(move_dirs.begin(), move_dirs.end(), RNG::get_engine()); 
 
-        const auto& c_locs = view_map->get_locations_with_creatures();
         int lowest_tscore = MapUtils::get_threat_distance_score_for_direction(creature, Direction::DIRECTION_NULL, map, view_map);
         Direction proposed_direction = Direction::DIRECTION_NULL;
 

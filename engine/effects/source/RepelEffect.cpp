@@ -89,17 +89,17 @@ bool RepelEffect::repel(CreaturePtr creature, const Coordinate& affected_coordin
   return effect;
 }
 
-bool RepelEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool RepelEffect::effect_blessed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& affected_coordinate, TilePtr /*affected_tile*/)
 {
   return repel(creature, affected_coordinate, DISTANCE_BLESSED);
 }
 
-bool RepelEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool RepelEffect::effect_uncursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& affected_coordinate, TilePtr /*affected_tile*/)
 {
   return repel(creature, affected_coordinate, DISTANCE_UNCURSED);
 }
 
-bool RepelEffect::effect_cursed(CreaturePtr creature, ActionManager * am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool RepelEffect::effect_cursed(CreaturePtr creature, ActionManager * /*am*/, const Coordinate& affected_coordinate, TilePtr /*affected_tile*/)
 {
   return repel(creature, affected_coordinate, DISTANCE_CURSED);
 }

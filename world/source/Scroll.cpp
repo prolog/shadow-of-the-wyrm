@@ -21,11 +21,11 @@ bool Scroll::destroy_on_read() const
   return destroy;
 }
 
-void Scroll::do_enchant_item(const int points)
+void Scroll::do_enchant_item(const int /*points*/)
 {
 }
 
-void Scroll::increase_value(const int points)
+void Scroll::increase_value(const int /*points*/)
 {
 }
 

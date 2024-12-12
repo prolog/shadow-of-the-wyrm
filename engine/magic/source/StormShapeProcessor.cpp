@@ -16,7 +16,7 @@
 
 using namespace std;
 
-pair<vector<pair<Coordinate, TilePtr>>, Animation> StormShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
+pair<vector<pair<Coordinate, TilePtr>>, Animation> StormShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction /*d*/, const Spell& spell)
 {
   uint spell_range = spell.get_range();
   uint spell_radius = spell.get_shape().get_radius();

@@ -156,7 +156,7 @@ void Wearable::do_enchant_randart(const std::vector<std::string>& slayable_race_
   }
 }
 
-void Wearable::do_enchant_randart_non_resists(const std::vector<std::string>& slayable_race_ids)
+void Wearable::do_enchant_randart_non_resists(const std::vector<std::string>& /*slayable_race_ids*/)
 {
   if (RNG::percent_chance(RANDART_PCT_CHANCE_ADD_SPEED))
   {

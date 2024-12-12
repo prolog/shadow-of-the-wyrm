@@ -26,17 +26,17 @@ Effect* GlowEffect::clone()
   return new GlowEffect(*this);
 }
 
-bool GlowEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool GlowEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return glow(creature, am, true);
 }
 
-bool GlowEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool GlowEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return glow(creature, am, true);
 }
 
-bool GlowEffect::effect_cursed(CreaturePtr creature, ActionManager * am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool GlowEffect::effect_cursed(CreaturePtr creature, ActionManager * am, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return glow(creature, am, false);
 }

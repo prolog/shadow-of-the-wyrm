@@ -306,17 +306,17 @@ bool Tile::get_is_staircase() const
   return (val == TileType::TILE_TYPE_UP_STAIRCASE || val == TileType::TILE_TYPE_DOWN_STAIRCASE);
 }
 
-bool Tile::get_is_available_for_creature(CreaturePtr creature) const
+bool Tile::get_is_available_for_creature(CreaturePtr cr) const
 {
-  bool avail = !get_is_blocking_ignore_present_creature(creature);
+  bool avail = !get_is_blocking_ignore_present_creature(cr);
   
   // Does the tile have race restrictions?  If so, does the creature meet them?
   // Similarly for any creature ID restrictions?
   if (avail && 
       (((has_race_restrictions() && 
-       !is_race_allowed(creature->get_race_id()) && 
-        String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_IGNORE_RACIAL_MOVEMENT_RESTRICTIONS)) == false))
-    || (has_creature_id_restrictions() && !is_creature_id_allowed(creature->get_id()))))
+       !is_race_allowed(cr->get_race_id()) && 
+        String::to_bool(cr->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_IGNORE_RACIAL_MOVEMENT_RESTRICTIONS)) == false))
+    || (has_creature_id_restrictions() && !is_creature_id_allowed(cr->get_id()))))
   {
     avail = false;
   }
@@ -664,17 +664,17 @@ string Tile::get_no_exit_down_message_sid() const
   return MovementTextKeys::ACTION_MOVE_NO_EXIT_DOWN;
 }
 
-bool Tile::get_is_blocking_visually(CreaturePtr creature) const
+bool Tile::get_is_blocking_visually(CreaturePtr cr) const
 {
-  return get_is_blocking(creature);
+  return get_is_blocking(cr);
 }
 
-bool Tile::get_is_blocking_or_dangerous(CreaturePtr creature) const
+bool Tile::get_is_blocking_or_dangerous(CreaturePtr cr) const
 {
-  return get_dangerous(creature) || get_is_blocking(creature);
+  return get_dangerous(cr) || get_is_blocking(cr);
 }
 
-bool Tile::get_dangerous(CreaturePtr creature) const
+bool Tile::get_dangerous(CreaturePtr /*creature*/) const
 {
   return false;
 }
@@ -940,10 +940,10 @@ bool Tile::deserialize(istream& stream)
 
   if (feature_clid != ClassIdentifier::CLASS_ID_NULL)
   {
-    FeaturePtr feature = FeatureGenerator::create_feature(feature_clid);
-    if (!feature) return false;
-    if (!feature->deserialize(stream)) return false;
-    set_feature(feature);
+    FeaturePtr feat = FeatureGenerator::create_feature(feature_clid);
+    if (!feat) return false;
+    if (!feat->deserialize(stream)) return false;
+    set_feature(feat);
   }
 
   ClassIdentifier items_class_id;
