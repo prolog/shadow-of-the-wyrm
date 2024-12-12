@@ -26,7 +26,7 @@ std::unique_ptr<DeityDecisionStrategyHandler> AltarDropDeityDecisionStrategyHand
   return handler;
 }
 
-bool AltarDropDeityDecisionStrategyHandler::decide(CreaturePtr creature)
+bool AltarDropDeityDecisionStrategyHandler::decide(CreaturePtr cr)
 {
   // Decision is true if:
   // - Coaligned and creature is pious
@@ -35,7 +35,7 @@ bool AltarDropDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 
   if (altar != nullptr)
   {
-    AlignmentRange creature_range = creature->get_alignment().get_alignment_range();
+    AlignmentRange creature_range = cr->get_alignment().get_alignment_range();
     AlignmentRange altar_range = altar->get_alignment_range();
 
     if (creature_range == altar_range)
@@ -44,7 +44,7 @@ bool AltarDropDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 
       // If the deity doesn't dislike the creature, carry on with the
       // blessing of altar items.
-      if (ddsh.decide(creature) == false)
+      if (ddsh.decide(cr) == false)
       {
         decision = true;
       }
@@ -58,12 +58,12 @@ bool AltarDropDeityDecisionStrategyHandler::decide(CreaturePtr creature)
   return decision;
 }
 
-DeityDecisionImplications AltarDropDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature, TilePtr tile)
+DeityDecisionImplications AltarDropDeityDecisionStrategyHandler::handle_decision(CreaturePtr cr, TilePtr tile)
 {
   string decision_msg;
-  AlignmentRange creature_range = creature->get_alignment().get_alignment_range();
+  AlignmentRange creature_range = cr->get_alignment().get_alignment_range();
   AlignmentRange altar_range = altar->get_alignment_range();
-  bool cross_aligned = (creature && creature->is_godless()) || (creature_range != altar_range);
+  bool cross_aligned = (cr && cr->is_godless()) || (creature_range != altar_range);
 
   // Bless/curse the item as necessary
   if (drop_item)
@@ -87,7 +87,7 @@ DeityDecisionImplications AltarDropDeityDecisionStrategyHandler::handle_decision
   // Add a message?
   if (!decision_msg.empty())
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MM::instance(MessageTransmit::FOV, cr, cr && cr->get_is_player());
 
     // Are we at the wrong altar?
     if (cross_aligned)
@@ -99,7 +99,7 @@ DeityDecisionImplications AltarDropDeityDecisionStrategyHandler::handle_decision
     manager.send();
   }
 
-  return get_deity_decision_implications(creature, tile);
+  return get_deity_decision_implications(cr, tile);
 }
 
 // If the altar is the same alignment as the creature, and the creature is

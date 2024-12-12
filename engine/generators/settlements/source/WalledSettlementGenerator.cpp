@@ -223,8 +223,8 @@ void WalledSettlementGenerator::generate_guards(MapPtr map, const int nwall, con
       // Wall guards are always sentries.
       if (tile && tile->has_creature())
       {
-        CreaturePtr c = tile->get_creature();
-        c->get_decision_strategy()->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, to_string(true));
+        CreaturePtr cr = tile->get_creature();
+        cr->get_decision_strategy()->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, to_string(true));
       }
     }
   }

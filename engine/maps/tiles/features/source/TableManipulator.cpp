@@ -10,7 +10,7 @@ TableManipulator::TableManipulator(FeaturePtr feature)
 {
 }
 
-void TableManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr feature)
+void TableManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
 {
   if (creature && creature->get_is_player())
   {

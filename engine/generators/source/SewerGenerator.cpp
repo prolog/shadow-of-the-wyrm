@@ -156,7 +156,6 @@ void SewerGenerator::generate_basin(MapPtr map)
     Dimensions dim = map->size();
     int max_y = dim.get_y() - 2;
     int max_x = dim.get_x() - 2;
-    TileGenerator tg;
     TilePtr sewer;
 
     int b_height = RNG::range(5, 10);

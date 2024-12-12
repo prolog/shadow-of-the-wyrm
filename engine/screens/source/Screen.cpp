@@ -185,8 +185,8 @@ bool Screen::add_options_component(std::vector<ScreenComponentPtr>& current_menu
 // Return true if a new page was generated.
 bool Screen::add_component(vector<ScreenComponentPtr>& current_screen, ScreenComponentPtr component, int& cnt)
 {
-  int ignore = 0;
-  return add_component(current_screen, component, cnt, ignore);
+  int ignore_comp = 0;
+  return add_component(current_screen, component, cnt, ignore_comp);
 }
 
 bool Screen::add_component(vector<ScreenComponentPtr>& current_screen, ScreenComponentPtr component, int& cnt, int& current_option_id)
@@ -217,13 +217,13 @@ bool Screen::add_text(vector<ScreenComponentPtr>& text_screen, const vector<Text
   for (const TextDisplayPair& line_pair : text)
   {
     Colour colour = line_pair.first;
-    string text = line_pair.second;
-    size_t sym_count = count_substrings(text, TextFormatSpecifiers::SYMBOL);
+    string text_line = line_pair.second;
+    size_t sym_count = count_substrings(text_line, TextFormatSpecifiers::SYMBOL);
 
     if (preserve_formatting == false && sym_count == 0)
     {
-      trim_left(text);
-      trim_right(text);
+      trim_left(text_line);
+      trim_right(text_line);
     }
 
     vector<Symbol> tc_symbols;
@@ -237,7 +237,7 @@ bool Screen::add_text(vector<ScreenComponentPtr>& text_screen, const vector<Text
       }
     }
 
-    TextComponentPtr current_line = std::make_shared<TextComponent>(text, colour, tc_symbols);
+    TextComponentPtr current_line = std::make_shared<TextComponent>(text_line, colour, tc_symbols);
     cnt++;
 
     add_component(text_screen, current_line, cnt);

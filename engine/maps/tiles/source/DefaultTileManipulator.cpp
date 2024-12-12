@@ -204,16 +204,16 @@ void DefaultTileManipulator::add_detritus(CreaturePtr creature, MapPtr map, Tile
     IInventoryPtr items = tile->get_items();
     int chance_clay = PCT_CHANCE_CLAY;
 
-    for (TilePtr tile : tiles)
+    for (TilePtr adj_tile : tiles)
     {
-      if (tile != nullptr)
+      if (adj_tile != nullptr)
       {
-        if (tile->get_water_type() == WaterType::WATER_TYPE_FRESH)
+        if (adj_tile->get_water_type() == WaterType::WATER_TYPE_FRESH)
         {
           chance_clay = 100;
           break;
         }
-        if (tile->get_additional_property(TileProperties::TILE_PROPERTY_CLAY) == "1")
+        if (adj_tile->get_additional_property(TileProperties::TILE_PROPERTY_CLAY) == "1")
         {
           chance_clay = PCT_CHANCE_CLAY_NEARBY;
           break;

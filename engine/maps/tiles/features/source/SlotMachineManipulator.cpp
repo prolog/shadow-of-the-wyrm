@@ -32,7 +32,7 @@ void SlotMachineManipulator::initialize()
                 "SLOT_MACHINE_FACE5"};
 }
 
-void SlotMachineManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+void SlotMachineManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
 {
   if (creature && creature->get_is_player())
   {
@@ -54,7 +54,6 @@ bool SlotMachineManipulator::handle(TilePtr tile, CreaturePtr creature)
 
     if (slot != nullptr)
     {
-      MapPtr current_map = Game::instance().get_current_map();
       vector<string> sf = slot_faces;
       uint cost = static_cast<uint>(slot->get_cost());
       int pct_chance_win = slot->get_pct_chance_win();

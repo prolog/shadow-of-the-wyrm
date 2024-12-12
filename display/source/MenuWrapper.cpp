@@ -33,11 +33,11 @@ bool MenuWrapper::has_options() const
   return (!options.empty());
 }
 
-void MenuWrapper::add_options(OptionsComponentPtr options)
+void MenuWrapper::add_options(OptionsComponentPtr opts)
 {
-  if (options != nullptr)
+  if (opts != nullptr)
   {
-    auto op = options->get_options();
+    auto op = opts->get_options();
 
     for (auto& o : op)
     {
