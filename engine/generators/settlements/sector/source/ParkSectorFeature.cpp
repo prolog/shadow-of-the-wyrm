@@ -105,8 +105,8 @@ bool ParkSectorFeature::generate_feature(MapPtr map, const Coordinate& start_coo
       {
         for (int col = start_coord.second + (width / 2) - (pond_width / 2); col <= start_coord.second + (width / 2) + (pond_width / 2); col++)
         {
-          TilePtr tile = tg.generate(TileType::TILE_TYPE_SPRINGS);
-          map->insert({ row, col }, tile);
+          TilePtr spr_tile = tg.generate(TileType::TILE_TYPE_SPRINGS);
+          map->insert({ row, col }, spr_tile);
         }
       }
     }
@@ -121,12 +121,12 @@ bool ParkSectorFeature::generate_feature(MapPtr map, const Coordinate& start_coo
         int row = RNG::range(start_coord.first + 1, end_coord.first - 1);
         int col = RNG::range(start_coord.second + 1, end_coord.second - 1);
 
-        TilePtr tile = map->at(row, col);
+        TilePtr park_tile = map->at(row, col);
 
-        if (tile && tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_GROUND && !tile->has_feature())
+        if (park_tile && park_tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_GROUND && !park_tile->has_feature())
         {
           FeaturePtr bench = FeatureGenerator::generate_bench();
-          tile->set_feature(bench);
+          park_tile->set_feature(bench);
           num_placed++;
 
           if (num_placed == num_benches)
@@ -145,9 +145,9 @@ bool ParkSectorFeature::generate_feature(MapPtr map, const Coordinate& start_coo
       if (vendor != nullptr)
       {
         Coordinate vendor_coord = { start_coord.first + 1, start_coord.second + 1 };
-        TilePtr tile = map->at(vendor_coord);
+        TilePtr vtile = map->at(vendor_coord);
 
-        if (tile && vendor && MapUtils::is_tile_available_for_creature(vendor, tile))
+        if (vtile && vendor && MapUtils::is_tile_available_for_creature(vendor, vtile))
         {
           GameUtils::add_new_creature_to_map(Game::instance(), vendor, map, vendor_coord);
         }

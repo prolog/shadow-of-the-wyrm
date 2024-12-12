@@ -14,7 +14,7 @@ CathedralGenerator::CathedralGenerator(const string& new_deity_id, MapPtr new_ba
 {
 }
 
-MapPtr CathedralGenerator::generate(const Dimensions& dim)
+MapPtr CathedralGenerator::generate(const Dimensions& /*dim*/)
 {
   return generate();
 }
@@ -166,13 +166,13 @@ void CathedralGenerator::generate_doors(MapPtr map)
 }
 
 // Generate the back rooms: treasure room (potentially), crypt entrance (potentially), priest's quarters
-void CathedralGenerator::generate_back_rooms(MapPtr map, const int room_start_col, const int start_row, const int end_row, const int end_col)
+void CathedralGenerator::generate_back_rooms(MapPtr map, const int room_start_col, const int srow, const int end_row, const int end_col)
 {
   // Create the treasure room and stairs to the crypt, or the library.
-  int back_room_wall_row = generate_secondary_back_room(map, room_start_col, start_row, end_row, end_col);
+  int back_room_wall_row = generate_secondary_back_room(map, room_start_col, srow, end_row, end_col);
 
   // Generate the priest's quarters
-  generate_priest_quarters(map, room_start_col, start_row, end_row, end_col, back_room_wall_row); 
+  generate_priest_quarters(map, room_start_col, srow, end_row, end_col, back_room_wall_row); 
 }
 
 // Generate the priest's quarters in the back of the Cathedral
@@ -234,12 +234,12 @@ void CathedralGenerator::add_feature_to_middle_of_priest_quarters(MapPtr map, co
   }
 }
 
-int CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room_start_col, const int start_row, const int end_row, const int end_col)
+int CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room_start_col, const int srow, const int end_row, const int end_col)
 {
   TileGenerator tg;
   TilePtr current_tile;
   int door_col = 0;
-  int wall_row = start_row + church_height - static_cast<int>((church_height/2.5));
+  int wall_row = srow + church_height - static_cast<int>((church_height/2.5));
   for (int col = room_start_col; col < start_col + church_width; col++)
   {
     if (col == start_col + church_width-3)
@@ -270,7 +270,7 @@ int CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room_
     }
     
     // Generate the stairs down to the crypt
-    Coordinate c = { (wall_row + start_row + church_height) / 2, (room_start_col + start_col + church_width) / 2 };
+    Coordinate c = { (wall_row + srow + church_height) / 2, (room_start_col + start_col + church_width) / 2 };
     place_staircase(map, c.first, c.second, TileType::TILE_TYPE_DOWN_STAIRCASE, TileType::TILE_TYPE_CRYPT, Direction::DIRECTION_DOWN, false, false);
   }
   else

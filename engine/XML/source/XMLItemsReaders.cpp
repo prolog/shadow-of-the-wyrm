@@ -233,7 +233,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_amulets(const XMLNode& am
 
 pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_armour(const XMLNode& armours_node)
 {
-  pair<ItemMap, GenerationValuesMap> armour;
+  pair<ItemMap, GenerationValuesMap> armour_vals;
   ItemMap armour_map;
   GenerationValuesMap igv_map;
   
@@ -254,9 +254,9 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_armour(const XMLNode& arm
     }
   }
   
-  armour.first = armour_map;
-  armour.second = igv_map;
-  return armour;
+  armour_vals.first = armour_map;
+  armour_vals.second = igv_map;
+  return armour_vals;
 }
 
 pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_rings(const XMLNode& rings_node)
@@ -364,7 +364,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ammunition(const XMLNode&
 
 pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_food(const XMLNode& food_node)
 {
-  pair<ItemMap, GenerationValuesMap> food;
+  pair<ItemMap, GenerationValuesMap> food_vals;
   ItemMap food_map;
   GenerationValuesMap igv_map;
   
@@ -382,9 +382,9 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_food(const XMLNode& food_
     }
   }
   
-  food.first = food_map;
-  food.second = igv_map;
-  return food;
+  food_vals.first = food_map;
+  food_vals.second = igv_map;
+  return food_vals;
 }
 
 pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_plants(const XMLNode& plants_node)

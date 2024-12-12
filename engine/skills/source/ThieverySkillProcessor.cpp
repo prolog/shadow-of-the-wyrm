@@ -292,7 +292,7 @@ ItemPtr ThieverySkillProcessor::create_stolen_item(CreaturePtr steal_creature)
   return stolen_item;
 }
 
-void ThieverySkillProcessor::transfer_stolen_item(CreaturePtr stealing_creature, ItemPtr stolen_item, MapPtr map, IMessageManager& pl_manager, IMessageManager& general_manager)
+void ThieverySkillProcessor::transfer_stolen_item(CreaturePtr stealing_creature, ItemPtr stolen_item, MapPtr map, IMessageManager& pl_manager, IMessageManager& /*general_manager*/)
 {
   if (stealing_creature != nullptr && stolen_item != nullptr && map != nullptr)
   {

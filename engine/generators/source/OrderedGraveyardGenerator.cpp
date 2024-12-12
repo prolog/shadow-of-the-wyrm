@@ -25,7 +25,6 @@ void OrderedGraveyardGenerator::add_graves(MapPtr map)
 
 void OrderedGraveyardGenerator::add_graves(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
 {
-  TileGenerator tg;
   TilePtr grave;
 
   for (int row = start_row; row <= end_row; row++)

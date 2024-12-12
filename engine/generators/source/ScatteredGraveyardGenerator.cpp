@@ -9,8 +9,6 @@ ScatteredGraveyardGenerator::ScatteredGraveyardGenerator(const std::string& new_
 
 void ScatteredGraveyardGenerator::add_graves(MapPtr map)
 {
-  TileGenerator tg;
-
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
