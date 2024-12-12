@@ -501,11 +501,11 @@ string NPCBackgroundGenerator::generate_bestiary_text(const vector<string>& frag
 		{
 			string fr = f;
 			fr = boost::trim_copy(fr);
-			fr[0] = std::tolower(fr[0]);
+			fr[0] = static_cast<char>(std::tolower(fr[0]));
 
 			if (full_stop)
 			{
-				fr[0] = std::toupper(fr[0]);
+				fr[0] = static_cast<char>(std::toupper(fr[0]));
 			}
 
 			ss << fr;

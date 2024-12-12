@@ -26,19 +26,19 @@ Effect* UncursingEffect::clone()
   return new UncursingEffect(*this);
 }
 
-bool UncursingEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool UncursingEffect::effect_blessed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return uncurse(creature, UncursingEffectType::UNCURSING_EFFECT_UNCURSE, UncursingEffectType::UNCURSING_EFFECT_UNCURSE);
 }
 
-bool UncursingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool UncursingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return uncurse(creature, UncursingEffectType::UNCURSING_EFFECT_UNCURSE, UncursingEffectType::UNCURSING_EFFECT_NO_EFFECT);
 }
 
 // The cursed uncursing effect (yes, I know that's awkward) curses the
 // player's equipment.
-bool UncursingEffect::effect_cursed(CreaturePtr creature, ActionManager * am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool UncursingEffect::effect_cursed(CreaturePtr creature, ActionManager * /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return uncurse(creature, UncursingEffectType::UNCURSING_EFFECT_CURSE, UncursingEffectType::UNCURSING_EFFECT_NO_EFFECT);
 }

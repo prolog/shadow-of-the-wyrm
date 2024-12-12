@@ -10,7 +10,7 @@ ShrineGenerator::ShrineGenerator(MapPtr new_base_map)
 {
 }
 
-MapPtr ShrineGenerator::generate(const Dimensions& d)
+MapPtr ShrineGenerator::generate(const Dimensions& /*d*/)
 {
   return generate();
 }

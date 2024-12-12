@@ -34,7 +34,7 @@ bool WaterBreathingEffect::effect_blessed(CreaturePtr creature, ActionManager * 
 
 // When uncursed, cure any slowness, or if there is no slowness, add
 // the WaterBreathing status effect.
-bool WaterBreathingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool WaterBreathingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   if (creature == nullptr || creature->has_status(StatusIdentifiers::STATUS_ID_WATER_BREATHING))
   {

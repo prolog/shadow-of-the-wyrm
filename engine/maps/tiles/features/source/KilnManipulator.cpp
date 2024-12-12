@@ -21,7 +21,7 @@ KilnManipulator::KilnManipulator(FeaturePtr feature)
 {
 }
 
-void KilnManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+void KilnManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr feature)
 {
   if (creature && creature->get_is_player())
   {

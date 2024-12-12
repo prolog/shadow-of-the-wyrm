@@ -53,7 +53,7 @@ MapType WellGenerator::get_map_type() const
   return MapType::MAP_TYPE_UNDERWORLD;
 }
 
-void WellGenerator::create_open_section(MapPtr result_map, const Coordinate& up_c, const Coordinate& open_start, const Coordinate& open_end)
+void WellGenerator::create_open_section(MapPtr result_map, const Coordinate& /*up_c*/, const Coordinate& open_start, const Coordinate& open_end)
 {
   GeneratorUtils::fill(result_map, open_start, open_end, TileType::TILE_TYPE_DUNGEON);
 

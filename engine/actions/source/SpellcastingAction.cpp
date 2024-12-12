@@ -134,7 +134,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
       spell = s_it->second;
 
       MagicalAbilityChecker mac;
-      if (!GameUtils::is_magic_category_possible(spell.get_magic_category(), game))
+      if (!GameUtils::is_magic_category_possible(spell.get_magic_category()))
       {
         add_no_deities_message(creature);
       }
@@ -476,7 +476,7 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
 
     if (magic_command && magic_command->get_name() == MagicCommandKeys::ARCANA)
     {
-      screen_selection = std::tolower(screen_selection);
+      screen_selection = static_cast<char>(std::tolower(screen_selection));
       string arcana_id = sss.get_selected_spell(screen_selection);
       magic_command->set_custom_value(ArcanaCommand::ARCANA_ID, arcana_id);
     }

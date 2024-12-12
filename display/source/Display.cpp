@@ -196,7 +196,7 @@ void Display::draw_update_map(const DisplayMap& update_map, const CursorSettings
 
   for (DisplayMapType::value_type& tile : tiles)
   {
-    Coordinate map_coords = MapUtils::convert_map_key_to_coordinate(tile.first);
+    map_coords = MapUtils::convert_map_key_to_coordinate(tile.first);
     DisplayTile dtile = tile.second;
 
     terminal_row = DisplayConstants::MAP_START_ROW + map_coords.first;

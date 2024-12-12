@@ -77,7 +77,6 @@ TEST(SW_Engine_Creatures_NPCSkillDistributor, get_skills_to_improve_combat)
   NPCSkillDistributor nsd;
   vector<SkillType> to_improve;
   CreaturePtr creature = std::make_shared<Creature>();
-  Skills& skills = creature->get_skills();
   WeaponPtr ammo = std::make_shared<Ammunition>();
   WeaponPtr weapon = std::make_shared<MeleeWeapon>();
     

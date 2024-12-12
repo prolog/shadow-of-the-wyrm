@@ -10,11 +10,11 @@ NullSound::~NullSound()
 {
 }
 
-void NullSound::set_effects(const map<pair<string, string>, string>& new_effects)
+void NullSound::set_effects(const map<pair<string, string>, string>& /*new_effects*/)
 {
 }
 
-void NullSound::set_music(const Music& new_music)
+void NullSound::set_music(const Music& /*new_music*/)
 {
 }
 
@@ -24,31 +24,31 @@ Music NullSound::get_music() const
 	return m;
 }
 
-void NullSound::set_disabled_sound_ids(const string& new_disabled_ids_csv)
+void NullSound::set_disabled_sound_ids(const string& /*new_disabled_ids_csv*/)
 {
 }
 
-void NullSound::toggle_music(const bool new_val)
+void NullSound::toggle_music(const bool /*new_val*/)
 {
 }
 
-void NullSound::play(const string& id)
+void NullSound::play(const string& /*id*/)
 {
 }
 
-void NullSound::play_music_for_event(const string& event, const bool loop)
+void NullSound::play_music_for_event(const string& /*event*/, const bool /*loop*/)
 {
 }
 
-void NullSound::play_music(MapPtr map, const bool loop)
+void NullSound::play_music(MapPtr /*map*/, const bool /*loop*/)
 {
 }
 
-void NullSound::play_music_location(const string& location, const bool loop)
+void NullSound::play_music_location(const string& /*location*/, const bool /*loop*/)
 {
 }
 
-void NullSound::stop_music(const bool fade)
+void NullSound::stop_music(const bool /*fade*/)
 {
 }
 
