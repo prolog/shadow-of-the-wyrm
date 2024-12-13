@@ -19,7 +19,7 @@ bool AutomaticMovementDecisionStrategy::operator==(const AutomaticMovementDecisi
 }
 
 // Translate the automatic movement details into an actual command ptr.
-CommandPtr AutomaticMovementDecisionStrategy::get_decision(const bool /*reprompt_on_cmd_not_found*/, const std::string& /*this_creature_id*/, CommandFactory* /*command_factory*/, KeyboardCommandMap* /*keyboard_commands*/, std::shared_ptr<Map> view_map, int* /*key_p*/)
+CommandPtr AutomaticMovementDecisionStrategy::get_decision(const bool /*reprompt_on_cmd_not_found*/, const std::string& /*this_creature_id*/, CommandFactory* /*command_factory*/, KeyboardCommandMap* /*keyboard_commands*/, std::shared_ptr<Map> /*view_map*/, int* /*key_p*/)
 {
   CommandPtr movement_decision = std::make_unique<AutomaticMovementCommand>(-1);
   return movement_decision;

@@ -807,7 +807,7 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
   return movement_command;
 }
 
-CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature_id, MapPtr view_map)
+CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature_id, MapPtr /*view_map*/)
 {
   CommandPtr pu_cmd;
   Game& game = Game::instance();
@@ -835,7 +835,7 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
   return pu_cmd;
 }
 
-CommandPtr NPCDecisionStrategy::get_drop_decision(const string& this_creature_id, MapPtr view_map)
+CommandPtr NPCDecisionStrategy::get_drop_decision(const string& this_creature_id, MapPtr /*view_map*/)
 {
   CommandPtr drop_cmd;
   Game& game = Game::instance();
@@ -929,7 +929,7 @@ CommandPtr NPCDecisionStrategy::get_flee_decision(const string& this_creature_id
   return flee_command;
 }
 
-CommandPtr NPCDecisionStrategy::get_use_item_decision(const string& this_creature_id, MapPtr view_map)
+CommandPtr NPCDecisionStrategy::get_use_item_decision(const string& this_creature_id, MapPtr /*view_map*/)
 {
   CommandPtr use_cmd;
   Game& game = Game::instance();

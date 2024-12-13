@@ -8,7 +8,7 @@
 #include "Wand.hpp"
 #include "WeaponManager.hpp"
 
-CommandPtr NPCUseEquipItemDecisionStrategy::decide(CreaturePtr creature, MapPtr map)
+CommandPtr NPCUseEquipItemDecisionStrategy::decide(CreaturePtr creature, MapPtr /*map*/)
 {
   CommandPtr use_cmd;
 
