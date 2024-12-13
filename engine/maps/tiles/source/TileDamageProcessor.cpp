@@ -87,6 +87,6 @@ bool TileDamageProcessor::destroy_item() const
   return true;
 }
 
-void TileDamageProcessor::process_item(ItemPtr item)
+void TileDamageProcessor::process_item(ItemPtr /*item*/)
 {
 }
