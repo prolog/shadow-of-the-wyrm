@@ -43,7 +43,7 @@ string SDLPromptProcessor::get_prompt(const SDLDisplayParameters& display_params
     {
       SDLKeyboardController kc;
       int prompt_ival = kc.get_char_as_int();
-      prompt_entry = prompt_ival;
+      prompt_entry = static_cast<char>(prompt_ival);
 
       string k_map = get_mapping(prompt_ival);
 
@@ -59,7 +59,7 @@ string SDLPromptProcessor::get_prompt(const SDLDisplayParameters& display_params
         // Is the option itself there?
         && !menu_wrapper.is_option_in_set(prompt_entry.at(0)))
       {
-        prompt_entry = kc.get_char_as_int();
+        prompt_entry = static_cast<char>(kc.get_char_as_int());
       }
     }
   }

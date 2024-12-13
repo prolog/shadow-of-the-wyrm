@@ -62,7 +62,7 @@ void InventoryKeyboardCommandMap::initialize_command_mapping(const Settings& /*s
   for (char i = 'a'; i <= 'y'; i++)
   {
     command_mapping.insert(make_pair(string(1, i), InventoryCommandKeys::SELECT_ITEM));
-    command_mapping.insert(make_pair(string(1, toupper(i)), InventoryCommandKeys::CODEX));
+    command_mapping.insert(make_pair(string(1, static_cast<char>(toupper(i))), InventoryCommandKeys::CODEX));
   }
 }
 

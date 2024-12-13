@@ -16,6 +16,7 @@
 #include "DeathDumper.hpp"
 #include "Environment.hpp"
 #include "EquipmentDumper.hpp"
+#include "FormattingConstants.hpp"
 #include "Game.hpp"
 #include "InventoryDumper.hpp"
 #include "MembershipsDumper.hpp"
@@ -155,10 +156,12 @@ string CharacterDumper::str() const
 
   if (!game_started.empty())
   {
+    struct std::tm t;
     std::time_t cur_time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    localtime_s(&t, &cur_time);
 
-    ss << StringTable::get(TextKeys::GAME_STARTED) << ": " << game_started;
-    ss << StringTable::get(TextKeys::CURRENT_DATE) << ": " << std::ctime(&cur_time) << endl;
+    ss << StringTable::get(TextKeys::GAME_STARTED) << ": " << game_started << std::endl;
+    ss << StringTable::get(TextKeys::CURRENT_DATE) << ": " << std::put_time(&t, FormattingConstants::DATETIME_DEFAULT_FORMAT.c_str()) << endl;
   }
 
   ss << StringTable::get(TextKeys::TURNS) << ": " << creature->get_turns() << endl << endl;

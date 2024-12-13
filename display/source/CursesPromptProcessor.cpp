@@ -28,7 +28,7 @@ string CursesPromptProcessor::get_prompt(WINDOW* window, const MenuWrapper& menu
     }
     else
     {
-      prompt_entry = wgetch(window);
+      prompt_entry = static_cast<char>(wgetch(window));
 
       // Reprompt for new input if the input must be in the menu's option range,
       // and if the given input does not meet that criterion.
@@ -37,7 +37,7 @@ string CursesPromptProcessor::get_prompt(WINDOW* window, const MenuWrapper& menu
            // Is the option itself there?
            && !menu_wrapper.is_option_in_set(prompt_entry.at(0)))
       {
-        prompt_entry = wgetch(window);
+        prompt_entry = static_cast<char>(wgetch(window));
       }
     }
   }
@@ -54,7 +54,7 @@ string CursesPromptProcessor::get_user_string(WINDOW* window, bool allow_nonalph
         
   try
   {
-    for (c = wgetch(window); (c != '\n') && (c != '\r') && (c != NC_ESCAPE_KEY); c = wgetch(window))
+    for (c = static_cast<char>(wgetch(window)); (c != '\n') && (c != '\r') && (c != NC_ESCAPE_KEY); c = static_cast<char>(wgetch(window)))
     {
       getyx(window, y, x);
 

@@ -53,7 +53,6 @@ ActionCostValue ReadAction::read(CreaturePtr creature, const string& item_id)
 
   if (creature != nullptr)
   {
-    Game& game = Game::instance();
     ItemPtr item = creature->get_inventory()->get_from_id(item_id);
     ReadablePtr readable = std::dynamic_pointer_cast<Readable>(item);
     acv = read(creature, readable);
