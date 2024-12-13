@@ -1,3 +1,4 @@
+#pragma warning(disable : 4996)
 #include <chrono>
 #include <ctime>
 #include <future>
@@ -25,7 +26,6 @@
 #include "ExitGameAction.hpp"
 #include "FeatureGenerator.hpp"
 #include "FileConstants.hpp"
-#include "FormattingConstants.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HighScoreScreen.hpp"
@@ -511,15 +511,8 @@ void Game::create_new_world(CreaturePtr creature, const StartingLocation& sl)
 
     creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_CHARACTER_STARTED, ss.str());
     
-    {
-      struct std::tm t;
-      std::time_t start_time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-      localtime_s(&t, &start_time);
-
-      ostringstream ss_time;
-      ss_time << std::put_time(&t, FormattingConstants::DATETIME_DEFAULT_FORMAT.c_str());
-      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_GAME_STARTED, ss_time.str());
-    }
+    std::time_t start_time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_GAME_STARTED, std::ctime(&start_time));
 
     // Set the starting location.
     if (creature->get_is_player())

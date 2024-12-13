@@ -886,7 +886,6 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\include\DeityUtils.hpp" />
     <ClInclude Include="engine\include\Environment.hpp" />
     <ClInclude Include="engine\include\FileWriter.hpp" />
-    <ClInclude Include="engine\include\FormattingConstants.hpp" />
     <ClInclude Include="engine\include\Game.hpp" />
     <ClInclude Include="engine\include\GameUtils.hpp" />
     <ClInclude Include="engine\include\HighScoreConstants.hpp" />
@@ -2312,7 +2311,6 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\skills\source\WandCreationParameters.cpp" />
     <ClCompile Include="engine\source\CharacterCreationDetails.cpp" />
     <ClCompile Include="engine\source\DeityUtils.cpp" />
-    <ClCompile Include="engine\source\FormattingConstants.cpp" />
     <ClCompile Include="engine\source\LogFiles.cpp" />
     <ClCompile Include="engine\source\Setting.cpp" />
     <ClCompile Include="engine\source\ShadowOfTheWyrmEngine.cpp" />
