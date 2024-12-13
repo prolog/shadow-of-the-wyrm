@@ -26,7 +26,7 @@ TrapManipulator::TrapManipulator(FeaturePtr feature)
 {
 }
 
-void TrapManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/)
+void TrapManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/)
 {
   if (creature && creature->get_is_player())
   {
@@ -80,7 +80,7 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
   return handled;
 }
 
-bool TrapManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+bool TrapManipulator::drop(CreaturePtr /*dropping_creature*/, TilePtr /*tile*/, ItemPtr /*item*/)
 {
   return false;
 }

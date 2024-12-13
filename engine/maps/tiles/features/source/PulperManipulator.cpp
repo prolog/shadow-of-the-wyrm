@@ -13,7 +13,7 @@ PulperManipulator::PulperManipulator(FeaturePtr feature)
 }
 
 
-void PulperManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
+void PulperManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
 {
   if (creature && creature->get_is_player())
   {
@@ -62,7 +62,7 @@ bool PulperManipulator::handle(TilePtr tile, CreaturePtr creature)
   return handled;
 }
 
-bool PulperManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+bool PulperManipulator::drop(CreaturePtr /*dropping_creature*/, TilePtr /*tile*/, ItemPtr /*item*/)
 {
   return false;
 }

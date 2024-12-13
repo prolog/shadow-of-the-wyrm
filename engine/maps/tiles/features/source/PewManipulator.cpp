@@ -35,7 +35,7 @@ bool PewManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
   return true;
 }
 
-bool PewManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+bool PewManipulator::drop(CreaturePtr /*dropping_creature*/, TilePtr /*tile*/, ItemPtr /*item*/)
 {
   return false;
 }

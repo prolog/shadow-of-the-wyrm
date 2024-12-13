@@ -5,7 +5,7 @@ using namespace std;
 
 // Assumption that everything uses really, really strong acid, which can
 // dissolve anything.
-bool AcidTileDamageProcessor::affects_item(ItemPtr item)
+bool AcidTileDamageProcessor::affects_item(ItemPtr /*item*/)
 {
   return true;
 }

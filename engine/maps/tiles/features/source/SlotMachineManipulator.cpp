@@ -32,7 +32,7 @@ void SlotMachineManipulator::initialize()
                 "SLOT_MACHINE_FACE5"};
 }
 
-void SlotMachineManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
+void SlotMachineManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
 {
   if (creature && creature->get_is_player())
   {
@@ -125,7 +125,7 @@ bool SlotMachineManipulator::handle(TilePtr tile, CreaturePtr creature)
   return slot_machine_used;
 }
 
-bool SlotMachineManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+bool SlotMachineManipulator::drop(CreaturePtr /*dropping_creature*/, TilePtr /*tile*/, ItemPtr /*item*/)
 {
   return false;
 }

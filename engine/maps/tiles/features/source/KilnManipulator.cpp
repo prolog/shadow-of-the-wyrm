@@ -21,7 +21,7 @@ KilnManipulator::KilnManipulator(FeaturePtr feature)
 {
 }
 
-void KilnManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
+void KilnManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
 {
   if (creature && creature->get_is_player())
   {
@@ -73,7 +73,7 @@ bool KilnManipulator::handle(TilePtr tile, CreaturePtr creature)
   return kiln_used;
 }
 
-bool KilnManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+bool KilnManipulator::drop(CreaturePtr /*dropping_creature*/, TilePtr /*tile*/, ItemPtr /*item*/)
 {
   return false;
 }

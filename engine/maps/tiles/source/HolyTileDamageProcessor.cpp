@@ -4,7 +4,7 @@
 using namespace std;
 
 // Divine powers can curse anything.
-bool HolyTileDamageProcessor::affects_item(ItemPtr item)
+bool HolyTileDamageProcessor::affects_item(ItemPtr /*item*/)
 {
   return true;
 }
