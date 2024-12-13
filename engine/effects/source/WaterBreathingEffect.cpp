@@ -7,10 +7,9 @@
 
 using std::string;
 
-string WaterBreathingEffect::get_effect_identification_message(CreaturePtr creature) const
+string WaterBreathingEffect::get_effect_identification_message(CreaturePtr /*creature*/) const
 {
   string no_effect_msg;
-
   return no_effect_msg;
 }
 
