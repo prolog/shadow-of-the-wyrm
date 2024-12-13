@@ -213,7 +213,7 @@ void WandcraftSkillProcessor::remove_wand_components(CreaturePtr creature)
   }
 }
 
-ActionCostValue WandcraftSkillProcessor::get_default_skill_action_cost_value(CreaturePtr creature) const
+ActionCostValue WandcraftSkillProcessor::get_default_skill_action_cost_value(CreaturePtr /*creature*/) const
 {
   return 200;
 }

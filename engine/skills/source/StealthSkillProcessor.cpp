@@ -5,7 +5,7 @@
 
 using std::string;
 
-ActionCostValue StealthSkillProcessor::process(CreaturePtr creature, MapPtr map)
+ActionCostValue StealthSkillProcessor::process(CreaturePtr creature, MapPtr /*map*/)
 {
   ActionCostValue acv = get_default_skill_action_cost_value(creature);
 

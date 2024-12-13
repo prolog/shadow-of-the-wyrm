@@ -172,7 +172,7 @@ void DisarmTrapsSkillProcessor::add_no_nearby_trap_message(CreaturePtr creature)
 }
 
 // Disarming traps takes a while.
-ActionCostValue DisarmTrapsSkillProcessor::get_default_skill_action_cost_value(CreaturePtr creature) const
+ActionCostValue DisarmTrapsSkillProcessor::get_default_skill_action_cost_value(CreaturePtr /*creature*/) const
 {
   return 30;
 }

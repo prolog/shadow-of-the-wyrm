@@ -7,7 +7,7 @@
 
 using std::string;
 
-ActionCostValue MountainLoreSkillProcessor::process(CreaturePtr creature, MapPtr map /* unused, will be nullptr */)
+ActionCostValue MountainLoreSkillProcessor::process(CreaturePtr creature, MapPtr /*map*/)
 {
   if (creature)
   {

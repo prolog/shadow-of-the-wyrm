@@ -16,7 +16,7 @@
 
 using namespace std;
 
-ActionCostValue BeastmasterySkillProcessor::process(CreaturePtr creature, MapPtr map)
+ActionCostValue BeastmasterySkillProcessor::process(CreaturePtr creature, MapPtr /*map*/)
 {
   ActionCostValue acv = ActionCostConstants::DEFAULT;
 

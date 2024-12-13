@@ -177,7 +177,7 @@ ItemPtr ScribingSkillProcessor::create_scroll(CreaturePtr creature, const string
   return scroll;
 }
 
-ActionCostValue ScribingSkillProcessor::get_default_skill_action_cost_value(CreaturePtr creature) const
+ActionCostValue ScribingSkillProcessor::get_default_skill_action_cost_value(CreaturePtr /*creature*/) const
 {
   return 300;
 }
