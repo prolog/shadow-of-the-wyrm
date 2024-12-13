@@ -4,7 +4,7 @@ using namespace std;
 
 const float HealingNPCMagicDecision::HEALING_THRESHOLD_MULTIPLIER = 0.5f;
 
-pair<bool, Direction> HealingNPCMagicDecision::decide(CreaturePtr caster, MapPtr view_map, const Spell& spell, const set<string>& /*creature_threats*/) const
+pair<bool, Direction> HealingNPCMagicDecision::decide(CreaturePtr caster, MapPtr /*view_map*/, const Spell& spell, const set<string>& /*creature_threats*/) const
 {
   bool decision = false;
 

@@ -23,7 +23,7 @@ bool EffectTypeTerrainChecker::does_effect_match_terrain(CreaturePtr caster, Map
 
 			const TilesContainer& tc = view_map->get_tiles_ref();
 
-			for (const auto t_pair : tc)
+			for (const auto& t_pair : tc)
 			{
 				if (t_pair.second != nullptr && t_pair.second->get_tile_super_type() == tst)
 				{
