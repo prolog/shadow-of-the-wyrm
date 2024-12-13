@@ -38,7 +38,7 @@ bool SpellFailureConsequences::damage_caster(CreaturePtr caster)
   return spellbook_destroyed;
 }
 
-bool SpellFailureConsequences::inflict_status_ailments(CreaturePtr caster)
+bool SpellFailureConsequences::inflict_status_ailments(CreaturePtr /*caster*/)
 {
   return false;
 }

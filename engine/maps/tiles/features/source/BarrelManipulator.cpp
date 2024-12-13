@@ -61,7 +61,7 @@ bool BarrelManipulator::handle(TilePtr tile, CreaturePtr creature)
   return true;
 }
 
-bool BarrelManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+bool BarrelManipulator::drop(CreaturePtr /*dropping_creature*/, TilePtr /*tile*/, ItemPtr /*item*/)
 {
   return false;
 }

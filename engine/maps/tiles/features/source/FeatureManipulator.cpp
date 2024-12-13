@@ -2,7 +2,7 @@
 #include "ItemManager.hpp"
 #include "RNG.hpp"
 
-bool FeatureManipulator::desecrate(CreaturePtr creature, MapPtr current_map)
+bool FeatureManipulator::desecrate(CreaturePtr /*creature*/, MapPtr /*current_map*/)
 {
   return false;
 }

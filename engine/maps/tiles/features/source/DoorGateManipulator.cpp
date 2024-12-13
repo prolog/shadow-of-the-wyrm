@@ -62,7 +62,7 @@ void DoorGateManipulator::kick_open_door(IMessageManager& manager, EntrancePtr e
   }
 }
 
-void DoorGateManipulator::kick_closed_door(IMessageManager& manager, EntrancePtr entr, CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feat)
+void DoorGateManipulator::kick_closed_door(IMessageManager& manager, EntrancePtr entr, CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr /*feat*/)
 {
   if (entr != nullptr)
   {
@@ -159,7 +159,7 @@ bool DoorGateManipulator::handle(TilePtr tile, CreaturePtr creature)
   return result;
 }
 
-bool DoorGateManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+bool DoorGateManipulator::drop(CreaturePtr /*dropping_creature*/, TilePtr /*tile*/, ItemPtr /*item*/)
 {
   return false;
 }

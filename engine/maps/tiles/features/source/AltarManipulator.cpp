@@ -24,7 +24,7 @@ bool AltarManipulator::desecrate(CreaturePtr creature, MapPtr current_map)
   return false;
 }
 
-bool AltarManipulator::handle(TilePtr tile, CreaturePtr creature)
+bool AltarManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
 {
   if (creature && creature->get_is_player())
   {
