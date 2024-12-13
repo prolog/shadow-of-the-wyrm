@@ -19,7 +19,7 @@ using namespace std;
 // The new map only plays into the calculations if it's an underworld-type
 // map.  Underworld maps whose type generates a complex (dungeon, sewers,
 // mines) start off with a danger based on their current depth.
-int WorldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
+int WorldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr /*new_map*/) const
 {
   int danger_level = 0;
   string tile_type_s = get_property(DangerLevelProperties::DANGER_LEVEL_PROPERTIES_TILE_TYPE);

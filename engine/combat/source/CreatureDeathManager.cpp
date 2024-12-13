@@ -105,7 +105,7 @@ void CreatureDeathManager::remove_quests_from_player(MapPtr cur_map, CreaturePtr
 
 // Remove the creature's equipment, adding it to the creature's inventory.
 // Then, drop all the items on the tile.
-void CreatureDeathManager::remove_creature_equipment_and_drop_inventory_on_tile(MapPtr cur_map, CreaturePtr death_creature, IInventoryPtr ground) const
+void CreatureDeathManager::remove_creature_equipment_and_drop_inventory_on_tile(MapPtr /*cur_map*/, CreaturePtr death_creature, IInventoryPtr ground) const
 {
   Game& game = Game::instance();
 
