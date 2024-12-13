@@ -54,7 +54,7 @@ bool DiggingEffect::effect_cursed(CreaturePtr creature, ActionManager * /*am*/, 
   return dig(creature, affected_coordinate);
 }
 
-bool DiggingEffect::dig(CreaturePtr creature, const Coordinate& affected_coord)
+bool DiggingEffect::dig(CreaturePtr /*creature*/, const Coordinate& affected_coord)
 {
   bool dug = false;
 

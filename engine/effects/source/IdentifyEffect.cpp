@@ -9,7 +9,7 @@
 
 using namespace std;
 
-string IdentifyEffect::get_effect_identification_message(std::shared_ptr<Creature> creature) const
+string IdentifyEffect::get_effect_identification_message(std::shared_ptr<Creature> /*creature*/) const
 {
   return identification_msg;
 }
@@ -34,7 +34,7 @@ bool IdentifyEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionMa
 }
 
 // Uncursed identify identifies all items of a particular type.
-bool IdentifyEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& /*affected_coordinate*/, TilePtr affected_tile)
+bool IdentifyEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   if (creature)
   {

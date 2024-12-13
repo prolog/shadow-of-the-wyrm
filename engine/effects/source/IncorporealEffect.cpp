@@ -6,7 +6,7 @@
 
 using std::string;
 
-string IncorporealEffect::get_effect_identification_message(CreaturePtr creature) const
+string IncorporealEffect::get_effect_identification_message(CreaturePtr /*creature*/) const
 {
   string no_effect_msg;
 

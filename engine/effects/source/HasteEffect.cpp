@@ -7,7 +7,7 @@
 
 using std::string;
 
-string HasteEffect::get_effect_identification_message(CreaturePtr creature) const
+string HasteEffect::get_effect_identification_message(CreaturePtr /*creature*/) const
 {
   string no_effect_msg;
 
@@ -27,7 +27,7 @@ string HasteEffect::get_status_id() const
 // When blessed, cure any slowness, and add the haste effect.
 // Don't allow "double hasting" (being able to cast haste while hasted),
 // or else the game becomes ludicrously easy!
-bool HasteEffect::effect_blessed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr affected_tile)
+bool HasteEffect::effect_blessed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   if (creature == nullptr || creature->has_status(StatusIdentifiers::STATUS_ID_HASTE))
   {
@@ -48,7 +48,7 @@ bool HasteEffect::effect_blessed(CreaturePtr creature, ActionManager * const /*a
 
 // When uncursed, cure any slowness, or if there is no slowness, add
 // the haste status effect.
-bool HasteEffect::effect_uncursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr affected_tile)
+bool HasteEffect::effect_uncursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   if (creature == nullptr || creature->has_status(StatusIdentifiers::STATUS_ID_HASTE))
   {
@@ -70,7 +70,7 @@ bool HasteEffect::effect_uncursed(CreaturePtr creature, ActionManager * const /*
 }
 
 // When cursed, nothing happens.
-bool HasteEffect::effect_cursed(CreaturePtr creature, ActionManager * /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
+bool HasteEffect::effect_cursed(CreaturePtr /*creature*/, ActionManager * /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return false;
 }

@@ -11,7 +11,7 @@ RemoveStatusEffect::RemoveStatusEffect(const string& status_ident)
 {
 }
 
-string RemoveStatusEffect::get_effect_identification_message(CreaturePtr creature) const
+string RemoveStatusEffect::get_effect_identification_message(CreaturePtr /*creature*/) const
 {
   string no_effect_msg;
   return no_effect_msg;
