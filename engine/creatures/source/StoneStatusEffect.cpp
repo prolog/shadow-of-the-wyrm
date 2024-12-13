@@ -40,7 +40,7 @@ void StoneStatusEffect::tick(CreaturePtr creature, const int /*danger_level*/) c
   }
 }
 
-void StoneStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr affected_creature) const
+void StoneStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr /*affected_creature*/) const
 {
   if (initiating != nullptr)
   {

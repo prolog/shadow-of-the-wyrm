@@ -111,7 +111,7 @@ void StatusEffect::apply_change(CreaturePtr creature, const int danger_level) co
   }
 }
 
-bool StatusEffect::before_apply(CreaturePtr creature) const
+bool StatusEffect::before_apply(CreaturePtr /*creature*/) const
 {
   return true;
 }
@@ -151,7 +151,7 @@ bool StatusEffect::apply(CreaturePtr creature, const int danger_level) const
   return true;
 }
 
-bool StatusEffect::after_apply(CreaturePtr creature) const
+bool StatusEffect::after_apply(CreaturePtr /*creature*/) const
 {
   return true;
 }
@@ -190,7 +190,7 @@ string StatusEffect::get_player_application_message() const
   return no_message;
 }
 
-string StatusEffect::get_npc_application_message(CreaturePtr creature) const
+string StatusEffect::get_npc_application_message(CreaturePtr /*creature*/) const
 {
   string no_message;
   return no_message;
@@ -203,7 +203,7 @@ void StatusEffect::finalize_change(CreaturePtr creature) const
   after_finalize(creature);
 }
 
-void StatusEffect::before_finalize(CreaturePtr creature) const
+void StatusEffect::before_finalize(CreaturePtr /*creature*/) const
 {
 }
 
@@ -246,13 +246,13 @@ string StatusEffect::get_player_finalize_message() const
   return no_message;
 }
 
-string StatusEffect::get_npc_finalize_message(CreaturePtr creature) const
+string StatusEffect::get_npc_finalize_message(CreaturePtr /*creature*/) const
 {
   string no_message;
   return no_message;
 }
 
-void StatusEffect::after_finalize(CreaturePtr creature) const
+void StatusEffect::after_finalize(CreaturePtr /*creature*/) const
 {
 }
 
@@ -295,7 +295,7 @@ void StatusEffect::undo(CreaturePtr creature) const
   }
 }
 
-void StatusEffect::after_undo(CreaturePtr creature) const
+void StatusEffect::after_undo(CreaturePtr /*creature*/) const
 {
 }
 
@@ -333,7 +333,7 @@ string StatusEffect::get_player_undo_message() const
   return no_message;
 }
 
-string StatusEffect::get_npc_undo_message(CreaturePtr creature) const
+string StatusEffect::get_npc_undo_message(CreaturePtr /*creature*/) const
 {
   string no_message;
   return no_message;

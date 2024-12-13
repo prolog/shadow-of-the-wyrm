@@ -14,7 +14,7 @@ SlownessStatusEffect::SlownessStatusEffect()
   status_calc = std::make_shared<SlownessCalculator>();
 }
 
-void SlownessStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr affected_creature) const
+void SlownessStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr /*affected_creature*/) const
 {
   if (initiating != nullptr)
   {
