@@ -263,7 +263,7 @@ void StatusEffect::undo_change(CreaturePtr creature) const
   after_undo(creature);
 }
 
-void StatusEffect::before_undo(CreaturePtr creature) const
+void StatusEffect::before_undo(CreaturePtr /*creature*/) const
 {
 }
 

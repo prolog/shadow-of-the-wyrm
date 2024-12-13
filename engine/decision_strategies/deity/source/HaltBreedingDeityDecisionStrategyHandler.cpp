@@ -18,7 +18,7 @@ std::unique_ptr<DeityDecisionStrategyHandler> HaltBreedingDeityDecisionStrategyH
   return handler;
 }
 
-bool HaltBreedingDeityDecisionStrategyHandler::decide(CreaturePtr creature)
+bool HaltBreedingDeityDecisionStrategyHandler::decide(CreaturePtr /*creature*/)
 {
   bool decision = false;
 

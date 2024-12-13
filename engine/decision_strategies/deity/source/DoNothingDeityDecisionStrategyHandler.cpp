@@ -14,7 +14,7 @@ std::unique_ptr<DeityDecisionStrategyHandler> DoNothingDeityDecisionStrategyHand
   return handler;
 }
 
-bool DoNothingDeityDecisionStrategyHandler::decide(CreaturePtr creature)
+bool DoNothingDeityDecisionStrategyHandler::decide(CreaturePtr /*creature*/)
 {
   return true;
 }
