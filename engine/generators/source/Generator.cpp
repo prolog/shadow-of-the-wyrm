@@ -410,7 +410,7 @@ bool Generator::generate_initial_items(MapPtr map, const int dl, const tuple<boo
   return mig.generate_items(map, dl, creature_details);
 }
 
-bool Generator::update_items(MapPtr map, const int /*dl*/)
+bool Generator::update_items(MapPtr /*map*/, const int /*dl*/)
 {
   // Do nothing.  Items should never be generated after the initial seeding -
   // they should only be dropped by creatures after that.

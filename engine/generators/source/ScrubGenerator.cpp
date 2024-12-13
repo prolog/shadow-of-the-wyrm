@@ -52,7 +52,7 @@ MapPtr ScrubGenerator::generate(const Dimensions& dimensions)
 }
 
 // Scrubland is mostly dead grass with a few small bushes thrown in.
-TilePtr ScrubGenerator::generate_tile(MapPtr result_map, const int /*row*/, const int /*col*/, const int pct_chance_shield)
+TilePtr ScrubGenerator::generate_tile(MapPtr /*result_map*/, const int /*row*/, const int /*col*/, const int pct_chance_shield)
 {
   TilePtr generated_tile;
 

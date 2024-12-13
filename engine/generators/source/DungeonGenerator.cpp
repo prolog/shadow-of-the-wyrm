@@ -80,7 +80,7 @@ MapPtr DungeonGenerator::generate(const Dimensions& dimensions)
   return null_map;
 }
 
-TilePtr DungeonGenerator::generate_tile(MapPtr current_map, const int /*row*/, const int /*col*/)
+TilePtr DungeonGenerator::generate_tile(MapPtr /*current_map*/, const int /*row*/, const int /*col*/)
 {
   TilePtr result_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
   return result_tile;
@@ -773,7 +773,7 @@ bool DungeonGenerator::generate_treasure_room(MapPtr map, const int start_row, c
   return true;
 }
 
-bool DungeonGenerator::place_doorway(MapPtr map, int /*row*/, int /*col*/)
+bool DungeonGenerator::place_doorway(MapPtr /*map*/, int /*row*/, int /*col*/)
 {
   return false;
 }

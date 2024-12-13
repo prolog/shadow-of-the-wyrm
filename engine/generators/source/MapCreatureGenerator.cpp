@@ -424,7 +424,7 @@ int MapCreatureGenerator::get_pct_chance_out_of_depth_creatures(MapPtr map)
   return ood;
 }
 
-bool MapCreatureGenerator::maximum_creatures_reached(MapPtr map, const int current_creatures_placed, const int num_creatures_to_place)
+bool MapCreatureGenerator::maximum_creatures_reached(MapPtr /*map*/, const int current_creatures_placed, const int num_creatures_to_place)
 {
   bool max_reached = (current_creatures_placed >= num_creatures_to_place);
   return max_reached;
