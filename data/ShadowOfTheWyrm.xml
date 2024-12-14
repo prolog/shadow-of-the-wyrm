@@ -8451,6 +8451,15 @@
 			<Effect id="_drink">
 				<Location>assets/sound/effects/drink.wav</Location>
 			</Effect>
+			<Effect id="_drip1">
+				<Location>assets/sound/effects/drip1.wav</Location>
+			</Effect>
+			<Effect id="_drip2">
+				<Location>assets/sound/effects/drip2.wav</Location>
+			</Effect>
+			<Effect id="_drip3">
+				<Location>assets/sound/effects/drip3.wav</Location>
+			</Effect>			
 		</Effects>
 		<Music>
 			<Song event="_arena">
