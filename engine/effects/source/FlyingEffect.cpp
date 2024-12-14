@@ -11,7 +11,7 @@ using std::string;
 
 const int FlyingEffect::EVADE_BONUS = 20;
 
-string FlyingEffect::get_effect_identification_message(CreaturePtr creature) const
+string FlyingEffect::get_effect_identification_message(CreaturePtr /*creature*/) const
 {
   string no_effect_msg;
 
