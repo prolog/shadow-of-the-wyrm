@@ -12,7 +12,7 @@ MiscItem::~MiscItem()
 {
 }
 
-bool MiscItem::additional_item_attributes_match(ItemPtr item) const
+bool MiscItem::additional_item_attributes_match(ItemPtr /*item*/) const
 {
   return true;
 }
