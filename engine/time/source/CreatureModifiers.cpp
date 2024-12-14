@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void CreatureModifiers::tick(CreaturePtr creature, TilePtr tile, const ulonglong /*minutes_this_tick*/, const ulonglong /*total_minutes_elapsed*/)
+void CreatureModifiers::tick(CreaturePtr creature, TilePtr /*tile*/, const ulonglong /*minutes_this_tick*/, const ulonglong /*total_minutes_elapsed*/)
 {
   if (creature)
   {

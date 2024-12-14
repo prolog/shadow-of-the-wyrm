@@ -16,7 +16,7 @@ CreatureSkillMarkerChecker::CreatureSkillMarkerChecker(const uint new_interval)
 {
 }
 
-void CreatureSkillMarkerChecker::tick(CreaturePtr creature, TilePtr tile, const ulonglong /*min_this_tick*/, const ulonglong total_minutes_elapsed)
+void CreatureSkillMarkerChecker::tick(CreaturePtr creature, TilePtr /*tile*/, const ulonglong /*min_this_tick*/, const ulonglong total_minutes_elapsed)
 {
   if (creature != nullptr)
   {
