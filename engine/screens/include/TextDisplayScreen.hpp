@@ -15,6 +15,6 @@ class TextDisplayScreen : public Screen
 
     // Each string in the vector represents a line to be displayed on
     // screen.
-    std::vector<TextDisplayPair> text;
+    std::vector<TextDisplayPair> text;  
     std::deque<Symbol> replacement_symbols;
 };

@@ -99,7 +99,7 @@ void DefaultTileManipulator::add_undead_if_necessary(CreaturePtr creature, MapPt
           keys.push_back(d.first);
         }
 
-        std::random_shuffle(keys.begin(), keys.end());
+        std::shuffle(keys.begin(), keys.end(), RNG::get_engine());
 
         for (const auto& direction : keys)
         {
