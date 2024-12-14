@@ -50,11 +50,11 @@ Modifier BloodiedStatusEffect::get_base_modifier(CreaturePtr /*creature*/, const
 
 void BloodiedStatusEffect::notify_deities(CreaturePtr init_creature, CreaturePtr /*affected_creature*/) const
 {
-  if (initiating_creature != nullptr)
+  if (init_creature != nullptr)
   {
     Game& game = Game::instance();
     MapPtr current_map = game.get_current_map();
-    game.get_deity_action_manager_ref().notify_action(initiating_creature, current_map, CreatureActionKeys::ACTION_BLOODLETTING, true);
+    game.get_deity_action_manager_ref().notify_action(init_creature, current_map, CreatureActionKeys::ACTION_BLOODLETTING, true);
   }
 }
 
