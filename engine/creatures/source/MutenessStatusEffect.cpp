@@ -11,7 +11,7 @@ MutenessStatusEffect::MutenessStatusEffect()
   status_calc = std::make_shared<MutenessCalculator>();
 }
 
-void MutenessStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr affected_creature) const 
+void MutenessStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr /*affected_creature*/) const 
 {
   if (initiating != nullptr)
   {
