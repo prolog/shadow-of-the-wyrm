@@ -76,37 +76,37 @@ permanent(false)
     default:
     case 11:
       speed_modifier = args.at(10);
-      [[fallthrough]];
+      // fall through
     case 10:
       to_hit_modifier = args.at(9);
-      [[fallthrough]];
+      // fall through
     case 9:
       soak_modifier = args.at(8);
-      [[fallthrough]];
+      // fall through
     case 8:
       evade_modifier = args.at(7);
-      [[fallthrough]];
+      // fall through
     case 7:
       charisma_modifier = args.at(6);
-      [[fallthrough]];
+      // fall through
     case 6:
       willpower_modifier = args.at(5);
-      [[fallthrough]];
+      // fall through
     case 5:
       intelligence_modifier = args.at(4);
-      [[fallthrough]];
+      // fall through
     case 4:
       health_modifier = args.at(3);
-      [[fallthrough]];
+      // fall through
     case 3:
       agility_modifier = args.at(2);
-      [[fallthrough]];
+      // fall through
     case 2:
       dexterity_modifier = args.at(1);
-      [[fallthrough]];
+      // fall through
     case 1:
       strength_modifier = args.at(0);
-      [[fallthrough]];
+      // fall through
     case 0:
       break;
   }
