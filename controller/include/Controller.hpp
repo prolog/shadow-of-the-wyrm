@@ -8,7 +8,7 @@ class Controller : public ISerializable
 {
   public:
     virtual ~Controller();
-    virtual bool operator==(const Controller& controller) const;
+    bool operator==(const Controller& controller) const;
 
     // Only needs to be implemented for interfaces like SDL where the
     // event queue has to be delicately handled or else you'll get

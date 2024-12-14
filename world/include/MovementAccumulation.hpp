@@ -16,7 +16,7 @@ class MovementAccumulation : public ISerializable
 {
   public:
     MovementAccumulation();
-    virtual bool operator==(const MovementAccumulation& movement) const;
+    bool operator==(const MovementAccumulation& movement) const;
 
     // Reset all the MovementAccumulation variables
     void reset();
