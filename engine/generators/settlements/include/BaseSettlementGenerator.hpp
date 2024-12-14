@@ -9,6 +9,8 @@
 class BaseSettlementGenerator : public SOTW::Generator
 {
   public:
+    using SOTW::Generator::generate;
+
     BaseSettlementGenerator(MapPtr new_base_map);
     BaseSettlementGenerator(MapPtr new_base_map, const int growth_rate);
     

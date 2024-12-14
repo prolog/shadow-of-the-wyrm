@@ -6,6 +6,8 @@
 class GraveyardGenerator : public SOTW::Generator
 {
   public:
+    using SOTW::Generator::generate;
+
     GraveyardGenerator(const std::string& new_map_exit_id);
     virtual ~GraveyardGenerator() = default;
     
