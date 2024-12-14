@@ -314,7 +314,7 @@ ActionCost CommandProcessor::process_spell_casting_command(CreaturePtr creature,
 }
 
 // Process the DirectionalCommand
-ActionCost CommandProcessor::process_directional_command(CreaturePtr creature, DirectionalCommand* command, DisplayPtr display)
+ActionCost CommandProcessor::process_directional_command(CreaturePtr creature, DirectionalCommand* command, DisplayPtr /*display*/)
 {
   ActionCost ac;
   
