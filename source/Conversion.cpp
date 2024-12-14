@@ -43,16 +43,9 @@ string String::clean(const string& to_clean)
   {
     char c = c_str[i];
 
-    if (c > -1 && c < 255)
+    if (isalpha(c) || isdigit(c) || c >= ' ')
     {
-      if (isalpha(c) || isdigit(c) || c >= ' ')
-      {
-        clean << c;
-      }
-    }
-    else
-    {
-      clean << '?';
+      clean << c;
     }
   }
 
