@@ -13,6 +13,8 @@ enum struct RuinsType
 class RuinsGenerator : public SOTW::Generator
 {
   public:
+    using SOTW::Generator::generate;
+
     RuinsGenerator(const std::string& map_exit_id, const TileType tile_type, const RuinsType new_rt);
     virtual ~RuinsGenerator() = default;
 
