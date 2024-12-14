@@ -63,7 +63,7 @@ bool ModifyStatisticsEffect::is_negative_effect() const
   return m.is_negative();
 }
 
-bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifier& mod, const ModifyStatisticsDuration msd, const double preset_duration) const
+bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifier& m_apply, const ModifyStatisticsDuration msd, const double preset_duration) const
 {
   bool result = false;
 
@@ -96,11 +96,11 @@ bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifie
     }
 
     // Add the statistics modifier to the current list, and add to the creature.
-    v_m.push_back(make_pair(spell_id, m));
+    v_m.push_back(make_pair(spell_id, m_apply));
     cr_sm[duration_end] = v_m;
 
     // Add any statuses on the modifier to the creature
-    vector<pair<string, int>> statuses = mod.get_affected_statuses();
+    vector<pair<string, int>> statuses = m_apply.get_affected_statuses();
 
     for (const auto& status : statuses)
     {

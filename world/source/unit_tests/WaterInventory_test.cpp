@@ -89,6 +89,7 @@ TEST(SW_World_WaterInventory, merge)
   item = std::make_shared<Amulet>();
   item->set_material_type(MaterialType::MATERIAL_TYPE_GOLD);
   item->set_floats(true);
+  wi.merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
 
   auto ilist = wi.get_items_cref();
   EXPECT_EQ(1, ilist.size());
