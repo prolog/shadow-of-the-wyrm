@@ -5,6 +5,8 @@
 class FieldGenerator : public SOTW::Generator
 {
   public:
+    using SOTW::Generator::generate;
+
     FieldGenerator(const std::string& map_exit_id);
     virtual ~FieldGenerator() = default;
     
