@@ -5,6 +5,7 @@ Me:
 - order screen
 - setting for where scores.dat is written
 - unit test for create_string_set_from...
+- chance for ambient sound (eg water drops when underground)
 - Moving up/down when ice frozen?
 - let's work on recall/coming back if you go down a water tile...
 - Caldera's water should be death - swimming or descending
