@@ -25,14 +25,7 @@ class RuinsGenerator : public SOTW::Generator
 
   protected:
     virtual bool get_permanence_default() const override;
-
     MapPtr generate_ruined_settlement(MapPtr map);
-    MapPtr generate_ruined_keep(MapPtr map);
-
-    // Helper functions
-    void create_keep(MapPtr map, const int start_row, const int start_col, const int height, const int width);
-    void populate_keep(MapPtr map, const int start_row, const int start_col, const int height, const int width);
-    void create_entrance(MapPtr map, const int start_row, const int start_col, const int height, const int width);
 
     RuinsType rt;
 };
