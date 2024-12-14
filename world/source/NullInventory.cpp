@@ -28,12 +28,12 @@ bool NullInventory::get_marked_for_restack() const
   return false;
 }
 
-bool NullInventory::add_front(ItemPtr item)
+bool NullInventory::add_front(ItemPtr /*item*/)
 {
   return false;
 }
 
-bool NullInventory::add(ItemPtr item)
+bool NullInventory::add(ItemPtr /*item*/)
 {
   return false;
 }
