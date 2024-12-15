@@ -94,6 +94,8 @@ void BowyerSkillProcessor::create_bowyer_item(const string& item_base_id, const 
   {
     // Item's created.  Improve it appropriately.  Smith it
     // based on the improvement points;
+    item->set_status(item_status);
+
     CreateItemCalculator cic;
     int potential_points = cic.calc_potential_improvement_points(creature, SkillType::SKILL_GENERAL_BOWYER, item_status);
     int improvement_points = (item_status == ItemStatus::ITEM_STATUS_BLESSED ? 1 : 0);

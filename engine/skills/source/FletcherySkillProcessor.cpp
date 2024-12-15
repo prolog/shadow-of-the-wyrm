@@ -88,6 +88,7 @@ void FletcherySkillProcessor::create_projectiles(const string& item_base_id, con
 
   if (creature != nullptr && item != nullptr && tile != nullptr)
   {
+    item->set_status(item_status);
     creature->get_skills().mark(SkillType::SKILL_GENERAL_FLETCHERY);
 
     // Item's created.  Improve it appropriately.  Smith it

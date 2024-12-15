@@ -43,6 +43,9 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
 
 - Bug fixes:
 
+  - Creating items with Bowyer/Fletchery wasn't setting their status
+    appropriately.
+
   - Fixed an internal issue with getting the season colour.
 
   - Followers with ranged attacks will no longer fire through a square that
