@@ -8459,7 +8459,7 @@
 			</Effect>
 			<Effect id="_drip3">
 				<Location>assets/sound/effects/drip3.wav</Location>
-			</Effect>			
+			</Effect>
 		</Effects>
 		<Music>
 			<Song event="_arena">

@@ -94,6 +94,31 @@ TEST(SW_Engine_ConversionRoutines, csv_to_vector)
   EXPECT_EQ("first", str_vec.back());
 }
 
+TEST(SW_Engine_ConversionRoutines, csv_to_string_set)
+{
+  string csv_no_repeat = "1,2,3";
+  string csv_repeat = "1,1,2,2,3,3,3,4,5";
+
+  set<string> csv_set_no_repeat = String::create_string_set_from_csv_string(csv_no_repeat);
+  set<string> csv_set_repeat = String::create_string_set_from_csv_string(csv_repeat);
+
+  vector<string> exp_v_no_repeat = { "1", "2", "3" };
+  vector<string> exp_v_repeat = { "1", "2", "3", "4", "5" };
+
+  EXPECT_EQ(3, csv_set_no_repeat.size());
+  EXPECT_EQ(5, csv_set_repeat.size());
+
+  for (const auto& ei : exp_v_no_repeat)
+  {
+    EXPECT_TRUE(csv_set_no_repeat.find(ei) != csv_set_no_repeat.end());
+  }
+
+  for (const auto& ei : exp_v_repeat)
+  {
+    EXPECT_TRUE(csv_set_repeat.find(ei) != csv_set_repeat.end());
+  }
+}
+
 TEST(SW_Engine_ConversionRoutines, csv_to_int_vector)
 {
   vector<int> expected = { 1,5,3,4 };
