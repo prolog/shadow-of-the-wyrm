@@ -3,6 +3,22 @@
 #include "GeneratorUtils.hpp"
 #include "MapProperties.hpp"
 
+void make_coast_map();
+void make_coast_map(MapPtr map)
+{
+  GeneratorUtils::fill(map, { 0,0 }, { 19, 79 }, TileType::TILE_TYPE_SEA);
+
+  std::map<string, string> props = { {MapProperties::MAP_PROPERTIES_COASTLINE_NORTH, std::to_string(true)},
+                                     {MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH, std::to_string(true)},
+                                     {MapProperties::MAP_PROPERTIES_COASTLINE_EAST, std::to_string(true)},
+                                     {MapProperties::MAP_PROPERTIES_COASTLINE_WEST, std::to_string(true)} };
+
+  for (const auto& p_pair : props)
+  {
+    map->set_property(p_pair.first, p_pair.second);
+  }
+}
+
 class SW_Engine_Map : public ::testing::Test
 {
   public:
@@ -191,20 +207,8 @@ TEST_F(SW_Engine_Map, get_generation_coordinates)
 TEST_F(SW_Engine_Map, get_starting_location)
 {
   MapPtr map = make_map();
+  make_coast_map(map);
   Coordinate exp = { 0, 0 };
-  GeneratorUtils::fill(map, { 0,0 }, { 19, 79 }, TileType::TILE_TYPE_SEA);
-
-  EXPECT_EQ(exp, map->get_starting_location());
-
-  std::map<string, string> props = { {MapProperties::MAP_PROPERTIES_COASTLINE_NORTH, std::to_string(true)},
-                                     {MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH, std::to_string(true)},
-                                     {MapProperties::MAP_PROPERTIES_COASTLINE_EAST, std::to_string(true)},
-                                     {MapProperties::MAP_PROPERTIES_COASTLINE_WEST, std::to_string(true)}};
-
-  for (const auto& p_pair : props)
-  {
-    map->set_property(p_pair.first, p_pair.second);
-  }
 
   EXPECT_EQ(exp, map->get_starting_location());
 
@@ -230,6 +234,26 @@ TEST_F(SW_Engine_Map, get_starting_location)
   exp = { 9, 79 };
 
   EXPECT_EQ(exp, map->get_starting_location());
+}
+
+TEST_F(SW_Engine_Map, get_coastline)
+{
+  MapPtr empty_map = make_map();
+  EXPECT_EQ(0, empty_map->get_coastline_directions().size());
+
+  MapPtr map = make_map();
+  make_coast_map(map);
+  EXPECT_EQ(4, map->get_coastline_directions().size());
+}
+
+TEST_F(SW_Engine_Map, has_coastline)
+{
+  MapPtr empty_map = make_map();
+  EXPECT_FALSE(empty_map->has_coastline());
+
+  MapPtr map = make_map();
+  make_coast_map(map);
+  EXPECT_TRUE(map->has_coastline());
 }
 
 TEST_F(SW_Engine_Map, set_secondary_terrain)

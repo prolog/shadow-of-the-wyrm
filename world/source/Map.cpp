@@ -1117,6 +1117,11 @@ vector<TileType> Map::get_secondary_terrain() const
   return sec_ter;
 }
 
+bool Map::has_coastline() const
+{
+  return (get_coastline_directions().size() > 0);
+}
+
 vector<Direction> Map::get_coastline_directions() const
 {
   vector<Direction> dirs;

@@ -377,6 +377,7 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConstStr(ls, CMUSIC_EVENT_PLANETARY_TELEPORT);
   lua_exportConstStr(ls, CMUSIC_EVENT_RESPAWN);
   lua_exportConstStr(ls, CMUSIC_EVENT_CARCASSIA);
+  lua_exportConstStr(ls, CMUSIC_EVENT_WAVES);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)
