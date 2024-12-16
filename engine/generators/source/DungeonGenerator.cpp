@@ -602,6 +602,7 @@ bool DungeonGenerator::generate_spring(MapPtr map, const int start_row, const in
 {  
   int springs_size = RNG::range(3, 4);
   int y_start = RNG::range(start_row, (end_row - 1 - springs_size));
+  map->set_property(MapProperties::MAP_PROPERTIES_WET, std::to_string(true));
 
   // Some rooms are very small.  Ensure the spring fits.
   if (end_row - start_row - 1 >= springs_size)

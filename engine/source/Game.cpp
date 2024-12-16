@@ -6,6 +6,7 @@
 #include <future>
 #include <boost/timer/timer.hpp>
 #include "global_prototypes.hpp"
+#include "AmbientSound.hpp"
 #include "CommandProcessor.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
@@ -607,6 +608,7 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
 
 void Game::go()
 {
+  AmbientSound as;
   game_command_factory = std::make_unique<CommandFactory>();
   game_kb_command_map = std::make_unique<KeyboardCommandMap>();
 
@@ -739,6 +741,14 @@ void Game::go()
             // and that a full window redraw has been done, we can reset the
             // reloaded_game variable so that it won't override any game logic.
             reloaded_game = false;
+
+            // When doing things as the player, ambient sounds can also happen
+            string sound_effect_id = as.get_sound_effect(current_map, current_creature->get_turns());
+
+            if (!sound_effect_id.empty())
+            {
+              sound->play(sound_effect_id);
+            }
           }
 
           if (reload_game_loop)

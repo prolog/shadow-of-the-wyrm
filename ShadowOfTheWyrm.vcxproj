@@ -884,6 +884,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\worship_sites\include\SnakingTempleGenerator.hpp" />
     <ClInclude Include="engine\generators\worship_sites\include\WorshipSiteGenerator.hpp" />
     <ClInclude Include="engine\include\AlignmentUtils.hpp" />
+    <ClInclude Include="engine\include\AmbientSound.hpp" />
     <ClInclude Include="engine\include\CharacterCreationDetails.hpp" />
     <ClInclude Include="engine\include\ClassManager.hpp" />
     <ClInclude Include="engine\include\CreationUtils.hpp" />
@@ -2313,6 +2314,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\skills\source\ThieverySkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\WandcraftSkillProcessor.cpp" />
     <ClCompile Include="engine\skills\source\WandCreationParameters.cpp" />
+    <ClCompile Include="engine\source\AmbientSound.cpp" />
     <ClCompile Include="engine\source\CharacterCreationDetails.cpp" />
     <ClCompile Include="engine\source\DeityUtils.cpp" />
     <ClCompile Include="engine\source\LogFiles.cpp" />

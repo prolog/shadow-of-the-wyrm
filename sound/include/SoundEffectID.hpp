@@ -25,6 +25,9 @@ class SoundEffectID
     static const std::string CLICK;
     static const std::string EAT;
     static const std::string DRINK;
+    static const std::string DRIP1;
+    static const std::string DRIP2;
+    static const std::string DRIP3;
 
   protected:
     SoundEffectID();
@@ -52,3 +55,6 @@ constexpr auto CSOUND_EFFECT_LEVEL_UP = "_level_up";
 constexpr auto CSOUND_EFFECT_CLICK = "_click";
 constexpr auto CSOUND_EFFECT_EAT = "_eat";
 constexpr auto CSOUND_EFFECT_DRINK = "_drink";
+constexpr auto CSOUND_EFFECT_DRIP1 = "_drip1";
+constexpr auto CSOUND_EFFECT_DRIP2 = "_drip2";
+constexpr auto CSOUND_EFFECT_DRIP3 = "_drip3";

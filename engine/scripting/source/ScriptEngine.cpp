@@ -367,6 +367,9 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConstStr(ls, CSOUND_EFFECT_CLICK);
   lua_exportConstStr(ls, CSOUND_EFFECT_EAT);
   lua_exportConstStr(ls, CSOUND_EFFECT_DRINK);
+  lua_exportConstStr(ls, CSOUND_EFFECT_DRIP1);
+  lua_exportConstStr(ls, CSOUND_EFFECT_DRIP2);
+  lua_exportConstStr(ls, CSOUND_EFFECT_DRIP3);
 
   lua_exportConstStr(ls, CMUSIC_EVENT_ARENA);
   lua_exportConstStr(ls, CMUSIC_EVENT_ARENA_VICTORY);

@@ -48,6 +48,9 @@ MapPtr SewerGenerator::generate(const Dimensions& dimensions)
   // Place up and potentially down staircases as appropriate.
   place_staircases(result_map);
 
+  // Sewers are always considered wet.
+  result_map->set_property(MapProperties::MAP_PROPERTIES_WET, std::to_string(true));
+
   return result_map;
 }
 

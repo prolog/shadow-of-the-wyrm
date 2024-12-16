@@ -3,8 +3,11 @@ Me:
 - git push --tags
 - The Ybari/Asturias?
 - order screen
+- test settlement and church generation via Maptester
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.
+- swyrm setting for ambient sound effects
+- ambient sound unit tests
 - Use this for fletchery, bowyer, etc, to improve item & quantity
 - setting for where scores.dat is written
 - chance for ambient sound (eg water drops when underground) - only do when
