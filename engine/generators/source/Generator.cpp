@@ -16,6 +16,7 @@
 #include "Generator.hpp"
 #include "Map.hpp"
 #include "MapUtils.hpp"
+#include "MusicEvent.hpp"
 #include "Serialize.hpp"
 #include "TextKeys.hpp"
 #include "WorldMapLocationTextKeys.hpp"
@@ -295,6 +296,15 @@ void Generator::create_entities(MapPtr map, const int dl, const bool create_crea
     if (std::get<1>(creature_details) == 0 && 
         MapUtils::get_hostile_creatures(CreatureID::CREATURE_ID_PLAYER, map).empty())
     {
+      if (map->has_coastline())
+      {
+        Game& game = Game::instance();
+        ternary winner = game.get_winner();
+        string loc = game.get_music_cref().get_event_song(MusicEvent::MUSIC_EVENT_WAVES, winner);
+
+        map->set_property(MapProperties::MAP_PROPERTIES_SONG_LOCATION, loc);
+      }
+
       IMessageManager& manager = MM::instance();
       manager.add_new_message(StringTable::get(TextKeys::NO_CREATURES_GENERATED));
       manager.send();
