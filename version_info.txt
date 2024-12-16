@@ -37,7 +37,9 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
 - NPCs may choose to cast statistic buff spells when there are hostiles in 
   their FOV.
 
-- Added support for ambient sound effects based on map details. 
+- Added support for ambient sound effects based on map details.
+
+- Added "waves" music to the overworld part of the exile's island.
 
 - Updated premake script for v5.
 
