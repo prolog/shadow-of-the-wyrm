@@ -1,7 +1,9 @@
 #include "AmbientSound.hpp"
 #include "Conversion.hpp"
+#include "Game.hpp"
 #include "MapProperties.hpp"
 #include "RNG.hpp"
+#include "Setting.hpp"
 #include "SoundEffectID.hpp"
 
 using namespace std;
@@ -32,8 +34,10 @@ AmbientSound::AmbientSound()
 string AmbientSound::get_sound_effect(MapPtr map, const ulonglong turn_number) const
 {
 	string effect_id;
+	SoundPtr sound = Game::instance().get_sound();
+	bool ambient_enabled = sound ? sound->get_enable_ambient_sound_effects() : true;
 
-	if (map != nullptr)
+	if (ambient_enabled && map != nullptr)
 	{
 		MapType mt = map->get_map_type();
 

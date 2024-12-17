@@ -18,6 +18,9 @@ class Sound : public ISerializable
 		virtual void set_enable_sound_effects(const bool new_enable_sound_effects);
 		virtual bool get_enable_sound_effects() const;
 
+		virtual void set_enable_ambient_sound_effects(const bool new_enable_ambient_sound_effects);
+		virtual bool get_enable_ambient_sound_effects() const;
+
 		virtual void set_enable_music(const bool new_enable_music);
 		virtual bool get_enable_music() const;
 
@@ -45,6 +48,7 @@ class Sound : public ISerializable
 		std::map<std::string, std::string> effect_regex;
 		bool enable_sound;
 		bool enable_sound_effects;
+		bool enable_ambient_sound_effects;
 		bool enable_music;
 
 	private:

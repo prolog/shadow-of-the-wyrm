@@ -21,6 +21,7 @@ const string SettingTextKeys::SETTING_AUTOMOVE_ALWAYS_STOP_ON_ITEMS = "SETTING_A
 
 const string SettingTextKeys::SETTING_SOUND_ENABLED = "SETTING_SOUND_ENABLED";
 const string SettingTextKeys::SETTING_SOUND_EFFECTS_ENABLED = "SETTING_SOUND_EFFECTS_ENABLED";
+const string SettingTextKeys::SETTING_AMBIENT_SOUND_EFFECTS_ENABLED = "SETTING_AMBIENT_SOUND_EFFECTS_ENABLED";
 const string SettingTextKeys::SETTING_MUSIC_ENABLED = "SETTING_MUSIC_ENABLED";
 
 string SettingTextKeys::get_autopickup_exclude_over_weight_message(const string& weight_in_lbs)

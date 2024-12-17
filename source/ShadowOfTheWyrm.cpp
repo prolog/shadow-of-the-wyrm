@@ -147,12 +147,14 @@ int main(int argc, char* argv[])
       string sound_id = settings.get_setting(Setting::SOUND);
       bool enable_sound = settings.get_setting_as_bool(Setting::SOUND_ENABLED);
       bool enable_sound_effects = settings.get_setting_as_bool(Setting::SOUND_EFFECTS_ENABLED);
+      bool enable_ambient_sound_effects = settings.get_setting_as_bool(Setting::AMBIENT_SOUND_EFFECTS_ENABLED);
       bool enable_music = settings.get_setting_as_bool(Setting::MUSIC_ENABLED);
 
       SoundFactory sf;
       SoundPtr sound = sf.create_sound(sound_id);
       sound->set_enable_sound(enable_sound);
       sound->set_enable_sound_effects(enable_sound_effects);
+      sound->set_enable_ambient_sound_effects(enable_ambient_sound_effects);
       sound->set_enable_music(enable_music);
 
       bool write_ok = check_write_permissions();

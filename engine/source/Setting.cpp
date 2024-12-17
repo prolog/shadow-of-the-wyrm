@@ -93,6 +93,7 @@ const string Setting::SAVE_THEN_PROMPT_TO_QUIT = "save_then_prompt_to_quit";
 const string Setting::SOUND = "sound";
 const string Setting::SOUND_ENABLED = "sound_enabled";
 const string Setting::SOUND_EFFECTS_ENABLED = "sound_effects_enabled";
+const string Setting::AMBIENT_SOUND_EFFECTS_ENABLED = "ambient_sound_effects_enabled";
 const string Setting::DISABLE_SOUND_EFFECT_IDS = "disable_sound_effect_ids";
 const string Setting::MUSIC_ENABLED = "music_enabled";
 const string Setting::ALWAYS_GIVE_ORDERS_TO_ALL_FOLLOWERS_IN_RANGE = "always_give_orders_to_all_followers_in_range";

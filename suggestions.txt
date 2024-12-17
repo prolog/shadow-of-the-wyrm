@@ -3,7 +3,6 @@ Me:
 - git push --tags
 - The Ybari/Asturias?
 - order screen
-- turns: should be ulonglong not int
 - test settlement and church generation via Maptester
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.

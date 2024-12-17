@@ -4,7 +4,7 @@
 using namespace std;
 
 Sound::Sound()
-: enable_sound(true), enable_sound_effects(true), enable_music(true)
+: enable_sound(true), enable_sound_effects(true), enable_ambient_sound_effects(true), enable_music(true)
 {
 }
 
@@ -33,6 +33,16 @@ bool Sound::get_enable_sound_effects() const
 	return enable_sound_effects;
 }
 
+void Sound::set_enable_ambient_sound_effects(const bool new_enable_ambient_sound_effects)
+{
+	enable_ambient_sound_effects = new_enable_ambient_sound_effects;
+}
+
+bool Sound::get_enable_ambient_sound_effects() const
+{
+	return enable_ambient_sound_effects;
+}
+
 void Sound::set_enable_music(const bool new_enable_music)
 {
 	enable_music = new_enable_music;
@@ -54,6 +64,7 @@ bool Sound::serialize(std::ostream& stream) const
 	Serialize::write_string_map(stream, effect_regex);
 	Serialize::write_bool(stream, enable_sound);
 	Serialize::write_bool(stream, enable_sound_effects);
+	Serialize::write_bool(stream, enable_ambient_sound_effects);
 	Serialize::write_bool(stream, enable_music);
 
 	return true;
@@ -65,6 +76,7 @@ bool Sound::deserialize(std::istream& stream)
 	Serialize::read_string_map(stream, effect_regex);
 	Serialize::read_bool(stream, enable_sound);
 	Serialize::read_bool(stream, enable_sound_effects);
+	Serialize::read_bool(stream, enable_ambient_sound_effects);
 	Serialize::read_bool(stream, enable_music);
 
 	return true;

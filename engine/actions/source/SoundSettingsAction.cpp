@@ -21,6 +21,7 @@ vector<pair<string, string>> SoundSettingsAction::get_settings_to_display(Creatu
 
   vector<pair<string, string>> sound_settings = { { Setting::SOUND_ENABLED, Setting::SOUND_ENABLED  + "=" + StringTable::get(SettingTextKeys::SETTING_SOUND_ENABLED) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::SOUND_ENABLED)))},
                                                   { Setting::SOUND_EFFECTS_ENABLED, Setting::SOUND_EFFECTS_ENABLED + "=" + StringTable::get(SettingTextKeys::SETTING_SOUND_EFFECTS_ENABLED) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::SOUND_EFFECTS_ENABLED))) },
+                                                  { Setting::AMBIENT_SOUND_EFFECTS_ENABLED, Setting::AMBIENT_SOUND_EFFECTS_ENABLED + "=" + StringTable::get(SettingTextKeys::SETTING_AMBIENT_SOUND_EFFECTS_ENABLED) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::AMBIENT_SOUND_EFFECTS_ENABLED))) },
                                                   { Setting::MUSIC_ENABLED, Setting::MUSIC_ENABLED + "=" + StringTable::get(SettingTextKeys::SETTING_MUSIC_ENABLED) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::MUSIC_ENABLED))) }  };
 
   return sound_settings;
@@ -44,6 +45,10 @@ void SoundSettingsAction::process_setting_if_necessary(CreaturePtr /*creature*/,
     else if (setting_name == Setting::SOUND_EFFECTS_ENABLED)
     {
       sound->set_enable_sound_effects(new_set_val);
+    }
+    else if (setting_name == Setting::AMBIENT_SOUND_EFFECTS_ENABLED)
+    {
+      sound->set_enable_ambient_sound_effects(new_set_val);
     }
     else if (setting_name == Setting::MUSIC_ENABLED)
     {

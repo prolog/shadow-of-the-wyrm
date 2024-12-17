@@ -1553,6 +1553,7 @@ bool Game::deserialize(istream& stream)
   // settings so these can persist between saves.
   sound->set_enable_sound(old_sound->get_enable_sound());
   sound->set_enable_sound_effects(old_sound->get_enable_sound_effects());
+  sound->set_enable_ambient_sound_effects(old_sound->get_enable_ambient_sound_effects());
   sound->set_enable_music(old_sound->get_enable_music());
 
   map_registry.deserialize(stream);
