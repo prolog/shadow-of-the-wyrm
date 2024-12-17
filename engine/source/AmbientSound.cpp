@@ -31,7 +31,7 @@ AmbientSound::AmbientSound()
 {
 }
 
-string AmbientSound::get_sound_effect(MapPtr map, const ulonglong turn_number) const
+string AmbientSound::get_sound_effect(MapPtr map, const ulonglong turn_number, const bool override_probability) const
 {
 	string effect_id;
 	SoundPtr sound = Game::instance().get_sound();
@@ -43,14 +43,14 @@ string AmbientSound::get_sound_effect(MapPtr map, const ulonglong turn_number) c
 
 		if (mt == MapType::MAP_TYPE_UNDERWORLD)
 		{
-			effect_id = ambient_underground_handler(map, turn_number);
+			effect_id = ambient_underground_handler(map, turn_number, override_probability);
 		}
 	}
 
 	return effect_id;
 }
 
-string AmbientSound::ambient_underground_handler(MapPtr map, const ulonglong turn_number) const
+string AmbientSound::ambient_underground_handler(MapPtr map, const ulonglong turn_number, const bool override_probability) const
 {
 	string sound_effect_id;
 	MapType mt = map->get_map_type();
@@ -60,7 +60,7 @@ string AmbientSound::ambient_underground_handler(MapPtr map, const ulonglong tur
 	{
 		bool wet = String::to_bool(map->get_property(MapProperties::MAP_PROPERTIES_WET));
 
-		if (wet && should_trigger(map, turn_number, a_it->second))
+		if (wet && should_trigger(map, turn_number, a_it->second, override_probability))
 		{ 
 			auto ase_it = ambient_sound_effects.find(mt);
 
@@ -79,15 +79,20 @@ string AmbientSound::ambient_underground_handler(MapPtr map, const ulonglong tur
 	return sound_effect_id;
 }
 
-bool AmbientSound::should_trigger(MapPtr map, const ulonglong turn_number, const AmbientSoundProbability& asp) const
+bool AmbientSound::should_trigger(MapPtr map, const ulonglong turn_number, const AmbientSoundProbability& asp, const bool override_probability) const
 {
 	bool trigger = false;
 	auto xy = asp.get_x_in_y();
 
-	if (turn_number % asp.get_turn_mod_trigger() == 0 && RNG::x_in_y_chance(xy.first, xy.second))
+	if (turn_number % asp.get_turn_mod_trigger() == 0 && 
+		 (override_probability || RNG::x_in_y_chance(xy.first, xy.second)))
 	{
 		trigger = true;
 	}
 
 	return trigger;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/AmbientSound_test.cpp"
+#endif

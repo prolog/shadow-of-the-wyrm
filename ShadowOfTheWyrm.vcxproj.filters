@@ -9322,6 +9322,9 @@
     <ClCompile Include="engine\source\AmbientSound.cpp">
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\AmbientSound_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShadowOfTheWyrm.rc" />
