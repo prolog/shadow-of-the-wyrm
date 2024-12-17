@@ -20,11 +20,11 @@ class AmbientSound
 		AmbientSound();
 		virtual ~AmbientSound() = default;
 
-		std::string get_sound_effect(MapPtr map, const int turn_number) const;
+		std::string get_sound_effect(MapPtr map, const ulonglong turn_number) const;
 
 	protected:
-		std::string ambient_underground_handler(MapPtr map, const int turn_number) const;
-		bool should_trigger(MapPtr map, const int turn_number, const AmbientSoundProbability& asp) const;
+		std::string ambient_underground_handler(MapPtr map, const ulonglong turn_number) const;
+		bool should_trigger(MapPtr map, const ulonglong turn_number, const AmbientSoundProbability& asp) const;
 
 		std::map<MapType, AmbientSoundProbability> ambient_sound_probabilities;
 		std::map<MapType, std::vector<std::string>> ambient_sound_effects;

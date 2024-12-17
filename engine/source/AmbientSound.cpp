@@ -29,7 +29,7 @@ AmbientSound::AmbientSound()
 {
 }
 
-string AmbientSound::get_sound_effect(MapPtr map, const int turn_number) const
+string AmbientSound::get_sound_effect(MapPtr map, const ulonglong turn_number) const
 {
 	string effect_id;
 
@@ -46,7 +46,7 @@ string AmbientSound::get_sound_effect(MapPtr map, const int turn_number) const
 	return effect_id;
 }
 
-string AmbientSound::ambient_underground_handler(MapPtr map, const int turn_number) const
+string AmbientSound::ambient_underground_handler(MapPtr map, const ulonglong turn_number) const
 {
 	string sound_effect_id;
 	MapType mt = map->get_map_type();
@@ -75,7 +75,7 @@ string AmbientSound::ambient_underground_handler(MapPtr map, const int turn_numb
 	return sound_effect_id;
 }
 
-bool AmbientSound::should_trigger(MapPtr map, const int turn_number, const AmbientSoundProbability& asp) const
+bool AmbientSound::should_trigger(MapPtr map, const ulonglong turn_number, const AmbientSoundProbability& asp) const
 {
 	bool trigger = false;
 	auto xy = asp.get_x_in_y();
