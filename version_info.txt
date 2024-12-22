@@ -45,6 +45,8 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
 
 - Increased MSVC warning level from /W3 to /W4.
 
+- The location of the scorefile (scores.dat) can now be specified (Larzid).
+
 - Bug fixes:
 
   - Creating items with Bowyer/Fletchery wasn't setting their status

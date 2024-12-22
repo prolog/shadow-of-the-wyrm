@@ -7,7 +7,7 @@ Me:
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.
 - Use this for fletchery, bowyer, etc, to improve item & quantity
-- setting for where scores.dat is written
+- set random extra descriptions for up/down staircases
 - Moving up/down when ice frozen?
 - let's work on recall/coming back if you go down a water tile...
 - Caldera's water should be death - swimming or descending

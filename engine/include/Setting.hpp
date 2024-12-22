@@ -7,6 +7,7 @@ class Setting
     static const std::string USERDATA_DIR;
     static const std::string GENERATE_SYSTEM_CHARDUMP;
     static const std::string SYSCHARDUMP_DIR;
+    static const std::string SCOREFILE_DIR;
     static const std::string SHADE_TERRAIN;
     static const std::string SHADE_CREATURES_AND_ITEMS;
     static const std::string DEFAULT_HP_COLOUR;

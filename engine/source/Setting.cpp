@@ -14,6 +14,7 @@ const string Setting::LOG_DIR = "log_dir";
 const string Setting::USERDATA_DIR = "userdata_dir";
 const string Setting::GENERATE_SYSTEM_CHARDUMP = "generate_system_chardump";
 const string Setting::SYSCHARDUMP_DIR = "syschardump_dir";
+const string Setting::SCOREFILE_DIR = "scorefile_dir";
 const string Setting::SHADE_TERRAIN = "shade_terrain";
 const string Setting::SHADE_CREATURES_AND_ITEMS = "shade_creatures_and_items";
 const string Setting::DEFAULT_HP_COLOUR = "default_hp_colour";

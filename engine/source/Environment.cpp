@@ -122,6 +122,24 @@ string Environment::get_syschardump_directory(const Settings* settings)
   return syschardump_directory;
 }
 
+string Environment::get_scorefile_directory(const Settings* settings)
+{
+  string scorefile_directory = ".";
+
+  if (settings != nullptr)
+  {
+    string settings_scorefile_dir = settings->get_setting(Setting::SCOREFILE_DIR);
+    boost::algorithm::trim(settings_scorefile_dir);
+
+    if (!settings_scorefile_dir.empty())
+    {
+      scorefile_directory = settings_scorefile_dir;
+    }
+  }
+
+  scorefile_directory = File::harmonize_dirname(scorefile_directory);
+  return scorefile_directory;
+}
 
 // Return the current player's username.
 string Environment::get_user_name()
