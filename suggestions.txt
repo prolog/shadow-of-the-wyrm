@@ -8,6 +8,8 @@ Me:
   get a check for each of bowyer/fletchery and crafting.
 - Use this for fletchery, bowyer, etc, to improve item & quantity
 - set random extra descriptions for up/down staircases
+- Update check_write_permissions() so that it checks to make sure the
+  scorefile dir is writable.
 - Moving up/down when ice frozen?
 - let's work on recall/coming back if you go down a water tile...
 - Caldera's water should be death - swimming or descending

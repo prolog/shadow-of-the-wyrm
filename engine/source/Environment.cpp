@@ -141,6 +141,27 @@ string Environment::get_scorefile_directory(const Settings* settings)
   return scorefile_directory;
 }
 
+bool Environment::check_scorefile_write_permissions(const Settings* settings)
+{
+  bool can_write = true;
+
+  string fname = get_scorefile_directory(settings) + "test";
+  std::ofstream test_file;
+  test_file.open(fname, ios::out | ios::binary);
+
+  if (!test_file.good())
+  {
+    can_write = false;
+  }
+  else
+  {
+    test_file.close();
+    std::remove(fname.c_str());
+  }
+
+  return can_write;
+}
+
 // Return the current player's username.
 string Environment::get_user_name()
 {

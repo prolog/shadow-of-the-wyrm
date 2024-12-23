@@ -53,7 +53,6 @@ using namespace xercesc;
 void print_title();
 std::string run_game(DisplayPtr display, SoundPtr sound, ControllerPtr controller, Settings& settings);
 void remove_old_logfiles(const Settings& settings);
-bool check_write_permissions();
 int parse_command_line_arguments(int argc, char* argv[]);
 void set_display_settings(DisplayPtr display, const Settings& settings);
 
@@ -157,11 +156,11 @@ int main(int argc, char* argv[])
       sound->set_enable_ambient_sound_effects(enable_ambient_sound_effects);
       sound->set_enable_music(enable_music);
 
-      bool write_ok = check_write_permissions();
+      bool write_ok = Environment::check_scorefile_write_permissions(&settings);
 
       if (!write_ok)
       {
-        cout << "No write permissions in current directory!" << endl;
+        cout << "No scorefile write permissions! Check permissions for location in swyrm.ini." << endl;
         throw "error";
       }
 
@@ -226,27 +225,6 @@ string run_game(DisplayPtr display, SoundPtr sound, ControllerPtr controller, Se
 
   display->tear_down();
   return msg;
-}
-
-bool check_write_permissions()
-{
-  bool can_write = true;
-
-  string fname = "test";
-  std::ofstream test_file;
-  test_file.open(fname, ios::out | ios::binary);
-
-  if (!test_file.good())
-  {
-    can_write = false;
-  }
-  else
-  {
-    test_file.close();
-    std::remove(fname.c_str());
-  }
-  
-  return can_write;
 }
 
 void remove_old_logfiles(const Settings& settings)
