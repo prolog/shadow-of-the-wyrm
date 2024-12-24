@@ -171,10 +171,7 @@ std::string map_to_string(MapPtr map, bool use_html)
   std::string map_s = "";
   std::string tile_ascii = "";
 
-  Dimensions d = map->size();
-  int rows = d.get_y();
-  int cols = d.get_x();
-
+  Dimensions dim = map->size();
   std::string start_tag, end_tag;
 
   if (use_html)
@@ -183,7 +180,6 @@ std::string map_to_string(MapPtr map, bool use_html)
     end_tag = "</font>";
   }
 
-  Dimensions dim = map->size();
   int row_end = dim.get_y() - 1;
   int col_end = dim.get_x() - 1;
 
@@ -211,8 +207,8 @@ std::string map_to_string(MapPtr map, bool use_html)
         if (exit && exit->is_using_map_id())
         {
           cur_map = Game::instance().get_map_registry_ref().get_map(exit->get_map_id());
-          Dimensions dim = cur_map->size();
-          col_end += dim.get_x() - 1;
+          Dimensions cdim = cur_map->size();
+          col_end += cdim.get_x() - 1;
         }
 
         cur_map_x = 0;
@@ -236,8 +232,8 @@ std::string map_to_string(MapPtr map, bool use_html)
       if (exit && exit->is_using_map_id())
       {
         row_reset_map = Game::instance().get_map_registry_ref().get_map(exit->get_map_id());
-        Dimensions dim = cur_map->size();
-        row_end += dim.get_y() - 1;
+        Dimensions cdim = cur_map->size();
+        row_end += cdim.get_y() - 1;
         cur_map_y = 0;
         cur_map_x = 0;
       }
@@ -1335,11 +1331,11 @@ void load_custom_maps()
       if (s_it != selection_mappings.end())
       {
         std::pair<std::string, std::string> filter_mid = s_it->second;
-        MapPtr map = load_custom_map(filter_mid.first, filter_mid.second);
+        MapPtr cmap = load_custom_map(filter_mid.first, filter_mid.second);
 
-        if (map != nullptr)
+        if (cmap != nullptr)
         {
-          output_map(map_to_string(map), "custom_map.html");
+          output_map(map_to_string(cmap), "custom_map.html");
         }
       }
     }
@@ -1561,7 +1557,7 @@ void church_maps()
   }  
 }
 
-int main(int argc, char* argv[])
+int main(int, char**)
 {
   std::string map;
   int option = 0;
