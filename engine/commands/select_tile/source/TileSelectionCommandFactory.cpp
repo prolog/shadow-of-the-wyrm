@@ -73,6 +73,10 @@ CommandPtr TileSelectionCommandFactory::create(const int key, const std::string&
   {
     command = std::make_unique<ItemCodexCommand>(key);
   }
+  else if (command_name == CommandKeys::ORDER)
+  {
+    command = std::make_unique<OrderCommand>(key);
+  }
   
   return command;
 }

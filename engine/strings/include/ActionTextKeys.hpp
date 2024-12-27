@@ -255,6 +255,7 @@ class ActionTextKeys
     static const std::string ACTION_TAME_BEGIN;
     static const std::string ACTION_TAME_NO_TARGETS;
     static const std::string ACTION_ORDER_NO_FOLLOWERS;
+    static const std::string ACTION_ORDER_NOT_A_FOLLOWER;
     static const std::string ACTION_ABANDONED;
     static const std::string ACTION_INCINERATE_NO_SPELLBOOKS;
     static const std::string ACTION_INCINERATE_NO_AP;

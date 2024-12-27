@@ -1,3 +1,4 @@
+#include "ActionTextKeys.hpp"
 #include "CommandKeys.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
@@ -41,6 +42,10 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr c
       else if (command_name == CommandKeys::BESTIARY)
       {
         result = process_tile_selection_bestiary(creature, tsa);
+      }
+      else if (command_name == CommandKeys::ORDER)
+      {
+        result = process_tile_selection_order(creature, tsa);
       }
       else if (command_name == CommandKeys::ITEM_CODEX)
       {
@@ -193,4 +198,39 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selectio
   }
 
   return result;
+}
+
+pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selection_order(CreaturePtr creature, TileSelectionAction* const tsa)
+{
+  TilePtr tile = tsa->get_cursor_tile();
+  bool ok_to_give_order = false;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
+  if (creature && tile != nullptr)
+  {
+    CreaturePtr tile_creature = tile->get_creature();
+
+    if (tile_creature != nullptr)
+    {
+      if (tile_creature->get_leader_id() == creature->get_id())
+      {
+        ok_to_give_order = true;
+      }
+      else
+      {
+        // Creature exists, but isn't a follower.
+        IMessageManager& manager = MessageManagerFactory::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ORDER_NOT_A_FOLLOWER));
+        manager.send();
+      }
+    }
+
+    if (ok_to_give_order)
+    {
+      // ...
+      acv = ActionCostConstants::DEFAULT;
+    }
+  }
+
+  return std::make_pair(Game::instance().get_settings_ref().get_setting_as_bool(Setting::CONTINUE_TILE_SELECTION_AFTER_LOOKUP), acv);
 }

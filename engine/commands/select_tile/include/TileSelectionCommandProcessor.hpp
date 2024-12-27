@@ -26,4 +26,5 @@ class TileSelectionCommandProcessor
     static std::pair<bool, ActionCostValue> process_tile_selection_bestiary(CreaturePtr creature, TileSelectionAction* const tsa);
     static std::pair<bool, ActionCostValue> process_tile_selection_item_codex(CreaturePtr creature, TileSelectionAction* const tsa);
     static std::pair<bool, ActionCostValue> process_tile_selection_by_creature(CreaturePtr creature, const SelectCreatureType sct, TileSelectionAction* const tsa);
+    static std::pair<bool, ActionCostValue> process_tile_selection_order(CreaturePtr creature, TileSelectionAction* const tsa);
 };
