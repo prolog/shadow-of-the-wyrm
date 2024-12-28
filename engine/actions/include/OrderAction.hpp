@@ -5,7 +5,13 @@
 class OrderAction : public IActionManager
 {
   public:
+    // Issues orders from a particular leader creature to its followers in
+    // view.
     ActionCostValue order(CreaturePtr creature);
+
+    // Issues orders from a particular leader to a particular follower.
+    ActionCostValue order_creature(CreaturePtr leader, CreaturePtr cr_to_order);
+
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 
     ActionCostValue order_attack(CreaturePtr creature, const std::string& follower_ids);

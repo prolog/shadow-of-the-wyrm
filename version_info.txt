@@ -47,6 +47,8 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
 
 - The location of the scorefile (scores.dat) can now be specified (Larzid).
 
+- Orders can now be given to individual followers via examine.
+
 - Bug fixes:
 
   - Creating items with Bowyer/Fletchery wasn't setting their status

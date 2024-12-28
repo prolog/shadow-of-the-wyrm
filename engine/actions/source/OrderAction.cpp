@@ -41,6 +41,37 @@ ActionCostValue OrderAction::order(CreaturePtr creature)
   return acv;
 }
 
+ActionCostValue OrderAction::order_creature(CreaturePtr leader, CreaturePtr cr_to_order)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
+  if (leader != nullptr && cr_to_order != nullptr)
+  {
+    Game& game = Game::instance();
+    DecisionStrategy* decision_strategy = leader->get_decision_strategy();
+    bool can_summon = leader->get_skills().get_value(SkillType::SKILL_GENERAL_LEADERSHIP) > 0;
+
+    CommandFactoryPtr command_factory = std::make_unique<OrderCommandFactory>();
+
+    if (decision_strategy)
+    {
+      const CreatureMap& fov_followers = CreatureUtils::get_followers_in_fov(leader);
+      bool always_order_all = game.get_settings_ref().get_setting_as_bool(Setting::ALWAYS_GIVE_ORDERS_TO_ALL_FOLLOWERS_IN_RANGE);
+      bool followers_exist_in_fov = fov_followers.empty() == false;
+
+      KeyboardCommandMapPtr kb_command_map = std::make_unique<OrderKeyboardCommandMap>(followers_exist_in_fov, can_summon);
+      OrderScreen os(game.get_display(), followers_exist_in_fov, can_summon);
+      string display_s = os.display();
+      int input = display_s.at(0);
+
+      CommandPtr order_command = decision_strategy->get_nonmap_decision(false, leader->get_id(), command_factory.get(), kb_command_map.get(), &input, false);
+      acv = OrderCommandProcessor::process(leader, order_command.get(), cr_to_order->get_id());
+    }
+  }
+
+  return acv;
+}
+
 bool OrderAction::check_for_followers(CreaturePtr creature, IMessageManager& manager)
 {
   bool has_followers_in_fov = false;

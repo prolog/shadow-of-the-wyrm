@@ -268,11 +268,6 @@ ActionCostValue TileSelectionAction::select_tile_cancel(CreaturePtr creature)
   {
     MapCursor mc;
     mc.reset_cursor(game.get_current_map());
-    
-    if (creature->get_is_player())
-    {
-      manager.clear_if_necessary();
-    }
   }
   
   return get_action_cost_value(creature);
