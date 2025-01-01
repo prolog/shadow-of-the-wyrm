@@ -41,6 +41,8 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
 
 - Added "waves" music to the overworld part of the exile's island.
 
+- Replaced the music for the Caldera with a new composition.
+
 - Updated premake script for v5.
 
 - Increased MSVC warning level from /W3 to /W4.

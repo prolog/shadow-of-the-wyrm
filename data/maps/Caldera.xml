@@ -76,7 +76,7 @@
 	<Properties>
 		<Property>
 			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
-			<Value>assets/sound/music/caldera.ogg</Value>
+			<Value>assets/sound/music/tall_pines.ogg</Value>
 		</Property>
 	</Properties>
 </CustomMap>

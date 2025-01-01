@@ -2,8 +2,6 @@ Me:
 - ASSET RELEASE: sounds!
 - git push --tags
 - The Ybari/Asturias?
-- order screen
-- test settlement and church generation via Maptester
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.
 - Use this for fletchery, bowyer, etc, to improve item & quantity
@@ -215,7 +213,6 @@ Me:
 - Beer halls in villages
 - Do creatures pause when no threats in FOV? Seems slow.
 - 2x draw?
-- Beastmastery: add mounts
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?
 - EACH VERSION: clean up the usage of some shared_ptrs.  These should be
@@ -253,7 +250,6 @@ Me:
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
 - The vaults of the old dwarven-kings
-- Towers/tower generators.
 - Reuse some of the sector feature generators in dungeons - tomb, etc.
 - Descent into the underworld.
 - Wilderness ruins/lairs
@@ -409,7 +405,6 @@ mission opossumable:
 
 YARD:
 - spell details on shift+letter
-- wilderness, low level creatures, etc
 
 IceBox: 
 - can the confirm setting be allowed to change on load?
@@ -471,7 +466,6 @@ JovanM:
 - create inkpots
 - paper making from anything made of wood
 - long shops eg in Carcassia allow free thievery
-- combine Fletchery & Bowyer
 
 Sabrecam: 
 - pay guards for peace
