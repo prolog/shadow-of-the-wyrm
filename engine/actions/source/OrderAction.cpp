@@ -56,7 +56,6 @@ ActionCostValue OrderAction::order_creature(CreaturePtr leader, CreaturePtr cr_t
     if (decision_strategy)
     {
       const CreatureMap& fov_followers = CreatureUtils::get_followers_in_fov(leader);
-      bool always_order_all = game.get_settings_ref().get_setting_as_bool(Setting::ALWAYS_GIVE_ORDERS_TO_ALL_FOLLOWERS_IN_RANGE);
       bool followers_exist_in_fov = fov_followers.empty() == false;
 
       KeyboardCommandMapPtr kb_command_map = std::make_unique<OrderKeyboardCommandMap>(followers_exist_in_fov, can_summon);

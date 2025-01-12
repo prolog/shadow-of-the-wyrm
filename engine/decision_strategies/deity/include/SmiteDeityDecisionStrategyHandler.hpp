@@ -17,4 +17,5 @@ class SmiteDeityDecisionStrategyHandler : public DeityDecisionStrategyHandler
 
     static const int ADJACENT_HOSTILE_SMITE_THRESHOLD;
     static const int SMITE_LEVEL_DAMAGE_MULTIPLIER;
+    static const int SMITE_EFFECT_BONUS;
 };

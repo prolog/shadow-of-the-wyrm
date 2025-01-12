@@ -262,7 +262,6 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Sel
 ActionCostValue TileSelectionAction::select_tile_cancel(CreaturePtr creature)
 {
   Game& game = Game::instance();
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   
   if (creature)
   {

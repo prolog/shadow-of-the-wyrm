@@ -51,6 +51,10 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
 
 - Orders can now be given to individual followers via examine.
 
+- Divine prayed-for smites are now lightning-based and carry a large effect
+  bonus for paralysis. There is now also a message that the creatures are
+  hit with divine fury.
+
 - Bug fixes:
 
   - Creating items with Bowyer/Fletchery wasn't setting their status
