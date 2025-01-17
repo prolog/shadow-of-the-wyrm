@@ -18,7 +18,7 @@ The following dependencies are used (environment variable in parens):
 - Xerces-C 3.2.1 (XERCES_DIR)
 - zlib-1.2.11 (ZLIB_DIR)
 - pdcurses (CURSES_DIR)
-- SDL 2.0.12 (SDL_DIR)
+- SDL 2.0.12 (SDL_DIR), plus SDL2_mixer, SDL2_image
 
 Download each of the dependencies, build, and then set the environment
 variables appropriately.
