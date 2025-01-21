@@ -2,6 +2,7 @@ Me:
 - ASSET RELEASE: sounds!
 - git push --tags
 - The Ybari/Asturias?
+- ICE MESSAGE?
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.
 - Use this for fletchery, bowyer, etc, to improve item & quantity
@@ -447,6 +448,8 @@ Bentwing:
 - restack on blessing eg books, all items, etc
 - more fleshed out NPCs/hirelings/writing generally
 - keybinding for toggling reach mode
+- when sapient allies are left behind on a resetting area, instead of being
+  removed from the game world, show up randomly in a settlement somewhere.
 
 Kenny:
 - repeat last command (!)

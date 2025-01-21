@@ -2819,17 +2819,26 @@ pair<bool, string> MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map,
       {
         if (d == Direction::DIRECTION_DOWN)
         {
-          if (map_type != MapType::MAP_TYPE_UNDERWATER &&
-              map->get_is_water_shallow() &&
-             (can_breathe_water || can_swim))
+          auto season = Game::instance().get_current_world()->get_calendar().get_season()->get_season();
+
+          if (tile->get_is_frozen(season))
           {
-            if (map->get_allow_diving())
+            msg = MovementTextKeys::ACTION_MOVE_DIVE_ICE;
+          }
+          else
+          {
+            if (map_type != MapType::MAP_TYPE_UNDERWATER &&
+              map->get_is_water_shallow() &&
+              (can_breathe_water || can_swim))
             {
-              can_change = true;
-            }
-            else
-            {
-              msg = MovementTextKeys::ACTION_MOVE_DIVE_TOO_SHALLOW;
+              if (map->get_allow_diving())
+              {
+                can_change = true;
+              }
+              else
+              {
+                msg = MovementTextKeys::ACTION_MOVE_DIVE_TOO_SHALLOW;
+              }
             }
           }
         }
