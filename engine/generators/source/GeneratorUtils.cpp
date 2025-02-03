@@ -656,24 +656,30 @@ void GeneratorUtils::generate_randarts(MapPtr map, const Coordinate& c, const in
 
     if (tile != nullptr)
     {
-      ActionManager& am = Game::instance().get_action_manager_ref();
-      ItemGenerationManager igm;
-      vector<ItemType> restr = { ItemType::ITEM_TYPE_WEAPON, ItemType::ITEM_TYPE_ARMOUR };
-      ItemGenerationConstraints igc(1, 50 /* JCD FIXME */, Rarity::RARITY_VERY_RARE, restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE);
-      ItemGenerationMap generation_map = igm.generate_item_generation_map(igc);
-      RaceManager rm;
-
       for (int i = 0; i < num_randarts; i++)
       {
-        ItemPtr randart = igm.generate_item(am, generation_map, Rarity::RARITY_VERY_RARE, restr, 0);
-        string name = Naming::generate_artifact_name();
-        vector<string> race_ids = rm.get_race_ids(false, false);
-        randart->create_randart(name, race_ids);
-
+        ItemPtr randart = generate_randart();
         tile->get_items()->merge_or_add(randart, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
       }
     }
   }
+}
+
+ItemPtr GeneratorUtils::generate_randart()
+{
+  ActionManager& am = Game::instance().get_action_manager_ref();
+  ItemGenerationManager igm;
+  vector<ItemType> restr = { ItemType::ITEM_TYPE_WEAPON, ItemType::ITEM_TYPE_ARMOUR };
+  ItemGenerationConstraints igc(1, 50 /* JCD FIXME */, Rarity::RARITY_VERY_RARE, restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE);
+  ItemGenerationMap generation_map = igm.generate_item_generation_map(igc);
+  RaceManager rm;
+
+  ItemPtr randart = igm.generate_item(am, generation_map, Rarity::RARITY_VERY_RARE, restr, 0);
+  string name = Naming::generate_artifact_name();
+  vector<string> race_ids = rm.get_race_ids(false, false);
+  randart->create_randart(name, race_ids);
+
+  return randart;
 }
 
 void GeneratorUtils::generate_item_per_coord(MapPtr map, const vector<Coordinate>& coords, const vector<string>& item_ids)

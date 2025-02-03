@@ -2,7 +2,7 @@ Me:
 - ASSET RELEASE: sounds!
 - git push --tags
 - The Ybari/Asturias?
-- ICE MESSAGE?
+- pre-brewing: wheat fields
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.
 - Use this for fletchery, bowyer, etc, to improve item & quantity
@@ -15,10 +15,8 @@ Me:
 - test orb placement in wyrmeswraec
 - dig in water
 - other ambient sounds
-- pre-brewing: wheat fields
 - super_type_message_sids -> super_type_sound_id?
 - hemsio: autosave not working?
-- test both seed and food planting on same tile
 - tile item transforms: drop items, test save and load.
 - Hidden PCs are never found via bumping (Josh Engdahl)
 - ways in which blessed item status can be tied into benefits

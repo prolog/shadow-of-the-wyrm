@@ -21,6 +21,7 @@ class DungeonFeatureTextKeys
     static const std::string DUNGEON_FEATURE_ORCHARD;
     static const std::string DUNGEON_FEATURE_VEGETATION;
     static const std::string DUNGEON_FEATURE_LITTLE_LIBRARY;
+    static const std::string DUNGEON_FEATURE_ARTIFACT;
 
   protected:
     DungeonFeatureTextKeys();

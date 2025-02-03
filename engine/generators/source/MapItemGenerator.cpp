@@ -1,12 +1,14 @@
 #include "MapItemGenerator.hpp"
 #include "Conversion.hpp"
 #include "CreationUtils.hpp"
+#include "DungeonFeatureTextKeys.hpp"
 #include "Game.hpp"
 #include "GeneratorUtils.hpp"
 #include "ItemEnchantmentCalculator.hpp"
 #include "ItemGenerationManager.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
+#include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -14,6 +16,7 @@ using namespace std;
 const int MapItemGenerator::OUT_OF_DEPTH_ITEMS_CHANCE = 15;
 const int MapItemGenerator::PCT_CHANCE_ADVENTURER_SKELETON_TRAP = 20;
 const int MapItemGenerator::PCT_CHANCE_ADVENTURER_CORPSE = 5;
+const pair<int, int> MapItemGenerator::X_IN_Y_CHANCE_ARTIFACT = { 1, 100 };
 const int MapItemGenerator::PCT_CHANCE_ADVENTURER_ITEMS = 75;
 const int MapItemGenerator::SHOPKEEPER_ADDITIONAL_IVORY_THRESOLD = 100;
 const int MapItemGenerator::MIN_REPOP_IVORY = 50;
@@ -253,7 +256,6 @@ bool MapItemGenerator::generate_dead_adventurer(MapPtr map, const int danger_lev
 
     if (RNG::percent_chance(PCT_CHANCE_ADVENTURER_CORPSE))
     {
-      ItemEnchantmentCalculator iec;
       int danger_upper = danger_level + RNG::range(0,5);
       Rarity rarity = Rarity::RARITY_COMMON;
 
@@ -276,24 +278,10 @@ bool MapItemGenerator::generate_dead_adventurer(MapPtr map, const int danger_lev
 
           if (RNG::percent_chance(PCT_CHANCE_ADVENTURER_ITEMS))
           {
-            vector<ItemType> i_restr = { ItemType::ITEM_TYPE_WEAPON, ItemType::ITEM_TYPE_ARMOUR };
-            vector<ItemType> i_rand = { ItemType::ITEM_TYPE_WAND, ItemType::ITEM_TYPE_POTION, ItemType::ITEM_TYPE_RING, ItemType::ITEM_TYPE_SCROLL, ItemType::ITEM_TYPE_SPELLBOOK };
-            int num_extra = RNG::range(0, i_rand.size() - 1);
+            vector<ItemPtr> generated_items = generate_dead_adventurer_items(danger_level, danger_upper, rarity);
 
-            for (int i = 0; i < num_extra; i++)
+            for (const auto& generated_item : generated_items)
             {
-              i_restr.push_back(i_rand[RNG::range(0, i_rand.size() - 1)]);
-            }
-
-            for (const ItemType i_type : i_restr)
-            {
-              vector<ItemType> gen_type_restr = { i_type };
-
-              ItemGenerationManager igm;
-              ItemGenerationMap generation_map = igm.generate_item_generation_map({ 1, danger_upper, Rarity::RARITY_COMMON, gen_type_restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE });
-              int enchant_points = iec.calculate_enchantments(danger_level) + 1;
-              ItemPtr generated_item = igm.generate_item(Game::instance().get_action_manager_ref(), generation_map, rarity, gen_type_restr, enchant_points);
-
               tile->get_items()->merge_or_add(generated_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
             }
           }
@@ -315,4 +303,47 @@ bool MapItemGenerator::generate_dead_adventurer(MapPtr map, const int danger_lev
   }
 
   return adv_created;
+}
+
+vector<ItemPtr> MapItemGenerator::generate_dead_adventurer_items(const int danger_level, const int danger_upper, const Rarity rarity)
+{
+  vector<ItemPtr> generated_items;
+  ItemEnchantmentCalculator iec;
+
+  if (RNG::x_in_y_chance(X_IN_Y_CHANCE_ARTIFACT.first, X_IN_Y_CHANCE_ARTIFACT.second))
+  {
+    ItemPtr randart = GeneratorUtils::generate_randart();
+    generated_items.push_back(randart);
+
+    // Add a message about the artifact so the player doesn't 
+    // miss it...
+    IMessageManager& manager = MM::instance();
+    manager.add_new_message(StringTable::get(DungeonFeatureTextKeys::DUNGEON_FEATURE_ARTIFACT));
+    manager.send();
+  }
+  else
+  {
+    vector<ItemType> i_restr = { ItemType::ITEM_TYPE_WEAPON, ItemType::ITEM_TYPE_ARMOUR };
+    vector<ItemType> i_rand = { ItemType::ITEM_TYPE_WAND, ItemType::ITEM_TYPE_POTION, ItemType::ITEM_TYPE_RING, ItemType::ITEM_TYPE_SCROLL, ItemType::ITEM_TYPE_SPELLBOOK };
+    int num_extra = RNG::range(0, i_rand.size() - 1);
+
+    for (int i = 0; i < num_extra; i++)
+    {
+      i_restr.push_back(i_rand[RNG::range(0, i_rand.size() - 1)]);
+    }
+
+    for (const ItemType i_type : i_restr)
+    {
+      vector<ItemType> gen_type_restr = { i_type };
+
+      ItemGenerationManager igm;
+      ItemGenerationMap generation_map = igm.generate_item_generation_map({ 1, danger_upper, Rarity::RARITY_COMMON, gen_type_restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE });
+      int enchant_points = iec.calculate_enchantments(danger_level) + 1;
+      ItemPtr generated_item = igm.generate_item(Game::instance().get_action_manager_ref(), generation_map, rarity, gen_type_restr, enchant_points);
+
+      generated_items.push_back(generated_item);
+    }
+  }
+
+  return generated_items;
 }
