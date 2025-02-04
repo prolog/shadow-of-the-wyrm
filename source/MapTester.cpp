@@ -65,6 +65,7 @@
 #include "VoidGenerator.hpp"
 #include "WalledSettlementGenerator.hpp"
 #include "WellGenerator.hpp"
+#include "WheatFieldGenerator.hpp"
 #include "WorldGenerator.hpp"
 #include "XMLDataStructures.hpp"
 #include "XMLConfigurationReader.hpp"
@@ -143,6 +144,7 @@ std::string generate_rectangular_shrine();
 std::string generate_cross_shrine();
 std::string generate_floating_tower();
 std::string generate_well();
+std::string generate_wheat_field();
 
 void   settlement_maps();
 void   city_maps();
@@ -718,6 +720,14 @@ std::string generate_well()
   MapPtr well_map = well_gen->generate();
   std::cout << map_to_string(well_map, false);
   return map_to_string(well_map);
+}
+
+std::string generate_wheat_field()
+{
+  GeneratorPtr wf_gen = std::make_unique<WheatFieldGenerator>("");
+  MapPtr wf_map = wf_gen->generate();
+  std::cout << map_to_string(wf_map, false);
+  return map_to_string(wf_map);
 }
 
 std::string generate_world()
@@ -1436,6 +1446,7 @@ void city_maps()
     std::cout << "10. Cross Shrine" << std::endl;
     std::cout << "11. Floating Tower" << std::endl;
     std::cout << "12. Well" << std::endl;
+    std::cout << "13. Wheat Field" << std::endl;
 
     std::cin >> city_adjacent_map;
     
@@ -1487,6 +1498,10 @@ void city_maps()
       case 12:
         map = generate_well();
         output_map(map, "well_test.html");
+        break;
+      case 13:
+        map = generate_wheat_field();
+        output_map(map, "wheat_field.html");
         break;
       default:
         break;

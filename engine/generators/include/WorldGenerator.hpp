@@ -34,6 +34,7 @@ class WorldGenerator : public SOTW::Generator
     virtual MapType get_map_type() const override;
     virtual MapPtr generate_random_islands(MapPtr map);
     virtual void   generate_village_surroundings(MapPtr map);
+    virtual bool   generate_village_worship_site(MapPtr map, const int adjacent_row, const int adjacent_col, const std::string& race_id, const DeityMap& deities);
 
     virtual void populate_terrain_cell_maps(const Dimensions& dimensions, CellMap& field_cell_map, CellMap& forest_cell_map, CellMap& hills_cell_map, CellMap& mountains_cell_map, CellMap& marsh_cell_map, CellMap& scrub_cell_map, CellMap& desert_cell_map);
     

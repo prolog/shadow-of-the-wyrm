@@ -4589,6 +4589,9 @@
     <ClInclude Include="engine\include\AmbientSound.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\include\WheatFieldGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9324,6 +9327,9 @@
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\AmbientSound_test.cpp">
       <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\WheatFieldGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

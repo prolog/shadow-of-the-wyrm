@@ -27,6 +27,7 @@
 #include "UnderwaterGenerator.hpp"
 #include "VoidGenerator.hpp"
 #include "WellGenerator.hpp"
+#include "WheatFieldGenerator.hpp"
 #include "WildOrchardGenerator.hpp"
 #include "WorshipSiteGenerator.hpp"
 #include "WorshipSiteTile.hpp"
@@ -251,9 +252,13 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, MapPtr map,
         generator = std::make_unique<WellGenerator>(map_exit_id);
         break;
       }
+      case TileType::TILE_TYPE_WHEAT:
+      {
+        generator = std::make_unique<WheatFieldGenerator>(map_exit_id);
+        break;
+      }
 
       case TileType::TILE_TYPE_UNDEFINED:
-      case TileType::TILE_TYPE_WHEAT:
       case TileType::TILE_TYPE_CAIRN:
       case TileType::TILE_TYPE_TREE:
       case TileType::TILE_TYPE_FRUIT_TREE:

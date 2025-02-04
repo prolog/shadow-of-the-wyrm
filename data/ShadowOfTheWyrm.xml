@@ -6839,15 +6839,19 @@
 			</Symbol>
 		</ScrubTile>
 		<WheatTile>
-			<!-- Not currently used -->
 			<Symbol>
 				<Char>|</Char>
 				<Colours>
-					<Spring>3</Spring>
-					<Summer>3</Summer>
+					<Spring>10</Spring>
+					<Summer>11</Summer>
 					<Autumn>3</Autumn>
 					<Winter>7</Winter>
 				</Colours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>1</Row>
+					<Col>1</Col>
+				</Sprite>
 			</Symbol>
 		</WheatTile>
 		<CairnTile>
