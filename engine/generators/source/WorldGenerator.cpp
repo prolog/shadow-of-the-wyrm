@@ -752,7 +752,7 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
           }
           // Likewise for wheat fields, which provide sustenance for the
           // villagers.
-          else if (RNG::percent_chance(20))
+          else if (RNG::percent_chance(10))
           {
             TilePtr wheat_field = tg.generate(TileType::TILE_TYPE_WHEAT);
             map->insert({ adjacent_row, adjacent_col }, wheat_field);
