@@ -1,5 +1,7 @@
 #include "WheatFieldGenerator.hpp"
+#include "ForestCalculator.hpp"
 #include "GeneratorUtils.hpp"
+#include "RNG.hpp"
 #include "TileGenerator.hpp"
 
 using namespace std;
@@ -29,7 +31,13 @@ MapPtr WheatFieldGenerator::generate(const Dimensions& dim)
       else
       {
         tt = TileType::TILE_TYPE_WHEAT;
+
+        if (RNG::x_in_y_chance(1, 150))
+        {
+          tt = TileType::TILE_TYPE_TREE;
+        }
       }
+
 
       TilePtr tile = tg.generate(tt);
       result_map->insert({ y, x }, tile);
