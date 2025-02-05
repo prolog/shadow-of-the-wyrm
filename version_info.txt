@@ -59,6 +59,9 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
 
 - The ploughman in Isen Dun is now surrounded by wheat.
 
+- Jellies, plants, insects, constructs, and the undead are all considered 
+  mindless, and immune to intimidation.
+
 - New creatures: living scarecrow.
 
 - New items: scarecrow.

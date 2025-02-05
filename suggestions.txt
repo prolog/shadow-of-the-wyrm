@@ -2,7 +2,8 @@ Me:
 - ASSET RELEASE: sounds! tiles!
 - git push --tags
 - The Ybari/Asturias?
-- golems shouldn't be intimidatable?
+- volume normalization
+- fix unit tests
 - pre-brewing: wheat fields
 - aggro flag for scarecrows
 - allow wheat to grow wild in other fields
