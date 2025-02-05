@@ -11301,6 +11301,26 @@
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
+			<Tool id="_scarecrow">
+				<DescriptionSID>SCARECROW_SID</DescriptionSID>
+				<UsageDescriptionSID>SCARECROW_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SCARECROW_CODEX_SID</CodexDescriptionSID>
+				<Value>2</Value>
+				<Weight>
+					<Pounds>12</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>0</Material>
+				<Symbol>
+					<Char>|</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>17</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>2</DangerLevel>
+			</Tool>
 			<Tool id="_fishing_rod">
 				<DescriptionSID>FISHING_ROD_SID</DescriptionSID>
 				<UsageDescriptionSID>FISHING_ROD_USAGE_SID</UsageDescriptionSID>

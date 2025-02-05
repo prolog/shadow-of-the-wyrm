@@ -19902,6 +19902,42 @@
 				</Spell>
 			</Spells>
 		</Creature>
+		<Creature id="_living_scarecrow">
+			<RaceID>_construct</RaceID>
+			<ShortDescriptionSID>LIVING_SCARECROW_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>LIVING_SCARECROW_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>LIVING_SCARECROW_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>LIVING_SCARECROW_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>g</Char>
+				<Colour>14</Colour>
+				<Sprite>
+					<ID>it</ID>
+					<Row>4</Row>
+					<Col>17</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>2</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>2</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Soak>4</Soak>
+		</Creature>
 		<Creature id="fox">
 			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>FOX_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
