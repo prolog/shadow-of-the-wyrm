@@ -2,6 +2,7 @@ Me:
 - ASSET RELEASE: sounds! tiles!
 - git push --tags
 - The Ybari/Asturias?
+- golems shouldn't be intimidatable?
 - pre-brewing: wheat fields
 - add wheat to xml letter tiles
 - aggro flag for scarecrows

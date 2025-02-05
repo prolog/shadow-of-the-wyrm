@@ -55,6 +55,12 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
   bonus for paralysis. There is now also a message that the creatures are
   hit with divine fury.
 
+- Towns now have a chance to have wheat fields generated nearby.
+
+- New creatures: living scarecrow.
+
+- New items: scarecrow.
+
 - Bug fixes:
 
   - Creating items with Bowyer/Fletchery wasn't setting their status
