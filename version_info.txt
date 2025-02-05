@@ -57,6 +57,8 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
 
 - Towns now have a chance to have wheat fields generated nearby.
 
+- The ploughman in Isen Dun is now surrounded by wheat.
+
 - New creatures: living scarecrow.
 
 - New items: scarecrow.

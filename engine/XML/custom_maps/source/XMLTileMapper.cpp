@@ -86,6 +86,10 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = tg.generate(TileType::TILE_TYPE_WELL);
   }
+  else if (xml_tile == 'h')
+  {
+    tile = tg.generate(TileType::TILE_TYPE_WHEAT);
+  }
   else if (xml_tile == 'r')
   {
     tile = tg.generate(TileType::TILE_TYPE_ROAD);
