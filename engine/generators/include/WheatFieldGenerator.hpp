@@ -8,4 +8,10 @@ class WheatFieldGenerator : public SOTW::Generator
     virtual ~WheatFieldGenerator() = default;
     
     virtual MapPtr generate(const Dimensions& dim) override;
+
+  protected:
+    void place_scarecrow(MapPtr map);
+
+    static const int PCT_CHANCE_SCARECROW;
+    static const int PCT_CHANCE_LIVING_SCARECROW;
 };

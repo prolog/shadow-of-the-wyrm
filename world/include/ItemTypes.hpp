@@ -164,6 +164,7 @@ class ItemIdKeys
 
     // Misc
     static const std::string ITEM_ID_BOARD_WITH_NAIL_IN_IT;
+    static const std::string ITEM_ID_SCARECROW;
 
     // Mushrooms and fungus
     static const std::string ITEM_ID_MUSHROOM_1;

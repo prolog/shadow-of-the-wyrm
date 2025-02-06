@@ -154,6 +154,7 @@ class CreatureID
     static const std::string CREATURE_ID_SHEEP;
     static const std::string CREATURE_ID_CHICKEN;
     static const std::string CREATURE_ID_WITCHLING;
+    static const std::string CREATURE_ID_LIVING_SCARECROW;
 
   protected:
     CreatureID();

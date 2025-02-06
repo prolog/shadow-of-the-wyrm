@@ -92,6 +92,7 @@ const string ItemIdKeys::ITEM_ID_UNSTONING_POTION = "_unstoning_potion";
 const string ItemIdKeys::ITEM_ID_HEALING_POTION   = "_healing_potion";
 const string ItemIdKeys::ITEM_ID_ETHER_POTION     = "_ether_potion";
 const string ItemIdKeys::ITEM_ID_BOARD_WITH_NAIL_IN_IT = "_board_with_nail_in_it";
+const string ItemIdKeys::ITEM_ID_SCARECROW        = "_scarecrow";
 const string ItemIdKeys::ITEM_ID_MUSHROOM_1       = "_mushroom_1";
 const string ItemIdKeys::ITEM_ID_MUSHROOM_2       = "_mushroom_2";
 const string ItemIdKeys::ITEM_ID_MUSHROOM_3       = "_mushroom_3";
