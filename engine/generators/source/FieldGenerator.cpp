@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Conversion.hpp"
 #include "Dimensions.hpp"
+#include "FieldCalculator.hpp"
 #include "FieldGenerator.hpp"
 #include "ForestCalculator.hpp"
 #include "Game.hpp"
@@ -28,17 +29,19 @@ MapPtr FieldGenerator::generate(const Dimensions& dimensions)
   int columns = dimensions.get_x();
 
   ForestCalculator fc;
+  FieldCalculator fi_c;
 
   int world_map_height = String::to_int(get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_HEIGHT));
   Coordinate world_location = MapUtils::convert_map_key_to_coordinate(get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_LOCATION));
 
   int pct_chance_shield = fc.calculate_pct_chance_shield(world_map_height, world_location);
+  bool wild_grain = RNG::percent_chance(fi_c.calc_pct_chance_wild_grains(Game::instance().get_current_player(), world_map_height, world_location));
 
   for (int row = 0; row < rows; row++)
   {
     for (int col = 0; col < columns; col++)
     {
-      TilePtr current_tile = generate_tile(result_map, row, col, pct_chance_shield);
+      TilePtr current_tile = generate_tile(result_map, row, col, pct_chance_shield, wild_grain);
       result_map->insert(row, col, current_tile);
     }
   }
@@ -63,7 +66,7 @@ MapPtr FieldGenerator::generate(const Dimensions& dimensions)
   return result_map;
 }
 
-TilePtr FieldGenerator::generate_tile(MapPtr /*map*/, const int row, const int /*col*/, const int pct_chance_shield)
+TilePtr FieldGenerator::generate_tile(MapPtr /*map*/, const int row, const int /*col*/, const int pct_chance_shield, const bool wild_grain)
 {
   TilePtr generated_tile;
   
@@ -104,7 +107,14 @@ TilePtr FieldGenerator::generate_tile(MapPtr /*map*/, const int row, const int /
     }
     else
     {
-      generated_tile = tg.generate(TileType::TILE_TYPE_TREE);
+      if (wild_grain && RNG::percent_chance(50))
+      {
+        generated_tile = tg.generate(TileType::TILE_TYPE_WHEAT);
+      }
+      else
+      {
+        generated_tile = tg.generate(TileType::TILE_TYPE_TREE);
+      }
     }
   }
 

@@ -13,7 +13,7 @@ class FieldGenerator : public SOTW::Generator
     virtual MapPtr generate(const Dimensions& dimensions) override;
 
   protected:
-    virtual TilePtr generate_tile(MapPtr current_map, const int row, const int col, const int pct_chance_shield);
+    virtual TilePtr generate_tile(MapPtr current_map, const int row, const int col, const int pct_chance_shield, const bool pct_chance_wild_grain);
 
     TileGenerator tg;
 };
