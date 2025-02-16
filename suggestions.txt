@@ -4,8 +4,8 @@ Me:
 - The Ybari/Asturias?
 - volume normalization
 - fix unit tests
+- add FieldCalculator unit tests
 - pre-brewing: wheat fields
-- aggro flag for scarecrows
 - allow wheat to grow wild in other fields
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.

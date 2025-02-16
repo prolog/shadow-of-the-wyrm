@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SW_World_Calculator_ParalysisCalculator, calc_pct_chance_paralysis)
+TEST(SW_Engine_Calculator_ParalysisCalculator, calc_pct_chance_paralysis)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   creature->set_health(5);

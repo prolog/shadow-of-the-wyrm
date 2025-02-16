@@ -19,7 +19,7 @@ std::pair<CreaturePtr, MapPtr> create_creature_and_map_for_tsmc(const TileType f
 	return make_pair(c, map);
 }
 
-TEST(SW_World_Calculators_TerrainSpeedMultiplierCalculator, calculate_water)
+TEST(SW_Engine_Calculators_TerrainSpeedMultiplierCalculator, calculate_water)
 {
 	TerrainSpeedMultiplierCalculator tsmc;
 	std::map<int, float> boating_multipliers = { {10, 0.95f}, {12, 0.94f}, {40, 0.8f}, {80, 0.6f}, {100, 0.5f} };
@@ -43,7 +43,7 @@ TEST(SW_World_Calculators_TerrainSpeedMultiplierCalculator, calculate_water)
 	}
 }
 
-TEST(SW_World_Calculators_TerrainSpeedMultiplierCalculator, calculate_air_ground)
+TEST(SW_Engine_Calculators_TerrainSpeedMultiplierCalculator, calculate_air_ground)
 {
 	TerrainSpeedMultiplierCalculator tsmc;
 	std::map<int, float> boating_multipliers = { {10, 1.0f}, {12, 1.0f}, {40, 1.0f}, {80, 1.0f}, {100, 1.0f} };
