@@ -10,6 +10,11 @@ class WheatFieldGenerator : public SOTW::Generator
     virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:
+    void generate_field(MapPtr map);
+    
+    void generate_divisions(MapPtr map, const std::vector<std::pair<Coordinate, Coordinate>>& divisions, const int count);
+    std::vector<std::pair<Coordinate, Coordinate>> divide_field(MapPtr map, const std::vector<std::pair<Coordinate, Coordinate>>& divisions, const int count);
+    
     void place_scarecrow(MapPtr map);
 
     static const int PCT_CHANCE_SCARECROW;
