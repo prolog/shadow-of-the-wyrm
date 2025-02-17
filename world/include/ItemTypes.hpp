@@ -111,6 +111,7 @@ class ItemIdKeys
     static const std::string ITEM_ID_ROOT;
     static const std::string ITEM_ID_BERRIES;
     static const std::string ITEM_ID_KELP;
+    static const std::string ITEM_ID_WHEAT;
 
     // Herbs and plants
     static const std::string ITEM_ID_WHITE_BASIL; // cures poison

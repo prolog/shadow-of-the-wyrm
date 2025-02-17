@@ -873,6 +873,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\tile_config\include\TileConfigurationFactory.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\TreeTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\WeedsTileConfiguration.hpp" />
+    <ClInclude Include="engine\generators\tile_config\include\WheatTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\worship_sites\include\CathedralGenerator.hpp" />
     <ClInclude Include="engine\generators\worship_sites\include\ChurchGenerator.hpp" />
     <ClInclude Include="engine\generators\worship_sites\include\ChurchGeneratorFactory.hpp" />
@@ -2210,6 +2211,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\source\WheatFieldGenerator.cpp" />
     <ClCompile Include="engine\generators\tile_config\source\AquaticVegetationTileConfiguration.cpp" />
     <ClCompile Include="engine\generators\tile_config\source\MagicalTreeTileConfiguration.cpp" />
+    <ClCompile Include="engine\generators\tile_config\source\WheatTileConfiguration.cpp" />
     <ClCompile Include="engine\items\source\ArtifactItemFilter.cpp" />
     <ClCompile Include="engine\items\source\HandsRequiredItemFilter.cpp" />
     <ClCompile Include="engine\items\source\ItemBaseIdFilter.cpp" />

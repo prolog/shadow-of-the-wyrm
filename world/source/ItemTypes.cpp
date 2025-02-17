@@ -58,6 +58,7 @@ const string ItemIdKeys::ITEM_ID_PICK_AXE         = "pick_axe";
 const string ItemIdKeys::ITEM_ID_ROOT             = "_root";
 const string ItemIdKeys::ITEM_ID_BERRIES          = "_berries";
 const string ItemIdKeys::ITEM_ID_KELP             = "_kelp";
+const string ItemIdKeys::ITEM_ID_WHEAT					  = "_wheat";
 const string ItemIdKeys::ITEM_ID_WHITE_BASIL      = "_white_basil";
 const string ItemIdKeys::ITEM_ID_STONEFLOWER      = "_stoneflower";
 const string ItemIdKeys::ITEM_ID_VOXFLOWER        = "_voxflower";

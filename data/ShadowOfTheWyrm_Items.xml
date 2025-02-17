@@ -8304,6 +8304,44 @@
 				<Nutrition>110</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
+			<Food id="_wheat">
+				<DescriptionSID>WHEAT_SID</DescriptionSID>
+				<UsageDescriptionSID>WHEAT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WHEAT_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>18</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>24</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>48</Value>
+					</Property>
+				</Properties>
+				<Nutrition>80</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
 			<Food id="_cherries">
 				<DescriptionSID>CHERRIES_SID</DescriptionSID>
 				<UsageDescriptionSID>CHERRIES_USAGE_SID</UsageDescriptionSID>

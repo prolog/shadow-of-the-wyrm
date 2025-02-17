@@ -7,6 +7,7 @@
 #include "TreeTileConfiguration.hpp"
 #include "TileConfigurationFactory.hpp"
 #include "WeedsTileConfiguration.hpp"
+#include "WheatTileConfiguration.hpp"
 
 using namespace std;
 
@@ -39,6 +40,9 @@ void TileConfigurationFactory::initialize_tile_configuration_map()
 
   ITileConfigurationPtr weeds_config = std::make_shared<WeedsTileConfiguration>();
   tile_configurations[static_cast<int>(TileType::TILE_TYPE_WEEDS)] = weeds_config;
+
+  ITileConfigurationPtr wheat_config = std::make_shared<WheatTileConfiguration>();
+  tile_configurations[static_cast<int>(TileType::TILE_TYPE_WHEAT)] = wheat_config;
 
   ITileConfigurationPtr tree_config = std::make_shared<TreeTileConfiguration>();
   tile_configurations[static_cast<int>(TileType::TILE_TYPE_TREE)] = tree_config;

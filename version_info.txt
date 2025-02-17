@@ -64,7 +64,7 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
 
 - New creatures: living scarecrow.
 
-- New items: scarecrow.
+- New items: scarecrow, wheat berries.
 
 - Bug fixes:
 

@@ -4595,6 +4595,9 @@
     <ClInclude Include="engine\calculators\include\FieldCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\tile_config\include\WheatTileConfiguration.hpp">
+      <Filter>Header Files\engine\generators\tile_config\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9339,6 +9342,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\FieldCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\tile_config\source\WheatTileConfiguration.cpp">
+      <Filter>Source Files\engine\generators\tile_config\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
