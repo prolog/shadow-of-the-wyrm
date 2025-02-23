@@ -28409,7 +28409,7 @@
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG5</Name>
-					<Value>CARAVAN_SID,assets/sound/music/caravan.ogg</Value>
+					<Value>CARAVAN_OF_WINDS_SID,assets/sound/music/caravan_of_winds.ogg</Value>
 				</Property>
 \				<Property>
 					<Name>CREATURE_PROPERTIES_SONG6</Name>
