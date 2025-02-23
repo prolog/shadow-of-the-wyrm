@@ -19910,6 +19910,7 @@
 			<SpeechTextSID>LIVING_SCARECROW_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>immobile</Strategy>
+
 			</DecisionStrategy>
 			<Symbol>
 				<Char>g</Char>
@@ -28452,14 +28453,18 @@
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG16</Name>
+					<Value>STILL_BEATING_HEART_OF_THE_WORLD_SID,assets/sound/music/still.ogg</Value>
+				</Property>				
+				<Property>
+					<Name>CREATURE_PROPERTIES_SONG17</Name>
 					<Value>WATER_MUSIC_SID,assets/sound/music/water_music_1.ogg</Value>
 				</Property>
 				<Property>
-					<Name>CREATURE_PROPERTIES_SONG17</Name>
+					<Name>CREATURE_PROPERTIES_SONG18</Name>
 					<Value>WATER_MUSIC_2_SID,assets/sound/music/water_music_2.ogg</Value>
 				</Property>
 				<Property>
-					<Name>CREATURE_PROPERTIES_SONG18</Name>
+					<Name>CREATURE_PROPERTIES_SONG19</Name>
 					<Value>WATER_MUSIC_3_SID,assets/sound/music/water_music_3.ogg</Value>
 				</Property>
 			</Properties>

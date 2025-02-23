@@ -5,7 +5,8 @@ Shadow of the Wyrm v1.7.5 "Sergio Assad"
   shrill violin sound in Violin 1, and a small update to "My Love's Gone 
   Away".
 
-- Wrote a new piece of music for the Barrows/Asher's Islet/Siriath's Lair.
+- Wrote a new piece of music for the Barrows/Asher's Islet/Siriath's Lair,
+  and another for the shrines.
 
 - There are now sound effects for eating and drinking.
 
