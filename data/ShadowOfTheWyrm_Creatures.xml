@@ -28385,14 +28385,6 @@
 			<Properties>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG1</Name>
-					<Value>MY_LOVES_GONE_AWAY_SID,assets/sound/music/mylove.ogg</Value>
-				</Property>
-				<Property>
-					<Name>CREATURE_PROPERTIES_SONG2</Name>
-					<Value>ELVEN_FOLK_SONGS_SID,assets/sound/music/yew.ogg</Value>
-				</Property>
-				<Property>
-					<Name>CREATURE_PROPERTIES_SONG1</Name>
 					<Value>A_BLACK_MARK_SID,assets/sound/music/a_black_mark.ogg</Value>
 				</Property>
 				<Property>
@@ -28429,42 +28421,50 @@
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG10</Name>
-					<Value>SETTLEMENT_SID,assets/sound/music/settlement.ogg</Value>
+					<Value>MY_LOVES_GONE_AWAY_SID,assets/sound/music/mylove.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG11</Name>
-					<Value>SITHRIN_SID,assets/sound/music/sithrin.ogg</Value>
+					<Value>SETTLEMENT_SID,assets/sound/music/settlement.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG12</Name>
-					<Value>STONEHEIM_SID,assets/sound/music/stoneheim.ogg</Value>
+					<Value>SITHRIN_SID,assets/sound/music/sithrin.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG13</Name>
-					<Value>THE_SHIPS_RETURN_SID,assets/sound/music/ships_return.ogg</Value>
+					<Value>STONEHEIM_SID,assets/sound/music/stoneheim.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG14</Name>
-					<Value>O_AURELION_O_CELESTE_SID,assets/sound/music/o_aurelion_o_celeste.ogg</Value>
+					<Value>THE_SHIPS_RETURN_SID,assets/sound/music/ships_return.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG15</Name>
-					<Value>ONLY_THE_HOLY_AND_THE_DEAD_SID,assets/sound/music/only_the_holy_and_the_dead.ogg</Value>
+					<Value>O_AURELION_O_CELESTE_SID,assets/sound/music/o_aurelion_o_celeste.ogg</Value>
 				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG16</Name>
-					<Value>STILL_BEATING_HEART_OF_THE_WORLD_SID,assets/sound/music/still.ogg</Value>
-				</Property>				
+					<Value>ONLY_THE_HOLY_AND_THE_DROWNED_SID,assets/sound/music/only_the_holy_and_the_drowned.ogg</Value>
+				</Property>
 				<Property>
 					<Name>CREATURE_PROPERTIES_SONG17</Name>
+					<Value>STILL_BEATING_HEART_OF_THE_WORLD_SID,assets/sound/music/still_beating_heart.ogg</Value>
+				</Property>				
+				<Property>
+					<Name>CREATURE_PROPERTIES_SONG18</Name>
+					<Value>TALL_PINES_AND_COLD_DARK_WATER_SID,assets/sound/music/tall_pines.ogg</Value>
+				</Property>				
+				<Property>
+					<Name>CREATURE_PROPERTIES_SONG19</Name>
 					<Value>WATER_MUSIC_SID,assets/sound/music/water_music_1.ogg</Value>
 				</Property>
 				<Property>
-					<Name>CREATURE_PROPERTIES_SONG18</Name>
+					<Name>CREATURE_PROPERTIES_SONG20</Name>
 					<Value>WATER_MUSIC_2_SID,assets/sound/music/water_music_2.ogg</Value>
 				</Property>
 				<Property>
-					<Name>CREATURE_PROPERTIES_SONG19</Name>
+					<Name>CREATURE_PROPERTIES_SONG21</Name>
 					<Value>WATER_MUSIC_3_SID,assets/sound/music/water_music_3.ogg</Value>
 				</Property>
 			</Properties>
