@@ -476,6 +476,10 @@ TEST(SW_Engine_MapUtils, can_change_zlevel)
   SeaGenerator sea_gen("fdsa");
   MapPtr sea = sea_gen.generate(dim);
 
+  Game& game = Game::instance();
+  WorldPtr world = std::make_unique<World>();
+  game.set_current_world(std::move(world));
+
   // Down/up on ground map
   tile = ground->at(0, 0);
   EXPECT_FALSE(MapUtils::can_change_zlevel(c, ground, tile, Direction::DIRECTION_DOWN).first);
@@ -503,6 +507,8 @@ TEST(SW_Engine_MapUtils, can_change_zlevel)
   EXPECT_TRUE(MapUtils::can_change_zlevel(fly, air, tile, Direction::DIRECTION_DOWN).first);
   EXPECT_FALSE(MapUtils::can_change_zlevel(c, air, tile, Direction::DIRECTION_UP).first);
   EXPECT_FALSE(MapUtils::can_change_zlevel(fly, air, tile, Direction::DIRECTION_UP).first);
+
+  game.set_current_world(nullptr);
 }
 
 TEST(SW_Engine_MapUtils, should_creature_move_to_new_map)

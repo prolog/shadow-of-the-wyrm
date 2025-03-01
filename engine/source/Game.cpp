@@ -1130,6 +1130,12 @@ void Game::set_current_map(MapPtr map)
   MapUtils::calculate_fov_maps_for_all_creatures(map);
 }
 
+// SHOULD ONLY BE SET BY UNIT TESTS THAT NEED A TEMPORARY WORLD
+void Game::set_current_world(WorldPtr new_world)
+{
+  world = std::move(new_world);
+}
+
 // Get the current map from the map registry.
 MapPtr Game::get_current_map() const
 {
