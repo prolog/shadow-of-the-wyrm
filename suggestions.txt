@@ -2,13 +2,12 @@ Me:
 - ASSET RELEASE: sounds! tiles!
 - git push --tags
 - The Ybari/Asturias?
+- Caldera's water should be death - swimming or descending
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.
 - Use this for fletchery, bowyer, etc, to improve item & quantity
 - set random extra descriptions for up/down staircases
-- Moving up/down when ice frozen?
 - let's work on recall/coming back if you go down a water tile...
-- Caldera's water should be death - swimming or descending
 - underwater cavern? something like that?
 - is the username check on savefiles still needed?
 - test orb placement in wyrmeswraec
@@ -30,7 +29,6 @@ Me:
 - mountaineering/lore: chance to find magici shards (+ mark tile) and also to
   generate a down staircase that leads to passageways that lead to a cavern
 - issue with too many save files, but there's only one? -1
-- Branding should give a base 20% resist
 - mushrooms with randomized effects, descs like wildflowers. eat scripts?
 - Desert/Forest/etc Lore (+ dungeoneering?): to-hit, damage, speed bonuses on 
   that terrain

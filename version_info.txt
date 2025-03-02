@@ -63,6 +63,8 @@ Shadow of the Wyrm v1.8.0 "Sergio Assad"
 - Jellies, plants, insects, constructs, and the undead are all considered 
   mindless, and immune to intimidation.
 
+- Branding an item adds a bit more resistance than it did before.
+
 - New creatures: living scarecrow.
 
 - New items: scarecrow, wheat berries.
