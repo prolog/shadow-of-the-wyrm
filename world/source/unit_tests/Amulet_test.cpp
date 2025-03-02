@@ -1,5 +1,20 @@
 #include "gtest/gtest.h"
 
+TEST(SW_World_Amulet, enchanting_increments_status)
+{
+  Amulet a;
+  a.set_status(ItemStatus::ITEM_STATUS_CURSED);
+
+  a.enchant(0, 1);
+  EXPECT_TRUE(a.get_status() == ItemStatus::ITEM_STATUS_UNCURSED);
+
+  a.enchant(0, 1);
+  EXPECT_TRUE(a.get_status() == ItemStatus::ITEM_STATUS_BLESSED);
+
+  a.enchant(0, 1);
+  EXPECT_TRUE(a.get_status() == ItemStatus::ITEM_STATUS_BLESSED);
+}
+
 TEST(SW_World_Amulet, enchantment_value_progression)
 {
   Amulet a;

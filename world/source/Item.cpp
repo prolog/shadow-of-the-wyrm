@@ -225,6 +225,20 @@ EquipmentWornLocation Item::get_worn_location() const
   return worn_location;
 }
 
+ItemStatus Item::increment_status()
+{
+  if (status == ItemStatus::ITEM_STATUS_CURSED)
+  {
+    status = ItemStatus::ITEM_STATUS_UNCURSED;
+  }
+  else if (status == ItemStatus::ITEM_STATUS_UNCURSED)
+  {
+    status = ItemStatus::ITEM_STATUS_BLESSED;
+  }
+
+  return status;
+}
+
 void Item::set_status(const ItemStatus new_status)
 {
   status = new_status;
@@ -554,6 +568,7 @@ bool Item::enchant(const int pct_chance_brand, const int enchant_points)
     do_enchant_item(enchant_points);
   }
 
+  increment_status();
   return true;
 }
 

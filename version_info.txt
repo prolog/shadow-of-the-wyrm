@@ -65,6 +65,9 @@ Shadow of the Wyrm v1.8.0 "Sergio Assad"
 
 - Branding an item adds a bit more resistance than it did before.
 
+- Enchanting an item now increments the status (cursed to uncursed, uncursed to
+  blessed).
+
 - New creatures: living scarecrow.
 
 - New items: scarecrow, wheat berries.
