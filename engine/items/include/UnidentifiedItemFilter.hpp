@@ -6,6 +6,8 @@
 class UnidentifiedItemFilter : public IItemFilter
 {
   public:
+    virtual ~UnidentifiedItemFilter() = default;
+
     bool passes_filter(ItemPtr item) const override;
 };
 

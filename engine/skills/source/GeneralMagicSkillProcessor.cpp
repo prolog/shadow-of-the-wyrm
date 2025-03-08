@@ -139,7 +139,7 @@ SkillProcessorPtr GeneralMagicSkillProcessor::clone()
 }
 
 // Books take a while to fully incinerate in magical fire.
-ActionCostValue GeneralMagicSkillProcessor::get_default_skill_action_cost_value(CreaturePtr creature) const
+ActionCostValue GeneralMagicSkillProcessor::get_default_skill_action_cost_value(CreaturePtr /*creature*/) const
 {
   return ActionCostConstants::INCINERATE_SPELLBOOK;
 }

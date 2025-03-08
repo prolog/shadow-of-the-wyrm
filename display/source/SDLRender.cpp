@@ -24,7 +24,7 @@ pair<int, int> SDLRender::get_glyph_location_from_spritesheet(const unsigned cha
   return { x / glyphs_per_line, x % glyphs_per_line };
 }
 
-void SDLRender::render_spritesheet(int y, int x, SDLCursorLocation& cursor_location, SDL_Renderer* renderer, SDL_Texture* spritesheet_texture, SDL_Texture* target_texture, SDL_Rect* clip, SDL_Rect* dst_rect, const SDL_Color& color)
+void SDLRender::render_spritesheet(SDL_Renderer* renderer, SDL_Texture* spritesheet_texture, SDL_Texture* target_texture, SDL_Rect* clip, SDL_Rect* dst_rect, const SDL_Color& color)
 {
   SDL_SetRenderTarget(renderer, target_texture);
   SDL_SetTextureColorMod(spritesheet_texture, color.r, color.g, color.b);
@@ -76,9 +76,6 @@ void SDLRender::draw_glyph(SDLCursorLocation& cursor_location, SDL_Renderer* ren
   font_clip.w = glyph_width;
   font_clip.h = glyph_height;
 
-  int render_x = col * glyph_width;
-  int render_y = row * glyph_height;
-
   SDL_Rect dst_rect = { 0, 0, 0, 0 };
 
   dst_rect.y = row * glyph_height;
@@ -94,7 +91,7 @@ void SDLRender::draw_glyph(SDLCursorLocation& cursor_location, SDL_Renderer* ren
   cursor_location.incr();
 
   // Render the text.
-  render_spritesheet(render_y, render_x, cursor_location, renderer, spritesheet, texture, &font_clip, &dst_rect, fg);
+  render_spritesheet(renderer, spritesheet, texture, &font_clip, &dst_rect, fg);
 }
 
 // Fills an entire texture based on the SDL display parameters.

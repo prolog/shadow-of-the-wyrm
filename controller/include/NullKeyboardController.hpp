@@ -6,6 +6,8 @@
 class NullKeyboardController : public Controller
 {
   public:
+    virtual ~NullKeyboardController() = default;
+
     virtual Controller* clone() override;
 
   protected:

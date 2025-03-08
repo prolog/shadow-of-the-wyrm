@@ -34,19 +34,19 @@ Effect* FruitJuiceEffect::clone()
 
 // When the effect is blessed, the player can figure out what it is
 // (potion of fruit juice, etc).
-bool FruitJuiceEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool FruitJuiceEffect::effect_blessed(CreaturePtr /*creature*/, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return true;
 }
 
 // When the effect is uncursed, the player at least gets a clue in the form
 // of "You suddenly taste something very sweet."
-bool FruitJuiceEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool FruitJuiceEffect::effect_uncursed(CreaturePtr /*creature*/, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return false;
 }
 
-bool FruitJuiceEffect::effect_cursed(CreaturePtr creature, ActionManager * am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool FruitJuiceEffect::effect_cursed(CreaturePtr /*creature*/, ActionManager * /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return false;
 }

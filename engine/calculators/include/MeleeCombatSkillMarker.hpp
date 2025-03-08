@@ -6,6 +6,8 @@ class MeleeCombatSkillMarker : public ISkillMarker
 {
   public:
     MeleeCombatSkillMarker(const AttackType at);
+    virtual ~MeleeCombatSkillMarker() = default;
+
     virtual std::vector<SkillType> get_marked_skills(CreaturePtr creature) const override;
 
   protected:

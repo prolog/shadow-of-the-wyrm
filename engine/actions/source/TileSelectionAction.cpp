@@ -262,24 +262,18 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Sel
 ActionCostValue TileSelectionAction::select_tile_cancel(CreaturePtr creature)
 {
   Game& game = Game::instance();
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   
   if (creature)
   {
     MapCursor mc;
     mc.reset_cursor(game.get_current_map());
-    
-    if (creature->get_is_player())
-    {
-      manager.clear_if_necessary();
-    }
   }
   
   return get_action_cost_value(creature);
 }
 
 // Looking is always free.
-ActionCostValue TileSelectionAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue TileSelectionAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }

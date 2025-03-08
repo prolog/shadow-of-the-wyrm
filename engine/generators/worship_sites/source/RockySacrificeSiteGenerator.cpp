@@ -13,7 +13,7 @@ RockySacrificeSiteGenerator::RockySacrificeSiteGenerator(const string& new_deity
 }
 
 // Generate the site of sacrifice
-MapPtr RockySacrificeSiteGenerator::generate(const Dimensions& dim)
+MapPtr RockySacrificeSiteGenerator::generate(const Dimensions& /*dim*/)
 {
   return generate();
 }

@@ -212,7 +212,7 @@ void MineGenerator::generate_item_piles(MapPtr map)
     int num_items = RNG::range(2, 4);
     for (int i = 0; i < num_items; i++)
     {
-      for (int i = 0; i < 50; i++)
+      for (int j = 0; j < 50; j++)
       {
         int sh_y = RNG::range(0, dim.get_y() - 1);
         int sh_x = RNG::range(0, dim.get_x() - 1);

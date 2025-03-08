@@ -6,6 +6,7 @@ class ParkSectorFeature : public SectorFeature
   public:
     ParkSectorFeature();
     ParkSectorFeature(const int pct_statues, const int pct_trader, const int pct_pond);
+    virtual ~ParkSectorFeature() = default;
 
   protected:
 

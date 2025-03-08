@@ -12,7 +12,7 @@ Staff::~Staff()
 {
 }
 
-bool Staff::additional_item_attributes_match(ItemPtr item) const
+bool Staff::additional_item_attributes_match(ItemPtr /*item*/) const
 {
   return true;
 }

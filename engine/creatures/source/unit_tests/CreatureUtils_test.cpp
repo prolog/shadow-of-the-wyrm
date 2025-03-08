@@ -84,6 +84,37 @@ TEST(SW_Engine_CreatureUtils, has_followers_in_fov)
   EXPECT_EQ(1, cm.size());
 }
 
+TEST(SW_Engine_CreatureUtils, get_specific_follower_in_fov)
+{
+  string l_id = "leader";
+  CreaturePtr c = std::make_shared<Creature>();
+  c->set_id(l_id);
+  DecisionStrategyPtr d = std::make_unique<ImmobileDecisionStrategy>(nullptr);
+  Dimensions dim;
+  MapPtr fov_map = std::make_shared<Map>(dim);
+  d->set_fov_map(fov_map);
+  c->set_decision_strategy(std::move(d));
+
+  CreaturePtr c2 = std::make_shared<Creature>();
+  c2->set_id("follower");
+  c->get_decision_strategy()->get_fov_map()->get_creatures_ref().insert(make_pair("follower", c2));
+  c2->set_leader_and_at_ease(l_id);
+
+  CreatureMap cm = CreatureUtils::get_followers_in_fov(c);
+
+  EXPECT_FALSE(cm.empty());
+  EXPECT_EQ(1, cm.size());
+
+  cm = CreatureUtils::get_followers_in_fov(c, "follower");
+
+  EXPECT_FALSE(cm.empty());
+  EXPECT_EQ(1, cm.size());
+
+  cm = CreatureUtils::get_followers_in_fov(c, "invalid_follower_id");
+
+  EXPECT_TRUE(cm.empty());
+}
+
 TEST(SW_Engine_Creatures_CreatureUtils, has_primordial_essence)
 {
   Game& game = Game::instance();

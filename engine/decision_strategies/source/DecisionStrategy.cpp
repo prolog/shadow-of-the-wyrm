@@ -44,7 +44,7 @@ bool DecisionStrategy::operator==(const DecisionStrategy& ds) const
 }
 
 // Get whether to move to a dangerous tile - generally, no.
-bool DecisionStrategy::get_move_to_dangerous_tile(MapPtr map, CreaturePtr creature, TilePtr tile) const
+bool DecisionStrategy::get_move_to_dangerous_tile(MapPtr /*map*/, CreaturePtr /*creature*/, TilePtr /*tile*/) const
 {
   return false;
 }
@@ -143,6 +143,11 @@ map<string, string>& DecisionStrategy::get_properties_ref()
 map<string, string> DecisionStrategy::get_properties() const
 {
   return properties;
+}
+
+string DecisionStrategy::get_orders_description_sid() const
+{
+  return "";
 }
 
 void DecisionStrategy::set_automelee(const bool new_automelee)

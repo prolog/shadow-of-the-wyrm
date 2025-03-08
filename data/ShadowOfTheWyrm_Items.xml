@@ -8304,6 +8304,44 @@
 				<Nutrition>110</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
+			<Food id="_wheat">
+				<DescriptionSID>WHEAT_SID</DescriptionSID>
+				<UsageDescriptionSID>WHEAT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WHEAT_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>18</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>24</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>48</Value>
+					</Property>
+				</Properties>
+				<Nutrition>80</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
 			<Food id="_cherries">
 				<DescriptionSID>CHERRIES_SID</DescriptionSID>
 				<UsageDescriptionSID>CHERRIES_USAGE_SID</UsageDescriptionSID>
@@ -11301,6 +11339,26 @@
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
+			<Tool id="_scarecrow">
+				<DescriptionSID>SCARECROW_SID</DescriptionSID>
+				<UsageDescriptionSID>SCARECROW_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SCARECROW_CODEX_SID</CodexDescriptionSID>
+				<Value>2</Value>
+				<Weight>
+					<Pounds>12</Pounds>
+				</Weight>
+				<WornLocation>4</WornLocation>
+				<Material>0</Material>
+				<Symbol>
+					<Char>|</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>17</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>2</DangerLevel>
+			</Tool>
 			<Tool id="_fishing_rod">
 				<DescriptionSID>FISHING_ROD_SID</DescriptionSID>
 				<UsageDescriptionSID>FISHING_ROD_USAGE_SID</UsageDescriptionSID>
@@ -12740,6 +12798,30 @@
 				<DangerLevel>1</DangerLevel>
 				<SpellID>c_18_glow</SpellID>
 				<Difficulty>35</Difficulty>
+			</Spellbook>
+			<Spellbook id="water_breathing_spellbook">
+				<DescriptionSID>WATER_BREATHING_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_WATER_BREATHING_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>WATER_BREATHING_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_WATER_BREATHING_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>WATER_BREATHING_SPELLBOOK_CODEX_SID</CodexDescriptionSID>
+				<Value>150</Value>
+				<Weight>
+					<Pounds>5</Pounds>
+				</Weight>
+				<Material>5</Material>
+				<Symbol>
+					<Char>"</Char>
+					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>4</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>6</DangerLevel>
+				<SpellID>c_19_water_breathing</SpellID>
+				<Difficulty>50</Difficulty>
 			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>

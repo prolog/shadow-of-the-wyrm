@@ -10,7 +10,8 @@ class Altar : public Feature
   public:
     Altar(const std::string& new_desc_sid, const Symbol& new_symbol, const std::string& new_deity_id, const MaterialType new_material, const AlignmentRange alignment_range);
     virtual ~Altar() {};
-    virtual bool operator==(const Altar& altar) const;
+    
+    bool operator==(const Altar& altar) const;
 
     virtual bool can_offer() const override;
 
@@ -217,7 +218,7 @@ class Entrance : public Feature
     explicit Entrance(const std::string& new_desc_sid, const Symbol& new_symbol, LockPtr new_lock, const EntranceState& new_state);
     virtual ~Entrance() {};
 
-    virtual bool operator==(const Entrance& door) const;
+    bool operator==(const Entrance& door) const;
 
     virtual bool get_is_entrance() const override;
 

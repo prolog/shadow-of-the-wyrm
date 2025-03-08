@@ -43,16 +43,9 @@ string String::clean(const string& to_clean)
   {
     char c = c_str[i];
 
-    if (c > -1 && c < 255)
+    if (isalpha(c) || isdigit(c) || c >= ' ')
     {
-      if (isalpha(c) || isdigit(c) || c >= ' ')
-      {
-        clean << c;
-      }
-    }
-    else
-    {
-      clean << '?';
+      clean << c;
     }
   }
 
@@ -89,6 +82,18 @@ vector<string> String::split(const string& split_str, const string& split_on)
   vals.push_back(split_str.substr(cur_pos, end));
 
   return vals;
+}
+
+set<string> String::create_string_set_from_csv_string(const string& csv_str, const bool include_empty_str)
+{
+  set<string> str_set;
+
+  if (include_empty_str || !csv_str.empty())
+  {
+    boost::split(str_set, csv_str, boost::is_any_of(","));
+  }
+
+  return str_set;
 }
 
 vector<string> String::create_string_vector_from_csv_string(const string& csv_str)
@@ -445,7 +450,7 @@ File::~File()
 {
 }
 
-string File::to_string(const string& filename, const map<string, string>& char_replacements)
+string File::to_string(const string& filename, const map<string, string>& /*char_replacements*/)
 {
   try
   {

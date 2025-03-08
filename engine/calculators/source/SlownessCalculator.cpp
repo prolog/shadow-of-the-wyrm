@@ -27,7 +27,7 @@ int SlownessCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
   return pct_chance;
 }
 
-int SlownessCalculator::calculate_duration_in_minutes(CreaturePtr creature) const
+int SlownessCalculator::calculate_duration_in_minutes(CreaturePtr /*creature*/) const
 {
   PoissonDistribution p(BASE_SLOWNESS_DURATION_MEAN);
   int duration = p.next();

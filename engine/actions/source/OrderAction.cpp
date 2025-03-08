@@ -14,6 +14,7 @@
 #include "OrderScreen.hpp"
 #include "OrderTextKeys.hpp"
 #include "RNG.hpp"
+#include "Setting.hpp"
 #include "TileMovementConfirmation.hpp"
 
 using std::string;
@@ -31,10 +32,40 @@ ActionCostValue OrderAction::order(CreaturePtr creature)
 
     if (leader_and_followers_exist || check_for_followers(creature, manager))
     {
-      acv = order_followers(creature, manager);
+      acv = order_followers(creature);
     }
 
     manager.send();
+  }
+
+  return acv;
+}
+
+ActionCostValue OrderAction::order_creature(CreaturePtr leader, CreaturePtr cr_to_order)
+{
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+
+  if (leader != nullptr && cr_to_order != nullptr)
+  {
+    Game& game = Game::instance();
+    DecisionStrategy* decision_strategy = leader->get_decision_strategy();
+    bool can_summon = leader->get_skills().get_value(SkillType::SKILL_GENERAL_LEADERSHIP) > 0;
+
+    CommandFactoryPtr command_factory = std::make_unique<OrderCommandFactory>();
+
+    if (decision_strategy)
+    {
+      const CreatureMap& fov_followers = CreatureUtils::get_followers_in_fov(leader);
+      bool followers_exist_in_fov = fov_followers.empty() == false;
+
+      KeyboardCommandMapPtr kb_command_map = std::make_unique<OrderKeyboardCommandMap>(followers_exist_in_fov, can_summon);
+      OrderScreen os(game.get_display(), followers_exist_in_fov, can_summon);
+      string display_s = os.display();
+      int input = display_s.at(0);
+
+      CommandPtr order_command = decision_strategy->get_nonmap_decision(false, leader->get_id(), command_factory.get(), kb_command_map.get(), &input, false);
+      acv = OrderCommandProcessor::process(leader, order_command.get(), cr_to_order->get_id());
+    }
   }
 
   return acv;
@@ -57,7 +88,7 @@ bool OrderAction::check_for_followers(CreaturePtr creature, IMessageManager& man
   return has_followers_in_fov;
 }
 
-ActionCostValue OrderAction::order_followers(CreaturePtr creature, IMessageManager& manager)
+ActionCostValue OrderAction::order_followers(CreaturePtr creature)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
  
@@ -71,7 +102,15 @@ ActionCostValue OrderAction::order_followers(CreaturePtr creature, IMessageManag
 
     if (decision_strategy)
     {
-      bool followers_exist_in_fov = CreatureUtils::get_followers_in_fov(creature).size() > 0;
+      const CreatureMap& fov_followers = CreatureUtils::get_followers_in_fov(creature);
+      bool always_order_all = game.get_settings_ref().get_setting_as_bool(Setting::ALWAYS_GIVE_ORDERS_TO_ALL_FOLLOWERS_IN_RANGE);
+      bool followers_exist_in_fov = fov_followers.empty() == false;
+      string follower_ids;
+
+      if (!fov_followers.empty() && always_order_all == false)
+      {
+        // get_follower_for_command(...);
+      }
 
       KeyboardCommandMapPtr kb_command_map = std::make_unique<OrderKeyboardCommandMap>(followers_exist_in_fov, can_summon);
       OrderScreen os(game.get_display(), followers_exist_in_fov, can_summon);
@@ -79,14 +118,14 @@ ActionCostValue OrderAction::order_followers(CreaturePtr creature, IMessageManag
       int input = display_s.at(0);
 
       CommandPtr order_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory.get(), kb_command_map.get(), &input, false);
-      acv = OrderCommandProcessor::process(creature, order_command.get());
+      acv = OrderCommandProcessor::process(creature, order_command.get(), follower_ids);
     }
   }
 
   return acv;
 }
 
-ActionCostValue OrderAction::order_attack(CreaturePtr creature)
+ActionCostValue OrderAction::order_attack(CreaturePtr creature, const string& follower_ids)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
@@ -97,7 +136,7 @@ ActionCostValue OrderAction::order_attack(CreaturePtr creature)
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_ATTACK));
 
-    CreatureMap creatures = CreatureUtils::get_followers_in_fov(creature);
+    CreatureMap creatures = CreatureUtils::get_followers_in_fov(creature, follower_ids);
     for (auto c_pair : creatures)
     {
       CreaturePtr follower = c_pair.second;
@@ -114,7 +153,7 @@ ActionCostValue OrderAction::order_attack(CreaturePtr creature)
   return acv;
 }
 
-ActionCostValue OrderAction::order_follow(CreaturePtr creature)
+ActionCostValue OrderAction::order_follow(CreaturePtr creature, const string& follower_ids)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
@@ -125,7 +164,7 @@ ActionCostValue OrderAction::order_follow(CreaturePtr creature)
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_FOLLOW));
 
-    CreatureMap creatures = CreatureUtils::get_followers_in_fov(creature);
+    CreatureMap creatures = CreatureUtils::get_followers_in_fov(creature, follower_ids);
     for (auto c_pair : creatures)
     {
       CreaturePtr follower = c_pair.second;
@@ -142,7 +181,7 @@ ActionCostValue OrderAction::order_follow(CreaturePtr creature)
   return acv;
 }
 
-ActionCostValue OrderAction::order_freeze(CreaturePtr creature)
+ActionCostValue OrderAction::order_freeze(CreaturePtr creature, const string& follower_ids)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
@@ -153,7 +192,7 @@ ActionCostValue OrderAction::order_freeze(CreaturePtr creature)
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_FREEZE));
 
-    CreatureMap creatures = CreatureUtils::get_followers_in_fov(creature);
+    CreatureMap creatures = CreatureUtils::get_followers_in_fov(creature, follower_ids);
     for (auto c_pair : creatures)
     {
       CreaturePtr follower = c_pair.second;
@@ -170,7 +209,7 @@ ActionCostValue OrderAction::order_freeze(CreaturePtr creature)
   return acv;
 }
 
-ActionCostValue OrderAction::order_at_ease(CreaturePtr creature)
+ActionCostValue OrderAction::order_at_ease(CreaturePtr creature, const string& follower_ids)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
@@ -181,7 +220,7 @@ ActionCostValue OrderAction::order_at_ease(CreaturePtr creature)
     IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_AT_EASE));
 
-    CreatureMap creatures = CreatureUtils::get_followers_in_fov(creature);
+    CreatureMap creatures = CreatureUtils::get_followers_in_fov(creature, follower_ids);
     for (auto c_pair : creatures)
     {
       CreaturePtr follower = c_pair.second;
@@ -198,7 +237,7 @@ ActionCostValue OrderAction::order_at_ease(CreaturePtr creature)
   return acv;
 }
 
-ActionCostValue OrderAction::order_summon(CreaturePtr creature)
+ActionCostValue OrderAction::order_summon(CreaturePtr creature, const string& /* follower_ids */)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 
@@ -242,7 +281,7 @@ ActionCostValue OrderAction::order_summon(CreaturePtr creature)
             // If moving to this tile would trigger confirmation (eg, trying
             // to move an aquatic creature out of water), skip it and move
             // to the next creature.
-            if (!std::get<0>(movement_details))
+            if (!movement_details.get_require_prompt())
             {
               MapUtils::add_or_update_location(map, follower, sc, sum_old_tile);
               summon_coords.erase(summon_coords.begin() + i);
@@ -298,7 +337,7 @@ void OrderAction::set_order(CreaturePtr creature, const string& order_id, const 
   }
 }
 
-ActionCostValue OrderAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue OrderAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return ActionCostConstants::DEFAULT;
 }

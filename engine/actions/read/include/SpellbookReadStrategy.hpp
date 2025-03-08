@@ -7,7 +7,7 @@ class ItemIdentifier;
 class SpellbookReadStrategy : public ReadStrategy
 {
   public:
-    ActionCostValue read(CreaturePtr creature, ActionManager * const am, ReadablePtr readable) override;
+    ActionCostValue read(CreaturePtr creature, ReadablePtr readable) override;
     bool add_spell_castings(CreaturePtr creature, const std::string& spell_id, const int num_castings);
 
   protected:

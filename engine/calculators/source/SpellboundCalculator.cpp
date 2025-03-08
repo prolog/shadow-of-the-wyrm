@@ -25,7 +25,7 @@ int SpellboundCalculator::calculate_pct_chance_effect(CreaturePtr creature) cons
   return pct_chance;
 }
 
-int SpellboundCalculator::calculate_duration_in_minutes(CreaturePtr creature) const
+int SpellboundCalculator::calculate_duration_in_minutes(CreaturePtr /*creature*/) const
 {
   PoissonDistribution p(BASE_SPELLBOUND_DURATION_MEAN);
   int duration = p.next();

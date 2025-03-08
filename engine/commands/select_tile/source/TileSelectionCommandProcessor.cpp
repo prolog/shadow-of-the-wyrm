@@ -1,7 +1,9 @@
+#include "ActionTextKeys.hpp"
 #include "CommandKeys.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "MessageManagerFactory.hpp"
+#include "OrderAction.hpp"
 #include "Setting.hpp"
 #include "TileSelectionCommandProcessor.hpp"
 
@@ -41,6 +43,10 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr c
       else if (command_name == CommandKeys::BESTIARY)
       {
         result = process_tile_selection_bestiary(creature, tsa);
+      }
+      else if (command_name == CommandKeys::ORDER)
+      {
+        result = process_tile_selection_order(creature, tsa);
       }
       else if (command_name == CommandKeys::ITEM_CODEX)
       {
@@ -193,4 +199,47 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selectio
   }
 
   return result;
+}
+
+pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selection_order(CreaturePtr creature, TileSelectionAction* const tsa)
+{
+  TilePtr tile = tsa->get_cursor_tile();
+  bool ok_to_give_order = false;
+  ActionCostValue acv = ActionCostConstants::NO_ACTION;
+  bool continue_ts = Game::instance().get_settings_ref().get_setting_as_bool(Setting::CONTINUE_TILE_SELECTION_AFTER_LOOKUP);
+  IMessageManager& manager = MessageManagerFactory::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+
+  if (creature && tile != nullptr)
+  {
+    CreaturePtr tile_creature = tile->get_creature();
+
+    if (tile_creature != nullptr)
+    {
+      if (tile_creature->get_leader_id() == creature->get_id())
+      {
+        ok_to_give_order = true;
+      }
+      else
+      {
+        // Creature exists, but isn't a follower.
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ORDER_NOT_A_FOLLOWER));
+        manager.send();
+      }
+    }
+
+    if (ok_to_give_order)
+    {
+      manager.clear_if_necessary();
+
+      OrderAction oa;
+      acv = oa.order_creature(creature, tile_creature);
+
+      if (acv != ActionCostConstants::NO_ACTION)
+      {
+        continue_ts = false;
+      }
+    }
+  }
+
+  return std::make_pair(continue_ts, acv);
 }

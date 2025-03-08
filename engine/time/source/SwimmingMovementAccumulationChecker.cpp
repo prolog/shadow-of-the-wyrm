@@ -20,7 +20,7 @@ void SwimmingMovementAccumulationChecker::check(CreaturePtr creature)
       submerged = tile && tile->get_submerged();
     }
 
-    ulonglong max_swimming_time = static_cast<ulonglong>(sc.calculate_maximum_swimming_time(submerged, creature, creature->get_breathes()));
+    ulonglong max_swimming_time = static_cast<ulonglong>(sc.calculate_maximum_swimming_time(submerged, creature));
     MovementAccumulation& movement_accumulation = creature->get_movement_accumulation_ref();
     ulonglong time_in_water = movement_accumulation.get_minutes_on_super_type_given_movement();
 

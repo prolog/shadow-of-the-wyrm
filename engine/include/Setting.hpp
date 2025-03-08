@@ -7,6 +7,7 @@ class Setting
     static const std::string USERDATA_DIR;
     static const std::string GENERATE_SYSTEM_CHARDUMP;
     static const std::string SYSCHARDUMP_DIR;
+    static const std::string SCOREFILE_DIR;
     static const std::string SHADE_TERRAIN;
     static const std::string SHADE_CREATURES_AND_ITEMS;
     static const std::string DEFAULT_HP_COLOUR;
@@ -86,8 +87,10 @@ class Setting
     static const std::string SOUND;
     static const std::string SOUND_ENABLED;
     static const std::string SOUND_EFFECTS_ENABLED;
+    static const std::string AMBIENT_SOUND_EFFECTS_ENABLED;
     static const std::string DISABLE_SOUND_EFFECT_IDS;
     static const std::string MUSIC_ENABLED;
+    static const std::string ALWAYS_GIVE_ORDERS_TO_ALL_FOLLOWERS_IN_RANGE;
 
     // world map cellular automata terrain has the form below: as well as FIELD,
     // there is also FOREST, HILLS, MOUNTAINS, SCRUBLAND, MARSHES, DESERT.

@@ -7,6 +7,7 @@ class CodexDescriber
 {
   public:
     CodexDescriber(ItemPtr item);
+    virtual ~CodexDescriber() = default;
 
     virtual std::string describe_for_synopsis_line() const;
     virtual std::string describe_resistances() const;

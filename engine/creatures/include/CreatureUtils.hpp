@@ -72,7 +72,7 @@ class CreatureUtils
 
     static bool has_followers(CreaturePtr creature, MapPtr map);
     static CreatureMap get_followers(CreaturePtr creature, MapPtr map);
-    static CreatureMap get_followers_in_fov(CreaturePtr creature);
+    static CreatureMap get_followers_in_fov(CreaturePtr creature, const std::string& follower_ids = "");
     static std::string get_follower_property_prefix();
 
     static bool remove_negative_statuses_from_creature(CreaturePtr creature);

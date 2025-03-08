@@ -21,6 +21,7 @@ class DeityTextKeys
     static const std::string PRAYER_WORLD_MAP;
     static const std::string PRAYER_PROTECTION;
     static const std::string PRAYER_SMITE;
+    static const std::string PRAYER_SMITE_DIVINE_LIGHTNING;
     static const std::string PRAYER_UNCURSE;
     static const std::string PRAYER_HALT_BREEDING;
     static const std::string PRAYER_COMPANION;

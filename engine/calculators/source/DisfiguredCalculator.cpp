@@ -30,7 +30,7 @@ int DisfiguredCalculator::calculate_pct_chance_effect(CreaturePtr creature) cons
   return pct_chance;
 }
 
-int DisfiguredCalculator::calculate_duration_in_minutes(CreaturePtr creature) const
+int DisfiguredCalculator::calculate_duration_in_minutes(CreaturePtr /*creature*/) const
 {
   PoissonDistribution p(BASE_DISFIGURED_DURATION_MEAN);
   int duration = p.next();

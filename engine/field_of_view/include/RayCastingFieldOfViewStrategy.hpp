@@ -5,6 +5,7 @@ class RayCastingFieldOfViewStrategy : public FieldOfViewStrategy
 {
   public:
     RayCastingFieldOfViewStrategy(const bool set_view_property);
+    virtual ~RayCastingFieldOfViewStrategy() = default;
     
     MapPtr calculate(CreaturePtr fov_creature, MapPtr view_map, const Coordinate& creature_coords, const int los_length) override;
     

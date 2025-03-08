@@ -7,6 +7,7 @@ class ItemMaterialFilter : public IItemFilter
 {
   public:
     ItemMaterialFilter(const std::vector<MaterialType>& new_materials);
+    virtual ~ItemMaterialFilter() = default;
 
     bool passes_filter(ItemPtr item) const override;
 

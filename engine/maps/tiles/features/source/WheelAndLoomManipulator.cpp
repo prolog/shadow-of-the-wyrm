@@ -22,7 +22,7 @@ loom_map({ {EquipmentWornLocation::EQUIPMENT_WORN_HEAD, ItemIdKeys::ITEM_ID_CAP}
 {
 }
 
-void WheelAndLoomManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+void WheelAndLoomManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
 {
   if (creature && creature->get_is_player())
   {
@@ -125,7 +125,7 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
   return handled;
 }
 
-bool WheelAndLoomManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+bool WheelAndLoomManipulator::drop(CreaturePtr /*dropping_creature*/, TilePtr /*tile*/, ItemPtr /*item*/)
 {
   return false;
 }

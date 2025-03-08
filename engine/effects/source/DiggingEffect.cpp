@@ -39,22 +39,22 @@ Effect* DiggingEffect::clone()
   return new DiggingEffect(*this);
 }
 
-bool DiggingEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool DiggingEffect::effect_blessed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& affected_coordinate, TilePtr /*affected_tile*/)
 {
   return dig(creature, affected_coordinate);
 }
 
-bool DiggingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool DiggingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& affected_coordinate, TilePtr /*affected_tile*/)
 {
   return dig(creature, affected_coordinate);
 }
 
-bool DiggingEffect::effect_cursed(CreaturePtr creature, ActionManager * am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool DiggingEffect::effect_cursed(CreaturePtr creature, ActionManager * /*am*/, const Coordinate& affected_coordinate, TilePtr /*affected_tile*/)
 {
   return dig(creature, affected_coordinate);
 }
 
-bool DiggingEffect::dig(CreaturePtr creature, const Coordinate& affected_coord)
+bool DiggingEffect::dig(CreaturePtr /*creature*/, const Coordinate& affected_coord)
 {
   bool dug = false;
 

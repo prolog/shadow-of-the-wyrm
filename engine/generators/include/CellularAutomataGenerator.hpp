@@ -39,6 +39,7 @@ class CellularAutomataGenerator
   public:
     CellularAutomataGenerator();
     CellularAutomataGenerator(const CellularAutomataSettings& cas, const Dimensions& dim);
+    virtual ~CellularAutomataGenerator() = default;
 
     CellMap generate();
 

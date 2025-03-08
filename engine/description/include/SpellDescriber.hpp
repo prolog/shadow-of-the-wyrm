@@ -9,6 +9,7 @@ class SpellDescriber : public IDescriber
 {
   public:
     SpellDescriber(CreaturePtr creature, const Spell& new_spell);
+    virtual ~SpellDescriber() = default;
 
     std::string describe() const override;
 

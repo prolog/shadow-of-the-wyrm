@@ -36,11 +36,11 @@ string Readable::get_text_sid() const
 bool Readable::additional_item_attributes_match(ItemPtr item) const
 {
   bool match = false;
-  ReadablePtr readable = dynamic_pointer_cast<Readable>(item);
+  ReadablePtr read = dynamic_pointer_cast<Readable>(item);
 
-  if (readable != nullptr)
+  if (read != nullptr)
   {
-    match = (text_sid == readable->get_text_sid());
+    match = (text_sid == read->get_text_sid());
   }
   
   return match;

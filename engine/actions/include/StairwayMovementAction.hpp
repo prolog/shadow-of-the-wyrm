@@ -20,8 +20,8 @@ class StairwayMovementAction : public IActionManager
     StairwayMovementAction();
     ~StairwayMovementAction();
 
-    void move_to_custom_map(TilePtr current_tile, MapPtr current_map, MapExitPtr map_exit, CreaturePtr creature, Game& game, MovementAction* const ma, const Direction d);
-    ActionCostValue generate_or_move_to_zlevel(Game& game, MovementAction* const ma, IMessageManager& manager, CreaturePtr creature, MapPtr current_map, TilePtr tile, const Coordinate& c, MapExitPtr map_exit, const ExitMovementType emt, const Direction d);
+    void move_to_custom_map(TilePtr current_tile, MapPtr current_map, MapExitPtr map_exit, CreaturePtr creature, MovementAction* const ma, const Direction d);
+    ActionCostValue generate_or_move_to_zlevel(MovementAction* const ma, IMessageManager& manager, CreaturePtr creature, MapPtr current_map, TilePtr tile, const Coordinate& c, MapExitPtr map_exit, const ExitMovementType emt, const Direction d);
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };

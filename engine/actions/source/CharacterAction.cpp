@@ -65,7 +65,6 @@ ActionCostValue CharacterAction::dump_character(CreaturePtr creature, const Char
     IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature->get_is_player());
     string name = creature->get_name();
 
-    ostringstream fns;
     Settings& settings = Game::instance().get_settings_ref();
     auto cur_time = std::chrono::system_clock::now();
 
@@ -107,7 +106,7 @@ ActionCostValue CharacterAction::dump_character(CreaturePtr creature, const Char
 }
 
 
-ActionCostValue CharacterAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue CharacterAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }

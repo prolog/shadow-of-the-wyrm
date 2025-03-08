@@ -139,7 +139,7 @@ string TextMessages::get_npc_escapes_message(const string& creature_description)
 {
   string escapes_message = StringTable::get(TextKeys::NPC_ESCAPES_MESSAGE);
   boost::replace_first(escapes_message, "%s", creature_description);
-  escapes_message[0] = toupper(escapes_message[0]);
+  escapes_message[0] = static_cast<char>(toupper(escapes_message[0]));
   return escapes_message;
 }
 
@@ -148,7 +148,7 @@ string TextMessages::get_npc_flees_message(const string& creature_description)
 {
   string flees_message = StringTable::get(TextKeys::NPC_FLEES_MESSAGE);
   boost::replace_first(flees_message, "%s", creature_description);
-  flees_message[0] = toupper(flees_message[0]);
+  flees_message[0] = static_cast<char>(toupper(flees_message[0]));
   return flees_message;
 }
 
@@ -156,7 +156,7 @@ string TextMessages::get_npc_turns_to_fight_message(const string& creature_descr
 {
   string turns_message = StringTable::get(TextKeys::NPC_TURNS_TO_FIGHT_MESSAGE);
   boost::replace_first(turns_message, "%s", creature_description);
-  turns_message[0] = toupper(turns_message[0]);
+  turns_message[0] = static_cast<char>(toupper(turns_message[0]));
   return turns_message;
 }
 
@@ -164,7 +164,7 @@ string TextMessages::get_npc_level_message(const string& creature_description)
 {
   string level_message = StringTable::get(NPC_LEVEL_MESSAGE);
   boost::replace_first(level_message, "%s", creature_description);
-  level_message[0] = toupper(level_message[0]);
+  level_message[0] = static_cast<char>(toupper(level_message[0]));
   return level_message;
 
 }
@@ -413,7 +413,7 @@ string TextMessages::get_item_drop_message(CreaturePtr creature, const bool blin
 
     boost::replace_first(item_message, "%s1", StringTable::get(creature->get_description_sid()));
     boost::replace_first(item_message, "%s2", id->describe_usage());
-    item_message[0] = toupper(item_message[0]);
+    item_message[0] = static_cast<char>(toupper(item_message[0]));
   }
 
   return item_message;
@@ -449,7 +449,7 @@ string TextMessages::get_item_pick_up_message(const bool player_blind, CreatureP
   }
 
   boost::replace_first(item_message, "%s2", id->describe_usage());
-  item_message[0] = toupper(item_message[0]);
+  item_message[0] = static_cast<char>(toupper(item_message[0]));
   return item_message;
 }
 
@@ -470,7 +470,7 @@ string TextMessages::get_item_pick_up_and_merge_message(const bool player_blind,
   }
 
   boost::replace_first(item_message, "%s2", id->describe_usage());
-  item_message[0] = toupper(item_message[0]);
+  item_message[0] = static_cast<char>(toupper(item_message[0]));
   return item_message;
 }
 
@@ -747,7 +747,7 @@ string TextMessages::get_equip_message(const string& creature_desc_sid, const st
   boost::replace_first(msg, "%s1", StringTable::get(creature_desc_sid));
   boost::replace_first(msg, "%s2", item_desc);
 
-  msg[0] = toupper(msg[0]);
+  msg[0] = static_cast<char>(toupper(msg[0]));
 
   return msg;
 }

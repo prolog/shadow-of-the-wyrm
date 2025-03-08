@@ -81,14 +81,13 @@ pair<string, string> WeaponInfoAction::get_wielded_and_offhand_text(CreaturePtr 
 
   if (creature != nullptr)
   {
-    Damage base_damage = creature->get_base_damage();
     WeaponManager wm;
 
     WeaponPtr wielded_weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
     WeaponPtr off_hand_weapon = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_SECONDARY);
 
-    wo_text.first = get_melee_weapon_info(creature, wielded_weapon, AttackType::ATTACK_TYPE_MELEE_PRIMARY, base_damage);
-    wo_text.second = get_melee_weapon_info(creature, off_hand_weapon, AttackType::ATTACK_TYPE_MELEE_SECONDARY, base_damage);
+    wo_text.first = get_melee_weapon_info(creature, wielded_weapon, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
+    wo_text.second = get_melee_weapon_info(creature, off_hand_weapon, AttackType::ATTACK_TYPE_MELEE_SECONDARY);
   }
 
   return wo_text;
@@ -114,7 +113,7 @@ string WeaponInfoAction::get_ranged_text(CreaturePtr creature) const
 }
 
 // Get the UI string for either the primary or off-hand weapon.
-string WeaponInfoAction::get_melee_weapon_info(CreaturePtr creature, WeaponPtr weapon, const AttackType attack_type, const Damage& damage) const
+string WeaponInfoAction::get_melee_weapon_info(CreaturePtr creature, WeaponPtr weapon, const AttackType attack_type) const
 {
   string melee_info;
 
@@ -204,7 +203,7 @@ string WeaponInfoAction::get_ranged_weapon_info(CreaturePtr creature, WeaponPtr 
 }
 
 // Getting weapon info is always no-cost
-ActionCostValue WeaponInfoAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue WeaponInfoAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }

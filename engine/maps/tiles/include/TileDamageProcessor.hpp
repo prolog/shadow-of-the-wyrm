@@ -9,6 +9,7 @@ class TileDamageProcessor
 {
   public:
     void process(TilePtr tile, CreaturePtr creature);
+    virtual ~TileDamageProcessor() = default;
 
   protected:
     virtual bool destroy_item() const;

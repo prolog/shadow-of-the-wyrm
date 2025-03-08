@@ -242,7 +242,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
 
       if (!remains.empty() && creatures_tile->has_been_dug())
       {
-        bury_remains(creature, item_to_drop->get_additional_property(ConsumableConstants::CORPSE_RACE_ID), selected_quantity, creature_coord, creatures_tile, current_map);
+        bury_remains(creature, item_to_drop->get_additional_property(ConsumableConstants::CORPSE_RACE_ID), selected_quantity, creatures_tile, current_map);
       }
       else if (String::to_bool(plantable_food) && creatures_tile->has_been_dug())
       {
@@ -479,7 +479,7 @@ bool DropAction::add_remainder_of_plantable_if_necessary(MapPtr current_map, Til
 }
 
 // Bury the remains of something once living
-bool DropAction::bury_remains(CreaturePtr creature, const string& remains_race_id, const uint selected_quantity, const Coordinate& coords, TilePtr tile, MapPtr current_map)
+bool DropAction::bury_remains(CreaturePtr creature, const string& remains_race_id, const uint selected_quantity, TilePtr tile, MapPtr current_map)
 {
   bool buried = false;
 
@@ -595,7 +595,7 @@ bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TileP
   if (!built && !wall_tile_type_s.empty())
   {
     TileType wall_tile_type = static_cast<TileType>(String::to_int(wall_tile_type_s));
-    built = build_wall_with_dropped_item(creature, map, tile, wall_tile_type, false);
+    built = build_wall_with_dropped_item(creature, map, wall_tile_type, false);
   }
 
   // Can we build on adjacent water tiles?
@@ -615,7 +615,7 @@ bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TileP
     if (water_nearby)
     {
       TileType water_tile_type = static_cast<TileType>(String::to_int(water_tile_type_s));
-      built = build_wall_with_dropped_item(creature, map, tile, water_tile_type, true);
+      built = build_wall_with_dropped_item(creature, map, water_tile_type, true);
     }
   }
 
@@ -629,7 +629,7 @@ bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TileP
   return built;
 }
 
-bool DropAction::build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType wall_tile_type, const bool allow_build_on_water)
+bool DropAction::build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, const TileType wall_tile_type, const bool allow_build_on_water)
 {
   bool built = false;
   IMessageManager& manager = MM::instance();
@@ -873,7 +873,7 @@ size_t DropAction::get_build_option(const vector<string>& options) const
 }
 
 // Dropping always has a base action cost of 1.
-ActionCostValue DropAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue DropAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

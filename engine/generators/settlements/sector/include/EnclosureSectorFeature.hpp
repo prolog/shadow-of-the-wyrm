@@ -14,6 +14,8 @@ enum struct EnclosureContentsType
 class EnclosureSectorFeature : public SectorFeature
 {
   public:
+    virtual ~EnclosureSectorFeature() = default;
+
     EnclosureSectorFeature(const EnclosureContentsType new_contents = EnclosureContentsType::ENCLOSURE_CONTENTS_ANIMALS);
 
   protected:

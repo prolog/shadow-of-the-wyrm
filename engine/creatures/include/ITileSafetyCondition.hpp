@@ -9,6 +9,8 @@
 class ITileSafetyCondition
 {
   public:
+    virtual ~ITileSafetyCondition() = default;
+
     virtual bool is_safe(CreaturePtr creature, TilePtr tile) = 0;
 };
 

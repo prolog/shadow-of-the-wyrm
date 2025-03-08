@@ -6,6 +6,8 @@ class BlindFeatureDescriber : public FeatureDescriber
 {
   public:
     BlindFeatureDescriber();
+    virtual ~BlindFeatureDescriber() = default;
+
     virtual std::string describe() const override;
 };
 

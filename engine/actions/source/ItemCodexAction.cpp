@@ -264,9 +264,9 @@ void ItemCodexAction::add_item_details_to_codex(ItemPtr item, CodexDescriber* co
   }
 }
 
-void ItemCodexAction::add_description_to_codex(ItemPtr item, CodexDescriber* codex_desc, const string& separator, vector<pair<Colour, string>>& codex_text) const
+void ItemCodexAction::add_description_to_codex(ItemPtr item, CodexDescriber* codex_desc, const string& /* separator */, vector<pair<Colour, string>>& codex_text) const
 {
-  if (item != nullptr)
+  if (item != nullptr && codex_desc != nullptr)
   {
     // Item codex description
     TextDisplayFormatter tdf;
@@ -279,7 +279,7 @@ void ItemCodexAction::add_description_to_codex(ItemPtr item, CodexDescriber* cod
   }
 }
 
-ActionCostValue ItemCodexAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue ItemCodexAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return ActionCostConstants::NO_ACTION;
 }

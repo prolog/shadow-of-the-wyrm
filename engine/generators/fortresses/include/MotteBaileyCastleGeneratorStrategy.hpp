@@ -5,6 +5,7 @@ class MotteBaileyCastleGeneratorStrategy : public CastleGeneratorStrategy
 {
   public:
     void generate(MapPtr castle_map);
+    virtual ~MotteBaileyCastleGeneratorStrategy() = default;
 
   protected:
     void generate_moat(MapPtr castle_map, const int start_y, const int start_x, const int end_y, const int end_x);

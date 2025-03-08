@@ -941,7 +941,7 @@ class Skills : public ISerializable
     Skills();
     Skills(const Skills& skills);
     Skills& operator=(const Skills& skills);
-    virtual bool operator==(const Skills& skills) const;
+    bool operator==(const Skills& skills) const;
 
     // For each skill in skills_to_increment, update the values in the current
     // object by the appropriate amount.

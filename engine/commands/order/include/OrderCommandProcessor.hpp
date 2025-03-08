@@ -5,7 +5,7 @@
 class OrderCommandProcessor
 {
   public:
-    static ActionCostValue process(CreaturePtr creature, Command* command);
+    static ActionCostValue process(CreaturePtr creature, Command* command, const std::string& follower_ids);
 
   protected:
     OrderCommandProcessor();

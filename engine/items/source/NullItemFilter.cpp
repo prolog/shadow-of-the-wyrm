@@ -1,6 +1,6 @@
 #include "NullItemFilter.hpp"
 
-bool NullFilter::passes_filter(ItemPtr item) const
+bool NullItemFilter::passes_filter(ItemPtr /*item*/) const
 {
   return true;
 }

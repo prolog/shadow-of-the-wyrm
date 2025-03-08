@@ -14,7 +14,7 @@ SlownessStatusEffect::SlownessStatusEffect()
   status_calc = std::make_shared<SlownessCalculator>();
 }
 
-void SlownessStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr affected_creature) const
+void SlownessStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr /*affected_creature*/) const
 {
   if (initiating != nullptr)
   {
@@ -48,7 +48,7 @@ bool SlownessStatusEffect::after_apply(CreaturePtr creature) const
   return effect_applied;
 }
 
-Modifier SlownessStatusEffect::get_base_modifier(CreaturePtr creature, const int danger_level) const
+Modifier SlownessStatusEffect::get_base_modifier(CreaturePtr creature, const int /*danger_level*/) const
 {
   Modifier m;
 

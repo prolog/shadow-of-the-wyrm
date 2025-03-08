@@ -535,7 +535,7 @@ void GeneratorUtils::generate_hermitage(MapPtr map)
             if (!potential_items.empty())
             {
               int num_readables = RNG::range(2, 4);
-              for (int i = 0; i < num_readables; i++)
+              for (int j = 0; j < num_readables; j++)
               {
                 items.push_back(potential_items[RNG::range(0, potential_items.size() - 1)]);
               }
@@ -576,9 +576,9 @@ void GeneratorUtils::generate_cottage(MapPtr map)
         Coordinate st_coord = { y_start, x_start };
         Coordinate end_coord = { y_start + height, x_start + width };
 
-        for (int i = 1; i <= offset; i++)
+        for (int j = 1; j <= offset; j++)
         {
-          vector<Coordinate> fern_coords = CoordUtils::get_perimeter_coordinates({ y_start - i, x_start - i }, { y_start + height + i, x_start + width + i });
+          vector<Coordinate> fern_coords = CoordUtils::get_perimeter_coordinates({ y_start - j, x_start - j }, { y_start + height + j, x_start + width + j });
 
           for (const Coordinate& c : fern_coords)
           {
@@ -656,24 +656,30 @@ void GeneratorUtils::generate_randarts(MapPtr map, const Coordinate& c, const in
 
     if (tile != nullptr)
     {
-      ActionManager& am = Game::instance().get_action_manager_ref();
-      ItemGenerationManager igm;
-      vector<ItemType> restr = { ItemType::ITEM_TYPE_WEAPON, ItemType::ITEM_TYPE_ARMOUR };
-      ItemGenerationConstraints igc(1, 50 /* JCD FIXME */, Rarity::RARITY_VERY_RARE, restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE);
-      ItemGenerationMap generation_map = igm.generate_item_generation_map(igc);
-      RaceManager rm;
-
       for (int i = 0; i < num_randarts; i++)
       {
-        ItemPtr randart = igm.generate_item(am, generation_map, Rarity::RARITY_VERY_RARE, restr, 0);
-        string name = Naming::generate_artifact_name();
-        vector<string> race_ids = rm.get_race_ids(false, false);
-        randart->create_randart(name, race_ids);
-
+        ItemPtr randart = generate_randart();
         tile->get_items()->merge_or_add(randart, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
       }
     }
   }
+}
+
+ItemPtr GeneratorUtils::generate_randart()
+{
+  ActionManager& am = Game::instance().get_action_manager_ref();
+  ItemGenerationManager igm;
+  vector<ItemType> restr = { ItemType::ITEM_TYPE_WEAPON, ItemType::ITEM_TYPE_ARMOUR };
+  ItemGenerationConstraints igc(1, 50 /* JCD FIXME */, Rarity::RARITY_VERY_RARE, restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE);
+  ItemGenerationMap generation_map = igm.generate_item_generation_map(igc);
+  RaceManager rm;
+
+  ItemPtr randart = igm.generate_item(am, generation_map, Rarity::RARITY_VERY_RARE, restr, 0);
+  string name = Naming::generate_artifact_name();
+  vector<string> race_ids = rm.get_race_ids(false, false);
+  randart->create_randart(name, race_ids);
+
+  return randart;
 }
 
 void GeneratorUtils::generate_item_per_coord(MapPtr map, const vector<Coordinate>& coords, const vector<string>& item_ids)
@@ -984,8 +990,8 @@ void GeneratorUtils::generate_dolmen(MapPtr map, SOTW::Generator * const gen)
           
           for (int j = 0; j < 3; j++)
           {
-            Coordinate c = interior.at(RNG::range(0, interior.size() - 1));
-            TilePtr tic = map->at(c);
+            Coordinate c_int = interior.at(RNG::range(0, interior.size() - 1));
+            TilePtr tic = map->at(c_int);
 
             if (tic != nullptr && !tic->get_is_blocking_for_item(grave_item))
             {
@@ -1002,12 +1008,12 @@ void GeneratorUtils::generate_dolmen(MapPtr map, SOTW::Generator * const gen)
     {
       for (int i = 0; i < 10; i++)
       {
-        Coordinate c = interior.at(RNG::range(0, interior.size() - 1));
-        TilePtr tile = map->at(c);
+        Coordinate c_art = interior.at(RNG::range(0, interior.size() - 1));
+        TilePtr tile = map->at(c_art);
 
         if (tile != nullptr && !tile->get_is_blocking_for_item())
         {
-          GeneratorUtils::generate_randarts(map, c, 1);
+          GeneratorUtils::generate_randarts(map, c_art, 1);
           break;
         }
       }

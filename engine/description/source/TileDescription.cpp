@@ -109,7 +109,7 @@ string TileDescription::format(const vector<string>& tile_info_strings)
     
     if (!str.empty())
     {
-      str[0] = toupper(str[0]);
+      str[0] = static_cast<char>(toupper(str[0]));
       
       if (str[str.size()-1] != '.')
       {

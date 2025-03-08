@@ -32,7 +32,7 @@ TEST(SW_Engine_Calculators_CreateItemCalculator, calc_potential_improvement_poin
   EXPECT_EQ(20, cic.calc_potential_improvement_points(creature, SkillType::SKILL_GENERAL_BOWYER, ItemStatus::ITEM_STATUS_CURSED));
 }
 
-TEST(SW_World_Calculators_CreateItemCalculator, calc_quantity)
+TEST(SW_Engine_Calculators_CreateItemCalculator, calc_quantity)
 {
   CreateItemCalculator cic;
   ItemPtr creation_item;

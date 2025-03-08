@@ -57,4 +57,10 @@
 			</LinkTo>
 		</Exit>
 	</Exits>
+	<Properties>
+		<Property>
+			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
+			<Value>assets/sound/music/waves.ogg</Value>
+		</Property>
+	</Properties>
 </CustomMap>

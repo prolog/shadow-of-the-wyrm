@@ -22,6 +22,8 @@ class Effect
     void set_source_id(const std::string& new_source_id);
     std::string get_source_id() const;
 
+    virtual std::string get_status_id() const;
+
     virtual bool effect(std::shared_ptr<Creature> creature, ActionManager * const am, const ItemStatus item_status, const Coordinate& affected_coord, TilePtr affected_tile, const bool show_message_on_unid = true);
 
     virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const = 0;

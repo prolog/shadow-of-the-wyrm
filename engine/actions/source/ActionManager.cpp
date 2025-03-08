@@ -452,7 +452,7 @@ ActionCost ActionManager::item_codex(CreaturePtr creature, const EquipmentWornLo
   return get_action_cost(creature, ica.item_details(creature, ewl));
 }
 
-ActionCost ActionManager::item_codex(CreaturePtr creature, ItemPtr item, const bool error_as_alert)
+ActionCost ActionManager::item_codex(CreaturePtr creature, ItemPtr item, const bool /* error_as_alert */)
 {
   ItemCodexAction ica;
 
@@ -619,7 +619,7 @@ ActionCost ActionManager::piety(CreaturePtr creature)
   MapPtr map = game.get_current_map();
 
   PietyAction pa;
-  return get_action_cost(creature, pa.piety(creature, map, this));
+  return get_action_cost(creature, pa.piety(creature, map));
 }
 
 ActionCost ActionManager::experience(CreaturePtr creature)

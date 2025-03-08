@@ -456,6 +456,7 @@
 			<HasHair>0</HasHair>
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
+			<Mindless>0</Mindless>
 			<NameSID>UNKNOWN_RACE_NAME</NameSID>
 			<Size>4</Size>
 			<AgeInfo>
@@ -531,6 +532,7 @@
 			<HasHair>0</HasHair>
 			<Natural>1</Natural>
 			<CanKick>1</CanKick>
+			<Mindless>0</Mindless>
 			<NameSID>ANIMAL_RACE_NAME</NameSID>
 			<Size>1</Size>
 			<AgeInfo>
@@ -606,6 +608,7 @@
 			<HasHair>0</HasHair>
 			<Natural>1</Natural>
 			<CanKick>0</CanKick>
+			<Mindless>0</Mindless>
 			<Drops>
 				<Drop>
 					<ID>_quill</ID>
@@ -686,6 +689,7 @@
 			<HasHair>0</HasHair>
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
+			<Mindless>1</Mindless>
 			<Drops>
 				<Drop>
 					<ID>_magici_shard</ID>
@@ -765,6 +769,7 @@
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
+			<Mindless>0</Mindless>
 			<NameSID>DEMON_RACE_NAME</NameSID>
 			<Size>3</Size>
 			<AgeInfo>
@@ -838,6 +843,7 @@
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
+			<Mindless>0</Mindless>
 			<NameSID>DIVINE_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -911,6 +917,7 @@
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
+			<Mindless>0</Mindless>
 			<Drops>
 				<Drop>
 					<ID>_currency</ID>
@@ -992,6 +999,7 @@
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
+			<Mindless>0</Mindless>
 			<NameSID>ELYSIAN_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<Hungerless>1</Hungerless>
@@ -1069,6 +1077,7 @@
 			<HasHair>0</HasHair>
 			<Natural>1</Natural>
 			<CanKick>0</CanKick>
+			<Mindless>1</Mindless>
 			<NameSID>INSECT_RACE_NAME</NameSID>
 			<Size>1</Size>
 			<AgeInfo>
@@ -1144,6 +1153,7 @@
 			<HasHair>0</HasHair>
 			<Natural>1</Natural>
 			<CanKick>0</CanKick>
+			<Mindless>1</Mindless>
 			<NameSID>JELLY_RACE_NAME</NameSID>
 			<Size>1</Size>
 			<AgeInfo>
@@ -1217,6 +1227,7 @@
 			<HasHair>0</HasHair>
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
+			<Mindless>0</Mindless>
 			<NameSID>MONSTER_RACE_NAME</NameSID>
 			<Size>3</Size>
 			<AgeInfo>
@@ -1292,6 +1303,7 @@
 			<HasHair>0</HasHair>
 			<Natural>1</Natural>
 			<CanKick>0</CanKick>
+			<Mindless>0</Mindless>
 			<NameSID>PLANT_RACE_NAME</NameSID>
 			<Size>3</Size>
 			<AgeInfo>
@@ -1365,6 +1377,7 @@
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
+			<Mindless>0</Mindless>
 			<NameSID>UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1434,6 +1447,7 @@
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
+			<Mindless>1</Mindless>
 			<NameSID>CORPOREAL_UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1505,6 +1519,7 @@
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
+			<Mindless>1</Mindless>
 			<NameSID>SPIRIT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1575,6 +1590,7 @@
 			<HasHair>0</HasHair>
 			<Natural>1</Natural>
 			<CanKick>0</CanKick>
+			<Mindless>0</Mindless>
 			<Drops>
 				<Drop>
 					<ID>_magici_shard</ID>
@@ -1648,6 +1664,7 @@
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
+			<Mindless>0</Mindless>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_1_NAME</NameSID>
@@ -1744,6 +1761,7 @@
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
+			<Mindless>0</Mindless>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
 			<NameSID>RACE_2_NAME</NameSID>
@@ -1838,6 +1856,7 @@
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
+			<Mindless>0</Mindless>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_3_NAME</NameSID>
@@ -1932,6 +1951,7 @@
 			<HasHair>0</HasHair>
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
+			<Mindless>0</Mindless>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_4_NAME</NameSID>
@@ -2025,6 +2045,7 @@
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
+			<Mindless>0</Mindless>
 			<HasRandomVillages>0</HasRandomVillages>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
@@ -2119,6 +2140,7 @@
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
+			<Mindless>0</Mindless>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_6_NAME</NameSID>
@@ -2213,6 +2235,7 @@
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
+			<Mindless>0</Mindless>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_7_NAME</NameSID>
@@ -2308,6 +2331,7 @@
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
+			<Mindless>0</Mindless>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>1</SettlementTileSubtype>
 			<NameSID>RACE_8_NAME</NameSID>
@@ -2398,6 +2422,7 @@
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
+			<Mindless>0</Mindless>
 			<SettlementType>1</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_9_NAME</NameSID>
@@ -2489,6 +2514,7 @@
 			<HasHair>1</HasHair>
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
+			<Mindless>0</Mindless>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_10_NAME</NameSID>
@@ -5450,6 +5476,20 @@
 			<Radius>1</Radius>
 			<Effect>32</Effect>
 		</Spell>
+		<Spell id="c_19_water_breathing">
+			<NameSID>WATER_BREATHING_NAME_SID</NameSID>
+			<DescriptionSID>WATER_BREATHING_SPELLBOOK_CODEX_SID</DescriptionSID>
+			<PlayerCastMessageSID>WATER_BREATHING_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>WATER_BREATHING_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<MagicClassification>3</MagicClassification>
+			<Colour>4</Colour>
+			<APCost>30</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>34</Effect>
+		</Spell>
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
 			<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_CODEX_SID</DescriptionSID>
@@ -6825,15 +6865,19 @@
 			</Symbol>
 		</ScrubTile>
 		<WheatTile>
-			<!-- Not currently used -->
 			<Symbol>
 				<Char>|</Char>
 				<Colours>
-					<Spring>3</Spring>
-					<Summer>3</Summer>
+					<Spring>10</Spring>
+					<Summer>11</Summer>
 					<Autumn>3</Autumn>
 					<Winter>7</Winter>
 				</Colours>
+				<Sprite>
+					<ID>til</ID>
+					<Row>1</Row>
+					<Col>1</Col>
+				</Sprite>
 			</Symbol>
 		</WheatTile>
 		<CairnTile>
@@ -8431,6 +8475,21 @@
 			<Effect id="_click">
 				<Location>assets/sound/effects/click.wav</Location>
 			</Effect>
+			<Effect id="_eat">
+				<Location>assets/sound/effects/eat.wav</Location>
+			</Effect>
+			<Effect id="_drink">
+				<Location>assets/sound/effects/drink.wav</Location>
+			</Effect>
+			<Effect id="_drip1">
+				<Location>assets/sound/effects/drip1.wav</Location>
+			</Effect>
+			<Effect id="_drip2">
+				<Location>assets/sound/effects/drip2.wav</Location>
+			</Effect>
+			<Effect id="_drip3">
+				<Location>assets/sound/effects/drip3.wav</Location>
+			</Effect>
 		</Effects>
 		<Music>
 			<Song event="_arena">
@@ -8469,9 +8528,15 @@
 			<Song event="_underwater" map_type="3">
 				<Location>assets/sound/music/water_music_2.ogg</Location>
 			</Song>
-			<Song event="_title" tile_type="49">
+			<Song event="_waves">
+				<Location>assets/sound/music/waves.ogg</Location>
+			</Song>
+			<Song event="_title">
 				<Location>assets/sound/music/o_aurelion_o_celeste.ogg</Location>
 			</Song>
+			<Song tile_type="49">
+				<Location>assets/sound/music/still_beating_heart.ogg</Location>
+			</Song>			
 			<Song tile_type="25">
 				<Location>assets/sound/music/settlement.ogg</Location>
 			</Song>
@@ -8482,7 +8547,7 @@
 				<Location>assets/sound/music/ships_return.ogg</Location>
 			</Song>
 			<Song id="fae_caravan">
-				<Location>assets/sound/music/caravan.ogg</Location>
+				<Location>assets/sound/music/caravan_of_winds.ogg</Location>
 			</Song>
 			<!-- Intentionally blank for cosmos - should be quiet. -->
 			<Song map_type="4"><Location/></Song>

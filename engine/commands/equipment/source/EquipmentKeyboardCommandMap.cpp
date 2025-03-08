@@ -22,7 +22,7 @@ void EquipmentKeyboardCommandMap::command_not_found(const string& keyboard_input
 }
 
 // Settings currently does nothing here.
-void EquipmentKeyboardCommandMap::initialize_command_mapping(const Settings& settings)
+void EquipmentKeyboardCommandMap::initialize_command_mapping(const Settings& /*settings*/)
 {
   command_mapping.clear();
   string esc_str;

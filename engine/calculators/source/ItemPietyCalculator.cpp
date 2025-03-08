@@ -1,13 +1,31 @@
 #include "ItemPietyCalculator.hpp"
 #include "ConsumableConstants.hpp"
 #include "Consumable.hpp"
+#include "Conversion.hpp"
+#include "CreatureFeatures.hpp"
 
 const int ItemPietyCalculator::MINIMUM_PIETY = 10;
 const int ItemPietyCalculator::MINIMUM_NUTRITION_FOR_PIETY = 1000;
 const int ItemPietyCalculator::BASE_DIVISOR = 10;
+const float ItemPietyCalculator::BASE_NUTRITION_DIVISOR = 1.15f;
 const int ItemPietyCalculator::CORPSE_DIVISOR = 3;
 const int ItemPietyCalculator::CURRENCY_DIVISOR = 3;
 const int ItemPietyCalculator::ARTIFACT_DIVISOR = 2;
+const float ItemPietyCalculator::CORPSE_PIETY_BASE_MULTIPLIER = 0.25f;
+std::map<ItemType, int> ItemPietyCalculator::ITEM_TYPE_PIETY_DIVISORS = {};
+
+ItemPietyCalculator::ItemPietyCalculator()
+{
+  if (ITEM_TYPE_PIETY_DIVISORS.empty())
+  {
+    init_item_type_pieties();
+  }
+}
+
+void ItemPietyCalculator::init_item_type_pieties()
+{
+  ITEM_TYPE_PIETY_DIVISORS = { {ItemType::ITEM_TYPE_CURRENCY, 3} };
+}
 
 // Calculate the piety granted for the sacrifice of a particular item.
 // - If the item's piety is less than the minimum piety, a piety of 0
@@ -18,6 +36,7 @@ int ItemPietyCalculator::calculate_piety(ItemPtr item)
   int item_piety = 0;
   int divisor = get_base_divisor(item);
   int base_value = get_base_value(item);
+  float level_multiplier = get_corpse_level_multiplier(item);
 
   if (item)
   {
@@ -26,6 +45,7 @@ int ItemPietyCalculator::calculate_piety(ItemPtr item)
     item_piety = base_value;
     item_piety *= item->get_quantity();
     item_piety /= divisor;
+    item_piety = static_cast<int>(static_cast<float>(item_piety) * level_multiplier);
   }
 
   if (item_piety > MINIMUM_PIETY)
@@ -34,6 +54,53 @@ int ItemPietyCalculator::calculate_piety(ItemPtr item)
   }
 
   return piety;
+}
+
+int ItemPietyCalculator::get_item_type_piety_divisor(ItemPtr item)
+{
+  int divisor = BASE_DIVISOR;
+
+  if (item != nullptr)
+  {
+    auto d_it = ITEM_TYPE_PIETY_DIVISORS.find(item->get_type());
+
+    if (d_it != ITEM_TYPE_PIETY_DIVISORS.end())
+    {
+      divisor = d_it->second;
+    }
+  }
+
+  return divisor;
+}
+
+float ItemPietyCalculator::get_corpse_level_multiplier(ItemPtr item)
+{
+  float mult = 1.0f;
+
+  if (item != nullptr)
+  {
+    // If a corpse level property has been set, adjust the piety based on the level
+    // of the corpse. Weenie creatures like imps and kestrels generate minimal
+    // piety, whereas dragons etc generate a lot.
+    // 
+    // In practice, level 1 creatures give 27% of normal piety; level 50,
+    // 125%
+    std::string cl_s = item->get_additional_property(ConsumableConstants::CORPSE_LEVEL);
+    if (!cl_s.empty())
+    {
+      float max_level = static_cast<float>(CreatureConstants::MAX_CREATURE_LEVEL);
+      float corpse_level = String::to_float(cl_s);
+
+      if (corpse_level > 0 && max_level > 0)
+      {
+        mult = CORPSE_PIETY_BASE_MULTIPLIER;
+        mult += corpse_level / max_level;
+      }
+    }
+
+  }
+
+  return mult;
 }
 
 // Get the base value of an item.  For items that are not food, this is just
@@ -55,6 +122,12 @@ int ItemPietyCalculator::get_base_value(ItemPtr item)
         // Base nutrition is used here, not calculated nutrition - the divine aren't
         // influenced by an item's status.
         int nutrition = consumable->get_nutrition();
+        
+        // Non-corpse food is adjusted a bit.
+        if (!item->has_additional_property(ConsumableConstants::CORPSE_RACE_ID))
+        {
+          nutrition = static_cast<int>(consumable->get_nutrition() / BASE_NUTRITION_DIVISOR);
+        }
 
         if (nutrition >= MINIMUM_NUTRITION_FOR_PIETY || consumable->get_effect_type() != EffectType::EFFECT_TYPE_NULL)
         {
@@ -75,18 +148,13 @@ int ItemPietyCalculator::get_base_value(ItemPtr item)
 // corpses is much lower than for any other item.
 int ItemPietyCalculator::get_base_divisor(ItemPtr item)
 {
-  int divisor = BASE_DIVISOR;
+  int divisor = get_item_type_piety_divisor(item);
 
   if (item)
   {
     if (item->has_additional_property(ConsumableConstants::CORPSE_RACE_ID))
     {
       divisor = CORPSE_DIVISOR;
-    }
-
-    if (item->get_type() == ItemType::ITEM_TYPE_CURRENCY)
-    {
-      divisor = CURRENCY_DIVISOR;
     }
 
     if (item->get_artifact())

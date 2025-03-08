@@ -118,6 +118,8 @@ bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInv
 
     if (hunger.can_eat(nutrition))
     {
+      Game::instance().get_sound()->play(SoundEffectID::EAT);
+
       // First add the message about eating the food, because eating can in
       // turn generate other messages (if the food is poisoned, or the creature
       // gets resists, etc).
@@ -154,7 +156,6 @@ bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInv
           if (corpse_race->get_undead().get_current())
           {
             DeityActionManager& dam = Game::instance().get_deity_action_manager_ref();
-            MapPtr map = Game::instance().get_current_map();
 
             dam.notify_action(creature, map, CreatureActionKeys::ACTION_DESECRATE_GOOD);
             dam.notify_action(creature, map, CreatureActionKeys::ACTION_DESECRATE_NEUTRAL);
@@ -233,7 +234,7 @@ void FoodAction::create_seed_on_tile(CreaturePtr creature, TilePtr tile, const s
   }
 }
 
-ActionCostValue FoodAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue FoodAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

@@ -8,7 +8,7 @@ class CustomAreaGenerator
 {
   public:
     CustomAreaGenerator(const std::string& area_filename);
-    ~CustomAreaGenerator();
+    virtual ~CustomAreaGenerator();
 
     void overlay_custom_areas(MapPtr map);
 

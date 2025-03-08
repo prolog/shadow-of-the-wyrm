@@ -38,7 +38,7 @@ const string SpellcastingTextKeys::get_spellbook_destruction_message(const strin
   string destruction_message = StringTable::get(SpellcastingTextKeys::SPELLCASTING_SPELLBOOK_DESTRUCTION_MESSAGE);
 
   boost::replace_first(destruction_message, "%s", spellbook_desc);
-  destruction_message[0] = toupper(destruction_message[0]);
+  destruction_message[0] = static_cast<char>(toupper(destruction_message[0]));
 
   return destruction_message;
 }

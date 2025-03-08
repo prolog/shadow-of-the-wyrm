@@ -24,7 +24,7 @@ bool AltarManipulator::desecrate(CreaturePtr creature, MapPtr current_map)
   return false;
 }
 
-bool AltarManipulator::handle(TilePtr tile, CreaturePtr creature)
+bool AltarManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
 {
   if (creature && creature->get_is_player())
   {
@@ -64,7 +64,7 @@ bool AltarManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr
   return item_altered;
 }
 
-void AltarManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+void AltarManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/)
 {
   desecrate(creature, current_map);
 }

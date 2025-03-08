@@ -18,7 +18,7 @@ SummonMonstersEffect::SummonMonstersEffect()
   summon_msg = StringTable::get(EffectTextKeys::EFFECT_SUMMON_MONSTERS);
 }
 
-string SummonMonstersEffect::get_effect_identification_message(std::shared_ptr<Creature> creature) const
+string SummonMonstersEffect::get_effect_identification_message(std::shared_ptr<Creature> /*creature*/) const
 {
   return summon_msg;
 }
@@ -98,7 +98,7 @@ bool SummonMonstersEffect::summon(CreaturePtr creature, MapPtr map, const int nu
   return effect_id;
 }
 
-bool SummonMonstersEffect::effect_blessed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool SummonMonstersEffect::effect_blessed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   bool id = false;
 
@@ -111,7 +111,7 @@ bool SummonMonstersEffect::effect_blessed(CreaturePtr creature, ActionManager * 
   return id;
 }
 
-bool SummonMonstersEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool SummonMonstersEffect::effect_uncursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   bool id = false;
 
@@ -124,7 +124,7 @@ bool SummonMonstersEffect::effect_uncursed(CreaturePtr creature, ActionManager *
   return id;
 }
 
-bool SummonMonstersEffect::effect_cursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool SummonMonstersEffect::effect_cursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   bool id = false;
 

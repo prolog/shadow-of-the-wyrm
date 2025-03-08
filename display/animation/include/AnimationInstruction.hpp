@@ -9,6 +9,8 @@ class Display;
 class AnimationInstruction
 {
   public:
+    virtual ~AnimationInstruction() = default;
+
     virtual void execute(Display* const display) = 0; 
     virtual Coordinate get_coords() const = 0;
 };

@@ -22,7 +22,7 @@ class Display : public ISerializable
 {
 	public:
     Display();
-    virtual ~Display() {};
+    virtual ~Display() = default;
     bool operator==(const Display& d) const;
 
 	  virtual std::pair<bool, std::string> create() = 0;
@@ -118,11 +118,11 @@ class Display : public ISerializable
 
     // Print the current display statistic at the specified row/column, unless we're in a different row than the initial one, and therefore
     // should line up the column with the next-available, previously-used column from the previous row.
-    bool display_statistic_and_update_row_and_column(const unsigned int initial_row, unsigned int* current_row, unsigned int* current_col, const std::string& stat, const std::string& next_stat, Colour print_colour = Colour::COLOUR_WHITE);
+    bool display_statistic_and_update_row_and_column(unsigned int* current_row, unsigned int* current_col, const std::string& stat, const std::string& next_stat, Colour print_colour = Colour::COLOUR_WHITE);
 
     // Update the row/column position for the synopsis details.  Return false if we can't do any more updates (have run off the screen).
     // Though, ideally that will never happen.
-    bool update_synopsis_row_and_column(const unsigned int initial_row, unsigned int* row, unsigned int* column, const std::string& previous_printed_field, const std::string& next_field);
+    bool update_synopsis_row_and_column(unsigned int* row, unsigned int* column, const std::string& previous_printed_field, const std::string& next_field);
 
     virtual void display_text(int row, int col, const std::string& s) = 0;
     virtual void enable_colour(const Colour colour) = 0;

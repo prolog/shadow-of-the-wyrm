@@ -20,14 +20,14 @@ std::unique_ptr<DeityDecisionStrategyHandler> SacrificeDeityDecisionStrategyHand
   return handler;
 }
 
-bool SacrificeDeityDecisionStrategyHandler::decide(CreaturePtr creature)
+bool SacrificeDeityDecisionStrategyHandler::decide(CreaturePtr /*cr*/)
 {
   return true;
 }
 
-DeityDecisionImplications SacrificeDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature, TilePtr tile)
+DeityDecisionImplications SacrificeDeityDecisionStrategyHandler::handle_decision(CreaturePtr cr, TilePtr tile)
 {
-  return get_deity_decision_implications(creature, tile);
+  return get_deity_decision_implications(cr, tile);
 }
 
 // In this case, the piety loss is negative - so, a gain - due to the

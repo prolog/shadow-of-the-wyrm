@@ -4,6 +4,8 @@
 class IncreaseMaxHPAPEffect : public Effect
 {
   public:
+    virtual ~IncreaseMaxHPAPEffect() = default;
+
     virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const = 0;
     virtual Effect* clone() = 0;
 

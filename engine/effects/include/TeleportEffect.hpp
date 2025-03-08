@@ -6,6 +6,7 @@ class TeleportEffect : public Effect
 {
   public:
     TeleportEffect();
+    virtual ~TeleportEffect() = default;
     
     virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const override;
     virtual void read_properties(const std::map<std::string, std::string>& properties) override;

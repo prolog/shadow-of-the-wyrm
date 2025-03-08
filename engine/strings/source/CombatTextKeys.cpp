@@ -56,7 +56,7 @@ string CombatTextKeys::get_close_miss_message(const bool attacker_is_player, con
     close_miss_msg = StringTable::get(CombatTextKeys::COMBAT_CLOSE_MISS_MESSAGE_NP);
     boost::replace_first(close_miss_msg, "%s", attack);
     boost::replace_first(close_miss_msg, "%s", target);
-    close_miss_msg[0] = toupper(close_miss_msg[0]);
+    close_miss_msg[0] = static_cast<char>(toupper(close_miss_msg[0]));
   }
   
   return close_miss_msg;
@@ -76,7 +76,7 @@ string CombatTextKeys::get_pierce_message(const bool attacker_is_player, const b
   }
 
   boost::replace_first(pierce_msg, "%s", app_target);
-  pierce_msg[0] = toupper(pierce_msg[0]);
+  pierce_msg[0] = static_cast<char>(toupper(pierce_msg[0]));
 
   return pierce_msg;
 }
@@ -95,7 +95,7 @@ string CombatTextKeys::get_vorpal_message(const bool attacker_is_player, const b
   }
 
   boost::replace_first(vorpal_msg, "%s", app_target);
-  vorpal_msg[0] = toupper(vorpal_msg[0]);
+  vorpal_msg[0] = static_cast<char>(toupper(vorpal_msg[0]));
 
   return vorpal_msg;
 }
@@ -114,7 +114,7 @@ string CombatTextKeys::get_explosive_message(const bool attacker_is_player, cons
   }
 
   boost::replace_first(explosive_msg, "%s", app_target);
-  explosive_msg[0] = toupper(explosive_msg[0]);
+  explosive_msg[0] = static_cast<char>(toupper(explosive_msg[0]));
 
   return explosive_msg;
 }
@@ -133,7 +133,7 @@ string CombatTextKeys::get_drain_message(const bool attacker_is_player, const bo
   }
 
   boost::replace_first(drain_msg, "%s", app_target);
-  drain_msg[0] = toupper(drain_msg[0]);
+  drain_msg[0] = static_cast<char>(toupper(drain_msg[0]));
 
   return drain_msg;
 }
@@ -152,7 +152,7 @@ string CombatTextKeys::get_ethereal_message(const bool attacker_is_player, const
   }
 
   boost::replace_first(ethereal_msg, "%s", app_target);
-  ethereal_msg[0] = toupper(ethereal_msg[0]);
+  ethereal_msg[0] = static_cast<char>(toupper(ethereal_msg[0]));
 
   return ethereal_msg;
 }
@@ -171,7 +171,7 @@ string CombatTextKeys::get_incorporeal_attack_message(const bool attacker_is_pla
   }
 
   boost::replace_first(incorp_msg, "%s", app_target);
-  incorp_msg[0] = toupper(incorp_msg[0]);
+  incorp_msg[0] = static_cast<char>(toupper(incorp_msg[0]));
 
   return incorp_msg;
 }
@@ -187,7 +187,7 @@ string CombatTextKeys::get_counter_message(const bool is_player, const string& d
     boost::replace_first(counter_message, "%s", counter.first);
   }
 
-  counter_message[0] = toupper(counter_message[0]);
+  counter_message[0] = static_cast<char>(toupper(counter_message[0]));
   return counter_message;
 }
 
@@ -202,7 +202,7 @@ string CombatTextKeys::get_scything_message(const bool is_player, const string& 
     boost::replace_first(scything_message, "%s", scything.first);
   }
 
-  scything_message[0] = toupper(scything_message[0]);
+  scything_message[0] = static_cast<char>(toupper(scything_message[0]));
   return scything_message;
 }
 
@@ -217,7 +217,7 @@ string CombatTextKeys::get_charmed_message(const bool attacker_is_player, const 
     boost::replace_first(charmed_message, "%s", details.second);
   }
 
-  charmed_message[0] = toupper(charmed_message[0]);
+  charmed_message[0] = static_cast<char>(toupper(charmed_message[0]));
   return charmed_message;
 }
 
@@ -232,7 +232,7 @@ string CombatTextKeys::get_pacification_message(const bool attacker_is_player, c
     boost::replace_first(pacification_message, "%s", details.second);
   }
 
-  pacification_message[0] = toupper(pacification_message[0]);
+  pacification_message[0] = static_cast<char>(toupper(pacification_message[0]));
   return pacification_message;
 }
 
@@ -254,7 +254,7 @@ string CombatTextKeys::get_miss_message(const bool attacker_is_player, const boo
     miss_msg = StringTable::get(CombatTextKeys::COMBAT_MISS_MESSAGE_NP);
     boost::replace_first(miss_msg, "%s", attack);
     boost::replace_first(miss_msg, "%s", target);
-    miss_msg[0] = toupper(miss_msg[0]);
+    miss_msg[0] = static_cast<char>(toupper(miss_msg[0]));
   }
   
   return miss_msg;
@@ -278,7 +278,7 @@ string CombatTextKeys::get_intimidate_message(const bool attacker_is_player, con
     intim_msg = StringTable::get(CombatTextKeys::COMBAT_INTIMIDATE_MESSAGE_NP);
     boost::replace_first(intim_msg, "%s", attack);
     boost::replace_first(intim_msg, "%s", target);
-    intim_msg[0] = toupper(intim_msg[0]);
+    intim_msg[0] = static_cast<char>(toupper(intim_msg[0]));
   }
 
   return intim_msg;
@@ -334,7 +334,7 @@ string CombatTextKeys::get_hit_message(const bool attacker_is_player, const bool
   {
     boost::replace_first(hit_msg, "%s", attack);
     boost::replace_first(hit_msg, "%s", target);
-    hit_msg[0] = toupper(hit_msg[0]);
+    hit_msg[0] = static_cast<char>(toupper(hit_msg[0]));
   }
   
   return hit_msg;
@@ -352,7 +352,7 @@ string CombatTextKeys::get_monster_killed_message(const std::string& monster_nam
     death_message = StringTable::get(CombatTextKeys::COMBAT_MONSTER_KILLED_OR_DIES_MESSAGE_PLAYER_BLIND);
   }
 
-  death_message[0] = toupper(death_message[0]);
+  death_message[0] = static_cast<char>(toupper(death_message[0]));
   return death_message;
 }
 
@@ -368,7 +368,7 @@ string CombatTextKeys::get_monster_dies_message(const std::string& monster_name)
     death_message = StringTable::get(CombatTextKeys::COMBAT_MONSTER_KILLED_OR_DIES_MESSAGE_PLAYER_BLIND);
   }
 
-  death_message[0] = toupper(death_message[0]);
+  death_message[0] = static_cast<char>(toupper(death_message[0]));
   return death_message;
 }
 
@@ -391,7 +391,7 @@ string CombatTextKeys::get_no_damage_message(const bool target_is_player, const 
     boost::replace_first(no_damage_message, "%s", target);
   }
   
-  no_damage_message[0] = toupper(no_damage_message[0]);
+  no_damage_message[0] = static_cast<char>(toupper(no_damage_message[0]));
 
   return no_damage_message;
 }
@@ -464,7 +464,7 @@ string CombatTextKeys::get_ranged_attack_message(const bool attacker_is_player, 
     if (has_target) boost::replace_first(ranged_attack_message, "%s", target);
   }
   
-  ranged_attack_message[0] = toupper(ranged_attack_message[0]);
+  ranged_attack_message[0] = static_cast<char>(toupper(ranged_attack_message[0]));
   return ranged_attack_message;
 }
 
@@ -472,7 +472,7 @@ string CombatTextKeys::get_split_message(const string& split_creature)
 {
   string split_msg = StringTable::get(COMBAT_SPLIT_MESSAGE);
   boost::replace_first(split_msg, "%s", split_creature);
-  split_msg[0] = toupper(split_msg[0]);
+  split_msg[0] = static_cast<char>(toupper(split_msg[0]));
 
   return split_msg;
 }

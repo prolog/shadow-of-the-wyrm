@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void TileTransformObserver::notify(const ulonglong minutes_passed)
+void TileTransformObserver::notify(const ulonglong /*minutes_passed*/)
 {
   double cur_seconds = 0;
   Game& game = Game::instance();

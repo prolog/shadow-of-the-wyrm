@@ -13,7 +13,7 @@ class ThreatRatings : public ISerializable
   public:
     ThreatRatings();
     ~ThreatRatings();
-    virtual bool operator==(const ThreatRatings& threat_ratings) const;
+    bool operator==(const ThreatRatings& threat_ratings) const;
     
     void clear();
 

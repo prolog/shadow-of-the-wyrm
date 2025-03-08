@@ -6,5 +6,6 @@ class ArmourCodexDescriber : public WearableCodexDescriber
 {
   public:
     ArmourCodexDescriber(WearablePtr wearable);
+    virtual ~ArmourCodexDescriber() = default;
 };
 

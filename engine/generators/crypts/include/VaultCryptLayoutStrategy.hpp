@@ -5,6 +5,7 @@ class VaultCryptLayoutStrategy : public ICryptLayoutStrategy
 {
   public:
     virtual void create_layout(MapPtr map, const std::tuple<Coordinate, Coordinate, Coordinate>& stair_loc_and_room_boundary) override;
+    virtual ~VaultCryptLayoutStrategy() = default;
 
   protected:
     virtual std::pair<Coordinate, Coordinate> generate_vault(MapPtr map, const std::tuple<Coordinate, Coordinate, Coordinate>& stair_loc_and_room_boundary);

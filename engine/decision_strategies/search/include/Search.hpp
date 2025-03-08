@@ -10,6 +10,8 @@
 class Search
 {
   public:
+    virtual ~Search() = default;
+
     Coordinate search(MapPtr view_map, const Coordinate& start, const Coordinate& end);
     void set_creature(CreaturePtr new_perspective_creature);
 

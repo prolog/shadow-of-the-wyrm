@@ -11,7 +11,7 @@ BarrelManipulator::BarrelManipulator(FeaturePtr feature)
 {
 }
 
-void BarrelManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+void BarrelManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/)
 {
   if (creature && creature->get_is_player())
   {
@@ -61,7 +61,7 @@ bool BarrelManipulator::handle(TilePtr tile, CreaturePtr creature)
   return true;
 }
 
-bool BarrelManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+bool BarrelManipulator::drop(CreaturePtr /*dropping_creature*/, TilePtr /*tile*/, ItemPtr /*item*/)
 {
   return false;
 }

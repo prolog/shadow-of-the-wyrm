@@ -6,6 +6,7 @@ class KeepGenerator : public SOTW::Generator
   public:
     KeepGenerator(const std::string& map_exit_id, const int chance_decay = 0);
     KeepGenerator(MapPtr new_base_map, const int chance_decay = 0);
+    virtual ~KeepGenerator() = default;
 
     virtual MapPtr generate(const Dimensions& dim) override;
     virtual MapPtr generate() override;

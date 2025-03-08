@@ -10,6 +10,8 @@ class SDLDisplayParameters : public ISerializable
   public:
     SDLDisplayParameters();
     SDLDisplayParameters(const int new_screen_cols, const int new_screen_rows, const int new_screen_width, const int new_screen_height, const int new_glyph_width, const int new_glyph_height, const int new_glyphs_per_line, const int new_num_glyphs);
+    virtual ~SDLDisplayParameters() = default;
+
     bool operator==(const SDLDisplayParameters& d);
 
     void set_screen_cols(const int new_screen_cols);

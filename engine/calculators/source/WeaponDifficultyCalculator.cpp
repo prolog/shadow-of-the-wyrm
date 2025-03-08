@@ -94,7 +94,7 @@ int WeaponDifficultyCalculator::calculate_total_difficulty_for_display(CreatureP
   return total_difficulty;
 }
 
-int WeaponDifficultyCalculator::get_difficulty_penalty_for_dual_wield(CreaturePtr creature, WeaponPtr primary, WeaponPtr secondary)
+int WeaponDifficultyCalculator::get_difficulty_penalty_for_dual_wield(CreaturePtr creature, WeaponPtr /*primary*/, WeaponPtr secondary)
 {
   int difficulty = BASE_DUAL_DIFFICULTY;
 

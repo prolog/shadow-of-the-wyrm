@@ -11,7 +11,7 @@ MapTimeObserver::MapTimeObserver()
 {
 }
 
-void MapTimeObserver::notify(const ulonglong minutes_passed)
+void MapTimeObserver::notify(const ulonglong /*minutes_passed*/)
 {
   Game& game = Game::instance();
   MapPtr map = game.get_current_map();

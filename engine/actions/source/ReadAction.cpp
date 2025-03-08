@@ -40,7 +40,7 @@ ActionCostValue ReadAction::read(CreaturePtr creature, ActionManager * const am)
     if (selected_readable_item)
     {
       ReadablePtr readable = std::dynamic_pointer_cast<Readable>(selected_readable_item);
-      return read(creature, readable, am);
+      return read(creature, readable);
     }    
   }
 
@@ -53,17 +53,15 @@ ActionCostValue ReadAction::read(CreaturePtr creature, const string& item_id)
 
   if (creature != nullptr)
   {
-    Game& game = Game::instance();
-    ActionManager& am = game.get_action_manager_ref();
     ItemPtr item = creature->get_inventory()->get_from_id(item_id);
     ReadablePtr readable = std::dynamic_pointer_cast<Readable>(item);
-    acv = read(creature, readable, &am);
+    acv = read(creature, readable);
   }
 
   return acv;
 }
 
-ActionCostValue ReadAction::read(CreaturePtr creature, ReadablePtr readable, ActionManager * const am)
+ActionCostValue ReadAction::read(CreaturePtr creature, ReadablePtr readable)
 {
   ActionCostValue action_cost_value = ActionCostConstants::DEFAULT;
 
@@ -78,7 +76,7 @@ ActionCostValue ReadAction::read(CreaturePtr creature, ReadablePtr readable, Act
       MapPtr map = game.get_current_map();
 
       // Cast or learn the spell from the scroll/spellbook/etc.
-      action_cost_value = read_strategy->read(creature, am, readable);
+      action_cost_value = read_strategy->read(creature, readable);
 
       // Break the illiterate conduct.
       creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_ILLITERATE);
@@ -114,7 +112,7 @@ bool ReadAction::check_on_world_map(CreaturePtr creature)
   return false;
 }
 
-ActionCostValue ReadAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue ReadAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

@@ -26,7 +26,7 @@ TrapManipulator::TrapManipulator(FeaturePtr feature)
 {
 }
 
-void TrapManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+void TrapManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/)
 {
   if (creature && creature->get_is_player())
   {
@@ -39,8 +39,8 @@ void TrapManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr fea
 bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
 {
   Game& game = Game::instance();
-  FeaturePtr feature = tile->get_feature();
-  TrapPtr trap = dynamic_pointer_cast<Trap>(feature);
+  FeaturePtr tfeat = tile->get_feature();
+  TrapPtr trap = dynamic_pointer_cast<Trap>(tfeat);
   bool handled = false;
 
   // Traps can only be manipulated when the manipulating creature is standing
@@ -80,7 +80,7 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
   return handled;
 }
 
-bool TrapManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+bool TrapManipulator::drop(CreaturePtr /*dropping_creature*/, TilePtr /*tile*/, ItemPtr /*item*/)
 {
   return false;
 }

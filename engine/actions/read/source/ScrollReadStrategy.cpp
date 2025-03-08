@@ -13,7 +13,7 @@
 
 using namespace std;
 
-ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ActionManager * const am, ReadablePtr readable)
+ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ReadablePtr readable)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 

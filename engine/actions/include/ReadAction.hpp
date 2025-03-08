@@ -10,7 +10,7 @@ class ReadAction : public IActionManager
   public:
     ActionCostValue read(CreaturePtr creature, ActionManager * const am);
     ActionCostValue read(CreaturePtr creature, const std::string& item_id); // NPC version
-    ActionCostValue read(CreaturePtr creature, ReadablePtr readable, ActionManager * const am);
+    ActionCostValue read(CreaturePtr creature, ReadablePtr readable);
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 
   protected:

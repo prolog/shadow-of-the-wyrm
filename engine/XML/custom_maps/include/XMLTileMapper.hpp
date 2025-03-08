@@ -6,6 +6,8 @@
 class XMLTileMapper
 {
   public:
+    virtual ~XMLTileMapper() = default;
+
     virtual TilePtr create_tile(const char xml_tile);
 
   protected:

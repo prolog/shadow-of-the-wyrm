@@ -5,6 +5,8 @@ class DepthBasedDangerLevelCalculator : public DangerLevelCalculator
 {
   public:
     DepthBasedDangerLevelCalculator(const ExitMovementType new_emt);
+    virtual ~DepthBasedDangerLevelCalculator() = default;
+
     virtual int calculate(MapPtr old_map, MapPtr new_map) const override;
 
   protected:

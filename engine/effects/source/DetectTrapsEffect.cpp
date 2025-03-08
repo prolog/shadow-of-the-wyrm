@@ -84,17 +84,17 @@ void DetectTrapsEffect::show_or_hide_traps(MapPtr trap_map, const DetectTrapsEff
   }
 }
 
-bool DetectTrapsEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool DetectTrapsEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return detect_traps(creature, DetectTrapsEffectType::DETECT_TRAPS_SHOW_ALL_TRAPS);
 }
 
-bool DetectTrapsEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool DetectTrapsEffect::effect_uncursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return detect_traps(creature, DetectTrapsEffectType::DETECT_TRAPS_SHOW_LOCAL_TRAPS);
 }
 
-bool DetectTrapsEffect::effect_cursed(CreaturePtr creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool DetectTrapsEffect::effect_cursed(CreaturePtr creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return detect_traps(creature, DetectTrapsEffectType::DETECT_TRAPS_HIDE_TRAPS);
 }

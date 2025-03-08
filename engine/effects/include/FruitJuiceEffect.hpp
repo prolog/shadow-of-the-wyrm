@@ -5,6 +5,7 @@ class FruitJuiceEffect : public Effect
 {
   public:
     FruitJuiceEffect();
+    virtual ~FruitJuiceEffect() = default;
     
     virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const override;
     virtual Effect* clone();

@@ -48,6 +48,9 @@ MapPtr SewerGenerator::generate(const Dimensions& dimensions)
   // Place up and potentially down staircases as appropriate.
   place_staircases(result_map);
 
+  // Sewers are always considered wet.
+  result_map->set_property(MapProperties::MAP_PROPERTIES_WET, std::to_string(true));
+
   return result_map;
 }
 
@@ -156,7 +159,6 @@ void SewerGenerator::generate_basin(MapPtr map)
     Dimensions dim = map->size();
     int max_y = dim.get_y() - 2;
     int max_x = dim.get_x() - 2;
-    TileGenerator tg;
     TilePtr sewer;
 
     int b_height = RNG::range(5, 10);

@@ -112,19 +112,19 @@ bool Inventory::merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_l
   return added;
 }
 
-bool Inventory::merge_or_add(IInventoryPtr items, const InventoryAdditionType inv_add_loc)
+bool Inventory::merge_or_add(IInventoryPtr it, const InventoryAdditionType inv_add_loc)
 {
-  return merge_or_add(items.get(), inv_add_loc);
+  return merge_or_add(it.get(), inv_add_loc);
 }
 
-bool Inventory::merge_or_add(IInventory* items, const InventoryAdditionType inv_add_loc)
+bool Inventory::merge_or_add(IInventory* it, const InventoryAdditionType inv_add_loc)
 {
-  if (items == nullptr || (*items == *this))
+  if (it == nullptr || (*it == *this))
   {
     return false;
   }
 
-  const list<ItemPtr> raw_items = items->get_items_cref();
+  const list<ItemPtr> raw_items = it->get_items_cref();
 
   for (ItemPtr i : raw_items)
   {
@@ -134,28 +134,28 @@ bool Inventory::merge_or_add(IInventory* items, const InventoryAdditionType inv_
   return true;
 }
 
-bool Inventory::transfer_to(IInventoryPtr items)
+bool Inventory::transfer_to(IInventoryPtr it)
 {
-  if (items == nullptr || (*items == *this))
+  if (it == nullptr || (*it == *this))
   {
     return false;
   }
 
-  bool merged = items->merge_or_add(this, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+  bool merged = it->merge_or_add(this, InventoryAdditionType::INVENTORY_ADDITION_BACK);
   clear();
 
   return merged;
 }
 
-bool Inventory::merge(ItemPtr item)
+bool Inventory::merge(ItemPtr it)
 {
   for (ItemPtr inv_item : items)
   {
-    if (inv_item && inv_item->matches(item))
+    if (inv_item && inv_item->matches(it))
     {
       // Pick up the item by adding the picked up item's quantity to the
       // current item's quantity.
-      uint quantity = inv_item->get_quantity() + item->get_quantity();
+      uint quantity = inv_item->get_quantity() + it->get_quantity();
       inv_item->set_quantity(quantity);
       
       // Merged successfully:
@@ -269,9 +269,9 @@ pair<bool, vector<ItemPtr>> Inventory::remove_by_base_id(const string& base_id, 
 uint Inventory::count_items() const
 {
   uint count = 0;
-  const list<ItemPtr> items = get_items_cref();
+  const list<ItemPtr> it = get_items_cref();
 
-  for (ItemPtr item : items)
+  for (ItemPtr item : it)
   {
     if (item != nullptr && (item->get_type() != ItemType::ITEM_TYPE_CURRENCY))
     {

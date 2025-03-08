@@ -60,7 +60,7 @@ ActionCostValue BreedAction::breed(CreaturePtr creature, MapPtr map) const
   return get_action_cost_value(creature);
 }
 
-ActionCostValue BreedAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue BreedAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

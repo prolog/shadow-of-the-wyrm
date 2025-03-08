@@ -141,7 +141,7 @@ uint ExperienceManager::get_total_experience_needed_for_lvl_idx(CreaturePtr crea
   uint exp_needed = 0;
   
   // Check the array bounds to be extra safe!
-  if (creature && level_idx >= 0 && level_idx < CreatureConstants::MAX_CREATURE_LEVEL)
+  if (creature && level_idx < CreatureConstants::MAX_CREATURE_LEVEL)
   {
     int base_exp_needed = base_experience_table[level_idx];
     

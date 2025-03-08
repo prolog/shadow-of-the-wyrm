@@ -13,7 +13,7 @@ Tool::~Tool()
 {
 }
 
-bool Tool::additional_item_attributes_match(ItemPtr item) const
+bool Tool::additional_item_attributes_match(ItemPtr /*item*/) const
 {
   return true;
 }

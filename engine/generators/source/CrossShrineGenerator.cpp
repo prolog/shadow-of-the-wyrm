@@ -44,7 +44,7 @@ MapPtr CrossShrineGenerator::generate_shrine()
   return map;
 }
 
-void CrossShrineGenerator::generate_building(MapPtr map, const int start_row, const int start_col, const int mid_row, const int shrine_height, const int shrine_width, const int wide_start_row, const int wide_start_col, const int wide_width)
+void CrossShrineGenerator::generate_building(MapPtr map, const int start_row, const int start_col, const int /*mid_row*/, const int shrine_height, const int shrine_width, const int wide_start_row, const int wide_start_col, const int wide_width)
 {
   // Generate the tall bit
   GeneratorUtils::generate_building(map, start_row, start_col, shrine_height, shrine_width);

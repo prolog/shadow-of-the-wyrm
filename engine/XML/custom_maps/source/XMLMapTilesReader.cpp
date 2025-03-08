@@ -7,7 +7,7 @@ using namespace std;
 
 // Parse the tiles into a proper tile map that would be used in-game,
 // using the provided string.
-TilesContainer XMLMapTilesReader::parse_tiles(const XMLNode& tiles_node, const int rows, const int cols)
+TilesContainer XMLMapTilesReader::parse_tiles(const XMLNode& tiles_node, const int cols)
 {
   TilesContainer tiles;
 

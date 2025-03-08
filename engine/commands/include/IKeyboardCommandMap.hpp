@@ -5,5 +5,7 @@
 class IKeyboardCommandMap
 {
   public:
+    virtual ~IKeyboardCommandMap() = default;
+
     virtual std::string get_settings_prefix() const = 0;
 };

@@ -22,7 +22,7 @@ void SDLPromptProcessor::init_int_mappings()
                    {KEY_NPAGE, to_string(KEY_NPAGE)} };
 }
 
-bool SDLPromptProcessor::operator==(const SDLPromptProcessor& cpp) const
+bool SDLPromptProcessor::operator==(const SDLPromptProcessor&) const
 {
   return true;
 }
@@ -43,7 +43,7 @@ string SDLPromptProcessor::get_prompt(const SDLDisplayParameters& display_params
     {
       SDLKeyboardController kc;
       int prompt_ival = kc.get_char_as_int();
-      prompt_entry = prompt_ival;
+      prompt_entry = static_cast<char>(prompt_ival);
 
       string k_map = get_mapping(prompt_ival);
 
@@ -59,7 +59,7 @@ string SDLPromptProcessor::get_prompt(const SDLDisplayParameters& display_params
         // Is the option itself there?
         && !menu_wrapper.is_option_in_set(prompt_entry.at(0)))
       {
-        prompt_entry = kc.get_char_as_int();
+        prompt_entry = static_cast<char>(kc.get_char_as_int());
       }
     }
   }
@@ -78,7 +78,7 @@ string SDLPromptProcessor::get_user_string(const SDLDisplayParameters& display_p
   {
     bool update = false;
     
-    for (c = kc.get_char_as_int(); (c != '\n') && (c != '\r') && (c != NC_ESCAPE_KEY); c = kc.get_char_as_int())
+    for (c = static_cast<char>(kc.get_char_as_int()); (c != '\n') && (c != '\r') && (c != NC_ESCAPE_KEY); c = static_cast<char>(kc.get_char_as_int()))
     {
       update = false;
       Coordinate yx = cursor_location.get_yx();
@@ -137,7 +137,7 @@ string SDLPromptProcessor::get_user_string(const SDLDisplayParameters& display_p
 }
 
 // Gets the item index of the selected menu item.
-int SDLPromptProcessor::get_prompt(SDL_Window* window)
+int SDLPromptProcessor::get_prompt(SDL_Window*)
 {
   int prompt_val;
 

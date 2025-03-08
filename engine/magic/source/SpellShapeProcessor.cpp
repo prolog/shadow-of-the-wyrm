@@ -68,7 +68,7 @@ bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vect
 }
 
 // Apply a spell's damage to a particular tile.
-bool SpellShapeProcessor::apply_damage(CreaturePtr caster, const Coordinate& c, TilePtr tile, const Spell& spell, ActionManager * const am, const AttackType attack_type)
+bool SpellShapeProcessor::apply_damage(CreaturePtr caster, const Coordinate& c, TilePtr tile, const Spell& spell, ActionManager * const /*am*/, const AttackType attack_type)
 {
   // A spell can be identified if the creature can see its damage type.
   // So, evoking a wand of frost, for example, identifies it.  Evoking
@@ -120,7 +120,7 @@ bool SpellShapeProcessor::apply_damage(CreaturePtr caster, const Coordinate& c, 
 }
 
 // Apply a spell effect to a particular tile.
-bool SpellShapeProcessor::apply_effect(Effect* effect, CreaturePtr caster, const Coordinate& coord, TilePtr tile, const Spell& spell, const int bonus, const ItemStatus effect_status, ActionManager * const am)
+bool SpellShapeProcessor::apply_effect(Effect* effect, CreaturePtr caster, const Coordinate& coord, TilePtr tile, const Spell& /*spell*/, const int bonus, const ItemStatus effect_status, ActionManager * const am)
 {
   if (tile)
   {

@@ -8,6 +8,7 @@ class NPCDecisionStrategy : public DecisionStrategy
 {
   public:
     NPCDecisionStrategy(ControllerPtr new_controller);
+    virtual ~NPCDecisionStrategy() = default;
 
     virtual bool get_move_to_dangerous_tile(MapPtr map, CreaturePtr creature, TilePtr tile) const override;
 
@@ -19,6 +20,8 @@ class NPCDecisionStrategy : public DecisionStrategy
     virtual uint get_count(const uint max_count) override;
     virtual bool get_confirmation(const bool confirmation_default_value = false, const bool require_proper_selection = false) override;
     virtual bool get_attack_confirmation(CreaturePtr creature);
+
+    std::string get_orders_description_sid() const override;
 
   protected:
     // Functions that are called based on the factory type

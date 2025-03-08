@@ -104,7 +104,7 @@ DisplayMap MapTranslator::create_display_map(CreaturePtr creature, const bool pl
       //
       // The display's (col 0, row 0) will start at 80, 20 on the real
       // map, and the player will be at 10, 10 relative to this.
-      Coordinate display_coords(d_row, d_col);
+      Coordinate dc(d_row, d_col);
 
       actual_row = engine_coord.first + d_row;
       actual_col = engine_coord.second + d_col;
@@ -115,13 +115,13 @@ DisplayMap MapTranslator::create_display_map(CreaturePtr creature, const bool pl
       // coordinates, so that a full redraw can be performed.
       if ((actual_row == cursor_row) && (actual_col == cursor_col))
       {
-        display_map.set_cursor_coordinate(display_coords);
+        display_map.set_cursor_coordinate(dc);
       }
 
       display_tile.set_season(season);
 
       // Set the display tile
-      display_map.set(display_coords, display_tile);
+      display_map.set(dc, display_tile);
     }
   }
 

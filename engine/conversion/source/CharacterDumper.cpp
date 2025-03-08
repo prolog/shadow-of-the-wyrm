@@ -1,3 +1,6 @@
+#ifdef _MSC_VER
+#pragma warning(disable : 4996)
+#endif
 #include <iomanip>
 #include <sstream>
 #include <boost/algorithm/string.hpp>

@@ -7,7 +7,7 @@ class BoolStatistic : public ISerializable
     BoolStatistic();
     BoolStatistic(const bool new_base_and_current);
     BoolStatistic& operator=(const bool& rhs);
-    virtual bool operator==(const BoolStatistic& stat) const;
+    bool operator==(const BoolStatistic& stat) const;
 
     void set_base(bool new_base);
     bool get_base() const;

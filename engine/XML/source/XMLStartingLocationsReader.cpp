@@ -9,7 +9,6 @@ StartingLocationMap XMLStartingLocationsReader::get_starting_locations(const XML
   if (!starting_locations_node.is_null())
   {
     vector<XMLNode> starting_location_nodes = XMLUtils::get_elements_by_local_name(starting_locations_node, "StartingLocation");
-    StartingLocation sl;
 
     for (const auto& sl_node : starting_location_nodes)
     {

@@ -19,7 +19,7 @@ StoneStatusEffect::StoneStatusEffect()
 }
 
 // Stoning is nasty and an eventual insta-death, so give warnings every tick.
-void StoneStatusEffect::tick(CreaturePtr creature, const int danger_level) const
+void StoneStatusEffect::tick(CreaturePtr creature, const int /*danger_level*/) const
 {
   if (creature != nullptr)
   {
@@ -40,7 +40,7 @@ void StoneStatusEffect::tick(CreaturePtr creature, const int danger_level) const
   }
 }
 
-void StoneStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr affected_creature) const
+void StoneStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr /*affected_creature*/) const
 {
   if (initiating != nullptr)
   {

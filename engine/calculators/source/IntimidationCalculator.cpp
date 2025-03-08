@@ -1,5 +1,6 @@
 #include "IntimidationCalculator.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "RaceManager.hpp"
 
 const int IntimidationCalculator::MAX_PCT_CHANCE_INTIMIDATION = 85;
 const int IntimidationCalculator::INTIMIDATION_DIVISOR = 3;
@@ -13,8 +14,16 @@ int IntimidationCalculator::calculate_pct_chance_intimidated(CreaturePtr attacki
 
   if (attacking_creature != nullptr && attacked_creature != nullptr && cca.can_act(attacked_creature))
   {
+    RaceManager rm;
+    Race* race = rm.get_race(attacked_creature->get_race_id());
+
+    if (race != nullptr && race->get_mindless())
+    {
+      return 0;
+    }
+
     bool attacking_raging = attacking_creature->has_status(StatusIdentifiers::STATUS_ID_RAGE);
-    
+
     if (attacking_raging)
     {
       return 0;

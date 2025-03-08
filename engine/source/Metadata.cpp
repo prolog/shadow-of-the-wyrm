@@ -22,7 +22,7 @@ Metadata::Metadata()
 {
 }
 
-bool Metadata::operator==(const Metadata& meta) const
+bool Metadata::operator==(const Metadata& /*meta*/) const
 {
   bool result = true;
 
@@ -44,7 +44,8 @@ string Metadata::get_version() const
 	stringstream ss;
 	ss << MAJOR_VERSION << "." << MINOR_VERSION << "." << REVISION;
 
-  if (REVISION_PATCH > 0)
+  bool rev_patch_exists = REVISION_PATCH > 0;
+  if (rev_patch_exists)
   {
     ss << "." << REVISION_PATCH;
   }
@@ -55,7 +56,7 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  return "\"Michelagnolo Galilei\"";
+  return "\"Sergio Assad\"";
 }
 
 string Metadata::get_game_version_synopsis() const

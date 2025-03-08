@@ -5,6 +5,8 @@
 class EdibleItemFilter : public IItemFilter
 {
   public:
+    virtual ~EdibleItemFilter() = default;
+
     bool passes_filter(ItemPtr item) const override;
 };
 

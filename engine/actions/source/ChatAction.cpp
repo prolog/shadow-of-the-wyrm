@@ -215,7 +215,7 @@ void ChatAction::add_chat_message(CreaturePtr creature, const string& chat_text_
 }
 
 // Chatting with a creature successfully incurs the cost of a turn.
-ActionCostValue ChatAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue ChatAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

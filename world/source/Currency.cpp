@@ -16,15 +16,15 @@ Currency::~Currency()
 
 // Currency is always generated uncursed and shouldn't ever be set to another
 // status.
-void Currency::set_status(const ItemStatus status_to_ignore)
+void Currency::set_status(const ItemStatus /*status_to_ignore*/)
 {
 }
 
-void Currency::set_status_identified(const bool new_status_identified)
+void Currency::set_status_identified(const bool /*new_status_identified*/)
 {
 }
 
-bool Currency::additional_item_attributes_match(ItemPtr item) const
+bool Currency::additional_item_attributes_match(ItemPtr /*item*/) const
 {
   return true;
 }

@@ -846,6 +846,9 @@
     <Filter Include="Source Files\sound\source\unit_tests">
       <UniqueIdentifier>{1400f48f-f57d-4ef2-b084-cd602ac88619}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\decision_strategies\magic\source\unit_tests">
+      <UniqueIdentifier>{88ac272e-333e-4b79-9000-e626555b2058}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -3842,9 +3845,6 @@
     <ClInclude Include="world\tiles\include\SeabedTile.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\generators\tile_config\include\KelpTileConfiguration.hpp">
-      <Filter>Header Files\engine\generators\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\generators\tile_config\include\AquaticVegetationTileConfiguration.hpp">
       <Filter>Header Files\engine\generators\tile_config\include</Filter>
     </ClInclude>
@@ -4564,6 +4564,39 @@
     </ClInclude>
     <ClInclude Include="sound\include\MusicEvent.hpp">
       <Filter>Header Files\sound\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\WaterBreathingEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\WaterBreathingCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\magic\include\EffectTypeTerrainChecker.hpp">
+      <Filter>Header Files\engine\decision_strategies\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\TileMovementConfirmationDetails.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\magic\include\NPCEffectDeciderFactory.hpp">
+      <Filter>Header Files\engine\decision_strategies\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\magic\include\INPCEffectDecider.hpp">
+      <Filter>Header Files\engine\decision_strategies\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\magic\include\NPCEffectDeciders.hpp">
+      <Filter>Header Files\engine\decision_strategies\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\AmbientSound.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\WheatFieldGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\FieldCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\tile_config\include\WheatTileConfiguration.hpp">
+      <Filter>Header Files\engine\generators\tile_config\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -9264,6 +9297,54 @@
     </ClCompile>
     <ClCompile Include="sound\source\MusicEvent.cpp">
       <Filter>Source Files\sound\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\WaterBreathingEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\WaterBreathingCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\magic\source\EffectTypeTerrainChecker.cpp">
+      <Filter>Source Files\engine\decision_strategies\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\TileMovementConfirmationDetails.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\unit_tests\TileMovementConfirmationDetails_test.cpp">
+      <Filter>Source Files\engine\actions\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\magic\source\NPCEffectDeciderFactory.cpp">
+      <Filter>Source Files\engine\decision_strategies\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\magic\source\NPCEffectDeciders.cpp">
+      <Filter>Source Files\engine\decision_strategies\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\magic\source\unit_tests\NPCEffectDeciderFactory_test.cpp">
+      <Filter>Source Files\engine\decision_strategies\magic\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\magic\source\unit_tests\EffectTypeTerrainChecker_test.cpp">
+      <Filter>Source Files\engine\decision_strategies\magic\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\magic\source\unit_tests\NPCEffectDeciders_test.cpp">
+      <Filter>Source Files\engine\decision_strategies\magic\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\AmbientSound.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\AmbientSound_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\WheatFieldGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\FieldCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\FieldCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\tile_config\source\WheatTileConfiguration.cpp">
+      <Filter>Source Files\engine\generators\tile_config\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -13,9 +13,9 @@ std::string MountainsTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_MOUNTAINS;
 }
 
-bool MountainsTile::get_dangerous(CreaturePtr creature) const
+bool MountainsTile::get_dangerous(CreaturePtr cr) const
 {
-  if (creature && creature->get_skills().get_value(SkillType::SKILL_GENERAL_MOUNTAIN_LORE) == Skills::MAX_SKILL_VALUE)
+  if (cr && cr->get_skills().get_value(SkillType::SKILL_GENERAL_MOUNTAIN_LORE) == Skills::MAX_SKILL_VALUE)
   {
     return false;
   }
@@ -31,7 +31,7 @@ string MountainsTile::get_danger_confirmation_sid() const
 
 // Mountains are real big and therefore real blocky
 // But they should only block LOS, not movement!
-bool MountainsTile::get_is_blocking_visually(CreaturePtr creature) const
+bool MountainsTile::get_is_blocking_visually(CreaturePtr /*creature*/) const
 {
   return true;
 }

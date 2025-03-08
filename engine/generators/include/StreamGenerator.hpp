@@ -7,6 +7,8 @@
 class StreamGenerator
 {
   public:
+    virtual ~StreamGenerator() = default;
+
     static void generate(MapPtr map);
 
   protected:

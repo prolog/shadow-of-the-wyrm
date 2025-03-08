@@ -9,17 +9,17 @@ const int IncreaseMaxHPAPEffect::INCR_AMOUNT_BLESSED = 4;
 const int IncreaseMaxHPAPEffect::INCR_AMOUNT_UNCURSED = 2;
 const int IncreaseMaxHPAPEffect::INCR_AMOUNT_CURSED = 1;
 
-bool IncreaseMaxHPAPEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool IncreaseMaxHPAPEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return increase(creature, INCR_AMOUNT_BLESSED);
 }
 
-bool IncreaseMaxHPAPEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool IncreaseMaxHPAPEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return increase(creature, INCR_AMOUNT_UNCURSED);
 }
 
-bool IncreaseMaxHPAPEffect::effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool IncreaseMaxHPAPEffect::effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   return increase(creature, INCR_AMOUNT_CURSED);
 }

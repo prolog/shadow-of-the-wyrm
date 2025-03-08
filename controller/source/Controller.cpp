@@ -36,12 +36,12 @@ pair<bool, int> Controller::get_char_as_int_nb()
 }
 
 // Controllers are stateless.
-bool Controller::serialize(ostream& stream) const
+bool Controller::serialize(ostream&) const
 {
   return true;
 }
 
-bool Controller::deserialize(istream& stream)
+bool Controller::deserialize(istream&)
 {
   return true;
 }

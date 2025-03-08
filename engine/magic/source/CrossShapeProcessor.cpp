@@ -9,7 +9,7 @@
 
 using namespace std;
 
-pair<vector<pair<Coordinate, TilePtr>>, Animation> CrossShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
+pair<vector<pair<Coordinate, TilePtr>>, Animation> CrossShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction /*d*/, const Spell& spell)
 {
   vector<pair<Coordinate, TilePtr>> affected_coords_and_tiles;
   Animation animation;
@@ -30,18 +30,18 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> CrossShapeProcessor::get_affe
 
   for (uint i = 1; i <= range; i++)
   {
-    for (Direction d : directions)
+    for (Direction dir : directions)
     {
       // Check to see if the spell has already run into a wall, etc,
       // in the given direction.  If so, we should move on to the
       // next direction, since no more spell processing in the first
       // direction should be possible.
-      if (find(stop_vec.begin(), stop_vec.end(), d) != stop_vec.end())
+      if (find(stop_vec.begin(), stop_vec.end(), dir) != stop_vec.end())
       {
         continue;
       }
 
-      Coordinate c = CoordUtils::get_new_coordinate(caster_coord, d, offset);
+      Coordinate c = CoordUtils::get_new_coordinate(caster_coord, dir, offset);
 
       TilePtr tile = map->at(c);
 
@@ -52,7 +52,7 @@ pair<vector<pair<Coordinate, TilePtr>>, Animation> CrossShapeProcessor::get_affe
         // spells won't be able to go through walls, etc.
         if (tmc.does_tile_block_spell(tile, spell))
         {
-          stop_vec.push_back(d);
+          stop_vec.push_back(dir);
         }
         else
         {

@@ -137,7 +137,7 @@ void Consumable::do_enchant_item(const int points)
 }
 
 // Consumables don't vary in price with enchantments.
-void Consumable::increase_value(const int num_points)
+void Consumable::increase_value(const int /*num_points*/)
 {
 }
 

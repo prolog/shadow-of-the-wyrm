@@ -14,7 +14,7 @@ AgeTimeObserver::AgeTimeObserver()
 {
 }
 
-void AgeTimeObserver::notify(const ulonglong minutes_passed)
+void AgeTimeObserver::notify(const ulonglong /*minutes_passed*/)
 {
   Game& game = Game::instance();
   MapRegistry& mr = game.get_map_registry_ref();
@@ -35,7 +35,7 @@ void AgeTimeObserver::notify(const ulonglong minutes_passed)
 // Add a year to each creature in the map.
 // If the creature has aged too much, remove the creature from the game.
 // Death is a cruel mistress.
-void AgeTimeObserver::process_creatures(MapPtr cur_map, CreatureMap& creature_map)
+void AgeTimeObserver::process_creatures(MapPtr /*cur_map*/, CreatureMap& creature_map)
 {
   RaceManager rm;
 

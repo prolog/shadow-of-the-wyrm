@@ -196,7 +196,7 @@ void Display::draw_update_map(const DisplayMap& update_map, const CursorSettings
 
   for (DisplayMapType::value_type& tile : tiles)
   {
-    Coordinate map_coords = MapUtils::convert_map_key_to_coordinate(tile.first);
+    map_coords = MapUtils::convert_map_key_to_coordinate(tile.first);
     DisplayTile dtile = tile.second;
 
     terminal_row = DisplayConstants::MAP_START_ROW + map_coords.first;
@@ -247,7 +247,6 @@ void Display::display(const DisplayStatistics& player_stats)
   uint max_rows = static_cast<uint>(get_max_rows());
   unsigned int PLAYER_SYNOPSIS_START_ROW = max_rows - 3;
   unsigned int current_row = PLAYER_SYNOPSIS_START_ROW;
-  unsigned int initial_row = current_row;
   unsigned int current_col = 0;
   bool can_print = true;
 
@@ -255,21 +254,21 @@ void Display::display(const DisplayStatistics& player_stats)
   clear_to_bottom(PLAYER_SYNOPSIS_START_ROW);
 
   // Next, set the synopsis values
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, name, synopsis);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, synopsis, strength.first);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, strength.first, dexterity.first, strength.second);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, dexterity.first, agility.first, dexterity.second);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, agility.first, health.first, agility.second);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, health.first, intelligence.first, health.second);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, intelligence.first, willpower.first, intelligence.second);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, willpower.first, charisma.first, willpower.second);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, charisma.first, level, charisma.second);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, level, defence);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, defence, alignment.first);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, alignment.first, speed, alignment.second);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, speed, hit_points);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, hit_points, arc_points, hit_points_colour);
-  if (can_print) can_print = display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, arc_points, map_depth, arc_points_colour);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(&current_row, &current_col, name, synopsis);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(&current_row, &current_col, synopsis, strength.first);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(&current_row, &current_col, strength.first, dexterity.first, strength.second);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(&current_row, &current_col, dexterity.first, agility.first, dexterity.second);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(&current_row, &current_col, agility.first, health.first, agility.second);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(&current_row, &current_col, health.first, intelligence.first, health.second);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(&current_row, &current_col, intelligence.first, willpower.first, intelligence.second);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(&current_row, &current_col, willpower.first, charisma.first, willpower.second);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(&current_row, &current_col, charisma.first, level, charisma.second);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(&current_row, &current_col, level, defence);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(&current_row, &current_col, defence, alignment.first);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(&current_row, &current_col, alignment.first, speed, alignment.second);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(&current_row, &current_col, speed, hit_points);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(&current_row, &current_col, hit_points, arc_points, hit_points_colour);
+  if (can_print) can_print = display_statistic_and_update_row_and_column(&current_row, &current_col, arc_points, map_depth, arc_points_colour);
   display_text(current_row, current_col, map_depth);
 
   // Last row: status ailments
@@ -289,7 +288,7 @@ void Display::display(const DisplayStatistics& player_stats)
       {
         Colour colour = status_ailment.second;
 
-        display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, status_ailment.first, next_ailment.first, colour);
+        display_statistic_and_update_row_and_column(&current_row, &current_col, status_ailment.first, next_ailment.first, colour);
       }
     }
     else
@@ -306,20 +305,20 @@ void Display::display(const DisplayStatistics& player_stats)
   }
 }
 
-bool Display::display_statistic_and_update_row_and_column(const unsigned int initial_row, unsigned int* current_row, unsigned int* current_col, const string& current_stat, const string& next_stat, Colour print_colour)
+bool Display::display_statistic_and_update_row_and_column(unsigned int* current_row, unsigned int* current_col, const string& current_stat, const string& next_stat, Colour print_colour)
 {
   bool can_print = true;
   string stat = current_stat;
   enable_colour(print_colour);
   display_text(*current_row, *current_col, current_stat);
-  can_print = update_synopsis_row_and_column(initial_row, current_row, current_col, current_stat, next_stat);
+  can_print = update_synopsis_row_and_column(current_row, current_col, current_stat, next_stat);
   disable_colour(print_colour);
   return can_print;
 }
 
 // Update the row/col for the player synopsis.  Return false if we've run out of space
 // and can't print anything else.
-bool Display::update_synopsis_row_and_column(const unsigned int initial_row, unsigned int* row, unsigned int* col, const string& previous_field, const string& next_field)
+bool Display::update_synopsis_row_and_column(unsigned int* row, unsigned int* col, const string& previous_field, const string& next_field)
 {
   bool can_update = true;
   int field_space = static_cast<uint>(get_field_space());
@@ -427,10 +426,6 @@ string Display::get_property(const string& property) const
   }
 
   return value;
-}
-
-void Display::redraw_cursor(const DisplayMap& dm, const CursorSettings& cs, const uint max_rows)
-{
 }
 
 void Display::draw_tile_init()

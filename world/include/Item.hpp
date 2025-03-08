@@ -81,6 +81,11 @@ class Item : public ISerializable
     virtual void set_worn_location(const EquipmentWornLocation new_worn_location);
     virtual EquipmentWornLocation get_worn_location() const;
     
+    // If the status is cursed, changes the status to uncursed. If it's
+    // uncursed, the status becomes blessed. If blessed, nothing happens.
+    virtual ItemStatus increment_status();
+
+    // Set/get the status as you'd expect.
     virtual void set_status(const ItemStatus new_status);
     virtual ItemStatus get_status() const;
     

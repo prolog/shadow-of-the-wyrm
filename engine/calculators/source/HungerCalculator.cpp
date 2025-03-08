@@ -3,7 +3,7 @@
 const int HungerCalculator::HUNGER_DAMAGE_PER_TICK = 10;
 const int HungerCalculator::PCT_CHANCE_HUNGER_WHILE_SATED = 15;
 
-int HungerCalculator::calculate_hunger_damage(CreaturePtr creature, const ulonglong num_ticks) const
+int HungerCalculator::calculate_hunger_damage(CreaturePtr /*creature*/, const ulonglong num_ticks) const
 {
   return static_cast<int>(num_ticks * HUNGER_DAMAGE_PER_TICK);
 }

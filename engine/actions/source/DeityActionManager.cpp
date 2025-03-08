@@ -68,7 +68,7 @@ void DeityActionManager::notify_action(CreaturePtr creature, MapPtr map, const s
       }
       else if (cur_deity->get_like(action_key))
       {
-        handle_pleasing_action(creature, cur_deity, action_key, num_times);
+        handle_pleasing_action(creature, cur_deity, num_times);
       }
     }
   }
@@ -132,7 +132,7 @@ void DeityActionManager::handle_displeasing_action(CreaturePtr creature, Deity* 
   }
 }
 
-void DeityActionManager::handle_pleasing_action(CreaturePtr creature, Deity* deity, const string& action_key, const uint num_times)
+void DeityActionManager::handle_pleasing_action(CreaturePtr creature, Deity* deity, const uint num_times)
 {
   if (creature != nullptr && deity != nullptr)
   {

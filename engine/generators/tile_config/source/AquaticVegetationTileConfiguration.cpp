@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void AquaticVegetationTileConfiguration::configure(TilePtr tile, const Season season) const
+void AquaticVegetationTileConfiguration::configure(TilePtr tile, const Season /*season*/) const
 {
   IInventoryPtr tile_items = tile->get_items();
 

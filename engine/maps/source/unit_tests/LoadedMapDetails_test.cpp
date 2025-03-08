@@ -117,15 +117,15 @@ void LoadedMapDetailsTester::test_update_season()
 
 void LoadedMapDetailsTester::test_requires_full_redraw()
 {
-  LoadedMapDetails lmd;
+  LoadedMapDetails details;
 
-  test_set_various_values(lmd);
+  test_set_various_values(details);
 
-  EXPECT_TRUE(lmd.requires_full_map_redraw());
+  EXPECT_TRUE(details.requires_full_map_redraw());
 
-  lmd.synch();
+  details.synch();
 
-  EXPECT_FALSE(lmd.requires_full_map_redraw());
+  EXPECT_FALSE(details.requires_full_map_redraw());
 }
 
 TEST_F(LoadedMapDetailsTester, update_map_id)

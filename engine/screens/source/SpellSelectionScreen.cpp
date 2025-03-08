@@ -10,7 +10,7 @@
 
 using namespace std;
 
-bool DefaultSpellScreenDisplayStrategy::display_spell(const Spell& spell) const
+bool DefaultSpellScreenDisplayStrategy::display_spell(const Spell& /*spell*/) const
 {
   return true;
 }
@@ -86,7 +86,8 @@ void SpellSelectionScreen::initialize()
 
       // Only add the spell to the display if it passes the castings/
       // filters/etc tests.
-      selection_map.insert(make_pair('a' + i, spell_id));
+      char map_key = 'a' + static_cast<char>(i);
+      selection_map.insert(make_pair(map_key, spell_id));
 
       IDescriberPtr describer = DescriberFactory::create_describer(creature, spell);
       string spell_desc = describer->describe();

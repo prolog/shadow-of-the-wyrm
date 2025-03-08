@@ -128,13 +128,13 @@ bool Religion::deserialize(istream& stream)
 
   for (unsigned int i = 0; i < deity_relations_size; i++)
   {
-    string deity_id;
+    string dei_id;
     DeityStatus deity_status;
 
-    Serialize::read_string(stream, deity_id);
+    Serialize::read_string(stream, dei_id);
     deity_status.deserialize(stream);
 
-    deity_relations.insert(make_pair(deity_id, deity_status));
+    deity_relations.insert(make_pair(dei_id, deity_status));
   }
 
   return true;

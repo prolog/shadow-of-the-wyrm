@@ -3,7 +3,7 @@
 using namespace std;
 
 // A ground tile is safe if the creature breathes air.
-bool GroundSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
+bool GroundSafetyCondition::is_safe(CreaturePtr creature, TilePtr /*tile*/)
 {
   bool safe = false;
 

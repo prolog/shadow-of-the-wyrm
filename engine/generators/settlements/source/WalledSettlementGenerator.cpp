@@ -57,7 +57,7 @@ void WalledSettlementGenerator::initialize()
   }
 }
 
-MapPtr WalledSettlementGenerator::generate(const Dimensions& dim)
+MapPtr WalledSettlementGenerator::generate(const Dimensions& /*dim*/)
 {
   MapPtr map = generate();
 
@@ -128,7 +128,7 @@ void WalledSettlementGenerator::generate_walls(MapPtr map)
   generate_barracks(map, north_wall, south_wall, east_wall, west_wall);
 }
 
-void WalledSettlementGenerator::generate_barracks(MapPtr map, const int north_wall, const int south_wall, const int east_wall, const int west_wall)
+void WalledSettlementGenerator::generate_barracks(MapPtr map, const int nwall, const int swall, const int ewall, const int wwall)
 {
   vector<Direction> corner_v = { Direction::DIRECTION_SOUTH_EAST, Direction::DIRECTION_SOUTH_WEST, Direction::DIRECTION_NORTH_EAST, Direction::DIRECTION_NORTH_WEST };
   Direction d = corner_v.at(RNG::range(0, corner_v.size() - 1));
@@ -140,17 +140,17 @@ void WalledSettlementGenerator::generate_barracks(MapPtr map, const int north_wa
   switch (d)
   {
     case Direction::DIRECTION_NORTH_EAST:
-      start_barracks = { north_wall + 1, east_wall - 1 - sz };
+      start_barracks = { nwall + 1, ewall - 1 - sz };
       break;
     case Direction::DIRECTION_NORTH_WEST:
-      start_barracks = { north_wall + 1, west_wall + 1 };
+      start_barracks = { nwall + 1, wwall + 1 };
       break;
     case Direction::DIRECTION_SOUTH_EAST:
-      start_barracks = { south_wall - 1 - sz, east_wall - 1 - sz };
+      start_barracks = { swall - 1 - sz, ewall - 1 - sz };
       door_dir = CardinalDirection::CARDINAL_DIRECTION_NORTH;
       break;
     case Direction::DIRECTION_SOUTH_WEST:
-      start_barracks = { south_wall - 1 - sz, west_wall + 1 };
+      start_barracks = { swall - 1 - sz, wwall + 1 };
       door_dir = CardinalDirection::CARDINAL_DIRECTION_NORTH;
       break;
     default:
@@ -183,7 +183,7 @@ void WalledSettlementGenerator::generate_barracks(MapPtr map, const int north_wa
   generate_guards(map, north_wall, south_wall, east_wall, west_wall);
 }
 
-void WalledSettlementGenerator::generate_guards(MapPtr map, const int north_wall, const int south_wall, const int east_wall, const int west_wall)
+void WalledSettlementGenerator::generate_guards(MapPtr map, const int nwall, const int swall, const int ewall, const int wwall)
 {
   int num_guards = RNG::range(2, 6);
   vector<CardinalDirection> dirs = { CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_SOUTH, CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_WEST };
@@ -199,17 +199,17 @@ void WalledSettlementGenerator::generate_guards(MapPtr map, const int north_wall
     switch (cd)
     {
       case CardinalDirection::CARDINAL_DIRECTION_NORTH:
-        c = { north_wall + 1, RNG::range(west_wall + 1, east_wall - 1) };
+        c = { nwall + 1, RNG::range(wwall + 1, ewall - 1) };
         break;
       case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
-        c = { south_wall - 1, RNG::range(west_wall + 1, east_wall - 1) };
+        c = { swall - 1, RNG::range(wwall + 1, ewall - 1) };
         break;
       case CardinalDirection::CARDINAL_DIRECTION_WEST:
-        c = { RNG::range(north_wall + 1, south_wall - 1), west_wall + 1 };
+        c = { RNG::range(nwall + 1, swall - 1), wwall + 1 };
         break;
       case CardinalDirection::CARDINAL_DIRECTION_EAST:
       default:
-        c = { RNG::range(north_wall + 1, south_wall - 1), east_wall - 1 };
+        c = { RNG::range(nwall + 1, swall - 1), ewall - 1 };
         break;
     }
 
@@ -223,8 +223,8 @@ void WalledSettlementGenerator::generate_guards(MapPtr map, const int north_wall
       // Wall guards are always sentries.
       if (tile && tile->has_creature())
       {
-        CreaturePtr c = tile->get_creature();
-        c->get_decision_strategy()->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, to_string(true));
+        CreaturePtr cr = tile->get_creature();
+        cr->get_decision_strategy()->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, to_string(true));
       }
     }
   }

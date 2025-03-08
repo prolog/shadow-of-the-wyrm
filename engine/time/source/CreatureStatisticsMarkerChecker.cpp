@@ -19,7 +19,7 @@ CreatureStatisticsMarkerChecker::CreatureStatisticsMarkerChecker(const uint new_
 {
 }
 
-void CreatureStatisticsMarkerChecker::tick(CreaturePtr creature, TilePtr tile, const ulonglong min_this_tick, const ulonglong total_minutes_elapsed)
+void CreatureStatisticsMarkerChecker::tick(CreaturePtr creature, TilePtr /*tile*/, const ulonglong /*min_this_tick*/, const ulonglong total_minutes_elapsed)
 {
   if (creature != nullptr)
   {

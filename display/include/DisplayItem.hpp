@@ -14,7 +14,7 @@ class DisplayItem
 {
   public:
     DisplayItem();
-    ~DisplayItem();
+    virtual ~DisplayItem();
 
     void set_description(const std::string& new_description);
     std::string get_description() const;

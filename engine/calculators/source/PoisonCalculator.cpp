@@ -45,7 +45,7 @@ int PoisonCalculator::calculate_duration_in_minutes(CreaturePtr creature) const
 
 // Calculate the mean of the Poison Poisson distribution, which is affected
 // by the creature's health.
-int PoisonCalculator::calculate_poison_duration_mean(CreaturePtr creature) const
+int PoisonCalculator::calculate_poison_duration_mean(CreaturePtr /*creature*/) const
 {
   int base_mean = BASE_POISON_DURATION_MEAN;
   return base_mean;

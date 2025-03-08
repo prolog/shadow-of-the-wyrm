@@ -7,6 +7,7 @@ class ForestGenerator : public SOTW::Generator
   public:
     ForestGenerator(const std::string& map_exit_id);
     ForestGenerator(const int pct_chance_stream, const int pct_chance_springs);
+    virtual ~ForestGenerator() = default;
 
     virtual MapPtr generate() override;
     virtual MapPtr generate(const Dimensions& dimensions) override;

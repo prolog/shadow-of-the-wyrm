@@ -27,7 +27,7 @@ string ActionTextKeys::get_general_message(const string& desc_sid, const string&
 
     // Replace the creature part
     boost::replace_first(message, "%s", StringTable::get(desc_sid));
-    message[0] = toupper(message[0]);
+    message[0] = static_cast<char>(toupper(message[0]));
   }
 
   return message;
@@ -105,7 +105,7 @@ string ActionTextKeys::get_spellcasting_message(const Spell& spell, CreaturePtr 
     boost::replace_first(spellcasting_message, "%s", creature_desc);
   }
 
-  spellcasting_message[0] = toupper(spellcasting_message[0]);
+  spellcasting_message[0] = static_cast<char>(toupper(spellcasting_message[0]));
   return spellcasting_message;
 }
 
@@ -212,7 +212,7 @@ string ActionTextKeys::get_kick_object_message(const string& desc_sid, const str
     kick_msg = StringTable::get(ACTION_KICK_OBJECT_MONSTER);
     boost::replace_first(kick_msg, "%s1", StringTable::get(desc_sid));
     boost::replace_first(kick_msg, "%s2", object_desc);
-    kick_msg[0] = toupper(kick_msg[0]);
+    kick_msg[0] = static_cast<char>(toupper(kick_msg[0]));
   }
 
   return kick_msg;
@@ -230,7 +230,7 @@ string ActionTextKeys::get_knock_back_message(const string& defend_desc_sid, con
   {
     kb_msg = StringTable::get(ACTION_KNOCK_BACK_MONSTER);
     boost::replace_first(kb_msg, "%s", StringTable::get(defend_desc_sid));
-    kb_msg[0] = toupper(kb_msg[0]);
+    kb_msg[0] = static_cast<char>(toupper(kb_msg[0]));
   }
 
   return kb_msg;
@@ -381,7 +381,7 @@ string ActionTextKeys::get_already_stolen_message(const string& desc)
   string msg = StringTable::get(ACTION_THIEVERY_ALREADY_STOLEN);
 
   boost::replace_first(msg, "%s", desc);
-  msg[0] = toupper(msg[0]);
+  msg[0] = static_cast<char>(toupper(msg[0]));
 
   return msg;
 }
@@ -391,7 +391,7 @@ string ActionTextKeys::get_no_pockets_message(const string& desc)
   string msg = StringTable::get(ACTION_THIEVERY_NO_POCKETS);
 
   boost::replace_first(msg, "%s", desc);
-  msg[0] = toupper(msg[0]);
+  msg[0] = static_cast<char>(toupper(msg[0]));
 
   return msg;
 }
@@ -408,7 +408,7 @@ string ActionTextKeys::get_steal_successful_message(const string& creature_desc,
   msg = StringTable::get(msg);
   boost::replace_first(msg, "%s1", creature_desc);
   boost::replace_first(msg, "%s2", item_desc);
-  msg[0] = toupper(msg[0]);
+  msg[0] = static_cast<char>(toupper(msg[0]));
 
   return msg;
 }
@@ -425,7 +425,7 @@ string ActionTextKeys::get_steal_unsuccessful_message(const string& stealing_des
   msg = StringTable::get(msg);
   boost::replace_first(msg, "%s1", StringTable::get(steal_desc));
   boost::replace_first(msg, "%s2", StringTable::get(stealing_desc));
-  msg[0] = toupper(msg[0]);
+  msg[0] = static_cast<char>(toupper(msg[0]));
 
   return msg;
 }
@@ -434,7 +434,7 @@ string ActionTextKeys::get_cry_out_message(const string& creature_desc)
 {
   string msg = StringTable::get(ACTION_CRY_OUT);
   boost::replace_first(msg, "%s", creature_desc);
-  msg[0] = toupper(msg[0]);
+  msg[0] = static_cast<char>(toupper(msg[0]));
 
   return msg;
 }
@@ -507,7 +507,7 @@ string ActionTextKeys::get_tame_failure_message(const string& creature_sid)
 {
   string msg = StringTable::get(ACTION_TAME_FAILURE);
   boost::replace_first(msg, "%s", StringTable::get(creature_sid));
-  msg[0] = toupper(msg[0]);
+  msg[0] = static_cast<char>(toupper(msg[0]));
 
   return msg;
 }
@@ -516,7 +516,7 @@ string ActionTextKeys::get_incinerate_spellbook_message(const string& item_usage
 {
   string msg = StringTable::get(ACTION_INCINERATE_SPELLBOOK);
   boost::replace_first(msg, "%s", StringTable::get(item_usage_desc_sid));
-  msg[0] = toupper(msg[0]);
+  msg[0] = static_cast<char>(toupper(msg[0]));
 
   return msg;
 }
@@ -525,7 +525,7 @@ string ActionTextKeys::get_incinerate_spellbook_wild_message(const string& item_
 {
   string msg = StringTable::get(ACTION_INCINERATE_SPELLBOOK_WILD);
   boost::replace_first(msg, "%s", StringTable::get(item_usage_desc_sid));
-  msg[0] = toupper(msg[0]);
+  msg[0] = static_cast<char>(toupper(msg[0]));
 
   return msg;
 }
@@ -534,7 +534,7 @@ string ActionTextKeys::get_npc_contraband_message(const string& creature_sid)
 {
   string msg = StringTable::get(ACTION_NPC_YELL_CONTRABAND);
   boost::replace_first(msg, "%s", StringTable::get(creature_sid));
-  msg[0] = toupper(msg[0]);
+  msg[0] = static_cast<char>(toupper(msg[0]));
 
   return msg;
 }
@@ -545,7 +545,7 @@ string ActionTextKeys::get_kiln_no_item_message(const string& missing_sid, const
   boost::replace_first(msg, "%s1", StringTable::get(missing_sid));
   boost::replace_first(msg, "%s2", StringTable::get(creation_sid));
 
-  msg[0] = toupper(msg[0]);
+  msg[0] = static_cast<char>(toupper(msg[0]));
   return msg;
 }
 
@@ -748,6 +748,7 @@ const string ActionTextKeys::ACTION_PAPERCRAFT_PULP_TOO_LIGHT  = "ACTION_PAPERCR
 const string ActionTextKeys::ACTION_TAME_BEGIN                 = "ACTION_TAME_BEGIN";
 const string ActionTextKeys::ACTION_TAME_NO_TARGETS            = "ACTION_TAME_NO_TARGETS";
 const string ActionTextKeys::ACTION_ORDER_NO_FOLLOWERS         = "ACTION_ORDER_NO_FOLLOWERS";
+const string ActionTextKeys::ACTION_ORDER_NOT_A_FOLLOWER       = "ACTION_ORDER_NOT_A_FOLLOWER";
 const string ActionTextKeys::ACTION_ABANDONED                  = "ACTION_ABANDONED";
 const string ActionTextKeys::ACTION_INCINERATE_NO_SPELLBOOKS   = "ACTION_INCINERATE_NO_SPELLBOOKS";
 const string ActionTextKeys::ACTION_INCINERATE_NO_AP           = "ACTION_INCINERATE_NO_AP";

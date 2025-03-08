@@ -42,7 +42,6 @@ MapPtr SpiralDungeonGenerator::place_random_staircase(MapPtr map, StaircaseTileP
 // Place the staircases at random on the generated map.
 MapPtr SpiralDungeonGenerator::place_staircases(MapPtr map, const bool place_up_stairs, const bool place_down_stairs)
 {
-  TileGenerator tg;
   MapPtr result_map = map;
 
   if (place_up_stairs)
@@ -63,8 +62,6 @@ MapPtr SpiralDungeonGenerator::place_staircases(MapPtr map, const bool place_up_
 // Recursively generate a spiral dungeon
 void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, const int current_col, const CardinalDirection direction, const int row_length, const int col_length)
 {
-  TileGenerator tg;
-
   if (row_length < 0 || col_length < 0)
   {
     return;

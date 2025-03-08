@@ -20,6 +20,7 @@ class GameUtils
     static bool is_creature_in_player_view_map(Game& game, const std::string& creature_id);
     static bool is_creature_adjacent(Game& game, CreaturePtr creature1, CreaturePtr creature2);
     static double get_seconds(Game& game);
+    static bool is_magic_category_possible(const SkillType magic_category);
     static Date get_date(Game& game);
 
     static bool is_player_among_creatures(CreaturePtr creature1, CreaturePtr creature2);

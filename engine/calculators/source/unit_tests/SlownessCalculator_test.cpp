@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SW_World_Calculator_SlownessCalculator, calc_pct_chance_slowness)
+TEST(SW_Engine_Calculator_SlownessCalculator, calc_pct_chance_slowness)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   creature->set_agility(2);

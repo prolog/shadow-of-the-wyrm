@@ -162,11 +162,11 @@ vector<MapPtr> XMLConfigurationReader::get_custom_maps(const string& directory, 
 
   for (directory_iterator d_it(directory); d_it != end_it; d_it++)
   {
-    string filename = d_it->path().string();
+    string fname = d_it->path().string();
 
-    if (boost::regex_search(filename, e))
+    if (boost::regex_search(fname, e))
     {
-      initialize_parser(filename);
+      initialize_parser(fname);
 
       if (!root.is_null())
       {

@@ -323,7 +323,7 @@ string SkillTextKeys::get_skill_improvement_message(const string& title_text_sid
   string message = StringTable::get(title_text_sid);
 
   boost::replace_first(message, "%s", to_string(pts_remaining));
-  message[0] = toupper(message[0]);
+  message[0] = static_cast<char>(toupper(message[0]));
 
   return message;
 }

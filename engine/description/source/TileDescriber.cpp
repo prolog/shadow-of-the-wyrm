@@ -24,7 +24,7 @@ string TileDescriber::describe() const
     
     if (!tile_desc.empty())
     {
-      tile_desc[0] = std::toupper(tile_desc[0]);
+      tile_desc[0] = static_cast<char>(std::toupper(tile_desc[0]));
       tile_desc += ".";
     }
 

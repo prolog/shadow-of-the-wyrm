@@ -14,7 +14,7 @@ BlindedStatusEffect::BlindedStatusEffect()
   status_calc = std::make_shared<BlindedCalculator>();
 }
 
-void BlindedStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr affected_creature) const
+void BlindedStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr /*affected_creature*/) const
 {
   if (initiating != nullptr)
   {
@@ -25,7 +25,7 @@ void BlindedStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr aff
   }
 }
 
-Modifier BlindedStatusEffect::get_base_modifier(CreaturePtr creature, const int danger_level) const
+Modifier BlindedStatusEffect::get_base_modifier(CreaturePtr /*creature*/, const int /*danger_level*/) const
 {
   Modifier m;
 
@@ -35,13 +35,13 @@ Modifier BlindedStatusEffect::get_base_modifier(CreaturePtr creature, const int 
   return m;
 }
 
-bool BlindedStatusEffect::after_apply(CreaturePtr creature) const
+bool BlindedStatusEffect::after_apply(CreaturePtr /*creature*/) const
 {
   Game::instance().get_loaded_map_details_ref().update_blind_status(true);
   return true;
 }
 
-void BlindedStatusEffect::after_undo(CreaturePtr creature) const
+void BlindedStatusEffect::after_undo(CreaturePtr /*creature*/) const
 {
   Game::instance().get_loaded_map_details_ref().update_blind_status(false);
 }

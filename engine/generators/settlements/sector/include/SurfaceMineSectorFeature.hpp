@@ -3,6 +3,9 @@
 
 class SurfaceMineSectorFeature : public SectorFeature
 {
+  public:
+    virtual ~SurfaceMineSectorFeature() = default;
+
   protected:
     bool generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
     void generate_mine(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);

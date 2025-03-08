@@ -16,7 +16,7 @@ SettlementGenerator::SettlementGenerator(MapPtr new_base_map, const int new_grow
 {
 }
 
-MapPtr SettlementGenerator::generate(const Dimensions& dimensions)
+MapPtr SettlementGenerator::generate(const Dimensions& /*dimensions*/)
 {
   return generate();
 }

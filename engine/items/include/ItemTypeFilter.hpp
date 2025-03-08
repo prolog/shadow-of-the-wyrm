@@ -9,6 +9,8 @@ class ItemTypeFilter : public IItemFilter
   public:
     ItemTypeFilter(const ItemType it);
     ItemTypeFilter(const std::list<ItemType>& it_list);
+    virtual ~ItemTypeFilter() = default;
+
     bool passes_filter(ItemPtr item) const override;
 
   protected:

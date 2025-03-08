@@ -16,7 +16,7 @@ ForgeManipulator::ForgeManipulator(FeaturePtr feature)
 {
 }
 
-void ForgeManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+void ForgeManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/)
 {
   if (creature && creature->get_is_player())
   {
@@ -26,7 +26,7 @@ void ForgeManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr fe
   }
 }
 
-bool ForgeManipulator::handle(TilePtr tile, CreaturePtr creature)
+bool ForgeManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
 {
   bool forge_used = false;
 
@@ -76,7 +76,7 @@ bool ForgeManipulator::handle(TilePtr tile, CreaturePtr creature)
   return forge_used;
 }
 
-bool ForgeManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+bool ForgeManipulator::drop(CreaturePtr /*dropping_creature*/, TilePtr /*tile*/, ItemPtr /*item*/)
 {
   return false;
 }

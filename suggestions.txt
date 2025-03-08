@@ -1,24 +1,20 @@
 Me:
-- ASSET RELEASE (images, sounds!)
+- ASSET RELEASE: sounds! tiles!
 - git push --tags
-- in and out of carcassia: memory keeps going up? shouldn't this be freed?
-- this is happening regardless of whether sound is enabled or not - and in
-  v1.5.8 - do profiling
-- ebalster: down/up in ponds in ID
-- ebalster: followers shouldn't accidentally target leader eg with rock throw 
-  on something else in tight quarters. seems like this might occur only with
-  high Awareness, otherwise they won't fire through.
+- The Ybari/Asturias?
 - Caldera's water should be death - swimming or descending
+- fletchery/bowyer status - when unc, skill% chance to turn blessed. should
+  get a check for each of bowyer/fletchery and crafting.
+- Use this for fletchery, bowyer, etc, to improve item & quantity
+- set random extra descriptions for up/down staircases
+- let's work on recall/coming back if you go down a water tile...
 - underwater cavern? something like that?
 - is the username check on savefiles still needed?
 - test orb placement in wyrmeswraec
 - dig in water
+- other ambient sounds
 - super_type_message_sids -> super_type_sound_id?
-- Need to release sprites, sound effects, music
 - hemsio: autosave not working?
-- set item status property in CreateItemScreen
-- Use this for fletchery, bowyer, etc, to improve item & quantity
-- test both seed and food planting on same tile
 - tile item transforms: drop items, test save and load.
 - Hidden PCs are never found via bumping (Josh Engdahl)
 - ways in which blessed item status can be tied into benefits
@@ -33,40 +29,24 @@ Me:
 - mountaineering/lore: chance to find magici shards (+ mark tile) and also to
   generate a down staircase that leads to passageways that lead to a cavern
 - issue with too many save files, but there's only one? -1
-- Branding should give a base 20% resist
 - mushrooms with randomized effects, descs like wildflowers. eat scripts?
 - Desert/Forest/etc Lore (+ dungeoneering?): to-hit, damage, speed bonuses on 
   that terrain
 - creature-specific turn-to-fight/rage values`
 - Uniques and fleeing?
 - what other creatures can be templated now?
-- Killing creature on stairs should allow dropping items but not corpse,
-  and should generate a message
 - Make keeps more interesting?
-- Check the hireling code - found a L35 hireling on L1?`
 - Fill out Carcassia A2A
   - What's on the platform?
   - Lancer's Walk
   - Shrink the shop a bit
   - Allow setting the shopkeeper name and setting the item types
 - can use warp in telari ocean
-- Elinor and Verra
+- Elinor and Varra
 - in villages: retired cartographers?
 - small chance to generate good items underwater
 - need to test springs/ivory gen
 - Flying shop in Carcassia A2A
-- Need a thorough test of exits:
-  - down/up/down in dungeon
-  - into, out of map
-  - multi-map
-  - up/down sewer in carcassia
-  - up/down regular dungeons
-  - up/down world maps
-  - up/down infinite dungeon and sewer
-  - into map via air/stairs, down the same way
-  - into map via air/stairs, down the other way
-  - traverse Telari
-  - Telari back to the world map then immediately go down again
 - need to be able to move around sky above Carcassia (make sure NW, NE, SW,
   SE all work as expected)
 - Need to check all the exits for the sky
@@ -78,11 +58,9 @@ Me:
   - etc
 - in do_generate... can that linkage function be hidden behind a check for
   either world map or interior tile? test!
-- all the wintersea tower mobs need to fly
-- need to test the wintersea map key on the tower post-refactor
 - update xsd, update xml, add and test linkages for all direction 10/11
   custom maps
-- water breathing cantrip
+- std::filesystem requires C++20 for converting last_write times
 - When map exit up is defined, should still check zlevels/etc
 - Keep a vector<pair<Direction, TileType>> for stairs on the map for fast
 - lookup
@@ -231,7 +209,6 @@ Me:
 - Beer halls in villages
 - Do creatures pause when no threats in FOV? Seems slow.
 - 2x draw?
-- Beastmastery: add mounts
 - Grond: attacking turtles causes some kind of ToD crash after teleporting
   and maybe other stuff?
 - EACH VERSION: clean up the usage of some shared_ptrs.  These should be
@@ -258,7 +235,6 @@ Me:
 - More special terrain rooms, and then slightly increase the probability so
   that dungeons are more interesting.
 - Penalties from bloodied, exposed should also scale with level.
-- The Ybari/Asturias?
 - Negative rings/amulets: ring of poison, spellbound amulet.
 - Names should work into combat messages, etc
 - Buildings generated in towns should automatically get inhabitants.
@@ -270,7 +246,6 @@ Me:
 - Unnecessary refresh being called for generator? (refreshing overworld
   when it shouldn't)
 - The vaults of the old dwarven-kings
-- Towers/tower generators.
 - Reuse some of the sector feature generators in dungeons - tomb, etc.
 - Descent into the underworld.
 - Wilderness ruins/lairs
@@ -426,7 +401,6 @@ mission opossumable:
 
 YARD:
 - spell details on shift+letter
-- wilderness, low level creatures, etc
 
 IceBox: 
 - can the confirm setting be allowed to change on load?
@@ -469,18 +443,27 @@ Bentwing:
 - restack on blessing eg books, all items, etc
 - more fleshed out NPCs/hirelings/writing generally
 - keybinding for toggling reach mode
+- when sapient allies are left behind on a resetting area, instead of being
+  removed from the game world, show up randomly in a settlement somewhere.
 
 Kenny:
 - repeat last command (!)
 
 iakul:
 - spells for the nine
+- Consuming the corpse of the same race aggros the entire map, regardless of 
+  whether they are in LOS, or whether they are your followers.
+- Attacking a friendly doesn't provoke aggro from nearby friendlies. The 
+  friendly that's attacked does get aggro-ed, and guards nearby will attack 
+  this former friendly for their act of self-defense while ignoring you.
+- (2) Leads to some counterintuitive approaches. The second mission that Acey 
+  gives you is easier if you attack and kill off the guardians one by one 
+  before you pick up the quest item. 
 
 JovanM:
 - create inkpots
 - paper making from anything made of wood
 - long shops eg in Carcassia allow free thievery
-- combine Fletchery & Bowyer
 
 Sabrecam: 
 - pay guards for peace

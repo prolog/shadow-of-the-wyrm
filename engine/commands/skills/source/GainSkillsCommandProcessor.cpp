@@ -24,7 +24,7 @@ bool GainSkillsCommandProcessor::can_process(CreaturePtr creature)
   return (skill_pts > 0 && skills.has_trainable_skill());
 }
 
-ActionCostValue GainSkillsCommandProcessor::process(CreaturePtr creature, Command* command, MapPtr map, const SkillType st)
+ActionCostValue GainSkillsCommandProcessor::process(CreaturePtr creature, Command* command, MapPtr /*map*/, const SkillType st)
 {
   ActionCostValue process_result = ActionCostConstants::NO_ACTION;
   Game& game = Game::instance();

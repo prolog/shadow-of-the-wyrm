@@ -12,6 +12,7 @@ class FieldTileConfiguration : public DefaultTileConfiguration
 {
   public:
     FieldTileConfiguration();
+    virtual ~FieldTileConfiguration() = default;
 
     virtual void configure(TilePtr tile, const Season season) const override;
 

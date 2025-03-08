@@ -8,6 +8,8 @@
 class IPillarGenerator
 {
   public:
+    virtual ~IPillarGenerator() = default;
+
     virtual int get_height() const = 0;
     virtual int get_width() const = 0;
 

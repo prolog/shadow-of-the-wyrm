@@ -7,6 +7,7 @@ class MagicalTreeTileConfiguration : public FruitTreeTileConfiguration
 {
   public:
     MagicalTreeTileConfiguration();
+    virtual ~MagicalTreeTileConfiguration() = default;
 
   protected:
     virtual void initialize_tree_species_details() override;

@@ -46,6 +46,6 @@ void ToggleSettingsAction::show_settings(CreaturePtr creature, const string& scr
   }
 }
 
-void ToggleSettingsAction::process_setting_if_necessary(CreaturePtr creature, const string& setting_name, const bool new_set_value)
+void ToggleSettingsAction::process_setting_if_necessary(CreaturePtr /*creature*/, const string& /*setting_name*/, const bool /*new_set_value*/)
 {
 }

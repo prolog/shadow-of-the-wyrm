@@ -13,7 +13,7 @@ OrderCommandProcessor::~OrderCommandProcessor()
 {
 }
 
-ActionCostValue OrderCommandProcessor::process(CreaturePtr creature, Command* command)
+ActionCostValue OrderCommandProcessor::process(CreaturePtr creature, Command* command, const string& follower_ids)
 {
   ActionCostValue process_result = ActionCostConstants::NO_ACTION;
   OrderAction oa;
@@ -24,7 +24,7 @@ ActionCostValue OrderCommandProcessor::process(CreaturePtr creature, Command* co
 
     if (command_name == OrderCommandKeys::ATTACK)
     {
-      return oa.order_attack(creature);
+      return oa.order_attack(creature, follower_ids);
     }
     else if (command_name == OrderCommandKeys::EXIT_ORDER)
     {
@@ -32,19 +32,19 @@ ActionCostValue OrderCommandProcessor::process(CreaturePtr creature, Command* co
     }
     else if (command_name == OrderCommandKeys::FOLLOW)
     {
-      return oa.order_follow(creature);
+      return oa.order_follow(creature, follower_ids);
     }
     else if (command_name == OrderCommandKeys::FREEZE)
     {
-      return oa.order_freeze(creature);
+      return oa.order_freeze(creature, follower_ids);
     }
     else if (command_name == OrderCommandKeys::AT_EASE)
     {
-      return oa.order_at_ease(creature);
+      return oa.order_at_ease(creature, follower_ids);
     }
     else if (command_name == OrderCommandKeys::SUMMON)
     {
-      return oa.order_summon(creature);
+      return oa.order_summon(creature, follower_ids);
     }
   }
 

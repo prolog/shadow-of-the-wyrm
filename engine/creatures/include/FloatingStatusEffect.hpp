@@ -8,6 +8,8 @@
 class FloatingStatusEffect : public StatusEffect
 {
   public:
+    virtual ~FloatingStatusEffect() = default;
+
     virtual bool is_negative() const override;
 
   protected:

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SW_World_Calculator_DisfiguredCalculator, calc_pct_chance_disfigured)
+TEST(SW_Engine_Calculator_DisfiguredCalculator, calc_pct_chance_disfigured)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   creature->set_health(3);
@@ -20,7 +20,7 @@ TEST(SW_World_Calculator_DisfiguredCalculator, calc_pct_chance_disfigured)
   EXPECT_EQ(3, dc.calculate_pct_chance_effect(creature));
 }
 
-TEST(SW_World_Calculator_DisfiguredCalculator, calculate_reduction_pcts)
+TEST(SW_Engine_Calculator_DisfiguredCalculator, calculate_reduction_pcts)
 {
   DisfiguredCalculator dc;
 

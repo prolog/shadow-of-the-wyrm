@@ -4,6 +4,8 @@
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
+#include "Environment.hpp"
+#include "Game.hpp"
 #include "HighScoreConstants.hpp"
 #include "Metadata.hpp"
 #include "ScoreCalculator.hpp"
@@ -32,21 +34,24 @@ ScoreFile::ScoreFile(const bool read_sf)
 
 void ScoreFile::read_score_file()
 {
-  std::ifstream score_file(HighScoreConstants::FILENAME);
+  Settings& settings = Game::instance().get_settings_ref();
+  std::string scorefile_dir = Environment::get_scorefile_directory(&settings);
+  string path_and_file = scorefile_dir + HighScoreConstants::FILENAME;
+  std::ifstream score_file(path_and_file);
 
-  if (boost::filesystem::exists(HighScoreConstants::FILENAME))
+  if (boost::filesystem::exists(path_and_file))
   {
-    std::ifstream score_file;
+    std::ifstream sf;
 
-    score_file.open(HighScoreConstants::FILENAME, ios_base::binary);
+    sf.open(path_and_file, ios_base::binary);
 
-    if (!(score_file.is_open() && score_file.good()))
+    if (!(sf.is_open() && sf.good()))
     {
       throw std::runtime_error("Problem opening existing score file.");
     }
     else
     {
-      bool read_ok = read_file(score_file);
+      bool read_ok = read_file(sf);
       if (!read_ok) throw std::runtime_error("Exception while reading the score file.");
     }
   }
@@ -57,9 +62,11 @@ void ScoreFile::save()
   CompilationDetails cd;
 
   string version = cd.get_compilation_details_string();
+  Settings& settings = Game::instance().get_settings_ref();
   std::ofstream score_file;
-
-  score_file.open(HighScoreConstants::FILENAME, ios::binary);
+  std::string scorefile_dir = Environment::get_scorefile_directory(&settings);
+  std::string path_and_file = scorefile_dir + HighScoreConstants::FILENAME;
+  score_file.open(path_and_file, ios::binary);
 
   if (!score_file.good())
   {

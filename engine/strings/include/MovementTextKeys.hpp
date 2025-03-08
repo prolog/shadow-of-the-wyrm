@@ -26,6 +26,9 @@ class MovementTextKeys
     static const std::string ACTION_MOVE_OFF_BLOCKED;
     static const std::string ACTION_MOVE_DANGEROUS_FEATURE;
     static const std::string ACTION_MOVE_RACE_NOT_ALLOWED;
+    static const std::string ACTION_MOVE_WRONG_STAIRS_DIRECTION;
+    static const std::string ACTION_MOVE_DIVE_TOO_SHALLOW;
+    static const std::string ACTION_MOVE_DIVE_ICE;
     static const std::string ITEMS_ON_TILE;
     
   protected:

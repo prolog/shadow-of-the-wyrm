@@ -6,6 +6,7 @@ class MarshGenerator : public SOTW::Generator
 {
   public:
     MarshGenerator(const std::string& map_exit_id);
+    virtual ~MarshGenerator() = default;
     
     virtual MapPtr generate(const Dimensions& dim) override;
 

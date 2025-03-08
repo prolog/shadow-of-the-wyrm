@@ -26,7 +26,7 @@ void ScreenKeyboardCommandMap::command_not_found(const string& keyboard_input)
 // Screen - moving back and forth between pages, if they exist.
 //
 // Settings currently does nothing here.
-void ScreenKeyboardCommandMap::initialize_command_mapping(const Settings& settings)
+void ScreenKeyboardCommandMap::initialize_command_mapping(const Settings& /*settings*/)
 {
   command_mapping.clear();
 

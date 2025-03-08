@@ -217,12 +217,12 @@ SkillType PhysicalDamageCalculator::get_general_combat_skill() const
   return SkillType::SKILL_GENERAL_COMBAT;
 }
 
-void PhysicalDamageCalculator::set_item_status_based_damage_modifiers(CreaturePtr attacking_creature, const AttackType attack_type, Damage& damage)
+void PhysicalDamageCalculator::set_item_status_based_damage_modifiers(CreaturePtr attacking_creature, const AttackType at, Damage& damage)
 {
   if (attacking_creature != nullptr)
   {
     WeaponManager wm;
-    WeaponPtr weapon = wm.get_weapon(attacking_creature, attack_type);
+    WeaponPtr weapon = wm.get_weapon(attacking_creature, at);
 
     if (weapon != nullptr)
     {
@@ -231,13 +231,13 @@ void PhysicalDamageCalculator::set_item_status_based_damage_modifiers(CreaturePt
   }
 }
 
-void PhysicalDamageCalculator::set_skill_based_statuses(CreaturePtr attacking_creature, const AttackType attack_type, Damage& damage)
+void PhysicalDamageCalculator::set_skill_based_statuses(CreaturePtr attacking_creature, const AttackType at, Damage& damage)
 {
   if (attacking_creature != nullptr)
   {
     WeaponManager wm;
     Skills& skills = attacking_creature->get_skills();
-    SkillType skill = wm.get_skill_type(attacking_creature, attack_type);
+    SkillType skill = wm.get_skill_type(attacking_creature, at);
     int val = skills.get_value(skill);
 
     SkillType general_skill = get_general_combat_skill();
@@ -259,13 +259,13 @@ void PhysicalDamageCalculator::set_skill_based_statuses(CreaturePtr attacking_cr
   }
 }
 
-void PhysicalDamageCalculator::set_skill_based_damage_flags(CreaturePtr attacking_creature, const AttackType attack_type, Damage& damage)
+void PhysicalDamageCalculator::set_skill_based_damage_flags(CreaturePtr attacking_creature, const AttackType at, Damage& damage)
 {
   if (attacking_creature != nullptr)
   {
     WeaponManager wm;
     Skills& skills = attacking_creature->get_skills();
-    SkillType skill = wm.get_skill_type(attacking_creature, attack_type);
+    SkillType skill = wm.get_skill_type(attacking_creature, at);
     int val = skills.get_value(skill);
 
     SkillType general_skill = get_general_combat_skill();
@@ -279,13 +279,13 @@ void PhysicalDamageCalculator::set_skill_based_damage_flags(CreaturePtr attackin
   }
 }
 
-void PhysicalDamageCalculator::set_skill_based_damage_modifiers(CreaturePtr attacking_creature, const AttackType attack_type, Damage& damage)
+void PhysicalDamageCalculator::set_skill_based_damage_modifiers(CreaturePtr attacking_creature, const AttackType at, Damage& damage)
 {
   if (attacking_creature != nullptr)
   {
     WeaponManager wm;
     Skills& skills = attacking_creature->get_skills();
-    SkillType skill = wm.get_skill_type(attacking_creature, attack_type);
+    SkillType skill = wm.get_skill_type(attacking_creature, at);
     int val = skills.get_value(skill);
 
     SkillType general_skill = get_general_combat_skill();

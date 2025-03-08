@@ -6,13 +6,21 @@
 class ItemPietyCalculator
 {
   public:
+    ItemPietyCalculator();
     int calculate_piety(ItemPtr item);
 
   protected:
     friend class ItemPietyCalculatorTestFixture;
+    void init_item_type_pieties();
 
+    float get_corpse_level_multiplier(ItemPtr item);
+
+    int get_item_type_piety_divisor(ItemPtr item);
     int get_base_value(ItemPtr item);
     int get_base_divisor(ItemPtr item);
+
+    // Any item type-specific mappings live here.
+    static std::map<ItemType, int> ITEM_TYPE_PIETY_DIVISORS;
 
     // The minimum piety required before calculate_piety will return a non-zero
     // value.  Deities don't like pitiful offerings.
@@ -27,6 +35,10 @@ class ItemPietyCalculator
     // corpses, which deities especially like).
     static const int BASE_DIVISOR;
 
+    // The divisor used on the base nutrition value (before any other divisors
+    // are applied) to lower it a little.
+    static const float BASE_NUTRITION_DIVISOR;
+
     // The divisor used for corpses, which are appreciated by deities more
     // than any other item.
     static const int CORPSE_DIVISOR;
@@ -37,5 +49,7 @@ class ItemPietyCalculator
     // Artifacts are valuable, and are reflected as such in the piety 
     // calculations.
     static const int ARTIFACT_DIVISOR;
+
+    static const float CORPSE_PIETY_BASE_MULTIPLIER;
 };
 

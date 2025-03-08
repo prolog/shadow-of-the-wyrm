@@ -1,7 +1,7 @@
 #include "CairnTileConfiguration.hpp"
 #include "ItemManager.hpp"
 
-void CairnTileConfiguration::configure(TilePtr tile, const Season season) const
+void CairnTileConfiguration::configure(TilePtr tile, const Season /*season*/) const
 {
   IInventoryPtr tile_items = tile->get_items();
 

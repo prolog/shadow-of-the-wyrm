@@ -9,6 +9,8 @@
 class ISkillMarker
 {
   public:
+    virtual ~ISkillMarker() = default;
+
     virtual std::vector<SkillType> get_marked_skills(CreaturePtr creature) const = 0;
 };
 

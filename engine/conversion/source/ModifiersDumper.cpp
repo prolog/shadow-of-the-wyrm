@@ -55,7 +55,6 @@ string ModifiersDumper::get_modifiers() const
             }
             else
             {
-              Game& game = Game::instance();
               Calendar& calendar = game.get_current_world()->get_calendar();
               Date date = calendar.get_date(time_val);
               Date cal_date = calendar.get_date();

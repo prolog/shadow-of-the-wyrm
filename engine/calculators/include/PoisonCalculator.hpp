@@ -8,6 +8,8 @@
 class PoisonCalculator : public StatusEffectCalculator
 {
   public:
+    virtual ~PoisonCalculator() = default;
+
     int calculate_pct_chance_effect(CreaturePtr creature) const override;
     int calculate_damage_per_tick(CreaturePtr creature, const int danger_level) const;
     int calculate_duration_in_minutes(CreaturePtr creature) const override;

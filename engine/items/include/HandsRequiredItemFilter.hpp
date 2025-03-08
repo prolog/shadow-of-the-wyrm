@@ -8,6 +8,7 @@ class HandsRequiredItemFilter : public IItemFilter
 {
   public:
     HandsRequiredItemFilter(const EquipmentWornLocation ewl, const int num_hands_avail);
+    virtual ~HandsRequiredItemFilter() = default;
 
     bool passes_filter(ItemPtr item) const override;
 

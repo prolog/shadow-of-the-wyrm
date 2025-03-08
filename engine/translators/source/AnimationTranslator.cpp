@@ -85,9 +85,9 @@ Animation AnimationTranslator::create_movement_animation(CreaturePtr creature, c
 
       if (redraw_previous_frame)
       {
-        for (AnimationInstructionPtr& instr : frame_cleanup)
+        for (AnimationInstructionPtr& inst : frame_cleanup)
         {
-          animation.add_animation_instruction(instr);
+          animation.add_animation_instruction(inst);
         }
       }
     }

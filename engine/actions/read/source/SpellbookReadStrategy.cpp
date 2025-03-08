@@ -13,7 +13,7 @@
 
 using namespace std;
 
-ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager * const am, ReadablePtr readable)
+ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ReadablePtr readable)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 

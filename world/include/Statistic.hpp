@@ -14,7 +14,7 @@ class Statistic : public ISerializable
     Statistic();
     Statistic(const int new_base_and_current);
     Statistic& operator=(const int& rhs);
-    virtual bool operator==(const Statistic& stat) const;
+    bool operator==(const Statistic& stat) const;
 
     void set_base_current(int new_base_and_current, const SetStatisticFailure ssf = SetStatisticFailure::SET_STATISTIC_FAILURE_IGNORE);
 

@@ -365,6 +365,11 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConstStr(ls, CSOUND_EFFECT_NEGATIVE_EFFECT);
   lua_exportConstStr(ls, CSOUND_EFFECT_LEVEL_UP);
   lua_exportConstStr(ls, CSOUND_EFFECT_CLICK);
+  lua_exportConstStr(ls, CSOUND_EFFECT_EAT);
+  lua_exportConstStr(ls, CSOUND_EFFECT_DRINK);
+  lua_exportConstStr(ls, CSOUND_EFFECT_DRIP1);
+  lua_exportConstStr(ls, CSOUND_EFFECT_DRIP2);
+  lua_exportConstStr(ls, CSOUND_EFFECT_DRIP3);
 
   lua_exportConstStr(ls, CMUSIC_EVENT_ARENA);
   lua_exportConstStr(ls, CMUSIC_EVENT_ARENA_VICTORY);
@@ -372,6 +377,7 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConstStr(ls, CMUSIC_EVENT_PLANETARY_TELEPORT);
   lua_exportConstStr(ls, CMUSIC_EVENT_RESPAWN);
   lua_exportConstStr(ls, CMUSIC_EVENT_CARCASSIA);
+  lua_exportConstStr(ls, CMUSIC_EVENT_WAVES);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)
@@ -524,8 +530,6 @@ void ScriptEngine::process_function_arguments(const vector<string>& param_types,
     }
     else
     {
-      Log& log = Log::instance();
-
       log.error("ScriptEngine::process_function_arguments - Unrecognized type \"" + param_type + "\" with value \"" + param_value + "\"");
     }
   }

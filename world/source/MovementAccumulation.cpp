@@ -32,6 +32,12 @@ void MovementAccumulation::reset()
   movement_type = MovementType::MOVEMENT_TYPE_WALKING;
 }
 
+void MovementAccumulation::reset_minutes()
+{
+  minutes_on_super_type_given_movement = 0;
+  minutes_on_tile_type_given_movement = 0;
+}
+
 void MovementAccumulation::set_minutes_on_super_type_given_movement(const ulonglong new_minutes)
 {
   minutes_on_super_type_given_movement = new_minutes;

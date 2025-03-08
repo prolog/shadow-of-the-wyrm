@@ -58,7 +58,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     custom_map->set_map_type(map_type);
 
     XMLMapTilesReader tiles_reader;
-    TilesContainer tiles = tiles_reader.parse_tiles(tiles_node, dim.get_y(), dim.get_x());
+    TilesContainer tiles = tiles_reader.parse_tiles(tiles_node, dim.get_x());
 
     // Sanity check: tiles container should have as many tiles
     // as is specified by the dimensions.

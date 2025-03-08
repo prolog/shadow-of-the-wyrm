@@ -90,7 +90,7 @@ ActionCostValue ExitGameAction::save(CreaturePtr creature, const bool quit_after
   return get_action_cost_value(creature);
 }
   
-ActionCostValue ExitGameAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue ExitGameAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   // Setting the action cost to 1 after everything has been saved/quit ensures
   // that the user doesn't have to press another key to actually quit.
@@ -123,7 +123,6 @@ void ExitGameAction::create_dump_if_necessary(IMessageManager& manager, ActionMa
 
   for (const auto cdt : dump_types)
   {
-    Game& game = Game::instance();
     MapPtr current_map = game.get_current_map();
     pair<Coordinate, TilePtr> creature_loc = current_map->get_location_and_tile(creature->get_id());
 

@@ -268,7 +268,7 @@ void OfferAction::add_piety_message_if_player(CreaturePtr creature)
   CreatureUtils::add_piety_message_if_player(creature);
 }
 
-ActionCostValue OfferAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue OfferAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

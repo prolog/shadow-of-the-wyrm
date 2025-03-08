@@ -6,7 +6,7 @@
 
 using namespace std;
 
-ActionCostValue TextReadStrategy::read(CreaturePtr creature, ActionManager * const am, ReadablePtr readable)
+ActionCostValue TextReadStrategy::read(CreaturePtr creature, ReadablePtr readable)
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
 

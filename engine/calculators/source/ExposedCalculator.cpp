@@ -25,7 +25,7 @@ int ExposedCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
   return pct_chance;
 }
 
-int ExposedCalculator::calculate_duration_in_minutes(CreaturePtr creature) const
+int ExposedCalculator::calculate_duration_in_minutes(CreaturePtr /*creature*/) const
 {
   PoissonDistribution p(BASE_EXPOSED_DURATION_MEAN);
   int duration = p.next();

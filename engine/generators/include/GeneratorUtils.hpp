@@ -62,6 +62,7 @@ class GeneratorUtils
 
     // Generates a random artifact and places it at a particular location.
     static void generate_randarts(MapPtr map, const Coordinate& c, const int num_randarts);
+    static ItemPtr generate_randart();
 
     // Creates and item from the given list of IDs for each of the specified
     // coordinates.

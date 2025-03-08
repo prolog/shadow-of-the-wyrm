@@ -71,7 +71,7 @@ bool SelectionUtils::select_existing_target(CreaturePtr creature, MapPtr map)
 
 // Select the previous or next target from the current target.
 // Return the creature ID for the selected target.
-string SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, const SelectCreatureType sct)
+string SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr /*map*/, const SelectCreatureType sct)
 {
   string selected_target_id;
 
@@ -184,7 +184,7 @@ bool SelectionUtils::has_target(CreaturePtr creature, const AttackType attack_ty
 }
 
 // Set targetting/selection information.
-void SelectionUtils::set_target(CreaturePtr creature, const AttackType attack_type, const std::pair<std::string, Coordinate>& target_pair, MapPtr map)
+void SelectionUtils::set_target(CreaturePtr creature, const AttackType /*attack_type*/, const std::pair<std::string, Coordinate>& target_pair, MapPtr map)
 {
   Coordinate target_coordinates = target_pair.second;
 

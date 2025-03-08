@@ -11,7 +11,7 @@
 class ITileConfiguration
 {
   public:
-    virtual ~ITileConfiguration() {};
+    virtual ~ITileConfiguration() = default;
     
     virtual void configure(TilePtr tile, const Season season) const = 0;
 

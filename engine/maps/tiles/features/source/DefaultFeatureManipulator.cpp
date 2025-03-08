@@ -9,11 +9,11 @@ DefaultFeatureManipulator::DefaultFeatureManipulator(FeaturePtr feature)
 {
 }
 
-void DefaultFeatureManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+void DefaultFeatureManipulator::kick(CreaturePtr /*creature*/, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/)
 {
 }
 
-bool DefaultFeatureManipulator::handle(TilePtr tile, CreaturePtr creature)
+bool DefaultFeatureManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
 {
   if (creature)
   {
@@ -28,7 +28,7 @@ bool DefaultFeatureManipulator::handle(TilePtr tile, CreaturePtr creature)
   return true;
 }
 
-bool DefaultFeatureManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+bool DefaultFeatureManipulator::drop(CreaturePtr /*dropping_creature*/, TilePtr /*tile*/, ItemPtr /*item*/)
 {
   return false;
 }

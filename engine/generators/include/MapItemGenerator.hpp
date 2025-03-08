@@ -12,10 +12,12 @@ class MapItemGenerator
   protected:
     bool generate_dead_adventurer(MapPtr map, const int danger_level);
     bool generate_ivory_on_shopkeeper(MapPtr map, const Shop& shop);
+    std::vector<ItemPtr> generate_dead_adventurer_items(const int danger_level, const int danger_upper, const Rarity rarity);
 
     static const int OUT_OF_DEPTH_ITEMS_CHANCE;
     static const int PCT_CHANCE_ADVENTURER_SKELETON_TRAP;
     static const int PCT_CHANCE_ADVENTURER_CORPSE;
+    static const std::pair<int, int> X_IN_Y_CHANCE_ARTIFACT;
     static const int PCT_CHANCE_ADVENTURER_ITEMS;
     static const int SHOPKEEPER_ADDITIONAL_IVORY_THRESOLD;
     static const int MIN_REPOP_IVORY;

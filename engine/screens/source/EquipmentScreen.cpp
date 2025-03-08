@@ -86,9 +86,9 @@ void EquipmentScreen::initialize()
     // Only show the resistances abbreviation if the item's got anything...
     if (!di_addl_desc.empty())
     {
-      ostringstream ss;
-      ss << String::add_trailing_spaces(res_abrv, longest) << ": " << di_addl_desc;
-      di_addl_desc = ss.str();
+      ostringstream ss_di_addl;
+      ss_di_addl << String::add_trailing_spaces(res_abrv, longest) << ": " << di_addl_desc;
+      di_addl_desc = ss_di_addl.str();
     }
 
     item_addl_desc += di_addl_desc;

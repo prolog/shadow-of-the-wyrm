@@ -4,6 +4,8 @@
 class SectorFeatureGenerator
 {
   public:
+    virtual ~SectorFeatureGenerator() = default;
+
     virtual bool generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const int feat_type);
 
   protected:

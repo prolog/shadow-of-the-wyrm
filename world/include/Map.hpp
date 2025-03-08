@@ -95,6 +95,7 @@ class Map : public ISerializable
 
     void set_is_water_shallow(const bool new_shallow);
     bool get_is_water_shallow() const;
+    bool get_allow_diving() const;
     void set_is_open_sky(const bool new_open_sky);
     bool get_is_open_sky() const;
 
@@ -195,6 +196,7 @@ class Map : public ISerializable
     void set_secondary_terrain(const std::vector<TileType>& new_secondary_terrain);
     void add_secondary_terrain(const TileType tt);
 
+    bool has_coastline() const;
     std::vector<Direction> get_coastline_directions() const;
     bool is_islet() const;
 

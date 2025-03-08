@@ -9,7 +9,7 @@ class DisplayItemType
 {
   public:
     DisplayItemType(const std::string& new_symbol, const Colour new_colour, const ItemType new_item_type, const std::string& new_description);
-    ~DisplayItemType();
+    virtual ~DisplayItemType();
     
     void set_symbol(const std::string& new_symbol);
     std::string get_symbol() const;

@@ -26,7 +26,7 @@ int BloodiedCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
   return pct_chance;
 }
 
-int BloodiedCalculator::calculate_duration_in_minutes(CreaturePtr creature) const
+int BloodiedCalculator::calculate_duration_in_minutes(CreaturePtr /*creature*/) const
 {
   PoissonDistribution p(BASE_BLOODIED_DURATION_MEAN);
   int duration = p.next();

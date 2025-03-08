@@ -19,7 +19,7 @@ InventoryCommandProcessor::~InventoryCommandProcessor()
 {
 }
 
-bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, const list<IItemFilterPtr>& base_item_filter_list, const DisplayInventoryMap& inventory_display, const vector<string>& item_ids, CreaturePtr creature, IInventoryPtr inv, Command* command, const bool inventory_is_read_only, const bool allow_multiple_item_selection, vector<ItemPtr>& selected_items)
+bool InventoryCommandProcessor::process(InventoryManager* const /*inv_manager*/, const list<IItemFilterPtr>& base_item_filter_list, const DisplayInventoryMap& /*inventory_display*/, const vector<string>& item_ids, CreaturePtr creature, IInventoryPtr inv, Command* command, const bool inventory_is_read_only, const bool allow_multiple_item_selection, vector<ItemPtr>& selected_items)
 {
   bool process_result = true;
 

@@ -242,7 +242,7 @@ vector<string> NPCBackgroundGenerator::generate_personality(CreaturePtr creature
 	if (creature)
 	{
 		vector<string> pers_details = String::create_string_vector_from_csv_string(StringTable::get(NPCBackgroundTextKeys::FRAGMENT_PERSONALITY));
-		std::random_shuffle(pers_details.begin(), pers_details.end());
+		std::shuffle(pers_details.begin(), pers_details.end(), RNG::get_engine());
 
 		int num_personality_traits = 0;
 
@@ -280,7 +280,7 @@ string NPCBackgroundGenerator::generate_former_job(CreaturePtr creature) const
 		{
 			string job_c = job_container.at(RNG::range(0, job_container.size() - 1));
 			vector<string> job_details = String::create_string_vector_from_csv_string(StringTable::get(NPCBackgroundTextKeys::FORMER_JOBS));
-			std::random_shuffle(job_details.begin(), job_details.end());
+			std::shuffle(job_details.begin(), job_details.end(), RNG::get_engine());
 
 			string former_job;
 
@@ -330,7 +330,7 @@ vector<string> NPCBackgroundGenerator::generate_habits(CreaturePtr creature) con
 	if (creature != nullptr && (include_all || RNG::percent_chance(65)))
 	{
 		vector<string> habit_list = String::create_string_vector_from_csv_string(StringTable::get(NPCBackgroundTextKeys::FRAGMENT_HABITS));
-		std::random_shuffle(habit_list.begin(), habit_list.end());
+		std::shuffle(habit_list.begin(), habit_list.end(), RNG::get_engine());
 
 		int num_habits = 0;
 
@@ -490,7 +490,7 @@ string NPCBackgroundGenerator::generate_bestiary_text(const vector<string>& frag
 	ostringstream ss;
 	vector<string> fragments = frag;
 
-	std::random_shuffle(fragments.begin(), fragments.end());
+	std::shuffle(fragments.begin(), fragments.end(), RNG::get_engine());
 	bool full_stop = true;
 
 	for (size_t i = 0; i < fragments.size(); i++)
@@ -501,11 +501,11 @@ string NPCBackgroundGenerator::generate_bestiary_text(const vector<string>& frag
 		{
 			string fr = f;
 			fr = boost::trim_copy(fr);
-			fr[0] = std::tolower(fr[0]);
+			fr[0] = static_cast<char>(std::tolower(fr[0]));
 
 			if (full_stop)
 			{
-				fr[0] = std::toupper(fr[0]);
+				fr[0] = static_cast<char>(std::toupper(fr[0]));
 			}
 
 			ss << fr;

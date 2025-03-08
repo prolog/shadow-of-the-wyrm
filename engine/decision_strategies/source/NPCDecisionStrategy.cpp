@@ -15,6 +15,7 @@
 #include "DecisionStrategyProperties.hpp"
 #include "DirectionUtils.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "HostilityManager.hpp"
 #include "IMessageManager.hpp"
 #include "IntelligenceConstants.hpp"
@@ -29,6 +30,7 @@
 #include "NPCMagicDecisionFactory.hpp"
 #include "NPCPickupDecisionStrategy.hpp"
 #include "NPCUseEquipItemDecisionStrategy.hpp"
+#include "OrderTextKeys.hpp"
 #include "RaceConstants.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
 #include "RangedCombatUtils.hpp"
@@ -100,7 +102,7 @@ bool NPCDecisionStrategy::get_move_to_dangerous_tile(MapPtr map, CreaturePtr cre
   return do_move;
 }
 
-bool NPCDecisionStrategy::get_confirmation(const bool confirmation_default_value, const bool require_proper_selection)
+bool NPCDecisionStrategy::get_confirmation(const bool /*confirmation_default_value*/, const bool /*require_proper_selection*/)
 {
   return true;
 }
@@ -128,11 +130,11 @@ void NPCDecisionStrategy::set_fov_map(MapPtr new_fov_map)
   update_threats_if_shopkeeper(current_fov_map);
 }
 
-void NPCDecisionStrategy::update_threats_if_shopkeeper(MapPtr current_fov_map)
+void NPCDecisionStrategy::update_threats_if_shopkeeper(MapPtr fov_map)
 {
-  if (current_fov_map != nullptr && String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_SHOPKEEPER)))
+  if (fov_map != nullptr && String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_SHOPKEEPER)))
   {
-    CreatureMap potential_thieves = current_fov_map->get_creatures();
+    CreatureMap potential_thieves = fov_map->get_creatures();
 
     for (const auto& pt_pair : potential_thieves)
     {
@@ -160,13 +162,13 @@ void NPCDecisionStrategy::update_threats_if_shopkeeper(MapPtr current_fov_map)
 
 // The basic decision structure for NPCs.  The individual get_decision_for functions are pure virtual within this class,
 // and implemented by concrete decision strategies.
-CommandPtr NPCDecisionStrategy::get_nonmap_decision(const bool reprompt_on_cmd_not_found, const string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, int* key_p, const bool refresh_window)
+CommandPtr NPCDecisionStrategy::get_nonmap_decision(const bool reprompt_on_cmd_not_found, const string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, int* key_p, const bool /*refresh_window*/)
 {
   MapPtr nullmap;
   return get_decision(reprompt_on_cmd_not_found, this_creature_id, command_factory, keyboard_commands, nullmap, key_p);
 }
 
-CommandPtr NPCDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_found, const string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, MapPtr view_map, int* key_p)
+CommandPtr NPCDecisionStrategy::get_decision(const bool /*reprompt_on_cmd_not_found*/, const string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, MapPtr view_map, int* /*key_p*/)
 {
   CommandPtr command;
   
@@ -193,7 +195,7 @@ CommandPtr NPCDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_foun
   return command;
 }
 
-CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_creature_id, CommandFactory* command_factory, KeyboardCommandMap* keyboard_commands, MapPtr view_map)
+CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_creature_id, CommandFactory* /*command_factory*/, KeyboardCommandMap* /*keyboard_commands*/, MapPtr view_map)
 {
   CommandPtr command;
   
@@ -343,7 +345,8 @@ CommandPtr NPCDecisionStrategy::get_magic_decision(const string& this_creature_i
 
               // Only consider the spell if the creature actually has enough
               // AP to cast it!
-              if (mac.has_sufficient_power(creature, spell))
+              if (mac.has_sufficient_power(creature, spell) && 
+                  GameUtils::is_magic_category_possible(spell.get_magic_category()))
               {
                 npc_magic_decision = NPCMagicDecisionFactory::create_npc_magic_decision(spell.get_magic_classification());
 
@@ -617,7 +620,8 @@ CommandPtr NPCDecisionStrategy::get_ranged_attack_decision(const string& this_cr
             string threatening_creature_id = td_pair.first;
             Coordinate threat_c = view_map->get_location(threatening_creature_id);
 
-            if (RangedCombatUtils::is_coord_in_range(threat_c, view_map) && RangedCombatUtils::is_coordinate_obstacle_free(this_cr, c_this, threat_c, view_map))
+            if (RangedCombatUtils::is_coord_in_range(threat_c, view_map) && 
+                RangedCombatUtils::is_coordinate_obstacle_free(this_cr, c_this, threat_c, view_map))
             {
               TargetMap& tm = this_cr->get_target_map_ref();
               tm[to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED))] = make_pair(threatening_creature_id, threat_c);
@@ -803,7 +807,7 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
   return movement_command;
 }
 
-CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature_id, MapPtr view_map)
+CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature_id, MapPtr /*view_map*/)
 {
   CommandPtr pu_cmd;
   Game& game = Game::instance();
@@ -831,7 +835,7 @@ CommandPtr NPCDecisionStrategy::get_pick_up_decision(const string& this_creature
   return pu_cmd;
 }
 
-CommandPtr NPCDecisionStrategy::get_drop_decision(const string& this_creature_id, MapPtr view_map)
+CommandPtr NPCDecisionStrategy::get_drop_decision(const string& this_creature_id, MapPtr /*view_map*/)
 {
   CommandPtr drop_cmd;
   Game& game = Game::instance();
@@ -873,7 +877,6 @@ CommandPtr NPCDecisionStrategy::get_flee_decision(const string& this_creature_id
         vector<Direction> move_dirs = DirectionUtils::get_in_map_movement_directions();
         std::shuffle(move_dirs.begin(), move_dirs.end(), RNG::get_engine()); 
 
-        const auto& c_locs = view_map->get_locations_with_creatures();
         int lowest_tscore = MapUtils::get_threat_distance_score_for_direction(creature, Direction::DIRECTION_NULL, map, view_map);
         Direction proposed_direction = Direction::DIRECTION_NULL;
 
@@ -926,7 +929,7 @@ CommandPtr NPCDecisionStrategy::get_flee_decision(const string& this_creature_id
   return flee_command;
 }
 
-CommandPtr NPCDecisionStrategy::get_use_item_decision(const string& this_creature_id, MapPtr view_map)
+CommandPtr NPCDecisionStrategy::get_use_item_decision(const string& this_creature_id, MapPtr /*view_map*/)
 {
   CommandPtr use_cmd;
   Game& game = Game::instance();
@@ -971,6 +974,34 @@ vector<Coordinate> NPCDecisionStrategy::get_adjacent_safe_coordinates_without_cr
   }
   
   return coords_without_creatures;
+}
+
+string NPCDecisionStrategy::get_orders_description_sid() const
+{
+  string follow = get_property(DecisionStrategyProperties::DECISION_STRATEGY_FOLLOW_CREATURE_ID);
+
+  if (!follow.empty())
+  {
+    return OrderTextKeys::ORDER_FOLLOW;
+  }
+
+  string attack = get_property(DecisionStrategyProperties::DECISION_STRATEGY_ATTACK_CREATURES_THREATENING_ID);
+
+  if (!attack.empty())
+  {
+    return OrderTextKeys::ORDER_ATTACK;
+  }
+
+  string freeze = get_property(DecisionStrategyProperties::DECISION_STRATEGY_ORDERED_SENTINEL);
+
+  if (!freeze.empty())
+  {
+    return OrderTextKeys::ORDER_FREEZE;
+  }
+
+  // JCD FIXME: Need to do summon!!!
+
+  return OrderTextKeys::ORDER_AT_EASE;
 }
 
 bool NPCDecisionStrategy::has_movement_orders() const

@@ -8,7 +8,7 @@ class CursorDirectionalCommand : public Command
 {
   public:
     CursorDirectionalCommand(const Direction d, const int key);
-    ~CursorDirectionalCommand();
+    virtual ~CursorDirectionalCommand();
 
     Direction get_direction() const;
 

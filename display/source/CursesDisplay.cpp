@@ -38,17 +38,17 @@ string CursesDisplay::toggle_fullscreen()
   return result;
 }
 
-void CursesDisplay::set_spritesheets(const map<string, pair<string, unordered_map<string, Coordinate>>>& spritesheets)
+void CursesDisplay::set_spritesheets(const map<string, pair<string, unordered_map<string, Coordinate>>>&)
 {
   // Curses doesn't use sprites.
 }
 
-void CursesDisplay::set_palette_id(const string& new_palette_id)
+void CursesDisplay::set_palette_id(const string&)
 {
   // Curses doesn't use sprites.
 }
 
-void CursesDisplay::set_palette(const std::string& new_palette_id)
+void CursesDisplay::set_palette(const std::string&)
 {
   // Curses doesn't use sprites.
 }
@@ -59,7 +59,7 @@ std::string CursesDisplay::get_palette_id() const
   return no_id;
 }
 
-pair<bool, pair<string, string>> CursesDisplay::switch_colour_palette(const std::string& current_palette_id)
+pair<bool, pair<string, string>> CursesDisplay::switch_colour_palette(const std::string&)
 {
   pair<bool, pair<string, string>> palette;
   palette.first = false;
@@ -170,7 +170,7 @@ void CursesDisplay::disable_colour(const Colour colour)
   disable_colour(static_cast<int>(colour), stdscr);
 }
 
-void CursesDisplay::set_colour(const int colour, const int r, const int g, const int b)
+void CursesDisplay::set_colour(const int, const int, const int, const int)
 {
 }
 
@@ -326,7 +326,7 @@ void CursesDisplay::tear_down()
   endwin();
 }
 
-bool CursesDisplay::display_splash(const bool enabled)
+bool CursesDisplay::display_splash(const bool)
 {
   if (!initialized)
   {
@@ -789,7 +789,7 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
 }
 
 // set_title() does nothing. curses can't set the terminal title.
-void CursesDisplay::set_title(const string& title)
+void CursesDisplay::set_title(const string&)
 {
 }
 

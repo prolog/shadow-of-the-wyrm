@@ -479,6 +479,21 @@ bool Map::get_is_water_shallow() const
   return true;
 }
 
+// This function is largely a special case to disallow diving underwater in
+// the infinite dungeon and sewer, because the lack of a map ID causes all
+// kinds of problems.
+bool Map::get_allow_diving() const
+{
+  bool allow_diving = true;
+
+  if (map_type == MapType::MAP_TYPE_UNDERWORLD && map_id.empty())
+  {
+    allow_diving = false;
+  }
+
+  return allow_diving;
+}
+
 void Map::set_is_open_sky(const bool new_open_sky)
 {
   properties[MapProperties::MAP_PROPERTIES_OPEN_SKY] = std::to_string(new_open_sky);
@@ -1100,6 +1115,11 @@ vector<TileType> Map::get_secondary_terrain() const
   }
 
   return sec_ter;
+}
+
+bool Map::has_coastline() const
+{
+  return (get_coastline_directions().size() > 0);
 }
 
 vector<Direction> Map::get_coastline_directions() const

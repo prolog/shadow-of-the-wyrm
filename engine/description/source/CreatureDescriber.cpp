@@ -6,6 +6,7 @@
 #include "CreatureTranslator.hpp"
 #include "Conversion.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "OrderTextKeys.hpp"
 #include "RaceManager.hpp"
 #include "ClassManager.hpp"
 #include "StringTable.hpp"
@@ -130,10 +131,10 @@ string CreatureDescriber::describe_for_tile_selection() const
     ss << creature_description << " (";
 
     // If the creature is one of the viewing creature's followers,
-    // add a flag.
+    // add a flag, and give their current orders.
     if (viewing_creature->is_leader(creature) && !hostile_to_viewer)
     {
-      ss << StringTable::get(TextKeys::FOLLOWER) << "; ";
+      ss << StringTable::get(TextKeys::FOLLOWER) << ", " << StringTable::get(OrderTextKeys::ORDER_ORDERS) << ": " << StringTable::get(creature->get_decision_strategy()->get_orders_description_sid()) << "; ";
     }
 
     // If the creature is friendly, be sure to note that!

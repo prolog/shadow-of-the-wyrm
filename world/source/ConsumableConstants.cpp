@@ -26,6 +26,9 @@ const string ConsumableConstants::CORPSE_BASE_CREATURE_ID = "CORPSE_BASE_CREATUR
 // corpse.
 const string ConsumableConstants::CORPSE_SKINNED = "CORPSE_SKINNED";
 
+// Used to influence the piety gained by sacrificing the corpse.
+const string ConsumableConstants::CORPSE_LEVEL = "CORPSE_LEVEL";
+
 // Food poisoning is more of a sure thing than is getting hit by a 
 // poisoned blade.
 const int ConsumableConstants::FOOD_POISON_APPLICATION_BONUS = 30;

@@ -15,7 +15,7 @@ FenceManipulator::FenceManipulator(FeaturePtr feature)
 {
 }
 
-void FenceManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+void FenceManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr feat)
 {
   if (creature && creature->get_is_player())
   {
@@ -34,12 +34,12 @@ void FenceManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr fe
     }
     else
     {
-      bool slat_removed = String::to_bool(feature->get_additional_property(FeatureProperties::FEATURE_PROPERTIES_SLAT_REMOVED));
+      bool slat_removed = String::to_bool(feat->get_additional_property(FeatureProperties::FEATURE_PROPERTIES_SLAT_REMOVED));
 
       if (RNG::percent_chance(fc.calc_pct_chance_board(creature)) && !slat_removed)
       {
         msg_sid = ActionTextKeys::ACTION_FENCE_BOARD_WITH_NAIL;
-        feature->set_additional_property(FeatureProperties::FEATURE_PROPERTIES_SLAT_REMOVED, std::to_string(true));
+        feat->set_additional_property(FeatureProperties::FEATURE_PROPERTIES_SLAT_REMOVED, std::to_string(true));
 
         ItemManager im;
         ItemPtr board_with_nail_in_it = im.create_item(ItemIdKeys::ITEM_ID_BOARD_WITH_NAIL_IN_IT);
@@ -52,7 +52,7 @@ void FenceManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr fe
   }
 }
 
-bool FenceManipulator::handle(TilePtr tile, CreaturePtr creature)
+bool FenceManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
 {
   if (creature != nullptr && creature->get_is_player())
   {
@@ -64,7 +64,7 @@ bool FenceManipulator::handle(TilePtr tile, CreaturePtr creature)
   return false;
 }
 
-bool FenceManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+bool FenceManipulator::drop(CreaturePtr /*dropping_creature*/, TilePtr /*tile*/, ItemPtr /*item*/)
 {
   return false;
 }

@@ -140,6 +140,9 @@ class MapProperties
     // Does the map have a custom song defined?
     static const std::string MAP_PROPERTIES_SONG_LOCATION;
 
+    // Is the map, for ambient sound reasons, wet?
+    static const std::string MAP_PROPERTIES_WET;
+
   protected:
     MapProperties();
     ~MapProperties();

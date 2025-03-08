@@ -6,7 +6,7 @@ using namespace std;
 const int SwimmingCalculator::MAXIMUM_SWIMMING_TIME_MULTIPLIER = 7;
 const int SwimmingCalculator::HOLD_BREATH_HEALTH_DIVISOR = 3;
 
-int SwimmingCalculator::calculate_maximum_swimming_time(const bool submerged, CreaturePtr creature, const vector<BreatheType>& breathes) const
+int SwimmingCalculator::calculate_maximum_swimming_time(const bool submerged, CreaturePtr creature) const
 {
   int max_swimming_time = 0;
 
@@ -24,11 +24,11 @@ int SwimmingCalculator::calculate_maximum_swimming_time(const bool submerged, Cr
       max_swimming_time = creature->get_skills().get_value_incr_marks(SkillType::SKILL_GENERAL_SWIMMING) * MAXIMUM_SWIMMING_TIME_MULTIPLIER;
     }
 
-    bool is_incorporeal = creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
+    bool is_incorp = creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
     bool can_breathe_water = creature->can_breathe(BreatheType::BREATHE_TYPE_WATER);
 
     // Spirits and water-breathers clearly can do this for a while.
-    if (is_incorporeal || can_breathe_water)
+    if (is_incorp || can_breathe_water)
     {
       max_swimming_time = std::numeric_limits<int>::max();
     }
@@ -37,11 +37,11 @@ int SwimmingCalculator::calculate_maximum_swimming_time(const bool submerged, Cr
   return max_swimming_time;
 }
 
-int SwimmingCalculator::calculate_swimming_damage(CreaturePtr creature, const bool is_incorporeal) const
+int SwimmingCalculator::calculate_swimming_damage(CreaturePtr creature, const bool is_incorp) const
 {
   int swimming_damage = 0;
   
-  if (creature && !is_incorporeal)
+  if (creature && !is_incorp)
   {
     swimming_damage = 1;
   }

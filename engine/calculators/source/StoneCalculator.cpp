@@ -26,7 +26,7 @@ int StoneCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
   return pct_chance;
 }
 
-int StoneCalculator::calculate_duration_in_minutes(CreaturePtr creature) const
+int StoneCalculator::calculate_duration_in_minutes(CreaturePtr /*creature*/) const
 {
   PoissonDistribution p(BASE_STONE_DURATION_MEAN);
   int duration = p.next();

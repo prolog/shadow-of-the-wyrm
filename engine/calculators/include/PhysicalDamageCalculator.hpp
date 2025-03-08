@@ -5,6 +5,7 @@ class PhysicalDamageCalculator : public DamageCalculator
 {
   public:
     PhysicalDamageCalculator(const AttackType new_attack_type, const PhaseOfMoonType new_pom);
+    virtual ~PhysicalDamageCalculator() = default;
     
     virtual int calculate(CreaturePtr defending_creature, const bool sneak_attack, const bool slays_creatures_race, const Damage& damage, const int base_damage, const float soak_multiplier) override;
     virtual Damage calculate_base_damage_object(CreaturePtr attacking_creature) override;

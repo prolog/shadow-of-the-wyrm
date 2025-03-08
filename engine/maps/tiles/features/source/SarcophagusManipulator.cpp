@@ -16,7 +16,7 @@ SarcophagusManipulator::SarcophagusManipulator(FeaturePtr feature)
 {
 }
 
-void SarcophagusManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+void SarcophagusManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
 {
   if (creature && creature->get_is_player())
   {
@@ -68,7 +68,7 @@ bool SarcophagusManipulator::handle(TilePtr tile, CreaturePtr creature)
   return sarc_opened;
 }
 
-bool SarcophagusManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+bool SarcophagusManipulator::drop(CreaturePtr /*dropping_creature*/, TilePtr /*tile*/, ItemPtr /*item*/)
 {
   return false;
 }

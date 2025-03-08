@@ -75,7 +75,7 @@ string TileDamageProcessor::get_item_processed_message(ItemPtr item)
       ItemDescriber id(item);
       string item_desc = id.describe_usage();
       boost::replace_first(message, "%s", item_desc);
-      message[0] = toupper(message[0]);
+      message[0] = static_cast<char>(toupper(message[0]));
     }
   }
 
@@ -87,6 +87,6 @@ bool TileDamageProcessor::destroy_item() const
   return true;
 }
 
-void TileDamageProcessor::process_item(ItemPtr item)
+void TileDamageProcessor::process_item(ItemPtr /*item*/)
 {
 }

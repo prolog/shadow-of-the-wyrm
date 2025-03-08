@@ -4,6 +4,8 @@
 class SpellCommand : public Command
 {
   public:
+    virtual ~SpellCommand() = default;
+
     int get_spell_index() const;
 
   protected:

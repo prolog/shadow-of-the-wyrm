@@ -1,5 +1,6 @@
 #include "RangedCombatUtils.hpp"
 #include "BresenhamLine.hpp"
+#include "CreatureUtils.hpp"
 #include "CombatTargetNumberCalculatorFactory.hpp"
 #include "RNG.hpp"
 
@@ -10,6 +11,8 @@ bool RangedCombatUtils::is_coordinate_obstacle_free(CreaturePtr firing_creature,
   bool obstacle_free = false;
   vector<Coordinate> actual = get_actual_coordinates_given_missile_path(firing_creature, creature_coords, target_coords, current_map);
 
+  // Make sure the desired coordinate is actually in the list, ie, that it is 
+  // not blocked by something.
   if (!actual.empty())
   {
     Coordinate last = actual.back();
@@ -57,11 +60,21 @@ vector<Coordinate> RangedCombatUtils::get_actual_coordinates_given_missile_path(
         {
           // There's a creature here, and it's not the creature being
           // targetted - it's an intermediate creature on the flight path.
+          // Fire through if:
+          // - the intermediate creature is hostile to the firer, or
+          // - the creatures are in the same group and there's no chance of
+          //   hurting the creature (in practice: 100% chance of a fire-
+          //   through), or
+          // - the creature thinks it can fire through 
+          // 
           // Use this tile for targetting/dropping ammo, if the corresponding 
           // pass-through check fails.
           pct_chance_fire_through = ctnc->calculate_pct_chance_pass_through_untargetted_square(firing_creature, tile_creature);
 
-          if (!RNG::percent_chance(pct_chance_fire_through))
+          // Don't fire through when grouped, no matter how good we may think
+          // we are...
+          if (CreatureUtils::is_grouped(firing_creature, tile_creature) ||
+              !RNG::percent_chance(pct_chance_fire_through))
           {
             actual_coordinates.push_back(c);
             break;

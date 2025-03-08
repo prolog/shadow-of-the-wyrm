@@ -181,6 +181,12 @@ Resistances::Resistances(const Resistances& r)
   *this = r;
 }
 
+Resistances& Resistances::operator=(const Resistances& r)
+{
+  resistances = r.resistances;
+  return *this;
+}
+
 bool Resistances::operator==(const Resistances& r) const
 {
   return resistances == r.resistances;

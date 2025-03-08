@@ -6,6 +6,7 @@ class FeatureDescriber : public IDescriber
 {
   public:
     FeatureDescriber(FeaturePtr new_feature);
+    virtual ~FeatureDescriber() = default;
 
     std::string describe(const bool include_material_type) const;
     std::string describe() const override;

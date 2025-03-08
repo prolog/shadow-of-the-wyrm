@@ -3,7 +3,7 @@
 
 // Pause for a default number of milliseconds, using the Boost threading
 // library for reasonable portability.
-void PauseAnimationInstruction::execute(Display* const display)
+void PauseAnimationInstruction::execute(Display* const)
 {
   boost::this_thread::sleep(boost::posix_time::milliseconds(100));
 }

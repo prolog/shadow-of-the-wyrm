@@ -46,7 +46,7 @@ void write_minidump(struct _EXCEPTION_POINTERS* e)
   exceptionInfo.ExceptionPointers = e;
   exceptionInfo.ClientPointers = FALSE;
 
-  auto dumped = pMiniDumpWriteDump(
+  pMiniDumpWriteDump(
     GetCurrentProcess(),
     GetCurrentProcessId(),
     hFile,

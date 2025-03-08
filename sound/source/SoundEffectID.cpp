@@ -29,5 +29,11 @@ const string SoundEffectID::DEAD = "_dead";
 const string SoundEffectID::NEGATIVE_EFFECT = "_negative_effect";
 const string SoundEffectID::LEVEL_UP = "_level_up";
 const string SoundEffectID::CLICK = "_click";
+const string SoundEffectID::EAT = "_eat";
+const string SoundEffectID::DRINK = "_drink";
+const string SoundEffectID::DRIP1 = "_drip1";
+const string SoundEffectID::DRIP2 = "_drip2";
+const string SoundEffectID::DRIP3 = "_drip3";
+
 
 

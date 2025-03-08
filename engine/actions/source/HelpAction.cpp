@@ -83,7 +83,7 @@ ActionCostValue HelpAction::casino_games() const
   return display_text(ScreenTitleTextKeys::SCREEN_TITLE_CASINO_GAMES, ActionTextKeys::ACTION_CASINO_GAMES, false);
 }
 
-ActionCostValue HelpAction::display_text(const string& title_sid, const string& text_sid, const bool maintain_formatting) const
+ActionCostValue HelpAction::display_text(const string& title_sid, const string& text_sid, const bool /* maintain_formatting */) const
 {
   CreaturePtr null_c;
 
@@ -106,7 +106,7 @@ ActionCostValue HelpAction::display_text(const string& title_sid, const string& 
 }
 
 
-ActionCostValue HelpAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue HelpAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }

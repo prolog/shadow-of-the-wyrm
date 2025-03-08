@@ -1,9 +1,9 @@
 Building Shadow of the Wyrm, Linux Edition
 
-Shadow of the Wyrm can be built using premake4 and makefiles.  Before you
+Shadow of the Wyrm can be built using premake5 and makefiles.  Before you
 start, ensure you have your distribution's developer packages for:
 
-- premake4
+- premake5 or premake4
 - Boost (1.72)
 - Google Test 1.8, if you want to build debug mode, which includes unit 
   tests
@@ -11,17 +11,20 @@ start, ensure you have your distribution's developer packages for:
 - zlib-1.2.11
 - ncurses or equivalent
 - Lua 5.1
-- SDL 2.0.20
+- SDL 2.0.20, plus SDL2_mixer, SDL2_image
 
-The premake4 build script works for Fedora.  Other distros may require 
-updates to either the premake script or the generated makefiles to get 
+The premake build scripts work for Fedora.  Other distros may require 
+updates to either the premake scripts or the generated makefiles to get 
 things working.
 
 You will also need to know where your libraries are installed, and update
 the location in "copy_libs.lua" appropriately.  The values in that file are
 valid for 64-bit Fedora 24 (/usr/lib64).
 
-To create the makefile, run "premake4 gmake".  Build the makefile with
+(In the examples ahead, if you're using premake4 instead of premake5, just
+substitute that instead.)
+
+To create the makefile, run "premake5 gmake".  Build the makefile with
 "make config=release".  This should build the game and copy the necessary
 files into a "sotw" subdirectory.  It will take a while.  There are a lot of
 translation units.  Sorry.
@@ -32,7 +35,7 @@ include directories in the makefile, and also to set the appropriate link
 library.  For example, if the Lua 5.1 headers were in /usr/include/lua-5.1
 and you wanted to link against lua-5.1 instead of lua, you would use:
 
-premake4 --lua_include=/usr/include/lua-5.1 --lua_link=lua-5.1 gmake
+premake5 --lua_include=/usr/include/lua-5.1 --lua_link=lua-5.1 gmake
 
 "lua-5.1" might be named differently on various distros - e.g. it might be
 "lua5.1".

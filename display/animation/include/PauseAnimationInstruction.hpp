@@ -5,7 +5,9 @@
 class PauseAnimationInstruction : public AnimationInstruction
 {
   public:
-    void execute(Display* const display) override;
+    virtual ~PauseAnimationInstruction() = default;
+
+    void execute(Display* const) override;
     virtual Coordinate get_coords() const;
 };
 

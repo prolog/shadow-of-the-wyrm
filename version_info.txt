@@ -1,3 +1,100 @@
+Shadow of the Wyrm v1.8.0 "Sergio Assad"
+- Version started August 25, 2024. Versoin finalized March 8, 2025.
+
+- Made a couple of tweaks to "A Black Mark" so that there was less of a high,
+  shrill violin sound in Violin 1, and a small update to "My Love's Gone 
+  Away".
+
+- Wrote a new piece of music for the Barrows/Asher's Islet/Siriath's Lair,
+  and another for the shrines.
+
+- There are now sound effects for eating and drinking.
+
+- Jumping into water now yields a "Splash!" in addition to the sound effect.
+
+- Kew's special items will no longer generate cursed (iakul).
+
+- The level of the corpse's original creature now influences the amount of
+  piety received (gghana2).
+
+- More names.
+
+- There is now a Water Breathing cantrip/spellbook.
+
+- When water breathing wears off, the time-in-water counter is reset so that
+  if you've been swimming for a long time, you don't immediately start to
+  drown.
+
+- When the floating effect wears off, it'll no longer potentially kill you:
+  the player will have one turn to react. (if automatic movement is engaged,
+  it becomes disengaged at this point)
+
+- NPCs will no longer try to cast divine magic once the Nine have been
+  destroyed.
+
+- NPCs will now cast water breathing and flying when it makes sense, and when
+  they are not following other orders.
+
+- NPCs may choose to cast statistic buff spells when there are hostiles in 
+  their FOV.
+
+- Added support for ambient sound effects based on map details.
+
+- Added "waves" music to the overworld part of the exile's island.
+
+- Replaced the music for the Caldera with a new composition.
+
+- Updated premake script for v5.
+
+- Increased MSVC warning level from /W3 to /W4.
+
+- The location of the scorefile (scores.dat) can now be specified (Larzid).
+
+- Orders can now be given to individual followers via examine.
+
+- Divine prayed-for smites are now lightning-based and carry a large effect
+  bonus for paralysis. There is now also a message that the creatures are
+  hit with divine fury.
+
+- Towns now have a chance to have wheat fields generated nearby.
+
+- The ploughman in Isen Dun is now surrounded by wheat.
+
+- Jellies, plants, insects, constructs, and the undead are all considered 
+  mindless, and immune to intimidation.
+
+- Branding an item adds a bit more resistance than it did before.
+
+- Enchanting an item now increments the status (cursed to uncursed, uncursed to
+  blessed).
+
+- New creatures: living scarecrow.
+
+- New items: scarecrow, wheat berries.
+
+- Bug fixes:
+
+  - Creating items with Bowyer/Fletchery wasn't setting their status
+    appropriately.
+
+  - Fixed an internal issue with getting the season colour.
+
+  - Followers with ranged attacks will no longer fire through a square that
+    contains a grouped creature (ebalster).
+
+  - There was an inconsistency around Cynwise's background (sc95837).
+
+  - Diving is no longer possible in the infinite dungeon/sewer (ebalster).
+
+  - Fixed new/delete mismatches throughout the codebase. These were causing
+    small but persistent memory leaks in terrain generation and in other
+    scenarios.
+
+  - Athel was incorrectly generating as hostile (iakul).
+
+  - Newer versions of boost::filesystem weren't including directory_iterator
+    (sxnwlfkk)
+
 Shadow of the Wyrm v1.7.2 "Michelagnolo Galilei"
 - Version started February 18, 2024. Version finalized August 25, 2024.
 

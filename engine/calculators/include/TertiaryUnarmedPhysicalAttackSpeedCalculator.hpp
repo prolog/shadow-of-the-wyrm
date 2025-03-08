@@ -7,6 +7,8 @@
 class TertiaryUnarmedPhysicalAttackSpeedCalculator : public PhysicalAttackSpeedCalculator
 {
   public:
+    virtual ~TertiaryUnarmedPhysicalAttackSpeedCalculator() = default;
+
     ActionCostValue calculate_weapon_speed(CreaturePtr creature) override;
 
   protected:

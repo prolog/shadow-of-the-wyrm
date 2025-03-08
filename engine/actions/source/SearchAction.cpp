@@ -81,7 +81,7 @@ ActionCostValue SearchAction::search(CreaturePtr creature, const bool actively_s
   return get_action_cost_value(creature);
 }
 
-ActionCostValue SearchAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue SearchAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

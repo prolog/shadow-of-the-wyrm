@@ -174,7 +174,7 @@ bool Music::serialize(ostream& stream) const
 
 	Serialize::write_size_t(stream, tile_type_locations.size());
 
-	for (const auto tt_pair : tile_type_locations) 
+	for (const auto& tt_pair : tile_type_locations) 
 	{
 		Serialize::write_enum(stream, tt_pair.first.first);
 		Serialize::write_enum(stream, tt_pair.first.second);

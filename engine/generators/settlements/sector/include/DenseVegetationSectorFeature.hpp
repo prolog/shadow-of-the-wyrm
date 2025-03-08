@@ -5,6 +5,8 @@
 class DenseVegetationSectorFeature : public SectorFeature
 {
   public:
+    virtual ~DenseVegetationSectorFeature() = default;
+     
     DenseVegetationSectorFeature(const std::vector<TileType>& new_base_terrain_types, const std::vector<std::string>& new_item_ids, const int new_pct_chance_item);
 
   protected:

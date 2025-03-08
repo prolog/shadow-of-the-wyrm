@@ -22,7 +22,7 @@ void MagicKeyboardCommandMap::command_not_found(const string& keyboard_input)
 }
 
 // Settings currently does nothing here.
-void MagicKeyboardCommandMap::initialize_command_mapping(const Settings& settings)
+void MagicKeyboardCommandMap::initialize_command_mapping(const Settings& /*settings*/)
 {
   string esc_key;
   esc_key = NC_ESCAPE_KEY;

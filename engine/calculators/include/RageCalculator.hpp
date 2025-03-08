@@ -5,6 +5,8 @@
 class RageCalculator : public StatusEffectCalculator
 {
   public:
+    virtual ~RageCalculator() = default;
+
     int calculate_duration_in_minutes(CreaturePtr creature) const override;
 
   protected:

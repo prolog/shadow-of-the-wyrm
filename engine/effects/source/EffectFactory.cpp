@@ -28,6 +28,7 @@
 #include "TimewalkEffect.hpp"
 #include "UncursingEffect.hpp"
 #include "WarpEffect.hpp"
+#include "WaterBreathingEffect.hpp"
 
 using namespace std;
 
@@ -41,7 +42,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type, const Modifier& m, const map<string, string>& properties, const string& spell_id, const string& source_id)
 {
-  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(34), "Unexpected EFFECT_TYPE_LAST value.");
+  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(35), "Unexpected EFFECT_TYPE_LAST value.");
 
   EffectPtr effect;
 
@@ -151,6 +152,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type, const Modif
       break;
     case EffectType::EFFECT_TYPE_SUMMON_TRAPS:
       effect = std::make_unique<SummonTrapsEffect>();
+      break;
+    case EffectType::EFFECT_TYPE_WATER_BREATHING:
+      effect = std::make_unique<WaterBreathingEffect>();
       break;
     case EffectType::EFFECT_TYPE_NULL:
     default:

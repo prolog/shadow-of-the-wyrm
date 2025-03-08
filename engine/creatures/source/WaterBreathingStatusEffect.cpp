@@ -2,11 +2,13 @@
 #include "WaterBreathingStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StatusTypes.hpp"
+#include "WaterBreathingCalculator.hpp"
 
 using namespace std;
 
 WaterBreathingStatusEffect::WaterBreathingStatusEffect()
 {
+  status_calc = std::make_shared<WaterBreathingCalculator>();
 }
 
 bool WaterBreathingStatusEffect::is_negative() const
@@ -49,3 +51,10 @@ string WaterBreathingStatusEffect::get_status_identifier() const
   return StatusIdentifiers::STATUS_ID_WATER_BREATHING;
 }
 
+void WaterBreathingStatusEffect::after_finalize(std::shared_ptr<Creature> creature) const
+{
+  if (creature != nullptr)
+  {
+    creature->get_movement_accumulation_ref().reset_minutes();
+  }
+}

@@ -7,6 +7,8 @@
 class ToggleSettingsAction : public IActionManager
 {
 	public:
+		virtual ~ToggleSettingsAction() = default;
+
 		void show_settings(CreaturePtr creature, const std::string& screen_title_sid);
 		virtual ActionCostValue get_action_cost_value(CreaturePtr creature) const override = 0;
 

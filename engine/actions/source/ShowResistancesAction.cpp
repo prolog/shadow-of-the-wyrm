@@ -63,7 +63,7 @@ Colour ShowResistancesAction::get_resistance_text_colour(const double resist_val
 
   return text_colour;
 }
-ActionCostValue ShowResistancesAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue ShowResistancesAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }

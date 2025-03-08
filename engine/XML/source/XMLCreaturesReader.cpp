@@ -95,8 +95,8 @@ vector<pair<CreaturePtr, CreatureGenerationValues>> XMLCreaturesReader::parse_cr
 
       // The creature ID for the templates gives a unique value - for each individual
       // creature, a GUID will be genreated during creation of that creature.
-      string id = id_vec.at(i);
-      creature->set_id(id);
+      string id_val = id_vec.at(i);
+      creature->set_id(id_val);
 
       // Creature's race.  
       string race_id = XMLUtils::get_child_node_value(creature_node, "RaceID");

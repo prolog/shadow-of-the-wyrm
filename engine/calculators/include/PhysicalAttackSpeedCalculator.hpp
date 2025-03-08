@@ -8,6 +8,8 @@
 class PhysicalAttackSpeedCalculator : public AttackSpeedCalculator
 {
   public:
+    virtual ~PhysicalAttackSpeedCalculator() = default;
+
     ActionCostValue calculate(CreaturePtr creature) override;
     ActionCostValue calculate_unarmed_attack_speed(CreaturePtr creature);
     virtual ActionCostValue calculate_weapon_speed(CreaturePtr creature) = 0;

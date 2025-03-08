@@ -63,7 +63,7 @@ MapPtr ForestGenerator::generate(const Dimensions& dimensions)
   return result_map;
 }
 
-TilePtr ForestGenerator::generate_tile(MapPtr current_map, int row, int col)
+TilePtr ForestGenerator::generate_tile(MapPtr /*current_map*/, int /*row*/, int /*col*/)
 {
   TilePtr result_tile;
   return result_tile;
@@ -120,7 +120,7 @@ void ForestGenerator::add_random_bushes_and_weeds(MapPtr result_map, const int p
   }
 }
 
-TilePtr ForestGenerator::generate_tree_based_on_world_location(const int world_map_height, const Coordinate& world_coords, const int pct_chance_evergreen)
+TilePtr ForestGenerator::generate_tree_based_on_world_location(const int /*world_map_height*/, const Coordinate& /*world_coords*/, const int pct_chance_evergreen)
 {
   TileGenerator tg;
   TileType tree_type = TileType::TILE_TYPE_TREE;

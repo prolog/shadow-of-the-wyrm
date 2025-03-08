@@ -9,6 +9,8 @@
 class SpellFailureConsequences
 {
   public:
+    virtual ~SpellFailureConsequences() = default;
+
     // Apply some damage to the spellcaster.
     // Returns true if the spellbook is destroyed as a result.
     virtual bool damage_caster(CreaturePtr caster);

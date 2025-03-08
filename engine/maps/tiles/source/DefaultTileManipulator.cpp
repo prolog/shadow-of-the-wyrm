@@ -99,7 +99,7 @@ void DefaultTileManipulator::add_undead_if_necessary(CreaturePtr creature, MapPt
           keys.push_back(d.first);
         }
 
-        std::random_shuffle(keys.begin(), keys.end());
+        std::shuffle(keys.begin(), keys.end(), RNG::get_engine());
 
         for (const auto& direction : keys)
         {
@@ -158,7 +158,6 @@ void DefaultTileManipulator::add_item_if_necessary(CreaturePtr creature, MapPtr 
       vector<ItemType> i_restr = {};
       ItemGenerationMap igmap = igm.generate_item_generation_map({1, std::max<int>(danger_level, creature->get_level().get_current()), Rarity::RARITY_VERY_RARE, i_restr, ItemValues::DEFAULT_MIN_GENERATION_VALUE});
 
-      Game& game = Game::instance();
       ActionManager& am = game.get_action_manager_ref();
 
       bool items_placed = false;
@@ -205,16 +204,16 @@ void DefaultTileManipulator::add_detritus(CreaturePtr creature, MapPtr map, Tile
     IInventoryPtr items = tile->get_items();
     int chance_clay = PCT_CHANCE_CLAY;
 
-    for (TilePtr tile : tiles)
+    for (TilePtr adj_tile : tiles)
     {
-      if (tile != nullptr)
+      if (adj_tile != nullptr)
       {
-        if (tile->get_water_type() == WaterType::WATER_TYPE_FRESH)
+        if (adj_tile->get_water_type() == WaterType::WATER_TYPE_FRESH)
         {
           chance_clay = 100;
           break;
         }
-        if (tile->get_additional_property(TileProperties::TILE_PROPERTY_CLAY) == "1")
+        if (adj_tile->get_additional_property(TileProperties::TILE_PROPERTY_CLAY) == "1")
         {
           chance_clay = PCT_CHANCE_CLAY_NEARBY;
           break;

@@ -10,6 +10,8 @@ enum struct FruitVegetableGardenType
 class FruitVegetableGardenGenerator : public GardenSectorFeature
 {
   public:
+    virtual ~FruitVegetableGardenGenerator() = default;
+
     FruitVegetableGardenGenerator(const FruitVegetableGardenType fvg = FruitVegetableGardenType::FVG_TYPE_VEGETABLE, const std::string& deity_id = "", const AlignmentRange ar = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, const int new_col_spacing = 3, const int new_row_spacing = 2, const bool new_has_fence = false);
 
     void set_has_fence(const bool new_has_fence);

@@ -845,16 +845,6 @@ int SDLDisplay::get_max_cols() const
   return SCREEN_COLS;
 }
 
-void SDLDisplay::display_text_component(int* row, int* col, TextComponentPtr text, const uint line_incr)
-{
-  display_text_component(window, row, col, text, line_incr);
-}
-
-void SDLDisplay::display_options_component(int* row, int* col, OptionsComponentPtr oc)
-{
-  display_options_component(window, row, col, oc);
-}
-
 string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& menu_wrapper, const int row, const int col)
 {
   string prompt_val;
@@ -886,7 +876,7 @@ void SDLDisplay::display_header(const string& header_text, const int row)
   }
 }
 
-void SDLDisplay::display_text_component(SDL_Window* window, int* row, int* col, TextComponentPtr tc, const uint line_incr)
+void SDLDisplay::display_text_component(int* row, int* col, TextComponentPtr tc, const uint line_incr)
 {
   if (!screens.empty() && !screen_cursors.empty())
   {
@@ -948,7 +938,7 @@ void SDLDisplay::display_text(const int row, const int col, const string& s)
   }
 }
 
-void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* col, OptionsComponentPtr oc)
+void SDLDisplay::display_options_component(int* row, int* col, OptionsComponentPtr oc)
 {
   vector<Option> options = oc->get_options();
   vector<string> option_descriptions = oc->get_option_descriptions();
@@ -1007,7 +997,7 @@ void SDLDisplay::display_options_component(SDL_Window* window, int* row, int* co
 
       int ocol = *col + display_option_s.size();
 
-      display_text_component(window, row, &ocol, option_text, DisplayConstants::OPTION_SPACING);
+      display_text_component(row, &ocol, option_text, DisplayConstants::OPTION_SPACING);
 
       if (!option_enabled)
       {
@@ -1067,7 +1057,7 @@ void SDLDisplay::enable_colour(const Colour colour)
   sdld.set_bg_colour(get_colour(colour_bg_curses, false));
 }
 
-void SDLDisplay::disable_colour(const Colour colour)
+void SDLDisplay::disable_colour(const Colour)
 {
   if (uses_colour())
   {
@@ -1276,7 +1266,7 @@ bool SDLDisplay::deserialize(std::istream& stream)
     size_t palette_size = 0;
     Serialize::read_size_t(stream, palette_size);
 
-    vector<SDL_Colour> colours;
+    vector<SDL_Colour> clrs;
     for (size_t j = 0; j < palette_size; j++)
     {
       uint r = 0;
@@ -1290,10 +1280,10 @@ bool SDLDisplay::deserialize(std::istream& stream)
       Serialize::read_uint(stream, a);
 
       SDL_Colour c = {static_cast<Uint8>(r), static_cast<Uint8>(g), static_cast<Uint8>(b), static_cast<Uint8>(a)};
-      colours.push_back(c);
+      clrs.push_back(c);
     }
 
-    palettes.insert(make_pair(palette_id, make_pair(palette_name_sid, colours)));
+    palettes.insert(make_pair(palette_id, make_pair(palette_name_sid, clrs)));
   }
 
   // After reading palettes, update the palette based on the currently selected
@@ -1314,7 +1304,7 @@ Display* SDLDisplay::clone()
   return new SDLDisplay(*this);
 }
 
-bool SDLDisplay::load_spritesheet_from_file(const string& path, SDL_Renderer* renderer)
+bool SDLDisplay::load_spritesheet_from_file(const string& path, SDL_Renderer* rend)
 {
   auto ss_it = spritesheets.find("");
 
@@ -1325,18 +1315,18 @@ bool SDLDisplay::load_spritesheet_from_file(const string& path, SDL_Renderer* re
     spritesheets.erase(ss_it);
   }
 
-  if (renderer == nullptr)
+  if (rend == nullptr)
   {
     return false;
   }
 
-  SDL_Texture* new_texture = load_texture(path, renderer);
+  SDL_Texture* new_texture = load_texture(path, rend);
 
   spritesheets[""] = new_texture;
   return new_texture != nullptr;
 }
 
-SDL_Texture* SDLDisplay::load_texture(const string& path, SDL_Renderer* renderer)
+SDL_Texture* SDLDisplay::load_texture(const string& path, SDL_Renderer* rend)
 {
   ostringstream ss;
   SDL_Texture* new_texture = NULL;
@@ -1354,7 +1344,7 @@ SDL_Texture* SDLDisplay::load_texture(const string& path, SDL_Renderer* renderer
     SDL_SetColorKey(surface, SDL_TRUE, SDL_MapRGB(surface->format, 0, 0xFF, 0xFF));
 
     //Create texture from surface pixels
-    new_texture = SDL_CreateTextureFromSurface(renderer, surface);
+    new_texture = SDL_CreateTextureFromSurface(rend, surface);
 
     if (new_texture == NULL)
     {
@@ -1386,7 +1376,7 @@ void SDLDisplay::free_screens()
   }
 }
 
-void SDLDisplay::redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint map_rows)
+void SDLDisplay::redraw_cursor(const DisplayMap& current_map, const CursorSettings& cs, const uint /* map_rows */)
 {
   if (!screens.empty() && !screen_cursors.empty())
   {

@@ -3,7 +3,7 @@
 using namespace std;
 
 // Ignore the direction provided, and just target the starting coordinates.
-pair<vector<pair<Coordinate, TilePtr>>, Animation> TargetSelfShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
+pair<vector<pair<Coordinate, TilePtr>>, Animation> TargetSelfShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction /*d*/, const Spell& /*spell*/)
 {
   vector<pair<Coordinate, TilePtr>> affected_coords_and_tiles;
   Animation animation; // No animation for self-targetted spells.

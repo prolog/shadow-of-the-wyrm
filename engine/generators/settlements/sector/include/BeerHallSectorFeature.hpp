@@ -8,6 +8,8 @@ class BeerHallSectorFeature : public SectorFeature
     // in a dungeon, we don't want to generate the actual building; if it's in
     // a city or town, we do.
     BeerHallSectorFeature();
+    virtual ~BeerHallSectorFeature() = default;
+
     BeerHallSectorFeature(const bool generate_building_walls);
 
   protected:

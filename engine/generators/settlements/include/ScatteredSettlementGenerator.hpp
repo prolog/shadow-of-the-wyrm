@@ -14,6 +14,7 @@ class ScatteredSettlementGenerator : public BaseSettlementGenerator
     MapPtr generate() override;
 
   protected:
+    using SOTW::Generator::initialize;
     void initialize();
 
     bool can_building_be_placed(const int row, const int col, const int height, const int width);

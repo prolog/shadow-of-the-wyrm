@@ -22,7 +22,6 @@ pair<int, int> WandCalculator::calc_x_in_y_chance_explode(CreaturePtr creature, 
   if (wand != nullptr && wand->get_status() == ItemStatus::ITEM_STATUS_CURSED)
   {
     chance = { 1, 100 };
-    float wandcraft_mult = 1.0f;
 
     if (creature != nullptr)
     {

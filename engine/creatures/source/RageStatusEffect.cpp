@@ -49,7 +49,7 @@ string RageStatusEffect::get_npc_undo_message(CreaturePtr creature) const
   return message;
 }
 
-void RageStatusEffect::notify_deities(CreaturePtr init_creature, CreaturePtr affected_creature) const
+void RageStatusEffect::notify_deities(CreaturePtr /*init_creature*/, CreaturePtr affected_creature) const
 {
   if (affected_creature != nullptr)
   {

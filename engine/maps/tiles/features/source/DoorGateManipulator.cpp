@@ -24,13 +24,13 @@ DoorGateManipulator::DoorGateManipulator(FeaturePtr feature)
 {
 }
 
-void DoorGateManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+void DoorGateManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feat)
 {
   IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   if (creature && current_map)
   {
-    std::shared_ptr<Entrance> door = dynamic_pointer_cast<Entrance>(feature);
+    std::shared_ptr<Entrance> door = dynamic_pointer_cast<Entrance>(feat);
 
     if (door != nullptr)
     {
@@ -39,7 +39,7 @@ void DoorGateManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr
       switch (est)
       {
         case EntranceStateType::ENTRANCE_TYPE_CLOSED:
-          kick_closed_door(manager, door, creature, current_map, feature_tile, feature_coord, feature);
+          kick_closed_door(manager, door, creature, current_map, feature_tile, feature_coord, feat);
           break;
         case EntranceStateType::ENTRANCE_TYPE_OPEN:
           kick_open_door(manager, door);
@@ -62,7 +62,7 @@ void DoorGateManipulator::kick_open_door(IMessageManager& manager, EntrancePtr e
   }
 }
 
-void DoorGateManipulator::kick_closed_door(IMessageManager& manager, EntrancePtr entr, CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature)
+void DoorGateManipulator::kick_closed_door(IMessageManager& manager, EntrancePtr entr, CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr /*feat*/)
 {
   if (entr != nullptr)
   {
@@ -74,8 +74,6 @@ void DoorGateManipulator::kick_closed_door(IMessageManager& manager, EntrancePtr
     {
       if (RNG::percent_chance(break_chance))
       {
-        MapPtr current_map = Game::instance().get_current_map();
-
         break_down_door(creature, feature_tile);
         MapUtils::anger_shopkeeper_if_necessary(feature_coord, current_map, creature);
 
@@ -161,7 +159,7 @@ bool DoorGateManipulator::handle(TilePtr tile, CreaturePtr creature)
   return result;
 }
 
-bool DoorGateManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item)
+bool DoorGateManipulator::drop(CreaturePtr /*dropping_creature*/, TilePtr /*tile*/, ItemPtr /*item*/)
 {
   return false;
 }

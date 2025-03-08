@@ -14,10 +14,10 @@ TextDisplayScreen::TextDisplayScreen(DisplayPtr new_display, const std::string& 
   // enforced.  Otherwise, things will look goofy.
   line_increment = 1;
 
-  initialize(new_title_text_sid, preserve_formatting);
+  initialize_text_screen(new_title_text_sid, preserve_formatting);
 }
 
-void TextDisplayScreen::initialize(const string& title_sid, const bool preserve_formatting)
+void TextDisplayScreen::initialize_text_screen(const string& title_sid, const bool preserve_formatting)
 {
   // Set the title text.
   title_text_sid = title_sid;

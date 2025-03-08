@@ -11,7 +11,7 @@
 
 using namespace std;
 
-bool ItemManager::operator==(const ItemManager& im) const
+bool ItemManager::operator==(const ItemManager& /* im */) const
 {
   return true;
 }
@@ -243,8 +243,8 @@ pair<bool, vector<ItemPtr>> ItemManager::remove_item_from_inv_or_eq(CreaturePtr 
           // remove the item.
 
           // Don't transfer to inventory
-          ItemPtr item = remove(creature, eq_pair.first, false);
-          result.second.push_back(item);
+          ItemPtr cur_item = remove(creature, eq_pair.first, false);
+          result.second.push_back(cur_item);
         }
         else
         {
@@ -502,7 +502,7 @@ ItemPtr ItemManager::remove(CreaturePtr creature, const EquipmentWornLocation lo
   return item;
 }
 
-ActionCostValue ItemManager::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue ItemManager::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

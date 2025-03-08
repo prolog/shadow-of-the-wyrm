@@ -88,6 +88,6 @@ void TreeTileConfiguration::configure(TilePtr tile, const Season season) const
 
 // Configure any additional features of the tree - this will typically be
 // overridden by any subclasses.
-void TreeTileConfiguration::configure_additional_features(TilePtr tile, const Season season, const TreeSpeciesID tree_species_id) const
+void TreeTileConfiguration::configure_additional_features(TilePtr /*tile*/, const Season /*season*/, const TreeSpeciesID /*tree_species_id*/) const
 {
 }

@@ -21,7 +21,7 @@ void HelpKeyboardCommandMap::command_not_found(const string& keyboard_input)
 }
 
 // Settings currently does nothing here.
-void HelpKeyboardCommandMap::initialize_command_mapping(const Settings& settings)
+void HelpKeyboardCommandMap::initialize_command_mapping(const Settings& /*settings*/)
 {
   string esc_key;
   esc_key = NC_ESCAPE_KEY;

@@ -9,7 +9,7 @@ using std::string;
 
 // "Drown" the creature by applying swimming damage.
 // If the creature is the player, display a UI message.
-ActionCostValue SwimmingSkillProcessor::process(CreaturePtr creature, MapPtr map /* unused, will be nullptr */)
+ActionCostValue SwimmingSkillProcessor::process(CreaturePtr creature, MapPtr /*map*/)
 {
   if (creature)
   {

@@ -198,9 +198,9 @@ Rarity ItemGenerationManager::get_item_rarity(const Rarity generation_rarity) co
 
   if (r_it != rarity_chances.end())
   {
-    vector<pair<Rarity, int>> rarity_chances = r_it->second;
+    vector<pair<Rarity, int>> rarity_ch = r_it->second;
 
-    for (const auto& rarity_pair : rarity_chances)
+    for (const auto& rarity_pair : rarity_ch)
     {
       if (RNG::percent_chance(rarity_pair.second))
       {
@@ -213,7 +213,7 @@ Rarity ItemGenerationManager::get_item_rarity(const Rarity generation_rarity) co
   return rarity;
 }
 
-ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationMap& generation_map, const Rarity rarity, const vector<ItemType>& item_type_restrictions, const int enchant_points)
+ItemPtr ItemGenerationManager::generate_item(ActionManager& /*am*/, ItemGenerationMap& generation_map, const Rarity rarity, const vector<ItemType>& item_type_restrictions, const int enchant_points)
 {
   ItemPtr generated_item;
   AmmunitionCalculator ac;

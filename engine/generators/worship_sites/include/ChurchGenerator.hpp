@@ -10,6 +10,7 @@ class ChurchGenerator : public SOTW::Generator
 {
   public:
     ChurchGenerator(const std::string& new_deity_id, MapPtr new_base_map, const TileType church_type);
+    virtual ~ChurchGenerator() = default;
 
     virtual MapPtr generate() override = 0;
     virtual MapPtr generate(const Dimensions& dim) override = 0;

@@ -43,6 +43,7 @@ const string DeityTextKeys::PRAYER_CROWNING_SOLID_GROUND = "PRAYER_CROWNING_SOLI
 const string DeityTextKeys::PRAYER_WORLD_MAP         = "PRAYER_WORLD_MAP";
 const string DeityTextKeys::PRAYER_PROTECTION        = "PRAYER_PROTECTION";
 const string DeityTextKeys::PRAYER_SMITE             = "PRAYER_SMITE";
+const string DeityTextKeys::PRAYER_SMITE_DIVINE_LIGHTNING = "PRAYER_SMITE_DIVINE_LIGHTNING";
 const string DeityTextKeys::PRAYER_UNCURSE           = "PRAYER_UNCURSE";
 const string DeityTextKeys::PRAYER_HALT_BREEDING     = "PRAYER_HALT_BREEDING";
 const string DeityTextKeys::PRAYER_COMPANION         = "PRAYER_COMPANION";

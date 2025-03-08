@@ -164,7 +164,7 @@ void PapercraftSkillProcessor::add_blank_scrolls_to_creature_tile(CreaturePtr cr
   }
 }
 
-ActionCostValue PapercraftSkillProcessor::get_default_skill_action_cost_value(CreaturePtr creature) const
+ActionCostValue PapercraftSkillProcessor::get_default_skill_action_cost_value(CreaturePtr /*creature*/) const
 {
   return -1;
 }

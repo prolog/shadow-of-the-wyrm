@@ -7,7 +7,7 @@
 
 using namespace std;
 
-string MappingEffect::get_effect_identification_message(std::shared_ptr<Creature> creature) const
+string MappingEffect::get_effect_identification_message(std::shared_ptr<Creature> /*creature*/) const
 {
   return mapping_msg;
 }
@@ -17,7 +17,7 @@ Effect* MappingEffect::clone()
   return new MappingEffect(*this);
 }
 
-void MappingEffect::map(CreaturePtr creature, MapPtr map, const MappingType mt)
+void MappingEffect::map(CreaturePtr /*creature*/, MapPtr map, const MappingType mt)
 {
   if (map != nullptr)
   {
@@ -45,7 +45,7 @@ void MappingEffect::map(CreaturePtr creature, MapPtr map, const MappingType mt)
   }
 }
 
-bool MappingEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool MappingEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   if (creature)
   {
@@ -59,7 +59,7 @@ bool MappingEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionMan
   return true;
 }
 
-bool MappingEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool MappingEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   if (creature)
   {
@@ -73,7 +73,7 @@ bool MappingEffect::effect_uncursed(std::shared_ptr<Creature> creature, ActionMa
   return true;
 }
 
-bool MappingEffect::effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am, const Coordinate& affected_coordinate, TilePtr affected_tile)
+bool MappingEffect::effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const /*am*/, const Coordinate& /*affected_coordinate*/, TilePtr /*affected_tile*/)
 {
   if (creature)
   {

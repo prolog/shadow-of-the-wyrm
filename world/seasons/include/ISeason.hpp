@@ -11,7 +11,7 @@
 class ISeason : public ISerializable
 {
   public:
-    virtual bool operator==(ISeason& season) const;
+    bool operator==(ISeason& season) const;
 
     virtual Season get_season() const = 0;
     virtual std::string get_description_sid() const = 0;

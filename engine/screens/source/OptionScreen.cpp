@@ -57,7 +57,8 @@ void OptionScreen::initialize()
         opt_screen.clear();
       }
 
-      selection_map.insert(make_pair('a' + opt_idx, key));
+      char map_key = 'a' + static_cast<char>(opt_idx);
+      selection_map.insert(make_pair(map_key, key));
 
       Option current_option;
       current_option.set_id(opt_idx);
@@ -82,7 +83,8 @@ void OptionScreen::initialize()
   Option current_option;
   current_option.set_id(25);
   current_option.set_description(StringTable::get(TextKeys::EXIT));
-  selection_map.insert(make_pair('a' + 25, ""));
+  char exit_key = 'a' + 25;
+  selection_map.insert(make_pair(exit_key, ""));
 
   // "(z) Exit"
   scr_options->add_option(current_option);

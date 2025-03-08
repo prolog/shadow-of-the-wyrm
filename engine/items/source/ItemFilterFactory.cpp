@@ -32,7 +32,7 @@ list<IItemFilterPtr> ItemFilterFactory::create_script_filter(const int script_co
       filter = std::make_shared<ArtifactItemFilter>();
       break;
     default:
-      filter = std::make_shared<NullFilter>();
+      filter = std::make_shared<NullItemFilter>();
       break;
   }
 
@@ -46,7 +46,7 @@ list<IItemFilterPtr> ItemFilterFactory::create_empty_filter()
 {
   list<IItemFilterPtr> null_filter_list;
 
-  IItemFilterPtr null_filter = std::make_shared<NullFilter>();
+  IItemFilterPtr null_filter = std::make_shared<NullItemFilter>();
   null_filter_list.push_back(null_filter);
 
   return null_filter_list;

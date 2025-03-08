@@ -222,8 +222,8 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, WandPtr wand, cons
         // If this is a useful wand (effect type isn't null), train willpower.
         if (et != EffectType::EFFECT_TYPE_NULL)
         {
-          StatisticsMarker sm;
-          sm.mark_willpower(creature);
+          StatisticsMarker stat_m;
+          stat_m.mark_willpower(creature);
         }
 
         action_cost_value = get_action_cost_value(creature);
@@ -259,7 +259,7 @@ void EvokeAction::add_evocation_message(CreaturePtr creature, WandPtr wand, cons
 }
 
 // Get the basic cost of evoking a wand.
-ActionCostValue EvokeAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue EvokeAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 1;
 }

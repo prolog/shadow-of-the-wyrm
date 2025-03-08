@@ -74,7 +74,7 @@ ActionCostValue BestiaryAction::display_creature_information(CreaturePtr creatur
 }
 
 // Showing creature info is always free.
-ActionCostValue BestiaryAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue BestiaryAction::get_action_cost_value(CreaturePtr /* creature */) const
 {
   return 0;
 }

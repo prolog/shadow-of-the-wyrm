@@ -13,7 +13,7 @@ temple_width(0), temple_height(0), temple_start_row(0), temple_start_col(0), cen
 {
 }
 
-MapPtr GrandTempleGenerator::generate(const Dimensions& dim)
+MapPtr GrandTempleGenerator::generate(const Dimensions& /*dim*/)
 {
   return generate();
 }

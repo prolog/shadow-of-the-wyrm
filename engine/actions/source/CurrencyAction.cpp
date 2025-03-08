@@ -26,7 +26,7 @@ ActionCostValue CurrencyAction::count_currency(CreaturePtr creature)
   return get_action_cost_value(creature);
 }
 
-ActionCostValue CurrencyAction::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue CurrencyAction::get_action_cost_value(CreaturePtr /*creature*/) const
 {
   return 0; // Always costs nothing to double-check balances.
 }

@@ -714,12 +714,11 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
   Game& game = Game::instance();
   
   const DeityMap& deities = game.get_deities_cref();
-  RaceManager rm;
     
   for (const Coordinate& c : village_coordinates)
   {
     bool worship_site_generated = false;
-      
+
     int village_row = c.first;
     int village_col = c.second;
       
@@ -749,37 +748,54 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
           // selected deity allowable for the village's race.
           if (!worship_site_generated && RNG::percent_chance(20))
           {
-            ostringstream log_ss;
-
-            if (!race_id.empty())
-            {
-              vector<string> initial_deity_ids = rm.get_race(race_id)->get_initial_deity_ids();
-              int deity_id_idx = RNG::range(0, initial_deity_ids.size() - 1);
-              string deity_id = initial_deity_ids[deity_id_idx];
-              Deity* deity = nullptr;
-              auto d_it = deities.find(deity_id);
-              if (d_it != deities.end())
-              {
-                deity = d_it->second.get();
-              }
-
-              WorshipSiteTilePtr site_tile = tg.generate_worship_site_tile(deity->get_alignment_range(), deity_id, deity->get_worship_site_type());
-              map->insert(adjacent_row, adjacent_col, site_tile);
-              worship_site_generated = true;
-
-              log_ss << "Created worship site for deity ID " << deity_id << " at " << adjacent_row << "," << adjacent_col;
-              Log::instance().debug(log_ss.str());
-            }
-            else
-            {
-              log_ss << "Could not create worship site at " << adjacent_row << "," << adjacent_col << " due to empty race_id.";
-              Log::instance().error(log_ss.str());
-            }
+            worship_site_generated = generate_village_worship_site(map, adjacent_row, adjacent_col, race_id, deities);
+          }
+          // Likewise for wheat fields, which provide sustenance for the
+          // villagers.
+          else if (RNG::percent_chance(10))
+          {
+            TilePtr wheat_field = tg.generate(TileType::TILE_TYPE_WHEAT);
+            map->insert({ adjacent_row, adjacent_col }, wheat_field);
           }
         }
       }    
     }    
   }
+}
+
+bool WorldGenerator::generate_village_worship_site(MapPtr map, const int adjacent_row, const int adjacent_col, const string& race_id, const DeityMap& deities)
+{
+  bool worship_site_generated = false;
+
+  ostringstream log_ss;
+  RaceManager rm;
+
+  if (!race_id.empty())
+  {
+    vector<string> initial_deity_ids = rm.get_race(race_id)->get_initial_deity_ids();
+    int deity_id_idx = RNG::range(0, initial_deity_ids.size() - 1);
+    string deity_id = initial_deity_ids[deity_id_idx];
+    Deity* deity = nullptr;
+    auto d_it = deities.find(deity_id);
+    if (d_it != deities.end())
+    {
+      deity = d_it->second.get();
+    }
+
+    WorshipSiteTilePtr site_tile = tg.generate_worship_site_tile(deity->get_alignment_range(), deity_id, deity->get_worship_site_type());
+    map->insert(adjacent_row, adjacent_col, site_tile);
+    worship_site_generated = true;
+
+    log_ss << "Created worship site for deity ID " << deity_id << " at " << adjacent_row << "," << adjacent_col;
+    Log::instance().debug(log_ss.str());
+  }
+  else
+  {
+    log_ss << "Could not create worship site at " << adjacent_row << "," << adjacent_col << " due to empty race_id.";
+    Log::instance().error(log_ss.str());
+  }
+
+  return worship_site_generated;
 }
 
 void WorldGenerator::set_village_coordinates(MapPtr map)

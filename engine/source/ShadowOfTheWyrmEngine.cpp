@@ -136,18 +136,18 @@ string ShadowOfTheWyrmEngine::start(const Settings& settings)
     log.debug("Reading game data.");
     setup_game();
 
-    DisplayPtr display = game.get_display();
+    DisplayPtr disp = game.get_display();
 
-    if (display)
+    if (disp)
     {
-      auto d_details = display->create();
+      auto d_details = disp->create();
       disp_ok = d_details.first;
 
       if (disp_ok)
       {
-        display->set_spritesheets(game.get_spritesheets());
-        display->set_title(StringTable::get(TextKeys::SW_TITLE));
-        display->show();
+        disp->set_spritesheets(game.get_spritesheets());
+        disp->set_title(StringTable::get(TextKeys::SW_TITLE));
+        disp->show();
       }
       else
       {
@@ -236,15 +236,19 @@ void ShadowOfTheWyrmEngine::setup_game()
   // Set all sound-related assets into the game, pre-loading them if it
   // makes sense (ie for effects but not music). Set the settings as well.
   string disabled_sound_ids = game.get_settings_ref().get_setting(Setting::DISABLE_SOUND_EFFECT_IDS);
-  SoundPtr sound = game.get_sound();
+  SoundPtr snd = game.get_sound();
   auto sound_effects = reader.get_sound_effects();
   auto music = reader.get_music(); 
 
   game.set_sound_effects(sound_effects);
   game.set_music(music);
-  sound->set_effects(sound_effects);
-  sound->set_disabled_sound_ids(disabled_sound_ids);
-  sound->set_music(music);
+
+  if (snd != nullptr)
+  {
+    snd->set_effects(sound_effects);
+    snd->set_disabled_sound_ids(disabled_sound_ids);
+    snd->set_music(music);
+  }
 
   log.debug("Reading items.");
 
@@ -657,7 +661,6 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     {
       int deity_idx = Char::keyboard_selection_char_to_int(deity_index.at(0));
 
-      vector<string> deity_ids = selected_race->get_initial_deity_ids();
       for (uint i = 0; i < deity_ids.size(); i++)
       {
         if (static_cast<int>(i) == deity_idx)

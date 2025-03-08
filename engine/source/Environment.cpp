@@ -63,7 +63,7 @@ bool Environment::create_userdata_directory(const Settings* settings)
   return created;
 }
 
-bool Environment::create_empty_user_settings_if_necessary(const Settings* settings)
+bool Environment::create_empty_user_settings_if_necessary(const Settings* /*settings*/)
 {
   bool created = false;
 
@@ -122,6 +122,45 @@ string Environment::get_syschardump_directory(const Settings* settings)
   return syschardump_directory;
 }
 
+string Environment::get_scorefile_directory(const Settings* settings)
+{
+  string scorefile_directory = ".";
+
+  if (settings != nullptr)
+  {
+    string settings_scorefile_dir = settings->get_setting(Setting::SCOREFILE_DIR);
+    boost::algorithm::trim(settings_scorefile_dir);
+
+    if (!settings_scorefile_dir.empty())
+    {
+      scorefile_directory = settings_scorefile_dir;
+    }
+  }
+
+  scorefile_directory = File::harmonize_dirname(scorefile_directory);
+  return scorefile_directory;
+}
+
+bool Environment::check_scorefile_write_permissions(const Settings* settings)
+{
+  bool can_write = true;
+
+  string fname = get_scorefile_directory(settings) + "test";
+  std::ofstream test_file;
+  test_file.open(fname, ios::out | ios::binary);
+
+  if (!test_file.good())
+  {
+    can_write = false;
+  }
+  else
+  {
+    test_file.close();
+    std::remove(fname.c_str());
+  }
+
+  return can_write;
+}
 
 // Return the current player's username.
 string Environment::get_user_name()

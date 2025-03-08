@@ -7,6 +7,7 @@ class SnakingTempleGenerator : public ChurchGenerator
 {
   public:
     SnakingTempleGenerator(const std::string& new_deity_id, MapPtr new_base_map);
+    virtual ~SnakingTempleGenerator() = default;
 
     virtual MapPtr generate() override;
     virtual MapPtr generate(const Dimensions& dim) override;

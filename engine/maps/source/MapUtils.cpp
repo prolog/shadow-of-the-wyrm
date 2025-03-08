@@ -799,12 +799,12 @@ CreatureDirectionMap MapUtils::get_adjacent_creatures(const MapPtr& map, const C
     {
       Direction d = CoordUtils::get_direction(creature_coord, c);
       TilePtr tile = map->at(c);
-      CreaturePtr creature;
+      CreaturePtr cr;
 
       if (tile && tile->has_creature())
       {
-        creature = tile->get_creature();
-        adjacent_creatures.insert(make_pair(d, creature));
+        cr = tile->get_creature();
+        adjacent_creatures.insert(make_pair(d, cr));
       }
     }
   }
@@ -2773,9 +2773,10 @@ string MapUtils::get_shipwreck_min_lore(MapPtr map, TilePtr tile)
   return min_lore;
 }
 
-bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d)
+pair<bool, string> MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d)
 {
   bool can_change = false;
+  string msg;
 
   if (creature != nullptr && map != nullptr && tile != nullptr)
   {
@@ -2785,13 +2786,13 @@ bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile,
     if ((d == Direction::DIRECTION_DOWN && tt == TileType::TILE_TYPE_DOWN_STAIRCASE) ||
         (d == Direction::DIRECTION_UP && tt == TileType::TILE_TYPE_UP_STAIRCASE))
     {
-      return true;
+      return make_pair(true, "");
     }
     // Can never go down an up staircase, up a down staircase.
     else if ((d == Direction::DIRECTION_UP && tt == TileType::TILE_TYPE_DOWN_STAIRCASE) ||
              (d == Direction::DIRECTION_DOWN && tt == TileType::TILE_TYPE_UP_STAIRCASE))
     {
-      return false;
+      return make_pair(false, MovementTextKeys::ACTION_MOVE_WRONG_STAIRS_DIRECTION);
     }
 
     MapType map_type = map->get_map_type();
@@ -2818,11 +2819,27 @@ bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile,
       {
         if (d == Direction::DIRECTION_DOWN)
         {
-          if (map_type != MapType::MAP_TYPE_UNDERWATER &&
-              map->get_is_water_shallow() &&
-             (can_breathe_water || can_swim))
+          auto season = Game::instance().get_current_world()->get_calendar().get_season()->get_season();
+
+          if (tile->get_is_frozen(season))
           {
-            can_change = true;
+            msg = MovementTextKeys::ACTION_MOVE_DIVE_ICE;
+          }
+          else
+          {
+            if (map_type != MapType::MAP_TYPE_UNDERWATER &&
+              map->get_is_water_shallow() &&
+              (can_breathe_water || can_swim))
+            {
+              if (map->get_allow_diving())
+              {
+                can_change = true;
+              }
+              else
+              {
+                msg = MovementTextKeys::ACTION_MOVE_DIVE_TOO_SHALLOW;
+              }
+            }
           }
         }
         else if (d == Direction::DIRECTION_UP)
@@ -2836,7 +2853,7 @@ bool MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile,
     }
   }
 
-  return can_change;
+  return make_pair(can_change, msg);
 }
 
 bool MapUtils::get_supports_time_of_day(const MapType map_type)

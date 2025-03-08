@@ -11,7 +11,7 @@ StunnedStatusEffect::StunnedStatusEffect()
   status_calc = std::make_shared<StunnedCalculator>();
 }
 
-void StunnedStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr affected_creature) const
+void StunnedStatusEffect::notify_deities(CreaturePtr initiating, CreaturePtr /*affected_creature*/) const
 {
   if (initiating != nullptr)
   {

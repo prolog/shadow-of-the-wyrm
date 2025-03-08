@@ -2185,9 +2185,9 @@ set<string> Creature::get_active_modifier_status_ids() const
 
     for (auto mods : m_list)
     {
-      auto statuses = mods.second.get_affected_statuses();
+      auto sts = mods.second.get_affected_statuses();
 
-      for (auto s_details : statuses)
+      for (auto s_details : sts)
       {
         status_ids.insert(s_details.first);
       }

@@ -8,6 +8,7 @@ class CoastlineGenerator
   public:
     CoastlineGenerator();
     CoastlineGenerator(const TileType new_tile_type, const TileType new_sec_type);
+    virtual ~CoastlineGenerator() = default;
 
     void generate(MapPtr map, const bool north, const bool south, const bool east, const bool west);
   

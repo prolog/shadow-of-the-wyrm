@@ -3,6 +3,9 @@
 
 class TombSectorFeature : public SectorFeature
 {
+  public:
+    virtual ~TombSectorFeature() = default;
+
   protected:
     bool generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
     std::vector<Direction> decorate_corners(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord);

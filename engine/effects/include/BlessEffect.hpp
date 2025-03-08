@@ -14,6 +14,7 @@ class BlessEffect : public Effect
 {
   public:
     BlessEffect();
+    virtual ~BlessEffect() = default;
     
     virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const override;
     virtual Effect* clone() override;

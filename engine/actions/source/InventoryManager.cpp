@@ -61,11 +61,11 @@ vector<ItemPtr> InventoryManager::manage_inventory(IInventoryPtr inv, const list
           {
             vector<OptionPtr> options = is.get_options();
 
-            for (OptionPtr op : options)
+            for (OptionPtr opt : options)
             {
-              if (op != nullptr)
+              if (opt != nullptr)
               {
-                external_ids.push_back(op->get_external_id());
+                external_ids.push_back(opt->get_external_id());
               }
             }
           }
@@ -92,7 +92,7 @@ vector<ItemPtr> InventoryManager::manage_inventory(IInventoryPtr inv, const list
   return selected_items;
 }
 
-ActionCostValue InventoryManager::get_action_cost_value(CreaturePtr creature) const
+ActionCostValue InventoryManager::get_action_cost_value(CreaturePtr /*cr*/) const
 {
   return 1;
 }
