@@ -79,7 +79,7 @@ string AmbientSound::ambient_underground_handler(MapPtr map, const ulonglong tur
 	return sound_effect_id;
 }
 
-bool AmbientSound::should_trigger(MapPtr map, const ulonglong turn_number, const AmbientSoundProbability& asp, const bool override_probability) const
+bool AmbientSound::should_trigger(MapPtr /*map*/, const ulonglong turn_number, const AmbientSoundProbability& asp, const bool override_probability) const
 {
 	bool trigger = false;
 	auto xy = asp.get_x_in_y();
