@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.8.0 "Sergio Assad"
-- Version started August 25, 2024.
+- Version started August 25, 2024. Versoin finalized March 8, 2025.
 
 - Made a couple of tweaks to "A Black Mark" so that there was less of a high,
   shrill violin sound in Violin 1, and a small update to "My Love's Gone 
