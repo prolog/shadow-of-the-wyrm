@@ -4,6 +4,13 @@ Shadow of the Wyrm v1.8.2 "Fampas"
 - Updated the guidebook's section on Skills and created a new section on 
   how to apply terrain features (Lustcrecia).
 
+- Improved the "can't sacrifice" message.
+
+- Applying an altar now triggers sacrifice (same as "O"ffer) if you're 
+  standing on it.
+
+- Shopkeepers' default message now references restocks (Lustrecia).
+
 - More names.
 
 Shadow of the Wyrm v1.8.0 "Sergio Assad"
