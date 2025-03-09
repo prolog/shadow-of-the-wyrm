@@ -186,7 +186,6 @@ class ActionTextKeys
     static const std::string ACTION_DIG_SHOP;
     static const std::string ACTION_RESTING;
     static const std::string ACTION_HANDLE_DEFAULT;
-    static const std::string ACTION_HANDLE_ALTAR;
     static const std::string ACTION_HANDLE_PEW;
     static const std::string ACTION_EVOKE_FAILED;
     static const std::string ACTION_EVOKE_WORLD_MAP;

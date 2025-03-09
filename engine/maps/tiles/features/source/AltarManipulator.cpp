@@ -28,9 +28,10 @@ bool AltarManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_HANDLE_ALTAR));
-    manager.send();
+    Game& game = Game::instance();
+    ActionManager& am = game.get_action_manager_ref();
+
+    am.offer(creature);
   }
 
   return true;

@@ -685,7 +685,6 @@ const string ActionTextKeys::ACTION_DIG_CEILING                = "ACTION_DIG_CEI
 const string ActionTextKeys::ACTION_DIG_SHOP                   = "ACTION_DIG_SHOP";
 const string ActionTextKeys::ACTION_RESTING                    = "ACTION_RESTING";
 const string ActionTextKeys::ACTION_HANDLE_DEFAULT             = "ACTION_HANDLE_DEFAULT";
-const string ActionTextKeys::ACTION_HANDLE_ALTAR               = "ACTION_HANDLE_ALTAR";
 const string ActionTextKeys::ACTION_HANDLE_PEW                 = "ACTION_HANDLE_PEW";
 const string ActionTextKeys::ACTION_EVOKE_FAILED               = "ACTION_EVOKE_FAILED";
 const string ActionTextKeys::ACTION_EVOKE_WORLD_MAP            = "ACTION_EVOKE_WORLD_MAP";
