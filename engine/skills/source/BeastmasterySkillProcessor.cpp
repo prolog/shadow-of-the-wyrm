@@ -65,7 +65,7 @@ void BeastmasterySkillProcessor::tame_creatures(CreaturePtr taming_creature, con
 {
   if (taming_creature != nullptr)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, taming_creature, taming_creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, taming_creature, taming_creature->get_is_player());
     SkillType bm_sk = SkillType::SKILL_GENERAL_BEASTMASTERY;
     PacificationCalculator pc;
     Game& game = Game::instance();

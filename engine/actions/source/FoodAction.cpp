@@ -82,7 +82,7 @@ ActionCostValue FoodAction::eat_food_off_ground(CreaturePtr creature, const list
       ItemIdentifier iid;
 
       string consumable_desc = iid.get_appropriate_usage_description(food);
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       manager.clear_if_necessary();
       manager.add_new_confirmation_message(TextMessages::get_confirmation_message(ActionTextKeys::get_eat_confirmation_message(consumable_desc)));
       bool confirm = creature->get_decision_strategy()->get_confirmation();
@@ -187,7 +187,7 @@ bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInv
 // Add a message about whether the creature could eat the item, or not.
 void FoodAction::add_food_message(CreaturePtr creature, ItemPtr food, const bool eat_success)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
   ItemIdentifier iid;
 
   string message;
@@ -226,7 +226,7 @@ void FoodAction::create_seed_on_tile(CreaturePtr creature, TilePtr tile, const s
         ItemIdentifier iid;
         string usage_desc = iid.get_appropriate_usage_description(seed);
 
-        IMessageManager& manager = MM::instance();
+        IMessageManager& manager = MMF::instance();
         manager.add_new_message(ActionTextKeys::get_spit_out_message(usage_desc));
         manager.send();
       }

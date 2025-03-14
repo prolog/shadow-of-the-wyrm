@@ -26,7 +26,7 @@ DoorGateManipulator::DoorGateManipulator(FeaturePtr feature)
 
 void DoorGateManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feat)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   if (creature && current_map)
   {
@@ -110,7 +110,7 @@ bool DoorGateManipulator::handle(TilePtr tile, CreaturePtr creature)
   bool result = false;
 
   std::shared_ptr<Entrance> entr = dynamic_pointer_cast<Entrance>(feature);
-  IMessageManager& self_mm = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& self_mm = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   if (entr != nullptr && tile != nullptr && creature != nullptr)
   {
@@ -169,7 +169,7 @@ void DoorGateManipulator::break_down_door(CreaturePtr creature, TilePtr tile)
 {
   if (creature && tile)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_DESTROYED));
 
     tile->remove_feature();
@@ -184,7 +184,7 @@ void DoorGateManipulator::handle_sprain_if_necessary(CreaturePtr creature, const
   {
     if (RNG::percent_chance(pct_chance))
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_SPRAIN_LEG));
       manager.send();
 

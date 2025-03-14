@@ -102,7 +102,7 @@ bool ReadAction::check_on_world_map(CreaturePtr creature)
 
   if (creature && map && map->get_map_type() == MapType::MAP_TYPE_WORLD)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_READ_WORLD_MAP));
     manager.send();
 

@@ -114,7 +114,7 @@ bool SpellFailureConsequences::summon_creatures(CreaturePtr caster)
     }
 
     // Add an appropriate message.
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(get_summoned_creatures_message_sid()));
     manager.send();
   }

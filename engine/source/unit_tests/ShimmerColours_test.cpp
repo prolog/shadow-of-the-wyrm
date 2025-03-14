@@ -66,6 +66,6 @@ TEST(SW_Engine_ShimmerColours, saveload)
   
   vector<Colour> raw_colours_after_ds = sc2.get_raw_colours();
 
-  EXPECT_EQ(3, raw_colours_after_ds.size());
+  EXPECT_EQ(static_cast<uint>(3), raw_colours_after_ds.size());
   EXPECT_EQ(colour_conf, raw_colours_after_ds);
 }

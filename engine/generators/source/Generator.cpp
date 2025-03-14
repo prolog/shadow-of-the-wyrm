@@ -305,7 +305,7 @@ void Generator::create_entities(MapPtr map, const int dl, const bool create_crea
         map->set_property(MapProperties::MAP_PROPERTIES_SONG_LOCATION, loc);
       }
 
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       manager.add_new_message(StringTable::get(TextKeys::NO_CREATURES_GENERATED));
       manager.send();
     }

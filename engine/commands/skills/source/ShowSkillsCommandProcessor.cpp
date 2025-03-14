@@ -50,7 +50,7 @@ ActionCostValue ShowSkillsCommandProcessor::process(CreaturePtr creature, Comman
         {
           process_result = -1;
 
-          IMessageManager& manager = MM::instance();
+          IMessageManager& manager = MMF::instance();
           manager.add_new_message(StringTable::get(SkillTextKeys::SKILL_USAGE_WORLD_MAP));
           manager.send();
         }

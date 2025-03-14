@@ -105,7 +105,7 @@ ActionCostValue EquipmentManager::equip(CreaturePtr cr, ItemPtr i, const Equipme
     if (player != nullptr && !player_blind)
     {
       ItemIdentifier iid;
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, cr, GameUtils::is_creature_in_player_view_map(game, cr->get_id()));
+      IMessageManager& manager = MMF::instance(MessageTransmit::FOV, cr, GameUtils::is_creature_in_player_view_map(game, cr->get_id()));
       string msg = TextMessages::get_equip_message(cr->get_description_sid(), iid.get_appropriate_usage_description(i));
       manager.add_new_message(msg);
       manager.send();

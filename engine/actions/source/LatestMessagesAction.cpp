@@ -14,7 +14,7 @@ ActionCostValue LatestMessagesAction::latest_messages(CreaturePtr creature)
   string title_sid = TextKeys::LATEST_MESSAGES;
   vector<TextDisplayPair> buffer_text;
 
-  MessageBuffer mb = MM::instance().get_message_buffer();
+  MessageBuffer mb = MMF::instance().get_message_buffer();
 
   size_t num_msgs = mb.size();
 

@@ -69,7 +69,7 @@ bool StatusEffect::should_apply_change(CreaturePtr creature, const int effect_bo
         sm.mark_skill(creature, SkillType::SKILL_GENERAL_MEDICINE, true);
 
         // Add a message about counteracting the effect.
-        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+        IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
         manager.add_new_message(StringTable::get(StatusAilmentTextKeys::STATUS_COUNTERACTED));
         manager.send();
 
@@ -104,7 +104,7 @@ void StatusEffect::apply_change(CreaturePtr creature, const int danger_level) co
 
     if (!message.empty())
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
       manager.add_new_message(message);
       manager.send();
     }
@@ -282,7 +282,7 @@ void StatusEffect::undo(CreaturePtr creature) const
 
     if (had_status && !has_status)
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature->get_is_player());
 
       string undo_message = get_undo_message(creature);
 

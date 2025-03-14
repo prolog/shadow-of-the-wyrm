@@ -25,7 +25,7 @@ void KilnManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_KILN));
     manager.send();
   }
@@ -101,7 +101,7 @@ bool KilnManipulator::check_for_clay(CreaturePtr creature)
   {
     if (creature->get_inventory()->count_items(ItemIdKeys::ITEM_ID_CLAY) == 0)
     {
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KILN_NO_CLAY));
       manager.send();
     }
@@ -158,7 +158,7 @@ bool KilnManipulator::verify_item_requirements(const vector<string>& component_i
         {
           if (add_message)
           {
-            IMessageManager& mm_self = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+            IMessageManager& mm_self = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
             mm_self.add_new_message(ActionTextKeys::get_kiln_no_item_message(i_it->second->get_usage_description_sid(), crafted_item->get_usage_description_sid()));
             mm_self.send();
@@ -185,7 +185,7 @@ bool KilnManipulator::create_clay_item(ItemVerifier v, const vector<string>& com
   ActionManager& am = game.get_action_manager_ref();
   const ItemMap& items = game.get_items_ref();
   auto cr_i_it = items.find(crafted_item_id);
-  IMessageManager& mm_self = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& mm_self = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   if (cr_i_it == items.end())
   {
@@ -352,7 +352,7 @@ void KilnManipulator::create_item(CreaturePtr creature, TilePtr tile, vector<Ite
       }
     }
 
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KILN_CREATION_COMPLETE));
     manager.send();
   }

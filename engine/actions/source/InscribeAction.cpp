@@ -38,7 +38,7 @@ ActionCostValue InscribeAction::inscribe(CreaturePtr creature) const
 
           if (!cca.can_read(creature))
           {
-            IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+            IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
             manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_INSCRIBE_ILLITERATE));
             manager.send();
           }
@@ -79,7 +79,7 @@ ActionCostValue InscribeAction::create_inscription(CreaturePtr creature, TilePtr
 
   if (creature != nullptr && tile != nullptr)
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     string message_sid = ActionTextKeys::ACTION_INSCRIBE_QUERY;
 
     if (is_world_map)
@@ -117,7 +117,7 @@ void InscribeAction::add_inscription_super_type_message(const TileSuperType tst)
   {
     string ts_sid = ts_it->second;
 
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(ts_sid));
     manager.send();
   }

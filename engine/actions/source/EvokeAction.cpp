@@ -233,7 +233,7 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, WandPtr wand, cons
         // Add a message about the unsuccessful attempt.
         if (creature && creature->get_is_player())
         {
-          IMessageManager& manager = MM::instance();
+          IMessageManager& manager = MMF::instance();
           manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_EVOKE_FAILED));
           manager.send();
         }
@@ -252,7 +252,7 @@ void EvokeAction::add_evocation_message(CreaturePtr creature, WandPtr wand, cons
   string evoke_message = ActionTextKeys::get_evoke_message(creature->get_description_sid(), item_id.get_appropriate_usage_description(wand), creature->get_is_player());
   
   // Display an appropriate message
-  IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
   
   manager.add_new_message(evoke_message);
   manager.send();
@@ -268,7 +268,7 @@ pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature,
 {
   pair<bool, Direction> evoke_direction_result(false, Direction::DIRECTION_UP);
 
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   // Make the creature select a direction.
   CommandFactoryPtr command_factory = std::make_unique<CommandFactory>();
@@ -385,7 +385,7 @@ bool EvokeAction::process_wand_damage_and_effect(CreaturePtr creature, MapPtr ma
   {
     if (creature && creature->get_is_player())
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, true);
       manager.add_new_message(StringTable::get(EffectTextKeys::EFFECT_NULL));
       manager.send();
     }
@@ -414,7 +414,7 @@ bool EvokeAction::check_on_world_map(CreaturePtr creature)
 
   if (creature && map && map->get_map_type() == MapType::MAP_TYPE_WORLD)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_EVOKE_WORLD_MAP));
     manager.send();
 

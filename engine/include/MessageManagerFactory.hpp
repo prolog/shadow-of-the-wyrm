@@ -41,5 +41,5 @@ class MessageManagerFactory
     static NullMessageManager& nmm_instance();
 };
 
-using MM = MessageManagerFactory;
+using MMF = MessageManagerFactory;
 

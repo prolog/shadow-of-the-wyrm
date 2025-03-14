@@ -87,7 +87,7 @@ DeityDecisionImplications AltarDropDeityDecisionStrategyHandler::handle_decision
   // Add a message?
   if (!decision_msg.empty())
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, cr, cr && cr->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, cr, cr && cr->get_is_player());
 
     // Are we at the wrong altar?
     if (cross_aligned)

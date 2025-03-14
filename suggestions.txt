@@ -1,8 +1,15 @@
+Long Term Boring And Probably Necessary:
+- SDL3
+- Lua 5.1 still ok?
+- Visual Studio: x64 build
+- Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
+
 Me:
 - ASSET RELEASE: sounds! tiles!
 - git push --tags
 - Audio enhancements off for testing
 - The Ybari/Asturias?
+- BORING VERION: upgrade xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 - Caldera's water should be death - swimming or descending
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.

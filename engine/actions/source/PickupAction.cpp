@@ -62,7 +62,7 @@ ActionCostValue PickupAction::pick_up(CreaturePtr creature, const string& ground
       {
         CreaturePtr player = game.get_current_player();
         CurrentCreatureAbilities cca;
-        IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, CreatureUtils::is_player_or_in_los(creature));
+        IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, CreatureUtils::is_player_or_in_los(creature));
 
         string item_msg = TextMessages::get_item_pick_up_and_merge_message(!cca.can_see(player), creature, ground_item);
         creature->get_inventory()->merge_or_add(ground_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
@@ -318,7 +318,7 @@ ActionCostValue PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_ite
 
   if (pick_up_item != nullptr && inv != nullptr && creature != nullptr)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, true);
 
     uint quantity = pick_up_item->get_quantity();
     uint amount_to_take = max_quantity;
@@ -368,7 +368,7 @@ ActionCostValue PickupAction::take_item_and_give_to_creature(ItemPtr pick_up_ite
 // it can hold.
 void PickupAction::handle_cannot_pickup(CreaturePtr creature, const string& pickup_details_sid)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   if (creature && creature->get_is_player() && !pickup_details_sid.empty())
   {
@@ -382,7 +382,7 @@ void PickupAction::handle_cannot_pickup(CreaturePtr creature, const string& pick
 // Handle the case where we're trying to pick up on the world map, which is an invalid case.
 void PickupAction::handle_world_map_pickup(CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   
   if (creature && creature->get_is_player())
   {
@@ -396,7 +396,7 @@ void PickupAction::handle_world_map_pickup(CreaturePtr creature)
 // Handle the case where we're trying to pick up from a tile that contains no items.
 void PickupAction::handle_empty_tile_pickup(CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   
   if (creature && creature->get_is_player())
   {
@@ -431,7 +431,7 @@ bool PickupAction::merge_into_equipment(CreaturePtr creature, ItemPtr item)
       string item_merged_into_equipment;
 
       // Only broadcast if it's the player, or the monster's in range.
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
 
       if (!player_blind || (player_blind && creature->get_is_player()))
       {
@@ -470,7 +470,7 @@ bool PickupAction::merge_or_add_into_inventory(CreaturePtr creature, ItemPtr ite
     bool player_blind = !cca.can_see(player);
 
     // Only broadcast if it's the player, or the monster's in range.
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && !player_blind && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && !player_blind && creature->get_is_player());
 
     // Display a message if necessary
     string pick_up_message;

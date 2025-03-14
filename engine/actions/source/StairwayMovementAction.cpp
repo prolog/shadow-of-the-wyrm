@@ -31,7 +31,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
   if (creature->get_is_player())
   {
     Game& game = Game::instance();
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     
     MapPtr current_map = game.get_current_map();
     Coordinate c = current_map->get_location(creature->get_id());
@@ -166,7 +166,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
   {
     // If we're on the world map, we can always descend.
     Game& game = Game::instance();
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
     MapPtr map = game.get_current_map();
     ExitMovementType movement_type = ExitMovementType::EXIT_MOVEMENT_DESCEND;

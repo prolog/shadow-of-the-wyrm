@@ -26,7 +26,7 @@ bool GraveTileManipulator::dig(CreaturePtr creature, MapPtr map, TilePtr tile)
     // Add a message about disturbing the dead.
     if (creature->get_is_player())
     {
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_GRAVE));
 
       manager.send();

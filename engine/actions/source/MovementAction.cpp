@@ -130,8 +130,8 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
   if (creature != nullptr && map != nullptr)
   {
     Game& game = Game::instance();
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
-    IMessageManager& pl_man = MM::instance();
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    IMessageManager& pl_man = MMF::instance();
 
     Coordinate c = map->get_location(creature->get_id());
     Dimensions dim = map->size();
@@ -200,7 +200,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
   Game& game = Game::instance();
   ActionCostValue movement_acv = ActionCostConstants::NO_ACTION;
   bool creature_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   pair<bool, TilePtr> attack_at_range = MapUtils::get_melee_attack_target(map, creature, d);
   bool automelee = game.get_settings_ref().get_setting_as_bool(Setting::AUTOMELEE);
 
@@ -401,7 +401,7 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
           {
             // Couldn't squeeze by, either due a monster being there, no
             // tile, the tile not allowing a creature on it, etc.
-            IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+            IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
             manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SQUEEZE_FAILURE));
             manager.send();
           }
@@ -456,7 +456,7 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
 // Figure out what the creature wants to do in terms of getting through the occupied tile.
 MovementThroughTileType MovementAction::get_movement_through_tile_type(CreaturePtr creature, CreaturePtr adjacent_creature, TilePtr creatures_new_tile)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   MovementThroughTileType mtt = MovementThroughTileType::MOVEMENT_ATTACK;
 
   // When prompting for switching, we need to consider that immobile creatures don't want
@@ -533,7 +533,7 @@ MovementThroughTileType MovementAction::get_friendly_movement_past_type(Creature
     }
     else
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
       manager.add_new_confirmation_message(TextMessages::get_confirmation_message(prompt_sid));
 
       bool switch_places = creature->get_decision_strategy()->get_confirmation(true);
@@ -799,7 +799,7 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
 void MovementAction::add_initial_map_messages(CreaturePtr creature, MapPtr map, const TileType tile_type)
 {
   // Add a message about the terrain type.
-  IMessageManager& manager = MM::instance(MessageTransmit::MAP, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::MAP, creature, creature && creature->get_is_player());
   manager.add_new_message(TextMessages::get_area_entrance_message_given_terrain_type(tile_type));
 
   // Add any messages for special features.
@@ -849,7 +849,7 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Map
 
     if (is_player && never_move_to_danger == false && is_automoving == false)
     {
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       manager.add_new_confirmation_message(details.get_confirmation_message());
 
       confirmation = (creature->get_decision_strategy()->get_confirmation());
@@ -875,7 +875,7 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Map
 
       if (!post_movement_message_sid.empty())
       {
-        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+        IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
         manager.add_new_message(StringTable::get(post_movement_message_sid));
         manager.send();
       }
@@ -1060,7 +1060,7 @@ void MovementAction::add_cannot_escape_message(const CreaturePtr& creature)
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     string cannot_escape = StringTable::get(MovementTextKeys::ACTION_MOVE_ADJACENT_HOSTILE_CREATURE);
     manager.add_new_message(cannot_escape);
     manager.send();
@@ -1085,7 +1085,7 @@ ActionCostValue MovementAction::get_action_cost_value(CreaturePtr creature) cons
       if (RNG::percent_chance(stumble_chance))
       {
         // Add a message about stumbling.
-        IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+        IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
         manager.add_new_message(ActionTextKeys::get_stumble_message(creature->get_description_sid(), creature->get_is_player()));
         manager.send();
         

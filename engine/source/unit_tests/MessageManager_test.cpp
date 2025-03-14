@@ -3,7 +3,7 @@
 
 TEST(SW_Engine_MessageManager, mark_as_read)
 {
-  IMessageManager& mm = MM::instance();
+  IMessageManager& mm = MMF::instance();
   mm.add_new_message("fdsa");
 
   Messages m = mm.get_unread_messages_and_mark_as_read();
@@ -19,7 +19,7 @@ TEST(SW_Engine_MessageManager, mark_as_read)
 
 TEST(SW_Engine_MessageManager, add_new_message)
 {
-  IMessageManager& mm = MM::instance();
+  IMessageManager& mm = MMF::instance();
   mm.add_new_message("fdsa");
   mm.add_new_message("blah");
 
@@ -31,7 +31,7 @@ TEST(SW_Engine_MessageManager, add_new_message)
 
 TEST(SW_Engine_MessageManager, send_returns_true)
 {
-  IMessageManager& mm = MM::instance();
+  IMessageManager& mm = MMF::instance();
   EXPECT_TRUE(mm.send());
 }
 

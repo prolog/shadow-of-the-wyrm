@@ -27,7 +27,7 @@ ActionCostValue OrderAction::order(CreaturePtr creature)
   if (creature)
   {
     MapPtr map = Game::instance().get_current_map();
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     bool leader_and_followers_exist = creature->get_skills().get_value(SkillType::SKILL_GENERAL_LEADERSHIP) > 0 && CreatureUtils::get_followers(creature, map).size() > 0;
 
     if (leader_and_followers_exist || check_for_followers(creature, manager))
@@ -133,7 +133,7 @@ ActionCostValue OrderAction::order_attack(CreaturePtr creature, const string& fo
   {
     creature->get_skills().mark(SkillType::SKILL_GENERAL_LEADERSHIP);
 
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_ATTACK));
 
     CreatureMap creatures = CreatureUtils::get_followers_in_fov(creature, follower_ids);
@@ -161,7 +161,7 @@ ActionCostValue OrderAction::order_follow(CreaturePtr creature, const string& fo
   {
     creature->get_skills().mark(SkillType::SKILL_GENERAL_LEADERSHIP);
 
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_FOLLOW));
 
     CreatureMap creatures = CreatureUtils::get_followers_in_fov(creature, follower_ids);
@@ -189,7 +189,7 @@ ActionCostValue OrderAction::order_freeze(CreaturePtr creature, const string& fo
   {
     creature->get_skills().mark(SkillType::SKILL_GENERAL_LEADERSHIP);
 
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_FREEZE));
 
     CreatureMap creatures = CreatureUtils::get_followers_in_fov(creature, follower_ids);
@@ -217,7 +217,7 @@ ActionCostValue OrderAction::order_at_ease(CreaturePtr creature, const string& f
   {
     creature->get_skills().mark(SkillType::SKILL_GENERAL_LEADERSHIP);
 
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_AT_EASE));
 
     CreatureMap creatures = CreatureUtils::get_followers_in_fov(creature, follower_ids);
@@ -245,7 +245,7 @@ ActionCostValue OrderAction::order_summon(CreaturePtr creature, const string& /*
   {
     creature->get_skills().mark(SkillType::SKILL_GENERAL_LEADERSHIP);
 
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(OrderTextKeys::GIVE_ORDER_SUMMON));
 
     MapPtr map = Game::instance().get_current_map();

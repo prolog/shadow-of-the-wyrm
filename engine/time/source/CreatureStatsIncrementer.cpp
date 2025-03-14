@@ -26,7 +26,7 @@ void CreatureStatsIncrementer::tick(CreaturePtr creature, TilePtr /*tile*/, cons
     if (total_minutes_elapsed % minutes_interval == 0)
     {
       // Only display stat increase messages if the creature is the player.
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature->get_is_player());
       vector<pair<Statistic&, string>> stat_and_incr = {{creature->get_strength_ref(), StatisticTextKeys::STATISTIC_GAIN_STRENGTH},
                                                         {creature->get_dexterity_ref(), StatisticTextKeys::STATISTIC_GAIN_DEXTERITY},
                                                         {creature->get_agility_ref(), StatisticTextKeys::STATISTIC_GAIN_AGILITY},

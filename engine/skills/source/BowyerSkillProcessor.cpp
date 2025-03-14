@@ -72,7 +72,7 @@ bool BowyerSkillProcessor::check_for_bough(CreaturePtr creature)
 
   if (has_bough == false)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BOWYER_INSUFFICIENT_COMPONENTS));
     manager.send();
@@ -118,7 +118,7 @@ void BowyerSkillProcessor::create_bowyer_item(const string& item_base_id, const 
     tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
   }
 
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   manager.add_new_message(ActionTextKeys::get_bowyer_message(item->get_usage_description_sid()));
   manager.send();
 }

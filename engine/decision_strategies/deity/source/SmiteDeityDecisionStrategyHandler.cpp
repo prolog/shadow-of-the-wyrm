@@ -61,7 +61,7 @@ DeityDecisionImplications SmiteDeityDecisionStrategyHandler::handle_decision(Cre
 
     if (!cdm.empty())
     {
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       manager.add_new_message(StringTable::get(DeityTextKeys::PRAYER_SMITE_DIVINE_LIGHTNING));
       manager.send();
 

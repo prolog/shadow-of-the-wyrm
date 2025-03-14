@@ -283,7 +283,7 @@ TEST(SW_World_Creature, count_items)
 {
   Creature c;
 
-  EXPECT_EQ(0, c.count_items());
+  EXPECT_EQ(static_cast<uint>(0), c.count_items());
 
   ItemPtr first_item = std::make_shared<Amulet>();
   first_item->set_quantity(2);
@@ -291,13 +291,13 @@ TEST(SW_World_Creature, count_items)
   Equipment& e = c.get_equipment();
   e.set_item(first_item, EquipmentWornLocation::EQUIPMENT_WORN_NECK);
 
-  EXPECT_EQ(2, c.count_items());
+  EXPECT_EQ(static_cast<uint>(2), c.count_items());
   IInventoryPtr i = c.get_inventory();
   ItemPtr second_item = std::make_shared<Amulet>();
   second_item->set_quantity(5);
   i->add_front(second_item);
 
-  EXPECT_EQ(7, c.count_items());
+  EXPECT_EQ(static_cast<uint>(7), c.count_items());
 }
 
 TEST(SW_World_Creature, breathes_types)

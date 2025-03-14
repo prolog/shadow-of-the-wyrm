@@ -557,7 +557,7 @@ void ScriptEngine::log_error()
 
   // Add a message to the message manager.
   string ui_error = GameEnvTextKeys::get_lua_error(error);
-  IMessageManager& manager = MM::instance();
+  IMessageManager& manager = MMF::instance();
   manager.add_new_message(ui_error);
   manager.send();
 

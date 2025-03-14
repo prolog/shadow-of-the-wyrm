@@ -53,7 +53,7 @@ void CreatureDeathManager::add_creature_death_messages(CreaturePtr attack_creatu
   // removing it from the map, so that view map checks work as expected.
   // Otherwise, the creature will already be gone from the other creatures'
   // view maps.
-  IMessageManager& manager = MM::instance(MessageTransmit::FOV, death_creature, GameUtils::is_player_among_creatures(attack_creature, death_creature));
+  IMessageManager& manager = MMF::instance(MessageTransmit::FOV, death_creature, GameUtils::is_player_among_creatures(attack_creature, death_creature));
 
   // If the creature was killed by another creature, get a message of the form
   // "the foo is killed!".  Otherwise, if the creature was killed by something

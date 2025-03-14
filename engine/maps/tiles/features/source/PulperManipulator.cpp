@@ -17,7 +17,7 @@ void PulperManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TileP
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_PULPER));
     manager.send();
   }
@@ -29,7 +29,7 @@ bool PulperManipulator::handle(TilePtr tile, CreaturePtr creature)
 
   if (creature && tile)
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     ItemPtr pulp_item = get_item_to_pulp(creature);
 
     if (pulp_item != nullptr)

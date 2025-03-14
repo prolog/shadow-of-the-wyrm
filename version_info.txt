@@ -11,6 +11,8 @@ Shadow of the Wyrm v1.8.2 "Fampas"
 
 - Shopkeepers' default message now references restocks (Lustrecia).
 
+- Updates to use Google Test v1.16.
+
 - More names.
 
 Shadow of the Wyrm v1.8.0 "Sergio Assad"

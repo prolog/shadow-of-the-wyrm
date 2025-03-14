@@ -17,7 +17,7 @@ ActionCostValue SearchAction::search(CreaturePtr creature, const bool actively_s
   if (creature && creature->get_is_player())
   {
     MapPtr current_map = Game::instance().get_current_map();
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     CurrentCreatureAbilities cca;
     SkillManager sm;
 

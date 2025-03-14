@@ -119,7 +119,7 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
           if (CoordUtils::are_coordinates_adjacent(attack_c, defend_c) &&
               RNG::percent_chance(ucc.calculate_pct_chance_free_kick(creature)))
           {
-            IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+            IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
             manager.add_new_message(ActionTextKeys::get_kick_message(creature->get_description_sid(), creature->get_is_player()));
                     
             // The kick is free - it's considered part of the primary attack -
@@ -259,7 +259,7 @@ void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature
       if (!attacked_creature->get_is_player())
       {
         string cry_out_message = ActionTextKeys::get_cry_out_message(StringTable::get(attacked_creature->get_description_sid()));
-        IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacking_creature->get_is_player());
+        IMessageManager& manager = MMF::instance(MessageTransmit::FOV, attacked_creature, attacking_creature->get_is_player());
         manager.add_new_message(cry_out_message);
         manager.send();
       }
@@ -366,7 +366,7 @@ void CombatManager::add_counter_strike_message(CreaturePtr attacking_creature, C
     CreatureDescriber cd(attacking_creature, attacked_creature, true);
     string desc = cd.describe();
     string counter_message = CombatTextKeys::get_counter_message(attacked_creature->get_is_player(), desc);
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, (attacking_creature->get_is_player() || attacked_creature->get_is_player()));
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, attacked_creature, (attacking_creature->get_is_player() || attacked_creature->get_is_player()));
 
     manager.add_new_message(counter_message);
     manager.send();
@@ -438,7 +438,7 @@ bool CombatManager::handle_scything_if_necessary(CreaturePtr attacking_creature,
           // Show a "You/monster follow through!" message, but only once.
           if (message_shown == false)
           {
-            IMessageManager& manager = MM::instance(MessageTransmit::SELF, attacking_creature, attacking_creature->get_is_player());
+            IMessageManager& manager = MMF::instance(MessageTransmit::SELF, attacking_creature, attacking_creature->get_is_player());
             manager.add_new_message(CombatTextKeys::get_scything_message(attacking_creature->get_is_player(), attacking_creature->get_description_sid()));
             manager.send();
 
@@ -640,7 +640,7 @@ void CombatManager::handle_draining_if_necessary(CreaturePtr attacking_creature,
     int max_drain = std::max<int>(static_cast<int>(damage_dealt * CombatConstants::DRAIN_MULTIPLIER), 1);
     int drain_amt = pt.transfer(attacking_creature, max_drain, PointsTransferType::POINTS_TRANSFER_HP);
 
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
     string attacking_creature_desc = (attacking_creature != nullptr) ? StringTable::get(attacking_creature->get_description_sid()) : "";
     string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature, false);
 
@@ -667,7 +667,7 @@ void CombatManager::handle_ethereal_if_necessary(CreaturePtr attacking_creature,
     int max_eth = std::max<int>(static_cast<int>(damage_dealt * CombatConstants::ETHEREAL_MULTIPLIER), 1);
     int ethereal_amt = pt.transfer(attacking_creature, max_eth, PointsTransferType::POINTS_TRANSFER_AP);
 
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
     string attacking_creature_desc = (attacking_creature != nullptr) ? StringTable::get(attacking_creature->get_description_sid()) : "";
     string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature, false);
 
@@ -689,7 +689,7 @@ void CombatManager::handle_explosive_if_necessary(CreaturePtr attacking_creature
   if (damage_info.get_explosive() && attacked_creature != nullptr && map)
   {
     // Add a message about the explosion.
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, attacked_creature, attacked_creature && attacked_creature->get_is_player());
     string attacking_creature_desc = (attacking_creature != nullptr) ? StringTable::get(attacking_creature->get_description_sid()) : "";
     string creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature, false);
 
@@ -1008,7 +1008,7 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
 
     if (!message_sid.empty())
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacked_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
+      IMessageManager& manager = MMF::instance(MessageTransmit::FOV, attacked_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
       manager.add_new_message(StringTable::get(message_sid));
     }
 
@@ -1068,7 +1068,7 @@ void CombatManager::deal_damage(CreaturePtr combat_attacking_creature, CreatureP
         if (no_exp)
         {
           // Add no-exp kill msg.
-          IMessageManager& manager = MM::instance(MessageTransmit::SELF, attacking_creature, attacking_creature->get_is_player());
+          IMessageManager& manager = MMF::instance(MessageTransmit::SELF, attacking_creature, attacking_creature->get_is_player());
           manager.add_new_message(StringTable::get(CombatTextKeys::COMBAT_NO_EXP_KILL));
         }
         else
@@ -1175,7 +1175,7 @@ void CombatManager::add_combat_message(CreaturePtr creature, CreaturePtr attacke
   DamageText dt;
 
   // Display combat information.
-  IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
   Colour colour = highlight ? Colour::COLOUR_RED : dt.get_colour(attacked_creature);
 
   manager.add_new_message(combat_message, colour);
@@ -1184,7 +1184,7 @@ void CombatManager::add_combat_message(CreaturePtr creature, CreaturePtr attacke
 
 void CombatManager::send_combat_messages(CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
   manager.send();
 }
 
@@ -1378,7 +1378,7 @@ bool CombatManager::knock_back_creature_if_necessary(const AttackType attack_typ
     {
       // If the creature was knocked back, and if it is appropriate to do so,
       // add a message.
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, attacking_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
+      IMessageManager& manager = MMF::instance(MessageTransmit::FOV, attacking_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
       string knock_back_msg = ActionTextKeys::get_knock_back_message(attacked_creature->get_description_sid(), attacked_creature->get_is_player());
 
       manager.add_new_message(knock_back_msg);

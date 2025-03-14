@@ -5,7 +5,7 @@ different pieces of software to build it.
 
 Basic toolchain:
 
-- Visual Studio 2019 (e.g., the free Community Edition)
+- Visual Studio 2022
 - Lua 5.1 with the LUA_DEV environment variable set
 
 Source:
@@ -14,11 +14,11 @@ Source:
 The following dependencies are used (environment variable in parens):
 
 - Boost 1.72 (BOOST_DIR)
-- Google Test 1.8 (GTEST_DIR)
+- Google Test 1.16 (GTEST_DIR)
 - Xerces-C 3.2.1 (XERCES_DIR)
 - zlib-1.2.11 (ZLIB_DIR)
 - pdcurses (CURSES_DIR)
-- SDL 2.0.12 (SDL_DIR), plus SDL2_mixer, SDL2_image
+- SDL 2.0.20 (SDL_DIR), plus SDL2_mixer, SDL2_image
 
 Download each of the dependencies, build, and then set the environment
 variables appropriately.

@@ -36,7 +36,7 @@ void SlotMachineManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, 
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_SLOT_MACHINE));
     manager.send();
   }
@@ -65,7 +65,7 @@ bool SlotMachineManipulator::handle(TilePtr tile, CreaturePtr creature)
 
       string message = TextMessages::get_slot_machine_message(cost, pct_chance_win, win_amount);
       
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       manager.add_new_confirmation_message(TextMessages::get_confirmation_message(message));
       bool play = creature->get_decision_strategy()->get_confirmation();
 

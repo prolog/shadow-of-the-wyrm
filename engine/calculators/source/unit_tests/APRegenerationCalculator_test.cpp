@@ -31,6 +31,6 @@ TEST(SW_Engine_Calculators_APRegenerationCalculator, minutes_per_ap)
   will.set_current(99);
   creature->set_willpower(will);
 
-  EXPECT_EQ(4, aprc.calculate_minutes_per_ap_tick(creature, tile));
+  EXPECT_EQ(static_cast<uint>(4), aprc.calculate_minutes_per_ap_tick(creature, tile));
 }
 

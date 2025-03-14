@@ -160,7 +160,7 @@ tuple<bool, int, Rarity> MapCreatureGenerator::generate_random_creatures(MapPtr 
     generation_list = cgm.generate_ancient_beasts(max_danger_level, map_type, map_terrain_type).get();
   }
 
-  IMessageManager& manager = MM::instance();
+  IMessageManager& manager = MMF::instance();
   CreatureFactory cf;
   CreatureGenerationValuesMap& cgvm = game.get_creature_generation_values_ref();
   TileMovementConfirmation tmc;

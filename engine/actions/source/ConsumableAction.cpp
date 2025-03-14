@@ -174,7 +174,7 @@ void ConsumableAction::gain_resistances_from_consumable(CreaturePtr creature, Co
 
     if (added_msg && creature->get_is_player())
     {
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       manager.send();
     }
   }
@@ -190,7 +190,7 @@ bool ConsumableAction::add_consumable_message_if_necessary(CreaturePtr creature,
   {
     string res_msg = StringTable::get(res.get_gain_message_sid());
 
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(res_msg);
 
     added_msg = true;

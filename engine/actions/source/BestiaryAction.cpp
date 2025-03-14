@@ -26,7 +26,7 @@ BestiaryAction::BestiaryAction()
 ActionCostValue BestiaryAction::display_creature_information(CreaturePtr creature, const string& creature_search_text, CreaturePtr bestiary_creature_instance) const
 {
   string search_text = creature_search_text;
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   // If we need to display creature information, prompt for some creature
   // details.

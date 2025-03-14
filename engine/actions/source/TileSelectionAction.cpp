@@ -98,7 +98,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const str
   pair<bool, ActionCostValue> command_result(false, 0);
   
   Game& game = Game::instance();
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   
   if (creature)
   {
@@ -292,7 +292,7 @@ void TileSelectionAction::describe_current_tile(CreaturePtr creature, const Coor
 
   bool show_distance = game.get_settings_ref().get_setting_as_bool(Setting::SHOW_DISTANCE_ON_EXAMINE);
 
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   TileDescription td(show_distance, show_tile_description, show_feature_description, show_creature_description, show_item_descriptions);
   string tile_desc = td.describe(creature, source, selected_coord, selected_tile, tile_exists_in_fov_map, is_world_map);
 
@@ -315,7 +315,7 @@ bool TileSelectionAction::is_tile_in_range_and_add_message_if_not(CreaturePtr cr
   {
     tile_in_range = false;
     
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     
     string target_too_far = StringTable::get(CombatTextKeys::COMBAT_TARGET_TOO_FAR_AWAY);
     manager.clear_if_necessary();

@@ -132,7 +132,7 @@ string CharacterDumper::str() const
   AttackDumper attack_dumper(creature, num_cols);
   ss << attack_dumper.str() << endl << endl;
 
-  MessageBufferDumper mbd(MM::instance(), num_cols);
+  MessageBufferDumper mbd(MMF::instance(), num_cols);
   ss << mbd.str() << endl << endl;
 
   MortuaryDumper mortuary_dumper(creature, num_cols);

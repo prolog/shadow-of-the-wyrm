@@ -70,7 +70,7 @@ bool FletcherySkillProcessor::check_for_branch(CreaturePtr creature)
 
   if (has_branch == false)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FLETCHERY_INSUFFICIENT_COMPONENTS));
     manager.send();
@@ -126,7 +126,7 @@ void FletcherySkillProcessor::create_projectiles(const string& item_base_id, con
     tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
   }
 
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   manager.add_new_message(ActionTextKeys::get_fletchery_message(item->get_usage_description_sid()));
   manager.send();
 }

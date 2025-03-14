@@ -83,7 +83,7 @@ ActionCostValue QuaffAction::quaff_potion_off_ground(CreaturePtr creature, const
       ItemIdentifier iid;
 
       string consumable_desc = iid.get_appropriate_usage_description(potion);
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       manager.clear_if_necessary();
       manager.add_new_confirmation_message(TextMessages::get_confirmation_message(ActionTextKeys::get_quaff_confirmation_message(consumable_desc)));
       bool confirm = creature->get_decision_strategy()->get_confirmation();
@@ -214,7 +214,7 @@ Spell QuaffAction::create_potion_spell(PotionPtr potion)
 void QuaffAction::add_quaff_message(CreaturePtr creature, const string& quaff_message)
 {
   // Display an appropriate message
-  IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
   
   manager.add_new_message(quaff_message);
   manager.send();

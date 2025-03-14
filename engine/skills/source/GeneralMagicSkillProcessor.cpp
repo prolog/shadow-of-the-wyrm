@@ -22,7 +22,7 @@ ActionCostValue GeneralMagicSkillProcessor::process(CreaturePtr creature, MapPtr
 
   if (creature && map)
   {
-    IMessageManager& self_mm = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& self_mm = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     bool has_spellbooks = creature->get_inventory()->has_item_type(ItemType::ITEM_TYPE_SPELLBOOK);
 
     if (has_spellbooks)
@@ -90,7 +90,7 @@ ActionCostValue GeneralMagicSkillProcessor::incinerate_spellbook(CreaturePtr cre
   {
     Game& game = Game::instance();
 
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     ItemIdentifier iid;
     string item_usage_desc_sid = iid.get_appropriate_usage_description(book);
 

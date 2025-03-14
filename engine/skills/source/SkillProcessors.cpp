@@ -15,7 +15,7 @@ ActionCostValue DefaultSkillProcessor::process(CreaturePtr creature, MapPtr map)
 
   if (creature && creature->get_is_player() && map && !message_sid.empty())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
 
     manager.add_new_message(StringTable::get(message_sid));
     manager.send();

@@ -20,7 +20,7 @@ void FenceManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePt
   if (creature && creature->get_is_player())
   {
     FenceCalculator fc;
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     string msg_sid = ActionTextKeys::ACTION_FENCE_KICK_SLAT;
 
     if (RNG::percent_chance(fc.calc_pct_chance_break(creature)))
@@ -56,7 +56,7 @@ bool FenceManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
 {
   if (creature != nullptr && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FENCE_WOBBLE_POST));
     manager.send();
   }

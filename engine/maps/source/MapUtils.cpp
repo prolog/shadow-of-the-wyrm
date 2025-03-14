@@ -195,7 +195,7 @@ void MapUtils::swap_places(MapPtr map, CreaturePtr creature, CreaturePtr adjacen
     }
     else
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SWITCH_REFUSED));
 
       manager.send();
@@ -1780,7 +1780,7 @@ void MapUtils::anger_shopkeeper_if_necessary(const Coordinate& c, MapPtr current
         HostilityManager hm;
         hm.set_hostility_to_creature(current_map->get_creature(s_it->second.get_shopkeeper_id()), anger_creature->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
 
-        IMessageManager& manager = MM::instance(MessageTransmit::MAP, anger_creature, true);
+        IMessageManager& manager = MMF::instance(MessageTransmit::MAP, anger_creature, true);
         manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ENRAGED_SHOPKEEPER));
         manager.send();
 
@@ -2010,7 +2010,7 @@ bool MapUtils::add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr
 
   if (creature && tile && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
     if (tile->display_description_on_arrival() || tile->has_extra_description() || has_known_treasure(tile, creature, true) || has_known_shipwreck(nullptr, tile, creature, true))
     {
@@ -2072,7 +2072,7 @@ bool MapUtils::add_message_about_items_on_tile_if_necessary(CreaturePtr creature
       // Send the message
       if (!item_message.empty())
       {
-        IMessageManager& manager = MM::instance();
+        IMessageManager& manager = MMF::instance();
         manager.add_new_message(item_message);
         msg_added = true;
       }
@@ -2239,7 +2239,7 @@ vector<string> MapUtils::place_followers(MapPtr map, CreaturePtr creature, const
       if (!followers.empty())
       {
         // Add a message about feeling abandoned.
-        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+        IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
         manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ABANDONED));
         manager.send();
       }
@@ -2498,7 +2498,7 @@ void MapUtils::update_creatures(MapPtr map)
       Game& game = Game::instance();
       game.get_sound()->play_music_for_event(MusicEvent::MUSIC_EVENT_RESPAWN, false);
 
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       manager.add_new_message_with_pause(StringTable::get(TextKeys::RESPAWN_MESSAGE));
       game.get_current_player()->get_decision_strategy()->get_confirmation();
 

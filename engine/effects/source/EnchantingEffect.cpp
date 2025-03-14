@@ -115,7 +115,7 @@ void EnchantingEffect::add_sid_message(CreaturePtr creature, const string& msg_s
 // All the enchanting messages should be player-only.
 void EnchantingEffect::add_message(CreaturePtr creature, const string& msg)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   manager.add_new_message(msg);
   manager.send();
 }

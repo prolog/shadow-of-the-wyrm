@@ -32,7 +32,7 @@ ItemCodexAction::ItemCodexAction()
 ActionCostValue ItemCodexAction::item_details(CreaturePtr creature) const
 {
   ActionCostValue acv = get_action_cost_value(creature);
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   if (creature != nullptr)
   {
@@ -104,7 +104,7 @@ ActionCostValue ItemCodexAction::item_details(CreaturePtr creature, ItemPtr item
     {
       // Assumption is that it's only ever the player calling this.
       // This is overlaid over the inventory screen, so use an alert.
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       string msg = StringTable::get(ItemTextKeys::ITEM_CODEX_NO_INFORMATION_FOUND);
       manager.alert(msg);
     }

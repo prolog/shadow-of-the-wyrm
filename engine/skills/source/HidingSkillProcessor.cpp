@@ -37,7 +37,7 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
       CurrentCreatureAbilities cca;
 
       TilePtr tile = map->at(map->get_location(creature->get_id()));
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, is_player);
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, is_player);
 
       if (tile != nullptr && tile->has_been_dug() && hc.gets_hole_bonus(creature))
       {

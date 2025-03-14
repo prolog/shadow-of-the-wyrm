@@ -18,7 +18,7 @@ AutomaticMovementAction::AutomaticMovementAction()
 ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature) const
 {
   ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
-  IMessageManager& manager = MM::instance();
+  IMessageManager& manager = MMF::instance();
 
   // Make the creature select a direction.
   CommandFactoryPtr command_factory    = std::make_unique<CommandFactory>();
@@ -99,7 +99,7 @@ ActionCostValue AutomaticMovementAction::rest(CreaturePtr creature) const
 {
   ActionCostValue acv = ActionCostConstants::NO_ACTION;
   MapPtr map = Game::instance().get_current_map();
-  IMessageManager& manager = MM::instance();
+  IMessageManager& manager = MMF::instance();
 
   // Start moving in the requested direction.
   AutomaticMovementCoordinator amc;

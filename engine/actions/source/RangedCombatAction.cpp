@@ -74,7 +74,7 @@ ActionCostValue RangedCombatAction::fire_missile(CreaturePtr creature, const boo
       // that was generated regarding this.
       if (creature->get_is_player())
       {
-        IMessageManager& man = MM::instance();
+        IMessageManager& man = MMF::instance();
         man.add_new_message(ranged_combat_info.second);
         man.send();
       }
@@ -306,7 +306,7 @@ void RangedCombatAction::add_ranged_combat_message(CreaturePtr creature, Creatur
 
       if (!ranged_attack_message.empty())
       {
-        IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+        IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
         manager.add_new_message(ranged_attack_message);
         manager.send();
       }
@@ -355,7 +355,7 @@ bool RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature
     }
 
     // Add a message based on the inventory type, if appropriate.
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(game, creature->get_id()));
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(game, creature->get_id()));
     string msg = inv->get_drop_effect_sid();
 
     if (!msg.empty())
@@ -381,7 +381,7 @@ pair<bool, bool> RangedCombatAction::check_target_tile_for_friendly_creature(Cre
     {
       if (creature->get_is_player())
       {
-        IMessageManager& manager = MM::instance();
+        IMessageManager& manager = MMF::instance();
         manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
         firing_details.first = creature->get_decision_strategy()->get_confirmation();
 

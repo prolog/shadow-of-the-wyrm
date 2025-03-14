@@ -42,7 +42,7 @@ ActionCostValue ScribingSkillProcessor::process(CreaturePtr creature, MapPtr map
           TilePtr creature_tile = MapUtils::get_tile_for_creature(game.get_current_map(), creature);
           creature_tile->get_items()->merge_or_add(created_scroll, InventoryAdditionType::INVENTORY_ADDITION_BACK);
 
-          IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+          IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
           manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SCRIBING_SCROLL_CREATED));
           manager.send();
 
@@ -80,7 +80,7 @@ bool ScribingSkillProcessor::check_for_components(CreaturePtr creature)
 
   if (!has_comp && creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SCRIBING_INSUFFICIENT_COMPONENTS));
 
     manager.send();
@@ -95,7 +95,7 @@ bool ScribingSkillProcessor::check_for_spells(CreaturePtr creature)
 
   if (!has_spells && creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SCRIBING_NO_SPELLS));
 
     manager.send();
@@ -121,7 +121,7 @@ ItemPtr ScribingSkillProcessor::create_scroll(CreaturePtr creature, const string
     {
       if (creature && creature->get_is_player())
       {
-        IMessageManager& manager = MM::instance();
+        IMessageManager& manager = MMF::instance();
         manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SCRIBING_INSUFFICIENT_CASTINGS));
         manager.send();
       }
@@ -142,7 +142,7 @@ ItemPtr ScribingSkillProcessor::create_scroll(CreaturePtr creature, const string
 
           if (spell.get_magic_category() == SkillType::SKILL_MAGIC_DIVINE && !game.do_deities_exist())
           {
-            IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+            IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
             manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_CRAFTING_NO_DEITIES));
             manager.send();
 

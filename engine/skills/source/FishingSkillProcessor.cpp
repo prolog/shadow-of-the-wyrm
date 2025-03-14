@@ -92,7 +92,7 @@ pair<bool, FishingType> FishingSkillProcessor::check_for_fishing_equipment(Creat
 
     if (!fishing_details.first && creature->get_is_player())
     {
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       manager.add_new_message(StringTable::get(bad_eq_msg));
       manager.send();
     }
@@ -128,7 +128,7 @@ pair<bool, WaterType> FishingSkillProcessor::check_for_adjacent_water_tile(Creat
 
     if (!adj_water.first && creature->get_is_player())
     {
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FISHING_NO_WATER));
       manager.send();
     }
@@ -151,7 +151,7 @@ void FishingSkillProcessor::fish(CreaturePtr creature, MapPtr map, const Fishing
       // Add a message about fishing, if appropriate
       if (creature && creature->get_is_player())
       {
-        IMessageManager& manager = MM::instance();
+        IMessageManager& manager = MMF::instance();
         manager.add_new_message(ActionTextKeys::get_random_bait_message(fishing));
         manager.add_new_message(ActionTextKeys::get_fishing_outcome_message(fishing, fot));
         manager.send();
@@ -225,7 +225,7 @@ void FishingSkillProcessor::catch_fish(CreaturePtr creature, MapPtr map, const W
           {
             if (creature && creature->get_is_player())
             {
-              IMessageManager& manager = MM::instance();
+              IMessageManager& manager = MMF::instance();
               manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FISHING_THROW_BACK));
               manager.send();
             }
@@ -258,7 +258,7 @@ void FishingSkillProcessor::catch_item(CreaturePtr creature, MapPtr map)
       generated_item->set_quantity(1);
       IInventoryPtr items = creature_tile->get_items();
 
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
       if (get<0>(CreatureUtils::can_pick_up(creature, generated_item)))
       {

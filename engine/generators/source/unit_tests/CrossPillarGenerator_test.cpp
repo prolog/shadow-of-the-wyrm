@@ -15,7 +15,7 @@ TEST(SW_World_Generators_CrossPillarGenerator, recursive_properties)
 
   map<string, string> rec_properties = fg.get_recursive_properties();
 
-  EXPECT_EQ(2, rec_properties.size());
+  EXPECT_EQ(static_cast<uint>(2), rec_properties.size());
 
   auto r_it = rec_properties.find("CCC");
   EXPECT_TRUE(r_it != rec_properties.end());
@@ -38,7 +38,7 @@ TEST(SW_World_Generators_CrossPillarGenreator, depth_properties)
   fg.set_additional_properties(properties);
   map<string, string> depth_props = fg.get_depth_properties();
 
-  EXPECT_EQ(2, depth_props.size());
+  EXPECT_EQ(static_cast<uint>(2), depth_props.size());
 
   auto d_it = depth_props.find("-55_DEPTH_SOME_PROP");
   EXPECT_TRUE(d_it != depth_props.end());

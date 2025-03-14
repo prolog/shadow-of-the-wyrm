@@ -120,7 +120,7 @@ bool CurrentCreatureAbilities::can_select_movement_direction(CreaturePtr creatur
 
 void CurrentCreatureAbilities::add_ability_message_for_sid(CreaturePtr creature, const string& status_ability_message_sid) const
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(status_ability_message_sid));
   manager.send();

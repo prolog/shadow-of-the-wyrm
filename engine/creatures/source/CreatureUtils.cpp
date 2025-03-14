@@ -75,7 +75,7 @@ void CreatureUtils::add_hunger_level_message_if_necessary(CreaturePtr creature, 
   {
     if (creature && creature->get_is_player())
     {
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
 
       if (hunger_message_sid_map.empty() || hunger_colour_map.empty())
       {
@@ -139,7 +139,7 @@ void CreatureUtils::handle_alignment_change(CreaturePtr creature, const int new_
 
     if (range_before != range_after)
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
       // Champion?  Not anymore!
       ReligionManager rm;
@@ -254,7 +254,7 @@ void CreatureUtils::incr_str(CreaturePtr creature, const bool add_msg)
 
   if (add_msg)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_STRENGTH));
     manager.send();
   }
@@ -274,7 +274,7 @@ void CreatureUtils::incr_dex(CreaturePtr creature, const bool add_msg)
 
   if (add_msg)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_DEXTERITY));
     manager.send();
   }
@@ -294,7 +294,7 @@ void CreatureUtils::incr_agi(CreaturePtr creature, const bool add_msg)
 
   if (add_msg)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_AGILITY));
     manager.send();
   }
@@ -314,7 +314,7 @@ void CreatureUtils::incr_hea(CreaturePtr creature, const bool add_msg)
 
   if (add_msg)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_HEALTH));
     manager.send();
   }
@@ -334,7 +334,7 @@ void CreatureUtils::incr_int(CreaturePtr creature, const bool add_msg)
 
   if (add_msg)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_INTELLIGENCE));
     manager.send();
   }
@@ -354,7 +354,7 @@ void CreatureUtils::incr_wil(CreaturePtr creature, const bool add_msg)
 
   if (add_msg)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_WILLPOWER));
     manager.send();
   }
@@ -374,7 +374,7 @@ void CreatureUtils::incr_cha(CreaturePtr creature, const bool add_msg)
 
   if (add_msg)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_CHARISMA));
     manager.send();
   }
@@ -736,7 +736,7 @@ void CreatureUtils::apply_status_ailments(WearablePtr wearable, CreaturePtr crea
           // play its sound effect here.
           Game::instance().get_sound(creature)->play(status->get_sound_effect());
 
-          IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+          IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
           manager.add_new_message(status->get_application_message(creature));
           manager.send();
         }
@@ -820,7 +820,7 @@ void CreatureUtils::add_removal_message(CreaturePtr creature, const string& sp_i
       // Get the appropriate message manager and set the appropriate message.
       // If the creature is the player, use the spell wear off sid.
       // Otherwise, use the generic spell wear off message for creatures.
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, affects_player);
+      IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, affects_player);
 
       if (creature->get_is_player())
       {
@@ -1172,7 +1172,7 @@ void CreatureUtils::add_piety_message_if_player(CreaturePtr creature)
     ReligionManager rm;
     int new_creature_piety = rm.get_piety_for_active_deity(creature);
 
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     string sac_piety_message = SacrificeTextKeys::get_piety_message(new_creature_piety);
 
     manager.add_new_message(sac_piety_message);

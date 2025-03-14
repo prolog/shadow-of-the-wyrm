@@ -142,7 +142,7 @@ ActionCost ActionManager::ascend(CreaturePtr creature)
     
   if (map_type == MapType::MAP_TYPE_WORLD && creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, true);
 
     string ascend_message = StringTable::get(MovementTextKeys::ACTION_NO_WAY_UP_WORLD_MAP);
 
@@ -354,7 +354,7 @@ ActionCost ActionManager::reload_scripts_assets_and_sids(CreaturePtr creature)
 
   StringTable::load(game.get_sid_ini_filename());
 
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   manager.add_new_message(StringTable::get(GameEnvTextKeys::GAME_ENV_LUA_STATE_CLEARED));
   manager.send();
 
@@ -364,7 +364,7 @@ ActionCost ActionManager::reload_scripts_assets_and_sids(CreaturePtr creature)
 ActionCost ActionManager::run_script_command(CreaturePtr creature)
 {
   Game& game = Game::instance();
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   bool disallow_score_on_exploration = game.get_settings_ref().get_setting_as_bool(Setting::DISALLOW_SCORE_ON_EXPLORATION);
   bool confirmation = (game.should_count_score() == false);
@@ -479,7 +479,7 @@ ActionCost ActionManager::switch_graphics_mode(CreaturePtr creature)
     string display_name = display->get_name();
     string display_msg = ActionTextKeys::get_graphics_mode_switch_message(display_name);
 
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(display_msg);
     manager.send();
   }
@@ -513,7 +513,7 @@ ActionCost ActionManager::switch_colour_palettes(CreaturePtr creature)
 
       // Display msg
       string palette_msg = ActionTextKeys::get_palette_switch_message(name_sid);
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
 
       display->clear_messages();
       manager.add_new_message(palette_msg);
@@ -538,7 +538,7 @@ ActionCost ActionManager::toggle_window_mode(CreaturePtr creature)
   if (display != nullptr && creature != nullptr && creature->get_is_player())
   {
     string result_sid = display->toggle_fullscreen();
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(result_sid));
     manager.send();
   }
@@ -814,7 +814,7 @@ ActionCost ActionManager::fire_missile(CreaturePtr creature, const bool skip_tar
   {
     if (creature && creature->get_is_player())
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, true);
       string combat_message = StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_BLIND_RANGED_COMBAT);
 
       manager.add_new_message(combat_message);
@@ -836,7 +836,7 @@ ActionCost ActionManager::rest(CreaturePtr creature)
 
   if (creature && creature->get_is_player() && map && map->get_map_type() != MapType::MAP_TYPE_WORLD)
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
 
     manager.clear_if_necessary();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_RESTING));
