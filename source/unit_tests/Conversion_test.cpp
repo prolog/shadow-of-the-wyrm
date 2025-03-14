@@ -71,11 +71,11 @@ TEST(SW_Engine_ConversionRoutines, tokenize)
   string test1 = "fdsa\nasdf\nbbb";
   vector<string> t1_v = String::tokenize(test1, "\n", false);
 
-  EXPECT_EQ(3, t1_v.size());
+  EXPECT_EQ(static_cast<uint>(3), t1_v.size());
 
   t1_v = String::tokenize(test1, "\n", true);
 
-  EXPECT_EQ(5, t1_v.size());
+  EXPECT_EQ(static_cast<uint>(5), t1_v.size());
 }
 
 TEST(SW_Engine_ConversionRoutines, csv_to_vector)
@@ -105,8 +105,8 @@ TEST(SW_Engine_ConversionRoutines, csv_to_string_set)
   vector<string> exp_v_no_repeat = { "1", "2", "3" };
   vector<string> exp_v_repeat = { "1", "2", "3", "4", "5" };
 
-  EXPECT_EQ(3, csv_set_no_repeat.size());
-  EXPECT_EQ(5, csv_set_repeat.size());
+  EXPECT_EQ(static_cast<uint>(3), csv_set_no_repeat.size());
+  EXPECT_EQ(static_cast<uint>(5), csv_set_repeat.size());
 
   for (const auto& ei : exp_v_no_repeat)
   {
@@ -125,7 +125,7 @@ TEST(SW_Engine_ConversionRoutines, csv_to_int_vector)
   string csv = "1,5,fish,3,4";
   vector<int> i_vec = String::create_int_vector_from_csv_string(csv);
 
-  EXPECT_EQ(4, i_vec.size());
+  EXPECT_EQ(static_cast<uint>(4), i_vec.size());
   EXPECT_EQ(expected, i_vec);
 }
 
@@ -135,7 +135,7 @@ TEST(SW_Engine_ConversionRoutines, csv_to_colour_vector)
   string csv = "1,3,fish,9,4";
   vector<Colour> c_vec = String::create_colour_vector_from_csv_string(csv);
 
-  EXPECT_EQ(4, c_vec.size());
+  EXPECT_EQ(static_cast<uint>(4), c_vec.size());
   EXPECT_EQ(expected, c_vec);
 }
 
@@ -255,12 +255,12 @@ TEST(SW_Engine_ConversionRoutines, split)
 
   vector<string> strs = String::split(str_ns, delim);
 
-  EXPECT_EQ(1, strs.size());
+  EXPECT_EQ(static_cast<size_t>(1), strs.size());
   EXPECT_EQ(str_ns, strs.at(0));
 
   strs = String::split(str_sp, delim);
 
-  EXPECT_EQ(2, strs.size());
+  EXPECT_EQ(static_cast<size_t>(2), strs.size());
   EXPECT_EQ("abc ", strs.at(0));
   EXPECT_EQ(" test", strs.at(1));
 }
