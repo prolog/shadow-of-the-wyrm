@@ -36,7 +36,7 @@ TEST(SW_Engine_Creatures_CreatureGenerationIndex, get_danger_level)
   CreatureGenerationIndex cgi(creature_list);
   CreatureGenerationList cgl = cgi.get(3);
 
-  EXPECT_EQ(1, cgl.size());
+  EXPECT_EQ(static_cast<size_t>(1), cgl.size());
   EXPECT_EQ(3, cgl[0].get_creature_generation_values().get_danger_level());
 
   CreatureGenerationIndex cgi_empty;

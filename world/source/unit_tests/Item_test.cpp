@@ -10,9 +10,9 @@ TEST(SW_World_Item, quantity_weight)
   Weight w(10);
   amulet->set_weight(w);
 
-  EXPECT_EQ(20, amulet->get_weight(2).get_weight());
+  EXPECT_EQ(static_cast<uint>(20), amulet->get_weight(2).get_weight());
 
-  EXPECT_EQ(30, amulet->get_weight(3).get_weight());
+  EXPECT_EQ(static_cast<uint>(30), amulet->get_weight(3).get_weight());
 }
 
 TEST(SW_World_Item, total_weight)
@@ -24,7 +24,7 @@ TEST(SW_World_Item, total_weight)
 
   amulet->set_weight(w);
 
-  EXPECT_EQ(48, amulet->get_total_weight().get_weight());
+  EXPECT_EQ(static_cast<uint>(48), amulet->get_total_weight().get_weight());
 }
 
 TEST(SW_World_Item, matches)
@@ -39,6 +39,6 @@ TEST(SW_World_Item, matches)
   ItemPtr amulet2 = std::make_shared<Amulet>();
   *amulet2 = *amulet;
 
-  EXPECT_EQ(2, amulet2->get_quantity());
+  EXPECT_EQ(static_cast<uint>(2), amulet2->get_quantity());
   EXPECT_TRUE(amulet->matches(amulet2));
 }

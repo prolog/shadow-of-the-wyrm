@@ -64,9 +64,9 @@ TEST(SW_World_Wand, no_range_when_zero_charges)
   wand.set_range(5);
   wand.set_charges(4);
 
-  EXPECT_EQ(5, wand.get_range());
+  EXPECT_EQ(static_cast<uint>(5), wand.get_range());
 
   wand.set_charges(0);
 
-  EXPECT_EQ(0, wand.get_range());
+  EXPECT_EQ(static_cast<uint>(0), wand.get_range());
 }

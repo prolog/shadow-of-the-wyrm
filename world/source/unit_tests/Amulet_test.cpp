@@ -20,7 +20,7 @@ TEST(SW_World_Amulet, enchantment_value_progression)
   Amulet a;
   a.set_value(1);
 
-  vector<int> new_values = { 41, 81, 121, 161 };
+  vector<uint> new_values = { 41, 81, 121, 161 };
 
   for (int i = 0; i < 4; i++)
   {
@@ -42,7 +42,7 @@ TEST(SW_World_Amulet, smithing_value_progression)
 
   a.set_value(300);
 
-  vector<int> new_values = { 340, 380, 420, 462 /* last one becomes 10% */ };
+  vector<uint> new_values = { 340, 380, 420, 462 /* last one becomes 10% */ };
 
   for (int i = 0; i < 4; i++)
   {

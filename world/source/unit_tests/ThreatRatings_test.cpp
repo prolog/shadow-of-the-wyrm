@@ -30,7 +30,7 @@ TEST(SW_World_ThreatRatings, clear)
   tr.clear();
   ThreatMap tm = tr.get_all_threats();
 
-  EXPECT_EQ(0, tm.size());
+  EXPECT_EQ(static_cast<size_t>(0), tm.size());
 }
 
 TEST(SW_World_ThreatRatings, has_threat)

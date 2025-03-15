@@ -9,7 +9,7 @@ TEST(SW_World_WaterInventory, add)
 
   bool val = wi.add(amulet);
   EXPECT_FALSE(val);
-  EXPECT_EQ(0, wi.size());
+  EXPECT_EQ(static_cast<uint>(0), wi.size());
 
   ItemPtr fl_amulet = std::make_shared<Amulet>();
   fl_amulet->set_material_type(MaterialType::MATERIAL_TYPE_GOLD);
@@ -17,7 +17,7 @@ TEST(SW_World_WaterInventory, add)
   val = wi.add(fl_amulet);
 
   EXPECT_TRUE(val);
-  EXPECT_EQ(1, wi.size());
+  EXPECT_EQ(static_cast<uint>(1), wi.size());
 }
 
 TEST(SW_World_WaterInventory, add_front)
@@ -28,7 +28,7 @@ TEST(SW_World_WaterInventory, add_front)
 
   bool val = wi.add_front(amulet);
   EXPECT_FALSE(val);
-  EXPECT_EQ(0, wi.size());
+  EXPECT_EQ(static_cast<uint>(0), wi.size());
 
   ItemPtr fl_amulet = std::make_shared<Amulet>();
   fl_amulet->set_material_type(MaterialType::MATERIAL_TYPE_GOLD);
@@ -37,18 +37,18 @@ TEST(SW_World_WaterInventory, add_front)
   val = wi.add_front(fl_amulet);
 
   EXPECT_TRUE(val);
-  EXPECT_EQ(1, wi.size());
+  EXPECT_EQ(static_cast<uint>(1), wi.size());
 
   ItemPtr fl_amulet_2 = std::make_shared<Amulet>();
   fl_amulet_2->set_id("0");
   fl_amulet_2->set_floats(true);
   wi.add_front(fl_amulet_2);
 
-  EXPECT_EQ(2, wi.size());
+  EXPECT_EQ(static_cast<uint>(2), wi.size());
 
   const auto& items = wi.get_items_cref();
 
-  EXPECT_EQ(2, items.size());
+  EXPECT_EQ(static_cast<uint>(2), items.size());
   int cnt = 0;
 
   for (ItemPtr i : items)
@@ -64,15 +64,15 @@ TEST(SW_World_WaterInventory, merge_or_add)
   item->set_floats(true);
   wi.merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
 
-  EXPECT_EQ(1, wi.size());
+  EXPECT_EQ(static_cast<uint>(1), wi.size());
 
   item = std::make_shared<Amulet>();
   item->set_floats(true);
   wi.merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
 
   auto ilist = wi.get_items_cref();
-  EXPECT_EQ(1, ilist.size());
-  EXPECT_EQ(2, ilist.front()->get_quantity());
+  EXPECT_EQ(static_cast<uint>(1), ilist.size());
+  EXPECT_EQ(static_cast<uint>(2), ilist.front()->get_quantity());
 }
 
 TEST(SW_World_WaterInventory, merge)
@@ -92,8 +92,8 @@ TEST(SW_World_WaterInventory, merge)
   wi.merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
 
   auto ilist = wi.get_items_cref();
-  EXPECT_EQ(1, ilist.size());
-  EXPECT_EQ(2, ilist.front()->get_quantity());
+  EXPECT_EQ(static_cast<uint>(1), ilist.size());
+  EXPECT_EQ(static_cast<uint>(2), ilist.front()->get_quantity());
 }
 
 TEST(SW_World_WaterInventory, set_items)
@@ -110,7 +110,7 @@ TEST(SW_World_WaterInventory, set_items)
 
   items = wi.get_items_ref();
   
-  EXPECT_EQ(1, items.size());
+  EXPECT_EQ(static_cast<uint>(1), items.size());
   EXPECT_EQ("abc123", items.front()->get_id());
 
   items.clear();
@@ -128,7 +128,7 @@ TEST(SW_World_WaterInventory, set_items)
 
   items = wi.get_items_cref();
 
-  EXPECT_EQ(2, items.size());
+  EXPECT_EQ(static_cast<uint>(2), items.size());
   EXPECT_EQ("cde321", items.front()->get_id());
   EXPECT_EQ("321321", items.back()->get_id());
 }
@@ -146,7 +146,7 @@ TEST(SW_World_WaterInventory, add_items)
 
   items = wi.get_items_ref();
 
-  EXPECT_EQ(1, items.size());
+  EXPECT_EQ(static_cast<uint>(1), items.size());
   EXPECT_EQ("abc123", items.front()->get_id());
 
   items.clear();
@@ -164,7 +164,7 @@ TEST(SW_World_WaterInventory, add_items)
 
   items = wi.get_items_cref();
 
-  EXPECT_EQ(3, items.size());
+  EXPECT_EQ(static_cast<uint>(3), items.size());
   EXPECT_EQ("abc123", items.front()->get_id());
   EXPECT_EQ("321321", items.back()->get_id());
 }
