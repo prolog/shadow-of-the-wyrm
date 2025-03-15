@@ -4,7 +4,7 @@ Shadow of the Wyrm can be built using premake5 and makefiles.  Before you
 start, ensure you have your distribution's developer packages for:
 
 - premake5 or premake4
-- Boost (1.72)
+- Boost (1.87)
 - Google Test 1.16, if you want to build debug mode, which includes unit 
   tests
 - Xerces-C 3.2.1

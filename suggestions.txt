@@ -9,7 +9,9 @@ Me:
 - git push --tags
 - Audio enhancements off for testing
 - The Ybari/Asturias?
-- BORING VERION: upgrade xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
+- regular stanza updates again! XII should be the brothers/rebels returning to
+  farstead, XIII Tel's group.
+- BORING VERION: upgrade xerces-c, boost, SDL2, SDL2_mixer, SDL2_image
 - Caldera's water should be death - swimming or descending
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.
@@ -526,3 +528,6 @@ Lustrecia:
 - More or less the same as above, "Apply a nearby terrain feature" is a single line in manual which does not elaborate on what a terrain feature even is. I'm pretty sure I figured that it is for using crafting stations by accident, and opening/closing doors was an accident too. On the other hand, bed is not a terrain feature, while I expected that using "a" near a bed would make me rest on it.
 
 - It would be nice if merchant's dialogue hinted on the restock somehow, maybe something along the lines of "I'm getting new wares delivered in a couple of weeks, come back again!".
+
+marwff:
+- Way into Telari without talking
