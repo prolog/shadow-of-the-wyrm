@@ -65,7 +65,7 @@ TEST(SW_World_Tiles_Tile, transform_from_solid_rock_inventory)
   ItemPtr amulet = std::make_shared<Amulet>();
   earth_tile->get_items()->add_front(amulet);
 
-  EXPECT_EQ(1, earth_tile->get_items()->count_items());
+  EXPECT_EQ(static_cast<uint>(1), earth_tile->get_items()->count_items());
 }
 
 TEST(SW_World_Tiles_Tile, extra_desc_sids)
@@ -80,7 +80,7 @@ TEST(SW_World_Tiles_Tile, extra_desc_sids)
   tile.set_additional_property("PROPERTY11", "123");
   tile.set_additional_property("PROPERTY22", "123");
 
-  EXPECT_EQ(2, tile.get_extra_description_sids().size());
+  EXPECT_EQ(static_cast<size_t>(2), tile.get_extra_description_sids().size());
 }
 
 TEST(SW_World_Tiles_Tile, set_default_properties)
@@ -216,7 +216,7 @@ TEST(SW_World_Tiles_Tile, set_items)
 
   items = tile->get_items();
 
-  EXPECT_EQ(2, items->count_items());
+  EXPECT_EQ(static_cast<uint>(2), items->count_items());
 }
 
 TEST(SW_World_Tile, add_items)
@@ -242,7 +242,7 @@ TEST(SW_World_Tile, add_items)
 
   tile->add_items(items2);
 
-  EXPECT_EQ(4, items->count_items());
+  EXPECT_EQ(static_cast<uint>(4), items->count_items());
 }
 
 TEST(SW_World_Tiles_Tile, copy_entities)
@@ -268,7 +268,7 @@ TEST(SW_World_Tiles_Tile, copy_entities)
 
   EXPECT_TRUE(tile2->has_creature());
   EXPECT_TRUE(tile2->has_feature());
-  EXPECT_EQ(2, tile2->get_items()->count_items());
+  EXPECT_EQ(static_cast<uint>(2), tile2->get_items()->count_items());
 }
 
 TEST(SW_World_Tiles_Tile, has_treasure)
