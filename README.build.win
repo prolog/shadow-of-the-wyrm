@@ -16,7 +16,7 @@ The following dependencies are used (environment variable in parens):
 - Boost 1.72 (BOOST_DIR)
 - Google Test 1.16 (GTEST_DIR)
 - Xerces-C 3.2.1 (XERCES_DIR)
-- zlib-1.2.11 (ZLIB_DIR)
+- zlib-1.3.1 (ZLIB_DIR)
 - pdcurses (CURSES_DIR)
 - SDL 2.0.20 (SDL_DIR), plus SDL2_mixer, SDL2_image
 
