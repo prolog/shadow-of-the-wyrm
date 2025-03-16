@@ -11,7 +11,7 @@ start, ensure you have your distribution's developer packages for:
 - zlib-1.3.1
 - ncurses or equivalent
 - Lua 5.1
-- SDL 2.0.20, plus SDL2_mixer, SDL2_image
+- SDL 2.32.0, plus SDL2_mixer (2.8.1), SDL2_image (2.8.8)
 
 The premake build scripts work for Fedora.  Other distros may require 
 updates to either the premake scripts or the generated makefiles to get 

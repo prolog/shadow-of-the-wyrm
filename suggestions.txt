@@ -9,9 +9,9 @@ Me:
 - git push --tags
 - Audio enhancements off for testing
 - The Ybari/Asturias?
+- no-talk telari: what if the entrance was deep below wintersea catacombs?
 - regular stanza updates again! XII should be the brothers/rebels returning to
   farstead, XIII Tel's group.
-- BORING VERION: upgrade SDL2, SDL2_mixer, SDL2_image
 - Caldera's water should be death - swimming or descending
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.
