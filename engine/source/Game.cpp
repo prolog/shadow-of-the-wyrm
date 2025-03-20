@@ -687,10 +687,18 @@ void Game::go()
           // stated location?
           if (current_creature != nullptr)
           {
-            TilePtr cur_cr_tile = current_map->at(current_map->get_location(current_creature->get_id()));
+            string cur_cr_id = current_creature->get_id();
+            Coordinate cr_loc = current_map->get_location(current_creature->get_id());
+            TilePtr cur_cr_tile = current_map->at(cr_loc);
 
-            if (cur_cr_tile && (!cur_cr_tile->has_creature() || cur_cr_tile->get_creature()->get_id() != current_creature->get_id()))
+            if (cur_cr_tile && (!cur_cr_tile->has_creature() || cur_cr_tile->get_creature()->get_id() != cur_cr_id))
             {
+              Log& log = Log::instance();
+              if (log.debug_enabled())
+              {
+                log.debug("Creature with ID " + cur_cr_id + " no longer exists at its stated map location (" + String::create_string_from_coordinate(cr_loc) + "). Removing. Creature is actually at (" + current_map->get_creature_location_debug(cur_cr_id) + ").");
+              }
+
               current_map->remove_creature(current_creature->get_id());
               current_creature = nullptr;
             }
