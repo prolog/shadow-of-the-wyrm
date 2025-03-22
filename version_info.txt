@@ -1,4 +1,4 @@
-Shadow of the Wyrm v1.8.2 "Fampas"
+Shadow of the Wyrm v1.8.1 "Fampas"
 - Version declared March 8, 2025.
 
 - Updated the guidebook's section on Skills and created a new section on 
@@ -17,6 +17,11 @@ Shadow of the Wyrm v1.8.2 "Fampas"
 - More names.
 
 - Stanzas for "Tel and Floridel".
+
+- Bug fixes:
+
+  - Fixed a bug with summoner following that wasn't respecting a tile's
+    existing creature (Ewig Kaiwelo).
 
 Shadow of the Wyrm v1.8.0 "Sergio Assad"
 - Version started August 25, 2024. Version finalized March 8, 2025.

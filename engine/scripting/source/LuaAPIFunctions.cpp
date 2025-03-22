@@ -2319,7 +2319,7 @@ int add_creature_to_map(lua_State* ls)
     {
       TilePtr tile = map->at(coords);
 
-      if (tile != nullptr && tile->get_is_available_for_creature(creature))
+      if (tile != nullptr && MapUtils::is_tile_available_for_creature(creature, tile))
       {
         GameUtils::add_new_creature_to_map(game, creature, map, coords);
 

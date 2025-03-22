@@ -270,7 +270,7 @@ ActionCostValue OrderAction::order_summon(CreaturePtr creature, const string& /*
           Coordinate sc = summon_coords.at(i);
           TilePtr tile = map->at(sc);
 
-          if (tile != nullptr && tile->get_is_available_for_creature(c_pair.second))
+          if (MapUtils::is_tile_available_for_creature(follower, tile))
           {
             Coordinate sum_old_location = map->get_location(follower->get_id());
             TilePtr sum_old_tile = MapUtils::get_tile_for_creature(map, follower);

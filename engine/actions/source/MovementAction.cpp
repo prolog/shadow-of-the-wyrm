@@ -292,7 +292,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
         Game().instance().get_sound(creature)->play(SoundEffectID::BUMP);
       }
     }
-    else if (!creatures_new_tile->get_is_available_for_creature(creature))
+    else if (!creatures_new_tile->get_is_available_for_creature_ignore_present_creature(creature))
     {
       manager.add_new_message(StringTable::get(MovementTextKeys::ACTION_MOVE_RACE_NOT_ALLOWED));
       manager.send();
@@ -470,7 +470,7 @@ MovementThroughTileType MovementAction::get_movement_through_tile_type(CreatureP
   
   if (creatures_new_tile)
   {
-    creature_can_enter_adjacent_tile = creatures_new_tile->get_is_available_for_creature(creature);
+    creature_can_enter_adjacent_tile = creatures_new_tile->get_is_available_for_creature_ignore_present_creature(creature);
   }
 
   // Don't switch if the creature will resist.

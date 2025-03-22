@@ -306,7 +306,7 @@ bool Tile::get_is_staircase() const
   return (val == TileType::TILE_TYPE_UP_STAIRCASE || val == TileType::TILE_TYPE_DOWN_STAIRCASE);
 }
 
-bool Tile::get_is_available_for_creature(CreaturePtr cr) const
+bool Tile::get_is_available_for_creature_ignore_present_creature(CreaturePtr cr) const
 {
   bool avail = !get_is_blocking_ignore_present_creature(cr);
   

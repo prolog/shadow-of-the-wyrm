@@ -9,6 +9,7 @@ Me:
 - git push --tags
 - Audio enhancements off for testing
 - The Ybari/Asturias?
+- Little ditty when talking to fairies
 - no-talk telari: what if the entrance was deep below wintersea catacombs?
 - regular stanza updates again! XII should be the brothers/rebels returning to
   farstead, XIII Tel's group.

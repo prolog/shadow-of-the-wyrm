@@ -81,7 +81,7 @@ class Tile : public ISerializable
     virtual bool get_illuminated() const;
     
     virtual bool get_is_staircase() const;
-    virtual bool get_is_available_for_creature(std::shared_ptr<Creature> creature) const;
+    virtual bool get_is_available_for_creature_ignore_present_creature(std::shared_ptr<Creature> creature) const;
 
     // get_is_blocking_visually checks to see if a tile is blocking only
     // in terms of LOS. The real case for this is mountain tiles, which

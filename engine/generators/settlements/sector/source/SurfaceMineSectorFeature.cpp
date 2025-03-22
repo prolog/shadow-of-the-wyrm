@@ -10,6 +10,7 @@
 #include "HostilityManager.hpp"
 #include "ItemManager.hpp"
 #include "ItemProperties.hpp"
+#include "MapUtils.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -143,7 +144,7 @@ void SurfaceMineSectorFeature::generate_creatures(MapPtr map, vector<Coordinate>
             hm.set_hostility_to_player(creature, false);
             creature->get_decision_strategy()->set_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL, std::to_string(true));
 
-            if (tile && tile->get_is_available_for_creature(creature))
+            if (tile && MapUtils::is_tile_available_for_creature(creature, tile))
             {
               GameUtils::add_new_creature_to_map(game, creature, map, c);
             }

@@ -401,15 +401,17 @@ MapComponents MapUtils::get_map_components(MapPtr map, const set<TileType>& excl
 bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Coordinate& c, TilePtr creatures_old_tile)
 {
   bool added_location = false;
+  string creature_id;
+  Log& log = Log::instance();
 
   if (creature != nullptr)
   {
-    Log& log = Log::instance();
+    creature_id = creature->get_id();
 
     if (log.debug_enabled())
     {
       ostringstream ss;
-      ss << "Adding creature " << creature->get_id() << " (" << creature->get_original_id() << ") to map at " << c.first << "," << c.second;
+      ss << "Adding creature " << creature_id << " (" << creature->get_original_id() << ") to map at " << c.first << "," << c.second;
       log.debug(ss.str());
     }
   }
@@ -421,7 +423,7 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
     map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);
   }
 
-  map->add_or_update_location(creature->get_id(), c);
+  map->add_or_update_location(creature_id, c);
 
   // Did the creature belong to a previous tile?  Can we move it to the new tile?  If so, then
   // remove from the old tile, and add to the new.
@@ -474,19 +476,28 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
         }
       }
     }
+
+    // Run the movement accumulation checker, in case the creature moved into a
+    // dangerous/special tile.
+    MovementAccumulationUpdater mau;
+    mau.update(creature, creatures_new_tile);
+
+    ICreatureRegenerationPtr move_checker = std::make_unique<MovementAccumulationChecker>();
+    move_checker->tick(creature, creatures_new_tile, 0, 0);
+
+    // Run any movement scripts associated with the creature.
+    run_movement_scripts(creature, map->get_map_id(), c);
+  }
+  else
+  {
+    CreaturePtr existing_cr = creatures_new_tile->get_creature();
+
+    if (existing_cr != nullptr)
+    {
+      log.debug("Could not add creature " + creature_id + " to (" + String::create_string_from_coordinate(c) + ") because another creature (" + creatures_new_tile->get_creature()->get_id() + ") is present.");
+    }
   }
 
-  // Run the movement accumulation checker, in case the creature moved into a
-  // dangerous/special tile.
-  MovementAccumulationUpdater mau;
-  mau.update(creature, creatures_new_tile);
-
-  ICreatureRegenerationPtr move_checker = std::make_unique<MovementAccumulationChecker>();
-  move_checker->tick(creature, creatures_new_tile, 0, 0);
-
-  // Run any movement scripts associated with the creature.
-  run_movement_scripts(creature, map->get_map_id(), c);
-  
   return added_location;
 }
 
@@ -2916,7 +2927,7 @@ int MapUtils::get_threat_distance_score_for_direction(CreaturePtr creature, cons
 
     if (new_tile != nullptr)
     {
-      if (!new_tile->get_is_available_for_creature(creature))
+      if (!MapUtils::is_tile_available_for_creature(creature, new_tile))
       {
         return CANNOT_MOVE_SCORE;
       }
