@@ -4222,3 +4222,13 @@ They took his sword.  Left pockets inside-out. %b
 And took his boots, but left that bloody shirt %b
 to mingle with his once-was brains upon the earth.
 %p
+Something had changed.  The corpse was not their kin %b
+anymore, just one they'd quickly killed %b
+as the situation demanded it; and when %b
+the hail of blows had ended him, they felt %b
+nothing.  They'd stripped the corpse, and now the giants %b
+began to butcher the horse that fell as well. %b
+The rebels had never had it, but they'd try it: %b
+famished and exhausted, they couldn't tell %b
+or care what it had been before the roasting smell.
+%p
