@@ -10,6 +10,7 @@ class MusicEvent
 		static const std::string MUSIC_EVENT_CROWNING_EVIL;
 		static const std::string MUSIC_EVENT_RESPAWN;
 		static const std::string MUSIC_EVENT_WAVES;
+		static const std::string MUSIC_EVENT_FAIRY;
 
 	protected:
 		MusicEvent();
@@ -24,3 +25,4 @@ constexpr auto CMUSIC_EVENT_PLANETARY_TELEPORT = "_planetary_teleport";
 constexpr auto CMUSIC_EVENT_RESPAWN = "_respawn";
 constexpr auto CMUSIC_EVENT_CARCASSIA = "_carcassia";
 constexpr auto CMUSIC_EVENT_WAVES = "_waves";
+constexpr auto CMUSIC_EVENT_FAIRY = "_fairy";

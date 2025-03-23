@@ -8534,6 +8534,9 @@
 			<Song event="_title">
 				<Location>assets/sound/music/o_aurelion_o_celeste.ogg</Location>
 			</Song>
+			<Song event="_fairy">
+				<Location>assets/sound/music/fairy.ogg</Location>
+			</Song>
 			<Song tile_type="49">
 				<Location>assets/sound/music/still_beating_heart.ogg</Location>
 			</Song>			

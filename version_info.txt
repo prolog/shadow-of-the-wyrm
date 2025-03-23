@@ -16,6 +16,8 @@ Shadow of the Wyrm v1.8.1 "Fampas"
 
 - More names.
 
+- Talking to fairy spirits now plays a little tune when they disappear.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
