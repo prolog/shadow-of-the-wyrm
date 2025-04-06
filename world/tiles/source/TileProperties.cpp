@@ -45,6 +45,8 @@ const string TileProperties::TILE_PROPERTY_TREASURE_SOURCE = "TILE_PROPERTY_TREA
 const string TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED = "TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED";
 const string TileProperties::TILE_PROPERTY_UNDERWATER_TREASURE_SOURCE = "TILE_PROPERTY_UNDERWATER_TREASURE_SOURCE";
 
+const string TileProperties::TILE_PROPERTY_UNPROTECTED_MOVEMENT_IS_DEATH = "TILE_PROPERTY_UNPROTECTED_MOVEMENT_IS_DEATH";
+
 // Generate the string used to identify the custom map ID of a particular depth
 // in the dungeon or world.  A custom map ID for two levels deep in the dungeon
 // would be "-2_MAP_ID".  One that was five levels up (in a tower, etc) would

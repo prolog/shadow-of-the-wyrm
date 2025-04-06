@@ -62,6 +62,11 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = tg.generate(TileType::TILE_TYPE_RIVER);
   }
+  else if (xml_tile == 'd') // 'd' is for "dead water"
+  {
+    tile = tg.generate(TileType::TILE_TYPE_RIVER);
+    tile->set_unprotected_movement_is_death(true);
+  }
   else if (xml_tile == 'R')
   {
     tile = tg.generate(TileType::TILE_TYPE_ROCKY_EARTH);

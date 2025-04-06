@@ -324,6 +324,24 @@ bool Tile::get_is_available_for_creature_ignore_present_creature(CreaturePtr cr)
   return avail;
 }
 
+void Tile::set_unprotected_movement_is_death(const bool new_movement)
+{
+  set_additional_property(TileProperties::TILE_PROPERTY_UNPROTECTED_MOVEMENT_IS_DEATH, std::to_string(new_movement));
+}
+
+bool Tile::get_unprotected_movement_is_death() const
+{
+  bool move_death = false;
+  auto p_it = additional_properties.find(TileProperties::TILE_PROPERTY_UNPROTECTED_MOVEMENT_IS_DEATH);
+
+  if (p_it != additional_properties.end())
+  {
+    move_death = String::to_bool(p_it->second);
+  }
+
+  return move_death;
+}
+
 // The conditions are broken up for easier debugging.
 //
 // A tile should only be blocking from the perspective of a particular

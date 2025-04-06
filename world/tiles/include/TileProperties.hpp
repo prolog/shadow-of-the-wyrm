@@ -96,6 +96,9 @@ class TileProperties
     static const std::string TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED;
     static const std::string TILE_PROPERTY_UNDERWATER_TREASURE_SOURCE;
 
+    // Is unprotected movement automatically death? Used for the Caldera.
+    static const std::string TILE_PROPERTY_UNPROTECTED_MOVEMENT_IS_DEATH;
+
     // Checks to see if a given string reprensents a depth-based
     // custom map ID.
     static bool is_depth_custom_map_id(const std::string& key);

@@ -18,6 +18,9 @@ Shadow of the Wyrm v1.8.1 "Fampas"
 
 - Talking to fairy spirits now plays a little tune when they disappear.
 
+- "Death" flag for tiles, where unprotected movement on to the tile 
+  insta-kills. The water tiles in the Caldera have been flagged as death.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
