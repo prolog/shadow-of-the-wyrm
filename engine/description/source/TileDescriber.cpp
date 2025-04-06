@@ -53,6 +53,12 @@ string TileDescriber::describe() const
       description = description + " " + StringTable::get(TileTextKeys::TILE_DESC_REMAINS);
     }
 
+    bool deathly = tile->get_unprotected_movement_is_death();
+    if (deathly)
+    {
+      description = description + " " + StringTable::get(TileTextKeys::TILE_DESC_DEATHLY);
+    }
+
     vector<string> extra_sids = tile->get_extra_description_sids();
     if (!extra_sids.empty())
     {

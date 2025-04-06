@@ -7,6 +7,7 @@ class TileTextKeys
     static const std::string TILE_DESC_DUG;
     static const std::string TILE_DESC_PLANTED;
     static const std::string TILE_DESC_REMAINS;
+    static const std::string TILE_DESC_DEATHLY;
     static const std::string TILE_DESC_SUBMERGED;
     static const std::string TILE_DESC_FROZEN;
     static const std::string TILE_DESC_AIR;
