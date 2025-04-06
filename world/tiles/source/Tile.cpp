@@ -692,7 +692,12 @@ bool Tile::get_is_blocking_or_dangerous(CreaturePtr cr) const
   return get_dangerous(cr) || get_is_blocking(cr);
 }
 
-bool Tile::get_dangerous(CreaturePtr /*creature*/) const
+bool Tile::get_dangerous(CreaturePtr creature) const
+{
+  return get_danger_flag(creature) || get_unprotected_movement_is_death();
+}
+
+bool Tile::get_danger_flag(CreaturePtr /* creature */) const
 {
   return false;
 }

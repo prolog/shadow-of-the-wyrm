@@ -296,3 +296,19 @@ TEST(SW_World_Tiles_Tile, get_treasure_skill)
   EXPECT_EQ(SkillType::SKILL_GENERAL_MARSH_LORE, ma.get_treasure_skill());
   EXPECT_EQ(SkillType::SKILL_GENERAL_MOUNTAIN_LORE, mo.get_treasure_skill());
 }
+
+TEST(SW_World_Tiles_Tile, get_dangerous)
+{
+  MountainsTile mo;
+  ForestTile ft;
+
+  EXPECT_TRUE(mo.get_dangerous(nullptr));
+  EXPECT_FALSE(ft.get_dangerous(nullptr));
+
+  mo.set_unprotected_movement_is_death(true);
+  ft.set_unprotected_movement_is_death(true);
+
+  EXPECT_TRUE(mo.get_dangerous(nullptr));
+  EXPECT_TRUE(ft.get_dangerous(nullptr));
+
+}

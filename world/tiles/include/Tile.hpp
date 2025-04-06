@@ -174,6 +174,7 @@ class Tile : public ISerializable
     virtual std::string get_no_exit_down_message_sid() const;
     
     virtual bool get_dangerous(std::shared_ptr<Creature> creature) const;
+    virtual bool get_danger_flag(std::shared_ptr<Creature> creature) const;
     virtual std::string get_danger_confirmation_sid() const;
 
     virtual float get_piety_loss_multiplier() const;

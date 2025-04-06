@@ -13,7 +13,7 @@ std::string MountainsTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_MOUNTAINS;
 }
 
-bool MountainsTile::get_dangerous(CreaturePtr cr) const
+bool MountainsTile::get_danger_flag(CreaturePtr cr) const
 {
   if (cr && cr->get_skills().get_value(SkillType::SKILL_GENERAL_MOUNTAIN_LORE) == Skills::MAX_SKILL_VALUE)
   {
