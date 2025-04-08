@@ -84,7 +84,7 @@ class Tile : public ISerializable
     virtual bool get_is_available_for_creature_ignore_present_creature(std::shared_ptr<Creature> creature) const;
 
     virtual void set_unprotected_movement_is_death(const bool new_movement);
-    virtual bool get_unprotected_movement_is_death() const;
+    virtual bool get_unprotected_movement_is_death(std::shared_ptr<Creature> creature) const;
 
     // get_is_blocking_visually checks to see if a tile is blocking only
     // in terms of LOS. The real case for this is mountain tiles, which

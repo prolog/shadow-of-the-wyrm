@@ -1,11 +1,13 @@
 #include "gtest/gtest.h"
 #include "Amulet.hpp"
+#include "Boat.hpp"
 #include "DesertTile.hpp"
 #include "DungeonTile.hpp"
 #include "FeatureGenerator.hpp"
 #include "ForestTile.hpp"
 #include "MarshTile.hpp"
 #include "MountainsTile.hpp"
+#include "RiverTile.hpp"
 #include "RockTile.hpp"
 #include "RockyEarthTile.hpp"
 #include "TileGenerator.hpp"
@@ -310,5 +312,19 @@ TEST(SW_World_Tiles_Tile, get_dangerous)
 
   EXPECT_TRUE(mo.get_dangerous(nullptr));
   EXPECT_TRUE(ft.get_dangerous(nullptr));
+  
+  RiverTile rt;
+  CreaturePtr creature = std::make_shared<Creature>();
 
+  EXPECT_TRUE(rt.get_dangerous(creature));
+
+  ItemPtr boat = std::make_shared<Boat>();
+  boat->set_id("boat");
+  creature->get_inventory()->add(boat);
+
+  EXPECT_FALSE(rt.get_dangerous(creature));
+
+  rt.set_unprotected_movement_is_death(true);
+
+  EXPECT_FALSE(rt.get_dangerous(creature));
 }

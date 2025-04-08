@@ -329,7 +329,7 @@ void Tile::set_unprotected_movement_is_death(const bool new_movement)
   set_additional_property(TileProperties::TILE_PROPERTY_UNPROTECTED_MOVEMENT_IS_DEATH, std::to_string(new_movement));
 }
 
-bool Tile::get_unprotected_movement_is_death() const
+bool Tile::get_unprotected_movement_is_death(CreaturePtr creature) const
 {
   bool move_death = false;
   auto p_it = additional_properties.find(TileProperties::TILE_PROPERTY_UNPROTECTED_MOVEMENT_IS_DEATH);
@@ -337,6 +337,16 @@ bool Tile::get_unprotected_movement_is_death() const
   if (p_it != additional_properties.end())
   {
     move_death = String::to_bool(p_it->second);
+  }
+
+  // In general, moving to a deathly tile is instant death. The only exception
+  // is water tiles: if the creature has a boat, they're safe. Water breathing
+  // is no protection in this case.
+  if (get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_WATER &&
+      creature != nullptr &&
+      creature->get_inventory()->has_item_type(ItemType::ITEM_TYPE_BOAT))
+  {
+    move_death = false;
   }
 
   return move_death;
@@ -694,7 +704,7 @@ bool Tile::get_is_blocking_or_dangerous(CreaturePtr cr) const
 
 bool Tile::get_dangerous(CreaturePtr creature) const
 {
-  return get_danger_flag(creature) || get_unprotected_movement_is_death();
+  return get_danger_flag(creature) || get_unprotected_movement_is_death(creature);
 }
 
 bool Tile::get_danger_flag(CreaturePtr /* creature */) const

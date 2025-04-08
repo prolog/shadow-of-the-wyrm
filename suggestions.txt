@@ -9,6 +9,11 @@ Me:
 - git push --tags
 - Audio enhancements off for testing
 - The Ybari/Asturias?
+- Allow setting tiles deathly via api
+- Check deathly flag in SafetyCondition
+- Creatures should never follow unless the SafetyCondition allows it
+- unit tests for each safety condition class
+- convert ITileSafetyConditionPtr from shared to unique
 - no-talk telari: what if the entrance was deep below wintersea catacombs?
 - regular stanza updates again! XII should be the brothers/rebels returning to
   farstead, XIII Tel's group.
