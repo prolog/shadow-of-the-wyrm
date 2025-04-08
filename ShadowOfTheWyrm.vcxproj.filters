@@ -9346,6 +9346,15 @@
     <ClCompile Include="engine\generators\tile_config\source\WheatTileConfiguration.cpp">
       <Filter>Source Files\engine\generators\tile_config\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\AirSafetyCondition_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\GroundSafetyCondition_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\WaterSafetyCondition_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShadowOfTheWyrm.rc" />

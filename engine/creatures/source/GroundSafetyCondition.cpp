@@ -18,3 +18,6 @@ bool GroundSafetyCondition::is_safe(CreaturePtr creature, TilePtr /*tile*/)
   return safe;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/GroundSafetyCondition_test.cpp"
+#endif

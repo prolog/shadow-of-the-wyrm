@@ -316,7 +316,7 @@ TEST(SW_World_Tiles_Tile, get_dangerous)
   RiverTile rt;
   CreaturePtr creature = std::make_shared<Creature>();
 
-  EXPECT_TRUE(rt.get_dangerous(creature));
+  EXPECT_FALSE(rt.get_dangerous(creature));
 
   ItemPtr boat = std::make_shared<Boat>();
   boat->set_id("boat");

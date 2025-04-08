@@ -17,3 +17,7 @@ bool AirSafetyCondition::is_safe(CreaturePtr creature, TilePtr /*tile*/)
 
   return safe;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/AirSafetyCondition_test.cpp"
+#endif

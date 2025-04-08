@@ -13,7 +13,7 @@ bool WaterSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
 {
   bool safe = false;
 
-  if (creature)
+  if (creature != nullptr && tile != nullptr)
   {
     Game& game = Game::instance();
     ISeason* season = game.get_current_world()->get_calendar().get_season();
@@ -32,20 +32,14 @@ bool WaterSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
       }
       else
       {
-        IInventoryPtr inv = creature->get_inventory();
-        const list<ItemPtr> items = inv->get_items_cref();
-
-        for (ItemPtr item : items)
-        {
-          if (item && item->get_type() == ItemType::ITEM_TYPE_BOAT)
-          {
-            safe = true;
-            break;
-          }
-        }
+        safe = creature->get_inventory()->has_item_type(ItemType::ITEM_TYPE_BOAT);
       }
     }
   }
 
   return safe;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/WaterSafetyCondition_test.cpp"
+#endif
