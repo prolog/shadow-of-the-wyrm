@@ -496,6 +496,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_music_location_for_event", get_music_location_for_event);
   lua_register(L, "get_music_location_for_map_type", get_music_location_for_map_type);
   lua_register(L, "does_item_exist_on_map", does_item_exist_on_map);
+  lua_register(L, "set_tile_unprotected_movement_is_death", set_tile_unprotected_movement_is_death);
 }
 
 // Lua API helper functions
@@ -10668,4 +10669,33 @@ int does_item_exist_on_map(lua_State* ls)
 
   lua_pushboolean(ls, exists);
   return 1;
+}
+
+int set_tile_unprotected_movement_is_death(lua_State* ls)
+{
+  if (lua_gettop(ls) == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isboolean(ls, 4))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int y = lua_tointeger(ls, 2);
+    int x = lua_tointeger(ls, 3);
+    bool val = lua_toboolean(ls, 4);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      if (tile != nullptr)
+      {
+        tile->set_unprotected_movement_is_death(val);
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_tile_unprotected_movement_is_death");
+  }
+
+  return 0;
 }
