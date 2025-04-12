@@ -9,8 +9,8 @@ Me:
 - git push --tags
 - Audio enhancements off for testing
 - The Ybari/Asturias?
-- Allow setting tiles deathly via api
-- Check deathly flag in SafetyCondition
+- Testing for deathly air/water/ground
+- Message for dying via deathly
 - Creatures should never follow unless the SafetyCondition allows it
 - unit tests for each safety condition class
 - convert ITileSafetyConditionPtr from shared to unique

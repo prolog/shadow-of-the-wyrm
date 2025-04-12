@@ -25,14 +25,24 @@ bool WaterSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
     }
     else
     {
-      if (creature->can_breathe(BreatheType::BREATHE_TYPE_WATER) ||
-          creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
+      // If the water tile is deathly, flying or a boat will protect you.
+      // Otherwise, the standard water conditions apply.
+      if (tile->get_unprotected_movement_is_death(creature))
       {
-        safe = true;
+        safe = (creature->has_status(StatusIdentifiers::STATUS_ID_FLYING) ||
+                creature->get_inventory()->has_item_type(ItemType::ITEM_TYPE_BOAT));
       }
       else
       {
-        safe = creature->get_inventory()->has_item_type(ItemType::ITEM_TYPE_BOAT);
+        if (creature->can_breathe(BreatheType::BREATHE_TYPE_WATER) ||
+          creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
+        {
+          safe = true;
+        }
+        else
+        {
+          safe = creature->get_inventory()->has_item_type(ItemType::ITEM_TYPE_BOAT);
+        }
       }
     }
   }
