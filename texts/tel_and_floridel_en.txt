@@ -4232,3 +4232,13 @@ The rebels had never had it, but they'd try it: %b
 famished and exhausted, they couldn't tell %b
 or care what it had been before the roasting smell.
 %p
+They ate the horse meat raw, each one of them. %b
+The fair folk who before would turn their nose %b
+were famished, and when their portions were sliced thin %b
+they could pretend it was a fine carpaccio %b
+instead of something bulked and bred for war. %b
+It was good, the way it faded from the tongue. %b
+They finished, had a drink, then sliced some more, %b
+a silence as they chewed and cut off chunks, %b
+an understanding no one talked till all were done.
+%p
