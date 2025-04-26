@@ -1,4 +1,5 @@
 #include "GroundSafetyCondition.hpp"
+#include "ItemProperties.hpp"
 
 using namespace std;
 
@@ -9,9 +10,16 @@ bool GroundSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
 
   if (creature)
   {
-    if (creature->can_breathe(BreatheType::BREATHE_TYPE_AIR) && !tile->get_unprotected_movement_is_death(creature))
+    // First, make sure the creature can breathe air.
+    if (creature->can_breathe(BreatheType::BREATHE_TYPE_AIR))
     {
       safe = true;
+    }
+
+    // Next, check to see if moving there would be deathly.
+    if (tile->get_unprotected_movement_is_death(creature))
+    {
+      safe = creature->has_item_with_property(ItemProperties::ITEM_PROPERTIES_NEXUS);
     }
   }
 

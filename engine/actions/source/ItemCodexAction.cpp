@@ -7,6 +7,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"
+#include "ItemProperties.hpp"
 #include "ItemTextKeys.hpp"
 #include "ItemTranslator.hpp"
 #include "ItemTypeTextKeys.hpp"
@@ -190,6 +191,11 @@ void ItemCodexAction::add_synopsis_to_codex(ItemPtr item, CodexDescriber* codex_
     if (item->get_auto_curse())
     {
       synopsis_line << " - " << StringTable::get(TextKeys::AUTOCURSING);
+    }
+
+    if (String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_NEXUS)))
+    {
+      synopsis_line << " - " << StringTable::get(TextKeys::NEXUS);
     }
 
     string desc_synopsis_line = codex_desc->describe_for_synopsis_line();

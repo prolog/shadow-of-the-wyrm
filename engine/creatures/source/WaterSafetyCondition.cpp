@@ -1,5 +1,6 @@
 #include "WaterSafetyCondition.hpp"
 #include "Game.hpp"
+#include "ItemProperties.hpp"
 
 using namespace std;
 
@@ -29,8 +30,11 @@ bool WaterSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
       // Otherwise, the standard water conditions apply.
       if (tile->get_unprotected_movement_is_death(creature))
       {
+        IInventoryPtr inv = creature->get_inventory();
+
         safe = (creature->has_status(StatusIdentifiers::STATUS_ID_FLYING) ||
-                creature->get_inventory()->has_item_type(ItemType::ITEM_TYPE_BOAT));
+                inv->has_item_type(ItemType::ITEM_TYPE_BOAT) ||
+                creature->has_item_with_property(ItemProperties::ITEM_PROPERTIES_NEXUS));
       }
       else
       {

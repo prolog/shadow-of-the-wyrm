@@ -21,6 +21,9 @@ Shadow of the Wyrm v1.8.1 "Fampas"
 - "Death" flag for tiles, where unprotected movement on to the tile 
   insta-kills. The water tiles in the Caldera have been flagged as death.
 
+- Added an item property, nexus, that provides a link between worlds and 
+  allows the creature to savely move without death.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:

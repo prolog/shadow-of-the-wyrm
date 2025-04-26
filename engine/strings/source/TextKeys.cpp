@@ -205,6 +205,7 @@ const string TextKeys::NOT_APPLICABLE_ABRV = "NOT_APPLICABLE_ABRV";
 const string TextKeys::CARRYING_CAPACITY = "CARRYING_CAPACITY";
 const string TextKeys::ARTIFACT = "ARTIFACT";
 const string TextKeys::AUTOCURSING = "AUTOCURSING";
+const string TextKeys::NEXUS = "NEXUS";
 const string TextKeys::GENERIC_MESSAGE = "GENERIC_MESSAGE";
 const string TextKeys::PACIFIED = "PACIFIED";
 const string TextKeys::TAMED = "TAMED";

@@ -1,4 +1,5 @@
 #include "AirSafetyCondition.hpp"
+#include "ItemProperties.hpp"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ bool AirSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
 
     if (tile->get_unprotected_movement_is_death(creature))
     {
-      safe = false;
+      safe = creature->has_item_with_property(ItemProperties::ITEM_PROPERTIES_NEXUS);
     }
   }
 
