@@ -11549,6 +11549,7 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
+					<Colour>11</Colour>
 					<Sprite>
 						<ID>it</ID>
 						<Row>3</Row>
@@ -11617,6 +11618,7 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
+					<Colour>11</Colour>
 					<Sprite>
 						<ID>it</ID>
 						<Row>3</Row>

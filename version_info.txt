@@ -24,6 +24,11 @@ Shadow of the Wyrm v1.8.1 "Fampas"
 - Added an item property, nexus, that provides a link between worlds and 
   allows the creature to savely move without death.
 
+- For musical instruments, added info on which races they charm most 
+  effectively to the codex.
+
+- Tweaked a few sprites.
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
