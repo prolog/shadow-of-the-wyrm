@@ -10,7 +10,6 @@ Me:
 - Audio enhancements off for testing
 - The Ybari/Asturias?
 - Testing for deathly air/water/ground
-- item that allows safe passage over deathly
 - Creatures should never follow unless the SafetyCondition allows it
 - unit tests for each safety condition class
 - convert ITileSafetyConditionPtr from shared to unique

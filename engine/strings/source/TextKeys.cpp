@@ -214,4 +214,5 @@ const string TextKeys::THE_WORLD_MAP = "THE_WORLD_MAP";
 const string TextKeys::NO_CREATURES_GENERATED = "NO_CREATURES_GENERATED";
 const string TextKeys::DEFAULT_CLASS_NAME_SID = "DEFAULT_CLASS_NAME_SID";
 const string TextKeys::RESPAWN_MESSAGE = "RESPAWN_MESSAGE";
+const string TextKeys::CHARM_RACES = "CHARM_RACES";
 
