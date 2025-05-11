@@ -8,15 +8,12 @@ Me:
 - ASSET RELEASE: sounds! tiles!
 - git push --tags
 - Audio enhancements off for testing
+- Caldera's water should be death - descending!! need to set flag when
+  generating...
 - The Ybari/Asturias?
-- Testing for deathly air/water/ground
-- Creatures should never follow unless the SafetyCondition allows it
-- unit tests for each safety condition class
-- convert ITileSafetyConditionPtr from shared to unique
 - no-talk telari: what if the entrance was deep below wintersea catacombs?
 - regular stanza updates again! XII should be the brothers/rebels returning to
   farstead, XIII Tel's group.
-- Caldera's water should be death - swimming or descending
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.
 - Use this for fletchery, bowyer, etc, to improve item & quantity

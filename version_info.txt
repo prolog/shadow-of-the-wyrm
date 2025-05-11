@@ -27,6 +27,8 @@ Shadow of the Wyrm v1.8.1 "Fampas"
 - For musical instruments, added info on which races they charm most 
   effectively to the codex.
 
+- Singing now breaks the Silent conduct.
+
 - Tweaked a few sprites.
 
 - Stanzas for "Tel and Floridel".

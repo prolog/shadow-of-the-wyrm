@@ -44,6 +44,12 @@ ActionCostValue MusicSkillProcessor::process(CreaturePtr creature, MapPtr map)
       add_performance_details_message(creature, instr_sids.second);
     }
 
+    // If the creature was singing, break the silent conduct.
+    if (instr == nullptr)
+    {
+      creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_SILENT);
+    }
+
     acv = get_default_skill_action_cost_value(creature);
   }
 
