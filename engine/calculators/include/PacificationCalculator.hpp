@@ -19,5 +19,7 @@ class PacificationCalculator
     static const int BASE_EXP_PROPORTION_LEADERSHIP;
     static const int LEADERSHIP_EXP_DIVISOR;
     static const int LEADERSHIP_DAMAGE_DIVISOR;
+    static const int PCT_CHANCE_PACIFY_MUSIC_ENRAGED;
+    static const int PCT_CHANCE_PACIFY_BEASTMASTERY_ENRAGED;
 };
 

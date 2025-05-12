@@ -9,6 +9,7 @@ Me:
 - git push --tags
 - Audio enhancements off for testing
 - safety checks for willow ring should require it in eq
+- fix unit tests
 - The Ybari/Asturias?
 - no-talk telari: what if the entrance was deep below wintersea catacombs?
 - regular stanza updates again! XII should be the brothers/rebels returning to
@@ -418,6 +419,8 @@ IceBox:
 Josh Engdahl
 - Rebindable paging keys
 - User macros
+- hints from in-game characters on instrument effectiveness vs race
+- it would be really dumb and cute if the horn level up message 
 - Add info on the weapon synopsis to the manual
 - max fire res on fire spirits, etc
 - support for "extending" good status effects via drinking multiple potions,

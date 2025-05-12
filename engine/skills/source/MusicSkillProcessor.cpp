@@ -229,7 +229,7 @@ PacificationOutcome MusicSkillProcessor::attempt_pacification(ItemPtr instr, Cre
           }
           else
           {
-            if (RNG::percent_chance(75))
+            if (RNG::percent_chance(25))
             {
               add_unimpressed_message(creature, fov_creature);
             }

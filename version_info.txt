@@ -29,6 +29,12 @@ Shadow of the Wyrm v1.8.1 "Fampas"
 
 - Singing now breaks the Silent conduct.
 
+- Pacification is now impossible (Music) and/or very difficult (Beastmastery)
+  when a creature is enraged.
+
+- Failed attempts at musical pacification are now much more likely to trigger
+  rage (though still not guaranteed, like beastmastery).
+
 - Tweaked a few sprites.
 
 - Stanzas for "Tel and Floridel".
