@@ -2690,9 +2690,6 @@
     <ClInclude Include="engine\creatures\include\CreatureTileSafetyChecker.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\creatures\include\ITileSafetyCondition.hpp">
-      <Filter>Header Files\engine\creatures\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\creatures\include\WaterSafetyCondition.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
@@ -4597,6 +4594,9 @@
     </ClInclude>
     <ClInclude Include="engine\generators\tile_config\include\WheatTileConfiguration.hpp">
       <Filter>Header Files\engine\generators\tile_config\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\TileSafetyCondition.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -9354,6 +9354,9 @@
     </ClCompile>
     <ClCompile Include="engine\creatures\source\unit_tests\WaterSafetyCondition_test.cpp">
       <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\TileSafetyCondition.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

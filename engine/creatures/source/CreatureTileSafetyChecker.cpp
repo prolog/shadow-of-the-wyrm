@@ -29,11 +29,11 @@ bool CreatureTileSafetyChecker::is_tile_safe_for_creature(CreaturePtr creature, 
   return tile_safe;
 }
 
-bool CreatureTileSafetyChecker::are_safety_conditions_satisfied(CreaturePtr creature, TilePtr tile, const vector<ITileSafetyConditionPtr>& safety_conditions)
+bool CreatureTileSafetyChecker::are_safety_conditions_satisfied(CreaturePtr creature, TilePtr tile, const vector<TileSafetyConditionPtr>& safety_conditions)
 {
   bool safety_conditions_satisfied = true;
 
-  for (ITileSafetyConditionPtr safety_condition : safety_conditions)
+  for (TileSafetyConditionPtr safety_condition : safety_conditions)
   {
     safety_conditions_satisfied = safety_condition && safety_condition->is_safe(creature, tile);
 
@@ -47,9 +47,9 @@ bool CreatureTileSafetyChecker::are_safety_conditions_satisfied(CreaturePtr crea
 }
 
 // Get the safety conditions for a particular tile type
-vector<ITileSafetyConditionPtr> CreatureTileSafetyChecker::get_safety_conditions(const TileType tile_type)
+vector<TileSafetyConditionPtr> CreatureTileSafetyChecker::get_safety_conditions(const TileType tile_type)
 {
-  vector<ITileSafetyConditionPtr> safety_conditions;
+  vector<TileSafetyConditionPtr> safety_conditions;
 
   TileTypeSafetyConditionsMap::iterator t_it = tile_type_safety_conditions.find(tile_type);
   if (t_it != tile_type_safety_conditions.end())
@@ -62,9 +62,9 @@ vector<ITileSafetyConditionPtr> CreatureTileSafetyChecker::get_safety_conditions
 
 // Get the safety conditions for a particular tile super type
 // Get the safety conditions for a particular tile type
-vector<ITileSafetyConditionPtr> CreatureTileSafetyChecker::get_safety_conditions(const TileSuperType tile_super_type)
+vector<TileSafetyConditionPtr> CreatureTileSafetyChecker::get_safety_conditions(const TileSuperType tile_super_type)
 {
-  vector<ITileSafetyConditionPtr> safety_conditions;
+  vector<TileSafetyConditionPtr> safety_conditions;
 
   TileSuperTypeSafetyConditionsMap::iterator t_it = tile_super_type_safety_conditions.find(tile_super_type);
   if (t_it != tile_super_type_safety_conditions.end())
@@ -90,16 +90,16 @@ void CreatureTileSafetyChecker::initialize_tile_type_safety_conditions()
 // Initialize all the tile-super-type-based conditions.
 void CreatureTileSafetyChecker::initialize_tile_super_type_safety_conditions()
 {
-  vector<ITileSafetyConditionPtr> ground_conditions;
-  ITileSafetyConditionPtr ground_condition = std::make_shared<GroundSafetyCondition>();
+  vector<TileSafetyConditionPtr> ground_conditions;
+  TileSafetyConditionPtr ground_condition = std::make_shared<GroundSafetyCondition>();
   ground_conditions.push_back(ground_condition);
 
-  vector<ITileSafetyConditionPtr> water_conditions;
-  ITileSafetyConditionPtr water_condition = std::make_shared<WaterSafetyCondition>();
+  vector<TileSafetyConditionPtr> water_conditions;
+  TileSafetyConditionPtr water_condition = std::make_shared<WaterSafetyCondition>();
   water_conditions.push_back(water_condition);
 
-  vector<ITileSafetyConditionPtr> air_conditions;
-  ITileSafetyConditionPtr air_condition = std::make_shared<AirSafetyCondition>();
+  vector<TileSafetyConditionPtr> air_conditions;
+  TileSafetyConditionPtr air_condition = std::make_shared<AirSafetyCondition>();
   air_conditions.push_back(air_condition);
 
   tile_super_type_safety_conditions.insert(make_pair(TileSuperType::TILE_SUPER_TYPE_GROUND, ground_conditions));

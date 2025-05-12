@@ -1,8 +1,8 @@
 #pragma once
-#include "ITileSafetyCondition.hpp"
+#include "TileSafetyCondition.hpp"
 
-using TileTypeSafetyConditionsMap = std::map<TileType, std::vector<ITileSafetyConditionPtr>>;
-using TileSuperTypeSafetyConditionsMap = std::map<TileSuperType, std::vector<ITileSafetyConditionPtr>>;
+using TileTypeSafetyConditionsMap = std::map<TileType, std::vector<TileSafetyConditionPtr>>;
+using TileSuperTypeSafetyConditionsMap = std::map<TileSuperType, std::vector<TileSafetyConditionPtr>>;
 
 // A class used to check tile safety conditions to determine whether it is
 // safe for a creature to move there.  For example, moving on to water is
@@ -16,10 +16,10 @@ class CreatureTileSafetyChecker
     bool is_tile_safe_for_creature(CreaturePtr creature, TilePtr tile);
 
   protected:
-    bool are_safety_conditions_satisfied(CreaturePtr creature, TilePtr tile, const std::vector<ITileSafetyConditionPtr>& safety_conditions);
+    bool are_safety_conditions_satisfied(CreaturePtr creature, TilePtr tile, const std::vector<TileSafetyConditionPtr>& safety_conditions);
 
-    std::vector<ITileSafetyConditionPtr> get_safety_conditions(const TileType tile_type);
-    std::vector<ITileSafetyConditionPtr> get_safety_conditions(const TileSuperType tile_super_type);
+    std::vector<TileSafetyConditionPtr> get_safety_conditions(const TileType tile_type);
+    std::vector<TileSafetyConditionPtr> get_safety_conditions(const TileSuperType tile_super_type);
 
     void initialize_tile_safety_conditions();
     void initialize_tile_type_safety_conditions();

@@ -10,7 +10,7 @@ using namespace std;
 // Incorporeal creatures aren't safe crossing water: air-breathing creatures
 // still need to breathe, and spirits (for reasons unknown) do not seem to
 // be able to cross water...
-bool WaterSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
+bool WaterSafetyCondition::is_tile_safe(CreaturePtr creature, TilePtr tile) const
 {
   bool safe = false;
 
@@ -40,13 +40,6 @@ bool WaterSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
         if (tile->get_submerged())
         {
           safe = false;
-        }
-
-        // Having an item with the Nexus propety is the only way to be truly
-        // safe in deathly waters.
-        if (creature->has_item_with_property(ItemProperties::ITEM_PROPERTIES_NEXUS))
-        {
-          safe = true;
         }
       }
       else

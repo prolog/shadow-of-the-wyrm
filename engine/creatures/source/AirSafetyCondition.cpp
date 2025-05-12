@@ -6,7 +6,7 @@ using namespace std;
 // An air tile is safe only when a creature is flying or incorporeal.
 //
 // Otherwise, the creature plummets to its death.
-bool AirSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
+bool AirSafetyCondition::is_tile_safe(CreaturePtr creature, TilePtr tile) const
 {
   bool safe = false;
 
@@ -14,11 +14,6 @@ bool AirSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
   {
     safe = creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL) || 
            creature->has_status(StatusIdentifiers::STATUS_ID_FLYING);
-
-    if (tile->get_unprotected_movement_is_death(creature))
-    {
-      safe = creature->has_item_with_property(ItemProperties::ITEM_PROPERTIES_NEXUS);
-    }
   }
 
   return safe;

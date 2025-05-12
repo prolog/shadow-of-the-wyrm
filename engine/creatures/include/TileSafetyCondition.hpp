@@ -6,13 +6,16 @@
 // check: for lava, for water-type tiles, etc.  The NPC pathfinding
 // algorithms use these safety conditions to determine whether or not to
 // include a particular tile in the search algorithm.
-class ITileSafetyCondition
+class TileSafetyCondition
 {
   public:
-    virtual ~ITileSafetyCondition() = default;
+    virtual ~TileSafetyCondition() = default;
 
-    virtual bool is_safe(CreaturePtr creature, TilePtr tile) = 0;
+    virtual bool is_safe(CreaturePtr creature, TilePtr tile) const;
+
+  protected:
+    virtual bool is_tile_safe(CreaturePtr creature, TilePtr tile) const = 0;
 };
 
-using ITileSafetyConditionPtr = std::shared_ptr<ITileSafetyCondition>;
+using TileSafetyConditionPtr = std::shared_ptr<TileSafetyCondition>;
 
