@@ -8,8 +8,7 @@ Me:
 - ASSET RELEASE: sounds! tiles!
 - git push --tags
 - Audio enhancements off for testing
-- Caldera's water should be death - descending!! need to set flag when
-  generating...
+- safety checks for willow ring should require it in eq
 - The Ybari/Asturias?
 - no-talk telari: what if the entrance was deep below wintersea catacombs?
 - regular stanza updates again! XII should be the brothers/rebels returning to

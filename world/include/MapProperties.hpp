@@ -143,6 +143,10 @@ class MapProperties
     // Is the map, for ambient sound reasons, wet?
     static const std::string MAP_PROPERTIES_WET;
 
+    // Does the map have deathly water? Used for handling some tweaks to
+    // the generator if the player is foolish enough to descend.
+    static const std::string MAP_PROPERTIES_DEATHLY_WATER;
+
   protected:
     MapProperties();
     ~MapProperties();

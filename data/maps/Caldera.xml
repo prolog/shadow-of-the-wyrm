@@ -78,5 +78,9 @@
 			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
 			<Value>assets/sound/music/tall_pines.ogg</Value>
 		</Property>
+		<Property>
+			<Name>MAP_PROPERTIES_DEATHLY_WATER</Name>
+			<Value>1</Value>
+		</Property>
 	</Properties>
 </CustomMap>
