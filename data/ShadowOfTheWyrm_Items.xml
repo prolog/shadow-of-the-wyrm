@@ -11456,6 +11456,10 @@
 				<DangerLevel>4</DangerLevel>
 				<Properties>
 					<Property>
+						<Name>level_up_effect</Name>
+						<Value>_level_up_guitar</Value>
+					</Property>
+					<Property>
 						<Name>music_performance</Name>
 						<Value>MUSIC_PERFORMANCE_LUTE_SID</Value>
 					</Property>
@@ -11490,6 +11494,10 @@
 				<DangerLevel>3</DangerLevel>
 				<Properties>
 					<Property>
+						<Name>level_up_effect</Name>
+						<Value>_level_up_fife</Value>
+					</Property>
+					<Property>
 						<Name>music_performance</Name>
 						<Value>MUSIC_PERFORMANCE_FIFE_SID</Value>
 					</Property>
@@ -11523,6 +11531,10 @@
 				</Symbol>
 				<DangerLevel>4</DangerLevel>
 				<Properties>
+					<Property>
+						<Name>level_up_effect</Name>
+						<Value>_level_up_dulcimer</Value>
+					</Property>
 					<Property>
 						<Name>music_performance</Name>
 						<Value>MUSIC_PERFORMANCE_DULCIMER_SID</Value>
@@ -11559,6 +11571,10 @@
 				<DangerLevel>2</DangerLevel>
 				<Properties>
 					<Property>
+						<Name>level_up_effect</Name>
+						<Value>_level_up_trombone</Value>
+					</Property>
+					<Property>
 						<Name>music_performance</Name>
 						<Value>MUSIC_PERFORMANCE_SACKBUT_SID</Value>
 					</Property>
@@ -11592,6 +11608,10 @@
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Properties>
+					<Property>
+						<Name>level_up_effect</Name>
+						<Value>_level_up_violin</Value>
+					</Property>
 					<Property>
 						<Name>music_performance</Name>
 						<Value>MUSIC_PERFORMANCE_FIDDLE_SID</Value>
@@ -11627,6 +11647,10 @@
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Properties>
+					<Property>
+						<Name>level_up_effect</Name>
+						<Value>_level_up</Value>
+					</Property>
 					<Property>
 						<Name>music_performance</Name>
 						<Value>MUSIC_PERFORMANCE_HORN_SID</Value>

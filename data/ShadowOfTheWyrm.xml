@@ -8470,7 +8470,22 @@
 				<Location>assets/sound/effects/negative_effect.wav</Location>
 			</Effect>
 			<Effect id="_level_up">
-				<Location>assets/sound/effects/level_up.wav</Location>
+				<Location>assets/sound/effects/level_up_default.ogg</Location>
+			</Effect>
+			<Effect id="_level_up_guitar">
+				<Location>assets/sound/effects/level_up_guitar.ogg</Location>
+			</Effect>
+			<Effect id="_level_up_fife">
+				<Location>assets/sound/effects/level_up_fife.ogg</Location>
+			</Effect>
+			<Effect id="_level_up_dulcimer">
+				<Location>assets/sound/effects/level_up_dulcimer.ogg</Location>
+			</Effect>
+			<Effect id="_level_up_violin">
+				<Location>assets/sound/effects/level_up_violin.ogg</Location>
+			</Effect>
+			<Effect id="_level_up_trombone">
+				<Location>assets/sound/effects/level_up_trombone.ogg</Location>
 			</Effect>
 			<Effect id="_click">
 				<Location>assets/sound/effects/click.wav</Location>

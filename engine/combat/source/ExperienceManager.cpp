@@ -1,6 +1,7 @@
 #include "ClassManager.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
+#include "ItemProperties.hpp"
 #include "LevelConstants.hpp"
 #include "LevelScript.hpp"
 #include "MessageManagerFactory.hpp"
@@ -61,7 +62,8 @@ bool ExperienceManager::gain_experience(CreaturePtr creature, const uint experie
   // If we've gained at least one level, display the skill advancement screen.
   if (levels_gained > 0)
   {
-    Game::instance().get_sound(creature)->play(SoundEffectID::LEVEL_UP);
+    string effect = get_level_up_effect(creature);
+    Game::instance().get_sound(creature)->play(effect);
 
     if (creature != nullptr && creature->get_is_player())
     {
@@ -124,19 +126,19 @@ uint ExperienceManager::get_pct_to_next_level(CreaturePtr creature)
   return tnl_pct;
 }
 
-uint ExperienceManager::get_total_experience_needed_for_level(CreaturePtr creature, const int level)
+uint ExperienceManager::get_total_experience_needed_for_level(CreaturePtr creature, const int level) const
 {
   return get_total_experience_needed_for_lvl_idx(creature, static_cast<uint>(level - 1));
 }
 
-uint ExperienceManager::get_current_experience_needed_for_level(CreaturePtr creature, const uint level)
+uint ExperienceManager::get_current_experience_needed_for_level(CreaturePtr creature, const uint level) const
 {
   return get_total_experience_needed_for_lvl_idx(creature, level-1) - creature->get_experience_points();
 }
 
 // Get the experience required for a particular level, taking into account any race/class modifiers,
 // but not taking into account the amount of xp the creature currently has.
-uint ExperienceManager::get_total_experience_needed_for_lvl_idx(CreaturePtr creature, const uint level_idx)
+uint ExperienceManager::get_total_experience_needed_for_lvl_idx(CreaturePtr creature, const uint level_idx) const
 {
   uint exp_needed = 0;
   
@@ -177,7 +179,7 @@ uint ExperienceManager::get_total_experience_needed_for_lvl_idx(CreaturePtr crea
 
 // Check to see if a creature can gain a level, based on its current level
 // and experience totals.
-bool ExperienceManager::can_gain_level(CreaturePtr creature)
+bool ExperienceManager::can_gain_level(CreaturePtr creature) const
 {
   bool can_gain = false;
   
@@ -197,6 +199,24 @@ bool ExperienceManager::can_gain_level(CreaturePtr creature)
   }
   
   return can_gain;
+}
+
+string ExperienceManager::get_level_up_effect(CreaturePtr creature) const
+{
+  string effect = SoundEffectID::LEVEL_UP;
+  string lue_property = ItemProperties::ITEM_PROPERTIES_LEVEL_UP_EFFECT;
+
+  if (creature != nullptr)
+  {
+    auto item_pr = creature->get_equipment().has_item_with_property(lue_property);
+
+    if (item_pr.first && item_pr.second)
+    {
+      effect = item_pr.second->get_additional_property(lue_property);
+    }
+  }
+
+  return effect;
 }
 
 // Gain a level, increase HP/AP, and do anything else that needs to be done.

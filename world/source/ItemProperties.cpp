@@ -45,3 +45,4 @@ const string ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MIN_QUANTITY = "plan
 const string ItemProperties::ITEM_PROPERTIES_PLANTABLE_FOOD_MAX_QUANTITY = "plantable_food_max_quantity";
 const string ItemProperties::ITEM_PROPERTIES_STATUS = "status";
 const string ItemProperties::ITEM_PROPERTIES_NEXUS = "nexus";
+const string ItemProperties::ITEM_PROPERTIES_LEVEL_UP_EFFECT = "level_up_effect";

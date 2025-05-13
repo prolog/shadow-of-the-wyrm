@@ -7,17 +7,18 @@ class ExperienceManager
     ExperienceManager();
     ~ExperienceManager();
 
-    uint get_current_experience_needed_for_level(CreaturePtr creature, const uint level);
+    uint get_current_experience_needed_for_level(CreaturePtr creature, const uint level) const;
     bool gain_experience(CreaturePtr creature, const uint experience_value);
     uint get_pct_to_next_level(CreaturePtr creature);
-    uint get_total_experience_needed_for_level(CreaturePtr creature, const int level);
+    uint get_total_experience_needed_for_level(CreaturePtr creature, const int level) const;
     
     void run_level_script(CreaturePtr creature);
 
 protected:
-    bool can_gain_level(CreaturePtr creature);
+    bool can_gain_level(CreaturePtr creature) const;
+    std::string get_level_up_effect(CreaturePtr creature) const;
 
-    uint get_total_experience_needed_for_lvl_idx(CreaturePtr creature, const uint level_idx);
+    uint get_total_experience_needed_for_lvl_idx(CreaturePtr creature, const uint level_idx) const;
 
     void level_up(CreaturePtr creature);
     void gain_level(CreaturePtr creature);
