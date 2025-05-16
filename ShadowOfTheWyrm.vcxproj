@@ -163,6 +163,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp14</LanguageStandard>
+      <CombineFilesOnlyFromTheSameFolder>false</CombineFilesOnlyFromTheSameFolder>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>

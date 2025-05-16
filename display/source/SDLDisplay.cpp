@@ -268,7 +268,7 @@ void SDLDisplay::initialize_colours(const vector<SDL_Colour>& colourset)
 {
   if (colours.size() == NUM_SDL_BASE_COLOURS)
   {
-    for (size_t i = 0; i < NUM_SDL_BASE_COLOURS; i++)
+    for (size_t i = 0; i < static_cast<size_t>(NUM_SDL_BASE_COLOURS); i++)
     {
       SDL_Colour cur_colour = colourset[i];
       colours[i] = cur_colour;
@@ -995,7 +995,7 @@ void SDLDisplay::display_options_component(int* row, int* col, OptionsComponentP
 
       display_text(*row, *col, display_option_s);
 
-      int ocol = *col + display_option_s.size();
+      int ocol = *col + static_cast<int>(display_option_s.size());
 
       display_text_component(row, &ocol, option_text, DisplayConstants::OPTION_SPACING);
 

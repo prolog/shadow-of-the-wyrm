@@ -329,7 +329,7 @@ void Tile::set_unprotected_movement_is_death(const bool new_movement)
   set_additional_property(TileProperties::TILE_PROPERTY_UNPROTECTED_MOVEMENT_IS_DEATH, std::to_string(new_movement));
 }
 
-bool Tile::get_unprotected_movement_is_death(CreaturePtr move_creature) const
+bool Tile::get_unprotected_movement_is_death(CreaturePtr /*move_creature*/) const
 {
   bool move_death = false;
   auto p_it = additional_properties.find(TileProperties::TILE_PROPERTY_UNPROTECTED_MOVEMENT_IS_DEATH);

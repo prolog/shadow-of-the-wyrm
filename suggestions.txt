@@ -8,12 +8,17 @@ Me:
 - ASSET RELEASE: sounds! tiles!
 - git push --tags
 - Audio enhancements off for testing
-- safety checks for willow ring should require it in eq
+- Ammo improvements:
+  - Prompt equip on pickup
+  - Merge picked up into ammo slot
+  - When done, cycle through applicable inventory items to equip (allow Y/N/
+    Z to exit)
 - fix unit tests
 - The Ybari/Asturias?
 - no-talk telari: what if the entrance was deep below wintersea catacombs?
 - regular stanza updates again! XII should be the brothers/rebels returning to
   farstead, XIII Tel's group.
+- credit to JE and PRR: passive stealth, tweak marks
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.
 - Use this for fletchery, bowyer, etc, to improve item & quantity
@@ -116,17 +121,10 @@ Me:
   - set_as_of, get_as_of (use properties)
   - if as-of is set and != current time, CreatureUtils::... then return map
   - look at other ways
-- JE: drank fortified wine in store, wine not owned by shopkeeper, shopkeeper
-  remained friendly but attacked
 - the archery/range issue: nothing gets added to MM
 - cavern towns/underground races (dw, gn)
 - need to test pack generation...
 - is the witchling membership bugged?
-- Ammo improvements:
-  - Prompt equip on pickup
-  - Merge picked up into ammo slot
-  - When done, cycle through applicable inventory items to equip (allow Y/N/
-    Z to exit)
 - EACH VERSION: more NPC background stuff! more treasure stuff! more artifact
   names!
 - spinach/str?

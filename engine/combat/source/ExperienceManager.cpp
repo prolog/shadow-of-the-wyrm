@@ -191,7 +191,7 @@ bool ExperienceManager::can_gain_level(CreaturePtr creature) const
     {
       uint exp_needed = get_total_experience_needed_for_lvl_idx(creature, next_lvl_idx);
 
-      if ( creature->get_experience_points() >= exp_needed )
+      if (creature->get_experience_points() >= exp_needed)
       {
         can_gain = true;
       }
