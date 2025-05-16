@@ -1,4 +1,4 @@
-Shadow of the Wyrm v1.8.1 "Fampas"
+Shadow of the Wyrm v1.8.2 "Fampas"
 - Version declared March 8, 2025.
 
 - Updated the guidebook's section on Skills and created a new section on 
