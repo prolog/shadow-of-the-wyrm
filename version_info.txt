@@ -39,6 +39,9 @@ Shadow of the Wyrm v1.8.2 "Fampas"
 - Failed attempts at musical pacification are now much more likely to trigger
   rage (though still not guaranteed, like beastmastery).
 
+- The status colour for hiding is now bold magenta (was white) to be more 
+  easily seen.
+
 - Tweaked a few sprites.
 
 - Stanzas for "Tel and Floridel".
