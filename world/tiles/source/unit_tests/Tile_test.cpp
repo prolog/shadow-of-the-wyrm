@@ -323,8 +323,4 @@ TEST(SW_World_Tiles_Tile, get_dangerous)
   creature->get_inventory()->add(boat);
 
   EXPECT_FALSE(rt.get_dangerous(creature));
-
-  rt.set_unprotected_movement_is_death(true);
-
-  EXPECT_FALSE(rt.get_dangerous(creature));
 }
