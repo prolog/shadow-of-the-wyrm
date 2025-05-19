@@ -48,6 +48,15 @@ Shadow of the Wyrm v1.8.2 "Fampas"
 
 - Humans and Wood Elves now start with Stealth.
 
+- Reworked how Hiding works. Rather than requiring manual application, it's
+  now checked on a turn-by-turn basis, if you have skill in it. Only Thieves
+  start with the skill. The status messages on application/wear-off have been
+  removed now that it potentially triggers every turn, and instead, the "Hi"
+  status identifier is now bold magenta, to be easily visible at a glance.
+  This should allow a distinct playstyle for thieves, similar to how combat
+  is for warriors and others, and magic for the spellcasting classes. (Josh
+  Engdahl, Paul Raymond-Robichaud)
+
 - Tweaked a few sprites.
 
 - Stanzas for "Tel and Floridel".

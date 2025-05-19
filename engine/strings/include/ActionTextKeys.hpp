@@ -41,7 +41,6 @@ class ActionTextKeys
     static std::string get_bowyer_message(const std::string& item_usage_desc_sid);
     static std::string get_fletchery_message(const std::string& item_usage_desc_sid);
     static std::string get_unimpressed_message(const std::string& creature_desc_sid, const bool is_player);
-    static std::string get_hide_failure_message(const std::string& creature_desc_sid, const bool is_player);
     static std::string get_palette_switch_message(const std::string& new_palette_name_sid);
     static std::string get_graphics_mode_switch_message(const std::string& new_display_name);
     static std::string get_tamed_message(const std::string& creature_desc, const std::string& tamed_creature_sid, const bool is_player);
@@ -263,7 +262,6 @@ class ActionTextKeys
     static const std::string ACTION_TOGGLE_FULLSCREEN_SDL_DESKTOP;
     static const std::string ACTION_TOGGLE_FULLSCREEN_SDL_TRUE;
     static const std::string ACTION_TOGGLE_FULLSCREEN_CURSES;
-    static const std::string ACTION_HIDE_HOLE;
     static const std::string ACTION_GROUND_FULL;
     static const std::string ACTION_SEED_ALREADY_PLANTED;
     static const std::string ACTION_WAND_EXPLODE;
@@ -322,8 +320,6 @@ class ActionTextKeys
     static const std::string ACTION_FLETCHERY_CREATE;
     static const std::string ACTION_UNIMPRESSED_PLAYER;
     static const std::string ACTION_UNIMPRESSED_MONSTER;
-    static const std::string ACTION_HIDE_FAILURE_PLAYER;
-    static const std::string ACTION_HIDE_FAILURE_MONSTER;
     static const std::string ACTION_ITEM_PACK_PLAYER;
     static const std::string ACTION_ITEM_PACK_NPC;
     static const std::string ACTION_SWITCH_PALETTE;

@@ -46,6 +46,7 @@
 #include "Serialize.hpp"
 #include "Serialization.hpp"
 #include "Setting.hpp"
+#include "SkillProcessors.hpp"
 #include "SoundFactory.hpp"
 #include "StatusActionProcessor.hpp"
 #include "StealthSkillProcessor.hpp"
@@ -723,6 +724,9 @@ void Game::go()
 
           // Player may have been killed by some time-related effect.
           if (!keep_playing) break;
+
+          PassiveSkillsProcessor psp;
+          psp.process_passive_skills(current_creature, current_map);
 
           CreatureStatusMap creature_statuses_before = current_creature->get_statuses();
 

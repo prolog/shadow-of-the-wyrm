@@ -1,8 +1,26 @@
 #include "SkillProcessors.hpp"
+#include "HidingSkillProcessor.hpp"
 #include "MessageManagerFactory.hpp"
 #include "SkillTextKeys.hpp"
 
 using namespace std;
+
+void PassiveSkillsProcessor::process_passive_skills(CreaturePtr creature, MapPtr map)
+{
+  // Sorry, NPCs, player-only (for now?)
+  if (creature != nullptr && creature->get_is_player())
+  {
+    Skills& skills = creature->get_skills();
+
+    // Right now, the only skill that's procesed once per turn, for free,
+    // is Hiding.
+    if (skills.get_value(SkillType::SKILL_GENERAL_HIDING) > 0)
+    {
+      HidingSkillProcessor hsp;
+      hsp.process(creature, map);
+    }
+  }
+}
 
 DefaultSkillProcessor::DefaultSkillProcessor(const string& new_message_sid, const bool new_implemented)
 : message_sid(new_message_sid), implemented(new_implemented)

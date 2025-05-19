@@ -152,8 +152,6 @@ class StatusAilmentTextKeys
     // basis, rather than a timer, and is invoked by using a skill.
     static const std::string STATUS_HIDE;
     static const std::string STATUS_HIDE_FULL;
-    static const std::string STATUS_MESSAGE_PLAYER_HIDE;
-    static const std::string STATUS_MESSAGE_PLAYER_HIDE_REVEAL;
     static const std::string get_npc_hide_message(std::shared_ptr<Creature> creature);
     static const std::string get_npc_hide_reveal_message(std::shared_ptr<Creature> creature);
 

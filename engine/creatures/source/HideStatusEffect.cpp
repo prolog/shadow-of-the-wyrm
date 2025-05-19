@@ -33,8 +33,8 @@ bool HideStatusEffect::after_apply(CreaturePtr creature) const
 
 string HideStatusEffect::get_player_application_message() const
 {
-  string message = StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_HIDE);
-  return message;
+  string no_message;
+  return no_message;
 }
 
 string HideStatusEffect::get_npc_application_message(CreaturePtr creature) const
@@ -50,8 +50,8 @@ string HideStatusEffect::get_player_finalize_message() const
 
 string HideStatusEffect::get_player_undo_message() const
 {
-  string message = StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_HIDE_REVEAL);
-  return message;
+  string no_message;
+  return no_message;
 }
 
 string HideStatusEffect::get_npc_undo_message(CreaturePtr creature) const

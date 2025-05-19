@@ -4,7 +4,6 @@
 #include "GameUtils.hpp"
 #include "HidingSkillProcessor.hpp"
 #include "HidingCalculator.hpp"
-#include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "SkillManager.hpp"
 #include "StatusEffectFactory.hpp"
@@ -30,19 +29,12 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
     else
     {
       HidingCalculator hc;
-      bool is_player = creature->get_is_player();
       TimeOfDayType tod = TimeOfDayType::TIME_OF_DAY_UNDEFINED; 
       World* world = Game::instance().get_current_world();
       int hide_chance = hc.calculate_pct_chance_hide(creature, map, tod);
       CurrentCreatureAbilities cca;
 
       TilePtr tile = map->at(map->get_location(creature->get_id()));
-      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, is_player);
-
-      if (tile != nullptr && tile->has_been_dug() && hc.gets_hole_bonus(creature))
-      {
-        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_HIDE_HOLE));
-      }
 
       if (world != nullptr)
       {
@@ -59,14 +51,12 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
 
         if (hide != nullptr)
         {
+          // Because Hiding is potentially triggered every turn, hide the
+          // application message, so this won't be relentlessly spammy to the
+          // player.
+          hide->set_show_application_message(false);
           hide->apply_change(creature, creature->get_level().get_current());
         }
-      }
-      else
-      {
-        string message = ActionTextKeys::get_hide_failure_message(creature->get_description_sid(), is_player);
-        manager.add_new_message(message);
-        manager.send();
       }
 
       if (hide_chance < 100)
