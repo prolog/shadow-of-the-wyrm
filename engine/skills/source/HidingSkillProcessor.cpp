@@ -61,8 +61,9 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
 
       if (hide_chance < 100)
       {
+        // With Hiding firing every turn, reduce the chance of it being marked.
         SkillManager sm;
-        sm.mark_skill_with_probability(25, creature, SkillType::SKILL_GENERAL_HIDING, true);
+        sm.mark_skill_with_probability(1, creature, SkillType::SKILL_GENERAL_HIDING, true);
       }
 
       acv = get_default_skill_action_cost_value(creature);
