@@ -42,6 +42,8 @@ Shadow of the Wyrm v1.8.2 "Fampas"
 - The status colour for hiding is now bold magenta (was white) to be more 
   easily seen.
 
+- Hiding is now all but impossible unless you are unburdened. 
+
 - Tweaked a few sprites.
 
 - Stanzas for "Tel and Floridel".

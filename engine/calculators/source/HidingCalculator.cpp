@@ -1,3 +1,4 @@
+#include "EngineConversion.hpp"
 #include "HidingCalculator.hpp"
 #include "HostilityManager.hpp"
 #include "CoordUtils.hpp"
@@ -22,6 +23,7 @@ bool HidingCalculator::gets_hole_bonus(CreaturePtr creature) const
 
   return bonus;
 }
+
 int HidingCalculator::calculate_pct_chance_hide(CreaturePtr creature, MapPtr map, const TimeOfDayType tod) const
 {
   int pct_chance_hide = 0;
@@ -54,6 +56,12 @@ int HidingCalculator::calculate_pct_chance_hide(CreaturePtr creature, MapPtr map
       pct_chance_hide += get_viewing_creatures_modifier(creature, map, creature_ids);
 
       pct_chance_hide = std::min<int>(pct_chance_hide, MAX_PCT_CHANCE_HIDE_CREATURES_PRESENT);
+    }
+
+    // Hiding only works when the creature is unburdened.
+    if (BurdenLevelConverter::to_burden_level(creature) != BurdenLevel::BURDEN_LEVEL_UNBURDENED)
+    {
+      pct_chance_hide = 0;
     }
 
     // Ensure the value is between 1 and 100.
