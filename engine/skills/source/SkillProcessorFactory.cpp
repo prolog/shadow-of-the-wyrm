@@ -48,7 +48,7 @@ void SkillProcessorFactory::populate_skill_map()
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_FORAGING, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_FORAGING)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_FOREST_LORE, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_FOREST_LORE)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_HERBALISM, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_HERBALISM)));
-  skill_map.insert(make_pair(SkillType::SKILL_GENERAL_HIDING, make_unique<HidingSkillProcessor>()));
+  skill_map.insert(make_pair(SkillType::SKILL_GENERAL_HIDING, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_HIDING)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_HUNTING, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_HUNTING)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_INTIMIDATION, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_INTIMIDATION)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_JEWELER, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_JEWELER)));
