@@ -1726,7 +1726,7 @@
 					<Detection>10</Detection>
 					<Fishing>15</Fishing>
 					<Foraging>15</Foraging>
-					<Hiding>10</Hiding>
+					<Stealth>5</Stealth>
 					<Swimming>15</Swimming>
 				</GeneralSkills>
 				<WeaponSkills>
@@ -1826,6 +1826,7 @@
 					<Herbalism>10</Herbalism>
 					<Hunting>20</Hunting>
 					<NightSight>15</NightSight>
+					<Stealth>15</Stealth>
 					<Swimming>15</Swimming>
 				</GeneralSkills>
 				<WeaponSkills>
@@ -2297,9 +2298,8 @@
 					<DisarmTraps>15</DisarmTraps>
 					<Dungeoneering>15</Dungeoneering>
 					<Escape>10</Escape>
-					<Hiding>15</Hiding>
 					<OceanLore>5</OceanLore>
-					<Stealth>15</Stealth>
+					<Stealth>25</Stealth>
 					<Swimming>15</Swimming>
 				</GeneralSkills>
 				<WeaponSkills>
@@ -2638,11 +2638,10 @@
 					<Escape>10</Escape>
 					<Fishing>10</Fishing>
 					<Foraging>15</Foraging>
-					<Hiding>10</Hiding>
 					<Jumping>10</Jumping>
 					<Literacy>5</Literacy>
 					<Spelunking>10</Spelunking>
-					<Stealth>10</Stealth>
+					<Stealth>15</Stealth>
 				</GeneralSkills>
 				<WeaponSkills>
 					<ShortBlades>5</ShortBlades>
@@ -2899,7 +2898,6 @@
 					<Detection>10</Detection>
 					<Escape>15</Escape>
 					<Fletchery>10</Fletchery>
-					<Hiding>10</Hiding>
 					<Hunting>15</Hunting>
 					<Jumping>10</Jumping>
 				</GeneralSkills>
@@ -3359,7 +3357,6 @@
 				<GeneralSkills>
 					<Awareness>15</Awareness>
 					<Detection>15</Detection>
-					<Hiding>15</Hiding>
 					<Leadership>10</Leadership>
 					<Literacy>15</Literacy>
 					<Lore>10</Lore>
@@ -3972,12 +3969,12 @@
 					<Foraging>20</Foraging>
 					<ForestLore>20</ForestLore>
 					<Herbalism>20</Herbalism>
-					<Hiding>15</Hiding>
 					<Hunting>15</Hunting>
 					<Leadership>15</Leadership>
 					<MarshLore>20</MarshLore>
 					<MountainLore>20</MountainLore>
 					<Skinning>15</Skinning>
+					<Stealth>20</Stealth>
 					<Swimming>20</Swimming>
 					<Tanning>15</Tanning>
 				</GeneralSkills>
@@ -4597,7 +4594,7 @@
 					<DisarmTraps>20</DisarmTraps>
 					<DualWield>20</DualWield>
 					<Escape>20</Escape>
-					<Hiding>15</Hiding>
+					<Hiding>20</Hiding>
 					<Hunting>10</Hunting>
 					<Jumping>20</Jumping>
 					<Spelunking>15</Spelunking>

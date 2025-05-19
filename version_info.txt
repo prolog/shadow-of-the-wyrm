@@ -44,6 +44,10 @@ Shadow of the Wyrm v1.8.2 "Fampas"
 
 - Hiding is now all but impossible unless you are unburdened. 
 
+- Hiding is now for Thieves only.
+
+- Humans and Wood Elves now start with Stealth.
+
 - Tweaked a few sprites.
 
 - Stanzas for "Tel and Floridel".
