@@ -48,6 +48,8 @@ Shadow of the Wyrm v1.8.2 "Fampas"
 
 - Humans and Wood Elves now start with Stealth.
 
+- Adventurers now start with Swimming (Paul Raymond-Robichaud).
+
 - Reworked how Hiding works. Rather than requiring manual application, it's
   now checked on a turn-by-turn basis, if you have skill in it. Only Thieves
   start with the skill. The status messages on application/wear-off have been

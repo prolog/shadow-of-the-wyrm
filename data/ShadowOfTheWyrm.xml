@@ -2642,6 +2642,7 @@
 					<Literacy>5</Literacy>
 					<Spelunking>10</Spelunking>
 					<Stealth>15</Stealth>
+					<Swimming>5</Swimming>
 				</GeneralSkills>
 				<WeaponSkills>
 					<ShortBlades>5</ShortBlades>
@@ -4594,7 +4595,7 @@
 					<DisarmTraps>20</DisarmTraps>
 					<DualWield>20</DualWield>
 					<Escape>20</Escape>
-					<Hiding>20</Hiding>
+					<Hiding>25</Hiding>
 					<Hunting>10</Hunting>
 					<Jumping>20</Jumping>
 					<Spelunking>15</Spelunking>
