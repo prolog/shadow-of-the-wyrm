@@ -1,4 +1,4 @@
-Shadow of the Wyrm v1.8.2 "Fampas"
+Shadow of the Wyrm v1.8.333Fampas"
 - Version declared March 8, 2025.
 
 - Updated the guidebook's section on Skills and created a new section on 
@@ -50,6 +50,8 @@ Shadow of the Wyrm v1.8.2 "Fampas"
 
 - Adventurers now start with Swimming (Paul Raymond-Robichaud).
 
+- Stealth is now more effective at allowing you to move and remain hidden.
+
 - Reworked how Hiding works. Rather than requiring manual application, it's
   now checked on a turn-by-turn basis, if you have skill in it. Only Thieves
   start with the skill. The status messages on application/wear-off have been
@@ -58,6 +60,8 @@ Shadow of the Wyrm v1.8.2 "Fampas"
   This should allow a distinct playstyle for thieves, similar to how combat
   is for warriors and others, and magic for the spellcasting classes. (Josh
   Engdahl, Paul Raymond-Robichaud)
+
+- Hiding is now automatic only when no creatures can see the hiding creature.
 
 - Tweaked a few sprites.
 

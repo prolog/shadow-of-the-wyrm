@@ -16,15 +16,9 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
 
   if (creature != nullptr)
   {
-    // Using hiding when hidden reveals the creature.
     if (creature->has_status(StatusIdentifiers::STATUS_ID_HIDE))
     {
-      StatusEffectPtr hide = StatusEffectFactory::create_status_effect(creature, StatusIdentifiers::STATUS_ID_HIDE, creature->get_id());
-
-      if (hide != nullptr)
-      {
-        hide->undo_change(creature);
-      }
+      return acv;
     }
     else
     {

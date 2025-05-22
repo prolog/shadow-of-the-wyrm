@@ -1106,9 +1106,9 @@ void MovementAction::check_movement_stealth(CreaturePtr creature, const Directio
     if (creature->has_status(StatusIdentifiers::STATUS_ID_HIDE))
     {
       SkillManager sm;
-      bool stealth_successful = sm.check_skill(creature, SkillType::SKILL_GENERAL_STEALTH);
+      bool stealth_successful = sm.check_skill(creature, SkillType::SKILL_GENERAL_STEALTH, 2);
 
-      if (d == Direction::DIRECTION_NULL || (stealth_successful && RNG::percent_chance(95)))
+      if (d == Direction::DIRECTION_NULL || (stealth_successful && RNG::percent_chance(98)))
       {
         creature->increment_free_hidden_actions();
       }

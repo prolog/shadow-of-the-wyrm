@@ -6,7 +6,7 @@ class SkillManager
   public:
     // Do a percentile check against a particular NWP, weapon, or magic skill.
     // Mark the skill based on the result.
-    bool check_skill(CreaturePtr creature, const SkillType skill_type);
+    bool check_skill(CreaturePtr creature, const SkillType skill_type, const int num_checks = 1);
     
     // Get the value for a particular NWP, weapon, or magic skill
     int get_skill_value(CreaturePtr creature, const SkillType skill_type);

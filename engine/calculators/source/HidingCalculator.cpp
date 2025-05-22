@@ -35,7 +35,8 @@ int HidingCalculator::calculate_pct_chance_hide(CreaturePtr creature, MapPtr map
     // Get the creatures that can see the creature trying to hide.
     vector<string> creature_ids = MapUtils::get_creatures_with_creature_in_view(map, creature_id);
 
-    if (creature_ids.empty() || !MapUtils::does_hostile_creature_exist(map, creature_ids, creature_id))
+    // Hiding's easy when nothing can see ye
+    if (creature_ids.empty())
     {
       pct_chance_hide = 100;
     }
