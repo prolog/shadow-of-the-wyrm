@@ -8,6 +8,8 @@ Me:
 - ASSET RELEASE: sounds! tiles!
 - git push --tags
 - Audio enhancements off for testing
+- MovementAction - when there are no nearby creatures, Hide should always
+  remain in effect?
 - The Ybari/Asturias?
 - no-talk telari: what if the entrance was deep below wintersea catacombs?
 - regular stanza updates again! XII should be the brothers/rebels returning to

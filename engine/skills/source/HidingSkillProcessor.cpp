@@ -1,4 +1,5 @@
 #include "ActionTextKeys.hpp"
+#include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
@@ -18,6 +19,12 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
   {
     if (creature->has_status(StatusIdentifiers::STATUS_ID_HIDE))
     {
+      return acv;
+    }
+    else if (creature->has_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIDING_COOLDOWN))
+    {
+      creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIDING_COOLDOWN);
+
       return acv;
     }
     else

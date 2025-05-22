@@ -10,6 +10,7 @@ class HideStatusEffect : public StatusEffect
 
   protected:
     virtual bool after_apply(std::shared_ptr<Creature> creature) const override;
+    virtual void after_finalize(std::shared_ptr<Creature> creature) const;
 
     virtual std::string get_player_application_message() const override;
     virtual std::string get_player_undo_message() const override;

@@ -23,7 +23,7 @@ ActionCostValue StealthSkillProcessor::process(CreaturePtr creature, MapPtr /*ma
 
       if (hide != nullptr)
       {
-        hide->undo_change(creature);
+        hide->finalize_change(creature);
       }
     }
   }
