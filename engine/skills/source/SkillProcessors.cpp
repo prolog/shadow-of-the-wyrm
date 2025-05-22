@@ -8,7 +8,11 @@ using namespace std;
 void PassiveSkillsProcessor::process_passive_skills(CreaturePtr creature, MapPtr map)
 {
   // Sorry, NPCs, player-only (for now?)
-  if (creature != nullptr && creature->get_is_player())
+  // Skills should also not auto-trigger on the world map.
+  if (map != nullptr && 
+      map->get_map_type() != MapType::MAP_TYPE_WORLD && 
+      creature != nullptr && 
+      creature->get_is_player())
   {
     Skills& skills = creature->get_skills();
 
