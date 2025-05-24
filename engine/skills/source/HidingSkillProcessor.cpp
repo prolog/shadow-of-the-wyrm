@@ -9,7 +9,7 @@
 #include "SkillManager.hpp"
 #include "StatusEffectFactory.hpp"
 
-using std::string;
+using namespace std;
 
 ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
 {
@@ -32,7 +32,8 @@ ActionCostValue HidingSkillProcessor::process(CreaturePtr creature, MapPtr map)
       HidingCalculator hc;
       TimeOfDayType tod = TimeOfDayType::TIME_OF_DAY_UNDEFINED; 
       World* world = Game::instance().get_current_world();
-      int hide_chance = hc.calculate_pct_chance_hide(creature, map, tod);
+      pair<int, vector<string>> hide_chance_details = hc.calculate_pct_chance_hide(creature, map, tod);
+      int hide_chance = hide_chance_details.first;
       CurrentCreatureAbilities cca;
 
       TilePtr tile = map->at(map->get_location(creature->get_id()));

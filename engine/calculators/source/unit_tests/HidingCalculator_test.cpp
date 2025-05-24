@@ -7,7 +7,7 @@ TEST(SW_Engine_Calculators_HidingCalculator, calculate_pct_chance_hide)
   CreaturePtr creature;
   MapPtr map;
 
-  EXPECT_EQ(0, hc.calculate_pct_chance_hide(creature, map, TimeOfDayType::TIME_OF_DAY_UNDEFINED));
+  EXPECT_EQ(0, hc.calculate_pct_chance_hide(creature, map, TimeOfDayType::TIME_OF_DAY_UNDEFINED).first);
 
   Dimensions dim;
   map = std::make_shared<Map>(dim);
@@ -15,7 +15,7 @@ TEST(SW_Engine_Calculators_HidingCalculator, calculate_pct_chance_hide)
   creature = std::make_shared<Creature>();
   creature->set_id("cr1");
 
-  EXPECT_EQ(100, hc.calculate_pct_chance_hide(creature, map, TimeOfDayType::TIME_OF_DAY_UNDEFINED));
+  EXPECT_EQ(100, hc.calculate_pct_chance_hide(creature, map, TimeOfDayType::TIME_OF_DAY_UNDEFINED).first);
 }
 
 TEST(SW_Engine_Calculators_HidingCalculator, calculate_pct_chance_hidden_after_attacking)

@@ -211,6 +211,7 @@ class TextKeys
     static const std::string DEFAULT_CLASS_NAME_SID;
     static const std::string RESPAWN_MESSAGE;
     static const std::string CHARM_RACES;
+    static const std::string BACKSTABBED;
 
   protected:
     TextKeys();

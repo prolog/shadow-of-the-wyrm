@@ -143,6 +143,13 @@ string CreatureDescriber::describe_for_tile_selection() const
       ss << StringTable::get(TextKeys::FRIENDLY) << "; ";
     }
 
+    // The player should have a way of knowing if a creature has been
+    // backstabbed, as these creatures will block automatic hiding.
+    if (creature->has_additional_property(CreatureProperties::CREATURE_PROPERTIES_BACKSTABBED))
+    {
+      ss << StringTable::get(TextKeys::BACKSTABBED) << "; ";
+    }
+
     ss << StringTable::get(difficulty) << "; " << StringTable::get(hp_ind) << "; " << StringTable::get(ActionTextKeys::ACTION_BESTIARY_DISPLAY_COMMAND_FOR_TILE_SELECTION) << ")";
   }
 
