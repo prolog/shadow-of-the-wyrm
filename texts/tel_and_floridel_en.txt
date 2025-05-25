@@ -4242,3 +4242,13 @@ They finished, had a drink, then sliced some more, %b
 a silence as they chewed and cut off chunks, %b
 an understanding no one talked till all were done.
 %p
+It was Weyg who spoke. "That scout will make it there %b
+before we can, and ready a defense %b
+that'll break us even if we test it where %b
+our new-found friends advise us that it's best. %b
+The six of us are strong, but stronger still's %b
+a hundred men.  So let the rider go. %b
+We'll gather up our kin so we can spill %b
+the fair folk's blood across their hall and show %b
+revenge is best when rendered as a killing blow.
+%p

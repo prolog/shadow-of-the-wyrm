@@ -8,8 +8,6 @@ Me:
 - ASSET RELEASE: sounds! tiles!
 - git push --tags
 - Audio enhancements off for testing
-- Rage on sneak attacks? Rage on low HP? 
-- Harder to hide when a creature has been sneak attacked?
 - The Ybari/Asturias?
 - no-talk telari: what if the entrance was deep below wintersea catacombs?
 - regular stanza updates again! XII should be the brothers/rebels returning to
