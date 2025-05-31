@@ -67,6 +67,12 @@ Shadow of the Wyrm v1.8.3 "Fampas"
 
 - Hiding is now automatic only when no creatures can see the hiding creature.
 
+- One of the thieves in the guild house in Carcassia now has some useful tips
+  for thieves.
+
+- The game will now check to see if the asset directory exists before
+  continuing, if the config requires it (SDL does, curses doesn't).
+
 - Tweaked a few sprites.
 
 - Stanzas for "Tel and Floridel".
