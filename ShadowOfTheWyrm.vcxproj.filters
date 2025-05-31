@@ -837,16 +837,16 @@
     <Filter Include="Source Files\engine\decision_strategies\magic\source\unit_tests">
       <UniqueIdentifier>{88ac272e-333e-4b79-9000-e626555b2058}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\engine\display">
+    <Filter Include="Header Files\display">
       <UniqueIdentifier>{813fc858-3f97-4a60-970a-3ca43535370b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\engine\display\animation">
+    <Filter Include="Header Files\display\animation">
       <UniqueIdentifier>{0528fd81-f88b-48d4-a184-e3636198b7bd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\engine\display\animation\include">
+    <Filter Include="Header Files\display\animation\include">
       <UniqueIdentifier>{7593d041-0620-459b-8c9a-2e107e109371}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\engine\display\include">
+    <Filter Include="Header Files\display\include">
       <UniqueIdentifier>{bd07ea26-734d-4fd8-8f0b-af206e166711}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -2619,58 +2619,58 @@
       <Filter>Header Files\controller\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\CursesConstants.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\CursesDisplay.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\CursesPromptProcessor.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\CursesUtils.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\Display.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\DisplayFactory.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\DisplayItem.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\DisplayItemType.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\DisplayMap.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\DisplayStatistics.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\DisplayTile.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\MapDisplayArea.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\animation\include\Animation.hpp">
-      <Filter>Header Files\engine\display\animation\include</Filter>
+      <Filter>Header Files\display\animation\include</Filter>
     </ClInclude>
     <ClInclude Include="display\animation\include\AnimationFactory.hpp">
-      <Filter>Header Files\engine\display\animation\include</Filter>
+      <Filter>Header Files\display\animation\include</Filter>
     </ClInclude>
     <ClInclude Include="display\animation\include\AnimationInstruction.hpp">
-      <Filter>Header Files\engine\display\animation\include</Filter>
+      <Filter>Header Files\display\animation\include</Filter>
     </ClInclude>
     <ClInclude Include="display\animation\include\DrawAnimationInstruction.hpp">
-      <Filter>Header Files\engine\display\animation\include</Filter>
+      <Filter>Header Files\display\animation\include</Filter>
     </ClInclude>
     <ClInclude Include="display\animation\include\PauseAnimationInstruction.hpp">
-      <Filter>Header Files\engine\display\animation\include</Filter>
+      <Filter>Header Files\display\animation\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\DisplayConstants.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\effects\include\RechargingEffect.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
@@ -2871,7 +2871,7 @@
       <Filter>Header Files\engine\conversion\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\MenuWrapper.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\commands\select_tile\include\SelectTileTypes.hpp">
       <Filter>Header Files\engine\commands\select_tile\include</Filter>
@@ -3150,7 +3150,7 @@
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\DisplaySettings.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLForgeReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
@@ -4185,28 +4185,28 @@
       <Filter>Header Files\controller\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\SDLDisplay.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\SDLPromptProcessor.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\PromptProcessor.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\SDLDisplayParameters.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\SDLRender.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\SDLCursorLocation.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\animation\include\DefaultAnimationFactory.hpp">
-      <Filter>Header Files\engine\display\animation\include</Filter>
+      <Filter>Header Files\display\animation\include</Filter>
     </ClInclude>
     <ClInclude Include="display\animation\include\DefaultDrawAnimationInstruction.hpp">
-      <Filter>Header Files\engine\display\animation\include</Filter>
+      <Filter>Header Files\display\animation\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\creatures\include\CreatureGenerationListValue.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
@@ -4266,22 +4266,22 @@
       <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\DisplayProperties.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\items\include\IItemFilter.hpp">
       <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\SDLUtils.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\SDLInit.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\sdl.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\curses.hpp">
-      <Filter>Header Files\engine\display\include</Filter>
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\skills\include\BeastmasterySkillProcessor.hpp">
       <Filter>Header Files\engine\skills\include</Filter>

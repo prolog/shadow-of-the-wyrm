@@ -7,8 +7,13 @@ Long Term Boring And Probably Necessary:
 Me:
 - ASSET RELEASE: sounds! tiles!
 - git push --tags
+- New Gnordvar when done: game, website, YouTube
 - Audio enhancements off for testing
-- The Ybari/Asturias?
+- asset dir check in engine (<config>_requires_assets?)
+- externalize the asset dir:
+   - move to website
+   - create script to wget and unzip
+   - update Linux build README
 - no-talk telari: what if the entrance was deep below wintersea catacombs?
 - regular stanza updates again! XII should be the brothers/rebels returning to
   farstead, XIII Tel's group.
@@ -50,6 +55,7 @@ Me:
   - Lancer's Walk
   - Shrink the shop a bit
   - Allow setting the shopkeeper name and setting the item types
+- The Ybari/Asturias?
 - can use warp in telari ocean
 - Elinor and Varra
 - in villages: retired cartographers?
@@ -511,6 +517,7 @@ RelicWraith:
 - Suggestion: Praying during a deity's specific holy day grants the player a gift, once per holy day. Could be just flavor items rather than anything that gives significant power (eg. a themed companion or food item). Even low piety worshipers get gifts, if not just junk...
 
 Paul Raymond-Robichaud:
+- Increase HP/AP regen modifiers as you level
 - be able to exit game to main screen
 - sheep generate tame for shepherds (sheep need to actually generate then)
 - shift+letter for race, class, religion help on start

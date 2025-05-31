@@ -10,9 +10,9 @@
 
 #include "UnhandledExceptions.hpp"
 
-#include <xercesc/util/PlatformUtils.hpp>
 #include <boost/archive/archive_exception.hpp>
 #include <boost/filesystem.hpp>
+#include <xercesc/util/PlatformUtils.hpp>
 
 #include "common.hpp"
 #include "global_prototypes.hpp"
@@ -127,7 +127,7 @@ int main(int argc, char* argv[])
       Environment::create_empty_user_settings_if_necessary(&settings);
 
       string display_id = settings.get_setting(Setting::DISPLAY);
-      string msg;
+      vector<string> msgs;
 
       #ifdef ENABLE_SDL
       SDLInit sdl;
@@ -168,14 +168,35 @@ int main(int argc, char* argv[])
 
       if (display)
       {
-        set_display_settings(display, settings);
-        display->display_splash(true);
+        string display_asset_dir_setting_val = settings.get_setting(settings.get_setting(Setting::DISPLAY) + Setting::ASSET_DIR_SUFFIX);
+        boost::filesystem::path display_asset_dir = display_asset_dir_setting_val;
+        bool play_game = true;
 
-        msg = run_game(display, sound, controller, settings);
-
-        if (!msg.empty())
+        if (!display_asset_dir_setting_val.empty() && !boost::filesystem::exists(display_asset_dir))
         {
-          cout << msg << endl;
+          msgs.push_back("Asset directory (" + display_asset_dir.string() + ") not found!");
+          msgs.push_back("Download assets from the SotW website: https://www.shadowofthewyrm.org.");
+
+          play_game = false;
+        }
+
+        if (play_game)
+        {
+          set_display_settings(display, settings);
+          display->display_splash(true);
+
+          msgs.push_back(run_game(display, sound, controller, settings));
+        }
+
+        if (!msgs.empty())
+        {
+          for (const string& msg : msgs)
+          {
+            if (!msg.empty())
+            {
+              cout << msg << endl << endl;
+            }
+          }
         }
       }
       else
