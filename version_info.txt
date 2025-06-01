@@ -73,6 +73,9 @@ Shadow of the Wyrm v1.8.3 "Fampas"
 - The game will now check to see if the asset directory exists before
   continuing, if the config requires it (SDL does, curses doesn't).
 
+- Moved all the assets out of source control and into an archive on the game's
+  website to get around GitHub's very low git-lfs bandwidth limits.
+
 - Tweaked a few sprites.
 
 - Stanzas for "Tel and Floridel".

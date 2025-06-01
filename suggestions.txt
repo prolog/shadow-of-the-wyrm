@@ -1,3 +1,7 @@
+EVERY RELEASE:
+- push tags
+- update assets, sprites, music, release on website
+
 Long Term Boring And Probably Necessary:
 - SDL3
 - Lua 5.1 still ok?
@@ -9,11 +13,6 @@ Me:
 - git push --tags
 - New Gnordvar when done: game, website, YouTube
 - Audio enhancements off for testing
-- externalize the asset dir:
-   - move to website
-   - create script to wget and unzip
-   - update Linux build README
-- add more stuff to the thief's script in carcassia
 - no-talk telari: what if the entrance was deep below wintersea catacombs?
 - regular stanza updates again! XII should be the brothers/rebels returning to
   farstead, XIII Tel's group.
