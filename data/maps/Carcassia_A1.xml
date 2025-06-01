@@ -53,7 +53,7 @@
 				<Friendly>1</Friendly>
 				<EventScripts>
 					<ChatScript>
-						<Script>quests/carcassia/guild_thief.lua</Script>
+						<Script>quests/carcassia/guild_greeter.lua</Script>
 					</ChatScript>
 				</EventScripts>
 			</Placement>

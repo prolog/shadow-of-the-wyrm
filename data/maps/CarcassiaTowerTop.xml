@@ -50,7 +50,11 @@
 					<Col>5</Col>
 				</Coord>
 				<Friendly>1</Friendly>
-				<SpeechTextSID>CARCASSIA_THIEF_HOUSE_SID</SpeechTextSID>
+				<EventScripts>
+					<ChatScript>
+						<Script>quests/carcassia/guild_thief.lua</Script>
+					</ChatScript>
+				</EventScripts>
 			</Placement>
 			<Placement>
 				<ID>golgoa</ID>
