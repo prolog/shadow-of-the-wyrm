@@ -26,3 +26,12 @@ variables appropriately.
 Open the Shadow of the Wyrm solution, select the configuration (e.g., 
 Release), and select "Rebuild All".
 
+Once you are done, you'll need to get the assets. These used to be tracked in
+git, but once I added 200 MB+ of music, it started triggering GitHub data 
+usage warnings. Run:
+
+sh get_assets.sh
+
+This will retrieve the assets from the website and unzip the archive in the
+current directory. At that point, you should have everything you need to play
+the game.

@@ -9,7 +9,6 @@ Me:
 - git push --tags
 - New Gnordvar when done: game, website, YouTube
 - Audio enhancements off for testing
-- asset dir check in engine (<config>_requires_assets?)
 - externalize the asset dir:
    - move to website
    - create script to wget and unzip
