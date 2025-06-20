@@ -11,7 +11,7 @@ Long Term Boring And Probably Necessary:
 Me:
 - ASSET RELEASE: sounds! tiles! assets!
 - git push --tags
-- New Gnordvar when done: game, website, YouTube
+- New Gnordvar when done: YouTube
 - Audio enhancements off for testing
 - no-talk telari: what if the entrance was deep below wintersea catacombs?
 - regular stanza updates again! XII should be the brothers/rebels returning to
