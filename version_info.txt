@@ -76,6 +76,8 @@ Shadow of the Wyrm v1.8.3 "Fampas"
 - Moved all the assets out of source control and into an archive on the game's
   website to get around GitHub's very low git-lfs bandwidth limits.
 
+- Dungeon stairs now sometimes have an extra description.
+
 - Tweaked a few sprites.
 
 - Stanzas for "Tel and Floridel".

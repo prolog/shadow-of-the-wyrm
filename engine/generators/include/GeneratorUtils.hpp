@@ -84,6 +84,8 @@ class GeneratorUtils
 
     static bool generates_complexes(const TileType tt);
 
+    static std::pair<std::string, std::string> generate_staircase_extra_descs();
+
   protected:
     static bool position_in_range(const int min, const int max, const int actual);
     static bool are_tiles_ok_for_structure(MapPtr map, const int y_start, const int x_start, const int height, const int width);

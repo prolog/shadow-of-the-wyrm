@@ -1026,3 +1026,23 @@ bool GeneratorUtils::generates_complexes(const TileType tt)
   vector<TileType> complex_tile_types = { TileType::TILE_TYPE_DUNGEON_COMPLEX, TileType::TILE_TYPE_SEWER_COMPLEX, TileType::TILE_TYPE_MINE };
   return std::find(complex_tile_types.begin(), complex_tile_types.end(), tt) != complex_tile_types.end();
 }
+
+pair<string, string> GeneratorUtils::generate_staircase_extra_descs()
+{
+  string up_extra_sid;
+  string down_extra_sid;
+
+  vector<string> extra_descs = String::create_string_vector_from_psv_string(StringTable::get(TerrainTextKeys::STAIRCASE_EXTRA_DESCS_SID));
+
+  if (RNG::x_in_y_chance(1, 6) && !extra_descs.empty())
+  {
+    up_extra_sid = extra_descs.at(RNG::range(0, extra_descs.size() - 1));
+  }
+
+  if (RNG::x_in_y_chance(1, 6) && !extra_descs.empty())
+  {
+    down_extra_sid = extra_descs.at(RNG::range(0, extra_descs.size() - 1));
+  }
+
+  return make_pair(up_extra_sid, down_extra_sid);
+}

@@ -105,6 +105,15 @@ vector<string> String::create_string_vector_from_csv_string(const string& csv_st
   return str_vec;
 }
 
+vector<string> String::create_string_vector_from_psv_string(const string& psv_str)
+{
+  vector<string> str_vec;
+
+  boost::split(str_vec, psv_str, boost::is_any_of("|"));
+
+  return str_vec;
+}
+
 map<string, string> String::create_properties_from_string(const string& properties_str)
 {
   vector<string> properties_v;
