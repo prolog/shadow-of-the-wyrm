@@ -9,7 +9,8 @@ Long Term Boring And Probably Necessary:
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
 Me:
-- ASSET RELEASE: sounds! tiles! assets!
+- EVERY TIME YOU UPDATE ASSETS, DM LARZID
+- ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - New Gnordvar when done: YouTube
 - Audio enhancements off for testing
