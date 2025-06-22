@@ -87,6 +87,8 @@ Shadow of the Wyrm v1.8.3 "Fampas"
   - Fixed a bug with summoner following that wasn't respecting a tile's
     existing creature (Ewig Kaiwelo).
 
+  - The Crafting skill wasn't showing its message when used (RelicWraith).
+
 Shadow of the Wyrm v1.8.0 "Sergio Assad"
 - Version started August 25, 2024. Version finalized March 8, 2025.
 

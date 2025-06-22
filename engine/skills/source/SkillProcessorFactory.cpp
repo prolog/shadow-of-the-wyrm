@@ -37,6 +37,7 @@ void SkillProcessorFactory::populate_skill_map()
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_BOWYER, make_unique<BowyerSkillProcessor>()));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_CARRYING, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_CARRYING)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_COMBAT, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_COMBAT)));
+  skill_map.insert(make_pair(SkillType::SKILL_GENERAL_CRAFTING, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_CRAFTING)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_DESERT_LORE, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_DESERT_LORE)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_DETECTION, make_unique<DefaultSkillProcessor>(SkillTextKeys::SKILL_USAGE_DETECTION)));
   skill_map.insert(make_pair(SkillType::SKILL_GENERAL_DISARM_TRAPS, make_unique<DisarmTrapsSkillProcessor>()));
