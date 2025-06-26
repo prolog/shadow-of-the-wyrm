@@ -36,6 +36,9 @@ string ColourTextKeys::get_colour_sid_from_hair_colour(const HairColour hair_col
     case HairColour::HAIR_COLOUR_WHITE:
       colour_sid = ColourTextKeys::COLOUR_WHITE;
       break;
+    case HairColour::HAIR_COLOUR_BALD:
+      colour_sid = TextKeys::BALD;
+      break;
     case HairColour::HAIR_NA:
       colour_sid = TextKeys::NOT_APPLICABLE_ABRV;
       break;

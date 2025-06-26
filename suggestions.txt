@@ -14,10 +14,8 @@ Me:
 - EVERY TIME YOU UPDATE ASSETS, DM LARZID
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
-- Very long descs for staircases causing problems? Set 1,1 and then a single
-  very long desc to debug.
-- Add extra descs to other underground stairs?
-- New Gnordvar when done: YouTube
+- Snakelings should always start bald (RelicWraith)
+- Companions should see you when hidden, or else orders get wonky (RelicWraith)
 - Audio enhancements off for testing
 - no-talk telari: what if the entrance was deep below wintersea catacombs?
 - regular stanza updates again! XII should be the brothers/rebels returning to

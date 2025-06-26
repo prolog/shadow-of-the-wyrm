@@ -80,6 +80,9 @@ Shadow of the Wyrm v1.8.4 "Fampas"
 
 - Tweaked a few sprites.
 
+- Changed "Hair Colour" and "Eye Colour" to "Hair" and "Eyes", respectively,
+  and added a new Hair option, Bald (RelicWraith).
+
 - Stanzas for "Tel and Floridel".
 
 - Bug fixes:
