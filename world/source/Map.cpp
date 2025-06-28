@@ -175,6 +175,24 @@ CreaturePtr Map::get_creature(const string& creature_id)
   return creature;
 }
 
+string Map::get_creature_location_debug(const std::string& creature_id) const
+{
+  string tile_key;
+
+  for (auto t_it : tiles)
+  {
+    TilePtr tile = t_it.second;
+
+    if (tile != nullptr && tile->has_creature() && tile->get_creature()->get_id() == creature_id)
+    {
+      tile_key = t_it.first;
+      break;
+    }
+  }
+
+  return tile_key;
+}
+
 map<string, CreaturePtr> Map::get_creatures()
 {
   if (creatures.empty())

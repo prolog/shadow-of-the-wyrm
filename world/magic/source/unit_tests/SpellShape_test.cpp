@@ -6,7 +6,7 @@ TEST(SW_World_Magic_SpellShape, object_values)
 
   EXPECT_EQ(SpellShapeType::SPELL_SHAPE_CONE, ss.get_spell_shape_type());
   EXPECT_EQ(DirectionCategory::DIRECTION_CATEGORY_CARDINAL, ss.get_direction_category());
-  EXPECT_EQ(3, ss.get_radius());
+  EXPECT_EQ(static_cast<uint>(3), ss.get_radius());
 }
 
 TEST(SW_World_Magic_SpellShape, get_spell_situation)

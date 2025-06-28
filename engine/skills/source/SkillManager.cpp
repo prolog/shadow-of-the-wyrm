@@ -3,11 +3,21 @@
 
 const int SkillManager::PERCENT_CHANCE_TO_MARK_SKILL_ON_FAILURE = 20;
 
-bool SkillManager::check_skill(CreaturePtr creature, const SkillType skill_type)
+bool SkillManager::check_skill(CreaturePtr creature, const SkillType skill_type, const int num_checks)
 {
   int skill_value = get_skill_value(creature, skill_type);  
-  bool skill_check = RNG::percent_chance(skill_value);
+  bool skill_check = false;
   
+  for (int i = 0; i < num_checks; i++)
+  {
+    skill_check = RNG::percent_chance(skill_value);
+
+    if (skill_check)
+    {
+      break;
+    }
+  }
+
   mark_skill(creature, skill_type, skill_check);
   
   return skill_check;

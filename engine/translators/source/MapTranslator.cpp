@@ -293,6 +293,16 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const CreaturePtr& crea
   MapRegistry& mr = game.get_map_registry_ref();
   MapPtr map = game.get_current_map();
   MapType mt = MapType::MAP_TYPE_OVERWORLD;
+
+  // Deathly tiles are drained of all colour, and appear black.
+  // We don't properly check the creature because these tiles
+  // should always appear visually dark, regardless if they are
+  // eg water tiles and the creature has a boat, which would
+  // allow the creature to remain safe.
+  if (tile->get_unprotected_movement_is_death(nullptr))
+  {
+    override_colour = Colour::COLOUR_BOLD_BLACK;
+  }
   
   // Almost always not null, except when using the MapTester config.
   if (map != nullptr)

@@ -20,7 +20,7 @@ ActionCostValue PietyAction::piety(CreaturePtr creature, MapPtr map) const
   if (creature != nullptr)
   {
     Game& game = Game::instance();
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
 
     if (String::to_bool(map->get_property(MapProperties::MAP_PROPERTIES_CANNOT_PRAY)))
     {

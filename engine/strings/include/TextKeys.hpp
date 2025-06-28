@@ -197,10 +197,12 @@ class TextKeys
     static const std::string DUMPING_CHARACTER_FAILED;
     static const std::string NO_NEW_CHARACTERS;
     static const std::string MEMBERSHIPS;
+    static const std::string BALD;
     static const std::string NOT_APPLICABLE_ABRV;
     static const std::string CARRYING_CAPACITY;
     static const std::string ARTIFACT;
     static const std::string AUTOCURSING;
+    static const std::string NEXUS;
     static const std::string GENERIC_MESSAGE;
     static const std::string PACIFIED;
     static const std::string TAMED;
@@ -209,6 +211,8 @@ class TextKeys
     static const std::string NO_CREATURES_GENERATED;
     static const std::string DEFAULT_CLASS_NAME_SID;
     static const std::string RESPAWN_MESSAGE;
+    static const std::string CHARM_RACES;
+    static const std::string BACKSTABBED;
 
   protected:
     TextKeys();

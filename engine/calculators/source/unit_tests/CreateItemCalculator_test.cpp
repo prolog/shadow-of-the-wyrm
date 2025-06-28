@@ -38,22 +38,22 @@ TEST(SW_Engine_Calculators_CreateItemCalculator, calc_quantity)
   ItemPtr creation_item;
   ItemPtr component_item;
 
-  EXPECT_EQ(0, cic.calc_quantity(creation_item, component_item));
+  EXPECT_EQ(static_cast<uint>(0), cic.calc_quantity(creation_item, component_item));
 
   Weight creation_weight(16);
   creation_item = std::make_shared<Amulet>();
   creation_item->set_weight(creation_weight);
 
-  EXPECT_EQ(0, cic.calc_quantity(creation_item, component_item));
+  EXPECT_EQ(static_cast<uint>(0), cic.calc_quantity(creation_item, component_item));
 
   Weight component_weight(16);
   component_item = std::make_shared<Amulet>();
   component_item->set_weight(component_weight);
 
-  EXPECT_EQ(1, cic.calc_quantity(creation_item, component_item));
+  EXPECT_EQ(static_cast<uint>(1), cic.calc_quantity(creation_item, component_item));
 
   component_weight.set_weight(64);
   component_item->set_weight(component_weight);
 
-  EXPECT_EQ(4, cic.calc_quantity(creation_item, component_item));
+  EXPECT_EQ(static_cast<uint>(4), cic.calc_quantity(creation_item, component_item));
 }

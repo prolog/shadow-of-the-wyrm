@@ -30,7 +30,7 @@ TEST(SW_Engine_Creatures_CreatureUtils, can_pick_up)
   // should not be allowed.
   auto pickup_details = CreatureUtils::can_pick_up(c, amulet3);
   EXPECT_FALSE(get<0>(pickup_details));
-  EXPECT_EQ(7, get<1>(pickup_details));
+  EXPECT_EQ(static_cast<uint>(7), get<1>(pickup_details));
 }
 
 TEST(SW_Engine_CreatureUtils, has_negative_status)
@@ -81,7 +81,7 @@ TEST(SW_Engine_CreatureUtils, has_followers_in_fov)
   cm = CreatureUtils::get_followers_in_fov(c);
 
   EXPECT_FALSE(cm.empty());
-  EXPECT_EQ(1, cm.size());
+  EXPECT_EQ(static_cast<uint>(1), cm.size());
 }
 
 TEST(SW_Engine_CreatureUtils, get_specific_follower_in_fov)
@@ -103,12 +103,12 @@ TEST(SW_Engine_CreatureUtils, get_specific_follower_in_fov)
   CreatureMap cm = CreatureUtils::get_followers_in_fov(c);
 
   EXPECT_FALSE(cm.empty());
-  EXPECT_EQ(1, cm.size());
+  EXPECT_EQ(static_cast<uint>(1), cm.size());
 
   cm = CreatureUtils::get_followers_in_fov(c, "follower");
 
   EXPECT_FALSE(cm.empty());
-  EXPECT_EQ(1, cm.size());
+  EXPECT_EQ(static_cast<uint>(1), cm.size());
 
   cm = CreatureUtils::get_followers_in_fov(c, "invalid_follower_id");
 

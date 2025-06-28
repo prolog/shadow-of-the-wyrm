@@ -43,6 +43,13 @@ class Map : public ISerializable
 		bool has_creature(const std::string& creature_id);
     bool has_player();
 		std::shared_ptr<Creature> get_creature(const std::string& creature_id);
+
+    // A debug function that does a full pass through the entire map and
+    // returns the key of the tile the creature is at. This is very
+    // inefficient and should only be used for debug purposes when there
+    // might be an issue with the value in the location container.
+    std::string get_creature_location_debug(const std::string& creature_id) const;
+
 		std::map<std::string, std::shared_ptr<Creature>> get_creatures();
 		std::map<std::string, std::shared_ptr<Creature>>& get_creatures_ref();
 

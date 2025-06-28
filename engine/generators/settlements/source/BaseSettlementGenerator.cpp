@@ -2,19 +2,20 @@
 #include "BaseSettlementGenerator.hpp"
 #include "BuildingConfigFactory.hpp"
 #include "CreatureGenerationManager.hpp"
+#include "EnclosureSectorFeature.hpp"
 #include "FeatureGenerator.hpp"
+#include "FruitVegetableGardenGenerator.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "GraveyardSectorFeature.hpp"
 #include "LibrarySectorFeature.hpp"
+#include "MapUtils.hpp"
 #include "ParkSectorFeature.hpp"
-#include "EnclosureSectorFeature.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "ShrineSectorFeature.hpp"
 #include "TavernSectorFeature.hpp"
 #include "TileGenerator.hpp"
-#include "FruitVegetableGardenGenerator.hpp"
 
 using namespace std;
 
@@ -473,7 +474,7 @@ void BaseSettlementGenerator::generate_special_inhabitants(MapPtr map)
 
         TilePtr tile = map->at(y, x);
 
-        if (tile != nullptr && tile->get_is_available_for_creature(hireling))
+        if (tile != nullptr && MapUtils::is_tile_available_for_creature(hireling, tile))
         {
           GameUtils::add_new_creature_to_map(game, hireling, map, { y,x });
           break;

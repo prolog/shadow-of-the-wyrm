@@ -38,7 +38,7 @@ TEST(SW_World_NullInventory, items_are_not_persisted)
 
   ni.add_front(book);
 
-  EXPECT_EQ(0, ni.size());
+  EXPECT_EQ(static_cast<uint>(0), ni.size());
   EXPECT_TRUE(ni.empty());
 
   ItemPtr item = ni.get_from_base_id("book");
@@ -49,7 +49,7 @@ TEST(SW_World_NullInventory, items_are_not_persisted)
 TEST(SW_World_NullInventory, count_items)
 {
   NullInventory ni;
-  EXPECT_EQ(0, ni.count_items());
+  EXPECT_EQ(static_cast<uint>(0), ni.count_items());
 }
 
 TEST(SW_World_NullInventory, size)
@@ -59,7 +59,7 @@ TEST(SW_World_NullInventory, size)
   SpellbookPtr book = std::make_shared<Spellbook>();
   ni.add_front(book);
 
-  EXPECT_EQ(0, ni.size());
+  EXPECT_EQ(static_cast<uint>(0), ni.size());
 }
 
 TEST(SW_World_NullInventory, empty)
@@ -93,7 +93,7 @@ TEST(SW_World_NullInventory, add_items)
   NullInventory ni;
   ItemPtr item = std::make_shared<Spellbook>();
   ni.add_items({ item });
-  EXPECT_EQ(0, ni.count_items());
+  EXPECT_EQ(static_cast<uint>(0), ni.count_items());
 }
 
 TEST(SW_World_NullInventory, merge_or_add)
@@ -116,13 +116,13 @@ TEST(SW_World_NullInventory, merge_or_add)
   item3->set_effect_type(EffectType::EFFECT_TYPE_ETHER);
 
   EXPECT_FALSE(ni.merge_or_add(item3, InventoryAdditionType::INVENTORY_ADDITION_BACK));
-  EXPECT_EQ(0, ni.size());
+  EXPECT_EQ(static_cast<uint>(0), ni.size());
 
   EXPECT_FALSE(ni.merge_or_add(item2, InventoryAdditionType::INVENTORY_ADDITION_BACK));
-  EXPECT_EQ(0, ni.size());
+  EXPECT_EQ(static_cast<uint>(0), ni.size());
 
   EXPECT_FALSE(ni.merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK));
-  EXPECT_EQ(0, ni.size());
+  EXPECT_EQ(static_cast<uint>(0), ni.size());
 }
 
 TEST(SW_World_NullInventory, merge_or_add_whole_inventory)
@@ -165,7 +165,7 @@ TEST(SW_World_NullInventory, set_additional_property)
   ItemPtr item = std::make_shared<Spellbook>();
   ni.add_items({ item });
   ni.set_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED, "1");
-  EXPECT_EQ(0, ni.count_items_with_property(ItemProperties::ITEM_PROPERTIES_BRANDED));
+  EXPECT_EQ(static_cast<uint>(0), ni.count_items_with_property(ItemProperties::ITEM_PROPERTIES_BRANDED));
 }
 
 TEST(SW_World_NullInventory, count_items_without_property)
@@ -174,7 +174,7 @@ TEST(SW_World_NullInventory, count_items_without_property)
   ItemPtr item = std::make_shared<Spellbook>();
   item->set_additional_property("fdsa", "1");
   ni.add_items({ item });
-  EXPECT_EQ(0, ni.count_items_without_property("abc"));
+  EXPECT_EQ(static_cast<uint>(0), ni.count_items_without_property("abc"));
 }
 
 TEST(SW_World_NullInventory, get_from_type)
@@ -184,7 +184,7 @@ TEST(SW_World_NullInventory, get_from_type)
   ni.add(item);
   vector<ItemPtr> itypes = ni.get_from_type(ItemType::ITEM_TYPE_SPELLBOOK);
 
-  EXPECT_EQ(0, itypes.size());
+  EXPECT_EQ(static_cast<uint>(0), itypes.size());
 }
 
 TEST(SW_World_NullInventory, no_drop_effect_sid)
@@ -212,7 +212,7 @@ TEST(SW_World_NullInventory, get_all_from_base_id)
   item->set_base_id("book");
 
   ni.add(item);
-  EXPECT_EQ(0, ni.get_all_from_base_id("book").size());
+  EXPECT_EQ(static_cast<uint>(0), ni.get_all_from_base_id("book").size());
 }
 
 TEST(SW_World_NullInventory, get_all_from_property)
@@ -223,7 +223,7 @@ TEST(SW_World_NullInventory, get_all_from_property)
   item->set_additional_property("fdsa", "asdf");
 
   ni.add(item);
-  EXPECT_EQ(0, ni.get_all_from_property("fdsa").size());
+  EXPECT_EQ(static_cast<uint>(0), ni.get_all_from_property("fdsa").size());
 }
 
 TEST(SW_World_NullInventory, get_all_from_property_and_required_value)
@@ -234,5 +234,5 @@ TEST(SW_World_NullInventory, get_all_from_property_and_required_value)
   item->set_additional_property("fdsa", "asdf");
 
   ni.add(item);
-  EXPECT_EQ(0, ni.get_all_from_property("fdsa", "asdf").size());
+  EXPECT_EQ(static_cast<uint>(0), ni.get_all_from_property("fdsa", "asdf").size());
 }

@@ -8,9 +8,6 @@
     <Filter Include="Header Files\controller">
       <UniqueIdentifier>{5702cdd9-01d5-4785-8cdc-f72ae42ad922}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\display">
-      <UniqueIdentifier>{813fc858-3f97-4a60-970a-3ca43535370b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\engine">
       <UniqueIdentifier>{e30da692-f803-4591-9e51-bed8db084717}</UniqueIdentifier>
     </Filter>
@@ -212,9 +209,6 @@
     <Filter Include="Header Files\engine\scripting\include">
       <UniqueIdentifier>{8936e6a7-4a65-42ad-9856-6ab421c4d900}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\display\animation">
-      <UniqueIdentifier>{0528fd81-f88b-48d4-a184-e3636198b7bd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\world\magic">
       <UniqueIdentifier>{c579bea8-33ef-4b6f-823d-9dd04ba6dcd7}</UniqueIdentifier>
     </Filter>
@@ -259,12 +253,6 @@
     </Filter>
     <Filter Include="Header Files\controller\include">
       <UniqueIdentifier>{a1b760b6-b76d-47bd-9115-3b04dbe626df}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\display\include">
-      <UniqueIdentifier>{bd07ea26-734d-4fd8-8f0b-af206e166711}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\display\animation\include">
-      <UniqueIdentifier>{7593d041-0620-459b-8c9a-2e107e109371}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\engine\XML\custom_maps\features">
       <UniqueIdentifier>{b4ecc6cf-4205-419b-a9e1-a90b2c28ac5b}</UniqueIdentifier>
@@ -848,6 +836,18 @@
     </Filter>
     <Filter Include="Source Files\engine\decision_strategies\magic\source\unit_tests">
       <UniqueIdentifier>{88ac272e-333e-4b79-9000-e626555b2058}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\display">
+      <UniqueIdentifier>{813fc858-3f97-4a60-970a-3ca43535370b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\display\animation">
+      <UniqueIdentifier>{0528fd81-f88b-48d4-a184-e3636198b7bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\display\animation\include">
+      <UniqueIdentifier>{7593d041-0620-459b-8c9a-2e107e109371}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\display\include">
+      <UniqueIdentifier>{bd07ea26-734d-4fd8-8f0b-af206e166711}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2688,9 +2688,6 @@
       <Filter>Header Files\engine\decision_strategies\search\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\creatures\include\CreatureTileSafetyChecker.hpp">
-      <Filter>Header Files\engine\creatures\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\creatures\include\ITileSafetyCondition.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\creatures\include\WaterSafetyCondition.hpp">
@@ -4597,6 +4594,9 @@
     </ClInclude>
     <ClInclude Include="engine\generators\tile_config\include\WheatTileConfiguration.hpp">
       <Filter>Header Files\engine\generators\tile_config\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\TileSafetyCondition.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -9345,6 +9345,18 @@
     </ClCompile>
     <ClCompile Include="engine\generators\tile_config\source\WheatTileConfiguration.cpp">
       <Filter>Source Files\engine\generators\tile_config\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\AirSafetyCondition_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\GroundSafetyCondition_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\WaterSafetyCondition_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\TileSafetyCondition.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

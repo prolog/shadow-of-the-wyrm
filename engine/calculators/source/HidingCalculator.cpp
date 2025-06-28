@@ -1,3 +1,5 @@
+#include "CreatureProperties.hpp"
+#include "EngineConversion.hpp"
 #include "HidingCalculator.hpp"
 #include "HostilityManager.hpp"
 #include "CoordUtils.hpp"
@@ -22,9 +24,11 @@ bool HidingCalculator::gets_hole_bonus(CreaturePtr creature) const
 
   return bonus;
 }
-int HidingCalculator::calculate_pct_chance_hide(CreaturePtr creature, MapPtr map, const TimeOfDayType tod) const
+
+pair<int, std::vector<string>> HidingCalculator::calculate_pct_chance_hide(CreaturePtr creature, MapPtr map, const TimeOfDayType tod) const
 {
   int pct_chance_hide = 0;
+  vector<string> alert_creature_ids;
 
   if (creature != nullptr && map != nullptr)
   {
@@ -33,7 +37,8 @@ int HidingCalculator::calculate_pct_chance_hide(CreaturePtr creature, MapPtr map
     // Get the creatures that can see the creature trying to hide.
     vector<string> creature_ids = MapUtils::get_creatures_with_creature_in_view(map, creature_id);
 
-    if (creature_ids.empty() || !MapUtils::does_hostile_creature_exist(map, creature_ids, creature_id))
+    // Hiding's easy when nothing can see ye
+    if (creature_ids.empty())
     {
       pct_chance_hide = 100;
     }
@@ -51,9 +56,23 @@ int HidingCalculator::calculate_pct_chance_hide(CreaturePtr creature, MapPtr map
       pct_chance_hide += creature->get_skills().get_value(SkillType::SKILL_GENERAL_HIDING);
       pct_chance_hide += tod_modifier;
       pct_chance_hide += size_bonus;
-      pct_chance_hide += get_viewing_creatures_modifier(creature, map, creature_ids);
+
+      auto vc_details = get_viewing_creatures_modifier(creature, map, creature_ids);
+      pct_chance_hide += vc_details.first;
+
+      if (!vc_details.second.empty())
+      {
+        alert_creature_ids = vc_details.second;
+        pct_chance_hide = 1;
+      }
 
       pct_chance_hide = std::min<int>(pct_chance_hide, MAX_PCT_CHANCE_HIDE_CREATURES_PRESENT);
+    }
+
+    // Hiding only works when the creature is unburdened.
+    if (BurdenLevelConverter::to_burden_level(creature) != BurdenLevel::BURDEN_LEVEL_UNBURDENED)
+    {
+      pct_chance_hide = 0;
     }
 
     // Ensure the value is between 1 and 100.
@@ -61,7 +80,7 @@ int HidingCalculator::calculate_pct_chance_hide(CreaturePtr creature, MapPtr map
     pct_chance_hide = std::max<int>(pct_chance_hide, 1);
   }
 
-  return pct_chance_hide;
+  return make_pair(pct_chance_hide, alert_creature_ids);
 }
 
 int HidingCalculator::calculate_pct_chance_hidden_after_attacking(CreaturePtr creature)
@@ -117,9 +136,10 @@ int HidingCalculator::get_tod_hide_modifier_for_map_type(const TimeOfDayType tod
   return tod_mod;
 }
 
-int HidingCalculator::get_viewing_creatures_modifier(CreaturePtr creature, MapPtr map, const vector<string>& creature_ids) const
+pair<int, vector<string>> HidingCalculator::get_viewing_creatures_modifier(CreaturePtr creature, MapPtr map, const vector<string>& creature_ids) const
 {
   int cr_mod = 0;
+  vector<string> alert_creature_ids;
 
   if (creature != nullptr && map != nullptr)
   {
@@ -127,19 +147,27 @@ int HidingCalculator::get_viewing_creatures_modifier(CreaturePtr creature, MapPt
     {
       CreaturePtr view_cr = map->get_creature(id);
 
-      if (view_cr != nullptr && view_cr->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()).first)
+      if (view_cr != nullptr)
       {
-        Coordinate c_coord = map->get_location(creature->get_id());
-        Coordinate vc_coord = map->get_location(view_cr->get_id());
-        int distance = CoordUtils::chebyshev_distance(c_coord, vc_coord);
+        if (view_cr->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()).first)
+        {
+          Coordinate c_coord = map->get_location(creature->get_id());
+          Coordinate vc_coord = map->get_location(view_cr->get_id());
+          int distance = CoordUtils::chebyshev_distance(c_coord, vc_coord);
 
-        cr_mod -= view_cr->get_skills().get_value(SkillType::SKILL_GENERAL_DETECTION);
-        cr_mod -= get_distance_modifier(distance);
+          cr_mod -= view_cr->get_skills().get_value(SkillType::SKILL_GENERAL_DETECTION);
+          cr_mod -= get_distance_modifier(distance);
+        }
+
+        if (view_cr->has_additional_property(CreatureProperties::CREATURE_PROPERTIES_BACKSTABBED))
+        {
+          alert_creature_ids.push_back(view_cr->get_id());
+        }
       }
     }
   }
 
-  return cr_mod;
+  return make_pair(cr_mod, alert_creature_ids);
 }
 
 // Creatures are easier to hide from if they are far away.

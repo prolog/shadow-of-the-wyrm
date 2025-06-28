@@ -38,7 +38,7 @@ ActionCostValue OfferAction::offer(CreaturePtr creature, ActionManager * const a
     MapPtr current_map = game.get_current_map();
     TilePtr tile = MapUtils::get_tile_for_creature(current_map, creature);
     FeaturePtr feature = tile->get_feature();
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
     if (creature->is_godless())
     {
@@ -79,7 +79,7 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, TilePtr tile, 
 
   if (creature)
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
 
     if (creature->get_inventory()->empty() && creature->get_is_player())
     {
@@ -233,7 +233,7 @@ bool OfferAction::sacrifice_on_crossaligned_altar(CreaturePtr creature, TilePtr 
           tile->set_feature(new_altar);
 
           // Add a message about the altar's conversion.
-          IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+          IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
           string altar_conversion_msg = SacrificeTextKeys::get_altar_conversion_message(deity->get_name_sid());
 
           manager.add_new_message(altar_conversion_msg);
@@ -256,7 +256,7 @@ void OfferAction::add_no_altar_message(CreaturePtr creature)
   if (creature->get_is_player())
   {
     string no_altar_msg = StringTable::get(SacrificeTextKeys::SACRIFICE_NO_ALTAR);
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
 
     manager.add_new_message(no_altar_msg);
     manager.send();

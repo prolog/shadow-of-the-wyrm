@@ -26,7 +26,7 @@ void WheelAndLoomManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/,
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_WHEEL_AND_LOOM));
     manager.send();
   }
@@ -177,7 +177,7 @@ ItemPtr WheelAndLoomManipulator::create_woven_armour(CreaturePtr creature, ItemP
 
 void WheelAndLoomManipulator::add_no_weaving_skill_message(CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_WEAVE_NO_WEAVING_SKILL));
   manager.send();
@@ -186,7 +186,7 @@ void WheelAndLoomManipulator::add_no_weaving_skill_message(CreaturePtr creature)
 // The creature has no fibres in its inventory - add a message.
 void WheelAndLoomManipulator::add_no_fibres_message(CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_WEAVE_NO_FIBRES));
   manager.send();
@@ -195,7 +195,7 @@ void WheelAndLoomManipulator::add_no_fibres_message(CreaturePtr creature)
 // An item was created successfully!
 void WheelAndLoomManipulator::add_successful_weaving_message(CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_WEAVE_SUCCESSFUL));
   manager.send();

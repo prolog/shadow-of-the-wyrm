@@ -6,9 +6,13 @@ const int PacificationCalculator::CHARMS_BONUS = 25;
 const int PacificationCalculator::BASE_EXP_PROPORTION_LEADERSHIP = 10;
 const int PacificationCalculator::LEADERSHIP_EXP_DIVISOR = 4;
 const int PacificationCalculator::LEADERSHIP_DAMAGE_DIVISOR = 4;
+const int PacificationCalculator::PCT_CHANCE_PACIFY_MUSIC_ENRAGED = 0;
+const int PacificationCalculator::PCT_CHANCE_PACIFY_BEASTMASTERY_ENRAGED = 5;
 
 // The chance to pacify musically is:
 //
+// 0, if enraged. Otherwise:
+// 
 // The musician's music score
 // + half the musician's level
 // + half the musician's charisma
@@ -23,23 +27,30 @@ int PacificationCalculator::calculate_pct_chance_pacify_music(CreaturePtr music_
 
   if (music_creature != nullptr && fov_creature != nullptr)
   {
-    int music_val = music_creature->get_skills().get_value(SkillType::SKILL_GENERAL_MUSIC);
-    int music_lvl = music_creature->get_level().get_current() / 2;
-    int music_cha = music_creature->get_charisma().get_current() / 2;
-    int opp_music = fov_creature->get_skills().get_value(SkillType::SKILL_GENERAL_MUSIC);
-    int opp_lvl   = fov_creature->get_level().get_current() / 2;
-    int opp_will  = fov_creature->get_willpower().get_current() / 2;
-    int charms    = charms_creature ? CHARMS_BONUS : 0;
-    int status    = get_item_status_bonus(item_status);
+    if (fov_creature->has_status(StatusIdentifiers::STATUS_ID_RAGE))
+    {
+      pct_chance_pacify = PCT_CHANCE_PACIFY_MUSIC_ENRAGED;
+    }
+    else
+    {
+      int music_val = music_creature->get_skills().get_value(SkillType::SKILL_GENERAL_MUSIC);
+      int music_lvl = music_creature->get_level().get_current() / 2;
+      int music_cha = music_creature->get_charisma().get_current() / 2;
+      int opp_music = fov_creature->get_skills().get_value(SkillType::SKILL_GENERAL_MUSIC);
+      int opp_lvl = fov_creature->get_level().get_current() / 2;
+      int opp_will = fov_creature->get_willpower().get_current() / 2;
+      int charms = charms_creature ? CHARMS_BONUS : 0;
+      int status = get_item_status_bonus(item_status);
 
-    pct_chance_pacify = music_val
-                      + music_lvl
-                      + music_cha
-                      - opp_music
-                      - opp_lvl
-                      - opp_will
-                      + charms
-                      + status;
+      pct_chance_pacify = music_val
+        + music_lvl
+        + music_cha
+        - opp_music
+        - opp_lvl
+        - opp_will
+        + charms
+        + status;
+    }
   }
 
   pct_chance_pacify = std::max<int>(pct_chance_pacify, 0);
@@ -67,19 +78,31 @@ int PacificationCalculator::get_item_status_bonus(const ItemStatus status) const
   return bonus;
 }
 
+// Chance to pacify via beastmastery is:
+// 
+// - small, if the creature is enraged (5%)
+// - otherwise, equal to the tamer's beastmastery plus the level difference
+//   between the tamer and tamee.
 int PacificationCalculator::calculate_pct_chance_tame_beastmastery(CreaturePtr taming_creature, CreaturePtr tamed_creature)
 {
   int taming_pct = 0;
 
   if (taming_creature != nullptr && tamed_creature != nullptr)
   {
-    taming_pct = taming_creature->get_skills().get_value(SkillType::SKILL_GENERAL_BEASTMASTERY) - 10;
-    int level_diff = taming_creature->get_level().get_current() - tamed_creature->get_level().get_current();
+    if (tamed_creature->has_status(StatusIdentifiers::STATUS_ID_RAGE))
+    {
+      taming_pct = PCT_CHANCE_PACIFY_BEASTMASTERY_ENRAGED;
+    }
+    else
+    {
+      taming_pct = taming_creature->get_skills().get_value(SkillType::SKILL_GENERAL_BEASTMASTERY) - 10;
+      int level_diff = taming_creature->get_level().get_current() - tamed_creature->get_level().get_current();
 
-    taming_pct += level_diff;
+      taming_pct += level_diff;
 
-    taming_pct = std::max<int>(taming_pct, 0);
-    taming_pct = std::min<int>(taming_pct, MAX_PCT_CHANCE_TAME_BEASTMASTERY);
+      taming_pct = std::max<int>(taming_pct, 0);
+      taming_pct = std::min<int>(taming_pct, MAX_PCT_CHANCE_TAME_BEASTMASTERY);
+    }
   }
 
   return taming_pct;

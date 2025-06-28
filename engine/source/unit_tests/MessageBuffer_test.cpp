@@ -22,8 +22,8 @@ TEST(SW_Engine_MessageBuffer, insertion)
   EXPECT_EQ(exp_d, mb.get_message(1));
   EXPECT_EQ(exp_c, mb.get_message(2));
 
-  EXPECT_EQ(3, mb.capacity());
-  EXPECT_EQ(3, mb.size());
+  EXPECT_EQ(static_cast<size_t>(3), mb.capacity());
+  EXPECT_EQ(static_cast<size_t>(3), mb.size());
 }
 
 TEST(SW_Engine_MessageBuffer, serialization_id)

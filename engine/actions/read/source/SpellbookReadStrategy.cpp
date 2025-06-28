@@ -181,7 +181,7 @@ bool SpellbookReadStrategy::confirm_reading_if_necessary(CreaturePtr creature, S
         game.get_display()->redraw();
       }
 
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature->get_is_player());
       manager.add_new_confirmation_message(TextMessages::get_confirmation_message(SpellcastingTextKeys::SPELLCASTING_UNFAMILIAR_CATEGORY));
       confirmation = creature->get_decision_strategy()->get_confirmation();
       
@@ -210,7 +210,7 @@ bool SpellbookReadStrategy::handle_fallout_if_necessary(CreaturePtr creature, co
 
 void SpellbookReadStrategy::add_no_magic_skill_message(CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_NO_MAGIC_SKILL));
   manager.send();
@@ -218,7 +218,7 @@ void SpellbookReadStrategy::add_no_magic_skill_message(CreaturePtr creature)
 
 void SpellbookReadStrategy::add_spell_not_learned_message(CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_SPELL_NOT_LEARNED));
   manager.send();
@@ -227,7 +227,7 @@ void SpellbookReadStrategy::add_spell_not_learned_message(CreaturePtr creature)
 void SpellbookReadStrategy::add_spellbook_destruction_message(CreaturePtr creature, SpellbookPtr spellbook)
 {
   ItemIdentifier item_id;
-  IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
 
   manager.add_new_message(SpellcastingTextKeys::get_spellbook_destruction_message(item_id.get_appropriate_usage_description(spellbook)));
   manager.send();

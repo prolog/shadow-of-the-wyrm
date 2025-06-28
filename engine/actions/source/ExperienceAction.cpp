@@ -14,7 +14,7 @@ ExperienceAction::ExperienceAction()
 
 ActionCostValue ExperienceAction::experience(CreaturePtr creature) const
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   
   if (creature != nullptr)
   {

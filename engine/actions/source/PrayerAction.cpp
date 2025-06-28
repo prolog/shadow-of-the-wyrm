@@ -29,7 +29,7 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
     if (map)
     {
       mt = map->get_map_type();
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
 
       if (mt == MapType::MAP_TYPE_WORLD)
       {
@@ -93,7 +93,7 @@ bool PrayerAction::say_prayer(CreaturePtr creature)
   if (creature && creature->get_is_player())
   {
     Game& game = Game::instance();
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
 
     if (game.do_deities_exist())
     {
@@ -146,7 +146,7 @@ void PrayerAction::finish_prayer(CreaturePtr creature, const DeityDecisionImplic
   
   if (creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();    
+    IMessageManager& manager = MMF::instance();    
     string prayer_message = StringTable::get(decision_implications.get_message_sid());
     bool add_new_message_with_pause = decision_implications.get_add_message_with_pause();
     bool reload_map_music = decision_implications.get_reload_map_music();

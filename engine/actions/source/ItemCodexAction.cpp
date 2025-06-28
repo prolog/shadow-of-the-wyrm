@@ -7,6 +7,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"
+#include "ItemProperties.hpp"
 #include "ItemTextKeys.hpp"
 #include "ItemTranslator.hpp"
 #include "ItemTypeTextKeys.hpp"
@@ -32,7 +33,7 @@ ItemCodexAction::ItemCodexAction()
 ActionCostValue ItemCodexAction::item_details(CreaturePtr creature) const
 {
   ActionCostValue acv = get_action_cost_value(creature);
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   if (creature != nullptr)
   {
@@ -104,7 +105,7 @@ ActionCostValue ItemCodexAction::item_details(CreaturePtr creature, ItemPtr item
     {
       // Assumption is that it's only ever the player calling this.
       // This is overlaid over the inventory screen, so use an alert.
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       string msg = StringTable::get(ItemTextKeys::ITEM_CODEX_NO_INFORMATION_FOUND);
       manager.alert(msg);
     }
@@ -190,6 +191,11 @@ void ItemCodexAction::add_synopsis_to_codex(ItemPtr item, CodexDescriber* codex_
     if (item->get_auto_curse())
     {
       synopsis_line << " - " << StringTable::get(TextKeys::AUTOCURSING);
+    }
+
+    if (String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_NEXUS)))
+    {
+      synopsis_line << " - " << StringTable::get(TextKeys::NEXUS);
     }
 
     string desc_synopsis_line = codex_desc->describe_for_synopsis_line();

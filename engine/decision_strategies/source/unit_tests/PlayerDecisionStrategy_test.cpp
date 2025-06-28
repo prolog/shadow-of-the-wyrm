@@ -23,7 +23,7 @@ TEST(SW_Engine_DecisionStrategy_PlayerDecisionStrategy, saveload_autopickup_sett
   PlayerDecisionStrategy pds2(null_controller);
 
   EXPECT_FALSE(pds2.get_autopickup());
-  EXPECT_EQ(0, pds2.get_autopickup_types().size());
+  EXPECT_EQ(static_cast<uint>(0), pds2.get_autopickup_types().size());
 
   ostringstream ss;
   pds.serialize(ss);

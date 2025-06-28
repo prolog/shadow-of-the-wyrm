@@ -24,6 +24,7 @@ void SwimmingMovementAccumulationChecker::check(CreaturePtr creature)
     MovementAccumulation& movement_accumulation = creature->get_movement_accumulation_ref();
     ulonglong time_in_water = movement_accumulation.get_minutes_on_super_type_given_movement();
 
+    
     // If a creature has water breathing, it can basically swim forever.
     if ((time_in_water > max_swimming_time) && !creature->can_breathe(BreatheType::BREATHE_TYPE_WATER))
     {

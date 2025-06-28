@@ -20,6 +20,6 @@ TEST(SW_Engine_Calculators_HPRegenerationCalculator, minutes_per_hp)
   health.set_current(100);
   creature->set_health(health);
 
-  EXPECT_EQ(4, hprc.calculate_minutes_per_hp_tick(creature, tile));
+  EXPECT_EQ(static_cast<uint>(4), hprc.calculate_minutes_per_hp_tick(creature, tile));
 }
 

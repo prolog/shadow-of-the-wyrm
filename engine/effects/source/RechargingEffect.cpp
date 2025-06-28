@@ -127,7 +127,7 @@ bool RechargingEffect::recharge(CreaturePtr creature, ActionManager * const am, 
 
 void RechargingEffect::add_player_no_wands_message()
 {
-  IMessageManager& manager = MM::instance();
+  IMessageManager& manager = MMF::instance();
   manager.add_new_message(StringTable::get(EffectTextKeys::EFFECT_RECHARGING_PLAYER_NO_WANDS));
   manager.send();
 }
@@ -137,7 +137,7 @@ void RechargingEffect::add_recharge_already_full_message(CreaturePtr creature, W
   ItemIdentifier item_id;
   string wand_desc = item_id.get_appropriate_usage_description(wand);
 
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   manager.add_new_message(EffectTextKeys::get_wand_recharge_already_full_message(wand_desc));
   manager.send();
 }
@@ -147,7 +147,7 @@ void RechargingEffect::add_recharge_message(CreaturePtr creature, WandPtr wand)
   ItemIdentifier item_id;
   string wand_desc = item_id.get_appropriate_usage_description(wand);
 
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   manager.add_new_message(EffectTextKeys::get_wand_recharge_message(wand_desc));
   manager.send();
 }

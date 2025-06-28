@@ -2859,6 +2859,42 @@
 				<DangerLevel>-1</DangerLevel>
 				<Evade>5</Evade>
 			</Ring>
+			<Ring id="willow_ring">
+				<DescriptionSID>WILLOW_RING_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_WILLOW_RING_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>WILLOW_RING_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_WILLOW_RING_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>WILLOW_RING_CODEX_SID</CodexDescriptionSID>
+				<Value>3</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>1</Ounces>
+				</Weight>
+				<WornLocation>2</WornLocation>
+				<Material>8</Material>
+				<Symbol>
+					<Char>=</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>31</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>4</DangerLevel>
+				<Resistances>
+					<Acid>0.03</Acid>
+					<Poison>0.03</Poison>
+					<Shadow>0.08</Shadow>
+				</Resistances>
+				<Evade>2</Evade>
+				<Soak>0</Soak>
+				<Properties>
+					<Property>
+						<Name>nexus</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+			</Ring>
 			<Ring id="fencers_ring">
 				<DescriptionSID>FENCERS_RING_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_FENCERS_RING_SID</UnidentifiedDescriptionSID>
@@ -11420,6 +11456,10 @@
 				<DangerLevel>4</DangerLevel>
 				<Properties>
 					<Property>
+						<Name>level_up_effect</Name>
+						<Value>_level_up_guitar</Value>
+					</Property>
+					<Property>
 						<Name>music_performance</Name>
 						<Value>MUSIC_PERFORMANCE_LUTE_SID</Value>
 					</Property>
@@ -11453,6 +11493,10 @@
 				</Symbol>
 				<DangerLevel>3</DangerLevel>
 				<Properties>
+					<Property>
+						<Name>level_up_effect</Name>
+						<Value>_level_up_fife</Value>
+					</Property>
 					<Property>
 						<Name>music_performance</Name>
 						<Value>MUSIC_PERFORMANCE_FIFE_SID</Value>
@@ -11488,6 +11532,10 @@
 				<DangerLevel>4</DangerLevel>
 				<Properties>
 					<Property>
+						<Name>level_up_effect</Name>
+						<Value>_level_up_dulcimer</Value>
+					</Property>
+					<Property>
 						<Name>music_performance</Name>
 						<Value>MUSIC_PERFORMANCE_DULCIMER_SID</Value>
 					</Property>
@@ -11513,6 +11561,7 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
+					<Colour>11</Colour>
 					<Sprite>
 						<ID>it</ID>
 						<Row>3</Row>
@@ -11521,6 +11570,10 @@
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Properties>
+					<Property>
+						<Name>level_up_effect</Name>
+						<Value>_level_up_trombone</Value>
+					</Property>
 					<Property>
 						<Name>music_performance</Name>
 						<Value>MUSIC_PERFORMANCE_SACKBUT_SID</Value>
@@ -11556,6 +11609,10 @@
 				<DangerLevel>2</DangerLevel>
 				<Properties>
 					<Property>
+						<Name>level_up_effect</Name>
+						<Value>_level_up_violin</Value>
+					</Property>
+					<Property>
 						<Name>music_performance</Name>
 						<Value>MUSIC_PERFORMANCE_FIDDLE_SID</Value>
 					</Property>
@@ -11581,6 +11638,7 @@
 				<Material>3</Material>
 				<Symbol>
 					<Char>(</Char>
+					<Colour>11</Colour>
 					<Sprite>
 						<ID>it</ID>
 						<Row>3</Row>
@@ -11589,6 +11647,10 @@
 				</Symbol>
 				<DangerLevel>2</DangerLevel>
 				<Properties>
+					<Property>
+						<Name>level_up_effect</Name>
+						<Value>_level_up</Value>
+					</Property>
 					<Property>
 						<Name>music_performance</Name>
 						<Value>MUSIC_PERFORMANCE_HORN_SID</Value>

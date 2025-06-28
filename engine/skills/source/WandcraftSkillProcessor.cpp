@@ -43,7 +43,7 @@ ActionCostValue WandcraftSkillProcessor::process(CreaturePtr creature, MapPtr ma
 
           if (spell.get_magic_category() == SkillType::SKILL_MAGIC_DIVINE && !game.do_deities_exist())
           {
-            IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+            IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
             manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_CRAFTING_NO_DEITIES));
             manager.send();
 
@@ -63,7 +63,7 @@ ActionCostValue WandcraftSkillProcessor::process(CreaturePtr creature, MapPtr ma
 
           if (num_charges <= 0)
           {
-            IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+            IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
             manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_WANDCRAFT_INSUFFICIENT_CASTINGS));
             manager.send();
           }
@@ -78,7 +78,7 @@ ActionCostValue WandcraftSkillProcessor::process(CreaturePtr creature, MapPtr ma
               TilePtr creature_tile = MapUtils::get_tile_for_creature(game.get_current_map(), creature);
               creature_tile->get_items()->merge_or_add(wand, InventoryAdditionType::INVENTORY_ADDITION_BACK);
 
-              IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+              IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
               manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_WANDCRAFT_WAND_CREATED));
               manager.send();
             }
@@ -115,7 +115,7 @@ bool WandcraftSkillProcessor::check_for_components(CreaturePtr creature)
 
   if (!has_comp && creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_WANDCRAFT_INSUFFICIENT_COMPONENTS));
 
     manager.send();
@@ -133,7 +133,7 @@ bool WandcraftSkillProcessor::check_for_spells(CreaturePtr creature)
 
   if (!has_spells && creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_WANDCRAFT_NO_SPELLS));
 
     manager.send();

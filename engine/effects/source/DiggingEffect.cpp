@@ -95,7 +95,7 @@ bool DiggingEffect::dig(CreaturePtr /*creature*/, const Coordinate& affected_coo
   {
     if (add_messages && source_creature && source_creature->get_is_player())
     {
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_CANNOT_DIG));
       manager.send();
 

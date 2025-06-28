@@ -1,11 +1,12 @@
 #include "AirSafetyCondition.hpp"
+#include "ItemProperties.hpp"
 
 using namespace std;
 
 // An air tile is safe only when a creature is flying or incorporeal.
 //
 // Otherwise, the creature plummets to its death.
-bool AirSafetyCondition::is_safe(CreaturePtr creature, TilePtr /*tile*/)
+bool AirSafetyCondition::is_tile_safe(CreaturePtr creature, TilePtr /*tile*/) const
 {
   bool safe = false;
 
@@ -17,3 +18,7 @@ bool AirSafetyCondition::is_safe(CreaturePtr creature, TilePtr /*tile*/)
 
   return safe;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/AirSafetyCondition_test.cpp"
+#endif

@@ -26,7 +26,7 @@ void CreatureSkillIncrementer::tick(CreaturePtr creature, TilePtr /*tile*/, cons
       Skills& skills = creature->get_skills();
       map<SkillType, SkillPtr>& raw_skills = skills.get_raw_skills_ref();
       
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
       // If the skill has been marked enough, increment the value of the skill, display a message
       // (when the creature is the player), and then reset the number of marks back to zero.

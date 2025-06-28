@@ -231,7 +231,7 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   IStatusAilmentTranslatorPtr sated_checker = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SATED, StatusAilmentTextKeys::STATUS_SATED, Colour::COLOUR_BOLD_YELLOW);
   IStatusAilmentTranslatorPtr wb_checker    = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_WATER_BREATHING, StatusAilmentTextKeys::STATUS_WATER_BREATHING, Colour::COLOUR_BOLD_CYAN);
   IStatusAilmentTranslatorPtr rage_checker  = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_RAGE, StatusAilmentTextKeys::STATUS_RAGE, Colour::COLOUR_BOLD_RED);
-  IStatusAilmentTranslatorPtr hide_checker  = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_HIDE, StatusAilmentTextKeys::STATUS_HIDE, Colour::COLOUR_WHITE);
+  IStatusAilmentTranslatorPtr hide_checker  = std::make_unique<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_HIDE, StatusAilmentTextKeys::STATUS_HIDE, Colour::COLOUR_BOLD_MAGENTA);
 
   status_ailment_checkers.push_back(std::move(hunger_checker));
   status_ailment_checkers.push_back(std::move(weight_checker));

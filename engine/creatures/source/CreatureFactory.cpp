@@ -685,6 +685,9 @@ HairColour CreatureFactory::get_random_hair_colour()
 {
   int min = static_cast<int>(HairColour::HAIR_COLOUR_BLACK);
   int max = static_cast<int>(HairColour::HAIR_COLOUR_WHITE);
+
+  // Note that this (intentionally) suppresses baldness as a random hair
+  // colour.
   
   return static_cast<HairColour>(RNG::range(min, max));
 }

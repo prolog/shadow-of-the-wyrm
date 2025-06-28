@@ -83,7 +83,7 @@ void DropAction::handle_world_drop(CreaturePtr creature)
 {  
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature->get_is_player());
     string drop_not_allowed = StringTable::get(ActionTextKeys::ACTION_DROP_NOT_ALLOWED);
     
     manager.add_new_message(drop_not_allowed);
@@ -96,7 +96,7 @@ void DropAction::handle_invalid_drop_quantity(CreaturePtr creature)
 {  
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, true);
     manager.clear_if_necessary();
     string invalid_drop_quantity = StringTable::get(ActionTextKeys::ACTION_DROP_INVALID_QUANTITY);
     manager.add_new_message(invalid_drop_quantity);
@@ -110,7 +110,7 @@ void DropAction::handle_item_dropped_message(CreaturePtr creature, IInventoryPtr
   if (item && creature)
   {
     Game& game = Game::instance();
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(game, creature->get_id()));
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(game, creature->get_id()));
 
     CurrentCreatureAbilities cca;
     string drop_message = TextMessages::get_item_drop_message(creature, !cca.can_see(creature), item);
@@ -141,7 +141,7 @@ void DropAction::handle_no_item_dropped(CreaturePtr creature)
 {  
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, true);
     string no_item_to_drop = StringTable::get(ActionTextKeys::ACTION_DROP_NO_ITEM_SELECTED);
     
     manager.add_new_message(no_item_to_drop);
@@ -154,7 +154,7 @@ void DropAction::handle_seed_planted_message(CreaturePtr creature, ItemPtr seed)
   if (creature != nullptr && seed != nullptr && creature->get_is_player())
   {
     CurrentCreatureAbilities cca;
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, true);
     ItemIdentifier iid;
 
     string seed_message = ActionTextKeys::get_seed_planted_message(!cca.can_see(creature), iid.get_appropriate_usage_description(seed));
@@ -320,7 +320,7 @@ uint DropAction::get_drop_quantity(CreaturePtr creature, const uint max_quantity
 {  
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, true);
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, true);
     Game& game = Game::instance();
     game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
               
@@ -400,7 +400,7 @@ bool DropAction::plant_food(CreaturePtr creature, const map<string, string>& pro
       }
       else
       {
-        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature->get_is_player());
+        IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature->get_is_player());
         string ground_full = StringTable::get(ActionTextKeys::ACTION_GROUND_FULL);
 
         manager.add_new_message(ground_full);
@@ -450,7 +450,7 @@ bool DropAction::plant_seed(CreaturePtr creature, const map<string, string>& pro
     }
     else
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature->get_is_player());
       string ground_full = StringTable::get(ActionTextKeys::ACTION_SEED_ALREADY_PLANTED);
 
       manager.add_new_message(ground_full);
@@ -488,7 +488,7 @@ bool DropAction::bury_remains(CreaturePtr creature, const string& remains_race_i
     // Mark the tile as containing remains and then do the deity notification.
     tile->set_additional_property(TileProperties::TILE_PROPERTY_REMAINS, std::to_string(true));
 
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(Game::instance(), creature->get_id()));
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(Game::instance(), creature->get_id()));
     manager.add_new_message(TextMessages::get_burial_message(creature));
     manager.send();
 
@@ -559,7 +559,7 @@ bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TileP
   }
 
   CurrentCreatureAbilities cca;
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   if (!cca.can_see(creature))
   {
@@ -632,7 +632,7 @@ bool DropAction::build_with_dropped_item(CreaturePtr creature, MapPtr map, TileP
 bool DropAction::build_wall_with_dropped_item(CreaturePtr creature, MapPtr map, const TileType wall_tile_type, const bool allow_build_on_water)
 {
   bool built = false;
-  IMessageManager& manager = MM::instance();
+  IMessageManager& manager = MMF::instance();
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_PROMPT_BUILD_WALL));
   manager.send();
 
@@ -736,7 +736,7 @@ bool DropAction::build_grave_with_dropped_item(CreaturePtr creature, MapPtr map,
   // Check to see if building is intended.
   bool built = false;
 
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   manager.add_new_confirmation_message(TextMessages::get_confirmation_message(ActionTextKeys::ACTION_PROMPT_BUILD_GRAVE));
   bool confirmation = creature->get_decision_strategy()->get_confirmation();
 
@@ -766,7 +766,7 @@ bool DropAction::build_floor_with_dropped_item(CreaturePtr creature, MapPtr map,
   // Check to see if building is intended.
   bool built = false;
 
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   vector<TileType> tile_types = { floor_tile_type, TileType::TILE_TYPE_ROAD };
   TileGenerator tg;
   vector<string> descs;
@@ -853,7 +853,7 @@ bool DropAction::build_feature_with_dropped_item(CreaturePtr creature, MapPtr ma
       tile->set_feature(feature);
 
       FeatureDescriber fd(feature);
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
       manager.add_new_message(TextMessages::get_build_message(fd.describe(false)));
       manager.send();
 

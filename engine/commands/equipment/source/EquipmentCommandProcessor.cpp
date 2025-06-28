@@ -43,7 +43,7 @@ ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, Command
             process_result = 0;
 
             // Add an alert, as we're in a separate window.
-            IMessageManager& manager = MM::instance();
+            IMessageManager& manager = MMF::instance();
             manager.alert(StringTable::get(EquipmentTextKeys::EQUIPMENT_REMOVAL_CURSED));
           }
           else

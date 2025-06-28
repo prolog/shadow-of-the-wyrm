@@ -496,6 +496,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_music_location_for_event", get_music_location_for_event);
   lua_register(L, "get_music_location_for_map_type", get_music_location_for_map_type);
   lua_register(L, "does_item_exist_on_map", does_item_exist_on_map);
+  lua_register(L, "set_tile_unprotected_movement_is_death", set_tile_unprotected_movement_is_death);
 }
 
 // Lua API helper functions
@@ -559,7 +560,7 @@ int add_message_with_pause(lua_State* ls)
 
     string message = read_sid_and_replace_values(ls);
 
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
 
     if (clear_buffer)
     {
@@ -603,7 +604,7 @@ int clear_messages(lua_State* ls)
 {
   if (lua_gettop(ls) == 0)
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.clear_if_necessary();
   }
   else
@@ -625,7 +626,7 @@ int clear_and_add_message(lua_State* ls)
   {
     string message = read_sid_and_replace_values(ls);
 
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.clear_if_necessary();
     manager.add_new_message(message);
     manager.send();
@@ -656,7 +657,7 @@ int add_message(lua_State* ls)
 
     string message = read_sid_and_replace_values(ls);
 
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(message);
 
     if (do_send)
@@ -682,7 +683,7 @@ int add_message_direct(lua_State* ls)
   {
     string message = lua_tostring(ls, 1);
 
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(message);
     manager.send();
   }
@@ -721,7 +722,7 @@ int add_debug_message(lua_State* ls)
       boost::replace_first(debug, "%s", value);
     }
 
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.clear_if_necessary();
     manager.add_new_message(debug);
     manager.send();
@@ -755,7 +756,7 @@ int add_confirmation_message(lua_State* ls)
     CreaturePtr player = game.get_current_player();
     string message = read_sid_and_replace_values(ls);
 
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_confirmation_message(TextMessages::get_confirmation_message(message));
     confirm = player->get_decision_strategy()->get_confirmation(default_value);
 
@@ -783,7 +784,7 @@ int add_prompt_message(lua_State* ls)
     CreaturePtr player = game.get_current_player();
     string message = read_sid_and_replace_values(ls);
 
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.clear_if_necessary();
     prompt_val = manager.add_new_message_with_prompt(message);
 
@@ -812,7 +813,7 @@ int add_char_message(lua_State* ls)
     CreaturePtr player = game.get_current_player();
     string message = read_sid_and_replace_values(ls);
 
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.clear_if_necessary();
     manager.add_new_message(message);
     manager.send();
@@ -850,7 +851,7 @@ int add_fov_message(lua_State* ls)
       message = read_sid_and_replace_values(ls, 2);
     }
 
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, aff_creature_id == CreatureID::CREATURE_ID_PLAYER);
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, aff_creature_id == CreatureID::CREATURE_ID_PLAYER);
     manager.add_new_message(message);
     manager.send();
   }
@@ -875,7 +876,7 @@ int add_message_for_creature(lua_State* ls)
 
     if (creature != nullptr)
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature->get_is_player());
       manager.add_new_message(message);
       manager.send();
     }
@@ -2319,7 +2320,7 @@ int add_creature_to_map(lua_State* ls)
     {
       TilePtr tile = map->at(coords);
 
-      if (tile != nullptr && tile->get_is_available_for_creature(creature))
+      if (tile != nullptr && MapUtils::is_tile_available_for_creature(creature, tile))
       {
         GameUtils::add_new_creature_to_map(game, creature, map, coords);
 
@@ -6003,7 +6004,7 @@ int report_coords(lua_State* ls)
       ostringstream msg;
       msg << "(" << c.first << "," << c.second << ")";
 
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       manager.clear_if_necessary();
       manager.add_new_message(msg.str());
       manager.send();
@@ -7565,7 +7566,7 @@ int load_map(lua_State* ls)
     string map_id = lua_tostring(ls, 2);
 
     // First, clear any messages.
-    MM::instance().clear_if_necessary();
+    MMF::instance().clear_if_necessary();
 
     // Next, load the map.  Clearing the messages first ensures that any
     // messages as a result of loading the map start at the beginning of
@@ -9136,7 +9137,7 @@ int add_npc_level_message(lua_State* ls)
       MapPtr current_map = game.get_current_map();
       string msg = TextMessages::get_npc_level_message(StringTable::get(creature->get_description_sid()));
 
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(game, creature_id));
+      IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(game, creature_id));
       manager.add_new_message(msg);
       manager.send();
     }
@@ -10668,4 +10669,33 @@ int does_item_exist_on_map(lua_State* ls)
 
   lua_pushboolean(ls, exists);
   return 1;
+}
+
+int set_tile_unprotected_movement_is_death(lua_State* ls)
+{
+  if (lua_gettop(ls) == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isboolean(ls, 4))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int y = lua_tointeger(ls, 2);
+    int x = lua_tointeger(ls, 3);
+    bool val = lua_toboolean(ls, 4);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      if (tile != nullptr)
+      {
+        tile->set_unprotected_movement_is_death(val);
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to set_tile_unprotected_movement_is_death");
+  }
+
+  return 0;
 }

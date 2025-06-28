@@ -16,6 +16,9 @@ class StatusEffect
     StatusEffect(const std::string& new_source_id);
     virtual ~StatusEffect();
 
+    void set_show_application_message(const bool new_show_application_message);
+    bool get_show_application_message() const;
+
     void set_source_id(const std::string& new_source_id);
     std::string get_source_id() const;
 
@@ -80,6 +83,7 @@ class StatusEffect
     StatusEffectCalculatorPtr status_calc;
     std::string source_id;
     std::shared_ptr<Creature> initiating_creature;
+    bool show_application_message;
 };
 
 using StatusEffectPtr = std::shared_ptr<StatusEffect>;

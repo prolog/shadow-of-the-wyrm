@@ -23,7 +23,7 @@ void StoneStatusEffect::tick(CreaturePtr creature, const int /*danger_level*/) c
 {
   if (creature != nullptr)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     string message;
 
     if (creature->get_is_player())
@@ -57,7 +57,7 @@ void StoneStatusEffect::finalize(CreaturePtr creature) const
   {
     Game& game = Game::instance();
     MapPtr current_map = game.get_current_map();
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
 
     CombatManager cm;
     CreaturePtr no_creature;

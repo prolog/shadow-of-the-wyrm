@@ -10,7 +10,7 @@ void TileDamageProcessor::process(TilePtr tile, CreaturePtr creature)
   if (tile != nullptr)
   {
     IInventoryPtr inv = tile->get_items();
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
 
     if (inv != nullptr)
     {

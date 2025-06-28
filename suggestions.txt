@@ -1,8 +1,25 @@
+EVERY RELEASE:
+- push tags
+- update assets, sprites, music, release on website
+
+Long Term Boring And Probably Necessary:
+- SDL3
+- Lua 5.1 still ok?
+- Visual Studio: x64 build
+- Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
+
 Me:
-- ASSET RELEASE: sounds! tiles!
+- Every release: new names, new settlement names, new shipwrecks, new 
+  staircase extra descs.
+- EVERY TIME YOU UPDATE ASSETS, DM LARZID
+- ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
-- The Ybari/Asturias?
-- Caldera's water should be death - swimming or descending
+- Snakelings should always start bald (RelicWraith)
+- Companions should see you when hidden, or else orders get wonky (RelicWraith)
+- Audio enhancements off for testing
+- no-talk telari: what if the entrance was deep below wintersea catacombs?
+- regular stanza updates again! XII should be the brothers/rebels returning to
+  farstead, XIII Tel's group.
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.
 - Use this for fletchery, bowyer, etc, to improve item & quantity
@@ -41,6 +58,7 @@ Me:
   - Lancer's Walk
   - Shrink the shop a bit
   - Allow setting the shopkeeper name and setting the item types
+- The Ybari/Asturias?
 - can use warp in telari ocean
 - Elinor and Varra
 - in villages: retired cartographers?
@@ -105,17 +123,10 @@ Me:
   - set_as_of, get_as_of (use properties)
   - if as-of is set and != current time, CreatureUtils::... then return map
   - look at other ways
-- JE: drank fortified wine in store, wine not owned by shopkeeper, shopkeeper
-  remained friendly but attacked
 - the archery/range issue: nothing gets added to MM
 - cavern towns/underground races (dw, gn)
 - need to test pack generation...
 - is the witchling membership bugged?
-- Ammo improvements:
-  - Prompt equip on pickup
-  - Merge picked up into ammo slot
-  - When done, cycle through applicable inventory items to equip (allow Y/N/
-    Z to exit)
 - EACH VERSION: more NPC background stuff! more treasure stuff! more artifact
   names!
 - spinach/str?
@@ -408,6 +419,8 @@ IceBox:
 Josh Engdahl
 - Rebindable paging keys
 - User macros
+- hints from in-game characters on instrument effectiveness vs race
+- it would be really dumb and cute if the horn level up message 
 - Add info on the weapon synopsis to the manual
 - max fire res on fire spirits, etc
 - support for "extending" good status effects via drinking multiple potions,
@@ -507,7 +520,18 @@ RelicWraith:
 - Suggestion: Praying during a deity's specific holy day grants the player a gift, once per holy day. Could be just flavor items rather than anything that gives significant power (eg. a themed companion or food item). Even low piety worshipers get gifts, if not just junk...
 
 Paul Raymond-Robichaud:
+- Increase HP/AP regen modifiers as you level
 - be able to exit game to main screen
 - sheep generate tame for shepherds (sheep need to actually generate then)
 - shift+letter for race, class, religion help on start
 - special events/festivities on certain days? (feasts, etc)
+
+Lustrecia:
+- Using "active" skills, like fishing or disarm trap, is not covered in the manual and was not very obvious. This might be a me thing, as I don't have a history with more old-school roguelikes like Adom, but just adding a blurb about how you can use skills from F3 menu would have helped me a lot.
+
+- More or less the same as above, "Apply a nearby terrain feature" is a single line in manual which does not elaborate on what a terrain feature even is. I'm pretty sure I figured that it is for using crafting stations by accident, and opening/closing doors was an accident too. On the other hand, bed is not a terrain feature, while I expected that using "a" near a bed would make me rest on it.
+
+- It would be nice if merchant's dialogue hinted on the restock somehow, maybe something along the lines of "I'm getting new wares delivered in a couple of weeks, come back again!".
+
+marwff:
+- Way into Telari without talking

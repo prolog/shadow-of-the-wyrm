@@ -151,7 +151,7 @@ void NPCDecisionStrategy::update_threats_if_shopkeeper(MapPtr fov_map)
         {
           threat_ratings.add_threat(creature->get_id(), ThreatConstants::INITIAL_THREAT_RATING);
 
-          IMessageManager& manager = MM::instance();
+          IMessageManager& manager = MMF::instance();
           manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ENRAGED_SHOPKEEPER));
           manager.send();
         }
@@ -895,7 +895,7 @@ CommandPtr NPCDecisionStrategy::get_flee_decision(const string& this_creature_id
 
         if (!creature->has_additional_property(CreatureProperties::CREATURE_PROPERTIES_FLEEING))
         {
-          IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, false);
+          IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, false);
           manager.add_new_message(TextMessages::get_npc_flees_message(StringTable::get(creature->get_description_sid())));
           manager.send();
 
@@ -1043,7 +1043,7 @@ void NPCDecisionStrategy::turn_to_fight(CreaturePtr creature)
       creature->remove_additional_property(CreatureProperties::CREATURE_PROPERTIES_FLEEING);
 
       // Add a message that the creature is now fighting instead of fleeing.
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature->get_is_player());
       manager.add_new_message(TextMessages::get_npc_turns_to_fight_message(StringTable::get(creature->get_description_sid())));
       manager.send();
     }
@@ -1077,7 +1077,7 @@ void NPCDecisionStrategy::update_threats_with_contraband(const std::string& this
       {
         string msg = ActionTextKeys::get_npc_contraband_message(this_creature->get_description_sid());
 
-        IMessageManager& manager = MM::instance(MessageTransmit::FOV, c_pair.second, c_pair.second->get_is_player());
+        IMessageManager& manager = MMF::instance(MessageTransmit::FOV, c_pair.second, c_pair.second->get_is_player());
         manager.add_new_message(msg);
         manager.send();
 

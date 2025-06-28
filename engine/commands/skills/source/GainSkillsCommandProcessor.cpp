@@ -69,7 +69,7 @@ ActionCostValue GainSkillsCommandProcessor::process(CreaturePtr creature, Comman
         if (skill_pts > 0)
         {
           // Add an alert, as we're in a separate window.
-          IMessageManager& manager = MM::instance();
+          IMessageManager& manager = MMF::instance();
           ostringstream ss;
           ss << StringTable::get(SkillTextKeys::SKILLS_EXIT_IMPROVEMENT_POINTS_REMAIN);
 

@@ -306,7 +306,7 @@ bool Tile::get_is_staircase() const
   return (val == TileType::TILE_TYPE_UP_STAIRCASE || val == TileType::TILE_TYPE_DOWN_STAIRCASE);
 }
 
-bool Tile::get_is_available_for_creature(CreaturePtr cr) const
+bool Tile::get_is_available_for_creature_ignore_present_creature(CreaturePtr cr) const
 {
   bool avail = !get_is_blocking_ignore_present_creature(cr);
   
@@ -322,6 +322,24 @@ bool Tile::get_is_available_for_creature(CreaturePtr cr) const
   }
   
   return avail;
+}
+
+void Tile::set_unprotected_movement_is_death(const bool new_movement)
+{
+  set_additional_property(TileProperties::TILE_PROPERTY_UNPROTECTED_MOVEMENT_IS_DEATH, std::to_string(new_movement));
+}
+
+bool Tile::get_unprotected_movement_is_death(CreaturePtr /*move_creature*/) const
+{
+  bool move_death = false;
+  auto p_it = additional_properties.find(TileProperties::TILE_PROPERTY_UNPROTECTED_MOVEMENT_IS_DEATH);
+
+  if (p_it != additional_properties.end())
+  {
+    move_death = String::to_bool(p_it->second);
+  }
+
+  return move_death;
 }
 
 // The conditions are broken up for easier debugging.
@@ -674,7 +692,12 @@ bool Tile::get_is_blocking_or_dangerous(CreaturePtr cr) const
   return get_dangerous(cr) || get_is_blocking(cr);
 }
 
-bool Tile::get_dangerous(CreaturePtr /*creature*/) const
+bool Tile::get_dangerous(CreaturePtr cr) const
+{
+  return get_danger_flag(cr) || get_unprotected_movement_is_death(cr);
+}
+
+bool Tile::get_danger_flag(CreaturePtr /* creature */) const
 {
   return false;
 }

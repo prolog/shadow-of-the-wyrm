@@ -23,7 +23,7 @@ void PlayerDeathManager::die() const
   Game& game = Game::instance();
   Settings& settings = game.get_settings_ref();
   bool narrative_mode = settings.get_setting_as_bool(Setting::NARRATIVE_MODE);
-  IMessageManager& manager = MM::instance();
+  IMessageManager& manager = MMF::instance();
 
   if (narrative_mode && dead_creature != nullptr)
   {

@@ -25,7 +25,7 @@ string AirTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_AIR;
 }
 
-bool AirTile::get_dangerous(CreaturePtr cr) const
+bool AirTile::get_danger_flag(CreaturePtr cr) const
 {
   if (cr && cr->has_status(StatusIdentifiers::STATUS_ID_FLYING))
   {

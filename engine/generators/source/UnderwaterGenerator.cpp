@@ -45,6 +45,20 @@ MapPtr UnderwaterGenerator::generate(const Dimensions& dim)
 	string shipwreck_val = get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED);
 	bool has_shipwreck = !shipwreck_val.empty();
 	vector<Coordinate> water_coords;
+	bool deathly_water = false;
+
+	if (above_water_map != nullptr)
+	{
+		deathly_water = String::to_bool(above_water_map->get_property(MapProperties::MAP_PROPERTIES_DEATHLY_WATER));
+
+		if (deathly_water)
+		{
+			// There should be no items, no creatures if the water is from the Caldera.
+			underwater_item_ids.clear();
+			result_map->set_allow_creature_creation(false);
+			result_map->set_allow_creature_updates(false);
+		}
+	}
 
 	if (RNG::percent_chance(PCT_CHANCE_UNDERWATER_ITEMS))
 	{
@@ -103,6 +117,8 @@ MapPtr UnderwaterGenerator::generate(const Dimensions& dim)
 				}
 
 				tile->set_submerged(true);
+				tile->set_unprotected_movement_is_death(deathly_water);
+
 				c = MapUtils::convert_map_key_to_coordinate(tc_pair.first);
 
 				if (should_generate_items)

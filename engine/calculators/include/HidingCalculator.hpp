@@ -6,13 +6,13 @@
 class HidingCalculator
 {
   public:
-    int calculate_pct_chance_hide(CreaturePtr creature, MapPtr map, const TimeOfDayType tod) const;
+    std::pair<int, std::vector<std::string>> calculate_pct_chance_hide(CreaturePtr creature, MapPtr map, const TimeOfDayType tod) const;
     int calculate_pct_chance_hidden_after_attacking(CreaturePtr creature);
     bool gets_hole_bonus(CreaturePtr creature) const;
 
   protected:
     int get_tod_hide_modifier_for_map_type(const TimeOfDayType tod, const MapType map_type) const;
-    int get_viewing_creatures_modifier(CreaturePtr creature, MapPtr map, const std::vector<std::string>& viewing_creature_ids) const;
+    std::pair<int, std::vector<std::string>> get_viewing_creatures_modifier(CreaturePtr creature, MapPtr map, const std::vector<std::string>& viewing_creature_ids) const;
     int get_distance_modifier(const int dist) const;
 
     static const int HIDING_DIVISOR_AFTER_ATTACKING;

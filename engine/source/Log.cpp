@@ -51,7 +51,7 @@ void Log::init_file(const Settings* settings)
 
   if (!log_ok)
   {
-    IMessageManager& mm = MM::instance();
+    IMessageManager& mm = MMF::instance();
     mm.add_new_message(ERROR_CANNOT_WRITE_LOG);
   }
 }

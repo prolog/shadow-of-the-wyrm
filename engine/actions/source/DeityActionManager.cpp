@@ -154,7 +154,7 @@ void DeityActionManager::handle_pleasing_action(CreaturePtr creature, Deity* dei
 // piety has dropped from being positive to negative.
 void DeityActionManager::add_displeasure_message(CreaturePtr creature, const string& displeasure_message_sid, const bool add_new_message_with_pause, const bool reload_map_music)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   string displeasure = StringTable::get(displeasure_message_sid);
   Game& game = Game::instance();
 

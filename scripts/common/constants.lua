@@ -179,3 +179,6 @@ QUEST_IN_PROGRESS = "quest_in_progress"
 -- Memberships
 WITCHLINGS_MEMBERSHIP_ID = "witchlings"
 
+-- CLASSES
+CLASS_ID_THIEF = "thief"
+

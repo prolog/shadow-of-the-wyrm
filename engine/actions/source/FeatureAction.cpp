@@ -81,7 +81,7 @@ bool FeatureAction::handle_lock(LockPtr lock, CreaturePtr creature)
     lock_message_sid = ActionTextKeys::ACTION_HANDLE_LOCK;
   }
 
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   manager.add_new_message(StringTable::get(lock_message_sid));
 
   return lock_handled;
@@ -89,7 +89,7 @@ bool FeatureAction::handle_lock(LockPtr lock, CreaturePtr creature)
 
 void FeatureAction::send_application_messages(CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   manager.send();
 }
 
@@ -102,7 +102,7 @@ bool FeatureAction::handle(TilePtr tile, FeaturePtr feature, CreaturePtr creatur
 
   if (creature && feature && feature->can_be_prised(tile_has_creature) && cca.can_prise(creature))
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     manager.add_new_message(ActionTextKeys::get_prise_message(creature->get_description_sid(), creature->get_is_player()));
     manager.send();
 
@@ -187,7 +187,7 @@ bool FeatureAction::handle(TilePtr tile, FeaturePtr feature, CreaturePtr creatur
 
 void FeatureAction::add_application_message(CreaturePtr creature, const string& app_msg_sid)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(app_msg_sid));
 }
@@ -202,7 +202,7 @@ bool FeatureAction::apply_multiple_options(CreaturePtr creature, const TileDirec
   CommandFactoryPtr command_factory    = std::make_unique<CommandFactory>();
   KeyboardCommandMapPtr kb_command_map = std::make_unique<KeyboardCommandMap>();
 
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   // If the creature is the player, inform the player that a direction is needed.
   if (creature->get_is_player())

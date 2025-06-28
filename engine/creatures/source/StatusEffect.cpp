@@ -18,15 +18,26 @@ using namespace std;
 StatusEffect::StatusEffect()
 {
   status_calc = std::make_shared<DefaultStatusEffectCalculator>();
+  show_application_message = true;
 }
 
 StatusEffect::StatusEffect(const string& new_source_id)
-: source_id(new_source_id)
+: source_id(new_source_id), show_application_message(true)
 {
 }
 
 StatusEffect::~StatusEffect()
 {
+}
+
+void StatusEffect::set_show_application_message(const bool new_show_application_message)
+{
+  show_application_message = new_show_application_message;
+}
+
+bool StatusEffect::get_show_application_message() const
+{
+  return show_application_message;
 }
 
 void StatusEffect::set_initiating_creature(CreaturePtr new_creature)
@@ -69,7 +80,7 @@ bool StatusEffect::should_apply_change(CreaturePtr creature, const int effect_bo
         sm.mark_skill(creature, SkillType::SKILL_GENERAL_MEDICINE, true);
 
         // Add a message about counteracting the effect.
-        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+        IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
         manager.add_new_message(StringTable::get(StatusAilmentTextKeys::STATUS_COUNTERACTED));
         manager.send();
 
@@ -102,9 +113,9 @@ void StatusEffect::apply_change(CreaturePtr creature, const int danger_level) co
 
     string message = get_application_message(creature);
 
-    if (!message.empty())
+    if (show_application_message && !message.empty())
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
       manager.add_new_message(message);
       manager.send();
     }
@@ -282,11 +293,11 @@ void StatusEffect::undo(CreaturePtr creature) const
 
     if (had_status && !has_status)
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature->get_is_player());
 
       string undo_message = get_undo_message(creature);
 
-      if (!undo_message.empty())
+      if (show_application_message && !undo_message.empty())
       {
         manager.add_new_message(undo_message);
         manager.send();

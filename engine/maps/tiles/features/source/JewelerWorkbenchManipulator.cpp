@@ -18,7 +18,7 @@ void JewelerWorkbenchManipulator::kick(CreaturePtr creature, MapPtr /*current_ma
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_JEWELER_WORKBENCH));
     manager.send();
   }
@@ -45,7 +45,7 @@ bool JewelerWorkbenchManipulator::check_creature_has_ingots(CreaturePtr creature
   // Have a chunk of ore or something similar?
   if (!creature->get_inventory()->has_item_with_property(SmithingConstants::SMITHING_CONSTANTS_JEWELRY_MATERIAL_TYPE))
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FORGE_NO_INGOTS));
     manager.send();
@@ -100,7 +100,7 @@ bool JewelerWorkbenchManipulator::check_creature_has_jewelry_skill(CreaturePtr c
   {
     if (jeweler_skill->get_value() <= 0)
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_JEWELER_WORKBENCH_NO_JEWELER_SKILL));
       manager.send();

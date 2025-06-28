@@ -1,5 +1,6 @@
 #include "WaterSafetyCondition.hpp"
 #include "Game.hpp"
+#include "ItemProperties.hpp"
 
 using namespace std;
 
@@ -9,11 +10,11 @@ using namespace std;
 // Incorporeal creatures aren't safe crossing water: air-breathing creatures
 // still need to breathe, and spirits (for reasons unknown) do not seem to
 // be able to cross water...
-bool WaterSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
+bool WaterSafetyCondition::is_tile_safe(CreaturePtr creature, TilePtr tile) const
 {
   bool safe = false;
 
-  if (creature)
+  if (creature != nullptr && tile != nullptr)
   {
     Game& game = Game::instance();
     ISeason* season = game.get_current_world()->get_calendar().get_season();
@@ -25,23 +26,32 @@ bool WaterSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
     }
     else
     {
-      if (creature->can_breathe(BreatheType::BREATHE_TYPE_WATER) ||
-          creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
+      // If the water tile is deathly, flying or a boat will protect you.
+      // Otherwise, the standard water conditions apply.
+      if (tile->get_unprotected_movement_is_death(creature))
       {
-        safe = true;
+        IInventoryPtr inv = creature->get_inventory();
+
+        safe = (creature->has_status(StatusIdentifiers::STATUS_ID_FLYING) ||
+                inv->has_item_type(ItemType::ITEM_TYPE_BOAT));
+
+        // Submerged overrides everything else - a boat or flying on their
+        // own don't help if you're submerged in deathly waters.
+        if (tile->get_submerged())
+        {
+          safe = false;
+        }
       }
       else
       {
-        IInventoryPtr inv = creature->get_inventory();
-        const list<ItemPtr> items = inv->get_items_cref();
-
-        for (ItemPtr item : items)
+        if (creature->can_breathe(BreatheType::BREATHE_TYPE_WATER) ||
+          creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
         {
-          if (item && item->get_type() == ItemType::ITEM_TYPE_BOAT)
-          {
-            safe = true;
-            break;
-          }
+          safe = true;
+        }
+        else
+        {
+          safe = creature->get_inventory()->has_item_type(ItemType::ITEM_TYPE_BOAT);
         }
       }
     }
@@ -49,3 +59,7 @@ bool WaterSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
 
   return safe;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/WaterSafetyCondition_test.cpp"
+#endif

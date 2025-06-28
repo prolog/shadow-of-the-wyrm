@@ -197,7 +197,7 @@ void SkinAction::create_skin_and_add_to_tile(ItemPtr corpse, TilePtr tile)
 // or underworld map.
 void SkinAction::add_skin_world_map_message(CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SKIN_WORLD_MAP));
   manager.send();
@@ -206,7 +206,7 @@ void SkinAction::add_skin_world_map_message(CreaturePtr creature)
 // Skinning requires corpses on the ground.
 void SkinAction::add_no_corpses_message(CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SKIN_NO_CORPSES));
   manager.send();
@@ -214,7 +214,7 @@ void SkinAction::add_no_corpses_message(CreaturePtr creature)
 
 void SkinAction::add_no_skin_message(CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SKIN_NO_SKIN));
   manager.send();
@@ -222,7 +222,7 @@ void SkinAction::add_no_skin_message(CreaturePtr creature)
 
 void SkinAction::add_skin_successful_message(CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SKIN_SUCCESSFUL));
   manager.send();
@@ -231,7 +231,7 @@ void SkinAction::add_skin_successful_message(CreaturePtr creature)
 // Failing to skin a corpse mangled it, and it disappears.
 void SkinAction::add_mangled_corpse_skin_message(CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SKIN_MANGLED_CORPSE));
   manager.send();

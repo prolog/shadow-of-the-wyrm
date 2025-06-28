@@ -1,5 +1,6 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "ActionTextKeys.hpp"
+#include "TileDangerConfirmationKeys.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
 #include "MovementTextKeys.hpp"
@@ -60,6 +61,12 @@ TileMovementConfirmationDetails TileMovementConfirmation::get_confirmation_detai
       {
         return swimming_details;
       }
+    }
+
+    // The deathly flag should override everything else.
+    if (new_tile->get_unprotected_movement_is_death(nullptr))
+    {
+      confirm_sid = StringTable::get(TileDangerConfirmationKeys::TILE_DANGER_DEATHLY);
     }
   }
 

@@ -15,7 +15,7 @@ DateTimeWeatherAction::DateTimeWeatherAction()
 ActionCostValue DateTimeWeatherAction::date_and_time_and_weather()
 {
   Game& game = Game::instance();
-  IMessageManager& manager = MM::instance();
+  IMessageManager& manager = MMF::instance();
   
   // Get the date from the game's current world's calendar
   World* world = game.get_current_world();

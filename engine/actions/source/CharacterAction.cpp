@@ -62,7 +62,7 @@ ActionCostValue CharacterAction::dump_character(CreaturePtr creature, const Char
 {
   if (creature)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature->get_is_player());
     string name = creature->get_name();
 
     Settings& settings = Game::instance().get_settings_ref();

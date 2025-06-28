@@ -832,6 +832,11 @@ bool DungeonGenerator::place_staircases(MapPtr map)
   Depth depth = map->size().depth();
   int cnt = 0;
 
+  string up_extra_sid;
+  string down_extra_sid;
+
+  std::tie(up_extra_sid, down_extra_sid) = GeneratorUtils::generate_staircase_extra_descs();
+
   // Generate a down staircase if:
   // - The max_depth property is defined
   // - Our current depth is less than the max depth
@@ -851,7 +856,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
         y = RNG::range(r.y1 + 1, r.y2 - 2);
         x = RNG::range(r.x1 + 1, r.x2 - 2);
 
-        placed = place_down_staircase(map, y, x, TileType::TILE_TYPE_DUNGEON_COMPLEX, Direction::DIRECTION_DOWN, false, place_player_on_down_staircase);
+        placed = place_down_staircase(map, y, x, TileType::TILE_TYPE_DUNGEON_COMPLEX, Direction::DIRECTION_DOWN, false, place_player_on_down_staircase, down_extra_sid);
       }
 
       location_found = true;
@@ -875,7 +880,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
       y = RNG::range(r.y1 + 1, r.y2 - 2);
       x = RNG::range(r.x1 + 1, r.x2 - 2);
 
-      placed = place_up_staircase(map, y, x, TileType::TILE_TYPE_DUNGEON_COMPLEX, Direction::DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);
+      placed = place_up_staircase(map, y, x, TileType::TILE_TYPE_DUNGEON_COMPLEX, Direction::DIRECTION_UP, get_permanence(), !place_player_on_down_staircase, up_extra_sid);
     }
 
     location_found = true;

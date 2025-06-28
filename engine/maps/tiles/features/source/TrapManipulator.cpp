@@ -30,7 +30,7 @@ void TrapManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_TRAP));
     manager.send();
   }
@@ -70,7 +70,7 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
     {
       if (creature && creature->get_is_player())
       {
-        IMessageManager& manager = MM::instance();
+        IMessageManager& manager = MMF::instance();
         manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_APPLY_TRAP_TOO_FAR));
         manager.send();
       }
@@ -92,7 +92,7 @@ void TrapManipulator::trigger_trap(TrapPtr trap, CreaturePtr creature)
 
   if (creature)
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     bool show_msg = GameUtils::is_creature_in_player_view_map(game, creature->get_id());
 
     if (show_msg)

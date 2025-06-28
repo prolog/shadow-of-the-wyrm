@@ -59,5 +59,5 @@ TEST(SW_World_Weapon, saveload)
   EXPECT_EQ(2, m2.get_speed_bonus());
   EXPECT_EQ(2, m2.get_hands_required());
   EXPECT_EQ(6, m2.get_range());
-  EXPECT_EQ(444, r2.get_value());
+  EXPECT_EQ(static_cast<size_t>(444), r2.get_value());
 }

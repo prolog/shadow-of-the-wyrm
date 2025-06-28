@@ -9,7 +9,7 @@ Coordinate PromptProcessor::get_prompt_coords(const PromptLocation pl, const str
 
   if (pl == PromptLocation::PROMPT_LOCATION_LOWER_RIGHT)
   {
-    int prompt_text_length = prompt_text.size();
+    int prompt_text_length = static_cast<int>(prompt_text.size());
     prompt_col = max_cols - prompt_text_length - 1;
     prompt_row = max_rows - 1;
   }

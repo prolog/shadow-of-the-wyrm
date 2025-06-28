@@ -27,7 +27,7 @@ islands large and small, making their homes in cities and settlements,
 outposts and camps.  They are short and tall, fair and dark, settled and 
 nomadic, but always adaptive, always resourceful, and always able to make 
 the most of any situation. \textbf{Initial Skills}: Boating, Carrying,
-Detection, Fishing, Foraging, Hiding, Swimming, Short Blades, Bludgeons,
+Detection, Fishing, Foraging, Stealth, Swimming, Short Blades, Bludgeons,
 Daggers, Spears, Rocks, Slings.
 
 \item {\bf Wood Elves} retreated into the forests millennia ago, building 
@@ -35,8 +35,8 @@ their civilizations in the treetops and branches.  Within the woods, they
 blend in with their surroundings, their clothing dyed deep shades of green 
 and brown.  Wood Elves are skilled archers, and are known for their 
 devotion to swordsmanship. \textbf{Initial Skills}: Archery, Awareness,
-Carrying, Detection, Forest Lore, Herbalism, Hunting, Night Sight, Swimming,
-Long Blades, Bows.
+Carrying, Detection, Forest Lore, Herbalism, Hunting, Night Sight, Stealth,
+Swimming, Long Blades, Bows.
 
 \item {\bf Mountain Elves} live high up in the mountains, far above the 
 rest of the world.  They are stockier than other elves, and even many 
@@ -82,7 +82,7 @@ recently they have been spotted sailing closer and closer to the centre
 lands.  Despite their smaller size, they are ferocious creatures, afraid of 
 nothing.  They wear ratty, tattered clothing, and are skilled with their 
 sharp, curved blades. \textbf{Initial Skills}: Carrying, Detection,
-Disarm Traps, Dungeoneering, Escape, Hiding, Ocean Lore, Stealth, Swimming, 
+Disarm Traps, Dungeoneering, Escape, Ocean Lore, Stealth, Swimming, 
 Short Blades, Thrown Daggers, Slings
 
 \item {\bf Ogres} are huge and thickly-built, with the strength of many 
@@ -129,9 +129,9 @@ for themselves.  While they lack the raw strength of Warriors, the stealth
 and cunning of Thieves, or the great learning of Wizards, they nonetheless 
 have characteristics of all three, and are well-prepared for the challenges
 that lie ahead.  \textbf{Initial Skills}: Awareness, Boating, 
-Cantrips, Dungeoneering, Escape, Fishing, Foraging, Hiding, Jumping, 
-Literacy, Spelunking, Stealth, Short Blades, Long Blades, Bludgeons, 
-Daggers, Spears.
+Cantrips, Dungeoneering, Escape, Fishing, Foraging, Jumping, Literacy, 
+Spelunking, Stealth, Swimming, Short Blades, Long Blades, Bludgeons, Daggers, 
+Spears.
 
 \item {\bf Apothecaries} prepare potions, salves, and remedies, assisting 
 physicians by providing their medical materials.  This training gives 
@@ -148,7 +148,7 @@ effectively, Archers can maintain their accuracy over much greater
 distances.  Though they possess some of the skill of Warriors in close 
 combat, their focus is on ending the danger before it gets too close.  
 \textbf{Initial Skills}: Archery, Awareness, Bowyer, Detection, Escape,
-Fletchery, Hiding, Jumping, Daggers, Bows, Crossbows, Rocks, Slings,
+Fletchery, Jumping, Daggers, Bows, Crossbows, Rocks, Slings,
 Thrown Spears.
 
 \item {\bf Artisans} are creative folk who craft jewellery, clothing, and 
@@ -170,8 +170,8 @@ Detection, Herbalism, Jeweler, Literacy, Lore, Bludgeons, Whips.
 and singers, learned in the rudiments of almost any form of music.  Others 
 find them quite charismatic and charming.  Minstrels are often able to stir
 and sway their audiences on the strength of a particularly good performance.
-\textbf{Initial Skills}: Awareness, Detection, Hiding, Leadership, 
-Literacy, Lore, Music, Scribing, Stealth, Daggers.
+\textbf{Initial Skills}: Awareness, Detection, Leadership, Literacy, Lore, 
+Music, Scribing, Stealth, Daggers.
 
 \item {\bf Nobles} are born of privilege and money.  Lords and Ladies, 
 Kings and Queens, Thanes and Chiefs; all are examples of the fortunate 
@@ -216,7 +216,7 @@ of comfort and prefer instead a life outdoors, surviving in the most
 inhospitable parts of the world.  Rovers start with a pet falcon or boar.
 \textbf{Initial Skills}: Awareness, Beastmastery, Bowyer, Desert Lore, 
 Detection, Dual Wield, Fishing, Fletchery, Foraging, Forest Lore, Herbalism, 
-Hiding, Hunting, Leadership, Marsh Lore, Mountain Lore, Skinning, Swimming, 
+Hunting, Leadership, Marsh Lore, Mountain Lore, Skinning, Stealth, Swimming, 
 Tanning, Axes, Bows, Rocks, Slings.
 
 \item {\bf Sages} are scholars.  They study the seen and unseen to the 
@@ -531,7 +531,7 @@ a character to specialize in many different ways.
 \item {\bf Foraging}: Find more food in the wilderness.
 \item {\bf Forest Lore}: Knowledge of the woods and forests. 
 \item {\bf Herbalism}: Forage for useful herbs. 
-\item {\bf Hiding}: Remain unseen from hostile foes.
+\item {\bf Hiding}: Automatically hide from hostile foes.
 \item {\bf Hunting}: Get useful corpses from the creatures you kill. 
 \item {\bf Intimidation}: Make your foes tremble and quiver. 
 \item {\bf Jeweler}: Create and improve rings and amulets. 
@@ -552,7 +552,7 @@ a character to specialize in many different ways.
 \item {\bf Skinning}: Carefully separate the skin from a corpse. 
 \item {\bf Smithing}: Create and improve melee weapons.
 \item {\bf Spelunking}$\dagger$: Move through tight spaces with ease.
-\item {\bf Stealth}: Move without being heard, and attack with surprise.
+\item {\bf Stealth}: Remain hidden while moving, and attack with surprise.
 \item {\bf Swimming}: Swim through water without drowning.
 \item {\bf Tanning}: Turn skins into useful armour.
 \item {\bf Thievery}: Redistribute wealth towards yourself.
@@ -676,6 +676,13 @@ A spell's effectiveness is a reflection of how well you know it, and goes
 up the more you cast it.  It works in a number of ways: damage becomes more
 powerful, healing more effective, and status ailments more likely to be
 applied on a successful hit.
+
+\subsubsection{Active and Passive Skills}
+
+Some skills are passive (used automatically) - these include melee weapon skills, Awareness, the Lore skills, and others. Some skills (active skills) need to be selected to be used. These include things like Fishing and Fletchery.
+
+The Skills screen allows you to select and use skills. If a skill is passive, selecting the skill will tell you that it is used automatically.
+
 \subsection{Resistances}
 
 In {\it Shadow of the Wyrm}, there are many different kinds of dangers.  

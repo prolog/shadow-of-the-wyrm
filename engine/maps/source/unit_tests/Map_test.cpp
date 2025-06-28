@@ -239,11 +239,11 @@ TEST_F(SW_Engine_Map, get_starting_location)
 TEST_F(SW_Engine_Map, get_coastline)
 {
   MapPtr empty_map = make_map();
-  EXPECT_EQ(0, empty_map->get_coastline_directions().size());
+  EXPECT_EQ(static_cast<size_t>(0), empty_map->get_coastline_directions().size());
 
   MapPtr map = make_map();
   make_coast_map(map);
-  EXPECT_EQ(4, map->get_coastline_directions().size());
+  EXPECT_EQ(static_cast<size_t>(4), map->get_coastline_directions().size());
 }
 
 TEST_F(SW_Engine_Map, has_coastline)
@@ -263,7 +263,7 @@ TEST_F(SW_Engine_Map, set_secondary_terrain)
   map->set_secondary_terrain(tts);
   vector<TileType> tts_new = map->get_secondary_terrain();
 
-  EXPECT_EQ(2, tts_new.size());
+  EXPECT_EQ(static_cast<size_t>(2), tts_new.size());
 
   for (const auto tt : tts)
   {
@@ -286,7 +286,7 @@ TEST_F(SW_Engine_Map, add_secondary_terrain)
 
   vector<TileType> tts_new = map->get_secondary_terrain();
 
-  EXPECT_EQ(2, tts_new.size());
+  EXPECT_EQ(static_cast<size_t>(2), tts_new.size());
 
   for (const auto tt : tts)
   {
@@ -310,7 +310,7 @@ TEST_F(SW_Engine_Map, get_secondary_terrain)
   vector<TileType> sec_ter = map->get_secondary_terrain();
 
   EXPECT_FALSE(sec_ter.empty());
-  EXPECT_EQ(2, sec_ter.size());
+  EXPECT_EQ(static_cast<size_t>(2), sec_ter.size());
   
   for (const auto tt : ttv)
   {
@@ -328,14 +328,14 @@ TEST_F(SW_Engine_Map, get_coastline_directions)
 
   vector<Direction> dirs = map->get_coastline_directions();
 
-  EXPECT_EQ(1, dirs.size());
+  EXPECT_EQ(static_cast<size_t>(1), dirs.size());
   EXPECT_EQ(Direction::DIRECTION_NORTH, dirs[0]);
 
   map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_SOUTH, std::to_string(true));
   map->set_property(MapProperties::MAP_PROPERTIES_COASTLINE_WEST, std::to_string(true));
   dirs = map->get_coastline_directions();
 
-  EXPECT_EQ(3, dirs.size());
+  EXPECT_EQ(static_cast<size_t>(3), dirs.size());
   EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_NORTH) != dirs.end());
   EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_SOUTH) != dirs.end());
   EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_WEST) != dirs.end());

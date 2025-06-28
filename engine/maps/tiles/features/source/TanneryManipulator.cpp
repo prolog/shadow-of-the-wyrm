@@ -24,7 +24,7 @@ void TanneryManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, Tile
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_TANNERY));
     manager.send();
   }
@@ -201,7 +201,7 @@ ItemPtr TanneryManipulator::create_hide_equipment(CreaturePtr creature, ItemPtr 
 // Add a message that the armour was created successfully.
 void TanneryManipulator::add_successful_armour_creation_message(CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SKIN_CREATE_ARMOUR));
   manager.send();
@@ -210,7 +210,7 @@ void TanneryManipulator::add_successful_armour_creation_message(CreaturePtr crea
 // Skins are required in order to make hide armours.
 void TanneryManipulator::add_no_skins_message(CreaturePtr creature)
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SKIN_NO_SKINS));
   manager.send();

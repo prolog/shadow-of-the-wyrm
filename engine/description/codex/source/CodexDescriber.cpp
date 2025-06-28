@@ -1,8 +1,12 @@
 #include <sstream>
 #include "CodexDescriber.hpp"
+#include "Conversion.hpp"
+#include "ItemProperties.hpp"
+#include "RaceManager.hpp"
 #include "ResistancesTranslator.hpp"
 #include "ResistanceTextKeys.hpp"
 #include "StringTable.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 
@@ -46,7 +50,39 @@ string CodexDescriber::describe_speed_bonus() const
 
 string CodexDescriber::describe_details() const
 {
-  string no_details;
-  return no_details;
+  ostringstream ss;
+
+  if (item != nullptr)
+  {
+    string charm_races = item->get_additional_property(ItemProperties::ITEM_PROPERTIES_MUSIC_CHARM_RACES);
+    RaceManager rm;
+
+    if (!charm_races.empty())
+    {
+      vector<string> races = String::create_string_vector_from_csv_string(charm_races);
+      size_t cr_sz = races.size();
+
+      ss << StringTable::get(TextKeys::CHARM_RACES) << ": ";
+
+      for (size_t i = 0; i < cr_sz; i++)
+      {
+        Race* race = rm.get_race(races[i]);
+        
+        if (race != nullptr)
+        {
+          ss << StringTable::get(race->get_race_name_sid());
+
+          if (i < cr_sz - 1)
+          {
+            ss << ", ";
+          }
+        }
+      }
+    }
+
+    // Any additional properties, semi-colon separated...
+  }
+
+  return ss.str();
 }
 

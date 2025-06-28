@@ -317,7 +317,7 @@ vector<ItemPtr> MapItemGenerator::generate_dead_adventurer_items(const int dange
 
     // Add a message about the artifact so the player doesn't 
     // miss it...
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(DungeonFeatureTextKeys::DUNGEON_FEATURE_ARTIFACT));
     manager.send();
   }

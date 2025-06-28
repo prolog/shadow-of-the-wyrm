@@ -27,17 +27,17 @@ TEST(SW_World_Tiles_BarracksTile, is_tile_available_for_creature)
   CreaturePtr c1 = std::make_shared<Creature>();
   BarracksTile bt;
 
-  EXPECT_TRUE(bt.get_is_available_for_creature(c1));
+  EXPECT_TRUE(bt.get_is_available_for_creature_ignore_present_creature(c1));
 
   c1->set_race_id("cat");
 
-  EXPECT_TRUE(bt.get_is_available_for_creature(c1));
+  EXPECT_TRUE(bt.get_is_available_for_creature_ignore_present_creature(c1));
 
   bt.set_additional_property(TileProperties::TILE_PROPERTY_ALLOWED_RACES, "dog");
 
-  EXPECT_FALSE(bt.get_is_available_for_creature(c1));
+  EXPECT_FALSE(bt.get_is_available_for_creature_ignore_present_creature(c1));
 
   c1->set_race_id("dog");
 
-  EXPECT_TRUE(bt.get_is_available_for_creature(c1));
+  EXPECT_TRUE(bt.get_is_available_for_creature_ignore_present_creature(c1));
 }

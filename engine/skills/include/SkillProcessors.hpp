@@ -1,6 +1,15 @@
 #pragma once
 #include "SkillProcessor.hpp"
 
+// PassiveSkillsProcessor is called in the main Game::go() loop at the
+// beginning of a creature's turn, to check any passive skills.
+class PassiveSkillsProcessor
+{
+  public:
+    void process_passive_skills(CreaturePtr creature, MapPtr map);
+};
+
+// The processors below are for individual skills.
 class DefaultSkillProcessor : public SkillProcessor
 {
   public:

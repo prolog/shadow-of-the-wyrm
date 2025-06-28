@@ -54,7 +54,7 @@ ActionCostValue DigAction::dig_ceiling(CreaturePtr creature, MapPtr map)
       }
     }
 
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_CEILING));
 
     acv = ActionCostConstants::DEFAULT;
@@ -165,7 +165,7 @@ ActionCostValue DigAction::dig_through(const string& creature_id, ItemPtr dig_it
 bool DigAction::add_cannot_dig_message_if_necessary(CreaturePtr creature, MapPtr map, TilePtr tile) const
 {
   bool added_msg = false;
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
   string map_flag;
   string tile_flag;
 
@@ -300,7 +300,7 @@ bool DigAction::dig_items(IInventoryPtr items) const
 
 void DigAction::add_successful_dig_message(CreaturePtr creature, TilePtr adjacent_tile) const
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   if (adjacent_tile != nullptr && creature != nullptr && creature->get_is_player())
   {
@@ -318,7 +318,7 @@ void DigAction::add_successful_dig_message(CreaturePtr creature, TilePtr adjacen
 
 void DigAction::add_stone_dust_message(CreaturePtr creature) const
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
 
   if (creature->get_is_player())
   {
@@ -331,7 +331,7 @@ void DigAction::add_cannot_dig_on_tile_super_type_message(CreaturePtr creature) 
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
 
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_DIG_CANNOT_DIG_ON_SUPER_TYPE));
     manager.send();
@@ -349,7 +349,7 @@ void DigAction::handle_potential_item_breakage(CreaturePtr creature, TilePtr adj
       creature->get_equipment().remove_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
 
       ItemIdentifier iid;
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
       manager.add_new_message(ActionTextKeys::get_item_breakage_message(creature->get_description_sid(), creature->get_is_player(), iid.get_appropriate_description(item)));
       manager.send();
     }
@@ -374,7 +374,7 @@ bool DigAction::add_shop_confirmation_message_if_necessary(CreaturePtr creature,
     
     if (shop_adj.first)
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
       manager.add_new_confirmation_message(TextMessages::get_confirmation_message(ActionTextKeys::ACTION_DIG_SHOP));
       manager.send();
 

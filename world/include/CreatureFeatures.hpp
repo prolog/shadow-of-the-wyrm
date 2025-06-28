@@ -53,7 +53,8 @@ enum struct HairColour
   HAIR_COLOUR_RED = 3,
   HAIR_COLOUR_GREY = 4,
   HAIR_COLOUR_WHITE = 5,
-  HAIR_COLOUR_LAST = 5
+  HAIR_COLOUR_BALD = 6,
+  HAIR_COLOUR_LAST = 6
 };
 
 enum struct EyeColour

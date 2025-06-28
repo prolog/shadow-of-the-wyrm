@@ -1,10 +1,13 @@
 require 'nokogiri'
 
+doc_cr = Nokogiri::XML(File.open("data/ShadowOfTheWyrm_Creatures.xml"))
+doc_cr.remove_namespaces!
+
 doc = Nokogiri::XML(File.open("data/ShadowOfTheWyrm.xml"))
 doc.remove_namespaces!
 
 # Get all the castable spells
-spells = doc.xpath("ShadowOfTheWyrm/Creatures/Creature/Spells/Spell/SpellID")
+spells = doc_cr.xpath("ShadowOfTheWyrm/Creatures/Creature/Spells/Spell/SpellID")
 not_found = []
 
 # Find those that don't exist

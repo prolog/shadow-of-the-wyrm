@@ -53,6 +53,14 @@ string TileDescriber::describe() const
       description = description + " " + StringTable::get(TileTextKeys::TILE_DESC_REMAINS);
     }
 
+    // Don't use the creature for the check because the tile should always
+    // say if it's deathly or not.
+    bool deathly = tile->get_unprotected_movement_is_death(nullptr);
+    if (deathly)
+    {
+      description = description + " " + StringTable::get(TileTextKeys::TILE_DESC_DEATHLY);
+    }
+
     vector<string> extra_sids = tile->get_extra_description_sids();
     if (!extra_sids.empty())
     {

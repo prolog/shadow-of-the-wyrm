@@ -77,6 +77,25 @@ ItemPtr Equipment::get_item(const EquipmentWornLocation worn_location) const
   return current_item;
 }
 
+pair<bool, ItemPtr> Equipment::has_item_with_property(const std::string& property)
+{
+  pair <bool, ItemPtr> item_details = { false, nullptr };
+
+  for (int i = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); i < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); i++)
+  {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(i);
+    ItemPtr item = get_item(ewl);
+
+    if (item != nullptr && item->has_additional_property(property))
+    {
+      item_details = { true, item };
+      break;
+    }
+  }
+
+  return item_details;
+}
+
 // Get the item with a particular id
 ItemPtr Equipment::get_item_from_id(const string& id) const
 {

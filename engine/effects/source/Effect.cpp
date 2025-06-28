@@ -102,7 +102,7 @@ void Effect::broadcast_effect_message(std::shared_ptr<Creature> creature) const
 {  
   if (creature != nullptr)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
     string effect_message = get_effect_identification_message(creature);
     
     manager.add_new_message(effect_message);
@@ -115,7 +115,7 @@ void Effect::inform_unidentified_if_player(std::shared_ptr<Creature> creature) c
 {  
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     string nothing_happens = StringTable::get(ActionTextKeys::ACTION_NOTHING_HAPPENS);
 
     manager.add_new_message(nothing_happens);
@@ -125,7 +125,7 @@ void Effect::inform_unidentified_if_player(std::shared_ptr<Creature> creature) c
 
 void Effect::add_additional_effect_messages(CreaturePtr creature) const
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   for (const string& msg : additional_effect_messages)
   {

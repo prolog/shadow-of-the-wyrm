@@ -458,11 +458,6 @@ string ActionTextKeys::get_unimpressed_message(const string& creature_desc, cons
   return get_general_message(creature_desc, ACTION_UNIMPRESSED_PLAYER, ACTION_UNIMPRESSED_MONSTER, is_player);
 }
 
-string ActionTextKeys::get_hide_failure_message(const string& creature_desc_sid, const bool is_player)
-{
-  return get_general_message(creature_desc_sid, ACTION_HIDE_FAILURE_PLAYER, ACTION_HIDE_FAILURE_MONSTER, is_player);
-}
-
 string ActionTextKeys::get_palette_switch_message(const string& new_palette_name_sid)
 {
   string msg = StringTable::get(ACTION_SWITCH_PALETTE);
@@ -685,7 +680,6 @@ const string ActionTextKeys::ACTION_DIG_CEILING                = "ACTION_DIG_CEI
 const string ActionTextKeys::ACTION_DIG_SHOP                   = "ACTION_DIG_SHOP";
 const string ActionTextKeys::ACTION_RESTING                    = "ACTION_RESTING";
 const string ActionTextKeys::ACTION_HANDLE_DEFAULT             = "ACTION_HANDLE_DEFAULT";
-const string ActionTextKeys::ACTION_HANDLE_ALTAR               = "ACTION_HANDLE_ALTAR";
 const string ActionTextKeys::ACTION_HANDLE_PEW                 = "ACTION_HANDLE_PEW";
 const string ActionTextKeys::ACTION_EVOKE_FAILED               = "ACTION_EVOKE_FAILED";
 const string ActionTextKeys::ACTION_EVOKE_WORLD_MAP            = "ACTION_EVOKE_WORLD_MAP";
@@ -757,7 +751,6 @@ const string ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_SDL_WINDOWED = "ACTION_TOG
 const string ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_SDL_DESKTOP = "ACTION_TOGGLE_FULLSCREEN_SDL_DESKTOP";
 const string ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_SDL_TRUE = "ACTION_TOGGLE_FULLSCREEN_SDL_TRUE";
 const string ActionTextKeys::ACTION_TOGGLE_FULLSCREEN_CURSES   = "ACTION_TOGGLE_FULLSCREEN_CURSES";
-const string ActionTextKeys::ACTION_HIDE_HOLE                  = "ACTION_HIDE_HOLE";
 const string ActionTextKeys::ACTION_GROUND_FULL                = "ACTION_GROUND_FULL";
 const string ActionTextKeys::ACTION_SEED_ALREADY_PLANTED       = "ACTION_SEED_ALREADY_PLANTED";
 const string ActionTextKeys::ACTION_WAND_EXPLODE               = "ACTION_WAND_EXPLODE";
@@ -814,8 +807,6 @@ const string ActionTextKeys::ACTION_BOWYER_CREATE                 = "ACTION_BOWY
 const string ActionTextKeys::ACTION_FLETCHERY_CREATE              = "ACTION_FLETCHERY_CREATE";
 const string ActionTextKeys::ACTION_UNIMPRESSED_PLAYER            = "ACTION_UNIMPRESSED_PLAYER";
 const string ActionTextKeys::ACTION_UNIMPRESSED_MONSTER           = "ACTION_UNIMPRESSED_MONSTER";
-const string ActionTextKeys::ACTION_HIDE_FAILURE_PLAYER           = "ACTION_HIDE_FAILURE_PLAYER";
-const string ActionTextKeys::ACTION_HIDE_FAILURE_MONSTER          = "ACTION_HIDE_FAILURE_MONSTER";
 const string ActionTextKeys::ACTION_ITEM_PACK_PLAYER              = "ACTION_ITEM_PACK_PLAYER";
 const string ActionTextKeys::ACTION_ITEM_PACK_NPC                 = "ACTION_ITEM_PACK_NPC";
 const string ActionTextKeys::ACTION_SWITCH_PALETTE                = "ACTION_SWITCH_PALETTE";

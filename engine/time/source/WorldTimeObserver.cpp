@@ -73,7 +73,7 @@ void WorldTimeObserver::redraw_and_update_time_of_day(const TimeOfDayType tod)
 
       if (!time_sid.empty())
       {
-        IMessageManager& manager = MM::instance();
+        IMessageManager& manager = MMF::instance();
         manager.add_new_message(StringTable::get(time_sid));
         manager.send();
       }

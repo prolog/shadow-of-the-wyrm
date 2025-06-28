@@ -74,7 +74,7 @@ void GlowEffect::add_artifact_message(CreaturePtr creature)
 {
   if (creature != nullptr)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
     manager.add_new_message(StringTable::get(EffectTextKeys::EFFECT_GLOW_ARTIFACT));
     manager.send();
@@ -94,7 +94,7 @@ void GlowEffect::glow_item(CreaturePtr creature, ItemPtr item, const bool glow_o
       message_sid = EffectTextKeys::EFFECT_GLOW_DEAD;
     }
 
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
     manager.add_new_message(StringTable::get(message_sid));
     manager.send();

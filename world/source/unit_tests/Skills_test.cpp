@@ -340,7 +340,7 @@ TEST(SW_World_Skills, get_trained_magic_skills)
 
   vector<SkillType> trained = skills.get_trained_magic_skills();
 
-  EXPECT_EQ(2, trained.size());
+  EXPECT_EQ(static_cast<size_t>(2), trained.size());
   EXPECT_TRUE(trained == to_train);
 
   to_train = {SkillType::SKILL_MAGIC_CANTRIPS, SkillType::SKILL_MAGIC_ARCANE, SkillType::SKILL_MAGIC_DIVINE, SkillType::SKILL_MAGIC_MYSTIC, SkillType::SKILL_MAGIC_PRIMORDIAL};

@@ -337,7 +337,7 @@ void ShadowOfTheWyrmEngine::setup_game()
   log.debug("Setting message manager display.");
 
   // Set up the message manager also.
-  IMessageManager& manager = MM::instance();
+  IMessageManager& manager = MMF::instance();
   manager.set_display(display);
 
   log.debug("Done setup.");
@@ -925,7 +925,7 @@ bool ShadowOfTheWyrmEngine::process_exit_game()
 bool ShadowOfTheWyrmEngine::is_new_game_allowed()
 {
   bool allowed = true;
-  IMessageManager& manager = MM::instance();
+  IMessageManager& manager = MMF::instance();
   Game& game = Game::instance();
   Settings& settings = game.get_settings_ref();
   string max_chars = settings.get_setting(Setting::MAX_CHARACTERS_PER_USER);

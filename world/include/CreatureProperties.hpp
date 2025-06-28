@@ -50,6 +50,7 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_COWARD;
     static const std::string CREATURE_PROPERTIES_FLEEING;
     static const std::string CREATURE_PROPERTIES_MINER;
+    static const std::string CREATURE_PROPERTIES_HIDING_COOLDOWN;
 
   protected:
     CreatureProperties();

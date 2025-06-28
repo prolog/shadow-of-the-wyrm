@@ -291,6 +291,7 @@ class SkillTextKeys
     static const std::string SKILL_USAGE_FORAGING;
     static const std::string SKILL_USAGE_FOREST_LORE;
     static const std::string SKILL_USAGE_HERBALISM;
+    static const std::string SKILL_USAGE_HIDING;
     static const std::string SKILL_USAGE_HUNTING;
     static const std::string SKILL_USAGE_INTIMIDATION;
     static const std::string SKILL_USAGE_JEWELER;

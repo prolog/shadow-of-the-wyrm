@@ -3,7 +3,7 @@
 
 TEST(SW_Engine_NullMessageManager, add_does_nothing)
 {
-  IMessageManager& nmm = MM::instance(MessageTransmit::NONE, nullptr, false);
+  IMessageManager& nmm = MMF::instance(MessageTransmit::NONE, nullptr, false);
   nmm.add_new_message("fdsa");
   nmm.add_new_message("blah");
 
@@ -13,7 +13,7 @@ TEST(SW_Engine_NullMessageManager, add_does_nothing)
 
 TEST(SW_Engine_NullMessageManager, send_returns_false)
 {
-  IMessageManager& nmm = MM::instance(MessageTransmit::NONE, nullptr, false);
+  IMessageManager& nmm = MMF::instance(MessageTransmit::NONE, nullptr, false);
 
   EXPECT_FALSE(nmm.send());
 }

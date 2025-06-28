@@ -195,7 +195,7 @@ void MapUtils::swap_places(MapPtr map, CreaturePtr creature, CreaturePtr adjacen
     }
     else
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SWITCH_REFUSED));
 
       manager.send();
@@ -401,15 +401,17 @@ MapComponents MapUtils::get_map_components(MapPtr map, const set<TileType>& excl
 bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Coordinate& c, TilePtr creatures_old_tile)
 {
   bool added_location = false;
+  string creature_id;
+  Log& log = Log::instance();
 
   if (creature != nullptr)
   {
-    Log& log = Log::instance();
+    creature_id = creature->get_id();
 
     if (log.debug_enabled())
     {
       ostringstream ss;
-      ss << "Adding creature " << creature->get_id() << " (" << creature->get_original_id() << ") to map at " << c.first << "," << c.second;
+      ss << "Adding creature " << creature_id << " (" << creature->get_original_id() << ") to map at " << c.first << "," << c.second;
       log.debug(ss.str());
     }
   }
@@ -421,7 +423,7 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
     map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);
   }
 
-  map->add_or_update_location(creature->get_id(), c);
+  map->add_or_update_location(creature_id, c);
 
   // Did the creature belong to a previous tile?  Can we move it to the new tile?  If so, then
   // remove from the old tile, and add to the new.
@@ -474,19 +476,28 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
         }
       }
     }
+
+    // Run the movement accumulation checker, in case the creature moved into a
+    // dangerous/special tile.
+    MovementAccumulationUpdater mau;
+    mau.update(creature, creatures_new_tile);
+
+    ICreatureRegenerationPtr move_checker = std::make_unique<MovementAccumulationChecker>();
+    move_checker->tick(creature, creatures_new_tile, 0, 0);
+
+    // Run any movement scripts associated with the creature.
+    run_movement_scripts(creature, map->get_map_id(), c);
+  }
+  else
+  {
+    CreaturePtr existing_cr = creatures_new_tile->get_creature();
+
+    if (existing_cr != nullptr)
+    {
+      log.debug("Could not add creature " + creature_id + " to (" + String::create_string_from_coordinate(c) + ") because another creature (" + creatures_new_tile->get_creature()->get_id() + ") is present.");
+    }
   }
 
-  // Run the movement accumulation checker, in case the creature moved into a
-  // dangerous/special tile.
-  MovementAccumulationUpdater mau;
-  mau.update(creature, creatures_new_tile);
-
-  ICreatureRegenerationPtr move_checker = std::make_unique<MovementAccumulationChecker>();
-  move_checker->tick(creature, creatures_new_tile, 0, 0);
-
-  // Run any movement scripts associated with the creature.
-  run_movement_scripts(creature, map->get_map_id(), c);
-  
   return added_location;
 }
 
@@ -1780,7 +1791,7 @@ void MapUtils::anger_shopkeeper_if_necessary(const Coordinate& c, MapPtr current
         HostilityManager hm;
         hm.set_hostility_to_creature(current_map->get_creature(s_it->second.get_shopkeeper_id()), anger_creature->get_id(), ThreatConstants::ACTIVE_THREAT_RATING);
 
-        IMessageManager& manager = MM::instance(MessageTransmit::MAP, anger_creature, true);
+        IMessageManager& manager = MMF::instance(MessageTransmit::MAP, anger_creature, true);
         manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ENRAGED_SHOPKEEPER));
         manager.send();
 
@@ -2010,7 +2021,7 @@ bool MapUtils::add_message_about_tile_if_necessary(CreaturePtr creature, TilePtr
 
   if (creature && tile && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
     if (tile->display_description_on_arrival() || tile->has_extra_description() || has_known_treasure(tile, creature, true) || has_known_shipwreck(nullptr, tile, creature, true))
     {
@@ -2072,7 +2083,7 @@ bool MapUtils::add_message_about_items_on_tile_if_necessary(CreaturePtr creature
       // Send the message
       if (!item_message.empty())
       {
-        IMessageManager& manager = MM::instance();
+        IMessageManager& manager = MMF::instance();
         manager.add_new_message(item_message);
         msg_added = true;
       }
@@ -2239,7 +2250,7 @@ vector<string> MapUtils::place_followers(MapPtr map, CreaturePtr creature, const
       if (!followers.empty())
       {
         // Add a message about feeling abandoned.
-        IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+        IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
         manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ABANDONED));
         manager.send();
       }
@@ -2498,7 +2509,7 @@ void MapUtils::update_creatures(MapPtr map)
       Game& game = Game::instance();
       game.get_sound()->play_music_for_event(MusicEvent::MUSIC_EVENT_RESPAWN, false);
 
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       manager.add_new_message_with_pause(StringTable::get(TextKeys::RESPAWN_MESSAGE));
       game.get_current_player()->get_decision_strategy()->get_confirmation();
 
@@ -2916,7 +2927,7 @@ int MapUtils::get_threat_distance_score_for_direction(CreaturePtr creature, cons
 
     if (new_tile != nullptr)
     {
-      if (!new_tile->get_is_available_for_creature(creature))
+      if (!MapUtils::is_tile_available_for_creature(creature, new_tile))
       {
         return CANNOT_MOVE_SCORE;
       }

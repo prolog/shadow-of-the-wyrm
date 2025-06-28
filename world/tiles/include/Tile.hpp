@@ -81,7 +81,10 @@ class Tile : public ISerializable
     virtual bool get_illuminated() const;
     
     virtual bool get_is_staircase() const;
-    virtual bool get_is_available_for_creature(std::shared_ptr<Creature> creature) const;
+    virtual bool get_is_available_for_creature_ignore_present_creature(std::shared_ptr<Creature> creature) const;
+
+    virtual void set_unprotected_movement_is_death(const bool new_movement);
+    virtual bool get_unprotected_movement_is_death(std::shared_ptr<Creature> creature) const;
 
     // get_is_blocking_visually checks to see if a tile is blocking only
     // in terms of LOS. The real case for this is mountain tiles, which
@@ -171,6 +174,7 @@ class Tile : public ISerializable
     virtual std::string get_no_exit_down_message_sid() const;
     
     virtual bool get_dangerous(std::shared_ptr<Creature> creature) const;
+    virtual bool get_danger_flag(std::shared_ptr<Creature> creature) const;
     virtual std::string get_danger_confirmation_sid() const;
 
     virtual float get_piety_loss_multiplier() const;

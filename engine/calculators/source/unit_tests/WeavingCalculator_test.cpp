@@ -20,7 +20,7 @@ TEST(SW_Engine_Calculators_WeavingCalculator, calculate_min_points)
     s.set_value(SkillType::SKILL_GENERAL_WEAVING, i);
     creature->set_skills(s);
 
-    EXPECT_EQ(i / 25, wc.calculate_min_enchant_points(creature));
+    EXPECT_EQ(static_cast<int>(i / 25), wc.calculate_min_enchant_points(creature));
   }
 }
 
@@ -44,7 +44,7 @@ TEST(SW_Engine_Calculators_WeavingCalculator, calculate_max_points)
     s.set_value(SkillType::SKILL_GENERAL_WEAVING, i);
     creature->set_skills(s);
 
-    EXPECT_EQ(i / 10, wc.calculate_max_enchant_points(creature));
+    EXPECT_EQ(static_cast<int>(i / 10), wc.calculate_max_enchant_points(creature));
   }
 }
 

@@ -44,6 +44,12 @@ ActionCostValue MusicSkillProcessor::process(CreaturePtr creature, MapPtr map)
       add_performance_details_message(creature, instr_sids.second);
     }
 
+    // If the creature was singing, break the silent conduct.
+    if (instr == nullptr)
+    {
+      creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_SILENT);
+    }
+
     acv = get_default_skill_action_cost_value(creature);
   }
 
@@ -223,7 +229,7 @@ PacificationOutcome MusicSkillProcessor::attempt_pacification(ItemPtr instr, Cre
           }
           else
           {
-            if (RNG::percent_chance(75))
+            if (RNG::percent_chance(25))
             {
               add_unimpressed_message(creature, fov_creature);
             }
@@ -251,7 +257,7 @@ void MusicSkillProcessor::add_start_performance_message(CreaturePtr creature)
 {
   if (creature != nullptr)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(MusicTextKeys::MUSIC_PERFORMANCE_BEGIN));
     manager.send();
   }
@@ -260,7 +266,7 @@ void MusicSkillProcessor::add_performance_details_message(CreaturePtr creature, 
 {
   if (creature != nullptr)
   {
-    IMessageManager& manager = MM::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
     manager.add_new_message(StringTable::get(perf_sid));
     manager.send();
   }
@@ -284,7 +290,7 @@ void MusicSkillProcessor::pacify(CreaturePtr creature, CreaturePtr fov_creature,
     bool creature_is_player = creature->get_is_player();
     bool fov_is_player = fov_creature->get_is_player();
 
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, fov_creature, creature_is_player || fov_is_player);
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, fov_creature, creature_is_player || fov_is_player);
 
     if (charms_creature)
     {
@@ -317,7 +323,7 @@ void MusicSkillProcessor::add_unimpressed_message(CreaturePtr creature, Creature
 
     if (cca.can_see(creature))
     {
-      IMessageManager& manager = MM::instance(MessageTransmit::FOV, fov_creature, creature && creature->get_is_player());
+      IMessageManager& manager = MMF::instance(MessageTransmit::FOV, fov_creature, creature && creature->get_is_player());
       manager.add_new_message(ActionTextKeys::get_unimpressed_message(fov_creature->get_description_sid(), fov_creature->get_is_player()));
       manager.send();
     }
@@ -358,7 +364,7 @@ void MusicSkillProcessor::add_not_pacifiable_message(CreaturePtr creature, Creat
     bool creature_is_player = creature->get_is_player();
     bool fov_is_player = fov_creature->get_is_player();
 
-    IMessageManager& manager = MM::instance(MessageTransmit::FOV, fov_creature, creature_is_player || fov_is_player);
+    IMessageManager& manager = MMF::instance(MessageTransmit::FOV, fov_creature, creature_is_player || fov_is_player);
     manager.add_new_message(CombatTextKeys::get_pacification_message(creature_is_player, fov_is_player, StringTable::get(creature->get_description_sid()), StringTable::get(fov_creature->get_description_sid()), false /* not pacifiable */));
     manager.send();
   }

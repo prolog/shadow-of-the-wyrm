@@ -324,7 +324,7 @@ TEST(SW_Engine_Maps_MapUtils, get_available_adjacent_tiles_to_creature)
 
   auto avail_adj = MapUtils::get_available_adjacent_tiles_to_creature(map, pov_creature, place_creature);
 
-  EXPECT_EQ(7, avail_adj.size());
+  EXPECT_EQ(static_cast<size_t>(7), avail_adj.size());
   EXPECT_TRUE(avail_adj.find(Direction::DIRECTION_NORTH) == avail_adj.end());
 
   map->at(0, 1)->remove_creature();
@@ -332,7 +332,7 @@ TEST(SW_Engine_Maps_MapUtils, get_available_adjacent_tiles_to_creature)
 
   vector<Direction> dirs = { Direction::DIRECTION_NORTH_EAST, Direction::DIRECTION_NORTH, Direction::DIRECTION_NORTH_WEST, Direction::DIRECTION_EAST, Direction::DIRECTION_WEST, Direction::DIRECTION_SOUTH_EAST, Direction::DIRECTION_SOUTH, Direction::DIRECTION_SOUTH_WEST };
 
-  EXPECT_EQ(8, avail_adj.size());
+  EXPECT_EQ(static_cast<size_t>(8), avail_adj.size());
 
   for (const Direction dir : dirs)
   {
@@ -354,7 +354,7 @@ TEST(SW_Engine_Maps_MapUtils, get_coastline_dirs)
   map->insert({ 10, 10 }, tile);
   vector<Direction> dirs = MapUtils::get_coastline_directions(map, { 10, 10 });
 
-  EXPECT_EQ(4, dirs.size());
+  EXPECT_EQ(static_cast<size_t>(4), dirs.size());
   EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_NORTH) != dirs.end());
   EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_SOUTH) != dirs.end());
   EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_EAST) != dirs.end());
@@ -365,7 +365,7 @@ TEST(SW_Engine_Maps_MapUtils, get_coastline_dirs)
   map->insert({ 10, 11 }, tile);
   dirs = MapUtils::get_coastline_directions(map, { 10, 11 });
 
-  EXPECT_EQ(3, dirs.size());
+  EXPECT_EQ(static_cast<size_t>(3), dirs.size());
   EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_NORTH) != dirs.end());
   EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_SOUTH) != dirs.end());
   EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_EAST) != dirs.end());
@@ -381,12 +381,12 @@ TEST(SW_Engine_Maps_MapUtils, get_coastline_dirs)
   }
 
   dirs = MapUtils::get_coastline_directions(map, { 16, 17 });
-  EXPECT_EQ(1, dirs.size());
+  EXPECT_EQ(static_cast<size_t>(1), dirs.size());
   EXPECT_TRUE(std::find(dirs.begin(), dirs.end(), Direction::DIRECTION_EAST) != dirs.end());
 
   // Case 4: landlocked
   dirs = MapUtils::get_coastline_directions(map, { 16, 16 });
-  EXPECT_EQ(0, dirs.size());
+  EXPECT_EQ(static_cast<size_t>(0), dirs.size());
 }
 
 TEST(SW_Engine_Maps_MapUtils, set_coastline_generator_dirs)

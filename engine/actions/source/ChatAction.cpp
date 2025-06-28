@@ -190,7 +190,7 @@ bool ChatAction::chat_multiple_options(CreaturePtr querying_creature, const Crea
 // Add a chat message to the message area.
 void ChatAction::add_chat_message(CreaturePtr creature, const string& chat_text_sid) const
 {
-  IMessageManager& manager = MM::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
+  IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
   string chat_text = StringTable::get(chat_text_sid);
   vector<string> chat_texts = String::clean_and_trim(String::split(chat_text, TextFormatSpecifiers::NEW_PARAGRAPH));
   size_t ct_sz = chat_texts.size();

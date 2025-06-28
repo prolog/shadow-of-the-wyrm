@@ -14,7 +14,7 @@ void TableManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePt
 {
   if (creature && creature->get_is_player())
   {
-    IMessageManager& manager = MM::instance();
+    IMessageManager& manager = MMF::instance();
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_TABLE));
     manager.send();
   }

@@ -305,7 +305,7 @@ void Generator::create_entities(MapPtr map, const int dl, const bool create_crea
         map->set_property(MapProperties::MAP_PROPERTIES_SONG_LOCATION, loc);
       }
 
-      IMessageManager& manager = MM::instance();
+      IMessageManager& manager = MMF::instance();
       manager.add_new_message(StringTable::get(TextKeys::NO_CREATURES_GENERATED));
       manager.send();
     }
@@ -592,14 +592,14 @@ bool Generator::can_create_initial_items() const
   return false;
 }
 
-bool Generator::place_up_staircase(MapPtr map, const int row, const int col, const TileType tile_subtype, const Direction direction, const bool link_to_map_exit_id, const bool set_as_player_default_location)
+bool Generator::place_up_staircase(MapPtr map, const int row, const int col, const TileType tile_subtype, const Direction direction, const bool link_to_map_exit_id, const bool set_as_player_default_location, const string& extra_desc)
 {
-  return place_staircase(map, row, col, TileType::TILE_TYPE_UP_STAIRCASE, tile_subtype, direction, link_to_map_exit_id, set_as_player_default_location);
+  return place_staircase(map, row, col, TileType::TILE_TYPE_UP_STAIRCASE, tile_subtype, direction, link_to_map_exit_id, set_as_player_default_location, extra_desc);
 }
 
-bool Generator::place_down_staircase(MapPtr map, const int row, const int col,const TileType tile_subtype, const Direction direction, const bool link_to_map_exit_id, const bool set_as_player_default_location)
+bool Generator::place_down_staircase(MapPtr map, const int row, const int col,const TileType tile_subtype, const Direction direction, const bool link_to_map_exit_id, const bool set_as_player_default_location, const string& extra_desc)
 {
-  bool placed = place_staircase(map, row, col, TileType::TILE_TYPE_DOWN_STAIRCASE, tile_subtype, direction, link_to_map_exit_id, set_as_player_default_location);
+  bool placed = place_staircase(map, row, col, TileType::TILE_TYPE_DOWN_STAIRCASE, tile_subtype, direction, link_to_map_exit_id, set_as_player_default_location, extra_desc);
   
   TilePtr tile = map->at(row, col);
 
@@ -611,7 +611,7 @@ bool Generator::place_down_staircase(MapPtr map, const int row, const int col,co
   return placed;
 }
 
-bool Generator::place_staircase(MapPtr map, const int row, const int col, const TileType tile_type, const TileType tile_subtype, const Direction direction, const bool link_to_map_exit_id, const bool set_as_player_default_location)
+bool Generator::place_staircase(MapPtr map, const int row, const int col, const TileType tile_type, const TileType tile_subtype, const Direction direction, const bool link_to_map_exit_id, const bool set_as_player_default_location, const string& extra_desc)
 {
   TileGenerator tg;
   TilePtr tile = map->at(row, col);
@@ -632,7 +632,13 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
     // to the next generator, which will then set it on the down staircase...
     new_staircase_tile->set_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE, get_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE));
 
-    map->insert(row, col, new_staircase_tile); 
+    // Set the extra description if one has been provided.
+    if (!extra_desc.empty())
+    {
+      new_staircase_tile->set_extra_description_sid(extra_desc);
+    }
+
+    map->insert(row, col, new_staircase_tile);
 
     Depth depth = map->size().depth();
 
