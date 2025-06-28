@@ -1,5 +1,15 @@
 Building Shadow of the Wyrm, Linux Edition
 
+Before building, you'll you'll need to get the assets. These used to be 
+tracked in git, but once I added 200 MB+ of music, it started triggering 
+GitHub data usage warnings. Run:
+
+sh get_assets.sh
+
+This will retrieve the assets from the website and unzip the archive in the
+current directory. At that point, you should have everything you need to build
+and play the game.
+
 Shadow of the Wyrm can be built using premake5 and makefiles.  Before you
 start, ensure you have your distribution's developer packages for:
 
@@ -48,16 +58,6 @@ You may also want to use additional cores, if you have them, to speed up the
 build:
 
 make config=release -j=8
-
-Once you are done, you'll need to get the assets. These used to be tracked in
-git, but once I added 200 MB+ of music, it started triggering GitHub data 
-usage warnings. Run:
-
-sh get_assets.sh
-
-This will retrieve the assets from the website and unzip the archive in the
-current directory. At that point, you should have everything you need to play
-the game.
 
 Happy hacking!
 

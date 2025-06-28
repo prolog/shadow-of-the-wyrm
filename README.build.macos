@@ -1,7 +1,8 @@
 Building Shadow of the Wyrm for Mac OS
 
-See README.build.linux - most of the same will apply.  There are a couple
-of changes you will need to make to build the game, however:
+See README.build.linux - most of the same will apply, including getting the
+assets needed to build and run the game.  There are a couple of changes you 
+will need to make to build the game.
 
 Run premake5, perhaps with something like:
 
@@ -15,12 +16,4 @@ CFLAGS for each configuration, add "--std=c++14"
 
 Otherwise, the same process and commands should apply.  Build using
 make.
-Once you are done, you'll need to get the assets. These used to be tracked in
-git, but once I added 200 MB+ of music, it started triggering GitHub data 
-usage warnings. Run:
 
-sh get_assets.sh
-
-This will retrieve the assets from the website and unzip the archive in the
-current directory. At that point, you should have everything you need to play
-the game.
