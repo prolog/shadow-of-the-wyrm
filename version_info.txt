@@ -1,5 +1,5 @@
 Shadow of the Wyrm v1.8.4 "Fampas"
-- Version declared March 8, 2025.
+- Version declared March 8, 2025. Version finalized June 28, 2025.
 
 - Updated the guidebook's section on Skills and created a new section on 
   how to apply terrain features (Lustcrecia).
