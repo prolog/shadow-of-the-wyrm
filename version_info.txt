@@ -3,6 +3,9 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
 
 - Updated the name combinations and various messages.
 
+- Added a pause when the user chooses to dump their character on death so the
+  message isn't cut off before showing the high score screen.
+
 - Updated the Linux build instructions.
 
 Shadow of the Wyrm v1.8.4 "Fampas"

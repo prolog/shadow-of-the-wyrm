@@ -14,8 +14,7 @@ Me:
 - EVERY TIME YOU UPDATE ASSETS, DM LARZID
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
-- after release, asset dir only had sounds?? might be due to not being tracked
-  etc
+- message about dumping char can get cut off?
 - ship name/buried treasure names for this release
 - Snakelings should always start bald (RelicWraith)
 - Companions should see you when hidden, or else orders get wonky (RelicWraith)
