@@ -6,6 +6,9 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
 - Added a pause when the user chooses to dump their character on death so the
   message isn't cut off before showing the high score screen.
 
+- Followers now always see their leader, so being hidden doesn't prevent
+  followers from following you around (RelicWraith).
+
 - Snakelings are now specifically bald (RelicWraith).
 
 - Updated the Linux build instructions.

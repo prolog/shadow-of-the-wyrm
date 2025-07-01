@@ -10,12 +10,10 @@ Long Term Boring And Probably Necessary:
 
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
-  staircase extra descs.
+  staircase extra descs, randomized npc stuff, etc.
 - EVERY TIME YOU UPDATE ASSETS, DM LARZID
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
-- ship name/buried treasure names for this release
-- Snakelings should always start bald (RelicWraith)
 - Companions should see you when hidden, or else orders get wonky (RelicWraith)
 - Audio enhancements off for testing
 - no-talk telari: what if the entrance was deep below wintersea catacombs?
