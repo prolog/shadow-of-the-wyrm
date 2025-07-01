@@ -590,6 +590,10 @@ void CreatureFactory::set_initial_statistics(CreaturePtr creature, Race* race, C
   {
     hair_colour = get_random_hair_colour();
   }
+  else
+  {
+    hair_colour = HairColour::HAIR_COLOUR_BALD;
+  }
 
   creature->set_hair_colour(hair_colour);
   creature->set_eye_colour(get_random_eye_colour());
