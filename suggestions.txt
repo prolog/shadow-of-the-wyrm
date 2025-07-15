@@ -14,6 +14,7 @@ Me:
 - EVERY TIME YOU UPDATE ASSETS, DM LARZID
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
+- grdlgrdl: clear player backstabbed flag regularly
 - Companions should see you when hidden, or else orders get wonky (RelicWraith)
 - Audio enhancements off for testing
 - no-talk telari: what if the entrance was deep below wintersea catacombs?

@@ -27,10 +27,6 @@ The premake build scripts work for Fedora.  Other distros may require
 updates to either the premake scripts or the generated makefiles to get 
 things working.
 
-You will also need to know where your libraries are installed, and update
-the location in "copy_libs.lua" appropriately.  The values in that file are
-valid for 64-bit Fedora 24 (/usr/lib64).
-
 (In the examples ahead, if you're using premake4 instead of premake5, just
 substitute that instead.)
 
