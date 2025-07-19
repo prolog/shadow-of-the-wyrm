@@ -9,6 +9,8 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
 - Followers now always see their leader, so being hidden doesn't prevent
   followers from following you around (RelicWraith).
 
+- The backstab flag is now removed every two hours on a map.
+
 - Snakelings are now specifically bald (RelicWraith).
 
 - Updated the Linux build instructions.

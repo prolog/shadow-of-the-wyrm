@@ -4598,6 +4598,9 @@
     <ClInclude Include="engine\creatures\include\TileSafetyCondition.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\time\include\CreatureVigilanceTimer.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9357,6 +9360,9 @@
     </ClCompile>
     <ClCompile Include="engine\creatures\source\TileSafetyCondition.cpp">
       <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\CreatureVigilanceTimer.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

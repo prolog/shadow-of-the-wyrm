@@ -1388,6 +1388,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\time\include\CreatureStatsIncrementer.hpp" />
     <ClInclude Include="engine\time\include\CreatureStatuses.hpp" />
     <ClInclude Include="engine\time\include\CreatureTimeObserver.hpp" />
+    <ClInclude Include="engine\time\include\CreatureVigilanceTimer.hpp" />
     <ClInclude Include="engine\time\include\FallingMovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\ICreatureRegeneration.hpp" />
     <ClInclude Include="engine\time\include\ITerrainMovementAccumulationChecker.hpp" />
@@ -3033,6 +3034,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\time\source\CreatureSkillMarkerChecker.cpp" />
     <ClCompile Include="engine\time\source\CreatureStatisticsMarkerChecker.cpp" />
     <ClCompile Include="engine\time\source\CreatureStatsIncrementer.cpp" />
+    <ClCompile Include="engine\time\source\CreatureVigilanceTimer.cpp" />
     <ClCompile Include="engine\time\source\ShopsTimeObserver.cpp" />
     <ClCompile Include="engine\time\source\SpecialDayObserver.cpp" />
     <ClCompile Include="engine\time\source\TileTransformObserver.cpp" />
