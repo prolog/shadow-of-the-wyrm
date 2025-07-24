@@ -10,7 +10,7 @@ HeavyWeaponToHitCalculator::HeavyWeaponToHitCalculator(const AttackType new_atta
 {
 }
 
-int HeavyWeaponToHitCalculator::calculate(CreaturePtr creature)
+int HeavyWeaponToHitCalculator::calculate(CreaturePtr creature, MapPtr map)
 {
   int to_hit = 0;
 
@@ -27,6 +27,7 @@ int HeavyWeaponToHitCalculator::calculate(CreaturePtr creature)
     int modifier = get_modifier_bonus(creature);
     int skills   = get_skills_bonus(creature);
     int status   = get_status_bonus(creature);
+    int terrain  = get_terrain_bonus(creature, map);
 
     // There is no BAC penalty for heavy weapons - unlike light and ranged
     // weapons, which rely on finesse, heavy weapons rely more on strength,
@@ -40,6 +41,7 @@ int HeavyWeaponToHitCalculator::calculate(CreaturePtr creature)
     to_hit += modifier;
     to_hit += skills;
     to_hit += status;
+    to_hit += terrain;
   }
 
   return to_hit;

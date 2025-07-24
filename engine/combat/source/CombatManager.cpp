@@ -181,9 +181,10 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     // Ensure that attacks take at least one speed - no free attacks!
     action_cost_value = std::max(1, speed_calculator->calculate(attacking_creature));
     DamageCalculatorPtr damage_calculator = DamageCalculatorFactory::create_damage_calculator(attack_type, phase);
-    
+    MapPtr current_map = Game::instance().get_current_map();
+
     int d100_roll = RNG::range(1, 100);
-    int to_hit_value = th_calculator->calculate(attacking_creature);
+    int to_hit_value = th_calculator->calculate(attacking_creature, current_map);
     int total_roll = d100_roll + to_hit_value;
     int target_number_value = ctn_calculator->calculate(attacking_creature, attacked_creature);
 

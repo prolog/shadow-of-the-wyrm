@@ -26,7 +26,7 @@ TEST(SW_Engine_Calculators_MagicToHitCalculator, calculate_BAC_part)
 	float bac = b.get_blood_alcohol_content();
 	creature->set_blood(b);
 
-	int val = mthc.calculate(creature);
+	int val = mthc.calculate(creature, nullptr);
 	int est_intval = static_cast<int>(bac * -100);
 
 	EXPECT_EQ(est_intval, val);
@@ -39,7 +39,7 @@ TEST(SW_Engine_Calculators_MagicToHitCalculator, calculate_level_part)
 	creature->set_intelligence(10);
 	creature->set_level(33);
 
-	EXPECT_EQ(16, mthc.calculate(creature));
+	EXPECT_EQ(16, mthc.calculate(creature, nullptr));
 }
 
 TEST(SW_Engine_Calculators_MagicToHitCalculator, calculate_magic_part)
@@ -49,7 +49,7 @@ TEST(SW_Engine_Calculators_MagicToHitCalculator, calculate_magic_part)
 	creature->set_intelligence(10);
 	creature->get_skills().set_value(SkillType::SKILL_GENERAL_MAGIC, 15);
 
-	EXPECT_EQ(3, mthc.calculate(creature));
+	EXPECT_EQ(3, mthc.calculate(creature, nullptr));
 }
 
 TEST(SW_Engine_Calculators_MagicToHitCalculator, calculate_intelligence_part)
@@ -58,7 +58,7 @@ TEST(SW_Engine_Calculators_MagicToHitCalculator, calculate_intelligence_part)
 	CreaturePtr creature = std::make_shared<Creature>();
 	creature->set_intelligence(25);
 
-	EXPECT_EQ(5, mthc.calculate(creature));
+	EXPECT_EQ(5, mthc.calculate(creature, nullptr));
 }
 
 TEST(SW_Engine_Calculators_MagicToHitCalculator, calculate_skills_part)
@@ -67,7 +67,7 @@ TEST(SW_Engine_Calculators_MagicToHitCalculator, calculate_skills_part)
 	CreaturePtr creature = std::make_shared<Creature>();
 	creature->set_intelligence(10);
 
-	EXPECT_EQ(0, mthc.calculate(creature));
+	EXPECT_EQ(0, mthc.calculate(creature, nullptr));
 
 	Status s;
 	s.set_value(true);
@@ -79,7 +79,7 @@ TEST(SW_Engine_Calculators_MagicToHitCalculator, calculate_skills_part)
 	for (const auto& bf_pair : bf_values)
 	{
 		creature->get_skills().set_value(SkillType::SKILL_GENERAL_BLIND_FIGHTING, bf_pair.first);
-		EXPECT_EQ(bf_pair.second, mthc.calculate(creature));
+		EXPECT_EQ(bf_pair.second, mthc.calculate(creature, nullptr));
 	}
 }
 
@@ -95,7 +95,7 @@ TEST(SW_Engine_Calculators_MagicToHitCalculator, calculate_modifier_part)
 	modifiers[7.0] = { {"fdsa", m} };
 	creature->set_modifiers(modifiers);
 
-	EXPECT_EQ(13, mthc.calculate(creature));
+	EXPECT_EQ(13, mthc.calculate(creature, nullptr));
 }
 
 TEST(SW_Engine_Calculators_MagicToHitCalculator, calculate_weight_part)
@@ -122,5 +122,5 @@ TEST(SW_Engine_Calculators_MagicToHitCalculator, calculate_weight_part)
 		attacker_weight_value *= -1;
 	}
 
-	EXPECT_EQ(attacker_weight_value, mthc.calculate(creature));
+	EXPECT_EQ(attacker_weight_value, mthc.calculate(creature, nullptr));
 }

@@ -21,7 +21,7 @@ TEST(SW_Engine_Calculators_HeavyWeaponToHitCalculator, calculate_base_th)
 	creature->set_strength(10);
 	creature->set_to_hit(13);
 
-	EXPECT_EQ(13 + 5, hwthc.calculate(creature));
+	EXPECT_EQ(13 + 5, hwthc.calculate(creature, nullptr));
 }
 
 TEST(SW_Engine_Calculators_HeavyWeaponToHitCalculator, calculate_combat_part)
@@ -31,7 +31,7 @@ TEST(SW_Engine_Calculators_HeavyWeaponToHitCalculator, calculate_combat_part)
 	creature->set_strength(10);
 	creature->get_skills().set_value(SkillType::SKILL_GENERAL_COMBAT, 60);
 
-	EXPECT_EQ(12 /* combat bonus */ + 5 /* unarmed bonus */, hwthc.calculate(creature));
+	EXPECT_EQ(12 /* combat bonus */ + 5 /* unarmed bonus */, hwthc.calculate(creature, nullptr));
 }
 
 TEST(SW_Engine_Calculators_HeavyWeaponToHitCalculator, calculate_strength_part)
@@ -40,7 +40,7 @@ TEST(SW_Engine_Calculators_HeavyWeaponToHitCalculator, calculate_strength_part)
 	HeavyWeaponToHitCalculator hwthc;
 	creature->set_strength(54);
 
-	EXPECT_EQ(11 /* str */ + 5 /* unarmed status bonus */, hwthc.calculate(creature));
+	EXPECT_EQ(11 /* str */ + 5 /* unarmed status bonus */, hwthc.calculate(creature, nullptr));
 }
 
 TEST(SW_Engine_Calculators_HeavyWeaponToHitCalculator, calculate_level_part)
@@ -50,7 +50,7 @@ TEST(SW_Engine_Calculators_HeavyWeaponToHitCalculator, calculate_level_part)
 	creature->set_strength(10);
 	creature->set_level(44);
 
-	EXPECT_EQ(22 + 5, hwthc.calculate(creature));
+	EXPECT_EQ(22 + 5, hwthc.calculate(creature, nullptr));
 }
 
 TEST(SW_Engine_Calculators_HeavyWeaponToHitCalculator, calculate_weapon_part)
@@ -64,7 +64,7 @@ TEST(SW_Engine_Calculators_HeavyWeaponToHitCalculator, calculate_weapon_part)
 	creature->get_equipment().set_item(whip, EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
 	creature->get_skills().set_value(SkillType::SKILL_MELEE_WHIPS, 30);
 
-	EXPECT_EQ(15, hwthc.calculate(creature));
+	EXPECT_EQ(15, hwthc.calculate(creature, nullptr));
 }
 
 TEST(SW_Engine_Calculators_HeavyWeaponToHitCalculator, calculate_skills_part)
@@ -81,7 +81,7 @@ TEST(SW_Engine_Calculators_HeavyWeaponToHitCalculator, calculate_skills_part)
 	for (const auto& bf_p : bf_vals)
 	{
 		creature->get_skills().set_value(SkillType::SKILL_GENERAL_BLIND_FIGHTING, bf_p.first);
-		EXPECT_EQ(bf_p.second + 5, hwthc.calculate(creature));
+		EXPECT_EQ(bf_p.second + 5, hwthc.calculate(creature, nullptr));
 	}
 }
 
@@ -96,11 +96,11 @@ TEST(SW_Engine_Calculators_HeavyWeaponToHitCalculator, calculate_status_part)
 	creature->get_equipment().set_item(whip, EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
 
 	whip->set_status(ItemStatus::ITEM_STATUS_CURSED);
-	EXPECT_EQ(-10, hwthc.calculate(creature));
+	EXPECT_EQ(-10, hwthc.calculate(creature, nullptr));
 
 	whip->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
-	EXPECT_EQ(0, hwthc.calculate(creature));
+	EXPECT_EQ(0, hwthc.calculate(creature, nullptr));
 
 	whip->set_status(ItemStatus::ITEM_STATUS_BLESSED);
-	EXPECT_EQ(10, hwthc.calculate(creature));
+	EXPECT_EQ(10, hwthc.calculate(creature, nullptr));
 }

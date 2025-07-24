@@ -7,7 +7,7 @@ class MagicToHitCalculator : public ToHitCalculator
     MagicToHitCalculator();
     virtual ~MagicToHitCalculator() = default;
 
-    int calculate(CreaturePtr creature) override;
+    int calculate(CreaturePtr creature, MapPtr map) override;
     Statistic& get_statistic(CreaturePtr creature) override;
 
     static const int MAGIC_WEIGHT_DIVISOR;

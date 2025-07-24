@@ -135,4 +135,16 @@ int ToHitCalculator::get_status_bonus(CreaturePtr creature)
   }
 
   return status_bonus;
+}
+
+int ToHitCalculator::get_terrain_bonus(CreaturePtr creature, MapPtr map)
+{
+  int bonus = 0;
+
+  if (creature != nullptr && map != nullptr)
+  {
+    bonus = 0;
   }
+
+  return 0;
+}

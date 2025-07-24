@@ -10,5 +10,5 @@ class HeavyWeaponToHitCalculator : public ToHitCalculator
 
     Statistic& get_statistic(CreaturePtr creature) override;
 
-    int calculate(CreaturePtr creature) override;
+    int calculate(CreaturePtr creature, MapPtr map) override;
 };

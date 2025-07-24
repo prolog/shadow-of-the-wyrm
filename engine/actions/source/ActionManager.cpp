@@ -751,7 +751,8 @@ ActionCost ActionManager::pray(CreaturePtr creature)
 ActionCost ActionManager::weapon_info(CreaturePtr creature, const WeaponStyle weapon_style)
 {
   WeaponInfoAction wa;
-  return get_action_cost(creature, wa.weapon_info(creature, weapon_style));
+  MapPtr map = Game::instance().get_current_map();
+  return get_action_cost(creature, wa.weapon_info(creature, map, weapon_style));
 }
 
 ActionCost ActionManager::select_tile(CreaturePtr creature)

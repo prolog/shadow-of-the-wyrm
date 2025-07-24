@@ -6,7 +6,7 @@ WandsToHitCalculator::WandsToHitCalculator()
 {
 }
 
-int WandsToHitCalculator::calculate(CreaturePtr creature)
+int WandsToHitCalculator::calculate(CreaturePtr creature, MapPtr map)
 {
   int to_hit = 0;
 
@@ -22,11 +22,13 @@ int WandsToHitCalculator::calculate(CreaturePtr creature)
     int wc_bonus     = sm.get_skill_value(creature, SkillType::SKILL_GENERAL_WANDCRAFT) / NWP_SKILL_BONUS_DIVISOR;
     int charisma     = get_statistic(creature).get_current();
     int modifiers    = get_modifier_bonus(creature);
+    int terrain      = get_terrain_bonus(creature, map);
 
     to_hit += level_bonus;
     to_hit += wc_bonus;
     to_hit += (charisma - 10) / 3;
     to_hit += modifiers;
+    to_hit += terrain;
     to_hit -= bac_modifier;
   }
 

@@ -11,7 +11,7 @@ LightMeleeAndRangedWeaponToHitCalculator::LightMeleeAndRangedWeaponToHitCalculat
 {
 }
 
-int LightMeleeAndRangedWeaponToHitCalculator::calculate(CreaturePtr creature)
+int LightMeleeAndRangedWeaponToHitCalculator::calculate(CreaturePtr creature, MapPtr map)
 {
   int to_hit = 0;
   
@@ -26,6 +26,7 @@ int LightMeleeAndRangedWeaponToHitCalculator::calculate(CreaturePtr creature)
     int modifier  = get_modifier_bonus(creature);
     int skill     = get_skills_bonus(creature);
     int status    = get_status_bonus(creature);
+    int terrain   = get_terrain_bonus(creature, map);  
     int bac_modifier = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100);
 
     to_hit += nwp_bonus;
@@ -35,6 +36,7 @@ int LightMeleeAndRangedWeaponToHitCalculator::calculate(CreaturePtr creature)
     to_hit += modifier;
     to_hit += skill;
     to_hit += status;
+    to_hit += terrain;
     to_hit -= bac_modifier;
   }
   
