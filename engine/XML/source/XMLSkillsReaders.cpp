@@ -77,7 +77,6 @@ void XMLGeneralSkillsReader::parse_general_skills(Skills& skills, const XMLNode&
     int scribing_value         = XMLUtils::get_child_node_int_value(general_skills_node, "Scribing");
     int skinning_value         = XMLUtils::get_child_node_int_value(general_skills_node, "Skinning");
     int smithing_value         = XMLUtils::get_child_node_int_value(general_skills_node, "Smithing");
-    int spelunking_value       = XMLUtils::get_child_node_int_value(general_skills_node, "Spelunking");
     int stealth_value          = XMLUtils::get_child_node_int_value(general_skills_node, "Stealth");
     int swimming_value         = XMLUtils::get_child_node_int_value(general_skills_node, "Swimming");
     int tanning_value          = XMLUtils::get_child_node_int_value(general_skills_node, "Tanning");
@@ -127,7 +126,6 @@ void XMLGeneralSkillsReader::parse_general_skills(Skills& skills, const XMLNode&
     skills.set_value(SkillType::SKILL_GENERAL_SCRIBING, scribing_value);
     skills.set_value(SkillType::SKILL_GENERAL_SKINNING, skinning_value);
     skills.set_value(SkillType::SKILL_GENERAL_SMITHING, smithing_value);
-    skills.set_value(SkillType::SKILL_GENERAL_SPELUNKING, spelunking_value);
     skills.set_value(SkillType::SKILL_GENERAL_STEALTH, stealth_value);
     skills.set_value(SkillType::SKILL_GENERAL_SWIMMING, swimming_value);
     skills.set_value(SkillType::SKILL_GENERAL_TANNING, tanning_value);

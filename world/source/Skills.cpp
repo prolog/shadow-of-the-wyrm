@@ -1078,25 +1078,6 @@ ClassIdentifier SmithingSkill::internal_class_identifier() const
   return ClassIdentifier::CLASS_ID_SKILL_SMITHING;
 }
 
-// Spelunking
-SpelunkingSkill::SpelunkingSkill()
-: GeneralSkill()
-{
-  skill_name_sid = SkillTextKeys::SKILL_GENERAL_SPELUNKING;
-  skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_SPELUNKING_INCREMENT;
-  skill_description_sid = SkillTextKeys::SKILL_GENERAL_SPELUNKING_DETAILS;
-}
-
-Skill* SpelunkingSkill::clone()
-{
-  return new SpelunkingSkill(*this);
-}
-
-ClassIdentifier SpelunkingSkill::internal_class_identifier() const
-{
-  return ClassIdentifier::CLASS_ID_SKILL_SPELUNKING;
-}
-
 // Stealth
 StealthSkill::StealthSkill()
 : GeneralSkill()
@@ -2047,7 +2028,6 @@ void Skills::initialize_general_skills()
   std::unique_ptr<ScribingSkill> scribing = std::make_unique<ScribingSkill>();
   std::unique_ptr<SkinningSkill> skinning = std::make_unique<SkinningSkill>();
   std::unique_ptr<SmithingSkill> smithing = std::make_unique<SmithingSkill>();
-  std::unique_ptr<SpelunkingSkill> spelunking = std::make_unique<SpelunkingSkill>();
   std::unique_ptr<StealthSkill> stealth = std::make_unique<StealthSkill>();
   std::unique_ptr<SwimmingSkill> swimming = std::make_unique<SwimmingSkill>();
   std::unique_ptr<TanningSkill> tanning = std::make_unique<TanningSkill>();
@@ -2097,7 +2077,6 @@ void Skills::initialize_general_skills()
   skills.insert(make_pair(SkillType::SKILL_GENERAL_SCRIBING, std::move(scribing)));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_SKINNING, std::move(skinning)));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_SMITHING, std::move(smithing)));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_SPELUNKING, std::move(spelunking)));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_STEALTH, std::move(stealth)));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_SWIMMING, std::move(swimming)));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_TANNING, std::move(tanning)));

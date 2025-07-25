@@ -142,9 +142,6 @@ class SkillTextKeys
     static const std::string SKILL_GENERAL_SMITHING;
     static const std::string SKILL_GENERAL_SMITHING_INCREMENT;
     static const std::string SKILL_GENERAL_SMITHING_DETAILS;
-    static const std::string SKILL_GENERAL_SPELUNKING;
-    static const std::string SKILL_GENERAL_SPELUNKING_INCREMENT;
-    static const std::string SKILL_GENERAL_SPELUNKING_DETAILS;
     static const std::string SKILL_GENERAL_STEALTH;
     static const std::string SKILL_GENERAL_STEALTH_INCREMENT;
     static const std::string SKILL_GENERAL_STEALTH_DETAILS;

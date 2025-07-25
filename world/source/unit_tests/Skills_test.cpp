@@ -111,7 +111,6 @@ TEST(SW_World_Skills, serialization_ids_general_skills)
   ScribingSkill scribing;
   SkinningSkill skinning;
   SmithingSkill smithing;
-  SpelunkingSkill spelunking;
   StealthSkill stealth;
   SwimmingSkill swimming;
   TanningSkill tanning;
@@ -162,7 +161,6 @@ TEST(SW_World_Skills, serialization_ids_general_skills)
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_SCRIBING, scribing.get_class_identifier());
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_SKINNING, skinning.get_class_identifier());
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_SMITHING, smithing.get_class_identifier());
-  EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_SPELUNKING, spelunking.get_class_identifier());
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_STEALTH, stealth.get_class_identifier());
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_SWIMMING, swimming.get_class_identifier());
   EXPECT_EQ(ClassIdentifier::CLASS_ID_SKILL_TANNING, tanning.get_class_identifier());

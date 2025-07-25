@@ -1918,9 +1918,8 @@
 					<Awareness>15</Awareness>
 					<Carrying>10</Carrying>
 					<Detection>10</Detection>
-					<MountainLore>20</MountainLore>
+					<MountainLore>30</MountainLore>
 					<NightSight>10</NightSight>
-					<Spelunking>10</Spelunking>
 					<Swimming>15</Swimming>
 				</GeneralSkills>
 				<WeaponSkills>
@@ -2200,11 +2199,11 @@
 				<GeneralSkills>
 					<Carrying>10</Carrying>
 					<Detection>10</Detection>
-					<DisarmTraps>10</DisarmTraps>
+					<DisarmTraps>20</DisarmTraps>
+					<Dungeoneering>10</Dungeoneering>
 					<MountainLore>20</MountainLore>
 					<NightSight>15</NightSight>
 					<Smithing>5</Smithing>
-					<Spelunking>20</Spelunking>
 				</GeneralSkills>
 				<WeaponSkills>
 					<Axes>7</Axes>
@@ -2575,12 +2574,11 @@
 					<Carrying>10</Carrying>
 					<Detection>10</Detection>
 					<DisarmTraps>15</DisarmTraps>
-					<Dungeoneering>15</Dungeoneering>
+					<Dungeoneering>25</Dungeoneering>
 					<Literacy>5</Literacy>
 					<Medicine>5</Medicine>
 					<MountainLore>15</MountainLore>
-					<Spelunking>20</Spelunking>
-					<Wandcraft>5</Wandcraft>
+					<Wandcraft>15</Wandcraft>
 				</GeneralSkills>
 				<WeaponSkills>
 					<ShortBlades>7</ShortBlades>
@@ -2634,13 +2632,12 @@
 				<GeneralSkills>
 					<Awareness>15</Awareness>
 					<Boating>10</Boating>
-					<Dungeoneering>15</Dungeoneering>
+					<Dungeoneering>25</Dungeoneering>
 					<Escape>10</Escape>
 					<Fishing>10</Fishing>
 					<Foraging>15</Foraging>
 					<Jumping>10</Jumping>
 					<Literacy>5</Literacy>
-					<Spelunking>10</Spelunking>
 					<Stealth>15</Stealth>
 					<Swimming>5</Swimming>
 				</GeneralSkills>
@@ -4595,12 +4592,11 @@
 					<DisarmTraps>20</DisarmTraps>
 					<DualWield>20</DualWield>
 					<Escape>20</Escape>
-					<Hiding>25</Hiding>
+					<Hiding>30</Hiding>
 					<Hunting>10</Hunting>
 					<Jumping>20</Jumping>
-					<Spelunking>15</Spelunking>
-					<Stealth>20</Stealth>
-					<Thievery>25</Thievery>
+					<Stealth>25</Stealth>
+					<Thievery>30</Thievery>
 				</GeneralSkills>
 				<WeaponSkills>
 					<ShortBlades>5</ShortBlades>

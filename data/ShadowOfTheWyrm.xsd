@@ -662,7 +662,6 @@
 			<xs:element name="Scribing" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Skinning" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Smithing" type="tns:PercentageStatistic" minOccurs="0"/>
-			<xs:element name="Spelunking" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Stealth" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Swimming" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Tanning" type="tns:PercentageStatistic" minOccurs="0"/>

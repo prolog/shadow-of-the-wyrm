@@ -248,7 +248,6 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CSKILL_GENERAL_SCRIBING);
   lua_exportConst(ls, CSKILL_GENERAL_SKINNING);
   lua_exportConst(ls, CSKILL_GENERAL_SMITHING);
-  lua_exportConst(ls, CSKILL_GENERAL_SPELUNKING);
   lua_exportConst(ls, CSKILL_GENERAL_STEALTH);
   lua_exportConst(ls, CSKILL_GENERAL_SWIMMING);
   lua_exportConst(ls, CSKILL_GENERAL_TANNING);

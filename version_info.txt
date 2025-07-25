@@ -15,6 +15,8 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
 
 - Updated the Linux build instructions.
 
+- The Spelunking skill (never implemented) has been removed.
+
 Shadow of the Wyrm v1.8.4 "Fampas"
 - Version declared March 8, 2025. Version finalized June 28, 2025.
 

@@ -578,17 +578,6 @@ class SmithingSkill : public GeneralSkill
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
-class SpelunkingSkill : public GeneralSkill
-{
-  public:
-    SpelunkingSkill();
-
-    virtual Skill* clone() override;
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const override;
-};
-
 class StealthSkill : public GeneralSkill
 {
   public:
