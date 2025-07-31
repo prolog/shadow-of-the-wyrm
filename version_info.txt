@@ -17,6 +17,9 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
 
 - The Spelunking skill (never implemented) has been removed.
 
+- The Lore skills now grant a to-hit bonus when travelling on applicable 
+  terrain.
+
 Shadow of the Wyrm v1.8.4 "Fampas"
 - Version declared March 8, 2025. Version finalized June 28, 2025.
 
