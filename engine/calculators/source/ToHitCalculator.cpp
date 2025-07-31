@@ -30,9 +30,7 @@ ToHitCalculator::ToHitCalculator(const AttackType new_attack_type)
 void ToHitCalculator::init_skill_bonuses()
 {
   tt_skill_bonuses = { {TileType::TILE_TYPE_FOREST, SkillType::SKILL_GENERAL_FOREST_LORE}, 
-                       {TileType::TILE_TYPE_EVERGREEN_TREE, SkillType::SKILL_GENERAL_FOREST_LORE},
                        {TileType::TILE_TYPE_SEA, SkillType::SKILL_GENERAL_OCEAN_LORE},
-                       {TileType::TILE_TYPE_RIVER, SkillType::SKILL_GENERAL_OCEAN_LORE},
                        {TileType::TILE_TYPE_MARSH, SkillType::SKILL_GENERAL_MARSH_LORE},
                        {TileType::TILE_TYPE_HILLS, SkillType::SKILL_GENERAL_MOUNTAIN_LORE},
                        {TileType::TILE_TYPE_DESERT, SkillType::SKILL_GENERAL_DESERT_LORE},
@@ -204,3 +202,7 @@ int ToHitCalculator::get_terrain_bonus(CreaturePtr creature, MapPtr map)
 
   return bonus;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/ToHitCalculator_test.cpp"
+#endif

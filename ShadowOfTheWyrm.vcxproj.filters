@@ -9364,6 +9364,9 @@
     <ClCompile Include="engine\time\source\CreatureVigilanceTimer.cpp">
       <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\ToHitCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShadowOfTheWyrm.rc" />
