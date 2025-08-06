@@ -77,7 +77,7 @@ Damage MagicalDamageCalculator::calculate_base_damage_object(CreaturePtr creatur
   return d;
 }
 
-Damage MagicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties(CreaturePtr creature)
+Damage MagicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties(CreaturePtr creature, MapPtr map)
 {
   Damage base_and_bonus = calculate_base_damage_object(creature);
 
@@ -109,6 +109,7 @@ Damage MagicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties(
 
           modifier += get_skill_modifier(creature, spell.get_magic_category());
           modifier += get_stat_modifier(creature);
+          modifier += get_map_bonus(creature, map);
 
           base_and_bonus.set_modifier(modifier);
         }

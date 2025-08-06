@@ -42,6 +42,18 @@ int DamageCalculator::get_item_status_effect_bonus(const ItemStatus status)
   return bonus;
 }
 
+int DamageCalculator::get_map_bonus(CreaturePtr creature, MapPtr map) const
+{
+  int bonus = 0;
+
+  if (creature != nullptr && map != nullptr)
+  {
+    // ...
+  }
+
+  return bonus;
+}
+
 double DamageCalculator::get_phase_of_moon_multiplier(const DamageType dt, const PhaseOfMoonType pom) const
 {
   double mult = 1.0;

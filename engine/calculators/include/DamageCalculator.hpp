@@ -1,7 +1,7 @@
 #pragma once
 #include "AttackTypes.hpp"
-#include "Creature.hpp"
 #include "CalendarTypes.hpp"
+#include "Map.hpp"
 
 class DamageCalculator
 {
@@ -11,9 +11,10 @@ class DamageCalculator
   
     virtual int calculate(CreaturePtr defending_creature, const bool sneak_attack, const bool slays_creatures_race, const Damage& damage, const int base_damage, const float soak_multiplier) = 0;
     virtual Damage calculate_base_damage_object(CreaturePtr attacking_creature) = 0;
-    virtual Damage calculate_base_damage_with_bonuses_or_penalties(CreaturePtr attacking_creature) = 0;
+    virtual Damage calculate_base_damage_with_bonuses_or_penalties(CreaturePtr attacking_creature, MapPtr map) = 0;
 
     int get_item_status_effect_bonus(const ItemStatus status);
+    int get_map_bonus(CreaturePtr creature, MapPtr map) const;
 
   protected:
 

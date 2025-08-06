@@ -9,7 +9,7 @@ class PhysicalDamageCalculator : public DamageCalculator
     
     virtual int calculate(CreaturePtr defending_creature, const bool sneak_attack, const bool slays_creatures_race, const Damage& damage, const int base_damage, const float soak_multiplier) override;
     virtual Damage calculate_base_damage_object(CreaturePtr attacking_creature) override;
-    virtual Damage calculate_base_damage_with_bonuses_or_penalties(CreaturePtr attacking_creature) override;
+    virtual Damage calculate_base_damage_with_bonuses_or_penalties(CreaturePtr attacking_creature, MapPtr map) override;
     virtual int get_statistic_based_damage_modifier(CreaturePtr attacking_creature);
     virtual int get_skill_based_damage_modifier(CreaturePtr attacking_creature);
     virtual Damage calculate_default_damage_for_improvised_weapon(ItemPtr item);

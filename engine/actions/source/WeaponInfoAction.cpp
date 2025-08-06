@@ -131,6 +131,7 @@ string WeaponInfoAction::get_melee_weapon_info(CreaturePtr creature, MapPtr map,
     if (weapon || (attack_type == AttackType::ATTACK_TYPE_MELEE_PRIMARY))
     {
       Game& game = Game::instance();
+      MapPtr map = game.get_current_map();
       PhaseOfMoonCalculator pomc;
       PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());
       DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type, phase);
@@ -139,7 +140,7 @@ string WeaponInfoAction::get_melee_weapon_info(CreaturePtr creature, MapPtr map,
       int base_difficulty = wdc.calculate_base_difficulty(creature, attack_type);
       int total_difficulty = wdc.calculate_total_difficulty_for_display(creature, map, attack_type);
 
-      Damage weapon_damage = damage_calc->calculate_base_damage_with_bonuses_or_penalties(creature);
+      Damage weapon_damage = damage_calc->calculate_base_damage_with_bonuses_or_penalties(creature, map);
 
       int speed = 0;
       int range = 1;
@@ -180,6 +181,8 @@ string WeaponInfoAction::get_ranged_weapon_info(CreaturePtr creature, MapPtr map
     if (ranged_weapon || ammunition)
     {
       Game& game = Game::instance();
+      MapPtr map = game.get_current_map();
+
       PhaseOfMoonCalculator pomc;
       PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());
 
@@ -188,7 +191,7 @@ string WeaponInfoAction::get_ranged_weapon_info(CreaturePtr creature, MapPtr map
 
       int base_difficulty = wdc.calculate_base_difficulty(creature, AttackType::ATTACK_TYPE_RANGED);
       int total_difficulty = wdc.calculate_total_difficulty_for_display(creature, map, AttackType::ATTACK_TYPE_RANGED);
-      Damage ranged_damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(creature);
+      Damage ranged_damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(creature, map);
 
       RangedAttackSpeedCalculator rasc;
       int speed = rasc.calculate(creature);

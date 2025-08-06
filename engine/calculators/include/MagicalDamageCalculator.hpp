@@ -9,7 +9,7 @@ class MagicalDamageCalculator : public DamageCalculator
     
     virtual int calculate(CreaturePtr defending_creature, const bool sneak_attack, const bool slays_creatures_race, const Damage& damage, const int base_damage, const float soak_multiplier) override;
     virtual Damage calculate_base_damage_object(CreaturePtr creature) override;
-    virtual Damage calculate_base_damage_with_bonuses_or_penalties(CreaturePtr creature) override;
+    virtual Damage calculate_base_damage_with_bonuses_or_penalties(CreaturePtr creature, MapPtr map) override;
 
     virtual void set_spell_id(const std::string& new_spell_id);
     std::string get_spell_id() const;

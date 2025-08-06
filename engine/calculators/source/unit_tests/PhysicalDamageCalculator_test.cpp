@@ -48,7 +48,7 @@ TEST(SW_Engine_Calculators_PhysicalDamageCalculator, calculate_base_damage_with_
   bonus += creature->get_addl_damage().get_current();
   exp_base_damage.set_modifier(exp_base_damage.get_modifier() + bonus);
 
-  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature));
+  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature, nullptr));
 
   Status s;
   s.set_value(true);
@@ -56,7 +56,7 @@ TEST(SW_Engine_Calculators_PhysicalDamageCalculator, calculate_base_damage_with_
 
   exp_base_damage.set_modifier(exp_base_damage.get_modifier() + (creature->get_level().get_current() * 2));
 
-  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature));
+  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature, nullptr));
 }
 
 // For every 5 points of Str > 10, +1 dam.
@@ -120,7 +120,7 @@ TEST(SW_Engine_Calculators_PhysicalDamageCalculator, get_drunkenness_modifier)
   int dr_bonus = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100) / 2;
   exp_base_damage.set_modifier(exp_base_damage.get_modifier() + bonus + dr_bonus);
 
-  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature));
+  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature, nullptr));
 
   // Go from 0.02 to 0.06, or +2 additional damage.
   b.set_grams_alcohol(3);
@@ -128,7 +128,7 @@ TEST(SW_Engine_Calculators_PhysicalDamageCalculator, get_drunkenness_modifier)
 
   exp_base_damage.set_modifier(exp_base_damage.get_modifier() + 2);
 
-  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature));
+  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature, nullptr));
 }
 
 TEST(SW_Engine_Calculators_PhysicalDamageCalculator, get_item_status_modifier)
