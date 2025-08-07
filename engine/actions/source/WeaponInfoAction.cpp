@@ -131,7 +131,7 @@ string WeaponInfoAction::get_melee_weapon_info(CreaturePtr creature, MapPtr map,
     if (weapon || (attack_type == AttackType::ATTACK_TYPE_MELEE_PRIMARY))
     {
       Game& game = Game::instance();
-      MapPtr map = game.get_current_map();
+
       PhaseOfMoonCalculator pomc;
       PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());
       DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type, phase);
@@ -181,7 +181,6 @@ string WeaponInfoAction::get_ranged_weapon_info(CreaturePtr creature, MapPtr map
     if (ranged_weapon || ammunition)
     {
       Game& game = Game::instance();
-      MapPtr map = game.get_current_map();
 
       PhaseOfMoonCalculator pomc;
       PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());

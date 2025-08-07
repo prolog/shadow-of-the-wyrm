@@ -1,5 +1,6 @@
 #include "LightMeleeAndRangedWeaponToHitCalculator.hpp"
 #include "SkillManager.hpp"
+#include "SkillsCalculator.hpp"
 
 LightMeleeAndRangedWeaponToHitCalculator::LightMeleeAndRangedWeaponToHitCalculator()
 : ToHitCalculator()
@@ -17,6 +18,7 @@ int LightMeleeAndRangedWeaponToHitCalculator::calculate(CreaturePtr creature, Ma
   
   if (creature)
   {
+    SkillsCalculator sc;
     to_hit = creature->get_to_hit().get_current();
 
     int nwp_bonus = get_combat_or_archery_bonus(creature);
@@ -26,7 +28,7 @@ int LightMeleeAndRangedWeaponToHitCalculator::calculate(CreaturePtr creature, Ma
     int modifier  = get_modifier_bonus(creature);
     int skill     = get_skills_bonus(creature);
     int status    = get_status_bonus(creature);
-    int terrain   = get_terrain_bonus(creature, map);  
+    int terrain   = sc.get_terrain_to_hit_bonus(creature, map);  
     int bac_modifier = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100);
 
     to_hit += nwp_bonus;

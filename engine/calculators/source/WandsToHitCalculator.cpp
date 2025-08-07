@@ -1,5 +1,6 @@
-#include "WandsToHitCalculator.hpp"
 #include "SkillManager.hpp"
+#include "SkillsCalculator.hpp"
+#include "WandsToHitCalculator.hpp"
 
 WandsToHitCalculator::WandsToHitCalculator()
 : ToHitCalculator(AttackType::ATTACK_TYPE_MAGICAL_WANDS)
@@ -13,7 +14,9 @@ int WandsToHitCalculator::calculate(CreaturePtr creature, MapPtr map)
   if (creature)
   {
     to_hit = creature->get_to_hit().get_current();
+
     SkillManager sm;
+    SkillsCalculator sc;
 
     // Have you ever tried directing a fireball while drunk?
     // It's not easy!
@@ -22,7 +25,7 @@ int WandsToHitCalculator::calculate(CreaturePtr creature, MapPtr map)
     int wc_bonus     = sm.get_skill_value(creature, SkillType::SKILL_GENERAL_WANDCRAFT) / NWP_SKILL_BONUS_DIVISOR;
     int charisma     = get_statistic(creature).get_current();
     int modifiers    = get_modifier_bonus(creature);
-    int terrain      = get_terrain_bonus(creature, map);
+    int terrain      = sc.get_terrain_to_hit_bonus(creature, map);
 
     to_hit += level_bonus;
     to_hit += wc_bonus;

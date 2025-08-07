@@ -8,36 +8,15 @@ using namespace std;
 
 const int ToHitCalculator::NWP_SKILL_BONUS_DIVISOR = 5;
 const int ToHitCalculator::BLESS_STATUS_BONUS = 10;
-const int ToHitCalculator::LORE_BONUS_DIVISOR = 10;
-
-map<TileType, SkillType> ToHitCalculator::tt_skill_bonuses = {};
-map<MapType, SkillType> ToHitCalculator::mt_skill_bonuses = {};
 
 ToHitCalculator::ToHitCalculator()
 : attack_type(AttackType::ATTACK_TYPE_MELEE_PRIMARY)
 {
-  if (tt_skill_bonuses.empty() || mt_skill_bonuses.empty())
-  {
-    init_skill_bonuses();
-  }
 }
 
 ToHitCalculator::ToHitCalculator(const AttackType new_attack_type)
 : attack_type(new_attack_type)
 {
-}
-
-void ToHitCalculator::init_skill_bonuses()
-{
-  tt_skill_bonuses = { {TileType::TILE_TYPE_FOREST, SkillType::SKILL_GENERAL_FOREST_LORE}, 
-                       {TileType::TILE_TYPE_SEA, SkillType::SKILL_GENERAL_OCEAN_LORE},
-                       {TileType::TILE_TYPE_MARSH, SkillType::SKILL_GENERAL_MARSH_LORE},
-                       {TileType::TILE_TYPE_HILLS, SkillType::SKILL_GENERAL_MOUNTAIN_LORE},
-                       {TileType::TILE_TYPE_DESERT, SkillType::SKILL_GENERAL_DESERT_LORE},
-                       {TileType::TILE_TYPE_MOUNTAINS, SkillType::SKILL_GENERAL_MOUNTAIN_LORE} };
-
-  mt_skill_bonuses = { {MapType::MAP_TYPE_UNDERWORLD, SkillType::SKILL_GENERAL_DUNGEONEERING}, 
-                       {MapType::MAP_TYPE_UNDERWATER, SkillType::SKILL_GENERAL_OCEAN_LORE} };
 }
 
 // The level portion of the to-hit bonus is equal to half the creature's
@@ -158,50 +137,6 @@ int ToHitCalculator::get_status_bonus(CreaturePtr creature)
   return status_bonus;
 }
 
-SkillType ToHitCalculator::get_terrain_lore_skill(CreaturePtr creature, MapPtr map)
-{
-  SkillType sk = SkillType::SKILL_UNDEFINED;
-
-  if (creature != nullptr && map != nullptr)
-  {
-    TileType tt = map->get_terrain_type();
-    auto tt_it = tt_skill_bonuses.find(tt);
-
-    if (tt_it != tt_skill_bonuses.end())
-    {
-      sk = tt_it->second;
-    }
-    else
-    {
-      MapType mt = map->get_map_type();
-      auto mt_it = mt_skill_bonuses.find(mt);
-
-      if (mt_it != mt_skill_bonuses.end())
-      {
-        sk = mt_it->second;
-      }
-    }
-  }
-
-  return sk;
-}
-
-int ToHitCalculator::get_terrain_bonus(CreaturePtr creature, MapPtr map)
-{
-  int bonus = 0;
-
-  if (creature != nullptr && map != nullptr)
-  {
-    SkillType check_skill = get_terrain_lore_skill(creature, map);
-
-    if (check_skill != SkillType::SKILL_UNDEFINED)
-    {
-      bonus = creature->get_skills().get_value(check_skill) / LORE_BONUS_DIVISOR;
-    }
-  }
-
-  return bonus;
-}
 
 #ifdef UNIT_TESTS
 #include "unit_tests/ToHitCalculator_test.cpp"
