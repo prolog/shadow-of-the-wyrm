@@ -52,7 +52,7 @@ TEST(SW_Engine_Calculators_SkillsCalculator, calculate_melee_weapon_skills)
 
   EXPECT_EQ(35, calculated_skills.get_value(SkillType::SKILL_MELEE_AXES));
   EXPECT_EQ(25, calculated_skills.get_value(SkillType::SKILL_MELEE_DAGGERS));
-  EXPECT_EQ(0,  calculated_skills.get_value(SkillType::SKILL_MELEE_RODS_AND_STAVES));
+  EXPECT_EQ(0, calculated_skills.get_value(SkillType::SKILL_MELEE_RODS_AND_STAVES));
   EXPECT_EQ(52, calculated_skills.get_value(SkillType::SKILL_MELEE_SHORT_BLADES));
 }
 
@@ -109,7 +109,7 @@ TEST(SW_Engine_Calculators_SkillsCalculator, calculate_magic_skills)
   EXPECT_EQ(22, calculated_skills.get_value(SkillType::SKILL_MAGIC_ARCANE));
   EXPECT_EQ(12, calculated_skills.get_value(SkillType::SKILL_MAGIC_DIVINE));
   EXPECT_EQ(29, calculated_skills.get_value(SkillType::SKILL_MAGIC_PRIMORDIAL));
-  EXPECT_EQ(0,  calculated_skills.get_value(SkillType::SKILL_MAGIC_MYSTIC));
+  EXPECT_EQ(0, calculated_skills.get_value(SkillType::SKILL_MAGIC_MYSTIC));
 }
 
 TEST(SW_Engine_Calculators_SkillsCalculator, calculate_total_treasure_val)
@@ -125,4 +125,54 @@ TEST(SW_Engine_Calculators_SkillsCalculator, calculate_total_treasure_val)
 
   EXPECT_EQ(55, SkillsCalculator::calculate_hidden_treasure_total_skill_value(creature, MapType::MAP_TYPE_WORLD, 50));
   EXPECT_EQ(50, SkillsCalculator::calculate_hidden_treasure_total_skill_value(creature, MapType::MAP_TYPE_OVERWORLD, 50));
+}
+
+TEST(Engine_Calculators_SkillsCalculator, terrain_to_hit_bonus)
+{
+  SkillsCalculator sc;
+  Dimensions dim;
+  CreaturePtr creature = std::make_shared<Creature>();
+  MapPtr map = std::make_shared<Map>(dim);
+  std::vector<std::pair<TileType, SkillType>> pairs = { {TileType::TILE_TYPE_MARSH, SkillType::SKILL_GENERAL_MARSH_LORE},
+                                             {TileType::TILE_TYPE_FOREST, SkillType::SKILL_GENERAL_FOREST_LORE},
+                                             {TileType::TILE_TYPE_DESERT, SkillType::SKILL_GENERAL_DESERT_LORE},
+                                             {TileType::TILE_TYPE_SEA, SkillType::SKILL_GENERAL_OCEAN_LORE} };
+
+  for (const auto& tt_pair : pairs)
+  {
+    map->set_terrain_type(tt_pair.first);
+    creature->get_skills().set_value(tt_pair.second, 31);
+    EXPECT_EQ(3, sc.get_terrain_to_hit_bonus(creature, map));
+    creature->get_skills().set_value(tt_pair.second, 0);
+  }
+
+  map->set_map_type(MapType::MAP_TYPE_UNDERWORLD);
+  map->set_terrain_type(TileType::TILE_TYPE_DUNGEON_COMPLEX);
+  creature->get_skills().set_value(SkillType::SKILL_GENERAL_DUNGEONEERING, 31);
+  EXPECT_EQ(3, sc.get_terrain_to_hit_bonus(creature, map));
+}
+
+TEST(SW_Engine_Calculators_SkillsCalculator, terrain_damage_bonus)
+{
+  SkillsCalculator sc;
+  Dimensions dim;
+  CreaturePtr creature = std::make_shared<Creature>();
+  MapPtr map = std::make_shared<Map>(dim);
+  std::vector<std::pair<TileType, SkillType>> pairs = { {TileType::TILE_TYPE_MARSH, SkillType::SKILL_GENERAL_MARSH_LORE},
+                                             {TileType::TILE_TYPE_FOREST, SkillType::SKILL_GENERAL_FOREST_LORE},
+                                             {TileType::TILE_TYPE_DESERT, SkillType::SKILL_GENERAL_DESERT_LORE},
+                                             {TileType::TILE_TYPE_SEA, SkillType::SKILL_GENERAL_OCEAN_LORE} };
+
+  for (const auto& tt_pair : pairs)
+  {
+    map->set_terrain_type(tt_pair.first);
+    creature->get_skills().set_value(tt_pair.second, 84);
+    EXPECT_EQ(4, sc.get_terrain_damage_bonus(creature, map));
+    creature->get_skills().set_value(tt_pair.second, 0);
+  }
+
+  map->set_map_type(MapType::MAP_TYPE_UNDERWORLD);
+  map->set_terrain_type(TileType::TILE_TYPE_DUNGEON_COMPLEX);
+  creature->get_skills().set_value(SkillType::SKILL_GENERAL_DUNGEONEERING, 84);
+  EXPECT_EQ(4, sc.get_terrain_damage_bonus(creature, map));
 }

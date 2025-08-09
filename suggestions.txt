@@ -15,8 +15,7 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
-- Lore skills: tie into damage bonus too
-- refactor skill selection terrain code, add damage bonus, update ver_info
+- add'l unit tests in Physical/Magical/RangedDamageCalculator
 - no-talk telari: what if the entrance was deep below wintersea catacombs?
 - regular stanza updates again! XII should be the brothers/rebels returning to
   farstead, XIII Tel's group.
