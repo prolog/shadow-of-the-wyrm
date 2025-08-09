@@ -1,4 +1,5 @@
 #include "DamageCalculator.hpp"
+#include "SkillsCalculator.hpp"
 
 DamageCalculator::DamageCalculator(const AttackType new_attack_type, const PhaseOfMoonType new_pom_type)
 : attack_type(new_attack_type), pom_type(new_pom_type)
@@ -48,7 +49,8 @@ int DamageCalculator::get_map_bonus(CreaturePtr creature, MapPtr map) const
 
   if (creature != nullptr && map != nullptr)
   {
-    // ...
+    SkillsCalculator sc;
+    bonus = sc.get_terrain_damage_bonus(creature, map);
   }
 
   return bonus;

@@ -5,7 +5,8 @@
 using std::map;
 
 const int SkillsCalculator::HIDDEN_TREASURE_DUNGEONEERING_DIVISOR = 10;
-const int SkillsCalculator::LORE_BONUS_DIVISOR = 10;
+const int SkillsCalculator::LORE_TO_HIT_DIVISOR = 10;
+const int SkillsCalculator::LORE_DAMAGE_DIVISOR = 20;
 
 map<TileType, SkillType> SkillsCalculator::tt_skill_bonuses = {};
 map<MapType, SkillType> SkillsCalculator::mt_skill_bonuses = {};
@@ -146,6 +147,16 @@ SkillType SkillsCalculator::get_terrain_lore_skill(CreaturePtr creature, MapPtr 
 
 int SkillsCalculator::get_terrain_to_hit_bonus(CreaturePtr creature, MapPtr map) const
 {
+  return get_terrain_bonus(creature, map, LORE_TO_HIT_DIVISOR);
+}
+
+int SkillsCalculator::get_terrain_damage_bonus(CreaturePtr creature, MapPtr map) const
+{
+  return get_terrain_bonus(creature, map, LORE_DAMAGE_DIVISOR);
+}
+
+int SkillsCalculator::get_terrain_bonus(CreaturePtr creature, MapPtr map, const int divisor) const
+{
   int bonus = 0;
 
   if (creature != nullptr && map != nullptr)
@@ -154,13 +165,12 @@ int SkillsCalculator::get_terrain_to_hit_bonus(CreaturePtr creature, MapPtr map)
 
     if (check_skill != SkillType::SKILL_UNDEFINED)
     {
-      bonus = creature->get_skills().get_value(check_skill) / LORE_BONUS_DIVISOR;
+      bonus = creature->get_skills().get_value(check_skill) / divisor;
     }
   }
 
   return bonus;
 }
-
 
 #ifdef UNIT_TESTS
 #include "unit_tests/SkillsCalculator_test.cpp"
