@@ -15,14 +15,13 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
-- add'l unit tests in Physical/Magical/RangedDamageCalculator
-- no-talk telari: what if the entrance was deep below wintersea catacombs?
+- no-talk telari: what if dropping an item in Ead's field of view triggered
+  it?
 - regular stanza updates again! XII should be the brothers/rebels returning to
   farstead, XIII Tel's group.
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.
 - Use this for fletchery, bowyer, etc, to improve item & quantity
-- set random extra descriptions for up/down staircases
 - let's work on recall/coming back if you go down a water tile...
 - underwater cavern? something like that?
 - is the username check on savefiles still needed?
