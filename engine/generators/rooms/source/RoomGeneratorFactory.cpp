@@ -34,7 +34,7 @@ IRoomGeneratorPtr RoomGeneratorFactory::create_room_generator(const RoomType roo
       room_gen = std::make_unique<CaveInRoomGenerator>();
       break;
     case RoomType::ROOM_TYPE_MUSH_ROOM:
-      room_gen = std::make_unique<MushRoomGenerator>();
+      room_gen = std::make_unique<MushRoomGenerator>(false);
       break;
     default:
       room_gen = std::make_unique<NullRoomGenerator>();

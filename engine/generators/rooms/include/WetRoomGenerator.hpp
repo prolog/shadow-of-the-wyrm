@@ -11,5 +11,7 @@ class WetRoomGenerator : public IRoomGenerator
 
   protected:
     int pct_chance_wet;
+
+    static const int PCT_CHANCE_MUSHROOMS;
 };
 

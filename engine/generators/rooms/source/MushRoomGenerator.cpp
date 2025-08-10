@@ -9,6 +9,11 @@ using namespace std;
 const int MushRoomGenerator::PCT_CHANCE_MUSHROOMS = 85;
 const int MushRoomGenerator::PCT_CHANCE_SPECIAL_MUSHROOM = 5;
 
+MushRoomGenerator::MushRoomGenerator(const bool new_skip_tile_generation)
+: skip_tile_generation(new_skip_tile_generation)
+{
+}
+
 void MushRoomGenerator::generate(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
 {
   TileGenerator tg;
@@ -21,7 +26,14 @@ void MushRoomGenerator::generate(MapPtr map, const int start_row, const int end_
   {
     for (int j = start_col; j < end_col; j++)
     {
-      tile = tg.generate(TileType::TILE_TYPE_WEEDS);
+      if (skip_tile_generation)
+      {
+        tile = map->at({ i, j });
+      }
+      else
+      {
+        tile = tg.generate(TileType::TILE_TYPE_WEEDS);
+      }
 
       if (RNG::percent_chance(PCT_CHANCE_MUSHROOMS))
       {
@@ -35,7 +47,7 @@ void MushRoomGenerator::generate(MapPtr map, const int start_row, const int end_
         }
       }
 
-      if (tile != nullptr)
+      if (tile != nullptr && skip_tile_generation == false)
       {
         map->insert(i, j, tile);
       }
