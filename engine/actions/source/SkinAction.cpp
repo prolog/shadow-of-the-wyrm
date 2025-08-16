@@ -205,16 +205,23 @@ void SkinAction::create_skin_and_bones_and_add_to_tile(ItemPtr corpse, TilePtr t
       tile->get_items()->merge_or_add(bones, InventoryAdditionType::INVENTORY_ADDITION_BACK);
     }
 
-    // Finally, adjust the weight of the corpse and the bones.
+    // Finally, adjust the weight of the corpse, bones, skin.
     Weight corpse_weight = corpse->get_weight();
-    
-    // Assume bones make up 15% of total corpse weight.
+    Weight skin_weight = corpse_weight;
     Weight bones_weight = corpse_weight;
-    bones_weight.set_weight(static_cast<uint>(bones_weight.get_weight() * 0.15));
-    corpse_weight.set_weight(static_cast<uint>(corpse_weight.get_weight() * 0.85));
 
-    corpse->set_weight(corpse_weight);
-    bones->set_weight(bones_weight);
+    // Assume the hide weighs 5%, the bones 15%, the corpse 80% of the total.
+    // Everything must weigh at least an ounce.
+    corpse_weight.set_weight(std::max<uint>(1, static_cast<uint>(corpse_weight.get_weight() * 0.80)));
+    skin_weight.set_weight(std::max<uint>(1, static_cast<uint>(skin_weight.get_weight() * 0.05)));
+    bones_weight.set_weight(std::max<uint>(1, static_cast<uint>(bones_weight.get_weight() * 0.15)));
+
+    if (skin != nullptr && bones != nullptr)
+    {
+      corpse->set_weight(corpse_weight);
+      skin->set_weight(skin_weight);
+      bones->set_weight(bones_weight);
+    }
   }
 }
 

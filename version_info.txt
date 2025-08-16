@@ -24,6 +24,9 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
 
 - Skinning corpses may now also produce the creature's bones.
 
+- When skinning a corpse, the corpse weight is reduced somewhat and the
+  excess weight becomes the weight of the skin and bones.
+
 Shadow of the Wyrm v1.8.4 "Fampas"
 - Version declared March 8, 2025. Version finalized June 28, 2025.
 
