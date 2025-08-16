@@ -26,7 +26,7 @@ string CorpseTextKeys::get_corpse_description(const string& creature_desc)
   return corpse_desc;
 }
 
-string CorpseTextKeys::get_skin_description(const string& item_description, const string& creature_desc)
+string CorpseTextKeys::get_skin_bones_description(const string& item_description, const string& creature_desc)
 {
   string item_desc = item_description;
 

@@ -200,7 +200,7 @@ string ItemIdentifier::get_appropriate_description(ItemPtr item, const bool show
     // If the item is a corpse, always create its description from the stored
     // creature description SID.
     string creature_desc_sid = item->get_additional_property(ConsumableConstants::CORPSE_SHORT_DESCRIPTION_SID);
-    string creature_skin_desc_sid = item->get_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID);
+    string creature_skin_bones_desc_sid = item->get_additional_property(SkinningConstants::SKIN_BONES_DESCRIPTION_SID);
     string replacement_sid = item->get_additional_property(ItemProperties::ITEM_PROPERTIES_REPLACEMENT_SID);
     bool brandable = String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDABLE));
     bool branded = String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED));
@@ -223,10 +223,10 @@ string ItemIdentifier::get_appropriate_description(ItemPtr item, const bool show
       }
     }
     // If the item requires creating a message with substitutions (e.g.,
-    // "red dragon skin"), handle that case:
-    else if (!creature_skin_desc_sid.empty())
+    // "red dragon skin", "ogre bones"), handle that case:
+    else if (!creature_skin_bones_desc_sid.empty())
     {
-      desc << CorpseTextKeys::get_skin_description(StringTable::get(item->get_description_sid()), StringTable::get(creature_skin_desc_sid));
+      desc << CorpseTextKeys::get_skin_bones_description(StringTable::get(item->get_description_sid()), StringTable::get(creature_skin_bones_desc_sid));
     }
     // If there's a general substitution (user-created wands, etc)
     // handle that case:
@@ -296,7 +296,7 @@ string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
     // is the value stored on the item, so it will always create items of the
     // style "a foo corpse".
     string creature_desc_sid = item->get_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID);
-    string creature_skin_desc_sid = item->get_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID);
+    string creature_skin_bones_desc_sid = item->get_additional_property(SkinningConstants::SKIN_BONES_USAGE_DESCRIPTION_SID);
     string replacement_sid = item->get_additional_property(ItemProperties::ITEM_PROPERTIES_REPLACEMENT_SID);
     bool brandable = String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDABLE));
     bool branded = String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_BRANDED));
@@ -322,9 +322,9 @@ string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
     }
     // If the item requires creating a message with substitutions (e.g.,
     // "red dragon skin"), handle that case:
-    else if (!creature_skin_desc_sid.empty())
+    else if (!creature_skin_bones_desc_sid.empty())
     {
-      full_desc = CorpseTextKeys::get_skin_description(StringTable::get(item->get_description_sid()), StringTable::get(creature_skin_desc_sid));
+      full_desc = CorpseTextKeys::get_skin_bones_description(StringTable::get(item->get_description_sid()), StringTable::get(creature_skin_bones_desc_sid));
     }
     // If there's a general substitution (user-created wands, etc)
     // handle that case:

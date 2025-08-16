@@ -14486,6 +14486,26 @@
 					</Property>
 				</Properties>
 			</Item>
+			<Item id="_corpse_bones">
+				<DescriptionSID>CORPSE_BONES_SID</DescriptionSID>
+				<UsageDescriptionSID>CORPSE_BONES_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CORPSE_BONES_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>20</Pounds>
+				</Weight>
+				<Material>12</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>9</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="_pile_of_bones">
 				<DescriptionSID>PILE_OF_BONES_SID</DescriptionSID>
 				<UsageDescriptionSID>PILE_OF_BONES_USAGE_SID</UsageDescriptionSID>

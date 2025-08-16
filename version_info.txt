@@ -22,6 +22,8 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
 
 - Wet rooms in the dungeon are now likely to have mushrooms.
 
+- Skinning corpses may now also produce the creature's bones.
+
 Shadow of the Wyrm v1.8.4 "Fampas"
 - Version declared March 8, 2025. Version finalized June 28, 2025.
 
