@@ -9261,6 +9261,12 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Nutrition>205</Nutrition>
 				<FoodType>0</FoodType>
 			</Plant>
