@@ -15,6 +15,21 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
+- What other (new) items would be good for brewing? maybe some could use
+  existing tiles first?
+  - slime could be occasionally left when jellies move and cleaned up once 
+    an hour
+  - will o the wisp could leave an essence of were-light
+- Recipes: can have both set and random ingredients
+- Recipes: healing, ether, buffs, unstoning, unblinding (potion should always
+  glow)
+- Any recipe made with were-light should glow
+- Give were-light unstable flag
+- Dropped unstable items should usually vanish
+- Dropping were-light on an item should have a small chance to make it glow
+- Dropping were-light on a stack should have a small chance to make one item 
+  glow
+- More recipes as more spell effects are added!
 - no-talk telari: what if dropping an item in Ead's field of view triggered
   it?
 - regular stanza updates again! XII should be the brothers/rebels returning to

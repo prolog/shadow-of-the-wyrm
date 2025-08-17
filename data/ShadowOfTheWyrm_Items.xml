@@ -7950,6 +7950,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>12</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -8027,6 +8031,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>12</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -8064,6 +8072,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>12</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
@@ -8219,6 +8231,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -8257,6 +8273,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
@@ -8297,6 +8317,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -8335,6 +8359,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>36</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>110</Nutrition>
@@ -9205,6 +9233,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>200</Nutrition>
 				<FoodType>0</FoodType>
@@ -9266,6 +9298,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>200</Nutrition>
 				<FoodType>0</FoodType>
@@ -9304,6 +9340,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>30</Nutrition>
@@ -9344,6 +9384,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>60</Nutrition>
 				<FoodType>0</FoodType>
@@ -9382,6 +9426,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>40</Nutrition>
@@ -9422,6 +9470,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>40</Nutrition>
 				<FoodType>0</FoodType>
@@ -9460,6 +9512,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
@@ -9500,6 +9556,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -9538,6 +9598,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
@@ -9578,6 +9642,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -9616,6 +9684,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
@@ -9656,6 +9728,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -9694,6 +9770,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>6</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
@@ -14827,6 +14907,59 @@
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
+			<Item id="_slime">
+				<DescriptionSID>SLIME_SID</DescriptionSID>
+				<UsageDescriptionSID>SLIME_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SLIME_CODEX_SID</CodexDescriptionSID>
+				<Value>4</Value>
+				<Weight>
+					<Ounces>6</Ounces>
+				</Weight>
+				<Material>16</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Colour>10</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>19</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+			</Item>
+			<Item id="_essence_were_light">
+				<DescriptionSID>ESSENCE_WERE_LIGHT_SID</DescriptionSID>
+				<UsageDescriptionSID>ESSENCE_WERE_LIGHT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ESSENCE_WERE_LIGHT_CODEX_SID</CodexDescriptionSID>
+				<Value>10</Value>
+				<Weight>
+					<Ounces>1</Ounces>
+				</Weight>
+				<Material>14</Material>
+				<Glow>1</Glow>
+				<Symbol>
+					<Char>]</Char>
+					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+			</Item>
 			<Item id="_apple_seed">
 				<DescriptionSID>APPLE_SEED_SID</DescriptionSID>
 				<UsageDescriptionSID>APPLE_SEED_USAGE_SID</UsageDescriptionSID>
@@ -14851,6 +14984,10 @@
 					<Property>
 						<Name>tree_species_id</Name>
 						<Value>9</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 			</Item>
@@ -14879,6 +15016,10 @@
 						<Name>tree_species_id</Name>
 						<Value>10</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 			</Item>
 			<Item id="_peach_pit">
@@ -14905,6 +15046,10 @@
 					<Property>
 						<Name>tree_species_id</Name>
 						<Value>11</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 			</Item>
@@ -14933,6 +15078,10 @@
 						<Name>tree_species_id</Name>
 						<Value>14</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 			</Item>
 			<Item id="_plum_pit">
@@ -14959,6 +15108,10 @@
 					<Property>
 						<Name>tree_species_id</Name>
 						<Value>12</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 			</Item>
@@ -14987,6 +15140,10 @@
 						<Name>tree_species_id</Name>
 						<Value>13</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 			</Item>
 			<Item id="_golden_apple_seed">
@@ -15014,6 +15171,10 @@
 						<Name>tree_species_id</Name>
 						<Value>40</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 			</Item>
 			<Item id="_silver_apple_seed">
@@ -15040,6 +15201,10 @@
 					<Property>
 						<Name>tree_species_id</Name>
 						<Value>41</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 			</Item>

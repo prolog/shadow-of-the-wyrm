@@ -4497,6 +4497,13 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>26</Exp>
+				<InitialEquipmentAndInventory>
+					<InitialInventory>
+						<InitialItem>
+							<ID>_essence_were_light</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>				
 			</CreatureGeneration>
 			<Level>11</Level>
 			<Damage>
