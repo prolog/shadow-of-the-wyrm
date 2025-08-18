@@ -16,6 +16,7 @@
 #include "ForagablesCalculator.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "ItemManager.hpp"
 #include "ItemProperties.hpp"
 #include "Log.hpp"
 #include "MapCreatureGenerator.hpp"
@@ -29,6 +30,7 @@
 #include "MovementAction.hpp"
 #include "MovementTextKeys.hpp"
 #include "MovementTypes.hpp"
+#include "RaceManager.hpp"
 #include "RNG.hpp"
 #include "SearchAction.hpp"
 #include "Setting.hpp"
@@ -47,6 +49,7 @@
 using namespace std;
 
 const int MovementAction::BASE_ASCEND_DESCEND_CHANCE = 35;
+const int MovementAction::PCT_CHANCE_LEAVE_SLIME_TRAIL = 2;
 
 MovementAction::MovementAction()
 {
@@ -311,6 +314,8 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
 
           // Update the map info
           MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
+          generate_slime_trails(creature, creatures_old_tile);
+
           movement_acv = get_action_cost_value(creature);
 
           if (creatures_new_tile->has_feature())
@@ -1120,3 +1125,27 @@ void MovementAction::check_movement_stealth(CreaturePtr creature, const Directio
   }
 }
 
+void MovementAction::generate_slime_trails(CreaturePtr creature, TilePtr old_tile)
+{
+  if (creature != nullptr && old_tile != nullptr)
+  {
+    RaceManager rm;
+    Race* race = rm.get_race(creature->get_race_id());
+
+    if (race != nullptr)
+    {
+      if (race->get_slimy())
+      {
+        if (RNG::percent_chance(PCT_CHANCE_LEAVE_SLIME_TRAIL))
+        {
+          ItemPtr slime = ItemManager::create_item(ItemIdKeys::ITEM_ID_SLIME);
+
+          if (slime != nullptr)
+          {
+            old_tile->get_items()->merge_or_add(slime);
+          }
+        }
+      }
+    }
+  }
+}

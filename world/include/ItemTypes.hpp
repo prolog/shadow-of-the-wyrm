@@ -106,6 +106,7 @@ class ItemIdKeys
     static const std::string ITEM_ID_SILVER_APPLE;
     static const std::string ITEM_ID_SHOVEL;
     static const std::string ITEM_ID_PICK_AXE;
+    static const std::string ITEM_ID_SLIME;
 
     // Foragables
     static const std::string ITEM_ID_ROOT;

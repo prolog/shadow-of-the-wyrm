@@ -27,6 +27,12 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
 - When skinning a corpse, the corpse weight is reduced somewhat and the
   excess weight becomes the weight of the skin and bones.
 
+- Will o' the Wisps and were-light now drop essence of were-light.
+
+- Jelly-type creatures may now drop slime, and leave it as they move.
+
+- New items: slime, essence of were-light.
+
 Shadow of the Wyrm v1.8.4 "Fampas"
 - Version declared March 8, 2025. Version finalized June 28, 2025.
 

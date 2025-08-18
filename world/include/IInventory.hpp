@@ -41,9 +41,9 @@ class IInventory : public ISerializable
     // Attempt to merge the item.  If the item cannot be merged into the
     // inventory, add it either to the front or to the back, based on the
     // parameter provided.
-    virtual bool merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc) = 0;
-    virtual bool merge_or_add(std::shared_ptr<IInventory> items, const InventoryAdditionType inv_add_loc) = 0;
-    virtual bool merge_or_add(IInventory* items, const InventoryAdditionType inv_add_loc) = 0;
+    virtual bool merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc = InventoryAdditionType::INVENTORY_ADDITION_BACK) = 0;
+    virtual bool merge_or_add(std::shared_ptr<IInventory> items, const InventoryAdditionType inv_add_loc = InventoryAdditionType::INVENTORY_ADDITION_BACK) = 0;
+    virtual bool merge_or_add(IInventory* items, const InventoryAdditionType inv_add_loc = InventoryAdditionType::INVENTORY_ADDITION_BACK) = 0;
 
     // Transfer all the items into the given inventory
     virtual bool transfer_to(std::shared_ptr<IInventory> items) = 0;

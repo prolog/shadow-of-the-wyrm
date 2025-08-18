@@ -457,6 +457,7 @@
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>UNKNOWN_RACE_NAME</NameSID>
 			<Size>4</Size>
 			<AgeInfo>
@@ -533,6 +534,7 @@
 			<Natural>1</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>ANIMAL_RACE_NAME</NameSID>
 			<Size>1</Size>
 			<AgeInfo>
@@ -609,6 +611,7 @@
 			<Natural>1</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<Drops>
 				<Drop>
 					<ID>_quill</ID>
@@ -690,6 +693,7 @@
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>1</Mindless>
+			<Slimy>0</Slimy>
 			<Drops>
 				<Drop>
 					<ID>_magici_shard</ID>
@@ -770,6 +774,7 @@
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>DEMON_RACE_NAME</NameSID>
 			<Size>3</Size>
 			<AgeInfo>
@@ -844,6 +849,7 @@
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>DIVINE_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -918,6 +924,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<Drops>
 				<Drop>
 					<ID>_currency</ID>
@@ -1000,6 +1007,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>ELYSIAN_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<Hungerless>1</Hungerless>
@@ -1078,6 +1086,7 @@
 			<Natural>1</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>1</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>INSECT_RACE_NAME</NameSID>
 			<Size>1</Size>
 			<AgeInfo>
@@ -1154,6 +1163,13 @@
 			<Natural>1</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>1</Mindless>
+			<Slimy>1</Slimy>
+			<Drops>
+				<Drop>
+					<ID>_slime</ID>
+					<PercentChance>5</PercentChance>
+				</Drop>
+			</Drops>
 			<NameSID>JELLY_RACE_NAME</NameSID>
 			<Size>1</Size>
 			<AgeInfo>
@@ -1228,6 +1244,7 @@
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>MONSTER_RACE_NAME</NameSID>
 			<Size>3</Size>
 			<AgeInfo>
@@ -1304,6 +1321,7 @@
 			<Natural>1</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>PLANT_RACE_NAME</NameSID>
 			<Size>3</Size>
 			<AgeInfo>
@@ -1378,6 +1396,7 @@
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1448,6 +1467,7 @@
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>1</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>CORPOREAL_UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1520,6 +1540,7 @@
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>1</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>SPIRIT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1591,6 +1612,7 @@
 			<Natural>1</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<Drops>
 				<Drop>
 					<ID>_magici_shard</ID>
@@ -1665,6 +1687,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_1_NAME</NameSID>
@@ -1762,6 +1785,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
 			<NameSID>RACE_2_NAME</NameSID>
@@ -1858,6 +1882,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_3_NAME</NameSID>
@@ -1952,6 +1977,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_4_NAME</NameSID>
@@ -2046,6 +2072,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<HasRandomVillages>0</HasRandomVillages>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
@@ -2141,6 +2168,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_6_NAME</NameSID>
@@ -2236,6 +2264,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_7_NAME</NameSID>
@@ -2331,6 +2360,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>1</SettlementTileSubtype>
 			<NameSID>RACE_8_NAME</NameSID>
@@ -2422,6 +2452,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>1</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_9_NAME</NameSID>
@@ -2514,6 +2545,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_10_NAME</NameSID>

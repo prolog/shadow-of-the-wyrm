@@ -50,6 +50,8 @@ class MovementAction : public IActionManager
     void handle_properties_and_move(CreaturePtr creature, TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit, const Coordinate& proposed_new_coord);
     bool confirm_move_to_tile_if_necessary(CreaturePtr creature, MapPtr current_map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& creatures_new_tile_coords);
     void check_movement_stealth(CreaturePtr creature, Direction d);
+    void generate_slime_trails(CreaturePtr creature, TilePtr old_tile);
 
     static const int BASE_ASCEND_DESCEND_CHANCE;
+    static const int PCT_CHANCE_LEAVE_SLIME_TRAIL;
 };

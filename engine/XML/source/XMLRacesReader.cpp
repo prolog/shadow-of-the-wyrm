@@ -112,6 +112,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool mindless = XMLUtils::get_child_node_bool_value(race_node, "Mindless");
     race->set_mindless(mindless);
 
+    bool slimy = XMLUtils::get_child_node_bool_value(race_node, "Slimy");
+    race->set_slimy(slimy);
+
     XMLNode drops_node = XMLUtils::get_next_element_by_local_name(race_node, "Drops");
     parse_race_drops(race.get(), drops_node);
 
