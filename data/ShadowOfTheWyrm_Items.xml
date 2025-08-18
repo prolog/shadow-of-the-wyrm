@@ -575,8 +575,7 @@
 				<CodexDescriptionSID>HIDE_CODEX_SID</CodexDescriptionSID>
 				<Value>5</Value>
 				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>7</Ounces>
+					<Pounds>2</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>4</Material>
@@ -656,7 +655,7 @@
 				<CodexDescriptionSID>LEATHER_HELM_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
-					<Pounds>1</Pounds>
+					<Pounds>3</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>4</Material>
@@ -684,7 +683,7 @@
 				<CodexDescriptionSID>METAL_CAP_CODEX_SID</CodexDescriptionSID>
 				<Value>30</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>4</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>3</Material>
@@ -712,7 +711,7 @@
 				<CodexDescriptionSID>IRON_HELM_CODEX_SID</CodexDescriptionSID>
 				<Value>40</Value>
 				<Weight>
-					<Pounds>6</Pounds>
+					<Pounds>8</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>3</Material>
@@ -740,7 +739,7 @@
 				<CodexDescriptionSID>STEEL_HELM_CODEX_SID</CodexDescriptionSID>
 				<Value>80</Value>
 				<Weight>
-					<Pounds>4</Pounds>
+					<Pounds>7</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>6</Material>
@@ -768,7 +767,7 @@
 				<CodexDescriptionSID>KNIGHTS_HELM_CODEX_SID</CodexDescriptionSID>
 				<Value>140</Value>
 				<Weight>
-					<Pounds>7</Pounds>
+					<Pounds>9</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>6</Material>
