@@ -157,7 +157,7 @@ void UnderwaterGenerator::add_items(TilePtr tile, const TileType att, const int 
 		}
 
 		ItemPtr rock = ItemManager::create_item(item_id);
-		tile->get_items()->merge_or_add(rock, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+		tile->get_items()->merge_or_add(rock);
 	}
 
 	if (att == TileType::TILE_TYPE_SHOALS)
@@ -165,7 +165,7 @@ void UnderwaterGenerator::add_items(TilePtr tile, const TileType att, const int 
 		if (RNG::percent_chance(30))
 		{
 			ItemPtr rock = ItemManager::create_item(ItemIdKeys::ITEM_ID_HUGE_ROCK);
-			tile->get_items()->merge_or_add(rock, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+			tile->get_items()->merge_or_add(rock);
 		}
 	}
 	else if (att == TileType::TILE_TYPE_SPRINGS)
@@ -173,7 +173,7 @@ void UnderwaterGenerator::add_items(TilePtr tile, const TileType att, const int 
 		if (RNG::percent_chance(PCT_CHANCE_SPRINGS_IVORY))
 		{
 			ItemPtr ivory = ItemManager::create_item(ItemIdKeys::ITEM_ID_CURRENCY, RNG::range(1, 6));
-			tile->get_items()->merge_or_add(ivory, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+			tile->get_items()->merge_or_add(ivory);
 		}
 	}
 	else
@@ -183,7 +183,7 @@ void UnderwaterGenerator::add_items(TilePtr tile, const TileType att, const int 
 			if (RNG::percent_chance(15))
 			{
 				ItemPtr clay = ItemManager::create_item(ItemIdKeys::ITEM_ID_CLAY, RNG::range(1, 2));
-				tile->get_items()->merge_or_add(clay, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+				tile->get_items()->merge_or_add(clay);
 			}
 		}
 
@@ -194,7 +194,7 @@ void UnderwaterGenerator::add_items(TilePtr tile, const TileType att, const int 
 			if (RNG::percent_chance(gen_pair.second))
 			{
 				ItemPtr item = ItemManager::create_item(gen_pair.first);
-				tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+				tile->get_items()->merge_or_add(item);
 			}
 		}
 	}

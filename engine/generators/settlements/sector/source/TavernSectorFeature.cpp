@@ -148,7 +148,7 @@ void TavernSectorFeature::generate_barrels(MapPtr map, const Coordinate& start_c
           // Generate flowers between the barrels.
           string wildflower_id = flower_details.second[RNG::range(flower_details.first.first, flower_details.first.second)];
           ItemPtr wildflower = im.create_item(wildflower_id);
-          tile->get_items()->merge_or_add(wildflower, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          tile->get_items()->merge_or_add(wildflower);
         }
       }
     }

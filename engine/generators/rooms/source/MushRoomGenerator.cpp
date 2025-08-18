@@ -43,7 +43,7 @@ void MushRoomGenerator::generate(MapPtr map, const int start_row, const int end_
 
         if (tile != nullptr && item != nullptr)
         {
-          tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          tile->get_items()->merge_or_add(item);
         }
       }
 

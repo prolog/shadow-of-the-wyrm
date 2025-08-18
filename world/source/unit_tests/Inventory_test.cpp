@@ -379,13 +379,13 @@ TEST(SW_World_Inventory, merge_or_add)
   item3->set_effect_type(EffectType::EFFECT_TYPE_ETHER);
 
   Inventory i;
-  EXPECT_TRUE(i.merge_or_add(item3, InventoryAdditionType::INVENTORY_ADDITION_BACK));
+  EXPECT_TRUE(i.merge_or_add(item3));
   EXPECT_EQ(static_cast<uint>(1), i.size());
 
-  EXPECT_TRUE(i.merge_or_add(item2, InventoryAdditionType::INVENTORY_ADDITION_BACK));
+  EXPECT_TRUE(i.merge_or_add(item2));
   EXPECT_EQ(static_cast<uint>(2), i.size());
 
-  EXPECT_TRUE(i.merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK));
+  EXPECT_TRUE(i.merge_or_add(item));
   EXPECT_EQ(static_cast<uint>(2), i.size());
   EXPECT_EQ(static_cast<uint>(2), i.get_from_base_id("abc212")->get_quantity());
 }
@@ -400,7 +400,7 @@ TEST(SW_World_Inventory, merge_or_add_whole_inventory)
   std::shared_ptr<Inventory> inv = std::make_shared<Inventory>();
   std::shared_ptr<Inventory> inv2 = std::make_shared<Inventory>();
   inv->add(item);
-  inv2->merge_or_add(inv, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+  inv2->merge_or_add(inv);
 
   EXPECT_FALSE(inv->merge_or_add(inv, InventoryAdditionType::INVENTORY_ADDITION_FRONT));
   EXPECT_EQ(static_cast<uint>(1), inv->size());

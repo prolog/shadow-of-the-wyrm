@@ -94,7 +94,7 @@ void WheatFieldGenerator::generate_divisions(MapPtr map, const vector<pair<Coord
       }
 
       ItemPtr shovel = ItemManager::create_item(ItemIdKeys::ITEM_ID_SHOVEL);
-      map->at(c)->get_items()->merge_or_add(shovel, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      map->at(c)->get_items()->merge_or_add(shovel);
     }
   }
 }

@@ -263,7 +263,7 @@ void FishingSkillProcessor::catch_item(CreaturePtr creature, MapPtr map)
       if (get<0>(CreatureUtils::can_pick_up(creature, generated_item)))
       {
         IInventoryPtr inv = creature->get_inventory();
-        inv->merge_or_add(generated_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        inv->merge_or_add(generated_item);
 
         // Add a message about the item that was added to the pack.
         ItemIdentifier iid;

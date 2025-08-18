@@ -242,7 +242,7 @@ TilePtr DigAction::dig_tile(CreaturePtr creature, TilePtr adjacent_tile, const b
       if (RNG::x_in_y_chance(item_pair.first.first, item_pair.first.second))
       {
         ItemPtr item = ItemManager::create_item(item_pair.second, static_cast<uint>(RNG::range(1, 6)));
-        new_tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        new_tile->get_items()->merge_or_add(item);
       }
     }
 

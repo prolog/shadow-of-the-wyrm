@@ -300,7 +300,7 @@ bool ItemManager::create_item_with_probability(const int rand_less_than_or_equal
         item->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
       }
 
-      inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      inv->merge_or_add(item);
 
       return true;
     }
@@ -316,7 +316,7 @@ ActionCostValue ItemManager::pick_up(CreaturePtr creature, ItemPtr item)
   if (creature && item)
   {
     IInventoryPtr inv = creature->get_inventory();
-    inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+    inv->merge_or_add(item);
 
     picked_up_item = get_action_cost_value(creature);
   }

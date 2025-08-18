@@ -224,7 +224,7 @@ void DefaultTileManipulator::add_detritus(CreaturePtr creature, MapPtr map, Tile
     if (RNG::percent_chance(chance_clay))
     {
       ItemPtr clay = im.create_item(ItemIdKeys::ITEM_ID_CLAY);
-      items->merge_or_add(clay, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      items->merge_or_add(clay);
       tile->set_additional_property(TileProperties::TILE_PROPERTY_CLAY, std::to_string(true));
     }
 
@@ -235,7 +235,7 @@ void DefaultTileManipulator::add_detritus(CreaturePtr creature, MapPtr map, Tile
       if (RNG::percent_chance(PCT_CHANCE_DETRITUS))
       {
         ItemPtr item = im.create_item(detritus, RNG::range(1,4));
-        items->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        items->merge_or_add(item);
       }
     }
   }

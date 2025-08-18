@@ -65,7 +65,7 @@ ActionCostValue PickupAction::pick_up(CreaturePtr creature, const string& ground
         IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, CreatureUtils::is_player_or_in_los(creature));
 
         string item_msg = TextMessages::get_item_pick_up_and_merge_message(!cca.can_see(player), creature, ground_item);
-        creature->get_inventory()->merge_or_add(ground_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        creature->get_inventory()->merge_or_add(ground_item);
         tile->get_items()->remove(ground_item_id);
 
         manager.add_new_message(item_msg);

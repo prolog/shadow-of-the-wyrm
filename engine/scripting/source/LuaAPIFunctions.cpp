@@ -1202,7 +1202,7 @@ int add_objects_to_player_tile(lua_State* ls)
           string obj_id = boost::trim_copy(id);
           ItemPtr item = ItemManager::create_item(obj_id);
 
-          items->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          items->merge_or_add(item);
           added_cnt++;
         }
       }
@@ -1313,7 +1313,7 @@ int add_object_to_creature(lua_State* ls)
             item->set_additional_property(p_pair.first, p_pair.second);
           }
 
-          creature->get_inventory()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          creature->get_inventory()->merge_or_add(item);
           obj_added = true;
         }
       }
@@ -1359,7 +1359,7 @@ int add_object_on_tile_to_creature(lua_State* ls)
         {
           if (i != nullptr)
           {
-            added_obj = creature->get_inventory()->merge_or_add(i, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+            added_obj = creature->get_inventory()->merge_or_add(i);
 
             if (added_obj)
             {
@@ -1466,7 +1466,7 @@ int add_key_to_player_tile(lua_State* ls)
         CreaturePtr player = Game::instance().get_current_player();
         TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
 
-        player_tile->get_items()->merge_or_add(key, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        player_tile->get_items()->merge_or_add(key);
         added = true;
       }
     }
@@ -5119,7 +5119,7 @@ int summon_items_around_creature(lua_State* ls)
 
           if (tile != nullptr && item != nullptr)
           {
-            tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+            tile->get_items()->merge_or_add(item);
             num_items++;
           }
         }
@@ -5679,7 +5679,7 @@ int transfer_item(lua_State* ls)
 
       for (ItemPtr item : items.second)
       {
-        inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        inv->merge_or_add(item);
       }
 
       item_transferred = items.first;
@@ -8546,7 +8546,7 @@ int generate_item(lua_State* ls)
 
         if (tile != nullptr)
         {
-          tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          tile->get_items()->merge_or_add(item);
 
           generated = true;
           item_id = item->get_id();
@@ -8687,7 +8687,7 @@ int add_all_items_to_player_tile(lua_State* ls)
 
           if (item != nullptr)
           {
-            inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+            inv->merge_or_add(item);
           }
         }
       }

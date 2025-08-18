@@ -159,7 +159,7 @@ void PapercraftSkillProcessor::add_blank_scrolls_to_creature_tile(CreaturePtr cr
 
     if (tile != nullptr)
     {
-      tile->get_items()->merge_or_add(new_scrolls, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      tile->get_items()->merge_or_add(new_scrolls);
     }
   }
 }

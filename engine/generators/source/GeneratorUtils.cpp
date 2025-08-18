@@ -587,7 +587,7 @@ void GeneratorUtils::generate_cottage(MapPtr map)
             if (tile != nullptr)
             {
               ItemPtr fern = ItemManager::create_item(ItemIdKeys::ITEM_ID_FERN);
-              tile->get_items()->merge_or_add(fern, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+              tile->get_items()->merge_or_add(fern);
             }
           }
         }
@@ -966,7 +966,7 @@ void GeneratorUtils::generate_dolmen(MapPtr map, SOTW::Generator * const gen)
 
         if (!itile->get_is_blocking_for_item(apple))
         {
-          itile->get_items()->merge_or_add(apple, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          itile->get_items()->merge_or_add(apple);
           break;
         }
       }
@@ -995,7 +995,7 @@ void GeneratorUtils::generate_dolmen(MapPtr map, SOTW::Generator * const gen)
 
             if (tic != nullptr && !tic->get_is_blocking_for_item(grave_item))
             {
-              tic->get_items()->merge_or_add(grave_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+              tic->get_items()->merge_or_add(grave_item);
               break;
             }
           }

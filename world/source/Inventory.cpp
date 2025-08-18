@@ -141,7 +141,7 @@ bool Inventory::transfer_to(IInventoryPtr it)
     return false;
   }
 
-  bool merged = it->merge_or_add(this, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+  bool merged = it->merge_or_add(this);
   clear();
 
   return merged;

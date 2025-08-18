@@ -128,7 +128,7 @@ bool MapItemGenerator::generate_ivory_on_shopkeeper(MapPtr map, const Shop& shop
       if (shopkeeper->get_inventory()->count_currency() < SHOPKEEPER_ADDITIONAL_IVORY_THRESOLD)
       {
         ItemPtr currency = ItemManager::create_item(ItemIdKeys::ITEM_ID_CURRENCY, RNG::range(MIN_REPOP_IVORY, MAX_REPOP_IVORY));
-        shopkeeper->get_inventory()->merge_or_add(currency, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        shopkeeper->get_inventory()->merge_or_add(currency);
       }
     }
   }
@@ -157,7 +157,7 @@ bool MapItemGenerator::generate_initial_set_items(MapPtr map, const std::map<str
         if (tile != nullptr)
         {
           ItemPtr item = ItemManager::create_item(i_id);
-          tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          tile->get_items()->merge_or_add(item);
 
           if (!items_generated)
           {
@@ -233,7 +233,7 @@ bool MapItemGenerator::repop_shop(MapPtr map, const string& shop_id)
 
               if (inv != nullptr)
               {
-                inv->merge_or_add(shop_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+                inv->merge_or_add(shop_item);
               }
             }
           }
@@ -274,7 +274,7 @@ bool MapItemGenerator::generate_dead_adventurer(MapPtr map, const int danger_lev
         else
         {
           ItemPtr skeleton = ItemManager::create_item(ItemIdKeys::ITEM_ID_INTACT_SKELETON);
-          tile->get_items()->merge_or_add(skeleton, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          tile->get_items()->merge_or_add(skeleton);
 
           if (RNG::percent_chance(PCT_CHANCE_ADVENTURER_ITEMS))
           {
@@ -282,7 +282,7 @@ bool MapItemGenerator::generate_dead_adventurer(MapPtr map, const int danger_lev
 
             for (const auto& generated_item : generated_items)
             {
-              tile->get_items()->merge_or_add(generated_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+              tile->get_items()->merge_or_add(generated_item);
             }
           }
 

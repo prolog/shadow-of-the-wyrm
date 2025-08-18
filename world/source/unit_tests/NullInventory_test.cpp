@@ -115,13 +115,13 @@ TEST(SW_World_NullInventory, merge_or_add)
   item3->set_description_sid("DDD333");
   item3->set_effect_type(EffectType::EFFECT_TYPE_ETHER);
 
-  EXPECT_FALSE(ni.merge_or_add(item3, InventoryAdditionType::INVENTORY_ADDITION_BACK));
+  EXPECT_FALSE(ni.merge_or_add(item3));
   EXPECT_EQ(static_cast<uint>(0), ni.size());
 
-  EXPECT_FALSE(ni.merge_or_add(item2, InventoryAdditionType::INVENTORY_ADDITION_BACK));
+  EXPECT_FALSE(ni.merge_or_add(item2));
   EXPECT_EQ(static_cast<uint>(0), ni.size());
 
-  EXPECT_FALSE(ni.merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK));
+  EXPECT_FALSE(ni.merge_or_add(item));
   EXPECT_EQ(static_cast<uint>(0), ni.size());
 }
 
@@ -136,7 +136,7 @@ TEST(SW_World_NullInventory, merge_or_add_whole_inventory)
   ni->add(item);
 
   NullInventory ni2;
-  ni2.merge_or_add(ni, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+  ni2.merge_or_add(ni);
 
   EXPECT_TRUE(ni->empty());
   EXPECT_TRUE(ni2.empty());

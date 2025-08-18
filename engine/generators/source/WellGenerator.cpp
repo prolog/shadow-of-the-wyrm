@@ -72,7 +72,7 @@ void WellGenerator::create_open_section(MapPtr result_map, const Coordinate& /*u
 
           if (tile != nullptr)
           {
-            tile->get_items()->merge_or_add(ivory, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+            tile->get_items()->merge_or_add(ivory);
           }
         }
       }

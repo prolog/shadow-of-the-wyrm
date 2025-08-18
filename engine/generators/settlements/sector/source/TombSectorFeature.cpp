@@ -181,7 +181,7 @@ void TombSectorFeature::generate_bones_and_treasure(MapPtr map, const Coordinate
 
       if (tile != nullptr && item != nullptr)
       {
-        tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        tile->get_items()->merge_or_add(item);
       }
 
       // Potentially add a tomb guardian.

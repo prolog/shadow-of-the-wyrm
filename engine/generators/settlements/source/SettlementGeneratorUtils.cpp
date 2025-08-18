@@ -338,7 +338,7 @@ void SettlementGeneratorUtils::generate_building_objects(MapPtr map, const Build
 
         if (item != nullptr)
         {
-          tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          tile->get_items()->merge_or_add(item);
         }
       }
     }

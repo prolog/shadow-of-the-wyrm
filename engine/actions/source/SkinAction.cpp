@@ -190,7 +190,7 @@ void SkinAction::create_skin_and_bones_and_add_to_tile(ItemPtr corpse, TilePtr t
       Resistances res = corpse->get_resistances();
       skin->set_resistances(res);
 
-      tile->get_items()->merge_or_add(skin, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      tile->get_items()->merge_or_add(skin);
     }
 
     // Add the bones.
@@ -202,7 +202,7 @@ void SkinAction::create_skin_and_bones_and_add_to_tile(ItemPtr corpse, TilePtr t
       bones->set_additional_property(SkinningConstants::SKIN_BONES_USAGE_DESCRIPTION_SID, corpse->get_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID));
       bones->set_additional_property(ConsumableConstants::CORPSE_BASE_CREATURE_ID, corpse->get_additional_property(ConsumableConstants::CORPSE_BASE_CREATURE_ID));
 
-      tile->get_items()->merge_or_add(bones, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      tile->get_items()->merge_or_add(bones);
     }
 
     // Finally, adjust the weight of the corpse, bones, skin.

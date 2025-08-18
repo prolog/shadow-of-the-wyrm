@@ -76,7 +76,7 @@ ActionCostValue WandcraftSkillProcessor::process(CreaturePtr creature, MapPtr ma
               acv = get_default_skill_action_cost_value(creature);
 
               TilePtr creature_tile = MapUtils::get_tile_for_creature(game.get_current_map(), creature);
-              creature_tile->get_items()->merge_or_add(wand, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+              creature_tile->get_items()->merge_or_add(wand);
 
               IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
               manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_WANDCRAFT_WAND_CREATED));

@@ -134,7 +134,7 @@ void Generator::generate_shipwreck(MapPtr map, const Coordinate& sw, const vecto
         {
           string detritus_id = addl_items.at(RNG::range(0, addl_items.size() - 1));
           ItemPtr item = im.create_item(detritus_id);
-          tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          tile->get_items()->merge_or_add(item);
         }
       }
     }

@@ -406,7 +406,7 @@ bool DropAction::plant_food(CreaturePtr creature, const map<string, string>& pro
         manager.add_new_message(ground_full);
         manager.send();
 
-        tile->get_items()->merge_or_add(item_to_plant, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        tile->get_items()->merge_or_add(item_to_plant);
       }
     }
   }
@@ -456,7 +456,7 @@ bool DropAction::plant_seed(CreaturePtr creature, const map<string, string>& pro
       manager.add_new_message(ground_full);
       manager.send();
 
-      tile->get_items()->merge_or_add(seed_to_plant, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      tile->get_items()->merge_or_add(seed_to_plant);
     }
   }
   
@@ -470,7 +470,7 @@ bool DropAction::add_remainder_of_plantable_if_necessary(MapPtr current_map, Til
   if (current_map != nullptr && tile != nullptr && item_to_plant != nullptr && item_to_plant->get_quantity() > 1)
   {
     item_to_plant->set_quantity(item_to_plant->get_quantity() - 1);
-    tile->get_items()->merge_or_add(item_to_plant, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+    tile->get_items()->merge_or_add(item_to_plant);
 
     added_items = true;
   }

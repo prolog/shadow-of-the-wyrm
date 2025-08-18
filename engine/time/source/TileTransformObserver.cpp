@@ -112,7 +112,7 @@ void TileTransformObserver::process_item_transforms(MapPtr cur_map, const double
           if (tile != nullptr)
           {
             ItemPtr item = im.create_item(item_id, RNG::range(min_q, max_q));
-            tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+            tile->get_items()->merge_or_add(item);
           }
         }
 
