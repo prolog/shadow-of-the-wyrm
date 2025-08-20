@@ -16,6 +16,9 @@ Me:
 - git push --tags
 - Audio enhancements off for testing
 - maybe caverns could have a chance to be slimy?
+- kelp: add to coastline generator, tie it to latitude (should be more common
+  at the extremes)
+- make sewers slimy too
 - What other (new) items would be good for brewing? maybe some could use
   existing tiles first?
   - slime could be occasionally left when jellies move and cleaned up once 
