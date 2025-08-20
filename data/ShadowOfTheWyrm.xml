@@ -1167,7 +1167,7 @@
 			<Drops>
 				<Drop>
 					<ID>_slime</ID>
-					<PercentChance>5</PercentChance>
+					<PercentChance>10</PercentChance>
 				</Drop>
 			</Drops>
 			<NameSID>JELLY_RACE_NAME</NameSID>

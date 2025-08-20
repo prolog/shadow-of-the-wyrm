@@ -49,7 +49,7 @@
 using namespace std;
 
 const int MovementAction::BASE_ASCEND_DESCEND_CHANCE = 35;
-const int MovementAction::PCT_CHANCE_LEAVE_SLIME_TRAIL = 1;
+const int MovementAction::PCT_CHANCE_LEAVE_SLIME_TRAIL = 2;
 
 MovementAction::MovementAction()
 {
