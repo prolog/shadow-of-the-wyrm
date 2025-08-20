@@ -8845,6 +8845,34 @@
 				<Nutrition>500</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
+			<Food id="_slime">
+				<DescriptionSID>SLIME_SID</DescriptionSID>
+				<UsageDescriptionSID>SLIME_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SLIME_CODEX_SID</CodexDescriptionSID>
+				<Value>4</Value>
+				<Weight>
+					<Ounces>6</Ounces>
+				</Weight>
+				<Material>16</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Colour>10</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>19</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brewing_ingredient</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Nutrition>200</Nutrition>
+				<FoodType>4</FoodType>
+			</Food>
 			<Food id="food_ration">
 				<DescriptionSID>FOOD_RATION_SID</DescriptionSID>
 				<UsageDescriptionSID>FOOD_RATION_USAGE_SID</UsageDescriptionSID>
@@ -14911,32 +14939,6 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
-			</Item>
-			<Item id="_slime">
-				<DescriptionSID>SLIME_SID</DescriptionSID>
-				<UsageDescriptionSID>SLIME_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>SLIME_CODEX_SID</CodexDescriptionSID>
-				<Value>4</Value>
-				<Weight>
-					<Ounces>6</Ounces>
-				</Weight>
-				<Material>16</Material>
-				<Symbol>
-					<Char>]</Char>
-					<Colour>10</Colour>
-					<Sprite>
-						<ID>it</ID>
-						<Row>4</Row>
-						<Col>19</Col>
-					</Sprite>
-				</Symbol>
-				<DangerLevel>-1</DangerLevel>
-				<Properties>
-					<Property>
-						<Name>brewing_ingredient</Name>
-						<Value>1</Value>
-					</Property>
-				</Properties>
 			</Item>
 			<Item id="_essence_were_light">
 				<DescriptionSID>ESSENCE_WERE_LIGHT_SID</DescriptionSID>

@@ -15,6 +15,7 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
+- maybe caverns could have a chance to be slimy?
 - What other (new) items would be good for brewing? maybe some could use
   existing tiles first?
   - slime could be occasionally left when jellies move and cleaned up once 
