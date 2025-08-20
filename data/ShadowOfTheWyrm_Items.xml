@@ -7950,7 +7950,7 @@
 						<Value>12</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -8031,7 +8031,7 @@
 						<Value>12</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -8073,7 +8073,7 @@
 						<Value>12</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -8231,7 +8231,7 @@
 						<Value>3</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -8274,7 +8274,7 @@
 						<Value>3</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -8317,7 +8317,7 @@
 						<Value>3</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -8360,7 +8360,7 @@
 						<Value>36</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -8581,6 +8581,10 @@
 						<Name>seed_item_id</Name>
 						<Value>_golden_apple_seed</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_rare</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>600</Nutrition>
 				<FoodType>0</FoodType>
@@ -8611,6 +8615,10 @@
 					<Property>
 						<Name>seed_item_id</Name>
 						<Value>_silver_apple_seed</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_rare</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>600</Nutrition>
@@ -8866,7 +8874,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -9261,7 +9269,7 @@
 						<Value>3</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -9290,7 +9298,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -9332,7 +9340,7 @@
 						<Value>3</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -9375,7 +9383,7 @@
 						<Value>3</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -9418,7 +9426,7 @@
 						<Value>3</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -9461,7 +9469,7 @@
 						<Value>3</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -9504,7 +9512,7 @@
 						<Value>3</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -9547,7 +9555,7 @@
 						<Value>3</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -9590,7 +9598,7 @@
 						<Value>3</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -9633,7 +9641,7 @@
 						<Value>3</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -9676,7 +9684,7 @@
 						<Value>3</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -9719,7 +9727,7 @@
 						<Value>3</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -9762,7 +9770,7 @@
 						<Value>3</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -9805,7 +9813,7 @@
 						<Value>6</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -14900,6 +14908,12 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brewing_ingredient_uncommon</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="_coal">
 				<DescriptionSID>COAL_SID</DescriptionSID>
@@ -14962,7 +14976,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_uncommon</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -14993,7 +15007,7 @@
 						<Value>9</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -15024,7 +15038,7 @@
 						<Value>10</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -15055,7 +15069,7 @@
 						<Value>11</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -15086,7 +15100,7 @@
 						<Value>14</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -15117,7 +15131,7 @@
 						<Value>12</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -15148,7 +15162,7 @@
 						<Value>13</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -15179,7 +15193,7 @@
 						<Value>40</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_uncommon</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -15210,7 +15224,7 @@
 						<Value>41</Value>
 					</Property>
 					<Property>
-						<Name>brewing_ingredient</Name>
+						<Name>brewing_ingredient_uncommon</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
