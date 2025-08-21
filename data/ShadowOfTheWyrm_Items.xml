@@ -2885,14 +2885,14 @@
 					<Poison>0.03</Poison>
 					<Shadow>0.08</Shadow>
 				</Resistances>
-				<Evade>2</Evade>
-				<Soak>0</Soak>
 				<Properties>
 					<Property>
 						<Name>nexus</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
+				<Evade>2</Evade>
+				<Soak>0</Soak>
 			</Ring>
 			<Ring id="fencers_ring">
 				<DescriptionSID>FENCERS_RING_SID</DescriptionSID>
@@ -15251,5 +15251,19 @@
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 		</MiscItems>
+		<Recipes>
+			<Recipe>
+				<Ingredients>
+					<Ingredient>
+						<ID>_wheat</ID>
+						<Quantity>
+							<Amount>3</Amount>
+						</Quantity>
+					</Ingredient>
+				</Ingredients>
+				<Brewing>0</Brewing>
+				<Make>gnomish_stout</Make>
+			</Recipe>
+		</Recipes>
 	</Items>
 </ShadowOfTheWyrm>

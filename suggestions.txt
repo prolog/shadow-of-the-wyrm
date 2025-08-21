@@ -15,15 +15,20 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
-- maybe caverns could have a chance to be slimy?
 - kelp: add to coastline generator, tie it to latitude (should be more common
   at the extremes)
 - make sewers slimy too
 - What other (new) items would be good for brewing? maybe some could use
   existing tiles first?
-  - slime could be occasionally left when jellies move and cleaned up once 
-    an hour
-  - will o the wisp could leave an essence of were-light
+  - need barley to go with wheat
+  - wild hops
+  - juniper for gin
+  - honey for mead
+  - for honey: bees! beehives! mostly friendly but attacking one should make
+    all the other bees on the map hate you.
+- Brewing should require a cauldron
+- Recipe selection screen (also listing ingredients)
+- Generate in some towns, generate in dungeons
 - Recipes: can have both set and random ingredients
 - Recipes: healing, ether, buffs, unstoning, unblinding (potion should always
   glow)

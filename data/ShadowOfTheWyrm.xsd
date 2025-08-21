@@ -179,6 +179,7 @@
 			<xs:element ref="tns:Wands" minOccurs="0"/>
 			<xs:element ref="tns:Spellbooks" minOccurs="0"/>
 			<xs:element ref="tns:MiscItems" minOccurs="0"/>
+			<xs:element ref="tns:Recipes" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<!-- Wands/Staves -->
@@ -884,6 +885,13 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:element name="Recipes">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Recipe" type="tns:Recipe" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
 <xs:element name="Amulets">
 	<xs:complexType>
 		<xs:sequence>
@@ -1130,6 +1138,27 @@
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Recipe">
+	<xs:sequence>
+		<xs:element name="Ingredients" type="tns:Ingredients"/>
+		<xs:element name="Brewing" type="tns:PercentageStatistic"/>
+		<xs:element name="Make" type="tns:Identifier"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Ingredients">
+	<xs:sequence>
+		<xs:element name="Ingredient" type="tns:Ingredient" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Ingredient">
+	<xs:sequence>
+		<xs:choice>
+			<xs:element name="ID" type="tns:Identifier"/>
+			<xs:element name="Property" type="xs:string"/>
+		</xs:choice>
+		<xs:element name="Quantity" type="tns:Quantity"/>
+	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Wand">
 	<xs:complexContent>
