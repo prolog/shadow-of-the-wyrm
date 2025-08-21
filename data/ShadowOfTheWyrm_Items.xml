@@ -15252,7 +15252,7 @@
 			</Item>
 		</MiscItems>
 		<Recipes>
-			<Recipe>
+			<Recipe id="gnomish_stout">
 				<Ingredients>
 					<Ingredient>
 						<ID>_wheat</ID>
