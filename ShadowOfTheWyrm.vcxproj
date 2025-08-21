@@ -1543,6 +1543,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\include\Modifier.hpp" />
     <ClInclude Include="world\include\NullInventory.hpp" />
     <ClInclude Include="world\include\RaceConstants.hpp" />
+    <ClInclude Include="world\include\Recipe.hpp" />
     <ClInclude Include="world\include\ScriptDetails.hpp" />
     <ClInclude Include="world\include\Shop.hpp" />
     <ClInclude Include="world\include\SkinningConstants.hpp" />
@@ -5333,6 +5334,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\source\NullInventory.cpp" />
     <ClCompile Include="world\source\RaceConstants.cpp" />
     <ClCompile Include="world\source\RarityTypes.cpp" />
+    <ClCompile Include="world\source\Recipe.cpp" />
     <ClCompile Include="world\source\ScriptDetails.cpp" />
     <ClCompile Include="world\source\Shop.cpp" />
     <ClCompile Include="world\source\SkinningConstants.cpp" />
@@ -5647,6 +5649,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Recipe_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\ScriptDetails_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

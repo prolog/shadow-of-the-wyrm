@@ -4601,6 +4601,9 @@
     <ClInclude Include="engine\time\include\CreatureVigilanceTimer.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\Recipe.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9366,6 +9369,12 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ToHitCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Recipe.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Recipe_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
