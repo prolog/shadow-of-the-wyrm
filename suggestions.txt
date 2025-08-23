@@ -18,6 +18,7 @@ Me:
 - kelp: add to coastline generator, tie it to latitude (should be more common
   at the extremes)
 - make sewers slimy too
+- tiles for: cauldron, cooking pot, bee, queen bee, hive, honey, juniper
 - What other (new) items would be good for brewing? maybe some could use
   existing tiles first?
   - need barley to go with wheat
@@ -39,6 +40,8 @@ Me:
 - Dropping were-light on a stack should have a small chance to make one item 
   glow
 - More recipes as more spell effects are added!
+- insect nest: enemies should throw rocks if they have them if hostile
+  NPC nearby
 - no-talk telari: what if dropping an item in Ead's field of view triggered
   it?
 - regular stanza updates again! XII should be the brothers/rebels returning to

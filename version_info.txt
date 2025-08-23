@@ -33,6 +33,8 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
 
 - New items: slime, essence of were-light.
 
+- New terrain features: cauldron, insect nest.
+
 Shadow of the Wyrm v1.8.4 "Fampas"
 - Version declared March 8, 2025. Version finalized June 28, 2025.
 
