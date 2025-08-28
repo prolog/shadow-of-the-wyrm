@@ -35,4 +35,5 @@ class SewerGenerator : public SOTW::Generator
     static const int MIN_Y_INCR, MAX_Y_INCR;
     static const int X_INCR;
     static const int PCT_CHANCE_HERMIT;
+    static const int PCT_CHANCE_SLIMY;
 };

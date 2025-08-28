@@ -22,6 +22,7 @@ Me:
 - What other (new) items would be good for brewing? maybe some could use
   existing tiles first?
   - need barley to go with wheat
+  - make a "thin beer" item (0 skill)
   - wild hops
   - juniper for gin
   - honey for mead

@@ -11,12 +11,12 @@
 using namespace std;
 
 TileGenerator::TileGenerator()
-: generate_items(true)
+: generate_items(true), x_in_y_chance_slimy({0,0})
 {
 }
 
 TileGenerator::TileGenerator(const bool generate)
-: generate_items(generate)
+: generate_items(generate), x_in_y_chance_slimy({0,0})
 {
 }
 
@@ -28,6 +28,16 @@ void TileGenerator::set_generate_items(const bool new_generate_items)
 bool TileGenerator::get_generate_items() const
 {
   return generate_items;
+}
+
+void TileGenerator::set_x_in_y_chance_slimy(const pair<int, int>& new_x_in_y_chance_slimy)
+{
+  x_in_y_chance_slimy = new_x_in_y_chance_slimy;
+}
+
+pair<int, int> TileGenerator::get_x_in_y_chance_slimy() const
+{
+  return x_in_y_chance_slimy;
 }
 
 TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type, const map<string, string>& properties)
@@ -232,6 +242,16 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
   {
     result_tile->set_additional_properties(properties);
     configure_tile(result_tile);
+  }
+
+  if (x_in_y_chance_slimy.first > 0 && RNG::x_in_y_chance(x_in_y_chance_slimy))
+  {
+    ItemPtr slime = ItemManager::create_item(ItemIdKeys::ITEM_ID_SLIME);
+
+    if (slime != nullptr)
+    {
+      result_tile->get_items()->merge_or_add(slime);
+    }
   }
 
   // The tile shouldn't be null after generation!
