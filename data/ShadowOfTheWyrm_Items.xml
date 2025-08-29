@@ -8367,6 +8367,48 @@
 				<Nutrition>110</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
+			<Food id="_juniper_berries">
+				<DescriptionSID>JUNIPER_BERRIES_SID</DescriptionSID>
+				<UsageDescriptionSID>JUNIPER_BERRIES_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>JUNIPER_BERRIES_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>4</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>19</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>12</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>36</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Nutrition>60</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
 			<Food id="_wheat">
 				<DescriptionSID>WHEAT_SID</DescriptionSID>
 				<UsageDescriptionSID>WHEAT_USAGE_SID</UsageDescriptionSID>
@@ -8878,7 +8920,7 @@
 						<Value>1</Value>
 					</Property>
 				</Properties>
-				<Nutrition>200</Nutrition>
+				<Nutrition>150</Nutrition>
 				<FoodType>4</FoodType>
 			</Food>
 			<Food id="food_ration">

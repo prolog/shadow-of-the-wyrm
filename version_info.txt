@@ -31,7 +31,7 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
 
 - Jelly-type creatures may now drop slime, and leave it as they move.
 
-- New items: slime, essence of were-light.
+- New items: slime, essence of were-light, juniper berries.
 
 - New terrain features: cauldron, insect nest.
 
