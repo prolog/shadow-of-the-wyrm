@@ -497,6 +497,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="controller\include\Controller.hpp" />
     <ClInclude Include="controller\include\ControllerFactory.hpp" />
     <ClInclude Include="controller\include\CursesKeyboardController.hpp" />
+    <ClInclude Include="controller\include\KeyModifierType.hpp" />
     <ClInclude Include="controller\include\NullKeyboardController.hpp" />
     <ClInclude Include="controller\include\SDLKeyboardController.hpp" />
     <ClInclude Include="display\animation\include\Animation.hpp" />

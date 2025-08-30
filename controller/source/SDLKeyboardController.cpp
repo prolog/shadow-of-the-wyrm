@@ -16,12 +16,24 @@
 using namespace std;
 
 unordered_map<int, int> SDLKeyboardController::keymap;
+unordered_map<int, int> SDLKeyboardController::shift_keymap;
+unordered_map<int, int> SDLKeyboardController::ctrl_keymap;
 
 SDLKeyboardController::SDLKeyboardController()
 {
   if (keymap.empty())
   {
     init_keymap();
+  }
+
+  if (shift_keymap.empty())
+  {
+    init_shift_keymap();
+  }
+
+  if (ctrl_keymap.empty())
+  {
+    init_ctrl_keymap();
   }
 }
 
@@ -53,6 +65,18 @@ void SDLKeyboardController::init_keymap()
   };
 }
 
+void SDLKeyboardController::init_shift_keymap()
+{
+  shift_keymap = {{SDLK_LEFT, KEY_SLEFT},
+                  {SDLK_RIGHT, KEY_SRIGHT}};
+}
+
+void SDLKeyboardController::init_ctrl_keymap()
+{
+  ctrl_keymap = {{SDLK_LEFT, CTL_LEFT},
+                 {SDLK_RIGHT, CTL_RIGHT}};
+}
+
 // Poll and probably ignore.  The one event we actually want to keep track
 // of is SDL_QUIT, which should cause the game to gracefully exit.
 void SDLKeyboardController::poll_event()
@@ -73,9 +97,11 @@ void SDLKeyboardController::poll_event()
 // called from the thread that initialized the SDL video. If not, this may
 // hang due to blocking SDL_WaitEvent waiting for events that will never
 // come.
-int SDLKeyboardController::read_char_as_int()
+pair<int, set<KeyModifierType>> SDLKeyboardController::read_char_as_int()
 {
   int return_val = 0;
+  set<KeyModifierType> key_mods;
+
   bool done = false;
 
   SDL_Event event;
@@ -103,6 +129,20 @@ int SDLKeyboardController::read_char_as_int()
     // If we got a keydown event, check the keymap to see if it's allowed.
     else if (event.type == SDL_KEYDOWN)
     {
+      // Check to see if ctrl or shift have been pressed - sometimes they're
+      // needed for things like shift+left=move northwest.
+      bool shift = event.key.keysym.mod & KMOD_SHIFT;
+      bool ctrl = event.key.keysym.mod & KMOD_CTRL;
+
+      if (shift)
+      {
+        key_mods.insert(KeyModifierType::KEY_MODIFIER_TYPE_SHIFT);
+      }
+      else if (ctrl)
+      {
+        key_mods.insert(KeyModifierType::KEY_MODIFIER_TYPE_CTRL);
+      }
+
       if (keymap.find(key) != keymap.end())
       {
         return_val = event.key.keysym.sym;
@@ -126,7 +166,7 @@ int SDLKeyboardController::read_char_as_int()
   }
 
   SDL_StopTextInput();
-  return return_val;
+  return make_pair(return_val, key_mods);
 }
 
 pair<bool, int> SDLKeyboardController::read_char_as_int_nb()
@@ -157,9 +197,31 @@ pair<bool, int> SDLKeyboardController::read_char_as_int_nb()
 
 // Convert SDL keys to the curses equivalent - the curses values are 
 // considered the underlying values in SotW.
-int SDLKeyboardController::translate_kb_input(const int input)
+int SDLKeyboardController::translate_kb_input(const int input, const set<KeyModifierType>& key_mods)
 {
-  int return_val = input;  
+  // If there are shift/ctrl key mods, check them first. If nothing is
+  // defined, check the main map.
+  if (std::find(key_mods.begin(), key_mods.end(), KeyModifierType::KEY_MODIFIER_TYPE_SHIFT) != key_mods.end())
+  {
+    auto ks_it = shift_keymap.find(input);
+
+    if (ks_it != shift_keymap.end())
+    {
+      return ks_it->second;
+    }
+  }
+
+  if (std::find(key_mods.begin(), key_mods.end(), KeyModifierType::KEY_MODIFIER_TYPE_CTRL) != key_mods.end())
+  {
+    auto kc_it = ctrl_keymap.find(input);
+
+    if (kc_it != ctrl_keymap.end())
+    {
+      return kc_it->second;
+    }
+  }
+
+  int return_val = input;
   auto k_it = keymap.find(input);
 
   if (k_it != keymap.end())

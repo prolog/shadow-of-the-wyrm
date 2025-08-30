@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int CursesKeyboardController::read_char_as_int()
+pair<int, set<KeyModifierType>> CursesKeyboardController::read_char_as_int()
 {
   Game& game = Game::instance();
   DisplayPtr display = game.get_display();
@@ -22,7 +22,9 @@ int CursesKeyboardController::read_char_as_int()
     character = wgetch(cur_win);
   }
 
-  return character;
+  // Everything in curses maps nicely to the output type, so the keymods
+  // aren't needed like they are for SDL.
+  return make_pair(character, std::set<KeyModifierType>());
 }
 
 pair<bool, int> CursesKeyboardController::read_char_as_int_nb()
@@ -55,7 +57,7 @@ pair<bool, int> CursesKeyboardController::read_char_as_int_nb()
   return character;
 }
 
-int CursesKeyboardController::translate_kb_input(const int input)
+int CursesKeyboardController::translate_kb_input(const int input, const std::set<KeyModifierType>& /* key_mods */)
 {
   return input;
 }

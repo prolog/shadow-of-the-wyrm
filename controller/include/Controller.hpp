@@ -1,7 +1,9 @@
 #pragma once
 #include <string>
 #include <memory>
+#include <set>
 #include "ISerializable.hpp"
+#include "KeyModifierType.hpp"
 
 // Abstract base class capable of getting a character or a line
 class Controller : public ISerializable
@@ -28,10 +30,10 @@ class Controller : public ISerializable
     virtual Controller* clone() = 0;
 
   protected:
-    virtual int read_char_as_int() = 0;
+    virtual std::pair<int, std::set<KeyModifierType>> read_char_as_int() = 0;
     virtual std::pair<bool, int> read_char_as_int_nb() = 0;
 
-    virtual int translate_kb_input(const int input) = 0;
+    virtual int translate_kb_input(const int input, const std::set<KeyModifierType>& key_modifiers) = 0;
 
   private:
     ClassIdentifier internal_class_identifier() const = 0;

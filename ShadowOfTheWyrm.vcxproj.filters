@@ -4604,6 +4604,9 @@
     <ClInclude Include="world\include\Recipe.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="controller\include\KeyModifierType.hpp">
+      <Filter>Header Files\controller\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">

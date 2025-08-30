@@ -61,7 +61,6 @@ Me:
 - test orb placement in wyrmeswraec
 - other ambient sounds
 - super_type_message_sids -> super_type_sound_id?
-- hemsio: autosave not working?
 - Hidden PCs are never found via bumping (Josh Engdahl)
 - ways in which blessed item status can be tied into benefits
 - Sofistico: went up on telari and game crashed
@@ -563,3 +562,6 @@ Lustrecia:
 
 marwff:
 - Way into Telari without talking
+
+hemsio:
+- dwarf thief with crowbar in offhand doing more damage than in main?

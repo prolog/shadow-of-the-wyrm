@@ -20,7 +20,8 @@ void Controller::poll_event()
 
 int Controller::get_char_as_int()
 {
-  return translate_kb_input(read_char_as_int());
+  auto rc_val = read_char_as_int();
+  return translate_kb_input(rc_val.first, rc_val.second);
 }
 
 pair<bool, int> Controller::get_char_as_int_nb()
@@ -29,7 +30,7 @@ pair<bool, int> Controller::get_char_as_int_nb()
 
   if (input.first)
   {
-    input.second = translate_kb_input(input.second);
+    input.second = translate_kb_input(input.second, {} /* FIXME later, if needed. */);
   }
 
   return input;
