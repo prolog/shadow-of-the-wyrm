@@ -31,6 +31,9 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
 
 - Jelly-type creatures may now drop slime, and leave it as they move.
 
+- You can now move diagonally NW/NE and SW/SE via shift/control+left/right 
+  arrow (stutonk).
+
 - New items: slime, essence of were-light.
 
 - New terrain features: cauldron, insect nest.

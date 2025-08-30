@@ -73,8 +73,10 @@ void SDLKeyboardController::init_shift_keymap()
 
 void SDLKeyboardController::init_ctrl_keymap()
 {
+#if defined(CTL_LEFT) && defined(CTL_RIGHT)
   ctrl_keymap = {{SDLK_LEFT, CTL_LEFT},
                  {SDLK_RIGHT, CTL_RIGHT}};
+#endif
 }
 
 // Poll and probably ignore.  The one event we actually want to keep track
