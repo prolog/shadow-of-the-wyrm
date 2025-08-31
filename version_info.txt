@@ -34,7 +34,8 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
 - You can now move diagonally NW/NE and SW/SE via shift/control+left/right 
   arrow (stutonk).
 
-- New items: slime, essence of were-light.
+- New items: slime, essence of were-light, juniper berries, wild hops, honey,
+  honeycomb.
 
 - New terrain features: cauldron, insect nest.
 
