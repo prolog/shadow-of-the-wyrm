@@ -25,7 +25,7 @@ void Spring::initialize_months()
 
 void Spring::initialize_foragables()
 {
-  foragables = {{TileType::TILE_TYPE_SEA, {ItemIdKeys::ITEM_ID_KELP}},
+  foragables = {{TileType::TILE_TYPE_SEA,   {ItemIdKeys::ITEM_ID_KELP}},
                 {TileType::TILE_TYPE_FIELD, {ItemIdKeys::ITEM_ID_ROOT, ItemIdKeys::ITEM_ID_FIDDLEHEAD_GREEN}}};
 }
 

@@ -17,21 +17,15 @@ Me:
 - Audio enhancements off for testing
 - kelp: add to coastline generator, tie it to latitude (should be more common
   at the extremes)
-- juniper berries into foraging
 - re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
   YT after)
 - what about a theme for Cithriel? something weird and otherworldly
-- tiles for: cauldron, cooking pot, bee, queen bee, hive, honey, juniper
 - What other (new) items would be good for brewing? maybe some could use
   existing tiles first?
   - need barley to go with wheat
   - make a "thin beer" item (0 skill)
-  - wild hops
-  - juniper for gin
-  - honey for mead
   - for honey: bees! beehives! mostly friendly but attacking one should make
     all the other bees on the map hate you.
-- maybe add hops/juniper to foraging
 - is foraging taught? maybe a generic mob could teach it in the random villages,
   as well as via Glich? a generic quest? hermits?
 - Brewing should require a cauldron

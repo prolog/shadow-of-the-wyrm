@@ -35,7 +35,7 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
   arrow (stutonk).
 
 - New items: slime, essence of were-light, juniper berries, wild hops, honey,
-  honeycomb.
+  honeycomb. Juniper berries will generate in fall, wild hops in summer.
 
 - New terrain features: cauldron, insect nest.
 
