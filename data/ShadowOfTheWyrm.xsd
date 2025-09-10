@@ -210,6 +210,8 @@
 			<xs:element name="Door" type="tns:BaseFeature"/>
 			<xs:element name="Fence" type="tns:BaseFeature"/>
 			<xs:element name="Gate" type="tns:BaseFeature"/>
+			<xs:element name="Hive" type="tns:BaseFeature"/>
+			<xs:element name="Cauldron" type="tns:BaseFeature"/>
 			<xs:element name="DecorativeStatue" type="tns:BaseFeature"/>
 			<xs:element name="HighPriestDecorativeStatue" type="tns:BaseFeature"/>
 			<xs:element name="KingDecorativeStatue" type="tns:BaseFeature"/>

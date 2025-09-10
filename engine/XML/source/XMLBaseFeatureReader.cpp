@@ -39,7 +39,9 @@ FeatureSymbolMap XMLBaseFeatureReader::get_feature_symbols(const XMLNode& base_f
                                                   {"Table", ClassIdentifier::CLASS_ID_TABLE},
                                                   {"Tannery", ClassIdentifier::CLASS_ID_TANNERY},
                                                   {"Trap", ClassIdentifier::CLASS_ID_TRAP},
-                                                  {"WheelAndLoom", ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM} };
+                                                  {"WheelAndLoom", ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM},
+                                                  {"Hive", ClassIdentifier::CLASS_ID_HIVE},
+                                                  {"Cauldron", ClassIdentifier::CLASS_ID_CAULDRON} };
 
   Log& log = Log::instance();
   for (auto cid_pair : class_id_names)

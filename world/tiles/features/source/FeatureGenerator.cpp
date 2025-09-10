@@ -120,8 +120,10 @@ void FeatureGenerator::initialize_feature_map()
   FeaturePtr sign               = std::make_shared<Sign>(get_config_symbol(ClassIdentifier::CLASS_ID_SIGN), "fake_sid");
   FeaturePtr kiln               = std::make_shared<Kiln>(get_config_symbol(ClassIdentifier::CLASS_ID_KILN));
   FeaturePtr fence              = std::make_shared<Fence>(get_config_symbol(ClassIdentifier::CLASS_ID_FENCE));
+  FeaturePtr hive               = std::make_shared<Hive>(get_config_symbol(ClassIdentifier::CLASS_ID_HIVE));
+  FeaturePtr cauldron           = std::make_shared<Cauldron>(get_config_symbol(ClassIdentifier::CLASS_ID_CAULDRON));
 
-  feature_map = FeatureSerializationMap{{ClassIdentifier::CLASS_ID_GOOD_ALTAR, good_altar},
+  feature_map = FeatureSerializationMap{ {ClassIdentifier::CLASS_ID_GOOD_ALTAR, good_altar},
                                         {ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR, neutral_altar},
                                         {ClassIdentifier::CLASS_ID_EVIL_ALTAR, evil_altar},
                                         {ClassIdentifier::CLASS_ID_DECORATIVE_STATUE, generic_dec_statue},
@@ -155,7 +157,9 @@ void FeatureGenerator::initialize_feature_map()
                                         {ClassIdentifier::CLASS_ID_SIGN, sign},
                                         {ClassIdentifier::CLASS_ID_PULPER, pulper},
                                         {ClassIdentifier::CLASS_ID_KILN, kiln},
-                                        {ClassIdentifier::CLASS_ID_FENCE, fence}};
+                                        {ClassIdentifier::CLASS_ID_FENCE, fence},
+                                        {ClassIdentifier::CLASS_ID_HIVE, hive},
+                                        {ClassIdentifier::CLASS_ID_CAULDRON, cauldron} };
 }
 
 
@@ -406,6 +410,18 @@ PetrifiedCorpseStatuePtr FeatureGenerator::generate_petrified_corpse_statue(cons
   statue = std::make_shared<PetrifiedCorpseStatue>(get_config_symbol(ClassIdentifier::CLASS_ID_PETRIFIED_CORPSE_STATUE), corpse_description_sid);
   
   return statue;
+}
+
+FeaturePtr FeatureGenerator::generate_cauldron()
+{
+  FeaturePtr cauldron = std::make_shared<Cauldron>(get_config_symbol(ClassIdentifier::CLASS_ID_CAULDRON));
+  return cauldron;
+}
+
+FeaturePtr FeatureGenerator::generate_hive()
+{
+  FeaturePtr hive = std::make_shared<Hive>(get_config_symbol(ClassIdentifier::CLASS_ID_HIVE));
+  return hive;
 }
 
 void FeatureGenerator::set_feature_symbol_map(const FeatureSymbolMap& new_fsm)

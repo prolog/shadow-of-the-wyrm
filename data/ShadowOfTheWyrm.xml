@@ -7892,6 +7892,26 @@
 				</Symbol>
 			</Fence>
  			<Gate><Symbol><Char>+</Char></Symbol></Gate>
+			<Hive>
+				<Symbol>
+					<Char>*</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>1</Row>
+						<Col>5</Col>
+					</Sprite>
+				</Symbol>
+			</Hive>
+			<Cauldron>
+				<Symbol>
+					<Char>&amp;</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>1</Row>
+						<Col>4</Col>
+					</Sprite>
+				</Symbol>
+			</Cauldron>			
 			<DecorativeStatue>
 				<Symbol>
 					<Char>I</Char>

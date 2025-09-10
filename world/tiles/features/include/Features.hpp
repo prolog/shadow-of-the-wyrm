@@ -627,9 +627,26 @@ class WheelAndLoom : public Feature
     WheelAndLoom(const Symbol& new_symbol);
     virtual Feature* clone() override;
 
-    bool operator==(const WheelAndLoom& j) const;
+  private:
+    virtual ClassIdentifier internal_class_identifier() const override;
+};
+
+class Cauldron : public Feature
+{
+  public:
+    Cauldron(const Symbol& new_symbol);
+    virtual Feature* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
+class Hive : public Feature
+{
+  public:
+    Hive(const Symbol& new_symbol);
+    virtual Feature* clone() override;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const override;
+};

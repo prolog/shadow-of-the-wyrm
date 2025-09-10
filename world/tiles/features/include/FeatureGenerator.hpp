@@ -42,6 +42,8 @@ class FeatureGenerator
     static FeaturePtr generate_sign(const std::string& text_sid);
     static FeaturePtr generate_decorative_statue(const DecorativeStatueType statue_type);
     static PetrifiedCorpseStatuePtr generate_petrified_corpse_statue(const std::string& corpse_description_sid);
+    static FeaturePtr generate_hive();
+    static FeaturePtr generate_cauldron();
 
     static void set_feature_symbol_map(const FeatureSymbolMap& fsm);
     static FeatureSymbolMap get_feature_symbol_map();

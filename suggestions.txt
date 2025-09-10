@@ -26,8 +26,6 @@ Me:
   - make a "thin beer" item (0 skill)
   - for honey: bees! beehives! mostly friendly but attacking one should make
     all the other bees on the map hate you.
-- is foraging taught? maybe a generic mob could teach it in the random villages,
-  as well as via Glich? a generic quest? hermits?
 - Brewing should require a cauldron
 - Recipe selection screen (also listing ingredients)
 - Generate in some towns, generate in dungeons

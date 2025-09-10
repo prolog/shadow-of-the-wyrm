@@ -7,6 +7,7 @@
 #include "XMLBedReader.hpp"
 #include "XMLBarrelReader.hpp"
 #include "XMLBenchReader.hpp"
+#include "XMLCauldronReader.hpp"
 #include "XMLConfigurableFeatureCMReader.hpp"
 #include "XMLDecorativeStatueReader.hpp"
 #include "XMLDoorReader.hpp"
@@ -14,6 +15,7 @@
 #include "XMLFirePillarReader.hpp"
 #include "XMLForgeReader.hpp"
 #include "XMLFountainReader.hpp"
+#include "XMLHiveReader.hpp"
 #include "XMLJewelerWorkbenchReader.hpp"
 #include "XMLKilnReader.hpp"
 #include "XMLPewReader.hpp"
@@ -134,6 +136,14 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Fence")).is_null())
     {
       feature_creator = std::make_unique<XMLFenceReader>();
+    }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Hive")).is_null())
+    {
+      feature_creator = std::make_unique<XMLHiveReader>();
+    }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Cauldron")).is_null())
+    {
+      feature_creator = std::make_unique<XMLCauldronReader>();
     }
 
     assert(feature_creator != nullptr);

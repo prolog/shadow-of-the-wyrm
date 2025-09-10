@@ -1428,7 +1428,7 @@ ClassIdentifier Trap::internal_class_identifier() const
 // WheelAndLoom
 
 WheelAndLoom::WheelAndLoom(const Symbol& new_symbol)
-  : Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_WHEEL_AND_LOOM, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
+: Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_WHEEL_AND_LOOM, MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
 }
 
@@ -1440,6 +1440,40 @@ Feature* WheelAndLoom::clone()
 ClassIdentifier WheelAndLoom::internal_class_identifier() const
 {
   return ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM;
+}
+
+// Hive
+
+Hive::Hive(const Symbol& new_symbol)
+: Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_HIVE, MaterialType::MATERIAL_TYPE_PAPER, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
+{
+}
+
+Feature* Hive::clone()
+{
+  return new Hive(*this);
+}
+
+ClassIdentifier Hive::internal_class_identifier() const
+{
+  return ClassIdentifier::CLASS_ID_HIVE;
+}
+
+// Cauldron
+
+Cauldron::Cauldron(const Symbol& new_symbol)
+: Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_CAULDRON, MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
+{
+}
+
+Feature* Cauldron::clone()
+{
+  return new Cauldron(*this);
+}
+
+ClassIdentifier Cauldron::internal_class_identifier() const
+{
+  return ClassIdentifier::CLASS_ID_CAULDRON;
 }
 
 #ifdef UNIT_TESTS
@@ -1466,4 +1500,6 @@ ClassIdentifier WheelAndLoom::internal_class_identifier() const
 #include "unit_tests/Tannery_test.cpp"
 #include "unit_tests/Trap_test.cpp"
 #include "unit_tests/WheelAndLoom_test.cpp"
+#include "unit_tests/Hive_test.cpp"
+#include "unit_tests/Cauldron_test.cpp"
 #endif
