@@ -4613,6 +4613,12 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLHiveReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\CauldronManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\tiles\features\include\HiveManipulator.hpp">
+      <Filter>Header Files\engine\maps\tiles\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9396,6 +9402,12 @@
     </ClCompile>
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLHiveReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\CauldronManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\HiveManipulator.cpp">
+      <Filter>Source Files\engine\maps\tiles\features\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1216,6 +1216,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\maps\include\TileUtils.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\AltarManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\BarrelManipulator.hpp" />
+    <ClInclude Include="engine\maps\tiles\features\include\CauldronManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\DefaultFeatureManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\DoorGateManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\EvilAltarManipulator.hpp" />
@@ -1223,6 +1224,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\maps\tiles\features\include\ForgeManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\GoodAltarManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\FeatureManipulator.hpp" />
+    <ClInclude Include="engine\maps\tiles\features\include\HiveManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\IFeatureManipulatorFactory.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\JewelerWorkbenchManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\KilnManipulator.hpp" />
@@ -2856,8 +2858,10 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\maps\tiles\features\source\CauldronManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\FeatureManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\FenceManipulator.cpp" />
+    <ClCompile Include="engine\maps\tiles\features\source\HiveManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\KilnManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\PulperManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\SarcophagusManipulator.cpp" />

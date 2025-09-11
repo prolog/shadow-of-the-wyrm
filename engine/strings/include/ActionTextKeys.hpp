@@ -130,6 +130,9 @@ class ActionTextKeys
     static const std::string ACTION_KICK_FORGE;
     static const std::string ACTION_KICK_JEWELER_WORKBENCH;
     static const std::string ACTION_KICK_TANNERY;
+    static const std::string ACTION_KICK_CAULDRON;
+    static const std::string ACTION_KICK_HIVE;
+    static const std::string ACTION_KICK_HIVE_EMPTY;
     static const std::string ACTION_KICK_PULPER;
     static const std::string ACTION_KICK_WHEEL_AND_LOOM;
     static const std::string ACTION_KICK_BARREL;

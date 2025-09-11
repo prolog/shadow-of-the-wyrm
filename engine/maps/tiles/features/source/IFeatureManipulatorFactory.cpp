@@ -1,15 +1,17 @@
 #include "IFeatureManipulatorFactory.hpp"
+#include "BarrelManipulator.hpp"
+#include "CauldronManipulator.hpp"
 #include "DefaultFeatureManipulator.hpp"
+#include "DoorGateManipulator.hpp"
+#include "EvilAltarManipulator.hpp"
 #include "FenceManipulator.hpp"
 #include "ForgeManipulator.hpp"
-#include "PewManipulator.hpp"
 #include "GoodAltarManipulator.hpp"
-#include "NeutralAltarManipulator.hpp"
-#include "EvilAltarManipulator.hpp"
-#include "DoorGateManipulator.hpp"
-#include "BarrelManipulator.hpp"
+#include "HiveManipulator.hpp"
 #include "JewelerWorkbenchManipulator.hpp"
 #include "KilnManipulator.hpp"
+#include "NeutralAltarManipulator.hpp"
+#include "PewManipulator.hpp"
 #include "PulperManipulator.hpp"
 #include "SarcophagusManipulator.hpp"
 #include "SlotMachineManipulator.hpp"
@@ -93,6 +95,14 @@ FeatureManipulatorPtr IFeatureManipulatorFactory::create_manipulator(FeaturePtr 
     else if (class_id == ClassIdentifier::CLASS_ID_FENCE)
     {
       manipulator = std::make_unique<FenceManipulator>(feature);
+    }
+    else if (class_id == ClassIdentifier::CLASS_ID_HIVE)
+    {
+      manipulator = std::make_unique<HiveManipulator>(feature);
+    }
+    else if (class_id == ClassIdentifier::CLASS_ID_CAULDRON)
+    {
+      manipulator = std::make_unique<CauldronManipulator>(feature);
     }
     // All other features
     else
