@@ -1,6 +1,7 @@
 #include "HiveManipulator.hpp"
 #include "ActionTextKeys.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
 
 using namespace std;
 

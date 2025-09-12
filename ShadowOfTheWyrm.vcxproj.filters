@@ -9394,12 +9394,6 @@
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLCauldronReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
-    <ClCompile Include="world\tiles\features\source\unit_tests\Cauldron_test.cpp">
-      <Filter>Source Files\world\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\unit_tests\Hive_test.cpp">
-      <Filter>Source Files\world\source\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLHiveReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
@@ -9408,6 +9402,12 @@
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\features\source\HiveManipulator.cpp">
       <Filter>Source Files\engine\maps\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Cauldron_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Hive_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

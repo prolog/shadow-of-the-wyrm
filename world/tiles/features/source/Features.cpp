@@ -1447,11 +1447,86 @@ ClassIdentifier WheelAndLoom::internal_class_identifier() const
 Hive::Hive(const Symbol& new_symbol)
 : Feature(FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_HIVE, MaterialType::MATERIAL_TYPE_PAPER, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, new_symbol)
 {
+  charges = RNG::range(1, 3);
+}
+
+bool Hive::operator==(const Hive& hive) const
+{
+  bool result = Feature::operator==(hive);
+
+  result = result && (charges == hive.charges);
+  result = result && (drone_id == hive.drone_id);
+  result = result && (leader_id == hive.leader_id);
+  result = result && (item_ids == hive.item_ids);
+
+  return result;
 }
 
 Feature* Hive::clone()
 {
   return new Hive(*this);
+}
+
+void Hive::set_charges(const int new_charges)
+{
+  charges = new_charges;
+}
+
+int Hive::get_charges() const
+{
+  return charges;
+}
+
+void Hive::set_drone_id(const string& new_drone_id)
+{
+  drone_id = new_drone_id;
+}
+
+string Hive::get_drone_id() const
+{
+  return drone_id;
+}
+
+void Hive::set_leader_id(const string& new_leader_id)
+{
+  leader_id = new_leader_id;
+}
+
+string Hive::get_leader_id() const
+{
+  return leader_id;
+}
+
+void Hive::set_item_ids(const vector<string>& new_item_ids)
+{
+  item_ids = new_item_ids;
+}
+
+vector<string> Hive::get_item_ids() const
+{
+  return item_ids;
+}
+
+bool Hive::serialize(ostream& stream) const
+{
+  Feature::serialize(stream);
+  Serialize::write_int(stream, charges);
+  Serialize::write_string(stream, drone_id);
+  Serialize::write_string(stream, leader_id);
+  Serialize::write_string_vector(stream, item_ids);
+
+  return true;
+}
+
+bool Hive::deserialize(istream& stream)
+{
+  Feature::deserialize(stream);
+  Serialize::read_int(stream, charges);
+  Serialize::read_string(stream, drone_id);
+  Serialize::read_string(stream, leader_id);
+  Serialize::read_string_vector(stream, item_ids);
+
+  return true;
 }
 
 ClassIdentifier Hive::internal_class_identifier() const
@@ -1482,12 +1557,14 @@ ClassIdentifier Cauldron::internal_class_identifier() const
 #include "unit_tests/Barrel_test.cpp"
 #include "unit_tests/Bed_test.cpp"
 #include "unit_tests/Bench_test.cpp"
+#include "unit_tests/Cauldron_test.cpp"
 #include "unit_tests/DecorativeStatues_test.cpp"
 #include "unit_tests/EastWestPew_test.cpp"
 #include "unit_tests/Fence_test.cpp"
 #include "unit_tests/FirePillar_test.cpp"
 #include "unit_tests/Forge_test.cpp"
 #include "unit_tests/Fountain_test.cpp"
+#include "unit_tests/Hive_test.cpp"
 #include "unit_tests/JewelerWorkbench_test.cpp"
 #include "unit_tests/Pew_test.cpp"
 #include "unit_tests/Pulper_test.cpp"
@@ -1500,6 +1577,4 @@ ClassIdentifier Cauldron::internal_class_identifier() const
 #include "unit_tests/Tannery_test.cpp"
 #include "unit_tests/Trap_test.cpp"
 #include "unit_tests/WheelAndLoom_test.cpp"
-#include "unit_tests/Hive_test.cpp"
-#include "unit_tests/Cauldron_test.cpp"
 #endif
