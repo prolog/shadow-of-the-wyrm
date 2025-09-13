@@ -4,18 +4,11 @@
 using namespace std;
 
 // Paper, wood, and plant fibers burn.
-bool HeatTileDamageProcessor::affects_item(ItemPtr item)
+bool HeatTileDamageProcessor::affects_material(const MaterialType mt)
 {
-  bool aff = false;
-
-  if (item != nullptr)
-  {
-    MaterialType mt = item->get_material_type();
-
-    aff = mt == MaterialType::MATERIAL_TYPE_CLOTH ||
-          mt == MaterialType::MATERIAL_TYPE_PAPER ||
-          mt == MaterialType::MATERIAL_TYPE_WOOD;
-  }
+  bool aff = mt == MaterialType::MATERIAL_TYPE_CLOTH ||
+             mt == MaterialType::MATERIAL_TYPE_PAPER ||
+             mt == MaterialType::MATERIAL_TYPE_WOOD;
 
   return aff;
 }

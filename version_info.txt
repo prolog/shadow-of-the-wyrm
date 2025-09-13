@@ -36,6 +36,9 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
 
 - Hermits will now teach you Foraging if you don't know it, as will Glich.
 
+- Spell affects that affect items (fire, acid, holy, cold, etc) will now 
+  also affect features like altars, barrels, etc in similar ways.
+
 - New items: slime, essence of were-light, juniper berries, wild hops, honey,
   honeycomb. Juniper berries will generate in fall, wild hops in summer.
 

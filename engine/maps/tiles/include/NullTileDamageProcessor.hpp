@@ -4,6 +4,6 @@
 class NullTileDamageProcessor : public TileDamageProcessor
 {
   protected:
-    virtual bool affects_item(ItemPtr item) override;
+    virtual bool affects_material(const MaterialType mt) override;
 };
 

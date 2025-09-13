@@ -20,6 +20,13 @@ bool ArcaneTileDamageProcessor::affects_item(ItemPtr item)
   return false;
 }
 
+// Arcane damage doesn't affect individual materials (and so features are
+// spared).
+bool ArcaneTileDamageProcessor::affects_material(const MaterialType /*mt*/)
+{
+  return false;
+}
+
 string ArcaneTileDamageProcessor::get_message_sid() const
 {
   return cur_message_sid;

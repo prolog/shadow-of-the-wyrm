@@ -111,7 +111,7 @@ bool SpellShapeProcessor::apply_damage(CreaturePtr caster, const Coordinate& c, 
 
     if (dam_proc != nullptr)
     {
-      dam_proc->process(tile, caster);
+      dam_proc->process(current_map, tile, caster);
       MapUtils::anger_shopkeeper_if_necessary(c, current_map, caster);
     }
   }
