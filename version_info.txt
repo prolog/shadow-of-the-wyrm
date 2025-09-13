@@ -49,6 +49,9 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
   - Fixed a crash issue in String::clean with unexpected input that caused an
     assert in lower-level libraries.
 
+  - Dragon Breath (the spell) was using the wrong colour compared to Dragon
+    Breath (the wand).
+
 Shadow of the Wyrm v1.8.4 "Fampas"
 - Version declared March 8, 2025. Version finalized June 28, 2025.
 

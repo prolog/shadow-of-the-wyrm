@@ -5542,7 +5542,7 @@
 			<MonsterCastMessageSID>DRAGON_BREATH_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
 			<MagicClassification>0</MagicClassification>
-			<Colour>2</Colour>
+			<Colour>1</Colour>
 			<APCost>7</APCost>
 			<Speed>1</Speed>
 			<Range>3</Range>
