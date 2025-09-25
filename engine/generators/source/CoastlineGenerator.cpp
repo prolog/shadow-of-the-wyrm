@@ -6,12 +6,12 @@ const int CoastlineGenerator::PCT_CHANCE_SHIFT_DIR = 33;
 const int CoastlineGenerator::MAX_COAST_OFFSET = 3;
 
 CoastlineGenerator::CoastlineGenerator()
-: fill_tile_type(TileType::TILE_TYPE_SEA), secondary_tile_type(TileType::TILE_TYPE_SHOALS), chance_sectype_y(100)
+: fill_tile_type(TileType::TILE_TYPE_SEA), secondary_tile_type(TileType::TILE_TYPE_SHOALS), sectype_pct_chance(0), chance_sectype_y(100)
 {
 }
 
-CoastlineGenerator::CoastlineGenerator(const TileType new_tile_type, const TileType new_sec_type)
-: fill_tile_type(new_tile_type), secondary_tile_type(new_sec_type), chance_sectype_y(100)
+CoastlineGenerator::CoastlineGenerator(const TileType new_tile_type, const TileType new_sec_type, const int new_sectype_pct_chance, const int new_chance_sectype_y)
+: fill_tile_type(new_tile_type), secondary_tile_type(new_sec_type), sectype_pct_chance(new_sectype_pct_chance), chance_sectype_y(new_chance_sectype_y)
 {
 }
 
@@ -43,7 +43,6 @@ void CoastlineGenerator::generate(MapPtr map, const bool north, const bool south
 
 void CoastlineGenerator::generate_north(MapPtr map)
 {
-  chance_sectype_y = get_random_chance_shoals();
   int y = RNG::range(0, MAX_COAST_OFFSET);
   Dimensions dim = map->size();
   int cols = dim.get_x();
@@ -61,7 +60,6 @@ void CoastlineGenerator::generate_north(MapPtr map)
 
 void CoastlineGenerator::generate_south(MapPtr map)
 {
-  chance_sectype_y = get_random_chance_shoals();
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
@@ -80,7 +78,6 @@ void CoastlineGenerator::generate_south(MapPtr map)
 
 void CoastlineGenerator::generate_east(MapPtr map)
 {
-  chance_sectype_y = get_random_chance_shoals();
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
@@ -99,7 +96,6 @@ void CoastlineGenerator::generate_east(MapPtr map)
 
 void CoastlineGenerator::generate_west(MapPtr map)
 {
-  chance_sectype_y = get_random_chance_shoals();
   int x = RNG::range(0, MAX_COAST_OFFSET);
   Dimensions dim = map->size();
   int rows = dim.get_y();
@@ -113,16 +109,6 @@ void CoastlineGenerator::generate_west(MapPtr map)
       x = jiggle(x, 0, MAX_COAST_OFFSET);
     }
   }
-}
-
-int CoastlineGenerator::get_random_chance_shoals() const
-{
-  if (RNG::percent_chance(40))
-  {
-    return RNG::range(20, 60);
-  }
-
-  return 0;
 }
 
 int CoastlineGenerator::jiggle(const int val, const int min_val, const int max_val) const

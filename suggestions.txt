@@ -17,6 +17,9 @@ Me:
 - Audio enhancements off for testing
 - kelp: add to coastline generator, tie it to latitude (should be more common
   at the extremes)
+- Krom: exclude individual item ids from autopickup
+- kf unit tests
+- rename get_random_chance_shoals
 - hive: certain number of kicks generate insects, then breaks it
 - re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
   YT after)

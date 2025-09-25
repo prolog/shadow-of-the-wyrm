@@ -1,3 +1,4 @@
+#include "CoastlineCalculator.hpp"
 #include "CoastlineGenerator.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
@@ -818,7 +819,22 @@ bool GeneratorUtils::generate_coastline(MapPtr map, Generator * const generator)
       map->add_secondary_terrain(TileType::TILE_TYPE_SEA);
     }
 
-    CoastlineGenerator cg;
+    CoastlineCalculator cc;
+    TileType tt_sec = TileType::TILE_TYPE_SHOALS;
+    int sectype_pct_chance = cc.calc_pct_chance_shoals();
+    int chance_sectype_y = cc.generate_random_shoals_xiny_y();
+
+    pair<Coordinate, int> world_location_and_map_height = get_world_map_location_and_height(generator, map);
+    int pct_chance_kelp_forest = cc.calc_pct_chance_kelp_forest(world_location_and_map_height);
+
+    if (RNG::percent_chance(pct_chance_kelp_forest))
+    {
+      tt_sec = TileType::TILE_TYPE_AQUATIC_VEGETATION;
+      sectype_pct_chance = 100;
+      chance_sectype_y = cc.generate_random_kelpforest_xiny_y();
+    }
+
+    CoastlineGenerator cg(TileType::TILE_TYPE_SEA, tt_sec, sectype_pct_chance, chance_sectype_y);
     cg.generate(map, generate_north, generate_south, generate_east, generate_west);
 
     if (return_val)
@@ -1045,4 +1061,20 @@ pair<string, string> GeneratorUtils::generate_staircase_extra_descs()
   }
 
   return make_pair(up_extra_sid, down_extra_sid);
+}
+
+pair<Coordinate, int> GeneratorUtils::get_world_map_location_and_height(SOTW::Generator* generator, MapPtr map)
+{
+  pair<Coordinate, int> loc_height = { {0,0}, 0 };
+
+  if (generator != nullptr && map != nullptr)
+  {
+    string world_location_map_key = generator->get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_LOCATION);
+    int world_map_height = String::to_int(generator->get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_HEIGHT));
+    Coordinate world_location = MapUtils::convert_map_key_to_coordinate(world_location_map_key);
+
+    loc_height = { world_location, world_map_height };
+  }
+
+  return loc_height;
 }

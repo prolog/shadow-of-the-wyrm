@@ -86,6 +86,10 @@ class GeneratorUtils
 
     static std::pair<std::string, std::string> generate_staircase_extra_descs();
 
+    // Get the world map location and the map height, useful for latitude-
+    // based checks.
+    static std::pair<Coordinate, int> get_world_map_location_and_height(SOTW::Generator* generator, MapPtr current_map);
+
   protected:
     static bool position_in_range(const int min, const int max, const int actual);
     static bool are_tiles_ok_for_structure(MapPtr map, const int y_start, const int x_start, const int height, const int width);

@@ -4619,6 +4619,9 @@
     <ClInclude Include="engine\maps\tiles\features\include\HiveManipulator.hpp">
       <Filter>Header Files\engine\maps\tiles\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\CoastlineCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9408,6 +9411,9 @@
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Hive_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\CoastlineCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
