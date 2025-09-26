@@ -15,10 +15,11 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
-- kelp: add to coastline generator, tie it to latitude (should be more common
-  at the extremes)
 - Krom: exclude individual item ids from autopickup
-- kf unit tests
+- new setting added to autopickup settings page
+- kelp forest unit tests
+- unit test for magicalcombattargetnumbercalculator, but first do the bug
+  fix, the attacker check is checking the defender val instead
 - rename get_random_chance_shoals
 - hive: certain number of kicks generate insects, then breaks it
 - re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update

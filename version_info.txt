@@ -56,6 +56,9 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
   - Dragon Breath (the spell) was using the wrong colour compared to Dragon
     Breath (the wand).
 
+  - The setting to ignore items over a certain number of pounds was
+    incorrectly using ounces.
+
 Shadow of the Wyrm v1.8.4 "Fampas"
 - Version declared March 8, 2025. Version finalized June 28, 2025.
 

@@ -300,13 +300,23 @@ bool PickupAction::autopickup_passes_exclusions(ItemPtr item)
       
     bool exclude_autopickup_over_limit = settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT);
     uint total_weight_oz = item->get_total_weight().get_weight();
-    Weight weight_limit_lbs(String::to_int(settings.get_setting(Setting::AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT_LBS)));
+
+    Weight weight_limit_lbs;
+    weight_limit_lbs.set_weight(String::to_int(settings.get_setting(Setting::AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT_LBS)), 0);
     uint weight_limit_oz = weight_limit_lbs.get_weight();
 
     if (exclude_autopickup_over_limit && total_weight_oz > weight_limit_oz)
     {
       return false;
     }
+
+    set<string> exclude_item_ids = String::create_string_set_from_csv_string(settings.get_setting(Setting::AUTOPICKUP_IGNORE_ITEM_IDS));
+    bool id_excluded = exclude_item_ids.find(item->get_base_id()) != exclude_item_ids.end();
+
+    if (id_excluded)
+    {
+      return false;
+    }    
   }
  
   return true;
