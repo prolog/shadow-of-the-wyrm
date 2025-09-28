@@ -190,7 +190,7 @@ vector<Colour> String::create_colour_vector_from_csv_string(const string& csv_st
   return colours;
 }
 
-string String::create_csv_from_string_vector(const vector<string>& str_vec)
+string String::create_csv_from_string_vector(const vector<string>& str_vec, const int num_spaces)
 {
   ostringstream ss;
   size_t str_vec_size = str_vec.size();
@@ -201,6 +201,11 @@ string String::create_csv_from_string_vector(const vector<string>& str_vec)
     if (i != (str_vec_size - 1))
     {
       ss << ",";
+
+      for (int j = 0; j < num_spaces; j++)
+      {
+        ss << " ";
+      }
     }
   }
 

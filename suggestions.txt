@@ -15,8 +15,6 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
-- Krom: exclude individual item ids from autopickup
-- new setting added to autopickup settings page
 - kelp forest unit tests
 - unit test for magicalcombattargetnumbercalculator, but first do the bug
   fix, the attacker check is checking the defender val instead

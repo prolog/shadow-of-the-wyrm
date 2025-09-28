@@ -43,6 +43,8 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
 
 - Kelp generation on aquatic vegetation tiles is now much more common.
 
+- There is now an option to exclude specific items from autopickup (Krom).
+
 - New items: slime, essence of were-light, juniper berries, wild hops, honey,
   honeycomb. Juniper berries will generate in fall, wild hops in summer.
 

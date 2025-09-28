@@ -286,18 +286,21 @@ bool PickupAction::autopickup_passes_exclusions(ItemPtr item)
     const Settings& settings = Game::instance().get_settings_ref();
     bool ignore_corpses = settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_CORPSES);
 
+    // Should we ignore corpses?
     if (item->has_additional_property(ConsumableConstants::CORPSE_RACE_ID) && ignore_corpses)
     {
       return false;
     }
 
+    // Should we ignore unpaid?
     bool ignore_unpaid = settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_UNPAID);
 
     if (item->get_unpaid() && ignore_unpaid)
     {
       return false;
     }
-      
+
+    // Should we exclude items that'll take us over the limit?
     bool exclude_autopickup_over_limit = settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT);
     uint total_weight_oz = item->get_total_weight().get_weight();
 
@@ -310,13 +313,18 @@ bool PickupAction::autopickup_passes_exclusions(ItemPtr item)
       return false;
     }
 
-    set<string> exclude_item_ids = String::create_string_set_from_csv_string(settings.get_setting(Setting::AUTOPICKUP_IGNORE_ITEM_IDS));
-    bool id_excluded = exclude_item_ids.find(item->get_base_id()) != exclude_item_ids.end();
-
-    if (id_excluded)
+    // Should we exclude specific items?
+    bool exclude_specified_items = settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_SPECIFIED_ITEMS);
+    if (exclude_specified_items)
     {
-      return false;
-    }    
+      set<string> exclude_item_ids = String::create_string_set_from_csv_string(settings.get_setting(Setting::AUTOPICKUP_IGNORE_ITEM_IDS));
+      bool id_excluded = exclude_item_ids.find(item->get_base_id()) != exclude_item_ids.end();
+
+      if (id_excluded)
+      {
+        return false;
+      }
+    }
   }
  
   return true;

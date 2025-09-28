@@ -22,11 +22,13 @@ vector<pair<string, string>> AutomaticActionsAction::get_settings_to_display(Cre
 {
   Settings& settings = Game::instance().get_settings_ref();
   string weight_limit = settings.get_setting(Setting::AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT_LBS);
+  string excluded_item_ids = settings.get_setting(Setting::AUTOPICKUP_IGNORE_ITEM_IDS);
 
   vector<pair<string, string>> action_set = { { Setting::AUTOPICKUP, Setting::AUTOPICKUP + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOPICKUP) + " " + get_autopickup_type_string(c) + ": " + StringTable::get(TextMessages::get_bool_sid(c->get_decision_strategy()->get_autopickup())) },
                                               { Setting::AUTOPICKUP_IGNORE_CORPSES, Setting::AUTOPICKUP_IGNORE_CORPSES + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOPICKUP_EXCLUDE_CORPSES) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_CORPSES))) },
                                               { Setting::AUTOPICKUP_IGNORE_UNPAID, Setting::AUTOPICKUP_IGNORE_UNPAID + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOPICKUP_EXCLUDE_UNPAID) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_UNPAID))) },
                                               { Setting::AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT, Setting::AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT + "=" + SettingTextKeys::get_autopickup_exclude_over_weight_message(weight_limit) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT))) },
+                                              { Setting::AUTOPICKUP_IGNORE_SPECIFIED_ITEMS, Setting::AUTOPICKUP_IGNORE_SPECIFIED_ITEMS + "=" + SettingTextKeys::get_autopickup_exclude_specified_items_message(excluded_item_ids) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_SPECIFIED_ITEMS))) },
                                               { Setting::AUTOMELEE, Setting::AUTOMELEE + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOMELEE_AT_RANGE) + ": " + StringTable::get(TextMessages::get_bool_sid(c->get_decision_strategy()->get_automelee())) },
                                               { Setting::AUTOMOVE_ALWAYS_STOP_ON_ITEMS, Setting::AUTOMOVE_ALWAYS_STOP_ON_ITEMS + "=" + StringTable::get(SettingTextKeys::SETTING_AUTOMOVE_ALWAYS_STOP_ON_ITEMS) + ": " + StringTable::get(TextMessages::get_bool_sid(settings.get_setting_as_bool(Setting::AUTOMOVE_ALWAYS_STOP_ON_ITEMS))) } };
   return action_set;

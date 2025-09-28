@@ -94,6 +94,31 @@ list<ItemPtr> ItemManager::get_filtered_items(IInventoryPtr inv, const list<IIte
   return result;
 }
 
+vector<string> ItemManager::get_item_descriptions_by_ids(const vector<string>& item_ids)
+{
+  vector<string> descs;
+
+  Game& game = Game::instance();
+  const ItemMap& items = game.get_items_ref();
+
+  for (const string& item_id : item_ids)
+  {
+    auto i_it = items.find(item_id);
+
+    if (i_it != items.end())
+    {
+      ItemPtr item = i_it->second;
+
+      if (item != nullptr)
+      {
+        descs.push_back(StringTable::get(item->get_description_sid()));
+      }
+    }
+  }
+
+  return descs;
+}
+
 // Check to see if a creature has an item with the given base ID.
 bool ItemManager::has_item(CreaturePtr creature, const string& base_item_id, const map<string, string>& properties)
 {

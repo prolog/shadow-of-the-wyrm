@@ -69,6 +69,7 @@ const string Setting::AUTOPICKUP_IGNORE_CORPSES = "autopickup_ignore_corpses";
 const string Setting::AUTOPICKUP_IGNORE_UNPAID = "autopickup_ignore_unpaid";
 const string Setting::AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT = "autopickup_ignore_items_over_weight";
 const string Setting::AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT_LBS = "autopickup_ignore_items_over_weight_lbs";
+const string Setting::AUTOPICKUP_IGNORE_SPECIFIED_ITEMS = "autopickup_ignore_specified_items";
 const string Setting::AUTOPICKUP_IGNORE_ITEM_IDS = "autopickup_ignore_item_ids";
 const string Setting::PROMPT_ON_STACK_PICKUP = "prompt_on_stack_pickup";
 const string Setting::AUTOMELEE = "automelee";
