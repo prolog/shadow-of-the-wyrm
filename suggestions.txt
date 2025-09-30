@@ -16,9 +16,7 @@ Me:
 - git push --tags
 - Audio enhancements off for testing
 - kelp forest unit tests
-- unit test for magicalcombattargetnumbercalculator, but first do the bug
-  fix, the attacker check is checking the defender val instead
-- rename get_random_chance_shoals
+- unit test for melee/ranged target number calculator
 - hive: certain number of kicks generate insects, then breaks it
 - re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
   YT after)
