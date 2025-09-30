@@ -9415,6 +9415,9 @@
     <ClCompile Include="engine\calculators\source\CoastlineCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\MagicalCombatTargetNumberCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShadowOfTheWyrm.rc" />

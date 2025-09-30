@@ -43,3 +43,7 @@ SkillType MagicalCombatTargetNumberCalculator::get_attacker_skill() const
 {
   return SkillType::SKILL_GENERAL_MAGIC;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/MagicalCombatTargetNumberCalculator_test.cpp"
+#endif
