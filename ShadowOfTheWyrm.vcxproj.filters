@@ -9421,6 +9421,9 @@
     <ClCompile Include="engine\calculators\source\unit_tests\WandsCombatTargetNumberCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\MeleeAndRangedCombatTargetNumberCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ShadowOfTheWyrm.rc" />

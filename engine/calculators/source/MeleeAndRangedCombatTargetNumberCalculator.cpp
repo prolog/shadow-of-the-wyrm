@@ -58,3 +58,7 @@ int MeleeAndRangedCombatTargetNumberCalculator::calculate_pct_chance_pass_throug
 
   return pct_chance;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/MeleeAndRangedCombatTargetNumberCalculator_test.cpp"
+#endif
