@@ -14,11 +14,11 @@ int CoastlineCalculator::calc_pct_chance_kelp_forest(const pair<Coordinate, int>
   {
     if (d_equator_normal < 0.65)
     {
-      pct_chance_kf = static_cast<int>(100 * d_equator_normal / 6);
+      pct_chance_kf = static_cast<int>(100 * d_equator_normal / 5);
     }
     else if (d_equator_normal < 0.90)
     {
-      pct_chance_kf = static_cast<int>(100 * d_equator_normal / 4);
+      pct_chance_kf = static_cast<int>(100 * d_equator_normal / 3);
     }
   }
 
@@ -27,6 +27,7 @@ int CoastlineCalculator::calc_pct_chance_kelp_forest(const pair<Coordinate, int>
 
 int CoastlineCalculator::calc_pct_chance_shoals() const
 {
+  // Consistent across the world. (the oceans are shallow?)
   return 40;
 }
 
@@ -39,3 +40,7 @@ int CoastlineCalculator ::generate_random_shoals_xiny_y() const
 {
   return RNG::range(20, 60);
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/CoastlineCalculator_test.cpp"
+#endif
