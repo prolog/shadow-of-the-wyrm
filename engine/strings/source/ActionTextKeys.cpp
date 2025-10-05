@@ -656,6 +656,7 @@ const string ActionTextKeys::ACTION_FORGE_ARTIFACT_SELECTED    = "ACTION_FORGE_A
 const string ActionTextKeys::ACTION_FORGE_FULL_POTENTIAL       = "ACTION_FORGE_FULL_POTENTIAL";
 const string ActionTextKeys::ACTION_FORGE_SUCCESSFUL           = "ACTION_FORGE_SUCCESSFUL";
 const string ActionTextKeys::ACTION_JEWELER_WORKBENCH_NO_JEWELER_SKILL = "ACTION_JEWELER_WORKBENCH_NO_JEWELER_SKILL";
+const string ActionTextKeys::ACTION_SHAKE_HIVE                 = "ACTION_SHAKE_HIVE";
 const string ActionTextKeys::ACTION_SKIN_WORLD_MAP             = "ACTION_SKIN_WORLD_MAP";
 const string ActionTextKeys::ACTION_SKIN_NO_CORPSES            = "ACTION_SKIN_NO_CORPSES";
 const string ActionTextKeys::ACTION_SKIN_NO_SKIN               = "ACTION_SKIN_NO_SKIN";
