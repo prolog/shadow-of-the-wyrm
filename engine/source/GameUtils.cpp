@@ -1,7 +1,9 @@
 #include "CoordUtils.hpp"
 #include "Conversion.hpp"
+#include "CreatureFactory.hpp"
 #include "GameUtils.hpp"
 #include "Game.hpp"
+#include "MessageManagerFactory.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
@@ -73,6 +75,101 @@ void GameUtils::add_new_creature_to_map(Game& game, CreaturePtr new_creature, Ma
         // Set the action cost to one more than the current.
         ac.add(cost, id);
       }
+    }
+  }
+}
+
+void GameUtils::summon_creatures(CreaturePtr creature, MapPtr map, const std::pair<Dice, std::vector<std::string>>& summoned_creature_details, const string& message_sid)
+{
+  // Guard to ensure there's something to actually summon.
+  if (summoned_creature_details.second.empty() ||
+      summoned_creature_details.second.at(0).empty())
+  {
+    return;
+  }
+
+  if (creature != nullptr && map != nullptr)
+  {
+    Dice num_creatures = summoned_creature_details.first;
+    vector<string> possible_creatures = summoned_creature_details.second;
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+
+    MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
+    TilesContainer& tiles = fov_map->get_tiles_ref();
+
+    vector<pair<string, TilePtr>> free_tiles;
+
+    // Make a list of the free tiles surrounding the caster.  These will
+    // be available for randomly placing the summoned creatures, as long
+    // as the tiles can support the creature.
+    for (TilesContainer::value_type& fov_map_tile : tiles)
+    {
+      TilePtr tile = fov_map_tile.second;
+      if (tile && !tile->get_is_blocking())
+      {
+        free_tiles.push_back(fov_map_tile);
+      }
+    }
+
+    // Roll the num_creatures dice to get the number of creatures to
+    // place.
+    int n_creatures = RNG::dice(num_creatures);
+    int cur_creatures_placed = 0;
+
+    // Place n summoned creatures on the free tiles surrounding the
+    // caster.  Stop if there are no more free tiles available.
+    size_t pcreatures_size = possible_creatures.size();
+
+    bool creatures_summoned = false;
+    int max_failed_attempts = 3;
+    int failed_attempts = 0;
+
+    if (pcreatures_size > 0)
+    {
+      while ((failed_attempts < max_failed_attempts) &&
+             (cur_creatures_placed < n_creatures) && 
+             (!free_tiles.empty()))
+      {
+        // Select a tile at random
+        int tile_idx = RNG::range(0, free_tiles.size() - 1);
+        string creature_id = possible_creatures.at(RNG::range(0, pcreatures_size - 1));
+
+        // Create a creature to place.
+        CreatureFactory cf;
+        CreaturePtr summoned_creature = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id, current_map);
+
+        if (summoned_creature != nullptr)
+        {
+          // Place the creature on the tile
+          pair<string, TilePtr> fov_tile = free_tiles.at(tile_idx);
+          Coordinate coords = MapUtils::convert_map_key_to_coordinate(fov_tile.first);
+          TilePtr tile = fov_tile.second;
+
+          // Add the newly-summoned creature to the map, adding it as well to the
+          // action coordinator if necessary.
+          GameUtils::add_new_creature_to_map(game, summoned_creature, current_map, coords);
+
+          // Remove the tile from the list of free tiles, and increment the number
+          // of summoned creatures.
+          free_tiles.erase(free_tiles.begin() + tile_idx);
+          cur_creatures_placed++;
+
+          if (creatures_summoned == false)
+          {
+            creatures_summoned = true;
+          }
+        }
+        else
+        {
+          failed_attempts++;
+        }
+      }
+
+      // Add an appropriate message.
+      IMessageManager& manager = MMF::instance();
+      manager.add_new_message(StringTable::get(message_sid));
+      manager.send();
     }
   }
 }

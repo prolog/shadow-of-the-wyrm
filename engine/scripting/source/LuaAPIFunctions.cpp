@@ -209,6 +209,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_all_base_features_to_map", add_all_base_features_to_map);
   lua_register(L, "add_feature_to_player_tile", add_feature_to_player_tile);
   lua_register(L, "set_feature_additional_property", set_feature_additional_property);
+  lua_register(L, "add_hive_to_map", add_hive_to_map);
   lua_register(L, "mark_quest_completed", mark_quest_completed);
   lua_register(L, "remove_active_quest", remove_active_quest);
   lua_register(L, "is_quest_completed", is_quest_completed);
@@ -1609,6 +1610,63 @@ int set_feature_additional_property(lua_State* ls)
   }
 
   lua_pushboolean(ls, prop_added);
+  return 1;
+}
+
+int add_hive_to_map(lua_State* ls)
+{
+  bool added = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int y = lua_tointeger(ls, 2);
+    int x  = lua_tointeger(ls, 3);
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      if (tile != nullptr)
+      {
+        string drone_id = lua_tostring(ls, 4);
+        string leader_id;
+        vector<string> item_ids;
+
+        if (num_args >= 5 && lua_isstring(ls, 5))
+        {
+          leader_id = lua_tostring(ls, 5);
+        }
+
+        if (num_args == 6 && lua_istable(ls, 6))
+        {
+          item_ids = LuaUtils::get_string_array_from_table(ls, 6);
+        }
+
+        FeaturePtr feature = FeatureGenerator::generate_hive();
+        std::shared_ptr<Hive> hive = std::dynamic_pointer_cast<Hive>(feature);
+
+        if (hive != nullptr)
+        {
+          hive->set_drone_id(drone_id);
+          hive->set_leader_id(leader_id);
+          hive->set_item_ids(item_ids);
+
+          tile->set_feature(hive);
+          added = true;
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_hive_to_map");
+  }
+
+  lua_pushboolean(ls, added);
   return 1;
 }
 

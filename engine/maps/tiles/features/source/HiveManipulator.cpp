@@ -1,6 +1,8 @@
 #include "HiveManipulator.hpp"
 #include "ActionTextKeys.hpp"
 #include "Features.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 
@@ -34,10 +36,16 @@ bool HiveManipulator::shake_hive(TilePtr feature_tile, FeaturePtr tile_feature, 
     {
       string msg_sid = message_sid;
       int charges = hive->get_charges();
+      MapPtr map = Game::instance().get_current_map();
 
       if (charges > 0)
       {
-        // erupt... (TODO)
+        // Summon a bunch of drones around the disturber.
+        Dice d(2, 3, 0);
+        pair<Dice, vector<std::string>> summoned_creature_details = { d, {hive->get_drone_id() } };
+
+        string summon_message_sid = ActionTextKeys::ACTION_ERUPT_HIVE;
+        GameUtils::summon_creatures(creature, map, summoned_creature_details, summon_message_sid);
 
         // Reduce the hive's capacity
         hive->set_charges(charges - 1);
@@ -47,14 +55,30 @@ bool HiveManipulator::shake_hive(TilePtr feature_tile, FeaturePtr tile_feature, 
         hive_destroyed = true;
       }
 
-      if (hive_destroyed)
+      // If there are hive items, add some on the hive tile.
+      vector<string> item_ids = hive->get_item_ids();
+      if (!item_ids.empty())
       {
-        msg_sid = ActionTextKeys::ACTION_KICK_HIVE_EMPTY;
+        int num_items = RNG::range(1, 3);
+
+        for (int i = 0; i < num_items; i++)
+        {
+          string item_id = item_ids.at(RNG::range(0, item_ids.size() - 1));
+          ItemPtr item = ItemManager::create_item(item_id);
+
+          feature_tile->get_items()->merge_or_add(item);
+        }
       }
 
-      IMessageManager& manager = MMF::instance();
-      manager.add_new_message(StringTable::get(msg_sid));
-      manager.send();
+      if (hive_destroyed)
+      {
+        // The leader emerges
+        Dice d(2, 3, 0);
+        pair<Dice, vector<std::string>> summoned_creature_details = { d, {hive->get_leader_id() } };
+
+        string summon_message_sid = ActionTextKeys::ACTION_KICK_HIVE_EMPTY;
+        GameUtils::summon_creatures(creature, map, summoned_creature_details, summon_message_sid);
+      }
     }
 
     if (hive_destroyed)

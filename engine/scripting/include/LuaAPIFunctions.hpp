@@ -44,6 +44,7 @@ int add_all_base_features_to_map(lua_State* ls);
 int add_configurable_feature_to_map(lua_State* ls);
 int add_feature_to_player_tile(lua_State* ls);
 int set_feature_additional_property(lua_State* ls);
+int add_hive_to_map(lua_State* ls);
 int mark_quest_completed(lua_State* ls);
 int remove_active_quest(lua_State* ls);
 int is_quest_completed(lua_State* ls);
