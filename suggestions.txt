@@ -15,8 +15,6 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
-- unit test for melee/ranged target number calculator
-- hive: certain number of kicks generate insects, then breaks it
 - re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
   YT after)
 - for steel items: coal + iron? recipes tied to skills?
