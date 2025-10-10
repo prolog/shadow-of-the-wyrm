@@ -17,6 +17,7 @@ Me:
 - Audio enhancements off for testing
 - re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
   YT after)
+- refactor the hive generation code that checks creature values
 - for steel items: coal + iron? recipes tied to skills?
 - what about a theme for Cithriel? something weird and otherworldly
 - What other (new) items would be good for brewing? maybe some could use

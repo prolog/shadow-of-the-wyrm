@@ -119,6 +119,20 @@
 				<Type>6</Type>
 			</Damage>
 			<Speed>35</Speed>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_HIVE_DRONE</Name>
+					<Value>1</Value>
+				</Property>
+				<Property>
+					<Name>CREATURE_PROPERTIES_HIVE_ITEMS</Name>
+					<Value>_honey,_honeycomb</Value>
+				</Property>
+				<Property>
+					<Name>CREATURE_PROPERTIES_HIVE_LEADER</Name>
+					<Value>_queen_bee</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="cat">
 			<RaceID>_animal</RaceID>
@@ -16738,7 +16752,7 @@
 				<Type>5</Type>
 			</Damage>
 		</Creature>
-		<Creature id="queen_bee">
+		<Creature id="_queen_bee">
 			<RaceID>_insect</RaceID>
 			<ShortDescriptionSID>QUEEN_BEE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>QUEEN_BEE_DESCRIPTION_SID</DescriptionSID>

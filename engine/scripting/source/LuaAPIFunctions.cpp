@@ -1623,8 +1623,8 @@ int add_hive_to_map(lua_State* ls)
     string map_id = lua_tostring(ls, 1);
     int y = lua_tointeger(ls, 2);
     int x  = lua_tointeger(ls, 3);
-
-    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+    Game& game = Game::instance();
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
 
     if (map != nullptr)
     {
@@ -1635,15 +1635,31 @@ int add_hive_to_map(lua_State* ls)
         string drone_id = lua_tostring(ls, 4);
         string leader_id;
         vector<string> item_ids;
+        CreaturePtr drone;
+        const CreatureMap& creatures = game.get_creatures_ref();
+
+        auto cr_it = creatures.find(drone_id);
+        if (cr_it != creatures.end())
+        {
+          drone = cr_it->second;
+        }
 
         if (num_args >= 5 && lua_isstring(ls, 5))
         {
           leader_id = lua_tostring(ls, 5);
         }
+        else if (drone != nullptr)
+        {
+          leader_id = drone->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIVE_LEADER);
+        }
 
         if (num_args == 6 && lua_istable(ls, 6))
         {
           item_ids = LuaUtils::get_string_array_from_table(ls, 6);
+        }
+        else if (drone != nullptr)
+        {
+          item_ids = String::create_string_vector_from_csv_string(drone->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIVE_ITEMS));
         }
 
         FeaturePtr feature = FeatureGenerator::generate_hive();
