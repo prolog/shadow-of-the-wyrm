@@ -8504,6 +8504,12 @@
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>300</Nutrition>
 				<FoodType>0</FoodType>
+				<Properties>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 			</Food>
 			<Food id="_wheat">
 				<DescriptionSID>WHEAT_SID</DescriptionSID>
