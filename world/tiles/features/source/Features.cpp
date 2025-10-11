@@ -1,4 +1,6 @@
 #include "ActionTextKeys.hpp"
+#include "Conversion.hpp"
+#include "CreatureProperties.hpp"
 #include "Features.hpp"
 #include "FeatureDescriptionTextKeys.hpp"
 #include "global_prototypes.hpp"
@@ -1505,6 +1507,27 @@ void Hive::set_item_ids(const vector<string>& new_item_ids)
 vector<string> Hive::get_item_ids() const
 {
   return item_ids;
+}
+
+bool Hive::populate_from(CreaturePtr creature)
+{
+  bool populated = false;
+
+  if (creature != nullptr)
+  {
+    bool is_drone = String::to_bool(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIVE_DRONE));
+
+    if (is_drone)
+    {
+      set_drone_id(creature->get_id());
+      set_item_ids(String::create_string_vector_from_csv_string(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIVE_ITEMS)));
+      set_leader_id(creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIVE_LEADER));
+
+      populated = true;
+    }
+  }
+
+  return populated;
 }
 
 bool Hive::serialize(ostream& stream) const

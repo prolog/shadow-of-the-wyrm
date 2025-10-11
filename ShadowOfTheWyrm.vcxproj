@@ -1068,6 +1068,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\settlements\include\SettlementTypes.hpp" />
     <ClInclude Include="engine\generators\settlements\include\ShopGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\WalledSettlementGenerator.hpp" />
+    <ClInclude Include="engine\generators\settlements\sector\include\BeehiveSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\BeerHallSectorFeature.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\CitySectorGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\sector\include\CitySectorTypes.hpp" />
@@ -2747,6 +2748,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\rooms\source\DankRoomGenerator.cpp" />
     <ClCompile Include="engine\generators\rooms\source\MushRoomGenerator.cpp" />
     <ClCompile Include="engine\generators\rooms\source\WetRoomGenerator.cpp" />
+    <ClCompile Include="engine\generators\settlements\sector\source\BeehiveSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\BeerHallSectorFeature.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\CitySectorGenerator.cpp" />
     <ClCompile Include="engine\generators\settlements\sector\source\DefaultSectorFeatureGenerator.cpp" />

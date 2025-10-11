@@ -1644,34 +1644,14 @@ int add_hive_to_map(lua_State* ls)
           drone = cr_it->second;
         }
 
-        if (num_args >= 5 && lua_isstring(ls, 5))
-        {
-          leader_id = lua_tostring(ls, 5);
-        }
-        else if (drone != nullptr)
-        {
-          leader_id = drone->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIVE_LEADER);
-        }
-
-        if (num_args == 6 && lua_istable(ls, 6))
-        {
-          item_ids = LuaUtils::get_string_array_from_table(ls, 6);
-        }
-        else if (drone != nullptr)
-        {
-          item_ids = String::create_string_vector_from_csv_string(drone->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_HIVE_ITEMS));
-        }
-
         FeaturePtr feature = FeatureGenerator::generate_hive();
         std::shared_ptr<Hive> hive = std::dynamic_pointer_cast<Hive>(feature);
 
         if (hive != nullptr)
         {
-          hive->set_drone_id(drone_id);
-          hive->set_leader_id(leader_id);
-          hive->set_item_ids(item_ids);
-
+          hive->populate_from(drone);
           tile->set_feature(hive);
+
           added = true;
         }
       }

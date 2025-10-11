@@ -661,6 +661,9 @@ class Hive : public Feature
     void set_item_ids(const std::vector<std::string>& new_item_ids);
     std::vector<std::string> get_item_ids() const;
 
+    // Read all the hive info from the given creature.
+    bool populate_from(CreaturePtr creature);
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 
