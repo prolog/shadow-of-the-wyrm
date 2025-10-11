@@ -73,7 +73,7 @@ bool HiveManipulator::shake_hive(TilePtr feature_tile, FeaturePtr tile_feature, 
       if (hive_destroyed)
       {
         // The leader emerges
-        Dice d(2, 3, 0);
+        Dice d(1, 1, 0);
         pair<Dice, vector<std::string>> summoned_creature_details = { d, {hive->get_leader_id() } };
 
         string summon_message_sid = ActionTextKeys::ACTION_KICK_HIVE_EMPTY;
