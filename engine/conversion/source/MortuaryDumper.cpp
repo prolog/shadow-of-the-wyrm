@@ -24,7 +24,7 @@ string MortuaryDumper::get_mortuary() const
 {
   ostringstream ss;
   Game& game = Game::instance();
-  CreatureMap cmap = game.get_creatures_ref();
+  CreatureMap cmap = game.get_creatures_cref();
 
   // Display the first kill, assuming something's been killed.
   ss << String::centre(StringTable::get(TextKeys::MORTUARY), num_cols) << endl << endl;

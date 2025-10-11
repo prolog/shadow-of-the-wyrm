@@ -26,7 +26,7 @@ string ModifiersDumper::get_modifiers() const
 {
   ostringstream ss;
   Game& game = Game::instance();
-  CreatureMap cmap = game.get_creatures_ref();
+  CreatureMap cmap = game.get_creatures_cref();
 
   ss << String::centre(StringTable::get(TextKeys::MODIFIERS), num_cols) << endl << endl;
 

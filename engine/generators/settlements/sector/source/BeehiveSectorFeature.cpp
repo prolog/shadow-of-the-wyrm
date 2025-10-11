@@ -29,7 +29,7 @@ bool BeehiveSectorFeature::generate_feature(MapPtr map, const Coordinate& start_
 
         if (hive != nullptr)
         {
-          const CreatureMap& creatures = Game::instance().get_creatures_ref();
+          const CreatureMap& creatures = Game::instance().get_creatures_cref();
           auto cr_it = creatures.find(BEEHIVE_DRONE_ID);
 
           if (cr_it != creatures.end())

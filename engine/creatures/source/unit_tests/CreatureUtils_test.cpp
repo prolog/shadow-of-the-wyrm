@@ -70,7 +70,7 @@ TEST(SW_Engine_CreatureUtils, has_followers_in_fov)
   EXPECT_TRUE(cm.empty());
 
   CreaturePtr c2 = std::make_shared<Creature>();
-  c->get_decision_strategy()->get_fov_map()->get_creatures_ref().insert(make_pair("id", c2));
+  c->get_decision_strategy()->get_fov_map()->get_creatures_cref().insert(make_pair("id", c2));
 
   cm = CreatureUtils::get_followers_in_fov(c);
 
@@ -97,7 +97,7 @@ TEST(SW_Engine_CreatureUtils, get_specific_follower_in_fov)
 
   CreaturePtr c2 = std::make_shared<Creature>();
   c2->set_id("follower");
-  c->get_decision_strategy()->get_fov_map()->get_creatures_ref().insert(make_pair("follower", c2));
+  c->get_decision_strategy()->get_fov_map()->get_creatures_cref().insert(make_pair("follower", c2));
   c2->set_leader_and_at_ease(l_id);
 
   CreatureMap cm = CreatureUtils::get_followers_in_fov(c);

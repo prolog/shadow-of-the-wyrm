@@ -27,7 +27,7 @@ void AgeTimeObserver::notify(const ulonglong /*minutes_passed*/)
 
     if (cur_map != nullptr)
     {
-      process_creatures(cur_map, cur_map->get_creatures_ref());
+      process_creatures(cur_map, cur_map->get_creatures_cref());
     }
   }
 }

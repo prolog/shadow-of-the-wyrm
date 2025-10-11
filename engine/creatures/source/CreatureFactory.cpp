@@ -77,7 +77,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
   Game& game = Game::instance();
   
   CreatureGenerationValuesMap& cgv_map = game.get_creature_generation_values_ref();
-  CreatureMap creature_map = game.get_creatures_ref();
+  CreatureMap creature_map = game.get_creatures_cref();
     
   CreatureMap::iterator c_it = creature_map.find(creature_id);
     CreatureGenerationValuesMap::iterator cgv_it = cgv_map.find(creature_id);
@@ -243,7 +243,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
       // Briefly add the creature to the map's temp list of creatures so the 
       // creature can be updated.  Do whatever needs to be done and then
       // remove it after.
-      CreatureMap& creatures = callback_map->get_creatures_ref();
+      CreatureMap& creatures = callback_map->get_creatures_cref();
       creatures[creature->get_id()] = creature;
 
       CreateScript create;
@@ -453,7 +453,7 @@ void CreatureFactory::setup_player(CreaturePtr player, ControllerPtr controller)
 {
   if (player != nullptr)
   {
-    const CreatureMap& creatures = Game::instance().get_creatures_ref();
+    const CreatureMap& creatures = Game::instance().get_creatures_cref();
 
     player->set_is_player(true, controller);
 

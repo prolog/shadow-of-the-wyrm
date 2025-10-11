@@ -89,7 +89,7 @@ CreaturePtr BestiaryAction::get_bestiary_creature(const string& search_text) con
   Game& game = Game::instance();
 
   string short_description;
-  CreatureMap creature_map = game.get_creatures_ref();
+  CreatureMap creature_map = game.get_creatures_cref();
   vector<CreaturePtr> partial_matches;
 
   for(const CreatureMap::value_type& creature_pair : creature_map)

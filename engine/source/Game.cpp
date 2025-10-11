@@ -335,7 +335,7 @@ const SpellMap& Game::get_spells_ref()
   return spells;
 }
 
-const CreatureMap& Game::get_creatures_ref() const
+const CreatureMap& Game::get_creatures_cref() const
 {
   return creatures;
 }

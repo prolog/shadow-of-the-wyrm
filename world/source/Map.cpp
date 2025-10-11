@@ -203,7 +203,7 @@ map<string, CreaturePtr> Map::get_creatures()
   return creatures;
 }
 
-map<string, CreaturePtr>& Map::get_creatures_ref()
+map<string, CreaturePtr>& Map::get_creatures_cref()
 {
   if (creatures.empty())
   {

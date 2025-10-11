@@ -51,7 +51,7 @@ class Map : public ISerializable
     std::string get_creature_location_debug(const std::string& creature_id) const;
 
 		std::map<std::string, std::shared_ptr<Creature>> get_creatures();
-		std::map<std::string, std::shared_ptr<Creature>>& get_creatures_ref();
+		std::map<std::string, std::shared_ptr<Creature>>& get_creatures_cref();
 
     std::map<Direction, std::vector<Coordinate>>& get_tile_exits_ref();
     std::map<Direction, std::vector<Coordinate>> get_tile_exits() const;

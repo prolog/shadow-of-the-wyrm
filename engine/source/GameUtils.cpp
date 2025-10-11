@@ -241,7 +241,7 @@ bool GameUtils::is_creature_in_player_view_map(Game& game, const string& creatur
     {
       // Rebuild the view map's creatures in case it is out of date - the player 
       // might not have acted in some time...
-      std::map<string, CreaturePtr>& creatures = view_map->get_creatures_ref();
+      std::map<string, CreaturePtr>& creatures = view_map->get_creatures_cref();
 
       creature_in_view_map = (creatures.find(creature_id) != creatures.end());
     }

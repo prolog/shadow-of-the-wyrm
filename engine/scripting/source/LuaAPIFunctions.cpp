@@ -111,7 +111,7 @@ CreaturePtr get_creature(const string& creature_id)
 
     if (current_map != nullptr)
     {
-      CreatureMap& cmap = current_map->get_creatures_ref();
+      CreatureMap& cmap = current_map->get_creatures_cref();
       CreatureMap::iterator c_it = cmap.find(creature_id);
 
       if (c_it != cmap.end())
@@ -1636,7 +1636,7 @@ int add_hive_to_map(lua_State* ls)
         string leader_id;
         vector<string> item_ids;
         CreaturePtr drone;
-        const CreatureMap& creatures = game.get_creatures_ref();
+        const CreatureMap& creatures = game.get_creatures_cref();
 
         auto cr_it = creatures.find(drone_id);
         if (cr_it != creatures.end())
@@ -3117,7 +3117,7 @@ int get_creature_yx(lua_State* ls)
     string creature_id_or_base = lua_tostring(ls, 1);
     
     Coordinate c(-1,-1);
-    const CreatureMap& creatures = current_map->get_creatures_ref();
+    const CreatureMap& creatures = current_map->get_creatures_cref();
 
     for (const auto& creature_pair : creatures)
     {
@@ -5481,7 +5481,7 @@ int set_map_hostility(lua_State* ls)
 
     if (map != nullptr)
     {
-      const CreatureMap& creatures = map->get_creatures_ref();
+      const CreatureMap& creatures = map->get_creatures_cref();
       HostilityManager hm;
 
       for (const auto& c_pair : creatures)
@@ -5635,7 +5635,7 @@ int get_creature_description(lua_State* ls)
     // at a particular goblin in a dungeon).
     if (ignore_checks)
     {
-      const CreatureMap& c_map = Game::instance().get_creatures_ref();
+      const CreatureMap& c_map = Game::instance().get_creatures_cref();
       auto c_it = c_map.find(creature_id);
 
       if (c_it != c_map.end())
@@ -5665,7 +5665,7 @@ int get_creature_description_sids(lua_State* ls)
 
   if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
   {
-    const CreatureMap& c_map = Game::instance().get_creatures_ref();
+    const CreatureMap& c_map = Game::instance().get_creatures_cref();
     string base_id = lua_tostring(ls, 1);
     auto c_it = c_map.find(base_id);
 
@@ -6010,7 +6010,7 @@ int add_kill_to_creature_mortuary(lua_State* ls)
     if (creature != nullptr)
     {
       string creature_short_desc_sid;
-      const CreatureMap& creatures = Game::instance().get_creatures_ref();
+      const CreatureMap& creatures = Game::instance().get_creatures_cref();
       const auto c_it = creatures.find(killed_id);
 
       if (c_it != creatures.end() && c_it->second != nullptr)
@@ -9601,7 +9601,7 @@ int creature_has_humanoid_followers(lua_State* ls)
 
     if (map != nullptr)
     {
-      const CreatureMap& creatures = map->get_creatures_ref();
+      const CreatureMap& creatures = map->get_creatures_cref();
 
       for (const auto& c_pair : creatures)
       {
@@ -9640,7 +9640,7 @@ int count_creature_humanoid_followers(lua_State* ls)
 
     if (map != nullptr)
     {
-      const CreatureMap& creatures = map->get_creatures_ref();
+      const CreatureMap& creatures = map->get_creatures_cref();
 
       for (const auto& c_pair : creatures)
       {
@@ -9736,7 +9736,7 @@ int count_creatures_with_race(lua_State* ls)
 
     if (map != nullptr)
     {
-      const CreatureMap& creatures = map->get_creatures_ref();
+      const CreatureMap& creatures = map->get_creatures_cref();
 
       for (const auto& c_pair : creatures)
       {
@@ -9778,7 +9778,7 @@ int count_creatures_with_property(lua_State* ls)
 
     if (map != nullptr)
     {
-      const CreatureMap& creatures = map->get_creatures_ref();
+      const CreatureMap& creatures = map->get_creatures_cref();
 
       for (const auto& c_pair : creatures)
       {

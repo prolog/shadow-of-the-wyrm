@@ -80,7 +80,7 @@ class Game : public ISerializable
     const ClassMap& get_classes_ref() const;
     
     void set_creatures(const CreatureMap& game_creatures);
-    const CreatureMap& get_creatures_ref() const;
+    const CreatureMap& get_creatures_cref() const;
 
     void set_spells(const SpellMap& game_spells);
     const SpellMap& get_spells_ref();

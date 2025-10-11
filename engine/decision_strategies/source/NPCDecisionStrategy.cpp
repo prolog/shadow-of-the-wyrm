@@ -1065,7 +1065,7 @@ void NPCDecisionStrategy::update_threats_with_contraband(const std::string& this
 
   if (attack_contraband && current_map != nullptr && view_map != nullptr)
   {
-    const CreatureMap& creatures = view_map->get_creatures_ref();
+    const CreatureMap& creatures = view_map->get_creatures_cref();
     CreaturePtr this_creature = current_map->get_creature(this_creature_id);
     HostilityManager hm;
 

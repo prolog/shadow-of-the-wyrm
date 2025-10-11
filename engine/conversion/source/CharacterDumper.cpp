@@ -197,7 +197,7 @@ string CharacterDumper::get_party() const
     }
     else
     {
-      const CreatureMap& creatures = current_map->get_creatures_ref();
+      const CreatureMap& creatures = current_map->get_creatures_cref();
       vector<string> follower_descs;
 
       for (const auto& c_pair : creatures)

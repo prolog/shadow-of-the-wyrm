@@ -50,7 +50,7 @@ DeityDecisionImplications HaltBreedingDeityDecisionStrategyHandler::handle_decis
   
   if (current_map != nullptr)
   {
-    CreatureMap& creatures = current_map->get_creatures_ref();
+    CreatureMap& creatures = current_map->get_creatures_cref();
 
     for (auto& cr_pair : creatures)
     {

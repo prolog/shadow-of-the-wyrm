@@ -1419,7 +1419,7 @@ vector<CreaturePtr> MapUtils::get_hostile_creatures(const string& creature_id, M
 
   if (current_map != nullptr)
   {
-    map<std::string, CreaturePtr>& creature_map = current_map->get_creatures_ref();
+    map<std::string, CreaturePtr>& creature_map = current_map->get_creatures_cref();
     for (auto& cr_pair : creature_map)
     {
       CreaturePtr creature = cr_pair.second;
@@ -1454,7 +1454,7 @@ bool MapUtils::hostile_creature_exists(const string& creature_id, MapPtr current
 {
   if (current_map)
   {
-    map<std::string, CreaturePtr>& creature_map = current_map->get_creatures_ref();
+    map<std::string, CreaturePtr>& creature_map = current_map->get_creatures_cref();
     
     for (map<string, CreaturePtr>::const_iterator cr_it = creature_map.begin(); cr_it != creature_map.end(); cr_it++)
     {
@@ -1699,7 +1699,7 @@ std::multimap<int, pair<string, Coordinate>> MapUtils::create_distance_map(Creat
   if (map != nullptr && creature != nullptr)
   {
     string creature_id = creature->get_id();
-    std::map<string, CreaturePtr>& creatures = map->get_creatures_ref();
+    std::map<string, CreaturePtr>& creatures = map->get_creatures_cref();
     Coordinate creature_location = map->get_location(creature->get_id());
 
     for (std::map<string, CreaturePtr>::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
@@ -2583,7 +2583,7 @@ void MapUtils::enrage_nearby_creatures(MapPtr map, CreaturePtr creature, const s
     {
       // Nearby creatures that can see the creature and match the 
       // base_creature_id or whose race matches the race_id are enraged!!
-      const CreatureMap& creatures = map->get_creatures_ref();
+      const CreatureMap& creatures = map->get_creatures_cref();
       HostilityManager hm;
       RaceManager rm;
 
