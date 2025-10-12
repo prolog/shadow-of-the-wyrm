@@ -52,6 +52,8 @@ Shadow of the Wyrm v1.9.0 "de Cabezon"
   generate flavour text, but this will also trigger desecration for altars 
   and agitate hives.
 
+- Stone ammo (rocks, etc) now have a much higher survival rate.
+
 - New items: slime, essence of were-light, juniper berries, wild hops, honey,
   honeycomb. Juniper berries will generate in fall, wild hops in summer.
 

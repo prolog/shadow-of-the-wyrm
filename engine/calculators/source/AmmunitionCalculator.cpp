@@ -9,6 +9,7 @@ using namespace std;
 // 1% chance of breakage, always, unless the item is an artifact.
 const int AmmunitionCalculator::BASE_PCT_CHANCE_BREAKAGE = 1;
 const int AmmunitionCalculator::BASE_PCT_CHANCE_SURVIVAL = 40;
+const int AmmunitionCalculator::STONE_SURVIVAL_MODIFIER = 50;
 const int AmmunitionCalculator::ARCHERY_SKILL_SURVIVAL_DIVISOR = 2;
 const int AmmunitionCalculator::ITEM_WEIGHT_SURVIVAL_DIVISOR = 6;
 const int AmmunitionCalculator::HAS_SLAYS_SURVIVAL_MODIFIER = 25;
@@ -27,6 +28,7 @@ const map<ItemStatus, int> AmmunitionCalculator::STATUS_SURVIVAL_MODIFIERS =
 // Whether or not ammunition survives is determined by:
 //
 // - Base 40% chance
+// - +50% if made of stone
 // - +1 for every 6oz. in weight
 // - +1 for every 2 pts of Archery
 bool AmmunitionCalculator::survives(CreaturePtr creature, ItemPtr ammunition)
@@ -75,7 +77,15 @@ int AmmunitionCalculator::calculate_pct_chance_survival(CreaturePtr creature, It
 
   if (creature != nullptr && ammunition != nullptr)
   {
+    int material_type_modifier = 0;
+
+    if (ammunition->get_material_type() == MaterialType::MATERIAL_TYPE_STONE)
+    {
+      material_type_modifier = STONE_SURVIVAL_MODIFIER;
+    }
+
     pct_chance_survival = BASE_PCT_CHANCE_SURVIVAL
+                        + material_type_modifier
                         + (creature->get_skills().get_skill(SkillType::SKILL_GENERAL_ARCHERY)->get_value() / ARCHERY_SKILL_SURVIVAL_DIVISOR)
                         + get_slays_survival_modifier(ammunition)
                         + get_item_status_survival_modifier(ammunition)
