@@ -1618,7 +1618,7 @@ int add_hive_to_map(lua_State* ls)
   bool added = false;
   int num_args = lua_gettop(ls);
 
-  if (num_args >= 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4))
+  if (num_args >= 3 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
   {
     string map_id = lua_tostring(ls, 1);
     int y = lua_tointeger(ls, 2);
@@ -1632,7 +1632,13 @@ int add_hive_to_map(lua_State* ls)
 
       if (tile != nullptr)
       {
-        string drone_id = lua_tostring(ls, 4);
+        string drone_id;
+        
+        if (num_args >= 4 && lua_isstring(ls, 4))
+        {
+          drone_id = lua_tostring(ls, 4);
+        }
+
         string leader_id;
         vector<string> item_ids;
         CreaturePtr drone;
@@ -1644,14 +1650,20 @@ int add_hive_to_map(lua_State* ls)
           drone = cr_it->second;
         }
 
-        FeaturePtr feature = FeatureGenerator::generate_hive();
-        std::shared_ptr<Hive> hive = std::dynamic_pointer_cast<Hive>(feature);
+        FeaturePtr hive;
+        
+        if (drone_id.empty())
+        {
+          hive = FeatureGenerator::generate_beehive();
+        }
+        else
+        {
+          hive = FeatureGenerator::generate_hive();        
+        }
 
         if (hive != nullptr)
         {
-          hive->populate_from(drone);
           tile->set_feature(hive);
-
           added = true;
         }
       }

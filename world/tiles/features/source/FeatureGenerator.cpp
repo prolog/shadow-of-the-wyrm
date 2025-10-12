@@ -418,6 +418,22 @@ FeaturePtr FeatureGenerator::generate_cauldron()
   return cauldron;
 }
 
+FeaturePtr FeatureGenerator::generate_beehive()
+{
+  std::shared_ptr<Hive> hive = std::make_shared<Hive>(get_config_symbol(ClassIdentifier::CLASS_ID_HIVE));
+
+  Game& game = Game::instance();
+  const CreatureMap& creatures = game.get_creatures_cref();
+  auto cr_it = creatures.find(CreatureID::CREATURE_ID_BEE);
+
+  if (cr_it != creatures.end())
+  {
+    hive->populate_from(cr_it->second);
+  }
+
+  return hive;
+}
+
 FeaturePtr FeatureGenerator::generate_hive()
 {
   FeaturePtr hive = std::make_shared<Hive>(get_config_symbol(ClassIdentifier::CLASS_ID_HIVE));

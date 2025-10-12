@@ -85,6 +85,7 @@ MapPtr HillsGenerator::generate(const Dimensions& dim)
   }
 
   GeneratorUtils::potentially_generate_coastline(result_map, this);
+  GeneratorUtils::potentially_generate_hive(result_map);
 
   return result_map;
 }

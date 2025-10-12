@@ -59,6 +59,7 @@ MapPtr ForestGenerator::generate(const Dimensions& dimensions)
   }
 
   GeneratorUtils::add_random_stream_or_springs(result_map, PCT_CHANCE_FOREST_STREAM, PCT_CHANCE_FOREST_STREAM);
+  GeneratorUtils::potentially_generate_hive(result_map);
 
   return result_map;
 }

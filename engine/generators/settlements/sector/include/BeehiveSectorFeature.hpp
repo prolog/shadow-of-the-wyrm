@@ -11,6 +11,5 @@ class BeehiveSectorFeature : public SectorFeature
     bool generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord) override;
 
     static const int PCT_CHANCE_ABANDONED_NEST;
-    static const std::string BEEHIVE_DRONE_ID;
 };
 

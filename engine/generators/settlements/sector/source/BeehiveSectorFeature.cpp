@@ -1,4 +1,5 @@
 #include "BeehiveSectorFeature.hpp"
+#include "CreatureFeatures.hpp"
 #include "FeatureGenerator.hpp"
 #include "CoordUtils.hpp"
 #include "Game.hpp"
@@ -7,7 +8,6 @@
 using namespace std;
 
 const int BeehiveSectorFeature::PCT_CHANCE_ABANDONED_NEST = 10;
-const string BeehiveSectorFeature::BEEHIVE_DRONE_ID = "_bee";
 
 bool BeehiveSectorFeature::generate_feature(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord)
 {
@@ -20,23 +20,15 @@ bool BeehiveSectorFeature::generate_feature(MapPtr map, const Coordinate& start_
 
     if (tile != nullptr && !tile->has_feature())
     {
-      FeaturePtr hive_f = FeatureGenerator::generate_hive();
+      FeaturePtr hive_f;
 
-      if (!RNG::percent_chance(PCT_CHANCE_ABANDONED_NEST))
+      if (RNG::percent_chance(PCT_CHANCE_ABANDONED_NEST))
       {
-        // Populate the hive
-        shared_ptr<Hive> hive = std::dynamic_pointer_cast<Hive>(hive_f);
-
-        if (hive != nullptr)
-        {
-          const CreatureMap& creatures = Game::instance().get_creatures_cref();
-          auto cr_it = creatures.find(BEEHIVE_DRONE_ID);
-
-          if (cr_it != creatures.end())
-          {
-            hive->populate_from(cr_it->second);
-          }
-        }
+        hive_f = FeatureGenerator::generate_hive();
+      }
+      else
+      {
+        hive_f = FeatureGenerator::generate_beehive();
       }
 
       tile->set_feature(hive_f);

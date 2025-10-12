@@ -20,7 +20,10 @@ MapPtr MarshGenerator::generate(const Dimensions& dimensions)
   MapPtr result_map = std::make_shared<Map>(dimensions);
 
   fill(result_map, TileType::TILE_TYPE_MARSH);
+  
   GeneratorUtils::potentially_generate_coastline(result_map, this);
+  GeneratorUtils::potentially_generate_hive(result_map);
+
   add_random_trees_bushes_weeds_and_reeds(result_map);
 
   if (RNG::percent_chance(PCT_CHANCE_BOG_IRON))

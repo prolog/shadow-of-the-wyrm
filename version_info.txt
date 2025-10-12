@@ -1,4 +1,4 @@
-Shadow of the Wyrm v1.8.6 "de Cabezon"
+Shadow of the Wyrm v1.9.0 "de Cabezon"
 - Version started June 28, 2025.
 
 - Updated the name combinations and various messages.
@@ -39,7 +39,7 @@ Shadow of the Wyrm v1.8.6 "de Cabezon"
 - Spell affects that affect items (fire, acid, holy, cold, etc) will now 
   also affect features like altars, barrels, etc in similar ways.
 
-- Dungeons can now have beehives.
+- Dungeons can now have beehives, as can most overworld maps.
 
 - Coastlines can now generate kelp.
 

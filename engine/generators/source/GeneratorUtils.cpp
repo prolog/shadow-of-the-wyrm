@@ -38,6 +38,9 @@ const int GeneratorUtils::STRUCTURE_MIN_HEIGHT = 3;
 const int GeneratorUtils::STRUCTURE_MAX_HEIGHT = 7;
 const int GeneratorUtils::STRUCTURE_NUM_ATTEMPTS = 15;
 
+const int GeneratorUtils::MAX_BEEHIVES = 3;
+const int GeneratorUtils::PCT_CHANCE_BEEHIVE = 2;
+
 // Hidden away by protected access
 GeneratorUtils::GeneratorUtils()
 {
@@ -790,6 +793,45 @@ void GeneratorUtils::potentially_generate_coastline(MapPtr map, Generator * cons
       generate_coastline(map, generator);
     }
   }
+}
+
+bool GeneratorUtils::potentially_generate_hive(MapPtr map)
+{
+  bool result = false;
+
+  if (map != nullptr)
+  {
+    for (int i = 0; i < MAX_BEEHIVES; i++)
+    {
+      if (RNG::percent_chance(PCT_CHANCE_BEEHIVE))
+      {
+        int max_attempts = 4;
+        Dimensions d = map->size();
+
+        for (int j = 0; j < max_attempts; j++)
+        {
+          int y = RNG::range(0, d.get_y());
+          int x = RNG::range(0, d.get_x());
+
+          TilePtr tile = map->at(y, x);
+
+          if (tile != nullptr &&
+             !tile->has_feature() &&
+              tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_GROUND &&
+             !tile->get_is_blocking(nullptr))
+          {
+            FeaturePtr beehive = FeatureGenerator::generate_beehive();
+            tile->set_feature(beehive);
+            result = true;
+
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  return result;
 }
 
 bool GeneratorUtils::generate_coastline(MapPtr map, Generator * const generator)

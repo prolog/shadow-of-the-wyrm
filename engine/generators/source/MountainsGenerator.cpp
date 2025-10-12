@@ -89,6 +89,8 @@ MapPtr MountainsGenerator::generate(const Dimensions& dimensions)
   }
 
   GeneratorUtils::potentially_generate_coastline(result_map, this);
+  GeneratorUtils::potentially_generate_hive(result_map);
+
   generate_stream(result_map);
   generate_cliffs(result_map);
   
