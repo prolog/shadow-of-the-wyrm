@@ -17,6 +17,7 @@ Me:
 - Audio enhancements off for testing
 - rocks shouldn't break as ammo
 - NPCs should be able to target hives
+- change ACTION_KICK_... to ACTION_STRIKE_...
 - re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
   YT after)
 - where else should beehives be found?

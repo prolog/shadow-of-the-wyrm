@@ -24,7 +24,7 @@ DoorGateManipulator::DoorGateManipulator(FeaturePtr feature)
 {
 }
 
-void DoorGateManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feat)
+void DoorGateManipulator::strike(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feat)
 {
   IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 

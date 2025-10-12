@@ -15,7 +15,7 @@ FenceManipulator::FenceManipulator(FeaturePtr feature)
 {
 }
 
-void FenceManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr feat)
+void FenceManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr feat)
 {
   if (creature && creature->get_is_player())
   {
