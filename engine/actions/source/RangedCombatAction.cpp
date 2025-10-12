@@ -256,13 +256,13 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
       cm.attack(creature, target_creature, AttackType::ATTACK_TYPE_RANGED);
     }
   }
-  else if (target_feature && target_feature->is_disturbable())
+  else if (target_feature)
   {
     FeatureManipulatorPtr feature_manipulator = IFeatureManipulatorFactory::create_manipulator(target_feature);
 
     if (feature_manipulator != nullptr)
     {
-      feature_manipulator->handle(tile, creature);
+      feature_manipulator->strike(creature, current_map, tile, target_coords, target_feature);
     }
   }
   

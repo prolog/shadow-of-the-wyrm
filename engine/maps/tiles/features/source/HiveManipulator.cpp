@@ -15,7 +15,7 @@ HiveManipulator::HiveManipulator(FeaturePtr feature)
 
 void HiveManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr tile_feature)
 {
-  shake_hive(feature_tile, tile_feature, creature, ActionTextKeys::ACTION_KICK_HIVE);
+  shake_hive(feature_tile, tile_feature, creature, ActionTextKeys::ACTION_STRIKE_HIVE);
 }
 
 // Messing with an insect nest generates insects (which may or may not be
@@ -76,7 +76,7 @@ bool HiveManipulator::shake_hive(TilePtr feature_tile, FeaturePtr tile_feature, 
         Dice d(1, 1, 0);
         pair<Dice, vector<std::string>> summoned_creature_details = { d, {hive->get_leader_id() } };
 
-        string summon_message_sid = ActionTextKeys::ACTION_KICK_HIVE_EMPTY;
+        string summon_message_sid = ActionTextKeys::ACTION_STRIKE_HIVE_EMPTY;
         GameUtils::summon_creatures(creature, map, summoned_creature_details, summon_message_sid);
       }
     }

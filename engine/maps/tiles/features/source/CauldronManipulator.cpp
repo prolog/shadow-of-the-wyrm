@@ -14,7 +14,7 @@ void CauldronManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, T
   if (creature && creature->get_is_player())
   {
     IMessageManager& manager = MMF::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_CAULDRON));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_CAULDRON));
     manager.send();
   }
 }

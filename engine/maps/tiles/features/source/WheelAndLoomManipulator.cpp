@@ -27,7 +27,7 @@ void WheelAndLoomManipulator::strike(CreaturePtr creature, MapPtr /*current_map*
   if (creature && creature->get_is_player())
   {
     IMessageManager& manager = MMF::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_WHEEL_AND_LOOM));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_WHEEL_AND_LOOM));
     manager.send();
   }
 }

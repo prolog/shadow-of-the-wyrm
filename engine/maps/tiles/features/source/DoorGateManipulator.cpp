@@ -58,7 +58,7 @@ void DoorGateManipulator::kick_open_door(IMessageManager& manager, EntrancePtr e
   if (entr != nullptr)
   {
     entr->get_state_ref().set_state(EntranceStateType::ENTRANCE_TYPE_CLOSED);
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_CLOSED));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_DOOR_CLOSED));
   }
 }
 
@@ -91,7 +91,7 @@ void DoorGateManipulator::kick_closed_door(IMessageManager& manager, EntrancePtr
       else
       {
         // Add a message that the door buckled but didn't break.
-        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_BUCKLED));
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_DOOR_BUCKLED));
         handle_sprain_if_necessary(creature, PCT_CHANCE_SPRAIN_LEG_BUCKLE);
       }
     }
@@ -99,7 +99,7 @@ void DoorGateManipulator::kick_closed_door(IMessageManager& manager, EntrancePtr
     {
       // If there was no chance at all of breaking the door, add a message to
       // that effect.
-      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_UNMOVED));
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_DOOR_UNMOVED));
       handle_sprain_if_necessary(creature, PCT_CHANCE_SPRAIN_LEG_UNMOVED);
     }
   }
@@ -170,7 +170,7 @@ void DoorGateManipulator::break_down_door(CreaturePtr creature, TilePtr tile)
   if (creature && tile)
   {
     IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_DOOR_DESTROYED));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_DOOR_DESTROYED));
 
     tile->remove_feature();
   }

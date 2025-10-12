@@ -37,7 +37,7 @@ void SlotMachineManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/
   if (creature && creature->get_is_player())
   {
     IMessageManager& manager = MMF::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_SLOT_MACHINE));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_SLOT_MACHINE));
     manager.send();
   }
 }

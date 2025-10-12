@@ -26,7 +26,7 @@ void KilnManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TileP
   if (creature && creature->get_is_player())
   {
     IMessageManager& manager = MMF::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_KILN));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_KILN));
     manager.send();
   }
 }

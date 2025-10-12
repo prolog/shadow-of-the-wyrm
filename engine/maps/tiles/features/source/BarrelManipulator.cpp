@@ -16,7 +16,7 @@ void BarrelManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, Til
   if (creature && creature->get_is_player())
   {
     IMessageManager& manager = MMF::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_BARREL));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_BARREL));
     manager.send();
   }
 }

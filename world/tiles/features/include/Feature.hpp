@@ -64,9 +64,6 @@ class Feature : public ISerializable
 
     virtual std::pair<std::string, std::vector<std::string>> get_description_and_replacement_sids() const;
 
-    // Disturbable covers the feature being struck by ammunition and magic.
-    virtual bool is_disturbable() const;
-
     virtual bool can_offer() const;
     virtual bool can_open() const;
     virtual bool can_lock() const;

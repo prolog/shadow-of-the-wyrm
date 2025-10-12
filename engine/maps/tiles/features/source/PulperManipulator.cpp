@@ -18,7 +18,7 @@ void PulperManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, Til
   if (creature && creature->get_is_player())
   {
     IMessageManager& manager = MMF::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_PULPER));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_PULPER));
     manager.send();
   }
 }

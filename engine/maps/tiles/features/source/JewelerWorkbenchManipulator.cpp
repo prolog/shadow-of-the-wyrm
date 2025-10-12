@@ -19,7 +19,7 @@ void JewelerWorkbenchManipulator::strike(CreaturePtr creature, MapPtr /*current_
   if (creature && creature->get_is_player())
   {
     IMessageManager& manager = MMF::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_JEWELER_WORKBENCH));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_JEWELER_WORKBENCH));
     manager.send();
   }
 }
