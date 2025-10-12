@@ -106,6 +106,11 @@ bool Feature::can_open() const
   return false;
 }
 
+bool Feature::is_disturbable() const
+{
+  return false;
+}
+
 bool Feature::can_offer() const
 {
   return false;

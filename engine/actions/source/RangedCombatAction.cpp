@@ -7,6 +7,7 @@
 #include "CoordUtils.hpp"
 #include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "IFeatureManipulatorFactory.hpp"
 #include "FireWeaponTileSelectionKeyboardCommandMap.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
@@ -215,6 +216,7 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
 
   TilePtr tile = current_map->at(target_coords);
   CreaturePtr target_creature = tile->get_creature();
+  FeaturePtr target_feature = tile->get_feature();
 
   add_ranged_combat_message(creature, target_creature);
   ItemPtr item = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
@@ -252,6 +254,15 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
     else
     {
       cm.attack(creature, target_creature, AttackType::ATTACK_TYPE_RANGED);
+    }
+  }
+  else if (target_feature && target_feature->is_disturbable())
+  {
+    FeatureManipulatorPtr feature_manipulator = IFeatureManipulatorFactory::create_manipulator(target_feature);
+
+    if (feature_manipulator != nullptr)
+    {
+      feature_manipulator->handle(tile, creature);
     }
   }
   

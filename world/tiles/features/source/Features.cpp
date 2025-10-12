@@ -1469,6 +1469,11 @@ Feature* Hive::clone()
   return new Hive(*this);
 }
 
+bool Hive::is_disturbable() const
+{
+  return true;
+}
+
 void Hive::set_charges(const int new_charges)
 {
   charges = new_charges;

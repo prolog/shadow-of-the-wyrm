@@ -649,6 +649,8 @@ class Hive : public Feature
 
     virtual Feature* clone() override;
 
+    virtual bool is_disturbable() const override;
+
     void set_charges(const int new_charges);
     int get_charges() const;
 
