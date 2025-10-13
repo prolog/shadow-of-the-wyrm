@@ -24,8 +24,14 @@ DoorGateManipulator::DoorGateManipulator(FeaturePtr feature)
 {
 }
 
-void DoorGateManipulator::strike(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feat)
+void DoorGateManipulator::strike(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feat, ItemPtr item)
 {
+  // (for now), don't allow items to open doors.
+  if (item != nullptr)
+  {
+    return;
+  }
+
   IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   if (creature && current_map)

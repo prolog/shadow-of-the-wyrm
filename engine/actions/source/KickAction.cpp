@@ -223,7 +223,7 @@ ActionCostValue KickAction::kick_feature(CreaturePtr creature, MapPtr current_ma
     if (manipulator)
     {
       // Do any specific logic required due to the kicking.
-      manipulator->strike(creature, current_map, kick_tile, kick_coord, kick_feature);
+      manipulator->strike(creature, current_map, kick_tile, kick_coord, kick_feature, nullptr);
     }
   }
 

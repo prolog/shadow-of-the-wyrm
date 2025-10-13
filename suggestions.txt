@@ -15,15 +15,11 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
-- rocks shouldn't break as ammo
 - strike/kick for doors should consider different weight for ammo vs kicks etc
 - NPCs should be able to target hives
-- change ACTION_KICK_... to ACTION_STRIKE_...
 - re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
   YT after)
-- where else should beehives be found?
 - waves music not playing on coastline map for winners? (when no creatures)
-- refactor the hive generation code that checks creature values
 - for steel items: coal + iron? recipes tied to skills?
 - what about a theme for Cithriel? something weird and otherworldly
 - What other (new) items would be good for brewing? maybe some could use

@@ -262,7 +262,7 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
 
     if (feature_manipulator != nullptr)
     {
-      feature_manipulator->strike(creature, current_map, tile, target_coords, target_feature);
+      feature_manipulator->strike(creature, current_map, tile, target_coords, target_feature, item);
     }
   }
   

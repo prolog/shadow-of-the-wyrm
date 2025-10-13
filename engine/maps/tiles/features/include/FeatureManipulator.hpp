@@ -14,7 +14,7 @@ class FeatureManipulator
 
     // Kicking/striking returns void because kicking something and getting to 
     // the point of using a manipulator is always an action.  
-    virtual void strike(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature) = 0;
+    virtual void strike(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature, ItemPtr struck_item) = 0;
     
     // Handling a feature can affect the tile on which the feature is present,
     // so include that as a parameter.  Include the creature so that if a message

@@ -9,7 +9,7 @@ CauldronManipulator::CauldronManipulator(FeaturePtr feature)
 {
 }
 
-void CauldronManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/)
+void CauldronManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/, ItemPtr /* item */)
 {
   if (creature && creature->get_is_player())
   {

@@ -13,7 +13,7 @@ HiveManipulator::HiveManipulator(FeaturePtr feature)
 {
 }
 
-void HiveManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr tile_feature)
+void HiveManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr tile_feature, ItemPtr /* item */)
 {
   shake_hive(feature_tile, tile_feature, creature, ActionTextKeys::ACTION_STRIKE_HIVE);
 }

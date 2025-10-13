@@ -21,7 +21,7 @@ KilnManipulator::KilnManipulator(FeaturePtr feature)
 {
 }
 
-void KilnManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
+void KilnManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/, ItemPtr /* item */)
 {
   if (creature && creature->get_is_player())
   {

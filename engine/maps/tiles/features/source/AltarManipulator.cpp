@@ -65,7 +65,7 @@ bool AltarManipulator::drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr
   return item_altered;
 }
 
-void AltarManipulator::strike(CreaturePtr creature, MapPtr current_map, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/)
+void AltarManipulator::strike(CreaturePtr creature, MapPtr current_map, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/, ItemPtr /* item */)
 {
   desecrate(creature, current_map);
 }

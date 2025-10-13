@@ -7,7 +7,7 @@ class CauldronManipulator : public DefaultFeatureManipulator
   public:
     CauldronManipulator(FeaturePtr feature);
 
-    void strike(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature) override;
+    void strike(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature, ItemPtr item) override;
     bool handle(TilePtr tile, CreaturePtr creature) override;
 };
 

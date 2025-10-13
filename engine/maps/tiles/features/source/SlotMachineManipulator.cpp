@@ -32,7 +32,7 @@ void SlotMachineManipulator::initialize()
                 "SLOT_MACHINE_FACE5"};
 }
 
-void SlotMachineManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
+void SlotMachineManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/, ItemPtr /* item */)
 {
   if (creature && creature->get_is_player())
   {
