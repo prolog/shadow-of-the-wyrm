@@ -518,6 +518,7 @@ bool MapUtils::does_hostile_creature_exist(MapPtr map, const vector<string>& cre
 
   return false;
 }
+
 vector<string> MapUtils::get_creatures_with_creature_in_view(MapPtr map, const string& creature_id)
 {
   CreatureMap creatures = map->get_creatures();
@@ -549,9 +550,9 @@ vector<string> MapUtils::get_creatures_with_creature_in_view(MapPtr map, const s
 
 // The assumption is that this function is always passed a view map, not 
 // a regular map.
-vector<Coordinate> MapUtils::get_features_in_view(MapPtr map, const ClassIdentifier feature_id)
+vector<pair<Coordinate, ClassIdentifier>> MapUtils::get_features_in_view(MapPtr map, const set<ClassIdentifier>& feature_ids)
 {
-  vector<Coordinate> features;
+  vector<pair<Coordinate, ClassIdentifier>> features;
 
   if (map != nullptr)
   {
@@ -559,11 +560,17 @@ vector<Coordinate> MapUtils::get_features_in_view(MapPtr map, const ClassIdentif
 
     for (const auto& tc_pair : tiles)
     {
+      ClassIdentifier f_id = ClassIdentifier::CLASS_ID_NULL;
+
       if (tc_pair.second != nullptr &&
-          tc_pair.second->has_feature()  &&
-          tc_pair.second->get_feature()->get_class_identifier() == feature_id)
+          tc_pair.second->has_feature())
       {
-        features.push_back(MapUtils::convert_map_key_to_coordinate(tc_pair.first));
+        f_id = tc_pair.second->get_feature()->get_class_identifier();
+
+        if (feature_ids.find(f_id) != feature_ids.end())
+        {
+          features.push_back(make_pair < MapUtils::convert_map_key_to_coordinate(tc_pair.first), f_id);
+        }
       }
     }
   }

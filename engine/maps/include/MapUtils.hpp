@@ -23,7 +23,7 @@ class MapUtils
 
     static bool does_hostile_creature_exist(MapPtr map, const std::vector<std::string>& creature_ids, const std::string& hostile_to_id);
     static std::vector<std::string> get_creatures_with_creature_in_view(MapPtr map, const std::string& creature_id);
-    static std::vector<Coordinate> get_features_in_view(MapPtr view_map, const ClassIdentifier feature_id);
+    static std::vector<std::pair<Coordinate, ClassIdentifier>> get_features_in_view(MapPtr view_map, const std::set<ClassIdentifier>& feature_ids);
     static Coordinate get_coordinate_for_creature(MapPtr map, CreaturePtr creature);
     static TilePtr get_tile_for_creature(MapPtr map, CreaturePtr creature);
     static uint get_num_following_creatures(MapPtr map);
