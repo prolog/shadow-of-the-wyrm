@@ -518,7 +518,7 @@ bool MapUtils::does_hostile_creature_exist(MapPtr map, const vector<string>& cre
 
   return false;
 }
-vector<string> MapUtils::get_creatures_with_creature_in_view(const MapPtr& map, const string& creature_id)
+vector<string> MapUtils::get_creatures_with_creature_in_view(MapPtr map, const string& creature_id)
 {
   CreatureMap creatures = map->get_creatures();
   vector<string> viewing_creatures;
@@ -547,13 +547,13 @@ vector<string> MapUtils::get_creatures_with_creature_in_view(const MapPtr& map, 
   return viewing_creatures;
 }
 
-Coordinate MapUtils::get_coordinate_for_creature(const MapPtr& map, const CreaturePtr& creature)
+Coordinate MapUtils::get_coordinate_for_creature(MapPtr map, CreaturePtr creature)
 {
   string creature_id = creature->get_id();
   return map->get_location(creature_id);
 }
 
-TilePtr MapUtils::get_tile_for_creature(const MapPtr& map, const CreaturePtr& creature)
+TilePtr MapUtils::get_tile_for_creature(MapPtr map, CreaturePtr creature)
 {
   TilePtr creatures_tile;
 
@@ -567,7 +567,7 @@ TilePtr MapUtils::get_tile_for_creature(const MapPtr& map, const CreaturePtr& cr
   return creatures_tile;
 }
 
-uint MapUtils::get_num_following_creatures(const MapPtr& map)
+uint MapUtils::get_num_following_creatures(MapPtr map)
 {
   uint count = 0;
   std::map<string, CreaturePtr> creatures = map->get_creatures();
@@ -584,7 +584,7 @@ uint MapUtils::get_num_following_creatures(const MapPtr& map)
 
 // Get the adjacent tiles to a particular creature that another creature can
 // be placed on.
-std::map<Direction, TilePtr> MapUtils::get_available_adjacent_tiles_to_creature(const MapPtr& map, const CreaturePtr& centre_creature, const CreaturePtr& creature_to_place)
+std::map<Direction, TilePtr> MapUtils::get_available_adjacent_tiles_to_creature(MapPtr map, CreaturePtr centre_creature, CreaturePtr creature_to_place)
 {
   std::map<Direction, TilePtr> result_map;
 
@@ -607,7 +607,7 @@ std::map<Direction, TilePtr> MapUtils::get_available_adjacent_tiles_to_creature(
 // Get the adjacent tiles to a creature by getting the adjacent coordinates,
 // mapping each coordinate to a direction, then looking up the tile and placing
 // it in the result map.
-std::map<Direction, TilePtr> MapUtils::get_adjacent_tiles_to_creature(const MapPtr& map, const CreaturePtr& creature)
+std::map<Direction, TilePtr> MapUtils::get_adjacent_tiles_to_creature(MapPtr map, CreaturePtr creature)
 {
   std::map<Direction, TilePtr> result_map;
 
@@ -629,7 +629,7 @@ std::map<Direction, TilePtr> MapUtils::get_adjacent_tiles_to_creature(const MapP
   return result_map;
 }
 
-std::vector<TilePtr> MapUtils::get_adjacent_tiles_to_creature_unsorted(const MapPtr& map, const CreaturePtr& creature, const int offset)
+std::vector<TilePtr> MapUtils::get_adjacent_tiles_to_creature_unsorted(MapPtr map, CreaturePtr creature, const int offset)
 {
   std::vector<TilePtr> result_map;
 
@@ -650,7 +650,7 @@ std::vector<TilePtr> MapUtils::get_adjacent_tiles_to_creature_unsorted(const Map
 }
 
 // Do the adjacent tiles in the given direction match a particular tile type?
-bool MapUtils::adjacent_tiles_match_type(const MapPtr& map, const Coordinate& c, const vector<Direction>& directions, const TileType type_to_match)
+bool MapUtils::adjacent_tiles_match_type(MapPtr map, const Coordinate& c, const vector<Direction>& directions, const TileType type_to_match)
 {
   bool all_match = true;
 
@@ -669,7 +669,7 @@ bool MapUtils::adjacent_tiles_match_type(const MapPtr& map, const Coordinate& c,
 }
 
 // Do the adjacent tiles in the given direction contain a particular tile type?
-bool MapUtils::adjacent_tiles_contain_type(const MapPtr& map, const Coordinate& c, const vector<Direction>& directions, const TileType type_to_match)
+bool MapUtils::adjacent_tiles_contain_type(MapPtr map, const Coordinate& c, const vector<Direction>& directions, const TileType type_to_match)
 {
   for (const Direction d : directions)
   {
@@ -685,7 +685,7 @@ bool MapUtils::adjacent_tiles_contain_type(const MapPtr& map, const Coordinate& 
 }
 
 // Determine how many adjacent tiles are available to the creature
-uint MapUtils::get_num_adjacent_movement_directions(const MapPtr& map, const CreaturePtr& creature)
+uint MapUtils::get_num_adjacent_movement_directions(MapPtr map, CreaturePtr creature)
 {
   uint num_dirs = 0;
   TileDirectionMap tdm = MapUtils::get_adjacent_tiles_to_creature(map, creature);
@@ -709,7 +709,7 @@ uint MapUtils::get_num_adjacent_movement_directions(const MapPtr& map, const Cre
 // Get the tile adjacent to the creature's tile in a given direction.
 // The returned tile may be null - e.g., if getting north of (0,0),
 // etc.
-TilePtr MapUtils::get_adjacent_tile(const MapPtr& map, const CreaturePtr& creature, const Direction d, const int offset)
+TilePtr MapUtils::get_adjacent_tile(MapPtr map, CreaturePtr creature, const Direction d, const int offset)
 {
   Coordinate c = map->get_location(creature->get_id());
   Coordinate new_coord = CoordUtils::get_new_coordinate(c, d, offset);
@@ -719,7 +719,7 @@ TilePtr MapUtils::get_adjacent_tile(const MapPtr& map, const CreaturePtr& creatu
 }
 
 // Get the adjacent tiles, plus the tile that the creature is standing on.
-TileDirectionMap MapUtils::get_adjacent_and_creature_tiles(const MapPtr& map, const CreaturePtr& creature)
+TileDirectionMap MapUtils::get_adjacent_and_creature_tiles(MapPtr map, CreaturePtr creature)
 {
   TileDirectionMap direction_map = get_adjacent_tiles_to_creature(map, creature);
   TilePtr creature_tile = get_tile_for_creature(map, creature);
@@ -730,7 +730,7 @@ TileDirectionMap MapUtils::get_adjacent_and_creature_tiles(const MapPtr& map, co
 
 // Returns true if the leader has 0 followers, or has > 1 follower and all of
 // them are adjacent.
-bool MapUtils::are_all_followers_adjacent(const MapPtr& map, const CreaturePtr& leader)
+bool MapUtils::are_all_followers_adjacent(MapPtr map, CreaturePtr leader)
 {
   if (leader != nullptr && map != nullptr)
   {
@@ -796,7 +796,7 @@ uint MapUtils::get_num_adjacent_creatures(const TileDirectionMap& adjacency_map)
 
 // Get a map of adjacent creatures to the current creature on the current
 // map, keyed by their direction from the creature.
-CreatureDirectionMap MapUtils::get_adjacent_creatures(const MapPtr& map, const CreaturePtr& creature)
+CreatureDirectionMap MapUtils::get_adjacent_creatures(MapPtr map, CreaturePtr creature)
 {
   CreatureDirectionMap adjacent_creatures;
 
@@ -823,7 +823,7 @@ CreatureDirectionMap MapUtils::get_adjacent_creatures(const MapPtr& map, const C
   return adjacent_creatures;
 }
 
-vector<CreaturePtr> MapUtils::get_adjacent_creatures_unsorted(const MapPtr& map, const CreaturePtr& creature)
+vector<CreaturePtr> MapUtils::get_adjacent_creatures_unsorted(MapPtr map, CreaturePtr creature)
 {
   vector<CreaturePtr> adj_creatures;
 
@@ -1127,7 +1127,7 @@ Direction MapUtils::get_exit_direction(const Direction d, const Dimensions& dim,
   return dir;
 }
 
-void MapUtils::potentially_set_permanence_if_leaving_followers_behind(const MapPtr& map, const CreaturePtr& creature)
+void MapUtils::potentially_set_permanence_if_leaving_followers_behind(MapPtr map, CreaturePtr creature)
 {
   if (creature != nullptr && map != nullptr)
   {
@@ -1142,7 +1142,7 @@ void MapUtils::potentially_set_permanence_if_leaving_followers_behind(const MapP
   }
 }
 
-bool MapUtils::remove_creature(const MapPtr& map, const CreaturePtr& creature, const bool force_player_removal)
+bool MapUtils::remove_creature(MapPtr map, CreaturePtr creature, const bool force_player_removal)
 {
   bool result = false;
 
