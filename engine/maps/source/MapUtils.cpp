@@ -547,6 +547,30 @@ vector<string> MapUtils::get_creatures_with_creature_in_view(MapPtr map, const s
   return viewing_creatures;
 }
 
+// The assumption is that this function is always passed a view map, not 
+// a regular map.
+vector<Coordinate> MapUtils::get_features_in_view(MapPtr map, const ClassIdentifier feature_id)
+{
+  vector<Coordinate> features;
+
+  if (map != nullptr)
+  {
+    const TilesContainer& tiles = map->get_tiles_ref();
+
+    for (const auto& tc_pair : tiles)
+    {
+      if (tc_pair.second != nullptr &&
+          tc_pair.second->has_feature()  &&
+          tc_pair.second->get_feature()->get_class_identifier() == feature_id)
+      {
+        features.push_back(MapUtils::convert_map_key_to_coordinate(tc_pair.first));
+      }
+    }
+  }
+
+  return features;
+}
+
 Coordinate MapUtils::get_coordinate_for_creature(MapPtr map, CreaturePtr creature)
 {
   string creature_id = creature->get_id();

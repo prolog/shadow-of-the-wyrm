@@ -32,7 +32,7 @@ bool HiveManipulator::shake_hive(TilePtr feature_tile, FeaturePtr tile_feature, 
     bool hive_destroyed = false;
     std::shared_ptr<Hive> hive = dynamic_pointer_cast<Hive>(tile_feature);
 
-    if (feature_tile && hive && creature && creature->get_is_player())
+    if (feature_tile && hive && creature)
     {
       string msg_sid = message_sid;
       int charges = hive->get_charges();

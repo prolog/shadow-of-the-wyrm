@@ -610,6 +610,9 @@ CommandPtr NPCDecisionStrategy::get_ranged_attack_decision(const string& this_cr
       RangedCombatApplicabilityChecker rcac;
       if (rcac.can_creature_do_ranged_combat(this_cr).first && RNG::percent_chance(PERCENT_CHANCE_CONSIDER_RANGED_COMBAT))
       {
+        // Get any hives in the FOV to see if we want to, eg, throw a rock.
+        vector<Coordinate> hive_coords = MapUtils::get_features_in_view(view_map, ClassIdentifier::CLASS_ID_HIVE);
+
         while (t_it != threat_map.rend() && t_it->first > ThreatConstants::DISLIKE_THREAT_RATING)
         {
           set<string> creature_ids = t_it->second;
@@ -623,8 +626,31 @@ CommandPtr NPCDecisionStrategy::get_ranged_attack_decision(const string& this_cr
             if (RangedCombatUtils::is_coord_in_range(threat_c, view_map) && 
                 RangedCombatUtils::is_coordinate_obstacle_free(this_cr, c_this, threat_c, view_map))
             {
+              string rc_selected_id = threatening_creature_id;
+              Coordinate rc_selected_coord = threat_c;
+
+              // Check first to see if we want to release some bees 
+              // or whatever.
+              for (const auto& hive_c : hive_coords)
+              {
+                // Make sure the creature's clever enough to understand
+                // some basic cause and effect. Humanoids will be good
+                // with this, but animals, etc, should not rouse a hive to
+                // attack a foe.
+                if (this_cr->get_intelligence().get_current() >= IntelligenceConstants::MIN_INTELLIGENCE_UNDERSTAND_INDIRECT_ACTIONS &&
+                    CoordUtils::chebyshev_distance(threat_c, hive_c) <= CoordUtils::chebyshev_distance(c_this, hive_c) &&
+                    RangedCombatUtils::is_coordinate_obstacle_free(this_cr, c_this, hive_c, view_map))
+                {
+                  rc_selected_id.clear();
+                  rc_selected_coord = hive_c;
+
+                  break;
+                }
+              }
+
+              // If there's nothing to disturb, fire at the creature directly.
               TargetMap& tm = this_cr->get_target_map_ref();
-              tm[to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED))] = make_pair(threatening_creature_id, threat_c);
+              tm[to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED))] = make_pair(rc_selected_id, rc_selected_coord);
               CommandPtr command = std::make_unique<FireMissileCommand>(-1);
               command->set_custom_value(CommandCustomValues::COMMAND_CUSTOM_VALUES_SKIP_TARGETTING, std::to_string(true));
 
