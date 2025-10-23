@@ -569,7 +569,7 @@ vector<pair<Coordinate, ClassIdentifier>> MapUtils::get_features_in_view(MapPtr 
 
         if (feature_ids.find(f_id) != feature_ids.end())
         {
-          features.push_back(make_pair < MapUtils::convert_map_key_to_coordinate(tc_pair.first), f_id);
+          features.push_back(make_pair(MapUtils::convert_map_key_to_coordinate(tc_pair.first), f_id));
         }
       }
     }

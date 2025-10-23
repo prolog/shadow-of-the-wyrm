@@ -105,7 +105,7 @@ void DropAction::handle_invalid_drop_quantity(CreaturePtr creature)
 }
 
 // Show the description of the item being dropped, if applicable
-void DropAction::handle_item_dropped_message(CreaturePtr creature, IInventoryPtr inv, ItemPtr item)
+void DropAction::handle_item_dropped_message(CreaturePtr creature, IInventoryPtr inv, ItemPtr item, const bool unstable)
 {  
   if (item && creature)
   {
@@ -124,6 +124,12 @@ void DropAction::handle_item_dropped_message(CreaturePtr creature, IInventoryPtr
       {
         manager.add_new_message(StringTable::get(inv_drop_effect_sid));
       }
+    }
+
+    // Unstable items vanish in a burst of light.
+    if (unstable)
+    {
+      manager.add_new_message(TextMessages::get_unstable_drop_message(item->get_quantity()));
     }
 
     manager.send();
@@ -276,11 +282,16 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
           string sound_id = MapUtils::get_drop_sound(creatures_tile->get_tile_super_type());
 
           Game::instance().get_sound()->play(sound_id);
-          inv->merge_or_add(new_item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+          bool unstable = String::to_bool(new_item->get_additional_property(ItemProperties::ITEM_PROPERTIES_UNSTABLE));
+
+          if (!unstable)
+          {
+            inv->merge_or_add(new_item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+          }
 
           // Display a message if appropriate.
           // If it's the player, remind the user what he or she dropped.
-          handle_item_dropped_message(creature, inv, new_item);
+          handle_item_dropped_message(creature, inv, new_item, unstable);
 
           // Do any of the creatures watching this have drop scripts?
           handle_reacting_creature_drop_scripts(creature, current_map, new_item, drop_coord);

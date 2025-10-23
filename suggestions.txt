@@ -15,11 +15,13 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
-- strike/kick for doors should consider different weight for ammo vs kicks etc
-- NPCs should be able to target hives
 - re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
   YT after)
-- waves music not playing on coastline map for winners? (when no creatures)
+- Dropped unstable items should vanish
+- Dropping were-light on an item should make it glow
+- Dropping unstable items should have a chance to blind those around you
+- Throwing unstable items should have a chance to blind the target and those
+  around it
 - for steel items: coal + iron? recipes tied to skills?
 - what about a theme for Cithriel? something weird and otherworldly
 - What other (new) items would be good for brewing? maybe some could use
@@ -36,10 +38,6 @@ Me:
   glow)
 - Any recipe made with were-light should glow
 - Give were-light unstable flag
-- Dropped unstable items should usually vanish
-- Dropping were-light on an item should have a small chance to make it glow
-- Dropping were-light on a stack should have a small chance to make one item 
-  glow
 - More recipes as more spell effects are added!
 - insect nest: enemies should throw rocks if they have them if hostile
   NPC nearby

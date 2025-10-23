@@ -40,6 +40,7 @@ class ItemProperties
     static const std::string ITEM_PROPERTIES_STATUS;
     static const std::string ITEM_PROPERTIES_NEXUS;
     static const std::string ITEM_PROPERTIES_LEVEL_UP_EFFECT;
+    static const std::string ITEM_PROPERTIES_UNSTABLE;
 
   protected:
     ItemProperties();

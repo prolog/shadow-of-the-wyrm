@@ -611,7 +611,7 @@ CommandPtr NPCDecisionStrategy::get_ranged_attack_decision(const string& this_cr
       if (rcac.can_creature_do_ranged_combat(this_cr).first && RNG::percent_chance(PERCENT_CHANCE_CONSIDER_RANGED_COMBAT))
       {
         // Get any hives in the FOV to see if we want to, eg, throw a rock.
-        vector<ClassIdentifier> to_disturb_features = { ClassIdentifier::CLASS_ID_HIVE };
+        set<ClassIdentifier> to_disturb_features = { ClassIdentifier::CLASS_ID_HIVE };
         vector<pair<Coordinate, ClassIdentifier>> to_disturb_feature_coords = MapUtils::get_features_in_view(view_map, to_disturb_features);
 
         while (t_it != threat_map.rend() && t_it->first > ThreatConstants::DISLIKE_THREAT_RATING)
@@ -632,18 +632,20 @@ CommandPtr NPCDecisionStrategy::get_ranged_attack_decision(const string& this_cr
 
               // Check first to see if we want to release some bees 
               // or whatever.
-              for (const auto& tdf_c : to_disturb_feature_coords)
+              for (const auto& tdf_pair : to_disturb_feature_coords)
               {
+                Coordinate tdf_c = tdf_pair.first;
+
                 // Make sure the creature's clever enough to understand
                 // some basic cause and effect. Humanoids will be good
                 // with this, but animals, etc, should not rouse a hive to
                 // attack a foe.
                 if (this_cr->get_intelligence().get_current() >= IntelligenceConstants::MIN_INTELLIGENCE_UNDERSTAND_INDIRECT_ACTIONS &&
-                    CoordUtils::chebyshev_distance(threat_c, tdf_c.first) <= CoordUtils::chebyshev_distance(c_this, tdf_c.first) &&
-                    RangedCombatUtils::is_coordinate_obstacle_free(this_cr, c_this, hive_c, view_map))
+                    CoordUtils::chebyshev_distance(threat_c, tdf_c) <= CoordUtils::chebyshev_distance(c_this, tdf_c) &&
+                    RangedCombatUtils::is_coordinate_obstacle_free(this_cr, c_this, tdf_c, view_map))
                 {
                   rc_selected_id.clear();
-                  rc_selected_coord = hive_c;
+                  rc_selected_coord = tdf_c;
 
                   break;
                 }

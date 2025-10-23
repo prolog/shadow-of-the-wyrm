@@ -7140,6 +7140,12 @@
 					<Type>8</Type>
 					<EffectBonus>30</EffectBonus>
 				</Damage>
+				<Properties>
+					<Property>
+						<Name>unstable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 			</Missile>
 			<Missile id="_clay_pot">
 				<DescriptionSID>CLAY_POT_SID</DescriptionSID>
@@ -15121,6 +15127,10 @@
 				<Properties>
 					<Property>
 						<Name>brewing_ingredient_uncommon</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>unstable</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
