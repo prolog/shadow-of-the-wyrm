@@ -17,7 +17,6 @@ Me:
 - Audio enhancements off for testing
 - re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
   YT after)
-- Dropped unstable items should vanish
 - Dropping were-light on an item should make it glow
 - Dropping unstable items should have a chance to blind those around you
 - Throwing unstable items should have a chance to blind the target and those

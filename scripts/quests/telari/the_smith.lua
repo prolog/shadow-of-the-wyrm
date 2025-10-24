@@ -54,7 +54,7 @@ local function give_ranged_gift(cr_id)
                         [CSKILL_RANGED_CROSSBOWS] = {"bolt_ancient_magics", 50},
                         [CSKILL_RANGED_DAGGERS] = {"tooth_ancient_sea_creature", 15},
                         [CSKILL_RANGED_ROCKS] = {"massive_ferric_meteorite", 1},
-                        [CSKILL_RANGED_SLINGS] = {"antimatter_shot", 75},
+                        [CSKILL_RANGED_SLINGS] = {"antimatter_shot", 95},
                         [CSKILL_RANGED_SPEARS] = {"spine_ancient_horror", 6},
                         [CSKILL_RANGED_EXOTIC] = {"chaos_bomb", "24"}}
 

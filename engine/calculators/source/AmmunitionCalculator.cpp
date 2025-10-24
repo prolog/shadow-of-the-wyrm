@@ -65,6 +65,13 @@ bool AmmunitionCalculator::survives(CreaturePtr creature, ItemPtr ammunition)
       {
         survive = false;
       }
+
+      bool unstable = String::to_bool(ammunition->get_additional_property(ItemProperties::ITEM_PROPERTIES_UNSTABLE));
+
+      if (survive && unstable)
+      {
+        survive = false;
+      }
     }
   }
 
