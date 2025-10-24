@@ -15133,6 +15133,10 @@
 						<Name>unstable</Name>
 						<Value>1</Value>
 					</Property>
+					<Property>
+						<Name>impart_glow</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 			</Item>
 			<Item id="_apple_seed">

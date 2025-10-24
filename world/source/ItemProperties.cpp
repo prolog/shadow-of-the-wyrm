@@ -47,3 +47,4 @@ const string ItemProperties::ITEM_PROPERTIES_STATUS = "status";
 const string ItemProperties::ITEM_PROPERTIES_NEXUS = "nexus";
 const string ItemProperties::ITEM_PROPERTIES_LEVEL_UP_EFFECT = "level_up_effect";
 const string ItemProperties::ITEM_PROPERTIES_UNSTABLE = "unstable";
+const string ItemProperties::ITEM_PROPERTIES_IMPART_GLOW = "impart_glow";

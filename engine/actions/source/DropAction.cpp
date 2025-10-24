@@ -289,6 +289,8 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
             inv->merge_or_add(new_item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
           }
 
+          handle_impart_glow(inv, new_item);
+
           // Display a message if appropriate.
           // If it's the player, remind the user what he or she dropped.
           handle_item_dropped_message(creature, inv, new_item, unstable);
@@ -554,6 +556,27 @@ void DropAction::handle_reacting_creature_drop_scripts(CreaturePtr creature, Map
             DropScript ds;
             ds.execute(game.get_script_engine_ref(), sd.get_script(), creature->get_id(), reacting_creature, new_item, drop_coord);
           }
+        }
+      }
+    }
+  }
+}
+
+void DropAction::handle_impart_glow(IInventoryPtr inv, ItemPtr item)
+{
+  if (inv != nullptr && item != nullptr)
+  {
+    bool imparts_glow = String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_IMPART_GLOW));
+
+    if (imparts_glow)
+    {
+      list<ItemPtr>& items = inv->get_items_ref();
+
+      for (ItemPtr i : items)
+      {
+        if (i != nullptr && !i->get_artifact() && RNG::percent_chance(50))
+        {
+          i->set_glowing(true);
         }
       }
     }

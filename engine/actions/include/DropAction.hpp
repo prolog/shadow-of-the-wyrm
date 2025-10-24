@@ -19,7 +19,8 @@ class DropAction : public IActionManager
     void handle_no_item_dropped(CreaturePtr creature);
     void handle_invalid_drop_quantity(CreaturePtr creature);
     void handle_reacting_creature_drop_scripts(CreaturePtr creature, MapPtr current_map, ItemPtr new_item, const Coordinate& drop_coord);
-    
+    void handle_impart_glow(IInventoryPtr inv, ItemPtr item);
+
     // plant_food generates more of the same item the next summer.
     // plant_seed transforms the tile into a tree of the correct
     // species and generates fruit.

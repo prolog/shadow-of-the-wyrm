@@ -17,7 +17,7 @@ Me:
 - Audio enhancements off for testing
 - re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
   YT after)
-- Dropping were-light on an item should make it glow
+- glowing weapons should do...something? extra damage? blindness?
 - Dropping unstable items should have a chance to blind those around you
 - Throwing unstable items should have a chance to blind the target and those
   around it
