@@ -325,6 +325,10 @@ Colour Item::get_colour() const
   {
     return Colour::COLOUR_BOLD_CYAN;
   }
+  else if (get_glowing())
+  {
+    return Colour::COLOUR_BOLD_YELLOW;
+  }
   else
   {
     // If the colour has been overridden

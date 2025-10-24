@@ -62,6 +62,10 @@ Shadow of the Wyrm v1.9.0 "de Cabezon"
 
 - If The Smith decides to give antimatter shots, he now gives more.
 
+- Dropping were-light can impart the glow flag on other items on the tile.
+
+- Items that are glowing, but not artifacts, will now show as yellow.
+
 - New items: slime, essence of were-light, juniper berries, wild hops, honey,
   honeycomb. Juniper berries will generate in fall, wild hops in summer.
 
