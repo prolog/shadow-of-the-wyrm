@@ -11125,6 +11125,27 @@
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 			</Currency>
+			<Currency id="elysian_coin">
+				<DescriptionSID>ELYSIAN_COIN_SID</DescriptionSID>
+				<UsageDescriptionSID>ELYSIAN_COIN_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ELYSIAN_COIN_CODEX_SID</CodexDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<Material>10</Material>
+				<Symbol>
+					<Char>$</Char>
+					<Colour>8</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>0</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Currency>
 		</Currencies>
 		<Tools>
 			<Tool id="skeleton_key">

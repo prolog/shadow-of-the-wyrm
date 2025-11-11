@@ -17,6 +17,11 @@ Me:
 - Audio enhancements off for testing
 - re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
   YT after)
+- no-talk telari: what if dropping an item in Ead's field of view triggered
+  it?
+- fletchery/bowyer status - when unc, skill% chance to turn blessed. should
+  get a check for each of bowyer/fletchery and crafting.
+- Use this for fletchery, bowyer, etc, to improve item & quantity
 - glowing weapons should do...something? extra damage? blindness?
 - Dropping unstable items should have a chance to blind those around you
 - Throwing unstable items should have a chance to blind the target and those
@@ -38,15 +43,8 @@ Me:
 - Any recipe made with were-light should glow
 - Give were-light unstable flag
 - More recipes as more spell effects are added!
-- insect nest: enemies should throw rocks if they have them if hostile
-  NPC nearby
-- no-talk telari: what if dropping an item in Ead's field of view triggered
-  it?
 - regular stanza updates again! XII should be the brothers/rebels returning to
   farstead, XIII Tel's group.
-- fletchery/bowyer status - when unc, skill% chance to turn blessed. should
-  get a check for each of bowyer/fletchery and crafting.
-- Use this for fletchery, bowyer, etc, to improve item & quantity
 - let's work on recall/coming back if you go down a water tile...
 - underwater cavern? something like that?
 - test orb placement in wyrmeswraec
