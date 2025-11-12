@@ -15,7 +15,7 @@ class ShrineGenerator : public SOTW::Generator
     virtual MapPtr generate_shrine() = 0;
 
     void add_dungeon_tiles_to_preset_locations(MapPtr map);
-    void place_relic(MapPtr map, const int row, const int col);
+    void place_relics(MapPtr map, const int row, const int col);
     bool get_permanence_default() const override;
 
     MapPtr base_map;

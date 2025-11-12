@@ -29,7 +29,7 @@ MapPtr RectangularShrineGenerator::generate_shrine()
   GeneratorUtils::generate_building(map, start_row, start_col, shrine_height, shrine_width);
   create_entrances(map, start_row, start_col, shrine_height, shrine_width, mid_row, mid_col);
   place_pillars_and_statues(map, start_row, start_col, shrine_height, shrine_width, mid_row, mid_col);
-  place_relic(map, mid_row, mid_col);
+  place_relics(map, mid_row, mid_col);
   add_dungeon_tiles_to_preset_locations(map);
   map->set_permanent(true);
   return map;

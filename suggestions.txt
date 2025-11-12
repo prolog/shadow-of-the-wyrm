@@ -18,7 +18,10 @@ Me:
 - re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
   YT after)
 - no-talk telari: what if dropping an item in Ead's field of view triggered
-  it?
+  it? (dropping it, it remains in the graveyard: a second one should allow
+  return without sacrificing an artifact...)
+- after Ead's updates: other creatures should give rewards for Elysian coins,
+  and there should be more on offer than the # of coins
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.
 - Use this for fletchery, bowyer, etc, to improve item & quantity

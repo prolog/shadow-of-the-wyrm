@@ -1,4 +1,5 @@
 #include "ShrineGenerator.hpp"
+#include "Conversion.hpp"
 #include "ItemManager.hpp"
 #include "MapUtils.hpp"
 #include "MapProperties.hpp"
@@ -54,22 +55,25 @@ void ShrineGenerator::add_dungeon_tiles_to_preset_locations(MapPtr map)
 }
 
 // Place the shrine's relic at the specified location.
-void ShrineGenerator::place_relic(MapPtr map, const int mid_row, const int mid_col)
+void ShrineGenerator::place_relics(MapPtr map, const int mid_row, const int mid_col)
 {
   if (map != nullptr)
   {
-    string relic_id = get_additional_property(MapProperties::MAP_PROPERTIES_RELIC_ID);
+    vector<string> relic_ids = String::create_string_vector_from_csv_string(get_additional_property(MapProperties::MAP_PROPERTIES_RELIC_IDS));
 
-    if (!relic_id.empty())
+    if (!relic_ids.empty())
     {
       ItemManager im;
-
-      ItemPtr relic = im.create_item(relic_id);
       TilePtr relic_tile = map->at(mid_row, mid_col);
 
-      if (relic_tile != nullptr)
+      for (const string& relic_id : relic_ids)
       {
-        relic_tile->get_items()->add_front(relic);
+        ItemPtr relic = im.create_item(relic_id);
+
+        if (relic_tile != nullptr)
+        {
+          relic_tile->get_items()->add_front(relic);
+        }
       }
     }
   }
