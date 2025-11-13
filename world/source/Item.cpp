@@ -376,8 +376,12 @@ bool Item::matches(std::shared_ptr<Item> i) const
   if (match)
   {
     // Ensure that ivory/currency always stacks with other ivory, regardless
-    // of what ever flags/etc get accidentally added.
-    if (get_type_always_stacks() && i->get_type_always_stacks() && (type == i->get_type()))
+    // of what ever flags/etc get accidentally added. But make sure the base
+    // IDs match so that ivory isn't stacking with Elysian coins...
+    if (get_type_always_stacks() && 
+        i->get_type_always_stacks() && 
+        type == i->get_type() &&
+        base_id == i->get_base_id())
     {
       return true;
     }
