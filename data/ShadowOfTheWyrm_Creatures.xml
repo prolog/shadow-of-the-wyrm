@@ -21351,6 +21351,10 @@
 				<ChatScript>
 					<Script>quests/isen_dun/ead.lua</Script>
 				</ChatScript>
+				<DropScript>
+					<Script>drop/ead.lua</Script>
+					<Chance>100</Chance>
+				</DropScript>
 			</EventScripts>
 		</Creature>
 		<Creature id="the_ploughman">

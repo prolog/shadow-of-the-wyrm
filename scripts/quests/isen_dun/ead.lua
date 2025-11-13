@@ -1,4 +1,5 @@
 require('constants')
+require('ead_common')
 
 -- If the player has slain the Nine, the magics that allow teleportation
 -- between the worlds are gone.
@@ -22,9 +23,7 @@ else
     clear_messages()
 
     if add_confirmation_message("EAD_TELARI_TEXT9_SID") then
-      play_music_event(CMUSIC_EVENT_PLANETARY_TELEPORT, false)
-      add_message_with_pause("EAD_TELARI_CONFIRM_SID")
-      load_map(PLAYER_ID, "telari")
+      ead_common.send_to_telari(PLAYER_ID)
     else
       clear_and_add_message("EAD_TELARI_DENY_SID")
     end
