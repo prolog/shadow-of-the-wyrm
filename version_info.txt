@@ -71,6 +71,9 @@ Shadow of the Wyrm v1.9.0 "de Cabezon"
 
 - Shrines can now place multiple relics.
 
+- There is now a way to get to Telari without explicitly talking to Ead,
+  allowing passage without breaking the no-speaking conduct.
+
 - New items: slime, essence of were-light, juniper berries, wild hops, honey,
   honeycomb. Juniper berries will generate in fall, wild hops in summer.
 
