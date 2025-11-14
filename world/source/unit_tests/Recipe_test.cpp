@@ -6,7 +6,7 @@ TEST(SW_World_Recipe, getters)
 	uint skill_required = 30;
 	string item_id = "produced_item";
 
-	Recipe r(ingr, skill_required, item_id);
+	Recipe r(ingr, SkillType::SKILL_GENERAL_BREWING, skill_required, item_id);
 
 	EXPECT_EQ(ingr, r.get_ingredients());
 	EXPECT_EQ(skill_required, r.get_skill_required());
@@ -25,7 +25,7 @@ TEST(SW_World_Recipe, saveload)
 	uint skill_required = 30;
 	string item_id = "produced_item";
 
-	Recipe r(ingr, skill_required, item_id);
+	Recipe r(ingr, SkillType::SKILL_GENERAL_SMITHING, skill_required, item_id);
 	
 	ostringstream oss;
 	r.serialize(oss);

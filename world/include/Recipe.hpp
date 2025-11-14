@@ -4,6 +4,7 @@
 #include <utility>
 #include <vector>
 #include "ISerializable.hpp"
+#include "Skills.hpp"
 
 using Ingredients = std::vector<std::pair<std::string, uint>>;
 
@@ -11,10 +12,11 @@ class Recipe : public ISerializable
 {
 	public:
 		Recipe();
-		Recipe(const Ingredients& new_ingredients, const uint new_skill_required, const std::string& new_item_id);
+		Recipe(const Ingredients& new_ingredients, const SkillType new_skill, const uint new_skill_required, const std::string& new_item_id);
 		bool operator==(const Recipe& r) const;
 
 		Ingredients get_ingredients() const;
+		SkillType get_skill() const;
 		uint get_skill_required() const;
 		std::string get_item_id() const;
 
@@ -23,6 +25,7 @@ class Recipe : public ISerializable
 
 	protected:
 		Ingredients ingredients;
+		SkillType skill;
 		uint skill_required;
 		std::string item_id;
 
