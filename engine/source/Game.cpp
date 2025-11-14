@@ -1306,6 +1306,16 @@ void Game::update_player_dates()
   }
 }
 
+void Game::set_recipes(const Recipes& new_recipes)
+{
+  recipes = new_recipes;
+}
+
+Recipes& Game::get_recipes_ref()
+{
+  return recipes;
+}
+
 bool Game::serialize(ostream& stream) const
 {
   Log::instance().trace("Game::serialize - start");
@@ -1495,6 +1505,20 @@ bool Game::serialize(ostream& stream) const
   // We keep track of total seconds, but not start time, etc.
   double total_elapsed_time = get_total_elapsed_game_time(std::chrono::system_clock::now());
   Serialize::write_double(stream, total_elapsed_time);
+
+  // Persist the recipes
+  Serialize::write_size_t(stream, recipes.size());
+  for (const auto& rs_pair : recipes)
+  {
+    Serialize::write_enum(stream, rs_pair.first);
+    Serialize::write_size_t(stream, rs_pair.second.size());
+
+    for (const auto& rd_pair : rs_pair.second)
+    {
+      Serialize::write_int(stream, rd_pair.first);
+      rd_pair.second.serialize(stream);
+    }
+  }
 
   Serialize::write_bool(stream, is_loading);
 
@@ -1804,6 +1828,29 @@ bool Game::deserialize(istream& stream)
 
   Serialize::read_bool(stream, count_score);
   Serialize::read_double(stream, total_seconds_played);
+
+  size_t recipes_sz = 0;
+  Serialize::read_size_t(stream, recipes_sz);
+  for (size_t i = 0; i < recipes_sz; i++)
+  {
+    SkillType recipe_skill = SkillType::SKILL_UNDEFINED;
+    Serialize::read_enum(stream, recipe_skill);
+
+    size_t skill_recipe_sz = 0;
+    Serialize::read_size_t(stream, skill_recipe_sz);
+
+    for (size_t j = 0; j < skill_recipe_sz; j++)
+    {
+      int skill_val = 0;
+      Recipe r;
+
+      Serialize::read_int(stream, skill_val);
+      r.deserialize(stream);
+
+      recipes[recipe_skill][skill_val] = r;
+    }
+  }
+
   Serialize::read_bool(stream, is_loading);
 
   Log::instance().trace("Game::deserialize - end");
