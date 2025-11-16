@@ -35,4 +35,4 @@ class Recipe : public ISerializable
 		ClassIdentifier internal_class_identifier() const override;
 };
 
-using Recipes = std::map<SkillType, std::map<int, Recipe>>;
+using Recipes = std::map<SkillType, std::map<int, std::vector<Recipe>>>;

@@ -1516,7 +1516,13 @@ bool Game::serialize(ostream& stream) const
     for (const auto& rd_pair : rs_pair.second)
     {
       Serialize::write_int(stream, rd_pair.first);
-      rd_pair.second.serialize(stream);
+      size_t num_recipes_at_level = rd_pair.second.size();
+
+      for (size_t i = 0; i < num_recipes_at_level; i++)
+      {
+        Recipe r = rd_pair.second.at(i);
+        r.serialize(stream);
+      }
     }
   }
 
@@ -1842,12 +1848,18 @@ bool Game::deserialize(istream& stream)
     for (size_t j = 0; j < skill_recipe_sz; j++)
     {
       int skill_val = 0;
-      Recipe r;
-
       Serialize::read_int(stream, skill_val);
-      r.deserialize(stream);
 
-      recipes[recipe_skill][skill_val] = r;
+      size_t num_recipes_at_level = 0;
+      Serialize::read_size_t(stream, num_recipes_at_level);
+
+      for (size_t k = 0; k < num_recipes_at_level; k++)
+      {
+        Recipe r;
+        r.deserialize(stream);
+
+        recipes[recipe_skill][skill_val].push_back(r);
+      }
     }
   }
 
