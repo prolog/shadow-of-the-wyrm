@@ -2,11 +2,12 @@
 
 TEST(SW_World_Recipe, getters)
 {
+	string r_id = "r_id";
 	Ingredients ingr = { {"ingr1", 1}, {"ingr2", 3} };
 	uint skill_required = 30;
 	string item_id = "produced_item";
 
-	Recipe r(ingr, SkillType::SKILL_GENERAL_BREWING, skill_required, item_id);
+	Recipe r(r_id, ingr, SkillType::SKILL_GENERAL_BREWING, skill_required, item_id);
 
 	EXPECT_EQ(ingr, r.get_ingredients());
 	EXPECT_EQ(skill_required, r.get_skill_required());
@@ -21,11 +22,12 @@ TEST(SW_World_Recipe, serialization_id)
 
 TEST(SW_World_Recipe, saveload)
 {
+	string r_id = "r_id";
 	Ingredients ingr = { {"ingr1", 1}, {"ingr2", 3} };
 	uint skill_required = 30;
 	string item_id = "produced_item";
 
-	Recipe r(ingr, SkillType::SKILL_GENERAL_SMITHING, skill_required, item_id);
+	Recipe r(r_id, ingr, SkillType::SKILL_GENERAL_SMITHING, skill_required, item_id);
 	
 	ostringstream oss;
 	r.serialize(oss);

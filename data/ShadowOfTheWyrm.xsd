@@ -1144,7 +1144,8 @@
 <xs:complexType name="Recipe">
 	<xs:sequence>
 		<xs:element name="Ingredients" type="tns:Ingredients"/>
-		<xs:element name="Brewing" type="tns:PercentageStatistic"/>
+		<xs:element name="Skill" type="tns:GeneralSkillType"/>
+		<xs:element name="Min" type="tns:PercentageStatistic"/>
 		<xs:element name="Make" type="tns:NonEmptyIdentifier"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="required"/>

@@ -12,9 +12,10 @@ class Recipe : public ISerializable
 {
 	public:
 		Recipe();
-		Recipe(const Ingredients& new_ingredients, const SkillType new_skill, const uint new_skill_required, const std::string& new_item_id);
+		Recipe(const std::string& new_id, const Ingredients& new_ingredients, const SkillType new_skill, const uint new_skill_required, const std::string& new_item_id);
 		bool operator==(const Recipe& r) const;
 
+		std::string get_id() const;
 		Ingredients get_ingredients() const;
 		SkillType get_skill() const;
 		uint get_skill_required() const;
@@ -24,6 +25,7 @@ class Recipe : public ISerializable
 		bool deserialize(std::istream& stream) override;
 
 	protected:
+		std::string id;
 		Ingredients ingredients;
 		SkillType skill;
 		uint skill_required;

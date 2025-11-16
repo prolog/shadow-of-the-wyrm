@@ -7,8 +7,8 @@ Recipe::Recipe()
 {
 }
 
-Recipe::Recipe(const Ingredients& new_ingredients, const SkillType new_skill, const uint new_skill_required, const string& new_item_id)
-: ingredients(new_ingredients), skill(new_skill), skill_required(new_skill_required), item_id(new_item_id)
+Recipe::Recipe(const string& new_id, const Ingredients& new_ingredients, const SkillType new_skill, const uint new_skill_required, const string& new_item_id)
+: id(new_id), ingredients(new_ingredients), skill(new_skill), skill_required(new_skill_required), item_id(new_item_id)
 {
 }
 
@@ -16,12 +16,18 @@ bool Recipe::operator==(const Recipe& r) const
 {
 	bool result = true;
 
+	result = result && (id == r.id);
 	result = result && (ingredients == r.ingredients);
 	result = result && (skill == r.skill);
 	result = result && (skill_required == r.skill_required);
 	result = result && (item_id == r.item_id);
 
 	return result;
+}
+
+string Recipe::get_id() const
+{
+	return id;
 }
 
 Ingredients Recipe::get_ingredients() const
@@ -46,6 +52,7 @@ string Recipe::get_item_id() const
 
 bool Recipe::serialize(std::ostream& stream) const
 {
+	Serialize::write_string(stream, id);
 	Serialize::write_size_t(stream, ingredients.size());
 	
 	for (const auto& i_pair : ingredients)
@@ -63,6 +70,8 @@ bool Recipe::serialize(std::ostream& stream) const
 
 bool Recipe::deserialize(std::istream& stream)
 {
+	Serialize::read_string(stream, id);
+
 	size_t num_ingr = 0;
 	Serialize::read_size_t(stream, num_ingr);
 	ingredients.clear();
