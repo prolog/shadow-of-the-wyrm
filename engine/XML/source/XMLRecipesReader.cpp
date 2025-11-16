@@ -13,7 +13,7 @@ Recipes XMLRecipesReader::get_recipes(const XMLNode& recipes_node)
     for (const XMLNode& recipe_node : recipes_nodes)
     {
       Recipe r = parse_recipe(recipe_node);
-      recipes[r.get_skill()][r.get_skill_required()].push_back(r);
+      recipes.add(r);
     }
 	}
 

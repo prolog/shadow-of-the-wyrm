@@ -38,3 +38,4 @@ TEST(SW_World_Recipe, saveload)
 
 	EXPECT_TRUE(r == r2);
 }
+

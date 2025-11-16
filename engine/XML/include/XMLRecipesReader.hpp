@@ -1,5 +1,5 @@
 #pragma once
-#include "Recipe.hpp"
+#include "Recipes.hpp"
 #include "XMLDataStructures.hpp"
 
 class XMLRecipesReader

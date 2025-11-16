@@ -19,7 +19,7 @@
 #include "Music.hpp"
 #include "Quests.hpp"
 #include "Race.hpp"
-#include "Recipe.hpp"
+#include "Recipes.hpp"
 #include "ScriptEngine.hpp"
 #include "Settings.hpp"
 #include "Sound.hpp"
