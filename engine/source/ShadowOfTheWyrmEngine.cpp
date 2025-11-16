@@ -334,6 +334,11 @@ void ShadowOfTheWyrmEngine::setup_game()
   vector<MapPtr> custom_maps = reader.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, FileConstants::CUSTOM_MAPS_PATTERN);
   game.set_custom_maps(custom_maps);
 
+  log.debug("Reading recipes.");
+
+  Recipes recipes = reader.get_recipes();
+  game.set_recipes(recipes);
+
   log.debug("Setting message manager display.");
 
   // Set up the message manager also.

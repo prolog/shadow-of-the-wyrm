@@ -10,6 +10,7 @@
 #include "XMLFileReader.hpp"
 #include "XMLItemsReaders.hpp"
 #include "XMLRacesReader.hpp"
+#include "XMLRecipesReader.hpp"
 #include "XMLScriptsReader.hpp"
 #include "XMLSpellsReader.hpp"
 #include "XMLSoundsReader.hpp"
@@ -50,6 +51,7 @@ class XMLConfigurationReader
     std::vector<DisplayTile> get_tile_info();
     std::vector<TrapPtr> get_trap_info();
     std::vector<MapPtr> get_custom_maps(const std::string& directory, const std::string& filename_pattern);
+    Recipes get_recipes();
 
   protected:
     void initialize_parser(const std::string& xml_filename);
@@ -77,5 +79,6 @@ class XMLConfigurationReader
     XMLScriptsReader scripts_reader;
     XMLBaseFeatureReader bf_reader;
     XMLConfigurableFeatureReader cf_reader;
+    XMLRecipesReader recipes_reader;
 };
 

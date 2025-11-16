@@ -4625,6 +4625,9 @@
     <ClInclude Include="engine\generators\settlements\sector\include\BeehiveSectorFeature.hpp">
       <Filter>Header Files\engine\generators\settlements\sector\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLRecipesReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9432,6 +9435,9 @@
     </ClCompile>
     <ClCompile Include="engine\generators\settlements\sector\source\BeehiveSectorFeature.cpp">
       <Filter>Source Files\engine\generators\settlements\sector\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLRecipesReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

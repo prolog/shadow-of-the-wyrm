@@ -1469,6 +1469,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\XML\include\XMLBoatReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLCalendarReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLModifierReader.hpp" />
+    <ClInclude Include="engine\XML\include\XMLRecipesReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLScriptsReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLSoundsReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLSpellbookReader.hpp" />
@@ -3136,6 +3137,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\XML\source\XMLBaseFeatureReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLConfigurableFeatureReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLCalendarReader.cpp" />
+    <ClCompile Include="engine\XML\source\XMLRecipesReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLSoundsReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLSpritesheetsReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLStartingLocationsReader.cpp" />
