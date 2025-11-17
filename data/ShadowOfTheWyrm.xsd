@@ -17,6 +17,7 @@
 			<xs:element ref="tns:Calendar" minOccurs="0"/>
 			<xs:element ref="tns:StartingLocations" minOccurs="0"/>
 			<xs:element ref="tns:Scripts" minOccurs="0"/>
+			<xs:element ref="tns:Recipes" minOccurs="0"/>
 			<xs:element ref="tns:Spritesheets" minOccurs="0"/>
 			<xs:element ref="tns:Sounds" minOccurs="0"/>
 		</xs:sequence>
@@ -179,7 +180,6 @@
 			<xs:element ref="tns:Wands" minOccurs="0"/>
 			<xs:element ref="tns:Spellbooks" minOccurs="0"/>
 			<xs:element ref="tns:MiscItems" minOccurs="0"/>
-			<xs:element ref="tns:Recipes" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<!-- Wands/Staves -->
@@ -1161,7 +1161,7 @@
 			<xs:element name="ID" type="tns:NonEmptyIdentifier"/>
 			<xs:element name="Property" type="xs:string"/>
 		</xs:choice>
-		<xs:element name="Quantity" type="tns:Quantity"/>
+		<xs:element name="Quantity" type="tns:Quantity" minOccurs="0" default="1"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Wand">

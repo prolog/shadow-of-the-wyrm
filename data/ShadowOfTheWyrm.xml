@@ -8335,6 +8335,56 @@
 		<NPCLevelScript>level/npc.lua</NPCLevelScript>
 		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
 	</Scripts>
+	<Recipes>
+		<Recipe id="tan_01_hide_cap">
+			<Ingredients>
+				<Ingredient><ID>_skin</ID></Ingredient>
+			</Ingredients>
+			<Skill>46</Skill>
+			<Min>1</Min>
+			<Make>_hide_cap</Make>
+		</Recipe>
+		<Recipe id="tan_01_hide_whip">
+			<Ingredients>
+				<Ingredient><ID>_skin</ID></Ingredient>
+			</Ingredients>
+			<Skill>46</Skill>
+			<Min>1</Min>
+			<Make>_hide_whip</Make>
+		</Recipe>
+		<Recipe id="tan_01_hide_armour">
+			<Ingredients>
+				<Ingredient><ID>_skin</ID></Ingredient>
+			</Ingredients>
+			<Skill>46</Skill>
+			<Min>1</Min>
+			<Make>_hide_armour</Make>
+		</Recipe>
+		<Recipe id="tan_01_hide_cloak">
+			<Ingredients>
+				<Ingredient><ID>_skin</ID></Ingredient>
+			</Ingredients>
+			<Skill>46</Skill>
+			<Min>1</Min>
+			<Make>_hide_cloak</Make>
+		</Recipe>
+		<Recipe id="tan_01_hide_boots">
+			<Ingredients>
+				<Ingredient><ID>_skin</ID></Ingredient>
+			</Ingredients>
+			<Skill>46</Skill>
+			<Min>1</Min>
+			<Make>_hide_boots</Make>
+		</Recipe>
+		<Recipe id="tan_01_hide_armour">
+			<Ingredients>
+				<Ingredient><ID>_skin</ID></Ingredient>
+			</Ingredients>
+			<Skill>46</Skill>
+			<Min>1</Min>
+			<Make>_hide_sling</Make>
+		</Recipe>
+	</Recipes>
 	<Spritesheets>
 		<Spritesheet id="cr">
 			<Location>assets/sprites/creature_sprites.png</Location>
