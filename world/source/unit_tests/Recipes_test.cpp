@@ -14,10 +14,12 @@ TEST(SW_World_Recipes, saveload)
 	string r_id = "r_id";
 	Ingredients ingr = { {"ingr1", 1}, {"ingr2", 3} };
 	string item_id = "produced_item";
+	map<string, string> prop_1 = { {"1", "2"}, {"3", "4"} };
 
 	string r2_id = "r2_id";
 	Ingredients ingr2 = { {"ingr3", 5}, {"ingr4", 4} };
 	string item2_id = "produced_item2";
+	map<string, string> prop_2 = { {"5", "6"}, {"7", "8"} };
 
 	RecipeType recipes_t;
 
@@ -25,8 +27,8 @@ TEST(SW_World_Recipes, saveload)
 	{
 		for (const int sr : skill_required)
 		{
-			Recipe r1(r_id, ingr, st, sr, item_id);
-			Recipe r2(r2_id, ingr2, st, sr, item2_id);
+			Recipe r1(r_id, ingr, st, sr, item_id, prop_1);
+			Recipe r2(r2_id, ingr2, st, sr, item2_id, prop_2);
 
 			recipes_t[st][sr][r_id] = r1;
 			recipes_t[st][sr][r2_id] = r2;

@@ -4,11 +4,12 @@
 using namespace std;
 
 Recipe::Recipe()
+: skill(SkillType::SKILL_UNDEFINED), skill_required(1)
 {
 }
 
-Recipe::Recipe(const string& new_id, const Ingredients& new_ingredients, const SkillType new_skill, const uint new_skill_required, const string& new_item_id)
-: id(new_id), ingredients(new_ingredients), skill(new_skill), skill_required(new_skill_required), item_id(new_item_id)
+Recipe::Recipe(const string& new_id, const Ingredients& new_ingredients, const SkillType new_skill, const uint new_skill_required, const string& new_item_id, const map<string, string>& new_properties)
+: id(new_id), ingredients(new_ingredients), skill(new_skill), skill_required(new_skill_required), item_id(new_item_id), properties(new_properties)
 {
 }
 
@@ -21,6 +22,7 @@ bool Recipe::operator==(const Recipe& r) const
 	result = result && (skill == r.skill);
 	result = result && (skill_required == r.skill_required);
 	result = result && (item_id == r.item_id);
+	result = result && (properties == r.properties);
 
 	return result;
 }
@@ -50,6 +52,11 @@ string Recipe::get_item_id() const
 	return item_id;
 }
 
+map<string, string> Recipe::get_properties() const
+{
+	return properties;
+}
+
 bool Recipe::serialize(std::ostream& stream) const
 {
 	Serialize::write_string(stream, id);
@@ -64,6 +71,7 @@ bool Recipe::serialize(std::ostream& stream) const
 	Serialize::write_enum(stream, skill);
 	Serialize::write_uint(stream, skill_required);
 	Serialize::write_string(stream, item_id);
+	Serialize::write_string_map(stream, properties);
 
 	return true;
 }
@@ -90,6 +98,7 @@ bool Recipe::deserialize(std::istream& stream)
 	Serialize::read_enum(stream, skill);
 	Serialize::read_uint(stream, skill_required);
 	Serialize::read_string(stream, item_id);
+	Serialize::read_string_map(stream, properties);
 
 	return true;
 }

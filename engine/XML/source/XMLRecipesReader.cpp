@@ -27,6 +27,16 @@ Recipe XMLRecipesReader::parse_recipe(const XMLNode& recipe_node)
   if (!recipe_node.is_null())
   {
     string id = XMLUtils::get_attribute_value(recipe_node, "id");
+
+    SkillType skill = static_cast<SkillType>(XMLUtils::get_child_node_int_value(recipe_node, "Skill"));
+    int min = XMLUtils::get_child_node_int_value(recipe_node, "Min");
+    string make = XMLUtils::get_child_node_value(recipe_node, "Make");
+    
+    XMLNode properties_node = XMLUtils::get_next_element_by_local_name(recipe_node, "Properties");
+    map<string, string> properties;
+    parse_properties(properties, properties_node);
+
+    Recipe recipe(id, {}, skill, min, make, properties);
   }
 
   return r;
