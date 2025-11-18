@@ -1147,6 +1147,7 @@
 		<xs:element name="Skill" type="tns:GeneralSkillType"/>
 		<xs:element name="Min" type="tns:PercentageStatistic"/>
 		<xs:element name="Make" type="tns:NonEmptyIdentifier"/>
+		<xs:element name="Properties" type="tns:Properties" minOccurs="0"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="required"/>
 </xs:complexType>
