@@ -1,8 +1,9 @@
 #pragma once
 #include "Recipes.hpp"
 #include "XMLDataStructures.hpp"
+#include "XMLReader.hpp"
 
-class XMLRecipesReader
+class XMLRecipesReader : public XMLReader
 {
   public:
     Recipes get_recipes(const XMLNode& xml_configuration_recipes_node);

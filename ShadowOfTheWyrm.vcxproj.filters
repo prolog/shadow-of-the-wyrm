@@ -4631,6 +4631,9 @@
     <ClInclude Include="world\include\Recipes.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\Ingredient.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9446,6 +9449,12 @@
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Recipes_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Ingredient.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Ingredient_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>

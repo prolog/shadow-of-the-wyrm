@@ -28,6 +28,8 @@ Recipe XMLRecipesReader::parse_recipe(const XMLNode& recipe_node)
   {
     string id = XMLUtils::get_attribute_value(recipe_node, "id");
 
+    // JCD TODO INGREDIENTS!
+
     SkillType skill = static_cast<SkillType>(XMLUtils::get_child_node_int_value(recipe_node, "Skill"));
     int min = XMLUtils::get_child_node_int_value(recipe_node, "Min");
     string make = XMLUtils::get_child_node_value(recipe_node, "Make");
@@ -37,6 +39,7 @@ Recipe XMLRecipesReader::parse_recipe(const XMLNode& recipe_node)
     parse_properties(properties, properties_node);
 
     Recipe recipe(id, {}, skill, min, make, properties);
+    return recipe;
   }
 
   return r;

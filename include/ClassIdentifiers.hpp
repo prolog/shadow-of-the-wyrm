@@ -1,7 +1,5 @@
 #pragma once
 
-// NOTE: There are unused identifiers (marked "xx UNUSED") that can be
-// reclaimed.
 enum struct ClassIdentifier
 {
   CLASS_ID_NULL = 0,
@@ -311,7 +309,8 @@ enum struct ClassIdentifier
   CLASS_ID_SPRITESHEET_LOCATION = 304,
   CLASS_ID_WEATHER = 305,
   CLASS_ID_ORDER_COMMAND_FACTORY = 306,
-  CLASS_ID_ORDER_KEYBOARD_COMMAND_MAP = 307
+  CLASS_ID_ORDER_KEYBOARD_COMMAND_MAP = 307,
+  CLASS_ID_INGREDIENT = 308
 };
 
 // Any class IDs needed for Lua scripts (e.g., feature class IDs) should go

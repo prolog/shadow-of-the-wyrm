@@ -1158,10 +1158,7 @@
 </xs:complexType>
 <xs:complexType name="Ingredient">
 	<xs:sequence>
-		<xs:choice>
-			<xs:element name="ID" type="tns:NonEmptyIdentifier"/>
-			<xs:element name="Property" type="xs:string"/>
-		</xs:choice>
+		<xs:element name="ID" type="tns:NonEmptyIdentifier"/>
 		<xs:element name="Quantity" type="tns:Quantity" minOccurs="0" default="1"/>
 	</xs:sequence>
 </xs:complexType>
