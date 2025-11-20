@@ -23,9 +23,19 @@ bool Ingredient::operator==(const Ingredient& rhs) const
 	return result;
 }
 
+void Ingredient::set_id(const string& new_id)
+{
+	id = new_id;
+}
+
 string Ingredient::get_id() const
 {
 	return id;
+}
+
+void Ingredient::set_quantity(const uint new_quantity)
+{
+	quantity = new_quantity;
 }
 
 uint Ingredient::get_quantity() const

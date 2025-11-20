@@ -74,6 +74,8 @@ Shadow of the Wyrm v1.9.0 "de Cabezon"
 - There is now a way to get to Telari without explicitly talking to Ead,
   allowing passage without breaking the no-speaking conduct.
 
+- Converted the project from Visual Studio 2022 to 2026.
+
 - New items: slime, essence of were-light, juniper berries, wild hops, honey,
   honeycomb. Juniper berries will generate in fall, wild hops in summer.
 

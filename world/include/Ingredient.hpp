@@ -12,7 +12,10 @@ class Ingredient : public ISerializable
 
 		bool operator==(const Ingredient& rhs) const;
 		
+		void set_id(const std::string& new_id);
 		std::string get_id() const;
+
+		void set_quantity(const uint new_quantity);
 		uint get_quantity() const;
 
 		bool serialize(std::ostream& stream) const override;
