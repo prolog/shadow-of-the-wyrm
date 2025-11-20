@@ -1,12 +1,12 @@
 #pragma once
 #include "common.hpp"
 #include <string>
-#include <utility>
 #include <vector>
 #include "ISerializable.hpp"
+#include "Ingredient.hpp"
 #include "Skills.hpp"
 
-using Ingredients = std::vector<std::pair<std::string, uint>>;
+using Ingredients = std::vector<Ingredient>;
 
 class Recipe : public ISerializable
 {

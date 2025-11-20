@@ -12,7 +12,7 @@ Recipes XMLRecipesReader::get_recipes(const XMLNode& recipes_node)
 
     for (const XMLNode& recipe_node : recipes_nodes)
     {
-      Recipe r = parse_recipe(recipe_node);
+      Recipe r = get_recipe(recipe_node);
       recipes.add(r);
     }
 	}
@@ -20,7 +20,7 @@ Recipes XMLRecipesReader::get_recipes(const XMLNode& recipes_node)
 	return recipes;
 }
 
-Recipe XMLRecipesReader::parse_recipe(const XMLNode& recipe_node)
+Recipe XMLRecipesReader::get_recipe(const XMLNode& recipe_node)
 {
   Recipe r;
 

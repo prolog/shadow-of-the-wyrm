@@ -62,10 +62,9 @@ bool Recipe::serialize(std::ostream& stream) const
 	Serialize::write_string(stream, id);
 	Serialize::write_size_t(stream, ingredients.size());
 	
-	for (const auto& i_pair : ingredients)
+	for (const auto& ingr : ingredients)
 	{
-		Serialize::write_string(stream, i_pair.first);
-		Serialize::write_uint(stream, i_pair.second);
+		ingr.serialize(stream);
 	}
 
 	Serialize::write_enum(stream, skill);
@@ -86,13 +85,10 @@ bool Recipe::deserialize(std::istream& stream)
 
 	for (size_t i = 0; i < num_ingr; i++)
 	{
-		string ingr_id;
-		uint quantity = 0;
+		Ingredient ingr;
 
-		Serialize::read_string(stream, ingr_id);
-		Serialize::read_uint(stream, quantity);
-
-		ingredients.push_back({ ingr_id, quantity });
+		ingr.deserialize(stream);
+		ingredients.push_back(ingr);
 	}
 
 	Serialize::read_enum(stream, skill);
