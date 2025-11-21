@@ -8336,89 +8336,15 @@
 		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
 	</Scripts>
 	<Recipes>
-		<Recipe id="tan_01_hide_cap">
+		<Recipe id="br_01_healing">
 			<Ingredients>
-				<Ingredient><ID>_skin</ID></Ingredient>
+				<Ingredient><ID>_wildflower_3</ID></Ingredient>
+				<Ingredient><Random>brewing_ingredient_common</Random></Ingredient>
+				<Ingredient><Random>brewing_ingredient_common</Random></Ingredient>
 			</Ingredients>
-			<Skill>46</Skill>
+			<Skill>7</Skill>
 			<Min>1</Min>
-			<Make>_hide_cap</Make>
-			<Properties>
-				<Property>
-					<Name>worn_location</Name>
-					<Value>0</Value>
-				</Property>
-			</Properties>
-		</Recipe>
-		<Recipe id="tan_01_hide_whip">
-			<Ingredients>
-				<Ingredient><ID>_skin</ID></Ingredient>
-			</Ingredients>
-			<Skill>46</Skill>
-			<Min>1</Min>
-			<Make>_hide_whip</Make>
-			<Properties>
-				<Property>
-					<Name>worn_location</Name>
-					<Value>4</Value>
-				</Property>
-			</Properties>
-		</Recipe>
-		<Recipe id="tan_01_hide_armour">
-			<Ingredients>
-				<Ingredient><ID>_skin</ID></Ingredient>
-			</Ingredients>
-			<Skill>46</Skill>
-			<Min>1</Min>
-			<Make>_hide_armour</Make>
-			<Properties>
-				<Property>
-					<Name>worn_location</Name>
-					<Value>6</Value>
-				</Property>
-			</Properties>
-		</Recipe>
-		<Recipe id="tan_01_hide_cloak">
-			<Ingredients>
-				<Ingredient><ID>_skin</ID></Ingredient>
-			</Ingredients>
-			<Skill>46</Skill>
-			<Min>1</Min>
-			<Make>_hide_cloak</Make>
-			<Properties>
-				<Property>
-					<Name>worn_location</Name>
-					<Value>7</Value>
-				</Property>
-			</Properties>
-		</Recipe>
-		<Recipe id="tan_01_hide_boots">
-			<Ingredients>
-				<Ingredient><ID>_skin</ID></Ingredient>
-			</Ingredients>
-			<Skill>46</Skill>
-			<Min>1</Min>
-			<Make>_hide_boots</Make>
-			<Properties>
-				<Property>
-					<Name>worn_location</Name>
-					<Value>8</Value>
-				</Property>
-			</Properties>
-		</Recipe>
-		<Recipe id="tan_01_hide_sling">
-			<Ingredients>
-				<Ingredient><ID>_skin</ID></Ingredient>
-			</Ingredients>
-			<Skill>46</Skill>
-			<Min>1</Min>
-			<Make>_hide_sling</Make>
-			<Properties>
-				<Property>
-					<Name>worn_location</Name>
-					<Value>9</Value>
-				</Property>
-			</Properties>
+			<Make>_healing_potion</Make>
 		</Recipe>
 	</Recipes>
 	<Spritesheets>

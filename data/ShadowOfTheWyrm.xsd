@@ -1158,7 +1158,12 @@
 </xs:complexType>
 <xs:complexType name="Ingredient">
 	<xs:sequence>
-		<xs:element name="ID" type="tns:NonEmptyIdentifier"/>
+		<!-- Ingredients use either a set ID, or a property that gets used to
+		     pick an item ID once the game loads. -->
+		<xs:choice>
+			<xs:element name="Random" type="xs:string"/>
+			<xs:element name="ID" type="tns:NonEmptyIdentifier"/>
+		</xs:choice>
 		<xs:element name="Quantity" type="tns:Quantity" minOccurs="0" default="1"/>
 	</xs:sequence>
 </xs:complexType>

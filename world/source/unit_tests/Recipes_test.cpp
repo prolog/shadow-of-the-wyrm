@@ -12,12 +12,12 @@ TEST(SW_World_Recipes, saveload)
 	vector<int> skill_required = { 30, 40, 50 };
 
 	string r_id = "r_id";
-	Ingredients ingr = { {"ingr1", 1}, {"ingr2", 3} };
+	Ingredients ingr = { {"", "ingr1", 1}, {"", "ingr2", 3} };
 	string item_id = "produced_item";
 	map<string, string> prop_1 = { {"1", "2"}, {"3", "4"} };
 
 	string r2_id = "r2_id";
-	Ingredients ingr2 = { {"ingr3", 5}, {"ingr4", 4} };
+	Ingredients ingr2 = { {"", "ingr3", 5}, {"", "ingr4", 4} };
 	string item2_id = "produced_item2";
 	map<string, string> prop_2 = { {"5", "6"}, {"7", "8"} };
 

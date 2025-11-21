@@ -3,7 +3,7 @@
 TEST(SW_World_Recipe, getters)
 {
 	string r_id = "r_id";
-	Ingredients ingr = { {"ingr1", 1}, {"ingr2", 3} };
+	Ingredients ingr = { {"", "ingr1", 1}, {"", "ingr2", 3} };
 	uint skill_required = 30;
 	string item_id = "produced_item";
 	map<string, string> properties = {{"a", "b"}, {"c" , "d"}};
@@ -24,7 +24,7 @@ TEST(SW_World_Recipe, serialization_id)
 TEST(SW_World_Recipe, saveload)
 {
 	string r_id = "r_id";
-	Ingredients ingr = { {"ingr1", 1}, {"ingr2", 3} };
+	Ingredients ingr = { {"", "ingr1", 1}, {"", "ingr2", 3} };
 	uint skill_required = 30;
 	string item_id = "produced_item";
 	map<string, string> properties = { {"a", "b"}, {"c" , "d"} };

@@ -9,7 +9,7 @@ TEST(SW_World_Ingredient, serialization_id)
 
 TEST(SW_World_Ingredient, saveload)
 {
-	Ingredient i("abc", 123);
+	Ingredient i("", "abc", 123);
 	Ingredient i2;
 
 	ostringstream ss;

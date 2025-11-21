@@ -7,11 +7,14 @@ class Ingredient : public ISerializable
 {
 	public:
 		Ingredient();
-		Ingredient(const std::string& new_id, const uint new_quantity);
+		Ingredient(const std::string& new_randomization_property, const std::string& new_id, const uint new_quantity);
 		virtual ~Ingredient() = default;
 
 		bool operator==(const Ingredient& rhs) const;
 		
+		void set_randomization_property(const std::string& new_randomization_property);
+		std::string get_randomization_property() const;
+
 		void set_id(const std::string& new_id);
 		std::string get_id() const;
 
@@ -22,6 +25,7 @@ class Ingredient : public ISerializable
 		bool deserialize(std::istream& stream) override;
 
 	protected:
+		std::string randomization_property;
 		std::string id;
 		uint quantity;
 
