@@ -9,7 +9,7 @@ FeaturePtr XMLCauldronReader::create(const XMLNode& cauldron_node) const
 
   if (!cauldron_node.is_null())
   {
-    MaterialType material = static_cast<MaterialType>(XMLUtils::get_child_node_int_value(cauldron_node, "Material", static_cast<int>(MaterialType::MATERIAL_TYPE_WOOD)));
+    MaterialType material = static_cast<MaterialType>(XMLUtils::get_child_node_int_value(cauldron_node, "Material", static_cast<int>(MaterialType::MATERIAL_TYPE_IRON)));
     cauldron->set_material_type(material);
   }
 
