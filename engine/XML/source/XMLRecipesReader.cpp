@@ -58,7 +58,7 @@ void XMLRecipesReader::parse_ingredient(const XMLNode& ingredient_node, Ingredie
 {
   if (!ingredient_node.is_null())
   {
-    string randomization_property = XMLUtils::get_child_node_value(ingredient_node, "RandomizationProperty");
+    string randomization_property = XMLUtils::get_child_node_value(ingredient_node, "Random");
     string id = XMLUtils::get_child_node_value(ingredient_node, "ID");
     uint quantity = static_cast<uint>(XMLUtils::get_child_node_int_value(ingredient_node, "Quantity", 1));
 

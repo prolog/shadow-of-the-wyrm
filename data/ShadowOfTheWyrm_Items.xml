@@ -10272,6 +10272,30 @@
 				<StandardDrinks>1</StandardDrinks>
 				<Effect>0</Effect>
 			</Potion>
+			<Potion id="ale">
+				<DescriptionSID>ALE_SID</DescriptionSID>
+				<UsageDescriptionSID>ALE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ALE_CODEX_SID</CodexDescriptionSID>
+				<Value>2</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>2</Material>
+				<Symbol>
+					<Char>!</Char>
+					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>1</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>200</Nutrition>
+				<StandardDrinks>1</StandardDrinks>
+				<Effect>0</Effect>
+			</Potion>
 			<Potion id="fortified_dwarven_wine">
 				<DescriptionSID>FORTIFIED_DWARVEN_WINE_SID</DescriptionSID>
 				<UsageDescriptionSID>FORTIFIED_DWARVEN_WINE_USAGE_SID</UsageDescriptionSID>

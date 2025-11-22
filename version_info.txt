@@ -60,6 +60,8 @@ Shadow of the Wyrm v1.9.0 "de Cabezon"
 - Added a new "unstable" flag (to were-light and antimatter shot) that causes
   it to vanish when dropped or thrown.
 
+- Juniper berries will generate in fall, wild hops in summer.
+
 - If The Smith decides to give antimatter shots, he now gives more.
 
 - Dropping were-light can impart the glow flag on other items on the tile.
@@ -77,7 +79,7 @@ Shadow of the Wyrm v1.9.0 "de Cabezon"
 - Converted the project from Visual Studio 2022 to 2026.
 
 - New items: slime, essence of were-light, juniper berries, wild hops, honey,
-  honeycomb. Juniper berries will generate in fall, wild hops in summer.
+  honeycomb, ale. 
 
 - New terrain features: cauldron, insect hive.
 
