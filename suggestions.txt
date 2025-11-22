@@ -17,7 +17,6 @@ Me:
 - Audio enhancements off for testing
 - re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
   YT after)
-- cauldron for yew, carcassia
 - cauldrons for random towns
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.
