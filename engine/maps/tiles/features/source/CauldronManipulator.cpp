@@ -1,5 +1,6 @@
 #include "CauldronManipulator.hpp"
 #include "ActionTextKeys.hpp"
+#include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 
 using namespace std;
@@ -20,9 +21,30 @@ void CauldronManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, T
 }
 
 // Manipulating a cauldron allows the character to brew any recipes they know.
-bool CauldronManipulator::handle(TilePtr /*tile*/, CreaturePtr /*creature*/)
+bool CauldronManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
 {
-  // ... TODO ...
-  return false;
+  bool brewed = false;
+  // Recipes& recipes = Game::instance().get_recipes_ref();
+  vector<Recipe> brewable_recipes; // = CreatureUtils::get_brewable_recipes(recipes);
+
+  if (brewable_recipes.empty())
+  {
+    add_nothing_brewable_message(creature);
+  }
+  else
+  {
+    // ... TODO ...
+  }
+
+  return brewed;
 }
 
+void CauldronManipulator::add_nothing_brewable_message(CreaturePtr creature)
+{
+  if (creature != nullptr)
+  {
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BREWING_NO_INGREDIENTS));
+    manager.send();
+  }
+}

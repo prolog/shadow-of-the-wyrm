@@ -8336,6 +8336,15 @@
 		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
 	</Scripts>
 	<Recipes>
+		<Recipe id="br_00_ale">
+			<Ingredients>
+				<Ingredient><ID>_wheat</ID></Ingredient>
+				<Ingredient><ID>_wild_hops</ID></Ingredient>
+			</Ingredients>
+			<Skill>0</Skill>
+			<Min>1</Min>
+			<Make>ale</Make>
+		</Recipe>
 		<Recipe id="br_01_healing">
 			<Ingredients>
 				<Ingredient><ID>_wildflower_3</ID></Ingredient>

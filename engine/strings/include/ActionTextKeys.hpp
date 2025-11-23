@@ -51,6 +51,7 @@ class ActionTextKeys
     static std::string get_kiln_no_item_message(const std::string& missing_item_sid, const std::string& creation_item_sid);
 
     static const std::string ACTION_NOT_FOUND;
+    static const std::string ACTION_BREWING_NO_INGREDIENTS;
     static const std::string ACTION_SEARCH;
     static const std::string ACTION_SEARCH_FOUND;
     static const std::string ACTION_SEARCH_FOUND_MULTIPLE;
