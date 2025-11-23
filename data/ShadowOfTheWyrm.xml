@@ -2871,8 +2871,41 @@
 						<Quantity>
 							<Random>
 								<NumDice>2</NumDice>
+								<NumSides>3</NumSides>
+							</Random>
+						</Quantity>
+					</InitialItem>
+					<InitialItem>
+						<ID>antidote_potion</ID>
+						<Quantity>
+							<Random>
+								<NumDice>2</NumDice>
 								<NumSides>2</NumSides>
 							</Random>
+						</Quantity>
+					</InitialItem>
+					<InitialItem>
+						<ID>speed_potion</ID>
+						<Quantity>
+							<Random>
+								<NumDice>1</NumDice>
+								<NumSides>3</NumSides>
+							</Random>
+						</Quantity>
+					</InitialItem>
+					<InitialItem>
+						<ID>unstoning_potion</ID>
+						<Quantity>
+							<Random>
+								<NumDice>2</NumDice>
+								<NumSides>2</NumSides>
+							</Random>
+						</Quantity>
+					</InitialItem>
+					<InitialItem>
+						<ID>gain_attributes_potion</ID>
+						<Quantity>
+							<Amount>1</Amount>
 						</Quantity>
 					</InitialItem>
 					<InitialItem>
@@ -8338,11 +8371,16 @@
 	<Recipes>
 		<Recipe id="br_00_ale">
 			<Ingredients>
-				<Ingredient><ID>_wheat</ID></Ingredient>
+				<Ingredient>
+					<ID>_wheat</ID>
+					<Quantity>
+						<Amount>3</Amount>
+					</Quantity>
+				</Ingredient>
 				<Ingredient><ID>_wild_hops</ID></Ingredient>
 			</Ingredients>
-			<Skill>0</Skill>
-			<Min>1</Min>
+			<Skill>7</Skill>
+			<Min>0</Min>
 			<Make>ale</Make>
 		</Recipe>
 		<Recipe id="br_01_healing">

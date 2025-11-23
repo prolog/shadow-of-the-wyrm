@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <vector>
+#include "Creature.hpp"
 #include "ISerializable.hpp"
 #include "Recipe.hpp"
 
@@ -16,6 +17,7 @@ class Recipes : public ISerializable
 		bool operator==(const Recipes& r2) const;
 
 		void add(const Recipe& r);
+		std::vector<Recipe> get_recipes(CreaturePtr creature = nullptr) const;
 
 		bool serialize(std::ostream& stream) const override;
 		bool deserialize(std::istream& stream) override;

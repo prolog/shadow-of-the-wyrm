@@ -4634,6 +4634,9 @@
     <ClInclude Include="world\include\Ingredient.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\conversion\include\RecipesDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9456,6 +9459,9 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Ingredient_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\RecipesDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

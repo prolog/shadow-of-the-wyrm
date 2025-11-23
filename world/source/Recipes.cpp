@@ -26,6 +26,34 @@ void Recipes::add(const Recipe& r)
   recipes[r.get_skill()][r.get_skill_required()][r.get_id()] = r;
 }
 
+vector<Recipe> Recipes::get_recipes(CreaturePtr creature) const
+{
+  vector<Recipe> rec;
+
+  for (const auto& sr_pair : recipes)
+  {
+    for (const auto& ir_pair : sr_pair.second)
+    {
+      bool add_rec = true;
+
+      if (creature != nullptr && creature->get_skills().get_value(sr_pair.first) < ir_pair.first)
+      {
+        add_rec = false;
+      }
+
+      if (add_rec)
+      {
+        for (const auto& kvr_pair : ir_pair.second)
+        {
+          rec.push_back(kvr_pair.second);
+        }
+      }
+    }
+  }
+
+  return rec;
+}
+
 bool Recipes::serialize(std::ostream& stream) const
 {
   Serialize::write_size_t(stream, recipes.size());

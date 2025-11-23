@@ -30,6 +30,7 @@
 #include "PartyTextKeys.hpp"
 #include "QuestDumper.hpp"
 #include "RaceManager.hpp"
+#include "RecipesDumper.hpp"
 #include "ReligionManager.hpp"
 #include "ResistancesDumper.hpp"
 #include "Setting.hpp"
@@ -114,6 +115,10 @@ string CharacterDumper::str() const
 
   SpellsDumper spells_dumper(creature, num_cols);
   ss << spells_dumper.str() << endl << endl;
+
+  const Recipes& recipes = game.get_recipes_ref();
+  RecipesDumper recipes_dumper(creature, recipes, num_cols);
+  ss << recipes_dumper.str() << endl << endl;
 
   QuestDumper quest_dumper(creature, num_cols);
   ss << quest_dumper.str() << endl << endl;
