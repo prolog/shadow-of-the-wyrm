@@ -15454,19 +15454,5 @@
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 		</MiscItems>
-		<Recipes>
-			<Recipe id="gnomish_stout">
-				<Ingredients>
-					<Ingredient>
-						<ID>_wheat</ID>
-						<Quantity>
-							<Amount>3</Amount>
-						</Quantity>
-					</Ingredient>
-				</Ingredients>
-				<Brewing>0</Brewing>
-				<Make>gnomish_stout</Make>
-			</Recipe>
-		</Recipes>
 	</Items>
 </ShadowOfTheWyrm>
