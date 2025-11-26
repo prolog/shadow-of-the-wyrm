@@ -9708,6 +9708,10 @@
 						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
+					<Property>
+						<Name>wildflower</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -9749,6 +9753,10 @@
 					</Property>
 					<Property>
 						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>wildflower</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -9794,6 +9802,10 @@
 						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
+					<Property>
+						<Name>wildflower</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -9835,6 +9847,10 @@
 					</Property>
 					<Property>
 						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>wildflower</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -9880,6 +9896,10 @@
 						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
+					<Property>
+						<Name>wildflower</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -9921,6 +9941,10 @@
 					</Property>
 					<Property>
 						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>wildflower</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>

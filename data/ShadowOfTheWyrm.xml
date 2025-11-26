@@ -8385,7 +8385,7 @@
 		</Recipe>
 		<Recipe id="br_01_healing">
 			<Ingredients>
-				<Ingredient><ID>_wildflower_3</ID></Ingredient>
+				<Ingredient><Random>wildflower</Random></Ingredient>
 				<Ingredient rand_min="1" rand_max="2"><Random>brewing_ingredient_common</Random></Ingredient>
 			</Ingredients>
 			<Skill>7</Skill>

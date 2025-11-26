@@ -18,6 +18,7 @@ class Recipe : public ISerializable
 
 		std::string get_id() const;
 		Ingredients get_ingredients() const;
+		Ingredients& get_ingredients_ref();
 		SkillType get_skill() const;
 		uint get_skill_required() const;
 		std::string get_item_id() const;

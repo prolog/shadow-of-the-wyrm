@@ -17,14 +17,11 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HairSelectionScreen.hpp"
-#include "HelpCommandProcessor.hpp"
-#include "HelpScreen.hpp"
 #include "HighScoreScreen.hpp"
 #include "ItemDescriptionRandomizer.hpp"
 #include "ItemIdentifier.hpp"
 #include "LoadGameScreen.hpp"
 #include "Log.hpp"
-#include "MapProperties.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MusicEvent.hpp"
 #include "NamingScreen.hpp"
@@ -32,6 +29,7 @@
 #include "PlayerDecisionStrategy.hpp"
 #include "RaceManager.hpp"
 #include "RaceSelectionScreen.hpp"
+#include "RecipeRandomizer.hpp"
 #include "ReligionConstants.hpp"
 #include "RNG.hpp"
 #include "ScriptConstants.hpp"
@@ -326,9 +324,11 @@ void ShadowOfTheWyrmEngine::setup_game()
   StartingLocationMap starting_locations = reader.get_starting_locations();
   game.set_starting_locations(starting_locations);
 
-  log.debug("Reading recipes.");
+  log.debug("Reading & randomizing recipes.");
 
+  RecipeRandomizer rr;
   Recipes recipes = reader.get_recipes();
+  rr.randomize(recipes, items.first);
   game.set_recipes(recipes);
 
   log.debug("Reading custom maps.");

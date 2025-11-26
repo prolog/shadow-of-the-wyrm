@@ -7,7 +7,7 @@ Recipes::Recipes()
 {
 }
 
-Recipes::Recipes(const RecipeType& new_recipes)
+Recipes::Recipes(const RecipesType& new_recipes)
 : recipes(new_recipes)
 {
 }
@@ -52,6 +52,11 @@ vector<Recipe> Recipes::get_recipes(CreaturePtr creature) const
   }
 
   return rec;
+}
+
+RecipesType& Recipes::get_recipes_ref()
+{
+  return recipes;
 }
 
 bool Recipes::serialize(std::ostream& stream) const

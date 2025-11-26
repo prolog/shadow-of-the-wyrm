@@ -1166,8 +1166,8 @@
 		</xs:choice>
 		<xs:element name="Quantity" type="tns:Quantity" minOccurs="0" default="1"/>
 	</xs:sequence>
-	<xs:attribute name="randMin" type="xs:integer" use="optional" default="1"/>
-	<xs:attribute name="randMax" type="xs:integer" use="optional" default="1"/>
+	<xs:attribute name="rand_min" type="xs:integer" use="optional" default="1"/>
+	<xs:attribute name="rand_max" type="xs:integer" use="optional" default="1"/>
 </xs:complexType>
 <xs:complexType name="Wand">
 	<xs:complexContent>

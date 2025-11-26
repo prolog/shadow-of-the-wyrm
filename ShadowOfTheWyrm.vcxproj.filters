@@ -4637,6 +4637,9 @@
     <ClInclude Include="engine\conversion\include\RecipesDumper.hpp">
       <Filter>Header Files\engine\conversion\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\items\include\RecipeRandomizer.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9462,6 +9465,9 @@
     </ClCompile>
     <ClCompile Include="engine\conversion\source\RecipesDumper.cpp">
       <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\RecipeRandomizer.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

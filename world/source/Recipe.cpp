@@ -37,6 +37,11 @@ Ingredients Recipe::get_ingredients() const
 	return ingredients;
 }
 
+Ingredients& Recipe::get_ingredients_ref()
+{
+	return ingredients;
+}
+
 SkillType Recipe::get_skill() const
 {
 	return skill;

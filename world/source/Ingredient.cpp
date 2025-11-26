@@ -23,19 +23,15 @@ bool Ingredient::operator==(const Ingredient& rhs) const
 	return result;
 }
 
-void Ingredient::set_randomization_property(const string& new_randomization_property)
-{
-	randomization_property = new_randomization_property;
-}
-
 string Ingredient::get_randomization_property() const
 {
 	return randomization_property;
 }
 
-void Ingredient::set_id(const string& new_id)
+void Ingredient::set_id_and_property(const string& new_id, const string& new_property)
 {
 	id = new_id;
+	randomization_property = new_property;
 }
 
 string Ingredient::get_id() const

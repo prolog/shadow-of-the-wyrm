@@ -68,8 +68,7 @@ vector<Ingredient> XMLRecipesReader::get_ingredient(const XMLNode& ingredient_no
     int rand_min = XMLUtils::get_attribute_int_value(ingredient_node, "rand_min", 1);
     int rand_max = XMLUtils::get_attribute_int_value(ingredient_node, "rand_max", 1);
 
-    ingr.set_randomization_property(randomization_property);
-    ingr.set_id(id);
+    ingr.set_id_and_property(id, randomization_property);
     ingr.set_quantity(static_cast<uint>(RNG::dice(quantity)));
 
     if (rand_min > 0 && rand_max >= rand_min)

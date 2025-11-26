@@ -43,7 +43,7 @@ TEST(SW_World_Recipes, saveload)
 	string item2_id = "produced_item2";
 	map<string, string> prop_2 = { {"5", "6"}, {"7", "8"} };
 
-	RecipeType recipes_t;
+	RecipesType recipes_t;
 
 	for (const SkillType st : skill_types)
 	{
