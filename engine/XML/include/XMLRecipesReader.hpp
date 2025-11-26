@@ -10,5 +10,5 @@ class XMLRecipesReader : public XMLReader
 
   protected:
     Recipe get_recipe(const XMLNode& recipe_node);
-    void parse_ingredient(const XMLNode& ingredient_node, Ingredient& i);
+    std::vector<Ingredient> get_ingredient(const XMLNode& ingredient_node);
 };

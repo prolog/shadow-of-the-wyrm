@@ -35,9 +35,8 @@ Recipe XMLRecipesReader::get_recipe(const XMLNode& recipe_node)
 
     for (const XMLNode& ingr_node : ingredient_nodes)
     {
-      Ingredient i;
-      parse_ingredient(ingr_node, i);
-      ingrs.push_back(i);
+      vector<Ingredient> ingrs_rnd = get_ingredient(ingr_node);
+      std::copy(ingrs_rnd.begin(), ingrs_rnd.end(), std::back_inserter(ingrs));
     }
 
     SkillType skill = static_cast<SkillType>(XMLUtils::get_child_node_int_value(recipe_node, "Skill"));
@@ -55,17 +54,34 @@ Recipe XMLRecipesReader::get_recipe(const XMLNode& recipe_node)
   return r;
 }
 
-void XMLRecipesReader::parse_ingredient(const XMLNode& ingredient_node, Ingredient& i)
+vector<Ingredient> XMLRecipesReader::get_ingredient(const XMLNode& ingredient_node)
 {
+  vector<Ingredient> ingredients;
+
   if (!ingredient_node.is_null())
   {
+    Ingredient ingr;
     string randomization_property = XMLUtils::get_child_node_value(ingredient_node, "Random");
     string id = XMLUtils::get_child_node_value(ingredient_node, "ID");
     XMLNode quantity_node = XMLUtils::get_next_element_by_local_name(ingredient_node, "Quantity");
     Dice quantity = parse_quantity(quantity_node);
+    int rand_min = XMLUtils::get_attribute_int_value(ingredient_node, "rand_min", 1);
+    int rand_max = XMLUtils::get_attribute_int_value(ingredient_node, "rand_max", 1);
 
-    i.set_randomization_property(randomization_property);
-    i.set_id(id);
-    i.set_quantity(static_cast<uint>(RNG::dice(quantity)));
+    ingr.set_randomization_property(randomization_property);
+    ingr.set_id(id);
+    ingr.set_quantity(static_cast<uint>(RNG::dice(quantity)));
+
+    if (rand_min > 0 && rand_max >= rand_min)
+    {
+      int num_ingr = RNG::range(rand_min, rand_max);
+
+      for (int i = 0; i < num_ingr; i++)
+      {
+        ingredients.push_back(ingr);
+      }
+    }
   }
+
+  return ingredients;
 }
