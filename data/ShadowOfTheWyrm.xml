@@ -8383,14 +8383,181 @@
 			<Min>0</Min>
 			<Make>ale</Make>
 		</Recipe>
-		<Recipe id="br_01_healing">
+		<Recipe id="br_01_fruit_juice">
 			<Ingredients>
-				<Ingredient><Random>wildflower</Random></Ingredient>
+				<Ingredient>
+					<Random>fruit</Random>
+					<Quantity>
+						<Amount>3</Amount>
+					</Quantity>
+				</Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>0</Min>
+			<Make>fruit_juice_potion</Make>
+		</Recipe>
+		<Recipe id="br_02_healing">
+			<Ingredients>
+				<Ingredient rand_min="1" rand_max="2"><Random>wildflower</Random></Ingredient>
 				<Ingredient rand_min="1" rand_max="2"><Random>brewing_ingredient_common</Random></Ingredient>
 			</Ingredients>
 			<Skill>7</Skill>
-			<Min>1</Min>
+			<Min>5</Min>
 			<Make>_healing_potion</Make>
+		</Recipe>
+		<Recipe id="br_03_flying">
+			<Ingredients>
+				<Ingredient><ID>_magici_shard</ID></Ingredient>
+				<Ingredient>
+					<ID>_quill</ID>
+					<Quantity>
+						<Amount>3</Amount>
+					</Quantity>
+				</Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>10</Min>
+			<Make>flying_potion</Make>
+		</Recipe>
+		<Recipe id="br_04_antidote">
+			<Ingredients>
+				<Ingredient rand_min="3" rand_max="4"><Random>brewing_ingredient_common</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>15</Min>
+			<Make>antidote_potion</Make>
+		</Recipe>
+		<Recipe id="br_05_amut">
+			<Ingredients>
+				<Ingredient><ID>_magici_shard</ID></Ingredient>
+				<Ingredient><Random>brewing_ingredient_common</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>20</Min>
+			<Make>amut_potion</Make>
+		</Recipe>
+		<Recipe id="br_06_fire">
+			<Ingredients>
+				<Ingredient><ID>_magici_shard</ID></Ingredient>
+				<Ingredient><Random>brewing_ingredient_common</Random></Ingredient>
+				<Ingredient><Random>brewing_ingredient_uncommon</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>25</Min>
+			<Make>fire_potion</Make>
+		</Recipe>
+		<Recipe id="br_07_uncursing">
+			<Ingredients>
+				<Ingredient><ID>_magici_shard</ID></Ingredient>
+				<Ingredient><Random rand_min="2" rand_max="3">wildflower</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>30</Min>
+			<Make>amut_potion</Make>
+		</Recipe>
+		<Recipe id="br_08_unblinding">
+			<Ingredients>
+				<Ingredient><ID>_essence_were_light</ID></Ingredient>
+				<Ingredient><Random>wildflower</Random></Ingredient>
+				<Ingredient><Random>brewing_ingredient_common</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>35</Min>
+			<Make>unblinding_potion</Make>
+		</Recipe>
+		<Recipe id="br_09_rage">
+			<Ingredients>
+				<Ingredient rand_min="1" rand_max="3"><Random>brewing_ingredient_common</Random></Ingredient>
+				<Ingredient><Random>brewing_ingredient_uncommon</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>40</Min>
+			<Make>rage_potion</Make>
+		</Recipe>
+		<Recipe id="br_10_speed">
+			<Ingredients>
+				<Ingredient><ID>_magici_shard</ID></Ingredient>
+				<Ingredient rand_min="2" rand_max="4"><Random>brewing_ingredient_common</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>45</Min>
+			<Make>amut_potion</Make>
+		</Recipe>
+		<Recipe id="br_11_unbinding">
+			<Ingredients>
+				<Ingredient><ID>_essence_were_light</ID></Ingredient>
+				<Ingredient rand_min="2" rand_max="4"><Random>brewing_ingredient_common</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>50</Min>
+			<Make>unbinding_potion</Make>
+		</Recipe>
+		<Recipe id="br_12_sustenance">
+			<Ingredients>
+				<Ingredient><ID>_magici_shard</ID></Ingredient>
+				<Ingredient><Random>brewing_ingredient_common</Random></Ingredient>
+				<Ingredient><Random>fruit</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>40</Min>
+			<Make>sustenance_potion</Make>
+		</Recipe>
+		<Recipe id="br_13_unstoning">
+			<Ingredients>
+				<Ingredient><ID>_essence_were_light</ID></Ingredient>
+				<Ingredient>
+					<ID>_magici_shard</ID>
+					<Quantity>
+						<Amount>2</Amount>
+					</Quantity>
+				</Ingredient>
+				<Ingredient><Random rand_min="1" rand_max="3">wildflower</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>60</Min>
+			<Make>_unstoning_potion</Make>
+		</Recipe>
+		<Recipe id="br_14_restorative">
+			<Ingredients>
+				<Ingredient>
+					<ID>_magici_shard</ID>
+					<Quantity>
+						<Random>
+							<NumDice>2</NumDice>
+							<NumSides>2</NumSides>
+						</Random>
+					</Quantity>
+				</Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>70</Min>
+			<Make>restorative_potion</Make>
+		</Recipe>
+		<Recipe id="br_15_ether">
+			<Ingredients>
+				<Ingredient><ID>_magici_shard</ID></Ingredient>
+				<Ingredient><Random>wildflower</Random></Ingredient>				
+				<Ingredient rand_min="1" rand_max="2"><Random>mushroom</Random></Ingredient>
+				<Ingredient rand_min="3" rand_max="4"><Random>brewing_ingredient_common</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>90</Min>
+			<Make>ether_potion</Make>
+		</Recipe>
+		<Recipe id="br_16_gain_attr">
+			<Ingredients>
+				<Ingredient>
+					<ID>_magici_shard</ID>
+					<Quantity>
+						<Amount>3</Amount>
+					</Quantity>
+				</Ingredient>
+				<Ingredient><ID>_golden_apple</ID></Ingredient>
+				<Ingredient><ID>_silver_apple</ID></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>100</Min>
+			<Make>gain_attributes_potion</Make>
 		</Recipe>
 	</Recipes>
 	<Spritesheets>

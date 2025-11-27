@@ -7959,6 +7959,10 @@
 						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -7996,6 +8000,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>12</Value>
+					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
@@ -8040,6 +8048,10 @@
 						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -8082,6 +8094,10 @@
 						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -8119,6 +8135,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>12</Value>
+					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
@@ -8159,6 +8179,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>300</Nutrition>
 				<FoodType>0</FoodType>
@@ -8197,6 +8221,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>500</Nutrition>
@@ -8238,6 +8266,10 @@
 					</Property>
 					<Property>
 						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>mushroom</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -8283,6 +8315,10 @@
 						<Name>brewing_ingredient_common</Name>
 						<Value>1</Value>
 					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -8324,6 +8360,10 @@
 					</Property>
 					<Property>
 						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>mushroom</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
@@ -8581,6 +8621,10 @@
 						<Name>seed_item_id</Name>
 						<Value>_cherry_pit</Value>
 					</Property>
+					<Property>
+						<Name>fruit</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -8610,6 +8654,10 @@
 					<Property>
 						<Name>seed_item_id</Name>
 						<Value>_peach_pit</Value>
+					</Property>
+					<Property>
+						<Name>fruit</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
@@ -8671,6 +8719,10 @@
 						<Name>seed_item_id</Name>
 						<Value>_plum_pit</Value>
 					</Property>
+					<Property>
+						<Name>fruit</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -8700,6 +8752,10 @@
 					<Property>
 						<Name>seed_item_id</Name>
 						<Value>_pear_seed</Value>
+					</Property>
+					<Property>
+						<Name>fruit</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
