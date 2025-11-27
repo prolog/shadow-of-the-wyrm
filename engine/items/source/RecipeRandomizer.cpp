@@ -1,4 +1,5 @@
 #include "RecipeRandomizer.hpp"
+#include "Log.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -38,7 +39,16 @@ void RecipeRandomizer::randomize(Recipes& recipes, const ItemMap& items)
             // ... if not, build it.
             if (p_it == property_cache.end())
             {
-              property_cache[rand_prop] = get_items_with_property(items, rand_prop);
+              auto items_w_prop = get_items_with_property(items, rand_prop);
+
+              if (items_w_prop.empty())
+              {
+                Log::instance().error("Recipe randomization: no items found with property " + rand_prop);
+              }
+              else
+              {
+                property_cache[rand_prop] = items_w_prop;
+              }
             }
 
             // Get a random value from the cache
