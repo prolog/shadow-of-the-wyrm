@@ -25,7 +25,8 @@ void CauldronManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, T
 bool CauldronManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
 {
   bool brewed = false;
-  Recipes& recipes = Game::instance().get_recipes_ref();
+  Game& game = Game::instance();
+  Recipes& recipes = game.get_recipes_ref();
   vector<Recipe> brewable_recipes = recipes.get_recipes(creature);
 
   if (brewable_recipes.empty())
@@ -34,7 +35,10 @@ bool CauldronManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
   }
   else
   {
-    // ... TODO ...
+    DisplayPtr display = game.get_display();
+    RecipeScreen rs(display, recipes, creature);
+    string d = rs.display();
+    int x = 0; // JCD REMOVE ME
   }
 
   return brewed;

@@ -31,6 +31,7 @@ class Inventory : public IInventory
     void set_additional_property(const std::string& property_name, const std::string& property_value) override;
 
     bool has_items() const override;
+    bool has_items_for_recipe(const Recipe& r) const override;
     bool has_unpaid_items() const override;
     bool has_item(const std::string& base_id) const override;
 

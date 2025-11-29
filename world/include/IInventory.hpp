@@ -5,6 +5,7 @@
 #include <vector>
 #include "Item.hpp"
 #include "ISerializable.hpp"
+#include "Recipe.hpp"
 
 enum struct InventoryAdditionType
 {
@@ -62,6 +63,7 @@ class IInventory : public ISerializable
     virtual void set_additional_property(const std::string& property_name, const std::string& property_value) = 0;
 
     virtual bool has_items() const = 0;
+    virtual bool has_items_for_recipe(const Recipe& r) const = 0;
     virtual bool has_unpaid_items() const = 0;
     virtual bool has_item(const std::string& base_id) const = 0;
 

@@ -104,6 +104,11 @@ bool NullInventory::has_items() const
   return false;
 }
 
+bool NullInventory::has_items_for_recipe(const Recipe& /*r*/) const
+{
+  return false;
+}
+
 bool NullInventory::has_unpaid_items() const
 {
   return false;

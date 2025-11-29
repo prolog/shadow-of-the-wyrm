@@ -22,6 +22,7 @@ class PromptTextKeys
     static const std::string PROMPT_SKIN;
     static const std::string PROMPT_WEAVE;
     static const std::string PROMPT_KILN;
+    static const std::string PROMPT_RECIPE;
 
   protected:
     PromptTextKeys();

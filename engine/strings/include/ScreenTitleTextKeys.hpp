@@ -25,6 +25,7 @@ class ScreenTitleTextKeys
     static const std::string SCREEN_TITLE_SKILL_DETAILS;
     static const std::string SCREEN_TITLE_SPELL_DETAILS;
     static const std::string SCREEN_TITLE_BUILD;
+    static const std::string SCREEN_TITLE_RECIPES;
 
   protected:
     ScreenTitleTextKeys();

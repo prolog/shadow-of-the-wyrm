@@ -320,6 +320,11 @@ bool Inventory::has_items() const
   return (items.empty() == false);
 }
 
+bool Inventory::has_items_for_recipe(const Recipe& r) const
+{
+  return false; // TODO
+}
+
 bool Inventory::has_unpaid_items() const
 {
   for (ItemPtr i : items)
