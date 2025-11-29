@@ -8542,7 +8542,7 @@
 			</Ingredients>
 			<Skill>7</Skill>
 			<Min>90</Min>
-			<Make>ether_potion</Make>
+			<Make>_ether_potion</Make>
 		</Recipe>
 		<Recipe id="br_16_gain_attr">
 			<Ingredients>
