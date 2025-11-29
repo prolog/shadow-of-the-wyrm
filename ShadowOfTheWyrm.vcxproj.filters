@@ -4640,6 +4640,9 @@
     <ClInclude Include="engine\items\include\RecipeRandomizer.hpp">
       <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\screens\include\RecipeScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9468,6 +9471,9 @@
     </ClCompile>
     <ClCompile Include="engine\items\source\RecipeRandomizer.cpp">
       <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\RecipeScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

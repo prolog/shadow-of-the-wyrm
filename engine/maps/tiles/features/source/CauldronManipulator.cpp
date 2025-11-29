@@ -2,6 +2,7 @@
 #include "ActionTextKeys.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RecipeScreen.hpp"
 
 using namespace std;
 
@@ -24,8 +25,8 @@ void CauldronManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, T
 bool CauldronManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
 {
   bool brewed = false;
-  // Recipes& recipes = Game::instance().get_recipes_ref();
-  vector<Recipe> brewable_recipes; // = CreatureUtils::get_brewable_recipes(recipes);
+  Recipes& recipes = Game::instance().get_recipes_ref();
+  vector<Recipe> brewable_recipes = recipes.get_recipes(creature);
 
   if (brewable_recipes.empty())
   {

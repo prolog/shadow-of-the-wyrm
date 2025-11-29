@@ -1269,6 +1269,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\screens\include\LoadGameScreen.hpp" />
     <ClInclude Include="engine\screens\include\OptionScreen.hpp" />
     <ClInclude Include="engine\screens\include\OrderScreen.hpp" />
+    <ClInclude Include="engine\screens\include\RecipeScreen.hpp" />
     <ClInclude Include="engine\screens\include\Screen.hpp" />
     <ClInclude Include="engine\screens\include\ScreenComponent.hpp" />
     <ClInclude Include="engine\screens\include\NamingScreen.hpp" />
@@ -2949,6 +2950,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\screens\source\KilnScreen.cpp" />
     <ClCompile Include="engine\screens\source\OptionScreen.cpp" />
     <ClCompile Include="engine\screens\source\OrderScreen.cpp" />
+    <ClCompile Include="engine\screens\source\RecipeScreen.cpp" />
     <ClCompile Include="engine\screens\source\SkillsScreen.cpp" />
     <ClCompile Include="engine\screens\source\StartingLocationSelectionScreen.cpp" />
     <ClCompile Include="engine\screens\source\unit_tests\OptionsComponent_test.cpp">
