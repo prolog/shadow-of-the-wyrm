@@ -1,6 +1,5 @@
 #include "gtest/gtest.h"
 #include "Amulet.hpp"
-#include "Conversion.hpp"
 #include "ItemProperties.hpp"
 #include "Spellbook.hpp"
 #include "SmithingConstants.hpp"
@@ -424,3 +423,36 @@ TEST(SW_World_Inventory, transfer_to)
   EXPECT_EQ(static_cast<uint>(1), inv2->size());
 }
 
+TEST(SW_World_Inventory, has_items_for_recipe)
+{
+  string sp_id = "some_spellbook";
+
+  Inventory inv;
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_quantity(12);
+  item->set_base_id(sp_id);
+  inv.add(item);
+
+  Ingredient i("", sp_id, 3);
+
+  Recipe r("a", { i }, SkillType::SKILL_GENERAL_BREWING, 10, "item_it_makes", {});
+
+  EXPECT_TRUE(inv.has_items_for_recipe(inv.get_item_ids_and_quantity(), r));
+}
+
+TEST(SW_World_Inventory, get_item_ids_and_quantity)
+{
+  string sp_id = "some_spellbook";
+
+  Inventory inv;
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_quantity(12);
+  item->set_base_id(sp_id);
+  inv.add(item);
+
+  auto id_q = inv.get_item_ids_and_quantity();
+
+  EXPECT_FALSE(id_q.empty());
+  EXPECT_TRUE(id_q.size() == 1);
+  EXPECT_EQ(12u, id_q[sp_id]);
+}

@@ -236,3 +236,24 @@ TEST(SW_World_NullInventory, get_all_from_property_and_required_value)
   ni.add(item);
   EXPECT_EQ(static_cast<uint>(0), ni.get_all_from_property("fdsa", "asdf").size());
 }
+
+TEST(SW_World_NullInventory, has_items_for_recipe)
+{
+  NullInventory ni;
+  Ingredient i("", "some_item_id", 3);
+
+  Recipe r("a", { i }, SkillType::SKILL_GENERAL_BREWING, 10, "item_it_makes", {});
+
+  EXPECT_FALSE(ni.has_items_for_recipe(ni.get_item_ids_and_quantity(), r));
+}
+
+TEST(SW_World_NullInventory, get_item_ids_and_quantity)
+{
+  NullInventory ni;
+  ItemPtr item = std::make_shared<Spellbook>();
+  ni.add(item);
+
+  auto id_q = ni.get_item_ids_and_quantity();
+  
+  EXPECT_TRUE(id_q.empty());
+}
