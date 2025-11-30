@@ -26,6 +26,8 @@ void RecipeScreen::initialize()
 
   if (brewing_creature != nullptr)
   {
+    const auto ids_quantities = brewing_creature->get_inventory()->get_item_ids_and_quantity();
+      
     // Recipes line up with the vector of recipes the creature can potentially
     // brew. Some of these might be disabled, in the case where the creature
     // doesn't have the necessary ingredients.
@@ -42,7 +44,7 @@ void RecipeScreen::initialize()
       }
 
       current_option.set_description(desc);
-      current_option.set_enabled(brewing_creature->get_inventory()->has_items_for_recipe(r));
+      current_option.set_enabled(brewing_creature->get_inventory()->has_items_for_recipe(ids_quantities, r));
 
       options->add_option(current_option);
     }

@@ -320,9 +320,31 @@ bool Inventory::has_items() const
   return (items.empty() == false);
 }
 
-bool Inventory::has_items_for_recipe(const Recipe& r) const
+bool Inventory::has_items_for_recipe(const unordered_map<string, uint>& id_q, const Recipe& r) const
 {
-  return false; // TODO
+  bool has_items = true;
+  Ingredients ingrs = r.get_ingredients();
+  
+  // If we have ingredients but no items, we don't have the items for
+  // the recipe.
+  if (id_q.empty() && !ingrs.empty())
+  {
+    has_items = false;
+  }
+
+  for (const Ingredient& ingr : ingrs)
+  {
+    string ingr_item_id = ingr.get_id();
+    auto i_it = id_q.find(ingr_item_id);
+    
+    if (i_it == id_q.end() || (i_it->second < ingr.get_quantity()))
+    {
+      has_items = false;
+      break;
+    }
+  }
+
+  return has_items;
 }
 
 bool Inventory::has_unpaid_items() const
@@ -483,6 +505,29 @@ list<ItemPtr>& Inventory::get_items_ref()
 const list<ItemPtr>& Inventory::get_items_cref() const
 {
   return items;
+}
+
+unordered_map<string, uint> Inventory::get_item_ids_and_quantity() const
+{
+  unordered_map<string, uint> id_q;
+
+  for (const ItemPtr i : items)
+  {
+    if (i != nullptr)
+    {
+      string base_id = i->get_base_id();
+
+      auto i_it = id_q.find(base_id);
+      if (i_it == id_q.end())
+      {
+        id_q[base_id] = 0;
+      }
+
+      id_q[base_id] += i->get_quantity();
+    }
+  }
+
+  return id_q;
 }
 
 // Check to see if a particular item type exists within the Inventory

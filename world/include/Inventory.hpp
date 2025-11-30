@@ -31,7 +31,7 @@ class Inventory : public IInventory
     void set_additional_property(const std::string& property_name, const std::string& property_value) override;
 
     bool has_items() const override;
-    bool has_items_for_recipe(const Recipe& r) const override;
+    bool has_items_for_recipe(const std::unordered_map<std::string, uint>& item_ids_quantities, const Recipe& r) const override;
     bool has_unpaid_items() const override;
     bool has_item(const std::string& base_id) const override;
 
@@ -59,6 +59,8 @@ class Inventory : public IInventory
     void add_items(const std::list<ItemPtr>& items) override;
     std::list<ItemPtr>& get_items_ref() override;
     const std::list<ItemPtr>& get_items_cref() const override;
+
+    std::unordered_map<std::string, uint> get_item_ids_and_quantity() const override;
 
     std::string get_drop_effect_sid() const override;
 
