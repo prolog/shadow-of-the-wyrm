@@ -38,7 +38,6 @@ bool CauldronManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
     DisplayPtr display = game.get_display();
     RecipeScreen rs(display, recipes, creature);
     string d = rs.display();
-    int x = 0; // JCD REMOVE ME
   }
 
   return brewed;

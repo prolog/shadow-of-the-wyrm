@@ -7,7 +7,7 @@
 using namespace std;
 
 RecipeScreen::RecipeScreen(DisplayPtr new_display, const Recipes& new_recipes, CreaturePtr new_creature)
-: Screen(new_display), recipes(new_recipes), brewing_creature(new_creature)
+: Screen(new_display), brewing_creature(new_creature), recipes(new_recipes)
 {
   initialize();
 }
