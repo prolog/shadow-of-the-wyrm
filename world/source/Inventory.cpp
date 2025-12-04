@@ -511,7 +511,7 @@ unordered_map<string, uint> Inventory::get_item_ids_and_quantity() const
 {
   unordered_map<string, uint> id_q;
 
-  for (const ItemPtr i : items)
+  for (const ItemPtr& i : items)
   {
     if (i != nullptr)
     {
