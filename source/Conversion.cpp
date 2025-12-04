@@ -43,7 +43,7 @@ string String::clean(const string& to_clean)
   {
     char c = c_str[i];
 
-    if (c >= 0 && isalpha(c) || isdigit(c) || c >= ' ')
+    if (c >= 0 && (isalpha(c) || isdigit(c) || c >= ' '))
     {
       clean << c;
     }
