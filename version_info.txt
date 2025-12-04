@@ -108,6 +108,10 @@ Shadow of the Wyrm v1.9.0 "de Cabezon"
   - The code to aggressively merge currency was too aggressive and was merging
     currencies with different base IDs.
 
+  - Newer versions of Boost removed the boost_system library, which was a
+    stub after an earlier version of boost made the library header-only. The 
+    linker references to this in the premake files have been removed (Larzid).
+
 Shadow of the Wyrm v1.8.4 "Fampas"
 - Version declared March 8, 2025. Version finalized June 28, 2025.
 
