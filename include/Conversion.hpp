@@ -174,7 +174,7 @@ class Char
 {
   public:
     static EquipmentWornLocation to_equipment_worn_location(const char character);
-    static int keyboard_selection_char_to_int(const char character);
+    static int keyboard_selection_char_to_int(const char character, const char char_subtr_val = 'a');
 
   protected:
     Char();

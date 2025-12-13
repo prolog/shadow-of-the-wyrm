@@ -315,6 +315,8 @@ pair<int, int> String::create_width_height(const string& wh_str)
   return wh;
 }
 
+
+
 Char::Char()
 {
 }
@@ -339,7 +341,7 @@ EquipmentWornLocation Char::to_equipment_worn_location(const char character)
   return static_cast<EquipmentWornLocation>(worn_location);
 }
 
-int Char::keyboard_selection_char_to_int(const char character)
+int Char::keyboard_selection_char_to_int(const char character, const char char_subtr_val)
 {
   if (isdigit(character))
   {
@@ -347,7 +349,7 @@ int Char::keyboard_selection_char_to_int(const char character)
   }
   else
   {
-    return static_cast<int>(std::tolower(character) - 'a');
+    return static_cast<int>(std::tolower(character) - char_subtr_val);
   }
 }
 
