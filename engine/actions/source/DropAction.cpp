@@ -903,7 +903,7 @@ size_t DropAction::get_build_option(const vector<string>& options) const
   OptionScreen os(Game::instance().get_display(), ScreenTitleTextKeys::SCREEN_TITLE_BUILD, {}, options);
   string option_s = os.display();
   
-  return static_cast<size_t>(option_s[0] - 'a');
+  return static_cast<size_t>(Char::keyboard_selection_char_to_int(option_s[0]));
 }
 
 // Dropping always has a base action cost of 1.

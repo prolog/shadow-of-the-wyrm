@@ -1,5 +1,6 @@
 #include "CauldronManipulator.hpp"
 #include "ActionTextKeys.hpp"
+#include "Conversion.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RecipeScreen.hpp"
@@ -38,6 +39,12 @@ bool CauldronManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
     DisplayPtr display = game.get_display();
     RecipeScreen rs(display, recipes, creature);
     string d = rs.display();
+
+    if (!d.empty())
+    {
+      int idx = Char::keyboard_selection_char_to_int(d[0]);
+      int x = 1;
+    }
   }
 
   return brewed;
