@@ -18,6 +18,7 @@ const int WheelAndLoomManipulator::WEAVING_PCT_CHANCE_BRAND = 1;
 WheelAndLoomManipulator::WheelAndLoomManipulator(FeaturePtr feature)
 : FeatureManipulator(feature),
 loom_map({ {EquipmentWornLocation::EQUIPMENT_WORN_HEAD, ItemIdKeys::ITEM_ID_CAP},
+           {EquipmentWornLocation::EQUIPMENT_WORN_NECK, ItemIdKeys::ITEM_ID_SCARF},
            {EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, ItemIdKeys::ITEM_ID_CLOAK},
            {EquipmentWornLocation::EQUIPMENT_WORN_BODY, ItemIdKeys::ITEM_ID_WAYFARER_CLOTHES} })
 {

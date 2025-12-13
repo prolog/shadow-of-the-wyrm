@@ -151,9 +151,10 @@ class ItemIdKeys
 
     // Weaving
     static const std::string ITEM_ID_CAP;
+    static const std::string ITEM_ID_SCARF;
     static const std::string ITEM_ID_CLOAK;
     static const std::string ITEM_ID_WAYFARER_CLOTHES;
-
+    static const std::string ITEM_ID_SHOES;
     // Beer Halls
     static const std::string ITEM_ID_DRAM_GIN;
     static const std::string ITEM_ID_DRAM_MEAD;

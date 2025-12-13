@@ -477,6 +477,35 @@
 			</Amulet>
 		</Amulets>
 		<Armours>
+			<Armour id="scarf">
+				<DescriptionSID>SCARF_SID</DescriptionSID>
+				<UsageDescriptionSID>SCARF_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SCARF_CODEX_SID</CodexDescriptionSID>
+				<Value>6</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>8</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Material>0</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>24</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Evade>3</Evade>
+				<Soak>1</Soak>
+			</Armour>
 			<Armour id="bandana">
 				<DescriptionSID>BANDANA_SID</DescriptionSID>
 				<UsageDescriptionSID>BANDANA_USAGE_SID</UsageDescriptionSID>
