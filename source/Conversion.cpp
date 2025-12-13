@@ -325,22 +325,6 @@ Char::~Char()
 {
 }
 
-EquipmentWornLocation Char::to_equipment_worn_location(const char character)
-{
-  int worn_location = -1; // EQUIPMENT_WORN_NONE
-
-  if (character >= 'a' && character <= 'i')
-  {
-    worn_location = character - 'a';
-  }
-  else if (character >= 'A' && character <= 'I')
-  {
-    worn_location = character - 'A';
-  }
-
-  return static_cast<EquipmentWornLocation>(worn_location);
-}
-
 int Char::keyboard_selection_char_to_int(const char character, const char char_subtr_val)
 {
   if (isdigit(character))
@@ -351,6 +335,11 @@ int Char::keyboard_selection_char_to_int(const char character, const char char_s
   {
     return static_cast<int>(std::tolower(character) - char_subtr_val);
   }
+}
+
+int Char::keyboard_selection_int_to_int(const int val, const char offset)
+{
+  return val - offset;
 }
 
 String::String()

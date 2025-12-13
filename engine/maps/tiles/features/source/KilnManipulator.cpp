@@ -1,5 +1,6 @@
 #include "KilnManipulator.hpp"
 #include "ActionTextKeys.hpp"
+#include "Conversion.hpp"
 #include "CreateItemCalculator.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
@@ -57,7 +58,7 @@ bool KilnManipulator::handle(TilePtr tile, CreaturePtr creature)
         }
         else
         {
-          int idx = tolower(d.at(0)) - 'a';
+          int idx = Char::keyboard_selection_char_to_int(tolower(d.at(0)));
           auto f_it = crafting_functions.find(idx);
 
           if (f_it != crafting_functions.end())

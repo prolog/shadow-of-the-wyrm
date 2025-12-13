@@ -136,6 +136,6 @@ bool InventoryCommandProcessor::process_select_item(Command* command, IInventory
 // into an index in 0, 1, ..., where 'a' or 'A' is 0.
 uint InventoryCommandProcessor::convert_keypress_to_item_index(int keypress)
 {
-  if (keypress >= 'A') return (tolower(keypress) - 'a');
+  if (keypress >= 'A') return Char::keyboard_selection_int_to_int(tolower(keypress), 'a');
   else return 0;
 }

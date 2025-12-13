@@ -29,7 +29,7 @@ ActionCostValue BowyerSkillProcessor::process(CreaturePtr creature, MapPtr map)
 
         CreateItemScreen cis(cur_disp, SkillType::SKILL_GENERAL_BOWYER);
         string sel = cis.display();
-        char sel_c = sel.at(0) - 'a';
+        char sel_c = static_cast<char>(Char::keyboard_selection_char_to_int(sel.at(0)));
         OptionPtr option = cis.get_option(sel_c);
 
         if (option != nullptr)

@@ -1,5 +1,6 @@
 #include "WheelAndLoomManipulator.hpp"
 #include "ActionTextKeys.hpp"
+#include "Conversion.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemTypes.hpp"
@@ -83,7 +84,7 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
 
           if (!slot_selection.empty())
           {
-            char selection = slot_selection.at(0) - 'a';
+            char selection = static_cast<char>(Char::keyboard_selection_char_to_int(slot_selection.at(0)));
             EquipmentWornLocation selection_loc = static_cast<EquipmentWornLocation>(selection);
 
             if (std::find(worn_locs.begin(), worn_locs.end(), selection_loc) != worn_locs.end())

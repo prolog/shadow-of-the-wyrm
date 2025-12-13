@@ -173,9 +173,8 @@ class Float
 class Char
 {
   public:
-    static EquipmentWornLocation to_equipment_worn_location(const char character);
     static int keyboard_selection_char_to_int(const char character, const char char_subtr_val = 'a');
-
+    static int keyboard_selection_int_to_int(const int val, const char offset);
   protected:
     Char();
     ~Char();
