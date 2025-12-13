@@ -242,11 +242,6 @@ TEST(SW_Engine_ConversionRoutines, harmonize_dirname)
   EXPECT_EQ("C:\\temp" + fs_sep, File::harmonize_dirname("C:\\temp" + fs_sep));
 }
 
-TEST(SW_Engine_ConversionRoutines, clean_and_trim)
-{
-
-}
-
 TEST(SW_Engine_ConversionRoutines, split)
 {
   string str_ns = "abcdsa 123 1 jsklSJL 2 321 123 A";
@@ -263,4 +258,24 @@ TEST(SW_Engine_ConversionRoutines, split)
   EXPECT_EQ(static_cast<size_t>(2), strs.size());
   EXPECT_EQ("abc ", strs.at(0));
   EXPECT_EQ(" test", strs.at(1));
+}
+
+TEST(SW_Engine_ConversionRoutines, keyboard_selection_char_to_int)
+{
+  // Digits should always subtract 0
+  std::map<char, int> digits = { {'0', 0}, {'1', 1}, {'2', 2}, {'3', 3}, {'4', 4}, {'5', 5}, {'6', 6}, {'7', 7}, {'8', 8}, {'9', 9} };
+
+  for (const auto& d_pair : digits)
+  {
+    EXPECT_EQ(d_pair.second, Char::keyboard_selection_char_to_int(d_pair.first));
+    EXPECT_EQ(d_pair.second, Char::keyboard_selection_char_to_int(d_pair.first, 'f')); // second arg should be ignored for digits
+  }
+
+  std::map<char, int> chars = { {'a', 0}, {'b', 1}, {'d', 3}, {'z', 25} };
+
+  for (const auto& c_pair : chars)
+  {
+    EXPECT_EQ(c_pair.second, Char::keyboard_selection_char_to_int(c_pair.first));
+    EXPECT_EQ(c_pair.second, Char::keyboard_selection_char_to_int(c_pair.first, 'a'));
+  }
 }
