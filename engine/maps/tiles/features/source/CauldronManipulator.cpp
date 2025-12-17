@@ -38,12 +38,13 @@ bool CauldronManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
   {
     DisplayPtr display = game.get_display();
     RecipeScreen rs(display, recipes, creature);
-    string d = rs.display();
+    string rec_s = rs.display();
+    char sel_c = static_cast<char>(Char::keyboard_selection_char_to_int(rec_s.at(0)));
+    OptionPtr option = rs.get_option(sel_c);
 
-    if (!d.empty())
+    if (option != nullptr)
     {
-      int idx = Char::keyboard_selection_char_to_int(d[0]);
-      int x = 1;
+      // ...
     }
   }
 

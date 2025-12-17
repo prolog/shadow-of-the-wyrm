@@ -58,7 +58,7 @@ bool KilnManipulator::handle(TilePtr tile, CreaturePtr creature)
         }
         else
         {
-          int idx = Char::keyboard_selection_char_to_int(tolower(d.at(0)));
+          int idx = Char::keyboard_selection_char_to_int(static_cast<char>(std::tolower(d.at(0))));
           auto f_it = crafting_functions.find(idx);
 
           if (f_it != crafting_functions.end())

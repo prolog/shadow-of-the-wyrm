@@ -35,6 +35,7 @@ void RecipeScreen::initialize()
     {
       Option current_option;
       current_option.set_id(cnt++);
+      current_option.set_external_id(r.get_id());
 
       string desc = "?";
       auto i_it = items.find(r.get_item_id());
