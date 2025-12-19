@@ -59,6 +59,25 @@ RecipesType& Recipes::get_recipes_ref()
   return recipes;
 }
 
+Recipe Recipes::get_recipe(const std::string& id) const
+{
+  for (const auto& r1_pair : recipes)
+  {
+    for (const auto& r2_pair : r1_pair.second)
+    {
+      auto r_it = r2_pair.second.find(id);
+
+      if (r_it != r2_pair.second.end())
+      {
+        return r_it->second;
+      }
+    }
+  }
+
+  Recipe r;
+  return r;
+}
+
 bool Recipes::serialize(std::ostream& stream) const
 {
   Serialize::write_size_t(stream, recipes.size());

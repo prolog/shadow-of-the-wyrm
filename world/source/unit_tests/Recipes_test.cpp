@@ -1,6 +1,8 @@
 #include "gtest/gtest.h"
 
-TEST(SW_World_Recipes, num_items)
+Recipes make_test_recipes();
+
+Recipes make_test_recipes()
 {
 	string r_id = "r_id";
 	Ingredients ingr = { {"", "ingr1", 1}, {"", "ingr2", 3} };
@@ -19,7 +21,22 @@ TEST(SW_World_Recipes, num_items)
 	rec.add(r1);
 	rec.add(r2);
 
+	return rec;
+}
+
+TEST(SW_World_Recipes, num_items)
+{
+	Recipes rec = make_test_recipes();
 	EXPECT_EQ(static_cast<size_t>(2), rec.get_recipes().size());
+}
+
+TEST(SW_World_Recipes, get_recipe)
+{
+	string recipe_id = "r2_id";
+	Recipes rec = make_test_recipes();
+	Recipe r = rec.get_recipe(recipe_id);
+
+	EXPECT_TRUE(r.get_id() == recipe_id);
 }
 
 TEST(SW_World_Recipes, serialization_id)

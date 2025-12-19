@@ -42,9 +42,15 @@ bool CauldronManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
     char sel_c = static_cast<char>(Char::keyboard_selection_char_to_int(rec_s.at(0)));
     OptionPtr option = rs.get_option(sel_c);
 
-    if (option != nullptr)
+    if (option != nullptr && option->get_enabled())
     {
-      // ...
+      string recipe_id = option->get_external_id();
+      Recipe r = recipes.get_recipe(recipe_id);
+
+      if (!r.get_id().empty())
+      {
+        int x = 1;
+      }
     }
   }
 

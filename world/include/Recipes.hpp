@@ -19,6 +19,7 @@ class Recipes : public ISerializable
 		void add(const Recipe& r);
 		std::vector<Recipe> get_recipes(CreaturePtr creature = nullptr) const;
 		RecipesType& get_recipes_ref();
+		Recipe get_recipe(const std::string& id) const;
 
 		bool serialize(std::ostream& stream) const override;
 		bool deserialize(std::istream& stream) override;
