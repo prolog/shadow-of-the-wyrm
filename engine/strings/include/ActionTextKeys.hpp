@@ -53,6 +53,7 @@ class ActionTextKeys
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_BREWING_INGREDIENTS;
     static const std::string ACTION_BREWING_NO_INGREDIENTS;
+    static const std::string ACTION_BREWING_COMBINE_INGREDIENTS;
     static const std::string ACTION_SEARCH;
     static const std::string ACTION_SEARCH_FOUND;
     static const std::string ACTION_SEARCH_FOUND_MULTIPLE;

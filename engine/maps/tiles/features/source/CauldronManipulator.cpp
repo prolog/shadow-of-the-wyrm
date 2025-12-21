@@ -1,9 +1,13 @@
-#include "CauldronManipulator.hpp"
+
 #include "ActionTextKeys.hpp"
+#include "BrewingCalculator.hpp"
+#include "CauldronManipulator.hpp"
 #include "Conversion.hpp"
 #include "Game.hpp"
+#include "ItemManager.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RecipeScreen.hpp"
+#include "RNG.hpp"
 
 using namespace std;
 
@@ -23,7 +27,7 @@ void CauldronManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, T
 }
 
 // Manipulating a cauldron allows the character to brew any recipes they know.
-bool CauldronManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
+bool CauldronManipulator::handle(TilePtr tile, CreaturePtr creature)
 {
   bool brewed = false;
   Game& game = Game::instance();
@@ -46,11 +50,42 @@ bool CauldronManipulator::handle(TilePtr /*tile*/, CreaturePtr creature)
     {
       string recipe_id = option->get_external_id();
       Recipe r = recipes.get_recipe(recipe_id);
+      brewed = brew(creature, tile, r);
+    }
+  }
 
-      if (!r.get_id().empty())
-      {
-        int x = 1;
-      }
+  return brewed;
+}
+
+bool CauldronManipulator::brew(CreaturePtr creature, TilePtr tile, const Recipe& r)
+{
+  bool brewed = false;
+
+  if (!r.get_id().empty())
+  {
+    ItemPtr item = ItemManager::create_item(r.get_item_id());
+
+    // Set the quantity based on the apothecary's skill.
+    BrewingCalculator bc;
+    if (RNG::percent_chance(bc.calc_pct_chance_additional_potion(creature)))
+    {
+      item->set_quantity(2);
+    }
+
+    // Likewise, the item status
+    // ... TODO ...
+
+    if (item != nullptr)
+    {
+      IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_BREWING_COMBINE_INGREDIENTS));
+      manager.send();
+
+      // Remove the items from the inventory.
+      // 
+      // Create the potable and add it to the cauldron tile.
+      tile->get_items()->merge_or_add(item);
+      brewed = true;
     }
   }
 

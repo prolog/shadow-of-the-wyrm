@@ -608,6 +608,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\calculators\include\BaseDangerLevelCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\BlindedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\BloodiedCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\BrewingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\BuySellCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CalcUtils.hpp" />
     <ClInclude Include="engine\calculators\include\CarryingCapacityCalculator.hpp" />
@@ -1847,6 +1848,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\calculators\source\AttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\AttackSpeedCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\BaseDangerLevelCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\BrewingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\BuySellCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CalcUtils.cpp" />
     <ClCompile Include="engine\calculators\source\CoastlineCalculator.cpp" />
@@ -1915,6 +1917,12 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\BrewingCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\BuySellCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

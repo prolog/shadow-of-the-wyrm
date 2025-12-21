@@ -548,6 +548,7 @@ string ActionTextKeys::get_kiln_no_item_message(const string& missing_sid, const
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_BREWING_INGREDIENTS        = "ACTION_BREWING_INGREDIENTS";
 const string ActionTextKeys::ACTION_BREWING_NO_INGREDIENTS     = "ACTION_BREWING_NO_INGREDIENTS";
+const string ActionTextKeys::ACTION_BREWING_COMBINE_INGREDIENTS = "ACTION_BREWING_COMBINE_INGREDIENTS";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
 const string ActionTextKeys::ACTION_SEARCH_FOUND               = "ACTION_SEARCH_FOUND";
 const string ActionTextKeys::ACTION_SEARCH_FOUND_MULTIPLE      = "ACTION_SEARCH_FOUND_MULTIPLE";

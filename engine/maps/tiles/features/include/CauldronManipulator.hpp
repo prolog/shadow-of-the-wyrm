@@ -11,6 +11,8 @@ class CauldronManipulator : public DefaultFeatureManipulator
     bool handle(TilePtr tile, CreaturePtr creature) override;
 
   protected:
+    bool brew(CreaturePtr creature, TilePtr tile, const Recipe& r);
+
     void add_nothing_brewable_message(CreaturePtr creature);
 };
 
