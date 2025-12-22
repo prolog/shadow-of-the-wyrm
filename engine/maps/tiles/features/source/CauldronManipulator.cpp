@@ -72,8 +72,17 @@ bool CauldronManipulator::brew(CreaturePtr creature, TilePtr tile, const Recipe&
       item->set_quantity(2);
     }
 
-    // Likewise, the item status
-    // ... TODO ...
+    // Likewise, the item status. Get the chance for each status, and then
+    // check them in ascending order, setting the status each time the chance
+    // is hit.
+    map<ItemStatus, int> item_statuses_pct_chance = bc.calc_item_status_pct_chance(creature);
+    for (const auto& st : { ItemStatus::ITEM_STATUS_CURSED, ItemStatus::ITEM_STATUS_UNCURSED, ItemStatus::ITEM_STATUS_BLESSED })
+    {
+      if (RNG::percent_chance(item_statuses_pct_chance[st]))
+      {
+        item->set_status(st);
+      }
+    }
 
     if (item != nullptr)
     {

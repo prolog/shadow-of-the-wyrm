@@ -15,6 +15,38 @@ TEST(SW_Engine_Calculator_BrewingCalculator, pct_chance_additional_potion)
 
     EXPECT_EQ(sk_pair.second, bc.calc_pct_chance_additional_potion(c));
   }
+}
 
+TEST(SW_Engine_Calculator_BrewingCalculator, pct_chance_each_status)
+{
+  CreaturePtr creature = std::make_shared<Creature>();
+  map<ItemStatus, int> expected = { {ItemStatus::ITEM_STATUS_CURSED, 100}, {ItemStatus::ITEM_STATUS_UNCURSED, 0}, {ItemStatus::ITEM_STATUS_BLESSED, 0} };
+
+  BrewingCalculator bc;
+  auto statuses = bc.calc_item_status_pct_chance(nullptr);
+
+  for (const auto& e_pair : expected)
+  {
+    EXPECT_EQ(e_pair.second, statuses[e_pair.first]);
+  }
+
+  map<int, map<ItemStatus, int>> skill_and_vals = { {1,  {{ItemStatus::ITEM_STATUS_CURSED, 100},
+                                                          {ItemStatus::ITEM_STATUS_UNCURSED, 1},
+                                                          {ItemStatus::ITEM_STATUS_BLESSED, 1}}},
+                                                    {10, {{ItemStatus::ITEM_STATUS_CURSED, 100},
+                                                          {ItemStatus::ITEM_STATUS_UNCURSED, 10},
+                                                          {ItemStatus::ITEM_STATUS_BLESSED, 10}}} };
+
+  for (const auto& sk_pair : skill_and_vals)
+  {
+    creature->get_skills().set_value(SkillType::SKILL_GENERAL_BREWING, sk_pair.first);
+    expected = sk_pair.second;
+
+    for (const auto& e_pair : expected)
+    {
+      statuses = bc.calc_item_status_pct_chance(creature);
+      EXPECT_EQ(e_pair.second, statuses[e_pair.first]);
+    }
+  }
 }
 
