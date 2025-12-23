@@ -20,9 +20,10 @@ class Inventory : public IInventory
     bool merge_or_add(IInventory* items, const InventoryAdditionType inv_add_loc = InventoryAdditionType::INVENTORY_ADDITION_BACK) override;
     bool merge(ItemPtr new_item) override;
 
-    bool transfer_to(std::shared_ptr<IInventory> items) override;
+    bool transfer_to(IInventoryPtr items) override;
 
     bool remove(const std::string& id) override;
+    bool remove(const Ingredients& ingr) override;
     ItemPtr remove_and_return(const std::string& id) override;
     std::pair<bool, std::vector<ItemPtr>> remove_by_base_id(const std::string& base_id, const int quantity = 1, const std::map<std::string, std::string>& properties = {}) override;
     

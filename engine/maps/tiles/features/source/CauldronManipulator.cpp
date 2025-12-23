@@ -91,7 +91,8 @@ bool CauldronManipulator::brew(CreaturePtr creature, TilePtr tile, const Recipe&
       manager.send();
 
       // Remove the items from the inventory.
-      // 
+      creature->get_inventory()->remove(r.get_ingredients());
+
       // Create the potable and add it to the cauldron tile.
       tile->get_items()->merge_or_add(item);
       brewed = true;

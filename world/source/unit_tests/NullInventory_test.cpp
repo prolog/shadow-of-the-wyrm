@@ -257,3 +257,18 @@ TEST(SW_World_NullInventory, get_item_ids_and_quantity)
   
   EXPECT_TRUE(id_q.empty());
 }
+
+TEST(SW_World_NullInventory, remove_ingr)
+{
+  NullInventory ni;
+  Ingredients ingr;
+  Ingredient i("", "item_id", 6);
+  ingr.push_back(i);
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_id("item_id");
+  ni.add(item);
+  ni.remove(ingr);
+
+  EXPECT_EQ(0u, ni.size());
+}

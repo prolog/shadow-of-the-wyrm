@@ -74,6 +74,11 @@ bool NullInventory::remove(const string& /*id*/)
   return false;
 }
 
+bool NullInventory::remove(const Ingredients& /*ingr*/)
+{
+  return false;
+}
+
 uint NullInventory::count_items() const
 {
   return 0;
