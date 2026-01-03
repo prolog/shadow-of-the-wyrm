@@ -4,6 +4,7 @@
 #include "AgeSelectionScreen.hpp"
 #include "Class.hpp"
 #include "ClassSelectionScreen.hpp"
+#include "Conducts.hpp"
 #include "Conversion.hpp"
 #include "Creature.hpp"
 #include "CreatureFactory.hpp"
@@ -812,6 +813,12 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
   {
     ItemPtr item = eq_pair.second;
     if (item && item->get_status() == ItemStatus::ITEM_STATUS_CURSED) item->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
+  }
+
+  JewelrylessConduct jc;
+  if (jc.breaks_conduct(player->get_equipment()))
+  {
+    player->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_JEWELRYLESS);
   }
 
   game.create_new_world(player, ccd.get_starting_location());

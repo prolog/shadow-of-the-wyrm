@@ -401,8 +401,9 @@ ActionCostValue ItemManager::equip(CreaturePtr creature, ItemPtr item, const Equ
 
     if (action_cost_value > 0 && item)
     {
-      ItemType itype = item->get_type();
-      if (creature->get_is_player() && (itype == ItemType::ITEM_TYPE_RING || itype == ItemType::ITEM_TYPE_AMULET))
+      JewelrylessConduct jc;
+
+      if (jc.breaks_conduct(item))
       {
         creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_JEWELRYLESS);
       }
