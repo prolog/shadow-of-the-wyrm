@@ -2,7 +2,6 @@
 #include "CreatureUtils.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
-#include "EquipmentManager.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemFactory.hpp"
 #include "ItemManager.hpp"
@@ -402,6 +401,12 @@ ActionCostValue ItemManager::equip(CreaturePtr creature, ItemPtr item, const Equ
 
     if (action_cost_value > 0 && item)
     {
+      ItemType itype = item->get_type();
+      if (creature->get_is_player() && (itype == ItemType::ITEM_TYPE_RING || itype == ItemType::ITEM_TYPE_AMULET))
+      {
+        creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_JEWELRYLESS);
+      }
+
       WearablePtr wearable = dynamic_pointer_cast<Wearable>(item);
       CreatureUtils::apply_status_ailments(wearable, creature);
     }

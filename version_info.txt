@@ -78,6 +78,8 @@ Shadow of the Wyrm v1.9.0 "de Cabezon"
 
 - Scarves can now be created at a wheel and loom.
 
+- Added a new conduct, jewelryless (broken when you wear rings and amulets). 
+
 - Converted the project from Visual Studio 2022 to 2026.
 
 - Added cauldrons to Isen Dun, Yew, Carcassia, Atua-Elar, Gnordvar.

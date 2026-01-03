@@ -4,7 +4,6 @@
 #include "EquipmentKeyboardCommandMap.hpp"
 #include "EquipmentManager.hpp"
 #include "EquipmentScreen.hpp"
-#include "EquipmentTranslator.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "ItemIdentifier.hpp"
