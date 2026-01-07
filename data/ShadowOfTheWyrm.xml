@@ -3578,9 +3578,6 @@
 			</Crowning>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
-				<RightFinger>
-					<ID>filigreed_ring</ID>
-				</RightFinger>
 				<Wielded>
 					<ID>rapier</ID>
 				</Wielded>
@@ -3603,6 +3600,9 @@
 					</Quantity>
 				</Ammunition>
 				<InitialInventory>
+					<InitialItem>
+						<ID>filigreed_ring</ID>
+					</InitialItem>
 					<InitialItem>
 						<ID>leather_whip</ID>
 					</InitialItem>
