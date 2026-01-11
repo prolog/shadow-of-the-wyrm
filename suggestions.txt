@@ -18,8 +18,7 @@ Me:
 - re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
   YT after)
 - never worn jewelry conduct?
-- cauldrons for random towns
-- cauldron rooms in dungeons
+- signs outside of workshop-designated buildings in towns
 - fletchery/bowyer status - when unc, skill% chance to turn blessed. should
   get a check for each of bowyer/fletchery and crafting.
 - Use this for fletchery, bowyer, etc, to improve item & quantity

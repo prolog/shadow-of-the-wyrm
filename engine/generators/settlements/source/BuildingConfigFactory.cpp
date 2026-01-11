@@ -161,7 +161,8 @@ vector<ClassIdentifier> BuildingConfigFactory::create_workshop_features() const
                                        {ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH, 17},
                                        {ClassIdentifier::CLASS_ID_FORGE, 17},
                                        {ClassIdentifier::CLASS_ID_PULPER, 17},
-                                       {ClassIdentifier::CLASS_ID_KILN, 17}};
+                                       {ClassIdentifier::CLASS_ID_KILN, 17},
+                                       {ClassIdentifier::CLASS_ID_CAULDRON, 17} };
   vector<ClassIdentifier> features;
 
   for (auto f_pair : f_probs)
