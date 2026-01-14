@@ -17,10 +17,10 @@ Me:
 - Audio enhancements off for testing
 - re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
   YT after)
-- never worn jewelry conduct?
+- weaving, tanning, bowyer, fletcher, should all have a chance to improve the
+  item status based on the specific skill + crafting.
 - signs outside of workshop-designated buildings in towns
-- fletchery/bowyer status - when unc, skill% chance to turn blessed. should
-  get a check for each of bowyer/fletchery and crafting.
+- fletchery/bowyer status - when unc, skill% chance to turn blessed.
 - Use this for fletchery, bowyer, etc, to improve item & quantity
 - glowing weapons should do...something? extra damage? blindness?
 - Dropping unstable items should have a chance to blind those around you

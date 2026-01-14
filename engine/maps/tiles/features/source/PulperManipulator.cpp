@@ -49,6 +49,8 @@ bool PulperManipulator::handle(TilePtr tile, CreaturePtr creature)
         Weight pulp_weight = pulp_item->get_total_weight();
         ItemPtr paper_pulp = ItemManager::create_item(ItemIdKeys::ITEM_ID_PAPER_PULP);
         paper_pulp->set_weight(pulp_weight);
+        paper_pulp->set_status(pulp_item->get_status());
+
         tile->get_items()->merge_or_add(paper_pulp);
 
         creature->get_inventory()->remove(pulp_item->get_id());

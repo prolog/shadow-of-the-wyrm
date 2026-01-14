@@ -95,6 +95,9 @@ Shadow of the Wyrm v1.9.0 "de Cabezon"
 
 - New terrain features: cauldron, insect hive.
 
+- Bowyer, Fletchery, and the use of pulpers will now set the base item status
+  based on the item used for crafting.
+
 - Bug fixes:
 
   - Fixed a crash issue in String::clean with unexpected input that caused an

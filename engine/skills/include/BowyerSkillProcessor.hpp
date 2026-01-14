@@ -8,7 +8,7 @@ class BowyerSkillProcessor : public SkillProcessor
     virtual SkillProcessorPtr clone() override;
 
   protected:
-    bool check_for_bough(CreaturePtr creature);
+    std::pair<bool, ItemStatus> check_for_bough(CreaturePtr creature);
     void create_bowyer_item(const std::string& item_base_id, const ItemStatus item_status, CreaturePtr creature, MapPtr map);
 };
 
