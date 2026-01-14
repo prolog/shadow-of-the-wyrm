@@ -51,6 +51,17 @@ enum struct ItemStatus
   ITEM_STATUS_CURSED = 2
 };
 
+class ItemStatuses
+{
+  public:
+    static ItemStatus get_next(const ItemStatus status);
+    static ItemStatus get_prev(const ItemStatus status);
+
+  protected:
+    ItemStatuses() = default;
+    virtual ~ItemStatuses() = default;
+};
+
 enum struct ItemIdentificationType
 {
   ITEM_IDENTIFY_ON_GENERATION = 0,

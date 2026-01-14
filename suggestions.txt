@@ -19,6 +19,7 @@ Me:
   YT after)
 - weaving, tanning, bowyer, fletcher, should all have a chance to improve the
   item status based on the specific skill + crafting.
+- hook up bowyer/fletcher to calc to improve status, then do the other skills
 - signs outside of workshop-designated buildings in towns
 - fletchery/bowyer status - when unc, skill% chance to turn blessed.
 - Use this for fletchery, bowyer, etc, to improve item & quantity

@@ -3,6 +3,37 @@
 using std::string;
 using std::vector;
 
+// Item Statuses
+ItemStatus ItemStatuses::get_next(const ItemStatus status)
+{
+  switch (status)
+  {
+    case ItemStatus::ITEM_STATUS_CURSED:
+      return ItemStatus::ITEM_STATUS_UNCURSED;
+    case ItemStatus::ITEM_STATUS_UNCURSED:
+      return ItemStatus::ITEM_STATUS_BLESSED;
+    case ItemStatus::ITEM_STATUS_BLESSED:
+      return ItemStatus::ITEM_STATUS_BLESSED;
+  }
+
+  return ItemStatus::ITEM_STATUS_UNCURSED;
+}
+
+ItemStatus ItemStatuses::get_prev(const ItemStatus status)
+{
+  switch (status)
+  {
+  case ItemStatus::ITEM_STATUS_CURSED:
+    return ItemStatus::ITEM_STATUS_CURSED;
+  case ItemStatus::ITEM_STATUS_UNCURSED:
+    return ItemStatus::ITEM_STATUS_CURSED;
+  case ItemStatus::ITEM_STATUS_BLESSED:
+    return ItemStatus::ITEM_STATUS_UNCURSED;
+  }
+
+  return ItemStatus::ITEM_STATUS_CURSED;
+}
+
 // Item IDs
 ItemIdKeys::ItemIdKeys()
 {
@@ -140,3 +171,6 @@ ItemValues::~ItemValues()
 const int ItemValues::DEFAULT_MIN_GENERATION_VALUE = -1;
 const int ItemValues::DEFAULT_MIN_SHOP_VALUE = 5;
 
+#ifdef UNIT_TESTS
+#include "unit_tests/ItemTypes_test.cpp"
+#endif
