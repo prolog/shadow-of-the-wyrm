@@ -1,6 +1,21 @@
 #include "gtest/gtest.h"
 #include "Amulet.hpp"
 
+TEST(SW_Engine_Calculators_CreateItemCalculator, calc_pct_chance_improve_status)
+{
+  CreateItemCalculator cic;
+  CreaturePtr creature = std::make_shared<Creature>();
+
+  EXPECT_EQ(0, cic.calc_pct_chance_improve_status(creature, SkillType::SKILL_GENERAL_BOWYER));
+  EXPECT_EQ(0, cic.calc_pct_chance_improve_status(creature, SkillType::SKILL_GENERAL_FLETCHERY));
+
+  creature->get_skills().set_value(SkillType::SKILL_GENERAL_BOWYER, 33);
+  creature->get_skills().set_value(SkillType::SKILL_GENERAL_FLETCHERY, 77);
+
+  EXPECT_EQ(33, cic.calc_pct_chance_improve_status(creature, SkillType::SKILL_GENERAL_BOWYER));
+  EXPECT_EQ(77, cic.calc_pct_chance_improve_status(creature, SkillType::SKILL_GENERAL_FLETCHERY));
+}
+
 TEST(SW_Engine_Calculators_CreateItemCalculator, calc_potential_improvement_points)
 {
   CreateItemCalculator cic;
