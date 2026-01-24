@@ -29,14 +29,14 @@ int DamageCalculator::get_item_status_effect_bonus(const ItemStatus status)
   switch (status)
   {
     case ItemStatus::ITEM_STATUS_BLESSED:
-      bonus = 10;
+      bonus = 25;
       break;
     case ItemStatus::ITEM_STATUS_UNCURSED:
       bonus = 0;
       break;
     case ItemStatus::ITEM_STATUS_CURSED:
     default:
-      bonus = -10;
+      bonus = -25;
       break;
   }
 
@@ -84,4 +84,71 @@ double DamageCalculator::get_phase_of_moon_multiplier(const DamageType dt, const
   }
 
   return mult;
+}
+
+int DamageCalculator::calculate_pct_chance_glow_burn(ItemPtr item)
+{
+  int chance = 0;
+
+  if (item != nullptr && item->get_glowing())
+  {
+    switch (item->get_status())
+    {
+      case ItemStatus::ITEM_STATUS_CURSED:
+        break;
+      case ItemStatus::ITEM_STATUS_UNCURSED:
+        chance = 10;
+        break;
+      case ItemStatus::ITEM_STATUS_BLESSED:
+        chance = 33;
+        break;
+    }
+  }
+
+  return chance;
+}
+
+int DamageCalculator::calculate_damage_bonus_glow_burn(ItemPtr item)
+{
+  int bonus = 0;
+
+  if (item != nullptr && item->get_glowing())
+  {
+    switch (item->get_status())
+    {
+      case ItemStatus::ITEM_STATUS_CURSED:
+        bonus = 2;
+        break;
+      case ItemStatus::ITEM_STATUS_UNCURSED:
+        bonus = 8;
+        break;
+      case ItemStatus::ITEM_STATUS_BLESSED:
+        bonus = 15;
+        break;
+    }
+  }
+
+  return bonus;
+}
+
+int DamageCalculator::calculate_effect_bonus_glow_burn(ItemPtr item)
+{
+  int bonus = 0;
+
+  if (item != nullptr && item->get_glowing())
+  {
+    switch (item->get_status())
+    {
+      case ItemStatus::ITEM_STATUS_CURSED:
+        break;
+      case ItemStatus::ITEM_STATUS_UNCURSED:
+        bonus = 5;
+        break;
+      case ItemStatus::ITEM_STATUS_BLESSED:
+        bonus = 20;
+        break;
+    }    
+  }
+
+  return bonus;
 }

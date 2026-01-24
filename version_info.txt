@@ -90,6 +90,10 @@ Shadow of the Wyrm v1.9.0 "de Cabezon"
 - Created general recipes for all in-game potions, and tied these to specific
   Brewing skill values.
 
+- The glowing flag now has a chance to allow weapons to flare up, inflicting
+  heat damage, and adding additional damage and an additional chance to inflict
+  blindness.
+
 - New items: slime, essence of were-light, juniper berries, wild hops, honey,
   honeycomb, ale, scarf. 
 

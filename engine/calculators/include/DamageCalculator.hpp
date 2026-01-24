@@ -21,6 +21,10 @@ class DamageCalculator
     double get_phase_of_moon_multiplier(const DamageType dt, const PhaseOfMoonType pom) const;
     double get_sneak_attack_multiplier(const bool attacker_hidden) const;
 
+    virtual int calculate_pct_chance_glow_burn(ItemPtr item);
+    virtual int calculate_damage_bonus_glow_burn(ItemPtr item);
+    virtual int calculate_effect_bonus_glow_burn(ItemPtr item);
+
     AttackType attack_type;
     PhaseOfMoonType pom_type;
 };

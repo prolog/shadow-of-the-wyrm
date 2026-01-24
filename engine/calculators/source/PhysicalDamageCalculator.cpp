@@ -230,6 +230,14 @@ void PhysicalDamageCalculator::set_item_status_based_damage_modifiers(CreaturePt
     if (weapon != nullptr)
     {
       damage.set_effect_bonus(damage.get_effect_bonus() + get_item_status_effect_bonus(weapon->get_status()));
+      
+      // If the weapon is glowing, it might flare and burn.
+      if (RNG::percent_chance(calculate_pct_chance_glow_burn(weapon)))
+      {
+        damage.set_damage_type(DamageType::DAMAGE_TYPE_HEAT);
+        damage.set_effect_bonus(damage.get_effect_bonus() + calculate_effect_bonus_glow_burn(weapon));
+        damage.set_modifier(damage.get_modifier() + calculate_damage_bonus_glow_burn(weapon));
+      }
     }
   }
 }
