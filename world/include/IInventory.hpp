@@ -55,7 +55,7 @@ class IInventory : public ISerializable
     virtual bool merge(ItemPtr new_item) = 0;
 
     virtual bool remove(const std::string& id) = 0;
-    virtual bool remove(const Ingredients& ingr) = 0;
+    virtual std::vector<ItemPtr> remove_and_return(const Ingredients& ingr) = 0;
     virtual ItemPtr remove_and_return(const std::string& id) = 0;
     virtual std::pair<bool, std::vector<ItemPtr>> remove_by_base_id(const std::string& base_id, const int quantity = 1, const std::map<std::string, std::string>& properties = {}) = 0;
 

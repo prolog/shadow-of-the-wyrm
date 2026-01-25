@@ -210,9 +210,9 @@ bool Inventory::remove(const string& id)
 // Removes as many of the ingredients from the inventory as possible. This is
 // not all or nothing: if only some ingredients exist in the inventory, they
 // will be removed!
-bool Inventory::remove(const Ingredients& ingr_c)
+vector<ItemPtr> Inventory::remove_and_return(const Ingredients& ingr_c)
 {
-  bool val = false;
+  vector<ItemPtr> removed;
 
   if (!ingr_c.empty())
   {
@@ -231,6 +231,9 @@ bool Inventory::remove(const Ingredients& ingr_c)
         // If the quantity of the ingredient is less than the ingredient, we're done.
         if (quantity <= inv_quantity)
         {
+          // We used some amount of this item, so add it to the return
+          removed.push_back(item);
+
           inv_quantity -= quantity;
           item->set_quantity(inv_quantity);
 
@@ -249,13 +252,14 @@ bool Inventory::remove(const Ingredients& ingr_c)
           // from the inventory, and try again.
           quantity -= inv_quantity;
           i.set_quantity(quantity);
-          remove(item->get_id());
+          ItemPtr rem_item = remove_and_return(item->get_id());
+          removed.push_back(rem_item);
         }
       }
     }
   }
 
-  return val;
+  return removed;
 }
 
 pair<bool, vector<ItemPtr>> Inventory::remove_by_base_id(const string& base_id, const int quantity, const map<string, string>& properties)

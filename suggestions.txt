@@ -9,7 +9,6 @@ Long Term Boring And Probably Necessary:
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
 Me:
-- glowing weapons should do...something? extra damage? blindness?
 - Every release: new names, new settlement names, new shipwrecks, new 
   staircase extra descs, randomized npc stuff, etc.
 - EVERY TIME YOU UPDATE ASSETS, DM LARZID
@@ -29,19 +28,6 @@ Me:
   around it
 - for steel items: coal + iron? recipes tied to skills?
 - what about a theme for Cithriel? something weird and otherworldly
-- What other (new) items would be good for brewing? maybe some could use
-  existing tiles first?
-  - need barley to go with wheat
-  - make a "thin beer" item (0 skill)
-  - for honey: bees! beehives! mostly friendly but attacking one should make
-    all the other bees on the map hate you.
-- Brewing should require a cauldron
-- Recipe selection screen (also listing ingredients)
-- Generate in some towns, generate in dungeons
-- Recipes: can have both set and random ingredients
-- Recipes: healing, ether, buffs, unstoning, unblinding (potion should always
-  glow)
-- Any recipe made with were-light should glow
 - Give were-light unstable flag
 - More recipes as more spell effects are added!
 - regular stanza updates again! XII should be the brothers/rebels returning to

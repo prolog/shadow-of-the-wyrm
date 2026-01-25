@@ -268,7 +268,7 @@ TEST(SW_World_NullInventory, remove_ingr)
   ItemPtr item = std::make_shared<Spellbook>();
   item->set_id("item_id");
   ni.add(item);
-  ni.remove(ingr);
+  auto removed = ni.remove_and_return(ingr);
 
   EXPECT_EQ(0u, ni.size());
 }

@@ -91,7 +91,16 @@ bool CauldronManipulator::brew(CreaturePtr creature, TilePtr tile, const Recipe&
       manager.send();
 
       // Remove the items from the inventory.
-      creature->get_inventory()->remove(r.get_ingredients());
+      vector<ItemPtr> removed = creature->get_inventory()->remove_and_return(r.get_ingredients());
+      
+      for (ItemPtr r : removed)
+      {
+        if (r && r->get_glowing())
+        {
+          item->set_glowing(true);
+          break;
+        }
+      }
 
       // Create the potable and add it to the cauldron tile.
       tile->get_items()->merge_or_add(item);

@@ -58,7 +58,7 @@ bool NullInventory::merge(ItemPtr /*item*/)
   return false;
 }
 
-bool NullInventory::transfer_to(IInventoryPtr /* inv */)
+bool NullInventory::transfer_to(std::shared_ptr<IInventory> /* inv */)
 {
   return false;
 }
@@ -74,9 +74,10 @@ bool NullInventory::remove(const string& /*id*/)
   return false;
 }
 
-bool NullInventory::remove(const Ingredients& /*ingr*/)
+std::vector<ItemPtr> NullInventory::remove_and_return(const Ingredients& /*ingr*/)
 {
-  return false;
+  std::vector<ItemPtr> nothing;
+  return nothing;
 }
 
 uint NullInventory::count_items() const
