@@ -93,9 +93,9 @@ bool CauldronManipulator::brew(CreaturePtr creature, TilePtr tile, const Recipe&
       // Remove the items from the inventory.
       vector<ItemPtr> removed = creature->get_inventory()->remove_and_return(r.get_ingredients());
       
-      for (ItemPtr r : removed)
+      for (ItemPtr rem : removed)
       {
-        if (r && r->get_glowing())
+        if (rem && rem->get_glowing())
         {
           item->set_glowing(true);
           break;
