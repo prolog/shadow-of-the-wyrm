@@ -19,11 +19,12 @@ int MagicalCombatTargetNumberCalculator::calculate(CreaturePtr attacking_creatur
 
   if (attacking_creature && attacked_creature)
   {
+    Skills& a_skills = attacking_creature->get_skills();
     Skills& d_skills = attacked_creature->get_skills();
 
     int defender_evade = attacked_creature->get_evade().get_current();
     int defender_awareness = (d_skills.get_value_incr_marks(SkillType::SKILL_GENERAL_AWARENESS) / 2);
-    int attacker_skill_value = d_skills.get_value(get_attacker_skill());
+    int attacker_skill_value = a_skills.get_value(get_attacker_skill());
 
     target_number = defender_evade + defender_awareness - attacker_skill_value;
 
@@ -42,3 +43,7 @@ SkillType MagicalCombatTargetNumberCalculator::get_attacker_skill() const
 {
   return SkillType::SKILL_GENERAL_MAGIC;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/MagicalCombatTargetNumberCalculator_test.cpp"
+#endif

@@ -1,6 +1,6 @@
 #pragma once
 #include "AttackTypes.hpp"
-#include "Creature.hpp"
+#include "Map.hpp"
 #include "Weapon.hpp"
 
 class WeaponDifficultyCalculator
@@ -9,7 +9,7 @@ class WeaponDifficultyCalculator
     int calculate_base_difficulty(CreaturePtr creature, const AttackType attack_type);
     int get_difficulty_for_weapon(WeaponPtr weapon);
     int get_item_total_difficulty_for_weapon(WeaponPtr weapon);
-    int calculate_total_difficulty_for_display(CreaturePtr creature, const AttackType attack_type);
+    int calculate_total_difficulty_for_display(CreaturePtr creature, MapPtr map, const AttackType attack_type);
 
   protected:
     int get_difficulty_penalty_for_dual_wield(CreaturePtr creature, WeaponPtr primary_weapon, WeaponPtr secondary_weapon);

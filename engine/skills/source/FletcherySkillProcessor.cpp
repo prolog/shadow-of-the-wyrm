@@ -5,7 +5,6 @@
 #include "CreateItemScreen.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
-#include "ItemProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
@@ -18,7 +17,9 @@ ActionCostValue FletcherySkillProcessor::process(CreaturePtr creature, MapPtr ma
 
   if (creature != nullptr && map != nullptr)
   {
-    if (check_for_branch(creature))
+    auto branch_details = check_for_branch(creature);
+
+    if (branch_details.first)
     {
       CurrentCreatureAbilities cca;
 
@@ -29,14 +30,13 @@ ActionCostValue FletcherySkillProcessor::process(CreaturePtr creature, MapPtr ma
 
         CreateItemScreen cis(cur_disp, SkillType::SKILL_GENERAL_FLETCHERY);
         string sel = cis.display();
-        char sel_c = sel.at(0) - 'a';
+        char sel_c = static_cast<char>(Char::keyboard_selection_char_to_int(sel.at(0)));
         OptionPtr option = cis.get_option(sel_c);
 
         if (option != nullptr)
         {
           string item_base_id = option->get_external_id();
-          string item_status_s = option->get_property(ItemProperties::ITEM_PROPERTIES_STATUS);
-          ItemStatus item_status = (item_status_s.empty() ? ItemStatus::ITEM_STATUS_UNCURSED : static_cast<ItemStatus>(String::to_int(item_status_s)));
+          ItemStatus item_status = branch_details.second;
 
           create_projectiles(item_base_id, item_status, creature, map);
           acv = get_default_skill_action_cost_value(creature);
@@ -54,9 +54,9 @@ SkillProcessorPtr FletcherySkillProcessor::clone()
   return proc;
 }
 
-bool FletcherySkillProcessor::check_for_branch(CreaturePtr creature)
+pair<bool, ItemStatus> FletcherySkillProcessor::check_for_branch(CreaturePtr creature)
 {
-  bool has_branch = false;
+  pair<bool, ItemStatus> has_branch = { false, ItemStatus::ITEM_STATUS_UNCURSED };
 
   if (creature != nullptr)
   {
@@ -64,11 +64,11 @@ bool FletcherySkillProcessor::check_for_branch(CreaturePtr creature)
 
     if (branch != nullptr)
     {
-      has_branch = true;
+      has_branch = { true, branch->get_status() };
     }
   }
 
-  if (has_branch == false)
+  if (has_branch.first == false)
   {
     IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 

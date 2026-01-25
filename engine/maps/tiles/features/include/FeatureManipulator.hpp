@@ -12,9 +12,9 @@ class FeatureManipulator
     FeatureManipulator(FeaturePtr new_feature) : feature(new_feature) {};
     virtual ~FeatureManipulator() = default;
 
-    // Kicking returns void because kicking something and getting to the point
-    // of using a manipulator is always an action.  
-    virtual void kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature) = 0;
+    // Kicking/striking returns void because kicking something and getting to 
+    // the point of using a manipulator is always an action.  
+    virtual void strike(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, const Coordinate& feature_coord, FeaturePtr feature, ItemPtr struck_item) = 0;
     
     // Handling a feature can affect the tile on which the feature is present,
     // so include that as a parameter.  Include the creature so that if a message
@@ -27,7 +27,7 @@ class FeatureManipulator
     // of things like altars.
     virtual bool drop(CreaturePtr dropping_creature, TilePtr tile, ItemPtr item) = 0;
 
-    // Indirectly called by other functions, like kick(...), but also when
+    // Indirectly called by other functions, like strike(...), but also when
     // eg the feature is destroyed in other ways, like via crumbling,
     // elsewhere in the engine.
     virtual bool desecrate(CreaturePtr creature, MapPtr current_map);

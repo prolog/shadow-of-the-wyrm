@@ -134,6 +134,6 @@ void ExitGameAction::create_dump_if_necessary(IMessageManager& manager, ActionMa
     }
 
     CharacterAction ca;
-    ca.dump_character(creature, cdt);
+    ca.dump_character(creature, cdt, true);
   }
 }

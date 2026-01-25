@@ -1,7 +1,7 @@
 #pragma once
 #include "AttackTypes.hpp"
-#include "Creature.hpp"
 #include "CalendarTypes.hpp"
+#include "Map.hpp"
 
 class DamageCalculator
 {
@@ -11,14 +11,19 @@ class DamageCalculator
   
     virtual int calculate(CreaturePtr defending_creature, const bool sneak_attack, const bool slays_creatures_race, const Damage& damage, const int base_damage, const float soak_multiplier) = 0;
     virtual Damage calculate_base_damage_object(CreaturePtr attacking_creature) = 0;
-    virtual Damage calculate_base_damage_with_bonuses_or_penalties(CreaturePtr attacking_creature) = 0;
+    virtual Damage calculate_base_damage_with_bonuses_or_penalties(CreaturePtr attacking_creature, MapPtr map) = 0;
 
     int get_item_status_effect_bonus(const ItemStatus status);
+    int get_map_bonus(CreaturePtr creature, MapPtr map) const;
 
   protected:
 
     double get_phase_of_moon_multiplier(const DamageType dt, const PhaseOfMoonType pom) const;
     double get_sneak_attack_multiplier(const bool attacker_hidden) const;
+
+    virtual int calculate_pct_chance_glow_burn(ItemPtr item);
+    virtual int calculate_damage_bonus_glow_burn(ItemPtr item);
+    virtual int calculate_effect_bonus_glow_burn(ItemPtr item);
 
     AttackType attack_type;
     PhaseOfMoonType pom_type;

@@ -10,33 +10,35 @@ Long Term Boring And Probably Necessary:
 
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
-  staircase extra descs.
+  staircase extra descs, randomized npc stuff, etc.
 - EVERY TIME YOU UPDATE ASSETS, DM LARZID
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
-- Snakelings should always start bald (RelicWraith)
-- Companions should see you when hidden, or else orders get wonky (RelicWraith)
 - Audio enhancements off for testing
-- no-talk telari: what if the entrance was deep below wintersea catacombs?
+- re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
+  YT after)
+- weaving, tanning, bowyer, fletcher, should all have a chance to improve the
+  item status based on the specific skill + crafting.
+- hook up bowyer/fletcher to calc to improve status, then do the other skills
+- signs outside of workshop-designated buildings in towns
+- fletchery/bowyer status - when unc, skill% chance to turn blessed.
+- Use this for fletchery, bowyer, etc, to improve item & quantity
+- Dropping unstable items should have a chance to blind those around you
+- Throwing unstable items should have a chance to blind the target and those
+  around it
+- for steel items: coal + iron? recipes tied to skills?
+- what about a theme for Cithriel? something weird and otherworldly
+- More recipes as more spell effects are added!
 - regular stanza updates again! XII should be the brothers/rebels returning to
   farstead, XIII Tel's group.
-- fletchery/bowyer status - when unc, skill% chance to turn blessed. should
-  get a check for each of bowyer/fletchery and crafting.
-- Use this for fletchery, bowyer, etc, to improve item & quantity
-- set random extra descriptions for up/down staircases
 - let's work on recall/coming back if you go down a water tile...
 - underwater cavern? something like that?
-- is the username check on savefiles still needed?
 - test orb placement in wyrmeswraec
-- dig in water
 - other ambient sounds
 - super_type_message_sids -> super_type_sound_id?
-- hemsio: autosave not working?
-- tile item transforms: drop items, test save and load.
 - Hidden PCs are never found via bumping (Josh Engdahl)
 - ways in which blessed item status can be tied into benefits
 - Sofistico: went up on telari and game crashed
-- always: mushrooms in the wet rooms in the dungeon
 - sometimes: mushroom generation in dungeons (rare), caverns (more frequent)
 - open pit mine (pick axes or mattocks, gold, stone, magici...). may or may not
   be abandoned.
@@ -49,7 +51,7 @@ Me:
 - mushrooms with randomized effects, descs like wildflowers. eat scripts?
 - Desert/Forest/etc Lore (+ dungeoneering?): to-hit, damage, speed bonuses on 
   that terrain
-- creature-specific turn-to-fight/rage values`
+- creature-specific turn-to-fight/rage values
 - Uniques and fleeing?
 - what other creatures can be templated now?
 - Make keeps more interesting?
@@ -522,16 +524,14 @@ RelicWraith:
 Paul Raymond-Robichaud:
 - Increase HP/AP regen modifiers as you level
 - be able to exit game to main screen
-- sheep generate tame for shepherds (sheep need to actually generate then)
 - shift+letter for race, class, religion help on start
 - special events/festivities on certain days? (feasts, etc)
 
 Lustrecia:
-- Using "active" skills, like fishing or disarm trap, is not covered in the manual and was not very obvious. This might be a me thing, as I don't have a history with more old-school roguelikes like Adom, but just adding a blurb about how you can use skills from F3 menu would have helped me a lot.
-
-- More or less the same as above, "Apply a nearby terrain feature" is a single line in manual which does not elaborate on what a terrain feature even is. I'm pretty sure I figured that it is for using crafting stations by accident, and opening/closing doors was an accident too. On the other hand, bed is not a terrain feature, while I expected that using "a" near a bed would make me rest on it.
-
 - It would be nice if merchant's dialogue hinted on the restock somehow, maybe something along the lines of "I'm getting new wares delivered in a couple of weeks, come back again!".
 
 marwff:
 - Way into Telari without talking
+
+hemsio:
+- dwarf thief with crowbar in offhand doing more damage than in main?

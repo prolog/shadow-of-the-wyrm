@@ -4,6 +4,8 @@
 #include "Conversion.hpp"
 #include "Game.hpp"
 #include "GeneratorUtils.hpp"
+#include "ItemManager.hpp"
+#include "ItemProperties.hpp"
 #include "MapExitUtils.hpp"
 #include "MapProperties.hpp"
 #include "TileGenerator.hpp"
@@ -12,8 +14,9 @@
 
 using namespace std;
 
-int CavernGenerator::MIN_NUM_TRAPS = 0;
-int CavernGenerator::MAX_NUM_TRAPS = 6;
+const int CavernGenerator::MIN_NUM_TRAPS = 0;
+const int CavernGenerator::MAX_NUM_TRAPS = 6;
+const int CavernGenerator::PCT_CHANCE_SLIMY = 5;
 
 CavernGenerator::CavernGenerator(const string& new_map_exit_id)
 : Generator(new_map_exit_id, TileType::TILE_TYPE_CAVERN)
@@ -58,9 +61,12 @@ void CavernGenerator::generate_cavern(MapPtr map)
   CellMap cavern_map = cag.generate();
 
   CellValue cavern_val;
+  bool slimy = RNG::percent_chance(PCT_CHANCE_SLIMY);
+  int sliminess = RNG::range(1, 4);
 
   int y = dimensions.get_y();
   int x = dimensions.get_x();
+
   for (int row = 0; row < y; row++)
   {
     for (int col = 0; col < x; col++)
@@ -71,6 +77,16 @@ void CavernGenerator::generate_cavern(MapPtr map)
       {
         tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
         map->insert(row, col, tile);
+
+        if (slimy && RNG::percent_chance(sliminess))
+        {
+          ItemPtr slime = ItemManager::create_item(ItemIdKeys::ITEM_ID_SLIME);
+
+          if (slime != nullptr)
+          {
+            tile->get_items()->merge_or_add(slime);
+          }
+        }
       }
     }
   }

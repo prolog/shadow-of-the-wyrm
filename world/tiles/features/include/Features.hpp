@@ -627,9 +627,51 @@ class WheelAndLoom : public Feature
     WheelAndLoom(const Symbol& new_symbol);
     virtual Feature* clone() override;
 
-    bool operator==(const WheelAndLoom& j) const;
+  private:
+    virtual ClassIdentifier internal_class_identifier() const override;
+};
+
+class Cauldron : public Feature
+{
+  public:
+    Cauldron(const Symbol& new_symbol);
+    virtual Feature* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };
 
+class Hive : public Feature
+{
+  public:
+    Hive(const Symbol& new_symbol);
+    bool operator==(const Hive& hive) const;
+
+    virtual Feature* clone() override;
+
+    void set_charges(const int new_charges);
+    int get_charges() const;
+
+    void set_drone_id(const std::string& new_drone_id);
+    std::string get_drone_id() const;
+
+    void set_leader_id(const std::string& new_leader_id);
+    std::string get_leader_id() const;
+
+    void set_item_ids(const std::vector<std::string>& new_item_ids);
+    std::vector<std::string> get_item_ids() const;
+
+    // Read all the hive info from the given creature.
+    bool populate_from(CreaturePtr creature);
+
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
+
+  private:
+    int charges;
+    std::string drone_id;
+    std::string leader_id;
+    std::vector<std::string> item_ids;
+
+    virtual ClassIdentifier internal_class_identifier() const override;
+};

@@ -4,15 +4,9 @@
 using namespace std;
 
 // Glass shatters under magical cold.
-bool ColdTileDamageProcessor::affects_item(ItemPtr item)
+bool ColdTileDamageProcessor::affects_material(const MaterialType mt)
 {
-  bool aff = false;
-
-  if (item != nullptr)
-  {
-    aff = (item->get_material_type() == MaterialType::MATERIAL_TYPE_GLASS);
-  }
-
+  bool aff = (mt == MaterialType::MATERIAL_TYPE_GLASS);
   return aff;
 }
 

@@ -5,6 +5,18 @@
 const int CreateItemCalculator::PRIMARY_SKILL_DIVISOR = 6;
 const int CreateItemCalculator::CRAFTING_SKILL_DIVISOR = 15;
 
+int CreateItemCalculator::calc_pct_chance_improve_status(CreaturePtr creature, const SkillType create_skill)
+{
+  int chance = 0;
+
+  if (creature != nullptr)
+  {
+    chance = creature->get_skills().get_value(create_skill);
+  }
+
+  return chance;
+}
+
 int CreateItemCalculator::calc_potential_improvement_points(CreaturePtr creature, const SkillType create_skill, const ItemStatus item_status)
 {
   int improve_points = 0;

@@ -13,14 +13,15 @@ class NullInventory : public IInventory
 
     bool add_front(ItemPtr new_item) override;
     bool add(ItemPtr new_item) override;
-    bool merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc) override;
-    bool merge_or_add(IInventoryPtr items, const InventoryAdditionType inv_add_loc) override;
-    bool merge_or_add(IInventory* items, const InventoryAdditionType inv_add_loc) override;
+    bool merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc = InventoryAdditionType::INVENTORY_ADDITION_BACK) override;
+    bool merge_or_add(IInventoryPtr items, const InventoryAdditionType inv_add_loc = InventoryAdditionType::INVENTORY_ADDITION_BACK) override;
+    bool merge_or_add(IInventory* items, const InventoryAdditionType inv_add_loc = InventoryAdditionType::INVENTORY_ADDITION_BACK) override;
     bool merge(ItemPtr new_item) override;
 
     virtual bool transfer_to(std::shared_ptr<IInventory> items) override;
 
     bool remove(const std::string& id) override;
+    std::vector<ItemPtr> remove_and_return(const Ingredients& ingr) override;
     ItemPtr remove_and_return(const std::string& id) override;
     std::pair<bool, std::vector<ItemPtr>> remove_by_base_id(const std::string& base_id, const int quantity = 1, const std::map<std::string, std::string>& properties = {}) override;
 
@@ -29,6 +30,7 @@ class NullInventory : public IInventory
     void set_additional_property(const std::string& property_name, const std::string& property_value) override;
 
     bool has_items() const override;
+    bool has_items_for_recipe(const std::unordered_map<std::string, uint>& item_ids_quantities, const Recipe& r) const override;
     bool has_unpaid_items() const override;
     bool has_item(const std::string& base_id) const override;
 
@@ -56,6 +58,8 @@ class NullInventory : public IInventory
     void add_items(const std::list<ItemPtr>& items) override;
     std::list<ItemPtr>& get_items_ref() override;
     const std::list<ItemPtr>& get_items_cref() const override;
+
+    std::unordered_map<std::string, uint> get_item_ids_and_quantity() const;
 
     std::string get_drop_effect_sid() const override;
 

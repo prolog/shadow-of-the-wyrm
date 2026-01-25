@@ -16,12 +16,12 @@ SarcophagusManipulator::SarcophagusManipulator(FeaturePtr feature)
 {
 }
 
-void SarcophagusManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
+void SarcophagusManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/, ItemPtr /* item */)
 {
   if (creature && creature->get_is_player())
   {
     IMessageManager& manager = MMF::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_SARCOPHAGUS));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_SARCOPHAGUS));
     manager.send();
   }
 }

@@ -335,7 +335,7 @@ const SpellMap& Game::get_spells_ref()
   return spells;
 }
 
-const CreatureMap& Game::get_creatures_ref() const
+const CreatureMap& Game::get_creatures_cref() const
 {
   return creatures;
 }
@@ -1306,6 +1306,16 @@ void Game::update_player_dates()
   }
 }
 
+void Game::set_recipes(const Recipes& new_recipes)
+{
+  recipes = new_recipes;
+}
+
+Recipes& Game::get_recipes_ref()
+{
+  return recipes;
+}
+
 bool Game::serialize(ostream& stream) const
 {
   Log::instance().trace("Game::serialize - start");
@@ -1495,6 +1505,8 @@ bool Game::serialize(ostream& stream) const
   // We keep track of total seconds, but not start time, etc.
   double total_elapsed_time = get_total_elapsed_game_time(std::chrono::system_clock::now());
   Serialize::write_double(stream, total_elapsed_time);
+
+  recipes.serialize(stream);
 
   Serialize::write_bool(stream, is_loading);
 
@@ -1804,6 +1816,9 @@ bool Game::deserialize(istream& stream)
 
   Serialize::read_bool(stream, count_score);
   Serialize::read_double(stream, total_seconds_played);
+
+  recipes.deserialize(stream);
+
   Serialize::read_bool(stream, is_loading);
 
   Log::instance().trace("Game::deserialize - end");

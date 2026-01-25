@@ -29,12 +29,12 @@
 	,T,TT,T,T,T,,,T,TT,,,#####,,,,,,,,,,T,T,,,######,,T,T,T,T,,,TT,TT,T,T,,,TTT,,T,T
 	T,T,,,T,T,,,,,T,T,,,,#....,,,T,,,,T,,,,,T,,,,,,,,,TT,,,,,,TT,TT,,T,T,T,,TT,,,T,,
 	,TT,,,T,,,T,T,TTTT,,,#...#,,##.##,,,,#####,T,,,,T,TTT,T,T,,T,,,TT,,TT,TTTT,T,T,T
-	T,,,T,,,T,T,,,T,,T,,,#####,,#...#,,,,....#,,,,,,,,T,,,,,,,TT,,T,,TT,,T,,,TT,,,,T
-	T,T,,,TTTT,,,,TTTTT,,,,,,T,,#...#,,T,#...#,,,,,,,,,,,,T,T,,TT,,,,,T,,,,,TTT,,T,,
-	,,T,T,T,,TT,,,T,,T,TT,,,,T,,#####,TT,#####,T,,,,T,w,T,T,TT,T,T,,T,T,,TT,,T,,,T,T
-	T,,,,,T,T,,TTTT,,TTT,TTT,,,,,,,,,,,,,,,,,,,,,,,,,,,,T,T,,,,TT,,,,,,T,,T,,,,TTT,,
-	T,T,T,,,T,T,TTT,TT,,TT,TTTT,T,T,TTT,T,T,TTTTT,TT,TT,,,T,TTT,,,T,T,TT,T,,TT,,,T,T
-	,,T,,,T,T,,TT,,,T,TT,T,T,T,,TTT,,TT,T,TT,TTT,TT,T,T,T,,,T,,,TTT,,T,,T,,,T,T,,T,T
+	T,,,T,,,T,T,,,T,,T,,,#####,,#...#,,,,....#,,,,,,,,T,,,,,,,,,,,T,,TT,,T,,,TT,,,,T
+	T,T,,,TTTT,,,,TTTTT,,,,,,T,,#...#,,T,#...#,,,,,,,,,,,,,####,T,,,,,T,,,,,TTT,,T,,
+	,,T,T,T,,TT,,,T,,T,TT,,,,T,,#####,TT,#####,T,,,,T,w,,,,...#,,T,,T,T,,TT,,T,,,T,T
+	T,,,,,T,T,,TTTT,,TTT,TTT,,,,,,,,,,,,,,,,,,,,,,,,,,,,T,,#..#,T,,,,,,T,,T,,,,TTT,,
+	T,T,T,,,T,T,TTT,TT,,TT,TTTT,T,T,TTT,T,T,TTTTT,TT,TT,,,,####,,,T,T,TT,T,,TT,,,T,T
+	,,T,,,T,T,,TT,,,T,TT,T,T,T,,TTT,,TT,T,TT,TTT,TT,T,T,T,,,,,,,TTT,,T,,T,,,T,T,,T,T
 	TT,T,TTTT,T,TT,TTT,T,T,TTTT,TT,TTTTT,T,T,,,T,,,TT,T,TTTT,TTT,T,TT,TTT,TTT,T,TTT,
 	</Tiles>
 	<InitialPlacements>
@@ -179,6 +179,13 @@
 	</InitialPlacements>
 	<Exits/>
 	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>16</Row>
+				<Col>57</Col>
+			</Coord>
+			<Cauldron/>
+		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>
 				<Row>12</Row>

@@ -34,6 +34,8 @@ const string TextMessages::WELCOME_BACK_MESSAGE               = "WELCOME_BACK_ME
 const string TextMessages::DUMPING_CHARACTER_MESSAGE          = "DUMPING_CHARACTER_MESSAGE";
 const string TextMessages::ITEM_DROP_MESSAGE                  = "ITEM_DROP_MESSAGE";
 const string TextMessages::ITEM_DROP_MESSAGE_MONSTER          = "ITEM_DROP_MESSAGE_MONSTER";
+const string TextMessages::ITEM_UNSTABLE_DROP_SINGLE          = "ITEM_UNSTABLE_DROP_SINGLE";
+const string TextMessages::ITEM_UNSTABLE_DROP_MULTIPLE        = "ITEM_UNSTABLE_DROP_MULTIPLE";
 const string TextMessages::BURY_MESSAGE                       = "BURY_MESSAGE";
 const string TextMessages::BURY_MESSAGE_MONSTER               = "BURY_MESSAGE_MONSTER";
 const string TextMessages::ITEM_PICK_UP_MESSAGE_PLAYER        = "ITEM_PICK_UP_MESSAGE_PLAYER";
@@ -417,6 +419,18 @@ string TextMessages::get_item_drop_message(CreaturePtr creature, const bool blin
   }
 
   return item_message;
+}
+
+string TextMessages::get_unstable_drop_message(const uint quantity)
+{
+  string sid = ITEM_UNSTABLE_DROP_SINGLE;
+
+  if (quantity > 1)
+  {
+    sid = ITEM_UNSTABLE_DROP_MULTIPLE;
+  }
+
+  return StringTable::get(sid);
 }
 
 string TextMessages::get_burial_message(CreaturePtr creature)

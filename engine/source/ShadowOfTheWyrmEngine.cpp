@@ -4,6 +4,7 @@
 #include "AgeSelectionScreen.hpp"
 #include "Class.hpp"
 #include "ClassSelectionScreen.hpp"
+#include "Conducts.hpp"
 #include "Conversion.hpp"
 #include "Creature.hpp"
 #include "CreatureFactory.hpp"
@@ -17,14 +18,11 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HairSelectionScreen.hpp"
-#include "HelpCommandProcessor.hpp"
-#include "HelpScreen.hpp"
 #include "HighScoreScreen.hpp"
 #include "ItemDescriptionRandomizer.hpp"
 #include "ItemIdentifier.hpp"
 #include "LoadGameScreen.hpp"
 #include "Log.hpp"
-#include "MapProperties.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MusicEvent.hpp"
 #include "NamingScreen.hpp"
@@ -32,6 +30,7 @@
 #include "PlayerDecisionStrategy.hpp"
 #include "RaceManager.hpp"
 #include "RaceSelectionScreen.hpp"
+#include "RecipeRandomizer.hpp"
 #include "ReligionConstants.hpp"
 #include "RNG.hpp"
 #include "ScriptConstants.hpp"
@@ -325,6 +324,13 @@ void ShadowOfTheWyrmEngine::setup_game()
 
   StartingLocationMap starting_locations = reader.get_starting_locations();
   game.set_starting_locations(starting_locations);
+
+  log.debug("Reading & randomizing recipes.");
+
+  RecipeRandomizer rr;
+  Recipes recipes = reader.get_recipes();
+  rr.randomize(recipes, items.first);
+  game.set_recipes(recipes);
 
   log.debug("Reading custom maps.");
 
@@ -807,6 +813,12 @@ bool ShadowOfTheWyrmEngine::process_name_and_start(const CharacterCreationDetail
   {
     ItemPtr item = eq_pair.second;
     if (item && item->get_status() == ItemStatus::ITEM_STATUS_CURSED) item->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
+  }
+
+  JewelrylessConduct jc;
+  if (jc.breaks_conduct(player->get_equipment()))
+  {
+    player->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_JEWELRYLESS);
   }
 
   game.create_new_world(player, ccd.get_starting_location());

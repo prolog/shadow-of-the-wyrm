@@ -12,7 +12,7 @@ class CharacterAction : public IActionManager
 {
   public:
     ActionCostValue display_character(CreaturePtr creature);
-    ActionCostValue dump_character(CreaturePtr creature, const CharacterDumpType cdt);
+    ActionCostValue dump_character(CreaturePtr creature, const CharacterDumpType cdt, const bool add_pause);
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 

@@ -61,7 +61,7 @@ TEST(Engine_Calculators_MagicalDamageCalculator, base_damage_spell_bonus_compone
   CreaturePtr creature = setup_creature();
 
   MagicalDamageCalculator mdc(PhaseOfMoonType::PHASE_OF_MOON_NULL);
-  Damage d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature);
+  Damage d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature, nullptr);
 
   EXPECT_EQ(static_cast<uint>(3), d.get_num_dice());
   EXPECT_EQ(static_cast<uint>(4), d.get_dice_sides());
@@ -70,7 +70,7 @@ TEST(Engine_Calculators_MagicalDamageCalculator, base_damage_spell_bonus_compone
   IndividualSpellKnowledge isk;
   isk.set_bonus(23);
   creature->get_spell_knowledge_ref().set_spell_knowledge(spell_id, isk);
-  d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature);
+  d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature, nullptr);
 
   EXPECT_EQ(static_cast<uint>(3), d.get_num_dice());
   EXPECT_EQ(static_cast<uint>(4), d.get_dice_sides());
@@ -86,7 +86,7 @@ TEST(Engine_Calculators_MagicalDamageCalculator, base_damage_skill_component)
   creature->get_skills().set_value(SkillType::SKILL_GENERAL_MAGIC, 22);
 
   MagicalDamageCalculator mdc(PhaseOfMoonType::PHASE_OF_MOON_NULL);
-  Damage d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature);
+  Damage d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature, nullptr);
 
   EXPECT_EQ(static_cast<uint>(3), d.get_num_dice());
   EXPECT_EQ(static_cast<uint>(4), d.get_dice_sides());
@@ -94,7 +94,7 @@ TEST(Engine_Calculators_MagicalDamageCalculator, base_damage_skill_component)
 
   creature->get_skills().set_value(SkillType::SKILL_MAGIC_CANTRIPS, 75);
 
-  d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature);
+  d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature, nullptr);
 
   EXPECT_EQ(static_cast<uint>(3), d.get_num_dice());
   EXPECT_EQ(static_cast<uint>(4), d.get_dice_sides());
@@ -111,7 +111,7 @@ TEST(Engine_Calculators_MagicalDamageCalculator, base_damage_stat_component)
   creature->set_willpower(18);
 
   MagicalDamageCalculator mdc(PhaseOfMoonType::PHASE_OF_MOON_NULL);
-  Damage d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature);
+  Damage d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature, nullptr);
 
   EXPECT_EQ(static_cast<uint>(3), d.get_num_dice());
   EXPECT_EQ(static_cast<uint>(4), d.get_dice_sides());
@@ -120,7 +120,7 @@ TEST(Engine_Calculators_MagicalDamageCalculator, base_damage_stat_component)
   creature->set_intelligence(24);
   creature->set_willpower(31);
 
-  d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature);
+  d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature, nullptr);
 
   EXPECT_EQ(static_cast<uint>(3), d.get_num_dice());
   EXPECT_EQ(static_cast<uint>(4), d.get_dice_sides());
@@ -129,3 +129,41 @@ TEST(Engine_Calculators_MagicalDamageCalculator, base_damage_stat_component)
   tear_down_spells();
 }
 
+TEST(Engine_Calculators_MagicalDamageCalculator, base_damage_map_component)
+{
+  setup_spells();
+  CreaturePtr creature = setup_creature();
+  Dimensions dim;
+  MapPtr map = std::make_shared<Map>(dim);
+  MagicalDamageCalculator mdc(PhaseOfMoonType::PHASE_OF_MOON_NULL);
+
+  std::vector<std::pair<TileType, SkillType>> pairs = { {TileType::TILE_TYPE_MARSH, SkillType::SKILL_GENERAL_MARSH_LORE},
+                                                        {TileType::TILE_TYPE_FOREST, SkillType::SKILL_GENERAL_FOREST_LORE},
+                                                        {TileType::TILE_TYPE_DESERT, SkillType::SKILL_GENERAL_DESERT_LORE},
+                                                        {TileType::TILE_TYPE_SEA, SkillType::SKILL_GENERAL_OCEAN_LORE} };
+
+  for (const auto& tt_pair : pairs)
+  {
+    map->set_terrain_type(tt_pair.first);
+    creature->get_skills().set_value(tt_pair.second, 84);
+
+    Damage d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature, map);
+    EXPECT_EQ(static_cast<uint>(3), d.get_num_dice());
+    EXPECT_EQ(static_cast<uint>(4), d.get_dice_sides());
+    EXPECT_EQ(4, d.get_modifier());
+
+    creature->get_skills().set_value(tt_pair.second, 0);
+  }
+
+  map->set_map_type(MapType::MAP_TYPE_UNDERWORLD);
+  map->set_terrain_type(TileType::TILE_TYPE_DUNGEON_COMPLEX);
+  creature->get_skills().set_value(SkillType::SKILL_GENERAL_DUNGEONEERING, 84);
+
+  Damage d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature, map);
+
+  EXPECT_EQ(static_cast<uint>(3), d.get_num_dice());
+  EXPECT_EQ(static_cast<uint>(4), d.get_dice_sides());
+  EXPECT_EQ(4, d.get_modifier());
+
+  tear_down_spells();
+}

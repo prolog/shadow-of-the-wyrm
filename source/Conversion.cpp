@@ -43,7 +43,7 @@ string String::clean(const string& to_clean)
   {
     char c = c_str[i];
 
-    if (isalpha(c) || isdigit(c) || c >= ' ')
+    if (c >= 0 && (isalpha(c) || isdigit(c) || c >= ' '))
     {
       clean << c;
     }
@@ -190,7 +190,7 @@ vector<Colour> String::create_colour_vector_from_csv_string(const string& csv_st
   return colours;
 }
 
-string String::create_csv_from_string_vector(const vector<string>& str_vec)
+string String::create_csv_from_string_vector(const vector<string>& str_vec, const int num_spaces)
 {
   ostringstream ss;
   size_t str_vec_size = str_vec.size();
@@ -201,6 +201,11 @@ string String::create_csv_from_string_vector(const vector<string>& str_vec)
     if (i != (str_vec_size - 1))
     {
       ss << ",";
+
+      for (int j = 0; j < num_spaces; j++)
+      {
+        ss << " ";
+      }
     }
   }
 
@@ -310,6 +315,8 @@ pair<int, int> String::create_width_height(const string& wh_str)
   return wh;
 }
 
+
+
 Char::Char()
 {
 }
@@ -318,23 +325,7 @@ Char::~Char()
 {
 }
 
-EquipmentWornLocation Char::to_equipment_worn_location(const char character)
-{
-  int worn_location = -1; // EQUIPMENT_WORN_NONE
-
-  if (character >= 'a' && character <= 'i')
-  {
-    worn_location = character - 'a';
-  }
-  else if (character >= 'A' && character <= 'I')
-  {
-    worn_location = character - 'A';
-  }
-
-  return static_cast<EquipmentWornLocation>(worn_location);
-}
-
-int Char::keyboard_selection_char_to_int(const char character)
+int Char::keyboard_selection_char_to_int(const char character, const char char_subtr_val)
 {
   if (isdigit(character))
   {
@@ -342,8 +333,13 @@ int Char::keyboard_selection_char_to_int(const char character)
   }
   else
   {
-    return static_cast<int>(std::tolower(character) - 'a');
+    return static_cast<int>(std::tolower(character) - char_subtr_val);
   }
+}
+
+int Char::keyboard_selection_int_to_int(const int val, const char offset)
+{
+  return val - offset;
 }
 
 String::String()

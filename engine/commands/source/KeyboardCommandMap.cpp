@@ -99,6 +99,19 @@ void KeyboardCommandMap::initialize_special_key_mappings()
   special_key_mappings.insert(make_pair("KEY_F10", std::to_string(KEY_F(10))));
   special_key_mappings.insert(make_pair("KEY_F11", std::to_string(KEY_F(11))));
   special_key_mappings.insert(make_pair("KEY_F12", std::to_string(KEY_F(12))));
+  
+  // Shift/Ctrl+Arrow
+  special_key_mappings.insert(make_pair("KEY_SLEFT", std::to_string(KEY_SLEFT)));
+  special_key_mappings.insert(make_pair("KEY_SRIGHT", std::to_string(KEY_SRIGHT)));
+
+#ifdef CTL_LEFT
+  special_key_mappings.insert(make_pair("KEY_CLEFT", std::to_string(CTL_LEFT)));
+#endif
+
+#ifdef CTL_RIGHT
+  special_key_mappings.insert(make_pair("KEY_CRIGHT", std::to_string(CTL_RIGHT)));
+#endif
+
   // Other special keys.
   // "Escape" keys.
   // JCD FIXME HACK!

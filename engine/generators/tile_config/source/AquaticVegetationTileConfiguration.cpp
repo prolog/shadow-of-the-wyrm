@@ -7,7 +7,7 @@ void AquaticVegetationTileConfiguration::configure(TilePtr tile, const Season /*
 {
   IInventoryPtr tile_items = tile->get_items();
 
-  // Kelp-the-item generates on kelp-the-tile at the same rate regardless of season.
-  ItemManager::create_item_with_probability(1, 30, tile_items, ItemIdKeys::ITEM_ID_KELP);
+  // Kelp-the-item generates on kelp-the-tile regardless of season.
+  ItemManager::create_item_with_probability(1, 2, tile_items, ItemIdKeys::ITEM_ID_KELP);
 }
 

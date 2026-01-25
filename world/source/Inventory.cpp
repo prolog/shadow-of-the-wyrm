@@ -141,7 +141,7 @@ bool Inventory::transfer_to(IInventoryPtr it)
     return false;
   }
 
-  bool merged = it->merge_or_add(this, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+  bool merged = it->merge_or_add(this);
   clear();
 
   return merged;
@@ -205,6 +205,61 @@ bool Inventory::remove(const string& id)
   }
   
   return false;
+}
+
+// Removes as many of the ingredients from the inventory as possible. This is
+// not all or nothing: if only some ingredients exist in the inventory, they
+// will be removed!
+vector<ItemPtr> Inventory::remove_and_return(const Ingredients& ingr_c)
+{
+  vector<ItemPtr> removed;
+
+  if (!ingr_c.empty())
+  {
+    // Make a modifiable copy
+    Ingredients ingr = ingr_c;
+
+    for (auto& i : ingr)
+    {
+      ItemPtr item;
+
+      while ((item = get_from_base_id(i.get_id())) != nullptr)
+      {
+        int quantity = i.get_quantity();
+        int inv_quantity = static_cast<int>(item->get_quantity());
+
+        // If the quantity of the ingredient is less than the ingredient, we're done.
+        if (quantity <= inv_quantity)
+        {
+          // We used some amount of this item, so add it to the return
+          removed.push_back(item);
+
+          inv_quantity -= quantity;
+          item->set_quantity(inv_quantity);
+
+          // If we've used up the item, remove it from the inventory.
+          if (inv_quantity == 0)
+          {
+            remove(item->get_id());
+          }
+
+          break;
+        }
+        else
+        {
+          // If the ingredient quantity is greater than the inventory 
+          // quantity, we can reduce the ingredient amount, remove the item 
+          // from the inventory, and try again.
+          quantity -= inv_quantity;
+          i.set_quantity(quantity);
+          ItemPtr rem_item = remove_and_return(item->get_id());
+          removed.push_back(rem_item);
+        }
+      }
+    }
+  }
+
+  return removed;
 }
 
 pair<bool, vector<ItemPtr>> Inventory::remove_by_base_id(const string& base_id, const int quantity, const map<string, string>& properties)
@@ -318,6 +373,33 @@ void Inventory::set_additional_property(const string& property_name, const strin
 bool Inventory::has_items() const
 {
   return (items.empty() == false);
+}
+
+bool Inventory::has_items_for_recipe(const unordered_map<string, uint>& id_q, const Recipe& r) const
+{
+  bool has_items = true;
+  Ingredients ingrs = r.get_ingredients();
+  
+  // If we have ingredients but no items, we don't have the items for
+  // the recipe.
+  if (id_q.empty() && !ingrs.empty())
+  {
+    has_items = false;
+  }
+
+  for (const Ingredient& ingr : ingrs)
+  {
+    string ingr_item_id = ingr.get_id();
+    auto i_it = id_q.find(ingr_item_id);
+    
+    if (i_it == id_q.end() || (i_it->second < ingr.get_quantity()))
+    {
+      has_items = false;
+      break;
+    }
+  }
+
+  return has_items;
 }
 
 bool Inventory::has_unpaid_items() const
@@ -478,6 +560,29 @@ list<ItemPtr>& Inventory::get_items_ref()
 const list<ItemPtr>& Inventory::get_items_cref() const
 {
   return items;
+}
+
+unordered_map<string, uint> Inventory::get_item_ids_and_quantity() const
+{
+  unordered_map<string, uint> id_q;
+
+  for (const ItemPtr& i : items)
+  {
+    if (i != nullptr)
+    {
+      string base_id = i->get_base_id();
+
+      auto i_it = id_q.find(base_id);
+      if (i_it == id_q.end())
+      {
+        id_q[base_id] = 0;
+      }
+
+      id_q[base_id] += i->get_quantity();
+    }
+  }
+
+  return id_q;
 }
 
 // Check to see if a particular item type exists within the Inventory

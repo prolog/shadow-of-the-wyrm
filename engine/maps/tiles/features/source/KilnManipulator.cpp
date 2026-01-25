@@ -1,5 +1,6 @@
 #include "KilnManipulator.hpp"
 #include "ActionTextKeys.hpp"
+#include "Conversion.hpp"
 #include "CreateItemCalculator.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
@@ -21,12 +22,12 @@ KilnManipulator::KilnManipulator(FeaturePtr feature)
 {
 }
 
-void KilnManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
+void KilnManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/, ItemPtr /* item */)
 {
   if (creature && creature->get_is_player())
   {
     IMessageManager& manager = MMF::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_KILN));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_KILN));
     manager.send();
   }
 }
@@ -57,7 +58,7 @@ bool KilnManipulator::handle(TilePtr tile, CreaturePtr creature)
         }
         else
         {
-          int idx = tolower(d.at(0)) - 'a';
+          int idx = Char::keyboard_selection_char_to_int(static_cast<char>(std::tolower(d.at(0))));
           auto f_it = crafting_functions.find(idx);
 
           if (f_it != crafting_functions.end())

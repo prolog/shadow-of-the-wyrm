@@ -2,6 +2,8 @@
 #include "MapUtils.hpp"
 #include "ViewMapTranslator.hpp"
 
+using std::string;
+
 // Protected constructor and destructor.
 ViewMapTranslator::ViewMapTranslator()
 {
@@ -38,17 +40,22 @@ MapPtr ViewMapTranslator::create_view_map_around_tile(CreaturePtr creature, MapP
         {
           CreaturePtr tile_creature;
           bool hidden_cr = false;
+          bool follows = false;
 
           if (current_tile->has_creature())
           {
             tile_creature = current_tile->get_creature();
             hidden_cr = tile_creature->has_status(StatusIdentifiers::STATUS_ID_HIDE);
+            string cr_leader_id = creature->get_leader_id();
+
+            follows = (!cr_leader_id.empty() && cr_leader_id == tile_creature->get_id());
             current_tile = TilePtr(current_tile->clone());
           }
 
           view_map->insert(row, col, current_tile);
 
-          if (hidden_cr && tile_creature)
+          if (tile_creature &&
+             (hidden_cr && !follows))
           {
             MapUtils::remove_creature(view_map, tile_creature, true);
           }

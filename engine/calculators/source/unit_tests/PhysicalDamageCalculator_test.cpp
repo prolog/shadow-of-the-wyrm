@@ -48,7 +48,7 @@ TEST(SW_Engine_Calculators_PhysicalDamageCalculator, calculate_base_damage_with_
   bonus += creature->get_addl_damage().get_current();
   exp_base_damage.set_modifier(exp_base_damage.get_modifier() + bonus);
 
-  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature));
+  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature, nullptr));
 
   Status s;
   s.set_value(true);
@@ -56,7 +56,7 @@ TEST(SW_Engine_Calculators_PhysicalDamageCalculator, calculate_base_damage_with_
 
   exp_base_damage.set_modifier(exp_base_damage.get_modifier() + (creature->get_level().get_current() * 2));
 
-  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature));
+  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature, nullptr));
 }
 
 // For every 5 points of Str > 10, +1 dam.
@@ -120,7 +120,7 @@ TEST(SW_Engine_Calculators_PhysicalDamageCalculator, get_drunkenness_modifier)
   int dr_bonus = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100) / 2;
   exp_base_damage.set_modifier(exp_base_damage.get_modifier() + bonus + dr_bonus);
 
-  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature));
+  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature, nullptr));
 
   // Go from 0.02 to 0.06, or +2 additional damage.
   b.set_grams_alcohol(3);
@@ -128,7 +128,7 @@ TEST(SW_Engine_Calculators_PhysicalDamageCalculator, get_drunkenness_modifier)
 
   exp_base_damage.set_modifier(exp_base_damage.get_modifier() + 2);
 
-  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature));
+  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature, nullptr));
 }
 
 TEST(SW_Engine_Calculators_PhysicalDamageCalculator, get_item_status_modifier)
@@ -140,4 +140,42 @@ TEST(SW_Engine_Calculators_PhysicalDamageCalculator, get_item_status_modifier)
   {
     EXPECT_EQ(st_pair.second, pdc.get_item_status_effect_bonus(st_pair.first));
   }
+}
+
+// For every 20 points in the applicable Lore skill, +1 damage
+TEST(Engine_Calculators_PhysicalDamageCalculator, base_damage_map_component)
+{
+  CreaturePtr creature = std::make_shared<Creature>();
+  Dimensions dim;
+  MapPtr map = std::make_shared<Map>(dim);
+  PhysicalDamageCalculator pdc(AttackType::ATTACK_TYPE_MELEE_PRIMARY, PhaseOfMoonType::PHASE_OF_MOON_NEW);
+
+  std::vector<std::pair<TileType, SkillType>> pairs = { {TileType::TILE_TYPE_MARSH, SkillType::SKILL_GENERAL_MARSH_LORE},
+                                                        {TileType::TILE_TYPE_FOREST, SkillType::SKILL_GENERAL_FOREST_LORE},
+                                                        {TileType::TILE_TYPE_DESERT, SkillType::SKILL_GENERAL_DESERT_LORE},
+                                                        {TileType::TILE_TYPE_SEA, SkillType::SKILL_GENERAL_OCEAN_LORE} };
+
+  for (const auto& tt_pair : pairs)
+  {
+    map->set_terrain_type(tt_pair.first);
+    creature->get_skills().set_value(tt_pair.second, 84);
+
+    // Assuming the creature is empty-handed, this should be the basic 1d2+whatever
+    Damage d = pdc.calculate_base_damage_with_bonuses_or_penalties(creature, map);
+    EXPECT_EQ(static_cast<uint>(1), d.get_num_dice());
+    EXPECT_EQ(static_cast<uint>(2), d.get_dice_sides());
+    EXPECT_EQ(4, d.get_modifier());
+
+    creature->get_skills().set_value(tt_pair.second, 0);
+  }
+
+  map->set_map_type(MapType::MAP_TYPE_UNDERWORLD);
+  map->set_terrain_type(TileType::TILE_TYPE_DUNGEON_COMPLEX);
+  creature->get_skills().set_value(SkillType::SKILL_GENERAL_DUNGEONEERING, 84);
+
+  Damage d = pdc.calculate_base_damage_with_bonuses_or_penalties(creature, map);
+
+  EXPECT_EQ(static_cast<uint>(1), d.get_num_dice());
+  EXPECT_EQ(static_cast<uint>(2), d.get_dice_sides());
+  EXPECT_EQ(4, d.get_modifier());
 }

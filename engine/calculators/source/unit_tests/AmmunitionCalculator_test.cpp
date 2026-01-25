@@ -18,7 +18,7 @@ TEST(SW_Engine_Calculator, calculate_stack_sizes)
 	}
 }
 
-TEST(SW_Engine_Calculator, calculate_pct_chance_survival)
+TEST(SW_Engine_Calculators_AmmunitionCalculator, calculate_pct_chance_survival)
 {
 	AmmunitionCalculator ac;
 	CreaturePtr creature = std::make_shared<Creature>();
@@ -37,6 +37,17 @@ TEST(SW_Engine_Calculator, calculate_pct_chance_survival)
 	ammo->set_weight(w);
 
 	EXPECT_EQ(55, ac.calculate_pct_chance_survival(creature, ammo));
+}
+
+TEST(SW_Engine_Calculators_AmmunitionCalculator, stone_survival_modifier)
+{
+	AmmunitionCalculator ac;
+
+	CreaturePtr creature = std::make_shared<Creature>();
+	ItemPtr ammo = std::make_shared<Ammunition>();
+	ammo->set_material_type(MaterialType::MATERIAL_TYPE_STONE);
+
+	EXPECT_EQ(90, ac.calculate_pct_chance_survival(creature, ammo));
 }
 
 TEST(SW_Engine_Calculators_AmmunitionCalculator, slays_survival_modifier)

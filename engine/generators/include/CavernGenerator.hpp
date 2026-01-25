@@ -27,6 +27,7 @@ class CavernGenerator : public SOTW::Generator
     void generate_staircases(MapPtr map);
     void generate_staircase(MapPtr map, const TileType tile_type, const Direction direction);
 
-    static int MIN_NUM_TRAPS;
-    static int MAX_NUM_TRAPS;
+    static const int MIN_NUM_TRAPS;
+    static const int MAX_NUM_TRAPS;
+    static const int PCT_CHANCE_SLIMY;
 };

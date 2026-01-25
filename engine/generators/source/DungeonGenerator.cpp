@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cmath>
 #include "AllTiles.hpp"
+#include "BeehiveSectorFeature.hpp"
 #include "BeerHallSectorFeature.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
@@ -438,7 +439,7 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
 
   if (generate_feature)
   {
-    vector<pair<string, string>> feature_choices = {{RoomFeatures::ROOM_FEATURE_ALTAR, DungeonFeatureTextKeys::DUNGEON_FEATURE_ALTAR},
+    vector<pair<string, string>> feature_choices = { {RoomFeatures::ROOM_FEATURE_ALTAR, DungeonFeatureTextKeys::DUNGEON_FEATURE_ALTAR},
                                                     {RoomFeatures::ROOM_FEATURE_TREASURE_ROOM, DungeonFeatureTextKeys::DUNGEON_FEATURE_TREASURE_ROOM},
                                                     {RoomFeatures::ROOM_FEATURE_ZOO, DungeonFeatureTextKeys::DUNGEON_FEATURE_ZOO},
                                                     {RoomFeatures::ROOM_FEATURE_REST_ROOM, DungeonFeatureTextKeys::DUNGEON_FEATURE_REST_ROOM},
@@ -451,7 +452,8 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
                                                     {RoomFeatures::ROOM_FEATURE_BEER_HALL, DungeonFeatureTextKeys::DUNGEON_FEATURE_BEER_HALL},
                                                     {RoomFeatures::ROOM_FEATURE_ORCHARD, DungeonFeatureTextKeys::DUNGEON_FEATURE_ORCHARD},
                                                     {RoomFeatures::ROOM_FEATURE_VEGETATION, DungeonFeatureTextKeys::DUNGEON_FEATURE_VEGETATION},
-                                                    {RoomFeatures::ROOM_FEATURE_LITTLE_LIBRARY, DungeonFeatureTextKeys::DUNGEON_FEATURE_LITTLE_LIBRARY} };
+                                                    {RoomFeatures::ROOM_FEATURE_LITTLE_LIBRARY, DungeonFeatureTextKeys::DUNGEON_FEATURE_LITTLE_LIBRARY},
+                                                    {RoomFeatures::ROOM_FEATURE_BEEHIVE, DungeonFeatureTextKeys::DUNGEON_FEATURE_BEEHIVE} };
 
     shuffle(feature_choices.begin(), feature_choices.end(), RNG::get_engine());
 
@@ -525,6 +527,10 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
         else if (feature == RoomFeatures::ROOM_FEATURE_LITTLE_LIBRARY)
         {
           placed_feature = generate_little_library(map, start_row, end_row, start_col, end_col);
+        }
+        else if (feature == RoomFeatures::ROOM_FEATURE_BEEHIVE)
+        {
+          placed_feature = generate_beehive(map, start_row, end_row, start_col, end_col);
         }
 
         if (placed_feature)
@@ -755,6 +761,13 @@ bool DungeonGenerator::generate_little_library(MapPtr map, const int start_row, 
 
   // Leave enough space so that creatures can walk around the structure fully.
   return llsf.generate(map, { start_row, start_col }, { end_row, end_col });
+}
+
+bool DungeonGenerator::generate_beehive(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+{
+  BeehiveSectorFeature bsf;
+
+  return bsf.generate(map, { start_row, start_col }, { end_row, end_col });
 }
 
 bool DungeonGenerator::generate_zoo(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)

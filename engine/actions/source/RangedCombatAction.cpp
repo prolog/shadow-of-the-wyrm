@@ -7,12 +7,14 @@
 #include "CoordUtils.hpp"
 #include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "IFeatureManipulatorFactory.hpp"
 #include "FireWeaponTileSelectionKeyboardCommandMap.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "ItemScript.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemManager.hpp"
+#include "ItemProperties.hpp"
 #include "MapCursor.hpp"
 #include "MapTranslator.hpp"
 #include "MapUtils.hpp"
@@ -215,6 +217,7 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
 
   TilePtr tile = current_map->at(target_coords);
   CreaturePtr target_creature = tile->get_creature();
+  FeaturePtr target_feature = tile->get_feature();
 
   add_ranged_combat_message(creature, target_creature);
   ItemPtr item = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
@@ -252,6 +255,15 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
     else
     {
       cm.attack(creature, target_creature, AttackType::ATTACK_TYPE_RANGED);
+    }
+  }
+  else if (target_feature)
+  {
+    FeatureManipulatorPtr feature_manipulator = IFeatureManipulatorFactory::create_manipulator(target_feature);
+
+    if (feature_manipulator != nullptr)
+    {
+      feature_manipulator->strike(creature, current_map, tile, target_coords, target_feature, item);
     }
   }
   
@@ -348,14 +360,23 @@ bool RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature
     IInventoryPtr inv = tile->get_items();
     Game& game = Game::instance();
 
-    if (ammunition_calc.survives(creature, ammunition))
-    {
-      inv->merge_or_add(ammunition, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
-      ammunition_destroyed = false;
-    }
-
     // Add a message based on the inventory type, if appropriate.
     IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, GameUtils::is_creature_in_player_view_map(game, creature->get_id()));
+    bool unstable = String::to_bool(ammunition->get_additional_property(ItemProperties::ITEM_PROPERTIES_UNSTABLE));
+
+    if (unstable)
+    {
+      manager.add_new_message(TextMessages::get_unstable_drop_message(ammunition->get_quantity()));
+    }
+    else
+    {
+      if (ammunition_calc.survives(creature, ammunition))
+      {
+        inv->merge_or_add(ammunition, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+        ammunition_destroyed = false;
+      }
+    }
+
     string msg = inv->get_drop_effect_sid();
 
     if (!msg.empty())

@@ -42,7 +42,7 @@ CreatureGenerationIndex CreatureGenerationManager::generate_creature_generation_
   CreaturePtr generated_creature;
   Game& game = Game::instance();
   
-  const CreatureMap& creatures = game.get_creatures_ref();
+  const CreatureMap& creatures = game.get_creatures_cref();
   CreatureGenerationValuesMap& cgv_map = game.get_creature_generation_values_ref();
   generation_list.reserve(creatures.size() / 2);
 
@@ -190,7 +190,7 @@ CreatureGenerationIndex CreatureGenerationManager::generate_ancient_beasts(const
 vector<string> CreatureGenerationManager::get_creature_ids_with_property(const string& property_name)
 {
   vector<string> c_ids;
-  const CreatureMap& creatures = Game::instance().get_creatures_ref();
+  const CreatureMap& creatures = Game::instance().get_creatures_cref();
 
   for (const auto& c_pair : creatures)
   {

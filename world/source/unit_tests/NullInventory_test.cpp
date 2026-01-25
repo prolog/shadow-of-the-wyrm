@@ -115,13 +115,13 @@ TEST(SW_World_NullInventory, merge_or_add)
   item3->set_description_sid("DDD333");
   item3->set_effect_type(EffectType::EFFECT_TYPE_ETHER);
 
-  EXPECT_FALSE(ni.merge_or_add(item3, InventoryAdditionType::INVENTORY_ADDITION_BACK));
+  EXPECT_FALSE(ni.merge_or_add(item3));
   EXPECT_EQ(static_cast<uint>(0), ni.size());
 
-  EXPECT_FALSE(ni.merge_or_add(item2, InventoryAdditionType::INVENTORY_ADDITION_BACK));
+  EXPECT_FALSE(ni.merge_or_add(item2));
   EXPECT_EQ(static_cast<uint>(0), ni.size());
 
-  EXPECT_FALSE(ni.merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK));
+  EXPECT_FALSE(ni.merge_or_add(item));
   EXPECT_EQ(static_cast<uint>(0), ni.size());
 }
 
@@ -136,7 +136,7 @@ TEST(SW_World_NullInventory, merge_or_add_whole_inventory)
   ni->add(item);
 
   NullInventory ni2;
-  ni2.merge_or_add(ni, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+  ni2.merge_or_add(ni);
 
   EXPECT_TRUE(ni->empty());
   EXPECT_TRUE(ni2.empty());
@@ -235,4 +235,40 @@ TEST(SW_World_NullInventory, get_all_from_property_and_required_value)
 
   ni.add(item);
   EXPECT_EQ(static_cast<uint>(0), ni.get_all_from_property("fdsa", "asdf").size());
+}
+
+TEST(SW_World_NullInventory, has_items_for_recipe)
+{
+  NullInventory ni;
+  Ingredient i("", "some_item_id", 3);
+
+  Recipe r("a", { i }, SkillType::SKILL_GENERAL_BREWING, 10, "item_it_makes", {});
+
+  EXPECT_FALSE(ni.has_items_for_recipe(ni.get_item_ids_and_quantity(), r));
+}
+
+TEST(SW_World_NullInventory, get_item_ids_and_quantity)
+{
+  NullInventory ni;
+  ItemPtr item = std::make_shared<Spellbook>();
+  ni.add(item);
+
+  auto id_q = ni.get_item_ids_and_quantity();
+  
+  EXPECT_TRUE(id_q.empty());
+}
+
+TEST(SW_World_NullInventory, remove_ingr)
+{
+  NullInventory ni;
+  Ingredients ingr;
+  Ingredient i("", "item_id", 6);
+  ingr.push_back(i);
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_id("item_id");
+  ni.add(item);
+  auto removed = ni.remove_and_return(ingr);
+
+  EXPECT_EQ(0u, ni.size());
 }

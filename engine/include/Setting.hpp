@@ -62,6 +62,8 @@ class Setting
     static const std::string AUTOPICKUP_IGNORE_UNPAID;
     static const std::string AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT;
     static const std::string AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT_LBS;
+    static const std::string AUTOPICKUP_IGNORE_SPECIFIED_ITEMS;
+    static const std::string AUTOPICKUP_IGNORE_ITEM_IDS;
     static const std::string PROMPT_ON_STACK_PICKUP;
     static const std::string AUTOMELEE;
     static const std::string AUTOMOVE_ALWAYS_STOP_ON_ITEMS;

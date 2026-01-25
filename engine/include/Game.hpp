@@ -19,6 +19,7 @@
 #include "Music.hpp"
 #include "Quests.hpp"
 #include "Race.hpp"
+#include "Recipes.hpp"
 #include "ScriptEngine.hpp"
 #include "Settings.hpp"
 #include "Sound.hpp"
@@ -80,7 +81,7 @@ class Game : public ISerializable
     const ClassMap& get_classes_ref() const;
     
     void set_creatures(const CreatureMap& game_creatures);
-    const CreatureMap& get_creatures_ref() const;
+    const CreatureMap& get_creatures_cref() const;
 
     void set_spells(const SpellMap& game_spells);
     const SpellMap& get_spells_ref();
@@ -182,6 +183,9 @@ class Game : public ISerializable
     void set_current_world(WorldPtr world);
 
     void update_player_dates();
+
+    void set_recipes(const Recipes& new_recipes);
+    Recipes& get_recipes_ref();
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
@@ -332,6 +336,9 @@ class Game : public ISerializable
 
     // Is the game currently loading/input blocked?
     bool is_loading;
+
+    // Recipes for various skills, ordered by minimum skill level
+    Recipes recipes;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

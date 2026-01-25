@@ -26,12 +26,12 @@ TrapManipulator::TrapManipulator(FeaturePtr feature)
 {
 }
 
-void TrapManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/)
+void TrapManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/, ItemPtr /* item */)
 {
   if (creature && creature->get_is_player())
   {
     IMessageManager& manager = MMF::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_TRAP));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_TRAP));
     manager.send();
   }
 }

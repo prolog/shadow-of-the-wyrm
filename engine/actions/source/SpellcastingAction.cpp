@@ -535,7 +535,8 @@ ActionCostValue SpellcastingAction::describe_spell(CreaturePtr creature, const s
         PhaseOfMoonType phase = pomc.calculate_phase_of_moon(game.get_current_world()->get_calendar().get_seconds());
         MagicalDamageCalculator mdc(phase);
         mdc.set_spell_id(spell_id);
-        Damage d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature);
+        MapPtr map = game.get_current_map();
+        Damage d = mdc.calculate_base_damage_with_bonuses_or_penalties(creature, map);
         arcana_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ArcanaTextKeys::DAMAGE) + ": " + d.str()));
       }
 

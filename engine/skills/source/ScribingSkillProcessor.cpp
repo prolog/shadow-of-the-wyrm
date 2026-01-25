@@ -40,7 +40,7 @@ ActionCostValue ScribingSkillProcessor::process(CreaturePtr creature, MapPtr map
         if (creatures_tile && created_scroll)
         {
           TilePtr creature_tile = MapUtils::get_tile_for_creature(game.get_current_map(), creature);
-          creature_tile->get_items()->merge_or_add(created_scroll, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          creature_tile->get_items()->merge_or_add(created_scroll);
 
           IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
           manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SCRIBING_SCROLL_CREATED));

@@ -17,6 +17,7 @@
 			<xs:element ref="tns:Calendar" minOccurs="0"/>
 			<xs:element ref="tns:StartingLocations" minOccurs="0"/>
 			<xs:element ref="tns:Scripts" minOccurs="0"/>
+			<xs:element ref="tns:Recipes" minOccurs="0"/>
 			<xs:element ref="tns:Spritesheets" minOccurs="0"/>
 			<xs:element ref="tns:Sounds" minOccurs="0"/>
 		</xs:sequence>
@@ -209,6 +210,8 @@
 			<xs:element name="Door" type="tns:BaseFeature"/>
 			<xs:element name="Fence" type="tns:BaseFeature"/>
 			<xs:element name="Gate" type="tns:BaseFeature"/>
+			<xs:element name="Hive" type="tns:BaseFeature"/>
+			<xs:element name="Cauldron" type="tns:BaseFeature"/>
 			<xs:element name="DecorativeStatue" type="tns:BaseFeature"/>
 			<xs:element name="HighPriestDecorativeStatue" type="tns:BaseFeature"/>
 			<xs:element name="KingDecorativeStatue" type="tns:BaseFeature"/>
@@ -359,6 +362,7 @@
 			<xs:element name="Natural" type="xs:boolean"/>
 			<xs:element name="CanKick" type="xs:boolean"/>
 			<xs:element name="Mindless" type="xs:boolean"/>
+			<xs:element name="Slimy" type="xs:boolean"/>
 			<xs:element name="Drops" type="tns:DropsType" minOccurs="0"/>
 			<xs:element name="HasRandomVillages" type="xs:boolean" minOccurs="0"/>
 			<xs:element name="SettlementType" type="tns:SettlementType" minOccurs="0"/>
@@ -662,7 +666,6 @@
 			<xs:element name="Scribing" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Skinning" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Smithing" type="tns:PercentageStatistic" minOccurs="0"/>
-			<xs:element name="Spelunking" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Stealth" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Swimming" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Tanning" type="tns:PercentageStatistic" minOccurs="0"/>
@@ -881,6 +884,13 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="Item" type="tns:Item" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Recipes">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Recipe" type="tns:Recipe" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -1130,6 +1140,34 @@
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Recipe">
+	<xs:sequence>
+		<xs:element name="Ingredients" type="tns:Ingredients"/>
+		<xs:element name="Skill" type="tns:GeneralSkillType"/>
+		<xs:element name="Min" type="tns:PercentageStatistic"/>
+		<xs:element name="Make" type="tns:NonEmptyIdentifier"/>
+		<xs:element name="Properties" type="tns:Properties" minOccurs="0"/>
+	</xs:sequence>
+	<xs:attribute name="id" type="tns:NonEmptyIdentifier" use="required"/>
+</xs:complexType>
+<xs:complexType name="Ingredients">
+	<xs:sequence>
+		<xs:element name="Ingredient" type="tns:Ingredient" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Ingredient">
+	<xs:sequence>
+		<!-- Ingredients use either a set ID, or a property that gets used to
+		     pick an item ID once the game loads. -->
+		<xs:choice>
+			<xs:element name="Random" type="xs:string"/>
+			<xs:element name="ID" type="tns:NonEmptyIdentifier"/>
+		</xs:choice>
+		<xs:element name="Quantity" type="tns:Quantity" minOccurs="0" default="1"/>
+	</xs:sequence>
+	<xs:attribute name="rand_min" type="xs:integer" use="optional" default="1"/>
+	<xs:attribute name="rand_max" type="xs:integer" use="optional" default="1"/>
 </xs:complexType>
 <xs:complexType name="Wand">
 	<xs:complexContent>

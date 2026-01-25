@@ -112,7 +112,7 @@ bool FeatureAction::handle(TilePtr tile, FeaturePtr feature, CreaturePtr creatur
 
     ItemManager im;
     ItemPtr lumber = im.create_item(ItemIdKeys::ITEM_ID_LUMBER, static_cast<uint>(RNG::range(1, 4)));
-    tile->get_items()->merge_or_add(lumber, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+    tile->get_items()->merge_or_add(lumber);
   }
   else if (feature && feature->can_handle(tile_has_creature))
   {

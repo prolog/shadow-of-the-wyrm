@@ -3,15 +3,15 @@
 #include "AttackTypes.hpp"
 #include "Ammunition.hpp"
 #include "IActionManager.hpp"
-#include "Creature.hpp"
+#include "Map.hpp"
 #include "Weapon.hpp"
 
 class WeaponInfoAction : public IActionManager
 {
   public:
-    ActionCostValue weapon_info(CreaturePtr creature, const WeaponStyle attack_type) const;
-    std::pair<std::string, std::string> get_wielded_and_offhand_text(CreaturePtr creature) const;
-    std::string get_ranged_text(CreaturePtr creature) const;
+    ActionCostValue weapon_info(CreaturePtr creature, MapPtr map, const WeaponStyle attack_type) const;
+    std::pair<std::string, std::string> get_wielded_and_offhand_text(CreaturePtr creature, MapPtr map) const;
+    std::string get_ranged_text(CreaturePtr creature, MapPtr map) const;
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 
@@ -21,9 +21,9 @@ class WeaponInfoAction : public IActionManager
 
     WeaponInfoAction();
 
-    ActionCostValue melee_weapon_info(CreaturePtr creature) const;
-    ActionCostValue ranged_weapon_info(CreaturePtr creature) const;
+    ActionCostValue melee_weapon_info(CreaturePtr creature, MapPtr map) const;
+    ActionCostValue ranged_weapon_info(CreaturePtr creature, MapPtr map) const;
 
-    std::string get_melee_weapon_info(CreaturePtr creature, WeaponPtr weapon, const AttackType attack_type) const;
-    std::string get_ranged_weapon_info(CreaturePtr creature, WeaponPtr ranged_weapon, WeaponPtr ammunition) const;
+    std::string get_melee_weapon_info(CreaturePtr creature, MapPtr map, WeaponPtr weapon, const AttackType attack_type) const;
+    std::string get_ranged_weapon_info(CreaturePtr creature, MapPtr map, WeaponPtr ranged_weapon, WeaponPtr ammunition) const;
 };

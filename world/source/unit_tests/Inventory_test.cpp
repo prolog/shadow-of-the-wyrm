@@ -1,6 +1,5 @@
 #include "gtest/gtest.h"
 #include "Amulet.hpp"
-#include "Conversion.hpp"
 #include "ItemProperties.hpp"
 #include "Spellbook.hpp"
 #include "SmithingConstants.hpp"
@@ -379,13 +378,13 @@ TEST(SW_World_Inventory, merge_or_add)
   item3->set_effect_type(EffectType::EFFECT_TYPE_ETHER);
 
   Inventory i;
-  EXPECT_TRUE(i.merge_or_add(item3, InventoryAdditionType::INVENTORY_ADDITION_BACK));
+  EXPECT_TRUE(i.merge_or_add(item3));
   EXPECT_EQ(static_cast<uint>(1), i.size());
 
-  EXPECT_TRUE(i.merge_or_add(item2, InventoryAdditionType::INVENTORY_ADDITION_BACK));
+  EXPECT_TRUE(i.merge_or_add(item2));
   EXPECT_EQ(static_cast<uint>(2), i.size());
 
-  EXPECT_TRUE(i.merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK));
+  EXPECT_TRUE(i.merge_or_add(item));
   EXPECT_EQ(static_cast<uint>(2), i.size());
   EXPECT_EQ(static_cast<uint>(2), i.get_from_base_id("abc212")->get_quantity());
 }
@@ -400,7 +399,7 @@ TEST(SW_World_Inventory, merge_or_add_whole_inventory)
   std::shared_ptr<Inventory> inv = std::make_shared<Inventory>();
   std::shared_ptr<Inventory> inv2 = std::make_shared<Inventory>();
   inv->add(item);
-  inv2->merge_or_add(inv, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+  inv2->merge_or_add(inv);
 
   EXPECT_FALSE(inv->merge_or_add(inv, InventoryAdditionType::INVENTORY_ADDITION_FRONT));
   EXPECT_EQ(static_cast<uint>(1), inv->size());
@@ -424,3 +423,36 @@ TEST(SW_World_Inventory, transfer_to)
   EXPECT_EQ(static_cast<uint>(1), inv2->size());
 }
 
+TEST(SW_World_Inventory, has_items_for_recipe)
+{
+  string sp_id = "some_spellbook";
+
+  Inventory inv;
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_quantity(12);
+  item->set_base_id(sp_id);
+  inv.add(item);
+
+  Ingredient i("", sp_id, 3);
+
+  Recipe r("a", { i }, SkillType::SKILL_GENERAL_BREWING, 10, "item_it_makes", {});
+
+  EXPECT_TRUE(inv.has_items_for_recipe(inv.get_item_ids_and_quantity(), r));
+}
+
+TEST(SW_World_Inventory, get_item_ids_and_quantity)
+{
+  string sp_id = "some_spellbook";
+
+  Inventory inv;
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_quantity(12);
+  item->set_base_id(sp_id);
+  inv.add(item);
+
+  auto id_q = inv.get_item_ids_and_quantity();
+
+  EXPECT_FALSE(id_q.empty());
+  EXPECT_TRUE(id_q.size() == 1);
+  EXPECT_EQ(12u, id_q[sp_id]);
+}

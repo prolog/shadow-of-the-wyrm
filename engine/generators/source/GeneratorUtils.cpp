@@ -1,3 +1,4 @@
+#include "CoastlineCalculator.hpp"
 #include "CoastlineGenerator.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
@@ -36,6 +37,9 @@ const int GeneratorUtils::STRUCTURE_MAX_WIDTH = 8;
 const int GeneratorUtils::STRUCTURE_MIN_HEIGHT = 3;
 const int GeneratorUtils::STRUCTURE_MAX_HEIGHT = 7;
 const int GeneratorUtils::STRUCTURE_NUM_ATTEMPTS = 15;
+
+const int GeneratorUtils::MAX_BEEHIVES = 3;
+const int GeneratorUtils::PCT_CHANCE_BEEHIVE = 2;
 
 // Hidden away by protected access
 GeneratorUtils::GeneratorUtils()
@@ -587,7 +591,7 @@ void GeneratorUtils::generate_cottage(MapPtr map)
             if (tile != nullptr)
             {
               ItemPtr fern = ItemManager::create_item(ItemIdKeys::ITEM_ID_FERN);
-              tile->get_items()->merge_or_add(fern, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+              tile->get_items()->merge_or_add(fern);
             }
           }
         }
@@ -791,6 +795,45 @@ void GeneratorUtils::potentially_generate_coastline(MapPtr map, Generator * cons
   }
 }
 
+bool GeneratorUtils::potentially_generate_hive(MapPtr map)
+{
+  bool result = false;
+
+  if (map != nullptr)
+  {
+    for (int i = 0; i < MAX_BEEHIVES; i++)
+    {
+      if (RNG::percent_chance(PCT_CHANCE_BEEHIVE))
+      {
+        int max_attempts = 4;
+        Dimensions d = map->size();
+
+        for (int j = 0; j < max_attempts; j++)
+        {
+          int y = RNG::range(0, d.get_y());
+          int x = RNG::range(0, d.get_x());
+
+          TilePtr tile = map->at(y, x);
+
+          if (tile != nullptr &&
+             !tile->has_feature() &&
+              tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_GROUND &&
+             !tile->get_is_blocking(nullptr))
+          {
+            FeaturePtr beehive = FeatureGenerator::generate_beehive();
+            tile->set_feature(beehive);
+            result = true;
+
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  return result;
+}
+
 bool GeneratorUtils::generate_coastline(MapPtr map, Generator * const generator)
 {
   bool return_val = false;
@@ -818,7 +861,22 @@ bool GeneratorUtils::generate_coastline(MapPtr map, Generator * const generator)
       map->add_secondary_terrain(TileType::TILE_TYPE_SEA);
     }
 
-    CoastlineGenerator cg;
+    CoastlineCalculator cc;
+    TileType tt_sec = TileType::TILE_TYPE_SHOALS;
+    int sectype_pct_chance = cc.calc_pct_chance_shoals();
+    int chance_sectype_y = cc.generate_random_shoals_xiny_y();
+
+    pair<Coordinate, int> world_location_and_map_height = get_world_map_location_and_height(generator, map);
+    int pct_chance_kelp_forest = cc.calc_pct_chance_kelp_forest(world_location_and_map_height);
+
+    if (RNG::percent_chance(pct_chance_kelp_forest))
+    {
+      tt_sec = TileType::TILE_TYPE_AQUATIC_VEGETATION;
+      sectype_pct_chance = 100;
+      chance_sectype_y = cc.generate_random_kelpforest_xiny_y();
+    }
+
+    CoastlineGenerator cg(TileType::TILE_TYPE_SEA, tt_sec, sectype_pct_chance, chance_sectype_y);
     cg.generate(map, generate_north, generate_south, generate_east, generate_west);
 
     if (return_val)
@@ -966,7 +1024,7 @@ void GeneratorUtils::generate_dolmen(MapPtr map, SOTW::Generator * const gen)
 
         if (!itile->get_is_blocking_for_item(apple))
         {
-          itile->get_items()->merge_or_add(apple, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          itile->get_items()->merge_or_add(apple);
           break;
         }
       }
@@ -995,7 +1053,7 @@ void GeneratorUtils::generate_dolmen(MapPtr map, SOTW::Generator * const gen)
 
             if (tic != nullptr && !tic->get_is_blocking_for_item(grave_item))
             {
-              tic->get_items()->merge_or_add(grave_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+              tic->get_items()->merge_or_add(grave_item);
               break;
             }
           }
@@ -1045,4 +1103,20 @@ pair<string, string> GeneratorUtils::generate_staircase_extra_descs()
   }
 
   return make_pair(up_extra_sid, down_extra_sid);
+}
+
+pair<Coordinate, int> GeneratorUtils::get_world_map_location_and_height(SOTW::Generator* generator, MapPtr map)
+{
+  pair<Coordinate, int> loc_height = { {0,0}, 0 };
+
+  if (generator != nullptr && map != nullptr)
+  {
+    string world_location_map_key = generator->get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_LOCATION);
+    int world_map_height = String::to_int(generator->get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_HEIGHT));
+    Coordinate world_location = MapUtils::convert_map_key_to_coordinate(world_location_map_key);
+
+    loc_height = { world_location, world_map_height };
+  }
+
+  return loc_height;
 }

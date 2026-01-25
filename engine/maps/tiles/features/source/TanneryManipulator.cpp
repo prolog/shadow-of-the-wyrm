@@ -20,12 +20,12 @@ skin_items({ {EquipmentWornLocation::EQUIPMENT_WORN_HEAD, "_hide_cap"}, {Equipme
 {
 }
 
-void TanneryManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/)
+void TanneryManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/, ItemPtr /* item */)
 {
   if (creature && creature->get_is_player())
   {
     IMessageManager& manager = MMF::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_TANNERY));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_TANNERY));
     manager.send();
   }
 }
@@ -83,7 +83,7 @@ bool TanneryManipulator::handle(TilePtr tile, CreaturePtr creature)
 
         if (!slot_selection.empty())
         {
-          char selection = slot_selection.at(0) - 'a';
+          char selection = static_cast<char>(Char::keyboard_selection_char_to_int(slot_selection.at(0)));
           EquipmentWornLocation selection_loc = static_cast<EquipmentWornLocation>(selection);
 
           if (std::find(worn_locs.begin(), worn_locs.end(), selection_loc) != worn_locs.end())
@@ -186,8 +186,8 @@ ItemPtr TanneryManipulator::create_hide_equipment(CreaturePtr creature, ItemPtr 
         item->set_resistances(tc.calculate_item_resistances(creature, selected_skin->get_resistances()));
         bonus_pts += static_cast<int>(100 * item->get_resistances().get_total());
 
-        item->set_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID));
-    		item->set_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID));
+        item->set_additional_property(SkinningConstants::SKIN_BONES_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_BONES_DESCRIPTION_SID));
+    		item->set_additional_property(SkinningConstants::SKIN_BONES_USAGE_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_BONES_USAGE_DESCRIPTION_SID));
         item->set_value(item->get_value() + tc.calculate_value_bonus(bonus_pts));
 
         creature->get_skills().mark(SkillType::SKILL_GENERAL_TANNING);

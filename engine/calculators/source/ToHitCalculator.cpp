@@ -135,4 +135,9 @@ int ToHitCalculator::get_status_bonus(CreaturePtr creature)
   }
 
   return status_bonus;
-  }
+}
+
+
+#ifdef UNIT_TESTS
+#include "unit_tests/ToHitCalculator_test.cpp"
+#endif

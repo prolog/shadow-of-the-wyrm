@@ -10,6 +10,7 @@
 #include "CreatureModifiers.hpp"
 #include "CreatureStatuses.hpp"
 #include "CreatureTimeObserver.hpp"
+#include "CreatureVigilanceTimer.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
 #include "MovementAccumulationChecker.hpp"
@@ -52,6 +53,8 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   ICreatureRegenerationPtr status_chekr = std::make_unique<CreatureStatuses>();
   // Every half an hour to an hour, do alcohol absorption and metabolism.
   ICreatureRegenerationPtr alcohol_chkr = std::make_unique<CreatureAlcoholTimer>();
+  // Every couple of hours, become less vigilant to backstabs
+  ICreatureRegenerationPtr vigil_timer = std::make_unique<CreatureVigilanceTimer>(120);
   // Every few hours, check to see if the creature meets any of the conditions
   // for marking statistics.
   ICreatureRegenerationPtr st_mark_chkr = std::make_unique<CreatureStatisticsMarkerChecker>(360);
@@ -69,6 +72,7 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   regen.push_back(std::move(hungr_checkr));
   regen.push_back(std::move(status_chekr));
   regen.push_back(std::move(alcohol_chkr));
+  regen.push_back(std::move(vigil_timer) );
   regen.push_back(std::move(st_mark_chkr));
   regen.push_back(std::move(sk_mark_chkr));
 }

@@ -948,7 +948,7 @@ void Creature::restack_items()
   {
     if (i != nullptr)
     {
-      new_items->merge_or_add(i, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      new_items->merge_or_add(i);
     }
   }
 

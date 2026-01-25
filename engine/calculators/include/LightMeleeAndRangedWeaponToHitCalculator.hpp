@@ -8,7 +8,7 @@ class LightMeleeAndRangedWeaponToHitCalculator : public ToHitCalculator
     LightMeleeAndRangedWeaponToHitCalculator(const AttackType attack_type);
     virtual ~LightMeleeAndRangedWeaponToHitCalculator() = default;
 
-    int calculate(CreaturePtr creature) override;
+    int calculate(CreaturePtr creature, MapPtr map) override;
     Statistic& get_statistic(CreaturePtr creature) override;
 
   protected:

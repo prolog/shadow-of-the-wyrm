@@ -22,33 +22,34 @@ class MapUtils
     static bool add_or_update_location(MapPtr map, CreaturePtr creature, const Coordinate& new_coords, TilePtr creatures_old_tile = nullptr);
 
     static bool does_hostile_creature_exist(MapPtr map, const std::vector<std::string>& creature_ids, const std::string& hostile_to_id);
-    static std::vector<std::string> get_creatures_with_creature_in_view(const MapPtr& map, const std::string& creature_id);
-    static Coordinate get_coordinate_for_creature(const MapPtr& map, const CreaturePtr& creature);
-    static TilePtr get_tile_for_creature(const MapPtr& map, const CreaturePtr& creature);
-    static uint get_num_following_creatures(const MapPtr& map);
-    static TileDirectionMap get_available_adjacent_tiles_to_creature(const MapPtr& map, const CreaturePtr& tiles_around_creature, const CreaturePtr& creature_to_place);
-    static TileDirectionMap get_adjacent_tiles_to_creature(const MapPtr& map, const CreaturePtr& creature);
-    static std::vector<TilePtr> get_adjacent_tiles_to_creature_unsorted(const MapPtr& map, const CreaturePtr& creature, const int offset = 1);
-    static bool adjacent_tiles_match_type(const MapPtr& map, const Coordinate& c, const std::vector<Direction>& directions, const TileType tile_type_to_match);
-    static bool adjacent_tiles_contain_type(const MapPtr& map, const Coordinate& c, const std::vector<Direction>& directions, const TileType tile_type_to_contain);
-    static uint get_num_adjacent_movement_directions(const MapPtr& map, const CreaturePtr& creature);
-    static TilePtr get_adjacent_tile(const MapPtr& map, const CreaturePtr& creature, const Direction d, const int offset = 1);
-    static TileDirectionMap get_adjacent_and_creature_tiles(const MapPtr& map, const CreaturePtr& creature);
-    static bool are_all_followers_adjacent(const MapPtr& map, const CreaturePtr& leader);
+    static std::vector<std::string> get_creatures_with_creature_in_view(MapPtr map, const std::string& creature_id);
+    static std::vector<std::pair<Coordinate, ClassIdentifier>> get_features_in_view(MapPtr view_map, const std::set<ClassIdentifier>& feature_ids);
+    static Coordinate get_coordinate_for_creature(MapPtr map, CreaturePtr creature);
+    static TilePtr get_tile_for_creature(MapPtr map, CreaturePtr creature);
+    static uint get_num_following_creatures(MapPtr map);
+    static TileDirectionMap get_available_adjacent_tiles_to_creature(MapPtr map, CreaturePtr tiles_around_creature, CreaturePtr creature_to_place);
+    static TileDirectionMap get_adjacent_tiles_to_creature(MapPtr map, CreaturePtr creature);
+    static std::vector<TilePtr> get_adjacent_tiles_to_creature_unsorted(MapPtr map, CreaturePtr creature, const int offset = 1);
+    static bool adjacent_tiles_match_type(MapPtr map, const Coordinate& c, const std::vector<Direction>& directions, const TileType tile_type_to_match);
+    static bool adjacent_tiles_contain_type(MapPtr map, const Coordinate& c, const std::vector<Direction>& directions, const TileType tile_type_to_contain);
+    static uint get_num_adjacent_movement_directions(MapPtr map, CreaturePtr creature);
+    static TilePtr get_adjacent_tile(MapPtr map, CreaturePtr creature, const Direction d, const int offset = 1);
+    static TileDirectionMap get_adjacent_and_creature_tiles(MapPtr map, CreaturePtr creature);
+    static bool are_all_followers_adjacent(MapPtr map, CreaturePtr leader);
     static TileDirectionMap get_tiles_with_features(MapPtr& map, CreaturePtr& creature);
     static uint get_num_adjacent_creatures(const TileDirectionMap& adjacency_map);
-    static CreatureDirectionMap get_adjacent_creatures(const MapPtr& map, const CreaturePtr& creature);
-    static std::vector<CreaturePtr> get_adjacent_creatures_unsorted(const MapPtr& map, const CreaturePtr& creature);
+    static CreatureDirectionMap get_adjacent_creatures(MapPtr map, CreaturePtr creature);
+    static std::vector<CreaturePtr> get_adjacent_creatures_unsorted(MapPtr map, CreaturePtr creature);
     static void set_up_transitive_exits_as_necessary(MapPtr old_map, MapExitPtr map_exit);
     static Coordinate calculate_new_coord_for_multimap_movement(const Coordinate& current_coord, TilePtr tile, const Direction exit_direction, MapExitPtr map_exit);
     static Direction get_exit_direction(const Direction d, const Dimensions& dim, const Coordinate& c);
-    static void potentially_set_permanence_if_leaving_followers_behind(const MapPtr& map, const CreaturePtr& creature);
+    static void potentially_set_permanence_if_leaving_followers_behind(MapPtr map, CreaturePtr creature);
 
     // When removing a creature, we generally want to leave the player's
     // location intact, for returning later.  However, in certain cases,
     // we want to remove the player fully, e.g., when hiding and removing
     // the player from a calculated FOV map.
-    static bool remove_creature(const MapPtr& map, const CreaturePtr& creature, const bool force_player_removal = false);
+    static bool remove_creature(MapPtr map, CreaturePtr creature, const bool force_player_removal = false);
     static bool tiles_in_range_match_type(MapPtr map, const BoundingBox& bb, const TileType tt);
 
     static bool place_creature_randomly(MapPtr map, const std::string& creature_id);

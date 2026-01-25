@@ -531,7 +531,7 @@ void Tile::add_items(IInventoryPtr new_items)
     {
       if (i != nullptr)
       {
-        items->merge_or_add(i, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        items->merge_or_add(i);
       }
     }
   }

@@ -117,7 +117,7 @@ ActionCostValue SkinAction::attempt_skin(CreaturePtr creature, ItemPtr item, Til
       {
         creature->get_skills().mark(SkillType::SKILL_GENERAL_SKINNING);
         add_skin_successful_message(creature);
-        create_skin_and_add_to_tile(item, tile);
+        create_skin_and_bones_and_add_to_tile(item, tile);
       }
       else
       {
@@ -168,27 +168,59 @@ ActionCostValue SkinAction::attempt_skin(CreaturePtr creature, ItemPtr item, Til
   return acv;
 }
 
-// Create the skin and add it to the tile.  The skin's resistances should
-// be based off the corpse of the creature skinned.
-void SkinAction::create_skin_and_add_to_tile(ItemPtr corpse, TilePtr tile)
+// Create the skin and bones, and add them to the tile.  The skin's resistances
+// should be based off the corpse of the creature skinned.
+void SkinAction::create_skin_and_bones_and_add_to_tile(ItemPtr corpse, TilePtr tile)
 {
   if (corpse && tile)
   {
     ItemManager im;
 
+    // First, create the skin.
     ItemPtr skin = im.create_item(SkinningConstants::SKIN_ID, 1);
-    skin->set_additional_property(SkinningConstants::SKIN_IS_SKIN, std::to_string(true));
-    skin->set_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID, corpse->get_additional_property(ConsumableConstants::CORPSE_SHORT_DESCRIPTION_SID));
-  	skin->set_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID, corpse->get_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID));
-    skin->set_additional_property(SkinningConstants::SKIN_SOAK, corpse->get_additional_property(SkinningConstants::SKIN_SOAK));
 
-    // Update the skin's resistances based on corpse resistances.
-    Resistances res = corpse->get_resistances();
-    skin->set_resistances(res);
-
-    if (skin)
+    if (skin != nullptr)
     {
-      tile->get_items()->add(skin);
+      skin->set_additional_property(SkinningConstants::SKIN_IS_SKIN, std::to_string(true));
+      skin->set_additional_property(SkinningConstants::SKIN_BONES_DESCRIPTION_SID, corpse->get_additional_property(ConsumableConstants::CORPSE_SHORT_DESCRIPTION_SID));
+      skin->set_additional_property(SkinningConstants::SKIN_BONES_USAGE_DESCRIPTION_SID, corpse->get_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID));
+      skin->set_additional_property(SkinningConstants::SKIN_SOAK, corpse->get_additional_property(SkinningConstants::SKIN_SOAK));
+
+      // Update the skin's resistances based on corpse resistances.
+      Resistances res = corpse->get_resistances();
+      skin->set_resistances(res);
+
+      tile->get_items()->merge_or_add(skin);
+    }
+
+    // Add the bones.
+    ItemPtr bones = im.create_item(SkinningConstants::CORPSE_BONES_ID);
+
+    if (bones != nullptr)
+    {
+      bones->set_additional_property(SkinningConstants::SKIN_BONES_DESCRIPTION_SID, corpse->get_additional_property(ConsumableConstants::CORPSE_SHORT_DESCRIPTION_SID));
+      bones->set_additional_property(SkinningConstants::SKIN_BONES_USAGE_DESCRIPTION_SID, corpse->get_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID));
+      bones->set_additional_property(ConsumableConstants::CORPSE_BASE_CREATURE_ID, corpse->get_additional_property(ConsumableConstants::CORPSE_BASE_CREATURE_ID));
+
+      tile->get_items()->merge_or_add(bones);
+    }
+
+    // Finally, adjust the weight of the corpse, bones, skin.
+    Weight corpse_weight = corpse->get_weight();
+    Weight skin_weight = corpse_weight;
+    Weight bones_weight = corpse_weight;
+
+    // Assume the hide weighs 5%, the bones 15%, the corpse 80% of the total.
+    // Everything must weigh at least an ounce.
+    corpse_weight.set_weight(std::max<uint>(1, static_cast<uint>(corpse_weight.get_weight() * 0.80)));
+    skin_weight.set_weight(std::max<uint>(1, static_cast<uint>(skin_weight.get_weight() * 0.05)));
+    bones_weight.set_weight(std::max<uint>(1, static_cast<uint>(bones_weight.get_weight() * 0.15)));
+
+    if (skin != nullptr && bones != nullptr)
+    {
+      corpse->set_weight(corpse_weight);
+      skin->set_weight(skin_weight);
+      bones->set_weight(bones_weight);
     }
   }
 }

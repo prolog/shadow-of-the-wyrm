@@ -248,7 +248,6 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CSKILL_GENERAL_SCRIBING);
   lua_exportConst(ls, CSKILL_GENERAL_SKINNING);
   lua_exportConst(ls, CSKILL_GENERAL_SMITHING);
-  lua_exportConst(ls, CSKILL_GENERAL_SPELUNKING);
   lua_exportConst(ls, CSKILL_GENERAL_STEALTH);
   lua_exportConst(ls, CSKILL_GENERAL_SWIMMING);
   lua_exportConst(ls, CSKILL_GENERAL_TANNING);
@@ -308,6 +307,8 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CCLASS_ID_JEWELER_WORKBENCH);
   lua_exportConst(ls, CCLASS_ID_WHEEL_AND_LOOM);
   lua_exportConst(ls, CCLASS_ID_PULPER);
+  lua_exportConst(ls, CCLASS_ID_HIVE);
+  lua_exportConst(ls, CCLASS_ID_CAULDRON);
 
   lua_exportConst(ls, CCITY_SECTOR_PUBLIC_AREA);
   lua_exportConst(ls, CCITY_SECTOR_LOW_INCOME_RESIDENTIAL);

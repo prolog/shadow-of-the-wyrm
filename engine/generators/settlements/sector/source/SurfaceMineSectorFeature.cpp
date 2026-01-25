@@ -75,7 +75,7 @@ void SurfaceMineSectorFeature::generate_mine(MapPtr map, const Coordinate& start
 
           if (tile != nullptr)
           {
-            tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+            tile->get_items()->merge_or_add(item);
           }
         }
 
@@ -101,7 +101,7 @@ void SurfaceMineSectorFeature::add_excavated_dirt(MapPtr map, const Coordinate& 
         if (tile != nullptr)
         {
           ItemPtr item = ItemManager::create_item(ItemIdKeys::ITEM_ID_DIRT);
-          tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          tile->get_items()->merge_or_add(item);
         }
       }
     }

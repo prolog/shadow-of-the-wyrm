@@ -213,6 +213,8 @@ class TextKeys
     static const std::string RESPAWN_MESSAGE;
     static const std::string CHARM_RACES;
     static const std::string BACKSTABBED;
+    static const std::string RECIPES;
+    static const std::string SKILL_REQUIRED;
 
   protected:
     TextKeys();

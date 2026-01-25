@@ -51,6 +51,17 @@ enum struct ItemStatus
   ITEM_STATUS_CURSED = 2
 };
 
+class ItemStatuses
+{
+  public:
+    static ItemStatus get_next(const ItemStatus status);
+    static ItemStatus get_prev(const ItemStatus status);
+
+  protected:
+    ItemStatuses() = default;
+    virtual ~ItemStatuses() = default;
+};
+
 enum struct ItemIdentificationType
 {
   ITEM_IDENTIFY_ON_GENERATION = 0,
@@ -106,12 +117,15 @@ class ItemIdKeys
     static const std::string ITEM_ID_SILVER_APPLE;
     static const std::string ITEM_ID_SHOVEL;
     static const std::string ITEM_ID_PICK_AXE;
+    static const std::string ITEM_ID_SLIME;
 
     // Foragables
     static const std::string ITEM_ID_ROOT;
     static const std::string ITEM_ID_BERRIES;
     static const std::string ITEM_ID_KELP;
     static const std::string ITEM_ID_WHEAT;
+    static const std::string ITEM_ID_JUNIPER_BERRIES;
+    static const std::string ITEM_ID_WILD_HOPS;
 
     // Herbs and plants
     static const std::string ITEM_ID_WHITE_BASIL; // cures poison
@@ -148,9 +162,10 @@ class ItemIdKeys
 
     // Weaving
     static const std::string ITEM_ID_CAP;
+    static const std::string ITEM_ID_SCARF;
     static const std::string ITEM_ID_CLOAK;
     static const std::string ITEM_ID_WAYFARER_CLOTHES;
-
+    static const std::string ITEM_ID_SHOES;
     // Beer Halls
     static const std::string ITEM_ID_DRAM_GIN;
     static const std::string ITEM_ID_DRAM_MEAD;

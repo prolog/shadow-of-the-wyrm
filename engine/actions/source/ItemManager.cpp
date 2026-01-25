@@ -2,7 +2,6 @@
 #include "CreatureUtils.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
-#include "EquipmentManager.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemFactory.hpp"
 #include "ItemManager.hpp"
@@ -92,6 +91,31 @@ list<ItemPtr> ItemManager::get_filtered_items(IInventoryPtr inv, const list<IIte
   }
 
   return result;
+}
+
+vector<string> ItemManager::get_item_descriptions_by_ids(const vector<string>& item_ids)
+{
+  vector<string> descs;
+
+  Game& game = Game::instance();
+  const ItemMap& items = game.get_items_ref();
+
+  for (const string& item_id : item_ids)
+  {
+    auto i_it = items.find(item_id);
+
+    if (i_it != items.end())
+    {
+      ItemPtr item = i_it->second;
+
+      if (item != nullptr)
+      {
+        descs.push_back(StringTable::get(item->get_description_sid()));
+      }
+    }
+  }
+
+  return descs;
 }
 
 // Check to see if a creature has an item with the given base ID.
@@ -300,7 +324,7 @@ bool ItemManager::create_item_with_probability(const int rand_less_than_or_equal
         item->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
       }
 
-      inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      inv->merge_or_add(item);
 
       return true;
     }
@@ -316,7 +340,7 @@ ActionCostValue ItemManager::pick_up(CreaturePtr creature, ItemPtr item)
   if (creature && item)
   {
     IInventoryPtr inv = creature->get_inventory();
-    inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+    inv->merge_or_add(item);
 
     picked_up_item = get_action_cost_value(creature);
   }
@@ -377,6 +401,13 @@ ActionCostValue ItemManager::equip(CreaturePtr creature, ItemPtr item, const Equ
 
     if (action_cost_value > 0 && item)
     {
+      JewelrylessConduct jc;
+
+      if (jc.breaks_conduct(item))
+      {
+        creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_JEWELRYLESS);
+      }
+
       WearablePtr wearable = dynamic_pointer_cast<Wearable>(item);
       CreatureUtils::apply_status_ailments(wearable, creature);
     }

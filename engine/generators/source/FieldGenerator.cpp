@@ -46,6 +46,7 @@ MapPtr FieldGenerator::generate(const Dimensions& dimensions)
     }
   }
 
+  GeneratorUtils::potentially_generate_hive(result_map);
   GeneratorUtils::potentially_generate_coastline(result_map, this);
 
   if (RNG::percent_chance(40))

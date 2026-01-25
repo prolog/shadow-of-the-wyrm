@@ -37,6 +37,7 @@ MapPtr ScrubGenerator::generate(const Dimensions& dimensions)
   }
 
   GeneratorUtils::potentially_generate_coastline(result_map, this);
+  GeneratorUtils::potentially_generate_hive(result_map);
 
   if (RNG::percent_chance(15))
   {

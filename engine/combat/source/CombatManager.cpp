@@ -181,13 +181,14 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     // Ensure that attacks take at least one speed - no free attacks!
     action_cost_value = std::max(1, speed_calculator->calculate(attacking_creature));
     DamageCalculatorPtr damage_calculator = DamageCalculatorFactory::create_damage_calculator(attack_type, phase);
-    
+    MapPtr current_map = Game::instance().get_current_map();
+
     int d100_roll = RNG::range(1, 100);
-    int to_hit_value = th_calculator->calculate(attacking_creature);
+    int to_hit_value = th_calculator->calculate(attacking_creature, current_map);
     int total_roll = d100_roll + to_hit_value;
     int target_number_value = ctn_calculator->calculate(attacking_creature, attacked_creature);
 
-    Damage damage = determine_damage(attacking_creature, predefined_damage.get(), damage_calculator.get());
+    Damage damage = determine_damage(attacking_creature, current_map, predefined_damage.get(), damage_calculator.get());
 
     // Automatic miss is checked first
     if (is_automatic_miss(d100_roll))
@@ -1436,7 +1437,7 @@ void CombatManager::gain_experience(CreaturePtr attacking_creature, CreaturePtr 
   }
 }
 
-Damage CombatManager::determine_damage(CreaturePtr attacking_creature, Damage* predefined_damage, DamageCalculator* damage_calculator)
+Damage CombatManager::determine_damage(CreaturePtr attacking_creature, MapPtr map, Damage* predefined_damage, DamageCalculator* damage_calculator)
 {
   Damage damage;
 
@@ -1448,7 +1449,7 @@ Damage CombatManager::determine_damage(CreaturePtr attacking_creature, Damage* p
     }
     else
     {
-      damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(attacking_creature);
+      damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(attacking_creature, map);
     }
 
     string leader_id = attacking_creature->get_leader_id();

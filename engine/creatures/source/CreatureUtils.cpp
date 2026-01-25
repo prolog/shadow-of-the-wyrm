@@ -956,7 +956,7 @@ CreatureMap CreatureUtils::get_followers(CreaturePtr creature, MapPtr map)
   if (creature != nullptr && map != nullptr)
   {
     string c_id = creature->get_id();
-    const CreatureMap& creatures = map->get_creatures_ref();
+    const CreatureMap& creatures = map->get_creatures_cref();
 
     for (const auto& c_pair : creatures)
     {
@@ -983,7 +983,7 @@ CreatureMap CreatureUtils::get_followers_in_fov(CreaturePtr creature, const stri
     
     if (fov_map != nullptr)
     {
-      const CreatureMap& creatures = fov_map->get_creatures_ref();
+      const CreatureMap& creatures = fov_map->get_creatures_cref();
 
       for (const auto& c_pair : creatures)
       {
@@ -1113,7 +1113,7 @@ void CreatureUtils::set_leadership(CreaturePtr creature, const string& leader_id
 
     if (map != nullptr)
     {
-      const CreatureMap& creatures = map->get_creatures_ref();
+      const CreatureMap& creatures = map->get_creatures_cref();
 
       for (const auto& c_pair : creatures)
       {

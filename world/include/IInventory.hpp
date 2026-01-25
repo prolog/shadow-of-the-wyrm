@@ -1,10 +1,12 @@
 #pragma once
+#include <list>
 #include <map>
 #include <memory>
-#include <list>
+#include <unordered_map>
 #include <vector>
 #include "Item.hpp"
 #include "ISerializable.hpp"
+#include "Recipe.hpp"
 
 enum struct InventoryAdditionType
 {
@@ -41,9 +43,9 @@ class IInventory : public ISerializable
     // Attempt to merge the item.  If the item cannot be merged into the
     // inventory, add it either to the front or to the back, based on the
     // parameter provided.
-    virtual bool merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc) = 0;
-    virtual bool merge_or_add(std::shared_ptr<IInventory> items, const InventoryAdditionType inv_add_loc) = 0;
-    virtual bool merge_or_add(IInventory* items, const InventoryAdditionType inv_add_loc) = 0;
+    virtual bool merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc = InventoryAdditionType::INVENTORY_ADDITION_BACK) = 0;
+    virtual bool merge_or_add(std::shared_ptr<IInventory> items, const InventoryAdditionType inv_add_loc = InventoryAdditionType::INVENTORY_ADDITION_BACK) = 0;
+    virtual bool merge_or_add(IInventory* items, const InventoryAdditionType inv_add_loc = InventoryAdditionType::INVENTORY_ADDITION_BACK) = 0;
 
     // Transfer all the items into the given inventory
     virtual bool transfer_to(std::shared_ptr<IInventory> items) = 0;
@@ -53,6 +55,7 @@ class IInventory : public ISerializable
     virtual bool merge(ItemPtr new_item) = 0;
 
     virtual bool remove(const std::string& id) = 0;
+    virtual std::vector<ItemPtr> remove_and_return(const Ingredients& ingr) = 0;
     virtual ItemPtr remove_and_return(const std::string& id) = 0;
     virtual std::pair<bool, std::vector<ItemPtr>> remove_by_base_id(const std::string& base_id, const int quantity = 1, const std::map<std::string, std::string>& properties = {}) = 0;
 
@@ -62,6 +65,7 @@ class IInventory : public ISerializable
     virtual void set_additional_property(const std::string& property_name, const std::string& property_value) = 0;
 
     virtual bool has_items() const = 0;
+    virtual bool has_items_for_recipe(const std::unordered_map<std::string, uint>& item_ids_quantities, const Recipe& r) const = 0;
     virtual bool has_unpaid_items() const = 0;
     virtual bool has_item(const std::string& base_id) const = 0;
 
@@ -89,6 +93,9 @@ class IInventory : public ISerializable
     virtual void add_items(const std::list<ItemPtr>& items) = 0;
     virtual std::list<ItemPtr>& get_items_ref() = 0;
     virtual const std::list<ItemPtr>& get_items_cref() const = 0;
+
+    // Used for quicker lookups for things like recipes
+    virtual std::unordered_map<std::string, uint> get_item_ids_and_quantity() const = 0;
 
     virtual std::string get_drop_effect_sid() const = 0;
 

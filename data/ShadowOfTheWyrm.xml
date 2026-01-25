@@ -457,6 +457,7 @@
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>UNKNOWN_RACE_NAME</NameSID>
 			<Size>4</Size>
 			<AgeInfo>
@@ -533,6 +534,7 @@
 			<Natural>1</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>ANIMAL_RACE_NAME</NameSID>
 			<Size>1</Size>
 			<AgeInfo>
@@ -609,6 +611,7 @@
 			<Natural>1</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<Drops>
 				<Drop>
 					<ID>_quill</ID>
@@ -690,6 +693,7 @@
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>1</Mindless>
+			<Slimy>0</Slimy>
 			<Drops>
 				<Drop>
 					<ID>_magici_shard</ID>
@@ -770,6 +774,7 @@
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>DEMON_RACE_NAME</NameSID>
 			<Size>3</Size>
 			<AgeInfo>
@@ -844,6 +849,7 @@
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>DIVINE_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -918,6 +924,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<Drops>
 				<Drop>
 					<ID>_currency</ID>
@@ -1000,6 +1007,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>ELYSIAN_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<Hungerless>1</Hungerless>
@@ -1078,6 +1086,7 @@
 			<Natural>1</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>1</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>INSECT_RACE_NAME</NameSID>
 			<Size>1</Size>
 			<AgeInfo>
@@ -1154,6 +1163,13 @@
 			<Natural>1</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>1</Mindless>
+			<Slimy>1</Slimy>
+			<Drops>
+				<Drop>
+					<ID>_slime</ID>
+					<PercentChance>10</PercentChance>
+				</Drop>
+			</Drops>
 			<NameSID>JELLY_RACE_NAME</NameSID>
 			<Size>1</Size>
 			<AgeInfo>
@@ -1228,6 +1244,7 @@
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>MONSTER_RACE_NAME</NameSID>
 			<Size>3</Size>
 			<AgeInfo>
@@ -1304,6 +1321,7 @@
 			<Natural>1</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>PLANT_RACE_NAME</NameSID>
 			<Size>3</Size>
 			<AgeInfo>
@@ -1378,6 +1396,7 @@
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1448,6 +1467,7 @@
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>1</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>CORPOREAL_UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1520,6 +1540,7 @@
 			<Natural>0</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>1</Mindless>
+			<Slimy>0</Slimy>
 			<NameSID>SPIRIT_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
@@ -1591,6 +1612,7 @@
 			<Natural>1</Natural>
 			<CanKick>0</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<Drops>
 				<Drop>
 					<ID>_magici_shard</ID>
@@ -1665,6 +1687,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_1_NAME</NameSID>
@@ -1762,6 +1785,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
 			<NameSID>RACE_2_NAME</NameSID>
@@ -1858,6 +1882,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_3_NAME</NameSID>
@@ -1918,9 +1943,8 @@
 					<Awareness>15</Awareness>
 					<Carrying>10</Carrying>
 					<Detection>10</Detection>
-					<MountainLore>20</MountainLore>
+					<MountainLore>30</MountainLore>
 					<NightSight>10</NightSight>
-					<Spelunking>10</Spelunking>
 					<Swimming>15</Swimming>
 				</GeneralSkills>
 				<WeaponSkills>
@@ -1953,6 +1977,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_4_NAME</NameSID>
@@ -2047,6 +2072,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<HasRandomVillages>0</HasRandomVillages>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
@@ -2142,6 +2168,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_6_NAME</NameSID>
@@ -2200,11 +2227,11 @@
 				<GeneralSkills>
 					<Carrying>10</Carrying>
 					<Detection>10</Detection>
-					<DisarmTraps>10</DisarmTraps>
+					<DisarmTraps>20</DisarmTraps>
+					<Dungeoneering>10</Dungeoneering>
 					<MountainLore>20</MountainLore>
 					<NightSight>15</NightSight>
 					<Smithing>5</Smithing>
-					<Spelunking>20</Spelunking>
 				</GeneralSkills>
 				<WeaponSkills>
 					<Axes>7</Axes>
@@ -2237,6 +2264,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_7_NAME</NameSID>
@@ -2332,6 +2360,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>1</SettlementTileSubtype>
 			<NameSID>RACE_8_NAME</NameSID>
@@ -2423,6 +2452,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>1</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_9_NAME</NameSID>
@@ -2515,6 +2545,7 @@
 			<Natural>0</Natural>
 			<CanKick>1</CanKick>
 			<Mindless>0</Mindless>
+			<Slimy>0</Slimy>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_10_NAME</NameSID>
@@ -2575,12 +2606,11 @@
 					<Carrying>10</Carrying>
 					<Detection>10</Detection>
 					<DisarmTraps>15</DisarmTraps>
-					<Dungeoneering>15</Dungeoneering>
+					<Dungeoneering>25</Dungeoneering>
 					<Literacy>5</Literacy>
 					<Medicine>5</Medicine>
 					<MountainLore>15</MountainLore>
-					<Spelunking>20</Spelunking>
-					<Wandcraft>5</Wandcraft>
+					<Wandcraft>15</Wandcraft>
 				</GeneralSkills>
 				<WeaponSkills>
 					<ShortBlades>7</ShortBlades>
@@ -2634,13 +2664,12 @@
 				<GeneralSkills>
 					<Awareness>15</Awareness>
 					<Boating>10</Boating>
-					<Dungeoneering>15</Dungeoneering>
+					<Dungeoneering>25</Dungeoneering>
 					<Escape>10</Escape>
 					<Fishing>10</Fishing>
 					<Foraging>15</Foraging>
 					<Jumping>10</Jumping>
 					<Literacy>5</Literacy>
-					<Spelunking>10</Spelunking>
 					<Stealth>15</Stealth>
 					<Swimming>5</Swimming>
 				</GeneralSkills>
@@ -2842,8 +2871,41 @@
 						<Quantity>
 							<Random>
 								<NumDice>2</NumDice>
+								<NumSides>3</NumSides>
+							</Random>
+						</Quantity>
+					</InitialItem>
+					<InitialItem>
+						<ID>antidote_potion</ID>
+						<Quantity>
+							<Random>
+								<NumDice>2</NumDice>
 								<NumSides>2</NumSides>
 							</Random>
+						</Quantity>
+					</InitialItem>
+					<InitialItem>
+						<ID>speed_potion</ID>
+						<Quantity>
+							<Random>
+								<NumDice>1</NumDice>
+								<NumSides>3</NumSides>
+							</Random>
+						</Quantity>
+					</InitialItem>
+					<InitialItem>
+						<ID>unstoning_potion</ID>
+						<Quantity>
+							<Random>
+								<NumDice>2</NumDice>
+								<NumSides>2</NumSides>
+							</Random>
+						</Quantity>
+					</InitialItem>
+					<InitialItem>
+						<ID>gain_attributes_potion</ID>
+						<Quantity>
+							<Amount>1</Amount>
 						</Quantity>
 					</InitialItem>
 					<InitialItem>
@@ -3516,9 +3578,6 @@
 			</Crowning>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
-				<RightFinger>
-					<ID>filigreed_ring</ID>
-				</RightFinger>
 				<Wielded>
 					<ID>rapier</ID>
 				</Wielded>
@@ -3541,6 +3600,9 @@
 					</Quantity>
 				</Ammunition>
 				<InitialInventory>
+					<InitialItem>
+						<ID>filigreed_ring</ID>
+					</InitialItem>
 					<InitialItem>
 						<ID>leather_whip</ID>
 					</InitialItem>
@@ -4595,12 +4657,11 @@
 					<DisarmTraps>20</DisarmTraps>
 					<DualWield>20</DualWield>
 					<Escape>20</Escape>
-					<Hiding>25</Hiding>
+					<Hiding>30</Hiding>
 					<Hunting>10</Hunting>
 					<Jumping>20</Jumping>
-					<Spelunking>15</Spelunking>
-					<Stealth>20</Stealth>
-					<Thievery>25</Thievery>
+					<Stealth>25</Stealth>
+					<Thievery>30</Thievery>
 				</GeneralSkills>
 				<WeaponSkills>
 					<ShortBlades>5</ShortBlades>
@@ -5514,7 +5575,7 @@
 			<MonsterCastMessageSID>DRAGON_BREATH_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3000</MagicCategory>
 			<MagicClassification>0</MagicClassification>
-			<Colour>2</Colour>
+			<Colour>1</Colour>
 			<APCost>7</APCost>
 			<Speed>1</Speed>
 			<Range>3</Range>
@@ -7864,6 +7925,26 @@
 				</Symbol>
 			</Fence>
  			<Gate><Symbol><Char>+</Char></Symbol></Gate>
+			<Hive>
+				<Symbol>
+					<Char>*</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>1</Row>
+						<Col>5</Col>
+					</Sprite>
+				</Symbol>
+			</Hive>
+			<Cauldron>
+				<Symbol>
+					<Char>&amp;</Char>
+					<Sprite>
+						<ID>fea</ID>
+						<Row>1</Row>
+						<Col>4</Col>
+					</Sprite>
+				</Symbol>
+			</Cauldron>			
 			<DecorativeStatue>
 				<Symbol>
 					<Char>I</Char>
@@ -8287,6 +8368,198 @@
 		<NPCLevelScript>level/npc.lua</NPCLevelScript>
 		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
 	</Scripts>
+	<Recipes>
+		<Recipe id="br_00_ale">
+			<Ingredients>
+				<Ingredient>
+					<ID>_wheat</ID>
+					<Quantity>
+						<Amount>3</Amount>
+					</Quantity>
+				</Ingredient>
+				<Ingredient><ID>_wild_hops</ID></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>0</Min>
+			<Make>ale</Make>
+		</Recipe>
+		<Recipe id="br_01_fruit_juice">
+			<Ingredients>
+				<Ingredient>
+					<Random>fruit</Random>
+					<Quantity>
+						<Amount>3</Amount>
+					</Quantity>
+				</Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>0</Min>
+			<Make>fruit_juice_potion</Make>
+		</Recipe>
+		<Recipe id="br_02_healing">
+			<Ingredients>
+				<Ingredient rand_min="1" rand_max="2"><Random>wildflower</Random></Ingredient>
+				<Ingredient rand_min="1" rand_max="2"><Random>brewing_ingredient_common</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>5</Min>
+			<Make>_healing_potion</Make>
+		</Recipe>
+		<Recipe id="br_03_flying">
+			<Ingredients>
+				<Ingredient><ID>_magici_shard</ID></Ingredient>
+				<Ingredient>
+					<ID>_quill</ID>
+					<Quantity>
+						<Amount>3</Amount>
+					</Quantity>
+				</Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>10</Min>
+			<Make>flying_potion</Make>
+		</Recipe>
+		<Recipe id="br_04_antidote">
+			<Ingredients>
+				<Ingredient rand_min="3" rand_max="4"><Random>brewing_ingredient_common</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>15</Min>
+			<Make>antidote_potion</Make>
+		</Recipe>
+		<Recipe id="br_05_amut">
+			<Ingredients>
+				<Ingredient><ID>_magici_shard</ID></Ingredient>
+				<Ingredient><Random>brewing_ingredient_common</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>20</Min>
+			<Make>amut_potion</Make>
+		</Recipe>
+		<Recipe id="br_06_fire">
+			<Ingredients>
+				<Ingredient><ID>_magici_shard</ID></Ingredient>
+				<Ingredient><Random>brewing_ingredient_common</Random></Ingredient>
+				<Ingredient><Random>brewing_ingredient_uncommon</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>25</Min>
+			<Make>fire_potion</Make>
+		</Recipe>
+		<Recipe id="br_07_uncursing">
+			<Ingredients>
+				<Ingredient><ID>_magici_shard</ID></Ingredient>
+				<Ingredient><Random rand_min="2" rand_max="3">wildflower</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>30</Min>
+			<Make>amut_potion</Make>
+		</Recipe>
+		<Recipe id="br_08_unblinding">
+			<Ingredients>
+				<Ingredient><ID>_essence_were_light</ID></Ingredient>
+				<Ingredient><Random>wildflower</Random></Ingredient>
+				<Ingredient><Random>brewing_ingredient_common</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>35</Min>
+			<Make>unblinding_potion</Make>
+		</Recipe>
+		<Recipe id="br_09_rage">
+			<Ingredients>
+				<Ingredient rand_min="1" rand_max="3"><Random>brewing_ingredient_common</Random></Ingredient>
+				<Ingredient><Random>brewing_ingredient_uncommon</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>40</Min>
+			<Make>rage_potion</Make>
+		</Recipe>
+		<Recipe id="br_10_speed">
+			<Ingredients>
+				<Ingredient><ID>_magici_shard</ID></Ingredient>
+				<Ingredient rand_min="2" rand_max="4"><Random>brewing_ingredient_common</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>45</Min>
+			<Make>amut_potion</Make>
+		</Recipe>
+		<Recipe id="br_11_unbinding">
+			<Ingredients>
+				<Ingredient><ID>_essence_were_light</ID></Ingredient>
+				<Ingredient rand_min="2" rand_max="4"><Random>brewing_ingredient_common</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>50</Min>
+			<Make>unbinding_potion</Make>
+		</Recipe>
+		<Recipe id="br_12_sustenance">
+			<Ingredients>
+				<Ingredient><ID>_magici_shard</ID></Ingredient>
+				<Ingredient><Random>brewing_ingredient_common</Random></Ingredient>
+				<Ingredient><Random>fruit</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>40</Min>
+			<Make>sustenance_potion</Make>
+		</Recipe>
+		<Recipe id="br_13_unstoning">
+			<Ingredients>
+				<Ingredient><ID>_essence_were_light</ID></Ingredient>
+				<Ingredient>
+					<ID>_magici_shard</ID>
+					<Quantity>
+						<Amount>2</Amount>
+					</Quantity>
+				</Ingredient>
+				<Ingredient><Random rand_min="1" rand_max="3">wildflower</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>60</Min>
+			<Make>_unstoning_potion</Make>
+		</Recipe>
+		<Recipe id="br_14_restorative">
+			<Ingredients>
+				<Ingredient>
+					<ID>_magici_shard</ID>
+					<Quantity>
+						<Random>
+							<NumDice>2</NumDice>
+							<NumSides>2</NumSides>
+						</Random>
+					</Quantity>
+				</Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>70</Min>
+			<Make>restorative_potion</Make>
+		</Recipe>
+		<Recipe id="br_15_ether">
+			<Ingredients>
+				<Ingredient><ID>_magici_shard</ID></Ingredient>
+				<Ingredient><Random>wildflower</Random></Ingredient>				
+				<Ingredient rand_min="1" rand_max="2"><Random>mushroom</Random></Ingredient>
+				<Ingredient rand_min="3" rand_max="4"><Random>brewing_ingredient_common</Random></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>90</Min>
+			<Make>_ether_potion</Make>
+		</Recipe>
+		<Recipe id="br_16_gain_attr">
+			<Ingredients>
+				<Ingredient>
+					<ID>_magici_shard</ID>
+					<Quantity>
+						<Amount>3</Amount>
+					</Quantity>
+				</Ingredient>
+				<Ingredient><ID>_golden_apple</ID></Ingredient>
+				<Ingredient><ID>_silver_apple</ID></Ingredient>
+			</Ingredients>
+			<Skill>7</Skill>
+			<Min>100</Min>
+			<Make>gain_attributes_potion</Make>
+		</Recipe>
+	</Recipes>
 	<Spritesheets>
 		<Spritesheet id="cr">
 			<Location>assets/sprites/creature_sprites.png</Location>

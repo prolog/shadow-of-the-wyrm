@@ -71,6 +71,8 @@ class GeneratorUtils
     // Fill a subset of the map with a certain tile type.
     static void fill(MapPtr map, const Coordinate& start_coord, const Coordinate& end_coord, const TileType tile_type);
 
+    static bool potentially_generate_hive(MapPtr map);
+
     // Generate coastline on the map
     static void potentially_generate_coastline(MapPtr map, SOTW::Generator * const generator);
     static bool generate_coastline(MapPtr map, SOTW::Generator * const generator);
@@ -86,6 +88,10 @@ class GeneratorUtils
 
     static std::pair<std::string, std::string> generate_staircase_extra_descs();
 
+    // Get the world map location and the map height, useful for latitude-
+    // based checks.
+    static std::pair<Coordinate, int> get_world_map_location_and_height(SOTW::Generator* generator, MapPtr current_map);
+
   protected:
     static bool position_in_range(const int min, const int max, const int actual);
     static bool are_tiles_ok_for_structure(MapPtr map, const int y_start, const int x_start, const int height, const int width);
@@ -95,6 +101,9 @@ class GeneratorUtils
     static const int STRUCTURE_MAX_WIDTH;
     static const int STRUCTURE_MIN_HEIGHT;
     static const int STRUCTURE_MAX_HEIGHT;
+
+    static const int MAX_BEEHIVES;
+    static const int PCT_CHANCE_BEEHIVE;
 
     GeneratorUtils();
     ~GeneratorUtils();

@@ -1,6 +1,6 @@
 #pragma once
 #include "AttackTypes.hpp"
-#include "Creature.hpp"
+#include "Map.hpp"
 
 class ToHitCalculator
 {
@@ -9,7 +9,7 @@ class ToHitCalculator
     ToHitCalculator(const AttackType new_attack_type);
     virtual ~ToHitCalculator() = default;
     
-    virtual int calculate(CreaturePtr creature) = 0;
+    virtual int calculate(CreaturePtr creature, MapPtr map) = 0;
     virtual Statistic& get_statistic(CreaturePtr creature) = 0;
     
   protected:

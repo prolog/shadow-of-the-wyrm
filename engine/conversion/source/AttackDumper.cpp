@@ -1,6 +1,7 @@
 #include <sstream>
 #include "Conversion.hpp"
 #include "AttackDumper.hpp"
+#include "Game.hpp"
 #include "ItemDumper.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
@@ -19,8 +20,9 @@ string AttackDumper::str() const
   ostringstream ss;
   
   WeaponInfoAction wia;
-  pair<string, string> wo_text = wia.get_wielded_and_offhand_text(creature);
-  string ranged_text = wia.get_ranged_text(creature);
+  MapPtr map = Game::instance().get_current_map();
+  pair<string, string> wo_text = wia.get_wielded_and_offhand_text(creature, map);
+  string ranged_text = wia.get_ranged_text(creature, map);
 
   ss << String::centre(StringTable::get(TextKeys::ATTACK_DETAILS), num_cols) << endl << endl;
 

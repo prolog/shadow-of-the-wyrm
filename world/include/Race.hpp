@@ -92,6 +92,9 @@ class Race
     void set_mindless(const bool new_mindless);
     bool get_mindless() const;
 
+    void set_slimy(const bool new_slimy);
+    bool get_slimy() const;
+
     void set_drops(const std::map<std::string, DropParameters>& new_drops);
     std::map<std::string, DropParameters> get_drops() const;
 
@@ -214,6 +217,7 @@ class Race
     bool natural;
     bool can_kick;
     bool mindless;
+    bool slimy;
     std::map<std::string, DropParameters> drops;
     bool has_random_villages;
     SettlementType settlement_type;

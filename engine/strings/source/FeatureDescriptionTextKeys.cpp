@@ -39,6 +39,8 @@ const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_STONE_MARKER       
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_TABLE              = "FEATURE_DESCRIPTION_TABLE";
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SLOT_MACHINE       = "FEATURE_DESCRIPTION_SLOT_MACHINE";
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SIGN               = "FEATURE_DESCRIPTION_SIGN";
+const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_HIVE               = "FEATURE_DESCRIPTION_HIVE";
+const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_CAULDRON           = "FEATURE_DESCRIPTION_CAULDRON";
 
 SignTextKeys::SignTextKeys()
 {

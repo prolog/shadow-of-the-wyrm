@@ -3,6 +3,37 @@
 using std::string;
 using std::vector;
 
+// Item Statuses
+ItemStatus ItemStatuses::get_next(const ItemStatus status)
+{
+  switch (status)
+  {
+    case ItemStatus::ITEM_STATUS_CURSED:
+      return ItemStatus::ITEM_STATUS_UNCURSED;
+    case ItemStatus::ITEM_STATUS_UNCURSED:
+      return ItemStatus::ITEM_STATUS_BLESSED;
+    case ItemStatus::ITEM_STATUS_BLESSED:
+      return ItemStatus::ITEM_STATUS_BLESSED;
+  }
+
+  return ItemStatus::ITEM_STATUS_UNCURSED;
+}
+
+ItemStatus ItemStatuses::get_prev(const ItemStatus status)
+{
+  switch (status)
+  {
+  case ItemStatus::ITEM_STATUS_CURSED:
+    return ItemStatus::ITEM_STATUS_CURSED;
+  case ItemStatus::ITEM_STATUS_UNCURSED:
+    return ItemStatus::ITEM_STATUS_CURSED;
+  case ItemStatus::ITEM_STATUS_BLESSED:
+    return ItemStatus::ITEM_STATUS_UNCURSED;
+  }
+
+  return ItemStatus::ITEM_STATUS_CURSED;
+}
+
 // Item IDs
 ItemIdKeys::ItemIdKeys()
 {
@@ -55,10 +86,13 @@ const string ItemIdKeys::ITEM_ID_GOLDEN_APPLE     = "_golden_apple";
 const string ItemIdKeys::ITEM_ID_SILVER_APPLE     = "_silver_apple";
 const string ItemIdKeys::ITEM_ID_SHOVEL           = "_shovel";
 const string ItemIdKeys::ITEM_ID_PICK_AXE         = "pick_axe";
+const string ItemIdKeys::ITEM_ID_SLIME            = "_slime";
 const string ItemIdKeys::ITEM_ID_ROOT             = "_root";
 const string ItemIdKeys::ITEM_ID_BERRIES          = "_berries";
 const string ItemIdKeys::ITEM_ID_KELP             = "_kelp";
 const string ItemIdKeys::ITEM_ID_WHEAT					  = "_wheat";
+const string ItemIdKeys::ITEM_ID_JUNIPER_BERRIES  = "_juniper_berries";
+const string ItemIdKeys::ITEM_ID_WILD_HOPS        = "_wild_hops";
 const string ItemIdKeys::ITEM_ID_WHITE_BASIL      = "_white_basil";
 const string ItemIdKeys::ITEM_ID_STONEFLOWER      = "_stoneflower";
 const string ItemIdKeys::ITEM_ID_VOXFLOWER        = "_voxflower";
@@ -80,7 +114,9 @@ const string ItemIdKeys::ITEM_ID_TEMPLATE_SCROLL  = "_template_scroll";
 const string ItemIdKeys::ITEM_ID_PAPER_PULP       = "_paper_pulp";
 const string ItemIdKeys::ITEM_ID_MOLD_AND_DECKLE  = "_mold_and_deckle";
 const string ItemIdKeys::ITEM_ID_CAP              = "_cap";
+const string ItemIdKeys::ITEM_ID_SCARF            = "scarf";
 const string ItemIdKeys::ITEM_ID_WAYFARER_CLOTHES = "_wayfarer_clothes";
+const string ItemIdKeys::ITEM_ID_SHOES            = "shoes";
 const string ItemIdKeys::ITEM_ID_CLOAK            = "_cloak";
 const string ItemIdKeys::ITEM_ID_DRAM_GIN         = "dram_gin";
 const string ItemIdKeys::ITEM_ID_DRAM_MEAD        = "dram_mead";
@@ -135,3 +171,6 @@ ItemValues::~ItemValues()
 const int ItemValues::DEFAULT_MIN_GENERATION_VALUE = -1;
 const int ItemValues::DEFAULT_MIN_SHOP_VALUE = 5;
 
+#ifdef UNIT_TESTS
+#include "unit_tests/ItemTypes_test.cpp"
+#endif

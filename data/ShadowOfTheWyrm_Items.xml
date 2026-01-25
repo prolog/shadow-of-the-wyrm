@@ -477,6 +477,35 @@
 			</Amulet>
 		</Amulets>
 		<Armours>
+			<Armour id="scarf">
+				<DescriptionSID>SCARF_SID</DescriptionSID>
+				<UsageDescriptionSID>SCARF_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SCARF_CODEX_SID</CodexDescriptionSID>
+				<Value>6</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>8</Ounces>
+				</Weight>
+				<WornLocation>1</WornLocation>
+				<Material>0</Material>
+				<Symbol>
+					<Char>[</Char>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>24</Col>
+					</Sprite>					
+				</Symbol>
+				<DangerLevel>2</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brandable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Evade>3</Evade>
+				<Soak>1</Soak>
+			</Armour>
 			<Armour id="bandana">
 				<DescriptionSID>BANDANA_SID</DescriptionSID>
 				<UsageDescriptionSID>BANDANA_USAGE_SID</UsageDescriptionSID>
@@ -575,8 +604,7 @@
 				<CodexDescriptionSID>HIDE_CODEX_SID</CodexDescriptionSID>
 				<Value>5</Value>
 				<Weight>
-					<Pounds>0</Pounds>
-					<Ounces>7</Ounces>
+					<Pounds>2</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>4</Material>
@@ -656,7 +684,7 @@
 				<CodexDescriptionSID>LEATHER_HELM_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
-					<Pounds>1</Pounds>
+					<Pounds>3</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>4</Material>
@@ -684,7 +712,7 @@
 				<CodexDescriptionSID>METAL_CAP_CODEX_SID</CodexDescriptionSID>
 				<Value>30</Value>
 				<Weight>
-					<Pounds>3</Pounds>
+					<Pounds>4</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>3</Material>
@@ -712,7 +740,7 @@
 				<CodexDescriptionSID>IRON_HELM_CODEX_SID</CodexDescriptionSID>
 				<Value>40</Value>
 				<Weight>
-					<Pounds>6</Pounds>
+					<Pounds>8</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>3</Material>
@@ -740,7 +768,7 @@
 				<CodexDescriptionSID>STEEL_HELM_CODEX_SID</CodexDescriptionSID>
 				<Value>80</Value>
 				<Weight>
-					<Pounds>4</Pounds>
+					<Pounds>7</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>6</Material>
@@ -768,7 +796,7 @@
 				<CodexDescriptionSID>KNIGHTS_HELM_CODEX_SID</CodexDescriptionSID>
 				<Value>140</Value>
 				<Weight>
-					<Pounds>7</Pounds>
+					<Pounds>9</Pounds>
 				</Weight>
 				<WornLocation>0</WornLocation>
 				<Material>6</Material>
@@ -2886,14 +2914,14 @@
 					<Poison>0.03</Poison>
 					<Shadow>0.08</Shadow>
 				</Resistances>
-				<Evade>2</Evade>
-				<Soak>0</Soak>
 				<Properties>
 					<Property>
 						<Name>nexus</Name>
 						<Value>1</Value>
 					</Property>
 				</Properties>
+				<Evade>2</Evade>
+				<Soak>0</Soak>
 			</Ring>
 			<Ring id="fencers_ring">
 				<DescriptionSID>FENCERS_RING_SID</DescriptionSID>
@@ -7141,6 +7169,12 @@
 					<Type>8</Type>
 					<EffectBonus>30</EffectBonus>
 				</Damage>
+				<Properties>
+					<Property>
+						<Name>unstable</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 			</Missile>
 			<Missile id="_clay_pot">
 				<DescriptionSID>CLAY_POT_SID</DescriptionSID>
@@ -7950,6 +7984,14 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>12</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -7987,6 +8029,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>12</Value>
+					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
@@ -8027,6 +8073,14 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>12</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -8065,6 +8119,14 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>12</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -8102,6 +8164,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>12</Value>
+					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
@@ -8142,6 +8208,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>300</Nutrition>
 				<FoodType>0</FoodType>
@@ -8181,6 +8251,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>500</Nutrition>
 				<FoodType>0</FoodType>
@@ -8218,6 +8292,14 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
@@ -8258,6 +8340,14 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -8296,6 +8386,14 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>mushroom</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
@@ -8336,9 +8434,157 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>36</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>110</Nutrition>
 				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_juniper_berries">
+				<DescriptionSID>JUNIPER_BERRIES_SID</DescriptionSID>
+				<UsageDescriptionSID>JUNIPER_BERRIES_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>JUNIPER_BERRIES_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>4</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>19</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>12</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>36</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Nutrition>60</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_wild_hops">
+				<DescriptionSID>WILD_HOPS_SID</DescriptionSID>
+				<UsageDescriptionSID>WILD_HOPS_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>WILD_HOPS_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>2</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>22</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>plantable_food</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_min_quantity</Name>
+						<Value>10</Value>
+					</Property>
+					<Property>
+						<Name>plantable_food_max_quantity</Name>
+						<Value>24</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Nutrition>30</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_honey">
+				<DescriptionSID>HONEY_SID</DescriptionSID>
+				<UsageDescriptionSID>HONEY_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HONEY_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>21</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Nutrition>120</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_honeycomb">
+				<DescriptionSID>HONEYCOMB_SID</DescriptionSID>
+				<UsageDescriptionSID>HONEYCOMB_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>HONEYCOMB_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>2</Ounces>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>18</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>23</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>300</Nutrition>
+				<FoodType>0</FoodType>
+				<Properties>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 			</Food>
 			<Food id="_wheat">
 				<DescriptionSID>WHEAT_SID</DescriptionSID>
@@ -8404,6 +8650,10 @@
 						<Name>seed_item_id</Name>
 						<Value>_cherry_pit</Value>
 					</Property>
+					<Property>
+						<Name>fruit</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -8433,6 +8683,10 @@
 					<Property>
 						<Name>seed_item_id</Name>
 						<Value>_peach_pit</Value>
+					</Property>
+					<Property>
+						<Name>fruit</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
@@ -8494,6 +8748,10 @@
 						<Name>seed_item_id</Name>
 						<Value>_plum_pit</Value>
 					</Property>
+					<Property>
+						<Name>fruit</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
 				<FoodType>0</FoodType>
@@ -8523,6 +8781,10 @@
 					<Property>
 						<Name>seed_item_id</Name>
 						<Value>_pear_seed</Value>
+					</Property>
+					<Property>
+						<Name>fruit</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
@@ -8554,6 +8816,10 @@
 						<Name>seed_item_id</Name>
 						<Value>_golden_apple_seed</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_rare</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>600</Nutrition>
 				<FoodType>0</FoodType>
@@ -8584,6 +8850,10 @@
 					<Property>
 						<Name>seed_item_id</Name>
 						<Value>_silver_apple_seed</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_rare</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>600</Nutrition>
@@ -8817,6 +9087,34 @@
 				</Properties>
 				<Nutrition>500</Nutrition>
 				<FoodType>0</FoodType>
+			</Food>
+			<Food id="_slime">
+				<DescriptionSID>SLIME_SID</DescriptionSID>
+				<UsageDescriptionSID>SLIME_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>SLIME_CODEX_SID</CodexDescriptionSID>
+				<Value>4</Value>
+				<Weight>
+					<Ounces>6</Ounces>
+				</Weight>
+				<Material>16</Material>
+				<Symbol>
+					<Char>]</Char>
+					<Colour>10</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>19</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Nutrition>150</Nutrition>
+				<FoodType>4</FoodType>
 			</Food>
 			<Food id="food_ration">
 				<DescriptionSID>FOOD_RATION_SID</DescriptionSID>
@@ -9205,6 +9503,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>200</Nutrition>
 				<FoodType>0</FoodType>
@@ -9229,6 +9531,12 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 				<Nutrition>205</Nutrition>
 				<FoodType>0</FoodType>
 			</Plant>
@@ -9265,6 +9573,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>200</Nutrition>
@@ -9305,6 +9617,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>30</Nutrition>
 				<FoodType>0</FoodType>
@@ -9343,6 +9659,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>60</Nutrition>
@@ -9383,6 +9703,10 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>40</Nutrition>
 				<FoodType>0</FoodType>
@@ -9421,6 +9745,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>40</Nutrition>
@@ -9461,6 +9789,14 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>wildflower</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -9499,6 +9835,14 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>wildflower</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
@@ -9539,6 +9883,14 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>wildflower</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -9577,6 +9929,14 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>wildflower</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
@@ -9617,6 +9977,14 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>wildflower</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -9656,6 +10024,14 @@
 						<Name>plantable_food_max_quantity</Name>
 						<Value>3</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>wildflower</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
@@ -9694,6 +10070,10 @@
 					<Property>
 						<Name>plantable_food_max_quantity</Name>
 						<Value>6</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 				<Nutrition>150</Nutrition>
@@ -9998,6 +10378,30 @@
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>400</Nutrition>
+				<StandardDrinks>1</StandardDrinks>
+				<Effect>0</Effect>
+			</Potion>
+			<Potion id="ale">
+				<DescriptionSID>ALE_SID</DescriptionSID>
+				<UsageDescriptionSID>ALE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ALE_CODEX_SID</CodexDescriptionSID>
+				<Value>2</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>10</WornLocation>
+				<Material>2</Material>
+				<Symbol>
+					<Char>!</Char>
+					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>1</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Nutrition>200</Nutrition>
 				<StandardDrinks>1</StandardDrinks>
 				<Effect>0</Effect>
 			</Potion>
@@ -10853,6 +11257,27 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>1</DangerLevel>
+			</Currency>
+			<Currency id="elysian_coin">
+				<DescriptionSID>ELYSIAN_COIN_SID</DescriptionSID>
+				<UsageDescriptionSID>ELYSIAN_COIN_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ELYSIAN_COIN_CODEX_SID</CodexDescriptionSID>
+				<Value>1</Value>
+				<Weight>
+					<Pounds>0</Pounds>
+					<Ounces>3</Ounces>
+				</Weight>
+				<Material>10</Material>
+				<Symbol>
+					<Char>$</Char>
+					<Colour>8</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>0</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
 			</Currency>
 		</Currencies>
 		<Tools>
@@ -14486,6 +14911,26 @@
 					</Property>
 				</Properties>
 			</Item>
+			<Item id="_corpse_bones">
+				<DescriptionSID>CORPSE_BONES_SID</DescriptionSID>
+				<UsageDescriptionSID>CORPSE_BONES_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>CORPSE_BONES_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>20</Pounds>
+				</Weight>
+				<Material>12</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>1</Row>
+						<Col>9</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="_pile_of_bones">
 				<DescriptionSID>PILE_OF_BONES_SID</DescriptionSID>
 				<UsageDescriptionSID>PILE_OF_BONES_USAGE_SID</UsageDescriptionSID>
@@ -14767,6 +15212,12 @@
 					</Sprite>
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brewing_ingredient_uncommon</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
 			</Item>
 			<Item id="_coal">
 				<DescriptionSID>COAL_SID</DescriptionSID>
@@ -14807,6 +15258,41 @@
 				</Symbol>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
+			<Item id="_essence_were_light">
+				<DescriptionSID>ESSENCE_WERE_LIGHT_SID</DescriptionSID>
+				<UsageDescriptionSID>ESSENCE_WERE_LIGHT_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>ESSENCE_WERE_LIGHT_CODEX_SID</CodexDescriptionSID>
+				<Value>10</Value>
+				<Weight>
+					<Ounces>1</Ounces>
+				</Weight>
+				<Material>14</Material>
+				<Glow>1</Glow>
+				<Symbol>
+					<Char>]</Char>
+					<Colour>11</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>4</Row>
+						<Col>20</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brewing_ingredient_uncommon</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>unstable</Name>
+						<Value>1</Value>
+					</Property>
+					<Property>
+						<Name>impart_glow</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+			</Item>
 			<Item id="_apple_seed">
 				<DescriptionSID>APPLE_SEED_SID</DescriptionSID>
 				<UsageDescriptionSID>APPLE_SEED_USAGE_SID</UsageDescriptionSID>
@@ -14831,6 +15317,10 @@
 					<Property>
 						<Name>tree_species_id</Name>
 						<Value>9</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 			</Item>
@@ -14859,6 +15349,10 @@
 						<Name>tree_species_id</Name>
 						<Value>10</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 			</Item>
 			<Item id="_peach_pit">
@@ -14885,6 +15379,10 @@
 					<Property>
 						<Name>tree_species_id</Name>
 						<Value>11</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 			</Item>
@@ -14913,6 +15411,10 @@
 						<Name>tree_species_id</Name>
 						<Value>14</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 			</Item>
 			<Item id="_plum_pit">
@@ -14939,6 +15441,10 @@
 					<Property>
 						<Name>tree_species_id</Name>
 						<Value>12</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 			</Item>
@@ -14967,6 +15473,10 @@
 						<Name>tree_species_id</Name>
 						<Value>13</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 			</Item>
 			<Item id="_golden_apple_seed">
@@ -14994,6 +15504,10 @@
 						<Name>tree_species_id</Name>
 						<Value>40</Value>
 					</Property>
+					<Property>
+						<Name>brewing_ingredient_uncommon</Name>
+						<Value>1</Value>
+					</Property>
 				</Properties>
 			</Item>
 			<Item id="_silver_apple_seed">
@@ -15020,6 +15534,10 @@
 					<Property>
 						<Name>tree_species_id</Name>
 						<Value>41</Value>
+					</Property>
+					<Property>
+						<Name>brewing_ingredient_uncommon</Name>
+						<Value>1</Value>
 					</Property>
 				</Properties>
 			</Item>

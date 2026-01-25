@@ -80,7 +80,6 @@ void SkillFactory::initialize_skill_map()
   std::unique_ptr<ScribingSkill> scribing = std::make_unique<ScribingSkill>();
   std::unique_ptr<SkinningSkill> skinning = std::make_unique<SkinningSkill>();
   std::unique_ptr<SmithingSkill> smithing = std::make_unique<SmithingSkill>();
-  std::unique_ptr<SpelunkingSkill> spelunking = std::make_unique<SpelunkingSkill>();
   std::unique_ptr<StealthSkill> stealth = std::make_unique<StealthSkill>();
   std::unique_ptr<SwimmingSkill> swimming = std::make_unique<SwimmingSkill>();
   std::unique_ptr<TanningSkill> tanning = std::make_unique<TanningSkill>();
@@ -155,7 +154,6 @@ void SkillFactory::initialize_skill_map()
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_SCRIBING, std::move(scribing)));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_SKINNING, std::move(skinning)));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_SMITHING, std::move(smithing)));
-  skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_SPELUNKING, std::move(spelunking)));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_STEALTH, std::move(stealth)));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_SWIMMING, std::move(swimming)));
   skill_map.insert(make_pair(ClassIdentifier::CLASS_ID_SKILL_TANNING, std::move(tanning)));

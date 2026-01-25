@@ -382,6 +382,43 @@
 	<Features>
 		<FeaturePlacement>
 			<Coord>
+				<Row>3</Row>
+				<Col>6</Col>
+			</Coord>
+			<Barrel>
+				<Tap>1</Tap>
+				<Pour>ale</Pour>
+			</Barrel>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>4</Row>
+				<Col>6</Col>
+			</Coord>
+			<Barrel>
+				<Tap>1</Tap>
+				<Pour>ale</Pour>
+			</Barrel>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>5</Row>
+				<Col>6</Col>
+			</Coord>
+			<Barrel>
+				<Tap>1</Tap>
+				<Pour>ale</Pour>
+			</Barrel>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>4</Row>
+				<Col>10</Col>
+			</Coord>
+			<Cauldron/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
 				<Row>11</Row>
 				<Col>3</Col>
 			</Coord>

@@ -52,6 +52,11 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_MINER;
     static const std::string CREATURE_PROPERTIES_HIDING_COOLDOWN;
 
+    // Hive-related properties
+    static const std::string CREATURE_PROPERTIES_HIVE_DRONE;
+    static const std::string CREATURE_PROPERTIES_HIVE_ITEMS;
+    static const std::string CREATURE_PROPERTIES_HIVE_LEADER;
+
   protected:
     CreatureProperties();
     ~CreatureProperties();

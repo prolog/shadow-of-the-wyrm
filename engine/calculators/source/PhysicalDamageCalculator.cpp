@@ -96,7 +96,7 @@ Damage PhysicalDamageCalculator::calculate_base_damage_object(CreaturePtr attack
 // Physical damage gets +1 for every 5 points of Strength over 10, plus
 // the creature's base additional damage.  If the attacking creature is
 // enraged, there's a further bonus of +1/level.
-Damage PhysicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties(CreaturePtr attacking_creature)
+Damage PhysicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties(CreaturePtr attacking_creature, MapPtr map)
 {
   Damage base_damage = calculate_base_damage_object(attacking_creature);
   
@@ -111,10 +111,13 @@ Damage PhysicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties
       rage_modifier = attacking_creature->get_level().get_current() * 2;
     } 
 
+    int map_modifier  = get_map_bonus(attacking_creature, map);
+
     current_modifier += get_statistic_based_damage_modifier(attacking_creature);
     current_modifier += get_skill_based_damage_modifier(attacking_creature);
     current_modifier += bac_modifier;
     current_modifier += rage_modifier;
+    current_modifier += map_modifier;
     
     base_damage.set_modifier(current_modifier);
 
@@ -227,6 +230,14 @@ void PhysicalDamageCalculator::set_item_status_based_damage_modifiers(CreaturePt
     if (weapon != nullptr)
     {
       damage.set_effect_bonus(damage.get_effect_bonus() + get_item_status_effect_bonus(weapon->get_status()));
+      
+      // If the weapon is glowing, it might flare and burn.
+      if (RNG::percent_chance(calculate_pct_chance_glow_burn(weapon)))
+      {
+        damage.set_damage_type(DamageType::DAMAGE_TYPE_HEAT);
+        damage.set_effect_bonus(damage.get_effect_bonus() + calculate_effect_bonus_glow_burn(weapon));
+        damage.set_modifier(damage.get_modifier() + calculate_damage_bonus_glow_burn(weapon));
+      }
     }
   }
 }

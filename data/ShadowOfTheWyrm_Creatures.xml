@@ -82,6 +82,58 @@
 				<Type>1</Type>
 			</Damage>
 		</Creature>
+		<Creature id="_bee">
+			<RaceID>_insect</RaceID>
+			<ShortDescriptionSID>BEE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>BEE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>BEE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>BEE_SPEECH_TEXT_SID</SpeechTextSID>
+			<Size>0</Size>
+			<Flying>1</Flying>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>b</Char>
+				<Colour>11</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>9</Row>
+					<Col>6</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>1</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage piercing="true">
+				<NumDice>1</NumDice>
+				<NumSides>2</NumSides>
+				<Type>6</Type>
+			</Damage>
+			<Speed>35</Speed>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_HIVE_DRONE</Name>
+					<Value>1</Value>
+				</Property>
+				<Property>
+					<Name>CREATURE_PROPERTIES_HIVE_ITEMS</Name>
+					<Value>_honey,_honeycomb</Value>
+				</Property>
+				<Property>
+					<Name>CREATURE_PROPERTIES_HIVE_LEADER</Name>
+					<Value>_queen_bee</Value>
+				</Property>
+			</Properties>
+		</Creature>
 		<Creature id="cat">
 			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>CAT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -235,7 +287,12 @@
 				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
-				<AllowableTerrainTypes/>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+				</AllowableTerrainTypes>
 				<Friendly>1</Friendly>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -4497,6 +4554,13 @@
 					<NumSides>6</NumSides>
 				</HP>
 				<Exp>26</Exp>
+				<InitialEquipmentAndInventory>
+					<InitialInventory>
+						<InitialItem>
+							<ID>_essence_were_light</ID>
+						</InitialItem>
+					</InitialInventory>
+				</InitialEquipmentAndInventory>				
 			</CreatureGeneration>
 			<Level>11</Level>
 			<Damage>
@@ -16693,7 +16757,7 @@
 				<Type>5</Type>
 			</Damage>
 		</Creature>
-		<Creature id="queen_bee">
+		<Creature id="_queen_bee">
 			<RaceID>_insect</RaceID>
 			<ShortDescriptionSID>QUEEN_BEE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>QUEEN_BEE_DESCRIPTION_SID</DescriptionSID>
@@ -16705,7 +16769,7 @@
 				<Strategy>mobile</Strategy>
 			</DecisionStrategy>
 			<Symbol>
-				<Char>q</Char>
+				<Char>b</Char>
 				<Colour>15</Colour>
 				<Sprite>
 					<ID>cr</ID>
@@ -16714,22 +16778,7 @@
 				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
-				<AllowableTerrainTypes>
-					<TileType>0</TileType>
-					<TileType>1</TileType>
-					<TileType>5</TileType>
-					<TileType>10</TileType>
-					<TileType>13</TileType>
-					<TileType>15</TileType>
-					<TileType>16</TileType>
-					<TileType>21</TileType>
-					<TileType>24</TileType>
-					<TileType>31</TileType>
-					<TileType>38</TileType>
-					<TileType>42</TileType>
-					<TileType>47</TileType>
-					<TileType>49</TileType>
-				</AllowableTerrainTypes>
+				<AllowableTerrainTypes/>
 				<DangerLevel>9</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
@@ -16739,7 +16788,7 @@
 				<Exp>13</Exp>
 			</CreatureGeneration>
 			<Level>9</Level>
-			<Damage>
+			<Damage piercing="true">
 				<NumDice>1</NumDice>
 				<NumSides>18</NumSides>
 				<Type>6</Type>
@@ -21307,6 +21356,10 @@
 				<ChatScript>
 					<Script>quests/isen_dun/ead.lua</Script>
 				</ChatScript>
+				<DropScript>
+					<Script>drop/ead.lua</Script>
+					<Chance>100</Chance>
+				</DropScript>
 			</EventScripts>
 		</Creature>
 		<Creature id="the_ploughman">
@@ -23611,7 +23664,6 @@
 			<ShortDescriptionSID>HERMIT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HERMIT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>HERMIT_TEXT_DETAILS_SID</TextDetailsSID>
-			<SpeechTextSID>HERMIT_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>
 				<Strategy>mobile</Strategy>
 				<Pickup>0</Pickup>
@@ -23647,6 +23699,11 @@
 				<Type>9</Type>
 			</Damage>
 			<Evade>4</Evade>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/hermit.lua</Script>
+				</ChatScript>
+			</EventScripts>
 			<Spells>
 				<Spell>
 					<SpellID>c_02_flame_dart</SpellID>

@@ -41,7 +41,7 @@ class String
     static std::map<std::string,std::string> create_properties_from_string_vector(const std::vector<std::string>& properties_v);
     static std::vector<Colour> create_colour_vector_from_csv_string(const std::string& csv_str);
     static std::vector<int> create_int_vector_from_csv_string(const std::string& csv_str);
-    static std::string create_csv_from_string_vector(const std::vector<std::string>& str_vec);
+    static std::string create_csv_from_string_vector(const std::vector<std::string>& str_vec, const int num_spaces = 0);
     static std::string create_csv_from_string_map(const std::map<std::string, std::string>& str_map);
     static std::string create_string_from_coordinate(const Coordinate& c);
     static Coordinate create_coordinate_from_string(const std::string& coord_s);
@@ -173,9 +173,8 @@ class Float
 class Char
 {
   public:
-    static EquipmentWornLocation to_equipment_worn_location(const char character);
-    static int keyboard_selection_char_to_int(const char character);
-
+    static int keyboard_selection_char_to_int(const char character, const char char_subtr_val = 'a');
+    static int keyboard_selection_int_to_int(const int val, const char offset);
   protected:
     Char();
     ~Char();

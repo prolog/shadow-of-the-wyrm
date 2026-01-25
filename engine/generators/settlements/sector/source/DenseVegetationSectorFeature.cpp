@@ -33,7 +33,7 @@ bool DenseVegetationSectorFeature::generate_feature(MapPtr map, const Coordinate
             string item_id = item_ids[RNG::range(0, item_ids.size() - 1)];
             item = ItemManager::create_item(item_id);
 
-            tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+            tile->get_items()->merge_or_add(item);
           }
 
           map->insert({ row, col }, tile);

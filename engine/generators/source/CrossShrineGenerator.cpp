@@ -36,7 +36,7 @@ MapPtr CrossShrineGenerator::generate_shrine()
 
   vector<Coordinate> relic_locs = {{wide_start_row, wide_start_col + 2}, {wide_start_row, wide_start_col + wide_width - 2}};
   Coordinate relic_loc = relic_locs.at(RNG::range(0, relic_locs.size()-1));
-  place_relic(map, relic_loc.first, relic_loc.second);
+  place_relics(map, relic_loc.first, relic_loc.second);
 
   add_dungeon_tiles_to_preset_locations(map);
   map->set_permanent(true);

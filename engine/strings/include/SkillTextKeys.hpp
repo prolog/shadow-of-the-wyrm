@@ -142,9 +142,6 @@ class SkillTextKeys
     static const std::string SKILL_GENERAL_SMITHING;
     static const std::string SKILL_GENERAL_SMITHING_INCREMENT;
     static const std::string SKILL_GENERAL_SMITHING_DETAILS;
-    static const std::string SKILL_GENERAL_SPELUNKING;
-    static const std::string SKILL_GENERAL_SPELUNKING_INCREMENT;
-    static const std::string SKILL_GENERAL_SPELUNKING_DETAILS;
     static const std::string SKILL_GENERAL_STEALTH;
     static const std::string SKILL_GENERAL_STEALTH_INCREMENT;
     static const std::string SKILL_GENERAL_STEALTH_DETAILS;
@@ -280,6 +277,7 @@ class SkillTextKeys
     static const std::string SKILL_USAGE_BARGAINING;
     static const std::string SKILL_USAGE_BLIND_FIGHTING;
     static const std::string SKILL_USAGE_BOATING;
+    static const std::string SKILL_USAGE_BREWING;
     static const std::string SKILL_USAGE_CARRYING;
     static const std::string SKILL_USAGE_COMBAT;
     static const std::string SKILL_USAGE_CRAFTING;

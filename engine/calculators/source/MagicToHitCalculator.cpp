@@ -1,6 +1,7 @@
+#include "CarryingCapacityCalculator.hpp"
 #include "MagicToHitCalculator.hpp"
 #include "SkillManager.hpp"
-#include "CarryingCapacityCalculator.hpp"
+#include "SkillsCalculator.hpp"
 
 const int MagicToHitCalculator::MAGIC_WEIGHT_DIVISOR = 2;
 
@@ -9,7 +10,7 @@ MagicToHitCalculator::MagicToHitCalculator()
 {
 }
 
-int MagicToHitCalculator::calculate(CreaturePtr creature)
+int MagicToHitCalculator::calculate(CreaturePtr creature, MapPtr map)
 {
   int to_hit = 0;
 
@@ -18,6 +19,7 @@ int MagicToHitCalculator::calculate(CreaturePtr creature)
     to_hit = creature->get_to_hit().get_current();
 
     SkillManager sm;
+    SkillsCalculator sc;
 
     // Have you ever tried directing a fireball while drunk?
     // It's not easy!
@@ -27,6 +29,7 @@ int MagicToHitCalculator::calculate(CreaturePtr creature)
     int intelligence = get_statistic(creature).get_current();
     int skills       = get_skills_bonus(creature);
     int modifiers    = get_modifier_bonus(creature);
+    int terrain      = sc.get_terrain_to_hit_bonus(creature, map);
 
     // Harder to wiggle fingers and nose while schlepping fifty broadswords.
     int creature_carried_weight = creature->get_weight_carried();
@@ -45,6 +48,7 @@ int MagicToHitCalculator::calculate(CreaturePtr creature)
     to_hit += (intelligence - 10) / 3;
     to_hit += skills;
     to_hit += modifiers;
+    to_hit += terrain;
     to_hit -= bac_modifier;
     to_hit -= attacker_weight_value;
   }

@@ -58,7 +58,7 @@ bool NullInventory::merge(ItemPtr /*item*/)
   return false;
 }
 
-bool NullInventory::transfer_to(IInventoryPtr /*items*/)
+bool NullInventory::transfer_to(std::shared_ptr<IInventory> /* inv */)
 {
   return false;
 }
@@ -72,6 +72,12 @@ ItemPtr NullInventory::remove_and_return(const string& /*id*/)
 bool NullInventory::remove(const string& /*id*/)
 {
   return false;
+}
+
+std::vector<ItemPtr> NullInventory::remove_and_return(const Ingredients& /*ingr*/)
+{
+  std::vector<ItemPtr> nothing;
+  return nothing;
 }
 
 uint NullInventory::count_items() const
@@ -100,6 +106,11 @@ void NullInventory::set_additional_property(const string& /*p*/, const string& /
 }
 
 bool NullInventory::has_items() const
+{
+  return false;
+}
+
+bool NullInventory::has_items_for_recipe(const unordered_map<string, uint>& /* item_ids_q */, const Recipe& /*r*/) const
 {
   return false;
 }
@@ -179,6 +190,12 @@ list<ItemPtr>& NullInventory::get_items_ref()
 const list<ItemPtr>& NullInventory::get_items_cref() const
 {
   return items;
+}
+
+unordered_map<string, uint> NullInventory::get_item_ids_and_quantity() const
+{
+  unordered_map<string, uint> nothing;
+  return nothing;
 }
 
 bool NullInventory::has_item_type(const ItemType /*type*/) const

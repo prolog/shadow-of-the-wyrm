@@ -20,7 +20,10 @@ MapPtr MarshGenerator::generate(const Dimensions& dimensions)
   MapPtr result_map = std::make_shared<Map>(dimensions);
 
   fill(result_map, TileType::TILE_TYPE_MARSH);
+  
   GeneratorUtils::potentially_generate_coastline(result_map, this);
+  GeneratorUtils::potentially_generate_hive(result_map);
+
   add_random_trees_bushes_weeds_and_reeds(result_map);
 
   if (RNG::percent_chance(PCT_CHANCE_BOG_IRON))
@@ -65,7 +68,7 @@ TilePtr MarshGenerator::generate_tile(MapPtr current_map, const int row, const i
   if (result_tile != nullptr && RNG::x_in_y_chance(XY_CHANCE_BERRIES_X, XY_CHANCE_BERRIES_Y))
   {
     ItemPtr item = ItemManager::create_item(ItemIdKeys::ITEM_ID_BERRIES, RNG::range(1, 4));
-    result_tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+    result_tile->get_items()->merge_or_add(item);
   }
 
   return result_tile;
@@ -115,7 +118,7 @@ void MarshGenerator::add_bog_iron(MapPtr result_map)
 
       if (tile != nullptr)
       {
-        tile->get_items()->merge_or_add(bog_iron, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        tile->get_items()->merge_or_add(bog_iron);
       }
     }
   }

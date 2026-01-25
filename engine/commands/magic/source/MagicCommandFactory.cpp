@@ -1,3 +1,4 @@
+#include "Conversion.hpp"
 #include "MagicCommandFactory.hpp"
 #include "MagicCommandKeys.hpp"
 #include "MagicCommands.hpp"
@@ -19,11 +20,11 @@ CommandPtr MagicCommandFactory::create(const int key, const std::string& command
     // Store the pressed key.  This will always be a letter for spells,
     // so subtracting 'a' gets us the numeric index that the map uses
     // to look up the spell ID.
-    command = std::make_unique<SelectSpellCommand>(key - 'a', key);
+    command = std::make_unique<SelectSpellCommand>(Char::keyboard_selection_int_to_int(key, 'a'), key);
   }
   else if (command_name == MagicCommandKeys::ARCANA)
   {
-    command = std::make_unique<ArcanaCommand>(key - 'a', key);
+    command = std::make_unique<ArcanaCommand>(Char::keyboard_selection_int_to_int(key, 'a'), key);
   }
   else if (command_name == MagicCommandKeys::NEXT_PAGE)
   {

@@ -13,12 +13,12 @@ PulperManipulator::PulperManipulator(FeaturePtr feature)
 }
 
 
-void PulperManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
+void PulperManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/, ItemPtr /* item */)
 {
   if (creature && creature->get_is_player())
   {
     IMessageManager& manager = MMF::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_PULPER));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_PULPER));
     manager.send();
   }
 }
@@ -49,7 +49,9 @@ bool PulperManipulator::handle(TilePtr tile, CreaturePtr creature)
         Weight pulp_weight = pulp_item->get_total_weight();
         ItemPtr paper_pulp = ItemManager::create_item(ItemIdKeys::ITEM_ID_PAPER_PULP);
         paper_pulp->set_weight(pulp_weight);
-        tile->get_items()->merge_or_add(paper_pulp, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        paper_pulp->set_status(pulp_item->get_status());
+
+        tile->get_items()->merge_or_add(paper_pulp);
 
         creature->get_inventory()->remove(pulp_item->get_id());
 

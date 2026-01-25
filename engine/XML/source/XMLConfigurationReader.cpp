@@ -186,6 +186,13 @@ vector<MapPtr> XMLConfigurationReader::get_custom_maps(const string& directory, 
   return custom_maps;
 }
 
+Recipes XMLConfigurationReader::get_recipes()
+{
+  XMLNode recipes_node = XMLUtils::get_next_element_by_local_name(root, "Recipes");
+  Recipes recipes = recipes_reader.get_recipes(recipes_node);
+  return recipes;
+}
+
 void XMLConfigurationReader::set_new_file(const string& xml_filename)
 {
   initialize_parser(xml_filename);

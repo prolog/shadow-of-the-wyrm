@@ -1,5 +1,132 @@
+Shadow of the Wyrm v1.9.0 "de Cabezon"
+- Version started June 28, 2025. Version finalized January 25, 2026.
+
+- Updated the name combinations and various messages.
+
+- Added a pause when the user chooses to dump their character on death so the
+  message isn't cut off before showing the high score screen.
+
+- Followers now always see their leader, so being hidden doesn't prevent
+  followers from following you around (RelicWraith).
+
+- The backstab flag is now removed every two hours on a map.
+
+- Snakelings are now specifically bald (RelicWraith).
+
+- Updated the Linux build instructions.
+
+- The Spelunking skill (never implemented) has been removed.
+
+- The Lore skills now grant bonuses to hit and to damage when travelling on
+  applicable terrian.
+
+- Wet rooms in the dungeon are now likely to have mushrooms.
+
+- Skinning corpses may now also produce the creature's bones.
+
+- When skinning a corpse, the corpse weight is reduced somewhat and the
+  excess weight becomes the weight of the skin and bones.
+
+- Will o' the Wisps and were-light now drop essence of were-light.
+
+- Jelly-type creatures may now drop slime, and leave it as they move.
+
+- You can now move diagonally NW/NE and SW/SE via shift/control+left/right 
+  arrow (stutonk).
+
+- Hermits will now teach you Foraging if you don't know it, as will Glich.
+
+- Spell affects that affect items (fire, acid, holy, cold, etc) will now 
+  also affect features like altars, barrels, etc in similar ways.
+
+- Dungeons can now have beehives, as can most overworld maps.
+
+- Coastlines can now generate kelp.
+
+- Kelp generation on aquatic vegetation tiles is now much more common.
+
+- Sheep now generate in fields, hills, mountains.
+
+- There is now an option to exclude specific items from autopickup (Krom).
+
+- Ammo that targets a tile with a feature that doesn't have a creature
+  present will strike that feature. For the most part this will just
+  generate flavour text, but this will also trigger desecration for altars 
+  and agitate hives.
+
+- Stone ammo (rocks, etc) now have a much higher survival rate.
+
+- NPCs with ranged weapons may now decide to target terrain features such
+  as hives.
+
+- Added a new "unstable" flag (to were-light and antimatter shot) that causes
+  it to vanish when dropped or thrown.
+
+- Juniper berries will generate in fall, wild hops in summer.
+
+- If The Smith decides to give antimatter shots, he now gives more.
+
+- Dropping were-light can impart the glow flag on other items on the tile.
+
+- Items that are glowing, but not artifacts, will now show as yellow.
+
+- Added a section to the guidebook on the game's configuration for players
+  who want to change settings, game data, or behaviours (loren schmidt).
+
+- Shrines can now place multiple relics.
+
+- There is now a way to get to Telari without explicitly talking to Ead,
+  allowing passage without breaking the no-speaking conduct.
+
+- Scarves can now be created at a wheel and loom.
+
+- Added a new conduct, jewelryless (broken when you wear rings and amulets). 
+
+- Converted the project from Visual Studio 2022 to 2026.
+
+- Added cauldrons to Isen Dun, Yew, Carcassia, Atua-Elar, Gnordvar.
+
+- Apothecaries now also start with a couple antidote potions, speed potions,
+  unstoning potions, and a gain attributes potion.
+
+- Created general recipes for all in-game potions, and tied these to specific
+  Brewing skill values.
+
+- The glowing flag now has a chance to allow weapons to flare up, inflicting
+  heat damage, and adding additional damage and an additional chance to inflict
+  blindness.
+
+- New items: slime, essence of were-light, juniper berries, wild hops, honey,
+  honeycomb, ale, scarf. 
+
+- New terrain features: cauldron, insect hive.
+
+- Bowyer, Fletchery, and the use of pulpers will now set the base item status
+  based on the item used for crafting.
+
+- Bug fixes:
+
+  - Fixed a crash issue in String::clean with unexpected input that caused an
+    assert in lower-level libraries.
+
+  - Dragon Breath (the spell) was using the wrong colour compared to Dragon
+    Breath (the wand).
+
+  - The setting to ignore items over a certain number of pounds was
+    incorrectly using ounces.
+
+  - The magic to-hit calculations was using an incorrect value for one of its
+    components, making magic a little harder to hit with.
+
+  - The code to aggressively merge currency was too aggressive and was merging
+    currencies with different base IDs.
+
+  - Newer versions of Boost removed the boost_system library, which was a
+    stub after an earlier version of boost made the library header-only. The 
+    linker references to this in the premake files have been removed (Larzid).
+
 Shadow of the Wyrm v1.8.4 "Fampas"
-- Version declared March 8, 2025.
+- Version declared March 8, 2025. Version finalized June 28, 2025.
 
 - Updated the guidebook's section on Skills and created a new section on 
   how to apply terrain features (Lustcrecia).

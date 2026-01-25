@@ -13,6 +13,7 @@ enum struct ConductType
   CONDUCT_TYPE_SILENT = 8,
   CONDUCT_TYPE_ARTIFACTLESS = 9, // Never equips an artifact
   CONDUCT_TYPE_PACIFIST = 10,
-  CONDUCT_SIZE = 11
+  CONDUCT_TYPE_JEWELRYLESS = 11,
+  CONDUCT_SIZE = 12
 };
 

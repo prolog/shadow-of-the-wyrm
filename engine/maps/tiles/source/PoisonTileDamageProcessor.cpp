@@ -19,6 +19,13 @@ bool PoisonTileDamageProcessor::affects_item(ItemPtr item)
   return aff;
 }
 
+// Poison doesn't affect general material types, which are checked in the
+// top-level affects_feature function.
+bool PoisonTileDamageProcessor::affects_material(const MaterialType /*mt*/)
+{
+  return false;
+}
+
 string PoisonTileDamageProcessor::get_message_sid() const
 {
   string message_sid = TileTextKeys::TILE_DAMAGE_POISON;

@@ -157,6 +157,9 @@ class CreatureID
     static const std::string CREATURE_ID_WITCHLING;
     static const std::string CREATURE_ID_LIVING_SCARECROW;
 
+    // Hive-related
+    static const std::string CREATURE_ID_BEE;
+
   protected:
     CreatureID();
     ~CreatureID();

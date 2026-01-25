@@ -101,7 +101,7 @@ ActionCost ActionManager::display_character(CreaturePtr creature)
 ActionCost ActionManager::dump_character(CreaturePtr creature)
 {
   CharacterAction ca;
-  return get_action_cost(creature, ca.dump_character(creature, CharacterDumpType::CHARACTER_DUMP_USER_INITIATED));
+  return get_action_cost(creature, ca.dump_character(creature, CharacterDumpType::CHARACTER_DUMP_USER_INITIATED, false));
 }
 
 ActionCost ActionManager::search(CreaturePtr creature)
@@ -751,7 +751,8 @@ ActionCost ActionManager::pray(CreaturePtr creature)
 ActionCost ActionManager::weapon_info(CreaturePtr creature, const WeaponStyle weapon_style)
 {
   WeaponInfoAction wa;
-  return get_action_cost(creature, wa.weapon_info(creature, weapon_style));
+  MapPtr map = Game::instance().get_current_map();
+  return get_action_cost(creature, wa.weapon_info(creature, map, weapon_style));
 }
 
 ActionCost ActionManager::select_tile(CreaturePtr creature)

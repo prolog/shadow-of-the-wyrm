@@ -90,7 +90,7 @@ bool BeerHallSectorFeature::generate_feature(MapPtr map, const Coordinate& start
 
         if (booze != nullptr && tile != nullptr)
         {
-          tile->get_items()->merge_or_add(booze, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          tile->get_items()->merge_or_add(booze);
         }
       }
     }

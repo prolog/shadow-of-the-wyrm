@@ -1,5 +1,6 @@
 #pragma once
 #include "SkillProcessor.hpp"
+#include "ItemTypes.hpp"
 
 class FletcherySkillProcessor : public SkillProcessor
 {
@@ -8,7 +9,7 @@ class FletcherySkillProcessor : public SkillProcessor
     virtual SkillProcessorPtr clone() override;
 
   protected:
-    bool check_for_branch(CreaturePtr creature);
+    std::pair<bool, ItemStatus> check_for_branch(CreaturePtr creature);
     void create_projectiles(const std::string& item_base_id, const ItemStatus item_status, CreaturePtr creature, MapPtr map);
 };
 

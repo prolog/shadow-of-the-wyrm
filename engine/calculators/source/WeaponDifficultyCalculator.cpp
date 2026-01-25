@@ -82,14 +82,14 @@ int WeaponDifficultyCalculator::get_item_total_difficulty_for_weapon(WeaponPtr w
 // Get the "total" difficulty for the weapon.  This is not directly used in
 // game, but is useful for players because they can see the character's
 // to-hit reflected by the lower difficulty.
-int WeaponDifficultyCalculator::calculate_total_difficulty_for_display(CreaturePtr creature, const AttackType attack_type)
+int WeaponDifficultyCalculator::calculate_total_difficulty_for_display(CreaturePtr creature, MapPtr map, const AttackType attack_type)
 {
   ToHitCalculatorPtr th_calculator = ToHitCalculatorFactory::create_to_hit_calculator(creature, attack_type);
 
   int base_difficulty = calculate_base_difficulty(creature, attack_type);
   // "Total difficulty" as a concept is only used here.
   // The CombatManager uses base_roll + to_hit, instead of "weapon_difficulty - to_hit".
-  int total_difficulty = base_difficulty - th_calculator->calculate(creature);
+  int total_difficulty = base_difficulty - th_calculator->calculate(creature, map);
 
   return total_difficulty;
 }

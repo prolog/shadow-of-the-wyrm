@@ -105,7 +105,7 @@ void DropAction::handle_invalid_drop_quantity(CreaturePtr creature)
 }
 
 // Show the description of the item being dropped, if applicable
-void DropAction::handle_item_dropped_message(CreaturePtr creature, IInventoryPtr inv, ItemPtr item)
+void DropAction::handle_item_dropped_message(CreaturePtr creature, IInventoryPtr inv, ItemPtr item, const bool unstable)
 {  
   if (item && creature)
   {
@@ -124,6 +124,12 @@ void DropAction::handle_item_dropped_message(CreaturePtr creature, IInventoryPtr
       {
         manager.add_new_message(StringTable::get(inv_drop_effect_sid));
       }
+    }
+
+    // Unstable items vanish in a burst of light.
+    if (unstable)
+    {
+      manager.add_new_message(TextMessages::get_unstable_drop_message(item->get_quantity()));
     }
 
     manager.send();
@@ -276,11 +282,18 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
           string sound_id = MapUtils::get_drop_sound(creatures_tile->get_tile_super_type());
 
           Game::instance().get_sound()->play(sound_id);
-          inv->merge_or_add(new_item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+          bool unstable = String::to_bool(new_item->get_additional_property(ItemProperties::ITEM_PROPERTIES_UNSTABLE));
+
+          if (!unstable)
+          {
+            inv->merge_or_add(new_item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
+          }
+
+          handle_impart_glow(inv, new_item);
 
           // Display a message if appropriate.
           // If it's the player, remind the user what he or she dropped.
-          handle_item_dropped_message(creature, inv, new_item);
+          handle_item_dropped_message(creature, inv, new_item, unstable);
 
           // Do any of the creatures watching this have drop scripts?
           handle_reacting_creature_drop_scripts(creature, current_map, new_item, drop_coord);
@@ -406,7 +419,7 @@ bool DropAction::plant_food(CreaturePtr creature, const map<string, string>& pro
         manager.add_new_message(ground_full);
         manager.send();
 
-        tile->get_items()->merge_or_add(item_to_plant, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        tile->get_items()->merge_or_add(item_to_plant);
       }
     }
   }
@@ -456,7 +469,7 @@ bool DropAction::plant_seed(CreaturePtr creature, const map<string, string>& pro
       manager.add_new_message(ground_full);
       manager.send();
 
-      tile->get_items()->merge_or_add(seed_to_plant, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      tile->get_items()->merge_or_add(seed_to_plant);
     }
   }
   
@@ -470,7 +483,7 @@ bool DropAction::add_remainder_of_plantable_if_necessary(MapPtr current_map, Til
   if (current_map != nullptr && tile != nullptr && item_to_plant != nullptr && item_to_plant->get_quantity() > 1)
   {
     item_to_plant->set_quantity(item_to_plant->get_quantity() - 1);
-    tile->get_items()->merge_or_add(item_to_plant, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+    tile->get_items()->merge_or_add(item_to_plant);
 
     added_items = true;
   }
@@ -543,6 +556,27 @@ void DropAction::handle_reacting_creature_drop_scripts(CreaturePtr creature, Map
             DropScript ds;
             ds.execute(game.get_script_engine_ref(), sd.get_script(), creature->get_id(), reacting_creature, new_item, drop_coord);
           }
+        }
+      }
+    }
+  }
+}
+
+void DropAction::handle_impart_glow(IInventoryPtr inv, ItemPtr item)
+{
+  if (inv != nullptr && item != nullptr)
+  {
+    bool imparts_glow = String::to_bool(item->get_additional_property(ItemProperties::ITEM_PROPERTIES_IMPART_GLOW));
+
+    if (imparts_glow)
+    {
+      list<ItemPtr>& items = inv->get_items_ref();
+
+      for (ItemPtr i : items)
+      {
+        if (i != nullptr && !i->get_artifact() && RNG::percent_chance(50))
+        {
+          i->set_glowing(true);
         }
       }
     }
@@ -869,7 +903,7 @@ size_t DropAction::get_build_option(const vector<string>& options) const
   OptionScreen os(Game::instance().get_display(), ScreenTitleTextKeys::SCREEN_TITLE_BUILD, {}, options);
   string option_s = os.display();
   
-  return static_cast<size_t>(option_s[0] - 'a');
+  return static_cast<size_t>(Char::keyboard_selection_char_to_int(option_s[0]));
 }
 
 // Dropping always has a base action cost of 1.

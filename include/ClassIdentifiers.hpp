@@ -1,7 +1,5 @@
 #pragma once
 
-// NOTE: There are unused identifiers (marked "xx UNUSED") that can be
-// reclaimed.
 enum struct ClassIdentifier
 {
   CLASS_ID_NULL = 0,
@@ -154,8 +152,8 @@ enum struct ClassIdentifier
   CLASS_ID_NULL_SOUND = 147,
   CLASS_ID_SDL_SOUND = 148,
   CLASS_ID_MUSIC = 149,
-  // xx UNUSED = 150,
-  // xx UNUSED = 151,
+  CLASS_ID_RECIPE = 150,
+  CLASS_ID_HIVE = 151,
   CLASS_ID_SKILLS = 152,
   CLASS_ID_SKILL_ARCHERY = 153,
   CLASS_ID_SKILL_AWARENESS = 154,
@@ -192,7 +190,7 @@ enum struct ClassIdentifier
   CLASS_ID_SKILL_MARSH_LORE = 185,
   CLASS_ID_SKILL_MEDICINE = 186,
   CLASS_ID_SKILL_MOUNTAIN_LORE = 187,
-  //xx UNUSED = 188,
+  CLASS_ID_CAULDRON = 188,
   CLASS_ID_SKILL_MUSIC = 189,
   CLASS_ID_SKILL_NIGHT_SIGHT = 190,
   CLASS_ID_SKILL_OCEAN_LORE = 191,
@@ -201,7 +199,7 @@ enum struct ClassIdentifier
   CLASS_ID_SKILL_SCRIBING = 194,
   CLASS_ID_SKILL_SKINNING = 195,
   CLASS_ID_SKILL_SMITHING = 196,
-  CLASS_ID_SKILL_SPELUNKING = 197,
+  CLASS_ID_RECIPES = 197,
   CLASS_ID_SKILL_STEALTH = 198,
   CLASS_ID_SKILL_SWIMMING = 199,
   CLASS_ID_SKILL_TANNING = 200,
@@ -311,7 +309,8 @@ enum struct ClassIdentifier
   CLASS_ID_SPRITESHEET_LOCATION = 304,
   CLASS_ID_WEATHER = 305,
   CLASS_ID_ORDER_COMMAND_FACTORY = 306,
-  CLASS_ID_ORDER_KEYBOARD_COMMAND_MAP = 307
+  CLASS_ID_ORDER_KEYBOARD_COMMAND_MAP = 307,
+  CLASS_ID_INGREDIENT = 308
 };
 
 // Any class IDs needed for Lua scripts (e.g., feature class IDs) should go
@@ -332,3 +331,5 @@ constexpr auto CCLASS_ID_TANNERY = 280;
 constexpr auto CCLASS_ID_JEWELER_WORKBENCH = 281;
 constexpr auto CCLASS_ID_WHEEL_AND_LOOM = 282;
 constexpr auto CCLASS_ID_PULPER = 299;
+constexpr auto CCLASS_ID_HIVE = 151;
+constexpr auto CCLASS_ID_CAULDRON = 188;

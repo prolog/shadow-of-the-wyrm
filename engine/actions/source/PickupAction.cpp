@@ -65,7 +65,7 @@ ActionCostValue PickupAction::pick_up(CreaturePtr creature, const string& ground
         IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, CreatureUtils::is_player_or_in_los(creature));
 
         string item_msg = TextMessages::get_item_pick_up_and_merge_message(!cca.can_see(player), creature, ground_item);
-        creature->get_inventory()->merge_or_add(ground_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        creature->get_inventory()->merge_or_add(ground_item);
         tile->get_items()->remove(ground_item_id);
 
         manager.add_new_message(item_msg);
@@ -286,26 +286,44 @@ bool PickupAction::autopickup_passes_exclusions(ItemPtr item)
     const Settings& settings = Game::instance().get_settings_ref();
     bool ignore_corpses = settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_CORPSES);
 
+    // Should we ignore corpses?
     if (item->has_additional_property(ConsumableConstants::CORPSE_RACE_ID) && ignore_corpses)
     {
       return false;
     }
 
+    // Should we ignore unpaid?
     bool ignore_unpaid = settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_UNPAID);
 
     if (item->get_unpaid() && ignore_unpaid)
     {
       return false;
     }
-      
+
+    // Should we exclude items that'll take us over the limit?
     bool exclude_autopickup_over_limit = settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT);
     uint total_weight_oz = item->get_total_weight().get_weight();
-    Weight weight_limit_lbs(String::to_int(settings.get_setting(Setting::AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT_LBS)));
+
+    Weight weight_limit_lbs;
+    weight_limit_lbs.set_weight(String::to_int(settings.get_setting(Setting::AUTOPICKUP_IGNORE_ITEMS_OVER_WEIGHT_LBS)), 0);
     uint weight_limit_oz = weight_limit_lbs.get_weight();
 
     if (exclude_autopickup_over_limit && total_weight_oz > weight_limit_oz)
     {
       return false;
+    }
+
+    // Should we exclude specific items?
+    bool exclude_specified_items = settings.get_setting_as_bool(Setting::AUTOPICKUP_IGNORE_SPECIFIED_ITEMS);
+    if (exclude_specified_items)
+    {
+      set<string> exclude_item_ids = String::create_string_set_from_csv_string(settings.get_setting(Setting::AUTOPICKUP_IGNORE_ITEM_IDS));
+      bool id_excluded = exclude_item_ids.find(item->get_base_id()) != exclude_item_ids.end();
+
+      if (id_excluded)
+      {
+        return false;
+      }
     }
   }
  

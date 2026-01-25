@@ -15,7 +15,7 @@ FenceManipulator::FenceManipulator(FeaturePtr feature)
 {
 }
 
-void FenceManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr feat)
+void FenceManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr feat, ItemPtr /* item */)
 {
   if (creature && creature->get_is_player())
   {
@@ -30,7 +30,7 @@ void FenceManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePt
 
       ItemManager im;
       ItemPtr lumber = im.create_item(ItemIdKeys::ITEM_ID_LUMBER);
-      feature_tile->get_items()->merge_or_add(lumber, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      feature_tile->get_items()->merge_or_add(lumber);
     }
     else
     {
@@ -43,7 +43,7 @@ void FenceManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePt
 
         ItemManager im;
         ItemPtr board_with_nail_in_it = im.create_item(ItemIdKeys::ITEM_ID_BOARD_WITH_NAIL_IN_IT);
-        feature_tile->get_items()->merge_or_add(board_with_nail_in_it, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        feature_tile->get_items()->merge_or_add(board_with_nail_in_it);
       }
     }
 

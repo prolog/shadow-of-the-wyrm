@@ -9,6 +9,12 @@ bool HolyTileDamageProcessor::affects_item(ItemPtr /*item*/)
   return true;
 }
 
+// Divine powers don't affect terrain features, though.
+bool HolyTileDamageProcessor::affects_material(const MaterialType /*mt*/)
+{
+  return false;
+}
+
 string HolyTileDamageProcessor::get_message_sid() const
 {
   string message_sid = TileTextKeys::TILE_DAMAGE_HOLY;

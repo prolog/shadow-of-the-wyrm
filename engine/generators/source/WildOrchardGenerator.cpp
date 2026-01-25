@@ -25,7 +25,9 @@ MapPtr WildOrchardGenerator::generate(const Dimensions& dimensions)
   MapPtr result_map = std::make_shared<Map>(dimensions);
 
   add_map_features(result_map);
+
   GeneratorUtils::potentially_generate_coastline(result_map, this);
+  GeneratorUtils::potentially_generate_hive(result_map);
 
   return result_map;
 }

@@ -3,6 +3,41 @@
 
 using namespace std;
 
+// JewelrylessConduct
+bool JewelrylessConduct::breaks_conduct(const Equipment& eq) const
+{
+  const EquipmentMap em = eq.get_equipment();
+
+  for (const auto& em_pair : em)
+  {
+    if (em_pair.second != nullptr)
+    {
+      if (breaks_conduct(em_pair.second))
+      {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+bool JewelrylessConduct::breaks_conduct(ItemPtr item) const
+{
+  if (item != nullptr)
+  {
+    ItemType itype = item->get_type();
+    if (itype == ItemType::ITEM_TYPE_RING || itype == ItemType::ITEM_TYPE_AMULET)
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+// Conducts
+
 Conducts::Conducts()
 {
   std::fill(cond.begin(), cond.end(), true);
@@ -45,7 +80,7 @@ int Conducts::get_num_broken_conducts() const
 
 bool Conducts::serialize(ostream& stream) const
 {
-  static_assert(ConductType::CONDUCT_SIZE == ConductType(11), "Unexpected number of conducts");
+  static_assert(ConductType::CONDUCT_SIZE == ConductType(12), "Unexpected number of conducts");
 
   for (const bool conduct : cond)
   {

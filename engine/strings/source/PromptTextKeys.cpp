@@ -38,4 +38,6 @@ const string PromptTextKeys::PROMPT_INVENTORY_NO_SELECTION = "PROMPT_INVENTORY_N
 const string PromptTextKeys::PROMPT_SKIN = "PROMPT_SKIN";
 const string PromptTextKeys::PROMPT_WEAVE = "PROMPT_WEAVE";
 const string PromptTextKeys::PROMPT_KILN = "PROMPT_KILN";
+const string PromptTextKeys::PROMPT_RECIPE = "PROMPT_RECIPE";
+
 

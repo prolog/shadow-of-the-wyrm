@@ -1,5 +1,6 @@
 #include "WheelAndLoomManipulator.hpp"
 #include "ActionTextKeys.hpp"
+#include "Conversion.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemTypes.hpp"
@@ -17,17 +18,18 @@ const int WheelAndLoomManipulator::WEAVING_PCT_CHANCE_BRAND = 1;
 WheelAndLoomManipulator::WheelAndLoomManipulator(FeaturePtr feature)
 : FeatureManipulator(feature),
 loom_map({ {EquipmentWornLocation::EQUIPMENT_WORN_HEAD, ItemIdKeys::ITEM_ID_CAP},
+           {EquipmentWornLocation::EQUIPMENT_WORN_NECK, ItemIdKeys::ITEM_ID_SCARF},
            {EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, ItemIdKeys::ITEM_ID_CLOAK},
            {EquipmentWornLocation::EQUIPMENT_WORN_BODY, ItemIdKeys::ITEM_ID_WAYFARER_CLOTHES} })
 {
 }
 
-void WheelAndLoomManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
+void WheelAndLoomManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/, ItemPtr /* item */)
 {
   if (creature && creature->get_is_player())
   {
     IMessageManager& manager = MMF::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_WHEEL_AND_LOOM));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_WHEEL_AND_LOOM));
     manager.send();
   }
 }
@@ -83,7 +85,7 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
 
           if (!slot_selection.empty())
           {
-            char selection = slot_selection.at(0) - 'a';
+            char selection = static_cast<char>(Char::keyboard_selection_char_to_int(slot_selection.at(0)));
             EquipmentWornLocation selection_loc = static_cast<EquipmentWornLocation>(selection);
 
             if (std::find(worn_locs.begin(), worn_locs.end(), selection_loc) != worn_locs.end())

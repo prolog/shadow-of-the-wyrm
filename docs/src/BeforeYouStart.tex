@@ -1,0 +1,23 @@
+\section{Before You Start}
+
+Congratulations on finding this manual! This is meant to be a light introduction on the game, not too heavy on spoilers. {\it Shadow of the Wyrm} has always meant to be configurable, and there are a few items you might be interested in before you begin to play.
+
+\subsection{Settings}
+
+{\texttt swyrm.ini} is located in the game's main directory, and when you start the game, a minimal copy is created in your user directory if it does not exist. This user copy lets you override most settings without affecting any others users on your system. The exception to this is those settings that begin with an underscore --- if you'd like to override those, you'll need to edit the copy in the game directory directly.
+
+A lot of the game's behaviour is controlled by settings --- things like the display (SDL or curses), music and sound, colours, autopickup settings, and many others, can be found here.
+
+\subsection{Text}
+
+All text in {\it Shadow of the Wyrm} is kept in .ini files. The file used by the game can be found in the {\texttt language\_file} setting in swyrm.ini. For English, this is {\texttt shadowofthewyrmtext\_en.ini}.
+
+\subsection{Game Data}
+
+Like the in-game text, {\it Shadow of the Wyrm}'s creatures, items, and a number of set maps, are all externalized and editable. These can be found in the {\texttt data} directory.
+
+\subsection{Scripting}
+
+Custom behaviours --- things that happen when talking to a creature (or killing it), when dropping items, and many other situations --- are controlled by Lua scripts to keep logic specific to the game's setting out of the engine. These scripts can be found in the {\texttt scripts} folder under the main game data.
+
+{\it Shadow of the Wyrm} also features an extensive Lua API. A list of functions can be found {\texttt engine/scripting/include/LuaAPIFunctions.hpp} in the game's source, and you can run Lua commands in-game by pressing F11.

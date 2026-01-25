@@ -25,7 +25,7 @@ TEST(SW_Engine_Calculators_WandsToHitCalculator, calculate_BAC_part)
 	float bac = b.get_blood_alcohol_content();
 	creature->set_blood(b);
 
-	int val = wthc.calculate(creature);
+	int val = wthc.calculate(creature, nullptr);
 	int est_intval = static_cast<int>(bac * -100);
 
 	EXPECT_EQ(est_intval, val);
@@ -38,7 +38,7 @@ TEST(SW_Engine_Calculators_WandsToHitCalculator, calculate_level_part)
 	creature->set_charisma(10);
 	creature->set_level(8);
 
-	EXPECT_EQ(4, wthc.calculate(creature));
+	EXPECT_EQ(4, wthc.calculate(creature, nullptr));
 }
 
 TEST(SW_Engine_Calculators_WandsToHitCalculator, calculate_wandcraft_part)
@@ -48,7 +48,7 @@ TEST(SW_Engine_Calculators_WandsToHitCalculator, calculate_wandcraft_part)
 	creature->set_charisma(10);
 	creature->get_skills().set_value(SkillType::SKILL_GENERAL_WANDCRAFT, 50);
 
-	EXPECT_EQ(10, wthc.calculate(creature));
+	EXPECT_EQ(10, wthc.calculate(creature, nullptr));
 }
 
 TEST(SW_Engine_Calculators_WandsToHitCalculator, calculate_charisma_part)
@@ -57,11 +57,11 @@ TEST(SW_Engine_Calculators_WandsToHitCalculator, calculate_charisma_part)
 	CreaturePtr creature = std::make_shared<Creature>();
 	creature->set_charisma(1);
 
-	EXPECT_EQ(-3, wthc.calculate(creature));
+	EXPECT_EQ(-3, wthc.calculate(creature, nullptr));
 
 	creature->set_charisma(43);
 
-	EXPECT_EQ(11, wthc.calculate(creature));
+	EXPECT_EQ(11, wthc.calculate(creature, nullptr));
 }
 
 TEST(SW_Engine_Calculators_WandsToHitCalculator, calculate_modifiers_part)
@@ -76,5 +76,5 @@ TEST(SW_Engine_Calculators_WandsToHitCalculator, calculate_modifiers_part)
 	modifiers[3.0] = { {"fdsa", m} };
 	creature->set_modifiers(modifiers);
 
-	EXPECT_EQ(12, wthc.calculate(creature));
+	EXPECT_EQ(12, wthc.calculate(creature, nullptr));
 }

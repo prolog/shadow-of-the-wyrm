@@ -79,7 +79,7 @@ bool LibrarySectorFeature::generate_interior(MapPtr map, const Coordinate& start
 
         if (generated_item != nullptr)
         {
-          map->at({ book_row, col })->get_items()->merge_or_add(generated_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          map->at({ book_row, col })->get_items()->merge_or_add(generated_item);
         }
       }
     }
@@ -213,7 +213,7 @@ bool LittleLibrarySectorFeature::generate_feature(MapPtr map, const Coordinate& 
 
         if (generated_item != nullptr)
         {
-          map->at(book_c)->get_items()->merge_or_add(generated_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          map->at(book_c)->get_items()->merge_or_add(generated_item);
         }
       }
 

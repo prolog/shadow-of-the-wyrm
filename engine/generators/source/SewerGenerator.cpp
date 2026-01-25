@@ -6,6 +6,7 @@
 #include "GameUtils.hpp"
 #include "GeneratorUtils.hpp"
 #include "ItemGenerationManager.hpp"
+#include "ItemManager.hpp"
 #include "Log.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
@@ -22,6 +23,7 @@ const int SewerGenerator::X_INCR = 2;
 const int SewerGenerator::MIN_Y_INCR = 2;
 const int SewerGenerator::MAX_Y_INCR = 4;
 const int SewerGenerator::PCT_CHANCE_HERMIT = 5;
+const int SewerGenerator::PCT_CHANCE_SLIMY = 7;
 
 SewerGenerator::SewerGenerator(const std::string& new_map_exit_id)
 : Generator(new_map_exit_id, TileType::TILE_TYPE_SEWER_COMPLEX)
@@ -39,6 +41,12 @@ MapPtr SewerGenerator::generate(const Dimensions& dimensions)
 
   fill(result_map, TileType::TILE_TYPE_ROCK);
   int y_incr = RNG::range(MIN_Y_INCR, MAX_Y_INCR);
+
+  if (RNG::percent_chance(PCT_CHANCE_SLIMY))
+  {
+    pair<int, int> x_in_y_tile_slimy = { RNG::range(1,4), 100 };
+    tg.set_x_in_y_chance_slimy(x_in_y_tile_slimy);
+  }
 
   // Generate the sewer sections, and then connect them together.
   generate_sewer_sections(result_map, y_incr);

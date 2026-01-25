@@ -111,7 +111,7 @@ CreaturePtr get_creature(const string& creature_id)
 
     if (current_map != nullptr)
     {
-      CreatureMap& cmap = current_map->get_creatures_ref();
+      CreatureMap& cmap = current_map->get_creatures_cref();
       CreatureMap::iterator c_it = cmap.find(creature_id);
 
       if (c_it != cmap.end())
@@ -209,6 +209,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_all_base_features_to_map", add_all_base_features_to_map);
   lua_register(L, "add_feature_to_player_tile", add_feature_to_player_tile);
   lua_register(L, "set_feature_additional_property", set_feature_additional_property);
+  lua_register(L, "add_hive_to_map", add_hive_to_map);
   lua_register(L, "mark_quest_completed", mark_quest_completed);
   lua_register(L, "remove_active_quest", remove_active_quest);
   lua_register(L, "is_quest_completed", is_quest_completed);
@@ -1202,7 +1203,7 @@ int add_objects_to_player_tile(lua_State* ls)
           string obj_id = boost::trim_copy(id);
           ItemPtr item = ItemManager::create_item(obj_id);
 
-          items->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          items->merge_or_add(item);
           added_cnt++;
         }
       }
@@ -1313,7 +1314,7 @@ int add_object_to_creature(lua_State* ls)
             item->set_additional_property(p_pair.first, p_pair.second);
           }
 
-          creature->get_inventory()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          creature->get_inventory()->merge_or_add(item);
           obj_added = true;
         }
       }
@@ -1359,7 +1360,7 @@ int add_object_on_tile_to_creature(lua_State* ls)
         {
           if (i != nullptr)
           {
-            added_obj = creature->get_inventory()->merge_or_add(i, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+            added_obj = creature->get_inventory()->merge_or_add(i);
 
             if (added_obj)
             {
@@ -1466,7 +1467,7 @@ int add_key_to_player_tile(lua_State* ls)
         CreaturePtr player = Game::instance().get_current_player();
         TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
 
-        player_tile->get_items()->merge_or_add(key, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        player_tile->get_items()->merge_or_add(key);
         added = true;
       }
     }
@@ -1609,6 +1610,71 @@ int set_feature_additional_property(lua_State* ls)
   }
 
   lua_pushboolean(ls, prop_added);
+  return 1;
+}
+
+int add_hive_to_map(lua_State* ls)
+{
+  bool added = false;
+  int num_args = lua_gettop(ls);
+
+  if (num_args >= 3 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3))
+  {
+    string map_id = lua_tostring(ls, 1);
+    int y = lua_tointeger(ls, 2);
+    int x  = lua_tointeger(ls, 3);
+    Game& game = Game::instance();
+    MapPtr map = game.get_map_registry_ref().get_map(map_id);
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      if (tile != nullptr)
+      {
+        string drone_id;
+        
+        if (num_args >= 4 && lua_isstring(ls, 4))
+        {
+          drone_id = lua_tostring(ls, 4);
+        }
+
+        string leader_id;
+        vector<string> item_ids;
+        CreaturePtr drone;
+        const CreatureMap& creatures = game.get_creatures_cref();
+
+        auto cr_it = creatures.find(drone_id);
+        if (cr_it != creatures.end())
+        {
+          drone = cr_it->second;
+        }
+
+        FeaturePtr hive;
+        
+        if (drone_id.empty())
+        {
+          hive = FeatureGenerator::generate_beehive();
+        }
+        else
+        {
+          hive = FeatureGenerator::generate_hive();        
+        }
+
+        if (hive != nullptr)
+        {
+          tile->set_feature(hive);
+          added = true;
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to add_hive_to_map");
+  }
+
+  lua_pushboolean(ls, added);
   return 1;
 }
 
@@ -3063,7 +3129,7 @@ int get_creature_yx(lua_State* ls)
     string creature_id_or_base = lua_tostring(ls, 1);
     
     Coordinate c(-1,-1);
-    const CreatureMap& creatures = current_map->get_creatures_ref();
+    const CreatureMap& creatures = current_map->get_creatures_cref();
 
     for (const auto& creature_pair : creatures)
     {
@@ -5119,7 +5185,7 @@ int summon_items_around_creature(lua_State* ls)
 
           if (tile != nullptr && item != nullptr)
           {
-            tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+            tile->get_items()->merge_or_add(item);
             num_items++;
           }
         }
@@ -5427,7 +5493,7 @@ int set_map_hostility(lua_State* ls)
 
     if (map != nullptr)
     {
-      const CreatureMap& creatures = map->get_creatures_ref();
+      const CreatureMap& creatures = map->get_creatures_cref();
       HostilityManager hm;
 
       for (const auto& c_pair : creatures)
@@ -5581,7 +5647,7 @@ int get_creature_description(lua_State* ls)
     // at a particular goblin in a dungeon).
     if (ignore_checks)
     {
-      const CreatureMap& c_map = Game::instance().get_creatures_ref();
+      const CreatureMap& c_map = Game::instance().get_creatures_cref();
       auto c_it = c_map.find(creature_id);
 
       if (c_it != c_map.end())
@@ -5611,7 +5677,7 @@ int get_creature_description_sids(lua_State* ls)
 
   if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
   {
-    const CreatureMap& c_map = Game::instance().get_creatures_ref();
+    const CreatureMap& c_map = Game::instance().get_creatures_cref();
     string base_id = lua_tostring(ls, 1);
     auto c_it = c_map.find(base_id);
 
@@ -5679,7 +5745,7 @@ int transfer_item(lua_State* ls)
 
       for (ItemPtr item : items.second)
       {
-        inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+        inv->merge_or_add(item);
       }
 
       item_transferred = items.first;
@@ -5956,7 +6022,7 @@ int add_kill_to_creature_mortuary(lua_State* ls)
     if (creature != nullptr)
     {
       string creature_short_desc_sid;
-      const CreatureMap& creatures = Game::instance().get_creatures_ref();
+      const CreatureMap& creatures = Game::instance().get_creatures_cref();
       const auto c_it = creatures.find(killed_id);
 
       if (c_it != creatures.end() && c_it->second != nullptr)
@@ -8546,7 +8612,7 @@ int generate_item(lua_State* ls)
 
         if (tile != nullptr)
         {
-          tile->get_items()->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          tile->get_items()->merge_or_add(item);
 
           generated = true;
           item_id = item->get_id();
@@ -8687,7 +8753,7 @@ int add_all_items_to_player_tile(lua_State* ls)
 
           if (item != nullptr)
           {
-            inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+            inv->merge_or_add(item);
           }
         }
       }
@@ -9547,7 +9613,7 @@ int creature_has_humanoid_followers(lua_State* ls)
 
     if (map != nullptr)
     {
-      const CreatureMap& creatures = map->get_creatures_ref();
+      const CreatureMap& creatures = map->get_creatures_cref();
 
       for (const auto& c_pair : creatures)
       {
@@ -9586,7 +9652,7 @@ int count_creature_humanoid_followers(lua_State* ls)
 
     if (map != nullptr)
     {
-      const CreatureMap& creatures = map->get_creatures_ref();
+      const CreatureMap& creatures = map->get_creatures_cref();
 
       for (const auto& c_pair : creatures)
       {
@@ -9682,7 +9748,7 @@ int count_creatures_with_race(lua_State* ls)
 
     if (map != nullptr)
     {
-      const CreatureMap& creatures = map->get_creatures_ref();
+      const CreatureMap& creatures = map->get_creatures_cref();
 
       for (const auto& c_pair : creatures)
       {
@@ -9724,7 +9790,7 @@ int count_creatures_with_property(lua_State* ls)
 
     if (map != nullptr)
     {
-      const CreatureMap& creatures = map->get_creatures_ref();
+      const CreatureMap& creatures = map->get_creatures_cref();
 
       for (const auto& c_pair : creatures)
       {

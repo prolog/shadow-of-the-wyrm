@@ -139,7 +139,8 @@ vector<ClassIdentifier> BuildingConfigFactory::create_house_features() const
   map<ClassIdentifier, int> f_probs = {{ClassIdentifier::CLASS_ID_BED, 80}, 
                                        {ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, 10}, 
                                        {ClassIdentifier::CLASS_ID_BENCH, 15},
-                                       {ClassIdentifier::CLASS_ID_TABLE, 30}};
+                                       {ClassIdentifier::CLASS_ID_TABLE, 30},
+                                       {ClassIdentifier::CLASS_ID_CAULDRON, 10} };
   vector<ClassIdentifier> features;
 
   for (auto f_pair : f_probs)
@@ -160,7 +161,8 @@ vector<ClassIdentifier> BuildingConfigFactory::create_workshop_features() const
                                        {ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH, 17},
                                        {ClassIdentifier::CLASS_ID_FORGE, 17},
                                        {ClassIdentifier::CLASS_ID_PULPER, 17},
-                                       {ClassIdentifier::CLASS_ID_KILN, 17}};
+                                       {ClassIdentifier::CLASS_ID_KILN, 17},
+                                       {ClassIdentifier::CLASS_ID_CAULDRON, 17} };
   vector<ClassIdentifier> features;
 
   for (auto f_pair : f_probs)

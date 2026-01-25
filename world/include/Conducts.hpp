@@ -1,8 +1,17 @@
 #pragma once
 #include <array>
-#include <map>
 #include "ConductTypes.hpp"
 #include "ISerializable.hpp"
+#include "Equipment.hpp"
+
+// Utility class for checking the jewelryless conduct, since it needs to be
+// done in a few places.
+class JewelrylessConduct
+{
+  public:
+    bool breaks_conduct(const Equipment& eq) const;
+    bool breaks_conduct(ItemPtr i) const;
+};
 
 // Creature conducts - the engine will track these in case the player wants
 // to try to stick to particular conducts.

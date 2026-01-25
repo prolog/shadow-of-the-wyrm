@@ -11,10 +11,10 @@ class NullKeyboardController : public Controller
     virtual Controller* clone() override;
 
   protected:
-    int read_char_as_int() override;
+    std::pair<int, std::set<KeyModifierType>> read_char_as_int() override;
     std::pair<bool, int> read_char_as_int_nb() override;
 
-    int translate_kb_input(const int input) override;
+    int translate_kb_input(const int input, const std::set<KeyModifierType>& key_modifiers) override;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

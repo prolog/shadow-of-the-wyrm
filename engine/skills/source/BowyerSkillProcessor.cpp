@@ -5,7 +5,6 @@
 #include "CreateItemScreen.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
-#include "ItemProperties.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
@@ -18,7 +17,9 @@ ActionCostValue BowyerSkillProcessor::process(CreaturePtr creature, MapPtr map)
 
   if (creature != nullptr && map != nullptr)
   {
-    if (check_for_bough(creature))
+    auto bough_exists = check_for_bough(creature);
+
+    if (bough_exists.first)
     {
       CurrentCreatureAbilities cca;
 
@@ -29,14 +30,13 @@ ActionCostValue BowyerSkillProcessor::process(CreaturePtr creature, MapPtr map)
 
         CreateItemScreen cis(cur_disp, SkillType::SKILL_GENERAL_BOWYER);
         string sel = cis.display();
-        char sel_c = sel.at(0) - 'a';
+        char sel_c = static_cast<char>(Char::keyboard_selection_char_to_int(sel.at(0)));
         OptionPtr option = cis.get_option(sel_c);
 
         if (option != nullptr)
         {
           string item_base_id = option->get_external_id();
-          string item_status_s = option->get_property(ItemProperties::ITEM_PROPERTIES_STATUS);
-          ItemStatus item_status = (item_status_s.empty() ? ItemStatus::ITEM_STATUS_UNCURSED : static_cast<ItemStatus>(String::to_int(item_status_s)));
+          ItemStatus item_status = bough_exists.second;
 
           create_bowyer_item(item_base_id, item_status, creature, map);
           creature->get_skills().mark(SkillType::SKILL_GENERAL_BOWYER);
@@ -56,9 +56,9 @@ SkillProcessorPtr BowyerSkillProcessor::clone()
   return proc;
 }
 
-bool BowyerSkillProcessor::check_for_bough(CreaturePtr creature)
+pair<bool, ItemStatus> BowyerSkillProcessor::check_for_bough(CreaturePtr creature)
 {
-  bool has_bough = false;
+  pair<bool, ItemStatus> has_bough = { false, ItemStatus::ITEM_STATUS_UNCURSED };
 
   if (creature != nullptr)
   {
@@ -66,11 +66,11 @@ bool BowyerSkillProcessor::check_for_bough(CreaturePtr creature)
 
     if (bough != nullptr)
     {
-      has_bough = true;
+      has_bough = { true, bough->get_status() };
     }
   }
 
-  if (has_bough == false)
+  if (has_bough.first == false)
   {
     IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 

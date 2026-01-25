@@ -266,6 +266,13 @@
 		<FeaturePlacement>
 			<Coord>
 				<Row>6</Row>
+				<Col>44</Col>
+			</Coord>
+			<Cauldron/>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>6</Row>
 				<Col>51</Col>
 			</Coord>
 			<Bed/>

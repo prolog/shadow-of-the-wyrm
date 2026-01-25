@@ -32,12 +32,12 @@ void SlotMachineManipulator::initialize()
                 "SLOT_MACHINE_FACE5"};
 }
 
-void SlotMachineManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/)
+void SlotMachineManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feat*/, ItemPtr /* item */)
 {
   if (creature && creature->get_is_player())
   {
     IMessageManager& manager = MMF::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_SLOT_MACHINE));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_SLOT_MACHINE));
     manager.send();
   }
 }
@@ -87,7 +87,7 @@ bool SlotMachineManipulator::handle(TilePtr tile, CreaturePtr creature)
 
             if (creature_tile != nullptr)
             {
-              creature_tile->get_items()->merge_or_add(winnings, InventoryAdditionType::INVENTORY_ADDITION_BACK); 
+              creature_tile->get_items()->merge_or_add(winnings); 
             }
 
             sf1 = sf2 = sf3 = sf.at(RNG::range(0, sf.size()-1));

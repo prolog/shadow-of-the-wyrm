@@ -1,4 +1,5 @@
 #include "OptionsComponent.hpp"
+#include "Conversion.hpp"
 
 using namespace std;
 
@@ -31,7 +32,7 @@ bool Option::get_enabled() const
 
 int Option::get_id_for_random() const
 {
-  return '*' - 'a';
+  return Char::keyboard_selection_char_to_int('*');
 }
 
 bool Option::is_random_option(const int opt) const

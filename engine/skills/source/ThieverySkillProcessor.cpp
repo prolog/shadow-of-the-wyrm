@@ -300,7 +300,7 @@ void ThieverySkillProcessor::transfer_stolen_item(CreaturePtr stealing_creature,
 
     if (get<0>(steal))
     {
-      stealing_creature->get_inventory()->merge_or_add(stolen_item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+      stealing_creature->get_inventory()->merge_or_add(stolen_item);
     }
     else
     {

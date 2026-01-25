@@ -11,12 +11,12 @@ BarrelManipulator::BarrelManipulator(FeaturePtr feature)
 {
 }
 
-void BarrelManipulator::kick(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/)
+void BarrelManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/, ItemPtr /* item */)
 {
   if (creature && creature->get_is_player())
   {
     IMessageManager& manager = MMF::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_BARREL));
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_BARREL));
     manager.send();
   }
 }
@@ -43,7 +43,7 @@ bool BarrelManipulator::handle(TilePtr tile, CreaturePtr creature)
           IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
 
           IInventoryPtr inv = tile->get_items();
-          inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
+          inv->merge_or_add(item);
 
           manager.add_new_message(ActionTextKeys::get_pour_message(creature->get_description_sid(), item->get_usage_description_sid(), creature->get_is_player()));
           manager.send();

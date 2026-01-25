@@ -1,3 +1,4 @@
+#include "Conversion.hpp"
 #include "Game.hpp"
 #include "OptionScreen.hpp"
 #include "ToggleSettingsAction.hpp"
@@ -26,7 +27,7 @@ void ToggleSettingsAction::show_settings(CreaturePtr creature, const string& scr
 
     if (!display_s.empty())
     {
-      idx = display_s[0] - 'a';
+      idx = Char::keyboard_selection_char_to_int(display_s[0]);
     }
 
     if (idx >= 0 && idx < static_cast<int>(settings.size()))

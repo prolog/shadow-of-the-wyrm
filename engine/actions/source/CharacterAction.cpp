@@ -58,7 +58,7 @@ ActionCostValue CharacterAction::display_character(CreaturePtr creature)
   return get_action_cost_value(creature);
 }
 
-ActionCostValue CharacterAction::dump_character(CreaturePtr creature, const CharacterDumpType cdt)
+ActionCostValue CharacterAction::dump_character(CreaturePtr creature, const CharacterDumpType cdt, const bool add_pause)
 {
   if (creature)
   {
@@ -75,8 +75,19 @@ ActionCostValue CharacterAction::dump_character(CreaturePtr creature, const Char
       dumpdata_dir = Environment::get_userdata_directory(&settings);
 
       string dump_message = TextMessages::get_dumping_character_message(name, dumpdata_dir);
-      manager.add_new_message(dump_message);
-      manager.send();
+
+      if (add_pause)
+      {
+        manager.add_new_message_with_pause(dump_message);
+        manager.send();
+        Game::instance().get_current_player()->get_decision_strategy()->get_confirmation();
+
+      }
+      else
+      {
+        manager.add_new_message(dump_message);
+        manager.send();
+      }
     }
 
     CharacterDumper dumper(creature);
