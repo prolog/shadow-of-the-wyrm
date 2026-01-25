@@ -28,7 +28,6 @@ Me:
   around it
 - for steel items: coal + iron? recipes tied to skills?
 - what about a theme for Cithriel? something weird and otherworldly
-- Give were-light unstable flag
 - More recipes as more spell effects are added!
 - regular stanza updates again! XII should be the brothers/rebels returning to
   farstead, XIII Tel's group.
@@ -52,7 +51,7 @@ Me:
 - mushrooms with randomized effects, descs like wildflowers. eat scripts?
 - Desert/Forest/etc Lore (+ dungeoneering?): to-hit, damage, speed bonuses on 
   that terrain
-- creature-specific turn-to-fight/rage values`
+- creature-specific turn-to-fight/rage values
 - Uniques and fleeing?
 - what other creatures can be templated now?
 - Make keeps more interesting?
@@ -525,15 +524,10 @@ RelicWraith:
 Paul Raymond-Robichaud:
 - Increase HP/AP regen modifiers as you level
 - be able to exit game to main screen
-- sheep generate tame for shepherds (sheep need to actually generate then)
 - shift+letter for race, class, religion help on start
 - special events/festivities on certain days? (feasts, etc)
 
 Lustrecia:
-- Using "active" skills, like fishing or disarm trap, is not covered in the manual and was not very obvious. This might be a me thing, as I don't have a history with more old-school roguelikes like Adom, but just adding a blurb about how you can use skills from F3 menu would have helped me a lot.
-
-- More or less the same as above, "Apply a nearby terrain feature" is a single line in manual which does not elaborate on what a terrain feature even is. I'm pretty sure I figured that it is for using crafting stations by accident, and opening/closing doors was an accident too. On the other hand, bed is not a terrain feature, while I expected that using "a" near a bed would make me rest on it.
-
 - It would be nice if merchant's dialogue hinted on the restock somehow, maybe something along the lines of "I'm getting new wares delivered in a couple of weeks, come back again!".
 
 marwff:

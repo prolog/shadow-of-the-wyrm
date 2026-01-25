@@ -287,7 +287,12 @@
 				</Sprite>
 			</Symbol>
 			<CreatureGeneration>
-				<AllowableTerrainTypes/>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+				</AllowableTerrainTypes>
 				<Friendly>1</Friendly>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>

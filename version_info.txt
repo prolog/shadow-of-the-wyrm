@@ -45,6 +45,8 @@ Shadow of the Wyrm v1.9.0 "de Cabezon"
 
 - Kelp generation on aquatic vegetation tiles is now much more common.
 
+- Sheep now generate in fields, hills, mountains.
+
 - There is now an option to exclude specific items from autopickup (Krom).
 
 - Ammo that targets a tile with a feature that doesn't have a creature
