@@ -1,7 +1,6 @@
 #pragma once
 #include <array>
 #include "ConductTypes.hpp"
-#include "Creature.hpp"
 #include "ISerializable.hpp"
 #include "Equipment.hpp"
 
