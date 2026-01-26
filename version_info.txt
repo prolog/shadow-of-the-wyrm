@@ -1,4 +1,7 @@
-Shadow of the Wyrm v1.9.0 "de Cabezon"
+Shadow of the Wyrm v2.0.0 "de Cabezon"
+- Version started January 25, 2026.
+
+Shadow of the Wyrm v1.9.0 "Sergio Assad"
 - Version started June 28, 2025. Version finalized January 25, 2026.
 
 - Updated the name combinations and various messages.
