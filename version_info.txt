@@ -1,4 +1,4 @@
-Shadow of the Wyrm v2.0.0 "de Cabezon"
+Shadow of the Wyrm v1.9.1 "Odair Assad"
 - Version started January 25, 2026.
 
 - New random names.
