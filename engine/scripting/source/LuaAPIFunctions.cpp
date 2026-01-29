@@ -498,6 +498,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_music_location_for_map_type", get_music_location_for_map_type);
   lua_register(L, "does_item_exist_on_map", does_item_exist_on_map);
   lua_register(L, "set_tile_unprotected_movement_is_death", set_tile_unprotected_movement_is_death);
+  lua_register(L, "remove_ammo_at", remove_ammo_at);
 }
 
 // Lua API helper functions
@@ -10761,6 +10762,35 @@ int set_tile_unprotected_movement_is_death(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Invalid arguments to set_tile_unprotected_movement_is_death");
+  }
+
+  return 0;
+}
+
+// Debugging function: deletes the item in the ammo slot for the creature at
+// the given y,x.
+int remove_ammo_at(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
+  {
+    MapPtr map = Game::instance().get_current_map();
+    int y = lua_tointeger(ls, 1);
+    int x = lua_tointeger(ls, 2);
+
+    if (map != nullptr)
+    {
+      TilePtr tile = map->at(y, x);
+
+      if (tile && tile->has_creature())
+      {
+        CreaturePtr creature = tile->get_creature();
+        creature->get_equipment().remove_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to remove_ammo_at");
   }
 
   return 0;

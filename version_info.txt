@@ -1,4 +1,17 @@
-Shadow of the Wyrm v1.9.0 "de Cabezon"
+Shadow of the Wyrm v1.9.1 "Odair Assad"
+- Version started January 25, 2026. Version finalized January 29, 2026.
+
+- New random names.
+
+- Bug fixes:
+
+  - The crash dump code was referencing an old email address.
+
+  - There was a bug with missiles where if the missile was destroyed too
+    soon (which can happen for various valid reasons), the game would 
+    crash.
+
+Shadow of the Wyrm v1.9.0 "Sergio Assad"
 - Version started June 28, 2025. Version finalized January 25, 2026.
 
 - Updated the name combinations and various messages.

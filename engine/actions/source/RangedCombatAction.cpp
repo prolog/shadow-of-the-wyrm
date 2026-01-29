@@ -355,6 +355,14 @@ bool RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature
       // Last ammunition - remove it from the equipment.
       ammunition = im.remove(creature, EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION, false);
     }
+
+    // Guard - in certain edge cases (haven't been able to determine when!),
+    // a FireMissileCommand is executed, but ammunition is null, and this 
+    // causes a read access violation. Return false to exit safely.
+    if (ammunition == nullptr)
+    {
+      return false;
+    }
     
     AmmunitionCalculator ammunition_calc;
     IInventoryPtr inv = tile->get_items();
