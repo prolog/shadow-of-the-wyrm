@@ -3,6 +3,11 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 
 - More names.
 
+- Bug fixes:
+  
+  - A couple of apothecary recipes were producing muteness tonics when they
+    should have created other potions (grdlgrdl).
+
 Shadow of the Wyrm v1.9.1 "Odair Assad"
 - Version started January 25, 2026. Version finalized January 29, 2026.
 
