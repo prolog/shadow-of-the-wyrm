@@ -1,3 +1,13 @@
+Shadow of the Wyrm v1.9.1.2 "Odair Assad"
+- Version started January 29, 2026. Version finalized February 10, 2026.
+
+- More names.
+
+- Bug fixes:
+  
+  - A couple of apothecary recipes were producing muteness tonics when they
+    should have created other potions (grdlgrdl).
+
 Shadow of the Wyrm v1.9.1 "Odair Assad"
 - Version started January 25, 2026. Version finalized January 29, 2026.
 

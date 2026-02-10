@@ -499,6 +499,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "does_item_exist_on_map", does_item_exist_on_map);
   lua_register(L, "set_tile_unprotected_movement_is_death", set_tile_unprotected_movement_is_death);
   lua_register(L, "remove_ammo_at", remove_ammo_at);
+  lua_register(L, "add_all_brewing_ingredients_to_player_tile", add_all_brewing_ingredients_to_player_tile);
 }
 
 // Lua API helper functions
@@ -10791,6 +10792,60 @@ int remove_ammo_at(lua_State* ls)
   else
   {
     LuaUtils::log_and_raise(ls, "Invalid arguments to remove_ammo_at");
+  }
+
+  return 0;
+}
+
+// Debugging function: give the player lots of brewing ingredients for
+// testing.
+int add_all_brewing_ingredients_to_player_tile(lua_State* ls)
+{
+  if (lua_gettop(ls) == 1 && lua_isnumber(ls, 1))
+  {
+    Game& game = Game::instance();
+    CreaturePtr player = game.get_current_player();
+    MapPtr map = game.get_current_map();
+
+    if (player != nullptr && map != nullptr)
+    {
+      TilePtr player_tile = map->at(map->get_location(player->get_id()));
+
+      if (player_tile != nullptr)
+      {
+        const RecipesType& recipes = game.get_recipes_ref().get_recipes_ref();
+
+        for (const auto& r_it : recipes)
+        {
+          for (const auto& r2_it : r_it.second)
+          {
+            for (const auto& r3_it : r2_it.second)
+            {
+              Recipe r = r3_it.second;
+              const Ingredients& ingrs = r.get_ingredients_ref();
+
+              for (const auto& ingr : ingrs)
+              {
+                // By the point the script is being run, the IDs will be set
+                // and we don't have to worry about whether an ID hasn't been
+                // set and the ingredient is using randomization properties
+                // instead.
+                ItemPtr item = ItemManager::create_item(ingr.get_id(), ingr.get_quantity());
+
+                if (item != nullptr)
+                {
+                  player_tile->get_items()->merge_or_add(item);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to add_all_brewing_ingredients_to_player_tile");
   }
 
   return 0;

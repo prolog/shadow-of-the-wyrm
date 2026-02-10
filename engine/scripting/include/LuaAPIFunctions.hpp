@@ -336,6 +336,7 @@ int get_music_location_for_map_type(lua_State* ls);
 int does_item_exist_on_map(lua_State* ls);
 int set_tile_unprotected_movement_is_death(lua_State* ls);
 int remove_ammo_at(lua_State* ls);
+int add_all_brewing_ingredients_to_player_tile(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

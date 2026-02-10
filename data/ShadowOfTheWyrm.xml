@@ -8453,7 +8453,7 @@
 			</Ingredients>
 			<Skill>7</Skill>
 			<Min>30</Min>
-			<Make>amut_potion</Make>
+			<Make>uncursing_potion</Make>
 		</Recipe>
 		<Recipe id="br_08_unblinding">
 			<Ingredients>
@@ -8481,7 +8481,7 @@
 			</Ingredients>
 			<Skill>7</Skill>
 			<Min>45</Min>
-			<Make>amut_potion</Make>
+			<Make>speed_potion</Make>
 		</Recipe>
 		<Recipe id="br_11_unbinding">
 			<Ingredients>
