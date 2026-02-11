@@ -59,6 +59,7 @@ class String
     static Colour to_colour(const std::string& str, const Colour default_colour);
     static bool is_whitespace(const std::string& str);
     static std::string add_trailing_spaces(const std::string& str, const uint max_size);
+    static std::string to_lower(const std::string& str);
 
   protected:
     String();

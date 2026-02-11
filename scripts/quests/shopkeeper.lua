@@ -59,5 +59,11 @@ if num_unpaid_items > 0 then
   end
 else
   -- Nothing owed.  Add a standard greeting.
-  clear_and_add_message("SHOPKEEPER_SPEECH_TEXT_SID")
+  local has_space = get_shop_has_available_space(shopkeep_id)
+
+  if has_space == true then
+    clear_and_add_message("SHOPKEEPER_REPOP_SOON_SID")
+  else
+    clear_and_add_message("SHOPKEEPER_SPEECH_TEXT_SID")
+  end
 end

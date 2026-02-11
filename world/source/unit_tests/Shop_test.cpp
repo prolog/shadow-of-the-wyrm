@@ -23,4 +23,3 @@ TEST(SW_World_Shop, saveload)
 
   EXPECT_TRUE(s == s2);
 }
-

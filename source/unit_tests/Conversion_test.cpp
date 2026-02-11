@@ -279,3 +279,8 @@ TEST(SW_Engine_ConversionRoutines, keyboard_selection_char_to_int)
     EXPECT_EQ(c_pair.second, Char::keyboard_selection_char_to_int(c_pair.first, 'a'));
   }
 }
+
+TEST(SW_Engine_EngineConversion_String, to_lower)
+{
+  EXPECT_EQ("aaaaa", String::to_lower("AaAAA"));
+}

@@ -393,6 +393,14 @@ string String::add_trailing_spaces(const string& str, const uint max_size)
   return result;
 }
 
+string String::to_lower(const string& str)
+{
+  string s_lower = str;
+  std::transform(s_lower.begin(), s_lower.end(), s_lower.begin(), [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
+
+  return s_lower;
+}
+
 void String::reset_and_pad(string& s, const uint num_cols)
 {
   s = "";

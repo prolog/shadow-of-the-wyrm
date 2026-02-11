@@ -7,6 +7,7 @@
 #include "Naming.hpp"
 #include "RNG.hpp"
 #include "Shop.hpp"
+#include "ShopUtils.hpp"
 
 using namespace std;
 
@@ -53,7 +54,7 @@ bool ShopGenerator::generate_shop(MapPtr map, const Building& building)
           }
 
           string shopkeeper_name = Naming::generate_name(static_cast<CreatureSex>(RNG::range(0, 1)));
-          string shop_id = shopkeeper_name + "_shop";
+          string shop_id = ShopUtils::generate_shop_id_from_shopkeeper_name(shopkeeper_name);
 
           if (!map->has_shop(shop_id))
           {

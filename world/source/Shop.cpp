@@ -1,5 +1,7 @@
+#include "IInventory.hpp"
 #include "Shop.hpp"
 #include "Serialize.hpp"
+#include "Tile.hpp"
 
 using namespace std;
 

@@ -8,6 +8,11 @@ Long Term Boring And Probably Necessary:
 - Visual Studio: x64 build
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
+Paul Raymond-Robichaud:
+- Increase HP/AP regen modifiers as you level
+- shift+letter for race, class, religion help on start
+- special events/festivities on certain days? (feasts, etc)
+
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
   staircase extra descs, randomized npc stuff, etc.
@@ -15,14 +20,6 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
-- re-orchestrate climactic section of Carcassia? Thicken it a bit? (+ update
-  YT after)
-- weaving, tanning, bowyer, fletcher, should all have a chance to improve the
-  item status based on the specific skill + crafting.
-- hook up bowyer/fletcher to calc to improve status, then do the other skills
-- signs outside of workshop-designated buildings in towns
-- fletchery/bowyer status - when unc, skill% chance to turn blessed.
-- Use this for fletchery, bowyer, etc, to improve item & quantity
 - Dropping unstable items should have a chance to blind those around you
 - Throwing unstable items should have a chance to blind the target and those
   around it
@@ -520,18 +517,6 @@ EruditeFigglebottom:
 
 RelicWraith:
 - Suggestion: Praying during a deity's specific holy day grants the player a gift, once per holy day. Could be just flavor items rather than anything that gives significant power (eg. a themed companion or food item). Even low piety worshipers get gifts, if not just junk...
-
-Paul Raymond-Robichaud:
-- Increase HP/AP regen modifiers as you level
-- be able to exit game to main screen
-- shift+letter for race, class, religion help on start
-- special events/festivities on certain days? (feasts, etc)
-
-Lustrecia:
-- It would be nice if merchant's dialogue hinted on the restock somehow, maybe something along the lines of "I'm getting new wares delivered in a couple of weeks, come back again!".
-
-marwff:
-- Way into Telari without talking
 
 hemsio:
 - dwarf thief with crowbar in offhand doing more damage than in main?

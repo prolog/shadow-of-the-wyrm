@@ -4646,6 +4646,9 @@
     <ClInclude Include="engine\calculators\include\BrewingCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\maps\include\ShopUtils.hpp">
+      <Filter>Header Files\engine\maps\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9486,6 +9489,12 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\ItemTypes_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\ShopUtils.cpp">
+      <Filter>Source Files\engine\maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\unit_tests\ShopUtils_test.cpp">
+      <Filter>Source Files\engine\maps\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

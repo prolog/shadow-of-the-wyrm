@@ -1218,6 +1218,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\maps\include\MapTypeQueries.hpp" />
     <ClInclude Include="engine\maps\include\MapTypeQueryFactory.hpp" />
     <ClInclude Include="engine\maps\include\MapUtils.hpp" />
+    <ClInclude Include="engine\maps\include\ShopUtils.hpp" />
     <ClInclude Include="engine\maps\include\TileUtils.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\AltarManipulator.hpp" />
     <ClInclude Include="engine\maps\tiles\features\include\BarrelManipulator.hpp" />
@@ -2901,6 +2902,13 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\ShopUtils.cpp" />
+    <ClCompile Include="engine\maps\source\unit_tests\ShopUtils_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\maps\tiles\features\source\CauldronManipulator.cpp" />
     <ClCompile Include="engine\maps\tiles\features\source\FeatureManipulator.cpp" />

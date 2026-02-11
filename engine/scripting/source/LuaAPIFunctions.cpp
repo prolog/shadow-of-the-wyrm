@@ -52,6 +52,7 @@
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
 #include "ShopGenerator.hpp"
+#include "ShopUtils.hpp"
 #include "SkillManager.hpp"
 #include "SoundEffectID.hpp"
 #include "Spellbook.hpp"
@@ -396,6 +397,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_item_unpaid", set_item_unpaid);
   lua_register(L, "set_item_num_generated", set_item_num_generated);
   lua_register(L, "is_in_shop", is_in_shop);
+  lua_register(L, "get_shop_has_available_space", get_shop_has_available_space);
   lua_register(L, "is_item_unpaid", is_item_unpaid);
   lua_register(L, "load_map", load_map);
   lua_register(L, "has_artifact_in_inventory", has_artifact_in_inventory);
@@ -7584,6 +7586,41 @@ int is_in_shop(lua_State* ls)
   }
 
   lua_pushboolean(ls, in_shop);
+  return 1;
+}
+
+int get_shop_has_available_space(lua_State* ls)
+{
+  bool has_space = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string shopkeeper_id = lua_tostring(ls, 1);
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+    
+    if (map != nullptr)
+    {
+      CreaturePtr sk = map->get_creature(shopkeeper_id);
+
+      if (sk != nullptr)
+      {
+        const auto& shops = map->get_shops_ref();
+        auto s_it = shops.find(ShopUtils::generate_shop_id_from_shopkeeper_name(sk->get_name()));
+
+        if (s_it != shops.end())
+        {
+          has_space = ShopUtils::has_space_for_wares(map, s_it->second);
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_shop_has_available_space");
+  }
+
+  lua_pushboolean(ls, has_space);
   return 1;
 }
 
