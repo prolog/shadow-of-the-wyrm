@@ -134,7 +134,7 @@ TEST(SW_Engine_Calculators_PhysicalDamageCalculator, get_drunkenness_modifier)
 TEST(SW_Engine_Calculators_PhysicalDamageCalculator, get_item_status_modifier)
 {
   PhysicalDamageCalculator pdc(AttackType::ATTACK_TYPE_MELEE_PRIMARY, PhaseOfMoonType::PHASE_OF_MOON_NEW);
-  std::map<ItemStatus, int> statuses = { {ItemStatus::ITEM_STATUS_CURSED, -10}, {ItemStatus::ITEM_STATUS_UNCURSED, 0}, {ItemStatus::ITEM_STATUS_BLESSED, 10} };
+  std::map<ItemStatus, int> statuses = { {ItemStatus::ITEM_STATUS_CURSED, -25}, {ItemStatus::ITEM_STATUS_UNCURSED, 0}, {ItemStatus::ITEM_STATUS_BLESSED, 25} };
 
   for (const auto& st_pair : statuses)
   {
