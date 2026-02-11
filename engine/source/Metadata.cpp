@@ -56,7 +56,7 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 { 
-  return "\"Odair Assad\"";
+  return "\"de Cabezon\"";
 }
 
 string Metadata::get_game_version_synopsis() const
