@@ -81,6 +81,14 @@ const string TextMessages::SHIPWRECK_SHIP_NAME_POSSESSEE      = "SHIPWRECK_SHIP_
 string TextMessages::get_full_header_text(const string& header, const uint num_cols)
 {
   ostringstream ss;
+  string decorative_char = Game::instance().get_settings_ref().get_setting(Setting::DISPLAY_HEADER_DECORATIVE_CHAR);
+
+  if (decorative_char.empty())
+  {
+    decorative_char = "-";
+  }
+
+  decorative_char = decorative_char[0];
 
   size_t header_text_size = header.size();
   unsigned int header_start = (num_cols / 2) - (header_text_size / 2);
@@ -88,14 +96,14 @@ string TextMessages::get_full_header_text(const string& header, const uint num_c
 
   for (unsigned int i = 0; i < header_start - 1; i++)
   {
-    ss << "-";
+    ss << decorative_char;
   }
 
   ss << " " << header << " ";
 
   for (unsigned int i = header_end + 1; i < num_cols; i++)
   {
-    ss << "-";
+    ss << decorative_char;
   }
 
   return ss.str();

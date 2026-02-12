@@ -137,6 +137,7 @@
 			<xs:element name="EndCoord" type="tns:Coord"/>
 			<xs:element name="StockedItemTypes" type="tns:StockedItemType"/>
 		</xs:sequence>
+		<!-- The shop ID should be lowercase -->
 		<xs:attribute name="id" type="xs:string"/>
 	</xs:complexType>
 	<xs:complexType name="StockedItemType">

@@ -47,6 +47,7 @@ class Setting
     static const std::string DISPLAY_SDL_INTEGER_SCALING;
     static const std::string DISPLAY_FONT;
     static const std::string DISPLAY_SPLASH_IMAGE;
+    static const std::string DISPLAY_HEADER_DECORATIVE_CHAR;
     static const std::string DISPLAY_TILE_SIZE;
     static const std::string DISPLAY_TILE_GLYPHS_PER_LINE;
     static const std::string DISPLAY_NUM_GLYPHS;

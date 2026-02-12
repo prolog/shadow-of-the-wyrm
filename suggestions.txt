@@ -8,11 +8,6 @@ Long Term Boring And Probably Necessary:
 - Visual Studio: x64 build
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
-Paul Raymond-Robichaud:
-- Increase HP/AP regen modifiers as you level
-- shift+letter for race, class, religion help on start
-- special events/festivities on certain days? (feasts, etc)
-
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
   staircase extra descs, randomized npc stuff, etc.
@@ -20,6 +15,9 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
+- Make menu header colour configurable
+- make an extra header char for [ ], { }, whatever
+- Do that suggestion with letterbox colour too
 - Dropping unstable items should have a chance to blind those around you
 - Throwing unstable items should have a chance to blind the target and those
   around it
@@ -518,8 +516,11 @@ EruditeFigglebottom:
 RelicWraith:
 - Suggestion: Praying during a deity's specific holy day grants the player a gift, once per holy day. Could be just flavor items rather than anything that gives significant power (eg. a themed companion or food item). Even low piety worshipers get gifts, if not just junk...
 
-hemsio:
-- dwarf thief with crowbar in offhand doing more damage than in main?
-
 9Skrip:
 - PortsMaster linux handheld support
+
+Paul Raymond-Robichaud:
+- Increase HP/AP regen modifiers as you level
+- shift+letter for race, class, religion help on start
+- special events/festivities on certain days? (feasts, etc)
+

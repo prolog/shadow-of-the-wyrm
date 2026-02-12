@@ -54,6 +54,7 @@ const string Setting::DISPLAY_SDL_WINDOW_SIZE = "display_sdl_window_size";
 const string Setting::DISPLAY_SDL_INTEGER_SCALING = "display_sdl_integer_scaling";
 const string Setting::DISPLAY_FONT = "display_font";
 const string Setting::DISPLAY_SPLASH_IMAGE = "display_splash_image";
+const string Setting::DISPLAY_HEADER_DECORATIVE_CHAR = "display_header_decorative_char";
 const string Setting::DISPLAY_TILE_SIZE = "display_tile_size";
 const string Setting::DISPLAY_TILE_GLYPHS_PER_LINE = "display_tile_glyphs_per_line";
 const string Setting::DISPLAY_NUM_GLYPHS = "display_num_glyphs";
