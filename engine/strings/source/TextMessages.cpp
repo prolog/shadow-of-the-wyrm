@@ -82,6 +82,8 @@ string TextMessages::get_full_header_text(const string& header, const uint num_c
 {
   ostringstream ss;
   string decorative_char = Game::instance().get_settings_ref().get_setting(Setting::DISPLAY_HEADER_DECORATIVE_CHAR);
+  string decorative_left = Game::instance().get_settings_ref().get_setting(Setting::DISPLAY_HEADER_DECORATIVE_LEFT);
+  string decorative_right = Game::instance().get_settings_ref().get_setting(Setting::DISPLAY_HEADER_DECORATIVE_RIGHT);
 
   if (decorative_char.empty())
   {
@@ -89,6 +91,16 @@ string TextMessages::get_full_header_text(const string& header, const uint num_c
   }
 
   decorative_char = decorative_char[0];
+
+  if (decorative_left.empty())
+  {
+    decorative_left = decorative_char;
+  }
+
+  if (decorative_right.empty())
+  {
+    decorative_right = decorative_char;
+  }
 
   size_t header_text_size = header.size();
   unsigned int header_start = (num_cols / 2) - (header_text_size / 2);
@@ -99,7 +111,9 @@ string TextMessages::get_full_header_text(const string& header, const uint num_c
     ss << decorative_char;
   }
 
+  ss << decorative_left;
   ss << " " << header << " ";
+  ss << decorative_right;
 
   for (unsigned int i = header_end + 1; i < num_cols; i++)
   {

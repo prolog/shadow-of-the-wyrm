@@ -48,6 +48,8 @@ class Setting
     static const std::string DISPLAY_FONT;
     static const std::string DISPLAY_SPLASH_IMAGE;
     static const std::string DISPLAY_HEADER_DECORATIVE_CHAR;
+    static const std::string DISPLAY_HEADER_DECORATIVE_LEFT;
+    static const std::string DISPLAY_HEADER_DECORATIVE_RIGHT;
     static const std::string DISPLAY_TILE_SIZE;
     static const std::string DISPLAY_TILE_GLYPHS_PER_LINE;
     static const std::string DISPLAY_NUM_GLYPHS;

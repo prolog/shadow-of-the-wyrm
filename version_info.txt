@@ -5,6 +5,9 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 
 - The decorative text header character is now configurable.
 
+- There are now configurable left/right end/start decorative characters for
+  header text.
+
 - Updated shopkeepers so that they'll talk about an eventual restock only if
   there's enough room in the shop for that restock.
 
