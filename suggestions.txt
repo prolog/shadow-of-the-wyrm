@@ -18,6 +18,10 @@ Me:
 - Make menu header colour configurable
 - make an extra header char for [ ], { }, whatever
 - Do that suggestion with letterbox colour too
+- fleeing monsters should try to trigger teleport traps
+- missiles that land in a particular square without hitting anything should
+  have a chance to trigger traps
+- npcs should try to trigger fireball traps when hostiles are adjacent
 - Dropping unstable items should have a chance to blind those around you
 - Throwing unstable items should have a chance to blind the target and those
   around it

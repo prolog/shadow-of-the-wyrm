@@ -895,7 +895,11 @@ CommandPtr NPCDecisionStrategy::get_flee_decision(const string& this_creature_id
   {
     // Is the creature cowardly?
     string coward_p = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_COWARD);
-    if (!coward_p.empty() && String::to_bool(coward_p))
+
+    // Is the creature a sentinel (don't flee if so)
+    bool sentinel = String::to_bool(get_property(DecisionStrategyProperties::DECISION_STRATEGY_SENTINEL));
+
+    if (!sentinel && !coward_p.empty() && String::to_bool(coward_p))
     {
       // Is it time to get out?
       if (should_flee(creature, view_map))

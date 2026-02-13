@@ -8,6 +8,10 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 - Updated shopkeepers so that they'll talk about an eventual restock only if
   there's enough room in the shop for that restock.
 
+- Bug fixes:
+
+  - Creatures flagged as sentinels will no longer consider fleeing.
+
 Shadow of the Wyrm v1.9.1.2 "Odair Assad"
 - Version started January 29, 2026. Version finalized February 10, 2026.
 
