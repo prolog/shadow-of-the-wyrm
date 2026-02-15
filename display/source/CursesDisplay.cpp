@@ -823,15 +823,22 @@ void CursesDisplay::display_text(const int row, const int col, const string& tex
 
 void CursesDisplay::display_header(const string& header_text, WINDOW* window, const int display_line)
 {
-  int white = static_cast<int>(Colour::COLOUR_WHITE);
-  enable_colour(white, window);
+  int header_colour = static_cast<int>(Colour::COLOUR_WHITE);
+  string hc_s = Game::instance().get_settings_ref().get_setting(Setting::DISPLAY_HEADER_TEXT_COLOUR);
+
+  if (!hc_s.empty())
+  {
+    header_colour = String::to_int(hc_s);
+  }
+
+  enable_colour(header_colour, window);
 
   string header = header_text;
   string full_header = TextMessages::get_full_header_text(header, get_max_cols());
 
   mvwprintw(window, display_line, 0, "%s", full_header.c_str());
 
-  disable_colour(white, window);
+  disable_colour(header_colour, window);
 }
 
 WINDOW* CursesDisplay::get_current_screen()

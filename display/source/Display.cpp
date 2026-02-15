@@ -490,6 +490,7 @@ bool Display::uses_colour() const
 
   return colour;
 }
+
 void Display::init_mono_if_necessary()
 {
   // Do we need to set the "monochrome" display to a particular colour?

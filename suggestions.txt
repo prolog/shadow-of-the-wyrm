@@ -15,8 +15,8 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
-- Make menu header colour configurable
-- make an extra header char for [ ], { }, whatever
+- Set prompt colour
+- Monochrome colour in curses not applying to splash
 - Do that suggestion with letterbox colour too
 - fleeing monsters should try to trigger teleport traps
 - missiles that land in a particular square without hitting anything should

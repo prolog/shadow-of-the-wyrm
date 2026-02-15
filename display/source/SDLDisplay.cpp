@@ -870,9 +870,18 @@ void SDLDisplay::display_header(const string& header_text, const int row)
   if (!screens.empty() && !screen_cursors.empty())
   {
     SDLRender render(sdld);
+    Colour header_colour = Colour::COLOUR_WHITE;
+    string hc_s = Game::instance().get_settings_ref().get_setting(Setting::DISPLAY_HEADER_TEXT_COLOUR);
 
+    if (!hc_s.empty())
+    {
+      header_colour = static_cast<Colour>(String::to_int(hc_s));
+    }
+
+    enable_colour(header_colour);
     string full_header = TextMessages::get_full_header_text(header_text, sdld.get_screen_cols());
     render.render_text(screen_cursors.back(), renderer, spritesheets[TEXT_ID], screens.back(), row, 0, full_header, sdld.get_fg_colour(), sdld.get_bg_colour());
+    disable_colour(header_colour);
   }
 }
 

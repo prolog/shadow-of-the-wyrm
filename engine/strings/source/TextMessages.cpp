@@ -106,7 +106,7 @@ string TextMessages::get_full_header_text(const string& header, const uint num_c
   unsigned int header_start = (num_cols / 2) - (header_text_size / 2);
   unsigned int header_end = (num_cols / 2) - (header_text_size / 2) + header_text_size;
 
-  for (unsigned int i = 0; i < header_start - 1; i++)
+  for (unsigned int i = 0; i < header_start - 2; i++)
   {
     ss << decorative_char;
   }
@@ -115,7 +115,7 @@ string TextMessages::get_full_header_text(const string& header, const uint num_c
   ss << " " << header << " ";
   ss << decorative_right;
 
-  for (unsigned int i = header_end + 1; i < num_cols; i++)
+  for (unsigned int i = header_end + 2; i < num_cols; i++)
   {
     ss << decorative_char;
   }
