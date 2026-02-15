@@ -269,7 +269,8 @@ void set_display_settings(DisplayPtr display, const Settings& settings)
                                      Setting::DISPLAY_TILE_SIZE, 
                                      Setting::DISPLAY_TILE_GLYPHS_PER_LINE, 
                                      Setting::DISPLAY_NUM_GLYPHS,
-                                     Setting::DISPLAY_SIMPLIFIED_SPLASH_SCREEN };
+                                     Setting::DISPLAY_SIMPLIFIED_SPLASH_SCREEN,
+                                     DisplaySettings::DISPLAY_SETTING_MONOCHROME_COLOUR};
 
     for (const string& s : setting_names)
     {
