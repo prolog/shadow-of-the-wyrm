@@ -10,7 +10,6 @@
 #include "CreatureFactory.hpp"
 #include "CreatureUtils.hpp"
 #include "DeitySelectionScreen.hpp"
-#include "DisplaySettings.hpp"
 #include "DisplayTile.hpp"
 #include "EyeSelectionScreen.hpp"
 #include "FeatureGenerator.hpp"
@@ -192,10 +191,10 @@ void ShadowOfTheWyrmEngine::setup_display(const Settings& settings)
   if (display)
   {
     // Use newfangled colour?  Or traditional mono?
-    string colour = DisplaySettings::DISPLAY_SETTING_COLOUR;
+    string colour = Setting::DISPLAY_SETTING_COLOUR;
     display->set_property(colour, settings.get_setting(colour));
 
-    string mono_colour = DisplaySettings::DISPLAY_SETTING_MONOCHROME_COLOUR;
+    string mono_colour = Setting::DISPLAY_SETTING_MONOCHROME_COLOUR;
     display->set_property(mono_colour, settings.get_setting(mono_colour));
 
     // For graphical/tiled displays, force ASCII?

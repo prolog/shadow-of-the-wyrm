@@ -22,7 +22,6 @@
 #include "CursesDisplay.hpp"
 #include "DisplayConstants.hpp"
 #include "DisplayFactory.hpp"
-#include "DisplaySettings.hpp"
 #include "Environment.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
@@ -263,14 +262,14 @@ void set_display_settings(DisplayPtr display, const Settings& settings)
 {
   if (display != nullptr)
   {
-    vector<string> setting_names = { DisplaySettings::DISPLAY_SETTING_COLOUR,
+    vector<string> setting_names = { Setting::DISPLAY_SETTING_COLOUR,
                                      Setting::DISPLAY_SPLASH_IMAGE,
                                      Setting::DISPLAY_FONT, 
                                      Setting::DISPLAY_TILE_SIZE, 
                                      Setting::DISPLAY_TILE_GLYPHS_PER_LINE, 
                                      Setting::DISPLAY_NUM_GLYPHS,
                                      Setting::DISPLAY_SIMPLIFIED_SPLASH_SCREEN,
-                                     DisplaySettings::DISPLAY_SETTING_MONOCHROME_COLOUR};
+                                     Setting::DISPLAY_SETTING_MONOCHROME_COLOUR};
 
     for (const string& s : setting_names)
     {

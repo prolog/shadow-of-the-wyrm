@@ -41,6 +41,9 @@ class Setting
     static const std::string FULL_STOP_AFTER_OPTIONS;
     static const std::string DISPLAY_LOCATION;
     static const std::string DISPLAY;
+    static const std::string DISPLAY_SETTING_COLOUR;
+    static const std::string DISPLAY_SETTING_MONOCHROME_COLOUR;
+    static const std::string DISPLAY_SETTING_CURSOR_MODE;
     static const std::string DISPLAY_SDL_RENDERER;
     static const std::string DISPLAY_SDL_WINDOW_MODE;
     static const std::string DISPLAY_SDL_WINDOW_SIZE;

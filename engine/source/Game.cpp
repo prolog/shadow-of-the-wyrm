@@ -23,7 +23,6 @@
 #include "CursesConstants.hpp"
 #include "DecisionStrategySelector.hpp"
 #include "DetectionSkillProcessor.hpp"
-#include "DisplaySettings.hpp"
 #include "DisplayStatistics.hpp"
 #include "EngineConversion.hpp"
 #include "ExitGameAction.hpp"
@@ -155,7 +154,7 @@ void Game::set_display_settings()
     if (cm >= CursorMode::CURSOR_MODE_MIN && cm <= CursorMode::CURSOR_MODE_MAX)
     {
       DisplayPtr disp = get_display();
-      disp->set_property(DisplaySettings::DISPLAY_SETTING_CURSOR_MODE, cursor_mode);
+      disp->set_property(Setting::DISPLAY_SETTING_CURSOR_MODE, cursor_mode);
     }
   }
 }

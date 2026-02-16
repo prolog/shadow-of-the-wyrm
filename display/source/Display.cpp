@@ -3,7 +3,6 @@
 #include "CoordUtils.hpp"
 #include "DefaultAnimationFactory.hpp"
 #include "Display.hpp"
-#include "DisplaySettings.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
 #include "Screen.hpp"
@@ -485,7 +484,7 @@ void Display::draw_animation(const Animation& animation, MapPtr player_fov_map)
 // settings, also.
 bool Display::uses_colour() const
 {
-  string colour_prop = get_property(DisplaySettings::DISPLAY_SETTING_COLOUR);
+  string colour_prop = get_property(Setting::DISPLAY_SETTING_COLOUR);
   bool colour = String::to_bool(colour_prop);
 
   return colour;
@@ -500,7 +499,7 @@ void Display::init_mono_if_necessary()
   {
     // Set up the monochrome colour on initial use from the properties
     // set by the game.
-    auto m_it = display_properties.find(DisplaySettings::DISPLAY_SETTING_MONOCHROME_COLOUR);
+    auto m_it = display_properties.find(Setting::DISPLAY_SETTING_MONOCHROME_COLOUR);
 
     if (m_it != display_properties.end())
     {
@@ -522,7 +521,7 @@ int Display::get_cursor_mode(const CursorSettings cs) const
   }
   else
   {
-    auto p_it = display_properties.find(DisplaySettings::DISPLAY_SETTING_CURSOR_MODE);
+    auto p_it = display_properties.find(Setting::DISPLAY_SETTING_CURSOR_MODE);
 
     if (p_it != display_properties.end())
     {
