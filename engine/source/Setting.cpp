@@ -61,6 +61,7 @@ const string Setting::DISPLAY_HEADER_DECORATIVE_CHAR = "display_header_decorativ
 const string Setting::DISPLAY_HEADER_DECORATIVE_LEFT = "display_header_decorative_left";
 const string Setting::DISPLAY_HEADER_DECORATIVE_RIGHT = "display_header_decorative_right";
 const string Setting::DISPLAY_HEADER_TEXT_COLOUR = "display_header_text_colour";
+const string Setting::DISPLAY_PROMPT_TEXT_COLOUR = "display_prompt_text_colour";
 const string Setting::DISPLAY_TILE_SIZE = "display_tile_size";
 const string Setting::DISPLAY_TILE_GLYPHS_PER_LINE = "display_tile_glyphs_per_line";
 const string Setting::DISPLAY_NUM_GLYPHS = "display_num_glyphs";

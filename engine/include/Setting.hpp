@@ -54,6 +54,7 @@ class Setting
     static const std::string DISPLAY_HEADER_DECORATIVE_LEFT;
     static const std::string DISPLAY_HEADER_DECORATIVE_RIGHT;
     static const std::string DISPLAY_HEADER_TEXT_COLOUR;
+    static const std::string DISPLAY_PROMPT_TEXT_COLOUR;
     static const std::string DISPLAY_TILE_SIZE;
     static const std::string DISPLAY_TILE_GLYPHS_PER_LINE;
     static const std::string DISPLAY_NUM_GLYPHS;

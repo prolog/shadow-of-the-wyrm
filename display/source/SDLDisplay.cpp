@@ -856,7 +856,19 @@ string SDLDisplay::get_prompt_value(const Screen& screen, const MenuWrapper& men
 
     SDLRender text_renderer(sdld);
     Prompt* prompt = screen.get_prompt();
+
+    Colour prompt_colour = Colour::COLOUR_WHITE;
+    string prompt_col_s = Game::instance().get_settings_ref().get_setting(Setting::DISPLAY_PROMPT_TEXT_COLOUR);
+
+    if (!prompt_col_s.empty())
+    {
+      prompt_colour = static_cast<Colour>(String::to_int(prompt_col_s));
+    }
+
+    enable_colour(prompt_colour);
     prompt_processor.show_prompt(sdld, cursor_loc, text_renderer, renderer, spritesheets[TEXT_ID], current_screen, prompt, row, col, get_max_rows(), get_max_cols());
+    disable_colour(prompt_colour);
+
     refresh_current_window();
 
     prompt_val = prompt_processor.get_prompt(sdld, cursor_loc, text_renderer, renderer, spritesheets[TEXT_ID], current_screen, menu_wrapper, prompt);

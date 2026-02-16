@@ -628,7 +628,17 @@ string CursesDisplay::get_prompt_value(const Screen& current_screen, const MenuW
 {
   WINDOW* screen_window = get_current_screen();
   Prompt* prompt = current_screen.get_prompt();
+  Colour prompt_colour = Colour::COLOUR_WHITE;
+  string prompt_col_s = Game::instance().get_settings_ref().get_setting(Setting::DISPLAY_PROMPT_TEXT_COLOUR);
+
+  if (!prompt_col_s.empty())
+  {
+    prompt_colour = static_cast<Colour>(String::to_int(prompt_col_s));
+  }
+
+  enable_colour(prompt_colour);
   prompt_processor.show_prompt(screen_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
+  disable_colour(prompt_colour);
 
   string result = prompt_processor.get_prompt(screen_window, wrapper, prompt);
   return result;

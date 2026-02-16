@@ -10,6 +10,8 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 
 - The header line can now be given its own colour.
 
+- Made the prompt colour configurable.
+
 - Updated shopkeepers so that they'll talk about an eventual restock only if
   there's enough room in the shop for that restock.
 
