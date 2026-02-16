@@ -457,17 +457,29 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   if (prompt_user_for_sex)
   {
-    SexSelectionScreen sex_selection(display);
-    string sex_selection_s = sex_selection.display();
-    int keyboard_selection = Char::keyboard_selection_char_to_int(sex_selection_s.at(0));
+    // TODO it's been 15 years, time to move this into its own fn...
+    bool select_sex = true;
 
-    if (opt.is_random_option(sex_selection_s.at(0)))
+    while (select_sex)
     {
-      sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE)));
-    }
-    else
-    {
-      sex = static_cast<CreatureSex>(keyboard_selection);
+      SexSelectionScreen sex_selection(display);
+      string sex_selection_s = sex_selection.display();
+      int keyboard_selection = Char::keyboard_selection_char_to_int(sex_selection_s.at(0));
+
+      if (opt.is_random_option(sex_selection_s.at(0)))
+      {
+        sex = static_cast<CreatureSex>(RNG::range(static_cast<int>(CreatureSex::CREATURE_SEX_MALE), static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE)));
+        select_sex = false;
+      }
+      else
+      {
+        if (keyboard_selection == static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE) || keyboard_selection == static_cast<int>(CreatureSex::CREATURE_SEX_MALE))
+        {
+          sex = static_cast<CreatureSex>(keyboard_selection);
+          select_sex = false;
+        }
+        // TODO info screen for A, B, ...
+      }
     }
   }
 

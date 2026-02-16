@@ -8,6 +8,9 @@ Long Term Boring And Probably Necessary:
 - Visual Studio: x64 build
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
+naughtyusername: 
+- Skill descriptions on shift+letter or something
+
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
   staircase extra descs, randomized npc stuff, etc.
@@ -15,9 +18,6 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
-- Set prompt colour
-- Monochrome colour in curses not applying to splash
-- Do that suggestion with letterbox colour too
 - fleeing monsters should try to trigger teleport traps
 - missiles that land in a particular square without hitting anything should
   have a chance to trigger traps
@@ -361,9 +361,6 @@ aotdev
 happylisk:
 - more diverse artifact effects (HP/AP regen, stat bonuses, etc)
 
-naughtyusername: 
-- Skill descriptions on shift+letter or something
-
 Timo:
 - Can kill off guards one by one, emperor doesn't care.
 
@@ -483,28 +480,6 @@ Sabrecam:
 - pay guards for peace
 - should be able to see full statuses in full description
 
-Azathoth:
-The pager used for texts could also be improved by:
-- enabling one line shifts with up/down (8/2) keys;
-- implementing less-like search:
-  - / starts search mode
-  - characters and BACKSPACE edit the search string
-  - ESC exits search mode
-  - ENTER exits it and updates the search string
-  - in normal mode, if the search string is not empty, n moves to the next match and N moves to the previous one
-  - in status line, the number of matches and the current match are displayed like this: [3/17]
-
-Similar search for inventory (filtering the items and without n/N) would also be helpful when you're looking for a particular item
-
-Marcin Puc:
-- asset, data dir
-- "For context how configuring the dirs could work: either swyrm.ini gets a 
-   field for pointing to the root game directory, 
-   like /usr/share/shadow-of-the-wyrm/ that holds all dirs like assets, data 
-   etc, or reads it from an env variable e.g. SOTW_ROOT_DIR and then distros 
-   provide a wrapper script that sets it before running the game"
-- switch to cmake? for automatic install
-
 Xvordan:
 - in-map waypoint system
 
@@ -513,9 +488,6 @@ Stevie-3:
 
 davethehun: 
 - witchling house might not be generated?
-
-EruditeFigglebottom:
-- customizable letterbox border colour
 
 RelicWraith:
 - Suggestion: Praying during a deity's specific holy day grants the player a gift, once per holy day. Could be just flavor items rather than anything that gives significant power (eg. a themed companion or food item). Even low piety worshipers get gifts, if not just junk...
