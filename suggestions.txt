@@ -11,6 +11,16 @@ Long Term Boring And Probably Necessary:
 naughtyusername: 
 - Skill descriptions on shift+letter or something
 
+- Info screens for:
+  - sex
+  - race
+  - class 
+  - religion
+  - starting location
+  - skills
+  - make sure the prompts all are updated!
+- Refactor each section in ShadowOfTheWyrmEngine as you go!
+
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
   staircase extra descs, randomized npc stuff, etc.

@@ -50,6 +50,7 @@ class TextKeys
     static const std::string NPC_TURNS_TO_FIGHT_MESSAGE;
     static const std::string SEX;
     static const std::string SELECT_SEX;
+    static const std::string SEX_INFO_DESC;
     static const std::string SEX_MALE;
     static const std::string SEX_MALE_ABRV;
     static const std::string SEX_FEMALE;
