@@ -3,6 +3,7 @@
 #include "ShadowOfTheWyrmEngine.hpp"
 #include "AgeSelectionScreen.hpp"
 #include "Class.hpp"
+#include "ClassManager.hpp"
 #include "Conducts.hpp"
 #include "Conversion.hpp"
 #include "Creature.hpp"
@@ -437,7 +438,9 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   Game& game = Game::instance();
   const Settings& settings = game.get_settings_ref();
   CreatureSex sex = CreatureSex::CREATURE_SEX_MALE;
+
   RaceManager rm;
+  ClassManager cm;
 
   const RaceMap& races   = game.get_races_ref();
   const ClassMap& classes = game.get_classes_ref();
@@ -454,9 +457,9 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   Race* sel_race = rm.get_race(selected_race_id);
 
   cs.select_class(display, classes, sex, sel_race, selected_class_id, creature_synopsis);
-  Class* selected_class = classes.find(selected_class_id)->second.get();
+  Class* sel_class = cm.get_class(selected_class_id);
 
-  creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, selected_class, "", nullptr);
+  creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, sel_class, "", nullptr);
   HairColour hair_colour = HairColour::HAIR_NA;
   string default_hair = settings.get_setting(Setting::DEFAULT_HAIR_COLOUR);
 
@@ -592,7 +595,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   }
   else
   {
-    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, selected_class, selected_deity_id, nullptr);
+    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, sel_class, selected_deity_id, nullptr);
     StartingLocationSelectionScreen sl_selection(display, creature_synopsis, sm);
     string sl_sidx = sl_selection.display();
 
