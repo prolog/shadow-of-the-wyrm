@@ -1,3 +1,4 @@
+#include "ClassSelectionScreen.hpp"
 #include "Conversion.hpp"
 #include "Game.hpp"
 #include "OptionsComponent.hpp"
@@ -120,6 +121,49 @@ void CharacterSelection::select_race(DisplayPtr display, const RaceMap& races, c
     {
       int race_idx = Char::keyboard_selection_char_to_int(race_index.at(0));
       selected_race_id = Integer::to_string_key_at_given_position_in_rc_map(races, race_idx);
+    }
+  }
+}
+
+void CharacterSelection::select_class(DisplayPtr display, const ClassMap& classes, const CreatureSex sex, Race* sel_race, string& selected_class_id, string& creature_synopsis)
+{
+  Game& game = Game::instance();
+  string default_class_id = game.get_settings_ref().get_setting(Setting::DEFAULT_CLASS_ID);
+  const auto c_it = classes.find(default_class_id);
+  bool prompt_user_for_class_selection = true;
+  Option opt;
+
+  if (c_it != classes.end())
+  {
+    Class* cur_class = c_it->second.get();
+
+    if (cur_class && cur_class->get_user_playable())
+    {
+      prompt_user_for_class_selection = false;
+      selected_class_id = default_class_id;
+    }
+  }
+
+  if (prompt_user_for_class_selection)
+  {
+    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, nullptr, "", nullptr);
+
+    ClassSelectionScreen class_selection(display, creature_synopsis);
+    string class_index = class_selection.display();
+
+    if (opt.is_random_option(class_index.at(0)))
+    {
+      Class* cur_class = CreatureUtils::get_random_user_playable_class();
+
+      if (cur_class != nullptr)
+      {
+        selected_class_id = cur_class->get_class_id();
+      }
+    }
+    else
+    {
+      int class_idx = Char::keyboard_selection_char_to_int(class_index.at(0));
+      selected_class_id = Integer::to_string_key_at_given_position_in_rc_map(classes, class_idx);
     }
   }
 }

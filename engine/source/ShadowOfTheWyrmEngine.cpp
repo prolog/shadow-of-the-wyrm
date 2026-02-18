@@ -3,7 +3,6 @@
 #include "ShadowOfTheWyrmEngine.hpp"
 #include "AgeSelectionScreen.hpp"
 #include "Class.hpp"
-#include "ClassSelectionScreen.hpp"
 #include "Conducts.hpp"
 #include "Conversion.hpp"
 #include "Creature.hpp"
@@ -28,7 +27,6 @@
 #include "Naming.hpp"
 #include "PlayerDecisionStrategy.hpp"
 #include "RaceManager.hpp"
-#include "RaceSelectionScreen.hpp"
 #include "RecipeRandomizer.hpp"
 #include "ReligionConstants.hpp"
 #include "RNG.hpp"
@@ -447,56 +445,18 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   Option opt;
   string creature_synopsis;
   string selected_race_id;
+  string selected_class_id;
 
   CharacterSelection cs;
   cs.select_sex(display, sex);
-  cs.select_race(display, races, sex, selected_race_id, creature_synopsis);
 
+  cs.select_race(display, races, sex, selected_race_id, creature_synopsis);
   Race* sel_race = rm.get_race(selected_race_id);
 
-  string default_class_id = settings.get_setting(Setting::DEFAULT_CLASS_ID);
-  const auto c_it = classes.find(default_class_id);
-  bool prompt_user_for_class_selection = true;
-  string selected_class_id;
-
-  if (c_it != classes.end())
-  {
-    Class* cur_class = c_it->second.get();
-
-    if (cur_class && cur_class->get_user_playable())
-    {
-      prompt_user_for_class_selection = false;
-      selected_class_id = default_class_id;
-    }
-  }
-
-  if (prompt_user_for_class_selection)
-  {
-    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, nullptr, "", nullptr);
-    
-    ClassSelectionScreen class_selection(display, creature_synopsis);
-    string class_index = class_selection.display();
-
-    if (opt.is_random_option(class_index.at(0)))
-    {
-      Class* cur_class = CreatureUtils::get_random_user_playable_class();
-
-      if (cur_class != nullptr)
-      {
-        selected_class_id = cur_class->get_class_id();
-      }
-    }
-    else
-    {
-      int class_idx = Char::keyboard_selection_char_to_int(class_index.at(0));
-      selected_class_id = Integer::to_string_key_at_given_position_in_rc_map(classes, class_idx);
-    }
-  }
-
+  cs.select_class(display, classes, sex, sel_race, selected_class_id, creature_synopsis);
   Class* selected_class = classes.find(selected_class_id)->second.get();
 
   creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, selected_class, "", nullptr);
-
   HairColour hair_colour = HairColour::HAIR_NA;
   string default_hair = settings.get_setting(Setting::DEFAULT_HAIR_COLOUR);
 
