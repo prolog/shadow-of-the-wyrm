@@ -4646,7 +4646,7 @@
     <ClInclude Include="engine\maps\include\ShopUtils.hpp">
       <Filter>Header Files\engine\maps\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\include\SexSelection.hpp">
+    <ClInclude Include="engine\include\CharacterSelection.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -9493,7 +9493,7 @@
     <ClCompile Include="engine\maps\source\unit_tests\ShopUtils_test.cpp">
       <Filter>Source Files\engine\maps\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="engine\source\SexSelection.cpp">
+    <ClCompile Include="engine\source\CharacterSelection.cpp">
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
   </ItemGroup>

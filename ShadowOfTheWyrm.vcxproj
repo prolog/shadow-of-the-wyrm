@@ -1161,7 +1161,7 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\include\Setting.hpp" />
     <ClInclude Include="engine\include\SettingKeybindings.hpp" />
     <ClInclude Include="engine\include\Settings.hpp" />
-    <ClInclude Include="engine\include\SexSelection.hpp" />
+    <ClInclude Include="engine\include\CharacterSelection.hpp" />
     <ClInclude Include="engine\include\ShadowOfTheWyrmEngine.hpp" />
     <ClInclude Include="engine\include\ShimmerColours.hpp" />
     <ClInclude Include="engine\items\include\ArtifactItemFilter.hpp" />
@@ -3011,7 +3011,7 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\source\DeityUtils.cpp" />
     <ClCompile Include="engine\source\LogFiles.cpp" />
     <ClCompile Include="engine\source\Setting.cpp" />
-    <ClCompile Include="engine\source\SexSelection.cpp" />
+    <ClCompile Include="engine\source\CharacterSelection.cpp" />
     <ClCompile Include="engine\source\ShadowOfTheWyrmEngine.cpp" />
     <ClCompile Include="engine\source\ShimmerColours.cpp" />
     <ClCompile Include="engine\source\unit_tests\AmbientSound_test.cpp">

@@ -36,7 +36,7 @@
 #include "Serialization.hpp"
 #include "Settings.hpp"
 #include "Setting.hpp"
-#include "SexSelection.hpp"
+#include "CharacterSelection.hpp"
 #include "StartingLocationSelectionScreen.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
@@ -439,68 +439,20 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   Game& game = Game::instance();
   const Settings& settings = game.get_settings_ref();
   CreatureSex sex = CreatureSex::CREATURE_SEX_MALE;
-    
+  RaceManager rm;
+
   const RaceMap& races   = game.get_races_ref();
   const ClassMap& classes = game.get_classes_ref();
   
   Option opt;
-
-  string default_sex = settings.get_setting(Setting::DEFAULT_SEX);
-  bool prompt_user_for_sex = true;
-
-  if (!default_sex.empty())
-  {
-    int sex_i = String::to_int(default_sex);
-    sex = static_cast<CreatureSex>(sex_i);
-    prompt_user_for_sex = false;
-  }
-
-  if (prompt_user_for_sex)
-  {
-    SexSelection ss;
-    ss.select_sex(display, sex);
-  }
-
-  string default_race_id = game.get_settings_ref().get_setting(Setting::DEFAULT_RACE_ID);
-  auto r_it = races.find(default_race_id);
-  bool prompt_user_for_race_selection = true;
-  string selected_race_id;
-  Race* race = nullptr;
-
-  if (r_it != races.end())
-  {
-    race = r_it->second.get();
-
-    if (race && race->get_user_playable())
-    {
-      prompt_user_for_race_selection = false;
-      selected_race_id = default_race_id;
-    }
-  }
-
   string creature_synopsis;
+  string selected_race_id;
 
-  if (prompt_user_for_race_selection)
-  {
-    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, nullptr, nullptr, "", nullptr);
-    RaceSelectionScreen race_selection(display, creature_synopsis);
-    string race_index = race_selection.display();
+  CharacterSelection cs;
+  cs.select_sex(display, sex);
+  cs.select_race(display, races, sex, selected_race_id, creature_synopsis);
 
-    if (opt.is_random_option(race_index.at(0)))
-    {
-      Race* random_race = CreatureUtils::get_random_user_playable_race();
-
-      if (random_race != nullptr)
-      {
-        selected_race_id = random_race->get_race_id();
-      }
-    }
-    else
-    {
-      int race_idx = Char::keyboard_selection_char_to_int(race_index.at(0));
-      selected_race_id = Integer::to_string_key_at_given_position_in_rc_map(races, race_idx);
-    }
-  }
+  Race* sel_race = rm.get_race(selected_race_id);
 
   string default_class_id = settings.get_setting(Setting::DEFAULT_CLASS_ID);
   const auto c_it = classes.find(default_class_id);
@@ -520,8 +472,6 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   if (prompt_user_for_class_selection)
   {
-    RaceManager rm;
-    Race* sel_race = rm.get_race(selected_race_id);
     creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, nullptr, "", nullptr);
     
     ClassSelectionScreen class_selection(display, creature_synopsis);
@@ -543,10 +493,9 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
   }
 
-  Race* selected_race = races.find(selected_race_id)->second.get();
   Class* selected_class = classes.find(selected_class_id)->second.get();
 
-  creature_synopsis = TextMessages::get_character_creation_synopsis(sex, selected_race, selected_class, "", nullptr);
+  creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, selected_class, "", nullptr);
 
   HairColour hair_colour = HairColour::HAIR_NA;
   string default_hair = settings.get_setting(Setting::DEFAULT_HAIR_COLOUR);
@@ -597,7 +546,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   bool show_age_screen = false;
   int age = -1;
 
-  if (race != nullptr)
+  if (sel_race != nullptr)
   {
     if (!default_age.empty())
     {
@@ -612,8 +561,6 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   if (show_age_screen)
   {
-    RaceManager rm;
-    Race* sel_race = rm.get_race(selected_race_id);
     AgeInfo age_info = sel_race->get_age_info();
     int min_select_age = age_info.get_starting_age().get_min();
     int max_select_age = age_info.get_maximum_age().get_min() - 1;
@@ -623,13 +570,13 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     {
       AgeSelectionScreen ass(display, creature_synopsis, min_select_age, max_select_age);
       age = String::to_int(ass.display());
-      valid_age = selected_race->is_valid_starting_age(age);
+      valid_age = sel_race->is_valid_starting_age(age);
     }
   }
 
   string default_deity_id = settings.get_setting(Setting::DEFAULT_DEITY_ID);
   bool prompt_user_for_deity_selection = true;
-  vector<string> deity_ids = selected_race->get_initial_deity_ids();
+  vector<string> deity_ids = sel_race->get_initial_deity_ids();
   string selected_deity_id;
 
   if (std::find(deity_ids.begin(), deity_ids.end(), default_deity_id) != deity_ids.end())
@@ -640,12 +587,12 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   if (prompt_user_for_deity_selection)
   {
-    DeitySelectionScreen deity_selection(display, selected_race, creature_synopsis);
+    DeitySelectionScreen deity_selection(display, sel_race, creature_synopsis);
     string deity_index = deity_selection.display();
 
     if (opt.is_random_option(deity_index.at(0)))
     {
-      Deity* deity = CreatureUtils::get_random_deity_for_race(selected_race);
+      Deity* deity = CreatureUtils::get_random_deity_for_race(sel_race);
 
       if (deity != nullptr)
       {
@@ -685,7 +632,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   }
   else
   {
-    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, selected_race, selected_class, selected_deity_id, nullptr);
+    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, selected_class, selected_deity_id, nullptr);
     StartingLocationSelectionScreen sl_selection(display, creature_synopsis, sm);
     string sl_sidx = sl_selection.display();
 
