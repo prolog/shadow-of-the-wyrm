@@ -10,6 +10,7 @@ class PromptTextKeys
     static const std::string PROMPT_ANY_KEY;
     static const std::string PROMPT_ANY_KEY_PAGING;
     static const std::string PROMPT_SELECT_AN_OPTION;
+    static const std::string PROMPT_SELECT_AN_OPTION_INFO;
     static const std::string PROMPT_ENTER_YOUR_NAME;
     static const std::string PROMPT_RUN_SCRIPT;
     static const std::string PROMPT_HELP;
