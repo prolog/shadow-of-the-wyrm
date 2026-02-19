@@ -1,3 +1,4 @@
+#include "AgeSelectionScreen.hpp"
 #include "ClassSelectionScreen.hpp"
 #include "Conversion.hpp"
 #include "Game.hpp"
@@ -164,6 +165,41 @@ void CharacterSelection::select_class(DisplayPtr display, const ClassMap& classe
     {
       int class_idx = Char::keyboard_selection_char_to_int(class_index.at(0));
       selected_class_id = Integer::to_string_key_at_given_position_in_rc_map(classes, class_idx);
+    }
+  }
+}
+
+void CharacterSelection::select_age(DisplayPtr display, Race* sel_race, const string& creature_synopsis, int& age)
+{
+  Game& game = Game::instance();
+  string default_age = game.get_settings_ref().get_setting(Setting::DEFAULT_AGE);
+  bool show_age_screen = false;
+
+  if (sel_race != nullptr)
+  {
+    if (!default_age.empty())
+    {
+      age = String::to_int(default_age);
+
+      if (age == -1)
+      {
+        show_age_screen = true;
+      }
+    }
+  }
+
+  if (show_age_screen)
+  {
+    AgeInfo age_info = sel_race->get_age_info();
+    int min_select_age = age_info.get_starting_age().get_min();
+    int max_select_age = age_info.get_maximum_age().get_min() - 1;
+    bool valid_age = false;
+
+    while (!valid_age)
+    {
+      AgeSelectionScreen ass(display, creature_synopsis, min_select_age, max_select_age);
+      age = String::to_int(ass.display());
+      valid_age = sel_race->is_valid_starting_age(age);
     }
   }
 }

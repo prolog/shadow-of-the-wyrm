@@ -11,6 +11,7 @@ class CharacterSelection
 {
   public:
     void select_sex(DisplayPtr display, CreatureSex& sex);
-    void select_race(DisplayPtr display, const RaceMap& races, const CreatureSex sex, std::string&, std::string& character_synopsis);
+    void select_race(DisplayPtr display, const RaceMap& races, const CreatureSex sex, std::string&, std::string& creature_synopsis);
     void select_class(DisplayPtr display, const ClassMap& classes, const CreatureSex sex, Race* sel_race, string& selected_class_id, string& creature_synopsis);
+    void select_age(DisplayPtr display, Race* sel_race, const std::string& creature_synopsis, int& age);
 };

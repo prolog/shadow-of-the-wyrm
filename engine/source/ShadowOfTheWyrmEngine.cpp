@@ -449,6 +449,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   string creature_synopsis;
   string selected_race_id;
   string selected_class_id;
+  int age = -1;
 
   CharacterSelection cs;
   cs.select_sex(display, sex);
@@ -505,37 +506,7 @@ bool ShadowOfTheWyrmEngine::process_new_game()
     }
   }
 
-  string default_age = settings.get_setting(Setting::DEFAULT_AGE);
-  bool show_age_screen = false;
-  int age = -1;
-
-  if (sel_race != nullptr)
-  {
-    if (!default_age.empty())
-    {
-      age = String::to_int(default_age);
-
-      if (age == -1)
-      {
-        show_age_screen = true;
-      }
-    }
-  }
-
-  if (show_age_screen)
-  {
-    AgeInfo age_info = sel_race->get_age_info();
-    int min_select_age = age_info.get_starting_age().get_min();
-    int max_select_age = age_info.get_maximum_age().get_min() - 1;
-    bool valid_age = false;
-
-    while (!valid_age)
-    {
-      AgeSelectionScreen ass(display, creature_synopsis, min_select_age, max_select_age);
-      age = String::to_int(ass.display());
-      valid_age = sel_race->is_valid_starting_age(age);
-    }
-  }
+  cs.select_age(display, sel_race, creature_synopsis, age);
 
   string default_deity_id = settings.get_setting(Setting::DEFAULT_DEITY_ID);
   bool prompt_user_for_deity_selection = true;
