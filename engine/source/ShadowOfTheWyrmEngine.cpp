@@ -9,14 +9,11 @@
 #include "Creature.hpp"
 #include "CreatureFactory.hpp"
 #include "CreatureUtils.hpp"
-#include "DeitySelectionScreen.hpp"
 #include "DisplayTile.hpp"
-#include "EyeSelectionScreen.hpp"
 #include "FeatureGenerator.hpp"
 #include "FileConstants.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
-#include "HairSelectionScreen.hpp"
 #include "HighScoreScreen.hpp"
 #include "ItemDescriptionRandomizer.hpp"
 #include "ItemIdentifier.hpp"
@@ -29,14 +26,12 @@
 #include "PlayerDecisionStrategy.hpp"
 #include "RaceManager.hpp"
 #include "RecipeRandomizer.hpp"
-#include "ReligionConstants.hpp"
 #include "RNG.hpp"
 #include "ScriptConstants.hpp"
 #include "Serialization.hpp"
 #include "Settings.hpp"
 #include "Setting.hpp"
 #include "CharacterSelection.hpp"
-#include "StartingLocationSelectionScreen.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "XMLConfigurationReader.hpp"
@@ -436,7 +431,6 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   }
 
   Game& game = Game::instance();
-  const Settings& settings = game.get_settings_ref();
   CreatureSex sex = CreatureSex::CREATURE_SEX_MALE;
 
   RaceManager rm;
@@ -449,7 +443,11 @@ bool ShadowOfTheWyrmEngine::process_new_game()
   string creature_synopsis;
   string selected_race_id;
   string selected_class_id;
+  HairColour hair_colour = HairColour::HAIR_NA;
+  EyeColour eye_colour = EyeColour::EYE_COLOUR_NA;
   int age = -1;
+  string selected_deity_id;
+  StartingLocation sl;
 
   CharacterSelection cs;
   cs.select_sex(display, sex);
@@ -459,128 +457,13 @@ bool ShadowOfTheWyrmEngine::process_new_game()
 
   cs.select_class(display, classes, sex, sel_race, selected_class_id, creature_synopsis);
   Class* sel_class = cm.get_class(selected_class_id);
-
   creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, sel_class, "", nullptr);
-  HairColour hair_colour = HairColour::HAIR_NA;
-  string default_hair = settings.get_setting(Setting::DEFAULT_HAIR_COLOUR);
 
-  if (!default_hair.empty())
-  {
-    HairColour hc = static_cast<HairColour>(String::to_int(default_hair));
-
-    if (hc == HairColour::HAIR_NA)
-    {
-      HairSelectionScreen hss(display, creature_synopsis);
-      string val = hss.display();
-
-      if (!opt.is_random_option(val.at(0)))
-      {
-        hair_colour = static_cast<HairColour>(Char::keyboard_selection_char_to_int(val.at(0)));
-      }
-    }
-    else
-    {
-      hair_colour = hc;
-    }
-  }
-
-  EyeColour eye_colour = EyeColour::EYE_COLOUR_NA;
-  string default_eye = settings.get_setting(Setting::DEFAULT_EYE_COLOUR);
-  if (!default_eye.empty())
-  {
-    EyeColour ec = static_cast<EyeColour>(String::to_int(default_eye));
-
-    if (ec == EyeColour::EYE_COLOUR_NA)
-    {
-      EyeSelectionScreen ess(display, creature_synopsis);
-      string val = ess.display();
-
-      if (!opt.is_random_option(val.at(0)))
-      {
-        eye_colour = static_cast<EyeColour>(Char::keyboard_selection_char_to_int(val.at(0)));
-      }
-    }
-    else
-    {
-      eye_colour = ec;
-    }
-  }
-
+  cs.select_hair(display, creature_synopsis, hair_colour);
+  cs.select_eyes(display, creature_synopsis, eye_colour);
   cs.select_age(display, sel_race, creature_synopsis, age);
-
-  string default_deity_id = settings.get_setting(Setting::DEFAULT_DEITY_ID);
-  bool prompt_user_for_deity_selection = true;
-  vector<string> deity_ids = sel_race->get_initial_deity_ids();
-  string selected_deity_id;
-
-  if (std::find(deity_ids.begin(), deity_ids.end(), default_deity_id) != deity_ids.end())
-  {
-    selected_deity_id = default_deity_id;
-    prompt_user_for_deity_selection = false;
-  }
-
-  if (prompt_user_for_deity_selection)
-  {
-    DeitySelectionScreen deity_selection(display, sel_race, creature_synopsis);
-    string deity_index = deity_selection.display();
-
-    if (opt.is_random_option(deity_index.at(0)))
-    {
-      Deity* deity = CreatureUtils::get_random_deity_for_race(sel_race);
-
-      if (deity != nullptr)
-      {
-        selected_deity_id = deity->get_id();
-      }
-    }
-    else
-    {
-      int deity_idx = Char::keyboard_selection_char_to_int(deity_index.at(0));
-
-      for (uint i = 0; i < deity_ids.size(); i++)
-      {
-        if (static_cast<int>(i) == deity_idx)
-        {
-          selected_deity_id = deity_ids.at(i);
-          break;
-        }
-      }
-
-      // If we selected something, but we didn't find the ID, assume it's
-      // the Godless ID.
-      if (selected_deity_id.empty())
-      {
-        selected_deity_id = ReligionConstants::DEITY_ID_GODLESS;
-      }
-    }
-  }
-
-  string default_starting_location_id = settings.get_setting(Setting::DEFAULT_STARTING_LOCATION_ID);
-  StartingLocationMap sm = game.get_starting_locations();
-  StartingLocation sl;
-  auto sm_it = sm.find(default_starting_location_id);
-
-  if (sm_it != sm.end())
-  {
-    sl = sm_it->second;
-  }
-  else
-  {
-    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, sel_class, selected_deity_id, nullptr);
-    StartingLocationSelectionScreen sl_selection(display, creature_synopsis, sm);
-    string sl_sidx = sl_selection.display();
-
-    if (opt.is_random_option(sl_sidx.at(0)))
-    {
-      sl = GameUtils::get_random_starting_location(sm);
-    }
-    else
-    {
-      int sl_idx = Char::keyboard_selection_char_to_int(sl_sidx.at(0));
-      string selected_starting_location_id = Integer::to_string_key_at_given_position_in_map(sm, sl_idx);
-      sl = sm.find(selected_starting_location_id)->second;
-    }
-  }
+  cs.select_deity(display, sel_race, creature_synopsis, selected_deity_id);
+  cs.select_starting_location(display, sex, sel_race, sel_class, selected_deity_id, creature_synopsis, sl);
 
   CharacterCreationDetails ccd(sex, hair_colour, eye_colour, age, selected_race_id, selected_class_id, selected_deity_id, sl);
   return process_name_and_start(ccd);
