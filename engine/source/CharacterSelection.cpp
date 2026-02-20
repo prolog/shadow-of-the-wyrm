@@ -70,14 +70,8 @@ void CharacterSelection::select_sex(DisplayPtr display, CreatureSex& sex)
             {
               TextDisplayFormatter tdf;
 
-              vector<pair<Colour, string>> sex_text;
               vector<string> formatted_text = tdf.format_text(StringTable::get(TextKeys::SEX_INFO_DESC), Screen::get_lines_displayable_area(game.get_display()));
-
-              for (const string& text_line : formatted_text)
-              {
-                TextDisplayPair text_line_for_ui = make_pair(Colour::COLOUR_WHITE, text_line);
-                sex_text.push_back(text_line_for_ui);
-              }
+              vector<pair<Colour, string>> sex_text = tdf.format_text_for_screen(formatted_text);
 
               TextDisplayScreen tds(display, TextKeys::SEX, sex_text);
               tds.display();
@@ -328,19 +322,43 @@ void CharacterSelection::select_starting_location(DisplayPtr display, const Crea
   }
   else
   {
-    creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, sel_class, selected_deity_id, nullptr);
-    StartingLocationSelectionScreen sl_selection(display, creature_synopsis, sm);
-    string sl_sidx = sl_selection.display();
+    bool select_starting_location = true;
 
-    if (opt.is_random_option(sl_sidx.at(0)))
+    while (display != nullptr && select_starting_location)
     {
-      sl = GameUtils::get_random_starting_location(sm);
-    }
-    else
-    {
-      int sl_idx = Char::keyboard_selection_char_to_int(sl_sidx.at(0));
-      string selected_starting_location_id = Integer::to_string_key_at_given_position_in_map(sm, sl_idx);
-      sl = sm.find(selected_starting_location_id)->second;
+      creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, sel_class, selected_deity_id, nullptr);
+      StartingLocationSelectionScreen sl_selection(display, creature_synopsis, sm);
+      string sl_sidx = sl_selection.display();
+
+      if (opt.is_random_option(sl_sidx.at(0)))
+      {
+        sl = GameUtils::get_random_starting_location(sm);
+      }
+      else if (!sl_sidx.empty())
+      {
+        bool lowercase = std::islower(sl_sidx[0]);
+
+        int sl_idx = Char::keyboard_selection_char_to_int(sl_sidx.at(0));
+        string selected_starting_location_id = Integer::to_string_key_at_given_position_in_map(sm, sl_idx);
+        auto s_it = sm.find(selected_starting_location_id);
+
+        if (lowercase && s_it != sm.end())
+        {
+          sl = s_it->second;
+          select_starting_location = false;
+        }
+        else if (s_it != sm.end())
+        {
+          TextDisplayFormatter tdf;
+          sl = s_it->second;
+
+          vector<string> formatted_text = tdf.format_text(StringTable::get(sl.get_info_sid()), Screen::get_lines_displayable_area(game.get_display()));
+          vector<pair<Colour, string>> sl_info_text = tdf.format_text_for_screen(formatted_text);
+
+          TextDisplayScreen tds(display, sl.get_short_description_sid(), sl_info_text);
+          tds.display();
+        }
+      }
     }
   }
 }

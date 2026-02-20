@@ -8,8 +8,8 @@ StartingLocation::StartingLocation()
 {
 }
 
-StartingLocation::StartingLocation(const string& ident, const Coordinate& sloc, const string& short_desc_sid, const string& desc_sid)
-: id(ident), location(sloc), short_description_sid(short_desc_sid), description_sid(desc_sid)
+StartingLocation::StartingLocation(const string& ident, const Coordinate& sloc, const string& short_desc_sid, const string& desc_sid, const string& infoscr_sid)
+: id(ident), location(sloc), short_description_sid(short_desc_sid), description_sid(desc_sid), info_sid(infoscr_sid)
 {
 }
 
@@ -65,6 +65,16 @@ string StartingLocation::get_description_sid() const
   return description_sid;
 }
 
+void StartingLocation::set_info_sid(const string& new_info_sid)
+{
+  info_sid = new_info_sid;
+}
+
+string StartingLocation::get_info_sid() const
+{
+  return info_sid;
+}
+
 bool StartingLocation::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, id);
@@ -72,6 +82,7 @@ bool StartingLocation::serialize(ostream& stream) const
   Serialize::write_int(stream, location.second);
   Serialize::write_string(stream, short_description_sid);
   Serialize::write_string(stream, description_sid);
+  Serialize::write_string(stream, info_sid);
 
   return true;
 }
@@ -83,6 +94,7 @@ bool StartingLocation::deserialize(istream& stream)
   Serialize::read_int(stream, location.second);
   Serialize::read_string(stream, short_description_sid);
   Serialize::read_string(stream, description_sid);
+  Serialize::read_string(stream, info_sid);
 
   return true;
 }

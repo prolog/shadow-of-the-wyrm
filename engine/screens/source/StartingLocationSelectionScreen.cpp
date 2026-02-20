@@ -63,7 +63,8 @@ void StartingLocationSelectionScreen::initialize()
   add_page(cur_page);
 
   // Set the prompt
-  PromptPtr any_key_prompt = std::make_unique<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
-  any_key_prompt->set_text_sid(PromptTextKeys::PROMPT_SELECT_AN_OPTION);
-  user_prompt = std::move(any_key_prompt);
+  PromptPtr sl_prompt = std::make_unique<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
+  sl_prompt->set_text_sid(PromptTextKeys::PROMPT_SELECT_AN_OPTION_INFO);
+  user_prompt = std::move(sl_prompt);
+  user_prompt->set_accept_any_input(true);
 }

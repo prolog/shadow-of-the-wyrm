@@ -8356,12 +8356,14 @@
 			<Col>96</Col>
 			<ShortDescriptionSID>STARTING_LOCATION_ISEN_DUN_SHORT</ShortDescriptionSID>
 			<DescriptionSID>STARTING_LOCATION_ISEN_DUN</DescriptionSID>
+			<InfoSID>STARTING_LOCATION_ISEN_DUN_INFO</InfoSID>
 		</StartingLocation>
 		<StartingLocation id="02_carcassia">
 			<Row>47</Row>
 			<Col>53</Col>
 			<ShortDescriptionSID>STARTING_LOCATION_CARCASSIA_SHORT</ShortDescriptionSID>
 			<DescriptionSID>STARTING_LOCATION_CARCASSIA</DescriptionSID>
+			<InfoSID>STARTING_LOCATION_CARCASSIA_INFO</InfoSID>
 		</StartingLocation>
 	</StartingLocations>
 	<Scripts>

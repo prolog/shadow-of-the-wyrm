@@ -41,5 +41,9 @@ void XMLStartingLocationsReader::parse_starting_location(StartingLocation& sl, c
     string desc_sid = XMLUtils::get_child_node_value(starting_location_node, "DescriptionSID");
 
     sl.set_description_sid(desc_sid);
+
+    string info_sid = XMLUtils::get_child_node_value(starting_location_node, "InfoSID");
+
+    sl.set_info_sid(info_sid);
   }
 }

@@ -2,6 +2,7 @@
 #include "Game.hpp"
 #include "TextDisplayFormatter.hpp"
 #include "TextFormatSpecifiers.hpp"
+#include "Screen.hpp"
 
 using namespace std;
 
@@ -55,6 +56,19 @@ vector<string> TextDisplayFormatter::format_text(const string& text, const int l
   }
 
   return result;
+}
+
+vector<pair<Colour, string>> TextDisplayFormatter::format_text_for_screen(const vector<string>& formatted_text)
+{
+  vector<pair<Colour, string>> display_text;
+
+  for (const string& text_line : formatted_text)
+  {
+    TextDisplayPair text_line_for_ui = make_pair(Colour::COLOUR_WHITE, text_line);
+    display_text.push_back(text_line_for_ui);
+  }
+
+  return display_text;
 }
 
 void TextDisplayFormatter::process_token(const string& current_token, vector<string>& result, string& current_str, uint& cur_pos, const uint width, const int lines_displayable_area, int& cur_line) const

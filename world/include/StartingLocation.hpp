@@ -8,7 +8,7 @@ class StartingLocation : public ISerializable
 {
   public:
     StartingLocation();
-    StartingLocation(const std::string& ident, const Coordinate& sloc, const std::string& short_desc_sid, const std::string& desc_sid);
+    StartingLocation(const std::string& ident, const Coordinate& sloc, const std::string& short_desc_sid, const std::string& desc_sid, const std::string& info_sid);
     bool operator==(const StartingLocation sl2) const;
 
     void set_id(const std::string& new_id);
@@ -23,6 +23,9 @@ class StartingLocation : public ISerializable
     void set_description_sid(const std::string& new_description_sid);
     std::string get_description_sid() const;
 
+    void set_info_sid(const std::string& new_info_sid);
+    std::string get_info_sid() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -31,6 +34,7 @@ class StartingLocation : public ISerializable
     Coordinate location;
     std::string short_description_sid;
     std::string description_sid;
+    std::string info_sid;
 
   private:
     ClassIdentifier internal_class_identifier() const override;
