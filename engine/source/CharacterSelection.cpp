@@ -70,7 +70,6 @@ void CharacterSelection::select_sex(DisplayPtr display, CreatureSex& sex)
             {
               TextDisplayFormatter tdf;
 
-              std::map<int, std::string> titles = { {0, TextKeys::SEX_MALE}, {1, TextKeys::SEX_FEMALE} };
               vector<pair<Colour, string>> sex_text;
               vector<string> formatted_text = tdf.format_text(StringTable::get(TextKeys::SEX_INFO_DESC), Screen::get_lines_displayable_area(game.get_display()));
 
@@ -80,7 +79,7 @@ void CharacterSelection::select_sex(DisplayPtr display, CreatureSex& sex)
                 sex_text.push_back(text_line_for_ui);
               }
 
-              TextDisplayScreen tds(display, titles[keyboard_selection], sex_text);
+              TextDisplayScreen tds(display, TextKeys::SEX, sex_text);
               tds.display();
             }
           }
