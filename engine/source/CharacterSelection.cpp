@@ -366,6 +366,7 @@ void CharacterSelection::select_starting_location(DisplayPtr display, const Crea
       if (opt.is_random_option(sl_sidx.at(0)))
       {
         sl = GameUtils::get_random_starting_location(sm);
+        select_starting_location = false;
       }
       else if (!sl_sidx.empty())
       {
