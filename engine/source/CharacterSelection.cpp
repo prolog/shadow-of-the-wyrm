@@ -180,12 +180,41 @@ void CharacterSelection::select_hair(DisplayPtr display, const string& creature_
 
     if (hc == HairColour::HAIR_NA)
     {
-      HairSelectionScreen hss(display, creature_synopsis);
-      string val = hss.display();
+      bool select_hair = true;
 
-      if (!opt.is_random_option(val.at(0)))
+      while (select_hair)
       {
-        hair_colour = static_cast<HairColour>(Char::keyboard_selection_char_to_int(val.at(0)));
+        HairSelectionScreen hss(display, creature_synopsis);
+        string val = hss.display();
+
+        if (!val.empty() && !opt.is_random_option(val.at(0)))
+        {
+          int ival = Char::keyboard_selection_char_to_int(val.at(0));
+          bool lowercase = std::islower(val[0]);
+
+          if (static_cast<HairColour>(ival) >= HairColour::HAIR_COLOUR_FIRST && static_cast<HairColour>(ival) < HairColour::HAIR_COLOUR_LAST)
+          {
+            if (lowercase)
+            {
+              hair_colour = static_cast<HairColour>(ival);
+              select_hair = false;
+            }
+            else
+            {
+              TextDisplayFormatter tdf;
+
+              vector<string> formatted_text = tdf.format_text(StringTable::get(TextKeys::HAIR_INFO_DESC), Screen::get_lines_displayable_area(game.get_display()));
+              vector<pair<Colour, string>> sex_text = tdf.format_text_for_screen(formatted_text);
+
+              TextDisplayScreen tds(display, TextKeys::HAIR_COLOUR, sex_text);
+              tds.display();
+            }
+          }
+        }
+        else if (opt.is_random_option(val.at(0)))
+        {
+          select_hair = false;
+        }
       }
     }
     else
@@ -214,6 +243,10 @@ void CharacterSelection::select_eyes(DisplayPtr display, const string& creature_
       {
         eye_colour = static_cast<EyeColour>(Char::keyboard_selection_char_to_int(val.at(0)));
       }
+/*      else if (opt.is_random_option(val.at(0)))
+      {
+        select_eyes = false;
+      } */
     }
     else
     {

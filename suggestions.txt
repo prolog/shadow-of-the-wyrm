@@ -11,12 +11,12 @@ Long Term Boring And Probably Necessary:
 naughtyusername: 
 - Skill descriptions on shift+letter or something
 
-- Info screens for:
-  - sex
+- Info screens still to do for:
   - race
-  - class 
+  - class
+  - hair
+  - eyes
   - religion
-  - starting location
   - skills
   - make sure the prompts all are updated!
 - Refactor each section in ShadowOfTheWyrmEngine as you go!
