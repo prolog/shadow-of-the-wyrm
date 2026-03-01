@@ -192,7 +192,7 @@ void CharacterSelection::select_hair(DisplayPtr display, const string& creature_
           int ival = Char::keyboard_selection_char_to_int(val.at(0));
           bool lowercase = std::islower(val[0]);
 
-          if (static_cast<HairColour>(ival) >= HairColour::HAIR_COLOUR_FIRST && static_cast<HairColour>(ival) < HairColour::HAIR_COLOUR_LAST)
+          if (ival >= static_cast<int>(HairColour::HAIR_COLOUR_FIRST) && ival <= static_cast<int>(HairColour::HAIR_COLOUR_LAST))
           {
             if (lowercase)
             {
@@ -236,17 +236,43 @@ void CharacterSelection::select_eyes(DisplayPtr display, const string& creature_
 
     if (ec == EyeColour::EYE_COLOUR_NA)
     {
-      EyeSelectionScreen ess(display, creature_synopsis);
-      string val = ess.display();
+      bool select_eyes = true;
 
-      if (!opt.is_random_option(val.at(0)))
+      while (select_eyes)
       {
-        eye_colour = static_cast<EyeColour>(Char::keyboard_selection_char_to_int(val.at(0)));
+        EyeSelectionScreen ess(display, creature_synopsis);
+        string val = ess.display();
+
+        if (!val.empty())
+        {
+          char cv = val[0];
+          int ival = Char::keyboard_selection_char_to_int(cv);
+          bool lowercase = std::islower(cv);
+
+          if (static_cast<EyeColour>(ival) >= EyeColour::EYE_COLOUR_FIRST && static_cast<EyeColour>(ival) < EyeColour::EYE_COLOUR_LAST)
+          {
+            if (lowercase)
+            {
+              eye_colour = static_cast<EyeColour>(Char::keyboard_selection_char_to_int(val.at(0)));
+              select_eyes = false;
+            }
+            else
+            {
+              TextDisplayFormatter tdf;
+
+              vector<string> formatted_text = tdf.format_text(StringTable::get(TextKeys::EYE_INFO_DESC), Screen::get_lines_displayable_area(game.get_display()));
+              vector<pair<Colour, string>> sex_text = tdf.format_text_for_screen(formatted_text);
+
+              TextDisplayScreen tds(display, TextKeys::EYE_COLOUR, sex_text);
+              tds.display();
+            }
+          }
+          else if (opt.is_random_option(cv))
+          {
+            select_eyes = false;
+          }          
+        }
       }
-/*      else if (opt.is_random_option(val.at(0)))
-      {
-        select_eyes = false;
-      } */
     }
     else
     {
