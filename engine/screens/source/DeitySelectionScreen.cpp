@@ -91,7 +91,9 @@ void DeitySelectionScreen::initialize()
   add_page(deity_screen);
 
   // Set the prompt
-  PromptPtr any_key_prompt = std::make_unique<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
-  any_key_prompt->set_text_sid(PromptTextKeys::PROMPT_SELECT_AN_OPTION);
-  user_prompt = std::move(any_key_prompt);
+  PromptPtr deity_prompt = std::make_unique<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
+  deity_prompt->set_text_sid(PromptTextKeys::PROMPT_SELECT_AN_OPTION_INFO);
+  deity_prompt->set_accept_any_input(true);
+
+  user_prompt = std::move(deity_prompt);
 }

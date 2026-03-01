@@ -2,6 +2,7 @@
 #include "ClassSelectionScreen.hpp"
 #include "Conversion.hpp"
 #include "DeitySelectionScreen.hpp"
+#include "DeityTextKeys.hpp"
 #include "EyeSelectionScreen.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
@@ -10,6 +11,7 @@
 #include "RNG.hpp"
 #include "CharacterSelection.hpp"
 #include "CreatureUtils.hpp"
+#include "ReligionManager.hpp"
 #include "RaceSelectionScreen.hpp"
 #include "ReligionConstants.hpp"
 #include "Setting.hpp"
@@ -270,7 +272,7 @@ void CharacterSelection::select_eyes(DisplayPtr display, const string& creature_
           else if (opt.is_random_option(cv))
           {
             select_eyes = false;
-          }          
+          }
         }
       }
     }
@@ -332,36 +334,85 @@ void CharacterSelection::select_deity(DisplayPtr display, Race* sel_race, string
 
   if (prompt_user_for_deity_selection)
   {
-    DeitySelectionScreen deity_selection(display, sel_race, creature_synopsis);
-    string deity_index = deity_selection.display();
+    bool select_deity = true;
 
-    if (opt.is_random_option(deity_index.at(0)))
+    while (select_deity)
     {
-      Deity* deity = CreatureUtils::get_random_deity_for_race(sel_race);
+      DeitySelectionScreen deity_selection(display, sel_race, creature_synopsis);
+      string deity_index = deity_selection.display();
 
-      if (deity != nullptr)
+      if (!deity_index.empty())
       {
-        selected_deity_id = deity->get_id();
-      }
-    }
-    else
-    {
-      int deity_idx = Char::keyboard_selection_char_to_int(deity_index.at(0));
-
-      for (uint i = 0; i < deity_ids.size(); i++)
-      {
-        if (static_cast<int>(i) == deity_idx)
+        if (opt.is_random_option(deity_index.at(0)))
         {
-          selected_deity_id = deity_ids.at(i);
-          break;
-        }
-      }
+          Deity* deity = CreatureUtils::get_random_deity_for_race(sel_race);
 
-      // If we selected something, but we didn't find the ID, assume it's
-      // the Godless ID.
-      if (selected_deity_id.empty())
-      {
-        selected_deity_id = ReligionConstants::DEITY_ID_GODLESS;
+          if (deity != nullptr)
+          {
+            selected_deity_id = deity->get_id();
+            select_deity = false;
+          }
+        }
+        else
+        {
+          char di = deity_index.at(0);
+          int deity_idx = Char::keyboard_selection_char_to_int(di);
+          bool lowercase = std::islower(di);
+
+          if (lowercase)
+          {
+            if (deity_idx >= 0 && deity_idx < static_cast<int>(deity_ids.size()))
+            {
+              selected_deity_id = deity_ids.at(deity_idx);
+              select_deity = false;
+            }
+
+            // Check to see if the deity_idx is the same as the deity ids' size.
+            // This means it's one larger than the index of the last item in
+            // the collection, and we assume this means it's the godless ID.
+            if (selected_deity_id.empty() && static_cast<size_t>(deity_idx) == deity_ids.size())
+            {
+              selected_deity_id = ReligionConstants::DEITY_ID_GODLESS;
+              select_deity = false;
+            }
+          }
+          else
+          {
+            // Once again, catch deities + godless
+            if (deity_idx >= 0 && deity_idx <= static_cast<int>(deity_ids.size()))
+            {
+              string deity_info_id;
+
+              if (deity_idx >= 0 && deity_idx < deity_ids.size())
+              {
+                deity_info_id = deity_ids.at(deity_idx);
+              }
+
+              ReligionManager rm;
+              Deity* info_deity = rm.get_deity(deity_info_id);
+
+              if (info_deity != nullptr)
+              {
+                TextDisplayFormatter tdf;
+                string name_sid = info_deity->get_name_sid();
+                string desc_sid = info_deity->get_description_sid();
+
+                // This check should only be true for godless
+                if (name_sid.empty() || desc_sid.empty())
+                {
+                  name_sid = DeityTextKeys::DEITY_GODLESS;
+                  desc_sid = DeityTextKeys::DEITY_GODLESS_INFO;
+                }
+
+                vector<string> formatted_text = tdf.format_text(StringTable::get(desc_sid), Screen::get_lines_displayable_area(game.get_display()));
+                vector<pair<Colour, string>> sex_text = tdf.format_text_for_screen(formatted_text);
+
+                TextDisplayScreen tds(display, name_sid, sex_text);
+                tds.display();
+              }
+            }
+          }
+        }
       }
     }
   }
