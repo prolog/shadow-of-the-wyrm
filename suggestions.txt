@@ -14,12 +14,11 @@ naughtyusername:
 - Info screens still to do for:
   - race
   - class
-  - hair
-  - eyes
-  - religion
   - skills
   - make sure the prompts all are updated!
-- Refactor each section in ShadowOfTheWyrmEngine as you go!
+
+- The race/class descriptions are very old and not very good compared to the
+  rest of the writing - rework them.
 
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 

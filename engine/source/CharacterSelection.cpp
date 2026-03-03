@@ -11,6 +11,7 @@
 #include "RNG.hpp"
 #include "CharacterSelection.hpp"
 #include "CreatureUtils.hpp"
+#include "RaceManager.hpp"
 #include "ReligionManager.hpp"
 #include "RaceSelectionScreen.hpp"
 #include "ReligionConstants.hpp"
@@ -107,22 +108,57 @@ void CharacterSelection::select_race(DisplayPtr display, const RaceMap& races, c
   if (prompt_user_for_race_selection)
   {
     creature_synopsis = TextMessages::get_character_creation_synopsis(sex, nullptr, nullptr, "", nullptr);
-    RaceSelectionScreen race_selection(display, creature_synopsis);
-    string race_index = race_selection.display();
+    bool select_race = true;
 
-    if (opt.is_random_option(race_index.at(0)))
+    while (select_race)
     {
-      Race* random_race = CreatureUtils::get_random_user_playable_race();
+      RaceSelectionScreen race_selection(display, creature_synopsis);
+      string race_index = race_selection.display();
 
-      if (random_race != nullptr)
+      if (!race_index.empty())
       {
-        selected_race_id = random_race->get_race_id();
+        if (opt.is_random_option(race_index.at(0)))
+        {
+          Race* random_race = CreatureUtils::get_random_user_playable_race();
+
+          if (random_race != nullptr)
+          {
+            selected_race_id = random_race->get_race_id();
+            select_race = false;
+          }
+        }
+        else
+        {
+          int race_idx = Char::keyboard_selection_char_to_int(race_index.at(0));
+
+          if (race_idx >= 0 && static_cast<size_t>(race_idx) < races.size())
+          {
+            char ridx_c = race_index[0];
+            bool lowercase = std::islower(ridx_c);
+            selected_race_id = Integer::to_string_key_at_given_position_in_rc_map(races, race_idx);
+            RaceManager rm;
+            Race* race = rm.get_race(selected_race_id);
+
+            if (race != nullptr && race->get_user_playable())
+            {
+              if (lowercase)
+              {
+                select_race = false;
+              }
+              else
+              {
+                TextDisplayFormatter tdf;
+
+                vector<string> formatted_text = tdf.format_text(StringTable::get(race->get_race_description_sid()), Screen::get_lines_displayable_area(game.get_display()));
+                vector<pair<Colour, string>> sex_text = tdf.format_text_for_screen(formatted_text);
+
+                TextDisplayScreen tds(display, race->get_race_name_sid(), sex_text);
+                tds.display();
+              }
+            }
+          }
+        }
       }
-    }
-    else
-    {
-      int race_idx = Char::keyboard_selection_char_to_int(race_index.at(0));
-      selected_race_id = Integer::to_string_key_at_given_position_in_rc_map(races, race_idx);
     }
   }
 }
@@ -383,7 +419,7 @@ void CharacterSelection::select_deity(DisplayPtr display, Race* sel_race, string
             {
               string deity_info_id;
 
-              if (deity_idx >= 0 && deity_idx < deity_ids.size())
+              if (deity_idx >= 0 && static_cast<size_t>(deity_idx) < deity_ids.size())
               {
                 deity_info_id = deity_ids.at(deity_idx);
               }
