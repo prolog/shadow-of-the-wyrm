@@ -28,6 +28,7 @@ Me:
 - git push --tags
 - Audio enhancements off for testing
 - fleeing monsters should try to trigger teleport traps
+- hemsio: prompt stack size on offering
 - missiles that land in a particular square without hitting anything should
   have a chance to trigger traps
 - npcs should try to trigger fireball traps when hostiles are adjacent

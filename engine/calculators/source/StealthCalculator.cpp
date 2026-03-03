@@ -20,6 +20,10 @@
 //
 // At 100 Stealth and 100 Daggers, the chance to sneak attack is therefore
 // 50%.
+//
+// This is assuming the creature is unburdened - being burdened or strained
+// makes it much more difficult to sneak attack, and incurs a large
+// penalty.
 int StealthCalculator::calculate_pct_chance_sneak_attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature) const
 {
   int pct_chance = 0;
@@ -30,6 +34,7 @@ int StealthCalculator::calculate_pct_chance_sneak_attack(CreaturePtr attacking_c
     {
       if (attacking_creature->has_status(StatusIdentifiers::STATUS_ID_HIDE))
       {
+        // Hiding already considers burden, so we don't need to check that.
         pct_chance = 100;
       }
       else
@@ -54,11 +59,29 @@ int StealthCalculator::calculate_pct_chance_sneak_attack(CreaturePtr attacking_c
         {
           pct_chance += (2 * speed_diff);
         }
+
+        pct_chance -= get_burden_penalty(BurdenLevelConverter::to_burden_level(attacking_creature));
       }
     }
   }
 
   return std::min<int>(100, pct_chance);
+}
+
+int StealthCalculator::get_burden_penalty(const BurdenLevel bl) const
+{
+  switch (bl)
+  {
+    case BurdenLevel::BURDEN_LEVEL_UNBURDENED:
+      return 0;
+    case BurdenLevel::BURDEN_LEVEL_BURDENED:
+      return 70;
+    case BurdenLevel::BURDEN_LEVEL_STRAINED:
+      return 120;
+    case BurdenLevel::BURDEN_LEVEL_OVERBURDENED:
+    default:
+      return 200;
+  }
 }
 
 #ifdef UNIT_TESTS

@@ -15,6 +15,8 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 - Updated shopkeepers so that they'll talk about an eventual restock only if
   there's enough room in the shop for that restock.
 
+- Being burdened now makes it much harder to sneak attack when not hidden.
+
 - Added info screens (similar to the bestiary and item codexes) for sex, 
   race, class, hair, eyes, religion, and starting location on character
   creation.
