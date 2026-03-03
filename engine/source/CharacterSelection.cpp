@@ -1,4 +1,5 @@
 #include "AgeSelectionScreen.hpp"
+#include "ClassManager.hpp"
 #include "ClassSelectionScreen.hpp"
 #include "Conversion.hpp"
 #include "DeitySelectionScreen.hpp"
@@ -185,23 +186,55 @@ void CharacterSelection::select_class(DisplayPtr display, const ClassMap& classe
   if (prompt_user_for_class_selection)
   {
     creature_synopsis = TextMessages::get_character_creation_synopsis(sex, sel_race, nullptr, "", nullptr);
+    bool select_class = true;
 
-    ClassSelectionScreen class_selection(display, creature_synopsis);
-    string class_index = class_selection.display();
-
-    if (opt.is_random_option(class_index.at(0)))
+    while (select_class)
     {
-      Class* cur_class = CreatureUtils::get_random_user_playable_class();
+      ClassSelectionScreen class_selection(display, creature_synopsis);
+      string class_index = class_selection.display();
 
-      if (cur_class != nullptr)
+      if (!class_index.empty())
       {
-        selected_class_id = cur_class->get_class_id();
+        char ci_c = class_index[0];
+        bool lowercase = std::islower(ci_c);
+
+        if (opt.is_random_option(ci_c))
+        {
+          Class* cur_class = CreatureUtils::get_random_user_playable_class();
+
+          if (cur_class != nullptr)
+          {
+            selected_class_id = cur_class->get_class_id();
+            select_class = false;
+          }
+        }
+        else
+        {
+          int class_idx = Char::keyboard_selection_char_to_int(ci_c);
+          selected_class_id = Integer::to_string_key_at_given_position_in_rc_map(classes, class_idx);
+          
+          ClassManager cm;
+          Class* cl = cm.get_class(selected_class_id);
+
+          if (cl != nullptr && cl->get_user_playable())
+          {
+            if (lowercase)
+            {
+              select_class = false;
+            }
+            else
+            {
+              TextDisplayFormatter tdf;
+
+              vector<string> formatted_text = tdf.format_text(StringTable::get(cl->get_class_description_sid()), Screen::get_lines_displayable_area(game.get_display()));
+              vector<pair<Colour, string>> sex_text = tdf.format_text_for_screen(formatted_text);
+
+              TextDisplayScreen tds(display, cl->get_class_name_sid(), sex_text);
+              tds.display();
+            }
+          }
+        }
       }
-    }
-    else
-    {
-      int class_idx = Char::keyboard_selection_char_to_int(class_index.at(0));
-      selected_class_id = Integer::to_string_key_at_given_position_in_rc_map(classes, class_idx);
     }
   }
 }
