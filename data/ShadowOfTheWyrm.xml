@@ -2632,7 +2632,7 @@
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_1_NAME</NameSID>
 			<ShortDescriptionSID>CLASS_1_SHORT_DESC</ShortDescriptionSID>
-			<DescriptionSID>CLASS_1_DESC</DescriptionSID>
+			<DescriptionSID>ADVENTURER_TEXT_DETAILS_SID</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_1_ABRV</DisplayAbbreviationSID>
 			<ClassInitialModifiers>
 				<StrengthModifier>0</StrengthModifier>
