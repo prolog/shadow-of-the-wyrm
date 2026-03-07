@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include <map>
+#include <set>
 #include <string>
 #include "common.hpp"
 #include "EquipmentTypes.hpp"
@@ -100,6 +101,9 @@ class Class
     void set_starting_pet_ids(const std::vector<std::string>& new_starting_pet_ids);
     std::vector<std::string> get_starting_pet_ids() const;
 
+    void set_effect_immunities(const std::set<std::string>& new_effect_immunities);
+    std::set<std::string> get_effect_immunities() const;
+
     std::string str() const;
 
   protected:
@@ -155,6 +159,9 @@ class Class
     // Some classes can start with pets.  An ID is selected
     // at random from the starting list.
     std::vector<std::string> starting_pet_ids;
+
+    // Status effect immunities
+    std::set<std::string> effect_immunities;
 
   private:
     void swap(Class& cl) throw ();

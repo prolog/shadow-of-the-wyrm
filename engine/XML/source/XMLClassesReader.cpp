@@ -78,10 +78,16 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
     current_class->set_ap_dice(ap_dice);
 
     XMLNode resistances_node = XMLUtils::get_next_element_by_local_name(class_node, "Resistances");
+    XMLNode effect_immunities_node = XMLUtils::get_next_element_by_local_name(class_node, "EffectImmunities");
     XMLNode skills_node = XMLUtils::get_next_element_by_local_name(class_node, "Skills");
     XMLNode titles_node = XMLUtils::get_next_element_by_local_name(class_node, "Titles");
 
     parse_class_resistances(current_class.get(), resistances_node);
+
+    set<string> effect_immunities;
+    parse_effect_immunities(effect_immunities_node, effect_immunities);
+    current_class->set_effect_immunities(effect_immunities);
+
     parse_class_skills(current_class.get(), skills_node);
     parse_class_titles(current_class.get(), titles_node);
     

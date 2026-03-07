@@ -95,6 +95,9 @@ class CreatureUtils
     // they share a common leader)
     static bool is_grouped(CreaturePtr creature1, CreaturePtr creature2);
 
+    // Is the creature immune to a status effect?
+    static bool is_immune_to_status(CreaturePtr creature, const std::string& status_id);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();

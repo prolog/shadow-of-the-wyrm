@@ -157,6 +157,12 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
       item->set_resistances(rr.get_resistances(resistances_node));
     }
 
+    // Effect Immunities
+    set<string> effect_immunities;
+    XMLNode effect_immunities_node = XMLUtils::get_next_element_by_local_name(item_node, "EffectImmunities");
+    parse_effect_immunities(effect_immunities_node, effect_immunities);
+    item->set_effect_immunities(effect_immunities);
+
     // Properties
     XMLNode properties_node = XMLUtils::get_next_element_by_local_name(item_node, "Properties");
     if (!properties_node.is_null())

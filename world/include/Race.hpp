@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include <map>
+#include <set>
 #include <string>
 #include <vector>
 #include "AgeInfo.hpp"
@@ -195,6 +196,9 @@ class Race
     void set_level_script(const std::string& new_level_script);
     std::string get_level_script() const;
 
+    void set_effect_immunities(const std::set<std::string>& new_effect_immunities);
+    std::set<std::string> get_effect_immunities() const;
+
     std::string str() const;
 
   protected:
@@ -277,6 +281,9 @@ class Race
     // Level script, used to populate Lua functions that run every time the
     // creature gains a level.
     std::string level_script;
+
+    // Any status effect immunities
+    std::set<std::string> effect_immunities;
 };
 
 using RacePtr = std::unique_ptr<Race>;

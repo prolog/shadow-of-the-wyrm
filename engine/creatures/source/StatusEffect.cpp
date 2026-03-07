@@ -64,9 +64,11 @@ string StatusEffect::get_source_id() const
 bool StatusEffect::should_apply_change(CreaturePtr creature, const int effect_bonus) const
 {
   bool status_should_apply = false;
+  string status_id = get_status_identifier();
 
-  if (creature && !creature->has_status(get_status_identifier()) 
-   && RNG::percent_chance(status_calc->pct_chance_effect(creature, effect_bonus)))
+  if (creature && !creature->has_status(status_id) 
+               && !CreatureUtils::is_immune_to_status(creature, status_id)
+               && RNG::percent_chance(status_calc->pct_chance_effect(creature, effect_bonus)))
   {
     status_should_apply = true;
 
@@ -99,6 +101,12 @@ bool StatusEffect::should_apply_change(CreaturePtr creature, const int effect_bo
 void StatusEffect::apply_change(CreaturePtr creature, const int danger_level) const
 {
   bool status_applied = true;
+
+  // Creatures who are immune to a status should never have it applied.
+  if (creature != nullptr && CreatureUtils::is_immune_to_status(creature, get_status_identifier()))
+  {
+    return;
+  }
 
   status_applied = before_apply(creature);
   status_applied = status_applied && apply(creature, danger_level);

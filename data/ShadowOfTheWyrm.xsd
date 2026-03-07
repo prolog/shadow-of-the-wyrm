@@ -385,6 +385,7 @@
 			<xs:element name="WaterBreathing" type="xs:boolean" minOccurs="0"/>
 			<xs:element ref="tns:RaceInitialDeities"/>
 			<xs:element ref="tns:Resistances"/>
+			<xs:element ref="tns:EffectImmunities" minOccurs="0"/>
 			<xs:element ref="tns:Skills"/>
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
 			<xs:element name="HPRegenMultiplier" type="xs:float"/>
@@ -585,6 +586,7 @@
 			<xs:element name="HPRegenMultiplier" type="xs:float"/>
 			<xs:element name="APRegenMultiplier" type="xs:float"/>
 			<xs:element ref="tns:Resistances"/>
+			<xs:element ref="tns:EffectImmunities" minOccurs="0"/>
 			<xs:element ref="tns:Skills"/>
 			<xs:element ref="tns:Titles"/>
 			<xs:element name="Crowning" type="tns:Crowning"/>			
@@ -615,6 +617,14 @@
 			<xs:element name="Shadow" type="xs:float" minOccurs="0"/>
 			<xs:element name="Arcane" type="xs:float" minOccurs="0"/>
 			<xs:element name="Lightning" type="xs:float" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="EffectImmunities">
+<xs:annotation><xs:documentation>Resistance to a particular status effect ID. See StatusTypes.cpp for a list of internal string IDs.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Immune" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -1099,6 +1109,7 @@
 		<xs:element name="DangerLevel" type="xs:integer"/>
 		<xs:element name="Rarity" type="tns:Rarity" minOccurs="0" default="0"/>
 		<xs:element ref="tns:Resistances" minOccurs="0"/>
+		<xs:element ref="tns:EffectImmunities" minOccurs="0"/>
 		<xs:element name="Properties" type="tns:Properties" minOccurs="0"/>
 		<xs:element ref="tns:ItemScripts" minOccurs="0"/>
 	</xs:sequence>

@@ -73,6 +73,7 @@ bool Item::operator==(const Item& i) const
   result = result && (additional_properties == i.additional_properties);
   result = result && (event_scripts == i.event_scripts);
   result = result && (unpaid == i.unpaid);
+  result = result && (effect_immunities == i.effect_immunities);
 
   return result;
 }
@@ -965,6 +966,16 @@ bool Item::get_floats() const
   return floats;
 }
 
+void Item::set_effect_immunities(const set<string>& new_effect_immunities)
+{
+  effect_immunities = new_effect_immunities;
+}
+
+set<string> Item::get_effect_immunities() const
+{
+  return effect_immunities;
+}
+
 void Item::increase_value(const int num_points)
 {
   for (int i = 0; i < num_points; i++)
@@ -1021,6 +1032,7 @@ bool Item::serialize(ostream& stream) const
   }
   
   Serialize::write_bool(stream, unpaid);
+  Serialize::write_string_set(stream, effect_immunities);
 
   return true;
 }
@@ -1079,6 +1091,7 @@ bool Item::deserialize(istream& stream)
   }
 
   Serialize::read_bool(stream, unpaid);
+  Serialize::read_string_set(stream, effect_immunities);
 
   return true;
 }

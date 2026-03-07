@@ -47,6 +47,7 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     XMLNode initial_modifiers_node  = XMLUtils::get_next_element_by_local_name(race_node, "RaceInitialModifiers");
     XMLNode initial_deity_ids_node  = XMLUtils::get_next_element_by_local_name(race_node, "RaceInitialDeities");
     XMLNode resistances_node        = XMLUtils::get_next_element_by_local_name(race_node, "Resistances");
+    XMLNode effect_immunities_node  = XMLUtils::get_next_element_by_local_name(race_node, "EffectImmunities");
     XMLNode skills_node             = XMLUtils::get_next_element_by_local_name(race_node, "Skills");
 
     race = std::make_unique<Race>();
@@ -170,6 +171,11 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     parse_race_initial_modifiers(race.get(), initial_modifiers_node);
     parse_initial_deity_ids(race.get(), initial_deity_ids_node);
     parse_race_resistances(race.get(), resistances_node);
+
+    set<string> effect_immunities;
+    parse_effect_immunities(effect_immunities_node, effect_immunities);
+    race->set_effect_immunities(effect_immunities);
+
     parse_race_skills(race.get(), skills_node);
 
     float experience_multiplier = XMLUtils::get_child_node_float_value(race_node, "ExperienceMultiplier");

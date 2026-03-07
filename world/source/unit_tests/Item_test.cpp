@@ -36,6 +36,9 @@ TEST(SW_World_Item, matches)
   Weight w(14);
   amulet->set_weight(w);
 
+  set<string> effect_immunities = { "_a", "_b" };
+  amulet->set_effect_immunities(effect_immunities);
+
   ItemPtr amulet2 = std::make_shared<Amulet>();
   *amulet2 = *amulet;
 

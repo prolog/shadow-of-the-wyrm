@@ -1,5 +1,6 @@
 #pragma once
 #include <map>
+#include <set>
 #include "Class.hpp"
 #include "Damage.hpp"
 #include "ScriptDetails.hpp"
@@ -26,6 +27,8 @@ class XMLReader
     void parse_initial_equipment_and_inventory(std::map<EquipmentWornLocation, InitialItem>& initial_eq, std::vector<InitialItem>& initial_inv, const XMLNode& initial_equipment_and_inventory_node);
     void parse_initial_equipment(std::map<EquipmentWornLocation, InitialItem>& initial_eq, const XMLNode& initial_equipment_node);
     void parse_initial_inventory(std::vector<InitialItem>& initial_inv, const XMLNode& initial_inventory_node);
+
+    void parse_effect_immunities(const XMLNode& effect_immunities_node, std::set<std::string>& effect_immunities);
 
     InitialItem get_initial_item(const XMLNode& initial_item_node);
     std::vector<std::string> get_crowning_gifts(const XMLNode& crowning_node);

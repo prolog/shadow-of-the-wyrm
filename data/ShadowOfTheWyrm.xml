@@ -3657,6 +3657,12 @@
 				<Arcane>0.0</Arcane>
 				<Lightning>0.0</Lightning>
 			</Resistances>
+			<EffectImmunities>
+				<Immune>_mute</Immune>
+				<Immune>_para</Immune>
+				<Immune>_stone</Immune>
+				<Immune>_spellb</Immune>
+			</EffectImmunities>
 			<Skills>
 				<GeneralSkills>
 					<Awareness>15</Awareness>
@@ -4993,6 +4999,9 @@
 				<Arcane>0.0</Arcane>
 				<Lightning>0.0</Lightning>
 			</Resistances>
+			<EffectImmunities>
+				<Immune>_stone</Immune>
+			</EffectImmunities>
 			<Skills>
 				<GeneralSkills>
 					<Awareness>20</Awareness>
@@ -8451,7 +8460,7 @@
 		<Recipe id="br_07_uncursing">
 			<Ingredients>
 				<Ingredient><ID>_magici_shard</ID></Ingredient>
-				<Ingredient><Random rand_min="2" rand_max="3">wildflower</Random></Ingredient>
+				<Ingredient rand_min="2" rand_max="3"><Random>wildflower</Random></Ingredient>
 			</Ingredients>
 			<Skill>7</Skill>
 			<Min>30</Min>
@@ -8513,7 +8522,7 @@
 						<Amount>2</Amount>
 					</Quantity>
 				</Ingredient>
-				<Ingredient><Random rand_min="1" rand_max="3">wildflower</Random></Ingredient>
+				<Ingredient rand_min="1" rand_max="3"><Random>wildflower</Random></Ingredient>
 			</Ingredients>
 			<Skill>7</Skill>
 			<Min>60</Min>

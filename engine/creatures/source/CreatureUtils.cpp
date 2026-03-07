@@ -1238,6 +1238,49 @@ bool CreatureUtils::is_grouped(CreaturePtr creature1, CreaturePtr creature2)
   return grouped;
 }
 
+bool CreatureUtils::is_immune_to_status(CreaturePtr creature, const std::string& status_id)
+{
+  bool immune = false;
+
+  if (creature != nullptr)
+  {
+    RaceManager rm;
+    Race* race = rm.get_race(creature->get_race_id());
+    set<string> all_effect_immunities;
+
+    if (race != nullptr)
+    {
+      set<string> r_e_im = race->get_effect_immunities();
+      all_effect_immunities.insert(r_e_im.begin(), r_e_im.end());
+    }
+
+    ClassManager cm;
+    Class* cur_class = cm.get_class(creature->get_class_id());
+
+    if (cur_class != nullptr)
+    {
+      set<string> c_e_im = cur_class->get_effect_immunities();
+      all_effect_immunities.insert(c_e_im.begin(), c_e_im.end());
+    }
+
+    const EquipmentMap& equipment = creature->get_equipment().get_equipment();
+    for (const auto& eq_pair : equipment)
+    {
+      ItemPtr item = eq_pair.second;
+
+      if (item != nullptr)
+      {
+        set<string> i_e_im = item->get_effect_immunities();
+        all_effect_immunities.insert(i_e_im.begin(), i_e_im.end());
+      }
+    }
+
+    immune = all_effect_immunities.find(status_id) != all_effect_immunities.end();
+  }
+
+  return immune;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/CreatureUtils_test.cpp"
 #endif

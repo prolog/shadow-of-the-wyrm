@@ -1,5 +1,6 @@
 #pragma once
 #include <map>
+#include <set>
 #include <string>
 #include <memory>
 #include "common.hpp"
@@ -204,6 +205,9 @@ class Item : public ISerializable
     virtual void set_floats(const bool new_floats);
     bool get_floats() const;
 
+    virtual void set_effect_immunities(const std::set<std::string>& new_effect_immunities);
+    std::set<std::string> get_effect_immunities() const;
+
     virtual Item* create_with_new_id();
     virtual Item* clone_with_new_id();
 
@@ -280,6 +284,7 @@ class Item : public ISerializable
     std::map<std::string, std::string> additional_properties;
     std::map<std::string, ScriptDetails> event_scripts;
     bool unpaid;
+    std::set<std::string> effect_immunities;
 
     static const int MIN_ENCHANT_VALUE_INCR;
 

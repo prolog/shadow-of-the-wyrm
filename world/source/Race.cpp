@@ -619,6 +619,16 @@ string Race::get_level_script() const
   return level_script;
 }
 
+void Race::set_effect_immunities(const set<string>& new_effect_immunities)
+{
+  effect_immunities = new_effect_immunities;
+}
+
+set<string> Race::get_effect_immunities() const
+{
+  return effect_immunities;
+}
+
 // Shouldn't be used in game - just used by the stub tester to ensure everything looks okay.
 string Race::str() const
 {

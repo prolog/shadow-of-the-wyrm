@@ -2,8 +2,9 @@
 #include "Race.hpp"
 #include "Range.hpp"
 #include "XMLDataStructures.hpp"
+#include "XMLReader.hpp"
 
-class XMLRacesReader
+class XMLRacesReader : public XMLReader
 {
   public:
     RaceMap get_races(const XMLNode& xml_configuration_races_node);

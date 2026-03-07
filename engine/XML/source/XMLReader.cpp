@@ -293,6 +293,20 @@ void XMLReader::parse_initial_inventory(vector<InitialItem>& initial_inv, const 
   }
 }
 
+// Parse the effect immunities into a set of strings.
+void XMLReader::parse_effect_immunities(const XMLNode& effect_immunities_node, set<string>& effect_immunities)
+{
+  if (!effect_immunities_node.is_null())
+  {
+    vector<XMLNode> immune_nodes = XMLUtils::get_elements_by_local_name(effect_immunities_node, "Immune");
+
+    for (const XMLNode& node : immune_nodes)
+    {
+      effect_immunities.insert(XMLUtils::get_node_value(node));
+    }
+  }
+}
+
 InitialItem XMLReader::get_initial_item(const XMLNode& initial_item_node)
 {
   InitialItem item;

@@ -21,6 +21,14 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
   race, class, hair, eyes, religion, and starting location on character
   creation.
 
+- Added support for races, classes, and items to grant immunity to particular
+  status effects. 
+
+- In line with their info text, Oracles are now immune to mute, spellbound, 
+  paralysis, and stone effects.
+
+- Witchlings are immune to stone.
+
 - Bug fixes:
 
   - Creatures flagged as sentinels will no longer consider fleeing.

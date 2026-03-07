@@ -33,6 +33,7 @@ Class::Class(const Class& cl)
   class_abbreviation_sid = cl.class_abbreviation_sid;
   modifier = cl.modifier;
   resistances = cl.resistances;
+  effect_immunities = cl.effect_immunities;
   skills = cl.skills;
   crowning_gifts = cl.crowning_gifts;
   initial_equipment = cl.initial_equipment;
@@ -347,6 +348,16 @@ void Class::set_starting_pet_ids(const vector<string>& new_starting_pet_ids)
 vector<string> Class::get_starting_pet_ids() const
 {
   return starting_pet_ids;
+}
+
+void Class::set_effect_immunities(const set<string>& new_effect_immunities)
+{
+  effect_immunities = new_effect_immunities;
+}
+
+set<string> Class::get_effect_immunities() const
+{
+  return effect_immunities;
 }
 
 string Class::str() const

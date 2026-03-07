@@ -20,6 +20,10 @@ naughtyusername:
 - The race/class descriptions are very old and not very good compared to the
   rest of the writing - rework them.
 
+- Oracles immune to negative statuses
+- Test race & item effect immunity (& delete from xml after)
+- Add effect immunities to char dump
+- Add effect immunities to item codex
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
   staircase extra descs, randomized npc stuff, etc.
@@ -29,6 +33,9 @@ Me:
 - Audio enhancements off for testing
 - fleeing monsters should try to trigger teleport traps
 - hemsio: prompt stack size on offering
+- status immunities on items.
+- add status immunities to some artifacts
+- give items a very small chance of adding a status immunity on enchant
 - missiles that land in a particular square without hitting anything should
   have a chance to trigger traps
 - npcs should try to trigger fireball traps when hostiles are adjacent
