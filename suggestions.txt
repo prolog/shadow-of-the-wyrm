@@ -20,8 +20,6 @@ naughtyusername:
 - The race/class descriptions are very old and not very good compared to the
   rest of the writing - rework them.
 
-- Oracles immune to negative statuses
-- Test race & item effect immunity (& delete from xml after)
 - Add effect immunities to char dump
 - Add effect immunities to item codex
 Me:

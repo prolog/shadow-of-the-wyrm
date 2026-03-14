@@ -5,6 +5,7 @@
 #include "RaceManager.hpp"
 #include "ResistancesTranslator.hpp"
 #include "ResistanceTextKeys.hpp"
+#include "StatusAilmentTextKeys.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
 
@@ -76,6 +77,34 @@ string CodexDescriber::describe_details() const
           {
             ss << ", ";
           }
+        }
+      }
+    }
+
+    set<string> effect_immunities = item->get_effect_immunities();
+
+    if (!effect_immunities.empty())
+    {
+      if (!charm_races.empty())
+      {
+        ss << "; ";
+      }
+
+      ss << StringTable::get(TextKeys::EFFECT_IMMUNITIES) << ": ";
+
+      {
+        size_t cnt = 0;
+        for (auto e_it = effect_immunities.begin(); e_it != effect_immunities.end(); e_it++)
+        {
+          string status = StatusAilmentTextKeys::get_status_for_identifier(*e_it);
+          ss << StringTable::get(status);
+
+          if (cnt < effect_immunities.size() - 1)
+          {
+            ss << ", ";
+          }
+
+          cnt++;
         }
       }
     }

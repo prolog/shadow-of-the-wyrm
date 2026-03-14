@@ -215,6 +215,7 @@ class TextKeys
     static const std::string DEFAULT_CLASS_NAME_SID;
     static const std::string RESPAWN_MESSAGE;
     static const std::string CHARM_RACES;
+    static const std::string EFFECT_IMMUNITIES;
     static const std::string BACKSTABBED;
     static const std::string RECIPES;
     static const std::string SKILL_REQUIRED;
