@@ -12,16 +12,10 @@ naughtyusername:
 - Skill descriptions on shift+letter or something
 
 - Info screens still to do for:
-  - race
-  - class
   - skills
   - make sure the prompts all are updated!
 
-- The race/class descriptions are very old and not very good compared to the
-  rest of the writing - rework them.
-
 - Add effect immunities to char dump
-- Add effect immunities to item codex
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
   staircase extra descs, randomized npc stuff, etc.
