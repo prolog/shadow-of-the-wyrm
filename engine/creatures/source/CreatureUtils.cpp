@@ -1238,15 +1238,14 @@ bool CreatureUtils::is_grouped(CreaturePtr creature1, CreaturePtr creature2)
   return grouped;
 }
 
-bool CreatureUtils::is_immune_to_status(CreaturePtr creature, const std::string& status_id)
+set<string> CreatureUtils::get_effect_immunities(CreaturePtr creature)
 {
-  bool immune = false;
+  set<string> all_effect_immunities;
 
   if (creature != nullptr)
   {
     RaceManager rm;
     Race* race = rm.get_race(creature->get_race_id());
-    set<string> all_effect_immunities;
 
     if (race != nullptr)
     {
@@ -1274,7 +1273,18 @@ bool CreatureUtils::is_immune_to_status(CreaturePtr creature, const std::string&
         all_effect_immunities.insert(i_e_im.begin(), i_e_im.end());
       }
     }
+  }
 
+  return all_effect_immunities;
+}
+
+bool CreatureUtils::is_immune_to_status(CreaturePtr creature, const std::string& status_id)
+{
+  bool immune = false;
+
+  if (creature != nullptr)
+  {
+    set<string> all_effect_immunities = get_effect_immunities(creature);
     immune = all_effect_immunities.find(status_id) != all_effect_immunities.end();
   }
 

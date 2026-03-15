@@ -18,6 +18,7 @@
 #include "TextDisplayScreen.hpp"
 #include "TextFormatSpecifiers.hpp"
 #include "TextKeys.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 
@@ -253,16 +254,31 @@ void ItemCodexAction::add_item_details_to_codex(ItemPtr item, CodexDescriber* co
 {
   if (item != nullptr && codex_desc != nullptr)
   {
+    TextDisplayFormatter tdf;
     string details = codex_desc->describe_details();
 
     if (!details.empty())
     {
-      TextDisplayFormatter tdf;
       vector<string> details_text = tdf.format_text(details);
 
       for (const string& detail_line : details_text)
       {
         codex_text.push_back(make_pair(Colour::COLOUR_WHITE, detail_line));
+      }
+
+      codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
+    }
+
+    set<string> effect_immunities = item->get_effect_immunities();
+    string immunities = TextMessages::get_effect_immunities_message(effect_immunities);
+
+    if (!effect_immunities.empty())
+    {
+      vector<string> ei_text = tdf.format_text(immunities);
+
+      for (const string& ei_line : ei_text)
+      {
+        codex_text.push_back(make_pair(Colour::COLOUR_WHITE, ei_line));
       }
 
       codex_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));

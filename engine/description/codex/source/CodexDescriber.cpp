@@ -82,19 +82,6 @@ string CodexDescriber::describe_details() const
       }
     }
 
-    set<string> effect_immunities = item->get_effect_immunities();
-    string immunities = TextMessages::get_effect_immunities_message(effect_immunities);
-
-    if (!effect_immunities.empty())
-    {
-      if (!charm_races.empty())
-      {
-        ss << "; ";
-      }
-
-      ss << immunities;
-    }
-
     // Any additional properties, semi-colon separated...
   }
 

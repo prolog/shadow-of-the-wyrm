@@ -15,6 +15,7 @@
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "CreatureTranslator.hpp"
+#include "CreatureUtils.hpp"
 #include "DateTextKeys.hpp"
 #include "DeathDumper.hpp"
 #include "Environment.hpp"
@@ -80,6 +81,12 @@ string CharacterDumper::str() const
 
   ResistancesDumper res_dumper(creature, num_cols);
   ss << res_dumper.str() << endl << endl;
+
+  string effect_immunities = TextMessages::get_effect_immunities_message(CreatureUtils::get_effect_immunities(creature));
+  if (!effect_immunities.empty())
+  {
+    ss << effect_immunities << endl << endl;
+  }
 
   ModifiersDumper mod_dumper(creature, num_cols);
   ss << mod_dumper.str() << endl << endl;
