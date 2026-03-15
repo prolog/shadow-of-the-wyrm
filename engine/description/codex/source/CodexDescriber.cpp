@@ -8,6 +8,7 @@
 #include "StatusAilmentTextKeys.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 
@@ -82,6 +83,7 @@ string CodexDescriber::describe_details() const
     }
 
     set<string> effect_immunities = item->get_effect_immunities();
+    string immunities = TextMessages::get_effect_immunities_message(effect_immunities);
 
     if (!effect_immunities.empty())
     {
@@ -90,23 +92,7 @@ string CodexDescriber::describe_details() const
         ss << "; ";
       }
 
-      ss << StringTable::get(TextKeys::EFFECT_IMMUNITIES) << ": ";
-
-      {
-        size_t cnt = 0;
-        for (auto e_it = effect_immunities.begin(); e_it != effect_immunities.end(); e_it++)
-        {
-          string status = StatusAilmentTextKeys::get_status_for_identifier(*e_it);
-          ss << StringTable::get(status);
-
-          if (cnt < effect_immunities.size() - 1)
-          {
-            ss << ", ";
-          }
-
-          cnt++;
-        }
-      }
+      ss << immunities;
     }
 
     // Any additional properties, semi-colon separated...

@@ -77,6 +77,7 @@ const string TextMessages::SHIPWRECK_REASON                   = "SHIPWRECK_REASO
 const string TextMessages::SHIPWRECK_SHIP_NAME_POSSESSIVE     = "SHIPWRECK_SHIP_NAME_POSSESSIVE";
 const string TextMessages::SHIPWRECK_SHIP_NAME_POSSESSOR      = "SHIPWRECK_SHIP_NAME_POSSESSOR";
 const string TextMessages::SHIPWRECK_SHIP_NAME_POSSESSEE      = "SHIPWRECK_SHIP_NAME_POSSESSEE";
+const string TextMessages::EFFECT_IMMUNITIES                  = "EFFECT_IMMUNITIES";
 
 string TextMessages::get_full_header_text(const string& header, const uint num_cols)
 {
@@ -986,4 +987,37 @@ string TextMessages::get_shipwreck_message()
   }
 
   return shipwreck_msg;
+}
+
+string TextMessages::get_effect_immunities_message(const set<string>& effect_immunities)
+{
+  ostringstream ss;
+
+  if (!effect_immunities.empty())
+  {
+    ss << StringTable::get(TextMessages::EFFECT_IMMUNITIES) << ": ";
+
+    {
+      size_t cnt = 0;
+      for (auto e_it = effect_immunities.begin(); e_it != effect_immunities.end(); e_it++)
+      {
+        string status = StatusAilmentTextKeys::get_status_for_identifier(*e_it);
+        string status_text = StringTable::get(status);
+
+        if (!status_text.empty())
+        {
+          ss << status_text;
+
+          if (cnt < effect_immunities.size() - 1)
+          {
+            ss << ", ";
+          }
+        }
+
+        cnt++;
+      }
+    }
+  }
+
+  return ss.str();
 }

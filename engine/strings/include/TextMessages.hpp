@@ -1,4 +1,5 @@
 #pragma once
+#include <set>
 #include <string>
 #include "Creature.hpp"
 #include "CreatureFeatures.hpp"
@@ -61,6 +62,7 @@ class TextMessages
     static std::string get_hidden_treasure_message(const bool is_underwater);
     static std::string get_buried_treasure_message();
     static std::string get_shipwreck_message();
+    static std::string get_effect_immunities_message(const std::set<std::string>& immunity_ids);
 
   protected:
     TextMessages();
@@ -114,4 +116,5 @@ class TextMessages
     static const std::string SHIPWRECK_SHIP_NAME_POSSESSIVE;
     static const std::string SHIPWRECK_SHIP_NAME_POSSESSOR;
     static const std::string SHIPWRECK_SHIP_NAME_POSSESSEE;
+    static const std::string EFFECT_IMMUNITIES;
 };
