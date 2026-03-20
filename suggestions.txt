@@ -8,14 +8,6 @@ Long Term Boring And Probably Necessary:
 - Visual Studio: x64 build
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
-naughtyusername: 
-- Skill descriptions on shift+letter or something
-
-- Info screens still to do for:
-  - skills
-  - make sure the prompts all are updated!
-
-- Add effect immunities to char dump
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
   staircase extra descs, randomized npc stuff, etc.

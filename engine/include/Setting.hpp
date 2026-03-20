@@ -73,6 +73,7 @@ class Setting
     static const std::string AUTOPICKUP_IGNORE_SPECIFIED_ITEMS;
     static const std::string AUTOPICKUP_IGNORE_ITEM_IDS;
     static const std::string PROMPT_ON_STACK_PICKUP;
+    static const std::string PROMPT_ON_STACK_OFFERING;
     static const std::string AUTOMELEE;
     static const std::string AUTOMOVE_ALWAYS_STOP_ON_ITEMS;
     static const std::string CHECKPOINT_SAVE;

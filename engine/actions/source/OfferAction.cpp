@@ -18,6 +18,7 @@
 #include "ReligionManager.hpp"
 #include "RNG.hpp"
 #include "SacrificeTextKeys.hpp"
+#include "Setting.hpp"
 #include "StatisticsMarker.hpp"
 
 using namespace std;
@@ -100,6 +101,16 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, TilePtr tile, 
       }
       else
       {
+        if (item_to_sac->get_quantity() > 1)
+        {
+          bool prompt_on_stack_offering = Game::instance().get_settings_ref().get_setting_as_bool(Setting::PROMPT_ON_STACK_OFFERING);
+
+          if (prompt_on_stack_offering)
+          {
+            // ...
+          }
+        }
+
         // Deity accepts the sacrifice, altar is converted, etc.
         bool item_accepted = handle_sacrifice(creature, tile, feature, item_to_sac);
 
