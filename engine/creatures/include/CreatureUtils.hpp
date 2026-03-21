@@ -100,6 +100,8 @@ class CreatureUtils
     static bool is_immune_to_status(CreaturePtr creature, const std::string& status_id);
     static std::set<std::string> get_effect_immunities(CreaturePtr creature);
 
+    static uint get_quantity_with_message(CreaturePtr creature, const uint max_quantity, const std::string& msg_sid);
+
   protected:
     CreatureUtils();
     ~CreatureUtils();

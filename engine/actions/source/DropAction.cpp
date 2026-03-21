@@ -3,6 +3,7 @@
 #include "Commands.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
+#include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DropAction.hpp"
 #include "DropScript.hpp"
@@ -206,7 +207,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
     {
       if (!multi_item)
       {
-        selected_quantity = get_drop_quantity(creature, quantity);
+        selected_quantity = CreatureUtils::get_quantity_with_message(creature, quantity, ActionTextKeys::ACTION_DROP_QUANTITY_PROMPT);
       }
     }
 
@@ -326,26 +327,6 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
   }
   
   return action_cost_value;
-}
-
-// Get the quantity to drop
-uint DropAction::get_drop_quantity(CreaturePtr creature, const uint max_quantity) const
-{  
-  if (creature && creature->get_is_player())
-  {
-    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, true);
-    Game& game = Game::instance();
-    game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
-              
-    // Prompt the user in the message buffer
-    string quantity_prompt = StringTable::get(ActionTextKeys::ACTION_DROP_QUANTITY_PROMPT);
-
-    manager.add_new_message(quantity_prompt);
-    manager.send();
-  }
-  
-  // Get quantity
-  return creature->get_decision_strategy()->get_count(max_quantity);
 }
 
 bool DropAction::plant_food_or_seed(CreaturePtr creature, const map<string, string>& props, const Coordinate& coords, TilePtr tile, MapPtr current_map, ItemPtr item_to_plant, const bool is_food)

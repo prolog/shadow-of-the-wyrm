@@ -1278,6 +1278,25 @@ set<string> CreatureUtils::get_effect_immunities(CreaturePtr creature)
   return all_effect_immunities;
 }
 
+uint CreatureUtils::get_quantity_with_message(CreaturePtr creature, const uint max_quantity, const string& message_sid)
+{
+  if (creature && creature->get_is_player())
+  {
+    IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, true);
+    Game& game = Game::instance();
+    game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
+
+    // Prompt the user in the message buffer
+    string quantity_prompt = StringTable::get(message_sid);
+
+    manager.add_new_message(quantity_prompt);
+    manager.send();
+  }
+
+  // Get quantity
+  return creature->get_decision_strategy()->get_count(max_quantity);
+}
+
 bool CreatureUtils::is_immune_to_status(CreaturePtr creature, const std::string& status_id)
 {
   bool immune = false;

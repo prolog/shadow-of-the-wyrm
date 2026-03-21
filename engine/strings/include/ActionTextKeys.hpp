@@ -65,6 +65,7 @@ class ActionTextKeys
     static const std::string ACTION_DROP_NOT_ALLOWED;
     static const std::string ACTION_DROP_NO_ITEM_SELECTED;
     static const std::string ACTION_DROP_QUANTITY_PROMPT;
+    static const std::string ACTION_OFFER_QUANTITY_PROMPT;
     static const std::string ACTION_DROP_INVALID_QUANTITY;
     static const std::string ACTION_DROP_WATER;
     static const std::string ACTION_PROMPT_BUILD_WALL;

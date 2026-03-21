@@ -41,5 +41,4 @@ class DropAction : public IActionManager
     size_t get_build_option(const std::vector<std::string>& options) const;
 
     ActionCostValue do_drop(CreaturePtr creature, MapPtr current_map, ItemPtr item, const bool multi_item);
-    uint get_drop_quantity(CreaturePtr creature, const uint max_quantity) const;
 };

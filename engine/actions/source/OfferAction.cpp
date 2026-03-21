@@ -89,8 +89,6 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, TilePtr tile, 
     }
     else
     {
-      acv = get_action_cost_value(creature);
-
       list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
       ItemPtr item_to_sac = am->inventory(creature, creature->get_inventory(), no_filter, {}, false, false);
 
@@ -101,14 +99,39 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, TilePtr tile, 
       }
       else
       {
-        if (item_to_sac->get_quantity() > 1)
+        uint original_quantity = item_to_sac->get_quantity();
+        uint quantity = original_quantity;
+
+        if (quantity > 1)
         {
           bool prompt_on_stack_offering = Game::instance().get_settings_ref().get_setting_as_bool(Setting::PROMPT_ON_STACK_OFFERING);
 
           if (prompt_on_stack_offering)
           {
-            // ...
+            quantity = CreatureUtils::get_quantity_with_message(creature, quantity, ActionTextKeys::ACTION_OFFER_QUANTITY_PROMPT);
+
+            if (!item_to_sac->is_valid_quantity(quantity))
+            {
+              return acv;
+            }
           }
+        }
+
+        // If we've selected a valid item, advance the turn.
+        acv = get_action_cost_value(creature);
+
+        // We've got a valid quantity, so split the item if necessary, and
+        // sacrifice the rest.
+        if (quantity < item_to_sac->get_quantity())
+        {
+          ItemPtr remaining = ItemPtr(item_to_sac->clone_with_new_id());
+
+          remaining->set_quantity(original_quantity - quantity);
+          item_to_sac->set_quantity(quantity);
+
+          // Don't merge, or else the items will recombine with what they
+          // just split from.
+          creature->get_inventory()->add(remaining);
         }
 
         // Deity accepts the sacrifice, altar is converted, etc.

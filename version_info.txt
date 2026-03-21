@@ -29,6 +29,9 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 
 - Witchlings are immune to stone.
 
+- When offering a stack of items, you are now prompted for the quantity
+  (hemsio).
+
 - Bug fixes:
 
   - Creatures flagged as sentinels will no longer consider fleeing.
