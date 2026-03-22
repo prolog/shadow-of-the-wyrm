@@ -155,13 +155,13 @@ ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, co
 
       if (target_tile != nullptr)
       {
-        pair<bool, bool> firing_details = check_target_tile_for_friendly_creature(creature, target_tile);
+        vector<Coordinate> attack_path = RangedCombatUtils::get_actual_coordinates_given_missile_path(creature, creature_coords, target_coords, current_map);
+        pair<bool, bool> firing_details = check_flight_path_for_friendly_creature(creature, current_map, attack_path);
 
         if (firing_details.first)
         {
           // Get the attack path so that we can determine the actual target coords,
           // and create an animation if necessary.
-          vector<Coordinate> attack_path = RangedCombatUtils::get_actual_coordinates_given_missile_path(creature, creature_coords, target_coords, current_map);
           MovementPath animation_frames;
 
           for (const Coordinate& c : attack_path)
@@ -397,26 +397,36 @@ bool RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature
   return ammunition_destroyed;
 }
 
-pair<bool, bool> RangedCombatAction::check_target_tile_for_friendly_creature(CreaturePtr creature, TilePtr target_tile)
+pair<bool, bool> RangedCombatAction::check_flight_path_for_friendly_creature(CreaturePtr creature, MapPtr map, const vector<Coordinate>& flight_path)
 {
   pair<bool, bool> firing_details(true, false);
 
-  // Is there a friendly creature present?
-  if (target_tile->has_creature())
+  if (creature != nullptr && map != nullptr)
   {
-    CreaturePtr target_creature = target_tile->get_creature();
-
-    if (!target_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()).first)
+    for (const auto& c : flight_path)
     {
-      if (creature->get_is_player())
-      {
-        IMessageManager& manager = MMF::instance();
-        manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
-        firing_details.first = creature->get_decision_strategy()->get_confirmation();
+      TilePtr target_tile = map->at(c);
 
-        if (firing_details.first)
+      // Is there a friendly creature present?
+      if (target_tile != nullptr && target_tile->has_creature())
+      {
+        CreaturePtr target_creature = target_tile->get_creature();
+
+        if (!target_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()).first)
         {
-          firing_details.second = true;
+          if (creature->get_is_player())
+          {
+            // Check to see if we still want to fire, but only check once.
+            IMessageManager& manager = MMF::instance();
+            manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
+            firing_details.first = creature->get_decision_strategy()->get_confirmation();
+
+            if (firing_details.first)
+            {
+              firing_details.second = true;
+              break;
+            }
+          }
         }
       }
     }

@@ -35,13 +35,10 @@ class RangedCombatAction : public IActionManager
     // anything is hit along the way.
     ActionCostValue fire_weapon_at_tile(CreaturePtr creature, const ActionCostValue fire_acv);
 
-    // The target tile may have a friendly creature present.  If it does,
+    // The flight path may have a friendly creature present.  If it does,
     // confirm whether to actually continue the attack.
     //
     // First return value is whether to continue firing.
     // Second return value is whether a friendly creature was targetted.
-    std::pair<bool, bool> check_target_tile_for_friendly_creature(CreaturePtr creature, TilePtr target_tile);
-
-    // Check to see if the creature has a ranged combat target selected.
-    bool has_ranged_combat_target(CreaturePtr creature);
+    std::pair<bool, bool> check_flight_path_for_friendly_creature(CreaturePtr creature, MapPtr map, const std::vector<Coordinate>& flight_path);
 };

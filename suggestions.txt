@@ -8,6 +8,8 @@ Long Term Boring And Probably Necessary:
 - Visual Studio: x64 build
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
+- missiles that land in a particular square without hitting anything should
+  have a chance to trigger traps
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
   staircase extra descs, randomized npc stuff, etc.
@@ -16,12 +18,6 @@ Me:
 - git push --tags
 - Audio enhancements off for testing
 - fleeing monsters should try to trigger teleport traps
-- hemsio: prompt stack size on offering
-- status immunities on items.
-- add status immunities to some artifacts
-- give items a very small chance of adding a status immunity on enchant
-- missiles that land in a particular square without hitting anything should
-  have a chance to trigger traps
 - npcs should try to trigger fireball traps when hostiles are adjacent
 - Dropping unstable items should have a chance to blind those around you
 - Throwing unstable items should have a chance to blind the target and those
