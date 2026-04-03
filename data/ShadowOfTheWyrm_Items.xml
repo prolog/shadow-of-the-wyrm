@@ -12144,6 +12144,32 @@
 				<Range>1</Range>
 				<Colour>7</Colour>
 			</Wand>
+			<Wand id="detect_traps_wand">
+				<DescriptionSID>DETECT_TRAPS_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_DETECT_TRAPS_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>DETECT_TRAPS_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_DETECT_TRAPS_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<CodexDescriptionSID>DETECT_TRAPS_WAND_CODEX_SID</CodexDescriptionSID>
+				<Value>200</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<Material>8</Material>
+				<Symbol>
+					<Char>\</Char>
+					<Colour>3</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>0</Row>
+						<Col>2</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>2</DangerLevel>
+				<Effect>22</Effect>
+				<BeamType>0</BeamType>
+				<Range>1</Range>
+				<Colour>7</Colour>
+			</Wand>
 			<Wand id="frost_wand">
 				<DescriptionSID>FROST_WAND_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_FROST_WAND_SID</UnidentifiedDescriptionSID>
