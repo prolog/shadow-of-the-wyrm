@@ -21915,6 +21915,12 @@
 					<Chance>100</Chance>
 				</DropScript>
 			</EventScripts>
+			<Properties>
+				<Property>
+					<Name>CREATURE_PROPERTIES_IGNORE_HIDDEN</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
 		</Creature>
 		<Creature id="swabbie">
 			<RaceID>01_human</RaceID>

@@ -25,8 +25,10 @@ MapPtr ViewMapTranslator::create_view_map_around_tile(CreaturePtr creature, MapP
   view_map->set_original_size(original_dimensions);
 
   CurrentCreatureAbilities cca;
-  if (cca.can_see(creature))
+  if (creature != nullptr && cca.can_see(creature))
   {
+    bool ignores_hidden = creature->get_ignores_hidden();
+
     // Use the same shared pointer in most cases.  When there is something
     // hidden, create a copy of the shared_ptr and hide the details appropriately
     // so that the original tile is untouched.
@@ -55,7 +57,7 @@ MapPtr ViewMapTranslator::create_view_map_around_tile(CreaturePtr creature, MapP
           view_map->insert(row, col, current_tile);
 
           if (tile_creature &&
-             (hidden_cr && !follows))
+             (hidden_cr && !follows && !ignores_hidden))
           {
             MapUtils::remove_creature(view_map, tile_creature, true);
           }

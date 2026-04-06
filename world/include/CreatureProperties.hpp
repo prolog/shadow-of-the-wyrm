@@ -57,6 +57,8 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_HIVE_ITEMS;
     static const std::string CREATURE_PROPERTIES_HIVE_LEADER;
 
+    static const std::string CREATURE_PROPERTIES_IGNORE_HIDDEN;
+
   protected:
     CreatureProperties();
     ~CreatureProperties();

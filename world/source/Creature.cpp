@@ -1803,6 +1803,11 @@ bool Creature::is_allied_to(const string& creature_id) const
   return allied;
 }
 
+bool Creature::get_ignores_hidden() const
+{
+  return String::to_bool(get_additional_property(CreatureProperties::CREATURE_PROPERTIES_IGNORE_HIDDEN));
+}
+
 // Swap values, no throw
 void Creature::swap(Creature &cr) throw ()
 {

@@ -367,6 +367,8 @@ class Creature : public ISerializable
 
     bool is_allied_to(const std::string& creature_original_id) const;
 
+    bool get_ignores_hidden() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
