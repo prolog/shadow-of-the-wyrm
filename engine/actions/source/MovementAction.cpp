@@ -230,7 +230,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
               confirm_ranged_melee_attack(creature, attack_at_range.second->get_creature())))
     {
       CombatManager cm;
-      movement_acv = cm.attack(creature, attack_at_range.second->get_creature(), AttackType::ATTACK_TYPE_MELEE_PRIMARY);
+      movement_acv = cm.attack(creature, attack_at_range.second->get_creature(), AttackType::ATTACK_TYPE_MELEE_PRIMARY).first;
     }
     // Only try to handle a blocking terrain feature if the creature is corporeal.
     // Spirits don't care about closed doors, etc!
@@ -451,7 +451,7 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
 
       // Call the directional attack function so that if the creature is
       // dual wielding weapons, both attacks are properly considered.
-      movement_acv = cm.attack(creature, d);
+      movement_acv = cm.attack(creature, d).first;
     }
   }
 

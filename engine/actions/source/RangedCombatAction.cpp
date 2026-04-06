@@ -214,6 +214,7 @@ ActionCostValue RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature, co
 void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr current_map, const Coordinate& target_coords)
 {
   bool ammo_auto_destroy = false;
+  bool should_target_feature = false;
 
   TilePtr tile = current_map->at(target_coords);
   CreaturePtr target_creature = tile->get_creature();
@@ -254,10 +255,16 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
     }
     else
     {
-      cm.attack(creature, target_creature, AttackType::ATTACK_TYPE_RANGED);
+      auto attack_details = cm.attack(creature, target_creature, AttackType::ATTACK_TYPE_RANGED);
+
+      if (!attack_details.second && target_feature != nullptr)
+      {
+        should_target_feature = true;
+      }
     }
   }
-  else if (target_feature)
+
+  if (target_feature != nullptr && should_target_feature)
   {
     FeatureManipulatorPtr feature_manipulator = IFeatureManipulatorFactory::create_manipulator(target_feature);
 

@@ -65,10 +65,10 @@ bool CombatManager::operator==(const CombatManager& /*cm*/) const
   return true;
 }
 
-ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
+pair<ActionCostValue, bool> CombatManager::attack(CreaturePtr creature, const Direction d)
 {
-  ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
-  
+  pair<ActionCostValue, bool> action_details = { ActionCostConstants::NO_ACTION, false };
+
   Game& game = Game::instance();
 
   MapPtr map = game.get_current_map();
@@ -86,7 +86,7 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
     if (creature && adjacent_creature)
     {
       AttackType attack_type = AttackType::ATTACK_TYPE_MELEE_PRIMARY;
-      action_cost_value = attack(creature, adjacent_creature, attack_type);
+      action_details = attack(creature, adjacent_creature, attack_type);
 
       // Re-get the adjacent creature - it may have been killed by the
       // first attack, or knocked back.
@@ -101,7 +101,13 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
         // its off hand.  Shields, potions, etc., don't count!
         if (off_hand_weapon != nullptr)
         {
-          action_cost_value += attack(creature, adjacent_creature, AttackType::ATTACK_TYPE_MELEE_SECONDARY);
+          auto offhand_details = attack(creature, adjacent_creature, AttackType::ATTACK_TYPE_MELEE_SECONDARY);
+          action_details.first += offhand_details.first;
+
+          if (!action_details.second)
+          {
+            action_details.second = offhand_details.second;
+          }
         }
 
         // A secondary attack may have killed the creature, or the creature
@@ -121,24 +127,24 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
           {
             IMessageManager& manager = MMF::instance(MessageTransmit::FOV, creature, creature && creature->get_is_player());
             manager.add_new_message(ActionTextKeys::get_kick_message(creature->get_description_sid(), creature->get_is_player()));
-                    
+
+            auto kick_details = attack(creature, adjacent_creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED);
+            
             // The kick is free - it's considered part of the primary attack -
-            // so we ignore its action_cost_value.
-            attack(creature, adjacent_creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED);
+            // so we ignore its action_cost_value and just check the boolean
+            // hit/miss.
+
+            if (action_details.second == false)
+            {
+              action_details.second = kick_details.second;
+            }
           }
         }
       }
     }
   }
-  else
-  {
-    // Couldn't get the tile.  This could be because the creature is
-    // stunned and picked a direction without a tile (e.g., north at
-    // row 0)
-    action_cost_value = ActionCostConstants::DEFAULT;
-  }
   
-  return action_cost_value;
+  return action_details;
 }
 
 // Attempt to attack.
@@ -148,8 +154,9 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
 // The generated to-hit value is 100 (ignore Soak, 2x max damage, any resistance is min 100%)
 // The generated to-hit value is >= 96 (ignore Soak, max damage, any resistance is min 100%)
 // The generated to-hit value is >= the target number (regular damage)
-ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const AttackSequenceType ast, const bool mark_skills, DamagePtr predefined_damage)
+pair<ActionCostValue, bool> CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const AttackSequenceType ast, const bool mark_skills, DamagePtr predefined_damage)
 {
+  pair<ActionCostValue, bool> attack_details = { ActionCostConstants::NO_ACTION, false };
   ActionCostValue action_cost_value = ActionCostConstants::NO_ACTION;
 
   bool mark_for_weapon_and_combat_skills_and_stat = false;
@@ -202,6 +209,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     // Hit
     else if (is_automatic_hit(d100_roll) || is_hit(total_roll, target_number_value))
     {
+      attack_details.second = true;
       damage_dealt = hit(attacking_creature, attacked_creature, d100_roll, damage, attack_type, ast);
       mark_for_weapon_and_combat_skills_and_stat = (damage_dealt > 0);
       destroy_weapon_if_necessary(attacking_creature, attack_type);
@@ -234,7 +242,8 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     }
   }
 
-  return action_cost_value;
+  attack_details.first = action_cost_value;
+  return attack_details;
 }
 
 void CombatManager::handle_hostility_implications(CreaturePtr attacking_creature, CreaturePtr attacked_creature)

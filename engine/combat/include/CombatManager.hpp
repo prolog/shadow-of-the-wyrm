@@ -19,15 +19,15 @@ class CombatManager
     bool operator==(const CombatManager& cm) const;
     
     // Convenient function
-    ActionCostValue attack(CreaturePtr creature, const Direction d);
+    std::pair<ActionCostValue, bool> attack(CreaturePtr creature, const Direction d);
 
     // The "real" attack function
-    ActionCostValue attack(CreaturePtr attacking_creature, 
-                           CreaturePtr attacked_creature, 
-                           const AttackType = AttackType::ATTACK_TYPE_MELEE_PRIMARY, 
-                           const AttackSequenceType = AttackSequenceType::ATTACK_SEQUENCE_INITIAL,
-                           const bool mark_skills = true, 
-                           DamagePtr damage = DamagePtr());
+    std::pair<ActionCostValue, bool> attack(CreaturePtr attacking_creature, 
+                                            CreaturePtr attacked_creature, 
+                                            const AttackType = AttackType::ATTACK_TYPE_MELEE_PRIMARY, 
+                                            const AttackSequenceType = AttackSequenceType::ATTACK_SEQUENCE_INITIAL,
+                                            const bool mark_skills = true, 
+                                            DamagePtr damage = DamagePtr());
 
     void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const std::string& source_id, const int damage_dealt, const Damage& damage, const std::string& combat_message_sid = "", const std::string& death_source_sid = "");
     void handle_damage_effects(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments, const int danger_level);

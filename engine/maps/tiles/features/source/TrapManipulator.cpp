@@ -26,13 +26,23 @@ TrapManipulator::TrapManipulator(FeaturePtr feature)
 {
 }
 
-void TrapManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr /*feature_tile*/, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/, ItemPtr /* item */)
+void TrapManipulator::strike(CreaturePtr creature, MapPtr /*current_map*/, TilePtr feature_tile, const Coordinate& /*feature_coord*/, FeaturePtr /*feature*/, ItemPtr /* item */)
 {
-  if (creature && creature->get_is_player())
+  if (feature_tile != nullptr && feature_tile->has_creature())
   {
-    IMessageManager& manager = MMF::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_TRAP));
-    manager.send();
+    set_handling_creature(creature);
+    CreaturePtr feature_creature = feature_tile->get_creature();
+    handle(feature_tile, feature_creature);
+    set_handling_creature(nullptr);
+  }
+  else
+  {
+    if (creature && creature->get_is_player())
+    {
+      IMessageManager& manager = MMF::instance();
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_STRIKE_TRAP));
+      manager.send();
+    }
   }
 }
 
@@ -178,8 +188,8 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
       trap_sid = trap->get_description_and_replacement_sids().first;
     }
 
-    cm.handle_damage_effects(nullptr, creature, damage_dealt, dt, effect_bonus, status_ailments, 1);
-    cm.deal_damage(nullptr, creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED, source_id, damage_dealt, damage_default, message, trap_sid);
+    cm.handle_damage_effects(handling_creature, creature, damage_dealt, dt, effect_bonus, status_ailments, 1);
+    cm.deal_damage(handling_creature, creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED, source_id, damage_dealt, damage_default, message, trap_sid);
   }
 }
 
@@ -238,4 +248,16 @@ void TrapManipulator::create_and_draw_animation(TrapPtr trap, CreaturePtr creatu
     DisplayPtr display = game.get_display();
     display->draw_animation(animation, player_fov_map);
   }
+}
+
+// Set the handling creature.  This is used so that if the trap is triggered
+// remotely and kills another creature, the handling creature (the one who
+// triggered the trap on the other creature) gets properly credited with
+// experience.
+//
+// Right now, this is only really applicable for TrapManipulator. If it's
+// needed elsewhere later, move this into FeatureManipulator.
+void TrapManipulator::set_handling_creature(CreaturePtr creature)
+{
+  handling_creature = creature;
 }

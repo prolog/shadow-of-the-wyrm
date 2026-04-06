@@ -37,6 +37,12 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 
 - Shopkeepers now ignore the player's hidden status.
 
+- You can now trigger a trap a creature is on when you fire a missile and
+  miss.
+
+- You now gain experience when triggering traps that immediately kill a 
+  creature.
+
 - New items:
 
   - Wand of trap detection.
