@@ -54,6 +54,8 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
   - The monochrome_colour setting wasn't being respected for the curses
     splash screen.
 
+  - One of the quests wasn't completing properly in orchards (hemsio).
+
   - Various typos (hemsio).
 
 Shadow of the Wyrm v1.9.1.2 "Odair Assad"

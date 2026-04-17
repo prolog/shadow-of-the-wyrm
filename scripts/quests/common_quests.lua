@@ -187,7 +187,7 @@ local function adventure_forest_completion_condition_fn()
   local tile_table = map_get_tile(WORLD_MAP_ID, y, x)
   local map_type = tile_table["tile_type"]
 
-  return (map_type == CTILE_TYPE_FOREST or map_type == CTILE_TYPE_ORCHARD)
+  return (map_type == CTILE_TYPE_FOREST or map_type == CTILE_TYPE_WILD_ORCHARD)
 end
 
 local function adventure_forest_completion_fn()
@@ -453,7 +453,7 @@ end
 function CommonQuests:do_quests(creature_id)
   local sdesc_sid = get_creature_short_description_sid(creature_id)
   local quests = get_quests(creature_id, sdesc_sid)
-  
+ 
   for i,v in ipairs(quests) do
     local do_quest = Quest:check_probabilistic_quest(creature_id, v[1].quest_id, v[2])
     
