@@ -45,7 +45,7 @@
 using namespace std;
 
 const int MapUtils::PLAYER_RESTRICTED_ZONE_RADIUS = 8;
-const int MapUtils::CANNOT_MOVE_SCORE = -1;
+const int MapUtils::WILL_NOT_MOVE_SCORE = -1;
 
 string MapUtils::get_tile_direction_description(const Coordinate& base, const Coordinate& dest)
 {
@@ -2958,9 +2958,13 @@ int MapUtils::get_threat_distance_score_for_direction(CreaturePtr creature, cons
 
     if (new_tile != nullptr)
     {
-      if (!MapUtils::is_tile_available_for_creature(creature, new_tile))
+      CreatureTileSafetyChecker ctsc;
+      bool tile_available_for_creature = MapUtils::is_tile_available_for_creature(creature, new_tile);
+      bool tile_safe_for_creature = ctsc.is_tile_safe_for_creature(creature, new_tile);
+
+      if (!(tile_available_for_creature && tile_safe_for_creature))
       {
-        return CANNOT_MOVE_SCORE;
+        return WILL_NOT_MOVE_SCORE;
       }
 
       const auto creatures = view_map->get_creatures();

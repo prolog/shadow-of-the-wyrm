@@ -167,5 +167,5 @@ class MapUtils
     static void run_movement_scripts(CreaturePtr creature, const std::string& map_id, const Coordinate& c);
 
     static const int PLAYER_RESTRICTED_ZONE_RADIUS;
-    static const int CANNOT_MOVE_SCORE;
+    static const int WILL_NOT_MOVE_SCORE;
 };
