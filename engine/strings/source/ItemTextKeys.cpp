@@ -100,6 +100,7 @@ const string ItemTextKeys::ITEM_GLOW = "ITEM_GLOW";
 const string ItemTextKeys::ITEM_MULTIPLE = "ITEM_MULTIPLE";
 const string ItemTextKeys::ITEM_CODEX_NOT_IDENTIFIED = "ITEM_CODEX_NOT_IDENTIFIED";
 const string ItemTextKeys::ITEM_CODEX_NO_INFORMATION_FOUND = "ITEM_CODEX_NO_INFORMATION_FOUND";
+const string ItemTextKeys::ITEM_BLIND_UNSURE = "ITEM_BLIND_UNSURE";
 
 // Protected
 const string ItemTextKeys::ITEM_VALUE = "ITEM_VALUE";

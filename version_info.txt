@@ -49,6 +49,9 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 
 - Bug fixes:
 
+  - While blinded, items couldn't be looked up on the equipment screen, but
+    they could be viewed from the inventory screen (hemsio).
+
   - Water-breathing creatures could flee over land (hemsio).
 
   - Creatures flagged as sentinels will no longer consider fleeing.

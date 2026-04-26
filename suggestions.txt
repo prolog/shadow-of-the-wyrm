@@ -10,8 +10,7 @@ Long Term Boring And Probably Necessary:
 
 - smarter shopkeeper repops (hemsio)
 - ice floes, ice fields...
-- hemsio: examining items while blinded reveals what they are.
-- shopkeepers should accept money to end hostility
+- hemsio: shopkeepers should accept money to end hostility
 
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 

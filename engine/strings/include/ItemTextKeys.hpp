@@ -12,6 +12,7 @@ class ItemTextKeys
     static const std::string ITEM_MULTIPLE;
     static const std::string ITEM_CODEX_NOT_IDENTIFIED;
     static const std::string ITEM_CODEX_NO_INFORMATION_FOUND;
+    static const std::string ITEM_BLIND_UNSURE;
 
     static std::string get_value(const uint value);
     static std::string get_nutrition_message(ConsumablePtr consumable);

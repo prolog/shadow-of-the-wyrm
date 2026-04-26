@@ -452,11 +452,11 @@ ActionCost ActionManager::item_codex(CreaturePtr creature, const EquipmentWornLo
   return get_action_cost(creature, ica.item_details(creature, ewl));
 }
 
-ActionCost ActionManager::item_codex(CreaturePtr creature, ItemPtr item, const bool /* error_as_alert */)
+ActionCost ActionManager::item_codex(CreaturePtr creature, ItemPtr item, const bool skip_blindness_checks)
 {
   ItemCodexAction ica;
 
-  return get_action_cost(creature, ica.item_details(creature, item));
+  return get_action_cost(creature, ica.item_details(creature, item, skip_blindness_checks));
 }
 
 ActionCost ActionManager::switch_graphics_mode(CreaturePtr creature)

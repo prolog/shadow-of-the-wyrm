@@ -30,7 +30,9 @@ ItemCodexAction::ItemCodexAction()
 }
 
 // Show the details of the most applicable item, given the search.
-// Looking up an item is always free.
+// Looking up an item is always free. Because this function is search-based
+// (ie, not checking an individual item in the inventory), skip any
+// blindness checks.
 ActionCostValue ItemCodexAction::item_details(CreaturePtr creature) const
 {
   ActionCostValue acv = get_action_cost_value(creature);
@@ -59,7 +61,7 @@ ActionCostValue ItemCodexAction::item_details(CreaturePtr creature) const
 
       if (item != nullptr)
       {
-        acv = item_details(creature, item, false);
+        acv = item_details(creature, item, true);
       }
       else
       {
@@ -91,6 +93,7 @@ ActionCostValue ItemCodexAction::item_details(CreaturePtr creature, ItemPtr item
 {
   if (creature != nullptr && item != nullptr)
   {
+    IMessageManager& manager = MMF::instance();
     ItemIdentifier iid;
 
     if (iid.get_item_identified(item->get_base_id()))
@@ -101,12 +104,14 @@ ActionCostValue ItemCodexAction::item_details(CreaturePtr creature, ItemPtr item
       {
         display_codex_item(item);
       }
+      else
+      {
+        string msg = StringTable::get(ItemTextKeys::ITEM_BLIND_UNSURE);
+        manager.alert(msg);
+      }
     }
     else
     {
-      // Assumption is that it's only ever the player calling this.
-      // This is overlaid over the inventory screen, so use an alert.
-      IMessageManager& manager = MMF::instance();
       string msg = StringTable::get(ItemTextKeys::ITEM_CODEX_NO_INFORMATION_FOUND);
       manager.alert(msg);
     }
