@@ -37,6 +37,8 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 
 - Shopkeepers now ignore the player's hidden status.
 
+- Thieves (the class) pay more in shops.
+
 - You can now trigger a trap a creature is on when you fire a missile and
   miss.
 
