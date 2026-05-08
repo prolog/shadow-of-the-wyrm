@@ -150,6 +150,7 @@ void NPCDecisionStrategy::update_threats_if_shopkeeper(MapPtr fov_map)
         if (!MapUtils::is_in_shop_or_adjacent(current_map, creature_coord).first)
         {
           threat_ratings.add_threat(creature->get_id(), ThreatConstants::INITIAL_THREAT_RATING);
+          set_property(CreatureProperties::CREATURE_PROPERTIES_ROBBED, std::to_string(true));
 
           IMessageManager& manager = MMF::instance();
           manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_ENRAGED_SHOPKEEPER));

@@ -421,6 +421,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_sid", get_sid);
   lua_register(L, "set_automove_coords", set_automove_coords);
   lua_register(L, "set_decision_strategy_property", set_decision_strategy_property);
+  lua_register(L, "get_decision_strategy_property", get_decision_strategy_property);
   lua_register(L, "set_event_script", set_event_script);
   lua_register(L, "get_random_hostile_creature_id", get_random_hostile_creature_id);
   lua_register(L, "generate_item", generate_item);
@@ -8507,6 +8508,36 @@ int set_decision_strategy_property(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_decision_strategy_property(lua_State* ls)
+{
+  string prop_val;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string property = lua_tostring(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      DecisionStrategy* ds = creature->get_decision_strategy();
+
+      if (ds != nullptr)
+      {
+        prop_val = ds->get_property(property);
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_decision_strategy_property");
+  }
+
+  lua_pushstring(ls, prop_val.c_str());
+  return 1;
 }
 
 int set_event_script(lua_State* ls)

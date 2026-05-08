@@ -256,6 +256,7 @@ int set_sentinel(lua_State* ls);
 int get_sid(lua_State* ls);
 int set_automove_coords(lua_State* ls);
 int set_decision_strategy_property(lua_State* ls);
+int get_decision_strategy_property(lua_State* ls);
 int set_event_script(lua_State* ls);
 int get_random_hostile_creature_id(lua_State* ls);
 int generate_item(lua_State* ls);

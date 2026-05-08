@@ -1,5 +1,6 @@
 #include "Conversion.hpp"
 #include "CitySectorTypes.hpp"
+#include "CreatureProperties.hpp"
 #include "Date.hpp"
 #include "GameEnvTextKeys.hpp"
 #include "Log.hpp"
@@ -380,6 +381,8 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConstStr(ls, CMUSIC_EVENT_CARCASSIA);
   lua_exportConstStr(ls, CMUSIC_EVENT_WAVES);
   lua_exportConstStr(ls, CMUSIC_EVENT_FAIRY);
+
+  lua_exportConstStr(ls, CCREATURE_PROPERTIES_ROBBED);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)

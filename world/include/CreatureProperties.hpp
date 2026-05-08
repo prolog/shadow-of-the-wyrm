@@ -58,8 +58,11 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_HIVE_LEADER;
 
     static const std::string CREATURE_PROPERTIES_IGNORE_HIDDEN;
+    static const std::string CREATURE_PROPERTIES_ROBBED;
 
   protected:
     CreatureProperties();
     ~CreatureProperties();
 };
+
+constexpr auto CCREATURE_PROPERTIES_ROBBED = "CREATURE_PROPERTIES_ROBBED";

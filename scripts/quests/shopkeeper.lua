@@ -1,4 +1,5 @@
 require('constants')
+require('fn')
 
 local function complete_purchase(purchase_amount, unpaid_amount, shopkeeper_id)
   -- Show how much was saved via Bargaining
@@ -16,7 +17,7 @@ local function complete_purchase(purchase_amount, unpaid_amount, shopkeeper_id)
   play_sound_effect(CSOUND_EFFECT_SHOP)
 
   -- Paying for unpaid items mollifies angry shopkeepers throughout
-  -- the game.
+  -- the game. But it doesn't remove the stolen_from property...
   local shopk_orig = get_creature_original_id(shopkeeper_id)
 
   remove_threat_from_all(PLAYER_ID, shopk_orig)
@@ -25,7 +26,7 @@ local function complete_purchase(purchase_amount, unpaid_amount, shopkeeper_id)
   transfer_item(shopkeeper_id, PLAYER_ID, CURRENCY_ID, purchase_amount)
 end
 
-local function get_purchase_amount(unpaid_amount)
+local function get_purchase_amount(shopkeep_id, unpaid_amount)
   local purchase_amount = unpaid_amount
   local bargain, amount_pct = bargain_discount(PLAYER_ID)
   local class_id = get_class_id(PLAYER_ID)
@@ -37,6 +38,10 @@ local function get_purchase_amount(unpaid_amount)
   -- Thieves pay an extra 10% everywhere.
   if class_id == CLASS_ID_THIEF then
     purchase_amount = math.floor(purchase_amount * 1.1)
+  end
+
+  if fn.tobool(get_decision_strategy_property(shopkeep_id, CCREATURE_PROPERTIES_ROBBED)) then
+    purchase_amount = math.floor(purchase_amount * 2)
   end
   
   return purchase_amount
@@ -50,7 +55,7 @@ local shopkeep_id = args[SPEAKING_CREATURE_ID]
 if num_unpaid_items > 0 then
   -- Does the player have enough ivory to cover it?
   local currency_amount = count_currency(PLAYER_ID)
-  local purchase_amount = get_purchase_amount(unpaid_amount)
+  local purchase_amount = get_purchase_amount(shopkeep_id, unpaid_amount)
 
   if (currency_amount >= purchase_amount) then
     -- Confirm the purchase
