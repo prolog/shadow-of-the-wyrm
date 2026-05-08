@@ -4,6 +4,14 @@ function make_coordinate_key(y, x)
   return tostring(y) .. "-" .. tostring(x)
 end
 
+function tobool(p)
+  if p == "1" or p == "true" or p == "True" or p == "TRUE" or p == "t" or p == "T" then
+    return true
+  else
+    return false
+  end
+end
+
 function coord_tostring(y, x)
   return "(" .. tostring(y) .. "," .. tostring(x) .. ")"
 end
