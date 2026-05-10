@@ -272,3 +272,15 @@ TEST(SW_World_NullInventory, remove_ingr)
 
   EXPECT_EQ(0u, ni.size());
 }
+
+TEST(SW_World_NullInventory, count_unpaid_item_stacks)
+{
+  NullInventory ni;
+
+  ItemPtr item = std::make_shared<Spellbook>();
+  item->set_unpaid(true);
+
+  ni.add(item);
+
+  EXPECT_EQ(0u, ni.count_unpaid_item_stacks());
+}

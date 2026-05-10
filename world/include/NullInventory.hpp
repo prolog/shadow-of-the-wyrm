@@ -53,6 +53,7 @@ class NullInventory : public IInventory
     uint count_items(const std::string& item_base_id) const override;
     uint count_items() const override;
     uint count_currency() const override;
+    uint count_unpaid_item_stacks() const override;
 
     void set_items(const std::list<ItemPtr>& items) override;
     void add_items(const std::list<ItemPtr>& items) override;

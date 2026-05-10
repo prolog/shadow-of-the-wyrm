@@ -1,4 +1,5 @@
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "ShopUtils.hpp"
 #include "Tile.hpp"
 
@@ -40,6 +41,44 @@ bool ShopUtils::has_space_for_wares(MapPtr map, const Shop& shop)
 
   return false;
 }
+
+// A shop should have a maximum of one unpaid item stack per tile.  When shops
+// start off, these will be distributed evenly, but the maximum should stay in
+// place so that crafty players can't just pick up all the items and move them
+// to a particular tile and get a full repop.
+uint ShopUtils::get_max_unpaid_items_for_repop(const Coordinate& start, const Coordinate& end)
+{
+  // Say we've got tiles going from (14,26) to (15,30) - ie, the Isen Dun shop. Even though
+  // the height is 1 (15-14), there are two rows to fill, and even though the width is 4
+  // (30-26), there are 5 columns to fill. So, add 1 to each to get the actual number of
+  // tiles, rather than just the height/width.
+  return (1 + CoordUtils::get_width(start, end)) * (1 + CoordUtils::get_height(start, end));
+}
+
+uint ShopUtils::get_num_unpaid_stacks(MapPtr map, const Coordinate& start, const Coordinate& end)
+{
+  uint stacks = 0;
+  TilePtr tile;
+
+  if (map != nullptr)
+  {
+    for (int y = start.first; y <= end.first; y++)
+    {
+      for (int x = start.second; x <= end.second; x++)
+      {
+        tile = map->at(y, x);
+
+        if (tile != nullptr)
+        {
+          stacks += tile->get_items()->count_unpaid_item_stacks();
+        }
+      }
+    }
+  }
+
+  return stacks;
+}
+
 
 #ifdef UNIT_TESTS
 #include "unit_tests/ShopUtils_test.cpp"

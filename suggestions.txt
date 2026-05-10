@@ -8,12 +8,11 @@ Long Term Boring And Probably Necessary:
 - Visual Studio: x64 build
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
-- smarter shopkeeper repops (hemsio)
 - ice floes, ice fields...
 - hemsio: shopkeepers should accept money to end hostility
-- if the player has stolen, the cost should go up, & do so each time (+ 2.0 multiplier each time, max 8)
 - the purchase amount should be shown when the player doesn't have enough money
 - the "should be getting some new wares" should have a dislike msg too
+- new ShopUtils unit tests
 
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 

@@ -385,6 +385,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_shop_shopkeeper_id", set_shop_shopkeeper_id);
   lua_register(L, "repop_shop", repop_shop);
   lua_register(L, "repop_shops", repop_shops);
+  lua_register(L, "get_max_unpaid_items_for_repop", get_max_unpaid_items_for_repop);
   lua_register(L, "get_num_unpaid_items", get_num_unpaid_items);
   lua_register(L, "get_unpaid_amount", get_unpaid_amount);
   lua_register(L, "set_items_paid", set_items_paid);
@@ -7169,6 +7170,26 @@ int repop_shops(lua_State* ls)
   }
 
   lua_pushboolean(ls, repopped);
+  return 1;
+}
+
+int get_max_unpaid_items_for_repop(lua_State* ls)
+{
+  int max_unpaid = 0;
+
+  if (lua_gettop(ls) == 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    Coordinate start(lua_tointeger(ls, 1), lua_tointeger(ls, 2));
+    Coordinate end(lua_tointeger(ls, 3), lua_tointeger(ls, 4));
+
+    max_unpaid = ShopUtils::get_max_unpaid_items_for_repop(start, end);
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to get_max_unpaid_items_for_repop");
+  }
+
+  lua_pushnumber(ls, max_unpaid);
   return 1;
 }
 

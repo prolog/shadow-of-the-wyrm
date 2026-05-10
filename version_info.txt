@@ -39,6 +39,10 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 
 - Thieves (the class) pay more in shops.
 
+- Shopkeepers are now smarter about restocking items - there is a maximum
+  per shop, and the total number of unpaid items in a shop is considered
+  before generating new ones (hemsio).
+
 - You can now trigger a trap a creature is on when you fire a missile and
   miss.
 

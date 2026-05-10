@@ -10,10 +10,11 @@ class MapItemGenerator
     bool repop_shop(MapPtr map, const std::string& shop_id);
 
   protected:
+    bool should_repop_shop(MapPtr map, const Coordinate& start, const Coordinate& end);
     bool generate_dead_adventurer(MapPtr map, const int danger_level);
     bool generate_ivory_on_shopkeeper(MapPtr map, const Shop& shop);
     std::vector<ItemPtr> generate_dead_adventurer_items(const int danger_level, const int danger_upper, const Rarity rarity);
-
+        
     static const int OUT_OF_DEPTH_ITEMS_CHANCE;
     static const int PCT_CHANCE_ADVENTURER_SKELETON_TRAP;
     static const int PCT_CHANCE_ADVENTURER_CORPSE;

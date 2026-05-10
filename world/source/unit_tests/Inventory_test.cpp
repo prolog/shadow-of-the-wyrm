@@ -456,3 +456,22 @@ TEST(SW_World_Inventory, get_item_ids_and_quantity)
   EXPECT_TRUE(id_q.size() == 1);
   EXPECT_EQ(12u, id_q[sp_id]);
 }
+
+TEST(SW_World_Inventory, count_unpaid_item_stacks)
+{
+  Inventory inv;
+
+  SpellbookPtr book = std::make_shared<Spellbook>();
+  book->set_unpaid(true);
+
+  SpellbookPtr book2 = std::make_shared<Spellbook>();
+
+  SpellbookPtr book3 = std::make_shared<Spellbook>();
+  book3->set_unpaid(true);
+
+  inv.add(book);
+  inv.add(book2);
+  inv.add(book3);
+
+  EXPECT_EQ(2u, inv.count_unpaid_item_stacks());
+}

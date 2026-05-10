@@ -10,6 +10,7 @@
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
+#include "ShopUtils.hpp"
 
 using namespace std;
 
@@ -180,10 +181,8 @@ bool MapItemGenerator::repop_shop(MapPtr map, const string& shop_id)
     std::map<string, Shop> shops = map->get_shops();
     auto s_it = shops.find(shop_id);
 
-    if (s_it != shops.end())
+    if (s_it != shops.end())  
     {
-      repop = true;
-
       Shop shop = s_it->second;
       Coordinate start = shop.get_start();
       Coordinate end = shop.get_end();
@@ -193,48 +192,71 @@ bool MapItemGenerator::repop_shop(MapPtr map, const string& shop_id)
 
       generate_ivory_on_shopkeeper(map, shop);
 
-      // Repopulate the shop...
-      ItemGenerationManager igm;
-      ItemGenerationMap generation_map = igm.generate_item_generation_map({1, danger_level, rarity, stocked_types, ItemValues::DEFAULT_MIN_SHOP_VALUE});
-      ItemEnchantmentCalculator iec;
-      Game& game = Game::instance();
-      ActionManager& am = game.get_action_manager_ref();
+      bool should_repop = should_repop_shop(map, start, end);
 
-      for (int row = start.first; row <= end.first; row++)
+      if (should_repop)
       {
-        for (int col = start.second; col <= end.second; col++)
+        // Repopulate the shop...
+        uint max_unpaid = ShopUtils::get_max_unpaid_items_for_repop(start, end);
+        uint num_unpaid_existing = ShopUtils::get_num_unpaid_stacks(map, start, end);
+
+        ItemGenerationManager igm;
+        ItemGenerationMap generation_map = igm.generate_item_generation_map({ 1, danger_level, rarity, stocked_types, ItemValues::DEFAULT_MIN_SHOP_VALUE });
+        ItemEnchantmentCalculator iec;
+        Game& game = Game::instance();
+        ActionManager& am = game.get_action_manager_ref();
+
+        for (int row = start.first; row <= end.first; row++)
         {
-          // Are there any unpaid items here?  If so, skip item generation
-          // for that tile.
-          TilePtr tile = map->at(row, col);
-
-          if (tile)
+          for (int col = start.second; col <= end.second; col++)
           {
-            IInventoryPtr items = tile->get_items();
+            // Are there any unpaid items here?  If so, skip item generation
+            // for that tile.
+            TilePtr tile = map->at(row, col);
 
-            if (items != nullptr && items->has_unpaid_items())
+            if (tile)
             {
-              continue;
-            }
-          }
+              IInventoryPtr items = tile->get_items();
 
-          int enchant_points = iec.calculate_enchantments(danger_level);
-          ItemPtr shop_item = igm.generate_item(am, generation_map, rarity, stocked_types, enchant_points);
-
-          if (shop_item != nullptr)
-          {
-            shop_item->set_unpaid(true);
-
-            tile = map->at(row, col);
-
-            if (tile != nullptr)
-            {
-              IInventoryPtr inv = tile->get_items();
-
-              if (inv != nullptr)
+              if (items != nullptr && items->has_unpaid_items())
               {
-                inv->merge_or_add(shop_item);
+                continue;
               }
+            }
+
+            // Otherwise, make sure we're not over the guidelines for max
+            // items per shop. If we've hit the limit, exit and return whether
+            // items have been repopped.
+            if (num_unpaid_existing >= max_unpaid)
+            {
+              return repop;
+            }
+
+            int enchant_points = iec.calculate_enchantments(danger_level);
+            ItemPtr shop_item = igm.generate_item(am, generation_map, rarity, stocked_types, enchant_points);
+
+            if (shop_item != nullptr)
+            {
+              shop_item->set_unpaid(true);
+
+              tile = map->at(row, col);
+
+              if (tile != nullptr)
+              {
+                IInventoryPtr inv = tile->get_items();
+
+                if (inv != nullptr)
+                {
+                  inv->merge_or_add(shop_item);
+                }
+              }
+            }
+
+            num_unpaid_existing++;
+
+            if (!repop)
+            {
+              repop = true;
             }
           }
         }
@@ -243,6 +265,40 @@ bool MapItemGenerator::repop_shop(MapPtr map, const string& shop_id)
   }
 
   return repop;
+}
+
+bool MapItemGenerator::should_repop_shop(MapPtr map, const Coordinate& start, const Coordinate& end)
+{
+  bool should_repop = false;
+
+  if (map != nullptr)
+  {
+    should_repop = true;
+    uint max_items_for_repop = ShopUtils::get_max_unpaid_items_for_repop(start, end);
+
+    TilePtr tile;
+    uint cnt = 0;
+
+    for (int y = start.first; y <= end.first; y++)
+    {
+      for (int x = start.second; x <= end.second; x++)
+      {
+        tile = map->at(y, x);
+
+        if (tile != nullptr)
+        {
+          cnt += tile->get_items()->count_unpaid_item_stacks();
+
+          if (cnt > max_items_for_repop)
+          {
+            return false;
+          }
+        }
+      }
+    }
+  }
+
+  return should_repop;
 }
 
 bool MapItemGenerator::generate_dead_adventurer(MapPtr map, const int danger_level)

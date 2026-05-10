@@ -220,6 +220,7 @@ int generate_shop(lua_State* ls);
 int set_shop_shopkeeper_id(lua_State* ls);
 int repop_shop(lua_State* ls);
 int repop_shops(lua_State* ls);
+int get_max_unpaid_items_for_repop(lua_State* ls);
 int get_num_unpaid_items(lua_State* ls);
 int get_unpaid_amount(lua_State* ls);
 int set_items_paid(lua_State* ls);

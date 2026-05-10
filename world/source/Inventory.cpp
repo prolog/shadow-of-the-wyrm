@@ -353,6 +353,22 @@ uint Inventory::count_currency() const
   return currency_quantity;
 }
 
+uint Inventory::count_unpaid_item_stacks() const
+{
+  uint stacks = 0;
+  auto raw_items = get_items_cref();
+
+  for (ItemPtr item : raw_items)
+  {
+    if (item != nullptr && item->get_unpaid())
+    {
+      stacks++;
+    }
+  }
+
+  return stacks;
+}
+
 bool Inventory::clear()
 {
   items.clear();
