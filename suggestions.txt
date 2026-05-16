@@ -12,7 +12,6 @@ Long Term Boring And Probably Necessary:
 - hemsio: shopkeepers should accept money to end hostility
 - the purchase amount should be shown when the player doesn't have enough money
 - the "should be getting some new wares" should have a dislike msg too
-- new ShopUtils unit tests
 
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
