@@ -71,7 +71,7 @@ if num_unpaid_items > 0 then
       clear_and_add_message("SHOPKEEPER_WARNING_SID")
     end
   else
-    clear_and_add_message("SHOPKEEPER_INSUFFICIENT_FUNDS_SID")
+    clear_and_add_message("SHOPKEEPER_INSUFFICIENT_FUNDS_SID", {tostring(purchase_amount)})
   end
 else
   -- Nothing owed.  Add a standard greeting.
