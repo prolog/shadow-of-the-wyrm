@@ -388,6 +388,7 @@ bool Item::matches(std::shared_ptr<Item> i) const
     }
 
     match = match && (usage_description_sid == i->get_usage_description_sid());
+    match = match && (codex_description_sid == i->get_codex_description_sid());
     match = match && (description_sid       == i->get_description_sid()      );
     match = match && (status_identified     == i->get_status_identified()    );
     match = match && (value                 == i->get_value()                );
