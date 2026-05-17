@@ -296,6 +296,11 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
           // If it's the player, remind the user what he or she dropped.
           handle_item_dropped_message(creature, inv, new_item, unstable);
 
+          if (unstable)
+          {
+            MapUtils::blind_adjacent_creatures(creature, current_map, drop_coord);
+          }
+
           // Do any of the creatures watching this have drop scripts?
           handle_reacting_creature_drop_scripts(creature, current_map, new_item, drop_coord);
 

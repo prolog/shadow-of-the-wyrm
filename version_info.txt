@@ -49,6 +49,9 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 - You now gain experience when triggering traps that immediately kill a 
   creature.
 
+- Dropping unstable items has a chance to blind any creatures immediately
+  adjacent to you.
+
 - New items:
 
   - Wand of trap detection.

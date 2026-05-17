@@ -1,5 +1,7 @@
 #include <boost/tokenizer.hpp>
 #include "ActionTextKeys.hpp"
+#include "BlindedCalculator.hpp"
+#include "CombatManager.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "CreatureFactory.hpp"
@@ -33,6 +35,7 @@
 #include "RageEffect.hpp"
 #include "RNG.hpp"
 #include "SettlementGeneratorUtils.hpp"
+#include "StatusEffectFactory.hpp"
 #include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "TileDescriber.hpp"
@@ -46,6 +49,7 @@ using namespace std;
 
 const int MapUtils::PLAYER_RESTRICTED_ZONE_RADIUS = 8;
 const int MapUtils::WILL_NOT_MOVE_SCORE = -1;
+const int MapUtils::BLIND_ADJACENT_CREATURES_EFFECT_BONUS = 75;
 
 string MapUtils::get_tile_direction_description(const Coordinate& base, const Coordinate& dest)
 {
@@ -3003,6 +3007,45 @@ string MapUtils::get_drop_sound(TileSuperType tst)
   }
 
   return sound_id;
+}
+
+// Blind the creatures around another creature. This can be due to
+// dropping an unstable item, or for other reasons. Creatures don't
+// like being blinded, though!
+void MapUtils::blind_adjacent_creatures(CreaturePtr attacking_creature, MapPtr map, const Coordinate& centre_coord)
+{
+  if (map != nullptr)
+  {
+    BlindedCalculator bc;
+    HostilityManager hm;
+
+    vector<Coordinate> adj_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), centre_coord.first, centre_coord.second);
+    StatusEffectPtr se = StatusEffectFactory::create_status_effect(attacking_creature, StatusIdentifiers::STATUS_ID_BLINDED, "");
+    int danger_level = 1;
+    string attack_cr_id;
+
+    if (attacking_creature != nullptr)
+    {
+      danger_level = attacking_creature->get_level().get_current();
+      attack_cr_id = attacking_creature->get_id();
+    }
+
+    for (const auto& a_c : adj_coords)
+    {
+      TilePtr tile = map->at(a_c);
+
+      if (tile != nullptr && tile->has_creature())
+      {
+        CreaturePtr adj_cr = tile->get_creature();
+
+        if (RNG::percent_chance(bc.pct_chance_effect(adj_cr, BLIND_ADJACENT_CREATURES_EFFECT_BONUS)))
+        {
+          se->apply_change(adj_cr, danger_level);
+          hm.set_hostility_to_creature(adj_cr, attack_cr_id, ThreatConstants::ACTIVE_THREAT_RATING);
+        }
+      }
+    }
+  }
 }
 
 #ifdef UNIT_TESTS

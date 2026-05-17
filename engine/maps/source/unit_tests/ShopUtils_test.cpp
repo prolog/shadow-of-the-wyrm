@@ -42,5 +42,5 @@ TEST(SW_World_ShopUtils, get_num_unpaid_stacks)
     map->at(uc)->get_items()->merge_or_add(unpaid);
   }
 
-  EXPECT_EQ(3, ShopUtils::get_num_unpaid_stacks(map, start, end));
+  EXPECT_EQ(3u, ShopUtils::get_num_unpaid_stacks(map, start, end));
 }

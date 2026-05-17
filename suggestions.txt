@@ -9,7 +9,9 @@ Long Term Boring And Probably Necessary:
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
 - ice floes, ice fields...
-- hemsio: shopkeepers should accept money to end hostility
+- Throwing unstable items should have a chance to blind the target and those
+  around it
+- Time to finally implement jumping
 
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
@@ -20,9 +22,6 @@ Me:
 - Audio enhancements off for testing
 - fleeing monsters should try to trigger teleport traps
 - npcs should try to trigger fireball traps when hostiles are adjacent
-- Dropping unstable items should have a chance to blind those around you
-- Throwing unstable items should have a chance to blind the target and those
-  around it
 - for steel items: coal + iron? recipes tied to skills?
 - what about a theme for Cithriel? something weird and otherworldly
 - More recipes as more spell effects are added!
@@ -460,8 +459,6 @@ Kenny:
 
 iakul:
 - spells for the nine
-- Consuming the corpse of the same race aggros the entire map, regardless of 
-  whether they are in LOS, or whether they are your followers.
 - Attacking a friendly doesn't provoke aggro from nearby friendlies. The 
   friendly that's attacked does get aggro-ed, and guards nearby will attack 
   this former friendly for their act of self-defense while ignoring you.
@@ -471,7 +468,6 @@ iakul:
 
 JovanM:
 - create inkpots
-- paper making from anything made of wood
 - long shops eg in Carcassia allow free thievery
 
 Sabrecam: 
@@ -495,6 +491,5 @@ RelicWraith:
 
 Paul Raymond-Robichaud:
 - Increase HP/AP regen modifiers as you level
-- shift+letter for race, class, religion help on start
 - special events/festivities on certain days? (feasts, etc)
 

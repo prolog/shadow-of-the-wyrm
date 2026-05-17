@@ -18,7 +18,7 @@ void HostilityManager::clear_hostility(CreaturePtr creature)
 // Set the creature hostile to another creature with the given creature_id.
 void HostilityManager::set_hostility_to_creature(CreaturePtr creature, const string& hostile_to_creature_id, const int hostility_level)
 {
-  if (creature != nullptr)
+  if (creature != nullptr && !hostile_to_creature_id.empty())
   {
     DecisionStrategy* decision_strategy = creature->get_decision_strategy();
     ThreatRatings& threat_ratings = decision_strategy->get_threats_ref();

@@ -156,6 +156,7 @@ class MapUtils
     static SkillType get_lore_skill_for_terrain(TilePtr tile);
     static int get_threat_distance_score_for_direction(CreaturePtr creature, const Direction d, MapPtr map, MapPtr view_map);
     static std::string get_drop_sound(TileSuperType tst);
+    static void blind_adjacent_creatures(CreaturePtr attacking_creature, MapPtr map, const Coordinate& centre_coord);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
@@ -168,4 +169,5 @@ class MapUtils
 
     static const int PLAYER_RESTRICTED_ZONE_RADIUS;
     static const int WILL_NOT_MOVE_SCORE;
+    static const int BLIND_ADJACENT_CREATURES_EFFECT_BONUS;
 };
