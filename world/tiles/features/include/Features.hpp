@@ -567,6 +567,7 @@ class Trap : public Feature
     virtual void set_is_hidden(const bool new_hidden) override;
     virtual bool get_is_hidden() const override;
     virtual bool get_is_dangerous() const override;
+    virtual bool get_allows_escape() const override;
 
     virtual bool apply_on_movement(CreaturePtr creature) const override;
 

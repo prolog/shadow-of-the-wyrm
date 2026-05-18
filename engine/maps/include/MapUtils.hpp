@@ -169,5 +169,6 @@ class MapUtils
 
     static const int PLAYER_RESTRICTED_ZONE_RADIUS;
     static const int WILL_NOT_MOVE_SCORE;
+    static const int HAS_ESCAPE_SCORE;
     static const int BLIND_ADJACENT_CREATURES_EFFECT_BONUS;
 };

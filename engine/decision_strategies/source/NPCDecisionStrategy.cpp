@@ -83,17 +83,20 @@ bool NPCDecisionStrategy::get_move_to_dangerous_tile(MapPtr map, CreaturePtr cre
 
       // Even tough creatures will avoid blackwater traps due to the instakill
       // potential.
-      if (trap != nullptr && trap->get_damage().get_damage_type() != DamageType::DAMAGE_TYPE_SHADOW)
+      if (trap != nullptr)
       {
-        // If it's not a shadow trap, creatures will move past traps when
-        // they believe they can soak it and still have lots of HP left.
-        Statistic hp_copy = creature->get_hit_points();
-        int max_dmg = trap->get_damage().max();
-        hp_copy.set_current(hp_copy.get_current() - max_dmg);
-
-        if (hp_copy.get_percent() > 50)
+        if (trap->get_damage().get_damage_type() != DamageType::DAMAGE_TYPE_SHADOW)
         {
-          do_move = true;
+          // If it's not a shadow trap, creatures will move past traps when
+          // they believe they can soak it.
+          Statistic hp_copy = creature->get_hit_points();
+          int max_dmg = trap->get_damage().max();
+          hp_copy.set_current(hp_copy.get_current() - max_dmg);
+
+          if (hp_copy.get_current() > 0)
+          {
+            do_move = true;
+          }
         }
       }
     }

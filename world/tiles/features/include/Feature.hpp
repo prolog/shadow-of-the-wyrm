@@ -45,6 +45,9 @@ class Feature : public ISerializable
     // Is this an entrance of some kind?
     virtual bool get_is_entrance() const;
 
+    // Does this allow escape of some kind? (ie teleport trap)
+    virtual bool get_allows_escape() const;
+
     // Does the feature apply on movement?  The creature moving
     // into the tile is passed so that skills/eq can be checked, etc.
     virtual bool apply_on_movement(std::shared_ptr<Creature> creature) const;

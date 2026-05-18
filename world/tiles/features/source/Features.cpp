@@ -1246,6 +1246,12 @@ bool Trap::get_is_dangerous() const
   return triggered;
 }
 
+bool Trap::get_allows_escape() const
+{
+  // ...good enough for now.
+  return (effect == EffectType::EFFECT_TYPE_TELEPORT);
+}
+
 bool Trap::apply_on_movement(std::shared_ptr<Creature> creature) const
 {
   // If the creature is flying, the trap won't be triggered on movement.

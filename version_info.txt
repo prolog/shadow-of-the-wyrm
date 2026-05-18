@@ -55,6 +55,10 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 - Firing an unstable item has a chance to blind any creatures adjacent to the
   target tile.
 
+- Fleeing NPCs will now consider teleport traps as a means of escape.
+
+- Teleport traps no longer deal damage.
+
 - New items:
 
   - Wand of trap detection.

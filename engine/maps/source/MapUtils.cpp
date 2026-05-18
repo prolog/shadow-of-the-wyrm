@@ -49,6 +49,7 @@ using namespace std;
 
 const int MapUtils::PLAYER_RESTRICTED_ZONE_RADIUS = 8;
 const int MapUtils::WILL_NOT_MOVE_SCORE = -1;
+const int MapUtils::HAS_ESCAPE_SCORE = 100;
 const int MapUtils::BLIND_ADJACENT_CREATURES_EFFECT_BONUS = 75;
 
 string MapUtils::get_tile_direction_description(const Coordinate& base, const Coordinate& dest)
@@ -2952,7 +2953,7 @@ SkillType MapUtils::get_lore_skill_for_terrain(TilePtr tile)
 
 int MapUtils::get_threat_distance_score_for_direction(CreaturePtr creature, const Direction d, MapPtr map, MapPtr view_map)
 {
-  int score = 0;
+  int score = 1;
 
   if (creature != nullptr && map != nullptr && view_map != nullptr)
   {
@@ -2969,6 +2970,13 @@ int MapUtils::get_threat_distance_score_for_direction(CreaturePtr creature, cons
       if (!(tile_available_for_creature && tile_safe_for_creature))
       {
         return WILL_NOT_MOVE_SCORE;
+      }
+
+      FeaturePtr feature = new_tile->get_feature();
+
+      if (feature != nullptr && feature->get_allows_escape())
+      {
+        return HAS_ESCAPE_SCORE;
       }
 
       const auto creatures = view_map->get_creatures();
