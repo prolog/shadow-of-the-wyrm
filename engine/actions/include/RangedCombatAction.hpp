@@ -29,7 +29,7 @@ class RangedCombatAction : public IActionManager
     // Either destroy the ammo (it didn't survive being fired), or drop it
     // on the appropriate tile.
     // Returns true if the ammunition is destroyed.
-    bool destroy_ammunition_or_drop_on_tile(CreaturePtr creature, TilePtr tile);
+    bool destroy_ammunition_or_drop_on_tile(CreaturePtr creature, MapPtr map, TilePtr tile, const Coordinate& target_coords);
     
     // Fire creature's weapon at the tile, checking to see if
     // anything is hit along the way.

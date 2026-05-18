@@ -9,8 +9,6 @@ Long Term Boring And Probably Necessary:
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
 - ice floes, ice fields...
-- Throwing unstable items should have a chance to blind the target and those
-  around it
 - Time to finally implement jumping
 
 Me:

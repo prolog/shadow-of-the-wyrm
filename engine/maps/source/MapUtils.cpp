@@ -3038,7 +3038,10 @@ void MapUtils::blind_adjacent_creatures(CreaturePtr attacking_creature, MapPtr m
       {
         CreaturePtr adj_cr = tile->get_creature();
 
-        if (RNG::percent_chance(bc.pct_chance_effect(adj_cr, BLIND_ADJACENT_CREATURES_EFFECT_BONUS)))
+        // The attacking creature instinctively shuts their eyes and isn't
+        // affected by the explosion of light.
+        if (attack_cr_id != adj_cr->get_id() &&
+            RNG::percent_chance(bc.pct_chance_effect(adj_cr, BLIND_ADJACENT_CREATURES_EFFECT_BONUS)))
         {
           se->apply_change(adj_cr, danger_level);
           hm.set_hostility_to_creature(adj_cr, attack_cr_id, ThreatConstants::ACTIVE_THREAT_RATING);

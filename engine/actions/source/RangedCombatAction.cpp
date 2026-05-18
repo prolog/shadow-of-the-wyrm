@@ -278,7 +278,7 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
 
   if (!ammo_auto_destroy)
   {
-    ammunition_destroyed = destroy_ammunition_or_drop_on_tile(creature, tile);
+    ammunition_destroyed = destroy_ammunition_or_drop_on_tile(creature, current_map, tile, target_coords);
   }
 
   // If the ammunition is destroyed, run the appropriate script.
@@ -334,7 +334,7 @@ void RangedCombatAction::add_ranged_combat_message(CreaturePtr creature, Creatur
 }
 
 // Either destroy the ammunition, or drop it on the appropriate tile.
-bool RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature, TilePtr tile)
+bool RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature, MapPtr map, TilePtr tile, const Coordinate& coords)
 {
   bool ammunition_destroyed = true;
   // Drop ammo on tile, assuming the ammunition survived being fired.
@@ -382,6 +382,7 @@ bool RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature
     if (unstable)
     {
       manager.add_new_message(TextMessages::get_unstable_drop_message(ammunition->get_quantity()));
+      MapUtils::blind_adjacent_creatures(creature, map, coords);
     }
     else
     {
