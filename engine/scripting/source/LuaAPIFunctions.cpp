@@ -4670,6 +4670,7 @@ int set_creature_at_fleeing(lua_State* ls)
         {
           // Set the fleeing flag and set HP arbitrarily low.
           creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_COWARD, std::to_string(true));
+          creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_PERMANENT_COWARD, std::to_string(true));
           creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_FLEEING, std::to_string(true));
 
           // Ensure they're set hostile to the player
