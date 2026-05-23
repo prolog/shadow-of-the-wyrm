@@ -1,0 +1,3 @@
+-- TODO: add "accept payment to identify treasure/wrecks near here"...
+clear_and_add_message("CARTOGRAPHER_SPEECH_TEXT_SID")
+

@@ -10,6 +10,9 @@ Long Term Boring And Probably Necessary:
 
 - ice floes, ice fields...
 - Time to finally implement jumping
+- Retired cartographer: pay very large sum of money to learn location of a
+  treasure hoard nearby
+- These should have a chance to generate in villages too!
 
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 

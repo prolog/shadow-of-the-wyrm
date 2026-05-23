@@ -23029,6 +23029,52 @@
 				</ChatScript>
 			</EventScripts>
 		</Creature>
+		<Creature id="_cartographer">
+			<RaceID>01_human,02_woodelf,03_mountainelf,04_snakeling,05_fae,06_dwarf,07_goblin,08_ogre,09_giant,10_gnome</RaceID>
+			<ShortDescriptionSID>CARTOGRAPHER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CARTOGRAPHER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CARTOGRAPHER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CARTOGRAPHER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>
+				<Strategy>mobile</Strategy>
+				<Sentinel>1</Sentinel>
+			</DecisionStrategy>
+			<Symbol>
+				<Char>t</Char>
+				<Colour>11</Colour>
+				<Sprite>
+					<ID>cr</ID>
+					<Row>14</Row>
+					<Col>6</Col>
+				</Sprite>
+			</Symbol>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>25</TileType>
+				</AllowableTerrainTypes>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>3</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Evade>2</Evade>
+			<Soak>0</Soak>
+			<EventScripts>
+				<ChatScript>
+					<Script>quests/cartographer.lua</Script>
+				</ChatScript>
+			</EventScripts>
+		</Creature>
 		<Creature id="hrimgar">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>HRIMGAR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

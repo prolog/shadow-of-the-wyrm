@@ -5,22 +5,6 @@ require('map_events')
 local map_id = "carcassia_a2a"
 local walkway_features = {{CCLASS_ID_FIRE_PILLAR}, {CCLASS_ID_FOUNTAIN}}
 
-function init_sky_high_deals(map_id)
-  local y_start = RNG_range(5, 6)
-  local height = (9 - y_start) * 2 + 1
-  local x_start = 56, 57
-  local width = (62 - x_start) * 2
-  local gen_door = false
-
-  local walkway_end_x = x_start + width - 1
-
-  generate_shop(map_id, y_start, x_start, height, width, CTILE_TYPE_AIR, gen_door)
-
-  -- Since we've generated air around the shop, reconnect the shop with the
-  -- walkway.
-  map_transform_tile(map_id, 9, walkway_end_x, CTILE_TYPE_DUNGEON)
-end
-
 local function add_guards_to_station(map_id, row, col_start, col_end)
   for x = col_start, col_end do
     if x % 6 == 0 then
@@ -137,7 +121,7 @@ local function init_southern_plaza_features(map_id, start_y, end_y, start_x, end
 end
 
 local function init_southern_plaza_creatures(map_id, start_y, end_y, start_x, end_x)
-  local creatures = {VARRA_ID, ATHEL_ID, THENA_ID}
+  local creatures = {VARRA_ID, ATHEL_ID, THENA_ID, CARTOGRAPHER_ID}
   local addl_creature_ids = {THIEF_ID, URCHIN_ID, PILGRIM_ID, FARMER_ID, FISHERMAN_ID, TRAVELLER_ID, CARCASSIAN_GUARD_ID, SMALL_CHILD_ID}
   local num_addl = RNG_range(5, 8)
 
@@ -176,7 +160,6 @@ end
 function init_carcassia_a2a(map_id)
   local first_row = 2
  
-  init_sky_high_deals(map_id)
   init_north_walk(map_id, first_row)
   init_southern_plaza(map_id)
 end
