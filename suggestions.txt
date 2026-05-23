@@ -45,7 +45,6 @@ Me:
 - mushrooms with randomized effects, descs like wildflowers. eat scripts?
 - Desert/Forest/etc Lore (+ dungeoneering?): to-hit, damage, speed bonuses on 
   that terrain
-- creature-specific turn-to-fight/rage values
 - Uniques and fleeing?
 - what other creatures can be templated now?
 - Make keeps more interesting?
