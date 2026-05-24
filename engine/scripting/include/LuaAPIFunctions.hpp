@@ -274,7 +274,6 @@ int generate_ancient_beast(lua_State* ls);
 int generate_hireling(lua_State* ls);
 int generate_adventurer(lua_State* ls);
 int generate_vegetable_garden(lua_State* ls);
-int generate_pen(lua_State* ls);
 int set_colour(lua_State* ls);
 int add_npc_level_message(lua_State* ls);
 int set_leader(lua_State* ls);
@@ -340,6 +339,10 @@ int does_item_exist_on_map(lua_State* ls);
 int set_tile_unprotected_movement_is_death(lua_State* ls);
 int remove_ammo_at(lua_State* ls);
 int add_all_brewing_ingredients_to_player_tile(lua_State* ls);
+int get_nearby_shipwreck_details(lua_State* ls);
+int coord_is_end(lua_State* ls);
+int reveal_shipwreck(lua_State* ls);
+int get_direction_location(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

@@ -13,6 +13,7 @@
 #include "CreatureProperties.hpp"
 #include "CreatureUtils.hpp"
 #include "DecisionStrategyProperties.hpp"
+#include "DirectionLocationTextKeys.hpp"
 #include "DirectionUtils.hpp"
 #include "EngineConversion.hpp"
 #include "EffectFactory.hpp"
@@ -504,6 +505,10 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_tile_unprotected_movement_is_death", set_tile_unprotected_movement_is_death);
   lua_register(L, "remove_ammo_at", remove_ammo_at);
   lua_register(L, "add_all_brewing_ingredients_to_player_tile", add_all_brewing_ingredients_to_player_tile);
+  lua_register(L, "get_nearby_shipwreck_details", get_nearby_shipwreck_details);
+  lua_register(L, "coord_is_end", coord_is_end);
+  lua_register(L, "reveal_shipwreck", reveal_shipwreck);
+  lua_register(L, "get_direction_location", get_direction_location);
 }
 
 // Lua API helper functions
@@ -10939,4 +10944,136 @@ int add_all_brewing_ingredients_to_player_tile(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_nearby_shipwreck_details(lua_State* ls)
+{
+  int wr_y = -1;
+  int wr_x = -1;
+  string sw_text;
+
+  if (lua_gettop(ls) == 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    int start_y = lua_tointeger(ls, 1);
+    int start_x = lua_tointeger(ls, 2);
+    int end_y = lua_tointeger(ls, 3);
+    int end_x = lua_tointeger(ls, 4);
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(MapID::MAP_ID_WORLD_MAP);
+
+    bool done = false;
+
+    if (map != nullptr)
+    {
+      Dimensions dim = map->size();
+      end_y = std::min<int>(end_y, dim.get_y() - 1);
+      end_x = std::min<int>(end_x, dim.get_x() - 1);
+
+      for (int y = std::max<int>(start_y, 0); y <= end_y; y++)
+      {
+        if (done)
+        {
+          break;
+        }
+
+        for (int x = std::max<int>(start_x, 0); x <= end_x; x++)
+        {
+          TilePtr tile = map->at(y, x);
+
+          if (tile != nullptr)
+          {
+            string min_lore_s = tile->get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED);
+
+            if (!min_lore_s.empty() && String::to_int(min_lore_s) > 0)
+            {
+              wr_y = y;
+              wr_x = x;
+              sw_text = tile->get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_TREASURE_SOURCE);
+              done = true;
+
+              break;
+            }
+          }
+        }
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_nearby_shipwreck_details");
+  }
+
+  lua_pushinteger(ls, wr_y);
+  lua_pushinteger(ls, wr_x);
+  lua_pushstring(ls, sw_text.c_str());
+
+  return 3;
+}
+
+int coord_is_end(lua_State* ls)
+{
+  bool is_end = true;
+
+  if (lua_gettop(ls) == 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
+  {
+    int y = lua_tointeger(ls, 1);
+    int x = lua_tointeger(ls, 2);
+
+    is_end = CoordUtils::is_end({ y, x });
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to coord_is_end");
+  }
+
+  lua_pushboolean(ls, is_end);
+  return 1;
+}
+
+int reveal_shipwreck(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2))
+  {
+    int sw_y = lua_tointeger(ls, 1);
+    int sw_x = lua_tointeger(ls, 2);
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(MapID::MAP_ID_WORLD_MAP);
+
+    if (map != nullptr)
+    {
+      TilePtr sw_tile = map->at(sw_y, sw_x);
+
+      if (sw_tile != nullptr)
+      {
+        sw_tile->set_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED, "0");
+      }
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to reveal_shipwreck");
+  }
+
+  return 0;
+}
+
+int get_direction_location(lua_State* ls)
+{
+  string dir_loc;
+
+  if (lua_gettop(ls) == 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    int y1 = lua_tointeger(ls, 1);
+    int x1 = lua_tointeger(ls, 2);
+    int y2 = lua_tointeger(ls, 3);
+    int x2 = lua_tointeger(ls, 4);
+
+    Direction dir = CoordUtils::get_direction({ y1, x1 }, { y2, x2 });
+    dir_loc = StringTable::get(DirectionLocationTextKeys::get_direction_location_sid(dir));
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_direction_location");
+  }
+
+  lua_pushstring(ls, dir_loc.c_str());
+  return 1;
 }

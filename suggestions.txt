@@ -8,6 +8,8 @@ Long Term Boring And Probably Necessary:
 - Visual Studio: x64 build
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
+- shipwrecks shouldn't be able to generate adjacent to underground maps like
+  crypts and caverns!
 - ice floes, ice fields...
 - Time to finally implement jumping
 - Retired cartographer: pay very large sum of money to learn location of a
