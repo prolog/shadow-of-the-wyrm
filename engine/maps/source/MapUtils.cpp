@@ -2806,36 +2806,29 @@ bool MapUtils::has_known_shipwreck(MapPtr map, TilePtr tile, CreaturePtr creatur
 
 string MapUtils::get_shipwreck_min_lore(MapPtr map, TilePtr tile)
 {
-  string min_lore;
-
-  if (tile != nullptr)
-  {
-    min_lore = tile->get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED);
-
-    if (min_lore.empty() && map != nullptr && map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
-    {
-      min_lore = map->get_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED);
-    }
-  }
-
-  return min_lore;
+  return get_tile_or_overworld_map_property(map, tile, TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED);
 }
 
 string MapUtils::get_shipwreck_revealed(MapPtr map, TilePtr tile)
 {
-  string revealed;
+  return get_tile_or_overworld_map_property(map, tile, TileProperties::TILE_PROPERTY_REVEALED_SHIPWRECK);
+}
+
+string MapUtils::get_tile_or_overworld_map_property(MapPtr map, TilePtr tile, const string& property_name)
+{
+  string prop;
 
   if (tile != nullptr)
   {
-    revealed = tile->get_additional_property(TileProperties::TILE_PROPERTY_REVEALED_SHIPWRECK);
+    prop = tile->get_additional_property(property_name);
 
-    if (revealed.empty() && map != nullptr && map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
+    if (prop.empty() && map != nullptr && map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
     {
-      revealed = map->get_property(TileProperties::TILE_PROPERTY_REVEALED_SHIPWRECK);
+      prop = map->get_property(property_name);
     }
   }
 
-  return revealed;
+  return prop;
 }
 
 pair<bool, string> MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d)

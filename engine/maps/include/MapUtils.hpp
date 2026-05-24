@@ -148,6 +148,7 @@ class MapUtils
     static bool has_known_shipwreck(MapPtr map, TilePtr tile, CreaturePtr creature, const bool mark_skill);
     static std::string get_shipwreck_min_lore(MapPtr map, TilePtr tile);
     static std::string get_shipwreck_revealed(MapPtr map, TilePtr tile);
+    static std::string get_tile_or_overworld_map_property(MapPtr map, TilePtr tile, const std::string& property_name);
 
     static std::pair<bool, std::string> can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d);
 
