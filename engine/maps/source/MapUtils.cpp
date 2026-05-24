@@ -2774,13 +2774,14 @@ bool MapUtils::has_known_shipwreck(MapPtr map, TilePtr tile, CreaturePtr creatur
   if (tile != nullptr && creature != nullptr)
   {
     string difficulty = get_shipwreck_min_lore(map, tile);
+    string revealed_shipwreck = get_shipwreck_revealed(map, tile);
 
     if (!difficulty.empty())
     {
       int diff = String::to_int(difficulty);
       SkillType required_skill = SkillType::SKILL_GENERAL_OCEAN_LORE;
 
-      if (creature->get_skills().get_value(required_skill) >= diff)
+      if (creature->get_skills().get_value(required_skill) >= diff || (!revealed_shipwreck.empty() && String::to_bool(revealed_shipwreck)))
       {
         has_shipwreck = true;
       }
@@ -2818,6 +2819,23 @@ string MapUtils::get_shipwreck_min_lore(MapPtr map, TilePtr tile)
   }
 
   return min_lore;
+}
+
+string MapUtils::get_shipwreck_revealed(MapPtr map, TilePtr tile)
+{
+  string revealed;
+
+  if (tile != nullptr)
+  {
+    revealed = tile->get_additional_property(TileProperties::TILE_PROPERTY_REVEALED_SHIPWRECK);
+
+    if (revealed.empty() && map != nullptr && map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
+    {
+      revealed = map->get_property(TileProperties::TILE_PROPERTY_REVEALED_SHIPWRECK);
+    }
+  }
+
+  return revealed;
 }
 
 pair<bool, string> MapUtils::can_change_zlevel(CreaturePtr creature, MapPtr map, TilePtr tile, const Direction d)

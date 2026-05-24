@@ -95,6 +95,7 @@ class TileProperties
     static const std::string TILE_PROPERTY_TREASURE_SOURCE;
     static const std::string TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED;
     static const std::string TILE_PROPERTY_UNDERWATER_TREASURE_SOURCE;
+    static const std::string TILE_PROPERTY_REVEALED_SHIPWRECK;
 
     // Is unprotected movement automatically death? Used for the Caldera.
     static const std::string TILE_PROPERTY_UNPROTECTED_MOVEMENT_IS_DEATH;

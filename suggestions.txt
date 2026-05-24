@@ -10,6 +10,7 @@ Long Term Boring And Probably Necessary:
 
 - shipwrecks shouldn't be able to generate adjacent to underground maps like
   crypts and caverns!
+- common MapUtils fn for the tile/map check
 - ice floes, ice fields...
 - Time to finally implement jumping
 - Retired cartographer: pay very large sum of money to learn location of a

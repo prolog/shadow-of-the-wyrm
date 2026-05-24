@@ -11041,9 +11041,9 @@ int reveal_shipwreck(lua_State* ls)
     {
       TilePtr sw_tile = map->at(sw_y, sw_x);
 
-      if (sw_tile != nullptr)
+      if (sw_tile != nullptr && sw_tile->has_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED))
       {
-        sw_tile->set_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_MIN_LORE_REQUIRED, "0");
+        sw_tile->set_additional_property(TileProperties::TILE_PROPERTY_REVEALED_SHIPWRECK, std::to_string(true));
       }
     }
   }

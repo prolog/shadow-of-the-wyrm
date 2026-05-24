@@ -745,7 +745,6 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
           // reference it, the map can be retrieved.
           game.get_map_registry_ref().set_map(new_map->get_map_id(), new_map);
 
-          // JCD FIXME: Future events should be ms.execute_create, execute_something_else, etc.
           ms.execute(se, sd.get_script(), new_map);
         }
       }
