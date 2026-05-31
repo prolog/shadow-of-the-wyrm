@@ -10954,12 +10954,14 @@ int get_nearby_shipwreck_details(lua_State* ls)
   string sw_text;
   int min_lore = -1;
 
-  if (lua_gettop(ls) == 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  if (lua_gettop(ls) == 5 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4) && lua_isboolean(ls, 5))
   {
     int start_y = lua_tointeger(ls, 1);
     int start_x = lua_tointeger(ls, 2);
     int end_y = lua_tointeger(ls, 3);
     int end_x = lua_tointeger(ls, 4);
+    bool allow_revealed = lua_toboolean(ls, 5);
+
     MapPtr map = Game::instance().get_map_registry_ref().get_map(MapID::MAP_ID_WORLD_MAP);
 
     bool done = false;
@@ -10987,13 +10989,18 @@ int get_nearby_shipwreck_details(lua_State* ls)
 
             if (!min_lore_s.empty() && String::to_int(min_lore_s) > 0)
             {
-              wr_y = y;
-              wr_x = x;
-              sw_text = tile->get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_TREASURE_SOURCE);
-              min_lore = String::to_int(min_lore_s);
-              
-              done = true;
-              break;
+              bool revealed = String::to_bool(tile->get_additional_property(TileProperties::TILE_PROPERTY_REVEALED_SHIPWRECK));
+
+              if (!revealed || allow_revealed)
+              {
+                wr_y = y;
+                wr_x = x;
+                sw_text = tile->get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_TREASURE_SOURCE);
+                min_lore = String::to_int(min_lore_s);
+
+                done = true;
+                break;
+              }
             }
           }
         }

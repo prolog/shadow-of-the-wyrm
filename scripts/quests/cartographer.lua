@@ -42,7 +42,7 @@ end
 
 if string.len(revealed_already) == 0 then
   -- Offer to reveal a shipwreck nearby, if one exists.
-  sw_y, sw_x, sw_text, min_lore = get_nearby_shipwreck_details(wy - offset_y, wx  - offset_x, wy + offset_y, wx + offset_x)
+  sw_y, sw_x, sw_text, min_lore = get_nearby_shipwreck_details(wy - offset_y, wx  - offset_x, wy + offset_y, wx + offset_x, false)
 
   if not coord_is_end(sw_y, sw_x) then
     -- The cartographer's going to talk, so don't show the default message at

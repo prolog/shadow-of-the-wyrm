@@ -12,8 +12,7 @@ Long Term Boring And Probably Necessary:
   crypts and caverns!
 - ice floes, ice fields...
 - Time to finally implement jumping
-- Retired cartographer: pay very large sum of money to learn location of a
-  treasure hoard nearby
+- Cartographer wreck detail text varies between initial & retold?
 - These should have a chance to generate in villages too!
 
 Me:
