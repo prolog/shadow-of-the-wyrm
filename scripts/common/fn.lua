@@ -155,3 +155,19 @@ function drain_hp_and_ap(cr_id)
     end
   end
 end
+
+-- Split a string on a separator
+function split(string, separator)
+  local sep = separator
+  
+  if sep == nil or sep == "" then
+    sep = ","
+  end
+  
+  local tokens = {}
+  for str in string.gmatch(string, "([^"..sep.."]+)") do
+    table.insert(tokens, str)
+  end
+  
+  return tokens
+end

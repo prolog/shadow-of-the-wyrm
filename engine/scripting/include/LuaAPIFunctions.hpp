@@ -342,6 +342,7 @@ int get_nearby_shipwreck_details(lua_State* ls);
 int coord_is_end(lua_State* ls);
 int reveal_shipwreck(lua_State* ls);
 int get_direction_location(lua_State* ls);
+int get_num_creatures_killed(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);

@@ -509,6 +509,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "coord_is_end", coord_is_end);
   lua_register(L, "reveal_shipwreck", reveal_shipwreck);
   lua_register(L, "get_direction_location", get_direction_location);
+  lua_register(L, "get_num_creatures_killed", get_num_creatures_killed);
 }
 
 // Lua API helper functions
@@ -10951,6 +10952,7 @@ int get_nearby_shipwreck_details(lua_State* ls)
   int wr_y = -1;
   int wr_x = -1;
   string sw_text;
+  int min_lore = -1;
 
   if (lua_gettop(ls) == 4 && lua_isnumber(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
   {
@@ -10988,8 +10990,9 @@ int get_nearby_shipwreck_details(lua_State* ls)
               wr_y = y;
               wr_x = x;
               sw_text = tile->get_additional_property(TileProperties::TILE_PROPERTY_UNDERWATER_TREASURE_SOURCE);
+              min_lore = String::to_int(min_lore_s);
+              
               done = true;
-
               break;
             }
           }
@@ -11005,8 +11008,9 @@ int get_nearby_shipwreck_details(lua_State* ls)
   lua_pushinteger(ls, wr_y);
   lua_pushinteger(ls, wr_x);
   lua_pushstring(ls, sw_text.c_str());
+  lua_pushinteger(ls, min_lore);
 
-  return 3;
+  return 4;
 }
 
 int coord_is_end(lua_State* ls)
@@ -11075,5 +11079,29 @@ int get_direction_location(lua_State* ls)
   }
 
   lua_pushstring(ls, dir_loc.c_str());
+  return 1;
+}
+
+int get_num_creatures_killed(lua_State* ls)
+{
+  int num_kills = 0;
+
+  if (lua_gettop(ls) && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string cr_id = lua_tostring(ls, 1);
+    string kill_base_id = lua_tostring(ls, 2);
+    CreaturePtr creature = get_creature(cr_id);
+
+    if (creature != nullptr)
+    {
+      num_kills = creature->get_mortuary_ref().get_num_creature_killed(kill_base_id);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_num_creatures_killed");
+  }
+
+  lua_pushinteger(ls, num_kills);
   return 1;
 }
