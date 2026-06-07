@@ -829,6 +829,13 @@ void WorldGenerator::set_treasure(MapPtr map)
 {
   if (map != nullptr)
   {
+    std::set<TileType> allowable_shipwreck_tt = { TileType::TILE_TYPE_FIELD, 
+                                                  TileType::TILE_TYPE_FOREST, 
+                                                  TileType::TILE_TYPE_DESERT, 
+                                                  TileType::TILE_TYPE_MARSH, 
+                                                  TileType::TILE_TYPE_MOUNTAINS, 
+                                                  TileType::TILE_TYPE_HILLS };
+
     NormalDistribution forest_treasures(40, 12);
     NormalDistribution desert_treasures(50, 15);
     NormalDistribution marsh_treasures(60, 12);
@@ -840,6 +847,11 @@ void WorldGenerator::set_treasure(MapPtr map)
     bool marsh_override = true;
     bool underwater_override = true;
     bool mountain_override = true;
+
+    std::map<TileType, std::pair<NormalDistribution, bool>> allowable_treasure_tiles = { {TileType::TILE_TYPE_FOREST, {forest_treasures, true}},
+                                                                                         {TileType::TILE_TYPE_DESERT, {desert_treasures, true}},
+                                                                                         {TileType::TILE_TYPE_MARSH, {marsh_treasures, true}},
+                                                                                         {TileType::TILE_TYPE_MOUNTAINS, {mountain_treasures, true}} };
 
     TilesContainer& tc = map->get_tiles_ref();
     
@@ -861,7 +873,11 @@ void WorldGenerator::set_treasure(MapPtr map)
         // at least one cardinally-adjacent sea tile.
         Coordinate c = MapUtils::convert_map_key_to_coordinate(tc_pair.first);
 
-        if (MapUtils::adjacent_tiles_contain_type(map, c, { Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH, Direction::DIRECTION_EAST, Direction::DIRECTION_WEST }, TileType::TILE_TYPE_SEA))
+        // Generate shipwrecks next to tiles that respect coastlines - 
+        // otherwise, you'll get dungeons/crypts/etc labelled as having
+        // shipwrecks, but there won't be any way to generate them.
+        if (MapUtils::adjacent_tiles_contain_type(map, c, { Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH, Direction::DIRECTION_EAST, Direction::DIRECTION_WEST }, TileType::TILE_TYPE_SEA) &&
+            std::find(allowable_shipwreck_tt.begin(), allowable_shipwreck_tt.end(), tt) != allowable_shipwreck_tt.end())
         {
           potentially_add_treasure(tc_pair.first, tc_pair.second, underwater_treasures, underwater_override, true);
         }

@@ -707,9 +707,11 @@ bool MapUtils::adjacent_tiles_match_type(MapPtr map, const Coordinate& c, const 
 // Do the adjacent tiles in the given direction contain a particular tile type?
 bool MapUtils::adjacent_tiles_contain_type(MapPtr map, const Coordinate& c, const vector<Direction>& directions, const TileType type_to_match)
 {
+  TilePtr tile;
+
   for (const Direction d : directions)
   {
-    TilePtr tile = map->at(CoordUtils::get_new_coordinate(c, d));
+    tile = map->at(CoordUtils::get_new_coordinate(c, d));
 
     if (tile && tile->get_tile_type() == type_to_match)
     {
