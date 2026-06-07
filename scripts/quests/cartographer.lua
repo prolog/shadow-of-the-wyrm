@@ -51,7 +51,10 @@ if string.len(revealed_already) == 0 then
 
     if should_reveal_shipwreck(min_lore) then
       reveal_shipwreck(sw_y, sw_x)
-      set_creature_additional_property(cr_id, has_revealed_prop, tostring(sw_y) .. "," .. tostring(sw_x) .. "," .. sw_text)
+
+      -- Use a pipe as the separator because a comma will already be in use by
+      -- the shipwreck text string.
+      set_creature_additional_property(cr_id, has_revealed_prop, tostring(sw_y) .. "|" .. tostring(sw_x) .. "|" .. sw_text)
     else
       -- Player either declined or the cartographer did. Shipwreck? What
       -- shipwreck?
@@ -59,7 +62,7 @@ if string.len(revealed_already) == 0 then
     end
   end
 else
-  sw_details = fn.split(revealed_already, ",")
+  sw_details = fn.split(revealed_already, "|")
   sw_y, sw_x, sw_text = tonumber(sw_details[1]), tonumber(sw_details[2]), sw_details[3]
 end
 
