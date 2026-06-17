@@ -82,6 +82,9 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
   - Restrict the types of terrain that can be used for shipwreck locations,
     so that shipwrecks aren't listed for unsupported locations.
 
+  - The randomized village locations weren't considering creatures who could
+    be one of a range of races for the initial generation.
+
   - Various typos (hemsio).
 
 Shadow of the Wyrm v1.9.1.2 "Odair Assad"

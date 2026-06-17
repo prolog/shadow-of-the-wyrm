@@ -4,8 +4,8 @@ require('fn')
 local wy, wx = get_player_world_map_coords()
 local has_revealed_prop = "has_revealed_shipwreck"
 local cr_id = args[SPEAKING_CREATURE_ID]
-local offset_y = 20 
-local offset_x = 20
+local offset_y = 30 
+local offset_x = 30
 local sw_y, sw_x = -1, -1
 local sw_text = ""
 local min_lore = -1

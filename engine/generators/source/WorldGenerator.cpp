@@ -670,17 +670,21 @@ vector<string> WorldGenerator::get_potential_creatures(const string& village_rac
     int max = cgv_pair.second.get_maximum();
 
     if (allowable_terrain.find(TileType::TILE_TYPE_VILLAGE) != allowable_terrain.end() 
-     && race_id == village_race_id
      && (max == CreatureGenerationConstants::CREATURE_GENERATION_UNLIMITED || cgv_pair.second.get_current() < max))
     {
-      CreatureGenerationOptions cgo;
-      cgo.set_id(cgv_pair.first);
+      set<string> races = String::create_string_set_from_csv_string(race_id);
 
-      // All creatures generated in villages should be docile.
-      cgo.set_hostility(CreatureID::CREATURE_ID_PLAYER, false);
+      if (races.find(village_race_id) != races.end())
+      {
+        CreatureGenerationOptions cgo;
+        cgo.set_id(cgv_pair.first);
 
-      CreatureGenerationOptionsStringBuilder cgob;
-      valid_creature_ids.push_back(cgob.build(cgo));
+        // All creatures generated in villages should be docile.
+        cgo.set_hostility(CreatureID::CREATURE_ID_PLAYER, false);
+
+        CreatureGenerationOptionsStringBuilder cgob;
+        valid_creature_ids.push_back(cgob.build(cgo));
+      }
     }
   }
 
