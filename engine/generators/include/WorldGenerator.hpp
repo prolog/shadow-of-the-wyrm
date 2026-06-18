@@ -56,8 +56,8 @@ class WorldGenerator : public SOTW::Generator
     TilePtr generate_feature_or_default(const std::vector<std::pair<int, std::pair<TileType, TileType>>>& special_features, TileType default_tile_type, const int row, const int col);
     
     void set_initial_creatures_for_village(TilePtr village_tile, const std::string& village_race_id);
-    std::vector<std::string> get_potential_creatures(const std::string& village_race_id);
-    void set_creatures_to_village_tile(TilePtr tile, const std::vector<std::string>& potential_creature_ids);
+    std::pair<std::vector<std::string>, std::vector<std::string>> get_potential_creatures(const std::string& village_race_id);
+    void set_creatures_to_village_tile(TilePtr tile, const std::pair<std::vector<std::string>, std::vector<std::string>>& potential_creature_ids);
     
     // Set all the various tile depth information.
     void set_tile_depth_details(TilePtr tile);

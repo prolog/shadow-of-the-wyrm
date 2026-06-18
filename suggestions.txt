@@ -11,6 +11,9 @@ Long Term Boring And Probably Necessary:
 - ice floes, ice fields...
 - Time to finally implement jumping
 - These should have a chance to generate in villages too!
+- split the village generation into "specific" and "generic" lists. specific
+  should have a 2/3 chance per generation.
+- cartographer equivalent for treasure hoards
 
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 

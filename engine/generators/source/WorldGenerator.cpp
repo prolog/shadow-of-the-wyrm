@@ -648,18 +648,22 @@ void WorldGenerator::set_village_races(MapPtr map)
 void WorldGenerator::set_initial_creatures_for_village(TilePtr tile, const string& village_race_id)
 {
   // Get the list of potential creatures.
-  vector<string> creature_ids = get_potential_creatures(village_race_id);
+  pair<vector<string>, vector<string>> creature_ids = get_potential_creatures(village_race_id);
 
   // Create the list of creatures on the village tile.
   set_creatures_to_village_tile(tile, creature_ids);
 }
 
-// Get a list of all potential creatures for the village: must allow TILE_TYPE_VILLAGE,
-// the race ID must match, and they must not have hit the max number of generated
-// creatures at the time this function runs.
-vector<string> WorldGenerator::get_potential_creatures(const string& village_race_id)
+// Get a list of all potential creatures for the village: must allow 
+// TILE_TYPE_VILLAGE, the race ID must match, and they must not have hit the 
+// max number of generated creatures at the time this function runs.
+//
+// For the return value, the pair.first refers to all creatures for a village
+// who are specifically of that race. pair.second are creatures who could
+// be that race (multi-race creatures like commoners, farmers, and so on).
+pair<vector<string>, vector<string>> WorldGenerator::get_potential_creatures(const string& village_race_id)
 {
-  vector<string> valid_creature_ids;
+  pair<vector<string>, vector<string>> valid_creature_ids = { {}, {} };
   Game& game = Game::instance();
   CreatureGenerationValuesMap& cgv_map = game.get_creature_generation_values_ref();
 
@@ -673,8 +677,20 @@ vector<string> WorldGenerator::get_potential_creatures(const string& village_rac
      && (max == CreatureGenerationConstants::CREATURE_GENERATION_UNLIMITED || cgv_pair.second.get_current() < max))
     {
       set<string> races = String::create_string_set_from_csv_string(race_id);
+      vector<string>* cr_ids = &valid_creature_ids.first;
+      bool add = false;
 
-      if (races.find(village_race_id) != races.end())
+      if (race_id == village_race_id)
+      {
+        add = true;
+      }
+      else if (races.find(village_race_id) != races.end())
+      {
+        cr_ids = &valid_creature_ids.second;
+        add = true;
+      }
+
+      if (add)
       {
         CreatureGenerationOptions cgo;
         cgo.set_id(cgv_pair.first);
@@ -683,7 +699,7 @@ vector<string> WorldGenerator::get_potential_creatures(const string& village_rac
         cgo.set_hostility(CreatureID::CREATURE_ID_PLAYER, false);
 
         CreatureGenerationOptionsStringBuilder cgob;
-        valid_creature_ids.push_back(cgob.build(cgo));
+        cr_ids->push_back(cgob.build(cgo));
       }
     }
   }
@@ -693,17 +709,34 @@ vector<string> WorldGenerator::get_potential_creatures(const string& village_rac
 
 // Generate a random number of creatures from the provided vector of valid
 // creature IDs, and set them on the village tile.
-void WorldGenerator::set_creatures_to_village_tile(TilePtr tile, const vector<string>& valid_creature_ids)
+void WorldGenerator::set_creatures_to_village_tile(TilePtr tile, const pair<vector<string>, vector<string>>& valid_creature_ids)
 {
-  if (!valid_creature_ids.empty())
+  if (!(valid_creature_ids.first.empty() && valid_creature_ids.second.empty()))
   {
     vector<string> creatures_to_gen;
     int num_creatures = RNG::range(MIN_CREATURES_PER_VILLAGE, MAX_CREATURES_PER_VILLAGE);
-    size_t max_creature_idx = valid_creature_ids.size() - 1;
 
     for (int i = 0; i < num_creatures; i++)
     {
-      creatures_to_gen.push_back(valid_creature_ids.at(RNG::range(0, max_creature_idx)));
+      const vector<string>* cr_ids = &valid_creature_ids.first;
+
+      // The more generic creatures that can appear in any town are less
+      // likely to appear.
+      if (RNG::x_in_y_chance(1, 3))
+      {
+        cr_ids = &valid_creature_ids.second;
+      }
+
+      if (cr_ids != nullptr)
+      {
+        if (cr_ids->empty())
+        {
+          continue;
+        }
+
+        size_t max_creature_idx = cr_ids->size() - 1;
+        creatures_to_gen.push_back(cr_ids->at(RNG::range(0, max_creature_idx)));
+      }
     }
 
     string creatures_csv = String::create_csv_from_string_vector(creatures_to_gen);
