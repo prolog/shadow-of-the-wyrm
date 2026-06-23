@@ -1,9 +1,6 @@
 #include "Game.hpp"
-#include "CreatureGenerationConstants.hpp"
-#include "MapCreatureGenerator.hpp"
 #include "MapTimeObserver.hpp"
 #include "MapUtils.hpp"
-#include "TerrainGeneratorFactory.hpp"
 
 using namespace std;
 
