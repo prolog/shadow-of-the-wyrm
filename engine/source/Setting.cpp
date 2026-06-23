@@ -110,3 +110,4 @@ const string Setting::DISABLE_SOUND_EFFECT_IDS = "disable_sound_effect_ids";
 const string Setting::MUSIC_ENABLED = "music_enabled";
 const string Setting::ALWAYS_GIVE_ORDERS_TO_ALL_FOLLOWERS_IN_RANGE = "always_give_orders_to_all_followers_in_range";
 const string Setting::ASSET_DIR_SUFFIX = "_asset_dir";
+const string Setting::PERIODICALLY_UPDATE_CREATURES = "periodically_update_creatures";
