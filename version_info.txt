@@ -61,6 +61,11 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 
 - Larger creatures are more likely to turn to fight, and to fly into a rage.
 
+- The functionality that controls repopulating maps over time is now wrapped
+  in a setting.
+
+- Morels are more filling.
+
 - New items:
 
   - Wand of trap detection.
