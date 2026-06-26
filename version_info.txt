@@ -64,11 +64,17 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 - The functionality that controls repopulating maps over time is now wrapped
   in a setting.
 
+- Cartographers will tell you about the existence of nearby shipwrecks (if
+  there are any), for a fee.
+
+- Mountaineers will teach you how to climb peaks, if you can afford their
+  training.
+
 - Morels are more filling.
 
-- New items:
+- New creatures: cartographer, mountaineer.
 
-  - Wand of trap detection.
+- New items: wand of trap detection.
 
 - Bug fixes:
 
