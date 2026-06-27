@@ -27,7 +27,7 @@ ActionCostValue MountainLoreSkillProcessor::process(CreaturePtr creature, MapPtr
       
       CombatManager cm;
       CreaturePtr no_attacker;
-      int falling_damage = mcc.generate_falling_damage();
+      int falling_damage = mcc.generate_falling_damage(creature);
       Damage falling_default;
       falling_default.set_modifier(falling_damage);
 

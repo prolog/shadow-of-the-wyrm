@@ -70,6 +70,10 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 - Mountaineers will teach you how to climb peaks, if you can afford their
   training.
 
+- Unskilled mountain climbers are a little less likely to fall from 
+  exhaustion, and doing so is more more likely to do a large percentage of
+  total HP, rather than an arbitrarily large amount of damage.
+
 - Morels are more filling.
 
 - New creatures: cartographer, mountaineer.

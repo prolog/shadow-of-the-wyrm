@@ -2,7 +2,8 @@
 #include "RNG.hpp"
 
 const int MountainClimbingCalculator::MAXIMUM_CLIMBING_TIME_MULTIPLIER = 6;
-const int MountainClimbingCalculator::FALLING_CHANCE_MULTIPLIER = 7;
+const int MountainClimbingCalculator::FALLING_CHANCE_MULTIPLIER = 12;
+const int MountainClimbingCalculator::PCT_CHANCE_PERCENTAGE_DAMAGE = 60;
 
 int MountainClimbingCalculator::calculate_max_mountain_climbing_time(const int mountain_lore_skill_value, const bool is_incorporeal) const
 {
@@ -28,8 +29,14 @@ bool MountainClimbingCalculator::generate_does_fall_from_exhaustion(const int mo
   return falls_from_exhaustion;
 }
 
-int MountainClimbingCalculator::generate_falling_damage() const
+int MountainClimbingCalculator::generate_falling_damage(CreaturePtr creature) const
 {
   int falling_damage = RNG::range(50, 150);
+
+  if (RNG::percent_chance(PCT_CHANCE_PERCENTAGE_DAMAGE) && creature != nullptr)
+  {
+    falling_damage = std::min<int>(falling_damage, static_cast<int>(creature->get_hit_points().get_base() * 0.8f));
+  }
+
   return falling_damage;
 }

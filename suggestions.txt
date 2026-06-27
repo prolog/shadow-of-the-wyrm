@@ -10,9 +10,6 @@ Long Term Boring And Probably Necessary:
 
 - ice floes, ice fields...
 - Time to finally implement jumping
-- These should have a chance to generate in villages too!
-- cartographer equivalent for treasure hoards
-- add mountaineer to villages
 - make mountaineering less deadly, with a very small chance of insta-death
 
 Me:
