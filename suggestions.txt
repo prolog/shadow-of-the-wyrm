@@ -9,8 +9,15 @@ Long Term Boring And Probably Necessary:
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
 - ice floes, ice fields...
+- glacial ice: create by digging
+  - should be an ingredient for brewing!
 - Time to finally implement jumping
-- make mountaineering less deadly, with a very small chance of insta-death
+- sea generator: chance for islands:
+  - desert island with spring
+  - rocky island
+  - shallow water/shoals
+  - etc
+  - pct chance island should be tied to how far the sea tile is from land
 
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
@@ -65,11 +72,6 @@ Me:
   SE all work as expected)
 - Need to check all the exits for the sky
 - What kinds of creatures/quests/features should be up in the air?
-- sea generator: chance for islands:
-  - desert island with spring
-  - rocky island
-  - shallow water/shoals
-  - etc
 - in do_generate... can that linkage function be hidden behind a check for
   either world map or interior tile? test!
 - update xsd, update xml, add and test linkages for all direction 10/11
