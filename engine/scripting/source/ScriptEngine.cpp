@@ -200,8 +200,11 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CTILE_TYPE_FLOATING_TOWER);
   lua_exportConst(ls, CTILE_TYPE_VOID);
   lua_exportConst(ls, CTILE_TYPE_MAGICAL_TREE);
+  lua_exportConst(ls, CTILE_TYPE_ICE_FIELD);
+  lua_exportConst(ls, CTILE_TYPE_ICEBERG);
+  lua_exportConst(ls, CTILE_TYPE_ICE);
 
-  static_assert(TileType::TILE_TYPE_LAST == TileType(55), "Unrecognized TILE_TYPE_LAST");
+  static_assert(TileType::TILE_TYPE_LAST == TileType(58), "Unrecognized TILE_TYPE_LAST");
 
   lua_exportConst(ls, CITEM_FILTER_NONE);
   lua_exportConst(ls, CITEM_FILTER_UNIDENTIFIED);

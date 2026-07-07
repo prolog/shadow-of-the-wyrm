@@ -7563,6 +7563,39 @@
 				</Sprite>
 			</Symbol>
 		</MagicalTreeTile>
+		<IceFieldTile>
+			<Symbol>
+				<Char>.</Char>
+				<Colour>15</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>1</Row>
+					<Col>3</Col>
+				</Sprite>
+			</Symbol>
+		</IceFieldTile>
+		<IceTile>
+			<Symbol>
+				<Char>.</Char>
+				<Colour>15</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>1</Row>
+					<Col>3</Col>
+				</Sprite>
+			</Symbol>
+		</IceTile>
+		<IcebergTile>
+			<Symbol>
+				<Char>V</Char>
+				<Colour>15</Colour>
+				<Sprite>
+					<ID>til</ID>
+					<Row>1</Row>
+					<Col>2</Col>
+				</Sprite>
+			</Symbol>
+		</IcebergTile>
 	</Tiles>
 	<Traps>
 		<Trap id="fireball_trap">

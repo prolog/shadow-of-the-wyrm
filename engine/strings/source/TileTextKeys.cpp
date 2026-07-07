@@ -74,6 +74,9 @@ const string TileTextKeys::TILE_DESC_AQUATIC_VEGETATION = "TILE_DESC_AQUATIC_VEG
 const string TileTextKeys::TILE_DESC_FLOATING_TOWER = "TILE_DESC_FLOATING_TOWER";
 const string TileTextKeys::TILE_DESC_VOID           = "TILE_DESC_VOID";
 const string TileTextKeys::TILE_DESC_MAGICAL_TREE   = "TILE_DESC_MAGICAL_TREE";
+const string TileTextKeys::TILE_DESC_ICE_FIELD      = "TILE_DESC_ICE_FIELD";
+const string TileTextKeys::TILE_DESC_ICE            = "TILE_DESC_ICE";
+const string TileTextKeys::TILE_DESC_ICEBERG        = "TILE_DESC_ICEBERG";
 
 const string TileTextKeys::TILE_EXTRA_DESCRIPTION_SKY_SHRINE    = "TILE_EXTRA_DESCRIPTION_SKY_SHRINE";
 const string TileTextKeys::TILE_EXTRA_DESCRIPTION_WORLD_SHRINE  = "TILE_EXTRA_DESCRIPTION_WORLD_SHRINE";

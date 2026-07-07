@@ -68,7 +68,10 @@ enum struct TileType
   TILE_TYPE_FLOATING_TOWER = 52,
   TILE_TYPE_VOID      = 53,
   TILE_TYPE_MAGICAL_TREE = 54,
-  TILE_TYPE_LAST      = 55
+  TILE_TYPE_ICE_FIELD = 55,
+  TILE_TYPE_ICEBERG   = 56,
+  TILE_TYPE_ICE       = 57,
+  TILE_TYPE_LAST      = 58
 };
 
 // Tile super types for the Lua API
@@ -135,5 +138,8 @@ constexpr auto CTILE_TYPE_AQUATIC_VEGETATION = 51;
 constexpr auto CTILE_TYPE_FLOATING_TOWER = 52;
 constexpr auto CTILE_TYPE_VOID = 53;
 constexpr auto CTILE_TYPE_MAGICAL_TREE = 54;
-constexpr auto CTILE_TYPE_LAST = 55;
+constexpr auto CTILE_TYPE_ICE_FIELD = 55;
+constexpr auto CTILE_TYPE_ICE = 56;
+constexpr auto CTILE_TYPE_ICEBERG = 57;
+constexpr auto CTILE_TYPE_LAST = 58;
 

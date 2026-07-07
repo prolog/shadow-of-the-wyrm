@@ -10,6 +10,8 @@
 #include "Game.hpp"
 #include "GraveyardGeneratorFactory.hpp"
 #include "HillsGenerator.hpp"
+#include "IcebergGenerator.hpp"
+#include "IceFieldGenerator.hpp"
 #include "KeepGenerator.hpp"
 #include "MapProperties.hpp"
 #include "MarshGenerator.hpp"
@@ -50,7 +52,7 @@ TerrainGeneratorFactory::~TerrainGeneratorFactory()
 // reeds, etc).  Any unsupported tile for terrain generation will get a null GeneratorPtr back.
 GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, MapPtr map, const string& map_exit_id, const TileType terrain_type, const TileType terrain_subtype, const ExitMovementType emt)
 {
-  static_assert(TileType::TILE_TYPE_LAST == TileType(55), "Unexpected TileType::TILE_TYPE_LAST");
+  static_assert(TileType::TILE_TYPE_LAST == TileType(58), "Unexpected TileType::TILE_TYPE_LAST");
   GeneratorPtr generator;
   bool exterior = tile == nullptr ? false : !tile->is_interior();
   MapType map_type = map == nullptr ? MapType::MAP_TYPE_OVERWORLD : map->get_map_type();
@@ -257,6 +259,16 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, MapPtr map,
         generator = std::make_unique<WheatFieldGenerator>(map_exit_id);
         break;
       }
+      case TileType::TILE_TYPE_ICEBERG:
+      {
+        generator = std::make_unique<IcebergGenerator>(map_exit_id);
+        break;
+      }
+      case TileType::TILE_TYPE_ICE_FIELD:
+      {
+        generator = std::make_unique<IceFieldGenerator>(map_exit_id);
+        break;
+      }
 
       case TileType::TILE_TYPE_UNDEFINED:
       case TileType::TILE_TYPE_CAIRN:
@@ -285,6 +297,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, MapPtr map,
       case TileType::TILE_TYPE_SEABED:
       case TileType::TILE_TYPE_AQUATIC_VEGETATION:
       case TileType::TILE_TYPE_MAGICAL_TREE:
+      case TileType::TILE_TYPE_ICE:
       default:
         // Right now, everything generates a field.  Change this once testing is complete.
         generator = std::make_unique<FieldGenerator>(map_exit_id);

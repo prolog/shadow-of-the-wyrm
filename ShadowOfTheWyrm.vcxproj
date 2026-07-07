@@ -1009,6 +1009,8 @@ mkdir $(OutDir)logs
     <ClInclude Include="engine\generators\include\GraveyardGenerator.hpp" />
     <ClInclude Include="engine\generators\include\GraveyardGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\include\HillsGenerator.hpp" />
+    <ClInclude Include="engine\generators\include\IcebergGenerator.hpp" />
+    <ClInclude Include="engine\generators\include\IceFieldGenerator.hpp" />
     <ClInclude Include="engine\generators\include\IPillarGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MapCreatureGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MapItemGenerator.hpp" />
@@ -1715,6 +1717,9 @@ mkdir $(OutDir)logs
     <ClInclude Include="world\tiles\include\GraveTile.hpp" />
     <ClInclude Include="world\tiles\include\GraveyardTile.hpp" />
     <ClInclude Include="world\tiles\include\HillsTile.hpp" />
+    <ClInclude Include="world\tiles\include\IcebergTile.hpp" />
+    <ClInclude Include="world\tiles\include\IceFieldTile.hpp" />
+    <ClInclude Include="world\tiles\include\IceTile.hpp" />
     <ClInclude Include="world\tiles\include\KeepTile.hpp" />
     <ClInclude Include="world\tiles\include\LibraryTile.hpp" />
     <ClInclude Include="world\tiles\include\MagicalTreeTile.hpp" />
@@ -2820,6 +2825,8 @@ mkdir $(OutDir)logs
     <ClCompile Include="engine\generators\source\CoastlineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\CrossShrineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\FloatingTowerGenerator.cpp" />
+    <ClCompile Include="engine\generators\source\IcebergGenerator.cpp" />
+    <ClCompile Include="engine\generators\source\IceFieldGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MapItemGenerator.cpp" />
     <ClCompile Include="engine\generators\source\NPCBackgroundGenerator.cpp" />
     <ClCompile Include="engine\generators\source\RectangularShrineGenerator.cpp" />
@@ -6482,6 +6489,9 @@ mkdir $(OutDir)logs
     <ClCompile Include="world\tiles\source\GraveTile.cpp" />
     <ClCompile Include="world\tiles\source\GraveyardTile.cpp" />
     <ClCompile Include="world\tiles\source\HillsTile.cpp" />
+    <ClCompile Include="world\tiles\source\IcebergTile.cpp" />
+    <ClCompile Include="world\tiles\source\IceFieldTile.cpp" />
+    <ClCompile Include="world\tiles\source\IceTile.cpp" />
     <ClCompile Include="world\tiles\source\KeepTile.cpp" />
     <ClCompile Include="world\tiles\source\LibraryTile.cpp" />
     <ClCompile Include="world\tiles\source\MagicalTreeTile.cpp" />
@@ -6772,6 +6782,24 @@ mkdir $(OutDir)logs
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\IcebergTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\IceFieldTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\IceTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release - Curses Only|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\KeepTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

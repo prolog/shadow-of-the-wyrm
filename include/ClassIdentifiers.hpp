@@ -310,7 +310,10 @@ enum struct ClassIdentifier
   CLASS_ID_WEATHER = 305,
   CLASS_ID_ORDER_COMMAND_FACTORY = 306,
   CLASS_ID_ORDER_KEYBOARD_COMMAND_MAP = 307,
-  CLASS_ID_INGREDIENT = 308
+  CLASS_ID_INGREDIENT = 308,
+  CLASS_ID_ICE_TILE = 309,
+  CLASS_ID_ICEBERG_TILE = 310,
+  CLASS_ID_ICE_FIELD_TILE = 311
 };
 
 // Any class IDs needed for Lua scripts (e.g., feature class IDs) should go

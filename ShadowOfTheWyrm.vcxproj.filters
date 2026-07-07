@@ -4649,6 +4649,21 @@
     <ClInclude Include="engine\include\CharacterSelection.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\include\IcebergGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\IceFieldGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\IceTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\IcebergTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\IceFieldTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9495,6 +9510,30 @@
     </ClCompile>
     <ClCompile Include="engine\source\CharacterSelection.cpp">
       <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\IcebergGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\IceFieldGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\IceTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\IcebergTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\IceFieldTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\IceTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\IcebergTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\IceFieldTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -149,6 +149,9 @@
 			<xs:element name="FloatingTowerTile" type="tns:Tile"/>
 			<xs:element name="VoidTile" type="tns:Tile"/>
 			<xs:element name="MagicalTreeTile" type="tns:Tile"/>
+			<xs:element name="IceFieldTile" type="tns:Tile"/>
+			<xs:element name="IceTile" type="tns:Tile"/>
+			<xs:element name="IcebergTile" type="tns:Tile"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>

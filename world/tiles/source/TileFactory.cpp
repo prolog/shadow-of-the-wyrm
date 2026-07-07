@@ -34,7 +34,7 @@ TilePtr TileFactory::create_tile(const ClassIdentifier cl_id)
 
 void TileFactory::initialize_tile_map()
 {
-  static_assert(TileType::TILE_TYPE_LAST == TileType(55), "Unexpected TileType::TILE_TYPE_LAST value.");
+  static_assert(TileType::TILE_TYPE_LAST == TileType(58), "Unexpected TileType::TILE_TYPE_LAST value.");
 
   TilePtr barracks = std::make_shared<BarracksTile>();
   TilePtr barrow   = std::make_shared<BarrowTile>();
@@ -91,6 +91,9 @@ void TileFactory::initialize_tile_map()
   TilePtr ftower   = std::make_shared<FloatingTowerTile>();
   TilePtr voidt    = std::make_shared<VoidTile>();
   TilePtr mtree    = std::make_shared<MagicalTreeTile>();
+  TilePtr ice      = std::make_shared<IceTile>();
+  TilePtr iceberg  = std::make_shared<IcebergTile>();
+  TilePtr icefield = std::make_shared<IceFieldTile>();
 
   tiles_map = TileSerializationMap{{ClassIdentifier::CLASS_ID_BARRACKS_TILE, barracks},
                                    {ClassIdentifier::CLASS_ID_BARROW_TILE, barrow},
@@ -146,5 +149,8 @@ void TileFactory::initialize_tile_map()
                                    {ClassIdentifier::CLASS_ID_AQUATIC_VEGETATION_TILE, aquatic},
                                    {ClassIdentifier::CLASS_ID_FLOATING_TOWER_TILE, ftower},
                                    {ClassIdentifier::CLASS_ID_VOID_TILE, voidt},
-                                   {ClassIdentifier::CLASS_ID_MAGICAL_TREE_TILE, mtree}};
+                                   {ClassIdentifier::CLASS_ID_MAGICAL_TREE_TILE, mtree},
+                                   {ClassIdentifier::CLASS_ID_ICE_TILE, ice},
+                                   {ClassIdentifier::CLASS_ID_ICEBERG_TILE, iceberg},
+                                   {ClassIdentifier::CLASS_ID_ICE_FIELD_TILE, icefield} };
 }

@@ -8,6 +8,7 @@ Long Term Boring And Probably Necessary:
 - Visual Studio: x64 build
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
+- update assets on website once ice has been added
 - ice floes, ice fields...
 - glacial ice: create by digging
   - should be an ingredient for brewing!

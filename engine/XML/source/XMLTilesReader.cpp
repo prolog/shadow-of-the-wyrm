@@ -7,7 +7,7 @@ using namespace std;
 
 vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_tiles_node)
 {
-  static_assert(TileType::TILE_TYPE_LAST == static_cast<TileType>(55), "Unexpected TileType::TILE_TYPE_LAST value.");
+  static_assert(TileType::TILE_TYPE_LAST == static_cast<TileType>(58), "Unexpected TileType::TILE_TYPE_LAST value.");
 
   vector<DisplayTile> tiles;
   vector<string> tile_names = {"FieldTile", "ScrubTile", "WheatTile", "CairnTile", "TreeTile", "DesertTile", "RoadTile",
@@ -18,7 +18,7 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
                                "TempleTile", "DaisTile", "PierTile", "BarrowTile", "WildOrchardTile", "FruitTreeTile", "EvergreenTreeTile",
                                "RockyEarthTile", "MineTile", "WellTile", "CryptTile", "AirTile", "EarthTile", "SewerComplexTile",
                                "SewerTile", "ShrineTile", "SeabedTile", "AquaticVegetationTile", "FloatingTowerTile", "VoidTile",
-                               "MagicalTreeTile"};
+                               "MagicalTreeTile", "IceFieldTile", "IceTile", "IceBergTile"};
   
   vector<XMLNode> tile_nodes;
   tiles.reserve(static_cast<int>(TileType::TILE_TYPE_LAST));

@@ -234,6 +234,16 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       break;
     case TileType::TILE_TYPE_MAGICAL_TREE:
       result_tile = std::make_shared<MagicalTreeTile>();
+      break;
+    case TileType::TILE_TYPE_ICE:
+      result_tile = std::make_shared<IceTile>();
+      break;
+    case TileType::TILE_TYPE_ICEBERG:
+      result_tile = std::make_shared<IcebergTile>();
+      break;
+    case TileType::TILE_TYPE_ICE_FIELD:
+      result_tile = std::make_shared<IceFieldTile>();
+      break;
     default:
       break;
   }
