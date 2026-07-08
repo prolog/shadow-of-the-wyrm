@@ -10,6 +10,9 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
   static_assert(TileType::TILE_TYPE_LAST == static_cast<TileType>(58), "Unexpected TileType::TILE_TYPE_LAST value.");
 
   vector<DisplayTile> tiles;
+
+  // Note that this vector must match the tile enumeration in tiles.hpp exactly
+  // and also follow the exact ordering.
   vector<string> tile_names = {"FieldTile", "ScrubTile", "WheatTile", "CairnTile", "TreeTile", "DesertTile", "RoadTile",
                                "RiverTile", "SeaTile", "ShoalsTile", "DungeonTile", "RockTile", "GraveTile", "MarshTile",
                                "ReedsTile", "HillsTile", "MountainsTile", "BeachTile", "BushTile", "WeedsTile", "SpringsTile",
@@ -18,7 +21,7 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
                                "TempleTile", "DaisTile", "PierTile", "BarrowTile", "WildOrchardTile", "FruitTreeTile", "EvergreenTreeTile",
                                "RockyEarthTile", "MineTile", "WellTile", "CryptTile", "AirTile", "EarthTile", "SewerComplexTile",
                                "SewerTile", "ShrineTile", "SeabedTile", "AquaticVegetationTile", "FloatingTowerTile", "VoidTile",
-                               "MagicalTreeTile", "IceFieldTile", "IceTile", "IceBergTile"};
+                               "MagicalTreeTile", "IceFieldTile", "IcebergTile", "IceTile"};
   
   vector<XMLNode> tile_nodes;
   tiles.reserve(static_cast<int>(TileType::TILE_TYPE_LAST));

@@ -35,6 +35,8 @@
 #include "GraveyardGeneratorFactory.hpp"
 #include "HamletGenerator.hpp"
 #include "HillsGenerator.hpp"
+#include "IceFieldGenerator.hpp"
+#include "IcebergGenerator.hpp"
 #include "IslandSacrificeSiteGenerator.hpp"
 #include "ItemGenerationManager.hpp"
 #include "KeepRuinsGenerator.hpp"
@@ -98,6 +100,8 @@ void treasure_description(const bool is_underwater);
 void test_other_maps();
 std::string generate_void();
 std::string generate_mountains();
+std::string generate_ice_field();
+std::string generate_iceberg();
 
 // Custom maps
 void load_custom_maps();
@@ -1296,6 +1300,8 @@ void test_other_maps()
     std::cout << "Other Maps" << std::endl << std::endl;
     std::cout << "0. Void" << std::endl;
     std::cout << "1. Mountains" << std::endl;
+    std::cout << "2. Ice Field" << std::endl;
+    std::cout << "3. Iceberg" << std::endl;
     std::cout << "-1. Quit" << std::endl << std::endl;
     std::cin >> option;
 
@@ -1308,6 +1314,15 @@ void test_other_maps()
       case 1:
         map = generate_mountains();
         output_map(map, "mountains_test.html");
+        break;
+      case 2:
+        map = generate_ice_field();
+        output_map(map, "ice_field_test.html");
+        break;
+      case 3:
+        map = generate_iceberg();
+        output_map(map, "iceberg_test.html");
+        break;
       default: 
         break;
     }
@@ -1383,6 +1398,22 @@ std::string generate_mountains()
 {
   GeneratorPtr mt_gen = std::make_unique<MountainsGenerator>("");
   MapPtr map = mt_gen->generate();
+  std::cout << map_to_string(map, false);
+  return map_to_string(map);
+}
+
+std::string generate_ice_field()
+{
+  GeneratorPtr if_gen = std::make_unique<IceFieldGenerator>("");
+  MapPtr map = if_gen->generate();
+  std::cout << map_to_string(map, false);
+  return map_to_string(map);
+}
+
+std::string generate_iceberg()
+{
+  GeneratorPtr ib_gen = std::make_unique<IcebergGenerator>("");
+  MapPtr map = ib_gen->generate();
   std::cout << map_to_string(map, false);
   return map_to_string(map);
 }
