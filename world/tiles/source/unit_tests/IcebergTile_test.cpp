@@ -17,6 +17,6 @@ TEST(SW_World_Tiles_IcebergTile, serialization_id)
 {
   IcebergTile ib_tile;
 
-  EXPECT_EQ(ClassIdentifier::CLASS_ID_ICEBERG, ib_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_ICEBERG_TILE, ib_tile.get_class_identifier());
 }
 

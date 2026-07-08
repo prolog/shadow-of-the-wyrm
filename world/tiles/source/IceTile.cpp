@@ -7,7 +7,7 @@ TileType IceTile::get_tile_type() const
 
 std::string IceTile::get_tile_description_sid() const
 {
-  return TileTextKeys::TILE_DESC_ROCKY_EARTH;
+  return TileTextKeys::TILE_DESC_ICE;
 }
 
 Tile* IceTile::clone()

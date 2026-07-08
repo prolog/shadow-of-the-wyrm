@@ -4,8 +4,6 @@
 class IceFieldTile : public WorldMapTile
 {
   public:
-    IceFieldTile();
-
     TileType get_tile_type() const override;
     std::string get_tile_description_sid() const override;
 

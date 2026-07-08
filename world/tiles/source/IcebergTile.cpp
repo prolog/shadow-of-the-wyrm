@@ -2,7 +2,7 @@
 
 TileType IcebergTile::get_tile_type() const
 {
-  return TileType::TILE_TYPE_SEA;
+  return TileType::TILE_TYPE_ICEBERG;
 }
 
 std::string IcebergTile::get_tile_description_sid() const

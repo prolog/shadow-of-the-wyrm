@@ -17,6 +17,6 @@ TEST(SW_World_Tiles_IceTile, serialization_id)
 {
   IceTile ice_tile;
 
-  EXPECT_EQ(ClassIdentifier::CLASS_ID_ROCKY_EARTH_TILE, ice_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_ICE_TILE, ice_tile.get_class_identifier());
 }
 

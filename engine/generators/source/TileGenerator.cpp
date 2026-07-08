@@ -43,7 +43,7 @@ pair<int, int> TileGenerator::get_x_in_y_chance_slimy() const
 TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type, const map<string, string>& properties)
 {
   // To make it easier to remember what needs to be updated:
-  static_assert(TileType::TILE_TYPE_LAST == TileType(55), "Unexpected TileType::TILE_TYPE_LAST value.");
+  static_assert(TileType::TILE_TYPE_LAST == TileType(58), "Unexpected TileType::TILE_TYPE_LAST value.");
 
   TilePtr result_tile;
 
