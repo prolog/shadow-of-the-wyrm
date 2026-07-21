@@ -31,33 +31,3 @@ MapPtr IcebergGenerator::generate(const Dimensions& dimensions)
   return result_map;
 }
 
-void IcebergGenerator::fill_with_overlay(MapPtr map, const TileType fill_tt, const TileType overlay_tt, const int y_bound, const int x_bound)
-{
-  if (map != nullptr)
-  {
-    Dimensions dim = map->size();
-    int rows = dim.get_y();
-    int cols = dim.get_x();
-
-    TileGenerator tg;
-    TilePtr tile;
-    TileType tt = TileType::TILE_TYPE_UNDEFINED;
-
-    for (int y = 0; y < rows; y++)
-    {
-      for (int x = 0; x < cols; x++)
-      {
-        tt = overlay_tt;
-
-        if (y <= y_bound || y >= rows - y_bound || x <= x_bound || x >= cols - x_bound)
-        {
-          tt = fill_tt;
-        }
-
-        tile = tg.generate(tt);
-        map->insert({ y, x }, tile);
-      }
-    }
-  }
-}
-
