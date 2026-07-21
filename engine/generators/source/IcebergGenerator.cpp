@@ -5,10 +5,10 @@
 
 using std::vector;
 
-const int IcebergGenerator::Y_DIVISOR_MIN = 5;
+const int IcebergGenerator::Y_DIVISOR_MIN = 3;
 const int IcebergGenerator::Y_DIVISOR_MAX = 6;
-const int IcebergGenerator::X_DIVISOR_MIN = 7;
-const int IcebergGenerator::X_DIVISOR_MAX = 10;
+const int IcebergGenerator::X_DIVISOR_MIN = 3;
+const int IcebergGenerator::X_DIVISOR_MAX = 8;
 
 IcebergGenerator::IcebergGenerator(const std::string& new_map_exit_id)
 : Generator(new_map_exit_id, TileType::TILE_TYPE_SEA)
