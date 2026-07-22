@@ -442,6 +442,29 @@ void Generator::fill_with_overlay(MapPtr map, const TileType fill_tt, const Tile
   }
 }
 
+// Round the edges by eroding the corners
+void Generator::round_overlay_corners(MapPtr map, const int y_bounds, const int x_bounds, const TileType erosion_tile_type)
+{
+  if (map != nullptr)
+  {
+    TileGenerator tg;
+    Dimensions dim = map->size();
+    int rows = dim.get_y();
+    int cols = dim.get_x();
+
+    vector<Coordinate> corners = { {y_bounds + 1, x_bounds + 1},
+                                   {y_bounds + 1, cols - x_bounds - 1},
+                                   {rows - y_bounds - 1, cols - x_bounds - 1},
+                                   {rows - y_bounds - 1, x_bounds + 1 } };
+
+    for (const auto& corner : corners)
+    {
+      TilePtr tile = tg.generate(erosion_tile_type);
+      map->insert(corner, tile);
+    }
+  }
+}
+
 // Seed the initial items.  Returns true if the items were created, false otherwise.
 // By default, no initial items are generated.  This function should be overridden
 // for generators where this is expected (dungeons, maybe villages, etc).

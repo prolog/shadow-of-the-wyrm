@@ -3,6 +3,7 @@
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
+using std::pair;
 using std::vector;
 
 const int IcebergGenerator::Y_DIVISOR_MIN = 3;
@@ -26,8 +27,8 @@ MapPtr IcebergGenerator::generate(const Dimensions& dimensions)
   int x_bounds = dim.get_x() / x_divisor;
 
   fill_with_overlay(result_map, TileType::TILE_TYPE_SEA, TileType::TILE_TYPE_ICE, y_bounds, x_bounds);
+  round_overlay_corners(result_map, y_bounds, x_bounds, TileType::TILE_TYPE_SEA);
   result_map->set_property(MapProperties::MAP_PROPERTIES_SHALLOW_WATER, std::to_string(false));
 
   return result_map;
 }
-
