@@ -330,6 +330,7 @@ string TextMessages::get_confirmation_message(const string& query_or_sid)
 
 string TextMessages::get_area_entrance_message_given_terrain_type(const TileType type)
 {
+  static_assert(TileType::TILE_TYPE_LAST == TileType(58), "Unexpected TileType::TILE_TYPE_LAST");
   string entrance_message;
   
   switch(type)

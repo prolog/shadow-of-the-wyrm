@@ -10,7 +10,7 @@ Long Term Boring And Probably Necessary:
 
 - update assets on website once ice has been added
 - ice floes, ice fields...
-- should move fill_with... into Generator
+- some floating ice at whaling's end!
 - glacial ice: create by digging
   - should be an ingredient for brewing!
 - Time to finally implement jumping

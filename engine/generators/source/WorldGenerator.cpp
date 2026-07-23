@@ -36,6 +36,8 @@ void async_worldgen(std::promise<MapPtr>&& mp)
 const int WorldGenerator::MIN_CREATURES_PER_VILLAGE = 12;
 const int WorldGenerator::MAX_CREATURES_PER_VILLAGE = 26;
 const int WorldGenerator::MAX_DANGER_LEVEL_FOR_WORLD_GEN = 50;
+const int WorldGenerator::ICE_SHEETS_X_DIVISOR_MIN = 2;
+const int WorldGenerator::ICE_SHEETS_X_DIVISOR_MAX = 5;
 
 // Even though the map_terrain_type parameter is used to generate creatures, and UNDEFINED would normally be bad, it
 // shouldn't matter for the world, since there will never be creatures generated on it.
@@ -110,7 +112,8 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   fill(result_map, tt);
 
   // Generate the random world
-  result_map = generate_random_islands(result_map);
+  generate_ice_sheets(result_map);
+  generate_random_islands(result_map);
 
   // Generate villages and their surroundings
   populate_race_information();
@@ -120,8 +123,37 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   return result_map;
 }
 
+void WorldGenerator::generate_ice_sheets(MapPtr result_map)
+{
+  if (result_map != nullptr)
+  {
+    Dimensions dim = result_map->size();
+    int rows = dim.get_y();
+    int cols = dim.get_x();
+    int ice_sheet_length = RNG::range(cols / ICE_SHEETS_X_DIVISOR_MAX, cols / ICE_SHEETS_X_DIVISOR_MIN);
+    int steps = ice_sheet_length / 2;
+    int center = cols / 2;
+    int step = 0;
+    TilePtr ice_field;
+    vector<Coordinate> coords;
+
+    while (step < steps)
+    {
+      coords = { {0, center + step}, {0, center - step}, {rows - 1, center + step}, {rows - 1, center - step} };
+
+      for (const auto& coord : coords)
+      {
+        ice_field = tg.generate(TileType::TILE_TYPE_ICE_FIELD);
+        result_map->insert(coord, ice_field);
+      }
+
+      step++;
+    }
+  }
+}
+
 // When done, translate the cell map MapPtr.
-MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
+void WorldGenerator::generate_random_islands(MapPtr result_map)
 {
   TilePtr tile;
   Dimensions dimensions = result_map->size();
@@ -161,8 +193,6 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
       post_process_cell(result_map, row, col);
     }
   }
-
-  return result_map;
 }
 
 void WorldGenerator::post_process_cell(MapPtr map, const int row, const int col)
