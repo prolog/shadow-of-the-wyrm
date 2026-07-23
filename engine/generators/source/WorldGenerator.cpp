@@ -125,7 +125,11 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
 {
   TilePtr tile;
   Dimensions dimensions = result_map->size();
-  int rows = dimensions.get_y();
+
+  // The usable rows is slightly less than the total to allow ofr nice-looking
+  // ice sheets at the far north and south of the world.
+  int usable_rows_start = 2;
+  int usable_rows = dimensions.get_y() - 2;
   int cols = dimensions.get_x();
   
   CellMap cell_map, forest_cell_map, hills_cell_map, mountains_cell_map, scrub_cell_map, marsh_cell_map, desert_cell_map;
@@ -133,7 +137,7 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
   
   populate_terrain_cell_maps(dimensions, cell_map, forest_cell_map, hills_cell_map, mountains_cell_map, scrub_cell_map, marsh_cell_map, desert_cell_map);
 
-  for (int row = 0; row < rows; row++)
+  for (int row = usable_rows_start; row < usable_rows; row++)
   {
     for (int col = 0; col < cols; col++)
     {
