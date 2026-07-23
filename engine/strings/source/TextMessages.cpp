@@ -401,6 +401,12 @@ string TextMessages::get_area_entrance_message_given_terrain_type(const TileType
     case TileType::TILE_TYPE_WILD_ORCHARD:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_WILD_ORCHARD);
       break;
+    case TileType::TILE_TYPE_ICE_FIELD:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_ICE_FIELD);
+      break;
+    case TileType::TILE_TYPE_ICEBERG:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_ICEBERG);
+      break;
     case TileType::TILE_TYPE_UNDEFINED:
     case TileType::TILE_TYPE_WHEAT:
     case TileType::TILE_TYPE_CAIRN:

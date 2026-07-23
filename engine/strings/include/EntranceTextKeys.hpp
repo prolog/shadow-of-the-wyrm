@@ -26,6 +26,9 @@ class EntranceTextKeys
     static const std::string ENTRANCE_SHRINE;
     static const std::string ENTRANCE_AIR;
     static const std::string ENTRANCE_WILD_ORCHARD;
+    static const std::string ENTRANCE_ICE_FIELD;
+    static const std::string ENTRANCE_ICEBERG;
+
   protected:
     EntranceTextKeys();
     ~EntranceTextKeys();

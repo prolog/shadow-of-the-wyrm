@@ -32,3 +32,5 @@ const string EntranceTextKeys::ENTRANCE_TEMPLE          = "ENTRANCE_TEMPLE";
 const string EntranceTextKeys::ENTRANCE_SHRINE          = "ENTRANCE_SHRINE";
 const string EntranceTextKeys::ENTRANCE_AIR             = "ENTRANCE_AIR";
 const string EntranceTextKeys::ENTRANCE_WILD_ORCHARD    = "ENTRANCE_WILD_ORCHARD";
+const string EntranceTextKeys::ENTRANCE_ICE_FIELD       = "ENTRANCE_ICE_FIELD";
+const string EntranceTextKeys::ENTRANCE_ICEBERG         = "ENTRANCE_ICEBERG";
