@@ -31,3 +31,4 @@ const string EntranceTextKeys::ENTRANCE_SITE_OF_DEATH   = "ENTRANCE_SITE_OF_DEAT
 const string EntranceTextKeys::ENTRANCE_TEMPLE          = "ENTRANCE_TEMPLE";
 const string EntranceTextKeys::ENTRANCE_SHRINE          = "ENTRANCE_SHRINE";
 const string EntranceTextKeys::ENTRANCE_AIR             = "ENTRANCE_AIR";
+const string EntranceTextKeys::ENTRANCE_WILD_ORCHARD    = "ENTRANCE_WILD_ORCHARD";
