@@ -12,7 +12,7 @@ const int IcebergGenerator::X_DIVISOR_MIN = 3;
 const int IcebergGenerator::X_DIVISOR_MAX = 8;
 
 IcebergGenerator::IcebergGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id, TileType::TILE_TYPE_SEA)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_ICEBERG)
 {
 }
 

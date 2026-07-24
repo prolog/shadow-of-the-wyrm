@@ -2,7 +2,7 @@
 #include "MapProperties.hpp"
 
 IceFieldGenerator::IceFieldGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id, TileType::TILE_TYPE_SEA)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_ICE_FIELD)
 {
 }
 
