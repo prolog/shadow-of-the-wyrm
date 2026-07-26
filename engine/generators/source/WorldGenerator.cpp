@@ -37,7 +37,10 @@ const int WorldGenerator::MIN_CREATURES_PER_VILLAGE = 12;
 const int WorldGenerator::MAX_CREATURES_PER_VILLAGE = 26;
 const int WorldGenerator::MAX_DANGER_LEVEL_FOR_WORLD_GEN = 50;
 const int WorldGenerator::ICE_SHEETS_X_DIVISOR_MIN = 2;
-const int WorldGenerator::ICE_SHEETS_X_DIVISOR_MAX = 5;
+const int WorldGenerator::ICE_SHEETS_X_DIVISOR_MAX = 3;
+const int WorldGenerator::ICEBERGS_Y_OFFSET_MIN = 2;
+const int WorldGenerator::ICEBERGS_Y_OFFSET_MAX = 8;
+const pair<int, int> WorldGenerator::ICEBERG_TILE_X_IN_Y = { 1, 100 };
 
 // Even though the map_terrain_type parameter is used to generate creatures, and UNDEFINED would normally be bad, it
 // shouldn't matter for the world, since there will never be creatures generated on it.
@@ -114,6 +117,7 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   // Generate the random world
   generate_ice_sheets(result_map);
   generate_random_islands(result_map);
+  generate_icebergs(result_map);
 
   // Generate villages and their surroundings
   populate_race_information();
@@ -148,6 +152,37 @@ void WorldGenerator::generate_ice_sheets(MapPtr result_map)
       }
 
       step++;
+    }
+  }
+}
+
+void WorldGenerator::generate_icebergs(MapPtr result_map)
+{
+  if (result_map != nullptr)
+  {
+    Dimensions dim = result_map->size();
+    int rows = dim.get_y();
+    int cols = dim.get_x();
+    int y_offset = RNG::range(ICEBERGS_Y_OFFSET_MIN, ICEBERGS_Y_OFFSET_MAX);
+    TilePtr tile;
+
+    for (int y = ICEBERGS_Y_OFFSET_MIN; y < y_offset; y++)
+    {
+      for (int x = 0; x < cols; x++)
+      {
+        for (int y_cur : {y, rows - 1 - y})
+        {
+          tile = result_map->at(y_cur, x);
+
+          if (tile != nullptr &&
+              tile->get_tile_type() == TileType::TILE_TYPE_SEA &&
+              RNG::x_in_y_chance(ICEBERG_TILE_X_IN_Y))
+          {
+            tile = tg.generate(TileType::TILE_TYPE_ICEBERG);
+            result_map->insert(y_cur, x, tile);
+          }
+        }
+      }
     }
   }
 }

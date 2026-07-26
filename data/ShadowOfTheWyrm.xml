@@ -7587,7 +7587,7 @@
 		</IceTile>
 		<IcebergTile>
 			<Symbol>
-				<Char>V</Char>
+				<Char>^</Char>
 				<Colour>15</Colour>
 				<Sprite>
 					<ID>til</ID>

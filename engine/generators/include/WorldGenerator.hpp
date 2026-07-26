@@ -33,6 +33,7 @@ class WorldGenerator : public SOTW::Generator
   protected:
     virtual MapType get_map_type() const override;
     virtual void   generate_ice_sheets(MapPtr map);
+    virtual void   generate_icebergs(MapPtr map);
     virtual void   generate_random_islands(MapPtr map);
     virtual void   generate_village_surroundings(MapPtr map);
     virtual bool   generate_village_worship_site(MapPtr map, const int adjacent_row, const int adjacent_col, const std::string& race_id, const DeityMap& deities);
@@ -99,4 +100,7 @@ class WorldGenerator : public SOTW::Generator
     static const int MAX_DANGER_LEVEL_FOR_WORLD_GEN;
     static const int ICE_SHEETS_X_DIVISOR_MIN;
     static const int ICE_SHEETS_X_DIVISOR_MAX;
+    static const int ICEBERGS_Y_OFFSET_MIN;
+    static const int ICEBERGS_Y_OFFSET_MAX;
+    static const std::pair<int, int> ICEBERG_TILE_X_IN_Y;
 };

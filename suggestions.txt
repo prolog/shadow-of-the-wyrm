@@ -10,6 +10,7 @@ Long Term Boring And Probably Necessary:
 
 - update assets on website once ice has been added
 - ice floes, ice fields...
+- forested/weedy caverns
 - entrance message for ice field, iceberg
 - ice field showing sea msg?
 - some floating ice at whaling's end!
