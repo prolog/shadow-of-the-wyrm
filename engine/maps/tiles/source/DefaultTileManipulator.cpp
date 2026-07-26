@@ -197,7 +197,7 @@ void DefaultTileManipulator::add_item_if_necessary(CreaturePtr creature, MapPtr 
 
 void DefaultTileManipulator::add_detritus(CreaturePtr creature, MapPtr map, TilePtr tile)
 {
-  if (creature != nullptr && map != nullptr && tile != nullptr)
+  if (creature != nullptr && map != nullptr && tile != nullptr && tile->has_detritus())
   {
     ItemManager im;
     auto tiles = MapUtils::get_adjacent_tiles_to_creature_unsorted(map, creature);

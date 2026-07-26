@@ -167,6 +167,9 @@ class Tile : public ISerializable
     // to penetrate the tile.
     void set_hardness(const int new_hardness);
     int get_hardness() const;
+
+    // Is there detritus from digging?
+    virtual bool has_detritus() const;
     
     virtual TileExitMap& get_tile_exit_map_ref();
     virtual std::string get_no_exit_message_sid(const Direction dir) const;

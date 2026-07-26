@@ -1,4 +1,5 @@
 #include "IceTile.hpp"
+#include "ItemTypes.hpp"
 
 TileType IceTile::get_tile_type() const
 {
@@ -8,6 +9,11 @@ TileType IceTile::get_tile_type() const
 std::string IceTile::get_tile_description_sid() const
 {
   return TileTextKeys::TILE_DESC_ICE;
+}
+
+bool IceTile::has_detritus() const
+{
+  return false;
 }
 
 Tile* IceTile::clone()

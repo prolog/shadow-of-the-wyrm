@@ -655,6 +655,11 @@ int Tile::get_hardness() const
   return hardness;
 }
 
+bool Tile::has_detritus() const
+{
+  return true;
+}
+
 TileExitMap& Tile::get_tile_exit_map_ref()
 {
   return map_exits;
