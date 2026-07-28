@@ -8651,7 +8651,7 @@
 					</Property>
 				</Properties>
 				<Nutrition>0</Nutrition>
-				<FoodType>0</FoodType>
+				<FoodType>4</FoodType>
 			</Food>
 			<Food id="_cherries">
 				<DescriptionSID>CHERRIES_SID</DescriptionSID>

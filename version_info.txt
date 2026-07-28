@@ -87,7 +87,7 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 
 - New creatures: cartographer, mountaineer.
 
-- New items: wand of trap detection.
+- New items: wand of trap detection, glacial ice.
 
 - Bug fixes:
 
