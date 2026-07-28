@@ -8624,6 +8624,35 @@
 				<Nutrition>80</Nutrition>
 				<FoodType>0</FoodType>
 			</Food>
+			<Food id="_glacial_ice">
+				<DescriptionSID>GLACIAL_ICE_SID</DescriptionSID>
+				<UsageDescriptionSID>GLACIAL_ICE_USAGE_SID</UsageDescriptionSID>
+				<CodexDescriptionSID>GLACIAL_ICE_CODEX_SID</CodexDescriptionSID>
+				<Value>0</Value>
+				<Weight>
+					<Pounds>1</Pounds>
+				</Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>15</Material>
+				<Symbol>
+					<Char>%</Char>
+					<Colour>15</Colour>
+					<Sprite>
+						<ID>it</ID>
+						<Row>2</Row>
+						<Col>3</Col>
+					</Sprite>
+				</Symbol>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>brewing_ingredient_common</Name>
+						<Value>1</Value>
+					</Property>
+				</Properties>
+				<Nutrition>0</Nutrition>
+				<FoodType>0</FoodType>
+			</Food>
 			<Food id="_cherries">
 				<DescriptionSID>CHERRIES_SID</DescriptionSID>
 				<UsageDescriptionSID>CHERRIES_USAGE_SID</UsageDescriptionSID>

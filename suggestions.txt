@@ -458,6 +458,7 @@ Bentwing:
 - keybinding for toggling reach mode
 - when sapient allies are left behind on a resetting area, instead of being
   removed from the game world, show up randomly in a settlement somewhere.
+- npcs should drop when overburdened
 
 Kenny:
 - repeat last command (!)

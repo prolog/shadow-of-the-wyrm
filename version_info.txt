@@ -76,6 +76,8 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 
 - Morels are more filling.
 
+- Updated the settings to use SDL's default renderer.
+
 - Tweaked a couple of set world map locations to be a row or two north/south
   to allow for ice sheet generation.
 
