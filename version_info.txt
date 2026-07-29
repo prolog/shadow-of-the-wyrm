@@ -85,6 +85,8 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 
 - Wild orchards will now give you a message when you enter one.
 
+- New material types: water.
+
 - New creatures: cartographer, mountaineer.
 
 - New items: wand of trap detection, glacial ice.

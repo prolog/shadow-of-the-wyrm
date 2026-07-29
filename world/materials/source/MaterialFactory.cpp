@@ -17,6 +17,7 @@
 #include "Steel.hpp"
 #include "Stone.hpp"
 #include "UnknownMaterial.hpp"
+#include "Water.hpp"
 #include "Wood.hpp"
 
 using namespace std;
@@ -31,7 +32,7 @@ MaterialFactory::~MaterialFactory()
 
 MaterialPtr MaterialFactory::create_material(const MaterialType type)
 {
-  static_assert(MaterialType::MATERIAL_TYPE_LAST == MaterialType(19), "Unexpected MATERIAL_TYPE_LAST");
+  static_assert(MaterialType::MATERIAL_TYPE_LAST == MaterialType(20), "Unexpected MATERIAL_TYPE_LAST");
 
   MaterialPtr material;
 
@@ -90,6 +91,9 @@ MaterialPtr MaterialFactory::create_material(const MaterialType type)
       break;
     case MaterialType::MATERIAL_TYPE_PLANT:
       material = std::make_unique<PlantMaterial>();
+      break;
+    case MaterialType::MATERIAL_TYPE_WATER:
+      material = std::make_unique<Water>();
       break;
     case MaterialType::MATERIAL_TYPE_UNKNOWN:
     default:

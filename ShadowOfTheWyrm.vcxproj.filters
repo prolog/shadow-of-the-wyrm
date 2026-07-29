@@ -4664,6 +4664,9 @@
     <ClInclude Include="world\tiles\include\IceFieldTile.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\materials\include\Water.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -9534,6 +9537,12 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\IceFieldTile.cpp">
       <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\Water.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\Water_test.cpp">
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

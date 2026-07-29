@@ -10,6 +10,8 @@ Long Term Boring And Probably Necessary:
 
 - update assets on website once ice has been added
 - ice floes, ice fields...
+- some sort of very spare piece for the ice fields? need to update site,
+  tell larzid, etc
 - forested/weedy caverns
 - entrance message for ice field, iceberg
 - ice field showing sea msg?
