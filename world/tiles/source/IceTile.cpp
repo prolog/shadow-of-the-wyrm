@@ -1,6 +1,12 @@
 #include "IceTile.hpp"
 #include "ItemTypes.hpp"
 
+// You can always get ice by digging ice tiles.
+IceTile::IceTile()
+: Tile({ 0, 100, {ItemIdKeys::ITEM_ID_GLACIAL_ICE}})
+{
+}
+
 TileType IceTile::get_tile_type() const
 {
   return TileType::TILE_TYPE_ICE;

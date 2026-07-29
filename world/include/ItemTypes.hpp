@@ -118,6 +118,7 @@ class ItemIdKeys
     static const std::string ITEM_ID_SHOVEL;
     static const std::string ITEM_ID_PICK_AXE;
     static const std::string ITEM_ID_SLIME;
+    static const std::string ITEM_ID_GLACIAL_ICE;
 
     // Foragables
     static const std::string ITEM_ID_ROOT;

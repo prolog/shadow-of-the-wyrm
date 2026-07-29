@@ -4,6 +4,9 @@
 class IceTile : public Tile
 {
   public:
+    IceTile();
+    virtual ~IceTile() = default;
+
     TileType get_tile_type() const override;
     
     std::string get_tile_description_sid() const override;
