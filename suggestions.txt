@@ -8,16 +8,7 @@ Long Term Boring And Probably Necessary:
 - Visual Studio: x64 build
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
-- update assets on website once ice has been added
-- ice floes, ice fields...
-- some sort of very spare piece for the ice fields? need to update site,
-  tell larzid, etc
-- forested/weedy caverns
-- entrance message for ice field, iceberg
-- ice field showing sea msg?
-- some floating ice at whaling's end!
-- glacial ice: create by digging
-  - should be an ingredient for brewing!
+- water close to land should have chance of shoals...
 - Time to finally implement jumping
 - sea generator: chance for islands:
   - desert island with spring

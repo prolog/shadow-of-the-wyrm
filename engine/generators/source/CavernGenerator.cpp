@@ -17,6 +17,20 @@ using namespace std;
 const int CavernGenerator::MIN_NUM_TRAPS = 0;
 const int CavernGenerator::MAX_NUM_TRAPS = 6;
 const int CavernGenerator::PCT_CHANCE_SLIMY = 5;
+const int CavernGenerator::PCT_CHANCE_VEGETATION = 40;
+const int CavernGenerator::PCT_CHANCE_FULLY_VEGETATED = 20;
+const pair<int, int> CavernGenerator::TILE_MIN_MAX_PCT_CHANCE_VEGETATION = { 3, 80 };
+
+// This vector helps seed the cavern with tile types. When considering
+// vegetation, the algorithm picks 1-4 of these. The extra tree entries
+// means that when caverns have mixed types, there's often more trees (this
+// looks a little better on the screen and is kind of weird/cool conceptually).
+const vector<TileType> CavernGenerator::VEGETATION_TYPES = {TileType::TILE_TYPE_TREE,
+                                                            TileType::TILE_TYPE_TREE,
+                                                            TileType::TILE_TYPE_TREE,
+                                                            TileType::TILE_TYPE_TREE,
+                                                            TileType::TILE_TYPE_WEEDS,
+                                                            TileType::TILE_TYPE_REEDS};
 
 CavernGenerator::CavernGenerator(const string& new_map_exit_id)
 : Generator(new_map_exit_id, TileType::TILE_TYPE_CAVERN)
@@ -44,6 +58,7 @@ MapPtr CavernGenerator::generate(const Dimensions& dimensions)
 
   update_depth_details(result_map);
   generate_staircases(result_map);
+  add_vegetation(result_map);
   
   return result_map;
 }
@@ -275,6 +290,55 @@ void CavernGenerator::generate_traps(MapPtr map)
 {
   int num_traps = RNG::range(MIN_NUM_TRAPS, MAX_NUM_TRAPS);
   GeneratorUtils::generate_traps(map, num_traps);
+}
+
+// This step needs to come last - it turns dungeon floors into weeds/trees/etc,
+// which will cause issues with staircase generation (which looks for floor
+// tiles) if it's run earlier.
+void CavernGenerator::add_vegetation(MapPtr map)
+{
+  if (RNG::percent_chance(PCT_CHANCE_VEGETATION))
+  {
+    int pct_chance_tile_vegetation = 100;
+
+    if (!RNG::percent_chance(PCT_CHANCE_FULLY_VEGETATED))
+    {
+      pct_chance_tile_vegetation = RNG::x_in_y_chance(TILE_MIN_MAX_PCT_CHANCE_VEGETATION);
+    }
+
+    TileGenerator tg;
+    int num_tt = RNG::range(1, 4);
+    vector<TileType> veg;
+    veg.reserve(num_tt);
+
+    for (int i = 0; i < num_tt; i++)
+    {
+      int veg_idx = RNG::range(0, VEGETATION_TYPES.size() - 1);
+      veg.push_back(VEGETATION_TYPES[veg_idx]);
+    }
+
+    if (map != nullptr)
+    {
+      Dimensions dim = map->size();
+      int rows = dim.get_y();
+      int cols = dim.get_x();
+
+      for (int y = 0; y < rows; y++)
+      {
+        for (int x = 0; x < cols; x++)
+        {
+          TilePtr tile = map->at(y, x);
+
+          if (tile != nullptr && tile->get_tile_type() == TileType::TILE_TYPE_DUNGEON)
+          {
+            TileType new_tt = veg[RNG::range(0, veg.size() - 1)];
+            TilePtr new_tile = tg.generate(new_tt);
+            map->insert(y, x, new_tile);
+          }
+        }
+      }
+    }
+  }
 }
 
 MapType CavernGenerator::get_map_type() const

@@ -26,8 +26,13 @@ class CavernGenerator : public SOTW::Generator
     void reset_cavern_edges(MapPtr map);
     void generate_staircases(MapPtr map);
     void generate_staircase(MapPtr map, const TileType tile_type, const Direction direction);
+    void add_vegetation(MapPtr map);
 
     static const int MIN_NUM_TRAPS;
     static const int MAX_NUM_TRAPS;
     static const int PCT_CHANCE_SLIMY;
+    static const int PCT_CHANCE_VEGETATION;
+    static const int PCT_CHANCE_FULLY_VEGETATED;
+    static const std::pair<int, int> TILE_MIN_MAX_PCT_CHANCE_VEGETATION;
+    static const std::vector<TileType> VEGETATION_TYPES;
 };
