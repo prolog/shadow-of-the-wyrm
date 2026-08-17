@@ -8,6 +8,7 @@ Long Term Boring And Probably Necessary:
 - Visual Studio: x64 build
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
+- hook into adjacent TTs with seagenerator
 - water close to land should have chance of shoals...
 - Time to finally implement jumping
 - sea generator: chance for islands:

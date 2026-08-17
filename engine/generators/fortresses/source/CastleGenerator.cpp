@@ -1,5 +1,6 @@
 #include "CastleGenerator.hpp"
 #include "CastleGeneratorStrategyFactory.hpp"
+#include "CoordUtils.hpp"
 #include "TerrainGeneratorFactory.hpp"
 
 using namespace std;
@@ -11,7 +12,7 @@ CastleGenerator::CastleGenerator(const string& map_exit_id, const TileType base_
 
 MapPtr CastleGenerator::generate(const Dimensions& dim)
 {
-  GeneratorPtr gen = TerrainGeneratorFactory::create_generator(nullptr, nullptr, map_exit_id, base_tile_type);
+  GeneratorPtr gen = TerrainGeneratorFactory::create_generator(CoordUtils::end(), nullptr, nullptr, map_exit_id, base_tile_type);
   MapPtr result_map = gen->generate(dim);
 
   generate_castle(result_map);

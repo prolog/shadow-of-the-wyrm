@@ -57,6 +57,9 @@ namespace SOTW
       // maps at the specific depth always have the necessary properties.
       virtual std::map<std::string, std::string> get_depth_properties() const;
 
+      virtual void set_adjacent_tile_types(const std::vector<TileType>& new_adjacent_tile_types);
+      virtual std::vector<TileType> get_adjacent_tile_types() const;
+
       // Generator filters are used to generate creatures - creatures who match
       // the tile type and all the generator filters are included when considering
       // the set of creatures to generate.
@@ -117,6 +120,7 @@ namespace SOTW
       TileType map_terrain_type;
       int danger_level;
       std::map<std::string, std::string> additional_properties;
+      std::vector<TileType> adjacent_tile_types;
 
       // Displayed when the player enters a map for the first time.  Room messages, basically.
       std::vector<std::string> feature_entry_text_sids; 

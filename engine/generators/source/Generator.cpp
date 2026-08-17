@@ -619,6 +619,16 @@ bool Generator::has_additional_property(const string& property_name) const
   return (additional_properties.find(property_name) != additional_properties.end());
 }
 
+void Generator::set_adjacent_tile_types(const vector<TileType>& new_adjacent_tile_types)
+{
+  adjacent_tile_types = new_adjacent_tile_types;
+}
+
+vector<TileType> Generator::get_adjacent_tile_types() const
+{
+  return adjacent_tile_types;
+}
+
 // Maps are not permanent by default.  For certain map types (fields, forests, etc),
 // this is okay.  For others (dungeons, graveyards - really, anything readily
 // exploitable), permanence will need to be set.

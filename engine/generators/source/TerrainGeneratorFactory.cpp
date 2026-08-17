@@ -1,6 +1,7 @@
 #include "CastleGenerator.hpp"
 #include "CavernGenerator.hpp"
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "CryptGenerator.hpp"
 #include "DesertGenerator.hpp"
 #include "DungeonGenerator.hpp"
@@ -50,7 +51,7 @@ TerrainGeneratorFactory::~TerrainGeneratorFactory()
 // Create a generator based on the tile passed in.  The world map uses a limited
 // subset of the overall tiles (field, forest, sea, desert, etc., but not grave, 
 // reeds, etc).  Any unsupported tile for terrain generation will get a null GeneratorPtr back.
-GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, MapPtr map, const string& map_exit_id, const TileType terrain_type, const TileType terrain_subtype, const ExitMovementType emt)
+GeneratorPtr TerrainGeneratorFactory::create_generator(const Coordinate& creature_coords, TilePtr tile, MapPtr map, const string& map_exit_id, const TileType terrain_type, const TileType terrain_subtype, const ExitMovementType emt)
 {
   static_assert(TileType::TILE_TYPE_LAST == TileType(58), "Unexpected TileType::TILE_TYPE_LAST");
   GeneratorPtr generator;
@@ -80,6 +81,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, MapPtr map,
       }
       case TileType::TILE_TYPE_SEA:
       {
+        // JCD FIXME do stuff with creature_coords here
         generator = std::make_unique<SeaGenerator>(map_exit_id);
         break;
       }
@@ -125,7 +127,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, MapPtr map,
       }
       case TileType::TILE_TYPE_VILLAGE:
       {
-        GeneratorPtr base_generator = create_generator(tile, map, map_exit_id, terrain_subtype);
+        GeneratorPtr base_generator = create_generator(creature_coords, tile, map, map_exit_id, terrain_subtype);
         base_generator->set_additional_property(MapProperties::MAP_PROPERTIES_SKIP_COASTLINE_GENERATION, std::to_string(true));
         MapPtr base_map = base_generator->generate();
 
@@ -168,7 +170,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, MapPtr map,
       }
       case TileType::TILE_TYPE_SHRINE:
       {
-        GeneratorPtr base_generator = create_generator(tile, map, map_exit_id, terrain_subtype);
+        GeneratorPtr base_generator = create_generator(creature_coords, tile, map, map_exit_id, terrain_subtype);
         MapPtr base_map = base_generator->generate();
 
         generator = ShrineGeneratorFactory::create_random_shrine_generator(base_map);
@@ -183,7 +185,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, MapPtr map,
 
         if (worship_site_tile)
         {
-          GeneratorPtr base_generator = create_generator(tile, map, map_exit_id, terrain_subtype);
+          GeneratorPtr base_generator = create_generator(creature_coords, tile, map, map_exit_id, terrain_subtype);
           MapPtr base_map = base_generator->generate();
           generator = WorshipSiteGenerator::generate_worship_site(worship_site_tile->get_worship_site_type(), worship_site_tile->get_deity_id(), base_map);
         }
@@ -207,7 +209,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, MapPtr map,
         {
           // The subtype will function as the terrain type.  The idea is that if we have a set of stairs,
           // the subtype can be dungeon, cavern, etc., and guide the generation process.
-          generator = TerrainGeneratorFactory::create_generator(tile, map, map_exit_id, terrain_subtype);
+          generator = TerrainGeneratorFactory::create_generator(creature_coords, tile, map, map_exit_id, terrain_subtype);
         }
 
         break;
@@ -304,6 +306,9 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, MapPtr map,
         break;
     }
   }
+
+  vector<TileType> adjacent_tts = MapUtils::get_adjacent_tile_types(map, creature_coords);
+  generator->set_adjacent_tile_types(adjacent_tts);
 
   copy_properties(tile, generator.get());
 

@@ -3072,6 +3072,28 @@ void MapUtils::blind_adjacent_creatures(CreaturePtr attacking_creature, MapPtr m
   }
 }
 
+vector<TileType> MapUtils::get_adjacent_tile_types(MapPtr map, const Coordinate& c)
+{
+  vector<TileType> adjacent_tts;
+
+  if (map != nullptr)
+  {
+    vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), c.first, c.second);
+
+    for (const auto& ac : adjacent_coords)
+    {
+      TilePtr tile = map->at(ac);
+
+      if (tile != nullptr)
+      {
+        adjacent_tts.push_back(tile->get_tile_type());
+      }
+    }
+  }
+
+  return adjacent_tts;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Map_test.cpp"
 #include "unit_tests/MapUtils_test.cpp"

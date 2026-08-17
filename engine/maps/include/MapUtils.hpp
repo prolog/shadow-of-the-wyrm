@@ -160,6 +160,7 @@ class MapUtils
     static std::string get_drop_sound(TileSuperType tst);
     static void blind_adjacent_creatures(CreaturePtr attacking_creature, MapPtr map, const Coordinate& centre_coord);
 
+    static std::vector<TileType> get_adjacent_tile_types(MapPtr map, const Coordinate& c);
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
     static bool is_tile_contained_in_an_existing_component(const Coordinate&, const MapComponents& components);
