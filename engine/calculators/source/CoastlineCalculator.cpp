@@ -36,9 +36,39 @@ int CoastlineCalculator::generate_random_kelpforest_xiny_y() const
   return RNG::range(10, 100);
 }
 
-int CoastlineCalculator ::generate_random_shoals_xiny_y() const
+int CoastlineCalculator::generate_random_shoals_xiny_y() const
 {
   return RNG::range(20, 60);
+}
+
+int CoastlineCalculator::calc_pct_chance_shoals(const vector<TileType>& adjacent_tile_types) const
+{
+  int pct_chance_shoals = 0;
+
+  for (const TileType att : adjacent_tile_types)
+  {
+    if (att == TileType::TILE_TYPE_MOUNTAINS)
+    {
+      pct_chance_shoals += 10;
+    }
+    else if (att == TileType::TILE_TYPE_HILLS)
+    {
+      pct_chance_shoals += 7;
+    }
+    else if (att == TileType::TILE_TYPE_MARSH)
+    {
+      pct_chance_shoals += 5;
+    }
+    else if (att == TileType::TILE_TYPE_FIELD  || 
+             att == TileType::TILE_TYPE_FOREST || 
+             att == TileType::TILE_TYPE_SCRUB  ||
+             att == TileType::TILE_TYPE_DESERT)
+    {
+      pct_chance_shoals += 1;
+    }
+  }
+
+  return std::min<int>(pct_chance_shoals, 100);
 }
 
 #ifdef UNIT_TESTS

@@ -18,9 +18,26 @@ TEST(SW_Engine_Calc_CoastlineCalculator, calc_pct_chance_kelp_forest)
 	}
 }
 
-TEST(SW_Engine_Calc, calc_pct_chance_shoals)
+TEST(SW_Engine_Calc_CoastlineCalculator, calc_pct_chance_shoals)
 {
 	CoastlineCalculator cc;
 
 	EXPECT_EQ(40, cc.calc_pct_chance_shoals());
+}
+
+TEST(SW_Engine_Calc_CoastlineCalculator, calc_pct_chance_shoals_open_water)
+{
+	CoastlineCalculator cc;
+
+	EXPECT_EQ(0, cc.calc_pct_chance_shoals({}));
+	EXPECT_EQ(10, cc.calc_pct_chance_shoals({TileType::TILE_TYPE_MOUNTAINS}));
+	EXPECT_EQ(20, cc.calc_pct_chance_shoals({TileType::TILE_TYPE_MOUNTAINS, TileType::TILE_TYPE_MOUNTAINS}));
+	EXPECT_EQ(7, cc.calc_pct_chance_shoals({TileType::TILE_TYPE_HILLS}));
+	EXPECT_EQ(5, cc.calc_pct_chance_shoals({TileType::TILE_TYPE_MARSH}));
+	EXPECT_EQ(12, cc.calc_pct_chance_shoals({TileType::TILE_TYPE_HILLS, TileType::TILE_TYPE_MARSH}));
+	EXPECT_EQ(1, cc.calc_pct_chance_shoals({TileType::TILE_TYPE_FIELD}));
+	EXPECT_EQ(1, cc.calc_pct_chance_shoals({TileType::TILE_TYPE_FOREST}));
+	EXPECT_EQ(1, cc.calc_pct_chance_shoals({TileType::TILE_TYPE_SCRUB}));
+	EXPECT_EQ(1, cc.calc_pct_chance_shoals({TileType::TILE_TYPE_DESERT}));
+	EXPECT_EQ(4, cc.calc_pct_chance_shoals({TileType::TILE_TYPE_FIELD, TileType::TILE_TYPE_FOREST, TileType::TILE_TYPE_SCRUB, TileType::TILE_TYPE_DESERT}));
 }
