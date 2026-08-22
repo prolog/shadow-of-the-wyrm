@@ -8,4 +8,7 @@ class SeaGenerator : public SOTW::Generator
     virtual ~SeaGenerator() = default;
     
     virtual MapPtr generate(const Dimensions& dim) override;
+
+  protected:
+    void generate_shoals(MapPtr map);
 };

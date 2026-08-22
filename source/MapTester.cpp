@@ -125,7 +125,7 @@ std::string generate_dungeon();
 std::string generate_spiral_dungeon();
 std::string generate_field_road();
 std::string generate_forest_road();
-std::string generate_sea();
+std::string generate_sea(const bool shoals);
 std::string generate_world();
 std::string generate_cavern();
 std::string generate_ordered_graveyard();
@@ -658,9 +658,20 @@ std::string generate_spiral_dungeon()
   return map_to_string(sd_map);
 }
 
-std::string generate_sea()
+std::string generate_sea(const bool shoals)
 {
   GeneratorPtr sea_gen = std::make_unique<SeaGenerator>("");
+  std::vector<TileType> surround;
+
+  if (shoals)
+  {
+    for (int i = 0; i < 10; i++)
+    {
+      surround.push_back(TileType::TILE_TYPE_MOUNTAINS);
+    }
+  }
+
+  sea_gen->set_adjacent_tile_types(surround);
   MapPtr sea_map = sea_gen->generate();
   std::cout << map_to_string(sea_map, false);
   return map_to_string(sea_map);
@@ -1302,6 +1313,7 @@ void test_other_maps()
     std::cout << "1. Mountains" << std::endl;
     std::cout << "2. Ice Field" << std::endl;
     std::cout << "3. Iceberg" << std::endl;
+    std::cout << "4. Sea with shoals" << std::endl;
     std::cout << "-1. Quit" << std::endl << std::endl;
     std::cin >> option;
 
@@ -1323,6 +1335,9 @@ void test_other_maps()
         map = generate_iceberg();
         output_map(map, "iceberg_test.html");
         break;
+      case 4: 
+        map = generate_sea(true);
+        output_map(map, "sea_shoals_test.html");
       default: 
         break;
     }
@@ -1687,7 +1702,7 @@ int main(int, char**)
         output_map(map, "forest_road_test.html");
         break;
       case 11:
-        map = generate_sea();
+        map = generate_sea(false);
         output_map(map, "sea_test.html");
         break;
       case 12:
