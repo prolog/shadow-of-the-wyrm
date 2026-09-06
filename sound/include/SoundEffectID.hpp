@@ -17,6 +17,8 @@ class SoundEffectID
     static const std::string RAGE;
     static const std::string DIG;
     static const std::string EXIT_MAP;
+    static const std::string EXIT_MAP_FLY;
+    static const std::string EXIT_MAP_WATER;
     static const std::string SPLASH;
     static const std::string ALARM;
     static const std::string DEAD;

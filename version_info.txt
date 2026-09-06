@@ -90,6 +90,9 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 - Shoals now have a chance to be generated in the open sea adjacent to land,
   particularly when mountains or hills are present.
 
+- Moving off a map while flying, or while in water, now provide different
+  sounds than the usual footsteps.
+
 - New material types: water.
 
 - New creatures: cartographer, mountaineer.

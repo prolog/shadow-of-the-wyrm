@@ -8,8 +8,8 @@ Long Term Boring And Probably Necessary:
 - Visual Studio: x64 build
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
-- hook into adjacent TTs with seagenerator
-- water close to land should have chance of shoals...
+- as usual, update Larzid re: new stuff on server
+- make sure shoalsy seas didn't break creature gen on them...
 - Time to finally implement jumping
 - sea generator: chance for islands:
   - desert island with spring
@@ -63,7 +63,6 @@ Me:
 - The Ybari/Asturias?
 - can use warp in telari ocean
 - Elinor and Varra
-- in villages: retired cartographers?
 - small chance to generate good items underwater
 - need to test springs/ivory gen
 - Flying shop in Carcassia A2A
@@ -79,11 +78,6 @@ Me:
 - When map exit up is defined, should still check zlevels/etc
 - Keep a vector<pair<Direction, TileType>> for stairs on the map for fast
 - lookup
-- Zaeda tower:
-  - go up via flying
-  - enter tower
-  - go down stairs
-  - wrong place
 - make level no-dig
 - test exit messages
 - set air map type for various custom maps

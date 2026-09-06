@@ -8767,6 +8767,12 @@
 			<Effect id="_exit_map">
 				<Location>assets/sound/effects/exit_map.wav</Location>
 			</Effect>
+			<Effect id="_exit_map_fly">
+				<Location>assets/sound/effects/exit_map_fly.wav</Location>
+			</Effect>
+			<Effect id="_exit_map_water">
+				<Location>assets/sound/effects/exit_map_water.wav</Location>
+			</Effect>
 			<Effect id="_splash">
 				<Location>assets/sound/effects/splash.wav</Location>
 			</Effect>

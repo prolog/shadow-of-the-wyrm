@@ -214,13 +214,24 @@ void GameUtils::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new
       }
     }
 
+    string exit_effect_id = SoundEffectID::EXIT_MAP;
+
+    if (current_tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_WATER)
+    {
+      exit_effect_id = SoundEffectID::EXIT_MAP_WATER;
+    }
+    else if (current_creature != nullptr && current_creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
+    {
+      exit_effect_id = SoundEffectID::EXIT_MAP_FLY;
+    }
+
     // Set the new map to be loaded in the next iteration of the game loop.
     Game& game = Game::instance();
     game.set_current_map(new_map);
     game.reload_map();
 
     SoundPtr sound = game.get_sound();
-    sound->play(SoundEffectID::EXIT_MAP);
+    sound->play(exit_effect_id);
     sound->play_music(new_map);
   }
 }
