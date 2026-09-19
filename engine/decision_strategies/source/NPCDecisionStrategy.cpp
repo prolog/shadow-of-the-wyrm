@@ -610,9 +610,10 @@ CommandPtr NPCDecisionStrategy::get_ranged_attack_decision(const string& this_cr
     if (this_tile != nullptr)
     {
       CreaturePtr this_cr = this_tile->get_creature();
+      int pct_chance_consider_ranged = PERCENT_CHANCE_CONSIDER_RANGED_COMBAT;
 
       RangedCombatApplicabilityChecker rcac;
-      if (rcac.can_creature_do_ranged_combat(this_cr).first && RNG::percent_chance(PERCENT_CHANCE_CONSIDER_RANGED_COMBAT))
+      if (rcac.can_creature_do_ranged_combat(this_cr).first)
       {
         // Get any hives in the FOV to see if we want to, eg, throw a rock.
         set<ClassIdentifier> to_disturb_features = { ClassIdentifier::CLASS_ID_HIVE };
@@ -627,9 +628,18 @@ CommandPtr NPCDecisionStrategy::get_ranged_attack_decision(const string& this_cr
           {
             string threatening_creature_id = td_pair.first;
             Coordinate threat_c = view_map->get_location(threatening_creature_id);
+            TilePtr threat_tile = view_map->at(threat_c);
+
+            // If the creature's on a dangerous feature (eg, a trap), creatures will
+            // always fire so that a miss might trigger the trap.
+            if (threat_tile->has_feature() && threat_tile->get_feature()->get_is_dangerous())
+            {
+              pct_chance_consider_ranged = 100;
+            }
 
             if (RangedCombatUtils::is_coord_in_range(threat_c, view_map) && 
-                RangedCombatUtils::is_coordinate_obstacle_free(this_cr, c_this, threat_c, view_map))
+                RangedCombatUtils::is_coordinate_obstacle_free(this_cr, c_this, threat_c, view_map) &&
+                RNG::percent_chance(pct_chance_consider_ranged))
             {
               string rc_selected_id = threatening_creature_id;
               Coordinate rc_selected_coord = threat_c;

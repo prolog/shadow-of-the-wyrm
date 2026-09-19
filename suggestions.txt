@@ -8,8 +8,6 @@ Long Term Boring And Probably Necessary:
 - Visual Studio: x64 build
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
-- as usual, update Larzid re: new stuff on server
-- make sure shoalsy seas didn't break creature gen on them...
 - Time to finally implement jumping
 - sea generator: chance for islands:
   - desert island with spring
@@ -25,8 +23,6 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
-- fleeing monsters should try to trigger teleport traps
-- npcs should try to trigger fireball traps when hostiles are adjacent
 - for steel items: coal + iron? recipes tied to skills?
 - what about a theme for Cithriel? something weird and otherworldly
 - More recipes as more spell effects are added!
@@ -466,7 +462,6 @@ JovanM:
 
 Sabrecam: 
 - pay guards for peace
-- should be able to see full statuses in full description
 
 Xvordan:
 - in-map waypoint system
@@ -490,4 +485,9 @@ Paul Raymond-Robichaud:
 v.p.o.:
 - injured followers aren't regaining HP/AP on world map
 - something at the bottom of dungeons?
+- me: individual orders to NPCs to equip items
+?
+- me: individual orders to NPCs to equip items
+quip items
+?
 - me: individual orders to NPCs to equip items
