@@ -8,6 +8,9 @@ Long Term Boring And Probably Necessary:
 - Visual Studio: x64 build
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
+- Bentwing:
+  - npcs should drop when overburdened
+
 - Time to finally implement jumping
 - sea generator: chance for islands:
   - desert island with spring
@@ -442,7 +445,6 @@ Bentwing:
 - keybinding for toggling reach mode
 - when sapient allies are left behind on a resetting area, instead of being
   removed from the game world, show up randomly in a settlement somewhere.
-- npcs should drop when overburdened
 
 Kenny:
 - repeat last command (!)

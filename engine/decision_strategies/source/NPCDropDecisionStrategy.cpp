@@ -1,8 +1,55 @@
 #include "Commands.hpp"
+#include "EngineConversion.hpp"
 #include "NPCDropDecisionStrategy.hpp"
 #include "Wand.hpp"
 
 CommandPtr NPCDropDecisionStrategy::decide(CreaturePtr creature, MapPtr map)
+{
+  CommandPtr drop_cmd;
+
+  if (creature != nullptr && map != nullptr)
+  {
+    BurdenLevel bl = BurdenLevelConverter::to_burden_level(creature);
+
+    if (bl == BurdenLevel::BURDEN_LEVEL_OVERBURDENED)
+    {
+      drop_cmd = get_drop_decision_overburdened(creature, map);
+    }
+    else
+    {
+      drop_cmd = get_drop_decision(creature, map);
+    }
+  }
+
+  return drop_cmd;
+}
+
+CommandPtr NPCDropDecisionStrategy::get_drop_decision_overburdened(CreaturePtr creature, MapPtr map)
+{
+  CommandPtr drop_cmd;
+
+  if (creature != nullptr && map != nullptr)
+  {
+    const std::list<ItemPtr>& items = creature->get_inventory()->get_items_cref();
+    uint highest_weight = 0;
+
+    // If we're overburdened, drop the heaviest item.
+    for (ItemPtr item : items)
+    {
+      uint i_weight = item->get_weight().get_weight();
+      
+      if (i_weight > highest_weight)
+      {
+        highest_weight = i_weight;
+        drop_cmd = std::make_unique<DropCommand>(item->get_id());
+      }
+    }
+  }
+
+  return drop_cmd;
+}
+
+CommandPtr NPCDropDecisionStrategy::get_drop_decision(CreaturePtr creature, MapPtr map)
 {
   CommandPtr drop_cmd;
 

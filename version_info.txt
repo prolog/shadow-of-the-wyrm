@@ -96,6 +96,9 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 - Creatures with ranged attacks will now always fire when missing might also
   set off a trap.
 
+- Creatures that are overburdened will now start to drop inventory items to
+  try to be able to move again (Josh Engdahl).
+
 - New material types: water.
 
 - New creatures: cartographer, mountaineer.
