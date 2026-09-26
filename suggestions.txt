@@ -8,9 +8,6 @@ Long Term Boring And Probably Necessary:
 - Visual Studio: x64 build
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
-- Bentwing:
-  - npcs should drop when overburdened
-
 - Time to finally implement jumping
 - sea generator: chance for islands:
   - desert island with spring
@@ -18,6 +15,9 @@ Long Term Boring And Probably Necessary:
   - shallow water/shoals
   - etc
   - pct chance island should be tied to how far the sea tile is from land
+
+Sabrecam: 
+- pay humanoids for peace
 
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
@@ -462,9 +462,6 @@ JovanM:
 - create inkpots
 - long shops eg in Carcassia allow free thievery
 
-Sabrecam: 
-- pay guards for peace
-
 Xvordan:
 - in-map waypoint system
 
@@ -481,15 +478,9 @@ RelicWraith:
 - PortsMaster linux handheld support
 
 Paul Raymond-Robichaud:
-- Increase HP/AP regen modifiers as you level
 - special events/festivities on certain days? (feasts, etc)
 
 v.p.o.:
 - injured followers aren't regaining HP/AP on world map
 - something at the bottom of dungeons?
-- me: individual orders to NPCs to equip items
-?
-- me: individual orders to NPCs to equip items
-quip items
-?
 - me: individual orders to NPCs to equip items

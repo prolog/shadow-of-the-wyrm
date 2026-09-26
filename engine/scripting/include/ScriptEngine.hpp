@@ -70,6 +70,9 @@ class ScriptEngine : public ISerializable
 
     // The last command executed
     std::string last_executed;
+
+    // Directory containing the script files
+    const std::string script_dir;
   
   private:
     ScriptEngine(const ScriptEngine& se); // Do not implement!

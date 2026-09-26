@@ -20,7 +20,7 @@ using namespace std;
 #define lua_exportConstStr(ls, name) { lua_pushstring(ls, name); lua_setglobal(ls, #name); }
 
 // Create a new Lua state object, and open the libraries.
-ScriptEngine::ScriptEngine()
+ScriptEngine::ScriptEngine() : script_dir("scripts/")
 {
   initialize_state();
 }
@@ -92,9 +92,10 @@ void ScriptEngine::initialize_state()
 
 void ScriptEngine::load_modules()
 {
+  string env_location = script_dir + "env.lua";
   // Update the environment so that the "/script" directory 
   // and certain subdirectories are assumed.
-  if (luaL_loadfile(L, "scripts/env.lua") || lua_pcall(L, 0, 0, 0))
+  if (luaL_loadfile(L, env_location.c_str()) || lua_pcall(L, 0, 0, 0))
   {
     log_error();
   }
@@ -431,7 +432,7 @@ bool ScriptEngine::execute(const string& script, const map<string, string>& scri
     }
     else
     {
-      string script_file = "scripts/" + script;
+      string script_file = script_dir + script;
 
       // Init the table
       lua_newtable(L);
