@@ -1,3 +1,4 @@
+CHAT_SCRIPT = "chat_script"
 SPEAKING_CREATURE_ID = "speaking_creature_id"
 DEAD_CREATURE_ID = "dead_creature_id"
 MOVING_CREATURE_ID = "moving_creature_id"

@@ -12,6 +12,8 @@
 
 using namespace std;
 
+const string ChatAction::common_chat_script = "quests/chat_common.lua";
+
 ChatAction::ChatAction()
 {
 }
@@ -122,8 +124,10 @@ bool ChatAction::chat_single_creature(CreaturePtr querying_creature, CreaturePtr
 
       if (RNG::percent_chance(sd.get_chance()))
       {
-        map<string, string> args = { {"speaking_creature_id", speaking_creature->get_id()} };
-        se.execute(chat_script, args);
+        map<string, string> args = { {"chat_script", chat_script}, 
+                                     {"speaking_creature_id", speaking_creature->get_id()} };
+
+        se.execute(common_chat_script, args);
         spoke = true;
       }
     }

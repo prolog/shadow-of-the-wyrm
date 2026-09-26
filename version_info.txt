@@ -99,6 +99,9 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 - Creatures that are overburdened will now start to drop inventory items to
   try to be able to move again (Josh Engdahl).
 
+- The engine now executes a common script prior to running an individual
+  creature's chat script, improving extensibility.
+
 - New material types: water.
 
 - New creatures: cartographer, mountaineer.

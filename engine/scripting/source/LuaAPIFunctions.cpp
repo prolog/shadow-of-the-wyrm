@@ -60,7 +60,6 @@
 #include "SpellbookReadStrategy.hpp"
 #include "SpellcastingAction.hpp"
 #include "StatisticsMarker.hpp"
-#include "StatisticTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StringTable.hpp"
 #include "TextDisplayFormatter.hpp"
@@ -510,6 +509,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "reveal_shipwreck", reveal_shipwreck);
   lua_register(L, "get_direction_location", get_direction_location);
   lua_register(L, "get_num_creatures_killed", get_num_creatures_killed);
+  lua_register(L, "run_chat_script", run_chat_script);
 }
 
 // Lua API helper functions
@@ -11093,7 +11093,7 @@ int get_num_creatures_killed(lua_State* ls)
 {
   int num_kills = 0;
 
-  if (lua_gettop(ls) && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
   {
     string cr_id = lua_tostring(ls, 1);
     string kill_base_id = lua_tostring(ls, 2);
@@ -11111,4 +11111,23 @@ int get_num_creatures_killed(lua_State* ls)
 
   lua_pushinteger(ls, num_kills);
   return 1;
+}
+
+int run_chat_script(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string chat_script = lua_tostring(ls, 1);
+    string creature_id = lua_tostring(ls, 2);
+
+    ScriptEngine& se = Game::instance().get_script_engine_ref();
+    map<string, string> args = { {"speaking_creature_id", creature_id} };
+    se.execute(chat_script, args);
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to run_chat_script");
+  }
+
+  return 0;
 }

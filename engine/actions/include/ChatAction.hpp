@@ -18,5 +18,7 @@ class ChatAction : public IActionManager
     bool chat_single_creature(CreaturePtr querying_creature, CreaturePtr speaking_creature) const;
     bool chat_multiple_options(CreaturePtr querying_creature, const CreatureDirectionMap& creature_map) const;
     void add_chat_message(CreaturePtr creature, const std::string& chat_text_sid) const;
+
+    static const std::string common_chat_script;
 };
 
