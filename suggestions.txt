@@ -16,8 +16,9 @@ Long Term Boring And Probably Necessary:
   - etc
   - pct chance island should be tied to how far the sea tile is from land
 
-Sabrecam: 
-- pay humanoids for peace
+- order savefiles by most recently played?
+- make servants of sceadugenga impossible to pay off...
+- only allow creatures to be paid off once
 
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
