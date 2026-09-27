@@ -510,6 +510,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_direction_location", get_direction_location);
   lua_register(L, "get_num_creatures_killed", get_num_creatures_killed);
   lua_register(L, "run_chat_script", run_chat_script);
+  lua_register(L, "get_race_id", get_race_id);
+  lua_register(L, "is_race_or_descendent", is_race_or_descendent);
 }
 
 // Lua API helper functions
@@ -11130,4 +11132,48 @@ int run_chat_script(lua_State* ls)
   }
 
   return 0;
+}
+
+int get_race_id(lua_State* ls)
+{
+  string race_id;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      race_id = creature->get_race_id();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_race_id");
+  }
+
+  lua_pushstring(ls, race_id.c_str());
+  return 1;
+}
+
+int is_race_or_descendent(lua_State* ls)
+{
+  bool is_race = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    RaceManager rm;
+    string race_id = lua_tostring(ls, 1);
+    string is_race_id_this_race_or_desc = lua_tostring(ls, 2);
+
+    is_race = rm.is_race_or_descendent(race_id, is_race_id_this_race_or_desc);
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to is_race_or_descendent");
+  }
+
+  lua_pushboolean(ls, is_race);
+  return 1;
 }

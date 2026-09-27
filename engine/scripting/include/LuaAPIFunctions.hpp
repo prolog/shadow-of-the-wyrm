@@ -344,6 +344,8 @@ int reveal_shipwreck(lua_State* ls);
 int get_direction_location(lua_State* ls);
 int get_num_creatures_killed(lua_State* ls);
 int run_chat_script(lua_State* ls);
+int get_race_id(lua_State* ls);
+int is_race_or_descendent(lua_State* ls);
 
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls, int offset = 0);
