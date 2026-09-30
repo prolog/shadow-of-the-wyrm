@@ -512,6 +512,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "run_chat_script", run_chat_script);
   lua_register(L, "get_race_id", get_race_id);
   lua_register(L, "is_race_or_descendent", is_race_or_descendent);
+  lua_register(L, "get_deity_id", get_deity_id);
 }
 
 // Lua API helper functions
@@ -11175,5 +11176,28 @@ int is_race_or_descendent(lua_State* ls)
   }
 
   lua_pushboolean(ls, is_race);
+  return 1;
+}
+
+int get_deity_id(lua_State* ls)
+{
+  string deity_id;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature != nullptr)
+    {
+      deity_id = creature->get_religion_ref().get_active_deity_id();
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_deity_id");
+  }
+
+  lua_pushstring(ls, deity_id.c_str());
   return 1;
 }
