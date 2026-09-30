@@ -1,5 +1,7 @@
 require('constants')
 
+local offered_peace_property = "offered_peace"
+
 -- Offer peace, for a price
 local function offer_peace(creature_id)
   base_amount = get_creature_level(creature_id) * 10
@@ -15,13 +17,23 @@ local function offer_peace(creature_id)
       remove_object_from_player(CURRENCY_ID, requested_amount)
       transfer_item(PLAYER_ID, creature_id, CURRENCY_ID, requested_amount)
       set_hostility(creature_id, PLAYER_ID, get_current_map_id(), false)
+      set_creature_additional_property(creature_id, offered_peace_property, tostring(true))
     end
   end
 end
 
+local function should_offer_peace(creature_id)
+  -- For followers of the black horror, peace is never an option...
+  local deity_isnt_sceadugenga = get_deity_id(creature_id) ~= DEITY_ID_SCEADUGENGA
+  local hasnt_offered_peace_yet = get_creature_additional_property(creature_id, offered_peace_property) ~= tostring(true)
+
+  add_message_direct("HONK")
+  return deity_isnt_sceadugenga and hasnt_offered_peace_yet
+end
+
 -- Humanoids, when hostile, will offer peace in exchange for a sum.
 local function speak_humanoid(creature_id)
-  if is_creature_hostile(creature_id, PLAYER_ID) then
+  if is_creature_hostile(creature_id, PLAYER_ID) and should_offer_peace(creature_id) then
     return offer_peace(creature_id)
   end
 

@@ -184,6 +184,8 @@ QUEST_IN_PROGRESS = "quest_in_progress"
 -- Memberships
 WITCHLINGS_MEMBERSHIP_ID = "witchlings"
 
--- CLASSES
+-- Classes
 CLASS_ID_THIEF = "thief"
 
+-- Deities
+DEITY_ID_SCEADUGENGA = "09_sceadugenga"
