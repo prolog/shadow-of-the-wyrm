@@ -117,32 +117,18 @@ bool ChatAction::chat_single_creature(CreaturePtr querying_creature, CreaturePtr
     }
 
     string chat_script = sd.get_script();
+    ScriptEngine& se = game.get_script_engine_ref();
+    int pct_chance = sd.get_chance();
 
-    if (!chat_script.empty())
-    {
-      ScriptEngine& se = game.get_script_engine_ref();
+    // The script itself will take care of the percent chance of running the
+    // specific chat script.
+    map<string, string> args = {  {"chat_script", chat_script}, 
+                                  {"pct_chance", std::to_string(pct_chance)},
+                                  {"speaking_creature_id", speaking_creature->get_id()},
+                                  {"speech_text_sid", speech_text_sid} };
 
-      if (RNG::percent_chance(sd.get_chance()))
-      {
-        map<string, string> args = { {"chat_script", chat_script}, 
-                                     {"speaking_creature_id", speaking_creature->get_id()} };
-
-        se.execute(common_chat_script, args);
-        spoke = true;
-      }
-    }
-    else
-    {
-      // If a creature doesn't have speech text defined, throw up a generic
-      // response.
-      if (speech_text_sid.empty())
-      {
-        speech_text_sid = ActionTextKeys::ACTION_CHAT_NO_RESPONSE;
-      }
-
-      add_chat_message(querying_creature, speech_text_sid);
-      spoke = true;
-    }
+    se.execute(common_chat_script, args);
+    spoke = true;
   }
 
   return spoke;

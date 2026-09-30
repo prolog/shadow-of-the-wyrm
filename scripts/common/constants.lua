@@ -116,6 +116,8 @@ EXPLODING_ARROW_ID = "exploding_arrow"
 WINGED_JAVELIN_ID = "winged_javelin"
 ELYSIAN_COIN_ID = "elysian_coin"
 
+PCT_CHANCE = "pct_chance"
+SPEECH_TEXT_SID = "speech_text_sid"
 PLAYER_ID = "player"
 WORLD_MAP_ID = "world_map"
 CLASS_ID_ARCHER = "archer"
