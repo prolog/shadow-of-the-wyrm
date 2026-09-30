@@ -27,7 +27,6 @@ local function should_offer_peace(creature_id)
   local deity_isnt_sceadugenga = get_deity_id(creature_id) ~= DEITY_ID_SCEADUGENGA
   local hasnt_offered_peace_yet = get_creature_additional_property(creature_id, offered_peace_property) ~= tostring(true)
 
-  add_message_direct("HONK")
   return deity_isnt_sceadugenga and hasnt_offered_peace_yet
 end
 
