@@ -17,8 +17,6 @@ Long Term Boring And Probably Necessary:
   - pct chance island should be tied to how far the sea tile is from land
 
 - order savefiles by most recently played?
-- refactor: chat scripts etc should always run the common stuff, and the 
-  common stuff should run the script if appropriate, the speech text if not.
 
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
@@ -27,7 +25,6 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
-- for steel items: coal + iron? recipes tied to skills?
 - what about a theme for Cithriel? something weird and otherworldly
 - More recipes as more spell effects are added!
 - regular stanza updates again! XII should be the brothers/rebels returning to
@@ -48,7 +45,6 @@ Me:
 - picking up an item - prompt (with swyrm option) re whether to equip it?
 - mountaineering/lore: chance to find magici shards (+ mark tile) and also to
   generate a down staircase that leads to passageways that lead to a cavern
-- issue with too many save files, but there's only one? -1
 - mushrooms with randomized effects, descs like wildflowers. eat scripts?
 - Desert/Forest/etc Lore (+ dungeoneering?): to-hit, damage, speed bonuses on 
   that terrain

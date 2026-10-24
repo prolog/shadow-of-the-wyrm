@@ -103,7 +103,8 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
   creature's chat script, improving extensibility.
 
 - You can now pay off hostile humanoids (mostly) to make them peaceful 
-  (Sabrecam).
+  (Sabrecam), but not followers of Sceadugenga or those who previously were
+  paid off for peace.
 
 - New material types: water.
 

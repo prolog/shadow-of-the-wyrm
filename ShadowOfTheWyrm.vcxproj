@@ -164,6 +164,7 @@
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <CombineFilesOnlyFromTheSameFolder>false</CombineFilesOnlyFromTheSameFolder>
+      <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -227,6 +228,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp14</LanguageStandard>
+      <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -285,6 +287,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <AdditionalOptions>/bigobj</AdditionalOptions>
       <LanguageStandard>stdcpp14</LanguageStandard>
+      <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -398,6 +401,7 @@ mkdir $(OutDir)logs
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <AdditionalOptions>/bigobj</AdditionalOptions>
       <LanguageStandard>stdcpp14</LanguageStandard>
+      <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>

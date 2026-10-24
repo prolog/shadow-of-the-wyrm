@@ -87,6 +87,13 @@ bool ChatAction::chat_single_creature(CreaturePtr querying_creature, CreaturePtr
 
   if (speaking_creature)
   {
+    string querying_creature_id;
+
+    if (querying_creature)
+    {
+      querying_creature_id = querying_creature->get_id();
+    }
+
     // Check to see if the creature is quest-granting:
     Game& game = Game::instance();
     ScriptDetails sd = speaking_creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_CHAT);
@@ -124,6 +131,7 @@ bool ChatAction::chat_single_creature(CreaturePtr querying_creature, CreaturePtr
     // specific chat script.
     map<string, string> args = {  {"chat_script", chat_script}, 
                                   {"pct_chance", std::to_string(pct_chance)},
+                                  {"querying_creature_id", querying_creature_id},
                                   {"speaking_creature_id", speaking_creature->get_id()},
                                   {"speech_text_sid", speech_text_sid} };
 
