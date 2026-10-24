@@ -1,4 +1,5 @@
 #include <fstream>
+#include <map>
 #include <boost/algorithm/string.hpp>
 #include <filesystem>
 #include <boost/functional/hash/hash.hpp>
@@ -256,6 +257,9 @@ vector<pair<string, string>> Serialization::get_save_file_names(const bool singl
   filesystem::path save_file_filter(userdata_dir + ".");
   filesystem::directory_iterator end_it;
 
+  typedef std::multimap<filesystem::file_time_type, std::pair<std::string, std::string>> fspath_detail_t;
+  fspath_detail_t fs_paths;
+
   boost::regex e(FileConstants::SAVEFILE_PATTERN);
 
   if (exists(save_file_filter))
@@ -270,10 +274,15 @@ vector<pair<string, string>> Serialization::get_save_file_names(const bool singl
 
         if (save_file_availability.first == true)
         {
-          save_files.push_back(make_pair(filename, save_file_availability.second));
+          fs_paths.insert(fspath_detail_t::value_type(filesystem::last_write_time(d_it->path()), std::make_pair(filename, save_file_availability.second)));
         }
       }
     }
+  }
+
+  for (auto fs_it = fs_paths.rbegin(); fs_it != fs_paths.rend(); fs_it++)
+  {
+    save_files.push_back(std::make_pair(fs_it->second.first, fs_it->second.second));
   }
 
   return save_files;
