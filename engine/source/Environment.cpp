@@ -10,6 +10,9 @@
 using namespace std;
 
 #ifdef _WIN32
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN 0
+#endif
 #include <windows.h>
 #include <Lmcons.h>
 #elif defined(__unix__) || defined(__unix) || (defined(__APPLE__) && defined(__MACH__))

@@ -1,6 +1,6 @@
 #include <fstream>
 #include <boost/algorithm/string.hpp>
-#include <boost/filesystem.hpp>
+#include <filesystem>
 #include <boost/functional/hash/hash.hpp>
 #include <boost/regex.hpp>
 #include "zlib.h" // compression
@@ -20,7 +20,6 @@
 
 using namespace std;
 using namespace boost::algorithm;
-using namespace boost::filesystem;
 
 // Save the entire game state to disk
 string Serialization::save(CreaturePtr creature)
@@ -216,7 +215,7 @@ void Serialization::read_game_stream(istream& stream)
 
 bool Serialization::delete_savefile(const string& filename)
 {
-  path savefile(filename);
+  filesystem::path savefile(filename);
   return remove(savefile);
 }
 
@@ -242,7 +241,7 @@ bool Serialization::does_savefile_exist_for_user_and_character(const string& use
   Settings& settings = game.get_settings_ref();
   string userdata_dir = Environment::get_userdata_directory(&settings);
   string filename = generate_savefile_name(userdata_dir, user_name, character_name);
-  path save_file_filter(filename);
+  filesystem::path save_file_filter(filename);
 
   return (exists(save_file_filter));
 }
@@ -254,14 +253,14 @@ vector<pair<string, string>> Serialization::get_save_file_names(const bool singl
   vector<pair<string,string>> save_files;
   string user_name = Environment::get_user_name();
   string userdata_dir = Environment::get_userdata_directory(&settings);
-  path save_file_filter(userdata_dir + ".");
-  directory_iterator end_it;
+  filesystem::path save_file_filter(userdata_dir + ".");
+  filesystem::directory_iterator end_it;
 
   boost::regex e(FileConstants::SAVEFILE_PATTERN);
 
   if (exists(save_file_filter))
   {
-    for (directory_iterator d_it(save_file_filter); d_it != end_it; d_it++)
+    for (filesystem::directory_iterator d_it(save_file_filter); d_it != end_it; d_it++)
     {
       string filename = d_it->path().string();
 

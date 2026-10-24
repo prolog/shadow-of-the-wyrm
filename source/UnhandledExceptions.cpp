@@ -2,7 +2,6 @@
 #include <iostream>
 
 #ifdef _MSC_VER
-#include <windows.h>
 #include <dbghelp.h>
 #endif
 

@@ -106,6 +106,8 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
   (Sabrecam), but not followers of Sceadugenga or those who previously were
   paid off for peace.
 
+- Updates to use C++17 instead of C++14 (std::filesystem, etc).
+
 - New material types: water.
 
 - New creatures: cartographer, mountaineer.
