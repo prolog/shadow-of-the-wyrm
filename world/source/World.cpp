@@ -40,6 +40,11 @@ MapPtr World::get_world(const MapRegistry& registry) const
   return world_map;
 }
 
+string World::get_world_id() const
+{
+  return world_map_id;
+}
+
 Calendar& World::get_calendar()
 {
   return calendar;

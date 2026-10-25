@@ -1,7 +1,6 @@
 #include <sstream>
 #include <boost/tokenizer.hpp>
 #include <boost/uuid/uuid_generators.hpp>
-#include <boost/uuid/uuid_io.hpp>
 #include "Conversion.hpp"
 #include "Map.hpp"
 #include "MapFactory.hpp"
@@ -31,12 +30,17 @@ Map::Map(const Map& new_map)
     tiles = new_map.get_tiles();
 
     map_id = new_map.map_id;
+    set_world_id(new_map.get_world_id());
   }
 }
 
 Map::Map(const Dimensions& new_dimensions, const Dimensions& orig_dimensions)
 : terrain_type(TileType::TILE_TYPE_UNDEFINED), map_type(MapType::MAP_TYPE_OVERWORLD), permanent(false), danger(0), allow_creature_creation(true), allow_creature_updates(true), weather("")
 {
+  // Set the initial world ID, which might be overwritten later if this is an
+  // off-world map.
+  set_world_id(MapID::MAP_ID_WORLD_MAP);
+
   dimensions = new_dimensions;
   original_dimensions = orig_dimensions;
   

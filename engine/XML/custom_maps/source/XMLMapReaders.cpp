@@ -127,7 +127,12 @@ void XMLMapReader::parse_properties(const XMLNode& properties_node, MapPtr map)
     std::map<string, string> properties;
     xr.parse_properties(properties, properties_node);
 
-    map->set_properties(properties);
+    // Set the properties individually, as writing the entire collection will
+    // overwrite any existing properties (eg, world_id).
+    for (const auto& p : properties)
+    {
+      map->set_property(p.first, p.second);
+    }
   }
 }
 

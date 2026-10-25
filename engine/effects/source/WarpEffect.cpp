@@ -49,7 +49,11 @@ bool WarpEffect::warp(CreaturePtr creature)
     Game& game = Game::instance();
     MapPtr old_map = game.get_current_map();
 
-    if (old_map && old_map->get_map_id() != MapID::MAP_ID_WORLD_MAP)
+    // Warping back to the overworld only works within the main world. If 
+    // we're off-world, warping fizzles and fades...
+    if (old_map && 
+        old_map->get_map_id() != MapID::MAP_ID_WORLD_MAP &&
+        old_map->get_world_id() == game.instance().get_current_world()->get_world_id())
     {
       MapPtr new_map = game.get_map_registry_ref().get_map(MapID::MAP_ID_WORLD_MAP);
       TilePtr creature_tile = MapUtils::get_tile_for_creature(old_map, creature);

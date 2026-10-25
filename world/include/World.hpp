@@ -16,6 +16,7 @@ class World : public ISerializable
 
     void set_world(MapPtr new_world_map);
     MapPtr get_world(const MapRegistry& map_registry) const;
+    std::string get_world_id() const;
     
     Calendar& get_calendar();
 

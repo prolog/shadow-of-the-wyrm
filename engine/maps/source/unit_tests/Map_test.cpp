@@ -56,6 +56,12 @@ MapPtr SW_Engine_Map::make_map() const
   return map;
 }
 
+TEST_F(SW_Engine_Map, default_world_id)
+{
+  MapPtr map = make_map();
+  EXPECT_EQ(MapID::MAP_ID_WORLD_MAP, map->get_world_id());
+}
+
 TEST_F(SW_Engine_Map, tile_transforms)
 {
   TileTransform tt1(Coordinate(4,5), TileType::TILE_TYPE_FIELD, TileType::TILE_TYPE_UNDEFINED, {});
