@@ -45,6 +45,9 @@ MapPtr VoidGenerator::generate(const Dimensions& dimensions)
   // physical world, their prayers are no longer heard.
   result_map->set_property(MapProperties::MAP_PROPERTIES_CANNOT_PRAY, to_string(true));
 
+  // The cosmos does not belong to any individual world.
+  result_map->set_world_id("");
+
   return result_map;
 }
 

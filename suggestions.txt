@@ -19,8 +19,6 @@ Long Term Boring And Probably Necessary:
 - can use warp in telari ocean
 - need to make sure the world_id is properly applied when going up from
   Telari - world should be based on the map id of the current map
-- void maps should have no world id (and so warping shouldn't work)
-- need to make sure warping respects the map's no-teleport flag!
 - test warping on: world map, set maps in main world, random maps in main
   world, telari maps, telari ocean, void
 - update version_info
