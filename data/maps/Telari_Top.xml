@@ -134,9 +134,10 @@
 			<Name>MAP_PROPERTIES_SONG_LOCATION</Name>
 			<Value>assets/sound/music/telari.ogg</Value>
 		</Property>
+		<!-- The top of Telari is high above the ocean world - no world ID. -->
 		<Property>
 			<Name>MAP_PROPERTIES_WORLD_ID</Name>
-			<Value>ocea</Value>
+			<Value></Value>
 		</Property>
 	</Properties>
 </CustomMap>

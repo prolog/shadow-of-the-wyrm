@@ -628,7 +628,7 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
   } 
 
   GeneratorPtr generator = TerrainGeneratorFactory::create_generator(creature_coords, tile, map, map->get_map_id(), tile_type, tile_subtype, emt);
-
+  
   // Ensure that the overworld map ID is always available to the generator!
   map->get_map_type() == MapType::MAP_TYPE_WORLD ? generator->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, map->get_map_id())
     : generator->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, tile->get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
@@ -705,6 +705,7 @@ ActionCostValue MovementAction::do_generate_and_move_to_new_map(CreaturePtr crea
         generator->set_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE, perm_it->second);
       }
 
+      generator->set_additional_property(MapProperties::MAP_PROPERTIES_WORLD_ID, map->get_world_id());
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE, tile->get_additional_property(MapProperties::MAP_PROPERTIES_DANGER_LEVEL_OVERRIDE));
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_FORAGABLES, to_string(pct_chance_foragables));
       generator->set_additional_property(MapProperties::MAP_PROPERTIES_PCT_CHANCE_HERBS, to_string(pct_chance_herbs));

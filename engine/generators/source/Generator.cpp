@@ -1029,6 +1029,9 @@ void Generator::create_properties_and_copy_to_map(MapPtr map)
   {
     set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_DIVINE_FORBIDDEN, divine_forbidden);
   }
+
+  // Always set the world ID.
+  set_property_to_generator_and_map(map, MapProperties::MAP_PROPERTIES_WORLD_ID, get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_ID));
 }
 
 void Generator::set_property_to_generator_and_map(MapPtr map, const string& prop, const string& val)
