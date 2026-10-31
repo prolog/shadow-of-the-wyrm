@@ -6241,7 +6241,7 @@
 			<Weapon id="_hide_whip">
 				<DescriptionSID>HIDE_WHIP_SID</DescriptionSID>
 				<UsageDescriptionSID>HIDE_WHIP_USAGE_SID</UsageDescriptionSID>
-				<CodexDescriptionSID>HIDE_WHIP_CODEX_SID</CodexDescriptionSID>
+				<CodexDescriptionSID>HIDE_CODEX_SID</CodexDescriptionSID>
 				<Value>20</Value>
 				<Weight>
 					<Pounds>6</Pounds>
