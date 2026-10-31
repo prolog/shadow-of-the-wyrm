@@ -111,6 +111,9 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 - Savefiles are now ordered by last-modified, with the most recent appearing
   first.
 
+- Using brewing, as well as creating an additional potion, now mark the skill
+  for improvement (Lustcrecia).
+
 - New material types: water.
 
 - New creatures: cartographer, mountaineer.
