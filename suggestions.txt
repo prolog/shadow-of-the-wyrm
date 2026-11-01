@@ -16,8 +16,7 @@ Long Term Boring And Probably Necessary:
   - etc
   - pct chance island should be tied to how far the sea tile is from land
 
-- hops codex string lustcrecia. 
-  equipping potion in ammo identifies
+- lustcrecia: equipping potion in ammo identifies
 - test warping on: world map, set maps in main world, random maps in main
   world, telari maps, telari ocean, void
 - update version_info
