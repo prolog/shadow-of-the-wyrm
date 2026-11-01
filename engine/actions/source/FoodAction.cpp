@@ -145,7 +145,7 @@ bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInv
       string corpse_base_creature_id = food->get_additional_property(ConsumableConstants::CORPSE_BASE_CREATURE_ID);
       MapUtils::enrage_nearby_creatures(map, creature, corpse_base_creature_id, corpse_race_id);
 
-      // Likewise, eating undead is decidedly not kosher for many.
+      // Likewise, eating undead is considered vile for the pure of heart.
       if (!corpse_race_id.empty())
       {
         RaceManager rm;
@@ -158,7 +158,6 @@ bool FoodAction::eat_food(CreaturePtr creature, TilePtr tile, ItemPtr food, IInv
             DeityActionManager& dam = Game::instance().get_deity_action_manager_ref();
 
             dam.notify_action(creature, map, CreatureActionKeys::ACTION_DESECRATE_GOOD);
-            dam.notify_action(creature, map, CreatureActionKeys::ACTION_DESECRATE_NEUTRAL);
           }
         }
       }
