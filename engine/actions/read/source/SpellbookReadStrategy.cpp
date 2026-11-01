@@ -2,7 +2,6 @@
 #include "ItemIdentifier.hpp"
 #include "ItemTextKeys.hpp"
 #include "MessageManagerFactory.hpp"
-#include "SpellConstants.hpp"
 #include "SpellFailureConsequencesCoordinator.hpp"
 #include "SpellbookReadStrategy.hpp"
 #include "SpellcastingTextKeys.hpp"

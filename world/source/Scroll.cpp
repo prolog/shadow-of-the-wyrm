@@ -7,6 +7,7 @@ using namespace std;
 Scroll::Scroll()
 {
   type = ItemType::ITEM_TYPE_SCROLL;
+  identification_type = ItemIdentificationType::ITEM_IDENTIFY_ON_USE;
   symbol.set_symbol('?');
 }
 

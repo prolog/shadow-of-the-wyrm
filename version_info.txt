@@ -109,6 +109,10 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 - Neutral characters can eat undead corpses without angering their deity
   (Lustcrecia).
 
+- Potions no longer fully identify when eqipped (Lustcrecia).  More generally,
+  the code now properly considers when certain types of items should be
+  identified.
+
 - Updates to use C++17 instead of C++14 (std::filesystem, etc).
 
 - Savefiles are now ordered by last-modified, with the most recent appearing

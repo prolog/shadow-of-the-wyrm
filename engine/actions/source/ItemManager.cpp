@@ -494,7 +494,10 @@ void ItemManager::handle_item_identification_and_statuses(CreaturePtr creature, 
 
     if (creature->get_is_player())
     {
-      iid.set_item_identified(creature, item, item->get_base_id(), true);
+      if (item->get_should_identify_on_equip())
+      {
+        iid.set_item_identified(creature, item, item->get_base_id(), true);
+      }
     }
 
     // If auto-cursing, curse it.

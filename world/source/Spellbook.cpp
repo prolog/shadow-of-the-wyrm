@@ -7,6 +7,7 @@ Spellbook::Spellbook()
 : difficulty(0)
 {
   type = ItemType::ITEM_TYPE_SPELLBOOK;
+  identification_type = ItemIdentificationType::ITEM_IDENTIFY_ON_SUCCESSFUL_USE;
   symbol.set_symbol('\"');
 }
 

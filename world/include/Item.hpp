@@ -118,6 +118,7 @@ class Item : public ISerializable
     
     virtual void   set_identification_type(const ItemIdentificationType new_id_type);
     ItemIdentificationType get_identification_type() const;
+    virtual bool   get_should_identify_on_equip() const;
     
     void set_lock_id(const std::string& new_lock_id);
     std::string get_lock_id() const;

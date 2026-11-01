@@ -27,7 +27,7 @@ const int Item::MIN_ENCHANT_VALUE_INCR = 40;
 Item::Item()
 : value(0), quantity(1), readable(false), worn_location(EquipmentWornLocation::EQUIPMENT_WORN_NONE), status(ItemStatus::ITEM_STATUS_UNCURSED), status_identified(false), 
 item_identified(false), auto_curse(false), artifact(false), hands_required(1), type(ItemType::ITEM_TYPE_MISC), symbol('?', Colour::COLOUR_UNDEFINED), colour(Colour::COLOUR_UNDEFINED), 
-identification_type(ItemIdentificationType::ITEM_IDENTIFY_ON_SUCCESSFUL_USE), effect(EffectType::EFFECT_TYPE_NULL), material(MaterialType::MATERIAL_TYPE_WOOD),
+identification_type(ItemIdentificationType::ITEM_IDENTIFY_ON_GENERATION), effect(EffectType::EFFECT_TYPE_NULL), material(MaterialType::MATERIAL_TYPE_WOOD),
 glowing(false), remaining_enchants(8), remaining_smithings(8), unpaid(false)
 {
   resistances.set_all_resistances_to(0);
@@ -357,6 +357,12 @@ void Item::set_identification_type(const ItemIdentificationType new_identificati
 ItemIdentificationType Item::get_identification_type() const
 {
   return identification_type;
+}
+
+bool Item::get_should_identify_on_equip() const
+{
+  return (identification_type == ItemIdentificationType::ITEM_IDENTIFY_ON_GENERATION ||
+          identification_type == ItemIdentificationType::ITEM_IDENTIFY_ON_EQUIP);
 }
 
 void Item::set_lock_id(const string& new_lock_id)

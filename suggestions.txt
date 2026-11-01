@@ -16,7 +16,8 @@ Long Term Boring And Probably Necessary:
   - etc
   - pct chance island should be tied to how far the sea tile is from land
 
-- lustcrecia: equipping potion in ammo identifies
+- lustcrecia shovel in ammo slot wrong launcher type msg. its a more general
+  thing.
 - test warping on: world map, set maps in main world, random maps in main
   world, telari maps, telari ocean, void
 - update version_info
@@ -483,3 +484,6 @@ v.p.o.:
 - injured followers aren't regaining HP/AP on world map
 - something at the bottom of dungeons?
 - me: individual orders to NPCs to equip items
+
+Lustcrecia
+- filter for unpaid items

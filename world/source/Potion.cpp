@@ -9,6 +9,7 @@ Potion::Potion()
 : Consumable(50,0), has_damage(false)
 {
   type = ItemType::ITEM_TYPE_POTION;
+  identification_type = ItemIdentificationType::ITEM_IDENTIFY_ON_SUCCESSFUL_USE;
   symbol.set_symbol('!');
 }
 

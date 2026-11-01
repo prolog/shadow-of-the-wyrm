@@ -27,6 +27,7 @@ const int Wearable::RANDART_ADDL_PCT_CHANCE_SOAK = 10;
 Wearable::Wearable()
 : evade(0), soak(0), speed_bonus(0), to_hit(0), addl_damage(0)
 {
+  identification_type = ItemIdentificationType::ITEM_IDENTIFY_ON_EQUIP;
 }
 
 Wearable::~Wearable()
