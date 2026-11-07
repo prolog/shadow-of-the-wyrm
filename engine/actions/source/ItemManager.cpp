@@ -428,7 +428,7 @@ ActionCostValue ItemManager::equip_and_remove_from_inventory(CreaturePtr creatur
     
     if (eq.set_item(item, eq_worn_slot))
     {
-      handle_item_identification_and_statuses(creature, item);
+      handle_item_identification_and_statuses_on_equip(creature, item);
 
       // Remove from inventory.
       action_cost_value = get_action_cost_value(creature);
@@ -460,7 +460,7 @@ ActionCostValue ItemManager::equip_and_reduce_inventory_quantity(CreaturePtr cre
       
       if (inv_item_quantity == 0) creature->get_inventory()->remove(item->get_id());
       
-      handle_item_identification_and_statuses(creature, new_item);
+      handle_item_identification_and_statuses_on_equip(creature, new_item);
 
       action_cost_value = ActionCostConstants::DEFAULT;
     }
@@ -481,7 +481,7 @@ ActionCostValue ItemManager::equip(CreaturePtr creature, ItemPtr item)
   return equipped_item;
 }
 
-void ItemManager::handle_item_identification_and_statuses(CreaturePtr creature, ItemPtr item)
+void ItemManager::handle_item_identification_and_statuses_on_equip(CreaturePtr creature, ItemPtr item)
 {
   if (item != nullptr)
   {
