@@ -107,9 +107,9 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
   paid off for peace.
 
 - Neutral characters can eat undead corpses without angering their deity
-  (Lustcrecia).
+  (Lustrecia).
 
-- Potions no longer fully identify when eqipped (Lustcrecia).  More generally,
+- Potions no longer fully identify when eqipped (Lustrecia).  More generally,
   the code now properly considers when certain types of items should be
   identified.
 
@@ -119,10 +119,10 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
   first.
 
 - Using brewing, as well as creating an additional potion, now mark the skill
-  for improvement (Lustcrecia).
+  for improvement (Lustrecia).
 
 - When equipping ammunition, the filter now shows you only items you can
-  actually use as ammunition - weapons, ammo, potions (Lustcrecia).
+  actually use as ammunition - weapons, ammo, potions (Lustrecia).
 
 - New material types: water.
 
@@ -153,7 +153,7 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
   - Various typos (hemsio).
 
   - Hide whips weren't using the common hide codex text, and the hops codex
-    text was missing (Lustcrecia).
+    text was missing (Lustrecia).
 
 Shadow of the Wyrm v1.9.1.2 "Odair Assad"
 - Version started January 29, 2026. Version finalized February 10, 2026.
@@ -309,7 +309,7 @@ Shadow of the Wyrm v1.8.4 "Fampas"
 - Version declared March 8, 2025. Version finalized June 28, 2025.
 
 - Updated the guidebook's section on Skills and created a new section on 
-  how to apply terrain features (Lustcrecia).
+  how to apply terrain features (Lustrecia).
 
 - Improved the "can't sacrifice" message.
 
