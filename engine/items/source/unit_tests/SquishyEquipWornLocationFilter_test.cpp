@@ -1,7 +1,10 @@
 #include "gtest/gtest.h"
-#include "Weapon.hpp"
-#include "Ring.hpp"
+#include "Ammunition.hpp"
 #include "Amulet.hpp"
+#include "Potion.hpp"
+#include "Ring.hpp"
+#include "Tool.hpp"
+#include "Weapon.hpp"
 
 TEST(SW_Engine_Items_SquishyEquipWornLocationFilter, passes_filter)
 {
@@ -49,3 +52,23 @@ TEST(SW_Engine_Items_SquishyEquipWornLocationFilter, passes_filter)
   EXPECT_FALSE(filter2.passes_filter(weapon));
 }
 
+TEST(SW_Engine_Items_SquishyEquipWornLocationFilter, ammo_passes_filter)
+{
+  SquishyEquipWornLocationFilter filter(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
+
+  ItemPtr item = std::make_shared<Ammunition>();
+
+  EXPECT_TRUE(filter.passes_filter(item));
+
+  item = std::make_shared<MeleeWeapon>();
+
+  EXPECT_TRUE(filter.passes_filter(item));
+
+  item = std::make_shared<Potion>();
+
+  EXPECT_TRUE(filter.passes_filter(item));
+
+  item = std::make_shared<Tool>();
+
+  EXPECT_FALSE(filter.passes_filter(item));
+}
