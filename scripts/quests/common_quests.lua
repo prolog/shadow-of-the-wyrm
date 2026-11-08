@@ -297,7 +297,7 @@ end
 
 local function carcassia_lam_completion_condition_fn()
   local cr_id = args[SPEAKING_CREATURE_ID]
-  local cr_prop = get_creature_additional_property(cr_id, QUEST_IN_PROGRESS)
+  local cr_prop = get_creature_additional_property(cr_id, QUEST_IN_PROGRESe)
 
   return cr_prop == "1" and count_creatures_with_property(QUEST_CARCASSIA_LAM_GUARD, "1", get_current_map_id()) == 0
 end
@@ -315,6 +315,40 @@ local function carcassia_lam_completion_fn()
   add_object_with_resists_to_player_tile(FILIGREED_RING_ID, resists)
   return true
 end
+
+local function tree_planting_start_fn()
+  local cr_id = args[SPEAKING_CREATURE_ID]
+  local cr_desc = get_creature_description(PLAYER_ID, cr_id)
+  
+  add_message_with_pause("TREE_PLANTING_START_SID", {cr_desc})
+  clear_and_add_message("TREE_PLANTING_START2_SID")
+end
+
+local seed_ids = {APPLE_SEED_ID, PEAR_SEED_ID, PEACH_PIT_ID, PLUM_PIT_ID, CHERRY_PIT_ID, OLIVE_PIT_ID}
+
+local function tree_planting_completion_condition_fn()
+  for i, id in ipairs(seed_ids) do
+    if player_has_item(id) == false then
+      return false
+    end
+  end
+
+  return true
+end
+
+local function tree_planting_completion_fn()
+  for i, id in ipairs(seed_ids) do
+    remove_object_from_player(id)
+  end
+
+  clear_and_add_message("TREE_PLANTING_QUEST_COMPLETE_SID")
+
+  add_object_to_player_tile(GOLDEN_APPLE_ID)
+  add_object_to_player_tile(SILVER_APPLE_ID)
+
+  return true
+end
+
 
 -- CommonQuest module.  Used to quests that can be used by a variety of
 -- NPCs.
@@ -438,6 +472,17 @@ local function get_quests(cr_id, sdesc_sid)
                                         carcassia_lam_completion_condition_fn,
                                         carcassia_lam_completion_fn)
 
+  local tree_planting_quest = Quest:new("tree_planting" .. cr_id,
+                                        "TREE_PLANTING_QUEST_TITLE_SID",
+                                        sdesc_sid,
+                                        {"TREE_PLANTING_QUEST_DESCRIPTION_SID", fn.array_to_csv({name, location})},
+                                        "TREE_PLANTING_QUEST_COMPLETE_SID",
+                                        {"TREE_PLANTING_QUEST_REMINDER_SID", fn.array_to_csv({name, location})},
+                                        truefn,
+                                        tree_planting_start_fn,
+                                        tree_planting_completion_condition_fn,
+                                        tree_planting_completion_fn)
+
   local quests = {{thirsty_quest, 2},
                   {rowboat_quest, 2},
 		  {fishfeast_quest, 2},
@@ -445,7 +490,8 @@ local function get_quests(cr_id, sdesc_sid)
 		  {newjob_quest, 2},
 		  {fadventure_quest, 2},
 		  {adventure_quest, 2},
-                  {carcassia_lam_quest, 2}}
+                  {carcassia_lam_quest, 2},
+                  {tree_planting_quest, 2}}
 		  
   return quests
 end
