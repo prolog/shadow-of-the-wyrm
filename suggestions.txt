@@ -3,7 +3,7 @@ EVERY RELEASE:
 - update assets, sprites, music, release on website
 
 Long Term Boring And Probably Necessary:
-- SDL3
+- SDL 3
 - Lua 5.1 still ok?
 - Visual Studio: x64 build
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
@@ -15,9 +15,6 @@ Long Term Boring And Probably Necessary:
   - shallow water/shoals
   - etc
   - pct chance island should be tied to how far the sea tile is from land
-
-- test warping on: world map, set maps in main world, random maps in main
-  world, telari maps, telari ocean, void
 
 Me:
 - Every release: new names, new settlement names, new shipwrecks, new 
