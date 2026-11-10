@@ -368,6 +368,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_additional_property", set_creature_additional_property);
   lua_register(L, "get_creature_additional_property", get_creature_additional_property);
   lua_register(L, "get_creature_additional_property_csv", get_creature_additional_property_csv);
+  lua_register(L, "has_creature_additional_property", has_creature_additional_property);
   lua_register(L, "is_creature_in_view_map", is_creature_in_view_map);
   lua_register(L, "redraw", redraw);
   lua_register(L, "get_race_ids", get_race_ids);
@@ -513,6 +514,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_race_id", get_race_id);
   lua_register(L, "is_race_or_descendent", is_race_or_descendent);
   lua_register(L, "get_deity_id", get_deity_id);
+  lua_register(L, "get_item_usage_description", get_item_usage_description);
 }
 
 // Lua API helper functions
@@ -6593,6 +6595,31 @@ int get_creature_additional_property_csv(lua_State* ls)
   return num_strs;
 }
 
+int has_creature_additional_property(lua_State* ls)
+{
+  bool has_prop = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string cr_id = lua_tostring(ls, 1);
+    string prop_name = lua_tostring(ls, 2);
+
+    CreaturePtr cr = get_creature(cr_id);
+
+    if (cr != nullptr)
+    {
+      has_prop = cr->has_additional_property(prop_name);
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Incorrect arguments to has_creature_additional_property");
+  }
+
+  lua_pushboolean(ls, has_prop);
+  return 1;
+}
+
 int is_creature_in_view_map(lua_State* ls)
 {
   bool creature_in_map = false;
@@ -11199,5 +11226,29 @@ int get_deity_id(lua_State* ls)
   }
 
   lua_pushstring(ls, deity_id.c_str());
+  return 1;
+}
+
+int get_item_usage_description(lua_State* ls)
+{
+  string item_desc;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    Game& game = Game::instance();
+    const ItemMap& items = game.get_items_ref();
+    auto i_it = items.find(lua_tostring(ls, 1));
+
+    if (i_it != items.end())
+    {
+      item_desc = StringTable::get(i_it->second->get_usage_description_sid());
+    }
+  }
+  else
+  {
+    LuaUtils::log_and_raise(ls, "Invalid arguments to get_item_usage_description");
+  }
+
+  lua_pushstring(ls, item_desc.c_str());
   return 1;
 }

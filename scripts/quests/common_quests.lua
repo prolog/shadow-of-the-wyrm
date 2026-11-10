@@ -2,6 +2,24 @@ require('constants')
 require('fn')
 require('quest')
 
+-- Commonly-needed vars
+local cr_id = args[SPEAKING_CREATURE_ID]
+local cr_desc = get_creature_description(PLAYER_ID, cr_id)
+
+-- Needed by the instrument quest, but the value is needed each time, so 
+-- pick one and set it on the creature once.
+local desired_instr_prop = "des_instr"
+
+if has_creature_additional_property(cr_id, desired_instr_prop) == false then
+  local instrument_ids = {LUTE_ID, FIFE_ID, DULCIMER_ID, SACKBUT_ID, FIDDLE_ID, HORN_ID}
+  local desired = instrument_ids[RNG_range(1, #instrument_ids)]
+  
+  set_creature_additional_property(cr_id, desired_instr_prop, desired)
+end
+
+-- Get the potentially-desired instrument off the creature.
+local desired_instr = get_creature_additional_property(cr_id, desired_instr_prop)
+
 -- Common quests for various NPCs.
 local function add_common_quest_reward()
   local reward_ids = {}
@@ -81,7 +99,6 @@ end
 
 -- Escort to a village from when they were young...
 local function villagevisit_start_fn()
-  local cr_id = args[SPEAKING_CREATURE_ID]
   local q_id = "villagevisit"
   local v_name = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_NAME_" .. q_id)
   local v_loc = get_creature_additional_property(cr_id, "CREATURE_PROPERTIES_ESCORT_DESTINATION_LOCATION_" .. q_id)
@@ -269,8 +286,6 @@ local function carcassia_lam_precondition_fn()
 end
 
 local function carcassia_lam_start_fn()
-  local cr_id = args[SPEAKING_CREATURE_ID]
-  local cr_desc = get_creature_description(PLAYER_ID, cr_id)
   add_message_with_pause("CARCASSIA_LAM_QUEST_START_SID", {cr_desc})
   add_message_with_pause("CARCASSIA_LAM_QUEST_START2_SID")
   add_message_with_pause("CARCASSIA_LAM_QUEST_START3_SID")
@@ -297,7 +312,7 @@ end
 
 local function carcassia_lam_completion_condition_fn()
   local cr_id = args[SPEAKING_CREATURE_ID]
-  local cr_prop = get_creature_additional_property(cr_id, QUEST_IN_PROGRESe)
+  local cr_prop = get_creature_additional_property(cr_id, QUEST_IN_PROGRESS)
 
   return cr_prop == "1" and count_creatures_with_property(QUEST_CARCASSIA_LAM_GUARD, "1", get_current_map_id()) == 0
 end
@@ -317,9 +332,6 @@ local function carcassia_lam_completion_fn()
 end
 
 local function tree_planting_start_fn()
-  local cr_id = args[SPEAKING_CREATURE_ID]
-  local cr_desc = get_creature_description(PLAYER_ID, cr_id)
-  
   add_message_with_pause("TREE_PLANTING_START_SID", {cr_desc})
   clear_and_add_message("TREE_PLANTING_START2_SID")
 end
@@ -349,6 +361,22 @@ local function tree_planting_completion_fn()
   return true
 end
 
+local function instrument_quest_start_fn()
+  add_message_with_pause("INSTRUMENT_QUEST_START_SID", {cr_desc})
+  clear_and_add_message("INSTRUMENT_QUEST_START2_SID", {get_item_usage_description(desired_instr)})
+end
+
+local function instrument_quest_completion_condition_fn()
+  return player_has_item(desired_instr)
+end
+
+local function instrument_quest_completion_fn()
+  clear_and_add_message("INSTRUMENT_QUEST_COMPLETE_SID")
+  remove_object_from_player(desired_instr)
+  add_common_quest_reward()
+
+  return false -- true
+end
 
 -- CommonQuest module.  Used to quests that can be used by a variety of
 -- NPCs.
@@ -464,34 +492,46 @@ local function get_quests(cr_id, sdesc_sid)
   local carcassia_lam_quest = Quest:new("carcassia_lam_" .. cr_id,
                                         "CARCASSIA_LAM_QUEST_TITLE_SID",
 					sdesc_sid,
-					{"CARCASSIA_LAM_QUEST_DESCRIPTION_SID", fn.array_to_csv({name, location})},
+					"CARCASSIA_LAM_QUEST_DESCRIPTION_SID",
 					"CARCASSIA_LAM_QUEST_COMPLETE_SID",
-					{"CARCASSIA_LAM_QUEST_REMINDER_SID", fn.array_to_csv({name, location})},
+					"CARCASSIA_LAM_QUEST_REMINDER_SID",
                                         carcassia_lam_precondition_fn,
                                         carcassia_lam_start_fn,
                                         carcassia_lam_completion_condition_fn,
                                         carcassia_lam_completion_fn)
 
-  local tree_planting_quest = Quest:new("tree_planting" .. cr_id,
+  local tree_planting_quest = Quest:new("tree_planting_" .. cr_id,
                                         "TREE_PLANTING_QUEST_TITLE_SID",
                                         sdesc_sid,
-                                        {"TREE_PLANTING_QUEST_DESCRIPTION_SID", fn.array_to_csv({name, location})},
+                                        "TREE_PLANTING_QUEST_DESCRIPTION_SID",
                                         "TREE_PLANTING_QUEST_COMPLETE_SID",
-                                        {"TREE_PLANTING_QUEST_REMINDER_SID", fn.array_to_csv({name, location})},
+                                        "TREE_PLANTING_QUEST_REMINDER_SID",
                                         truefn,
                                         tree_planting_start_fn,
                                         tree_planting_completion_condition_fn,
                                         tree_planting_completion_fn)
 
-  local quests = {{thirsty_quest, 2},
-                  {rowboat_quest, 2},
-		  {fishfeast_quest, 2},
-                  {villagevisit_quest, 2},
-		  {newjob_quest, 2},
-		  {fadventure_quest, 2},
-		  {adventure_quest, 2},
-                  {carcassia_lam_quest, 2},
-                  {tree_planting_quest, 2}}
+  local instrument_quest = Quest:new("instrument_" .. cr_id,
+                                     "INSTRUMENT_QUEST_TITLE_SID",
+                                     sdesc_sid,
+                                     {"INSTRUMENT_QUEST_DESCRIPTION_SID", get_item_usage_description(desired_instr)},
+                                     "INSTRUMENT_QUEST_COMPLETE_SID",
+                                     {"INSTRUMENT_QUEST_REMINDER_SID", get_item_usage_description(desired_instr)},
+                                     truefn,
+                                     instrument_quest_start_fn,
+                                     instrument_quest_completion_condition_fn,
+                                     instrument_quest_completion_fn)
+
+  local quests = {{thirsty_quest, 1},
+                  {rowboat_quest, 1},
+		  {fishfeast_quest, 1},
+                  {villagevisit_quest, 1},
+		  {newjob_quest, 1},
+		  {fadventure_quest, 1},
+		  {adventure_quest, 1},
+                  {carcassia_lam_quest, 1},
+                  {tree_planting_quest, 1},
+                  {instrument_quest, 100}}
 		  
   return quests
 end

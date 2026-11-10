@@ -124,7 +124,7 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 - When equipping ammunition, the filter now shows you only items you can
   actually use as ammunition - weapons, ammo, potions (Lustrecia).
 
-- Added a townsfolk quest.
+- Added a couple new townsfolk quests.
 
 - New material types: water.
 
