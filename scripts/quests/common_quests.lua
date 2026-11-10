@@ -531,7 +531,7 @@ local function get_quests(cr_id, sdesc_sid)
 		  {adventure_quest, 1},
                   {carcassia_lam_quest, 1},
                   {tree_planting_quest, 1},
-                  {instrument_quest, 100}}
+                  {instrument_quest, 1}}
 		  
   return quests
 end
