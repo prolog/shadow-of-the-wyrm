@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemTextKeys.hpp"
 #include "MessageManagerFactory.hpp"
@@ -141,8 +142,15 @@ bool SpellbookReadStrategy::check_magic_skill(CreaturePtr creature, SkillType ma
 
   Skill* magic_skill = creature->get_skills().get_skill(SkillType::SKILL_GENERAL_MAGIC);
 
+  // Sanity check: does the magic exist anymore? Eg can't learn new spells
+  // after the Godslayer ending.
+  if (!GameUtils::is_magic_category_possible(magic_category))
+  {
+    add_magic_category_no_longer_exists_message(creature);
+    has_magic_skill = false;
+  }
   // Cantrips don't need a magic check - they're not written in Old Runic.
-  if (magic_skill->get_value() <= 0 && magic_category != SkillType::SKILL_MAGIC_CANTRIPS)
+  else if (magic_skill->get_value() <= 0 && magic_category != SkillType::SKILL_MAGIC_CANTRIPS)
   {
     if (creature->get_is_player())
     {
@@ -212,6 +220,14 @@ void SpellbookReadStrategy::add_no_magic_skill_message(CreaturePtr creature)
   IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_NO_MAGIC_SKILL));
+  manager.send();
+}
+
+void SpellbookReadStrategy::add_magic_category_no_longer_exists_message(CreaturePtr creature)
+{
+  IMessageManager& manager = MMF::instance(MessageTransmit::SELF, creature, creature && creature->get_is_player());
+
+  manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_MAGIC_CATEGORY_NO_LONGER_EXISTS));
   manager.send();
 }
 

@@ -30,6 +30,10 @@ class SpellbookReadStrategy : public ReadStrategy
     // Runic language.
     void add_no_magic_skill_message(CreaturePtr creature);
     
+    // Add a message about that type of magic having come and gone (eg,
+    // divine magic after Godslayer).
+    void add_magic_category_no_longer_exists_message(CreaturePtr creature);
+
     // Add a message about not being able to learn the spell.
     void add_spell_not_learned_message(CreaturePtr creature);
 

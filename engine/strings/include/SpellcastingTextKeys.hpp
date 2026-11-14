@@ -11,6 +11,7 @@ class SpellcastingTextKeys
     static const std::string SPELLCASTING_DIVINE_MAGIC_NO_DEITIES;
     static const std::string SPELLCASTING_BONUS_INCREASED;
     static const std::string SPELLCASTING_NO_MAGIC_SKILL;
+    static const std::string SPELLCASTING_MAGIC_CATEGORY_NO_LONGER_EXISTS;
     static const std::string SPELLCASTING_SPELL_NOT_LEARNED;
     static const std::string SPELLCASTING_UNFAMILIAR_CATEGORY;
     static const std::string SPELLCASTING_READ_BOOK_PLAYER;
