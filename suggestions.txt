@@ -8,15 +8,9 @@ Long Term Boring And Probably Necessary:
 - Visual Studio: x64 build
 - Periodically upgrade: xerces-c, zlib, boost, google-test, SDL2, SDL2_mixer, SDL2_image
 
-- Time to finally implement jumping
-- sea generator: chance for islands:
-  - desert island with spring
-  - rocky island
-  - shallow water/shoals
-  - etc
-  - pct chance island should be tied to how far the sea tile is from land
 
 Me:
+- after Godslayer, divine scrolls/spellbooks shouldn't work
 - Every release: new names, new settlement names, new shipwrecks, new 
   staircase extra descs, randomized npc stuff, etc.
 - EVERY TIME YOU UPDATE ASSETS, DM LARZID
@@ -35,12 +29,18 @@ Me:
 - Hidden PCs are never found via bumping (Josh Engdahl)
 - ways in which blessed item status can be tied into benefits
 - Sofistico: went up on telari and game crashed
+- Time to finally implement jumping
+- sea generator: chance for islands:
+  - desert island with spring
+  - rocky island
+  - shallow water/shoals
+  - etc
+  - pct chance island should be tied to how far the sea tile is from land
 - sometimes: mushroom generation in dungeons (rare), caverns (more frequent)
 - open pit mine (pick axes or mattocks, gold, stone, magici...). may or may not
   be abandoned.
 - generic miner npc
 - YARD: let NPCs pray in desperation as well
-- picking up an item - prompt (with swyrm option) re whether to equip it?
 - mountaineering/lore: chance to find magici shards (+ mark tile) and also to
   generate a down staircase that leads to passageways that lead to a cavern
 - mushrooms with randomized effects, descs like wildflowers. eat scripts?
@@ -57,25 +57,15 @@ Me:
 - The Ybari/Asturias?
 - Elinor and Varra
 - small chance to generate good items underwater
-- need to test springs/ivory gen
 - Flying shop in Carcassia A2A
 - need to be able to move around sky above Carcassia (make sure NW, NE, SW,
   SE all work as expected)
 - Need to check all the exits for the sky
-- What kinds of creatures/quests/features should be up in the air?
-- in do_generate... can that linkage function be hidden behind a check for
-  either world map or interior tile? test!
-- update xsd, update xml, add and test linkages for all direction 10/11
-  custom maps
-- std::filesystem requires C++20 for converting last_write times
-- When map exit up is defined, should still check zlevels/etc
 - Keep a vector<pair<Direction, TileType>> for stairs on the map for fast
 - lookup
 - make level no-dig
 - test exit messages
 - set air map type for various custom maps
-- ensure multi floor custom maps line up properly, link them as expected
-- JovanM: items blocking gate...
 - items: drop through!
 - test all kinds of exits:
   - world to custom
@@ -85,10 +75,6 @@ Me:
   - down/up custom
   - down/up others like cathedral
 - controller support - this could also allow menu support for newer players
-- ascension/descension should take you to the right place on the map
-- anything not sea on the upper map should be rock
-- map should be undiggable
-- a few ivory in springs - wishing wells :)
 - all other seas should have a message about the bottom being too deep to
   reach (unless you have WB?)
 - fields north of carcassia: new generator type? finally use wheat?
@@ -137,7 +123,6 @@ Me:
 - Look at Earthsea names?
 - Ensure stunned works properly for NPCs
 - Weaponmasteries in guidebook
-- after Godslayer, divine spells gone/Divine skill 0
 - Homesteads in fields
 - Use MapUtils::get_unblocked_door_dirs elsewhere
 - More dungeon item features:

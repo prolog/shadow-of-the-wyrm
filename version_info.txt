@@ -124,6 +124,8 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 - When equipping ammunition, the filter now shows you only items you can
   actually use as ammunition - weapons, ammo, potions (Lustrecia).
 
+- After the Godslayer ending, the player loses any divine magic ability.
+
 - Added a couple new townsfolk quests.
 
 - New material types: water.

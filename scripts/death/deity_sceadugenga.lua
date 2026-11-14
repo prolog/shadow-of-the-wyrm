@@ -6,6 +6,9 @@ local function generate_telari_staircase(creature_id, attacking_creature_id, map
   -- decides to keep playing, praying doesn't act strange.
   clear_deities()
 
+  -- The player loses all divine magic ability.
+  set_skill_value(PLAYER_ID, CSKILL_MAGIC_DIVINE, 0)
+
   -- Add the victory text.
   add_message_with_pause("GODSLAYER_WIN_MESSAGE")
   add_message_with_pause("GODSLAYER_WIN_MESSAGE2")
