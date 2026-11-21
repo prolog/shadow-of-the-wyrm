@@ -26,5 +26,5 @@ TEST(SW_Display_SDLDisplayParameters, saveload)
   EXPECT_EQ(10, sdld2.get_glyphs_per_line());
   EXPECT_EQ(100, sdld2.get_num_glyphs());
 
-  EXPECT_TRUE(sdld == sdld2);
+  EXPECT_EQ(sdld, sdld2);
 }

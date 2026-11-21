@@ -33,7 +33,7 @@ SDLDisplayParameters::SDLDisplayParameters(const int new_screen_cols, const int 
   bg_colour = { 0,0,0,255 }; // black
 }
 
-bool SDLDisplayParameters::operator==(const SDLDisplayParameters& d)
+bool SDLDisplayParameters::operator==(const SDLDisplayParameters& d) const
 {
   bool eq = true;
 
