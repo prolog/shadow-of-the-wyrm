@@ -1,7 +1,7 @@
+#include <filesystem>
 #include <sstream>
 #include <vector>
 #include <boost/algorithm/string/trim.hpp> 
-#include <boost/filesystem.hpp>
 #include "Conversion.hpp"
 #include "Environment.hpp"
 #include "FileWriter.hpp"
@@ -60,7 +60,7 @@ bool Environment::create_userdata_directory(const Settings* settings)
   // Leave other directory creation to the sysadmins.
   if (userdata_dir.find(user_home_dir) != std::string::npos)
   {
-    boost::filesystem::create_directory(userdata_dir);
+    std::filesystem::create_directory(userdata_dir);
   }
 
   return created;

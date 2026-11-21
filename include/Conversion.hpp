@@ -4,6 +4,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <time.h>
 #include "common.hpp"
 #include "Colours.hpp"
 #include "EquipmentTypes.hpp"
@@ -19,13 +20,26 @@ namespace boost
 
 class Convert
 {
-  protected:
-    friend class String;
-    friend class Integer;
-    friend class Char;
+  public:
+    template <class T> static T from_string(const std::string& str)
+    {
+      T converted_string;
+      istringstream buffer(str);
+      buffer >> converted_string;
+      return converted_string;
+    }
 
+    template <typename T> static std::time_t to_time_t(T tp)
+    {
+      using namespace std::chrono;
+
+      auto new_time_t = time_point_cast<system_clock::duration>(tp - T::clock::now() + system_clock::now());
+      return system_clock::to_time_t(new_time_t);
+    }
+
+  protected:
     Convert();
-    template <class T> static T from_string(const std::string& str);
+    ~Convert() = default;
 };
 
 class String

@@ -1,5 +1,5 @@
+#include <filesystem>
 #include <boost/algorithm/string.hpp>
-#include <boost/filesystem.hpp>
 #include "CompilationDetails.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
@@ -39,7 +39,7 @@ void ScoreFile::read_score_file()
   string path_and_file = scorefile_dir + HighScoreConstants::FILENAME;
   std::ifstream score_file(path_and_file);
 
-  if (boost::filesystem::exists(path_and_file))
+  if (std::filesystem::exists(path_and_file))
   {
     std::ifstream sf;
 

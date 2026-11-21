@@ -1,10 +1,10 @@
 #include <chrono>
 #include <ctime>
+#include <filesystem>
 #include <sstream>
 #include <limits>
 #include <boost/algorithm/string/trim.hpp> 
 #include <boost/date_time/posix_time/posix_time.hpp>
-#include <boost/filesystem.hpp>
 #include "Conversion.hpp"
 #include "Environment.hpp"
 #include "Log.hpp"
@@ -36,7 +36,7 @@ void Log::init_file(const Settings* settings)
   try
   {
     filename = create_filename(settings);
-    while (boost::filesystem::exists(filename) && (counter != std::numeric_limits<int>::max()))
+    while (std::filesystem::exists(filename) && (counter != std::numeric_limits<int>::max()))
     {
       filename = create_filename(settings);
     }

@@ -1,6 +1,7 @@
+#include <filesystem>
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/property_tree/ini_parser.hpp>
-#include <boost/filesystem.hpp>
+#include "common.hpp"
 #include "Conversion.hpp"
 #include "Environment.hpp"
 #include "Serialize.hpp"
@@ -18,15 +19,20 @@ Settings::Settings(const bool read_from_disk, const bool read_user_copy)
 {
   if (read_from_disk)
   {
-    string ini_file_loc = SETTINGS_FILENAME;
+    string dir;
 
     if (read_user_copy)
     {
-      string dir = Environment::get_userdata_directory(nullptr);
-      ini_file_loc = dir + SETTINGS_FILENAME;
+      dir = Environment::get_userdata_directory(nullptr);
+    }
+    else
+    {
+      dir = std::filesystem::current_path().string() + FS_PATH_SEPARATOR;
     }
 
-    if (boost::filesystem::exists(ini_file_loc))
+    string ini_file_loc = dir + SETTINGS_FILENAME;
+
+    if (std::filesystem::exists(ini_file_loc))
     {
       boost::property_tree::ini_parser::read_ini(ini_file_loc, settings_tree);
     }

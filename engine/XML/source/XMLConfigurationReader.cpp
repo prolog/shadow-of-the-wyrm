@@ -1,6 +1,6 @@
+#include <filesystem>
 #include <utility>
 #include <vector>
-#include <boost/filesystem.hpp>
 #include <boost/regex.hpp>
 #include "CreatureGenerationValues.hpp"
 #include "DisplayTile.hpp"
@@ -9,7 +9,6 @@
 #include "XMLConfigurationReader.hpp"
 
 using namespace std;
-using namespace boost::filesystem;
 
 XMLConfigurationReader::XMLConfigurationReader(const string& xml_filename, const string& cr_filename, const string& it_filename)
 : filename(xml_filename), creatures_filename(cr_filename), items_filename(it_filename)
@@ -157,10 +156,10 @@ vector<MapPtr> XMLConfigurationReader::get_custom_maps(const string& directory, 
   vector<MapPtr> custom_maps;
   XMLMapReader map_reader;
 
-  directory_iterator end_it;
+  std::filesystem::directory_iterator end_it;
   boost::regex e(filename_pattern);
 
-  for (directory_iterator d_it(directory); d_it != end_it; d_it++)
+  for (std::filesystem::directory_iterator d_it(directory); d_it != end_it; d_it++)
   {
     string fname = d_it->path().string();
 

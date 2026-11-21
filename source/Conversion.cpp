@@ -17,14 +17,6 @@ Convert::Convert()
 {
 }
 
-template<class T> T Convert::from_string(const string& convert)
-{
-  T converted_string;
-  istringstream buffer(convert);
-  buffer >> converted_string;
-  return converted_string;
-}
-
 string Float::to_string(const float f, const int precision)
 {
   std::ostringstream ss;

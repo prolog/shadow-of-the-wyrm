@@ -7,11 +7,11 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <filesystem>
 
 #include "UnhandledExceptions.hpp"
 
 #include <boost/archive/archive_exception.hpp>
-#include <boost/filesystem.hpp>
 #include <xercesc/util/PlatformUtils.hpp>
 
 #include "common.hpp"
@@ -168,10 +168,10 @@ int main(int argc, char* argv[])
       if (display)
       {
         string display_asset_dir_setting_val = settings.get_setting(settings.get_setting(Setting::DISPLAY) + Setting::ASSET_DIR_SUFFIX);
-        boost::filesystem::path display_asset_dir = display_asset_dir_setting_val;
+        std::filesystem::path display_asset_dir = display_asset_dir_setting_val;
         bool play_game = true;
 
-        if (!display_asset_dir_setting_val.empty() && !boost::filesystem::exists(display_asset_dir))
+        if (!display_asset_dir_setting_val.empty() && !std::filesystem::exists(display_asset_dir))
         {
           msgs.push_back("Asset directory (" + display_asset_dir.string() + ") not found!");
           msgs.push_back("Download assets from the SotW website: https://www.shadowofthewyrm.org.");
