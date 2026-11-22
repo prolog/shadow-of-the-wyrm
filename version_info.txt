@@ -126,6 +126,9 @@ Shadow of the Wyrm v2.0.0 "de Cabezon"
 
 - After the Godslayer ending, the player loses any divine magic ability.
 
+- Internally, changed a few libraries from boost:: to the std:: equivalent,
+  where these had been added in the years since starting SotW.
+
 - Added a couple new townsfolk quests.
 
 - New material types: water.

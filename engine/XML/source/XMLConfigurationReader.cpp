@@ -1,7 +1,7 @@
 #include <filesystem>
+#include <regex>
 #include <utility>
 #include <vector>
-#include <boost/regex.hpp>
 #include "CreatureGenerationValues.hpp"
 #include "DisplayTile.hpp"
 #include "Setting.hpp"
@@ -157,13 +157,13 @@ vector<MapPtr> XMLConfigurationReader::get_custom_maps(const string& directory, 
   XMLMapReader map_reader;
 
   std::filesystem::directory_iterator end_it;
-  boost::regex e(filename_pattern);
+  std::regex e(filename_pattern);
 
   for (std::filesystem::directory_iterator d_it(directory); d_it != end_it; d_it++)
   {
     string fname = d_it->path().string();
 
-    if (boost::regex_search(fname, e))
+    if (std::regex_search(fname, e))
     {
       initialize_parser(fname);
 

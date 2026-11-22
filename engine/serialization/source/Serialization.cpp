@@ -1,9 +1,9 @@
 #include <fstream>
 #include <map>
+#include <regex>
 #include <boost/algorithm/string.hpp>
 #include <filesystem>
 #include <boost/functional/hash/hash.hpp>
-#include <boost/regex.hpp>
 #include "zlib.h" // compression
 #include "global_prototypes.hpp"
 #include "CompilationDetails.hpp"
@@ -260,7 +260,7 @@ vector<pair<string, string>> Serialization::get_save_file_names(const bool singl
   typedef std::multimap<filesystem::file_time_type, std::pair<std::string, std::string>> fspath_detail_t;
   fspath_detail_t fs_paths;
 
-  boost::regex e(FileConstants::SAVEFILE_PATTERN);
+  std::regex e(FileConstants::SAVEFILE_PATTERN);
 
   if (exists(save_file_filter))
   {
@@ -268,7 +268,7 @@ vector<pair<string, string>> Serialization::get_save_file_names(const bool singl
     {
       string filename = d_it->path().string();
 
-      if (boost::regex_search(filename,e))
+      if (std::regex_search(filename,e))
       {
         pair<bool, string> save_file_availability = get_save_file_availability_and_synopsis(d_it->path().string(), single_user_mode, skip_metadata_verification);
 
