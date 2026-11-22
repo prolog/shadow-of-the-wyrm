@@ -1,11 +1,14 @@
-#include <boost/thread/thread.hpp>
+#include <chrono>
+#include <thread>
 #include "PauseAnimationInstruction.hpp"
+
+using namespace std::chrono_literals;
 
 // Pause for a default number of milliseconds, using the Boost threading
 // library for reasonable portability.
 void PauseAnimationInstruction::execute(Display* const)
 {
-  boost::this_thread::sleep(boost::posix_time::milliseconds(100));
+  std::this_thread::sleep_for(100ms);
 }
 
 Coordinate PauseAnimationInstruction::get_coords() const

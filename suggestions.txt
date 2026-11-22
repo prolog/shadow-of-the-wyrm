@@ -16,6 +16,7 @@ Me:
 - ASSET RELEASE: sounds! tiles! assets! if asset zip updated, msg Larzid
 - git push --tags
 - Audio enhancements off for testing
+- continue boost -> std conversion
 - what about a theme for Cithriel? something weird and otherworldly
 - More recipes as more spell effects are added!
 - regular stanza updates again! XII should be the brothers/rebels returning to
@@ -398,7 +399,6 @@ Josh Engdahl
 - make undead hostile to e.g. all humanoids who don't worship shiver/urgoth/
   sceadugenga.
 - nearby guards/priests should get angry when altars are desecrated
-- Rocky earth generator 1n Carcassia
 - Freeze not always working when hostile creatures in view or creatures 
   hostile to leader in view?
 - los code: .@..   can't see
